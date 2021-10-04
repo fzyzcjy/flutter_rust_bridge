@@ -47,9 +47,9 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: --manifest-path=./frb_example/pure_dart/frb_example_rust/Cargo.toml --all -- --check
+          args: --manifest-path=./frb_example/simple/rust/Cargo.toml --all -- --check
       - name: Run clippy for example
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --manifest-path=./frb_example/pure_dart/frb_example_rust/Cargo.toml -- -D warnings
+          args: --manifest-path=./frb_example/simple/rust/Cargo.toml -- -D warnings
