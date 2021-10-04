@@ -12,7 +12,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v2
 
@@ -22,6 +22,13 @@ jobs:
     - name: Run tests for codegen
       working-directory: ./frb_codegen
       run: cargo test --verbose
+
+    - name: Run codegen to frb_example/simple
+      working-directory: ./frb_codegen
+      run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen ../frb_example/simple/rust/flutter_rust_bridge.yaml
+
+    - name: 'Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)'
+      run: git diff --exit-code
 
     - name: Build rust runtime
       working-directory: ./frb_rust
