@@ -24,38 +24,32 @@ jobs:
       - name: Run fmt for codegen
         uses: actions-rs/cargo@v1
         with:
-          working-directory: ./frb_codegen
           command: fmt
-          args: --all -- --check
+          args: --manifest-path=./frb_codegen/Cargo.toml --all -- --check
       - name: Run clippy for codegen
         uses: actions-rs/cargo@v1
         with:
-          working-directory: ./frb_codegen
           command: clippy
-          args: -- -D warnings
+          args: --manifest-path=./frb_codegen/Cargo.toml -- -D warnings
 
       - name: Run fmt for rust runtime
         uses: actions-rs/cargo@v1
         with:
-          working-directory: ./frb_rust
           command: fmt
-          args: --all -- --check
+          args: --manifest-path=./frb_rust/Cargo.toml --all -- --check
       - name: Run clippy for rust runtime
         uses: actions-rs/cargo@v1
         with:
-          working-directory: ./frb_rust
           command: clippy
-          args: -- -D warnings
+          args: --manifest-path=./frb_rust/Cargo.toml -- -D warnings
 
       - name: Run fmt for example
         uses: actions-rs/cargo@v1
         with:
-          working-directory: ./frb_example/frb_example_rust
           command: fmt
-          args: --all -- --check
+          args: --manifest-path=./frb_example/frb_example_rust/Cargo.toml --all -- --check
       - name: Run clippy for example
         uses: actions-rs/cargo@v1
         with:
-          working-directory: ./frb_example/frb_example_rust
           command: clippy
-          args: -- -D warnings
+          args: --manifest-path=./frb_example/frb_example_rust/Cargo.toml -- -D warnings
