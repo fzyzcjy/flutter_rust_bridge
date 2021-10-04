@@ -1,6 +1,6 @@
 use crate::config::*;
-use std::{env, fs};
 use std::path::{Path, PathBuf};
+use std::{env, fs};
 
 pub fn parse_command_line_args() -> String {
     let mut args = env::args();
@@ -82,4 +82,3 @@ impl Config {
         }
     }
 }
-
