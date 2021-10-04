@@ -1,7 +1,10 @@
 use serde::Deserialize;
-use std::fs;
-use std::path::{Path, PathBuf};
 
+/// Clarification for "api" and "wire" used in this project:
+/// "api" := The interface that you, as a user, should use. You have defined a Rust APi, and will
+///          use the generated Dart api class in your Dart/Flutter code.
+/// "wire" := The things that you should not care about (only give it a place to live in is enough).
+/// They are the underlying things that are really passed through via C ABI
 #[derive(Debug, PartialEq, Deserialize)]
 pub struct Config {
     pub rust: ConfigRust,
@@ -9,42 +12,6 @@ pub struct Config {
     pub c: ConfigC,
 }
 
-impl Config {
-    pub fn read(config_path: &str) -> Self {
-        let raw_config: Config =
-            serde_yaml::from_str(&fs::read_to_string(config_path).unwrap()).unwrap();
-        raw_config.canonicalize(PathBuf::from(config_path).parent().unwrap())
-    }
-
-    pub fn canonicalize(self, base_dir: &Path) -> Config {
-        let canon_dir = |sub_path: &str| {
-            let mut path = PathBuf::from(base_dir);
-            path.push(sub_path);
-            path.into_os_string().into_string().unwrap()
-        };
-
-        Config {
-            rust: ConfigRust {
-                crate_dir: canon_dir(&self.rust.crate_dir),
-                api_path: canon_dir(&self.rust.api_path),
-                wire_path: canon_dir(&self.rust.wire_path),
-            },
-            dart: ConfigDart {
-                api_class_name: self.dart.api_class_name,
-                wire_class_name: self.dart.wire_class_name,
-                api_path: canon_dir(&self.dart.api_path),
-                wire_path: canon_dir(&self.dart.wire_path),
-                format_line_length: self.dart.format_line_length,
-            },
-            c: ConfigC {
-                wire_path: canon_dir(&self.c.wire_path),
-            },
-        }
-    }
-}
-
-/// "wire" := the things that are really passed through via C ABI (this name is similar to how Protobuf name things)
-/// "api" := the interface that you, as a user, should use.
 #[derive(Debug, PartialEq, Deserialize)]
 pub struct ConfigRust {
     pub crate_dir: String,
