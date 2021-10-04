@@ -15,12 +15,19 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Build codegen
       working-directory: ./frb_codegen
       run: cargo build --verbose
     - name: Run tests for codegen
       working-directory: ./frb_codegen
+      run: cargo test --verbose
+
+    - name: Build rust runtime
+      working-directory: ./frb_rust
+      run: cargo build --verbose
+    - name: Run tests for rust runtime
+      working-directory: ./frb_rust
       run: cargo test --verbose
 
     - name: Build example
