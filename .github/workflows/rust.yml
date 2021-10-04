@@ -12,9 +12,20 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v2
-    - name: Build
+    
+    - name: Build codegen
+      working-directory: ./frb_codegen
       run: cargo build --verbose
-    - name: Run tests
+    - name: Run tests for codegen
+      working-directory: ./frb_codegen
+      run: cargo test --verbose
+
+    - name: Build example
+      working-directory: ./frb_example/frb_example_rust
+      run: cargo build --verbose
+    - name: Run tests for example
+      working-directory: ./frb_example/frb_example_rust
       run: cargo test --verbose
