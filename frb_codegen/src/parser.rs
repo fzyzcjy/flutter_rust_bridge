@@ -213,7 +213,8 @@ impl GenericCapture {
 
     /// e.g. List<Tom> => return Some(Tom)
     pub fn captures(&self, s: &str) -> Option<String> {
-        self.regex.captures(s)
+        self.regex
+            .captures(s)
             .map(|capture| capture.get(1).unwrap().as_str().to_string())
     }
 }
