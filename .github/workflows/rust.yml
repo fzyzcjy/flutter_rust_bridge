@@ -37,6 +37,8 @@ jobs:
       working-directory: ./frb_example/simple/rust
       run: cargo test --verbose
 
+    - uses: dart-lang/setup-dart@v1
+
     - name: Run codegen to frb_example/simple
       working-directory: ./frb_codegen
       run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen ../frb_example/simple/rust/flutter_rust_bridge.yaml
