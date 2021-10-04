@@ -1,0 +1,193 @@
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   fun:start_thread
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   fun:start_thread
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:start_thread
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:start_thread
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:start_thread
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:start_thread
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:start_thread
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Free
+   fun:free
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   obj:*main.exe
+   fun:(below main)
+}
