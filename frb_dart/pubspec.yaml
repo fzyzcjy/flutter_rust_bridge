@@ -1,7 +1,6 @@
-name: dart_rust_bridge
-description: dart rust bridge
+name: flutter_rust_bridge
+description: High-level memory-safe bindgen for Dart/Flutter <-> Rust
 version: 1.0.0
-publish_to: none
 environment:
   sdk: '>=2.14.0 <3.0.0'
 dependencies:

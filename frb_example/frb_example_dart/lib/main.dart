@@ -1,16 +1,16 @@
 import 'dart:ffi';
 import 'dart:typed_data';
 
-import 'package:dart_rust_bridge/dart_rust_bridge.dart';
-import 'package:dart_rust_bridge_example/generated_api.dart';
-import 'package:dart_rust_bridge_example/generated_wire.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge_example/generated_api.dart';
+import 'package:flutter_rust_bridge_example/generated_wire.dart';
 import 'package:test/test.dart';
 
 void main(List<String> args) async {
   test('main test', () async {
     final dylibPath = args[0];
 
-    print('dart_rust_bridge example program start (dylibPath=$dylibPath)');
+    print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
 
     print('construct api');
     final dylib = DynamicLibrary.open(dylibPath);
@@ -114,7 +114,7 @@ void main(List<String> args) async {
       obj = await api.handleComplexStruct(s: obj);
     }
 
-    print('dart_rust_bridge example program end');
+    print('flutter_rust_bridge example program end');
   });
 }
 

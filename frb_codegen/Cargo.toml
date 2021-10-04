@@ -1,9 +1,7 @@
 [package]
-name = "dart_rust_bridge_codegen"
+name = "flutter_rust_bridge_codegen"
 version = "0.1.0"
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 syn = { version = "1.0.77", features = ["full", "extra-traits"] }

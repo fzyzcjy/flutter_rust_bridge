@@ -29,7 +29,7 @@ pub fn modify_dart_wire_content(dart_wire_path: &str, dart_wire_class_name: &str
     let content_modified = content_raw.replace(
         &format!("class {} {{", dart_wire_class_name),
         &format!(
-            "import 'package:dart_rust_bridge/dart_rust_bridge.dart';
+            "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
             class {} implements DartRustBridgeWireBase {{",
             dart_wire_class_name
         ),

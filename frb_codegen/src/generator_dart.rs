@@ -51,7 +51,7 @@ pub fn generate(
         import 'dart:ffi' as ffi;
         import 'dart:typed_data';
 
-        import 'package:dart_rust_bridge/dart_rust_bridge.dart';
+        import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
         import '{}';
 

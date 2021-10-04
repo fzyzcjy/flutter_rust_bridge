@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
 
-import 'package:dart_rust_bridge/src/utils.dart';
+import 'package:flutter_rust_bridge/src/utils.dart';
 import 'package:meta/meta.dart';
 
 final _instances = <Type>{};
