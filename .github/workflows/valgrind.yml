@@ -27,4 +27,4 @@ jobs:
 
       - name: Run valgrind script
         working-directory: ./frb_example/simple/dart
-        run: ./run.sh
+        run: chmod +x ./run.sh && ./run.sh
