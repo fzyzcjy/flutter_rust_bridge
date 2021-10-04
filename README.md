@@ -48,9 +48,11 @@ An example is also provided [in the example directory](https://github.com/fzyzcj
 
 ## Safety
 
-This library has CI that runs Valgrind automatically for FFI calls, so memory problems should be found by Valgrind.
+This library has CI that runs [Valgrind](https://www.valgrind.org/) automatically for FFI calls, so memory problems should be found by Valgrind.
 
 Most of the code are written in safe Rust. The `unsafe` code mainly comes from `support::box_from_leak_ptr` and `support::vec_from_leak_ptr`. They are used for pointers and arrays, and I follow the high-upvoted answers and official doc when writing down that few lines of code.
+
+The CI also runs formatters and linters (`fmt`, `clippy`, `dart analyze`, `dart format`), and linters can also catch some common problems.
 
 ## Future work
 
