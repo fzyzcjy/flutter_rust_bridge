@@ -217,16 +217,16 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 String::from_utf8_lossy(&vec).into_owned()"
                 .to_string(),
         },
-        PrimitiveList(_) => "unsafe {{
+        PrimitiveList(_) => "unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-            }}
+            }
             "
         .to_string(),
-        GeneralList(_) => "let vec = unsafe {{
+        GeneralList(_) => "let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-            }};
+            };
             vec.into_iter().map(|x| x.wire2api()).collect()
             "
         .to_string(),
