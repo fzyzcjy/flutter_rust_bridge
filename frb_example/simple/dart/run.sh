@@ -7,7 +7,7 @@ if [[ -z "${CARGO_TARGET_DIR}" ]]; then
   exit 1
 fi
 
-(cd ../dart_rust_bridge_example_rust && cargo build)
+(cd ../rust && cargo build --verbose)
 
 # dart pub get
 
@@ -15,5 +15,6 @@ fi
 dart compile exe lib/main.dart -o main.exe
 
 # some configurations ref: https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
-echo 'Please look at valgrind.log to see valgrind outputs!'
-valgrind --leak-check=full --trace-children=yes --ignore-ranges=0x000-0xFFF --log-file=valgrind.log ./main.exe "${CARGO_TARGET_DIR}/debug/libdart_rust_bridge_example.so" --observe
+# --log-file=valgrind.log # you can add this
+valgrind --leak-check=full --trace-children=yes --ignore-ranges=0x000-0xFFF --error-exitcode=1 \
+  ./main.exe "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example.so"
