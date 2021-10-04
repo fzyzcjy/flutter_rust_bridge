@@ -47,10 +47,10 @@ pub fn handle_newtype(arg: NewTypeInt) -> Result<NewTypeInt> {
     Ok(NewTypeInt(arg.0 * 2))
 }
 
-pub fn handle_list_of_struct(l: Vec<MySize>) -> Result<Vec<MySize>> {
+pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Result<Vec<MySize>> {
     println!("handle_list_of_struct({:?})", &l);
     let mut ans = l.clone();
-    ans.append(&mut l.clone());
+    ans.append(&mut l);
     Ok(ans)
 }
 
@@ -63,7 +63,8 @@ pub struct MyTreeNode {
 
 pub fn handle_complex_struct(s: MyTreeNode) -> Result<MyTreeNode> {
     println!("handle_complex_struct({:?})", &s);
-    Ok(s.clone())
+    let s_cloned = s.clone();
+    Ok(s)
 }
 
 pub fn return_err() -> Result<i32> {

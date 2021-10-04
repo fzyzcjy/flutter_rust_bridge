@@ -35,7 +35,7 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
         .collect::<Vec<_>>();
 
     format!(
-        "#![allow(non_camel_case_types)]
+        "#![allow(non_camel_case_types, clippy::redundant_closure, clippy::useless_conversion)]
         {}
 
         use crate::{}::*;
