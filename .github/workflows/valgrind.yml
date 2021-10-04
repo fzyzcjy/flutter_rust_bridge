@@ -22,6 +22,10 @@ jobs:
           profile: minimal
           toolchain: stable
 
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
       - name: Install valgrind
         run: sudo apt install -y valgrind
 
