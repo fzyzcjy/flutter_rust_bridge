@@ -21,17 +21,17 @@ What you write down (in Rust).
 
 ```Rust
 pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Something> {
-    Ok(... do my heavy computations ...)
+    ... do my heavy computations ...
 }
 
 // you can use structs (even recursive)
 pub struct TreeNode { pub value: i32, pub children: Vec<MyTreeNode> }
 ```
 
-We will generate the bindings. Then you only need to use the following generated API in Dart/Flutter. Nothing more.
+We will generate the bindings. Then you only need to use the following generated API in Dart/Flutter. Nothing more. It looks exactly like a normal Dart/Flutter function.
 
 ```Dart
-Future<Something> myFunction({required MyTreeNode a, required SomeOtherStruct b}) async { ... auto generated implementation ... }
+Future<Something> myFunction(MyTreeNode a, SomeOtherStruct b);
 ```
 
 ## Quickstart
