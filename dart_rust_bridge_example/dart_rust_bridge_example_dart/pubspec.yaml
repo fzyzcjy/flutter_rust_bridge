@@ -1,0 +1,14 @@
+name: dart_rust_bridge_example
+description: dart rust bridge example
+version: 1.0.0
+publish_to: none
+environment:
+  sdk: '>=2.14.0 <3.0.0'
+dependencies:
+  meta: ^1.3.0
+  lints: ^1.0.1
+  dart_rust_bridge:
+    path: ../../dart_rust_bridge_dart
+  test: ^1.18.2
+  vm_service: ^7.3.0
+dev_dependencies:

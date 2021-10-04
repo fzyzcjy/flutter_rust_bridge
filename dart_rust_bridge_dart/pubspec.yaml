@@ -1,0 +1,11 @@
+name: dart_rust_bridge
+description: dart rust bridge
+version: 1.0.0
+publish_to: none
+environment:
+  sdk: '>=2.14.0 <3.0.0'
+dependencies:
+  meta: ^1.3.0
+  lints: ^1.0.1
+dev_dependencies:
+  test: ^1.16.8
