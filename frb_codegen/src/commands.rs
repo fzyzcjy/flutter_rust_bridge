@@ -32,10 +32,10 @@ fn cbindgen(rust_crate_dir: &str, c_output_path: &str) {
         rust_crate_dir, c_output_path
     );
 
-    let config = format!("language = \"C\"");
+    let config = "language = \"C\"".to_string();
 
     let mut config_file = tempfile::NamedTempFile::new().unwrap();
-    config_file.write(config.as_bytes()).unwrap();
+    config_file.write_all(config.as_bytes()).unwrap();
     debug!("cbindgen config_file={:?}", config_file);
 
     execute_command(
@@ -69,7 +69,7 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
     );
 
     let mut config_file = tempfile::NamedTempFile::new().unwrap();
-    config_file.write(config.as_bytes()).unwrap();
+    config_file.write_all(config.as_bytes()).unwrap();
 
     // NOTE please install ffigen globally first: `dart pub global activate ffigen`
     execute_command(

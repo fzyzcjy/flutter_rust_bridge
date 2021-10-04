@@ -218,31 +218,23 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 .to_string(),
         },
         PrimitiveList(_) => {
-            format!(
-                "
-                unsafe {{
-                    let wrap = support::box_from_leak_ptr(self);
-                    support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-                }}
-                "
-            )
+            "unsafe {{
+                let wrap = support::box_from_leak_ptr(self);
+                support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+            }}
+            ".to_string()
         }
         GeneralList(_) => {
-            format!(
-                "
-                let vec = unsafe {{
-                    let wrap = support::box_from_leak_ptr(self);
-                    support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-                }};
-                vec.into_iter().map(|x| x.wire2api()).collect()
-                "
-            )
+            "let vec = unsafe {{
+                let wrap = support::box_from_leak_ptr(self);
+                support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+            }};
+            vec.into_iter().map(|x| x.wire2api()).collect()
+            ".to_string()
         }
         Boxed(_) => {
-            format!(
-                "let wrap = unsafe {{ support::box_from_leak_ptr(self) }};
-                (*wrap).wire2api().into()"
-            )
+            "let wrap = unsafe { support::box_from_leak_ptr(self) };
+            (*wrap).wire2api().into()".to_string()
         }
         StructRef(struct_ref) => {
             let api_struct = struct_ref.get(api_file);
@@ -306,7 +298,7 @@ fn generate_new_with_nullptr_func(ty: &ApiType, api_file: &ApiFile) -> String {
             .collect::<Vec<_>>()
             .join("\n"),
         Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
-            return String::new()
+            return String::new();
         }
     };
 

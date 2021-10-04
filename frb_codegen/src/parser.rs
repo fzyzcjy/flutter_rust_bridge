@@ -7,7 +7,6 @@ use std::collections::{HashMap, HashSet};
 use std::string::String;
 use syn::*;
 use ApiType::*;
-use Item;
 
 type StructMap<'a> = HashMap<String, &'a ItemStruct>;
 
@@ -152,7 +151,7 @@ impl<'a> Parser<'a> {
             let field_name = field
                 .ident
                 .as_ref()
-                .map_or(format!("field{}", idx), |id| ident_to_string(&id));
+                .map_or(format!("field{}", idx), |id| ident_to_string(id));
             let field_type_str = type_to_string(&field.ty);
             let field_type = self.parse_type(&field_type_str);
             fields.push(ApiField {
@@ -214,10 +213,7 @@ impl GenericCapture {
 
     /// e.g. List<Tom> => return Some(Tom)
     pub fn captures(&self, s: &str) -> Option<String> {
-        if let Some(capture) = self.regex.captures(s) {
-            Some(capture.get(1).unwrap().as_str().to_string())
-        } else {
-            None
-        }
+        self.regex.captures(s)
+            .map(|capture| capture.get(1).unwrap().as_str().to_string())
     }
 }

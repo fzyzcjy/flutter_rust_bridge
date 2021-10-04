@@ -18,7 +18,8 @@ pub fn new_leak_vec_ptr<T: Clone>(fill: T, length: i32) -> *mut T {
     ptr
 }
 
-// paired with [new_leak_vec_ptr]
+/// # Safety
+/// Use it in pair with [new_leak_vec_ptr].
 pub unsafe fn vec_from_leak_ptr<T>(ptr: *mut T, len: i32) -> Vec<T> {
     Vec::from_raw_parts(ptr, len as usize, len as usize)
 }
@@ -29,7 +30,8 @@ pub fn new_leak_box_ptr<T>(t: T) -> *mut T {
     Box::into_raw(x)
 }
 
-// paired with [new_leak_box_ptr]
+/// # Safety
+/// Use it in pair with [new_leak_box_ptr].
 pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
 }

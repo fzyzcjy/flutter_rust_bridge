@@ -15,7 +15,7 @@ pub fn parse_command_line_args() -> String {
 
 // NOTE [DartPostCObjectFnType] was originally [*mut DartCObject] but I changed it to [*mut c_void]
 // because cannot automatically generate things related to [DartCObject]. Anyway this works fine.
-pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &'static str = r#"
+pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     // ----------- DUMMY CODE FOR BINDGEN ----------
     
     // copied from: allo-isolate

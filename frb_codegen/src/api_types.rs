@@ -226,11 +226,11 @@ impl ApiTypeChild for ApiTypePrimitive {
     }
 
     fn dart_wire_type(&self) -> String {
-        return self.dart_api_type();
+        self.dart_api_type()
     }
 
     fn rust_api_type(&self) -> String {
-        return self.rust_wire_type();
+        self.rust_wire_type()
     }
 
     fn rust_wire_type(&self) -> String {
