@@ -20,6 +20,10 @@ jobs:
       - name: Install dart global dependency
         run: dart pub global activate ffigen
 
+      # needed by `ffigen` https://github.com/dart-lang/ffigen
+      - name: Install llvm dependency
+        run: sudo apt-get install -y libclang-dev
+
       - name: Run codegen to frb_example/simple
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen ../frb_example/simple/rust/flutter_rust_bridge.yaml
