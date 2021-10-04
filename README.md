@@ -44,6 +44,12 @@ For all keys and their meanings of the configuration yaml (`dart_rust_bridge.yam
 
 An example is also provided [in the example directory](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/frb_example_rust/dart_rust_bridge.yaml).
 
+## Safety
+
+This library has CI that runs Valgrind automatically for FFI calls, so memory problems should be found by Valgrind.
+
+Most of the code are written in safe Rust. The `unsafe` code mainly comes from `support::box_from_leak_ptr` and `support::vec_from_leak_ptr`. They are used for pointers and arrays, and I follow the high-upvoted answers and official doc when writing down that few lines of code.
+
 ## Future work
 
 I plan to support the following features. Of course, if you want to have other features, feel free to make an issue or PR.
