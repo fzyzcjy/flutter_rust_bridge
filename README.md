@@ -2,9 +2,11 @@
 [![Documentation](https://docs.rs/dart_rust_bridge/badge.svg)](https://docs.rs/flutter_rust_bridge)
 [![Rust Package](https://img.shields.io/crates/v/dart_rust_bridge.svg)](https://crates.io/crates/flutter_rust_bridge)
 [![Flutter Package](https://img.shields.io/pub/v/dart_rust_bridge.svg)](https://pub.dev/packages/flutter_rust_bridge)
+[![Valgrind](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/valgrind.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/valgrind.yml)
 [![Rust](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/rust.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/rust.yml)
 [![Lints](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml)
 [![Dart](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/dart.yml/badge.svg?branch=master)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/dart.yml)
+[![Run codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml)
 
 ## Advantages
 
