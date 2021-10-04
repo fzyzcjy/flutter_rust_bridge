@@ -1,0 +1,11 @@
+rust:
+  crate_dir: .
+  api_path: src/api.rs
+  wire_path: src/generated_wire.rs
+dart:
+  api_class_name: ExampleApi
+  wire_class_name: ExampleWire
+  api_path: ../frb_example_dart/lib/generated_api.dart
+  wire_path: ../frb_example_dart/lib/generated_wire.dart
+c:
+  wire_path: ../frb_example_dart/binding.h

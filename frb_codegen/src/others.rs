@@ -1,12 +1,13 @@
 use crate::config::*;
 use std::{env, fs};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 pub fn parse_command_line_args() -> String {
     let mut args = env::args();
     let _ = args.next().unwrap(); // executable name
     let config_path = args.next().expect(
-        "Please provide command line argument which is the path to your configuration file",
+        "Invalid usage of this command. Please provide path to config.yaml as your argument. \
+        Example: `/path/to/this/binary /path/to/your/flutter_rust_bridge.yaml`",
     );
     println!("Use config file at: {}", config_path);
     config_path

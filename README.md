@@ -51,6 +51,7 @@ I plan to support the following features. Of course, if you want to have other f
 * Support `async` in Rust (currently only `async` in Dart). Should be quite easy to implement; I have not done it because my use case currently does not includ that, but feel free to PR.
 * Support [`Stream`](https://dart.dev/tutorials/language/streams)s, which is a powerful abstraction. Should also be easy to implement.
 * Beautify the generated code, possibly making the cases (camel/snake/...) consistent with the language guide.
+* Make the code generator more robust to invalid inputs.
 
 ## Advanced
 
