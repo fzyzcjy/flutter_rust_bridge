@@ -1,0 +1,30 @@
+name: Run codegen
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dart global dependency
+        run: dart pub global activate ffigen
+
+      - name: Run codegen to frb_example/simple
+        working-directory: ./frb_codegen
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen ../frb_example/simple/rust/flutter_rust_bridge.yaml
+        env:
+          RUST_LOG: debug
+
+      - name: 'Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)'
+        run: git diff --exit-code
