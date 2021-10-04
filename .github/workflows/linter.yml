@@ -23,39 +23,39 @@ jobs:
 
       - name: Run fmt for codegen
         uses: actions-rs/cargo@v1
-        working-directory: ./frb_codegen
         with:
+          working-directory: ./frb_codegen
           command: fmt
           args: --all -- --check
       - name: Run clippy for codegen
         uses: actions-rs/cargo@v1
-        working-directory: ./frb_codegen
         with:
+          working-directory: ./frb_codegen
           command: clippy
           args: -- -D warnings
 
       - name: Run fmt for rust runtime
         uses: actions-rs/cargo@v1
-        working-directory: ./frb_rust
         with:
+          working-directory: ./frb_rust
           command: fmt
           args: --all -- --check
       - name: Run clippy for rust runtime
         uses: actions-rs/cargo@v1
-        working-directory: ./frb_rust
         with:
+          working-directory: ./frb_rust
           command: clippy
           args: -- -D warnings
 
       - name: Run fmt for example
         uses: actions-rs/cargo@v1
-        working-directory: ./frb_example/frb_example_rust
         with:
+          working-directory: ./frb_example/frb_example_rust
           command: fmt
           args: --all -- --check
       - name: Run clippy for example
         uses: actions-rs/cargo@v1
-        working-directory: ./frb_example/frb_example_rust
         with:
+          working-directory: ./frb_example/frb_example_rust
           command: clippy
           args: -- -D warnings
