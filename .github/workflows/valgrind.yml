@@ -37,6 +37,6 @@ jobs:
 
       - name: Run valgrind script
         working-directory: ./frb_example/simple/dart
-        run: chmod +x ./run.sh && ./run.sh
+        run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
         env:
           CARGO_TARGET_DIR: .
