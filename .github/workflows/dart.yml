@@ -24,7 +24,7 @@ jobs:
         run: dart pub get
       - name: Verify formatting for example
         working-directory: ./frb_example/simple/dart
-        run: dart format --output=none --set-exit-if-changed .
+        run: dart format --output=none --set-exit-if-changed --line-length 120 .
       - name: Analyze project source for example
         working-directory: ./frb_example/simple/dart
         run: dart analyze --fatal-infos
@@ -34,7 +34,7 @@ jobs:
         run: dart pub get
       - name: Verify formatting for dart runtime
         working-directory: ./frb_dart
-        run: dart format --output=none --set-exit-if-changed .
+        run: dart format --output=none --set-exit-if-changed --line-length 120 .
       - name: Analyze project source for dart runtime
         working-directory: ./frb_dart
         run: dart analyze --fatal-infos

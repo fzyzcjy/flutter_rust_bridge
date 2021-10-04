@@ -7,5 +7,6 @@ dart:
   wire_class_name: ExampleWire
   api_path: ../frb_example_dart/lib/generated_api.dart
   wire_path: ../frb_example_dart/lib/generated_wire.dart
+  format_line_length: 120
 c:
   wire_path: ../frb_example_dart/binding.h
