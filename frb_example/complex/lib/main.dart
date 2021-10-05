@@ -39,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
       Platform.isAndroid ? DynamicLibrary.open('libflutter_rust_bridge_example.so') : DynamicLibrary.process();
   late final api = ExampleApi(ExampleWire(dylib));
 
-  double scale = 1.0;
   Uint8List? exampleImage;
   String? exampleText;
 
@@ -80,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _callExampleFfiOne() async {
     final receivedImage = await api.drawMandelbrot(
-        imageSize: Size(width: 50, height: 50), zoomPoint: examplePoint, scale: scale *= 0.5, numThreads: 4);
+        imageSize: Size(width: 50, height: 50), zoomPoint: examplePoint, scale: generateScale(), numThreads: 4);
     setState(() => exampleImage = receivedImage);
   }
 

@@ -71,3 +71,11 @@ class _AnimatedReplaceableImageState extends State<AnimatedReplaceableImage> {
     );
   }
 }
+
+double _scale = 1.0;
+
+double generateScale() {
+  _scale *= 0.5;
+  if (_scale < 0.01) _scale = 1.0;
+  return _scale;
+}
