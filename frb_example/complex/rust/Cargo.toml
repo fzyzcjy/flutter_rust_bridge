@@ -3,7 +3,9 @@ name = "flutter_rust_bridge_example"
 version = "0.1.0"
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "flutter_rust_bridge_example"
+crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = { version = "1.0.44", features = ["backtrace"] }

@@ -95,6 +95,10 @@ Same as the section in Quickstart. Simply run that binary.
 
 [WIP]
 
+## What this library is & isn't
+
+This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, you may refer to external materials to learn Flutter, learn Rust, learn [Flutter FFI](https://flutter.dev/docs/development/platform-integration/c-interop) (Dart FFI) and so on. With material on the Internet, you will know how to create a mobile application using Flutter, and how that app can call Rust functions via Dart FFI (in the C ABI). Then this package comes in, and ease you from the burden to write down tons of boilerplate code ;)
+
 ## Set up Flutter/Dart+Rust support
 
 I suggest that you can start with the [Flutter example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/complex) first, and modify it to satisfy your needs. It can serve as a template for new projects. It is run against CI [WIP] so we are sure it works.
