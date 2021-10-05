@@ -38,7 +38,7 @@ We will generate the bindings. Then you only need to use the following generated
 Future<Something> myFunction(MyTreeNode a, SomeOtherStruct b);
 ```
 
-<small>**Remark**: Why `Future` in Flutter: Flutter is single-threaded. If not using future, just like what you do with plain-old Flutter bindings, your UI will be *stuck* as long as your Rust code is executing. If your Rust code run for a second, your UI will fully freeze for one second.</small> 
+<sub>**Remark**: Why `Future` in Flutter: Flutter is single-threaded. If not using future, just like what you do with plain-old Flutter bindings, your UI will be *stuck* as long as your Rust code is executing. If your Rust code run for a second, your UI will fully freeze for one second.</sub> 
 
 ## Quickstart
 
