@@ -5,6 +5,8 @@
 #![warn(rust_2018_idioms)]
 #![allow(elided_lifetimes_in_paths)]
 
+use crate::api::*;
+
 use num::Complex;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
@@ -105,19 +107,19 @@ use std::sync::Mutex;
 use std::env;
 use std::io::Error;
 
-pub fn draw_mandelbrot(image_width: usize, image_height: usize, left: f64, top: f64, right: f64, bottom: f64, threads: i32) -> Result<Vec<u8>, Error> {
-    let bounds = (image_width, image_height);
-    let upper_left = Complex::new(left, top);
-    let lower_right = Complex::new(right, bottom);
+pub fn mandelbrot(image_size: Size, left_top: Point, right_bottom: Point, num_threads: i32) -> Result<Vec<u8>, Error> {
+    let bounds = (image_size.width as usize, image_size.height as usize);
+    let upper_left = Complex::new(left_top.x, left_top.y);
+    let lower_right = Complex::new(right_bottom.x, right_bottom.y);
 
     let mut pixels = vec![0; bounds.0 * bounds.1];
 
-    let band_rows = bounds.1 / threads + 1;
+    let band_rows = bounds.1 / num_threads + 1;
 
     {
         let bands = Mutex::new(pixels.chunks_mut(band_rows * bounds.0).enumerate());
         crossbeam::scope(|scope| {
-            for _ in 0..threads {
+            for _ in 0..num_threads {
                 scope.spawn(|_| {
                     loop {
                         match {
@@ -144,4 +146,17 @@ pub fn draw_mandelbrot(image_width: usize, image_height: usize, left: f64, top: 
     }
 
     write_image(&pixels, bounds)
+}
+
+pub fn tree_preorder_traversal(root: TreeNode) -> Vec<String> {
+    let mut ans = Vec::new();
+    tree_preorder_traversal_core(root, &mut ans);
+    ans
+}
+
+fn tree_preorder_traversal_core(node: TreeNode, dst: &mut Vec<String>) {
+    dst.push(node.name);
+    for child in node.children {
+        tree_preorder_traversal_core(child, dst);
+    }
 }
