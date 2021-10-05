@@ -49,19 +49,33 @@ Please [install Flutter](https://flutter.dev/docs/get-started/install), [install
 
 Or you can use your own code (if you find this Quickstart section too brief, have a look at the later Usage section).
 
-### Run code generator
+### (Optional) Run code generator
+
+Remark: I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.
 
 Install it: `cargo install flutter_rust_bridge_codegen`.
 
 Run it: `flutter_rust_bridge_codegen frb_example/complex/rust/flutter_rust_bridge.yaml` (the argument is the path to the configuration file).
 
-In quickstart, since I have generated the source code, you should not see anything changed.
+### Run "Flutter+Rust" app
 
-### Run Flutter app
+Since my quickstart app is so baremetal, I do not integrate the Rust building process into Flutter building process (but definitely you can do that).
+
+#### If Android
+
+Run `cargo ndk -o ../android/app/src/main/jniLibs build`.
+
+Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
+
+#### If iOS
 
 [WIP]
 
-### Want to see more types that this library can generate?
+Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
+
+(Again, this is baremetal example so it is done manually. For your project, you can automate it.)
+
+### (Optional) See more types that this library can generate
 
 Have a look at the function arguments and return types in this file: [api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs). With this library, we have a generated API that resides at [generated_api.dart](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/dart/lib/generated_api.dart) (of course, that is auto generated, and you can use it in other Dart code).
 
