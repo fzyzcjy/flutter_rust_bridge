@@ -1,4 +1,4 @@
-## High-level memory-safe bindgen for Flutter/Dart -> Rust
+## Flutter Rust Bridge
 
 **For most up-to-date documentation, please visit: https://github.com/fzyzcjy/flutter_rust_bridge**
 
