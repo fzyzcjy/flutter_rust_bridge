@@ -105,9 +105,9 @@ Dark SDK `>=2.14.0` is needed by the latest version of the `ffigen` tool. Theref
 
 Same as the section in Quickstart. Simply run that binary.
 
-### Run Flutter app
+### Run "Flutter+Rust" app
 
-[WIP]
+Same as the section in Quickstart. Simply build the Rust code (possibly integrated into the build process of Flutter), and run the Flutter app.
 
 ## What this library is & isn't
 
