@@ -44,25 +44,27 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ### Get example code
 
-Of course, please [install Flutter](https://flutter.dev/docs/get-started/install), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/complex` to get my example.
+Please [install Flutter](https://flutter.dev/docs/get-started/install), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/complex` to get my example.
 
 Or you can use your own code (if you find this Quickstart section too brief, have a look at the later Usage section).
 
 ### Run code generator
 
-[WIP should explain this after I publish the codegen package]
+Install it: `cargo install flutter_rust_bridge_codegen`.
 
-[WIP later parts]
+Run it: `flutter_rust_bridge_codegen frb_example/complex/rust/flutter_rust_bridge.yaml` (the argument is the path to the configuration file).
+
+In quickstart, since I have generated the source code, you should not see anything changed.
+
+### Run Flutter app
+
+[WIP]
 
 ### Want to see more types that this library can generate?
 
 Have a look at the function arguments and return types in this file: [api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs). With this library, we have a generated API that resides at [generated_api.dart](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/dart/lib/generated_api.dart) (of course, that is auto generated, and you can use it in other Dart code).
 
-### Optional: How is this Flutter example created?
-
-[WIP]
-
-## Usage
+## Usage in details
 
 ### Configuration
 
@@ -72,9 +74,15 @@ An example is provided [in the example directory](https://github.com/fzyzcjy/flu
 
 For all keys and their meanings of the configuration yaml (`flutter_rust_bridge.yaml`), please refer to [its source code](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_codegen/src/config.rs).
 
+### Add a line of code
+
+Please put `mod generated_wire;` (where `generated_wire` is the name of the wire file that you choose) into your `lib.rs` or `main.rs`. Only by doing this, Rust can understand that this generated file is a part of your project.
+
 ### Run code generator
 
-[WIP should explain this after I publish the codegen package]
+Same as the section in Quickstart. Simply run that binary.
+
+### Run the app
 
 [WIP later parts]
 
