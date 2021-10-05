@@ -15,10 +15,10 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
   ExampleApi(ExampleWire inner) : super(inner);
 
   Future<Uint8List> drawMandelbrot(
-      {required Size imageSize, required Point rightBottom, required int numThreads}) async {
+      {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
     return execute(
         (port) => inner.wire_draw_mandelbrot(port, _api2wire_box_autoadd_size(imageSize),
-            _api2wire_box_autoadd_point(rightBottom), _api2wire_i32(numThreads)),
+            _api2wire_box_autoadd_point(zoomPoint), _api2wire_f64(scale), _api2wire_i32(numThreads)),
         _wire2api_ZeroCopyBuffer_Uint8List);
   }
 

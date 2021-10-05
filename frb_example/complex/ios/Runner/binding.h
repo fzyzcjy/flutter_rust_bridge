@@ -34,7 +34,8 @@ typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
 
 void wire_draw_mandelbrot(int64_t port,
                           struct wire_Size *image_size,
-                          struct wire_Point *right_bottom,
+                          struct wire_Point *zoom_point,
+                          double scale,
                           int32_t num_threads);
 
 void wire_tree_traversal(int64_t port, struct wire_TreeNode *root);

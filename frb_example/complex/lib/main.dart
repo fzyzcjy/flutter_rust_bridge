@@ -100,6 +100,10 @@ class _MyHomePageState extends State<MyHomePage> {
     final receivedText = await api.treeTraversal(root: _createExampleTree());
     setState(() => exampleText = receivedText);
 
+    final zoomPoint = Point(
+        x: 0.3602404434376143632361252444495453084826078079585857504883758147401953460592181003117529367227734263962337317297249877373200353726832853176645324012185215795,
+        y: -0.6413130610648031748603750151793020665794949522823052595561775430644485741727536902556370230689681162370740565537072149790106973211105273740851993394803287437606238596262);
+
     final receivedImage = await api.drawMandelbrot(
         imageSize: Size(width: 200, height: 200), rightBottom: Point(x: randomValue, y: randomValue), numThreads: 4);
     setState(() => exampleImage = receivedImage);
