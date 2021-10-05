@@ -46,7 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(milliseconds: 500), (timer) => _callExampleFfi());
+    Timer.periodic(const Duration(milliseconds: 500), (timer) => _callExampleFfiOne());
+    _callExampleFfiTwo();
   }
 
   @override
@@ -70,18 +71,20 @@ class _MyHomePageState extends State<MyHomePage> {
           buildCardUi(
             'Example 2',
             'Complex struct/class is passed smoothly through FFI',
-            Text(exampleText ?? ''),
+            Text(exampleText ?? '', style: const TextStyle(fontSize: 11, color: Colors.grey)),
           ),
         ],
       ),
     );
   }
 
-  Future<void> _callExampleFfi() async {
+  Future<void> _callExampleFfiOne() async {
     final receivedImage = await api.drawMandelbrot(
         imageSize: Size(width: 50, height: 50), zoomPoint: examplePoint, scale: scale *= 0.5, numThreads: 4);
     setState(() => exampleImage = receivedImage);
+  }
 
+  Future<void> _callExampleFfiTwo() async {
     final receivedText = await api.passingComplexStructs(root: createExampleTree());
     setState(() => exampleText = receivedText);
   }
