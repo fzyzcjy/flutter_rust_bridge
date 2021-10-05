@@ -274,9 +274,9 @@ impl ApiTypeDelegate {
             ApiTypeDelegate::String => ApiType::PrimitiveList(ApiTypePrimitiveList {
                 primitive: ApiTypePrimitive::U8,
             }),
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => ApiType::PrimitiveList(ApiTypePrimitiveList{
-                primitive: ApiTypePrimitive::U8
-            })
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => ApiType::PrimitiveList(ApiTypePrimitiveList {
+                primitive: ApiTypePrimitive::U8,
+            }),
         }
     }
 }
