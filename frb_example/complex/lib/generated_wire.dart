@@ -42,20 +42,21 @@ class ExampleWire implements DartRustBridgeWireBase {
   late final _wire_draw_mandelbrot = _wire_draw_mandelbrotPtr
       .asFunction<void Function(int, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, double, int)>();
 
-  void wire_tree_traversal(
+  void wire_passing_complex_structs(
     int port,
     ffi.Pointer<wire_TreeNode> root,
   ) {
-    return _wire_tree_traversal(
+    return _wire_passing_complex_structs(
       port,
       root,
     );
   }
 
-  late final _wire_tree_traversalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>('wire_tree_traversal');
-  late final _wire_tree_traversal =
-      _wire_tree_traversalPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
+  late final _wire_passing_complex_structsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>(
+          'wire_passing_complex_structs');
+  late final _wire_passing_complex_structs =
+      _wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
 
   ffi.Pointer<wire_Size> new_box_autoadd_size() {
     return _new_box_autoadd_size();

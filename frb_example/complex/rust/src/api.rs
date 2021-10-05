@@ -13,9 +13,8 @@ pub fn draw_mandelbrot(image_size: Size, zoom_point: Point, scale: f64, num_thre
     Ok(ZeroCopyBuffer(image))
 }
 
-pub fn tree_traversal(root: TreeNode) -> Result<String> {
-    // Just an example of running "complicated" algorithms ;)
-    Ok(crate::algorithms::tree_preorder_traversal(root).join(","))
+pub fn passing_complex_structs(root: TreeNode) -> Result<String> {
+    Ok(format!("Hi this string is from Rust. I received a complex struct: {:?}", root))
 }
 
 #[derive(Debug, Clone)]

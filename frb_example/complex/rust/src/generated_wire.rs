@@ -29,9 +29,9 @@ pub extern "C" fn wire_draw_mandelbrot(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_tree_traversal(port: i64, root: *mut wire_TreeNode) {
+pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNode) {
     let api_root = root.wire2api();
-    support::wrap_wire_func(port, move || tree_traversal(api_root));
+    support::wrap_wire_func(port, move || passing_complex_structs(api_root));
 }
 
 // Section: wire structs

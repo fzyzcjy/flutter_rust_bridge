@@ -22,8 +22,9 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
         _wire2api_ZeroCopyBuffer_Uint8List);
   }
 
-  Future<String> treeTraversal({required TreeNode root}) async {
-    return execute((port) => inner.wire_tree_traversal(port, _api2wire_box_autoadd_tree_node(root)), _wire2api_String);
+  Future<String> passingComplexStructs({required TreeNode root}) async {
+    return execute(
+        (port) => inner.wire_passing_complex_structs(port, _api2wire_box_autoadd_tree_node(root)), _wire2api_String);
   }
 
   // Section: api2wire

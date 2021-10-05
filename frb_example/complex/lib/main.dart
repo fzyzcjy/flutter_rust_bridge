@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:math';
@@ -45,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _callExampleFfi();
+    Timer.periodic(const Duration(milliseconds: 100), (timer) => _callExampleFfi());
   }
 
   @override
@@ -63,27 +64,23 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           buildCardUi(
             'Example 2',
-            'Complex struct/class is auto passed through FFI and here is the result',
-            Text('Output from Rust: ' + (exampleText ?? '')),
+            'Complex struct/class is passed smoothly through FFI',
+            Text(exampleText ?? ''),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _callExampleFfi(),
-        child: const Icon(Icons.refresh),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
   Future<void> _callExampleFfi() async {
-    final receivedText = await api.treeTraversal(root: createExampleTree());
-    setState(() => exampleText = receivedText);
-
     final receivedImage = await api.drawMandelbrot(
-        imageSize: Size(width: 100, height: 100),
+        imageSize: Size(width: 50, height: 50),
         zoomPoint: examplePoint,
         scale: exp(-Random().nextDouble() * 5),
         numThreads: 4);
     setState(() => exampleImage = receivedImage);
+
+    final receivedText = await api.passingComplexStructs(root: createExampleTree());
+    setState(() => exampleText = receivedText);
   }
 }

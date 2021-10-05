@@ -38,7 +38,7 @@ void wire_draw_mandelbrot(int64_t port,
                           double scale,
                           int32_t num_threads);
 
-void wire_tree_traversal(int64_t port, struct wire_TreeNode *root);
+void wire_passing_complex_structs(int64_t port, struct wire_TreeNode *root);
 
 struct wire_Size *new_box_autoadd_size(void);
 
