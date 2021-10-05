@@ -1,8 +1,7 @@
-name: Rust
+name: Publish
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch: {}
 
 jobs:
   build:
