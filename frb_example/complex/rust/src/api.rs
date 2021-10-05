@@ -9,7 +9,7 @@ pub fn draw_mandelbrot(image_size: Size, left_top: Point, right_bottom: Point, n
 
 pub fn tree_traversal(root: TreeNode) -> Result<String> {
     // Just an example of running "complicated" algorithms ;)
-    crate::algorithms::tree_preorder_traversal(root).join(",")
+    Ok(crate::algorithms::tree_preorder_traversal(root).join(","))
 }
 
 #[derive(Debug, Clone)]

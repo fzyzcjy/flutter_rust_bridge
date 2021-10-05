@@ -2,9 +2,6 @@
 ///! Only for generating beautiful image.
 ///! Copied and modified from https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs
 
-#![warn(rust_2018_idioms)]
-#![allow(elided_lifetimes_in_paths)]
-
 use crate::api::*;
 
 use num::Complex;
@@ -88,7 +85,6 @@ fn render(pixels: &mut [u8],
 
 use image::ColorType;
 use image::png::PNGEncoder;
-use std::fs::File;
 
 /// Write the buffer `pixels`, whose dimensions are given by `bounds`, to the
 /// file named `filename`.
@@ -104,7 +100,6 @@ fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>, std::io
 }
 
 use std::sync::Mutex;
-use std::env;
 use std::io::Error;
 
 pub fn mandelbrot(image_size: Size, left_top: Point, right_bottom: Point, num_threads: i32) -> Result<Vec<u8>, Error> {
@@ -114,7 +109,7 @@ pub fn mandelbrot(image_size: Size, left_top: Point, right_bottom: Point, num_th
 
     let mut pixels = vec![0; bounds.0 * bounds.1];
 
-    let band_rows = bounds.1 / num_threads + 1;
+    let band_rows = bounds.1 / (num_threads as usize) + 1;
 
     {
         let bands = Mutex::new(pixels.chunks_mut(band_rows * bounds.0).enumerate());
