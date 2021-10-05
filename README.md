@@ -21,7 +21,7 @@
 
 ## Show me the code
 
-What you write down (in Rust).
+A very simple example. What you write down (in Rust):
 
 ```Rust
 pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
@@ -42,7 +42,27 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ## Quickstart
 
-[WIP, espeically because currently I only make a Dart example. Should add a Flutter example.]
+### Install
+
+First things first. Please [install Flutter](https://flutter.dev/docs/get-started/install) and have some familiarity with it. [Rust](https://www.rust-lang.org/learn/get-started) is also needed to be installed.
+
+### Checkout example
+
+Run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/complex` to get my example. Or you can use your own code - if you find this Quickstart section too brief, have a look at the later Usage section.
+
+[WIP]
+
+### Want to see more types that this library can generate?
+
+Have a look at the function arguments and return types in this file: [api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs). With this library, we have a generated API that resides at [generated_api.dart](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/dart/lib/generated_api.dart) (of course, that is auto generated, and you can use it in other Dart code).
+
+### How is this Flutter example created?
+
+[WIP]
+
+## Usage
+
+
 
 ## Configurations
 
