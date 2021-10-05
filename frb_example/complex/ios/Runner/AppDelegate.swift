@@ -10,4 +10,6 @@ import Flutter
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+
+  func dummyMethodToAvoidSymbolStripping() { wire_passing_complex_structs(42, nil) }
 }

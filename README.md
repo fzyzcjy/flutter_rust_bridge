@@ -67,7 +67,7 @@ Run `cargo ndk -o ../android/app/src/main/jniLibs build`. Then run the Flutter a
 
 Modify `Cargo.toml` to change `cdylib` to `staticlib`. (Again, this is baremetal example so it is done manually. For your project, you can automate it.)
 
-Run `cargo lipo`. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
+Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
 
 Remark: Since my quickstart app is so baremetal, I do not integrate the Rust building process into Flutter building process (but definitely you can do that). 
 
@@ -133,7 +133,7 @@ name = "flutter_rust_bridge_example" # whatever you like
 crate-type = ["cdylib"] # <-- notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
 ```
 
-Step 4: For iOS, edit `Strip Style` in `Build Settings` to `Debugging Symbols`.
+Step 4: Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings, such as `func dummyMethodToAvoidSymbolStripping() { wire_passing_complex_structs(42, nil) }`, and this will prevent symbol stripping.
 
 ## Safety
 

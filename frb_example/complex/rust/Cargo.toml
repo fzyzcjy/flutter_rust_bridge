@@ -5,7 +5,7 @@ edition = "2018"
 
 [lib]
 name = "flutter_rust_bridge_example"
-crate-type = ["cdylib"]
+crate-type = ["staticlib"]
 
 [dependencies]
 anyhow = { version = "1.0.44", features = ["backtrace"] }
