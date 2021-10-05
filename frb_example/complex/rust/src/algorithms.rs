@@ -91,12 +91,18 @@ fn render(pixels: &mut [u8],
 }
 
 fn colorize(grey_pixels: &[u8]) -> Vec<u8> {
-    let mut ans = vec![0u8, grey_pixels.len() * 3];
+    let mut ans = vec![0u8; grey_pixels.len() * 3];
     for i in 0..grey_pixels.len() {
-        (ans[i * 3], ans[i * 3 + 1], ans[i * 3 + 2]) = colorize_pixel(grey_pixels[i]);
+        let (r, g, b) = colorize_pixel(grey_pixels[i]);
+        ans[i * 3] = r;
+        ans[i * 3 + 1] = g;
+        ans[i * 3 + 2] = b;
     }
     ans
 }
+
+const A: f64 = 1.0 * (1.0 / std::f64::consts::LOG2_10);
+const B: f64 = (1.0 / (3.0 * std::f64::consts::SQRT_2)) * (1.0 / std::f64::consts::LOG2_10);
 
 pub fn colorize_pixel(it: u8) -> (u8, u8, u8) {
     if it == 0 { return (0, 0, 0); }
