@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final receivedImage = await api.drawMandelbrot(
         imageSize: Size(width: 100, height: 100),
         zoomPoint: examplePoint,
-        scale: 0.1 + Random().nextDouble(),
+        scale: exp(-Random().nextDouble() * 5),
         numThreads: 4);
     setState(() => exampleImage = receivedImage);
   }
