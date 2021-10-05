@@ -11,8 +11,8 @@
 ## Advantages
 
 * **Memory-safe**: Never need to think about malloc/free.
-* **Zero-copy**: Pass big objects from Rust to Dart without any memory copies.
 * **Type support**: Unlike low-level binding generator which only provide primitives and pointers, this package provides things like `Vec<u8>`(`Uint8List`), `Vec<T>`(`List<T>`), any custom `struct`(`class`)s, and even use recursive structs (e.g. a tree node).
+* **Zero-copy**: Pass big array of bytes from Rust to Dart without any memory copies.
 * **Async programming**: You can simply call functions directly in main isolate (thread) of Dart/Flutter, and Rust code will not block the Flutter UI.
 * **Easy to use**: All you need to do is write down your Rust code. The code generator will do everything and expose an API in the Dart/Flutter style for you.
 * **Lightweight**: Simulate how human beings will write down boilerplate code . Thus compared with 
@@ -24,7 +24,7 @@
 What you write down (in Rust).
 
 ```Rust
-pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Something> {
+pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
     ... do my heavy computations ...
 }
 
@@ -35,7 +35,7 @@ pub struct TreeNode { pub value: i32, pub children: Vec<MyTreeNode> }
 We will generate the bindings. Then you only need to use the following generated API in Dart/Flutter. Nothing more. It looks exactly like a normal Dart/Flutter function.
 
 ```Dart
-Future<Something> myFunction(MyTreeNode a, SomeOtherStruct b);
+Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 ```
 
 <sub>**Remark**: Why `Future` in Flutter: Flutter is single-threaded. If not using future, just like what you do with plain-old Flutter bindings, your UI will be *stuck* as long as your Rust code is executing. If your Rust code run for a second, your UI will fully freeze for one second.</sub> 
