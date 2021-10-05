@@ -2,6 +2,7 @@ use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::generator_common::*;
 use convert_case::{Case, Casing};
+use log::debug;
 
 pub fn generate(
     api_file: &ApiFile,
@@ -9,13 +10,15 @@ pub fn generate(
     dart_wire_class_name: &str,
     dart_wire_file_name: &str,
 ) -> String {
+    let distinct_types = api_file.distinct_types();
+    debug!("distinct_types={:?}", distinct_types);
+
     let dart_functions = api_file
         .funcs
         .iter()
         .map(generate_api_func)
         .collect::<Vec<_>>();
-    let dart_structs = api_file
-        .distinct_types()
+    let dart_structs = distinct_types
         .iter()
         .filter_map(|ty| {
             if let StructRef(s) = ty {
@@ -26,18 +29,15 @@ pub fn generate(
         })
         .map(generate_api_struct)
         .collect::<Vec<_>>();
-    let dart_api2wire_funcs = api_file
-        .distinct_types()
+    let dart_api2wire_funcs = distinct_types
         .iter()
         .map(|ty| generate_api2wire_func(ty))
         .collect::<Vec<_>>();
-    let dart_api_fill_to_wire_funcs = api_file
-        .distinct_types()
+    let dart_api_fill_to_wire_funcs = distinct_types
         .iter()
         .map(|ty| generate_api_fill_to_wire_func(ty, api_file))
         .collect::<Vec<_>>();
-    let dart_wire2api_funcs = api_file
-        .distinct_types()
+    let dart_wire2api_funcs = distinct_types
         .iter()
         .map(|ty| generate_wire2api_func(ty, api_file))
         .collect::<Vec<_>>();
@@ -213,7 +213,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             .join("\n"),
         // skip
         Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
-            return "".to_string()
+            return "".to_string();
         }
     };
 
