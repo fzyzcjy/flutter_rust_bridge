@@ -75,9 +75,17 @@ An example is provided [in the example directory](https://github.com/fzyzcjy/flu
 
 For all keys and their meanings of the configuration yaml (`flutter_rust_bridge.yaml`), please refer to [its source code](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_codegen/src/config.rs).
 
-### Add a line of code
+### Add some code
+
+#### The `mod`
 
 Please put `mod generated_wire;` (where `generated_wire` is the name of the wire file that you choose) into your `lib.rs` or `main.rs`. Only by doing this, Rust can understand that this generated file is a part of your project.
+
+#### Dependency
+
+Add `flutter_rust_bridge = "1.0"` (where `1.0` should be the latest version) to Rust's `Cargo.toml`.
+
+Add `flutter_rust_bridge: ^1.0` (same as above, should be latest version) to Flutter/Dart's `pubspec.yaml` under the section of `dependencies`.
 
 ### Run code generator
 
