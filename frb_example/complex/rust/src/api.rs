@@ -9,7 +9,7 @@ use flutter_rust_bridge::ZeroCopyBuffer;
 
 pub fn draw_mandelbrot(image_size: Size, zoom_point: Point, scale: f64, num_threads: i32) -> Result<ZeroCopyBuffer<Vec<u8>>> {
     // Just an example that generates "complicated" images ;)
-    let image = crate::algorithms::mandelbrot(image_size, zoom_point, scale, num_threads)?;
+    let image = crate::off_topic_code::mandelbrot(image_size, zoom_point, scale, num_threads)?;
     Ok(ZeroCopyBuffer(image))
 }
 
