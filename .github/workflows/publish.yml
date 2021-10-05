@@ -1,0 +1,22 @@
+name: Rust
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - uses: katyo/publish-crates@v1
+        with:
+          path: './frb_codegen'
+          registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
