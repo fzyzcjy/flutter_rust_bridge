@@ -22,25 +22,22 @@ class ExampleWire implements DartRustBridgeWireBase {
   void wire_draw_mandelbrot(
     int port,
     ffi.Pointer<wire_Size> image_size,
-    ffi.Pointer<wire_Point> left_top,
     ffi.Pointer<wire_Point> right_bottom,
     int num_threads,
   ) {
     return _wire_draw_mandelbrot(
       port,
       image_size,
-      left_top,
       right_bottom,
       num_threads,
     );
   }
 
   late final _wire_draw_mandelbrotPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, ffi.Pointer<wire_Point>,
-              ffi.Int32)>>('wire_draw_mandelbrot');
-  late final _wire_draw_mandelbrot = _wire_draw_mandelbrotPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, ffi.Pointer<wire_Point>, int)>();
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, ffi.Int32)>>(
+      'wire_draw_mandelbrot');
+  late final _wire_draw_mandelbrot =
+      _wire_draw_mandelbrotPtr.asFunction<void Function(int, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, int)>();
 
   void wire_tree_traversal(
     int port,

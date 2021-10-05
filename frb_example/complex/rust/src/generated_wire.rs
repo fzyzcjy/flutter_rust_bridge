@@ -15,21 +15,14 @@ use flutter_rust_bridge::*;
 pub extern "C" fn wire_draw_mandelbrot(
     port: i64,
     image_size: *mut wire_Size,
-    left_top: *mut wire_Point,
     right_bottom: *mut wire_Point,
     num_threads: i32,
 ) {
     let api_image_size = image_size.wire2api();
-    let api_left_top = left_top.wire2api();
     let api_right_bottom = right_bottom.wire2api();
     let api_num_threads = num_threads.wire2api();
     support::wrap_wire_func(port, move || {
-        draw_mandelbrot(
-            api_image_size,
-            api_left_top,
-            api_right_bottom,
-            api_num_threads,
-        )
+        draw_mandelbrot(api_image_size, api_right_bottom, api_num_threads)
     });
 }
 

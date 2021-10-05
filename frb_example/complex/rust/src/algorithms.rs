@@ -1,10 +1,15 @@
+use std::io::Error;
+use std::sync::Mutex;
+
+use image::ColorType;
+use image::png::PNGEncoder;
+use num::Complex;
+
 ///! NOTE: This file is **unrelated** to the main topic of our example.
 ///! Only for generating beautiful image.
 ///! Copied and modified from https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs
 
 use crate::api::*;
-
-use num::Complex;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
 /// iterations to decide.
@@ -83,9 +88,6 @@ fn render(pixels: &mut [u8],
     }
 }
 
-use image::ColorType;
-use image::png::PNGEncoder;
-
 /// Write the buffer `pixels`, whose dimensions are given by `bounds`, to the
 /// file named `filename`.
 fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>, std::io::Error> {
@@ -99,12 +101,9 @@ fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>, std::io
     Ok(buf)
 }
 
-use std::sync::Mutex;
-use std::io::Error;
-
-pub fn mandelbrot(image_size: Size, left_top: Point, right_bottom: Point, num_threads: i32) -> Result<Vec<u8>, Error> {
+pub fn mandelbrot(image_size: Size, right_bottom: Point, num_threads: i32) -> Result<Vec<u8>, Error> {
     let bounds = (image_size.width as usize, image_size.height as usize);
-    let upper_left = Complex::new(left_top.x, left_top.y);
+    let upper_left = Complex::new(-right_bottom.x, -right_bottom.y);
     let lower_right = Complex::new(right_bottom.x, right_bottom.y);
 
     let mut pixels = vec![0; bounds.0 * bounds.1];

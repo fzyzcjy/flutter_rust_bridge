@@ -111,7 +111,7 @@ Indeed, this library is nothing but a code generator that helps your Flutter/Dar
 
 However, I can sketch the outline of what to do if you want to set up a new Flutter+Rust project as follows.
 
-Step 1: Create a new Flutter project (or use an existing one)
+Step 1: Create a new Flutter project (or use an existing one). The Dart SDK should be `>=2.14.0` if you want to use the latest `ffigen` tool.
 
 Step 2: Create a new Rust project, say, at directory `rust` under the Flutter project.
 
