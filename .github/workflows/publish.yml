@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  build:
+  main:
     runs-on: ubuntu-latest
 
     steps:
