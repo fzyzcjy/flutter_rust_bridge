@@ -34,6 +34,10 @@ void main(List<String> args) async {
     expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
         Uint8List.fromList(List.filled(len * 2, 127)));
 
+    print('dart call handleZeroCopyResult');
+    final n = 100000;
+    expect(await api.handleZeroCopyResult(n: n), Uint8List.fromList(List.filled(n, 42)));
+
     print('dart call handleStruct');
     final structResp =
         await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
