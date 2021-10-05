@@ -8,6 +8,8 @@
 [![Dart](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/dart.yml/badge.svg?branch=master)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/dart.yml)
 [![Run codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml)
 
+![Logo](docs/logo.png)
+
 ## Advantages
 
 * **Memory-safe**: Never need to think about malloc/free.
