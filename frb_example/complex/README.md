@@ -1,16 +1,5 @@
-# frb_example
+## Flutter + Rust example for Flutter Rust Bridge
 
-A new Flutter project.
+For a Flutter example with UI, please see the complex example which is a neighbor of this example.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For full documentation, please see README.md for the main repository.
