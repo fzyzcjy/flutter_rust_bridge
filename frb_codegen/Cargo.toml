@@ -2,6 +2,9 @@
 name = "flutter_rust_bridge_codegen"
 version = "0.1.0"
 edition = "2018"
+description = "High-level memory-safe bindgen for Dart/Flutter <-> Rust"
+license = "MIT"
+repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
 
 [dependencies]
 syn = { version = "1.0.77", features = ["full", "extra-traits"] }
