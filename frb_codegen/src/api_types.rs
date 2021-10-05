@@ -289,7 +289,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn dart_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => self.get_delegate().dart_api_type(),
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer_".to_string() + &self.get_delegate().dart_api_type(),
         }
     }
 
