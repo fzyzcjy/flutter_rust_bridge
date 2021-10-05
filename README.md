@@ -87,6 +87,10 @@ Add `flutter_rust_bridge = "1.0"` (where `1.0` should be the latest version) to 
 
 Add `flutter_rust_bridge: ^1.0` (same as above, should be latest version) to Flutter/Dart's `pubspec.yaml` under the section of `dependencies`.
 
+#### Version
+
+Dark SDK `>=2.14.0` is needed by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
+
 ### Run code generator
 
 Same as the section in Quickstart. Simply run that binary.
