@@ -49,6 +49,8 @@ void wire_handle_string(int64_t port, struct wire_uint_8_list *s);
 
 void wire_handle_vec_u8(int64_t port, struct wire_uint_8_list *v);
 
+void wire_handle_zero_copy_result(int64_t port, int32_t n);
+
 void wire_handle_struct(int64_t port, struct wire_MySize *arg, struct wire_MySize *boxed);
 
 void wire_handle_newtype(int64_t port, struct wire_NewTypeInt *arg);

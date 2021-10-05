@@ -48,6 +48,12 @@ pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_zero_copy_result(port: i64, n: i32) {
+    let api_n = n.wire2api();
+    support::wrap_wire_func(port, move || handle_zero_copy_result(api_n));
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_struct(port: i64, arg: *mut wire_MySize, boxed: *mut wire_MySize) {
     let api_arg = arg.wire2api();
     let api_boxed = boxed.wire2api();

@@ -86,6 +86,20 @@ class ExampleWire implements DartRustBridgeWireBase {
   late final _wire_handle_vec_u8 =
       _wire_handle_vec_u8Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  void wire_handle_zero_copy_result(
+    int port,
+    int n,
+  ) {
+    return _wire_handle_zero_copy_result(
+      port,
+      n,
+    );
+  }
+
+  late final _wire_handle_zero_copy_resultPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_zero_copy_result');
+  late final _wire_handle_zero_copy_result = _wire_handle_zero_copy_resultPtr.asFunction<void Function(int, int)>();
+
   void wire_handle_struct(
     int port,
     ffi.Pointer<wire_MySize> arg,

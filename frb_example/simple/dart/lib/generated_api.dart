@@ -34,6 +34,10 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
     return execute((port) => inner.wire_handle_vec_u8(port, _api2wire_uint_8_list(v)), _wire2api_uint_8_list);
   }
 
+  Future<Uint8List> handleZeroCopyResult({required int n}) async {
+    return execute((port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)), _wire2api_uint_8_list);
+  }
+
   Future<MySize> handleStruct({required MySize arg, required MySize boxed}) async {
     return execute(
         (port) => inner.wire_handle_struct(port, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
