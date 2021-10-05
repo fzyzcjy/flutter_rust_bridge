@@ -138,7 +138,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
             }
             ApiTypeDelegate::ZeroCopyBufferVecU8 => {
-                "return _api2wire_uint_8_list(raw.0);".to_string()
+                "return _api2wire_uint_8_list(raw);".to_string()
             }
         },
         PrimitiveList(_) => {
