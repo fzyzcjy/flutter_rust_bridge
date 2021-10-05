@@ -42,13 +42,13 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ## Quickstart
 
-### Install
+### Get example code
 
-First things first. Please [install Flutter](https://flutter.dev/docs/get-started/install) and have some familiarity with it. [Rust](https://www.rust-lang.org/learn/get-started) is also needed to be installed.
+Of course, please [install Flutter](https://flutter.dev/docs/get-started/install), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/complex` to get my example.
 
-### Checkout example
+Or you can use your own code (if you find this Quickstart section too brief, have a look at the later Usage section).
 
-Run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/complex` to get my example. Or you can use your own code - if you find this Quickstart section too brief, have a look at the later Usage section.
+### Run code generator
 
 [WIP]
 
@@ -56,7 +56,7 @@ Run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/
 
 Have a look at the function arguments and return types in this file: [api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs). With this library, we have a generated API that resides at [generated_api.dart](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/dart/lib/generated_api.dart) (of course, that is auto generated, and you can use it in other Dart code).
 
-### How is this Flutter example created?
+### Optional: How is this Flutter example created?
 
 [WIP]
 
