@@ -39,7 +39,7 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
         {}
 
         use crate::{}::*;
-        use flutter_rust_bridge::support;
+        use flutter_rust_bridge::*;
 
         // Section: wire functions
 
