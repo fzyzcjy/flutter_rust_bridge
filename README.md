@@ -59,21 +59,17 @@ Run it: `flutter_rust_bridge_codegen frb_example/complex/rust/flutter_rust_bridg
 
 ### Run "Flutter+Rust" app
 
-Since my quickstart app is so baremetal, I do not integrate the Rust building process into Flutter building process (but definitely you can do that).
-
 #### If Android
 
-Run `cargo ndk -o ../android/app/src/main/jniLibs build`.
-
-Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
+Run `cargo ndk -o ../android/app/src/main/jniLibs build`. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
 
 #### If iOS
 
-[WIP]
+Modify `Cargo.toml` to change `cdylib` to `staticlib`. (Again, this is baremetal example so it is done manually. For your project, you can automate it.)
 
-Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
+Run `cargo lipo`. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
 
-(Again, this is baremetal example so it is done manually. For your project, you can automate it.)
+Remark: Since my quickstart app is so baremetal, I do not integrate the Rust building process into Flutter building process (but definitely you can do that). 
 
 ### (Optional) See more types that this library can generate
 
@@ -137,7 +133,7 @@ name = "flutter_rust_bridge_example" # whatever you like
 crate-type = ["cdylib"] # <-- notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
 ```
 
-[WIP]
+Step 4: For iOS, edit `Strip Style` in `Build Settings` to `Debugging Symbols`.
 
 ## Safety
 
