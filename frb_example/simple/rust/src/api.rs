@@ -1,5 +1,7 @@
 #![allow(unused_variables)]
 
+use flutter_rust_bridge::ZeroCopyBuffer;
+
 use anyhow::{anyhow, Result};
 
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
@@ -23,6 +25,11 @@ pub fn handle_string(s: String) -> Result<String> {
 pub fn handle_vec_u8(v: Vec<u8>) -> Result<Vec<u8>> {
     println!("handle_vec_u8(first few elements: {:?})", &v[..5]);
     Ok(v.repeat(2))
+}
+
+pub fn handle_zero_copy_result(n: i32) -> Result<ZeroCopyBuffer<Vec<u8>>> {
+    println!("handle_zero_copy_result(n: {})", n);
+    Ok(ZeroCopyBuffer(vec![42u8; n as usize]))
 }
 
 #[derive(Debug, Clone)]

@@ -136,6 +136,9 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
         Delegate(d) => match d {
             ApiTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
+            },
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => {
+                "return _api2wire_uint_8_list(raw.0);".to_string()
             }
         },
         PrimitiveList(_) => {
@@ -232,6 +235,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
         Primitive(p) => gen_simple_type_cast(&p.dart_api_type()),
         Delegate(d) => match d {
             ApiTypeDelegate::String => gen_simple_type_cast(&d.dart_api_type()),
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => gen_simple_type_cast(&d.dart_api_type()),
         },
         PrimitiveList(list) => gen_simple_type_cast(&list.dart_api_type()),
         GeneralList(list) => format!(

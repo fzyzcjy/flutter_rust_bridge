@@ -216,6 +216,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             ApiTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
                 String::from_utf8_lossy(&vec).into_owned()"
                 .to_string(),
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer(self.wire2api())".to_string(),
         },
         PrimitiveList(_) => "unsafe {
                 let wrap = support::box_from_leak_ptr(self);
