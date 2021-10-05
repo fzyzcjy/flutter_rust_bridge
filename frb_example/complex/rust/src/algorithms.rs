@@ -7,7 +7,9 @@ use num::Complex;
 
 ///! NOTE: This file is **unrelated** to the main topic of our example.
 ///! Only for generating beautiful image.
-///! Copied and modified from https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs
+///! Mandelbrot is copied and modified from
+///! https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs and
+///! https://github.com/Ducolnd/rust-mandelbrot/blob/master/src/main.rs
 
 use crate::api::*;
 
@@ -88,6 +90,29 @@ fn render(pixels: &mut [u8],
     }
 }
 
+fn colorize(grey_pixels: &[u8]) -> Vec<u8> {
+    let mut ans = vec![0u8, grey_pixels.len() * 3];
+    for i in 0..grey_pixels.len() {
+        (ans[i * 3], ans[i * 3 + 1], ans[i * 3 + 2]) = colorize_pixel(grey_pixels[i]);
+    }
+    ans
+}
+
+pub fn colorize_pixel(it: u8) -> (u8, u8, u8) {
+    if it == 0 { return (0, 0, 0); }
+    let it = it as f64;
+
+    let c: f64 = (1.0 as f64 / ((7.0 * 3.0 as f64).powf(1.0 / 8.0))) * (1.0 / std::f64::consts::LOG2_10);
+
+    let r = 255.0 * ((1.0 - (A * it).cos()) / 2.0);
+    let g = 255.0 * ((1.0 - (B * it).cos()) / 2.0);
+    let b = 255.0 * ((1.0 - (c * it).cos()) / 2.0);
+
+    // print!(" {:?} ", [r, g, b]);
+
+    (r as u8, b as u8, g as u8)
+}
+
 /// Write the buffer `pixels`, whose dimensions are given by `bounds`, to the
 /// file named `filename`.
 fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>, std::io::Error> {
@@ -96,15 +121,15 @@ fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>, std::io
     let encoder = PNGEncoder::new(&mut buf);
     encoder.encode(&pixels,
                    bounds.0 as u32, bounds.1 as u32,
-                   ColorType::Gray(8))?;
+                   ColorType::RGB(8))?;
 
     Ok(buf)
 }
 
-pub fn mandelbrot(image_size: Size, right_bottom: Point, num_threads: i32) -> Result<Vec<u8>, Error> {
+pub fn mandelbrot(image_size: Size, zoom_point: Point, scale: f64, num_threads: i32) -> Result<Vec<u8>, Error> {
     let bounds = (image_size.width as usize, image_size.height as usize);
-    let upper_left = Complex::new(-right_bottom.x, -right_bottom.y);
-    let lower_right = Complex::new(right_bottom.x, right_bottom.y);
+    let upper_left = Complex::new(zoom_point.x - scale, zoom_point.y - scale);
+    let lower_right = Complex::new(zoom_point.x + scale, zoom_point.y + scale);
 
     let mut pixels = vec![0; bounds.0 * bounds.1];
 
@@ -139,7 +164,7 @@ pub fn mandelbrot(image_size: Size, right_bottom: Point, num_threads: i32) -> Re
         }).unwrap();
     }
 
-    write_image(&pixels, bounds)
+    write_image(&colorize(&pixels), bounds)
 }
 
 pub fn tree_preorder_traversal(root: TreeNode) -> Vec<String> {
