@@ -50,7 +50,9 @@ Or you can use your own code (if you find this Quickstart section too brief, hav
 
 ### Run code generator
 
-[WIP]
+[WIP should explain this after I publish the codegen package]
+
+[WIP later parts]
 
 ### Want to see more types that this library can generate?
 
@@ -62,13 +64,19 @@ Have a look at the function arguments and return types in this file: [api.rs](ht
 
 ## Usage
 
+### Configuration
 
+`flutter_rust_bridge.yaml` is nothing but specifying where is your source code, and where do you want the generated code to be put in. We give you full control of the location of every generated file.
 
-## Configurations
+An example is provided [in the example directory](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/complex/rust/flutter_rust_bridge.toml). I suggest you follow it and modify for your needs.
 
-For all keys and their meanings of the configuration yaml (`dart_rust_bridge.yaml`), please refer to [its source code](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_codegen/src/config.rs).
+For all keys and their meanings of the configuration yaml (`flutter_rust_bridge.yaml`), please refer to [its source code](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_codegen/src/config.rs).
 
-An example is also provided [in the example directory](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/frb_example_rust/dart_rust_bridge.yaml).
+### Run code generator
+
+[WIP should explain this after I publish the codegen package]
+
+[WIP later parts]
 
 ## Safety
 
