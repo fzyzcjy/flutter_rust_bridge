@@ -36,10 +36,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) => buildPageUi([
-        buildExampleOneUi(exampleImage),
-        buildExampleTwoUi(exampleText),
-      ]);
+  Widget build(BuildContext context) => buildPageUi(
+        exampleImage,
+        exampleText,
+      );
 
   Future<void> _callExampleFfiOne() async {
     final receivedImage = await api.drawMandelbrot(
