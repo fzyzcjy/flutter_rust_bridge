@@ -31,8 +31,8 @@ jobs:
       run: cargo test --verbose
 
     - name: Build example
-      working-directory: ./frb_example/simple/rust
+      working-directory: ./frb_example/pure_dart/rust
       run: cargo build --verbose
     - name: Run tests for example
-      working-directory: ./frb_example/simple/rust
+      working-directory: ./frb_example/pure_dart/rust
       run: cargo test --verbose

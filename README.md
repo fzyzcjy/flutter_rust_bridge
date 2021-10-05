@@ -45,7 +45,7 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ### Get example code
 
-Please [install Flutter](https://flutter.dev/docs/get-started/install), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/complex` to get my example.
+Please [install Flutter](https://flutter.dev/docs/get-started/install), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/with_flutter` to get my example.
 
 Or you can use your own code (if you find this Quickstart section too brief, have a look at the later Usage section).
 
@@ -55,7 +55,7 @@ Remark: I have generated the source code already (in quickstart), so this step i
 
 Install it: `cargo install flutter_rust_bridge_codegen`.
 
-Run it: `flutter_rust_bridge_codegen frb_example/complex/rust/flutter_rust_bridge.yaml` (the argument is the path to the configuration file).
+Run it: `flutter_rust_bridge_codegen frb_example/with_flutter/rust/flutter_rust_bridge.yaml` (the argument is the path to the configuration file).
 
 ### Run "Flutter+Rust" app
 
@@ -73,7 +73,7 @@ Remark: Since my quickstart app is so baremetal, I do not integrate the Rust bui
 
 ### (Optional) See more types that this library can generate
 
-Have a look at the function arguments and return types in this file: [api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs). With this library, we have a generated API that resides at [generated_api.dart](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/dart/lib/generated_api.dart) (of course, that is auto generated, and you can use it in other Dart code).
+Have a look at the function arguments and return types in this file: [api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs). With this library, we have a generated API that resides at [generated_api.dart](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/dart/lib/generated_api.dart) (of course, that is auto generated, and you can use it in other Dart code).
 
 ## Usage in details
 
@@ -81,7 +81,7 @@ Have a look at the function arguments and return types in this file: [api.rs](ht
 
 `flutter_rust_bridge.yaml` is nothing but specifying where is your source code, and where do you want the generated code to be put in. We give you full control of the location of every generated file.
 
-An example is provided [in the example directory](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/complex/rust/flutter_rust_bridge.toml). I suggest you follow it and modify for your needs.
+An example is provided [in the example directory](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/with_flutter/rust/flutter_rust_bridge.toml). I suggest you follow it and modify for your needs.
 
 For all keys and their meanings of the configuration yaml (`flutter_rust_bridge.yaml`), please refer to [its source code](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_codegen/src/config.rs).
 
@@ -115,7 +115,7 @@ This library is nothing but a code generator that helps your Flutter/Dart functi
 
 ## Set up Flutter/Dart+Rust support
 
-I suggest that you can start with the [Flutter example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/complex) first, and modify it to satisfy your needs. It can serve as a template for new projects. It is run against CI [WIP] so we are sure it works.
+I suggest that you can start with the [Flutter example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/with_flutter) first, and modify it to satisfy your needs. It can serve as a template for new projects. It is run against CI [WIP] so we are sure it works.
 
 Indeed, this library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, "how to create a Flutter app that can run Rust code" is actually out of the scope of this library, and there are already several tutorials on the Internet.
 

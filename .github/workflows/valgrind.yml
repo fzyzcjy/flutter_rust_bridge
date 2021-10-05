@@ -32,11 +32,11 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install dart dependencies
-        working-directory: ./frb_example/simple/dart
+        working-directory: ./frb_example/pure_dart/dart
         run: dart pub get
 
       - name: Run valgrind script
-        working-directory: ./frb_example/simple/dart
+        working-directory: ./frb_example/pure_dart/dart
         run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
         env:
           CARGO_TARGET_DIR: .
