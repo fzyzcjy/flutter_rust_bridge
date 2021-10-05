@@ -32,6 +32,10 @@ Widget buildPageUi(Uint8List? exampleImage, String? exampleText) {
                             height: 50,
                             child: Center(child: AnimatedReplaceableImage(image: MemoryImage(exampleImage))))
                         : Container()),
+                    Container(height: 4),
+                    const Text('Mandelbrot Set', style: TextStyle(fontSize: 11, color: Colors.grey)),
+                    const Text('classical image requiring lots of computing',
+                        style: TextStyle(fontSize: 11, color: Colors.grey)),
                     Container(height: 8),
                   ],
                 ),
