@@ -173,15 +173,15 @@ pub fn mandelbrot(image_size: Size, zoom_point: Point, scale: f64, num_threads: 
     write_image(&colorize(&pixels), bounds)
 }
 
-pub fn tree_preorder_traversal(root: TreeNode) -> Vec<String> {
-    let mut ans = Vec::new();
-    tree_preorder_traversal_core(root, &mut ans);
-    ans
-}
-
-fn tree_preorder_traversal_core(node: TreeNode, dst: &mut Vec<String>) {
-    dst.push(node.name);
-    for child in node.children {
-        tree_preorder_traversal_core(child, dst);
-    }
-}
+// pub fn tree_preorder_traversal(root: TreeNode) -> Vec<String> {
+//     let mut ans = Vec::new();
+//     tree_preorder_traversal_core(root, &mut ans);
+//     ans
+// }
+//
+// fn tree_preorder_traversal_core(node: TreeNode, dst: &mut Vec<String>) {
+//     dst.push(node.name);
+//     for child in node.children {
+//         tree_preorder_traversal_core(child, dst);
+//     }
+// }
