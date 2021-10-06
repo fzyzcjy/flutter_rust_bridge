@@ -44,6 +44,14 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ## Quickstart
 
+**Install**: `cargo install flutter_rust_bridge_codegen`.
+
+**Run**: `flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/generated.dart`. (For more options, use `--help`)
+
+**Enjoy**: Use the generated `.dart` file!
+
+## [TODO merge this section] Old Quickstart
+
 ### Get example code
 
 Please [install Flutter](https://flutter.dev/docs/get-started/install), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then run `git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd frb_example/with_flutter` to get my example.
