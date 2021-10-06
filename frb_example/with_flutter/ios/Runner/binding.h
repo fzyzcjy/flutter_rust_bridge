@@ -45,19 +45,19 @@ void wire_draw_mandelbrot(int64_t port,
 
 void wire_passing_complex_structs(int64_t port, struct wire_TreeNode *root);
 
-void wire_memory_test_utility_input_array(int64_t port, struct wire_uint_8_list *input);
+void wire_off_topic_memory_test_input_array(int64_t port, struct wire_uint_8_list *input);
 
-void wire_memory_test_utility_output_zero_copy_buffer(int64_t port, int32_t len);
+void wire_off_topic_memory_test_output_zero_copy_buffer(int64_t port, int32_t len);
 
-void wire_memory_test_utility_output_vec_u8(int64_t port, int32_t len);
+void wire_off_topic_memory_test_output_vec_u8(int64_t port, int32_t len);
 
-void wire_memory_test_utility_input_vec_of_object(int64_t port, struct wire_list_size *input);
+void wire_off_topic_memory_test_input_vec_of_object(int64_t port, struct wire_list_size *input);
 
-void wire_memory_test_utility_output_vec_of_object(int64_t port, int32_t len);
+void wire_off_topic_memory_test_output_vec_of_object(int64_t port, int32_t len);
 
-void wire_memory_test_utility_input_complex_struct(int64_t port, struct wire_TreeNode *input);
+void wire_off_topic_memory_test_input_complex_struct(int64_t port, struct wire_TreeNode *input);
 
-void wire_memory_test_utility_output_complex_struct(int64_t port, int32_t len);
+void wire_off_topic_memory_test_output_complex_struct(int64_t port, int32_t len);
 
 struct wire_Size *new_box_autoadd_size(void);
 

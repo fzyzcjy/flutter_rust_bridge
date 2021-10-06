@@ -35,60 +35,60 @@ pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNo
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_input_array(port: i64, input: *mut wire_uint_8_list) {
+pub extern "C" fn wire_off_topic_memory_test_input_array(port: i64, input: *mut wire_uint_8_list) {
     let api_input = input.wire2api();
-    support::wrap_wire_func(port, move || memory_test_utility_input_array(api_input));
+    support::wrap_wire_func(port, move || off_topic_memory_test_input_array(api_input));
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_output_zero_copy_buffer(port: i64, len: i32) {
+pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, len: i32) {
     let api_len = len.wire2api();
     support::wrap_wire_func(port, move || {
-        memory_test_utility_output_zero_copy_buffer(api_len)
+        off_topic_memory_test_output_zero_copy_buffer(api_len)
     });
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_output_vec_u8(port: i64, len: i32) {
+pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port: i64, len: i32) {
     let api_len = len.wire2api();
-    support::wrap_wire_func(port, move || memory_test_utility_output_vec_u8(api_len));
+    support::wrap_wire_func(port, move || off_topic_memory_test_output_vec_u8(api_len));
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_input_vec_of_object(
+pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
     port: i64,
     input: *mut wire_list_size,
 ) {
     let api_input = input.wire2api();
     support::wrap_wire_func(port, move || {
-        memory_test_utility_input_vec_of_object(api_input)
+        off_topic_memory_test_input_vec_of_object(api_input)
     });
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_output_vec_of_object(port: i64, len: i32) {
+pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port: i64, len: i32) {
     let api_len = len.wire2api();
     support::wrap_wire_func(port, move || {
-        memory_test_utility_output_vec_of_object(api_len)
+        off_topic_memory_test_output_vec_of_object(api_len)
     });
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_input_complex_struct(
+pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
     port: i64,
     input: *mut wire_TreeNode,
 ) {
     let api_input = input.wire2api();
     support::wrap_wire_func(port, move || {
-        memory_test_utility_input_complex_struct(api_input)
+        off_topic_memory_test_input_complex_struct(api_input)
     });
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_output_complex_struct(port: i64, len: i32) {
+pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, len: i32) {
     let api_len = len.wire2api();
     support::wrap_wire_func(port, move || {
-        memory_test_utility_output_complex_struct(api_len)
+        off_topic_memory_test_output_complex_struct(api_len)
     });
 }
 

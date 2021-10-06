@@ -37,31 +37,31 @@ pub struct TreeNode {
 
 // following are used only for memory tests. Readers of this example do not need to consider it.
 
-pub fn memory_test_utility_input_array(input: Vec<u8>) -> Result<i32> {
+pub fn off_topic_memory_test_input_array(input: Vec<u8>) -> Result<i32> {
     Ok(input.len() as i32)
 }
 
-pub fn memory_test_utility_output_zero_copy_buffer(len: i32) -> Result<ZeroCopyBuffer<Vec<u8>>> {
+pub fn off_topic_memory_test_output_zero_copy_buffer(len: i32) -> Result<ZeroCopyBuffer<Vec<u8>>> {
     Ok(ZeroCopyBuffer(vec![0u8; len as usize]))
 }
 
-pub fn memory_test_utility_output_vec_u8(len: i32) -> Result<Vec<u8>> {
+pub fn off_topic_memory_test_output_vec_u8(len: i32) -> Result<Vec<u8>> {
     Ok(vec![0u8; len as usize])
 }
 
-pub fn memory_test_utility_input_vec_of_object(input: Vec<Size>) -> Result<i32> {
+pub fn off_topic_memory_test_input_vec_of_object(input: Vec<Size>) -> Result<i32> {
     Ok(input.len() as i32)
 }
 
-pub fn memory_test_utility_output_vec_of_object(len: i32) -> Result<Vec<Size>> {
+pub fn off_topic_memory_test_output_vec_of_object(len: i32) -> Result<Vec<Size>> {
     Ok(vec![Size { width: 42, height: 42 }; len as usize])
 }
 
-pub fn memory_test_utility_input_complex_struct(input: TreeNode) -> Result<i32> {
+pub fn off_topic_memory_test_input_complex_struct(input: TreeNode) -> Result<i32> {
     Ok(input.children.len() as i32)
 }
 
-pub fn memory_test_utility_output_complex_struct(len: i32) -> Result<TreeNode> {
+pub fn off_topic_memory_test_output_complex_struct(len: i32) -> Result<TreeNode> {
     Ok(TreeNode {
         name: "root".to_string(),
         children: vec![TreeNode { name: "child".to_string(), children: Vec::new() }; len as usize],
