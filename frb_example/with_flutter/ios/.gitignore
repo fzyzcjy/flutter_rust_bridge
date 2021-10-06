@@ -33,3 +33,5 @@ Runner/GeneratedPluginRegistrant.*
 !default.perspectivev3
 
 *.a
+
+build
