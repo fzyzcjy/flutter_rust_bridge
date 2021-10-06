@@ -99,13 +99,17 @@ jobs:
         working-directory: ./frb_example/pure_dart/dart
         run: dart analyze --fatal-infos
 
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
       - name: Install dependencies for with_flutter example
         working-directory: ./frb_example/with_flutter
-        run: dart pub get
+        run: flutter pub get
       - name: Verify formatting for with_flutter example
         working-directory: ./frb_example/with_flutter
-        run: dart format --output=none --set-exit-if-changed --line-length 120 .
+        run: flutter format --output=none --set-exit-if-changed --line-length 120 .
       - name: Analyze project source for with_flutter example
         working-directory: ./frb_example/with_flutter
-        run: dart analyze --fatal-infos
+        run: flutter analyze --fatal-infos
 
