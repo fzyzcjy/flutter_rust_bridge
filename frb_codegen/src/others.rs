@@ -1,17 +1,4 @@
-use std::env;
-
 use log::warn;
-
-pub fn parse_command_line_args() -> String {
-    let mut args = env::args();
-    let _ = args.next().unwrap(); // executable name
-    let config_path = args.next().expect(
-        "Invalid usage of this command. Please provide path to config.yaml as your argument. \
-        Example: `/path/to/this/binary /path/to/your/flutter_rust_bridge.yaml`",
-    );
-    println!("Use config file at: {}", config_path);
-    config_path
-}
 
 // NOTE [DartPostCObjectFnType] was originally [*mut DartCObject] but I changed it to [*mut c_void]
 // because cannot automatically generate things related to [DartCObject]. Anyway this works fine.

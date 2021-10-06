@@ -3,10 +3,9 @@ use std::fs;
 use std::path::Path;
 
 use anyhow::{anyhow, Result};
-use convert_case::Case;
+use convert_case::{Case, Casing};
 use serde::Deserialize;
 use structopt::StructOpt;
-use tempfile::NamedTempFile;
 use toml::Value;
 
 #[derive(StructOpt, Debug, PartialEq, Deserialize)]
@@ -23,19 +22,20 @@ pub struct RawOpts {
     #[structopt(short, long)]
     pub c_output: Option<String>,
     /// Crate directory for your Rust project
-    #[structopt(short, long)]
+    #[structopt(long)]
     pub rust_crate_dir: Option<String>,
     /// Path of output generated Rust code
-    #[structopt(short, long)]
+    #[structopt(long)]
     pub rust_output: Option<String>,
     /// Generated class name
-    #[structopt(short, long)]
+    #[structopt(long)]
     pub class_name: Option<String>,
     /// Line length for dart formatting
-    #[structopt(short, long)]
+    #[structopt(long)]
     pub dart_format_line_length: Option<i32>,
 }
 
+#[derive(Debug)]
 pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
@@ -108,7 +108,7 @@ fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
 }
 
 fn fallback_c_output_path() -> Result<String> {
-    let named_temp_file = Box::leak(Box::new(NamedTempFile::new()?));
+    let named_temp_file = Box::leak(Box::new(tempfile::Builder::new().suffix(".h").tempfile()?));
     Ok(named_temp_file
         .path()
         .to_str()
