@@ -43,13 +43,24 @@ jobs:
           command: clippy
           args: --manifest-path=./frb_rust/Cargo.toml -- -D warnings
 
-      - name: Run fmt for example
+      - name: Run fmt for pure_dart example
         uses: actions-rs/cargo@v1
         with:
           command: fmt
           args: --manifest-path=./frb_example/pure_dart/rust/Cargo.toml --all -- --check
-      - name: Run clippy for example
+      - name: Run clippy for pure_dart example
         uses: actions-rs/cargo@v1
         with:
           command: clippy
           args: --manifest-path=./frb_example/pure_dart/rust/Cargo.toml -- -D warnings
+
+      - name: Run fmt for with_flutter example
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --manifest-path=./frb_example/with_flutter/rust/Cargo.toml --all -- --check
+      - name: Run clippy for with_flutter example
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path=./frb_example/with_flutter/rust/Cargo.toml -- -D warnings

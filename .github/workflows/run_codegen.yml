@@ -24,9 +24,15 @@ jobs:
       - name: Install llvm dependency
         run: sudo apt-get install -y libclang-dev
 
-      - name: Run codegen to frb_example/pure_dart
+      - name: Run codegen to pure_dart example
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen ../frb_example/pure_dart/rust/flutter_rust_bridge.yaml
+        env:
+          RUST_LOG: debug
+
+      - name: Run codegen to with_flutter example
+        working-directory: ./frb_codegen
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen ../frb_example/with_flutter/rust/flutter_rust_bridge.yaml
         env:
           RUST_LOG: debug
 
