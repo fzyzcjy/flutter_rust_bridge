@@ -7,7 +7,7 @@ license = "MIT"
 repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
 
 [dependencies]
-allo-isolate = { git = "https://github.com/sunshine-protocol/allo-isolate", rev = "495aa58d274b39928cd750aebb3265477edc76c6" }
+allo-isolate = "0.1.10"
 anyhow = "1.0.44"
 threadpool = "1.8.1"
 lazy_static = "1.4.0"

@@ -25,8 +25,12 @@ checksum = "aae1277d39aeec15cb388266ecc24b11c80469deae6067e17a1a7aa9e5c1f234"
 
 [[package]]
 name = "allo-isolate"
-version = "0.1.9"
-source = "git+https://github.com/sunshine-protocol/allo-isolate?rev=495aa58d274b39928cd750aebb3265477edc76c6#495aa58d274b39928cd750aebb3265477edc76c6"
+version = "0.1.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "95c5a443c8b833fc57ee060bb52639fb687d94e640737e71be5c8cccbbbb790c"
+dependencies = [
+ "atomic",
+]
 
 [[package]]
 name = "anyhow"
@@ -35,6 +39,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "61604a8f862e1d5c3229fdd78f8b02c68dcf73a4c4b05fd636d12240aaa242c1"
 dependencies = [
  "backtrace",
+]
+
+[[package]]
+name = "atomic"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c3410529e8288c463bedb5930f82833bc0c90e5d2fe639a56582a4d09220b281"
+dependencies = [
+ "autocfg",
 ]
 
 [[package]]
