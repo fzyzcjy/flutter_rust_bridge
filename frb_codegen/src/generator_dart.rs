@@ -58,15 +58,22 @@ pub fn generate(
 
     let api_class = format!(
         "abstract class {} extends DartRustBridgeBase<{}> {{
-            TODO;
+            factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
+
+            {}.raw({} inner) : super(inner);
         }}",
+        dart_api_class_name,
+        dart_wire_class_name,
+        dart_api_class_name,
+        dart_api_impl_class_name,
+        dart_wire_class_name,
         dart_api_class_name,
         dart_wire_class_name,
     );
 
     let others = format!(
         "class {} extends {} {{
-            {}({} inner) : super(inner);
+            {}.raw({} inner) : super.raw(inner);
 
             {}
 
