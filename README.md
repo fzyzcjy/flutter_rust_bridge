@@ -78,13 +78,29 @@ Have a look at the function arguments and return types in this file: [api.rs](ht
 
 ## Usage in details
 
-### Configuration
+### Command line arguments
 
-`flutter_rust_bridge.yaml` is nothing but specifying where is your source code, and where do you want the generated code to be put in. We give you full control of the location of every generated file.
+Simply add `--help` to see full documentation.
 
-An example is provided [in the example directory](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/with_flutter/rust/flutter_rust_bridge.toml). I suggest you follow it and modify for your needs.
+```
+flutter_rust_bridge 1.0.0
 
-For all keys and their meanings of the configuration yaml (`flutter_rust_bridge.yaml`), please refer to [its source code](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_codegen/src/config.rs).
+USAGE:
+    flutter_rust_bridge_codegen [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -c, --c-output <c-output>                                  Path of output generated C header
+        --class-name <class-name>                              Generated class name
+        --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
+    -d, --dart-output <dart-output>                            Path of output generated Dart code
+        --rust-crate-dir <rust-crate-dir>                      Crate directory for your Rust project
+    -r, --rust-input <rust-input>                              Path of input Rust code
+        --rust-output <rust-output>                            Path of output generated Rust code
+```
 
 ### Add some code
 
