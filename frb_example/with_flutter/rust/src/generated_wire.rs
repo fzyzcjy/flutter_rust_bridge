@@ -55,15 +55,41 @@ pub extern "C" fn wire_memory_test_utility_output_vec_u8(port: i64, len: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_input_vec_size(port: i64, input: *mut wire_list_size) {
+pub extern "C" fn wire_memory_test_utility_input_vec_of_object(
+    port: i64,
+    input: *mut wire_list_size,
+) {
     let api_input = input.wire2api();
-    support::wrap_wire_func(port, move || memory_test_utility_input_vec_size(api_input));
+    support::wrap_wire_func(port, move || {
+        memory_test_utility_input_vec_of_object(api_input)
+    });
 }
 
 #[no_mangle]
-pub extern "C" fn wire_memory_test_utility_output_vec_size(port: i64, len: i32) {
+pub extern "C" fn wire_memory_test_utility_output_vec_of_object(port: i64, len: i32) {
     let api_len = len.wire2api();
-    support::wrap_wire_func(port, move || memory_test_utility_output_vec_size(api_len));
+    support::wrap_wire_func(port, move || {
+        memory_test_utility_output_vec_of_object(api_len)
+    });
+}
+
+#[no_mangle]
+pub extern "C" fn wire_memory_test_utility_input_complex_struct(
+    port: i64,
+    input: *mut wire_TreeNode,
+) {
+    let api_input = input.wire2api();
+    support::wrap_wire_func(port, move || {
+        memory_test_utility_input_complex_struct(api_input)
+    });
+}
+
+#[no_mangle]
+pub extern "C" fn wire_memory_test_utility_output_complex_struct(port: i64, len: i32) {
+    let api_len = len.wire2api();
+    support::wrap_wire_func(port, move || {
+        memory_test_utility_output_complex_struct(api_len)
+    });
 }
 
 // Section: wire structs

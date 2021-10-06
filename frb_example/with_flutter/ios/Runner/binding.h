@@ -51,9 +51,13 @@ void wire_memory_test_utility_output_zero_copy_buffer(int64_t port, int32_t len)
 
 void wire_memory_test_utility_output_vec_u8(int64_t port, int32_t len);
 
-void wire_memory_test_utility_input_vec_size(int64_t port, struct wire_list_size *input);
+void wire_memory_test_utility_input_vec_of_object(int64_t port, struct wire_list_size *input);
 
-void wire_memory_test_utility_output_vec_size(int64_t port, int32_t len);
+void wire_memory_test_utility_output_vec_of_object(int64_t port, int32_t len);
+
+void wire_memory_test_utility_input_complex_struct(int64_t port, struct wire_TreeNode *input);
+
+void wire_memory_test_utility_output_complex_struct(int64_t port, int32_t len);
 
 struct wire_Size *new_box_autoadd_size(void);
 

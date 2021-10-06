@@ -42,14 +42,25 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
         (port) => inner.wire_memory_test_utility_output_vec_u8(port, _api2wire_i32(len)), _wire2api_uint_8_list);
   }
 
-  Future<int> memoryTestUtilityInputVecSize({required List<Size> input}) async {
+  Future<int> memoryTestUtilityInputVecOfObject({required List<Size> input}) async {
     return execute(
-        (port) => inner.wire_memory_test_utility_input_vec_size(port, _api2wire_list_size(input)), _wire2api_i32);
+        (port) => inner.wire_memory_test_utility_input_vec_of_object(port, _api2wire_list_size(input)), _wire2api_i32);
   }
 
-  Future<List<Size>> memoryTestUtilityOutputVecSize({required int len}) async {
+  Future<List<Size>> memoryTestUtilityOutputVecOfObject({required int len}) async {
     return execute(
-        (port) => inner.wire_memory_test_utility_output_vec_size(port, _api2wire_i32(len)), _wire2api_list_size);
+        (port) => inner.wire_memory_test_utility_output_vec_of_object(port, _api2wire_i32(len)), _wire2api_list_size);
+  }
+
+  Future<int> memoryTestUtilityInputComplexStruct({required TreeNode input}) async {
+    return execute(
+        (port) => inner.wire_memory_test_utility_input_complex_struct(port, _api2wire_box_autoadd_tree_node(input)),
+        _wire2api_i32);
+  }
+
+  Future<TreeNode> memoryTestUtilityOutputComplexStruct({required int len}) async {
+    return execute(
+        (port) => inner.wire_memory_test_utility_output_complex_struct(port, _api2wire_i32(len)), _wire2api_tree_node);
   }
 
   // Section: api2wire

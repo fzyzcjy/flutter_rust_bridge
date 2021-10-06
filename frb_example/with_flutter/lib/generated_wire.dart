@@ -105,36 +105,69 @@ class ExampleWire implements DartRustBridgeWireBase {
   late final _wire_memory_test_utility_output_vec_u8 =
       _wire_memory_test_utility_output_vec_u8Ptr.asFunction<void Function(int, int)>();
 
-  void wire_memory_test_utility_input_vec_size(
+  void wire_memory_test_utility_input_vec_of_object(
     int port,
     ffi.Pointer<wire_list_size> input,
   ) {
-    return _wire_memory_test_utility_input_vec_size(
+    return _wire_memory_test_utility_input_vec_of_object(
       port,
       input,
     );
   }
 
-  late final _wire_memory_test_utility_input_vec_sizePtr =
+  late final _wire_memory_test_utility_input_vec_of_objectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_size>)>>(
-          'wire_memory_test_utility_input_vec_size');
-  late final _wire_memory_test_utility_input_vec_size =
-      _wire_memory_test_utility_input_vec_sizePtr.asFunction<void Function(int, ffi.Pointer<wire_list_size>)>();
+          'wire_memory_test_utility_input_vec_of_object');
+  late final _wire_memory_test_utility_input_vec_of_object =
+      _wire_memory_test_utility_input_vec_of_objectPtr.asFunction<void Function(int, ffi.Pointer<wire_list_size>)>();
 
-  void wire_memory_test_utility_output_vec_size(
+  void wire_memory_test_utility_output_vec_of_object(
     int port,
     int len,
   ) {
-    return _wire_memory_test_utility_output_vec_size(
+    return _wire_memory_test_utility_output_vec_of_object(
       port,
       len,
     );
   }
 
-  late final _wire_memory_test_utility_output_vec_sizePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_memory_test_utility_output_vec_size');
-  late final _wire_memory_test_utility_output_vec_size =
-      _wire_memory_test_utility_output_vec_sizePtr.asFunction<void Function(int, int)>();
+  late final _wire_memory_test_utility_output_vec_of_objectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_memory_test_utility_output_vec_of_object');
+  late final _wire_memory_test_utility_output_vec_of_object =
+      _wire_memory_test_utility_output_vec_of_objectPtr.asFunction<void Function(int, int)>();
+
+  void wire_memory_test_utility_input_complex_struct(
+    int port,
+    ffi.Pointer<wire_TreeNode> input,
+  ) {
+    return _wire_memory_test_utility_input_complex_struct(
+      port,
+      input,
+    );
+  }
+
+  late final _wire_memory_test_utility_input_complex_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>(
+          'wire_memory_test_utility_input_complex_struct');
+  late final _wire_memory_test_utility_input_complex_struct =
+      _wire_memory_test_utility_input_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
+
+  void wire_memory_test_utility_output_complex_struct(
+    int port,
+    int len,
+  ) {
+    return _wire_memory_test_utility_output_complex_struct(
+      port,
+      len,
+    );
+  }
+
+  late final _wire_memory_test_utility_output_complex_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_memory_test_utility_output_complex_struct');
+  late final _wire_memory_test_utility_output_complex_struct =
+      _wire_memory_test_utility_output_complex_structPtr.asFunction<void Function(int, int)>();
 
   ffi.Pointer<wire_Size> new_box_autoadd_size() {
     return _new_box_autoadd_size();

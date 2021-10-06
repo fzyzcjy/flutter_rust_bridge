@@ -16,17 +16,35 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('end-to-end test', () {
+    testWidgets('repeat call to memoryTestUtilityInputComplexStruct', (WidgetTester tester) async {
+      await _testMemoryProblemForSingleTypeOfMethod(
+          tester,
+          () async => expect(
+              await app.api.memoryTestUtilityInputComplexStruct(
+                  input: TreeNode(
+                      name: 'root',
+                      children: [for (var i = 0; i < 100000; ++i) TreeNode(name: 'child', children: [])])),
+              100000));
+    });
+    testWidgets('repeat call to memoryTestUtilityOutputComplexStruct', (WidgetTester tester) async {
+      await _testMemoryProblemForSingleTypeOfMethod(
+          tester,
+          () async =>
+              expect((await app.api.memoryTestUtilityOutputComplexStruct(len: 100000)).children.length, 100000));
+    });
+
     testWidgets('repeat call to memoryTestUtilityInputVecSize', (WidgetTester tester) async {
       await _testMemoryProblemForSingleTypeOfMethod(
           tester,
           () async => expect(
-              await app.api.memoryTestUtilityInputVecSize(input: List.filled(100000, Size(width: 42, height: 100))),
+              await app.api.memoryTestUtilityInputVecOfObject(input: List.filled(100000, Size(width: 42, height: 100))),
               100000));
     });
     testWidgets('repeat call to memoryTestUtilityOutputVecSize', (WidgetTester tester) async {
       await _testMemoryProblemForSingleTypeOfMethod(
-          tester, () async => expect((await app.api.memoryTestUtilityOutputVecSize(len: 100000)).length, 100000));
+          tester, () async => expect((await app.api.memoryTestUtilityOutputVecOfObject(len: 100000)).length, 100000));
     });
+
     testWidgets('repeat call to memoryTestUtilityInputArray', (WidgetTester tester) async {
       await _testMemoryProblemForSingleTypeOfMethod(
           tester, () async => expect(await app.api.memoryTestUtilityInputArray(input: Uint8List(1000000)), 1000000));
@@ -63,12 +81,19 @@ Future<void> _testMemoryProblemForSingleTypeOfMethod(WidgetTester tester, Future
   app.main();
   await tester.pumpAndSettle();
 
-  for (var i = 0; i < 100; ++i) {
-    print('Iter $i starts (current time: ${DateTime.now()})');
+  final startTime = DateTime.now();
+  const kMaxRunTime = Duration(seconds: 60);
+
+  while (true) {
+    print('Iteration starts (current time: ${DateTime.now()})');
     for (var j = 0; j < 100; ++j) {
       await callFfi();
     }
     await _maybeGC();
+
+    if (DateTime.now().difference(startTime) > kMaxRunTime) {
+      break;
+    }
   }
 }
 

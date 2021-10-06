@@ -17,6 +17,7 @@ pub fn passing_complex_structs(root: TreeNode) -> Result<String> {
     Ok(format!("Hi this string is from Rust. I received a complex struct: {:?}", root))
 }
 
+// the "Copy" is not necessary
 #[derive(Debug, Copy, Clone)]
 pub struct Size {
     pub width: i32,
@@ -29,7 +30,8 @@ pub struct Point {
     pub y: f64,
 }
 
-#[derive(Debug, Clone)]
+// the "Copy" is not necessary
+#[derive(Debug, Copy, Clone)]
 pub struct TreeNode {
     pub name: String,
     pub children: Vec<TreeNode>,
@@ -48,10 +50,21 @@ pub fn memory_test_utility_output_vec_u8(len: i32) -> Result<Vec<u8>> {
     Ok(vec![0u8; len as usize])
 }
 
-pub fn memory_test_utility_input_vec_size(input: Vec<Size>) -> Result<i32> {
+pub fn memory_test_utility_input_vec_of_object(input: Vec<Size>) -> Result<i32> {
     Ok(input.len() as i32)
 }
 
-pub fn memory_test_utility_output_vec_size(len: i32) -> Result<Vec<Size>> {
+pub fn memory_test_utility_output_vec_of_object(len: i32) -> Result<Vec<Size>> {
     Ok(vec![Size { width: 42, height: 42 }; len as usize])
+}
+
+pub fn memory_test_utility_input_complex_struct(input: TreeNode) -> Result<i32> {
+    Ok(input.children.len() as i32)
+}
+
+pub fn memory_test_utility_output_complex_struct(len: i32) -> Result<TreeNode> {
+    Ok(TreeNode {
+        name: "root".to_string(),
+        children: vec![TreeNode { name: "child".to_string(), children: Vec::new() }; len as usize],
+    })
 }
