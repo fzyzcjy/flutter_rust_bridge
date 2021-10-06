@@ -55,7 +55,7 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ### Run
 
-```
+```shell
 flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
 ```
 
