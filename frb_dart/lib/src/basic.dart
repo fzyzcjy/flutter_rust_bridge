@@ -75,5 +75,6 @@ class FfiException {
 abstract class FlutterRustBridgeWireBase {
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(
-      ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,);
+    ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
+  );
 }
