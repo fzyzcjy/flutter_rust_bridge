@@ -17,26 +17,26 @@ void main() {
 
   group('end-to-end test', () {
     testWidgets('repeat call to memoryTestUtilityInputVecSize', (WidgetTester tester) async {
-      _testMemoryProblemForSingleTypeOfMethod(
+      await _testMemoryProblemForSingleTypeOfMethod(
           tester,
           () async => expect(
               await app.api.memoryTestUtilityInputVecSize(input: List.filled(100000, Size(width: 42, height: 100))),
               100000));
     });
     testWidgets('repeat call to memoryTestUtilityOutputVecSize', (WidgetTester tester) async {
-      _testMemoryProblemForSingleTypeOfMethod(
+      await _testMemoryProblemForSingleTypeOfMethod(
           tester, () async => expect((await app.api.memoryTestUtilityOutputVecSize(len: 100000)).length, 100000));
     });
     testWidgets('repeat call to memoryTestUtilityInputArray', (WidgetTester tester) async {
-      _testMemoryProblemForSingleTypeOfMethod(
+      await _testMemoryProblemForSingleTypeOfMethod(
           tester, () async => expect(await app.api.memoryTestUtilityInputArray(input: Uint8List(1000000)), 1000000));
     });
     testWidgets('repeat call to memoryTestUtilityOutputZeroCopyBuffer', (WidgetTester tester) async {
-      _testMemoryProblemForSingleTypeOfMethod(tester,
+      await _testMemoryProblemForSingleTypeOfMethod(tester,
           () async => expect((await app.api.memoryTestUtilityOutputZeroCopyBuffer(len: 1000000)).length, 1000000));
     });
     testWidgets('repeat call to memoryTestUtilityOutputVecU8', (WidgetTester tester) async {
-      _testMemoryProblemForSingleTypeOfMethod(
+      await _testMemoryProblemForSingleTypeOfMethod(
           tester, () async => expect((await app.api.memoryTestUtilityOutputVecU8(len: 1000000)).length, 1000000));
     });
 
