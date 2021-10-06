@@ -1,4 +1,4 @@
-name: Valgrind
+name: Valgrind test for Dart+Rust
 
 on:
   push:
