@@ -1,4 +1,4 @@
-name: Lints
+name: Linters
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     branches: [ "*" ]
 
 jobs:
-  main:
-    name: Clippy + rustfmt
+  rust_linter:
+    name: Rust linter using Clippy and rustfmt
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
@@ -64,3 +64,48 @@ jobs:
         with:
           command: clippy
           args: --manifest-path=./frb_example/with_flutter/rust/Cargo.toml -- -D warnings
+
+  dart_linter:
+    name: Dart linter using analyze and format
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Note: This workflow uses the latest stable version of the Dart SDK.
+      # You can specify other versions if desired, see documentation here:
+      # https://github.com/dart-lang/setup-dart/blob/main/README.md
+      # - uses: dart-lang/setup-dart@v1
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+
+      - name: Install dependencies for dart runtime
+        working-directory: ./frb_dart
+        run: dart pub get
+      - name: Verify formatting for dart runtime
+        working-directory: ./frb_dart
+        run: dart format --output=none --set-exit-if-changed --line-length 120 .
+      - name: Analyze project source for dart runtime
+        working-directory: ./frb_dart
+        run: dart analyze --fatal-infos
+
+      - name: Install dependencies for pure_dart example
+        working-directory: ./frb_example/pure_dart/dart
+        run: dart pub get
+      - name: Verify formatting for pure_dart example
+        working-directory: ./frb_example/pure_dart/dart
+        run: dart format --output=none --set-exit-if-changed --line-length 120 .
+      - name: Analyze project source for pure_dart example
+        working-directory: ./frb_example/pure_dart/dart
+        run: dart analyze --fatal-infos
+
+      - name: Install dependencies for with_flutter example
+        working-directory: ./frb_example/with_flutter/dart
+        run: dart pub get
+      - name: Verify formatting for with_flutter example
+        working-directory: ./frb_example/with_flutter/dart
+        run: dart format --output=none --set-exit-if-changed --line-length 120 .
+      - name: Analyze project source for with_flutter example
+        working-directory: ./frb_example/with_flutter/dart
+        run: dart analyze --fatal-infos
+
