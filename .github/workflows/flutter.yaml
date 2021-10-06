@@ -55,8 +55,9 @@ jobs:
 
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
+        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
         run: |
-          sed -i 's/"cdylib"/"staticlib"/g' Cargo.toml
+          sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
           cargo lipo
           cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
 
