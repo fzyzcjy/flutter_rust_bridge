@@ -113,3 +113,9 @@ jobs:
         working-directory: ./frb_example/with_flutter
         run: flutter analyze --fatal-infos
 
+      - name: Install pana
+        run: pub global activate pana
+
+      - name: Analyze dart package using pana
+        working-directory: ./frb_dart
+        run: pana --no-warning --line-length 120 --exit-code-threshold 0
