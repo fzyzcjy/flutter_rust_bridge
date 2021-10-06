@@ -13,7 +13,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('end-to-end test', () {
-    testWidgets('tap on the floating action button, verify counter', (WidgetTester tester) async {
+    testWidgets('run and wait to see if there is memory problem', (WidgetTester tester) async {
       app.main();
       await tester.pumpAndSettle();
 
@@ -31,6 +31,7 @@ void main() {
   });
 }
 
+// https://stackoverflow.com/questions/63730179/can-we-force-the-dart-garbage-collector
 Future<void> _maybeGC() async {
   final serverUri = (await Service.getInfo()).serverUri;
 
@@ -43,7 +44,7 @@ Future<void> _maybeGC() async {
   final vmService = await vmServiceConnectUri(_toWebSocket(serverUri));
   final profile = await vmService.getAllocationProfile(isolateId, gc: true);
 
-  print('Allocation profile: $profile');
+  print('Memory usage: ${profile.memoryUsage}');
 }
 
 List<String> _cleanupPathSegments(Uri uri) {
