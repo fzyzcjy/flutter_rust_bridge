@@ -48,7 +48,7 @@ void main() {
           () async => expect((await app.api.offTopicMemoryTestOutputComplexStruct(len: 2000)).children.length, 2000));
     });
 
-    testWidgets('repeat call to offTopicMemoryTestInputVecSize', (WidgetTester tester) async {
+    testWidgets('repeat call to offTopicMemoryTestInputVecOfObject', (WidgetTester tester) async {
       await _testMemoryProblemForSingleTypeOfMethod(
           tester,
           () async => expect(
@@ -56,7 +56,7 @@ void main() {
                   .offTopicMemoryTestInputVecOfObject(input: List.filled(100000, Size(width: 42, height: 100))),
               100000));
     });
-    testWidgets('repeat call to offTopicMemoryTestOutputVecSize', (WidgetTester tester) async {
+    testWidgets('repeat call to offTopicMemoryTestOutputVecOfObject', (WidgetTester tester) async {
       await _testMemoryProblemForSingleTypeOfMethod(
           tester, () async => expect((await app.api.offTopicMemoryTestOutputVecOfObject(len: 100000)).length, 100000));
     });
@@ -77,11 +77,13 @@ void main() {
 }
 
 Future<void> _testMemoryProblemForSingleTypeOfMethod(WidgetTester tester, Future<void> Function() callFfi) async {
+  print('testMemoryProblemForSingleTypeOfMethod start');
+
   app.main();
   await tester.pumpAndSettle();
 
   final startTime = DateTime.now();
-  const kMaxRunTime = Duration(seconds: 10);
+  const kMaxRunTime = Duration(seconds: 5);
 
   while (true) {
     print('Iteration starts (current time: ${DateTime.now()})');
@@ -94,6 +96,8 @@ Future<void> _testMemoryProblemForSingleTypeOfMethod(WidgetTester tester, Future
       break;
     }
   }
+
+  print('testMemoryProblemForSingleTypeOfMethod end');
 }
 
 // Future<void> _callFfiWithComplexStructToDetectMemoryProblems() async {
