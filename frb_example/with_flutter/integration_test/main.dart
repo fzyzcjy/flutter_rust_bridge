@@ -11,6 +11,7 @@ import 'package:vm_service/vm_service_io.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  app.testing = true;
 
   group('end-to-end test', () {
     testWidgets('run and wait to see if there is memory problem', (WidgetTester tester) async {

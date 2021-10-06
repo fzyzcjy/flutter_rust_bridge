@@ -17,6 +17,15 @@ pub fn passing_complex_structs(root: TreeNode) -> Result<String> {
     Ok(format!("Hi this string is from Rust. I received a complex struct: {:?}", root))
 }
 
+pub fn work_on_big_array(input: Vec<u8>) -> Result<ZeroCopyBuffer<Vec<u8>>> {
+    // Just an example to detect memory problems in Flutter.
+    let mut output = vec![0; input.len()];
+    for i in 0..input.len() {
+        output[i] = 255 - input[i];
+    }
+    Ok(ZeroCopyBuffer(output))
+}
+
 #[derive(Debug, Clone)]
 pub struct Size {
     pub width: i32,

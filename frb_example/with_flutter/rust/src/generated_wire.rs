@@ -34,6 +34,12 @@ pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNo
     support::wrap_wire_func(port, move || passing_complex_structs(api_root));
 }
 
+#[no_mangle]
+pub extern "C" fn wire_work_on_big_array(port: i64, input: *mut wire_uint_8_list) {
+    let api_input = input.wire2api();
+    support::wrap_wire_func(port, move || work_on_big_array(api_input));
+}
+
 // Section: wire structs
 
 #[repr(C)]

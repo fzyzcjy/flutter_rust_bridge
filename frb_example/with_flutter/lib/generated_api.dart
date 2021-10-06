@@ -27,6 +27,11 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
         (port) => inner.wire_passing_complex_structs(port, _api2wire_box_autoadd_tree_node(root)), _wire2api_String);
   }
 
+  Future<Uint8List> workOnBigArray({required Uint8List input}) async {
+    return execute(
+        (port) => inner.wire_work_on_big_array(port, _api2wire_uint_8_list(input)), _wire2api_ZeroCopyBuffer_Uint8List);
+  }
+
   // Section: api2wire
   ffi.Pointer<wire_Size> _api2wire_box_autoadd_size(Size raw) {
     final ptr = inner.new_box_autoadd_size();

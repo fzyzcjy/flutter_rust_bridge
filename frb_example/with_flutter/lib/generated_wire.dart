@@ -58,6 +58,22 @@ class ExampleWire implements DartRustBridgeWireBase {
   late final _wire_passing_complex_structs =
       _wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
 
+  void wire_work_on_big_array(
+    int port,
+    ffi.Pointer<wire_uint_8_list> input,
+  ) {
+    return _wire_work_on_big_array(
+      port,
+      input,
+    );
+  }
+
+  late final _wire_work_on_big_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_work_on_big_array');
+  late final _wire_work_on_big_array =
+      _wire_work_on_big_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
   ffi.Pointer<wire_Size> new_box_autoadd_size() {
     return _new_box_autoadd_size();
   }

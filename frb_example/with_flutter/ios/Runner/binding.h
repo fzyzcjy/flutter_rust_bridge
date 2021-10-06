@@ -40,6 +40,8 @@ void wire_draw_mandelbrot(int64_t port,
 
 void wire_passing_complex_structs(int64_t port, struct wire_TreeNode *root);
 
+void wire_work_on_big_array(int64_t port, struct wire_uint_8_list *input);
+
 struct wire_Size *new_box_autoadd_size(void);
 
 struct wire_Point *new_box_autoadd_point(void);
