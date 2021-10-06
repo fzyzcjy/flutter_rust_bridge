@@ -58,21 +58,83 @@ class ExampleWire implements DartRustBridgeWireBase {
   late final _wire_passing_complex_structs =
       _wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
 
-  void wire_work_on_big_array(
+  void wire_memory_test_utility_input_array(
     int port,
     ffi.Pointer<wire_uint_8_list> input,
   ) {
-    return _wire_work_on_big_array(
+    return _wire_memory_test_utility_input_array(
       port,
       input,
     );
   }
 
-  late final _wire_work_on_big_arrayPtr =
+  late final _wire_memory_test_utility_input_arrayPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_work_on_big_array');
-  late final _wire_work_on_big_array =
-      _wire_work_on_big_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+          'wire_memory_test_utility_input_array');
+  late final _wire_memory_test_utility_input_array =
+      _wire_memory_test_utility_input_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_memory_test_utility_output_zero_copy_buffer(
+    int port,
+    int len,
+  ) {
+    return _wire_memory_test_utility_output_zero_copy_buffer(
+      port,
+      len,
+    );
+  }
+
+  late final _wire_memory_test_utility_output_zero_copy_bufferPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_memory_test_utility_output_zero_copy_buffer');
+  late final _wire_memory_test_utility_output_zero_copy_buffer =
+      _wire_memory_test_utility_output_zero_copy_bufferPtr.asFunction<void Function(int, int)>();
+
+  void wire_memory_test_utility_output_vec_u8(
+    int port,
+    int len,
+  ) {
+    return _wire_memory_test_utility_output_vec_u8(
+      port,
+      len,
+    );
+  }
+
+  late final _wire_memory_test_utility_output_vec_u8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_memory_test_utility_output_vec_u8');
+  late final _wire_memory_test_utility_output_vec_u8 =
+      _wire_memory_test_utility_output_vec_u8Ptr.asFunction<void Function(int, int)>();
+
+  void wire_memory_test_utility_input_vec_size(
+    int port,
+    ffi.Pointer<wire_list_size> input,
+  ) {
+    return _wire_memory_test_utility_input_vec_size(
+      port,
+      input,
+    );
+  }
+
+  late final _wire_memory_test_utility_input_vec_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_size>)>>(
+          'wire_memory_test_utility_input_vec_size');
+  late final _wire_memory_test_utility_input_vec_size =
+      _wire_memory_test_utility_input_vec_sizePtr.asFunction<void Function(int, ffi.Pointer<wire_list_size>)>();
+
+  void wire_memory_test_utility_output_vec_size(
+    int port,
+    int len,
+  ) {
+    return _wire_memory_test_utility_output_vec_size(
+      port,
+      len,
+    );
+  }
+
+  late final _wire_memory_test_utility_output_vec_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_memory_test_utility_output_vec_size');
+  late final _wire_memory_test_utility_output_vec_size =
+      _wire_memory_test_utility_output_vec_sizePtr.asFunction<void Function(int, int)>();
 
   ffi.Pointer<wire_Size> new_box_autoadd_size() {
     return _new_box_autoadd_size();
@@ -123,6 +185,18 @@ class ExampleWire implements DartRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_tree_node> Function(ffi.Int32)>>('new_list_tree_node');
   late final _new_list_tree_node = _new_list_tree_nodePtr.asFunction<ffi.Pointer<wire_list_tree_node> Function(int)>();
 
+  ffi.Pointer<wire_list_size> new_list_size(
+    int len,
+  ) {
+    return _new_list_size(
+      len,
+    );
+  }
+
+  late final _new_list_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_size> Function(ffi.Int32)>>('new_list_size');
+  late final _new_list_size = _new_list_sizePtr.asFunction<ffi.Pointer<wire_list_size> Function(int)>();
+
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
   ) {
@@ -170,6 +244,13 @@ class wire_TreeNode extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 
   external ffi.Pointer<wire_list_tree_node> children;
+}
+
+class wire_list_size extends ffi.Struct {
+  external ffi.Pointer<wire_Size> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;

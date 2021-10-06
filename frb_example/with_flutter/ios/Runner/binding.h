@@ -28,6 +28,11 @@ typedef struct wire_TreeNode {
   struct wire_list_tree_node *children;
 } wire_TreeNode;
 
+typedef struct wire_list_size {
+  struct wire_Size *ptr;
+  int32_t len;
+} wire_list_size;
+
 typedef int64_t DartPort;
 
 typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
@@ -40,7 +45,15 @@ void wire_draw_mandelbrot(int64_t port,
 
 void wire_passing_complex_structs(int64_t port, struct wire_TreeNode *root);
 
-void wire_work_on_big_array(int64_t port, struct wire_uint_8_list *input);
+void wire_memory_test_utility_input_array(int64_t port, struct wire_uint_8_list *input);
+
+void wire_memory_test_utility_output_zero_copy_buffer(int64_t port, int32_t len);
+
+void wire_memory_test_utility_output_vec_u8(int64_t port, int32_t len);
+
+void wire_memory_test_utility_input_vec_size(int64_t port, struct wire_list_size *input);
+
+void wire_memory_test_utility_output_vec_size(int64_t port, int32_t len);
 
 struct wire_Size *new_box_autoadd_size(void);
 
@@ -51,5 +64,7 @@ struct wire_uint_8_list *new_uint_8_list(int32_t len);
 struct wire_TreeNode *new_box_autoadd_tree_node(void);
 
 struct wire_list_tree_node *new_list_tree_node(int32_t len);
+
+struct wire_list_size *new_list_size(int32_t len);
 
 void store_dart_post_cobject(DartPostCObjectFnType ptr);

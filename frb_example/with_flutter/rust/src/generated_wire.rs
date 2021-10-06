@@ -35,9 +35,35 @@ pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNo
 }
 
 #[no_mangle]
-pub extern "C" fn wire_work_on_big_array(port: i64, input: *mut wire_uint_8_list) {
+pub extern "C" fn wire_memory_test_utility_input_array(port: i64, input: *mut wire_uint_8_list) {
     let api_input = input.wire2api();
-    support::wrap_wire_func(port, move || work_on_big_array(api_input));
+    support::wrap_wire_func(port, move || memory_test_utility_input_array(api_input));
+}
+
+#[no_mangle]
+pub extern "C" fn wire_memory_test_utility_output_zero_copy_buffer(port: i64, len: i32) {
+    let api_len = len.wire2api();
+    support::wrap_wire_func(port, move || {
+        memory_test_utility_output_zero_copy_buffer(api_len)
+    });
+}
+
+#[no_mangle]
+pub extern "C" fn wire_memory_test_utility_output_vec_u8(port: i64, len: i32) {
+    let api_len = len.wire2api();
+    support::wrap_wire_func(port, move || memory_test_utility_output_vec_u8(api_len));
+}
+
+#[no_mangle]
+pub extern "C" fn wire_memory_test_utility_input_vec_size(port: i64, input: *mut wire_list_size) {
+    let api_input = input.wire2api();
+    support::wrap_wire_func(port, move || memory_test_utility_input_vec_size(api_input));
+}
+
+#[no_mangle]
+pub extern "C" fn wire_memory_test_utility_output_vec_size(port: i64, len: i32) {
+    let api_len = len.wire2api();
+    support::wrap_wire_func(port, move || memory_test_utility_output_vec_size(api_len));
 }
 
 // Section: wire structs
@@ -77,6 +103,13 @@ pub struct wire_list_tree_node {
     len: i32,
 }
 
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_size {
+    ptr: *mut wire_Size,
+    len: i32,
+}
+
 // Section: allocate functions
 
 #[no_mangle]
@@ -107,6 +140,15 @@ pub extern "C" fn new_box_autoadd_tree_node() -> *mut wire_TreeNode {
 pub extern "C" fn new_list_tree_node(len: i32) -> *mut wire_list_tree_node {
     let wrap = wire_list_tree_node {
         ptr: support::new_leak_vec_ptr(wire_TreeNode::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_size(len: i32) -> *mut wire_list_size {
+    let wrap = wire_list_size {
+        ptr: support::new_leak_vec_ptr(wire_Size::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -208,6 +250,16 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
 
 impl Wire2Api<Vec<TreeNode>> for *mut wire_list_tree_node {
     fn wire2api(self) -> Vec<TreeNode> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(|x| x.wire2api()).collect()
+    }
+}
+
+impl Wire2Api<Vec<Size>> for *mut wire_list_size {
+    fn wire2api(self) -> Vec<Size> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)

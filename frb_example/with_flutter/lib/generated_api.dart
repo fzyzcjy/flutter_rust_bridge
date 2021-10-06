@@ -27,9 +27,29 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
         (port) => inner.wire_passing_complex_structs(port, _api2wire_box_autoadd_tree_node(root)), _wire2api_String);
   }
 
-  Future<Uint8List> workOnBigArray({required Uint8List input}) async {
+  Future<int> memoryTestUtilityInputArray({required Uint8List input}) async {
     return execute(
-        (port) => inner.wire_work_on_big_array(port, _api2wire_uint_8_list(input)), _wire2api_ZeroCopyBuffer_Uint8List);
+        (port) => inner.wire_memory_test_utility_input_array(port, _api2wire_uint_8_list(input)), _wire2api_i32);
+  }
+
+  Future<Uint8List> memoryTestUtilityOutputZeroCopyBuffer({required int len}) async {
+    return execute((port) => inner.wire_memory_test_utility_output_zero_copy_buffer(port, _api2wire_i32(len)),
+        _wire2api_ZeroCopyBuffer_Uint8List);
+  }
+
+  Future<Uint8List> memoryTestUtilityOutputVecU8({required int len}) async {
+    return execute(
+        (port) => inner.wire_memory_test_utility_output_vec_u8(port, _api2wire_i32(len)), _wire2api_uint_8_list);
+  }
+
+  Future<int> memoryTestUtilityInputVecSize({required List<Size> input}) async {
+    return execute(
+        (port) => inner.wire_memory_test_utility_input_vec_size(port, _api2wire_list_size(input)), _wire2api_i32);
+  }
+
+  Future<List<Size>> memoryTestUtilityOutputVecSize({required int len}) async {
+    return execute(
+        (port) => inner.wire_memory_test_utility_output_vec_size(port, _api2wire_i32(len)), _wire2api_list_size);
   }
 
   // Section: api2wire
@@ -81,6 +101,14 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
     final ans = inner.new_list_tree_node(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_tree_node(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  ffi.Pointer<wire_list_size> _api2wire_list_size(List<Size> raw) {
+    final ans = inner.new_list_size(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_size(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -189,4 +217,8 @@ String _wire2api_String(dynamic raw) {
 
 List<TreeNode> _wire2api_list_tree_node(dynamic raw) {
   return (raw as List<dynamic>).map((item) => _wire2api_tree_node(item)).toList();
+}
+
+List<Size> _wire2api_list_size(dynamic raw) {
+  return (raw as List<dynamic>).map((item) => _wire2api_size(item)).toList();
 }
