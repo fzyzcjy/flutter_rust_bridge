@@ -2,7 +2,7 @@ import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:flutter_rust_bridge_example/generated.dart';
+import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:test/test.dart';
 
 void main(List<String> args) async {

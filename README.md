@@ -46,7 +46,7 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 **Install**: `cargo install flutter_rust_bridge_codegen`.
 
-**Run**: `flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/generated.dart`. (For more options, use `--help`)
+**Run**: `flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart`. (For more options, use `--help`)
 
 **Enjoy**: Use the generated `.dart` file!
 
