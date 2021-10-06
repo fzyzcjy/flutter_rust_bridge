@@ -8,6 +8,7 @@
 [![Flutter integration test for Flutter+Rust](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/flutter.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/flutter.yaml)
 [![Run codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml)
 
+
 ![Logo](docs/logo.png)
 
 ## Advantages
@@ -25,7 +26,7 @@
 
 What you write down (in Rust):
 
-```Rust
+```rust
 pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
     ... do my heavy computations ...
 }
@@ -36,7 +37,7 @@ pub struct TreeNode { pub value: i32, pub children: Vec<MyTreeNode> }
 
 With bindings automatically generated, you can simply use the following API in Flutter/Dart. Nothing more.
 
-```Dart
+```dart
 Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 ```
 
@@ -54,7 +55,9 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ### Run
 
-`flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart`.
+```
+flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
+```
 
 (For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).)
 
@@ -112,7 +115,7 @@ Dark SDK `>=2.14.0` is needed not by this library, but by the latest version of 
 
 Simply add `--help` to see full documentation.
 
-```
+```shell
 flutter_rust_bridge_codegen 1.0.0
 
 USAGE:
