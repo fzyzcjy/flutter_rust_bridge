@@ -46,7 +46,7 @@ pub fn generate(
     let header = format!(
         "{}
 
-        // ignore_for_file: non_constant_identifier_names, unused_element
+        // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore
 
         import 'dart:convert';
         import 'dart:typed_data';
