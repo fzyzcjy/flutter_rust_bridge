@@ -44,16 +44,23 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ## Quickstart
 
-**Install**:
+### Install
 
-* Install dependencies by `dart pub global activate ffigen` and `sudo apt-get install -y libclang-dev`. (See [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/run_codegen.yml) as a reference)
-* Install the binary by `cargo install flutter_rust_bridge_codegen`.
+* Install dependency `cbindgen`: `cargo install cbindgen`
+* Install dependency `ffigen`:  `dart pub global activate ffigen`, and [install LLVM](https://pub.dev/packages/ffigen#installing-llvm).
+* Install this code generator binary by `cargo install flutter_rust_bridge_codegen`.
 * Add `flutter_rust_bridge = "1.0"` (where `1.0` should be the latest version) to Rust's `Cargo.toml`.
 * Add `flutter_rust_bridge: ^1.0` (same as above, should be latest version) to Flutter/Dart's `pubspec.yaml` under the section of `dependencies`.
 
-**Run**: `flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart`. (For more options, use `--help`) (What types and function signatures can you write in Rust? Have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).)
+### Run
 
-**Enjoy**: Use the generated `.dart` file!
+`flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart`.
+
+(For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).)
+
+### Enjoy
+
+Use the generated `.dart` file!
 
 ## Tutorial: A Flutter+Rust app
 
