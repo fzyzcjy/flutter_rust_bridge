@@ -1,8 +1,8 @@
 use std::io::Error;
 use std::sync::Mutex;
 
-use image::ColorType;
 use image::png::PNGEncoder;
+use image::ColorType;
 use num::Complex;
 
 ///! NOTE: This file is **unrelated** to the main topic of our example.
@@ -10,7 +10,6 @@ use num::Complex;
 ///! Mandelbrot is copied and modified from
 ///! https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs and
 ///! https://github.com/Ducolnd/rust-mandelbrot/blob/master/src/main.rs
-
 use crate::api::*;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
@@ -40,14 +39,16 @@ fn escape_time(c: Complex<f64>, limit: usize) -> Option<usize> {
 /// `pixel` is a (column, row) pair indicating a particular pixel in that image.
 /// The `upper_left` and `lower_right` parameters are points on the complex
 /// plane designating the area our image covers.
-fn pixel_to_point(bounds: (usize, usize),
-                  pixel: (usize, usize),
-                  upper_left: Complex<f64>,
-                  lower_right: Complex<f64>)
-                  -> Complex<f64>
-{
-    let (width, height) = (lower_right.re - upper_left.re,
-                           upper_left.im - lower_right.im);
+fn pixel_to_point(
+    bounds: (usize, usize),
+    pixel: (usize, usize),
+    upper_left: Complex<f64>,
+    lower_right: Complex<f64>,
+) -> Complex<f64> {
+    let (width, height) = (
+        lower_right.re - upper_left.re,
+        upper_left.im - lower_right.im,
+    );
     Complex {
         re: upper_left.re + pixel.0 as f64 * width / bounds.0 as f64,
         im: upper_left.im - pixel.1 as f64 * height / bounds.1 as f64,
@@ -58,10 +59,18 @@ fn pixel_to_point(bounds: (usize, usize),
 
 #[test]
 fn test_pixel_to_point() {
-    assert_eq!(pixel_to_point((100, 200), (25, 175),
-                              Complex { re: -1.0, im: 1.0 },
-                              Complex { re: 1.0, im: -1.0 }),
-               Complex { re: -0.5, im: -0.75 });
+    assert_eq!(
+        pixel_to_point(
+            (100, 200),
+            (25, 175),
+            Complex { re: -1.0, im: 1.0 },
+            Complex { re: 1.0, im: -1.0 },
+        ),
+        Complex {
+            re: -0.5,
+            im: -0.75,
+        }
+    );
 }
 
 /// Render a rectangle of the Mandelbrot set into a buffer of pixels.
@@ -70,22 +79,21 @@ fn test_pixel_to_point() {
 /// which holds one grayscale pixel per byte. The `upper_left` and `lower_right`
 /// arguments specify points on the complex plane corresponding to the upper-
 /// left and lower-right corners of the pixel buffer.
-fn render(pixels: &mut [u8],
-          bounds: (usize, usize),
-          upper_left: Complex<f64>,
-          lower_right: Complex<f64>)
-{
+fn render(
+    pixels: &mut [u8],
+    bounds: (usize, usize),
+    upper_left: Complex<f64>,
+    lower_right: Complex<f64>,
+) {
     assert_eq!(pixels.len(), bounds.0 * bounds.1);
 
     for row in 0..bounds.1 {
         for column in 0..bounds.0 {
-            let point = pixel_to_point(bounds, (column, row),
-                                       upper_left, lower_right);
-            pixels[row * bounds.0 + column] =
-                match escape_time(point, 255) {
-                    None => 0,
-                    Some(count) => 255 - count as u8
-                };
+            let point = pixel_to_point(bounds, (column, row), upper_left, lower_right);
+            pixels[row * bounds.0 + column] = match escape_time(point, 255) {
+                None => 0,
+                Some(count) => 255 - count as u8,
+            };
         }
     }
 }
@@ -105,10 +113,12 @@ const A: f64 = 1.0 * (1.0 / std::f64::consts::LOG2_10);
 const B: f64 = (1.0 / (3.0 * std::f64::consts::SQRT_2)) * (1.0 / std::f64::consts::LOG2_10);
 
 pub fn colorize_pixel(it: u8) -> (u8, u8, u8) {
-    if it == 0 { return (0, 0, 0); }
+    if it == 0 {
+        return (0, 0, 0);
+    }
     let it = it as f64;
 
-    let c: f64 = (1.0 as f64 / ((7.0 * 3.0 as f64).powf(1.0 / 8.0))) * (1.0 / std::f64::consts::LOG2_10);
+    let c: f64 = (1.0_f64 / ((7.0 * 3.0_f64).powf(1.0 / 8.0))) * (1.0 / std::f64::consts::LOG2_10);
 
     let r = 255.0 * ((1.0 - (A * it).cos()) / 2.0);
     let g = 255.0 * ((1.0 - (B * it).cos()) / 2.0);
@@ -125,14 +135,17 @@ fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>, std::io
     let mut buf = Vec::new();
 
     let encoder = PNGEncoder::new(&mut buf);
-    encoder.encode(&pixels,
-                   bounds.0 as u32, bounds.1 as u32,
-                   ColorType::RGB(8))?;
+    encoder.encode(pixels, bounds.0 as u32, bounds.1 as u32, ColorType::RGB(8))?;
 
     Ok(buf)
 }
 
-pub fn mandelbrot(image_size: Size, zoom_point: Point, scale: f64, num_threads: i32) -> Result<Vec<u8>, Error> {
+pub fn mandelbrot(
+    image_size: Size,
+    zoom_point: Point,
+    scale: f64,
+    num_threads: i32,
+) -> Result<Vec<u8>, Error> {
     let bounds = (image_size.width as usize, image_size.height as usize);
     let upper_left = Complex::new(zoom_point.x - scale, zoom_point.y - scale);
     let lower_right = Complex::new(zoom_point.x + scale, zoom_point.y + scale);
@@ -145,29 +158,33 @@ pub fn mandelbrot(image_size: Size, zoom_point: Point, scale: f64, num_threads: 
         let bands = Mutex::new(pixels.chunks_mut(band_rows * bounds.0).enumerate());
         crossbeam::scope(|scope| {
             for _ in 0..num_threads {
-                scope.spawn(|_| {
-                    loop {
-                        match {
-                            let mut guard = bands.lock().unwrap();
-                            guard.next()
+                scope.spawn(|_| loop {
+                    match {
+                        let mut guard = bands.lock().unwrap();
+                        guard.next()
+                    } {
+                        None => {
+                            return;
                         }
-                        {
-                            None => { return; }
-                            Some((i, band)) => {
-                                let top = band_rows * i;
-                                let height = band.len() / bounds.0;
-                                let band_bounds = (bounds.0, height);
-                                let band_upper_left = pixel_to_point(bounds, (0, top),
-                                                                     upper_left, lower_right);
-                                let band_lower_right = pixel_to_point(bounds, (bounds.0, top + height),
-                                                                      upper_left, lower_right);
-                                render(band, band_bounds, band_upper_left, band_lower_right);
-                            }
+                        Some((i, band)) => {
+                            let top = band_rows * i;
+                            let height = band.len() / bounds.0;
+                            let band_bounds = (bounds.0, height);
+                            let band_upper_left =
+                                pixel_to_point(bounds, (0, top), upper_left, lower_right);
+                            let band_lower_right = pixel_to_point(
+                                bounds,
+                                (bounds.0, top + height),
+                                upper_left,
+                                lower_right,
+                            );
+                            render(band, band_bounds, band_upper_left, band_lower_right);
                         }
                     }
                 });
             }
-        }).unwrap();
+        })
+        .unwrap();
     }
 
     write_image(&colorize(&pixels), bounds)

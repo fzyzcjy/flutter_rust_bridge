@@ -285,7 +285,9 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn safe_ident(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type(),
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => {
+                "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
+            }
         }
     }
 
