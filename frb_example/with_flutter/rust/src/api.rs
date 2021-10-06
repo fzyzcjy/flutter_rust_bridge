@@ -62,7 +62,10 @@ pub fn off_topic_memory_test_input_vec_of_object(input: Vec<Size>) -> Result<i32
 }
 
 pub fn off_topic_memory_test_output_vec_of_object(len: i32) -> Result<Vec<Size>> {
-    let item = Size { width: 42, height: 42 };
+    let item = Size {
+        width: 42,
+        height: 42,
+    };
     Ok(vec![item; len as usize])
 }
 
@@ -71,7 +74,10 @@ pub fn off_topic_memory_test_input_complex_struct(input: TreeNode) -> Result<i32
 }
 
 pub fn off_topic_memory_test_output_complex_struct(len: i32) -> Result<TreeNode> {
-    let child = TreeNode { name: "child".to_string(), children: Vec::new() };
+    let child = TreeNode {
+        name: "child".to_string(),
+        children: Vec::new(),
+    };
     Ok(TreeNode {
         name: "root".to_string(),
         children: vec![child; len as usize],
