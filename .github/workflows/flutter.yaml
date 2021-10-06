@@ -56,8 +56,8 @@ jobs:
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
         run: |
-          sed -i 's/"cdylib"/"staticlib"/g' a.txt && \
-          cargo lipo && \
+          sed -i 's/"cdylib"/"staticlib"/g' Cargo.toml
+          cargo lipo
           cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
 
       - name: Run Flutter integration tests
