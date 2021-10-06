@@ -16,6 +16,26 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('end-to-end test', () {
+    testWidgets('run and wait to see if there is memory problem', (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      // run many times to see memory leaks or other problems
+      for (var i = 0; i < 100; ++i) {
+        await tester.pumpAndSettle();
+        expect(find.textContaining('Hi this string is from Rust'), findsOneWidget);
+
+        for (var j = 0; j < 20; ++j) {
+          await _callFfiWithComplexStructToDetectMemoryProblems();
+        }
+
+        // NOTE even if `externalUsage` increases, this is NOT a bug!
+        // It is because Flutter's ImageCache, which will cache about 100MB...
+        // see https://github.com/fzyzcjy/flutter_rust_bridge/issues/19 for details
+        await _maybeGC();
+      }
+    });
+
     testWidgets('repeat call to memoryTestUtilityInputComplexStruct', (WidgetTester tester) async {
       await _testMemoryProblemForSingleTypeOfMethod(
           tester,
@@ -54,23 +74,6 @@ void main() {
       await _testMemoryProblemForSingleTypeOfMethod(
           tester, () async => expect((await app.api.memoryTestUtilityOutputVecU8(len: 1000000)).length, 1000000));
     });
-
-    testWidgets('run and wait to see if there is memory problem', (WidgetTester tester) async {
-      app.main();
-      await tester.pumpAndSettle();
-
-      // run many times to see memory leaks or other problems
-      for (var i = 0; i < 100; ++i) {
-        await tester.pumpAndSettle();
-        expect(find.textContaining('Hi this string is from Rust'), findsOneWidget);
-
-        for (var j = 0; j < 20; ++j) {
-          await _callFfiWithComplexStructToDetectMemoryProblems();
-        }
-
-        await _maybeGC();
-      }
-    });
   });
 }
 
@@ -79,11 +82,11 @@ Future<void> _testMemoryProblemForSingleTypeOfMethod(WidgetTester tester, Future
   await tester.pumpAndSettle();
 
   final startTime = DateTime.now();
-  const kMaxRunTime = Duration(seconds: 60);
+  const kMaxRunTime = Duration(seconds: 10);
 
   while (true) {
     print('Iteration starts (current time: ${DateTime.now()})');
-    for (var j = 0; j < 100; ++j) {
+    for (var j = 0; j < 20; ++j) {
       await callFfi();
     }
     await _maybeGC();
@@ -95,7 +98,7 @@ Future<void> _testMemoryProblemForSingleTypeOfMethod(WidgetTester tester, Future
 }
 
 Future<void> _callFfiWithComplexStructToDetectMemoryProblems() async {
-  print('Call FFI with complex struct: start');
+  // print('Call FFI with complex struct: start');
   final input = _createBigTree(4, 10);
   final result = await app.api.passingComplexStructs(root: input);
   print('Call FFI with complex struct: end (result.length=${result.length})');

@@ -36,6 +36,7 @@ pub struct TreeNode {
 }
 
 // following are used only for memory tests. Readers of this example do not need to consider it.
+
 pub fn memory_test_utility_input_array(input: Vec<u8>) -> Result<i32> {
     Ok(input.len() as i32)
 }
