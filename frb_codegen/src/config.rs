@@ -51,17 +51,19 @@ pub fn parse(raw: RawOpts) -> Opts {
 
     let rust_crate_dir = canon_path(&raw.rust_crate_dir.unwrap_or_else(|| {
         fallback_rust_crate_dir(&rust_input_path)
-            .expect(&format_fail_to_guess_error("rust_crate_dir"))
+            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
     }));
     let rust_output_path = canon_path(&raw.rust_output.unwrap_or_else(|| {
         fallback_rust_output_path(&rust_input_path)
-            .expect(&format_fail_to_guess_error("rust_output"))
+            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_output")))
     }));
     let class_name = raw.class_name.unwrap_or_else(|| {
-        fallback_class_name(&*rust_crate_dir).expect(&format_fail_to_guess_error("class_name"))
+        fallback_class_name(&*rust_crate_dir)
+            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("class_name")))
     });
     let c_output_path = canon_path(&raw.c_output.unwrap_or_else(|| {
-        fallback_c_output_path().expect(&format_fail_to_guess_error("c_output"))
+        fallback_c_output_path()
+            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))
     }));
 
     Opts {
@@ -83,7 +85,9 @@ fn format_fail_to_guess_error(name: &str) -> String {
 }
 
 fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
-    let mut dir_curr = Path::new(rust_input_path).parent().ok_or(anyhow!(""))?;
+    let mut dir_curr = Path::new(rust_input_path)
+        .parent()
+        .ok_or_else(|| anyhow!(""))?;
 
     loop {
         let path_cargo_toml = dir_curr.join("Cargo.toml");
@@ -92,7 +96,7 @@ fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
             return Ok(dir_curr
                 .as_os_str()
                 .to_str()
-                .ok_or(anyhow!(""))?
+                .ok_or_else(|| anyhow!(""))?
                 .to_string());
         }
 
@@ -112,17 +116,17 @@ fn fallback_c_output_path() -> Result<String> {
     Ok(named_temp_file
         .path()
         .to_str()
-        .ok_or(anyhow!(""))?
+        .ok_or_else(|| anyhow!(""))?
         .to_string())
 }
 
 fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
     Ok(Path::new(rust_input_path)
         .parent()
-        .ok_or(anyhow!(""))?
+        .ok_or_else(|| anyhow!(""))?
         .join("generated.rs")
         .to_str()
-        .ok_or(anyhow!(""))?
+        .ok_or_else(|| anyhow!(""))?
         .to_string())
 }
 
@@ -133,21 +137,22 @@ fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_value = cargo_toml_content.parse::<Value>()?;
     let package_name = cargo_toml_value
         .get("package")
-        .ok_or(anyhow!("no `package` in Cargo.toml"))?
+        .ok_or_else(|| anyhow!("no `package` in Cargo.toml"))?
         .get("name")
-        .ok_or(anyhow!("no `name` in Cargo.toml"))?
+        .ok_or_else(|| anyhow!("no `name` in Cargo.toml"))?
         .as_str()
-        .ok_or(anyhow!(""))?;
+        .ok_or_else(|| anyhow!(""))?;
 
     Ok(package_name.to_case(Case::Pascal))
 }
 
 fn canon_path(sub_path: &str) -> String {
-    let mut path = env::current_dir().expect(&format!("fail to parse path: {}", sub_path));
+    let mut path =
+        env::current_dir().unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path));
     path.push(sub_path);
     path.into_os_string()
         .into_string()
-        .expect(&format!("fail to parse path: {}", sub_path))
+        .unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
 }
 
 impl Opts {
