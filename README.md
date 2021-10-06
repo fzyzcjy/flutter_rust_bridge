@@ -10,7 +10,7 @@
 [![Run codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml)
 
 
-![Logo](docs/logo.png)
+![Logo](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/docs/logo.png)
 
 ## 🚀 Advantages
 
