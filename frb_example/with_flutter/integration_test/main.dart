@@ -22,15 +22,12 @@ void main() {
           () async => expect(
               await app.api.memoryTestUtilityInputComplexStruct(
                   input: TreeNode(
-                      name: 'root',
-                      children: [for (var i = 0; i < 100000; ++i) TreeNode(name: 'child', children: [])])),
-              100000));
+                      name: 'root', children: [for (var i = 0; i < 10000; ++i) TreeNode(name: 'child', children: [])])),
+              10000));
     });
     testWidgets('repeat call to memoryTestUtilityOutputComplexStruct', (WidgetTester tester) async {
-      await _testMemoryProblemForSingleTypeOfMethod(
-          tester,
-          () async =>
-              expect((await app.api.memoryTestUtilityOutputComplexStruct(len: 100000)).children.length, 100000));
+      await _testMemoryProblemForSingleTypeOfMethod(tester,
+          () async => expect((await app.api.memoryTestUtilityOutputComplexStruct(len: 10000)).children.length, 10000));
     });
 
     testWidgets('repeat call to memoryTestUtilityInputVecSize', (WidgetTester tester) async {
