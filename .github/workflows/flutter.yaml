@@ -69,10 +69,11 @@ jobs:
   android:
     runs-on: macOS-latest # "betterprogramming.pub" says must be macOS
 
-    matrix:
-      device:
-        - "pixel"
-        - "Nexus 6"
+    strategy:
+      matrix:
+        device:
+          - "pixel"
+          - "Nexus 6"
 
     steps:
       - uses: actions/checkout@v2
