@@ -1,8 +1,8 @@
 use convert_case::{Case, Casing};
 use log::debug;
 
-use crate::api_types::*;
 use crate::api_types::ApiType::*;
+use crate::api_types::*;
 use crate::generator_common::*;
 
 pub fn generate(
@@ -61,7 +61,12 @@ pub fn generate(
             factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
 
             {}.raw({} inner) : super(inner);
-        }}",
+        }}
+
+        {}
+
+        // ------------------------- Implementation Details -------------------------
+        ",
         dart_api_class_name,
         dart_wire_class_name,
         dart_api_class_name,
@@ -69,6 +74,7 @@ pub fn generate(
         dart_wire_class_name,
         dart_api_class_name,
         dart_wire_class_name,
+        dart_structs.join("\n\n"),
     );
 
     let others = format!(
@@ -84,9 +90,6 @@ pub fn generate(
             {}
         }}
 
-        // Section: dart structs
-        {}
-
         // Section: wire2api
         {}
         ",
@@ -97,7 +100,6 @@ pub fn generate(
         dart_functions.join("\n\n"),
         dart_api2wire_funcs.join("\n\n"),
         dart_api_fill_to_wire_funcs.join("\n\n"),
-        dart_structs.join("\n\n"),
         dart_wire2api_funcs.join("\n\n"),
     );
 
