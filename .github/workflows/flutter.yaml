@@ -47,6 +47,9 @@ jobs:
           profile: minimal
           toolchain: stable
 
+      - name: Install cargo lipo
+        run: cargo install cargo-lipo
+
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
         run: flutter pub get
@@ -72,6 +75,7 @@ jobs:
         device:
           - "pixel"
           - "Nexus 6"
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v2
@@ -82,9 +86,16 @@ jobs:
           profile: minimal
           toolchain: stable
 
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
       - uses: actions/setup-java@v1
         with:
           java-version: '8.x' # "betterprogramming.pub" says must be java "8"
+
+      - name: Install cargo ndk
+        run: cargo install cargo-ndk
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
