@@ -10,8 +10,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  main:
-    # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
+  # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
+  ios:
     runs-on: macOS-latest
 
     strategy:
@@ -43,7 +43,7 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - name: Install toolchain
+      - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
@@ -63,3 +63,41 @@ jobs:
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
         run: flutter test integration_test/main.dart --verbose
+
+  # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
+  android:
+    runs-on: macOS-latest # "betterprogramming.pub" says must be macOS
+
+    matrix:
+      device:
+        - "pixel"
+        - "Nexus 6"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '8.x' # "betterprogramming.pub" says must be java "8"
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Build Rust lib
+        working-directory: ./frb_example/with_flutter/rust
+        run: cargo ndk -o ../android/app/src/main/jniLibs build
+
+      - name: Run Flutter integration tests
+        working-directory: ./frb_example/with_flutter
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+            flutter test integration_test/main.dart --verbose
