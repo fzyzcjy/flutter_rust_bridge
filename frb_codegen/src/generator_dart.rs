@@ -9,7 +9,7 @@ pub fn generate(
     api_file: &ApiFile,
     dart_api_class_name: &str,
     dart_wire_class_name: &str,
-) -> String {
+) -> (String, String) {
     let distinct_types = api_file.distinct_types();
     debug!("distinct_types={:?}", distinct_types);
 
@@ -42,7 +42,7 @@ pub fn generate(
         .map(|ty| generate_wire2api_func(ty, api_file))
         .collect::<Vec<_>>();
 
-    format!(
+    let header = format!(
         "{}
 
         // ignore_for_file: non_constant_identifier_names, unused_element
@@ -51,9 +51,12 @@ pub fn generate(
         import 'dart:ffi' as ffi;
         import 'dart:typed_data';
 
-        import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+        import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
+        CODE_HEADER,
+    );
 
-        class {} extends DartRustBridgeBase<{}> {{
+    let body = format!(
+        "class {} extends DartRustBridgeBase<{}> {{
             {}({} inner) : super(inner);
 
             {}
@@ -71,7 +74,6 @@ pub fn generate(
         // Section: wire2api
         {}
         ",
-        CODE_HEADER,
         dart_api_class_name,
         dart_wire_class_name,
         dart_api_class_name,
@@ -81,7 +83,9 @@ pub fn generate(
         dart_api_fill_to_wire_funcs.join("\n\n"),
         dart_structs.join("\n\n"),
         dart_wire2api_funcs.join("\n\n"),
-    )
+    );
+
+    (header, body)
 }
 
 fn generate_api_func(func: &ApiFunc) -> String {

@@ -1,5 +1,4 @@
 use std::fs;
-use std::io::Read;
 
 use env_logger::Env;
 use log::{debug, info};
@@ -42,7 +41,7 @@ fn main() {
     fs::write(&config.rust.output_path, generated_rust_code).unwrap();
 
     info!("Phase: Generate Dart code");
-    let generated_dart_api_code = generator_dart::generate(
+    let (generated_dart_api_header_code, generated_dart_api_body_code) = generator_dart::generate(
         &api_file,
         &config.dart.output_class_name,
         &config.dart.wire_class_name(),
@@ -52,7 +51,7 @@ fn main() {
 
     commands::format_rust(&config.rust.output_path);
 
-    let mut temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
+    let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
     let temp_dart_wire_path = temp_dart_wire_file.path().as_os_str().to_str().unwrap();
     with_changed_file(&config.rust.output_path, DUMMY_WIRE_CODE_FOR_BINDGEN, || {
         commands::bindgen_rust_to_dart(
@@ -67,8 +66,8 @@ fn main() {
 
     sanity_check(&generated_dart_wire_code, &config.dart.wire_class_name());
 
-    let generated_dart_code = format!("{}\n{}", generated_dart_api_code, generated_dart_wire_code);
-    fs::write(&config.dart.output_path, generated_dart_code);
+    let generated_dart_code = format!("{}\n{}\n{}", generated_dart_api_header_code, generated_dart_wire_code, generated_dart_api_body_code);
+    fs::write(&config.dart.output_path, generated_dart_code).unwrap();
     commands::format_dart(&config.dart.output_path, config.dart.format_line_length);
 
     info!("Success! Now go and use it :)");

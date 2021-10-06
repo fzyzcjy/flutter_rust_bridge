@@ -1,12 +1,10 @@
 rust:
   crate_dir: .
-  api_path: src/api.rs
-  wire_path: src/generated_wire.rs
+  input_path: src/api.rs
+  output_path: src/generated.rs
 dart:
-  api_class_name: ExampleApi
-  wire_class_name: ExampleWire
-  api_path: ../dart/lib/generated_api.dart
-  wire_path: ../dart/lib/generated_wire.dart
+  output_class_name: ExampleApi
+  output_path: ../dart/lib/generated.dart
   format_line_length: 120
 c:
-  wire_path: ../dart/binding.h
+  output_path: ../dart/binding.h

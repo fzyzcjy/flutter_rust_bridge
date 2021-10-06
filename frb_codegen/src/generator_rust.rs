@@ -1,5 +1,5 @@
-use crate::api_types::ApiType::*;
 use crate::api_types::*;
+use crate::api_types::ApiType::*;
 use crate::generator_common::*;
 
 pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
@@ -223,14 +223,14 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }
             "
-        .to_string(),
+            .to_string(),
         GeneralList(_) => "let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             };
             vec.into_iter().map(|x| x.wire2api()).collect()
             "
-        .to_string(),
+            .to_string(),
         Boxed(_) => "let wrap = unsafe { support::box_from_leak_ptr(self) };
             (*wrap).wire2api().into()"
             .to_string(),
