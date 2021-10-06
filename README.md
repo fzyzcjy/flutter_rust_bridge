@@ -13,18 +13,17 @@
 ## Advantages
 
 * **Memory-safe**: Never need to think about malloc/free.
-* **Type support**: Unlike low-level binding generator which only provide primitives and pointers, this package provides things like `Vec<u8>`(`Uint8List`), `Vec<T>`(`List<T>`), any custom `struct`(`class`)s, and even use recursive structs (e.g. a tree node).
+* **Type support**: Unlike low-level binding generator which only provide primitives and pointers, this package provides things like `Vec<u8>`(`Uint8List`), `Vec<T>`(`List<T>`), any custom `struct`(`class`)s, and even recursive structs (e.g. a tree node).
 * **Zero-copy**: Pass big array of bytes from Rust to Dart without any memory copies.
-* **Async programming**: You can simply call functions directly in main isolate (thread) of Dart/Flutter, and Rust code will not block the Flutter UI.
-* **Easy to use**: All you need to do is write down your Rust code. The code generator will do everything and expose an API in the Dart/Flutter style for you.
-* **Lightweight**: Simulate how human beings will write down boilerplate code . Thus compared with 
-* **Plug-and-play**: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).
-* **Easy to code-review**: If you want to convince yourself (or your team) that it is safe, there are not much code for you to look at. The runtime is only hundreds of loc, and the generated code follows simple patterns. (Of course, if you find a bug, tell me!)
+* **Async programming**: Simply call functions directly in main isolate (thread) of Dart/Flutter, and Rust code will not block the Flutter UI.
+* **Easy to use**: All you need to do is write down your Rust code. The code generator will do everything and expose an API in Dart/Flutter's style.
+* **Lightweight**: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. <sub>For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).</sub>
+* **Easy to code-review & convince yourself**: This package simply simulates how human beings write down boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code for you to look at. The runtime is only hundreds of loc, and the generated code follows simple patterns. (Of course, if you find a bug, tell me!)
 * **Pure-Dart compatible:** Despite the name, this package is 100% compatible with pure Dart. It does not require anything specific to Flutter. See [this pure-Dart example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/README.md).
 
 ## Show me the code
 
-A very simple example. What you write down (in Rust):
+What you write down (in Rust):
 
 ```Rust
 pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
@@ -35,7 +34,7 @@ pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
 pub struct TreeNode { pub value: i32, pub children: Vec<MyTreeNode> }
 ```
 
-We will generate the bindings. Then you only need to use the following generated API in Dart/Flutter. Nothing more. It looks exactly like a normal Dart/Flutter function.
+With bindings automatically generated, you can simply use the following API in Flutter/Dart. Nothing more.
 
 ```Dart
 Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
