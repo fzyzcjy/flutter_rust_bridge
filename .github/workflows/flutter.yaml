@@ -97,9 +97,8 @@ jobs:
         run: cargo ndk -o ../android/app/src/main/jniLibs build
 
       - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: |
-            flutter test integration_test/main.dart --verbose
+            cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
