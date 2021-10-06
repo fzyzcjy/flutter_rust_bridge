@@ -1,3 +1,12 @@
+use std::fs;
+use std::io::Read;
+
+use env_logger::Env;
+use log::{debug, info};
+
+use crate::others::*;
+use crate::utils::*;
+
 mod api_types;
 mod commands;
 mod config;
@@ -9,12 +18,6 @@ mod parser;
 mod transformer;
 mod utils;
 
-use crate::others::*;
-use crate::utils::*;
-use env_logger::Env;
-use log::{debug, info};
-use std::fs;
-
 fn main() {
     env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
 
@@ -22,7 +25,7 @@ fn main() {
     let config = config::Config::read(&config_path);
 
     info!("Phase: Parse source code to AST");
-    let source_rust_content = fs::read_to_string(&config.rust.api_path).unwrap();
+    let source_rust_content = fs::read_to_string(&config.rust.input_path).unwrap();
     let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
     info!("Phase: Parse AST to IR");
@@ -35,36 +38,38 @@ fn main() {
 
     info!("Phase: Generate Rust code");
     let generated_rust_code =
-        generator_rust::generate(&api_file, &path_stem(&config.rust.api_path));
-    fs::write(&config.rust.wire_path, generated_rust_code).unwrap();
+        generator_rust::generate(&api_file, &path_stem(&config.rust.input_path));
+    fs::write(&config.rust.output_path, generated_rust_code).unwrap();
 
     info!("Phase: Generate Dart code");
-    let generated_dart_code = generator_dart::generate(
+    let generated_dart_api_code = generator_dart::generate(
         &api_file,
-        &config.dart.api_class_name,
-        &config.dart.wire_class_name,
-        &path_filename(&config.dart.wire_path),
+        &config.dart.output_class_name,
+        &config.dart.wire_class_name(),
     );
-    fs::write(&config.dart.api_path, generated_dart_code).unwrap();
 
     info!("Phase: Other things");
 
-    commands::format_rust(&config.rust.wire_path);
-    commands::format_dart(&config.dart.api_path, config.dart.format_line_length);
+    commands::format_rust(&config.rust.output_path);
 
-    with_changed_file(&config.rust.wire_path, DUMMY_WIRE_CODE_FOR_BINDGEN, || {
+    let mut temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
+    let temp_dart_wire_path = temp_dart_wire_file.path().as_os_str().to_str().unwrap();
+    with_changed_file(&config.rust.output_path, DUMMY_WIRE_CODE_FOR_BINDGEN, || {
         commands::bindgen_rust_to_dart(
             &config.rust.crate_dir,
-            &config.c.wire_path,
-            &config.dart.wire_path,
-            &config.dart.wire_class_name,
+            &config.c.output_path,
+            temp_dart_wire_path,
+            &config.dart.wire_class_name(),
         );
     });
+    let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file).unwrap();
+    let generated_dart_wire_code = modify_dart_wire_content(&generated_dart_wire_code_raw, &config.dart.wire_class_name());
 
-    sanity_check(&config);
+    sanity_check(&generated_dart_wire_code, &config.dart.wire_class_name());
 
-    modify_dart_wire_content(&config.dart.wire_path, &config.dart.wire_class_name);
-    commands::format_dart(&config.dart.wire_path, config.dart.format_line_length);
+    let generated_dart_code = format!("{}\n{}", generated_dart_api_code, generated_dart_wire_code);
+    fs::write(&config.dart.output_path, generated_dart_code);
+    commands::format_dart(&config.dart.output_path, config.dart.format_line_length);
 
     info!("Success! Now go and use it :)");
 }

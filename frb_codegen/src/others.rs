@@ -1,7 +1,9 @@
-use crate::config::*;
-use log::warn;
-use std::path::{Path, PathBuf};
 use std::{env, fs};
+use std::path::{Path, PathBuf};
+
+use log::warn;
+
+use crate::config::*;
 
 pub fn parse_command_line_args() -> String {
     let mut args = env::args();
@@ -27,26 +29,21 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     // ---------------------------------------------
     "#;
 
-pub fn modify_dart_wire_content(dart_wire_path: &str, dart_wire_class_name: &str) {
-    let content_raw = fs::read_to_string(dart_wire_path).unwrap();
-    let content_modified = content_raw.replace(
+pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -> String {
+    content_raw.replace(
         &format!("class {} {{", dart_wire_class_name),
         &format!(
             "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
             class {} implements DartRustBridgeWireBase {{",
             dart_wire_class_name
         ),
-    );
-    fs::write(dart_wire_path, content_modified).unwrap();
+    )
 }
 
-pub fn sanity_check(config: &Config) {
-    if !fs::read_to_string(&config.dart.wire_path)
-        .unwrap()
-        .contains(&config.dart.wire_class_name)
-    {
+pub fn sanity_check(generated_dart_wire_code: &str, dart_wire_class_name: &str) {
+    if !generated_dart_wire_code.contains(dart_wire_class_name) {
         warn!("Nothing is generated for dart wire class. \
-        Maybe you forget to put code like `mod generated_wire;` to your `lib.rs` or `main.rs`? (file path: {})", &config.dart.wire_path);
+        Maybe you forget to put code like `mod the_generated_code;` to your `lib.rs` or `main.rs`?");
     }
 }
 
@@ -67,19 +64,25 @@ impl Config {
         Config {
             rust: ConfigRust {
                 crate_dir: canon_dir(&self.rust.crate_dir),
-                api_path: canon_dir(&self.rust.api_path),
-                wire_path: canon_dir(&self.rust.wire_path),
+                input_path: canon_dir(&self.rust.input_path),
+                output_path: canon_dir(&self.rust.output_path),
             },
             dart: ConfigDart {
-                api_class_name: self.dart.api_class_name,
-                wire_class_name: self.dart.wire_class_name,
-                api_path: canon_dir(&self.dart.api_path),
-                wire_path: canon_dir(&self.dart.wire_path),
+                output_path: canon_dir(&self.dart.output_path),
+                output_class_name: self.dart.output_class_name,
                 format_line_length: self.dart.format_line_length,
             },
             c: ConfigC {
-                wire_path: canon_dir(&self.c.wire_path),
+                output_path: canon_dir(&self.c.output_path),
             },
         }
+    }
+}
+
+impl ConfigRust {}
+
+impl ConfigDart {
+    pub fn wire_class_name(&self) -> String {
+        format!("{}Wire", self.output_class_name)
     }
 }
