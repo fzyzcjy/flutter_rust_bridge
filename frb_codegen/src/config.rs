@@ -1,9 +1,9 @@
 use std::env;
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
-use anyhow::Result;
-use convert_case::{Case, Casing};
+use anyhow::{anyhow, Result};
+use convert_case::Case;
 use serde::Deserialize;
 use structopt::StructOpt;
 use tempfile::NamedTempFile;
@@ -83,12 +83,17 @@ fn format_fail_to_guess_error(name: &str) -> String {
 }
 
 fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
-    let mut dir_curr = Path::new(rust_input_path).parent()?;
+    let mut dir_curr = Path::new(rust_input_path).parent().ok_or(anyhow!(""))?;
+
     loop {
         let path_cargo_toml = dir_curr.join("Cargo.toml");
 
         if path_cargo_toml.exists() {
-            return Ok(dir_curr.as_os_str().to_str()?.to_string());
+            return Ok(dir_curr
+                .as_os_str()
+                .to_str()
+                .ok_or(anyhow!(""))?
+                .to_string());
         }
 
         if let Some(next_parent) = dir_curr.parent() {
@@ -104,14 +109,20 @@ fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
 
 fn fallback_c_output_path() -> Result<String> {
     let named_temp_file = Box::leak(Box::new(NamedTempFile::new()?));
-    Ok(named_temp_file.path().to_str()?.to_string())
+    Ok(named_temp_file
+        .path()
+        .to_str()
+        .ok_or(anyhow!(""))?
+        .to_string())
 }
 
 fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
     Ok(Path::new(rust_input_path)
-        .parent()?
+        .parent()
+        .ok_or(anyhow!(""))?
         .join("generated.rs")
         .to_str()
+        .ok_or(anyhow!(""))?
         .to_string())
 }
 
@@ -120,7 +131,13 @@ fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_content = fs::read_to_string(cargo_toml_path)?;
 
     let cargo_toml_value = cargo_toml_content.parse::<Value>()?;
-    let package_name = cargo_toml_value.get("package")?.get("name")?.as_str()?;
+    let package_name = cargo_toml_value
+        .get("package")
+        .ok_or(anyhow!("no `package` in Cargo.toml"))?
+        .get("name")
+        .ok_or(anyhow!("no `name` in Cargo.toml"))?
+        .as_str()
+        .ok_or(anyhow!(""))?;
 
     Ok(package_name.to_case(Case::Pascal))
 }
@@ -133,16 +150,16 @@ fn canon_path(sub_path: &str) -> String {
         .expect(&format!("fail to parse path: {}", sub_path))
 }
 
-impl RawOpts {
+impl Opts {
     pub fn dart_api_class_name(&self) -> String {
-        self.dart_output_class_name.clone()
+        self.class_name.clone()
     }
 
     pub fn dart_api_impl_class_name(&self) -> String {
-        format!("_{}Impl", self.dart_output_class_name)
+        format!("_{}Impl", self.class_name)
     }
 
     pub fn dart_wire_class_name(&self) -> String {
-        format!("{}Wire", self.dart_output_class_name)
+        format!("{}Wire", self.class_name)
     }
 }

@@ -1,9 +1,6 @@
-use std::path::{Path, PathBuf};
-use std::{env, fs};
+use std::env;
 
 use log::warn;
-
-use crate::config::*;
 
 pub fn parse_command_line_args() -> String {
     let mut args = env::args();
