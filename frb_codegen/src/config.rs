@@ -5,11 +5,12 @@ use std::path::Path;
 use anyhow::{anyhow, Result};
 use convert_case::{Case, Casing};
 use serde::Deserialize;
+use structopt::clap::AppSettings;
 use structopt::StructOpt;
 use toml::Value;
 
 #[derive(StructOpt, Debug, PartialEq, Deserialize)]
-#[structopt(name = "flutter_rust_bridge")]
+#[structopt(setting(AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
     /// Path of input Rust code
     #[structopt(short, long)]

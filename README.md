@@ -83,7 +83,7 @@ Have a look at the function arguments and return types in this file: [api.rs](ht
 Simply add `--help` to see full documentation.
 
 ```
-flutter_rust_bridge 1.0.0
+flutter_rust_bridge_codegen 1.0.0
 
 USAGE:
     flutter_rust_bridge_codegen [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
@@ -93,13 +93,13 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
+    -r, --rust-input <rust-input>                              Path of input Rust code
+    -d, --dart-output <dart-output>                            Path of output generated Dart code
     -c, --c-output <c-output>                                  Path of output generated C header
+        --rust-crate-dir <rust-crate-dir>                      Crate directory for your Rust project
+        --rust-output <rust-output>                            Path of output generated Rust code
         --class-name <class-name>                              Generated class name
         --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
-    -d, --dart-output <dart-output>                            Path of output generated Dart code
-        --rust-crate-dir <rust-crate-dir>                      Crate directory for your Rust project
-    -r, --rust-input <rust-input>                              Path of input Rust code
-        --rust-output <rust-output>                            Path of output generated Rust code
 ```
 
 ### Add some code
