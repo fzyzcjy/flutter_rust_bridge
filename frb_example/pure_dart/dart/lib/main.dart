@@ -13,7 +13,7 @@ void main(List<String> args) async {
 
     print('construct api');
     final dylib = DynamicLibrary.open(dylibPath);
-    final api = ExampleApi(dylib);
+    final api = FlutterRustBridgeExample(dylib);
 
     print('call functions');
 
