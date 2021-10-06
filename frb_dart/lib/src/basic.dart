@@ -10,8 +10,8 @@ final _instances = <Type>{};
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
 /// users should directly use the generated class.
-abstract class DartRustBridgeBase<T extends DartRustBridgeWireBase> {
-  DartRustBridgeBase(this.inner) {
+abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
+  FlutterRustBridgeBase(this.inner) {
     _sanityCheckSingleton();
     _setUpRustToDartComm();
   }
@@ -22,7 +22,7 @@ abstract class DartRustBridgeBase<T extends DartRustBridgeWireBase> {
   void _sanityCheckSingleton() {
     if (_instances.contains(runtimeType)) {
       throw Exception(
-          'Subclasses of `DartRustBridgeBase` should be singletons - there should not be two instances (runtimeType=$runtimeType)');
+          'Subclasses of `FlutterRustBridgeBase` should be singletons - there should not be two instances (runtimeType=$runtimeType)');
     }
     _instances.add(runtimeType);
   }
@@ -72,9 +72,8 @@ class FfiException {
 
 /// This class, together with its subclasses, are only for internal usage.
 /// Usually it should not be used by normal users.
-abstract class DartRustBridgeWireBase {
+abstract class FlutterRustBridgeWireBase {
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(
-    ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
-  );
+      ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,);
 }

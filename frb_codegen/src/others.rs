@@ -22,7 +22,7 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
     content_raw.replace(
         &format!("class {} {{", dart_wire_class_name),
         &format!(
-            "class {} implements DartRustBridgeWireBase {{",
+            "class {} implements FlutterRustBridgeWireBase {{",
             dart_wire_class_name
         ),
     )

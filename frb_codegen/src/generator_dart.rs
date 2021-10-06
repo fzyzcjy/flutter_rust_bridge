@@ -56,7 +56,7 @@ pub fn generate(
     );
 
     let api_class = format!(
-        "abstract class {} extends DartRustBridgeBase<{}> {{
+        "abstract class {} extends FlutterRustBridgeBase<{}> {{
             factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
 
             {}.raw({} inner) : super(inner);
