@@ -125,7 +125,7 @@ fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
     Ok(Path::new(rust_input_path)
         .parent()
         .ok_or_else(|| anyhow!(""))?
-        .join("generated.rs")
+        .join("bridge_generated.rs")
         .to_str()
         .ok_or_else(|| anyhow!(""))?
         .to_string())

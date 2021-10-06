@@ -29,7 +29,7 @@ jobs:
         run: |
           cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- \
             --rust-input ../frb_example/pure_dart/rust/src/api.rs \
-            --dart-output ../frb_example/pure_dart/dart/lib/generated.dart \
+            --dart-output ../frb_example/pure_dart/dart/lib/bridge_generated.dart \
             --dart-format-line-length 120
         env:
           RUST_LOG: debug
@@ -39,8 +39,8 @@ jobs:
         run: |
           cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- \
           --rust-input ../frb_example/with_flutter/rust/src/api.rs \
-          --dart-output ../frb_example/with_flutter/lib/generated.dart \
-          --c-output ../frb_example/with_flutter/ios/Runner/binding.h \
+          --dart-output ../frb_example/with_flutter/lib/bridge_generated.dart \
+          --c-output ../frb_example/with_flutter/ios/Runner/bridge_generated.h \
           --dart-format-line-length 120
         env:
           RUST_LOG: debug
