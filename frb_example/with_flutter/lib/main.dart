@@ -12,7 +12,7 @@ import 'package:flutter_rust_bridge_example/off_topic_code.dart';
 
 late final dylib =
     Platform.isAndroid ? DynamicLibrary.open('libflutter_rust_bridge_example.so') : DynamicLibrary.process();
-late final api = ExampleApi(ExampleWire(dylib));
+late final api = ExampleApi(dylib);
 
 void main() => runApp(const MyApp());
 

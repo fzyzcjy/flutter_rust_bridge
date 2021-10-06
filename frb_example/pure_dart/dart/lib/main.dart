@@ -13,8 +13,7 @@ void main(List<String> args) async {
 
     print('construct api');
     final dylib = DynamicLibrary.open(dylibPath);
-    final wire = ExampleWire(dylib);
-    final api = ExampleApi(wire);
+    final api = ExampleApi(dylib);
 
     print('call functions');
 
