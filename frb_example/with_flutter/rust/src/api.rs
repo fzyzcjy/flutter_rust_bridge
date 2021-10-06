@@ -17,8 +17,7 @@ pub fn passing_complex_structs(root: TreeNode) -> Result<String> {
     Ok(format!("Hi this string is from Rust. I received a complex struct: {:?}", root))
 }
 
-// the "Copy" is not necessary
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Clone)]
 pub struct Size {
     pub width: i32,
     pub height: i32,
@@ -30,8 +29,7 @@ pub struct Point {
     pub y: f64,
 }
 
-// the "Copy" is not necessary
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Clone)]
 pub struct TreeNode {
     pub name: String,
     pub children: Vec<TreeNode>,
