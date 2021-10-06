@@ -49,9 +49,6 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.textContaining('Hi this string is from Rust'), findsOneWidget);
 
-        for (var j = 0; j < 5; ++j) {
-          await _callFfiWithBigArrayToDetectMemoryProblems();
-        }
         for (var j = 0; j < 20; ++j) {
           await _callFfiWithComplexStructToDetectMemoryProblems();
         }
@@ -73,16 +70,6 @@ Future<void> _testMemoryProblemForSingleTypeOfMethod(WidgetTester tester, Future
     }
     await _maybeGC();
   }
-}
-
-Future<void> _callFfiWithBigArrayToDetectMemoryProblems() async {
-  print('Call FFI with big array: start');
-  final input = Uint8List(1000000);
-  input[0] = 42;
-  final output = await app.api.workOnBigArray(input: input);
-  expect(output[0], 255 - input[0]);
-  expect(output.length, input.length);
-  print('Call FFI with big array: end (output.length=${output.length})');
 }
 
 Future<void> _callFfiWithComplexStructToDetectMemoryProblems() async {
