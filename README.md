@@ -1,4 +1,4 @@
-# High-level memory-safe bindgen for Flutter/Dart &lt;-> Rust
+# High-level memory-safe binding generator for Flutter/Dart <-> Rust
 [![Documentation](https://docs.rs/dart_rust_bridge/badge.svg)](https://docs.rs/flutter_rust_bridge)
 [![Rust Package](https://img.shields.io/crates/v/dart_rust_bridge.svg)](https://crates.io/crates/flutter_rust_bridge)
 [![Flutter Package](https://img.shields.io/pub/v/dart_rust_bridge.svg)](https://pub.dev/packages/flutter_rust_bridge)
@@ -20,7 +20,7 @@
 * **Lightweight**: Simulate how human beings will write down boilerplate code . Thus compared with 
 * **Plug-and-play**: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).
 * **Easy to code-review**: If you want to convince yourself (or your team) that it is safe, there are not much code for you to look at. The runtime is only hundreds of loc, and the generated code follows simple patterns. (Of course, if you find a bug, tell me!)
-* **Pure-Dart compatible:** Despite the name, this package is 100% compatible with pure Dart. It does not require anything specific to Flutter. See [this pure-Dart example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/README.md).
+* **Pure-Dart compatible:** Despite the name, this package is 100% compatible with pure Dart. It does not require anything specific to Flutter. See [this pure-Dart example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/README.md).
 
 ## Show me the code
 
