@@ -12,6 +12,8 @@ import 'package:integration_test/integration_test.dart';
 import 'package:vm_service/vm_service_io.dart';
 
 void main() {
+  print('integration_test/main.dart starts!');
+
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('end-to-end test', () {
@@ -20,7 +22,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // run many times to see memory leaks or other problems
-      for (var i = 0; i < 100; ++i) {
+      for (var i = 0; i < 20; ++i) {
         await tester.pumpAndSettle();
         expect(find.textContaining('Hi this string is from Rust'), findsOneWidget);
 
@@ -38,12 +40,12 @@ void main() {
           () async => expect(
               await app.api.offTopicMemoryTestInputComplexStruct(
                   input: TreeNode(
-                      name: 'root', children: [for (var i = 0; i < 10000; ++i) TreeNode(name: 'child', children: [])])),
-              10000));
+                      name: 'root', children: [for (var i = 0; i < 2000; ++i) TreeNode(name: 'child', children: [])])),
+              2000));
     });
     testWidgets('repeat call to offTopicMemoryTestOutputComplexStruct', (WidgetTester tester) async {
       await _testMemoryProblemForSingleTypeOfMethod(tester,
-          () async => expect((await app.api.offTopicMemoryTestOutputComplexStruct(len: 10000)).children.length, 10000));
+          () async => expect((await app.api.offTopicMemoryTestOutputComplexStruct(len: 2000)).children.length, 2000));
     });
 
     testWidgets('repeat call to offTopicMemoryTestInputVecSize', (WidgetTester tester) async {
@@ -69,7 +71,7 @@ void main() {
     });
     testWidgets('repeat call to offTopicMemoryTestOutputVecU8', (WidgetTester tester) async {
       await _testMemoryProblemForSingleTypeOfMethod(
-          tester, () async => expect((await app.api.offTopicMemoryTestOutputVecU8(len: 1000000)).length, 1000000));
+          tester, () async => expect((await app.api.offTopicMemoryTestOutputVecU8(len: 200000)).length, 200000));
     });
   });
 }
