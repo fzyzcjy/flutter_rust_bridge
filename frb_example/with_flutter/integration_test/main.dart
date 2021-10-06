@@ -80,11 +80,10 @@ Future<void> _maybeGC() async {
   final isolateId = Service.getIsolateID(Isolate.current)!;
   final vmService = await vmServiceConnectUri(_toWebSocket(serverUri));
 
-  final profileWithoutExplicitGc = await vmService.getAllocationProfile(isolateId, gc: true);
-  print('Memory usage without explicit GC (but may have implicit): ${profileWithoutExplicitGc.memoryUsage}');
-
-  final profileAfterMaybeGc = await vmService.getAllocationProfile(isolateId, gc: true);
-  print('Memory usage after maybe GC: ${profileAfterMaybeGc.memoryUsage}');
+  // notice this variable is also large and can consume megabytes of memory...
+  final profileAfterMaybeGc = await vmService.getAllocationProfile(isolateId, reset: true, gc: true);
+  print('Memory usage after maybe GC: ${profileAfterMaybeGc.memoryUsage} '
+      'dateLastServiceGC=${profileAfterMaybeGc.dateLastServiceGC} now=${DateTime.now().millisecondsSinceEpoch}');
 }
 
 List<String> _cleanupPathSegments(Uri uri) {
