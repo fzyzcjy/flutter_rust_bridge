@@ -37,6 +37,7 @@ jobs:
       - name: Publish
         uses: sakebook/actions-flutter-pub-publisher@v1.3.1
         with:
+          package_directory: frb_dart
           credential: ${{ secrets.PUB_CREDENTIALS_JSON }}
           flutter_package: false
           skip_test: true
