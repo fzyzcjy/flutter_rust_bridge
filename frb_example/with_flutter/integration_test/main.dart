@@ -3,6 +3,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'dart:isolate';
+import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge_example/main.dart' as app;
 import 'package:flutter_test/flutter_test.dart';
@@ -11,7 +12,6 @@ import 'package:vm_service/vm_service_io.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  app.testing = true;
 
   group('end-to-end test', () {
     testWidgets('run and wait to see if there is memory problem', (WidgetTester tester) async {
@@ -20,16 +20,29 @@ void main() {
 
       // run many times to see memory leaks or other problems
       for (var i = 0; i < 10; ++i) {
-        // wait a bit - should not crash
-        await Future.delayed(const Duration(seconds: 3));
         await tester.pumpAndSettle();
-
         expect(find.textContaining('Hi this string is from Rust'), findsOneWidget);
+
+        for (var j = 0; j < 5; ++j) {
+          await _callFfiWithBigArrayToDetectMemoryProblems();
+        }
 
         _maybeGC();
       }
     });
   });
+}
+
+Future<void> _callFfiWithBigArrayToDetectMemoryProblems() async {
+  print('Call FFI with big array to detect memory problems: start');
+  final input = Uint8List(1000000);
+  input[0] = 42;
+  final output = await app.api.workOnBigArray(input: input);
+  if (output[0] != 255 - input[0]) {
+    throw Exception(
+        'unexpected output for api.workOnBigArray (input=${input.sublist(0, 5)}..., output=${output.sublist(0, 5)}...');
+  }
+  print('Call FFI with big array to detect memory problems: end');
 }
 
 // https://stackoverflow.com/questions/63730179/can-we-force-the-dart-garbage-collector

@@ -125,19 +125,3 @@ double generateScale() {
 
 void runPeriodically(void Function() callback) =>
     Timer.periodic(const Duration(milliseconds: 500), (timer) => callback());
-
-void setUpTests(ExampleApi api) {
-  if (testing) {
-    Timer.periodic(const Duration(milliseconds: 500), (timer) async {
-      print('Call FFI with big memory to detect memory problems: start');
-      final input = Uint8List(1000000);
-      input[0] = 42;
-      final output = await api.workOnBigArray(input: input);
-      if (output[0] != 255 - input[0]) {
-        throw Exception(
-            'unexpected output for api.workOnBigArray (input=${input.sublist(0, 5)}..., output=${output.sublist(0, 5)}...');
-      }
-      print('Call FFI with big memory to detect memory problems: end');
-    });
-  }
-}
