@@ -58,6 +58,8 @@ fn main() {
 
     commands::format_rust(&config.rust_output_path);
 
+    others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
+
     let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
     let temp_dart_wire_path = temp_dart_wire_file.path().as_os_str().to_str().unwrap();
     with_changed_file(
