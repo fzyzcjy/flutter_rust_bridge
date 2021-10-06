@@ -44,13 +44,18 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ## Quickstart
 
-**Install**: `cargo install flutter_rust_bridge_codegen`.
+**Install**:
 
-**Run**: `flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart`. (For more options, use `--help`)
+* Install dependencies by `dart pub global activate ffigen` and `sudo apt-get install -y libclang-dev`. (See [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/run_codegen.yml) as a reference)
+* Install the binary by `cargo install flutter_rust_bridge_codegen`.
+* Add `flutter_rust_bridge = "1.0"` (where `1.0` should be the latest version) to Rust's `Cargo.toml`.
+* Add `flutter_rust_bridge: ^1.0` (same as above, should be latest version) to Flutter/Dart's `pubspec.yaml` under the section of `dependencies`.
+
+**Run**: `flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart`. (For more options, use `--help`) (What types and function signatures can you write in Rust? Have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).)
 
 **Enjoy**: Use the generated `.dart` file!
 
-## [TODO merge this section] Old Quickstart
+## Tutorial: A Flutter+Rust app
 
 ### Get example code
 
@@ -84,9 +89,17 @@ Remark: Since my quickstart app is so baremetal, I do not integrate the Rust bui
 
 Have a look at the function arguments and return types in this file: [api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs). With this library, we have a generated API that resides at [generated_api.dart](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/dart/lib/generated_api.dart) (of course, that is auto generated, and you can use it in other Dart code).
 
-## Usage in details
+### (Optional) Remarks
 
-### Command line arguments
+#### The `mod`
+
+If you are adding this lib to your own existing code, please put `mod generated_wire;` (where `generated_wire` is the name of the wire file that you choose) into your `lib.rs` or `main.rs`. Only by doing this, Rust can understand that this generated file is a part of your project.
+
+#### Version
+
+Dark SDK `>=2.14.0` is needed not by this library, but by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
+
+## Command line arguments
 
 Simply add `--help` to see full documentation.
 
@@ -110,55 +123,9 @@ OPTIONS:
         --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
 ```
 
-### Add some code
-
-#### The `mod`
-
-Please put `mod generated_wire;` (where `generated_wire` is the name of the wire file that you choose) into your `lib.rs` or `main.rs`. Only by doing this, Rust can understand that this generated file is a part of your project.
-
-#### Dependency
-
-Add `flutter_rust_bridge = "1.0"` (where `1.0` should be the latest version) to Rust's `Cargo.toml`.
-
-Add `flutter_rust_bridge: ^1.0` (same as above, should be latest version) to Flutter/Dart's `pubspec.yaml` under the section of `dependencies`.
-
-#### Version
-
-Dark SDK `>=2.14.0` is needed by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
-
-### Run code generator
-
-Same as the section in Quickstart. Simply run that binary.
-
-### Run "Flutter+Rust" app
-
-Same as the section in Quickstart. Simply build the Rust code (possibly integrated into the build process of Flutter), and run the Flutter app.
-
 ## What this library is & isn't
 
 This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, you may refer to external materials to learn Flutter, learn Rust, learn [Flutter FFI](https://flutter.dev/docs/development/platform-integration/c-interop) (Dart FFI) and so on. With material on the Internet, you will know how to create a mobile application using Flutter, and how that app can call Rust functions via Dart FFI (in the C ABI). Then this package comes in, and ease you from the burden to write down tons of boilerplate code ;)
-
-## Set up Flutter/Dart+Rust support
-
-I suggest that you can start with the [Flutter example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/with_flutter) first, and modify it to satisfy your needs. It can serve as a template for new projects. It is run against CI [WIP] so we are sure it works.
-
-Indeed, this library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, "how to create a Flutter app that can run Rust code" is actually out of the scope of this library, and there are already several tutorials on the Internet.
-
-However, I can sketch the outline of what to do if you want to set up a new Flutter+Rust project as follows.
-
-Step 1: Create a new Flutter project (or use an existing one). The Dart SDK should be `>=2.14.0` if you want to use the latest `ffigen` tool.
-
-Step 2: Create a new Rust project, say, at directory `rust` under the Flutter project.
-
-Step 3: Edit `Cargo.toml` and add:
-
-```
-[lib]
-name = "flutter_rust_bridge_example" # whatever you like
-crate-type = ["cdylib"] # <-- notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
-```
-
-Step 4: Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings, such as `func dummyMethodToAvoidSymbolStripping() { wire_passing_complex_structs(42, nil) }`, and this will prevent symbol stripping.
 
 ## Safety
 
@@ -188,3 +155,25 @@ I plan to support the following features. Of course, if you want to have other f
 `DefaultExecutor`: When Dart calls Rust, the `DefaultExecutor` use a simple thread pool  to execute the real Rust functions. By doing this, Rust function that needs to run for a long time (more than a few frames) will never make the UI stuck.
 
 However, you can implement your own `Executor` doing whatever you want. In order to do this, implement the `Executor` trait, and call `set_executor` to set your own executor.
+
+## Appendix: Set up Flutter/Dart+Rust support
+
+I suggest that you can start with the [Flutter example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/with_flutter) first, and modify it to satisfy your needs. It can serve as a template for new projects. It is run against CI [WIP] so we are sure it works.
+
+Indeed, this library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, "how to create a Flutter app that can run Rust code" is actually out of the scope of this library, and there are already several tutorials on the Internet.
+
+However, I can sketch the outline of what to do if you want to set up a new Flutter+Rust project as follows.
+
+Step 1: Create a new Flutter project (or use an existing one). The Dart SDK should be `>=2.14.0` if you want to use the latest `ffigen` tool.
+
+Step 2: Create a new Rust project, say, at directory `rust` under the Flutter project.
+
+Step 3: Edit `Cargo.toml` and add:
+
+```
+[lib]
+name = "flutter_rust_bridge_example" # whatever you like
+crate-type = ["cdylib"] # <-- notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
+```
+
+Step 4: Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings, such as `func dummyMethodToAvoidSymbolStripping() { wire_passing_complex_structs(42, nil) }`, and this will prevent symbol stripping.
