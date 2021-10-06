@@ -14,7 +14,7 @@ pub fn generate(
     let distinct_types = api_file.distinct_types();
     debug!("distinct_types={:?}", distinct_types);
 
-    let dart_functions = api_file
+    let dart_func_signatures_and_implementations = api_file
         .funcs
         .iter()
         .map(generate_api_func)
@@ -49,7 +49,6 @@ pub fn generate(
         // ignore_for_file: non_constant_identifier_names, unused_element
 
         import 'dart:convert';
-        import 'dart:ffi' as ffi;
         import 'dart:typed_data';
 
         import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
@@ -61,6 +60,8 @@ pub fn generate(
             factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
 
             {}.raw({} inner) : super(inner);
+
+            {}
         }}
 
         {}
@@ -74,6 +75,11 @@ pub fn generate(
         dart_wire_class_name,
         dart_api_class_name,
         dart_wire_class_name,
+        dart_func_signatures_and_implementations
+            .iter()
+            .map(|(sig, _)| sig.clone())
+            .collect::<Vec<_>>()
+            .join("\n\n"),
         dart_structs.join("\n\n"),
     );
 
@@ -97,7 +103,11 @@ pub fn generate(
         dart_api_class_name,
         dart_api_impl_class_name,
         dart_wire_class_name,
-        dart_functions.join("\n\n"),
+        dart_func_signatures_and_implementations
+            .iter()
+            .map(|(_, imp)| imp.clone())
+            .collect::<Vec<_>>()
+            .join("\n\n"),
         dart_api2wire_funcs.join("\n\n"),
         dart_api_fill_to_wire_funcs.join("\n\n"),
         dart_wire2api_funcs.join("\n\n"),
@@ -106,7 +116,7 @@ pub fn generate(
     (header, api_class, others)
 }
 
-fn generate_api_func(func: &ApiFunc) -> String {
+fn generate_api_func(func: &ApiFunc) -> (String, String) {
     let func_param_list = func
         .inputs
         .iter()
@@ -131,11 +141,8 @@ fn generate_api_func(func: &ApiFunc) -> String {
         })
         .collect::<Vec<_>>();
 
-    format!(
-        "Future<{}> {}({}) async {{
-            return execute((port) => inner.{}(port, {}), _wire2api_{});
-        }}
-        ",
+    let partial = format!(
+        "Future<{}> {}({})",
         func.output.dart_api_type(),
         func.name.to_case(Case::Camel),
         if func_param_list.is_empty() {
@@ -143,10 +150,19 @@ fn generate_api_func(func: &ApiFunc) -> String {
         } else {
             format!("{{{}}}", func_param_list.join(","))
         },
+    );
+
+    let signature = format!("{};", partial);
+
+    let implementation = format!(
+        "{} => execute((port) => inner.{}(port, {}), _wire2api_{});",
+        partial,
         func.wire_func_name(),
         wire_param_list.join(", "),
         func.output.safe_ident(),
-    )
+    );
+
+    (signature, implementation)
 }
 
 fn generate_api2wire_func(ty: &ApiType) -> String {
