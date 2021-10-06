@@ -2,9 +2,13 @@ name: Flutter integration test for Flutter+Rust
 
 on:
   push:
-    branches: [ "*" ]
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
   pull_request:
-    branches: [ "*" ]
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
 
 env:
   CARGO_TERM_COLOR: always
