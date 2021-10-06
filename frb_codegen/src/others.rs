@@ -32,11 +32,7 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
 pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -> String {
     content_raw.replace(
         &format!("class {} {{", dart_wire_class_name),
-        &format!(
-            "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-            class {} implements DartRustBridgeWireBase {{",
-            dart_wire_class_name
-        ),
+        &format!("class {} implements DartRustBridgeWireBase {{", dart_wire_class_name),
     )
 }
 
@@ -82,6 +78,14 @@ impl Config {
 impl ConfigRust {}
 
 impl ConfigDart {
+    pub fn api_class_name(&self) -> String {
+        self.output_class_name.clone()
+    }
+
+    pub fn api_impl_class_name(&self) -> String {
+        format!("_{}Impl", self.output_class_name)
+    }
+
     pub fn wire_class_name(&self) -> String {
         format!("{}Wire", self.output_class_name)
     }

@@ -8,8 +8,9 @@ use crate::generator_common::*;
 pub fn generate(
     api_file: &ApiFile,
     dart_api_class_name: &str,
+    dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
-) -> (String, String) {
+) -> (String, String, String) {
     let distinct_types = api_file.distinct_types();
     debug!("distinct_types={:?}", distinct_types);
 
@@ -55,8 +56,16 @@ pub fn generate(
         CODE_HEADER,
     );
 
-    let body = format!(
-        "class {} extends DartRustBridgeBase<{}> {{
+    let api_class = format!(
+        "abstract class {} extends DartRustBridgeBase<{}> {{
+            TODO;
+        }}",
+        dart_api_class_name,
+        dart_wire_class_name,
+    );
+
+    let others = format!(
+        "class {} extends {} {{
             {}({} inner) : super(inner);
 
             {}
@@ -74,9 +83,9 @@ pub fn generate(
         // Section: wire2api
         {}
         ",
+        dart_api_impl_class_name,
         dart_api_class_name,
-        dart_wire_class_name,
-        dart_api_class_name,
+        dart_api_impl_class_name,
         dart_wire_class_name,
         dart_functions.join("\n\n"),
         dart_api2wire_funcs.join("\n\n"),
@@ -85,7 +94,7 @@ pub fn generate(
         dart_wire2api_funcs.join("\n\n"),
     );
 
-    (header, body)
+    (header, api_class, others)
 }
 
 fn generate_api_func(func: &ApiFunc) -> String {
