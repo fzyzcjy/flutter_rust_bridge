@@ -3,7 +3,6 @@
 import 'dart:developer';
 import 'dart:io';
 import 'dart:isolate';
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge_example/generated_api.dart';
@@ -25,9 +24,7 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.textContaining('Hi this string is from Rust'), findsOneWidget);
 
-        for (var j = 0; j < 20; ++j) {
-          await _callFfiWithComplexStructToDetectMemoryProblems();
-        }
+        Future.delayed(const Duration(milliseconds: 50));
 
         // NOTE even if `externalUsage` increases, this is NOT a bug!
         // It is because Flutter's ImageCache, which will cache about 100MB...
@@ -98,25 +95,25 @@ Future<void> _testMemoryProblemForSingleTypeOfMethod(WidgetTester tester, Future
   }
 }
 
-Future<void> _callFfiWithComplexStructToDetectMemoryProblems() async {
-  // print('Call FFI with complex struct: start');
-  final input = _createBigTree(4, 10);
-  final result = await app.api.passingComplexStructs(root: input);
-  print('Call FFI with complex struct: end (result.length=${result.length})');
-}
-
-TreeNode _createBigTree(int maxDepth, int fanOut) {
-  print('create big tree with maxDepth=$maxDepth fanOut=$fanOut => totally ${pow(fanOut, maxDepth)} nodes');
-  return _createBigTreeInner(0, maxDepth, fanOut);
-}
-
-TreeNode _createBigTreeInner(int currDepth, int maxDepth, int fanOut) {
-  return TreeNode(
-      name: 'TreeNodeOfDepth$currDepth',
-      children: currDepth == maxDepth
-          ? []
-          : [for (var i = 0; i < fanOut; ++i) _createBigTreeInner(currDepth + 1, maxDepth, fanOut)]);
-}
+// Future<void> _callFfiWithComplexStructToDetectMemoryProblems() async {
+//   // print('Call FFI with complex struct: start');
+//   final input = _createBigTree(4, 10);
+//   final result = await app.api.passingComplexStructs(root: input);
+//   print('Call FFI with complex struct: end (result.length=${result.length})');
+// }
+//
+// TreeNode _createBigTree(int maxDepth, int fanOut) {
+//   print('create big tree with maxDepth=$maxDepth fanOut=$fanOut => totally ${pow(fanOut, maxDepth)} nodes');
+//   return _createBigTreeInner(0, maxDepth, fanOut);
+// }
+//
+// TreeNode _createBigTreeInner(int currDepth, int maxDepth, int fanOut) {
+//   return TreeNode(
+//       name: 'TreeNodeOfDepth$currDepth',
+//       children: currDepth == maxDepth
+//           ? []
+//           : [for (var i = 0; i < fanOut; ++i) _createBigTreeInner(currDepth + 1, maxDepth, fanOut)]);
+// }
 
 // https://stackoverflow.com/questions/63730179/can-we-force-the-dart-garbage-collector
 Future<void> _maybeGC() async {
