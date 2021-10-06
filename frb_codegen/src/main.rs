@@ -21,7 +21,7 @@ fn main() {
     env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
 
     let config_path = parse_command_line_args();
-    let config = config::Config::read(&config_path);
+    let config = config::RawOpts::read(&config_path);
 
     info!("Phase: Parse source code to AST");
     let source_rust_content = fs::read_to_string(&config.rust.input_path).unwrap();
