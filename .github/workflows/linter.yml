@@ -100,12 +100,12 @@ jobs:
         run: dart analyze --fatal-infos
 
       - name: Install dependencies for with_flutter example
-        working-directory: ./frb_example/with_flutter/dart
+        working-directory: ./frb_example/with_flutter
         run: dart pub get
       - name: Verify formatting for with_flutter example
-        working-directory: ./frb_example/with_flutter/dart
+        working-directory: ./frb_example/with_flutter
         run: dart format --output=none --set-exit-if-changed --line-length 120 .
       - name: Analyze project source for with_flutter example
-        working-directory: ./frb_example/with_flutter/dart
+        working-directory: ./frb_example/with_flutter
         run: dart analyze --fatal-infos
 
