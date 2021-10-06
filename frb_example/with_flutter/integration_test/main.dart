@@ -21,18 +21,18 @@ void main() {
       await tester.pumpAndSettle();
 
       // run many times to see memory leaks or other problems
-      for (var i = 0; i < 5; ++i) {
+      for (var i = 0; i < 100; ++i) {
         await tester.pumpAndSettle();
         expect(find.textContaining('Hi this string is from Rust'), findsOneWidget);
 
         for (var j = 0; j < 5; ++j) {
           await _callFfiWithBigArrayToDetectMemoryProblems();
         }
-        for (var j = 0; j < 5; ++j) {
+        for (var j = 0; j < 20; ++j) {
           await _callFfiWithComplexStructToDetectMemoryProblems();
         }
 
-        _maybeGC();
+        await _maybeGC();
       }
     });
   });
@@ -44,7 +44,7 @@ Future<void> _callFfiWithBigArrayToDetectMemoryProblems() async {
   input[0] = 42;
   final output = await app.api.workOnBigArray(input: input);
   expect(output[0], 255 - input[0]);
-  expect(output.length, input.length)
+  expect(output.length, input.length);
   print('Call FFI with big array: end (output.length=${output.length})');
 }
 
@@ -79,16 +79,19 @@ Future<void> _maybeGC() async {
 
   final isolateId = Service.getIsolateID(Isolate.current)!;
   final vmService = await vmServiceConnectUri(_toWebSocket(serverUri));
-  final profile = await vmService.getAllocationProfile(isolateId, gc: true);
 
-  print('Memory usage: ${profile.memoryUsage}');
+  final profileWithoutExplicitGc = await vmService.getAllocationProfile(isolateId, gc: true);
+  print('Memory usage without explicit GC (but may have implicit): ${profileWithoutExplicitGc.memoryUsage}');
+
+  final profileAfterMaybeGc = await vmService.getAllocationProfile(isolateId, gc: true);
+  print('Memory usage after maybe GC: ${profileAfterMaybeGc.memoryUsage}');
 }
 
 List<String> _cleanupPathSegments(Uri uri) {
   final pathSegments = <String>[];
   if (uri.pathSegments.isNotEmpty) {
     pathSegments.addAll(uri.pathSegments.where(
-          (s) => s.isNotEmpty,
+      (s) => s.isNotEmpty,
     ));
   }
   return pathSegments;
