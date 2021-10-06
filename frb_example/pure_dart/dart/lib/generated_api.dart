@@ -27,7 +27,7 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
   }
 
   Future<String> handleString({required String s}) async {
-    return execute((port) => inner.wire_handle_string(port, _api2wire_string(s)), _wire2api_string);
+    return execute((port) => inner.wire_handle_string(port, _api2wire_String(s)), _wire2api_String);
   }
 
   Future<Uint8List> handleVecU8({required Uint8List v}) async {
@@ -35,7 +35,8 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
   }
 
   Future<Uint8List> handleZeroCopyResult({required int n}) async {
-    return execute((port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)), _wire2api_uint_8_list);
+    return execute(
+        (port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)), _wire2api_ZeroCopyBuffer_Uint8List);
   }
 
   Future<MySize> handleStruct({required MySize arg, required MySize boxed}) async {
@@ -91,7 +92,7 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
     return raw;
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_string(String raw) {
+  ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
 
@@ -103,6 +104,10 @@ class ExampleApi extends DartRustBridgeBase<ExampleWire> {
 
   int _api2wire_u8(int raw) {
     return raw;
+  }
+
+  ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
+    return _api2wire_uint_8_list(raw);
   }
 
   ffi.Pointer<wire_MySize> _api2wire_box_autoadd_my_size(MySize raw) {
@@ -211,7 +216,7 @@ bool _wire2api_bool(dynamic raw) {
   return raw as bool;
 }
 
-String _wire2api_string(dynamic raw) {
+String _wire2api_String(dynamic raw) {
   return raw as String;
 }
 
@@ -221,6 +226,10 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
 
 int _wire2api_u8(dynamic raw) {
   return raw as int;
+}
+
+Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
+  return raw as Uint8List;
 }
 
 MySize _wire2api_my_size(dynamic raw) {
