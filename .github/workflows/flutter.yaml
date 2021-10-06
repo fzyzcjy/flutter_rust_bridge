@@ -48,7 +48,7 @@ jobs:
           toolchain: stable
 
       - name: Install cargo lipo
-        run: cargo install cargo-lipo
+        run: cargo install cargo-lipo && rustup target add aarch64-apple-ios x86_64-apple-ios
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
@@ -95,7 +95,7 @@ jobs:
           java-version: '8.x' # "betterprogramming.pub" says must be java "8"
 
       - name: Install cargo ndk
-        run: cargo install cargo-ndk
+        run: cargo install cargo-ndk && rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android i686-linux-android
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
