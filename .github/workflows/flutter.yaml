@@ -103,7 +103,7 @@ jobs:
 
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
-        run: cargo ndk -o ../android/app/src/main/jniLibs build
+        run: cargo ndk -o ../android/app/src/main/jniLibs build && ls -al ../android/app/src/main/jniLibs
 
       - name: Run Flutter integration tests
         uses: reactivecircus/android-emulator-runner@v2
