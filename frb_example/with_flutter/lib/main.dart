@@ -44,11 +44,11 @@ class _MyAppState extends State<MyApp> {
   Future<void> _callExampleFfiOne() async {
     final receivedImage = await api.drawMandelbrot(
         imageSize: Size(width: 50, height: 50), zoomPoint: examplePoint, scale: generateScale(), numThreads: 4);
-    setState(() => exampleImage = receivedImage);
+    if (mounted) setState(() => exampleImage = receivedImage);
   }
 
   Future<void> _callExampleFfiTwo() async {
     final receivedText = await api.passingComplexStructs(root: createExampleTree());
-    setState(() => exampleText = receivedText);
+    if (mounted) setState(() => exampleText = receivedText);
   }
 }

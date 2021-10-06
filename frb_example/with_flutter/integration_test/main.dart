@@ -26,10 +26,9 @@ void main() {
 
         Future.delayed(const Duration(milliseconds: 50));
 
-        // NOTE even if `externalUsage` increases, this is NOT a bug!
-        // It is because Flutter's ImageCache, which will cache about 100MB...
         // see https://github.com/fzyzcjy/flutter_rust_bridge/issues/19 for details
-        await _maybeGC();
+        await _maybeGC(
+            '[NOTE: even if `externalUsage` increases, this is NOT a bug! It is because Flutter\'s ImageCache, which will cache about 100MB. See #19]');
       }
     });
 
@@ -116,7 +115,7 @@ Future<void> _testMemoryProblemForSingleTypeOfMethod(WidgetTester tester, Future
 // }
 
 // https://stackoverflow.com/questions/63730179/can-we-force-the-dart-garbage-collector
-Future<void> _maybeGC() async {
+Future<void> _maybeGC([String hint = '']) async {
   final serverUri = (await Service.getInfo()).serverUri;
 
   if (serverUri == null) {
@@ -129,7 +128,7 @@ Future<void> _maybeGC() async {
 
   // notice this variable is also large and can consume megabytes of memory...
   final profileAfterMaybeGc = await vmService.getAllocationProfile(isolateId, reset: true, gc: true);
-  print('Memory usage after maybe GC: ${profileAfterMaybeGc.memoryUsage} '
+  print('Memory usage after maybe GC $hint: ${profileAfterMaybeGc.memoryUsage} '
       'dateLastServiceGC=${profileAfterMaybeGc.dateLastServiceGC} now=${DateTime.now().millisecondsSinceEpoch}');
 }
 
