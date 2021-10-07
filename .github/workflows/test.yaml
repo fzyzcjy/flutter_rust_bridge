@@ -145,8 +145,32 @@ jobs:
         run: cargo ndk -t armeabi-v7a -t arm64-v8a -t x86 -t x86_64 -o ../android/app/src/main/jniLibs build && find ../android/app/src/main/jniLibs
 
       - name: Run Flutter integration tests
+        id: run_flutter_integration_test
+        continue-on-error: true
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: |
             cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+
+      # flaky GitHub Action testing environment... have to retry
+      # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
+      - name: Run Flutter integration tests (retry)
+        id: run_flutter_integration_test_retry_1
+        if: steps.run_flutter_integration_test.outcome == 'failure'
+        continue-on-error: true
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+            cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+
+      # https://github.community/t/how-to-retry-a-failed-step-in-github-actions-workflow/125880
+      - name: Set status
+        if: always()
+        run: |
+          if ${{ steps.run_flutter_integration_test.outcome=='success' || steps.run_flutter_integration_test_retry_1.outcome=='success' }}; then
+             echo fine
+          else
+             exit 1
+          fi
