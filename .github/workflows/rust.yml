@@ -1,0 +1,45 @@
+name: Rust build and test
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build codegen
+      working-directory: ./frb_codegen
+      run: cargo build --verbose
+    - name: Run tests for codegen
+      working-directory: ./frb_codegen
+      run: cargo test --verbose
+
+    - name: Build rust runtime
+      working-directory: ./frb_rust
+      run: cargo build --verbose
+    - name: Run tests for rust runtime
+      working-directory: ./frb_rust
+      run: cargo test --verbose
+
+    - name: Build pure_dart example
+      working-directory: ./frb_example/pure_dart/rust
+      run: cargo build --verbose
+    - name: Run tests for pure_dart example
+      working-directory: ./frb_example/pure_dart/rust
+      run: cargo test --verbose
+
+    - name: Build with_flutter example
+      working-directory: ./frb_example/with_flutter/rust
+      run: cargo build --verbose
+    - name: Run tests for with_flutter example
+      working-directory: ./frb_example/with_flutter/rust
+      run: cargo test --verbose

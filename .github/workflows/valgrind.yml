@@ -1,0 +1,42 @@
+name: Valgrind test for Dart+Rust
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install valgrind
+        run: sudo apt install -y valgrind
+
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dart dependencies
+        working-directory: ./frb_example/pure_dart/dart
+        run: dart pub get
+
+      - name: Run valgrind script
+        working-directory: ./frb_example/pure_dart/dart
+        run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
+        env:
+          CARGO_TARGET_DIR: .
