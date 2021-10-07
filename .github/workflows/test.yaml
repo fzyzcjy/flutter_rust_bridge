@@ -147,6 +147,7 @@ jobs:
       - name: Run Flutter integration tests
         id: run_flutter_integration_test
         continue-on-error: true
+        timeout-minutes: 30
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
@@ -159,6 +160,7 @@ jobs:
         id: run_flutter_integration_test_retry_1
         if: steps.run_flutter_integration_test.outcome == 'failure'
         continue-on-error: true
+        timeout-minutes: 30
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
