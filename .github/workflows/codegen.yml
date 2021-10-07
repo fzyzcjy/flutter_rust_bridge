@@ -1,4 +1,4 @@
-name: Run codegen
+name: Codegen
 on:
   push:
     branches: [ "*" ]
