@@ -41,11 +41,9 @@ jobs:
         run: brew install llvm
       - name: Install llvm dependency (Windows)
         if: ${{ matrix.os.family == 'windows' }}
-        run: winget install -e --id LLVM.LLVM
-#      - name: Install LLVM and Clang
-#        uses: KyleMayes/install-llvm-action@v1.4.1
-#        with:
-#          version: 12
+        uses: KyleMayes/install-llvm-action@v1.4.1
+        with:
+          version: 12
 
       - name: Run codegen to pure_dart example
         working-directory: ./frb_codegen
