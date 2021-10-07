@@ -1,14 +1,12 @@
 # High-level memory-safe binding generator for Flutter/Dart <-> Rust
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7)](https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&utm_medium=referral&utm_content=fzyzcjy/flutter_rust_bridge&utm_campaign=Badge_Grade_Settings)
 [![Documentation](https://docs.rs/flutter_rust_bridge/badge.svg)](https://docs.rs/flutter_rust_bridge)
 [![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg)](https://crates.io/crates/flutter_rust_bridge)
 [![Flutter Package](https://img.shields.io/pub/v/flutter_rust_bridge.svg)](https://pub.dev/packages/flutter_rust_bridge)
-[![Valgrind test for Dart+Rust](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/valgrind.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/valgrind.yml)
+[![Test](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/test.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/test.yaml)
+[![Codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/codegen.yml)
 [![Linters](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml)
-[![Rust build and test](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/rust.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/rust.yml)
-[![Flutter integration test for Flutter+Rust](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/flutter.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/flutter.yaml)
-[![Run codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/run_codegen.yml)
-
 
 ![Logo](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/docs/logo.png)
 
