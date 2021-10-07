@@ -36,14 +36,14 @@ jobs:
       - name: Install llvm dependency (Linux)
         if: ${{ matrix.os.family == 'linux' }}
         run: sudo apt-get install -y libclang-dev
-      - name: Install llvm dependency (MacOS)
-        if: ${{ matrix.os.family == 'osx' }}
-        run: brew install llvm
-      - name: Install llvm dependency (Windows)
-        if: ${{ matrix.os.family == 'windows' }}
-        uses: KyleMayes/install-llvm-action@v1.4.1
-        with:
-          version: 12
+#      - name: Install llvm dependency (MacOS)
+#        if: ${{ matrix.os.family == 'osx' }}
+#        run: brew install llvm
+#      - name: Install llvm dependency (Windows)
+#        if: ${{ matrix.os.family == 'windows' }}
+#        uses: KyleMayes/install-llvm-action@v1.4.1
+#        with:
+#          version: 12
 
       - name: Run codegen to pure_dart example
         working-directory: ./frb_codegen
