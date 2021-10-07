@@ -35,24 +35,31 @@ jobs:
       - name: Install llvm dependency (Linux)
         if: ${{ matrix.os.family == 'linux' }}
         run: sudo apt-get install -y libclang-dev
-#      - name: Install llvm dependency (MacOS)
-#        if: ${{ matrix.os.family == 'osx' }}
-#        run: brew install llvm
-#      - name: Install llvm dependency (Windows)
-#        if: ${{ matrix.os.family == 'windows' }}
-#        uses: KyleMayes/install-llvm-action@v1.4.1
-#        with:
-#          version: 12
 
+      # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example
+        if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- --rust-input ../frb_example/pure_dart/rust/src/api.rs --dart-output ../frb_example/pure_dart/dart/lib/bridge_generated.dart --dart-format-line-length 120
         env:
           RUST_LOG: debug
+      - name: Run codegen to pure_dart example
+        if: ${{ matrix.os.family == 'windows' }}
+        working-directory: ./frb_codegen
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- --rust-input ..\\frb_example\\pure_dart\\rust\\src\\api.rs --dart-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_generated.dart --dart-format-line-length 120
+        env:
+          RUST_LOG: debug
 
       - name: Run codegen to with_flutter example
+        if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- --rust-input ../frb_example/with_flutter/rust/src/api.rs --dart-output ../frb_example/with_flutter/lib/bridge_generated.dart --c-output ../frb_example/with_flutter/ios/Runner/bridge_generated.h --dart-format-line-length 120
+        env:
+          RUST_LOG: debug
+      - name: Run codegen to with_flutter example
+        if: ${{ matrix.os.family == 'windows' }}
+        working-directory: ./frb_codegen
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- --rust-input ..\\frb_example\\with_flutter\\rust\\src\\api.rs --dart-output ..\\frb_example\\with_flutter\\lib\\bridge_generated.dart --c-output ..\\frb_example\\with_flutter\\ios\\Runner\\bridge_generated.h --dart-format-line-length 120
         env:
           RUST_LOG: debug
 
