@@ -60,7 +60,7 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
 ```
 
-(For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).)
+(For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
 
 ### Enjoy
 
@@ -82,7 +82,7 @@ Remark: I have generated the source code already (in quickstart), so this step i
 
 Install it: `cargo install flutter_rust_bridge_codegen`.
 
-Run it: `flutter_rust_bridge_codegen frb_example/with_flutter/rust/flutter_rust_bridge.yaml` (the argument is the path to the configuration file).
+Run it: `flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h`. (See [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml) as a reference.) (For Windows, you may need `\\` instead of `/` for paths.)
 
 ### Run "Flutter+Rust" app
 
