@@ -1,4 +1,4 @@
-name: Flutter integration test for Flutter+Rust
+name: Test
 
 on:
   push:
@@ -14,8 +14,41 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  valgrind_test:
+    name: Valgrind test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install valgrind
+        run: sudo apt install -y valgrind
+
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dart dependencies
+        working-directory: ./frb_example/pure_dart/dart
+        run: dart pub get
+
+      - name: Run valgrind script
+        working-directory: ./frb_example/pure_dart/dart
+        run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
+        env:
+          CARGO_TARGET_DIR: .
+
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
-  ios:
+  flutter_ios_test:
+    name: Flutter (iOS) integration test
     runs-on: macOS-latest
 
     strategy:
@@ -71,7 +104,8 @@ jobs:
         run: flutter test integration_test/main.dart --verbose
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
-  android:
+  flutter_android_test:
+    name: Flutter (Android) integration test
     runs-on: macOS-latest # "betterprogramming.pub" says must be macOS
 
     strategy:
