@@ -1,0 +1,101 @@
+# These settings are synced to GitHub by https://probot.github.io/apps/settings/
+
+repository:
+  # See https://docs.github.com/en/rest/reference/repos#update-a-repository for all available settings.
+
+  # The name of the repository. Changing this will rename the repository
+  name: flutter_rust_bridge
+
+  # A short description of the repository that will show up on GitHub
+  description: High-level memory-safe binding generator for Flutter/Dart <-> Rust
+
+  # A URL with more information about the repository
+  homepage: https://fzyzcjy.github.io/flutter_rust_bridge/
+
+  # A comma-separated list of topics to set on the repository
+  topics: dart, rust, ffi, flutter, bindgen
+
+  # Either `true` to make the repository private, or `false` to make it public.
+  private: false
+
+  # Either `true` to enable issues for this repository, `false` to disable them.
+  has_issues: true
+
+  # Either `true` to enable projects for this repository, or `false` to disable them.
+  # If projects are disabled for the organization, passing `true` will cause an API error.
+  has_projects: true
+
+  # Either `true` to enable the wiki for this repository, `false` to disable it.
+  has_wiki: true
+
+  # Either `true` to enable downloads for this repository, `false` to disable them.
+  has_downloads: true
+
+  # Updates the default branch for this repository.
+  default_branch: master
+
+  # Either `true` to allow squash-merging pull requests, or `false` to prevent
+  # squash-merging.
+  allow_squash_merge: true
+
+  # Either `true` to allow merging pull requests with a merge commit, or `false`
+  # to prevent merging pull requests with merge commits.
+  allow_merge_commit: true
+
+  # Either `true` to allow rebase-merging pull requests, or `false` to prevent
+  # rebase-merging.
+  allow_rebase_merge: true
+
+  # Either `true` to enable automatic deletion of branches on merge, or `false` to disable
+  delete_branch_on_merge: false
+
+  # Either `true` to enable automated security fixes, or `false` to disable
+  # automated security fixes.
+  enable_automated_security_fixes: true
+
+  # Either `true` to enable vulnerability alerts, or `false` to disable
+  # vulnerability alerts.
+  enable_vulnerability_alerts: true
+
+# Labels: define labels for Issues and Pull Requests
+labels:
+  - name: bug
+    color: '#d73a4a'
+    description: "Something isn't working"
+  - name: enhancement
+    color: '#a2eeef'
+    description: New feature or request
+  - name: draft
+    color: '#7F4D62'
+    description: Just a draft
+  - name: wontfix
+    color: '#ffffff'
+    description: This will not be worked on
+  - name: sync
+    color: '#ededed'
+    description: auto file sync
+  - name: good first issue
+    color: '#7057ff'
+    description: Good for newcomers
+
+# Milestones: define milestones for Issues and Pull Requests
+milestones: []
+
+# Collaborators: give specific users access to this repository.
+# See https://docs.github.com/en/rest/reference/repos#add-a-repository-collaborator for available options
+collaborators:
+  - username: fzyzcjy1
+  
+  # Note: `permission` is only valid on organization-owned repositories.
+  # The permission to grant the collaborator. Can be one of:
+  # * `pull` - can pull, but not push to or administer this repository.
+  # * `push` - can pull and push, but not administer this repository.
+  # * `admin` - can pull, push and administer this repository.
+  # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
+  # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
+
+# See https://docs.github.com/en/rest/reference/teams#add-or-update-team-repository-permissions for available options
+teams: []
+
+branches:
+  - name: master
