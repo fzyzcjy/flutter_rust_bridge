@@ -110,7 +110,7 @@ If you are adding this lib to your own existing code, please put `mod generated_
 
 #### Version
 
-Dark SDK `>=2.14.0` is needed not by this library, but by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
+Dart SDK `>=2.14.0` is needed not by this library, but by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
 
 ## 📪 Safety
 
