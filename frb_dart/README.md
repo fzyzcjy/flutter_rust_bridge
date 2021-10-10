@@ -90,13 +90,13 @@ Run it: `flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/
 
 Run `cargo ndk -o ../android/app/src/main/jniLibs build`. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
 
+Remark: Since my quickstart app is so baremetal, I do not integrate the Rust building process into Flutter building process. But you can look at [this tutorial](https://stackoverflow.com/q/69515032/4619958) to easily do that.
+
 #### If iOS
 
 Modify `Cargo.toml` to change `cdylib` to `staticlib`. (Again, this is baremetal example so it is done manually. For your project, you can automate it.)
 
-Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
-
-Remark: Since my quickstart app is so baremetal, I do not integrate the Rust building process into Flutter building process (but definitely you can do that). 
+Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`. (Similarly, [this tutorial](https://stackoverflow.com/q/69515032/4619958) can automate the process.)
 
 ### (Optional) See more types that this library can generate
 
@@ -181,6 +181,8 @@ crate-type = ["cdylib"] # <-- notice this type. `cdylib` for android, and `stati
 ```
 
 Step 4: Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings, such as `func dummyMethodToAvoidSymbolStripping() { wire_passing_complex_structs(42, nil) }`, and this will prevent symbol stripping.
+
+Lastly, in order to build Rust automatically when you are building Flutter, follow [this tutorial](https://stackoverflow.com/q/69515032/4619958).
 
 ## Appendix: Future work
 
