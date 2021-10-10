@@ -192,3 +192,7 @@ I plan to support the following features. Of course, if you want to have other f
 * Support [`Stream`](https://dart.dev/tutorials/language/streams)s, which is a powerful abstraction. Should also be easy to implement.
 * Beautify the generated code, possibly making the cases (camel/snake/...) consistent with the language guide.
 * Make the code generator more robust to invalid inputs.
+
+## Appendix: Contributing
+
+Firstly, welcome, and thanks for your contributions! If you want to contribute, feel free to create a Pull Request. If you need some ideas of what to contribute, have a look at the Issues section of this repository. The code is covered by CI, and please ensure the CI passes - which often catches bugs. To release a new version, bump several versions, and write down a changelog: `vim frb_codegen/Cargo.toml && vim frb_rust/Cargo.toml && vim frb_dart/pubspec.yaml && vim frb_dart/CHANGELOG.md`
