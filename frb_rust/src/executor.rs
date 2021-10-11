@@ -32,7 +32,7 @@ impl Default for DefaultExecutor {
 }
 
 impl Executor for DefaultExecutor {
-    fn execute(&self, debug_name: &str, port: i64, f: ExecutorTask) {
+    fn execute(&self, _debug_name: &str, port: i64, f: ExecutorTask) {
         const DEFAULT_WORKER_THREAD_POOL_NUM_WORKERS: usize = 4;
 
         lazy_static! {
