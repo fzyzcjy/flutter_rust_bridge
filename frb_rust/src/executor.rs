@@ -1,20 +1,13 @@
-use crate::rust2dart::Rust2Dart;
-use crate::support::DartCObject;
+use std::panic;
+use std::panic::UnwindSafe;
+
 use anyhow::Result;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
-use std::panic;
-use std::panic::UnwindSafe;
 use threadpool::ThreadPool;
 
-lazy_static! {
-    pub(crate) static ref EXECUTOR: Mutex<Box<dyn Executor + Send + Sync + 'static>> =
-        Mutex::new(Box::new(DefaultExecutor));
-}
-
-pub fn set_executor(executor: Box<dyn Executor + Send + Sync + 'static>) {
-    *EXECUTOR.lock() = executor;
-}
+use crate::rust2dart::Rust2Dart;
+use crate::support::DartCObject;
 
 pub type ExecutorTask = Box<dyn FnOnce() -> Result<DartCObject> + Send + UnwindSafe + 'static>;
 
@@ -25,6 +18,12 @@ pub trait Executor {
 
 /// The default executor uses a simple thread pool to execute tasks.
 pub struct DefaultExecutor;
+
+impl DefaultExecutor {
+    pub fn new() -> Self {
+        DefaultExecutor {}
+    }
+}
 
 impl Executor for DefaultExecutor {
     fn execute(&self, port: i64, f: ExecutorTask) {

@@ -1,6 +1,7 @@
+use log::debug;
+
 use crate::api_types::ApiType::{Boxed, StructRef};
 use crate::api_types::{ApiField, ApiFile, ApiFunc, ApiTypeBoxed};
-use log::debug;
 
 pub fn transform(src: ApiFile) -> ApiFile {
     let dst_funcs = src
@@ -20,6 +21,7 @@ pub fn transform(src: ApiFile) -> ApiFile {
     ApiFile {
         funcs: dst_funcs,
         struct_pool: src.struct_pool,
+        has_executor: src.has_executor,
     }
 }
 

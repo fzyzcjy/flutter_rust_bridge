@@ -1,23 +1,27 @@
-use crate::api_types::*;
+use std::collections::{HashMap, HashSet};
+use std::string::String;
+
 use lazy_static::lazy_static;
 use log::debug;
 use quote::quote;
 use regex::Regex;
-use std::collections::{HashMap, HashSet};
-use std::string::String;
 use syn::*;
+
 use ApiType::*;
+
+use crate::api_types::*;
+use crate::generator_rust::EXECUTOR_NAME;
 
 type StructMap<'a> = HashMap<String, &'a ItemStruct>;
 
-pub fn parse(file: File) -> ApiFile {
+pub fn parse(source_rust_content: &str, file: File) -> ApiFile {
     let (src_fns, src_struct_map) = extract_items_from_file(&file);
     let parser = Parser {
         src_struct_map,
         struct_pool: HashMap::new(),
         parsing_or_parsed_struct_names: HashSet::new(),
     };
-    parser.parse(src_fns)
+    parser.parse(source_rust_content, src_fns)
 }
 
 struct Parser<'a> {
@@ -27,12 +31,15 @@ struct Parser<'a> {
 }
 
 impl<'a> Parser<'a> {
-    fn parse(mut self, src_fns: Vec<&ItemFn>) -> ApiFile {
+    fn parse(mut self, source_rust_content: &str, src_fns: Vec<&ItemFn>) -> ApiFile {
         let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
+
+        let has_executor = source_rust_content.contains(EXECUTOR_NAME);
 
         ApiFile {
             funcs,
             struct_pool: self.struct_pool,
+            has_executor,
         }
     }
 

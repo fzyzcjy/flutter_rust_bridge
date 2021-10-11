@@ -2,6 +2,8 @@ use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::generator_common::*;
 
+pub const EXECUTOR_NAME: &str = "FLUTTER_RUST_BRIDGE_EXECUTOR";
+
 pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
     let wire_funcs = api_file
         .funcs
@@ -40,7 +42,7 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
 
         use crate::{}::*;
         use flutter_rust_bridge::*;
-
+        
         // Section: wire functions
 
         {}
@@ -71,6 +73,9 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
 
         // Section: impl IntoDart 
         {}
+        
+        // Section: executor
+        {}
 
         // Section: misc helpers
 
@@ -88,7 +93,22 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
         wire2api_funcs.join("\n\n"),
         new_with_nullptr_funcs.join("\n\n"),
         impl_intodart.join("\n\n"),
+        generate_executor(api_file),
     )
+}
+
+fn generate_executor(api_file: &ApiFile) -> String {
+    if api_file.has_executor {
+        "/* nothing since executor detected */".to_string()
+    } else {
+        format!(
+            "support::lazy_static! {{
+                pub static ref {}: support::DefaultExecutor = support::DefaultExecutor;
+            }}
+            ",
+            EXECUTOR_NAME
+        )
+    }
 }
 
 fn generate_wire_func(func: &ApiFunc) -> String {
@@ -97,7 +117,7 @@ fn generate_wire_func(func: &ApiFunc) -> String {
         "#[no_mangle]
         pub extern \"C\" fn {}(port: i64, {}) {{
             {}
-            support::wrap_wire_func(port, move || {}({}));
+            support::wrap_wire_func(&*{}, port, move || {}({}));
         }}",
         func.wire_func_name(),
         func.inputs
@@ -119,6 +139,7 @@ fn generate_wire_func(func: &ApiFunc) -> String {
             ))
             .collect::<Vec<_>>()
             .join(""),
+        EXECUTOR_NAME,
         func.name,
         func.inputs
             .iter()

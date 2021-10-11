@@ -30,7 +30,7 @@ fn main() {
     let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
     info!("Phase: Parse AST to IR");
-    let raw_api_file = parser::parse(file_ast);
+    let raw_api_file = parser::parse(&source_rust_content, file_ast);
     debug!("parsed functions: {:?}", &raw_api_file);
 
     info!("Phase: Transform IR");

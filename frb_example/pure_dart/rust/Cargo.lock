@@ -100,6 +100,7 @@ version = "1.0.0"
 dependencies = [
  "anyhow",
  "flutter_rust_bridge",
+ "lazy_static",
 ]
 
 [[package]]

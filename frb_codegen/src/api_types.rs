@@ -1,5 +1,7 @@
-use convert_case::{Case, Casing};
 use std::collections::{HashMap, HashSet};
+
+use convert_case::{Case, Casing};
+
 use ApiType::*;
 
 pub type ApiStructPool = HashMap<String, ApiStruct>;
@@ -8,6 +10,7 @@ pub type ApiStructPool = HashMap<String, ApiStruct>;
 pub struct ApiFile {
     pub funcs: Vec<ApiFunc>,
     pub struct_pool: ApiStructPool,
+    pub has_executor: bool,
 }
 
 impl ApiFile {
