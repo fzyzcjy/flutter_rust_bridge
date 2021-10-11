@@ -162,7 +162,7 @@ impl Opts {
     }
 
     pub fn dart_api_impl_class_name(&self) -> String {
-        format!("_{}Impl", self.class_name)
+        format!("{}Impl", self.class_name)
     }
 
     pub fn dart_wire_class_name(&self) -> String {

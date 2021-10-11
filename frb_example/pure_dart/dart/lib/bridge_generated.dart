@@ -10,7 +10,7 @@ import 'dart:ffi' as ffi;
 
 abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
   factory FlutterRustBridgeExample(ffi.DynamicLibrary dylib) =>
-      _FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire(dylib));
+      FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire(dylib));
 
   FlutterRustBridgeExample.raw(FlutterRustBridgeExampleWire inner) : super(inner);
 
@@ -69,8 +69,11 @@ class MyTreeNode {
 
 // ------------------------- Implementation Details -------------------------
 
-class _FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
-  _FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super.raw(inner);
+/// Implementations for FlutterRustBridgeExample. Prefer using FlutterRustBridgeExample if possible; but this class allows more
+/// flexible customizations (such as subclassing to create an initializer, a logger, or
+/// a timer).
+class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
+  FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super.raw(inner);
 
   Future<int> simpleAdder({required int a, required int b}) =>
       execute((port) => inner.wire_simple_adder(port, _api2wire_i32(a), _api2wire_i32(b)), _wire2api_i32);

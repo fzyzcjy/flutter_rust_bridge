@@ -83,7 +83,10 @@ pub fn generate(
     );
 
     let others = format!(
-        "class {} extends {} {{
+        "/// Implementations for {}. Prefer using {} if possible; but this class allows more 
+        /// flexible customizations (such as subclassing to create an initializer, a logger, or 
+        /// a timer).
+        class {} extends {} {{
             {}.raw({} inner) : super.raw(inner);
 
             {}
@@ -98,6 +101,8 @@ pub fn generate(
         // Section: wire2api
         {}
         ",
+        dart_api_class_name,
+        dart_api_class_name,
         dart_api_impl_class_name,
         dart_api_class_name,
         dart_api_impl_class_name,
