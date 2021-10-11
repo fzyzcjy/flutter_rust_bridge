@@ -543,6 +543,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _store_dart_post_cobjectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
+
+  void rust_dummy_method_to_enforce_bundling() {
+    return _rust_dummy_method_to_enforce_bundling();
+  }
+
+  late final _rust_dummy_method_to_enforce_bundlingPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('rust_dummy_method_to_enforce_bundling');
+  late final _rust_dummy_method_to_enforce_bundling =
+      _rust_dummy_method_to_enforce_bundlingPtr.asFunction<void Function()>();
 }
 
 class wire_uint_8_list extends ffi.Struct {

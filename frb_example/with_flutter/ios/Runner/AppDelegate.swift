@@ -11,5 +11,5 @@ import Flutter
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
-  func dummyMethodToAvoidSymbolStripping() { wire_passing_complex_structs(42, nil) }
+  func dummyMethodToAvoidSymbolStripping() { rust_dummy_method_to_enforce_bundling() }
 }

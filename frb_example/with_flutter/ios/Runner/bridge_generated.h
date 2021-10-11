@@ -72,3 +72,5 @@ struct wire_list_tree_node *new_list_tree_node(int32_t len);
 struct wire_list_size *new_list_size(int32_t len);
 
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
+
+void rust_dummy_method_to_enforce_bundling(void);
