@@ -25,6 +25,12 @@ impl DefaultExecutor {
     }
 }
 
+impl Default for DefaultExecutor {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Executor for DefaultExecutor {
     fn execute(&self, port: i64, f: ExecutorTask) {
         const DEFAULT_WORKER_THREAD_POOL_NUM_WORKERS: usize = 4;
