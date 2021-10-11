@@ -1,7 +1,8 @@
-use log::{debug, warn};
 use std::fs;
 use std::io::Write;
 use std::process::Command;
+
+use log::{debug, warn};
 
 pub fn bindgen_rust_to_dart(
     rust_crate_dir: &str,
@@ -19,9 +20,15 @@ fn execute_command(command: &mut Command) {
     let result = command.output().unwrap();
 
     if result.status.success() {
-        debug!("command output: {:?}", result);
+        debug!("command={:?} output={:?}", command, result);
+    } else if String::from_utf8_lossy(&result.stdout).contains("fatal error") {
+        warn!(
+            "See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}",
+            command, result
+        );
+        // only warn, do not panic
     } else {
-        warn!("command output: {:?}", result);
+        warn!("command={:?} output={:?}", command, result);
         panic!("command execution failed. command={:?}", command);
     }
 }
@@ -33,10 +40,11 @@ fn cbindgen(rust_crate_dir: &str, c_output_path: &str) {
     );
 
     let config = "language = \"C\"".to_string();
+    debug!("cbindgen config: {}", config);
 
     let mut config_file = tempfile::NamedTempFile::new().unwrap();
     config_file.write_all(config.as_bytes()).unwrap();
-    debug!("cbindgen config_file={:?}", config_file);
+    debug!("cbindgen config_file: {:?}", config_file);
 
     execute_command(
         Command::new("cbindgen")
@@ -67,9 +75,11 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
         ",
         dart_path, dart_class_name, c_path, c_path,
     );
+    debug!("ffigen config: {}", config);
 
     let mut config_file = tempfile::NamedTempFile::new().unwrap();
     config_file.write_all(config.as_bytes()).unwrap();
+    debug!("ffigen config_file: {:?}", config_file);
 
     // NOTE please install ffigen globally first: `dart pub global activate ffigen`
     execute_command(
