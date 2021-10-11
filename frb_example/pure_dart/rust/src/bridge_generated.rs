@@ -369,3 +369,10 @@ impl support::IntoDart for MyTreeNode {
         .into_dart()
     }
 }
+
+// Section: misc helpers
+
+#[no_mangle]
+pub extern "C" fn rust_dummy_method_to_enforce_bundling() {
+    /* nothing */
+}

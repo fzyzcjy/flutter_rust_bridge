@@ -346,3 +346,10 @@ impl support::IntoDart for TreeNode {
         vec![self.name.into_dart(), self.children.into_dart()].into_dart()
     }
 }
+
+// Section: misc helpers
+
+#[no_mangle]
+pub extern "C" fn rust_dummy_method_to_enforce_bundling() {
+    /* nothing */
+}

@@ -35,7 +35,7 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
         .collect::<Vec<_>>();
 
     format!(
-        "#![allow(non_camel_case_types, clippy::redundant_closure, clippy::useless_conversion)]
+        r#"#![allow(non_camel_case_types, clippy::redundant_closure, clippy::useless_conversion)]
         {}
 
         use crate::{}::*;
@@ -71,7 +71,15 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
 
         // Section: impl IntoDart 
         {}
-        ",
+
+        // Section: misc helpers
+
+        #[no_mangle]
+        pub extern "C" fn rust_dummy_method_to_enforce_bundling() {{
+            /* nothing */
+        }}
+    
+        "#,
         CODE_HEADER,
         rust_wire_stem,
         wire_funcs.join("\n\n"),

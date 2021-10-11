@@ -474,6 +474,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_size> Function(ffi.Int32)>>('new_list_size');
   late final _new_list_size = _new_list_sizePtr.asFunction<ffi.Pointer<wire_list_size> Function(int)>();
 
+  void rust_dummy_method_to_enforce_bundling() {
+    return _rust_dummy_method_to_enforce_bundling();
+  }
+
+  late final _rust_dummy_method_to_enforce_bundlingPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('rust_dummy_method_to_enforce_bundling');
+  late final _rust_dummy_method_to_enforce_bundling =
+      _rust_dummy_method_to_enforce_bundlingPtr.asFunction<void Function()>();
+
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
   ) {
@@ -485,15 +494,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _store_dart_post_cobjectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
-
-  void rust_dummy_method_to_enforce_bundling() {
-    return _rust_dummy_method_to_enforce_bundling();
-  }
-
-  late final _rust_dummy_method_to_enforce_bundlingPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>('rust_dummy_method_to_enforce_bundling');
-  late final _rust_dummy_method_to_enforce_bundling =
-      _rust_dummy_method_to_enforce_bundlingPtr.asFunction<void Function()>();
 }
 
 class wire_Size extends ffi.Struct {

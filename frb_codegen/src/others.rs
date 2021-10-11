@@ -15,9 +15,6 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
     #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
     
-    // https://github.com/fzyzcjy/flutter_rust_bridge/issues/50
-    #[no_mangle] pub unsafe extern "C" fn rust_dummy_method_to_enforce_bundling() { /* nothing */ }
-    
     // ---------------------------------------------
     "#;
 
