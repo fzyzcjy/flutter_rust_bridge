@@ -1,4 +1,4 @@
-# High-level memory-safe binding generator for Flutter/Dart <-> Rust
+# flutter_rust_bridge: High-level memory-safe binding generator for Flutter/Dart <-> Rust
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7)](https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&utm_medium=referral&utm_content=fzyzcjy/flutter_rust_bridge&utm_campaign=Badge_Grade_Settings)
 [![Documentation](https://docs.rs/flutter_rust_bridge/badge.svg)](https://docs.rs/flutter_rust_bridge)
