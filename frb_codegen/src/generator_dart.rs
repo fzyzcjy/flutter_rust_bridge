@@ -159,8 +159,9 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
     let signature = format!("{};", partial);
 
     let implementation = format!(
-        "{} => execute((port) => inner.{}(port, {}), _wire2api_{});",
+        "{} => execute('{}', (port) => inner.{}(port, {}), _wire2api_{});",
         partial,
+        func.name,
         func.wire_func_name(),
         wire_param_list.join(", "),
         func.output.safe_ident(),

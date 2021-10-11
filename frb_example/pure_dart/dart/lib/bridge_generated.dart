@@ -75,44 +75,48 @@ class MyTreeNode {
 class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super.raw(inner);
 
-  Future<int> simpleAdder({required int a, required int b}) =>
-      execute((port) => inner.wire_simple_adder(port, _api2wire_i32(a), _api2wire_i32(b)), _wire2api_i32);
+  Future<int> simpleAdder({required int a, required int b}) => execute(
+      'simple_adder', (port) => inner.wire_simple_adder(port, _api2wire_i32(a), _api2wire_i32(b)), _wire2api_i32);
 
   Future<int> primitiveTypes({required int myI32, required int myI64, required double myF64, required bool myBool}) =>
       execute(
+          'primitive_types',
           (port) => inner.wire_primitive_types(
               port, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), _api2wire_bool(myBool)),
           _wire2api_i32);
 
   Future<String> handleString({required String s}) =>
-      execute((port) => inner.wire_handle_string(port, _api2wire_String(s)), _wire2api_String);
+      execute('handle_string', (port) => inner.wire_handle_string(port, _api2wire_String(s)), _wire2api_String);
 
-  Future<Uint8List> handleVecU8({required Uint8List v}) =>
-      execute((port) => inner.wire_handle_vec_u8(port, _api2wire_uint_8_list(v)), _wire2api_uint_8_list);
+  Future<Uint8List> handleVecU8({required Uint8List v}) => execute(
+      'handle_vec_u8', (port) => inner.wire_handle_vec_u8(port, _api2wire_uint_8_list(v)), _wire2api_uint_8_list);
 
-  Future<Uint8List> handleZeroCopyResult({required int n}) =>
-      execute((port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)), _wire2api_ZeroCopyBuffer_Uint8List);
+  Future<Uint8List> handleZeroCopyResult({required int n}) => execute('handle_zero_copy_result',
+      (port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)), _wire2api_ZeroCopyBuffer_Uint8List);
 
   Future<MySize> handleStruct({required MySize arg, required MySize boxed}) => execute(
+      'handle_struct',
       (port) => inner.wire_handle_struct(port, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
       _wire2api_my_size);
 
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg}) => execute(
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg}) => execute('handle_newtype',
       (port) => inner.wire_handle_newtype(port, _api2wire_box_autoadd_new_type_int(arg)), _wire2api_new_type_int);
 
-  Future<List<MySize>> handleListOfStruct({required List<MySize> l}) =>
-      execute((port) => inner.wire_handle_list_of_struct(port, _api2wire_list_my_size(l)), _wire2api_list_my_size);
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l}) => execute('handle_list_of_struct',
+      (port) => inner.wire_handle_list_of_struct(port, _api2wire_list_my_size(l)), _wire2api_list_my_size);
 
-  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s}) => execute(
+  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s}) => execute('handle_complex_struct',
       (port) => inner.wire_handle_complex_struct(port, _api2wire_box_autoadd_my_tree_node(s)), _wire2api_my_tree_node);
 
   Future<int> returnErr() => execute(
+      'return_err',
       (port) => inner.wire_return_err(
             port,
           ),
       _wire2api_i32);
 
   Future<int> returnPanic() => execute(
+      'return_panic',
       (port) => inner.wire_return_panic(
             port,
           ),
