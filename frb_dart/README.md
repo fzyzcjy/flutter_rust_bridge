@@ -48,7 +48,7 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ### Install
 
-* Install dependency `cbindgen`: `cargo install cbindgen`
+* Install dependency `cbindgen`: `cargo install cbindgen` <sub>(may [need latest version](https://github.com/fzyzcjy/flutter_rust_bridge/issues/53#issuecomment-939588321), thanks @gmorenz)</sub>
 * Install dependency `ffigen`:  `dart pub global activate ffigen`, and [install LLVM](https://pub.dev/packages/ffigen#installing-llvm).
 * Install this code generator binary by `cargo install flutter_rust_bridge_codegen`.
 * Add `flutter_rust_bridge = "1.0"` (where `1.0` should be the latest version) to Rust's `Cargo.toml`.
