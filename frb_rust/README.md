@@ -33,7 +33,7 @@ pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
 }
 
 // you can use structs (even recursive)
-pub struct TreeNode { pub value: i32, pub children: Vec<MyTreeNode> }
+pub struct TreeNode { pub value: String, pub children: Vec<MyTreeNode> }
 ```
 
 With bindings automatically generated, you can simply use the following API in Flutter/Dart. Nothing more.
