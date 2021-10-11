@@ -15,9 +15,12 @@ use flutter_rust_bridge::*;
 pub extern "C" fn wire_simple_adder(port: i64, a: i32, b: i32) {
     let api_a = a.wire2api();
     let api_b = b.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        simple_adder(api_a, api_b)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "simple_adder",
+        port,
+        move || simple_adder(api_a, api_b),
+    );
 }
 
 #[no_mangle]
@@ -32,76 +35,110 @@ pub extern "C" fn wire_primitive_types(
     let api_my_i64 = my_i64.wire2api();
     let api_my_f64 = my_f64.wire2api();
     let api_my_bool = my_bool.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        primitive_types(api_my_i32, api_my_i64, api_my_f64, api_my_bool)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "primitive_types",
+        port,
+        move || primitive_types(api_my_i32, api_my_i64, api_my_f64, api_my_bool),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_string(port: i64, s: *mut wire_uint_8_list) {
     let api_s = s.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        handle_string(api_s)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "handle_string",
+        port,
+        move || handle_string(api_s),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
     let api_v = v.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        handle_vec_u8(api_v)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "handle_vec_u8",
+        port,
+        move || handle_vec_u8(api_v),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_zero_copy_result(port: i64, n: i32) {
     let api_n = n.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        handle_zero_copy_result(api_n)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "handle_zero_copy_result",
+        port,
+        move || handle_zero_copy_result(api_n),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_struct(port: i64, arg: *mut wire_MySize, boxed: *mut wire_MySize) {
     let api_arg = arg.wire2api();
     let api_boxed = boxed.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        handle_struct(api_arg, api_boxed)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "handle_struct",
+        port,
+        move || handle_struct(api_arg, api_boxed),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_newtype(port: i64, arg: *mut wire_NewTypeInt) {
     let api_arg = arg.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        handle_newtype(api_arg)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "handle_newtype",
+        port,
+        move || handle_newtype(api_arg),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_list_of_struct(port: i64, l: *mut wire_list_my_size) {
     let api_l = l.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        handle_list_of_struct(api_l)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "handle_list_of_struct",
+        port,
+        move || handle_list_of_struct(api_l),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_complex_struct(port: i64, s: *mut wire_MyTreeNode) {
     let api_s = s.wire2api();
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || {
-        handle_complex_struct(api_s)
-    });
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "handle_complex_struct",
+        port,
+        move || handle_complex_struct(api_s),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_err(port: i64) {
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || return_err());
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "return_err",
+        port,
+        move || return_err(),
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_panic(port: i64) {
-    support::wrap_wire_func(&*FLUTTER_RUST_BRIDGE_EXECUTOR, port, move || return_panic());
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "return_panic",
+        port,
+        move || return_panic(),
+    );
 }
 
 // Section: wire structs

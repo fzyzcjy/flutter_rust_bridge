@@ -117,7 +117,7 @@ fn generate_wire_func(func: &ApiFunc) -> String {
         "#[no_mangle]
         pub extern \"C\" fn {}(port: i64, {}) {{
             {}
-            support::wrap_wire_func(&*{}, port, move || {}({}));
+            support::wrap_wire_func(&*{}, \"{}\", port, move || {}({}));
         }}",
         func.wire_func_name(),
         func.inputs
@@ -140,6 +140,7 @@ fn generate_wire_func(func: &ApiFunc) -> String {
             .collect::<Vec<_>>()
             .join(""),
         EXECUTOR_NAME,
+        func.name,
         func.name,
         func.inputs
             .iter()

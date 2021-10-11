@@ -39,9 +39,13 @@ pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
 }
 
-pub fn wrap_wire_func<E: Executor, F, R: IntoDart>(executor: &E, port: i64, f: F)
+pub fn wrap_wire_func<E: Executor, F, R: IntoDart>(executor: &E, debug_name: &str, port: i64, f: F)
 where
     F: FnOnce() -> Result<R> + Send + UnwindSafe + 'static,
 {
-    executor.execute(port, Box::new(move || f().map(|result| result.into_dart())));
+    executor.execute(
+        debug_name,
+        port,
+        Box::new(move || f().map(|result| result.into_dart())),
+    );
 }

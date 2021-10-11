@@ -13,7 +13,7 @@ pub type ExecutorTask = Box<dyn FnOnce() -> Result<DartCObject> + Send + UnwindS
 
 /// Provide your own executor to customize how to execute your function calls
 pub trait Executor {
-    fn execute(&self, port: i64, f: ExecutorTask);
+    fn execute(&self, debug_name: &str, port: i64, f: ExecutorTask);
 }
 
 /// The default executor uses a simple thread pool to execute tasks.
@@ -32,7 +32,7 @@ impl Default for DefaultExecutor {
 }
 
 impl Executor for DefaultExecutor {
-    fn execute(&self, port: i64, f: ExecutorTask) {
+    fn execute(&self, debug_name: &str, port: i64, f: ExecutorTask) {
         const DEFAULT_WORKER_THREAD_POOL_NUM_WORKERS: usize = 4;
 
         lazy_static! {
