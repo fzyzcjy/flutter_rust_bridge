@@ -156,9 +156,9 @@ This library is nothing but a code generator that helps your Flutter/Dart functi
 
 ### Using your own executor
 
-`DefaultExecutor`: When Dart calls Rust, the `DefaultExecutor` use a simple thread pool  to execute the real Rust functions. By doing this, Rust function that needs to run for a long time (more than a few frames) will never make the UI stuck.
+By default, the `DefaultExecutor` is used. When Dart calls Rust, the `DefaultExecutor` use a simple thread pool  to execute the real Rust functions. By doing this, Rust function that needs to run for a long time (more than a few frames) will never make the UI stuck.
 
-However, you can implement your own `Executor` doing whatever you want. In order to do this, implement the `Executor` trait, and call `set_executor` to set your own executor.
+However, you can implement your own `Executor` doing whatever you want. In order to do this, implement the `Executor` trait, and create a variable named `FLUTTER_RUST_BRIDGE_EXECUTOR` in the Rust input file (probably using `lazy_static`).
 
 ## Appendix: Set up Flutter/Dart+Rust support
 
