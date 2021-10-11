@@ -180,7 +180,7 @@ name = "flutter_rust_bridge_example" # whatever you like
 crate-type = ["cdylib"] # <-- notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
 ```
 
-Step 4: Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings, such as `func dummyMethodToAvoidSymbolStripping() { wire_passing_complex_structs(42, nil) }`, and this will prevent symbol stripping.
+Step 4: Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings. This lib has already generated a dummy method for you, so you simply need to add `func dummyMethodToAvoidSymbolStripping() { rust_dummy_method_to_enforce_bundling() }` to swift file, and this will prevent symbol stripping.
 
 Lastly, in order to build Rust automatically when you are building Flutter, follow [this tutorial](https://stackoverflow.com/q/69515032/4619958).
 
