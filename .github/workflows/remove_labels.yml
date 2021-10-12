@@ -1,0 +1,14 @@
+name: Remove labels
+
+on: [issue_comment]
+
+jobs:
+  remove_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-ecosystem/action-remove-labels@v1
+        if: ${{ true }}
+        with:
+          labels: |
+            await response
