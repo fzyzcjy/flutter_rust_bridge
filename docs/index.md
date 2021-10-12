@@ -129,7 +129,7 @@ The CI also runs the `run_codegen` workflow, which ensure that the code generato
 Simply add `--help` to see full documentation.
 
 ```shell
-flutter_rust_bridge_codegen 1.0.0
+flutter_rust_bridge_codegen
 
 USAGE:
     flutter_rust_bridge_codegen [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
