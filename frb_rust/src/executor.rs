@@ -50,7 +50,7 @@ impl Executor for DefaultExecutor {
                     match ret {
                         Ok(result) => rust2dart.success(result),
                         Err(error) => {
-                            rust2dart.error("GENERAL_ERROR".to_string(), error.to_string())
+                            rust2dart.error("GENERAL_ERROR".to_string(), format!("{:?}", error))
                         }
                     };
                 });
