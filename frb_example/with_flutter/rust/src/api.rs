@@ -1,4 +1,4 @@
-use anyhow::Result;
+use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::ZeroCopyBuffer;
 
@@ -82,4 +82,12 @@ pub fn off_topic_memory_test_output_complex_struct(len: i32) -> Result<TreeNode>
         name: "root".to_string(),
         children: vec![child; len as usize],
     })
+}
+
+pub fn off_topic_deliberately_return_error() -> Result<i32> {
+    Err(anyhow!("deliberately return Error!"))
+}
+
+pub fn off_topic_deliberately_panic() -> Result<i32> {
+    panic!("deliberately panic!")
 }

@@ -32,6 +32,10 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   Future<int> offTopicMemoryTestInputComplexStruct({required TreeNode input});
 
   Future<TreeNode> offTopicMemoryTestOutputComplexStruct({required int len});
+
+  Future<int> offTopicDeliberatelyReturnError();
+
+  Future<int> offTopicDeliberatelyPanic();
 }
 
 class Size {
@@ -113,6 +117,20 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       'off_topic_memory_test_output_complex_struct',
       (port) => inner.wire_off_topic_memory_test_output_complex_struct(port, _api2wire_i32(len)),
       _wire2api_tree_node);
+
+  Future<int> offTopicDeliberatelyReturnError() => execute(
+      'off_topic_deliberately_return_error',
+      (port) => inner.wire_off_topic_deliberately_return_error(
+            port,
+          ),
+      _wire2api_i32);
+
+  Future<int> offTopicDeliberatelyPanic() => execute(
+      'off_topic_deliberately_panic',
+      (port) => inner.wire_off_topic_deliberately_panic(
+            port,
+          ),
+      _wire2api_i32);
 
   // Section: api2wire
   ffi.Pointer<wire_Size> _api2wire_box_autoadd_size(Size raw) {
@@ -421,6 +439,32 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           'wire_off_topic_memory_test_output_complex_struct');
   late final _wire_off_topic_memory_test_output_complex_struct =
       _wire_off_topic_memory_test_output_complex_structPtr.asFunction<void Function(int, int)>();
+
+  void wire_off_topic_deliberately_return_error(
+    int port,
+  ) {
+    return _wire_off_topic_deliberately_return_error(
+      port,
+    );
+  }
+
+  late final _wire_off_topic_deliberately_return_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_off_topic_deliberately_return_error');
+  late final _wire_off_topic_deliberately_return_error =
+      _wire_off_topic_deliberately_return_errorPtr.asFunction<void Function(int)>();
+
+  void wire_off_topic_deliberately_panic(
+    int port,
+  ) {
+    return _wire_off_topic_deliberately_panic(
+      port,
+    );
+  }
+
+  late final _wire_off_topic_deliberately_panicPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_off_topic_deliberately_panic');
+  late final _wire_off_topic_deliberately_panic =
+      _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
   ffi.Pointer<wire_Size> new_box_autoadd_size() {
     return _new_box_autoadd_size();

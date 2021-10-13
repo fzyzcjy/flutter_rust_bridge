@@ -125,6 +125,26 @@ pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, le
     );
 }
 
+#[no_mangle]
+pub extern "C" fn wire_off_topic_deliberately_return_error(port: i64) {
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "off_topic_deliberately_return_error",
+        port,
+        move || off_topic_deliberately_return_error(),
+    );
+}
+
+#[no_mangle]
+pub extern "C" fn wire_off_topic_deliberately_panic(port: i64) {
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "off_topic_deliberately_panic",
+        port,
+        move || off_topic_deliberately_panic(),
+    );
+}
+
 // Section: wire structs
 
 #[repr(C)]

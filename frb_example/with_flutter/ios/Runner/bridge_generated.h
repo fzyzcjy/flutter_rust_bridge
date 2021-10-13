@@ -59,6 +59,10 @@ void wire_off_topic_memory_test_input_complex_struct(int64_t port, struct wire_T
 
 void wire_off_topic_memory_test_output_complex_struct(int64_t port, int32_t len);
 
+void wire_off_topic_deliberately_return_error(int64_t port);
+
+void wire_off_topic_deliberately_panic(int64_t port);
+
 struct wire_Size *new_box_autoadd_size(void);
 
 struct wire_Point *new_box_autoadd_point(void);

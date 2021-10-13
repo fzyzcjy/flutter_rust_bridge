@@ -5,6 +5,7 @@ import 'dart:io';
 import 'dart:isolate';
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:flutter_rust_bridge_example/main.dart' as app;
 import 'package:flutter_test/flutter_test.dart';
@@ -31,6 +32,35 @@ void main() {
         // see https://github.com/fzyzcjy/flutter_rust_bridge/issues/19 for details
         await _maybeGC(
             '[NOTE: even if `externalUsage` increases, this is NOT a bug! It is because Flutter\'s ImageCache, which will cache about 100MB. See #19]');
+      }
+    });
+
+    testWidgets('test Rust deliberately have error', (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      for (var i = 0; i < 3; ++i) {
+        print('call offTopicDeliberatelyReturnError');
+        try {
+          final ret = await app.api.offTopicDeliberatelyReturnError();
+          fail('exception not thrown ret=$ret');
+        } catch (e, s) {
+          debugPrint('catch expected error e=$e s=$s');
+        }
+
+        await Future.delayed(const Duration(milliseconds: 200));
+        await tester.pumpAndSettle();
+
+        print('call offTopicDeliberatelyPanic');
+        try {
+          final ret = await app.api.offTopicDeliberatelyPanic();
+          fail('exception not thrown ret=$ret');
+        } catch (e, s) {
+          debugPrint('catch expected error e=$e s=$s');
+        }
+
+        await Future.delayed(const Duration(milliseconds: 200));
+        await tester.pumpAndSettle();
       }
     });
 
