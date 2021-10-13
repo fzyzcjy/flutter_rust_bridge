@@ -80,6 +80,9 @@ labels:
   - name: await response
     color: '#bbdefb'
     description: Waiting for responses
+  - name: pass triage
+    color: '#c8e6c9'
+    description: Pass the triage
 
 # Milestones: define milestones for Issues and Pull Requests
 milestones: []
