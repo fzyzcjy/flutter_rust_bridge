@@ -85,9 +85,11 @@ pub fn off_topic_memory_test_output_complex_struct(len: i32) -> Result<TreeNode>
 }
 
 pub fn off_topic_deliberately_return_error() -> Result<i32> {
+    std::env::set_var("RUST_BACKTRACE", "1"); // optional, just to see more info...
     Err(anyhow!("deliberately return Error!"))
 }
 
 pub fn off_topic_deliberately_panic() -> Result<i32> {
+    std::env::set_var("RUST_BACKTRACE", "1"); // optional, just to see more info...
     panic!("deliberately panic!")
 }
