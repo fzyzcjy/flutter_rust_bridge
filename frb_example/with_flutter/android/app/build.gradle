@@ -51,10 +51,22 @@ android {
     }
 
     buildTypes {
+        debug {
+            packagingOptions {
+                // NOTE XXX added to test backtrace
+                doNotStrip '**/*.so'
+            }
+        }
+
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+
+            packagingOptions {
+                // NOTE XXX added to test backtrace
+                doNotStrip '**/*.so'
+            }
         }
     }
 }
