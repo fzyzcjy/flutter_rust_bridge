@@ -106,7 +106,11 @@ pub fn off_topic_debug_throw(mode: String) -> Result<i32> {
     });
 
     info!("debug_throw start mode={}", mode);
-    crate::off_topic_code::print_backtrace_wrapper("inside-api-debug_throw");
+
+    crate::off_topic_code::print_backtrace_wrapper("inside-api-debug_throw-a");
+
+    crate::off_topic_code::print_backtrace("inside-api-debug_throw-b");
+
     match &mode[..] {
         "RETURN_ERR" => Err(anyhow!("debug_throw: return Err")),
         "PANIC" => panic!("debug_throw: do panic"),
