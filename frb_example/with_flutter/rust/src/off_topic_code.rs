@@ -204,6 +204,14 @@ pub fn mandelbrot(
 //     }
 // }
 
+pub fn print_backtrace_wrapper(name: &str) {
+    if rand::random::<bool>() {
+        print_backtrace(name)
+    } else {
+        print_backtrace("hellorandom")
+    }
+}
+
 pub fn print_backtrace(name: &str) {
     backtrace::trace(|frame| {
         info!("{}:capture_and_print_backtrace frame={:?}", name, frame);
@@ -215,13 +223,4 @@ pub fn print_backtrace(name: &str) {
         });
         true // keep going to the next frame
     });
-
-    fn silly_function(i: i32) -> i32 {
-        if rand::random::<f32>() < 0.9 {
-            silly_function(i + 1)
-        } else {
-            i
-        }
-    }
-    info!("silly_function={}", silly_function(5));
 }
