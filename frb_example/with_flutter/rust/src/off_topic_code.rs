@@ -205,7 +205,11 @@ pub fn mandelbrot(
 // }
 
 pub fn print_backtrace_wrapper(name: &str) {
-    print_backtrace(name)
+    if rand::random::<bool>() {
+        print_backtrace(name)
+    } else {
+        print_backtrace(&format!("{}-hello", name))
+    }
 }
 
 pub fn print_backtrace(name: &str) {
