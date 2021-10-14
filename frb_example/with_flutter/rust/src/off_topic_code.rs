@@ -3,6 +3,7 @@ use std::sync::Mutex;
 
 use image::png::PNGEncoder;
 use image::ColorType;
+use log::info;
 use num::Complex;
 
 ///! NOTE: This file is **unrelated** to the main topic of our example.
@@ -202,3 +203,25 @@ pub fn mandelbrot(
 //         tree_preorder_traversal_core(child, dst);
 //     }
 // }
+
+pub fn print_backtrace(name: &str) {
+    backtrace::trace(|frame| {
+        info!("{}:capture_and_print_backtrace frame={:?}", name, frame);
+        backtrace::resolve_frame(frame, |symbol| {
+            info!(
+                "{}:capture_and_print_backtrace resolve_frame symbol={:?}",
+                name, symbol
+            );
+        });
+        true // keep going to the next frame
+    });
+
+    fn silly_function(i: i32) -> i32 {
+        if rand::random::<f32>() < 0.9 {
+            silly_function(i + 1)
+        } else {
+            i
+        }
+    }
+    info!("silly_function={}", silly_function(5));
+}

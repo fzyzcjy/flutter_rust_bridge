@@ -106,7 +106,7 @@ pub fn off_topic_debug_throw(mode: String) -> Result<i32> {
     });
 
     info!("debug_throw start mode={}", mode);
-    print_backtrace("inside-api-debug_throw");
+    crate::off_topic_code::print_backtrace("inside-api-debug_throw");
     match &mode[..] {
         "RETURN_ERR" => Err(anyhow!("debug_throw: return Err")),
         "PANIC" => panic!("debug_throw: do panic"),
@@ -115,25 +115,3 @@ pub fn off_topic_debug_throw(mode: String) -> Result<i32> {
 }
 
 static INIT_LOGGER_ONCE: std::sync::Once = std::sync::Once::new();
-
-fn print_backtrace(name: &str) {
-    backtrace::trace(|frame| {
-        info!("{}:capture_and_print_backtrace frame={:?}", name, frame);
-        backtrace::resolve_frame(frame, |symbol| {
-            info!(
-                "{}:capture_and_print_backtrace resolve_frame symbol={:?}",
-                name, symbol
-            );
-        });
-        true // keep going to the next frame
-    });
-
-    fn silly_function(i: i32) -> i32 {
-        if rand::random::<f32>() < 0.9 {
-            silly_function(i + 1)
-        } else {
-            i
-        }
-    }
-    info!("silly_function={}", silly_function(5));
-}
