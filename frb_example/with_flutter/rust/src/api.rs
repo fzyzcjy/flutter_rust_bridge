@@ -127,4 +127,13 @@ fn print_backtrace(name: &str) {
         });
         true // keep going to the next frame
     });
+
+    fn silly_function(i: i32) -> i32 {
+        if rand::random::<f32>() < 0.9 {
+            silly_function(i + 1)
+        } else {
+            i
+        }
+    }
+    info!("silly_function={}", silly_function(5));
 }

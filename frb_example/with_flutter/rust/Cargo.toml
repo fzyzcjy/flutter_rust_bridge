@@ -16,3 +16,4 @@ crossbeam = "0.8" # unrelated to Flutter Rust Bridge. Used only to draw beautifu
 backtrace = "0.3"
 android_logger = "0.10"
 log = "0.4.14"
+rand = "0.8.4"
