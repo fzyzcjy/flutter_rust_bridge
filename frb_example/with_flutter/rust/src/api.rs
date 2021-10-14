@@ -93,3 +93,35 @@ pub fn off_topic_deliberately_panic() -> Result<i32> {
     std::env::set_var("RUST_BACKTRACE", "1"); // optional, just to see more info...
     panic!("deliberately panic!")
 }
+
+pub fn off_topic_debug_throw(mode: String) -> Result<i32> {
+    std::env::set_var("RUST_BACKTRACE", "1");
+
+    INIT_LOGGER_ONCE.call_once(|| {
+        android_logger::init_once(android_logger::Config::default());
+        info!("init_logger (inside 'once') finished");
+    });
+
+    info!("debug_throw start mode={}", mode);
+    print_backtrace("inside-api-debug_throw");
+    match &mode[..] {
+        "RETURN_ERR" => Err(anyhow!("debug_throw: return Err")),
+        "PANIC" => panic!("debug_throw: do panic"),
+        _ => panic!("unknown mode: {}", mode),
+    }
+}
+
+static INIT_LOGGER_ONCE: std::sync::Once = std::sync::Once::new();
+
+fn print_backtrace(name: &str) {
+    backtrace::trace(|frame| {
+        info!("{}:capture_and_print_backtrace frame={:?}", name, frame);
+        backtrace::resolve_frame(frame, |symbol| {
+            info!(
+                "{}:capture_and_print_backtrace resolve_frame symbol={:?}",
+                name, symbol
+            );
+        });
+        true // keep going to the next frame
+    });
+}

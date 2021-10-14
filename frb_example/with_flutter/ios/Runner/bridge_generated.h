@@ -63,6 +63,8 @@ void wire_off_topic_deliberately_return_error(int64_t port);
 
 void wire_off_topic_deliberately_panic(int64_t port);
 
+void wire_off_topic_debug_throw(int64_t port, struct wire_uint_8_list *mode);
+
 struct wire_Size *new_box_autoadd_size(void);
 
 struct wire_Point *new_box_autoadd_point(void);

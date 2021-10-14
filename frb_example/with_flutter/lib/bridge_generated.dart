@@ -36,6 +36,8 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   Future<int> offTopicDeliberatelyReturnError();
 
   Future<int> offTopicDeliberatelyPanic();
+
+  Future<int> offTopicDebugThrow({required String mode});
 }
 
 class Size {
@@ -131,6 +133,9 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
             port,
           ),
       _wire2api_i32);
+
+  Future<int> offTopicDebugThrow({required String mode}) => execute(
+      'off_topic_debug_throw', (port) => inner.wire_off_topic_debug_throw(port, _api2wire_String(mode)), _wire2api_i32);
 
   // Section: api2wire
   ffi.Pointer<wire_Size> _api2wire_box_autoadd_size(Size raw) {
@@ -465,6 +470,22 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_off_topic_deliberately_panic');
   late final _wire_off_topic_deliberately_panic =
       _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
+
+  void wire_off_topic_debug_throw(
+    int port,
+    ffi.Pointer<wire_uint_8_list> mode,
+  ) {
+    return _wire_off_topic_debug_throw(
+      port,
+      mode,
+    );
+  }
+
+  late final _wire_off_topic_debug_throwPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_off_topic_debug_throw');
+  late final _wire_off_topic_debug_throw =
+      _wire_off_topic_debug_throwPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   ffi.Pointer<wire_Size> new_box_autoadd_size() {
     return _new_box_autoadd_size();

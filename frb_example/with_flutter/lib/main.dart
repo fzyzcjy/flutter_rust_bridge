@@ -14,7 +14,46 @@ late final dylib =
     Platform.isAndroid ? DynamicLibrary.open('libflutter_rust_bridge_example.so') : DynamicLibrary.process();
 late final api = FlutterRustBridgeExample(dylib);
 
-void main() => runApp(const MyApp());
+void main() => runApp(const MyExprApp());
+
+class MyExprApp extends StatefulWidget {
+  const MyExprApp({Key? key}) : super(key: key);
+
+  @override
+  _MyExprAppState createState() => _MyExprAppState();
+}
+
+class _MyExprAppState extends State<MyExprApp> {
+  @override
+  void initState() {
+    super.initState();
+    _execute();
+  }
+
+  Future<void> _execute() async {
+    await _debugThrow('RETURN_ERR');
+    await _debugThrow('PANIC');
+  }
+
+  Future<void> _debugThrow(String mode) async {
+    print('debugThrow $mode');
+    try {
+      await api.offTopicDebugThrow(mode: mode);
+    } catch (e, s) {
+      debugPrint('catch error for debugThrow e=$e s=$s');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(),
+        body: const Text('hi'),
+      ),
+    );
+  }
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

@@ -145,6 +145,17 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port: i64) {
     );
 }
 
+#[no_mangle]
+pub extern "C" fn wire_off_topic_debug_throw(port: i64, mode: *mut wire_uint_8_list) {
+    let api_mode = mode.wire2api();
+    support::wrap_wire_func(
+        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+        "off_topic_debug_throw",
+        port,
+        move || off_topic_debug_throw(api_mode),
+    );
+}
+
 // Section: wire structs
 
 #[repr(C)]
