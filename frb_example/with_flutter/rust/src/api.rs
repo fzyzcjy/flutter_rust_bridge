@@ -1,6 +1,7 @@
 use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::ZeroCopyBuffer;
+use log::info;
 
 //
 // NOTE: Please look at https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs
