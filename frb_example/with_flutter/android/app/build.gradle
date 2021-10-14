@@ -48,6 +48,11 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
+        ndk {
+            // temporarily add an abiFilter
+            abiFilters 'armeabi-v7a'
+        }
     }
 
     buildTypes {
