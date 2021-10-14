@@ -1,8 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.frb_example">
+   <!-- NOTE extractNativeLibs is optional; only to have a better backtrace in debug mode. https://github.com/rust-lang/backtrace-rs/issues/442#issuecomment-942279097 -->
    <application
         android:label="frb_example"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        tools:replace="android:extractNativeLibs"
+        android:extractNativeLibs="true">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
