@@ -1,7 +1,7 @@
 use anyhow::{anyhow, Result};
+use log::info;
 
 use flutter_rust_bridge::ZeroCopyBuffer;
-use log::info;
 
 //
 // NOTE: Please look at https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs
@@ -99,7 +99,9 @@ pub fn off_topic_debug_throw(mode: String) -> Result<i32> {
     std::env::set_var("RUST_BACKTRACE", "1");
 
     INIT_LOGGER_ONCE.call_once(|| {
-        android_logger::init_once(android_logger::Config::default());
+        android_logger::init_once(
+            android_logger::Config::default().with_min_level(log::Level::Info),
+        );
         info!("init_logger (inside 'once') finished");
     });
 
