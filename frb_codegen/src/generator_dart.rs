@@ -137,11 +137,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
         .map(|input| {
             format!(
                 "{}{} {}",
-                if let Optional(_) = input.ty {
-                    ""
-                } else {
-                    "required "
-                },
+                input.ty.required_modifier(),
                 input.ty.dart_api_type(),
                 input.name.dart_style()
             )
@@ -364,13 +360,7 @@ fn generate_api_struct(s: &ApiStruct) -> String {
     let constructor_params = s
         .fields
         .iter()
-        .map(|f| {
-            format!(
-                "{}this.{},",
-                if f.required { "required " } else { "" },
-                f.name.dart_style()
-            )
-        })
+        .map(|f| format!("{}this.{},", f.ty.required_modifier(), f.name.dart_style()))
         .collect::<Vec<_>>()
         .join("");
 

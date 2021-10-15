@@ -184,6 +184,14 @@ impl ApiType {
             Optional(inner) => inner.rust_wire_is_pointer(),
         }
     }
+
+    #[inline]
+    pub fn required_modifier(&self) -> &'static str {
+        match self {
+            Optional(_) => "",
+            _ => "required ",
+        }
+    }
 }
 
 pub trait ApiTypeChild {
@@ -454,7 +462,6 @@ pub struct ApiStruct {
 pub struct ApiField {
     pub ty: ApiType,
     pub name: ApiIdent,
-    pub required: bool,
 }
 
 impl ApiField {

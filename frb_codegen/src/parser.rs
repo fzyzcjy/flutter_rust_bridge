@@ -66,7 +66,6 @@ impl<'a> Parser<'a> {
                 inputs.push(ApiField {
                     name: ApiIdent::new(name),
                     ty,
-                    required: true,
                 });
             } else {
                 panic!("unexpected sig_input={:?}", sig_input);
@@ -175,14 +174,9 @@ impl<'a> Parser<'a> {
                 .map_or(format!("field{}", idx), |id| ident_to_string(id));
             let field_type_str = type_to_string(&field.ty);
             let field_type = self.parse_type(&field_type_str);
-            let required = match &field_type {
-                Optional(_) => false,
-                _ => true,
-            };
             fields.push(ApiField {
                 name: ApiIdent::new(field_name),
                 ty: field_type,
-                required,
             });
         }
 
