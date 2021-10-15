@@ -6,21 +6,21 @@ import 'package:meta/meta.dart';
 /// Allow custom setup hooks before ffi can be executed.
 /// All other ffi calls will wait (async) until the setup ffi finishes.
 ///
-/// Usage: Please call [setupMixinConstructor] inside the constructor of your class
+/// Usage:
+///
+/// 1. Please call [setupMixinConstructor] inside the constructor of your class.
+/// 2. Inside your [setup], please call ffi functions with hint=[kHintSetup].
 mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
-  Completer<void>? _setupCompleter;
+  static const kHintSetup = _FlutterRustBridgeSetupMixinSkipWaitHint._();
+
+  final _setupCompleter = Completer<void>();
 
   void setupMixinConstructor() {
     () async {
-      final setupFfiCallFuture = setupFfiCall();
-
-      assert(_setupCompleter == null);
-      _setupCompleter = Completer();
-
       try {
-        await setupFfiCallFuture;
+        await setup();
       } finally {
-        _setupCompleter!.complete();
+        _setupCompleter.complete();
       }
     }();
   }
@@ -28,19 +28,20 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
   @override
   Future<S> execute<S>(
       String debugName, void Function(int port) callFfi, S Function(dynamic) parseSuccessData, dynamic hint) async {
-    final setupCompleter = _setupCompleter;
-    if (setupCompleter != null && !setupCompleter.isCompleted) {
-      await setupCompleter.future;
+    if (!_setupCompleter.isCompleted && hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
+      await _setupCompleter.future;
     }
 
     return await super.execute(debugName, callFfi, parseSuccessData, hint);
   }
 
   @protected
-  SetupFfiCall get setupFfiCall;
+  Future<void> setup();
 
   @protected
   Duration get setupTimeout => const Duration(seconds: 5);
 }
 
-typedef SetupFfiCall = Future<void> Function();
+class _FlutterRustBridgeSetupMixinSkipWaitHint {
+  const _FlutterRustBridgeSetupMixinSkipWaitHint._();
+}
