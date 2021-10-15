@@ -190,6 +190,10 @@ By default, the `DefaultExecutor` is used. When Dart calls Rust, the `DefaultExe
 
 However, you can implement your own `Executor` doing whatever you want. In order to do this, implement the `Executor` trait, and create a variable named `FLUTTER_RUST_BRIDGE_EXECUTOR` in the Rust input file (probably using `lazy_static`).
 
+### Setup/init FFI call
+
+If you want that feature, have a look at `FlutterRustBridgeSetupMixin` in the Dart side.
+
 ## Appendix: Set up Flutter/Dart+Rust support
 
 I suggest that you can start with the [Flutter example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/with_flutter) first, and modify it to satisfy your needs. It can serve as a template for new projects. It is run against CI so we are sure it works.
