@@ -3,7 +3,7 @@ use log::debug;
 
 use crate::api_types::ApiType::*;
 use crate::api_types::*;
-use crate::generator_common::*;
+use crate::others::*;
 
 pub struct Output {
     pub header: String,

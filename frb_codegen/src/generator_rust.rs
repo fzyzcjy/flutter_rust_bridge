@@ -1,6 +1,6 @@
 use crate::api_types::ApiType::*;
 use crate::api_types::*;
-use crate::generator_common::*;
+use crate::others::*;
 
 pub const EXECUTOR_NAME: &str = "FLUTTER_RUST_BRIDGE_EXECUTOR";
 
