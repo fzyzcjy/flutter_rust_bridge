@@ -190,6 +190,10 @@ By default, the `DefaultExecutor` is used. When Dart calls Rust, the `DefaultExe
 
 However, you can implement your own `Executor` doing whatever you want. In order to do this, implement the `Executor` trait, and create a variable named `FLUTTER_RUST_BRIDGE_EXECUTOR` in the Rust input file (probably using `lazy_static`).
 
+### Setup/init FFI call
+
+If you want that feature, have a look at `FlutterRustBridgeSetupMixin` in the Dart side.
+
 ## Appendix: Set up Flutter/Dart+Rust support
 
 I suggest that you can start with the [Flutter example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/with_flutter) first, and modify it to satisfy your needs. It can serve as a template for new projects. It is run against CI so we are sure it works.
@@ -210,7 +214,7 @@ name = "flutter_rust_bridge_example" # whatever you like
 crate-type = ["cdylib"] # <-- notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
 ```
 
-Step 4: Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings. This lib has already generated a dummy method for you, so you simply need to add `func dummyMethodToAvoidSymbolStripping() { rust_dummy_method_to_enforce_bundling() }` to swift file, and this will prevent symbol stripping.
+Step 4: Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings. This lib has already generated a dummy method for you, so you simply need to add `print("dummy_value=\(dummy_method_to_enforce_bundling())");` to swift file's `override func application(...) {}`, and this will prevent symbol stripping - especially in the release build for iOS (i.e. when building ipa file or releasing to App Store). Notice that, we have to use that `dummy_method_to_enforce_bundling()`, otherwise the symbols will not maintain in the release build, and Flutter will complain it cannot find the symbols.
 
 Lastly, in order to build Rust automatically when you are building Flutter, follow [this tutorial](https://stackoverflow.com/q/69515032/4619958).
 
@@ -225,4 +229,4 @@ I plan to support the following features. Of course, if you want to have other f
 
 ## Appendix: Contributing
 
-Firstly, welcome, and thanks for your contributions! If you want to contribute, feel free to create a Pull Request. If you need some ideas of what to contribute, have a look at the Issues section of this repository. The code is covered by CI, and please ensure the CI passes - which often catches bugs. To release a new version, bump several versions, and write down a changelog: `vim frb_codegen/Cargo.toml && vim frb_rust/Cargo.toml && vim frb_dart/pubspec.yaml && vim frb_dart/CHANGELOG.md`
+Firstly, welcome, and thanks for your contributions! If you want to contribute, feel free to create a Pull Request. If you need some ideas of what to contribute, have a look at the Issues section of this repository. The code is covered by CI, and please ensure the CI passes - which often catches bugs. To release a new version, bump several versions, write down a changelog, and use `cargo check` to automatically update the examples' dependency versions: `vim frb_codegen/Cargo.toml && vim frb_rust/Cargo.toml && vim frb_dart/pubspec.yaml && vim CHANGELOG.md && (cd frb_example/pure_dart/rust && cargo check) && (cd frb_example/with_flutter/rust && cargo check)`

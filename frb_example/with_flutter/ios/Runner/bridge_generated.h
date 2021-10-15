@@ -75,6 +75,27 @@ struct wire_list_tree_node *new_list_tree_node(int32_t len);
 
 struct wire_list_size *new_list_size(int32_t len);
 
-void rust_dummy_method_to_enforce_bundling(void);
-
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
+
+static int64_t dummy_method_to_enforce_bundling(void) {
+    int64_t dummy_var = 0;
+    dummy_var ^= ((int64_t) (void*) wire_draw_mandelbrot);
+    dummy_var ^= ((int64_t) (void*) wire_passing_complex_structs);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_input_array);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_zero_copy_buffer);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_vec_u8);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_input_vec_of_object);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_vec_of_object);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_input_complex_struct);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_complex_struct);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_return_error);
+    dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_panic);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_size);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_point);
+    dummy_var ^= ((int64_t) (void*) new_uint_8_list);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node);
+    dummy_var ^= ((int64_t) (void*) new_list_tree_node);
+    dummy_var ^= ((int64_t) (void*) new_list_size);
+    dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
+    return dummy_var;
+}

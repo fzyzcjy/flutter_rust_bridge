@@ -8,3 +8,6 @@ fzyzcjy/flutter_rust_bridge:
     dest: frb_codegen/README.md
   - source: README.md
     dest: frb_dart/README.md
+
+  - source: CHANGELOG.md
+    dest: frb_dart/CHANGELOG.md

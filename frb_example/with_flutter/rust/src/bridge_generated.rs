@@ -404,10 +404,3 @@ impl support::IntoDart for TreeNode {
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_EXECUTOR: support::DefaultExecutor = support::DefaultExecutor;
 }
-
-// Section: misc helpers
-
-#[no_mangle]
-pub extern "C" fn rust_dummy_method_to_enforce_bundling() {
-    /* nothing */
-}
