@@ -11,6 +11,7 @@ use crate::utils::*;
 mod api_types;
 mod commands;
 mod config;
+mod generate_c;
 mod generator_common;
 mod generator_dart;
 mod generator_rust;

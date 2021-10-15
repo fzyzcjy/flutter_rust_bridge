@@ -88,7 +88,7 @@ pub fn generate(
         dart_structs.join("\n\n"),
     );
 
-    let others = format!(
+    let other = format!(
         "/// Implementations for {}. Prefer using {} if possible; but this class allows more 
         /// flexible customizations (such as subclassing to create an initializer, a logger, or 
         /// a timer).
@@ -126,7 +126,7 @@ pub fn generate(
     Output {
         header,
         api_class,
-        others,
+        other,
     }
 }
 
