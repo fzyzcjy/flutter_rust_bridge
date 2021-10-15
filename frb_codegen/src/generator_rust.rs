@@ -337,9 +337,9 @@ impl Generator {
                     {}
                 }}",
                 if ty.inner.rust_wire_is_pointer() {
-                    "Some(self.wire2api().into())"
+                    "Some(self.wire2api())"
                 } else {
-                    "Some(unsafe { *support::box_from_leak_ptr(self) }.wire2api().into())"
+                    "Some(unsafe { *support::box_from_leak_ptr(self) }.wire2api())"
                 }
             ),
         };

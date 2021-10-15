@@ -89,8 +89,8 @@ pub fn generate(
     );
 
     let other = format!(
-        "/// Implementations for {}. Prefer using {} if possible; but this class allows more 
-        /// flexible customizations (such as subclassing to create an initializer, a logger, or 
+        "/// Implementations for {}. Prefer using {} if possible; but this class allows more
+        /// flexible customizations (such as subclassing to create an initializer, a logger, or
         /// a timer).
         class {} extends {} {{
             {}.raw({} inner) : super.raw(inner);
@@ -136,7 +136,12 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
         .iter()
         .map(|input| {
             format!(
-                "required {} {}",
+                "{}{} {}",
+                if let Optional(_) = input.ty {
+                    ""
+                } else {
+                    "required "
+                },
                 input.ty.dart_api_type(),
                 input.name.dart_style()
             )
