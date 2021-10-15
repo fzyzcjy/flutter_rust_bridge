@@ -32,7 +32,7 @@ pub fn generate(
         .collect::<Vec<_>>();
     let dart_api2wire_funcs = distinct_types
         .iter()
-        .map(|ty| generate_api2wire_func(ty))
+        .map(generate_api2wire_func)
         .collect::<Vec<_>>();
     let dart_api_fill_to_wire_funcs = distinct_types
         .iter()
@@ -221,6 +221,20 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
         }
         // skip
         StructRef(_) => return "".to_string(),
+        Optional(opt) => {
+            let get_ptr = if let StructRef(inner) = &opt.inner {
+                format!(
+                    "final ptr = inner.new_{}();
+                    _api_fill_to_wire_{}(raw, ptr.ref);
+                    return ptr;",
+                    ty.safe_ident(),
+                    inner.safe_ident()
+                )
+            } else {
+                format!("return _api2wire_{}(raw);", opt.inner.safe_ident())
+            };
+            format!("if (raw == null) return ffi.nullptr; {}", get_ptr)
+        }
     };
 
     format!(
@@ -252,7 +266,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             .collect::<Vec<_>>()
             .join("\n"),
         // skip
-        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
+        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Optional(_) => {
             return "".to_string();
         }
     };
@@ -309,6 +323,10 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             )
         }
         Boxed(_) => return "".to_string(),
+        Optional(opt) => format!(
+            "return raw == null ? null : _wire2api_{}(raw);",
+            opt.inner.safe_ident()
+        ),
     };
 
     format!(
@@ -333,7 +351,13 @@ fn generate_api_struct(s: &ApiStruct) -> String {
     let constructor_params = s
         .fields
         .iter()
-        .map(|f| format!("required this.{},", f.name.dart_style()))
+        .map(|f| {
+            format!(
+                "{}this.{},",
+                if f.required { "required " } else { "" },
+                f.name.dart_style()
+            )
+        })
         .collect::<Vec<_>>()
         .join("");
 

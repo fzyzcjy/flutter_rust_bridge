@@ -66,6 +66,7 @@ impl<'a> Parser<'a> {
                 inputs.push(ApiField {
                     name: ApiIdent::new(name),
                     ty,
+                    required: true,
                 });
             } else {
                 panic!("unexpected sig_input={:?}", sig_input);
@@ -96,6 +97,7 @@ impl<'a> Parser<'a> {
             .or_else(|| ApiTypeDelegate::try_from_rust_str(ty).map(Delegate))
             .or_else(|| self.try_parse_list(ty))
             .or_else(|| self.try_parse_box(ty))
+            .or_else(|| self.try_parse_option(ty))
             .or_else(|| self.try_parse_struct(ty))
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
     }
@@ -123,6 +125,18 @@ impl<'a> Parser<'a> {
         CAPTURE_BOX.captures(ty).map(|inner| {
             Boxed(Box::new(ApiTypeBoxed {
                 exist_in_real_api: true,
+                inner: self.parse_type(&inner),
+            }))
+        })
+    }
+
+    fn try_parse_option(&mut self, ty: &str) -> Option<ApiType> {
+        lazy_static! {
+            static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
+        }
+
+        CAPTURE_OPTION.captures(ty).map(|inner| {
+            Optional(Box::new(ApiTypeOptional {
                 inner: self.parse_type(&inner),
             }))
         })
@@ -161,9 +175,14 @@ impl<'a> Parser<'a> {
                 .map_or(format!("field{}", idx), |id| ident_to_string(id));
             let field_type_str = type_to_string(&field.ty);
             let field_type = self.parse_type(&field_type_str);
+            let required = match &field_type {
+                Optional(_) => false,
+                _ => true,
+            };
             fields.push(ApiField {
                 name: ApiIdent::new(field_name),
                 ty: field_type,
+                required,
             });
         }
 

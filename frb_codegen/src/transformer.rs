@@ -36,6 +36,7 @@ fn transform_func_input_add_boxed(input: ApiField) -> ApiField {
                 exist_in_real_api: false, // <--
                 inner: input.ty.clone(),
             })),
+            required: true,
             name: input.name.clone(),
         }
     } else {

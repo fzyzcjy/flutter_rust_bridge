@@ -174,7 +174,7 @@ fn generate_wire_struct(ty: &ApiType, api_file: &ApiFile) -> String {
                 )
             })
             .collect(),
-        Primitive(_) | Delegate(_) | Boxed(_) => return "".to_string(),
+        Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) => return "".to_string(),
     };
 
     format!(
@@ -235,6 +235,23 @@ fn generate_allocate_funcs(ty: &ApiType) -> String {
             ty.rust_wire_type(),
             b.inner.rust_wire_type(),
         ),
+        Optional(opt) => {
+            if let StructRef(inner) = &opt.inner {
+                format!(
+                    r#"
+                    #[no_mangle]
+                    pub extern "C" fn new_{}() -> {}{} {{
+                        support::new_leak_box_ptr({}::new_with_null_ptr())
+                    }}"#,
+                    ty.safe_ident(),
+                    ty.rust_wire_modifier(),
+                    ty.rust_wire_type(),
+                    inner.rust_wire_type()
+                )
+            } else {
+                String::new()
+            }
+        }
     }
 }
 
@@ -264,6 +281,18 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
         Boxed(_) => "let wrap = unsafe { support::box_from_leak_ptr(self) };
             (*wrap).wire2api().into()"
             .to_string(),
+        Optional(ty) => format!(
+            "if self.is_null() {{
+                None
+            }} else {{
+                {}
+            }}",
+            if ty.inner.rust_wire_is_pointer() {
+                "Some(self.wire2api())"
+            } else {
+                "Some(unsafe { *support::box_from_leak_ptr(self) }.wire2api())"
+            }
+        ),
         StructRef(struct_ref) => {
             let api_struct = struct_ref.get(api_file);
 
@@ -325,7 +354,7 @@ fn generate_new_with_nullptr_func(ty: &ApiType, api_file: &ApiFile) -> String {
             })
             .collect::<Vec<_>>()
             .join("\n"),
-        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
+        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Optional(_) => {
             return String::new();
         }
     };
@@ -347,7 +376,9 @@ fn generate_impl_intodart(ty: &ApiType, api_file: &ApiFile) -> String {
     // println!("generate_impl_intodart: {:?}", ty);
     match ty {
         StructRef(s) => generate_impl_intodart_for_struct(s.get(api_file)),
-        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => "".to_string(),
+        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Optional(_) => {
+            "".to_string()
+        }
     }
 }
 

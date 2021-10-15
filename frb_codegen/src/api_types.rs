@@ -80,6 +80,7 @@ pub enum ApiType {
     GeneralList(Box<ApiTypeGeneralList>),
     StructRef(ApiTypeStructRef),
     Boxed(Box<ApiTypeBoxed>),
+    Optional(Box<ApiTypeOptional>),
 }
 
 impl ApiType {
@@ -100,6 +101,7 @@ impl ApiType {
             }
             Boxed(inner) => inner.inner.visit_types(f, api_file),
             Delegate(d) => d.get_delegate().visit_types(f, api_file),
+            Optional(ty) => ty.inner.visit_types(f, api_file),
             Primitive(_) => {}
         }
     }
@@ -112,6 +114,7 @@ impl ApiType {
             GeneralList(inner) => inner.safe_ident(),
             StructRef(inner) => inner.safe_ident(),
             Boxed(inner) => inner.safe_ident(),
+            Optional(inner) => inner.safe_ident(),
         }
     }
 
@@ -123,6 +126,7 @@ impl ApiType {
             GeneralList(inner) => inner.dart_api_type(),
             StructRef(inner) => inner.dart_api_type(),
             Boxed(inner) => inner.dart_api_type(),
+            Optional(inner) => inner.dart_api_type(),
         }
     }
     pub fn dart_wire_type(&self) -> String {
@@ -133,6 +137,7 @@ impl ApiType {
             GeneralList(inner) => inner.dart_wire_type(),
             StructRef(inner) => inner.dart_wire_type(),
             Boxed(inner) => inner.dart_wire_type(),
+            Optional(inner) => inner.dart_wire_type(),
         }
     }
     pub fn rust_api_type(&self) -> String {
@@ -143,6 +148,7 @@ impl ApiType {
             GeneralList(inner) => inner.rust_api_type(),
             StructRef(inner) => inner.rust_api_type(),
             Boxed(inner) => inner.rust_api_type(),
+            Optional(inner) => inner.rust_api_type(),
         }
     }
     pub fn rust_wire_type(&self) -> String {
@@ -153,6 +159,7 @@ impl ApiType {
             GeneralList(inner) => inner.rust_wire_type(),
             StructRef(inner) => inner.rust_wire_type(),
             Boxed(inner) => inner.rust_wire_type(),
+            Optional(inner) => inner.rust_wire_type(),
         }
     }
     pub fn rust_wire_modifier(&self) -> String {
@@ -163,6 +170,7 @@ impl ApiType {
             GeneralList(inner) => inner.rust_wire_modifier(),
             StructRef(inner) => inner.rust_wire_modifier(),
             Boxed(inner) => inner.rust_wire_modifier(),
+            Optional(inner) => inner.rust_wire_modifier(),
         }
     }
     pub fn rust_wire_is_pointer(&self) -> bool {
@@ -173,6 +181,7 @@ impl ApiType {
             GeneralList(inner) => inner.rust_wire_is_pointer(),
             StructRef(inner) => inner.rust_wire_is_pointer(),
             Boxed(inner) => inner.rust_wire_is_pointer(),
+            Optional(inner) => inner.rust_wire_is_pointer(),
         }
     }
 }
@@ -445,6 +454,7 @@ pub struct ApiStruct {
 pub struct ApiField {
     pub ty: ApiType,
     pub name: ApiIdent,
+    pub required: bool,
 }
 
 impl ApiField {
@@ -498,6 +508,32 @@ impl ApiTypeChild for ApiTypeBoxed {
         self.inner.rust_wire_type()
     }
 
+    fn rust_wire_is_pointer(&self) -> bool {
+        true
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct ApiTypeOptional {
+    pub inner: ApiType,
+}
+
+impl ApiTypeChild for ApiTypeOptional {
+    fn safe_ident(&self) -> std::string::String {
+        format!("opt_{}", self.inner.safe_ident())
+    }
+    fn rust_api_type(&self) -> std::string::String {
+        format!("Option<{}>", self.inner.rust_api_type())
+    }
+    fn rust_wire_type(&self) -> std::string::String {
+        self.inner.rust_wire_type()
+    }
+    fn dart_wire_type(&self) -> std::string::String {
+        format!("ffi.Pointer<{}>", self.rust_wire_type())
+    }
+    fn dart_api_type(&self) -> std::string::String {
+        format!("{}?", self.inner.dart_api_type())
+    }
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }
