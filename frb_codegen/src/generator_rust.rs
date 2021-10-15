@@ -205,7 +205,7 @@ impl Generator {
                     )
                 })
                 .collect(),
-            Primitive(_) | Delegate(_) | Boxed(_) => return "".to_string(),
+            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) => return "".to_string(),
         };
 
         format!(
@@ -259,21 +259,19 @@ impl Generator {
                 ),
             ),
             Optional(opt) => {
-            if let StructRef(inner) = &opt.inner {
-                format!(
-                    r#"
-                    #[no_mangle]
-                    pub extern "C" fn new_{}() -> {}{} {{
-                        support::new_leak_box_ptr({}::new_with_null_ptr())
-                    }}"#,
-                    ty.safe_ident(),
-                    ty.rust_wire_modifier(),
-                    ty.rust_wire_type(),
-                    inner.rust_wire_type()
-                )
-            } else {
-                String::new()
-            }
+                if let StructRef(inner) = &opt.inner {
+                    self.extern_func_collector.generate(
+                        &format!("new_{}", ty.safe_ident()),
+                        &[],
+                        Some(&[ty.rust_wire_modifier(), ty.rust_wire_type()].concat()),
+                        &format!(
+                            "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                            inner.rust_wire_type()
+                        )
+                    )
+                } else {
+                    String::new()
+                }
             }
         }
     }
@@ -339,9 +337,9 @@ impl Generator {
                     {}
                 }}",
                 if ty.inner.rust_wire_is_pointer() {
-                    "Some(self.wire2api())"
+                    "Some(self.wire2api().into())"
                 } else {
-                    "Some(unsafe { *support::box_from_leak_ptr(self) }.wire2api())"
+                    "Some(unsafe { *support::box_from_leak_ptr(self) }.wire2api().into())"
                 }
             ),
         };
@@ -379,7 +377,8 @@ impl Generator {
                 })
                 .collect::<Vec<_>>()
                 .join("\n"),
-            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
+            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
+            | Optional(_) => {
                 return String::new();
             }
         };
@@ -401,9 +400,8 @@ impl Generator {
         // println!("generate_impl_intodart: {:?}", ty);
         match ty {
             StructRef(s) => self.generate_impl_intodart_for_struct(s.get(api_file)),
-            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
-                "".to_string()
-            }
+            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
+            | Optional(_) => "".to_string(),
         }
     }
 
