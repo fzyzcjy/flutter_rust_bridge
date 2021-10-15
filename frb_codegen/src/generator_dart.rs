@@ -131,7 +131,7 @@ pub fn generate(
 }
 
 fn generate_api_func(func: &ApiFunc) -> (String, String) {
-    let func_param_list = func
+    let raw_func_param_list = func
         .inputs
         .iter()
         .map(|input| {
@@ -142,6 +142,8 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
             )
         })
         .collect::<Vec<_>>();
+
+    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let wire_param_list = func
         .inputs
@@ -156,20 +158,16 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
         .collect::<Vec<_>>();
 
     let partial = format!(
-        "Future<{}> {}({})",
+        "Future<{}> {}({{ {} }})",
         func.output.dart_api_type(),
         func.name.to_case(Case::Camel),
-        if func_param_list.is_empty() {
-            "".to_string()
-        } else {
-            format!("{{{}}}", func_param_list.join(","))
-        },
+        full_func_param_list.join(","),
     );
 
     let signature = format!("{};", partial);
 
     let implementation = format!(
-        "{} => execute('{}', (port) => inner.{}(port, {}), _wire2api_{});",
+        "{} => execute('{}', (port) => inner.{}(port, {}), _wire2api_{}, hint);",
         partial,
         func.name,
         func.wire_func_name(),

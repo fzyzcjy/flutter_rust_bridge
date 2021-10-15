@@ -14,8 +14,6 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
     () async {
       final setupFfiCallFuture = setupFfiCall();
 
-      // why [_setupCompleter] is assigned non-null only *after* setupFfiCall: otherwise that ffi call will also wait for
-      // the completer, thus wait infinitely.
       assert(_setupCompleter == null);
       _setupCompleter = Completer();
 
@@ -28,13 +26,14 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
   }
 
   @override
-  Future<S> execute<S>(String debugName, void Function(int port) callFfi, S Function(dynamic) parseSuccessData) async {
+  Future<S> execute<S>(
+      String debugName, void Function(int port) callFfi, S Function(dynamic) parseSuccessData, dynamic hint) async {
     final setupCompleter = _setupCompleter;
     if (setupCompleter != null && !setupCompleter.isCompleted) {
       await setupCompleter.future;
     }
 
-    return await super.execute(debugName, callFfi, parseSuccessData);
+    return await super.execute(debugName, callFfi, parseSuccessData, hint);
   }
 
   @protected

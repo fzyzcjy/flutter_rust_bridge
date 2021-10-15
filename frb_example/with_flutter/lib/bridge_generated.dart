@@ -15,27 +15,31 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   FlutterRustBridgeExample.raw(FlutterRustBridgeExampleWire inner) : super(inner);
 
   Future<Uint8List> drawMandelbrot(
-      {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads});
+      {required Size imageSize,
+      required Point zoomPoint,
+      required double scale,
+      required int numThreads,
+      dynamic hint});
 
-  Future<String> passingComplexStructs({required TreeNode root});
+  Future<String> passingComplexStructs({required TreeNode root, dynamic hint});
 
-  Future<int> offTopicMemoryTestInputArray({required Uint8List input});
+  Future<int> offTopicMemoryTestInputArray({required Uint8List input, dynamic hint});
 
-  Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer({required int len});
+  Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer({required int len, dynamic hint});
 
-  Future<Uint8List> offTopicMemoryTestOutputVecU8({required int len});
+  Future<Uint8List> offTopicMemoryTestOutputVecU8({required int len, dynamic hint});
 
-  Future<int> offTopicMemoryTestInputVecOfObject({required List<Size> input});
+  Future<int> offTopicMemoryTestInputVecOfObject({required List<Size> input, dynamic hint});
 
-  Future<List<Size>> offTopicMemoryTestOutputVecOfObject({required int len});
+  Future<List<Size>> offTopicMemoryTestOutputVecOfObject({required int len, dynamic hint});
 
-  Future<int> offTopicMemoryTestInputComplexStruct({required TreeNode input});
+  Future<int> offTopicMemoryTestInputComplexStruct({required TreeNode input, dynamic hint});
 
-  Future<TreeNode> offTopicMemoryTestOutputComplexStruct({required int len});
+  Future<TreeNode> offTopicMemoryTestOutputComplexStruct({required int len, dynamic hint});
 
-  Future<int> offTopicDeliberatelyReturnError();
+  Future<int> offTopicDeliberatelyReturnError({dynamic hint});
 
-  Future<int> offTopicDeliberatelyPanic();
+  Future<int> offTopicDeliberatelyPanic({dynamic hint});
 }
 
 class Size {
@@ -77,60 +81,81 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super.raw(inner);
 
   Future<Uint8List> drawMandelbrot(
-          {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) =>
+          {required Size imageSize,
+          required Point zoomPoint,
+          required double scale,
+          required int numThreads,
+          dynamic hint}) =>
       execute(
           'draw_mandelbrot',
           (port) => inner.wire_draw_mandelbrot(port, _api2wire_box_autoadd_size(imageSize),
               _api2wire_box_autoadd_point(zoomPoint), _api2wire_f64(scale), _api2wire_i32(numThreads)),
-          _wire2api_ZeroCopyBuffer_Uint8List);
+          _wire2api_ZeroCopyBuffer_Uint8List,
+          hint);
 
-  Future<String> passingComplexStructs({required TreeNode root}) => execute('passing_complex_structs',
-      (port) => inner.wire_passing_complex_structs(port, _api2wire_box_autoadd_tree_node(root)), _wire2api_String);
+  Future<String> passingComplexStructs({required TreeNode root, dynamic hint}) => execute(
+      'passing_complex_structs',
+      (port) => inner.wire_passing_complex_structs(port, _api2wire_box_autoadd_tree_node(root)),
+      _wire2api_String,
+      hint);
 
-  Future<int> offTopicMemoryTestInputArray({required Uint8List input}) => execute('off_topic_memory_test_input_array',
-      (port) => inner.wire_off_topic_memory_test_input_array(port, _api2wire_uint_8_list(input)), _wire2api_i32);
+  Future<int> offTopicMemoryTestInputArray({required Uint8List input, dynamic hint}) => execute(
+      'off_topic_memory_test_input_array',
+      (port) => inner.wire_off_topic_memory_test_input_array(port, _api2wire_uint_8_list(input)),
+      _wire2api_i32,
+      hint);
 
-  Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer({required int len}) => execute(
+  Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer({required int len, dynamic hint}) => execute(
       'off_topic_memory_test_output_zero_copy_buffer',
       (port) => inner.wire_off_topic_memory_test_output_zero_copy_buffer(port, _api2wire_i32(len)),
-      _wire2api_ZeroCopyBuffer_Uint8List);
+      _wire2api_ZeroCopyBuffer_Uint8List,
+      hint);
 
-  Future<Uint8List> offTopicMemoryTestOutputVecU8({required int len}) => execute('off_topic_memory_test_output_vec_u8',
-      (port) => inner.wire_off_topic_memory_test_output_vec_u8(port, _api2wire_i32(len)), _wire2api_uint_8_list);
+  Future<Uint8List> offTopicMemoryTestOutputVecU8({required int len, dynamic hint}) => execute(
+      'off_topic_memory_test_output_vec_u8',
+      (port) => inner.wire_off_topic_memory_test_output_vec_u8(port, _api2wire_i32(len)),
+      _wire2api_uint_8_list,
+      hint);
 
-  Future<int> offTopicMemoryTestInputVecOfObject({required List<Size> input}) => execute(
+  Future<int> offTopicMemoryTestInputVecOfObject({required List<Size> input, dynamic hint}) => execute(
       'off_topic_memory_test_input_vec_of_object',
       (port) => inner.wire_off_topic_memory_test_input_vec_of_object(port, _api2wire_list_size(input)),
-      _wire2api_i32);
+      _wire2api_i32,
+      hint);
 
-  Future<List<Size>> offTopicMemoryTestOutputVecOfObject({required int len}) => execute(
+  Future<List<Size>> offTopicMemoryTestOutputVecOfObject({required int len, dynamic hint}) => execute(
       'off_topic_memory_test_output_vec_of_object',
       (port) => inner.wire_off_topic_memory_test_output_vec_of_object(port, _api2wire_i32(len)),
-      _wire2api_list_size);
+      _wire2api_list_size,
+      hint);
 
-  Future<int> offTopicMemoryTestInputComplexStruct({required TreeNode input}) => execute(
+  Future<int> offTopicMemoryTestInputComplexStruct({required TreeNode input, dynamic hint}) => execute(
       'off_topic_memory_test_input_complex_struct',
       (port) => inner.wire_off_topic_memory_test_input_complex_struct(port, _api2wire_box_autoadd_tree_node(input)),
-      _wire2api_i32);
+      _wire2api_i32,
+      hint);
 
-  Future<TreeNode> offTopicMemoryTestOutputComplexStruct({required int len}) => execute(
+  Future<TreeNode> offTopicMemoryTestOutputComplexStruct({required int len, dynamic hint}) => execute(
       'off_topic_memory_test_output_complex_struct',
       (port) => inner.wire_off_topic_memory_test_output_complex_struct(port, _api2wire_i32(len)),
-      _wire2api_tree_node);
+      _wire2api_tree_node,
+      hint);
 
-  Future<int> offTopicDeliberatelyReturnError() => execute(
+  Future<int> offTopicDeliberatelyReturnError({dynamic hint}) => execute(
       'off_topic_deliberately_return_error',
       (port) => inner.wire_off_topic_deliberately_return_error(
             port,
           ),
-      _wire2api_i32);
+      _wire2api_i32,
+      hint);
 
-  Future<int> offTopicDeliberatelyPanic() => execute(
+  Future<int> offTopicDeliberatelyPanic({dynamic hint}) => execute(
       'off_topic_deliberately_panic',
       (port) => inner.wire_off_topic_deliberately_panic(
             port,
           ),
-      _wire2api_i32);
+      _wire2api_i32,
+      hint);
 
   // Section: api2wire
   ffi.Pointer<wire_Size> _api2wire_box_autoadd_size(Size raw) {

@@ -1,6 +1,7 @@
 ## 1.2.0
 
-* add FlutterRustBridgeSetupMixin (an optional helper class), which allows custom setup hooks before ffi can be executed.
+* Add FlutterRustBridgeSetupMixin (an optional helper class), which allows custom setup hooks before ffi can be executed.
+* Add `hint` parameter in generated Dart code, allowing users to pass custom data to the Dart executor, thus increasing flexibility.
 
 ## 1.1.0
 

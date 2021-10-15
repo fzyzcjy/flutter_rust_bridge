@@ -14,27 +14,28 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   FlutterRustBridgeExample.raw(FlutterRustBridgeExampleWire inner) : super(inner);
 
-  Future<int> simpleAdder({required int a, required int b});
+  Future<int> simpleAdder({required int a, required int b, dynamic hint});
 
-  Future<int> primitiveTypes({required int myI32, required int myI64, required double myF64, required bool myBool});
+  Future<int> primitiveTypes(
+      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
 
-  Future<String> handleString({required String s});
+  Future<String> handleString({required String s, dynamic hint});
 
-  Future<Uint8List> handleVecU8({required Uint8List v});
+  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
 
-  Future<Uint8List> handleZeroCopyResult({required int n});
+  Future<Uint8List> handleZeroCopyResult({required int n, dynamic hint});
 
-  Future<MySize> handleStruct({required MySize arg, required MySize boxed});
+  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint});
 
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg});
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
 
-  Future<List<MySize>> handleListOfStruct({required List<MySize> l});
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint});
 
-  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s});
+  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
 
-  Future<int> returnErr();
+  Future<int> returnErr({dynamic hint});
 
-  Future<int> returnPanic();
+  Future<int> returnPanic({dynamic hint});
 }
 
 class MySize {
@@ -75,52 +76,60 @@ class MyTreeNode {
 class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super.raw(inner);
 
-  Future<int> simpleAdder({required int a, required int b}) => execute(
-      'simple_adder', (port) => inner.wire_simple_adder(port, _api2wire_i32(a), _api2wire_i32(b)), _wire2api_i32);
+  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => execute(
+      'simple_adder', (port) => inner.wire_simple_adder(port, _api2wire_i32(a), _api2wire_i32(b)), _wire2api_i32, hint);
 
-  Future<int> primitiveTypes({required int myI32, required int myI64, required double myF64, required bool myBool}) =>
+  Future<int> primitiveTypes(
+          {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
       execute(
           'primitive_types',
           (port) => inner.wire_primitive_types(
               port, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), _api2wire_bool(myBool)),
-          _wire2api_i32);
+          _wire2api_i32,
+          hint);
 
-  Future<String> handleString({required String s}) =>
-      execute('handle_string', (port) => inner.wire_handle_string(port, _api2wire_String(s)), _wire2api_String);
+  Future<String> handleString({required String s, dynamic hint}) =>
+      execute('handle_string', (port) => inner.wire_handle_string(port, _api2wire_String(s)), _wire2api_String, hint);
 
-  Future<Uint8List> handleVecU8({required Uint8List v}) => execute(
-      'handle_vec_u8', (port) => inner.wire_handle_vec_u8(port, _api2wire_uint_8_list(v)), _wire2api_uint_8_list);
+  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) => execute(
+      'handle_vec_u8', (port) => inner.wire_handle_vec_u8(port, _api2wire_uint_8_list(v)), _wire2api_uint_8_list, hint);
 
-  Future<Uint8List> handleZeroCopyResult({required int n}) => execute('handle_zero_copy_result',
-      (port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)), _wire2api_ZeroCopyBuffer_Uint8List);
+  Future<Uint8List> handleZeroCopyResult({required int n, dynamic hint}) => execute('handle_zero_copy_result',
+      (port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)), _wire2api_ZeroCopyBuffer_Uint8List, hint);
 
-  Future<MySize> handleStruct({required MySize arg, required MySize boxed}) => execute(
+  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint}) => execute(
       'handle_struct',
       (port) => inner.wire_handle_struct(port, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
-      _wire2api_my_size);
+      _wire2api_my_size,
+      hint);
 
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg}) => execute('handle_newtype',
-      (port) => inner.wire_handle_newtype(port, _api2wire_box_autoadd_new_type_int(arg)), _wire2api_new_type_int);
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) => execute('handle_newtype',
+      (port) => inner.wire_handle_newtype(port, _api2wire_box_autoadd_new_type_int(arg)), _wire2api_new_type_int, hint);
 
-  Future<List<MySize>> handleListOfStruct({required List<MySize> l}) => execute('handle_list_of_struct',
-      (port) => inner.wire_handle_list_of_struct(port, _api2wire_list_my_size(l)), _wire2api_list_my_size);
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint}) => execute('handle_list_of_struct',
+      (port) => inner.wire_handle_list_of_struct(port, _api2wire_list_my_size(l)), _wire2api_list_my_size, hint);
 
-  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s}) => execute('handle_complex_struct',
-      (port) => inner.wire_handle_complex_struct(port, _api2wire_box_autoadd_my_tree_node(s)), _wire2api_my_tree_node);
+  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) => execute(
+      'handle_complex_struct',
+      (port) => inner.wire_handle_complex_struct(port, _api2wire_box_autoadd_my_tree_node(s)),
+      _wire2api_my_tree_node,
+      hint);
 
-  Future<int> returnErr() => execute(
+  Future<int> returnErr({dynamic hint}) => execute(
       'return_err',
       (port) => inner.wire_return_err(
             port,
           ),
-      _wire2api_i32);
+      _wire2api_i32,
+      hint);
 
-  Future<int> returnPanic() => execute(
+  Future<int> returnPanic({dynamic hint}) => execute(
       'return_panic',
       (port) => inner.wire_return_panic(
             port,
           ),
-      _wire2api_i32);
+      _wire2api_i32,
+      hint);
 
   // Section: api2wire
   int _api2wire_i32(int raw) {
