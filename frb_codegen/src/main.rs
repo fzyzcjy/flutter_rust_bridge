@@ -43,11 +43,7 @@ fn main() {
     fs::write(&config.rust_output_path, generated_rust_code).unwrap();
 
     info!("Phase: Generate Dart code");
-    let (
-        generated_dart_api_header_code,
-        generated_dart_api_api_class_code,
-        generated_dart_api_other_code,
-    ) = generator_dart::generate(
+    let generated_dart_api = generator_dart::generate(
         &api_file,
         &config.dart_api_class_name(),
         &config.dart_api_impl_class_name(),
@@ -88,10 +84,10 @@ fn main() {
 
     let generated_dart_code = format!(
         "{}\n{}\n{}\n{}\n{}",
-        generated_dart_api_header_code,
+        generated_dart_api.header,
         generated_dart_wire_import_code,
-        generated_dart_api_api_class_code,
-        generated_dart_api_other_code,
+        generated_dart_api.api_class,
+        generated_dart_api.other,
         generated_dart_wire_body_code,
     );
     fs::write(&config.dart_output_path, generated_dart_code).unwrap();

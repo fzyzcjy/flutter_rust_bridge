@@ -5,12 +5,18 @@ use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::generator_common::*;
 
+pub struct Output {
+    pub header: String,
+    pub api_class: String,
+    pub other: String,
+}
+
 pub fn generate(
     api_file: &ApiFile,
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
-) -> (String, String, String) {
+) -> Output {
     let distinct_types = api_file.distinct_types();
     debug!("distinct_types={:?}", distinct_types);
 
@@ -117,7 +123,11 @@ pub fn generate(
         dart_wire2api_funcs.join("\n\n"),
     );
 
-    (header, api_class, others)
+    Output {
+        header,
+        api_class,
+        others,
+    }
 }
 
 fn generate_api_func(func: &ApiFunc) -> (String, String) {
