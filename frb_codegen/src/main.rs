@@ -74,7 +74,12 @@ fn main() {
         },
     );
 
-    let c_dummy_code = generator_c::generate_dummy(&generated_rust.extern_func_names);
+    let effective_func_names = [
+        generated_rust.extern_func_names,
+        EXTRA_EXTERN_FUNC_NAMES.to_vec(),
+    ]
+    .concat();
+    let c_dummy_code = generator_c::generate_dummy(&effective_func_names);
     fs::write(
         &config.c_output_path,
         fs::read_to_string(temp_bindgen_c_output_file).unwrap() + "\n" + &c_dummy_code,

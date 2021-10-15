@@ -96,5 +96,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node);
     dummy_var ^= ((int64_t) (void*) new_list_tree_node);
     dummy_var ^= ((int64_t) (void*) new_list_size);
+    dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     return dummy_var;
 }
