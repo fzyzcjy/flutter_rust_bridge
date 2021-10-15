@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge/src/basic.dart';
 import 'package:meta/meta.dart';
 
 /// Allow custom setup hooks before ffi can be executed.
+/// All other ffi calls will wait (async) until the setup ffi finishes.
 ///
 /// Usage: Please call [setupMixinConstructor] inside the constructor of your class
 mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
