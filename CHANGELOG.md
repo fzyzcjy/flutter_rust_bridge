@@ -1,3 +1,7 @@
+## ??
+
+* Enable `Option<T>` types to be transformed
+
 ## 1.2.0
 
 * Add FlutterRustBridgeSetupMixin (an optional helper class), which allows custom setup hooks before ffi can be executed.
