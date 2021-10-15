@@ -1,1 +1,1 @@
-export 'src/basic.dart' if (dart.library.html) 'src/basic_web.dart';
+export 'flutter_rust_bridge_io.dart' if (dart.library.html) 'flutter_rust_bridge_web.dart';
