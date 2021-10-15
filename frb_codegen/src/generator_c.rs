@@ -7,7 +7,7 @@ pub fn generate_dummy(func_names: &[String]) -> String {
 }}"#,
         func_names
             .iter()
-            .map(|func_name| { format!("    dummy_var += ((int) (void*) {}) % 2;", func_name) })
+            .map(|func_name| { format!("    dummy_var += ((int64_t) (void*) {}) % 2;", func_name) })
             .collect::<Vec<_>>()
             .join("\n"),
     )
