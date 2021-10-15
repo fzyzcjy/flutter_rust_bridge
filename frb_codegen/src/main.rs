@@ -1,4 +1,5 @@
 use std::fs;
+use std::io::Read;
 
 use env_logger::Env;
 use log::{debug, info};
@@ -11,7 +12,7 @@ use crate::utils::*;
 mod api_types;
 mod commands;
 mod config;
-mod generate_c;
+mod generator_c;
 mod generator_dart;
 mod generator_rust;
 mod others;
@@ -56,19 +57,30 @@ fn main() {
     others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
 
     let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
-    let temp_dart_wire_path = temp_dart_wire_file.path().as_os_str().to_str().unwrap();
+    let temp_bindgen_c_output_file = tempfile::NamedTempFile::new().unwrap();
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
             commands::bindgen_rust_to_dart(
                 &config.rust_crate_dir,
-                &config.c_output_path,
-                temp_dart_wire_path,
+                temp_bindgen_c_output_file
+                    .path()
+                    .as_os_str()
+                    .to_str()
+                    .unwrap(),
+                temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                 &config.dart_wire_class_name(),
             );
         },
     );
+
+    let c_dummy_code = generator_c::generate_dummy(&generated_rust.extern_func_names);
+    fs::write(
+        &config.c_output_path,
+        fs::read_to_string(temp_bindgen_c_output_file) + "\n\n" + &c_dummy_code,
+    )?;
+
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file).unwrap();
     let (generated_dart_wire_import_code, generated_dart_wire_body_code) =
         extract_dart_wire_content(&modify_dart_wire_content(
