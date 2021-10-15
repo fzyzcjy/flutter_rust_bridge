@@ -68,7 +68,7 @@ impl Generator {
 
         use crate::{}::*;
         use flutter_rust_bridge::*;
-        
+
         // Section: wire functions
 
         {}
@@ -97,19 +97,12 @@ impl Generator {
 
         {}
 
-        // Section: impl IntoDart 
+        // Section: impl IntoDart
         {}
-        
+
         // Section: executor
         {}
 
-        // Section: misc helpers
-
-        #[no_mangle]
-        pub extern "C" fn rust_dummy_method_to_enforce_bundling() {{
-            /* nothing */
-        }}
-    
         "#,
             CODE_HEADER,
             rust_wire_stem,
@@ -138,41 +131,53 @@ impl Generator {
     }
 
     fn generate_wire_func(&mut self, func: &ApiFunc) -> String {
+        let params = [
+            vec!["port: i64".to_string()],
+            func.inputs
+                .iter()
+                .map(|field| {
+                    format!(
+                        "{}: {}{}",
+                        field.name.rust_style(),
+                        field.ty.rust_wire_modifier(),
+                        field.ty.rust_wire_type()
+                    )
+                })
+                .collect::<Vec<_>>(),
+        ]
+        .concat();
+
         // println!("generate_wire_func: {}", func.name);
-        format!(
-            "#[no_mangle]
-        pub extern \"C\" fn {}(port: i64, {}) {{
-            {}
-            support::wrap_wire_func(&*{}, \"{}\", port, move || {}({}));
-        }}",
-            func.wire_func_name(),
-            func.inputs
+        self.extern_func_collector.generate(
+            &func.wire_func_name(),
+            &params
                 .iter()
-                .map(|field| format!(
-                    "{}: {}{}",
-                    field.name.rust_style(),
-                    field.ty.rust_wire_modifier(),
-                    field.ty.rust_wire_type()
-                ))
-                .collect::<Vec<_>>()
-                .join(", "),
-            func.inputs
-                .iter()
-                .map(|field| format!(
-                    "let api_{} = {}.wire2api();",
-                    field.name.rust_style(),
-                    field.name.rust_style()
-                ))
-                .collect::<Vec<_>>()
-                .join(""),
-            EXECUTOR_NAME,
-            func.name,
-            func.name,
-            func.inputs
-                .iter()
-                .map(|field| format!("api_{}", field.name.rust_style()))
-                .collect::<Vec<_>>()
-                .join(", "),
+                .map(std::ops::Deref::deref)
+                .collect::<Vec<_>>(),
+            None,
+            &format!(
+                "
+                {}
+                support::wrap_wire_func(&*{}, \"{}\", port, move || {}({}));
+                ",
+                func.inputs
+                    .iter()
+                    .map(|field| format!(
+                        "let api_{} = {}.wire2api();",
+                        field.name.rust_style(),
+                        field.name.rust_style()
+                    ))
+                    .collect::<Vec<_>>()
+                    .join(""),
+                EXECUTOR_NAME,
+                func.name,
+                func.name,
+                func.inputs
+                    .iter()
+                    .map(|field| format!("api_{}", field.name.rust_style()))
+                    .collect::<Vec<_>>()
+                    .join(", "),
+            ),
         )
     }
 
@@ -218,48 +223,40 @@ impl Generator {
 
     fn generate_allocate_funcs(&mut self, ty: &ApiType) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
+
         match ty {
             Primitive(_) => "".to_string(),
             Delegate(_) => "".to_string(),
-            PrimitiveList(list) => format!(
-                r###"
-            #[no_mangle]
-            pub extern "C" fn new_{}(len: i32) -> {}{} {{
-                let ans = {} {{ ptr: support::new_leak_vec_ptr(Default::default(), len), len }};
-                support::new_leak_box_ptr(ans)
-            }}
-            "###,
-                list.safe_ident(),
-                list.rust_wire_modifier(),
-                list.rust_wire_type(),
-                list.rust_wire_type(),
+            PrimitiveList(list) => self.extern_func_collector.generate(
+                &format!("new_{}", list.safe_ident()),
+                &["len: i32"],
+                Some(&format!("{}{}", list.rust_wire_modifier(), list.rust_wire_type())),
+                &format!(
+                    "let ans = {} {{ ptr: support::new_leak_vec_ptr(Default::default(), len), len }};
+                support::new_leak_box_ptr(ans)",
+                    list.rust_wire_type(),
+                ),
             ),
-            GeneralList(list) => format!(
-                r###"
-            #[no_mangle]
-            pub extern "C" fn new_{}(len: i32) -> {}{} {{
-                let wrap = {} {{ ptr: support::new_leak_vec_ptr({}::new_with_null_ptr(), len), len }};
-                support::new_leak_box_ptr(wrap)
-            }}
-            "###,
-                ty.safe_ident(),
-                list.rust_wire_modifier(),
-                list.rust_wire_type(),
-                list.rust_wire_type(),
-                list.inner.rust_wire_type(),
+            GeneralList(list) => self.extern_func_collector.generate(
+                &format!("new_{}", ty.safe_ident()),
+                &["len: i32"],
+                Some(&format!("{}{}", list.rust_wire_modifier(), list.rust_wire_type())),
+                &format!(
+                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}::new_with_null_ptr(), len), len }};
+                    support::new_leak_box_ptr(wrap)",
+                    list.rust_wire_type(),
+                    list.inner.rust_wire_type(),
+                ),
             ),
             StructRef(_) => "".to_string(),
-            Boxed(b) => format!(
-                r###"
-            #[no_mangle]
-            pub extern "C" fn new_{}() -> {}{} {{
-                support::new_leak_box_ptr({}::new_with_null_ptr())
-            }}
-            "###,
-                ty.safe_ident(),
-                ty.rust_wire_modifier(),
-                ty.rust_wire_type(),
-                b.inner.rust_wire_type(),
+            Boxed(b) => self.extern_func_collector.generate(
+                &format!("new_{}", ty.safe_ident()),
+                &[],
+                Some(&format!("{}{}", ty.rust_wire_modifier(), ty.rust_wire_type())),
+                &format!(
+                    "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                    b.inner.rust_wire_type(),
+                ),
             ),
         }
     }
@@ -417,7 +414,15 @@ impl ExternFuncCollector {
         ExternFuncCollector { names: vec![] }
     }
 
-    fn generate(func_name: &str, params: &str, return_type: Option<&str>, body: &str) -> String {
+    fn generate(
+        &mut self,
+        func_name: &str,
+        params: &[&str],
+        return_type: Option<&str>,
+        body: &str,
+    ) -> String {
+        self.names.push(func_name.to_string());
+
         format!(
             r#"
                 #[no_mangle]
@@ -426,7 +431,7 @@ impl ExternFuncCollector {
                 }}
             "#,
             func_name,
-            params,
+            params.join(", "),
             return_type.map_or("".to_string(), |r| format!("-> {}", r)),
             body,
         )
