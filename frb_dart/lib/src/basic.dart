@@ -32,7 +32,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   }
 
   @protected
-  Future<S> execute<S>(String debugName, void Function(int port) callFfi, S Function(dynamic) parseSuccessData) {
+  Future<S> execute<S>(
+      String debugName, void Function(int port) callFfi, S Function(dynamic) parseSuccessData, dynamic hint) {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
 

@@ -3,14 +3,20 @@ use log::debug;
 
 use crate::api_types::ApiType::*;
 use crate::api_types::*;
-use crate::generator_common::*;
+use crate::others::*;
+
+pub struct Output {
+    pub header: String,
+    pub api_class: String,
+    pub other: String,
+}
 
 pub fn generate(
     api_file: &ApiFile,
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
-) -> (String, String, String) {
+) -> Output {
     let distinct_types = api_file.distinct_types();
     debug!("distinct_types={:?}", distinct_types);
 
@@ -82,7 +88,7 @@ pub fn generate(
         dart_structs.join("\n\n"),
     );
 
-    let others = format!(
+    let other = format!(
         "/// Implementations for {}. Prefer using {} if possible; but this class allows more 
         /// flexible customizations (such as subclassing to create an initializer, a logger, or 
         /// a timer).
@@ -117,11 +123,15 @@ pub fn generate(
         dart_wire2api_funcs.join("\n\n"),
     );
 
-    (header, api_class, others)
+    Output {
+        header,
+        api_class,
+        other,
+    }
 }
 
 fn generate_api_func(func: &ApiFunc) -> (String, String) {
-    let func_param_list = func
+    let raw_func_param_list = func
         .inputs
         .iter()
         .map(|input| {
@@ -132,6 +142,8 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
             )
         })
         .collect::<Vec<_>>();
+
+    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let wire_param_list = func
         .inputs
@@ -146,20 +158,16 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
         .collect::<Vec<_>>();
 
     let partial = format!(
-        "Future<{}> {}({})",
+        "Future<{}> {}({{ {} }})",
         func.output.dart_api_type(),
         func.name.to_case(Case::Camel),
-        if func_param_list.is_empty() {
-            "".to_string()
-        } else {
-            format!("{{{}}}", func_param_list.join(","))
-        },
+        full_func_param_list.join(","),
     );
 
     let signature = format!("{};", partial);
 
     let implementation = format!(
-        "{} => execute('{}', (port) => inner.{}(port, {}), _wire2api_{});",
+        "{} => execute('{}', (port) => inner.{}(port, {}), _wire2api_{}, hint);",
         partial,
         func.name,
         func.wire_func_name(),

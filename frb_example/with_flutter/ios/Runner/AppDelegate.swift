@@ -8,8 +8,7 @@ import Flutter
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
+    print("dummy_value=\(dummy_method_to_enforce_bundling())");
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
-
-  func dummyMethodToAvoidSymbolStripping() { rust_dummy_method_to_enforce_bundling() }
 }

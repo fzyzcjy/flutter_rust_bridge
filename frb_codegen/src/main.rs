@@ -11,7 +11,7 @@ use crate::utils::*;
 mod api_types;
 mod commands;
 mod config;
-mod generator_common;
+mod generator_c;
 mod generator_dart;
 mod generator_rust;
 mod others;
@@ -38,16 +38,11 @@ fn main() {
     debug!("transformed functions: {:?}", &api_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust_code =
-        generator_rust::generate(&api_file, &path_stem(&config.rust_input_path));
-    fs::write(&config.rust_output_path, generated_rust_code).unwrap();
+    let generated_rust = generator_rust::generate(&api_file, &path_stem(&config.rust_input_path));
+    fs::write(&config.rust_output_path, generated_rust.code).unwrap();
 
     info!("Phase: Generate Dart code");
-    let (
-        generated_dart_api_header_code,
-        generated_dart_api_api_class_code,
-        generated_dart_api_other_code,
-    ) = generator_dart::generate(
+    let generated_dart_api = generator_dart::generate(
         &api_file,
         &config.dart_api_class_name(),
         &config.dart_api_impl_class_name(),
@@ -61,19 +56,36 @@ fn main() {
     others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
 
     let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
-    let temp_dart_wire_path = temp_dart_wire_file.path().as_os_str().to_str().unwrap();
+    let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile().unwrap();
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
             commands::bindgen_rust_to_dart(
                 &config.rust_crate_dir,
-                &config.c_output_path,
-                temp_dart_wire_path,
+                temp_bindgen_c_output_file
+                    .path()
+                    .as_os_str()
+                    .to_str()
+                    .unwrap(),
+                temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                 &config.dart_wire_class_name(),
             );
         },
     );
+
+    let effective_func_names = [
+        generated_rust.extern_func_names,
+        EXTRA_EXTERN_FUNC_NAMES.to_vec(),
+    ]
+    .concat();
+    let c_dummy_code = generator_c::generate_dummy(&effective_func_names);
+    fs::write(
+        &config.c_output_path,
+        fs::read_to_string(temp_bindgen_c_output_file).unwrap() + "\n" + &c_dummy_code,
+    )
+    .unwrap();
+
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file).unwrap();
     let (generated_dart_wire_import_code, generated_dart_wire_body_code) =
         extract_dart_wire_content(&modify_dart_wire_content(
@@ -88,10 +100,10 @@ fn main() {
 
     let generated_dart_code = format!(
         "{}\n{}\n{}\n{}\n{}",
-        generated_dart_api_header_code,
+        generated_dart_api.header,
         generated_dart_wire_import_code,
-        generated_dart_api_api_class_code,
-        generated_dart_api_other_code,
+        generated_dart_api.api_class,
+        generated_dart_api.other,
         generated_dart_wire_body_code,
     );
     fs::write(&config.dart_output_path, generated_dart_code).unwrap();
