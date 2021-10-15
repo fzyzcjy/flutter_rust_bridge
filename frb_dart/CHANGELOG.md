@@ -1,3 +1,7 @@
+## 1.2.0
+
+* add FlutterRustBridgeSetupMixin (an optional helper class), which allows custom setup hooks before ffi can be executed.
+
 ## 1.1.0
 
 * Generate `dummy_method_to_enforce_bundling` to avoid "symbols not found" problems in iOS release build
