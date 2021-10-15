@@ -4,7 +4,11 @@ use crate::generator_common::*;
 
 pub const EXECUTOR_NAME: &str = "FLUTTER_RUST_BRIDGE_EXECUTOR";
 
-pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
+pub struct Output {
+    pub code: String,
+}
+
+pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> Output {
     let wire_funcs = api_file
         .funcs
         .iter()
@@ -36,7 +40,7 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
         .map(|ty| generate_impl_intodart(ty, api_file))
         .collect::<Vec<_>>();
 
-    format!(
+    let code = format!(
         r#"#![allow(non_camel_case_types, clippy::redundant_closure, clippy::useless_conversion)]
         {}
 
@@ -94,7 +98,9 @@ pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> String {
         new_with_nullptr_funcs.join("\n\n"),
         impl_intodart.join("\n\n"),
         generate_executor(api_file),
-    )
+    );
+
+    Output { code }
 }
 
 fn generate_executor(api_file: &ApiFile) -> String {

@@ -38,9 +38,8 @@ fn main() {
     debug!("transformed functions: {:?}", &api_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust_code =
-        generator_rust::generate(&api_file, &path_stem(&config.rust_input_path));
-    fs::write(&config.rust_output_path, generated_rust_code).unwrap();
+    let generated_rust = generator_rust::generate(&api_file, &path_stem(&config.rust_input_path));
+    fs::write(&config.rust_output_path, generated_rust.code).unwrap();
 
     info!("Phase: Generate Dart code");
     let generated_dart_api = generator_dart::generate(
