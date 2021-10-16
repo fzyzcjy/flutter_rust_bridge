@@ -116,7 +116,9 @@ impl<'a> Parser<'a> {
             static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
         }
 
-        CAPTURE_STREAM_SINK.captures(ty).map(self.parse_type)
+        CAPTURE_STREAM_SINK
+            .captures(ty)
+            .map(|inner| self.parse_type(&inner))
     }
 
     fn try_parse_list(&mut self, ty: &str) -> Option<ApiType> {

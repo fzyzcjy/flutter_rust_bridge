@@ -54,6 +54,7 @@ impl ApiFunc {
     }
 }
 
+#[derive(Debug, Clone)]
 pub enum ApiFuncMode {
     Normal,
     Stream,
