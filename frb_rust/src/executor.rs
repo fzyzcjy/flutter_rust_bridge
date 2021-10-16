@@ -11,6 +11,8 @@ use crate::support::DartCObject;
 
 /// Provide your own handler to customize how to execute your function calls, etc
 pub trait Handler {
+    // Why separate [PrepareFn] and [TaskFn]: because some things cannot be [Send] (e.g. raw
+    // pointers), so those can be done in [PrepareFn], while the real work is done in [TaskFn] with [Send].
     fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn,
@@ -58,11 +60,10 @@ impl<E: Executor> Handler for SimpleHandler<E> {
         // as well. Then that new panic will go across language boundry and cause UB.
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
         panic::catch_unwind(move || {
-            let result = panic::catch_unwind(move || {
-                self.executor.execute(f);
-            });
-
-            if let Err(err) = result {
+            if let Err(err) = panic::catch_unwind(move || {
+                let task = prepare();
+                self.executor.execute(task);
+            }) {
                 Rust2Dart::new(port).error("PANIC_ERROR".to_string(), format!("{:?}", err));
             }
         });
