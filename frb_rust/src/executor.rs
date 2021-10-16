@@ -49,13 +49,23 @@ impl<E: Executor> Handler for SimpleHandler<E> {
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
     {
-        let result = panic::catch_unwind(move || {
-            self.executor.execute(f);
-        });
+        // NOTE This [catch_unwind] **SHOULD** be put outside **ALL** code!
+        // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
+        // Therefore, we should wrap a [catch_unwind] outside of *each and every* line of code
+        // that can cause panic. Otherwise we may touch UB.
+        // Why do not report error or something like that if this outer [catch_unwind] really
+        // catches something: Because if we report error, that line of code itself can cause panic
+        // as well. Then that new panic will go across language boundry and cause UB.
+        // ref https://doc.rust-lang.org/nomicon/unwinding.html
+        panic::catch_unwind(move || {
+            let result = panic::catch_unwind(move || {
+                self.executor.execute(f);
+            });
 
-        if let Err(err) = result {
-            Rust2Dart::new(port).error("PANIC_ERROR".to_string(), format!("{:?}", err));
-        }
+            if let Err(err) = result {
+                Rust2Dart::new(port).error("PANIC_ERROR".to_string(), format!("{:?}", err));
+            }
+        });
     }
 }
 
