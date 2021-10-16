@@ -49,7 +49,7 @@ impl Default for DefaultHandler {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, _debug_name: &str, port: i64, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
@@ -66,7 +66,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         let _ = panic::catch_unwind(move || {
             if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
-                self.executor.execute(port, task);
+                self.executor.execute(debug_name, port, task);
             }) {
                 self.error_handler
                     .handle_error(port, ErrorType::Panic, error);
@@ -76,7 +76,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 }
 
 pub trait Executor: RefUnwindSafe {
-    fn execute<TaskFn, TaskRet>(&self, port: i64, task: TaskFn)
+    fn execute<TaskFn, TaskRet>(&self, debug_name: &str, port: i64, task: TaskFn)
     where
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
@@ -93,7 +93,7 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
-    fn execute<TaskFn, TaskRet>(&self, port: i64, task: TaskFn)
+    fn execute<TaskFn, TaskRet>(&self, _debug_name: &str, port: i64, task: TaskFn)
     where
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
