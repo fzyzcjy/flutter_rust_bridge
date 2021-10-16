@@ -1,3 +1,5 @@
+use std::marker::PhantomData;
+
 pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::IntoDart;
 use allo_isolate::Isolate;
@@ -40,5 +42,37 @@ impl Rust2Dart {
             error_message.into_dart(),
             error_details.into_dart(),
         ])
+    }
+}
+
+pub struct TaskCallback {
+    rust2dart: Rust2Dart,
+}
+
+impl TaskCallback {
+    pub fn new(rust2dart: Rust2Dart) -> Self {
+        Self { rust2dart }
+    }
+
+    pub fn stream_sink<T>(&self) -> StreamSink<T> {
+        StreamSink::new(self.rust2dart)
+    }
+}
+
+pub struct StreamSink<T: IntoDart> {
+    rust2dart: Rust2Dart,
+    _phantom_data: PhantomData<T>,
+}
+
+impl<T: IntoDart> StreamSink<T> {
+    pub fn new(rust2dart: Rust2Dart) -> Self {
+        Self {
+            rust2dart,
+            _phantom_data: PhantomData,
+        }
+    }
+
+    pub fn add(&self, value: T) {
+        self.rust2dart.success(value)
     }
 }

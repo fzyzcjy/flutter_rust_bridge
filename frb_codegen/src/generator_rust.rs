@@ -150,7 +150,7 @@ impl Generator {
         let inner_func_params = [
             match func.mode {
                 ApiFuncMode::Normal => vec![],
-                ApiFuncMode::Stream => vec!["task_callback.stream_sink".to_string()],
+                ApiFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
             },
             func.inputs
                 .iter()

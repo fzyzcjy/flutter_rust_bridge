@@ -5,7 +5,7 @@ use std::time::Duration;
 
 use anyhow::{anyhow, Result};
 
-use flutter_rust_bridge::{Callback, ZeroCopyBuffer};
+use flutter_rust_bridge::{Callback, StreamSink, ZeroCopyBuffer};
 
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
     Ok(a + b)
