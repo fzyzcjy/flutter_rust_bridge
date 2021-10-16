@@ -1,5 +1,7 @@
 #![allow(unused_variables)]
 
+use std::sync::atomic::{AtomicI32, Ordering};
+use std::sync::Arc;
 use std::thread;
 use std::time::Duration;
 
@@ -80,20 +82,28 @@ pub fn handle_complex_struct(s: MyTreeNode) -> Result<MyTreeNode> {
 pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
     println!("handle_stream arg={}", arg);
 
+    let cnt = Arc::new(AtomicI32::new(0));
+
     // just to show that, you can send data to sink even in other threads
+    let cnt2 = cnt.clone();
     let sink2 = sink.clone();
     thread::spawn(move || {
         for i in 0..5 {
-            println!("send data to sink in child thread i={}", i);
-            sink2.add(format!("child_thread_{}", i));
-            thread::sleep(Duration::from_millis(10));
+            let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
+            let msg = format!("(thread=child, i={}, old_cnt={})", i, old_cnt);
+            format!("send data to sink msg={}", msg);
+            sink2.add(msg);
+            thread::sleep(Duration::from_millis(100));
         }
+        sink2.close();
     });
 
     for i in 0..5 {
-        println!("send data to sink in normal function call i={}", i);
-        sink.add(format!("normal_{}", i));
-        thread::sleep(Duration::from_millis(10));
+        let old_cnt = cnt.fetch_add(1, Ordering::Relaxed);
+        let msg = format!("(thread=normal, i={}, old_cnt={})", i, old_cnt);
+        format!("send data to sink msg={}", msg);
+        sink.add(msg);
+        thread::sleep(Duration::from_millis(50));
     }
 
     Ok(())

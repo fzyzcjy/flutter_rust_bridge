@@ -41,10 +41,17 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   }
 
   @protected
-  Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) {
+  Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
     final receivePort = ReceivePort();
     task.callFfi(receivePort.sendPort.nativePort);
-    return receivePort.map((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData));
+
+    await for (final raw in receivePort) {
+      try {
+        yield _transformRust2DartMessage(raw, task.parseSuccessData);
+      } on _CloseStreamException {
+        receivePort.close();
+      }
+    }
   }
 
   S _transformRust2DartMessage<S>(dynamic raw, S Function(dynamic) parseSuccessData) {
@@ -56,6 +63,9 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
       case _RUST2DART_ACTION_ERROR:
         assert(raw.length == 4);
         throw FfiException(raw[1], raw[2], raw[3]);
+      case _RUST2DART_ACTION_CLOSE_STREAM:
+        assert(raw.length == 1);
+        throw _CloseStreamException();
       default:
         throw Exception('Unsupported message, action=$action raw=$raw');
     }
@@ -63,6 +73,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   static const _RUST2DART_ACTION_SUCCESS = 0; // ignore: constant_identifier_names
   static const _RUST2DART_ACTION_ERROR = 1; // ignore: constant_identifier_names
+  static const _RUST2DART_ACTION_CLOSE_STREAM = 2; // ignore: constant_identifier_names
 }
 
 @immutable
@@ -101,3 +112,5 @@ abstract class FlutterRustBridgeWireBase {
     ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
   );
 }
+
+class _CloseStreamException {}

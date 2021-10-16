@@ -11,6 +11,7 @@ pub struct Rust2Dart {
 
 const RUST2DART_ACTION_SUCCESS: i32 = 0;
 const RUST2DART_ACTION_ERROR: i32 = 1;
+const RUST2DART_ACTION_CLOSE_STREAM: i32 = 2;
 
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
@@ -44,6 +45,11 @@ impl Rust2Dart {
             error_details.into_dart(),
         ])
     }
+
+    pub fn close_stream(&self) -> bool {
+        self.isolate
+            .post(vec![RUST2DART_ACTION_CLOSE_STREAM.into_dart()])
+    }
 }
 
 pub struct TaskCallback {
@@ -76,5 +82,9 @@ impl<T: IntoDart> StreamSink<T> {
 
     pub fn add(&self, value: T) -> bool {
         self.rust2dart.success(value)
+    }
+
+    pub fn close(&self) -> bool {
+        self.rust2dart.close_stream()
     }
 }
