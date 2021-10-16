@@ -1,13 +1,14 @@
+use std::fmt::Debug;
 use std::panic;
-use std::panic::UnwindSafe;
+use std::panic::{RefUnwindSafe, UnwindSafe};
 
+use allo_isolate::IntoDart;
 use anyhow::Result;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
 use threadpool::ThreadPool;
 
 use crate::rust2dart::Rust2Dart;
-use crate::support::DartCObject;
 
 /// Provide your own handler to customize how to execute your function calls, etc
 pub trait Handler {
@@ -15,15 +16,15 @@ pub trait Handler {
     // pointers), so those can be done in [PrepareFn], while the real work is done in [TaskFn] with [Send].
     fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
     where
-        PrepareFn: FnOnce() -> TaskFn,
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
-pub struct SimpleHandler<E: Executor, H: ErrorHandler> {
+pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
     executor: E,
-    error_handler: H,
+    error_handler: EH,
 }
 
 impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
@@ -35,19 +36,19 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
     }
 }
 
-impl Default for SimpleHandler<ThreadPoolExecutor, ReportDartErrorHandler> {
+impl Default for SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler> {
     fn default() -> Self {
         Self::new(
-            ThreadPoolExecutor::new(4, ReportDartErrorHandler),
+            ThreadPoolExecutor::new(ReportDartErrorHandler),
             ReportDartErrorHandler,
         )
     }
 }
 
-impl<E: Executor> Handler for SimpleHandler<E> {
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
+impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
+    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, _debug_name: &str, port: i64, prepare: PrepareFn)
     where
-        PrepareFn: FnOnce() -> TaskFn,
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
     {
@@ -59,10 +60,10 @@ impl<E: Executor> Handler for SimpleHandler<E> {
         // catches something: Because if we report error, that line of code itself can cause panic
         // as well. Then that new panic will go across language boundry and cause UB.
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
-        panic::catch_unwind(move || {
+        let _ = panic::catch_unwind(move || {
             if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
-                self.executor.execute(task);
+                self.executor.execute(port, task);
             }) {
                 self.error_handler
                     .handle_error(port, ErrorType::Panic, error);
@@ -71,51 +72,54 @@ impl<E: Executor> Handler for SimpleHandler<E> {
     }
 }
 
-pub trait Executor {
+pub trait Executor: RefUnwindSafe {
     fn execute<TaskFn, TaskRet>(&self, port: i64, task: TaskFn)
     where
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
 }
 
-pub struct ThreadPoolExecutor<'a> {
-    thread_pool: Mutex<ThreadPool>,
-    error_handler: &'a ErrorHandler,
+pub struct ThreadPoolExecutor<EH: ErrorHandler> {
+    error_handler: EH,
 }
 
-impl<'a> ThreadPoolExecutor<'a> {
-    pub fn new(num_threads: usize, error_handler: &'a ErrorHandler) -> Self {
-        ThreadPoolExecutor {
-            thread_pool: Mutex::new(ThreadPool::new(num_threads)),
-            error_handler,
-        }
+impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
+    pub fn new(error_handler: EH) -> Self {
+        ThreadPoolExecutor { error_handler }
     }
 }
 
-impl<'a> Executor for ThreadPoolExecutor<'a> {
+impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
     fn execute<TaskFn, TaskRet>(&self, port: i64, task: TaskFn)
     where
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
     {
-        self.thread_pool.lock().execute(move || {
+        const NUM_WORKERS: usize = 4;
+        lazy_static! {
+            static ref THREAD_POOL: Mutex<ThreadPool> = Mutex::new(ThreadPool::new(NUM_WORKERS));
+        }
+
+        let eh = self.error_handler;
+        let eh2 = self.error_handler;
+        THREAD_POOL.lock().execute(move || {
             let thread_result = panic::catch_unwind(move || {
                 let rust2dart = Rust2Dart::new(port);
 
                 let ret = task().map(|ret| ret.into_dart());
 
                 match ret {
-                    Ok(result) => rust2dart.success(result),
+                    Ok(result) => {
+                        rust2dart.success(result);
+                    }
                     Err(error) => {
-                        self.error_handler
-                            .handle_error(port, ErrorType::ResultError, error);
+                        eh2.handle_error(port, ErrorType::ResultError, error);
                     }
                 };
             });
 
             if let Err(error) = thread_result {
-                self.error_handler
-                    .handle_error(port, ErrorType::Panic, error);
+                eh.handle_error(port, ErrorType::Panic, error);
             }
         });
     }
@@ -126,18 +130,19 @@ pub enum ErrorType {
     Panic,
 }
 
-pub trait ErrorHandler {
-    fn handle_error<E>(&self, port: i64, typ: ErrorType, error: E);
+pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
+    fn handle_error<E: Debug>(&self, port: i64, typ: ErrorType, error: E);
 }
 
+#[derive(Clone, Copy)]
 pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
-    fn handle_error<E>(&self, port: i64, typ: ErrorType, error: E) {
+    fn handle_error<E: Debug>(&self, port: i64, typ: ErrorType, error: E) {
         let error_code = match typ {
             ErrorType::ResultError => "RESULT_ERROR",
             ErrorType::Panic => "PANIC_ERROR",
         };
-        Rust2Dart::new(port).error(error_code.to_string(), format!("{:?}", err));
+        Rust2Dart::new(port).error(error_code.to_string(), format!("{:?}", error));
     }
 }

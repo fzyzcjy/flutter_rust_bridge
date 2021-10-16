@@ -2,11 +2,9 @@
 //! These functions are *not* meant to be used by humans directly.
 
 use std::mem;
-use std::panic::UnwindSafe;
 
 pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::IntoDart;
-use anyhow::Result;
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::SimpleHandler;
