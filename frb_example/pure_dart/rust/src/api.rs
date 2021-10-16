@@ -84,30 +84,30 @@ pub fn return_panic() -> Result<i32> {
     panic!("return_panic() is called, thus deliberately panic")
 }
 
-pub fn handle_optional_return(left: f64, right: f64) -> Option<f64> {
+pub fn handle_optional_return(left: f64, right: f64) -> Result<Option<f64>> {
     if right == 0. {
-        None
+        Ok(None)
     } else {
-        Some(left / right)
+        Ok(Some(left / right))
     }
 }
 
 #[derive(Default, Debug, Clone)]
 pub struct Element {
-    tag: Option<String>,
-    text: Option<String>,
-    attributes: Option<Vec<Attribute>>,
-    children: Option<Vec<Element>>,
+    pub tag: Option<String>,
+    pub text: Option<String>,
+    pub attributes: Option<Vec<Attribute>>,
+    pub children: Option<Vec<Element>>,
 }
 
 #[derive(Debug, Clone)]
 pub struct Attribute {
-    key: String,
-    value: String,
+    pub key: String,
+    pub value: String,
 }
 
-pub fn handle_optional_struct(document: Option<String>) -> Option<Element> {
-    document.map(|inner| Element {
+pub fn handle_optional_struct(document: Option<String>) -> Result<Option<Element>> {
+    Ok(document.map(|inner| Element {
         tag: Some("div".to_owned()),
         attributes: Some(vec![Attribute {
             key: "id".to_owned(),
@@ -122,5 +122,80 @@ pub fn handle_optional_struct(document: Option<String>) -> Option<Element> {
             ..Default::default()
         }]),
         ..Default::default()
-    })
+    }))
+}
+
+#[derive(Default)]
+pub struct ExoticOptionals {
+    pub int32: Option<i32>,
+    pub int64: Option<i64>,
+    pub float64: Option<f64>,
+    pub boolean: Option<bool>,
+    pub zerocopy: Option<ZeroCopyBuffer<Vec<u8>>>,
+    pub int8list: Option<Vec<i8>>,
+    pub uint8list: Option<Vec<u8>>,
+    pub float64list: Option<Vec<f64>>,
+    pub attributes: Option<Vec<Attribute>>,
+    pub attributes_nullable: Vec<Option<Attribute>>,
+    pub nullable_attributes: Option<Vec<Option<Attribute>>>,
+    pub newtypeint: Option<NewTypeInt>,
+}
+
+pub fn increment(opt: Option<ExoticOptionals>) -> Result<Option<ExoticOptionals>> {
+    Ok(opt.map(|opt| ExoticOptionals {
+        int32: Some(opt.int32.unwrap_or(0) + 1),
+        int64: Some(opt.int64.unwrap_or(0) + 1),
+        float64: Some(opt.float64.unwrap_or(0.) + 1.),
+        boolean: Some(!opt.boolean.unwrap_or(false)),
+        zerocopy: opt
+            .zerocopy
+            .map(|mut e| {
+                e.0.push(42);
+                e
+            })
+            .or_else(|| Some(ZeroCopyBuffer(vec![]))),
+        int8list: opt
+            .int8list
+            .map(|mut e| {
+                e.push(42);
+                e
+            })
+            .or_else(|| Some(vec![])),
+        uint8list: opt
+            .uint8list
+            .map(|mut e| {
+                e.push(42);
+                e
+            })
+            .or_else(|| Some(vec![])),
+        // float64list: opt.float64list.map(|mut e| {
+        // e.push(42.);
+        // e
+        // }),
+        attributes: opt
+            .attributes
+            .map(|mut e| {
+                e.push(Attribute {
+                    key: "some-attrib".to_owned(),
+                    value: "some-value".to_owned(),
+                });
+                e
+            })
+            .or_else(|| Some(vec![])),
+        newtypeint: opt
+            .newtypeint
+            .map(|mut e| {
+                e.0 += 1;
+                e
+            })
+            .or_else(|| Some(NewTypeInt(0))),
+        ..Default::default()
+    }))
+}
+
+pub fn handle_boxed_optional(opt: Option<Box<f64>>) -> Result<f64> {
+    match opt {
+        Some(e) => Ok(*e + 1.),
+        None => Ok(42.),
+    }
 }

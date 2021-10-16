@@ -297,13 +297,14 @@ impl Generator {
             }
             "
             .to_string(),
-            GeneralList(_) => "let vec = unsafe {
-                let wrap = support::box_from_leak_ptr(self);
-                support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-            };
-            vec.into_iter().map(|x| x.wire2api()).collect()
-            "
-            .to_string(),
+            GeneralList(inner) => format!(
+                "let vec = unsafe {{
+                    let wrap = support::box_from_leak_ptr(self);
+                    support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+                }};
+                vec.into_iter().map(|x| <{}>::from(x.wire2api())).collect()",
+                inner.inner.rust_api_type()
+            ),
             Boxed(_) => "let wrap = unsafe { support::box_from_leak_ptr(self) };
             (*wrap).wire2api().into()"
                 .to_string(),
