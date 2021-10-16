@@ -9,10 +9,10 @@
 
 # NOTE XXX this file is copied and modified from: https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
 
-import subprocess
-import sys
 import re
 import selectors
+import subprocess
+import sys
 
 VALGRIND_ARGUMENTS = [
     'valgrind',
@@ -56,12 +56,19 @@ while not done:
 output = output_raw.split('\n')
 errors = errors_raw.split('\n')
 code = process.wait()
+print("process code=", code)
 
 # Always print the output, but leave out the 3 line banner printed
 # by certain versions of Valgrind.
 if len(output) > 0 and output[0].startswith("** VALGRIND_ROOT="):
     output = output[3:]
 # sys.stdout.writelines(output) # NOTE XXX edited by me
+
+# NOTE XXX added by me
+DART_ALL_TESTS_PASSED_STR = 'All tests passed!'
+if not any(DART_ALL_TESTS_PASSED_STR in line for line in output):
+    print(f'error: valgrind_util does not find "{DART_ALL_TESTS_PASSED_STR}", thus dart test seems failed')
+    sys.exit(1)
 
 # NOTE XXX edited by me
 # If Valgrind produced an error, we report that to the user.
@@ -81,14 +88,14 @@ for line in errors:
         leaks.append(line)
         if not LEAK_OKAY_MATCHER.search(line):
             # NOTE XXX edited by me
-            print('valgrind_util find this line is bad:', line)
+            print('error: valgrind_util find this line is bad:', line)
             # sys.stderr.writelines(errors)
             sys.exit(1)
 
 # Make sure we found the right number of leak lines.
 if not len(leaks) in [0, 2, 3]:
     # sys.stderr.writelines(errors) # NOTE XXX edited by me
-    sys.stderr.write('\n\n#### Malformed Valgrind output.\n#### Exiting.\n')
+    print('error: #### Malformed Valgrind output.\n#### Exiting.')
     sys.exit(1)
 
 # Success.
