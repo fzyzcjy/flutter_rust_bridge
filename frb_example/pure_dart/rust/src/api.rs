@@ -83,3 +83,44 @@ pub fn return_err() -> Result<i32> {
 pub fn return_panic() -> Result<i32> {
     panic!("return_panic() is called, thus deliberately panic")
 }
+
+pub fn handle_optional_return(left: f64, right: f64) -> Option<f64> {
+    if right == 0. {
+        None
+    } else {
+        Some(left / right)
+    }
+}
+
+#[derive(Default, Debug, Clone)]
+pub struct Element {
+    tag: Option<String>,
+    text: Option<String>,
+    attributes: Option<Vec<Attribute>>,
+    children: Option<Vec<Element>>,
+}
+
+#[derive(Debug, Clone)]
+pub struct Attribute {
+    key: String,
+    value: String,
+}
+
+pub fn handle_optional_struct(document: Option<String>) -> Option<Element> {
+    document.map(|inner| Element {
+        tag: Some("div".to_owned()),
+        attributes: Some(vec![Attribute {
+            key: "id".to_owned(),
+            value: "root".to_owned(),
+        }]),
+        children: Some(vec![Element {
+            tag: Some("p".to_owned()),
+            children: Some(vec![Element {
+                text: Some(inner),
+                ..Default::default()
+            }]),
+            ..Default::default()
+        }]),
+        ..Default::default()
+    })
+}

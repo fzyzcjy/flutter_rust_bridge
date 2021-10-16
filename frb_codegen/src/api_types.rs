@@ -536,7 +536,11 @@ impl ApiTypeChild for ApiTypeOptional {
         self.inner.rust_wire_type()
     }
     fn dart_wire_type(&self) -> std::string::String {
-        format!("ffi.Pointer<{}>", self.rust_wire_type())
+        if self.inner.rust_wire_is_pointer() {
+            self.inner.dart_wire_type()
+        } else {
+            format!("ffi.Pointer<{}>", self.inner.dart_wire_type())
+        }
     }
     fn dart_api_type(&self) -> std::string::String {
         format!("{}?", self.inner.dart_api_type())
