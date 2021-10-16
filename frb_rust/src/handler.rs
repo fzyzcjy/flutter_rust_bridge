@@ -133,6 +133,28 @@ pub enum Error {
     Panic(Box<dyn Any + Send>),
 }
 
+impl Error {
+    pub fn code(&self) -> &'static str {
+        match self {
+            Error::ResultError(_) => "RESULT_ERROR",
+            Error::Panic(_) => "PANIC_ERROR",
+        }
+    }
+
+    pub fn message(&self) -> String {
+        match self {
+            Error::ResultError(e) => format!("{:?}", e),
+            Error::Panic(panic_err) => match panic_err.downcast_ref::<anyhow::Error>() {
+                // anyhow::Error's debug format is very different from that of Any's,
+                // so this code is meaningful
+                Some(e) => format!("{:?}", e),
+                // fallback, indeed almost useless output
+                None => format!("{:?}", panic_err),
+            },
+        }
+    }
+}
+
 pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     fn handle_error(&self, port: i64, error: Error);
 }
@@ -142,10 +164,6 @@ pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
     fn handle_error(&self, port: i64, error: Error) {
-        let (code, message) = match error {
-            Error::ResultError(e) => ("RESULT_ERROR", format!("{:?}", e)),
-            Error::Panic(e) => ("PANIC_ERROR", format!("{:?}", e)),
-        };
-        Rust2Dart::new(port).error(code.to_string(), message);
+        Rust2Dart::new(port).error(error.code().to_string(), error.message());
     }
 }
