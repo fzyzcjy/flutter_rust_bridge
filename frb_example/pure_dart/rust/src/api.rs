@@ -223,7 +223,7 @@ pub fn increment(opt: Option<ExoticOptionals>) -> Result<Option<ExoticOptionals>
                 e.0 += 1;
                 e
             })
-            .or_else(|| Some(NewTypeInt(0))),
+            .or(Some(NewTypeInt(0))),
         ..Default::default()
     }))
 }
