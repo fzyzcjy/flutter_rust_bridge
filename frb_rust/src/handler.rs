@@ -144,13 +144,14 @@ impl Error {
     pub fn message(&self) -> String {
         match self {
             Error::ResultError(e) => format!("{:?}", e),
-            Error::Panic(panic_err) => match panic_err.downcast_ref::<anyhow::Error>() {
-                // anyhow::Error's debug format is very different from that of Any's,
-                // so this code is meaningful
-                Some(e) => format!("{:?}", e),
-                // fallback, indeed almost useless output
-                None => format!("{:?}", panic_err),
-            },
+            Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
+                Some(s) => *s,
+                None => match panic_err.downcast_ref::<String>() {
+                    Some(s) => &s[..],
+                    None => "Box<dyn Any>",
+                },
+            }
+            .to_string(),
         }
     }
 }
