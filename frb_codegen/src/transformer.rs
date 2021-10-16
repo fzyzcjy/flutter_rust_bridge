@@ -1,3 +1,5 @@
+// use crate::api_types::ApiType::Optional;
+// use crate::transformer::ApiType::Primitive;
 use log::debug;
 
 use crate::api_types::ApiType::{Boxed, StructRef};
@@ -8,20 +10,18 @@ pub fn transform(src: ApiFile) -> ApiFile {
         .funcs
         .into_iter()
         .map(|src_func| ApiFunc {
-            name: src_func.name.clone(),
             inputs: src_func
                 .inputs
                 .into_iter()
                 .map(transform_func_input_add_boxed)
                 .collect(),
-            output: src_func.output,
+            ..src_func
         })
         .collect();
 
     ApiFile {
         funcs: dst_funcs,
-        struct_pool: src.struct_pool,
-        has_executor: src.has_executor,
+        ..src
     }
 }
 
