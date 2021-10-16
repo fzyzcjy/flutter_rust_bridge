@@ -202,10 +202,7 @@ impl ApiType {
     #[inline]
     pub fn required_modifier(&self) -> &'static str {
         match self {
-            Delegate(inner) => match inner {
-                ApiTypeDelegate::Optional(_) => "",
-                _ => "required ",
-            },
+            Delegate(ApiTypeDelegate::Optional(_)) => "",
             _ => "required ",
         }
     }
