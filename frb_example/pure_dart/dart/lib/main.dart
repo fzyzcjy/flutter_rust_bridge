@@ -89,7 +89,7 @@ void main(List<String> args) async {
 
     print('dart call handle_stream');
     {
-      final Stream<String> stream = api.handleStream(arg: 'hello');
+      final stream = api.handleStream(arg: 'hello');
       var cnt = 0;
       await for (final value in stream) {
         print("output from handle_stream's stream: $value");
