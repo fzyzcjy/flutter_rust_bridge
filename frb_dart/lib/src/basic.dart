@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
+import 'dart:isolate';
 
 import 'package:flutter_rust_bridge/src/utils.dart';
 import 'package:meta/meta.dart';
@@ -35,22 +36,29 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
-
     task.callFfi(sendPort.nativePort);
+    return completer.future.then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData));
+  }
 
-    return completer.future.then((dynamic raw) {
-      final action = raw[0];
-      switch (action) {
-        case _RUST2DART_ACTION_SUCCESS:
-          assert(raw.length == 2);
-          return task.parseSuccessData(raw[1]);
-        case _RUST2DART_ACTION_ERROR:
-          assert(raw.length == 4);
-          throw FfiException(raw[1], raw[2], raw[3]);
-        default:
-          throw Exception('Unsupported message, action=$action raw=$raw');
-      }
-    });
+  @protected
+  Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) {
+    final receivePort = ReceivePort();
+    task.callFfi(receivePort.sendPort.nativePort);
+    return receivePort.map((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData));
+  }
+
+  S _transformRust2DartMessage<S>(dynamic raw, S Function(dynamic) parseSuccessData) {
+    final action = raw[0];
+    switch (action) {
+      case _RUST2DART_ACTION_SUCCESS:
+        assert(raw.length == 2);
+        return parseSuccessData(raw[1]);
+      case _RUST2DART_ACTION_ERROR:
+        assert(raw.length == 4);
+        throw FfiException(raw[1], raw[2], raw[3]);
+      default:
+        throw Exception('Unsupported message, action=$action raw=$raw');
+    }
   }
 
   static const _RUST2DART_ACTION_SUCCESS = 0; // ignore: constant_identifier_names
