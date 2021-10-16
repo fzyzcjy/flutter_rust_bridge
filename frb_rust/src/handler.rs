@@ -128,7 +128,14 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
 
                 match ret {
                     Ok(result) => {
-                        rust2dart.success(result);
+                        match wrap_info2.mode {
+                            FfiCallMode::Normal => {
+                                rust2dart.success(result);
+                            }
+                            FfiCallMode::Stream => {
+                                // nothing - ignore the return value of a Stream-typed function
+                            }
+                        }
                     }
                     Err(error) => {
                         eh2.handle_error(wrap_info2.port, Error::ResultError(error));
