@@ -376,7 +376,9 @@ impl Wire2Api<Vec<TreeNode>> for *mut wire_list_tree_node {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(|x| x.wire2api()).collect()
+        vec.into_iter()
+            .map(|x| <TreeNode>::from(x.wire2api()))
+            .collect()
     }
 }
 
@@ -386,7 +388,9 @@ impl Wire2Api<Vec<Size>> for *mut wire_list_size {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(|x| x.wire2api()).collect()
+        vec.into_iter()
+            .map(|x| <Size>::from(x.wire2api()))
+            .collect()
     }
 }
 

@@ -155,11 +155,9 @@ impl<'a> Parser<'a> {
             static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
         }
 
-        CAPTURE_OPTION.captures(ty).map(|inner| {
-            Optional(Box::new(ApiTypeOptional {
-                inner: self.parse_type(&inner),
-            }))
-        })
+        CAPTURE_OPTION
+            .captures(ty)
+            .map(|inner| Delegate(ApiTypeDelegate::Optional(Box::new(self.parse_type(&inner)))))
     }
 
     fn try_parse_struct(&mut self, ty: &str) -> Option<ApiType> {

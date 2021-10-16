@@ -245,6 +245,9 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 }
 
 // Section: wire2api
+Size _wire2api_box_autoadd_size(dynamic raw) {
+  return raw as Size;
+}
 
 Size _wire2api_size(dynamic raw) {
   final arr = raw as List<dynamic>;
@@ -257,6 +260,10 @@ Size _wire2api_size(dynamic raw) {
 
 int _wire2api_i32(dynamic raw) {
   return raw as int;
+}
+
+Point _wire2api_box_autoadd_point(dynamic raw) {
+  return raw as Point;
 }
 
 Point _wire2api_point(dynamic raw) {
@@ -282,6 +289,10 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
 
 int _wire2api_u8(dynamic raw) {
   return raw as int;
+}
+
+TreeNode _wire2api_box_autoadd_tree_node(dynamic raw) {
+  return raw as TreeNode;
 }
 
 TreeNode _wire2api_tree_node(dynamic raw) {

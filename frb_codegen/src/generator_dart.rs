@@ -201,6 +201,12 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             ApiTypeDelegate::ZeroCopyBufferVecU8 => {
                 "return _api2wire_uint_8_list(raw);".to_string()
             }
+            ApiTypeDelegate::Optional(_) => {
+                format!(
+                    "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
+                    d.get_delegate().safe_ident()
+                )
+            }
         },
         PrimitiveList(_) => {
             // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
@@ -231,31 +237,22 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
                 list.inner.safe_ident(),
             )
         }
-        Boxed(b) => {
-            format!(
-                "final ptr = inner.new_{}();
-                _api_fill_to_wire_{}(raw, ptr.ref);
-                return ptr;",
-                ty.safe_ident(),
-                b.inner.safe_ident(),
-            )
-        }
-        // skip
-        StructRef(_) => return "".to_string(),
-        Optional(opt) => {
-            let get_ptr = if let StructRef(inner) = &opt.inner {
+        Boxed(b) => match &b.inner {
+            Primitive(_) => {
+                format!("return inner.new_{}(raw);", ty.safe_ident())
+            }
+            inner => {
                 format!(
                     "final ptr = inner.new_{}();
                     _api_fill_to_wire_{}(raw, ptr.ref);
                     return ptr;",
                     ty.safe_ident(),
-                    inner.safe_ident()
+                    inner.safe_ident(),
                 )
-            } else {
-                format!("return _api2wire_{}(raw);", opt.inner.safe_ident())
-            };
-            format!("if (raw == null) return ffi.nullptr; {}", get_ptr)
-        }
+            }
+        },
+        // skip
+        StructRef(_) => return "".to_string(),
     };
 
     format!(
@@ -271,7 +268,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
 }
 
 fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
-    let body = match ty {
+    let body = match &ty {
         StructRef(s) => s
             .get(api_file)
             .fields
@@ -286,10 +283,26 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             })
             .collect::<Vec<_>>()
             .join("\n"),
+        Delegate(ApiTypeDelegate::Optional(opt)) => {
+            if let StructRef(_) = opt.as_ref() {
+                format!(
+                    "if (apiObj != null) _api_fill_to_wire_{}(apiObj, wireObj);",
+                    opt.safe_ident()
+                )
+            } else {
+                return String::new();
+            }
+        }
         // skip
-        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Optional(_) => {
+        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
             return "".to_string();
         }
+    };
+
+    let dart_wire_type = if let Delegate(ApiTypeDelegate::Optional(opt)) = ty {
+        opt.dart_wire_type()
+    } else {
+        ty.dart_wire_type()
     };
 
     format!(
@@ -298,7 +311,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
         }}",
         ty.safe_ident(),
         ty.dart_api_type(),
-        ty.dart_wire_type(),
+        dart_wire_type,
         body,
     )
 }
@@ -311,6 +324,12 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
         Delegate(d) => match d {
             ApiTypeDelegate::String => gen_simple_type_cast(&d.dart_api_type()),
             ApiTypeDelegate::ZeroCopyBufferVecU8 => gen_simple_type_cast(&d.dart_api_type()),
+            ApiTypeDelegate::Optional(opt) => {
+                format!(
+                    "return raw == null ? null : _wire2api_{}(raw);",
+                    opt.safe_ident()
+                )
+            }
         },
         PrimitiveList(list) => gen_simple_type_cast(&list.dart_api_type()),
         GeneralList(list) => format!(
@@ -343,11 +362,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 s.name, inner,
             )
         }
-        Boxed(_) => return "".to_string(),
-        Optional(opt) => format!(
-            "return raw == null ? null : _wire2api_{}(raw);",
-            opt.inner.safe_ident()
-        ),
+        Boxed(_) => gen_simple_type_cast(&ty.dart_api_type()),
     };
 
     format!(

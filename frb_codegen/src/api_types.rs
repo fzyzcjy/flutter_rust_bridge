@@ -103,7 +103,6 @@ pub enum ApiType {
     GeneralList(Box<ApiTypeGeneralList>),
     StructRef(ApiTypeStructRef),
     Boxed(Box<ApiTypeBoxed>),
-    Optional(Box<ApiTypeOptional>),
 }
 
 impl ApiType {
@@ -124,7 +123,6 @@ impl ApiType {
             }
             Boxed(inner) => inner.inner.visit_types(f, api_file),
             Delegate(d) => d.get_delegate().visit_types(f, api_file),
-            Optional(ty) => ty.inner.visit_types(f, api_file),
             Primitive(_) => {}
         }
     }
@@ -137,7 +135,6 @@ impl ApiType {
             GeneralList(inner) => inner.safe_ident(),
             StructRef(inner) => inner.safe_ident(),
             Boxed(inner) => inner.safe_ident(),
-            Optional(inner) => inner.safe_ident(),
         }
     }
 
@@ -149,7 +146,6 @@ impl ApiType {
             GeneralList(inner) => inner.dart_api_type(),
             StructRef(inner) => inner.dart_api_type(),
             Boxed(inner) => inner.dart_api_type(),
-            Optional(inner) => inner.dart_api_type(),
         }
     }
     pub fn dart_wire_type(&self) -> String {
@@ -160,7 +156,6 @@ impl ApiType {
             GeneralList(inner) => inner.dart_wire_type(),
             StructRef(inner) => inner.dart_wire_type(),
             Boxed(inner) => inner.dart_wire_type(),
-            Optional(inner) => inner.dart_wire_type(),
         }
     }
     pub fn rust_api_type(&self) -> String {
@@ -171,7 +166,6 @@ impl ApiType {
             GeneralList(inner) => inner.rust_api_type(),
             StructRef(inner) => inner.rust_api_type(),
             Boxed(inner) => inner.rust_api_type(),
-            Optional(inner) => inner.rust_api_type(),
         }
     }
     pub fn rust_wire_type(&self) -> String {
@@ -182,7 +176,6 @@ impl ApiType {
             GeneralList(inner) => inner.rust_wire_type(),
             StructRef(inner) => inner.rust_wire_type(),
             Boxed(inner) => inner.rust_wire_type(),
-            Optional(inner) => inner.rust_wire_type(),
         }
     }
     pub fn rust_wire_modifier(&self) -> String {
@@ -193,7 +186,6 @@ impl ApiType {
             GeneralList(inner) => inner.rust_wire_modifier(),
             StructRef(inner) => inner.rust_wire_modifier(),
             Boxed(inner) => inner.rust_wire_modifier(),
-            Optional(inner) => inner.rust_wire_modifier(),
         }
     }
     pub fn rust_wire_is_pointer(&self) -> bool {
@@ -204,14 +196,16 @@ impl ApiType {
             GeneralList(inner) => inner.rust_wire_is_pointer(),
             StructRef(inner) => inner.rust_wire_is_pointer(),
             Boxed(inner) => inner.rust_wire_is_pointer(),
-            Optional(inner) => inner.rust_wire_is_pointer(),
         }
     }
 
     #[inline]
     pub fn required_modifier(&self) -> &'static str {
         match self {
-            Optional(_) => "",
+            Delegate(inner) => match inner {
+                ApiTypeDelegate::Optional(_) => "",
+                _ => "required ",
+            },
             _ => "required ",
         }
     }
@@ -290,6 +284,16 @@ impl ApiTypeChild for ApiTypePrimitive {
 }
 
 impl ApiTypePrimitive {
+    /// Primitive pointers.
+    pub fn dart_marker_type(&self) -> &'static str {
+        match self {
+            ApiTypePrimitive::U8 | ApiTypePrimitive::Bool => "ffi.Uint8",
+            ApiTypePrimitive::I8 => "ffi.Int8",
+            ApiTypePrimitive::I32 => "ffi.Int32",
+            ApiTypePrimitive::I64 => "ffi.Int64",
+            ApiTypePrimitive::F64 => "ffi.Double",
+        }
+    }
     pub fn try_from_rust_str(s: &str) -> Option<Self> {
         match s {
             "u8" => Some(ApiTypePrimitive::U8),
@@ -309,10 +313,11 @@ pub enum ApiTypeDelegate {
     String,
     // upstream (allo-isolate) only supports ZeroCopyBuffer for Vec<u8> and Vec<i8>.
     ZeroCopyBufferVecU8,
+    Optional(Box<ApiType>),
 }
 
 impl ApiTypeDelegate {
-    fn get_delegate(&self) -> ApiType {
+    pub fn get_delegate(&self) -> ApiType {
         match self {
             ApiTypeDelegate::String => ApiType::PrimitiveList(ApiTypePrimitiveList {
                 primitive: ApiTypePrimitive::U8,
@@ -320,6 +325,16 @@ impl ApiTypeDelegate {
             ApiTypeDelegate::ZeroCopyBufferVecU8 => ApiType::PrimitiveList(ApiTypePrimitiveList {
                 primitive: ApiTypePrimitive::U8,
             }),
+            ApiTypeDelegate::Optional(inner) => {
+                if inner.rust_wire_is_pointer() {
+                    *inner.clone()
+                } else {
+                    ApiType::Boxed(Box::new(ApiTypeBoxed {
+                        inner: *inner.clone(),
+                        exist_in_real_api: false,
+                    }))
+                }
+            }
         }
     }
 }
@@ -331,6 +346,7 @@ impl ApiTypeChild for ApiTypeDelegate {
             ApiTypeDelegate::ZeroCopyBufferVecU8 => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
+            ApiTypeDelegate::Optional(opt) => format!("Option_{}", opt.safe_ident()),
         }
     }
 
@@ -338,6 +354,7 @@ impl ApiTypeChild for ApiTypeDelegate {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
             ApiTypeDelegate::ZeroCopyBufferVecU8 => self.get_delegate().dart_api_type(),
+            ApiTypeDelegate::Optional(opt) => format!("{}?", opt.dart_api_type()),
         }
     }
 
@@ -347,10 +364,10 @@ impl ApiTypeChild for ApiTypeDelegate {
 
     fn rust_api_type(&self) -> String {
         match self {
-            ApiTypeDelegate::String => "String",
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer<Vec<u8>>",
+            ApiTypeDelegate::String => "String".to_owned(),
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer<Vec<u8>>".to_owned(),
+            ApiTypeDelegate::Optional(opt) => format!("Option<{}>", opt.rust_api_type()),
         }
-        .to_string()
     }
 
     fn rust_wire_type(&self) -> String {
@@ -523,7 +540,12 @@ impl ApiTypeChild for ApiTypeBoxed {
     }
 
     fn dart_wire_type(&self) -> String {
-        format!("ffi.Pointer<{}>", self.inner.dart_wire_type())
+        let wire_type = if let Primitive(prim) = &self.inner {
+            prim.dart_marker_type().to_owned()
+        } else {
+            self.inner.dart_wire_type()
+        };
+        format!("ffi.Pointer<{}>", wire_type)
     }
 
     fn rust_api_type(&self) -> String {
@@ -538,36 +560,6 @@ impl ApiTypeChild for ApiTypeBoxed {
         self.inner.rust_wire_type()
     }
 
-    fn rust_wire_is_pointer(&self) -> bool {
-        true
-    }
-}
-
-#[derive(Debug, Clone)]
-pub struct ApiTypeOptional {
-    pub inner: ApiType,
-}
-
-impl ApiTypeChild for ApiTypeOptional {
-    fn safe_ident(&self) -> std::string::String {
-        format!("opt_{}", self.inner.safe_ident())
-    }
-    fn rust_api_type(&self) -> std::string::String {
-        format!("Option<{}>", self.inner.rust_api_type())
-    }
-    fn rust_wire_type(&self) -> std::string::String {
-        self.inner.rust_wire_type()
-    }
-    fn dart_wire_type(&self) -> std::string::String {
-        if self.inner.rust_wire_is_pointer() {
-            self.inner.dart_wire_type()
-        } else {
-            format!("ffi.Pointer<{}>", self.inner.dart_wire_type())
-        }
-    }
-    fn dart_api_type(&self) -> std::string::String {
-        format!("{}?", self.inner.dart_api_type())
-    }
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }
