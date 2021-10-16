@@ -24,7 +24,9 @@ pub extern "C" fn wire_draw_mandelbrot(
         let api_zoom_point = zoom_point.wire2api();
         let api_scale = scale.wire2api();
         let api_num_threads = num_threads.wire2api();
-        move || draw_mandelbrot(api_image_size, api_zoom_point, api_scale, api_num_threads)
+        move |task_callback| {
+            draw_mandelbrot(api_image_size, api_zoom_point, api_scale, api_num_threads)
+        }
     });
 }
 
@@ -32,7 +34,7 @@ pub extern "C" fn wire_draw_mandelbrot(
 pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNode) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap("passing_complex_structs", port, move || {
         let api_root = root.wire2api();
-        move || passing_complex_structs(api_root)
+        move |task_callback| passing_complex_structs(api_root)
     });
 }
 
@@ -40,7 +42,7 @@ pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNo
 pub extern "C" fn wire_off_topic_memory_test_input_array(port: i64, input: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap("off_topic_memory_test_input_array", port, move || {
         let api_input = input.wire2api();
-        move || off_topic_memory_test_input_array(api_input)
+        move |task_callback| off_topic_memory_test_input_array(api_input)
     });
 }
 
@@ -51,7 +53,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, 
         port,
         move || {
             let api_len = len.wire2api();
-            move || off_topic_memory_test_output_zero_copy_buffer(api_len)
+            move |task_callback| off_topic_memory_test_output_zero_copy_buffer(api_len)
         },
     );
 }
@@ -60,7 +62,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, 
 pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap("off_topic_memory_test_output_vec_u8", port, move || {
         let api_len = len.wire2api();
-        move || off_topic_memory_test_output_vec_u8(api_len)
+        move |task_callback| off_topic_memory_test_output_vec_u8(api_len)
     });
 }
 
@@ -74,7 +76,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
         port,
         move || {
             let api_input = input.wire2api();
-            move || off_topic_memory_test_input_vec_of_object(api_input)
+            move |task_callback| off_topic_memory_test_input_vec_of_object(api_input)
         },
     );
 }
@@ -86,7 +88,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port: i64, len
         port,
         move || {
             let api_len = len.wire2api();
-            move || off_topic_memory_test_output_vec_of_object(api_len)
+            move |task_callback| off_topic_memory_test_output_vec_of_object(api_len)
         },
     );
 }
@@ -101,7 +103,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
         port,
         move || {
             let api_input = input.wire2api();
-            move || off_topic_memory_test_input_complex_struct(api_input)
+            move |task_callback| off_topic_memory_test_input_complex_struct(api_input)
         },
     );
 }
@@ -113,7 +115,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, le
         port,
         move || {
             let api_len = len.wire2api();
-            move || off_topic_memory_test_output_complex_struct(api_len)
+            move |task_callback| off_topic_memory_test_output_complex_struct(api_len)
         },
     );
 }
@@ -121,14 +123,14 @@ pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, le
 #[no_mangle]
 pub extern "C" fn wire_off_topic_deliberately_return_error(port: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap("off_topic_deliberately_return_error", port, move || {
-        move || off_topic_deliberately_return_error()
+        move |task_callback| off_topic_deliberately_return_error()
     });
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_deliberately_panic(port: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap("off_topic_deliberately_panic", port, move || {
-        move || off_topic_deliberately_panic()
+        move |task_callback| off_topic_deliberately_panic()
     });
 }
 
