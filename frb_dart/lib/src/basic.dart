@@ -32,7 +32,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   }
 
   @protected
-  Future<S> execute<S>(FlutterRustBridgeTask<S> task) {
+  Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
 
