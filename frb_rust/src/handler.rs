@@ -1,4 +1,4 @@
-use std::fmt::Debug;
+use std::any::Any;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
@@ -68,8 +68,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 let task = prepare();
                 self.executor.execute(debug_name, port, task);
             }) {
-                self.error_handler
-                    .handle_error(port, ErrorType::Panic, error);
+                self.error_handler.handle_error(port, Error::Panic(error));
             }
         });
     }
@@ -116,36 +115,37 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         rust2dart.success(result);
                     }
                     Err(error) => {
-                        eh2.handle_error(port, ErrorType::ResultError, error);
+                        eh2.handle_error(port, Error::ResultError(error));
                     }
                 };
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error(port, ErrorType::Panic, error);
+                eh.handle_error(port, Error::Panic(error));
             }
         });
     }
 }
 
-pub enum ErrorType {
-    ResultError,
-    Panic,
+#[derive(Debug)]
+pub enum Error {
+    ResultError(anyhow::Error),
+    Panic(Box<dyn Any + Send>),
 }
 
 pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
-    fn handle_error<E: Debug>(&self, port: i64, typ: ErrorType, error: E);
+    fn handle_error(&self, port: i64, error: Error);
 }
 
 #[derive(Clone, Copy)]
 pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
-    fn handle_error<E: Debug>(&self, port: i64, typ: ErrorType, error: E) {
-        let error_code = match typ {
-            ErrorType::ResultError => "RESULT_ERROR",
-            ErrorType::Panic => "PANIC_ERROR",
+    fn handle_error(&self, port: i64, error: Error) {
+        let (code, message) = match error {
+            Error::ResultError(e) => ("RESULT_ERROR", format!("{:?}", e)),
+            Error::Panic(e) => ("PANIC_ERROR", format!("{:?}", e)),
         };
-        Rust2Dart::new(port).error(error_code.to_string(), format!("{:?}", error));
+        Rust2Dart::new(port).error(code.to_string(), message);
     }
 }
