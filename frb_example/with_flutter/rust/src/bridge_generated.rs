@@ -1,5 +1,6 @@
 #![allow(
     non_camel_case_types,
+    unused,
     clippy::redundant_closure,
     clippy::useless_conversion
 )]

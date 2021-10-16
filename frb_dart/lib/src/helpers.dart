@@ -26,13 +26,21 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
   }
 
   @override
-  Future<S> execute<S>(
-      String debugName, void Function(int port) callFfi, S Function(dynamic) parseSuccessData, dynamic hint) async {
-    if (!_setupCompleter.isCompleted && hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
+  Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
+    await _beforeExecute(task);
+    return await super.executeNormal(task);
+  }
+
+  @override
+  Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
+    await _beforeExecute(task);
+    yield* super.executeStream(task);
+  }
+
+  Future<void> _beforeExecute<S>(FlutterRustBridgeTask<S> task) async {
+    if (!_setupCompleter.isCompleted && task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
       await _setupCompleter.future;
     }
-
-    return await super.execute(debugName, callFfi, parseSuccessData, hint);
   }
 
   @protected

@@ -63,7 +63,7 @@ impl Generator {
             .collect::<Vec<_>>();
 
         format!(
-            r#"#![allow(non_camel_case_types, clippy::redundant_closure, clippy::useless_conversion)]
+            r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion)]
         {}
 
         use crate::{}::*;

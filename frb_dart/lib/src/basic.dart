@@ -65,7 +65,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   static const _RUST2DART_ACTION_ERROR = 1; // ignore: constant_identifier_names
 }
 
-@internal
+@immutable
 class FlutterRustBridgeTask<S> {
   final String debugName;
   final void Function(int port) callFfi;
