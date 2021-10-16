@@ -54,6 +54,9 @@ impl<'a> Parser<'a> {
         let func_name = ident_to_string(&sig.ident);
 
         let mut inputs = Vec::new();
+        let mut output = None;
+        let mut mode = ApiFuncMode::Normal;
+
         for sig_input in &sig.inputs {
             if let FnArg::Typed(ref pat_type) = sig_input {
                 let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
@@ -61,32 +64,40 @@ impl<'a> Parser<'a> {
                 } else {
                     panic!("unexpected pat_type={:?}", pat_type)
                 };
+                let type_string = type_to_string(&pat_type.ty);
 
-                let ty = self.parse_type(&type_to_string(&pat_type.ty));
-                inputs.push(ApiField {
-                    name: ApiIdent::new(name),
-                    ty,
-                });
+                if let Some(stream_sink_inner_type) = self.try_parse_stream_sink(&type_string) {
+                    output = Some(stream_sink_inner_type);
+                    mode = ApiFuncMode::Stream;
+                } else {
+                    inputs.push(ApiField {
+                        name: ApiIdent::new(name),
+                        ty: self.parse_type(&type_string),
+                    });
+                }
             } else {
                 panic!("unexpected sig_input={:?}", sig_input);
             }
         }
 
-        let output = if let ReturnType::Type(_, ty) = &sig.output {
-            let type_string = type_to_string(ty);
-            if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
-                self.parse_type(&inner)
+        if output.is_none() {
+            output = Some(if let ReturnType::Type(_, ty) = &sig.output {
+                let type_string = type_to_string(ty);
+                if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
+                    self.parse_type(&inner)
+                } else {
+                    panic!("unsupported type_string: {}", type_string);
+                }
             } else {
-                panic!("unsupported type_string: {}", type_string);
-            }
-        } else {
-            panic!("unsupported output: {:?}", sig.output);
-        };
+                panic!("unsupported output: {:?}", sig.output);
+            });
+        }
 
         ApiFunc {
             name: func_name,
             inputs,
-            output,
+            output: output.expect("unsupported output"),
+            mode,
         }
     }
 
@@ -98,6 +109,14 @@ impl<'a> Parser<'a> {
             .or_else(|| self.try_parse_box(ty))
             .or_else(|| self.try_parse_struct(ty))
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
+    }
+
+    fn try_parse_stream_sink(&mut self, ty: &str) -> Option<ApiType> {
+        lazy_static! {
+            static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
+        }
+
+        CAPTURE_STREAM_SINK.captures(ty).map(self.parse_type)
     }
 
     fn try_parse_list(&mut self, ty: &str) -> Option<ApiType> {

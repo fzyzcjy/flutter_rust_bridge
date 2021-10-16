@@ -45,12 +45,18 @@ pub struct ApiFunc {
     pub name: String,
     pub inputs: Vec<ApiField>,
     pub output: ApiType,
+    pub mode: ApiFuncMode,
 }
 
 impl ApiFunc {
     pub fn wire_func_name(&self) -> String {
         format!("wire_{}", self.name)
     }
+}
+
+pub enum ApiFuncMode {
+    Normal,
+    Stream,
 }
 
 #[derive(Debug, Clone)]
