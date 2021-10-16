@@ -389,5 +389,5 @@ impl support::IntoDart for TreeNode {
 
 // Section: executor
 support::lazy_static! {
-    pub static ref FLUTTER_RUST_BRIDGE_EXECUTOR: support::DefaultExecutor = support::DefaultExecutor;
+    pub static ref FLUTTER_RUST_BRIDGE_EXECUTOR: support::SimpleExecutor = support::SimpleExecutor;
 }

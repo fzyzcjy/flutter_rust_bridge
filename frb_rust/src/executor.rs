@@ -18,22 +18,22 @@ pub trait Executor {
         TaskRet: IntoDart;
 }
 
-/// The default executor uses a simple thread pool to execute tasks.
-pub struct DefaultExecutor;
+/// The simple executor uses a simple thread pool to execute tasks.
+pub struct SimpleExecutor;
 
-impl DefaultExecutor {
+impl SimpleExecutor {
     pub fn new() -> Self {
-        DefaultExecutor {}
+        SimpleExecutor {}
     }
 }
 
-impl Default for DefaultExecutor {
+impl Default for SimpleExecutor {
     fn default() -> Self {
         Self::new()
     }
 }
 
-impl Executor for DefaultExecutor {
+impl Executor for SimpleExecutor {
     fn execute(&self, _debug_name: &str, port: i64, f: ExecutorTask) {
         const DEFAULT_WORKER_THREAD_POOL_NUM_WORKERS: usize = 4;
 

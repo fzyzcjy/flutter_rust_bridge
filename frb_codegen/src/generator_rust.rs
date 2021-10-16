@@ -122,7 +122,7 @@ impl Generator {
         } else {
             format!(
                 "support::lazy_static! {{
-                pub static ref {}: support::DefaultExecutor = support::DefaultExecutor;
+                pub static ref {}: support::SimpleExecutor = support::SimpleExecutor;
             }}
             ",
                 EXECUTOR_NAME
