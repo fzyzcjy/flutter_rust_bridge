@@ -4,6 +4,7 @@ pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::IntoDart;
 use allo_isolate::Isolate;
 
+#[derive(Copy, Clone)]
 pub struct Rust2Dart {
     isolate: Isolate,
 }
@@ -54,11 +55,12 @@ impl TaskCallback {
         Self { rust2dart }
     }
 
-    pub fn stream_sink<T>(&self) -> StreamSink<T> {
+    pub fn stream_sink<T: IntoDart>(&self) -> StreamSink<T> {
         StreamSink::new(self.rust2dart)
     }
 }
 
+#[derive(Clone)]
 pub struct StreamSink<T: IntoDart> {
     rust2dart: Rust2Dart,
     _phantom_data: PhantomData<T>,
@@ -72,7 +74,7 @@ impl<T: IntoDart> StreamSink<T> {
         }
     }
 
-    pub fn add(&self, value: T) {
+    pub fn add(&self, value: T) -> bool {
         self.rust2dart.success(value)
     }
 }

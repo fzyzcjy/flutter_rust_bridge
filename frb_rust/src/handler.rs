@@ -8,7 +8,7 @@ use lazy_static::lazy_static;
 use parking_lot::Mutex;
 use threadpool::ThreadPool;
 
-use crate::rust2dart::Rust2Dart;
+use crate::rust2dart::{Rust2Dart, TaskCallback};
 
 /// Provide your own handler to customize how to execute your function calls, etc
 pub trait Handler {
@@ -17,7 +17,7 @@ pub trait Handler {
     fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
 }
 
@@ -52,7 +52,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
     {
         // NOTE This [catch_unwind] **SHOULD** be put outside **ALL** code!
@@ -77,7 +77,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 pub trait Executor: RefUnwindSafe {
     fn execute<TaskFn, TaskRet>(&self, debug_name: &str, port: i64, task: TaskFn)
     where
-        TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
 }
 
@@ -94,7 +94,7 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
     fn execute<TaskFn, TaskRet>(&self, _debug_name: &str, port: i64, task: TaskFn)
     where
-        TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
     {
         const NUM_WORKERS: usize = 4;
@@ -108,7 +108,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
             let thread_result = panic::catch_unwind(move || {
                 let rust2dart = Rust2Dart::new(port);
 
-                let ret = task().map(|ret| ret.into_dart());
+                let ret = task(TaskCallback::new(rust2dart)).map(|ret| ret.into_dart());
 
                 match ret {
                     Ok(result) => {

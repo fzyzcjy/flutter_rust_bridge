@@ -5,7 +5,7 @@ use std::time::Duration;
 
 use anyhow::{anyhow, Result};
 
-use flutter_rust_bridge::{Callback, StreamSink, ZeroCopyBuffer};
+use flutter_rust_bridge::{StreamSink, ZeroCopyBuffer};
 
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
     Ok(a + b)
@@ -81,10 +81,11 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
     println!("handle_stream arg={}", arg);
 
     // just to show that, you can send data to sink even in other threads
-    thread::spawn(|| {
+    let sink2 = sink.clone();
+    thread::spawn(move || {
         for i in 0..5 {
             println!("send data to sink in child thread i={}", i);
-            sink.add(format!("child_thread_{}", i));
+            sink2.add(format!("child_thread_{}", i));
             thread::sleep(Duration::from_millis(10));
         }
     });
