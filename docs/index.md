@@ -184,11 +184,9 @@ This library is nothing but a code generator that helps your Flutter/Dart functi
 
 ## Advanced
 
-### Using your own executor
+### Customize handler's behavior
 
-By default, the `DefaultExecutor` is used. When Dart calls Rust, the `DefaultExecutor` use a simple thread pool  to execute the real Rust functions. By doing this, Rust function that needs to run for a long time (more than a few frames) will never make the UI stuck.
-
-However, you can implement your own `Executor` doing whatever you want. In order to do this, implement the `Executor` trait, and create a variable named `FLUTTER_RUST_BRIDGE_EXECUTOR` in the Rust input file (probably using `lazy_static`).
+By default, the `DefaultHandler` is used. You can implement your own `Handler` doing whatever you want. In order to do this, create a variable named `FLUTTER_RUST_BRIDGE_HANDLER` in the Rust input file (probably using `lazy_static`). You may not need to create a brand new struct implementing `Handler`, but instead, use the `SimpleHandler` and customize its generic arguments such as its `Executor`.
 
 ### Setup/init FFI call
 
