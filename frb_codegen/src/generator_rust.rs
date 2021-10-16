@@ -2,7 +2,7 @@ use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::others::*;
 
-pub const EXECUTOR_NAME: &str = "FLUTTER_RUST_BRIDGE_EXECUTOR";
+pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
 pub struct Output {
     pub code: String,
@@ -122,10 +122,10 @@ impl Generator {
         } else {
             format!(
                 "support::lazy_static! {{
-                pub static ref {}: support::SimpleExecutor = support::SimpleExecutor;
+                pub static ref {}: support::SimpleHandler = support::SimpleHandler;
             }}
             ",
-                EXECUTOR_NAME
+                HANDLER_NAME
             )
         }
     }
@@ -162,7 +162,7 @@ impl Generator {
                     move || {}({})
                 }});
                 ",
-                EXECUTOR_NAME,
+                HANDLER_NAME,
                 func.name,
                 func.inputs
                     .iter()

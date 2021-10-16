@@ -10,7 +10,7 @@ use syn::*;
 use ApiType::*;
 
 use crate::api_types::*;
-use crate::generator_rust::EXECUTOR_NAME;
+use crate::generator_rust::HANDLER_NAME;
 
 type StructMap<'a> = HashMap<String, &'a ItemStruct>;
 
@@ -34,7 +34,7 @@ impl<'a> Parser<'a> {
     fn parse(mut self, source_rust_content: &str, src_fns: Vec<&ItemFn>) -> ApiFile {
         let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
 
-        let has_executor = source_rust_content.contains(EXECUTOR_NAME);
+        let has_executor = source_rust_content.contains(HANDLER_NAME);
 
         ApiFile {
             funcs,

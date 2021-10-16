@@ -19,7 +19,7 @@ pub extern "C" fn wire_draw_mandelbrot(
     scale: f64,
     num_threads: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("draw_mandelbrot", port, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap("draw_mandelbrot", port, move || {
         let api_image_size = image_size.wire2api();
         let api_zoom_point = zoom_point.wire2api();
         let api_scale = scale.wire2api();
@@ -30,7 +30,7 @@ pub extern "C" fn wire_draw_mandelbrot(
 
 #[no_mangle]
 pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNode) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("passing_complex_structs", port, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap("passing_complex_structs", port, move || {
         let api_root = root.wire2api();
         move || passing_complex_structs(api_root)
     });
@@ -38,7 +38,7 @@ pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNo
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_input_array(port: i64, input: *mut wire_uint_8_list) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("off_topic_memory_test_input_array", port, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap("off_topic_memory_test_input_array", port, move || {
         let api_input = input.wire2api();
         move || off_topic_memory_test_input_array(api_input)
     });
@@ -46,7 +46,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_array(port: i64, input: *mut 
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, len: i32) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         "off_topic_memory_test_output_zero_copy_buffer",
         port,
         move || {
@@ -58,7 +58,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, 
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port: i64, len: i32) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("off_topic_memory_test_output_vec_u8", port, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap("off_topic_memory_test_output_vec_u8", port, move || {
         let api_len = len.wire2api();
         move || off_topic_memory_test_output_vec_u8(api_len)
     });
@@ -69,7 +69,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
     port: i64,
     input: *mut wire_list_size,
 ) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         "off_topic_memory_test_input_vec_of_object",
         port,
         move || {
@@ -81,7 +81,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port: i64, len: i32) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         "off_topic_memory_test_output_vec_of_object",
         port,
         move || {
@@ -96,7 +96,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
     port: i64,
     input: *mut wire_TreeNode,
 ) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         "off_topic_memory_test_input_complex_struct",
         port,
         move || {
@@ -108,7 +108,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, len: i32) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         "off_topic_memory_test_output_complex_struct",
         port,
         move || {
@@ -120,14 +120,14 @@ pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, le
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_deliberately_return_error(port: i64) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("off_topic_deliberately_return_error", port, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap("off_topic_deliberately_return_error", port, move || {
         move || off_topic_deliberately_return_error()
     });
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_deliberately_panic(port: i64) {
-    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("off_topic_deliberately_panic", port, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap("off_topic_deliberately_panic", port, move || {
         move || off_topic_deliberately_panic()
     });
 }
@@ -389,5 +389,5 @@ impl support::IntoDart for TreeNode {
 
 // Section: executor
 support::lazy_static! {
-    pub static ref FLUTTER_RUST_BRIDGE_EXECUTOR: support::SimpleExecutor = support::SimpleExecutor;
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::SimpleHandler = support::SimpleHandler;
 }

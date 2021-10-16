@@ -9,8 +9,8 @@ use threadpool::ThreadPool;
 use crate::rust2dart::Rust2Dart;
 use crate::support::DartCObject;
 
-/// Provide your own executor to customize how to execute your function calls
-pub trait Executor {
+/// Provide your own handler to customize how to execute your function calls, etc
+pub trait Handler {
     fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn,
@@ -18,22 +18,22 @@ pub trait Executor {
         TaskRet: IntoDart;
 }
 
-/// The simple executor uses a simple thread pool to execute tasks.
-pub struct SimpleExecutor;
+/// The simple handler uses a simple thread pool to execute tasks.
+pub struct SimpleHandler;
 
-impl SimpleExecutor {
+impl SimpleHandler {
     pub fn new() -> Self {
-        SimpleExecutor {}
+        SimpleHandler {}
     }
 }
 
-impl Default for SimpleExecutor {
+impl Default for SimpleHandler {
     fn default() -> Self {
         Self::new()
     }
 }
 
-impl Executor for SimpleExecutor {
+impl Executor for SimpleHandler {
     fn execute(&self, _debug_name: &str, port: i64, f: ExecutorTask) {
         const DEFAULT_WORKER_THREAD_POOL_NUM_WORKERS: usize = 4;
 
