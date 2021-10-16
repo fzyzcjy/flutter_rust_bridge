@@ -147,6 +147,18 @@ impl Generator {
         ]
         .concat();
 
+        let inner_func_params = [
+            match func.mode {
+                ApiFuncMode::Normal => vec![],
+                ApiFuncMode::Stream => vec!["task_callback.stream_sink".to_string()],
+            },
+            func.inputs
+                .iter()
+                .map(|field| format!("api_{}", field.name.rust_style()))
+                .collect::<Vec<_>>(),
+        ]
+        .concat();
+
         // println!("generate_wire_func: {}", func.name);
         self.extern_func_collector.generate(
             &func.wire_func_name(),
@@ -159,7 +171,7 @@ impl Generator {
                 "
                 {}.wrap(\"{}\", port, move || {{
                     {}
-                    move || {}({})
+                    move |task_callback| {}({})
                 }});
                 ",
                 HANDLER_NAME,
@@ -174,11 +186,7 @@ impl Generator {
                     .collect::<Vec<_>>()
                     .join(""),
                 func.name,
-                func.inputs
-                    .iter()
-                    .map(|field| format!("api_{}", field.name.rust_style()))
-                    .collect::<Vec<_>>()
-                    .join(", "),
+                inner_func_params.join(", "),
             ),
         )
     }
