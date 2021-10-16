@@ -10,11 +10,24 @@ use threadpool::ThreadPool;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
 
+#[derive(Copy, Clone)]
+pub enum FfiCallMode {
+    Normal,
+    Stream,
+}
+
+#[derive(Clone)]
+pub struct WrapInfo {
+    pub debug_name: &'static str,
+    pub port: i64,
+    pub mode: FfiCallMode,
+}
+
 /// Provide your own handler to customize how to execute your function calls, etc
 pub trait Handler {
     // Why separate [PrepareFn] and [TaskFn]: because some things cannot be [Send] (e.g. raw
     // pointers), so those can be done in [PrepareFn], while the real work is done in [TaskFn] with [Send].
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
@@ -49,7 +62,7 @@ impl Default for DefaultHandler {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
@@ -64,18 +77,20 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         // as well. Then that new panic will go across language boundry and cause UB.
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
         let _ = panic::catch_unwind(move || {
+            let wrap_info2 = wrap_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
-                self.executor.execute(debug_name, port, task);
+                self.executor.execute(wrap_info2, task);
             }) {
-                self.error_handler.handle_error(port, Error::Panic(error));
+                self.error_handler
+                    .handle_error(wrap_info.port, Error::Panic(error));
             }
         });
     }
 }
 
 pub trait Executor: RefUnwindSafe {
-    fn execute<TaskFn, TaskRet>(&self, debug_name: &str, port: i64, task: TaskFn)
+    fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
@@ -92,7 +107,7 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
-    fn execute<TaskFn, TaskRet>(&self, _debug_name: &str, port: i64, task: TaskFn)
+    fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
@@ -105,8 +120,9 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
         THREAD_POOL.lock().execute(move || {
+            let wrap_info2 = wrap_info.clone();
             let thread_result = panic::catch_unwind(move || {
-                let rust2dart = Rust2Dart::new(port);
+                let rust2dart = Rust2Dart::new(wrap_info2.port);
 
                 let ret = task(TaskCallback::new(rust2dart)).map(|ret| ret.into_dart());
 
@@ -115,13 +131,13 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         rust2dart.success(result);
                     }
                     Err(error) => {
-                        eh2.handle_error(port, Error::ResultError(error));
+                        eh2.handle_error(wrap_info2.port, Error::ResultError(error));
                     }
                 };
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error(port, Error::Panic(error));
+                eh.handle_error(wrap_info.port, Error::Panic(error));
             }
         });
     }

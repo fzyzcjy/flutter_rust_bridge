@@ -67,6 +67,13 @@ impl ApiFuncMode {
             Self::Stream => "Stream",
         }
     }
+
+    pub fn ffi_call_mode(&self) -> &'static str {
+        match self {
+            Self::Normal => "Normal",
+            Self::Stream => "Stream",
+        }
+    }
 }
 
 #[derive(Debug, Clone)]

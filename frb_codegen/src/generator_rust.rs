@@ -169,13 +169,14 @@ impl Generator {
             None,
             &format!(
                 "
-                {}.wrap(\"{}\", port, move || {{
+                {}.wrap(WrapInfo{{ debug_name: \"{}\", port, mode: FfiCallMode::{} }}, move || {{
                     {}
                     move |task_callback| {}({})
                 }});
                 ",
                 HANDLER_NAME,
                 func.name,
+                func.mode.ffi_call_mode(),
                 func.inputs
                     .iter()
                     .map(|field| format!(
