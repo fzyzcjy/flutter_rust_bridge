@@ -14,6 +14,8 @@ import selectors
 import subprocess
 import sys
 
+print('valgrind_util.py start')
+
 VALGRIND_ARGUMENTS = [
     'valgrind',
     '--error-exitcode=1',
