@@ -88,6 +88,17 @@ void main(List<String> args) async {
     expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
     expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
 
+    print('dart call handle_stream');
+    {
+      final stream = api.handleStream(arg: 'hello');
+      var cnt = 0;
+      await for (final value in stream) {
+        print("output from handle_stream's stream: $value");
+        cnt++;
+      }
+      expect(cnt, 10);
+    }
+
     print('dart call returnErr');
     try {
       await api.returnErr();

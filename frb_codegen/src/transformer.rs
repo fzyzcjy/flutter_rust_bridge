@@ -15,7 +15,8 @@ pub fn transform(src: ApiFile) -> ApiFile {
                 .into_iter()
                 .map(transform_func_input_add_boxed)
                 .collect(),
-            ..src_func
+            output: src_func.output,
+            mode: src_func.mode,
         })
         .collect();
 

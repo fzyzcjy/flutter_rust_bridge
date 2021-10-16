@@ -1,5 +1,6 @@
 #![allow(
     non_camel_case_types,
+    unused,
     clippy::redundant_closure,
     clippy::useless_conversion
 )]
@@ -13,13 +14,17 @@ use flutter_rust_bridge::*;
 
 #[no_mangle]
 pub extern "C" fn wire_simple_adder(port: i64, a: i32, b: i32) {
-    let api_a = a.wire2api();
-    let api_b = b.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "simple_adder",
-        port,
-        move || simple_adder(api_a, api_b),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "simple_adder",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| simple_adder(api_a, api_b)
+        },
     );
 }
 
@@ -31,113 +36,164 @@ pub extern "C" fn wire_primitive_types(
     my_f64: f64,
     my_bool: bool,
 ) {
-    let api_my_i32 = my_i32.wire2api();
-    let api_my_i64 = my_i64.wire2api();
-    let api_my_f64 = my_f64.wire2api();
-    let api_my_bool = my_bool.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "primitive_types",
-        port,
-        move || primitive_types(api_my_i32, api_my_i64, api_my_f64, api_my_bool),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "primitive_types",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_i32 = my_i32.wire2api();
+            let api_my_i64 = my_i64.wire2api();
+            let api_my_f64 = my_f64.wire2api();
+            let api_my_bool = my_bool.wire2api();
+            move |task_callback| primitive_types(api_my_i32, api_my_i64, api_my_f64, api_my_bool)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_string(port: i64, s: *mut wire_uint_8_list) {
-    let api_s = s.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_string",
-        port,
-        move || handle_string(api_s),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_string",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.wire2api();
+            move |task_callback| handle_string(api_s)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
-    let api_v = v.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_vec_u8",
-        port,
-        move || handle_vec_u8(api_v),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_vec_u8",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_v = v.wire2api();
+            move |task_callback| handle_vec_u8(api_v)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_zero_copy_result(port: i64, n: i32) {
-    let api_n = n.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_zero_copy_result",
-        port,
-        move || handle_zero_copy_result(api_n),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_zero_copy_result",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_n = n.wire2api();
+            move |task_callback| handle_zero_copy_result(api_n)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_struct(port: i64, arg: *mut wire_MySize, boxed: *mut wire_MySize) {
-    let api_arg = arg.wire2api();
-    let api_boxed = boxed.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_struct",
-        port,
-        move || handle_struct(api_arg, api_boxed),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_struct",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            let api_boxed = boxed.wire2api();
+            move |task_callback| handle_struct(api_arg, api_boxed)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_newtype(port: i64, arg: *mut wire_NewTypeInt) {
-    let api_arg = arg.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_newtype",
-        port,
-        move || handle_newtype(api_arg),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_newtype",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| handle_newtype(api_arg)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_list_of_struct(port: i64, l: *mut wire_list_my_size) {
-    let api_l = l.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_list_of_struct",
-        port,
-        move || handle_list_of_struct(api_l),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_list_of_struct",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_l = l.wire2api();
+            move |task_callback| handle_list_of_struct(api_l)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_complex_struct(port: i64, s: *mut wire_MyTreeNode) {
-    let api_s = s.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_complex_struct",
-        port,
-        move || handle_complex_struct(api_s),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_complex_struct",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.wire2api();
+            move |task_callback| handle_complex_struct(api_s)
+        },
+    );
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream(port: i64, arg: *mut wire_uint_8_list) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_stream",
+            port,
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| handle_stream(task_callback.stream_sink(), api_arg)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_err(port: i64) {
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "return_err",
-        port,
-        move || return_err(),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_err",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| return_err(),
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_panic(port: i64) {
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "return_panic",
-        port,
-        move || return_panic(),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_panic",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| return_panic(),
     );
 }
 
@@ -1029,5 +1085,5 @@ impl support::IntoDart for ExoticOptionals {
 
 // Section: executor
 support::lazy_static! {
-    pub static ref FLUTTER_RUST_BRIDGE_EXECUTOR: support::DefaultExecutor = support::DefaultExecutor;
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }

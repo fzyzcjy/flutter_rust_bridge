@@ -33,6 +33,8 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
 
+  Stream<String> handleStream({required String arg, dynamic hint});
+
   Future<int> returnErr({dynamic hint});
 
   Future<int> returnPanic({dynamic hint});
@@ -138,60 +140,87 @@ class ExoticOptionals {
 class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super.raw(inner);
 
-  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => execute(
-      'simple_adder', (port) => inner.wire_simple_adder(port, _api2wire_i32(a), _api2wire_i32(b)), _wire2api_i32, hint);
+  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'simple_adder',
+      callFfi: (port) => inner.wire_simple_adder(port, _api2wire_i32(a), _api2wire_i32(b)),
+      parseSuccessData: _wire2api_i32,
+      hint: hint));
 
   Future<int> primitiveTypes(
           {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
-      execute(
-          'primitive_types',
-          (port) => inner.wire_primitive_types(
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'primitive_types',
+          callFfi: (port) => inner.wire_primitive_types(
               port, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), _api2wire_bool(myBool)),
-          _wire2api_i32,
-          hint);
+          parseSuccessData: _wire2api_i32,
+          hint: hint));
 
-  Future<String> handleString({required String s, dynamic hint}) =>
-      execute('handle_string', (port) => inner.wire_handle_string(port, _api2wire_String(s)), _wire2api_String, hint);
+  Future<String> handleString({required String s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'handle_string',
+      callFfi: (port) => inner.wire_handle_string(port, _api2wire_String(s)),
+      parseSuccessData: _wire2api_String,
+      hint: hint));
 
-  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) => execute(
-      'handle_vec_u8', (port) => inner.wire_handle_vec_u8(port, _api2wire_uint_8_list(v)), _wire2api_uint_8_list, hint);
+  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'handle_vec_u8',
+      callFfi: (port) => inner.wire_handle_vec_u8(port, _api2wire_uint_8_list(v)),
+      parseSuccessData: _wire2api_uint_8_list,
+      hint: hint));
 
-  Future<Uint8List> handleZeroCopyResult({required int n, dynamic hint}) => execute('handle_zero_copy_result',
-      (port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)), _wire2api_ZeroCopyBuffer_Uint8List, hint);
+  Future<Uint8List> handleZeroCopyResult({required int n, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'handle_zero_copy_result',
+      callFfi: (port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
+      hint: hint));
 
-  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint}) => execute(
-      'handle_struct',
-      (port) => inner.wire_handle_struct(port, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
-      _wire2api_my_size,
-      hint);
+  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'handle_struct',
+          callFfi: (port) =>
+              inner.wire_handle_struct(port, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
+          parseSuccessData: _wire2api_my_size,
+          hint: hint));
 
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) => execute('handle_newtype',
-      (port) => inner.wire_handle_newtype(port, _api2wire_box_autoadd_new_type_int(arg)), _wire2api_new_type_int, hint);
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'handle_newtype',
+      callFfi: (port) => inner.wire_handle_newtype(port, _api2wire_box_autoadd_new_type_int(arg)),
+      parseSuccessData: _wire2api_new_type_int,
+      hint: hint));
 
-  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint}) => execute('handle_list_of_struct',
-      (port) => inner.wire_handle_list_of_struct(port, _api2wire_list_my_size(l)), _wire2api_list_my_size, hint);
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'handle_list_of_struct',
+          callFfi: (port) => inner.wire_handle_list_of_struct(port, _api2wire_list_my_size(l)),
+          parseSuccessData: _wire2api_list_my_size,
+          hint: hint));
 
-  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) => execute(
-      'handle_complex_struct',
-      (port) => inner.wire_handle_complex_struct(port, _api2wire_box_autoadd_my_tree_node(s)),
-      _wire2api_my_tree_node,
-      hint);
+  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'handle_complex_struct',
+      callFfi: (port) => inner.wire_handle_complex_struct(port, _api2wire_box_autoadd_my_tree_node(s)),
+      parseSuccessData: _wire2api_my_tree_node,
+      hint: hint));
 
-  Future<int> returnErr({dynamic hint}) => execute(
-      'return_err',
-      (port) => inner.wire_return_err(
+  Stream<String> handleStream({required String arg, dynamic hint}) => executeStream(FlutterRustBridgeTask(
+      debugName: 'handle_stream',
+      callFfi: (port) => inner.wire_handle_stream(port, _api2wire_String(arg)),
+      parseSuccessData: _wire2api_String,
+      hint: hint));
+
+  Future<int> returnErr({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'return_err',
+      callFfi: (port) => inner.wire_return_err(
             port,
           ),
-      _wire2api_i32,
-      hint);
+      parseSuccessData: _wire2api_i32,
+      hint: hint));
 
-  Future<int> returnPanic({dynamic hint}) => execute(
-      'return_panic',
-      (port) => inner.wire_return_panic(
+  Future<int> returnPanic({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'return_panic',
+      callFfi: (port) => inner.wire_return_panic(
             port,
           ),
-      _wire2api_i32,
-      hint);
+      parseSuccessData: _wire2api_i32,
+      hint: hint));
 
   Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint}) => execute(
       'handle_optional_return',
@@ -906,6 +935,21 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           'wire_handle_complex_struct');
   late final _wire_handle_complex_struct =
       _wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyTreeNode>)>();
+
+  void wire_handle_stream(
+    int port,
+    ffi.Pointer<wire_uint_8_list> arg,
+  ) {
+    return _wire_handle_stream(
+      port,
+      arg,
+    );
+  }
+
+  late final _wire_handle_streamPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_stream');
+  late final _wire_handle_stream =
+      _wire_handle_streamPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_return_err(
     int port,

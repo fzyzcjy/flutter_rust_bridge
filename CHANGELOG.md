@@ -1,8 +1,12 @@
 ## 1.2.0
 
 * Enable `Option<T>` types to be transformed
+* Support `Stream`s: call function once, "return" multiple times with different data.
 * Add FlutterRustBridgeSetupMixin (an optional helper class), which allows custom setup hooks before ffi can be executed.
 * Add `hint` parameter in generated Dart code, allowing users to pass custom data to the Dart executor, thus increasing flexibility.
+* Improve panic handling in extreme cases (avoid panic across languages, which is undefined behavior).
+* Refactored `Handler`, now it is much easier to customize your own handler functionality.
+* Remove one `Box::new(FnOnce)`, thus enables better inlining for ffi function calls.
 
 ## 1.1.0
 
