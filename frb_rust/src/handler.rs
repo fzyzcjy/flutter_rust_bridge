@@ -36,7 +36,10 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
     }
 }
 
-impl Default for SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler> {
+pub type DefaultHandler =
+    SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
+
+impl Default for DefaultHandler {
     fn default() -> Self {
         Self::new(
             ThreadPoolExecutor::new(ReportDartErrorHandler),

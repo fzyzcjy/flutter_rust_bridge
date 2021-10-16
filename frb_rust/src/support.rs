@@ -7,7 +7,7 @@ pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::IntoDart;
 pub use lazy_static::lazy_static;
 
-pub use crate::handler::SimpleHandler;
+pub use crate::handler::DefaultHandler;
 
 // ref https://stackoverflow.com/questions/39224904/how-to-expose-a-rust-vect-to-ffi
 pub fn new_leak_vec_ptr<T: Clone>(fill: T, length: i32) -> *mut T {

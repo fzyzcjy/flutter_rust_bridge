@@ -388,5 +388,5 @@ impl support::IntoDart for MyTreeNode {
 
 // Section: executor
 support::lazy_static! {
-    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::SimpleHandler = support::SimpleHandler;
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }

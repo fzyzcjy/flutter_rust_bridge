@@ -122,7 +122,7 @@ impl Generator {
         } else {
             format!(
                 "support::lazy_static! {{
-                pub static ref {}: support::SimpleHandler = support::SimpleHandler;
+                pub static ref {}: support::DefaultHandler = Default::default();
             }}
             ",
                 HANDLER_NAME
