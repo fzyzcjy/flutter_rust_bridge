@@ -1,7 +1,4 @@
 # flutter_rust_bridge: High-level memory-safe binding generator for Flutter/Dart <-> Rust
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7)](https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&utm_medium=referral&utm_content=fzyzcjy/flutter_rust_bridge&utm_campaign=Badge_Grade_Settings)
 [![Documentation](https://docs.rs/flutter_rust_bridge/badge.svg)](https://docs.rs/flutter_rust_bridge)
@@ -10,6 +7,10 @@
 [![Test](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/test.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/test.yaml)
 [![Codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/codegen.yml)
 [![Linters](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml)
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![Logo](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/docs/logo.png)
 
