@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Desdaemon",
+      "name": "Viet Dinh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36768030?v=4",
+      "profile": "https://github.com/Desdaemon",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "flutter_rust_bridge",
+  "projectOwner": "fzyzcjy",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
