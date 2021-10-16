@@ -114,6 +114,10 @@ Modify `Cargo.toml` to change `cdylib` to `staticlib`. (Again, this is baremetal
 
 Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`. (Similarly, [this tutorial](https://stackoverflow.com/q/69515032/4619958) can automate the process.)
 
+#### If desktop (Windows/Linux/MacOS)
+
+Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully. This example itself currently does not make the setup yet, but it should be trivial to do so. More details can be seen [in the issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
+
 ### (Optional) See more types that this library can generate
 
 Have a look at the function arguments and return types in this file: [api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs). With this library, we have a generated API that resides at [generated_api.dart](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/dart/lib/generated_api.dart) (of course, that is auto generated, and you can use it in other Dart code).
@@ -184,11 +188,9 @@ This library is nothing but a code generator that helps your Flutter/Dart functi
 
 ## Advanced
 
-### Using your own executor
+### Customize handler's behavior
 
-By default, the `DefaultExecutor` is used. When Dart calls Rust, the `DefaultExecutor` use a simple thread pool  to execute the real Rust functions. By doing this, Rust function that needs to run for a long time (more than a few frames) will never make the UI stuck.
-
-However, you can implement your own `Executor` doing whatever you want. In order to do this, implement the `Executor` trait, and create a variable named `FLUTTER_RUST_BRIDGE_EXECUTOR` in the Rust input file (probably using `lazy_static`).
+By default, the `DefaultHandler` is used. You can implement your own `Handler` doing whatever you want. In order to do this, create a variable named `FLUTTER_RUST_BRIDGE_HANDLER` in the Rust input file (probably using `lazy_static`). You may not need to create a brand new struct implementing `Handler`, but instead, use the `SimpleHandler` and customize its generic arguments such as its `Executor`.
 
 ### Setup/init FFI call
 

@@ -45,11 +45,34 @@ pub struct ApiFunc {
     pub name: String,
     pub inputs: Vec<ApiField>,
     pub output: ApiType,
+    pub mode: ApiFuncMode,
 }
 
 impl ApiFunc {
     pub fn wire_func_name(&self) -> String {
         format!("wire_{}", self.name)
+    }
+}
+
+#[derive(Debug, Clone)]
+pub enum ApiFuncMode {
+    Normal,
+    Stream,
+}
+
+impl ApiFuncMode {
+    pub fn dart_return_type(&self) -> &'static str {
+        match self {
+            Self::Normal => "Future",
+            Self::Stream => "Stream",
+        }
+    }
+
+    pub fn ffi_call_mode(&self) -> &'static str {
+        match self {
+            Self::Normal => "Normal",
+            Self::Stream => "Stream",
+        }
     }
 }
 

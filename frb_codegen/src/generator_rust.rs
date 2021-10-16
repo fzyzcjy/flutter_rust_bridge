@@ -2,7 +2,7 @@ use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::others::*;
 
-pub const EXECUTOR_NAME: &str = "FLUTTER_RUST_BRIDGE_EXECUTOR";
+pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
 pub struct Output {
     pub code: String,
@@ -63,7 +63,7 @@ impl Generator {
             .collect::<Vec<_>>();
 
         format!(
-            r#"#![allow(non_camel_case_types, clippy::redundant_closure, clippy::useless_conversion)]
+            r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion)]
         {}
 
         use crate::{}::*;
@@ -122,10 +122,10 @@ impl Generator {
         } else {
             format!(
                 "support::lazy_static! {{
-                pub static ref {}: support::DefaultExecutor = support::DefaultExecutor;
+                pub static ref {}: support::DefaultHandler = Default::default();
             }}
             ",
-                EXECUTOR_NAME
+                HANDLER_NAME
             )
         }
     }
@@ -147,6 +147,18 @@ impl Generator {
         ]
         .concat();
 
+        let inner_func_params = [
+            match func.mode {
+                ApiFuncMode::Normal => vec![],
+                ApiFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
+            },
+            func.inputs
+                .iter()
+                .map(|field| format!("api_{}", field.name.rust_style()))
+                .collect::<Vec<_>>(),
+        ]
+        .concat();
+
         // println!("generate_wire_func: {}", func.name);
         self.extern_func_collector.generate(
             &func.wire_func_name(),
@@ -157,9 +169,14 @@ impl Generator {
             None,
             &format!(
                 "
-                {}
-                support::wrap_wire_func(&*{}, \"{}\", port, move || {}({}));
+                {}.wrap(WrapInfo{{ debug_name: \"{}\", port, mode: FfiCallMode::{} }}, move || {{
+                    {}
+                    move |task_callback| {}({})
+                }});
                 ",
+                HANDLER_NAME,
+                func.name,
+                func.mode.ffi_call_mode(),
                 func.inputs
                     .iter()
                     .map(|field| format!(
@@ -169,14 +186,8 @@ impl Generator {
                     ))
                     .collect::<Vec<_>>()
                     .join(""),
-                EXECUTOR_NAME,
                 func.name,
-                func.name,
-                func.inputs
-                    .iter()
-                    .map(|field| format!("api_{}", field.name.rust_style()))
-                    .collect::<Vec<_>>()
-                    .join(", "),
+                inner_func_params.join(", "),
             ),
         )
     }
