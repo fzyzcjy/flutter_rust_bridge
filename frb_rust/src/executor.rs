@@ -20,27 +20,27 @@ pub trait Handler {
         TaskRet: IntoDart;
 }
 
-pub trait Executor {
-    fn execute<TaskFn, TaskRet>(&self, task: TaskFn)
-    where
-        TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart;
-}
-
 /// The simple handler uses a simple thread pool to execute tasks.
-pub struct SimpleHandler<E: Executor> {
-    pub executor: E,
+pub struct SimpleHandler<E: Executor, H: ErrorHandler> {
+    executor: E,
+    error_handler: H,
 }
 
-impl<E: Executor> SimpleHandler<E> {
-    pub fn new(executor: E) -> Self {
-        SimpleHandler { executor }
+impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
+    pub fn new(executor: E, error_handler: H) -> Self {
+        SimpleHandler {
+            executor,
+            error_handler,
+        }
     }
 }
 
-impl Default for SimpleHandler {
+impl Default for SimpleHandler<ThreadPoolExecutor, ReportDartErrorHandler> {
     fn default() -> Self {
-        Self::new(ThreadPoolExecutor::new(4))
+        Self::new(
+            ThreadPoolExecutor::new(4, ReportDartErrorHandler),
+            ReportDartErrorHandler,
+        )
     }
 }
 
@@ -60,30 +60,40 @@ impl<E: Executor> Handler for SimpleHandler<E> {
         // as well. Then that new panic will go across language boundry and cause UB.
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
         panic::catch_unwind(move || {
-            if let Err(err) = panic::catch_unwind(move || {
+            if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
                 self.executor.execute(task);
             }) {
-                Rust2Dart::new(port).error("PANIC_ERROR".to_string(), format!("{:?}", err));
+                self.error_handler
+                    .handle_error(port, ErrorType::Panic, error);
             }
         });
     }
 }
 
-pub struct ThreadPoolExecutor {
-    thread_pool: Mutex<ThreadPool>,
+pub trait Executor {
+    fn execute<TaskFn, TaskRet>(&self, port: i64, task: TaskFn)
+    where
+        TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskRet: IntoDart;
 }
 
-impl ThreadPoolExecutor {
-    pub fn new(num_threads: usize) -> Self {
+pub struct ThreadPoolExecutor<'a> {
+    thread_pool: Mutex<ThreadPool>,
+    error_handler: &'a ErrorHandler,
+}
+
+impl<'a> ThreadPoolExecutor<'a> {
+    pub fn new(num_threads: usize, error_handler: &'a ErrorHandler) -> Self {
         ThreadPoolExecutor {
             thread_pool: Mutex::new(ThreadPool::new(num_threads)),
+            error_handler,
         }
     }
 }
 
-impl Executor for ThreadPoolExecutor {
-    fn execute<TaskFn, TaskRet>(&self, task: TaskFn)
+impl<'a> Executor for ThreadPoolExecutor<'a> {
+    fn execute<TaskFn, TaskRet>(&self, port: i64, task: TaskFn)
     where
         TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
@@ -97,14 +107,37 @@ impl Executor for ThreadPoolExecutor {
                 match ret {
                     Ok(result) => rust2dart.success(result),
                     Err(error) => {
-                        rust2dart.error("GENERAL_ERROR".to_string(), format!("{:?}", error))
+                        self.error_handler
+                            .handle_error(port, ErrorType::ResultError, error);
                     }
                 };
             });
 
-            if let Err(err) = thread_result {
-                Rust2Dart::new(port).error("PANIC_ERROR".to_string(), format!("{:?}", err));
+            if let Err(error) = thread_result {
+                self.error_handler
+                    .handle_error(port, ErrorType::Panic, error);
             }
         });
+    }
+}
+
+pub enum ErrorType {
+    ResultError,
+    Panic,
+}
+
+pub trait ErrorHandler {
+    fn handle_error<E>(&self, port: i64, typ: ErrorType, error: E);
+}
+
+pub struct ReportDartErrorHandler;
+
+impl ErrorHandler for ReportDartErrorHandler {
+    fn handle_error<E>(&self, port: i64, typ: ErrorType, error: E) {
+        let error_code = match typ {
+            ErrorType::ResultError => "RESULT_ERROR",
+            ErrorType::Panic => "PANIC_ERROR",
+        };
+        Rust2Dart::new(port).error(error_code.to_string(), format!("{:?}", err));
     }
 }
