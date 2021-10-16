@@ -19,60 +19,49 @@ pub extern "C" fn wire_draw_mandelbrot(
     scale: f64,
     num_threads: i32,
 ) {
-    let api_image_size = image_size.wire2api();
-    let api_zoom_point = zoom_point.wire2api();
-    let api_scale = scale.wire2api();
-    let api_num_threads = num_threads.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "draw_mandelbrot",
-        port,
-        move || draw_mandelbrot(api_image_size, api_zoom_point, api_scale, api_num_threads),
-    );
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("draw_mandelbrot", port, move || {
+        let api_image_size = image_size.wire2api();
+        let api_zoom_point = zoom_point.wire2api();
+        let api_scale = scale.wire2api();
+        let api_num_threads = num_threads.wire2api();
+        move || draw_mandelbrot(api_image_size, api_zoom_point, api_scale, api_num_threads)
+    });
 }
 
 #[no_mangle]
 pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNode) {
-    let api_root = root.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "passing_complex_structs",
-        port,
-        move || passing_complex_structs(api_root),
-    );
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("passing_complex_structs", port, move || {
+        let api_root = root.wire2api();
+        move || passing_complex_structs(api_root)
+    });
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_input_array(port: i64, input: *mut wire_uint_8_list) {
-    let api_input = input.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "off_topic_memory_test_input_array",
-        port,
-        move || off_topic_memory_test_input_array(api_input),
-    );
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("off_topic_memory_test_input_array", port, move || {
+        let api_input = input.wire2api();
+        move || off_topic_memory_test_input_array(api_input)
+    });
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, len: i32) {
-    let api_len = len.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
         "off_topic_memory_test_output_zero_copy_buffer",
         port,
-        move || off_topic_memory_test_output_zero_copy_buffer(api_len),
+        move || {
+            let api_len = len.wire2api();
+            move || off_topic_memory_test_output_zero_copy_buffer(api_len)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port: i64, len: i32) {
-    let api_len = len.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "off_topic_memory_test_output_vec_u8",
-        port,
-        move || off_topic_memory_test_output_vec_u8(api_len),
-    );
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("off_topic_memory_test_output_vec_u8", port, move || {
+        let api_len = len.wire2api();
+        move || off_topic_memory_test_output_vec_u8(api_len)
+    });
 }
 
 #[no_mangle]
@@ -80,23 +69,25 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
     port: i64,
     input: *mut wire_list_size,
 ) {
-    let api_input = input.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
         "off_topic_memory_test_input_vec_of_object",
         port,
-        move || off_topic_memory_test_input_vec_of_object(api_input),
+        move || {
+            let api_input = input.wire2api();
+            move || off_topic_memory_test_input_vec_of_object(api_input)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port: i64, len: i32) {
-    let api_len = len.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
         "off_topic_memory_test_output_vec_of_object",
         port,
-        move || off_topic_memory_test_output_vec_of_object(api_len),
+        move || {
+            let api_len = len.wire2api();
+            move || off_topic_memory_test_output_vec_of_object(api_len)
+        },
     );
 }
 
@@ -105,44 +96,40 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
     port: i64,
     input: *mut wire_TreeNode,
 ) {
-    let api_input = input.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
         "off_topic_memory_test_input_complex_struct",
         port,
-        move || off_topic_memory_test_input_complex_struct(api_input),
+        move || {
+            let api_input = input.wire2api();
+            move || off_topic_memory_test_input_complex_struct(api_input)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, len: i32) {
-    let api_len = len.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap(
         "off_topic_memory_test_output_complex_struct",
         port,
-        move || off_topic_memory_test_output_complex_struct(api_len),
+        move || {
+            let api_len = len.wire2api();
+            move || off_topic_memory_test_output_complex_struct(api_len)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_deliberately_return_error(port: i64) {
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "off_topic_deliberately_return_error",
-        port,
-        move || off_topic_deliberately_return_error(),
-    );
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("off_topic_deliberately_return_error", port, move || {
+        move || off_topic_deliberately_return_error()
+    });
 }
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_deliberately_panic(port: i64) {
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "off_topic_deliberately_panic",
-        port,
-        move || off_topic_deliberately_panic(),
-    );
+    FLUTTER_RUST_BRIDGE_EXECUTOR.wrap("off_topic_deliberately_panic", port, move || {
+        move || off_topic_deliberately_panic()
+    });
 }
 
 // Section: wire structs

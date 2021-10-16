@@ -9,11 +9,13 @@ use threadpool::ThreadPool;
 use crate::rust2dart::Rust2Dart;
 use crate::support::DartCObject;
 
-pub type ExecutorTask = Box<dyn FnOnce() -> Result<DartCObject> + Send + UnwindSafe + 'static>;
-
 /// Provide your own executor to customize how to execute your function calls
 pub trait Executor {
-    fn execute(&self, debug_name: &str, port: i64, f: ExecutorTask);
+    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, debug_name: &str, port: i64, prepare: PrepareFn)
+    where
+        PrepareFn: FnOnce() -> TaskFn,
+        TaskFn: FnOnce() -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskRet: IntoDart;
 }
 
 /// The default executor uses a simple thread pool to execute tasks.

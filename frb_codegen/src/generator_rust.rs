@@ -157,9 +157,13 @@ impl Generator {
             None,
             &format!(
                 "
-                {}
-                support::wrap_wire_func(&*{}, \"{}\", port, move || {}({}));
+                {}.wrap(\"{}\", port, move || {{
+                    {}
+                    move || {}({})
+                }});
                 ",
+                EXECUTOR_NAME,
+                func.name,
                 func.inputs
                     .iter()
                     .map(|field| format!(
@@ -169,8 +173,6 @@ impl Generator {
                     ))
                     .collect::<Vec<_>>()
                     .join(""),
-                EXECUTOR_NAME,
-                func.name,
                 func.name,
                 func.inputs
                     .iter()
