@@ -1,8 +1,13 @@
 #![allow(unused_variables)]
 
-use flutter_rust_bridge::ZeroCopyBuffer;
+use std::sync::atomic::{AtomicI32, Ordering};
+use std::sync::Arc;
+use std::thread;
+use std::time::Duration;
 
 use anyhow::{anyhow, Result};
+
+use flutter_rust_bridge::{StreamSink, ZeroCopyBuffer};
 
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
     Ok(a + b)
@@ -72,6 +77,36 @@ pub fn handle_complex_struct(s: MyTreeNode) -> Result<MyTreeNode> {
     println!("handle_complex_struct({:?})", &s);
     let s_cloned = s.clone();
     Ok(s)
+}
+
+pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
+    println!("handle_stream arg={}", arg);
+
+    let cnt = Arc::new(AtomicI32::new(0));
+
+    // just to show that, you can send data to sink even in other threads
+    let cnt2 = cnt.clone();
+    let sink2 = sink.clone();
+    thread::spawn(move || {
+        for i in 0..5 {
+            let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
+            let msg = format!("(thread=child, i={}, old_cnt={})", i, old_cnt);
+            format!("send data to sink msg={}", msg);
+            sink2.add(msg);
+            thread::sleep(Duration::from_millis(100));
+        }
+        sink2.close();
+    });
+
+    for i in 0..5 {
+        let old_cnt = cnt.fetch_add(1, Ordering::Relaxed);
+        let msg = format!("(thread=normal, i={}, old_cnt={})", i, old_cnt);
+        format!("send data to sink msg={}", msg);
+        sink.add(msg);
+        thread::sleep(Duration::from_millis(50));
+    }
+
+    Ok(())
 }
 
 pub fn return_err() -> Result<i32> {

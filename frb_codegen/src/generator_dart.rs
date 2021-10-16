@@ -158,17 +158,29 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
         .collect::<Vec<_>>();
 
     let partial = format!(
-        "Future<{}> {}({{ {} }})",
+        "{}<{}> {}({{ {} }})",
+        func.mode.dart_return_type(),
         func.output.dart_api_type(),
         func.name.to_case(Case::Camel),
         full_func_param_list.join(","),
     );
 
+    let execute_func_name = match func.mode {
+        ApiFuncMode::Normal => "executeNormal",
+        ApiFuncMode::Stream => "executeStream",
+    };
+
     let signature = format!("{};", partial);
 
     let implementation = format!(
-        "{} => execute('{}', (port) => inner.{}(port, {}), _wire2api_{}, hint);",
+        "{} => {}(FlutterRustBridgeTask(
+            debugName: '{}',
+            callFfi: (port) => inner.{}(port, {}),
+            parseSuccessData: _wire2api_{},
+            hint: hint
+        ));",
         partial,
+        execute_func_name,
         func.name,
         func.wire_func_name(),
         wire_param_list.join(", "),
