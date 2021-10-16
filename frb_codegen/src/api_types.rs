@@ -60,6 +60,15 @@ pub enum ApiFuncMode {
     Stream,
 }
 
+impl ApiFuncMode {
+    pub fn dart_return_type(&self) -> &'static str {
+        match self {
+            Self::Normal => "Future",
+            Self::Stream => "Stream",
+        }
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct ApiIdent {
     pub raw: String,
