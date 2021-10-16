@@ -222,26 +222,30 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       parseSuccessData: _wire2api_i32,
       hint: hint));
 
-  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint}) => execute(
-      'handle_optional_return',
-      (port) => inner.wire_handle_optional_return(port, _api2wire_f64(left), _api2wire_f64(right)),
-      _wire2api_Option_f64,
-      hint);
+  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'handle_optional_return',
+          callFfi: (port) => inner.wire_handle_optional_return(port, _api2wire_f64(left), _api2wire_f64(right)),
+          parseSuccessData: _wire2api_Option_f64,
+          hint: hint));
 
-  Future<Element?> handleOptionalStruct({String? document, dynamic hint}) => execute(
-      'handle_optional_struct',
-      (port) => inner.wire_handle_optional_struct(port, _api2wire_Option_String(document)),
-      _wire2api_Option_element,
-      hint);
+  Future<Element?> handleOptionalStruct({String? document, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'handle_optional_struct',
+      callFfi: (port) => inner.wire_handle_optional_struct(port, _api2wire_Option_String(document)),
+      parseSuccessData: _wire2api_Option_element,
+      hint: hint));
 
-  Future<ExoticOptionals?> increment({ExoticOptionals? opt, dynamic hint}) => execute(
-      'increment',
-      (port) => inner.wire_increment(port, _api2wire_Option_exotic_optionals(opt)),
-      _wire2api_Option_exotic_optionals,
-      hint);
+  Future<ExoticOptionals?> increment({ExoticOptionals? opt, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'increment',
+      callFfi: (port) => inner.wire_increment(port, _api2wire_Option_exotic_optionals(opt)),
+      parseSuccessData: _wire2api_Option_exotic_optionals,
+      hint: hint));
 
-  Future<double> handleBoxedOptional({double? opt, dynamic hint}) => execute('handle_boxed_optional',
-      (port) => inner.wire_handle_boxed_optional(port, _api2wire_Option_box_f64(opt)), _wire2api_f64, hint);
+  Future<double> handleBoxedOptional({double? opt, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'handle_boxed_optional',
+      callFfi: (port) => inner.wire_handle_boxed_optional(port, _api2wire_Option_box_f64(opt)),
+      parseSuccessData: _wire2api_f64,
+      hint: hint));
 
   // Section: api2wire
   int _api2wire_i32(int raw) {

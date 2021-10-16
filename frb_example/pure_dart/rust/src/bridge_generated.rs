@@ -199,46 +199,62 @@ pub extern "C" fn wire_return_panic(port: i64) {
 
 #[no_mangle]
 pub extern "C" fn wire_handle_optional_return(port: i64, left: f64, right: f64) {
-    let api_left = left.wire2api();
-    let api_right = right.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_optional_return",
-        port,
-        move || handle_optional_return(api_left, api_right),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_optional_return",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_left = left.wire2api();
+            let api_right = right.wire2api();
+            move |task_callback| handle_optional_return(api_left, api_right)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_optional_struct(port: i64, document: *mut wire_uint_8_list) {
-    let api_document = document.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_optional_struct",
-        port,
-        move || handle_optional_struct(api_document),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_optional_struct",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_document = document.wire2api();
+            move |task_callback| handle_optional_struct(api_document)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_increment(port: i64, opt: *mut wire_ExoticOptionals) {
-    let api_opt = opt.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "increment",
-        port,
-        move || increment(api_opt),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "increment",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opt = opt.wire2api();
+            move |task_callback| increment(api_opt)
+        },
     );
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_boxed_optional(port: i64, opt: *mut f64) {
-    let api_opt = opt.wire2api();
-    support::wrap_wire_func(
-        &*FLUTTER_RUST_BRIDGE_EXECUTOR,
-        "handle_boxed_optional",
-        port,
-        move || handle_boxed_optional(api_opt),
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_boxed_optional",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opt = opt.wire2api();
+            move |task_callback| handle_boxed_optional(api_opt)
+        },
     );
 }
 
