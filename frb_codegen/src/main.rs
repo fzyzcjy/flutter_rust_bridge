@@ -4,6 +4,7 @@ use env_logger::Env;
 use log::{debug, info};
 use structopt::StructOpt;
 
+use crate::api_types::ApiType;
 use crate::config::RawOpts;
 use crate::others::*;
 use crate::utils::*;
@@ -55,6 +56,18 @@ fn main() {
 
     others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
 
+    let c_struct_names = api_file
+        .distinct_types()
+        .iter()
+        .filter_map(|ty| {
+            if let ApiType::StructRef(_) = ty {
+                Some(ty.rust_wire_type())
+            } else {
+                None
+            }
+        })
+        .collect();
+
     let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile().unwrap();
     with_changed_file(
@@ -70,6 +83,7 @@ fn main() {
                     .unwrap(),
                 temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                 &config.dart_wire_class_name(),
+                c_struct_names,
             );
         },
     );

@@ -9,8 +9,9 @@ pub fn bindgen_rust_to_dart(
     c_output_path: &str,
     dart_output_path: &str,
     dart_class_name: &str,
+    c_struct_names: Vec<String>,
 ) {
-    cbindgen(rust_crate_dir, c_output_path);
+    cbindgen(rust_crate_dir, c_output_path, c_struct_names);
     ffigen(c_output_path, dart_output_path, dart_class_name);
 }
 
@@ -33,13 +34,24 @@ fn execute_command(command: &mut Command) {
     }
 }
 
-fn cbindgen(rust_crate_dir: &str, c_output_path: &str) {
+fn cbindgen(rust_crate_dir: &str, c_output_path: &str, c_struct_names: Vec<String>) {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
 
-    let config = "language = \"C\"".to_string();
+    let config = format!(
+        r#"
+language = "C"
+[export]
+include = [{}]
+"#,
+        c_struct_names
+            .iter()
+            .map(|name| format!("\"{}\"", name))
+            .collect::<Vec<_>>()
+            .join(", ")
+    );
     debug!("cbindgen config: {}", config);
 
     let mut config_file = tempfile::NamedTempFile::new().unwrap();
