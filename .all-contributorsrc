@@ -1,0 +1,47 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "fzyzcjy",
+      "name": "fzyzcjy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5236035?v=4",
+      "profile": "https://github.com/fzyzcjy",
+      "contributions": [
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Desdaemon",
+      "name": "Viet Dinh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36768030?v=4",
+      "profile": "https://github.com/Desdaemon",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "rustui",
+      "name": "rustui",
+      "avatar_url": "https://avatars.githubusercontent.com/u/90625190?v=4",
+      "profile": "https://github.com/rustui",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "flutter_rust_bridge",
+  "projectOwner": "fzyzcjy",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
