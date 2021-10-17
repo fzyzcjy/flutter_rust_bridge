@@ -6,6 +6,19 @@
   "commit": false,
   "contributors": [
     {
+      "login": "fzyzcjy",
+      "name": "fzyzcjy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5236035?v=4",
+      "profile": "https://github.com/fzyzcjy",
+      "contributions": [
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "maintenance"
+      ]
+    },
+    {
       "login": "Desdaemon",
       "name": "Viet Dinh",
       "avatar_url": "https://avatars.githubusercontent.com/u/36768030?v=4",
@@ -22,19 +35,6 @@
       "profile": "https://github.com/rustui",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "fzyzcjy",
-      "name": "fzyzcjy",
-      "avatar_url": "https://avatars.githubusercontent.com/u/5236035?v=4",
-      "profile": "https://github.com/fzyzcjy",
-      "contributions": [
-        "code",
-        "doc",
-        "example",
-        "ideas",
-        "maintenance"
       ]
     }
   ],
