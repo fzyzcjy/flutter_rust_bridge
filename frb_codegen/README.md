@@ -7,7 +7,6 @@
 [![Test](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/test.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/test.yaml)
 [![Codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/codegen.yml)
 [![Linters](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml)
-
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
