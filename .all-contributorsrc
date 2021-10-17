@@ -14,6 +14,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "rustui",
+      "name": "rustui",
+      "avatar_url": "https://avatars.githubusercontent.com/u/90625190?v=4",
+      "profile": "https://github.com/rustui",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
