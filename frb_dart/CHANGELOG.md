@@ -6,6 +6,7 @@
 * Improve panic handling in extreme cases (avoid panic across languages, which is undefined behavior).
 * Refactored `Handler`, now it is much easier to customize your own handler functionality.
 * Remove one `Box::new(FnOnce)`, thus enables better inlining for ffi function calls.
+* Fix bug: Dart struct(class) is not generated if the struct only appears in the return type #98.
 
 ## 1.1.0
 
