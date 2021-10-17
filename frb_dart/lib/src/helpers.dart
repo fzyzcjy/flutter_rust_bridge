@@ -53,3 +53,24 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
 class _FlutterRustBridgeSetupMixinSkipWaitHint {
   const _FlutterRustBridgeSetupMixinSkipWaitHint._();
 }
+
+/// Add a timeout to [executeNormal]
+mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
+  @override
+  Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
+    return super.executeNormal(task).timeout(timeLimitForExecuteNormal,
+        onTimeout: () => throw FlutterRustBridgeTimeoutException(timeLimitForExecuteNormal));
+  }
+
+  @protected
+  Duration get timeLimitForExecuteNormal;
+}
+
+class FlutterRustBridgeTimeoutException {
+  final Duration duration;
+
+  FlutterRustBridgeTimeoutException(this.duration);
+
+  @override
+  String toString() => 'FlutterRustBridgeTimeoutException(duration=$duration)';
+}
