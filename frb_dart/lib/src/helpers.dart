@@ -58,8 +58,12 @@ class _FlutterRustBridgeSetupMixinSkipWaitHint {
 mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
   @override
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
+    // capture a stack trace at *here*, such that when timeout, can have a good stack trace
+    final stackTrace = StackTrace.current;
+
     return super.executeNormal(task).timeout(timeLimitForExecuteNormal,
-        onTimeout: () => throw FlutterRustBridgeTimeoutException(timeLimitForExecuteNormal));
+        onTimeout: () =>
+            throw FlutterRustBridgeTimeoutException(timeLimitForExecuteNormal, task.debugName, stackTrace));
   }
 
   @protected
@@ -68,9 +72,12 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on Flut
 
 class FlutterRustBridgeTimeoutException {
   final Duration duration;
+  final String debugName;
+  final StackTrace stackTrace;
 
-  FlutterRustBridgeTimeoutException(this.duration);
+  FlutterRustBridgeTimeoutException(this.duration, this.debugName, this.stackTrace);
 
   @override
-  String toString() => 'FlutterRustBridgeTimeoutException(duration=$duration)';
+  String toString() =>
+      'FlutterRustBridgeTimeoutException(debugName=$debugName,duration=$duration,stackTrace=$stackTrace)';
 }
