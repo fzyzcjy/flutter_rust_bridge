@@ -2,7 +2,7 @@ use std::collections::{HashMap, HashSet};
 use std::string::String;
 
 use lazy_static::lazy_static;
-use log::debug;
+use log::{debug, error};
 use quote::quote;
 use regex::Regex;
 use syn::*;
@@ -155,9 +155,26 @@ impl<'a> Parser<'a> {
             static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
         }
 
-        CAPTURE_OPTION
-            .captures(ty)
-            .map(|inner| Delegate(ApiTypeDelegate::Optional(Box::new(self.parse_type(&inner)))))
+        CAPTURE_OPTION.captures(ty).map(|inner| {
+            let inner_option = CAPTURE_OPTION.captures(&inner);
+            if let Some(inner_option) = inner_option {
+                error!(
+                    "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
+                    inner_option
+                );
+                panic!("nested option type {}", inner)
+            };
+            match self.parse_type(&inner) {
+                Primitive(prim) => ApiType::Optional(ApiTypeOptional::new_prim(prim)),
+                st @ StructRef(_) => {
+                    ApiType::Optional(ApiTypeOptional::new_ptr(Boxed(Box::new(ApiTypeBoxed {
+                        inner: st,
+                        exist_in_real_api: false,
+                    }))))
+                }
+                other => ApiType::Optional(ApiTypeOptional::new_ptr(other)),
+            }
+        })
     }
 
     fn try_parse_struct(&mut self, ty: &str) -> Option<ApiType> {

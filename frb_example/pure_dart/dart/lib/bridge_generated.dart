@@ -43,9 +43,19 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<Element?> handleOptionalStruct({String? document, dynamic hint});
 
-  Future<ExoticOptionals?> increment({ExoticOptionals? opt, dynamic hint});
+  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint});
 
-  Future<double> handleBoxedOptional({double? opt, dynamic hint});
+  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint});
+
+  Future<String> handleOptionBoxArguments(
+      {int? i8Box,
+      int? u8Box,
+      int? i32Box,
+      int? i64Box,
+      double? f64Box,
+      bool? boolbox,
+      ExoticOptionals? structbox,
+      dynamic hint});
 }
 
 class MySize {
@@ -110,7 +120,6 @@ class ExoticOptionals {
   final Uint8List? zerocopy;
   final Int8List? int8List;
   final Uint8List? uint8List;
-  final Float64List? float64List;
   final List<Attribute>? attributes;
   final List<Attribute?> attributesNullable;
   final List<Attribute?>? nullableAttributes;
@@ -124,7 +133,6 @@ class ExoticOptionals {
     this.zerocopy,
     this.int8List,
     this.uint8List,
-    this.float64List,
     this.attributes,
     required this.attributesNullable,
     this.nullableAttributes,
@@ -226,26 +234,51 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       executeNormal(FlutterRustBridgeTask(
           debugName: 'handle_optional_return',
           callFfi: (port) => inner.wire_handle_optional_return(port, _api2wire_f64(left), _api2wire_f64(right)),
-          parseSuccessData: _wire2api_Option_f64,
+          parseSuccessData: _wire2api_opt_box_autoadd_f64,
           hint: hint));
 
   Future<Element?> handleOptionalStruct({String? document, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
       debugName: 'handle_optional_struct',
-      callFfi: (port) => inner.wire_handle_optional_struct(port, _api2wire_Option_String(document)),
-      parseSuccessData: _wire2api_Option_element,
+      callFfi: (port) => inner.wire_handle_optional_struct(port, _api2wire_opt_String(document)),
+      parseSuccessData: _wire2api_opt_box_autoadd_element,
       hint: hint));
 
-  Future<ExoticOptionals?> increment({ExoticOptionals? opt, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-      debugName: 'increment',
-      callFfi: (port) => inner.wire_increment(port, _api2wire_Option_exotic_optionals(opt)),
-      parseSuccessData: _wire2api_Option_exotic_optionals,
-      hint: hint));
+  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'handle_optional_increment',
+          callFfi: (port) =>
+              inner.wire_handle_optional_increment(port, _api2wire_opt_box_autoadd_exotic_optionals(opt)),
+          parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
+          hint: hint));
 
-  Future<double> handleBoxedOptional({double? opt, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-      debugName: 'handle_boxed_optional',
-      callFfi: (port) => inner.wire_handle_boxed_optional(port, _api2wire_Option_box_f64(opt)),
+  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+      debugName: 'handle_increment_boxed_optional',
+      callFfi: (port) => inner.wire_handle_increment_boxed_optional(port, _api2wire_opt_box_f64(opt)),
       parseSuccessData: _wire2api_f64,
       hint: hint));
+
+  Future<String> handleOptionBoxArguments(
+          {int? i8Box,
+          int? u8Box,
+          int? i32Box,
+          int? i64Box,
+          double? f64Box,
+          bool? boolbox,
+          ExoticOptionals? structbox,
+          dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'handle_option_box_arguments',
+          callFfi: (port) => inner.wire_handle_option_box_arguments(
+              port,
+              _api2wire_opt_box_i8(i8Box),
+              _api2wire_opt_box_u8(u8Box),
+              _api2wire_opt_box_i32(i32Box),
+              _api2wire_opt_box_i64(i64Box),
+              _api2wire_opt_box_f64(f64Box),
+              _api2wire_opt_box_bool(boolbox),
+              _api2wire_opt_box_exotic_optionals(structbox)),
+          parseSuccessData: _wire2api_String,
+          hint: hint));
 
   // Section: api2wire
   int _api2wire_i32(int raw) {
@@ -322,7 +355,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
-  ffi.Pointer<ffi.Double> _api2wire_Option_f64(double? raw) {
+  ffi.Pointer<ffi.Double> _api2wire_opt_box_autoadd_f64(double? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_f64(raw);
   }
 
@@ -330,11 +363,11 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return inner.new_box_autoadd_f64(raw);
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_Option_String(String? raw) {
+  ffi.Pointer<wire_uint_8_list> _api2wire_opt_String(String? raw) {
     return raw == null ? ffi.nullptr : _api2wire_String(raw);
   }
 
-  ffi.Pointer<wire_Element> _api2wire_Option_element(Element? raw) {
+  ffi.Pointer<wire_Element> _api2wire_opt_box_autoadd_element(Element? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_element(raw);
   }
 
@@ -344,7 +377,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ptr;
   }
 
-  ffi.Pointer<wire_list_attribute> _api2wire_Option_list_attribute(List<Attribute>? raw) {
+  ffi.Pointer<wire_list_attribute> _api2wire_opt_list_attribute(List<Attribute>? raw) {
     return raw == null ? ffi.nullptr : _api2wire_list_attribute(raw);
   }
 
@@ -356,7 +389,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
-  ffi.Pointer<wire_list_element> _api2wire_Option_list_element(List<Element>? raw) {
+  ffi.Pointer<wire_list_element> _api2wire_opt_list_element(List<Element>? raw) {
     return raw == null ? ffi.nullptr : _api2wire_list_element(raw);
   }
 
@@ -368,7 +401,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
-  ffi.Pointer<wire_ExoticOptionals> _api2wire_Option_exotic_optionals(ExoticOptionals? raw) {
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_opt_box_autoadd_exotic_optionals(ExoticOptionals? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_exotic_optionals(raw);
   }
 
@@ -378,7 +411,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ptr;
   }
 
-  ffi.Pointer<ffi.Int32> _api2wire_Option_i32(int? raw) {
+  ffi.Pointer<ffi.Int32> _api2wire_opt_box_autoadd_i32(int? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_i32(raw);
   }
 
@@ -386,7 +419,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return inner.new_box_autoadd_i32(raw);
   }
 
-  ffi.Pointer<ffi.Int64> _api2wire_Option_i64(int? raw) {
+  ffi.Pointer<ffi.Int64> _api2wire_opt_box_autoadd_i64(int? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_i64(raw);
   }
 
@@ -394,7 +427,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return inner.new_box_autoadd_i64(raw);
   }
 
-  ffi.Pointer<ffi.Uint8> _api2wire_Option_bool(bool? raw) {
+  ffi.Pointer<ffi.Uint8> _api2wire_opt_box_autoadd_bool(bool? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_bool(raw);
   }
 
@@ -402,11 +435,11 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return inner.new_box_autoadd_bool(raw);
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_Option_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
+  ffi.Pointer<wire_uint_8_list> _api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_ZeroCopyBuffer_Uint8List(raw);
   }
 
-  ffi.Pointer<wire_int_8_list> _api2wire_Option_int_8_list(Int8List? raw) {
+  ffi.Pointer<wire_int_8_list> _api2wire_opt_int_8_list(Int8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_int_8_list(raw);
   }
 
@@ -420,29 +453,19 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return raw;
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_Option_uint_8_list(Uint8List? raw) {
+  ffi.Pointer<wire_uint_8_list> _api2wire_opt_uint_8_list(Uint8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_uint_8_list(raw);
   }
 
-  ffi.Pointer<wire_float_64_list> _api2wire_Option_float_64_list(Float64List? raw) {
-    return raw == null ? ffi.nullptr : _api2wire_float_64_list(raw);
-  }
-
-  ffi.Pointer<wire_float_64_list> _api2wire_float_64_list(Float64List raw) {
-    final ans = inner.new_float_64_list(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  ffi.Pointer<wire_list_Option_attribute> _api2wire_list_Option_attribute(List<Attribute?> raw) {
-    final ans = inner.new_list_Option_attribute(raw.length);
+  ffi.Pointer<wire_list_opt_box_autoadd_attribute> _api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
+    final ans = inner.new_list_opt_box_autoadd_attribute(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_Option_attribute(raw[i], ans.ref.ptr[i]);
+      _api_fill_to_wire_opt_box_autoadd_attribute(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
 
-  ffi.Pointer<wire_Attribute> _api2wire_Option_attribute(Attribute? raw) {
+  ffi.Pointer<wire_Attribute> _api2wire_opt_box_autoadd_attribute(Attribute? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_attribute(raw);
   }
 
@@ -452,15 +475,15 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ptr;
   }
 
-  ffi.Pointer<wire_list_Option_attribute> _api2wire_Option_list_Option_attribute(List<Attribute?>? raw) {
-    return raw == null ? ffi.nullptr : _api2wire_list_Option_attribute(raw);
+  ffi.Pointer<wire_list_opt_box_autoadd_attribute> _api2wire_opt_list_opt_box_autoadd_attribute(List<Attribute?>? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_list_opt_box_autoadd_attribute(raw);
   }
 
-  ffi.Pointer<wire_NewTypeInt> _api2wire_Option_new_type_int(NewTypeInt? raw) {
+  ffi.Pointer<wire_NewTypeInt> _api2wire_opt_box_autoadd_new_type_int(NewTypeInt? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_new_type_int(raw);
   }
 
-  ffi.Pointer<ffi.Double> _api2wire_Option_box_f64(double? raw) {
+  ffi.Pointer<ffi.Double> _api2wire_opt_box_f64(double? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_f64(raw);
   }
 
@@ -468,15 +491,81 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return inner.new_box_f64(raw);
   }
 
+  ffi.Pointer<ffi.Int8> _api2wire_opt_box_i8(int? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_box_i8(raw);
+  }
+
+  ffi.Pointer<ffi.Int8> _api2wire_box_i8(int raw) {
+    return inner.new_box_i8(raw);
+  }
+
+  ffi.Pointer<ffi.Uint8> _api2wire_opt_box_u8(int? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_box_u8(raw);
+  }
+
+  ffi.Pointer<ffi.Uint8> _api2wire_box_u8(int raw) {
+    return inner.new_box_u8(raw);
+  }
+
+  ffi.Pointer<ffi.Int32> _api2wire_opt_box_i32(int? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_box_i32(raw);
+  }
+
+  ffi.Pointer<ffi.Int32> _api2wire_box_i32(int raw) {
+    return inner.new_box_i32(raw);
+  }
+
+  ffi.Pointer<ffi.Int64> _api2wire_opt_box_i64(int? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_box_i64(raw);
+  }
+
+  ffi.Pointer<ffi.Int64> _api2wire_box_i64(int raw) {
+    return inner.new_box_i64(raw);
+  }
+
+  ffi.Pointer<ffi.Uint8> _api2wire_opt_box_bool(bool? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_box_bool(raw);
+  }
+
+  ffi.Pointer<ffi.Uint8> _api2wire_box_bool(bool raw) {
+    return inner.new_box_bool(raw);
+  }
+
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_opt_box_exotic_optionals(ExoticOptionals? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_box_exotic_optionals(raw);
+  }
+
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_exotic_optionals(ExoticOptionals raw) {
+    final ptr = inner.new_box_exotic_optionals();
+    _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
+    return ptr;
+  }
+
   // Section: api_fill_to_wire
+
+  void _api_fill_to_wire_box_autoadd_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
+    _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+  }
 
   void _api_fill_to_wire_my_size(MySize apiObj, wire_MySize wireObj) {
     wireObj.width = _api2wire_i32(apiObj.width);
     wireObj.height = _api2wire_i32(apiObj.height);
   }
 
+  void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
+    _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_new_type_int(NewTypeInt apiObj, ffi.Pointer<wire_NewTypeInt> wireObj) {
+    _api_fill_to_wire_new_type_int(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_new_type_int(NewTypeInt apiObj, wire_NewTypeInt wireObj) {
     wireObj.field0 = _api2wire_i64(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_box_autoadd_my_tree_node(MyTreeNode apiObj, ffi.Pointer<wire_MyTreeNode> wireObj) {
+    _api_fill_to_wire_my_tree_node(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_my_tree_node(MyTreeNode apiObj, wire_MyTreeNode wireObj) {
@@ -485,15 +574,19 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.children = _api2wire_list_my_tree_node(apiObj.children);
   }
 
-  void _api_fill_to_wire_Option_element(Element? apiObj, wire_Element wireObj) {
-    if (apiObj != null) _api_fill_to_wire_element(apiObj, wireObj);
+  void _api_fill_to_wire_opt_box_autoadd_element(Element? apiObj, ffi.Pointer<wire_Element> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_element(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_box_autoadd_element(Element apiObj, ffi.Pointer<wire_Element> wireObj) {
+    _api_fill_to_wire_element(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_element(Element apiObj, wire_Element wireObj) {
-    wireObj.tag = _api2wire_Option_String(apiObj.tag);
-    wireObj.text = _api2wire_Option_String(apiObj.text);
-    wireObj.attributes = _api2wire_Option_list_attribute(apiObj.attributes);
-    wireObj.children = _api2wire_Option_list_element(apiObj.children);
+    wireObj.tag = _api2wire_opt_String(apiObj.tag);
+    wireObj.text = _api2wire_opt_String(apiObj.text);
+    wireObj.attributes = _api2wire_opt_list_attribute(apiObj.attributes);
+    wireObj.children = _api2wire_opt_list_element(apiObj.children);
   }
 
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
@@ -501,31 +594,48 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.value = _api2wire_String(apiObj.value);
   }
 
-  void _api_fill_to_wire_Option_exotic_optionals(ExoticOptionals? apiObj, wire_ExoticOptionals wireObj) {
-    if (apiObj != null) _api_fill_to_wire_exotic_optionals(apiObj, wireObj);
+  void _api_fill_to_wire_opt_box_autoadd_exotic_optionals(
+      ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_exotic_optionals(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_box_autoadd_exotic_optionals(
+      ExoticOptionals apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
+    _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_exotic_optionals(ExoticOptionals apiObj, wire_ExoticOptionals wireObj) {
-    wireObj.int32 = _api2wire_Option_i32(apiObj.int32);
-    wireObj.int64 = _api2wire_Option_i64(apiObj.int64);
-    wireObj.float64 = _api2wire_Option_f64(apiObj.float64);
-    wireObj.boolean = _api2wire_Option_bool(apiObj.boolean);
-    wireObj.zerocopy = _api2wire_Option_ZeroCopyBuffer_Uint8List(apiObj.zerocopy);
-    wireObj.int8list = _api2wire_Option_int_8_list(apiObj.int8List);
-    wireObj.uint8list = _api2wire_Option_uint_8_list(apiObj.uint8List);
-    wireObj.float64list = _api2wire_Option_float_64_list(apiObj.float64List);
-    wireObj.attributes = _api2wire_Option_list_attribute(apiObj.attributes);
-    wireObj.attributes_nullable = _api2wire_list_Option_attribute(apiObj.attributesNullable);
-    wireObj.nullable_attributes = _api2wire_Option_list_Option_attribute(apiObj.nullableAttributes);
-    wireObj.newtypeint = _api2wire_Option_new_type_int(apiObj.newtypeint);
+    wireObj.int32 = _api2wire_opt_box_autoadd_i32(apiObj.int32);
+    wireObj.int64 = _api2wire_opt_box_autoadd_i64(apiObj.int64);
+    wireObj.float64 = _api2wire_opt_box_autoadd_f64(apiObj.float64);
+    wireObj.boolean = _api2wire_opt_box_autoadd_bool(apiObj.boolean);
+    wireObj.zerocopy = _api2wire_opt_ZeroCopyBuffer_Uint8List(apiObj.zerocopy);
+    wireObj.int8list = _api2wire_opt_int_8_list(apiObj.int8List);
+    wireObj.uint8list = _api2wire_opt_uint_8_list(apiObj.uint8List);
+    wireObj.attributes = _api2wire_opt_list_attribute(apiObj.attributes);
+    wireObj.attributes_nullable = _api2wire_list_opt_box_autoadd_attribute(apiObj.attributesNullable);
+    wireObj.nullable_attributes = _api2wire_opt_list_opt_box_autoadd_attribute(apiObj.nullableAttributes);
+    wireObj.newtypeint = _api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
   }
 
-  void _api_fill_to_wire_Option_attribute(Attribute? apiObj, wire_Attribute wireObj) {
-    if (apiObj != null) _api_fill_to_wire_attribute(apiObj, wireObj);
+  void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
 
-  void _api_fill_to_wire_Option_new_type_int(NewTypeInt? apiObj, wire_NewTypeInt wireObj) {
-    if (apiObj != null) _api_fill_to_wire_new_type_int(apiObj, wireObj);
+  void _api_fill_to_wire_box_autoadd_attribute(Attribute apiObj, ffi.Pointer<wire_Attribute> wireObj) {
+    _api_fill_to_wire_attribute(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_opt_box_autoadd_new_type_int(NewTypeInt? apiObj, ffi.Pointer<wire_NewTypeInt> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_new_type_int(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_opt_box_exotic_optionals(ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_box_exotic_optionals(ExoticOptionals apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
+    _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 }
 
@@ -563,7 +673,7 @@ Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
 }
 
 MySize _wire2api_box_autoadd_my_size(dynamic raw) {
-  return raw as MySize;
+  return _wire2api_my_size(raw);
 }
 
 MySize _wire2api_my_size(dynamic raw) {
@@ -576,11 +686,11 @@ MySize _wire2api_my_size(dynamic raw) {
 }
 
 MySize _wire2api_box_my_size(dynamic raw) {
-  return raw as MySize;
+  return _wire2api_my_size(raw);
 }
 
 NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
-  return raw as NewTypeInt;
+  return _wire2api_new_type_int(raw);
 }
 
 NewTypeInt _wire2api_new_type_int(dynamic raw) {
@@ -592,11 +702,11 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
 }
 
 List<MySize> _wire2api_list_my_size(dynamic raw) {
-  return (raw as List<dynamic>).map((item) => _wire2api_my_size(item)).toList();
+  return (raw as List<dynamic>).map(_wire2api_my_size).toList();
 }
 
 MyTreeNode _wire2api_box_autoadd_my_tree_node(dynamic raw) {
-  return raw as MyTreeNode;
+  return _wire2api_my_tree_node(raw);
 }
 
 MyTreeNode _wire2api_my_tree_node(dynamic raw) {
@@ -610,46 +720,46 @@ MyTreeNode _wire2api_my_tree_node(dynamic raw) {
 }
 
 List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
-  return (raw as List<dynamic>).map((item) => _wire2api_my_tree_node(item)).toList();
+  return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
 }
 
-double? _wire2api_Option_f64(dynamic raw) {
-  return raw == null ? null : _wire2api_f64(raw);
+double? _wire2api_opt_box_autoadd_f64(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_f64(raw);
 }
 
 double _wire2api_box_autoadd_f64(dynamic raw) {
   return raw as double;
 }
 
-String? _wire2api_Option_String(dynamic raw) {
+String? _wire2api_opt_String(dynamic raw) {
   return raw == null ? null : _wire2api_String(raw);
 }
 
-Element? _wire2api_Option_element(dynamic raw) {
-  return raw == null ? null : _wire2api_element(raw);
+Element? _wire2api_opt_box_autoadd_element(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_element(raw);
 }
 
 Element _wire2api_box_autoadd_element(dynamic raw) {
-  return raw as Element;
+  return _wire2api_element(raw);
 }
 
 Element _wire2api_element(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
   return Element(
-    tag: _wire2api_Option_String(arr[0]),
-    text: _wire2api_Option_String(arr[1]),
-    attributes: _wire2api_Option_list_attribute(arr[2]),
-    children: _wire2api_Option_list_element(arr[3]),
+    tag: _wire2api_opt_String(arr[0]),
+    text: _wire2api_opt_String(arr[1]),
+    attributes: _wire2api_opt_list_attribute(arr[2]),
+    children: _wire2api_opt_list_element(arr[3]),
   );
 }
 
-List<Attribute>? _wire2api_Option_list_attribute(dynamic raw) {
+List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
   return raw == null ? null : _wire2api_list_attribute(raw);
 }
 
 List<Attribute> _wire2api_list_attribute(dynamic raw) {
-  return (raw as List<dynamic>).map((item) => _wire2api_attribute(item)).toList();
+  return (raw as List<dynamic>).map(_wire2api_attribute).toList();
 }
 
 Attribute _wire2api_attribute(dynamic raw) {
@@ -661,70 +771,69 @@ Attribute _wire2api_attribute(dynamic raw) {
   );
 }
 
-List<Element>? _wire2api_Option_list_element(dynamic raw) {
+List<Element>? _wire2api_opt_list_element(dynamic raw) {
   return raw == null ? null : _wire2api_list_element(raw);
 }
 
 List<Element> _wire2api_list_element(dynamic raw) {
-  return (raw as List<dynamic>).map((item) => _wire2api_element(item)).toList();
+  return (raw as List<dynamic>).map(_wire2api_element).toList();
 }
 
-ExoticOptionals? _wire2api_Option_exotic_optionals(dynamic raw) {
-  return raw == null ? null : _wire2api_exotic_optionals(raw);
+ExoticOptionals? _wire2api_opt_box_autoadd_exotic_optionals(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_exotic_optionals(raw);
 }
 
 ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic raw) {
-  return raw as ExoticOptionals;
+  return _wire2api_exotic_optionals(raw);
 }
 
 ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 12) throw Exception('unexpected arr length: expect 12 but see ${arr.length}');
+  if (arr.length != 11) throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
   return ExoticOptionals(
-    int32: _wire2api_Option_i32(arr[0]),
-    int64: _wire2api_Option_i64(arr[1]),
-    float64: _wire2api_Option_f64(arr[2]),
-    boolean: _wire2api_Option_bool(arr[3]),
-    zerocopy: _wire2api_Option_ZeroCopyBuffer_Uint8List(arr[4]),
-    int8List: _wire2api_Option_int_8_list(arr[5]),
-    uint8List: _wire2api_Option_uint_8_list(arr[6]),
-    float64List: _wire2api_Option_float_64_list(arr[7]),
-    attributes: _wire2api_Option_list_attribute(arr[8]),
-    attributesNullable: _wire2api_list_Option_attribute(arr[9]),
-    nullableAttributes: _wire2api_Option_list_Option_attribute(arr[10]),
-    newtypeint: _wire2api_Option_new_type_int(arr[11]),
+    int32: _wire2api_opt_box_autoadd_i32(arr[0]),
+    int64: _wire2api_opt_box_autoadd_i64(arr[1]),
+    float64: _wire2api_opt_box_autoadd_f64(arr[2]),
+    boolean: _wire2api_opt_box_autoadd_bool(arr[3]),
+    zerocopy: _wire2api_opt_ZeroCopyBuffer_Uint8List(arr[4]),
+    int8List: _wire2api_opt_int_8_list(arr[5]),
+    uint8List: _wire2api_opt_uint_8_list(arr[6]),
+    attributes: _wire2api_opt_list_attribute(arr[7]),
+    attributesNullable: _wire2api_list_opt_box_autoadd_attribute(arr[8]),
+    nullableAttributes: _wire2api_opt_list_opt_box_autoadd_attribute(arr[9]),
+    newtypeint: _wire2api_opt_box_autoadd_new_type_int(arr[10]),
   );
 }
 
-int? _wire2api_Option_i32(dynamic raw) {
-  return raw == null ? null : _wire2api_i32(raw);
+int? _wire2api_opt_box_autoadd_i32(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_i32(raw);
 }
 
 int _wire2api_box_autoadd_i32(dynamic raw) {
   return raw as int;
 }
 
-int? _wire2api_Option_i64(dynamic raw) {
-  return raw == null ? null : _wire2api_i64(raw);
+int? _wire2api_opt_box_autoadd_i64(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_i64(raw);
 }
 
 int _wire2api_box_autoadd_i64(dynamic raw) {
   return raw as int;
 }
 
-bool? _wire2api_Option_bool(dynamic raw) {
-  return raw == null ? null : _wire2api_bool(raw);
+bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_bool(raw);
 }
 
 bool _wire2api_box_autoadd_bool(dynamic raw) {
   return raw as bool;
 }
 
-Uint8List? _wire2api_Option_ZeroCopyBuffer_Uint8List(dynamic raw) {
+Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
 }
 
-Int8List? _wire2api_Option_int_8_list(dynamic raw) {
+Int8List? _wire2api_opt_int_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_int_8_list(raw);
 }
 
@@ -736,44 +845,84 @@ int _wire2api_i8(dynamic raw) {
   return raw as int;
 }
 
-Uint8List? _wire2api_Option_uint_8_list(dynamic raw) {
+Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_uint_8_list(raw);
 }
 
-Float64List? _wire2api_Option_float_64_list(dynamic raw) {
-  return raw == null ? null : _wire2api_float_64_list(raw);
+List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
 }
 
-Float64List _wire2api_float_64_list(dynamic raw) {
-  return raw as Float64List;
-}
-
-List<Attribute?> _wire2api_list_Option_attribute(dynamic raw) {
-  return (raw as List<dynamic>).map((item) => _wire2api_Option_attribute(item)).toList();
-}
-
-Attribute? _wire2api_Option_attribute(dynamic raw) {
-  return raw == null ? null : _wire2api_attribute(raw);
+Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_attribute(raw);
 }
 
 Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
-  return raw as Attribute;
+  return _wire2api_attribute(raw);
 }
 
-List<Attribute?>? _wire2api_Option_list_Option_attribute(dynamic raw) {
-  return raw == null ? null : _wire2api_list_Option_attribute(raw);
+List<Attribute?>? _wire2api_opt_list_opt_box_autoadd_attribute(dynamic raw) {
+  return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
 }
 
-NewTypeInt? _wire2api_Option_new_type_int(dynamic raw) {
-  return raw == null ? null : _wire2api_new_type_int(raw);
+NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
 }
 
-double? _wire2api_Option_box_f64(dynamic raw) {
+double? _wire2api_opt_box_f64(dynamic raw) {
   return raw == null ? null : _wire2api_box_f64(raw);
 }
 
 double _wire2api_box_f64(dynamic raw) {
   return raw as double;
+}
+
+int? _wire2api_opt_box_i8(dynamic raw) {
+  return raw == null ? null : _wire2api_box_i8(raw);
+}
+
+int _wire2api_box_i8(dynamic raw) {
+  return raw as int;
+}
+
+int? _wire2api_opt_box_u8(dynamic raw) {
+  return raw == null ? null : _wire2api_box_u8(raw);
+}
+
+int _wire2api_box_u8(dynamic raw) {
+  return raw as int;
+}
+
+int? _wire2api_opt_box_i32(dynamic raw) {
+  return raw == null ? null : _wire2api_box_i32(raw);
+}
+
+int _wire2api_box_i32(dynamic raw) {
+  return raw as int;
+}
+
+int? _wire2api_opt_box_i64(dynamic raw) {
+  return raw == null ? null : _wire2api_box_i64(raw);
+}
+
+int _wire2api_box_i64(dynamic raw) {
+  return raw as int;
+}
+
+bool? _wire2api_opt_box_bool(dynamic raw) {
+  return raw == null ? null : _wire2api_box_bool(raw);
+}
+
+bool _wire2api_box_bool(dynamic raw) {
+  return raw as bool;
+}
+
+ExoticOptionals? _wire2api_opt_box_exotic_optionals(dynamic raw) {
+  return raw == null ? null : _wire2api_box_exotic_optionals(raw);
+}
+
+ExoticOptionals _wire2api_box_exotic_optionals(dynamic raw) {
+  return _wire2api_exotic_optionals(raw);
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides
@@ -1010,34 +1159,74 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_optional_struct =
       _wire_handle_optional_structPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_increment(
+  void wire_handle_optional_increment(
     int port,
     ffi.Pointer<wire_ExoticOptionals> opt,
   ) {
-    return _wire_increment(
+    return _wire_handle_optional_increment(
       port,
       opt,
     );
   }
 
-  late final _wire_incrementPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ExoticOptionals>)>>('wire_increment');
-  late final _wire_increment = _wire_incrementPtr.asFunction<void Function(int, ffi.Pointer<wire_ExoticOptionals>)>();
+  late final _wire_handle_optional_incrementPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ExoticOptionals>)>>(
+          'wire_handle_optional_increment');
+  late final _wire_handle_optional_increment =
+      _wire_handle_optional_incrementPtr.asFunction<void Function(int, ffi.Pointer<wire_ExoticOptionals>)>();
 
-  void wire_handle_boxed_optional(
+  void wire_handle_increment_boxed_optional(
     int port,
     ffi.Pointer<ffi.Double> opt,
   ) {
-    return _wire_handle_boxed_optional(
+    return _wire_handle_increment_boxed_optional(
       port,
       opt,
     );
   }
 
-  late final _wire_handle_boxed_optionalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>('wire_handle_boxed_optional');
-  late final _wire_handle_boxed_optional =
-      _wire_handle_boxed_optionalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
+  late final _wire_handle_increment_boxed_optionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>(
+          'wire_handle_increment_boxed_optional');
+  late final _wire_handle_increment_boxed_optional =
+      _wire_handle_increment_boxed_optionalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
+
+  void wire_handle_option_box_arguments(
+    int port,
+    ffi.Pointer<ffi.Int8> i8box,
+    ffi.Pointer<ffi.Uint8> u8box,
+    ffi.Pointer<ffi.Int32> i32box,
+    ffi.Pointer<ffi.Int64> i64box,
+    ffi.Pointer<ffi.Double> f64box,
+    ffi.Pointer<ffi.Uint8> boolbox,
+    ffi.Pointer<wire_ExoticOptionals> structbox,
+  ) {
+    return _wire_handle_option_box_arguments(
+      port,
+      i8box,
+      u8box,
+      i32box,
+      i64box,
+      f64box,
+      boolbox,
+      structbox,
+    );
+  }
+
+  late final _wire_handle_option_box_argumentsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int64>,
+              ffi.Pointer<ffi.Double>,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Pointer<wire_ExoticOptionals>)>>('wire_handle_option_box_arguments');
+  late final _wire_handle_option_box_arguments = _wire_handle_option_box_argumentsPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
+          ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<wire_ExoticOptionals>)>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
@@ -1210,31 +1399,19 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list');
   late final _new_int_8_list = _new_int_8_listPtr.asFunction<ffi.Pointer<wire_int_8_list> Function(int)>();
 
-  ffi.Pointer<wire_float_64_list> new_float_64_list(
+  ffi.Pointer<wire_list_opt_box_autoadd_attribute> new_list_opt_box_autoadd_attribute(
     int len,
   ) {
-    return _new_float_64_list(
+    return _new_list_opt_box_autoadd_attribute(
       len,
     );
   }
 
-  late final _new_float_64_listPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_64_list> Function(ffi.Int32)>>('new_float_64_list');
-  late final _new_float_64_list = _new_float_64_listPtr.asFunction<ffi.Pointer<wire_float_64_list> Function(int)>();
-
-  ffi.Pointer<wire_list_Option_attribute> new_list_Option_attribute(
-    int len,
-  ) {
-    return _new_list_Option_attribute(
-      len,
-    );
-  }
-
-  late final _new_list_Option_attributePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_Option_attribute> Function(ffi.Int32)>>(
-          'new_list_Option_attribute');
-  late final _new_list_Option_attribute =
-      _new_list_Option_attributePtr.asFunction<ffi.Pointer<wire_list_Option_attribute> Function(int)>();
+  late final _new_list_opt_box_autoadd_attributePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(ffi.Int32)>>(
+          'new_list_opt_box_autoadd_attribute');
+  late final _new_list_opt_box_autoadd_attribute = _new_list_opt_box_autoadd_attributePtr
+      .asFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(int)>();
 
   ffi.Pointer<wire_Attribute> new_box_autoadd_attribute() {
     return _new_box_autoadd_attribute();
@@ -1255,6 +1432,70 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   late final _new_box_f64Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_f64');
   late final _new_box_f64 = _new_box_f64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+
+  ffi.Pointer<ffi.Int8> new_box_i8(
+    int value,
+  ) {
+    return _new_box_i8(
+      value,
+    );
+  }
+
+  late final _new_box_i8Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int8)>>('new_box_i8');
+  late final _new_box_i8 = _new_box_i8Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+
+  ffi.Pointer<ffi.Uint8> new_box_u8(
+    int value,
+  ) {
+    return _new_box_u8(
+      value,
+    );
+  }
+
+  late final _new_box_u8Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>('new_box_u8');
+  late final _new_box_u8 = _new_box_u8Ptr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
+
+  ffi.Pointer<ffi.Int32> new_box_i32(
+    int value,
+  ) {
+    return _new_box_i32(
+      value,
+    );
+  }
+
+  late final _new_box_i32Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_i32');
+  late final _new_box_i32 = _new_box_i32Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
+  ffi.Pointer<ffi.Int64> new_box_i64(
+    int value,
+  ) {
+    return _new_box_i64(
+      value,
+    );
+  }
+
+  late final _new_box_i64Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_i64');
+  late final _new_box_i64 = _new_box_i64Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+
+  ffi.Pointer<ffi.Uint8> new_box_bool(
+    bool value,
+  ) {
+    return _new_box_bool(
+      value ? 1 : 0,
+    );
+  }
+
+  late final _new_box_boolPtr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>('new_box_bool');
+  late final _new_box_bool = _new_box_boolPtr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
+
+  ffi.Pointer<wire_ExoticOptionals> new_box_exotic_optionals() {
+    return _new_box_exotic_optionals();
+  }
+
+  late final _new_box_exotic_optionalsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ExoticOptionals> Function()>>('new_box_exotic_optionals');
+  late final _new_box_exotic_optionals =
+      _new_box_exotic_optionalsPtr.asFunction<ffi.Pointer<wire_ExoticOptionals> Function()>();
 
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
@@ -1319,13 +1560,6 @@ class wire_int_8_list extends ffi.Struct {
   external int len;
 }
 
-class wire_float_64_list extends ffi.Struct {
-  external ffi.Pointer<ffi.Double> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
 class wire_Attribute extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> key;
 
@@ -1339,8 +1573,8 @@ class wire_list_attribute extends ffi.Struct {
   external int len;
 }
 
-class wire_list_Option_attribute extends ffi.Struct {
-  external ffi.Pointer<wire_Attribute> ptr;
+class wire_list_opt_box_autoadd_attribute extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_Attribute>> ptr;
 
   @ffi.Int32()
   external int len;
@@ -1361,13 +1595,11 @@ class wire_ExoticOptionals extends ffi.Struct {
 
   external ffi.Pointer<wire_uint_8_list> uint8list;
 
-  external ffi.Pointer<wire_float_64_list> float64list;
-
   external ffi.Pointer<wire_list_attribute> attributes;
 
-  external ffi.Pointer<wire_list_Option_attribute> attributes_nullable;
+  external ffi.Pointer<wire_list_opt_box_autoadd_attribute> attributes_nullable;
 
-  external ffi.Pointer<wire_list_Option_attribute> nullable_attributes;
+  external ffi.Pointer<wire_list_opt_box_autoadd_attribute> nullable_attributes;
 
   external ffi.Pointer<wire_NewTypeInt> newtypeint;
 }

@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 
 void main(List<String> args) async {
   test('main test', () async {
-    final dylibPath = args[0];
+    final dylibPath = args.length >= 3 ? args[2] : args[0];
 
     print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
 
@@ -150,19 +150,19 @@ void main(List<String> args) async {
     expect(optional4.children?[0].attributes, null);
     expect(optional4.children?[0].children?[0].text, message);
 
-    print('dart call increment');
-    final optional5 = await api.increment();
+    print('dart call handleOptionalIncrement');
+    final optional5 = await api.handleOptionalIncrement();
     expect(optional5, null);
 
-    var optional6 = await api.increment(
+    var optional6 = await api.handleOptionalIncrement(
       opt: ExoticOptionals(
         attributesNullable: [],
       ),
     );
     if (optional6 == null) return fail('increment returned null for non-null params');
-    final loopFor = 500;
+    final loopFor = 100;
     for (var i = 1; i < loopFor; i++) {
-      optional6 = await api.increment(opt: optional6);
+      optional6 = await api.handleOptionalIncrement(opt: optional6);
     }
     if (optional6 == null) return fail('optional6 nulled after loop');
     expect(optional6.int32, loopFor);
@@ -170,20 +170,30 @@ void main(List<String> args) async {
     expect(optional6.float64, loopFor);
     expect(optional6.boolean, false);
     expect(optional6.zerocopy?.length, loopFor);
-    expect(optional6.int8List?.length, loopFor - 1);
-    expect(optional6.uint8List?.length, loopFor - 1);
-    // expect(optional6.float64List?.length, loopFor);
-    expect(optional6.attributes?.length, loopFor - 1);
-    expect(optional6.newtypeint?.field0, loopFor - 1);
+    expect(optional6.int8List?.length, loopFor);
+    expect(optional6.uint8List?.length, loopFor);
+    expect(optional6.attributesNullable.length, loopFor);
+    expect(optional6.nullableAttributes?.length, loopFor);
+    expect(optional6.newtypeint?.field0, loopFor);
 
-    print('dart call handleBoxedOptional');
-    final optional7 = await api.handleBoxedOptional();
+    print('dart call handleIncrementBoxedOptional');
+    final optional7 = await api.handleIncrementBoxedOptional();
     expect(optional7, 42);
     var optional8 = 0.0;
     for (var i = 0; i < loopFor; i++) {
-      optional8 = await api.handleBoxedOptional(opt: optional8);
+      optional8 = await api.handleIncrementBoxedOptional(opt: optional8);
     }
     expect(optional8, loopFor);
+
+    print('dart call handleOptionBoxArguments');
+    final optional9 = await api.handleOptionBoxArguments();
+    print(optional9);
+
+    final optional10 = await api.handleOptionBoxArguments(
+      boolbox: true,
+      structbox: optional6,
+    );
+    print(optional10);
 
     print('flutter_rust_bridge example program end');
   });

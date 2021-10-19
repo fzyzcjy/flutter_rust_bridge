@@ -1,5 +1,3 @@
-// use crate::api_types::ApiType::Optional;
-// use crate::transformer::ApiType::Primitive;
 use log::debug;
 
 use crate::api_types::ApiType::{Boxed, StructRef};
