@@ -106,6 +106,22 @@ pub enum ApiType {
     Boxed(Box<ApiTypeBoxed>),
 }
 
+macro_rules! api_type_call_child {
+    ($func:ident, $ret:ty) => {
+        pub fn $func(&self) -> $ret {
+            match self {
+                Primitive(inner) => inner.$func(),
+                Delegate(inner) => inner.$func(),
+                PrimitiveList(inner) => inner.$func(),
+                GeneralList(inner) => inner.$func(),
+                StructRef(inner) => inner.$func(),
+                Boxed(inner) => inner.$func(),
+                Optional(inner) => inner.$func(),
+            }
+        }
+    };
+}
+
 impl ApiType {
     pub fn visit_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
         if f(self) {
@@ -129,84 +145,13 @@ impl ApiType {
         }
     }
 
-    pub fn safe_ident(&self) -> String {
-        match self {
-            Primitive(inner) => inner.safe_ident(),
-            Delegate(inner) => inner.safe_ident(),
-            PrimitiveList(inner) => inner.safe_ident(),
-            GeneralList(inner) => inner.safe_ident(),
-            StructRef(inner) => inner.safe_ident(),
-            Boxed(inner) => inner.safe_ident(),
-            Optional(inner) => inner.safe_ident(),
-        }
-    }
-
-    pub fn dart_api_type(&self) -> String {
-        match self {
-            Primitive(inner) => inner.dart_api_type(),
-            Delegate(inner) => inner.dart_api_type(),
-            PrimitiveList(inner) => inner.dart_api_type(),
-            GeneralList(inner) => inner.dart_api_type(),
-            StructRef(inner) => inner.dart_api_type(),
-            Boxed(inner) => inner.dart_api_type(),
-            Optional(inner) => inner.dart_api_type(),
-        }
-    }
-    pub fn dart_wire_type(&self) -> String {
-        match self {
-            Primitive(inner) => inner.dart_wire_type(),
-            Delegate(inner) => inner.dart_wire_type(),
-            PrimitiveList(inner) => inner.dart_wire_type(),
-            GeneralList(inner) => inner.dart_wire_type(),
-            StructRef(inner) => inner.dart_wire_type(),
-            Boxed(inner) => inner.dart_wire_type(),
-            Optional(inner) => inner.dart_wire_type(),
-        }
-    }
-    pub fn rust_api_type(&self) -> String {
-        match self {
-            Primitive(inner) => inner.rust_api_type(),
-            Delegate(inner) => inner.rust_api_type(),
-            PrimitiveList(inner) => inner.rust_api_type(),
-            GeneralList(inner) => inner.rust_api_type(),
-            StructRef(inner) => inner.rust_api_type(),
-            Boxed(inner) => inner.rust_api_type(),
-            Optional(inner) => inner.rust_api_type(),
-        }
-    }
-    pub fn rust_wire_type(&self) -> String {
-        match self {
-            Primitive(inner) => inner.rust_wire_type(),
-            Delegate(inner) => inner.rust_wire_type(),
-            PrimitiveList(inner) => inner.rust_wire_type(),
-            GeneralList(inner) => inner.rust_wire_type(),
-            StructRef(inner) => inner.rust_wire_type(),
-            Boxed(inner) => inner.rust_wire_type(),
-            Optional(inner) => inner.rust_wire_type(),
-        }
-    }
-    pub fn rust_wire_modifier(&self) -> String {
-        match self {
-            Primitive(inner) => inner.rust_wire_modifier(),
-            Delegate(inner) => inner.rust_wire_modifier(),
-            PrimitiveList(inner) => inner.rust_wire_modifier(),
-            GeneralList(inner) => inner.rust_wire_modifier(),
-            StructRef(inner) => inner.rust_wire_modifier(),
-            Boxed(inner) => inner.rust_wire_modifier(),
-            Optional(inner) => inner.rust_wire_modifier(),
-        }
-    }
-    pub fn rust_wire_is_pointer(&self) -> bool {
-        match self {
-            Primitive(inner) => inner.rust_wire_is_pointer(),
-            Delegate(inner) => inner.rust_wire_is_pointer(),
-            PrimitiveList(inner) => inner.rust_wire_is_pointer(),
-            GeneralList(inner) => inner.rust_wire_is_pointer(),
-            StructRef(inner) => inner.rust_wire_is_pointer(),
-            Boxed(inner) => inner.rust_wire_is_pointer(),
-            Optional(inner) => inner.rust_wire_is_pointer(),
-        }
-    }
+    api_type_call_child!(safe_ident, String);
+    api_type_call_child!(dart_api_type, String);
+    api_type_call_child!(dart_wire_type, String);
+    api_type_call_child!(rust_api_type, String);
+    api_type_call_child!(rust_wire_type, String);
+    api_type_call_child!(rust_wire_modifier, String);
+    api_type_call_child!(rust_wire_is_pointer, bool);
 
     #[inline]
     pub fn required_modifier(&self) -> &'static str {
