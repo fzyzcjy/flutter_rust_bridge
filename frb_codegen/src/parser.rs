@@ -158,11 +158,10 @@ impl<'a> Parser<'a> {
         CAPTURE_OPTION.captures(ty).map(|inner| {
             let inner_option = CAPTURE_OPTION.captures(&inner);
             if let Some(inner_option) = inner_option {
-                error!(
+                panic!(
                     "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
                     inner_option
                 );
-                panic!("nested option type {}", inner)
             };
             match self.parse_type(&inner) {
                 Primitive(prim) => ApiType::Optional(ApiTypeOptional::new_prim(prim)),
@@ -263,7 +262,7 @@ struct GenericCapture {
 
 impl GenericCapture {
     pub fn new(cls_name: &str) -> Self {
-        let regex = Regex::new(&*format!("^{}<([a-zA-Z0-9_<>]+)>$", cls_name)).unwrap();
+        let regex = Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>]+)>$", cls_name)).unwrap();
         Self { regex }
     }
 
