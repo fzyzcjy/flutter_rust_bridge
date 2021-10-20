@@ -307,8 +307,10 @@ impl ApiTypeChild for ApiTypePrimitive {
 }
 
 impl ApiTypePrimitive {
-    /// Primitive pointers.
-    pub fn dart_marker_type(&self) -> &'static str {
+    /// Representations of primitives within Dart's pointers, e.g. `ffi.Pointer<ffi.Uint8>`.
+    /// This is enforced on Dart's side, and should be used instead of `dart_wire_type`
+    /// whenever primitives are put behind a pointer.
+    pub fn dart_native_type(&self) -> &'static str {
         match self {
             ApiTypePrimitive::U8 | ApiTypePrimitive::Bool => "ffi.Uint8",
             ApiTypePrimitive::I8 => "ffi.Int8",
@@ -550,7 +552,7 @@ impl ApiTypeChild for ApiTypeBoxed {
 
     fn dart_wire_type(&self) -> String {
         let wire_type = if let Primitive(prim) = &self.inner {
-            prim.dart_marker_type().to_owned()
+            prim.dart_native_type().to_owned()
         } else {
             self.inner.dart_wire_type()
         };
