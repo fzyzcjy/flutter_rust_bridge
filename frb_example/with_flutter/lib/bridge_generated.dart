@@ -227,15 +227,26 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   }
 
   // Section: api_fill_to_wire
+  void _api_fill_to_wire_box_autoadd_size(Size apiObj, ffi.Pointer<wire_Size> wireObj) {
+    _api_fill_to_wire_size(apiObj, wireObj.ref);
+  }
 
   void _api_fill_to_wire_size(Size apiObj, wire_Size wireObj) {
     wireObj.width = _api2wire_i32(apiObj.width);
     wireObj.height = _api2wire_i32(apiObj.height);
   }
 
+  void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
+    _api_fill_to_wire_point(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
     wireObj.x = _api2wire_f64(apiObj.x);
     wireObj.y = _api2wire_f64(apiObj.y);
+  }
+
+  void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<wire_TreeNode> wireObj) {
+    _api_fill_to_wire_tree_node(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_tree_node(TreeNode apiObj, wire_TreeNode wireObj) {
@@ -245,6 +256,9 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 }
 
 // Section: wire2api
+Size _wire2api_box_autoadd_size(dynamic raw) {
+  return _wire2api_size(raw);
+}
 
 Size _wire2api_size(dynamic raw) {
   final arr = raw as List<dynamic>;
@@ -257,6 +271,10 @@ Size _wire2api_size(dynamic raw) {
 
 int _wire2api_i32(dynamic raw) {
   return raw as int;
+}
+
+Point _wire2api_box_autoadd_point(dynamic raw) {
+  return _wire2api_point(raw);
 }
 
 Point _wire2api_point(dynamic raw) {
@@ -284,6 +302,10 @@ int _wire2api_u8(dynamic raw) {
   return raw as int;
 }
 
+TreeNode _wire2api_box_autoadd_tree_node(dynamic raw) {
+  return _wire2api_tree_node(raw);
+}
+
 TreeNode _wire2api_tree_node(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -298,11 +320,11 @@ String _wire2api_String(dynamic raw) {
 }
 
 List<TreeNode> _wire2api_list_tree_node(dynamic raw) {
-  return (raw as List<dynamic>).map((item) => _wire2api_tree_node(item)).toList();
+  return (raw as List<dynamic>).map(_wire2api_tree_node).toList();
 }
 
 List<Size> _wire2api_list_size(dynamic raw) {
-  return (raw as List<dynamic>).map((item) => _wire2api_size(item)).toList();
+  return (raw as List<dynamic>).map(_wire2api_size).toList();
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides

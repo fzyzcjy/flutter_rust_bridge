@@ -197,6 +197,107 @@ pub extern "C" fn wire_return_panic(port: i64) {
     );
 }
 
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_return(port: i64, left: f64, right: f64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_optional_return",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_left = left.wire2api();
+            let api_right = right.wire2api();
+            move |task_callback| handle_optional_return(api_left, api_right)
+        },
+    );
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_struct(port: i64, document: *mut wire_uint_8_list) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_optional_struct",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_document = document.wire2api();
+            move |task_callback| handle_optional_struct(api_document)
+        },
+    );
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_increment(port: i64, opt: *mut wire_ExoticOptionals) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_optional_increment",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opt = opt.wire2api();
+            move |task_callback| handle_optional_increment(api_opt)
+        },
+    );
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_increment_boxed_optional(port: i64, opt: *mut f64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_increment_boxed_optional",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opt = opt.wire2api();
+            move |task_callback| handle_increment_boxed_optional(api_opt)
+        },
+    );
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_option_box_arguments(
+    port: i64,
+    i8box: *mut i8,
+    u8box: *mut u8,
+    i32box: *mut i32,
+    i64box: *mut i64,
+    f64box: *mut f64,
+    boolbox: *mut bool,
+    structbox: *mut wire_ExoticOptionals,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_option_box_arguments",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_i8box = i8box.wire2api();
+            let api_u8box = u8box.wire2api();
+            let api_i32box = i32box.wire2api();
+            let api_i64box = i64box.wire2api();
+            let api_f64box = f64box.wire2api();
+            let api_boolbox = boolbox.wire2api();
+            let api_structbox = structbox.wire2api();
+            move |task_callback| {
+                handle_option_box_arguments(
+                    api_i8box,
+                    api_u8box,
+                    api_i32box,
+                    api_i64box,
+                    api_f64box,
+                    api_boolbox,
+                    api_structbox,
+                )
+            }
+        },
+    );
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -241,6 +342,66 @@ pub struct wire_list_my_tree_node {
     len: i32,
 }
 
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Element {
+    tag: *mut wire_uint_8_list,
+    text: *mut wire_uint_8_list,
+    attributes: *mut wire_list_attribute,
+    children: *mut wire_list_element,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_attribute {
+    ptr: *mut wire_Attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Attribute {
+    key: *mut wire_uint_8_list,
+    value: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_element {
+    ptr: *mut wire_Element,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ExoticOptionals {
+    int32: *mut i32,
+    int64: *mut i64,
+    float64: *mut f64,
+    boolean: *mut bool,
+    zerocopy: *mut wire_uint_8_list,
+    int8list: *mut wire_int_8_list,
+    uint8list: *mut wire_uint_8_list,
+    attributes: *mut wire_list_attribute,
+    attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
+    nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
+    newtypeint: *mut wire_NewTypeInt,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_8_list {
+    ptr: *mut i8,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_box_autoadd_attribute {
+    ptr: *mut *mut wire_Attribute,
+    len: i32,
+}
+
 // Section: allocate functions
 
 #[no_mangle]
@@ -270,7 +431,7 @@ pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_NewTypeInt {
 #[no_mangle]
 pub extern "C" fn new_list_my_size(len: i32) -> *mut wire_list_my_size {
     let wrap = wire_list_my_size {
-        ptr: support::new_leak_vec_ptr(wire_MySize::new_with_null_ptr(), len),
+        ptr: support::new_leak_vec_ptr(<wire_MySize>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -284,10 +445,118 @@ pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_MyTreeNode {
 #[no_mangle]
 pub extern "C" fn new_list_my_tree_node(len: i32) -> *mut wire_list_my_tree_node {
     let wrap = wire_list_my_tree_node {
-        ptr: support::new_leak_vec_ptr(wire_MyTreeNode::new_with_null_ptr(), len),
+        ptr: support::new_leak_vec_ptr(<wire_MyTreeNode>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_element() -> *mut wire_Element {
+    support::new_leak_box_ptr(wire_Element::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
+    let wrap = wire_list_attribute {
+        ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_element(len: i32) -> *mut wire_list_element {
+    let wrap = wire_list_element {
+        ptr: support::new_leak_vec_ptr(<wire_Element>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_exotic_optionals() -> *mut wire_ExoticOptionals {
+    support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_i32(value: i32) -> *mut i32 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_i64(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_int_8_list(len: i32) -> *mut wire_int_8_list {
+    let ans = wire_int_8_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_box_autoadd_attribute(
+    len: i32,
+) -> *mut wire_list_opt_box_autoadd_attribute {
+    let wrap = wire_list_opt_box_autoadd_attribute {
+        ptr: support::new_leak_vec_ptr(<*mut wire_Attribute>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_Attribute {
+    support::new_leak_box_ptr(wire_Attribute::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_f64(value: f64) -> *mut f64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i8(value: i8) -> *mut i8 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_u8(value: u8) -> *mut u8 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i32(value: i32) -> *mut i32 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i64(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_bool(value: bool) -> *mut bool {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_exotic_optionals() -> *mut wire_ExoticOptionals {
+    support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
 
 // Section: impl Wire2Api
@@ -390,7 +659,7 @@ impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(|x| x.wire2api()).collect()
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
@@ -417,7 +686,408 @@ impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(|x| x.wire2api()).collect()
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<Option<f64>> for *mut f64 {
+    fn wire2api(self) -> Option<f64> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<f64> for *mut f64 {
+    fn wire2api(self) -> f64 {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<String>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> Option<String> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Option<Element>> for *mut wire_Element {
+    fn wire2api(self) -> Option<Element> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Element> for *mut wire_Element {
+    fn wire2api(self) -> Element {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Element> for wire_Element {
+    fn wire2api(self) -> Element {
+        Element {
+            tag: self.tag.wire2api(),
+            text: self.text.wire2api(),
+            attributes: self.attributes.wire2api(),
+            children: self.children.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<Option<Vec<Attribute>>> for *mut wire_list_attribute {
+    fn wire2api(self) -> Option<Vec<Attribute>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
+    fn wire2api(self) -> Vec<Attribute> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<Attribute> for wire_Attribute {
+    fn wire2api(self) -> Attribute {
+        Attribute {
+            key: self.key.wire2api(),
+            value: self.value.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<Option<Vec<Element>>> for *mut wire_list_element {
+    fn wire2api(self) -> Option<Vec<Element>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Vec<Element>> for *mut wire_list_element {
+    fn wire2api(self) -> Vec<Element> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<Option<ExoticOptionals>> for *mut wire_ExoticOptionals {
+    fn wire2api(self) -> Option<ExoticOptionals> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
+    fn wire2api(self) -> ExoticOptionals {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<ExoticOptionals> for wire_ExoticOptionals {
+    fn wire2api(self) -> ExoticOptionals {
+        ExoticOptionals {
+            int32: self.int32.wire2api(),
+            int64: self.int64.wire2api(),
+            float64: self.float64.wire2api(),
+            boolean: self.boolean.wire2api(),
+            zerocopy: self.zerocopy.wire2api(),
+            int8list: self.int8list.wire2api(),
+            uint8list: self.uint8list.wire2api(),
+            attributes: self.attributes.wire2api(),
+            attributes_nullable: self.attributes_nullable.wire2api(),
+            nullable_attributes: self.nullable_attributes.wire2api(),
+            newtypeint: self.newtypeint.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<Option<i32>> for *mut i32 {
+    fn wire2api(self) -> Option<i32> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<i32> for *mut i32 {
+    fn wire2api(self) -> i32 {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<i64>> for *mut i64 {
+    fn wire2api(self) -> Option<i64> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<i64> for *mut i64 {
+    fn wire2api(self) -> i64 {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<bool>> for *mut bool {
+    fn wire2api(self) -> Option<bool> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<bool> for *mut bool {
+    fn wire2api(self) -> bool {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> Option<ZeroCopyBuffer<Vec<u8>>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Option<Vec<i8>>> for *mut wire_int_8_list {
+    fn wire2api(self) -> Option<Vec<i8>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Vec<i8>> for *mut wire_int_8_list {
+    fn wire2api(self) -> Vec<i8> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+
+impl Wire2Api<i8> for i8 {
+    fn wire2api(self) -> i8 {
+        self
+    }
+}
+
+impl Wire2Api<Option<Vec<u8>>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> Option<Vec<u8>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribute {
+    fn wire2api(self) -> Vec<Option<Attribute>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<Option<Attribute>> for *mut wire_Attribute {
+    fn wire2api(self) -> Option<Attribute> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Attribute> for *mut wire_Attribute {
+    fn wire2api(self) -> Attribute {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<Vec<Option<Attribute>>>> for *mut wire_list_opt_box_autoadd_attribute {
+    fn wire2api(self) -> Option<Vec<Option<Attribute>>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Option<NewTypeInt>> for *mut wire_NewTypeInt {
+    fn wire2api(self) -> Option<NewTypeInt> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Option<Box<f64>>> for *mut f64 {
+    fn wire2api(self) -> Option<Box<f64>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Box<f64>> for *mut f64 {
+    fn wire2api(self) -> Box<f64> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<Box<i8>>> for *mut i8 {
+    fn wire2api(self) -> Option<Box<i8>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Box<i8>> for *mut i8 {
+    fn wire2api(self) -> Box<i8> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<Box<u8>>> for *mut u8 {
+    fn wire2api(self) -> Option<Box<u8>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Box<u8>> for *mut u8 {
+    fn wire2api(self) -> Box<u8> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<Box<i32>>> for *mut i32 {
+    fn wire2api(self) -> Option<Box<i32>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Box<i32>> for *mut i32 {
+    fn wire2api(self) -> Box<i32> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<Box<i64>>> for *mut i64 {
+    fn wire2api(self) -> Option<Box<i64>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Box<i64>> for *mut i64 {
+    fn wire2api(self) -> Box<i64> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<Box<bool>>> for *mut bool {
+    fn wire2api(self) -> Option<Box<bool>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Box<bool>> for *mut bool {
+    fn wire2api(self) -> Box<bool> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Option<Box<ExoticOptionals>>> for *mut wire_ExoticOptionals {
+    fn wire2api(self) -> Option<Box<ExoticOptionals>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Box<ExoticOptionals>> for *mut wire_ExoticOptionals {
+    fn wire2api(self) -> Box<ExoticOptionals> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
     }
 }
 
@@ -425,6 +1095,12 @@ impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
 
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
+}
+
+impl<T> NewWithNullPtr for *mut T {
+    fn new_with_null_ptr() -> Self {
+        std::ptr::null_mut()
+    }
 }
 
 impl NewWithNullPtr for wire_MySize {
@@ -454,6 +1130,44 @@ impl NewWithNullPtr for wire_MyTreeNode {
     }
 }
 
+impl NewWithNullPtr for wire_Element {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: std::ptr::null_mut(),
+            text: std::ptr::null_mut(),
+            attributes: std::ptr::null_mut(),
+            children: std::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Attribute {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: std::ptr::null_mut(),
+            value: std::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_ExoticOptionals {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int32: std::ptr::null_mut(),
+            int64: std::ptr::null_mut(),
+            float64: std::ptr::null_mut(),
+            boolean: std::ptr::null_mut(),
+            zerocopy: std::ptr::null_mut(),
+            int8list: std::ptr::null_mut(),
+            uint8list: std::ptr::null_mut(),
+            attributes: std::ptr::null_mut(),
+            attributes_nullable: std::ptr::null_mut(),
+            nullable_attributes: std::ptr::null_mut(),
+            newtypeint: std::ptr::null_mut(),
+        }
+    }
+}
+
 // Section: impl IntoDart
 
 impl support::IntoDart for MySize {
@@ -474,6 +1188,43 @@ impl support::IntoDart for MyTreeNode {
             self.value_i32.into_dart(),
             self.value_vec_u8.into_dart(),
             self.children.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+
+impl support::IntoDart for Element {
+    fn into_dart(self) -> support::DartCObject {
+        vec![
+            self.tag.into_dart(),
+            self.text.into_dart(),
+            self.attributes.into_dart(),
+            self.children.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+
+impl support::IntoDart for Attribute {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.key.into_dart(), self.value.into_dart()].into_dart()
+    }
+}
+
+impl support::IntoDart for ExoticOptionals {
+    fn into_dart(self) -> support::DartCObject {
+        vec![
+            self.int32.into_dart(),
+            self.int64.into_dart(),
+            self.float64.into_dart(),
+            self.boolean.into_dart(),
+            self.zerocopy.into_dart(),
+            self.int8list.into_dart(),
+            self.uint8list.into_dart(),
+            self.attributes.into_dart(),
+            self.attributes_nullable.into_dart(),
+            self.nullable_attributes.into_dart(),
+            self.newtypeint.into_dart(),
         ]
         .into_dart()
     }

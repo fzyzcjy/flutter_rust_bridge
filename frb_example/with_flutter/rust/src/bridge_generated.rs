@@ -261,7 +261,7 @@ pub extern "C" fn new_box_autoadd_tree_node() -> *mut wire_TreeNode {
 #[no_mangle]
 pub extern "C" fn new_list_tree_node(len: i32) -> *mut wire_list_tree_node {
     let wrap = wire_list_tree_node {
-        ptr: support::new_leak_vec_ptr(wire_TreeNode::new_with_null_ptr(), len),
+        ptr: support::new_leak_vec_ptr(<wire_TreeNode>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -270,7 +270,7 @@ pub extern "C" fn new_list_tree_node(len: i32) -> *mut wire_list_tree_node {
 #[no_mangle]
 pub extern "C" fn new_list_size(len: i32) -> *mut wire_list_size {
     let wrap = wire_list_size {
-        ptr: support::new_leak_vec_ptr(wire_Size::new_with_null_ptr(), len),
+        ptr: support::new_leak_vec_ptr(<wire_Size>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -376,7 +376,7 @@ impl Wire2Api<Vec<TreeNode>> for *mut wire_list_tree_node {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(|x| x.wire2api()).collect()
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
@@ -386,7 +386,7 @@ impl Wire2Api<Vec<Size>> for *mut wire_list_size {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(|x| x.wire2api()).collect()
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
@@ -394,6 +394,12 @@ impl Wire2Api<Vec<Size>> for *mut wire_list_size {
 
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
+}
+
+impl<T> NewWithNullPtr for *mut T {
+    fn new_with_null_ptr() -> Self {
+        std::ptr::null_mut()
+    }
 }
 
 impl NewWithNullPtr for wire_Size {

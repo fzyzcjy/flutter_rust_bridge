@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::others::*;
@@ -93,6 +95,12 @@ impl Generator {
 
         pub trait NewWithNullPtr {{
             fn new_with_null_ptr() -> Self;
+        }}
+
+        impl<T> NewWithNullPtr for *mut T {{
+            fn new_with_null_ptr() -> Self {{ 
+                std::ptr::null_mut()
+            }}
         }}
 
         {}
@@ -200,23 +208,28 @@ impl Generator {
                 "len: i32".to_string(),
             ],
             GeneralList(list) => vec![
-                format!("ptr: *mut {}", list.inner.rust_wire_type()),
+                format!(
+                    "ptr: *mut {}{}",
+                    list.inner.optional_ptr_modifier(),
+                    list.inner.rust_wire_type()
+                ),
                 "len: i32".to_string(),
             ],
-            StructRef(s) => s
-                .get(api_file)
-                .fields
-                .iter()
-                .map(|field| {
-                    format!(
-                        "{}: {}{}",
-                        field.name.rust_style(),
-                        field.ty.rust_wire_modifier(),
-                        field.ty.rust_wire_type()
-                    )
-                })
-                .collect(),
-            Primitive(_) | Delegate(_) | Boxed(_) => return "".to_string(),
+            StructRef(s) => {
+                let s = s.get(api_file);
+                s.fields
+                    .iter()
+                    .map(|field| {
+                        format!(
+                            "{}: {}{}",
+                            field.name.rust_style(),
+                            field.ty.rust_wire_modifier(),
+                            field.ty.rust_wire_type()
+                        )
+                    })
+                    .collect()
+            }
+            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) => return "".to_string(),
         };
 
         format!(
@@ -236,8 +249,7 @@ impl Generator {
         // println!("generate_allocate_funcs: {:?}", ty);
 
         match ty {
-            Primitive(_) => "".to_string(),
-            Delegate(_) => "".to_string(),
+            Primitive(_) | Delegate(_) | Optional(_) => "".to_string(),
             PrimitiveList(list) => self.extern_func_collector.generate(
                 &format!("new_{}", list.safe_ident()),
                 &["len: i32"],
@@ -251,55 +263,70 @@ impl Generator {
             GeneralList(list) => self.extern_func_collector.generate(
                 &format!("new_{}", ty.safe_ident()),
                 &["len: i32"],
-                Some(&format!("{}{}", list.rust_wire_modifier(), list.rust_wire_type())),
+                Some(&[
+                     list.rust_wire_modifier().as_str(),
+                     list.rust_wire_type().as_str()
+                ].concat()),
                 &format!(
-                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}::new_with_null_ptr(), len), len }};
+                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
                     support::new_leak_box_ptr(wrap)",
                     list.rust_wire_type(),
-                    list.inner.rust_wire_type(),
+                    list.inner.optional_ptr_modifier(),
+                    list.inner.rust_wire_type()
                 ),
             ),
             StructRef(_) => "".to_string(),
-            Boxed(b) => self.extern_func_collector.generate(
-                &format!("new_{}", ty.safe_ident()),
-                &[],
-                Some(&format!("{}{}", ty.rust_wire_modifier(), ty.rust_wire_type())),
-                &format!(
-                    "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                    b.inner.rust_wire_type(),
-                ),
-            ),
+            Boxed(b) => {
+                match &b.inner {
+                    Primitive(prim) => {
+                        self.extern_func_collector.generate(
+                            &format!("new_{}", ty.safe_ident()),
+                            &[&format!("value: {}", prim.rust_wire_type())],
+                            Some(&format!("*mut {}", prim.rust_wire_type())),
+                            "support::new_leak_box_ptr(value)"
+                        )
+                    }
+                    inner => {
+                        self.extern_func_collector.generate(
+                            &format!("new_{}", ty.safe_ident()),
+                            &[],
+                            Some(&[ty.rust_wire_modifier(), ty.rust_wire_type()].concat()),
+                            &format!(
+                                "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                                inner.rust_wire_type()
+                            )
+                        )
+                    }
+                }
+            },
         }
     }
 
     fn generate_wire2api_func(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
-        let body = match ty {
-            Primitive(_) => "self".to_string(),
+        let body: Cow<str> = match ty {
+            Primitive(_) => "self".into(),
             Delegate(d) => match d {
                 ApiTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
                 String::from_utf8_lossy(&vec).into_owned()"
-                    .to_string(),
-                ApiTypeDelegate::ZeroCopyBufferVecU8 => {
-                    "ZeroCopyBuffer(self.wire2api())".to_string()
-                }
+                    .into(),
+                ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer(self.wire2api())".into(),
             },
             PrimitiveList(_) => "unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-            }
-            "
-            .to_string(),
-            GeneralList(_) => "let vec = unsafe {
+            }"
+            .into(),
+            GeneralList(_) => "
+            let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             };
-            vec.into_iter().map(|x| x.wire2api()).collect()
-            "
-            .to_string(),
+            vec.into_iter().map(Wire2Api::wire2api).collect()"
+                .into(),
             Boxed(_) => "let wrap = unsafe { support::box_from_leak_ptr(self) };
             (*wrap).wire2api().into()"
-                .to_string(),
+                .into(),
             StructRef(struct_ref) => {
                 let api_struct = struct_ref.get(api_file);
 
@@ -312,7 +339,7 @@ impl Generator {
                             if api_struct.is_fields_named {
                                 field.name.rust_style().to_string() + ": "
                             } else {
-                                "".to_string()
+                                String::new()
                             },
                             field.name.rust_style()
                         )
@@ -325,7 +352,10 @@ impl Generator {
                 } else {
                     format!("{}({})", ty.rust_api_type(), fields_str)
                 }
+                .into()
             }
+            // implicit delegation
+            Optional(_) => "if self.is_null() { None } else { Some(self.wire2api()) }".into(),
         };
 
         format!(
@@ -343,10 +373,30 @@ impl Generator {
     }
 
     fn generate_new_with_nullptr_func(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
-        let body = match ty {
-            StructRef(s) => s
-                .get(api_file)
-                .fields
+        match ty {
+            StructRef(st) => self
+                .generate_new_with_nullptr_func_for_struct(st.get(api_file), &ty.rust_wire_type()),
+            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
+            | Optional(_) => String::new(),
+        }
+    }
+
+    fn generate_impl_intodart(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
+        // println!("generate_impl_intodart: {:?}", ty);
+        match ty {
+            StructRef(s) => self.generate_impl_intodart_for_struct(s.get(api_file)),
+            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
+            | Optional(_) => "".to_string(),
+        }
+    }
+
+    fn generate_new_with_nullptr_func_for_struct(
+        &self,
+        s: &ApiStruct,
+        rust_wire_type: &str,
+    ) -> String {
+        let body = {
+            s.fields
                 .iter()
                 .map(|field| {
                     format!(
@@ -360,33 +410,16 @@ impl Generator {
                     )
                 })
                 .collect::<Vec<_>>()
-                .join("\n"),
-            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
-                return String::new();
-            }
+                .join("\n")
         };
-
         format!(
-            "impl NewWithNullPtr for {} {{
-            fn new_with_null_ptr() -> Self {{
-                Self {{
-                    {}
-                }}
-            }}
-        }}",
-            ty.rust_wire_type(),
-            body,
+            r#"impl NewWithNullPtr for {} {{
+                    fn new_with_null_ptr() -> Self {{
+                        Self {{ {} }}
+                    }}
+                }}"#,
+            rust_wire_type, body,
         )
-    }
-
-    fn generate_impl_intodart(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
-        // println!("generate_impl_intodart: {:?}", ty);
-        match ty {
-            StructRef(s) => self.generate_impl_intodart_for_struct(s.get(api_file)),
-            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
-                "".to_string()
-            }
-        }
     }
 
     fn generate_impl_intodart_for_struct(&mut self, s: &ApiStruct) -> String {
