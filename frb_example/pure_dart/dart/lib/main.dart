@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 
 void main(List<String> args) async {
   test('main test', () async {
-    final dylibPath = args.length >= 3 ? args[2] : args[0];
+    final dylibPath = args[0];
 
     print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
 
