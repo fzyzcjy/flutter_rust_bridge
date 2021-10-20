@@ -231,7 +231,7 @@ I plan to support the following features. Of course, if you want to have other f
 
 ## Appendix: Contributing
 
-Firstly, welcome, and thanks for your contributions! If you want to contribute, feel free to create a Pull Request. If you need some ideas of what to contribute, have a look at the Issues section of this repository. The code is covered by CI, and please ensure the CI passes - which often catches bugs. To release a new version, bump several versions, write down a changelog, and use `cargo check` to automatically update the examples' dependency versions: `vim frb_codegen/Cargo.toml && vim frb_rust/Cargo.toml && vim frb_dart/pubspec.yaml && vim CHANGELOG.md && (cd frb_example/pure_dart/rust && cargo check) && (cd frb_example/with_flutter/rust && cargo check)`
+Firstly, welcome, and thanks for your contributions! If you want to contribute, feel free to create a Pull Request. If you need some ideas of what to contribute, have a look at the Issues section of this repository. The code is covered by CI, and please ensure the CI passes - which often catches bugs. To release a new version, bump several versions, write down a changelog, and use `cargo check` to automatically update the examples' dependency versions: `vim frb_codegen/Cargo.toml && vim frb_rust/Cargo.toml && vim frb_dart/pubspec.yaml && vim CHANGELOG.md && (cd frb_example/pure_dart/rust && cargo check) && (cd frb_example/with_flutter/rust && cargo check) && (cd frb_example/pure_dart/dart && dart pub get) && (cd frb_example/with_flutter && dart pub get)`
 
 ## Contributors ✨
 
