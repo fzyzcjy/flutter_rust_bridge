@@ -1,3 +1,7 @@
+## Unreleased
+
+* add `--skip-add-mod-to-lib` flag
+
 ## 1.2.0
 
 * Enable `Option<T>` types to be transformed (thanks @Desdaemon)
