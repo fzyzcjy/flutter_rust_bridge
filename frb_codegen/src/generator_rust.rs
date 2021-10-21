@@ -11,9 +11,9 @@ pub struct Output {
     pub extern_func_names: Vec<String>,
 }
 
-pub fn generate(api_file: &ApiFile, rust_wire_stem: &str) -> Output {
+pub fn generate(api_file: &ApiFile, rust_wire_mod: &str) -> Output {
     let mut generator = Generator::new();
-    let code = generator.generate(api_file, rust_wire_stem);
+    let code = generator.generate(api_file, rust_wire_mod);
 
     Output {
         code,
@@ -32,7 +32,7 @@ impl Generator {
         }
     }
 
-    fn generate(&mut self, api_file: &ApiFile, rust_wire_stem: &str) -> String {
+    fn generate(&mut self, api_file: &ApiFile, rust_wire_mod: &str) -> String {
         let wire_funcs = api_file
             .funcs
             .iter()
@@ -113,7 +113,7 @@ impl Generator {
 
         "#,
             CODE_HEADER,
-            rust_wire_stem,
+            rust_wire_mod,
             wire_funcs.join("\n\n"),
             wire_structs.join("\n\n"),
             allocate_funcs.join("\n\n"),
@@ -264,8 +264,8 @@ impl Generator {
                 &format!("new_{}", ty.safe_ident()),
                 &["len: i32"],
                 Some(&[
-                     list.rust_wire_modifier().as_str(),
-                     list.rust_wire_type().as_str()
+                    list.rust_wire_modifier().as_str(),
+                    list.rust_wire_type().as_str()
                 ].concat()),
                 &format!(
                     "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
@@ -283,7 +283,7 @@ impl Generator {
                             &format!("new_{}", ty.safe_ident()),
                             &[&format!("value: {}", prim.rust_wire_type())],
                             Some(&format!("*mut {}", prim.rust_wire_type())),
-                            "support::new_leak_box_ptr(value)"
+                            "support::new_leak_box_ptr(value)",
                         )
                     }
                     inner => {
@@ -294,11 +294,11 @@ impl Generator {
                             &format!(
                                 "support::new_leak_box_ptr({}::new_with_null_ptr())",
                                 inner.rust_wire_type()
-                            )
+                            ),
                         )
                     }
                 }
-            },
+            }
         }
     }
 

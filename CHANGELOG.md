@@ -1,6 +1,7 @@
 ## Unreleased
 
-* add `--skip-add-mod-to-lib` flag
+* Add `--skip-add-mod-to-lib` flag.
+* Allow Rust input file in directories besides root directory of the crate.
 
 ## 1.2.0
 
