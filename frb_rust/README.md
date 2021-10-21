@@ -166,11 +166,12 @@ Simply add `--help` to see full documentation.
 flutter_rust_bridge_codegen
 
 USAGE:
-    flutter_rust_bridge_codegen [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
+    flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
 
 FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
+        --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
+    -h, --help                   Prints help information
+    -V, --version                Prints version information
 
 OPTIONS:
     -r, --rust-input <rust-input>                              Path of input Rust code
