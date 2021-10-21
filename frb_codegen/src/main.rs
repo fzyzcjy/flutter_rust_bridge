@@ -54,7 +54,9 @@ fn main() {
 
     commands::format_rust(&config.rust_output_path);
 
-    others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
+    if !config.skip_add_mod_to_lib {
+        others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
+    }
 
     let c_struct_names = api_file
         .distinct_types()

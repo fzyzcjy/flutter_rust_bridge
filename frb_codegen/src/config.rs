@@ -34,6 +34,9 @@ pub struct RawOpts {
     /// Line length for dart formatting
     #[structopt(long)]
     pub dart_format_line_length: Option<i32>,
+    /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
+    #[structopt(long)]
+    pub skip_add_mod_to_lib: bool,
 }
 
 #[derive(Debug)]
@@ -45,6 +48,7 @@ pub struct Opts {
     pub rust_output_path: String,
     pub class_name: String,
     pub dart_format_line_length: i32,
+    pub skip_add_mod_to_lib: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
@@ -75,6 +79,7 @@ pub fn parse(raw: RawOpts) -> Opts {
         rust_output_path,
         class_name,
         dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
+        skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
     }
 }
 
