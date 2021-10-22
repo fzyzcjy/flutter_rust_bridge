@@ -2,6 +2,7 @@
 
 * Add `--skip-add-mod-to-lib` flag.
 * Allow Rust input file in directories besides root directory of the crate.
+* Warn when command's output seems to indicate errors.
 
 ## 1.2.0
 
