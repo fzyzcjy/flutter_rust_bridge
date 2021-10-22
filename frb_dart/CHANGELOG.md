@@ -3,6 +3,7 @@
 * Add `--skip-add-mod-to-lib` flag.
 * Allow Rust input file in directories besides root directory of the crate.
 * Warn when command's output seems to indicate errors.
+* Do not include `stdarg.h` automatically to fix #108 and fix #53.
 
 ## 1.2.0
 
