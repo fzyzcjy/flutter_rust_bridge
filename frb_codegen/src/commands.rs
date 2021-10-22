@@ -40,6 +40,11 @@ fn cbindgen(rust_crate_dir: &str, c_output_path: &str, c_struct_names: Vec<Strin
     let config = format!(
         r#"
 language = "C"
+
+# do NOT include "stdarg.h", see #108 and #53
+sys_includes = ["stdbool.h", "stdint.h", "stdlib.h"]
+no_includes = true
+
 [export]
 include = [{}]
 "#,
