@@ -22,12 +22,9 @@ fn execute_command(command: &mut Command) {
 
     if result.status.success() {
         debug!("command={:?} output={:?}", command, result);
-    } else if String::from_utf8_lossy(&result.stdout).contains("fatal error") {
-        warn!(
-            "See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}",
-            command, result
-        );
-        // only warn, do not panic
+        if String::from_utf8_lossy(&result.stdout).contains("fatal error") {
+            warn!( "See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", command, result);
+        }
     } else {
         warn!("command={:?} output={:?}", command, result);
         panic!("command execution failed. command={:?}", command);
