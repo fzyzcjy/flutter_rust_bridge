@@ -1,4 +1,4 @@
-use std::fs;
+use std::{path::Path};
 use std::io::Write;
 use std::process::Command;
 
@@ -10,9 +10,10 @@ pub fn bindgen_rust_to_dart(
     dart_output_path: &str,
     dart_class_name: &str,
     c_struct_names: Vec<String>,
+    llvm_install_path: &str,
 ) {
     cbindgen(rust_crate_dir, c_output_path, c_struct_names);
-    ffigen(c_output_path, dart_output_path, dart_class_name);
+    ffigen(c_output_path, dart_output_path, dart_class_name, llvm_install_path);
 }
 
 fn execute_command(arg: &str, current_dir: Option<&str>) {
@@ -45,7 +46,7 @@ fn execute_command(arg: &str, current_dir: Option<&str>) {
             warn!( "See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", cmd, result);
         }
     } else {
-        warn!("command={:?} output={:?}", cmd, result);
+        warn!("command={:?} output={:?}", cmd, String::from_utf8_lossy(&result.stderr));
         panic!("command execution failed. command={:?}", cmd);
     }
 }
@@ -79,19 +80,27 @@ include = [{}]
     config_file.write_all(config.as_bytes()).unwrap();
     debug!("cbindgen config_file: {:?}", config_file);
 
+    let canonical = Path::new(rust_crate_dir).canonicalize().expect("Could not canonicalize rust crate dir");
+    let mut path = canonical.to_str().unwrap();
+
+    // on windows get rid of the UNC path
+    if path.starts_with(r"\\?\") {
+        path = &path[r"\\?\".len()..];
+    }
+    
     execute_command(
         &format!(
             "cbindgen -v --config {} --output {}",
             config_file.path().to_str().unwrap(),
             c_output_path,
         ),
-        Some(fs::canonicalize(rust_crate_dir).unwrap().to_str().unwrap()),
+        Some(path),
     );
 }
 
-fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
-    debug!("execute ffigen c_path={} dart_path={}", c_path, dart_path);
-    let config = format!(
+fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str, llvm_path: &str) {
+    debug!("execute ffigen c_path={} dart_path={} llvm_path={:?}", c_path, dart_path, llvm_path);
+    let mut config = format!(
         "
         output: '{}'
         name: '{}'
@@ -107,6 +116,13 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
         ",
         dart_path, dart_class_name, c_path, c_path,
     );
+    if llvm_path.len()>0 {
+        config = format!(
+            "{}
+        llvm-path: 
+            - '{}'", config, llvm_path);
+    }
+   
     debug!("ffigen config: {}", config);
 
     let mut config_file = tempfile::NamedTempFile::new().unwrap();
