@@ -22,8 +22,9 @@ jobs:
             family: windows
           - image: windows-2019
             family: windows
-          - image: ubuntu-18.04
-            family: linux
+          # #113
+          # - image: ubuntu-18.04
+          #  family: linux
           - image: ubuntu-20.04
             family: linux
 
