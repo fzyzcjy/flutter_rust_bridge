@@ -32,7 +32,10 @@ fn execute_command(arg: &str, current_dir: Option<&str>) {
         cmd.current_dir(current_dir);
     }
 
-    debug!("execute command: arg={:?} cmd={:?}", arg, cmd);
+    debug!(
+        "execute command: arg={:?} current_dir={:?} cmd={:?}",
+        arg, current_dir, cmd
+    );
 
     let result = cmd.output().unwrap();
 
