@@ -66,7 +66,7 @@ include = [{}]
 "#,
         c_struct_names
             .iter()
-            .map(|name| format!("\"{}\"", name))
+            .map(|name| format!("{}", name))
             .collect::<Vec<_>>()
             .join(", ")
     );
@@ -78,7 +78,7 @@ include = [{}]
 
     execute_command(
         &format!(
-            "cbindgen -v --config \"{}\" --output \"{}\"",
+            "cbindgen -v --config {} --output {}",
             config_file.path().to_str().unwrap(),
             c_output_path,
         ),
@@ -113,7 +113,7 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
     // NOTE please install ffigen globally first: `dart pub global activate ffigen`
     execute_command(
         &format!(
-            "dart pub global run ffigen --config \"{}\"",
+            "dart pub global run ffigen --config {}",
             config_file.path().to_str().unwrap()
         ),
         None,
@@ -122,7 +122,7 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
 
 pub fn format_rust(path: &str) {
     debug!("execute format_rust path={}", path);
-    execute_command(&format!("rustfmt \"{}\"", path), None);
+    execute_command(&format!("rustfmt {}", path), None);
 }
 
 pub fn format_dart(path: &str, line_length: i32) {
