@@ -36,6 +36,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "smw-wagnerma",
+      "name": "Marcel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66412697?v=4",
+      "profile": "https://github.com/smw-wagnerma",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
