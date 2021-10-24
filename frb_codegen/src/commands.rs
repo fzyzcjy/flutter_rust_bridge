@@ -46,14 +46,20 @@ fn execute_command(arg: &str, current_dir: Option<&str>) {
     let result = cmd.output().unwrap();
 
     if result.status.success() {
-        debug!("command={:?} output={:?}", cmd, result);
+        debug!(
+            "command={:?} stdout={} stderr={}",
+            cmd,
+            String::from_utf8_lossy(&result.stdout),
+            String::from_utf8_lossy(&result.stderr)
+        );
         if String::from_utf8_lossy(&result.stdout).contains("fatal error") {
             warn!( "See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", cmd, result);
         }
     } else {
         warn!(
-            "command={:?} output={:?}",
+            "command={:?} stdout={} stderr={}",
             cmd,
+            String::from_utf8_lossy(&result.stdout),
             String::from_utf8_lossy(&result.stderr)
         );
         panic!("command execution failed. command={:?}", cmd);
