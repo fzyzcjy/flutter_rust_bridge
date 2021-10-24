@@ -37,7 +37,7 @@ pub struct RawOpts {
     /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
     #[structopt(long)]
     pub skip_add_mod_to_lib: bool,
-    /// Path to the instaled LLVM
+    /// Path to the installed LLVM
     #[structopt(long)]
     pub llvm_path: Option<String>,
 }
