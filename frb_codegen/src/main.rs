@@ -89,6 +89,7 @@ fn main() {
                 temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                 &config.dart_wire_class_name(),
                 c_struct_names,
+                &config.llvm_path,
             );
         },
     );

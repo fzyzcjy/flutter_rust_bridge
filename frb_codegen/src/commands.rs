@@ -1,5 +1,5 @@
-use std::fs;
 use std::io::Write;
+use std::path::Path;
 use std::process::Command;
 
 use log::{debug, warn};
@@ -10,24 +10,59 @@ pub fn bindgen_rust_to_dart(
     dart_output_path: &str,
     dart_class_name: &str,
     c_struct_names: Vec<String>,
+    llvm_install_path: &str,
 ) {
     cbindgen(rust_crate_dir, c_output_path, c_struct_names);
-    ffigen(c_output_path, dart_output_path, dart_class_name);
+    ffigen(
+        c_output_path,
+        dart_output_path,
+        dart_class_name,
+        llvm_install_path,
+    );
 }
 
-fn execute_command(command: &mut Command) {
-    debug!("execute command: {:?}", command);
+fn execute_command(arg: &str, current_dir: Option<&str>) {
+    let mut cmd = if cfg!(target_os = "windows") {
+        let mut cmd = Command::new("cmd");
+        cmd.arg("/C");
+        cmd
+    } else {
+        let mut cmd = Command::new("sh");
+        cmd.arg("-c");
+        cmd
+    };
 
-    let result = command.output().unwrap();
+    cmd.arg(arg);
+
+    if let Some(current_dir) = current_dir {
+        cmd.current_dir(current_dir);
+    }
+
+    debug!(
+        "execute command: arg={:?} current_dir={:?} cmd={:?}",
+        arg, current_dir, cmd
+    );
+
+    let result = cmd.output().unwrap();
 
     if result.status.success() {
-        debug!("command={:?} output={:?}", command, result);
+        debug!(
+            "command={:?} stdout={} stderr={}",
+            cmd,
+            String::from_utf8_lossy(&result.stdout),
+            String::from_utf8_lossy(&result.stderr)
+        );
         if String::from_utf8_lossy(&result.stdout).contains("fatal error") {
-            warn!( "See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", command, result);
+            warn!( "See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", cmd, result);
         }
     } else {
-        warn!("command={:?} output={:?}", command, result);
-        panic!("command execution failed. command={:?}", command);
+        warn!(
+            "command={:?} stdout={} stderr={}",
+            cmd,
+            String::from_utf8_lossy(&result.stdout),
+            String::from_utf8_lossy(&result.stderr)
+        );
+        panic!("command execution failed. command={:?}", cmd);
     }
 }
 
@@ -60,20 +95,32 @@ include = [{}]
     config_file.write_all(config.as_bytes()).unwrap();
     debug!("cbindgen config_file: {:?}", config_file);
 
+    let canonical = Path::new(rust_crate_dir)
+        .canonicalize()
+        .expect("Could not canonicalize rust crate dir");
+    let mut path = canonical.to_str().unwrap();
+
+    // on windows get rid of the UNC path
+    if path.starts_with(r"\\?\") {
+        path = &path[r"\\?\".len()..];
+    }
+
     execute_command(
-        Command::new("cbindgen")
-            .arg("-v")
-            .arg("--config")
-            .arg(config_file.path())
-            .arg("--output")
-            .arg(c_output_path)
-            .current_dir(fs::canonicalize(rust_crate_dir).unwrap()),
+        &format!(
+            "cbindgen -v --config {} --output {}",
+            config_file.path().to_str().unwrap(),
+            c_output_path,
+        ),
+        Some(path),
     );
 }
 
-fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
-    debug!("execute ffigen c_path={} dart_path={}", c_path, dart_path);
-    let config = format!(
+fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str, llvm_path: &str) {
+    debug!(
+        "execute ffigen c_path={} dart_path={} llvm_path={:?}",
+        c_path, dart_path, llvm_path
+    );
+    let mut config = format!(
         "
         output: '{}'
         name: '{}'
@@ -89,6 +136,15 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
         ",
         dart_path, dart_class_name, c_path, c_path,
     );
+    if !llvm_path.is_empty() {
+        config = format!(
+            "{}
+        llvm-path: 
+            - '{}'",
+            config, llvm_path
+        );
+    }
+
     debug!("ffigen config: {}", config);
 
     let mut config_file = tempfile::NamedTempFile::new().unwrap();
@@ -97,19 +153,17 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str) {
 
     // NOTE please install ffigen globally first: `dart pub global activate ffigen`
     execute_command(
-        Command::new("dart")
-            .arg("pub")
-            .arg("global")
-            .arg("run")
-            .arg("ffigen")
-            .arg("--config")
-            .arg(config_file.path()),
+        &format!(
+            "dart pub global run ffigen --config {}",
+            config_file.path().to_str().unwrap()
+        ),
+        None,
     );
 }
 
 pub fn format_rust(path: &str) {
     debug!("execute format_rust path={}", path);
-    execute_command(Command::new("rustfmt").arg(path));
+    execute_command(&format!("rustfmt {}", path), None);
 }
 
 pub fn format_dart(path: &str, line_length: i32) {
@@ -118,10 +172,11 @@ pub fn format_dart(path: &str, line_length: i32) {
         path, line_length
     );
     execute_command(
-        Command::new("dart")
-            .arg("format")
-            .arg(path)
-            .arg("--line-length")
-            .arg(line_length.to_string()),
+        &format!(
+            "dart format {} --line-length {}",
+            path,
+            &line_length.to_string(),
+        ),
+        None,
     );
 }
