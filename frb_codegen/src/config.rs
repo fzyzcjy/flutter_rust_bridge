@@ -84,7 +84,7 @@ pub fn parse(raw: RawOpts) -> Opts {
         class_name,
         dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
         skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
-        llvm_path: raw.llvm_path.unwrap_or_else(|| { "".to_string() } ),
+        llvm_path: raw.llvm_path.unwrap_or_else(|| "".to_string()),
     }
 }
 
