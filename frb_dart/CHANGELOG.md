@@ -4,7 +4,7 @@
 * Allow Rust input file in directories besides root directory of the crate.
 * Warn when command's output seems to indicate errors.
 * Do not include `stdarg.h` automatically (related: #108 and #53).
-* Change way of using Rust's `Command` in order to fix the #112, maybe also related to #81, #108, #53
+* Fix windows path handling problem (#119, thanks @smw-wagnerma)
 
 ## 1.2.0
 
