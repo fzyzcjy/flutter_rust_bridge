@@ -10,8 +10,11 @@ import 'package:flutter_rust_bridge_example/off_topic_code.dart';
 // Simple Flutter code. If you are not familiar with Flutter, this may sounds a bit long. But indeed
 // it is quite trivial and Flutter is just like that. Please refer to Flutter's tutorial to learn Flutter.
 
-late final dylib =
-    Platform.isAndroid ? DynamicLibrary.open('libflutter_rust_bridge_example.so') : DynamicLibrary.process();
+late final dylib = Platform.isAndroid
+    ? DynamicLibrary.open('libflutter_rust_bridge_example.so')
+    : Platform.isWindows
+        ? DynamicLibrary.open('flutter_rust_bridge_example.dll')
+        : DynamicLibrary.process();
 late final api = FlutterRustBridgeExample(dylib);
 
 void main() => runApp(const MyApp());
@@ -42,12 +45,16 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _callExampleFfiOne() async {
     final receivedImage = await api.drawMandelbrot(
-        imageSize: Size(width: 50, height: 50), zoomPoint: examplePoint, scale: generateScale(), numThreads: 4);
+        imageSize: Size(width: 50, height: 50),
+        zoomPoint: examplePoint,
+        scale: generateScale(),
+        numThreads: 4);
     if (mounted) setState(() => exampleImage = receivedImage);
   }
 
   Future<void> _callExampleFfiTwo() async {
-    final receivedText = await api.passingComplexStructs(root: createExampleTree());
+    final receivedText =
+        await api.passingComplexStructs(root: createExampleTree());
     if (mounted) setState(() => exampleText = receivedText);
   }
 }
