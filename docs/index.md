@@ -60,7 +60,7 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
 ```
 
-(For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
+(If you have problems, see "Troubleshooting" section.) (For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
 
 ### Enjoy
 
@@ -96,7 +96,13 @@ Remark: I have generated the source code already (in quickstart), so this step i
 
 Install it: `cargo install flutter_rust_bridge_codegen`.
 
-Run it: `flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h`. (See [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml) as a reference.) (For Windows, you may need `\\` instead of `/` for paths.)
+Run it:
+
+```
+flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h
+```
+
+(If you have problems, see "Troubleshooting" section.) (See [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml) as a reference.) (For Windows, you may need `\\` instead of `/` for paths.)
 
 ### Run "Flutter+Rust" app
 
@@ -154,7 +160,7 @@ Run it: `flutter_rust_bridge_codegen --rust-input frb_example/pure_dart/rust/src
 
 You may run `frb_example/pure_dart/dart/lib/main.dart` as a normal Dart program, except that you should provide the dynamic linked library of the Rust code (for simplicity, here I only demonstrate the approach for dynamic linked library, but you can for sure use other methods). The detailed steps are as follows.
 
-Run `cargo build` in `frb_example/pure_dart/rust` to build the Rust code into a `.so` file. Then run `dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so ` to run the Dart program with Rust `.so` file. (If on MacOS, Rust may indeed generate `.dylib`, so change the last command to use `...dylib` instead of `...so`,)
+Run `cargo build` in `frb_example/pure_dart/rust` to build the Rust code into a `.so` file. Then run `dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so ` to run the Dart program with Rust `.so` file. (If you have problems, see "Troubleshooting" section.)  (If on MacOS, Rust may indeed generate `.dylib`, so change the last command to use `...dylib` instead of `...so`,)
 
 P.S. You will only see some tests passing - no fancy UI or functionality in this example.
 
@@ -186,6 +192,16 @@ OPTIONS:
 ## What this library is & isn't
 
 This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, you may refer to external materials to learn Flutter, learn Rust, learn [Flutter FFI](https://flutter.dev/docs/development/platform-integration/c-interop) (Dart FFI) and so on. With material on the Internet, you will know how to create a mobile application using Flutter, and how that app can call Rust functions via Dart FFI (in the C ABI). Then this package comes in, and ease you from the burden to write down tons of boilerplate code ;)
+
+## Troubleshooting
+
+#### Have problems when using `Linux`?
+
+Try to run code generator with working directory at `/`. This seems to be a problem with Rust's builtin `Command`. See [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108) for more details.
+
+#### Other problems?
+
+Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&labels=bug&template=bug_report.md&title=)! I usually reply within minutes or hours (except when sleeping, of course).
 
 ## Advanced
 
