@@ -202,7 +202,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.2.0"
+version = "1.2.1"
 dependencies = [
  "allo-isolate",
  "anyhow",

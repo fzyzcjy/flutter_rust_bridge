@@ -187,6 +187,7 @@ OPTIONS:
         --rust-output <rust-output>                            Path of output generated Rust code
         --class-name <class-name>                              Generated class name
         --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
+        --llvm-path <llvm-path>                                Path to the installed LLVM
 ```
 
 ## What this library is & isn't
