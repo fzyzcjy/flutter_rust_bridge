@@ -1,10 +1,11 @@
-## Unreleased
+## 1.2.1
 
 * Add `--skip-add-mod-to-lib` flag.
 * Allow Rust input file in directories besides root directory of the crate.
 * Warn when command's output seems to indicate errors.
 * Do not include `stdarg.h` automatically (related: #108 and #53).
-* Fix windows path handling problem (#119, thanks @smw-wagnerma)
+* Fix windows path handling problem (#119, thanks @smw-wagnerma).
+* Add `--llvm-path` flag.
 
 ## 1.2.0
 
