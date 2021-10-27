@@ -218,7 +218,7 @@ jobs:
         # uses: seanmiddleditch/gha-setup-ninja@master
         run: |
           # sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev
-          sudo apt-get -y install ninja-build
+          sudo apt-get -y install ninja-build libgtk-3-dev
           ninja --version
       - name: Checkout
         uses: actions/checkout@v2
