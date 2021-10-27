@@ -215,7 +215,8 @@ jobs:
         with:
           channel: 'stable'
       - name: Install Ninja
-        uses: seanmiddleditch/gha-setup-ninja@master
+        # uses: seanmiddleditch/gha-setup-ninja@master
+        run: apt-get install ninja-build
       - name: Checkout
         uses: actions/checkout@v2
       - name: Enable platform support
