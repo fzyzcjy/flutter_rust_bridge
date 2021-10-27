@@ -210,11 +210,14 @@ jobs:
         with:
           profile: minimal
           toolchain: stable
-      - uses: subosito/flutter-action@v1
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - uses: ashutoshvarma/setup-ninja@master
-      - uses: actions/checkout@v2
+      - name: Install Ninja
+        uses: seanmiddleditch/gha-setup-ninja@master
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Enable platform support
         run: flutter config --enable-linux-desktop
       - name: Install Flutter dependencies
