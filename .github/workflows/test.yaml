@@ -190,7 +190,6 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      # - uses: actions/setup-java@v1
       - uses: actions/checkout@v2
       - name: Enable platform support
         run: flutter config --enable-windows-desktop
@@ -214,7 +213,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      # - uses: actions/setup-java@v1
+      - uses: ashutoshvarma/setup-ninja@master
       - uses: actions/checkout@v2
       - name: Enable platform support
         run: flutter config --enable-linux-desktop
