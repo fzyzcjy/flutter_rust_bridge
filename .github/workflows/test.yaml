@@ -219,10 +219,6 @@ jobs:
           profile: minimal
           toolchain: stable
 
-      - name: Prebuild Rust crate
-        run: cargo build
-        working-directory: ./frb_example/with_flutter/rust
-
       - name: Install Flutter
         uses: subosito/flutter-action@v1
         with:
@@ -238,4 +234,4 @@ jobs:
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
-        run: flutter test -d linux integration_test/main.dart -v -r expanded --timeout 2x
+        run: flutter test -d linux integration_test/main.dart -v -r expanded --timeout 4x
