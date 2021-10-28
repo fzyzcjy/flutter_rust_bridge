@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Add Linux, Windows build pipeline for `with_flutter` example
+* Improve linter hints
 
 ## 1.2.1
 
