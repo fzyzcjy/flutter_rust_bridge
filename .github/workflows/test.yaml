@@ -219,23 +219,18 @@ jobs:
           profile: minimal
           toolchain: stable
 
-      - run: cargo check
-        working-directory: ./frb_example/with_flutter/rust
-
       - name: Install Flutter
         uses: subosito/flutter-action@v1
         with:
-          channel: 'stable'
+          channel: 'beta'
 
       - name: Install Flutter build tools
-        run: sudo apt-get -y install ninja-build libgtk-3-dev
+        run: sudo apt-get -y install ninja-build libgtk-3-dev libglu1-mesa libgtk-3-0 libblkid1 liblzma5
 
-      - name: Enable platform support
-        run: flutter config --enable-linux-desktop
+      - run: flutter config --enable-linux-desktop
 
-      - name: Install Flutter dependencies
+      - run: flutter pub get
         working-directory: ./frb_example/with_flutter
-        run: flutter pub get
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
