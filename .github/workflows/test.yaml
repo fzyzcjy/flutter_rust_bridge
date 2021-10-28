@@ -207,7 +207,7 @@ jobs:
 
   flutter_linux_test:
     name: Flutter (Linux) integration test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
       - name: Checkout
@@ -234,4 +234,4 @@ jobs:
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
-        run: flutter test -d linux integration_test/main.dart -v -r expanded --timeout 4x
+        run: flutter test -d linux integration_test/main.dart -v -r expanded
