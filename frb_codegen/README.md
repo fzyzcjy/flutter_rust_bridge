@@ -122,7 +122,11 @@ Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ..
 
 #### If desktop (Windows/Linux/MacOS)
 
-Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully. This example itself currently does not make the setup yet, but it should be trivial to do so. More details can be seen [in the issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
+Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully.
+
+The example in `with_flutter` demonstrates how to integrate Cargo with CMake on Linux and Windows,
+so it can be run directly using `flutter run` assuming [Flutter desktop support](https://flutter.dev/desktop#set-up) has been configured.
+More details can be seen [in the issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
 
 ### (Optional) See more types that this library can generate
 
