@@ -173,18 +173,6 @@ pub struct ExoticOptionals {
     pub attributes_nullable: Vec<Option<Attribute>>,
     pub nullable_attributes: Option<Vec<Option<Attribute>>>,
     pub newtypeint: Option<NewTypeInt>,
-    // Dart-incompatible
-    // pub uint8: Option<u8>,
-    // pub int8: Option<i8>,
-    // pub opt_box: Option<Box<NewTypeInt>>,
-
-    // unimplemented
-    // pub float32: Option<f32>
-    // pub int32list: Option<Vec<i32>>,
-    // pub int64list: Option<Vec<i64>>,
-    // pub float32list: Option<Vec<f32>>,
-    // pub float64list: Option<Vec<f64>>,
-    // pub booleanlist: Option<Vec<bool>>,
 }
 
 pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Result<Option<ExoticOptionals>> {
@@ -250,11 +238,6 @@ pub fn handle_option_box_arguments(
     f64box: Option<Box<f64>>,
     boolbox: Option<Box<bool>>,
     structbox: Option<Box<ExoticOptionals>>,
-    // not supported
-    // stringbox: Option<Box<String>>,
-    // zerocopybox: Option<Box<ZeroCopyBuffer<Vec<u8>>>>,
-    // u32box: Option<Box<u32>>,
-    // u64box: Option<Box<u64>>,
 ) -> Result<String> {
     Ok(format!(
         "handle_option_box_arguments({:?})",
