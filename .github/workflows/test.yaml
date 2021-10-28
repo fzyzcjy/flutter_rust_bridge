@@ -210,22 +210,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
 
+      - run: cargo check
+        working-directory: ./frb_example/with_flutter/rust
+
       - name: Install Flutter
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
 
-      - name: Install Flutter dependencies
-        run: sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev libglu1-mesa
-
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Install Flutter build tools
+        run: sudo apt-get -y install ninja-build libgtk-3-dev
 
       - name: Enable platform support
         run: flutter config --enable-linux-desktop
@@ -233,8 +236,6 @@ jobs:
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
         run: flutter pub get
-
-      - run: flutter doctor -v
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
