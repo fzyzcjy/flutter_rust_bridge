@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add Linux, Windows build pipeline for `with_flutter` example
+
 ## 1.2.1
 
 * Add `--skip-add-mod-to-lib` flag.
