@@ -84,7 +84,7 @@ The CI also runs the `run_codegen` workflow, which ensure that the code generato
 
 ## 📚 Tutorial: A Flutter+Rust app
 
-**Remark**: The `flutter_ios_test` and `flutter_android_test` sections of the [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/test.yaml) can also be useful, if you want details of each command.
+**Remark**: The `flutter_*_test` sections of the [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/test.yaml) can also be useful, if you want details of each command.
 
 ### Get example code
 
@@ -92,7 +92,7 @@ Please [install Flutter](https://flutter.dev/docs/get-started/install), [install
 
 ### (Optional) Run code generator
 
-Remark: I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.
+I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.
 
 Install it: `cargo install flutter_rust_bridge_codegen`.
 
@@ -102,7 +102,7 @@ Run it:
 flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h
 ```
 
-(If you have problems, see "Troubleshooting" section.) (See [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml) as a reference.) (For Windows, you may need `\\` instead of `/` for paths.)
+<sub>**Remark**: If you have problems, see "Troubleshooting" section. For Windows, you may need `\\` instead of `/` for paths.</sub>
 
 ### Run "Flutter+Rust" app
 
@@ -122,11 +122,11 @@ Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ..
 
 #### If desktop (Windows/Linux/MacOS)
 
+Run it directly using `flutter run` assuming [Flutter desktop support](https://flutter.dev/desktop#set-up) has been configured. 
+
 Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully.
 
-The example in `with_flutter` demonstrates how to integrate Cargo with CMake on Linux and Windows,
-so it can be run directly using `flutter run` assuming [Flutter desktop support](https://flutter.dev/desktop#set-up) has been configured.
-More details can be seen [in the issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
+The example in `with_flutter` demonstrates how to integrate Cargo with CMake on Linux and Windows, so it can be. More details can be seen [in the issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
 
 ### (Optional) See more types that this library can generate
 
