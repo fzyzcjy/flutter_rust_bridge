@@ -219,9 +219,10 @@ jobs:
           profile: minimal
           toolchain: stable
 
+
       - name: Install Flutter
-        # Copied from Flutter Gallery
-        use: subosito/flutter-action@4389e6cbc6cb8a4b18c628ff96ff90be0e926aa8
+        # From Flutter Gallery
+        uses: subosito/flutter-action@4389e6cbc6cb8a4b18c628ff96ff90be0e926aa8
         with:
           channel: 'stable'
 
