@@ -219,10 +219,14 @@ jobs:
           profile: minimal
           toolchain: stable
 
+      - name: Prebuild Rust crate
+        run: cargo build
+        working-directory: ./frb_example/with_flutter/rust
+
       - name: Install Flutter
         uses: subosito/flutter-action@v1
         with:
-          channel: 'beta'
+          channel: 'stable'
 
       - name: Install Flutter build tools
         run: sudo apt-get -y install ninja-build libgtk-3-dev libglu1-mesa libgtk-3-0 libblkid1 liblzma5
@@ -234,4 +238,4 @@ jobs:
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
-        run: flutter test -d linux integration_test/main.dart --verbose
+        run: flutter test -d linux integration_test/main.dart -v -r expanded --timeout 2x
