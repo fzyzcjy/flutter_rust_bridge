@@ -222,9 +222,7 @@ jobs:
           channel: 'stable'
 
       - name: Install Flutter dependencies
-        run: |
-          sudo apt-get -y install ninja-build libgtk-3-dev
-          ninja --version
+        run: sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev libglu1-mesa
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -235,6 +233,8 @@ jobs:
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
         run: flutter pub get
+
+      - run: flutter doctor -v
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
