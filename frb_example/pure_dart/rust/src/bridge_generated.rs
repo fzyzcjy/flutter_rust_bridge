@@ -344,36 +344,6 @@ pub struct wire_list_my_tree_node {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_Element {
-    tag: *mut wire_uint_8_list,
-    text: *mut wire_uint_8_list,
-    attributes: *mut wire_list_attribute,
-    children: *mut wire_list_element,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_attribute {
-    ptr: *mut wire_Attribute,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Attribute {
-    key: *mut wire_uint_8_list,
-    value: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_element {
-    ptr: *mut wire_Element,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_ExoticOptionals {
     int32: *mut i32,
     int64: *mut i64,
@@ -393,6 +363,20 @@ pub struct wire_ExoticOptionals {
 pub struct wire_int_8_list {
     ptr: *mut i8,
     len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_attribute {
+    ptr: *mut wire_Attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Attribute {
+    key: *mut wire_uint_8_list,
+    value: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -452,34 +436,6 @@ pub extern "C" fn new_list_my_tree_node(len: i32) -> *mut wire_list_my_tree_node
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_element() -> *mut wire_Element {
-    support::new_leak_box_ptr(wire_Element::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
-    let wrap = wire_list_attribute {
-        ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_element(len: i32) -> *mut wire_list_element {
-    let wrap = wire_list_element {
-        ptr: support::new_leak_vec_ptr(<wire_Element>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_exotic_optionals() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
@@ -495,6 +451,11 @@ pub extern "C" fn new_box_autoadd_i64(value: i64) -> *mut i64 {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
 }
@@ -506,6 +467,15 @@ pub extern "C" fn new_int_8_list(len: i32) -> *mut wire_int_8_list {
         len,
     };
     support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
+    let wrap = wire_list_attribute {
+        ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
@@ -611,12 +581,6 @@ impl Wire2Api<u8> for u8 {
     }
 }
 
-impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-
 impl Wire2Api<MySize> for *mut wire_MySize {
     fn wire2api(self) -> MySize {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -690,23 +654,6 @@ impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
     }
 }
 
-impl Wire2Api<Option<f64>> for *mut f64 {
-    fn wire2api(self) -> Option<f64> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<f64> for *mut f64 {
-    fn wire2api(self) -> f64 {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
-    }
-}
-
 impl Wire2Api<Option<String>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Option<String> {
         if self.is_null() {
@@ -714,83 +661,6 @@ impl Wire2Api<Option<String>> for *mut wire_uint_8_list {
         } else {
             Some(self.wire2api())
         }
-    }
-}
-
-impl Wire2Api<Option<Element>> for *mut wire_Element {
-    fn wire2api(self) -> Option<Element> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Element> for *mut wire_Element {
-    fn wire2api(self) -> Element {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
-    }
-}
-
-impl Wire2Api<Element> for wire_Element {
-    fn wire2api(self) -> Element {
-        Element {
-            tag: self.tag.wire2api(),
-            text: self.text.wire2api(),
-            attributes: self.attributes.wire2api(),
-            children: self.children.wire2api(),
-        }
-    }
-}
-
-impl Wire2Api<Option<Vec<Attribute>>> for *mut wire_list_attribute {
-    fn wire2api(self) -> Option<Vec<Attribute>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
-    fn wire2api(self) -> Vec<Attribute> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
-    }
-}
-
-impl Wire2Api<Attribute> for wire_Attribute {
-    fn wire2api(self) -> Attribute {
-        Attribute {
-            key: self.key.wire2api(),
-            value: self.value.wire2api(),
-        }
-    }
-}
-
-impl Wire2Api<Option<Vec<Element>>> for *mut wire_list_element {
-    fn wire2api(self) -> Option<Vec<Element>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Vec<Element>> for *mut wire_list_element {
-    fn wire2api(self) -> Vec<Element> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
@@ -863,6 +733,23 @@ impl Wire2Api<i64> for *mut i64 {
     }
 }
 
+impl Wire2Api<Option<f64>> for *mut f64 {
+    fn wire2api(self) -> Option<f64> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<f64> for *mut f64 {
+    fn wire2api(self) -> f64 {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<Option<bool>> for *mut bool {
     fn wire2api(self) -> Option<bool> {
         if self.is_null() {
@@ -887,6 +774,12 @@ impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for *mut wire_uint_8_list {
         } else {
             Some(self.wire2api())
         }
+    }
+}
+
+impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
+        ZeroCopyBuffer(self.wire2api())
     }
 }
 
@@ -921,6 +814,35 @@ impl Wire2Api<Option<Vec<u8>>> for *mut wire_uint_8_list {
             None
         } else {
             Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Option<Vec<Attribute>>> for *mut wire_list_attribute {
+    fn wire2api(self) -> Option<Vec<Attribute>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
+    fn wire2api(self) -> Vec<Attribute> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<Attribute> for wire_Attribute {
+    fn wire2api(self) -> Attribute {
+        Attribute {
+            key: self.key.wire2api(),
+            value: self.value.wire2api(),
         }
     }
 }
@@ -1130,26 +1052,6 @@ impl NewWithNullPtr for wire_MyTreeNode {
     }
 }
 
-impl NewWithNullPtr for wire_Element {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: std::ptr::null_mut(),
-            text: std::ptr::null_mut(),
-            attributes: std::ptr::null_mut(),
-            children: std::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_Attribute {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            key: std::ptr::null_mut(),
-            value: std::ptr::null_mut(),
-        }
-    }
-}
-
 impl NewWithNullPtr for wire_ExoticOptionals {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1164,6 +1066,15 @@ impl NewWithNullPtr for wire_ExoticOptionals {
             attributes_nullable: std::ptr::null_mut(),
             nullable_attributes: std::ptr::null_mut(),
             newtypeint: std::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Attribute {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: std::ptr::null_mut(),
+            value: std::ptr::null_mut(),
         }
     }
 }

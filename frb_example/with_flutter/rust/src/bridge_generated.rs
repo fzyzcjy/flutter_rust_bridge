@@ -206,16 +206,16 @@ pub struct wire_Point {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_uint_8_list {
-    ptr: *mut u8,
-    len: i32,
+pub struct wire_TreeNode {
+    name: *mut wire_uint_8_list,
+    children: *mut wire_list_tree_node,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_TreeNode {
-    name: *mut wire_uint_8_list,
-    children: *mut wire_list_tree_node,
+pub struct wire_uint_8_list {
+    ptr: *mut u8,
+    len: i32,
 }
 
 #[repr(C)]
@@ -245,17 +245,17 @@ pub extern "C" fn new_box_autoadd_point() -> *mut wire_Point {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_tree_node() -> *mut wire_TreeNode {
+    support::new_leak_box_ptr(wire_TreeNode::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
     support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_tree_node() -> *mut wire_TreeNode {
-    support::new_leak_box_ptr(wire_TreeNode::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -326,27 +326,6 @@ impl Wire2Api<f64> for f64 {
     }
 }
 
-impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-
-impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Vec<u8> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
-    }
-}
-
-impl Wire2Api<u8> for u8 {
-    fn wire2api(self) -> u8 {
-        self
-    }
-}
-
 impl Wire2Api<TreeNode> for *mut wire_TreeNode {
     fn wire2api(self) -> TreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -367,6 +346,21 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
         String::from_utf8_lossy(&vec).into_owned()
+    }
+}
+
+impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> Vec<u8> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+
+impl Wire2Api<u8> for u8 {
+    fn wire2api(self) -> u8 {
+        self
     }
 }
 
@@ -434,12 +428,6 @@ impl NewWithNullPtr for wire_TreeNode {
 impl support::IntoDart for Size {
     fn into_dart(self) -> support::DartCObject {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
-    }
-}
-
-impl support::IntoDart for Point {
-    fn into_dart(self) -> support::DartCObject {
-        vec![self.x.into_dart(), self.y.into_dart()].into_dart()
     }
 }
 

@@ -1,6 +1,7 @@
 ## 1.2.3
 
-* Warn when `ffigen` emits any `[SEVERE]` log messages,
+* Warn when `ffigen` emits any `[SEVERE]` log messages.
+* Do not generate unnecessary Dart to Rust wire code to fix bugs such as when `Vec<ZeroCopyBuffer<Vec<u8>>>` is in output argument.
 
 ## 1.2.2
 
