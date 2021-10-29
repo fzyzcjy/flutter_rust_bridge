@@ -62,7 +62,7 @@ fn main() {
     }
 
     let c_struct_names = api_file
-        .distinct_types()
+        .distinct_types(true, true)
         .iter()
         .filter_map(|ty| {
             if let ApiType::StructRef(_) = ty {

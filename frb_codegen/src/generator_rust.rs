@@ -33,33 +33,31 @@ impl Generator {
     }
 
     fn generate(&mut self, api_file: &ApiFile, rust_wire_mod: &str) -> String {
+        let distinct_input_types = api_file.distinct_types(true, false);
+        let distinct_output_types = api_file.distinct_types(false, true);
+
         let wire_funcs = api_file
             .funcs
             .iter()
             .map(|f| self.generate_wire_func(f))
             .collect::<Vec<_>>();
-        let wire_structs = api_file
-            .distinct_types()
+        let wire_structs = distinct_input_types
             .iter()
             .map(|ty| self.generate_wire_struct(ty, api_file))
             .collect::<Vec<_>>();
-        let allocate_funcs = api_file
-            .distinct_types()
+        let allocate_funcs = distinct_input_types
             .iter()
             .map(|f| self.generate_allocate_funcs(f))
             .collect::<Vec<_>>();
-        let wire2api_funcs = api_file
-            .distinct_types()
+        let wire2api_funcs = distinct_input_types
             .iter()
             .map(|ty| self.generate_wire2api_func(ty, api_file))
             .collect::<Vec<_>>();
-        let new_with_nullptr_funcs = api_file
-            .distinct_types()
+        let new_with_nullptr_funcs = distinct_input_types
             .iter()
             .map(|ty| self.generate_new_with_nullptr_func(ty, api_file))
             .collect::<Vec<_>>();
-        let impl_intodart = api_file
-            .distinct_types()
+        let impl_intodart = distinct_output_types
             .iter()
             .map(|ty| self.generate_impl_intodart(ty, api_file))
             .collect::<Vec<_>>();
