@@ -53,6 +53,10 @@ impl ApiFile {
             include_func_inputs,
             include_func_output,
         );
+
+        // make the output change less when input change
+        ans.sort_by_key(|ty| ty.safe_ident());
+
         ans
     }
 }
