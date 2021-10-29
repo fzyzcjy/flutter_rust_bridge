@@ -46,14 +46,28 @@ fn execute_command(arg: &str, current_dir: Option<&str>) {
     let result = cmd.output().unwrap();
 
     if result.status.success() {
+        let stdout = String::from_utf8_lossy(&result.stdout);
+
         debug!(
             "command={:?} stdout={} stderr={}",
             cmd,
-            String::from_utf8_lossy(&result.stdout),
+            stdout,
             String::from_utf8_lossy(&result.stderr)
         );
-        if String::from_utf8_lossy(&result.stdout).contains("fatal error") {
+        if stdout.contains("fatal error") {
             warn!( "See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", cmd, result);
+        } else if arg.contains("ffigen") && stdout.contains("[SEVERE]") {
+            // HACK: If ffigen can't find a header file it will generate broken
+            // bindings but still exit successfully. We can detect these broken
+            // bindings by looking for a "[SEVERE]" log message.
+            //
+            // It may emit SEVERE log messages for non-fatal errors though, so
+            // we don't want to error out completely.
+
+            warn!(
+                "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? command={:?} output={:?}",
+                cmd, result
+            );
         }
     } else {
         warn!(
@@ -139,7 +153,7 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str, llvm_path: &str)
     if !llvm_path.is_empty() {
         config = format!(
             "{}
-        llvm-path: 
+        llvm-path:
             - '{}'",
             config, llvm_path
         );

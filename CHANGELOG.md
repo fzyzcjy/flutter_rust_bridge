@@ -1,3 +1,7 @@
+## 1.2.3
+
+* Warn when `ffigen` emits any `[SEVERE]` log messages,
+
 ## 1.2.2
 
 * Add Linux and Windows out-of-the-box support for the `with_flutter` example.
