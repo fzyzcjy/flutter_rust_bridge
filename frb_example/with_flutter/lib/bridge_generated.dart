@@ -186,8 +186,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return raw;
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
-    return _api2wire_uint_8_list(raw);
+  ffi.Pointer<wire_TreeNode> _api2wire_box_autoadd_tree_node(TreeNode raw) {
+    final ptr = inner.new_box_autoadd_tree_node();
+    _api_fill_to_wire_tree_node(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
+    return _api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_uint_8_list(Uint8List raw) {
@@ -198,16 +204,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   int _api2wire_u8(int raw) {
     return raw;
-  }
-
-  ffi.Pointer<wire_TreeNode> _api2wire_box_autoadd_tree_node(TreeNode raw) {
-    final ptr = inner.new_box_autoadd_tree_node();
-    _api_fill_to_wire_tree_node(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
-    return _api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
 
   ffi.Pointer<wire_list_tree_node> _api2wire_list_tree_node(List<TreeNode> raw) {
@@ -256,40 +252,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 }
 
 // Section: wire2api
-Size _wire2api_box_autoadd_size(dynamic raw) {
-  return _wire2api_size(raw);
-}
-
-Size _wire2api_size(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Size(
-    width: _wire2api_i32(arr[0]),
-    height: _wire2api_i32(arr[1]),
-  );
-}
-
-int _wire2api_i32(dynamic raw) {
-  return raw as int;
-}
-
-Point _wire2api_box_autoadd_point(dynamic raw) {
-  return _wire2api_point(raw);
-}
-
-Point _wire2api_point(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Point(
-    x: _wire2api_f64(arr[0]),
-    y: _wire2api_f64(arr[1]),
-  );
-}
-
-double _wire2api_f64(dynamic raw) {
-  return raw as double;
-}
-
 Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
 }
@@ -302,8 +264,25 @@ int _wire2api_u8(dynamic raw) {
   return raw as int;
 }
 
-TreeNode _wire2api_box_autoadd_tree_node(dynamic raw) {
-  return _wire2api_tree_node(raw);
+String _wire2api_String(dynamic raw) {
+  return raw as String;
+}
+
+int _wire2api_i32(dynamic raw) {
+  return raw as int;
+}
+
+List<Size> _wire2api_list_size(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_size).toList();
+}
+
+Size _wire2api_size(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Size(
+    width: _wire2api_i32(arr[0]),
+    height: _wire2api_i32(arr[1]),
+  );
 }
 
 TreeNode _wire2api_tree_node(dynamic raw) {
@@ -315,16 +294,8 @@ TreeNode _wire2api_tree_node(dynamic raw) {
   );
 }
 
-String _wire2api_String(dynamic raw) {
-  return raw as String;
-}
-
 List<TreeNode> _wire2api_list_tree_node(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_tree_node).toList();
-}
-
-List<Size> _wire2api_list_size(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_size).toList();
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names

@@ -18,7 +18,10 @@ pub fn generate(
     dart_wire_class_name: &str,
 ) -> Output {
     let distinct_types = api_file.distinct_types(true, true);
-    debug!("distinct_types={:?}", distinct_types);
+    let distinct_input_types = api_file.distinct_types(true, false);
+    let distinct_output_types = api_file.distinct_types(false, true);
+    debug!("distinct_input_types={:?}", distinct_input_types);
+    debug!("distinct_output_types={:?}", distinct_output_types);
 
     let dart_func_signatures_and_implementations = api_file
         .funcs
@@ -36,15 +39,15 @@ pub fn generate(
         })
         .map(generate_api_struct)
         .collect::<Vec<_>>();
-    let dart_api2wire_funcs = distinct_types
+    let dart_api2wire_funcs = distinct_input_types
         .iter()
         .map(generate_api2wire_func)
         .collect::<Vec<_>>();
-    let dart_api_fill_to_wire_funcs = distinct_types
+    let dart_api_fill_to_wire_funcs = distinct_input_types
         .iter()
         .map(|ty| generate_api_fill_to_wire_func(ty, api_file))
         .collect::<Vec<_>>();
-    let dart_wire2api_funcs = distinct_types
+    let dart_wire2api_funcs = distinct_output_types
         .iter()
         .map(|ty| generate_wire2api_func(ty, api_file))
         .collect::<Vec<_>>();

@@ -311,10 +311,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return raw;
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
-    return _api2wire_uint_8_list(raw);
-  }
-
   ffi.Pointer<wire_MySize> _api2wire_box_autoadd_my_size(MySize raw) {
     final ptr = inner.new_box_autoadd_my_size();
     _api_fill_to_wire_my_size(raw, ptr.ref);
@@ -355,50 +351,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
-  ffi.Pointer<ffi.Double> _api2wire_opt_box_autoadd_f64(double? raw) {
-    return raw == null ? ffi.nullptr : _api2wire_box_autoadd_f64(raw);
-  }
-
-  ffi.Pointer<ffi.Double> _api2wire_box_autoadd_f64(double raw) {
-    return inner.new_box_autoadd_f64(raw);
-  }
-
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_String(String? raw) {
     return raw == null ? ffi.nullptr : _api2wire_String(raw);
-  }
-
-  ffi.Pointer<wire_Element> _api2wire_opt_box_autoadd_element(Element? raw) {
-    return raw == null ? ffi.nullptr : _api2wire_box_autoadd_element(raw);
-  }
-
-  ffi.Pointer<wire_Element> _api2wire_box_autoadd_element(Element raw) {
-    final ptr = inner.new_box_autoadd_element();
-    _api_fill_to_wire_element(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_list_attribute> _api2wire_opt_list_attribute(List<Attribute>? raw) {
-    return raw == null ? ffi.nullptr : _api2wire_list_attribute(raw);
-  }
-
-  ffi.Pointer<wire_list_attribute> _api2wire_list_attribute(List<Attribute> raw) {
-    final ans = inner.new_list_attribute(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_attribute(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  ffi.Pointer<wire_list_element> _api2wire_opt_list_element(List<Element>? raw) {
-    return raw == null ? ffi.nullptr : _api2wire_list_element(raw);
-  }
-
-  ffi.Pointer<wire_list_element> _api2wire_list_element(List<Element> raw) {
-    final ans = inner.new_list_element(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_element(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
   }
 
   ffi.Pointer<wire_ExoticOptionals> _api2wire_opt_box_autoadd_exotic_optionals(ExoticOptionals? raw) {
@@ -427,6 +381,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return inner.new_box_autoadd_i64(raw);
   }
 
+  ffi.Pointer<ffi.Double> _api2wire_opt_box_autoadd_f64(double? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_box_autoadd_f64(raw);
+  }
+
+  ffi.Pointer<ffi.Double> _api2wire_box_autoadd_f64(double raw) {
+    return inner.new_box_autoadd_f64(raw);
+  }
+
   ffi.Pointer<ffi.Uint8> _api2wire_opt_box_autoadd_bool(bool? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_bool(raw);
   }
@@ -437,6 +399,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_ZeroCopyBuffer_Uint8List(raw);
+  }
+
+  ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
+    return _api2wire_uint_8_list(raw);
   }
 
   ffi.Pointer<wire_int_8_list> _api2wire_opt_int_8_list(Int8List? raw) {
@@ -455,6 +421,18 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_uint_8_list(Uint8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_uint_8_list(raw);
+  }
+
+  ffi.Pointer<wire_list_attribute> _api2wire_opt_list_attribute(List<Attribute>? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_list_attribute(raw);
+  }
+
+  ffi.Pointer<wire_list_attribute> _api2wire_list_attribute(List<Attribute> raw) {
+    final ans = inner.new_list_attribute(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_attribute(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
   }
 
   ffi.Pointer<wire_list_opt_box_autoadd_attribute> _api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
@@ -574,26 +552,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.children = _api2wire_list_my_tree_node(apiObj.children);
   }
 
-  void _api_fill_to_wire_opt_box_autoadd_element(Element? apiObj, ffi.Pointer<wire_Element> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_autoadd_element(apiObj, wireObj);
-  }
-
-  void _api_fill_to_wire_box_autoadd_element(Element apiObj, ffi.Pointer<wire_Element> wireObj) {
-    _api_fill_to_wire_element(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_element(Element apiObj, wire_Element wireObj) {
-    wireObj.tag = _api2wire_opt_String(apiObj.tag);
-    wireObj.text = _api2wire_opt_String(apiObj.text);
-    wireObj.attributes = _api2wire_opt_list_attribute(apiObj.attributes);
-    wireObj.children = _api2wire_opt_list_element(apiObj.children);
-  }
-
-  void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
-    wireObj.key = _api2wire_String(apiObj.key);
-    wireObj.value = _api2wire_String(apiObj.value);
-  }
-
   void _api_fill_to_wire_opt_box_autoadd_exotic_optionals(
       ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_exotic_optionals(apiObj, wireObj);
@@ -616,6 +574,11 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.attributes_nullable = _api2wire_list_opt_box_autoadd_attribute(apiObj.attributesNullable);
     wireObj.nullable_attributes = _api2wire_opt_list_opt_box_autoadd_attribute(apiObj.nullableAttributes);
     wireObj.newtypeint = _api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
+  }
+
+  void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
+    wireObj.key = _api2wire_String(apiObj.key);
+    wireObj.value = _api2wire_String(apiObj.value);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -644,18 +607,6 @@ int _wire2api_i32(dynamic raw) {
   return raw as int;
 }
 
-int _wire2api_i64(dynamic raw) {
-  return raw as int;
-}
-
-double _wire2api_f64(dynamic raw) {
-  return raw as double;
-}
-
-bool _wire2api_bool(dynamic raw) {
-  return raw as bool;
-}
-
 String _wire2api_String(dynamic raw) {
   return raw as String;
 }
@@ -672,10 +623,6 @@ Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
 }
 
-MySize _wire2api_box_autoadd_my_size(dynamic raw) {
-  return _wire2api_my_size(raw);
-}
-
 MySize _wire2api_my_size(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -683,14 +630,6 @@ MySize _wire2api_my_size(dynamic raw) {
     width: _wire2api_i32(arr[0]),
     height: _wire2api_i32(arr[1]),
   );
-}
-
-MySize _wire2api_box_my_size(dynamic raw) {
-  return _wire2api_my_size(raw);
-}
-
-NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
-  return _wire2api_new_type_int(raw);
 }
 
 NewTypeInt _wire2api_new_type_int(dynamic raw) {
@@ -701,12 +640,12 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
   );
 }
 
-List<MySize> _wire2api_list_my_size(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_my_size).toList();
+int _wire2api_i64(dynamic raw) {
+  return raw as int;
 }
 
-MyTreeNode _wire2api_box_autoadd_my_tree_node(dynamic raw) {
-  return _wire2api_my_tree_node(raw);
+List<MySize> _wire2api_list_my_size(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_my_size).toList();
 }
 
 MyTreeNode _wire2api_my_tree_node(dynamic raw) {
@@ -731,8 +670,8 @@ double _wire2api_box_autoadd_f64(dynamic raw) {
   return raw as double;
 }
 
-String? _wire2api_opt_String(dynamic raw) {
-  return raw == null ? null : _wire2api_String(raw);
+double _wire2api_f64(dynamic raw) {
+  return raw as double;
 }
 
 Element? _wire2api_opt_box_autoadd_element(dynamic raw) {
@@ -752,6 +691,10 @@ Element _wire2api_element(dynamic raw) {
     attributes: _wire2api_opt_list_attribute(arr[2]),
     children: _wire2api_opt_list_element(arr[3]),
   );
+}
+
+String? _wire2api_opt_String(dynamic raw) {
+  return raw == null ? null : _wire2api_String(raw);
 }
 
 List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
@@ -829,6 +772,10 @@ bool _wire2api_box_autoadd_bool(dynamic raw) {
   return raw as bool;
 }
 
+bool _wire2api_bool(dynamic raw) {
+  return raw as bool;
+}
+
 Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
 }
@@ -869,60 +816,8 @@ NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
 }
 
-double? _wire2api_opt_box_f64(dynamic raw) {
-  return raw == null ? null : _wire2api_box_f64(raw);
-}
-
-double _wire2api_box_f64(dynamic raw) {
-  return raw as double;
-}
-
-int? _wire2api_opt_box_i8(dynamic raw) {
-  return raw == null ? null : _wire2api_box_i8(raw);
-}
-
-int _wire2api_box_i8(dynamic raw) {
-  return raw as int;
-}
-
-int? _wire2api_opt_box_u8(dynamic raw) {
-  return raw == null ? null : _wire2api_box_u8(raw);
-}
-
-int _wire2api_box_u8(dynamic raw) {
-  return raw as int;
-}
-
-int? _wire2api_opt_box_i32(dynamic raw) {
-  return raw == null ? null : _wire2api_box_i32(raw);
-}
-
-int _wire2api_box_i32(dynamic raw) {
-  return raw as int;
-}
-
-int? _wire2api_opt_box_i64(dynamic raw) {
-  return raw == null ? null : _wire2api_box_i64(raw);
-}
-
-int _wire2api_box_i64(dynamic raw) {
-  return raw as int;
-}
-
-bool? _wire2api_opt_box_bool(dynamic raw) {
-  return raw == null ? null : _wire2api_box_bool(raw);
-}
-
-bool _wire2api_box_bool(dynamic raw) {
-  return raw as bool;
-}
-
-ExoticOptionals? _wire2api_opt_box_exotic_optionals(dynamic raw) {
-  return raw == null ? null : _wire2api_box_exotic_optionals(raw);
-}
-
-ExoticOptionals _wire2api_box_exotic_optionals(dynamic raw) {
-  return _wire2api_exotic_optionals(raw);
+NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
+  return _wire2api_new_type_int(raw);
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
