@@ -925,7 +925,7 @@ ExoticOptionals _wire2api_box_exotic_optionals(dynamic raw) {
   return _wire2api_exotic_optionals(raw);
 }
 
-// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides
+// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 
 // AUTO GENERATED FILE, DO NOT EDIT.
 //
