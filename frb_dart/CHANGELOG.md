@@ -1,6 +1,6 @@
 ## 1.2.2
 
-* Add Linux, Windows build pipeline for `with_flutter` example
+* Add Linux and Windows out-of-the-box support for the `with_flutter` example.
 * Improve linter hints
 
 ## 1.2.1
