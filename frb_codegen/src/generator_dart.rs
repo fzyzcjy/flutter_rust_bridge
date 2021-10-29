@@ -17,7 +17,7 @@ pub fn generate(
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
 ) -> Output {
-    let distinct_types = api_file.distinct_types(true, true);
+    let distinct_types = api_file.distinct_types();
     debug!("distinct_types={:?}", distinct_types);
 
     let dart_func_signatures_and_implementations = api_file
