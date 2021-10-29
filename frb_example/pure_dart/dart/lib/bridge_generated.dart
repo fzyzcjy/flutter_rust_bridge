@@ -1298,50 +1298,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_list_my_tree_node =
       _new_list_my_tree_nodePtr.asFunction<ffi.Pointer<wire_list_my_tree_node> Function(int)>();
 
-  ffi.Pointer<ffi.Double> new_box_autoadd_f64(
-    double value,
-  ) {
-    return _new_box_autoadd_f64(
-      value,
-    );
-  }
-
-  late final _new_box_autoadd_f64Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64');
-  late final _new_box_autoadd_f64 = _new_box_autoadd_f64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
-
-  ffi.Pointer<wire_Element> new_box_autoadd_element() {
-    return _new_box_autoadd_element();
-  }
-
-  late final _new_box_autoadd_elementPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Element> Function()>>('new_box_autoadd_element');
-  late final _new_box_autoadd_element = _new_box_autoadd_elementPtr.asFunction<ffi.Pointer<wire_Element> Function()>();
-
-  ffi.Pointer<wire_list_attribute> new_list_attribute(
-    int len,
-  ) {
-    return _new_list_attribute(
-      len,
-    );
-  }
-
-  late final _new_list_attributePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_attribute> Function(ffi.Int32)>>('new_list_attribute');
-  late final _new_list_attribute = _new_list_attributePtr.asFunction<ffi.Pointer<wire_list_attribute> Function(int)>();
-
-  ffi.Pointer<wire_list_element> new_list_element(
-    int len,
-  ) {
-    return _new_list_element(
-      len,
-    );
-  }
-
-  late final _new_list_elementPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_element> Function(ffi.Int32)>>('new_list_element');
-  late final _new_list_element = _new_list_elementPtr.asFunction<ffi.Pointer<wire_list_element> Function(int)>();
-
   ffi.Pointer<wire_ExoticOptionals> new_box_autoadd_exotic_optionals() {
     return _new_box_autoadd_exotic_optionals();
   }
@@ -1375,6 +1331,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_autoadd_i64');
   late final _new_box_autoadd_i64 = _new_box_autoadd_i64Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
+  ffi.Pointer<ffi.Double> new_box_autoadd_f64(
+    double value,
+  ) {
+    return _new_box_autoadd_f64(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_f64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64');
+  late final _new_box_autoadd_f64 = _new_box_autoadd_f64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+
   ffi.Pointer<ffi.Uint8> new_box_autoadd_bool(
     bool value,
   ) {
@@ -1398,6 +1366,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_int_8_listPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list');
   late final _new_int_8_list = _new_int_8_listPtr.asFunction<ffi.Pointer<wire_int_8_list> Function(int)>();
+
+  ffi.Pointer<wire_list_attribute> new_list_attribute(
+    int len,
+  ) {
+    return _new_list_attribute(
+      len,
+    );
+  }
+
+  late final _new_list_attributePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_attribute> Function(ffi.Int32)>>('new_list_attribute');
+  late final _new_list_attribute = _new_list_attributePtr.asFunction<ffi.Pointer<wire_list_attribute> Function(int)>();
 
   ffi.Pointer<wire_list_opt_box_autoadd_attribute> new_list_opt_box_autoadd_attribute(
     int len,
@@ -1602,23 +1582,6 @@ class wire_ExoticOptionals extends ffi.Struct {
   external ffi.Pointer<wire_list_opt_box_autoadd_attribute> nullable_attributes;
 
   external ffi.Pointer<wire_NewTypeInt> newtypeint;
-}
-
-class wire_list_element extends ffi.Struct {
-  external ffi.Pointer<wire_Element> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-class wire_Element extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> tag;
-
-  external ffi.Pointer<wire_uint_8_list> text;
-
-  external ffi.Pointer<wire_list_attribute> attributes;
-
-  external ffi.Pointer<wire_list_element> children;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
