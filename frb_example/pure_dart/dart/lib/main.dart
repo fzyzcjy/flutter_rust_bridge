@@ -42,7 +42,7 @@ void main(List<String> args) async {
 
     print('dart call handleVecOfPrimitive');
     {
-      final n = 100000;
+      final n = 10000;
       final resp = await api.handleVecOfPrimitive(n: n);
       expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
       expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
@@ -58,7 +58,7 @@ void main(List<String> args) async {
 
     print('dart call handleZeroCopyVecOfPrimitive');
     {
-      final n = 100000;
+      final n = 10000;
       final resp = await api.handleZeroCopyVecOfPrimitive(n: n);
       expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
       expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
@@ -175,7 +175,7 @@ void main(List<String> args) async {
 
       var ret = await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
-      final loopFor = 100;
+      final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
         ret = await api.handleOptionalIncrement(opt: ret);
       }
@@ -239,7 +239,7 @@ void main(List<String> args) async {
 int _createGarbage() {
   print('dart create garbage (thus make it more possible to GC)');
   var cum = 0;
-  for (var i = 0; i < 5000; ++i) {
+  for (var i = 0; i < 1000; ++i) {
     final l = List.filled(5000, 42);
     cum += l[42];
   }
