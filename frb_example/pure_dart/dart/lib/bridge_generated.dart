@@ -153,7 +153,11 @@ class NewTypeInt {
 class VecOfPrimitivePack {
   final Int8List int8List;
   final Uint8List uint8List;
+  final Int16List int16List;
+  final Uint16List uint16List;
+  final Uint32List uint32List;
   final Int32List int32List;
+  final Uint64List uint64List;
   final Int64List int64List;
   final Float32List float32List;
   final Float64List float64List;
@@ -161,7 +165,11 @@ class VecOfPrimitivePack {
   VecOfPrimitivePack({
     required this.int8List,
     required this.uint8List,
+    required this.int16List,
+    required this.uint16List,
+    required this.uint32List,
     required this.int32List,
+    required this.uint64List,
     required this.int64List,
     required this.float32List,
     required this.float64List,
@@ -171,7 +179,11 @@ class VecOfPrimitivePack {
 class ZeroCopyVecOfPrimitivePack {
   final Int8List int8List;
   final Uint8List uint8List;
+  final Int16List int16List;
+  final Uint16List uint16List;
+  final Uint32List uint32List;
   final Int32List int32List;
+  final Uint64List uint64List;
   final Int64List int64List;
   final Float32List float32List;
   final Float64List float64List;
@@ -179,7 +191,11 @@ class ZeroCopyVecOfPrimitivePack {
   ZeroCopyVecOfPrimitivePack({
     required this.int8List,
     required this.uint8List,
+    required this.int16List,
+    required this.uint16List,
+    required this.uint32List,
     required this.int32List,
+    required this.uint64List,
     required this.int64List,
     required this.float32List,
     required this.float64List,
@@ -717,6 +733,10 @@ Float64List _wire2api_ZeroCopyBuffer_Float64List(dynamic raw) {
   return raw as Float64List;
 }
 
+Int16List _wire2api_ZeroCopyBuffer_Int16List(dynamic raw) {
+  return raw as Int16List;
+}
+
 Int32List _wire2api_ZeroCopyBuffer_Int32List(dynamic raw) {
   return raw as Int32List;
 }
@@ -727,6 +747,18 @@ Int64List _wire2api_ZeroCopyBuffer_Int64List(dynamic raw) {
 
 Int8List _wire2api_ZeroCopyBuffer_Int8List(dynamic raw) {
   return raw as Int8List;
+}
+
+Uint16List _wire2api_ZeroCopyBuffer_Uint16List(dynamic raw) {
+  return raw as Uint16List;
+}
+
+Uint32List _wire2api_ZeroCopyBuffer_Uint32List(dynamic raw) {
+  return raw as Uint32List;
+}
+
+Uint64List _wire2api_ZeroCopyBuffer_Uint64List(dynamic raw) {
+  return raw as Uint64List;
 }
 
 Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
@@ -827,6 +859,10 @@ Float64List _wire2api_float_64_list(dynamic raw) {
   return raw as Float64List;
 }
 
+int _wire2api_i16(dynamic raw) {
+  return raw as int;
+}
+
 int _wire2api_i32(dynamic raw) {
   return raw as int;
 }
@@ -837,6 +873,10 @@ int _wire2api_i64(dynamic raw) {
 
 int _wire2api_i8(dynamic raw) {
   return raw as int;
+}
+
+Int16List _wire2api_int_16_list(dynamic raw) {
+  return raw as Int16List;
 }
 
 Int32List _wire2api_int_32_list(dynamic raw) {
@@ -974,8 +1014,32 @@ Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_uint_8_list(raw);
 }
 
+int _wire2api_u16(dynamic raw) {
+  return raw as int;
+}
+
+int _wire2api_u32(dynamic raw) {
+  return raw as int;
+}
+
+int _wire2api_u64(dynamic raw) {
+  return raw as int;
+}
+
 int _wire2api_u8(dynamic raw) {
   return raw as int;
+}
+
+Uint16List _wire2api_uint_16_list(dynamic raw) {
+  return raw as Uint16List;
+}
+
+Uint32List _wire2api_uint_32_list(dynamic raw) {
+  return raw as Uint32List;
+}
+
+Uint64List _wire2api_uint_64_list(dynamic raw) {
+  return raw as Uint64List;
 }
 
 Uint8List _wire2api_uint_8_list(dynamic raw) {
@@ -984,27 +1048,35 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
 
 VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 6) throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
+  if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
   return VecOfPrimitivePack(
     int8List: _wire2api_int_8_list(arr[0]),
     uint8List: _wire2api_uint_8_list(arr[1]),
-    int32List: _wire2api_int_32_list(arr[2]),
-    int64List: _wire2api_int_64_list(arr[3]),
-    float32List: _wire2api_float_32_list(arr[4]),
-    float64List: _wire2api_float_64_list(arr[5]),
+    int16List: _wire2api_int_16_list(arr[2]),
+    uint16List: _wire2api_uint_16_list(arr[3]),
+    uint32List: _wire2api_uint_32_list(arr[4]),
+    int32List: _wire2api_int_32_list(arr[5]),
+    uint64List: _wire2api_uint_64_list(arr[6]),
+    int64List: _wire2api_int_64_list(arr[7]),
+    float32List: _wire2api_float_32_list(arr[8]),
+    float64List: _wire2api_float_64_list(arr[9]),
   );
 }
 
 ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 6) throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
+  if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
   return ZeroCopyVecOfPrimitivePack(
     int8List: _wire2api_ZeroCopyBuffer_Int8List(arr[0]),
     uint8List: _wire2api_ZeroCopyBuffer_Uint8List(arr[1]),
-    int32List: _wire2api_ZeroCopyBuffer_Int32List(arr[2]),
-    int64List: _wire2api_ZeroCopyBuffer_Int64List(arr[3]),
-    float32List: _wire2api_ZeroCopyBuffer_Float32List(arr[4]),
-    float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[5]),
+    int16List: _wire2api_ZeroCopyBuffer_Int16List(arr[2]),
+    uint16List: _wire2api_ZeroCopyBuffer_Uint16List(arr[3]),
+    uint32List: _wire2api_ZeroCopyBuffer_Uint32List(arr[4]),
+    int32List: _wire2api_ZeroCopyBuffer_Int32List(arr[5]),
+    uint64List: _wire2api_ZeroCopyBuffer_Uint64List(arr[6]),
+    int64List: _wire2api_ZeroCopyBuffer_Int64List(arr[7]),
+    float32List: _wire2api_ZeroCopyBuffer_Float32List(arr[8]),
+    float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[9]),
   );
 }
 

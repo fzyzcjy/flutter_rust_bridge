@@ -1323,7 +1323,11 @@ impl support::IntoDart for VecOfPrimitivePack {
         vec![
             self.int8list.into_dart(),
             self.uint8list.into_dart(),
+            self.int16list.into_dart(),
+            self.uint16list.into_dart(),
+            self.uint32list.into_dart(),
             self.int32list.into_dart(),
+            self.uint64list.into_dart(),
             self.int64list.into_dart(),
             self.float32list.into_dart(),
             self.float64list.into_dart(),
@@ -1337,7 +1341,11 @@ impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
         vec![
             self.int8list.into_dart(),
             self.uint8list.into_dart(),
+            self.int16list.into_dart(),
+            self.uint16list.into_dart(),
+            self.uint32list.into_dart(),
             self.int32list.into_dart(),
+            self.uint64list.into_dart(),
             self.int64list.into_dart(),
             self.float32list.into_dart(),
             self.float64list.into_dart(),
