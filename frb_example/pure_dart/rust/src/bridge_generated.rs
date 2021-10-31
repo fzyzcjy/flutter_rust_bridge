@@ -535,6 +535,19 @@ pub trait Wire2Api<T> {
     fn wire2api(self) -> T;
 }
 
+impl<T, S> Wire2Api<Option<T>> for *mut S
+where
+    *mut S: Wire2Api<T>,
+{
+    fn wire2api(self) -> Option<T> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
 impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
@@ -795,206 +808,6 @@ impl Wire2Api<MyTreeNode> for wire_MyTreeNode {
 impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
         NewTypeInt(self.field0.wire2api())
-    }
-}
-
-impl Wire2Api<Option<String>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Option<String> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Option<ZeroCopyBuffer<Vec<u8>>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Attribute>> for *mut wire_Attribute {
-    fn wire2api(self) -> Option<Attribute> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<bool>> for *mut bool {
-    fn wire2api(self) -> Option<bool> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<ExoticOptionals>> for *mut wire_ExoticOptionals {
-    fn wire2api(self) -> Option<ExoticOptionals> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<f64>> for *mut f64 {
-    fn wire2api(self) -> Option<f64> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<i32>> for *mut i32 {
-    fn wire2api(self) -> Option<i32> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<i64>> for *mut i64 {
-    fn wire2api(self) -> Option<i64> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<NewTypeInt>> for *mut wire_NewTypeInt {
-    fn wire2api(self) -> Option<NewTypeInt> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Box<bool>>> for *mut bool {
-    fn wire2api(self) -> Option<Box<bool>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Box<ExoticOptionals>>> for *mut wire_ExoticOptionals {
-    fn wire2api(self) -> Option<Box<ExoticOptionals>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Box<f64>>> for *mut f64 {
-    fn wire2api(self) -> Option<Box<f64>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Box<i32>>> for *mut i32 {
-    fn wire2api(self) -> Option<Box<i32>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Box<i64>>> for *mut i64 {
-    fn wire2api(self) -> Option<Box<i64>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Box<i8>>> for *mut i8 {
-    fn wire2api(self) -> Option<Box<i8>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Box<u8>>> for *mut u8 {
-    fn wire2api(self) -> Option<Box<u8>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Vec<i8>>> for *mut wire_int_8_list {
-    fn wire2api(self) -> Option<Vec<i8>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Vec<Attribute>>> for *mut wire_list_attribute {
-    fn wire2api(self) -> Option<Vec<Attribute>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Vec<Option<Attribute>>>> for *mut wire_list_opt_box_autoadd_attribute {
-    fn wire2api(self) -> Option<Vec<Option<Attribute>>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
-    }
-}
-
-impl Wire2Api<Option<Vec<u8>>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Option<Vec<u8>> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
     }
 }
 
