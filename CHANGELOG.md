@@ -1,7 +1,3 @@
-## 1.3.0
-
-* Support more types of the form`Vec<primitive_type>` and `ZeroCopyBuffer<Vec<primitive_type>>`, such as `Vec<f32>` and `ZeroCopyBuffer<Vec<f32>>` to be transformed into `Float32List` in Dart.
-
 ## 1.2.3
 
 * Warn when `ffigen` emits any `[SEVERE]` log messages.

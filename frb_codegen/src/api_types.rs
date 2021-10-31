@@ -228,13 +228,8 @@ pub trait ApiTypeChild {
 pub enum ApiTypePrimitive {
     U8,
     I8,
-    U16,
-    I16,
-    U32,
     I32,
-    U64,
     I64,
-    F32,
     F64,
     Bool,
 }
@@ -246,17 +241,12 @@ impl ApiTypeChild for ApiTypePrimitive {
 
     fn dart_api_type(&self) -> String {
         match self {
-            ApiTypePrimitive::U8
-            | ApiTypePrimitive::I8
-            | ApiTypePrimitive::U16
-            | ApiTypePrimitive::I16
-            | ApiTypePrimitive::U32
-            | ApiTypePrimitive::I32
-            // NOTE: does NOT support `u64`, since a u64 cannot be fit into a Dart int(i64)
-            | ApiTypePrimitive::I64 => "int",
-            ApiTypePrimitive::F32 | ApiTypePrimitive::F64 => "double",
+            ApiTypePrimitive::U8 => "int",
+            ApiTypePrimitive::I8 => "int",
+            ApiTypePrimitive::I32 => "int",
+            ApiTypePrimitive::I64 => "int",
+            ApiTypePrimitive::F64 => "double",
             ApiTypePrimitive::Bool => "bool",
-            _ => panic!("dart_api_type does not support {:?}", &self),
         }
         .to_string()
     }
@@ -273,13 +263,8 @@ impl ApiTypeChild for ApiTypePrimitive {
         match self {
             ApiTypePrimitive::U8 => "u8",
             ApiTypePrimitive::I8 => "i8",
-            ApiTypePrimitive::U16 => "u16",
-            ApiTypePrimitive::I16 => "i16",
-            ApiTypePrimitive::U32 => "u32",
             ApiTypePrimitive::I32 => "i32",
-            ApiTypePrimitive::U64 => "u64",
             ApiTypePrimitive::I64 => "i64",
-            ApiTypePrimitive::F32 => "f32",
             ApiTypePrimitive::F64 => "f64",
             ApiTypePrimitive::Bool => "bool",
         }
@@ -295,13 +280,8 @@ impl ApiTypePrimitive {
         match self {
             ApiTypePrimitive::U8 | ApiTypePrimitive::Bool => "ffi.Uint8",
             ApiTypePrimitive::I8 => "ffi.Int8",
-            ApiTypePrimitive::U16 => "ffi.Uint16",
-            ApiTypePrimitive::I16 => "ffi.Int16",
-            ApiTypePrimitive::U32 => "ffi.Uint32",
             ApiTypePrimitive::I32 => "ffi.Int32",
-            ApiTypePrimitive::U64 => "ffi.Uint64",
             ApiTypePrimitive::I64 => "ffi.Int64",
-            ApiTypePrimitive::F32 => "ffi.Float",
             ApiTypePrimitive::F64 => "ffi.Double",
         }
     }
@@ -309,13 +289,8 @@ impl ApiTypePrimitive {
         match s {
             "u8" => Some(ApiTypePrimitive::U8),
             "i8" => Some(ApiTypePrimitive::I8),
-            "u16" => Some(ApiTypePrimitive::U16),
-            "i16" => Some(ApiTypePrimitive::I16),
-            "u32" => Some(ApiTypePrimitive::U32),
             "i32" => Some(ApiTypePrimitive::I32),
-            "u64" => Some(ApiTypePrimitive::U64),
             "i64" => Some(ApiTypePrimitive::I64),
-            "f32" => Some(ApiTypePrimitive::F32),
             "f64" => Some(ApiTypePrimitive::F64),
             "bool" => Some(ApiTypePrimitive::Bool),
             _ => None,
@@ -327,7 +302,8 @@ impl ApiTypePrimitive {
 #[derive(Debug, Clone)]
 pub enum ApiTypeDelegate {
     String,
-    ZeroCopyBufferVecPrimitive(ApiTypePrimitive),
+    // upstream (allo-isolate) only supports ZeroCopyBuffer for Vec<u8> and Vec<i8>.
+    ZeroCopyBufferVecU8,
 }
 
 impl ApiTypeDelegate {
@@ -336,11 +312,9 @@ impl ApiTypeDelegate {
             ApiTypeDelegate::String => ApiType::PrimitiveList(ApiTypePrimitiveList {
                 primitive: ApiTypePrimitive::U8,
             }),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
-                ApiType::PrimitiveList(ApiTypePrimitiveList {
-                    primitive: primitive.clone(),
-                })
-            }
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => ApiType::PrimitiveList(ApiTypePrimitiveList {
+                primitive: ApiTypePrimitive::U8,
+            }),
         }
     }
 }
@@ -349,7 +323,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn safe_ident(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
         }
@@ -358,7 +332,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn dart_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => self.get_delegate().dart_api_type(),
         }
     }
 
@@ -369,9 +343,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn rust_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_owned(),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
-            }
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer<Vec<u8>>".to_owned(),
         }
     }
 
@@ -381,6 +353,16 @@ impl ApiTypeChild for ApiTypeDelegate {
 
     fn rust_wire_is_pointer(&self) -> bool {
         self.get_delegate().rust_wire_is_pointer()
+    }
+}
+
+impl ApiTypeDelegate {
+    pub fn try_from_rust_str(s: &str) -> Option<Self> {
+        match s {
+            "String" => Some(ApiTypeDelegate::String),
+            "ZeroCopyBuffer<Vec<u8>>" => Some(ApiTypeDelegate::ZeroCopyBufferVecU8),
+            _ => None,
+        }
     }
 }
 
@@ -398,13 +380,7 @@ impl ApiTypeChild for ApiTypePrimitiveList {
         match &self.primitive {
             ApiTypePrimitive::U8 => "Uint8List",
             ApiTypePrimitive::I8 => "Int8List",
-            ApiTypePrimitive::U16 => "Uint16List",
-            ApiTypePrimitive::I16 => "Int16List",
-            ApiTypePrimitive::U32 => "Uint32List",
-            ApiTypePrimitive::I32 => "Int32List",
-            ApiTypePrimitive::U64 => "Uint64List",
             ApiTypePrimitive::I64 => "Int64List",
-            ApiTypePrimitive::F32 => "Float32List",
             ApiTypePrimitive::F64 => "Float64List",
             _ => panic!("does not support {:?} yet", &self.primitive),
         }

@@ -201,9 +201,14 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             ApiTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
             }
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                format!("return _api2wire_{}(raw);", d.get_delegate().safe_ident())
-            }
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => {
+                "return _api2wire_uint_8_list(raw);".to_string()
+            } // ApiTypeDelegate::Optional(_) => {
+              // format!(
+              // "return raw != null ? _api2wire_{}(raw) : ffi.nullptr;",
+              // d.get_delegate().safe_ident()
+              // )
+              // }
         },
         Optional(opt) => format!(
             "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
@@ -321,9 +326,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
         Primitive(p) => gen_simple_type_cast(&p.dart_api_type()),
         Delegate(d) => match d {
             ApiTypeDelegate::String => gen_simple_type_cast(&d.dart_api_type()),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                gen_simple_type_cast(&d.dart_api_type())
-            }
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => gen_simple_type_cast(&d.dart_api_type()),
         },
         Optional(opt) => format!(
             "return raw == null ? null : _wire2api_{}(raw);",

@@ -104,7 +104,7 @@ impl<'a> Parser<'a> {
     fn parse_type(&mut self, ty: &str) -> ApiType {
         debug!("parse_type: {}", ty);
         None.or_else(|| ApiTypePrimitive::try_from_rust_str(ty).map(Primitive))
-            .or_else(|| self.try_parse_api_type_delegate(ty))
+            .or_else(|| ApiTypeDelegate::try_from_rust_str(ty).map(Delegate))
             .or_else(|| self.try_parse_list(ty))
             .or_else(|| self.try_parse_box(ty))
             .or_else(|| self.try_parse_option(ty))
@@ -120,30 +120,6 @@ impl<'a> Parser<'a> {
         CAPTURE_STREAM_SINK
             .captures(ty)
             .map(|inner| self.parse_type(&inner))
-    }
-
-    fn try_parse_api_type_delegate(&mut self, ty: &str) -> Option<ApiType> {
-        match ty {
-            "String" => Some(ApiType::Delegate(ApiTypeDelegate::String)),
-            _ => {
-                lazy_static! {
-                    static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture =
-                        GenericCapture::new("ZeroCopyBuffer");
-                }
-
-                if let Some(inner_type_str) = CAPTURE_ZERO_COPY_BUFFER.captures(ty) {
-                    if let Some(ApiType::PrimitiveList(ApiTypePrimitiveList { primitive })) =
-                        self.try_parse_list(&inner_type_str)
-                    {
-                        return Some(ApiType::Delegate(
-                            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
-                        ));
-                    }
-                }
-
-                None
-            }
-        }
     }
 
     fn try_parse_list(&mut self, ty: &str) -> Option<ApiType> {
