@@ -83,16 +83,31 @@ pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_zero_copy_result(port: i64, n: i32) {
+pub extern "C" fn wire_handle_vec_of_primitive(port: i64, v: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "handle_zero_copy_result",
+            debug_name: "handle_vec_of_primitive",
+            port,
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_v = v.wire2api();
+            move |task_callback| handle_vec_of_primitive(api_v)
+        },
+    );
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port: i64, n: i32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_zero_copy_vec_of_primitive",
             port,
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| handle_zero_copy_result(api_n)
+            move |task_callback| handle_zero_copy_vec_of_primitive(api_n)
         },
     );
 }
@@ -317,10 +332,42 @@ pub struct wire_ExoticOptionals {
     zerocopy: *mut wire_uint_8_list,
     int8list: *mut wire_int_8_list,
     uint8list: *mut wire_uint_8_list,
+    int32list: *mut wire_int_32_list,
+    int64list: *mut wire_int_64_list,
+    float32list: *mut wire_float_32_list,
+    float64list: *mut wire_float_64_list,
     attributes: *mut wire_list_attribute,
     attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
     nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
     newtypeint: *mut wire_NewTypeInt,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_float_32_list {
+    ptr: *mut f32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_float_64_list {
+    ptr: *mut f64,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_32_list {
+    ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_64_list {
+    ptr: *mut i64,
+    len: i32,
 }
 
 #[repr(C)]
@@ -471,6 +518,42 @@ pub extern "C" fn new_box_my_size() -> *mut wire_MySize {
 #[no_mangle]
 pub extern "C" fn new_box_u8(value: u8) -> *mut u8 {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_float_32_list(len: i32) -> *mut wire_float_32_list {
+    let ans = wire_float_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_float_64_list(len: i32) -> *mut wire_float_64_list {
+    let ans = wire_float_64_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_int_32_list(len: i32) -> *mut wire_int_32_list {
+    let ans = wire_int_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_int_64_list(len: i32) -> *mut wire_int_64_list {
+    let ans = wire_int_64_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
 }
 
 #[no_mangle]
@@ -692,6 +775,10 @@ impl Wire2Api<ExoticOptionals> for wire_ExoticOptionals {
             zerocopy: self.zerocopy.wire2api(),
             int8list: self.int8list.wire2api(),
             uint8list: self.uint8list.wire2api(),
+            int32list: self.int32list.wire2api(),
+            int64list: self.int64list.wire2api(),
+            float32list: self.float32list.wire2api(),
+            float64list: self.float64list.wire2api(),
             attributes: self.attributes.wire2api(),
             attributes_nullable: self.attributes_nullable.wire2api(),
             nullable_attributes: self.nullable_attributes.wire2api(),
@@ -700,9 +787,33 @@ impl Wire2Api<ExoticOptionals> for wire_ExoticOptionals {
     }
 }
 
+impl Wire2Api<f32> for f32 {
+    fn wire2api(self) -> f32 {
+        self
+    }
+}
+
 impl Wire2Api<f64> for f64 {
     fn wire2api(self) -> f64 {
         self
+    }
+}
+
+impl Wire2Api<Vec<f32>> for *mut wire_float_32_list {
+    fn wire2api(self) -> Vec<f32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+
+impl Wire2Api<Vec<f64>> for *mut wire_float_64_list {
+    fn wire2api(self) -> Vec<f64> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
@@ -721,6 +832,24 @@ impl Wire2Api<i64> for i64 {
 impl Wire2Api<i8> for i8 {
     fn wire2api(self) -> i8 {
         self
+    }
+}
+
+impl Wire2Api<Vec<i32>> for *mut wire_int_32_list {
+    fn wire2api(self) -> Vec<i32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+
+impl Wire2Api<Vec<i64>> for *mut wire_int_64_list {
+    fn wire2api(self) -> Vec<i64> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
@@ -958,6 +1087,46 @@ impl Wire2Api<Option<Box<u8>>> for *mut u8 {
     }
 }
 
+impl Wire2Api<Option<Vec<f32>>> for *mut wire_float_32_list {
+    fn wire2api(self) -> Option<Vec<f32>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Option<Vec<f64>>> for *mut wire_float_64_list {
+    fn wire2api(self) -> Option<Vec<f64>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Option<Vec<i32>>> for *mut wire_int_32_list {
+    fn wire2api(self) -> Option<Vec<i32>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Option<Vec<i64>>> for *mut wire_int_64_list {
+    fn wire2api(self) -> Option<Vec<i64>> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
 impl Wire2Api<Option<Vec<i8>>> for *mut wire_int_8_list {
     fn wire2api(self) -> Option<Vec<i8>> {
         if self.is_null() {
@@ -1044,6 +1213,10 @@ impl NewWithNullPtr for wire_ExoticOptionals {
             zerocopy: std::ptr::null_mut(),
             int8list: std::ptr::null_mut(),
             uint8list: std::ptr::null_mut(),
+            int32list: std::ptr::null_mut(),
+            int64list: std::ptr::null_mut(),
+            float32list: std::ptr::null_mut(),
+            float64list: std::ptr::null_mut(),
             attributes: std::ptr::null_mut(),
             attributes_nullable: std::ptr::null_mut(),
             nullable_attributes: std::ptr::null_mut(),
@@ -1109,6 +1282,10 @@ impl support::IntoDart for ExoticOptionals {
             self.zerocopy.into_dart(),
             self.int8list.into_dart(),
             self.uint8list.into_dart(),
+            self.int32list.into_dart(),
+            self.int64list.into_dart(),
+            self.float32list.into_dart(),
+            self.float64list.into_dart(),
             self.attributes.into_dart(),
             self.attributes_nullable.into_dart(),
             self.nullable_attributes.into_dart(),
@@ -1138,6 +1315,34 @@ impl support::IntoDart for MyTreeNode {
 impl support::IntoDart for NewTypeInt {
     fn into_dart(self) -> support::DartCObject {
         vec![self.0.into_dart()].into_dart()
+    }
+}
+
+impl support::IntoDart for VecOfPrimitivePack {
+    fn into_dart(self) -> support::DartCObject {
+        vec![
+            self.int8list.into_dart(),
+            self.uint8list.into_dart(),
+            self.int32list.into_dart(),
+            self.int64list.into_dart(),
+            self.float32list.into_dart(),
+            self.float64list.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+
+impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
+    fn into_dart(self) -> support::DartCObject {
+        vec![
+            self.int8list.into_dart(),
+            self.uint8list.into_dart(),
+            self.int32list.into_dart(),
+            self.int64list.into_dart(),
+            self.float32list.into_dart(),
+            self.float64list.into_dart(),
+        ]
+        .into_dart()
     }
 }
 

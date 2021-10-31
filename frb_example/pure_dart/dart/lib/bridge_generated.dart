@@ -23,7 +23,9 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
 
-  Future<Uint8List> handleZeroCopyResult({required int n, dynamic hint});
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required Uint8List v, dynamic hint});
+
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint});
 
   Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint});
 
@@ -90,6 +92,10 @@ class ExoticOptionals {
   final Uint8List? zerocopy;
   final Int8List? int8List;
   final Uint8List? uint8List;
+  final Int32List? int32List;
+  final Int64List? int64List;
+  final Float32List? float32List;
+  final Float64List? float64List;
   final List<Attribute>? attributes;
   final List<Attribute?> attributesNullable;
   final List<Attribute?>? nullableAttributes;
@@ -103,6 +109,10 @@ class ExoticOptionals {
     this.zerocopy,
     this.int8List,
     this.uint8List,
+    this.int32List,
+    this.int64List,
+    this.float32List,
+    this.float64List,
     this.attributes,
     required this.attributesNullable,
     this.nullableAttributes,
@@ -137,6 +147,42 @@ class NewTypeInt {
 
   NewTypeInt({
     required this.field0,
+  });
+}
+
+class VecOfPrimitivePack {
+  final Int8List int8List;
+  final Uint8List uint8List;
+  final Int32List int32List;
+  final Int64List int64List;
+  final Float32List float32List;
+  final Float64List float64List;
+
+  VecOfPrimitivePack({
+    required this.int8List,
+    required this.uint8List,
+    required this.int32List,
+    required this.int64List,
+    required this.float32List,
+    required this.float64List,
+  });
+}
+
+class ZeroCopyVecOfPrimitivePack {
+  final Int8List int8List;
+  final Uint8List uint8List;
+  final Int32List int32List;
+  final Int64List int64List;
+  final Float32List float32List;
+  final Float64List float64List;
+
+  ZeroCopyVecOfPrimitivePack({
+    required this.int8List,
+    required this.uint8List,
+    required this.int32List,
+    required this.int64List,
+    required this.float32List,
+    required this.float64List,
   });
 }
 
@@ -175,11 +221,19 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       parseSuccessData: _wire2api_uint_8_list,
       hint: hint));
 
-  Future<Uint8List> handleZeroCopyResult({required int n, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-      debugName: 'handle_zero_copy_result',
-      callFfi: (port) => inner.wire_handle_zero_copy_result(port, _api2wire_i32(n)),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
-      hint: hint));
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required Uint8List v, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'handle_vec_of_primitive',
+          callFfi: (port) => inner.wire_handle_vec_of_primitive(port, _api2wire_uint_8_list(v)),
+          parseSuccessData: _wire2api_vec_of_primitive_pack,
+          hint: hint));
+
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'handle_zero_copy_vec_of_primitive',
+          callFfi: (port) => inner.wire_handle_zero_copy_vec_of_primitive(port, _api2wire_i32(n)),
+          parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+          hint: hint));
 
   Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
@@ -375,8 +429,24 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return inner.new_box_u8(raw);
   }
 
+  double _api2wire_f32(double raw) {
+    return raw;
+  }
+
   double _api2wire_f64(double raw) {
     return raw;
+  }
+
+  ffi.Pointer<wire_float_32_list> _api2wire_float_32_list(Float32List raw) {
+    final ans = inner.new_float_32_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  ffi.Pointer<wire_float_64_list> _api2wire_float_64_list(Float64List raw) {
+    final ans = inner.new_float_64_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
   }
 
   int _api2wire_i32(int raw) {
@@ -389,6 +459,18 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   int _api2wire_i8(int raw) {
     return raw;
+  }
+
+  ffi.Pointer<wire_int_32_list> _api2wire_int_32_list(Int32List raw) {
+    final ans = inner.new_int_32_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  ffi.Pointer<wire_int_64_list> _api2wire_int_64_list(Int64List raw) {
+    final ans = inner.new_int_64_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
   }
 
   ffi.Pointer<wire_int_8_list> _api2wire_int_8_list(Int8List raw) {
@@ -493,6 +575,22 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return raw == null ? ffi.nullptr : _api2wire_box_u8(raw);
   }
 
+  ffi.Pointer<wire_float_32_list> _api2wire_opt_float_32_list(Float32List? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_float_32_list(raw);
+  }
+
+  ffi.Pointer<wire_float_64_list> _api2wire_opt_float_64_list(Float64List? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_float_64_list(raw);
+  }
+
+  ffi.Pointer<wire_int_32_list> _api2wire_opt_int_32_list(Int32List? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_int_32_list(raw);
+  }
+
+  ffi.Pointer<wire_int_64_list> _api2wire_opt_int_64_list(Int64List? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_int_64_list(raw);
+  }
+
   ffi.Pointer<wire_int_8_list> _api2wire_opt_int_8_list(Int8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_int_8_list(raw);
   }
@@ -563,6 +661,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.zerocopy = _api2wire_opt_ZeroCopyBuffer_Uint8List(apiObj.zerocopy);
     wireObj.int8list = _api2wire_opt_int_8_list(apiObj.int8List);
     wireObj.uint8list = _api2wire_opt_uint_8_list(apiObj.uint8List);
+    wireObj.int32list = _api2wire_opt_int_32_list(apiObj.int32List);
+    wireObj.int64list = _api2wire_opt_int_64_list(apiObj.int64List);
+    wireObj.float32list = _api2wire_opt_float_32_list(apiObj.float32List);
+    wireObj.float64list = _api2wire_opt_float_64_list(apiObj.float64List);
     wireObj.attributes = _api2wire_opt_list_attribute(apiObj.attributes);
     wireObj.attributes_nullable = _api2wire_list_opt_box_autoadd_attribute(apiObj.attributesNullable);
     wireObj.nullable_attributes = _api2wire_opt_list_opt_box_autoadd_attribute(apiObj.nullableAttributes);
@@ -605,6 +707,26 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 // Section: wire2api
 String _wire2api_String(dynamic raw) {
   return raw as String;
+}
+
+Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
+  return raw as Float32List;
+}
+
+Float64List _wire2api_ZeroCopyBuffer_Float64List(dynamic raw) {
+  return raw as Float64List;
+}
+
+Int32List _wire2api_ZeroCopyBuffer_Int32List(dynamic raw) {
+  return raw as Int32List;
+}
+
+Int64List _wire2api_ZeroCopyBuffer_Int64List(dynamic raw) {
+  return raw as Int64List;
+}
+
+Int8List _wire2api_ZeroCopyBuffer_Int8List(dynamic raw) {
+  return raw as Int8List;
 }
 
 Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
@@ -669,7 +791,7 @@ Element _wire2api_element(dynamic raw) {
 
 ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 11) throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+  if (arr.length != 15) throw Exception('unexpected arr length: expect 15 but see ${arr.length}');
   return ExoticOptionals(
     int32: _wire2api_opt_box_autoadd_i32(arr[0]),
     int64: _wire2api_opt_box_autoadd_i64(arr[1]),
@@ -678,15 +800,31 @@ ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
     zerocopy: _wire2api_opt_ZeroCopyBuffer_Uint8List(arr[4]),
     int8List: _wire2api_opt_int_8_list(arr[5]),
     uint8List: _wire2api_opt_uint_8_list(arr[6]),
-    attributes: _wire2api_opt_list_attribute(arr[7]),
-    attributesNullable: _wire2api_list_opt_box_autoadd_attribute(arr[8]),
-    nullableAttributes: _wire2api_opt_list_opt_box_autoadd_attribute(arr[9]),
-    newtypeint: _wire2api_opt_box_autoadd_new_type_int(arr[10]),
+    int32List: _wire2api_opt_int_32_list(arr[7]),
+    int64List: _wire2api_opt_int_64_list(arr[8]),
+    float32List: _wire2api_opt_float_32_list(arr[9]),
+    float64List: _wire2api_opt_float_64_list(arr[10]),
+    attributes: _wire2api_opt_list_attribute(arr[11]),
+    attributesNullable: _wire2api_list_opt_box_autoadd_attribute(arr[12]),
+    nullableAttributes: _wire2api_opt_list_opt_box_autoadd_attribute(arr[13]),
+    newtypeint: _wire2api_opt_box_autoadd_new_type_int(arr[14]),
   );
+}
+
+double _wire2api_f32(dynamic raw) {
+  return raw as double;
 }
 
 double _wire2api_f64(dynamic raw) {
   return raw as double;
+}
+
+Float32List _wire2api_float_32_list(dynamic raw) {
+  return raw as Float32List;
+}
+
+Float64List _wire2api_float_64_list(dynamic raw) {
+  return raw as Float64List;
 }
 
 int _wire2api_i32(dynamic raw) {
@@ -699,6 +837,14 @@ int _wire2api_i64(dynamic raw) {
 
 int _wire2api_i8(dynamic raw) {
   return raw as int;
+}
+
+Int32List _wire2api_int_32_list(dynamic raw) {
+  return raw as Int32List;
+}
+
+Int64List _wire2api_int_64_list(dynamic raw) {
+  return raw as Int64List;
 }
 
 Int8List _wire2api_int_8_list(dynamic raw) {
@@ -792,6 +938,22 @@ NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
 }
 
+Float32List? _wire2api_opt_float_32_list(dynamic raw) {
+  return raw == null ? null : _wire2api_float_32_list(raw);
+}
+
+Float64List? _wire2api_opt_float_64_list(dynamic raw) {
+  return raw == null ? null : _wire2api_float_64_list(raw);
+}
+
+Int32List? _wire2api_opt_int_32_list(dynamic raw) {
+  return raw == null ? null : _wire2api_int_32_list(raw);
+}
+
+Int64List? _wire2api_opt_int_64_list(dynamic raw) {
+  return raw == null ? null : _wire2api_int_64_list(raw);
+}
+
 Int8List? _wire2api_opt_int_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_int_8_list(raw);
 }
@@ -818,6 +980,32 @@ int _wire2api_u8(dynamic raw) {
 
 Uint8List _wire2api_uint_8_list(dynamic raw) {
   return raw as Uint8List;
+}
+
+VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 6) throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
+  return VecOfPrimitivePack(
+    int8List: _wire2api_int_8_list(arr[0]),
+    uint8List: _wire2api_uint_8_list(arr[1]),
+    int32List: _wire2api_int_32_list(arr[2]),
+    int64List: _wire2api_int_64_list(arr[3]),
+    float32List: _wire2api_float_32_list(arr[4]),
+    float64List: _wire2api_float_64_list(arr[5]),
+  );
+}
+
+ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 6) throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
+  return ZeroCopyVecOfPrimitivePack(
+    int8List: _wire2api_ZeroCopyBuffer_Int8List(arr[0]),
+    uint8List: _wire2api_ZeroCopyBuffer_Uint8List(arr[1]),
+    int32List: _wire2api_ZeroCopyBuffer_Int32List(arr[2]),
+    int64List: _wire2api_ZeroCopyBuffer_Int64List(arr[3]),
+    float32List: _wire2api_ZeroCopyBuffer_Float32List(arr[4]),
+    float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[5]),
+  );
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
@@ -905,19 +1093,36 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_vec_u8 =
       _wire_handle_vec_u8Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_handle_zero_copy_result(
+  void wire_handle_vec_of_primitive(
+    int port,
+    ffi.Pointer<wire_uint_8_list> v,
+  ) {
+    return _wire_handle_vec_of_primitive(
+      port,
+      v,
+    );
+  }
+
+  late final _wire_handle_vec_of_primitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_vec_of_primitive');
+  late final _wire_handle_vec_of_primitive =
+      _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_zero_copy_vec_of_primitive(
     int port,
     int n,
   ) {
-    return _wire_handle_zero_copy_result(
+    return _wire_handle_zero_copy_vec_of_primitive(
       port,
       n,
     );
   }
 
-  late final _wire_handle_zero_copy_resultPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_zero_copy_result');
-  late final _wire_handle_zero_copy_result = _wire_handle_zero_copy_resultPtr.asFunction<void Function(int, int)>();
+  late final _wire_handle_zero_copy_vec_of_primitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_zero_copy_vec_of_primitive');
+  late final _wire_handle_zero_copy_vec_of_primitive =
+      _wire_handle_zero_copy_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
   void wire_handle_struct(
     int port,
@@ -1297,6 +1502,54 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_box_u8Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>('new_box_u8');
   late final _new_box_u8 = _new_box_u8Ptr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
 
+  ffi.Pointer<wire_float_32_list> new_float_32_list(
+    int len,
+  ) {
+    return _new_float_32_list(
+      len,
+    );
+  }
+
+  late final _new_float_32_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list');
+  late final _new_float_32_list = _new_float_32_listPtr.asFunction<ffi.Pointer<wire_float_32_list> Function(int)>();
+
+  ffi.Pointer<wire_float_64_list> new_float_64_list(
+    int len,
+  ) {
+    return _new_float_64_list(
+      len,
+    );
+  }
+
+  late final _new_float_64_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_64_list> Function(ffi.Int32)>>('new_float_64_list');
+  late final _new_float_64_list = _new_float_64_listPtr.asFunction<ffi.Pointer<wire_float_64_list> Function(int)>();
+
+  ffi.Pointer<wire_int_32_list> new_int_32_list(
+    int len,
+  ) {
+    return _new_int_32_list(
+      len,
+    );
+  }
+
+  late final _new_int_32_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list');
+  late final _new_int_32_list = _new_int_32_listPtr.asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
+
+  ffi.Pointer<wire_int_64_list> new_int_64_list(
+    int len,
+  ) {
+    return _new_int_64_list(
+      len,
+    );
+  }
+
+  late final _new_int_64_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_64_list> Function(ffi.Int32)>>('new_int_64_list');
+  late final _new_int_64_list = _new_int_64_listPtr.asFunction<ffi.Pointer<wire_int_64_list> Function(int)>();
+
   ffi.Pointer<wire_int_8_list> new_int_8_list(
     int len,
   ) {
@@ -1435,6 +1688,34 @@ class wire_int_8_list extends ffi.Struct {
   external int len;
 }
 
+class wire_int_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_int_64_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_float_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Float> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_float_64_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Double> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 class wire_Attribute extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> key;
 
@@ -1469,6 +1750,14 @@ class wire_ExoticOptionals extends ffi.Struct {
   external ffi.Pointer<wire_int_8_list> int8list;
 
   external ffi.Pointer<wire_uint_8_list> uint8list;
+
+  external ffi.Pointer<wire_int_32_list> int32list;
+
+  external ffi.Pointer<wire_int_64_list> int64list;
+
+  external ffi.Pointer<wire_float_32_list> float32list;
+
+  external ffi.Pointer<wire_float_64_list> float64list;
 
   external ffi.Pointer<wire_list_attribute> attributes;
 
