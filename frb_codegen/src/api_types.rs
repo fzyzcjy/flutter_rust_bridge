@@ -327,8 +327,7 @@ impl ApiTypePrimitive {
 #[derive(Debug, Clone)]
 pub enum ApiTypeDelegate {
     String,
-    // upstream (allo-isolate) only supports ZeroCopyBuffer for Vec<u8> and Vec<i8>.
-    ZeroCopyBufferVecU8,
+    ZeroCopyBufferVecPrimitive(ApiTypePrimitive),
 }
 
 impl ApiTypeDelegate {
@@ -337,9 +336,11 @@ impl ApiTypeDelegate {
             ApiTypeDelegate::String => ApiType::PrimitiveList(ApiTypePrimitiveList {
                 primitive: ApiTypePrimitive::U8,
             }),
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => ApiType::PrimitiveList(ApiTypePrimitiveList {
-                primitive: ApiTypePrimitive::U8,
-            }),
+            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
+                ApiType::PrimitiveList(ApiTypePrimitiveList {
+                    primitive: primitive.clone(),
+                })
+            }
         }
     }
 }
@@ -348,7 +349,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn safe_ident(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => {
+            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
         }
@@ -357,7 +358,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn dart_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => self.get_delegate().dart_api_type(),
+            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
         }
     }
 
@@ -368,7 +369,9 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn rust_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_owned(),
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer<Vec<u8>>".to_owned(),
+            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
+                format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
+            }
         }
     }
 
@@ -378,16 +381,6 @@ impl ApiTypeChild for ApiTypeDelegate {
 
     fn rust_wire_is_pointer(&self) -> bool {
         self.get_delegate().rust_wire_is_pointer()
-    }
-}
-
-impl ApiTypeDelegate {
-    pub fn try_from_rust_str(s: &str) -> Option<Self> {
-        match s {
-            "String" => Some(ApiTypeDelegate::String),
-            "ZeroCopyBuffer<Vec<u8>>" => Some(ApiTypeDelegate::ZeroCopyBufferVecU8),
-            _ => None,
-        }
     }
 }
 
