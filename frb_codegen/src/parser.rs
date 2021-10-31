@@ -133,7 +133,7 @@ impl<'a> Parser<'a> {
 
                 if let Some(inner_type_str) = CAPTURE_ZERO_COPY_BUFFER.captures(ty) {
                     if let Some(ApiType::PrimitiveList(ApiTypePrimitiveList { primitive })) =
-                        self.try_parse_list(inner_type_str)
+                        self.try_parse_list(&inner_type_str)
                     {
                         return Some(ApiType::Delegate(
                             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),

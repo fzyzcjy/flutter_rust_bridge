@@ -308,7 +308,7 @@ impl Generator {
                 ApiTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
                 String::from_utf8_lossy(&vec).into_owned()"
                     .into(),
-                ApiTypeDelegate::ZeroCopyBufferVecPrimitive => {
+                ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                     "ZeroCopyBuffer(self.wire2api())".into()
                 }
             },

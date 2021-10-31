@@ -369,7 +369,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn rust_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_owned(),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
+            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
         }
