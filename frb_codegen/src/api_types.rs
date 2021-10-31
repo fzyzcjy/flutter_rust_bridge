@@ -228,8 +228,13 @@ pub trait ApiTypeChild {
 pub enum ApiTypePrimitive {
     U8,
     I8,
+    U16,
+    I16,
+    U32,
     I32,
+    U64,
     I64,
+    F32,
     F64,
     Bool,
 }
@@ -241,12 +246,17 @@ impl ApiTypeChild for ApiTypePrimitive {
 
     fn dart_api_type(&self) -> String {
         match self {
-            ApiTypePrimitive::U8 => "int",
-            ApiTypePrimitive::I8 => "int",
-            ApiTypePrimitive::I32 => "int",
-            ApiTypePrimitive::I64 => "int",
-            ApiTypePrimitive::F64 => "double",
+            ApiTypePrimitive::U8
+            | ApiTypePrimitive::I8
+            | ApiTypePrimitive::U16
+            | ApiTypePrimitive::I16
+            | ApiTypePrimitive::U32
+            | ApiTypePrimitive::I32
+            // NOTE: does NOT support `u64`, since a u64 cannot be fit into a Dart int(i64)
+            | ApiTypePrimitive::I64 => "int",
+            ApiTypePrimitive::F32 | ApiTypePrimitive::F64 => "double",
             ApiTypePrimitive::Bool => "bool",
+            _ => panic!("dart_api_type does not support {:?}", &self),
         }
         .to_string()
     }
@@ -263,8 +273,13 @@ impl ApiTypeChild for ApiTypePrimitive {
         match self {
             ApiTypePrimitive::U8 => "u8",
             ApiTypePrimitive::I8 => "i8",
+            ApiTypePrimitive::U16 => "u16",
+            ApiTypePrimitive::I16 => "i16",
+            ApiTypePrimitive::U32 => "u32",
             ApiTypePrimitive::I32 => "i32",
+            ApiTypePrimitive::U64 => "u64",
             ApiTypePrimitive::I64 => "i64",
+            ApiTypePrimitive::F32 => "f32",
             ApiTypePrimitive::F64 => "f64",
             ApiTypePrimitive::Bool => "bool",
         }
@@ -280,8 +295,13 @@ impl ApiTypePrimitive {
         match self {
             ApiTypePrimitive::U8 | ApiTypePrimitive::Bool => "ffi.Uint8",
             ApiTypePrimitive::I8 => "ffi.Int8",
+            ApiTypePrimitive::U16 => "ffi.Uint16",
+            ApiTypePrimitive::I16 => "ffi.Int16",
+            ApiTypePrimitive::U32 => "ffi.Uint32",
             ApiTypePrimitive::I32 => "ffi.Int32",
+            ApiTypePrimitive::U64 => "ffi.Uint64",
             ApiTypePrimitive::I64 => "ffi.Int64",
+            ApiTypePrimitive::F32 => "ffi.Float",
             ApiTypePrimitive::F64 => "ffi.Double",
         }
     }
@@ -289,8 +309,13 @@ impl ApiTypePrimitive {
         match s {
             "u8" => Some(ApiTypePrimitive::U8),
             "i8" => Some(ApiTypePrimitive::I8),
+            "u16" => Some(ApiTypePrimitive::U16),
+            "i16" => Some(ApiTypePrimitive::I16),
+            "u32" => Some(ApiTypePrimitive::U32),
             "i32" => Some(ApiTypePrimitive::I32),
+            "u64" => Some(ApiTypePrimitive::U64),
             "i64" => Some(ApiTypePrimitive::I64),
+            "f32" => Some(ApiTypePrimitive::F32),
             "f64" => Some(ApiTypePrimitive::F64),
             "bool" => Some(ApiTypePrimitive::Bool),
             _ => None,
@@ -380,7 +405,13 @@ impl ApiTypeChild for ApiTypePrimitiveList {
         match &self.primitive {
             ApiTypePrimitive::U8 => "Uint8List",
             ApiTypePrimitive::I8 => "Int8List",
+            ApiTypePrimitive::U16 => "Uint16List",
+            ApiTypePrimitive::I16 => "Int16List",
+            ApiTypePrimitive::U32 => "Uint32List",
+            ApiTypePrimitive::I32 => "Int32List",
+            ApiTypePrimitive::U64 => "Uint64List",
             ApiTypePrimitive::I64 => "Int64List",
+            ApiTypePrimitive::F32 => "Float32List",
             ApiTypePrimitive::F64 => "Float64List",
             _ => panic!("does not support {:?} yet", &self.primitive),
         }
