@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge_example/bridge_generated.dart';
-
 import 'package:test/test.dart';
 
 void main(List<String> args) async {
@@ -19,74 +18,95 @@ void main(List<String> args) async {
     print('call functions');
 
     print('dart call simpleAdder');
-    expect(await api.simpleAdder(a: 42, b: 100), 142);
+    {
+      expect(await api.simpleAdder(a: 42, b: 100), 142);
+    }
 
     print('dart call primitiveTypes');
-    expect(
-        await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
+    {
+      expect(await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true),
+          42);
+    }
 
     print('dart call handleString');
-    expect(await api.handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
+    {
+      expect(await api.handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
+    }
 
     print('dart call handleVecU8');
-    final len = 100000;
-    expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
-        Uint8List.fromList(List.filled(len * 2, 127)));
+    {
+      final len = 100000;
+      expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
+          Uint8List.fromList(List.filled(len * 2, 127)));
+    }
 
-    print('dart call handleZeroCopyResult');
-    final n = 100000;
-    expect(await api.handleZeroCopyResult(n: n), Uint8List.fromList(List.filled(n, 42)));
+    print('dart call handleVecOfPrimitive');
+    {
+      final n = 100000;
+      final resp = await api.handleVecOfPrimitive(n: n);
+      expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
+      expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
+      expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
+      expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
+      expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
+      expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
+      expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+      expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
+      expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
+      expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
+    }
+
+    print('dart call handleZeroCopyVecOfPrimitive');
+    {
+      final n = 100000;
+      final resp = await api.handleZeroCopyVecOfPrimitive(n: n);
+      expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
+      expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
+      expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
+      expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
+      expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
+      expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
+      expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+      expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
+      expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
+      expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
+    }
 
     print('dart call handleStruct');
-    final structResp =
-        await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
-    expect(structResp.width, 42 + 1000);
-    expect(structResp.height, 100 + 10000);
+    {
+      final structResp =
+          await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+      expect(structResp.width, 42 + 1000);
+      expect(structResp.height, 100 + 10000);
+    }
 
     print('dart call handleNewtype');
-    final newtypeResp = await api.handleNewtype(arg: NewTypeInt(field0: 42));
-    expect(newtypeResp.field0, 84);
+    {
+      final newtypeResp = await api.handleNewtype(arg: NewTypeInt(field0: 42));
+      expect(newtypeResp.field0, 84);
+    }
 
     print('dart call handleListOfStruct');
-    final listOfStructResp =
-        await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
-    expect(listOfStructResp.length, 4);
-    expect(listOfStructResp[0].width, 42);
-    expect(listOfStructResp[1].width, 420);
-    expect(listOfStructResp[2].width, 42);
-    expect(listOfStructResp[3].width, 420);
+    {
+      final listOfStructResp =
+          await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+      expect(listOfStructResp.length, 4);
+      expect(listOfStructResp[0].width, 42);
+      expect(listOfStructResp[1].width, 420);
+      expect(listOfStructResp[2].width, 42);
+      expect(listOfStructResp[3].width, 420);
+    }
 
     print('dart call handleComplexStruct');
-    final arrLen = 5;
-    final complexStructResp = await api.handleComplexStruct(
-      s: MyTreeNode(
-        valueI32: 100,
-        valueVecU8: Uint8List.fromList(List.filled(arrLen, 100)),
-        children: [
-          MyTreeNode(
-            valueI32: 110,
-            valueVecU8: Uint8List.fromList(List.filled(arrLen, 110)),
-            children: [
-              MyTreeNode(
-                valueI32: 111,
-                valueVecU8: Uint8List.fromList(List.filled(arrLen, 111)),
-                children: [],
-              ),
-            ],
-          ),
-          MyTreeNode(
-            valueI32: 120,
-            valueVecU8: Uint8List.fromList(List.filled(arrLen, 120)),
-            children: [],
-          ),
-        ],
-      ),
-    );
-    expect(complexStructResp.valueI32, 100);
-    expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
-    expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-    expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
-    expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
+    {
+      final arrLen = 5;
+      final complexStructResp = await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+      expect(complexStructResp.valueI32, 100);
+      expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
+      expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
+      expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
+      expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
+    }
 
     print('dart call handle_stream');
     {
@@ -100,21 +120,105 @@ void main(List<String> args) async {
     }
 
     print('dart call returnErr');
-    try {
-      await api.returnErr();
-      fail("exception not thrown");
-    } catch (e) {
-      print('dart catch e: $e');
-      expect(e, isA<FfiException>());
+    {
+      try {
+        await api.returnErr();
+        fail("exception not thrown");
+      } catch (e) {
+        print('dart catch e: $e');
+        expect(e, isA<FfiException>());
+      }
     }
 
     print('dart call returnPanic');
-    try {
-      await api.returnPanic();
-      fail("exception not thrown");
-    } catch (e) {
-      print('dart catch e: $e');
-      expect(e, isA<FfiException>());
+    {
+      try {
+        await api.returnPanic();
+        fail("exception not thrown");
+      } catch (e) {
+        print('dart catch e: $e');
+        expect(e, isA<FfiException>());
+      }
+    }
+
+    print('dart call handleOptionalReturn');
+    {
+      expect((await api.handleOptionalReturn(left: 1, right: 1))!, 1);
+      expect(await api.handleOptionalReturn(left: 2, right: 0), null);
+    }
+
+    print('dart call handleOptionalStruct');
+    {
+      {
+        expect(await api.handleOptionalStruct(), null);
+      }
+
+      {
+        final message = 'Hello there.';
+        final ret = await api.handleOptionalStruct(document: message);
+        if (ret == null) fail('handleOptionalStruct returned null for non-null document');
+        expect(ret.tag, 'div');
+        expect(ret.text, null);
+        expect(ret.attributes?[0].key, 'id');
+        expect(ret.attributes?[0].value, 'root');
+
+        expect(ret.children?[0].tag, 'p');
+        expect(ret.children?[0].text, null);
+        expect(ret.children?[0].attributes, null);
+        expect(ret.children?[0].children?[0].text, message);
+      }
+    }
+
+    print('dart call handleOptionalIncrement');
+    {
+      expect(await api.handleOptionalIncrement(), null);
+
+      var ret = await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: []));
+      if (ret == null) fail('increment returned null for non-null params');
+      final loopFor = 100;
+      for (var i = 1; i < loopFor; i++) {
+        ret = await api.handleOptionalIncrement(opt: ret);
+      }
+      if (ret == null) fail('ret nulled after loop');
+      expect(ret.int32, loopFor);
+      expect(ret.int32, loopFor);
+      expect(ret.float64, loopFor);
+      expect(ret.boolean, false);
+      expect(ret.zerocopy?.length, loopFor);
+      expect(ret.int8List?.length, loopFor);
+      expect(ret.uint8List?.length, loopFor);
+      expect(ret.attributesNullable.length, loopFor);
+      expect(ret.nullableAttributes?.length, loopFor);
+      expect(ret.newtypeint?.field0, loopFor);
+    }
+
+    print('dart call handleIncrementBoxedOptional');
+    {
+      {
+        expect(await api.handleIncrementBoxedOptional(), 42);
+      }
+
+      {
+        var ret = 0.0;
+        final loopFor = 100;
+        for (var i = 0; i < loopFor; i++) {
+          ret = await api.handleIncrementBoxedOptional(opt: ret);
+        }
+        expect(ret, loopFor);
+      }
+    }
+
+    print('dart call handleOptionBoxArguments');
+    {
+      print(await api.handleOptionBoxArguments());
+
+      {
+        final optional10 = await api.handleOptionBoxArguments(
+          boolbox: true,
+          structbox: await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: [])),
+        );
+        print(optional10);
+      }
     }
 
     _createGarbage();
@@ -123,77 +227,10 @@ void main(List<String> args) async {
     await Future.delayed(Duration(seconds: 1));
 
     print('loop and call many times');
-    var obj = complexStructResp;
+    var obj = _createMyTreeNode(arrLen: 5);
     for (var i = 0; i < 500; ++i) {
       obj = await api.handleComplexStruct(s: obj);
     }
-
-    print('dart call handleOptionalReturn');
-    final optional1 = await api.handleOptionalReturn(left: 1, right: 1);
-    expect(optional1!, 1);
-    final optional2 = await api.handleOptionalReturn(left: 2, right: 0);
-    expect(optional2, null);
-
-    final optional3 = await api.handleOptionalStruct();
-    expect(optional3, null);
-
-    final message = 'Hello there.';
-    final optional4 = await api.handleOptionalStruct(document: message);
-    if (optional4 == null) return fail('handleOptionalStruct returned null for non-null document');
-    expect(optional4.tag, 'div');
-    expect(optional4.text, null);
-    expect(optional4.attributes?[0].key, 'id');
-    expect(optional4.attributes?[0].value, 'root');
-
-    expect(optional4.children?[0].tag, 'p');
-    expect(optional4.children?[0].text, null);
-    expect(optional4.children?[0].attributes, null);
-    expect(optional4.children?[0].children?[0].text, message);
-
-    print('dart call handleOptionalIncrement');
-    final optional5 = await api.handleOptionalIncrement();
-    expect(optional5, null);
-
-    var optional6 = await api.handleOptionalIncrement(
-      opt: ExoticOptionals(
-        attributesNullable: [],
-      ),
-    );
-    if (optional6 == null) return fail('increment returned null for non-null params');
-    final loopFor = 100;
-    for (var i = 1; i < loopFor; i++) {
-      optional6 = await api.handleOptionalIncrement(opt: optional6);
-    }
-    if (optional6 == null) return fail('optional6 nulled after loop');
-    expect(optional6.int32, loopFor);
-    expect(optional6.int32, loopFor);
-    expect(optional6.float64, loopFor);
-    expect(optional6.boolean, false);
-    expect(optional6.zerocopy?.length, loopFor);
-    expect(optional6.int8List?.length, loopFor);
-    expect(optional6.uint8List?.length, loopFor);
-    expect(optional6.attributesNullable.length, loopFor);
-    expect(optional6.nullableAttributes?.length, loopFor);
-    expect(optional6.newtypeint?.field0, loopFor);
-
-    print('dart call handleIncrementBoxedOptional');
-    final optional7 = await api.handleIncrementBoxedOptional();
-    expect(optional7, 42);
-    var optional8 = 0.0;
-    for (var i = 0; i < loopFor; i++) {
-      optional8 = await api.handleIncrementBoxedOptional(opt: optional8);
-    }
-    expect(optional8, loopFor);
-
-    print('dart call handleOptionBoxArguments');
-    final optional9 = await api.handleOptionBoxArguments();
-    print(optional9);
-
-    final optional10 = await api.handleOptionBoxArguments(
-      boolbox: true,
-      structbox: optional6,
-    );
-    print(optional10);
 
     print('flutter_rust_bridge example program end');
   });
@@ -207,4 +244,29 @@ int _createGarbage() {
     cum += l[42];
   }
   return cum;
+}
+
+MyTreeNode _createMyTreeNode({required int arrLen}) {
+  return MyTreeNode(
+    valueI32: 100,
+    valueVecU8: Uint8List.fromList(List.filled(arrLen, 100)),
+    children: [
+      MyTreeNode(
+        valueI32: 110,
+        valueVecU8: Uint8List.fromList(List.filled(arrLen, 110)),
+        children: [
+          MyTreeNode(
+            valueI32: 111,
+            valueVecU8: Uint8List.fromList(List.filled(arrLen, 111)),
+            children: [],
+          ),
+        ],
+      ),
+      MyTreeNode(
+        valueI32: 120,
+        valueVecU8: Uint8List.fromList(List.filled(arrLen, 120)),
+        children: [],
+      ),
+    ],
+  );
 }

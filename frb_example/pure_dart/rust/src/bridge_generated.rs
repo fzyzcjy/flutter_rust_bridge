@@ -83,7 +83,7 @@ pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_of_primitive(port: i64, v: *mut wire_uint_8_list) {
+pub extern "C" fn wire_handle_vec_of_primitive(port: i64, n: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_of_primitive",
@@ -91,8 +91,8 @@ pub extern "C" fn wire_handle_vec_of_primitive(port: i64, v: *mut wire_uint_8_li
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_v = v.wire2api();
-            move |task_callback| handle_vec_of_primitive(api_v)
+            let api_n = n.wire2api();
+            move |task_callback| handle_vec_of_primitive(api_n)
         },
     );
 }

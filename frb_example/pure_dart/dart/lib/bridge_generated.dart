@@ -23,7 +23,7 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
 
-  Future<VecOfPrimitivePack> handleVecOfPrimitive({required Uint8List v, dynamic hint});
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint});
 
   Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint});
 
@@ -237,10 +237,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       parseSuccessData: _wire2api_uint_8_list,
       hint: hint));
 
-  Future<VecOfPrimitivePack> handleVecOfPrimitive({required Uint8List v, dynamic hint}) =>
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
           debugName: 'handle_vec_of_primitive',
-          callFfi: (port) => inner.wire_handle_vec_of_primitive(port, _api2wire_uint_8_list(v)),
+          callFfi: (port) => inner.wire_handle_vec_of_primitive(port, _api2wire_i32(n)),
           parseSuccessData: _wire2api_vec_of_primitive_pack,
           hint: hint));
 
@@ -1167,19 +1167,17 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   void wire_handle_vec_of_primitive(
     int port,
-    ffi.Pointer<wire_uint_8_list> v,
+    int n,
   ) {
     return _wire_handle_vec_of_primitive(
       port,
-      v,
+      n,
     );
   }
 
   late final _wire_handle_vec_of_primitivePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_handle_vec_of_primitive');
-  late final _wire_handle_vec_of_primitive =
-      _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_vec_of_primitive');
+  late final _wire_handle_vec_of_primitive = _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
   void wire_handle_zero_copy_vec_of_primitive(
     int port,

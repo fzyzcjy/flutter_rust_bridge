@@ -45,7 +45,7 @@ pub struct VecOfPrimitivePack {
     pub float64list: Vec<f64>,
 }
 
-pub fn handle_vec_of_primitive(v: Vec<u8>) -> Result<VecOfPrimitivePack> {
+pub fn handle_vec_of_primitive(n: i32) -> Result<VecOfPrimitivePack> {
     Ok(VecOfPrimitivePack {
         int8list: vec![42i8; n as usize],
         uint8list: vec![42u8; n as usize],
