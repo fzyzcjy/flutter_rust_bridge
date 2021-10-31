@@ -252,11 +252,10 @@ impl ApiTypeChild for ApiTypePrimitive {
             | ApiTypePrimitive::I16
             | ApiTypePrimitive::U32
             | ApiTypePrimitive::I32
-            // NOTE: does NOT support `u64`, since a u64 cannot be fit into a Dart int(i64)
+            | ApiTypePrimitive::U64
             | ApiTypePrimitive::I64 => "int",
             ApiTypePrimitive::F32 | ApiTypePrimitive::F64 => "double",
             ApiTypePrimitive::Bool => "bool",
-            _ => panic!("dart_api_type does not support {:?}", &self),
         }
         .to_string()
     }
