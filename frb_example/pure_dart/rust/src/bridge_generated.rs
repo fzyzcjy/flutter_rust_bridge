@@ -1259,6 +1259,7 @@ impl support::IntoDart for Attribute {
         vec![self.key.into_dart(), self.value.into_dart()].into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for Attribute {}
 
 impl support::IntoDart for Element {
     fn into_dart(self) -> support::DartCObject {
@@ -1271,6 +1272,7 @@ impl support::IntoDart for Element {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for Element {}
 
 impl support::IntoDart for ExoticOptionals {
     fn into_dart(self) -> support::DartCObject {
@@ -1294,12 +1296,14 @@ impl support::IntoDart for ExoticOptionals {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for ExoticOptionals {}
 
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartCObject {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for MySize {}
 
 impl support::IntoDart for MyTreeNode {
     fn into_dart(self) -> support::DartCObject {
@@ -1311,12 +1315,14 @@ impl support::IntoDart for MyTreeNode {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for MyTreeNode {}
 
 impl support::IntoDart for NewTypeInt {
     fn into_dart(self) -> support::DartCObject {
         vec![self.0.into_dart()].into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for NewTypeInt {}
 
 impl support::IntoDart for VecOfPrimitivePack {
     fn into_dart(self) -> support::DartCObject {
@@ -1335,6 +1341,7 @@ impl support::IntoDart for VecOfPrimitivePack {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for VecOfPrimitivePack {}
 
 impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
     fn into_dart(self) -> support::DartCObject {
@@ -1353,6 +1360,7 @@ impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
 
 // Section: executor
 support::lazy_static! {

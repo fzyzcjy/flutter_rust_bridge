@@ -5,7 +5,7 @@ version = 3
 [[package]]
 name = "allo-isolate"
 version = "0.1.10"
-source = "git+https://github.com/fzyzcjy/allo-isolate#a0eed01d41919f60d4cb2bd351cea20e253c8e78"
+source = "git+https://github.com/fzyzcjy/allo-isolate#2e80cc6faa8cae351cf3f1809eeabdbee36f7df5"
 dependencies = [
  "atomic",
 ]
