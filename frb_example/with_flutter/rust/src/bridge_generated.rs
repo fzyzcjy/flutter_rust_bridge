@@ -430,12 +430,14 @@ impl support::IntoDart for Size {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for Size {}
 
 impl support::IntoDart for TreeNode {
     fn into_dart(self) -> support::DartCObject {
         vec![self.name.into_dart(), self.children.into_dart()].into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for TreeNode {}
 
 // Section: executor
 support::lazy_static! {

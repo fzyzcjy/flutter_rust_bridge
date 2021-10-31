@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
-use crate::api_types::*;
 use crate::api_types::ApiType::*;
+use crate::api_types::*;
 use crate::others::*;
 
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
@@ -151,7 +151,7 @@ impl Generator {
                 })
                 .collect::<Vec<_>>(),
         ]
-            .concat();
+        .concat();
 
         let inner_func_params = [
             match func.mode {
@@ -163,7 +163,7 @@ impl Generator {
                 .map(|field| format!("api_{}", field.name.rust_style()))
                 .collect::<Vec<_>>(),
         ]
-            .concat();
+        .concat();
 
         // println!("generate_wire_func: {}", func.name);
         self.extern_func_collector.generate(
@@ -316,7 +316,7 @@ impl Generator {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }"
-                .into(),
+            .into(),
             GeneralList(_) => "
             let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
@@ -352,7 +352,7 @@ impl Generator {
                 } else {
                     format!("{}({})", ty.rust_api_type(), fields_str)
                 }
-                    .into()
+                .into()
             }
             // implicit delegation
             Optional(_) => "if self.is_null() { None } else { Some(self.wire2api()) }".into(),
@@ -446,8 +446,7 @@ impl Generator {
             }}
             impl support::IntoDartExceptPrimitive for {} {{}}
             ",
-            s.name, body,
-            s.name,
+            s.name, body, s.name,
         )
     }
 }
