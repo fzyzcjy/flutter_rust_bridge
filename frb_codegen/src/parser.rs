@@ -107,6 +107,7 @@ impl<'a> Parser<'a> {
             .or_else(|| ApiTypeDelegate::try_from_rust_str(ty).map(Delegate))
             .or_else(|| self.try_parse_list(ty))
             .or_else(|| self.try_parse_box(ty))
+            .or_else(|| self.try_parse_option(ty))
             .or_else(|| self.try_parse_struct(ty))
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
     }
@@ -146,6 +147,32 @@ impl<'a> Parser<'a> {
                 exist_in_real_api: true,
                 inner: self.parse_type(&inner),
             }))
+        })
+    }
+
+    fn try_parse_option(&mut self, ty: &str) -> Option<ApiType> {
+        lazy_static! {
+            static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
+        }
+
+        CAPTURE_OPTION.captures(ty).map(|inner| {
+            let inner_option = CAPTURE_OPTION.captures(&inner);
+            if let Some(inner_option) = inner_option {
+                panic!(
+                    "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
+                    inner_option
+                );
+            };
+            match self.parse_type(&inner) {
+                Primitive(prim) => ApiType::Optional(ApiTypeOptional::new_prim(prim)),
+                st @ StructRef(_) => {
+                    ApiType::Optional(ApiTypeOptional::new_ptr(Boxed(Box::new(ApiTypeBoxed {
+                        inner: st,
+                        exist_in_real_api: false,
+                    }))))
+                }
+                other => ApiType::Optional(ApiTypeOptional::new_ptr(other)),
+            }
         })
     }
 
@@ -235,7 +262,7 @@ struct GenericCapture {
 
 impl GenericCapture {
     pub fn new(cls_name: &str) -> Self {
-        let regex = Regex::new(&*format!(".*{}<([a-zA-Z0-9_<>]+)>$", cls_name)).unwrap();
+        let regex = Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>]+)>$", cls_name)).unwrap();
         Self { regex }
     }
 

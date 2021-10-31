@@ -60,7 +60,7 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
 ```
 
-(For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
+(If you have problems, see "Troubleshooting" section.) (For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
 
 ### Enjoy
 
@@ -84,7 +84,7 @@ The CI also runs the `run_codegen` workflow, which ensure that the code generato
 
 ## 📚 Tutorial: A Flutter+Rust app
 
-**Remark**: The `flutter_ios_test` and `flutter_android_test` sections of the [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/test.yaml) can also be useful, if you want details of each command.
+**Remark**: The `flutter_*_test` sections of the [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/test.yaml) can also be useful, if you want details of each command.
 
 ### Get example code
 
@@ -92,11 +92,17 @@ Please [install Flutter](https://flutter.dev/docs/get-started/install), [install
 
 ### (Optional) Run code generator
 
-Remark: I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.
+I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.
 
 Install it: `cargo install flutter_rust_bridge_codegen`.
 
-Run it: `flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h`. (See [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml) as a reference.) (For Windows, you may need `\\` instead of `/` for paths.)
+Run it:
+
+```
+flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h
+```
+
+<sub>**Remark**: If you have problems, see "Troubleshooting" section. For Windows, you may need `\\` instead of `/` for paths.</sub>
 
 ### Run "Flutter+Rust" app
 
@@ -116,7 +122,11 @@ Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ..
 
 #### If desktop (Windows/Linux/MacOS)
 
-Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully. This example itself currently does not make the setup yet, but it should be trivial to do so. More details can be seen [in the issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
+Run it directly using `flutter run` assuming [Flutter desktop support](https://flutter.dev/desktop#set-up) has been configured. 
+
+Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully.
+
+The example in `with_flutter` demonstrates how to integrate Cargo with CMake on Linux and Windows, so it can be. More details can be seen [in the issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
 
 ### (Optional) See more types that this library can generate
 
@@ -154,7 +164,7 @@ Run it: `flutter_rust_bridge_codegen --rust-input frb_example/pure_dart/rust/src
 
 You may run `frb_example/pure_dart/dart/lib/main.dart` as a normal Dart program, except that you should provide the dynamic linked library of the Rust code (for simplicity, here I only demonstrate the approach for dynamic linked library, but you can for sure use other methods). The detailed steps are as follows.
 
-Run `cargo build` in `frb_example/pure_dart/rust` to build the Rust code into a `.so` file. Then run `dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so ` to run the Dart program with Rust `.so` file. (If on MacOS, Rust may indeed generate `.dylib`, so change the last command to use `...dylib` instead of `...so`,)
+Run `cargo build` in `frb_example/pure_dart/rust` to build the Rust code into a `.so` file. Then run `dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so ` to run the Dart program with Rust `.so` file. (If you have problems, see "Troubleshooting" section.)  (If on MacOS, Rust may indeed generate `.dylib`, so change the last command to use `...dylib` instead of `...so`,)
 
 P.S. You will only see some tests passing - no fancy UI or functionality in this example.
 
@@ -166,11 +176,12 @@ Simply add `--help` to see full documentation.
 flutter_rust_bridge_codegen
 
 USAGE:
-    flutter_rust_bridge_codegen [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
+    flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
 
 FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
+        --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
+    -h, --help                   Prints help information
+    -V, --version                Prints version information
 
 OPTIONS:
     -r, --rust-input <rust-input>                              Path of input Rust code
@@ -180,11 +191,26 @@ OPTIONS:
         --rust-output <rust-output>                            Path of output generated Rust code
         --class-name <class-name>                              Generated class name
         --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
+        --llvm-path <llvm-path>                                Path to the installed LLVM
 ```
 
 ## What this library is & isn't
 
 This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, you may refer to external materials to learn Flutter, learn Rust, learn [Flutter FFI](https://flutter.dev/docs/development/platform-integration/c-interop) (Dart FFI) and so on. With material on the Internet, you will know how to create a mobile application using Flutter, and how that app can call Rust functions via Dart FFI (in the C ABI). Then this package comes in, and ease you from the burden to write down tons of boilerplate code ;)
+
+## Troubleshooting
+
+#### Have problems when using `Linux`?
+
+Try to run code generator with working directory at `/`. This seems to be a problem with Rust's builtin `Command`. See [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108) for more details.
+
+#### Error running `cargo ndk`: `ld: error: unable to find library -lgcc`
+
+Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.com/bbqsrc/cargo-ndk/issues/22) with `cargo-ndk`, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See [#149](https://github.com/fzyzcjy/flutter_rust_bridge/issues/149))
+
+#### Other problems?
+
+Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&labels=bug&template=bug_report.md&title=)! I usually reply within minutes or hours (except when sleeping, of course).
 
 ## Advanced
 
@@ -225,10 +251,37 @@ Lastly, in order to build Rust automatically when you are building Flutter, foll
 I plan to support the following features. Of course, if you want to have other features, feel free to make an issue or PR.
 
 * Support `async` in Rust (currently only `async` in Dart). Should be quite easy to implement; I have not done it because my use case currently does not includ that, but feel free to PR.
-* Support [`Stream`](https://dart.dev/tutorials/language/streams)s, which is a powerful abstraction. Should also be easy to implement.
 * Beautify the generated code, possibly making the cases (camel/snake/...) consistent with the language guide.
 * Make the code generator more robust to invalid inputs.
 
 ## Appendix: Contributing
 
-Firstly, welcome, and thanks for your contributions! If you want to contribute, feel free to create a Pull Request. If you need some ideas of what to contribute, have a look at the Issues section of this repository. The code is covered by CI, and please ensure the CI passes - which often catches bugs. To release a new version, bump several versions, write down a changelog, and use `cargo check` to automatically update the examples' dependency versions: `vim frb_codegen/Cargo.toml && vim frb_rust/Cargo.toml && vim frb_dart/pubspec.yaml && vim CHANGELOG.md && (cd frb_example/pure_dart/rust && cargo check) && (cd frb_example/with_flutter/rust && cargo check)`
+Please look at [contributing guide](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/CONTRIBUTING.md).
+
+## Contributors ✨
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/fzyzcjy"><img src="https://avatars.githubusercontent.com/u/5236035?v=4?s=100" width="100px;" alt=""/><br /><sub><b>fzyzcjy</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=fzyzcjy" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=fzyzcjy" title="Documentation">📖</a> <a href="#example-fzyzcjy" title="Examples">💡</a> <a href="#ideas-fzyzcjy" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-fzyzcjy" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/Desdaemon"><img src="https://avatars.githubusercontent.com/u/36768030?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viet Dinh</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Desdaemon" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Desdaemon" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/smw-wagnerma"><img src="https://avatars.githubusercontent.com/u/66412697?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marcel</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=smw-wagnerma" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/rustui"><img src="https://avatars.githubusercontent.com/u/90625190?v=4?s=100" width="100px;" alt=""/><br /><sub><b>rustui</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=rustui" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://adventures.michaelfbryan.com/"><img src="https://avatars.githubusercontent.com/u/17380079?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Bryan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Michael-F-Bryan" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

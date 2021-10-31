@@ -1,6 +1,6 @@
 [package]
 name = "flutter_rust_bridge_codegen"
-version = "1.1.0"
+version = "1.2.2"
 edition = "2018"
 description = "High-level memory-safe bindgen for Dart/Flutter <-> Rust"
 license = "MIT"

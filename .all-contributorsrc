@@ -6,6 +6,19 @@
   "commit": false,
   "contributors": [
     {
+      "login": "fzyzcjy",
+      "name": "fzyzcjy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5236035?v=4",
+      "profile": "https://github.com/fzyzcjy",
+      "contributions": [
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "maintenance"
+      ]
+    },
+    {
       "login": "Desdaemon",
       "name": "Viet Dinh",
       "avatar_url": "https://avatars.githubusercontent.com/u/36768030?v=4",
@@ -14,6 +27,33 @@
         "code",
         "test",
         "doc"
+      ]
+    },
+    {
+      "login": "smw-wagnerma",
+      "name": "Marcel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66412697?v=4",
+      "profile": "https://github.com/smw-wagnerma",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rustui",
+      "name": "rustui",
+      "avatar_url": "https://avatars.githubusercontent.com/u/90625190?v=4",
+      "profile": "https://github.com/rustui",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Michael-F-Bryan",
+      "name": "Michael Bryan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17380079?v=4",
+      "profile": "https://adventures.michaelfbryan.com/",
+      "contributions": [
+        "code"
       ]
     }
   ],

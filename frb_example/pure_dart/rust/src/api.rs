@@ -118,3 +118,129 @@ pub fn return_err() -> Result<i32> {
 pub fn return_panic() -> Result<i32> {
     panic!("return_panic() is called, thus deliberately panic")
 }
+
+pub fn handle_optional_return(left: f64, right: f64) -> Result<Option<f64>> {
+    if right == 0. {
+        Ok(None)
+    } else {
+        Ok(Some(left / right))
+    }
+}
+
+#[derive(Default, Debug, Clone)]
+pub struct Element {
+    pub tag: Option<String>,
+    pub text: Option<String>,
+    pub attributes: Option<Vec<Attribute>>,
+    pub children: Option<Vec<Element>>,
+}
+
+#[derive(Debug, Clone)]
+pub struct Attribute {
+    pub key: String,
+    pub value: String,
+}
+
+pub fn handle_optional_struct(document: Option<String>) -> Result<Option<Element>> {
+    Ok(document.map(|inner| Element {
+        tag: Some("div".to_owned()),
+        attributes: Some(vec![Attribute {
+            key: "id".to_owned(),
+            value: "root".to_owned(),
+        }]),
+        children: Some(vec![Element {
+            tag: Some("p".to_owned()),
+            children: Some(vec![Element {
+                text: Some(inner),
+                ..Default::default()
+            }]),
+            ..Default::default()
+        }]),
+        ..Default::default()
+    }))
+}
+
+#[derive(Debug)]
+pub struct ExoticOptionals {
+    pub int32: Option<i32>,
+    pub int64: Option<i64>,
+    pub float64: Option<f64>,
+    pub boolean: Option<bool>,
+    pub zerocopy: Option<ZeroCopyBuffer<Vec<u8>>>,
+    pub int8list: Option<Vec<i8>>,
+    pub uint8list: Option<Vec<u8>>,
+    pub attributes: Option<Vec<Attribute>>,
+    pub attributes_nullable: Vec<Option<Attribute>>,
+    pub nullable_attributes: Option<Vec<Option<Attribute>>>,
+    pub newtypeint: Option<NewTypeInt>,
+}
+
+pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Result<Option<ExoticOptionals>> {
+    Ok(opt.map(|mut opt| ExoticOptionals {
+        int32: Some(opt.int32.unwrap_or(0) + 1),
+        int64: Some(opt.int64.unwrap_or(0) + 1),
+        float64: Some(opt.float64.unwrap_or(0.) + 1.),
+        boolean: Some(!opt.boolean.unwrap_or(false)),
+        int8list: Some({
+            let mut list = opt.int8list.unwrap_or_else(Vec::new);
+            list.push(0);
+            list
+        }),
+        uint8list: Some({
+            let mut list = opt.uint8list.unwrap_or_else(Vec::new);
+            list.push(0);
+            list
+        }),
+        attributes: Some({
+            let mut list = opt.attributes.unwrap_or_else(Vec::new);
+            list.push(Attribute {
+                key: "some-attrib".to_owned(),
+                value: "some-value".to_owned(),
+            });
+            list
+        }),
+        nullable_attributes: Some({
+            let mut list = opt.nullable_attributes.unwrap_or_else(Vec::new);
+            list.push(None);
+            list
+        }),
+        newtypeint: Some({
+            let mut val = opt.newtypeint.unwrap_or(NewTypeInt(0));
+            val.0 += 1;
+            val
+        }),
+        attributes_nullable: {
+            opt.attributes_nullable.push(None);
+            opt.attributes_nullable
+        },
+        zerocopy: Some({
+            let mut list = opt.zerocopy.unwrap_or_else(|| ZeroCopyBuffer(vec![]));
+            list.0.push(0);
+            list
+        }),
+    }))
+}
+
+pub fn handle_increment_boxed_optional(opt: Option<Box<f64>>) -> Result<f64> {
+    match opt {
+        Some(e) => Ok(*e + 1.),
+        None => Ok(42.),
+    }
+}
+
+// Option<Box<T>> can't be sent to Dart,
+// but instead can be received by Rust.
+pub fn handle_option_box_arguments(
+    i8box: Option<Box<i8>>,
+    u8box: Option<Box<u8>>,
+    i32box: Option<Box<i32>>,
+    i64box: Option<Box<i64>>,
+    f64box: Option<Box<f64>>,
+    boolbox: Option<Box<bool>>,
+    structbox: Option<Box<ExoticOptionals>>,
+) -> Result<String> {
+    Ok(format!(
+        "handle_option_box_arguments({:?})",
+        (i8box, u8box, i32box, i64box, f64box, boolbox, structbox)
+    ))
+}

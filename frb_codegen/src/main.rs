@@ -4,6 +4,7 @@ use env_logger::Env;
 use log::{debug, info};
 use structopt::StructOpt;
 
+use crate::api_types::ApiType;
 use crate::config::RawOpts;
 use crate::others::*;
 use crate::utils::*;
@@ -38,7 +39,10 @@ fn main() {
     debug!("transformed functions: {:?}", &api_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust = generator_rust::generate(&api_file, &path_stem(&config.rust_input_path));
+    let generated_rust = generator_rust::generate(
+        &api_file,
+        &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
+    );
     fs::write(&config.rust_output_path, generated_rust.code).unwrap();
 
     info!("Phase: Generate Dart code");
@@ -53,7 +57,21 @@ fn main() {
 
     commands::format_rust(&config.rust_output_path);
 
-    others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
+    if !config.skip_add_mod_to_lib {
+        others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
+    }
+
+    let c_struct_names = api_file
+        .distinct_types(true, true)
+        .iter()
+        .filter_map(|ty| {
+            if let ApiType::StructRef(_) = ty {
+                Some(ty.rust_wire_type())
+            } else {
+                None
+            }
+        })
+        .collect();
 
     let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile().unwrap();
@@ -70,6 +88,8 @@ fn main() {
                     .unwrap(),
                 temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                 &config.dart_wire_class_name(),
+                c_struct_names,
+                &config.llvm_path,
             );
         },
     );

@@ -10,8 +10,13 @@ import 'package:flutter_rust_bridge_example/off_topic_code.dart';
 // Simple Flutter code. If you are not familiar with Flutter, this may sounds a bit long. But indeed
 // it is quite trivial and Flutter is just like that. Please refer to Flutter's tutorial to learn Flutter.
 
-late final dylib =
-    Platform.isAndroid ? DynamicLibrary.open('libflutter_rust_bridge_example.so') : DynamicLibrary.process();
+const base = 'flutter_rust_bridge_example';
+final path = Platform.isWindows
+    ? '$base.dll'
+    : Platform.isMacOS
+        ? 'lib$base.dylib'
+        : 'lib$base.so';
+late final dylib = Platform.isIOS ? DynamicLibrary.process() : DynamicLibrary.open(path);
 late final api = FlutterRustBridgeExample(dylib);
 
 void main() => runApp(const MyApp());

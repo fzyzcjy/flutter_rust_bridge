@@ -15,27 +15,48 @@ pub struct ApiFile {
 
 impl ApiFile {
     /// [f] returns [true] if it wants to stop going to the *children* of this subtree
-    pub fn visit_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F) {
+    pub fn visit_types<F: FnMut(&ApiType) -> bool>(
+        &self,
+        f: &mut F,
+        include_func_inputs: bool,
+        include_func_output: bool,
+    ) {
         for func in &self.funcs {
-            for field in &func.inputs {
-                field.ty.visit_types(f, self);
+            if include_func_inputs {
+                for field in &func.inputs {
+                    field.ty.visit_types(f, self);
+                }
             }
-            func.output.visit_types(f, self);
+            if include_func_output {
+                func.output.visit_types(f, self);
+            }
         }
     }
 
-    pub fn distinct_types(&self) -> Vec<ApiType> {
+    pub fn distinct_types(
+        &self,
+        include_func_inputs: bool,
+        include_func_output: bool,
+    ) -> Vec<ApiType> {
         let mut seen_idents = HashSet::new();
         let mut ans = Vec::new();
-        self.visit_types(&mut |ty| {
-            let ident = ty.safe_ident();
-            let contains = seen_idents.contains(&ident);
-            if !contains {
-                seen_idents.insert(ident);
-                ans.push(ty.clone());
-            }
-            contains
-        });
+        self.visit_types(
+            &mut |ty| {
+                let ident = ty.safe_ident();
+                let contains = seen_idents.contains(&ident);
+                if !contains {
+                    seen_idents.insert(ident);
+                    ans.push(ty.clone());
+                }
+                contains
+            },
+            include_func_inputs,
+            include_func_output,
+        );
+
+        // make the output change less when input change
+        ans.sort_by_key(|ty| ty.safe_ident());
+
         ans
     }
 }
@@ -100,9 +121,26 @@ pub enum ApiType {
     Primitive(ApiTypePrimitive),
     Delegate(ApiTypeDelegate),
     PrimitiveList(ApiTypePrimitiveList),
+    Optional(ApiTypeOptional),
     GeneralList(Box<ApiTypeGeneralList>),
     StructRef(ApiTypeStructRef),
     Boxed(Box<ApiTypeBoxed>),
+}
+
+macro_rules! api_type_call_child {
+    ($func:ident, $ret:ty) => {
+        pub fn $func(&self) -> $ret {
+            match self {
+                Primitive(inner) => inner.$func(),
+                Delegate(inner) => inner.$func(),
+                PrimitiveList(inner) => inner.$func(),
+                GeneralList(inner) => inner.$func(),
+                StructRef(inner) => inner.$func(),
+                Boxed(inner) => inner.$func(),
+                Optional(inner) => inner.$func(),
+            }
+        }
+    };
 }
 
 impl ApiType {
@@ -123,79 +161,41 @@ impl ApiType {
             }
             Boxed(inner) => inner.inner.visit_types(f, api_file),
             Delegate(d) => d.get_delegate().visit_types(f, api_file),
+            Optional(inner) => inner.inner.visit_types(f, api_file),
             Primitive(_) => {}
         }
     }
 
-    pub fn safe_ident(&self) -> String {
+    api_type_call_child!(safe_ident, String);
+    api_type_call_child!(dart_api_type, String);
+    api_type_call_child!(dart_wire_type, String);
+    api_type_call_child!(rust_api_type, String);
+    api_type_call_child!(rust_wire_type, String);
+    api_type_call_child!(rust_wire_modifier, String);
+    api_type_call_child!(rust_wire_is_pointer, bool);
+
+    #[inline]
+    pub fn required_modifier(&self) -> &'static str {
         match self {
-            Primitive(inner) => inner.safe_ident(),
-            Delegate(inner) => inner.safe_ident(),
-            PrimitiveList(inner) => inner.safe_ident(),
-            GeneralList(inner) => inner.safe_ident(),
-            StructRef(inner) => inner.safe_ident(),
-            Boxed(inner) => inner.safe_ident(),
+            Optional(_) => "",
+            _ => "required ",
         }
     }
 
-    pub fn dart_api_type(&self) -> String {
+    // api_fill functions target this type instead of the delegate.
+    #[inline]
+    pub fn optional_inner(&self) -> &ApiType {
         match self {
-            Primitive(inner) => inner.dart_api_type(),
-            Delegate(inner) => inner.dart_api_type(),
-            PrimitiveList(inner) => inner.dart_api_type(),
-            GeneralList(inner) => inner.dart_api_type(),
-            StructRef(inner) => inner.dart_api_type(),
-            Boxed(inner) => inner.dart_api_type(),
+            Optional(inner) => &inner.inner,
+            _ => self,
         }
     }
-    pub fn dart_wire_type(&self) -> String {
+
+    #[inline]
+    pub fn optional_ptr_modifier(&self) -> &'static str {
         match self {
-            Primitive(inner) => inner.dart_wire_type(),
-            Delegate(inner) => inner.dart_wire_type(),
-            PrimitiveList(inner) => inner.dart_wire_type(),
-            GeneralList(inner) => inner.dart_wire_type(),
-            StructRef(inner) => inner.dart_wire_type(),
-            Boxed(inner) => inner.dart_wire_type(),
-        }
-    }
-    pub fn rust_api_type(&self) -> String {
-        match self {
-            Primitive(inner) => inner.rust_api_type(),
-            Delegate(inner) => inner.rust_api_type(),
-            PrimitiveList(inner) => inner.rust_api_type(),
-            GeneralList(inner) => inner.rust_api_type(),
-            StructRef(inner) => inner.rust_api_type(),
-            Boxed(inner) => inner.rust_api_type(),
-        }
-    }
-    pub fn rust_wire_type(&self) -> String {
-        match self {
-            Primitive(inner) => inner.rust_wire_type(),
-            Delegate(inner) => inner.rust_wire_type(),
-            PrimitiveList(inner) => inner.rust_wire_type(),
-            GeneralList(inner) => inner.rust_wire_type(),
-            StructRef(inner) => inner.rust_wire_type(),
-            Boxed(inner) => inner.rust_wire_type(),
-        }
-    }
-    pub fn rust_wire_modifier(&self) -> String {
-        match self {
-            Primitive(inner) => inner.rust_wire_modifier(),
-            Delegate(inner) => inner.rust_wire_modifier(),
-            PrimitiveList(inner) => inner.rust_wire_modifier(),
-            GeneralList(inner) => inner.rust_wire_modifier(),
-            StructRef(inner) => inner.rust_wire_modifier(),
-            Boxed(inner) => inner.rust_wire_modifier(),
-        }
-    }
-    pub fn rust_wire_is_pointer(&self) -> bool {
-        match self {
-            Primitive(inner) => inner.rust_wire_is_pointer(),
-            Delegate(inner) => inner.rust_wire_is_pointer(),
-            PrimitiveList(inner) => inner.rust_wire_is_pointer(),
-            GeneralList(inner) => inner.rust_wire_is_pointer(),
-            StructRef(inner) => inner.rust_wire_is_pointer(),
-            Boxed(inner) => inner.rust_wire_is_pointer(),
+            Optional(_) => "*mut ",
+            _ => "",
         }
     }
 }
@@ -273,6 +273,18 @@ impl ApiTypeChild for ApiTypePrimitive {
 }
 
 impl ApiTypePrimitive {
+    /// Representations of primitives within Dart's pointers, e.g. `ffi.Pointer<ffi.Uint8>`.
+    /// This is enforced on Dart's side, and should be used instead of `dart_wire_type`
+    /// whenever primitives are put behind a pointer.
+    pub fn dart_native_type(&self) -> &'static str {
+        match self {
+            ApiTypePrimitive::U8 | ApiTypePrimitive::Bool => "ffi.Uint8",
+            ApiTypePrimitive::I8 => "ffi.Int8",
+            ApiTypePrimitive::I32 => "ffi.Int32",
+            ApiTypePrimitive::I64 => "ffi.Int64",
+            ApiTypePrimitive::F64 => "ffi.Double",
+        }
+    }
     pub fn try_from_rust_str(s: &str) -> Option<Self> {
         match s {
             "u8" => Some(ApiTypePrimitive::U8),
@@ -295,7 +307,7 @@ pub enum ApiTypeDelegate {
 }
 
 impl ApiTypeDelegate {
-    fn get_delegate(&self) -> ApiType {
+    pub fn get_delegate(&self) -> ApiType {
         match self {
             ApiTypeDelegate::String => ApiType::PrimitiveList(ApiTypePrimitiveList {
                 primitive: ApiTypePrimitive::U8,
@@ -330,10 +342,9 @@ impl ApiTypeChild for ApiTypeDelegate {
 
     fn rust_api_type(&self) -> String {
         match self {
-            ApiTypeDelegate::String => "String",
-            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer<Vec<u8>>",
+            ApiTypeDelegate::String => "String".to_owned(),
+            ApiTypeDelegate::ZeroCopyBufferVecU8 => "ZeroCopyBuffer<Vec<u8>>".to_owned(),
         }
-        .to_string()
     }
 
     fn rust_wire_type(&self) -> String {
@@ -506,7 +517,12 @@ impl ApiTypeChild for ApiTypeBoxed {
     }
 
     fn dart_wire_type(&self) -> String {
-        format!("ffi.Pointer<{}>", self.inner.dart_wire_type())
+        let wire_type = if let Primitive(prim) = &self.inner {
+            prim.dart_native_type().to_owned()
+        } else {
+            self.inner.dart_wire_type()
+        };
+        format!("ffi.Pointer<{}>", wire_type)
     }
 
     fn rust_api_type(&self) -> String {
@@ -521,6 +537,65 @@ impl ApiTypeChild for ApiTypeBoxed {
         self.inner.rust_wire_type()
     }
 
+    fn rust_wire_is_pointer(&self) -> bool {
+        true
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct ApiTypeOptional {
+    pub inner: Box<ApiType>,
+}
+
+impl ApiTypeOptional {
+    pub fn new_prim(prim: ApiTypePrimitive) -> Self {
+        Self {
+            inner: Box::new(Boxed(Box::new(ApiTypeBoxed {
+                inner: Primitive(prim),
+                exist_in_real_api: false,
+            }))),
+        }
+    }
+
+    pub fn new_ptr(ptr: ApiType) -> Self {
+        Self {
+            inner: Box::new(ptr),
+        }
+    }
+
+    pub fn is_primitive(&self) -> bool {
+        matches!(&*self.inner, Boxed(boxed) if matches!(boxed.inner, ApiType::Primitive(_)))
+    }
+
+    pub fn is_list(&self) -> bool {
+        matches!(&*self.inner, GeneralList(_) | PrimitiveList(_))
+    }
+
+    pub fn is_delegate(&self) -> bool {
+        matches!(&*self.inner, Delegate(_))
+    }
+
+    pub fn needs_initialization(&self) -> bool {
+        !(self.is_primitive() || self.is_delegate())
+    }
+}
+
+impl ApiTypeChild for ApiTypeOptional {
+    fn safe_ident(&self) -> String {
+        format!("opt_{}", self.inner.safe_ident())
+    }
+    fn rust_wire_type(&self) -> String {
+        self.inner.rust_wire_type()
+    }
+    fn rust_api_type(&self) -> String {
+        format!("Option<{}>", self.inner.rust_api_type())
+    }
+    fn dart_wire_type(&self) -> String {
+        self.inner.dart_wire_type()
+    }
+    fn dart_api_type(&self) -> String {
+        format!("{}?", self.inner.dart_api_type())
+    }
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }

@@ -8,12 +8,12 @@ pub fn transform(src: ApiFile) -> ApiFile {
         .funcs
         .into_iter()
         .map(|src_func| ApiFunc {
-            name: src_func.name.clone(),
             inputs: src_func
                 .inputs
                 .into_iter()
                 .map(transform_func_input_add_boxed)
                 .collect(),
+            name: src_func.name,
             output: src_func.output,
             mode: src_func.mode,
         })
@@ -21,8 +21,7 @@ pub fn transform(src: ApiFile) -> ApiFile {
 
     ApiFile {
         funcs: dst_funcs,
-        struct_pool: src.struct_pool,
-        has_executor: src.has_executor,
+        ..src
     }
 }
 
