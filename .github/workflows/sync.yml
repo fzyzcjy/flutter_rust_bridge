@@ -2,7 +2,7 @@ name: Sync files
 
 on:
   push:
-    branches: [ "*" ]
+    branches: [ "master" ]
   workflow_dispatch: {}
 
 jobs:
