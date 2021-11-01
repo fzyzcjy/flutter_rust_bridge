@@ -4,7 +4,7 @@
 use std::mem;
 
 pub use allo_isolate::ffi::DartCObject;
-pub use allo_isolate::IntoDart;
+pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;

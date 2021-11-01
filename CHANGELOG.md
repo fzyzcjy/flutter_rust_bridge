@@ -1,7 +1,9 @@
-## 1.2.3
+## 1.3.0
 
-* Warn when `ffigen` emits any `[SEVERE]` log messages.
+* Support more types of the form`Vec<primitive_type>` and `ZeroCopyBuffer<Vec<primitive_type>>`, such as `Vec<f32>` and `ZeroCopyBuffer<Vec<f32>>` to be transformed into `Float32List` in Dart. (#162, #153)
+
 * Do not generate unnecessary Dart to Rust wire code to fix bugs such as when `Vec<ZeroCopyBuffer<Vec<u8>>>` is in output argument.
+* Warn when `ffigen` emits any `[SEVERE]` log messages.
 * Make outputs change less when input of codegen changes.
 * Simplify `Wire2Api<Option<T>>` generated code.
 

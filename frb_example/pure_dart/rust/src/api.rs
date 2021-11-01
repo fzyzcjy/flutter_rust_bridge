@@ -6,7 +6,6 @@ use std::thread;
 use std::time::Duration;
 
 use anyhow::{anyhow, Result};
-
 use flutter_rust_bridge::{StreamSink, ZeroCopyBuffer};
 
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
@@ -27,14 +26,66 @@ pub fn handle_string(s: String) -> Result<String> {
     Ok(s + &s2)
 }
 
+// to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8(v: Vec<u8>) -> Result<Vec<u8>> {
     println!("handle_vec_u8(first few elements: {:?})", &v[..5]);
     Ok(v.repeat(2))
 }
 
-pub fn handle_zero_copy_result(n: i32) -> Result<ZeroCopyBuffer<Vec<u8>>> {
-    println!("handle_zero_copy_result(n: {})", n);
-    Ok(ZeroCopyBuffer(vec![42u8; n as usize]))
+pub struct VecOfPrimitivePack {
+    pub int8list: Vec<i8>,
+    pub uint8list: Vec<u8>,
+    pub int16list: Vec<i16>,
+    pub uint16list: Vec<u16>,
+    pub uint32list: Vec<u32>,
+    pub int32list: Vec<i32>,
+    pub uint64list: Vec<u64>,
+    pub int64list: Vec<i64>,
+    pub float32list: Vec<f32>,
+    pub float64list: Vec<f64>,
+}
+
+pub fn handle_vec_of_primitive(n: i32) -> Result<VecOfPrimitivePack> {
+    Ok(VecOfPrimitivePack {
+        int8list: vec![42i8; n as usize],
+        uint8list: vec![42u8; n as usize],
+        int16list: vec![42i16; n as usize],
+        uint16list: vec![42u16; n as usize],
+        int32list: vec![42i32; n as usize],
+        uint32list: vec![42u32; n as usize],
+        int64list: vec![42i64; n as usize],
+        uint64list: vec![42u64; n as usize],
+        float32list: vec![42.0f32; n as usize],
+        float64list: vec![42.0f64; n as usize],
+    })
+}
+
+pub struct ZeroCopyVecOfPrimitivePack {
+    pub int8list: ZeroCopyBuffer<Vec<i8>>,
+    pub uint8list: ZeroCopyBuffer<Vec<u8>>,
+    pub int16list: ZeroCopyBuffer<Vec<i16>>,
+    pub uint16list: ZeroCopyBuffer<Vec<u16>>,
+    pub uint32list: ZeroCopyBuffer<Vec<u32>>,
+    pub int32list: ZeroCopyBuffer<Vec<i32>>,
+    pub uint64list: ZeroCopyBuffer<Vec<u64>>,
+    pub int64list: ZeroCopyBuffer<Vec<i64>>,
+    pub float32list: ZeroCopyBuffer<Vec<f32>>,
+    pub float64list: ZeroCopyBuffer<Vec<f64>>,
+}
+
+pub fn handle_zero_copy_vec_of_primitive(n: i32) -> Result<ZeroCopyVecOfPrimitivePack> {
+    Ok(ZeroCopyVecOfPrimitivePack {
+        int8list: ZeroCopyBuffer(vec![42i8; n as usize]),
+        uint8list: ZeroCopyBuffer(vec![42u8; n as usize]),
+        int16list: ZeroCopyBuffer(vec![42i16; n as usize]),
+        uint16list: ZeroCopyBuffer(vec![42u16; n as usize]),
+        int32list: ZeroCopyBuffer(vec![42i32; n as usize]),
+        uint32list: ZeroCopyBuffer(vec![42u32; n as usize]),
+        int64list: ZeroCopyBuffer(vec![42i64; n as usize]),
+        uint64list: ZeroCopyBuffer(vec![42u64; n as usize]),
+        float32list: ZeroCopyBuffer(vec![42.0f32; n as usize]),
+        float64list: ZeroCopyBuffer(vec![42.0f64; n as usize]),
+    })
 }
 
 #[derive(Debug, Clone)]
@@ -169,6 +220,10 @@ pub struct ExoticOptionals {
     pub zerocopy: Option<ZeroCopyBuffer<Vec<u8>>>,
     pub int8list: Option<Vec<i8>>,
     pub uint8list: Option<Vec<u8>>,
+    pub int32list: Option<Vec<i32>>,
+    pub int64list: Option<Vec<i64>>,
+    pub float32list: Option<Vec<f32>>,
+    pub float64list: Option<Vec<f64>>,
     pub attributes: Option<Vec<Attribute>>,
     pub attributes_nullable: Vec<Option<Attribute>>,
     pub nullable_attributes: Option<Vec<Option<Attribute>>>,
@@ -176,21 +231,23 @@ pub struct ExoticOptionals {
 }
 
 pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Result<Option<ExoticOptionals>> {
+    fn manipulate_list<T>(src: Option<Vec<T>>, push_value: T) -> Option<Vec<T>> {
+        let mut list = src.unwrap_or_else(Vec::new);
+        list.push(push_value);
+        Some(list)
+    }
+
     Ok(opt.map(|mut opt| ExoticOptionals {
         int32: Some(opt.int32.unwrap_or(0) + 1),
         int64: Some(opt.int64.unwrap_or(0) + 1),
         float64: Some(opt.float64.unwrap_or(0.) + 1.),
         boolean: Some(!opt.boolean.unwrap_or(false)),
-        int8list: Some({
-            let mut list = opt.int8list.unwrap_or_else(Vec::new);
-            list.push(0);
-            list
-        }),
-        uint8list: Some({
-            let mut list = opt.uint8list.unwrap_or_else(Vec::new);
-            list.push(0);
-            list
-        }),
+        int8list: manipulate_list(opt.int8list, 0),
+        uint8list: manipulate_list(opt.uint8list, 0),
+        int32list: manipulate_list(opt.int32list, 0),
+        int64list: manipulate_list(opt.int64list, 0),
+        float32list: manipulate_list(opt.float32list, 0.),
+        float64list: manipulate_list(opt.float64list, 0.),
         attributes: Some({
             let mut list = opt.attributes.unwrap_or_else(Vec::new);
             list.push(Attribute {
