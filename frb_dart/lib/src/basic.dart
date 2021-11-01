@@ -32,6 +32,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     inner.store_dart_post_cobject(NativeApi.postCObject.cast());
   }
 
+  /// Execute a normal ffi call. Usually called by generated code instead of manually called.
   @protected
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) {
     final completer = Completer<dynamic>();
@@ -40,6 +41,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     return completer.future.then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData));
   }
 
+  /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   @protected
   Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
     final receivePort = ReceivePort();
@@ -76,6 +78,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   static const _RUST2DART_ACTION_CLOSE_STREAM = 2; // ignore: constant_identifier_names
 }
 
+/// A task to call FFI function. Normally you do not manually create instances of this task, but instead
+/// it is generated automatically by the codegen.
 @immutable
 class FlutterRustBridgeTask<S> {
   final String debugName;

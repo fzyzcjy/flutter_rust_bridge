@@ -11,10 +11,12 @@ import 'package:meta/meta.dart';
 /// 1. Please call [setupMixinConstructor] inside the constructor of your class.
 /// 2. Inside your [setup], please call ffi functions with hint=[kHintSetup].
 mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
+  /// Inside your [setup], please call ffi functions with hint=[kHintSetup].
   static const kHintSetup = _FlutterRustBridgeSetupMixinSkipWaitHint._();
 
   final _setupCompleter = Completer<void>();
 
+  /// Please call it inside the constructor of your class.
   void setupMixinConstructor() {
     () async {
       try {
@@ -43,11 +45,9 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
     }
   }
 
+  /// Do your setup logic inside this function.
   @protected
   Future<void> setup();
-
-  @protected
-  Duration get setupTimeout => const Duration(seconds: 5);
 }
 
 class _FlutterRustBridgeSetupMixinSkipWaitHint {
@@ -66,13 +66,20 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on Flut
             throw FlutterRustBridgeTimeoutException(timeLimitForExecuteNormal, task.debugName, stackTrace));
   }
 
+  /// The time limit for methods using [executeNormal]
   @protected
   Duration get timeLimitForExecuteNormal;
 }
 
+/// Exception when timeout happens using [FlutterRustBridgeTimeoutMixin]
 class FlutterRustBridgeTimeoutException {
+  /// The duration to trigger timeout
   final Duration duration;
+
+  /// debugName of the task, usually the ffi function name
   final String debugName;
+
+  /// The stack trace of the error
   final StackTrace stackTrace;
 
   FlutterRustBridgeTimeoutException(this.duration, this.debugName, this.stackTrace);
