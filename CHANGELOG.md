@@ -3,6 +3,7 @@
 * Warn when `ffigen` emits any `[SEVERE]` log messages.
 * Do not generate unnecessary Dart to Rust wire code to fix bugs such as when `Vec<ZeroCopyBuffer<Vec<u8>>>` is in output argument.
 * Make outputs change less when input of codegen changes.
+* Simplify `Wire2Api<Option<T>>` generated code.
 
 ## 1.2.2
 

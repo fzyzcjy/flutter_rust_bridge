@@ -87,6 +87,19 @@ impl Generator {
             fn wire2api(self) -> T;
         }}
 
+        impl<T, S> Wire2Api<Option<T>> for *mut S
+        where
+            *mut S: Wire2Api<T>
+        {{
+            fn wire2api(self) -> Option<T> {{
+                if self.is_null() {{
+                    None
+                }} else {{
+                    Some(self.wire2api())
+                }}
+            }}
+        }}
+
         {}
 
         // Section: impl NewWithNullPtr
@@ -96,7 +109,7 @@ impl Generator {
         }}
 
         impl<T> NewWithNullPtr for *mut T {{
-            fn new_with_null_ptr() -> Self {{ 
+            fn new_with_null_ptr() -> Self {{
                 std::ptr::null_mut()
             }}
         }}
@@ -352,8 +365,8 @@ impl Generator {
                 }
                 .into()
             }
-            // implicit delegation
-            Optional(_) => "if self.is_null() { None } else { Some(self.wire2api()) }".into(),
+            // handled by common impl
+            Optional(_) => return String::new(),
         };
 
         format!(
