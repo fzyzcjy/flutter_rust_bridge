@@ -282,6 +282,19 @@ pub trait Wire2Api<T> {
     fn wire2api(self) -> T;
 }
 
+impl<T, S> Wire2Api<Option<T>> for *mut S
+where
+    *mut S: Wire2Api<T>,
+{
+    fn wire2api(self) -> Option<T> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self.wire2api())
+        }
+    }
+}
+
 impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
