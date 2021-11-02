@@ -115,7 +115,7 @@ class FlutterRustBridgeTask<S> {
 }
 
 @immutable
-class FlutterRustBridgeSyncTask<S> {
+class FlutterRustBridgeSyncTask {
   final WireSyncReturnStruct Function() callFfi;
   final String debugName;
   final dynamic hint;
