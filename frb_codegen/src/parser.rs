@@ -124,6 +124,7 @@ impl<'a> Parser<'a> {
 
     fn try_parse_api_type_delegate(&mut self, ty: &str) -> Option<ApiType> {
         match ty {
+            "SyncReturn<Vec<u8>>" => Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)),
             "String" => Some(ApiType::Delegate(ApiTypeDelegate::String)),
             _ => {
                 lazy_static! {

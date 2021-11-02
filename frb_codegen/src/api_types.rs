@@ -326,6 +326,7 @@ impl ApiTypePrimitive {
 #[derive(Debug, Clone)]
 pub enum ApiTypeDelegate {
     String,
+    SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(ApiTypePrimitive),
 }
 
