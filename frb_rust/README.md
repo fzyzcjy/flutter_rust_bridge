@@ -4,9 +4,7 @@
 [![Documentation](https://docs.rs/flutter_rust_bridge/badge.svg)](https://docs.rs/flutter_rust_bridge)
 [![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg)](https://crates.io/crates/flutter_rust_bridge)
 [![Flutter Package](https://img.shields.io/pub/v/flutter_rust_bridge.svg)](https://pub.dev/packages/flutter_rust_bridge)
-[![Test](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/test.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/test.yaml)
-[![Codegen](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/codegen.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/codegen.yml)
-[![Linters](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/linter.yml)
+[![CI](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 
 ![Logo](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/docs/logo.png)
 
