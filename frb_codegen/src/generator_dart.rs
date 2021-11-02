@@ -321,8 +321,9 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
     let body = match ty {
         Primitive(p) => gen_simple_type_cast(&p.dart_api_type()),
         Delegate(d) => match d {
-            ApiTypeDelegate::String => gen_simple_type_cast(&d.dart_api_type()),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            ApiTypeDelegate::String
+            | ApiTypeDelegate::SyncReturnVecU8
+            | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_simple_type_cast(&d.dart_api_type())
             }
         },
