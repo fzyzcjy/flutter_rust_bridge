@@ -162,9 +162,8 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
         .collect::<Vec<_>>();
 
     let partial = format!(
-        "{}<{}> {}({{ {} }})",
-        func.mode.dart_return_type(),
-        func.output.dart_api_type(),
+        "{} {}({{ {} }})",
+        func.mode.dart_return_type(&func.output.dart_api_type()),
         func.name.to_case(Case::Camel),
         full_func_param_list.join(","),
     );

@@ -78,20 +78,23 @@ impl ApiFunc {
 #[derive(Debug, Clone)]
 pub enum ApiFuncMode {
     Normal,
+    Sync,
     Stream,
 }
 
 impl ApiFuncMode {
-    pub fn dart_return_type(&self) -> &'static str {
+    pub fn dart_return_type(&self, inner: &str) -> String {
         match self {
-            Self::Normal => "Future",
-            Self::Stream => "Stream",
+            Self::Normal => format!("Future<{}>", inner),
+            Self::Sync => inner.to_string(),
+            Self::Stream => format!("Stream<{}>", inner),
         }
     }
 
     pub fn ffi_call_mode(&self) -> &'static str {
         match self {
             Self::Normal => "Normal",
+            Self::Sync => "Sync",
             Self::Stream => "Stream",
         }
     }
