@@ -75,7 +75,7 @@ impl ApiFunc {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
 pub enum ApiFuncMode {
     Normal,
     Sync,
@@ -97,6 +97,10 @@ impl ApiFuncMode {
             Self::Sync => "Sync",
             Self::Stream => "Stream",
         }
+    }
+
+    pub fn has_port_argument(&self) -> bool {
+        self != &Self::Sync
     }
 }
 

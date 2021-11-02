@@ -151,7 +151,11 @@ impl Generator {
 
     fn generate_wire_func(&mut self, func: &ApiFunc) -> String {
         let params = [
-            vec!["port: i64".to_string()],
+            if func.mode.has_port_argument() {
+                vec!["port: i64".to_string()]
+            } else {
+                vec![]
+            },
             func.inputs
                 .iter()
                 .map(|field| {
@@ -179,8 +183,13 @@ impl Generator {
         .concat();
 
         let wrap_info_obj = format!(
-            "WrapInfo{{ debug_name: \"{}\", port, mode: FfiCallMode::{} }}",
+            "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
             func.name,
+            if func.mode.has_port_argument() {
+                "Some(port)"
+            } else {
+                "None"
+            },
             func.mode.ffi_call_mode(),
         );
 
@@ -202,11 +211,10 @@ impl Generator {
         let (handler_func_name, return_type, code_closure) = match func.mode {
             ApiFuncMode::Sync => (
                 "wrap_sync",
-                Some(func.output.rust_wire_modifier() + &func.output.rust_wire_type()),
+                Some("support::WireSyncReturnStruct"),
                 format!(
                     "{}
-                    let ret = {};
-                    TODO",
+                    {}",
                     code_wire2api, code_call_inner_func,
                 ),
             ),
@@ -233,7 +241,7 @@ impl Generator {
                 "
                 {}.{}({}, move || {{
                     {}
-                }});
+                }})
                 ",
                 HANDLER_NAME, handler_func_name, wrap_info_obj, code_closure,
             ),

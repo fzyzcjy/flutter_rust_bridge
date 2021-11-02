@@ -1,4 +1,5 @@
 use std::any::Any;
+use std::mem::ManuallyDrop;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
@@ -9,6 +10,8 @@ use parking_lot::Mutex;
 use threadpool::ThreadPool;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
+use crate::support::{into_leak_vec_ptr, WireSyncReturnStruct};
+use crate::SyncReturn;
 
 #[derive(Copy, Clone)]
 pub enum FfiCallMode {
@@ -18,8 +21,8 @@ pub enum FfiCallMode {
 
 #[derive(Clone)]
 pub struct WrapInfo {
+    pub port: Option<i64>,
     pub debug_name: &'static str,
-    pub port: i64,
     pub mode: FfiCallMode,
 }
 
@@ -33,9 +36,13 @@ pub trait Handler {
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
 
-    fn wrap_sync<SyncTaskFn, Ret>(&self, wrap_info: WrapInfo, sync_task: SyncTaskFn) -> Ret
+    fn wrap_sync<SyncTaskFn>(
+        &self,
+        wrap_info: WrapInfo,
+        sync_task: SyncTaskFn,
+    ) -> WireSyncReturnStruct
     where
-        SyncTaskFn: FnOnce() -> Result<Ret>;
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>>;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
@@ -65,11 +72,12 @@ impl Default for DefaultHandler {
     }
 }
 
-impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
-    /// This function should be pu outside **ALL** code!
-    fn with_catch_unwind_outside_all_code<F, R>(&self, wrap_info: WrapInfo, f: F) -> R
+impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
+    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
-        F: FnOnce(WrapInfo) -> R,
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskRet: IntoDart,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
@@ -82,34 +90,55 @@ impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
         let _ = panic::catch_unwind(move || {
             let wrap_info2 = wrap_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
-                f(wrap_info2);
+                let task = prepare();
+                self.executor.execute(wrap_info2, task);
             }) {
                 self.error_handler
-                    .handle_error(wrap_info.port, Error::Panic(error));
+                    .handle_error(wrap_info.port.unwrap(), Error::Panic(error));
             }
         });
     }
-}
 
-impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap_sync<SyncTaskFn>(
+        &self,
+        wrap_info: WrapInfo,
+        sync_task: SyncTaskFn,
+    ) -> WireSyncReturnStruct
     where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>>,
     {
-        self.with_catch_unwind_outside_all_code(wrap_info, move |wrap_info2| {
-            let task = prepare();
-            self.executor.execute(wrap_info2, task);
-        });
-    }
+        // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
+        // For reason, see comments in [wrap]
+        panic::catch_unwind(move || {
+            let catch_unwind_result = panic::catch_unwind(move || match sync_task() {
+                Ok(data) => (data.0, true),
+                Err(err) => (
+                    self.error_handler
+                        .handle_error_sync(Error::ResultError(err)),
+                    false,
+                ),
+            });
 
-    fn wrap_sync<SyncTaskFn, Ret>(&self, wrap_info: WrapInfo, sync_task: SyncTaskFn) -> Ret
-    where
-        SyncTaskFn: FnOnce() -> Result<Ret>,
-    {
-        self.with_catch_unwind_outside_all_code(wrap_info, move |_wrap_info2| {
-            sync_task();
+            let (bytes, success) = catch_unwind_result.unwrap_or_else(|error| {
+                (
+                    self.error_handler
+                        .handle_error_sync(wrap_info.port.unwrap(), Error::Panic(error)),
+                    false,
+                )
+            });
+
+            let (ptr, len) = into_leak_vec_ptr(bytes);
+
+            WireSyncReturnStruct { ptr, len, success }
+        })
+        .unwrap_or_else(|e| WireSyncReturnStruct {
+            // return the simplest thing possible. Normally the inner [catch_unwind] should catch
+            // panic. If no, here is our *LAST* chance before encountering undefined behavior.
+            // We just return this data that does not have much sense, but at least much better
+            // than let panic happen across FFI boundry - which is undefined behavior.
+            ptr: ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
+            len: 0,
+            success: false,
         });
     }
 }
@@ -147,7 +176,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         THREAD_POOL.lock().execute(move || {
             let wrap_info2 = wrap_info.clone();
             let thread_result = panic::catch_unwind(move || {
-                let rust2dart = Rust2Dart::new(wrap_info2.port);
+                let rust2dart = Rust2Dart::new(wrap_info2.port.unwrap());
 
                 let ret = task(TaskCallback::new(rust2dart)).map(|ret| ret.into_dart());
 
@@ -163,13 +192,13 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         }
                     }
                     Err(error) => {
-                        eh2.handle_error(wrap_info2.port, Error::ResultError(error));
+                        eh2.handle_error(wrap_info2.port.unwrap(), Error::ResultError(error));
                     }
                 };
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error(wrap_info.port, Error::Panic(error));
+                eh.handle_error(wrap_info.port.unwrap(), Error::Panic(error));
             }
         });
     }
@@ -206,6 +235,8 @@ impl Error {
 
 pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     fn handle_error(&self, port: i64, error: Error);
+
+    fn handle_error_sync(&self, error: Error) -> Vec<u8>;
 }
 
 #[derive(Clone, Copy)]
@@ -214,5 +245,9 @@ pub struct ReportDartErrorHandler;
 impl ErrorHandler for ReportDartErrorHandler {
     fn handle_error(&self, port: i64, error: Error) {
         Rust2Dart::new(port).error(error.code().to_string(), error.message());
+    }
+
+    fn handle_error_sync(&self, error: Error) -> Vec<u8> {
+        format!("{}: {}", error.code(), error.message()).into_bytes()
     }
 }
