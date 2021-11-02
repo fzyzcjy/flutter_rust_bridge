@@ -178,6 +178,12 @@ impl Generator {
         ]
         .concat();
 
+        let wrap_info_obj = format!(
+            "WrapInfo{{ debug_name: \"{}\", port, mode: FfiCallMode::{} }}",
+            func.name,
+            func.mode.ffi_call_mode(),
+        );
+
         // println!("generate_wire_func: {}", func.name);
         self.extern_func_collector.generate(
             &func.wire_func_name(),
@@ -188,14 +194,13 @@ impl Generator {
             None,
             &format!(
                 "
-                {}.wrap(WrapInfo{{ debug_name: \"{}\", port, mode: FfiCallMode::{} }}, move || {{
+                {}.wrap({}, move || {{
                     {}
                     move |task_callback| {}({})
                 }});
                 ",
                 HANDLER_NAME,
-                func.name,
-                func.mode.ffi_call_mode(),
+                wrap_info_obj,
                 func.inputs
                     .iter()
                     .map(|field| format!(
