@@ -3,10 +3,10 @@
 
 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas
 import 'dart:convert';
+import 'dart:ffi' as ffi;
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'dart:ffi' as ffi;
 
 abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
   factory FlutterRustBridgeExample(ffi.DynamicLibrary dylib) =>
@@ -280,10 +280,9 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       parseSuccessData: _wire2api_my_tree_node,
       hint: hint));
 
-  Uint8List handleSyncReturn({required String mode, dynamic hint}) => executeSync(FlutterRustBridgeTask(
+  Uint8List handleSyncReturn({required String mode, dynamic hint}) => executeSync(FlutterRustBridgeSyncTask(
       debugName: 'handle_sync_return',
-      callFfi: (port) => inner.wire_handle_sync_return(port, _api2wire_String(mode)),
-      parseSuccessData: _wire2api_SyncReturnVecU8,
+      callFfi: () => inner.wire_handle_sync_return(_api2wire_String(mode)),
       hint: hint));
 
   Stream<String> handleStream({required String arg, dynamic hint}) => executeStream(FlutterRustBridgeTask(
@@ -294,17 +293,13 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   Future<int> returnErr({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
       debugName: 'return_err',
-      callFfi: (port) => inner.wire_return_err(
-            port,
-          ),
+      callFfi: (port) => inner.wire_return_err(port),
       parseSuccessData: _wire2api_i32,
       hint: hint));
 
   Future<int> returnPanic({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
       debugName: 'return_panic',
-      callFfi: (port) => inner.wire_return_panic(
-            port,
-          ),
+      callFfi: (port) => inner.wire_return_panic(port),
       parseSuccessData: _wire2api_i32,
       hint: hint));
 
@@ -1271,7 +1266,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_complex_struct =
       _wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyTreeNode>)>();
 
-  int wire_handle_sync_return(
+  WireSyncReturnStruct wire_handle_sync_return(
     ffi.Pointer<wire_uint_8_list> mode,
   ) {
     return _wire_handle_sync_return(
@@ -1280,9 +1275,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _wire_handle_sync_returnPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<wire_uint_8_list>)>>('wire_handle_sync_return');
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_sync_return');
   late final _wire_handle_sync_return =
-      _wire_handle_sync_returnPtr.asFunction<int Function(ffi.Pointer<wire_uint_8_list>)>();
+      _wire_handle_sync_returnPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_stream(
     int port,
@@ -1720,6 +1716,19 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
+  void free_WireSyncReturnStruct(
+    WireSyncReturnStruct val,
+  ) {
+    return _free_WireSyncReturnStruct(
+      val,
+    );
+  }
+
+  late final _free_WireSyncReturnStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
+  late final _free_WireSyncReturnStruct =
+      _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
+
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
   ) {
@@ -1774,6 +1783,16 @@ class wire_MyTreeNode extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> value_vec_u8;
 
   external ffi.Pointer<wire_list_my_tree_node> children;
+}
+
+class WireSyncReturnStruct extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+
+  @ffi.Uint8()
+  external int success;
 }
 
 class wire_int_8_list extends ffi.Struct {

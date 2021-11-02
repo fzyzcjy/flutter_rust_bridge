@@ -41,6 +41,8 @@ pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
 }
 
+/// NOTE for maintainer: Please keep this struct in sync with [DUMMY_WIRE_CODE_FOR_BINDGEN]
+/// in the code generator
 #[repr(C)]
 pub struct WireSyncReturnStruct {
     pub ptr: *mut u8,

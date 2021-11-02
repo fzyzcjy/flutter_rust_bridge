@@ -121,6 +121,9 @@ impl Generator {
 
         // Section: executor
         {}
+        
+        // Section: sync execution mode utility
+        {}
 
         "#,
             CODE_HEADER,
@@ -132,6 +135,12 @@ impl Generator {
             new_with_nullptr_funcs.join("\n\n"),
             impl_intodart.join("\n\n"),
             self.generate_executor(api_file),
+            self.extern_func_collector.generate(
+                "free_WireSyncReturnStruct",
+                &["val: WireSyncReturnStruct"],
+                None,
+                "unsafe { let _ = vec_from_leak_ptr(val.ptr, val.len); }",
+            ),
         )
     }
 

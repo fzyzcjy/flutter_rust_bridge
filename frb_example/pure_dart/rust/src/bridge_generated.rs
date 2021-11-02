@@ -1156,3 +1156,12 @@ impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }
+
+// Section: sync execution mode utility
+
+#[no_mangle]
+pub extern "C" fn free_WireSyncReturnStruct(val: WireSyncReturnStruct) {
+    unsafe {
+        let _ = vec_from_leak_ptr(val.ptr, val.len);
+    }
+}
