@@ -137,9 +137,9 @@ impl Generator {
             self.generate_executor(api_file),
             self.extern_func_collector.generate(
                 "free_WireSyncReturnStruct",
-                &["val: WireSyncReturnStruct"],
+                &["val: support::WireSyncReturnStruct"],
                 None,
-                "unsafe { let _ = vec_from_leak_ptr(val.ptr, val.len); }",
+                "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
             ),
         )
     }

@@ -3,10 +3,10 @@
 
 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas
 import 'dart:convert';
-import 'dart:ffi' as ffi;
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'dart:ffi' as ffi;
 
 abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
   factory FlutterRustBridgeExample(ffi.DynamicLibrary dylib) =>

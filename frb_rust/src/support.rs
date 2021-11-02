@@ -14,7 +14,7 @@ pub fn new_leak_vec_ptr<T: Clone>(fill: T, length: i32) -> *mut T {
     into_leak_vec_ptr(vec![fill; length as usize]).0
 }
 
-pub fn into_leak_vec_ptr<T: Clone>(v: Vec<T>) -> (*mut T, i32) {
+pub fn into_leak_vec_ptr<T: Clone>(mut v: Vec<T>) -> (*mut T, i32) {
     v.shrink_to_fit();
     assert!(v.len() == v.capacity());
     let ptr = v.as_mut_ptr();

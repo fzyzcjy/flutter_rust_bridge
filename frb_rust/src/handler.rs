@@ -16,6 +16,7 @@ use crate::SyncReturn;
 #[derive(Copy, Clone)]
 pub enum FfiCallMode {
     Normal,
+    Sync,
     Stream,
 }
 
@@ -42,7 +43,7 @@ pub trait Handler {
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>>;
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
@@ -105,7 +106,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>>,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
@@ -123,8 +124,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 
             let (bytes, success) = catch_unwind_result.unwrap_or_else(|error| {
                 (
-                    self.error_handler
-                        .handle_error_sync(wrap_info.port.unwrap(), Error::Panic(error)),
+                    self.error_handler.handle_error_sync(Error::Panic(error)),
                     false,
                 )
             });
@@ -133,7 +133,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 
             WireSyncReturnStruct { ptr, len, success }
         })
-        .unwrap_or_else(|e| WireSyncReturnStruct {
+        .unwrap_or_else(|_| WireSyncReturnStruct {
             // return the simplest thing possible. Normally the inner [catch_unwind] should catch
             // panic. If no, here is our *LAST* chance before encountering undefined behavior.
             // We just return this data that does not have much sense, but at least much better
@@ -141,7 +141,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             ptr: ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
             len: 0,
             success: false,
-        });
+        })
     }
 }
 
@@ -157,7 +157,7 @@ pub trait Executor: RefUnwindSafe {
         sync_task: SyncTaskFn,
     ) -> Result<SyncReturn<Vec<u8>>>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>>;
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe;
 }
 
 pub struct ThreadPoolExecutor<EH: ErrorHandler> {
@@ -199,6 +199,9 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                             FfiCallMode::Stream => {
                                 // nothing - ignore the return value of a Stream-typed function
                             }
+                            FfiCallMode::Sync => {
+                                panic!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
+                            }
                         }
                     }
                     Err(error) => {
@@ -215,11 +218,11 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
 
     fn execute_sync<SyncTaskFn>(
         &self,
-        wrap_info: WrapInfo,
+        _wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
     ) -> Result<SyncReturn<Vec<u8>>>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>>,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe,
     {
         sync_task()
     }
