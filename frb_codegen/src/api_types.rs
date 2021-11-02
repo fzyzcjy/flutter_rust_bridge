@@ -336,6 +336,9 @@ impl ApiTypeDelegate {
             ApiTypeDelegate::String => ApiType::PrimitiveList(ApiTypePrimitiveList {
                 primitive: ApiTypePrimitive::U8,
             }),
+            ApiTypeDelegate::SyncReturnVecU8 => ApiType::PrimitiveList(ApiTypePrimitiveList {
+                primitive: ApiTypePrimitive::U8,
+            }),
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
                 ApiType::PrimitiveList(ApiTypePrimitiveList {
                     primitive: primitive.clone(),
@@ -349,6 +352,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn safe_ident(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
+            ApiTypeDelegate::SyncReturnVecU8 => "SyncReturnVecU8".to_string(),
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
@@ -358,7 +362,9 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn dart_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
+            ApiTypeDelegate::SyncReturnVecU8 | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+                self.get_delegate().dart_api_type()
+            }
         }
     }
 
@@ -369,6 +375,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn rust_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_owned(),
+            ApiTypeDelegate::SyncReturnVecU8 => "SyncReturn<Vec<u8>>".to_string(),
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
