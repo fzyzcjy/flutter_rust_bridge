@@ -154,7 +154,8 @@ abstract class FlutterRustBridgeWireBase {
 
 class _CloseStreamException {}
 
-// TODO move?
+// NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
+/// This class is only for internal usage.
 class WireSyncReturnStruct extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
