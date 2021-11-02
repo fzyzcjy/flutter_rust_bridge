@@ -110,13 +110,15 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
         panic::catch_unwind(move || {
-            let catch_unwind_result = panic::catch_unwind(move || match sync_task() {
-                Ok(data) => (data.0, true),
-                Err(err) => (
-                    self.error_handler
-                        .handle_error_sync(Error::ResultError(err)),
-                    false,
-                ),
+            let catch_unwind_result = panic::catch_unwind(move || {
+                match self.executor.execute_sync(wrap_info, sync_task) {
+                    Ok(data) => (data.0, true),
+                    Err(err) => (
+                        self.error_handler
+                            .handle_error_sync(Error::ResultError(err)),
+                        false,
+                    ),
+                }
             });
 
             let (bytes, success) = catch_unwind_result.unwrap_or_else(|error| {
@@ -148,6 +150,14 @@ pub trait Executor: RefUnwindSafe {
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
+
+    fn execute_sync<SyncTaskFn>(
+        &self,
+        wrap_info: WrapInfo,
+        sync_task: SyncTaskFn,
+    ) -> Result<SyncReturn<Vec<u8>>>
+    where
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>>;
 }
 
 pub struct ThreadPoolExecutor<EH: ErrorHandler> {
@@ -201,6 +211,17 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                 eh.handle_error(wrap_info.port.unwrap(), Error::Panic(error));
             }
         });
+    }
+
+    fn execute_sync<SyncTaskFn>(
+        &self,
+        wrap_info: WrapInfo,
+        sync_task: SyncTaskFn,
+    ) -> Result<SyncReturn<Vec<u8>>>
+    where
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>>,
+    {
+        sync_task()
     }
 }
 
