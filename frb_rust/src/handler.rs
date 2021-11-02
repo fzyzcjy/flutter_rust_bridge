@@ -32,6 +32,10 @@ pub trait Handler {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
+
+    fn wrap_sync<SyncTaskFn, Ret>(&self, wrap_info: WrapInfo, sync_task: SyncTaskFn) -> Ret
+    where
+        SyncTaskFn: FnOnce() -> Result<Ret>;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
@@ -61,14 +65,13 @@ impl Default for DefaultHandler {
     }
 }
 
-impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
+    /// This function should be pu outside **ALL** code!
+    fn with_catch_unwind_outside_all_code<F, R>(&self, wrap_info: WrapInfo, f: F) -> R
     where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart,
+        F: FnOnce(WrapInfo) -> R,
     {
-        // NOTE This [catch_unwind] **SHOULD** be put outside **ALL** code!
+        // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
         // Therefore, we should wrap a [catch_unwind] outside of *each and every* line of code
         // that can cause panic. Otherwise we may touch UB.
@@ -79,12 +82,34 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         let _ = panic::catch_unwind(move || {
             let wrap_info2 = wrap_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
-                let task = prepare();
-                self.executor.execute(wrap_info2, task);
+                f(wrap_info2);
             }) {
                 self.error_handler
                     .handle_error(wrap_info.port, Error::Panic(error));
             }
+        });
+    }
+}
+
+impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
+    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    where
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskRet: IntoDart,
+    {
+        self.with_catch_unwind_outside_all_code(wrap_info, move |wrap_info2| {
+            let task = prepare();
+            self.executor.execute(wrap_info2, task);
+        });
+    }
+
+    fn wrap_sync<SyncTaskFn, Ret>(&self, wrap_info: WrapInfo, sync_task: SyncTaskFn) -> Ret
+    where
+        SyncTaskFn: FnOnce() -> Result<Ret>,
+    {
+        self.with_catch_unwind_outside_all_code(wrap_info, move |_wrap_info2| {
+            sync_task();
         });
     }
 }
