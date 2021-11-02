@@ -201,6 +201,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             ApiTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
             }
+            ApiTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".to_string(),
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("return _api2wire_{}(raw);", d.get_delegate().safe_ident())
             }
