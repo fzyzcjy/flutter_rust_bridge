@@ -135,7 +135,8 @@ pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
     match &mode[..] {
         "NORMAL" => Ok(SyncReturn(vec![42u8; 100])),
         "RESULT_ERR" => Err(anyhow!("deliberate error in handle_sync_return_err")),
-        "PANIC" | _ => panic!("deliberate panic in handle_sync_return_panic"),
+        "PANIC" => panic!("deliberate panic in handle_sync_return_panic"),
+        _ => panic!("unknown mode"),
     }
 }
 

@@ -151,17 +151,13 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   Future<int> offTopicDeliberatelyReturnError({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
       debugName: 'off_topic_deliberately_return_error',
-      callFfi: (port) => inner.wire_off_topic_deliberately_return_error(
-            port,
-          ),
+      callFfi: (port) => inner.wire_off_topic_deliberately_return_error(port),
       parseSuccessData: _wire2api_i32,
       hint: hint));
 
   Future<int> offTopicDeliberatelyPanic({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
       debugName: 'off_topic_deliberately_panic',
-      callFfi: (port) => inner.wire_off_topic_deliberately_panic(
-            port,
-          ),
+      callFfi: (port) => inner.wire_off_topic_deliberately_panic(port),
       parseSuccessData: _wire2api_i32,
       hint: hint));
 
@@ -553,6 +549,19 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_uint_8_listPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+
+  void free_WireSyncReturnStruct(
+    WireSyncReturnStruct val,
+  ) {
+    return _free_WireSyncReturnStruct(
+      val,
+    );
+  }
+
+  late final _free_WireSyncReturnStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
+  late final _free_WireSyncReturnStruct =
+      _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
