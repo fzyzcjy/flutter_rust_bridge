@@ -185,7 +185,10 @@ impl Generator {
         );
 
         let (handler_func_name, return_type) = match func.mode {
-            ApiFuncMode::Sync => ("wrap_sync", Some(func.output.rust_wire_type())),
+            ApiFuncMode::Sync => (
+                "wrap_sync",
+                Some(func.output.rust_wire_modifier() + &func.output.rust_wire_type()),
+            ),
             ApiFuncMode::Normal | ApiFuncMode::Stream => ("wrap", None),
         };
 

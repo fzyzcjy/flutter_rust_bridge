@@ -177,7 +177,7 @@ pub extern "C" fn wire_handle_complex_struct(port: i64, s: *mut wire_MyTreeNode)
 pub extern "C" fn wire_handle_sync_return(
     port: i64,
     mode: *mut wire_uint_8_list,
-) -> wire_uint_8_list {
+) -> *mut wire_uint_8_list {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_sync_return",

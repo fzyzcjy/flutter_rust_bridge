@@ -1271,7 +1271,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_complex_struct =
       _wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyTreeNode>)>();
 
-  wire_uint_8_list wire_handle_sync_return(
+  ffi.Pointer<wire_uint_8_list> wire_handle_sync_return(
     int port,
     ffi.Pointer<wire_uint_8_list> mode,
   ) {
@@ -1282,10 +1282,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _wire_handle_sync_returnPtr =
-      _lookup<ffi.NativeFunction<wire_uint_8_list Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
           'wire_handle_sync_return');
-  late final _wire_handle_sync_return =
-      _wire_handle_sync_returnPtr.asFunction<wire_uint_8_list Function(int, ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_handle_sync_return = _wire_handle_sync_returnPtr
+      .asFunction<ffi.Pointer<wire_uint_8_list> Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_stream(
     int port,

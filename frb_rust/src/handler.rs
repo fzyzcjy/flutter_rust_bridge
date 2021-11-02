@@ -33,14 +33,9 @@ pub trait Handler {
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
 
-    fn wrap_sync<PrepareFn, TaskFn, TaskRet>(
-        &self,
-        wrap_info: WrapInfo,
-        prepare: PrepareFn,
-    ) -> TaskRet
+    fn wrap_sync<SyncTaskFn, Ret>(&self, wrap_info: WrapInfo, sync_task: SyncTaskFn) -> Ret
     where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static;
+        SyncTaskFn: FnOnce() -> Result<Ret>;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
