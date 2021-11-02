@@ -186,7 +186,8 @@ pub extern "C" fn wire_handle_sync_return(
         },
         move || {
             let api_mode = mode.wire2api();
-            move |task_callback| handle_sync_return(api_mode)
+            let ret = handle_sync_return(api_mode);
+            TODO
         },
     );
 }

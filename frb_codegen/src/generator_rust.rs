@@ -184,12 +184,42 @@ impl Generator {
             func.mode.ffi_call_mode(),
         );
 
-        let (handler_func_name, return_type) = match func.mode {
+        let code_wire2api = func
+            .inputs
+            .iter()
+            .map(|field| {
+                format!(
+                    "let api_{} = {}.wire2api();",
+                    field.name.rust_style(),
+                    field.name.rust_style()
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("");
+
+        let code_call_inner_func = format!("{}({})", func.name, inner_func_params.join(", "));
+
+        let (handler_func_name, return_type, code_closure) = match func.mode {
             ApiFuncMode::Sync => (
                 "wrap_sync",
                 Some(func.output.rust_wire_modifier() + &func.output.rust_wire_type()),
+                format!(
+                    "{}
+                    let ret = {};
+                    TODO",
+                    code_wire2api, code_call_inner_func,
+                ),
             ),
-            ApiFuncMode::Normal | ApiFuncMode::Stream => ("wrap", None),
+            ApiFuncMode::Normal | ApiFuncMode::Stream => (
+                "wrap",
+                None,
+                format!(
+                    "{}
+                    move |task_callback| {}
+                    ",
+                    code_wire2api, code_call_inner_func
+                ),
+            ),
         };
 
         self.extern_func_collector.generate(
@@ -203,23 +233,9 @@ impl Generator {
                 "
                 {}.{}({}, move || {{
                     {}
-                    move |task_callback| {}({})
                 }});
                 ",
-                HANDLER_NAME,
-                handler_func_name,
-                wrap_info_obj,
-                func.inputs
-                    .iter()
-                    .map(|field| format!(
-                        "let api_{} = {}.wire2api();",
-                        field.name.rust_style(),
-                        field.name.rust_style()
-                    ))
-                    .collect::<Vec<_>>()
-                    .join(""),
-                func.name,
-                inner_func_params.join(", "),
+                HANDLER_NAME, handler_func_name, wrap_info_obj, code_closure,
             ),
         )
     }
