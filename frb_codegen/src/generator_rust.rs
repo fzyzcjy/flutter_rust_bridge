@@ -195,7 +195,7 @@ impl Generator {
                 .iter()
                 .map(std::ops::Deref::deref)
                 .collect::<Vec<_>>(),
-            return_type.map(|x| x.as_str()),
+            return_type.as_deref(),
             &format!(
                 "
                 {}.{}({}, move || {{

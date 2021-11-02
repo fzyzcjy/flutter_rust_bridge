@@ -35,6 +35,8 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
 
+  Uint8List handleSyncReturn({required String mode, dynamic hint});
+
   Stream<String> handleStream({required String arg, dynamic hint});
 
   Future<int> returnErr({dynamic hint});
@@ -276,6 +278,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       debugName: 'handle_complex_struct',
       callFfi: (port) => inner.wire_handle_complex_struct(port, _api2wire_box_autoadd_my_tree_node(s)),
       parseSuccessData: _wire2api_my_tree_node,
+      hint: hint));
+
+  Uint8List handleSyncReturn({required String mode, dynamic hint}) => executeSync(FlutterRustBridgeTask(
+      debugName: 'handle_sync_return',
+      callFfi: (port) => inner.wire_handle_sync_return(port, _api2wire_String(mode)),
+      parseSuccessData: _wire2api_SyncReturnVecU8,
       hint: hint));
 
   Stream<String> handleStream({required String arg, dynamic hint}) => executeStream(FlutterRustBridgeTask(
@@ -723,6 +731,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 // Section: wire2api
 String _wire2api_String(dynamic raw) {
   return raw as String;
+}
+
+Uint8List _wire2api_SyncReturnVecU8(dynamic raw) {
+  return raw as Uint8List;
 }
 
 Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
@@ -1258,6 +1270,22 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           'wire_handle_complex_struct');
   late final _wire_handle_complex_struct =
       _wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyTreeNode>)>();
+
+  wire_uint_8_list wire_handle_sync_return(
+    int port,
+    ffi.Pointer<wire_uint_8_list> mode,
+  ) {
+    return _wire_handle_sync_return(
+      port,
+      mode,
+    );
+  }
+
+  late final _wire_handle_sync_returnPtr =
+      _lookup<ffi.NativeFunction<wire_uint_8_list Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_sync_return');
+  late final _wire_handle_sync_return =
+      _wire_handle_sync_returnPtr.asFunction<wire_uint_8_list Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_stream(
     int port,

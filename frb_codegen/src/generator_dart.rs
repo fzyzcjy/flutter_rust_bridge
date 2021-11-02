@@ -170,6 +170,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
 
     let execute_func_name = match func.mode {
         ApiFuncMode::Normal => "executeNormal",
+        ApiFuncMode::Sync => "executeSync",
         ApiFuncMode::Stream => "executeStream",
     };
 

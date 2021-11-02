@@ -92,7 +92,7 @@ impl<'a> Parser<'a> {
                 panic!("unsupported output: {:?}", sig.output);
             });
             mode = Some(
-                if let ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8) = output.unwrap() {
+                if let Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)) = output {
                     ApiFuncMode::Sync
                 } else {
                     ApiFuncMode::Normal
