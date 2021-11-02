@@ -168,7 +168,7 @@ impl Generator {
 
         let inner_func_params = [
             match func.mode {
-                ApiFuncMode::Normal => vec![],
+                ApiFuncMode::Normal | ApiFuncMode::Sync => vec![],
                 ApiFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
             },
             func.inputs
@@ -184,22 +184,27 @@ impl Generator {
             func.mode.ffi_call_mode(),
         );
 
-        // println!("generate_wire_func: {}", func.name);
+        let (handler_func_name, return_type) = match func.mode {
+            ApiFuncMode::Sync => ("wrap_sync", Some(func.output.rust_wire_type())),
+            ApiFuncMode::Normal | ApiFuncMode::Stream => ("wrap", None),
+        };
+
         self.extern_func_collector.generate(
             &func.wire_func_name(),
             &params
                 .iter()
                 .map(std::ops::Deref::deref)
                 .collect::<Vec<_>>(),
-            None,
+            return_type.map(|x| x.as_str()),
             &format!(
                 "
-                {}.wrap({}, move || {{
+                {}.{}({}, move || {{
                     {}
                     move |task_callback| {}({})
                 }});
                 ",
                 HANDLER_NAME,
+                handler_func_name,
                 wrap_info_obj,
                 func.inputs
                     .iter()
