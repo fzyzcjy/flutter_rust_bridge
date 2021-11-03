@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
 import 'dart:isolate';
+import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/utils.dart';
 import 'package:meta/meta.dart';
@@ -39,6 +41,23 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
     return completer.future.then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData));
+  }
+
+  /// Similar to [executeNormal], except that this will return synchronously
+  @protected
+  Uint8List executeSync(FlutterRustBridgeSyncTask task) {
+    final raw = task.callFfi();
+
+    final bytes = Uint8List.fromList(raw.ptr.asTypedList(raw.len));
+    final success = raw.success > 0;
+
+    inner.free_WireSyncReturnStruct(raw);
+
+    if (success) {
+      return bytes;
+    } else {
+      throw FfiException('EXECUTE_SYNC', utf8.decode(bytes), null);
+    }
   }
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
@@ -82,15 +101,28 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 /// it is generated automatically by the codegen.
 @immutable
 class FlutterRustBridgeTask<S> {
-  final String debugName;
   final void Function(int port) callFfi;
   final S Function(dynamic) parseSuccessData;
+  final String debugName;
   final dynamic hint;
 
   FlutterRustBridgeTask({
-    required this.debugName,
     required this.callFfi,
     required this.parseSuccessData,
+    required this.debugName,
+    this.hint,
+  });
+}
+
+@immutable
+class FlutterRustBridgeSyncTask {
+  final WireSyncReturnStruct Function() callFfi;
+  final String debugName;
+  final dynamic hint;
+
+  FlutterRustBridgeSyncTask({
+    required this.callFfi,
+    required this.debugName,
     this.hint,
   });
 }
@@ -115,6 +147,21 @@ abstract class FlutterRustBridgeWireBase {
   void store_dart_post_cobject(
     ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
   );
+
+  // ignore: non_constant_identifier_names
+  void free_WireSyncReturnStruct(WireSyncReturnStruct val);
 }
 
 class _CloseStreamException {}
+
+// NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
+/// This class is only for internal usage.
+class WireSyncReturnStruct extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+
+  @ffi.Uint8()
+  external int success;
+}

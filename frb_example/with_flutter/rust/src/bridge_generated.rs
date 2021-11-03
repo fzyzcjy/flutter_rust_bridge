@@ -23,7 +23,7 @@ pub extern "C" fn wire_draw_mandelbrot(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "draw_mandelbrot",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -35,7 +35,7 @@ pub extern "C" fn wire_draw_mandelbrot(
                 draw_mandelbrot(api_image_size, api_zoom_point, api_scale, api_num_threads)
             }
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -43,14 +43,14 @@ pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNo
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "passing_complex_structs",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_root = root.wire2api();
             move |task_callback| passing_complex_structs(api_root)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -58,14 +58,14 @@ pub extern "C" fn wire_off_topic_memory_test_input_array(port: i64, input: *mut 
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_array",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_input = input.wire2api();
             move |task_callback| off_topic_memory_test_input_array(api_input)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -73,14 +73,14 @@ pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, 
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_zero_copy_buffer",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_len = len.wire2api();
             move |task_callback| off_topic_memory_test_output_zero_copy_buffer(api_len)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -88,14 +88,14 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port: i64, len: i32) 
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_u8",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_len = len.wire2api();
             move |task_callback| off_topic_memory_test_output_vec_u8(api_len)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -106,14 +106,14 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_vec_of_object",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_input = input.wire2api();
             move |task_callback| off_topic_memory_test_input_vec_of_object(api_input)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -121,14 +121,14 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port: i64, len
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_of_object",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_len = len.wire2api();
             move |task_callback| off_topic_memory_test_output_vec_of_object(api_len)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -139,14 +139,14 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_complex_struct",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_input = input.wire2api();
             move |task_callback| off_topic_memory_test_input_complex_struct(api_input)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -154,14 +154,14 @@ pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, le
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_complex_struct",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_len = len.wire2api();
             move |task_callback| off_topic_memory_test_output_complex_struct(api_len)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -169,11 +169,11 @@ pub extern "C" fn wire_off_topic_deliberately_return_error(port: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_deliberately_return_error",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| off_topic_deliberately_return_error(),
-    );
+    )
 }
 
 #[no_mangle]
@@ -181,11 +181,11 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_deliberately_panic",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| off_topic_deliberately_panic(),
-    );
+    )
 }
 
 // Section: wire structs
@@ -455,4 +455,13 @@ impl support::IntoDartExceptPrimitive for TreeNode {}
 // Section: executor
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
+}
+
+// Section: sync execution mode utility
+
+#[no_mangle]
+pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) {
+    unsafe {
+        let _ = support::vec_from_leak_ptr(val.ptr, val.len);
+    }
 }

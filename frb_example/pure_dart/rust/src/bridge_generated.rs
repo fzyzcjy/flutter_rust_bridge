@@ -17,7 +17,7 @@ pub extern "C" fn wire_simple_adder(port: i64, a: i32, b: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "simple_adder",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -25,7 +25,7 @@ pub extern "C" fn wire_simple_adder(port: i64, a: i32, b: i32) {
             let api_b = b.wire2api();
             move |task_callback| simple_adder(api_a, api_b)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -39,7 +39,7 @@ pub extern "C" fn wire_primitive_types(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "primitive_types",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -49,7 +49,7 @@ pub extern "C" fn wire_primitive_types(
             let api_my_bool = my_bool.wire2api();
             move |task_callback| primitive_types(api_my_i32, api_my_i64, api_my_f64, api_my_bool)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -57,14 +57,14 @@ pub extern "C" fn wire_handle_string(port: i64, s: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_s = s.wire2api();
             move |task_callback| handle_string(api_s)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -72,14 +72,14 @@ pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_u8",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_v = v.wire2api();
             move |task_callback| handle_vec_u8(api_v)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -87,14 +87,14 @@ pub extern "C" fn wire_handle_vec_of_primitive(port: i64, n: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_of_primitive",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_n = n.wire2api();
             move |task_callback| handle_vec_of_primitive(api_n)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -102,14 +102,14 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port: i64, n: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_zero_copy_vec_of_primitive",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_n = n.wire2api();
             move |task_callback| handle_zero_copy_vec_of_primitive(api_n)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -117,7 +117,7 @@ pub extern "C" fn wire_handle_struct(port: i64, arg: *mut wire_MySize, boxed: *m
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_struct",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -125,7 +125,7 @@ pub extern "C" fn wire_handle_struct(port: i64, arg: *mut wire_MySize, boxed: *m
             let api_boxed = boxed.wire2api();
             move |task_callback| handle_struct(api_arg, api_boxed)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -133,14 +133,14 @@ pub extern "C" fn wire_handle_newtype(port: i64, arg: *mut wire_NewTypeInt) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_newtype",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
             move |task_callback| handle_newtype(api_arg)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -148,14 +148,14 @@ pub extern "C" fn wire_handle_list_of_struct(port: i64, l: *mut wire_list_my_siz
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_list_of_struct",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_l = l.wire2api();
             move |task_callback| handle_list_of_struct(api_l)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -163,14 +163,31 @@ pub extern "C" fn wire_handle_complex_struct(port: i64, s: *mut wire_MyTreeNode)
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_complex_struct",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_s = s.wire2api();
             move |task_callback| handle_complex_struct(api_s)
         },
-    );
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_return(
+    mode: *mut wire_uint_8_list,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_return",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_mode = mode.wire2api();
+            handle_sync_return(api_mode)
+        },
+    )
 }
 
 #[no_mangle]
@@ -178,14 +195,14 @@ pub extern "C" fn wire_handle_stream(port: i64, arg: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Stream,
         },
         move || {
             let api_arg = arg.wire2api();
             move |task_callback| handle_stream(task_callback.stream_sink(), api_arg)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -193,11 +210,11 @@ pub extern "C" fn wire_return_err(port: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_err",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| return_err(),
-    );
+    )
 }
 
 #[no_mangle]
@@ -205,11 +222,11 @@ pub extern "C" fn wire_return_panic(port: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_panic",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| return_panic(),
-    );
+    )
 }
 
 #[no_mangle]
@@ -217,7 +234,7 @@ pub extern "C" fn wire_handle_optional_return(port: i64, left: f64, right: f64) 
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_return",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -225,7 +242,7 @@ pub extern "C" fn wire_handle_optional_return(port: i64, left: f64, right: f64) 
             let api_right = right.wire2api();
             move |task_callback| handle_optional_return(api_left, api_right)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -233,14 +250,14 @@ pub extern "C" fn wire_handle_optional_struct(port: i64, document: *mut wire_uin
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_struct",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_document = document.wire2api();
             move |task_callback| handle_optional_struct(api_document)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -248,14 +265,14 @@ pub extern "C" fn wire_handle_optional_increment(port: i64, opt: *mut wire_Exoti
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_increment",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_opt = opt.wire2api();
             move |task_callback| handle_optional_increment(api_opt)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -263,14 +280,14 @@ pub extern "C" fn wire_handle_increment_boxed_optional(port: i64, opt: *mut f64)
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_increment_boxed_optional",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_opt = opt.wire2api();
             move |task_callback| handle_increment_boxed_optional(api_opt)
         },
-    );
+    )
 }
 
 #[no_mangle]
@@ -287,7 +304,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_option_box_arguments",
-            port,
+            port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -310,7 +327,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
                 )
             }
         },
-    );
+    )
 }
 
 // Section: wire structs
@@ -1138,4 +1155,13 @@ impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
 // Section: executor
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
+}
+
+// Section: sync execution mode utility
+
+#[no_mangle]
+pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) {
+    unsafe {
+        let _ = support::vec_from_leak_ptr(val.ptr, val.len);
+    }
 }

@@ -149,47 +149,68 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
-    let wire_param_list = func
-        .inputs
-        .iter()
-        .map(|input| {
-            format!(
-                "_api2wire_{}({})",
-                &input.ty.safe_ident(),
-                &input.name.dart_style()
-            )
-        })
-        .collect::<Vec<_>>();
+    let wire_param_list = [
+        if func.mode.has_port_argument() {
+            vec!["port".to_string()]
+        } else {
+            vec![]
+        },
+        func.inputs
+            .iter()
+            .map(|input| {
+                format!(
+                    "_api2wire_{}({})",
+                    &input.ty.safe_ident(),
+                    &input.name.dart_style()
+                )
+            })
+            .collect::<Vec<_>>(),
+    ]
+    .concat();
 
     let partial = format!(
-        "{}<{}> {}({{ {} }})",
-        func.mode.dart_return_type(),
-        func.output.dart_api_type(),
+        "{} {}({{ {} }})",
+        func.mode.dart_return_type(&func.output.dart_api_type()),
         func.name.to_case(Case::Camel),
         full_func_param_list.join(","),
     );
 
     let execute_func_name = match func.mode {
         ApiFuncMode::Normal => "executeNormal",
+        ApiFuncMode::Sync => "executeSync",
         ApiFuncMode::Stream => "executeStream",
     };
 
     let signature = format!("{};", partial);
 
-    let implementation = format!(
-        "{} => {}(FlutterRustBridgeTask(
+    let implementation = match func.mode {
+        ApiFuncMode::Sync => format!(
+            "{} => {}(FlutterRustBridgeSyncTask(
             debugName: '{}',
-            callFfi: (port) => inner.{}(port, {}),
+            callFfi: () => inner.{}({}),
+            hint: hint
+        ));",
+            partial,
+            execute_func_name,
+            func.name,
+            func.wire_func_name(),
+            wire_param_list.join(", "),
+        ),
+        _ => format!(
+            "{} => {}(FlutterRustBridgeTask(
+            debugName: '{}',
+            callFfi: (port) => inner.{}({}),
             parseSuccessData: _wire2api_{},
             hint: hint
         ));",
-        partial,
-        execute_func_name,
-        func.name,
-        func.wire_func_name(),
-        wire_param_list.join(", "),
-        func.output.safe_ident(),
-    );
+            partial,
+            execute_func_name,
+            func.name,
+            func.wire_func_name(),
+            wire_param_list.join(", "),
+            func.output.safe_ident(),
+        ),
+    };
 
     (signature, implementation)
 }
@@ -201,6 +222,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             ApiTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
             }
+            ApiTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".to_string(),
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("return _api2wire_{}(raw);", d.get_delegate().safe_ident())
             }
@@ -320,8 +342,9 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
     let body = match ty {
         Primitive(p) => gen_simple_type_cast(&p.dart_api_type()),
         Delegate(d) => match d {
-            ApiTypeDelegate::String => gen_simple_type_cast(&d.dart_api_type()),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            ApiTypeDelegate::String
+            | ApiTypeDelegate::SyncReturnVecU8
+            | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_simple_type_cast(&d.dart_api_type())
             }
         },

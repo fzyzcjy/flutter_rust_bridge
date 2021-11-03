@@ -6,7 +6,8 @@ use std::thread;
 use std::time::Duration;
 
 use anyhow::{anyhow, Result};
-use flutter_rust_bridge::{StreamSink, ZeroCopyBuffer};
+
+use flutter_rust_bridge::{StreamSink, SyncReturn, ZeroCopyBuffer};
 
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
     Ok(a + b)
@@ -128,6 +129,15 @@ pub fn handle_complex_struct(s: MyTreeNode) -> Result<MyTreeNode> {
     println!("handle_complex_struct({:?})", &s);
     let s_cloned = s.clone();
     Ok(s)
+}
+
+pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
+    match &mode[..] {
+        "NORMAL" => Ok(SyncReturn(vec![42u8; 100])),
+        "RESULT_ERR" => Err(anyhow!("deliberate error in handle_sync_return_err")),
+        "PANIC" => panic!("deliberate panic in handle_sync_return_panic"),
+        _ => panic!("unknown mode"),
+    }
 }
 
 pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {

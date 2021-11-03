@@ -55,7 +55,7 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
-        let mut mode = ApiFuncMode::Normal;
+        let mut mode = None;
 
         for sig_input in &sig.inputs {
             if let FnArg::Typed(ref pat_type) = sig_input {
@@ -68,7 +68,7 @@ impl<'a> Parser<'a> {
 
                 if let Some(stream_sink_inner_type) = self.try_parse_stream_sink(&type_string) {
                     output = Some(stream_sink_inner_type);
-                    mode = ApiFuncMode::Stream;
+                    mode = Some(ApiFuncMode::Stream);
                 } else {
                     inputs.push(ApiField {
                         name: ApiIdent::new(name),
@@ -91,13 +91,20 @@ impl<'a> Parser<'a> {
             } else {
                 panic!("unsupported output: {:?}", sig.output);
             });
+            mode = Some(
+                if let Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)) = output {
+                    ApiFuncMode::Sync
+                } else {
+                    ApiFuncMode::Normal
+                },
+            );
         }
 
         ApiFunc {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
-            mode,
+            mode: mode.expect("unsupported mode"),
         }
     }
 
@@ -124,6 +131,7 @@ impl<'a> Parser<'a> {
 
     fn try_parse_api_type_delegate(&mut self, ty: &str) -> Option<ApiType> {
         match ty {
+            "SyncReturn<Vec<u8>>" => Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)),
             "String" => Some(ApiType::Delegate(ApiTypeDelegate::String)),
             _ => {
                 lazy_static! {

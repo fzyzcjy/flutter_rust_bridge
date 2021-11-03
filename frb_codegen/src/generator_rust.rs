@@ -121,6 +121,9 @@ impl Generator {
 
         // Section: executor
         {}
+        
+        // Section: sync execution mode utility
+        {}
 
         "#,
             CODE_HEADER,
@@ -132,6 +135,12 @@ impl Generator {
             new_with_nullptr_funcs.join("\n\n"),
             impl_intodart.join("\n\n"),
             self.generate_executor(api_file),
+            self.extern_func_collector.generate(
+                "free_WireSyncReturnStruct",
+                &["val: support::WireSyncReturnStruct"],
+                None,
+                "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
+            ),
         )
     }
 
@@ -151,7 +160,11 @@ impl Generator {
 
     fn generate_wire_func(&mut self, func: &ApiFunc) -> String {
         let params = [
-            vec!["port: i64".to_string()],
+            if func.mode.has_port_argument() {
+                vec!["port: i64".to_string()]
+            } else {
+                vec![]
+            },
             func.inputs
                 .iter()
                 .map(|field| {
@@ -168,7 +181,7 @@ impl Generator {
 
         let inner_func_params = [
             match func.mode {
-                ApiFuncMode::Normal => vec![],
+                ApiFuncMode::Normal | ApiFuncMode::Sync => vec![],
                 ApiFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
             },
             func.inputs
@@ -178,35 +191,68 @@ impl Generator {
         ]
         .concat();
 
-        // println!("generate_wire_func: {}", func.name);
+        let wrap_info_obj = format!(
+            "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
+            func.name,
+            if func.mode.has_port_argument() {
+                "Some(port)"
+            } else {
+                "None"
+            },
+            func.mode.ffi_call_mode(),
+        );
+
+        let code_wire2api = func
+            .inputs
+            .iter()
+            .map(|field| {
+                format!(
+                    "let api_{} = {}.wire2api();",
+                    field.name.rust_style(),
+                    field.name.rust_style()
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("");
+
+        let code_call_inner_func = format!("{}({})", func.name, inner_func_params.join(", "));
+
+        let (handler_func_name, return_type, code_closure) = match func.mode {
+            ApiFuncMode::Sync => (
+                "wrap_sync",
+                Some("support::WireSyncReturnStruct"),
+                format!(
+                    "{}
+                    {}",
+                    code_wire2api, code_call_inner_func,
+                ),
+            ),
+            ApiFuncMode::Normal | ApiFuncMode::Stream => (
+                "wrap",
+                None,
+                format!(
+                    "{}
+                    move |task_callback| {}
+                    ",
+                    code_wire2api, code_call_inner_func
+                ),
+            ),
+        };
+
         self.extern_func_collector.generate(
             &func.wire_func_name(),
             &params
                 .iter()
                 .map(std::ops::Deref::deref)
                 .collect::<Vec<_>>(),
-            None,
+            return_type.as_deref(),
             &format!(
                 "
-                {}.wrap(WrapInfo{{ debug_name: \"{}\", port, mode: FfiCallMode::{} }}, move || {{
+                {}.{}({}, move || {{
                     {}
-                    move |task_callback| {}({})
-                }});
+                }})
                 ",
-                HANDLER_NAME,
-                func.name,
-                func.mode.ffi_call_mode(),
-                func.inputs
-                    .iter()
-                    .map(|field| format!(
-                        "let api_{} = {}.wire2api();",
-                        field.name.rust_style(),
-                        field.name.rust_style()
-                    ))
-                    .collect::<Vec<_>>()
-                    .join(""),
-                func.name,
-                inner_func_params.join(", "),
+                HANDLER_NAME, handler_func_name, wrap_info_obj, code_closure,
             ),
         )
     }
@@ -321,6 +367,7 @@ impl Generator {
                 ApiTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
                 String::from_utf8_lossy(&vec).into_owned()"
                     .into(),
+                ApiTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".into(),
                 ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                     "ZeroCopyBuffer(self.wire2api())".into()
                 }

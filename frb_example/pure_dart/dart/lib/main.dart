@@ -108,6 +108,21 @@ void main(List<String> args) async {
       expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
     }
 
+    print('dart call handle_sync_return');
+    {
+      expect(api.handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
+
+      for (final mode in ['RESULT_ERR', 'PANIC']) {
+        try {
+          api.handleSyncReturn(mode: mode);
+          fail("exception not thrown");
+        } catch (e) {
+          print('dart catch e: $e');
+          expect(e, isA<FfiException>());
+        }
+      }
+    }
+
     print('dart call handle_stream');
     {
       final stream = api.handleStream(arg: 'hello');
