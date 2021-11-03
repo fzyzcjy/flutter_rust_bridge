@@ -11,7 +11,7 @@ categories = ["development-tools::ffi"]
 [dependencies]
 allo-isolate = "0.1.11"
 #allo-isolate = { git = "https://github.com/fzyzcjy/allo-isolate" } # hack, until upstream PR is merged and released
-anyhow = "1.0.44"
+anyhow = "1.0.45"
 threadpool = "1.8.1"
 lazy_static = "1.4.0"
 parking_lot = "0.11.2"
