@@ -1,5 +1,6 @@
-## 1.3.1
+## 1.4.0
 
+* Support synchronous function calls in addition to existing asynchronous Future and Stream approaches (#175, #176)
 * Remove unnecessary dependency of `lint` for the Dart package.
 
 ## 1.3.0
