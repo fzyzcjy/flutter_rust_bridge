@@ -15,10 +15,11 @@ pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
 }
 
 /**
- * Multiline comments are fine,
- * but they are not preferred in Rust
- * nor in Dart.
- */
+ Multiline comments are fine,
+ but they are not preferred in Rust nor in Dart.
+
+ Newlines are preserved.
+*/
 pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> Result<i32> {
     println!(
         "primitive_types({}, {}, {}, {})",

@@ -653,7 +653,15 @@ impl Comment {
 impl From<&str> for Comment {
     fn from(input: &str) -> Self {
         if input.contains('\n') {
-            Self(format!("/**{}*/", input))
+            // Dart's formatter has issues with block comments
+            // so we convert them ahead of time.
+            let formatted = input
+                .split('\n')
+                .into_iter()
+                .map(|e| format!("///{}", e))
+                .collect::<Vec<_>>()
+                .join("\n");
+            Self(formatted)
         } else {
             Self(format!("///{}", input))
         }

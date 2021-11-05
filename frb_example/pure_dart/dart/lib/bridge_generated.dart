@@ -258,9 +258,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       parseSuccessData: _wire2api_i32,
       hint: hint));
 
-/// Multiline comments are fine,
-  /// but they are not preferred in Rust
-  /// nor in Dart.
+  ///
+  /// Multiline comments are fine,
+  /// but they are not preferred in Rust nor in Dart.
+  ///
+  /// Newlines are preserved.
+  ///
   Future<int> primitiveTypes(
           {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
