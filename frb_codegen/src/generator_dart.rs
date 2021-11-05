@@ -85,7 +85,7 @@ pub fn generate(
         dart_wire_class_name,
         dart_func_signatures_and_implementations
             .iter()
-            .map(|(sig, _)| sig.clone())
+            .map(|(sig, _, comm)| format!("{}\n{}", comm, sig))
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_structs.join("\n\n"),
@@ -118,7 +118,7 @@ pub fn generate(
         dart_wire_class_name,
         dart_func_signatures_and_implementations
             .iter()
-            .map(|(_, imp)| imp.clone())
+            .map(|(_, imp, _)| imp.clone())
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_api2wire_funcs.join("\n\n"),
@@ -133,7 +133,7 @@ pub fn generate(
     }
 }
 
-fn generate_api_func(func: &ApiFunc) -> (String, String) {
+fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
     let raw_func_param_list = func
         .inputs
         .iter()
@@ -187,13 +187,11 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
 
     let implementation = match func.mode {
         ApiFuncMode::Sync => format!(
-            "{}
-            {} => {}(FlutterRustBridgeSyncTask(
+            "{} => {}(FlutterRustBridgeSyncTask(
             debugName: '{}',
             callFfi: () => inner.{}({}),
             hint: hint
         ));",
-            comments,
             partial,
             execute_func_name,
             func.name,
@@ -201,14 +199,12 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
             wire_param_list.join(", "),
         ),
         _ => format!(
-            "{}
-            {} => {}(FlutterRustBridgeTask(
+            "{} => {}(FlutterRustBridgeTask(
             debugName: '{}',
             callFfi: (port) => inner.{}({}),
             parseSuccessData: _wire2api_{},
             hint: hint
         ));",
-            comments,
             partial,
             execute_func_name,
             func.name,
@@ -218,7 +214,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
         ),
     };
 
-    (signature, implementation)
+    (signature, implementation, comments)
 }
 
 fn generate_api2wire_func(ty: &ApiType) -> String {

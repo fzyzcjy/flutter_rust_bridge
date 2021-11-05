@@ -14,8 +14,15 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   FlutterRustBridgeExample.raw(FlutterRustBridgeExampleWire inner) : super(inner);
 
+  /// Documentation on a simple adder function.
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
 
+  ///
+  /// Multiline comments are fine,
+  /// but they are not preferred in Rust nor in Dart.
+  ///
+  /// Newlines are preserved.
+  ///
   Future<int> primitiveTypes(
       {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
 
@@ -251,19 +258,12 @@ class ZeroCopyVecOfPrimitivePack {
 class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super.raw(inner);
 
-  /// Documentation on a simple adder function.
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
       debugName: 'simple_adder',
       callFfi: (port) => inner.wire_simple_adder(port, _api2wire_i32(a), _api2wire_i32(b)),
       parseSuccessData: _wire2api_i32,
       hint: hint));
 
-  ///
-  /// Multiline comments are fine,
-  /// but they are not preferred in Rust nor in Dart.
-  ///
-  /// Newlines are preserved.
-  ///
   Future<int> primitiveTypes(
           {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
