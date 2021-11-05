@@ -13,9 +13,7 @@ pub fn transform(src: ApiFile) -> ApiFile {
                 .into_iter()
                 .map(transform_func_input_add_boxed)
                 .collect(),
-            name: src_func.name,
-            output: src_func.output,
-            mode: src_func.mode,
+            ..src_func
         })
         .collect();
 
@@ -36,7 +34,7 @@ fn transform_func_input_add_boxed(input: ApiField) -> ApiField {
                 exist_in_real_api: false, // <--
                 inner: input.ty.clone(),
             })),
-            name: input.name.clone(),
+            ..input
         }
     } else {
         input.clone()

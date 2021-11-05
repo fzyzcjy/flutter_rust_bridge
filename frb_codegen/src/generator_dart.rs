@@ -55,7 +55,7 @@ pub fn generate(
     let header = format!(
         "{}
 
-        // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas
+        // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments
         import 'dart:convert';
         import 'dart:typed_data';
 
@@ -85,7 +85,7 @@ pub fn generate(
         dart_wire_class_name,
         dart_func_signatures_and_implementations
             .iter()
-            .map(|(sig, _)| sig.clone())
+            .map(|(sig, _, comm)| format!("{}\n{}", comm, sig))
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_structs.join("\n\n"),
@@ -118,7 +118,7 @@ pub fn generate(
         dart_wire_class_name,
         dart_func_signatures_and_implementations
             .iter()
-            .map(|(_, imp)| imp.clone())
+            .map(|(_, imp, _)| imp.clone())
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_api2wire_funcs.join("\n\n"),
@@ -133,7 +133,7 @@ pub fn generate(
     }
 }
 
-fn generate_api_func(func: &ApiFunc) -> (String, String) {
+fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
     let raw_func_param_list = func
         .inputs
         .iter()
@@ -183,6 +183,8 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
 
     let signature = format!("{};", partial);
 
+    let comments = dart_comments(&func.comments);
+
     let implementation = match func.mode {
         ApiFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
@@ -212,7 +214,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
         ),
     };
 
-    (signature, implementation)
+    (signature, implementation, comments)
 }
 
 fn generate_api2wire_func(ty: &ApiType) -> String {
@@ -400,11 +402,27 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
     )
 }
 
+fn dart_comments(comments: &[Comment]) -> String {
+    comments
+        .iter()
+        .map(Comment::comment)
+        .collect::<Vec<_>>()
+        .join("\n")
+}
+
 fn generate_api_struct(s: &ApiStruct) -> String {
     let field_declarations = s
         .fields
         .iter()
-        .map(|f| format!("final {} {};", f.ty.dart_api_type(), f.name.dart_style()))
+        .map(|f| {
+            format!(
+                "{}
+                final {} {};",
+                dart_comments(&f.comments),
+                f.ty.dart_api_type(),
+                f.name.dart_style()
+            )
+        })
         .collect::<Vec<_>>()
         .join("\n");
 
@@ -415,12 +433,15 @@ fn generate_api_struct(s: &ApiStruct) -> String {
         .collect::<Vec<_>>()
         .join("");
 
+    let comments = dart_comments(&s.comments);
+
     format!(
-        "class {} {{
+        "{}
+        class {} {{
             {}
 
             {}({{{}}});
         }}",
-        s.name, field_declarations, s.name, constructor_params
+        comments, s.name, field_declarations, s.name, constructor_params
     )
 }
