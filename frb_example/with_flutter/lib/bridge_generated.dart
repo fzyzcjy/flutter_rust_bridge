@@ -44,6 +44,7 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
 class Point {
   final double x;
+
   final double y;
 
   Point({
@@ -54,6 +55,7 @@ class Point {
 
 class Size {
   final int width;
+
   final int height;
 
   Size({
@@ -64,6 +66,7 @@ class Size {
 
 class TreeNode {
   final String name;
+
   final List<TreeNode> children;
 
   TreeNode({

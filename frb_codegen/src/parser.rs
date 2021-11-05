@@ -30,6 +30,17 @@ struct Parser<'a> {
     parsing_or_parsed_struct_names: HashSet<String>,
 }
 
+fn extract_comments(attr: &Attribute) -> Option<Comment> {
+    match attr.parse_meta() {
+        Ok(Meta::NameValue(MetaNameValue {
+            path,
+            lit: Lit::Str(lit),
+            ..
+        })) if path.is_ident("doc") => Some(Comment::from(lit.value().as_ref())),
+        _ => None,
+    }
+}
+
 impl<'a> Parser<'a> {
     fn parse(mut self, source_rust_content: &str, src_fns: Vec<&ItemFn>) -> ApiFile {
         let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
@@ -70,9 +81,11 @@ impl<'a> Parser<'a> {
                     output = Some(stream_sink_inner_type);
                     mode = Some(ApiFuncMode::Stream);
                 } else {
+                    let comments = pat_type.attrs.iter().filter_map(extract_comments).collect();
                     inputs.push(ApiField {
                         name: ApiIdent::new(name),
                         ty: self.parse_type(&type_string),
+                        comments,
                     });
                 }
             } else {
@@ -100,11 +113,14 @@ impl<'a> Parser<'a> {
             );
         }
 
+        let comments = func.attrs.iter().filter_map(extract_comments).collect();
+
         ApiFunc {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
             mode: mode.expect("unsupported mode"),
+            comments,
         }
     }
 
@@ -241,17 +257,25 @@ impl<'a> Parser<'a> {
                 .map_or(format!("field{}", idx), |id| ident_to_string(id));
             let field_type_str = type_to_string(&field.ty);
             let field_type = self.parse_type(&field_type_str);
+            let comments = field.attrs.iter().filter_map(extract_comments).collect();
             fields.push(ApiField {
                 name: ApiIdent::new(field_name),
                 ty: field_type,
+                comments,
             });
         }
 
         let name = ident_to_string(&item_struct.ident);
+        let comments = item_struct
+            .attrs
+            .iter()
+            .filter_map(extract_comments)
+            .collect();
         ApiStruct {
             name,
             fields,
             is_fields_named,
+            comments,
         }
     }
 }

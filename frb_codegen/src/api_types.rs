@@ -67,6 +67,7 @@ pub struct ApiFunc {
     pub inputs: Vec<ApiField>,
     pub output: ApiType,
     pub mode: ApiFuncMode,
+    pub comments: Vec<Comment>,
 }
 
 impl ApiFunc {
@@ -488,7 +489,6 @@ impl ApiTypeChild for ApiTypeStructRef {
     fn safe_ident(&self) -> String {
         self.dart_api_type().to_case(Case::Snake)
     }
-
     fn dart_api_type(&self) -> String {
         self.name.to_string()
     }
@@ -511,12 +511,14 @@ pub struct ApiStruct {
     pub name: String,
     pub fields: Vec<ApiField>,
     pub is_fields_named: bool,
+    pub comments: Vec<Comment>,
 }
 
 #[derive(Debug, Clone)]
 pub struct ApiField {
     pub ty: ApiType,
     pub name: ApiIdent,
+    pub comments: Vec<Comment>,
 }
 
 impl ApiField {
@@ -636,5 +638,24 @@ impl ApiTypeChild for ApiTypeOptional {
     }
     fn rust_wire_is_pointer(&self) -> bool {
         true
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct Comment(String);
+
+impl Comment {
+    pub fn comment(&self) -> &str {
+        &self.0
+    }
+}
+
+impl From<&str> for Comment {
+    fn from(input: &str) -> Self {
+        if input.contains('\n') {
+            Self(format!("/**{}*/", input))
+        } else {
+            Self(format!("///{}", input))
+        }
     }
 }

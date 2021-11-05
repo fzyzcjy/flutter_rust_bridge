@@ -9,10 +9,16 @@ use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::{StreamSink, SyncReturn, ZeroCopyBuffer};
 
+/// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
     Ok(a + b)
 }
 
+/**
+ * Multiline comments are fine,
+ * but they are not preferred in Rust
+ * nor in Dart.
+ */
 pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> Result<i32> {
     println!(
         "primitive_types({}, {}, {}, {})",

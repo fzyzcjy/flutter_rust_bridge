@@ -183,13 +183,17 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
 
     let signature = format!("{};", partial);
 
+    let comments = dart_comments(&func.comments);
+
     let implementation = match func.mode {
         ApiFuncMode::Sync => format!(
-            "{} => {}(FlutterRustBridgeSyncTask(
+            "{}
+            {} => {}(FlutterRustBridgeSyncTask(
             debugName: '{}',
             callFfi: () => inner.{}({}),
             hint: hint
         ));",
+            comments,
             partial,
             execute_func_name,
             func.name,
@@ -197,12 +201,14 @@ fn generate_api_func(func: &ApiFunc) -> (String, String) {
             wire_param_list.join(", "),
         ),
         _ => format!(
-            "{} => {}(FlutterRustBridgeTask(
+            "{}
+            {} => {}(FlutterRustBridgeTask(
             debugName: '{}',
             callFfi: (port) => inner.{}({}),
             parseSuccessData: _wire2api_{},
             hint: hint
         ));",
+            comments,
             partial,
             execute_func_name,
             func.name,
@@ -400,11 +406,27 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
     )
 }
 
+fn dart_comments(comments: &[Comment]) -> String {
+    comments
+        .iter()
+        .map(Comment::comment)
+        .collect::<Vec<_>>()
+        .join("\n")
+}
+
 fn generate_api_struct(s: &ApiStruct) -> String {
     let field_declarations = s
         .fields
         .iter()
-        .map(|f| format!("final {} {};", f.ty.dart_api_type(), f.name.dart_style()))
+        .map(|f| {
+            format!(
+                "{}
+                final {} {};",
+                dart_comments(&f.comments),
+                f.ty.dart_api_type(),
+                f.name.dart_style()
+            )
+        })
         .collect::<Vec<_>>()
         .join("\n");
 
@@ -415,12 +437,15 @@ fn generate_api_struct(s: &ApiStruct) -> String {
         .collect::<Vec<_>>()
         .join("");
 
+    let comments = dart_comments(&s.comments);
+
     format!(
-        "class {} {{
+        "{}
+        class {} {{
             {}
 
             {}({{{}}});
         }}",
-        s.name, field_declarations, s.name, constructor_params
+        comments, s.name, field_declarations, s.name, constructor_params
     )
 }
