@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Add logging for FlutterRustBridgeSetupMixin for users to debug easily.
+* Set names of threads for `ThreadPoolExecutor` to make debugging easier when looking at threads.
 
 ## 1.5.0
 
