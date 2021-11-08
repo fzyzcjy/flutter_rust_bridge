@@ -210,6 +210,16 @@ Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.c
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&labels=bug&template=bug_report.md&title=)! I usually reply within minutes or hours (except when sleeping, of course).
 
+## Feature details
+
+Here is a list of types that the code generator can generate:
+
+[WIP] You can read the `pure_dart` example code currently, before I put the full list here.
+
+Here are other functionalities:
+
+[WIP] (e.g. [Stream is supported but not documented yet](https://github.com/fzyzcjy/flutter_rust_bridge/issues/179)).
+
 ## Advanced
 
 ### Customize handler's behavior
