@@ -202,6 +202,13 @@ This library is nothing but a code generator that helps your Flutter/Dart functi
 
 Try to run code generator with working directory at `/`. This seems to be a problem with Rust's builtin `Command`. See [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108) for more details.
 
+#### Issue with store_dart_post_cobject?
+
+If calling rust function gives the error below, please consider running **cargo build** again. This can happen when the generated rs file is not included when building is being done.
+```sh
+[ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
+```
+
 #### Error running `cargo ndk`: `ld: error: unable to find library -lgcc`
 
 Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.com/bbqsrc/cargo-ndk/issues/22) with `cargo-ndk`, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See [#149](https://github.com/fzyzcjy/flutter_rust_bridge/issues/149))
