@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add logging for FlutterRustBridgeSetupMixin for users to debug easily.
+
 ## 1.5.0
 
 * Copy Rust comments over to Dart generated file (#182, thanks @Desdaemon)

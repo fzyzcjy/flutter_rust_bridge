@@ -20,8 +20,10 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
   void setupMixinConstructor() {
     () async {
       try {
+        log('FlutterRustBridgeSetupMixin.setupMixinConstructor start setup');
         await setup();
       } finally {
+        log('FlutterRustBridgeSetupMixin.setupMixinConstructor complete setup');
         _setupCompleter.complete();
       }
     }();
@@ -41,13 +43,18 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
 
   Future<void> _beforeExecute<S>(FlutterRustBridgeTask<S> task) async {
     if (!_setupCompleter.isCompleted && task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
+      log('FlutterRustBridgeSetupMixin.beforeExecute start waiting setup to complete (task=${task.debugName})');
       await _setupCompleter.future;
+      log('FlutterRustBridgeSetupMixin.beforeExecute end waiting setup to complete (task=${task.debugName})');
     }
   }
 
   /// Do your setup logic inside this function.
   @protected
   Future<void> setup();
+
+  @protected
+  void log(String message) {}
 }
 
 class _FlutterRustBridgeSetupMixinSkipWaitHint {
