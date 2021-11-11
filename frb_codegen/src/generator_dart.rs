@@ -228,7 +228,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("return _api2wire_{}(raw);", d.get_delegate().safe_ident())
             }
-            ApiTypeDelegate::StringList => "final ans = inner.new_list_String(raw.length);
+            ApiTypeDelegate::StringList => "final ans = inner.new_StringList(raw.length);
             for (var i = 0; i < raw.length; i++) {
                 ans.ref.ptr[i] = _api2wire_String(raw[i]);
             }
@@ -361,7 +361,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             }
         },
         Optional(opt) => format!(
-            "return raw == null ? null : _wire2api_{}(raw);",
+            "if (raw != null) return _wire2api_{}(raw);",
             opt.inner.safe_ident()
         ),
         PrimitiveList(list) => gen_simple_type_cast(&list.dart_api_type()),

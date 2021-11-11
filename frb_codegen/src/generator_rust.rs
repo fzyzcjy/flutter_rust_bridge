@@ -264,6 +264,10 @@ impl Generator {
                 format!("ptr: *mut {}", list.primitive.rust_wire_type()),
                 "len: i32".to_string(),
             ],
+            Delegate(ty @ ApiTypeDelegate::StringList) => vec![
+                format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type()),
+                "len: i32".to_owned(),
+            ],
             GeneralList(list) => vec![
                 format!(
                     "ptr: *mut {}{}",
@@ -306,7 +310,6 @@ impl Generator {
         // println!("generate_allocate_funcs: {:?}", ty);
 
         match ty {
-            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) => String::new(),
             PrimitiveList(list) => self.extern_func_collector.generate(
                 &format!("new_{}", list.safe_ident()),
                 &["len: i32"],
@@ -332,6 +335,21 @@ impl Generator {
                     list.inner.rust_wire_type()
                 ),
             ),
+            Delegate(list @ ApiTypeDelegate::StringList) => self.extern_func_collector.generate(
+                &format!("new_{}", ty.safe_ident()),
+                &["len: i32"],
+                Some(&[
+                    list.rust_wire_modifier().as_str(),
+                    list.rust_wire_type().as_str()
+                ].concat()),
+                &format!(
+                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
+                    support::new_leak_box_ptr(wrap)",
+                    list.rust_wire_type(),
+                    list.get_delegate().optional_ptr_modifier(),
+                    list.get_delegate().rust_wire_type()
+                ),
+            ),
             Boxed(b) => {
                 match &b.inner {
                     Primitive(prim) => {
@@ -354,7 +372,8 @@ impl Generator {
                         )
                     }
                 }
-            }
+            },
+            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) => String::new(),
         }
     }
 
@@ -362,22 +381,19 @@ impl Generator {
         // println!("generate_wire2api_func: {:?}", ty);
         let body: Cow<str> = match ty {
             Primitive(_) => "self".into(),
-            Delegate(d) => match d {
-                ApiTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
-                String::from_utf8_lossy(&vec).into_owned()"
-                    .into(),
-                ApiTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".into(),
-                ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                    "ZeroCopyBuffer(self.wire2api())".into()
-                }
-                ApiTypeDelegate::StringList => return String::new(),
-            },
+            Delegate(ApiTypeDelegate::String) => "let vec: Vec<u8> = self.wire2api();
+            String::from_utf8_lossy(&vec).into_owned()"
+                .into(),
+            Delegate(ApiTypeDelegate::SyncReturnVecU8) => "/*unsupported*/".into(),
+            Delegate(ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_)) => {
+                "ZeroCopyBuffer(self.wire2api())".into()
+            }
             PrimitiveList(_) => "unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }"
             .into(),
-            GeneralList(_) => "
+            GeneralList(_) | Delegate(ApiTypeDelegate::StringList) => "
             let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)

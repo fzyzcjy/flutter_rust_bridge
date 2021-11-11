@@ -354,9 +354,10 @@ impl ApiTypeDelegate {
                     primitive: primitive.clone(),
                 })
             }
-            ApiTypeDelegate::StringList => ApiType::GeneralList(Box::new(ApiTypeGeneralList {
-                inner: ApiType::Delegate(ApiTypeDelegate::String),
-            })),
+            // ApiTypeDelegate::StringList => ApiType::GeneralList(Box::new(ApiTypeGeneralList {
+            // inner: ApiType::Delegate(ApiTypeDelegate::String),
+            // })),
+            ApiTypeDelegate::StringList => ApiType::Delegate(ApiTypeDelegate::String),
         }
     }
 }
@@ -384,7 +385,10 @@ impl ApiTypeChild for ApiTypeDelegate {
     }
 
     fn dart_wire_type(&self) -> String {
-        self.get_delegate().dart_wire_type()
+        match self {
+            ApiTypeDelegate::StringList => "ffi.Pointer<wire_StringList>".to_owned(),
+            _ => self.get_delegate().dart_wire_type(),
+        }
     }
 
     fn rust_api_type(&self) -> String {
@@ -399,7 +403,10 @@ impl ApiTypeChild for ApiTypeDelegate {
     }
 
     fn rust_wire_type(&self) -> String {
-        self.get_delegate().rust_wire_type()
+        match self {
+            ApiTypeDelegate::StringList => "wire_StringList".to_owned(),
+            _ => self.get_delegate().rust_wire_type(),
+        }
     }
 
     fn rust_wire_is_pointer(&self) -> bool {
