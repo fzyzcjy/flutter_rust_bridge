@@ -413,7 +413,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_StringList(List<String> raw) {
+  ffi.Pointer<wire_list_String> _api2wire_StringList(List<String> raw) {
     final ans = inner.new_list_String(raw.length);
     for (var i = 0; i < raw.length; i++) {
       ans.ref.ptr[i] = _api2wire_String(raw[i]);
@@ -561,6 +561,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
+  ffi.Pointer<wire_list_String> _api2wire_list_String(List<String> raw) {
+    final ans = inner.new_list_String(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_String(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
   ffi.Pointer<wire_list_attribute> _api2wire_list_attribute(List<Attribute> raw) {
     final ans = inner.new_list_attribute(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -700,6 +708,9 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   }
 
   // Section: api_fill_to_wire
+  void _api_fill_to_wire_String(String apiObj, ffi.Pointer<wire_uint_8_list> wireObj) {
+    /* noop */
+  }
 
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
     wireObj.key = _api2wire_String(apiObj.key);
@@ -963,6 +974,10 @@ Int64List _wire2api_int_64_list(dynamic raw) {
 
 Int8List _wire2api_int_8_list(dynamic raw) {
   return raw as Int8List;
+}
+
+List<String> _wire2api_list_String(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_String).toList();
 }
 
 List<Attribute> _wire2api_list_attribute(dynamic raw) {
@@ -1319,7 +1334,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   void wire_handle_string_list(
     int port,
-    ffi.Pointer<wire_uint_8_list> names,
+    ffi.Pointer<wire_list_String> names,
   ) {
     return _wire_handle_string_list(
       port,
@@ -1328,10 +1343,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _wire_handle_string_listPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_String>)>>(
           'wire_handle_string_list');
   late final _wire_handle_string_list =
-      _wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+      _wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<wire_list_String>)>();
 
   void wire_handle_complex_struct(
     int port,
@@ -1736,6 +1751,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list');
   late final _new_int_8_list = _new_int_8_listPtr.asFunction<ffi.Pointer<wire_int_8_list> Function(int)>();
 
+  ffi.Pointer<wire_list_String> new_list_String(
+    int len,
+  ) {
+    return _new_list_String(
+      len,
+    );
+  }
+
+  late final _new_list_StringPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_String> Function(ffi.Int32)>>('new_list_String');
+  late final _new_list_String = _new_list_StringPtr.asFunction<ffi.Pointer<wire_list_String> Function(int)>();
+
   ffi.Pointer<wire_list_attribute> new_list_attribute(
     int len,
   ) {
@@ -1847,6 +1874,13 @@ class wire_NewTypeInt extends ffi.Struct {
 
 class wire_list_my_size extends ffi.Struct {
   external ffi.Pointer<wire_MySize> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_list_String extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_uint_8_list>> ptr;
 
   @ffi.Int32()
   external int len;

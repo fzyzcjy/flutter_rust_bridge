@@ -159,7 +159,7 @@ pub extern "C" fn wire_handle_list_of_struct(port: i64, l: *mut wire_list_my_siz
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_string_list(port: i64, names: *mut wire_uint_8_list) {
+pub extern "C" fn wire_handle_string_list(port: i64, names: *mut wire_list_String) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string_list",
@@ -411,6 +411,13 @@ pub struct wire_int_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_String {
+    ptr: *mut *mut wire_uint_8_list,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_attribute {
     ptr: *mut wire_Attribute,
     len: i32,
@@ -595,6 +602,15 @@ pub extern "C" fn new_int_8_list(len: i32) -> *mut wire_int_8_list {
         len,
     };
     support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_String(len: i32) -> *mut wire_list_String {
+    let wrap = wire_list_String {
+        ptr: support::new_leak_vec_ptr(<*mut wire_uint_8_list>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
@@ -907,6 +923,16 @@ impl Wire2Api<Vec<i8>> for *mut wire_int_8_list {
     }
 }
 
+impl Wire2Api<Vec<String>> for *mut wire_list_String {
+    fn wire2api(self) -> Vec<String> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
 impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
     fn wire2api(self) -> Vec<Attribute> {
         let vec = unsafe {
@@ -1180,21 +1206,3 @@ pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) 
         let _ = support::vec_from_leak_ptr(val.ptr, val.len);
     }
 }
-
-    // ----------- DUMMY CODE FOR BINDGEN ----------
-    
-    // copied from: allo-isolate
-    pub type DartPort = i64;
-    pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
-    #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
-    
-    // copied from: frb_rust::support.rs
-    #[repr(C)]
-    pub struct WireSyncReturnStruct {
-        pub ptr: *mut u8,
-        pub len: i32,
-        pub success: bool,
-    }
-    
-    // ---------------------------------------------
-    
