@@ -121,7 +121,7 @@ impl Generator {
 
         // Section: executor
         {}
-        
+
         // Section: sync execution mode utility
         {}
 
@@ -306,7 +306,7 @@ impl Generator {
         // println!("generate_allocate_funcs: {:?}", ty);
 
         match ty {
-            Primitive(_) | Delegate(_) | Optional(_) => "".to_string(),
+            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) => String::new(),
             PrimitiveList(list) => self.extern_func_collector.generate(
                 &format!("new_{}", list.safe_ident()),
                 &["len: i32"],
@@ -332,7 +332,6 @@ impl Generator {
                     list.inner.rust_wire_type()
                 ),
             ),
-            StructRef(_) => "".to_string(),
             Boxed(b) => {
                 match &b.inner {
                     Primitive(prim) => {
@@ -371,6 +370,7 @@ impl Generator {
                 ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                     "ZeroCopyBuffer(self.wire2api())".into()
                 }
+                ApiTypeDelegate::StringList => return String::new(),
             },
             PrimitiveList(_) => "unsafe {
                 let wrap = support::box_from_leak_ptr(self);

@@ -149,6 +149,7 @@ impl<'a> Parser<'a> {
         match ty {
             "SyncReturn<Vec<u8>>" => Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)),
             "String" => Some(ApiType::Delegate(ApiTypeDelegate::String)),
+            "Vec<String>" => Some(ApiType::Delegate(ApiTypeDelegate::StringList)),
             _ => {
                 lazy_static! {
                     static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture =
@@ -326,6 +327,8 @@ impl GenericCapture {
     pub fn captures(&self, s: &str) -> Option<String> {
         self.regex
             .captures(s)
-            .map(|capture| capture.get(1).unwrap().as_str().to_string())
+            .iter()
+            .find_map(|capture| capture.get(1))
+            .map(|inner| inner.as_str().to_owned())
     }
 }

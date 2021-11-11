@@ -159,6 +159,21 @@ pub extern "C" fn wire_handle_list_of_struct(port: i64, l: *mut wire_list_my_siz
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_string_list(port: i64, names: *mut wire_uint_8_list) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_string_list",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_names = names.wire2api();
+            move |task_callback| handle_string_list(api_names)
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_complex_struct(port: i64, s: *mut wire_MyTreeNode) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1165,3 +1180,21 @@ pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) 
         let _ = support::vec_from_leak_ptr(val.ptr, val.len);
     }
 }
+
+    // ----------- DUMMY CODE FOR BINDGEN ----------
+    
+    // copied from: allo-isolate
+    pub type DartPort = i64;
+    pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
+    #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
+    
+    // copied from: frb_rust::support.rs
+    #[repr(C)]
+    pub struct WireSyncReturnStruct {
+        pub ptr: *mut u8,
+        pub len: i32,
+        pub success: bool,
+    }
+    
+    // ---------------------------------------------
+    
