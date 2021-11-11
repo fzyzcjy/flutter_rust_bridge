@@ -178,7 +178,10 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
     {
         const NUM_WORKERS: usize = 4;
         lazy_static! {
-            static ref THREAD_POOL: Mutex<ThreadPool> = Mutex::new(ThreadPool::new(NUM_WORKERS));
+            static ref THREAD_POOL: Mutex<ThreadPool> = Mutex::new(ThreadPool::with_name(
+                "frb_executor".to_string(),
+                NUM_WORKERS
+            ));
         }
 
         let eh = self.error_handler;

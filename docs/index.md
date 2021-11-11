@@ -202,6 +202,13 @@ This library is nothing but a code generator that helps your Flutter/Dart functi
 
 Try to run code generator with working directory at `/`. This seems to be a problem with Rust's builtin `Command`. See [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108) for more details.
 
+#### Issue with store_dart_post_cobject?
+
+If calling rust function gives the error below, please consider running **cargo build** again. This can happen when the generated rs file is not included when building is being done.
+```sh
+[ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
+```
+
 #### Error running `cargo ndk`: `ld: error: unable to find library -lgcc`
 
 Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.com/bbqsrc/cargo-ndk/issues/22) with `cargo-ndk`, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See [#149](https://github.com/fzyzcjy/flutter_rust_bridge/issues/149))
@@ -209,6 +216,16 @@ Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.c
 #### Other problems?
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&labels=bug&template=bug_report.md&title=)! I usually reply within minutes or hours (except when sleeping, of course).
+
+## Feature details
+
+Here is a list of types that the code generator can generate:
+
+[WIP] You can read the `pure_dart` example code currently, before I put the full list here.
+
+Here are other functionalities:
+
+[WIP] (e.g. [Stream is supported but not documented yet](https://github.com/fzyzcjy/flutter_rust_bridge/issues/179)).
 
 ## Advanced
 
@@ -259,7 +276,7 @@ Please look at [contributing guide](https://github.com/fzyzcjy/flutter_rust_brid
 ## Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -274,6 +291,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/smw-wagnerma"><img src="https://avatars.githubusercontent.com/u/66412697?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marcel</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=smw-wagnerma" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/rustui"><img src="https://avatars.githubusercontent.com/u/90625190?v=4?s=100" width="100px;" alt=""/><br /><sub><b>rustui</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=rustui" title="Documentation">📖</a></td>
     <td align="center"><a href="https://adventures.michaelfbryan.com/"><img src="https://avatars.githubusercontent.com/u/17380079?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Bryan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Michael-F-Bryan" title="Code">💻</a></td>
+    <td align="center"><a href="https://bus710.net"><img src="https://avatars.githubusercontent.com/u/8920680?v=4?s=100" width="100px;" alt=""/><br /><sub><b>bus710</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=bus710" title="Documentation">📖</a></td>
   </tr>
 </table>
 

@@ -1,3 +1,12 @@
+## Unreleased
+
+* Add logging for FlutterRustBridgeSetupMixin for users to debug easily.
+* Set names of threads for `ThreadPoolExecutor` to make debugging easier when looking at threads.
+
+## 1.5.0
+
+* Copy Rust comments over to Dart generated file (#182, thanks @Desdaemon)
+
 ## 1.4.0
 
 * Support synchronous function calls in addition to existing asynchronous Future and Stream approaches (#175, #176)
