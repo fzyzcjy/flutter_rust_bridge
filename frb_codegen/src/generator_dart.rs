@@ -360,7 +360,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             }
         },
         Optional(opt) => format!(
-            "if (raw != null) return _wire2api_{}(raw);",
+            "return raw == null ? null : _wire2api_{}(raw);",
             opt.inner.safe_ident()
         ),
         PrimitiveList(list) => gen_simple_type_cast(&list.dart_api_type()),

@@ -99,7 +99,8 @@ void main(List<String> args) async {
 
     print('dart call handleStringList');
     {
-      await api.handleStringList(names: ['Steve', 'Bob', 'Alex']);
+      final names = await api.handleStringList(names: ['Steve', 'Bob', 'Alex']);
+      expect(names, ['Steve', 'Bob', 'Alex']);
     }
 
     print('dart call handleComplexStruct');

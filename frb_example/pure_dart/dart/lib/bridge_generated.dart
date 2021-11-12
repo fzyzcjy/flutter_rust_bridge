@@ -1013,79 +1013,79 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
 }
 
 String? _wire2api_opt_String(dynamic raw) {
-  if (raw != null) return _wire2api_String(raw);
+  return raw == null ? null : _wire2api_String(raw);
 }
 
 Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
-  if (raw != null) return _wire2api_ZeroCopyBuffer_Uint8List(raw);
+  return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
 }
 
 Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {
-  if (raw != null) return _wire2api_box_autoadd_attribute(raw);
+  return raw == null ? null : _wire2api_box_autoadd_attribute(raw);
 }
 
 bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
-  if (raw != null) return _wire2api_box_autoadd_bool(raw);
+  return raw == null ? null : _wire2api_box_autoadd_bool(raw);
 }
 
 Element? _wire2api_opt_box_autoadd_element(dynamic raw) {
-  if (raw != null) return _wire2api_box_autoadd_element(raw);
+  return raw == null ? null : _wire2api_box_autoadd_element(raw);
 }
 
 ExoticOptionals? _wire2api_opt_box_autoadd_exotic_optionals(dynamic raw) {
-  if (raw != null) return _wire2api_box_autoadd_exotic_optionals(raw);
+  return raw == null ? null : _wire2api_box_autoadd_exotic_optionals(raw);
 }
 
 double? _wire2api_opt_box_autoadd_f64(dynamic raw) {
-  if (raw != null) return _wire2api_box_autoadd_f64(raw);
+  return raw == null ? null : _wire2api_box_autoadd_f64(raw);
 }
 
 int? _wire2api_opt_box_autoadd_i32(dynamic raw) {
-  if (raw != null) return _wire2api_box_autoadd_i32(raw);
+  return raw == null ? null : _wire2api_box_autoadd_i32(raw);
 }
 
 int? _wire2api_opt_box_autoadd_i64(dynamic raw) {
-  if (raw != null) return _wire2api_box_autoadd_i64(raw);
+  return raw == null ? null : _wire2api_box_autoadd_i64(raw);
 }
 
 NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
-  if (raw != null) return _wire2api_box_autoadd_new_type_int(raw);
+  return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
 }
 
 Float32List? _wire2api_opt_float_32_list(dynamic raw) {
-  if (raw != null) return _wire2api_float_32_list(raw);
+  return raw == null ? null : _wire2api_float_32_list(raw);
 }
 
 Float64List? _wire2api_opt_float_64_list(dynamic raw) {
-  if (raw != null) return _wire2api_float_64_list(raw);
+  return raw == null ? null : _wire2api_float_64_list(raw);
 }
 
 Int32List? _wire2api_opt_int_32_list(dynamic raw) {
-  if (raw != null) return _wire2api_int_32_list(raw);
+  return raw == null ? null : _wire2api_int_32_list(raw);
 }
 
 Int64List? _wire2api_opt_int_64_list(dynamic raw) {
-  if (raw != null) return _wire2api_int_64_list(raw);
+  return raw == null ? null : _wire2api_int_64_list(raw);
 }
 
 Int8List? _wire2api_opt_int_8_list(dynamic raw) {
-  if (raw != null) return _wire2api_int_8_list(raw);
+  return raw == null ? null : _wire2api_int_8_list(raw);
 }
 
 List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
-  if (raw != null) return _wire2api_list_attribute(raw);
+  return raw == null ? null : _wire2api_list_attribute(raw);
 }
 
 List<Element>? _wire2api_opt_list_element(dynamic raw) {
-  if (raw != null) return _wire2api_list_element(raw);
+  return raw == null ? null : _wire2api_list_element(raw);
 }
 
 List<Attribute?>? _wire2api_opt_list_opt_box_autoadd_attribute(dynamic raw) {
-  if (raw != null) return _wire2api_list_opt_box_autoadd_attribute(raw);
+  return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
 }
 
 Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
-  if (raw != null) return _wire2api_uint_8_list(raw);
+  return raw == null ? null : _wire2api_uint_8_list(raw);
 }
 
 int _wire2api_u16(dynamic raw) {
