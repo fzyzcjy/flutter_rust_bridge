@@ -1,5 +1,6 @@
 ## Unreleased
 
+* Implement `Vec<String>` #193 (thanks @Desdaemon)
 * Add logging for FlutterRustBridgeSetupMixin for users to debug easily.
 * Set names of threads for `ThreadPoolExecutor` to make debugging easier when looking at threads.
 
