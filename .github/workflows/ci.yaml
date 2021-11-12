@@ -224,8 +224,8 @@ jobs:
         with:
           channel: master
 
-      # - name: Install Flutter build tools
-        # run: sudo apt-get -y install clang cmake ninja-build libgtk-3-dev libglu1-mesa
+      - name: Install Flutter build tools
+        run: sudo apt-get -y install ninja-build
 
       - run: flutter config --enable-linux-desktop
 
@@ -236,7 +236,7 @@ jobs:
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
-        run: flutter test integration_test/main.dart --verbose
+        run: flutter test -d linux integration_test/main.dart --verbose
 
   # -------------------------- linter --------------------------
   rust_build_and_test:

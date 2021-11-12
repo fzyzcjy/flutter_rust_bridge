@@ -26,6 +26,7 @@ lint:
 alias t := test
 test: test-pure test-integration
 test-pure:
+    cd {{frb_pure}}/rust && cargo b
     cd {{frb_pure}}/dart && \
         dart pub get && \
         dart lib/main.dart ../rust/target/debug/libflutter_rust_bridge_example.so

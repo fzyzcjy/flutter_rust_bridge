@@ -328,7 +328,6 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
             boxed.inner.safe_ident()
         ),
-        Delegate(ApiTypeDelegate::String) => "/* noop */".to_owned(),
         Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
             return "".to_string();
         }

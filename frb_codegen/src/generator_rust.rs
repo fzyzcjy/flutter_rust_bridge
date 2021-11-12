@@ -306,6 +306,29 @@ impl Generator {
         )
     }
 
+    fn generate_list_allocate_func(
+        &mut self,
+        safe_ident: &str,
+        list: &impl ApiTypeChild,
+        inner: &ApiType,
+    ) -> String {
+        self.extern_func_collector.generate(
+            &format!("new_{}", safe_ident),
+            &["len: i32"],
+            Some(&[
+                list.rust_wire_modifier().as_str(),
+                list.rust_wire_type().as_str()
+            ].concat()),
+            &format!(
+                "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
+                support::new_leak_box_ptr(wrap)",
+                list.rust_wire_type(),
+                inner.optional_ptr_modifier(),
+                inner.rust_wire_type()
+            ),
+        )
+    }
+
     fn generate_allocate_funcs(&mut self, ty: &ApiType) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
 
@@ -320,36 +343,10 @@ impl Generator {
                     list.rust_wire_type(),
                 ),
             ),
-            GeneralList(list) => self.extern_func_collector.generate(
-                &format!("new_{}", ty.safe_ident()),
-                &["len: i32"],
-                Some(&[
-                    list.rust_wire_modifier().as_str(),
-                    list.rust_wire_type().as_str()
-                ].concat()),
-                &format!(
-                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
-                    support::new_leak_box_ptr(wrap)",
-                    list.rust_wire_type(),
-                    list.inner.optional_ptr_modifier(),
-                    list.inner.rust_wire_type()
-                ),
-            ),
-            Delegate(list @ ApiTypeDelegate::StringList) => self.extern_func_collector.generate(
-                &format!("new_{}", ty.safe_ident()),
-                &["len: i32"],
-                Some(&[
-                    list.rust_wire_modifier().as_str(),
-                    list.rust_wire_type().as_str()
-                ].concat()),
-                &format!(
-                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
-                    support::new_leak_box_ptr(wrap)",
-                    list.rust_wire_type(),
-                    list.get_delegate().optional_ptr_modifier(),
-                    list.get_delegate().rust_wire_type()
-                ),
-            ),
+            GeneralList(list) =>
+                self.generate_list_allocate_func(&ty.safe_ident(), list.as_ref(), &list.inner),
+            Delegate(list @ ApiTypeDelegate::StringList) =>
+                self.generate_list_allocate_func(&ty.safe_ident(), list, &list.get_delegate()),
             Boxed(b) => {
                 match &b.inner {
                     Primitive(prim) => {

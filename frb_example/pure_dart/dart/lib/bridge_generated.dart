@@ -700,9 +700,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   }
 
   // Section: api_fill_to_wire
-  void _api_fill_to_wire_String(String apiObj, ffi.Pointer<wire_uint_8_list> wireObj) {
-    /* noop */
-  }
 
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
     wireObj.key = _api2wire_String(apiObj.key);

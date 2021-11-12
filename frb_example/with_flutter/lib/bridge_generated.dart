@@ -222,9 +222,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   }
 
   // Section: api_fill_to_wire
-  void _api_fill_to_wire_String(String apiObj, ffi.Pointer<wire_uint_8_list> wireObj) {
-    /* noop */
-  }
 
   void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
     _api_fill_to_wire_point(apiObj, wireObj.ref);

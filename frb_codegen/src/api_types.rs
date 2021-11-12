@@ -354,9 +354,6 @@ impl ApiTypeDelegate {
                     primitive: primitive.clone(),
                 })
             }
-            // ApiTypeDelegate::StringList => ApiType::GeneralList(Box::new(ApiTypeGeneralList {
-            // inner: ApiType::Delegate(ApiTypeDelegate::String),
-            // })),
             ApiTypeDelegate::StringList => ApiType::Delegate(ApiTypeDelegate::String),
         }
     }
