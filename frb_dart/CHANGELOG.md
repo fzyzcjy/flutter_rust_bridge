@@ -1,4 +1,4 @@
-## Unreleased
+## 1.6.0
 
 * Implement `Vec<String>` #193 (thanks @Desdaemon)
 * Add logging for FlutterRustBridgeSetupMixin for users to debug easily.
