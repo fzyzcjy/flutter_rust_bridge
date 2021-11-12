@@ -199,10 +199,11 @@ impl ApiType {
         }
     }
 
+    /// Additional indirection for types put behind a vector
     #[inline]
     pub fn optional_ptr_modifier(&self) -> &'static str {
         match self {
-            Optional(_) => "*mut ",
+            Optional(_) | Delegate(ApiTypeDelegate::String) => "*mut ",
             _ => "",
         }
     }
@@ -334,6 +335,7 @@ impl ApiTypePrimitive {
 #[derive(Debug, Clone)]
 pub enum ApiTypeDelegate {
     String,
+    StringList,
     SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(ApiTypePrimitive),
 }
@@ -352,6 +354,7 @@ impl ApiTypeDelegate {
                     primitive: primitive.clone(),
                 })
             }
+            ApiTypeDelegate::StringList => ApiType::Delegate(ApiTypeDelegate::String),
         }
     }
 }
@@ -359,8 +362,9 @@ impl ApiTypeDelegate {
 impl ApiTypeChild for ApiTypeDelegate {
     fn safe_ident(&self) -> String {
         match self {
-            ApiTypeDelegate::String => "String".to_string(),
-            ApiTypeDelegate::SyncReturnVecU8 => "SyncReturnVecU8".to_string(),
+            ApiTypeDelegate::String => "String".to_owned(),
+            ApiTypeDelegate::StringList => "StringList".to_owned(),
+            ApiTypeDelegate::SyncReturnVecU8 => "SyncReturnVecU8".to_owned(),
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
@@ -370,6 +374,7 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn dart_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
+            ApiTypeDelegate::StringList => "List<String>".to_owned(),
             ApiTypeDelegate::SyncReturnVecU8 | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 self.get_delegate().dart_api_type()
             }
@@ -377,13 +382,17 @@ impl ApiTypeChild for ApiTypeDelegate {
     }
 
     fn dart_wire_type(&self) -> String {
-        self.get_delegate().dart_wire_type()
+        match self {
+            ApiTypeDelegate::StringList => "ffi.Pointer<wire_StringList>".to_owned(),
+            _ => self.get_delegate().dart_wire_type(),
+        }
     }
 
     fn rust_api_type(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_owned(),
             ApiTypeDelegate::SyncReturnVecU8 => "SyncReturn<Vec<u8>>".to_string(),
+            ApiTypeDelegate::StringList => "Vec<String>".to_owned(),
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
@@ -391,7 +400,10 @@ impl ApiTypeChild for ApiTypeDelegate {
     }
 
     fn rust_wire_type(&self) -> String {
-        self.get_delegate().rust_wire_type()
+        match self {
+            ApiTypeDelegate::StringList => "wire_StringList".to_owned(),
+            _ => self.get_delegate().rust_wire_type(),
+        }
     }
 
     fn rust_wire_is_pointer(&self) -> bool {

@@ -125,6 +125,13 @@ pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Result<Vec<MySize>> {
     Ok(ans)
 }
 
+pub fn handle_string_list(names: Vec<String>) -> Result<Vec<String>> {
+    for name in &names {
+        println!("Hello, {}", name);
+    }
+    Ok(names)
+}
+
 #[derive(Debug, Clone)]
 pub struct MyTreeNode {
     pub value_i32: i32,

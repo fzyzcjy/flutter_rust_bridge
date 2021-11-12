@@ -121,7 +121,7 @@ impl Generator {
 
         // Section: executor
         {}
-        
+
         // Section: sync execution mode utility
         {}
 
@@ -264,6 +264,10 @@ impl Generator {
                 format!("ptr: *mut {}", list.primitive.rust_wire_type()),
                 "len: i32".to_string(),
             ],
+            Delegate(ty @ ApiTypeDelegate::StringList) => vec![
+                format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type()),
+                "len: i32".to_owned(),
+            ],
             GeneralList(list) => vec![
                 format!(
                     "ptr: *mut {}{}",
@@ -302,11 +306,33 @@ impl Generator {
         )
     }
 
+    fn generate_list_allocate_func(
+        &mut self,
+        safe_ident: &str,
+        list: &impl ApiTypeChild,
+        inner: &ApiType,
+    ) -> String {
+        self.extern_func_collector.generate(
+            &format!("new_{}", safe_ident),
+            &["len: i32"],
+            Some(&[
+                list.rust_wire_modifier().as_str(),
+                list.rust_wire_type().as_str()
+            ].concat()),
+            &format!(
+                "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
+                support::new_leak_box_ptr(wrap)",
+                list.rust_wire_type(),
+                inner.optional_ptr_modifier(),
+                inner.rust_wire_type()
+            ),
+        )
+    }
+
     fn generate_allocate_funcs(&mut self, ty: &ApiType) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
 
         match ty {
-            Primitive(_) | Delegate(_) | Optional(_) => "".to_string(),
             PrimitiveList(list) => self.extern_func_collector.generate(
                 &format!("new_{}", list.safe_ident()),
                 &["len: i32"],
@@ -317,22 +343,10 @@ impl Generator {
                     list.rust_wire_type(),
                 ),
             ),
-            GeneralList(list) => self.extern_func_collector.generate(
-                &format!("new_{}", ty.safe_ident()),
-                &["len: i32"],
-                Some(&[
-                    list.rust_wire_modifier().as_str(),
-                    list.rust_wire_type().as_str()
-                ].concat()),
-                &format!(
-                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
-                    support::new_leak_box_ptr(wrap)",
-                    list.rust_wire_type(),
-                    list.inner.optional_ptr_modifier(),
-                    list.inner.rust_wire_type()
-                ),
-            ),
-            StructRef(_) => "".to_string(),
+            GeneralList(list) =>
+                self.generate_list_allocate_func(&ty.safe_ident(), list.as_ref(), &list.inner),
+            Delegate(list @ ApiTypeDelegate::StringList) =>
+                self.generate_list_allocate_func(&ty.safe_ident(), list, &list.get_delegate()),
             Boxed(b) => {
                 match &b.inner {
                     Primitive(prim) => {
@@ -355,7 +369,8 @@ impl Generator {
                         )
                     }
                 }
-            }
+            },
+            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) => String::new(),
         }
     }
 
@@ -363,21 +378,19 @@ impl Generator {
         // println!("generate_wire2api_func: {:?}", ty);
         let body: Cow<str> = match ty {
             Primitive(_) => "self".into(),
-            Delegate(d) => match d {
-                ApiTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
-                String::from_utf8_lossy(&vec).into_owned()"
-                    .into(),
-                ApiTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".into(),
-                ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                    "ZeroCopyBuffer(self.wire2api())".into()
-                }
-            },
+            Delegate(ApiTypeDelegate::String) => "let vec: Vec<u8> = self.wire2api();
+            String::from_utf8_lossy(&vec).into_owned()"
+                .into(),
+            Delegate(ApiTypeDelegate::SyncReturnVecU8) => "/*unsupported*/".into(),
+            Delegate(ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_)) => {
+                "ZeroCopyBuffer(self.wire2api())".into()
+            }
             PrimitiveList(_) => "unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }"
             .into(),
-            GeneralList(_) => "
+            GeneralList(_) | Delegate(ApiTypeDelegate::StringList) => "
             let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)

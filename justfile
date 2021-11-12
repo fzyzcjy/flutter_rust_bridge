@@ -23,4 +23,21 @@ lint:
     dart format --fix -l {{line_length}} {{frb_pure}}/dart/lib/bridge_generated.dart
     dart format --fix -l {{line_length}} {{frb_flutter}}/lib/bridge_generated.dart
 
+alias t := test
+test: test-pure test-integration
+test-pure:
+    cd {{frb_pure}}/rust && cargo b
+    cd {{frb_pure}}/dart && \
+        dart pub get && \
+        dart lib/main.dart ../rust/target/debug/libflutter_rust_bridge_example.so
+test-integration:
+    cd {{frb_flutter}} && flutter test integration_test/main.dart
+
+alias c := clean
+clean:
+    cd {{frb_pure}}/dart && flutter clean
+    cd {{frb_pure}}/rust && cargo clean
+    cd {{frb_flutter}} && flutter clean
+    cd {{frb_flutter}}/rust && cargo clean
+
 # vim:expandtab:tabstop=4:shiftwidth=4

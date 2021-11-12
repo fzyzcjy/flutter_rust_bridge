@@ -97,6 +97,12 @@ void main(List<String> args) async {
       expect(listOfStructResp[3].width, 420);
     }
 
+    print('dart call handleStringList');
+    {
+      final names = await api.handleStringList(names: ['Steve', 'Bob', 'Alex']);
+      expect(names, ['Steve', 'Bob', 'Alex']);
+    }
+
     print('dart call handleComplexStruct');
     {
       final arrLen = 5;

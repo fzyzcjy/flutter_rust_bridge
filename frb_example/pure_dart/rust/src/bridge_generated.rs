@@ -159,6 +159,21 @@ pub extern "C" fn wire_handle_list_of_struct(port: i64, l: *mut wire_list_my_siz
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_string_list(port: i64, names: *mut wire_StringList) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_string_list",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_names = names.wire2api();
+            move |task_callback| handle_string_list(api_names)
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_complex_struct(port: i64, s: *mut wire_MyTreeNode) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -334,6 +349,13 @@ pub extern "C" fn wire_handle_option_box_arguments(
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_StringList {
+    ptr: *mut *mut wire_uint_8_list,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_Attribute {
     key: *mut wire_uint_8_list,
     value: *mut wire_uint_8_list,
@@ -451,6 +473,15 @@ pub struct wire_uint_8_list {
 }
 
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
+    let wrap = wire_StringList {
+        ptr: support::new_leak_vec_ptr(<*mut wire_uint_8_list>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
 
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_Attribute {
@@ -652,6 +683,16 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
         String::from_utf8_lossy(&vec).into_owned()
+    }
+}
+
+impl Wire2Api<Vec<String>> for *mut wire_StringList {
+    fn wire2api(self) -> Vec<String> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 

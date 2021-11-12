@@ -40,6 +40,8 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint});
 
+  Future<List<String>> handleStringList({required List<String> names, dynamic hint});
+
   Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
 
   Uint8List handleSyncReturn({required String mode, dynamic hint});
@@ -320,6 +322,13 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
           parseSuccessData: _wire2api_list_my_size,
           hint: hint));
 
+  Future<List<String>> handleStringList({required List<String> names, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+          debugName: 'handle_string_list',
+          callFfi: (port) => inner.wire_handle_string_list(port, _api2wire_StringList(names)),
+          parseSuccessData: _wire2api_StringList,
+          hint: hint));
+
   Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
       debugName: 'handle_complex_struct',
       callFfi: (port) => inner.wire_handle_complex_struct(port, _api2wire_box_autoadd_my_tree_node(s)),
@@ -402,6 +411,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
+  }
+
+  ffi.Pointer<wire_StringList> _api2wire_StringList(List<String> raw) {
+    final ans = inner.new_StringList(raw.length);
+    for (var i = 0; i < raw.length; i++) {
+      ans.ref.ptr[i] = _api2wire_String(raw[i]);
+    }
+    return ans;
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
@@ -772,6 +789,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 // Section: wire2api
 String _wire2api_String(dynamic raw) {
   return raw as String;
+}
+
+List<String> _wire2api_StringList(dynamic raw) {
+  return (raw as List<dynamic>).cast<String>();
 }
 
 Uint8List _wire2api_SyncReturnVecU8(dynamic raw) {
@@ -1296,6 +1317,22 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_list_of_struct =
       _wire_handle_list_of_structPtr.asFunction<void Function(int, ffi.Pointer<wire_list_my_size>)>();
 
+  void wire_handle_string_list(
+    int port,
+    ffi.Pointer<wire_StringList> names,
+  ) {
+    return _wire_handle_string_list(
+      port,
+      names,
+    );
+  }
+
+  late final _wire_handle_string_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StringList>)>>(
+          'wire_handle_string_list');
+  late final _wire_handle_string_list =
+      _wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
+
   void wire_handle_complex_struct(
     int port,
     ffi.Pointer<wire_MyTreeNode> s,
@@ -1464,6 +1501,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_option_box_arguments = _wire_handle_option_box_argumentsPtr.asFunction<
       void Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
           ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<wire_ExoticOptionals>)>();
+
+  ffi.Pointer<wire_StringList> new_StringList(
+    int len,
+  ) {
+    return _new_StringList(
+      len,
+    );
+  }
+
+  late final _new_StringListPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList');
+  late final _new_StringList = _new_StringListPtr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
 
   ffi.Pointer<wire_Attribute> new_box_autoadd_attribute() {
     return _new_box_autoadd_attribute();
@@ -1810,6 +1859,13 @@ class wire_NewTypeInt extends ffi.Struct {
 
 class wire_list_my_size extends ffi.Struct {
   external ffi.Pointer<wire_MySize> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_StringList extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_uint_8_list>> ptr;
 
   @ffi.Int32()
   external int len;
