@@ -1,0 +1,307 @@
+# NOTE: Please keep in sync with `ci.yaml`
+#
+# Ensure README.md's steps can work correctly, where users use the released versions
+# instead of the code in master branch
+name: Post-release
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0,30 * * * *'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  # -------------------------- test --------------------------
+  valgrind_test:
+    name: Valgrind test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use released version of flutter_rust_bridge instead of master version
+        run: |
+          cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
+          cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
+          cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
+          cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install valgrind
+        run: sudo apt install -y valgrind
+
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dart dependencies
+        working-directory: ./frb_example/pure_dart/dart
+        run: dart pub get
+
+      - name: Run valgrind script
+        working-directory: ./frb_example/pure_dart/dart
+        run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
+        env:
+          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+
+  # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
+  flutter_ios_test:
+    name: Flutter (iOS) integration test
+    runs-on: macOS-latest
+
+    strategy:
+      matrix:
+        device:
+          - "iPad (7th generation) (14.4)"
+          - "iPhone 12 Pro Max (14.4)"
+      fail-fast: false
+
+    steps:
+      - name: Use released version of flutter_rust_bridge instead of master version
+        run: |
+          cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
+          cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
+          cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
+          cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+
+      - name: "List all simulators"
+        run: "xcrun instruments -s"
+      - name: "Start Simulator"
+        run: |
+          UDID=$(
+            xcrun instruments -s |
+            awk \
+              -F ' *[][]' \
+              -v 'device=${{ matrix.device }}' \
+              '$1 == device { print $2 }'
+          )
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+      - uses: actions/checkout@v2
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - name: Install cargo lipo
+        run: cargo install cargo-lipo && rustup target add aarch64-apple-ios x86_64-apple-ios
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Build Rust lib
+        working-directory: ./frb_example/with_flutter/rust
+        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
+        run: |
+          sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
+          cargo lipo
+          cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
+
+      - name: Run Flutter integration tests
+        working-directory: ./frb_example/with_flutter
+        run: flutter test integration_test/main.dart --verbose
+
+  # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
+  flutter_android_test:
+    name: Flutter (Android) integration test
+    runs-on: macOS-latest # "betterprogramming.pub" says must be macOS
+
+    strategy:
+      matrix:
+        device:
+          - "pixel"
+          - "Nexus 6"
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use released version of flutter_rust_bridge instead of master version
+        run: |
+          cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
+          cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
+          cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
+          cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '8.x' # "betterprogramming.pub" says must be java "8"
+
+      - name: Install cargo ndk
+        run: cargo install cargo-ndk && rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android i686-linux-android
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Build Rust lib
+        working-directory: ./frb_example/with_flutter/rust
+        # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
+        run: cargo ndk -t armeabi-v7a -t arm64-v8a -t x86 -t x86_64 -o ../android/app/src/main/jniLibs build && find ../android/app/src/main/jniLibs
+
+      - name: Run Flutter integration tests
+        id: run_flutter_integration_test
+        continue-on-error: true
+        timeout-minutes: 30
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+            cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+
+      # flaky GitHub Action testing environment... have to retry
+      # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
+      - name: Run Flutter integration tests (retry)
+        id: run_flutter_integration_test_retry_1
+        if: steps.run_flutter_integration_test.outcome == 'failure'
+        continue-on-error: true
+        timeout-minutes: 30
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+            cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+
+      # https://github.community/t/how-to-retry-a-failed-step-in-github-actions-workflow/125880
+      - name: Set status
+        if: always()
+        run: |
+          if ${{ steps.run_flutter_integration_test.outcome=='success' || steps.run_flutter_integration_test_retry_1.outcome=='success' }}; then
+             echo fine
+          else
+             exit 1
+          fi
+
+  flutter_windows_test:
+    name: Flutter (Windows) integration test
+    runs-on: windows-latest
+
+    steps:
+      - name: Use released version of flutter_rust_bridge instead of master version
+        run: |
+          cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
+          cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
+          cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
+          cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+      - uses: actions/checkout@v2
+
+      - name: Enable platform support
+        run: flutter config --enable-windows-desktop
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Run Flutter integration tests
+        working-directory: ./frb_example/with_flutter
+        run: flutter test -d windows integration_test/main.dart --verbose
+
+  # Disabled due to issues running Linux GUI applications in CI
+  # flutter_linux_test: ...
+
+  # -------------------------- codegen --------------------------
+  codegen:
+    name: Run codegen (for release version)
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - image: macos-10.15
+            family: osx
+          - image: macos-11
+            family: osx
+          - image: windows-2016
+            family: windows
+          - image: windows-2019
+            family: windows
+          # #113
+          # - image: ubuntu-18.04
+          #  family: linux
+          - image: ubuntu-20.04
+            family: linux
+
+    runs-on: ${{ matrix.os.image }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install released version of codegen
+        run: cargo install flutter_rust_bridge_codegen
+
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dart global dependency
+        run: dart pub global activate ffigen
+
+      # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
+      - name: Install llvm dependency (Linux)
+        if: ${{ matrix.os.family == 'linux' }}
+        run: sudo apt-get install -y libclang-dev
+
+      # NOTE in windows, need "\\" instead of "/"
+      - name: Run codegen to pure_dart example (non-windows)
+        if: ${{ matrix.os.family != 'windows' }}
+        working-directory: ./frb_codegen
+        run: flutter_rust_bridge_codegen --rust-input ../frb_example/pure_dart/rust/src/api.rs --dart-output ../frb_example/pure_dart/dart/lib/bridge_generated.dart --dart-format-line-length 120
+        env:
+          RUST_LOG: debug
+      - name: Run codegen to pure_dart example (windows)
+        if: ${{ matrix.os.family == 'windows' }}
+        working-directory: ./frb_codegen
+        run: flutter_rust_bridge_codegen --rust-input ..\\frb_example\\pure_dart\\rust\\src\\api.rs --dart-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_generated.dart --dart-format-line-length 120
+        env:
+          RUST_LOG: debug
+
+      - name: Run codegen to with_flutter example (non-windows)
+        if: ${{ matrix.os.family != 'windows' }}
+        working-directory: ./frb_codegen
+        run: flutter_rust_bridge_codegen --rust-input ../frb_example/with_flutter/rust/src/api.rs --dart-output ../frb_example/with_flutter/lib/bridge_generated.dart --c-output ../frb_example/with_flutter/ios/Runner/bridge_generated.h --dart-format-line-length 120
+        env:
+          RUST_LOG: debug
+      - name: Run codegen to with_flutter example (windows)
+        if: ${{ matrix.os.family == 'windows' }}
+        working-directory: ./frb_codegen
+        run: flutter_rust_bridge_codegen --rust-input ..\\frb_example\\with_flutter\\rust\\src\\api.rs --dart-output ..\\frb_example\\with_flutter\\lib\\bridge_generated.dart --c-output ..\\frb_example\\with_flutter\\ios\\Runner\\bridge_generated.h --dart-format-line-length 120
+        env:
+          RUST_LOG: debug
+
+      - name: 'Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)'
+        run: git diff --exit-code

@@ -1,0 +1,15 @@
+[package]
+name = "flutter_rust_bridge_example"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+name = "flutter_rust_bridge_example"
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = { version = "1.0.44", features = ["backtrace"] }
+flutter_rust_bridge = "1"
+num = "0.4" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
+image = "0.13.0" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
+crossbeam = "0.8" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
