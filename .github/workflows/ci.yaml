@@ -209,7 +209,7 @@ jobs:
     # CI on Linux does not work right now due to log reader errors
     # if: false
     name: Flutter (Linux) integration test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
       - uses: actions/checkout@v2
@@ -220,12 +220,12 @@ jobs:
           profile: minimal
           toolchain: stable
 
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@4389e6cbc6cb8a4b18c628ff96ff90be0e926aa8
         with:
-          channel: 'stable'
+          channel: master
 
-      - name: Install Flutter build tools
-        run: sudo apt-get -y install clang cmake ninja-build libgtk-3-dev libglu1-mesa
+      # - name: Install Flutter build tools
+        # run: sudo apt-get -y install clang cmake ninja-build libgtk-3-dev libglu1-mesa
 
       - run: flutter config --enable-linux-desktop
 
@@ -236,7 +236,7 @@ jobs:
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
-        run: flutter test -d linux integration_test/main.dart --verbose
+        run: flutter test integration_test/main.dart --verbose
 
   # -------------------------- linter --------------------------
   rust_build_and_test:
