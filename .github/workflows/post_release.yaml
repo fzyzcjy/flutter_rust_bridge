@@ -68,6 +68,8 @@ jobs:
     steps:
       - name: Use released version of flutter_rust_bridge instead of master version
         run: |
+          ls -al ./frb_example/pure_dart/dart
+          ls -al ./frb_example/pure_dart/rust
           cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
           cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
           cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
@@ -205,10 +207,10 @@ jobs:
     steps:
       - name: Use released version of flutter_rust_bridge instead of master version
         run: |
-          cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
-          cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
-          cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
-          cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+          cp .\\frb_example\\pure_dart\\dart\\pubspec.yaml.release .\\frb_example\\pure_dart\\dart\\pubspec.yaml
+          cp .\\frb_example\\pure_dart\\rust\\Cargo.toml.release .\\frb_example\\pure_dart\\rust\\Cargo.toml
+          cp .\\frb_example\\with_flutter\\pubspec.yaml.release .\\frb_example\\with_flutter\\pubspec.yaml
+          cp .\\frb_example\\with_flutter\\rust\\Cargo.toml.release .\\frb_example\\with_flutter\\rust\\Cargo.toml
 
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
