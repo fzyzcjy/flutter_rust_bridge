@@ -64,6 +64,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "surban",
+      "name": "Sebastian Urban",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1213857?v=4",
+      "profile": "https://scholar.google.com/citations?user=RbAto7EAAAAJ",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
