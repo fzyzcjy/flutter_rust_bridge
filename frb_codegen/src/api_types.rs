@@ -246,6 +246,7 @@ pub enum ApiTypePrimitive {
     F32,
     F64,
     Bool,
+    Unit,
 }
 
 impl ApiTypeChild for ApiTypePrimitive {
@@ -265,6 +266,7 @@ impl ApiTypeChild for ApiTypePrimitive {
             | ApiTypePrimitive::I64 => "int",
             ApiTypePrimitive::F32 | ApiTypePrimitive::F64 => "double",
             ApiTypePrimitive::Bool => "bool",
+            ApiTypePrimitive::Unit => "void",
         }
         .to_string()
     }
@@ -290,6 +292,7 @@ impl ApiTypeChild for ApiTypePrimitive {
             ApiTypePrimitive::F32 => "f32",
             ApiTypePrimitive::F64 => "f64",
             ApiTypePrimitive::Bool => "bool",
+            ApiTypePrimitive::Unit => "unit",
         }
         .to_string()
     }
@@ -311,6 +314,7 @@ impl ApiTypePrimitive {
             ApiTypePrimitive::I64 => "ffi.Int64",
             ApiTypePrimitive::F32 => "ffi.Float",
             ApiTypePrimitive::F64 => "ffi.Double",
+            ApiTypePrimitive::Unit => "ffi.Void",
         }
     }
     pub fn try_from_rust_str(s: &str) -> Option<Self> {
@@ -326,6 +330,7 @@ impl ApiTypePrimitive {
             "f32" => Some(ApiTypePrimitive::F32),
             "f64" => Some(ApiTypePrimitive::F64),
             "bool" => Some(ApiTypePrimitive::Bool),
+            "()" => Some(ApiTypePrimitive::Unit),
             _ => None,
         }
     }
