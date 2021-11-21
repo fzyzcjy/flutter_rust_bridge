@@ -53,75 +53,6 @@ jobs:
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
 
-  # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
-  flutter_ios_test:
-    name: Flutter (iOS) integration test
-    runs-on: macOS-latest
-
-    strategy:
-      matrix:
-        device:
-          - "iPad (7th generation) (14.4)"
-          - "iPhone 12 Pro Max (14.4)"
-      fail-fast: false
-
-    steps:
-      - name: Use released version of flutter_rust_bridge instead of master version
-        run: |
-          ls -al .
-          ls -al frb_example
-          ls -al ./frb_example
-          ls -al ./frb_example/pure_dart/dart
-          ls -al ./frb_example/pure_dart/rust
-          cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
-          cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
-          cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
-          cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
-
-      - name: "List all simulators"
-        run: "xcrun instruments -s"
-      - name: "Start Simulator"
-        run: |
-          UDID=$(
-            xcrun instruments -s |
-            awk \
-              -F ' *[][]' \
-              -v 'device=${{ matrix.device }}' \
-              '$1 == device { print $2 }'
-          )
-          xcrun simctl boot "${UDID:?No Simulator with this name found}"
-
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
-
-      - uses: actions/checkout@v2
-
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-
-      - name: Install cargo lipo
-        run: cargo install cargo-lipo && rustup target add aarch64-apple-ios x86_64-apple-ios
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      - name: Build Rust lib
-        working-directory: ./frb_example/with_flutter/rust
-        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
-        run: |
-          sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
-          cargo lipo
-          cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
-
-      - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
-        run: flutter test integration_test/main.dart --verbose
-
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_android_test:
     name: Flutter (Android) integration test
@@ -202,44 +133,6 @@ jobs:
           else
              exit 1
           fi
-
-  flutter_windows_test:
-    name: Flutter (Windows) integration test
-    runs-on: windows-latest
-
-    steps:
-      - name: Use released version of flutter_rust_bridge instead of master version
-        run: |
-          cp .\\frb_example\\pure_dart\\dart\\pubspec.yaml.release .\\frb_example\\pure_dart\\dart\\pubspec.yaml
-          cp .\\frb_example\\pure_dart\\rust\\Cargo.toml.release .\\frb_example\\pure_dart\\rust\\Cargo.toml
-          cp .\\frb_example\\with_flutter\\pubspec.yaml.release .\\frb_example\\with_flutter\\pubspec.yaml
-          cp .\\frb_example\\with_flutter\\rust\\Cargo.toml.release .\\frb_example\\with_flutter\\rust\\Cargo.toml
-
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
-
-      - uses: actions/checkout@v2
-
-      - name: Enable platform support
-        run: flutter config --enable-windows-desktop
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
-        run: flutter test -d windows integration_test/main.dart --verbose
-
-  # Disabled due to issues running Linux GUI applications in CI
-  # flutter_linux_test: ...
 
   # -------------------------- codegen --------------------------
   codegen:
