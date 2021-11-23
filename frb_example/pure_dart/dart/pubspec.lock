@@ -91,7 +91,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.6.0"
+    version: "1.6.1"
   frontend_server_client:
     dependency: transitive
     description:
@@ -315,7 +315,7 @@ packages:
       name: vm_service
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.4.0"
+    version: "7.5.0"
   watcher:
     dependency: transitive
     description:
