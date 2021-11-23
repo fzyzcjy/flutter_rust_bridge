@@ -424,10 +424,11 @@ fn generate_api_struct(s: &ApiStruct) -> String {
         .fields
         .iter()
         .map(|f| {
+            let comments = dart_comments(&f.comments);
             format!(
-                "{}
-                final {} {};",
-                dart_comments(&f.comments),
+                "{}{}final {} {};",
+                comments,
+                if comments.is_empty() { "" } else { "\n" },
                 f.ty.dart_api_type(),
                 f.name.dart_style()
             )

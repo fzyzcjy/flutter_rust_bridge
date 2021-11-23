@@ -73,7 +73,6 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
 class Attribute {
   final String key;
-
   final String value;
 
   Attribute({
@@ -84,11 +83,8 @@ class Attribute {
 
 class Element {
   final String? tag;
-
   final String? text;
-
   final List<Attribute>? attributes;
-
   final List<Element>? children;
 
   Element({
@@ -101,33 +97,19 @@ class Element {
 
 class ExoticOptionals {
   final int? int32;
-
   final int? int64;
-
   final double? float64;
-
   final bool? boolean;
-
   final Uint8List? zerocopy;
-
   final Int8List? int8List;
-
   final Uint8List? uint8List;
-
   final Int32List? int32List;
-
   final Int64List? int64List;
-
   final Float32List? float32List;
-
   final Float64List? float64List;
-
   final List<Attribute>? attributes;
-
   final List<Attribute?> attributesNullable;
-
   final List<Attribute?>? nullableAttributes;
-
   final NewTypeInt? newtypeint;
 
   ExoticOptionals({
@@ -151,7 +133,6 @@ class ExoticOptionals {
 
 class MySize {
   final int width;
-
   final int height;
 
   MySize({
@@ -162,9 +143,7 @@ class MySize {
 
 class MyTreeNode {
   final int valueI32;
-
   final Uint8List valueVecU8;
-
   final List<MyTreeNode> children;
 
   MyTreeNode({
@@ -184,23 +163,14 @@ class NewTypeInt {
 
 class VecOfPrimitivePack {
   final Int8List int8List;
-
   final Uint8List uint8List;
-
   final Int16List int16List;
-
   final Uint16List uint16List;
-
   final Uint32List uint32List;
-
   final Int32List int32List;
-
   final Uint64List uint64List;
-
   final Int64List int64List;
-
   final Float32List float32List;
-
   final Float64List float64List;
 
   VecOfPrimitivePack({
@@ -219,23 +189,14 @@ class VecOfPrimitivePack {
 
 class ZeroCopyVecOfPrimitivePack {
   final Int8List int8List;
-
   final Uint8List uint8List;
-
   final Int16List int16List;
-
   final Uint16List uint16List;
-
   final Uint32List uint32List;
-
   final Int32List int32List;
-
   final Uint64List uint64List;
-
   final Int64List int64List;
-
   final Float32List float32List;
-
   final Float64List float64List;
 
   ZeroCopyVecOfPrimitivePack({
