@@ -1,3 +1,7 @@
+## 1.6.1
+
+* Remove extra newline on empty comment #203 (thanks @Desdaemon)
+
 ## 1.6.0
 
 * Implement `Vec<String>` #193 (thanks @Desdaemon)
