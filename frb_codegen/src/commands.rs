@@ -11,6 +11,7 @@ pub fn bindgen_rust_to_dart(
     dart_class_name: &str,
     c_struct_names: Vec<String>,
     llvm_install_path: &str,
+    llvm_compiler_opts: &str,
 ) {
     cbindgen(rust_crate_dir, c_output_path, c_struct_names);
     ffigen(
@@ -18,6 +19,7 @@ pub fn bindgen_rust_to_dart(
         dart_output_path,
         dart_class_name,
         llvm_install_path,
+        llvm_compiler_opts,
     );
 }
 
@@ -129,7 +131,13 @@ include = [{}]
     );
 }
 
-fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str, llvm_path: &str) {
+fn ffigen(
+    c_path: &str,
+    dart_path: &str,
+    dart_class_name: &str,
+    llvm_path: &str,
+    llvm_compiler_opts: &str,
+) {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
         c_path, dart_path, llvm_path
@@ -156,6 +164,15 @@ fn ffigen(c_path: &str, dart_path: &str, dart_class_name: &str, llvm_path: &str)
         llvm-path:
             - '{}'",
             config, llvm_path
+        );
+    }
+
+    if !llvm_compiler_opts.is_empty() {
+        config = format!(
+            "{}
+        compiler-opts:
+            - '{}'",
+            config, llvm_compiler_opts
         );
     }
 
