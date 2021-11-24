@@ -124,7 +124,7 @@ Run it directly using `flutter run` assuming [Flutter desktop support](https://f
 
 Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully.
 
-This example (`frb_example/with_flutter`) already demonstrated how to integrate Cargo with CMake on Linux and Windows, and more details can be seen in #66. Users have also already succeeded in making MacOS work, and please refer to #206 for hints.
+This example (`frb_example/with_flutter`) already demonstrated how to integrate Cargo with CMake on Linux and Windows, and more details can be seen in [#66](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66). Users have also already succeeded in making MacOS work, and please refer to [#206](https://github.com/fzyzcjy/flutter_rust_bridge/issues/206) for hints.
 
 ### (Optional) See more types that this library can generate
 
