@@ -47,7 +47,7 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 ### Install
 
 * Install dependency `cbindgen`: `cargo install cbindgen` <sub>(may [need latest version](https://github.com/fzyzcjy/flutter_rust_bridge/issues/53#issuecomment-939588321), thanks @gmorenz)</sub>
-* Install dependency `ffigen`:  `dart pub global activate ffigen`, and [install LLVM](https://pub.dev/packages/ffigen#installing-llvm).
+* Install dependency `ffigen`:  `dart pub global activate ffigen`, and [install LLVM](https://pub.dev/packages/ffigen#installing-llvm). If you are running macOS, check below under MacOS Caveats for instructions on how to install and use llvm.
 * Install this code generator binary by `cargo install flutter_rust_bridge_codegen`.
 * Add `flutter_rust_bridge = "1.0"` (where `1.0` should be the latest version) to Rust's `Cargo.toml`.
 * Add `flutter_rust_bridge: ^1.0` (same as above, should be latest version) to Flutter/Dart's `pubspec.yaml` under the section of `dependencies`.
@@ -56,6 +56,32 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 
 ```shell
 flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
+```
+
+#### MacOS Caveats
+If you are running macOS, you will need to specify a path to your llvm:
+```shell
+flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
+```
+If you are on Intel, you can install llvm using `brew install llvm` and it will be installed at `/usr/local/homebrew/opt/llvm/` by default.
+If you are on M1, you need to install the x86 versions of everything and run them through Rosetta 2, since flutter does not support M1 yet. Start by installing Rosetta 2 if you haven't already:
+```shell
+/usr/sbin/softwareupdate --install-rosetta
+```
+Then, install an x86 version of brew to `/usr/local`:
+```shell
+arch -x86_64 zsh
+cd /usr/local && mkdir homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+```
+Then, you need to use the x86 brew to install the x86 version of llvm:
+```shell
+arch -x86_64 /usr/local/homebrew/bin/brew install llvm
+```
+Reference [this article](https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/) for details.
+And when you build with cargo, you need to select x86 as the target:
+```shell
+cargo build --target=x86_64-apple-darwin
 ```
 
 (If you have problems, see "Troubleshooting" section.) (For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
@@ -124,7 +150,25 @@ Run it directly using `flutter run` assuming [Flutter desktop support](https://f
 
 Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully.
 
-This example (`frb_example/with_flutter`) already demonstrated how to integrate Cargo with CMake on Linux and Windows, and more details can be seen in [#66](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66). Users have also already succeeded in making MacOS work, and please refer to [#206](https://github.com/fzyzcjy/flutter_rust_bridge/issues/206) for hints.
+#### Windows/Linux
+This example (`frb_example/with_flutter`) already demonstrated how to integrate Cargo with CMake on Linux and Windows, and more details can be seen in [#66](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
+
+#### MacOS
+To integrate a dynamic library to your macOS app, you need to configure your `Runner.xcworkspace` in Xcode. Here, I show the instructions for Xcode 13.1:
+1. Open the `yourapp/macos/Runner.xcworkspace` in Xcode.
+2. Drag your precompiled library (`libyourlibrary.dylib`) into `Runner/Frameworks`.
+3. Click `Runner` (with a blue app store logo on the left, not the folder underneath) and go to the `Build Phases` tab.
+    1. Drag `libyourlibrary.dylib` into the `Copy Bundle Resources` list.
+    2. Under `Bundle Frameworks`, drag `libyourlibrary.dylib`  to the list, `Code sign on copy` should be checked by default.
+    3. Under `Link Binary With Libraries`, set status of `libyourlibrary.dylib` to Optional. (We use dynamic linking, no need to statically link.)
+4. Click `Runner` and go to the `General` tab.
+    1. You should see `libyourlibrary.dylib` in the `Frameworks, Libararies and Embedded Content` list, with the option saying `Embed & Sign`.
+    2. If not, drag your library to the list and select the option.
+5. Click `Runner` and go to the `Build Settings` tab.
+    1. In the `Search Paths` section configure the `Library Search Paths` to include the absolute path where libyourlibrary.dylib is located.
+
+In `lib/main.dart`, you can now use `DynamicLibrary.open('libyourlibrary.dylib')` to dynamically link to the symbols. This example app shows how to do dynamic linking on other platforms as well so be sure to take a look at `frb_example/with_flutter/lib/main.dart`.
+Reference the [flutter documentation](https://docs.flutter.dev/development/platform-integration/c-interop#compiled-dynamic-library-macos) for details, do note that the Xcode version they demonstrates in may not be the latest.
 
 ### (Optional) See more types that this library can generate
 
