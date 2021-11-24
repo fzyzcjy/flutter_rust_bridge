@@ -198,9 +198,9 @@ This library is nothing but a code generator that helps your Flutter/Dart functi
 
 ## Troubleshooting
 
-#### Have problems when using `Linux`?
+#### Have problems when using `Linux`? (`The generated store_dart_post_cobject() has the wrong signature` / `'stdarg.h' file not found` / ...)
 
-Try to run code generator with working directory at `/`. This seems to be a problem with Rust's builtin `Command`. See [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108) for more details.
+Try to run code generator with working directory at `/`, or add include path as is described in #108. This is a problem with Rust's builtin `Command`. See [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108) for more details.
 
 #### Issue with store_dart_post_cobject?
 
