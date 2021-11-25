@@ -90,6 +90,7 @@ fn main() {
                 &config.dart_wire_class_name(),
                 c_struct_names,
                 &config.llvm_path,
+                &config.llvm_compiler_opts,
             );
         },
     );

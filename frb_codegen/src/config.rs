@@ -40,6 +40,9 @@ pub struct RawOpts {
     /// Path to the installed LLVM
     #[structopt(long)]
     pub llvm_path: Option<String>,
+    /// LLVM compiler opts
+    #[structopt(long)]
+    pub llvm_compiler_opts: Option<String>,
 }
 
 #[derive(Debug)]
@@ -53,6 +56,7 @@ pub struct Opts {
     pub dart_format_line_length: i32,
     pub skip_add_mod_to_lib: bool,
     pub llvm_path: String,
+    pub llvm_compiler_opts: String,
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
@@ -85,6 +89,7 @@ pub fn parse(raw: RawOpts) -> Opts {
         dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
         skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
         llvm_path: raw.llvm_path.unwrap_or_else(|| "".to_string()),
+        llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
     }
 }
 
