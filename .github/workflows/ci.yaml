@@ -206,6 +206,34 @@ jobs:
         working-directory: ./frb_example/with_flutter
         run: flutter test -d windows integration_test/main.dart --verbose
 
+  flutter_macos_test:
+    name: Flutter (macOS) integration test
+    runs-on: macos-11
+
+    steps:
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+      - uses: actions/checkout@v2
+
+      - name: Enable platform support
+        run: flutter config --enable-macos-desktop
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Run Flutter integration tests
+        working-directory: ./frb_example/with_flutter
+        run: flutter test -d macos integration_test/main.dart --verbose
+
   flutter_linux_test:
     # Disabled due to issues running Linux GUI applications in CI
     if: false
