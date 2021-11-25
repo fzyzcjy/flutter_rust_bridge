@@ -1,3 +1,7 @@
+## 1.7.0
+
+* Add llvm-compiler-opts as command-line argument #210 (thanks @trobanga)
+
 ## 1.6.1
 
 * Remove extra newline on empty comment #203 (thanks @Desdaemon)
