@@ -5,7 +5,6 @@ import 'dart:ffi';
 import 'dart:isolate';
 import 'dart:typed_data';
 
-import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
 import 'package:meta/meta.dart';
 
@@ -115,8 +114,13 @@ abstract class FlutterRustBridgeBaseTask {
 
   String get debugName => constMeta.debugName;
 
-  Map<String, dynamic> get argMap =>
-      Map.fromEntries(constMeta.argNames.mapIndexed((i, argName) => MapEntry(argName, argValues[i])));
+  Map<String, dynamic> get argMap {
+    final ans = <String, dynamic>{};
+    for (var i = 0; i < constMeta.argNames.length; ++i) {
+      ans[constMeta.argNames[i]] = argValues[i];
+    }
+    return ans;
+  }
 }
 
 /// Metadata that does not change across different method calls. Thus it is made `const` to save memory and speed up
