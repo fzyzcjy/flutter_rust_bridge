@@ -1,5 +1,6 @@
 ## 1.7.0
 
+* Enrich metadata of generated ffi calls - now we can have more "reflection" information.
 * Add llvm-compiler-opts as command-line argument #210 (thanks @trobanga)
 
 ## 1.6.1
