@@ -68,6 +68,18 @@ pub extern "C" fn wire_handle_string(port: i64, s: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_return_unit(port: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_return_unit",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| handle_return_unit(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
