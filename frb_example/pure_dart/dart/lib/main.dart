@@ -28,6 +28,11 @@ void main(List<String> args) async {
           42);
     }
 
+    print('dart call handleReturnUnit');
+    {
+      await api.handleReturnUnit();
+    }
+
     print('dart call handleString');
     {
       expect(await api.handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
