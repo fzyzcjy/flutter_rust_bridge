@@ -114,13 +114,13 @@ abstract class FlutterRustBridgeBaseTask {
 
   String get debugName => constMeta.debugName;
 
-  Map<String, dynamic> get argMap {
-    final ans = <String, dynamic>{};
+  Iterable<MapEntry<String, dynamic>> get argMapEntries sync* {
     for (var i = 0; i < constMeta.argNames.length; ++i) {
-      ans[constMeta.argNames[i]] = argValues[i];
+      yield MapEntry(constMeta.argNames[i], argValues[i]);
     }
-    return ans;
   }
+
+  Map<String, dynamic> get argMap => Map.fromEntries(argMapEntries);
 }
 
 /// Metadata that does not change across different method calls. Thus it is made `const` to save memory and speed up
