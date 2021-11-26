@@ -36,3 +36,10 @@ Just copied from [CI codegen.yml](https://github.com/fzyzcjy/flutter_rust_bridge
 (cd frb_dart && dart format . --line-length 120); (cd frb_example/pure_dart/dart && dart format . --line-length 120); (cd frb_example/with_flutter && dart format . --line-length 120);
 (cd frb_dart && dart analyze --fatal-infos); (cd frb_example/pure_dart/dart && dart analyze --fatal-infos); (cd frb_example/with_flutter && dart analyze --fatal-infos);
 ```
+
+### Appenfix: Upgrade dependency in your dependent project
+
+```
+flutter pub upgrade flutter_rust_bridge
+cargo update -p flutter_rust_bridge
+```
