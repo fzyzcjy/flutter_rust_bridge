@@ -91,7 +91,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.6.1"
+    version: "1.7.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -287,21 +287,21 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.19.3"
+    version: "1.19.4"
   test_api:
     dependency: transitive
     description:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.7"
+    version: "0.4.8"
   test_core:
     dependency: transitive
     description:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.8"
+    version: "0.4.9"
   typed_data:
     dependency: transitive
     description:
