@@ -185,32 +185,52 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
 
     let comments = dart_comments(&func.comments);
 
+    let task_common_args = format!(
+        "
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+            debugName: \"{}\",
+            argNames: [{}],
+        ),
+        argValues: [{}], 
+        hint: hint,
+        ",
+        func.name,
+        func.inputs
+            .iter()
+            .map(|input| format!("\"{}\"", input.name.dart_style()))
+            .collect::<Vec<_>>()
+            .join(", "),
+        func.inputs
+            .iter()
+            .map(|input| input.name.dart_style())
+            .collect::<Vec<_>>()
+            .join(", "),
+    );
+
     let implementation = match func.mode {
         ApiFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
-            debugName: '{}',
             callFfi: () => inner.{}({}),
-            hint: hint
+            {}
         ));",
             partial,
             execute_func_name,
-            func.name,
             func.wire_func_name(),
             wire_param_list.join(", "),
+            task_common_args,
         ),
         _ => format!(
             "{} => {}(FlutterRustBridgeTask(
-            debugName: '{}',
             callFfi: (port) => inner.{}({}),
             parseSuccessData: _wire2api_{},
-            hint: hint
+            {}
         ));",
             partial,
             execute_func_name,
-            func.name,
             func.wire_func_name(),
             wire_param_list.join(", "),
             func.output.safe_ident(),
+            task_common_args,
         ),
     };
 
