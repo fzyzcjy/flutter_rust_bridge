@@ -189,9 +189,6 @@ Run `cargo build` in `frb_example/pure_dart/rust` to build the Rust code into a 
 
 P.S. You will only see some tests passing - no fancy UI or functionality in this example.
 
-## Async in Rust
-If you want to use async/await or return a Future type from your Rust functions, please refer [this documentation](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/ASYNC_IN_RUST.md) for a detailed guide.
-
 ## Command line arguments
 
 Simply add `--help` to see full documentation.
@@ -293,6 +290,10 @@ By default, the `DefaultHandler` is used. You can implement your own `Handler` d
 ### Setup/init FFI call
 
 If you want that feature, have a look at `FlutterRustBridgeSetupMixin` in the Dart side.
+
+### Async in Rust
+
+If you want to use async/await or return a Future type from your Rust functions, please refer [this documentation](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/docs/async_in_rust.md) for a detailed guide.
 
 ## Appendix: Set up Flutter/Dart+Rust support
 
