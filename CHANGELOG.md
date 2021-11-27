@@ -1,3 +1,7 @@
+## 1.7.1
+
+* Add flutter example for macOS and add macOS instructions in README #211 (thanks @AlienKevin)
+
 ## 1.7.0
 
 * Enrich metadata of generated ffi calls - now we can have more "reflection" information.
