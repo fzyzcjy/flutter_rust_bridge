@@ -1,5 +1,6 @@
-## 1.7.1
+## 1.8.0
 
+* Add support for unit return type #198 (thanks @surban)
 * Add flutter example for macOS and add macOS instructions in README #211 (thanks @AlienKevin)
 
 ## 1.7.0
