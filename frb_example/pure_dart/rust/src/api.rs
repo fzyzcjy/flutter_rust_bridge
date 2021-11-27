@@ -34,6 +34,11 @@ pub fn handle_string(s: String) -> Result<String> {
     Ok(s + &s2)
 }
 
+pub fn handle_return_unit() -> Result<()> {
+    println!("handle_return_unit()");
+    Ok(())
+}
+
 // to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8(v: Vec<u8>) -> Result<Vec<u8>> {
     println!("handle_vec_u8(first few elements: {:?})", &v[..5]);

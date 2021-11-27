@@ -28,6 +28,8 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<String> handleString({required String s, dynamic hint});
 
+  Future<void> handleReturnUnit({dynamic hint});
+
   Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
 
   Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint});
@@ -254,6 +256,17 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
           argNames: ["s"],
         ),
         argValues: [s],
+        hint: hint,
+      ));
+
+  Future<void> handleReturnUnit({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_return_unit(port),
+        parseSuccessData: _wire2api_unit,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_return_unit",
+          argNames: [],
+        ),
+        argValues: [],
         hint: hint,
       ));
 
@@ -1180,6 +1193,10 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
   return raw as Uint8List;
 }
 
+void _wire2api_unit(dynamic raw) {
+  return;
+}
+
 VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
@@ -1283,6 +1300,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_string');
   late final _wire_handle_string =
       _wire_handle_stringPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_return_unit(
+    int port,
+  ) {
+    return _wire_handle_return_unit(
+      port,
+    );
+  }
+
+  late final _wire_handle_return_unitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_return_unit');
+  late final _wire_handle_return_unit = _wire_handle_return_unitPtr.asFunction<void Function(int)>();
 
   void wire_handle_vec_u8(
     int port,
