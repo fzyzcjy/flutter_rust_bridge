@@ -91,7 +91,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.7.0"
+    version: "1.8.0"
   frontend_server_client:
     dependency: transitive
     description:
