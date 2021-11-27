@@ -59,33 +59,9 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
 ```
 
-#### MacOS Caveats
-If you are running macOS, you will need to specify a path to your llvm:
-```shell
-flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
-```
-If you are on Intel, you can install llvm using `brew install llvm` and it will be installed at `/usr/local/homebrew/opt/llvm/` by default.
-If you are on M1, you need to install the x86 versions of everything and run them through Rosetta 2, since flutter does not support M1 yet. Start by installing Rosetta 2 if you haven't already:
-```shell
-/usr/sbin/softwareupdate --install-rosetta
-```
-Then, install an x86 version of brew to `/usr/local`:
-```shell
-arch -x86_64 zsh
-cd /usr/local && mkdir homebrew
-curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-```
-Then, you need to use the x86 brew to install the x86 version of llvm:
-```shell
-arch -x86_64 /usr/local/homebrew/bin/brew install llvm
-```
-Reference [this article](https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/) for details.
-And when you build with cargo, you need to select x86 as the target:
-```shell
-cargo build --target=x86_64-apple-darwin
-```
+If you have problems (such as failure on MacOS), please see the ["Troubleshooting"](https://github.com/fzyzcjy/flutter_rust_bridge#troubleshooting) section below.
 
-(If you have problems, see "Troubleshooting" section.) (For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
+(For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
 
 ### Enjoy
 
@@ -145,16 +121,18 @@ Modify `Cargo.toml` to change `cdylib` to `staticlib`. (Again, this is baremetal
 
 Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`. (Similarly, [this tutorial](https://stackoverflow.com/q/69515032/4619958) can automate the process.)
 
-#### If desktop (Windows/Linux/MacOS)
+#### If Desktop (Windows/Linux/MacOS)
+
+**Remark**: If you only want to develop a mobile app, skip this section - it is for creating desktop apps.
 
 Run it directly using `flutter run` assuming [Flutter desktop support](https://flutter.dev/desktop#set-up) has been configured. 
 
 Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully.
 
-#### Windows/Linux
+##### Windows/Linux
 This example (`frb_example/with_flutter`) already demonstrated how to integrate Cargo with CMake on Linux and Windows, and more details can be seen in [#66](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
 
-#### MacOS
+##### MacOS
 To integrate a dynamic library to your macOS app, you need to configure your `Runner.xcworkspace` in Xcode. Here, I show the instructions for Xcode 13.1:
 1. Open the `yourapp/macos/Runner.xcworkspace` in Xcode.
 2. Drag your precompiled library (`libyourlibrary.dylib`) into `Runner/Frameworks`.
@@ -257,6 +235,37 @@ If calling rust function gives the error below, please consider running **cargo 
 #### Error running `cargo ndk`: `ld: error: unable to find library -lgcc`
 
 Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.com/bbqsrc/cargo-ndk/issues/22) with `cargo-ndk`, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See [#149](https://github.com/fzyzcjy/flutter_rust_bridge/issues/149))
+
+#### Fail to run `flutter_rust_bridge_codegen` on MacOS
+
+If you are running macOS, you will need to specify a path to your llvm:
+```shell
+flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
+```
+If you are on Intel, you can install llvm using `brew install llvm` and it will be installed at `/usr/local/homebrew/opt/llvm/` by default.
+
+If you are on M1, you need to install the x86 versions of everything and run them through Rosetta 2, since Flutter does not support M1 yet. Start by installing Rosetta 2 if you haven't already:
+
+```shell
+/usr/sbin/softwareupdate --install-rosetta
+```
+Then, install an x86 version of brew to `/usr/local`:
+```shell
+arch -x86_64 zsh
+cd /usr/local && mkdir homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+```
+Then, you need to use the x86 brew to install the x86 version of llvm:
+```shell
+arch -x86_64 /usr/local/homebrew/bin/brew install llvm
+```
+Reference [this article](https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/) for details.
+
+And when you build with cargo, you need to select x86 as the target:
+
+```shell
+cargo build --target=x86_64-apple-darwin
+```
 
 #### Other problems?
 
