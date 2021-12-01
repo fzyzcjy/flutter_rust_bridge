@@ -1,8 +1,8 @@
-use std::io::Error;
 use std::sync::Mutex;
 
-use image::png::PNGEncoder;
-use image::ColorType;
+use anyhow::*;
+use image::codecs::png::PngEncoder;
+use image::*;
 use num::Complex;
 
 ///! NOTE: This file is **unrelated** to the main topic of our example.
@@ -131,11 +131,11 @@ pub fn colorize_pixel(it: u8) -> (u8, u8, u8) {
 
 /// Write the buffer `pixels`, whose dimensions are given by `bounds`, to the
 /// file named `filename`.
-fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>, std::io::Error> {
+fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>> {
     let mut buf = Vec::new();
 
-    let encoder = PNGEncoder::new(&mut buf);
-    encoder.encode(pixels, bounds.0 as u32, bounds.1 as u32, ColorType::RGB(8))?;
+    let encoder = PngEncoder::new(&mut buf);
+    encoder.encode(pixels, bounds.0 as u32, bounds.1 as u32, ColorType::Rgb8)?;
 
     Ok(buf)
 }
@@ -145,7 +145,7 @@ pub fn mandelbrot(
     zoom_point: Point,
     scale: f64,
     num_threads: i32,
-) -> Result<Vec<u8>, Error> {
+) -> Result<Vec<u8>> {
     let bounds = (image_size.width as usize, image_size.height as usize);
     let upper_left = Complex::new(zoom_point.x - scale, zoom_point.y - scale);
     let lower_right = Complex::new(zoom_point.x + scale, zoom_point.y + scale);
