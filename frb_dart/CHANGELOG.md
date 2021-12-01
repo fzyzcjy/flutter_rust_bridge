@@ -1,3 +1,7 @@
+## 1.8.1
+
+* Update example and doc.
+
 ## 1.8.0
 
 * Add support for unit return type #198 (thanks @surban)
