@@ -26,6 +26,8 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   Future<int> primitiveTypes(
       {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
 
+  Future<int> primitiveU32({required int myU32, dynamic hint});
+
   Future<String> handleString({required String s, dynamic hint});
 
   Future<void> handleReturnUnit({dynamic hint});
@@ -245,6 +247,17 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
           argNames: ["myI32", "myI64", "myF64", "myBool"],
         ),
         argValues: [myI32, myI64, myF64, myBool],
+        hint: hint,
+      ));
+
+  Future<int> primitiveU32({required int myU32, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_primitive_u32(port, _api2wire_u32(myU32)),
+        parseSuccessData: _wire2api_u32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "primitive_u32",
+          argNames: ["myU32"],
+        ),
+        argValues: [myU32],
         hint: hint,
       ));
 
@@ -760,6 +773,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_uint_8_list(Uint8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_uint_8_list(raw);
+  }
+
+  int _api2wire_u32(int raw) {
+    return raw;
   }
 
   int _api2wire_u8(int raw) {
@@ -1285,6 +1302,20 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Uint8)>>(
           'wire_primitive_types');
   late final _wire_primitive_types = _wire_primitive_typesPtr.asFunction<void Function(int, int, int, double, int)>();
+
+  void wire_primitive_u32(
+    int port,
+    int my_u32,
+  ) {
+    return _wire_primitive_u32(
+      port,
+      my_u32,
+    );
+  }
+
+  late final _wire_primitive_u32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_primitive_u32');
+  late final _wire_primitive_u32 = _wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
 
   void wire_handle_string(
     int port,

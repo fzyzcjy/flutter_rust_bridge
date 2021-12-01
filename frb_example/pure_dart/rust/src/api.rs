@@ -28,6 +28,14 @@ pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> 
     Ok(42)
 }
 
+pub fn primitive_u32(my_u32: u32) -> Result<u32> {
+    println!("primitive_u32({})", my_u32);
+    assert_eq!(my_u32, 0xff112233);
+    let ret = 0xfe112233;
+    println!("returning {}", ret);
+    Ok(ret)
+}
+
 pub fn handle_string(s: String) -> Result<String> {
     println!("handle_string({})", &s);
     let s2 = s.clone();
