@@ -28,6 +28,11 @@ void main(List<String> args) async {
           42);
     }
 
+    print('dart call primitiveU32');
+    {
+      expect(await api.primitiveU32(myU32: 0xff112233), 0xfe112233);
+    }
+
     print('dart call handleReturnUnit');
     {
       await api.handleReturnUnit();

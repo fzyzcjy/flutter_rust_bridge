@@ -53,6 +53,21 @@ pub extern "C" fn wire_primitive_types(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_primitive_u32(port: i64, my_u32: u32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "primitive_u32",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_u32 = my_u32.wire2api();
+            move |task_callback| primitive_u32(api_my_u32)
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_string(port: i64, s: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1007,6 +1022,12 @@ impl Wire2Api<MyTreeNode> for wire_MyTreeNode {
 impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
         NewTypeInt(self.field0.wire2api())
+    }
+}
+
+impl Wire2Api<u32> for u32 {
+    fn wire2api(self) -> u32 {
+        self
     }
 }
 
