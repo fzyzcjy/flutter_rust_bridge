@@ -252,6 +252,17 @@ void main(List<String> args) async {
       }
     }
 
+    print('dart call handleReturnEnum');
+    {
+      expect(await api.handleReturnEnum(input: "Tuesday"), Weekdays.Tuesday);
+      expect(await api.handleReturnEnum(input: "Foreverday"), null);
+    }
+
+    print('dart call handleEnumParameter');
+    {
+      expect(await api.handleEnumParameter(weekday: Weekdays.Saturday), Weekdays.Saturday);
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();
@@ -301,3 +312,5 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
     ],
   );
 }
+
+// vim:expandtab:ts=2:sw=2

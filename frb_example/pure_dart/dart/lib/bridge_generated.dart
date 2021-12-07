@@ -73,6 +73,23 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
       bool? boolbox,
       ExoticOptionals? structbox,
       dynamic hint});
+
+  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
+
+  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
+}
+
+/// Simple enums.
+enum Weekdays {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+
+  /// Best day of the week.
+  Saturday,
+  Sunday,
 }
 
 class Attribute {
@@ -494,6 +511,29 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
         hint: hint,
       ));
 
+  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_return_enum(port, _api2wire_String(input)),
+        parseSuccessData: _wire2api_opt_Weekdays,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_return_enum",
+          argNames: ["input"],
+        ),
+        argValues: [input],
+        hint: hint,
+      ));
+
+  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_enum_parameter(port, _api2wire_Weekdays(weekday)),
+        parseSuccessData: _wire2api_Weekdays,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_enum_parameter",
+          argNames: ["weekday"],
+        ),
+        argValues: [weekday],
+        hint: hint,
+      ));
+
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
@@ -505,6 +545,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       ans.ref.ptr[i] = _api2wire_String(raw[i]);
     }
     return ans;
+  }
+
+  int _api2wire_Weekdays(Weekdays raw) {
+    return raw.index;
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
@@ -889,6 +933,10 @@ Uint8List _wire2api_SyncReturnVecU8(dynamic raw) {
   return raw as Uint8List;
 }
 
+Weekdays _wire2api_Weekdays(dynamic raw) {
+  return Weekdays.values[raw];
+}
+
 Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
   return raw as Float32List;
 }
@@ -1104,6 +1152,10 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
 
 String? _wire2api_opt_String(dynamic raw) {
   return raw == null ? null : _wire2api_String(raw);
+}
+
+Weekdays? _wire2api_opt_Weekdays(dynamic raw) {
+  return raw == null ? null : _wire2api_Weekdays(raw);
 }
 
 Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
@@ -1621,6 +1673,36 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_option_box_arguments = _wire_handle_option_box_argumentsPtr.asFunction<
       void Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
           ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<wire_ExoticOptionals>)>();
+
+  void wire_handle_return_enum(
+    int port,
+    ffi.Pointer<wire_uint_8_list> input,
+  ) {
+    return _wire_handle_return_enum(
+      port,
+      input,
+    );
+  }
+
+  late final _wire_handle_return_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_return_enum');
+  late final _wire_handle_return_enum =
+      _wire_handle_return_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_enum_parameter(
+    int port,
+    int weekday,
+  ) {
+    return _wire_handle_enum_parameter(
+      port,
+      weekday,
+    );
+  }
+
+  late final _wire_handle_enum_parameterPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_enum_parameter');
+  late final _wire_handle_enum_parameter = _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,

@@ -30,14 +30,11 @@ pub fn generate(
         .collect::<Vec<_>>();
     let dart_structs = distinct_types
         .iter()
-        .filter_map(|ty| {
-            if let StructRef(s) = ty {
-                Some(s.get(api_file))
-            } else {
-                None
-            }
+        .filter_map(|ty| match ty {
+            StructRef(s) => Some(generate_api_struct(s.get(api_file))),
+            Enum(enu) => Some(generate_api_enum(enu)),
+            _ => None,
         })
-        .map(generate_api_struct)
         .collect::<Vec<_>>();
     let dart_api2wire_funcs = distinct_input_types
         .iter()
@@ -85,7 +82,7 @@ pub fn generate(
         dart_wire_class_name,
         dart_func_signatures_and_implementations
             .iter()
-            .map(|(sig, _, comm)| format!("{}\n{}", comm, sig))
+            .map(|(sig, _, comm)| format!("{}{}", comm, sig))
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_structs.join("\n\n"),
@@ -191,7 +188,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
             debugName: \"{}\",
             argNames: [{}],
         ),
-        argValues: [{}], 
+        argValues: [{}],
         hint: hint,
         ",
         func.name,
@@ -302,6 +299,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
                 )
             }
         },
+        Enum(_) => "return raw.index;".to_owned(),
         // skip
         StructRef(_) => return "".to_string(),
     };
@@ -348,7 +346,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
             boxed.inner.safe_ident()
         ),
-        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) => {
+        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Enum(_) => {
             return "".to_string();
         }
     };
@@ -419,6 +417,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             StructRef(inner) => format!("return _wire2api_{}(raw);", inner.safe_ident()),
             _ => gen_simple_type_cast(&ty.dart_api_type()),
         },
+        Enum(enu) => format!("return {}.values[raw];", enu.name),
     };
 
     format!(
@@ -432,12 +431,17 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
     )
 }
 
+/// A trailing newline is included if comments is not empty.
 fn dart_comments(comments: &[Comment]) -> String {
-    comments
+    let mut comments = comments
         .iter()
         .map(Comment::comment)
         .collect::<Vec<_>>()
-        .join("\n")
+        .join("\n");
+    if !comments.is_empty() {
+        comments.push('\n');
+    }
+    comments
 }
 
 fn generate_api_struct(s: &ApiStruct) -> String {
@@ -447,9 +451,8 @@ fn generate_api_struct(s: &ApiStruct) -> String {
         .map(|f| {
             let comments = dart_comments(&f.comments);
             format!(
-                "{}{}final {} {};",
+                "{}final {} {};",
                 comments,
-                if comments.is_empty() { "" } else { "\n" },
                 f.ty.dart_api_type(),
                 f.name.dart_style()
             )
@@ -467,12 +470,27 @@ fn generate_api_struct(s: &ApiStruct) -> String {
     let comments = dart_comments(&s.comments);
 
     format!(
-        "{}
-        class {} {{
+        "{}class {} {{
             {}
 
             {}({{{}}});
         }}",
         comments, s.name, field_declarations, s.name, constructor_params
+    )
+}
+
+fn generate_api_enum(enu: &ApiEnum) -> String {
+    let comments = dart_comments(&enu.comments);
+    let variants = enu
+        .members
+        .iter()
+        .map(|variant| format!("{}{},", dart_comments(&variant.comments), variant.name))
+        .collect::<Vec<_>>()
+        .join("\n");
+    format!(
+        "{}enum {} {{
+            {}
+        }}",
+        comments, enu.name, variants
     )
 }
