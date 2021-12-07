@@ -141,7 +141,7 @@ impl<'a> Parser<'a> {
     fn try_parse_enum(&self, ty: &str) -> Option<ApiType> {
         self.src_enums
             .iter()
-            .find(|enu| &enu.ident == ty)
+            .find(|enu| enu.ident == ty)
             .map(|enu| {
                 ApiType::Enum(ApiEnum {
                     name: ty.to_owned(),
@@ -278,7 +278,7 @@ impl<'a> Parser<'a> {
             let field_name = field
                 .ident
                 .as_ref()
-                .map_or(format!("field{}", idx), |id| ident_to_string(id));
+                .map_or(format!("field{}", idx), ident_to_string);
             let field_type_str = type_to_string(&field.ty);
             let field_type = self.parse_type(&field_type_str);
             let comments = field.attrs.iter().filter_map(extract_comments).collect();
