@@ -1,3 +1,7 @@
+## 1.9.0
+
+* Suppose field-less enum types #239 (thanks @Desdaemon)
+
 ## 1.8.2
 
 * Fix bug that returning u32 from Rust results in wrong value received by Dart #234
