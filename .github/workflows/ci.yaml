@@ -55,22 +55,18 @@ jobs:
     strategy:
       matrix:
         device:
-          - "iPad (7th generation) (14.4)"
-          - "iPhone 12 Pro Max (14.4)"
+          - "iPad (7th generation) Simulator (15.0)"
+          - "iPhone 12 Pro Max Simulator (15.0)"
       fail-fast: false
 
     steps:
       - name: "List all simulators"
-        run: "xcrun instruments -s"
+        run: "xcrun xctrace list devices"
       - name: "Start Simulator"
         run: |
-          UDID=$(
-            xcrun instruments -s |
-            awk \
-              -F ' *[][]' \
-              -v 'device=${{ matrix.device }}' \
-              '$1 == device { print $2 }'
-          )
+          # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (15.0) + Apple Watch Series 5 - 44mm (8.0)"
+          UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
+          echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
       - uses: subosito/flutter-action@v1
