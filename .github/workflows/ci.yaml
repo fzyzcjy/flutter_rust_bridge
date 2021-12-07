@@ -61,16 +61,10 @@ jobs:
 
     steps:
       - name: "List all simulators"
-        run: "xcrun instruments -s"
+        run: "xcrun xctrace list devices"
       - name: "Start Simulator"
         run: |
-          UDID=$(
-            xcrun instruments -s |
-            awk \
-              -F ' *[][]' \
-              -v 'device=${{ matrix.device }}' \
-              '$1 == device { print $2 }'
-          )
+          UDID=$(xcrun xctrace list devices | grep 'iPad Pro (9.7-inch) Simulator (15.0)' | awk '{print $NF}' | tr -d '()')
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
       - uses: subosito/flutter-action@v1
