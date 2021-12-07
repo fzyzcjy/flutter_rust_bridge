@@ -133,6 +133,7 @@ pub enum ApiType {
     GeneralList(Box<ApiTypeGeneralList>),
     StructRef(ApiTypeStructRef),
     Boxed(Box<ApiTypeBoxed>),
+    Enum(ApiEnum),
 }
 
 macro_rules! api_type_call_child {
@@ -146,6 +147,7 @@ macro_rules! api_type_call_child {
                 StructRef(inner) => inner.$func(),
                 Boxed(inner) => inner.$func(),
                 Optional(inner) => inner.$func(),
+                Enum(enu) => enu.$func(),
             }
         }
     };
@@ -170,7 +172,7 @@ impl ApiType {
             Boxed(inner) => inner.inner.visit_types(f, api_file),
             Delegate(d) => d.get_delegate().visit_types(f, api_file),
             Optional(inner) => inner.inner.visit_types(f, api_file),
-            Primitive(_) => {}
+            Primitive(_) | Enum(_) => {}
         }
     }
 
@@ -682,5 +684,36 @@ impl From<&str> for Comment {
         } else {
             Self(format!("///{}", input))
         }
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct ApiEnum {
+    pub name: String,
+    pub members: Vec<EnumVariant>,
+    pub comments: Vec<Comment>,
+}
+
+#[derive(Debug, Clone)]
+pub struct EnumVariant {
+    pub name: String,
+    pub comments: Vec<Comment>,
+}
+
+impl ApiTypeChild for ApiEnum {
+    fn safe_ident(&self) -> String {
+        self.name.clone()
+    }
+    fn dart_api_type(&self) -> String {
+        self.safe_ident()
+    }
+    fn dart_wire_type(&self) -> String {
+        "int".to_owned()
+    }
+    fn rust_api_type(&self) -> String {
+        self.safe_ident()
+    }
+    fn rust_wire_type(&self) -> String {
+        "i32".to_owned()
     }
 }

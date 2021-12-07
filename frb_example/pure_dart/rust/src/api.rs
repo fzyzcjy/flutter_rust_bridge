@@ -338,3 +338,34 @@ pub fn handle_option_box_arguments(
         (i8box, u8box, i32box, i64box, f64box, boolbox, structbox)
     ))
 }
+
+/// Simple enums.
+#[derive(Debug)]
+pub enum Weekdays {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    /// Best day of the week.
+    Saturday,
+    Sunday,
+}
+
+pub fn handle_return_enum(input: String) -> Result<Option<Weekdays>> {
+    Ok(match input.as_str() {
+        "Monday" => Some(Weekdays::Monday),
+        "Tuesday" => Some(Weekdays::Tuesday),
+        "Wednesday" => Some(Weekdays::Wednesday),
+        "Thursday" => Some(Weekdays::Thursday),
+        "Friday" => Some(Weekdays::Friday),
+        "Saturday" => Some(Weekdays::Saturday),
+        "Sunday" => Some(Weekdays::Sunday),
+        _ => None,
+    })
+}
+
+pub fn handle_enum_parameter(weekday: Weekdays) -> Result<Weekdays> {
+    print!("The weekday is {:?}", weekday);
+    Ok(weekday)
+}

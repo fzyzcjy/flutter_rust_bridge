@@ -245,7 +245,7 @@ impl Generator {
                 .iter()
                 .map(std::ops::Deref::deref)
                 .collect::<Vec<_>>(),
-            return_type.as_deref(),
+            return_type,
             &format!(
                 "
                 {}.{}({}, move || {{
@@ -290,7 +290,7 @@ impl Generator {
                     })
                     .collect()
             }
-            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) => return "".to_string(),
+            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) | Enum(_) => return "".to_string(),
         };
 
         format!(
@@ -370,7 +370,7 @@ impl Generator {
                     }
                 }
             },
-            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) => String::new(),
+            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) | Enum(_) => String::new(),
         }
     }
 
@@ -397,9 +397,11 @@ impl Generator {
             };
             vec.into_iter().map(Wire2Api::wire2api).collect()"
                 .into(),
-            Boxed(_) => "let wrap = unsafe { support::box_from_leak_ptr(self) };
-            (*wrap).wire2api().into()"
-                .into(),
+            Boxed(inner) => match inner.as_ref() {
+                ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: false } => "unsafe { *support::box_from_leak_ptr(self) }".into(),
+                ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: true } => "unsafe { support::box_from_leak_ptr(self) }".into(),
+                _ => "let wrap = unsafe { support::box_from_leak_ptr(self) }; (*wrap).wire2api().into()".into()
+            }
             StructRef(struct_ref) => {
                 let api_struct = struct_ref.get(api_file);
 
@@ -427,6 +429,23 @@ impl Generator {
                 }
                 .into()
             }
+            Enum(enu) => {
+                let variants = enu
+                    .members
+                    .iter()
+                    .enumerate()
+                    .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
+                    .collect::<Vec<_>>()
+                    .join("\n");
+                format!(
+                    "match self {{
+                        {}
+                        _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
+                    }}",
+                    variants, enu.name
+                )
+                .into()
+            }
             // handled by common impl
             Optional(_) => return String::new(),
         };
@@ -450,7 +469,7 @@ impl Generator {
             StructRef(st) => self
                 .generate_new_with_nullptr_func_for_struct(st.get(api_file), &ty.rust_wire_type()),
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
-            | Optional(_) => String::new(),
+            | Optional(_) | Enum(_) => String::new(),
         }
     }
 
@@ -458,6 +477,7 @@ impl Generator {
         // println!("generate_impl_intodart: {:?}", ty);
         match ty {
             StructRef(s) => self.generate_impl_intodart_for_struct(s.get(api_file)),
+            Enum(enu) => self.generate_impl_intodart_for_enum(enu),
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
             | Optional(_) => "".to_string(),
         }
@@ -520,6 +540,26 @@ impl Generator {
             impl support::IntoDartExceptPrimitive for {} {{}}
             ",
             s.name, body, s.name,
+        )
+    }
+
+    fn generate_impl_intodart_for_enum(&mut self, enu: &ApiEnum) -> String {
+        let variants = enu
+            .members
+            .iter()
+            .enumerate()
+            .map(|(idx, variant)| format!("Self::{} => {},", variant.name, idx))
+            .collect::<Vec<_>>()
+            .join("\n");
+        format!(
+            "impl support::IntoDart for {} {{
+                fn into_dart(self) -> support::DartCObject {{
+                    match self {{
+                        {}
+                    }}.into_dart()
+                }}
+            }}",
+            enu.name, variants
         )
     }
 }

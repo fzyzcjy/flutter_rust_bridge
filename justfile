@@ -4,6 +4,11 @@ frb_bin := "frb_codegen/target/debug/flutter_rust_bridge_codegen"
 frb_pure := "frb_example/pure_dart"
 frb_flutter := "frb_example/with_flutter"
 line_length := "120"
+dylib := if os() == "windows" {
+    "flutter_rust_bridge_example.dll"
+} else {
+    "libflutter_rust_bridge_example.so"
+}
 
 default: gen-bridge lint
 
@@ -29,7 +34,7 @@ test-pure:
     cd {{frb_pure}}/rust && cargo b
     cd {{frb_pure}}/dart && \
         dart pub get && \
-        dart lib/main.dart ../rust/target/debug/libflutter_rust_bridge_example.so
+        dart lib/main.dart ../rust/target/debug/{{dylib}}
 test-integration:
     cd {{frb_flutter}} && flutter test integration_test/main.dart
 
