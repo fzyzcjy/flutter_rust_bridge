@@ -345,6 +345,7 @@ pub enum ApiTypeDelegate {
     StringList,
     SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(ApiTypePrimitive),
+    Opaque(Box<ApiType>),
 }
 
 impl ApiTypeDelegate {

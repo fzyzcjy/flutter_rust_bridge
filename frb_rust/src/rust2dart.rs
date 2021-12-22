@@ -3,6 +3,7 @@ use std::marker::PhantomData;
 pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::IntoDart;
 use allo_isolate::Isolate;
+pub use allo_isolate::Opaque;
 
 #[derive(Copy, Clone)]
 pub struct Rust2Dart {

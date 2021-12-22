@@ -7,6 +7,7 @@ use std::time::Duration;
 
 use anyhow::{anyhow, Result};
 
+use flutter_rust_bridge::rust2dart::Opaque;
 use flutter_rust_bridge::{StreamSink, SyncReturn, ZeroCopyBuffer};
 
 /// Documentation on a simple adder function.
@@ -368,4 +369,11 @@ pub fn handle_return_enum(input: String) -> Result<Option<Weekdays>> {
 pub fn handle_enum_parameter(weekday: Weekdays) -> Result<Weekdays> {
     print!("The weekday is {:?}", weekday);
     Ok(weekday)
+}
+
+pub fn handle_opaque_pointer(lock: Opaque<i32>) -> Result<Opaque<i32>> {
+    if let Ok(mut value) = lock.try_write() {
+        *value = 10;
+    }
+    todo!();
 }
