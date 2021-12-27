@@ -78,9 +78,9 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
 
-  Future<dynamic> handleOpaquePointer({dynamic? lock, dynamic hint});
+  Future<dynamic> handleOpaquePointer({dynamic lock, dynamic hint});
 
-  Future<dynamic> handleArcPointer({dynamic? ptr, dynamic hint});
+  Future<dynamic> handleArcPointer({dynamic ptr, dynamic hint});
 }
 
 /// Simple enums.
@@ -538,7 +538,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
         hint: hint,
       ));
 
-  Future<dynamic> handleOpaquePointer({dynamic? lock, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+  Future<dynamic> handleOpaquePointer({dynamic lock, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port) => inner.wire_handle_opaque_pointer(port, _api2wire_opt_opaq_i32(lock)),
         parseSuccessData: _wire2api_opaq_i32,
         constMeta: const FlutterRustBridgeTaskConstMeta(
@@ -549,7 +549,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
         hint: hint,
       ));
 
-  Future<dynamic> handleArcPointer({dynamic? ptr, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+  Future<dynamic> handleArcPointer({dynamic ptr, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port) => inner.wire_handle_arc_pointer(port, _api2wire_opt_arc__(ptr)),
         parseSuccessData: _wire2api_arc__,
         constMeta: const FlutterRustBridgeTaskConstMeta(
@@ -772,7 +772,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return raw == null ? ffi.nullptr : _api2wire_ZeroCopyBuffer_Uint8List(raw);
   }
 
-  ffi.Pointer<ffi.Void> _api2wire_opt_arc__(dynamic? raw) {
+  ffi.Pointer<ffi.Void> _api2wire_opt_arc__(dynamic raw) {
     return raw == null ? ffi.nullptr : _api2wire_arc__(raw);
   }
 
@@ -860,7 +860,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return raw == null ? ffi.nullptr : _api2wire_list_opt_box_autoadd_attribute(raw);
   }
 
-  ffi.Pointer<ffi.Void> _api2wire_opt_opaq_i32(dynamic? raw) {
+  ffi.Pointer<ffi.Void> _api2wire_opt_opaq_i32(dynamic raw) {
     return raw == null ? ffi.nullptr : _api2wire_opaq_i32(raw);
   }
 
@@ -951,8 +951,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.field0 = _api2wire_i64(apiObj.field0);
   }
 
-  void _api_fill_to_wire_opt_arc__(dynamic? apiObj, ffi.Pointer<ffi.Void> wireObj) {
-    // if (apiObj != null) _api_fill_to_wire_arc__(apiObj, wireObj);
+  void _api_fill_to_wire_opt_arc__(dynamic apiObj, ffi.Pointer<ffi.Void> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_arc__(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {

@@ -661,7 +661,12 @@ impl ApiTypeChild for ApiTypeOptional {
         self.inner.dart_wire_type()
     }
     fn dart_api_type(&self) -> String {
-        format!("{}?", self.inner.dart_api_type())
+        let inner = self.inner.dart_api_type();
+        if inner.ends_with("dynamic") {
+            inner
+        } else {
+            format!("{}?", inner)
+        }
     }
     fn rust_wire_is_pointer(&self) -> bool {
         true
