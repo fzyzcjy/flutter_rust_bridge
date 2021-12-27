@@ -290,7 +290,9 @@ impl Generator {
                     })
                     .collect()
             }
-            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) | Enum(_) => return "".to_string(),
+            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) | Enum(_) | Arc(_) => {
+                return "".to_string()
+            }
         };
 
         format!(
@@ -370,7 +372,7 @@ impl Generator {
                     }
                 }
             },
-            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) | Enum(_) => String::new(),
+            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) | Enum(_) | Arc(_) => String::new(),
         }
     }
 
@@ -385,6 +387,7 @@ impl Generator {
             Delegate(ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_)) => {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
+            Delegate(ApiTypeDelegate::Opaque(_)) => "Opaque(self.wire2api())".into(),
             PrimitiveList(_) => "unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -446,6 +449,7 @@ impl Generator {
                 )
                 .into()
             }
+            Arc(_) => "unsafe { support::arc_from_opaque_ptr(self as _) }".into(),
             // handled by common impl
             Optional(_) => return String::new(),
         };
@@ -469,7 +473,7 @@ impl Generator {
             StructRef(st) => self
                 .generate_new_with_nullptr_func_for_struct(st.get(api_file), &ty.rust_wire_type()),
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
-            | Optional(_) | Enum(_) => String::new(),
+            | Optional(_) | Enum(_) | Arc(_) => String::new(),
         }
     }
 
@@ -479,7 +483,7 @@ impl Generator {
             StructRef(s) => self.generate_impl_intodart_for_struct(s.get(api_file)),
             Enum(enu) => self.generate_impl_intodart_for_enum(enu),
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
-            | Optional(_) => "".to_string(),
+            | Optional(_) | Arc(_) => "".to_string(),
         }
     }
 

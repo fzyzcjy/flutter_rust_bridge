@@ -251,6 +251,9 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             }
             return ans;"
                 .to_owned(),
+            ApiTypeDelegate::Opaque(_) => {
+                "print('sending opaque pointer ${raw.runtimeType}'); return raw;".to_owned()
+            }
         },
         Optional(opt) => format!(
             "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
@@ -300,6 +303,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             }
         },
         Enum(_) => "return raw.index;".to_owned(),
+        Arc(_) => "print('sending arc pointer ${raw.runtimeType}'); return raw;".to_owned(),
         // skip
         StructRef(_) => return "".to_string(),
     };
@@ -346,7 +350,8 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
             boxed.inner.safe_ident()
         ),
-        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Enum(_) => {
+        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Enum(_)
+        | Arc(_) => {
             return "".to_string();
         }
     };
@@ -376,6 +381,9 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             }
             ApiTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
+            }
+            ApiTypeDelegate::Opaque(_) => {
+                "print('receiving opaque pointer ${raw.runtimeType}'); return raw;".to_owned()
             }
         },
         Optional(opt) => format!(
@@ -418,6 +426,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             _ => gen_simple_type_cast(&ty.dart_api_type()),
         },
         Enum(enu) => format!("return {}.values[raw];", enu.name),
+        Arc(_) => "print('receiving arc pointer ${raw.runtimeType}'); return raw;".to_owned(),
     };
 
     format!(

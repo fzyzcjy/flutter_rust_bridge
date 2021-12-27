@@ -134,6 +134,7 @@ pub enum ApiType {
     StructRef(ApiTypeStructRef),
     Boxed(Box<ApiTypeBoxed>),
     Enum(ApiEnum),
+    Arc(ApiArc),
 }
 
 macro_rules! api_type_call_child {
@@ -148,6 +149,7 @@ macro_rules! api_type_call_child {
                 Boxed(inner) => inner.$func(),
                 Optional(inner) => inner.$func(),
                 Enum(enu) => enu.$func(),
+                Arc(arc) => arc.$func(),
             }
         }
     };
@@ -172,7 +174,7 @@ impl ApiType {
             Boxed(inner) => inner.inner.visit_types(f, api_file),
             Delegate(d) => d.get_delegate().visit_types(f, api_file),
             Optional(inner) => inner.inner.visit_types(f, api_file),
-            Primitive(_) | Enum(_) => {}
+            Primitive(_) | Enum(_) | Arc(_) => {}
         }
     }
 
@@ -345,7 +347,7 @@ pub enum ApiTypeDelegate {
     StringList,
     SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(ApiTypePrimitive),
-    Opaque(Box<ApiType>),
+    Opaque(String),
 }
 
 impl ApiTypeDelegate {
@@ -363,6 +365,9 @@ impl ApiTypeDelegate {
                 })
             }
             ApiTypeDelegate::StringList => ApiType::Delegate(ApiTypeDelegate::String),
+            ApiTypeDelegate::Opaque(inner) => {
+                ApiType::Arc(ApiArc(format!("opaque::RwLock<{}>", inner)))
+            }
         }
     }
 }
@@ -376,6 +381,7 @@ impl ApiTypeChild for ApiTypeDelegate {
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
+            ApiTypeDelegate::Opaque(inner) => format!("opaq_{}", inner),
         }
     }
 
@@ -383,9 +389,9 @@ impl ApiTypeChild for ApiTypeDelegate {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
             ApiTypeDelegate::StringList => "List<String>".to_owned(),
-            ApiTypeDelegate::SyncReturnVecU8 | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                self.get_delegate().dart_api_type()
-            }
+            ApiTypeDelegate::SyncReturnVecU8
+            | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_)
+            | ApiTypeDelegate::Opaque(_) => self.get_delegate().dart_api_type(),
         }
     }
 
@@ -404,6 +410,7 @@ impl ApiTypeChild for ApiTypeDelegate {
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
+            ApiTypeDelegate::Opaque(inner) => format!("Opaque<{}>", inner),
         }
     }
 
@@ -716,5 +723,37 @@ impl ApiTypeChild for ApiEnum {
     }
     fn rust_wire_type(&self) -> String {
         "i32".to_owned()
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct ApiArc(pub String);
+
+impl ApiTypeChild for ApiArc {
+    fn safe_ident(&self) -> String {
+        format!(
+            "arc_{}",
+            self.0
+                .replace(':', "_")
+                .replace('<', "_")
+                .replace('>', "")
+                .replace('(', "_")
+                .replace(')', "")
+        )
+    }
+    fn dart_api_type(&self) -> String {
+        "dynamic".to_owned()
+    }
+    fn dart_wire_type(&self) -> String {
+        "ffi.Pointer<ffi.Void>".to_owned()
+    }
+    fn rust_api_type(&self) -> String {
+        format!("Arc<{}>", self.0)
+    }
+    fn rust_wire_type(&self) -> String {
+        "c_void".to_owned()
+    }
+    fn rust_wire_is_pointer(&self) -> bool {
+        true
     }
 }

@@ -402,6 +402,36 @@ pub extern "C" fn wire_handle_enum_parameter(port: i64, weekday: i32) {
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_handle_opaque_pointer(port: i64, lock: *mut c_void) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_opaque_pointer",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_lock = lock.wire2api();
+            move |task_callback| handle_opaque_pointer(api_lock)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_arc_pointer(port: i64, ptr: *mut c_void) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_arc_pointer",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_ptr = ptr.wire2api();
+            move |task_callback| handle_arc_pointer(api_ptr)
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -774,6 +804,18 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<Arc<()>> for *mut c_void {
+    fn wire2api(self) -> Arc<()> {
+        unsafe { support::arc_from_opaque_ptr(self as _) }
+    }
+}
+
+impl Wire2Api<Arc<opaque::RwLock<i32>>> for *mut c_void {
+    fn wire2api(self) -> Arc<opaque::RwLock<i32>> {
+        unsafe { support::arc_from_opaque_ptr(self as _) }
+    }
+}
+
 impl Wire2Api<Attribute> for wire_Attribute {
     fn wire2api(self) -> Attribute {
         Attribute {
@@ -1057,6 +1099,12 @@ impl Wire2Api<MyTreeNode> for wire_MyTreeNode {
 impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
         NewTypeInt(self.field0.wire2api())
+    }
+}
+
+impl Wire2Api<Opaque<i32>> for *mut c_void {
+    fn wire2api(self) -> Opaque<i32> {
+        Opaque(self.wire2api())
     }
 }
 

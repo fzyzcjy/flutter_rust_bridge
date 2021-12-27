@@ -77,6 +77,10 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
+
+  Future<dynamic> handleOpaquePointer({dynamic? lock, dynamic hint});
+
+  Future<dynamic> handleArcPointer({dynamic? ptr, dynamic hint});
 }
 
 /// Simple enums.
@@ -534,6 +538,28 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
         hint: hint,
       ));
 
+  Future<dynamic> handleOpaquePointer({dynamic? lock, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_opaque_pointer(port, _api2wire_opt_opaq_i32(lock)),
+        parseSuccessData: _wire2api_opaq_i32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_opaque_pointer",
+          argNames: ["lock"],
+        ),
+        argValues: [lock],
+        hint: hint,
+      ));
+
+  Future<dynamic> handleArcPointer({dynamic? ptr, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_arc_pointer(port, _api2wire_opt_arc__(ptr)),
+        parseSuccessData: _wire2api_arc__,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_arc_pointer",
+          argNames: ["ptr"],
+        ),
+        argValues: [ptr],
+        hint: hint,
+      ));
+
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
@@ -553,6 +579,16 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
     return _api2wire_uint_8_list(raw);
+  }
+
+  ffi.Pointer<ffi.Void> _api2wire_arc__(dynamic raw) {
+    print('sending arc pointer ${raw.runtimeType}');
+    return raw;
+  }
+
+  ffi.Pointer<ffi.Void> _api2wire_arc_opaque__RwLock_i32(dynamic raw) {
+    print('sending arc pointer ${raw.runtimeType}');
+    return raw;
   }
 
   bool _api2wire_bool(bool raw) {
@@ -723,12 +759,21 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
+  ffi.Pointer<ffi.Void> _api2wire_opaq_i32(dynamic raw) {
+    print('sending opaque pointer ${raw.runtimeType}');
+    return raw;
+  }
+
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_String(String? raw) {
     return raw == null ? ffi.nullptr : _api2wire_String(raw);
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_ZeroCopyBuffer_Uint8List(raw);
+  }
+
+  ffi.Pointer<ffi.Void> _api2wire_opt_arc__(dynamic? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_arc__(raw);
   }
 
   ffi.Pointer<wire_Attribute> _api2wire_opt_box_autoadd_attribute(Attribute? raw) {
@@ -813,6 +858,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<wire_list_opt_box_autoadd_attribute> _api2wire_opt_list_opt_box_autoadd_attribute(List<Attribute?>? raw) {
     return raw == null ? ffi.nullptr : _api2wire_list_opt_box_autoadd_attribute(raw);
+  }
+
+  ffi.Pointer<ffi.Void> _api2wire_opt_opaq_i32(dynamic? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_opaq_i32(raw);
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_uint_8_list(Uint8List? raw) {
@@ -902,6 +951,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.field0 = _api2wire_i64(apiObj.field0);
   }
 
+  void _api_fill_to_wire_opt_arc__(dynamic? apiObj, ffi.Pointer<ffi.Void> wireObj) {
+    // if (apiObj != null) _api_fill_to_wire_arc__(apiObj, wireObj);
+  }
+
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
@@ -975,6 +1028,16 @@ Uint64List _wire2api_ZeroCopyBuffer_Uint64List(dynamic raw) {
 
 Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
+}
+
+dynamic _wire2api_arc__(dynamic raw) {
+  print('receiving arc pointer ${raw.runtimeType}');
+  return raw;
+}
+
+dynamic _wire2api_arc_opaque__RwLock_i32(dynamic raw) {
+  print('receiving arc pointer ${raw.runtimeType}');
+  return raw;
 }
 
 Attribute _wire2api_attribute(dynamic raw) {
@@ -1148,6 +1211,11 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
   return NewTypeInt(
     field0: _wire2api_i64(arr[0]),
   );
+}
+
+dynamic _wire2api_opaq_i32(dynamic raw) {
+  print('receiving opaque pointer ${raw.runtimeType}');
+  return raw;
 }
 
 String? _wire2api_opt_String(dynamic raw) {
@@ -1703,6 +1771,36 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_enum_parameterPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_enum_parameter');
   late final _wire_handle_enum_parameter = _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
+
+  void wire_handle_opaque_pointer(
+    int port,
+    ffi.Pointer<ffi.Void> lock,
+  ) {
+    return _wire_handle_opaque_pointer(
+      port,
+      lock,
+    );
+  }
+
+  late final _wire_handle_opaque_pointerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>('wire_handle_opaque_pointer');
+  late final _wire_handle_opaque_pointer =
+      _wire_handle_opaque_pointerPtr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_handle_arc_pointer(
+    int port,
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _wire_handle_arc_pointer(
+      port,
+      ptr,
+    );
+  }
+
+  late final _wire_handle_arc_pointerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>('wire_handle_arc_pointer');
+  late final _wire_handle_arc_pointer =
+      _wire_handle_arc_pointerPtr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,

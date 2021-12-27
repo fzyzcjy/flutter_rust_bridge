@@ -135,7 +135,16 @@ impl<'a> Parser<'a> {
             .or_else(|| self.try_parse_option(ty))
             .or_else(|| self.try_parse_struct(ty))
             .or_else(|| self.try_parse_enum(ty))
+            .or_else(|| self.try_parse_arc(ty))
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
+    }
+
+    fn try_parse_arc(&self, ty: &str) -> Option<ApiType> {
+        lazy_static! {
+            static ref CAPTURE_ARC: GenericCapture = GenericCapture::new("Arc");
+        }
+
+        CAPTURE_ARC.captures(ty).map(|ty| ApiType::Arc(ApiArc(ty)))
     }
 
     fn try_parse_enum(&self, ty: &str) -> Option<ApiType> {
@@ -177,6 +186,7 @@ impl<'a> Parser<'a> {
                 lazy_static! {
                     static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture =
                         GenericCapture::new("ZeroCopyBuffer");
+                    static ref CAPTURE_OPAQUE: GenericCapture = GenericCapture::new("Opaque");
                 }
 
                 if let Some(inner_type_str) = CAPTURE_ZERO_COPY_BUFFER.captures(ty) {
@@ -187,6 +197,10 @@ impl<'a> Parser<'a> {
                             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
                         ));
                     }
+                }
+
+                if let Some(inner) = CAPTURE_OPAQUE.captures(ty) {
+                    return Some(ApiType::Delegate(ApiTypeDelegate::Opaque(inner)));
                 }
 
                 None
@@ -363,7 +377,7 @@ struct GenericCapture {
 
 impl GenericCapture {
     pub fn new(cls_name: &str) -> Self {
-        let regex = Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>]+|\\(\\))>$", cls_name)).unwrap();
+        let regex = Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>()]+)>$", cls_name)).unwrap();
         Self { regex }
     }
 
