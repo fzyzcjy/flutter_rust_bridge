@@ -642,8 +642,12 @@ impl ApiTypeOptional {
         matches!(&*self.inner, Delegate(_))
     }
 
+    pub fn is_arc(&self) -> bool {
+        matches!(&*self.inner, Arc(_))
+    }
+
     pub fn needs_initialization(&self) -> bool {
-        !(self.is_primitive() || self.is_delegate())
+        !(self.is_primitive() || self.is_delegate() || self.is_arc())
     }
 }
 

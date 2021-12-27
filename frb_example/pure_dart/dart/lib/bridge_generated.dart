@@ -951,10 +951,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.field0 = _api2wire_i64(apiObj.field0);
   }
 
-  void _api_fill_to_wire_opt_arc__(dynamic apiObj, ffi.Pointer<ffi.Void> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_arc__(apiObj, wireObj);
-  }
-
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
