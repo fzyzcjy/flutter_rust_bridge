@@ -1,3 +1,7 @@
+## 1.9.1
+
+* Bump versions of dependencies
+
 ## 1.9.0
 
 * Suppose field-less enum types #239 (thanks @Desdaemon)
