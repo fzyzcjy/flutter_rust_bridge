@@ -263,6 +263,18 @@ void main(List<String> args) async {
       expect(await api.handleEnumParameter(weekday: Weekdays.Saturday), Weekdays.Saturday);
     }
 
+    print('dart call handleOpaquePointer');
+    {
+      final ptr = await api.handleOpaquePointer();
+      expect(await api.handleOpaquePointer(lock: ptr), ptr);
+    }
+
+    print('dart call handleArcPointer');
+    {
+      final ptr = await api.handleArcPointer();
+      expect(await api.handleArcPointer(ptr: ptr), ptr);
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();
