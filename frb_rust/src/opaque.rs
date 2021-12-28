@@ -4,7 +4,7 @@ pub use std::sync::RwLock;
 
 /// Newtype wrapper around [`Arc<RwLock<T>>`] to be converted into an opaque pointer.
 /// If interior mutability is not required, [`Arc<T>`] is also [IntoDart].
-#[repr(transparent)]
+#[derive(Debug, Clone)]
 pub struct Opaque<T>(pub Arc<RwLock<T>>);
 
 impl<T> Opaque<T> {

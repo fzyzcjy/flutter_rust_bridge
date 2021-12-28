@@ -403,7 +403,19 @@ pub extern "C" fn wire_handle_enum_parameter(port: i64, weekday: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_opaque_pointer(port: i64, lock: *mut c_void) {
+pub extern "C" fn wire_create_opaque_pointer(port: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_opaque_pointer",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| create_opaque_pointer(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_opaque_pointer(port: i64, ptr: isize) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_opaque_pointer",
@@ -411,14 +423,26 @@ pub extern "C" fn wire_handle_opaque_pointer(port: i64, lock: *mut c_void) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_lock = lock.wire2api();
-            move |task_callback| handle_opaque_pointer(api_lock)
+            let api_ptr = ptr.wire2api();
+            move |task_callback| handle_opaque_pointer(api_ptr)
         },
     )
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_arc_pointer(port: i64, ptr: *mut c_void) {
+pub extern "C" fn wire_create_arc_pointer(port: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_arc_pointer",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| create_arc_pointer(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_arc_pointer(port: i64, ptr: isize) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_arc_pointer",
@@ -804,13 +828,13 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     }
 }
 
-impl Wire2Api<Arc<()>> for *mut c_void {
-    fn wire2api(self) -> Arc<()> {
+impl Wire2Api<Arc<Vec<u8>>> for isize {
+    fn wire2api(self) -> Arc<Vec<u8>> {
         unsafe { support::arc_from_opaque_ptr(self as _) }
     }
 }
 
-impl Wire2Api<Arc<opaque::RwLock<i32>>> for *mut c_void {
+impl Wire2Api<Arc<opaque::RwLock<i32>>> for isize {
     fn wire2api(self) -> Arc<opaque::RwLock<i32>> {
         unsafe { support::arc_from_opaque_ptr(self as _) }
     }
@@ -1102,7 +1126,7 @@ impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     }
 }
 
-impl Wire2Api<Opaque<i32>> for *mut c_void {
+impl Wire2Api<Opaque<i32>> for isize {
     fn wire2api(self) -> Opaque<i32> {
         Opaque(self.wire2api())
     }

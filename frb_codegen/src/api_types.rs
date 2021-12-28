@@ -740,29 +740,27 @@ pub struct ApiArc(pub String);
 
 impl ApiTypeChild for ApiArc {
     fn safe_ident(&self) -> String {
-        format!(
-            "arc_{}",
-            self.0
-                .replace(':', "_")
-                .replace('<', "_")
-                .replace('>', "")
-                .replace('(', "_")
-                .replace(')', "")
-        )
+        let formatted: String = self
+            .0
+            .chars()
+            .filter_map(|chr| match chr {
+                ':' | ';' | '_' | '(' | '[' | '<' => Some('_'),
+                '>' | ')' | ']' => None,
+                _ => Some(chr),
+            })
+            .collect();
+        format!("arc_{}", formatted)
     }
     fn dart_api_type(&self) -> String {
-        "dynamic".to_owned()
+        "int".to_owned()
     }
     fn dart_wire_type(&self) -> String {
-        "ffi.Pointer<ffi.Void>".to_owned()
+        "int".to_owned()
     }
     fn rust_api_type(&self) -> String {
         format!("Arc<{}>", self.0)
     }
     fn rust_wire_type(&self) -> String {
-        "c_void".to_owned()
-    }
-    fn rust_wire_is_pointer(&self) -> bool {
-        true
+        "isize".to_owned()
     }
 }

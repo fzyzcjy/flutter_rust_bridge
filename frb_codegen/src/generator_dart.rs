@@ -251,9 +251,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             }
             return ans;"
                 .to_owned(),
-            ApiTypeDelegate::Opaque(_) => {
-                "print('sending opaque pointer ${raw.runtimeType}'); return raw;".to_owned()
-            }
+            ApiTypeDelegate::Opaque(_) => "return raw;".to_owned(),
         },
         Optional(opt) => format!(
             "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
@@ -303,7 +301,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             }
         },
         Enum(_) => "return raw.index;".to_owned(),
-        Arc(_) => "print('sending arc pointer ${raw.runtimeType}'); return raw;".to_owned(),
+        Arc(_) => "return raw;".to_owned(),
         // skip
         StructRef(_) => return "".to_string(),
     };
@@ -382,9 +380,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             ApiTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
-            ApiTypeDelegate::Opaque(_) => {
-                "print('receiving opaque pointer ${raw.runtimeType}'); return raw;".to_owned()
-            }
+            ApiTypeDelegate::Opaque(_) => "return raw;".to_owned(),
         },
         Optional(opt) => format!(
             "return raw == null ? null : _wire2api_{}(raw);",

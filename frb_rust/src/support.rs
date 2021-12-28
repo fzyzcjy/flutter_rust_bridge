@@ -46,7 +46,7 @@ pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
 /// Intended for use with opaque pointers owned by Dart.
 pub unsafe fn arc_from_opaque_ptr<T>(ptr: *const T) -> Arc<T> {
     // Dart owns the pointer now, so we only borrow it.
-    Arc::increment_strong_count(ptr);
+    // Arc::increment_strong_count(ptr);
     Arc::from_raw(ptr)
 }
 

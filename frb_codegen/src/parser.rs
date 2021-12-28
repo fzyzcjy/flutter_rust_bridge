@@ -377,7 +377,8 @@ struct GenericCapture {
 
 impl GenericCapture {
     pub fn new(cls_name: &str) -> Self {
-        let regex = Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>()]+)>$", cls_name)).unwrap();
+        let regex =
+            Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>();\\[\\]]+)>$", cls_name)).unwrap();
         Self { regex }
     }
 

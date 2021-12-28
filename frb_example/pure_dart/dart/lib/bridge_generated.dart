@@ -78,9 +78,14 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
 
-  Future<dynamic> handleOpaquePointer({dynamic lock, dynamic hint});
+  Future<int> createOpaquePointer({dynamic hint});
 
-  Future<dynamic> handleArcPointer({dynamic ptr, dynamic hint});
+  Future<int> handleOpaquePointer({required int ptr, dynamic hint});
+
+  /// Create a lot of garbage.
+  Future<int> createArcPointer({dynamic hint});
+
+  Future<int> handleArcPointer({required int ptr, dynamic hint});
 }
 
 /// Simple enums.
@@ -538,20 +543,42 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
         hint: hint,
       ));
 
-  Future<dynamic> handleOpaquePointer({dynamic lock, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) => inner.wire_handle_opaque_pointer(port, _api2wire_opt_opaq_i32(lock)),
+  Future<int> createOpaquePointer({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_create_opaque_pointer(port),
         parseSuccessData: _wire2api_opaq_i32,
         constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_opaque_pointer",
-          argNames: ["lock"],
+          debugName: "create_opaque_pointer",
+          argNames: [],
         ),
-        argValues: [lock],
+        argValues: [],
         hint: hint,
       ));
 
-  Future<dynamic> handleArcPointer({dynamic ptr, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) => inner.wire_handle_arc_pointer(port, _api2wire_opt_arc__(ptr)),
-        parseSuccessData: _wire2api_arc__,
+  Future<int> handleOpaquePointer({required int ptr, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_opaque_pointer(port, _api2wire_opaq_i32(ptr)),
+        parseSuccessData: _wire2api_opaq_i32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_opaque_pointer",
+          argNames: ["ptr"],
+        ),
+        argValues: [ptr],
+        hint: hint,
+      ));
+
+  Future<int> createArcPointer({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_create_arc_pointer(port),
+        parseSuccessData: _wire2api_arc_Vec_u8,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "create_arc_pointer",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
+  Future<int> handleArcPointer({required int ptr, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_arc_pointer(port, _api2wire_arc_Vec_u8(ptr)),
+        parseSuccessData: _wire2api_arc_Vec_u8,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "handle_arc_pointer",
           argNames: ["ptr"],
@@ -581,13 +608,11 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return _api2wire_uint_8_list(raw);
   }
 
-  ffi.Pointer<ffi.Void> _api2wire_arc__(dynamic raw) {
-    print('sending arc pointer ${raw.runtimeType}');
+  int _api2wire_arc_Vec_u8(int raw) {
     return raw;
   }
 
-  ffi.Pointer<ffi.Void> _api2wire_arc_opaque__RwLock_i32(dynamic raw) {
-    print('sending arc pointer ${raw.runtimeType}');
+  int _api2wire_arc_opaque__RwLock_i32(int raw) {
     return raw;
   }
 
@@ -759,8 +784,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
-  ffi.Pointer<ffi.Void> _api2wire_opaq_i32(dynamic raw) {
-    print('sending opaque pointer ${raw.runtimeType}');
+  int _api2wire_opaq_i32(int raw) {
     return raw;
   }
 
@@ -770,10 +794,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_ZeroCopyBuffer_Uint8List(raw);
-  }
-
-  ffi.Pointer<ffi.Void> _api2wire_opt_arc__(dynamic raw) {
-    return raw == null ? ffi.nullptr : _api2wire_arc__(raw);
   }
 
   ffi.Pointer<wire_Attribute> _api2wire_opt_box_autoadd_attribute(Attribute? raw) {
@@ -858,10 +878,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<wire_list_opt_box_autoadd_attribute> _api2wire_opt_list_opt_box_autoadd_attribute(List<Attribute?>? raw) {
     return raw == null ? ffi.nullptr : _api2wire_list_opt_box_autoadd_attribute(raw);
-  }
-
-  ffi.Pointer<ffi.Void> _api2wire_opt_opaq_i32(dynamic raw) {
-    return raw == null ? ffi.nullptr : _api2wire_opaq_i32(raw);
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_uint_8_list(Uint8List? raw) {
@@ -1026,12 +1042,12 @@ Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
 }
 
-dynamic _wire2api_arc__(dynamic raw) {
+int _wire2api_arc_Vec_u8(dynamic raw) {
   print('receiving arc pointer ${raw.runtimeType}');
   return raw;
 }
 
-dynamic _wire2api_arc_opaque__RwLock_i32(dynamic raw) {
+int _wire2api_arc_opaque__RwLock_i32(dynamic raw) {
   print('receiving arc pointer ${raw.runtimeType}');
   return raw;
 }
@@ -1209,8 +1225,7 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
   );
 }
 
-dynamic _wire2api_opaq_i32(dynamic raw) {
-  print('receiving opaque pointer ${raw.runtimeType}');
+int _wire2api_opaq_i32(dynamic raw) {
   return raw;
 }
 
@@ -1768,24 +1783,47 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_enum_parameter');
   late final _wire_handle_enum_parameter = _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
 
+  void wire_create_opaque_pointer(
+    int port,
+  ) {
+    return _wire_create_opaque_pointer(
+      port,
+    );
+  }
+
+  late final _wire_create_opaque_pointerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_opaque_pointer');
+  late final _wire_create_opaque_pointer = _wire_create_opaque_pointerPtr.asFunction<void Function(int)>();
+
   void wire_handle_opaque_pointer(
     int port,
-    ffi.Pointer<ffi.Void> lock,
+    int ptr,
   ) {
     return _wire_handle_opaque_pointer(
       port,
-      lock,
+      ptr,
     );
   }
 
   late final _wire_handle_opaque_pointerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>('wire_handle_opaque_pointer');
-  late final _wire_handle_opaque_pointer =
-      _wire_handle_opaque_pointerPtr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.IntPtr)>>('wire_handle_opaque_pointer');
+  late final _wire_handle_opaque_pointer = _wire_handle_opaque_pointerPtr.asFunction<void Function(int, int)>();
+
+  void wire_create_arc_pointer(
+    int port,
+  ) {
+    return _wire_create_arc_pointer(
+      port,
+    );
+  }
+
+  late final _wire_create_arc_pointerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_arc_pointer');
+  late final _wire_create_arc_pointer = _wire_create_arc_pointerPtr.asFunction<void Function(int)>();
 
   void wire_handle_arc_pointer(
     int port,
-    ffi.Pointer<ffi.Void> ptr,
+    int ptr,
   ) {
     return _wire_handle_arc_pointer(
       port,
@@ -1794,9 +1832,8 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _wire_handle_arc_pointerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>('wire_handle_arc_pointer');
-  late final _wire_handle_arc_pointer =
-      _wire_handle_arc_pointerPtr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.IntPtr)>>('wire_handle_arc_pointer');
+  late final _wire_handle_arc_pointer = _wire_handle_arc_pointerPtr.asFunction<void Function(int, int)>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
@@ -2272,3 +2309,5 @@ class wire_ExoticOptionals extends ffi.Struct {
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
+
+const int SIZE = 42000000;

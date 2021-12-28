@@ -367,18 +367,32 @@ pub fn handle_return_enum(input: String) -> Result<Option<Weekdays>> {
 }
 
 pub fn handle_enum_parameter(weekday: Weekdays) -> Result<Weekdays> {
-    print!("The weekday is {:?}", weekday);
+    println!("The weekday is {:?}", weekday);
     Ok(weekday)
 }
 
-pub fn handle_opaque_pointer(lock: Option<Opaque<i32>>) -> Result<Opaque<i32>> {
-    let lock = lock.unwrap_or_else(|| Opaque::new(0));
-    if let Ok(mut value) = lock.try_write() {
-        *value += 1;
-    }
-    Ok(lock)
+pub fn create_opaque_pointer() -> Result<Opaque<i32>> {
+    Ok(Opaque::new(0))
 }
 
-pub fn handle_arc_pointer(ptr: Option<Arc<()>>) -> Result<Arc<()>> {
-    dbg!(Ok(ptr.unwrap_or_default()))
+pub fn handle_opaque_pointer(ptr: Opaque<i32>) -> Result<Opaque<i32>> {
+    if let Ok(mut value) = ptr.try_write() {
+        *value += 1;
+        println!("{:?} = {}", ptr, *value);
+    }
+    Ok(ptr)
+}
+
+pub const SIZE: usize = 42_000_000;
+
+/// Create a lot of garbage.
+pub fn create_arc_pointer() -> Result<Arc<Vec<u8>>> {
+    Ok(Arc::new(vec![0; SIZE]))
+}
+
+pub fn handle_arc_pointer(ptr: Arc<Vec<u8>>) -> Result<Arc<Vec<u8>>> {
+    let len = ptr.len();
+    let cap = ptr.capacity();
+    println!("len={} cap={}", len, cap);
+    Ok(ptr)
 }

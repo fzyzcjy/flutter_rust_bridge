@@ -265,13 +265,13 @@ void main(List<String> args) async {
 
     print('dart call handleOpaquePointer');
     {
-      final ptr = await api.handleOpaquePointer();
-      expect(await api.handleOpaquePointer(lock: ptr), ptr);
+      final ptr = await api.createOpaquePointer();
+      expect(await api.handleOpaquePointer(ptr: ptr), ptr);
     }
 
     print('dart call handleArcPointer');
     {
-      final ptr = await api.handleArcPointer();
+      final ptr = await api.createArcPointer();
       expect(await api.handleArcPointer(ptr: ptr), ptr);
     }
 
