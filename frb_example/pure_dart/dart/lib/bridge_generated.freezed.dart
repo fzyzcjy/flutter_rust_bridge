@@ -87,8 +87,7 @@ mixin _$Foobar {
 
 /// @nodoc
 abstract class $FoobarCopyWith<$Res> {
-  factory $FoobarCopyWith(Foobar value, $Res Function(Foobar) then) =
-      _$FoobarCopyWithImpl<$Res>;
+  factory $FoobarCopyWith(Foobar value, $Res Function(Foobar) then) = _$FoobarCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -102,15 +101,12 @@ class _$FoobarCopyWithImpl<$Res> implements $FoobarCopyWith<$Res> {
 
 /// @nodoc
 abstract class $FooCopyWith<$Res> {
-  factory $FooCopyWith(Foo value, $Res Function(Foo) then) =
-      _$FooCopyWithImpl<$Res>;
+  factory $FooCopyWith(Foo value, $Res Function(Foo) then) = _$FooCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FooCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res>
-    implements $FooCopyWith<$Res> {
-  _$FooCopyWithImpl(Foo _value, $Res Function(Foo) _then)
-      : super(_value, (v) => _then(v as Foo));
+class _$FooCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res> implements $FooCopyWith<$Res> {
+  _$FooCopyWithImpl(Foo _value, $Res Function(Foo) _then) : super(_value, (v) => _then(v as Foo));
 
   @override
   Foo get _value => super._value as Foo;
@@ -128,8 +124,7 @@ class _$Foo implements Foo {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Foo);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is Foo);
   }
 
   @override
@@ -210,16 +205,13 @@ abstract class Foo implements Foobar {
 
 /// @nodoc
 abstract class $BarCopyWith<$Res> {
-  factory $BarCopyWith(Bar value, $Res Function(Bar) then) =
-      _$BarCopyWithImpl<$Res>;
+  factory $BarCopyWith(Bar value, $Res Function(Bar) then) = _$BarCopyWithImpl<$Res>;
   $Res call({String field0});
 }
 
 /// @nodoc
-class _$BarCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res>
-    implements $BarCopyWith<$Res> {
-  _$BarCopyWithImpl(Bar _value, $Res Function(Bar) _then)
-      : super(_value, (v) => _then(v as Bar));
+class _$BarCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res> implements $BarCopyWith<$Res> {
+  _$BarCopyWithImpl(Bar _value, $Res Function(Bar) _then) : super(_value, (v) => _then(v as Bar));
 
   @override
   Bar get _value => super._value as Bar;
@@ -259,8 +251,7 @@ class _$Bar implements Bar {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @JsonKey(ignore: true)
   @override
@@ -345,16 +336,13 @@ abstract class Bar implements Foobar {
 
 /// @nodoc
 abstract class $BazCopyWith<$Res> {
-  factory $BazCopyWith(Baz value, $Res Function(Baz) then) =
-      _$BazCopyWithImpl<$Res>;
+  factory $BazCopyWith(Baz value, $Res Function(Baz) then) = _$BazCopyWithImpl<$Res>;
   $Res call({String name});
 }
 
 /// @nodoc
-class _$BazCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res>
-    implements $BazCopyWith<$Res> {
-  _$BazCopyWithImpl(Baz _value, $Res Function(Baz) _then)
-      : super(_value, (v) => _then(v as Baz));
+class _$BazCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res> implements $BazCopyWith<$Res> {
+  _$BazCopyWithImpl(Baz _value, $Res Function(Baz) _then) : super(_value, (v) => _then(v as Baz));
 
   @override
   Baz get _value => super._value as Baz;
@@ -388,14 +376,11 @@ class _$Baz implements Baz {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Baz &&
-            const DeepCollectionEquality().equals(other.name, name));
+        (other.runtimeType == runtimeType && other is Baz && const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -602,9 +587,7 @@ mixin _$KitchenSink {
 
 /// @nodoc
 abstract class $KitchenSinkCopyWith<$Res> {
-  factory $KitchenSinkCopyWith(
-          KitchenSink value, $Res Function(KitchenSink) then) =
-      _$KitchenSinkCopyWithImpl<$Res>;
+  factory $KitchenSinkCopyWith(KitchenSink value, $Res Function(KitchenSink) then) = _$KitchenSinkCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -618,15 +601,12 @@ class _$KitchenSinkCopyWithImpl<$Res> implements $KitchenSinkCopyWith<$Res> {
 
 /// @nodoc
 abstract class $EmptyCopyWith<$Res> {
-  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
-      _$EmptyCopyWithImpl<$Res>;
+  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) = _$EmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $EmptyCopyWith<$Res> {
-  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then)
-      : super(_value, (v) => _then(v as Empty));
+class _$EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $EmptyCopyWith<$Res> {
+  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then) : super(_value, (v) => _then(v as Empty));
 
   @override
   Empty get _value => super._value as Empty;
@@ -644,8 +624,7 @@ class _$Empty implements Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Empty);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is Empty);
   }
 
   @override
@@ -750,18 +729,15 @@ abstract class Empty implements KitchenSink {
 
 /// @nodoc
 abstract class $NestedCopyWith<$Res> {
-  factory $NestedCopyWith(Nested value, $Res Function(Nested) then) =
-      _$NestedCopyWithImpl<$Res>;
+  factory $NestedCopyWith(Nested value, $Res Function(Nested) then) = _$NestedCopyWithImpl<$Res>;
   $Res call({KitchenSink field0});
 
   $KitchenSinkCopyWith<$Res> get field0;
 }
 
 /// @nodoc
-class _$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $NestedCopyWith<$Res> {
-  _$NestedCopyWithImpl(Nested _value, $Res Function(Nested) _then)
-      : super(_value, (v) => _then(v as Nested));
+class _$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $NestedCopyWith<$Res> {
+  _$NestedCopyWithImpl(Nested _value, $Res Function(Nested) _then) : super(_value, (v) => _then(v as Nested));
 
   @override
   Nested get _value => super._value as Nested;
@@ -808,13 +784,11 @@ class _$Nested implements Nested {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @JsonKey(ignore: true)
   @override
-  $NestedCopyWith<Nested> get copyWith =>
-      _$NestedCopyWithImpl<Nested>(this, _$identity);
+  $NestedCopyWith<Nested> get copyWith => _$NestedCopyWithImpl<Nested>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -919,16 +893,13 @@ abstract class Nested implements KitchenSink {
 
 /// @nodoc
 abstract class $OptionalCopyWith<$Res> {
-  factory $OptionalCopyWith(Optional value, $Res Function(Optional) then) =
-      _$OptionalCopyWithImpl<$Res>;
+  factory $OptionalCopyWith(Optional value, $Res Function(Optional) then) = _$OptionalCopyWithImpl<$Res>;
   $Res call({int field0, int? field1});
 }
 
 /// @nodoc
-class _$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $OptionalCopyWith<$Res> {
-  _$OptionalCopyWithImpl(Optional _value, $Res Function(Optional) _then)
-      : super(_value, (v) => _then(v as Optional));
+class _$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $OptionalCopyWith<$Res> {
+  _$OptionalCopyWithImpl(Optional _value, $Res Function(Optional) _then) : super(_value, (v) => _then(v as Optional));
 
   @override
   Optional get _value => super._value as Optional;
@@ -977,14 +948,11 @@ class _$Optional implements Optional {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(field0),
-      const DeepCollectionEquality().hash(field1));
+      runtimeType, const DeepCollectionEquality().hash(field0), const DeepCollectionEquality().hash(field1));
 
   @JsonKey(ignore: true)
   @override
-  $OptionalCopyWith<Optional> get copyWith =>
-      _$OptionalCopyWithImpl<Optional>(this, _$identity);
+  $OptionalCopyWith<Optional> get copyWith => _$OptionalCopyWithImpl<Optional>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1085,22 +1053,18 @@ abstract class Optional implements KitchenSink {
   int get field0;
   int? get field1;
   @JsonKey(ignore: true)
-  $OptionalCopyWith<Optional> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OptionalCopyWith<Optional> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BoxedCopyWith<$Res> {
-  factory $BoxedCopyWith(Boxed value, $Res Function(Boxed) then) =
-      _$BoxedCopyWithImpl<$Res>;
+  factory $BoxedCopyWith(Boxed value, $Res Function(Boxed) then) = _$BoxedCopyWithImpl<$Res>;
   $Res call({int field0});
 }
 
 /// @nodoc
-class _$BoxedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $BoxedCopyWith<$Res> {
-  _$BoxedCopyWithImpl(Boxed _value, $Res Function(Boxed) _then)
-      : super(_value, (v) => _then(v as Boxed));
+class _$BoxedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $BoxedCopyWith<$Res> {
+  _$BoxedCopyWithImpl(Boxed _value, $Res Function(Boxed) _then) : super(_value, (v) => _then(v as Boxed));
 
   @override
   Boxed get _value => super._value as Boxed;
@@ -1140,13 +1104,11 @@ class _$Boxed implements Boxed {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @JsonKey(ignore: true)
   @override
-  $BoxedCopyWith<Boxed> get copyWith =>
-      _$BoxedCopyWithImpl<Boxed>(this, _$identity);
+  $BoxedCopyWith<Boxed> get copyWith => _$BoxedCopyWithImpl<Boxed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1251,16 +1213,13 @@ abstract class Boxed implements KitchenSink {
 
 /// @nodoc
 abstract class $BufferCopyWith<$Res> {
-  factory $BufferCopyWith(Buffer value, $Res Function(Buffer) then) =
-      _$BufferCopyWithImpl<$Res>;
+  factory $BufferCopyWith(Buffer value, $Res Function(Buffer) then) = _$BufferCopyWithImpl<$Res>;
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
-class _$BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $BufferCopyWith<$Res> {
-  _$BufferCopyWithImpl(Buffer _value, $Res Function(Buffer) _then)
-      : super(_value, (v) => _then(v as Buffer));
+class _$BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $BufferCopyWith<$Res> {
+  _$BufferCopyWithImpl(Buffer _value, $Res Function(Buffer) _then) : super(_value, (v) => _then(v as Buffer));
 
   @override
   Buffer get _value => super._value as Buffer;
@@ -1300,13 +1259,11 @@ class _$Buffer implements Buffer {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @JsonKey(ignore: true)
   @override
-  $BufferCopyWith<Buffer> get copyWith =>
-      _$BufferCopyWithImpl<Buffer>(this, _$identity);
+  $BufferCopyWith<Buffer> get copyWith => _$BufferCopyWithImpl<Buffer>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1411,16 +1368,13 @@ abstract class Buffer implements KitchenSink {
 
 /// @nodoc
 abstract class $EnumsCopyWith<$Res> {
-  factory $EnumsCopyWith(Enums value, $Res Function(Enums) then) =
-      _$EnumsCopyWithImpl<$Res>;
+  factory $EnumsCopyWith(Enums value, $Res Function(Enums) then) = _$EnumsCopyWithImpl<$Res>;
   $Res call({Weekdays field0});
 }
 
 /// @nodoc
-class _$EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $EnumsCopyWith<$Res> {
-  _$EnumsCopyWithImpl(Enums _value, $Res Function(Enums) _then)
-      : super(_value, (v) => _then(v as Enums));
+class _$EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $EnumsCopyWith<$Res> {
+  _$EnumsCopyWithImpl(Enums _value, $Res Function(Enums) _then) : super(_value, (v) => _then(v as Enums));
 
   @override
   Enums get _value => super._value as Enums;
@@ -1460,13 +1414,11 @@ class _$Enums implements Enums {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @JsonKey(ignore: true)
   @override
-  $EnumsCopyWith<Enums> get copyWith =>
-      _$EnumsCopyWithImpl<Enums>(this, _$identity);
+  $EnumsCopyWith<Enums> get copyWith => _$EnumsCopyWithImpl<Enums>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1571,17 +1523,14 @@ abstract class Enums implements KitchenSink {
 
 /// @nodoc
 abstract class $StructlikeCopyWith<$Res> {
-  factory $StructlikeCopyWith(
-          Structlike value, $Res Function(Structlike) then) =
-      _$StructlikeCopyWithImpl<$Res>;
+  factory $StructlikeCopyWith(Structlike value, $Res Function(Structlike) then) = _$StructlikeCopyWithImpl<$Res>;
   $Res call({Foobar foo, int? bar});
 
   $FoobarCopyWith<$Res> get foo;
 }
 
 /// @nodoc
-class _$StructlikeCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $StructlikeCopyWith<$Res> {
+class _$StructlikeCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $StructlikeCopyWith<$Res> {
   _$StructlikeCopyWithImpl(Structlike _value, $Res Function(Structlike) _then)
       : super(_value, (v) => _then(v as Structlike));
 
@@ -1638,15 +1587,12 @@ class _$Structlike implements Structlike {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(foo),
-      const DeepCollectionEquality().hash(bar));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(foo), const DeepCollectionEquality().hash(bar));
 
   @JsonKey(ignore: true)
   @override
-  $StructlikeCopyWith<Structlike> get copyWith =>
-      _$StructlikeCopyWithImpl<Structlike>(this, _$identity);
+  $StructlikeCopyWith<Structlike> get copyWith => _$StructlikeCopyWithImpl<Structlike>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1747,6 +1693,5 @@ abstract class Structlike implements KitchenSink {
   Foobar get foo;
   int? get bar;
   @JsonKey(ignore: true)
-  $StructlikeCopyWith<Structlike> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StructlikeCopyWith<Structlike> get copyWith => throw _privateConstructorUsedError;
 }

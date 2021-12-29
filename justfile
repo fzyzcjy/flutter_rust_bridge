@@ -27,6 +27,7 @@ gen-bridge: build
 alias l := lint
 lint:
     dart format --fix -l {{line_length}} {{frb_pure}}/dart/lib/bridge_generated.dart
+    dart format --fix -l {{line_length}} {{frb_pure}}/dart/lib/bridge_generated.freezed.dart
     dart format --fix -l {{line_length}} {{frb_flutter}}/lib/bridge_generated.dart
 
 alias t := test
