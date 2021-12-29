@@ -369,3 +369,16 @@ pub fn handle_enum_parameter(weekday: Weekdays) -> Result<Weekdays> {
     print!("The weekday is {:?}", weekday);
     Ok(weekday)
 }
+
+pub enum Foobar {
+    Foo,
+    Bar(String),
+    Baz { name: String },
+}
+
+pub fn handle_enum_struct(mut val: Foobar) -> Result<Foobar> {
+    if let Foobar::Bar(val) = &mut val {
+        *val = "foo'd".to_owned()
+    }
+    Ok(val)
+}
