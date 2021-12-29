@@ -70,7 +70,7 @@ impl Generator {
             .collect::<Vec<_>>();
 
         format!(
-            r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion)]
+            r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, non_snake_case)]
         {}
 
         use crate::{}::*;
@@ -373,6 +373,7 @@ impl Generator {
             .collect::<Vec<_>>();
         format!(
             "#[repr(C)]
+            #[derive(Clone)]
             pub struct {0} {{ tag: i32, kind: *mut {1}Kind }}
 
             #[repr(C)]
@@ -528,7 +529,7 @@ impl Generator {
                                 }
                                 ApiVariantKind::Struct(st) => {
                                     let fields = st.fields
-                                        .iter().map(|field| format!("{0}: ans.{0}.wire2api(),", field.name.rust_style()))
+                                        .iter().map(|field| format!("{0}: ans.{0}.wire2api()", field.name.rust_style()))
                                         .collect::<Vec<_>>();
                                     format!("{{ {} }}", fields.join(","))
                                 }
@@ -617,19 +618,28 @@ impl Generator {
         enu: &ApiEnum,
         rust_wire_type: &str,
     ) -> String {
+        fn init_of(ty: &ApiType) -> &str {
+            if ty.rust_wire_is_pointer() {
+                "core::ptr::null_mut()"
+            } else {
+                "Default::default()"
+            }
+        }
         let inflators = enu
             .variants()
             .iter()
             .filter_map(|variant| {
                 let typ = format!("{}_{}", enu.name, variant.name);
                 let body: Vec<_> = match &variant.kind {
-                    ApiVariantKind::Tuple(types) => (0..types.len())
-                        .map(|idx| format!("field{}: core::ptr::null_mut()", idx))
+                    ApiVariantKind::Tuple(types) => types
+                        .iter()
+                        .enumerate()
+                        .map(|(idx, ty)| format!("field{}: {}", idx, init_of(ty)))
                         .collect(),
                     ApiVariantKind::Struct(st) => st
                         .fields
                         .iter()
-                        .map(|field| format!("{}: core::ptr::null_mut()", field.name.rust_style()))
+                        .map(|field| format!("{}: {}", field.name.rust_style(), init_of(&field.ty)))
                         .collect(),
                     _ => return None,
                 };

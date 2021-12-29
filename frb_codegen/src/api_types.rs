@@ -757,10 +757,47 @@ pub struct ApiEnum {
 }
 
 impl ApiEnum {
-    pub fn new(name: String, comments: Vec<Comment>, variants: Vec<ApiVariant>) -> Self {
+    pub fn new(name: String, comments: Vec<Comment>, mut variants: Vec<ApiVariant>) -> Self {
+        fn wrap_box(ty: ApiType) -> ApiType {
+            match ty {
+                StructRef(_)
+                | EnumRef(ApiTypeEnumRef {
+                    is_struct: true, ..
+                }) => ApiType::Boxed(Box::new(ApiTypeBoxed {
+                    exist_in_real_api: false,
+                    inner: ty,
+                })),
+                _ => ty,
+            }
+        }
         let _is_struct = variants
             .iter()
             .any(|variant| !matches!(variant.kind, ApiVariantKind::Value));
+        if _is_struct {
+            variants = variants
+                .into_iter()
+                .map(|variant| ApiVariant {
+                    kind: match variant.kind {
+                        ApiVariantKind::Tuple(types) => {
+                            ApiVariantKind::Tuple(types.into_iter().map(wrap_box).collect())
+                        }
+                        ApiVariantKind::Struct(st) => ApiVariantKind::Struct(ApiStruct {
+                            fields: st
+                                .fields
+                                .into_iter()
+                                .map(|field| ApiField {
+                                    ty: wrap_box(field.ty),
+                                    ..field
+                                })
+                                .collect(),
+                            ..st
+                        }),
+                        _ => variant.kind,
+                    },
+                    ..variant
+                })
+                .collect::<Vec<_>>();
+        }
         Self {
             name,
             comments,

@@ -630,7 +630,7 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
                                 )
                             })
                             .collect::<Vec<_>>();
-                        format!("{{ {} }}", fields.join("\n"))
+                        format!("{{ {} }}", fields.join(","))
                     }
                 };
                 format!(

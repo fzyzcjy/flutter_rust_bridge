@@ -516,6 +516,13 @@ class _$KitchenSinkTearOff {
       field0,
     );
   }
+
+  Structlike structlike({required Foobar foo, int? bar}) {
+    return Structlike(
+      foo: foo,
+      bar: bar,
+    );
+  }
 }
 
 /// @nodoc
@@ -531,6 +538,7 @@ mixin _$KitchenSink {
     required TResult Function(int field0) boxed,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(Foobar foo, int? bar) structlike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -541,6 +549,7 @@ mixin _$KitchenSink {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -551,6 +560,7 @@ mixin _$KitchenSink {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -562,6 +572,7 @@ mixin _$KitchenSink {
     required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
+    required TResult Function(Structlike value) structlike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -572,6 +583,7 @@ mixin _$KitchenSink {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -582,6 +594,7 @@ mixin _$KitchenSink {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -647,6 +660,7 @@ class _$Empty implements Empty {
     required TResult Function(int field0) boxed,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return empty();
   }
@@ -660,6 +674,7 @@ class _$Empty implements Empty {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return empty?.call();
   }
@@ -673,6 +688,7 @@ class _$Empty implements Empty {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -690,6 +706,7 @@ class _$Empty implements Empty {
     required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
+    required TResult Function(Structlike value) structlike,
   }) {
     return empty(this);
   }
@@ -703,6 +720,7 @@ class _$Empty implements Empty {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
   }) {
     return empty?.call(this);
   }
@@ -716,6 +734,7 @@ class _$Empty implements Empty {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -806,6 +825,7 @@ class _$Nested implements Nested {
     required TResult Function(int field0) boxed,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return nested(field0);
   }
@@ -819,6 +839,7 @@ class _$Nested implements Nested {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return nested?.call(field0);
   }
@@ -832,6 +853,7 @@ class _$Nested implements Nested {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -849,6 +871,7 @@ class _$Nested implements Nested {
     required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
+    required TResult Function(Structlike value) structlike,
   }) {
     return nested(this);
   }
@@ -862,6 +885,7 @@ class _$Nested implements Nested {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
   }) {
     return nested?.call(this);
   }
@@ -875,6 +899,7 @@ class _$Nested implements Nested {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -970,6 +995,7 @@ class _$Optional implements Optional {
     required TResult Function(int field0) boxed,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return optional(field0, field1);
   }
@@ -983,6 +1009,7 @@ class _$Optional implements Optional {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return optional?.call(field0, field1);
   }
@@ -996,6 +1023,7 @@ class _$Optional implements Optional {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -1013,6 +1041,7 @@ class _$Optional implements Optional {
     required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
+    required TResult Function(Structlike value) structlike,
   }) {
     return optional(this);
   }
@@ -1026,6 +1055,7 @@ class _$Optional implements Optional {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
   }) {
     return optional?.call(this);
   }
@@ -1039,6 +1069,7 @@ class _$Optional implements Optional {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -1126,6 +1157,7 @@ class _$Boxed implements Boxed {
     required TResult Function(int field0) boxed,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return boxed(field0);
   }
@@ -1139,6 +1171,7 @@ class _$Boxed implements Boxed {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return boxed?.call(field0);
   }
@@ -1152,6 +1185,7 @@ class _$Boxed implements Boxed {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (boxed != null) {
@@ -1169,6 +1203,7 @@ class _$Boxed implements Boxed {
     required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
+    required TResult Function(Structlike value) structlike,
   }) {
     return boxed(this);
   }
@@ -1182,6 +1217,7 @@ class _$Boxed implements Boxed {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
   }) {
     return boxed?.call(this);
   }
@@ -1195,6 +1231,7 @@ class _$Boxed implements Boxed {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (boxed != null) {
@@ -1280,6 +1317,7 @@ class _$Buffer implements Buffer {
     required TResult Function(int field0) boxed,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return buffer(field0);
   }
@@ -1293,6 +1331,7 @@ class _$Buffer implements Buffer {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return buffer?.call(field0);
   }
@@ -1306,6 +1345,7 @@ class _$Buffer implements Buffer {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -1323,6 +1363,7 @@ class _$Buffer implements Buffer {
     required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
+    required TResult Function(Structlike value) structlike,
   }) {
     return buffer(this);
   }
@@ -1336,6 +1377,7 @@ class _$Buffer implements Buffer {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
   }) {
     return buffer?.call(this);
   }
@@ -1349,6 +1391,7 @@ class _$Buffer implements Buffer {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -1434,6 +1477,7 @@ class _$Enums implements Enums {
     required TResult Function(int field0) boxed,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return enums(field0);
   }
@@ -1447,6 +1491,7 @@ class _$Enums implements Enums {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return enums?.call(field0);
   }
@@ -1460,6 +1505,7 @@ class _$Enums implements Enums {
     TResult Function(int field0)? boxed,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -1477,6 +1523,7 @@ class _$Enums implements Enums {
     required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
+    required TResult Function(Structlike value) structlike,
   }) {
     return enums(this);
   }
@@ -1490,6 +1537,7 @@ class _$Enums implements Enums {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
   }) {
     return enums?.call(this);
   }
@@ -1503,6 +1551,7 @@ class _$Enums implements Enums {
     TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -1518,4 +1567,186 @@ abstract class Enums implements KitchenSink {
   Weekdays get field0;
   @JsonKey(ignore: true)
   $EnumsCopyWith<Enums> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $StructlikeCopyWith<$Res> {
+  factory $StructlikeCopyWith(
+          Structlike value, $Res Function(Structlike) then) =
+      _$StructlikeCopyWithImpl<$Res>;
+  $Res call({Foobar foo, int? bar});
+
+  $FoobarCopyWith<$Res> get foo;
+}
+
+/// @nodoc
+class _$StructlikeCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements $StructlikeCopyWith<$Res> {
+  _$StructlikeCopyWithImpl(Structlike _value, $Res Function(Structlike) _then)
+      : super(_value, (v) => _then(v as Structlike));
+
+  @override
+  Structlike get _value => super._value as Structlike;
+
+  @override
+  $Res call({
+    Object? foo = freezed,
+    Object? bar = freezed,
+  }) {
+    return _then(Structlike(
+      foo: foo == freezed
+          ? _value.foo
+          : foo // ignore: cast_nullable_to_non_nullable
+              as Foobar,
+      bar: bar == freezed
+          ? _value.bar
+          : bar // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+
+  @override
+  $FoobarCopyWith<$Res> get foo {
+    return $FoobarCopyWith<$Res>(_value.foo, (value) {
+      return _then(_value.copyWith(foo: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$Structlike implements Structlike {
+  const _$Structlike({required this.foo, this.bar});
+
+  @override
+  final Foobar foo;
+  @override
+  final int? bar;
+
+  @override
+  String toString() {
+    return 'KitchenSink.structlike(foo: $foo, bar: $bar)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Structlike &&
+            const DeepCollectionEquality().equals(other.foo, foo) &&
+            const DeepCollectionEquality().equals(other.bar, bar));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(foo),
+      const DeepCollectionEquality().hash(bar));
+
+  @JsonKey(ignore: true)
+  @override
+  $StructlikeCopyWith<Structlike> get copyWith =>
+      _$StructlikeCopyWithImpl<Structlike>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int field0, int? field1) optional,
+    required TResult Function(int field0) boxed,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+    required TResult Function(Foobar foo, int? bar) structlike,
+  }) {
+    return structlike(foo, bar);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
+  }) {
+    return structlike?.call(foo, bar);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    TResult Function(Foobar foo, int? bar)? structlike,
+    required TResult orElse(),
+  }) {
+    if (structlike != null) {
+      return structlike(foo, bar);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Boxed value) boxed,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+    required TResult Function(Structlike value) structlike,
+  }) {
+    return structlike(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
+  }) {
+    return structlike?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    TResult Function(Structlike value)? structlike,
+    required TResult orElse(),
+  }) {
+    if (structlike != null) {
+      return structlike(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Structlike implements KitchenSink {
+  const factory Structlike({required Foobar foo, int? bar}) = _$Structlike;
+
+  Foobar get foo;
+  int? get bar;
+  @JsonKey(ignore: true)
+  $StructlikeCopyWith<Structlike> get copyWith =>
+      throw _privateConstructorUsedError;
 }

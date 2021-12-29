@@ -273,6 +273,20 @@ void main(List<String> args) async {
       expect(bar is Foo, true);
     }
 
+    print('dart call handleComplexStruct');
+    {
+      final res = await Future.wait([
+        KitchenSink.empty(),
+        KitchenSink.boxed(42),
+        KitchenSink.enums(Weekdays.Monday),
+        KitchenSink.nested(KitchenSink.empty()),
+        KitchenSink.buffer(Uint8List.fromList(const [1, 2, 3])),
+        KitchenSink.optional(42),
+        KitchenSink.structlike(foo: Foobar.baz(name: 'John Doe'), bar: 123),
+      ].map((ty) => api.handleComplexEnum(val: ty)));
+      print(res);
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();

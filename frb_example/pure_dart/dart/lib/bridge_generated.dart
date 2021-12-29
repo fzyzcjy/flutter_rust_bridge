@@ -161,6 +161,7 @@ class KitchenSink with _$KitchenSink {
   const factory KitchenSink.boxed(int field0) = Boxed;
   const factory KitchenSink.buffer(Uint8List field0) = Buffer;
   const factory KitchenSink.enums(Weekdays field0) = Enums;
+  const factory KitchenSink.structlike({required Foobar foo, int? bar}) = Structlike;
 }
 
 class MySize {
@@ -1010,6 +1011,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       wireObj.tag = 5;
       wireObj.kind = inner.inflate_KitchenSink_Enums();
       wireObj.kind.ref.Enums.ref.field0 = _api2wire_weekdays(apiObj.field0);
+    }
+    if (apiObj is Structlike) {
+      wireObj.tag = 6;
+      wireObj.kind = inner.inflate_KitchenSink_Structlike();
+      wireObj.kind.ref.Structlike.ref.foo = _api2wire_box_autoadd_foobar(apiObj.foo);
+      wireObj.kind.ref.Structlike.ref.bar = _api2wire_opt_box_autoadd_i32(apiObj.bar);
     }
   }
 
@@ -2269,6 +2276,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _inflate_KitchenSink_Enums =
       _inflate_KitchenSink_EnumsPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
 
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Structlike() {
+    return _inflate_KitchenSink_Structlike();
+  }
+
+  late final _inflate_KitchenSink_StructlikePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Structlike');
+  late final _inflate_KitchenSink_Structlike =
+      _inflate_KitchenSink_StructlikePtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
   ) {
@@ -2482,6 +2498,8 @@ class KitchenSinkKind extends ffi.Union {
   external ffi.Pointer<KitchenSink_Buffer> Buffer;
 
   external ffi.Pointer<KitchenSink_Enums> Enums;
+
+  external ffi.Pointer<KitchenSink_Structlike> Structlike;
 }
 
 class KitchenSink_Optional extends ffi.Struct {
@@ -2502,6 +2520,12 @@ class KitchenSink_Buffer extends ffi.Struct {
 class KitchenSink_Enums extends ffi.Struct {
   @ffi.Int32()
   external int field0;
+}
+
+class KitchenSink_Structlike extends ffi.Struct {
+  external ffi.Pointer<wire_Foobar> foo;
+
+  external ffi.Pointer<ffi.Int32> bar;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;

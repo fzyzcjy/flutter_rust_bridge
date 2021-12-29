@@ -7,7 +7,6 @@ use std::time::Duration;
 
 use anyhow::{anyhow, Result};
 
-use flutter_rust_bridge::Opaque;
 use flutter_rust_bridge::{StreamSink, SyncReturn, ZeroCopyBuffer};
 
 /// Documentation on a simple adder function.
@@ -371,6 +370,7 @@ pub fn handle_enum_parameter(weekday: Weekdays) -> Result<Weekdays> {
     Ok(weekday)
 }
 
+#[derive(Debug)]
 pub enum Foobar {
     Foo,
     Bar(String),
@@ -385,6 +385,7 @@ pub enum KitchenSink {
     Boxed(Box<i32>),
     Buffer(ZeroCopyBuffer<Vec<u8>>),
     Enums(Weekdays),
+    Structlike { foo: Foobar, bar: Option<i32> },
 }
 
 pub fn handle_enum_struct(mut val: Foobar) -> Result<Foobar> {
