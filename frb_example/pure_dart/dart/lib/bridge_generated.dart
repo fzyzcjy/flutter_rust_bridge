@@ -7,9 +7,6 @@ import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'dart:ffi' as ffi;
-import 'package:freezed_annotation/freezed_annotation.dart';
-// import 'package:flutter/foundation.dart';
-part 'bridge_generated.freezed.dart';
 
 abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
   factory FlutterRustBridgeExample(ffi.DynamicLibrary dylib) =>
@@ -80,10 +77,19 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
+}
 
-  Future<Foobar> handleEnumStruct({required Foobar val, dynamic hint});
+/// Simple enums.
+enum Weekdays {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
 
-  Future<String> handleComplexEnum({required KitchenSink val, dynamic hint});
+  /// Best day of the week.
+  Saturday,
+  Sunday,
 }
 
 class Attribute {
@@ -217,19 +223,6 @@ class VecOfPrimitivePack {
     required this.float32List,
     required this.float64List,
   });
-}
-
-/// Simple enums.
-enum Weekdays {
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday,
-
-  /// Best day of the week.
-  Saturday,
-  Sunday,
 }
 
 class ZeroCopyVecOfPrimitivePack {
@@ -537,7 +530,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port) => inner.wire_handle_return_enum(port, _api2wire_String(input)),
-        parseSuccessData: _wire2api_opt_weekdays,
+        parseSuccessData: _wire2api_opt_Weekdays,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "handle_return_enum",
           argNames: ["input"],
@@ -548,8 +541,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) => inner.wire_handle_enum_parameter(port, _api2wire_weekdays(weekday)),
-        parseSuccessData: _wire2api_weekdays,
+        callFfi: (port) => inner.wire_handle_enum_parameter(port, _api2wire_Weekdays(weekday)),
+        parseSuccessData: _wire2api_Weekdays,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "handle_enum_parameter",
           argNames: ["weekday"],
@@ -593,6 +586,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
+  int _api2wire_Weekdays(Weekdays raw) {
+    return raw.index;
+  }
+
   ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
     return _api2wire_uint_8_list(raw);
   }
@@ -627,12 +624,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<ffi.Double> _api2wire_box_autoadd_f64(double raw) {
     return inner.new_box_autoadd_f64(raw);
-  }
-
-  ffi.Pointer<wire_Foobar> _api2wire_box_autoadd_foobar(Foobar raw) {
-    final ptr = inner.new_box_autoadd_foobar();
-    _api_fill_to_wire_foobar(raw, ptr.ref);
-    return ptr;
   }
 
   ffi.Pointer<ffi.Int32> _api2wire_box_autoadd_i32(int raw) {
@@ -905,10 +896,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
-  int _api2wire_weekdays(Weekdays raw) {
-    return raw.index;
-  }
-
   // Section: api_fill_to_wire
 
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
@@ -1078,6 +1065,10 @@ Uint8List _wire2api_SyncReturnVecU8(dynamic raw) {
   return raw as Uint8List;
 }
 
+Weekdays _wire2api_Weekdays(dynamic raw) {
+  return Weekdays.values[raw];
+}
+
 Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
   return raw as Float32List;
 }
@@ -1222,19 +1213,6 @@ Float64List _wire2api_float_64_list(dynamic raw) {
   return raw as Float64List;
 }
 
-Foobar _wire2api_foobar(dynamic raw) {
-  switch (raw[0]) {
-    case 0:
-      return Foobar.foo();
-    case 1:
-      return Foobar.bar(raw[1]);
-    case 2:
-      return Foobar.baz(name: raw[1]);
-    default:
-      throw Exception("unreachable");
-  }
-}
-
 int _wire2api_i16(dynamic raw) {
   return raw as int;
 }
@@ -1322,6 +1300,10 @@ String? _wire2api_opt_String(dynamic raw) {
   return raw == null ? null : _wire2api_String(raw);
 }
 
+Weekdays? _wire2api_opt_Weekdays(dynamic raw) {
+  return raw == null ? null : _wire2api_Weekdays(raw);
+}
+
 Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
 }
@@ -1394,10 +1376,6 @@ Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_uint_8_list(raw);
 }
 
-Weekdays? _wire2api_opt_weekdays(dynamic raw) {
-  return raw == null ? null : _wire2api_weekdays(raw);
-}
-
 int _wire2api_u16(dynamic raw) {
   return raw as int;
 }
@@ -1449,10 +1427,6 @@ VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
     float32List: _wire2api_float_32_list(arr[8]),
     float64List: _wire2api_float_64_list(arr[9]),
   );
-}
-
-Weekdays _wire2api_weekdays(dynamic raw) {
-  return Weekdays.values[raw];
 }
 
 ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
@@ -1960,14 +1934,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_f64Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64');
   late final _new_box_autoadd_f64 = _new_box_autoadd_f64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
-
-  ffi.Pointer<wire_Foobar> new_box_autoadd_foobar() {
-    return _new_box_autoadd_foobar();
-  }
-
-  late final _new_box_autoadd_foobarPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Foobar> Function()>>('new_box_autoadd_foobar');
-  late final _new_box_autoadd_foobar = _new_box_autoadd_foobarPtr.asFunction<ffi.Pointer<wire_Foobar> Function()>();
 
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
     int value,

@@ -674,11 +674,6 @@ pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_foobar() -> *mut wire_Foobar {
-    support::new_leak_box_ptr(wire_Foobar::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_i32(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
@@ -881,6 +876,21 @@ impl Wire2Api<Vec<String>> for *mut wire_StringList {
     }
 }
 
+impl Wire2Api<Weekdays> for i32 {
+    fn wire2api(self) -> Weekdays {
+        match self {
+            0 => Weekdays::Monday,
+            1 => Weekdays::Tuesday,
+            2 => Weekdays::Wednesday,
+            3 => Weekdays::Thursday,
+            4 => Weekdays::Friday,
+            5 => Weekdays::Saturday,
+            6 => Weekdays::Sunday,
+            _ => unreachable!("Invalid variant for Weekdays: {}", self),
+        }
+    }
+}
+
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
         ZeroCopyBuffer(self.wire2api())
@@ -937,13 +947,6 @@ impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
 impl Wire2Api<f64> for *mut f64 {
     fn wire2api(self) -> f64 {
         unsafe { *support::box_from_leak_ptr(self) }
-    }
-}
-
-impl Wire2Api<Foobar> for *mut wire_Foobar {
-    fn wire2api(self) -> Foobar {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
     }
 }
 
@@ -1092,27 +1095,6 @@ impl Wire2Api<Vec<f64>> for *mut wire_float_64_list {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
-    }
-}
-
-impl Wire2Api<Foobar> for wire_Foobar {
-    fn wire2api(self) -> Foobar {
-        match self.tag {
-            0 => Foobar::Foo,
-            1 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Bar);
-                Foobar::Bar(ans.field0.wire2api())
-            },
-            2 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Baz);
-                Foobar::Baz {
-                    name: ans.name.wire2api(),
-                }
-            },
-            _ => unreachable!(),
         }
     }
 }
@@ -1288,21 +1270,6 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     }
 }
 
-impl Wire2Api<Weekdays> for i32 {
-    fn wire2api(self) -> Weekdays {
-        match self {
-            0 => Weekdays::Monday,
-            1 => Weekdays::Tuesday,
-            2 => Weekdays::Wednesday,
-            3 => Weekdays::Thursday,
-            4 => Weekdays::Friday,
-            5 => Weekdays::Saturday,
-            6 => Weekdays::Sunday,
-            _ => unreachable!("Invalid variant for Weekdays: {}", self),
-        }
-    }
-}
-
 // Section: impl NewWithNullPtr
 
 pub trait NewWithNullPtr {
@@ -1318,8 +1285,8 @@ impl<T> NewWithNullPtr for *mut T {
 impl NewWithNullPtr for wire_Attribute {
     fn new_with_null_ptr() -> Self {
         Self {
-            key: core::ptr::null_mut(),
-            value: core::ptr::null_mut(),
+            key: std::ptr::null_mut(),
+            value: std::ptr::null_mut(),
         }
     }
 }
@@ -1327,30 +1294,21 @@ impl NewWithNullPtr for wire_Attribute {
 impl NewWithNullPtr for wire_ExoticOptionals {
     fn new_with_null_ptr() -> Self {
         Self {
-            int32: core::ptr::null_mut(),
-            int64: core::ptr::null_mut(),
-            float64: core::ptr::null_mut(),
-            boolean: core::ptr::null_mut(),
-            zerocopy: core::ptr::null_mut(),
-            int8list: core::ptr::null_mut(),
-            uint8list: core::ptr::null_mut(),
-            int32list: core::ptr::null_mut(),
-            int64list: core::ptr::null_mut(),
-            float32list: core::ptr::null_mut(),
-            float64list: core::ptr::null_mut(),
-            attributes: core::ptr::null_mut(),
-            attributes_nullable: core::ptr::null_mut(),
-            nullable_attributes: core::ptr::null_mut(),
-            newtypeint: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_Foobar {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
+            int32: std::ptr::null_mut(),
+            int64: std::ptr::null_mut(),
+            float64: std::ptr::null_mut(),
+            boolean: std::ptr::null_mut(),
+            zerocopy: std::ptr::null_mut(),
+            int8list: std::ptr::null_mut(),
+            uint8list: std::ptr::null_mut(),
+            int32list: std::ptr::null_mut(),
+            int64list: std::ptr::null_mut(),
+            float32list: std::ptr::null_mut(),
+            float64list: std::ptr::null_mut(),
+            attributes: std::ptr::null_mut(),
+            attributes_nullable: std::ptr::null_mut(),
+            nullable_attributes: std::ptr::null_mut(),
+            newtypeint: std::ptr::null_mut(),
         }
     }
 }
@@ -1441,8 +1399,8 @@ impl NewWithNullPtr for wire_MyTreeNode {
     fn new_with_null_ptr() -> Self {
         Self {
             value_i32: Default::default(),
-            value_vec_u8: core::ptr::null_mut(),
-            children: core::ptr::null_mut(),
+            value_vec_u8: std::ptr::null_mut(),
+            children: std::ptr::null_mut(),
         }
     }
 }
@@ -1456,6 +1414,21 @@ impl NewWithNullPtr for wire_NewTypeInt {
 }
 
 // Section: impl IntoDart
+
+impl support::IntoDart for Weekdays {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::Monday => 0,
+            Self::Tuesday => 1,
+            Self::Wednesday => 2,
+            Self::Thursday => 3,
+            Self::Friday => 4,
+            Self::Saturday => 5,
+            Self::Sunday => 6,
+        }
+        .into_dart()
+    }
+}
 
 impl support::IntoDart for Attribute {
     fn into_dart(self) -> support::DartCObject {
@@ -1501,17 +1474,6 @@ impl support::IntoDart for ExoticOptionals {
 }
 impl support::IntoDartExceptPrimitive for ExoticOptionals {}
 
-impl support::IntoDart for Foobar {
-    fn into_dart(self) -> support::DartCObject {
-        match self {
-            Self::Foo => vec![0.into_dart()],
-            Self::Bar(field0) => vec![1.into_dart(), field0.into_dart()],
-            Self::Baz { name } => vec![2.into_dart(), name.into_dart()],
-        }
-        .into_dart()
-    }
-}
-
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartCObject {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
@@ -1556,21 +1518,6 @@ impl support::IntoDart for VecOfPrimitivePack {
     }
 }
 impl support::IntoDartExceptPrimitive for VecOfPrimitivePack {}
-
-impl support::IntoDart for Weekdays {
-    fn into_dart(self) -> support::DartCObject {
-        match self {
-            Self::Monday => 0,
-            Self::Tuesday => 1,
-            Self::Wednesday => 2,
-            Self::Thursday => 3,
-            Self::Friday => 4,
-            Self::Saturday => 5,
-            Self::Sunday => 6,
-        }
-        .into_dart()
-    }
-}
 
 impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
     fn into_dart(self) -> support::DartCObject {

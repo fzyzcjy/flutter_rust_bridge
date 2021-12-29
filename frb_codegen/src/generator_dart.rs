@@ -32,7 +32,7 @@ pub fn generate(
         .iter()
         .filter_map(|ty| match ty {
             StructRef(s) => Some(generate_api_struct(s.get(api_file))),
-            EnumRef(enu) => Some(generate_api_enum(enu.get(api_file))),
+            Enum(enu) => Some(generate_api_enum(enu)),
             _ => None,
         })
         .collect::<Vec<_>>();
@@ -49,17 +49,6 @@ pub fn generate(
         .map(|ty| generate_wire2api_func(ty, api_file))
         .collect::<Vec<_>>();
 
-    let needs_freezed = distinct_types
-        .iter()
-        .any(|ty| matches!(ty, EnumRef(e) if e.is_struct));
-    let freezed_header = if needs_freezed {
-        "import 'package:freezed_annotation/freezed_annotation.dart';
-        // import 'package:flutter/foundation.dart';
-        part 'bridge_generated.freezed.dart';"
-    } else {
-        ""
-    };
-
     let header = format!(
         "{}
 
@@ -72,8 +61,7 @@ pub fn generate(
     );
 
     let api_class = format!(
-        "{}
-        abstract class {} extends FlutterRustBridgeBase<{}> {{
+        "abstract class {} extends FlutterRustBridgeBase<{}> {{
             factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
 
             {}.raw({} inner) : super(inner);
@@ -85,7 +73,6 @@ pub fn generate(
 
         // ------------------------- Implementation Details -------------------------
         ",
-        freezed_header,
         dart_api_class_name,
         dart_wire_class_name,
         dart_api_class_name,
@@ -313,9 +300,9 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
                 )
             }
         },
-        EnumRef(e) if !e.is_struct => "return raw.index;".to_owned(),
-        // skip, handled by transfomers
-        StructRef(_) | EnumRef(_) => return "".to_string(),
+        Enum(_) => "return raw.index;".to_owned(),
+        // skip
+        StructRef(_) => return "".to_string(),
     };
 
     format!(
@@ -417,7 +404,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
             boxed.inner.safe_ident()
         ),
-        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | EnumRef(_) => {
+        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Enum(_) => {
             return "".to_string();
         }
     };
@@ -485,55 +472,11 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 s.name, inner,
             )
         }
-        EnumRef(enu) if !enu.is_struct => format!("return {}.values[raw];", enu.name),
-        EnumRef(enu) => {
-            let enu = enu.get(api_file);
-            let variants = enu
-                .variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| {
-                    let args = match &variant.kind {
-                        ApiVariantKind::Value => "()".to_owned(),
-                        ApiVariantKind::Tuple(types) => {
-                            let args = (1..=types.len())
-                                .map(|idx| format!("raw[{}]", idx))
-                                .collect::<Vec<_>>();
-                            format!("({})", args.join(","))
-                        }
-                        ApiVariantKind::Struct(s) => {
-                            let args = s
-                                .fields
-                                .iter()
-                                .enumerate()
-                                .map(|(idx, field)| {
-                                    format!("{}: raw[{}]", field.name.dart_style(), idx + 1)
-                                })
-                                .collect::<Vec<_>>();
-                            format!("({})", args.join(","))
-                        }
-                    };
-                    format!(
-                        "case {}: return {}.{}{};",
-                        idx,
-                        enu.name,
-                        variant.name.dart_style(),
-                        args
-                    )
-                })
-                .collect::<Vec<_>>();
-            format!(
-                "switch (raw[0]) {{
-                    {}
-                    default: throw Exception(\"unreachable\");
-                }}",
-                variants.join("\n"),
-            )
-        }
         Boxed(boxed) => match &boxed.inner {
             StructRef(inner) => format!("return _wire2api_{}(raw);", inner.safe_ident()),
             _ => gen_simple_type_cast(&ty.dart_api_type()),
         },
+        Enum(enu) => format!("return {}.values[raw];", enu.name),
     };
 
     format!(
@@ -674,7 +617,6 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
             "{}enum {} {{
             {}
         }}",
-            comments, enu.name, variants
-        )
-    }
+        comments, enu.name, variants
+    )
 }

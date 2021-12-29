@@ -45,13 +45,6 @@ impl Generator {
             .iter()
             .map(|ty| self.generate_wire_struct(ty, api_file))
             .collect::<Vec<_>>();
-        let wire_enums = distinct_input_types
-            .iter()
-            .filter_map(|ty| match ty {
-                ApiType::EnumRef(enu) => Some(self.generate_wire_enum(enu, api_file)),
-                _ => None,
-            })
-            .collect::<Vec<_>>();
         let allocate_funcs = distinct_input_types
             .iter()
             .map(|f| self.generate_allocate_funcs(f))
@@ -81,10 +74,6 @@ impl Generator {
         {}
 
         // Section: wire structs
-
-        {}
-
-        // Section: wire enums
 
         {}
 
@@ -141,7 +130,6 @@ impl Generator {
             rust_wire_mod,
             wire_funcs.join("\n\n"),
             wire_structs.join("\n\n"),
-            wire_enums.join("\n\n"),
             allocate_funcs.join("\n\n"),
             wire2api_funcs.join("\n\n"),
             new_with_nullptr_funcs.join("\n\n"),
@@ -302,9 +290,7 @@ impl Generator {
                     })
                     .collect()
             }
-            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) | EnumRef(_) => {
-                return "".to_string()
-            }
+            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) | Enum(_) => return "".to_string(),
         };
 
         format!(
@@ -317,74 +303,6 @@ impl Generator {
         "###,
             ty.rust_wire_type(),
             fields.join(",\n"),
-        )
-    }
-
-    fn generate_wire_enum(&mut self, enu: &ApiTypeEnumRef, file: &ApiFile) -> String {
-        let src = enu.get(file);
-        if !src.is_struct() {
-            return "".to_owned();
-        }
-        let variant_structs = src
-            .variants()
-            .iter()
-            .map(|variant| {
-                let fields = match &variant.kind {
-                    ApiVariantKind::Value => vec![],
-                    ApiVariantKind::Tuple(types) => types
-                        .iter()
-                        .enumerate()
-                        .map(|(idx, typ)| {
-                            format!(
-                                "field{}: {}{},",
-                                idx,
-                                typ.rust_wire_modifier(),
-                                typ.rust_wire_type()
-                            )
-                        })
-                        .collect(),
-                    ApiVariantKind::Struct(s) => s
-                        .fields
-                        .iter()
-                        .map(|field| {
-                            format!(
-                                "{}: {}{},",
-                                field.name.rust_style(),
-                                field.ty.rust_wire_modifier(),
-                                field.ty.rust_wire_type()
-                            )
-                        })
-                        .collect(),
-                };
-                format!(
-                    "#[repr(C)]
-                    #[derive(Clone)]
-                    pub struct {}_{} {{ {} }}",
-                    enu.name,
-                    variant.name,
-                    fields.join("\n")
-                )
-            })
-            .collect::<Vec<_>>();
-        let union_fields = src
-            .variants()
-            .iter()
-            .map(|variant| format!("{0}: *mut {1}_{0},", variant.name, enu.name))
-            .collect::<Vec<_>>();
-        format!(
-            "#[repr(C)]
-            pub struct {0} {{ tag: i32, kind: *mut {1}Kind }}
-
-            #[repr(C)]
-            pub union {1}Kind {{
-                {2}
-            }}
-
-            {3}",
-            enu.rust_wire_type(),
-            enu.name,
-            union_fields.join("\n"),
-            variant_structs.join("\n\n")
         )
     }
 
@@ -452,7 +370,7 @@ impl Generator {
                     }
                 }
             },
-            Primitive(_) | Delegate(_) | StructRef(_) | EnumRef(_) | Optional(_) => String::new(),
+            Primitive(_) | Delegate(_) | StructRef(_) | Optional(_) | Enum(_) => String::new(),
         }
     }
 
@@ -481,10 +399,8 @@ impl Generator {
             vec.into_iter().map(Wire2Api::wire2api).collect()"
                 .into(),
             Boxed(inner) => match inner.as_ref() {
-                ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: false } =>
-                    "unsafe { *support::box_from_leak_ptr(self) }".into(),
-                ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: true } =>
-                    "unsafe { support::box_from_leak_ptr(self) }".into(),
+                ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: false } => "unsafe { *support::box_from_leak_ptr(self) }".into(),
+                ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: true } => "unsafe { support::box_from_leak_ptr(self) }".into(),
                 _ => "let wrap = unsafe { support::box_from_leak_ptr(self) }; (*wrap).wire2api().into()".into()
             }
             StructRef(struct_ref) => {
@@ -514,48 +430,9 @@ impl Generator {
                 }
                 .into()
             }
-            EnumRef(enu) if enu.is_struct => {
-                let enu = enu.get(api_file);
-                let variants = enu.variants().iter().enumerate()
-                    .map(|(idx, variant)| {
-                        if let ApiVariantKind::Value = variant.kind {
-                            format!("{} => {}::{},", idx, enu.name, variant.name)
-                        } else {
-                            let body = match &variant.kind {
-                                ApiVariantKind::Tuple(types) => {
-                                    let elms = (0..types.len()).map(|idx| format!("ans.field{}.wire2api()", idx))
-                                        .collect::<Vec<_>>();
-                                    format!("({})", elms.join(","))
-                                }
-                                ApiVariantKind::Struct(st) => {
-                                    let fields = st.fields
-                                        .iter().map(|field| format!("{0}: ans.{0}.wire2api(),", field.name.rust_style()))
-                                        .collect::<Vec<_>>();
-                                    format!("{{ {} }}", fields.join(","))
-                                }
-                                _ => unreachable!()
-                            };
-                            format!(
-                                "{0} => unsafe {{
-                                    let ans = support::box_from_leak_ptr(self.kind);
-                                    let ans = support::box_from_leak_ptr(ans.{2});
-                                    {1}::{2}{3}
-                                }}",
-                                idx, enu.name, variant.name, body)
-                        }
-                    }).collect::<Vec<_>>();
-                format!(
-                    "match self.tag {{
-                        {}
-                        _ => unreachable!(),
-                    }}",
-                    variants.join("\n"),
-                ).into()
-            }
-            EnumRef(enu) => {
-                let enu = enu.get(api_file);
+            Enum(enu) => {
                 let variants = enu
-                    .variants()
+                    .members
                     .iter()
                     .enumerate()
                     .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
@@ -593,11 +470,8 @@ impl Generator {
         match ty {
             StructRef(st) => self
                 .generate_new_with_nullptr_func_for_struct(st.get(api_file), &ty.rust_wire_type()),
-            EnumRef(e) if e.is_struct => {
-                self.generate_new_with_nullptr_func_for_enum(e.get(api_file), &ty.rust_wire_type())
-            }
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
-            | Optional(_) | EnumRef(_) => String::new(),
+            | Optional(_) | Enum(_) => String::new(),
         }
     }
 
@@ -605,10 +479,7 @@ impl Generator {
         // println!("generate_impl_intodart: {:?}", ty);
         match ty {
             StructRef(s) => self.generate_impl_intodart_for_struct(s.get(api_file)),
-            EnumRef(e) if e.is_struct => {
-                self.generate_impl_intodart_for_enum_struct(e.get(api_file))
-            }
-            EnumRef(enu) => self.generate_impl_intodart_for_enum(enu.get(api_file)),
+            Enum(enu) => self.generate_impl_intodart_for_enum(enu),
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
             | Optional(_) | Arc(_) => "".to_string(),
         }
@@ -690,7 +561,7 @@ impl Generator {
                         "{}: {},",
                         field.name.rust_style(),
                         if field.ty.rust_wire_is_pointer() {
-                            "core::ptr::null_mut()"
+                            "std::ptr::null_mut()"
                         } else {
                             "Default::default()"
                         }
@@ -739,7 +610,7 @@ impl Generator {
 
     fn generate_impl_intodart_for_enum(&mut self, enu: &ApiEnum) -> String {
         let variants = enu
-            .variants()
+            .members
             .iter()
             .enumerate()
             .map(|(idx, variant)| format!("Self::{} => {},", variant.name, idx))
@@ -754,68 +625,6 @@ impl Generator {
                 }}
             }}",
             enu.name, variants
-        )
-    }
-
-    fn generate_impl_intodart_for_enum_struct(&mut self, enu: &ApiEnum) -> String {
-        let variants =
-            enu.variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| {
-                    let tag = format!("{}.into_dart()", idx);
-                    match &variant.kind {
-                        ApiVariantKind::Value => {
-                            format!("Self::{} => vec![{}],", variant.name, tag)
-                        }
-                        ApiVariantKind::Tuple(types) => {
-                            let len = types.len();
-                            let fields = Some(tag)
-                                .into_iter()
-                                .chain((0..len).map(|idx| format!("field{}.into_dart()", idx)))
-                                .collect::<Vec<_>>();
-                            let pattern = (0..len)
-                                .map(|idx| format!("field{}", idx))
-                                .collect::<Vec<_>>();
-                            format!(
-                                "Self::{}({}) => vec![{}],",
-                                variant.name,
-                                pattern.join(","),
-                                fields.join(",")
-                            )
-                        }
-                        ApiVariantKind::Struct(s) => {
-                            let fields = Some(tag)
-                                .into_iter()
-                                .chain(s.fields.iter().map(|field| {
-                                    format!("{}.into_dart()", field.name.rust_style())
-                                }))
-                                .collect::<Vec<_>>();
-                            let pattern = s
-                                .fields
-                                .iter()
-                                .map(|field| field.name.rust_style().to_owned())
-                                .collect::<Vec<_>>();
-                            format!(
-                                "Self::{}{{ {} }} => vec![{}],",
-                                variant.name,
-                                pattern.join(","),
-                                fields.join(",")
-                            )
-                        }
-                    }
-                })
-                .collect::<Vec<_>>();
-        format!(
-            "impl support::IntoDart for {} {{
-                fn into_dart(self) -> support::DartCObject {{
-                    match self {{
-                        {}
-                    }}.into_dart()
-                }}
-            }}",
-            enu.name,
-            variants.join("\n")
         )
     }
 }

@@ -13,47 +13,34 @@ use crate::api_types::*;
 use crate::generator_rust::HANDLER_NAME;
 
 type StructMap<'a> = HashMap<String, &'a ItemStruct>;
-type EnumMap<'a> = HashMap<String, &'a ItemEnum>;
 
 pub fn parse(source_rust_content: &str, file: File) -> ApiFile {
-    let SrcItems {
-        src_fns,
-        src_struct_map,
-        src_enums,
-    } = extract_items_from_file(&file);
+    let (src_fns, src_struct_map, src_enums) = extract_items_from_file(&file);
     let parser = Parser {
         src_struct_map,
         src_enums,
         struct_pool: HashMap::new(),
-        enum_pool: HashMap::new(),
         parsing_or_parsed_struct_names: HashSet::new(),
-        parsed_enums: HashSet::new(),
     };
     parser.parse(source_rust_content, src_fns)
 }
 
 struct Parser<'a> {
     src_struct_map: HashMap<String, &'a ItemStruct>,
-    parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: ApiStructPool,
-
-    src_enums: HashMap<String, &'a ItemEnum>,
-    parsed_enums: HashSet<String>,
-    enum_pool: ApiEnumPool,
+    parsing_or_parsed_struct_names: HashSet<String>,
+    src_enums: Vec<&'a ItemEnum>,
 }
 
-fn extract_comments(attrs: &[Attribute]) -> Vec<Comment> {
-    attrs
-        .iter()
-        .filter_map(|attr| match attr.parse_meta() {
-            Ok(Meta::NameValue(MetaNameValue {
-                path,
-                lit: Lit::Str(lit),
-                ..
-            })) if path.is_ident("doc") => Some(Comment::from(lit.value().as_ref())),
-            _ => None,
-        })
-        .collect()
+fn extract_comments(attr: &Attribute) -> Option<Comment> {
+    match attr.parse_meta() {
+        Ok(Meta::NameValue(MetaNameValue {
+            path,
+            lit: Lit::Str(lit),
+            ..
+        })) if path.is_ident("doc") => Some(Comment::from(lit.value().as_ref())),
+        _ => None,
+    }
 }
 
 impl<'a> Parser<'a> {
@@ -65,7 +52,6 @@ impl<'a> Parser<'a> {
         ApiFile {
             funcs,
             struct_pool: self.struct_pool,
-            enum_pool: self.enum_pool,
             has_executor,
         }
     }
@@ -78,7 +64,7 @@ impl<'a> Parser<'a> {
         }
 
         let sig = &func.sig;
-        let func_name = sig.ident.to_string();
+        let func_name = ident_to_string(&sig.ident);
 
         let mut inputs = Vec::new();
         let mut output = None;
@@ -97,10 +83,11 @@ impl<'a> Parser<'a> {
                     output = Some(stream_sink_inner_type);
                     mode = Some(ApiFuncMode::Stream);
                 } else {
+                    let comments = pat_type.attrs.iter().filter_map(extract_comments).collect();
                     inputs.push(ApiField {
                         name: ApiIdent::new(name),
                         ty: self.parse_type(&type_string),
-                        comments: extract_comments(&pat_type.attrs),
+                        comments,
                     });
                 }
             } else {
@@ -128,14 +115,14 @@ impl<'a> Parser<'a> {
             );
         }
 
-        // let comments = func.attrs.iter().filter_map(extract_comments).collect();
+        let comments = func.attrs.iter().filter_map(extract_comments).collect();
 
         ApiFunc {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
             mode: mode.expect("unsupported mode"),
-            comments: extract_comments(&func.attrs),
+            comments,
         }
     }
 
@@ -150,6 +137,26 @@ impl<'a> Parser<'a> {
             .or_else(|| self.try_parse_enum(ty))
             .or_else(|| self.try_parse_arc(ty))
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
+    }
+
+    fn try_parse_enum(&self, ty: &str) -> Option<ApiType> {
+        self.src_enums
+            .iter()
+            .find(|enu| enu.ident == ty)
+            .map(|enu| {
+                ApiType::Enum(ApiEnum {
+                    name: ty.to_owned(),
+                    comments: enu.attrs.iter().filter_map(extract_comments).collect(),
+                    members: enu
+                        .variants
+                        .iter()
+                        .map(|variant| EnumVariant {
+                            name: variant.ident.to_string(),
+                            comments: variant.attrs.iter().filter_map(extract_comments).collect(),
+                        })
+                        .collect(),
+                })
+            })
     }
 
     fn try_parse_stream_sink(&mut self, ty: &str) -> Option<ApiType> {
@@ -345,18 +352,23 @@ impl<'a> Parser<'a> {
             let field_name = field
                 .ident
                 .as_ref()
-                .map_or(format!("field{}", idx), ToString::to_string);
+                .map_or(format!("field{}", idx), ident_to_string);
             let field_type_str = type_to_string(&field.ty);
             let field_type = self.parse_type(&field_type_str);
+            let comments = field.attrs.iter().filter_map(extract_comments).collect();
             fields.push(ApiField {
                 name: ApiIdent::new(field_name),
                 ty: field_type,
-                comments: extract_comments(&field.attrs),
+                comments,
             });
         }
 
-        let name = item_struct.ident.to_string();
-        let comments = extract_comments(&item_struct.attrs);
+        let name = ident_to_string(&item_struct.ident);
+        let comments = item_struct
+            .attrs
+            .iter()
+            .filter_map(extract_comments)
+            .collect();
         ApiStruct {
             name,
             fields,
@@ -366,16 +378,10 @@ impl<'a> Parser<'a> {
     }
 }
 
-struct SrcItems<'a> {
-    src_fns: Vec<&'a ItemFn>,
-    src_struct_map: StructMap<'a>,
-    src_enums: EnumMap<'a>,
-}
-
-fn extract_items_from_file(file: &File) -> SrcItems {
+fn extract_items_from_file(file: &File) -> (Vec<&ItemFn>, StructMap, Vec<&ItemEnum>) {
     let mut src_fns = Vec::new();
     let mut src_struct_map = HashMap::new();
-    let mut src_enums = HashMap::new();
+    let mut src_enums = Vec::new();
     for item in file.items.iter() {
         match item {
             Item::Fn(ref item_fn) => {
@@ -396,23 +402,33 @@ fn extract_items_from_file(file: &File) -> SrcItems {
                     ..
                 },
             ) => {
-                src_enums.insert(item_enu.ident.to_string(), item_enu);
+                if item_enu
+                    .variants
+                    .iter()
+                    .any(|variant| !variant.fields.is_empty())
+                {
+                    panic!(
+                        "Enums with fields are not yet supported. ({})",
+                        item_enu.ident
+                    );
+                }
+                src_enums.push(item_enu);
             }
             _ => {}
         }
     }
     // println!("[Functions]\n{:#?}", src_fns);
     // println!("[Structs]\n{:#?}", src_struct_map);
-    SrcItems {
-        src_fns,
-        src_struct_map,
-        src_enums,
-    }
+    (src_fns, src_struct_map, src_enums)
+}
+
+fn ident_to_string(ident: &Ident) -> String {
+    format!("{}", ident)
 }
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294
 fn type_to_string(ty: &Type) -> String {
-    quote!(#ty).to_string().replace(' ', "")
+    quote!(#ty).to_string().replace(" ", "")
 }
 
 struct GenericCapture {
@@ -421,8 +437,7 @@ struct GenericCapture {
 
 impl GenericCapture {
     pub fn new(cls_name: &str) -> Self {
-        let regex =
-            Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>()\\[\\];]+)>$", cls_name)).unwrap();
+        let regex = Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>]+|\\(\\))>$", cls_name)).unwrap();
         Self { regex }
     }
 

@@ -233,8 +233,6 @@ pub struct wire_uint_8_list {
     len: i32,
 }
 
-// Section: wire enums
-
 // Section: allocate functions
 
 #[no_mangle]
@@ -433,8 +431,8 @@ impl NewWithNullPtr for wire_Size {
 impl NewWithNullPtr for wire_TreeNode {
     fn new_with_null_ptr() -> Self {
         Self {
-            name: core::ptr::null_mut(),
-            children: core::ptr::null_mut(),
+            name: std::ptr::null_mut(),
+            children: std::ptr::null_mut(),
         }
     }
 }
