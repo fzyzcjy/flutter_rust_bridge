@@ -275,16 +275,15 @@ void main(List<String> args) async {
 
     print('dart call handleComplexStruct');
     {
-      final res = await Future.wait([
-        KitchenSink.empty(),
-        KitchenSink.boxed(42),
-        KitchenSink.enums(Weekdays.Monday),
-        KitchenSink.nested(KitchenSink.empty()),
-        KitchenSink.buffer(Uint8List.fromList(const [1, 2, 3])),
-        KitchenSink.optional(42),
-        KitchenSink.structlike(foo: Foobar.baz(name: 'John Doe'), bar: 123),
-      ].map((ty) => api.handleComplexEnum(val: ty)));
-      print(res);
+      expect(await api.handleComplexEnum(val: KitchenSink.empty()), "Empty");
+      expect(await api.handleComplexEnum(val: KitchenSink.boxed(42)), "Boxed(42)");
+      expect(await api.handleComplexEnum(val: KitchenSink.enums(Weekdays.Monday)), "Enums(Monday)");
+      expect(await api.handleComplexEnum(val: KitchenSink.nested(KitchenSink.empty())), "Nested(Empty)");
+      expect(await api.handleComplexEnum(val: KitchenSink.buffer(Uint8List.fromList(const [1, 2, 3]))),
+          "Buffer(ZeroCopyBuffer([1, 2, 3]))");
+      expect(await api.handleComplexEnum(val: KitchenSink.optional(42)), "Optional(42, None)");
+      expect(await api.handleComplexEnum(val: KitchenSink.structlike(foo: Foobar.baz(name: 'John Doe'), bar: 42)),
+          "Structlike { foo: Baz { name: \"John Doe\" }, bar: Some(42) }");
     }
 
     _createGarbage();
