@@ -20,6 +20,7 @@ alias g := gen-bridge
 gen-bridge: build
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart
+    cd {{frb_pure}}/dart && dart run build_runner build
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart
 

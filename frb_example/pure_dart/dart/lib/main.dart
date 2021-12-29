@@ -263,6 +263,16 @@ void main(List<String> args) async {
       expect(await api.handleEnumParameter(weekday: Weekdays.Saturday), Weekdays.Saturday);
     }
 
+    print('dart call handleEnumStruct');
+    {
+      dynamic foo = Foobar.bar("stuff");
+      foo = await api.handleEnumStruct(val: foo);
+      expect(foo.field0, "foo'd");
+      dynamic bar = Foobar.foo();
+      bar = await api.handleEnumStruct(val: bar);
+      expect(bar is Foo, true);
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();
