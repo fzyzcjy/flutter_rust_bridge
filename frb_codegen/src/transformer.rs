@@ -1,7 +1,7 @@
 use log::debug;
 
-use crate::api_types::ApiType::{Boxed, EnumRef, StructRef};
-use crate::api_types::{ApiField, ApiFile, ApiFunc, ApiTypeBoxed, ApiTypeEnumRef};
+use crate::api_types::ApiType::{Boxed, StructRef};
+use crate::api_types::{ApiField, ApiFile, ApiFunc, ApiTypeBoxed};
 
 pub fn transform(src: ApiFile) -> ApiFile {
     let dst_funcs = src
@@ -24,23 +24,19 @@ pub fn transform(src: ApiFile) -> ApiFile {
 }
 
 fn transform_func_input_add_boxed(input: ApiField) -> ApiField {
-    match &input.ty {
-        StructRef(_)
-        | EnumRef(ApiTypeEnumRef {
-            is_struct: true, ..
-        }) => {
-            debug!(
-                "transform_func_input_add_boxed wrap Boxed to field={:?}",
-                input
-            );
-            ApiField {
-                ty: Boxed(Box::new(ApiTypeBoxed {
-                    exist_in_real_api: false, // <--
-                    inner: input.ty.clone(),
-                })),
-                ..input
-            }
+    if let StructRef(_) = &input.ty {
+        debug!(
+            "transform_func_input_add_boxed wrap Boxed to field={:?}",
+            input
+        );
+        ApiField {
+            ty: Boxed(Box::new(ApiTypeBoxed {
+                exist_in_real_api: false, // <--
+                inner: input.ty.clone(),
+            })),
+            ..input
         }
-        _ => input,
+    } else {
+        input.clone()
     }
 }
