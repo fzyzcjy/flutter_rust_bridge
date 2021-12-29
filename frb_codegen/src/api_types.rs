@@ -5,13 +5,11 @@ use convert_case::{Case, Casing};
 use ApiType::*;
 
 pub type ApiStructPool = HashMap<String, ApiStruct>;
-pub type ApiEnumPool = HashMap<String, ApiEnum>;
 
 #[derive(Debug, Clone)]
 pub struct ApiFile {
     pub funcs: Vec<ApiFunc>,
     pub struct_pool: ApiStructPool,
-    pub enum_pool: ApiEnumPool,
     pub has_executor: bool,
 }
 
@@ -112,12 +110,6 @@ pub struct ApiIdent {
     pub raw: String,
 }
 
-impl std::fmt::Display for ApiIdent {
-    fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        fmt.write_str(&self.raw)
-    }
-}
-
 impl ApiIdent {
     pub fn new(raw: String) -> ApiIdent {
         ApiIdent { raw }
@@ -141,7 +133,7 @@ pub enum ApiType {
     GeneralList(Box<ApiTypeGeneralList>),
     StructRef(ApiTypeStructRef),
     Boxed(Box<ApiTypeBoxed>),
-    EnumRef(ApiTypeEnumRef),
+    Enum(ApiEnum),
 }
 
 macro_rules! api_type_call_child {
@@ -155,7 +147,7 @@ macro_rules! api_type_call_child {
                 StructRef(inner) => inner.$func(),
                 Boxed(inner) => inner.$func(),
                 Optional(inner) => inner.$func(),
-                EnumRef(inner) => inner.$func(),
+                Enum(enu) => enu.$func(),
             }
         }
     };
@@ -180,22 +172,7 @@ impl ApiType {
             Boxed(inner) => inner.inner.visit_types(f, api_file),
             Delegate(d) => d.get_delegate().visit_types(f, api_file),
             Optional(inner) => inner.inner.visit_types(f, api_file),
-            EnumRef(enu) => {
-                let enu = enu.get(api_file);
-                for variant in enu.variants() {
-                    match &variant.kind {
-                        ApiVariantKind::Tuple(types) => {
-                            types.iter().for_each(|ty| ty.visit_types(f, api_file))
-                        }
-                        ApiVariantKind::Struct(s) => s
-                            .fields
-                            .iter()
-                            .for_each(|field| field.ty.visit_types(f, api_file)),
-                        _ => {}
-                    }
-                }
-            }
-            Primitive(_) => {}
+            Primitive(_) | Enum(_) => {}
         }
     }
 
@@ -711,83 +688,32 @@ impl From<&str> for Comment {
 }
 
 #[derive(Debug, Clone)]
-pub struct ApiTypeEnumRef {
-    pub name: String,
-    pub is_struct: bool,
-}
-
-impl ApiTypeEnumRef {
-    pub fn get<'a>(&self, file: &'a ApiFile) -> &'a ApiEnum {
-        &file.enum_pool[&self.name]
-    }
-}
-
-impl ApiTypeChild for ApiTypeEnumRef {
-    fn safe_ident(&self) -> String {
-        self.dart_api_type().to_case(Case::Snake)
-    }
-    fn dart_api_type(&self) -> String {
-        self.name.to_string()
-    }
-    fn dart_wire_type(&self) -> String {
-        if self.is_struct {
-            self.rust_wire_type()
-        } else {
-            "int".to_owned()
-        }
-    }
-    fn rust_api_type(&self) -> String {
-        self.name.to_string()
-    }
-    fn rust_wire_type(&self) -> String {
-        if self.is_struct {
-            format!("wire_{}", self.name)
-        } else {
-            "i32".to_owned()
-        }
-    }
-}
-
-#[derive(Debug, Clone)]
 pub struct ApiEnum {
     pub name: String,
+    pub members: Vec<EnumVariant>,
     pub comments: Vec<Comment>,
-    _variants: Vec<ApiVariant>,
-    _is_struct: bool,
-}
-
-impl ApiEnum {
-    pub fn new(name: String, comments: Vec<Comment>, variants: Vec<ApiVariant>) -> Self {
-        let _is_struct = variants
-            .iter()
-            .any(|variant| !matches!(variant.kind, ApiVariantKind::Value));
-        Self {
-            name,
-            comments,
-            _variants: variants,
-            _is_struct,
-        }
-    }
-
-    pub fn variants(&self) -> &[ApiVariant] {
-        &self._variants
-    }
-
-    pub fn is_struct(&self) -> bool {
-        self._is_struct
-    }
 }
 
 #[derive(Debug, Clone)]
-pub struct ApiVariant {
-    pub name: ApiIdent,
+pub struct EnumVariant {
+    pub name: String,
     pub comments: Vec<Comment>,
-    pub kind: ApiVariantKind,
 }
 
-#[derive(Debug, Clone)]
-pub enum ApiVariantKind {
-    Value,
-    Tuple(Vec<ApiType>),
-    Struct(ApiStruct),
+impl ApiTypeChild for ApiEnum {
+    fn safe_ident(&self) -> String {
+        self.name.clone()
+    }
+    fn dart_api_type(&self) -> String {
+        self.safe_ident()
+    }
+    fn dart_wire_type(&self) -> String {
+        "int".to_owned()
+    }
+    fn rust_api_type(&self) -> String {
+        self.safe_ident()
+    }
+    fn rust_wire_type(&self) -> String {
+        "i32".to_owned()
+    }
 }
