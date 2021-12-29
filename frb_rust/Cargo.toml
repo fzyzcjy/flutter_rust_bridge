@@ -9,9 +9,9 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [dependencies]
-# allo-isolate = "0.1.12"
+allo-isolate = "0.1.12"
 # allo-isolate = { git = "https://github.com/Desdaemon/allo-isolate" } # hack, until upstream PR is merged and released
-allo-isolate = { path = "../../allo-isolate" }
+# allo-isolate = { path = "../../allo-isolate" }
 anyhow = "1.0.52"
 threadpool = "1.8.1"
 lazy_static = "1.4.0"
