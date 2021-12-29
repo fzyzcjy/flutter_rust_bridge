@@ -368,6 +368,7 @@ pub enum ApiTypeDelegate {
     StringList,
     SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(ApiTypePrimitive),
+    Opaque(String),
 }
 
 impl ApiTypeDelegate {
@@ -385,6 +386,9 @@ impl ApiTypeDelegate {
                 })
             }
             ApiTypeDelegate::StringList => ApiType::Delegate(ApiTypeDelegate::String),
+            ApiTypeDelegate::Opaque(inner) => {
+                ApiType::Arc(ApiArc(format!("opaque::RwLock<{}>", inner)))
+            }
         }
     }
 }
@@ -398,6 +402,7 @@ impl ApiTypeChild for ApiTypeDelegate {
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
+            ApiTypeDelegate::Opaque(inner) => format!("opaq_{}", inner),
         }
     }
 
@@ -405,9 +410,9 @@ impl ApiTypeChild for ApiTypeDelegate {
         match self {
             ApiTypeDelegate::String => "String".to_string(),
             ApiTypeDelegate::StringList => "List<String>".to_owned(),
-            ApiTypeDelegate::SyncReturnVecU8 | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                self.get_delegate().dart_api_type()
-            }
+            ApiTypeDelegate::SyncReturnVecU8
+            | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_)
+            | ApiTypeDelegate::Opaque(_) => self.get_delegate().dart_api_type(),
         }
     }
 
@@ -426,6 +431,7 @@ impl ApiTypeChild for ApiTypeDelegate {
             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
+            ApiTypeDelegate::Opaque(inner) => format!("Opaque<{}>", inner),
         }
     }
 
@@ -657,8 +663,12 @@ impl ApiTypeOptional {
         matches!(&*self.inner, Delegate(_))
     }
 
+    pub fn is_arc(&self) -> bool {
+        matches!(&*self.inner, Arc(_))
+    }
+
     pub fn needs_initialization(&self) -> bool {
-        !(self.is_primitive() || self.is_delegate())
+        !(self.is_primitive() || self.is_delegate() || self.is_arc())
     }
 }
 
@@ -676,7 +686,12 @@ impl ApiTypeChild for ApiTypeOptional {
         self.inner.dart_wire_type()
     }
     fn dart_api_type(&self) -> String {
-        format!("{}?", self.inner.dart_api_type())
+        let inner = self.inner.dart_api_type();
+        if inner.ends_with("dynamic") {
+            inner
+        } else {
+            format!("{}?", inner)
+        }
     }
     fn rust_wire_is_pointer(&self) -> bool {
         true

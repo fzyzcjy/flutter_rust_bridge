@@ -148,6 +148,7 @@ impl<'a> Parser<'a> {
             .or_else(|| self.try_parse_option(ty))
             .or_else(|| self.try_parse_struct(ty))
             .or_else(|| self.try_parse_enum(ty))
+            .or_else(|| self.try_parse_arc(ty))
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
     }
 
@@ -170,6 +171,7 @@ impl<'a> Parser<'a> {
                 lazy_static! {
                     static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture =
                         GenericCapture::new("ZeroCopyBuffer");
+                    static ref CAPTURE_OPAQUE: GenericCapture = GenericCapture::new("Opaque");
                 }
 
                 if let Some(inner_type_str) = CAPTURE_ZERO_COPY_BUFFER.captures(ty) {
@@ -180,6 +182,10 @@ impl<'a> Parser<'a> {
                             ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
                         ));
                     }
+                }
+
+                if let Some(inner) = CAPTURE_OPAQUE.captures(ty) {
+                    return Some(ApiType::Delegate(ApiTypeDelegate::Opaque(inner)));
                 }
 
                 None

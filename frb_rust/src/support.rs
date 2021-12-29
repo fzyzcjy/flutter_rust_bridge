@@ -2,6 +2,7 @@
 //! These functions are *not* meant to be used by humans directly.
 
 use std::mem;
+use std::sync::Arc;
 
 pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
@@ -39,6 +40,14 @@ pub fn new_leak_box_ptr<T>(t: T) -> *mut T {
 /// Use it in pair with [new_leak_box_ptr].
 pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
+}
+
+/// # Safety
+/// Intended for use with opaque pointers owned by Dart.
+pub unsafe fn arc_from_opaque_ptr<T>(ptr: *const T) -> Arc<T> {
+    // Dart owns the pointer now, so we only borrow it.
+    // Arc::increment_strong_count(ptr);
+    Arc::from_raw(ptr)
 }
 
 /// NOTE for maintainer: Please keep this struct in sync with [DUMMY_WIRE_CODE_FOR_BINDGEN]

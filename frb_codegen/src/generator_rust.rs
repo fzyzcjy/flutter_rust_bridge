@@ -467,6 +467,7 @@ impl Generator {
             Delegate(ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_)) => {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
+            Delegate(ApiTypeDelegate::Opaque(_)) => "Opaque(self.wire2api())".into(),
             PrimitiveList(_) => "unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -569,6 +570,7 @@ impl Generator {
                 )
                 .into()
             }
+            Arc(_) => "unsafe { support::arc_from_opaque_ptr(self as _) }".into(),
             // handled by common impl
             Optional(_) => return String::new(),
         };
@@ -608,7 +610,7 @@ impl Generator {
             }
             EnumRef(enu) => self.generate_impl_intodart_for_enum(enu.get(api_file)),
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
-            | Optional(_) => "".to_string(),
+            | Optional(_) | Arc(_) => "".to_string(),
         }
     }
 

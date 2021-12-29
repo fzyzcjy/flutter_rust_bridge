@@ -264,6 +264,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             }
             return ans;"
                 .to_owned(),
+            ApiTypeDelegate::Opaque(_) => "return raw;".to_owned(),
         },
         Optional(opt) => format!(
             "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
@@ -447,6 +448,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             ApiTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
+            ApiTypeDelegate::Opaque(_) => "return raw;".to_owned(),
         },
         Optional(opt) => format!(
             "return raw == null ? null : _wire2api_{}(raw);",

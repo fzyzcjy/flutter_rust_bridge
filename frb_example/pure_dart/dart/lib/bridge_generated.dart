@@ -597,6 +597,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return _api2wire_uint_8_list(raw);
   }
 
+  int _api2wire_arc_Vec_u8(int raw) {
+    return raw;
+  }
+
+  int _api2wire_arc_opaque__RwLock_i32(int raw) {
+    return raw;
+  }
+
   bool _api2wire_bool(bool raw) {
     return raw;
   }
@@ -781,6 +789,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       _api_fill_to_wire_opt_box_autoadd_attribute(raw[i], ans.ref.ptr[i]);
     }
     return ans;
+  }
+
+  int _api2wire_opaq_i32(int raw) {
+    return raw;
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_String(String? raw) {
@@ -1106,6 +1118,16 @@ Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
 }
 
+int _wire2api_arc_Vec_u8(dynamic raw) {
+  print('receiving arc pointer ${raw.runtimeType}');
+  return raw;
+}
+
+int _wire2api_arc_opaque__RwLock_i32(dynamic raw) {
+  print('receiving arc pointer ${raw.runtimeType}');
+  return raw;
+}
+
 Attribute _wire2api_attribute(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -1290,6 +1312,10 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
   return NewTypeInt(
     field0: _wire2api_i64(arr[0]),
   );
+}
+
+int _wire2api_opaq_i32(dynamic raw) {
+  return raw;
 }
 
 String? _wire2api_opt_String(dynamic raw) {
@@ -2513,3 +2539,5 @@ class KitchenSink_Enums extends ffi.Struct {
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
+
+const int SIZE = 42000000;

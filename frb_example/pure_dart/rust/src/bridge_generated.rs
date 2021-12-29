@@ -887,6 +887,18 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<Arc<Vec<u8>>> for isize {
+    fn wire2api(self) -> Arc<Vec<u8>> {
+        unsafe { support::arc_from_opaque_ptr(self as _) }
+    }
+}
+
+impl Wire2Api<Arc<opaque::RwLock<i32>>> for isize {
+    fn wire2api(self) -> Arc<opaque::RwLock<i32>> {
+        unsafe { support::arc_from_opaque_ptr(self as _) }
+    }
+}
+
 impl Wire2Api<Attribute> for wire_Attribute {
     fn wire2api(self) -> Attribute {
         Attribute {
@@ -1246,6 +1258,12 @@ impl Wire2Api<MyTreeNode> for wire_MyTreeNode {
 impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
         NewTypeInt(self.field0.wire2api())
+    }
+}
+
+impl Wire2Api<Opaque<i32>> for isize {
+    fn wire2api(self) -> Opaque<i32> {
+        Opaque(self.wire2api())
     }
 }
 
