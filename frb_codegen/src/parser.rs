@@ -269,7 +269,11 @@ impl<'a> Parser<'a> {
 
         Some(EnumRef(ApiTypeEnumRef {
             name: ty.to_owned(),
-            is_struct: self.enum_pool[ty].is_struct(),
+            is_struct: self
+                .enum_pool
+                .get(ty)
+                .map(ApiEnum::is_struct)
+                .unwrap_or(true),
         }))
     }
 

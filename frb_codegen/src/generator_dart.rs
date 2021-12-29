@@ -601,12 +601,22 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
             .map(|variant| {
                 let args = match &variant.kind {
                     ApiVariantKind::Value => "".to_owned(),
-                    ApiVariantKind::Tuple(types) => types
-                        .iter()
-                        .enumerate()
-                        .map(|(idx, typ)| format!("{} field{}", typ.dart_api_type(), idx))
-                        .collect::<Vec<_>>()
-                        .join(","),
+                    ApiVariantKind::Tuple(types) => {
+                        let split = optional_boundary_index(types);
+                        let types = types
+                            .iter()
+                            .enumerate()
+                            .map(|(idx, typ)| format!("{} field{}", typ.dart_api_type(), idx))
+                            .collect::<Vec<_>>();
+                        if let Some(idx) = split {
+                            let before = &types[..idx];
+                            let after = &types[idx..];
+                            let sep = if before.is_empty() { "" } else { "," };
+                            format!("{}{} [{}]", before.join(","), sep, after.join(","))
+                        } else {
+                            types.join(",")
+                        }
+                    }
                     ApiVariantKind::Struct(st) => {
                         let fields = st
                             .fields

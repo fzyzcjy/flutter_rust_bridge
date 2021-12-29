@@ -791,3 +791,16 @@ pub enum ApiVariantKind {
     Tuple(Vec<ApiType>),
     Struct(ApiStruct),
 }
+
+pub fn optional_boundary_index(types: &[ApiType]) -> Option<usize> {
+    types
+        .iter()
+        .enumerate()
+        .find(|ty| matches!(ty.1, Optional(_)))
+        .and_then(|(idx, _)| {
+            (&types[idx..])
+                .iter()
+                .all(|ty| matches!(ty, Optional(_)))
+                .then(|| idx)
+        })
+}
