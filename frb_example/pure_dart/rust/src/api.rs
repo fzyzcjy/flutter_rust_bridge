@@ -376,9 +376,23 @@ pub enum Foobar {
     Baz { name: String },
 }
 
+#[derive(Debug)]
+pub enum KitchenSink {
+    Empty,
+    Nested(Box<KitchenSink>),
+    Optional(i32, Option<i32>),
+    Boxed(Box<i32>),
+    Buffer(ZeroCopyBuffer<Vec<u8>>),
+    Enums(Weekdays),
+}
+
 pub fn handle_enum_struct(mut val: Foobar) -> Result<Foobar> {
     if let Foobar::Bar(val) = &mut val {
         *val = "foo'd".to_owned()
     }
     Ok(val)
+}
+
+pub fn handle_complex_enum(val: KitchenSink) -> Result<String> {
+    Ok(format!("{:?}", val))
 }

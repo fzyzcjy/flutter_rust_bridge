@@ -273,6 +273,21 @@ void main(List<String> args) async {
       expect(bar is Foo, true);
     }
 
+    print('dart call handleComplexEnum');
+    {
+      KitchenSink ouroboros = KitchenSink.empty();
+      ouroboros = KitchenSink.nested(ouroboros);
+      final res = await Future.wait([
+        KitchenSink.empty(),
+        ouroboros,
+        KitchenSink.enums(Weekdays.Monday),
+        KitchenSink.buffer(Uint8List.fromList([1, 2, 3])),
+        KitchenSink.optional(42),
+        KitchenSink.boxed(42)
+      ].map((item) => api.handleComplexEnum(val: item)));
+      print(res);
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();

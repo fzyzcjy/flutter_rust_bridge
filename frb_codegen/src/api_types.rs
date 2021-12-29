@@ -791,3 +791,19 @@ pub enum ApiVariantKind {
     Tuple(Vec<ApiType>),
     Struct(ApiStruct),
 }
+
+/// Finds the index of the first optional type in `types`, such that all the
+/// types at and after that index are also optional.
+pub fn optional_boundary_index(types: &[ApiType]) -> Option<usize> {
+    types
+        .iter()
+        .enumerate()
+        .find(|x| matches!(x.1, Optional(_)))
+        .map(|x| x.0)
+        .and_then(|idx| {
+            types[idx..]
+                .iter()
+                .all(|ty| matches!(ty, Optional(_)))
+                .then(|| idx)
+        })
+}

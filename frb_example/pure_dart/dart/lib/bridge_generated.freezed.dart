@@ -477,3 +477,1045 @@ abstract class Baz implements Foobar {
   @JsonKey(ignore: true)
   $BazCopyWith<Baz> get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+class _$KitchenSinkTearOff {
+  const _$KitchenSinkTearOff();
+
+  Empty empty() {
+    return const Empty();
+  }
+
+  Nested nested(KitchenSink field0) {
+    return Nested(
+      field0,
+    );
+  }
+
+  Optional optional(int field0, [int? field1]) {
+    return Optional(
+      field0,
+      field1,
+    );
+  }
+
+  Boxed boxed(int field0) {
+    return Boxed(
+      field0,
+    );
+  }
+
+  Buffer buffer(Uint8List field0) {
+    return Buffer(
+      field0,
+    );
+  }
+
+  Enums enums(Weekdays field0) {
+    return Enums(
+      field0,
+    );
+  }
+}
+
+/// @nodoc
+const $KitchenSink = _$KitchenSinkTearOff();
+
+/// @nodoc
+mixin _$KitchenSink {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int field0, int? field1) optional,
+    required TResult Function(int field0) boxed,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Boxed value) boxed,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $KitchenSinkCopyWith<$Res> {
+  factory $KitchenSinkCopyWith(
+          KitchenSink value, $Res Function(KitchenSink) then) =
+      _$KitchenSinkCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$KitchenSinkCopyWithImpl<$Res> implements $KitchenSinkCopyWith<$Res> {
+  _$KitchenSinkCopyWithImpl(this._value, this._then);
+
+  final KitchenSink _value;
+  // ignore: unused_field
+  final $Res Function(KitchenSink) _then;
+}
+
+/// @nodoc
+abstract class $EmptyCopyWith<$Res> {
+  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
+      _$EmptyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements $EmptyCopyWith<$Res> {
+  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then)
+      : super(_value, (v) => _then(v as Empty));
+
+  @override
+  Empty get _value => super._value as Empty;
+}
+
+/// @nodoc
+
+class _$Empty implements Empty {
+  const _$Empty();
+
+  @override
+  String toString() {
+    return 'KitchenSink.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Empty);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int field0, int? field1) optional,
+    required TResult Function(int field0) boxed,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+  }) {
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+  }) {
+    return empty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Boxed value) boxed,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Empty implements KitchenSink {
+  const factory Empty() = _$Empty;
+}
+
+/// @nodoc
+abstract class $NestedCopyWith<$Res> {
+  factory $NestedCopyWith(Nested value, $Res Function(Nested) then) =
+      _$NestedCopyWithImpl<$Res>;
+  $Res call({KitchenSink field0});
+
+  $KitchenSinkCopyWith<$Res> get field0;
+}
+
+/// @nodoc
+class _$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements $NestedCopyWith<$Res> {
+  _$NestedCopyWithImpl(Nested _value, $Res Function(Nested) _then)
+      : super(_value, (v) => _then(v as Nested));
+
+  @override
+  Nested get _value => super._value as Nested;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(Nested(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as KitchenSink,
+    ));
+  }
+
+  @override
+  $KitchenSinkCopyWith<$Res> get field0 {
+    return $KitchenSinkCopyWith<$Res>(_value.field0, (value) {
+      return _then(_value.copyWith(field0: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$Nested implements Nested {
+  const _$Nested(this.field0);
+
+  @override
+  final KitchenSink field0;
+
+  @override
+  String toString() {
+    return 'KitchenSink.nested(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Nested &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  $NestedCopyWith<Nested> get copyWith =>
+      _$NestedCopyWithImpl<Nested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int field0, int? field1) optional,
+    required TResult Function(int field0) boxed,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+  }) {
+    return nested(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+  }) {
+    return nested?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    required TResult orElse(),
+  }) {
+    if (nested != null) {
+      return nested(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Boxed value) boxed,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+  }) {
+    return nested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+  }) {
+    return nested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    required TResult orElse(),
+  }) {
+    if (nested != null) {
+      return nested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Nested implements KitchenSink {
+  const factory Nested(KitchenSink field0) = _$Nested;
+
+  KitchenSink get field0;
+  @JsonKey(ignore: true)
+  $NestedCopyWith<Nested> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OptionalCopyWith<$Res> {
+  factory $OptionalCopyWith(Optional value, $Res Function(Optional) then) =
+      _$OptionalCopyWithImpl<$Res>;
+  $Res call({int field0, int? field1});
+}
+
+/// @nodoc
+class _$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements $OptionalCopyWith<$Res> {
+  _$OptionalCopyWithImpl(Optional _value, $Res Function(Optional) _then)
+      : super(_value, (v) => _then(v as Optional));
+
+  @override
+  Optional get _value => super._value as Optional;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+    Object? field1 = freezed,
+  }) {
+    return _then(Optional(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+      field1 == freezed
+          ? _value.field1
+          : field1 // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Optional implements Optional {
+  const _$Optional(this.field0, [this.field1]);
+
+  @override
+  final int field0;
+  @override
+  final int? field1;
+
+  @override
+  String toString() {
+    return 'KitchenSink.optional(field0: $field0, field1: $field1)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Optional &&
+            const DeepCollectionEquality().equals(other.field0, field0) &&
+            const DeepCollectionEquality().equals(other.field1, field1));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(field0),
+      const DeepCollectionEquality().hash(field1));
+
+  @JsonKey(ignore: true)
+  @override
+  $OptionalCopyWith<Optional> get copyWith =>
+      _$OptionalCopyWithImpl<Optional>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int field0, int? field1) optional,
+    required TResult Function(int field0) boxed,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+  }) {
+    return optional(field0, field1);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+  }) {
+    return optional?.call(field0, field1);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    required TResult orElse(),
+  }) {
+    if (optional != null) {
+      return optional(field0, field1);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Boxed value) boxed,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+  }) {
+    return optional(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+  }) {
+    return optional?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    required TResult orElse(),
+  }) {
+    if (optional != null) {
+      return optional(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Optional implements KitchenSink {
+  const factory Optional(int field0, [int? field1]) = _$Optional;
+
+  int get field0;
+  int? get field1;
+  @JsonKey(ignore: true)
+  $OptionalCopyWith<Optional> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BoxedCopyWith<$Res> {
+  factory $BoxedCopyWith(Boxed value, $Res Function(Boxed) then) =
+      _$BoxedCopyWithImpl<$Res>;
+  $Res call({int field0});
+}
+
+/// @nodoc
+class _$BoxedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements $BoxedCopyWith<$Res> {
+  _$BoxedCopyWithImpl(Boxed _value, $Res Function(Boxed) _then)
+      : super(_value, (v) => _then(v as Boxed));
+
+  @override
+  Boxed get _value => super._value as Boxed;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(Boxed(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Boxed implements Boxed {
+  const _$Boxed(this.field0);
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'KitchenSink.boxed(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Boxed &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  $BoxedCopyWith<Boxed> get copyWith =>
+      _$BoxedCopyWithImpl<Boxed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int field0, int? field1) optional,
+    required TResult Function(int field0) boxed,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+  }) {
+    return boxed(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+  }) {
+    return boxed?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    required TResult orElse(),
+  }) {
+    if (boxed != null) {
+      return boxed(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Boxed value) boxed,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+  }) {
+    return boxed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+  }) {
+    return boxed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    required TResult orElse(),
+  }) {
+    if (boxed != null) {
+      return boxed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Boxed implements KitchenSink {
+  const factory Boxed(int field0) = _$Boxed;
+
+  int get field0;
+  @JsonKey(ignore: true)
+  $BoxedCopyWith<Boxed> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BufferCopyWith<$Res> {
+  factory $BufferCopyWith(Buffer value, $Res Function(Buffer) then) =
+      _$BufferCopyWithImpl<$Res>;
+  $Res call({Uint8List field0});
+}
+
+/// @nodoc
+class _$BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements $BufferCopyWith<$Res> {
+  _$BufferCopyWithImpl(Buffer _value, $Res Function(Buffer) _then)
+      : super(_value, (v) => _then(v as Buffer));
+
+  @override
+  Buffer get _value => super._value as Buffer;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(Buffer(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Buffer implements Buffer {
+  const _$Buffer(this.field0);
+
+  @override
+  final Uint8List field0;
+
+  @override
+  String toString() {
+    return 'KitchenSink.buffer(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Buffer &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  $BufferCopyWith<Buffer> get copyWith =>
+      _$BufferCopyWithImpl<Buffer>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int field0, int? field1) optional,
+    required TResult Function(int field0) boxed,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+  }) {
+    return buffer(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+  }) {
+    return buffer?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    required TResult orElse(),
+  }) {
+    if (buffer != null) {
+      return buffer(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Boxed value) boxed,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+  }) {
+    return buffer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+  }) {
+    return buffer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    required TResult orElse(),
+  }) {
+    if (buffer != null) {
+      return buffer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Buffer implements KitchenSink {
+  const factory Buffer(Uint8List field0) = _$Buffer;
+
+  Uint8List get field0;
+  @JsonKey(ignore: true)
+  $BufferCopyWith<Buffer> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EnumsCopyWith<$Res> {
+  factory $EnumsCopyWith(Enums value, $Res Function(Enums) then) =
+      _$EnumsCopyWithImpl<$Res>;
+  $Res call({Weekdays field0});
+}
+
+/// @nodoc
+class _$EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements $EnumsCopyWith<$Res> {
+  _$EnumsCopyWithImpl(Enums _value, $Res Function(Enums) _then)
+      : super(_value, (v) => _then(v as Enums));
+
+  @override
+  Enums get _value => super._value as Enums;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(Enums(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Weekdays,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Enums implements Enums {
+  const _$Enums(this.field0);
+
+  @override
+  final Weekdays field0;
+
+  @override
+  String toString() {
+    return 'KitchenSink.enums(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Enums &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  $EnumsCopyWith<Enums> get copyWith =>
+      _$EnumsCopyWithImpl<Enums>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int field0, int? field1) optional,
+    required TResult Function(int field0) boxed,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+  }) {
+    return enums(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+  }) {
+    return enums?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int field0, int? field1)? optional,
+    TResult Function(int field0)? boxed,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    required TResult orElse(),
+  }) {
+    if (enums != null) {
+      return enums(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Boxed value) boxed,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+  }) {
+    return enums(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+  }) {
+    return enums?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Boxed value)? boxed,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    required TResult orElse(),
+  }) {
+    if (enums != null) {
+      return enums(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Enums implements KitchenSink {
+  const factory Enums(Weekdays field0) = _$Enums;
+
+  Weekdays get field0;
+  @JsonKey(ignore: true)
+  $EnumsCopyWith<Enums> get copyWith => throw _privateConstructorUsedError;
+}

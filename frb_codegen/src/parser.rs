@@ -267,9 +267,16 @@ impl<'a> Parser<'a> {
             self.enum_pool.insert(ty.to_owned(), enu);
         }
 
+        // Only self-nesting enums should encounter this case.
+        let is_struct = self
+            .enum_pool
+            .get(ty)
+            .map(ApiEnum::is_struct)
+            .unwrap_or(true);
+
         Some(EnumRef(ApiTypeEnumRef {
             name: ty.to_owned(),
-            is_struct: self.enum_pool[ty].is_struct(),
+            is_struct,
         }))
     }
 

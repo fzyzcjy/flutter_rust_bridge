@@ -392,6 +392,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
                             wireObj.tag = {1};
                             wireObj.kind = inner.inflate_{2}_{0}();
                             {3}
+                            return;
                         }}",
                         variant.name,
                         idx,
@@ -601,12 +602,26 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
             .map(|variant| {
                 let args = match &variant.kind {
                     ApiVariantKind::Value => "".to_owned(),
-                    ApiVariantKind::Tuple(types) => types
-                        .iter()
-                        .enumerate()
-                        .map(|(idx, typ)| format!("{} field{}", typ.dart_api_type(), idx))
-                        .collect::<Vec<_>>()
-                        .join(","),
+                    ApiVariantKind::Tuple(types) => {
+                        let split = optional_boundary_index(types);
+                        let types = types
+                            .iter()
+                            .enumerate()
+                            .map(|(idx, typ)| format!("{} field{}", typ.dart_api_type(), idx))
+                            .collect::<Vec<_>>();
+                        if let Some(idx) = split {
+                            let before = &types[..idx];
+                            let after = &types[idx..];
+                            format!(
+                                "{}{} [{}]",
+                                before.join(","),
+                                if before.is_empty() { "" } else { "," },
+                                after.join(",")
+                            )
+                        } else {
+                            types.join(",")
+                        }
+                    }
                     ApiVariantKind::Struct(st) => {
                         let fields = st
                             .fields
