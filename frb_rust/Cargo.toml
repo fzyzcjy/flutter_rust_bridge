@@ -9,7 +9,7 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [features]
-default = ["attributes"]
+default = []
 attributes = ["flutter_rust_bridge_macros"]
 
 [dependencies]

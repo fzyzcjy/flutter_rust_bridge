@@ -9,8 +9,12 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [dependencies]
-syn = { version = "1.0", features = ["full"] }
 quote = "1.0"
+
+[dependencies.syn]
+version = "1.0"
+default_features = false
+features = ["derive", "full", "parsing", "printing", "proc-macro"]
 
 [lib]
 proc-macro = true
