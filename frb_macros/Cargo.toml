@@ -1,0 +1,20 @@
+[package]
+name = "flutter_rust_bridge_macros"
+version = "1.10.0"
+edition = "2018"
+description = "Supporting procedural macros for flutter_rust_bridge"
+license = "MIT"
+repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
+keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
+categories = ["development-tools::ffi"]
+
+[dependencies]
+quote = "1.0"
+
+[dependencies.syn]
+version = "1.0"
+default_features = false
+features = ["derive", "parsing", "printing", "proc-macro"]
+
+[lib]
+proc-macro = true

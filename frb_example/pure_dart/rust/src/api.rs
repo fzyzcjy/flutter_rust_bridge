@@ -7,7 +7,7 @@ use std::time::Duration;
 
 use anyhow::{anyhow, Result};
 
-use flutter_rust_bridge::{StreamSink, SyncReturn, ZeroCopyBuffer};
+use flutter_rust_bridge::*;
 
 /// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
@@ -397,4 +397,18 @@ pub fn handle_enum_struct(mut val: Foobar) -> Result<Foobar> {
 
 pub fn handle_complex_enum(val: KitchenSink) -> Result<String> {
     Ok(format!("{:?}", val))
+}
+
+#[frb]
+#[derive(Debug, Clone)]
+pub struct Customized {
+    pub final_field: String,
+    /// Not implemented yet, placeholder only
+    #[frb(non_final)]
+    pub non_final_field: Option<String>,
+}
+
+pub fn handle_customized_struct(val: Customized) -> Result<()> {
+    println!("{:#?}", val);
+    Ok(())
 }
