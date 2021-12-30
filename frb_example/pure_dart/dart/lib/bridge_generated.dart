@@ -84,6 +84,8 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   Future<Foobar> handleEnumStruct({required Foobar val, dynamic hint});
 
   Future<String> handleComplexEnum({required KitchenSink val, dynamic hint});
+
+  Future<void> handleCustomiedStruct({required Customized val, dynamic hint});
 }
 
 class Attribute {
@@ -93,6 +95,18 @@ class Attribute {
   Attribute({
     required this.key,
     required this.value,
+  });
+}
+
+class Customized {
+  final String finalField;
+
+  /// Not implemented yet, placeholder only
+  final String? nonFinalField;
+
+  Customized({
+    required this.finalField,
+    this.nonFinalField,
   });
 }
 
@@ -581,6 +595,17 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
         hint: hint,
       ));
 
+  Future<void> handleCustomiedStruct({required Customized val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_customied_struct(port, _api2wire_box_autoadd_customized(val)),
+        parseSuccessData: _wire2api_unit,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_customied_struct",
+          argNames: ["val"],
+        ),
+        argValues: [val],
+        hint: hint,
+      ));
+
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
@@ -610,6 +635,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<ffi.Uint8> _api2wire_box_autoadd_bool(bool raw) {
     return inner.new_box_autoadd_bool(raw);
+  }
+
+  ffi.Pointer<wire_Customized> _api2wire_box_autoadd_customized(Customized raw) {
+    final ptr = inner.new_box_autoadd_customized();
+    _api_fill_to_wire_customized(raw, ptr.ref);
+    return ptr;
   }
 
   ffi.Pointer<wire_ExoticOptionals> _api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
@@ -909,6 +940,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     _api_fill_to_wire_attribute(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_customized(Customized apiObj, ffi.Pointer<wire_Customized> wireObj) {
+    _api_fill_to_wire_customized(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_exotic_optionals(
       ExoticOptionals apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
@@ -944,6 +979,11 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_customized(Customized apiObj, wire_Customized wireObj) {
+    wireObj.final_field = _api2wire_String(apiObj.finalField);
+    wireObj.non_final_field = _api2wire_opt_String(apiObj.nonFinalField);
   }
 
   void _api_fill_to_wire_exotic_optionals(ExoticOptionals apiObj, wire_ExoticOptionals wireObj) {
@@ -1881,6 +1921,22 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_complex_enum =
       _wire_handle_complex_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_KitchenSink>)>();
 
+  void wire_handle_customied_struct(
+    int port,
+    ffi.Pointer<wire_Customized> val,
+  ) {
+    return _wire_handle_customied_struct(
+      port,
+      val,
+    );
+  }
+
+  late final _wire_handle_customied_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Customized>)>>(
+          'wire_handle_customied_struct');
+  late final _wire_handle_customied_struct =
+      _wire_handle_customied_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Customized>)>();
+
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -1913,6 +1969,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_boolPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>('new_box_autoadd_bool');
   late final _new_box_autoadd_bool = _new_box_autoadd_boolPtr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
+
+  ffi.Pointer<wire_Customized> new_box_autoadd_customized() {
+    return _new_box_autoadd_customized();
+  }
+
+  late final _new_box_autoadd_customizedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Customized> Function()>>('new_box_autoadd_customized');
+  late final _new_box_autoadd_customized =
+      _new_box_autoadd_customizedPtr.asFunction<ffi.Pointer<wire_Customized> Function()>();
 
   ffi.Pointer<wire_ExoticOptionals> new_box_autoadd_exotic_optionals() {
     return _new_box_autoadd_exotic_optionals();
@@ -2526,6 +2591,12 @@ class KitchenSink_Structlike extends ffi.Struct {
   external ffi.Pointer<wire_Foobar> foo;
 
   external ffi.Pointer<ffi.Int32> bar;
+}
+
+class wire_Customized extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> final_field;
+
+  external ffi.Pointer<wire_uint_8_list> non_final_field;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;

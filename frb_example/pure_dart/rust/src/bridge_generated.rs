@@ -433,6 +433,21 @@ pub extern "C" fn wire_handle_complex_enum(port: i64, val: *mut wire_KitchenSink
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_handle_customied_struct(port: i64, val: *mut wire_Customized) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_customied_struct",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_val = val.wire2api();
+            move |task_callback| handle_customied_struct(api_val)
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -447,6 +462,13 @@ pub struct wire_StringList {
 pub struct wire_Attribute {
     key: *mut wire_uint_8_list,
     value: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Customized {
+    final_field: *mut wire_uint_8_list,
+    non_final_field: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -671,6 +693,11 @@ pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_Attribute {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_customized() -> *mut wire_Customized {
+    support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -925,6 +952,13 @@ impl Wire2Api<bool> for *mut bool {
     }
 }
 
+impl Wire2Api<Customized> for *mut wire_Customized {
+    fn wire2api(self) -> Customized {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
     fn wire2api(self) -> ExoticOptionals {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1039,6 +1073,15 @@ impl Wire2Api<Box<MySize>> for *mut wire_MySize {
 impl Wire2Api<Box<u8>> for *mut u8 {
     fn wire2api(self) -> Box<u8> {
         unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<Customized> for wire_Customized {
+    fn wire2api(self) -> Customized {
+        Customized {
+            final_field: self.final_field.wire2api(),
+            non_final_field: self.non_final_field.wire2api(),
+        }
     }
 }
 
@@ -1320,6 +1363,15 @@ impl NewWithNullPtr for wire_Attribute {
         Self {
             key: core::ptr::null_mut(),
             value: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Customized {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            final_field: core::ptr::null_mut(),
+            non_final_field: core::ptr::null_mut(),
         }
     }
 }

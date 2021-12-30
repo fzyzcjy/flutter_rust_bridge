@@ -1,5 +1,7 @@
 pub use allo_isolate::ZeroCopyBuffer;
 
+#[cfg(feature = "attributes")]
+pub use flutter_rust_bridge_macros::frb;
 pub use handler::{FfiCallMode, Handler, WrapInfo};
 pub use rust2dart::StreamSink;
 
