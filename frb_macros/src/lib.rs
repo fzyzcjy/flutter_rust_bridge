@@ -32,19 +32,6 @@ pub fn frb(_: TokenStream, item: TokenStream) -> TokenStream {
             }
         };
         quote! { #input }.into()
-    } else if let Ok(mut input) = syn::parse::<ItemStruct>(item.clone()) {
-        input.fields = remove_marker_attr_from_fields(input.fields);
-        quote! { #input }.into()
-    } else if let Ok(mut input) = syn::parse::<ItemEnum>(item.clone()) {
-        input.variants = input
-            .variants
-            .into_iter()
-            .map(remove_marker_attr_from_variant)
-            .collect();
-        quote! { #input }.into()
-    } else if let Ok(mut input) = syn::parse::<ItemUnion>(item.clone()) {
-        input.fields = remove_marker_attr_from_named_fields(input.fields);
-        quote! { #input }.into()
     } else {
         item
     }
