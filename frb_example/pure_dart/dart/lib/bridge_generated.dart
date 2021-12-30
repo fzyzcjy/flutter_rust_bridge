@@ -85,7 +85,7 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
 
   Future<String> handleComplexEnum({required KitchenSink val, dynamic hint});
 
-  Future<void> handleCustomiedStruct({required Customized val, dynamic hint});
+  Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
 }
 
 class Attribute {
@@ -595,11 +595,11 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
         hint: hint,
       ));
 
-  Future<void> handleCustomiedStruct({required Customized val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) => inner.wire_handle_customied_struct(port, _api2wire_box_autoadd_customized(val)),
+  Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_customized_struct(port, _api2wire_box_autoadd_customized(val)),
         parseSuccessData: _wire2api_unit,
         constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_customied_struct",
+          debugName: "handle_customized_struct",
           argNames: ["val"],
         ),
         argValues: [val],
@@ -1921,21 +1921,21 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_complex_enum =
       _wire_handle_complex_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_KitchenSink>)>();
 
-  void wire_handle_customied_struct(
+  void wire_handle_customized_struct(
     int port,
     ffi.Pointer<wire_Customized> val,
   ) {
-    return _wire_handle_customied_struct(
+    return _wire_handle_customized_struct(
       port,
       val,
     );
   }
 
-  late final _wire_handle_customied_structPtr =
+  late final _wire_handle_customized_structPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Customized>)>>(
-          'wire_handle_customied_struct');
-  late final _wire_handle_customied_struct =
-      _wire_handle_customied_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Customized>)>();
+          'wire_handle_customized_struct');
+  late final _wire_handle_customized_struct =
+      _wire_handle_customized_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Customized>)>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,

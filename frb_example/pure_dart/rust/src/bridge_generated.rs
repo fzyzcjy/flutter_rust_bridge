@@ -434,16 +434,16 @@ pub extern "C" fn wire_handle_complex_enum(port: i64, val: *mut wire_KitchenSink
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_customied_struct(port: i64, val: *mut wire_Customized) {
+pub extern "C" fn wire_handle_customized_struct(port: i64, val: *mut wire_Customized) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "handle_customied_struct",
+            debug_name: "handle_customized_struct",
             port: Some(port),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| handle_customied_struct(api_val)
+            move |task_callback| handle_customized_struct(api_val)
         },
     )
 }

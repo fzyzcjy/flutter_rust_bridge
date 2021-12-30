@@ -408,7 +408,7 @@ pub struct Customized {
     pub non_final_field: Option<String>,
 }
 
-pub fn handle_customied_struct(val: Customized) -> Result<()> {
+pub fn handle_customized_struct(val: Customized) -> Result<()> {
     println!("{:#?}", val);
     Ok(())
 }
