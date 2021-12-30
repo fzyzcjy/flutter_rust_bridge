@@ -1,10 +1,14 @@
+## 1.10.0
+
+* Support enum structs (Rust's expressive enums with fields) #256 (thanks @Desdaemon)
+
 ## 1.9.1
 
 * Bump versions of dependencies
 
 ## 1.9.0
 
-* Suppose field-less enum types #239 (thanks @Desdaemon)
+* Support field-less enum types #239 (thanks @Desdaemon)
 
 ## 1.8.2
 
