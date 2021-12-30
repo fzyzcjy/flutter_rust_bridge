@@ -7,6 +7,9 @@ import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'dart:ffi' as ffi;
+import 'package:freezed_annotation/freezed_annotation.dart';
+// import 'package:flutter/foundation.dart';
+part 'bridge_generated.freezed.dart';
 
 abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
   factory FlutterRustBridgeExample(ffi.DynamicLibrary dylib) =>
@@ -77,19 +80,10 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
-}
 
-/// Simple enums.
-enum Weekdays {
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday,
+  Future<Foobar> handleEnumStruct({required Foobar val, dynamic hint});
 
-  /// Best day of the week.
-  Saturday,
-  Sunday,
+  Future<String> handleComplexEnum({required KitchenSink val, dynamic hint});
 }
 
 class Attribute {
@@ -152,6 +146,24 @@ class ExoticOptionals {
   });
 }
 
+@freezed
+class Foobar with _$Foobar {
+  const factory Foobar.foo() = Foo;
+  const factory Foobar.bar(String field0) = Bar;
+  const factory Foobar.baz({required String name}) = Baz;
+}
+
+@freezed
+class KitchenSink with _$KitchenSink {
+  const factory KitchenSink.empty() = Empty;
+  const factory KitchenSink.nested(KitchenSink field0) = Nested;
+  const factory KitchenSink.optional(int field0, [int? field1]) = Optional;
+  const factory KitchenSink.boxed(int field0) = Boxed;
+  const factory KitchenSink.buffer(Uint8List field0) = Buffer;
+  const factory KitchenSink.enums(Weekdays field0) = Enums;
+  const factory KitchenSink.structlike({required Foobar foo, int? bar}) = Structlike;
+}
+
 class MySize {
   final int width;
   final int height;
@@ -206,6 +218,19 @@ class VecOfPrimitivePack {
     required this.float32List,
     required this.float64List,
   });
+}
+
+/// Simple enums.
+enum Weekdays {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+
+  /// Best day of the week.
+  Saturday,
+  Sunday,
 }
 
 class ZeroCopyVecOfPrimitivePack {
@@ -513,7 +538,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port) => inner.wire_handle_return_enum(port, _api2wire_String(input)),
-        parseSuccessData: _wire2api_opt_Weekdays,
+        parseSuccessData: _wire2api_opt_weekdays,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "handle_return_enum",
           argNames: ["input"],
@@ -524,13 +549,35 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) => inner.wire_handle_enum_parameter(port, _api2wire_Weekdays(weekday)),
-        parseSuccessData: _wire2api_Weekdays,
+        callFfi: (port) => inner.wire_handle_enum_parameter(port, _api2wire_weekdays(weekday)),
+        parseSuccessData: _wire2api_weekdays,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "handle_enum_parameter",
           argNames: ["weekday"],
         ),
         argValues: [weekday],
+        hint: hint,
+      ));
+
+  Future<Foobar> handleEnumStruct({required Foobar val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_enum_struct(port, _api2wire_box_autoadd_foobar(val)),
+        parseSuccessData: _wire2api_foobar,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_enum_struct",
+          argNames: ["val"],
+        ),
+        argValues: [val],
+        hint: hint,
+      ));
+
+  Future<String> handleComplexEnum({required KitchenSink val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_complex_enum(port, _api2wire_box_autoadd_kitchen_sink(val)),
+        parseSuccessData: _wire2api_String,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_complex_enum",
+          argNames: ["val"],
+        ),
+        argValues: [val],
         hint: hint,
       ));
 
@@ -545,10 +592,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       ans.ref.ptr[i] = _api2wire_String(raw[i]);
     }
     return ans;
-  }
-
-  int _api2wire_Weekdays(Weekdays raw) {
-    return raw.index;
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
@@ -579,12 +622,24 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return inner.new_box_autoadd_f64(raw);
   }
 
+  ffi.Pointer<wire_Foobar> _api2wire_box_autoadd_foobar(Foobar raw) {
+    final ptr = inner.new_box_autoadd_foobar();
+    _api_fill_to_wire_foobar(raw, ptr.ref);
+    return ptr;
+  }
+
   ffi.Pointer<ffi.Int32> _api2wire_box_autoadd_i32(int raw) {
     return inner.new_box_autoadd_i32(raw);
   }
 
   ffi.Pointer<ffi.Int64> _api2wire_box_autoadd_i64(int raw) {
     return inner.new_box_autoadd_i64(raw);
+  }
+
+  ffi.Pointer<wire_KitchenSink> _api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
+    final ptr = inner.new_box_autoadd_kitchen_sink();
+    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+    return ptr;
   }
 
   ffi.Pointer<wire_MySize> _api2wire_box_autoadd_my_size(MySize raw) {
@@ -629,6 +684,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   ffi.Pointer<ffi.Int8> _api2wire_box_i8(int raw) {
     return inner.new_box_i8(raw);
+  }
+
+  ffi.Pointer<wire_KitchenSink> _api2wire_box_kitchen_sink(KitchenSink raw) {
+    final ptr = inner.new_box_kitchen_sink();
+    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+    return ptr;
   }
 
   ffi.Pointer<wire_MySize> _api2wire_box_my_size(MySize raw) {
@@ -833,6 +894,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
+  int _api2wire_weekdays(Weekdays raw) {
+    return raw.index;
+  }
+
   // Section: api_fill_to_wire
 
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
@@ -849,6 +914,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_foobar(Foobar apiObj, ffi.Pointer<wire_Foobar> wireObj) {
+    _api_fill_to_wire_foobar(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
+    _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
@@ -863,6 +936,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   void _api_fill_to_wire_box_exotic_optionals(ExoticOptionals apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
+    _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
@@ -885,6 +962,62 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     wireObj.attributes_nullable = _api2wire_list_opt_box_autoadd_attribute(apiObj.attributesNullable);
     wireObj.nullable_attributes = _api2wire_opt_list_opt_box_autoadd_attribute(apiObj.nullableAttributes);
     wireObj.newtypeint = _api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
+  }
+
+  void _api_fill_to_wire_foobar(Foobar apiObj, wire_Foobar wireObj) {
+    if (apiObj is Foo) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is Bar) {
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_Foobar_Bar();
+      wireObj.kind.ref.Bar.ref.field0 = _api2wire_String(apiObj.field0);
+    }
+    if (apiObj is Baz) {
+      wireObj.tag = 2;
+      wireObj.kind = inner.inflate_Foobar_Baz();
+      wireObj.kind.ref.Baz.ref.name = _api2wire_String(apiObj.name);
+    }
+  }
+
+  void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, wire_KitchenSink wireObj) {
+    if (apiObj is Empty) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is Nested) {
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_KitchenSink_Nested();
+      wireObj.kind.ref.Nested.ref.field0 = _api2wire_box_kitchen_sink(apiObj.field0);
+    }
+    if (apiObj is Optional) {
+      wireObj.tag = 2;
+      wireObj.kind = inner.inflate_KitchenSink_Optional();
+      wireObj.kind.ref.Optional.ref.field0 = _api2wire_i32(apiObj.field0);
+      wireObj.kind.ref.Optional.ref.field1 = _api2wire_opt_box_autoadd_i32(apiObj.field1);
+    }
+    if (apiObj is Boxed) {
+      wireObj.tag = 3;
+      wireObj.kind = inner.inflate_KitchenSink_Boxed();
+      wireObj.kind.ref.Boxed.ref.field0 = _api2wire_box_i32(apiObj.field0);
+    }
+    if (apiObj is Buffer) {
+      wireObj.tag = 4;
+      wireObj.kind = inner.inflate_KitchenSink_Buffer();
+      wireObj.kind.ref.Buffer.ref.field0 = _api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
+    }
+    if (apiObj is Enums) {
+      wireObj.tag = 5;
+      wireObj.kind = inner.inflate_KitchenSink_Enums();
+      wireObj.kind.ref.Enums.ref.field0 = _api2wire_weekdays(apiObj.field0);
+    }
+    if (apiObj is Structlike) {
+      wireObj.tag = 6;
+      wireObj.kind = inner.inflate_KitchenSink_Structlike();
+      wireObj.kind.ref.Structlike.ref.foo = _api2wire_box_autoadd_foobar(apiObj.foo);
+      wireObj.kind.ref.Structlike.ref.bar = _api2wire_opt_box_autoadd_i32(apiObj.bar);
+    }
   }
 
   void _api_fill_to_wire_my_size(MySize apiObj, wire_MySize wireObj) {
@@ -931,10 +1064,6 @@ List<String> _wire2api_StringList(dynamic raw) {
 
 Uint8List _wire2api_SyncReturnVecU8(dynamic raw) {
   return raw as Uint8List;
-}
-
-Weekdays _wire2api_Weekdays(dynamic raw) {
-  return Weekdays.values[raw];
 }
 
 Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
@@ -1071,6 +1200,19 @@ Float64List _wire2api_float_64_list(dynamic raw) {
   return raw as Float64List;
 }
 
+Foobar _wire2api_foobar(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return Foobar.foo();
+    case 1:
+      return Foobar.bar(raw[1]);
+    case 2:
+      return Foobar.baz(name: raw[1]);
+    default:
+      throw Exception("unreachable");
+  }
+}
+
 int _wire2api_i16(dynamic raw) {
   return raw as int;
 }
@@ -1154,10 +1296,6 @@ String? _wire2api_opt_String(dynamic raw) {
   return raw == null ? null : _wire2api_String(raw);
 }
 
-Weekdays? _wire2api_opt_Weekdays(dynamic raw) {
-  return raw == null ? null : _wire2api_Weekdays(raw);
-}
-
 Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
 }
@@ -1230,6 +1368,10 @@ Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_uint_8_list(raw);
 }
 
+Weekdays? _wire2api_opt_weekdays(dynamic raw) {
+  return raw == null ? null : _wire2api_weekdays(raw);
+}
+
 int _wire2api_u16(dynamic raw) {
   return raw as int;
 }
@@ -1281,6 +1423,10 @@ VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
     float32List: _wire2api_float_32_list(arr[8]),
     float64List: _wire2api_float_64_list(arr[9]),
   );
+}
+
+Weekdays _wire2api_weekdays(dynamic raw) {
+  return Weekdays.values[raw];
 }
 
 ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
@@ -1704,6 +1850,37 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_enum_parameter');
   late final _wire_handle_enum_parameter = _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
 
+  void wire_handle_enum_struct(
+    int port,
+    ffi.Pointer<wire_Foobar> val,
+  ) {
+    return _wire_handle_enum_struct(
+      port,
+      val,
+    );
+  }
+
+  late final _wire_handle_enum_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Foobar>)>>('wire_handle_enum_struct');
+  late final _wire_handle_enum_struct =
+      _wire_handle_enum_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Foobar>)>();
+
+  void wire_handle_complex_enum(
+    int port,
+    ffi.Pointer<wire_KitchenSink> val,
+  ) {
+    return _wire_handle_complex_enum(
+      port,
+      val,
+    );
+  }
+
+  late final _wire_handle_complex_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_KitchenSink>)>>(
+          'wire_handle_complex_enum');
+  late final _wire_handle_complex_enum =
+      _wire_handle_complex_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_KitchenSink>)>();
+
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -1758,6 +1935,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64');
   late final _new_box_autoadd_f64 = _new_box_autoadd_f64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
 
+  ffi.Pointer<wire_Foobar> new_box_autoadd_foobar() {
+    return _new_box_autoadd_foobar();
+  }
+
+  late final _new_box_autoadd_foobarPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Foobar> Function()>>('new_box_autoadd_foobar');
+  late final _new_box_autoadd_foobar = _new_box_autoadd_foobarPtr.asFunction<ffi.Pointer<wire_Foobar> Function()>();
+
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
     int value,
   ) {
@@ -1781,6 +1966,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_i64Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_autoadd_i64');
   late final _new_box_autoadd_i64 = _new_box_autoadd_i64Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+
+  ffi.Pointer<wire_KitchenSink> new_box_autoadd_kitchen_sink() {
+    return _new_box_autoadd_kitchen_sink();
+  }
+
+  late final _new_box_autoadd_kitchen_sinkPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>('new_box_autoadd_kitchen_sink');
+  late final _new_box_autoadd_kitchen_sink =
+      _new_box_autoadd_kitchen_sinkPtr.asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
 
   ffi.Pointer<wire_MySize> new_box_autoadd_my_size() {
     return _new_box_autoadd_my_size();
@@ -1871,6 +2065,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   late final _new_box_i8Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int8)>>('new_box_i8');
   late final _new_box_i8 = _new_box_i8Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+
+  ffi.Pointer<wire_KitchenSink> new_box_kitchen_sink() {
+    return _new_box_kitchen_sink();
+  }
+
+  late final _new_box_kitchen_sinkPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>('new_box_kitchen_sink');
+  late final _new_box_kitchen_sink = _new_box_kitchen_sinkPtr.asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
 
   ffi.Pointer<wire_MySize> new_box_my_size() {
     return _new_box_my_size();
@@ -2012,6 +2214,76 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_uint_8_listPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+
+  ffi.Pointer<FoobarKind> inflate_Foobar_Bar() {
+    return _inflate_Foobar_Bar();
+  }
+
+  late final _inflate_Foobar_BarPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<FoobarKind> Function()>>('inflate_Foobar_Bar');
+  late final _inflate_Foobar_Bar = _inflate_Foobar_BarPtr.asFunction<ffi.Pointer<FoobarKind> Function()>();
+
+  ffi.Pointer<FoobarKind> inflate_Foobar_Baz() {
+    return _inflate_Foobar_Baz();
+  }
+
+  late final _inflate_Foobar_BazPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<FoobarKind> Function()>>('inflate_Foobar_Baz');
+  late final _inflate_Foobar_Baz = _inflate_Foobar_BazPtr.asFunction<ffi.Pointer<FoobarKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Nested() {
+    return _inflate_KitchenSink_Nested();
+  }
+
+  late final _inflate_KitchenSink_NestedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Nested');
+  late final _inflate_KitchenSink_Nested =
+      _inflate_KitchenSink_NestedPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Optional() {
+    return _inflate_KitchenSink_Optional();
+  }
+
+  late final _inflate_KitchenSink_OptionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Optional');
+  late final _inflate_KitchenSink_Optional =
+      _inflate_KitchenSink_OptionalPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Boxed() {
+    return _inflate_KitchenSink_Boxed();
+  }
+
+  late final _inflate_KitchenSink_BoxedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Boxed');
+  late final _inflate_KitchenSink_Boxed =
+      _inflate_KitchenSink_BoxedPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Buffer() {
+    return _inflate_KitchenSink_Buffer();
+  }
+
+  late final _inflate_KitchenSink_BufferPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Buffer');
+  late final _inflate_KitchenSink_Buffer =
+      _inflate_KitchenSink_BufferPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Enums() {
+    return _inflate_KitchenSink_Enums();
+  }
+
+  late final _inflate_KitchenSink_EnumsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Enums');
+  late final _inflate_KitchenSink_Enums =
+      _inflate_KitchenSink_EnumsPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Structlike() {
+    return _inflate_KitchenSink_Structlike();
+  }
+
+  late final _inflate_KitchenSink_StructlikePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Structlike');
+  late final _inflate_KitchenSink_Structlike =
+      _inflate_KitchenSink_StructlikePtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
@@ -2174,6 +2446,86 @@ class wire_ExoticOptionals extends ffi.Struct {
   external ffi.Pointer<wire_list_opt_box_autoadd_attribute> nullable_attributes;
 
   external ffi.Pointer<wire_NewTypeInt> newtypeint;
+}
+
+class Foobar_Foo extends ffi.Opaque {}
+
+class Foobar_Bar extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+}
+
+class Foobar_Baz extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+class FoobarKind extends ffi.Union {
+  external ffi.Pointer<Foobar_Foo> Foo;
+
+  external ffi.Pointer<Foobar_Bar> Bar;
+
+  external ffi.Pointer<Foobar_Baz> Baz;
+}
+
+class wire_Foobar extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<FoobarKind> kind;
+}
+
+class KitchenSink_Empty extends ffi.Opaque {}
+
+class KitchenSink_Nested extends ffi.Struct {
+  external ffi.Pointer<wire_KitchenSink> field0;
+}
+
+class wire_KitchenSink extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<KitchenSinkKind> kind;
+}
+
+class KitchenSinkKind extends ffi.Union {
+  external ffi.Pointer<KitchenSink_Empty> Empty;
+
+  external ffi.Pointer<KitchenSink_Nested> Nested;
+
+  external ffi.Pointer<KitchenSink_Optional> Optional;
+
+  external ffi.Pointer<KitchenSink_Boxed> Boxed;
+
+  external ffi.Pointer<KitchenSink_Buffer> Buffer;
+
+  external ffi.Pointer<KitchenSink_Enums> Enums;
+
+  external ffi.Pointer<KitchenSink_Structlike> Structlike;
+}
+
+class KitchenSink_Optional extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+
+  external ffi.Pointer<ffi.Int32> field1;
+}
+
+class KitchenSink_Boxed extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> field0;
+}
+
+class KitchenSink_Buffer extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+}
+
+class KitchenSink_Enums extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
+
+class KitchenSink_Structlike extends ffi.Struct {
+  external ffi.Pointer<wire_Foobar> foo;
+
+  external ffi.Pointer<ffi.Int32> bar;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;

@@ -5,11 +5,13 @@ use convert_case::{Case, Casing};
 use ApiType::*;
 
 pub type ApiStructPool = HashMap<String, ApiStruct>;
+pub type ApiEnumPool = HashMap<String, ApiEnum>;
 
 #[derive(Debug, Clone)]
 pub struct ApiFile {
     pub funcs: Vec<ApiFunc>,
     pub struct_pool: ApiStructPool,
+    pub enum_pool: ApiEnumPool,
     pub has_executor: bool,
 }
 
@@ -110,6 +112,12 @@ pub struct ApiIdent {
     pub raw: String,
 }
 
+impl std::fmt::Display for ApiIdent {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        fmt.write_str(&self.raw)
+    }
+}
+
 impl ApiIdent {
     pub fn new(raw: String) -> ApiIdent {
         ApiIdent { raw }
@@ -133,7 +141,7 @@ pub enum ApiType {
     GeneralList(Box<ApiTypeGeneralList>),
     StructRef(ApiTypeStructRef),
     Boxed(Box<ApiTypeBoxed>),
-    Enum(ApiEnum),
+    EnumRef(ApiTypeEnumRef),
 }
 
 macro_rules! api_type_call_child {
@@ -147,7 +155,7 @@ macro_rules! api_type_call_child {
                 StructRef(inner) => inner.$func(),
                 Boxed(inner) => inner.$func(),
                 Optional(inner) => inner.$func(),
-                Enum(enu) => enu.$func(),
+                EnumRef(inner) => inner.$func(),
             }
         }
     };
@@ -172,7 +180,22 @@ impl ApiType {
             Boxed(inner) => inner.inner.visit_types(f, api_file),
             Delegate(d) => d.get_delegate().visit_types(f, api_file),
             Optional(inner) => inner.inner.visit_types(f, api_file),
-            Primitive(_) | Enum(_) => {}
+            EnumRef(enu) => {
+                let enu = enu.get(api_file);
+                for variant in enu.variants() {
+                    match &variant.kind {
+                        ApiVariantKind::Tuple(types) => {
+                            types.iter().for_each(|ty| ty.visit_types(f, api_file))
+                        }
+                        ApiVariantKind::Struct(s) => s
+                            .fields
+                            .iter()
+                            .for_each(|field| field.ty.visit_types(f, api_file)),
+                        _ => {}
+                    }
+                }
+            }
+            Primitive(_) => {}
         }
     }
 
@@ -688,32 +711,133 @@ impl From<&str> for Comment {
 }
 
 #[derive(Debug, Clone)]
-pub struct ApiEnum {
+pub struct ApiTypeEnumRef {
     pub name: String,
-    pub members: Vec<EnumVariant>,
-    pub comments: Vec<Comment>,
+    pub is_struct: bool,
+}
+
+impl ApiTypeEnumRef {
+    pub fn get<'a>(&self, file: &'a ApiFile) -> &'a ApiEnum {
+        &file.enum_pool[&self.name]
+    }
+}
+
+impl ApiTypeChild for ApiTypeEnumRef {
+    fn safe_ident(&self) -> String {
+        self.dart_api_type().to_case(Case::Snake)
+    }
+    fn dart_api_type(&self) -> String {
+        self.name.to_string()
+    }
+    fn dart_wire_type(&self) -> String {
+        if self.is_struct {
+            self.rust_wire_type()
+        } else {
+            "int".to_owned()
+        }
+    }
+    fn rust_api_type(&self) -> String {
+        self.name.to_string()
+    }
+    fn rust_wire_type(&self) -> String {
+        if self.is_struct {
+            format!("wire_{}", self.name)
+        } else {
+            "i32".to_owned()
+        }
+    }
 }
 
 #[derive(Debug, Clone)]
-pub struct EnumVariant {
+pub struct ApiEnum {
     pub name: String,
     pub comments: Vec<Comment>,
+    _variants: Vec<ApiVariant>,
+    _is_struct: bool,
 }
 
-impl ApiTypeChild for ApiEnum {
-    fn safe_ident(&self) -> String {
-        self.name.clone()
+impl ApiEnum {
+    pub fn new(name: String, comments: Vec<Comment>, mut variants: Vec<ApiVariant>) -> Self {
+        fn wrap_box(ty: ApiType) -> ApiType {
+            match ty {
+                StructRef(_)
+                | EnumRef(ApiTypeEnumRef {
+                    is_struct: true, ..
+                }) => ApiType::Boxed(Box::new(ApiTypeBoxed {
+                    exist_in_real_api: false,
+                    inner: ty,
+                })),
+                _ => ty,
+            }
+        }
+        let _is_struct = variants
+            .iter()
+            .any(|variant| !matches!(variant.kind, ApiVariantKind::Value));
+        if _is_struct {
+            variants = variants
+                .into_iter()
+                .map(|variant| ApiVariant {
+                    kind: match variant.kind {
+                        ApiVariantKind::Tuple(types) => {
+                            ApiVariantKind::Tuple(types.into_iter().map(wrap_box).collect())
+                        }
+                        ApiVariantKind::Struct(st) => ApiVariantKind::Struct(ApiStruct {
+                            fields: st
+                                .fields
+                                .into_iter()
+                                .map(|field| ApiField {
+                                    ty: wrap_box(field.ty),
+                                    ..field
+                                })
+                                .collect(),
+                            ..st
+                        }),
+                        _ => variant.kind,
+                    },
+                    ..variant
+                })
+                .collect::<Vec<_>>();
+        }
+        Self {
+            name,
+            comments,
+            _variants: variants,
+            _is_struct,
+        }
     }
-    fn dart_api_type(&self) -> String {
-        self.safe_ident()
+
+    pub fn variants(&self) -> &[ApiVariant] {
+        &self._variants
     }
-    fn dart_wire_type(&self) -> String {
-        "int".to_owned()
+
+    pub fn is_struct(&self) -> bool {
+        self._is_struct
     }
-    fn rust_api_type(&self) -> String {
-        self.safe_ident()
-    }
-    fn rust_wire_type(&self) -> String {
-        "i32".to_owned()
-    }
+}
+
+#[derive(Debug, Clone)]
+pub struct ApiVariant {
+    pub name: ApiIdent,
+    pub comments: Vec<Comment>,
+    pub kind: ApiVariantKind,
+}
+
+#[derive(Debug, Clone)]
+pub enum ApiVariantKind {
+    Value,
+    Tuple(Vec<ApiType>),
+    Struct(ApiStruct),
+}
+
+pub fn optional_boundary_index(types: &[ApiType]) -> Option<usize> {
+    types
+        .iter()
+        .enumerate()
+        .find(|ty| matches!(ty.1, Optional(_)))
+        .and_then(|(idx, _)| {
+            (&types[idx..])
+                .iter()
+                .all(|ty| matches!(ty, Optional(_)))
+                .then(|| idx)
+        })
 }
