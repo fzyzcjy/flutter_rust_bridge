@@ -366,18 +366,6 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 } else {
                     let r = format!("wireObj.kind.ref.{}.ref", variant.name);
                     let body: Vec<_> = match &variant.kind {
-                        ApiVariantKind::Tuple(types) => types
-                            .iter()
-                            .enumerate()
-                            .map(|(idx, ty)| {
-                                format!(
-                                    "{}.field{1} = _api2wire_{2}(apiObj.field{1});",
-                                    r,
-                                    idx,
-                                    ty.safe_ident()
-                                )
-                            })
-                            .collect(),
                         ApiVariantKind::Struct(st) => st
                             .fields
                             .iter()
@@ -498,25 +486,21 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 .map(|(idx, variant)| {
                     let args = match &variant.kind {
                         ApiVariantKind::Value => "".to_owned(),
-                        ApiVariantKind::Tuple(types) => types
-                            .iter()
-                            .enumerate()
-                            .map(|(idx, ty)| {
-                                format!("_wire2api_{}(raw[{}]),", ty.safe_ident(), idx + 1)
-                            })
-                            .collect::<Vec<_>>()
-                            .join(""),
-                        ApiVariantKind::Struct(s) => s
+                        ApiVariantKind::Struct(st) => st
                             .fields
                             .iter()
                             .enumerate()
                             .map(|(idx, field)| {
-                                format!(
-                                    "{}: _wire2api_{}(raw[{}]),",
-                                    field.name.dart_style(),
+                                let val = format!(
+                                    "_wire2api_{}(raw[{}]),",
                                     field.ty.safe_ident(),
                                     idx + 1
-                                )
+                                );
+                                if st.is_fields_named {
+                                    format!("{}: {}", field.name.dart_style(), val)
+                                } else {
+                                    val
+                                }
                             })
                             .collect::<Vec<_>>()
                             .join(""),
@@ -606,18 +590,28 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
             .map(|variant| {
                 let args = match &variant.kind {
                     ApiVariantKind::Value => "".to_owned(),
-                    ApiVariantKind::Tuple(types) => {
-                        let split = optional_boundary_index(types);
-                        let types = types
+                    ApiVariantKind::Struct(ApiStruct {
+                        is_fields_named: false,
+                        fields,
+                        ..
+                    }) => {
+                        let types = fields.iter().map(|field| &field.ty).collect::<Vec<_>>();
+                        let split = optional_boundary_index(&types);
+                        let types = fields
                             .iter()
-                            .enumerate()
-                            .map(|(idx, typ)| format!("{} field{}", typ.dart_api_type(), idx))
+                            .map(|field| {
+                                format!(
+                                    "{}{} {},",
+                                    dart_comments(&field.comments),
+                                    field.ty.dart_api_type(),
+                                    field.name.dart_style()
+                                )
+                            })
                             .collect::<Vec<_>>();
                         if let Some(idx) = split {
                             let before = &types[..idx];
                             let after = &types[idx..];
-                            let sep = if before.is_empty() { "" } else { "," };
-                            format!("{}{} [{}]", before.join(","), sep, after.join(","))
+                            format!("{}[{}]", before.join(""), after.join(""))
                         } else {
                             types.join(",")
                         }
@@ -628,18 +622,20 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
                             .iter()
                             .map(|field| {
                                 format!(
-                                    "{}{} {}",
+                                    "{}{}{} {},",
+                                    dart_comments(&field.comments),
                                     field.ty.required_modifier(),
                                     field.ty.dart_api_type(),
                                     field.name.dart_style()
                                 )
                             })
                             .collect::<Vec<_>>();
-                        format!("{{ {} }}", fields.join(","))
+                        format!("{{ {} }}", fields.join(""))
                     }
                 };
                 format!(
-                    "const factory {}.{}({}) = {};",
+                    "{}const factory {}.{}({}) = {};",
+                    dart_comments(&variant.comments),
                     enu.name,
                     variant.name.dart_style(),
                     args,

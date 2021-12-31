@@ -183,15 +183,10 @@ impl ApiType {
             EnumRef(enu) => {
                 let enu = enu.get(api_file);
                 for variant in enu.variants() {
-                    match &variant.kind {
-                        ApiVariantKind::Tuple(types) => {
-                            types.iter().for_each(|ty| ty.visit_types(f, api_file))
-                        }
-                        ApiVariantKind::Struct(s) => s
-                            .fields
+                    if let ApiVariantKind::Struct(st) = &variant.kind {
+                        st.fields
                             .iter()
-                            .for_each(|field| field.ty.visit_types(f, api_file)),
-                        _ => {}
+                            .for_each(|field| field.ty.visit_types(f, api_file));
                     }
                 }
             }
@@ -559,6 +554,16 @@ pub struct ApiStruct {
     pub comments: Vec<Comment>,
 }
 
+impl ApiStruct {
+    pub fn brackets_pair(&self) -> (char, char) {
+        if self.is_fields_named {
+            ('{', '}')
+        } else {
+            ('(', ')')
+        }
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct ApiField {
     pub ty: ApiType,
@@ -781,9 +786,6 @@ impl ApiEnum {
                 .into_iter()
                 .map(|variant| ApiVariant {
                     kind: match variant.kind {
-                        ApiVariantKind::Tuple(types) => {
-                            ApiVariantKind::Tuple(types.into_iter().map(wrap_box).collect())
-                        }
                         ApiVariantKind::Struct(st) => ApiVariantKind::Struct(ApiStruct {
                             fields: st
                                 .fields
@@ -828,11 +830,10 @@ pub struct ApiVariant {
 #[derive(Debug, Clone)]
 pub enum ApiVariantKind {
     Value,
-    Tuple(Vec<ApiType>),
     Struct(ApiStruct),
 }
 
-pub fn optional_boundary_index(types: &[ApiType]) -> Option<usize> {
+pub fn optional_boundary_index(types: &[&ApiType]) -> Option<usize> {
     types
         .iter()
         .enumerate()

@@ -304,6 +304,8 @@ class _$Primitives implements Primitives {
   const _$Primitives({required this.int32, required this.float64, required this.boolean});
 
   @override
+
+  /// Dart field comment
   final int int32;
   @override
   final double float64;
@@ -423,6 +425,7 @@ class _$Primitives implements Primitives {
 abstract class Primitives implements KitchenSink {
   const factory Primitives({required int int32, required double float64, required bool boolean}) = _$Primitives;
 
+  /// Dart field comment
   int get int32;
   double get float64;
   bool get boolean;
@@ -625,6 +628,8 @@ class _$Optional implements Optional {
   const _$Optional([this.field0, this.field1]);
 
   @override
+
+  /// Comment on anonymous field
   final int? field0;
   @override
   final int? field1;
@@ -741,6 +746,7 @@ class _$Optional implements Optional {
 abstract class Optional implements KitchenSink {
   const factory Optional([int? field0, int? field1]) = _$Optional;
 
+  /// Comment on anonymous field
   int? get field0;
   int? get field1;
   @JsonKey(ignore: true)

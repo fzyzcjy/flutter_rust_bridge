@@ -289,27 +289,21 @@ impl<'a> Parser<'a> {
                 comments: extract_comments(&variant.attrs),
                 kind: match variant.fields.iter().next() {
                     None => ApiVariantKind::Value,
-                    Some(Field { ident: None, .. }) => ApiVariantKind::Tuple(
-                        variant
-                            .fields
-                            .iter()
-                            .map(|field| self.parse_type(&type_to_string(&field.ty)))
-                            .collect(),
-                    ),
-                    Some(Field {
-                        ident: Some(_),
-                        attrs,
-                        ..
-                    }) => ApiVariantKind::Struct(ApiStruct {
+                    Some(Field { attrs, ident, .. }) => ApiVariantKind::Struct(ApiStruct {
                         name: variant.ident.to_string(),
-                        is_fields_named: true,
+                        is_fields_named: ident.is_some(),
                         comments: extract_comments(attrs),
                         fields: variant
                             .fields
                             .iter()
-                            .map(|field| ApiField {
+                            .enumerate()
+                            .map(|(idx, field)| ApiField {
                                 name: ApiIdent::new(
-                                    field.ident.as_ref().map(ToString::to_string).unwrap(),
+                                    field
+                                        .ident
+                                        .as_ref()
+                                        .map(ToString::to_string)
+                                        .unwrap_or_else(|| format!("field{}", idx)),
                                 ),
                                 ty: self.parse_type(&type_to_string(&field.ty)),
                                 comments: extract_comments(&field.attrs),

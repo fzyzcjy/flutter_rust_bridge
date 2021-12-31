@@ -158,13 +158,28 @@ class ExoticOptionals {
 
 @freezed
 class KitchenSink with _$KitchenSink {
+  /// Comment on variant
   const factory KitchenSink.empty() = Empty;
-  const factory KitchenSink.primitives({required int int32, required double float64, required bool boolean}) =
-      Primitives;
-  const factory KitchenSink.nested(KitchenSink field0) = Nested;
-  const factory KitchenSink.optional([int? field0, int? field1]) = Optional;
-  const factory KitchenSink.buffer(Uint8List field0) = Buffer;
-  const factory KitchenSink.enums(Weekdays field0) = Enums;
+  const factory KitchenSink.primitives({
+    /// Dart field comment
+    required int int32,
+    required double float64,
+    required bool boolean,
+  }) = Primitives;
+  const factory KitchenSink.nested(
+    KitchenSink field0,
+  ) = Nested;
+  const factory KitchenSink.optional([
+    /// Comment on anonymous field
+    int? field0,
+    int? field1,
+  ]) = Optional;
+  const factory KitchenSink.buffer(
+    Uint8List field0,
+  ) = Buffer;
+  const factory KitchenSink.enums(
+    Weekdays field0,
+  ) = Enums;
 }
 
 class MySize {

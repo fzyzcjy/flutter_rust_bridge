@@ -387,6 +387,7 @@ pub fn handle_customized_struct(val: Customized) -> Result<()> {
 #[frb]
 #[derive(Debug)]
 pub enum KitchenSink {
+    /// Comment on variant
     Empty,
     #[frb(unimpl_variant_attr)]
     Primitives {
@@ -398,7 +399,11 @@ pub enum KitchenSink {
         boolean: bool,
     },
     Nested(Box<KitchenSink>),
-    Optional(Option<i32>, Option<i32>),
+    Optional(
+        /// Comment on anonymous field
+        Option<i32>,
+        Option<i32>,
+    ),
     Buffer(ZeroCopyBuffer<Vec<u8>>),
     Enums(Weekdays),
 }

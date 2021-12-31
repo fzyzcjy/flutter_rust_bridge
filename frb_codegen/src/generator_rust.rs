@@ -331,18 +331,6 @@ impl Generator {
             .map(|variant| {
                 let fields = match &variant.kind {
                     ApiVariantKind::Value => vec![],
-                    ApiVariantKind::Tuple(types) => types
-                        .iter()
-                        .enumerate()
-                        .map(|(idx, typ)| {
-                            format!(
-                                "field{}: {}{},",
-                                idx,
-                                typ.rust_wire_modifier(),
-                                typ.rust_wire_type()
-                            )
-                        })
-                        .collect(),
                     ApiVariantKind::Struct(s) => s
                         .fields
                         .iter()
@@ -489,7 +477,6 @@ impl Generator {
             }
             StructRef(struct_ref) => {
                 let api_struct = struct_ref.get(api_file);
-
                 let fields_str = &api_struct
                     .fields
                     .iter()
@@ -507,41 +494,37 @@ impl Generator {
                     .collect::<Vec<_>>()
                     .join(",");
 
-                if api_struct.is_fields_named {
-                    format!("{} {{ {} }}", ty.rust_api_type(), fields_str)
-                } else {
-                    format!("{}({})", ty.rust_api_type(), fields_str)
-                }
-                .into()
+                let (left, right) = api_struct.brackets_pair();
+                format!("{}{}{}{}", ty.rust_api_type(), left, fields_str, right).into()
             }
             EnumRef(enu) if enu.is_struct => {
                 let enu = enu.get(api_file);
                 let variants = enu.variants().iter().enumerate()
                     .map(|(idx, variant)| {
-                        if let ApiVariantKind::Value = variant.kind {
-                            format!("{} => {}::{},", idx, enu.name, variant.name)
-                        } else {
-                            let body = match &variant.kind {
-                                ApiVariantKind::Tuple(types) => {
-                                    let elms = (0..types.len()).map(|idx| format!("ans.field{}.wire2api()", idx))
-                                        .collect::<Vec<_>>();
-                                    format!("({})", elms.join(","))
-                                }
-                                ApiVariantKind::Struct(st) => {
-                                    let fields = st.fields
-                                        .iter().map(|field| format!("{0}: ans.{0}.wire2api()", field.name.rust_style()))
-                                        .collect::<Vec<_>>();
-                                    format!("{{ {} }}", fields.join(","))
-                                }
-                                _ => unreachable!()
-                            };
-                            format!(
-                                "{0} => unsafe {{
-                                    let ans = support::box_from_leak_ptr(self.kind);
-                                    let ans = support::box_from_leak_ptr(ans.{2});
-                                    {1}::{2}{3}
-                                }}",
-                                idx, enu.name, variant.name, body)
+                        match &variant.kind {
+                            ApiVariantKind::Value => {
+                                format!("{} => {}::{},", idx, enu.name, variant.name)
+                            },
+                            ApiVariantKind::Struct(st) => {
+                                let fields: Vec<_> = st.fields
+                                    .iter()
+                                    .map(|field| {
+                                        if st.is_fields_named {
+                                            format!("{0}: ans.{0}.wire2api()", field.name.rust_style())
+                                        } else {
+                                            format!("ans.{}.wire2api()", field.name.rust_style())
+                                        }
+                                    }).collect();
+                                let (left, right) = st.brackets_pair();
+                                format!(
+                                    "{} => unsafe {{
+                                        let ans = support::box_from_leak_ptr(self.kind);
+                                        let ans = support::box_from_leak_ptr(ans.{2});
+                                        {}::{2}{3}{4}{5}
+                                    }}",
+                                    idx, enu.name, variant.name, left, fields.join(","), right
+                               )
+                            }
                         }
                     }).collect::<Vec<_>>();
                 format!(
@@ -630,18 +613,13 @@ impl Generator {
             .iter()
             .filter_map(|variant| {
                 let typ = format!("{}_{}", enu.name, variant.name);
-                let body: Vec<_> = match &variant.kind {
-                    ApiVariantKind::Tuple(types) => types
-                        .iter()
-                        .enumerate()
-                        .map(|(idx, ty)| format!("field{}: {}", idx, init_of(ty)))
-                        .collect(),
-                    ApiVariantKind::Struct(st) => st
-                        .fields
+                let body: Vec<_> = if let ApiVariantKind::Struct(st) = &variant.kind {
+                    st.fields
                         .iter()
                         .map(|field| format!("{}: {}", field.name.rust_style(), init_of(&field.ty)))
-                        .collect(),
-                    _ => return None,
+                        .collect()
+                } else {
+                    return None;
                 };
                 Some(self.extern_func_collector.generate(
                     &format!("inflate_{}", typ),
@@ -767,22 +745,6 @@ impl Generator {
                         ApiVariantKind::Value => {
                             format!("Self::{} => vec![{}],", variant.name, tag)
                         }
-                        ApiVariantKind::Tuple(types) => {
-                            let len = types.len();
-                            let fields = Some(tag)
-                                .into_iter()
-                                .chain((0..len).map(|idx| format!("field{}.into_dart()", idx)))
-                                .collect::<Vec<_>>();
-                            let pattern = (0..len)
-                                .map(|idx| format!("field{}", idx))
-                                .collect::<Vec<_>>();
-                            format!(
-                                "Self::{}({}) => vec![{}],",
-                                variant.name,
-                                pattern.join(","),
-                                fields.join(",")
-                            )
-                        }
                         ApiVariantKind::Struct(s) => {
                             let fields = Some(tag)
                                 .into_iter()
@@ -795,10 +757,13 @@ impl Generator {
                                 .iter()
                                 .map(|field| field.name.rust_style().to_owned())
                                 .collect::<Vec<_>>();
+                            let (left, right) = s.brackets_pair();
                             format!(
-                                "Self::{}{{ {} }} => vec![{}],",
+                                "Self::{}{}{}{} => vec![{}],",
                                 variant.name,
+                                left,
                                 pattern.join(","),
+                                right,
                                 fields.join(",")
                             )
                         }
