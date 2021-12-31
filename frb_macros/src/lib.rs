@@ -31,7 +31,7 @@ pub fn frb(_: TokenStream, item: TokenStream) -> TokenStream {
                 Data::Union(uni)
             }
         };
-        quote! { #input }.into()
+        (quote! { #input }).into()
     } else {
         item
     }
