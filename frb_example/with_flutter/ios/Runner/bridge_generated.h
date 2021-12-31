@@ -42,31 +42,31 @@ typedef int64_t DartPort;
 
 typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
 
-void wire_draw_mandelbrot(int64_t port,
+void wire_draw_mandelbrot(int64_t port_,
                           struct wire_Size *image_size,
                           struct wire_Point *zoom_point,
                           double scale,
                           int32_t num_threads);
 
-void wire_passing_complex_structs(int64_t port, struct wire_TreeNode *root);
+void wire_passing_complex_structs(int64_t port_, struct wire_TreeNode *root);
 
-void wire_off_topic_memory_test_input_array(int64_t port, struct wire_uint_8_list *input);
+void wire_off_topic_memory_test_input_array(int64_t port_, struct wire_uint_8_list *input);
 
-void wire_off_topic_memory_test_output_zero_copy_buffer(int64_t port, int32_t len);
+void wire_off_topic_memory_test_output_zero_copy_buffer(int64_t port_, int32_t len);
 
-void wire_off_topic_memory_test_output_vec_u8(int64_t port, int32_t len);
+void wire_off_topic_memory_test_output_vec_u8(int64_t port_, int32_t len);
 
-void wire_off_topic_memory_test_input_vec_of_object(int64_t port, struct wire_list_size *input);
+void wire_off_topic_memory_test_input_vec_of_object(int64_t port_, struct wire_list_size *input);
 
-void wire_off_topic_memory_test_output_vec_of_object(int64_t port, int32_t len);
+void wire_off_topic_memory_test_output_vec_of_object(int64_t port_, int32_t len);
 
-void wire_off_topic_memory_test_input_complex_struct(int64_t port, struct wire_TreeNode *input);
+void wire_off_topic_memory_test_input_complex_struct(int64_t port_, struct wire_TreeNode *input);
 
-void wire_off_topic_memory_test_output_complex_struct(int64_t port, int32_t len);
+void wire_off_topic_memory_test_output_complex_struct(int64_t port_, int32_t len);
 
-void wire_off_topic_deliberately_return_error(int64_t port);
+void wire_off_topic_deliberately_return_error(int64_t port_);
 
-void wire_off_topic_deliberately_panic(int64_t port);
+void wire_off_topic_deliberately_panic(int64_t port_);
 
 struct wire_Point *new_box_autoadd_point(void);
 
