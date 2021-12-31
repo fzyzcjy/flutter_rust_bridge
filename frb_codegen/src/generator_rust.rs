@@ -173,7 +173,7 @@ impl Generator {
     fn generate_wire_func(&mut self, func: &ApiFunc) -> String {
         let params = [
             if func.mode.has_port_argument() {
-                vec!["port: i64".to_string()]
+                vec!["port_: i64".to_string()]
             } else {
                 vec![]
             },
@@ -207,7 +207,7 @@ impl Generator {
             "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
             func.name,
             if func.mode.has_port_argument() {
-                "Some(port)"
+                "Some(port_)"
             } else {
                 "None"
             },

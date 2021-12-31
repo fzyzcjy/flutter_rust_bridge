@@ -1494,12 +1494,12 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       : _lookup = lookup;
 
   void wire_simple_adder(
-    int port,
+    int port_,
     int a,
     int b,
   ) {
     return _wire_simple_adder(
-      port,
+      port_,
       a,
       b,
     );
@@ -1510,14 +1510,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_simple_adder = _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
 
   void wire_primitive_types(
-    int port,
+    int port_,
     int my_i32,
     int my_i64,
     double my_f64,
     bool my_bool,
   ) {
     return _wire_primitive_types(
-      port,
+      port_,
       my_i32,
       my_i64,
       my_f64,
@@ -1531,11 +1531,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_primitive_types = _wire_primitive_typesPtr.asFunction<void Function(int, int, int, double, int)>();
 
   void wire_primitive_u32(
-    int port,
+    int port_,
     int my_u32,
   ) {
     return _wire_primitive_u32(
-      port,
+      port_,
       my_u32,
     );
   }
@@ -1545,11 +1545,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_primitive_u32 = _wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
 
   void wire_handle_string(
-    int port,
+    int port_,
     ffi.Pointer<wire_uint_8_list> s,
   ) {
     return _wire_handle_string(
-      port,
+      port_,
       s,
     );
   }
@@ -1560,10 +1560,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_stringPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_return_unit(
-    int port,
+    int port_,
   ) {
     return _wire_handle_return_unit(
-      port,
+      port_,
     );
   }
 
@@ -1572,11 +1572,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_return_unit = _wire_handle_return_unitPtr.asFunction<void Function(int)>();
 
   void wire_handle_vec_u8(
-    int port,
+    int port_,
     ffi.Pointer<wire_uint_8_list> v,
   ) {
     return _wire_handle_vec_u8(
-      port,
+      port_,
       v,
     );
   }
@@ -1587,11 +1587,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_vec_u8Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_vec_of_primitive(
-    int port,
+    int port_,
     int n,
   ) {
     return _wire_handle_vec_of_primitive(
-      port,
+      port_,
       n,
     );
   }
@@ -1601,11 +1601,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_vec_of_primitive = _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
   void wire_handle_zero_copy_vec_of_primitive(
-    int port,
+    int port_,
     int n,
   ) {
     return _wire_handle_zero_copy_vec_of_primitive(
-      port,
+      port_,
       n,
     );
   }
@@ -1616,12 +1616,12 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_zero_copy_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
   void wire_handle_struct(
-    int port,
+    int port_,
     ffi.Pointer<wire_MySize> arg,
     ffi.Pointer<wire_MySize> boxed,
   ) {
     return _wire_handle_struct(
-      port,
+      port_,
       arg,
       boxed,
     );
@@ -1634,11 +1634,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>();
 
   void wire_handle_newtype(
-    int port,
+    int port_,
     ffi.Pointer<wire_NewTypeInt> arg,
   ) {
     return _wire_handle_newtype(
-      port,
+      port_,
       arg,
     );
   }
@@ -1649,11 +1649,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_newtypePtr.asFunction<void Function(int, ffi.Pointer<wire_NewTypeInt>)>();
 
   void wire_handle_list_of_struct(
-    int port,
+    int port_,
     ffi.Pointer<wire_list_my_size> l,
   ) {
     return _wire_handle_list_of_struct(
-      port,
+      port_,
       l,
     );
   }
@@ -1665,11 +1665,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_list_of_structPtr.asFunction<void Function(int, ffi.Pointer<wire_list_my_size>)>();
 
   void wire_handle_string_list(
-    int port,
+    int port_,
     ffi.Pointer<wire_StringList> names,
   ) {
     return _wire_handle_string_list(
-      port,
+      port_,
       names,
     );
   }
@@ -1681,11 +1681,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
 
   void wire_handle_complex_struct(
-    int port,
+    int port_,
     ffi.Pointer<wire_MyTreeNode> s,
   ) {
     return _wire_handle_complex_struct(
-      port,
+      port_,
       s,
     );
   }
@@ -1711,11 +1711,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_sync_returnPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_stream(
-    int port,
+    int port_,
     ffi.Pointer<wire_uint_8_list> arg,
   ) {
     return _wire_handle_stream(
-      port,
+      port_,
       arg,
     );
   }
@@ -1726,10 +1726,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_streamPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_return_err(
-    int port,
+    int port_,
   ) {
     return _wire_return_err(
-      port,
+      port_,
     );
   }
 
@@ -1737,10 +1737,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_return_err = _wire_return_errPtr.asFunction<void Function(int)>();
 
   void wire_return_panic(
-    int port,
+    int port_,
   ) {
     return _wire_return_panic(
-      port,
+      port_,
     );
   }
 
@@ -1748,12 +1748,12 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_return_panic = _wire_return_panicPtr.asFunction<void Function(int)>();
 
   void wire_handle_optional_return(
-    int port,
+    int port_,
     double left,
     double right,
   ) {
     return _wire_handle_optional_return(
-      port,
+      port_,
       left,
       right,
     );
@@ -1765,11 +1765,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_optional_returnPtr.asFunction<void Function(int, double, double)>();
 
   void wire_handle_optional_struct(
-    int port,
+    int port_,
     ffi.Pointer<wire_uint_8_list> document,
   ) {
     return _wire_handle_optional_struct(
-      port,
+      port_,
       document,
     );
   }
@@ -1781,11 +1781,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_optional_structPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_optional_increment(
-    int port,
+    int port_,
     ffi.Pointer<wire_ExoticOptionals> opt,
   ) {
     return _wire_handle_optional_increment(
-      port,
+      port_,
       opt,
     );
   }
@@ -1797,11 +1797,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_optional_incrementPtr.asFunction<void Function(int, ffi.Pointer<wire_ExoticOptionals>)>();
 
   void wire_handle_increment_boxed_optional(
-    int port,
+    int port_,
     ffi.Pointer<ffi.Double> opt,
   ) {
     return _wire_handle_increment_boxed_optional(
-      port,
+      port_,
       opt,
     );
   }
@@ -1813,7 +1813,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_increment_boxed_optionalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
 
   void wire_handle_option_box_arguments(
-    int port,
+    int port_,
     ffi.Pointer<ffi.Int8> i8box,
     ffi.Pointer<ffi.Uint8> u8box,
     ffi.Pointer<ffi.Int32> i32box,
@@ -1823,7 +1823,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
     ffi.Pointer<wire_ExoticOptionals> structbox,
   ) {
     return _wire_handle_option_box_arguments(
-      port,
+      port_,
       i8box,
       u8box,
       i32box,
@@ -1850,11 +1850,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<wire_ExoticOptionals>)>();
 
   void wire_handle_return_enum(
-    int port,
+    int port_,
     ffi.Pointer<wire_uint_8_list> input,
   ) {
     return _wire_handle_return_enum(
-      port,
+      port_,
       input,
     );
   }
@@ -1866,11 +1866,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_return_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_enum_parameter(
-    int port,
+    int port_,
     int weekday,
   ) {
     return _wire_handle_enum_parameter(
-      port,
+      port_,
       weekday,
     );
   }
@@ -1880,11 +1880,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_enum_parameter = _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
 
   void wire_handle_customized_struct(
-    int port,
+    int port_,
     ffi.Pointer<wire_Customized> val,
   ) {
     return _wire_handle_customized_struct(
-      port,
+      port_,
       val,
     );
   }
@@ -1896,11 +1896,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_handle_customized_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Customized>)>();
 
   void wire_handle_enum_struct(
-    int port,
+    int port_,
     ffi.Pointer<wire_KitchenSink> val,
   ) {
     return _wire_handle_enum_struct(
-      port,
+      port_,
       val,
     );
   }
