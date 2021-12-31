@@ -491,32 +491,31 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 .enumerate()
                 .map(|(idx, variant)| {
                     let args = match &variant.kind {
-                        ApiVariantKind::Value => "()".to_owned(),
-                        ApiVariantKind::Tuple(types) => {
-                            let args = (1..=types.len())
-                                .map(|idx| format!("raw[{}]", idx))
-                                .collect::<Vec<_>>();
-                            format!("({})", args.join(","))
-                        }
-                        ApiVariantKind::Struct(s) => {
-                            let args = s
-                                .fields
-                                .iter()
-                                .enumerate()
-                                .map(|(idx, field)| {
-                                    format!("{}: raw[{}]", field.name.dart_style(), idx + 1)
-                                })
-                                .collect::<Vec<_>>();
-                            format!("({})", args.join(","))
-                        }
+                        ApiVariantKind::Value => "".to_owned(),
+                        ApiVariantKind::Tuple(types) => types
+                            .iter()
+                            .enumerate()
+                            .map(|(idx, ty)| {
+                                format!("_wire2api_{}(raw[{}]),", ty.safe_ident(), idx + 1)
+                            })
+                            .collect::<Vec<_>>()
+                            .join(""),
+                        ApiVariantKind::Struct(s) => s
+                            .fields
+                            .iter()
+                            .enumerate()
+                            .map(|(idx, field)| {
+                                format!(
+                                    "{}: _wire2api_{}(raw[{}]),",
+                                    field.name.dart_style(),
+                                    field.ty.safe_ident(),
+                                    idx + 1
+                                )
+                            })
+                            .collect::<Vec<_>>()
+                            .join(""),
                     };
-                    format!(
-                        "case {}: return {}.{}{};",
-                        idx,
-                        enu.name,
-                        variant.name.dart_style(),
-                        args
-                    )
+                    format!("case {}: return {}({});", idx, variant.name, args)
                 })
                 .collect::<Vec<_>>();
             format!(

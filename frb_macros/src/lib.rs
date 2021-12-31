@@ -38,6 +38,7 @@ pub fn frb(_: TokenStream, item: TokenStream) -> TokenStream {
 }
 
 fn remove_marker_attr_from_variant(mut variant: Variant) -> Variant {
+    variant.attrs = variant.attrs.into_iter().filter(is_marker_attr).collect();
     variant.fields = remove_marker_attr_from_fields(variant.fields);
     variant
 }

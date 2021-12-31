@@ -265,25 +265,23 @@ void main(List<String> args) async {
 
     print('dart call handleEnumStruct');
     {
-      dynamic foo = Foobar.bar("stuff");
-      foo = await api.handleEnumStruct(val: foo);
-      expect(foo.field0, "foo'd");
-      dynamic bar = Foobar.foo();
-      bar = await api.handleEnumStruct(val: bar);
-      expect(bar is Foo, true);
-    }
-
-    print('dart call handleComplexStruct');
-    {
-      expect(await api.handleComplexEnum(val: KitchenSink.empty()), "Empty");
-      expect(await api.handleComplexEnum(val: KitchenSink.boxed(42)), "Boxed(42)");
-      expect(await api.handleComplexEnum(val: KitchenSink.enums(Weekdays.Monday)), "Enums(Monday)");
-      expect(await api.handleComplexEnum(val: KitchenSink.nested(KitchenSink.empty())), "Nested(Empty)");
-      expect(await api.handleComplexEnum(val: KitchenSink.buffer(Uint8List.fromList(const [1, 2, 3]))),
-          "Buffer(ZeroCopyBuffer([1, 2, 3]))");
-      expect(await api.handleComplexEnum(val: KitchenSink.optional(42)), "Optional(42, None)");
-      expect(await api.handleComplexEnum(val: KitchenSink.structlike(foo: Foobar.baz(name: 'John Doe'), bar: 42)),
-          "Structlike { foo: Baz { name: \"John Doe\" }, bar: Some(42) }");
+      expect(await api.handleEnumStruct(val: Empty()), Empty());
+      expect(
+        await api.handleEnumStruct(val: Primitives(int32: 0, float64: 1)),
+        Primitives(int32: 1, float64: 2),
+      );
+      expect(
+        await api.handleEnumStruct(val: Optional(null, 0)),
+        Optional(null, 1),
+      );
+      expect(
+        await api.handleEnumStruct(val: Buffer(Uint8List.fromList([]))),
+        Buffer(Uint8List.fromList([1])),
+      );
+      expect(
+        await api.handleEnumStruct(val: Enums(Weekdays.Monday)),
+        Enums(Weekdays.Tuesday),
+      );
     }
 
     _createGarbage();

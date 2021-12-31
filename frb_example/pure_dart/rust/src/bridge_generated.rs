@@ -404,36 +404,6 @@ pub extern "C" fn wire_handle_enum_parameter(port: i64, weekday: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_enum_struct(port: i64, val: *mut wire_Foobar) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "handle_enum_struct",
-            port: Some(port),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_val = val.wire2api();
-            move |task_callback| handle_enum_struct(api_val)
-        },
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn wire_handle_complex_enum(port: i64, val: *mut wire_KitchenSink) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "handle_complex_enum",
-            port: Some(port),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_val = val.wire2api();
-            move |task_callback| handle_complex_enum(api_val)
-        },
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn wire_handle_customized_struct(port: i64, val: *mut wire_Customized) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -444,6 +414,21 @@ pub extern "C" fn wire_handle_customized_struct(port: i64, val: *mut wire_Custom
         move || {
             let api_val = val.wire2api();
             move |task_callback| handle_customized_struct(api_val)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_enum_struct(port: i64, val: *mut wire_KitchenSink) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_enum_struct",
+            port: Some(port),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_val = val.wire2api();
+            move |task_callback| handle_enum_struct(api_val)
         },
     )
 }
@@ -586,36 +571,6 @@ pub struct wire_uint_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_Foobar {
-    tag: i32,
-    kind: *mut FoobarKind,
-}
-
-#[repr(C)]
-pub union FoobarKind {
-    Foo: *mut Foobar_Foo,
-    Bar: *mut Foobar_Bar,
-    Baz: *mut Foobar_Baz,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct Foobar_Foo {}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct Foobar_Bar {
-    field0: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct Foobar_Baz {
-    name: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_KitchenSink {
     tag: i32,
     kind: *mut KitchenSinkKind,
@@ -624,17 +579,23 @@ pub struct wire_KitchenSink {
 #[repr(C)]
 pub union KitchenSinkKind {
     Empty: *mut KitchenSink_Empty,
+    Primitives: *mut KitchenSink_Primitives,
     Nested: *mut KitchenSink_Nested,
     Optional: *mut KitchenSink_Optional,
-    Boxed: *mut KitchenSink_Boxed,
     Buffer: *mut KitchenSink_Buffer,
     Enums: *mut KitchenSink_Enums,
-    Structlike: *mut KitchenSink_Structlike,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct KitchenSink_Empty {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KitchenSink_Primitives {
+    int32: i32,
+    float64: f64,
+}
 
 #[repr(C)]
 #[derive(Clone)]
@@ -645,14 +606,8 @@ pub struct KitchenSink_Nested {
 #[repr(C)]
 #[derive(Clone)]
 pub struct KitchenSink_Optional {
-    field0: i32,
-    field1: *mut i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct KitchenSink_Boxed {
     field0: *mut i32,
+    field1: *mut i32,
 }
 
 #[repr(C)]
@@ -665,13 +620,6 @@ pub struct KitchenSink_Buffer {
 #[derive(Clone)]
 pub struct KitchenSink_Enums {
     field0: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct KitchenSink_Structlike {
-    foo: *mut wire_Foobar,
-    bar: *mut i32,
 }
 
 // Section: allocate functions
@@ -708,11 +656,6 @@ pub extern "C" fn new_box_autoadd_exotic_optionals() -> *mut wire_ExoticOptional
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
     support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_foobar() -> *mut wire_Foobar {
-    support::new_leak_box_ptr(wire_Foobar::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -972,13 +915,6 @@ impl Wire2Api<f64> for *mut f64 {
     }
 }
 
-impl Wire2Api<Foobar> for *mut wire_Foobar {
-    fn wire2api(self) -> Foobar {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
-    }
-}
-
 impl Wire2Api<i32> for *mut i32 {
     fn wire2api(self) -> i32 {
         unsafe { *support::box_from_leak_ptr(self) }
@@ -1137,27 +1073,6 @@ impl Wire2Api<Vec<f64>> for *mut wire_float_64_list {
     }
 }
 
-impl Wire2Api<Foobar> for wire_Foobar {
-    fn wire2api(self) -> Foobar {
-        match self.tag {
-            0 => Foobar::Foo,
-            1 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Bar);
-                Foobar::Bar(ans.field0.wire2api())
-            },
-            2 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Baz);
-                Foobar::Baz {
-                    name: ans.name.wire2api(),
-                }
-            },
-            _ => unreachable!(),
-        }
-    }
-}
-
 impl Wire2Api<i32> for i32 {
     fn wire2api(self) -> i32 {
         self
@@ -1209,18 +1124,21 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
             0 => KitchenSink::Empty,
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Nested);
-                KitchenSink::Nested(ans.field0.wire2api())
+                let ans = support::box_from_leak_ptr(ans.Primitives);
+                KitchenSink::Primitives {
+                    int32: ans.int32.wire2api(),
+                    float64: ans.float64.wire2api(),
+                }
             },
             2 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Optional);
-                KitchenSink::Optional(ans.field0.wire2api(), ans.field1.wire2api())
+                let ans = support::box_from_leak_ptr(ans.Nested);
+                KitchenSink::Nested(ans.field0.wire2api())
             },
             3 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Boxed);
-                KitchenSink::Boxed(ans.field0.wire2api())
+                let ans = support::box_from_leak_ptr(ans.Optional);
+                KitchenSink::Optional(ans.field0.wire2api(), ans.field1.wire2api())
             },
             4 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
@@ -1231,14 +1149,6 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Enums);
                 KitchenSink::Enums(ans.field0.wire2api())
-            },
-            6 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Structlike);
-                KitchenSink::Structlike {
-                    foo: ans.foo.wire2api(),
-                    bar: ans.bar.wire2api(),
-                }
             },
             _ => unreachable!(),
         }
@@ -1398,33 +1308,6 @@ impl NewWithNullPtr for wire_ExoticOptionals {
     }
 }
 
-impl NewWithNullPtr for wire_Foobar {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_Foobar_Bar() -> *mut FoobarKind {
-    support::new_leak_box_ptr(FoobarKind {
-        Bar: support::new_leak_box_ptr(Foobar_Bar {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_Foobar_Baz() -> *mut FoobarKind {
-    support::new_leak_box_ptr(FoobarKind {
-        Baz: support::new_leak_box_ptr(Foobar_Baz {
-            name: core::ptr::null_mut(),
-        }),
-    })
-}
-
 impl NewWithNullPtr for wire_KitchenSink {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1432,6 +1315,16 @@ impl NewWithNullPtr for wire_KitchenSink {
             kind: core::ptr::null_mut(),
         }
     }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
+    support::new_leak_box_ptr(KitchenSinkKind {
+        Primitives: support::new_leak_box_ptr(KitchenSink_Primitives {
+            int32: Default::default(),
+            float64: Default::default(),
+        }),
+    })
 }
 
 #[no_mangle]
@@ -1447,17 +1340,8 @@ pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
 pub extern "C" fn inflate_KitchenSink_Optional() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
         Optional: support::new_leak_box_ptr(KitchenSink_Optional {
-            field0: Default::default(),
-            field1: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_KitchenSink_Boxed() -> *mut KitchenSinkKind {
-    support::new_leak_box_ptr(KitchenSinkKind {
-        Boxed: support::new_leak_box_ptr(KitchenSink_Boxed {
             field0: core::ptr::null_mut(),
+            field1: core::ptr::null_mut(),
         }),
     })
 }
@@ -1476,16 +1360,6 @@ pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
         Enums: support::new_leak_box_ptr(KitchenSink_Enums {
             field0: Default::default(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_KitchenSink_Structlike() -> *mut KitchenSinkKind {
-    support::new_leak_box_ptr(KitchenSinkKind {
-        Structlike: support::new_leak_box_ptr(KitchenSink_Structlike {
-            foo: core::ptr::null_mut(),
-            bar: core::ptr::null_mut(),
         }),
     })
 }
@@ -1563,12 +1437,19 @@ impl support::IntoDart for ExoticOptionals {
 }
 impl support::IntoDartExceptPrimitive for ExoticOptionals {}
 
-impl support::IntoDart for Foobar {
+impl support::IntoDart for KitchenSink {
     fn into_dart(self) -> support::DartCObject {
         match self {
-            Self::Foo => vec![0.into_dart()],
-            Self::Bar(field0) => vec![1.into_dart(), field0.into_dart()],
-            Self::Baz { name } => vec![2.into_dart(), name.into_dart()],
+            Self::Empty => vec![0.into_dart()],
+            Self::Primitives { int32, float64 } => {
+                vec![1.into_dart(), int32.into_dart(), float64.into_dart()]
+            }
+            Self::Nested(field0) => vec![2.into_dart(), field0.into_dart()],
+            Self::Optional(field0, field1) => {
+                vec![3.into_dart(), field0.into_dart(), field1.into_dart()]
+            }
+            Self::Buffer(field0) => vec![4.into_dart(), field0.into_dart()],
+            Self::Enums(field0) => vec![5.into_dart(), field0.into_dart()],
         }
         .into_dart()
     }
