@@ -15,461 +15,19 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$FoobarTearOff {
-  const _$FoobarTearOff();
-
-  Foo foo() {
-    return const Foo();
-  }
-
-  Bar bar(String field0) {
-    return Bar(
-      field0,
-    );
-  }
-
-  Baz baz({required String name}) {
-    return Baz(
-      name: name,
-    );
-  }
-}
-
-/// @nodoc
-const $Foobar = _$FoobarTearOff();
-
-/// @nodoc
-mixin _$Foobar {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() foo,
-    required TResult Function(String field0) bar,
-    required TResult Function(String name) baz,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? foo,
-    TResult Function(String field0)? bar,
-    TResult Function(String name)? baz,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? foo,
-    TResult Function(String field0)? bar,
-    TResult Function(String name)? baz,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Foo value) foo,
-    required TResult Function(Bar value) bar,
-    required TResult Function(Baz value) baz,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Foo value)? foo,
-    TResult Function(Bar value)? bar,
-    TResult Function(Baz value)? baz,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Foo value)? foo,
-    TResult Function(Bar value)? bar,
-    TResult Function(Baz value)? baz,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $FoobarCopyWith<$Res> {
-  factory $FoobarCopyWith(Foobar value, $Res Function(Foobar) then) = _$FoobarCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$FoobarCopyWithImpl<$Res> implements $FoobarCopyWith<$Res> {
-  _$FoobarCopyWithImpl(this._value, this._then);
-
-  final Foobar _value;
-  // ignore: unused_field
-  final $Res Function(Foobar) _then;
-}
-
-/// @nodoc
-abstract class $FooCopyWith<$Res> {
-  factory $FooCopyWith(Foo value, $Res Function(Foo) then) = _$FooCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$FooCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res> implements $FooCopyWith<$Res> {
-  _$FooCopyWithImpl(Foo _value, $Res Function(Foo) _then) : super(_value, (v) => _then(v as Foo));
-
-  @override
-  Foo get _value => super._value as Foo;
-}
-
-/// @nodoc
-
-class _$Foo implements Foo {
-  const _$Foo();
-
-  @override
-  String toString() {
-    return 'Foobar.foo()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is Foo);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() foo,
-    required TResult Function(String field0) bar,
-    required TResult Function(String name) baz,
-  }) {
-    return foo();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? foo,
-    TResult Function(String field0)? bar,
-    TResult Function(String name)? baz,
-  }) {
-    return foo?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? foo,
-    TResult Function(String field0)? bar,
-    TResult Function(String name)? baz,
-    required TResult orElse(),
-  }) {
-    if (foo != null) {
-      return foo();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Foo value) foo,
-    required TResult Function(Bar value) bar,
-    required TResult Function(Baz value) baz,
-  }) {
-    return foo(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Foo value)? foo,
-    TResult Function(Bar value)? bar,
-    TResult Function(Baz value)? baz,
-  }) {
-    return foo?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Foo value)? foo,
-    TResult Function(Bar value)? bar,
-    TResult Function(Baz value)? baz,
-    required TResult orElse(),
-  }) {
-    if (foo != null) {
-      return foo(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Foo implements Foobar {
-  const factory Foo() = _$Foo;
-}
-
-/// @nodoc
-abstract class $BarCopyWith<$Res> {
-  factory $BarCopyWith(Bar value, $Res Function(Bar) then) = _$BarCopyWithImpl<$Res>;
-  $Res call({String field0});
-}
-
-/// @nodoc
-class _$BarCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res> implements $BarCopyWith<$Res> {
-  _$BarCopyWithImpl(Bar _value, $Res Function(Bar) _then) : super(_value, (v) => _then(v as Bar));
-
-  @override
-  Bar get _value => super._value as Bar;
-
-  @override
-  $Res call({
-    Object? field0 = freezed,
-  }) {
-    return _then(Bar(
-      field0 == freezed
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$Bar implements Bar {
-  const _$Bar(this.field0);
-
-  @override
-  final String field0;
-
-  @override
-  String toString() {
-    return 'Foobar.bar(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Bar &&
-            const DeepCollectionEquality().equals(other.field0, field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
-
-  @JsonKey(ignore: true)
-  @override
-  $BarCopyWith<Bar> get copyWith => _$BarCopyWithImpl<Bar>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() foo,
-    required TResult Function(String field0) bar,
-    required TResult Function(String name) baz,
-  }) {
-    return bar(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? foo,
-    TResult Function(String field0)? bar,
-    TResult Function(String name)? baz,
-  }) {
-    return bar?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? foo,
-    TResult Function(String field0)? bar,
-    TResult Function(String name)? baz,
-    required TResult orElse(),
-  }) {
-    if (bar != null) {
-      return bar(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Foo value) foo,
-    required TResult Function(Bar value) bar,
-    required TResult Function(Baz value) baz,
-  }) {
-    return bar(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Foo value)? foo,
-    TResult Function(Bar value)? bar,
-    TResult Function(Baz value)? baz,
-  }) {
-    return bar?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Foo value)? foo,
-    TResult Function(Bar value)? bar,
-    TResult Function(Baz value)? baz,
-    required TResult orElse(),
-  }) {
-    if (bar != null) {
-      return bar(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Bar implements Foobar {
-  const factory Bar(String field0) = _$Bar;
-
-  String get field0;
-  @JsonKey(ignore: true)
-  $BarCopyWith<Bar> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $BazCopyWith<$Res> {
-  factory $BazCopyWith(Baz value, $Res Function(Baz) then) = _$BazCopyWithImpl<$Res>;
-  $Res call({String name});
-}
-
-/// @nodoc
-class _$BazCopyWithImpl<$Res> extends _$FoobarCopyWithImpl<$Res> implements $BazCopyWith<$Res> {
-  _$BazCopyWithImpl(Baz _value, $Res Function(Baz) _then) : super(_value, (v) => _then(v as Baz));
-
-  @override
-  Baz get _value => super._value as Baz;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-  }) {
-    return _then(Baz(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$Baz implements Baz {
-  const _$Baz({required this.name});
-
-  @override
-  final String name;
-
-  @override
-  String toString() {
-    return 'Foobar.baz(name: $name)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Baz && const DeepCollectionEquality().equals(other.name, name));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
-
-  @JsonKey(ignore: true)
-  @override
-  $BazCopyWith<Baz> get copyWith => _$BazCopyWithImpl<Baz>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() foo,
-    required TResult Function(String field0) bar,
-    required TResult Function(String name) baz,
-  }) {
-    return baz(name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? foo,
-    TResult Function(String field0)? bar,
-    TResult Function(String name)? baz,
-  }) {
-    return baz?.call(name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? foo,
-    TResult Function(String field0)? bar,
-    TResult Function(String name)? baz,
-    required TResult orElse(),
-  }) {
-    if (baz != null) {
-      return baz(name);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Foo value) foo,
-    required TResult Function(Bar value) bar,
-    required TResult Function(Baz value) baz,
-  }) {
-    return baz(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Foo value)? foo,
-    TResult Function(Bar value)? bar,
-    TResult Function(Baz value)? baz,
-  }) {
-    return baz?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Foo value)? foo,
-    TResult Function(Bar value)? bar,
-    TResult Function(Baz value)? baz,
-    required TResult orElse(),
-  }) {
-    if (baz != null) {
-      return baz(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Baz implements Foobar {
-  const factory Baz({required String name}) = _$Baz;
-
-  String get name;
-  @JsonKey(ignore: true)
-  $BazCopyWith<Baz> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 class _$KitchenSinkTearOff {
   const _$KitchenSinkTearOff();
 
   Empty empty() {
     return const Empty();
+  }
+
+  Primitives primitives({required int int32, required double float64, required bool boolean}) {
+    return Primitives(
+      int32: int32,
+      float64: float64,
+      boolean: boolean,
+    );
   }
 
   Nested nested(KitchenSink field0) {
@@ -478,16 +36,10 @@ class _$KitchenSinkTearOff {
     );
   }
 
-  Optional optional(int field0, [int? field1]) {
+  Optional optional([int? field0, int? field1]) {
     return Optional(
       field0,
       field1,
-    );
-  }
-
-  Boxed boxed(int field0) {
-    return Boxed(
-      field0,
     );
   }
 
@@ -502,13 +54,6 @@ class _$KitchenSinkTearOff {
       field0,
     );
   }
-
-  Structlike structlike({required Foobar foo, int? bar}) {
-    return Structlike(
-      foo: foo,
-      bar: bar,
-    );
-  }
 }
 
 /// @nodoc
@@ -519,68 +64,62 @@ mixin _$KitchenSink {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0) nested,
-    required TResult Function(int field0, int? field1) optional,
-    required TResult Function(int field0) boxed,
+    required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
-    required TResult Function(Foobar foo, int? bar) structlike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
+    required TResult Function(Primitives value) primitives,
     required TResult Function(Nested value) nested,
     required TResult Function(Optional value) optional,
-    required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
-    required TResult Function(Structlike value) structlike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -635,12 +174,11 @@ class _$Empty implements Empty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0) nested,
-    required TResult Function(int field0, int? field1) optional,
-    required TResult Function(int field0) boxed,
+    required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
-    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return empty();
   }
@@ -649,12 +187,11 @@ class _$Empty implements Empty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return empty?.call();
   }
@@ -663,12 +200,11 @@ class _$Empty implements Empty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -681,12 +217,11 @@ class _$Empty implements Empty {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
+    required TResult Function(Primitives value) primitives,
     required TResult Function(Nested value) nested,
     required TResult Function(Optional value) optional,
-    required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
-    required TResult Function(Structlike value) structlike,
   }) {
     return empty(this);
   }
@@ -695,12 +230,11 @@ class _$Empty implements Empty {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
   }) {
     return empty?.call(this);
   }
@@ -709,12 +243,11 @@ class _$Empty implements Empty {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -726,6 +259,178 @@ class _$Empty implements Empty {
 
 abstract class Empty implements KitchenSink {
   const factory Empty() = _$Empty;
+}
+
+/// @nodoc
+abstract class $PrimitivesCopyWith<$Res> {
+  factory $PrimitivesCopyWith(Primitives value, $Res Function(Primitives) then) = _$PrimitivesCopyWithImpl<$Res>;
+  $Res call({int int32, double float64, bool boolean});
+}
+
+/// @nodoc
+class _$PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $PrimitivesCopyWith<$Res> {
+  _$PrimitivesCopyWithImpl(Primitives _value, $Res Function(Primitives) _then)
+      : super(_value, (v) => _then(v as Primitives));
+
+  @override
+  Primitives get _value => super._value as Primitives;
+
+  @override
+  $Res call({
+    Object? int32 = freezed,
+    Object? float64 = freezed,
+    Object? boolean = freezed,
+  }) {
+    return _then(Primitives(
+      int32: int32 == freezed
+          ? _value.int32
+          : int32 // ignore: cast_nullable_to_non_nullable
+              as int,
+      float64: float64 == freezed
+          ? _value.float64
+          : float64 // ignore: cast_nullable_to_non_nullable
+              as double,
+      boolean: boolean == freezed
+          ? _value.boolean
+          : boolean // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Primitives implements Primitives {
+  const _$Primitives({required this.int32, required this.float64, required this.boolean});
+
+  @override
+
+  /// Dart field comment
+  final int int32;
+  @override
+  final double float64;
+  @override
+  final bool boolean;
+
+  @override
+  String toString() {
+    return 'KitchenSink.primitives(int32: $int32, float64: $float64, boolean: $boolean)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Primitives &&
+            const DeepCollectionEquality().equals(other.int32, int32) &&
+            const DeepCollectionEquality().equals(other.float64, float64) &&
+            const DeepCollectionEquality().equals(other.boolean, boolean));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(int32),
+      const DeepCollectionEquality().hash(float64), const DeepCollectionEquality().hash(boolean));
+
+  @JsonKey(ignore: true)
+  @override
+  $PrimitivesCopyWith<Primitives> get copyWith => _$PrimitivesCopyWithImpl<Primitives>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
+    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(int? field0, int? field1) optional,
+    required TResult Function(Uint8List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+  }) {
+    return primitives(int32, float64, boolean);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int? field0, int? field1)? optional,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+  }) {
+    return primitives?.call(int32, float64, boolean);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
+    TResult Function(KitchenSink field0)? nested,
+    TResult Function(int? field0, int? field1)? optional,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    required TResult orElse(),
+  }) {
+    if (primitives != null) {
+      return primitives(int32, float64, boolean);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty value) empty,
+    required TResult Function(Primitives value) primitives,
+    required TResult Function(Nested value) nested,
+    required TResult Function(Optional value) optional,
+    required TResult Function(Buffer value) buffer,
+    required TResult Function(Enums value) enums,
+  }) {
+    return primitives(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+  }) {
+    return primitives?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
+    TResult Function(Nested value)? nested,
+    TResult Function(Optional value)? optional,
+    TResult Function(Buffer value)? buffer,
+    TResult Function(Enums value)? enums,
+    required TResult orElse(),
+  }) {
+    if (primitives != null) {
+      return primitives(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Primitives implements KitchenSink {
+  const factory Primitives({required int int32, required double float64, required bool boolean}) = _$Primitives;
+
+  /// Dart field comment
+  int get int32;
+  double get float64;
+  bool get boolean;
+  @JsonKey(ignore: true)
+  $PrimitivesCopyWith<Primitives> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -795,12 +500,11 @@ class _$Nested implements Nested {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0) nested,
-    required TResult Function(int field0, int? field1) optional,
-    required TResult Function(int field0) boxed,
+    required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
-    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return nested(field0);
   }
@@ -809,12 +513,11 @@ class _$Nested implements Nested {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return nested?.call(field0);
   }
@@ -823,12 +526,11 @@ class _$Nested implements Nested {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -841,12 +543,11 @@ class _$Nested implements Nested {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
+    required TResult Function(Primitives value) primitives,
     required TResult Function(Nested value) nested,
     required TResult Function(Optional value) optional,
-    required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
-    required TResult Function(Structlike value) structlike,
   }) {
     return nested(this);
   }
@@ -855,12 +556,11 @@ class _$Nested implements Nested {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
   }) {
     return nested?.call(this);
   }
@@ -869,12 +569,11 @@ class _$Nested implements Nested {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -895,7 +594,7 @@ abstract class Nested implements KitchenSink {
 /// @nodoc
 abstract class $OptionalCopyWith<$Res> {
   factory $OptionalCopyWith(Optional value, $Res Function(Optional) then) = _$OptionalCopyWithImpl<$Res>;
-  $Res call({int field0, int? field1});
+  $Res call({int? field0, int? field1});
 }
 
 /// @nodoc
@@ -914,7 +613,7 @@ class _$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> imple
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       field1 == freezed
           ? _value.field1
           : field1 // ignore: cast_nullable_to_non_nullable
@@ -926,10 +625,12 @@ class _$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> imple
 /// @nodoc
 
 class _$Optional implements Optional {
-  const _$Optional(this.field0, [this.field1]);
+  const _$Optional([this.field0, this.field1]);
 
   @override
-  final int field0;
+
+  /// Comment on anonymous field
+  final int? field0;
   @override
   final int? field1;
 
@@ -959,12 +660,11 @@ class _$Optional implements Optional {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0) nested,
-    required TResult Function(int field0, int? field1) optional,
-    required TResult Function(int field0) boxed,
+    required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
-    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return optional(field0, field1);
   }
@@ -973,12 +673,11 @@ class _$Optional implements Optional {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return optional?.call(field0, field1);
   }
@@ -987,12 +686,11 @@ class _$Optional implements Optional {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -1005,12 +703,11 @@ class _$Optional implements Optional {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
+    required TResult Function(Primitives value) primitives,
     required TResult Function(Nested value) nested,
     required TResult Function(Optional value) optional,
-    required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
-    required TResult Function(Structlike value) structlike,
   }) {
     return optional(this);
   }
@@ -1019,12 +716,11 @@ class _$Optional implements Optional {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
   }) {
     return optional?.call(this);
   }
@@ -1033,12 +729,11 @@ class _$Optional implements Optional {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -1049,167 +744,13 @@ class _$Optional implements Optional {
 }
 
 abstract class Optional implements KitchenSink {
-  const factory Optional(int field0, [int? field1]) = _$Optional;
+  const factory Optional([int? field0, int? field1]) = _$Optional;
 
-  int get field0;
+  /// Comment on anonymous field
+  int? get field0;
   int? get field1;
   @JsonKey(ignore: true)
   $OptionalCopyWith<Optional> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $BoxedCopyWith<$Res> {
-  factory $BoxedCopyWith(Boxed value, $Res Function(Boxed) then) = _$BoxedCopyWithImpl<$Res>;
-  $Res call({int field0});
-}
-
-/// @nodoc
-class _$BoxedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $BoxedCopyWith<$Res> {
-  _$BoxedCopyWithImpl(Boxed _value, $Res Function(Boxed) _then) : super(_value, (v) => _then(v as Boxed));
-
-  @override
-  Boxed get _value => super._value as Boxed;
-
-  @override
-  $Res call({
-    Object? field0 = freezed,
-  }) {
-    return _then(Boxed(
-      field0 == freezed
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$Boxed implements Boxed {
-  const _$Boxed(this.field0);
-
-  @override
-  final int field0;
-
-  @override
-  String toString() {
-    return 'KitchenSink.boxed(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Boxed &&
-            const DeepCollectionEquality().equals(other.field0, field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
-
-  @JsonKey(ignore: true)
-  @override
-  $BoxedCopyWith<Boxed> get copyWith => _$BoxedCopyWithImpl<Boxed>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() empty,
-    required TResult Function(KitchenSink field0) nested,
-    required TResult Function(int field0, int? field1) optional,
-    required TResult Function(int field0) boxed,
-    required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
-    required TResult Function(Foobar foo, int? bar) structlike,
-  }) {
-    return boxed(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
-  }) {
-    return boxed?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
-    required TResult orElse(),
-  }) {
-    if (boxed != null) {
-      return boxed(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Boxed value) boxed,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
-    required TResult Function(Structlike value) structlike,
-  }) {
-    return boxed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
-  }) {
-    return boxed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
-    required TResult orElse(),
-  }) {
-    if (boxed != null) {
-      return boxed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Boxed implements KitchenSink {
-  const factory Boxed(int field0) = _$Boxed;
-
-  int get field0;
-  @JsonKey(ignore: true)
-  $BoxedCopyWith<Boxed> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1270,12 +811,11 @@ class _$Buffer implements Buffer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0) nested,
-    required TResult Function(int field0, int? field1) optional,
-    required TResult Function(int field0) boxed,
+    required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
-    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return buffer(field0);
   }
@@ -1284,12 +824,11 @@ class _$Buffer implements Buffer {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return buffer?.call(field0);
   }
@@ -1298,12 +837,11 @@ class _$Buffer implements Buffer {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -1316,12 +854,11 @@ class _$Buffer implements Buffer {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
+    required TResult Function(Primitives value) primitives,
     required TResult Function(Nested value) nested,
     required TResult Function(Optional value) optional,
-    required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
-    required TResult Function(Structlike value) structlike,
   }) {
     return buffer(this);
   }
@@ -1330,12 +867,11 @@ class _$Buffer implements Buffer {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
   }) {
     return buffer?.call(this);
   }
@@ -1344,12 +880,11 @@ class _$Buffer implements Buffer {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -1425,12 +960,11 @@ class _$Enums implements Enums {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0) nested,
-    required TResult Function(int field0, int? field1) optional,
-    required TResult Function(int field0) boxed,
+    required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
-    required TResult Function(Foobar foo, int? bar) structlike,
   }) {
     return enums(field0);
   }
@@ -1439,12 +973,11 @@ class _$Enums implements Enums {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
   }) {
     return enums?.call(field0);
   }
@@ -1453,12 +986,11 @@ class _$Enums implements Enums {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
     TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
+    TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -1471,12 +1003,11 @@ class _$Enums implements Enums {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
+    required TResult Function(Primitives value) primitives,
     required TResult Function(Nested value) nested,
     required TResult Function(Optional value) optional,
-    required TResult Function(Boxed value) boxed,
     required TResult Function(Buffer value) buffer,
     required TResult Function(Enums value) enums,
-    required TResult Function(Structlike value) structlike,
   }) {
     return enums(this);
   }
@@ -1485,12 +1016,11 @@ class _$Enums implements Enums {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
   }) {
     return enums?.call(this);
   }
@@ -1499,12 +1029,11 @@ class _$Enums implements Enums {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
+    TResult Function(Primitives value)? primitives,
     TResult Function(Nested value)? nested,
     TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
     TResult Function(Buffer value)? buffer,
     TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -1520,179 +1049,4 @@ abstract class Enums implements KitchenSink {
   Weekdays get field0;
   @JsonKey(ignore: true)
   $EnumsCopyWith<Enums> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StructlikeCopyWith<$Res> {
-  factory $StructlikeCopyWith(Structlike value, $Res Function(Structlike) then) = _$StructlikeCopyWithImpl<$Res>;
-  $Res call({Foobar foo, int? bar});
-
-  $FoobarCopyWith<$Res> get foo;
-}
-
-/// @nodoc
-class _$StructlikeCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $StructlikeCopyWith<$Res> {
-  _$StructlikeCopyWithImpl(Structlike _value, $Res Function(Structlike) _then)
-      : super(_value, (v) => _then(v as Structlike));
-
-  @override
-  Structlike get _value => super._value as Structlike;
-
-  @override
-  $Res call({
-    Object? foo = freezed,
-    Object? bar = freezed,
-  }) {
-    return _then(Structlike(
-      foo: foo == freezed
-          ? _value.foo
-          : foo // ignore: cast_nullable_to_non_nullable
-              as Foobar,
-      bar: bar == freezed
-          ? _value.bar
-          : bar // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-
-  @override
-  $FoobarCopyWith<$Res> get foo {
-    return $FoobarCopyWith<$Res>(_value.foo, (value) {
-      return _then(_value.copyWith(foo: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$Structlike implements Structlike {
-  const _$Structlike({required this.foo, this.bar});
-
-  @override
-  final Foobar foo;
-  @override
-  final int? bar;
-
-  @override
-  String toString() {
-    return 'KitchenSink.structlike(foo: $foo, bar: $bar)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Structlike &&
-            const DeepCollectionEquality().equals(other.foo, foo) &&
-            const DeepCollectionEquality().equals(other.bar, bar));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(foo), const DeepCollectionEquality().hash(bar));
-
-  @JsonKey(ignore: true)
-  @override
-  $StructlikeCopyWith<Structlike> get copyWith => _$StructlikeCopyWithImpl<Structlike>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() empty,
-    required TResult Function(KitchenSink field0) nested,
-    required TResult Function(int field0, int? field1) optional,
-    required TResult Function(int field0) boxed,
-    required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
-    required TResult Function(Foobar foo, int? bar) structlike,
-  }) {
-    return structlike(foo, bar);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
-  }) {
-    return structlike?.call(foo, bar);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(KitchenSink field0)? nested,
-    TResult Function(int field0, int? field1)? optional,
-    TResult Function(int field0)? boxed,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
-    TResult Function(Foobar foo, int? bar)? structlike,
-    required TResult orElse(),
-  }) {
-    if (structlike != null) {
-      return structlike(foo, bar);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Boxed value) boxed,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
-    required TResult Function(Structlike value) structlike,
-  }) {
-    return structlike(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
-  }) {
-    return structlike?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Boxed value)? boxed,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
-    TResult Function(Structlike value)? structlike,
-    required TResult orElse(),
-  }) {
-    if (structlike != null) {
-      return structlike(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Structlike implements KitchenSink {
-  const factory Structlike({required Foobar foo, int? bar}) = _$Structlike;
-
-  Foobar get foo;
-  int? get bar;
-  @JsonKey(ignore: true)
-  $StructlikeCopyWith<Structlike> get copyWith => throw _privateConstructorUsedError;
 }

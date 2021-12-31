@@ -149,6 +149,7 @@ pub fn handle_string_list(names: Vec<String>) -> Result<Vec<String>> {
 pub struct MyTreeNode {
     pub value_i32: i32,
     pub value_vec_u8: Vec<u8>,
+    pub value_boolean: bool,
     pub children: Vec<MyTreeNode>,
 }
 
@@ -370,40 +371,10 @@ pub fn handle_enum_parameter(weekday: Weekdays) -> Result<Weekdays> {
     Ok(weekday)
 }
 
-#[derive(Debug)]
-pub enum Foobar {
-    Foo,
-    Bar(String),
-    Baz { name: String },
-}
-
-#[derive(Debug)]
-pub enum KitchenSink {
-    Empty,
-    Nested(Box<KitchenSink>),
-    Optional(i32, Option<i32>),
-    Boxed(Box<i32>),
-    Buffer(ZeroCopyBuffer<Vec<u8>>),
-    Enums(Weekdays),
-    Structlike { foo: Foobar, bar: Option<i32> },
-}
-
-pub fn handle_enum_struct(mut val: Foobar) -> Result<Foobar> {
-    if let Foobar::Bar(val) = &mut val {
-        *val = "foo'd".to_owned()
-    }
-    Ok(val)
-}
-
-pub fn handle_complex_enum(val: KitchenSink) -> Result<String> {
-    Ok(format!("{:?}", val))
-}
-
 #[frb]
 #[derive(Debug, Clone)]
 pub struct Customized {
     pub final_field: String,
-    /// Not implemented yet, placeholder only
     #[frb(non_final)]
     pub non_final_field: Option<String>,
 }
@@ -411,4 +382,62 @@ pub struct Customized {
 pub fn handle_customized_struct(val: Customized) -> Result<()> {
     println!("{:#?}", val);
     Ok(())
+}
+
+#[frb]
+#[derive(Debug)]
+pub enum KitchenSink {
+    /// Comment on variant
+    Empty,
+    #[frb(unimpl_variant_attr)]
+    Primitives {
+        #[frb(unimpl_field_attr)]
+        /// Dart field comment
+        int32: i32,
+        #[frb(unimpl_deprecated)]
+        float64: f64,
+        boolean: bool,
+    },
+    Nested(Box<KitchenSink>),
+    Optional(
+        /// Comment on anonymous field
+        Option<i32>,
+        Option<i32>,
+    ),
+    Buffer(ZeroCopyBuffer<Vec<u8>>),
+    Enums(Weekdays),
+}
+
+#[frb(unimpl_fn_attr)]
+pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
+    use KitchenSink::*;
+    use Weekdays::*;
+    let inc = |x| x + 1;
+    Ok(match val {
+        Primitives {
+            int32,
+            float64,
+            boolean,
+        } => Primitives {
+            int32: int32 + 1,
+            float64: float64 + 1.,
+            boolean: !boolean,
+        },
+        Nested(_) => Nested(Box::new(Empty)),
+        Optional(a, b) => Optional(a.map(inc), b.map(inc)),
+        Buffer(ZeroCopyBuffer(mut buf)) => {
+            buf.push(1);
+            Buffer(ZeroCopyBuffer(buf))
+        }
+        Enums(day) => Enums(match day {
+            Monday => Tuesday,
+            Tuesday => Wednesday,
+            Wednesday => Thursday,
+            Thursday => Friday,
+            Friday => Saturday,
+            Saturday => Sunday,
+            Sunday => Monday,
+        }),
+        _ => val,
+    })
 }
