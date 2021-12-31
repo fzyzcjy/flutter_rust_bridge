@@ -288,6 +288,13 @@ jobs:
         working-directory: ./frb_rust
         run: cargo test --verbose
 
+      - name: Build macros
+        working-directory: ./frb_macros
+        run: cargo build --verbose
+      - name: Run tests for macros
+        working-directory: ./frb_macros
+        run: cargo test --verbose
+
       - name: Build pure_dart example
         working-directory: ./frb_example/pure_dart/rust
         run: cargo build --verbose
@@ -337,6 +344,17 @@ jobs:
         with:
           command: clippy
           args: --manifest-path=./frb_rust/Cargo.toml -- -D warnings
+
+      - name: Run fmt for rust macros
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --manifest-path=./frb_macros/Cargo.toml --all -- --check
+      - name: Run clippy for rust macros
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path=./frb_macros/Cargo.toml -- -D warnings
 
       - name: Run fmt for pure_dart example
         uses: actions-rs/cargo@v1
