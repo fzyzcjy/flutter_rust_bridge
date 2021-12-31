@@ -168,11 +168,16 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
         func.inputs
             .iter()
             .map(|input| {
-                format!(
-                    "_api2wire_{}({})",
-                    &input.ty.safe_ident(),
-                    &input.name.dart_style()
-                )
+                // edge case: ffigen performs its own bool-to-int conversions
+                if let ApiType::Primitive(ApiTypePrimitive::Bool) = input.ty {
+                    input.name.dart_style()
+                } else {
+                    format!(
+                        "_api2wire_{}({})",
+                        &input.ty.safe_ident(),
+                        &input.name.dart_style()
+                    )
+                }
             })
             .collect::<Vec<_>>(),
     ]
@@ -249,6 +254,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
 
 fn generate_api2wire_func(ty: &ApiType) -> String {
     let body = match ty {
+        Primitive(ApiTypePrimitive::Bool) => "return raw ? 1 : 0;".to_owned(),
         Primitive(_) => "return raw;".to_string(),
         Delegate(d) => match d {
             ApiTypeDelegate::String => {

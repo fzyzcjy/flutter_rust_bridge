@@ -297,7 +297,10 @@ impl ApiTypeChild for ApiTypePrimitive {
     }
 
     fn dart_wire_type(&self) -> String {
-        self.dart_api_type()
+        match self {
+            ApiTypePrimitive::Bool => "int".to_owned(),
+            _ => self.dart_api_type(),
+        }
     }
 
     fn rust_api_type(&self) -> String {

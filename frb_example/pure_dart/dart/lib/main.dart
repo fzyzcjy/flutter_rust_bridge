@@ -267,8 +267,10 @@ void main(List<String> args) async {
     {
       expect(await api.handleEnumStruct(val: Empty()), Empty());
       expect(
-        await api.handleEnumStruct(val: Primitives(int32: 0, float64: 1)),
-        Primitives(int32: 1, float64: 2),
+        await api.handleEnumStruct(
+          val: Primitives(int32: 0, float64: 1, boolean: false),
+        ),
+        Primitives(int32: 1, float64: 2, boolean: true),
       );
       expect(
         await api.handleEnumStruct(val: Optional(null, 0)),
@@ -313,14 +315,17 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
   return MyTreeNode(
     valueI32: 100,
     valueVecU8: Uint8List.fromList(List.filled(arrLen, 100)),
+    valueBoolean: true,
     children: [
       MyTreeNode(
         valueI32: 110,
         valueVecU8: Uint8List.fromList(List.filled(arrLen, 110)),
+        valueBoolean: true,
         children: [
           MyTreeNode(
             valueI32: 111,
             valueVecU8: Uint8List.fromList(List.filled(arrLen, 111)),
+            valueBoolean: true,
             children: [],
           ),
         ],
@@ -328,6 +333,7 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
       MyTreeNode(
         valueI32: 120,
         valueVecU8: Uint8List.fromList(List.filled(arrLen, 120)),
+        valueBoolean: true,
         children: [],
       ),
     ],

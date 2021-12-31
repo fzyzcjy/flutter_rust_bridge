@@ -159,7 +159,8 @@ class ExoticOptionals {
 @freezed
 class KitchenSink with _$KitchenSink {
   const factory KitchenSink.empty() = Empty;
-  const factory KitchenSink.primitives({required int int32, required double float64}) = Primitives;
+  const factory KitchenSink.primitives({required int int32, required double float64, required bool boolean}) =
+      Primitives;
   const factory KitchenSink.nested(KitchenSink field0) = Nested;
   const factory KitchenSink.optional([int? field0, int? field1]) = Optional;
   const factory KitchenSink.buffer(Uint8List field0) = Buffer;
@@ -179,11 +180,13 @@ class MySize {
 class MyTreeNode {
   final int valueI32;
   final Uint8List valueVecU8;
+  final bool valueBoolean;
   final List<MyTreeNode> children;
 
   MyTreeNode({
     required this.valueI32,
     required this.valueVecU8,
+    required this.valueBoolean,
     required this.children,
   });
 }
@@ -283,8 +286,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   Future<int> primitiveTypes(
           {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) => inner.wire_primitive_types(
-            port, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), _api2wire_bool(myBool)),
+        callFfi: (port) =>
+            inner.wire_primitive_types(port, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), myBool),
         parseSuccessData: _wire2api_i32,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "primitive_types",
@@ -600,8 +603,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return _api2wire_uint_8_list(raw);
   }
 
-  bool _api2wire_bool(bool raw) {
-    return raw;
+  int _api2wire_bool(bool raw) {
+    return raw ? 1 : 0;
   }
 
   ffi.Pointer<wire_Attribute> _api2wire_box_autoadd_attribute(Attribute raw) {
@@ -981,6 +984,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       wireObj.kind = inner.inflate_KitchenSink_Primitives();
       wireObj.kind.ref.Primitives.ref.int32 = _api2wire_i32(apiObj.int32);
       wireObj.kind.ref.Primitives.ref.float64 = _api2wire_f64(apiObj.float64);
+      wireObj.kind.ref.Primitives.ref.boolean = _api2wire_bool(apiObj.boolean);
     }
     if (apiObj is Nested) {
       wireObj.tag = 2;
@@ -1013,6 +1017,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   void _api_fill_to_wire_my_tree_node(MyTreeNode apiObj, wire_MyTreeNode wireObj) {
     wireObj.value_i32 = _api2wire_i32(apiObj.valueI32);
     wireObj.value_vec_u8 = _api2wire_uint_8_list(apiObj.valueVecU8);
+    wireObj.value_boolean = _api2wire_bool(apiObj.valueBoolean);
     wireObj.children = _api2wire_list_my_tree_node(apiObj.children);
   }
 
@@ -1229,6 +1234,7 @@ KitchenSink _wire2api_kitchen_sink(dynamic raw) {
       return Primitives(
         int32: _wire2api_i32(raw[1]),
         float64: _wire2api_f64(raw[2]),
+        boolean: _wire2api_bool(raw[3]),
       );
     case 2:
       return Nested(
@@ -1283,11 +1289,12 @@ MySize _wire2api_my_size(dynamic raw) {
 
 MyTreeNode _wire2api_my_tree_node(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+  if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
   return MyTreeNode(
     valueI32: _wire2api_i32(arr[0]),
     valueVecU8: _wire2api_uint_8_list(arr[1]),
-    children: _wire2api_list_my_tree_node(arr[2]),
+    valueBoolean: _wire2api_bool(arr[2]),
+    children: _wire2api_list_my_tree_node(arr[3]),
   );
 }
 
@@ -2342,6 +2349,9 @@ class wire_MyTreeNode extends ffi.Struct {
 
   external ffi.Pointer<wire_uint_8_list> value_vec_u8;
 
+  @ffi.Uint8()
+  external int value_boolean;
+
   external ffi.Pointer<wire_list_my_tree_node> children;
 }
 
@@ -2446,6 +2456,9 @@ class KitchenSink_Primitives extends ffi.Struct {
 
   @ffi.Double()
   external double float64;
+
+  @ffi.Uint8()
+  external int boolean;
 }
 
 class KitchenSink_Nested extends ffi.Struct {

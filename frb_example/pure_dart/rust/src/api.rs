@@ -149,6 +149,7 @@ pub fn handle_string_list(names: Vec<String>) -> Result<Vec<String>> {
 pub struct MyTreeNode {
     pub value_i32: i32,
     pub value_vec_u8: Vec<u8>,
+    pub value_boolean: bool,
     pub children: Vec<MyTreeNode>,
 }
 
@@ -394,6 +395,7 @@ pub enum KitchenSink {
         int32: i32,
         #[frb(unimpl_deprecated)]
         float64: f64,
+        boolean: bool,
     },
     Nested(Box<KitchenSink>),
     Optional(Option<i32>, Option<i32>),
@@ -407,9 +409,14 @@ pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
     use Weekdays::*;
     let inc = |x| x + 1;
     Ok(match val {
-        Primitives { int32, float64 } => Primitives {
+        Primitives {
+            int32,
+            float64,
+            boolean,
+        } => Primitives {
             int32: int32 + 1,
             float64: float64 + 1.,
+            boolean: !boolean,
         },
         Nested(_) => Nested(Box::new(Empty)),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),

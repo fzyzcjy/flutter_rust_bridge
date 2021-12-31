@@ -551,6 +551,7 @@ pub struct wire_MySize {
 pub struct wire_MyTreeNode {
     value_i32: i32,
     value_vec_u8: *mut wire_uint_8_list,
+    value_boolean: bool,
     children: *mut wire_list_my_tree_node,
 }
 
@@ -595,6 +596,7 @@ pub struct KitchenSink_Empty {}
 pub struct KitchenSink_Primitives {
     int32: i32,
     float64: f64,
+    boolean: bool,
 }
 
 #[repr(C)]
@@ -1128,6 +1130,7 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
                 KitchenSink::Primitives {
                     int32: ans.int32.wire2api(),
                     float64: ans.float64.wire2api(),
+                    boolean: ans.boolean.wire2api(),
                 }
             },
             2 => unsafe {
@@ -1209,6 +1212,7 @@ impl Wire2Api<MyTreeNode> for wire_MyTreeNode {
         MyTreeNode {
             value_i32: self.value_i32.wire2api(),
             value_vec_u8: self.value_vec_u8.wire2api(),
+            value_boolean: self.value_boolean.wire2api(),
             children: self.children.wire2api(),
         }
     }
@@ -1323,6 +1327,7 @@ pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
         Primitives: support::new_leak_box_ptr(KitchenSink_Primitives {
             int32: Default::default(),
             float64: Default::default(),
+            boolean: Default::default(),
         }),
     })
 }
@@ -1378,6 +1383,7 @@ impl NewWithNullPtr for wire_MyTreeNode {
         Self {
             value_i32: Default::default(),
             value_vec_u8: core::ptr::null_mut(),
+            value_boolean: Default::default(),
             children: core::ptr::null_mut(),
         }
     }
@@ -1441,9 +1447,16 @@ impl support::IntoDart for KitchenSink {
     fn into_dart(self) -> support::DartCObject {
         match self {
             Self::Empty => vec![0.into_dart()],
-            Self::Primitives { int32, float64 } => {
-                vec![1.into_dart(), int32.into_dart(), float64.into_dart()]
-            }
+            Self::Primitives {
+                int32,
+                float64,
+                boolean,
+            } => vec![
+                1.into_dart(),
+                int32.into_dart(),
+                float64.into_dart(),
+                boolean.into_dart(),
+            ],
             Self::Nested(field0) => vec![2.into_dart(), field0.into_dart()],
             Self::Optional(field0, field1) => {
                 vec![3.into_dart(), field0.into_dart(), field1.into_dart()]
@@ -1467,6 +1480,7 @@ impl support::IntoDart for MyTreeNode {
         vec![
             self.value_i32.into_dart(),
             self.value_vec_u8.into_dart(),
+            self.value_boolean.into_dart(),
             self.children.into_dart(),
         ]
         .into_dart()
