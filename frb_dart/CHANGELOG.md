@@ -2,6 +2,7 @@
 
 * Marker attributes for expressiveness #261 (thanks @Desdaemon)
 * Improvements #267 (thanks @Desdaemon): Resolve #265, Resolve #266, Fix attributes not working on enum variants, Add comments on enum variants and fields, (Internal) unify tuple and normal enum structs
+* Avoid user parameter collision in wire functions #270 (thanks @Desdaemon)
 
 ## 1.10.0
 
