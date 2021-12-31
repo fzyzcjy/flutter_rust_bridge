@@ -14,11 +14,11 @@ use flutter_rust_bridge::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_simple_adder(port: i64, a: i32, b: i32) {
+pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "simple_adder",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -31,7 +31,7 @@ pub extern "C" fn wire_simple_adder(port: i64, a: i32, b: i32) {
 
 #[no_mangle]
 pub extern "C" fn wire_primitive_types(
-    port: i64,
+    port_: i64,
     my_i32: i32,
     my_i64: i64,
     my_f64: f64,
@@ -40,7 +40,7 @@ pub extern "C" fn wire_primitive_types(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "primitive_types",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -54,11 +54,11 @@ pub extern "C" fn wire_primitive_types(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_primitive_u32(port: i64, my_u32: u32) {
+pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "primitive_u32",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -69,11 +69,11 @@ pub extern "C" fn wire_primitive_u32(port: i64, my_u32: u32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_string(port: i64, s: *mut wire_uint_8_list) {
+pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -84,11 +84,11 @@ pub extern "C" fn wire_handle_string(port: i64, s: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_return_unit(port: i64) {
+pub extern "C" fn wire_handle_return_unit(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_return_unit",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| handle_return_unit(),
@@ -96,11 +96,11 @@ pub extern "C" fn wire_handle_return_unit(port: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
+pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_u8",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -111,11 +111,11 @@ pub extern "C" fn wire_handle_vec_u8(port: i64, v: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_of_primitive(port: i64, n: i32) {
+pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_of_primitive",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -126,11 +126,11 @@ pub extern "C" fn wire_handle_vec_of_primitive(port: i64, n: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port: i64, n: i32) {
+pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_zero_copy_vec_of_primitive",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -141,11 +141,11 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port: i64, n: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_struct(port: i64, arg: *mut wire_MySize, boxed: *mut wire_MySize) {
+pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *mut wire_MySize) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_struct",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -157,11 +157,11 @@ pub extern "C" fn wire_handle_struct(port: i64, arg: *mut wire_MySize, boxed: *m
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_newtype(port: i64, arg: *mut wire_NewTypeInt) {
+pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_newtype",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -172,11 +172,11 @@ pub extern "C" fn wire_handle_newtype(port: i64, arg: *mut wire_NewTypeInt) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_list_of_struct(port: i64, l: *mut wire_list_my_size) {
+pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_size) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_list_of_struct",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -187,11 +187,11 @@ pub extern "C" fn wire_handle_list_of_struct(port: i64, l: *mut wire_list_my_siz
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_string_list(port: i64, names: *mut wire_StringList) {
+pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringList) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string_list",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -202,11 +202,11 @@ pub extern "C" fn wire_handle_string_list(port: i64, names: *mut wire_StringList
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_complex_struct(port: i64, s: *mut wire_MyTreeNode) {
+pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_complex_struct",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -234,11 +234,11 @@ pub extern "C" fn wire_handle_sync_return(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_stream(port: i64, arg: *mut wire_uint_8_list) {
+pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Stream,
         },
         move || {
@@ -249,11 +249,11 @@ pub extern "C" fn wire_handle_stream(port: i64, arg: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_err(port: i64) {
+pub extern "C" fn wire_return_err(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_err",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| return_err(),
@@ -261,11 +261,11 @@ pub extern "C" fn wire_return_err(port: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_panic(port: i64) {
+pub extern "C" fn wire_return_panic(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_panic",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| return_panic(),
@@ -273,11 +273,11 @@ pub extern "C" fn wire_return_panic(port: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_optional_return(port: i64, left: f64, right: f64) {
+pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_return",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -289,11 +289,11 @@ pub extern "C" fn wire_handle_optional_return(port: i64, left: f64, right: f64) 
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_optional_struct(port: i64, document: *mut wire_uint_8_list) {
+pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_struct",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -304,11 +304,11 @@ pub extern "C" fn wire_handle_optional_struct(port: i64, document: *mut wire_uin
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_optional_increment(port: i64, opt: *mut wire_ExoticOptionals) {
+pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_ExoticOptionals) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_increment",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -319,11 +319,11 @@ pub extern "C" fn wire_handle_optional_increment(port: i64, opt: *mut wire_Exoti
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_increment_boxed_optional(port: i64, opt: *mut f64) {
+pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_increment_boxed_optional",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -335,7 +335,7 @@ pub extern "C" fn wire_handle_increment_boxed_optional(port: i64, opt: *mut f64)
 
 #[no_mangle]
 pub extern "C" fn wire_handle_option_box_arguments(
-    port: i64,
+    port_: i64,
     i8box: *mut i8,
     u8box: *mut u8,
     i32box: *mut i32,
@@ -347,7 +347,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_option_box_arguments",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -374,11 +374,11 @@ pub extern "C" fn wire_handle_option_box_arguments(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_return_enum(port: i64, input: *mut wire_uint_8_list) {
+pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_return_enum",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -389,11 +389,11 @@ pub extern "C" fn wire_handle_return_enum(port: i64, input: *mut wire_uint_8_lis
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_enum_parameter(port: i64, weekday: i32) {
+pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_parameter",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -404,11 +404,11 @@ pub extern "C" fn wire_handle_enum_parameter(port: i64, weekday: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_customized_struct(port: i64, val: *mut wire_Customized) {
+pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Customized) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_customized_struct",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -419,11 +419,11 @@ pub extern "C" fn wire_handle_customized_struct(port: i64, val: *mut wire_Custom
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_enum_struct(port: i64, val: *mut wire_KitchenSink) {
+pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_struct",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
