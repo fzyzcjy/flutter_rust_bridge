@@ -32,6 +32,19 @@ jobs:
           path: './frb_rust'
           registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
+  rust_macros:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - uses: katyo/publish-crates@v1
+        with:
+          path: './frb_macros'
+          registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
   dart_runtime:
     runs-on: ubuntu-latest
     steps:
