@@ -1,3 +1,8 @@
+## 1.11.0
+
+* Marker attributes for expressiveness #261 (thanks @Desdaemon)
+* Improvements #267 (thanks @Desdaemon): Resolve #265, Resolve #266, Fix attributes not working on enum variants, Add comments on enum variants and fields, (Internal) unify tuple and normal enum structs
+
 ## 1.10.0
 
 * Support enum structs (Rust's expressive enums with fields) #256 (thanks @Desdaemon)
