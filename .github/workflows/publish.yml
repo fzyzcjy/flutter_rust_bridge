@@ -30,6 +30,7 @@ jobs:
       - uses: katyo/publish-crates@v1
         with:
           path: './frb_rust'
+          args: --no-verify #263
           registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   rust_macros:
