@@ -6,7 +6,7 @@ fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
         .into_iter()
         .scan(None, |state, x| match (state, x) {
             (pound @ None, tt::Punct(p)) if p.as_char() == '#' => {
-                *pound = Some(TokenTree::Punct(p));
+                *pound = Some(tt::Punct(p));
                 Some(vec![])
             }
             (p @ Some(_), tt::Group(g)) => match g.delimiter() {
@@ -32,6 +32,6 @@ fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
 
 /// Attribute to guide code generation.
 #[proc_macro_attribute]
-pub fn frb(_: proc_macro::TokenStream, item: proc_macro::TokenStream) -> proc_macro::TokenStream {
+pub fn frb(_: TokenStream, item: TokenStream) -> TokenStream {
     remove_marker_attr(item, "frb")
 }
