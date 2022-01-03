@@ -369,14 +369,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       : _lookup = lookup;
 
   void wire_draw_mandelbrot(
-    int port,
+    int port_,
     ffi.Pointer<wire_Size> image_size,
     ffi.Pointer<wire_Point> zoom_point,
     double scale,
     int num_threads,
   ) {
     return _wire_draw_mandelbrot(
-      port,
+      port_,
       image_size,
       zoom_point,
       scale,
@@ -392,11 +392,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       .asFunction<void Function(int, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, double, int)>();
 
   void wire_passing_complex_structs(
-    int port,
+    int port_,
     ffi.Pointer<wire_TreeNode> root,
   ) {
     return _wire_passing_complex_structs(
-      port,
+      port_,
       root,
     );
   }
@@ -408,11 +408,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
 
   void wire_off_topic_memory_test_input_array(
-    int port,
+    int port_,
     ffi.Pointer<wire_uint_8_list> input,
   ) {
     return _wire_off_topic_memory_test_input_array(
-      port,
+      port_,
       input,
     );
   }
@@ -424,11 +424,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_off_topic_memory_test_input_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_off_topic_memory_test_output_zero_copy_buffer(
-    int port,
+    int port_,
     int len,
   ) {
     return _wire_off_topic_memory_test_output_zero_copy_buffer(
-      port,
+      port_,
       len,
     );
   }
@@ -440,11 +440,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_off_topic_memory_test_output_zero_copy_bufferPtr.asFunction<void Function(int, int)>();
 
   void wire_off_topic_memory_test_output_vec_u8(
-    int port,
+    int port_,
     int len,
   ) {
     return _wire_off_topic_memory_test_output_vec_u8(
-      port,
+      port_,
       len,
     );
   }
@@ -455,11 +455,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_off_topic_memory_test_output_vec_u8Ptr.asFunction<void Function(int, int)>();
 
   void wire_off_topic_memory_test_input_vec_of_object(
-    int port,
+    int port_,
     ffi.Pointer<wire_list_size> input,
   ) {
     return _wire_off_topic_memory_test_input_vec_of_object(
-      port,
+      port_,
       input,
     );
   }
@@ -471,11 +471,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_off_topic_memory_test_input_vec_of_objectPtr.asFunction<void Function(int, ffi.Pointer<wire_list_size>)>();
 
   void wire_off_topic_memory_test_output_vec_of_object(
-    int port,
+    int port_,
     int len,
   ) {
     return _wire_off_topic_memory_test_output_vec_of_object(
-      port,
+      port_,
       len,
     );
   }
@@ -487,11 +487,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_off_topic_memory_test_output_vec_of_objectPtr.asFunction<void Function(int, int)>();
 
   void wire_off_topic_memory_test_input_complex_struct(
-    int port,
+    int port_,
     ffi.Pointer<wire_TreeNode> input,
   ) {
     return _wire_off_topic_memory_test_input_complex_struct(
-      port,
+      port_,
       input,
     );
   }
@@ -503,11 +503,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_off_topic_memory_test_input_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
 
   void wire_off_topic_memory_test_output_complex_struct(
-    int port,
+    int port_,
     int len,
   ) {
     return _wire_off_topic_memory_test_output_complex_struct(
-      port,
+      port_,
       len,
     );
   }
@@ -519,10 +519,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_off_topic_memory_test_output_complex_structPtr.asFunction<void Function(int, int)>();
 
   void wire_off_topic_deliberately_return_error(
-    int port,
+    int port_,
   ) {
     return _wire_off_topic_deliberately_return_error(
-      port,
+      port_,
     );
   }
 
@@ -532,10 +532,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _wire_off_topic_deliberately_return_errorPtr.asFunction<void Function(int)>();
 
   void wire_off_topic_deliberately_panic(
-    int port,
+    int port_,
   ) {
     return _wire_off_topic_deliberately_panic(
-      port,
+      port_,
     );
   }
 

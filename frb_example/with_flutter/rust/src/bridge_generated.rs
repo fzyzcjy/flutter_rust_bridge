@@ -15,7 +15,7 @@ use flutter_rust_bridge::*;
 
 #[no_mangle]
 pub extern "C" fn wire_draw_mandelbrot(
-    port: i64,
+    port_: i64,
     image_size: *mut wire_Size,
     zoom_point: *mut wire_Point,
     scale: f64,
@@ -24,7 +24,7 @@ pub extern "C" fn wire_draw_mandelbrot(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "draw_mandelbrot",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -40,11 +40,11 @@ pub extern "C" fn wire_draw_mandelbrot(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNode) {
+pub extern "C" fn wire_passing_complex_structs(port_: i64, root: *mut wire_TreeNode) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "passing_complex_structs",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -55,11 +55,11 @@ pub extern "C" fn wire_passing_complex_structs(port: i64, root: *mut wire_TreeNo
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_input_array(port: i64, input: *mut wire_uint_8_list) {
+pub extern "C" fn wire_off_topic_memory_test_input_array(port_: i64, input: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_array",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -70,11 +70,11 @@ pub extern "C" fn wire_off_topic_memory_test_input_array(port: i64, input: *mut 
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, len: i32) {
+pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_zero_copy_buffer",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -85,11 +85,11 @@ pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port: i64, 
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port: i64, len: i32) {
+pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port_: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_u8",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -101,13 +101,13 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port: i64, len: i32) 
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
-    port: i64,
+    port_: i64,
     input: *mut wire_list_size,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_vec_of_object",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -118,11 +118,11 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port: i64, len: i32) {
+pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port_: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_of_object",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -134,13 +134,13 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port: i64, len
 
 #[no_mangle]
 pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
-    port: i64,
+    port_: i64,
     input: *mut wire_TreeNode,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_complex_struct",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -151,11 +151,11 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, len: i32) {
+pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port_: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_complex_struct",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
@@ -166,11 +166,11 @@ pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port: i64, le
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_deliberately_return_error(port: i64) {
+pub extern "C" fn wire_off_topic_deliberately_return_error(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_deliberately_return_error",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| off_topic_deliberately_return_error(),
@@ -178,11 +178,11 @@ pub extern "C" fn wire_off_topic_deliberately_return_error(port: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_deliberately_panic(port: i64) {
+pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_deliberately_panic",
-            port: Some(port),
+            port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| off_topic_deliberately_panic(),
