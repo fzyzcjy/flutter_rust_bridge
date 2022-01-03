@@ -9,5 +9,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = { version = "1.0.44", features = ["backtrace"] }
-flutter_rust_bridge = { version = "1", features = ["attributes"] }
+flutter_rust_bridge = "1"
 lazy_static = "1.4.0"
