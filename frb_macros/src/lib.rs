@@ -1,17 +1,15 @@
 use proc_macro::*;
 
 fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
-    #[derive(Default)]
-    struct Attribute(Option<TokenTree>);
     use TokenTree as tt;
     input
         .into_iter()
-        .scan(Attribute::default(), |state, x| match (state, x) {
-            (Attribute(pound @ None), tt::Punct(p)) if p.as_char() == '#' => {
+        .scan(None, |state, x| match (state, x) {
+            (pound @ None, tt::Punct(p)) if p.as_char() == '#' => {
                 *pound = Some(TokenTree::Punct(p));
                 Some(vec![])
             }
-            (Attribute(p @ Some(_)), tt::Group(g)) => match g.delimiter() {
+            (p @ Some(_), tt::Group(g)) => match g.delimiter() {
                 Delimiter::Bracket => match g.stream().into_iter().next() {
                     Some(tt::Ident(i)) if i.to_string() == ident => {
                         let _ = p.take();
@@ -22,7 +20,7 @@ fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
                 },
                 _ => Some(vec![p.take().unwrap(), tt::Group(g)]),
             },
-            (Attribute(None), tt::Group(g)) => Some(vec![tt::Group(Group::new(
+            (None, tt::Group(g)) => Some(vec![tt::Group(Group::new(
                 g.delimiter(),
                 remove_marker_attr(g.stream(), ident),
             ))]),
