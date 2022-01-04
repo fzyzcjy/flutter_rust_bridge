@@ -1,6 +1,6 @@
 name: Bug Report
 description: Create a report to help us improve
-title: ""
+title: "[Bug] "
 labels: ["bug"]
 assignees: []
 body:
@@ -8,36 +8,98 @@ body:
     attributes:
       value: |
         Please fill in the blanks below - many bugs can be solved easily and quickly with the information (especially logs).
+
   - type: textarea
     id: describe-the-bug
     attributes:
       label: Describe the bug
-      description: A clear and concise description of what the bug is
+      description: A clear and concise description of what the bug is.
     validations:
       required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-    validations:
-      required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
   - type: textarea
-    id: logs
+    id: to-reproduce
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      label: To Reproduce
+      description: Steps to reproduce the behavior.
+    validations:
+      required: false
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: false
+
+  - type: textarea
+    id: codegen-logs
+    attributes:
+      label: Codegen logs
+      description: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`.
+      placeholder: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`.
       render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: generated-binding
+    attributes:
+      label: Generated binding code
+      description: If possible, please paste your generated binding code, both `.h` (via `--c-output`), and `.dart` (via `--dart-output`), here.
+      render: shell
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        Development Environment
+
+  - type: input
+    id: env-os
+    attributes:
+      label: OS
+      placeholder: ex. MacOS
+    validations:
+      required: false
+  - type: input
+    id: env-version
+    attributes:
+      label: Version of `flutter_rust_bridge_codegen`
+      placeholder: ex. 1.0
+    validations:
+      required: false
+  - type: textarea
+    id: env-flutter-doctor
+    attributes:
+      label: Flutter info
+      description: Paste output of `flutter doctor -v`
+      render: shell
+    validations:
+      required: false
+  - type: input
+    id: env-clang
+    attributes:
+      label: Version of `clang++`
+      placeholder: ex. 12
+    validations:
+      required: false
+  - type: input
+    id: env-clang
+    attributes:
+      label: Version of `cbindgen`
+      placeholder: ex. 0.20
+    validations:
+      required: false
+  - type: input
+    id: env-clang
+    attributes:
+      label: Version of `ffigen`
+      placeholder: ex. 0.4
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
