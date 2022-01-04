@@ -5,10 +5,10 @@
 - [Introduction](index.md)
 - [🧭 Quickstart](quickstart.md)
 - [📚 Tutorial: A Flutter+Rust app](tutorial_with_flutter.md)
-- [Tutorial: Pure Dart](tutorial_pure_dart.md)
 
 # More Doc
 
+- [Tutorial: Pure Dart](tutorial_pure_dart.md)
 - [Safety concerns](safety.md)
 - [Troubleshooting](troubleshooting.md)
 - [Feature details](feature_details.md)
