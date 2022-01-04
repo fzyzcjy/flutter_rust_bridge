@@ -1,4 +1,5 @@
 use std::fs;
+use std::path::Path;
 
 use env_logger::Env;
 use log::{debug, info};
@@ -26,6 +27,10 @@ fn main() {
     let config = config::parse(RawOpts::from_args());
     info!("Picked config: {:?}", &config);
 
+    let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
+    let c_output_dir = Path::new(&config.c_output_path).parent().unwrap();
+    let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
+
     info!("Phase: Parse source code to AST");
     let source_rust_content = fs::read_to_string(&config.rust_input_path).unwrap();
     let file_ast = syn::parse_file(&source_rust_content).unwrap();
@@ -43,6 +48,7 @@ fn main() {
         &api_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
     );
+    fs::create_dir_all(&rust_output_dir).unwrap();
     fs::write(&config.rust_output_path, generated_rust.code).unwrap();
 
     info!("Phase: Generate Dart code");
@@ -101,12 +107,14 @@ fn main() {
     ]
     .concat();
     let c_dummy_code = generator_c::generate_dummy(&effective_func_names);
+    fs::create_dir_all(c_output_dir).unwrap();
     fs::write(
         &config.c_output_path,
         fs::read_to_string(temp_bindgen_c_output_file).unwrap() + "\n" + &c_dummy_code,
     )
     .unwrap();
 
+    fs::create_dir_all(&dart_output_dir).unwrap();
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file).unwrap();
     let (generated_dart_wire_import_code, generated_dart_wire_body_code) =
         extract_dart_wire_content(&modify_dart_wire_content(
