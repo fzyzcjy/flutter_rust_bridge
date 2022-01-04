@@ -134,7 +134,55 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+                        <h1 id="flutter_rust_bridge-high-level-memory-safe-binding-generator-for-flutterdart---rust"><a class="header" href="#flutter_rust_bridge-high-level-memory-safe-binding-generator-for-flutterdart---rust"><a href="https://fzyzcjy.github.io/flutter_rust_bridge/">flutter_rust_bridge</a>: High-level memory-safe binding generator for Flutter/Dart &lt;-&gt; Rust</a></h1>
+<p><a href="https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fzyzcjy/flutter_rust_bridge&amp;utm_campaign=Badge_Grade_Settings"><img src="https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7" alt="Codacy Badge" /></a>
+<a href="https://crates.io/crates/flutter_rust_bridge"><img src="https://img.shields.io/crates/v/flutter_rust_bridge.svg" alt="Rust Package" /></a>
+<a href="https://pub.dev/packages/flutter_rust_bridge"><img src="https://img.shields.io/pub/v/flutter_rust_bridge.svg" alt="Flutter Package" /></a>
+<a href="https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml"><img src="https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg" alt="CI" /></a>
+<a href="https://docs.rs/flutter_rust_bridge"><img src="https://docs.rs/flutter_rust_bridge/badge.svg" alt="Documentation" /></a>
+<a href="https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml"><img src="https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg" alt="Example" /></a></p>
+<p><img src="https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/docs/logo.png" alt="Logo" /></p>
+<p>Want to combine the best between <code>Flutter</code>, a cross-platform hot-reload rapid-development UI toolkit, and <code>Rust</code>, a language empowering everyone to build reliable and efficient software? Here it comes!</p>
+<h2 id="-advantages"><a class="header" href="#-advantages">🚀 Advantages</a></h2>
+<ul>
+<li><strong>Memory-safe</strong>: Never need to think about malloc/free.</li>
+<li><strong>Type support</strong>: Unlike low-level binding generator which only provide primitives and pointers, this package provides things like <code>Vec&lt;u8&gt;</code>(<code>Uint8List</code>), <code>Vec&lt;T&gt;</code>(<code>List&lt;T&gt;</code>), any custom <code>struct</code>(<code>class</code>)s, and even recursive structs (e.g. a tree node).</li>
+<li><strong>Zero-copy</strong>: Pass big array of bytes from Rust to Dart without any memory copies.</li>
+<li><strong>Async programming</strong>: Simply call functions directly in main isolate (thread) of Dart/Flutter, and Rust code will not block the Flutter UI.</li>
+<li><strong>Easy to use</strong>: All you need to do is write down your Rust code. The code generator will do everything and expose an API in Dart/Flutter's style.</li>
+<li><strong>Lightweight</strong>: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. <sub>For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).</sub></li>
+<li><strong>Easy to code-review &amp; convince yourself</strong>: This package simply simulates how human beings write down boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code for you to look at. The runtime is only hundreds of loc, and the generated code follows simple patterns. No magic <sub>and also no blackbox macros</sub> at all! (<a href="https://github.com/fzyzcjy/flutter_rust_bridge#safety">More about</a> safety concerns.)</li>
+<li><strong>Pure-Dart compatible:</strong> Despite the name, this package is 100% compatible with pure Dart. It does not require anything specific to Flutter. See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/README.md">this pure-Dart example</a>.</li>
+</ul>
+<h2 id="-user-guide"><a class="header" href="#-user-guide">💡 User Guide</a></h2>
+<p>Check out <a href="https://fzyzcjy.github.io/flutter_rust_bridge/">the user guide</a> for show-me-the-code, quickstart, tutorials, and more advanced features.</p>
+<h2 id="contributors-"><a class="header" href="#contributors-">Contributors ✨</a></h2>
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<p><a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a>):</p>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/fzyzcjy"><img src="https://avatars.githubusercontent.com/u/5236035?v=4?s=100" width="100px;" alt=""/><br /><sub><b>fzyzcjy</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=fzyzcjy" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=fzyzcjy" title="Documentation">📖</a> <a href="#example-fzyzcjy" title="Examples">💡</a> <a href="#ideas-fzyzcjy" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-fzyzcjy" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/Desdaemon"><img src="https://avatars.githubusercontent.com/u/36768030?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viet Dinh</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Desdaemon" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Desdaemon" title="Tests">⚠️</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Desdaemon" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/smw-wagnerma"><img src="https://avatars.githubusercontent.com/u/66412697?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marcel</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=smw-wagnerma" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/rustui"><img src="https://avatars.githubusercontent.com/u/90625190?v=4?s=100" width="100px;" alt=""/><br /><sub><b>rustui</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=rustui" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://adventures.michaelfbryan.com/"><img src="https://avatars.githubusercontent.com/u/17380079?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Bryan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Michael-F-Bryan" title="Code">💻</a></td>
+    <td align="center"><a href="https://bus710.net"><img src="https://avatars.githubusercontent.com/u/8920680?v=4?s=100" width="100px;" alt=""/><br /><sub><b>bus710</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=bus710" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://scholar.google.com/citations?user=RbAto7EAAAAJ"><img src="https://avatars.githubusercontent.com/u/1213857?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebastian Urban</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=surban" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/trobanga"><img src="https://avatars.githubusercontent.com/u/8888869?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=trobanga" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/AlienKevin"><img src="https://avatars.githubusercontent.com/u/22850071?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kevin Li</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=AlienKevin" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=AlienKevin" title="Documentation">📖</a></td>
+  </tr>
+</table>
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+<p>This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!</p>
 
                     </main>
 
