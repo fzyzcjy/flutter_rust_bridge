@@ -1,5 +1,28 @@
 # Quickstart
 
+## 🧭 Show me the code
+
+What you write down (in Rust):
+
+```rust
+pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
+    ... do my heavy computations ...
+}
+
+// you can use structs (even recursive)
+pub struct TreeNode { pub value: String, pub children: Vec<MyTreeNode> }
+```
+
+With bindings automatically generated, you can simply use the following API in Flutter/Dart. Nothing more.
+
+```dart
+Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
+```
+
+<sub>**Remark**: Why `Future` in Flutter: Flutter is single-threaded. If not using future, just like what you do with plain-old Flutter bindings, your UI will be *stuck* as long as your Rust code is executing. If your Rust code run for a second, your UI will fully freeze for one second.</sub> 
+
+## Execute by yourself
+
 ### Install
 
 * Install dependency `cbindgen`: `cargo install cbindgen` <sub>(may [need latest version](https://github.com/fzyzcjy/flutter_rust_bridge/issues/53#issuecomment-939588321), thanks @gmorenz)</sub>
@@ -25,3 +48,7 @@ Use the class in the generated `.dart` file, as if it is a normal Flutter/Dart c
 Want to see a Flutter tutorial with UI? See [the tutorial section below](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-a-flutterrust-app). Want pure-Dart example? [Here is](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-pure-dart) another tutorial.
 
 <sub>**Remark**: If you are interested, why `abstract`class can be used - it is because of the [factory](https://dart.dev/guides/language/language-tour#factory-constructors) language feature.</sub>
+
+## See more
+
+Want to see more? Have a look at the next section for quickstarts or tutorials.

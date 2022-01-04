@@ -1,4 +1,4 @@
-# flutter_rust_bridge: High-level memory-safe binding generator for Flutter/Dart <-> Rust
+# [flutter_rust_bridge](https://fzyzcjy.github.io/flutter_rust_bridge/): High-level memory-safe binding generator for Flutter/Dart <-> Rust
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7)](https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&utm_medium=referral&utm_content=fzyzcjy/flutter_rust_bridge&utm_campaign=Badge_Grade_Settings)
 [![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg)](https://crates.io/crates/flutter_rust_bridge)
@@ -22,43 +22,9 @@ Want to combine the best between `Flutter`, a cross-platform hot-reload rapid-de
 * **Easy to code-review & convince yourself**: This package simply simulates how human beings write down boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code for you to look at. The runtime is only hundreds of loc, and the generated code follows simple patterns. No magic <sub>and also no blackbox macros</sub> at all! ([More about](https://github.com/fzyzcjy/flutter_rust_bridge#safety) safety concerns.)
 * **Pure-Dart compatible:** Despite the name, this package is 100% compatible with pure Dart. It does not require anything specific to Flutter. See [this pure-Dart example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/README.md).
 
-## 🧭 Show me the code
+## 💡 User Guide
 
-What you write down (in Rust):
-
-```rust
-pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
-    ... do my heavy computations ...
-}
-
-// you can use structs (even recursive)
-pub struct TreeNode { pub value: String, pub children: Vec<MyTreeNode> }
-```
-
-With bindings automatically generated, you can simply use the following API in Flutter/Dart. Nothing more.
-
-```dart
-Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
-```
-
-<sub>**Remark**: Why `Future` in Flutter: Flutter is single-threaded. If not using future, just like what you do with plain-old Flutter bindings, your UI will be *stuck* as long as your Rust code is executing. If your Rust code run for a second, your UI will fully freeze for one second.</sub> 
-
-Want to see more? Have a look at the next section for quickstarts or tutorials. 
-
-## 💡 Core documentation
-
-* [**Quickstart**](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart)
-* [📚 **Tutorial: A Flutter+Rust app**](https://fzyzcjy.github.io/flutter_rust_bridge/tutorial_with_flutter)
-* [📚 **Tutorial: Pure Dart**](https://fzyzcjy.github.io/flutter_rust_bridge/tutorial_pure_dart)
-
-## More documentation
-
-* [Safety concerns](https://fzyzcjy.github.io/flutter_rust_bridge/safety)
-* [Troubleshooting](https://fzyzcjy.github.io/flutter_rust_bridge/troubleshooting)
-* [Feature details](https://fzyzcjy.github.io/flutter_rust_bridge/feature_details)
-* [Advanced](https://fzyzcjy.github.io/flutter_rust_bridge/advanced)
-* [Set up Flutter/Dart+Rust support from scratch](https://fzyzcjy.github.io/flutter_rust_bridge/set_up_from_scratch)
-* [Contributing](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/CONTRIBUTING.md)
+Check out [the user guide](https://fzyzcjy.github.io/flutter_rust_bridge/) for show-me-the-code, quickstart, tutorials, and more advanced features.
 
 ## Contributors ✨
 

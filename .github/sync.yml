@@ -1,11 +1,13 @@
 # https://github.com/marketplace/actions/repo-file-sync-action
 fzyzcjy/flutter_rust_bridge:
   - source: README.md
-    dest: docs/index.md
+    dest: book/src/introduction.md
   - source: README.md
     dest: frb_rust/README.md
   - source: README.md
     dest: frb_codegen/README.md
+  - source: README.md
+    dest: frb_macros/README.md
   - source: README.md
     dest: frb_dart/README.md
 
