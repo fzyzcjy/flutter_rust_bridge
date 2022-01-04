@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Troubleshooting - flutter_rust_bridge</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Core Doc</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart.html"><strong aria-hidden="true">2.</strong> Quickstart</a></li><li class="chapter-item expanded "><a href="tutorial_with_flutter.html"><strong aria-hidden="true">3.</strong> 📚 Tutorial: A Flutter+Rust app</a></li><li class="chapter-item expanded "><a href="tutorial_pure_dart.html"><strong aria-hidden="true">4.</strong> 📚 Tutorial: Pure Dart</a></li><li class="chapter-item expanded affix "><li class="part-title">More Doc</li><li class="chapter-item expanded "><a href="safety.html"><strong aria-hidden="true">5.</strong> Safety concerns</a></li><li class="chapter-item expanded "><a href="troubleshooting.html" class="active"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="feature_details.html"><strong aria-hidden="true">7.</strong> Feature details</a></li><li class="chapter-item expanded "><a href="advanced.html"><strong aria-hidden="true">8.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="set_up_from_scratch.html"><strong aria-hidden="true">9.</strong> Set up Flutter/Dart+Rust support from scratch</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">flutter_rust_bridge</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
+<h4 id="have-problems-when-using-linux-the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found--"><a class="header" href="#have-problems-when-using-linux-the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found--">Have problems when using <code>Linux</code>? (<code>The generated store_dart_post_cobject() has the wrong signature</code> / <code>'stdarg.h' file not found</code> / ...)</a></h4>
+<p>Try to run code generator with working directory at <code>/</code>, or add include path as is described in #108. This is a problem with Rust's builtin <code>Command</code>. See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/108">#108</a> for more details.</p>
+<h4 id="issue-with-store_dart_post_cobject"><a class="header" href="#issue-with-store_dart_post_cobject">Issue with store_dart_post_cobject?</a></h4>
+<p>If calling rust function gives the error below, please consider running <strong>cargo build</strong> again. This can happen when the generated rs file is not included when building is being done.</p>
+<pre><code class="language-sh">[ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
+</code></pre>
+<h4 id="error-running-cargo-ndk-ld-error-unable-to-find-library--lgcc"><a class="header" href="#error-running-cargo-ndk-ld-error-unable-to-find-library--lgcc">Error running <code>cargo ndk</code>: <code>ld: error: unable to find library -lgcc</code></a></h4>
+<p>Downgrade Android NDK to version 22. This is an <a href="https://github.com/bbqsrc/cargo-ndk/issues/22">ongoing issue</a> with <code>cargo-ndk</code>, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/149">#149</a>)</p>
+<h4 id="fail-to-run-flutter_rust_bridge_codegen-on-macos"><a class="header" href="#fail-to-run-flutter_rust_bridge_codegen-on-macos">Fail to run <code>flutter_rust_bridge_codegen</code> on MacOS</a></h4>
+<p>If you are running macOS, you will need to specify a path to your llvm:</p>
+<pre><code class="language-shell">flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
+</code></pre>
+<p>If you are on Intel, you can install llvm using <code>brew install llvm</code> and it will be installed at <code>/usr/local/homebrew/opt/llvm/</code> by default.</p>
+<p>If you are on M1, you need to install the x86 versions of everything and run them through Rosetta 2, since Flutter does not support M1 yet. Start by installing Rosetta 2 if you haven't already:</p>
+<pre><code class="language-shell">/usr/sbin/softwareupdate --install-rosetta
+</code></pre>
+<p>Then, install an x86 version of brew to <code>/usr/local</code>:</p>
+<pre><code class="language-shell">arch -x86_64 zsh
+cd /usr/local &amp;&amp; mkdir homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+</code></pre>
+<p>Then, you need to use the x86 brew to install the x86 version of llvm:</p>
+<pre><code class="language-shell">arch -x86_64 /usr/local/homebrew/bin/brew install llvm
+</code></pre>
+<p>Reference <a href="https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/">this article</a> for details.</p>
+<p>And when you build with cargo, you need to select x86 as the target:</p>
+<pre><code class="language-shell">cargo build --target=x86_64-apple-darwin
+</code></pre>
+<h4 id="other-problems"><a class="header" href="#other-problems">Other problems?</a></h4>
+<p>Don't hesitate to <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&amp;labels=bug&amp;template=bug_report.md&amp;title=">open an issue</a>! I usually reply within minutes or hours (except when sleeping, of course).</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="safety.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="feature_details.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="safety.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="feature_details.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

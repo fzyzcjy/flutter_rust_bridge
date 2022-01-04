@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>flutter_rust_bridge</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Core Doc</li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart.html"><strong aria-hidden="true">2.</strong> Quickstart</a></li><li class="chapter-item expanded "><a href="tutorial_with_flutter.html"><strong aria-hidden="true">3.</strong> 📚 Tutorial: A Flutter+Rust app</a></li><li class="chapter-item expanded "><a href="tutorial_pure_dart.html"><strong aria-hidden="true">4.</strong> 📚 Tutorial: Pure Dart</a></li><li class="chapter-item expanded affix "><li class="part-title">More Doc</li><li class="chapter-item expanded "><a href="safety.html"><strong aria-hidden="true">5.</strong> Safety concerns</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="feature_details.html"><strong aria-hidden="true">7.</strong> Feature details</a></li><li class="chapter-item expanded "><a href="advanced.html"><strong aria-hidden="true">8.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="set_up_from_scratch.html"><strong aria-hidden="true">9.</strong> Set up Flutter/Dart+Rust support from scratch</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">flutter_rust_bridge</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <div style="break-before: page; page-break-before: always;"></div><h1 id="flutter_rust_bridge-high-level-memory-safe-binding-generator-for-flutterdart---rust"><a class="header" href="#flutter_rust_bridge-high-level-memory-safe-binding-generator-for-flutterdart---rust"><a href="https://fzyzcjy.github.io/flutter_rust_bridge/">flutter_rust_bridge</a>: High-level memory-safe binding generator for Flutter/Dart &lt;-&gt; Rust</a></h1>
+<p><a href="https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fzyzcjy/flutter_rust_bridge&amp;utm_campaign=Badge_Grade_Settings"><img src="https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7" alt="Codacy Badge" /></a>
+<a href="https://crates.io/crates/flutter_rust_bridge"><img src="https://img.shields.io/crates/v/flutter_rust_bridge.svg" alt="Rust Package" /></a>
+<a href="https://pub.dev/packages/flutter_rust_bridge"><img src="https://img.shields.io/pub/v/flutter_rust_bridge.svg" alt="Flutter Package" /></a>
+<a href="https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml"><img src="https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg" alt="CI" /></a>
+<a href="https://docs.rs/flutter_rust_bridge"><img src="https://docs.rs/flutter_rust_bridge/badge.svg" alt="Documentation" /></a>
+<a href="https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml"><img src="https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg" alt="Example" /></a></p>
+<p><img src="https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/docs/logo.png" alt="Logo" /></p>
+<p>Want to combine the best between <code>Flutter</code>, a cross-platform hot-reload rapid-development UI toolkit, and <code>Rust</code>, a language empowering everyone to build reliable and efficient software? Here it comes!</p>
+<h2 id="-advantages"><a class="header" href="#-advantages">🚀 Advantages</a></h2>
+<ul>
+<li><strong>Memory-safe</strong>: Never need to think about malloc/free.</li>
+<li><strong>Type support</strong>: Unlike low-level binding generator which only provide primitives and pointers, this package provides things like <code>Vec&lt;u8&gt;</code>(<code>Uint8List</code>), <code>Vec&lt;T&gt;</code>(<code>List&lt;T&gt;</code>), any custom <code>struct</code>(<code>class</code>)s, and even recursive structs (e.g. a tree node).</li>
+<li><strong>Zero-copy</strong>: Pass big array of bytes from Rust to Dart without any memory copies.</li>
+<li><strong>Async programming</strong>: Simply call functions directly in main isolate (thread) of Dart/Flutter, and Rust code will not block the Flutter UI.</li>
+<li><strong>Easy to use</strong>: All you need to do is write down your Rust code. The code generator will do everything and expose an API in Dart/Flutter's style.</li>
+<li><strong>Lightweight</strong>: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. <sub>For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).</sub></li>
+<li><strong>Easy to code-review &amp; convince yourself</strong>: This package simply simulates how human beings write down boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code for you to look at. The runtime is only hundreds of loc, and the generated code follows simple patterns. No magic <sub>and also no blackbox macros</sub> at all! (<a href="https://github.com/fzyzcjy/flutter_rust_bridge#safety">More about</a> safety concerns.)</li>
+<li><strong>Pure-Dart compatible:</strong> Despite the name, this package is 100% compatible with pure Dart. It does not require anything specific to Flutter. See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/README.md">this pure-Dart example</a>.</li>
+</ul>
+<h2 id="-user-guide"><a class="header" href="#-user-guide">💡 User Guide</a></h2>
+<p>Check out <a href="https://fzyzcjy.github.io/flutter_rust_bridge/">the user guide</a> for show-me-the-code, quickstart, tutorials, and more advanced features.</p>
+<h2 id="contributors-"><a class="header" href="#contributors-">Contributors ✨</a></h2>
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<p><a href="introduction.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a>):</p>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/fzyzcjy"><img src="https://avatars.githubusercontent.com/u/5236035?v=4?s=100" width="100px;" alt=""/><br /><sub><b>fzyzcjy</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=fzyzcjy" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=fzyzcjy" title="Documentation">📖</a> <a href="introduction.html#example-fzyzcjy" title="Examples">💡</a> <a href="introduction.html#ideas-fzyzcjy" title="Ideas, Planning, & Feedback">🤔</a> <a href="introduction.html#maintenance-fzyzcjy" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/Desdaemon"><img src="https://avatars.githubusercontent.com/u/36768030?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viet Dinh</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Desdaemon" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Desdaemon" title="Tests">⚠️</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Desdaemon" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/smw-wagnerma"><img src="https://avatars.githubusercontent.com/u/66412697?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marcel</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=smw-wagnerma" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/rustui"><img src="https://avatars.githubusercontent.com/u/90625190?v=4?s=100" width="100px;" alt=""/><br /><sub><b>rustui</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=rustui" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://adventures.michaelfbryan.com/"><img src="https://avatars.githubusercontent.com/u/17380079?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Bryan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Michael-F-Bryan" title="Code">💻</a></td>
+    <td align="center"><a href="https://bus710.net"><img src="https://avatars.githubusercontent.com/u/8920680?v=4?s=100" width="100px;" alt=""/><br /><sub><b>bus710</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=bus710" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://scholar.google.com/citations?user=RbAto7EAAAAJ"><img src="https://avatars.githubusercontent.com/u/1213857?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebastian Urban</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=surban" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/trobanga"><img src="https://avatars.githubusercontent.com/u/8888869?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=trobanga" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/AlienKevin"><img src="https://avatars.githubusercontent.com/u/22850071?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kevin Li</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=AlienKevin" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=AlienKevin" title="Documentation">📖</a></td>
+  </tr>
+</table>
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+<p>This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="quickstart"><a class="header" href="#quickstart">Quickstart</a></h1>
+<h2 id="-show-me-the-code"><a class="header" href="#-show-me-the-code">🧭 Show me the code</a></h2>
+<p>What you write down (in Rust):</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -&gt; Result&lt;Vec&lt;u8&gt;&gt; {
+    ... do my heavy computations ...
+}
+
+// you can use structs (even recursive)
+pub struct TreeNode { pub value: String, pub children: Vec&lt;MyTreeNode&gt; }
+<span class="boring">}
+</span></code></pre></pre>
+<p>With bindings automatically generated, you can simply use the following API in Flutter/Dart. Nothing more.</p>
+<pre><code class="language-dart">Future&lt;Uint8List&gt; myFunction(MyTreeNode a, SomeOtherStruct b);
+</code></pre>
+<p><sub><strong>Remark</strong>: Why <code>Future</code> in Flutter: Flutter is single-threaded. If not using future, just like what you do with plain-old Flutter bindings, your UI will be <em>stuck</em> as long as your Rust code is executing. If your Rust code run for a second, your UI will fully freeze for one second.</sub> </p>
+<h2 id="execute-by-yourself"><a class="header" href="#execute-by-yourself">Execute by yourself</a></h2>
+<h3 id="install"><a class="header" href="#install">Install</a></h3>
+<ul>
+<li>Install dependency <code>cbindgen</code>: <code>cargo install cbindgen</code> <sub>(may <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/53#issuecomment-939588321">need latest version</a>, thanks @gmorenz)</sub></li>
+<li>Install dependency <code>ffigen</code>:  <code>dart pub global activate ffigen</code>, and <a href="https://pub.dev/packages/ffigen#installing-llvm">install LLVM</a>. If you are running macOS, check below under MacOS Caveats for instructions on how to install and use llvm.</li>
+<li>Install this code generator binary by <code>cargo install flutter_rust_bridge_codegen</code>.</li>
+<li>Add <code>flutter_rust_bridge = &quot;1.0&quot;</code> (where <code>1.0</code> should be the latest version) to Rust's <code>Cargo.toml</code>.</li>
+<li>Add <code>flutter_rust_bridge: ^1.0</code> (same as above, should be latest version) to Flutter/Dart's <code>pubspec.yaml</code> under the section of <code>dependencies</code>.</li>
+</ul>
+<h3 id="run"><a class="header" href="#run">Run</a></h3>
+<pre><code class="language-shell">flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
+</code></pre>
+<p>If you have problems (such as failure on MacOS), please see the <a href="https://github.com/fzyzcjy/flutter_rust_bridge#troubleshooting">&quot;Troubleshooting&quot;</a> section below.</p>
+<p>(For more options, use <code>--help</code>; To see what types and function signatures can you write in Rust, have a look at <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs">this example</a>.) (For Windows, you may need <code>\\</code> instead of <code>/</code> for paths.)</p>
+<h3 id="enjoy"><a class="header" href="#enjoy">Enjoy</a></h3>
+<p>Use the class in the generated <code>.dart</code> file, as if it is a normal Flutter/Dart class! (The abstract class at the top of the generated file.)</p>
+<p>Want to see a Flutter tutorial with UI? See <a href="https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-a-flutterrust-app">the tutorial section below</a>. Want pure-Dart example? <a href="https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-pure-dart">Here is</a> another tutorial.</p>
+<p><sub><strong>Remark</strong>: If you are interested, why <code>abstract</code>class can be used - it is because of the <a href="https://dart.dev/guides/language/language-tour#factory-constructors">factory</a> language feature.</sub></p>
+<h2 id="see-more"><a class="header" href="#see-more">See more</a></h2>
+<p>Want to see more? Have a look at the next section for quickstarts or tutorials.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tutorial-a-flutterrust-app"><a class="header" href="#tutorial-a-flutterrust-app">Tutorial: A Flutter+Rust app</a></h1>
+<p>In this tutorial, let us draw a <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot set</a>, which is plotted in Flutter UI, generated by Rust algorithm, and communicated via this library.</p>
+<p><strong>Remark</strong>: The <code>flutter_*_test</code> sections of the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/test.yaml">CI workflow</a> can also be useful, if you want details of each command.</p>
+<h3 id="get-example-code"><a class="header" href="#get-example-code">Get example code</a></h3>
+<p>Please <a href="https://flutter.dev/docs/get-started/install">install Flutter</a>, <a href="https://www.rust-lang.org/learn/get-started">install Rust</a>, and have some familiarity with them. Then run <code>git clone https://github.com/fzyzcjy/flutter_rust_bridge</code>, and my example is in <code>frb_example/with_flutter</code>.</p>
+<h3 id="optional-run-code-generator"><a class="header" href="#optional-run-code-generator">(Optional) Run code generator</a></h3>
+<p>I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.</p>
+<p>Install it: <code>cargo install flutter_rust_bridge_codegen</code>.</p>
+<p>Run it:</p>
+<pre><code>flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h
+</code></pre>
+<p><sub><strong>Remark</strong>: If you have problems, see &quot;Troubleshooting&quot; section. For Windows, you may need <code>\\</code> instead of <code>/</code> for paths.</sub></p>
+<h3 id="run-flutterrust-app"><a class="header" href="#run-flutterrust-app">Run &quot;Flutter+Rust&quot; app</a></h3>
+<h4 id="if-android"><a class="header" href="#if-android">If Android</a></h4>
+<p>Run <code>cargo ndk -o ../android/app/src/main/jniLibs build</code>. Then run the Flutter app normally as is taught in official tutorial. For example, <code>flutter run</code>.</p>
+<p>Remark: Since my quickstart app is so baremetal, I do not integrate the Rust building process into Flutter building process. But you can look at <a href="https://stackoverflow.com/q/69515032/4619958">this tutorial</a> to easily do that.</p>
+<h4 id="if-ios"><a class="header" href="#if-ios">If iOS</a></h4>
+<p>Modify <code>Cargo.toml</code> to change <code>cdylib</code> to <code>staticlib</code>. (Again, this is baremetal example so it is done manually. For your project, you can automate it.)</p>
+<p>Run <code>cargo lipo &amp;&amp; cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner</code> to build Rust and copy the static library. Then run the Flutter app normally as is taught in official tutorial. For example, <code>flutter run</code>. (Similarly, <a href="https://stackoverflow.com/q/69515032/4619958">this tutorial</a> can automate the process.)</p>
+<h4 id="if-desktop-windowslinuxmacos"><a class="header" href="#if-desktop-windowslinuxmacos">If Desktop (Windows/Linux/MacOS)</a></h4>
+<p><strong>Remark</strong>: If you only want to develop a mobile app, skip this section - it is for creating desktop apps.</p>
+<p>Run it directly using <code>flutter run</code> assuming <a href="https://flutter.dev/desktop#set-up">Flutter desktop support</a> has been configured. </p>
+<p>Flutter can run on Windows/Linux/MacOS without any problem, and this lib does nothing but generates some code like a human being. Therefore, this package should work well as long as you set up the Flutter desktop app's ffi functionality successfully.</p>
+<h5 id="windowslinux"><a class="header" href="#windowslinux">Windows/Linux</a></h5>
+<p>This example (<code>frb_example/with_flutter</code>) already demonstrated how to integrate Cargo with CMake on Linux and Windows, and more details can be seen in <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/66">#66</a>.</p>
+<h5 id="macos"><a class="header" href="#macos">MacOS</a></h5>
+<p>To integrate a dynamic library to your macOS app, you need to configure your <code>Runner.xcworkspace</code> in Xcode. Here, I show the instructions for Xcode 13.1:</p>
+<ol>
+<li>Open the <code>yourapp/macos/Runner.xcworkspace</code> in Xcode.</li>
+<li>Drag your precompiled library (<code>libyourlibrary.dylib</code>) into <code>Runner/Frameworks</code>.</li>
+<li>Click <code>Runner</code> (with a blue app store logo on the left, not the folder underneath) and go to the <code>Build Phases</code> tab.
+<ol>
+<li>Drag <code>libyourlibrary.dylib</code> into the <code>Copy Bundle Resources</code> list.</li>
+<li>Under <code>Bundle Frameworks</code>, drag <code>libyourlibrary.dylib</code>  to the list, <code>Code sign on copy</code> should be checked by default.</li>
+<li>Under <code>Link Binary With Libraries</code>, set status of <code>libyourlibrary.dylib</code> to Optional. (We use dynamic linking, no need to statically link.)</li>
+</ol>
+</li>
+<li>Click <code>Runner</code> and go to the <code>General</code> tab.
+<ol>
+<li>You should see <code>libyourlibrary.dylib</code> in the <code>Frameworks, Libararies and Embedded Content</code> list, with the option saying <code>Embed &amp; Sign</code>.</li>
+<li>If not, drag your library to the list and select the option.</li>
+</ol>
+</li>
+<li>Click <code>Runner</code> and go to the <code>Build Settings</code> tab.
+<ol>
+<li>In the <code>Search Paths</code> section configure the <code>Library Search Paths</code> to include the absolute path where libyourlibrary.dylib is located.</li>
+</ol>
+</li>
+</ol>
+<p>In <code>lib/main.dart</code>, you can now use <code>DynamicLibrary.open('libyourlibrary.dylib')</code> to dynamically link to the symbols. This example app shows how to do dynamic linking on other platforms as well so be sure to take a look at <code>frb_example/with_flutter/lib/main.dart</code>.
+Reference the <a href="https://docs.flutter.dev/development/platform-integration/c-interop#compiled-dynamic-library-macos">flutter documentation</a> for details, do note that the Xcode version they demonstrates in may not be the latest.</p>
+<h3 id="optional-see-more-types-that-this-library-can-generate"><a class="header" href="#optional-see-more-types-that-this-library-can-generate">(Optional) See more types that this library can generate</a></h3>
+<p>Have a look at the function arguments and return types in this file: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs">api.rs</a>. With this library, we have a generated API that resides at <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/dart/lib/generated_api.dart">generated_api.dart</a> (of course, that is auto generated, and you can use it in other Dart code).</p>
+<h3 id="optional-remarks"><a class="header" href="#optional-remarks">(Optional) Remarks</a></h3>
+<h4 id="the-mod"><a class="header" href="#the-mod">The <code>mod</code></a></h4>
+<p>If you are adding this lib to your own existing code, please put <code>mod generated_wire;</code> (where <code>generated_wire</code> is the name of the wire file that you choose) into your <code>lib.rs</code> or <code>main.rs</code>. Only by doing this, Rust can understand that this generated file is a part of your project.</p>
+<h4 id="version"><a class="header" href="#version">Version</a></h4>
+<p>Dart SDK <code>&gt;=2.14.0</code> is needed not by this library, but by the latest version of the <code>ffigen</code> tool. Therefore, write <code>sdk: &quot;&gt;=2.14.0 &lt;3.0.0&quot;</code> in the <code>environment</code> section of <code>pubspec.yaml</code>. If you do not want that, consider installing a older version of the <code>ffigen</code> tool.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tutorial-pure-dart"><a class="header" href="#tutorial-pure-dart">Tutorial: Pure Dart</a></h1>
+<p><strong>Remark</strong>: The <code>valgrind_test</code> section of the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/test.yaml">CI workflow</a> can also be useful, if you want details of each command and want to see Valgrind configuration.</p>
+<p>Unlike the previous tutorial, this one integrates Rust with pure Dart instead of Flutter.</p>
+<h3 id="get-example-code-1"><a class="header" href="#get-example-code-1">Get example code</a></h3>
+<p>Please <a href="https://dart.dev/get-dart">install Dart</a>, <a href="https://www.rust-lang.org/learn/get-started">install Rust</a>, and have some familiarity with them. Then run <code>git clone https://github.com/fzyzcjy/flutter_rust_bridge</code>, and my example is in <code>frb_example/pure_dart</code>.</p>
+<h3 id="optional-run-code-generator-1"><a class="header" href="#optional-run-code-generator-1">(Optional) Run code generator</a></h3>
+<p>Remark: I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.</p>
+<p>Install it: <code>cargo install flutter_rust_bridge_codegen</code>.</p>
+<p>Run it: <code>flutter_rust_bridge_codegen --rust-input frb_example/pure_dart/rust/src/api.rs --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart</code> (See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml">CI workflow</a> as a reference.) (For Windows, you may need <code>\\</code> instead of <code>/</code> for paths.)</p>
+<h3 id="run-dartrust-app"><a class="header" href="#run-dartrust-app">Run &quot;Dart+Rust&quot; app</a></h3>
+<p>You may run <code>frb_example/pure_dart/dart/lib/main.dart</code> as a normal Dart program, except that you should provide the dynamic linked library of the Rust code (for simplicity, here I only demonstrate the approach for dynamic linked library, but you can for sure use other methods). The detailed steps are as follows.</p>
+<p>Run <code>cargo build</code> in <code>frb_example/pure_dart/rust</code> to build the Rust code into a <code>.so</code> file. Then run <code>dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so </code> to run the Dart program with Rust <code>.so</code> file. (If you have problems, see &quot;Troubleshooting&quot; section.)  (If on MacOS, Rust may indeed generate <code>.dylib</code>, so change the last command to use <code>...dylib</code> instead of <code>...so</code>,)</p>
+<p>P.S. You will only see some tests passing - no fancy UI or functionality in this example.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="safety"><a class="header" href="#safety">Safety</a></h1>
+<p>This library has CI that runs <a href="https://www.valgrind.org/">Valgrind</a> automatically on the setup that a Dart program calls a Rust program using this package, so memory problems should be found by Valgrind. <sub>(Notice that, even when running a simple hello-world Dart program, Valgrind will report hundreds of errors. See <a href="https://github.com/dart-lang/sdk/issues/47346">this Dart lang issue</a> for more details. Therefore, I both look at &quot;definitely lost&quot; in Valgrind, and manually search things related to this library - if all reported errors are unrelated to this library then we are safe.)</sub></p>
+<p>In addition, Flutter integration tests are also done in CI. This ensures a real Flutter application using this library does not suffer from problems.</p>
+<p>Most of the code are written in safe Rust. The <code>unsafe</code> code mainly comes from <code>support::box_from_leak_ptr</code> and <code>support::vec_from_leak_ptr</code>. They are used for pointers and arrays, and I follow the high-upvoted answers and official doc when writing down that few lines of code.</p>
+<p>I use this library heavily in my own Flutter project (<code>yplusplus</code>, or <code>why++</code>). That app is in production and it works quite well. If I observe any problems, I will fix it in this library.</p>
+<p>The CI also runs the <code>run_codegen</code> workflow, which ensure that the code generator can compile and generate desired results. Lastly, the CI also runs formatters and linters (<code>fmt</code>, <code>clippy</code>, <code>dart analyze</code>, <code>dart format</code>), and linters can also catch some common problems.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
+<h4 id="have-problems-when-using-linux-the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found--"><a class="header" href="#have-problems-when-using-linux-the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found--">Have problems when using <code>Linux</code>? (<code>The generated store_dart_post_cobject() has the wrong signature</code> / <code>'stdarg.h' file not found</code> / ...)</a></h4>
+<p>Try to run code generator with working directory at <code>/</code>, or add include path as is described in #108. This is a problem with Rust's builtin <code>Command</code>. See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/108">#108</a> for more details.</p>
+<h4 id="issue-with-store_dart_post_cobject"><a class="header" href="#issue-with-store_dart_post_cobject">Issue with store_dart_post_cobject?</a></h4>
+<p>If calling rust function gives the error below, please consider running <strong>cargo build</strong> again. This can happen when the generated rs file is not included when building is being done.</p>
+<pre><code class="language-sh">[ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
+</code></pre>
+<h4 id="error-running-cargo-ndk-ld-error-unable-to-find-library--lgcc"><a class="header" href="#error-running-cargo-ndk-ld-error-unable-to-find-library--lgcc">Error running <code>cargo ndk</code>: <code>ld: error: unable to find library -lgcc</code></a></h4>
+<p>Downgrade Android NDK to version 22. This is an <a href="https://github.com/bbqsrc/cargo-ndk/issues/22">ongoing issue</a> with <code>cargo-ndk</code>, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/149">#149</a>)</p>
+<h4 id="fail-to-run-flutter_rust_bridge_codegen-on-macos"><a class="header" href="#fail-to-run-flutter_rust_bridge_codegen-on-macos">Fail to run <code>flutter_rust_bridge_codegen</code> on MacOS</a></h4>
+<p>If you are running macOS, you will need to specify a path to your llvm:</p>
+<pre><code class="language-shell">flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
+</code></pre>
+<p>If you are on Intel, you can install llvm using <code>brew install llvm</code> and it will be installed at <code>/usr/local/homebrew/opt/llvm/</code> by default.</p>
+<p>If you are on M1, you need to install the x86 versions of everything and run them through Rosetta 2, since Flutter does not support M1 yet. Start by installing Rosetta 2 if you haven't already:</p>
+<pre><code class="language-shell">/usr/sbin/softwareupdate --install-rosetta
+</code></pre>
+<p>Then, install an x86 version of brew to <code>/usr/local</code>:</p>
+<pre><code class="language-shell">arch -x86_64 zsh
+cd /usr/local &amp;&amp; mkdir homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+</code></pre>
+<p>Then, you need to use the x86 brew to install the x86 version of llvm:</p>
+<pre><code class="language-shell">arch -x86_64 /usr/local/homebrew/bin/brew install llvm
+</code></pre>
+<p>Reference <a href="https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/">this article</a> for details.</p>
+<p>And when you build with cargo, you need to select x86 as the target:</p>
+<pre><code class="language-shell">cargo build --target=x86_64-apple-darwin
+</code></pre>
+<h4 id="other-problems"><a class="header" href="#other-problems">Other problems?</a></h4>
+<p>Don't hesitate to <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&amp;labels=bug&amp;template=bug_report.md&amp;title=">open an issue</a>! I usually reply within minutes or hours (except when sleeping, of course).</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="feature-details"><a class="header" href="#feature-details">Feature details</a></h1>
+<h2 id="what-this-library-is--isnt"><a class="header" href="#what-this-library-is--isnt">What this library is &amp; isn't</a></h2>
+<p>This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, you may refer to external materials to learn Flutter, learn Rust, learn <a href="https://flutter.dev/docs/development/platform-integration/c-interop">Flutter FFI</a> (Dart FFI) and so on. With material on the Internet, you will know how to create a mobile application using Flutter, and how that app can call Rust functions via Dart FFI (in the C ABI). Then this package comes in, and ease you from the burden to write down tons of boilerplate code ;)</p>
+<h2 id="command-line-arguments"><a class="header" href="#command-line-arguments">Command line arguments</a></h2>
+<p>Simply add <code>--help</code> to see full documentation.</p>
+<pre><code class="language-shell">flutter_rust_bridge_codegen
+
+USAGE:
+    flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output &lt;dart-output&gt; --rust-input &lt;rust-input&gt;
+
+FLAGS:
+        --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
+    -h, --help                   Prints help information
+    -V, --version                Prints version information
+
+OPTIONS:
+    -r, --rust-input &lt;rust-input&gt;                              Path of input Rust code
+    -d, --dart-output &lt;dart-output&gt;                            Path of output generated Dart code
+    -c, --c-output &lt;c-output&gt;                                  Path of output generated C header
+        --rust-crate-dir &lt;rust-crate-dir&gt;                      Crate directory for your Rust project
+        --rust-output &lt;rust-output&gt;                            Path of output generated Rust code
+        --class-name &lt;class-name&gt;                              Generated class name
+        --dart-format-line-length &lt;dart-format-line-length&gt;    Line length for dart formatting
+        --llvm-path &lt;llvm-path&gt;                                Path to the installed LLVM
+</code></pre>
+<h2 id="language-features-this-library-supports"><a class="header" href="#language-features-this-library-supports">Language features this library supports</a></h2>
+<p>Here is a list of types that the code generator can generate:</p>
+<p>[WIP] You can read the <code>pure_dart</code> example code currently, before I put the full list here.</p>
+<p>Here are other functionalities:</p>
+<p>[WIP] (e.g. <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/179">Stream is supported but not documented yet</a>).</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="customize-handlers-behavior"><a class="header" href="#customize-handlers-behavior">Customize handler's behavior</a></h3>
+<p>By default, the <code>DefaultHandler</code> is used. You can implement your own <code>Handler</code> doing whatever you want. In order to do this, create a variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in the Rust input file (probably using <code>lazy_static</code>). You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
+<h3 id="setupinit-ffi-call"><a class="header" href="#setupinit-ffi-call">Setup/init FFI call</a></h3>
+<p>If you want that feature, have a look at <code>FlutterRustBridgeSetupMixin</code> in the Dart side.</p>
+<h3 id="async-in-rust"><a class="header" href="#async-in-rust">Async in Rust</a></h3>
+<p>If you want to use async/await or return a Future type from your Rust functions, please refer <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/docs/async_in_rust.md">this documentation</a> for a detailed guide.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="set-up-flutterdartrust-support-from-scratch"><a class="header" href="#set-up-flutterdartrust-support-from-scratch">Set up Flutter/Dart+Rust support from scratch</a></h1>
+<p>I suggest that you can start with the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/with_flutter">Flutter example</a> first, and modify it to satisfy your needs. It can serve as a template for new projects. It is run against CI so we are sure it works.</p>
+<p>Indeed, this library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, &quot;how to create a Flutter app that can run Rust code&quot; is actually out of the scope of this library, and there are already several tutorials on the Internet.</p>
+<p>However, I can sketch the outline of what to do if you want to set up a new Flutter+Rust project as follows.</p>
+<p>Step 1: Create a new Flutter project (or use an existing one). The Dart SDK should be <code>&gt;=2.14.0</code> if you want to use the latest <code>ffigen</code> tool.</p>
+<p>Step 2: Create a new Rust project, say, at directory <code>rust</code> under the Flutter project.</p>
+<p>Step 3: Edit <code>Cargo.toml</code> and add:</p>
+<pre><code>[lib]
+name = &quot;flutter_rust_bridge_example&quot; # whatever you like
+crate-type = [&quot;cdylib&quot;] # &lt;-- notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
+</code></pre>
+<p>Step 4: Follow the standard steps of &quot;how iOS uses static libraries&quot;. For example, in XCode, edit <code>Strip Style</code> in <code>Build Settings</code> to <code>Debugging Symbols</code>. Also, add your <code>libyour_generate_file.a</code> to <code>Link Binary With Libraries</code> in <code>Build Phases</code>. Add <code>binding.h</code> to <code>Copy Bundle Resources</code>. Add <code>#import &quot;binding.h&quot;</code> to <code>Runner-Bridging-Header</code>. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings. This lib has already generated a dummy method for you, so you simply need to add <code>print(&quot;dummy_value=\(dummy_method_to_enforce_bundling())&quot;);</code> to swift file's <code>override func application(...) {}</code>, and this will prevent symbol stripping - especially in the release build for iOS (i.e. when building ipa file or releasing to App Store). Notice that, we have to use that <code>dummy_method_to_enforce_bundling()</code>, otherwise the symbols will not maintain in the release build, and Flutter will complain it cannot find the symbols.</p>
+<p>Lastly, in order to build Rust automatically when you are building Flutter, follow <a href="https://stackoverflow.com/q/69515032/4619958">this tutorial</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
