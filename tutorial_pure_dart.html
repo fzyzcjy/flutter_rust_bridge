@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>📚 Tutorial: Pure Dart - flutter_rust_bridge</title>
+        <title>Tutorial: Pure Dart - flutter_rust_bridge</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Core Doc</li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart.html"><strong aria-hidden="true">2.</strong> Quickstart</a></li><li class="chapter-item expanded "><a href="tutorial_with_flutter.html"><strong aria-hidden="true">3.</strong> 📚 Tutorial: A Flutter+Rust app</a></li><li class="chapter-item expanded "><a href="tutorial_pure_dart.html" class="active"><strong aria-hidden="true">4.</strong> 📚 Tutorial: Pure Dart</a></li><li class="chapter-item expanded affix "><li class="part-title">More Doc</li><li class="chapter-item expanded "><a href="safety.html"><strong aria-hidden="true">5.</strong> Safety concerns</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="feature_details.html"><strong aria-hidden="true">7.</strong> Feature details</a></li><li class="chapter-item expanded "><a href="advanced.html"><strong aria-hidden="true">8.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="set_up_from_scratch.html"><strong aria-hidden="true">9.</strong> Set up Flutter/Dart+Rust support from scratch</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Core Doc</li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart.html"><strong aria-hidden="true">2.</strong> 🧭 Quickstart</a></li><li class="chapter-item expanded "><a href="tutorial_with_flutter.html"><strong aria-hidden="true">3.</strong> 📚 Tutorial: A Flutter+Rust app</a></li><li class="chapter-item expanded "><a href="tutorial_pure_dart.html" class="active"><strong aria-hidden="true">4.</strong> Tutorial: Pure Dart</a></li><li class="chapter-item expanded affix "><li class="part-title">More Doc</li><li class="chapter-item expanded "><a href="safety.html"><strong aria-hidden="true">5.</strong> Safety concerns</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="feature_details.html"><strong aria-hidden="true">7.</strong> Feature details</a></li><li class="chapter-item expanded "><a href="advanced.html"><strong aria-hidden="true">8.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="set_up_from_scratch.html"><strong aria-hidden="true">9.</strong> Set up Flutter/Dart+Rust support from scratch</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -137,13 +137,13 @@
                         <h1 id="tutorial-pure-dart"><a class="header" href="#tutorial-pure-dart">Tutorial: Pure Dart</a></h1>
 <p><strong>Remark</strong>: The <code>valgrind_test</code> section of the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/test.yaml">CI workflow</a> can also be useful, if you want details of each command and want to see Valgrind configuration.</p>
 <p>Unlike the previous tutorial, this one integrates Rust with pure Dart instead of Flutter.</p>
-<h3 id="get-example-code"><a class="header" href="#get-example-code">Get example code</a></h3>
+<h2 id="get-example-code"><a class="header" href="#get-example-code">Get example code</a></h2>
 <p>Please <a href="https://dart.dev/get-dart">install Dart</a>, <a href="https://www.rust-lang.org/learn/get-started">install Rust</a>, and have some familiarity with them. Then run <code>git clone https://github.com/fzyzcjy/flutter_rust_bridge</code>, and my example is in <code>frb_example/pure_dart</code>.</p>
-<h3 id="optional-run-code-generator"><a class="header" href="#optional-run-code-generator">(Optional) Run code generator</a></h3>
+<h2 id="optional-run-code-generator"><a class="header" href="#optional-run-code-generator">(Optional) Run code generator</a></h2>
 <p>Remark: I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.</p>
 <p>Install it: <code>cargo install flutter_rust_bridge_codegen</code>.</p>
 <p>Run it: <code>flutter_rust_bridge_codegen --rust-input frb_example/pure_dart/rust/src/api.rs --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart</code> (See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml">CI workflow</a> as a reference.) (For Windows, you may need <code>\\</code> instead of <code>/</code> for paths.)</p>
-<h3 id="run-dartrust-app"><a class="header" href="#run-dartrust-app">Run &quot;Dart+Rust&quot; app</a></h3>
+<h2 id="run-dartrust-app"><a class="header" href="#run-dartrust-app">Run &quot;Dart+Rust&quot; app</a></h2>
 <p>You may run <code>frb_example/pure_dart/dart/lib/main.dart</code> as a normal Dart program, except that you should provide the dynamic linked library of the Rust code (for simplicity, here I only demonstrate the approach for dynamic linked library, but you can for sure use other methods). The detailed steps are as follows.</p>
 <p>Run <code>cargo build</code> in <code>frb_example/pure_dart/rust</code> to build the Rust code into a <code>.so</code> file. Then run <code>dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so </code> to run the Dart program with Rust <code>.so</code> file. (If you have problems, see &quot;Troubleshooting&quot; section.)  (If on MacOS, Rust may indeed generate <code>.dylib</code>, so change the last command to use <code>...dylib</code> instead of <code>...so</code>,)</p>
 <p>P.S. You will only see some tests passing - no fancy UI or functionality in this example.</p>

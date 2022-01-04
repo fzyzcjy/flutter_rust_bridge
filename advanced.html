@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Core Doc</li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart.html"><strong aria-hidden="true">2.</strong> Quickstart</a></li><li class="chapter-item expanded "><a href="tutorial_with_flutter.html"><strong aria-hidden="true">3.</strong> 📚 Tutorial: A Flutter+Rust app</a></li><li class="chapter-item expanded "><a href="tutorial_pure_dart.html"><strong aria-hidden="true">4.</strong> 📚 Tutorial: Pure Dart</a></li><li class="chapter-item expanded affix "><li class="part-title">More Doc</li><li class="chapter-item expanded "><a href="safety.html"><strong aria-hidden="true">5.</strong> Safety concerns</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="feature_details.html"><strong aria-hidden="true">7.</strong> Feature details</a></li><li class="chapter-item expanded "><a href="advanced.html" class="active"><strong aria-hidden="true">8.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="set_up_from_scratch.html"><strong aria-hidden="true">9.</strong> Set up Flutter/Dart+Rust support from scratch</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Core Doc</li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart.html"><strong aria-hidden="true">2.</strong> 🧭 Quickstart</a></li><li class="chapter-item expanded "><a href="tutorial_with_flutter.html"><strong aria-hidden="true">3.</strong> 📚 Tutorial: A Flutter+Rust app</a></li><li class="chapter-item expanded "><a href="tutorial_pure_dart.html"><strong aria-hidden="true">4.</strong> Tutorial: Pure Dart</a></li><li class="chapter-item expanded affix "><li class="part-title">More Doc</li><li class="chapter-item expanded "><a href="safety.html"><strong aria-hidden="true">5.</strong> Safety concerns</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="feature_details.html"><strong aria-hidden="true">7.</strong> Feature details</a></li><li class="chapter-item expanded "><a href="advanced.html" class="active"><strong aria-hidden="true">8.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="set_up_from_scratch.html"><strong aria-hidden="true">9.</strong> Set up Flutter/Dart+Rust support from scratch</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,12 +134,12 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h3 id="customize-handlers-behavior"><a class="header" href="#customize-handlers-behavior">Customize handler's behavior</a></h3>
+                        <h2 id="customize-handlers-behavior"><a class="header" href="#customize-handlers-behavior">Customize handler's behavior</a></h2>
 <p>By default, the <code>DefaultHandler</code> is used. You can implement your own <code>Handler</code> doing whatever you want. In order to do this, create a variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in the Rust input file (probably using <code>lazy_static</code>). You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
-<h3 id="setupinit-ffi-call"><a class="header" href="#setupinit-ffi-call">Setup/init FFI call</a></h3>
+<h2 id="setupinit-ffi-call"><a class="header" href="#setupinit-ffi-call">Setup/init FFI call</a></h2>
 <p>If you want that feature, have a look at <code>FlutterRustBridgeSetupMixin</code> in the Dart side.</p>
-<h3 id="async-in-rust"><a class="header" href="#async-in-rust">Async in Rust</a></h3>
-<p>If you want to use async/await or return a Future type from your Rust functions, please refer <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/docs/async_in_rust.md">this documentation</a> for a detailed guide.</p>
+<h2 id="async-in-rust"><a class="header" href="#async-in-rust">Async in Rust</a></h2>
+<p>If you want to use async/await or return a Future type from your Rust functions, please refer <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/book/src/async_in_rust.md">this documentation</a> for a detailed guide.</p>
 
                     </main>
 
