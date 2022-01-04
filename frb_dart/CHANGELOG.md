@@ -1,3 +1,7 @@
+## Unreleased
+
+* When running codegen, create folders for output paths if they don't exist
+
 ## 1.12.0
 
 * Redesign documentation and make it a mdBook #272
