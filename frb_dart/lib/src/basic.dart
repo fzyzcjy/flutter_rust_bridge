@@ -209,3 +209,21 @@ class WireSyncReturnStruct extends ffi.Struct {
   @ffi.Uint8()
   external int success;
 }
+
+/// An opaque pointer to a native C or Rust type.
+/// Recipients of this type should call [dispose] at some point during runtime.
+class Opaque {
+  ffi.Pointer _ptr;
+  final ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _dispose;
+
+  Opaque._(this._ptr, this._dispose);
+
+  /// Call Rust destructors of [T].
+  /// It is safe to call this function multiple times.
+  void dispose() {
+    if (_ptr != ffi.nullptr) {
+      _dispose.asFunction<void Function(ffi.Pointer)>()(_ptr);
+      _ptr = ffi.nullptr;
+    }
+  }
+}

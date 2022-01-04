@@ -1,7 +1,8 @@
 //! Functions that support auto-generated Rust code.
 //! These functions are *not* meant to be used by humans directly.
 
-use std::mem;
+use std::ffi::c_void;
+use std::mem::{self, ManuallyDrop};
 
 pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
@@ -48,4 +49,52 @@ pub struct WireSyncReturnStruct {
     pub ptr: *mut u8,
     pub len: i32,
     pub success: bool,
+}
+
+/// A wrapper to transfer ownership of T to Dart's side.
+pub struct Opaque<T> {
+    pub ptr: *mut T,
+    pub drop: unsafe extern "C" fn(*mut T),
+}
+
+impl<T> Opaque<T> {
+    #[inline]
+    fn is_valid(&self) -> bool {
+        !self.ptr.is_null()
+    }
+    #[inline]
+    pub fn as_ref(&self) -> Option<&T> {
+        self.is_valid().then(|| unsafe { &*self.ptr })
+    }
+    /// ## Safety
+    /// It is instant UB to drop the underlying memory,
+    /// e.g. via `std::mem::drop_in_place`, as it is still
+    /// being held by Dart.
+    #[inline]
+    pub unsafe fn as_mut(&mut self) -> Option<&mut T> {
+        self.is_valid().then(|| &mut *self.ptr)
+    }
+    pub fn new(value: T) -> Self {
+        let mut val = ManuallyDrop::new(value);
+        let ptr: &mut T = &mut *val;
+        unsafe extern "C" fn drop<T>(ptr: *mut T) {
+            let ptr: &mut T = &mut *ptr;
+            core::ptr::drop_in_place(ptr);
+        }
+        Self { ptr, drop }
+    }
+    /// ## Safety
+    /// This function should not be called manually.
+    /// The method of receiving an opaque pointer from Dart
+    /// is an implementation detail, so this signature is not API-stable.
+    pub unsafe fn from_dart(ptr: *mut T, drop: *const unsafe extern "C" fn(*mut T)) -> Self {
+        Self { ptr, drop: *drop }
+    }
+}
+
+impl<T> IntoDart for Opaque<T> {
+    fn into_dart(self) -> DartCObject {
+        let drop: *const _ = &self.drop;
+        vec![self.ptr.into_dart(), drop.into_dart()].into_dart()
+    }
 }

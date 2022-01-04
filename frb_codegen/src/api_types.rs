@@ -142,6 +142,7 @@ pub enum ApiType {
     StructRef(ApiTypeStructRef),
     Boxed(Box<ApiTypeBoxed>),
     EnumRef(ApiTypeEnumRef),
+    Opaque(ApiOpaque),
 }
 
 macro_rules! api_type_call_child {
@@ -156,6 +157,7 @@ macro_rules! api_type_call_child {
                 Boxed(inner) => inner.$func(),
                 Optional(inner) => inner.$func(),
                 EnumRef(inner) => inner.$func(),
+                Opaque(inner) => inner.$func(),
             }
         }
     };
@@ -190,7 +192,7 @@ impl ApiType {
                     }
                 }
             }
-            Primitive(_) => {}
+            Primitive(_) | Opaque(_) => {}
         }
     }
 
@@ -831,6 +833,44 @@ pub struct ApiVariant {
 pub enum ApiVariantKind {
     Value,
     Struct(ApiStruct),
+}
+
+#[derive(Debug, Clone)]
+pub struct ApiOpaque {
+    inner_rust: String,
+    inner_dart: String,
+}
+
+impl ApiOpaque {
+    pub fn new(rust_ty: &str) -> Self {
+        let inner_dart = rust_ty
+            .chars()
+            .map(|c| if c.is_ascii_alphanumeric() { c } else { '_' })
+            .collect::<String>()
+            .to_case(Case::Camel);
+        Self {
+            inner_rust: rust_ty.to_owned(),
+            inner_dart,
+        }
+    }
+}
+
+impl ApiTypeChild for ApiOpaque {
+    fn safe_ident(&self) -> String {
+        self.inner_dart.clone()
+    }
+    fn dart_api_type(&self) -> String {
+        self.inner_dart.clone()
+    }
+    fn dart_wire_type(&self) -> String {
+        self.rust_wire_type()
+    }
+    fn rust_wire_type(&self) -> String {
+        format!("wire_{}", self.inner_rust)
+    }
+    fn rust_api_type(&self) -> String {
+        format!("Opaque<{}>", self.inner_rust)
+    }
 }
 
 pub fn optional_boundary_index(types: &[&ApiType]) -> Option<usize> {
