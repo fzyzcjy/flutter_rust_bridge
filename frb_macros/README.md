@@ -7,7 +7,7 @@
 [![Documentation](https://docs.rs/flutter_rust_bridge/badge.svg)](https://docs.rs/flutter_rust_bridge)
 [![Example](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml)
 
-![Logo](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/docs/logo.png)
+![Logo](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/book/logo.png)
 
 Want to combine the best between `Flutter`, a cross-platform hot-reload rapid-development UI toolkit, and `Rust`, a language empowering everyone to build reliable and efficient software? Here it comes!
 
