@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Troubleshooting - flutter_rust_bridge</title>
+        <title>Introduction - flutter_rust_bridge</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Core Doc</li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart.html"><strong aria-hidden="true">2.</strong> Quickstart</a></li><li class="chapter-item expanded "><a href="tutorial_with_flutter.html"><strong aria-hidden="true">3.</strong> 📚 Tutorial: A Flutter+Rust app</a></li><li class="chapter-item expanded "><a href="tutorial_pure_dart.html"><strong aria-hidden="true">4.</strong> 📚 Tutorial: Pure Dart</a></li><li class="chapter-item expanded affix "><li class="part-title">More Doc</li><li class="chapter-item expanded "><a href="safety.html"><strong aria-hidden="true">5.</strong> Safety concerns</a></li><li class="chapter-item expanded "><a href="troubleshooting.html" class="active"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="feature_details.html"><strong aria-hidden="true">7.</strong> Feature details</a></li><li class="chapter-item expanded "><a href="advanced.html"><strong aria-hidden="true">8.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="set_up_from_scratch.html"><strong aria-hidden="true">9.</strong> Set up Flutter/Dart+Rust support from scratch</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Core Doc</li><li class="chapter-item expanded "><a href="index.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart.html"><strong aria-hidden="true">2.</strong> Quickstart</a></li><li class="chapter-item expanded "><a href="tutorial_with_flutter.html"><strong aria-hidden="true">3.</strong> 📚 Tutorial: A Flutter+Rust app</a></li><li class="chapter-item expanded "><a href="tutorial_pure_dart.html"><strong aria-hidden="true">4.</strong> 📚 Tutorial: Pure Dart</a></li><li class="chapter-item expanded affix "><li class="part-title">More Doc</li><li class="chapter-item expanded "><a href="safety.html"><strong aria-hidden="true">5.</strong> Safety concerns</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="feature_details.html"><strong aria-hidden="true">7.</strong> Feature details</a></li><li class="chapter-item expanded "><a href="advanced.html"><strong aria-hidden="true">8.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="set_up_from_scratch.html"><strong aria-hidden="true">9.</strong> Set up Flutter/Dart+Rust support from scratch</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,46 +134,13 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
-<h4 id="have-problems-when-using-linux-the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found--"><a class="header" href="#have-problems-when-using-linux-the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found--">Have problems when using <code>Linux</code>? (<code>The generated store_dart_post_cobject() has the wrong signature</code> / <code>'stdarg.h' file not found</code> / ...)</a></h4>
-<p>Try to run code generator with working directory at <code>/</code>, or add include path as is described in #108. This is a problem with Rust's builtin <code>Command</code>. See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/108">#108</a> for more details.</p>
-<h4 id="issue-with-store_dart_post_cobject"><a class="header" href="#issue-with-store_dart_post_cobject">Issue with store_dart_post_cobject?</a></h4>
-<p>If calling rust function gives the error below, please consider running <strong>cargo build</strong> again. This can happen when the generated rs file is not included when building is being done.</p>
-<pre><code class="language-sh">[ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
-</code></pre>
-<h4 id="error-running-cargo-ndk-ld-error-unable-to-find-library--lgcc"><a class="header" href="#error-running-cargo-ndk-ld-error-unable-to-find-library--lgcc">Error running <code>cargo ndk</code>: <code>ld: error: unable to find library -lgcc</code></a></h4>
-<p>Downgrade Android NDK to version 22. This is an <a href="https://github.com/bbqsrc/cargo-ndk/issues/22">ongoing issue</a> with <code>cargo-ndk</code>, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/149">#149</a>)</p>
-<h4 id="fail-to-run-flutter_rust_bridge_codegen-on-macos"><a class="header" href="#fail-to-run-flutter_rust_bridge_codegen-on-macos">Fail to run <code>flutter_rust_bridge_codegen</code> on MacOS</a></h4>
-<p>If you are running macOS, you will need to specify a path to your llvm:</p>
-<pre><code class="language-shell">flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
-</code></pre>
-<p>If you are on Intel, you can install llvm using <code>brew install llvm</code> and it will be installed at <code>/usr/local/homebrew/opt/llvm/</code> by default.</p>
-<p>If you are on M1, you need to install the x86 versions of everything and run them through Rosetta 2, since Flutter does not support M1 yet. Start by installing Rosetta 2 if you haven't already:</p>
-<pre><code class="language-shell">/usr/sbin/softwareupdate --install-rosetta
-</code></pre>
-<p>Then, install an x86 version of brew to <code>/usr/local</code>:</p>
-<pre><code class="language-shell">arch -x86_64 zsh
-cd /usr/local &amp;&amp; mkdir homebrew
-curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-</code></pre>
-<p>Then, you need to use the x86 brew to install the x86 version of llvm:</p>
-<pre><code class="language-shell">arch -x86_64 /usr/local/homebrew/bin/brew install llvm
-</code></pre>
-<p>Reference <a href="https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/">this article</a> for details.</p>
-<p>And when you build with cargo, you need to select x86 as the target:</p>
-<pre><code class="language-shell">cargo build --target=x86_64-apple-darwin
-</code></pre>
-<h4 id="other-problems"><a class="header" href="#other-problems">Other problems?</a></h4>
-<p>Don't hesitate to <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&amp;labels=bug&amp;template=bug_report.md&amp;title=">open an issue</a>! I usually reply within minutes or hours (except when sleeping, of course).</p>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="safety.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a rel="next" href="feature_details.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="quickstart.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -182,10 +149,7 @@ curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ho
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="safety.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a rel="next" href="feature_details.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="quickstart.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
