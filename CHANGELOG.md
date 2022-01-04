@@ -1,3 +1,8 @@
+## 1.12.0
+
+* Redesign documentation and make it a mdBook #272
+* Remove `syn` dependency from macros to speed up #277 (thanks @Desdaemon)
+
 ## 1.11.0
 
 * Marker attributes for expressiveness #261 (thanks @Desdaemon)
