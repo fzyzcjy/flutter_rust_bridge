@@ -3,9 +3,9 @@
 # Core Doc
 
 - [Introduction](index.md)
-- [Quickstart](quickstart.md)
+- [🧭 Quickstart](quickstart.md)
 - [📚 Tutorial: A Flutter+Rust app](tutorial_with_flutter.md)
-- [📚 Tutorial: Pure Dart](tutorial_pure_dart.md)
+- [Tutorial: Pure Dart](tutorial_pure_dart.md)
 
 # More Doc
 
