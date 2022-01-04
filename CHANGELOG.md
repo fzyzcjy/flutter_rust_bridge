@@ -1,6 +1,6 @@
-## Unreleased
+## 1.13.0
 
-* When running codegen, create folders for output paths if they don't exist
+* When running codegen, create folders for output paths if they don't exist #286 (thanks @SecondFlight)
 
 ## 1.12.0
 
