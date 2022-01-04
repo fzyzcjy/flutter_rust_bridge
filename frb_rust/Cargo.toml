@@ -16,4 +16,4 @@ anyhow = "1.0.52"
 threadpool = "1.8.1"
 lazy_static = "1.4.0"
 parking_lot = "0.11.2"
-flutter_rust_bridge_macros = { path = "../frb_macros" }
+flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
