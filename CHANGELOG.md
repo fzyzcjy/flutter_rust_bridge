@@ -1,3 +1,12 @@
+## 1.13.0
+
+* When running codegen, create folders for output paths if they don't exist #286 (thanks @SecondFlight)
+
+## 1.12.0
+
+* Redesign documentation and make it a mdBook #272
+* Remove `syn` dependency from macros to speed up #277 (thanks @Desdaemon)
+
 ## 1.11.0
 
 * Marker attributes for expressiveness #261 (thanks @Desdaemon)
