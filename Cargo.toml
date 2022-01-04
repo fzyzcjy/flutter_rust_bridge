@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+    "frb_rust",
+    "frb_codegen",
+    "frb_macros",
+]
