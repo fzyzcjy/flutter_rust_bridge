@@ -84,14 +84,14 @@ body:
     validations:
       required: false
   - type: input
-    id: env-clang
+    id: env-cbindgen
     attributes:
       label: Version of `cbindgen`
       placeholder: ex. 0.20
     validations:
       required: false
   - type: input
-    id: env-clang
+    id: env-ffigen
     attributes:
       label: Version of `ffigen`
       placeholder: ex. 0.4
