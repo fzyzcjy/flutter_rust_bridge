@@ -421,7 +421,7 @@ impl Generator {
                 self.generate_list_allocate_func(&ty.safe_ident(), list.as_ref(), &list.inner),
             Delegate(list @ ApiTypeDelegate::StringList) =>
                 self.generate_list_allocate_func(&ty.safe_ident(), list, &list.get_delegate()),
-            Opaque(opaq) => 
+            Opaque(opaq) =>
                 self.extern_func_collector.generate(
                     &format!("new_{}", opaq.safe_ident()),
                     &[],
