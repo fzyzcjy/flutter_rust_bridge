@@ -11,35 +11,9 @@ a mobile application using Flutter, and how that app can call Rust functions via
 Dart FFI (in the C ABI). Then this package comes in, and ease you from the
 burden to write down tons of boilerplate code ;)
 
-## Command line arguments
-
-Simply add `--help` to see full documentation.
-
-```shell
-flutter_rust_bridge_codegen
-
-USAGE:
-    flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
-
-FLAGS:
-        --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
-    -h, --help                   Prints help information
-    -V, --version                Prints version information
-
-OPTIONS:
-    -r, --rust-input <rust-input>                              Path of input Rust code
-    -d, --dart-output <dart-output>                            Path of output generated Dart code
-    -c, --c-output <c-output>                                  Path of output generated C header
-        --rust-crate-dir <rust-crate-dir>                      Crate directory for your Rust project
-        --rust-output <rust-output>                            Path of output generated Rust code
-        --class-name <class-name>                              Generated class name
-        --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
-        --llvm-path <llvm-path>                                Path to the installed LLVM
-```
-
 ## Language features this library supports
 
-Here is a list of types that the code generator can generate (non-exhaustive):
+Here is a brief glance showing what the code generator can generate (non-exhaustive):
 
 | Rust type         | Dart type        |
 | ----------------- | ---------------- |
@@ -67,3 +41,29 @@ Here are other functionalities:
 - `ZeroCopyBuffer<Vec<i8, u8, ..>>` sends the buffer to Dart without making
   copies
 - `SyncReturn<Vec<u8>>` sends the byte buffer to Dart synchronously
+
+## Command line arguments
+
+Simply add `--help` to see full documentation.
+
+```shell
+flutter_rust_bridge_codegen
+
+USAGE:
+    flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
+
+FLAGS:
+        --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
+    -h, --help                   Prints help information
+    -V, --version                Prints version information
+
+OPTIONS:
+    -r, --rust-input <rust-input>                              Path of input Rust code
+    -d, --dart-output <dart-output>                            Path of output generated Dart code
+    -c, --c-output <c-output>                                  Path of output generated C header
+        --rust-crate-dir <rust-crate-dir>                      Crate directory for your Rust project
+        --rust-output <rust-output>                            Path of output generated Rust code
+        --class-name <class-name>                              Generated class name
+        --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
+        --llvm-path <llvm-path>                                Path to the installed LLVM
+```
