@@ -2,7 +2,14 @@
 
 ## What this library is & isn't
 
-This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, you may refer to external materials to learn Flutter, learn Rust, learn [Flutter FFI](https://flutter.dev/docs/development/platform-integration/c-interop) (Dart FFI) and so on. With material on the Internet, you will know how to create a mobile application using Flutter, and how that app can call Rust functions via Dart FFI (in the C ABI). Then this package comes in, and ease you from the burden to write down tons of boilerplate code ;)
+This library is nothing but a code generator that helps your Flutter/Dart
+functions call Rust functions. Therefore, you may refer to external materials to
+learn Flutter, learn Rust, learn
+[Flutter FFI](https://flutter.dev/docs/development/platform-integration/c-interop)
+(Dart FFI) and so on. With material on the Internet, you will know how to create
+a mobile application using Flutter, and how that app can call Rust functions via
+Dart FFI (in the C ABI). Then this package comes in, and ease you from the
+burden to write down tons of boilerplate code ;)
 
 ## Command line arguments
 
@@ -32,11 +39,31 @@ OPTIONS:
 
 ## Language features this library supports
 
-Here is a list of types that the code generator can generate:
+Here is a list of types that the code generator can generate (non-exhaustive):
 
-[WIP] You can read the `pure_dart` example code currently, before I put the full list here.
+| Rust type         | Dart type        |
+| ----------------- | ---------------- |
+| `i8, u8, ..`      | `int`            |
+| `f32, f64`        | `double`         |
+| `bool`            | `bool`           |
+| `String`          | `String`         |
+| `()`              | `void`           |
+| `Vec<i8, u8, ..>` | `..List`         |
+| `Vec<T>`          | `List<T>`        |
+| `struct`          | `class`          |
+| `enum { A, B }`   | `enum`           |
+| `enum { A(..) }`  | `@freezed class` |
+| `Option<T>`       | `T?`             |
+| `Box<T>`          | `T`              |
 
 Here are other functionalities:
 
-[WIP] (e.g. [Stream is supported but not documented yet](https://github.com/fzyzcjy/flutter_rust_bridge/issues/179)).
-
+- Tuple structs `struct Foo(A, B)` are translated as
+  `class Foo { A field0; B field1; }`
+- Doc-comments on Rust items are copied over (if there are missing comments
+  please open an issue!)
+- `Result::Err` and panics become thrown exceptions
+- `fn(StreamSink<T>, ..) -> Result<()>` returns a Dart `Stream<T>`
+- `ZeroCopyBuffer<Vec<i8, u8, ..>>` sends the buffer to Dart without making
+  copies
+- `SyncReturn<Vec<u8>>` sends the byte buffer to Dart synchronously
