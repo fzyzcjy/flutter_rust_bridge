@@ -334,7 +334,14 @@ curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ho
 <p>Don't hesitate to <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&amp;labels=bug&amp;template=bug_report.md&amp;title=">open an issue</a>! I usually reply within minutes or hours (except when sleeping, of course).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="feature-details"><a class="header" href="#feature-details">Feature details</a></h1>
 <h2 id="what-this-library-is--isnt"><a class="header" href="#what-this-library-is--isnt">What this library is &amp; isn't</a></h2>
-<p>This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. Therefore, you may refer to external materials to learn Flutter, learn Rust, learn <a href="https://flutter.dev/docs/development/platform-integration/c-interop">Flutter FFI</a> (Dart FFI) and so on. With material on the Internet, you will know how to create a mobile application using Flutter, and how that app can call Rust functions via Dart FFI (in the C ABI). Then this package comes in, and ease you from the burden to write down tons of boilerplate code ;)</p>
+<p>This library is nothing but a code generator that helps your Flutter/Dart
+functions call Rust functions. Therefore, you may refer to external materials to
+learn Flutter, learn Rust, learn
+<a href="https://flutter.dev/docs/development/platform-integration/c-interop">Flutter FFI</a>
+(Dart FFI) and so on. With material on the Internet, you will know how to create
+a mobile application using Flutter, and how that app can call Rust functions via
+Dart FFI (in the C ABI). Then this package comes in, and ease you from the
+burden to write down tons of boilerplate code ;)</p>
 <h2 id="command-line-arguments"><a class="header" href="#command-line-arguments">Command line arguments</a></h2>
 <p>Simply add <code>--help</code> to see full documentation.</p>
 <pre><code class="language-shell">flutter_rust_bridge_codegen
@@ -358,10 +365,33 @@ OPTIONS:
         --llvm-path &lt;llvm-path&gt;                                Path to the installed LLVM
 </code></pre>
 <h2 id="language-features-this-library-supports"><a class="header" href="#language-features-this-library-supports">Language features this library supports</a></h2>
-<p>Here is a list of types that the code generator can generate:</p>
-<p>[WIP] You can read the <code>pure_dart</code> example code currently, before I put the full list here.</p>
+<p>Here is a list of types that the code generator can generate (non-exhaustive):</p>
+<table><thead><tr><th>Rust type</th><th>Dart type</th></tr></thead><tbody>
+<tr><td><code>i8, u8, ..</code></td><td><code>int</code></td></tr>
+<tr><td><code>f32, f64</code></td><td><code>double</code></td></tr>
+<tr><td><code>bool</code></td><td><code>bool</code></td></tr>
+<tr><td><code>String</code></td><td><code>String</code></td></tr>
+<tr><td><code>()</code></td><td><code>void</code></td></tr>
+<tr><td><code>Vec&lt;i8, u8, ..&gt;</code></td><td><code>..List</code></td></tr>
+<tr><td><code>Vec&lt;T&gt;</code></td><td><code>List&lt;T&gt;</code></td></tr>
+<tr><td><code>struct</code></td><td><code>class</code></td></tr>
+<tr><td><code>enum { A, B }</code></td><td><code>enum</code></td></tr>
+<tr><td><code>enum { A(..) }</code></td><td><code>@freezed class</code></td></tr>
+<tr><td><code>Option&lt;T&gt;</code></td><td><code>T?</code></td></tr>
+<tr><td><code>Box&lt;T&gt;</code></td><td><code>T</code></td></tr>
+</tbody></table>
 <p>Here are other functionalities:</p>
-<p>[WIP] (e.g. <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/179">Stream is supported but not documented yet</a>).</p>
+<ul>
+<li>Tuple structs <code>struct Foo(A, B)</code> are translated as
+<code>class Foo { A field0; B field1; }</code></li>
+<li>Doc-comments on Rust items are copied over (if there are missing comments
+please open an issue!)</li>
+<li><code>Result::Err</code> and panics become thrown exceptions</li>
+<li><code>fn(StreamSink&lt;T&gt;, ..) -&gt; Result&lt;()&gt;</code> returns a Dart <code>Stream&lt;T&gt;</code></li>
+<li><code>ZeroCopyBuffer&lt;Vec&lt;i8, u8, ..&gt;&gt;</code> sends the buffer to Dart without making
+copies</li>
+<li><code>SyncReturn&lt;Vec&lt;u8&gt;&gt;</code> sends the byte buffer to Dart synchronously</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="customize-handlers-behavior"><a class="header" href="#customize-handlers-behavior">Customize handler's behavior</a></h2>
 <p>By default, the <code>DefaultHandler</code> is used. You can implement your own <code>Handler</code> doing whatever you want. In order to do this, create a variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in the Rust input file (probably using <code>lazy_static</code>). You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
 <h2 id="setupinit-ffi-call"><a class="header" href="#setupinit-ffi-call">Setup/init FFI call</a></h2>
