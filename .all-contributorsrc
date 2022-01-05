@@ -92,6 +92,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "SecondFlight",
+      "name": "Joshua Wade",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6700184?v=4",
+      "profile": "https://sndf.li/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
