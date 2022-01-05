@@ -292,6 +292,9 @@ void main(List<String> args) async {
       expect(await api.inspectOpaque(val: val), "0");
       await api.handleOpaque(val: val);
       expect(await api.inspectOpaque(val: val), "1");
+      val.dispose();
+      val.dispose();
+      expect(await api.inspectOpaque(val: val), null);
     }
 
     print('dart call handleOpaque edge case');
@@ -312,6 +315,8 @@ void main(List<String> args) async {
       expect(await api.handleOpaqueLifetime(), null);
       final val = await api.createOpaqueCow(val: "Foobar.");
       expect(await api.handleOpaqueLifetime(val: val), "Foobar.");
+      val.dispose();
+      expect(await api.handleOpaqueLifetime(val: val), null);
     }
 
     _createGarbage();

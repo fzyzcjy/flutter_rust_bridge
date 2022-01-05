@@ -64,5 +64,8 @@ pub unsafe fn opaque_from_dart<T>(ptr: *const T) -> Opaque<T> {
         Arc::increment_strong_count(ptr);
         Some(Arc::from_raw(ptr))
     };
-    Opaque { ptr }
+    Opaque {
+        ptr,
+        original: false,
+    }
 }
