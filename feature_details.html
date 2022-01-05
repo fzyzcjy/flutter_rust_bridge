@@ -144,30 +144,8 @@ learn Flutter, learn Rust, learn
 a mobile application using Flutter, and how that app can call Rust functions via
 Dart FFI (in the C ABI). Then this package comes in, and ease you from the
 burden to write down tons of boilerplate code ;)</p>
-<h2 id="command-line-arguments"><a class="header" href="#command-line-arguments">Command line arguments</a></h2>
-<p>Simply add <code>--help</code> to see full documentation.</p>
-<pre><code class="language-shell">flutter_rust_bridge_codegen
-
-USAGE:
-    flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output &lt;dart-output&gt; --rust-input &lt;rust-input&gt;
-
-FLAGS:
-        --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
-    -h, --help                   Prints help information
-    -V, --version                Prints version information
-
-OPTIONS:
-    -r, --rust-input &lt;rust-input&gt;                              Path of input Rust code
-    -d, --dart-output &lt;dart-output&gt;                            Path of output generated Dart code
-    -c, --c-output &lt;c-output&gt;                                  Path of output generated C header
-        --rust-crate-dir &lt;rust-crate-dir&gt;                      Crate directory for your Rust project
-        --rust-output &lt;rust-output&gt;                            Path of output generated Rust code
-        --class-name &lt;class-name&gt;                              Generated class name
-        --dart-format-line-length &lt;dart-format-line-length&gt;    Line length for dart formatting
-        --llvm-path &lt;llvm-path&gt;                                Path to the installed LLVM
-</code></pre>
 <h2 id="language-features-this-library-supports"><a class="header" href="#language-features-this-library-supports">Language features this library supports</a></h2>
-<p>Here is a list of types that the code generator can generate (non-exhaustive):</p>
+<p>Here is a brief glance showing what the code generator can generate (non-exhaustive):</p>
 <table><thead><tr><th>Rust type</th><th>Dart type</th></tr></thead><tbody>
 <tr><td><code>i8, u8, ..</code></td><td><code>int</code></td></tr>
 <tr><td><code>f32, f64</code></td><td><code>double</code></td></tr>
@@ -194,6 +172,28 @@ please open an issue!)</li>
 copies</li>
 <li><code>SyncReturn&lt;Vec&lt;u8&gt;&gt;</code> sends the byte buffer to Dart synchronously</li>
 </ul>
+<h2 id="command-line-arguments"><a class="header" href="#command-line-arguments">Command line arguments</a></h2>
+<p>Simply add <code>--help</code> to see full documentation.</p>
+<pre><code class="language-shell">flutter_rust_bridge_codegen
+
+USAGE:
+    flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output &lt;dart-output&gt; --rust-input &lt;rust-input&gt;
+
+FLAGS:
+        --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
+    -h, --help                   Prints help information
+    -V, --version                Prints version information
+
+OPTIONS:
+    -r, --rust-input &lt;rust-input&gt;                              Path of input Rust code
+    -d, --dart-output &lt;dart-output&gt;                            Path of output generated Dart code
+    -c, --c-output &lt;c-output&gt;                                  Path of output generated C header
+        --rust-crate-dir &lt;rust-crate-dir&gt;                      Crate directory for your Rust project
+        --rust-output &lt;rust-output&gt;                            Path of output generated Rust code
+        --class-name &lt;class-name&gt;                              Generated class name
+        --dart-format-line-length &lt;dart-format-line-length&gt;    Line length for dart formatting
+        --llvm-path &lt;llvm-path&gt;                                Path to the installed LLVM
+</code></pre>
 
                     </main>
 
