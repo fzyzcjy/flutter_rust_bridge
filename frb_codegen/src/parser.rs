@@ -148,6 +148,7 @@ impl<'a> Parser<'a> {
             .or_else(|| self.try_parse_option(ty))
             .or_else(|| self.try_parse_struct(ty))
             .or_else(|| self.try_parse_enum(ty))
+            .or_else(|| self.try_parse_opaque(ty))
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
     }
 
@@ -230,9 +231,9 @@ impl<'a> Parser<'a> {
             };
             match self.parse_type(&inner) {
                 Primitive(prim) => ApiType::Optional(ApiTypeOptional::new_prim(prim)),
-                st @ StructRef(_) => {
+                inner @ StructRef(_) => {
                     ApiType::Optional(ApiTypeOptional::new_ptr(Boxed(Box::new(ApiTypeBoxed {
-                        inner: st,
+                        inner,
                         exist_in_real_api: false,
                     }))))
                 }
@@ -349,6 +350,16 @@ impl<'a> Parser<'a> {
             comments,
         }
     }
+
+    fn try_parse_opaque(&mut self, ty: &str) -> Option<ApiType> {
+        lazy_static! {
+            static ref CAPTURE_OPAQUE: GenericCapture = GenericCapture::new("Opaque");
+        }
+
+        CAPTURE_OPAQUE
+            .captures(ty)
+            .map(|ty| ApiType::Opaque(ApiOpaque::new(&ty)))
+    }
 }
 
 struct SrcItems<'a> {
@@ -406,8 +417,11 @@ struct GenericCapture {
 
 impl GenericCapture {
     pub fn new(cls_name: &str) -> Self {
-        let regex =
-            Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>()\\[\\];]+)>$", cls_name)).unwrap();
+        let regex = Regex::new(&*format!(
+            "^[^<]*{}<([a-zA-Z0-9_<>()\\[\\];',]+)>$",
+            cls_name
+        ))
+        .unwrap();
         Self { regex }
     }
 

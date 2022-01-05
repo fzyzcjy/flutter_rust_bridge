@@ -837,17 +837,18 @@ pub enum ApiVariantKind {
 
 #[derive(Debug, Clone)]
 pub struct ApiOpaque {
-    inner_rust: String,
-    inner_dart: String,
+    pub inner_rust: String,
+    pub inner_dart: String,
 }
 
 impl ApiOpaque {
     pub fn new(rust_ty: &str) -> Self {
         let inner_dart = rust_ty
+            .replace("'static", "")
             .chars()
             .map(|c| if c.is_ascii_alphanumeric() { c } else { '_' })
             .collect::<String>()
-            .to_case(Case::Camel);
+            .to_case(Case::Pascal);
         Self {
             inner_rust: rust_ty.to_owned(),
             inner_dart,
@@ -863,13 +864,16 @@ impl ApiTypeChild for ApiOpaque {
         self.inner_dart.clone()
     }
     fn dart_wire_type(&self) -> String {
-        self.rust_wire_type()
+        format!("ffi.Pointer<{}>", self.rust_wire_type())
     }
     fn rust_wire_type(&self) -> String {
-        format!("wire_{}", self.inner_rust)
+        format!("wire_{}", self.safe_ident())
     }
     fn rust_api_type(&self) -> String {
         format!("Opaque<{}>", self.inner_rust)
+    }
+    fn rust_wire_is_pointer(&self) -> bool {
+        true
     }
 }
 

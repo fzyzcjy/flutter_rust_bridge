@@ -302,6 +302,9 @@ impl Generator {
                     })
                     .collect()
             }
+            Opaque(_) => {
+                vec!["ptr: *const core::ffi::c_void".to_owned()]
+            }
             Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) | EnumRef(_) => {
                 return "".to_string()
             }
@@ -418,6 +421,16 @@ impl Generator {
                 self.generate_list_allocate_func(&ty.safe_ident(), list.as_ref(), &list.inner),
             Delegate(list @ ApiTypeDelegate::StringList) =>
                 self.generate_list_allocate_func(&ty.safe_ident(), list, &list.get_delegate()),
+            Opaque(opaq) => 
+                self.extern_func_collector.generate(
+                    &format!("new_{}", opaq.safe_ident()),
+                    &[],
+                    Some(&format!("{}{}", opaq.rust_wire_modifier(), opaq.rust_wire_type())),
+                    &format!(
+                        "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                        opaq.rust_wire_type()
+                    )
+                ),
             Boxed(b) => {
                 match &b.inner {
                     Primitive(prim) => {
@@ -553,6 +566,12 @@ impl Generator {
                 )
                 .into()
             }
+            Opaque(_) => {
+                "unsafe {
+                    let ans = support::box_from_leak_ptr(self);
+                    support::opaque_from_dart(ans.ptr as usize as _).into()
+                }".into()
+            }
             // handled by common impl
             Optional(_) => return String::new(),
         };
@@ -578,6 +597,7 @@ impl Generator {
             EnumRef(e) if e.is_struct => {
                 self.generate_new_with_nullptr_func_for_enum(e.get(api_file), &ty.rust_wire_type())
             }
+            Opaque(opaq) => Self::generate_new_with_nullptr_func_for_opaque(opaq),
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
             | Optional(_) | EnumRef(_) => String::new(),
         }
@@ -592,8 +612,19 @@ impl Generator {
             }
             EnumRef(enu) => self.generate_impl_intodart_for_enum(enu.get(api_file)),
             Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
-            | Optional(_) => "".to_string(),
+            | Optional(_) | Opaque(_) => "".to_string(),
         }
+    }
+
+    fn generate_new_with_nullptr_func_for_opaque(opaq: &ApiOpaque) -> String {
+        format!(
+            "impl NewWithNullPtr for {} {{
+                fn new_with_null_ptr() -> Self {{
+                    Self {{ ptr: core::ptr::null() }}
+                }}
+            }}",
+            opaq.rust_wire_type()
+        )
     }
 
     fn generate_new_with_nullptr_func_for_enum(

@@ -33,6 +33,7 @@ pub fn generate(
         .filter_map(|ty| match ty {
             StructRef(s) => Some(generate_api_struct(s.get(api_file))),
             EnumRef(enu) => Some(generate_api_enum(enu.get(api_file))),
+            Opaque(opaq) => Some(generate_api_opaque(opaq)),
             _ => None,
         })
         .collect::<Vec<_>>();
@@ -319,6 +320,12 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
             }
         },
         EnumRef(e) if !e.is_struct => "return raw.index;".to_owned(),
+        Opaque(opaq) => format!(
+            "final ptr = inner.new_{0}();
+            _api_fill_to_wire_{0}(raw, ptr);
+            return ptr;",
+            opaq.safe_ident(),
+        ),
         // skip, handled by transfomers
         StructRef(_) | EnumRef(_) => return "".to_string(),
     };
@@ -386,6 +393,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
                             wireObj.tag = {1};
                             wireObj.kind = inner.inflate_{2}_{0}();
                             {3}
+                            return;
                         }}",
                         variant.name,
                         idx,
@@ -409,6 +417,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
             boxed.inner.safe_ident()
         ),
+        Opaque(_) => "if (apiObj.ptr_ != ffi.nullptr) wireObj.ref.ptr = apiObj.ptr_.cast();".into(),
         Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | EnumRef(_) => {
             return "".to_string();
         }
@@ -517,9 +526,12 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             )
         }
         Boxed(boxed) => match &boxed.inner {
-            StructRef(inner) => format!("return _wire2api_{}(raw);", inner.safe_ident()),
+            outer @ (StructRef(_) | Opaque(_)) => {
+                format!("return _wire2api_{}(raw);", outer.safe_ident())
+            }
             _ => gen_simple_type_cast(&ty.dart_api_type()),
         },
+        Opaque(opaq) => format!("return {}._(raw[0], raw[1]);", opaq.dart_api_type()),
     };
 
     format!(
@@ -671,4 +683,13 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
             comments, enu.name, variants
         )
     }
+}
+
+fn generate_api_opaque(opaq: &ApiOpaque) -> String {
+    format!(
+        "@sealed class {0} extends FrbOpaque {{
+            {0}._(int ptr, int drop) : super(ptr, drop);
+        }}",
+        opaq.dart_api_type()
+    )
 }

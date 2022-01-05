@@ -1,7 +1,9 @@
 #![allow(unused_variables)]
 
+pub use std::borrow::Cow;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
+pub use std::sync::RwLock;
 use std::thread;
 use std::time::Duration;
 
@@ -440,4 +442,43 @@ pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
         }),
         _ => val,
     })
+}
+
+pub fn handle_opaque(
+    val: Option<Opaque<RwLock<i32>>>,
+    id: Option<i32>,
+) -> Result<Opaque<RwLock<i32>>> {
+    match val {
+        Some(val) => {
+            if let Some(Ok(mut val)) = val.write() {
+                println!("id = {:?}", id);
+                *val += 1;
+            }
+            Ok(val)
+        }
+        None => Ok(Opaque::new(RwLock::new(0))),
+    }
+}
+
+pub fn inspect_opaque(val: Opaque<RwLock<i32>>) -> Result<Option<String>> {
+    Ok(if let Some(Ok(val)) = val.read() {
+        Some(format!("{}", val))
+    } else {
+        None
+    })
+}
+
+pub fn create_opaque_cow(val: Option<String>) -> Result<Opaque<Cow<'static, str>>> {
+    Ok(Opaque::new(
+        val.map(Cow::from)
+            .unwrap_or_else(|| Cow::from("Hello world.")),
+    ))
+}
+
+pub fn handle_opaque_lifetime(val: Option<Opaque<Cow<'static, str>>>) -> Result<Option<String>> {
+    Ok(val
+        .as_ref()
+        .map(Opaque::as_ref)
+        .flatten()
+        .map(ToString::to_string))
 }

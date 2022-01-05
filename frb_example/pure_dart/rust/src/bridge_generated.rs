@@ -433,7 +433,80 @@ pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_handle_opaque(port_: i64, val: *mut wire_RwLockI32, id: *mut i32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_val = val.wire2api();
+            let api_id = id.wire2api();
+            move |task_callback| handle_opaque(api_val, api_id)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_inspect_opaque(port_: i64, val: *mut wire_RwLockI32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "inspect_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_val = val.wire2api();
+            move |task_callback| inspect_opaque(api_val)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_create_opaque_cow(port_: i64, val: *mut wire_uint_8_list) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_opaque_cow",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_val = val.wire2api();
+            move |task_callback| create_opaque_cow(api_val)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_opaque_lifetime(port_: i64, val: *mut wire_CowStr) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_opaque_lifetime",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_val = val.wire2api();
+            move |task_callback| handle_opaque_lifetime(api_val)
+        },
+    )
+}
+
 // Section: wire structs
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CowStr {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_RwLockI32 {
+    ptr: *const core::ffi::c_void,
+}
 
 #[repr(C)]
 #[derive(Clone)]
@@ -625,6 +698,16 @@ pub struct KitchenSink_Enums {
 }
 
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_CowStr() -> *mut wire_CowStr {
+    support::new_leak_box_ptr(wire_CowStr::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_RwLockI32() -> *mut wire_RwLockI32 {
+    support::new_leak_box_ptr(wire_RwLockI32::new_with_null_ptr())
+}
 
 #[no_mangle]
 pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
@@ -842,6 +925,24 @@ where
             None
         } else {
             Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<Opaque<Cow<'static, str>>> for *mut wire_CowStr {
+    fn wire2api(self) -> Opaque<Cow<'static, str>> {
+        unsafe {
+            let ans = support::box_from_leak_ptr(self);
+            support::opaque_from_dart(ans.ptr as usize as _).into()
+        }
+    }
+}
+
+impl Wire2Api<Opaque<RwLock<i32>>> for *mut wire_RwLockI32 {
+    fn wire2api(self) -> Opaque<RwLock<i32>> {
+        unsafe {
+            let ans = support::box_from_leak_ptr(self);
+            support::opaque_from_dart(ans.ptr as usize as _).into()
         }
     }
 }
@@ -1269,6 +1370,22 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
+    }
+}
+
+impl NewWithNullPtr for wire_CowStr {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_RwLockI32 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
     }
 }
 

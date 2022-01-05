@@ -84,6 +84,24 @@ abstract class FlutterRustBridgeExample extends FlutterRustBridgeBase<FlutterRus
   Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
 
   Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint});
+
+  Future<RwLockI32> handleOpaque({RwLockI32? val, int? id, dynamic hint});
+
+  Future<String?> inspectOpaque({required RwLockI32 val, dynamic hint});
+
+  Future<CowStr> createOpaqueCow({String? val, dynamic hint});
+
+  Future<String?> handleOpaqueLifetime({CowStr? val, dynamic hint});
+}
+
+@sealed
+class CowStr extends FrbOpaque {
+  CowStr._(int ptr, int drop) : super(ptr, drop);
+}
+
+@sealed
+class RwLockI32 extends FrbOpaque {
+  RwLockI32._(int ptr, int drop) : super(ptr, drop);
 }
 
 class Attribute {
@@ -601,7 +619,64 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
         hint: hint,
       ));
 
+  Future<RwLockI32> handleOpaque({RwLockI32? val, int? id, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) =>
+            inner.wire_handle_opaque(port, _api2wire_opt_RwLockI32(val), _api2wire_opt_box_autoadd_i32(id)),
+        parseSuccessData: _wire2api_RwLockI32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_opaque",
+          argNames: ["val", "id"],
+        ),
+        argValues: [val, id],
+        hint: hint,
+      ));
+
+  Future<String?> inspectOpaque({required RwLockI32 val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_inspect_opaque(port, _api2wire_RwLockI32(val)),
+        parseSuccessData: _wire2api_opt_String,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "inspect_opaque",
+          argNames: ["val"],
+        ),
+        argValues: [val],
+        hint: hint,
+      ));
+
+  Future<CowStr> createOpaqueCow({String? val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_create_opaque_cow(port, _api2wire_opt_String(val)),
+        parseSuccessData: _wire2api_CowStr,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "create_opaque_cow",
+          argNames: ["val"],
+        ),
+        argValues: [val],
+        hint: hint,
+      ));
+
+  Future<String?> handleOpaqueLifetime({CowStr? val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port) => inner.wire_handle_opaque_lifetime(port, _api2wire_opt_CowStr(val)),
+        parseSuccessData: _wire2api_opt_String,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_opaque_lifetime",
+          argNames: ["val"],
+        ),
+        argValues: [val],
+        hint: hint,
+      ));
+
   // Section: api2wire
+  ffi.Pointer<wire_CowStr> _api2wire_CowStr(CowStr raw) {
+    final ptr = inner.new_CowStr();
+    _api_fill_to_wire_CowStr(raw, ptr);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_RwLockI32> _api2wire_RwLockI32(RwLockI32 raw) {
+    final ptr = inner.new_RwLockI32();
+    _api_fill_to_wire_RwLockI32(raw, ptr);
+    return ptr;
+  }
+
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
@@ -804,6 +879,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
     return ans;
   }
 
+  ffi.Pointer<wire_CowStr> _api2wire_opt_CowStr(CowStr? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_CowStr(raw);
+  }
+
+  ffi.Pointer<wire_RwLockI32> _api2wire_opt_RwLockI32(RwLockI32? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_RwLockI32(raw);
+  }
+
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_String(String? raw) {
     return raw == null ? ffi.nullptr : _api2wire_String(raw);
   }
@@ -919,6 +1002,13 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   }
 
   // Section: api_fill_to_wire
+  void _api_fill_to_wire_CowStr(CowStr apiObj, ffi.Pointer<wire_CowStr> wireObj) {
+    if (apiObj.ptr_ != ffi.nullptr) wireObj.ref.ptr = apiObj.ptr_.cast();
+  }
+
+  void _api_fill_to_wire_RwLockI32(RwLockI32 apiObj, ffi.Pointer<wire_RwLockI32> wireObj) {
+    if (apiObj.ptr_ != ffi.nullptr) wireObj.ref.ptr = apiObj.ptr_.cast();
+  }
 
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
     wireObj.key = _api2wire_String(apiObj.key);
@@ -1000,27 +1090,32 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
       wireObj.kind.ref.Primitives.ref.int32 = _api2wire_i32(apiObj.int32);
       wireObj.kind.ref.Primitives.ref.float64 = _api2wire_f64(apiObj.float64);
       wireObj.kind.ref.Primitives.ref.boolean = _api2wire_bool(apiObj.boolean);
+      return;
     }
     if (apiObj is Nested) {
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
       wireObj.kind.ref.Nested.ref.field0 = _api2wire_box_kitchen_sink(apiObj.field0);
+      return;
     }
     if (apiObj is Optional) {
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_KitchenSink_Optional();
       wireObj.kind.ref.Optional.ref.field0 = _api2wire_opt_box_autoadd_i32(apiObj.field0);
       wireObj.kind.ref.Optional.ref.field1 = _api2wire_opt_box_autoadd_i32(apiObj.field1);
+      return;
     }
     if (apiObj is Buffer) {
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_KitchenSink_Buffer();
       wireObj.kind.ref.Buffer.ref.field0 = _api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
+      return;
     }
     if (apiObj is Enums) {
       wireObj.tag = 5;
       wireObj.kind = inner.inflate_KitchenSink_Enums();
       wireObj.kind.ref.Enums.ref.field0 = _api2wire_weekdays(apiObj.field0);
+      return;
     }
   }
 
@@ -1038,6 +1133,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 
   void _api_fill_to_wire_new_type_int(NewTypeInt apiObj, wire_NewTypeInt wireObj) {
     wireObj.field0 = _api2wire_i64(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_opt_CowStr(CowStr? apiObj, ffi.Pointer<wire_CowStr> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_CowStr(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_opt_RwLockI32(RwLockI32? apiObj, ffi.Pointer<wire_RwLockI32> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_RwLockI32(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -1059,6 +1162,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
 }
 
 // Section: wire2api
+CowStr _wire2api_CowStr(dynamic raw) {
+  return CowStr._(raw[0], raw[1]);
+}
+
+RwLockI32 _wire2api_RwLockI32(dynamic raw) {
+  return RwLockI32._(raw[0], raw[1]);
+}
+
 String _wire2api_String(dynamic raw) {
   return raw as String;
 }
@@ -1911,6 +2022,85 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_enum_struct =
       _wire_handle_enum_structPtr.asFunction<void Function(int, ffi.Pointer<wire_KitchenSink>)>();
 
+  void wire_handle_opaque(
+    int port_,
+    ffi.Pointer<wire_RwLockI32> val,
+    ffi.Pointer<ffi.Int32> id,
+  ) {
+    return _wire_handle_opaque(
+      port_,
+      val,
+      id,
+    );
+  }
+
+  late final _wire_handle_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_RwLockI32>, ffi.Pointer<ffi.Int32>)>>(
+          'wire_handle_opaque');
+  late final _wire_handle_opaque =
+      _wire_handle_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_RwLockI32>, ffi.Pointer<ffi.Int32>)>();
+
+  void wire_inspect_opaque(
+    int port_,
+    ffi.Pointer<wire_RwLockI32> val,
+  ) {
+    return _wire_inspect_opaque(
+      port_,
+      val,
+    );
+  }
+
+  late final _wire_inspect_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_RwLockI32>)>>('wire_inspect_opaque');
+  late final _wire_inspect_opaque =
+      _wire_inspect_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_RwLockI32>)>();
+
+  void wire_create_opaque_cow(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> val,
+  ) {
+    return _wire_create_opaque_cow(
+      port_,
+      val,
+    );
+  }
+
+  late final _wire_create_opaque_cowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_create_opaque_cow');
+  late final _wire_create_opaque_cow =
+      _wire_create_opaque_cowPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_opaque_lifetime(
+    int port_,
+    ffi.Pointer<wire_CowStr> val,
+  ) {
+    return _wire_handle_opaque_lifetime(
+      port_,
+      val,
+    );
+  }
+
+  late final _wire_handle_opaque_lifetimePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_CowStr>)>>(
+          'wire_handle_opaque_lifetime');
+  late final _wire_handle_opaque_lifetime =
+      _wire_handle_opaque_lifetimePtr.asFunction<void Function(int, ffi.Pointer<wire_CowStr>)>();
+
+  ffi.Pointer<wire_CowStr> new_CowStr() {
+    return _new_CowStr();
+  }
+
+  late final _new_CowStrPtr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_CowStr> Function()>>('new_CowStr');
+  late final _new_CowStr = _new_CowStrPtr.asFunction<ffi.Pointer<wire_CowStr> Function()>();
+
+  ffi.Pointer<wire_RwLockI32> new_RwLockI32() {
+    return _new_RwLockI32();
+  }
+
+  late final _new_RwLockI32Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_RwLockI32> Function()>>('new_RwLockI32');
+  late final _new_RwLockI32 = _new_RwLockI32Ptr.asFunction<ffi.Pointer<wire_RwLockI32> Function()>();
+
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -2514,6 +2704,14 @@ class KitchenSink_Buffer extends ffi.Struct {
 class KitchenSink_Enums extends ffi.Struct {
   @ffi.Int32()
   external int field0;
+}
+
+class wire_RwLockI32 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_CowStr extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;

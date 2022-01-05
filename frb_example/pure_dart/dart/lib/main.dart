@@ -286,6 +286,34 @@ void main(List<String> args) async {
       );
     }
 
+    print('dart call handleOpaque');
+    {
+      final val = await api.handleOpaque();
+      expect(await api.inspectOpaque(val: val), "0");
+      await api.handleOpaque(val: val);
+      expect(await api.inspectOpaque(val: val), "1");
+    }
+
+    print('dart call handleOpaque edge case');
+    {
+      final val = await api.handleOpaque();
+      await Future.wait([
+        api.handleOpaque(val: val, id: 1),
+        api.handleOpaque(val: val, id: 2),
+        api.handleOpaque(val: val, id: 3),
+      ]);
+      expect(await api.inspectOpaque(val: val), "3");
+      val.dispose();
+      expect(await api.inspectOpaque(val: val), null);
+    }
+
+    print('dart call handleOpaqueLifetime');
+    {
+      expect(await api.handleOpaqueLifetime(), null);
+      final val = await api.createOpaqueCow(val: "Foobar.");
+      expect(await api.handleOpaqueLifetime(val: val), "Foobar.");
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();
