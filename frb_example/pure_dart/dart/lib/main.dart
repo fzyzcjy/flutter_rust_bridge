@@ -299,15 +299,24 @@ void main(List<String> args) async {
 
     print('dart call handleOpaque edge case');
     {
-      final val = await api.handleOpaque();
-      await Future.wait([
-        api.handleOpaque(val: val, id: 1),
-        api.handleOpaque(val: val, id: 2),
-        api.handleOpaque(val: val, id: 3),
-      ]);
-      expect(await api.inspectOpaque(val: val), "3");
+      var val = await api.handleOpaque();
+      var val2 = await api.handleOpaque();
+      var val3 = await api.handleOpaque();
+      final res = api.handleOpaque(val: val, id: 1);
       val.dispose();
-      expect(await api.inspectOpaque(val: val), null);
+      final res2 = api.handleOpaque(val: val2, id: 2);
+      val2.dispose();
+      final res3 = api.handleOpaque(val: val3, id: 3);
+      val3.dispose();
+      val = await res;
+      expect(val.isStale(), false);
+      val2 = await res2;
+      expect(val2.isStale(), false);
+      val3 = await res3;
+      expect(val3.isStale(), false);
+      val.dispose();
+      val2.dispose();
+      val3.dispose();
     }
 
     print('dart call handleOpaqueLifetime');

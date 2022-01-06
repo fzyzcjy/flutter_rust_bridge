@@ -69,10 +69,12 @@ impl<T> IntoDart for Opaque<T> {
     #[inline]
     fn into_dart(self) -> DartCObject {
         let drop = Opaque::<T>::dropper();
+        let count = self.ptr.as_ref().map(Arc::strong_count);
         let ptr = self.ptr.map(Arc::into_raw).unwrap_or_else(core::ptr::null);
-        if !self.original {
+        if !self.original && matches!(count, Some(2..)) {
             // We received this pointer from Dart, but it ended up not getting dropped
-            // but returned back to Dart. This is to undo the increment from opaque_from_dart.
+            // but returned back to Dart AND Dart has not already disposed this pointer.
+            // This is to undo the increment from opaque_from_dart.
             unsafe {
                 Arc::decrement_strong_count(ptr);
             }
