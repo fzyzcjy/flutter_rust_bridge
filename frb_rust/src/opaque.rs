@@ -15,6 +15,8 @@ pub struct Opaque<T: ?Sized> {
     pub(crate) original: bool,
 }
 
+use crate::LOCK;
+
 impl<T: Default> Default for Opaque<T> {
     fn default() -> Self {
         Self {
@@ -40,6 +42,7 @@ impl<T> Opaque<T> {
     }
     fn dropper() -> *const unsafe extern "C" fn(*mut T) {
         unsafe extern "C" fn drop<T>(ptr: *mut T) {
+            let _lock = LOCK.lock();
             Arc::decrement_strong_count(ptr);
         }
         drop::<T> as *const _

@@ -1,7 +1,7 @@
 //! Functions that support auto-generated Rust code.
 //! These functions are *not* meant to be used by humans directly.
 
-use crate::Opaque;
+use crate::{Opaque, LOCK};
 use std::mem;
 use std::sync::Arc;
 
@@ -57,6 +57,7 @@ pub struct WireSyncReturnStruct {
 /// The method of receiving an opaque pointer from Dart
 /// is an implementation detail, so this signature is not API-stable.
 pub unsafe fn opaque_from_dart<T>(ptr: *const T) -> Opaque<T> {
+    let lock = LOCK.lock();
     let ptr = if ptr.is_null() {
         None
     } else {
@@ -64,6 +65,7 @@ pub unsafe fn opaque_from_dart<T>(ptr: *const T) -> Opaque<T> {
         Arc::increment_strong_count(ptr);
         Some(Arc::from_raw(ptr))
     };
+    drop(lock);
     Opaque {
         ptr,
         original: false,
