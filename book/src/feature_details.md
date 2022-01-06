@@ -66,3 +66,4 @@ OPTIONS:
         --class-name <class-name>                              Generated class name
         --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
         --llvm-path <llvm-path>                                Path to the installed LLVM
+```
