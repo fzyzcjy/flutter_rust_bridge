@@ -448,7 +448,7 @@ fn get_relevant_types<'ast>(src_fns: &Vec<&'ast ItemFn>) -> HashMap<String, &'as
     result
 }
 
-// Returns an option stating whether the type is valid. If the type is valid
+// Returns an option stating whether the type is valid. If the type is a valid
 // but unknown enum or struct, the option will contain the ident it contains.
 // If the type is a known container type such as Vec<T>, Result<ZeroCopyBuffer<T>>
 // or similar, the option will contain the inner ident T.
