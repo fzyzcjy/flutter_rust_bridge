@@ -22,6 +22,16 @@ lazy_static! {
     static ref CAPTURE_VEC: GenericCapture = GenericCapture::new("Vec");
     static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
     static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture = GenericCapture::new("ZeroCopyBuffer");
+    static ref CAPTURE_SYNC_RETURN: GenericCapture = GenericCapture::new("SyncReturn");
+    static ref ALL_CAPTURES: Vec<&'static GenericCapture> = vec![
+        &CAPTURE_RESULT,
+        &CAPTURE_OPTION,
+        &CAPTURE_BOX,
+        &CAPTURE_VEC,
+        &CAPTURE_STREAM_SINK,
+        &CAPTURE_ZERO_COPY_BUFFER,
+        &CAPTURE_SYNC_RETURN
+    ];
 }
 
 pub fn parse(source_rust_content: &str, file: File) -> ApiFile {
@@ -433,7 +443,7 @@ fn get_relevant_types<'ast>(src_fns: &Vec<&'ast ItemFn>) -> HashMap<String, &'as
             ReturnType::Default => {}
             ReturnType::Type(_, item_type) => {
                 let type_string = type_to_string(item_type.as_ref());
-                if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
+                if let Some(_) = CAPTURE_RESULT.captures(&type_string) {
                     debug!("{}", &type_string);
                     let inner = filter_and_get_inner(item_type.as_ref());
                     if inner.is_some() {
@@ -446,6 +456,14 @@ fn get_relevant_types<'ast>(src_fns: &Vec<&'ast ItemFn>) -> HashMap<String, &'as
     }
 
     result
+}
+
+// Not sure this is the best way to do it, but we need to filter out types that
+// are handled as special cases by the library. We already filter out
+// primitives so they are not included in this list. We also don't need to
+// filter container types since they are handled as a special case.
+lazy_static! {
+    static ref FRB_TYPES: Vec<String> = vec!["String".to_string()];
 }
 
 // Returns an option stating whether the type is valid. If the type is a valid
@@ -461,22 +479,13 @@ fn filter_and_get_inner<'ast>(ty: &'ast Type) -> Option<&'ast Ident> {
         Type::Path(type_path) => {
             let type_string = type_to_string(ty);
             let mut capture_first_type_param = false;
-            if let Some(_) = CAPTURE_RESULT.captures(&type_string) {
-                capture_first_type_param = true;
-            }
-            if let Some(_) = CAPTURE_OPTION.captures(&type_string) {
-                capture_first_type_param = true;
-            }
-            if let Some(_) = CAPTURE_BOX.captures(&type_string) {
-                capture_first_type_param = true;
-            }
-            if let Some(_) = CAPTURE_VEC.captures(&type_string) {
-                capture_first_type_param = true;
-            }
-            if let Some(_) = CAPTURE_STREAM_SINK.captures(&type_string) {
-                capture_first_type_param = true;
-            }
-            if let Some(_) = CAPTURE_ZERO_COPY_BUFFER.captures(&type_string) {
+            if ALL_CAPTURES.iter().any(|capture| {
+                if let Some(_) = capture.captures(&type_string) {
+                    true
+                } else {
+                    false
+                }
+            }) {
                 capture_first_type_param = true;
             }
 
@@ -496,7 +505,13 @@ fn filter_and_get_inner<'ast>(ty: &'ast Type) -> Option<&'ast Ident> {
             } else {
                 let ident = &type_path.path.segments.last().unwrap().ident;
                 let ident_str = ident.to_string();
-                if ApiTypePrimitive::try_from_rust_str(&ident_str).map(Primitive).is_none() {
+                if ApiTypePrimitive::try_from_rust_str(&ident_str)
+                    .map(Primitive)
+                    .is_none()
+                    && !FRB_TYPES
+                        .iter()
+                        .any(|frb_type_str| *frb_type_str == ident_str)
+                {
                     debug!("Actually captured {}", &ident_str);
                     Some(ident)
                 } else {
