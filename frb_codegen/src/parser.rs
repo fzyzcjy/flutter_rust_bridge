@@ -15,9 +15,24 @@ use crate::generator_rust::HANDLER_NAME;
 type StructMap<'a> = HashMap<String, &'a ItemStruct>;
 type EnumMap<'a> = HashMap<String, &'a ItemEnum>;
 
+lazy_static! {
+    static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
+    static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
+    static ref CAPTURE_BOX: GenericCapture = GenericCapture::new("Box");
+    static ref CAPTURE_VEC: GenericCapture = GenericCapture::new("Vec");
+    static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
+    static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture = GenericCapture::new("ZeroCopyBuffer");
+}
+
 pub fn parse(source_rust_content: &str, file: File) -> ApiFile {
+    let src_fns = extract_fns_from_file(&file);
+
+    let relevant_items = get_relevant_types(&src_fns);
+
+    debug!("{:#?}", relevant_items);
+
     let SrcItems {
-        src_fns,
+        src_fns: _src_fns,
         src_struct_map,
         src_enums,
     } = extract_items_from_file(&file);
@@ -72,10 +87,6 @@ impl<'a> Parser<'a> {
 
     fn parse_function(&mut self, func: &ItemFn) -> ApiFunc {
         debug!("parse_function function name: {:?}", func.sig.ident);
-
-        lazy_static! {
-            static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
-        }
 
         let sig = &func.sig;
         let func_name = sig.ident.to_string();
@@ -152,10 +163,6 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_stream_sink(&mut self, ty: &str) -> Option<ApiType> {
-        lazy_static! {
-            static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
-        }
-
         CAPTURE_STREAM_SINK
             .captures(ty)
             .map(|inner| self.parse_type(&inner))
@@ -167,11 +174,6 @@ impl<'a> Parser<'a> {
             "String" => Some(ApiType::Delegate(ApiTypeDelegate::String)),
             "Vec<String>" => Some(ApiType::Delegate(ApiTypeDelegate::StringList)),
             _ => {
-                lazy_static! {
-                    static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture =
-                        GenericCapture::new("ZeroCopyBuffer");
-                }
-
                 if let Some(inner_type_str) = CAPTURE_ZERO_COPY_BUFFER.captures(ty) {
                     if let Some(ApiType::PrimitiveList(ApiTypePrimitiveList { primitive })) =
                         self.try_parse_list(&inner_type_str)
@@ -188,10 +190,6 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_list(&mut self, ty: &str) -> Option<ApiType> {
-        lazy_static! {
-            static ref CAPTURE_VEC: GenericCapture = GenericCapture::new("Vec");
-        }
-
         if let Some(inner_type_str) = CAPTURE_VEC.captures(ty) {
             match self.parse_type(&inner_type_str) {
                 Primitive(primitive) => Some(PrimitiveList(ApiTypePrimitiveList { primitive })),
@@ -203,10 +201,6 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_box(&mut self, ty: &str) -> Option<ApiType> {
-        lazy_static! {
-            static ref CAPTURE_BOX: GenericCapture = GenericCapture::new("Box");
-        }
-
         CAPTURE_BOX.captures(ty).map(|inner| {
             Boxed(Box::new(ApiTypeBoxed {
                 exist_in_real_api: true,
@@ -216,10 +210,6 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_option(&mut self, ty: &str) -> Option<ApiType> {
-        lazy_static! {
-            static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
-        }
-
         CAPTURE_OPTION.captures(ty).map(|inner| {
             let inner_option = CAPTURE_OPTION.captures(&inner);
             if let Some(inner_option) = inner_option {
@@ -357,6 +347,28 @@ struct SrcItems<'a> {
     src_enums: EnumMap<'a>,
 }
 
+struct SrcStructs<'a> {
+    src_struct_map: StructMap<'a>,
+    src_enums: EnumMap<'a>,
+}
+
+fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
+    let mut src_fns = Vec::new();
+
+    for item in file.items.iter() {
+        match item {
+            Item::Fn(ref item_fn) => {
+                if let Visibility::Public(_) = &item_fn.vis {
+                    src_fns.push(item_fn);
+                }
+            }
+            _ => {}
+        }
+    }
+
+    src_fns
+}
+
 fn extract_items_from_file(file: &File) -> SrcItems {
     let mut src_fns = Vec::new();
     let mut src_struct_map = HashMap::new();
@@ -374,14 +386,14 @@ fn extract_items_from_file(file: &File) -> SrcItems {
                 }
             }
             Item::Enum(
-                item_enu
+                item_enum
                 @
                 ItemEnum {
                     vis: Visibility::Public(_),
                     ..
                 },
             ) => {
-                src_enums.insert(item_enu.ident.to_string(), item_enu);
+                src_enums.insert(item_enum.ident.to_string(), item_enum);
             }
             _ => {}
         }
@@ -392,6 +404,107 @@ fn extract_items_from_file(file: &File) -> SrcItems {
         src_fns,
         src_struct_map,
         src_enums,
+    }
+}
+
+/// Takes a list of functions and returns a set of types that must be resolved.
+fn get_relevant_types<'ast>(src_fns: &Vec<&'ast ItemFn>) -> HashMap<String, &'ast Ident> {
+    let mut result = HashMap::new();
+
+    for src_fn in src_fns.iter() {
+        debug!("");
+        debug!("{}", src_fn.sig.ident);
+        debug!("Inputs:");
+        for input in src_fn.sig.inputs.iter() {
+            match input {
+                FnArg::Receiver(_) => {}
+                FnArg::Typed(pat_type) => {
+                    debug!("{}", type_to_string(pat_type.ty.as_ref()));
+                    let inner = filter_and_get_inner(pat_type.ty.as_ref());
+                    if inner.is_some() {
+                        let inner = inner.unwrap();
+                        result.insert(inner.to_string(), inner);
+                    }
+                }
+            }
+        }
+        debug!("Output:");
+        match &src_fn.sig.output {
+            ReturnType::Default => {}
+            ReturnType::Type(_, item_type) => {
+                let type_string = type_to_string(item_type.as_ref());
+                if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
+                    debug!("{}", &type_string);
+                    let inner = filter_and_get_inner(item_type.as_ref());
+                    if inner.is_some() {
+                        let inner = inner.unwrap();
+                        result.insert(inner.to_string(), inner);
+                    }
+                }
+            }
+        }
+    }
+
+    result
+}
+
+// Returns an option stating whether the type is valid. If the type is valid
+// but unknown enum or struct, the option will contain the ident it contains.
+// If the type is a known container type such as Vec<T>, Result<ZeroCopyBuffer<T>>
+// or similar, the option will contain the inner ident T.
+fn filter_and_get_inner<'ast>(ty: &'ast Type) -> Option<&'ast Ident> {
+    match ty {
+        Type::Group(type_group) => filter_and_get_inner(type_group.elem.as_ref()),
+        Type::Paren(type_paren) => filter_and_get_inner(type_paren.elem.as_ref()),
+        Type::Ptr(type_ptr) => filter_and_get_inner(type_ptr.elem.as_ref()),
+        Type::Reference(type_reference) => filter_and_get_inner(type_reference.elem.as_ref()),
+        Type::Path(type_path) => {
+            let type_string = type_to_string(ty);
+            let mut capture_first_type_param = false;
+            if let Some(_) = CAPTURE_RESULT.captures(&type_string) {
+                capture_first_type_param = true;
+            }
+            if let Some(_) = CAPTURE_OPTION.captures(&type_string) {
+                capture_first_type_param = true;
+            }
+            if let Some(_) = CAPTURE_BOX.captures(&type_string) {
+                capture_first_type_param = true;
+            }
+            if let Some(_) = CAPTURE_VEC.captures(&type_string) {
+                capture_first_type_param = true;
+            }
+            if let Some(_) = CAPTURE_STREAM_SINK.captures(&type_string) {
+                capture_first_type_param = true;
+            }
+            if let Some(_) = CAPTURE_ZERO_COPY_BUFFER.captures(&type_string) {
+                capture_first_type_param = true;
+            }
+
+            if capture_first_type_param {
+                match &type_path.path.segments.last().unwrap().arguments {
+                    PathArguments::AngleBracketed(angle_bracketed) => {
+                        // Assumes only one type argument
+                        match angle_bracketed.args.last().unwrap() {
+                            GenericArgument::Type(argument_type) => {
+                                filter_and_get_inner(argument_type)
+                            }
+                            _ => None,
+                        }
+                    }
+                    _ => None,
+                }
+            } else {
+                let ident = &type_path.path.segments.last().unwrap().ident;
+                let ident_str = ident.to_string();
+                if ApiTypePrimitive::try_from_rust_str(&ident_str).map(Primitive).is_none() {
+                    debug!("Actually captured {}", &ident_str);
+                    Some(ident)
+                } else {
+                    None
+                }
+            }
+        }
+        _ => None,
     }
 }
 
