@@ -569,7 +569,7 @@ impl Generator {
             Opaque(_) => {
                 "unsafe {
                     let ans = support::box_from_leak_ptr(self);
-                    support::opaque_from_dart(ans.ptr as usize as _).into()
+                    support::opaque_from_dart(ans.ptr as _)
                 }".into()
             }
             // handled by common impl

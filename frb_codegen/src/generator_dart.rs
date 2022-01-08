@@ -160,29 +160,24 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
-    let wire_param_list = [
-        if func.mode.has_port_argument() {
-            vec!["port".to_string()]
-        } else {
-            vec![]
-        },
-        func.inputs
-            .iter()
-            .map(|input| {
-                // edge case: ffigen performs its own bool-to-int conversions
-                if let ApiType::Primitive(ApiTypePrimitive::Bool) = input.ty {
-                    input.name.dart_style()
-                } else {
-                    format!(
-                        "_api2wire_{}({})",
-                        &input.ty.safe_ident(),
-                        &input.name.dart_style()
-                    )
-                }
-            })
-            .collect::<Vec<_>>(),
-    ]
-    .concat();
+    let wire_param_list = func
+        .mode
+        .has_port_argument()
+        .then(|| "port".to_owned())
+        .into_iter()
+        .chain(func.inputs.iter().map(|input| {
+            // edge case: ffigen performs its own bool-to-int conversions
+            if let ApiType::Primitive(ApiTypePrimitive::Bool) = input.ty {
+                input.name.dart_style()
+            } else {
+                format!(
+                    "_api2wire_{}({})",
+                    &input.ty.safe_ident(),
+                    &input.name.dart_style()
+                )
+            }
+        }))
+        .collect::<Vec<_>>();
 
     let partial = format!(
         "{} {}({{ {} }})",
@@ -417,7 +412,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
             boxed.inner.safe_ident()
         ),
-        Opaque(_) => "if (apiObj.ptr_ != ffi.nullptr) wireObj.ref.ptr = apiObj.ptr_.cast();".into(),
+        Opaque(_) => "wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();".into(),
         Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | EnumRef(_) => {
             return "".to_string();
         }
@@ -531,7 +526,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
             }
             _ => gen_simple_type_cast(&ty.dart_api_type()),
         },
-        Opaque(opaq) => format!("return {}._(raw[0], raw[1]);", opaq.dart_api_type()),
+        Opaque(opaq) => format!("return {}._(raw[0], raw[1], raw[2]);", opaq.dart_api_type()),
     };
 
     format!(
@@ -688,7 +683,7 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
 fn generate_api_opaque(opaq: &ApiOpaque) -> String {
     format!(
         "@sealed class {0} extends FrbOpaque {{
-            {0}._(int ptr, int drop) : super(ptr, drop);
+            {0}._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
         }}",
         opaq.dart_api_type()
     )

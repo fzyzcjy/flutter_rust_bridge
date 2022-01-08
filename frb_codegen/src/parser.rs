@@ -408,7 +408,10 @@ fn extract_items_from_file(file: &File) -> SrcItems {
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294
 fn type_to_string(ty: &Type) -> String {
-    quote!(#ty).to_string().replace(' ', "")
+    quote!(#ty)
+        .to_string()
+        .replace(" < ", "<")
+        .replace(" >", ">")
 }
 
 struct GenericCapture {
@@ -418,7 +421,7 @@ struct GenericCapture {
 impl GenericCapture {
     pub fn new(cls_name: &str) -> Self {
         let regex = Regex::new(&*format!(
-            "^[^<]*{}<([a-zA-Z0-9_<>()\\[\\];',]+)>$",
+            "^[^<]*{}<([a-zA-Z0-9_<>()\\[\\];',& +]+)>$",
             cls_name
         ))
         .unwrap();

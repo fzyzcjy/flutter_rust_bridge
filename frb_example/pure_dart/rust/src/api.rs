@@ -1,6 +1,8 @@
 #![allow(unused_variables)]
 
+pub use std::any::Any;
 pub use std::borrow::Cow;
+pub use std::fmt::Debug;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
 pub use std::sync::RwLock;
@@ -444,41 +446,42 @@ pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
     })
 }
 
-pub fn handle_opaque(
-    val: Option<Opaque<RwLock<i32>>>,
-    id: Option<i32>,
-) -> Result<Opaque<RwLock<i32>>> {
-    match val {
-        Some(val) => {
-            if let Some(Ok(mut val)) = val.write() {
-                println!("id = {:?}", id);
-                *val += 1;
-            }
-            Ok(val)
-        }
-        None => Ok(Opaque::new(RwLock::new(0))),
-    }
+pub trait DartDebug: DartSafe + Debug {}
+impl<T> DartDebug for T where T: DartSafe + Debug {}
+
+#[derive(Debug)]
+pub struct OpaqueBag {
+    pub primitive: Opaque<RwLock<i32>>,
+    pub array: Opaque<RwLock<[isize; 10]>>,
+    pub lifetime: Opaque<&'static str>,
+    pub trait_obj: Opaque<Box<dyn DartDebug>>,
 }
 
-pub fn inspect_opaque(val: Opaque<RwLock<i32>>) -> Result<Option<String>> {
-    Ok(if let Some(Ok(val)) = val.read() {
-        Some(format!("{}", val))
+pub fn handle_opaque(value: Option<OpaqueBag>) -> Result<OpaqueBag> {
+    Ok(value
+        .map(|val| {
+            if let Some(Ok(mut val)) = val.primitive.write() {
+                *val += 1;
+            }
+            if let Some(Ok(mut val)) = val.array.write() {
+                for i in val.iter_mut() {
+                    *i += 1;
+                }
+            }
+            val
+        })
+        .unwrap_or_else(|| OpaqueBag {
+            primitive: Opaque::new(RwLock::new(0)),
+            array: Opaque::new(RwLock::new([0; 10])),
+            lifetime: Opaque::new("Hello there."),
+            trait_obj: Opaque::new(Box::new(("first", "second"))),
+        }))
+}
+
+pub fn handle_opaque_repr(value: Opaque<RwLock<i32>>) -> Result<Option<String>> {
+    Ok(if let Some(Ok(value)) = value.read() {
+        Some(value.to_string())
     } else {
         None
     })
-}
-
-pub fn create_opaque_cow(val: Option<String>) -> Result<Opaque<Cow<'static, str>>> {
-    Ok(Opaque::new(
-        val.map(Cow::from)
-            .unwrap_or_else(|| Cow::from("Hello world.")),
-    ))
-}
-
-pub fn handle_opaque_lifetime(val: Option<Opaque<Cow<'static, str>>>) -> Result<Option<String>> {
-    Ok(val
-        .as_ref()
-        .map(Opaque::as_ref)
-        .flatten()
-        .map(ToString::to_string))
 }

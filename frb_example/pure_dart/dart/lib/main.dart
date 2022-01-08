@@ -288,32 +288,17 @@ void main(List<String> args) async {
 
     print('dart call handleOpaque');
     {
-      final val = await api.handleOpaque();
-      expect(await api.inspectOpaque(val: val), "0");
-      await api.handleOpaque(val: val);
-      expect(await api.inspectOpaque(val: val), "1");
-      val.dispose();
-      val.dispose();
-      expect(await api.inspectOpaque(val: val), null);
-    }
-
-    print('dart call handleOpaque edge case');
-    {
-      final val = await api.handleOpaque();
-      final res = api.handleOpaque(val: val);
-      val.dispose();
-      final newVal = await res;
-      expect(newVal.isStale(), false);
-      newVal.dispose();
-    }
-
-    print('dart call handleOpaqueLifetime');
-    {
-      expect(await api.handleOpaqueLifetime(), null);
-      final val = await api.createOpaqueCow(val: "Foobar.");
-      expect(await api.handleOpaqueLifetime(val: val), "Foobar.");
-      val.dispose();
-      expect(await api.handleOpaqueLifetime(val: val), null);
+      final op = await api.handleOpaque();
+      final unawaited = api.handleOpaque(value: op);
+      op.array.dispose();
+      op.lifetime.dispose();
+      op.traitObj.dispose();
+      op.primitive.dispose();
+      final op2 = await unawaited;
+      expect(op2.array.isStale(), false);
+      expect(op2.lifetime.isStale(), false);
+      expect(op2.traitObj.isStale(), false);
+      expect(op2.primitive.isStale(), false);
     }
 
     _createGarbage();

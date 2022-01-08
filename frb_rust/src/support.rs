@@ -1,7 +1,7 @@
 //! Functions that support auto-generated Rust code.
 //! These functions are *not* meant to be used by humans directly.
 
-use crate::{Opaque, LOCK};
+use crate::DartSafe;
 use std::mem;
 use std::sync::Arc;
 
@@ -10,6 +10,7 @@ pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
+use crate::Opaque;
 
 // ref https://stackoverflow.com/questions/39224904/how-to-expose-a-rust-vect-to-ffi
 pub fn new_leak_vec_ptr<T: Clone>(fill: T, length: i32) -> *mut T {
@@ -51,23 +52,14 @@ pub struct WireSyncReturnStruct {
     pub len: i32,
     pub success: bool,
 }
-
 /// # Safety
 /// This function should never be called manually.
-/// The method of receiving an opaque pointer from Dart
-/// is an implementation detail, so this signature is not API-stable.
-pub unsafe fn opaque_from_dart<T>(ptr: *const T) -> Opaque<T> {
-    let lock = LOCK.lock();
-    let ptr = if ptr.is_null() {
-        None
-    } else {
-        // We don't have exclusive ownership, so artificially increase the refcount here.
-        Arc::increment_strong_count(ptr);
-        Some(Arc::from_raw(ptr))
-    };
-    drop(lock);
+/// Retrieving an opaque pointer from Dart is an implementation detail,
+/// so this function is not guaranteed to be API-stable.
+pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
+    // The raw pointer is the same one created from Arc::into_raw,
+    // owned and artificially incremented by Dart.
     Opaque {
-        ptr,
-        original: false,
+        ptr: (!ptr.is_null()).then(|| unsafe { Arc::from_raw(ptr) }),
     }
 }

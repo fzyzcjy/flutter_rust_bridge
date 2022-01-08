@@ -434,7 +434,7 @@ pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_opaque(port_: i64, val: *mut wire_RwLockI32, id: *mut i32) {
+pub extern "C" fn wire_handle_opaque(port_: i64, value: *mut wire_OpaqueBag) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_opaque",
@@ -442,54 +442,23 @@ pub extern "C" fn wire_handle_opaque(port_: i64, val: *mut wire_RwLockI32, id: *
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_val = val.wire2api();
-            let api_id = id.wire2api();
-            move |task_callback| handle_opaque(api_val, api_id)
+            let api_value = value.wire2api();
+            move |task_callback| handle_opaque(api_value)
         },
     )
 }
 
 #[no_mangle]
-pub extern "C" fn wire_inspect_opaque(port_: i64, val: *mut wire_RwLockI32) {
+pub extern "C" fn wire_handle_opaque_repr(port_: i64, value: *mut wire_RwLockI32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "inspect_opaque",
+            debug_name: "handle_opaque_repr",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_val = val.wire2api();
-            move |task_callback| inspect_opaque(api_val)
-        },
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn wire_create_opaque_cow(port_: i64, val: *mut wire_uint_8_list) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "create_opaque_cow",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_val = val.wire2api();
-            move |task_callback| create_opaque_cow(api_val)
-        },
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn wire_handle_opaque_lifetime(port_: i64, val: *mut wire_CowStr) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "handle_opaque_lifetime",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_val = val.wire2api();
-            move |task_callback| handle_opaque_lifetime(api_val)
+            let api_value = value.wire2api();
+            move |task_callback| handle_opaque_repr(api_value)
         },
     )
 }
@@ -498,13 +467,25 @@ pub extern "C" fn wire_handle_opaque_lifetime(port_: i64, val: *mut wire_CowStr)
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_CowStr {
+pub struct wire_BoxDartDebug {
     ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_RwLockI32 {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_RwLockIsize10 {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Str {
     ptr: *const core::ffi::c_void,
 }
 
@@ -636,6 +617,15 @@ pub struct wire_NewTypeInt {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_OpaqueBag {
+    primitive: *mut wire_RwLockI32,
+    array: *mut wire_RwLockIsize10,
+    lifetime: *mut wire_Str,
+    trait_obj: *mut wire_BoxDartDebug,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_uint_8_list {
     ptr: *mut u8,
     len: i32,
@@ -700,13 +690,23 @@ pub struct KitchenSink_Enums {
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_CowStr() -> *mut wire_CowStr {
-    support::new_leak_box_ptr(wire_CowStr::new_with_null_ptr())
+pub extern "C" fn new_BoxDartDebug() -> *mut wire_BoxDartDebug {
+    support::new_leak_box_ptr(wire_BoxDartDebug::new_with_null_ptr())
 }
 
 #[no_mangle]
 pub extern "C" fn new_RwLockI32() -> *mut wire_RwLockI32 {
     support::new_leak_box_ptr(wire_RwLockI32::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_RwLockIsize10() -> *mut wire_RwLockIsize10 {
+    support::new_leak_box_ptr(wire_RwLockIsize10::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_Str() -> *mut wire_Str {
+    support::new_leak_box_ptr(wire_Str::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -771,6 +771,11 @@ pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_MyTreeNode {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_NewTypeInt {
     support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_opaque_bag() -> *mut wire_OpaqueBag {
+    support::new_leak_box_ptr(wire_OpaqueBag::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -929,11 +934,11 @@ where
     }
 }
 
-impl Wire2Api<Opaque<Cow<'static, str>>> for *mut wire_CowStr {
-    fn wire2api(self) -> Opaque<Cow<'static, str>> {
+impl Wire2Api<Opaque<Box<dyn DartDebug>>> for *mut wire_BoxDartDebug {
+    fn wire2api(self) -> Opaque<Box<dyn DartDebug>> {
         unsafe {
             let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as usize as _).into()
+            support::opaque_from_dart(ans.ptr as _)
         }
     }
 }
@@ -942,7 +947,25 @@ impl Wire2Api<Opaque<RwLock<i32>>> for *mut wire_RwLockI32 {
     fn wire2api(self) -> Opaque<RwLock<i32>> {
         unsafe {
             let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as usize as _).into()
+            support::opaque_from_dart(ans.ptr as _)
+        }
+    }
+}
+
+impl Wire2Api<Opaque<RwLock<[isize; 10]>>> for *mut wire_RwLockIsize10 {
+    fn wire2api(self) -> Opaque<RwLock<[isize; 10]>> {
+        unsafe {
+            let ans = support::box_from_leak_ptr(self);
+            support::opaque_from_dart(ans.ptr as _)
+        }
+    }
+}
+
+impl Wire2Api<Opaque<&'static str>> for *mut wire_Str {
+    fn wire2api(self) -> Opaque<&'static str> {
+        unsafe {
+            let ans = support::box_from_leak_ptr(self);
+            support::opaque_from_dart(ans.ptr as _)
         }
     }
 }
@@ -1053,6 +1076,13 @@ impl Wire2Api<MyTreeNode> for *mut wire_MyTreeNode {
 
 impl Wire2Api<NewTypeInt> for *mut wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<OpaqueBag> for *mut wire_OpaqueBag {
+    fn wire2api(self) -> OpaqueBag {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         (*wrap).wire2api().into()
     }
@@ -1325,6 +1355,17 @@ impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     }
 }
 
+impl Wire2Api<OpaqueBag> for wire_OpaqueBag {
+    fn wire2api(self) -> OpaqueBag {
+        OpaqueBag {
+            primitive: self.primitive.wire2api(),
+            array: self.array.wire2api(),
+            lifetime: self.lifetime.wire2api(),
+            trait_obj: self.trait_obj.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<u32> for u32 {
     fn wire2api(self) -> u32 {
         self
@@ -1373,7 +1414,7 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
-impl NewWithNullPtr for wire_CowStr {
+impl NewWithNullPtr for wire_BoxDartDebug {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
@@ -1382,6 +1423,22 @@ impl NewWithNullPtr for wire_CowStr {
 }
 
 impl NewWithNullPtr for wire_RwLockI32 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_RwLockIsize10 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Str {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
@@ -1514,6 +1571,17 @@ impl NewWithNullPtr for wire_NewTypeInt {
     }
 }
 
+impl NewWithNullPtr for wire_OpaqueBag {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            primitive: core::ptr::null_mut(),
+            array: core::ptr::null_mut(),
+            lifetime: core::ptr::null_mut(),
+            trait_obj: core::ptr::null_mut(),
+        }
+    }
+}
+
 // Section: impl IntoDart
 
 impl support::IntoDart for Attribute {
@@ -1611,6 +1679,19 @@ impl support::IntoDart for NewTypeInt {
     }
 }
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
+
+impl support::IntoDart for OpaqueBag {
+    fn into_dart(self) -> support::DartCObject {
+        vec![
+            self.primitive.into_dart(),
+            self.array.into_dart(),
+            self.lifetime.into_dart(),
+            self.trait_obj.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for OpaqueBag {}
 
 impl support::IntoDart for VecOfPrimitivePack {
     fn into_dart(self) -> support::DartCObject {

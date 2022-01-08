@@ -1,87 +1,161 @@
-use allo_isolate::ffi::DartCObject;
-use allo_isolate::IntoDart;
-use std::{
-    fmt::Debug,
-    sync::{Arc, LockResult, RwLock, RwLockReadGuard, RwLockWriteGuard, TryLockResult},
-};
+use std::sync::{self, Arc};
 
-/// A wrapper to immutably share T to the Dart side.
-/// To mutate this wrapper's contents, use a smart pointer
-/// that enables interior mutability, e.g. [`RwLock`](std::sync::RwLock),
-/// [`Mutex`](std::sync::Mutex) or one of the Atomic types.
-#[derive(Debug, Clone)]
-pub struct Opaque<T: ?Sized> {
+use allo_isolate::{ffi::DartCObject, IntoDart};
+
+/// A wrapper to transfer ownership of T to Dart.
+///
+/// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
+/// be None if a nullptr is received from Dart, signifying that this pointer
+/// has been disposed.
+///
+/// Extensions for [`sync::RwLock`], [`parking_lot::RwLock`], [`sync::Mutex`]
+/// and [`parking_lot::Mutex`] are provided.
+///
+/// ## Naming the inner type
+/// When an `Opaque<T>` is transformed into a Dart type, T's string representation
+/// undergoes some transformations to become a valid Dart type:
+/// - Rust keywords (dyn, 'static, DartSafe, etc.) are automatically removed.
+/// - ASCII alphanumerics are kept, all other characters are ignored.
+///
+/// ## Trait objects
+/// Trait objects may be put in opaque pointers, but they must be [`DartSafe`] to
+/// be safely sent to Dart. For example, this declaration can be used across the
+/// FFI border:
+/// ```rust
+/// // Rust does not allow multiple non-auto traits in trait objects, so
+/// // this one workaround.
+/// pub trait DartDebug + Debug {}
+/// impl<T + Debug> DartDebug for T {}
+/// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
+/// ```
+#[repr(transparent)]
+#[derive(Clone, Debug)]
+pub struct Opaque<T> {
     pub(crate) ptr: Option<Arc<T>>,
-    pub(crate) original: bool,
 }
 
-use crate::LOCK;
+impl<T> From<Arc<T>> for Opaque<T> {
+    fn from(arc: Arc<T>) -> Self {
+        Self { ptr: Some(arc) }
+    }
+}
 
-impl<T: Default> Default for Opaque<T> {
-    fn default() -> Self {
-        Self {
-            ptr: Some(Arc::new(T::default())),
-            original: true,
-        }
+impl<T> From<Option<Arc<T>>> for Opaque<T> {
+    fn from(ptr: Option<Arc<T>>) -> Self {
+        Self { ptr }
     }
 }
 
 impl<T> Opaque<T> {
-    #[inline]
     pub fn new(value: T) -> Self {
-        let ptr = Some(Arc::new(value));
         Self {
-            ptr,
-            original: true,
+            ptr: Some(Arc::new(value)),
         }
     }
-    /// Obtains a reference to the inner value.
-    /// This will be None if the pointer has been disposed by Dart.
-    pub fn as_ref(&self) -> Option<&T> {
+    /// Acquire a reference to the inner value, if the pointer has not already
+    /// been disposed by Dart.
+    pub fn as_deref(&self) -> Option<&T> {
         self.ptr.as_deref()
     }
-    fn dropper() -> *const unsafe extern "C" fn(*mut T) {
-        unsafe extern "C" fn drop<T>(ptr: *mut T) {
-            let _lock = LOCK.lock();
-            Arc::decrement_strong_count(ptr);
-        }
-        drop::<T> as *const _
+}
+
+impl<T> Opaque<sync::RwLock<T>> {
+    #[inline]
+    pub fn read(&self) -> Option<sync::LockResult<sync::RwLockReadGuard<T>>> {
+        self.as_deref().map(sync::RwLock::read)
+    }
+    #[inline]
+    pub fn write(&self) -> Option<sync::LockResult<sync::RwLockWriteGuard<T>>> {
+        self.as_deref().map(sync::RwLock::write)
+    }
+    #[inline]
+    pub fn try_read(&self) -> Option<sync::TryLockResult<sync::RwLockReadGuard<T>>> {
+        self.as_deref().map(sync::RwLock::try_read)
+    }
+    #[inline]
+    pub fn try_write(&self) -> Option<sync::TryLockResult<sync::RwLockWriteGuard<T>>> {
+        self.as_deref().map(sync::RwLock::try_write)
     }
 }
 
-impl<T> Opaque<RwLock<T>> {
-    /// See [`RwLock::read`](https://doc.rust-lang.org/std/sync/struct.RwLock.html#method.read)
-    pub fn read(&self) -> Option<LockResult<RwLockReadGuard<T>>> {
-        self.as_ref().map(RwLock::read)
+impl<T> Opaque<parking_lot::RwLock<T>> {
+    /// Returns None when the pointer has been disposed.
+    #[inline]
+    pub fn read(&self) -> Option<parking_lot::RwLockReadGuard<T>> {
+        self.as_deref().map(parking_lot::RwLock::read)
     }
-    /// See [`RwLock::write`](https://doc.rust-lang.org/std/sync/struct.RwLock.html#method.write)
-    pub fn write(&self) -> Option<LockResult<RwLockWriteGuard<T>>> {
-        self.as_ref().map(RwLock::write)
+    /// Returns None when the pointer has been disposed.
+    #[inline]
+    pub fn write(&self) -> Option<parking_lot::RwLockWriteGuard<T>> {
+        self.as_deref().map(parking_lot::RwLock::write)
     }
-    /// See [`RwLock::try_read`](https://doc.rust-lang.org/std/sync/struct.RwLock.html#method.try_read)
-    pub fn try_read(&self) -> Option<TryLockResult<RwLockReadGuard<T>>> {
-        self.as_ref().map(RwLock::try_read)
+    /// Returns None when either the pointer has been disposed, or the lock
+    /// is in use right now.
+    #[inline]
+    pub fn try_read(&self) -> Option<parking_lot::RwLockReadGuard<T>> {
+        self.as_deref().map(parking_lot::RwLock::try_read).flatten()
     }
-    /// See [`RwLock::try_write`](https://doc.rust-lang.org/std/sync/struct.RwLock.html#method.try_write)
-    pub fn try_write(&self) -> Option<TryLockResult<RwLockWriteGuard<T>>> {
-        self.as_ref().map(RwLock::try_write)
+    /// Returns None when either the pointer has been disposed, or the lock
+    /// is in use right now.
+    #[inline]
+    pub fn try_write(&self) -> Option<parking_lot::RwLockWriteGuard<T>> {
+        self.as_deref()
+            .map(parking_lot::RwLock::try_write)
+            .flatten()
     }
 }
+
+impl<T> Opaque<sync::Mutex<T>> {
+    #[inline]
+    pub fn lock(&self) -> Option<sync::LockResult<sync::MutexGuard<T>>> {
+        self.as_deref().map(sync::Mutex::lock)
+    }
+    #[inline]
+    pub fn try_lock(&self) -> Option<sync::TryLockResult<sync::MutexGuard<T>>> {
+        self.as_deref().map(sync::Mutex::try_lock)
+    }
+}
+
+impl<T> Opaque<parking_lot::Mutex<T>> {
+    #[inline]
+    pub fn lock(&self) -> Option<parking_lot::MutexGuard<T>> {
+        self.as_deref().map(parking_lot::Mutex::lock)
+    }
+    /// Returns a None when either the pointer has been disposed,
+    /// or the lock is in use right now.
+    #[inline]
+    pub fn try_lock(&self) -> Option<parking_lot::MutexGuard<T>> {
+        self.as_deref().map(parking_lot::Mutex::try_lock).flatten()
+    }
+}
+
+extern "C" fn drop_arc<T>(ptr: *const T) {
+    // Dart has ownership of this copy of Arc,
+    // and can only lend out clones, so this is safe to call
+    // exactly once.
+    unsafe {
+        Arc::decrement_strong_count(ptr);
+    }
+}
+extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
+    // Equivalent to a clone, but direcly in terms of raw pointers.
+    unsafe {
+        Arc::increment_strong_count(ptr);
+        ptr
+    }
+}
+type CArcDropper<T> = *const extern "C" fn(*const T);
+type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
 
 impl<T> IntoDart for Opaque<T> {
-    #[inline]
     fn into_dart(self) -> DartCObject {
-        let drop = Opaque::<T>::dropper();
-        let count = self.ptr.as_ref().map(Arc::strong_count);
-        let ptr = self.ptr.map(Arc::into_raw).unwrap_or_else(core::ptr::null);
-        if !self.original && matches!(count, Some(2..)) {
-            // We received this pointer from Dart, but it ended up not getting dropped
-            // but returned back to Dart AND Dart has not already disposed this pointer.
-            // This is to undo the increment from opaque_from_dart.
-            unsafe {
-                Arc::decrement_strong_count(ptr);
-            }
-        }
-        vec![ptr.into_dart(), drop.into_dart()].into_dart()
+        // ffi.Pointer? type
+        let ptr = match self.ptr {
+            Some(arc) => Arc::into_raw(arc).into_dart(),
+            _ => ().into_dart(),
+        };
+        let drop = drop_arc::<T> as CArcDropper<T>;
+        let lend = lend_arc::<T> as CArcLender<T>;
+        vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()
     }
 }

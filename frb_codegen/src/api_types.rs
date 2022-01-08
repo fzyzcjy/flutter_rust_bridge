@@ -845,6 +845,8 @@ impl ApiOpaque {
     pub fn new(rust_ty: &str) -> Self {
         let inner_dart = rust_ty
             .replace("'static", "")
+            .replace("dyn", "")
+            .replace("DartSafe", "")
             .chars()
             .map(|c| if c.is_ascii_alphanumeric() { c } else { '_' })
             .collect::<String>()
