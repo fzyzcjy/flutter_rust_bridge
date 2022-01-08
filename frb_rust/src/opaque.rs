@@ -1,3 +1,5 @@
+//! Safe wrapper for Dart-friendly raw pointers.
+
 use std::sync::{self, Arc};
 
 use allo_isolate::{ffi::DartCObject, IntoDart};
@@ -19,31 +21,36 @@ use crate::DartSafe;
 /// - ASCII alphanumerics are kept, all other characters are ignored.
 ///
 /// ## Trait objects
-/// Trait objects may be put in opaque pointers, but they must be [`DartSafe`] to
+/// Trait objects may be put behind opaque pointers, but they must implement [`DartSafe`] to
 /// be safely sent to Dart. For example, this declaration can be used across the
 /// FFI border:
 /// ```rust
 /// use flutter_rust_bridge::*;
 /// use std::fmt::Debug;
+/// use std::panic::{UnwindSafe, RefUnwindSafe};
 /// // Rust does not allow multiple non-auto traits in trait objects, so
-/// // this one workaround.
+/// // this is one workaround.
 /// pub trait DartDebug: DartSafe + Debug {}
 /// impl<T: DartSafe + Debug> DartDebug for T {}
-/// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
+/// pub struct DebugWrapper(pub Opaque<dyn DartDebug>);
+/// // creating a DebugWrapper using the opaque_dyn macro
+/// let wrap = DebugWrapper(opaque_dyn!("foobar", DartDebug));
+/// // it's possible to name it directly
+/// pub struct DebugWrapper2(pub Opaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
 #[repr(transparent)]
 #[derive(Clone, Debug)]
-pub struct Opaque<T: DartSafe> {
+pub struct Opaque<T: ?Sized + DartSafe> {
     pub(crate) ptr: Option<Arc<T>>,
 }
 
-impl<T: DartSafe> From<Arc<T>> for Opaque<T> {
+impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
     fn from(arc: Arc<T>) -> Self {
         Self { ptr: Some(arc) }
     }
 }
 
-impl<T: DartSafe> From<Option<Arc<T>>> for Opaque<T> {
+impl<T: ?Sized + DartSafe> From<Option<Arc<T>>> for Opaque<T> {
     fn from(ptr: Option<Arc<T>>) -> Self {
         Self { ptr }
     }
@@ -121,4 +128,22 @@ impl<T: DartSafe> IntoDart for Opaque<T> {
         let lend = lend_arc::<T> as CArcLender<T>;
         vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()
     }
+}
+
+/// Macro helper to instantiate an `Opaque<dyn Trait>`, as Rust does not
+/// support custom DSTs on stable.
+///
+/// Example:
+/// ```rust
+/// use std::fmt::Debug;
+/// use flutter_rust_bridge::*;
+/// pub trait MyDebug: DartSafe + Debug {}
+/// impl<T: DartSafe + Debug> MyDebug for T {}
+/// let opaque: Opaque<dyn MyDebug> = opaque_dyn!("foobar", MyDebug);
+/// ```
+#[macro_export]
+macro_rules! opaque_dyn {
+    ($ex:expr, $trait:tt) => {
+        Opaque::from(std::sync::Arc::new($ex) as std::sync::Arc<dyn $trait>)
+    };
 }

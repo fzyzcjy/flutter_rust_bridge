@@ -2,6 +2,8 @@ use std::collections::{HashMap, HashSet};
 
 use convert_case::{Case, Casing};
 
+use lazy_static::lazy_static;
+use regex::Regex;
 use ApiType::*;
 
 pub type ApiStructPool = HashMap<String, ApiStruct>;
@@ -843,14 +845,16 @@ pub struct ApiOpaque {
 
 impl ApiOpaque {
     pub fn new(rust_ty: &str) -> Self {
-        let inner_dart = rust_ty
-            .replace("'static", "")
-            .replace("dyn", "")
-            .replace("DartSafe", "")
-            .chars()
-            .map(|c| if c.is_ascii_alphanumeric() { c } else { '_' })
-            .collect::<String>()
+        lazy_static! {
+            static ref OPAQUE_FILTER: Regex =
+                Regex::new(r"(\bdyn|'static|\bDartSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b")
+                    .unwrap();
+        }
+        let inner_dart = OPAQUE_FILTER
+            .replace_all(rust_ty, "")
+            .replace(|c: char| !c.is_alphanumeric(), "_")
             .to_case(Case::Pascal);
+
         Self {
             inner_rust: rust_ty.to_owned(),
             inner_dart,
@@ -890,4 +894,19 @@ pub fn optional_boundary_index(types: &[&ApiType]) -> Option<usize> {
                 .all(|ty| matches!(ty, Optional(_)))
                 .then(|| idx)
         })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_api_opaque() {
+        let type_str = "Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>";
+        let ty = ApiOpaque::new(type_str);
+        assert_eq!(ty.inner_dart, "BoxDebug");
+
+        let type_str = "&'static dyn DartSafe + 型";
+        let ty = ApiOpaque::new(type_str);
+        assert_eq!(ty.inner_dart, "型");
+    }
 }

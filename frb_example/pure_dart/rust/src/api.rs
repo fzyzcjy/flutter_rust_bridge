@@ -447,7 +447,7 @@ pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
 }
 
 pub trait DartDebug: DartSafe + Debug {}
-impl<T> DartDebug for T where T: DartSafe + Debug {}
+impl<T: DartSafe + Debug> DartDebug for T {}
 
 #[derive(Debug)]
 pub struct OpaqueBag {
