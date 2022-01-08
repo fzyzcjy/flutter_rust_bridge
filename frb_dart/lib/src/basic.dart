@@ -62,17 +62,19 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   @protected
-  Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
+  Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) {
     final receivePort = ReceivePort();
     task.callFfi(receivePort.sendPort.nativePort);
 
-    await for (final raw in receivePort) {
-      try {
-        yield _transformRust2DartMessage(raw, task.parseSuccessData);
-      } on _CloseStreamException {
-        receivePort.close();
+    return () async* {
+      await for (final raw in receivePort) {
+        try {
+          yield _transformRust2DartMessage(raw, task.parseSuccessData);
+        } on _CloseStreamException {
+          receivePort.close();
+        }
       }
-    }
+    }();
   }
 
   S _transformRust2DartMessage<S>(dynamic raw, S Function(dynamic) parseSuccessData) {
