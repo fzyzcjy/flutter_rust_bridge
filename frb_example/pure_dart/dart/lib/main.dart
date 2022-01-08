@@ -299,6 +299,7 @@ void main(List<String> args) async {
       expect(op2.lifetime.isStale(), false);
       expect(op2.traitObj.isStale(), false);
       expect(op2.primitive.isStale(), false);
+      expect(await api.handleOpaqueRepr(value: op2.primitive), "1");
       op2.array.dispose();
       op2.lifetime.dispose();
       op2.traitObj.dispose();
