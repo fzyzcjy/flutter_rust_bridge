@@ -2,14 +2,15 @@ use std::sync::{self, Arc};
 
 use allo_isolate::{ffi::DartCObject, IntoDart};
 
+use crate::DartSafe;
+
 /// A wrapper to transfer ownership of T to Dart.
 ///
 /// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
 /// be None if a nullptr is received from Dart, signifying that this pointer
 /// has been disposed.
 ///
-/// Extensions for [`sync::RwLock`], [`parking_lot::RwLock`], [`sync::Mutex`]
-/// and [`parking_lot::Mutex`] are provided.
+/// Extensions for [`sync::RwLock`] and [`sync::Mutex`] are provided.
 ///
 /// ## Naming the inner type
 /// When an `Opaque<T>` is transformed into a Dart type, T's string representation
@@ -32,23 +33,23 @@ use allo_isolate::{ffi::DartCObject, IntoDart};
 /// ```
 #[repr(transparent)]
 #[derive(Clone, Debug)]
-pub struct Opaque<T> {
+pub struct Opaque<T: DartSafe> {
     pub(crate) ptr: Option<Arc<T>>,
 }
 
-impl<T> From<Arc<T>> for Opaque<T> {
+impl<T: DartSafe> From<Arc<T>> for Opaque<T> {
     fn from(arc: Arc<T>) -> Self {
         Self { ptr: Some(arc) }
     }
 }
 
-impl<T> From<Option<Arc<T>>> for Opaque<T> {
+impl<T: DartSafe> From<Option<Arc<T>>> for Opaque<T> {
     fn from(ptr: Option<Arc<T>>) -> Self {
         Self { ptr }
     }
 }
 
-impl<T> Opaque<T> {
+impl<T: DartSafe> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
             ptr: Some(Arc::new(value)),
@@ -61,7 +62,7 @@ impl<T> Opaque<T> {
     }
 }
 
-impl<T> Opaque<sync::RwLock<T>> {
+impl<T: DartSafe> Opaque<sync::RwLock<T>> {
     #[inline]
     pub fn read(&self) -> Option<sync::LockResult<sync::RwLockReadGuard<T>>> {
         self.as_deref().map(sync::RwLock::read)
@@ -80,34 +81,7 @@ impl<T> Opaque<sync::RwLock<T>> {
     }
 }
 
-impl<T> Opaque<parking_lot::RwLock<T>> {
-    /// Returns None when the pointer has been disposed.
-    #[inline]
-    pub fn read(&self) -> Option<parking_lot::RwLockReadGuard<T>> {
-        self.as_deref().map(parking_lot::RwLock::read)
-    }
-    /// Returns None when the pointer has been disposed.
-    #[inline]
-    pub fn write(&self) -> Option<parking_lot::RwLockWriteGuard<T>> {
-        self.as_deref().map(parking_lot::RwLock::write)
-    }
-    /// Returns None when either the pointer has been disposed, or the lock
-    /// is in use right now.
-    #[inline]
-    pub fn try_read(&self) -> Option<parking_lot::RwLockReadGuard<T>> {
-        self.as_deref().map(parking_lot::RwLock::try_read).flatten()
-    }
-    /// Returns None when either the pointer has been disposed, or the lock
-    /// is in use right now.
-    #[inline]
-    pub fn try_write(&self) -> Option<parking_lot::RwLockWriteGuard<T>> {
-        self.as_deref()
-            .map(parking_lot::RwLock::try_write)
-            .flatten()
-    }
-}
-
-impl<T> Opaque<sync::Mutex<T>> {
+impl<T: DartSafe> Opaque<sync::Mutex<T>> {
     #[inline]
     pub fn lock(&self) -> Option<sync::LockResult<sync::MutexGuard<T>>> {
         self.as_deref().map(sync::Mutex::lock)
@@ -115,19 +89,6 @@ impl<T> Opaque<sync::Mutex<T>> {
     #[inline]
     pub fn try_lock(&self) -> Option<sync::TryLockResult<sync::MutexGuard<T>>> {
         self.as_deref().map(sync::Mutex::try_lock)
-    }
-}
-
-impl<T> Opaque<parking_lot::Mutex<T>> {
-    #[inline]
-    pub fn lock(&self) -> Option<parking_lot::MutexGuard<T>> {
-        self.as_deref().map(parking_lot::Mutex::lock)
-    }
-    /// Returns a None when either the pointer has been disposed,
-    /// or the lock is in use right now.
-    #[inline]
-    pub fn try_lock(&self) -> Option<parking_lot::MutexGuard<T>> {
-        self.as_deref().map(parking_lot::Mutex::try_lock).flatten()
     }
 }
 
@@ -149,7 +110,7 @@ extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
 type CArcDropper<T> = *const extern "C" fn(*const T);
 type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
 
-impl<T> IntoDart for Opaque<T> {
+impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartCObject {
         // ffi.Pointer? type
         let ptr = match self.ptr {

@@ -16,7 +16,7 @@ pub mod support;
 /// the function should return synchronously. Otherwise, it is by default asynchronously.
 pub struct SyncReturn<T>(pub T);
 
-/// Marker trait representing types that exhibit behavior that are safe to be serialized as
-/// Dart objects to send to the Dart VM.
+/// Marker trait for types that are safe to share with Dart and can be dropped
+/// safely in case of a panic.
 pub trait DartSafe: Send + Sync + UnwindSafe + RefUnwindSafe {}
 impl<T: Send + Sync + UnwindSafe + RefUnwindSafe> DartSafe for T {}
