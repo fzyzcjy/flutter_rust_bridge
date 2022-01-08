@@ -299,6 +299,10 @@ void main(List<String> args) async {
       expect(op2.lifetime.isStale(), false);
       expect(op2.traitObj.isStale(), false);
       expect(op2.primitive.isStale(), false);
+      op2.array.dispose();
+      op2.lifetime.dispose();
+      op2.traitObj.dispose();
+      op2.primitive.dispose();
     }
 
     _createGarbage();
