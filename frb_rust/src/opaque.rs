@@ -22,10 +22,12 @@ use allo_isolate::{ffi::DartCObject, IntoDart};
 /// be safely sent to Dart. For example, this declaration can be used across the
 /// FFI border:
 /// ```rust
+/// use flutter_rust_bridge::*;
+/// use std::fmt::Debug;
 /// // Rust does not allow multiple non-auto traits in trait objects, so
 /// // this one workaround.
-/// pub trait DartDebug + Debug {}
-/// impl<T + Debug> DartDebug for T {}
+/// pub trait DartDebug: DartSafe + Debug {}
+/// impl<T: DartSafe + Debug> DartDebug for T {}
 /// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
 /// ```
 #[repr(transparent)]
