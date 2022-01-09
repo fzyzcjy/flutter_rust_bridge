@@ -62,6 +62,9 @@ impl<T: DartSafe> Opaque<T> {
             ptr: Some(Arc::new(value)),
         }
     }
+}
+
+impl<T: ?Sized + DartSafe> Opaque<T> {
     /// Acquire a reference to the inner value, if the pointer has not already
     /// been disposed by Dart.
     pub fn as_deref(&self) -> Option<&T> {
