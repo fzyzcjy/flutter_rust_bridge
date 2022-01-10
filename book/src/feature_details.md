@@ -41,6 +41,7 @@ Here are other functionalities:
 - `ZeroCopyBuffer<Vec<i8, u8, ..>>` sends the buffer to Dart without making
   copies
 - `SyncReturn<Vec<u8>>` sends the byte buffer to Dart synchronously
+- Can separate generated definitions from implementations (see #298)
 
 ## Command line arguments
 
