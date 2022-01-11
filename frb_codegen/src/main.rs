@@ -3,6 +3,7 @@ use std::path::Path;
 
 use env_logger::Env;
 use log::{debug, info};
+use pathdiff::diff_paths;
 use structopt::StructOpt;
 
 use crate::api_types::ApiType;
@@ -129,9 +130,8 @@ fn main() {
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         let impl_import_decl = DartBasicCode {
             import: format!(
-                "import \"{}.dart\";",
-                Path::new(dart_decl_output_path)
-                    .file_stem()
+                "import \"{}\";",
+                diff_paths(dart_decl_output_path, dart_output_dir)
                     .unwrap()
                     .to_str()
                     .unwrap()
