@@ -386,12 +386,16 @@ FLAGS:
 OPTIONS:
     -r, --rust-input &lt;rust-input&gt;                              Path of input Rust code
     -d, --dart-output &lt;dart-output&gt;                            Path of output generated Dart code
+        --dart-decl-output &lt;dart-decl-output&gt;
+            If provided, generated Dart declaration code to this separate file
+
     -c, --c-output &lt;c-output&gt;                                  Path of output generated C header
         --rust-crate-dir &lt;rust-crate-dir&gt;                      Crate directory for your Rust project
         --rust-output &lt;rust-output&gt;                            Path of output generated Rust code
         --class-name &lt;class-name&gt;                              Generated class name
         --dart-format-line-length &lt;dart-format-line-length&gt;    Line length for dart formatting
         --llvm-path &lt;llvm-path&gt;                                Path to the installed LLVM
+        --llvm-compiler-opts &lt;llvm-compiler-opts&gt;              LLVM compiler opts
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="customize-handlers-behavior"><a class="header" href="#customize-handlers-behavior">Customize handler's behavior</a></h2>
 <p>By default, the <code>DefaultHandler</code> is used. You can implement your own <code>Handler</code> doing whatever you want. In order to do this, create a variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in the Rust input file (probably using <code>lazy_static</code>). You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
