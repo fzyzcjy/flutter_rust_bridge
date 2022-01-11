@@ -5,18 +5,12 @@ use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::others::*;
 
-pub struct Output {
-    pub header: String,
-    pub api_class: String,
-    pub other: String,
-}
-
 pub fn generate(
     api_file: &ApiFile,
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
-) -> Output {
+) -> (DartBasicCode, DartBasicCode) {
     let distinct_types = api_file.distinct_types(true, true);
     let distinct_input_types = api_file.distinct_types(true, false);
     let distinct_output_types = api_file.distinct_types(false, true);
@@ -54,45 +48,41 @@ pub fn generate(
         .any(|ty| matches!(ty, EnumRef(e) if e.is_struct));
     let freezed_header = if needs_freezed {
         "import 'package:freezed_annotation/freezed_annotation.dart';
-        // import 'package:flutter/foundation.dart';
+        
         part 'bridge_generated.freezed.dart';"
     } else {
         ""
     };
 
-    let header = format!(
+    let common_header = format!(
         "{}
 
         // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal
         import 'dart:convert';
-        import 'dart:typed_data';
-
-        import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
-        CODE_HEADER,
+        import 'dart:typed_data';",
+        CODE_HEADER
     );
 
-    let api_class = format!(
+    let decl_header = format!(
         "{}
-        abstract class {} extends FlutterRustBridgeBase<{}> {{
-            factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
+        {}",
+        common_header, freezed_header,
+    );
 
-            {}.raw({} inner) : super(inner);
+    let impl_header = format!(
+        "{}
+        import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
+        common_header
+    );
 
+    let decl_body = format!(
+        "abstract class {} {{
             {}
         }}
 
         {}
-
-        // ------------------------- Implementation Details -------------------------
         ",
-        freezed_header,
         dart_api_class_name,
-        dart_wire_class_name,
-        dart_api_class_name,
-        dart_api_impl_class_name,
-        dart_wire_class_name,
-        dart_api_class_name,
-        dart_wire_class_name,
         dart_func_signatures_and_implementations
             .iter()
             .map(|(sig, _, comm)| format!("{}{}", comm, sig))
@@ -101,11 +91,10 @@ pub fn generate(
         dart_structs.join("\n\n"),
     );
 
-    let other = format!(
-        "/// Implementations for {}. Prefer using {} if possible; but this class allows more
-        /// flexible customizations (such as subclassing to create an initializer, a logger, or
-        /// a timer).
-        class {} extends {} {{
+    let impl_body = format!(
+        "class {} extends FlutterRustBridgeBase<{}> implements {} {{
+            factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
+
             {}.raw({} inner) : super.raw(inner);
 
             {}
@@ -120,10 +109,12 @@ pub fn generate(
         // Section: wire2api
         {}
         ",
-        dart_api_class_name,
+        dart_api_impl_class_name,
+        dart_wire_class_name,
         dart_api_class_name,
         dart_api_impl_class_name,
-        dart_api_class_name,
+        dart_api_impl_class_name,
+        dart_wire_class_name,
         dart_api_impl_class_name,
         dart_wire_class_name,
         dart_func_signatures_and_implementations
@@ -136,11 +127,16 @@ pub fn generate(
         dart_wire2api_funcs.join("\n\n"),
     );
 
-    Output {
-        header,
-        api_class,
-        other,
-    }
+    (
+        DartBasicCode {
+            header: decl_header,
+            body: decl_body,
+        },
+        DartBasicCode {
+            header: impl_header,
+            body: impl_body,
+        },
+    )
 }
 
 fn generate_api_func(func: &ApiFunc) -> (String, String, String) {

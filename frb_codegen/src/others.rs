@@ -1,4 +1,5 @@
 use std::fs;
+use std::ops::Add;
 use std::path::Path;
 
 use anyhow::{anyhow, Result};
@@ -56,7 +57,29 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
     content.to_string()
 }
 
-pub fn extract_dart_wire_content(content: &str) -> (String, String) {
+pub struct DartBasicCode {
+    pub header: String,
+    pub body: String,
+}
+
+impl Add for &DartBasicCode {
+    type Output = DartBasicCode;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        DartBasicCode {
+            header: format!("{}\n{}", self.header, rhs.header),
+            body: format!("{}\n{}", self.body, rhs.body),
+        }
+    }
+}
+
+impl DartBasicCode {
+    pub fn to_text(&self) -> String {
+        format!("{}\n{}", self.header, self.body)
+    }
+}
+
+pub fn extract_dart_wire_content(content: &str) -> DartBasicCode {
     let (mut imports, mut body) = (Vec::new(), Vec::new());
     for line in content.split('\n') {
         (if line.starts_with("import ") {
@@ -66,7 +89,10 @@ pub fn extract_dart_wire_content(content: &str) -> (String, String) {
         })
         .push(line);
     }
-    (imports.join("\n"), body.join("\n"))
+    DartBasicCode {
+        header: imports.join("\n"),
+        body: body.join("\n"),
+    }
 }
 
 pub fn sanity_check(generated_dart_wire_code: &str, dart_wire_class_name: &str) {
