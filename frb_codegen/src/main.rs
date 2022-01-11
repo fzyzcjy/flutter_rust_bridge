@@ -52,12 +52,13 @@ fn main() {
     fs::write(&config.rust_output_path, generated_rust.code).unwrap();
 
     info!("Phase: Generate Dart code");
-    let (generated_dart_decl_raw, generated_dart_impl_raw) = generator_dart::generate(
-        &api_file,
-        &config.dart_api_class_name(),
-        &config.dart_api_impl_class_name(),
-        &config.dart_wire_class_name(),
-    );
+    let (generated_dart_file_prelude, generated_dart_decl_raw, generated_dart_impl_raw) =
+        generator_dart::generate(
+            &api_file,
+            &config.dart_api_class_name(),
+            &config.dart_api_impl_class_name(),
+            &config.dart_wire_class_name(),
+        );
 
     info!("Phase: Other things");
 
@@ -126,12 +127,21 @@ fn main() {
     let generated_dart_decl_all = generated_dart_decl_raw;
     let generated_dart_impl_all = &generated_dart_impl_raw + &generated_dart_wire;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
-        fs::write(&dart_decl_output_path, generated_dart_decl_all.to_text()).unwrap();
-        fs::write(&config.dart_output_path, generated_dart_impl_all.to_text()).unwrap();
+        fs::write(
+            &dart_decl_output_path,
+            (&generated_dart_file_prelude + &generated_dart_decl_all).to_text(),
+        )
+        .unwrap();
+        fs::write(
+            &config.dart_output_path,
+            (&generated_dart_file_prelude + &generated_dart_impl_all).to_text(),
+        )
+        .unwrap();
     } else {
         fs::write(
             &config.dart_output_path,
-            (&generated_dart_decl_all + &generated_dart_impl_all).to_text(),
+            (&generated_dart_file_prelude + &generated_dart_decl_all + &generated_dart_impl_all)
+                .to_text(),
         )
         .unwrap();
     }

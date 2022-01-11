@@ -10,7 +10,7 @@ pub fn generate(
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
-) -> (DartBasicCode, DartBasicCode) {
+) -> (DartBasicCode, DartBasicCode, DartBasicCode) {
     let distinct_types = api_file.distinct_types(true, true);
     let distinct_input_types = api_file.distinct_types(true, false);
     let distinct_output_types = api_file.distinct_types(false, true);
@@ -55,12 +55,8 @@ pub fn generate(
     };
 
     let common_header = format!(
-        "{}
-
-        // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal
-        import 'dart:convert';
-        import 'dart:typed_data';",
-        CODE_HEADER
+        "import 'dart:convert';
+        import 'dart:typed_data';"
     );
 
     let decl_header = format!(
@@ -95,7 +91,7 @@ pub fn generate(
         "class {} extends FlutterRustBridgeBase<{}> implements {} {{
             factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
 
-            {}.raw({} inner) : super.raw(inner);
+            {}.raw({} inner) : super(inner);
 
             {}
 
@@ -128,6 +124,15 @@ pub fn generate(
     );
 
     (
+        DartBasicCode {
+            header: format!("{}
+            
+                // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import
+                ", 
+                CODE_HEADER
+            ),
+            body: "".to_string(),
+        },
         DartBasicCode {
             header: decl_header,
             body: decl_body,

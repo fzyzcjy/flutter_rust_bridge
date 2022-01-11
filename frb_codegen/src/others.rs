@@ -73,6 +73,14 @@ impl Add for &DartBasicCode {
     }
 }
 
+impl Add<&DartBasicCode> for DartBasicCode {
+    type Output = DartBasicCode;
+
+    fn add(self, rhs: &DartBasicCode) -> Self::Output {
+        (&self).add(rhs)
+    }
+}
+
 impl DartBasicCode {
     pub fn to_text(&self) -> String {
         format!("{}\n{}", self.header, self.body)
