@@ -121,13 +121,10 @@ fn main() {
         &config.dart_wire_class_name(),
     ));
 
-    sanity_check(
-        &generated_dart_wire_body_code,
-        &config.dart_wire_class_name(),
-    );
+    sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name());
 
     let generated_dart_decl_all = generated_dart_decl_raw;
-    let generated_dart_impl_all = generated_dart_impl_raw + generated_dart_wire;
+    let generated_dart_impl_all = &generated_dart_impl_raw + &generated_dart_wire;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         fs::write(&dart_decl_output_path, generated_dart_decl_all.to_text()).unwrap();
         fs::write(&config.dart_output_path, generated_dart_impl_all.to_text()).unwrap();
