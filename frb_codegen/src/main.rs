@@ -160,7 +160,7 @@ fn main() {
 
     commands::format_dart(&config.dart_output_path, config.dart_format_line_length);
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
-        commands::format_dart(&dart_decl_output_path, config.dart_format_line_length);
+        commands::format_dart(dart_decl_output_path, config.dart_format_line_length);
     }
 
     info!("Success! Now go and use it :)");
