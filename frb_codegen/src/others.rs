@@ -57,8 +57,10 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
     content.to_string()
 }
 
+#[derive(Default)]
 pub struct DartBasicCode {
-    pub header: String,
+    pub import: String,
+    pub part: String,
     pub body: String,
 }
 
@@ -67,7 +69,8 @@ impl Add for &DartBasicCode {
 
     fn add(self, rhs: Self) -> Self::Output {
         DartBasicCode {
-            header: format!("{}\n{}", self.header, rhs.header),
+            import: format!("{}\n{}", self.import, rhs.import),
+            part: format!("{}\n{}", self.part, rhs.part),
             body: format!("{}\n{}", self.body, rhs.body),
         }
     }
@@ -83,7 +86,7 @@ impl Add<&DartBasicCode> for DartBasicCode {
 
 impl DartBasicCode {
     pub fn to_text(&self) -> String {
-        format!("{}\n{}", self.header, self.body)
+        format!("{}\n{}\n{}", self.import, self.part, self.body)
     }
 }
 
@@ -98,7 +101,8 @@ pub fn extract_dart_wire_content(content: &str) -> DartBasicCode {
         .push(line);
     }
     DartBasicCode {
-        header: imports.join("\n"),
+        import: imports.join("\n"),
+        part: "".to_string(),
         body: body.join("\n"),
     }
 }

@@ -128,7 +128,7 @@ fn main() {
     let generated_dart_impl_all = &generated_dart_impl_raw + &generated_dart_wire;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         let impl_import_decl = DartBasicCode {
-            header: format!(
+            import: format!(
                 "import \"{}.dart\";",
                 Path::new(dart_decl_output_path)
                     .file_stem()
@@ -136,6 +136,7 @@ fn main() {
                     .to_str()
                     .unwrap()
             ),
+            part: String::new(),
             body: String::new(),
         };
         fs::write(

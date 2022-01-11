@@ -47,29 +47,22 @@ pub fn generate(
         .iter()
         .any(|ty| matches!(ty, EnumRef(e) if e.is_struct));
     let freezed_header = if needs_freezed {
-        "import 'package:freezed_annotation/freezed_annotation.dart';
-        
-        part 'bridge_generated.freezed.dart';"
+        DartBasicCode {
+            import: "import 'package:freezed_annotation/freezed_annotation.dart';".to_string(),
+            part: "part 'bridge_generated.freezed.dart';".to_string(),
+            body: "".to_string(),
+        }
     } else {
-        ""
+        DartBasicCode::default()
     };
 
-    let common_header = format!(
-        "import 'dart:convert';
-        import 'dart:typed_data';"
-    );
-
-    let decl_header = format!(
-        "{}
-        {}",
-        common_header, freezed_header,
-    );
-
-    let impl_header = format!(
-        "{}
-        import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
-        common_header
-    );
+    let common_header = DartBasicCode {
+        import: "import 'dart:convert';
+            import 'dart:typed_data';"
+            .to_string(),
+        part: "".to_string(),
+        body: "".to_string(),
+    };
 
     let decl_body = format!(
         "abstract class {} {{
@@ -123,25 +116,33 @@ pub fn generate(
         dart_wire2api_funcs.join("\n\n"),
     );
 
-    (
-        DartBasicCode {
-            header: format!("{}
+    let decl_code = &common_header
+        + &freezed_header
+        + &DartBasicCode {
+            import: "".to_string(),
+            part: "".to_string(),
+            body: decl_body,
+        };
+
+    let impl_code = &common_header
+        + &DartBasicCode {
+            import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';".to_string(),
+            part: "".to_string(),
+            body: impl_body,
+        };
+
+    let file_prelude = DartBasicCode {
+        import: format!("{}
             
                 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import
-                ", 
-                CODE_HEADER
-            ),
-            body: "".to_string(),
-        },
-        DartBasicCode {
-            header: decl_header,
-            body: decl_body,
-        },
-        DartBasicCode {
-            header: impl_header,
-            body: impl_body,
-        },
-    )
+                ",
+                        CODE_HEADER
+        ),
+        part: "".to_string(),
+        body: "".to_string(),
+    };
+
+    (file_prelude, decl_code, impl_code)
 }
 
 fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
