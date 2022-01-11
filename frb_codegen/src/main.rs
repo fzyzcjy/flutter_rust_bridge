@@ -127,6 +127,17 @@ fn main() {
     let generated_dart_decl_all = generated_dart_decl_raw;
     let generated_dart_impl_all = &generated_dart_impl_raw + &generated_dart_wire;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
+        let impl_import_decl = DartBasicCode {
+            header: format!(
+                "import \"{}.dart\";",
+                Path::new(dart_decl_output_path)
+                    .file_stem()
+                    .unwrap()
+                    .to_str()
+                    .unwrap()
+            ),
+            body: String::new(),
+        };
         fs::write(
             &dart_decl_output_path,
             (&generated_dart_file_prelude + &generated_dart_decl_all).to_text(),
@@ -134,7 +145,7 @@ fn main() {
         .unwrap();
         fs::write(
             &config.dart_output_path,
-            (&generated_dart_file_prelude + &generated_dart_impl_all).to_text(),
+            (&generated_dart_file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
         )
         .unwrap();
     } else {
