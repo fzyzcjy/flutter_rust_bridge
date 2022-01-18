@@ -7,7 +7,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please fill in the blanks below - many bugs can be solved easily and quickly with the information (especially logs).
+        # Please fill in the blanks below
+        
+        many bugs can be solved easily and quickly with the information (especially logs).
 
   - type: textarea
     id: describe-the-bug
@@ -29,7 +31,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        The following fields are optional but may be useful for debugging
+        # The following fields are *optional*
+        
+        but may be useful for debugging
 
   - type: textarea
     id: to-reproduce
