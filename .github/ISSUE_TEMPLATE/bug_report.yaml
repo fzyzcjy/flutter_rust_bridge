@@ -31,7 +31,7 @@ body:
       value: |
         The following fields are optional but may be useful for debugging
 
-- type: textarea
+  - type: textarea
     id: to-reproduce
     attributes:
       label: To Reproduce
