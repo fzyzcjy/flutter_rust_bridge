@@ -374,9 +374,7 @@ fn extract_items_from_file(file: &File) -> SrcItems {
                 }
             }
             Item::Enum(
-                item_enu
-                @
-                ItemEnum {
+                item_enu @ ItemEnum {
                     vis: Visibility::Public(_),
                     ..
                 },
