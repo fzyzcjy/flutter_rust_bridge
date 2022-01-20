@@ -23,7 +23,7 @@ Want to combine the best between `Flutter`, a cross-platform hot-reload rapid-de
 
 ## 💡 User Guide
 
-Check out [the user guide](https://fzyzcjy.github.io/flutter_rust_bridge/) for show-me-the-code, quickstart, tutorials, and more advanced features.
+Check out [the user guide](https://fzyzcjy.github.io/flutter_rust_bridge/) for [show-me-the-code & quickstart](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart.html#-show-me-the-code), [tutorials](https://fzyzcjy.github.io/flutter_rust_bridge/tutorial_with_flutter.html), and more advanced features.
 
 ## Contributors ✨
 
