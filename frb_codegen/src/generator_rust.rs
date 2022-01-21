@@ -11,8 +11,8 @@ pub struct Output {
     pub extern_func_names: Vec<String>,
 }
 
-pub fn generate(api_file: &ApiFile, rust_wire_mod: &str) -> Output {
-    let mut generator = Generator::new();
+pub fn generate(api_file: &ApiFile, rust_wire_mod: &str, wasm: bool) -> Output {
+    let mut generator = Generator::new(wasm);
     let code = generator.generate(api_file, rust_wire_mod);
 
     Output {
@@ -23,12 +23,14 @@ pub fn generate(api_file: &ApiFile, rust_wire_mod: &str) -> Output {
 
 struct Generator {
     extern_func_collector: ExternFuncCollector,
+    wasm: bool,
 }
 
 impl Generator {
-    fn new() -> Self {
+    fn new(wasm: bool) -> Self {
         Self {
             extern_func_collector: ExternFuncCollector::new(),
+            wasm,
         }
     }
 
@@ -102,12 +104,20 @@ impl Generator {
         where
             *mut S: Wire2Api<T>
         {{
+            #[inline]
             fn wire2api(self) -> Option<T> {{
                 if self.is_null() {{
                     None
                 }} else {{
                     Some(self.wire2api())
                 }}
+            }}
+        }}
+
+        impl<T: Wire2Api<U>, U> Wire2Api<Option<U>> for Option<T> {{
+            #[inline]
+            fn wire2api(self) -> Option<U> {{
+                self.map(Wire2Api::wire2api)
             }}
         }}
 
@@ -171,25 +181,17 @@ impl Generator {
     }
 
     fn generate_wire_func(&mut self, func: &ApiFunc) -> String {
-        let params = [
-            if func.mode.has_port_argument() {
-                vec!["port_: i64".to_string()]
+        let params = func
+            .mode
+            .has_port_argument()
+            .then(|| "port_: i64".to_owned())
+            .into_iter()
+            .chain(func.inputs.iter().map(if self.wasm {
+                ApiField::emit_js_field
             } else {
-                vec![]
-            },
-            func.inputs
-                .iter()
-                .map(|field| {
-                    format!(
-                        "{}: {}{}",
-                        field.name.rust_style(),
-                        field.ty.rust_wire_modifier(),
-                        field.ty.rust_wire_type()
-                    )
-                })
-                .collect::<Vec<_>>(),
-        ]
-        .concat();
+                ApiField::emit_wire_field
+            }))
+            .collect::<Vec<_>>();
 
         let inner_func_params = [
             match func.mode {
@@ -251,25 +253,38 @@ impl Generator {
             ),
         };
 
-        self.extern_func_collector.generate(
-            &func.wire_func_name(),
-            &params
-                .iter()
-                .map(std::ops::Deref::deref)
-                .collect::<Vec<_>>(),
-            return_type,
-            &format!(
-                "
-                {}.{}({}, move || {{
-                    {}
-                }})
+        let name = func.wire_func_name();
+        let body = format!(
+            "{}.{}({}, move || {{
+                {}
+            }})
                 ",
-                HANDLER_NAME, handler_func_name, wrap_info_obj, code_closure,
-            ),
-        )
+            HANDLER_NAME, handler_func_name, wrap_info_obj, code_closure,
+        );
+
+        if self.wasm {
+            format!(
+                "#[wasm_bindgen] pub fn {}({}) {} {} {{ {} }}",
+                name,
+                params.join(","),
+                if return_type.is_some() { "->" } else { "" },
+                return_type.unwrap_or(""),
+                body
+            )
+        } else {
+            self.extern_func_collector.generate(
+                &name,
+                &params.iter().map(String::as_str).collect::<Vec<_>>(),
+                return_type,
+                &body,
+            )
+        }
     }
 
     fn generate_wire_struct(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
+        if self.wasm {
+            return Self::generate_wasm_struct(ty, api_file);
+        }
         // println!("generate_wire_struct: {:?}", ty);
         let fields = match ty {
             PrimitiveList(list) => vec![
@@ -290,17 +305,7 @@ impl Generator {
             ],
             StructRef(s) => {
                 let s = s.get(api_file);
-                s.fields
-                    .iter()
-                    .map(|field| {
-                        format!(
-                            "{}: {}{}",
-                            field.name.rust_style(),
-                            field.ty.rust_wire_modifier(),
-                            field.ty.rust_wire_type()
-                        )
-                    })
-                    .collect()
+                s.fields.iter().map(ApiField::emit_wire_field).collect()
             }
             Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) | EnumRef(_) => {
                 return "".to_string()
@@ -321,28 +326,19 @@ impl Generator {
     }
 
     fn generate_wire_enum(&mut self, enu: &ApiTypeEnumRef, file: &ApiFile) -> String {
-        let src = enu.get(file);
-        if !src.is_struct() {
+        if self.wasm || !enu.is_struct {
             return "".to_owned();
         }
+        let src = enu.get(file);
         let variant_structs = src
             .variants()
             .iter()
             .map(|variant| {
                 let fields = match &variant.kind {
                     ApiVariantKind::Value => vec![],
-                    ApiVariantKind::Struct(s) => s
-                        .fields
-                        .iter()
-                        .map(|field| {
-                            format!(
-                                "{}: {}{},",
-                                field.name.rust_style(),
-                                field.ty.rust_wire_modifier(),
-                                field.ty.rust_wire_type()
-                            )
-                        })
-                        .collect(),
+                    ApiVariantKind::Struct(s) => {
+                        s.fields.iter().map(ApiField::emit_wire_field).collect()
+                    }
                 };
                 format!(
                     "#[repr(C)]
@@ -350,7 +346,7 @@ impl Generator {
                     pub struct {}_{} {{ {} }}",
                     enu.name,
                     variant.name,
-                    fields.join("\n")
+                    fields.join(",\n")
                 )
             })
             .collect::<Vec<_>>();
@@ -402,7 +398,9 @@ impl Generator {
 
     fn generate_allocate_funcs(&mut self, ty: &ApiType) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
-
+        if self.wasm {
+            return "".to_owned();
+        }
         match ty {
             PrimitiveList(list) => self.extern_func_collector.generate(
                 &format!("new_{}", list.safe_ident()),
@@ -446,6 +444,9 @@ impl Generator {
     }
 
     fn generate_wire2api_func(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
+        if self.wasm {
+            return Self::generate_wasm_wire2api_func(ty, api_file);
+        }
         // println!("generate_wire2api_func: {:?}", ty);
         let body: Cow<str> = match ty {
             Primitive(_) => "self".into(),
@@ -468,7 +469,7 @@ impl Generator {
             };
             vec.into_iter().map(Wire2Api::wire2api).collect()"
                 .into(),
-            Boxed(inner) => match inner.as_ref() {
+            Boxed(inner) if !self.wasm => match inner.as_ref() {
                 ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: false } =>
                     "unsafe { *support::box_from_leak_ptr(self) }".into(),
                 ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: true } =>
@@ -554,7 +555,7 @@ impl Generator {
                 .into()
             }
             // handled by common impl
-            Optional(_) => return String::new(),
+            Optional(_) | Boxed(_) => return String::new(),
         };
 
         format!(
@@ -572,6 +573,9 @@ impl Generator {
     }
 
     fn generate_new_with_nullptr_func(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
+        if self.wasm {
+            return "".to_owned();
+        }
         match ty {
             StructRef(st) => self
                 .generate_new_with_nullptr_func_for_struct(st.get(api_file), &ty.rust_wire_type()),
@@ -627,10 +631,10 @@ impl Generator {
                     Some(&format!("*mut {}Kind", enu.name)),
                     &format!(
                         "support::new_leak_box_ptr({}Kind {{
-                        {}: support::new_leak_box_ptr({} {{
-                            {}
-                        }})
-                    }})",
+                            {}: support::new_leak_box_ptr({} {{
+                                {}
+                            }})
+                        }})",
                         enu.name,
                         variant.name.rust_style(),
                         typ,
@@ -677,11 +681,11 @@ impl Generator {
                 .join("\n")
         };
         format!(
-            r#"impl NewWithNullPtr for {} {{
-                    fn new_with_null_ptr() -> Self {{
-                        Self {{ {} }}
-                    }}
-                }}"#,
+            "impl NewWithNullPtr for {} {{
+                fn new_with_null_ptr() -> Self {{
+                    return Self {{ {} }};
+                }}
+            }}",
             rust_wire_type, body,
         )
     }
@@ -694,7 +698,7 @@ impl Generator {
             .map(|field| {
                 format!(
                     "self.{}.into_dart()",
-                    field.name_rust_style(s.is_fields_named)
+                    field.name_rust_style(s.is_fields_named),
                 )
             })
             .collect::<Vec<_>>()
@@ -782,6 +786,225 @@ impl Generator {
             variants.join("\n")
         )
     }
+
+    fn generate_wasm_getters(ty: &str, fields: &[ApiField]) -> Vec<String> {
+        fields
+            .iter()
+            .map(|field| {
+                format!(
+                    "#[wasm_bindgen(method, getter)] pub fn {name}(this: &{}) -> {};",
+                    ty,
+                    field.ty.js_wire_type(),
+                    name = field.name.rust_style()
+                )
+            })
+            .collect()
+    }
+
+    fn generate_wasm_struct(ty: &ApiType, api_file: &ApiFile) -> String {
+        use ApiType::*;
+        let getters = match ty {
+            StructRef(st) => {
+                Self::generate_wasm_getters(&ty.rust_wire_type(), &st.get(api_file).fields)
+            }
+            EnumRef(enu) if enu.is_struct => {
+                vec![
+                    format!(
+                        "#[wasm_bindgen(method, getter)] pub fn kind(this: &{}) -> JsValue;",
+                        enu.rust_wire_type()
+                    ),
+                    format!(
+                        "#[wasm_bindgen(method, getter)] pub fn tag(this: &{}) -> i32;",
+                        enu.rust_wire_type()
+                    ),
+                ]
+            }
+            Delegate(_) | Primitive(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
+            | Optional(_) | EnumRef(_) => return "".to_owned(),
+        };
+        let variants = if let ApiType::EnumRef(enu) = ty {
+            Self::generate_wasm_variants(enu, api_file)
+        } else {
+            "".to_owned()
+        };
+        format!(
+            r#"#[wasm_bindgen]
+            extern "C" {{
+                pub type {name};
+                {}
+            }}
+            {}"#,
+            getters.join("\n"),
+            variants,
+            name = ty.rust_wire_type()
+        )
+    }
+
+    fn generate_wasm_variants(enu: &ApiTypeEnumRef, api_file: &ApiFile) -> String {
+        let name = &enu.name;
+        let enu = enu.get(api_file);
+        enu.variants()
+            .iter()
+            .map(|variant| {
+                let name = format!("{}_{}", name, variant.name.rust_style());
+                let getters = if let ApiVariantKind::Struct(st) = &variant.kind {
+                    Self::generate_wasm_getters(&name, &st.fields)
+                } else {
+                    vec![]
+                };
+                format!(
+                    r#"#[wasm_bindgen]
+                    extern "C" {{
+                        pub type {name};
+                        {}
+                    }}"#,
+                    getters.join("\n"),
+                    name = name,
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("\n")
+    }
+
+    fn generate_wasm_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
+        use ApiType::*;
+        let body: Cow<str> = match ty {
+            Primitive(_) => "self".into(),
+            Delegate(ApiTypeDelegate::StringList) => "self.into_iter().map(|e| e
+                    .as_string().expect(\"not a string, or invalid utf-8\")).collect()"
+                .into(),
+            Delegate(ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_)) => {
+                "ZeroCopyBuffer(self.to_vec())".into()
+            }
+            Delegate(ApiTypeDelegate::String) => "self".into(),
+            PrimitiveList(_) => "self.to_vec()".into(),
+            GeneralList(_) => "self.iter().map(Wire2Api::wire2api).collect()".into(),
+            // GeneralList(list) => match &list.inner {
+            //     Optional(opt) if opt.is_struct() => {
+            //         "self.iter().map(Wire2Api::wire2api).collect()".into()
+            //     }
+            //     _ => format!(
+            //         "self.iter().map(|e| {{
+            //             e.unchecked_into::<{}>().wire2api()
+            //         }}).collect()",
+            //         list.inner.js_wire_type()
+            //     )
+            //     .into(),
+            // },
+            EnumRef(
+                enu @ ApiTypeEnumRef {
+                    is_struct: false, ..
+                },
+            ) => {
+                let enu = enu.get(api_file);
+                let arms = enu
+                    .variants()
+                    .iter()
+                    .enumerate()
+                    .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
+                    .collect::<Vec<_>>();
+                format!("match self {{ {} _ => unreachable!() }}", arms.join("\n")).into()
+            }
+            EnumRef(enu) => {
+                let name = &enu.name;
+                let enu = enu.get(api_file);
+                let variants = enu
+                    .variants()
+                    .iter()
+                    .enumerate()
+                    .map(|(idx, variant)| match &variant.kind {
+                        ApiVariantKind::Value => {
+                            format!("{} => {}::{},", idx, name, variant.name.rust_style())
+                        }
+                        ApiVariantKind::Struct(st) => {
+                            let fields = st
+                                .fields
+                                .iter()
+                                .map(|field| {
+                                    format!(
+                                        "{} kind.{}().wire2api()",
+                                        if st.is_fields_named {
+                                            field.name.rust_style().to_owned() + ": "
+                                        } else {
+                                            "".to_owned()
+                                        },
+                                        field.name.rust_style()
+                                    )
+                                })
+                                .collect::<Vec<_>>();
+                            let (left, right) = st.brackets_pair();
+                            format!(
+                                "{} => {{
+                                    let kind = self.kind().unchecked_into::<{name}_{api}>();
+                                    {name}::{api}{}{}{}
+                                }}",
+                                idx,
+                                left,
+                                fields.join(","),
+                                right,
+                                name = name,
+                                api = variant.name.rust_style()
+                            )
+                        }
+                    })
+                    .collect::<Vec<_>>();
+                format!(
+                    "match self.tag() {{ {} _ => unreachable!() }}",
+                    variants.join("\n")
+                )
+                .into()
+            }
+            StructRef(st) => {
+                let name = st.rust_api_type();
+                let wire_t = st.rust_wire_type();
+                let st = st.get(api_file);
+                let fields = st
+                    .fields
+                    .iter()
+                    .map(|field| {
+                        let field_name = field.name.rust_style();
+                        format!(
+                            "{} raw.{}().wire2api()",
+                            if st.is_fields_named {
+                                field_name.to_owned() + ": "
+                            } else {
+                                "".to_owned()
+                            },
+                            field_name
+                        )
+                    })
+                    .collect::<Vec<_>>();
+                let (left, right) = st.brackets_pair();
+                format!(
+                    "let raw = self.unchecked_ref::<{}>(); {}{}{}{}",
+                    wire_t,
+                    name,
+                    left,
+                    fields.join(","),
+                    right
+                )
+                .into()
+            }
+            Boxed(b) if !b.exist_in_real_api => return "".to_owned(),
+            ty @ Boxed(_) if ty.is_struct() => "Box::new(self.wire2api())".into(),
+            Boxed(_) => "Box::new(self)".into(),
+            Optional(opt) if opt.is_struct() => "Some(self.wire2api())".into(),
+            Optional(_) => return "".to_owned(),
+            Delegate(ApiTypeDelegate::SyncReturnVecU8) => unreachable!(),
+        };
+        let ref_type = if ty.is_struct() { "&" } else { "" };
+        format!(
+            r#"impl Wire2Api<{target}> for {}{src} {{
+                fn wire2api(self) -> {target} {{
+                    {body}
+                }}
+            }}"#,
+            ref_type,
+            src = ty.js_wire_type(),
+            target = ty.rust_api_type(),
+            body = body
+        )
+    }
 }
 
 struct ExternFuncCollector {
@@ -801,7 +1024,6 @@ impl ExternFuncCollector {
         body: &str,
     ) -> String {
         self.names.push(func_name.to_string());
-
         format!(
             r#"
                 #[no_mangle]
@@ -814,5 +1036,19 @@ impl ExternFuncCollector {
             return_type.map_or("".to_string(), |r| format!("-> {}", r)),
             body,
         )
+    }
+}
+
+impl ApiField {
+    fn emit_wire_field(&self) -> String {
+        format!(
+            "{}: {}{}",
+            self.name.rust_style(),
+            self.ty.rust_wire_modifier(),
+            self.ty.rust_wire_type()
+        )
+    }
+    fn emit_js_field(&self) -> String {
+        format!("{}: {}", self.name.rust_style(), self.ty.js_wire_type())
     }
 }

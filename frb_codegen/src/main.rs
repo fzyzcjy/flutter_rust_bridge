@@ -48,6 +48,7 @@ fn main() {
     let generated_rust = generator_rust::generate(
         &api_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
+        true,
     );
     fs::create_dir_all(&rust_output_dir).unwrap();
     fs::write(&config.rust_output_path, generated_rust.code).unwrap();

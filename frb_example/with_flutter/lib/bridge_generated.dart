@@ -365,242 +365,49 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   FlutterRustBridgeExampleWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
-  void wire_draw_mandelbrot(
-    int port_,
-    ffi.Pointer<wire_Size> image_size,
-    ffi.Pointer<wire_Point> zoom_point,
-    double scale,
-    int num_threads,
+  double x(
+    ffi.Pointer<ffi.Int32> this_,
   ) {
-    return _wire_draw_mandelbrot(
-      port_,
-      image_size,
-      zoom_point,
-      scale,
-      num_threads,
+    return _x(
+      this_,
     );
   }
 
-  late final _wire_draw_mandelbrotPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, ffi.Double,
-              ffi.Int32)>>('wire_draw_mandelbrot');
-  late final _wire_draw_mandelbrot = _wire_draw_mandelbrotPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, double, int)>();
+  late final _xPtr = _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Int32>)>>('x');
+  late final _x = _xPtr.asFunction<double Function(ffi.Pointer<ffi.Int32>)>();
 
-  void wire_passing_complex_structs(
-    int port_,
-    ffi.Pointer<wire_TreeNode> root,
+  double y(
+    ffi.Pointer<ffi.Int32> this_,
   ) {
-    return _wire_passing_complex_structs(
-      port_,
-      root,
+    return _y(
+      this_,
     );
   }
 
-  late final _wire_passing_complex_structsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>(
-          'wire_passing_complex_structs');
-  late final _wire_passing_complex_structs =
-      _wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
+  late final _yPtr = _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Int32>)>>('y');
+  late final _y = _yPtr.asFunction<double Function(ffi.Pointer<ffi.Int32>)>();
 
-  void wire_off_topic_memory_test_input_array(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> input,
+  int width(
+    ffi.Pointer<ffi.Int32> this_,
   ) {
-    return _wire_off_topic_memory_test_input_array(
-      port_,
-      input,
+    return _width(
+      this_,
     );
   }
 
-  late final _wire_off_topic_memory_test_input_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_off_topic_memory_test_input_array');
-  late final _wire_off_topic_memory_test_input_array =
-      _wire_off_topic_memory_test_input_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+  late final _widthPtr = _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int32>)>>('width');
+  late final _width = _widthPtr.asFunction<int Function(ffi.Pointer<ffi.Int32>)>();
 
-  void wire_off_topic_memory_test_output_zero_copy_buffer(
-    int port_,
-    int len,
+  int height(
+    ffi.Pointer<ffi.Int32> this_,
   ) {
-    return _wire_off_topic_memory_test_output_zero_copy_buffer(
-      port_,
-      len,
+    return _height(
+      this_,
     );
   }
 
-  late final _wire_off_topic_memory_test_output_zero_copy_bufferPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_off_topic_memory_test_output_zero_copy_buffer');
-  late final _wire_off_topic_memory_test_output_zero_copy_buffer =
-      _wire_off_topic_memory_test_output_zero_copy_bufferPtr.asFunction<void Function(int, int)>();
-
-  void wire_off_topic_memory_test_output_vec_u8(
-    int port_,
-    int len,
-  ) {
-    return _wire_off_topic_memory_test_output_vec_u8(
-      port_,
-      len,
-    );
-  }
-
-  late final _wire_off_topic_memory_test_output_vec_u8Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_off_topic_memory_test_output_vec_u8');
-  late final _wire_off_topic_memory_test_output_vec_u8 =
-      _wire_off_topic_memory_test_output_vec_u8Ptr.asFunction<void Function(int, int)>();
-
-  void wire_off_topic_memory_test_input_vec_of_object(
-    int port_,
-    ffi.Pointer<wire_list_size> input,
-  ) {
-    return _wire_off_topic_memory_test_input_vec_of_object(
-      port_,
-      input,
-    );
-  }
-
-  late final _wire_off_topic_memory_test_input_vec_of_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_size>)>>(
-          'wire_off_topic_memory_test_input_vec_of_object');
-  late final _wire_off_topic_memory_test_input_vec_of_object =
-      _wire_off_topic_memory_test_input_vec_of_objectPtr.asFunction<void Function(int, ffi.Pointer<wire_list_size>)>();
-
-  void wire_off_topic_memory_test_output_vec_of_object(
-    int port_,
-    int len,
-  ) {
-    return _wire_off_topic_memory_test_output_vec_of_object(
-      port_,
-      len,
-    );
-  }
-
-  late final _wire_off_topic_memory_test_output_vec_of_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_off_topic_memory_test_output_vec_of_object');
-  late final _wire_off_topic_memory_test_output_vec_of_object =
-      _wire_off_topic_memory_test_output_vec_of_objectPtr.asFunction<void Function(int, int)>();
-
-  void wire_off_topic_memory_test_input_complex_struct(
-    int port_,
-    ffi.Pointer<wire_TreeNode> input,
-  ) {
-    return _wire_off_topic_memory_test_input_complex_struct(
-      port_,
-      input,
-    );
-  }
-
-  late final _wire_off_topic_memory_test_input_complex_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>(
-          'wire_off_topic_memory_test_input_complex_struct');
-  late final _wire_off_topic_memory_test_input_complex_struct =
-      _wire_off_topic_memory_test_input_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
-
-  void wire_off_topic_memory_test_output_complex_struct(
-    int port_,
-    int len,
-  ) {
-    return _wire_off_topic_memory_test_output_complex_struct(
-      port_,
-      len,
-    );
-  }
-
-  late final _wire_off_topic_memory_test_output_complex_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_off_topic_memory_test_output_complex_struct');
-  late final _wire_off_topic_memory_test_output_complex_struct =
-      _wire_off_topic_memory_test_output_complex_structPtr.asFunction<void Function(int, int)>();
-
-  void wire_off_topic_deliberately_return_error(
-    int port_,
-  ) {
-    return _wire_off_topic_deliberately_return_error(
-      port_,
-    );
-  }
-
-  late final _wire_off_topic_deliberately_return_errorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_off_topic_deliberately_return_error');
-  late final _wire_off_topic_deliberately_return_error =
-      _wire_off_topic_deliberately_return_errorPtr.asFunction<void Function(int)>();
-
-  void wire_off_topic_deliberately_panic(
-    int port_,
-  ) {
-    return _wire_off_topic_deliberately_panic(
-      port_,
-    );
-  }
-
-  late final _wire_off_topic_deliberately_panicPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_off_topic_deliberately_panic');
-  late final _wire_off_topic_deliberately_panic =
-      _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
-
-  ffi.Pointer<wire_Point> new_box_autoadd_point() {
-    return _new_box_autoadd_point();
-  }
-
-  late final _new_box_autoadd_pointPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Point> Function()>>('new_box_autoadd_point');
-  late final _new_box_autoadd_point = _new_box_autoadd_pointPtr.asFunction<ffi.Pointer<wire_Point> Function()>();
-
-  ffi.Pointer<wire_Size> new_box_autoadd_size() {
-    return _new_box_autoadd_size();
-  }
-
-  late final _new_box_autoadd_sizePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Size> Function()>>('new_box_autoadd_size');
-  late final _new_box_autoadd_size = _new_box_autoadd_sizePtr.asFunction<ffi.Pointer<wire_Size> Function()>();
-
-  ffi.Pointer<wire_TreeNode> new_box_autoadd_tree_node() {
-    return _new_box_autoadd_tree_node();
-  }
-
-  late final _new_box_autoadd_tree_nodePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node');
-  late final _new_box_autoadd_tree_node =
-      _new_box_autoadd_tree_nodePtr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
-
-  ffi.Pointer<wire_list_size> new_list_size(
-    int len,
-  ) {
-    return _new_list_size(
-      len,
-    );
-  }
-
-  late final _new_list_sizePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_size> Function(ffi.Int32)>>('new_list_size');
-  late final _new_list_size = _new_list_sizePtr.asFunction<ffi.Pointer<wire_list_size> Function(int)>();
-
-  ffi.Pointer<wire_list_tree_node> new_list_tree_node(
-    int len,
-  ) {
-    return _new_list_tree_node(
-      len,
-    );
-  }
-
-  late final _new_list_tree_nodePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_tree_node> Function(ffi.Int32)>>('new_list_tree_node');
-  late final _new_list_tree_node = _new_list_tree_nodePtr.asFunction<ffi.Pointer<wire_list_tree_node> Function(int)>();
-
-  ffi.Pointer<wire_uint_8_list> new_uint_8_list(
-    int len,
-  ) {
-    return _new_uint_8_list(
-      len,
-    );
-  }
-
-  late final _new_uint_8_listPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
-  late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+  late final _heightPtr = _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int32>)>>('height');
+  late final _height = _heightPtr.asFunction<int Function(ffi.Pointer<ffi.Int32>)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
@@ -628,48 +435,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 }
 
-class wire_Size extends ffi.Struct {
-  @ffi.Int32()
-  external int width;
-
-  @ffi.Int32()
-  external int height;
-}
-
-class wire_Point extends ffi.Struct {
-  @ffi.Double()
-  external double x;
-
-  @ffi.Double()
-  external double y;
-}
-
-class wire_uint_8_list extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-class wire_list_tree_node extends ffi.Struct {
-  external ffi.Pointer<wire_TreeNode> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-class wire_TreeNode extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> name;
-
-  external ffi.Pointer<wire_list_tree_node> children;
-}
-
-class wire_list_size extends ffi.Struct {
-  external ffi.Pointer<wire_Size> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
+class String extends ffi.Opaque {}
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;

@@ -3,8 +3,8 @@
 
 use std::mem;
 
-pub use allo_isolate::ffi::DartCObject;
-pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
+pub use allo_isolate::{DartCObject, IntoDart, IntoDartExceptPrimitive};
+
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
@@ -43,6 +43,7 @@ pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
 
 /// NOTE for maintainer: Please keep this struct in sync with [DUMMY_WIRE_CODE_FOR_BINDGEN]
 /// in the code generator
+#[cfg_attr(target_arch = "wasm32", wasm_bindgen::prelude::wasm_bindgen)]
 #[repr(C)]
 pub struct WireSyncReturnStruct {
     pub ptr: *mut u8,

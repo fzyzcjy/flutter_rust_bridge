@@ -201,6 +201,9 @@ impl ApiType {
     api_type_call_child!(rust_wire_type, String);
     api_type_call_child!(rust_wire_modifier, String);
     api_type_call_child!(rust_wire_is_pointer, bool);
+    api_type_call_child!(js_wire_type, String);
+    api_type_call_child!(is_struct, bool);
+    api_type_call_child!(dart_js_wire_type, String);
 
     #[inline]
     pub fn required_modifier(&self) -> &'static str {
@@ -240,6 +243,10 @@ pub trait ApiTypeChild {
 
     fn rust_wire_type(&self) -> String;
 
+    fn js_wire_type(&self) -> String;
+
+    fn is_struct(&self) -> bool;
+
     fn rust_wire_modifier(&self) -> String {
         if self.rust_wire_is_pointer() {
             "*mut ".to_string()
@@ -250,6 +257,10 @@ pub trait ApiTypeChild {
 
     fn rust_wire_is_pointer(&self) -> bool {
         false
+    }
+
+    fn dart_js_wire_type(&self) -> String {
+        self.dart_api_type()
     }
 }
 
@@ -298,6 +309,13 @@ impl ApiTypeChild for ApiTypePrimitive {
         }
     }
 
+    fn dart_js_wire_type(&self) -> String {
+        match self {
+            ApiTypePrimitive::I64 | ApiTypePrimitive::U64 => "BigInt".to_owned(),
+            _ => self.dart_wire_type(),
+        }
+    }
+
     fn rust_api_type(&self) -> String {
         self.rust_wire_type()
     }
@@ -318,6 +336,14 @@ impl ApiTypeChild for ApiTypePrimitive {
             ApiTypePrimitive::Unit => "unit",
         }
         .to_string()
+    }
+
+    fn js_wire_type(&self) -> String {
+        self.rust_wire_type()
+    }
+
+    fn is_struct(&self) -> bool {
+        false
     }
 }
 
@@ -437,6 +463,18 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn rust_wire_is_pointer(&self) -> bool {
         self.get_delegate().rust_wire_is_pointer()
     }
+
+    fn js_wire_type(&self) -> String {
+        match self {
+            ApiTypeDelegate::String => "String".to_owned(),
+            ApiTypeDelegate::StringList => "Box<[JsString]>".to_owned(),
+            _ => self.get_delegate().js_wire_type(),
+        }
+    }
+
+    fn is_struct(&self) -> bool {
+        false
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -481,6 +519,38 @@ impl ApiTypeChild for ApiTypePrimitiveList {
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }
+
+    fn js_wire_type(&self) -> String {
+        match &self.primitive {
+            ApiTypePrimitive::U8 => "Box<[u8]>",
+            ApiTypePrimitive::I8 => "Box<[i8]>",
+            ApiTypePrimitive::U16 => "Box<[u16]>",
+            ApiTypePrimitive::I16 => "Box<[i16]>",
+            ApiTypePrimitive::U32 => "Box<[u32]>",
+            ApiTypePrimitive::I32 => "Box<[i32]>",
+            ApiTypePrimitive::U64 => "Box<[u64]>",
+            ApiTypePrimitive::I64 => "Box<[i64]>",
+            ApiTypePrimitive::F32 => "Box<[f32]>",
+            ApiTypePrimitive::F64 => "Box<[f64]>",
+            ApiTypePrimitive::Bool => "Box<[bool]>",
+            _ => panic!(
+                "Vec<{}> is not supported on the web.",
+                self.primitive.rust_api_type()
+            ),
+        }
+        .to_owned()
+    }
+
+    fn dart_js_wire_type(&self) -> String {
+        match &self.primitive {
+            ApiTypePrimitive::I64 | ApiTypePrimitive::U64 => "List<BigInt>".to_owned(),
+            _ => self.dart_api_type(),
+        }
+    }
+
+    fn is_struct(&self) -> bool {
+        false
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -511,6 +581,14 @@ impl ApiTypeChild for ApiTypeGeneralList {
 
     fn rust_wire_is_pointer(&self) -> bool {
         true
+    }
+
+    fn js_wire_type(&self) -> String {
+        "Box<[JsValue]>".to_owned()
+    }
+
+    fn is_struct(&self) -> bool {
+        false
     }
 }
 
@@ -543,6 +621,14 @@ impl ApiTypeChild for ApiTypeStructRef {
 
     fn rust_wire_type(&self) -> String {
         format!("wire_{}", self.name)
+    }
+
+    fn js_wire_type(&self) -> String {
+        "JsValue".to_owned()
+    }
+
+    fn is_struct(&self) -> bool {
+        true
     }
 }
 
@@ -630,6 +716,14 @@ impl ApiTypeChild for ApiTypeBoxed {
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }
+
+    fn js_wire_type(&self) -> String {
+        self.inner.js_wire_type()
+    }
+
+    fn is_struct(&self) -> bool {
+        self.inner.is_struct()
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -688,6 +782,16 @@ impl ApiTypeChild for ApiTypeOptional {
     }
     fn rust_wire_is_pointer(&self) -> bool {
         true
+    }
+    fn js_wire_type(&self) -> String {
+        if self.is_struct() {
+            "JsValue".to_owned()
+        } else {
+            format!("Option<{}>", self.inner.js_wire_type())
+        }
+    }
+    fn is_struct(&self) -> bool {
+        self.inner.is_struct()
     }
 }
 
@@ -753,6 +857,12 @@ impl ApiTypeChild for ApiTypeEnumRef {
         } else {
             "i32".to_owned()
         }
+    }
+    fn js_wire_type(&self) -> String {
+        self.rust_wire_type()
+    }
+    fn is_struct(&self) -> bool {
+        self.is_struct
     }
 }
 

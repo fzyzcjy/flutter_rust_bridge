@@ -266,6 +266,7 @@ pub struct ExoticOptionals {
     pub attributes_nullable: Vec<Option<Attribute>>,
     pub nullable_attributes: Option<Vec<Option<Attribute>>>,
     pub newtypeint: Option<NewTypeInt>,
+    pub string_list: Option<Vec<String>>,
 }
 
 pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Result<Option<ExoticOptionals>> {
@@ -311,6 +312,11 @@ pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Result<Option<
         zerocopy: Some({
             let mut list = opt.zerocopy.unwrap_or_else(|| ZeroCopyBuffer(vec![]));
             list.0.push(0);
+            list
+        }),
+        string_list: Some({
+            let mut list = opt.string_list.unwrap_or_default();
+            list.push("foo".to_owned());
             list
         }),
     }))
@@ -369,6 +375,12 @@ pub fn handle_return_enum(input: String) -> Result<Option<Weekdays>> {
 pub fn handle_enum_parameter(weekday: Weekdays) -> Result<Weekdays> {
     println!("The weekday is {:?}", weekday);
     Ok(weekday)
+}
+
+pub fn handle_u64_vec(vec: Option<Vec<u64>>) -> Result<Vec<u64>> {
+    let vec = vec.unwrap_or_else(|| (0..42).collect());
+    println!("There are {} elements in this vector.", vec.len());
+    Ok(vec)
 }
 
 #[frb]

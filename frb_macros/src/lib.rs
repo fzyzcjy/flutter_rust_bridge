@@ -12,7 +12,7 @@ fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
             (p @ Some(_), tt::Group(g)) => match g.delimiter() {
                 Delimiter::Bracket => match g.stream().into_iter().next() {
                     Some(tt::Ident(i)) if i.to_string() == ident => {
-                        let _ = p.take();
+                        *p = None;
                         Some(vec![])
                     }
                     Some(_) => Some(vec![p.take().unwrap(), tt::Group(g)]),

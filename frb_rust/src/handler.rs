@@ -4,6 +4,7 @@ use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
 use allo_isolate::IntoDart;
+
 use anyhow::Result;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;

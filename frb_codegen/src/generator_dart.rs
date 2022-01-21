@@ -30,6 +30,17 @@ pub fn generate(
             _ => None,
         })
         .collect::<Vec<_>>();
+    // let (wire_structs, wire_funcs) = if wasm {
+    //     (
+    //         distinct_input_types
+    //             .iter()
+    //             .map(|ty| generate_wire_struct(ty, api_file))
+    //             .collect(),
+    //         api_file.funcs.iter().map(generate_wire_func).collect(),
+    //     )
+    // } else {
+    //     (vec![], vec![])
+    // };
     let dart_api2wire_funcs = distinct_input_types
         .iter()
         .map(generate_api2wire_func)
@@ -55,6 +66,16 @@ pub fn generate(
     } else {
         DartBasicCode::default()
     };
+
+    // let wasm_header = if wasm {
+    //     DartBasicCode {
+    //         import: "import 'package:js/js.dart';".to_owned(),
+    //         body: "@JS() library bridge_generated_web;".to_owned(),
+    //         ..Default::default()
+    //     }
+    // } else {
+    //     Default::default()
+    // };
 
     let common_header = DartBasicCode {
         import: "import 'dart:convert';
@@ -133,7 +154,7 @@ pub fn generate(
 
     let file_prelude = DartBasicCode {
         import: format!("{}
-            
+
                 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import
                 ",
                         CODE_HEADER
@@ -668,9 +689,83 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
             .join("\n");
         format!(
             "{}enum {} {{
-            {}
-        }}",
+                {}
+            }}",
             comments, enu.name, variants
         )
     }
+}
+
+fn generate_wire_struct_core(name: &str, fields: &[ApiField]) -> String {
+    let params = fields
+        .iter()
+        .map(|field| format!("{} {}", field.ty.dart_wire_type(), field.name.rust_style()))
+        .collect::<Vec<_>>();
+    format!(
+        "@JS()
+        @anonymous
+        class {name} {{ external factory {name}({{ {params} }}) }}",
+        name = name,
+        params = params.join(",")
+    )
+}
+
+fn generate_wire_struct(ty: &ApiType, api_file: &ApiFile) -> String {
+    let factory_params: Vec<_> = match ty {
+        StructRef(st) => {
+            return generate_wire_struct_core(&st.rust_wire_type(), &st.get(api_file).fields)
+        }
+        EnumRef(_) => vec!["int tag".to_owned(), "dynamic kind".to_owned()],
+        _ => return "".to_owned(),
+    };
+    let enum_structs = if let EnumRef(enu) = ty {
+        let name = ty.rust_wire_type();
+        enu.get(api_file)
+            .variants()
+            .iter()
+            .filter_map(|variant| match &variant.kind {
+                ApiVariantKind::Struct(st) => Some(generate_wire_struct_core(
+                    &format!("{}_{}", name, variant.name.rust_style()),
+                    &st.fields,
+                )),
+                _ => None,
+            })
+            .collect::<Vec<_>>()
+            .join("\n\n")
+    } else {
+        "".to_owned()
+    };
+    format!(
+        "@JS()
+        @anonymous
+        class {name} {{ external factory {name}({{ {params} }}) }}
+
+        {}",
+        enum_structs,
+        name = ty.rust_wire_type(),
+        params = factory_params.join(",")
+    )
+}
+
+fn generate_wire_func(func: &ApiFunc) -> String {
+    let output = format!("{:?}", func.output);
+    let port = func
+        .mode
+        .has_port_argument()
+        .then(|| "int port_".to_owned());
+    let args = port
+        .into_iter()
+        .chain(
+            func.inputs
+                .iter()
+                .map(|inp| format!("{} {}", inp.ty.dart_wire_type(), inp.name.rust_style())),
+        )
+        .collect::<Vec<_>>();
+    format!(
+        r#"@JS("wasm_bindgen.{name}")
+        external void {output} {name}({args});"#,
+        name = func.wire_func_name(),
+        output = output,
+        args = args.join(",")
+    )
 }
