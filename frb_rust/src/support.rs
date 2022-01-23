@@ -3,7 +3,7 @@
 
 use std::mem;
 
-pub use allo_isolate::{DartCObject, IntoDart, IntoDartExceptPrimitive};
+pub use crate::ffi::{DartCObject, IntoDart, IntoDartExceptPrimitive};
 
 pub use lazy_static::lazy_static;
 

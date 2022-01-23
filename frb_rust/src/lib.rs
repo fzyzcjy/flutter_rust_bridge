@@ -12,6 +12,7 @@ pub use wasm_bindgen::prelude::*;
 #[cfg(target_arch = "wasm32")]
 pub use wasm_bindgen::JsCast;
 
+mod ffi;
 pub mod handler;
 pub mod rust2dart;
 pub mod support;

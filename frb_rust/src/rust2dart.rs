@@ -1,7 +1,6 @@
 use std::marker::PhantomData;
 
-pub use allo_isolate::ffi::DartCObject;
-pub use allo_isolate::IntoDart;
+pub use crate::ffi::{DartCObject, IntoDart};
 use allo_isolate::Isolate;
 
 #[derive(Copy, Clone)]
