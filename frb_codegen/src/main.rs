@@ -48,19 +48,29 @@ fn main() {
     let generated_rust = generator_rust::generate(
         &api_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
+        false,
+    );
+    let generated_rust_wasm = generator_rust::generate(
+        &api_file,
+        &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
         true,
     );
     fs::create_dir_all(&rust_output_dir).unwrap();
     fs::write(&config.rust_output_path, generated_rust.code).unwrap();
+    fs::write(&config.rust_wasm_output_path, generated_rust_wasm.code).unwrap();
 
     info!("Phase: Generate Dart code");
-    let (generated_dart_file_prelude, generated_dart_decl_raw, generated_dart_impl_raw) =
-        generator_dart::generate(
-            &api_file,
-            &config.dart_api_class_name(),
-            &config.dart_api_impl_class_name(),
-            &config.dart_wire_class_name(),
-        );
+    let (
+        generated_dart_file_prelude,
+        generated_dart_decl_raw,
+        generated_dart_impl_raw,
+        generated_dart_web_impl_raw,
+    ) = generator_dart::generate(
+        &api_file,
+        &config.dart_api_class_name(),
+        &config.dart_api_impl_class_name(),
+        &config.dart_wire_class_name(),
+    );
 
     info!("Phase: Other things");
 
@@ -158,6 +168,11 @@ fn main() {
         )
         .unwrap();
     }
+    fs::write(
+        config.dart_wasm_output_path,
+        (generated_dart_file_prelude + &generated_dart_web_impl_raw).to_text(),
+    )
+    .unwrap();
 
     commands::format_dart(&config.dart_output_path, config.dart_format_line_length);
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {

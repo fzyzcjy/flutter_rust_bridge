@@ -13,11 +13,11 @@ use flutter_rust_bridge::*;
 
 // Section: wire functions
 
-#[wasm_bindgen]
-pub fn wire_draw_mandelbrot(
+#[no_mangle]
+pub extern "C" fn wire_draw_mandelbrot(
     port_: i64,
-    image_size: JsValue,
-    zoom_point: JsValue,
+    image_size: *mut wire_Size,
+    zoom_point: *mut wire_Point,
     scale: f64,
     num_threads: i32,
 ) {
@@ -39,8 +39,8 @@ pub fn wire_draw_mandelbrot(
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_passing_complex_structs(port_: i64, root: JsValue) {
+#[no_mangle]
+pub extern "C" fn wire_passing_complex_structs(port_: i64, root: *mut wire_TreeNode) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "passing_complex_structs",
@@ -54,8 +54,8 @@ pub fn wire_passing_complex_structs(port_: i64, root: JsValue) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_memory_test_input_array(port_: i64, input: Box<[u8]>) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_memory_test_input_array(port_: i64, input: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_array",
@@ -69,8 +69,8 @@ pub fn wire_off_topic_memory_test_input_array(port_: i64, input: Box<[u8]>) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: i64, len: i32) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_zero_copy_buffer",
@@ -84,8 +84,8 @@ pub fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: i64, len: i32) 
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_memory_test_output_vec_u8(port_: i64, len: i32) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port_: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_u8",
@@ -99,8 +99,11 @@ pub fn wire_off_topic_memory_test_output_vec_u8(port_: i64, len: i32) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_memory_test_input_vec_of_object(port_: i64, input: Box<[JsValue]>) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
+    port_: i64,
+    input: *mut wire_list_size,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_vec_of_object",
@@ -114,8 +117,8 @@ pub fn wire_off_topic_memory_test_input_vec_of_object(port_: i64, input: Box<[Js
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_memory_test_output_vec_of_object(port_: i64, len: i32) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port_: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_of_object",
@@ -129,8 +132,11 @@ pub fn wire_off_topic_memory_test_output_vec_of_object(port_: i64, len: i32) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_memory_test_input_complex_struct(port_: i64, input: JsValue) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
+    port_: i64,
+    input: *mut wire_TreeNode,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_complex_struct",
@@ -144,8 +150,8 @@ pub fn wire_off_topic_memory_test_input_complex_struct(port_: i64, input: JsValu
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_memory_test_output_complex_struct(port_: i64, len: i32) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port_: i64, len: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_complex_struct",
@@ -159,8 +165,8 @@ pub fn wire_off_topic_memory_test_output_complex_struct(port_: i64, len: i32) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_deliberately_return_error(port_: i64) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_deliberately_return_error(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_deliberately_return_error",
@@ -171,8 +177,8 @@ pub fn wire_off_topic_deliberately_return_error(port_: i64) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_off_topic_deliberately_panic(port_: i64) {
+#[no_mangle]
+pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_deliberately_panic",
@@ -185,36 +191,93 @@ pub fn wire_off_topic_deliberately_panic(port_: i64) {
 
 // Section: wire structs
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_Point;
-    #[wasm_bindgen(method, getter)]
-    pub fn x(this: &wire_Point) -> f64;
-    #[wasm_bindgen(method, getter)]
-    pub fn y(this: &wire_Point) -> f64;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_size {
+    ptr: *mut wire_Size,
+    len: i32,
 }
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_Size;
-    #[wasm_bindgen(method, getter)]
-    pub fn width(this: &wire_Size) -> i32;
-    #[wasm_bindgen(method, getter)]
-    pub fn height(this: &wire_Size) -> i32;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_tree_node {
+    ptr: *mut wire_TreeNode,
+    len: i32,
 }
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_TreeNode;
-    #[wasm_bindgen(method, getter)]
-    pub fn name(this: &wire_TreeNode) -> String;
-    #[wasm_bindgen(method, getter)]
-    pub fn children(this: &wire_TreeNode) -> Box<[JsValue]>;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Point {
+    x: f64,
+    y: f64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Size {
+    width: i32,
+    height: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_TreeNode {
+    name: *mut wire_uint_8_list,
+    children: *mut wire_list_tree_node,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_8_list {
+    ptr: *mut u8,
+    len: i32,
 }
 
 // Section: wire enums
 
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_point() -> *mut wire_Point {
+    support::new_leak_box_ptr(wire_Point::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_size() -> *mut wire_Size {
+    support::new_leak_box_ptr(wire_Size::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_tree_node() -> *mut wire_TreeNode {
+    support::new_leak_box_ptr(wire_TreeNode::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_size(len: i32) -> *mut wire_list_size {
+    let wrap = wire_list_size {
+        ptr: support::new_leak_vec_ptr(<wire_Size>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_tree_node(len: i32) -> *mut wire_list_tree_node {
+    let wrap = wire_list_tree_node {
+        ptr: support::new_leak_vec_ptr(<wire_TreeNode>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
+    let ans = wire_uint_8_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
 
 // Section: impl Wire2Api
 
@@ -243,9 +306,31 @@ impl<T: Wire2Api<U>, U> Wire2Api<Option<U>> for Option<T> {
     }
 }
 
-impl Wire2Api<String> for String {
+impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
-        self
+        let vec: Vec<u8> = self.wire2api();
+        String::from_utf8_lossy(&vec).into_owned()
+    }
+}
+
+impl Wire2Api<Point> for *mut wire_Point {
+    fn wire2api(self) -> Point {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Size> for *mut wire_Size {
+    fn wire2api(self) -> Size {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<TreeNode> for *mut wire_TreeNode {
+    fn wire2api(self) -> TreeNode {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
     }
 }
 
@@ -261,44 +346,49 @@ impl Wire2Api<i32> for i32 {
     }
 }
 
-impl Wire2Api<Vec<Size>> for Box<[JsValue]> {
+impl Wire2Api<Vec<Size>> for *mut wire_list_size {
     fn wire2api(self) -> Vec<Size> {
-        self.iter().map(Wire2Api::wire2api).collect()
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<Vec<TreeNode>> for Box<[JsValue]> {
+impl Wire2Api<Vec<TreeNode>> for *mut wire_list_tree_node {
     fn wire2api(self) -> Vec<TreeNode> {
-        self.iter().map(Wire2Api::wire2api).collect()
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<Point> for &JsValue {
+impl Wire2Api<Point> for wire_Point {
     fn wire2api(self) -> Point {
-        let raw = self.unchecked_ref::<wire_Point>();
         Point {
-            x: raw.x().wire2api(),
-            y: raw.y().wire2api(),
+            x: self.x.wire2api(),
+            y: self.y.wire2api(),
         }
     }
 }
 
-impl Wire2Api<Size> for &JsValue {
+impl Wire2Api<Size> for wire_Size {
     fn wire2api(self) -> Size {
-        let raw = self.unchecked_ref::<wire_Size>();
         Size {
-            width: raw.width().wire2api(),
-            height: raw.height().wire2api(),
+            width: self.width.wire2api(),
+            height: self.height.wire2api(),
         }
     }
 }
 
-impl Wire2Api<TreeNode> for &JsValue {
+impl Wire2Api<TreeNode> for wire_TreeNode {
     fn wire2api(self) -> TreeNode {
-        let raw = self.unchecked_ref::<wire_TreeNode>();
         TreeNode {
-            name: raw.name().wire2api(),
-            children: raw.children().wire2api(),
+            name: self.name.wire2api(),
+            children: self.children.wire2api(),
         }
     }
 }
@@ -309,9 +399,12 @@ impl Wire2Api<u8> for u8 {
     }
 }
 
-impl Wire2Api<Vec<u8>> for Box<[u8]> {
+impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Vec<u8> {
-        self.to_vec()
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
@@ -324,6 +417,33 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
+    }
+}
+
+impl NewWithNullPtr for wire_Point {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            x: Default::default(),
+            y: Default::default(),
+        };
+    }
+}
+
+impl NewWithNullPtr for wire_Size {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            width: Default::default(),
+            height: Default::default(),
+        };
+    }
+}
+
+impl NewWithNullPtr for wire_TreeNode {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            name: core::ptr::null_mut(),
+            children: core::ptr::null_mut(),
+        };
     }
 }
 

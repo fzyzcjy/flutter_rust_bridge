@@ -879,18 +879,6 @@ impl Generator {
             Delegate(ApiTypeDelegate::String) => "self".into(),
             PrimitiveList(_) => "self.to_vec()".into(),
             GeneralList(_) => "self.iter().map(Wire2Api::wire2api).collect()".into(),
-            // GeneralList(list) => match &list.inner {
-            //     Optional(opt) if opt.is_struct() => {
-            //         "self.iter().map(Wire2Api::wire2api).collect()".into()
-            //     }
-            //     _ => format!(
-            //         "self.iter().map(|e| {{
-            //             e.unchecked_into::<{}>().wire2api()
-            //         }}).collect()",
-            //         list.inner.js_wire_type()
-            //     )
-            //     .into(),
-            // },
             EnumRef(
                 enu @ ApiTypeEnumRef {
                     is_struct: false, ..

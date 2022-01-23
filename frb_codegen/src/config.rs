@@ -1,8 +1,6 @@
 use std::env;
 use std::fs;
-use std::path::Component;
 use std::path::Path;
-use std::path::PathBuf;
 
 use anyhow::{anyhow, Result};
 use convert_case::{Case, Casing};
@@ -20,7 +18,8 @@ pub struct RawOpts {
     /// Path of output generated Dart code
     #[structopt(short, long)]
     pub dart_output: String,
-    /// If provided, generated Dart declaration code to this separate file
+    /// If provided, generated Dart declaration code to this separate file.
+    /// If `--wasm` is specified, this flag has no effect.
     #[structopt(long)]
     pub dart_decl_output: Option<String>,
 
@@ -48,21 +47,29 @@ pub struct RawOpts {
     /// LLVM compiler opts
     #[structopt(long)]
     pub llvm_compiler_opts: Option<String>,
+    /// Emit glue code to interface with wasm-bindgen.
+    /// Enabling this splits the generated code into their respective modules.
+    #[structopt(long)]
+    pub wasm: bool,
 }
 
 #[derive(Debug)]
 pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
+    pub dart_wasm_output_path: String,
     pub dart_decl_output_path: Option<String>,
     pub c_output_path: String,
     pub rust_crate_dir: String,
     pub rust_output_path: String,
+    pub rust_wasm_output_path: String,
+    pub rust_native_output_path: String,
     pub class_name: String,
     pub dart_format_line_length: i32,
     pub skip_add_mod_to_lib: bool,
     pub llvm_path: String,
     pub llvm_compiler_opts: String,
+    pub wasm: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
@@ -84,10 +91,15 @@ pub fn parse(raw: RawOpts) -> Opts {
         fallback_c_output_path()
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))
     }));
+    let dart_output_path = canon_path(&raw.dart_output);
+    let dart_wasm_output_path = path_with_file_suffix(&dart_output_path, "_web");
+    let rust_wasm_output_path = path_with_file_suffix(&rust_output_path, "_web");
+    let rust_native_output_path = path_with_file_suffix(&rust_output_path, "_native");
 
     Opts {
         rust_input_path,
-        dart_output_path: canon_path(&raw.dart_output),
+        dart_output_path,
+        dart_wasm_output_path,
         dart_decl_output_path: raw
             .dart_decl_output
             .as_ref()
@@ -95,11 +107,14 @@ pub fn parse(raw: RawOpts) -> Opts {
         c_output_path,
         rust_crate_dir,
         rust_output_path,
+        rust_wasm_output_path,
+        rust_native_output_path,
         class_name,
         dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
         skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
         llvm_path: raw.llvm_path.unwrap_or_else(|| "".to_string()),
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
+        wasm: raw.wasm,
     }
 }
 
@@ -156,6 +171,22 @@ fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
         .to_string())
 }
 
+fn path_with_file_suffix(path: &str, suffix: &str) -> String {
+    use std::path::*;
+    let mut buf = PathBuf::from(path);
+    let name = buf
+        .file_name()
+        .expect("unexpected ...")
+        .to_str()
+        .unwrap()
+        .to_string();
+    let mut iter = name.splitn(2, '.');
+    let name = iter.next().expect("file name is empty.");
+    let rest = iter.next().expect("file name does not have an extension.");
+    buf.set_file_name(format!("{}{}.{}", name, suffix, rest));
+    buf.to_string_lossy().to_string()
+}
+
 fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_path = Path::new(rust_crate_dir).join("Cargo.toml");
     let cargo_toml_content = fs::read_to_string(cargo_toml_path)?;
@@ -192,5 +223,17 @@ impl Opts {
 
     pub fn dart_wire_class_name(&self) -> String {
         format!("{}Wire", self.class_name)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_path_with_file_suffix() {
+        assert_eq!(
+            &path_with_file_suffix("some/path.rs", "_suffix"),
+            "some/path_suffix.rs"
+        );
     }
 }

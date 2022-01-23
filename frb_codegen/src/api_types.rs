@@ -259,9 +259,7 @@ pub trait ApiTypeChild {
         false
     }
 
-    fn dart_js_wire_type(&self) -> String {
-        self.dart_api_type()
-    }
+    fn dart_js_wire_type(&self) -> String;
 }
 
 #[derive(Debug, Clone)]
@@ -312,7 +310,7 @@ impl ApiTypeChild for ApiTypePrimitive {
     fn dart_js_wire_type(&self) -> String {
         match self {
             ApiTypePrimitive::I64 | ApiTypePrimitive::U64 => "BigInt".to_owned(),
-            _ => self.dart_wire_type(),
+            _ => self.dart_api_type(),
         }
     }
 
@@ -475,6 +473,10 @@ impl ApiTypeChild for ApiTypeDelegate {
     fn is_struct(&self) -> bool {
         false
     }
+
+    fn dart_js_wire_type(&self) -> String {
+        self.dart_api_type()
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -590,6 +592,10 @@ impl ApiTypeChild for ApiTypeGeneralList {
     fn is_struct(&self) -> bool {
         false
     }
+
+    fn dart_js_wire_type(&self) -> String {
+        format!("List<{}>", self.inner.dart_js_wire_type())
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -629,6 +635,10 @@ impl ApiTypeChild for ApiTypeStructRef {
 
     fn is_struct(&self) -> bool {
         true
+    }
+
+    fn dart_js_wire_type(&self) -> String {
+        self.rust_wire_type()
     }
 }
 
@@ -724,6 +734,10 @@ impl ApiTypeChild for ApiTypeBoxed {
     fn is_struct(&self) -> bool {
         self.inner.is_struct()
     }
+
+    fn dart_js_wire_type(&self) -> String {
+        self.inner.dart_js_wire_type()
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -793,6 +807,9 @@ impl ApiTypeChild for ApiTypeOptional {
     fn is_struct(&self) -> bool {
         self.inner.is_struct()
     }
+    fn dart_js_wire_type(&self) -> String {
+        format!("{}?", self.inner.dart_js_wire_type())
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -832,6 +849,9 @@ impl ApiTypeEnumRef {
     pub fn get<'a>(&self, file: &'a ApiFile) -> &'a ApiEnum {
         &file.enum_pool[&self.name]
     }
+    fn struct_type(&self) -> String {
+        format!("wire_{}", self.name)
+    }
 }
 
 impl ApiTypeChild for ApiTypeEnumRef {
@@ -843,7 +863,7 @@ impl ApiTypeChild for ApiTypeEnumRef {
     }
     fn dart_wire_type(&self) -> String {
         if self.is_struct {
-            self.rust_wire_type()
+            self.struct_type()
         } else {
             "int".to_owned()
         }
@@ -853,16 +873,19 @@ impl ApiTypeChild for ApiTypeEnumRef {
     }
     fn rust_wire_type(&self) -> String {
         if self.is_struct {
-            format!("wire_{}", self.name)
+            self.struct_type()
         } else {
             "i32".to_owned()
         }
     }
     fn js_wire_type(&self) -> String {
-        self.rust_wire_type()
+        self.dart_wire_type()
     }
     fn is_struct(&self) -> bool {
         self.is_struct
+    }
+    fn dart_js_wire_type(&self) -> String {
+        self.js_wire_type()
     }
 }
 

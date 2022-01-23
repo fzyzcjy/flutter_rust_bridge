@@ -1,5 +1,6 @@
 use convert_case::{Case, Casing};
 use log::debug;
+use std::borrow::Cow;
 
 use crate::api_types::ApiType::*;
 use crate::api_types::*;
@@ -10,7 +11,7 @@ pub fn generate(
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
-) -> (DartBasicCode, DartBasicCode, DartBasicCode) {
+) -> (DartBasicCode, DartBasicCode, DartBasicCode, DartBasicCode) {
     let distinct_types = api_file.distinct_types(true, true);
     let distinct_input_types = api_file.distinct_types(true, false);
     let distinct_output_types = api_file.distinct_types(false, true);
@@ -30,17 +31,23 @@ pub fn generate(
             _ => None,
         })
         .collect::<Vec<_>>();
-    // let (wire_structs, wire_funcs) = if wasm {
-    //     (
-    //         distinct_input_types
-    //             .iter()
-    //             .map(|ty| generate_wire_struct(ty, api_file))
-    //             .collect(),
-    //         api_file.funcs.iter().map(generate_wire_func).collect(),
-    //     )
-    // } else {
-    //     (vec![], vec![])
-    // };
+    let wire_structs = distinct_input_types
+        .iter()
+        .map(|ty| generate_wire_struct(ty, api_file))
+        .collect::<Vec<_>>();
+    let wire_funcs = api_file
+        .funcs
+        .iter()
+        .map(generate_wire_func)
+        .collect::<Vec<_>>();
+    let wasm_wire2api_funcs = distinct_input_types
+        .iter()
+        .map(|ty| generate_wasm_wire2api_func(ty, api_file))
+        .collect::<Vec<_>>();
+    let wasm_api2wire_funcs = distinct_input_types
+        .iter()
+        .map(|ty| generate_wasm_api2wire_func(ty, api_file))
+        .collect::<Vec<_>>();
     let dart_api2wire_funcs = distinct_input_types
         .iter()
         .map(generate_api2wire_func)
@@ -67,15 +74,10 @@ pub fn generate(
         DartBasicCode::default()
     };
 
-    // let wasm_header = if wasm {
-    //     DartBasicCode {
-    //         import: "import 'package:js/js.dart';".to_owned(),
-    //         body: "@JS() library bridge_generated_web;".to_owned(),
-    //         ..Default::default()
-    //     }
-    // } else {
-    //     Default::default()
-    // };
+    let wasm_header = DartBasicCode {
+        import: "@JS() library bridge_generated_web; import 'package:js/js.dart';".to_owned(),
+        ..Default::default()
+    };
 
     let common_header = DartBasicCode {
         import: "import 'dart:convert';
@@ -152,10 +154,25 @@ pub fn generate(
             body: impl_body,
         };
 
+    let web_impl = wasm_header
+        + &common_header
+        + &DartBasicCode {
+            import: "import '../bridge_generated.dart';".to_owned(),
+            body: [
+                wire_structs,
+                wire_funcs,
+                wasm_wire2api_funcs,
+                wasm_api2wire_funcs,
+            ]
+            .concat()
+            .join("\n\n"),
+            ..Default::default()
+        };
+
     let file_prelude = DartBasicCode {
         import: format!("{}
 
-                // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import
+                // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, camel_case_types
                 ",
                         CODE_HEADER
         ),
@@ -163,7 +180,7 @@ pub fn generate(
         body: "".to_string(),
     };
 
-    (file_prelude, decl_code, impl_code)
+    (file_prelude, decl_code, impl_code, web_impl)
 }
 
 fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
@@ -699,12 +716,19 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
 fn generate_wire_struct_core(name: &str, fields: &[ApiField]) -> String {
     let params = fields
         .iter()
-        .map(|field| format!("{} {}", field.ty.dart_wire_type(), field.name.rust_style()))
+        .map(|field| {
+            format!(
+                "{}{} {}",
+                field.ty.required_modifier(),
+                field.ty.dart_js_wire_type(),
+                field.name.rust_style()
+            )
+        })
         .collect::<Vec<_>>();
     format!(
         "@JS()
         @anonymous
-        class {name} {{ external factory {name}({{ {params} }}) }}",
+        class {name} {{ external factory {name}({{ {params}, }}); }}",
         name = name,
         params = params.join(",")
     )
@@ -715,17 +739,16 @@ fn generate_wire_struct(ty: &ApiType, api_file: &ApiFile) -> String {
         StructRef(st) => {
             return generate_wire_struct_core(&st.rust_wire_type(), &st.get(api_file).fields)
         }
-        EnumRef(_) => vec!["int tag".to_owned(), "dynamic kind".to_owned()],
+        EnumRef(e) if e.is_struct => vec!["required int tag".to_owned(), "dynamic kind".to_owned()],
         _ => return "".to_owned(),
     };
     let enum_structs = if let EnumRef(enu) = ty {
-        let name = ty.rust_wire_type();
         enu.get(api_file)
             .variants()
             .iter()
             .filter_map(|variant| match &variant.kind {
                 ApiVariantKind::Struct(st) => Some(generate_wire_struct_core(
-                    &format!("{}_{}", name, variant.name.rust_style()),
+                    &format!("{}_{}", enu.name, variant.name.rust_style()),
                     &st.fields,
                 )),
                 _ => None,
@@ -738,7 +761,7 @@ fn generate_wire_struct(ty: &ApiType, api_file: &ApiFile) -> String {
     format!(
         "@JS()
         @anonymous
-        class {name} {{ external factory {name}({{ {params} }}) }}
+        class {name} {{ external factory {name}({{ {params}, }}); }}
 
         {}",
         enum_structs,
@@ -748,7 +771,6 @@ fn generate_wire_struct(ty: &ApiType, api_file: &ApiFile) -> String {
 }
 
 fn generate_wire_func(func: &ApiFunc) -> String {
-    let output = format!("{:?}", func.output);
     let port = func
         .mode
         .has_port_argument()
@@ -758,14 +780,75 @@ fn generate_wire_func(func: &ApiFunc) -> String {
         .chain(
             func.inputs
                 .iter()
-                .map(|inp| format!("{} {}", inp.ty.dart_wire_type(), inp.name.rust_style())),
+                .map(|inp| format!("{} {}", inp.ty.dart_js_wire_type(), inp.name.rust_style())),
         )
         .collect::<Vec<_>>();
     format!(
-        r#"@JS("wasm_bindgen.{name}")
-        external void {output} {name}({args});"#,
+        r#"@JS(r"wasm_bindgen.{name}")
+        external void {name}({args});"#,
         name = func.wire_func_name(),
-        output = output,
         args = args.join(",")
+    )
+}
+
+fn generate_wasm_api2wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
+    let body: Cow<str> = match ty {
+        Delegate(_) | Primitive(_) => "return raw;".into(),
+        StructRef(st) => {
+            let wire = st.rust_wire_type();
+            let fields = st
+                .get(api_file)
+                .fields
+                .iter()
+                .map(|field| {
+                    format!(
+                        "{}: _api2wire_{}(raw.{})",
+                        field.name.rust_style(),
+                        field.ty.safe_ident(),
+                        field.name.dart_style()
+                    )
+                })
+                .collect::<Vec<_>>();
+            format!("return {}({});", wire, fields.join(",")).into()
+        }
+        Boxed(b) => format!("return _api2wire_{}(raw);", b.inner.safe_ident()).into(),
+        Optional(opt) => format!(
+            "return raw == null ? null : _api2wire_{}(raw);",
+            opt.inner.safe_ident()
+        )
+        .into(),
+        _ => "throw UnimplementedError();".into(),
+    };
+    format!(
+        "{} _api2wire_{}({} raw) {{
+            {}
+        }}",
+        ty.dart_js_wire_type(),
+        ty.safe_ident(),
+        ty.dart_api_type(),
+        body
+    )
+}
+
+fn generate_wasm_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
+    let body: Cow<str> = match ty {
+        Delegate(_) | Primitive(_) => format!("return raw as {};", ty.dart_api_type()).into(),
+        GeneralList(list) => format!(
+            "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
+            list.inner.safe_ident()
+        )
+        .into(),
+        Boxed(b) => format!("return _wire2api_{}(raw);", b.inner.safe_ident()).into(),
+        // Boxed(b) if !b.exist_in_real_api => return "".to_owned(),
+        _ => return generate_wire2api_func(ty, api_file),
+    };
+    format!(
+        "{} _wire2api_{}(dynamic /*{}*/ raw) {{
+            {}
+        }}",
+        ty.dart_api_type(),
+        ty.safe_ident(),
+        ty.dart_js_wire_type(),
+        body
     )
 }

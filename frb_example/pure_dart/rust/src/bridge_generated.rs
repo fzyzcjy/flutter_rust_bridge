@@ -13,8 +13,8 @@ use flutter_rust_bridge::*;
 
 // Section: wire functions
 
-#[wasm_bindgen]
-pub fn wire_simple_adder(port_: i64, a: i32, b: i32) {
+#[no_mangle]
+pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "simple_adder",
@@ -29,8 +29,14 @@ pub fn wire_simple_adder(port_: i64, a: i32, b: i32) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_primitive_types(port_: i64, my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) {
+#[no_mangle]
+pub extern "C" fn wire_primitive_types(
+    port_: i64,
+    my_i32: i32,
+    my_i64: i64,
+    my_f64: f64,
+    my_bool: bool,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "primitive_types",
@@ -47,8 +53,8 @@ pub fn wire_primitive_types(port_: i64, my_i32: i32, my_i64: i64, my_f64: f64, m
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_primitive_u32(port_: i64, my_u32: u32) {
+#[no_mangle]
+pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "primitive_u32",
@@ -62,8 +68,8 @@ pub fn wire_primitive_u32(port_: i64, my_u32: u32) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_string(port_: i64, s: String) {
+#[no_mangle]
+pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string",
@@ -77,8 +83,8 @@ pub fn wire_handle_string(port_: i64, s: String) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_return_unit(port_: i64) {
+#[no_mangle]
+pub extern "C" fn wire_handle_return_unit(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_return_unit",
@@ -89,8 +95,8 @@ pub fn wire_handle_return_unit(port_: i64) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_vec_u8(port_: i64, v: Box<[u8]>) {
+#[no_mangle]
+pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_u8",
@@ -104,8 +110,8 @@ pub fn wire_handle_vec_u8(port_: i64, v: Box<[u8]>) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
+#[no_mangle]
+pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_of_primitive",
@@ -119,8 +125,8 @@ pub fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
+#[no_mangle]
+pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_zero_copy_vec_of_primitive",
@@ -134,8 +140,8 @@ pub fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_struct(port_: i64, arg: JsValue, boxed: JsValue) {
+#[no_mangle]
+pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *mut wire_MySize) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_struct",
@@ -150,8 +156,8 @@ pub fn wire_handle_struct(port_: i64, arg: JsValue, boxed: JsValue) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_newtype(port_: i64, arg: JsValue) {
+#[no_mangle]
+pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_newtype",
@@ -165,8 +171,8 @@ pub fn wire_handle_newtype(port_: i64, arg: JsValue) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_list_of_struct(port_: i64, l: Box<[JsValue]>) {
+#[no_mangle]
+pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_size) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_list_of_struct",
@@ -180,8 +186,8 @@ pub fn wire_handle_list_of_struct(port_: i64, l: Box<[JsValue]>) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_string_list(port_: i64, names: Box<[JsString]>) {
+#[no_mangle]
+pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringList) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string_list",
@@ -195,8 +201,8 @@ pub fn wire_handle_string_list(port_: i64, names: Box<[JsString]>) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_complex_struct(port_: i64, s: JsValue) {
+#[no_mangle]
+pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_complex_struct",
@@ -210,8 +216,10 @@ pub fn wire_handle_complex_struct(port_: i64, s: JsValue) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_sync_return(mode: String) -> support::WireSyncReturnStruct {
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_return(
+    mode: *mut wire_uint_8_list,
+) -> support::WireSyncReturnStruct {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_sync_return",
@@ -225,8 +233,8 @@ pub fn wire_handle_sync_return(mode: String) -> support::WireSyncReturnStruct {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_stream(port_: i64, arg: String) {
+#[no_mangle]
+pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream",
@@ -240,8 +248,8 @@ pub fn wire_handle_stream(port_: i64, arg: String) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_return_err(port_: i64) {
+#[no_mangle]
+pub extern "C" fn wire_return_err(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_err",
@@ -252,8 +260,8 @@ pub fn wire_return_err(port_: i64) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_return_panic(port_: i64) {
+#[no_mangle]
+pub extern "C" fn wire_return_panic(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_panic",
@@ -264,8 +272,8 @@ pub fn wire_return_panic(port_: i64) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_optional_return(port_: i64, left: f64, right: f64) {
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_return",
@@ -280,8 +288,8 @@ pub fn wire_handle_optional_return(port_: i64, left: f64, right: f64) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_optional_struct(port_: i64, document: Option<String>) {
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_struct",
@@ -295,8 +303,8 @@ pub fn wire_handle_optional_struct(port_: i64, document: Option<String>) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_optional_increment(port_: i64, opt: JsValue) {
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_ExoticOptionals) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_increment",
@@ -310,8 +318,8 @@ pub fn wire_handle_optional_increment(port_: i64, opt: JsValue) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_increment_boxed_optional(port_: i64, opt: Option<f64>) {
+#[no_mangle]
+pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_increment_boxed_optional",
@@ -325,16 +333,16 @@ pub fn wire_handle_increment_boxed_optional(port_: i64, opt: Option<f64>) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_option_box_arguments(
+#[no_mangle]
+pub extern "C" fn wire_handle_option_box_arguments(
     port_: i64,
-    i8box: Option<i8>,
-    u8box: Option<u8>,
-    i32box: Option<i32>,
-    i64box: Option<i64>,
-    f64box: Option<f64>,
-    boolbox: Option<bool>,
-    structbox: JsValue,
+    i8box: *mut i8,
+    u8box: *mut u8,
+    i32box: *mut i32,
+    i64box: *mut i64,
+    f64box: *mut f64,
+    boolbox: *mut bool,
+    structbox: *mut wire_ExoticOptionals,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -365,8 +373,8 @@ pub fn wire_handle_option_box_arguments(
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_return_enum(port_: i64, input: String) {
+#[no_mangle]
+pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_return_enum",
@@ -380,8 +388,8 @@ pub fn wire_handle_return_enum(port_: i64, input: String) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
+#[no_mangle]
+pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_parameter",
@@ -395,8 +403,8 @@ pub fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_u64_vec(port_: i64, vec: Option<Box<[u64]>>) {
+#[no_mangle]
+pub extern "C" fn wire_handle_u64_vec(port_: i64, vec: *mut wire_uint_64_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_u64_vec",
@@ -410,8 +418,8 @@ pub fn wire_handle_u64_vec(port_: i64, vec: Option<Box<[u64]>>) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_customized_struct(port_: i64, val: JsValue) {
+#[no_mangle]
+pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Customized) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_customized_struct",
@@ -425,8 +433,8 @@ pub fn wire_handle_customized_struct(port_: i64, val: JsValue) {
     )
 }
 
-#[wasm_bindgen]
-pub fn wire_handle_enum_struct(port_: i64, val: wire_KitchenSink) {
+#[no_mangle]
+pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_struct",
@@ -442,143 +450,414 @@ pub fn wire_handle_enum_struct(port_: i64, val: wire_KitchenSink) {
 
 // Section: wire structs
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_Attribute;
-    #[wasm_bindgen(method, getter)]
-    pub fn key(this: &wire_Attribute) -> String;
-    #[wasm_bindgen(method, getter)]
-    pub fn value(this: &wire_Attribute) -> String;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_StringList {
+    ptr: *mut *mut wire_uint_8_list,
+    len: i32,
 }
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_Customized;
-    #[wasm_bindgen(method, getter)]
-    pub fn final_field(this: &wire_Customized) -> String;
-    #[wasm_bindgen(method, getter)]
-    pub fn non_final_field(this: &wire_Customized) -> Option<String>;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Attribute {
+    key: *mut wire_uint_8_list,
+    value: *mut wire_uint_8_list,
 }
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_ExoticOptionals;
-    #[wasm_bindgen(method, getter)]
-    pub fn int32(this: &wire_ExoticOptionals) -> Option<i32>;
-    #[wasm_bindgen(method, getter)]
-    pub fn int64(this: &wire_ExoticOptionals) -> Option<i64>;
-    #[wasm_bindgen(method, getter)]
-    pub fn float64(this: &wire_ExoticOptionals) -> Option<f64>;
-    #[wasm_bindgen(method, getter)]
-    pub fn boolean(this: &wire_ExoticOptionals) -> Option<bool>;
-    #[wasm_bindgen(method, getter)]
-    pub fn zerocopy(this: &wire_ExoticOptionals) -> Option<Box<[u8]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn int8list(this: &wire_ExoticOptionals) -> Option<Box<[i8]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn uint8list(this: &wire_ExoticOptionals) -> Option<Box<[u8]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn int32list(this: &wire_ExoticOptionals) -> Option<Box<[i32]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn int64list(this: &wire_ExoticOptionals) -> Option<Box<[i64]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn float32list(this: &wire_ExoticOptionals) -> Option<Box<[f32]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn float64list(this: &wire_ExoticOptionals) -> Option<Box<[f64]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn attributes(this: &wire_ExoticOptionals) -> Option<Box<[JsValue]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn attributes_nullable(this: &wire_ExoticOptionals) -> Box<[JsValue]>;
-    #[wasm_bindgen(method, getter)]
-    pub fn nullable_attributes(this: &wire_ExoticOptionals) -> Option<Box<[JsValue]>>;
-    #[wasm_bindgen(method, getter)]
-    pub fn newtypeint(this: &wire_ExoticOptionals) -> JsValue;
-    #[wasm_bindgen(method, getter)]
-    pub fn string_list(this: &wire_ExoticOptionals) -> Option<Box<[JsString]>>;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Customized {
+    final_field: *mut wire_uint_8_list,
+    non_final_field: *mut wire_uint_8_list,
 }
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_KitchenSink;
-    #[wasm_bindgen(method, getter)]
-    pub fn kind(this: &wire_KitchenSink) -> JsValue;
-    #[wasm_bindgen(method, getter)]
-    pub fn tag(this: &wire_KitchenSink) -> i32;
-}
-#[wasm_bindgen]
-extern "C" {
-    pub type KitchenSink_Empty;
-
-}
-#[wasm_bindgen]
-extern "C" {
-    pub type KitchenSink_Primitives;
-    #[wasm_bindgen(method, getter)]
-    pub fn int32(this: &KitchenSink_Primitives) -> i32;
-    #[wasm_bindgen(method, getter)]
-    pub fn float64(this: &KitchenSink_Primitives) -> f64;
-    #[wasm_bindgen(method, getter)]
-    pub fn boolean(this: &KitchenSink_Primitives) -> bool;
-}
-#[wasm_bindgen]
-extern "C" {
-    pub type KitchenSink_Nested;
-    #[wasm_bindgen(method, getter)]
-    pub fn field0(this: &KitchenSink_Nested) -> wire_KitchenSink;
-}
-#[wasm_bindgen]
-extern "C" {
-    pub type KitchenSink_Optional;
-    #[wasm_bindgen(method, getter)]
-    pub fn field0(this: &KitchenSink_Optional) -> Option<i32>;
-    #[wasm_bindgen(method, getter)]
-    pub fn field1(this: &KitchenSink_Optional) -> Option<i32>;
-}
-#[wasm_bindgen]
-extern "C" {
-    pub type KitchenSink_Buffer;
-    #[wasm_bindgen(method, getter)]
-    pub fn field0(this: &KitchenSink_Buffer) -> Box<[u8]>;
-}
-#[wasm_bindgen]
-extern "C" {
-    pub type KitchenSink_Enums;
-    #[wasm_bindgen(method, getter)]
-    pub fn field0(this: &KitchenSink_Enums) -> i32;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ExoticOptionals {
+    int32: *mut i32,
+    int64: *mut i64,
+    float64: *mut f64,
+    boolean: *mut bool,
+    zerocopy: *mut wire_uint_8_list,
+    int8list: *mut wire_int_8_list,
+    uint8list: *mut wire_uint_8_list,
+    int32list: *mut wire_int_32_list,
+    int64list: *mut wire_int_64_list,
+    float32list: *mut wire_float_32_list,
+    float64list: *mut wire_float_64_list,
+    attributes: *mut wire_list_attribute,
+    attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
+    nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
+    newtypeint: *mut wire_NewTypeInt,
+    string_list: *mut wire_StringList,
 }
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_MySize;
-    #[wasm_bindgen(method, getter)]
-    pub fn width(this: &wire_MySize) -> i32;
-    #[wasm_bindgen(method, getter)]
-    pub fn height(this: &wire_MySize) -> i32;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_float_32_list {
+    ptr: *mut f32,
+    len: i32,
 }
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_MyTreeNode;
-    #[wasm_bindgen(method, getter)]
-    pub fn value_i32(this: &wire_MyTreeNode) -> i32;
-    #[wasm_bindgen(method, getter)]
-    pub fn value_vec_u8(this: &wire_MyTreeNode) -> Box<[u8]>;
-    #[wasm_bindgen(method, getter)]
-    pub fn value_boolean(this: &wire_MyTreeNode) -> bool;
-    #[wasm_bindgen(method, getter)]
-    pub fn children(this: &wire_MyTreeNode) -> Box<[JsValue]>;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_float_64_list {
+    ptr: *mut f64,
+    len: i32,
 }
 
-#[wasm_bindgen]
-extern "C" {
-    pub type wire_NewTypeInt;
-    #[wasm_bindgen(method, getter)]
-    pub fn field0(this: &wire_NewTypeInt) -> i64;
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_32_list {
+    ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_64_list {
+    ptr: *mut i64,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_8_list {
+    ptr: *mut i8,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_attribute {
+    ptr: *mut wire_Attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_my_size {
+    ptr: *mut wire_MySize,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_my_tree_node {
+    ptr: *mut wire_MyTreeNode,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_box_autoadd_attribute {
+    ptr: *mut *mut wire_Attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MySize {
+    width: i32,
+    height: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MyTreeNode {
+    value_i32: i32,
+    value_vec_u8: *mut wire_uint_8_list,
+    value_boolean: bool,
+    children: *mut wire_list_my_tree_node,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_NewTypeInt {
+    field0: i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_64_list {
+    ptr: *mut u64,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_8_list {
+    ptr: *mut u8,
+    len: i32,
 }
 
 // Section: wire enums
 
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink {
+    tag: i32,
+    kind: *mut KitchenSinkKind,
+}
+
+#[repr(C)]
+pub union KitchenSinkKind {
+    Empty: *mut KitchenSink_Empty,
+    Primitives: *mut KitchenSink_Primitives,
+    Nested: *mut KitchenSink_Nested,
+    Optional: *mut KitchenSink_Optional,
+    Buffer: *mut KitchenSink_Buffer,
+    Enums: *mut KitchenSink_Enums,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KitchenSink_Empty {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KitchenSink_Primitives {
+    int32: i32,
+    float64: f64,
+    boolean: bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KitchenSink_Nested {
+    field0: *mut wire_KitchenSink,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KitchenSink_Optional {
+    field0: *mut i32,
+    field1: *mut i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KitchenSink_Buffer {
+    field0: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KitchenSink_Enums {
+    field0: i32,
+}
+
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
+    let wrap = wire_StringList {
+        ptr: support::new_leak_vec_ptr(<*mut wire_uint_8_list>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_Attribute {
+    support::new_leak_box_ptr(wire_Attribute::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_customized() -> *mut wire_Customized {
+    support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_exotic_optionals() -> *mut wire_ExoticOptionals {
+    support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_i32(value: i32) -> *mut i32 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_i64(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_KitchenSink {
+    support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_MySize {
+    support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_MyTreeNode {
+    support::new_leak_box_ptr(wire_MyTreeNode::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_NewTypeInt {
+    support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_bool(value: bool) -> *mut bool {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_exotic_optionals() -> *mut wire_ExoticOptionals {
+    support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_f64(value: f64) -> *mut f64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i32(value: i32) -> *mut i32 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i64(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i8(value: i8) -> *mut i8 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_kitchen_sink() -> *mut wire_KitchenSink {
+    support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_my_size() -> *mut wire_MySize {
+    support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_u8(value: u8) -> *mut u8 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_float_32_list(len: i32) -> *mut wire_float_32_list {
+    let ans = wire_float_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_float_64_list(len: i32) -> *mut wire_float_64_list {
+    let ans = wire_float_64_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_int_32_list(len: i32) -> *mut wire_int_32_list {
+    let ans = wire_int_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_int_64_list(len: i32) -> *mut wire_int_64_list {
+    let ans = wire_int_64_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_int_8_list(len: i32) -> *mut wire_int_8_list {
+    let ans = wire_int_8_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
+    let wrap = wire_list_attribute {
+        ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_my_size(len: i32) -> *mut wire_list_my_size {
+    let wrap = wire_list_my_size {
+        ptr: support::new_leak_vec_ptr(<wire_MySize>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_my_tree_node(len: i32) -> *mut wire_list_my_tree_node {
+    let wrap = wire_list_my_tree_node {
+        ptr: support::new_leak_vec_ptr(<wire_MyTreeNode>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_box_autoadd_attribute(
+    len: i32,
+) -> *mut wire_list_opt_box_autoadd_attribute {
+    let wrap = wire_list_opt_box_autoadd_attribute {
+        ptr: support::new_leak_vec_ptr(<*mut wire_Attribute>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_64_list(len: i32) -> *mut wire_uint_64_list {
+    let ans = wire_uint_64_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
+    let ans = wire_uint_8_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
 
 // Section: impl Wire2Api
 
@@ -607,32 +886,34 @@ impl<T: Wire2Api<U>, U> Wire2Api<Option<U>> for Option<T> {
     }
 }
 
-impl Wire2Api<String> for String {
+impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
-        self
+        let vec: Vec<u8> = self.wire2api();
+        String::from_utf8_lossy(&vec).into_owned()
     }
 }
 
-impl Wire2Api<Vec<String>> for Box<[JsString]> {
+impl Wire2Api<Vec<String>> for *mut wire_StringList {
     fn wire2api(self) -> Vec<String> {
-        self.into_iter()
-            .map(|e| e.as_string().expect("not a string, or invalid utf-8"))
-            .collect()
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
+impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
-        ZeroCopyBuffer(self.to_vec())
+        ZeroCopyBuffer(self.wire2api())
     }
 }
 
-impl Wire2Api<Attribute> for &JsValue {
+impl Wire2Api<Attribute> for wire_Attribute {
     fn wire2api(self) -> Attribute {
-        let raw = self.unchecked_ref::<wire_Attribute>();
         Attribute {
-            key: raw.key().wire2api(),
-            value: raw.value().wire2api(),
+            key: self.key.wire2api(),
+            value: self.value.wire2api(),
         }
     }
 }
@@ -643,90 +924,164 @@ impl Wire2Api<bool> for bool {
     }
 }
 
-impl Wire2Api<Box<bool>> for bool {
-    fn wire2api(self) -> Box<bool> {
-        Box::new(self)
+impl Wire2Api<Attribute> for *mut wire_Attribute {
+    fn wire2api(self) -> Attribute {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
     }
 }
 
-impl Wire2Api<Box<ExoticOptionals>> for &JsValue {
-    fn wire2api(self) -> Box<ExoticOptionals> {
-        Box::new(self.wire2api())
+impl Wire2Api<bool> for *mut bool {
+    fn wire2api(self) -> bool {
+        unsafe { *support::box_from_leak_ptr(self) }
     }
 }
 
-impl Wire2Api<Box<f64>> for f64 {
-    fn wire2api(self) -> Box<f64> {
-        Box::new(self)
-    }
-}
-
-impl Wire2Api<Box<i32>> for i32 {
-    fn wire2api(self) -> Box<i32> {
-        Box::new(self)
-    }
-}
-
-impl Wire2Api<Box<i64>> for i64 {
-    fn wire2api(self) -> Box<i64> {
-        Box::new(self)
-    }
-}
-
-impl Wire2Api<Box<i8>> for i8 {
-    fn wire2api(self) -> Box<i8> {
-        Box::new(self)
-    }
-}
-
-impl Wire2Api<Box<KitchenSink>> for &wire_KitchenSink {
-    fn wire2api(self) -> Box<KitchenSink> {
-        Box::new(self.wire2api())
-    }
-}
-
-impl Wire2Api<Box<MySize>> for &JsValue {
-    fn wire2api(self) -> Box<MySize> {
-        Box::new(self.wire2api())
-    }
-}
-
-impl Wire2Api<Box<u8>> for u8 {
-    fn wire2api(self) -> Box<u8> {
-        Box::new(self)
-    }
-}
-
-impl Wire2Api<Customized> for &JsValue {
+impl Wire2Api<Customized> for *mut wire_Customized {
     fn wire2api(self) -> Customized {
-        let raw = self.unchecked_ref::<wire_Customized>();
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
+    fn wire2api(self) -> ExoticOptionals {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<f64> for *mut f64 {
+    fn wire2api(self) -> f64 {
+        unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<i32> for *mut i32 {
+    fn wire2api(self) -> i32 {
+        unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<i64> for *mut i64 {
+    fn wire2api(self) -> i64 {
+        unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
+    fn wire2api(self) -> KitchenSink {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<MySize> for *mut wire_MySize {
+    fn wire2api(self) -> MySize {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<MyTreeNode> for *mut wire_MyTreeNode {
+    fn wire2api(self) -> MyTreeNode {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<NewTypeInt> for *mut wire_NewTypeInt {
+    fn wire2api(self) -> NewTypeInt {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Box<bool>> for *mut bool {
+    fn wire2api(self) -> Box<bool> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<Box<ExoticOptionals>> for *mut wire_ExoticOptionals {
+    fn wire2api(self) -> Box<ExoticOptionals> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Box<f64>> for *mut f64 {
+    fn wire2api(self) -> Box<f64> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<Box<i32>> for *mut i32 {
+    fn wire2api(self) -> Box<i32> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<Box<i64>> for *mut i64 {
+    fn wire2api(self) -> Box<i64> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<Box<i8>> for *mut i8 {
+    fn wire2api(self) -> Box<i8> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<Box<KitchenSink>> for *mut wire_KitchenSink {
+    fn wire2api(self) -> Box<KitchenSink> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Box<MySize>> for *mut wire_MySize {
+    fn wire2api(self) -> Box<MySize> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Box<u8>> for *mut u8 {
+    fn wire2api(self) -> Box<u8> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<Customized> for wire_Customized {
+    fn wire2api(self) -> Customized {
         Customized {
-            final_field: raw.final_field().wire2api(),
-            non_final_field: raw.non_final_field().wire2api(),
+            final_field: self.final_field.wire2api(),
+            non_final_field: self.non_final_field.wire2api(),
         }
     }
 }
 
-impl Wire2Api<ExoticOptionals> for &JsValue {
+impl Wire2Api<ExoticOptionals> for wire_ExoticOptionals {
     fn wire2api(self) -> ExoticOptionals {
-        let raw = self.unchecked_ref::<wire_ExoticOptionals>();
         ExoticOptionals {
-            int32: raw.int32().wire2api(),
-            int64: raw.int64().wire2api(),
-            float64: raw.float64().wire2api(),
-            boolean: raw.boolean().wire2api(),
-            zerocopy: raw.zerocopy().wire2api(),
-            int8list: raw.int8list().wire2api(),
-            uint8list: raw.uint8list().wire2api(),
-            int32list: raw.int32list().wire2api(),
-            int64list: raw.int64list().wire2api(),
-            float32list: raw.float32list().wire2api(),
-            float64list: raw.float64list().wire2api(),
-            attributes: raw.attributes().wire2api(),
-            attributes_nullable: raw.attributes_nullable().wire2api(),
-            nullable_attributes: raw.nullable_attributes().wire2api(),
-            newtypeint: raw.newtypeint().wire2api(),
-            string_list: raw.string_list().wire2api(),
+            int32: self.int32.wire2api(),
+            int64: self.int64.wire2api(),
+            float64: self.float64.wire2api(),
+            boolean: self.boolean.wire2api(),
+            zerocopy: self.zerocopy.wire2api(),
+            int8list: self.int8list.wire2api(),
+            uint8list: self.uint8list.wire2api(),
+            int32list: self.int32list.wire2api(),
+            int64list: self.int64list.wire2api(),
+            float32list: self.float32list.wire2api(),
+            float64list: self.float64list.wire2api(),
+            attributes: self.attributes.wire2api(),
+            attributes_nullable: self.attributes_nullable.wire2api(),
+            nullable_attributes: self.nullable_attributes.wire2api(),
+            newtypeint: self.newtypeint.wire2api(),
+            string_list: self.string_list.wire2api(),
         }
     }
 }
@@ -743,15 +1098,21 @@ impl Wire2Api<f64> for f64 {
     }
 }
 
-impl Wire2Api<Vec<f32>> for Box<[f32]> {
+impl Wire2Api<Vec<f32>> for *mut wire_float_32_list {
     fn wire2api(self) -> Vec<f32> {
-        self.to_vec()
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
-impl Wire2Api<Vec<f64>> for Box<[f64]> {
+impl Wire2Api<Vec<f64>> for *mut wire_float_64_list {
     fn wire2api(self) -> Vec<f64> {
-        self.to_vec()
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
@@ -773,131 +1134,134 @@ impl Wire2Api<i8> for i8 {
     }
 }
 
-impl Wire2Api<Vec<i32>> for Box<[i32]> {
+impl Wire2Api<Vec<i32>> for *mut wire_int_32_list {
     fn wire2api(self) -> Vec<i32> {
-        self.to_vec()
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
-impl Wire2Api<Vec<i64>> for Box<[i64]> {
+impl Wire2Api<Vec<i64>> for *mut wire_int_64_list {
     fn wire2api(self) -> Vec<i64> {
-        self.to_vec()
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
-impl Wire2Api<Vec<i8>> for Box<[i8]> {
+impl Wire2Api<Vec<i8>> for *mut wire_int_8_list {
     fn wire2api(self) -> Vec<i8> {
-        self.to_vec()
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
-impl Wire2Api<KitchenSink> for &wire_KitchenSink {
+impl Wire2Api<KitchenSink> for wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
-        match self.tag() {
+        match self.tag {
             0 => KitchenSink::Empty,
-            1 => {
-                let kind = self.kind().unchecked_into::<KitchenSink_Primitives>();
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Primitives);
                 KitchenSink::Primitives {
-                    int32: kind.int32().wire2api(),
-                    float64: kind.float64().wire2api(),
-                    boolean: kind.boolean().wire2api(),
+                    int32: ans.int32.wire2api(),
+                    float64: ans.float64.wire2api(),
+                    boolean: ans.boolean.wire2api(),
                 }
-            }
-            2 => {
-                let kind = self.kind().unchecked_into::<KitchenSink_Nested>();
-                KitchenSink::Nested(kind.field0().wire2api())
-            }
-            3 => {
-                let kind = self.kind().unchecked_into::<KitchenSink_Optional>();
-                KitchenSink::Optional(kind.field0().wire2api(), kind.field1().wire2api())
-            }
-            4 => {
-                let kind = self.kind().unchecked_into::<KitchenSink_Buffer>();
-                KitchenSink::Buffer(kind.field0().wire2api())
-            }
-            5 => {
-                let kind = self.kind().unchecked_into::<KitchenSink_Enums>();
-                KitchenSink::Enums(kind.field0().wire2api())
-            }
+            },
+            2 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Nested);
+                KitchenSink::Nested(ans.field0.wire2api())
+            },
+            3 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Optional);
+                KitchenSink::Optional(ans.field0.wire2api(), ans.field1.wire2api())
+            },
+            4 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Buffer);
+                KitchenSink::Buffer(ans.field0.wire2api())
+            },
+            5 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Enums);
+                KitchenSink::Enums(ans.field0.wire2api())
+            },
             _ => unreachable!(),
         }
     }
 }
 
-impl Wire2Api<Vec<Attribute>> for Box<[JsValue]> {
+impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
     fn wire2api(self) -> Vec<Attribute> {
-        self.iter().map(Wire2Api::wire2api).collect()
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<Vec<MySize>> for Box<[JsValue]> {
+impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
     fn wire2api(self) -> Vec<MySize> {
-        self.iter().map(Wire2Api::wire2api).collect()
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<Vec<MyTreeNode>> for Box<[JsValue]> {
+impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
     fn wire2api(self) -> Vec<MyTreeNode> {
-        self.iter().map(Wire2Api::wire2api).collect()
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<Vec<Option<Attribute>>> for Box<[JsValue]> {
+impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribute {
     fn wire2api(self) -> Vec<Option<Attribute>> {
-        self.iter().map(Wire2Api::wire2api).collect()
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<MySize> for &JsValue {
+impl Wire2Api<MySize> for wire_MySize {
     fn wire2api(self) -> MySize {
-        let raw = self.unchecked_ref::<wire_MySize>();
         MySize {
-            width: raw.width().wire2api(),
-            height: raw.height().wire2api(),
+            width: self.width.wire2api(),
+            height: self.height.wire2api(),
         }
     }
 }
 
-impl Wire2Api<MyTreeNode> for &JsValue {
+impl Wire2Api<MyTreeNode> for wire_MyTreeNode {
     fn wire2api(self) -> MyTreeNode {
-        let raw = self.unchecked_ref::<wire_MyTreeNode>();
         MyTreeNode {
-            value_i32: raw.value_i32().wire2api(),
-            value_vec_u8: raw.value_vec_u8().wire2api(),
-            value_boolean: raw.value_boolean().wire2api(),
-            children: raw.children().wire2api(),
+            value_i32: self.value_i32.wire2api(),
+            value_vec_u8: self.value_vec_u8.wire2api(),
+            value_boolean: self.value_boolean.wire2api(),
+            children: self.children.wire2api(),
         }
     }
 }
 
-impl Wire2Api<NewTypeInt> for &JsValue {
+impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
-        let raw = self.unchecked_ref::<wire_NewTypeInt>();
-        NewTypeInt(raw.field0().wire2api())
-    }
-}
-
-impl Wire2Api<Option<Attribute>> for &JsValue {
-    fn wire2api(self) -> Option<Attribute> {
-        Some(self.wire2api())
-    }
-}
-
-impl Wire2Api<Option<ExoticOptionals>> for &JsValue {
-    fn wire2api(self) -> Option<ExoticOptionals> {
-        Some(self.wire2api())
-    }
-}
-
-impl Wire2Api<Option<NewTypeInt>> for &JsValue {
-    fn wire2api(self) -> Option<NewTypeInt> {
-        Some(self.wire2api())
-    }
-}
-
-impl Wire2Api<Option<Box<ExoticOptionals>>> for &JsValue {
-    fn wire2api(self) -> Option<Box<ExoticOptionals>> {
-        Some(self.wire2api())
+        NewTypeInt(self.field0.wire2api())
     }
 }
 
@@ -919,15 +1283,21 @@ impl Wire2Api<u8> for u8 {
     }
 }
 
-impl Wire2Api<Vec<u64>> for Box<[u64]> {
+impl Wire2Api<Vec<u64>> for *mut wire_uint_64_list {
     fn wire2api(self) -> Vec<u64> {
-        self.to_vec()
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
-impl Wire2Api<Vec<u8>> for Box<[u8]> {
+impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Vec<u8> {
-        self.to_vec()
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
@@ -941,7 +1311,7 @@ impl Wire2Api<Weekdays> for i32 {
             4 => Weekdays::Friday,
             5 => Weekdays::Saturday,
             6 => Weekdays::Sunday,
-            _ => unreachable!(),
+            _ => unreachable!("Invalid variant for Weekdays: {}", self),
         }
     }
 }
@@ -955,6 +1325,132 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
+    }
+}
+
+impl NewWithNullPtr for wire_Attribute {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            key: core::ptr::null_mut(),
+            value: core::ptr::null_mut(),
+        };
+    }
+}
+
+impl NewWithNullPtr for wire_Customized {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            final_field: core::ptr::null_mut(),
+            non_final_field: core::ptr::null_mut(),
+        };
+    }
+}
+
+impl NewWithNullPtr for wire_ExoticOptionals {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            int32: core::ptr::null_mut(),
+            int64: core::ptr::null_mut(),
+            float64: core::ptr::null_mut(),
+            boolean: core::ptr::null_mut(),
+            zerocopy: core::ptr::null_mut(),
+            int8list: core::ptr::null_mut(),
+            uint8list: core::ptr::null_mut(),
+            int32list: core::ptr::null_mut(),
+            int64list: core::ptr::null_mut(),
+            float32list: core::ptr::null_mut(),
+            float64list: core::ptr::null_mut(),
+            attributes: core::ptr::null_mut(),
+            attributes_nullable: core::ptr::null_mut(),
+            nullable_attributes: core::ptr::null_mut(),
+            newtypeint: core::ptr::null_mut(),
+            string_list: core::ptr::null_mut(),
+        };
+    }
+}
+
+impl NewWithNullPtr for wire_KitchenSink {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
+    support::new_leak_box_ptr(KitchenSinkKind {
+        Primitives: support::new_leak_box_ptr(KitchenSink_Primitives {
+            int32: Default::default(),
+            float64: Default::default(),
+            boolean: Default::default(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
+    support::new_leak_box_ptr(KitchenSinkKind {
+        Nested: support::new_leak_box_ptr(KitchenSink_Nested {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Optional() -> *mut KitchenSinkKind {
+    support::new_leak_box_ptr(KitchenSinkKind {
+        Optional: support::new_leak_box_ptr(KitchenSink_Optional {
+            field0: core::ptr::null_mut(),
+            field1: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Buffer() -> *mut KitchenSinkKind {
+    support::new_leak_box_ptr(KitchenSinkKind {
+        Buffer: support::new_leak_box_ptr(KitchenSink_Buffer {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
+    support::new_leak_box_ptr(KitchenSinkKind {
+        Enums: support::new_leak_box_ptr(KitchenSink_Enums {
+            field0: Default::default(),
+        }),
+    })
+}
+
+impl NewWithNullPtr for wire_MySize {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            width: Default::default(),
+            height: Default::default(),
+        };
+    }
+}
+
+impl NewWithNullPtr for wire_MyTreeNode {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            value_i32: Default::default(),
+            value_vec_u8: core::ptr::null_mut(),
+            value_boolean: Default::default(),
+            children: core::ptr::null_mut(),
+        };
+    }
+}
+
+impl NewWithNullPtr for wire_NewTypeInt {
+    fn new_with_null_ptr() -> Self {
+        return Self {
+            field0: Default::default(),
+        };
     }
 }
 
