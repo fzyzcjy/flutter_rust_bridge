@@ -5,6 +5,7 @@ version = 3
 [[package]]
 name = "allo-isolate"
 version = "0.1.12"
+source = "git+https://github.com/Desdaemon/allo-isolate?branch=wasm-bindgen#9c449f284bee7d58b46dbe892add0f2916994aaf"
 dependencies = [
  "atomic",
  "js-sys",
