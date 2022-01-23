@@ -49,6 +49,9 @@ pub struct RawOpts {
     pub llvm_compiler_opts: Option<String>,
     /// Emit glue code to interface with wasm-bindgen.
     /// Enabling this splits the generated code into their respective modules.
+    /// For example, if the output is "foo.rs", a native "foo_native.rs" and
+    /// a WASM "foo_web.rs" frontend will be created.
+    /// Overrides `--dart-decl-output`.
     #[structopt(long)]
     pub wasm: bool,
 }
