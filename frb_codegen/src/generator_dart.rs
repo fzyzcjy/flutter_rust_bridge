@@ -163,7 +163,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
 
     let wire_param_list = [
         if func.mode.has_port_argument() {
-            vec!["port".to_string()]
+            vec!["port_".to_string()]
         } else {
             vec![]
         },
@@ -238,7 +238,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
         ),
         _ => format!(
             "{} => {}(FlutterRustBridgeTask(
-            callFfi: (port) => inner.{}({}),
+            callFfi: (port_) => inner.{}({}),
             parseSuccessData: _wire2api_{},
             {}
         ));",
