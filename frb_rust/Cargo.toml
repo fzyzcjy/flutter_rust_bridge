@@ -12,7 +12,7 @@ categories = ["development-tools::ffi"]
 allo-isolate = "0.1.12"
 # allo-isolate = { git = "https://github.com/Desdaemon/allo-isolate" } # hack, until upstream PR is merged and released
 # allo-isolate = { path = "../../allo-isolate" }
-anyhow = "1.0.52"
+anyhow = "1.0.53"
 threadpool = "1.8.1"
 lazy_static = "1.4.0"
 parking_lot = "0.11.2"
