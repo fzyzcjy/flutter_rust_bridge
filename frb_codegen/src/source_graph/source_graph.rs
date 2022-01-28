@@ -48,7 +48,7 @@ impl Crate {
             root_module: Module {
                 file_path: root_src_file.clone(),
                 module_path: vec!["crate".to_string()],
-                root: ModuleSource::File(file_ast),
+                root: Some(ModuleSource::File(file_ast)),
                 children: None,
             },
         };
@@ -73,7 +73,7 @@ pub enum ModuleSource {
 pub struct Module {
     pub file_path: PathBuf,
     pub module_path: Vec<String>,
-    pub root: ModuleSource,
+    pub root: Option<ModuleSource>,
     pub children: Option<Vec<Module>>,
 }
 
@@ -90,13 +90,13 @@ impl Debug for Module {
 
 impl Module {
     pub fn is_resolved(&self) -> bool {
-        self.children.is_some()
+        self.children.is_some() && self.root.is_some()
     }
 
     pub fn resolve(&mut self) {
         let mut children = Vec::new();
 
-        let items = match &self.root {
+        let items = match self.root.as_ref().unwrap() {
             ModuleSource::File(file) => &file.items,
             ModuleSource::ModuleInFile(items) => items,
         };
@@ -113,7 +113,7 @@ impl Module {
                         Some(content) => Module {
                             file_path: self.file_path.clone(),
                             module_path,
-                            root: ModuleSource::ModuleInFile(content.1.clone()),
+                            root: Some(ModuleSource::ModuleInFile(content.1.clone())),
                             children: Some(vec![]),
                         },
                         None => {
@@ -132,18 +132,13 @@ impl Module {
 
                             let file_exists = file_path.exists();
 
-                            if !file_exists {
-                                // TODO: This confuses cargo fmt for reasons I have yet to comprehend
-                                panic!(
-                                //     "Module parse failed: could not resolve module {}. Expected this file to exist, but it didn't: {}",
-                                //     ident.to_string(),
-                                //     file_path.to_string_lossy()
-                                );
-                            }
-
-                            let root = {
+                            let root = if file_exists {
                                 let source_rust_content = fs::read_to_string(&file_path).unwrap();
-                                ModuleSource::File(syn::parse_file(&source_rust_content).unwrap())
+                                Some(ModuleSource::File(
+                                    syn::parse_file(&source_rust_content).unwrap(),
+                                ))
+                            } else {
+                                None
                             };
 
                             let mut child_module = Module {
@@ -153,7 +148,9 @@ impl Module {
                                 children: None,
                             };
 
-                            child_module.resolve();
+                            if file_exists {
+                                child_module.resolve();
+                            }
 
                             child_module
                         }
