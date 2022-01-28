@@ -34,7 +34,11 @@ lazy_static! {
     ];
 }
 
-pub fn parse(source_rust_content: &str, file: File) -> ApiFile {
+pub fn parse(source_rust_content: &str, file: File, manifest_path: &String) -> ApiFile {
+    let crate_graph = crate::source_graph::source_graph::Crate::new(manifest_path);
+
+    debug!("crate repr: {:#?}", crate_graph);
+
     let src_fns = extract_fns_from_file(&file);
 
     let relevant_items = get_relevant_types(&src_fns);
@@ -396,9 +400,7 @@ fn extract_items_from_file(file: &File) -> SrcItems {
                 }
             }
             Item::Enum(
-                item_enum
-                @
-                ItemEnum {
+                item_enum @ ItemEnum {
                     vis: Visibility::Public(_),
                     ..
                 },
@@ -422,14 +424,14 @@ fn get_relevant_types<'ast>(src_fns: &Vec<&'ast ItemFn>) -> HashMap<String, &'as
     let mut result = HashMap::new();
 
     for src_fn in src_fns.iter() {
-        debug!("");
-        debug!("{}", src_fn.sig.ident);
-        debug!("Inputs:");
+        // debug!("");
+        // debug!("{}", src_fn.sig.ident);
+        // debug!("Inputs:");
         for input in src_fn.sig.inputs.iter() {
             match input {
                 FnArg::Receiver(_) => {}
                 FnArg::Typed(pat_type) => {
-                    debug!("{}", type_to_string(pat_type.ty.as_ref()));
+                    // debug!("{}", type_to_string(pat_type.ty.as_ref()));
                     let inner = filter_and_get_inner(pat_type.ty.as_ref());
                     if inner.is_some() {
                         let inner = inner.unwrap();
@@ -438,13 +440,13 @@ fn get_relevant_types<'ast>(src_fns: &Vec<&'ast ItemFn>) -> HashMap<String, &'as
                 }
             }
         }
-        debug!("Output:");
+        // debug!("Output:");
         match &src_fn.sig.output {
             ReturnType::Default => {}
             ReturnType::Type(_, item_type) => {
                 let type_string = type_to_string(item_type.as_ref());
                 if let Some(_) = CAPTURE_RESULT.captures(&type_string) {
-                    debug!("{}", &type_string);
+                    // debug!("{}", &type_string);
                     let inner = filter_and_get_inner(item_type.as_ref());
                     if inner.is_some() {
                         let inner = inner.unwrap();
@@ -512,7 +514,7 @@ fn filter_and_get_inner<'ast>(ty: &'ast Type) -> Option<&'ast Ident> {
                         .iter()
                         .any(|frb_type_str| *frb_type_str == ident_str)
                 {
-                    debug!("Actually captured {}", &ident_str);
+                    // debug!("Actually captured {}", &ident_str);
                     Some(ident)
                 } else {
                     None

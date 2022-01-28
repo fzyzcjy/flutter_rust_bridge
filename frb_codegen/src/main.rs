@@ -18,11 +18,12 @@ mod generator_dart;
 mod generator_rust;
 mod others;
 mod parser;
+mod source_graph;
 mod transformer;
 mod utils;
 
 fn main() {
-    env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
+    env_logger::Builder::from_env(Env::default().default_filter_or("debug")).init();
 
     let config = config::parse(RawOpts::from_args());
     info!("Picked config: {:?}", &config);
@@ -36,7 +37,7 @@ fn main() {
     let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
     info!("Phase: Parse AST to IR");
-    let raw_api_file = parser::parse(&source_rust_content, file_ast);
+    let raw_api_file = parser::parse(&source_rust_content, file_ast, &config.cargo_path);
     debug!("parsed functions: {:?}", &raw_api_file);
 
     info!("Phase: Transform IR");

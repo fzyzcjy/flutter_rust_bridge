@@ -12,6 +12,9 @@ use toml::Value;
 #[derive(StructOpt, Debug, PartialEq, Deserialize)]
 #[structopt(setting(AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
+    /// Path of input cargo.toml file
+    #[structopt(short, long)]
+    pub cargo_path: String,
     /// Path of input Rust code
     #[structopt(short, long)]
     pub rust_input: String,
@@ -47,6 +50,7 @@ pub struct RawOpts {
 
 #[derive(Debug)]
 pub struct Opts {
+    pub cargo_path: String,
     pub rust_input_path: String,
     pub dart_output_path: String,
     pub c_output_path: String,
@@ -60,6 +64,7 @@ pub struct Opts {
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
+    let cargo_path = canon_path(&raw.cargo_path);
     let rust_input_path = canon_path(&raw.rust_input);
 
     let rust_crate_dir = canon_path(&raw.rust_crate_dir.unwrap_or_else(|| {
@@ -80,6 +85,7 @@ pub fn parse(raw: RawOpts) -> Opts {
     }));
 
     Opts {
+        cargo_path,
         rust_input_path,
         dart_output_path: canon_path(&raw.dart_output),
         c_output_path,
