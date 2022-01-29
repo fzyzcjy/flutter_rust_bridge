@@ -52,4 +52,4 @@ Indeed all generated code are necessary (if you find something that can be simpl
 
 #### Other problems?
 
-Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new?assignees=&labels=bug&template=bug_report.md&title=)! I usually reply within minutes or hours (except when sleeping, of course).
+Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose)! I usually reply within minutes or hours (except when sleeping, of course).
