@@ -73,8 +73,8 @@ impl Crate {
 pub enum Visibility {
     Public,
     Crate,
-    Restricted, // Not currently supported
-    Inherited, // Usually means private
+    Restricted, // Not supported
+    Inherited,  // Usually means private
 }
 
 fn syn_vis_to_visibility(vis: &syn::Visibility) -> Visibility {
@@ -96,14 +96,25 @@ pub enum ModuleSource {
 }
 
 #[derive(Debug)]
+pub struct Struct {
+    pub ident: Ident,
+    pub visibility: Visibility,
+}
+
+#[derive(Debug)]
+pub struct Enum {
+    pub ident: Ident,
+    pub visibility: Visibility,
+}
+
+#[derive(Debug)]
 pub struct ModuleScope {
     pub modules: Vec<Module>,
-    pub enums: Vec<Ident>,
-    pub structs: Vec<Ident>,
+    pub enums: Vec<Enum>,
+    pub structs: Vec<Struct>,
     pub imports: Vec<Import>,
 }
 
-// TODO: Capture struct and enum visibility
 pub struct Module {
     pub visibility: Visibility,
     pub file_path: PathBuf,
@@ -148,10 +159,16 @@ impl Module {
         for item in items.iter() {
             match item {
                 syn::Item::Struct(item_struct) => {
-                    scope_structs.push(item_struct.ident.clone());
+                    scope_structs.push(Struct {
+                        ident: item_struct.ident.clone(),
+                        visibility: syn_vis_to_visibility(&item_struct.vis),
+                    });
                 }
                 syn::Item::Enum(item_enum) => {
-                    scope_enums.push(item_enum.ident.clone());
+                    scope_enums.push(Enum {
+                        ident: item_enum.ident.clone(),
+                        visibility: syn_vis_to_visibility(&item_enum.vis),
+                    });
                 }
                 syn::Item::Mod(item_mod) => {
                     let ident = item_mod.ident.clone();
