@@ -25,6 +25,7 @@ pub fn generate_common_mod(prefix: &str) -> String {
     format!(
         r#"#[cfg(not(target_family = "wasm"))]
         mod {prefix}_native;
+        /// cbindgen:ignore
         #[cfg(target_arch = "wasm32")]
         mod {prefix}_web;
         #[cfg(not(target_family = "wasm"))]
