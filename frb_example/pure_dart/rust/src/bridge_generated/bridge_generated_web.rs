@@ -879,25 +879,25 @@ impl Wire2Api<NewTypeInt> for &JsValue {
 
 impl Wire2Api<Option<Attribute>> for &JsValue {
     fn wire2api(self) -> Option<Attribute> {
-        Some(self.wire2api())
+        self.is_truthy().then(|| self.wire2api())
     }
 }
 
 impl Wire2Api<Option<ExoticOptionals>> for &JsValue {
     fn wire2api(self) -> Option<ExoticOptionals> {
-        Some(self.wire2api())
+        self.is_truthy().then(|| self.wire2api())
     }
 }
 
 impl Wire2Api<Option<NewTypeInt>> for &JsValue {
     fn wire2api(self) -> Option<NewTypeInt> {
-        Some(self.wire2api())
+        self.is_truthy().then(|| self.wire2api())
     }
 }
 
 impl Wire2Api<Option<Box<ExoticOptionals>>> for &JsValue {
     fn wire2api(self) -> Option<Box<ExoticOptionals>> {
-        Some(self.wire2api())
+        self.is_truthy().then(|| self.wire2api())
     }
 }
 

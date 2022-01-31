@@ -991,7 +991,7 @@ impl Generator {
             Boxed(b) if !b.exist_in_real_api => return "".to_owned(),
             ty @ Boxed(_) if ty.is_struct() => "Box::new(self.wire2api())".into(),
             Boxed(_) => "Box::new(self)".into(),
-            Optional(opt) if opt.is_struct() => "Some(self.wire2api())".into(),
+            Optional(opt) if opt.is_struct() => "self.is_truthy().then(|| self.wire2api())".into(),
             Optional(_) => return "".to_owned(),
             Delegate(ApiTypeDelegate::SyncReturnVecU8) => unreachable!(),
         };
