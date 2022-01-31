@@ -729,11 +729,11 @@ double _api2wire_f64(double raw) {
 }
 
 Float32List _api2wire_float_32_list(Float32List raw) {
-  throw UnimplementedError();
+  return raw;
 }
 
 Float64List _api2wire_float_64_list(Float64List raw) {
-  throw UnimplementedError();
+  return raw;
 }
 
 int _api2wire_i32(int raw) {
@@ -749,35 +749,84 @@ int _api2wire_i8(int raw) {
 }
 
 Int32List _api2wire_int_32_list(Int32List raw) {
-  throw UnimplementedError();
+  return raw;
 }
 
 List<BigInt> _api2wire_int_64_list(Int64List raw) {
-  throw UnimplementedError();
+  return raw;
 }
 
 Int8List _api2wire_int_8_list(Int8List raw) {
-  throw UnimplementedError();
+  return raw;
 }
 
 wire_KitchenSink _api2wire_kitchen_sink(KitchenSink raw) {
-  throw UnimplementedError();
+  if (raw is Empty) {
+    return wire_KitchenSink(
+      tag: 0,
+      kind: null,
+    );
+  }
+  if (raw is Primitives) {
+    return wire_KitchenSink(
+      tag: 1,
+      kind: KitchenSink_Primitives(
+        int32: _api2wire_i32(raw.int32),
+        float64: _api2wire_f64(raw.float64),
+        boolean: _api2wire_bool(raw.boolean),
+      ),
+    );
+  }
+  if (raw is Nested) {
+    return wire_KitchenSink(
+      tag: 2,
+      kind: KitchenSink_Nested(
+        field0: _api2wire_box_kitchen_sink(raw.field0),
+      ),
+    );
+  }
+  if (raw is Optional) {
+    return wire_KitchenSink(
+      tag: 3,
+      kind: KitchenSink_Optional(
+        field0: _api2wire_opt_box_autoadd_i32(raw.field0),
+        field1: _api2wire_opt_box_autoadd_i32(raw.field1),
+      ),
+    );
+  }
+  if (raw is Buffer) {
+    return wire_KitchenSink(
+      tag: 4,
+      kind: KitchenSink_Buffer(
+        field0: _api2wire_ZeroCopyBuffer_Uint8List(raw.field0),
+      ),
+    );
+  }
+  if (raw is Enums) {
+    return wire_KitchenSink(
+      tag: 5,
+      kind: KitchenSink_Enums(
+        field0: _api2wire_weekdays(raw.field0),
+      ),
+    );
+  }
+  throw Exception('unreachable');
 }
 
 List<wire_Attribute> _api2wire_list_attribute(List<Attribute> raw) {
-  throw UnimplementedError();
+  return raw.map(_api2wire_attribute).toList();
 }
 
 List<wire_MySize> _api2wire_list_my_size(List<MySize> raw) {
-  throw UnimplementedError();
+  return raw.map(_api2wire_my_size).toList();
 }
 
 List<wire_MyTreeNode> _api2wire_list_my_tree_node(List<MyTreeNode> raw) {
-  throw UnimplementedError();
+  return raw.map(_api2wire_my_tree_node).toList();
 }
 
 List<wire_Attribute?> _api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
-  throw UnimplementedError();
+  return raw.map(_api2wire_opt_box_autoadd_attribute).toList();
 }
 
 wire_MySize _api2wire_my_size(MySize raw) {
@@ -913,13 +962,13 @@ int _api2wire_u8(int raw) {
 }
 
 List<BigInt> _api2wire_uint_64_list(Uint64List raw) {
-  throw UnimplementedError();
+  return raw;
 }
 
 Uint8List _api2wire_uint_8_list(Uint8List raw) {
-  throw UnimplementedError();
+  return raw;
 }
 
 int _api2wire_weekdays(Weekdays raw) {
-  throw UnimplementedError();
+  return raw.index;
 }

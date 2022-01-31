@@ -164,11 +164,11 @@ int _api2wire_i32(int raw) {
 }
 
 List<wire_Size> _api2wire_list_size(List<Size> raw) {
-  throw UnimplementedError();
+  return raw.map(_api2wire_size).toList();
 }
 
 List<wire_TreeNode> _api2wire_list_tree_node(List<TreeNode> raw) {
-  throw UnimplementedError();
+  return raw.map(_api2wire_tree_node).toList();
 }
 
 wire_Point _api2wire_point(Point raw) {
@@ -188,5 +188,5 @@ int _api2wire_u8(int raw) {
 }
 
 Uint8List _api2wire_uint_8_list(Uint8List raw) {
-  throw UnimplementedError();
+  return raw;
 }

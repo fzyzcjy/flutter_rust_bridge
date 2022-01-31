@@ -75,6 +75,7 @@ fn main() {
     info!("Phase: Other things");
 
     commands::format_rust(&config.rust_output_path);
+    commands::format_rust(&config.rust_wasm_output_path);
 
     if !config.skip_add_mod_to_lib {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);

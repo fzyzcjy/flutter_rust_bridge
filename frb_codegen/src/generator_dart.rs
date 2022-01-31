@@ -793,7 +793,7 @@ fn generate_wire_func(func: &ApiFunc) -> String {
 
 fn generate_wasm_api2wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
     let body: Cow<str> = match ty {
-        Delegate(_) | Primitive(_) => "return raw;".into(),
+        Delegate(_) | Primitive(_) | PrimitiveList(_) => "return raw;".into(),
         StructRef(st) => {
             let wire = st.rust_wire_type();
             let fields = st
@@ -817,7 +817,59 @@ fn generate_wasm_api2wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
             opt.inner.safe_ident()
         )
         .into(),
-        _ => "throw UnimplementedError();".into(),
+        GeneralList(list) => format!(
+            "return raw.map(_api2wire_{}).toList();",
+            list.inner.safe_ident()
+        )
+        .into(),
+        EnumRef(enu) if !enu.is_struct => "return raw.index;".into(),
+        EnumRef(enu) => {
+            let name = &enu.name;
+            let wire = enu.rust_wire_type();
+            let arms = enu
+                .get(api_file)
+                .variants()
+                .iter()
+                .enumerate()
+                .map(|(idx, variant)| {
+                    // let kind = "".to_owned();
+                    let kind: Cow<str> = match &variant.kind {
+                        ApiVariantKind::Value => "null".into(),
+                        ApiVariantKind::Struct(st) => {
+                            let fields = st
+                                .fields
+                                .iter()
+                                .map(|field| {
+                                    format!(
+                                        "{}: _api2wire_{}(raw.{}),",
+                                        field.name.rust_style(),
+                                        field.ty.safe_ident(),
+                                        field.name.dart_style()
+                                    )
+                                })
+                                .collect::<Vec<_>>();
+                            format!(
+                                "{}_{}({})",
+                                name,
+                                variant.name.rust_style(),
+                                fields.join("")
+                            )
+                            .into()
+                        }
+                    };
+                    format!(
+                        "if (raw is {api}) {{
+                            return {wire}(tag: {tag}, kind: {kind},);
+                        }}",
+                        api = variant.name.rust_style(),
+                        tag = idx,
+                        wire = wire,
+                        kind = kind
+                    )
+                })
+                .collect::<Vec<_>>();
+            format!("{} throw Exception('unreachable');", arms.join("\n")).into()
+        }
     };
     format!(
         "{} _api2wire_{}({} raw) {{
