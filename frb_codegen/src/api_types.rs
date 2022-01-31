@@ -879,13 +879,13 @@ impl ApiTypeChild for ApiTypeEnumRef {
         }
     }
     fn js_wire_type(&self) -> String {
-        self.dart_wire_type()
+        self.rust_wire_type()
     }
     fn is_struct(&self) -> bool {
         self.is_struct
     }
     fn dart_js_wire_type(&self) -> String {
-        self.js_wire_type()
+        self.dart_wire_type()
     }
 }
 

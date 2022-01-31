@@ -381,7 +381,7 @@ pub fn wire_handle_return_enum(port_: i64, input: String) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_enum_parameter(port_: i64, weekday: int) {
+pub fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_parameter",
@@ -544,7 +544,7 @@ extern "C" {
 extern "C" {
     pub type KitchenSink_Enums;
     #[wasm_bindgen(method, getter)]
-    pub fn field0(this: &KitchenSink_Enums) -> int;
+    pub fn field0(this: &KitchenSink_Enums) -> i32;
 }
 
 #[wasm_bindgen]
@@ -931,7 +931,7 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
     }
 }
 
-impl Wire2Api<Weekdays> for int {
+impl Wire2Api<Weekdays> for i32 {
     fn wire2api(self) -> Weekdays {
         match self {
             0 => Weekdays::Monday,
