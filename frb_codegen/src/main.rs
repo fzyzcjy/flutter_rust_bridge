@@ -1,5 +1,6 @@
 use std::fs;
 use std::path::Path;
+use std::path::PathBuf;
 
 use env_logger::Env;
 use log::{debug, info};
@@ -50,14 +51,32 @@ fn main() {
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
         false,
     );
-    let generated_rust_wasm = generator_rust::generate(
-        &api_file,
-        &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-        true,
-    );
+
     fs::create_dir_all(&rust_output_dir).unwrap();
-    fs::write(&config.rust_output_path, generated_rust.code).unwrap();
-    fs::write(&config.rust_wasm_output_path, generated_rust_wasm.code).unwrap();
+    let rust_native_path: String;
+    if config.wasm {
+        fs::create_dir_all(
+            PathBuf::from(rust_output_dir).join(config.rust_output_file_name().unwrap()),
+        )
+        .unwrap();
+        rust_native_path = config.rust_native_output_path().unwrap();
+        let generated_rust_wasm = generator_rust::generate(
+            &api_file,
+            &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
+            true,
+        );
+        let generated_common =
+            generator_rust::generate_common_mod(&config.rust_output_file_name().unwrap());
+        fs::write(
+            &config.rust_wasm_output_path().unwrap(),
+            generated_rust_wasm.code,
+        )
+        .unwrap();
+        fs::write(&config.rust_output_path, generated_common).unwrap();
+    } else {
+        rust_native_path = config.rust_output_path.clone();
+    }
+    fs::write(&rust_native_path, generated_rust.code).unwrap();
 
     info!("Phase: Generate Dart code");
     let (
@@ -75,7 +94,10 @@ fn main() {
     info!("Phase: Other things");
 
     commands::format_rust(&config.rust_output_path);
-    commands::format_rust(&config.rust_wasm_output_path);
+    if config.wasm {
+        commands::format_rust(&config.rust_wasm_output_path().unwrap());
+        commands::format_rust(&config.rust_native_output_path().unwrap());
+    }
 
     if !config.skip_add_mod_to_lib {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
@@ -95,25 +117,21 @@ fn main() {
 
     let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile().unwrap();
-    with_changed_file(
-        &config.rust_output_path,
-        DUMMY_WIRE_CODE_FOR_BINDGEN,
-        || {
-            commands::bindgen_rust_to_dart(
-                &config.rust_crate_dir,
-                temp_bindgen_c_output_file
-                    .path()
-                    .as_os_str()
-                    .to_str()
-                    .unwrap(),
-                temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-                &config.dart_wire_class_name(),
-                c_struct_names,
-                &config.llvm_path,
-                &config.llvm_compiler_opts,
-            );
-        },
-    );
+    with_changed_file(&rust_native_path, DUMMY_WIRE_CODE_FOR_BINDGEN, || {
+        commands::bindgen_rust_to_dart(
+            &config.rust_crate_dir,
+            temp_bindgen_c_output_file
+                .path()
+                .as_os_str()
+                .to_str()
+                .unwrap(),
+            temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+            &config.dart_wire_class_name(),
+            c_struct_names,
+            &config.llvm_path,
+            &config.llvm_compiler_opts,
+        );
+    });
 
     let effective_func_names = [
         generated_rust.extern_func_names,
@@ -169,11 +187,13 @@ fn main() {
         )
         .unwrap();
     }
-    fs::write(
-        config.dart_wasm_output_path,
-        (generated_dart_file_prelude + &generated_dart_web_impl_raw).to_text(),
-    )
-    .unwrap();
+    if config.wasm {
+        fs::write(
+            &config.dart_wasm_output_path().unwrap(),
+            (generated_dart_file_prelude + &generated_dart_web_impl_raw).to_text(),
+        )
+        .unwrap();
+    }
 
     commands::format_dart(&config.dart_output_path, config.dart_format_line_length);
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {

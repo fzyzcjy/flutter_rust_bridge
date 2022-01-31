@@ -1,4 +1,5 @@
 use std::env;
+use std::ffi::OsString;
 use std::fs;
 use std::path::Path;
 
@@ -60,13 +61,10 @@ pub struct RawOpts {
 pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
-    pub dart_wasm_output_path: String,
     pub dart_decl_output_path: Option<String>,
     pub c_output_path: String,
     pub rust_crate_dir: String,
     pub rust_output_path: String,
-    pub rust_wasm_output_path: String,
-    pub rust_native_output_path: String,
     pub class_name: String,
     pub dart_format_line_length: i32,
     pub skip_add_mod_to_lib: bool,
@@ -95,14 +93,10 @@ pub fn parse(raw: RawOpts) -> Opts {
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))
     }));
     let dart_output_path = canon_path(&raw.dart_output);
-    let dart_wasm_output_path = path_with_file_suffix(&dart_output_path, "_web");
-    let rust_wasm_output_path = path_with_file_suffix(&rust_output_path, "_web");
-    let rust_native_output_path = path_with_file_suffix(&rust_output_path, "_native");
 
     Opts {
         rust_input_path,
         dart_output_path,
-        dart_wasm_output_path,
         dart_decl_output_path: raw
             .dart_decl_output
             .as_ref()
@@ -110,8 +104,6 @@ pub fn parse(raw: RawOpts) -> Opts {
         c_output_path,
         rust_crate_dir,
         rust_output_path,
-        rust_wasm_output_path,
-        rust_native_output_path,
         class_name,
         dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
         skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
@@ -174,20 +166,24 @@ fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
         .to_string())
 }
 
-fn path_with_file_suffix(path: &str, suffix: &str) -> String {
+/// Wraps `path` with `suffix` and `prefix`, e.g. "/foo/bar.rs" becomes
+/// "/foo/{prefix}/bar{suffix}.rs".
+/// Returns None for non-utf8 paths.
+fn wrap_path(path: &str, suffix: &str, prefix: Option<&str>) -> Option<String> {
     use std::path::*;
     let mut buf = PathBuf::from(path);
-    let name = buf
-        .file_name()
-        .expect("unexpected ...")
-        .to_str()
-        .unwrap()
-        .to_string();
-    let mut iter = name.splitn(2, '.');
-    let name = iter.next().expect("file name is empty.");
-    let rest = iter.next().expect("file name does not have an extension.");
+    let name = buf.file_name()?.to_str()?.to_string();
+    let (name, rest) = name.split_once('.')?;
     buf.set_file_name(format!("{}{}.{}", name, suffix, rest));
-    buf.to_string_lossy().to_string()
+    if let Some(prefix) = prefix {
+        let name = buf.file_name().map(OsString::from);
+        buf.pop();
+        buf.push(prefix);
+        if let Some(name) = name {
+            buf.push(name);
+        }
+    }
+    buf.to_str().map(ToString::to_string)
 }
 
 fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
@@ -227,16 +223,49 @@ impl Opts {
     pub fn dart_wire_class_name(&self) -> String {
         format!("{}Wire", self.class_name)
     }
+
+    pub fn rust_output_file_name(&self) -> Option<&str> {
+        file_prefix_stable(Path::new(&self.rust_output_path))
+    }
+
+    pub fn dart_wasm_output_path(&self) -> Option<String> {
+        wrap_path(&self.dart_output_path, "_web", None)
+    }
+
+    pub fn rust_wasm_output_path(&self) -> Option<String> {
+        wrap_path(&self.rust_output_path, "_web", self.rust_output_file_name())
+    }
+
+    pub fn rust_native_output_path(&self) -> Option<String> {
+        wrap_path(&self.rust_output_path, "_native", self.rust_output_file_name())
+    }
+}
+
+/// Replacement for `Path::file_prefix`[^1] on stable Rust, which as of writing
+/// has not been stabilized yet.
+/// Returns None for non-utf8 paths.
+///
+/// [^1]: https://doc.rust-lang.org/std/path/struct.Path.html#method.file_prefix
+#[inline]
+pub fn file_prefix_stable(path: &Path) -> Option<&str> {
+    Some(path.file_name()?.to_str()?.split_once('.')?.0)
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
     #[test]
-    fn test_path_with_file_suffix() {
+    fn test_wrap_path() {
         assert_eq!(
-            &path_with_file_suffix("some/path.rs", "_suffix"),
-            "some/path_suffix.rs"
+            wrap_path("some/path.rs", "_suffix", Some("parent")),
+            Some("some/parent/path_suffix.rs".into())
         );
+    }
+    #[test]
+    fn test_file_prefix_stable() {
+        assert_eq!(
+            file_prefix_stable(Path::new("foobar.foo.bar")),
+            Some("foobar")
+        )
     }
 }

@@ -21,6 +21,20 @@ pub fn generate(api_file: &ApiFile, rust_wire_mod: &str, wasm: bool) -> Output {
     }
 }
 
+pub fn generate_common_mod(prefix: &str) -> String {
+    format!(
+        r#"#[cfg(not(target_family = "wasm"))]
+        mod {prefix}_native;
+        #[cfg(target_arch = "wasm32")]
+        mod {prefix}_web;
+        #[cfg(not(target_family = "wasm"))]
+        pub use {prefix}_native::*;
+        #[cfg(target_arch = "wasm32")]
+        pub use {prefix}_web::*;"#,
+        prefix = prefix
+    )
+}
+
 struct Generator {
     extern_func_collector: ExternFuncCollector,
     wasm: bool,
