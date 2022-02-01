@@ -9,6 +9,12 @@ dylib := if os() == "windows" {
 } else {
     "libflutter_rust_bridge_example.so"
 }
+# Assuming llvm was installed using `brew install llvm`
+llvm := if os() == "macos" {
+    "--llvm-path /opt/homebrew/opt/llvm"
+} else {
+    ""
+}
 
 default: gen-bridge lint
 
@@ -19,17 +25,18 @@ build:
 alias g := gen-bridge
 gen-bridge: build
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
-                -d {{frb_pure}}/dart/lib/bridge_generated.dart
+                -d {{frb_pure}}/dart/lib/bridge_generated.dart \
+                {{llvm}}
     cd {{frb_pure}}/dart && dart run build_runner build
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
-                -c {{frb_flutter}}/ios/Runner/bridge_generated.h
+                -c {{frb_flutter}}/ios/Runner/bridge_generated.h \
+                {{llvm}}
 
 alias l := lint
 lint:
-    dart format --fix -l {{line_length}} {{frb_pure}}/dart/lib/bridge_generated.dart
-    dart format --fix -l {{line_length}} {{frb_pure}}/dart/lib/bridge_generated.freezed.dart
-    dart format --fix -l {{line_length}} {{frb_flutter}}/lib/bridge_generated.dart
+    dart format --fix -l {{line_length}} {{frb_pure}}/dart/lib/**.dart
+    dart format --fix -l {{line_length}} {{frb_flutter}}/lib/**.dart
 
 alias t := test
 test: test-pure test-integration
@@ -48,4 +55,4 @@ clean:
     cd {{frb_flutter}} && flutter clean
     cd {{frb_flutter}}/rust && cargo clean
 
-# vim:expandtab:tabstop=4:shiftwidth=4
+# vim:expandtab:ts=4:sw=4

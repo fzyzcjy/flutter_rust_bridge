@@ -638,7 +638,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       ));
 
   Future<OpaqueBag> handleOpaque({OpaqueBag? value, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) => inner.wire_handle_opaque(port, _api2wire_opt_box_autoadd_opaque_bag(value)),
+        callFfi: (port_) => inner.wire_handle_opaque(port_, _api2wire_opt_box_autoadd_opaque_bag(value)),
         parseSuccessData: _wire2api_opaque_bag,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "handle_opaque",
@@ -649,7 +649,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       ));
 
   Future<String?> handleOpaqueRepr({required RwLockI32 value, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) => inner.wire_handle_opaque_repr(port, _api2wire_RwLockI32(value)),
+        callFfi: (port_) => inner.wire_handle_opaque_repr(port_, _api2wire_RwLockI32(value)),
         parseSuccessData: _wire2api_opt_String,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "handle_opaque_repr",
