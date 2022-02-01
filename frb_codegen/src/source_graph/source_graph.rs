@@ -3,7 +3,8 @@ use std::{fmt::Debug, fs, path::PathBuf};
 use cargo_metadata::MetadataCommand;
 use syn::{Ident, UseTree};
 
-/// Represents a crate, including a map of its imports.
+/// Represents a crate, including a map of its modules, imports, structs and
+/// enums.
 #[derive(Debug)]
 pub struct Crate {
     pub name: String,
@@ -416,11 +417,3 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
 
     result.into_iter().map(|val| val.0).collect()
 }
-
-// mod asdf {
-//     pub mod abc {
-//         pub const A: i32 = 1;
-//     }
-// }
-
-// const B: i32 = asdf::abc::A;
