@@ -165,7 +165,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
     let wire_param_list = func
         .mode
         .has_port_argument()
-        .then(|| "port".to_owned())
+        .then(|| "port_".to_owned())
         .into_iter()
         .chain(func.inputs.iter().map(|input| {
             // edge case: ffigen performs its own bool-to-int conversions
@@ -234,7 +234,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
         ),
         _ => format!(
             "{} => {}(FlutterRustBridgeTask(
-            callFfi: (port) => inner.{}({}),
+            callFfi: (port_) => inner.{}({}),
             parseSuccessData: _wire2api_{},
             {}
         ));",

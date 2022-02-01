@@ -8,6 +8,6 @@ name = "flutter_rust_bridge_example"
 crate-type = ["cdylib"]
 
 [dependencies]
-anyhow = { version = "1.0.52", features = ["backtrace"] }
+anyhow = { version = "1.0.53", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust" }
 lazy_static = "1.4.0"

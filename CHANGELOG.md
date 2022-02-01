@@ -1,3 +1,11 @@
+## 1.15.1
+
+* Bump dependency version #311
+
+## 1.15.0
+
+* Fix potential name collision with port argument #305 (thanks @valeth)
+
 ## 1.14.0
 
 * Separate generated definitions from implementations #298
