@@ -214,15 +214,15 @@ external void wire_handle_customized_struct(int port_, wire_Customized val);
 @JS(r"wasm_bindgen.wire_handle_enum_struct")
 external void wire_handle_enum_struct(int port_, wire_KitchenSink val);
 
-String _wire2api_String(dynamic /*String*/ raw) {
+String _wire2api_String(dynamic raw) {
   return raw as String;
 }
 
-List<String> _wire2api_StringList(dynamic /*List<String>*/ raw) {
+List<String> _wire2api_StringList(dynamic raw) {
   return raw as List<String>;
 }
 
-Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic /*Uint8List*/ raw) {
+Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
 }
 
@@ -235,87 +235,87 @@ Attribute _wire2api_attribute(dynamic raw) {
   );
 }
 
-bool _wire2api_bool(dynamic /*bool*/ raw) {
+bool _wire2api_bool(dynamic raw) {
   return raw as bool;
 }
 
-Attribute _wire2api_box_autoadd_attribute(dynamic /*wire_Attribute*/ raw) {
+Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
   return _wire2api_attribute(raw);
 }
 
-bool _wire2api_box_autoadd_bool(dynamic /*bool*/ raw) {
+bool _wire2api_box_autoadd_bool(dynamic raw) {
   return _wire2api_bool(raw);
 }
 
-Customized _wire2api_box_autoadd_customized(dynamic /*wire_Customized*/ raw) {
+Customized _wire2api_box_autoadd_customized(dynamic raw) {
   return _wire2api_customized(raw);
 }
 
-ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic /*wire_ExoticOptionals*/ raw) {
+ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic raw) {
   return _wire2api_exotic_optionals(raw);
 }
 
-double _wire2api_box_autoadd_f64(dynamic /*double*/ raw) {
+double _wire2api_box_autoadd_f64(dynamic raw) {
   return _wire2api_f64(raw);
 }
 
-int _wire2api_box_autoadd_i32(dynamic /*int*/ raw) {
+int _wire2api_box_autoadd_i32(dynamic raw) {
   return _wire2api_i32(raw);
 }
 
-int _wire2api_box_autoadd_i64(dynamic /*BigInt*/ raw) {
+int _wire2api_box_autoadd_i64(dynamic raw) {
   return _wire2api_i64(raw);
 }
 
-KitchenSink _wire2api_box_autoadd_kitchen_sink(dynamic /*wire_KitchenSink*/ raw) {
+KitchenSink _wire2api_box_autoadd_kitchen_sink(dynamic raw) {
   return _wire2api_kitchen_sink(raw);
 }
 
-MySize _wire2api_box_autoadd_my_size(dynamic /*wire_MySize*/ raw) {
+MySize _wire2api_box_autoadd_my_size(dynamic raw) {
   return _wire2api_my_size(raw);
 }
 
-MyTreeNode _wire2api_box_autoadd_my_tree_node(dynamic /*wire_MyTreeNode*/ raw) {
+MyTreeNode _wire2api_box_autoadd_my_tree_node(dynamic raw) {
   return _wire2api_my_tree_node(raw);
 }
 
-NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic /*wire_NewTypeInt*/ raw) {
+NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
   return _wire2api_new_type_int(raw);
 }
 
-bool _wire2api_box_bool(dynamic /*bool*/ raw) {
+bool _wire2api_box_bool(dynamic raw) {
   return _wire2api_bool(raw);
 }
 
-ExoticOptionals _wire2api_box_exotic_optionals(dynamic /*wire_ExoticOptionals*/ raw) {
+ExoticOptionals _wire2api_box_exotic_optionals(dynamic raw) {
   return _wire2api_exotic_optionals(raw);
 }
 
-double _wire2api_box_f64(dynamic /*double*/ raw) {
+double _wire2api_box_f64(dynamic raw) {
   return _wire2api_f64(raw);
 }
 
-int _wire2api_box_i32(dynamic /*int*/ raw) {
+int _wire2api_box_i32(dynamic raw) {
   return _wire2api_i32(raw);
 }
 
-int _wire2api_box_i64(dynamic /*BigInt*/ raw) {
+int _wire2api_box_i64(dynamic raw) {
   return _wire2api_i64(raw);
 }
 
-int _wire2api_box_i8(dynamic /*int*/ raw) {
+int _wire2api_box_i8(dynamic raw) {
   return _wire2api_i8(raw);
 }
 
-KitchenSink _wire2api_box_kitchen_sink(dynamic /*wire_KitchenSink*/ raw) {
+KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
   return _wire2api_kitchen_sink(raw);
 }
 
-MySize _wire2api_box_my_size(dynamic /*wire_MySize*/ raw) {
+MySize _wire2api_box_my_size(dynamic raw) {
   return _wire2api_my_size(raw);
 }
 
-int _wire2api_box_u8(dynamic /*int*/ raw) {
+int _wire2api_box_u8(dynamic raw) {
   return _wire2api_u8(raw);
 }
 
@@ -351,11 +351,11 @@ ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
   );
 }
 
-double _wire2api_f32(dynamic /*double*/ raw) {
+double _wire2api_f32(dynamic raw) {
   return raw as double;
 }
 
-double _wire2api_f64(dynamic /*double*/ raw) {
+double _wire2api_f64(dynamic raw) {
   return raw as double;
 }
 
@@ -367,15 +367,15 @@ Float64List _wire2api_float_64_list(dynamic raw) {
   return raw as Float64List;
 }
 
-int _wire2api_i32(dynamic /*int*/ raw) {
+int _wire2api_i32(dynamic raw) {
   return raw as int;
 }
 
-int _wire2api_i64(dynamic /*BigInt*/ raw) {
-  return raw as int;
+int _wire2api_i64(dynamic raw) {
+  return (raw as BigInt).toInt();
 }
 
-int _wire2api_i8(dynamic /*int*/ raw) {
+int _wire2api_i8(dynamic raw) {
   return raw as int;
 }
 
@@ -423,19 +423,19 @@ KitchenSink _wire2api_kitchen_sink(dynamic raw) {
   }
 }
 
-List<Attribute> _wire2api_list_attribute(dynamic /*List<wire_Attribute>*/ raw) {
+List<Attribute> _wire2api_list_attribute(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_attribute).toList();
 }
 
-List<MySize> _wire2api_list_my_size(dynamic /*List<wire_MySize>*/ raw) {
+List<MySize> _wire2api_list_my_size(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_my_size).toList();
 }
 
-List<MyTreeNode> _wire2api_list_my_tree_node(dynamic /*List<wire_MyTreeNode>*/ raw) {
+List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
 }
 
-List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic /*List<wire_Attribute?>*/ raw) {
+List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
 }
 
@@ -571,15 +571,15 @@ Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_uint_8_list(raw);
 }
 
-int _wire2api_u32(dynamic /*int*/ raw) {
+int _wire2api_u32(dynamic raw) {
   return raw as int;
 }
 
-int _wire2api_u64(dynamic /*BigInt*/ raw) {
-  return raw as int;
+int _wire2api_u64(dynamic raw) {
+  return (raw as BigInt).toInt();
 }
 
-int _wire2api_u8(dynamic /*int*/ raw) {
+int _wire2api_u8(dynamic raw) {
   return raw as int;
 }
 
@@ -741,7 +741,7 @@ int _api2wire_i32(int raw) {
 }
 
 BigInt _api2wire_i64(int raw) {
-  return raw;
+  return BigInt.from(raw);
 }
 
 int _api2wire_i8(int raw) {
@@ -753,7 +753,7 @@ Int32List _api2wire_int_32_list(Int32List raw) {
 }
 
 List<BigInt> _api2wire_int_64_list(Int64List raw) {
-  return raw;
+  throw UnsupportedError('not supported on web');
 }
 
 Int8List _api2wire_int_8_list(Int8List raw) {
@@ -762,53 +762,45 @@ Int8List _api2wire_int_8_list(Int8List raw) {
 
 wire_KitchenSink _api2wire_kitchen_sink(KitchenSink raw) {
   if (raw is Empty) {
-    return wire_KitchenSink(
-      tag: 0,
-      kind: null,
-    );
+    return wire_KitchenSink(tag: 0, kind: null);
   }
   if (raw is Primitives) {
     return wire_KitchenSink(
-      tag: 1,
-      kind: KitchenSink_Primitives(
-        int32: _api2wire_i32(raw.int32),
-        float64: _api2wire_f64(raw.float64),
-        boolean: _api2wire_bool(raw.boolean),
-      ),
-    );
+        tag: 1,
+        kind: KitchenSink_Primitives(
+          int32: _api2wire_i32(raw.int32),
+          float64: _api2wire_f64(raw.float64),
+          boolean: _api2wire_bool(raw.boolean),
+        ));
   }
   if (raw is Nested) {
     return wire_KitchenSink(
-      tag: 2,
-      kind: KitchenSink_Nested(
-        field0: _api2wire_box_kitchen_sink(raw.field0),
-      ),
-    );
+        tag: 2,
+        kind: KitchenSink_Nested(
+          field0: _api2wire_box_kitchen_sink(raw.field0),
+        ));
   }
   if (raw is Optional) {
     return wire_KitchenSink(
-      tag: 3,
-      kind: KitchenSink_Optional(
-        field0: _api2wire_opt_box_autoadd_i32(raw.field0),
-        field1: _api2wire_opt_box_autoadd_i32(raw.field1),
-      ),
-    );
+        tag: 3,
+        kind: KitchenSink_Optional(
+          field0: _api2wire_opt_box_autoadd_i32(raw.field0),
+          field1: _api2wire_opt_box_autoadd_i32(raw.field1),
+        ));
   }
   if (raw is Buffer) {
     return wire_KitchenSink(
-      tag: 4,
-      kind: KitchenSink_Buffer(
-        field0: _api2wire_ZeroCopyBuffer_Uint8List(raw.field0),
-      ),
-    );
+        tag: 4,
+        kind: KitchenSink_Buffer(
+          field0: _api2wire_ZeroCopyBuffer_Uint8List(raw.field0),
+        ));
   }
   if (raw is Enums) {
     return wire_KitchenSink(
-      tag: 5,
-      kind: KitchenSink_Enums(
-        field0: _api2wire_weekdays(raw.field0),
-      ),
-    );
+        tag: 5,
+        kind: KitchenSink_Enums(
+          field0: _api2wire_weekdays(raw.field0),
+        ));
   }
   throw Exception('unreachable');
 }
@@ -954,7 +946,7 @@ int _api2wire_u32(int raw) {
 }
 
 BigInt _api2wire_u64(int raw) {
-  return raw;
+  return BigInt.from(raw);
 }
 
 int _api2wire_u8(int raw) {
@@ -962,7 +954,7 @@ int _api2wire_u8(int raw) {
 }
 
 List<BigInt> _api2wire_uint_64_list(Uint64List raw) {
-  return raw;
+  throw UnsupportedError('not supported on web');
 }
 
 Uint8List _api2wire_uint_8_list(Uint8List raw) {

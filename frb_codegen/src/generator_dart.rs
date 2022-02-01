@@ -793,6 +793,12 @@ fn generate_wire_func(func: &ApiFunc) -> String {
 
 fn generate_wasm_api2wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
     let body: Cow<str> = match ty {
+        Primitive(ApiTypePrimitive::I64 | ApiTypePrimitive::U64) => {
+            "return BigInt.from(raw);".into()
+        }
+        PrimitiveList(ApiTypePrimitiveList {
+            primitive: ApiTypePrimitive::I64 | ApiTypePrimitive::U64,
+        }) => "throw UnsupportedError('not supported on web');".into(),
         Delegate(_) | Primitive(_) | PrimitiveList(_) => "return raw;".into(),
         StructRef(st) => {
             let wire = st.rust_wire_type();
@@ -859,7 +865,7 @@ fn generate_wasm_api2wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
                     };
                     format!(
                         "if (raw is {api}) {{
-                            return {wire}(tag: {tag}, kind: {kind},);
+                            return {wire}(tag: {tag}, kind: {kind});
                         }}",
                         api = variant.name.rust_style(),
                         tag = idx,
@@ -884,6 +890,9 @@ fn generate_wasm_api2wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
 
 fn generate_wasm_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
     let body: Cow<str> = match ty {
+        Primitive(ApiTypePrimitive::I64 | ApiTypePrimitive::U64) => {
+            "return (raw as BigInt).toInt();".into()
+        }
         Delegate(_) | Primitive(_) => format!("return raw as {};", ty.dart_api_type()).into(),
         GeneralList(list) => format!(
             "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
@@ -895,12 +904,11 @@ fn generate_wasm_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
         _ => return generate_wire2api_func(ty, api_file),
     };
     format!(
-        "{} _wire2api_{}(dynamic /*{}*/ raw) {{
+        "{} _wire2api_{}(dynamic raw) {{
             {}
         }}",
         ty.dart_api_type(),
         ty.safe_ident(),
-        ty.dart_js_wire_type(),
         body
     )
 }
