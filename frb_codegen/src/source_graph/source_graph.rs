@@ -1,7 +1,7 @@
 use std::{fmt::Debug, fs, path::PathBuf};
 
 use cargo_metadata::MetadataCommand;
-use syn::Ident;
+use syn::{Ident, UseTree};
 
 /// Represents a crate, including a map of its imports.
 #[derive(Debug)]
@@ -52,7 +52,7 @@ impl Crate {
                 visibility: Visibility::Public,
                 file_path: root_src_file.clone(),
                 module_path: vec!["crate".to_string()],
-                root: Some(ModuleSource::File(file_ast)),
+                source: Some(ModuleSource::File(file_ast)),
                 scope: None,
             },
         };
@@ -87,7 +87,10 @@ fn syn_vis_to_visibility(vis: &syn::Visibility) -> Visibility {
 }
 
 #[derive(Debug)]
-pub struct Import;
+pub struct Import {
+    pub path: Vec<String>,
+    pub visibility: Visibility,
+}
 
 #[derive(Debug)]
 pub enum ModuleSource {
@@ -119,7 +122,7 @@ pub struct Module {
     pub visibility: Visibility,
     pub file_path: PathBuf,
     pub module_path: Vec<String>,
-    pub root: Option<ModuleSource>,
+    pub source: Option<ModuleSource>,
     pub scope: Option<ModuleScope>,
 }
 
@@ -129,7 +132,7 @@ impl Debug for Module {
             .field("visibility", &self.visibility)
             .field("module_path", &self.module_path)
             .field("file_path", &self.file_path)
-            .field("root", &"omitted")
+            .field("source", &"omitted")
             .field("scope", &self.scope)
             .finish()
     }
@@ -137,7 +140,7 @@ impl Debug for Module {
 
 impl Module {
     pub fn is_resolved(&self) -> bool {
-        self.scope.is_some() && self.root.is_some()
+        self.scope.is_some() && self.source.is_some()
     }
 
     pub fn resolve(&mut self) {
@@ -151,7 +154,7 @@ impl Module {
         let mut scope_structs = Vec::new();
         let mut scope_enums = Vec::new();
 
-        let items = match self.root.as_ref().unwrap() {
+        let items = match self.source.as_ref().unwrap() {
             ModuleSource::File(file) => &file.items,
             ModuleSource::ModuleInFile(items) => items,
         };
@@ -182,7 +185,7 @@ impl Module {
                                 visibility: syn_vis_to_visibility(&item_mod.vis),
                                 file_path: self.file_path.clone(),
                                 module_path,
-                                root: Some(ModuleSource::ModuleInFile(content.1.clone())),
+                                source: Some(ModuleSource::ModuleInFile(content.1.clone())),
                                 scope: None,
                             };
 
@@ -206,7 +209,7 @@ impl Module {
 
                             let file_exists = file_path.exists();
 
-                            let root = if file_exists {
+                            let source = if file_exists {
                                 let source_rust_content = fs::read_to_string(&file_path).unwrap();
                                 Some(ModuleSource::File(
                                     syn::parse_file(&source_rust_content).unwrap(),
@@ -219,7 +222,7 @@ impl Module {
                                 visibility: syn_vis_to_visibility(&item_mod.vis),
                                 file_path,
                                 module_path,
-                                root,
+                                source,
                                 scope: None,
                             };
 
@@ -244,8 +247,174 @@ impl Module {
     }
 
     fn resolve_imports(&mut self) {
-        // let mut imports = &self.scope.as_ref().unwrap().imports;
+        let imports = &mut self.scope.as_mut().unwrap().imports;
+
+        let items = match self.source.as_ref().unwrap() {
+            ModuleSource::File(file) => &file.items,
+            ModuleSource::ModuleInFile(items) => items,
+        };
+
+        for item in items.iter() {
+            match item {
+                syn::Item::Use(item_use) => {
+                    let flattened_imports = flatten_use_tree(&item_use.tree);
+
+                    for import in flattened_imports {
+                        imports.push(Import {
+                            path: import,
+                            visibility: syn_vis_to_visibility(&item_use.vis),
+                        });
+                    }
+                }
+                _ => {}
+            }
+        }
     }
+}
+
+// Takes a use tree and returns a flat list of use paths (list of string tokens)
+fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
+    // Vec<(path, is_complete)>
+    let mut result = vec![(vec![], false)];
+
+    let mut counter: usize = 0;
+
+    loop {
+        counter += 1;
+
+        if counter > 10000 {
+            panic!("flatten_use_tree: Use statement complexity limit exceeded. This is probably a bug.")
+        }
+
+        // If all paths are complete, break from the loop
+        if result.iter().fold(true, |acc, current| acc && current.1) {
+            break;
+        }
+
+        let mut items_to_push = Vec::new();
+
+        for path_tuple in &mut result {
+            let path = &mut path_tuple.0;
+            let is_complete = &mut path_tuple.1;
+
+            if *is_complete {
+                continue;
+            }
+
+            let mut tree_cursor = use_tree;
+
+            for path_item in path.iter() {
+                match tree_cursor {
+                    UseTree::Path(use_path) => {
+                        let ident = use_path.ident.to_string();
+                        if *path_item != ident {
+                            panic!("This ident did not match the one we already collected. This is a bug.");
+                        }
+                        tree_cursor = use_path.tree.as_ref();
+                    },
+                    UseTree::Group(use_group) => {
+                        let mut moved_tree_cursor = false;
+
+                        for tree in use_group.items.iter() {
+                            match tree {
+                                UseTree::Path(use_path) => {
+                                    if *path_item == use_path.ident.to_string() {
+                                        tree_cursor = use_path.tree.as_ref();
+                                        moved_tree_cursor = true;
+                                        break;
+                                    }
+                                }
+                                // Since we're not matching UseTree::Group here, a::b::{{c}, {d}} might
+                                // break. But also why would anybody do that
+                                _ => unreachable!(),
+                            }
+                        }
+
+                        if !moved_tree_cursor {
+                            unreachable!();
+                        }
+                    }
+                    _ => unreachable!(),
+                }
+            }
+
+            match tree_cursor {
+                UseTree::Name(use_name) => {
+                    path.push(use_name.ident.to_string());
+                    *is_complete = true;
+                },
+                UseTree::Path(use_path) => {
+                    path.push(use_path.ident.to_string());
+                },
+                UseTree::Glob(_) => {
+                    path.push("*".to_string());
+                    *is_complete = true;
+                },
+                UseTree::Group(use_group) => {
+                    // We'll modify the first one in-place, and make clones for
+                    // all subsequent ones
+                    let mut first: bool = true;
+                    // Capture the path in this state, since we're about to
+                    // modify it
+                    let path_copy = path.clone();
+                    for tree in use_group.items.iter() {
+                        let mut new_path_tuple = if first {
+                            None
+                        } else {
+                            let new_path = path_copy.clone();
+                            items_to_push.push((new_path, false));
+                            Some(items_to_push.iter_mut().last().unwrap())
+                        };
+
+                        match tree {
+                            UseTree::Path(use_path) => {
+                                let ident = use_path.ident.to_string();
+
+                                if first {
+                                    path.push(ident);
+                                } else {
+                                    new_path_tuple.unwrap().0.push(ident);
+                                }
+                            },
+                            UseTree::Name(use_name) => {
+                                let ident = use_name.ident.to_string();
+
+                                if first {
+                                    path.push(ident);
+                                    *is_complete = true;
+                                } else {
+                                    let path_tuple = new_path_tuple.as_mut().unwrap();
+                                    path_tuple.0.push(ident);
+                                    path_tuple.1 = true;
+                                }
+                            },
+                            UseTree::Glob(_) => {
+                                if first {
+                                    path.push("*".to_string());
+                                    *is_complete = true;
+                                } else {
+                                    let path_tuple = new_path_tuple.as_mut().unwrap();
+                                    path_tuple.0.push("*".to_string());
+                                    path_tuple.1 = true;
+                                }
+                            },
+                            UseTree::Group(_) => panic!("Directly-nested use groups ({}) are not supported by flutter_rust_bridge. Use {} instead.", "use a::{{b}, c}", "a::{b, c}"),
+                            UseTree::Rename(_) => panic!("Import renames (use a::b as c) are not currently supported by flutter_rust_bridge"),
+                        }
+                        
+                        first = false;
+                    }
+                },
+                UseTree::Rename(_) => panic!("Import renames (use a::b as c) are not currently supported by flutter_rust_bridge"),
+            }
+        }
+
+        for item in items_to_push {
+            result.push(item);
+        }
+    }
+
+    result.into_iter().map(|val| val.0).collect()
 }
 
 // mod asdf {
