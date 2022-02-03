@@ -123,7 +123,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 }
             });
 
-            let (bytes, success) = catch_unwind_result.unwrap_or_else(|error| {
+            let (bytes, _success) = catch_unwind_result.unwrap_or_else(|error| {
                 (
                     self.error_handler.handle_error_sync(Error::Panic(error)),
                     false,
@@ -132,16 +132,29 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 
             let (ptr, len) = into_leak_vec_ptr(bytes);
 
-            WireSyncReturnStruct { ptr, len, success }
+            #[cfg(not(target_family = "wasm"))]
+            return WireSyncReturnStruct { ptr, len, success: _success };
+
+            #[cfg(target_arch = "wasm32")]
+            unsafe {
+                WireSyncReturnStruct::view_mut_raw(ptr, len as usize)
+            }
         })
-        .unwrap_or_else(|_| WireSyncReturnStruct {
-            // return the simplest thing possible. Normally the inner [catch_unwind] should catch
-            // panic. If no, here is our *LAST* chance before encountering undefined behavior.
-            // We just return this data that does not have much sense, but at least much better
-            // than let panic happen across FFI boundry - which is undefined behavior.
-            ptr: ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
-            len: 0,
-            success: false,
+        .unwrap_or_else(|_| {
+            #[cfg(not(target_family = "wasm"))]
+            return WireSyncReturnStruct {
+                // return the simplest thing possible. Normally the inner [catch_unwind] should catch
+                // panic. If no, here is our *LAST* chance before encountering undefined behavior.
+                // We just return this data that does not have much sense, but at least much better
+                // than let panic happen across FFI boundry - which is undefined behavior.
+                ptr: ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
+                len: 0,
+                success: false,
+            };
+            #[cfg(target_arch = "wasm32")]
+            unsafe {
+                WireSyncReturnStruct::view_mut_raw(ManuallyDrop::new([]).as_mut_ptr(), 0)
+            }
         })
     }
 }
