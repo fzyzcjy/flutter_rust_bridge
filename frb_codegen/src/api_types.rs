@@ -549,6 +549,7 @@ impl ApiTypeChild for ApiTypeStructRef {
 #[derive(Debug, Clone)]
 pub struct ApiStruct {
     pub name: String,
+    pub path: Option<Vec<String>>,
     pub fields: Vec<ApiField>,
     pub is_fields_named: bool,
     pub comments: Vec<Comment>,
@@ -759,13 +760,14 @@ impl ApiTypeChild for ApiTypeEnumRef {
 #[derive(Debug, Clone)]
 pub struct ApiEnum {
     pub name: String,
+    pub path: Vec<String>,
     pub comments: Vec<Comment>,
     _variants: Vec<ApiVariant>,
     _is_struct: bool,
 }
 
 impl ApiEnum {
-    pub fn new(name: String, comments: Vec<Comment>, mut variants: Vec<ApiVariant>) -> Self {
+    pub fn new(name: String, path: Vec<String>, comments: Vec<Comment>, mut variants: Vec<ApiVariant>) -> Self {
         fn wrap_box(ty: ApiType) -> ApiType {
             match ty {
                 StructRef(_)
@@ -805,6 +807,7 @@ impl ApiEnum {
         }
         Self {
             name,
+            path,
             comments,
             _variants: variants,
             _is_struct,

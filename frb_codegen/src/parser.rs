@@ -11,6 +11,7 @@ use ApiType::*;
 
 use crate::api_types::*;
 use crate::generator_rust::HANDLER_NAME;
+use crate::source_graph::{Crate, Enum, Struct};
 
 type StructMap<'a> = HashMap<String, &'a ItemStruct>;
 type EnumMap<'a> = HashMap<String, &'a ItemEnum>;
@@ -35,23 +36,29 @@ lazy_static! {
 }
 
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &String) -> ApiFile {
-    let crate_graph = crate::source_graph::source_graph::Crate::new(manifest_path);
+    let crate_map = Crate::new(manifest_path);
 
-    debug!("crate repr: {:#?}", crate_graph);
+    // debug!("crate repr: {:#?}", crate_map);
 
     let src_fns = extract_fns_from_file(&file);
 
-    let relevant_items = get_relevant_types(&src_fns);
+    // let relevant_items = get_relevant_types(&src_fns);
 
-    debug!("{:#?}", relevant_items);
+    // debug!("{:#?}", relevant_items);
 
-    let SrcItems {
-        src_fns: _src_fns,
-        src_struct_map,
-        src_enums,
-    } = extract_items_from_file(&file);
+    let mut src_structs = HashMap::new();
+    crate_map.root_module.collect_structs(&mut src_structs);
+
+    let mut src_enums = HashMap::new();
+    crate_map.root_module.collect_enums(&mut src_enums);
+
+    // let SrcItems {
+    //     src_fns: _src_fns,
+    //     src_struct_map: _src_structs,
+    //     src_enums: _src_enums,
+    // } = extract_items_from_file(&file);
     let parser = Parser {
-        src_struct_map,
+        src_structs,
         src_enums,
         struct_pool: HashMap::new(),
         enum_pool: HashMap::new(),
@@ -62,11 +69,11 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &String) -> A
 }
 
 struct Parser<'a> {
-    src_struct_map: HashMap<String, &'a ItemStruct>,
+    src_structs: HashMap<String, &'a Struct>,
     parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: ApiStructPool,
 
-    src_enums: HashMap<String, &'a ItemEnum>,
+    src_enums: HashMap<String, &'a Enum>,
     parsed_enums: HashSet<String>,
     enum_pool: ApiEnumPool,
 }
@@ -246,7 +253,7 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_struct(&mut self, ty: &str) -> Option<ApiType> {
-        if !self.src_struct_map.contains_key(ty) {
+        if !self.src_structs.contains_key(ty) {
             return None;
         }
 
@@ -282,10 +289,12 @@ impl<'a> Parser<'a> {
     }
 
     fn parse_enum(&mut self, ty: &str) -> ApiEnum {
-        let src = self.src_enums[ty];
-        let name = src.ident.to_string();
-        let comments = extract_comments(&src.attrs);
-        let variants = src
+        let src_enum = self.src_enums[ty];
+        let name = src_enum.ident.to_string();
+        let path = src_enum.path.clone();
+        let comments = extract_comments(&src_enum.src.attrs);
+        let variants = src_enum
+            .src
             .variants
             .iter()
             .map(|variant| ApiVariant {
@@ -293,41 +302,49 @@ impl<'a> Parser<'a> {
                 comments: extract_comments(&variant.attrs),
                 kind: match variant.fields.iter().next() {
                     None => ApiVariantKind::Value,
-                    Some(Field { attrs, ident, .. }) => ApiVariantKind::Struct(ApiStruct {
-                        name: variant.ident.to_string(),
-                        is_fields_named: ident.is_some(),
-                        comments: extract_comments(attrs),
-                        fields: variant
-                            .fields
-                            .iter()
-                            .enumerate()
-                            .map(|(idx, field)| ApiField {
-                                name: ApiIdent::new(
-                                    field
-                                        .ident
-                                        .as_ref()
-                                        .map(ToString::to_string)
-                                        .unwrap_or_else(|| format!("field{}", idx)),
-                                ),
-                                ty: self.parse_type(&type_to_string(&field.ty)),
-                                comments: extract_comments(&field.attrs),
-                            })
-                            .collect(),
-                    }),
+                    Some(Field {
+                        attrs,
+                        ident: field_ident,
+                        ..
+                    }) => {
+                        let variant_ident = variant.ident.to_string();
+                        ApiVariantKind::Struct(ApiStruct {
+                            name: variant_ident,
+                            path: None,
+                            is_fields_named: field_ident.is_some(),
+                            comments: extract_comments(attrs),
+                            fields: variant
+                                .fields
+                                .iter()
+                                .enumerate()
+                                .map(|(idx, field)| ApiField {
+                                    name: ApiIdent::new(
+                                        field
+                                            .ident
+                                            .as_ref()
+                                            .map(ToString::to_string)
+                                            .unwrap_or_else(|| format!("field{}", idx)),
+                                    ),
+                                    ty: self.parse_type(&type_to_string(&field.ty)),
+                                    comments: extract_comments(&field.attrs),
+                                })
+                                .collect(),
+                        })
+                    }
                 },
             })
             .collect();
-        ApiEnum::new(name, comments, variants)
+        ApiEnum::new(name, path, comments, variants)
     }
 
     fn parse_struct_core(&mut self, ty: &str) -> ApiStruct {
-        let item_struct = self.src_struct_map[ty];
+        let src_struct = self.src_structs[ty];
         let mut fields = Vec::new();
 
-        let (is_fields_named, struct_fields) = match &item_struct.fields {
+        let (is_fields_named, struct_fields) = match &src_struct.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
-            _ => panic!("unsupported type: {:?}", item_struct.fields),
+            _ => panic!("unsupported type: {:?}", src_struct.src.fields),
         };
 
         for (idx, field) in struct_fields.iter().enumerate() {
@@ -344,10 +361,12 @@ impl<'a> Parser<'a> {
             });
         }
 
-        let name = item_struct.ident.to_string();
-        let comments = extract_comments(&item_struct.attrs);
+        let name = src_struct.ident.to_string();
+        let path = Some(src_struct.path.clone());
+        let comments = extract_comments(&src_struct.src.attrs);
         ApiStruct {
             name,
+            path,
             fields,
             is_fields_named,
             comments,

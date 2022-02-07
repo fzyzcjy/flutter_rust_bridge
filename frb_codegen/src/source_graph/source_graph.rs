@@ -1,11 +1,21 @@
-use std::{fmt::Debug, fs, path::PathBuf};
+/*
+    Things this doesn't currently support that it might need to later:
+
+    - Import renames (use a::b as c)
+    - Imports that start with two colons (use ::a::b)
+    - As of writing, flutter_rust_bridge doesn't support imports from outside
+      the current crate, though that's outside the scope of the code in this
+      file
+*/
+
+use std::{fmt::Debug, fs, path::PathBuf, collections::HashMap};
 
 use cargo_metadata::MetadataCommand;
-use syn::{Ident, UseTree};
+use syn::{Ident, UseTree, ItemStruct, ItemEnum};
 
 /// Represents a crate, including a map of its modules, imports, structs and
 /// enums.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Crate {
     pub name: String,
     pub manifest_path: PathBuf,
@@ -70,7 +80,7 @@ impl Crate {
 }
 
 // Mirrors syn::Visibility, but can be created without a token
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Visibility {
     Public,
     Crate,
@@ -87,31 +97,55 @@ fn syn_vis_to_visibility(vis: &syn::Visibility) -> Visibility {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Import {
     pub path: Vec<String>,
     pub visibility: Visibility,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum ModuleSource {
     File(syn::File),
     ModuleInFile(Vec<syn::Item>),
 }
 
-#[derive(Debug)]
+#[derive(Clone)]
 pub struct Struct {
     pub ident: Ident,
+    pub src: ItemStruct,
     pub visibility: Visibility,
+    pub path: Vec<String>,
 }
 
-#[derive(Debug)]
+impl Debug for Struct {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Struct")
+            .field("ident", &self.ident)
+            .field("src", &"omitted")
+            .field("visibility", &self.visibility)
+            .field("path", &self.path).finish()
+    }
+}
+
+#[derive(Clone)]
 pub struct Enum {
     pub ident: Ident,
+    pub src: ItemEnum,
     pub visibility: Visibility,
+    pub path: Vec<String>,
 }
 
-#[derive(Debug)]
+impl Debug for Enum {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Enum")
+            .field("ident", &self.ident)
+            .field("src", &"omitted")
+            .field("visibility", &self.visibility)
+            .field("path", &self.path).finish()
+    }
+}
+
+#[derive(Debug, Clone)]
 pub struct ModuleScope {
     pub modules: Vec<Module>,
     pub enums: Vec<Enum>,
@@ -119,6 +153,7 @@ pub struct ModuleScope {
     pub imports: Vec<Import>,
 }
 
+#[derive(Clone)]
 pub struct Module {
     pub visibility: Visibility,
     pub file_path: PathBuf,
@@ -140,10 +175,6 @@ impl Debug for Module {
 }
 
 impl Module {
-    pub fn is_resolved(&self) -> bool {
-        self.scope.is_some() && self.source.is_some()
-    }
-
     pub fn resolve(&mut self) {
         self.resolve_modules();
         self.resolve_imports();
@@ -165,13 +196,25 @@ impl Module {
                 syn::Item::Struct(item_struct) => {
                     scope_structs.push(Struct {
                         ident: item_struct.ident.clone(),
+                        src: item_struct.clone(),
                         visibility: syn_vis_to_visibility(&item_struct.vis),
+                        path: {
+                            let mut path = self.module_path.clone();
+                            path.push(item_struct.ident.to_string());
+                            path
+                        },
                     });
                 }
                 syn::Item::Enum(item_enum) => {
                     scope_enums.push(Enum {
                         ident: item_enum.ident.clone(),
+                        src: item_enum.clone(),
                         visibility: syn_vis_to_visibility(&item_enum.vis),
+                        path: {
+                            let mut path = self.module_path.clone();
+                            path.push(item_enum.ident.to_string());
+                            path
+                        },
                     });
                 }
                 syn::Item::Mod(item_mod) => {
@@ -269,6 +312,26 @@ impl Module {
                 }
                 _ => {}
             }
+        }
+    }
+
+    pub fn collect_structs<'a>(&'a self, container: &mut HashMap<String, &'a Struct>) {
+        let scope = self.scope.as_ref().unwrap();
+        for scope_struct in &scope.structs {
+            container.insert(scope_struct.ident.to_string(), scope_struct);
+        }
+        for scope_module in &scope.modules {
+            scope_module.collect_structs(container);
+        }
+    }
+
+    pub fn collect_enums<'a>(&'a self, container: &mut HashMap<String, &'a Enum>) {
+        let scope = self.scope.as_ref().unwrap();
+        for scope_enum in &scope.enums {
+            container.insert(scope_enum.ident.to_string(), scope_enum);
+        }
+        for scope_module in &scope.modules {
+            scope_module.collect_enums(container);
         }
     }
 }
