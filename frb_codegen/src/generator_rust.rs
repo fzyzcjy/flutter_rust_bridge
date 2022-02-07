@@ -58,10 +58,22 @@ impl Generator {
             .iter()
             .map(|f| self.generate_wire_func(f))
             .collect::<Vec<_>>();
-        let wire_structs = distinct_input_types
-            .iter()
-            .map(|ty| self.generate_wire_struct(ty, api_file))
-            .collect::<Vec<_>>();
+        let wire_structs = if !self.wasm {
+            distinct_input_types
+                .iter()
+                .map(|ty| self.generate_wire_struct(ty, api_file))
+                .collect::<Vec<_>>()
+                .join("\n\n")
+        } else {
+            format!(
+                "#[wasm_bindgen] extern \"C\" {{ {} }}",
+                distinct_input_types
+                    .iter()
+                    .map(|ty| Self::generate_wasm_struct(ty, api_file))
+                    .collect::<Vec<_>>()
+                    .join("\n\n")
+            )
+        };
         let wire_enums = distinct_input_types
             .iter()
             .filter_map(|ty| match ty {
@@ -165,19 +177,23 @@ impl Generator {
             CODE_HEADER,
             rust_wire_mod,
             wire_funcs.join("\n\n"),
-            wire_structs.join("\n\n"),
+            wire_structs,
             wire_enums.join("\n\n"),
             allocate_funcs.join("\n\n"),
             wire2api_funcs.join("\n\n"),
             new_with_nullptr_funcs.join("\n\n"),
             impl_intodart.join("\n\n"),
             self.generate_executor(api_file),
-            self.extern_func_collector.generate(
-                "free_WireSyncReturnStruct",
-                &["val: support::WireSyncReturnStruct"],
-                None,
-                "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
-            ),
+            if !self.wasm {
+                self.extern_func_collector.generate(
+                    "free_WireSyncReturnStruct",
+                    &["val: support::WireSyncReturnStruct"],
+                    None,
+                    "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
+                )
+            } else {
+                "".to_owned()
+            }
         )
     }
 
@@ -297,9 +313,6 @@ impl Generator {
     }
 
     fn generate_wire_struct(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
-        if self.wasm {
-            return Self::generate_wasm_struct(ty, api_file);
-        }
         // println!("generate_wire_struct: {:?}", ty);
         let fields = match ty {
             PrimitiveList(list) => vec![
@@ -843,12 +856,7 @@ impl Generator {
             "".to_owned()
         };
         format!(
-            r#"#[wasm_bindgen]
-            extern "C" {{
-                pub type {name};
-                {}
-            }}
-            {}"#,
+            "pub type {name};\n{} {}",
             getters.join("\n"),
             variants,
             name = ty.rust_wire_type()
@@ -860,22 +868,17 @@ impl Generator {
         let enu = enu.get(api_file);
         enu.variants()
             .iter()
-            .map(|variant| {
-                let name = format!("{}_{}", name, variant.name.rust_style());
-                let getters = if let ApiVariantKind::Struct(st) = &variant.kind {
-                    Self::generate_wasm_getters(&name, &st.fields)
-                } else {
-                    vec![]
-                };
-                format!(
-                    r#"#[wasm_bindgen]
-                    extern "C" {{
-                        pub type {name};
-                        {}
-                    }}"#,
-                    getters.join("\n"),
-                    name = name,
-                )
+            .filter_map(|variant| match &variant.kind {
+                ApiVariantKind::Struct(st) => {
+                    let name = format!("{}_{}", name, variant.name.rust_style());
+                    let getters = Self::generate_wasm_getters(&name, &st.fields);
+                    Some(format!(
+                        "pub type {name};\n{}",
+                        getters.join("\n"),
+                        name = name,
+                    ))
+                }
+                _ => None,
             })
             .collect::<Vec<_>>()
             .join("\n")

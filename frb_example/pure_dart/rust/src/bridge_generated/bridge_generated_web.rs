@@ -444,24 +444,19 @@ pub fn wire_handle_enum_struct(port_: i64, val: wire_KitchenSink) {
 
 #[wasm_bindgen]
 extern "C" {
+
     pub type wire_Attribute;
     #[wasm_bindgen(method, getter)]
     pub fn key(this: &wire_Attribute) -> String;
     #[wasm_bindgen(method, getter)]
     pub fn value(this: &wire_Attribute) -> String;
-}
 
-#[wasm_bindgen]
-extern "C" {
     pub type wire_Customized;
     #[wasm_bindgen(method, getter)]
     pub fn final_field(this: &wire_Customized) -> String;
     #[wasm_bindgen(method, getter)]
     pub fn non_final_field(this: &wire_Customized) -> Option<String>;
-}
 
-#[wasm_bindgen]
-extern "C" {
     pub type wire_ExoticOptionals;
     #[wasm_bindgen(method, getter)]
     pub fn int32(this: &wire_ExoticOptionals) -> Option<i32>;
@@ -495,23 +490,12 @@ extern "C" {
     pub fn newtypeint(this: &wire_ExoticOptionals) -> JsValue;
     #[wasm_bindgen(method, getter)]
     pub fn string_list(this: &wire_ExoticOptionals) -> Option<Box<[JsString]>>;
-}
 
-#[wasm_bindgen]
-extern "C" {
     pub type wire_KitchenSink;
     #[wasm_bindgen(method, getter)]
     pub fn kind(this: &wire_KitchenSink) -> JsValue;
     #[wasm_bindgen(method, getter)]
     pub fn tag(this: &wire_KitchenSink) -> i32;
-}
-#[wasm_bindgen]
-extern "C" {
-    pub type KitchenSink_Empty;
-
-}
-#[wasm_bindgen]
-extern "C" {
     pub type KitchenSink_Primitives;
     #[wasm_bindgen(method, getter)]
     pub fn int32(this: &KitchenSink_Primitives) -> i32;
@@ -519,45 +503,27 @@ extern "C" {
     pub fn float64(this: &KitchenSink_Primitives) -> f64;
     #[wasm_bindgen(method, getter)]
     pub fn boolean(this: &KitchenSink_Primitives) -> bool;
-}
-#[wasm_bindgen]
-extern "C" {
     pub type KitchenSink_Nested;
     #[wasm_bindgen(method, getter)]
     pub fn field0(this: &KitchenSink_Nested) -> wire_KitchenSink;
-}
-#[wasm_bindgen]
-extern "C" {
     pub type KitchenSink_Optional;
     #[wasm_bindgen(method, getter)]
     pub fn field0(this: &KitchenSink_Optional) -> Option<i32>;
     #[wasm_bindgen(method, getter)]
     pub fn field1(this: &KitchenSink_Optional) -> Option<i32>;
-}
-#[wasm_bindgen]
-extern "C" {
     pub type KitchenSink_Buffer;
     #[wasm_bindgen(method, getter)]
     pub fn field0(this: &KitchenSink_Buffer) -> Box<[u8]>;
-}
-#[wasm_bindgen]
-extern "C" {
     pub type KitchenSink_Enums;
     #[wasm_bindgen(method, getter)]
     pub fn field0(this: &KitchenSink_Enums) -> i32;
-}
 
-#[wasm_bindgen]
-extern "C" {
     pub type wire_MySize;
     #[wasm_bindgen(method, getter)]
     pub fn width(this: &wire_MySize) -> i32;
     #[wasm_bindgen(method, getter)]
     pub fn height(this: &wire_MySize) -> i32;
-}
 
-#[wasm_bindgen]
-extern "C" {
     pub type wire_MyTreeNode;
     #[wasm_bindgen(method, getter)]
     pub fn value_i32(this: &wire_MyTreeNode) -> i32;
@@ -567,13 +533,11 @@ extern "C" {
     pub fn value_boolean(this: &wire_MyTreeNode) -> bool;
     #[wasm_bindgen(method, getter)]
     pub fn children(this: &wire_MyTreeNode) -> Box<[JsValue]>;
-}
 
-#[wasm_bindgen]
-extern "C" {
     pub type wire_NewTypeInt;
     #[wasm_bindgen(method, getter)]
     pub fn field0(this: &wire_NewTypeInt) -> i64;
+
 }
 
 // Section: wire enums
@@ -1116,10 +1080,3 @@ support::lazy_static! {
 }
 
 // Section: sync execution mode utility
-
-#[no_mangle]
-pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) {
-    unsafe {
-        let _ = support::vec_from_leak_ptr(val.ptr, val.len);
-    }
-}

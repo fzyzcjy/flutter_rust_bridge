@@ -74,6 +74,8 @@ pub fn generate(
         DartBasicCode::default()
     };
 
+    // This header should be placed in front of all others,
+    // as it uses annotations on the current library.
     let wasm_header = DartBasicCode {
         import: "@JS() library bridge_generated_web; import 'package:js/js.dart';".to_owned(),
         ..Default::default()
@@ -83,8 +85,7 @@ pub fn generate(
         import: "import 'dart:convert';
             import 'dart:typed_data';"
             .to_string(),
-        part: "".to_string(),
-        body: "".to_string(),
+        ..Default::default()
     };
 
     let decl_body = format!(
