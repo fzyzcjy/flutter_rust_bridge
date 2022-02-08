@@ -18,21 +18,6 @@ use crate::data::MyStruct;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_do_something(port_: i64, data: i32) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "do_something",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_data = data.wire2api();
-            move |task_callback| do_something(api_data)
-        },
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

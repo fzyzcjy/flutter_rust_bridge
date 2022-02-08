@@ -17,30 +17,6 @@ void main(List<String> args) async {
 
     print('call functions');
 
-    print('dart call useImportedStruct()');
-    {
-      expect(
-        await api.useImportedStruct(myStruct: MyStruct(content: false)),
-        false,
-      );
-      expect(
-        await api.useImportedStruct(myStruct: MyStruct(content: true)),
-        true,
-      );
-    }
-
-    print('dart call useImportedEnum()');
-    {
-      expect(
-        await api.useImportedEnum(myEnum: MyEnum.False),
-        false,
-      );
-      expect(
-        await api.useImportedEnum(myEnum: MyEnum.True),
-        true,
-      );
-    }
-
     print('dart call simpleAdder');
     {
       expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -325,6 +301,30 @@ void main(List<String> args) async {
       expect(
         await api.handleEnumStruct(val: Enums(Weekdays.Monday)),
         Enums(Weekdays.Tuesday),
+      );
+    }
+
+    print('dart call useImportedStruct()');
+    {
+      expect(
+        await api.useImportedStruct(myStruct: MyStruct(content: false)),
+        false,
+      );
+      expect(
+        await api.useImportedStruct(myStruct: MyStruct(content: true)),
+        true,
+      );
+    }
+
+    print('dart call useImportedEnum()');
+    {
+      expect(
+        await api.useImportedEnum(myEnum: MyEnum.False),
+        false,
+      );
+      expect(
+        await api.useImportedEnum(myEnum: MyEnum.True),
+        true,
       );
     }
 
