@@ -1,6 +1,8 @@
 use std::borrow::Cow;
 use std::collections::HashSet;
 
+use log::debug;
+
 use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::others::*;
@@ -50,6 +52,8 @@ impl Generator {
             .chain(output_type_imports.into_iter())
             .filter(|import| import.is_some())
             .map(|import| import.unwrap())
+            // Don't include imports from the API file
+            .filter(|import| !import.starts_with(&format!("use crate::{}::", rust_wire_mod)))
             // de-duplicate
             .collect::<HashSet<String>>()
             .into_iter()
@@ -87,6 +91,8 @@ impl Generator {
             .iter()
             .map(|ty| self.generate_impl_intodart(ty, api_file))
             .collect::<Vec<_>>();
+
+        debug!("JOSH HERE PLEASE {}", rust_wire_mod);
 
         format!(
             r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, non_snake_case)]

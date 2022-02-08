@@ -441,3 +441,16 @@ pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
         _ => val,
     })
 }
+
+// Function that uses imported struct (from within this crate)
+pub fn use_imported_struct(my_struct: MyStruct) -> Result<bool> {
+    my_struct.content
+}
+
+// Function that uses imported enum (from within this crate)
+pub fn use_imported_enum(my_enum: MyEnum) -> Result<bool> {
+    match my_enum {
+        MyEnum::False => false,
+        MyEnum::True => true,
+    }
+}

@@ -11,6 +11,7 @@
 use std::{fmt::Debug, fs, path::PathBuf, collections::HashMap};
 
 use cargo_metadata::MetadataCommand;
+use log::debug;
 use syn::{Ident, UseTree, ItemStruct, ItemEnum};
 
 /// Represents a crate, including a map of its modules, imports, structs and
@@ -255,6 +256,7 @@ impl Module {
 
                             let source = if file_exists {
                                 let source_rust_content = fs::read_to_string(&file_path).unwrap();
+                                debug!("Trying to parse {:?}", file_path);
                                 Some(ModuleSource::File(
                                     syn::parse_file(&source_rust_content).unwrap(),
                                 ))

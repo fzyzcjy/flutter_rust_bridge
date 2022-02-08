@@ -11,7 +11,26 @@
 use crate::api::*;
 use flutter_rust_bridge::*;
 
+// Section: imports
+use crate::data::MyEnum;
+use crate::data::MyStruct;
+
 // Section: wire functions
+
+#[no_mangle]
+pub extern "C" fn wire_do_something(port_: i64, data: i32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "do_something",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_data = data.wire2api();
+            move |task_callback| do_something(api_data)
+        },
+    )
+}
 
 #[no_mangle]
 pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
@@ -433,6 +452,36 @@ pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_use_imported_struct(port_: i64, my_struct: *mut wire_MyStruct) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "use_imported_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_struct = my_struct.wire2api();
+            move |task_callback| use_imported_struct(api_my_struct)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "use_imported_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_enum = my_enum.wire2api();
+            move |task_callback| use_imported_enum(api_my_enum)
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -544,6 +593,12 @@ pub struct wire_list_opt_box_autoadd_attribute {
 pub struct wire_MySize {
     width: i32,
     height: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MyStruct {
+    content: bool,
 }
 
 #[repr(C)]
@@ -678,6 +733,11 @@ pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_KitchenSink {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_my_struct() -> *mut wire_MyStruct {
+    support::new_leak_box_ptr(wire_MyStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -943,6 +1003,13 @@ impl Wire2Api<MySize> for *mut wire_MySize {
     }
 }
 
+impl Wire2Api<MyStruct> for *mut wire_MyStruct {
+    fn wire2api(self) -> MyStruct {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<MyTreeNode> for *mut wire_MyTreeNode {
     fn wire2api(self) -> MyTreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1198,11 +1265,29 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribu
     }
 }
 
+impl Wire2Api<MyEnum> for i32 {
+    fn wire2api(self) -> MyEnum {
+        match self {
+            0 => MyEnum::False,
+            1 => MyEnum::True,
+            _ => unreachable!("Invalid variant for MyEnum: {}", self),
+        }
+    }
+}
+
 impl Wire2Api<MySize> for wire_MySize {
     fn wire2api(self) -> MySize {
         MySize {
             width: self.width.wire2api(),
             height: self.height.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<MyStruct> for wire_MyStruct {
+    fn wire2api(self) -> MyStruct {
+        MyStruct {
+            content: self.content.wire2api(),
         }
     }
 }
@@ -1374,6 +1459,14 @@ impl NewWithNullPtr for wire_MySize {
         Self {
             width: Default::default(),
             height: Default::default(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_MyStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            content: Default::default(),
         }
     }
 }

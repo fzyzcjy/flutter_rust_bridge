@@ -17,6 +17,30 @@ void main(List<String> args) async {
 
     print('call functions');
 
+    print('dart call useImportedStruct()');
+    {
+      expect(
+        await api.useImportedStruct(myStruct: MyStruct(content: false)),
+        false,
+      );
+      expect(
+        await api.useImportedStruct(myStruct: MyStruct(content: true)),
+        true,
+      );
+    }
+
+    print('dart call useImportedEnum()');
+    {
+      expect(
+        await api.useImportedEnum(myEnum: MyEnum.False),
+        false,
+      );
+      expect(
+        await api.useImportedEnum(myEnum: MyEnum.True),
+        true,
+      );
+    }
+
     print('dart call simpleAdder');
     {
       expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -24,7 +48,12 @@ void main(List<String> args) async {
 
     print('dart call primitiveTypes');
     {
-      expect(await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true),
+      expect(
+          await api.primitiveTypes(
+              myI32: 123,
+              myI64: 10000000000000,
+              myF64: 12345678901234567890.123,
+              myBool: true),
           42);
     }
 
@@ -40,13 +69,15 @@ void main(List<String> args) async {
 
     print('dart call handleString');
     {
-      expect(await api.handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
+      expect(await api.handleString(s: "Hello, world!"),
+          "Hello, world!Hello, world!");
     }
 
     print('dart call handleVecU8');
     {
       final len = 100000;
-      expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
+      expect(
+          await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
           Uint8List.fromList(List.filled(len * 2, 127)));
     }
 
@@ -84,8 +115,9 @@ void main(List<String> args) async {
 
     print('dart call handleStruct');
     {
-      final structResp =
-          await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+      final structResp = await api.handleStruct(
+          arg: MySize(width: 42, height: 100),
+          boxed: MySize(width: 1000, height: 10000));
       expect(structResp.width, 42 + 1000);
       expect(structResp.height, 100 + 10000);
     }
@@ -98,8 +130,10 @@ void main(List<String> args) async {
 
     print('dart call handleListOfStruct');
     {
-      final listOfStructResp =
-          await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+      final listOfStructResp = await api.handleListOfStruct(l: [
+        MySize(width: 42, height: 100),
+        MySize(width: 420, height: 1000)
+      ]);
       expect(listOfStructResp.length, 4);
       expect(listOfStructResp[0].width, 42);
       expect(listOfStructResp[1].width, 420);
@@ -116,12 +150,16 @@ void main(List<String> args) async {
     print('dart call handleComplexStruct');
     {
       final arrLen = 5;
-      final complexStructResp = await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+      final complexStructResp =
+          await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
       expect(complexStructResp.valueI32, 100);
       expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
-      expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-      expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
-      expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
+      expect(
+          complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
+      expect(complexStructResp.children[0].children[0].valueVecU8,
+          List.filled(arrLen, 111));
+      expect(
+          complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
     }
 
     print('dart call handle_sync_return');
@@ -187,7 +225,8 @@ void main(List<String> args) async {
       {
         final message = 'Hello there.';
         final ret = await api.handleOptionalStruct(document: message);
-        if (ret == null) fail('handleOptionalStruct returned null for non-null document');
+        if (ret == null)
+          fail('handleOptionalStruct returned null for non-null document');
         expect(ret.tag, 'div');
         expect(ret.text, null);
         expect(ret.attributes?[0].key, 'id');
@@ -204,7 +243,8 @@ void main(List<String> args) async {
     {
       expect(await api.handleOptionalIncrement(), null);
 
-      var ret = await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: []));
+      var ret = await api.handleOptionalIncrement(
+          opt: ExoticOptionals(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
       final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
@@ -246,7 +286,8 @@ void main(List<String> args) async {
       {
         final optional10 = await api.handleOptionBoxArguments(
           boolbox: true,
-          structbox: await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: [])),
+          structbox: await api.handleOptionalIncrement(
+              opt: ExoticOptionals(attributesNullable: [])),
         );
         print(optional10);
       }
@@ -260,7 +301,8 @@ void main(List<String> args) async {
 
     print('dart call handleEnumParameter');
     {
-      expect(await api.handleEnumParameter(weekday: Weekdays.Saturday), Weekdays.Saturday);
+      expect(await api.handleEnumParameter(weekday: Weekdays.Saturday),
+          Weekdays.Saturday);
     }
 
     print('dart call handleEnumStruct');
