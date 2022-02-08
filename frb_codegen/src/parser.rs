@@ -13,9 +13,6 @@ use crate::api_types::*;
 use crate::generator_rust::HANDLER_NAME;
 use crate::source_graph::{Crate, Enum, Struct};
 
-type StructMap<'a> = HashMap<String, &'a ItemStruct>;
-type EnumMap<'a> = HashMap<String, &'a ItemEnum>;
-
 lazy_static! {
     static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
     static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
@@ -38,13 +35,7 @@ lazy_static! {
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &String) -> ApiFile {
     let crate_map = Crate::new(manifest_path);
 
-    // debug!("crate repr: {:#?}", crate_map);
-
     let src_fns = extract_fns_from_file(&file);
-
-    // let relevant_items = get_relevant_types(&src_fns);
-
-    // debug!("{:#?}", relevant_items);
 
     let mut src_structs = HashMap::new();
     crate_map.root_module.collect_structs(&mut src_structs);
@@ -52,11 +43,6 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &String) -> A
     let mut src_enums = HashMap::new();
     crate_map.root_module.collect_enums(&mut src_enums);
 
-    // let SrcItems {
-    //     src_fns: _src_fns,
-    //     src_struct_map: _src_structs,
-    //     src_enums: _src_enums,
-    // } = extract_items_from_file(&file);
     let parser = Parser {
         src_structs,
         src_enums,
@@ -374,17 +360,6 @@ impl<'a> Parser<'a> {
     }
 }
 
-struct SrcItems<'a> {
-    src_fns: Vec<&'a ItemFn>,
-    src_struct_map: StructMap<'a>,
-    src_enums: EnumMap<'a>,
-}
-
-struct SrcStructs<'a> {
-    src_struct_map: StructMap<'a>,
-    src_enums: EnumMap<'a>,
-}
-
 fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
     let mut src_fns = Vec::new();
 
@@ -400,148 +375,6 @@ fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
     }
 
     src_fns
-}
-
-fn extract_items_from_file(file: &File) -> SrcItems {
-    let mut src_fns = Vec::new();
-    let mut src_struct_map = HashMap::new();
-    let mut src_enums = HashMap::new();
-    for item in file.items.iter() {
-        match item {
-            Item::Fn(ref item_fn) => {
-                if let Visibility::Public(_) = &item_fn.vis {
-                    src_fns.push(item_fn);
-                }
-            }
-            Item::Struct(ref item_struct) => {
-                if let Visibility::Public(_) = &item_struct.vis {
-                    src_struct_map.insert(item_struct.ident.to_string(), item_struct);
-                }
-            }
-            Item::Enum(
-                item_enum @ ItemEnum {
-                    vis: Visibility::Public(_),
-                    ..
-                },
-            ) => {
-                src_enums.insert(item_enum.ident.to_string(), item_enum);
-            }
-            _ => {}
-        }
-    }
-    // println!("[Functions]\n{:#?}", src_fns);
-    // println!("[Structs]\n{:#?}", src_struct_map);
-    SrcItems {
-        src_fns,
-        src_struct_map,
-        src_enums,
-    }
-}
-
-/// Takes a list of functions and returns a set of types that must be resolved.
-fn get_relevant_types<'ast>(src_fns: &Vec<&'ast ItemFn>) -> HashMap<String, &'ast Ident> {
-    let mut result = HashMap::new();
-
-    for src_fn in src_fns.iter() {
-        // debug!("");
-        // debug!("{}", src_fn.sig.ident);
-        // debug!("Inputs:");
-        for input in src_fn.sig.inputs.iter() {
-            match input {
-                FnArg::Receiver(_) => {}
-                FnArg::Typed(pat_type) => {
-                    // debug!("{}", type_to_string(pat_type.ty.as_ref()));
-                    let inner = filter_and_get_inner(pat_type.ty.as_ref());
-                    if inner.is_some() {
-                        let inner = inner.unwrap();
-                        result.insert(inner.to_string(), inner);
-                    }
-                }
-            }
-        }
-        // debug!("Output:");
-        match &src_fn.sig.output {
-            ReturnType::Default => {}
-            ReturnType::Type(_, item_type) => {
-                let type_string = type_to_string(item_type.as_ref());
-                if let Some(_) = CAPTURE_RESULT.captures(&type_string) {
-                    // debug!("{}", &type_string);
-                    let inner = filter_and_get_inner(item_type.as_ref());
-                    if inner.is_some() {
-                        let inner = inner.unwrap();
-                        result.insert(inner.to_string(), inner);
-                    }
-                }
-            }
-        }
-    }
-
-    result
-}
-
-// Not sure this is the best way to do it, but we need to filter out types that
-// are handled as special cases by the library. We already filter out
-// primitives so they are not included in this list. We also don't need to
-// filter container types since they are handled as a special case.
-lazy_static! {
-    static ref FRB_TYPES: Vec<String> = vec!["String".to_string()];
-}
-
-// Returns an option stating whether the type is valid. If the type is a valid
-// but unknown enum or struct, the option will contain the ident it contains.
-// If the type is a known container type such as Vec<T>, Result<ZeroCopyBuffer<T>>
-// or similar, the option will contain the inner ident T.
-fn filter_and_get_inner<'ast>(ty: &'ast Type) -> Option<&'ast Ident> {
-    match ty {
-        Type::Group(type_group) => filter_and_get_inner(type_group.elem.as_ref()),
-        Type::Paren(type_paren) => filter_and_get_inner(type_paren.elem.as_ref()),
-        Type::Ptr(type_ptr) => filter_and_get_inner(type_ptr.elem.as_ref()),
-        Type::Reference(type_reference) => filter_and_get_inner(type_reference.elem.as_ref()),
-        Type::Path(type_path) => {
-            let type_string = type_to_string(ty);
-            let mut capture_first_type_param = false;
-            if ALL_CAPTURES.iter().any(|capture| {
-                if let Some(_) = capture.captures(&type_string) {
-                    true
-                } else {
-                    false
-                }
-            }) {
-                capture_first_type_param = true;
-            }
-
-            if capture_first_type_param {
-                match &type_path.path.segments.last().unwrap().arguments {
-                    PathArguments::AngleBracketed(angle_bracketed) => {
-                        // Assumes only one type argument
-                        match angle_bracketed.args.last().unwrap() {
-                            GenericArgument::Type(argument_type) => {
-                                filter_and_get_inner(argument_type)
-                            }
-                            _ => None,
-                        }
-                    }
-                    _ => None,
-                }
-            } else {
-                let ident = &type_path.path.segments.last().unwrap().ident;
-                let ident_str = ident.to_string();
-                if ApiTypePrimitive::try_from_rust_str(&ident_str)
-                    .map(Primitive)
-                    .is_none()
-                    && !FRB_TYPES
-                        .iter()
-                        .any(|frb_type_str| *frb_type_str == ident_str)
-                {
-                    // debug!("Actually captured {}", &ident_str);
-                    Some(ident)
-                } else {
-                    None
-                }
-            }
-        }
-        _ => None,
-    }
 }
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294

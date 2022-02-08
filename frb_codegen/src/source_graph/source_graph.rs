@@ -80,7 +80,7 @@ impl Crate {
     }
 }
 
-// Mirrors syn::Visibility, but can be created without a token
+/// Mirrors syn::Visibility, but can be created without a token
 #[derive(Debug, Clone)]
 pub enum Visibility {
     Public,
@@ -338,7 +338,15 @@ impl Module {
     }
 }
 
-// Takes a use tree and returns a flat list of use paths (list of string tokens)
+/// Takes a use tree and returns a flat list of use paths (list of string tokens)
+/// 
+/// Example:
+///     use a::{b::c, d::e};
+/// becomes
+///     [
+///         ["a", "b", "c"],
+///         ["a", "d", "e"]
+///     ]
 fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
     // Vec<(path, is_complete)>
     let mut result = vec![(vec![], false)];
