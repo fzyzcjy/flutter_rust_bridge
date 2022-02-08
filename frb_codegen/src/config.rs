@@ -13,7 +13,7 @@ use toml::Value;
 #[structopt(setting(AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
     /// Path of input cargo.toml file
-    #[structopt(short, long)]
+    #[structopt(long)]
     pub cargo_path: String,
     /// Path of input Rust code
     #[structopt(short, long)]

@@ -48,8 +48,7 @@ impl Generator {
         let imports: Vec<String> = input_type_imports
             .into_iter()
             .chain(output_type_imports.into_iter())
-            .filter(|import| import.is_some())
-            .map(|import| import.unwrap())
+            .filter_map(|import| import)
             // Don't include imports from the API file
             .filter(|import| !import.starts_with(&format!("use crate::{}::", rust_wire_mod)))
             // de-duplicate
@@ -184,11 +183,11 @@ impl Generator {
     fn generate_import(&self, api_type: &ApiType, api_file: &ApiFile) -> Option<String> {
         match api_type {
             EnumRef(enum_ref) => {
-                let api_enum = api_file.enum_pool.get(&enum_ref.name).unwrap();
+                let api_enum = enum_ref.get(api_file);
                 Some(format!("use {};", api_enum.path.join("::")))
             }
             StructRef(struct_ref) => {
-                let api_struct = api_file.struct_pool.get(&struct_ref.name).unwrap();
+                let api_struct = struct_ref.get(api_file);
                 if api_struct.path.is_some() {
                     Some(format!(
                         "use {};",
