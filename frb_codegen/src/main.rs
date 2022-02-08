@@ -3,6 +3,7 @@ use std::path::Path;
 
 use env_logger::Env;
 use log::{debug, info};
+use pathdiff::diff_paths;
 use structopt::StructOpt;
 
 use crate::api_types::ApiType;
@@ -53,12 +54,13 @@ fn main() {
     fs::write(&config.rust_output_path, generated_rust.code).unwrap();
 
     info!("Phase: Generate Dart code");
-    let generated_dart_api = generator_dart::generate(
-        &api_file,
-        &config.dart_api_class_name(),
-        &config.dart_api_impl_class_name(),
-        &config.dart_wire_class_name(),
-    );
+    let (generated_dart_file_prelude, generated_dart_decl_raw, generated_dart_impl_raw) =
+        generator_dart::generate(
+            &api_file,
+            &config.dart_api_class_name(),
+            &config.dart_api_impl_class_name(),
+            &config.dart_wire_class_name(),
+        );
 
     info!("Phase: Other things");
 
@@ -117,27 +119,50 @@ fn main() {
 
     fs::create_dir_all(&dart_output_dir).unwrap();
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file).unwrap();
-    let (generated_dart_wire_import_code, generated_dart_wire_body_code) =
-        extract_dart_wire_content(&modify_dart_wire_content(
-            &generated_dart_wire_code_raw,
-            &config.dart_wire_class_name(),
-        ));
-
-    sanity_check(
-        &generated_dart_wire_body_code,
+    let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
+        &generated_dart_wire_code_raw,
         &config.dart_wire_class_name(),
-    );
+    ));
 
-    let generated_dart_code = format!(
-        "{}\n{}\n{}\n{}\n{}",
-        generated_dart_api.header,
-        generated_dart_wire_import_code,
-        generated_dart_api.api_class,
-        generated_dart_api.other,
-        generated_dart_wire_body_code,
-    );
-    fs::write(&config.dart_output_path, generated_dart_code).unwrap();
+    sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name());
+
+    let generated_dart_decl_all = generated_dart_decl_raw;
+    let generated_dart_impl_all = &generated_dart_impl_raw + &generated_dart_wire;
+    if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
+        let impl_import_decl = DartBasicCode {
+            import: format!(
+                "import \"{}\";",
+                diff_paths(dart_decl_output_path, dart_output_dir)
+                    .unwrap()
+                    .to_str()
+                    .unwrap()
+            ),
+            part: String::new(),
+            body: String::new(),
+        };
+        fs::write(
+            &dart_decl_output_path,
+            (&generated_dart_file_prelude + &generated_dart_decl_all).to_text(),
+        )
+        .unwrap();
+        fs::write(
+            &config.dart_output_path,
+            (&generated_dart_file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
+        )
+        .unwrap();
+    } else {
+        fs::write(
+            &config.dart_output_path,
+            (&generated_dart_file_prelude + &generated_dart_decl_all + &generated_dart_impl_all)
+                .to_text(),
+        )
+        .unwrap();
+    }
+
     commands::format_dart(&config.dart_output_path, config.dart_format_line_length);
+    if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
+        commands::format_dart(dart_decl_output_path, config.dart_format_line_length);
+    }
 
     info!("Success! Now go and use it :)");
 }

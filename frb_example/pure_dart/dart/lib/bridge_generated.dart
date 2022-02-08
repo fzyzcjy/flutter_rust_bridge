@@ -19,8 +19,6 @@ abstract class FlutterRustBridgeExample
   FlutterRustBridgeExample.raw(FlutterRustBridgeExampleWire inner)
       : super(inner);
 
-  Future<int> doSomething({required MyEnum data, dynamic hint});
-
   /// Documentation on a simple adder function.
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
 
@@ -321,19 +319,6 @@ class ZeroCopyVecOfPrimitivePack {
 class FlutterRustBridgeExampleImpl extends FlutterRustBridgeExample {
   FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner)
       : super.raw(inner);
-
-  Future<int> doSomething({required MyEnum data, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port) =>
-            inner.wire_do_something(port, _api2wire_my_enum(data)),
-        parseSuccessData: _wire2api_i32,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "do_something",
-          argNames: ["data"],
-        ),
-        argValues: [data],
-        hint: hint,
-      ));
 
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
@@ -1709,22 +1694,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
           lookup)
       : _lookup = lookup;
-
-  void wire_do_something(
-    int port_,
-    int data,
-  ) {
-    return _wire_do_something(
-      port_,
-      data,
-    );
-  }
-
-  late final _wire_do_somethingPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_do_something');
-  late final _wire_do_something =
-      _wire_do_somethingPtr.asFunction<void Function(int, int)>();
 
   void wire_simple_adder(
     int port_,

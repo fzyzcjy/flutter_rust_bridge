@@ -1,6 +1,6 @@
 [package]
 name = "flutter_rust_bridge"
-version = "1.13.0"
+version = "1.15.1"
 edition = "2018"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
 license = "MIT"
@@ -12,8 +12,8 @@ categories = ["development-tools::ffi"]
 allo-isolate = "0.1.12"
 # allo-isolate = { git = "https://github.com/Desdaemon/allo-isolate" } # hack, until upstream PR is merged and released
 # allo-isolate = { path = "../../allo-isolate" }
-anyhow = "1.0.52"
+anyhow = "1.0.53"
 threadpool = "1.8.1"
 lazy_static = "1.4.0"
-parking_lot = "0.11.2"
+parking_lot = "0.12.0"
 flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }

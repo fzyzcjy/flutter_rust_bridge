@@ -17,7 +17,7 @@ final path = Platform.isWindows
         ? 'lib$base.dylib'
         : 'lib$base.so';
 late final dylib = Platform.isIOS ? DynamicLibrary.process() : DynamicLibrary.open(path);
-late final api = FlutterRustBridgeExample(dylib);
+late final api = FlutterRustBridgeExampleImpl(dylib);
 
 void main() => runApp(const MyApp());
 

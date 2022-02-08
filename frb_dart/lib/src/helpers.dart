@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_rust_bridge/src/basic.dart';
+import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:meta/meta.dart';
 
 /// Allow custom setup hooks before ffi can be executed.
@@ -76,22 +77,4 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on Flut
   /// The time limit for methods using [executeNormal]
   @protected
   Duration get timeLimitForExecuteNormal;
-}
-
-/// Exception when timeout happens using [FlutterRustBridgeTimeoutMixin]
-class FlutterRustBridgeTimeoutException {
-  /// The duration to trigger timeout
-  final Duration duration;
-
-  /// debugName of the task, usually the ffi function name
-  final String debugName;
-
-  /// The stack trace of the error
-  final StackTrace stackTrace;
-
-  FlutterRustBridgeTimeoutException(this.duration, this.debugName, this.stackTrace);
-
-  @override
-  String toString() =>
-      'FlutterRustBridgeTimeoutException(debugName=$debugName,duration=$duration,stackTrace=$stackTrace)';
 }

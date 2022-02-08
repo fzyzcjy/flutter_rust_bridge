@@ -21,6 +21,9 @@ pub struct RawOpts {
     /// Path of output generated Dart code
     #[structopt(short, long)]
     pub dart_output: String,
+    /// If provided, generated Dart declaration code to this separate file
+    #[structopt(long)]
+    pub dart_decl_output: Option<String>,
 
     /// Path of output generated C header
     #[structopt(short, long)]
@@ -53,6 +56,7 @@ pub struct Opts {
     pub cargo_path: String,
     pub rust_input_path: String,
     pub dart_output_path: String,
+    pub dart_decl_output_path: Option<String>,
     pub c_output_path: String,
     pub rust_crate_dir: String,
     pub rust_output_path: String,
@@ -88,6 +92,10 @@ pub fn parse(raw: RawOpts) -> Opts {
         cargo_path,
         rust_input_path,
         dart_output_path: canon_path(&raw.dart_output),
+        dart_decl_output_path: raw
+            .dart_decl_output
+            .as_ref()
+            .map(|s| canon_path(s.as_str())),
         c_output_path,
         rust_crate_dir,
         rust_output_path,
