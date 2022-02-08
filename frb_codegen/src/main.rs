@@ -24,7 +24,7 @@ mod transformer;
 mod utils;
 
 fn main() {
-    env_logger::Builder::from_env(Env::default().default_filter_or("debug")).init();
+    env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
 
     let config = config::parse(RawOpts::from_args());
     info!("Picked config: {:?}", &config);
