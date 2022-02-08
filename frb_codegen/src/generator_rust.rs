@@ -1,8 +1,6 @@
 use std::borrow::Cow;
 use std::collections::HashSet;
 
-use log::debug;
-
 use crate::api_types::ApiType::*;
 use crate::api_types::*;
 use crate::others::*;
@@ -91,8 +89,6 @@ impl Generator {
             .iter()
             .map(|ty| self.generate_impl_intodart(ty, api_file))
             .collect::<Vec<_>>();
-
-        debug!("JOSH HERE PLEASE {}", rust_wire_mod);
 
         format!(
             r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, non_snake_case)]
