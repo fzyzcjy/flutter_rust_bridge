@@ -5,7 +5,11 @@
 - [Introduction](index.md)
 - [🧭 Quickstart](quickstart.md)
 - [📚 Tutorial: A Flutter+Rust app](tutorial_with_flutter.md)
-- [Creating a new template](template.md)
+- [Creating a new project](template.md)
+  - [Android setup](template/setup_android.md)
+  - [Web setup](template/setup_web.md)
+  - [Other platforms](template/setup_others.md)
+- [Template tour](tour.md)
 
 # More Doc
 
