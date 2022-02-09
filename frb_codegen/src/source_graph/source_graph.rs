@@ -8,11 +8,11 @@
       file
 */
 
-use std::{fmt::Debug, fs, path::PathBuf, collections::HashMap};
+use std::{collections::HashMap, fmt::Debug, fs, path::PathBuf};
 
 use cargo_metadata::MetadataCommand;
 use log::debug;
-use syn::{Ident, UseTree, ItemStruct, ItemEnum};
+use syn::{Ident, ItemEnum, ItemStruct, UseTree};
 
 /// Represents a crate, including a map of its modules, imports, structs and
 /// enums.
@@ -124,7 +124,8 @@ impl Debug for Struct {
             .field("ident", &self.ident)
             .field("src", &"omitted")
             .field("visibility", &self.visibility)
-            .field("path", &self.path).finish()
+            .field("path", &self.path)
+            .finish()
     }
 }
 
@@ -142,7 +143,8 @@ impl Debug for Enum {
             .field("ident", &self.ident)
             .field("src", &"omitted")
             .field("visibility", &self.visibility)
-            .field("path", &self.path).finish()
+            .field("path", &self.path)
+            .finish()
     }
 }
 
@@ -339,7 +341,7 @@ impl Module {
 }
 
 /// Takes a use tree and returns a flat list of use paths (list of string tokens)
-/// 
+///
 /// Example:
 ///     use a::{b::c, d::e};
 /// becomes
@@ -357,7 +359,7 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
         counter += 1;
 
         if counter > 10000 {
-            panic!("flatten_use_tree: Use statement complexity limit exceeded. This is probably a bug.")
+            panic!("flatten_use_tree: Use statement complexity limit exceeded. This is probably a bug.");
         }
 
         // If all paths are complete, break from the loop
@@ -385,7 +387,7 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
                             panic!("This ident did not match the one we already collected. This is a bug.");
                         }
                         tree_cursor = use_path.tree.as_ref();
-                    },
+                    }
                     UseTree::Group(use_group) => {
                         let mut moved_tree_cursor = false;
 
@@ -416,14 +418,14 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
                 UseTree::Name(use_name) => {
                     path.push(use_name.ident.to_string());
                     *is_complete = true;
-                },
+                }
                 UseTree::Path(use_path) => {
                     path.push(use_path.ident.to_string());
-                },
+                }
                 UseTree::Glob(_) => {
                     path.push("*".to_string());
                     *is_complete = true;
-                },
+                }
                 UseTree::Group(use_group) => {
                     // We'll modify the first one in-place, and make clones for
                     // all subsequent ones
@@ -449,7 +451,7 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
                                 } else {
                                     new_path_tuple.unwrap().0.push(ident);
                                 }
-                            },
+                            }
                             UseTree::Name(use_name) => {
                                 let ident = use_name.ident.to_string();
 
@@ -461,7 +463,7 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
                                     path_tuple.0.push(ident);
                                     path_tuple.1 = true;
                                 }
-                            },
+                            }
                             UseTree::Glob(_) => {
                                 if first {
                                     path.push("*".to_string());
@@ -471,15 +473,26 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
                                     path_tuple.0.push("*".to_string());
                                     path_tuple.1 = true;
                                 }
-                            },
-                            UseTree::Group(_) => panic!("Directly-nested use groups ({}) are not supported by flutter_rust_bridge. Use {} instead.", "use a::{{b}, c}", "a::{b, c}"),
-                            UseTree::Rename(_) => panic!("Import renames (use a::b as c) are not currently supported by flutter_rust_bridge"),
+                            }
+                            UseTree::Group(_) => {
+                                panic!(
+                                    "Directly-nested use groups ({}) are not supported by flutter_rust_bridge. Use {} instead.",
+                                    "use a::{{b}, c}",
+                                    "a::{b, c}"
+                                );
+                            }
+                            // UseTree::Group(_) => panic!(),
+                            UseTree::Rename(_) => {
+                                panic!("Import renames (use a::b as c) are not currently supported by flutter_rust_bridge")
+                            }
                         }
-                        
+
                         first = false;
                     }
-                },
-                UseTree::Rename(_) => panic!("Import renames (use a::b as c) are not currently supported by flutter_rust_bridge"),
+                }
+                UseTree::Rename(_) => {
+                    panic!("Import renames (use a::b as c) are not currently supported by flutter_rust_bridge")
+                }
             }
         }
 
