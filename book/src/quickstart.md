@@ -6,7 +6,7 @@ What you write down (in Rust):
 
 ```rust
 pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
-    ... do my heavy computations ...
+    // ... do my heavy computations ...
 }
 
 // you can use structs (even recursive)
@@ -34,10 +34,12 @@ Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 ### Run
 
 ```shell
-flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart
+flutter_rust_bridge_codegen \
+    --rust-input path/to/your/api.rs \
+    --dart-output path/to/file/being/bridge_generated.dart
 ```
 
-If you have problems (such as failure on MacOS), please see the ["Troubleshooting"](https://github.com/fzyzcjy/flutter_rust_bridge#troubleshooting) section below.
+If you have problems (such as failure on MacOS), please see the ["Troubleshooting"](troubleshooting.md) section.
 
 (For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
 
@@ -47,7 +49,7 @@ Use the class in the generated `.dart` file, as if it is a normal Flutter/Dart c
 
 Want to see a Flutter tutorial with UI? See [the tutorial section below](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-a-flutterrust-app). Want pure-Dart example? [Here is](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-pure-dart) another tutorial.
 
-<sub>**Remark**: If you are interested, why `abstract`class can be used - it is because of the [factory](https://dart.dev/guides/language/language-tour#factory-constructors) language feature.</sub>
+<sub>**Remark**: If you are interested, why `abstract` class can be used - it is because of the [factory](https://dart.dev/guides/language/language-tour#factory-constructors) language feature.</sub>
 
 ## See more
 

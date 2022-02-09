@@ -5,6 +5,7 @@
 - [Introduction](index.md)
 - [🧭 Quickstart](quickstart.md)
 - [📚 Tutorial: A Flutter+Rust app](tutorial_with_flutter.md)
+- [Creating a new template](template.md)
 
 # More Doc
 
