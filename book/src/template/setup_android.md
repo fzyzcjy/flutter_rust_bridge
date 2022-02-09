@@ -48,13 +48,13 @@ ANDROID_NDK=(path to NDK)
 or edit one of the `gradle.properties` that resides within the `android` folder.
 
 ## [cargo-ndk]
-
-[cargo-ndk] is a Cargo plugin for compiling code suitable for plugging into
-the JNI without additional configuration. Run this command to install:
-
 ```shell
 cargo install cargo-ndk
 ```
+
+[cargo-ndk] is a Cargo plugin for compiling code suitable for plugging into
+the JNI without additional configuration. Run the above command to install.
+
 
 [Android NDK]: https://developer.android.com/ndk
 [Java Native Interface]: https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html
