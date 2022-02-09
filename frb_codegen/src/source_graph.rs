@@ -25,7 +25,7 @@ pub struct Crate {
 }
 
 impl Crate {
-    pub fn new(manifest_path: &String) -> Self {
+    pub fn new(manifest_path: &str) -> Self {
         let mut cmd = MetadataCommand::new();
         cmd.manifest_path(&manifest_path);
 
@@ -59,10 +59,10 @@ impl Crate {
         let mut result = Crate {
             name: root_package.name.clone(),
             manifest_path: fs::canonicalize(manifest_path).unwrap(),
-            root_src_file: root_src_file.clone().into(),
+            root_src_file: root_src_file.clone(),
             root_module: Module {
                 visibility: Visibility::Public,
-                file_path: root_src_file.clone(),
+                file_path: root_src_file,
                 module_path: vec!["crate".to_string()],
                 source: Some(ModuleSource::File(file_ast)),
                 scope: None,
@@ -303,18 +303,15 @@ impl Module {
         };
 
         for item in items.iter() {
-            match item {
-                syn::Item::Use(item_use) => {
-                    let flattened_imports = flatten_use_tree(&item_use.tree);
+            if let syn::Item::Use(item_use) = item {
+                let flattened_imports = flatten_use_tree(&item_use.tree);
 
-                    for import in flattened_imports {
-                        imports.push(Import {
-                            path: import,
-                            visibility: syn_vis_to_visibility(&item_use.vis),
-                        });
-                    }
+                for import in flattened_imports {
+                    imports.push(Import {
+                        path: import,
+                        visibility: syn_vis_to_visibility(&item_use.vis),
+                    });
                 }
-                _ => {}
             }
         }
     }
@@ -349,7 +346,7 @@ impl Module {
 ///         ["a", "b", "c"],
 ///         ["a", "d", "e"]
 ///     ]
-fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
+fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
     // Vec<(path, is_complete)>
     let mut result = vec![(vec![], false)];
 
@@ -363,7 +360,7 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
         }
 
         // If all paths are complete, break from the loop
-        if result.iter().fold(true, |acc, current| acc && current.1) {
+        if result.iter().all(|result_item| result_item.1) {
             break;
         }
 
@@ -394,7 +391,7 @@ fn flatten_use_tree<'ast>(use_tree: &'ast UseTree) -> Vec<Vec<String>> {
                         for tree in use_group.items.iter() {
                             match tree {
                                 UseTree::Path(use_path) => {
-                                    if *path_item == use_path.ident.to_string() {
+                                    if path_item == &use_path.ident.to_string() {
                                         tree_cursor = use_path.tree.as_ref();
                                         moved_tree_cursor = true;
                                         break;

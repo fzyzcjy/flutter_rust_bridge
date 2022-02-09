@@ -767,7 +767,12 @@ pub struct ApiEnum {
 }
 
 impl ApiEnum {
-    pub fn new(name: String, path: Vec<String>, comments: Vec<Comment>, mut variants: Vec<ApiVariant>) -> Self {
+    pub fn new(
+        name: String,
+        path: Vec<String>,
+        comments: Vec<Comment>,
+        mut variants: Vec<ApiVariant>,
+    ) -> Self {
         fn wrap_box(ty: ApiType) -> ApiType {
             match ty {
                 StructRef(_)

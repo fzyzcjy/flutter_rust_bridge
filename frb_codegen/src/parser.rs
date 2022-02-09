@@ -32,7 +32,7 @@ lazy_static! {
     ];
 }
 
-pub fn parse(source_rust_content: &str, file: File, manifest_path: &String) -> ApiFile {
+pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ApiFile {
     let crate_map = Crate::new(manifest_path);
 
     let src_fns = extract_fns_from_file(&file);
@@ -364,13 +364,10 @@ fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
     let mut src_fns = Vec::new();
 
     for item in file.items.iter() {
-        match item {
-            Item::Fn(ref item_fn) => {
-                if let Visibility::Public(_) = &item_fn.vis {
-                    src_fns.push(item_fn);
-                }
+        if let Item::Fn(ref item_fn) = item {
+            if let Visibility::Public(_) = &item_fn.vis {
+                src_fns.push(item_fn);
             }
-            _ => {}
         }
     }
 

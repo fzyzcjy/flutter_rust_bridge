@@ -37,18 +37,16 @@ impl Generator {
         let distinct_input_types = api_file.distinct_types(true, false);
         let distinct_output_types = api_file.distinct_types(false, true);
 
-        let input_type_imports: Vec<Option<String>> = distinct_input_types
+        let input_type_imports = distinct_input_types
             .iter()
-            .map(|api_type| self.generate_import(api_type, api_file))
-            .collect();
-        let output_type_imports: Vec<Option<String>> = distinct_output_types
+            .map(|api_type| self.generate_import(api_type, api_file));
+        let output_type_imports = distinct_output_types
             .iter()
-            .map(|api_type| self.generate_import(api_type, api_file))
-            .collect();
+            .map(|api_type| self.generate_import(api_type, api_file));
         let imports: Vec<String> = input_type_imports
-            .into_iter()
-            .chain(output_type_imports.into_iter())
-            .filter_map(|import| import)
+            .chain(output_type_imports)
+            // Filter out `None` and unwrap
+            .flatten()
             // Don't include imports from the API file
             .filter(|import| !import.starts_with(&format!("use crate::{}::", rust_wire_mod)))
             // de-duplicate
