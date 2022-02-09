@@ -7,12 +7,13 @@ single `MacOs(String)` that contains the current CPU architecture. Go ahead and 
 `native/src/api.rs`:
 
 ```diff
-pub enum Platform {
-    ..
--   MacIntel
--   MacApple
-+   MacOs(pub String)
-}
+ pub enum Platform {
+     ..
+-    MacIntel,
+-    MacApple,
++    MacOs(String),
+     ..
+ }
 ```
 
 Now run `just` and see that your binding code now has changed.
