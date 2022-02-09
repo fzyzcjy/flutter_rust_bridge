@@ -9,7 +9,7 @@ use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
 
-use crate::data::{MyStruct, MyEnum};
+use crate::data::{MyEnum, MyStruct};
 
 /// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
