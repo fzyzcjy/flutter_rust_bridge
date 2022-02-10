@@ -30,6 +30,15 @@
       ]
     },
     {
+      "login": "SecondFlight",
+      "name": "Joshua Wade",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6700184?v=4",
+      "profile": "https://github.com/SecondFlight",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "smw-wagnerma",
       "name": "Marcel",
       "avatar_url": "https://avatars.githubusercontent.com/u/66412697?v=4",
@@ -91,15 +100,6 @@
       "contributions": [
         "code",
         "doc"
-      ]
-    },
-    {
-      "login": "SecondFlight",
-      "name": "Joshua Wade",
-      "avatar_url": "https://avatars.githubusercontent.com/u/6700184?v=4",
-      "profile": "https://github.com/SecondFlight",
-      "contributions": [
-        "code"
       ]
     },
     {
