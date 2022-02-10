@@ -1,6 +1,9 @@
 use std::env;
+use std::ffi::OsString;
 use std::fs;
 use std::path::Path;
+use std::path::PathBuf;
+use std::str::FromStr;
 
 use anyhow::{anyhow, Result};
 use convert_case::{Case, Casing};
@@ -12,9 +15,6 @@ use toml::Value;
 #[derive(StructOpt, Debug, PartialEq, Deserialize)]
 #[structopt(setting(AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
-    /// Path of input cargo.toml file
-    #[structopt(long)]
-    pub cargo_path: String,
     /// Path of input Rust code
     #[structopt(short, long)]
     pub rust_input: String,
@@ -53,7 +53,6 @@ pub struct RawOpts {
 
 #[derive(Debug)]
 pub struct Opts {
-    pub cargo_path: String,
     pub rust_input_path: String,
     pub dart_output_path: String,
     pub dart_decl_output_path: Option<String>,
@@ -65,16 +64,21 @@ pub struct Opts {
     pub skip_add_mod_to_lib: bool,
     pub llvm_path: String,
     pub llvm_compiler_opts: String,
+    pub manifest_path: String,
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
-    let cargo_path = canon_path(&raw.cargo_path);
     let rust_input_path = canon_path(&raw.rust_input);
 
     let rust_crate_dir = canon_path(&raw.rust_crate_dir.unwrap_or_else(|| {
         fallback_rust_crate_dir(&rust_input_path)
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
     }));
+    let manifest_path = {
+        let mut path = std::path::PathBuf::from_str(&rust_crate_dir).unwrap();
+        path.push("Cargo.toml");
+        path_to_string(path).unwrap()
+    };
     let rust_output_path = canon_path(&raw.rust_output.unwrap_or_else(|| {
         fallback_rust_output_path(&rust_input_path)
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_output")))
@@ -89,7 +93,6 @@ pub fn parse(raw: RawOpts) -> Opts {
     }));
 
     Opts {
-        cargo_path,
         rust_input_path,
         dart_output_path: canon_path(&raw.dart_output),
         dart_decl_output_path: raw
@@ -104,6 +107,7 @@ pub fn parse(raw: RawOpts) -> Opts {
         skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
         llvm_path: raw.llvm_path.unwrap_or_else(|| "".to_string()),
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
+        manifest_path,
     }
 }
 
@@ -180,9 +184,11 @@ fn canon_path(sub_path: &str) -> String {
     let mut path =
         env::current_dir().unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path));
     path.push(sub_path);
-    path.into_os_string()
-        .into_string()
-        .unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+    path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+}
+
+fn path_to_string(path: PathBuf) -> Result<String, OsString> {
+    path.into_os_string().into_string()
 }
 
 impl Opts {

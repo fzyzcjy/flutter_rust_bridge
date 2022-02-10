@@ -38,7 +38,7 @@ fn main() {
     let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
     info!("Phase: Parse AST to IR");
-    let raw_api_file = parser::parse(&source_rust_content, file_ast, &config.cargo_path);
+    let raw_api_file = parser::parse(&source_rust_content, file_ast, &config.manifest_path);
     debug!("parsed functions: {:?}", &raw_api_file);
 
     info!("Phase: Transform IR");
