@@ -127,7 +127,7 @@ fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Outpu
             String::from_utf8_lossy(&result.stderr)
         );
     }
-    return result;
+    result
 }
 
 fn cbindgen(rust_crate_dir: &str, c_output_path: &str, c_struct_names: Vec<String>) {
@@ -220,7 +220,7 @@ fn ffigen(
         )
         .unwrap();
         for path in llvm_path {
-            write!(&mut config, "           - '{}'\n", path).unwrap();
+            writeln!(&mut config, "           - '{}'", path).unwrap();
         }
     }
 
