@@ -42,6 +42,7 @@ Here are other functionalities:
   copies
 - `SyncReturn<Vec<u8>>` sends the byte buffer to Dart synchronously
 - Can separate generated definitions from implementations (see #298)
+- Imported symbols can be used normally, such as `use crate::data::{MyEnum, MyStruct};`
 
 ## Command line arguments
 
