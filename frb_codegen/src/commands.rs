@@ -25,8 +25,8 @@ pub fn bindgen_rust_to_dart(
 
 fn execute_command(arg: &str, current_dir: Option<&str>) {
     let mut cmd = if cfg!(target_os = "windows") {
-        let mut cmd = Command::new("cmd");
-        cmd.arg("/C");
+        let mut cmd = Command::new("powershell");
+        cmd.arg("-c");
         cmd
     } else {
         let mut cmd = Command::new("sh");
