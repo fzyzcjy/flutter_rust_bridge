@@ -29,8 +29,14 @@ ffigen is not available, please run \"dart pub global activate ffigen\" first."
     check_shell_executable("cbindgen");
 }
 
-#[cfg(not(windows))]
 pub fn check_shell_executable(cmd: &str) {
+    #[cfg(windows)]
+    let res = execute_command(
+        "powershell",
+        &["-c", &format!("Get-Command -Name {}", cmd)],
+        None,
+    );
+    #[cfg(not(windows))]
     let res = execute_command(
         "sh",
         &["-c", &format!("test -x \"$(which {})\"", cmd)],
@@ -48,17 +54,6 @@ Note: This command might be available via cargo, in which case it can be install
         );
         std::process::exit(Failures::MissingExe as _);
     }
-}
-
-#[cfg(windows)]
-pub fn check_shell_executable(cmd: &str) {
-    // TODO: Implement check_shell_executable on Windows
-    let res = execute_command(
-        "powershell",
-        &["-Command", &format!("& {{ Get-Command -Name {} }}", cmd)],
-        None,
-    );
-    todo!("{:#?}", res);
 }
 
 pub fn bindgen_rust_to_dart(
