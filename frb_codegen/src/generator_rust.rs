@@ -1,4 +1,5 @@
 use std::borrow::Cow;
+use std::collections::HashSet;
 
 use crate::api_types::ApiType::*;
 use crate::api_types::*;
@@ -35,6 +36,23 @@ impl Generator {
     fn generate(&mut self, api_file: &ApiFile, rust_wire_mod: &str) -> String {
         let distinct_input_types = api_file.distinct_types(true, false);
         let distinct_output_types = api_file.distinct_types(false, true);
+
+        let input_type_imports = distinct_input_types
+            .iter()
+            .map(|api_type| self.generate_import(api_type, api_file));
+        let output_type_imports = distinct_output_types
+            .iter()
+            .map(|api_type| self.generate_import(api_type, api_file));
+        let imports: Vec<String> = input_type_imports
+            .chain(output_type_imports)
+            // Filter out `None` and unwrap
+            .flatten()
+            // Don't include imports from the API file
+            .filter(|import| !import.starts_with(&format!("use crate::{}::", rust_wire_mod)))
+            // de-duplicate
+            .collect::<HashSet<String>>()
+            .into_iter()
+            .collect();
 
         let wire_funcs = api_file
             .funcs
@@ -75,6 +93,9 @@ impl Generator {
 
         use crate::{}::*;
         use flutter_rust_bridge::*;
+
+        // Section: imports
+        {}
 
         // Section: wire functions
 
@@ -139,6 +160,7 @@ impl Generator {
         "#,
             CODE_HEADER,
             rust_wire_mod,
+            imports.join("\n"),
             wire_funcs.join("\n\n"),
             wire_structs.join("\n\n"),
             wire_enums.join("\n\n"),
@@ -154,6 +176,32 @@ impl Generator {
                 "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
             ),
         )
+    }
+
+    fn generate_import(&self, api_type: &ApiType, api_file: &ApiFile) -> Option<String> {
+        match api_type {
+            EnumRef(enum_ref) => {
+                let api_enum = enum_ref.get(api_file);
+                Some(format!("use {};", api_enum.path.join("::")))
+            }
+            StructRef(struct_ref) => {
+                let api_struct = struct_ref.get(api_file);
+                if api_struct.path.is_some() {
+                    Some(format!(
+                        "use {};",
+                        api_struct.path.as_ref().unwrap().join("::")
+                    ))
+                } else {
+                    None
+                }
+            }
+            Optional(optional_ref) => self.generate_import(&optional_ref.inner, api_file),
+            GeneralList(general_list_ref) => {
+                self.generate_import(&general_list_ref.inner, api_file)
+            }
+            Boxed(boxed_ref) => self.generate_import(&boxed_ref.inner, api_file),
+            _ => None,
+        }
     }
 
     fn generate_executor(&mut self, api_file: &ApiFile) -> String {

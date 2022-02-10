@@ -9,6 +9,8 @@ use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
 
+use crate::data::{MyEnum, MyStruct};
+
 /// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
     Ok(a + b)
@@ -440,4 +442,17 @@ pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
         }),
         _ => val,
     })
+}
+
+// Function that uses imported struct (from within this crate)
+pub fn use_imported_struct(my_struct: MyStruct) -> Result<bool> {
+    Ok(my_struct.content)
+}
+
+// Function that uses imported enum (from within this crate)
+pub fn use_imported_enum(my_enum: MyEnum) -> Result<bool> {
+    match my_enum {
+        MyEnum::False => Ok(false),
+        MyEnum::True => Ok(true),
+    }
 }

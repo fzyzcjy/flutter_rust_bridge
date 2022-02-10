@@ -1,3 +1,7 @@
+## Unreleased
+
+* Allow structs and enums to be imported into the api file from elsewhere in the crate #319 (thanks @SecondFlight)
+
 ## 1.15.1
 
 * Bump dependency version #311

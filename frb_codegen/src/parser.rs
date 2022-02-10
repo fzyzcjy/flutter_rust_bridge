@@ -11,18 +11,40 @@ use ApiType::*;
 
 use crate::api_types::*;
 use crate::generator_rust::HANDLER_NAME;
+use crate::source_graph::{Crate, Enum, Struct};
 
-type StructMap<'a> = HashMap<String, &'a ItemStruct>;
-type EnumMap<'a> = HashMap<String, &'a ItemEnum>;
+lazy_static! {
+    static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
+    static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
+    static ref CAPTURE_BOX: GenericCapture = GenericCapture::new("Box");
+    static ref CAPTURE_VEC: GenericCapture = GenericCapture::new("Vec");
+    static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
+    static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture = GenericCapture::new("ZeroCopyBuffer");
+    static ref CAPTURE_SYNC_RETURN: GenericCapture = GenericCapture::new("SyncReturn");
+    static ref ALL_CAPTURES: Vec<&'static GenericCapture> = vec![
+        &CAPTURE_RESULT,
+        &CAPTURE_OPTION,
+        &CAPTURE_BOX,
+        &CAPTURE_VEC,
+        &CAPTURE_STREAM_SINK,
+        &CAPTURE_ZERO_COPY_BUFFER,
+        &CAPTURE_SYNC_RETURN
+    ];
+}
 
-pub fn parse(source_rust_content: &str, file: File) -> ApiFile {
-    let SrcItems {
-        src_fns,
-        src_struct_map,
-        src_enums,
-    } = extract_items_from_file(&file);
+pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ApiFile {
+    let crate_map = Crate::new(manifest_path);
+
+    let src_fns = extract_fns_from_file(&file);
+
+    let mut src_structs = HashMap::new();
+    crate_map.root_module.collect_structs(&mut src_structs);
+
+    let mut src_enums = HashMap::new();
+    crate_map.root_module.collect_enums(&mut src_enums);
+
     let parser = Parser {
-        src_struct_map,
+        src_structs,
         src_enums,
         struct_pool: HashMap::new(),
         enum_pool: HashMap::new(),
@@ -33,11 +55,11 @@ pub fn parse(source_rust_content: &str, file: File) -> ApiFile {
 }
 
 struct Parser<'a> {
-    src_struct_map: HashMap<String, &'a ItemStruct>,
+    src_structs: HashMap<String, &'a Struct>,
     parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: ApiStructPool,
 
-    src_enums: HashMap<String, &'a ItemEnum>,
+    src_enums: HashMap<String, &'a Enum>,
     parsed_enums: HashSet<String>,
     enum_pool: ApiEnumPool,
 }
@@ -72,10 +94,6 @@ impl<'a> Parser<'a> {
 
     fn parse_function(&mut self, func: &ItemFn) -> ApiFunc {
         debug!("parse_function function name: {:?}", func.sig.ident);
-
-        lazy_static! {
-            static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
-        }
 
         let sig = &func.sig;
         let func_name = sig.ident.to_string();
@@ -152,10 +170,6 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_stream_sink(&mut self, ty: &str) -> Option<ApiType> {
-        lazy_static! {
-            static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
-        }
-
         CAPTURE_STREAM_SINK
             .captures(ty)
             .map(|inner| self.parse_type(&inner))
@@ -167,11 +181,6 @@ impl<'a> Parser<'a> {
             "String" => Some(ApiType::Delegate(ApiTypeDelegate::String)),
             "Vec<String>" => Some(ApiType::Delegate(ApiTypeDelegate::StringList)),
             _ => {
-                lazy_static! {
-                    static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture =
-                        GenericCapture::new("ZeroCopyBuffer");
-                }
-
                 if let Some(inner_type_str) = CAPTURE_ZERO_COPY_BUFFER.captures(ty) {
                     if let Some(ApiType::PrimitiveList(ApiTypePrimitiveList { primitive })) =
                         self.try_parse_list(&inner_type_str)
@@ -188,10 +197,6 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_list(&mut self, ty: &str) -> Option<ApiType> {
-        lazy_static! {
-            static ref CAPTURE_VEC: GenericCapture = GenericCapture::new("Vec");
-        }
-
         if let Some(inner_type_str) = CAPTURE_VEC.captures(ty) {
             match self.parse_type(&inner_type_str) {
                 Primitive(primitive) => Some(PrimitiveList(ApiTypePrimitiveList { primitive })),
@@ -203,10 +208,6 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_box(&mut self, ty: &str) -> Option<ApiType> {
-        lazy_static! {
-            static ref CAPTURE_BOX: GenericCapture = GenericCapture::new("Box");
-        }
-
         CAPTURE_BOX.captures(ty).map(|inner| {
             Boxed(Box::new(ApiTypeBoxed {
                 exist_in_real_api: true,
@@ -216,10 +217,6 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_option(&mut self, ty: &str) -> Option<ApiType> {
-        lazy_static! {
-            static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
-        }
-
         CAPTURE_OPTION.captures(ty).map(|inner| {
             let inner_option = CAPTURE_OPTION.captures(&inner);
             if let Some(inner_option) = inner_option {
@@ -242,7 +239,7 @@ impl<'a> Parser<'a> {
     }
 
     fn try_parse_struct(&mut self, ty: &str) -> Option<ApiType> {
-        if !self.src_struct_map.contains_key(ty) {
+        if !self.src_structs.contains_key(ty) {
             return None;
         }
 
@@ -278,10 +275,12 @@ impl<'a> Parser<'a> {
     }
 
     fn parse_enum(&mut self, ty: &str) -> ApiEnum {
-        let src = self.src_enums[ty];
-        let name = src.ident.to_string();
-        let comments = extract_comments(&src.attrs);
-        let variants = src
+        let src_enum = self.src_enums[ty];
+        let name = src_enum.ident.to_string();
+        let path = src_enum.path.clone();
+        let comments = extract_comments(&src_enum.src.attrs);
+        let variants = src_enum
+            .src
             .variants
             .iter()
             .map(|variant| ApiVariant {
@@ -289,41 +288,49 @@ impl<'a> Parser<'a> {
                 comments: extract_comments(&variant.attrs),
                 kind: match variant.fields.iter().next() {
                     None => ApiVariantKind::Value,
-                    Some(Field { attrs, ident, .. }) => ApiVariantKind::Struct(ApiStruct {
-                        name: variant.ident.to_string(),
-                        is_fields_named: ident.is_some(),
-                        comments: extract_comments(attrs),
-                        fields: variant
-                            .fields
-                            .iter()
-                            .enumerate()
-                            .map(|(idx, field)| ApiField {
-                                name: ApiIdent::new(
-                                    field
-                                        .ident
-                                        .as_ref()
-                                        .map(ToString::to_string)
-                                        .unwrap_or_else(|| format!("field{}", idx)),
-                                ),
-                                ty: self.parse_type(&type_to_string(&field.ty)),
-                                comments: extract_comments(&field.attrs),
-                            })
-                            .collect(),
-                    }),
+                    Some(Field {
+                        attrs,
+                        ident: field_ident,
+                        ..
+                    }) => {
+                        let variant_ident = variant.ident.to_string();
+                        ApiVariantKind::Struct(ApiStruct {
+                            name: variant_ident,
+                            path: None,
+                            is_fields_named: field_ident.is_some(),
+                            comments: extract_comments(attrs),
+                            fields: variant
+                                .fields
+                                .iter()
+                                .enumerate()
+                                .map(|(idx, field)| ApiField {
+                                    name: ApiIdent::new(
+                                        field
+                                            .ident
+                                            .as_ref()
+                                            .map(ToString::to_string)
+                                            .unwrap_or_else(|| format!("field{}", idx)),
+                                    ),
+                                    ty: self.parse_type(&type_to_string(&field.ty)),
+                                    comments: extract_comments(&field.attrs),
+                                })
+                                .collect(),
+                        })
+                    }
                 },
             })
             .collect();
-        ApiEnum::new(name, comments, variants)
+        ApiEnum::new(name, path, comments, variants)
     }
 
     fn parse_struct_core(&mut self, ty: &str) -> ApiStruct {
-        let item_struct = self.src_struct_map[ty];
+        let src_struct = self.src_structs[ty];
         let mut fields = Vec::new();
 
-        let (is_fields_named, struct_fields) = match &item_struct.fields {
+        let (is_fields_named, struct_fields) = match &src_struct.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
-            _ => panic!("unsupported type: {:?}", item_struct.fields),
+            _ => panic!("unsupported type: {:?}", src_struct.src.fields),
         };
 
         for (idx, field) in struct_fields.iter().enumerate() {
@@ -340,10 +347,12 @@ impl<'a> Parser<'a> {
             });
         }
 
-        let name = item_struct.ident.to_string();
-        let comments = extract_comments(&item_struct.attrs);
+        let name = src_struct.ident.to_string();
+        let path = Some(src_struct.path.clone());
+        let comments = extract_comments(&src_struct.src.attrs);
         ApiStruct {
             name,
+            path,
             fields,
             is_fields_named,
             comments,
@@ -351,46 +360,18 @@ impl<'a> Parser<'a> {
     }
 }
 
-struct SrcItems<'a> {
-    src_fns: Vec<&'a ItemFn>,
-    src_struct_map: StructMap<'a>,
-    src_enums: EnumMap<'a>,
-}
-
-fn extract_items_from_file(file: &File) -> SrcItems {
+fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
     let mut src_fns = Vec::new();
-    let mut src_struct_map = HashMap::new();
-    let mut src_enums = HashMap::new();
+
     for item in file.items.iter() {
-        match item {
-            Item::Fn(ref item_fn) => {
-                if let Visibility::Public(_) = &item_fn.vis {
-                    src_fns.push(item_fn);
-                }
+        if let Item::Fn(ref item_fn) = item {
+            if let Visibility::Public(_) = &item_fn.vis {
+                src_fns.push(item_fn);
             }
-            Item::Struct(ref item_struct) => {
-                if let Visibility::Public(_) = &item_struct.vis {
-                    src_struct_map.insert(item_struct.ident.to_string(), item_struct);
-                }
-            }
-            Item::Enum(
-                item_enu @ ItemEnum {
-                    vis: Visibility::Public(_),
-                    ..
-                },
-            ) => {
-                src_enums.insert(item_enu.ident.to_string(), item_enu);
-            }
-            _ => {}
         }
     }
-    // println!("[Functions]\n{:#?}", src_fns);
-    // println!("[Structs]\n{:#?}", src_struct_map);
-    SrcItems {
-        src_fns,
-        src_struct_map,
-        src_enums,
-    }
+
+    src_fns
 }
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294

@@ -286,6 +286,30 @@ void main(List<String> args) async {
       );
     }
 
+    print('dart call useImportedStruct()');
+    {
+      expect(
+        await api.useImportedStruct(myStruct: MyStruct(content: false)),
+        false,
+      );
+      expect(
+        await api.useImportedStruct(myStruct: MyStruct(content: true)),
+        true,
+      );
+    }
+
+    print('dart call useImportedEnum()');
+    {
+      expect(
+        await api.useImportedEnum(myEnum: MyEnum.False),
+        false,
+      );
+      expect(
+        await api.useImportedEnum(myEnum: MyEnum.True),
+        true,
+      );
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();

@@ -11,6 +11,8 @@
 use crate::api::*;
 use flutter_rust_bridge::*;
 
+// Section: imports
+
 // Section: wire functions
 
 #[no_mangle]

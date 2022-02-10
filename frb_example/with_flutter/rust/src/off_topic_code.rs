@@ -135,6 +135,7 @@ fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>> {
     let mut buf = Vec::new();
 
     let encoder = PngEncoder::new(&mut buf);
+    #[allow(deprecated)]
     encoder.encode(pixels, bounds.0 as u32, bounds.1 as u32, ColorType::Rgb8)?;
 
     Ok(buf)
