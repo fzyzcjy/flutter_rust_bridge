@@ -19,8 +19,10 @@ pub fn ensure_tools_available() {
     let output = execute_command("dart", &["pub", "global", "list"], None);
     let output = String::from_utf8_lossy(&output.stdout);
     if !output.contains("ffigen") {
-        error!("
-ffigen is not available, please run \"dart pub global activate ffigen\" first.");
+        error!(
+            "
+ffigen is not available, please run \"dart pub global activate ffigen\" first."
+        );
         std::process::exit(Failures::MissingExe as _);
     }
 
@@ -30,7 +32,11 @@ ffigen is not available, please run \"dart pub global activate ffigen\" first.")
 
 #[cfg(not(windows))]
 pub fn check_shell_executable(cmd: &str) {
-    let res = execute_command("sh", &["-c", &format!("test -x \"$(which {})\"", cmd)], None);
+    let res = execute_command(
+        "sh",
+        &["-c", &format!("test -x \"$(which {})\"", cmd)],
+        None,
+    );
     if !res.status.success() {
         error!(
             "
