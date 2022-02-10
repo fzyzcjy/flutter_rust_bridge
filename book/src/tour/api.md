@@ -1,8 +1,8 @@
 # `native/src/api.rs`
 
-This is where exported functions, structs and enums live. You can import code from
-other files, but only those *defined* here will be eligible for code generation.
-This limitation is expected to be lifted once [fzyzcjy/flutter_rust_bridge#319](https://github.com/fzyzcjy/flutter_rust_bridge/pull/319) lands.
+This is the default entry point for your library. Only functions defined here will be eligible for codegen.
+Functions may use types not defined in this file as parameter or return types, but those types must have
+been imported through `pub use` so that they are visible from `native/src/bridge_generated.rs`.
 
 Furthermore, structs and enums may only comprise of types that are themselves
 eligible for code generation.
