@@ -7,6 +7,7 @@ use pathdiff::diff_paths;
 use structopt::StructOpt;
 
 use crate::api_types::ApiType;
+use crate::commands::ensure_tools_available;
 use crate::config::RawOpts;
 use crate::others::*;
 use crate::utils::*;
@@ -25,6 +26,8 @@ mod utils;
 
 fn main() {
     env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
+
+    ensure_tools_available();
 
     let config = config::parse(RawOpts::from_args());
     info!("Picked config: {:?}", &config);
@@ -98,7 +101,7 @@ fn main() {
                 temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                 &config.dart_wire_class_name(),
                 c_struct_names,
-                &config.llvm_path,
+                &config.llvm_path[..],
                 &config.llvm_compiler_opts,
             );
         },
