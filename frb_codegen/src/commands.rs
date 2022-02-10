@@ -26,7 +26,6 @@ ffigen is not available, please run \"dart pub global activate ffigen\" first."
         std::process::exit(Failures::MissingExe as _);
     }
 
-    check_shell_executable("flutter_rust_bridge_codegen");
     check_shell_executable("cbindgen");
 }
 
