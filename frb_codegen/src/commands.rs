@@ -52,8 +52,13 @@ Note: This command might be available via cargo, in which case it can be install
 
 #[cfg(windows)]
 pub fn check_shell_executable(cmd: &str) {
-    warn!("check_shell_executable not implemented on Windows");
     // TODO: Implement check_shell_executable on Windows
+    let res = execute_command(
+        "powershell",
+        &["-Command", &format!("& { Get-Command -Name {} }", cmd)],
+        None,
+    );
+    todo!("{:#?}", res);
 }
 
 pub fn bindgen_rust_to_dart(
