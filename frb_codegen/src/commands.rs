@@ -123,7 +123,7 @@ include = [{}]
 
     execute_command(
         &format!(
-            "cbindgen -v --config {} --output {}",
+            "cbindgen -v --config \"{}\" --output \"{}\"",
             config_file.path().to_str().unwrap(),
             c_output_path,
         ),
@@ -185,7 +185,7 @@ fn ffigen(
     // NOTE please install ffigen globally first: `dart pub global activate ffigen`
     execute_command(
         &format!(
-            "dart pub global run ffigen --config {}",
+            "dart pub global run ffigen --config \"{}\"",
             config_file.path().to_str().unwrap()
         ),
         None,
@@ -194,7 +194,7 @@ fn ffigen(
 
 pub fn format_rust(path: &str) {
     debug!("execute format_rust path={}", path);
-    execute_command(&format!("rustfmt {}", path), None);
+    execute_command(&format!("rustfmt \"{}\"", path), None);
 }
 
 pub fn format_dart(path: &str, line_length: i32) {
@@ -204,7 +204,7 @@ pub fn format_dart(path: &str, line_length: i32) {
     );
     execute_command(
         &format!(
-            "dart format {} --line-length {}",
+            "dart format \"{}\" --line-length {}",
             path,
             &line_length.to_string(),
         ),
