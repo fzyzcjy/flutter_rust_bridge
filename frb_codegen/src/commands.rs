@@ -16,9 +16,9 @@ enum Failures {
 }
 
 #[must_use]
-fn call_shell(cmd: &'static str) -> Output {
+fn call_shell(cmd: &str) -> Output {
     #[cfg(windows)]
-    return execute_command("cmd", &["/C", cmd], None);
+    return execute_command("powershell", &["-noprofile", "-c", cmd], None);
 
     #[cfg(not(windows))]
     execute_command("sh", &["-c", cmd], None)
@@ -242,18 +242,10 @@ fn ffigen(
     debug!("ffigen config_file: {:?}", config_file);
 
     // NOTE please install ffigen globally first: `dart pub global activate ffigen`
-    let res = execute_command(
-        "dart",
-        &[
-            "pub",
-            "global",
-            "run",
-            "ffigen",
-            "--config",
-            &config_file.path().to_string_lossy(),
-        ],
-        None,
-    );
+    let res = call_shell(&format!(
+        "dart pub global run ffigen --config \"{}\"",
+        config_file.path().to_string_lossy()
+    ));
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
         if err.contains("Couldn't find dynamic library in default locations.") {
@@ -284,11 +276,10 @@ pub fn format_dart(path: &str, line_length: i32) {
         "execute format_dart path={} line_length={}",
         path, line_length
     );
-    let res = execute_command(
-        "dart",
-        &["format", path, "--line-length", &line_length.to_string()],
-        None,
-    );
+    let res = call_shell(&format!(
+        "dart format {} --line-length {}",
+        path, line_length
+    ));
     if !res.status.success() {
         error!(
             "dart format failed: {}",
