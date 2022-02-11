@@ -1,7 +1,3 @@
-# Installing codegen
-
-First, you will need the following programs, preferably visible from your path:
-
 - [`flutter_rust_bridge_codegen`](https://lib.rs/crates/flutter_rust_bridge_codegen), the core codegen for Rust-Dart glue code
 - [`cbindgen`](https://lib.rs/crates/cbindgen), to generate C headers from Rust FFI code
 - [`ffigen`](https://pub.dev/packages/ffigen), to generate Dart code from C headers
@@ -13,6 +9,3 @@ An easy way to install the first four dependencies is to run these commands:
 cargo install flutter_rust_bridge_codegen cbindgen just
 dart pub global activate ffigen
 ```
-
-Alternatively, each of these dependencies may provide prebuilt binaries. Check with
-your package manager and review them individually.
