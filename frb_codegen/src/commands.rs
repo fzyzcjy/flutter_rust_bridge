@@ -15,8 +15,17 @@ enum Failures {
     MissingExe,
 }
 
+#[must_use]
+fn call_shell(cmd: &'static str) -> Output {
+    #[cfg(windows)]
+    return execute_command("cmd", &["/C", cmd], None);
+
+    #[cfg(not(windows))]
+    execute_command("sh", &["-c", cmd], None)
+}
+
 pub fn ensure_tools_available() {
-    let output = execute_command("dart", &["pub", "global", "list"], None);
+    let output = call_shell("dart pub global list");
     let output = String::from_utf8_lossy(&output.stdout);
     if !output.contains("ffigen") {
         error!(
@@ -29,13 +38,9 @@ ffigen is not available, please run \"dart pub global activate ffigen\" first."
     check_shell_executable("cbindgen");
 }
 
-pub fn check_shell_executable(cmd: &str) {
+pub fn check_shell_executable(cmd: &'static str) {
     #[cfg(windows)]
-    let res = execute_command(
-        "powershell",
-        &["-c", &format!("Get-Command -Name {}", cmd)],
-        None,
-    );
+    let res = execute_command("where", &[cmd], None);
     #[cfg(not(windows))]
     let res = execute_command(
         "sh",
@@ -48,12 +53,12 @@ pub fn check_shell_executable(cmd: &str) {
 {cmd} is not a command, or not executable.
 Note: This command might be available via cargo, in which case it can be installed with:
 
-    cargo install {cmd}
-",
+    cargo install {cmd}",
             cmd = cmd
         );
         std::process::exit(Failures::MissingExe as _);
     }
+    debug!("{}", String::from_utf8_lossy(&res.stdout));
 }
 
 pub fn bindgen_rust_to_dart(
@@ -78,7 +83,6 @@ pub fn bindgen_rust_to_dart(
 #[must_use = "Error path must be handled."]
 fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Output {
     let mut cmd = Command::new(bin);
-
     cmd.args(args);
 
     if let Some(current_dir) = current_dir {
@@ -92,11 +96,10 @@ fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Outpu
 
     let result = cmd
         .output()
-        .unwrap_or_else(|err| panic!("\"{} {}\" failed: {}", bin, args.join(" "), err));
+        .unwrap_or_else(|err| panic!("\"{}\" \"{}\" failed: {}", bin, args.join(" "), err));
 
+    let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {
-        let stdout = String::from_utf8_lossy(&result.stdout);
-
         debug!(
             "command={:?} stdout={} stderr={}",
             cmd,
@@ -122,7 +125,7 @@ fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Outpu
         warn!(
             "command={:?} stdout={} stderr={}",
             cmd,
-            String::from_utf8_lossy(&result.stdout),
+            stdout,
             String::from_utf8_lossy(&result.stderr)
         );
     }
@@ -247,7 +250,7 @@ fn ffigen(
             "run",
             "ffigen",
             "--config",
-            config_file.path().to_str().unwrap(),
+            &config_file.path().to_string_lossy(),
         ],
         None,
     );
@@ -259,8 +262,7 @@ fn ffigen(
 ffigen could not find LLVM.
 Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.:
 
-    flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>
-"
+    flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>"
             );
             std::process::exit(Failures::FfigenLlvm as _);
         }
