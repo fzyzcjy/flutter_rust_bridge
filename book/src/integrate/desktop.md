@@ -5,7 +5,7 @@ as they use the same build system.
 
 The idea is the same as other platforms: we hook onto the existing projects
 using scripts, and we will also be borrowing from the template. Go ahead
-and download [rust.cmke](https://raw.githubusercontent.com/Desdaemon/flutter_rust_bridge_template/main/windows/rust.cmake)
+and download [rust.cmake](https://raw.githubusercontent.com/Desdaemon/flutter_rust_bridge_template/main/windows/rust.cmake)
 into your `windows` and `linux` folders. Keep in mind that CMake will refuse
 to use files that lie outside of its working directory, so there will be duplications
 between the two build folders.
