@@ -46,6 +46,12 @@ And when you build with cargo, you need to select x86 as the target:
 cargo build --target=x86_64-apple-darwin
 ```
 
+#### Freezed file is sometimes not generated when it should be?
+
+If your `.freezed.dart` or `.g.dart` seems outdated, ensure you have run the `build_runner`.
+
+Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/330
+
 #### Generated code is so long?
 
 Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see >10k lines of Java code generated for a quite simple source proto file.
