@@ -15,7 +15,7 @@ If calling rust function gives the error below, please consider running **cargo 
 
 Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.com/bbqsrc/cargo-ndk/issues/22) with `cargo-ndk`, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See [#149](https://github.com/fzyzcjy/flutter_rust_bridge/issues/149))
 
-#### Fail to run `flutter_rust_bridge_codegen` on MacOS
+#### Fail to run `flutter_rust_bridge_codegen` on MacOS, "Please supply one or more path/to/llvm..."
 
 If you are running macOS, you will need to specify a path to your llvm:
 ```shell
