@@ -132,7 +132,7 @@ impl<'a> Parser<'a> {
                 if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
                     self.parse_type(&inner)
                 } else {
-                    panic!("unsupported type_string: {}", type_string);
+                    panic!("Functions must return `Result<_>`, but current type_string is: {}", type_string);
                 }
             } else {
                 panic!("unsupported output: {:?}", sig.output);
