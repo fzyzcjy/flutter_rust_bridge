@@ -13,7 +13,7 @@ Want to combine the best between `Flutter`, a cross-platform hot-reload rapid-de
 ## 🚀 Advantages
 
 * **Memory-safe**: Never need to think about malloc/free.
-* **Rich types**: Unlike low-level binding generator which only provide primitives and pointers, this package [provides](https://fzyzcjy.github.io/flutter_rust_bridge/feature_details.html) provides things like platform-optimized `Vec<T>`, possibly recursive `struct`, `enum`s even with values, error (`Result`) handling, and `Stream`s.
+* **Rich types**: Unlike low-level binding generator which only provide primitives and pointers, this package [provides](https://fzyzcjy.github.io/flutter_rust_bridge/feature_details.html) things like platform-optimized `Vec<T>`, possibly recursive `struct`, `enum`s even with values, error (`Result`) handling, and `Stream`s.
 * **Zero-copy**: Pass big array of bytes from Rust to Dart without any memory copies.
 * **Async programming**: Simply call functions directly in main isolate (thread) of Dart/Flutter, and Rust code will not block the Flutter UI.
 * **Easy to use**: All you need to do is write down your Rust code. The code generator will do everything and expose an API in Dart/Flutter's style.
