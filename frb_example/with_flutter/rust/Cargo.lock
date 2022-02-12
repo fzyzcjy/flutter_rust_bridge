@@ -333,6 +333,7 @@ dependencies = [
  "anyhow",
  "flutter_rust_bridge_macros",
  "lazy_static",
+ "log",
  "parking_lot",
  "threadpool",
 ]
