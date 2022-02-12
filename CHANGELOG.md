@@ -1,6 +1,10 @@
-## Unreleased
+## 1.16.0
 
 * Allow structs and enums to be imported into the api file from elsewhere in the crate #319 (thanks @SecondFlight)
+* Refactor command module to fix Windows build failures #325 (thanks @Desdaemon)
+* Quote arguments when calling external commands #322 (thanks @Desdaemon)
+* Update examples to fix compile error
+* Bump dependency version #314
 
 ## 1.15.1
 
