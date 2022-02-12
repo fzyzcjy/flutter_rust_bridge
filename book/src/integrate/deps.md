@@ -28,4 +28,18 @@ following dependencies are also needed:
 
 Their usage is explained in [Using `build_runner`](../generate/build_runner.md).
 
+## Rust dependencies
+
+Similar to Dart, Rust requires a few dependencies to get going:
+- `flutter_rust_bridge`
+- `anyhow`, which supplies a common `Result` type for all functions
+
+Add these lines to `Cargo.toml`:
+
+```diff
++[dependencies]
++flutter_rust_bridge = "1"
++anyhow = "1"
+```
+
 [`just`]: https://github.com/casey/just
