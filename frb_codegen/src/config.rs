@@ -45,7 +45,7 @@ pub struct RawOpts {
     pub skip_add_mod_to_lib: bool,
     /// Path to the installed LLVM
     #[structopt(long)]
-    pub llvm_path: Option<String>,
+    pub llvm_path: Option<Vec<String>>,
     /// LLVM compiler opts
     #[structopt(long)]
     pub llvm_compiler_opts: Option<String>,
@@ -62,7 +62,7 @@ pub struct Opts {
     pub class_name: String,
     pub dart_format_line_length: i32,
     pub skip_add_mod_to_lib: bool,
-    pub llvm_path: String,
+    pub llvm_path: Vec<String>,
     pub llvm_compiler_opts: String,
     pub manifest_path: String,
 }
@@ -105,7 +105,20 @@ pub fn parse(raw: RawOpts) -> Opts {
         class_name,
         dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
         skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
-        llvm_path: raw.llvm_path.unwrap_or_else(|| "".to_string()),
+        llvm_path: raw.llvm_path.unwrap_or_else(|| {
+            vec![
+                "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
+                "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
+                // Possible Linux LLVM roots
+                "/usr/lib/llvm-9/lib".to_owned(),
+                "/usr/lib/llvm-10/lib".to_owned(),
+                "/usr/lib/llvm-11/lib".to_owned(),
+                "/usr/lib/llvm-12/lib".to_owned(),
+                "/usr/lib/llvm-13/lib".to_owned(),
+                "/usr/lib/".to_owned(),
+                "/usr/lib64/".to_owned(),
+            ]
+        }),
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
         manifest_path,
     }
