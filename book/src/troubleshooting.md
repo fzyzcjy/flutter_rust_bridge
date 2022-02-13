@@ -46,6 +46,18 @@ And when you build with cargo, you need to select x86 as the target:
 cargo build --target=x86_64-apple-darwin
 ```
 
+### On M1 MacOS, ` Failed to load dynamic library '/opt/homebrew/opt/llvm/lib/libclang.dylib'`?
+
+Full possible error:
+
+```
+Invalid argument(s): Failed to load dynamic library '/opt/homebrew/opt/llvm/lib/libclang.dylib': dlopen(/opt/homebrew/opt/llvm/lib/libclang.dylib, 0x0001): tried: '/opt/homebrew/opt/llvm/lib/libclang.dylib' (mach-o file, but is an incompatible architecture (have 'arm64', need 'x86_64')), '/usr/lib/libclang.dylib' (no such file), '/opt/homebrew/Cellar/llvm/13.0.0_2/lib/libclang.dylib' (mach-o file, but is an incompatible architecture (have 'arm64', need 'x86_64')), '/usr/lib/libclang.dylib' (no such file)
+```
+
+Solution: Install the arm64 version of dart and put that in PATH instead of the x86_64 version that flutter ships. See https://github.com/dart-lang/ffigen/issues/260.
+
+Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/318#issuecomment-1037718638
+
 #### Freezed file is sometimes not generated when it should be?
 
 If your `.freezed.dart` or `.g.dart` seems outdated, ensure you have run the `build_runner`.
