@@ -1,3 +1,12 @@
 # iOS setup
 
-WIP. You may have a look at the several sections about iOS under "Integrating with existing projects" of the book currently.
+iOS requires some additional Rust targets for cross-compilation:
+
+```
+# 64 bit targets (real device & simulator):
+rustup target add aarch64-apple-ios x86_64-apple-ios
+# New simulator target for XCode 12 and later
+rustup target add aarch64-apple-ios-sim
+# 32 bit targets (you probably don't need these):
+rustup target add armv7-apple-ios i386-apple-ios
+```
