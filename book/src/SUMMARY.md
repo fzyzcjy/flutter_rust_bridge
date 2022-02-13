@@ -38,6 +38,7 @@
   - [Integrating with MacOS](integrate/macos.md)
   - [Integrating with Desktop](integrate/desktop.md)
   - [Integrating with Web]()
+  - [Using the dynamic library](integrate/usage.md)
 
 # More Doc
 

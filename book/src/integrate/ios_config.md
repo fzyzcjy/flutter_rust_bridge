@@ -15,7 +15,7 @@ tab. We need to change three settings here:
     Your browser does not support WEBM.
 </video>
 
-You can read more about iOS bitcode [here](https://developer.apple.com/forums/thread/3991).
+You can read more about iOS bitcode [here](https://stackoverflow.com/questions/30722606/what-does-enable-bitcode-do-in-xcode-7).
 As for the library search path, we will be soon compiling our Rust static library and copying
 it to the folder we just specified. If you prefer to directly edit the project file,
 add in `ios/Runner.xcodeproj/project.pbxproj` these two settings:
