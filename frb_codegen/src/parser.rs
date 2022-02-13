@@ -101,6 +101,7 @@ impl<'a> Parser<'a> {
         let mut inputs = Vec::new();
         let mut output = None;
         let mut mode = None;
+        let mut fallible = true;
 
         for sig_input in &sig.inputs {
             if let FnArg::Typed(ref pat_type) = sig_input {
@@ -132,10 +133,8 @@ impl<'a> Parser<'a> {
                 if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
                     self.parse_type(&inner)
                 } else {
-                    panic!(
-                        "Functions must return `Result<_>`, but current type_string is: {}",
-                        type_string
-                    );
+                    fallible = false;
+                    self.parse_type(&type_string)
                 }
             } else {
                 panic!("unsupported output: {:?}", sig.output);
@@ -155,6 +154,7 @@ impl<'a> Parser<'a> {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
+            fallible,
             mode: mode.expect("unsupported mode"),
             comments: extract_comments(&func.attrs),
         }

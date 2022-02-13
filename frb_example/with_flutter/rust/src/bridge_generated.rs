@@ -51,7 +51,7 @@ pub extern "C" fn wire_passing_complex_structs(port_: i64, root: *mut wire_TreeN
         },
         move || {
             let api_root = root.wire2api();
-            move |task_callback| passing_complex_structs(api_root)
+            move |task_callback| Ok(passing_complex_structs(api_root))
         },
     )
 }
@@ -66,7 +66,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_array(port_: i64, input: *mut
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| off_topic_memory_test_input_array(api_input)
+            move |task_callback| Ok(off_topic_memory_test_input_array(api_input))
         },
     )
 }
@@ -81,7 +81,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: i64,
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| off_topic_memory_test_output_zero_copy_buffer(api_len)
+            move |task_callback| Ok(off_topic_memory_test_output_zero_copy_buffer(api_len))
         },
     )
 }
@@ -96,7 +96,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port_: i64, len: i32)
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| off_topic_memory_test_output_vec_u8(api_len)
+            move |task_callback| Ok(off_topic_memory_test_output_vec_u8(api_len))
         },
     )
 }
@@ -114,7 +114,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| off_topic_memory_test_input_vec_of_object(api_input)
+            move |task_callback| Ok(off_topic_memory_test_input_vec_of_object(api_input))
         },
     )
 }
@@ -129,7 +129,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port_: i64, le
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| off_topic_memory_test_output_vec_of_object(api_len)
+            move |task_callback| Ok(off_topic_memory_test_output_vec_of_object(api_len))
         },
     )
 }
@@ -147,7 +147,7 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| off_topic_memory_test_input_complex_struct(api_input)
+            move |task_callback| Ok(off_topic_memory_test_input_complex_struct(api_input))
         },
     )
 }
@@ -162,7 +162,7 @@ pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port_: i64, l
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| off_topic_memory_test_output_complex_struct(api_len)
+            move |task_callback| Ok(off_topic_memory_test_output_complex_struct(api_len))
         },
     )
 }
@@ -187,7 +187,7 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| off_topic_deliberately_panic(),
+        move || move |task_callback| Ok(off_topic_deliberately_panic()),
     )
 }
 

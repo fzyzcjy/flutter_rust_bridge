@@ -18,11 +18,11 @@ pub fn draw_mandelbrot(
     Ok(ZeroCopyBuffer(image))
 }
 
-pub fn passing_complex_structs(root: TreeNode) -> Result<String> {
-    Ok(format!(
+pub fn passing_complex_structs(root: TreeNode) -> String {
+    format!(
         "Hi this string is from Rust. I received a complex struct: {:?}",
         root
-    ))
+    )
 }
 
 #[derive(Debug, Clone)]
@@ -45,43 +45,43 @@ pub struct TreeNode {
 
 // following are used only for memory tests. Readers of this example do not need to consider it.
 
-pub fn off_topic_memory_test_input_array(input: Vec<u8>) -> Result<i32> {
-    Ok(input.len() as i32)
+pub fn off_topic_memory_test_input_array(input: Vec<u8>) -> i32 {
+    input.len() as i32
 }
 
-pub fn off_topic_memory_test_output_zero_copy_buffer(len: i32) -> Result<ZeroCopyBuffer<Vec<u8>>> {
-    Ok(ZeroCopyBuffer(vec![0u8; len as usize]))
+pub fn off_topic_memory_test_output_zero_copy_buffer(len: i32) -> ZeroCopyBuffer<Vec<u8>> {
+    ZeroCopyBuffer(vec![0u8; len as usize])
 }
 
-pub fn off_topic_memory_test_output_vec_u8(len: i32) -> Result<Vec<u8>> {
-    Ok(vec![0u8; len as usize])
+pub fn off_topic_memory_test_output_vec_u8(len: i32) -> Vec<u8> {
+    vec![0u8; len as usize]
 }
 
-pub fn off_topic_memory_test_input_vec_of_object(input: Vec<Size>) -> Result<i32> {
-    Ok(input.len() as i32)
+pub fn off_topic_memory_test_input_vec_of_object(input: Vec<Size>) -> i32 {
+    input.len() as i32
 }
 
-pub fn off_topic_memory_test_output_vec_of_object(len: i32) -> Result<Vec<Size>> {
+pub fn off_topic_memory_test_output_vec_of_object(len: i32) -> Vec<Size> {
     let item = Size {
         width: 42,
         height: 42,
     };
-    Ok(vec![item; len as usize])
+    vec![item; len as usize]
 }
 
-pub fn off_topic_memory_test_input_complex_struct(input: TreeNode) -> Result<i32> {
-    Ok(input.children.len() as i32)
+pub fn off_topic_memory_test_input_complex_struct(input: TreeNode) -> i32 {
+    input.children.len() as i32
 }
 
-pub fn off_topic_memory_test_output_complex_struct(len: i32) -> Result<TreeNode> {
+pub fn off_topic_memory_test_output_complex_struct(len: i32) -> TreeNode {
     let child = TreeNode {
         name: "child".to_string(),
         children: Vec::new(),
     };
-    Ok(TreeNode {
+    TreeNode {
         name: "root".to_string(),
         children: vec![child; len as usize],
-    })
+    }
 }
 
 pub fn off_topic_deliberately_return_error() -> Result<i32> {
@@ -89,7 +89,7 @@ pub fn off_topic_deliberately_return_error() -> Result<i32> {
     Err(anyhow!("deliberately return Error!"))
 }
 
-pub fn off_topic_deliberately_panic() -> Result<i32> {
+pub fn off_topic_deliberately_panic() -> i32 {
     std::env::set_var("RUST_BACKTRACE", "1"); // optional, just to see more info...
     panic!("deliberately panic!")
 }

@@ -277,6 +277,12 @@ impl Generator {
 
         let code_call_inner_func = format!("{}({})", func.name, inner_func_params.join(", "));
 
+        let code_call_inner_func_result = if func.fallible {
+            code_call_inner_func
+        } else {
+            format!("Ok({})", code_call_inner_func)
+        };
+
         let (handler_func_name, return_type, code_closure) = match func.mode {
             ApiFuncMode::Sync => (
                 "wrap_sync",
@@ -284,7 +290,7 @@ impl Generator {
                 format!(
                     "{}
                     {}",
-                    code_wire2api, code_call_inner_func,
+                    code_wire2api, code_call_inner_func_result,
                 ),
             ),
             ApiFuncMode::Normal | ApiFuncMode::Stream => (
@@ -294,7 +300,7 @@ impl Generator {
                     "{}
                     move |task_callback| {}
                     ",
-                    code_wire2api, code_call_inner_func
+                    code_wire2api, code_call_inner_func_result,
                 ),
             ),
         };
