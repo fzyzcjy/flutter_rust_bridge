@@ -64,6 +64,12 @@ If your `.freezed.dart` or `.g.dart` seems outdated, ensure you have run the `bu
 
 Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/330
 
+#### `Can't create typedef from non-function type.`?
+
+Ensure min sdk version of Flutter `pubspec.yaml` is at least 2.13.0 to let `ffigen` happy.
+
+https://github.com/fzyzcjy/flutter_rust_bridge/issues/334
+
 #### Generated code is so long?
 
 Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see >10k lines of Java code generated for a quite simple source proto file.
