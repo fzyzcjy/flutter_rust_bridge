@@ -3,6 +3,7 @@
     unused,
     clippy::redundant_closure,
     clippy::useless_conversion,
+    clippy::unit_arg,
     non_snake_case
 )]
 // AUTO GENERATED FILE, DO NOT EDIT.
@@ -28,7 +29,7 @@ pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| simple_adder(api_a, api_b)
+            move |task_callback| Ok(simple_adder(api_a, api_b))
         },
     )
 }
@@ -52,7 +53,14 @@ pub extern "C" fn wire_primitive_types(
             let api_my_i64 = my_i64.wire2api();
             let api_my_f64 = my_f64.wire2api();
             let api_my_bool = my_bool.wire2api();
-            move |task_callback| primitive_types(api_my_i32, api_my_i64, api_my_f64, api_my_bool)
+            move |task_callback| {
+                Ok(primitive_types(
+                    api_my_i32,
+                    api_my_i64,
+                    api_my_f64,
+                    api_my_bool,
+                ))
+            }
         },
     )
 }
@@ -67,7 +75,7 @@ pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
         },
         move || {
             let api_my_u32 = my_u32.wire2api();
-            move |task_callback| primitive_u32(api_my_u32)
+            move |task_callback| Ok(primitive_u32(api_my_u32))
         },
     )
 }
@@ -82,7 +90,7 @@ pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| handle_string(api_s)
+            move |task_callback| Ok(handle_string(api_s))
         },
     )
 }
@@ -95,7 +103,7 @@ pub extern "C" fn wire_handle_return_unit(port_: i64) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| handle_return_unit(),
+        move || move |task_callback| Ok(handle_return_unit()),
     )
 }
 
@@ -109,7 +117,7 @@ pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
         },
         move || {
             let api_v = v.wire2api();
-            move |task_callback| handle_vec_u8(api_v)
+            move |task_callback| Ok(handle_vec_u8(api_v))
         },
     )
 }
@@ -124,7 +132,7 @@ pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| handle_vec_of_primitive(api_n)
+            move |task_callback| Ok(handle_vec_of_primitive(api_n))
         },
     )
 }
@@ -139,7 +147,7 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| handle_zero_copy_vec_of_primitive(api_n)
+            move |task_callback| Ok(handle_zero_copy_vec_of_primitive(api_n))
         },
     )
 }
@@ -155,7 +163,7 @@ pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *
         move || {
             let api_arg = arg.wire2api();
             let api_boxed = boxed.wire2api();
-            move |task_callback| handle_struct(api_arg, api_boxed)
+            move |task_callback| Ok(handle_struct(api_arg, api_boxed))
         },
     )
 }
@@ -170,7 +178,7 @@ pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| handle_newtype(api_arg)
+            move |task_callback| Ok(handle_newtype(api_arg))
         },
     )
 }
@@ -185,7 +193,7 @@ pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_si
         },
         move || {
             let api_l = l.wire2api();
-            move |task_callback| handle_list_of_struct(api_l)
+            move |task_callback| Ok(handle_list_of_struct(api_l))
         },
     )
 }
@@ -200,7 +208,7 @@ pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringLis
         },
         move || {
             let api_names = names.wire2api();
-            move |task_callback| handle_string_list(api_names)
+            move |task_callback| Ok(handle_string_list(api_names))
         },
     )
 }
@@ -215,7 +223,7 @@ pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| handle_complex_struct(api_s)
+            move |task_callback| Ok(handle_complex_struct(api_s))
         },
     )
 }
@@ -272,7 +280,7 @@ pub extern "C" fn wire_return_panic(port_: i64) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| return_panic(),
+        move || move |task_callback| Ok(return_panic()),
     )
 }
 
@@ -287,7 +295,7 @@ pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64)
         move || {
             let api_left = left.wire2api();
             let api_right = right.wire2api();
-            move |task_callback| handle_optional_return(api_left, api_right)
+            move |task_callback| Ok(handle_optional_return(api_left, api_right))
         },
     )
 }
@@ -302,7 +310,7 @@ pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_ui
         },
         move || {
             let api_document = document.wire2api();
-            move |task_callback| handle_optional_struct(api_document)
+            move |task_callback| Ok(handle_optional_struct(api_document))
         },
     )
 }
@@ -317,7 +325,7 @@ pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_Exot
         },
         move || {
             let api_opt = opt.wire2api();
-            move |task_callback| handle_optional_increment(api_opt)
+            move |task_callback| Ok(handle_optional_increment(api_opt))
         },
     )
 }
@@ -332,7 +340,7 @@ pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64
         },
         move || {
             let api_opt = opt.wire2api();
-            move |task_callback| handle_increment_boxed_optional(api_opt)
+            move |task_callback| Ok(handle_increment_boxed_optional(api_opt))
         },
     )
 }
@@ -363,7 +371,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
             let api_boolbox = boolbox.wire2api();
             let api_structbox = structbox.wire2api();
             move |task_callback| {
-                handle_option_box_arguments(
+                Ok(handle_option_box_arguments(
                     api_i8box,
                     api_u8box,
                     api_i32box,
@@ -371,7 +379,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
                     api_f64box,
                     api_boolbox,
                     api_structbox,
-                )
+                ))
             }
         },
     )
@@ -387,7 +395,7 @@ pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_li
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| handle_return_enum(api_input)
+            move |task_callback| Ok(handle_return_enum(api_input))
         },
     )
 }
@@ -402,7 +410,7 @@ pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
         },
         move || {
             let api_weekday = weekday.wire2api();
-            move |task_callback| handle_enum_parameter(api_weekday)
+            move |task_callback| Ok(handle_enum_parameter(api_weekday))
         },
     )
 }
@@ -417,7 +425,7 @@ pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Custo
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| handle_customized_struct(api_val)
+            move |task_callback| Ok(handle_customized_struct(api_val))
         },
     )
 }
@@ -432,7 +440,7 @@ pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| handle_enum_struct(api_val)
+            move |task_callback| Ok(handle_enum_struct(api_val))
         },
     )
 }
@@ -447,7 +455,7 @@ pub extern "C" fn wire_use_imported_struct(port_: i64, my_struct: *mut wire_MySt
         },
         move || {
             let api_my_struct = my_struct.wire2api();
-            move |task_callback| use_imported_struct(api_my_struct)
+            move |task_callback| Ok(use_imported_struct(api_my_struct))
         },
     )
 }
@@ -462,7 +470,7 @@ pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
         },
         move || {
             let api_my_enum = my_enum.wire2api();
-            move |task_callback| use_imported_enum(api_my_enum)
+            move |task_callback| Ok(use_imported_enum(api_my_enum))
         },
     )
 }

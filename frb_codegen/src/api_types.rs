@@ -68,6 +68,7 @@ pub struct ApiFunc {
     pub name: String,
     pub inputs: Vec<ApiField>,
     pub output: ApiType,
+    pub fallible: bool,
     pub mode: ApiFuncMode,
     pub comments: Vec<Comment>,
 }

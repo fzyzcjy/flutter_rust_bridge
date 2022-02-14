@@ -101,6 +101,7 @@ impl<'a> Parser<'a> {
         let mut inputs = Vec::new();
         let mut output = None;
         let mut mode = None;
+        let mut fallible = true;
 
         for sig_input in &sig.inputs {
             if let FnArg::Typed(ref pat_type) = sig_input {
@@ -127,18 +128,20 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            output = Some(if let ReturnType::Type(_, ty) = &sig.output {
-                let type_string = type_to_string(ty);
-                if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
-                    self.parse_type(&inner)
-                } else {
-                    panic!(
-                        "Functions must return `Result<_>`, but current type_string is: {}",
-                        type_string
-                    );
+            output = Some(match &sig.output {
+                ReturnType::Type(_, ty) => {
+                    let type_string = type_to_string(ty);
+                    if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
+                        self.parse_type(&inner)
+                    } else {
+                        fallible = false;
+                        self.parse_type(&type_string)
+                    }
                 }
-            } else {
-                panic!("unsupported output: {:?}", sig.output);
+                ReturnType::Default => {
+                    fallible = false;
+                    ApiType::Primitive(ApiTypePrimitive::Unit)
+                }
             });
             mode = Some(
                 if let Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)) = output {
@@ -155,6 +158,7 @@ impl<'a> Parser<'a> {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
+            fallible,
             mode: mode.expect("unsupported mode"),
             comments: extract_comments(&func.attrs),
         }
