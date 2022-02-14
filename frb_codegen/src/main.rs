@@ -6,18 +6,18 @@ use log::{debug, info};
 use pathdiff::diff_paths;
 use structopt::StructOpt;
 
-use crate::api_types::ApiType;
 use crate::commands::ensure_tools_available;
 use crate::config::RawOpts;
+use crate::ir::*;
 use crate::others::*;
 use crate::utils::*;
 
-mod api_types;
 mod commands;
 mod config;
 mod generator_c;
 mod generator_dart;
 mod generator_rust;
+mod ir;
 mod others;
 mod parser;
 mod source_graph;

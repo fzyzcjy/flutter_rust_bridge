@@ -7,9 +7,9 @@ use quote::quote;
 use regex::Regex;
 use syn::*;
 
-use ApiType::*;
+use crate::ir::ApiType::*;
+use crate::ir::*;
 
-use crate::api_types::*;
 use crate::generator_rust::HANDLER_NAME;
 use crate::source_graph::{Crate, Enum, Struct};
 

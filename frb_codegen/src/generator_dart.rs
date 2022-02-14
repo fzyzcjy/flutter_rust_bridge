@@ -1,8 +1,8 @@
 use convert_case::{Case, Casing};
 use log::debug;
 
-use crate::api_types::ApiType::*;
-use crate::api_types::*;
+use crate::ir::ApiType::*;
+use crate::ir::*;
 use crate::others::*;
 
 pub fn generate(

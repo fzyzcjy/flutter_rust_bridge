@@ -1,7 +1,7 @@
 use log::debug;
 
-use crate::api_types::ApiType::{Boxed, EnumRef, StructRef};
-use crate::api_types::{ApiField, ApiFile, ApiFunc, ApiTypeBoxed, ApiTypeEnumRef};
+use crate::ir::ApiType::*;
+use crate::ir::*;
 
 pub fn transform(src: ApiFile) -> ApiFile {
     let dst_funcs = src
