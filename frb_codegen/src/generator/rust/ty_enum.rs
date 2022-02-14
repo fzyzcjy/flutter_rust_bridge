@@ -1,10 +1,11 @@
 use crate::generator::rust::ty::*;
+use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
 use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
-impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
+impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn wire2api_body(&self) -> String {
         if self.ir.is_struct {
             let enu = self.ir.get(self.context.ir_file);
@@ -74,7 +75,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
     }
 
     fn structs(&self) -> String {
-        let src = self.ir.get(file);
+        let src = self.ir.get(self.context.ir_file);
         if !src.is_struct() {
             return "".to_owned();
         }
@@ -131,9 +132,10 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
     }
 
     fn impl_intodart(&self) -> String {
+        let src = self.ir.get(self.context.ir_file);
+
         if self.ir.is_struct {
-            let variants = self
-                .0
+            let variants = src
                 .variants()
                 .iter()
                 .enumerate()
@@ -181,8 +183,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                 variants.join("\n")
             )
         } else {
-            let variants = self
-                .0
+            let variants = src
                 .variants()
                 .iter()
                 .enumerate()
@@ -203,7 +204,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
         }
     }
 
-    fn new_with_nullptr(&self) -> String {
+    fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         fn init_of(ty: &IrType) -> &str {
             if ty.rust_wire_is_pointer() {
                 "core::ptr::null_mut()"
@@ -211,8 +212,10 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                 "Default::default()"
             }
         }
-        let inflators = self
-            .0
+
+        let src = self.ir.get(self.context.ir_file);
+
+        let inflators = src
             .variants()
             .iter()
             .filter_map(|variant| {
@@ -225,7 +228,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                 } else {
                     return None;
                 };
-                Some(self.extern_func_collector.generate(
+                Some(collector.generate(
                     &format!("inflate_{}", typ),
                     &[],
                     Some(&format!("*mut {}Kind", self.ir.name)),
@@ -253,7 +256,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                 }}
             }}
             {}",
-            rust_wire_type,
+            self.ir.rust_wire_type,
             inflators.join("\n\n")
         )
     }

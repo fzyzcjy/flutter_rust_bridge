@@ -9,7 +9,7 @@ use syn::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
-use crate::parser::ty::TypeParser;
+use crate::parser::ty::{GenericCapture, TypeParser};
 use crate::source_graph::Crate;
 use lazy_static::lazy_static;
 

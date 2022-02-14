@@ -5,7 +5,7 @@ use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
-impl TypeRustGeneratorTrait for TypePrimitiveListGenerator {
+impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
     fn wire2api_body(&self) -> String {
         "unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -21,7 +21,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator {
         ]
     }
 
-    fn allocate_funcs(&self, collector: &ExternFuncCollector) -> String {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
         self.extern_func_collector.generate(
             &format!("new_{}", self.ir.safe_ident()),
             &["len: i32"],

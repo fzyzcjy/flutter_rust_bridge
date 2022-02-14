@@ -13,7 +13,7 @@ pub trait TypeRustGeneratorTrait {
         "".to_string()
     }
 
-    fn allocate_funcs(&self, _collector: &ExternFuncCollector) -> String {
+    fn allocate_funcs(&self, _collector: &mut ExternFuncCollector) -> String {
         "".to_string()
     }
 
@@ -21,7 +21,7 @@ pub trait TypeRustGeneratorTrait {
         "".to_string()
     }
 
-    fn new_with_nullptr(&self) -> String {
+    fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         "".to_string()
     }
 

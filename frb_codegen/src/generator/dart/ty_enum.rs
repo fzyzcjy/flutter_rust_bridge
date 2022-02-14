@@ -110,10 +110,11 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn structs(&self) -> String {
-        let comments = dart_comments(&self.ir.comments);
-        if self.ir.is_struct() {
-            let variants = self
-                .0
+        let src = self.ir.get(self.context.ir_file);
+
+        let comments = dart_comments(&src.comments);
+        if src.is_struct() {
+            let variants = src
                 .variants()
                 .iter()
                 .map(|variant| {
@@ -181,8 +182,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 variants.join("\n")
             )
         } else {
-            let variants = self
-                .0
+            let variants = src
                 .variants()
                 .iter()
                 .map(|variant| {

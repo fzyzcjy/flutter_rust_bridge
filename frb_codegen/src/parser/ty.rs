@@ -265,7 +265,7 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-struct GenericCapture {
+pub struct GenericCapture {
     regex: Regex,
 }
 

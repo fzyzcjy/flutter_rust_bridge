@@ -1,10 +1,11 @@
 use crate::generator::rust::ty::*;
+use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
 use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
-impl TypeRustGeneratorTrait for TypeStructRefGenerator {
+impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     fn wire2api_body(&self) -> String {
         let api_struct = self.ir.get(self.context.ir_file);
         let fields_str = &api_struct
@@ -45,7 +46,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
 
     fn impl_intodart(&self) -> String {
         let body = self
-            .0
+            .ir
             .fields
             .iter()
             .map(|field| {
@@ -71,7 +72,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
         )
     }
 
-    fn new_with_nullptr(&self) -> String {
+    fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         let body = {
             self.ir
                 .fields
@@ -97,7 +98,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
                     }}
                 }}
             "#,
-            rust_wire_type, body,
+            self.ir.rust_wire_type, body,
         )
     }
 

@@ -4,7 +4,7 @@ use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
-impl TypeRustGeneratorTrait for TypeOptionalGenerator {
+impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     fn wire2api_body(&self) -> String {
         "".to_string()
     }

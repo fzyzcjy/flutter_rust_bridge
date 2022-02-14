@@ -5,7 +5,7 @@ use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
-impl TypeGeneralListGenerator {
+impl TypeGeneralListGenerator<'_> {
     pub const WIRE2API_BODY: &'static str = "
             let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
@@ -14,7 +14,7 @@ impl TypeGeneralListGenerator {
             vec.into_iter().map(Wire2Api::wire2api).collect()";
 }
 
-impl TypeRustGeneratorTrait for TypeGeneralListGenerator {
+impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn wire2api_body(&self) -> String {
         TypeGeneralListGenerator::WIRE2API_BODY.to_string()
     }
@@ -30,7 +30,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator {
         ]
     }
 
-    fn allocate_funcs(&self, collector: &ExternFuncCollector) -> String {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
         self.generate_list_allocate_func(&self.ir.safe_ident(), &self.ir, &self.ir.inner)
     }
 

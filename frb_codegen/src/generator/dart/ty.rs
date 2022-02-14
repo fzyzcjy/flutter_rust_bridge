@@ -9,7 +9,9 @@ pub trait TypeDartGeneratorTrait {
         "".to_string()
     }
 
-    fn wire2api_body(&self) -> String;
+    fn wire2api_body(&self) -> String {
+        "".to_string()
+    }
 
     fn structs(&self) -> String {
         "".to_string()

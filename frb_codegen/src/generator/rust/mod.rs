@@ -84,18 +84,17 @@ impl Generator {
                 .iter()
                 .map(|ty| self.generate_wire_struct(ty, ir_file)),
         );
-
-        lines.push(self.section_header_comment("wire enums"));
-        lines.extend(distinct_input_types.iter().filter_map(|ty| match ty {
-            IrType::EnumRef(enu) => Some(generate_wire_enum(enu, ir_file)),
-            _ => None,
-        }));
+        lines.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| TypeGenerator::new(ty.clone(), ir_file).structs()),
+        );
 
         lines.push(self.section_header_comment("allocate functions"));
         lines.extend(
             distinct_input_types
                 .iter()
-                .map(|f| self.generate_allocate_funcs(f)),
+                .map(|f| self.generate_allocate_funcs(f, ir_file)),
         );
 
         lines.push(self.section_header_comment("impl Wire2Api"));
@@ -160,7 +159,7 @@ impl Generator {
     }
 
     fn generate_import(&self, api_type: &IrType, ir_file: &IrFile) -> Option<String> {
-        TypeGenerator::new(self.0.clone()).imports()
+        TypeGenerator::new(api_type.clone(), ir_file).imports()
     }
 
     fn generate_executor(&mut self, ir_file: &IrFile) -> String {
@@ -293,7 +292,7 @@ impl Generator {
 
     fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_wire_struct: {:?}", ty);
-        let fields = TypeGenerator::new(ty.clone()).wire_struct_fields();
+        let fields = TypeGenerator::new(ty.clone(), ir_file).wire_struct_fields();
 
         format!(
             r###"
@@ -331,9 +330,9 @@ impl Generator {
         )
     }
 
-    fn generate_allocate_funcs(&mut self, ty: &IrType) -> String {
+    fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
-        TypeGenerator::new(ty.clone()).allocate_funcs()
+        TypeGenerator::new(ty.clone(), ir_file).allocate_funcs(&mut self.extern_func_collector)
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
@@ -358,7 +357,7 @@ impl Generator {
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
-        let body = TypeGenerator::new(ty.clone()).wire2api_body();
+        let body = TypeGenerator::new(ty.clone(), ir_file).wire2api_body();
 
         format!(
             "impl Wire2Api<{}> for {} {{
@@ -388,12 +387,12 @@ impl Generator {
     }
 
     fn generate_new_with_nullptr_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        TypeGenerator::new(ty.clone()).new_with_nullptr()
+        TypeGenerator::new(ty.clone(), ir_file).new_with_nullptr(&mut self.extern_func_collector)
     }
 
     fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_impl_intodart: {:?}", ty);
-        TypeGenerator::new(ty.clone()).impl_intodart()
+        TypeGenerator::new(ty.clone(), ir_file).impl_intodart()
     }
 }
 

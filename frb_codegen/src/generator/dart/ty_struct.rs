@@ -54,8 +54,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn structs(&self) -> String {
-        let field_declarations = self
-            .0
+        let src = self.ir.get(self.context.ir_file);
+
+        let field_declarations = src
             .fields
             .iter()
             .map(|f| {
@@ -70,8 +71,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .collect::<Vec<_>>()
             .join("\n");
 
-        let constructor_params = self
-            .0
+        let constructor_params = src
             .fields
             .iter()
             .map(|f| {
@@ -84,7 +84,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .collect::<Vec<_>>()
             .join("");
 
-        let comments = dart_comments(&self.ir.comments);
+        let comments = dart_comments(&src.comments);
 
         format!(
             "{}class {} {{
