@@ -103,10 +103,10 @@ pub fn generate(
     );
 
     let impl_body = format!(
-        "class {} extends FlutterRustBridgeBase<{}> implements {} {{
-            factory {}(ffi.DynamicLibrary dylib) => {}.raw({}(dylib));
+        "class {dart_api_impl_class_name} extends FlutterRustBridgeBase<{dart_wire_class_name}> implements {dart_api_class_name} {{
+            factory {dart_api_impl_class_name}(ffi.DynamicLibrary dylib) => {dart_api_impl_class_name}.raw({dart_wire_class_name}(dylib));
 
-            {}.raw({} inner) : super(inner);
+            {dart_api_impl_class_name}.raw({dart_wire_class_name} inner) : super(inner);
 
             {}
 
@@ -120,14 +120,6 @@ pub fn generate(
         // Section: wire2api
         {}
         ",
-        dart_api_impl_class_name,
-        dart_wire_class_name,
-        dart_api_class_name,
-        dart_api_impl_class_name,
-        dart_api_impl_class_name,
-        dart_wire_class_name,
-        dart_api_impl_class_name,
-        dart_wire_class_name,
         dart_func_signatures_and_implementations
             .iter()
             .map(|(_, imp, _)| imp.clone())
@@ -136,6 +128,9 @@ pub fn generate(
         dart_api2wire_funcs.join("\n\n"),
         dart_api_fill_to_wire_funcs.join("\n\n"),
         dart_wire2api_funcs.join("\n\n"),
+        dart_api_impl_class_name = dart_api_impl_class_name,
+        dart_wire_class_name = dart_wire_class_name,
+        dart_api_class_name = dart_api_class_name,
     );
 
     let decl_code = &common_header
@@ -158,7 +153,7 @@ pub fn generate(
             
                 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import
                 ",
-                        CODE_HEADER
+                CODE_HEADER
         ),
         part: "".to_string(),
         body: "".to_string(),
