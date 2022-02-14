@@ -617,6 +617,8 @@ pub struct wire_uint_8_list {
     len: i32,
 }
 
+// Section: wire enums
+
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_KitchenSink {
@@ -1301,102 +1303,6 @@ impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     }
 }
 
-impl Wire2Api<Option<String>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Option<String> {}
-}
-
-impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Option<ZeroCopyBuffer<Vec<u8>>> {}
-}
-
-impl Wire2Api<Option<Attribute>> for *mut wire_Attribute {
-    fn wire2api(self) -> Option<Attribute> {}
-}
-
-impl Wire2Api<Option<bool>> for *mut bool {
-    fn wire2api(self) -> Option<bool> {}
-}
-
-impl Wire2Api<Option<ExoticOptionals>> for *mut wire_ExoticOptionals {
-    fn wire2api(self) -> Option<ExoticOptionals> {}
-}
-
-impl Wire2Api<Option<f64>> for *mut f64 {
-    fn wire2api(self) -> Option<f64> {}
-}
-
-impl Wire2Api<Option<i32>> for *mut i32 {
-    fn wire2api(self) -> Option<i32> {}
-}
-
-impl Wire2Api<Option<i64>> for *mut i64 {
-    fn wire2api(self) -> Option<i64> {}
-}
-
-impl Wire2Api<Option<NewTypeInt>> for *mut wire_NewTypeInt {
-    fn wire2api(self) -> Option<NewTypeInt> {}
-}
-
-impl Wire2Api<Option<Box<bool>>> for *mut bool {
-    fn wire2api(self) -> Option<Box<bool>> {}
-}
-
-impl Wire2Api<Option<Box<ExoticOptionals>>> for *mut wire_ExoticOptionals {
-    fn wire2api(self) -> Option<Box<ExoticOptionals>> {}
-}
-
-impl Wire2Api<Option<Box<f64>>> for *mut f64 {
-    fn wire2api(self) -> Option<Box<f64>> {}
-}
-
-impl Wire2Api<Option<Box<i32>>> for *mut i32 {
-    fn wire2api(self) -> Option<Box<i32>> {}
-}
-
-impl Wire2Api<Option<Box<i64>>> for *mut i64 {
-    fn wire2api(self) -> Option<Box<i64>> {}
-}
-
-impl Wire2Api<Option<Box<i8>>> for *mut i8 {
-    fn wire2api(self) -> Option<Box<i8>> {}
-}
-
-impl Wire2Api<Option<Box<u8>>> for *mut u8 {
-    fn wire2api(self) -> Option<Box<u8>> {}
-}
-
-impl Wire2Api<Option<Vec<f32>>> for *mut wire_float_32_list {
-    fn wire2api(self) -> Option<Vec<f32>> {}
-}
-
-impl Wire2Api<Option<Vec<f64>>> for *mut wire_float_64_list {
-    fn wire2api(self) -> Option<Vec<f64>> {}
-}
-
-impl Wire2Api<Option<Vec<i32>>> for *mut wire_int_32_list {
-    fn wire2api(self) -> Option<Vec<i32>> {}
-}
-
-impl Wire2Api<Option<Vec<i64>>> for *mut wire_int_64_list {
-    fn wire2api(self) -> Option<Vec<i64>> {}
-}
-
-impl Wire2Api<Option<Vec<i8>>> for *mut wire_int_8_list {
-    fn wire2api(self) -> Option<Vec<i8>> {}
-}
-
-impl Wire2Api<Option<Vec<Attribute>>> for *mut wire_list_attribute {
-    fn wire2api(self) -> Option<Vec<Attribute>> {}
-}
-
-impl Wire2Api<Option<Vec<Option<Attribute>>>> for *mut wire_list_opt_box_autoadd_attribute {
-    fn wire2api(self) -> Option<Vec<Option<Attribute>>> {}
-}
-
-impl Wire2Api<Option<Vec<u8>>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Option<Vec<u8>> {}
-}
-
 impl Wire2Api<u32> for u32 {
     fn wire2api(self) -> u32 {
         self
@@ -1542,15 +1448,6 @@ pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
     })
 }
 
-impl NewWithNullPtr for i32 {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
-        }
-    }
-}
-
 impl NewWithNullPtr for wire_MySize {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1583,15 +1480,6 @@ impl NewWithNullPtr for wire_NewTypeInt {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: Default::default(),
-        }
-    }
-}
-
-impl NewWithNullPtr for i32 {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
         }
     }
 }

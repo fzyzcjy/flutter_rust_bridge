@@ -236,6 +236,8 @@ pub struct wire_uint_8_list {
     len: i32,
 }
 
+// Section: wire enums
+
 // Section: allocate functions
 
 #[no_mangle]
