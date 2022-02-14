@@ -37,7 +37,7 @@
     - [Linking the library](integrate/ios_linking.md)
   - [Integrating with MacOS](integrate/macos.md)
   - [Integrating with Desktop](integrate/desktop.md)
-  - [Integrating with Web]()
+  - [Integrating with Web](integrate/web.md)
   - [Using the dynamic library](integrate/usage.md)
 
 # More Doc
