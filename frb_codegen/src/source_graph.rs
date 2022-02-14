@@ -326,6 +326,12 @@ impl Module {
         }
     }
 
+    pub fn collect_structs_to_vec(&self) -> HashMap<String, &Struct> {
+        let mut ans = HashMap::new();
+        self.collect_structs(&mut ans);
+        ans
+    }
+
     pub fn collect_enums<'a>(&'a self, container: &mut HashMap<String, &'a Enum>) {
         let scope = self.scope.as_ref().unwrap();
         for scope_enum in &scope.enums {
@@ -334,6 +340,12 @@ impl Module {
         for scope_module in &scope.modules {
             scope_module.collect_enums(container);
         }
+    }
+
+    pub fn collect_enums_to_vec(&self) -> HashMap<String, &Enum> {
+        let mut ans = HashMap::new();
+        self.collect_enums(&mut ans);
+        ans
     }
 }
 

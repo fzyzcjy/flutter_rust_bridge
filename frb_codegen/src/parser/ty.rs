@@ -68,6 +68,12 @@ impl<'a> TypeParser<'a> {
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
     }
 
+    pub fn try_parse_stream_sink(&mut self, ty: &str) -> Option<IrType> {
+        CAPTURE_STREAM_SINK
+            .captures(ty)
+            .map(|inner| self.parse_type(&inner))
+    }
+
     fn try_parse_primitive(&mut self, ty: &str) -> Option<IrType> {
         IrTypePrimitive::try_from_rust_str(ty).map(Primitive)
     }

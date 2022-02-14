@@ -24,12 +24,8 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFi
     let crate_map = Crate::new(manifest_path);
 
     let src_fns = extract_fns_from_file(&file);
-
-    let mut src_structs = HashMap::new();
-    crate_map.root_module.collect_structs(&mut src_structs);
-
-    let mut src_enums = HashMap::new();
-    crate_map.root_module.collect_enums(&mut src_enums);
+    let src_structs = crate_map.root_module.collect_structs_to_vec();
+    let src_enums = crate_map.root_module.collect_enums_to_vec();
 
     let parser = Parser::new(TypeParser::new(src_structs, src_enums));
     parser.parse(source_rust_content, src_fns)
@@ -43,20 +39,6 @@ impl<'a> Parser<'a> {
     pub fn new(type_parser: TypeParser<'a>) -> Self {
         Parser { type_parser }
     }
-}
-
-fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
-    attrs
-        .iter()
-        .filter_map(|attr| match attr.parse_meta() {
-            Ok(Meta::NameValue(MetaNameValue {
-                path,
-                lit: Lit::Str(lit),
-                ..
-            })) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
-            _ => None,
-        })
-        .collect()
 }
 
 impl<'a> Parser<'a> {
@@ -95,7 +77,9 @@ impl<'a> Parser<'a> {
                 };
                 let type_string = type_to_string(&pat_type.ty);
 
-                if let Some(stream_sink_inner_type) = self.try_parse_stream_sink(&type_string) {
+                if let Some(stream_sink_inner_type) =
+                    self.type_parser.try_parse_stream_sink(&type_string)
+                {
                     output = Some(stream_sink_inner_type);
                     mode = Some(IrFuncMode::Stream);
                 } else {
@@ -146,12 +130,6 @@ impl<'a> Parser<'a> {
             comments: extract_comments(&func.attrs),
         }
     }
-
-    fn try_parse_stream_sink(&mut self, ty: &str) -> Option<IrType> {
-        CAPTURE_STREAM_SINK
-            .captures(ty)
-            .map(|inner| self.type_parser.parse_type(&inner))
-    }
 }
 
 fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
@@ -166,6 +144,20 @@ fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
     }
 
     src_fns
+}
+
+fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
+    attrs
+        .iter()
+        .filter_map(|attr| match attr.parse_meta() {
+            Ok(Meta::NameValue(MetaNameValue {
+                path,
+                lit: Lit::Str(lit),
+                ..
+            })) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
+            _ => None,
+        })
+        .collect()
 }
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294
