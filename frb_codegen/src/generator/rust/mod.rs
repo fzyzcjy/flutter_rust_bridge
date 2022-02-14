@@ -332,20 +332,22 @@ impl Generator {
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
-        let body = TypeRustGenerator::new(ty.clone(), ir_file).wire2api_body();
-
-        format!(
-            "impl Wire2Api<{}> for {} {{
+        if let Some(body) = TypeRustGenerator::new(ty.clone(), ir_file).wire2api_body() {
+            format!(
+                "impl Wire2Api<{}> for {} {{
             fn wire2api(self) -> {} {{
                 {}
             }}
         }}
         ",
-            ty.rust_api_type(),
-            ty.rust_wire_modifier() + &ty.rust_wire_type(),
-            ty.rust_api_type(),
-            body,
-        )
+                ty.rust_api_type(),
+                ty.rust_wire_modifier() + &ty.rust_wire_type(),
+                ty.rust_api_type(),
+                body,
+            )
+        } else {
+            "".to_string()
+        }
     }
 
     fn generate_new_with_nullptr_misc(&self) -> &'static str {

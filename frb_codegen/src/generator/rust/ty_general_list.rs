@@ -15,8 +15,8 @@ impl TypeGeneralListGenerator<'_> {
 }
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn wire2api_body(&self) -> String {
-        TypeGeneralListGenerator::WIRE2API_BODY.to_string()
+    fn wire2api_body(&self) -> Option<String> {
+        Some(TypeGeneralListGenerator::WIRE2API_BODY.to_string())
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {

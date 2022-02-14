@@ -3,7 +3,7 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeRustGeneratorTrait {
-    fn wire2api_body(&self) -> String;
+    fn wire2api_body(&self) -> Option<String>;
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         None

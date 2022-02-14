@@ -8,8 +8,8 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn wire2api_body(&self) -> String {
-        match &self.ir {
+    fn wire2api_body(&self) -> Option<String> {
+        Some(match &self.ir {
             IrTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
             String::from_utf8_lossy(&vec).into_owned()"
                 .into(),
@@ -18,7 +18,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
             IrTypeDelegate::StringList => TypeGeneralListGenerator::WIRE2API_BODY.to_string(),
-        }
+        })
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {

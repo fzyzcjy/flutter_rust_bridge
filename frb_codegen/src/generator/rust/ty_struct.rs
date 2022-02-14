@@ -6,7 +6,7 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn wire2api_body(&self) -> String {
+    fn wire2api_body(&self) -> Option<String> {
         let api_struct = self.ir.get(self.context.ir_file);
         let fields_str = &api_struct
             .fields
@@ -26,7 +26,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             .join(",");
 
         let (left, right) = api_struct.brackets_pair();
-        format!("{}{}{}{}", self.ir.rust_api_type(), left, fields_str, right).into()
+        Some(format!("{}{}{}{}", self.ir.rust_api_type(), left, fields_str, right).into())
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {

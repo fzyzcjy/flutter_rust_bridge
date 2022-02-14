@@ -7,19 +7,19 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn wire2api_body(&self) -> String {
+    fn wire2api_body(&self) -> Option<String> {
         let IrTypeBoxed {
             inner: box_inner,
             exist_in_real_api,
         } = &self.ir;
-        match (box_inner.as_ref(), exist_in_real_api) {
+        Some(match (box_inner.as_ref(), exist_in_real_api) {
             (IrType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
             (IrType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
             _ => {
                 "let wrap = unsafe { support::box_from_leak_ptr(self) }; (*wrap).wire2api().into()"
                     .into()
             }
-        }
+        })
     }
 
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {

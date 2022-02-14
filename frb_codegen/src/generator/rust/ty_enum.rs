@@ -6,8 +6,8 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn wire2api_body(&self) -> String {
-        if self.ir.is_struct {
+    fn wire2api_body(&self) -> Option<String> {
+        Some(if self.ir.is_struct {
             let enu = self.ir.get(self.context.ir_file);
             let variants = enu
                 .variants()
@@ -71,7 +71,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 variants, enu.name
             )
             .into()
-        }
+        })
     }
 
     fn structs(&self) -> String {
@@ -205,6 +205,10 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
+        if !self.ir.is_struct {
+            return "".to_string();
+        }
+
         fn init_of(ty: &IrType) -> &str {
             if ty.rust_wire_is_pointer() {
                 "core::ptr::null_mut()"
