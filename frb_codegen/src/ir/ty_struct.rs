@@ -7,12 +7,12 @@ pub struct IrTypeStructRef {
 }
 
 impl IrTypeStructRef {
-    pub fn get<'a>(&self, f: &'a IrFile) -> &'a ApiStruct {
+    pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
         &f.struct_pool[&self.name]
     }
 }
 
-impl ApiTypeTrait for IrTypeStructRef {
+impl IrTypeTrait for IrTypeStructRef {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         for field in &self.get(api_file).fields {
             field.ty.visit_types(f, api_file);
@@ -40,7 +40,7 @@ impl ApiTypeTrait for IrTypeStructRef {
 }
 
 #[derive(Debug, Clone)]
-pub struct ApiStruct {
+pub struct IrStruct {
     pub name: String,
     pub path: Option<Vec<String>>,
     pub fields: Vec<IrField>,
@@ -48,7 +48,7 @@ pub struct ApiStruct {
     pub comments: Vec<IrComment>,
 }
 
-impl ApiStruct {
+impl IrStruct {
     pub fn brackets_pair(&self) -> (char, char) {
         if self.is_fields_named {
             ('{', '}')

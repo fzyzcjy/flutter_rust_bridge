@@ -114,7 +114,7 @@ impl<'a> Parser<'a> {
 
                 if let Some(stream_sink_inner_type) = self.try_parse_stream_sink(&type_string) {
                     output = Some(stream_sink_inner_type);
-                    mode = Some(ApiFuncMode::Stream);
+                    mode = Some(IrFuncMode::Stream);
                 } else {
                     inputs.push(IrField {
                         name: IrIdent::new(name),
@@ -145,9 +145,9 @@ impl<'a> Parser<'a> {
             });
             mode = Some(
                 if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
-                    ApiFuncMode::Sync
+                    IrFuncMode::Sync
                 } else {
-                    ApiFuncMode::Normal
+                    IrFuncMode::Normal
                 },
             );
         }
@@ -278,12 +278,12 @@ impl<'a> Parser<'a> {
             is_struct: self
                 .enum_pool
                 .get(ty)
-                .map(ApiEnum::is_struct)
+                .map(IrEnum::is_struct)
                 .unwrap_or(true),
         }))
     }
 
-    fn parse_enum(&mut self, ty: &str) -> ApiEnum {
+    fn parse_enum(&mut self, ty: &str) -> IrEnum {
         let src_enum = self.src_enums[ty];
         let name = src_enum.ident.to_string();
         let path = src_enum.path.clone();
@@ -292,18 +292,18 @@ impl<'a> Parser<'a> {
             .src
             .variants
             .iter()
-            .map(|variant| ApiVariant {
+            .map(|variant| IrVariant {
                 name: IrIdent::new(variant.ident.to_string()),
                 comments: extract_comments(&variant.attrs),
                 kind: match variant.fields.iter().next() {
-                    None => ApiVariantKind::Value,
+                    None => IrVariantKind::Value,
                     Some(Field {
                         attrs,
                         ident: field_ident,
                         ..
                     }) => {
                         let variant_ident = variant.ident.to_string();
-                        ApiVariantKind::Struct(ApiStruct {
+                        IrVariantKind::Struct(IrStruct {
                             name: variant_ident,
                             path: None,
                             is_fields_named: field_ident.is_some(),
@@ -329,10 +329,10 @@ impl<'a> Parser<'a> {
                 },
             })
             .collect();
-        ApiEnum::new(name, path, comments, variants)
+        IrEnum::new(name, path, comments, variants)
     }
 
-    fn parse_struct_core(&mut self, ty: &str) -> ApiStruct {
+    fn parse_struct_core(&mut self, ty: &str) -> IrStruct {
         let src_struct = self.src_structs[ty];
         let mut fields = Vec::new();
 
@@ -359,7 +359,7 @@ impl<'a> Parser<'a> {
         let name = src_struct.ident.to_string();
         let path = Some(src_struct.path.clone());
         let comments = extract_comments(&src_struct.src.attrs);
-        ApiStruct {
+        IrStruct {
             name,
             path,
             fields,

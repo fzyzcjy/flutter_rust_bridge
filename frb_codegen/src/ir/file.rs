@@ -1,8 +1,8 @@
 use crate::ir::*;
 use std::collections::{HashMap, HashSet};
 
-pub type IrStructPool = HashMap<String, ApiStruct>;
-pub type IrEnumPool = HashMap<String, ApiEnum>;
+pub type IrStructPool = HashMap<String, IrStruct>;
+pub type IrEnumPool = HashMap<String, IrEnum>;
 
 #[derive(Debug, Clone)]
 pub struct IrFile {

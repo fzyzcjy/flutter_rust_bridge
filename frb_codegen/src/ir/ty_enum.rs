@@ -9,16 +9,16 @@ pub struct IrTypeEnumRef {
 }
 
 impl IrTypeEnumRef {
-    pub fn get<'a>(&self, file: &'a IrFile) -> &'a ApiEnum {
+    pub fn get<'a>(&self, file: &'a IrFile) -> &'a IrEnum {
         &file.enum_pool[&self.name]
     }
 }
 
-impl ApiTypeTrait for IrTypeEnumRef {
+impl IrTypeTrait for IrTypeEnumRef {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         let enu = self.get(api_file);
         for variant in enu.variants() {
-            if let ApiVariantKind::Struct(st) = &variant.kind {
+            if let IrVariantKind::Struct(st) = &variant.kind {
                 st.fields
                     .iter()
                     .for_each(|field| field.ty.visit_types(f, api_file));
@@ -52,20 +52,20 @@ impl ApiTypeTrait for IrTypeEnumRef {
 }
 
 #[derive(Debug, Clone)]
-pub struct ApiEnum {
+pub struct IrEnum {
     pub name: String,
     pub path: Vec<String>,
     pub comments: Vec<IrComment>,
-    _variants: Vec<ApiVariant>,
+    _variants: Vec<IrVariant>,
     _is_struct: bool,
 }
 
-impl ApiEnum {
+impl IrEnum {
     pub fn new(
         name: String,
         path: Vec<String>,
         comments: Vec<IrComment>,
-        mut variants: Vec<ApiVariant>,
+        mut variants: Vec<IrVariant>,
     ) -> Self {
         fn wrap_box(ty: IrType) -> IrType {
             match ty {
@@ -81,13 +81,13 @@ impl ApiEnum {
         }
         let _is_struct = variants
             .iter()
-            .any(|variant| !matches!(variant.kind, ApiVariantKind::Value));
+            .any(|variant| !matches!(variant.kind, IrVariantKind::Value));
         if _is_struct {
             variants = variants
                 .into_iter()
-                .map(|variant| ApiVariant {
+                .map(|variant| IrVariant {
                     kind: match variant.kind {
-                        ApiVariantKind::Struct(st) => ApiVariantKind::Struct(ApiStruct {
+                        IrVariantKind::Struct(st) => IrVariantKind::Struct(IrStruct {
                             fields: st
                                 .fields
                                 .into_iter()
@@ -113,7 +113,7 @@ impl ApiEnum {
         }
     }
 
-    pub fn variants(&self) -> &[ApiVariant] {
+    pub fn variants(&self) -> &[IrVariant] {
         &self._variants
     }
 
@@ -123,14 +123,14 @@ impl ApiEnum {
 }
 
 #[derive(Debug, Clone)]
-pub struct ApiVariant {
+pub struct IrVariant {
     pub name: IrIdent,
     pub comments: Vec<IrComment>,
-    pub kind: ApiVariantKind,
+    pub kind: IrVariantKind,
 }
 
 #[derive(Debug, Clone)]
-pub enum ApiVariantKind {
+pub enum IrVariantKind {
     Value,
-    Struct(ApiStruct),
+    Struct(IrStruct),
 }

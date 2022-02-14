@@ -232,8 +232,8 @@ impl Generator {
 
         let inner_func_params = [
             match func.mode {
-                ApiFuncMode::Normal | ApiFuncMode::Sync => vec![],
-                ApiFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
+                IrFuncMode::Normal | IrFuncMode::Sync => vec![],
+                IrFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
             },
             func.inputs
                 .iter()
@@ -275,7 +275,7 @@ impl Generator {
         };
 
         let (handler_func_name, return_type, code_closure) = match func.mode {
-            ApiFuncMode::Sync => (
+            IrFuncMode::Sync => (
                 "wrap_sync",
                 Some("support::WireSyncReturnStruct"),
                 format!(
@@ -284,7 +284,7 @@ impl Generator {
                     code_wire2api, code_call_inner_func_result,
                 ),
             ),
-            ApiFuncMode::Normal | ApiFuncMode::Stream => (
+            IrFuncMode::Normal | IrFuncMode::Stream => (
                 "wrap",
                 None,
                 format!(
@@ -375,8 +375,8 @@ impl Generator {
             .iter()
             .map(|variant| {
                 let fields = match &variant.kind {
-                    ApiVariantKind::Value => vec![],
-                    ApiVariantKind::Struct(s) => s
+                    IrVariantKind::Value => vec![],
+                    IrVariantKind::Struct(s) => s
                         .fields
                         .iter()
                         .map(|field| {
@@ -425,7 +425,7 @@ impl Generator {
     fn generate_list_allocate_func(
         &mut self,
         safe_ident: &str,
-        list: &impl ApiTypeTrait,
+        list: &impl IrTypeTrait,
         inner: &IrType,
     ) -> String {
         self.extern_func_collector.generate(
@@ -565,10 +565,10 @@ impl Generator {
                 let variants = enu.variants().iter().enumerate()
                     .map(|(idx, variant)| {
                         match &variant.kind {
-                            ApiVariantKind::Value => {
+                            IrVariantKind::Value => {
                                 format!("{} => {}::{},", idx, enu.name, variant.name)
                             },
-                            ApiVariantKind::Struct(st) => {
+                            IrVariantKind::Struct(st) => {
                                 let fields: Vec<_> = st.fields
                                     .iter()
                                     .map(|field| {
@@ -674,7 +674,7 @@ impl Generator {
 
     fn generate_new_with_nullptr_func_for_enum(
         &mut self,
-        enu: &ApiEnum,
+        enu: &IrEnum,
         rust_wire_type: &str,
     ) -> String {
         fn init_of(ty: &IrType) -> &str {
@@ -689,7 +689,7 @@ impl Generator {
             .iter()
             .filter_map(|variant| {
                 let typ = format!("{}_{}", enu.name, variant.name);
-                let body: Vec<_> = if let ApiVariantKind::Struct(st) = &variant.kind {
+                let body: Vec<_> = if let IrVariantKind::Struct(st) = &variant.kind {
                     st.fields
                         .iter()
                         .map(|field| format!("{}: {}", field.name.rust_style(), init_of(&field.ty)))
@@ -732,7 +732,7 @@ impl Generator {
 
     fn generate_new_with_nullptr_func_for_struct(
         &self,
-        s: &ApiStruct,
+        s: &IrStruct,
         rust_wire_type: &str,
     ) -> String {
         let body = {
@@ -763,7 +763,7 @@ impl Generator {
         )
     }
 
-    fn generate_impl_intodart_for_struct(&mut self, s: &ApiStruct) -> String {
+    fn generate_impl_intodart_for_struct(&mut self, s: &IrStruct) -> String {
         // println!("generate_impl_intodart_for_struct: {}", s.name);
         let body = s
             .fields
@@ -791,7 +791,7 @@ impl Generator {
         )
     }
 
-    fn generate_impl_intodart_for_enum(&mut self, enu: &ApiEnum) -> String {
+    fn generate_impl_intodart_for_enum(&mut self, enu: &IrEnum) -> String {
         let variants = enu
             .variants()
             .iter()
@@ -812,7 +812,7 @@ impl Generator {
         )
     }
 
-    fn generate_impl_intodart_for_enum_struct(&mut self, enu: &ApiEnum) -> String {
+    fn generate_impl_intodart_for_enum_struct(&mut self, enu: &IrEnum) -> String {
         let variants =
             enu.variants()
                 .iter()
@@ -820,10 +820,10 @@ impl Generator {
                 .map(|(idx, variant)| {
                     let tag = format!("{}.into_dart()", idx);
                     match &variant.kind {
-                        ApiVariantKind::Value => {
+                        IrVariantKind::Value => {
                             format!("Self::{} => vec![{}],", variant.name, tag)
                         }
-                        ApiVariantKind::Struct(s) => {
+                        IrVariantKind::Struct(s) => {
                             let fields = Some(tag)
                                 .into_iter()
                                 .chain(s.fields.iter().map(|field| {

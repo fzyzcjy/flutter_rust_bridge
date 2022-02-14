@@ -6,7 +6,7 @@ pub struct IrFunc {
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub fallible: bool,
-    pub mode: ApiFuncMode,
+    pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
 }
 
@@ -17,13 +17,13 @@ impl IrFunc {
 }
 
 #[derive(Debug, Clone, PartialOrd, PartialEq)]
-pub enum ApiFuncMode {
+pub enum IrFuncMode {
     Normal,
     Sync,
     Stream,
 }
 
-impl ApiFuncMode {
+impl IrFuncMode {
     pub fn dart_return_type(&self, inner: &str) -> String {
         match self {
             Self::Normal => format!("Future<{}>", inner),

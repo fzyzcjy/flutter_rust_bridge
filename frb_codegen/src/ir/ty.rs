@@ -3,7 +3,7 @@ use enum_dispatch::enum_dispatch;
 use IrType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
-#[enum_dispatch(ApiTypeTrait)]
+#[enum_dispatch(IrTypeTrait)]
 #[derive(Debug, Clone)]
 pub enum IrType {
     Primitive(IrTypePrimitive),
@@ -44,7 +44,7 @@ impl IrType {
 }
 
 #[enum_dispatch]
-pub trait ApiTypeTrait {
+pub trait IrTypeTrait {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile);
 
     fn safe_ident(&self) -> String;

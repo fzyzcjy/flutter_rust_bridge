@@ -213,9 +213,9 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
     );
 
     let execute_func_name = match func.mode {
-        ApiFuncMode::Normal => "executeNormal",
-        ApiFuncMode::Sync => "executeSync",
-        ApiFuncMode::Stream => "executeStream",
+        IrFuncMode::Normal => "executeNormal",
+        IrFuncMode::Sync => "executeSync",
+        IrFuncMode::Stream => "executeStream",
     };
 
     let signature = format!("{};", partial);
@@ -245,7 +245,7 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
     );
 
     let implementation = match func.mode {
-        ApiFuncMode::Sync => format!(
+        IrFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
             callFfi: () => inner.{}({}),
             {}
@@ -380,7 +380,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, api_file: &IrFile) -> String {
             .iter()
             .enumerate()
             .map(|(idx, variant)| {
-                if let ApiVariantKind::Value = &variant.kind {
+                if let IrVariantKind::Value = &variant.kind {
                     format!(
                         "if (apiObj is {}) {{ wireObj.tag = {}; return; }}",
                         variant.name, idx
@@ -388,7 +388,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, api_file: &IrFile) -> String {
                 } else {
                     let r = format!("wireObj.kind.ref.{}.ref", variant.name);
                     let body: Vec<_> = match &variant.kind {
-                        ApiVariantKind::Struct(st) => st
+                        IrVariantKind::Struct(st) => st
                             .fields
                             .iter()
                             .map(|field| {
@@ -512,8 +512,8 @@ fn generate_wire2api_func(ty: &IrType, api_file: &IrFile) -> String {
                 .enumerate()
                 .map(|(idx, variant)| {
                     let args = match &variant.kind {
-                        ApiVariantKind::Value => "".to_owned(),
-                        ApiVariantKind::Struct(st) => st
+                        IrVariantKind::Value => "".to_owned(),
+                        IrVariantKind::Struct(st) => st
                             .fields
                             .iter()
                             .enumerate()
@@ -573,7 +573,7 @@ fn dart_comments(comments: &[IrComment]) -> String {
     comments
 }
 
-fn generate_api_struct(s: &ApiStruct) -> String {
+fn generate_api_struct(s: &IrStruct) -> String {
     let field_declarations = s
         .fields
         .iter()
@@ -614,7 +614,7 @@ fn generate_api_struct(s: &ApiStruct) -> String {
     )
 }
 
-fn generate_api_enum(enu: &ApiEnum) -> String {
+fn generate_api_enum(enu: &IrEnum) -> String {
     let comments = dart_comments(&enu.comments);
     if enu.is_struct() {
         let variants = enu
@@ -622,8 +622,8 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
             .iter()
             .map(|variant| {
                 let args = match &variant.kind {
-                    ApiVariantKind::Value => "".to_owned(),
-                    ApiVariantKind::Struct(ApiStruct {
+                    IrVariantKind::Value => "".to_owned(),
+                    IrVariantKind::Struct(IrStruct {
                         is_fields_named: false,
                         fields,
                         ..
@@ -649,7 +649,7 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
                             types.join(",")
                         }
                     }
-                    ApiVariantKind::Struct(st) => {
+                    IrVariantKind::Struct(st) => {
                         let fields = st
                             .fields
                             .iter()

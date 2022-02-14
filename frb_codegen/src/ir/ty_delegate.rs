@@ -28,7 +28,7 @@ impl IrTypeDelegate {
     }
 }
 
-impl ApiTypeTrait for IrTypeDelegate {
+impl IrTypeTrait for IrTypeDelegate {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         self.get_delegate().visit_types(f, api_file);
     }
