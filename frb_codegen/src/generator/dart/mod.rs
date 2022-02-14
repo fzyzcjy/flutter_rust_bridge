@@ -296,7 +296,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
     if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file).api_fill_to_wire_body() {
         let target_wire_type = match ty {
             Optional(inner) => &inner.inner,
-            it @ _ => it,
+            it => it,
         };
 
         format!(

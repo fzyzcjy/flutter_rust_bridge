@@ -26,7 +26,13 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             .join(",");
 
         let (left, right) = api_struct.brackets_pair();
-        Some(format!("{}{}{}{}", self.ir.rust_api_type(), left, fields_str, right).into())
+        Some(format!(
+            "{}{}{}{}",
+            self.ir.rust_api_type(),
+            left,
+            fields_str,
+            right
+        ))
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
