@@ -16,6 +16,7 @@ use crate::source_graph::{Crate, Enum, Struct};
 use crate::parser::{extract_comments, type_to_string, Parser};
 
 lazy_static! {
+    static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
     static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
     static ref CAPTURE_BOX: GenericCapture = GenericCapture::new("Box");
     static ref CAPTURE_VEC: GenericCapture = GenericCapture::new("Vec");
@@ -264,5 +265,26 @@ impl<'a> TypeParser<'a> {
             is_fields_named,
             comments,
         }
+    }
+}
+
+struct GenericCapture {
+    regex: Regex,
+}
+
+impl GenericCapture {
+    pub fn new(cls_name: &str) -> Self {
+        let regex =
+            Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>()\\[\\];]+)>$", cls_name)).unwrap();
+        Self { regex }
+    }
+
+    /// e.g. List<Tom> => return Some(Tom)
+    pub fn captures(&self, s: &str) -> Option<String> {
+        self.regex
+            .captures(s)
+            .iter()
+            .find_map(|capture| capture.get(1))
+            .map(|inner| inner.as_str().to_owned())
     }
 }

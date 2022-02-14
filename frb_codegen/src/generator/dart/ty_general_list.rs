@@ -2,7 +2,7 @@ use crate::generator::dart::ty::TypeDartGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeGeneralListGenerator(IrTypeGeneralList);
+pub struct TypeGeneralListGenerator(pub IrTypeGeneralList);
 
 impl TypeDartGeneratorTrait for TypeGeneralListGenerator {
     fn api2wire_body(&self) -> String {
@@ -13,7 +13,7 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator {
                     _api_fill_to_wire_{}(raw[i], ans.ref.ptr[i]);
                 }}
                 return ans;",
-            ty.safe_ident(),
+            self.0.safe_ident(),
             self.0.inner.safe_ident()
         )
     }

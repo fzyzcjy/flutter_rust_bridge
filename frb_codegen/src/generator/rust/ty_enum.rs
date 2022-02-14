@@ -2,7 +2,7 @@ use crate::generator::rust::ty::TypeRustGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeEnumRefGenerator(IrTypeEnumRef);
+pub struct TypeEnumRefGenerator(pub IrTypeEnumRef);
 
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
     fn wire2api_body(&self) -> String {
@@ -54,7 +54,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
             )
             .into()
         } else {
-            let enu = enu.get(api_file);
+            let enu = self.0.get(api_file);
             let variants = enu
                 .variants()
                 .iter()
@@ -132,7 +132,8 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
 
     fn impl_intodart(&self) -> String {
         if self.0.is_struct {
-            let variants = enu
+            let variants = self
+                .0
                 .variants()
                 .iter()
                 .enumerate()
@@ -176,7 +177,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                 }}
             }}
             ",
-                enu.name,
+                self.0.name,
                 variants.join("\n")
             )
         } else {

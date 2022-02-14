@@ -2,7 +2,7 @@ use crate::generator::dart::ty::TypeDartGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeOptionalGenerator(IrTypeOptional);
+pub struct TypeOptionalGenerator(pub IrTypeOptional);
 
 impl TypeDartGeneratorTrait for TypeOptionalGenerator {
     fn api2wire_body(&self) -> String {

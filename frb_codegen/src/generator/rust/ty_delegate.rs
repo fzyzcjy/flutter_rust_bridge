@@ -3,7 +3,7 @@ use crate::generator::rust::{ExternFuncCollector, TypeGeneralListGenerator};
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeDelegateGenerator(IrTypeDelegate);
+pub struct TypeDelegateGenerator(pub IrTypeDelegate);
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator {
     fn wire2api_body(&self) -> String {
@@ -32,7 +32,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator {
     fn allocate_funcs(&self, collector: &ExternFuncCollector) -> String {
         match &self.0 {
             list @ IrTypeDelegate::StringList => {
-                self.generate_list_allocate_func(&ty.safe_ident(), list, &list.get_delegate())
+                self.generate_list_allocate_func(&self.0.safe_ident(), list, &list.get_delegate())
             }
             _ => "".to_string(),
         }

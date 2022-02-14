@@ -4,7 +4,7 @@ use crate::ir::IrType::Primitive;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeBoxedGenerator(IrTypeBoxed);
+pub struct TypeBoxedGenerator(pub IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator {
     fn wire2api_body(&self) -> String {
@@ -25,15 +25,15 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator {
     fn allocate_funcs(&self, collector: &ExternFuncCollector) -> String {
         match &*self.0.inner {
             Primitive(prim) => self.extern_func_collector.generate(
-                &format!("new_{}", ty.safe_ident()),
+                &format!("new_{}", self.0.safe_ident()),
                 &[&format!("value: {}", prim.rust_wire_type())],
                 Some(&format!("*mut {}", prim.rust_wire_type())),
                 "support::new_leak_box_ptr(value)",
             ),
             inner => self.extern_func_collector.generate(
-                &format!("new_{}", ty.safe_ident()),
+                &format!("new_{}", self.0.safe_ident()),
                 &[],
-                Some(&[ty.rust_wire_modifier(), ty.rust_wire_type()].concat()),
+                Some(&[self.0.rust_wire_modifier(), ty.rust_wire_type()].concat()),
                 &format!(
                     "support::new_leak_box_ptr({}::new_with_null_ptr())",
                     inner.rust_wire_type()

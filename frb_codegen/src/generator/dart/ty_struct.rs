@@ -3,7 +3,7 @@ use crate::generator::dart::ty::TypeDartGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeStructRefGenerator(IrTypeStructRef);
+pub struct TypeStructRefGenerator(pub IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator {
     fn api2wire_body(&self) -> String {

@@ -3,7 +3,7 @@ use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeGeneralListGenerator(IrTypeGeneralList);
+pub struct TypeGeneralListGenerator(pub IrTypeGeneralList);
 
 impl TypeGeneralListGenerator {
     pub const WIRE2API_BODY: &'static str = "
@@ -31,7 +31,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator {
     }
 
     fn allocate_funcs(&self, collector: &ExternFuncCollector) -> String {
-        self.generate_list_allocate_func(&ty.safe_ident(), list, &list.inner)
+        self.generate_list_allocate_func(&self.0.safe_ident(), &self.0, &self.0.inner)
     }
 
     fn imports(&self) -> Option<String> {

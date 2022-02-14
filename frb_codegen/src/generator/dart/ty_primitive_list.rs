@@ -1,8 +1,9 @@
+use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::TypeDartGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypePrimitiveListGenerator(IrTypePrimitiveList);
+pub struct TypePrimitiveListGenerator(pub IrTypePrimitiveList);
 
 impl TypeDartGeneratorTrait for TypePrimitiveListGenerator {
     fn api2wire_body(&self) -> String {
@@ -19,7 +20,7 @@ impl TypeDartGeneratorTrait for TypePrimitiveListGenerator {
             "final ans = inner.new_{}(raw.length);
                 ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
                 return ans;",
-            ty.safe_ident(),
+            self.0.safe_ident(),
         )
     }
 

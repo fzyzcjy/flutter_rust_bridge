@@ -1,8 +1,9 @@
+use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::TypeDartGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypePrimitiveGenerator(IrTypePrimitive);
+pub struct TypePrimitiveGenerator(pub IrTypePrimitive);
 
 impl TypeDartGeneratorTrait for TypePrimitiveGenerator {
     fn api2wire_body(&self) -> String {
@@ -15,7 +16,7 @@ impl TypeDartGeneratorTrait for TypePrimitiveGenerator {
     fn wire2api_body(&self) -> String {
         match self.0 {
             IrTypePrimitive::Unit => "return;".to_owned(),
-            _ => gen_wire2api_simple_type_cast(&p.dart_api_type()),
+            _ => gen_wire2api_simple_type_cast(&self.0.dart_api_type()),
         }
     }
 }

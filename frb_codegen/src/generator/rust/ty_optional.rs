@@ -2,7 +2,7 @@ use crate::generator::rust::ty::TypeRustGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeOptionalGenerator(IrTypeOptional);
+pub struct TypeOptionalGenerator(pub IrTypeOptional);
 
 impl TypeRustGeneratorTrait for TypeOptionalGenerator {
     fn wire2api_body(&self) -> String {

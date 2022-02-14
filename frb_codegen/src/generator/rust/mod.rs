@@ -18,7 +18,6 @@ pub use ty_primitive::*;
 pub use ty_primitive_list::*;
 pub use ty_struct::*;
 
-use std::borrow::Cow;
 use std::collections::HashSet;
 
 use crate::ir::IrType::*;
@@ -161,7 +160,7 @@ impl Generator {
     }
 
     fn generate_import(&self, api_type: &IrType, api_file: &IrFile) -> Option<String> {
-        TypeGenerator::new(ty.clone()).imports()
+        TypeGenerator::new(self.0.clone()).imports()
     }
 
     fn generate_executor(&mut self, api_file: &IrFile) -> String {

@@ -3,11 +3,11 @@ use crate::generator::dart::ty::TypeDartGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeEnumRefGenerator(IrTypeEnumRef);
+pub struct TypeEnumRefGenerator(pub IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
     fn api2wire_body(&self) -> String {
-        if !e.is_struct {
+        if !self.0.is_struct {
             "return raw.index;".to_owned()
         } else {
             "".to_string()
@@ -53,7 +53,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
                         }}",
                             variant.name,
                             idx,
-                            enu.name,
+                            self.0.name,
                             body.join("\n")
                         )
                     }
@@ -105,7 +105,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
                 variants.join("\n"),
             )
         } else {
-            format!("return {}.values[raw];", enu.name)
+            format!("return {}.values[raw];", self.0.name)
         }
     }
 

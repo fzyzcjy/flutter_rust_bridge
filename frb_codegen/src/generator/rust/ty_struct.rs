@@ -2,7 +2,7 @@ use crate::generator::rust::ty::TypeRustGeneratorTrait;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeStructRefGenerator(IrTypeStructRef);
+pub struct TypeStructRefGenerator(pub IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator {
     fn wire2api_body(&self) -> String {
@@ -25,7 +25,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
             .join(",");
 
         let (left, right) = api_struct.brackets_pair();
-        format!("{}{}{}{}", ty.rust_api_type(), left, fields_str, right).into()
+        format!("{}{}{}{}", self.0.rust_api_type(), left, fields_str, right).into()
     }
 
     fn wire_struct_fields(&self) -> Vec<String> {

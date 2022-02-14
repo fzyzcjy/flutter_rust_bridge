@@ -1,6 +1,5 @@
 mod ty;
 
-use std::collections::{HashMap, HashSet};
 use std::string::String;
 
 use lazy_static::lazy_static;
@@ -9,16 +8,11 @@ use quote::quote;
 use regex::Regex;
 use syn::*;
 
-use crate::ir::IrType::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
 use crate::parser::ty::TypeParser;
-use crate::source_graph::{Crate, Enum, Struct};
-
-lazy_static! {
-    static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
-}
+use crate::source_graph::Crate;
 
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
     let crate_map = Crate::new(manifest_path);
@@ -163,25 +157,4 @@ fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
 /// syn -> string https://github.com/dtolnay/syn/issues/294
 fn type_to_string(ty: &Type) -> String {
     quote!(#ty).to_string().replace(' ', "")
-}
-
-struct GenericCapture {
-    regex: Regex,
-}
-
-impl GenericCapture {
-    pub fn new(cls_name: &str) -> Self {
-        let regex =
-            Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>()\\[\\];]+)>$", cls_name)).unwrap();
-        Self { regex }
-    }
-
-    /// e.g. List<Tom> => return Some(Tom)
-    pub fn captures(&self, s: &str) -> Option<String> {
-        self.regex
-            .captures(s)
-            .iter()
-            .find_map(|capture| capture.get(1))
-            .map(|inner| inner.as_str().to_owned())
-    }
 }

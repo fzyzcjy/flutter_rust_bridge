@@ -3,7 +3,7 @@ use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypePrimitiveListGenerator(IrTypePrimitiveList);
+pub struct TypePrimitiveListGenerator(pub IrTypePrimitiveList);
 
 impl TypeRustGeneratorTrait for TypePrimitiveListGenerator {
     fn wire2api_body(&self) -> String {
