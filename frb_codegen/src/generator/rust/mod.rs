@@ -288,19 +288,21 @@ impl Generator {
 
     fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_wire_struct: {:?}", ty);
-        let fields = TypeRustGenerator::new(ty.clone(), ir_file).wire_struct_fields();
-
-        format!(
-            r###"
-        #[repr(C)]
-        #[derive(Clone)]
-        pub struct {} {{
-            {}
-        }}
-        "###,
-            ty.rust_wire_type(),
-            fields.join(",\n"),
-        )
+        if let Some(fields) = TypeRustGenerator::new(ty.clone(), ir_file).wire_struct_fields() {
+            format!(
+                r###"
+                #[repr(C)]
+                #[derive(Clone)]
+                pub struct {} {{
+                    {}
+                }}
+                "###,
+                ty.rust_wire_type(),
+                fields.join(",\n"),
+            )
+        } else {
+            "".to_string()
+        }
     }
 
     fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> String {

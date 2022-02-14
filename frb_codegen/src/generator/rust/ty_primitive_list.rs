@@ -14,11 +14,11 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         .into()
     }
 
-    fn wire_struct_fields(&self) -> Vec<String> {
-        vec![
+    fn wire_struct_fields(&self) -> Option<Vec<String>> {
+        Some(vec![
             format!("ptr: *mut {}", self.ir.primitive.rust_wire_type()),
             "len: i32".to_string(),
-        ]
+        ])
     }
 
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {

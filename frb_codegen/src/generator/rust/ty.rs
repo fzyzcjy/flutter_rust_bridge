@@ -5,8 +5,8 @@ use enum_dispatch::enum_dispatch;
 pub trait TypeRustGeneratorTrait {
     fn wire2api_body(&self) -> String;
 
-    fn wire_struct_fields(&self) -> Vec<String> {
-        vec![]
+    fn wire_struct_fields(&self) -> Option<Vec<String>> {
+        None
     }
 
     fn structs(&self) -> String {

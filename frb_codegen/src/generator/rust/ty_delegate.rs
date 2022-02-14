@@ -21,13 +21,13 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn wire_struct_fields(&self) -> Vec<String> {
+    fn wire_struct_fields(&self) -> Option<Vec<String>> {
         match &self.ir {
-            ty @ IrTypeDelegate::StringList => vec![
+            ty @ IrTypeDelegate::StringList => Some(vec![
                 format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type()),
                 "len: i32".to_owned(),
-            ],
-            _ => vec![],
+            ]),
+            _ => None,
         }
     }
 

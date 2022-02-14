@@ -19,15 +19,15 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
         TypeGeneralListGenerator::WIRE2API_BODY.to_string()
     }
 
-    fn wire_struct_fields(&self) -> Vec<String> {
-        vec![
+    fn wire_struct_fields(&self) -> Option<Vec<String>> {
+        Some(vec![
             format!(
                 "ptr: *mut {}{}",
                 self.ir.inner.rust_ptr_modifier(),
                 self.ir.inner.rust_wire_type()
             ),
             "len: i32".to_string(),
-        ]
+        ])
     }
 
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {

@@ -29,19 +29,21 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         format!("{}{}{}{}", self.ir.rust_api_type(), left, fields_str, right).into()
     }
 
-    fn wire_struct_fields(&self) -> Vec<String> {
+    fn wire_struct_fields(&self) -> Option<Vec<String>> {
         let s = self.ir.get(self.context.ir_file);
-        s.fields
-            .iter()
-            .map(|field| {
-                format!(
-                    "{}: {}{}",
-                    field.name.rust_style(),
-                    field.ty.rust_wire_modifier(),
-                    field.ty.rust_wire_type()
-                )
-            })
-            .collect()
+        Some(
+            s.fields
+                .iter()
+                .map(|field| {
+                    format!(
+                        "{}: {}{}",
+                        field.name.rust_style(),
+                        field.ty.rust_wire_modifier(),
+                        field.ty.rust_wire_type()
+                    )
+                })
+                .collect(),
+        )
     }
 
     fn impl_intodart(&self) -> String {
