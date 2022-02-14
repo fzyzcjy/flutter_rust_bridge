@@ -17,7 +17,7 @@ If you want to contribute, feel free to create a Pull Request. If you need some 
 Usually this is done by the owner (@fzyzcjy), so you do not need to do the following. If you need to release a new version, the following steps are needed. Bump several versions, change the version number in changelog, and use `cargo check` to automatically update the examples' dependency versions:
 
 ```
-vim frb_codegen/Cargo.toml && vim frb_rust/Cargo.toml && vim frb_macros/Cargo.toml && vim frb_dart/pubspec.yaml && vim CHANGELOG.md && (cd frb_rust && cargo check) && (cd frb_macros && cargo check) && (cd frb_example/pure_dart/rust && cargo check) && (cd frb_example/with_flutter/rust && cargo check) && (cd frb_example/pure_dart/dart && dart pub get) && (cd frb_example/with_flutter && dart pub get) && (sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/pure_dart/dart/pubspec.lock) && (sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/with_flutter/pubspec.lock) 
+just bump the_old_version the_new_version
 ```
 
 ### Appendix: Sample commands to run code generator
