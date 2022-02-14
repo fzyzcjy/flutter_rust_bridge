@@ -1,21 +1,21 @@
-use crate::ir::ApiType::{EnumRef, StructRef};
+use crate::ir::IrType::{EnumRef, StructRef};
 use crate::ir::*;
 use convert_case::{Case, Casing};
 
 #[derive(Debug, Clone)]
-pub struct ApiTypeEnumRef {
+pub struct IrTypeEnumRef {
     pub name: String,
     pub is_struct: bool,
 }
 
-impl ApiTypeEnumRef {
-    pub fn get<'a>(&self, file: &'a ApiFile) -> &'a ApiEnum {
+impl IrTypeEnumRef {
+    pub fn get<'a>(&self, file: &'a IrFile) -> &'a ApiEnum {
         &file.enum_pool[&self.name]
     }
 }
 
-impl ApiTypeChild for ApiTypeEnumRef {
-    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+impl ApiTypeChild for IrTypeEnumRef {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         let enu = self.get(api_file);
         for variant in enu.variants() {
             if let ApiVariantKind::Struct(st) = &variant.kind {
@@ -55,7 +55,7 @@ impl ApiTypeChild for ApiTypeEnumRef {
 pub struct ApiEnum {
     pub name: String,
     pub path: Vec<String>,
-    pub comments: Vec<Comment>,
+    pub comments: Vec<IrComment>,
     _variants: Vec<ApiVariant>,
     _is_struct: bool,
 }
@@ -64,15 +64,15 @@ impl ApiEnum {
     pub fn new(
         name: String,
         path: Vec<String>,
-        comments: Vec<Comment>,
+        comments: Vec<IrComment>,
         mut variants: Vec<ApiVariant>,
     ) -> Self {
-        fn wrap_box(ty: ApiType) -> ApiType {
+        fn wrap_box(ty: IrType) -> IrType {
             match ty {
                 StructRef(_)
-                | EnumRef(ApiTypeEnumRef {
+                | EnumRef(IrTypeEnumRef {
                     is_struct: true, ..
-                }) => ApiType::Boxed(ApiTypeBoxed {
+                }) => IrType::Boxed(IrTypeBoxed {
                     exist_in_real_api: false,
                     inner: Box::new(ty),
                 }),
@@ -91,7 +91,7 @@ impl ApiEnum {
                             fields: st
                                 .fields
                                 .into_iter()
-                                .map(|field| ApiField {
+                                .map(|field| IrField {
                                     ty: wrap_box(field.ty),
                                     ..field
                                 })
@@ -124,8 +124,8 @@ impl ApiEnum {
 
 #[derive(Debug, Clone)]
 pub struct ApiVariant {
-    pub name: ApiIdent,
-    pub comments: Vec<Comment>,
+    pub name: IrIdent,
+    pub comments: Vec<IrComment>,
     pub kind: ApiVariantKind,
 }
 

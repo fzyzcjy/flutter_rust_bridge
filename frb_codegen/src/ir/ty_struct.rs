@@ -2,18 +2,18 @@ use crate::ir::*;
 use convert_case::{Case, Casing};
 
 #[derive(Debug, Clone)]
-pub struct ApiTypeStructRef {
+pub struct IrTypeStructRef {
     pub name: String,
 }
 
-impl ApiTypeStructRef {
-    pub fn get<'a>(&self, f: &'a ApiFile) -> &'a ApiStruct {
+impl IrTypeStructRef {
+    pub fn get<'a>(&self, f: &'a IrFile) -> &'a ApiStruct {
         &f.struct_pool[&self.name]
     }
 }
 
-impl ApiTypeChild for ApiTypeStructRef {
-    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+impl ApiTypeChild for IrTypeStructRef {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         for field in &self.get(api_file).fields {
             field.ty.visit_types(f, api_file);
         }
@@ -43,9 +43,9 @@ impl ApiTypeChild for ApiTypeStructRef {
 pub struct ApiStruct {
     pub name: String,
     pub path: Option<Vec<String>>,
-    pub fields: Vec<ApiField>,
+    pub fields: Vec<IrField>,
     pub is_fields_named: bool,
-    pub comments: Vec<Comment>,
+    pub comments: Vec<IrComment>,
 }
 
 impl ApiStruct {

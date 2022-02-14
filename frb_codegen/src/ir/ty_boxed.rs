@@ -1,15 +1,15 @@
-use crate::ir::ApiType::Primitive;
+use crate::ir::IrType::Primitive;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct ApiTypeBoxed {
+pub struct IrTypeBoxed {
     /// if false, means that we automatically add it when transforming it - it does not exist in real api.
     pub exist_in_real_api: bool,
-    pub inner: Box<ApiType>,
+    pub inner: Box<IrType>,
 }
 
-impl ApiTypeChild for ApiTypeBoxed {
-    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+impl ApiTypeChild for IrTypeBoxed {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         self.inner.visit_types(f, api_file);
     }
 

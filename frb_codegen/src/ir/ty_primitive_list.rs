@@ -2,13 +2,13 @@ use crate::ir::*;
 use convert_case::{Case, Casing};
 
 #[derive(Debug, Clone)]
-pub struct ApiTypePrimitiveList {
-    pub primitive: ApiTypePrimitive,
+pub struct IrTypePrimitiveList {
+    pub primitive: IrTypePrimitive,
 }
 
-impl ApiTypeChild for ApiTypePrimitiveList {
-    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, _api_file: &ApiFile) {
-        f(&ApiType::Primitive(self.primitive.clone()));
+impl ApiTypeChild for IrTypePrimitiveList {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, _api_file: &IrFile) {
+        f(&IrType::Primitive(self.primitive.clone()));
     }
 
     fn safe_ident(&self) -> String {
@@ -17,16 +17,16 @@ impl ApiTypeChild for ApiTypePrimitiveList {
 
     fn dart_api_type(&self) -> String {
         match &self.primitive {
-            ApiTypePrimitive::U8 => "Uint8List",
-            ApiTypePrimitive::I8 => "Int8List",
-            ApiTypePrimitive::U16 => "Uint16List",
-            ApiTypePrimitive::I16 => "Int16List",
-            ApiTypePrimitive::U32 => "Uint32List",
-            ApiTypePrimitive::I32 => "Int32List",
-            ApiTypePrimitive::U64 => "Uint64List",
-            ApiTypePrimitive::I64 => "Int64List",
-            ApiTypePrimitive::F32 => "Float32List",
-            ApiTypePrimitive::F64 => "Float64List",
+            IrTypePrimitive::U8 => "Uint8List",
+            IrTypePrimitive::I8 => "Int8List",
+            IrTypePrimitive::U16 => "Uint16List",
+            IrTypePrimitive::I16 => "Int16List",
+            IrTypePrimitive::U32 => "Uint32List",
+            IrTypePrimitive::I32 => "Int32List",
+            IrTypePrimitive::U64 => "Uint64List",
+            IrTypePrimitive::I64 => "Int64List",
+            IrTypePrimitive::F32 => "Float32List",
+            IrTypePrimitive::F64 => "Float64List",
             _ => panic!("does not support {:?} yet", &self.primitive),
         }
         .to_string()

@@ -1,13 +1,13 @@
 #[derive(Debug, Clone)]
-pub struct Comment(String);
+pub struct IrComment(String);
 
-impl Comment {
+impl IrComment {
     pub fn comment(&self) -> &str {
         &self.0
     }
 }
 
-impl From<&str> for Comment {
+impl From<&str> for IrComment {
     fn from(input: &str) -> Self {
         if input.contains('\n') {
             // Dart's formatter has issues with block comments

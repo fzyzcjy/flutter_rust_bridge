@@ -1,13 +1,13 @@
 use log::debug;
 
-use crate::ir::ApiType::*;
+use crate::ir::IrType::*;
 use crate::ir::*;
 
-pub fn transform(src: ApiFile) -> ApiFile {
+pub fn transform(src: IrFile) -> IrFile {
     let dst_funcs = src
         .funcs
         .into_iter()
-        .map(|src_func| ApiFunc {
+        .map(|src_func| IrFunc {
             inputs: src_func
                 .inputs
                 .into_iter()
@@ -17,24 +17,24 @@ pub fn transform(src: ApiFile) -> ApiFile {
         })
         .collect();
 
-    ApiFile {
+    IrFile {
         funcs: dst_funcs,
         ..src
     }
 }
 
-fn transform_func_input_add_boxed(input: ApiField) -> ApiField {
+fn transform_func_input_add_boxed(input: IrField) -> IrField {
     match &input.ty {
         StructRef(_)
-        | EnumRef(ApiTypeEnumRef {
+        | EnumRef(IrTypeEnumRef {
             is_struct: true, ..
         }) => {
             debug!(
                 "transform_func_input_add_boxed wrap Boxed to field={:?}",
                 input
             );
-            ApiField {
-                ty: Boxed(ApiTypeBoxed {
+            IrField {
+                ty: Boxed(IrTypeBoxed {
                     exist_in_real_api: false, // <--
                     inner: Box::new(input.ty.clone()),
                 }),

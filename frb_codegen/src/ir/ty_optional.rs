@@ -1,29 +1,29 @@
-use crate::ir::ApiType::*;
+use crate::ir::IrType::*;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct ApiTypeOptional {
-    pub inner: Box<ApiType>,
+pub struct IrTypeOptional {
+    pub inner: Box<IrType>,
 }
 
-impl ApiTypeOptional {
-    pub fn new_prim(prim: ApiTypePrimitive) -> Self {
+impl IrTypeOptional {
+    pub fn new_prim(prim: IrTypePrimitive) -> Self {
         Self {
-            inner: Box::new(Boxed(ApiTypeBoxed {
+            inner: Box::new(Boxed(IrTypeBoxed {
                 inner: Box::new(Primitive(prim)),
                 exist_in_real_api: false,
             })),
         }
     }
 
-    pub fn new_ptr(ptr: ApiType) -> Self {
+    pub fn new_ptr(ptr: IrType) -> Self {
         Self {
             inner: Box::new(ptr),
         }
     }
 
     pub fn is_primitive(&self) -> bool {
-        matches!(&*self.inner, Boxed(boxed) if matches!(*boxed.inner, ApiType::Primitive(_)))
+        matches!(&*self.inner, Boxed(boxed) if matches!(*boxed.inner, IrType::Primitive(_)))
     }
 
     pub fn is_list(&self) -> bool {
@@ -39,7 +39,7 @@ impl ApiTypeOptional {
     }
 }
 
-impl ApiTypeChild for ApiTypeOptional {
+impl ApiTypeChild for IrTypeOptional {
     fn safe_ident(&self) -> String {
         format!("opt_{}", self.inner.safe_ident())
     }
@@ -59,7 +59,7 @@ impl ApiTypeChild for ApiTypeOptional {
         true
     }
 
-    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         self.inner.visit_types(f, api_file);
     }
 }

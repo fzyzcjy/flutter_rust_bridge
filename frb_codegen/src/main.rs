@@ -75,7 +75,7 @@ fn main() {
         .distinct_types(true, true)
         .iter()
         .filter_map(|ty| {
-            if let ApiType::StructRef(_) = ty {
+            if let IrType::StructRef(_) = ty {
                 Some(ty.rust_wire_type())
             } else {
                 None

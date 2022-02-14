@@ -1,23 +1,23 @@
 use crate::ir::*;
 use enum_dispatch::enum_dispatch;
-use ApiType::*;
+use IrType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(ApiTypeChild)]
 #[derive(Debug, Clone)]
-pub enum ApiType {
-    Primitive(ApiTypePrimitive),
-    Delegate(ApiTypeDelegate),
-    PrimitiveList(ApiTypePrimitiveList),
-    Optional(ApiTypeOptional),
-    GeneralList(ApiTypeGeneralList),
-    StructRef(ApiTypeStructRef),
-    Boxed(ApiTypeBoxed),
-    EnumRef(ApiTypeEnumRef),
+pub enum IrType {
+    Primitive(IrTypePrimitive),
+    Delegate(IrTypeDelegate),
+    PrimitiveList(IrTypePrimitiveList),
+    Optional(IrTypeOptional),
+    GeneralList(IrTypeGeneralList),
+    StructRef(IrTypeStructRef),
+    Boxed(IrTypeBoxed),
+    EnumRef(IrTypeEnumRef),
 }
 
-impl ApiType {
-    pub fn visit_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+impl IrType {
+    pub fn visit_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         if f(self) {
             return;
         }
@@ -35,7 +35,7 @@ impl ApiType {
 
     // api_fill functions target this type instead of the delegate.
     #[inline]
-    pub fn optional_inner(&self) -> &ApiType {
+    pub fn optional_inner(&self) -> &IrType {
         match self {
             Optional(inner) => &inner.inner,
             _ => self,
@@ -46,7 +46,7 @@ impl ApiType {
     #[inline]
     pub fn optional_ptr_modifier(&self) -> &'static str {
         match self {
-            Optional(_) | Delegate(ApiTypeDelegate::String) => "*mut ",
+            Optional(_) | Delegate(IrTypeDelegate::String) => "*mut ",
             _ => "",
         }
     }
@@ -54,7 +54,7 @@ impl ApiType {
 
 #[enum_dispatch]
 pub trait ApiTypeChild {
-    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile);
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile);
 
     fn safe_ident(&self) -> String;
 
@@ -79,7 +79,7 @@ pub trait ApiTypeChild {
     }
 }
 
-pub fn optional_boundary_index(types: &[&ApiType]) -> Option<usize> {
+pub fn optional_boundary_index(types: &[&IrType]) -> Option<usize> {
     types
         .iter()
         .enumerate()

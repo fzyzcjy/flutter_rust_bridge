@@ -7,7 +7,7 @@ use quote::quote;
 use regex::Regex;
 use syn::*;
 
-use crate::ir::ApiType::*;
+use crate::ir::IrType::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
@@ -32,7 +32,7 @@ lazy_static! {
     ];
 }
 
-pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ApiFile {
+pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
     let crate_map = Crate::new(manifest_path);
 
     let src_fns = extract_fns_from_file(&file);
@@ -57,14 +57,14 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ApiF
 struct Parser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     parsing_or_parsed_struct_names: HashSet<String>,
-    struct_pool: ApiStructPool,
+    struct_pool: IrStructPool,
 
     src_enums: HashMap<String, &'a Enum>,
     parsed_enums: HashSet<String>,
-    enum_pool: ApiEnumPool,
+    enum_pool: IrEnumPool,
 }
 
-fn extract_comments(attrs: &[Attribute]) -> Vec<Comment> {
+fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
     attrs
         .iter()
         .filter_map(|attr| match attr.parse_meta() {
@@ -72,19 +72,19 @@ fn extract_comments(attrs: &[Attribute]) -> Vec<Comment> {
                 path,
                 lit: Lit::Str(lit),
                 ..
-            })) if path.is_ident("doc") => Some(Comment::from(lit.value().as_ref())),
+            })) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
             _ => None,
         })
         .collect()
 }
 
 impl<'a> Parser<'a> {
-    fn parse(mut self, source_rust_content: &str, src_fns: Vec<&ItemFn>) -> ApiFile {
+    fn parse(mut self, source_rust_content: &str, src_fns: Vec<&ItemFn>) -> IrFile {
         let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
 
         let has_executor = source_rust_content.contains(HANDLER_NAME);
 
-        ApiFile {
+        IrFile {
             funcs,
             struct_pool: self.struct_pool,
             enum_pool: self.enum_pool,
@@ -92,7 +92,7 @@ impl<'a> Parser<'a> {
         }
     }
 
-    fn parse_function(&mut self, func: &ItemFn) -> ApiFunc {
+    fn parse_function(&mut self, func: &ItemFn) -> IrFunc {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
@@ -116,8 +116,8 @@ impl<'a> Parser<'a> {
                     output = Some(stream_sink_inner_type);
                     mode = Some(ApiFuncMode::Stream);
                 } else {
-                    inputs.push(ApiField {
-                        name: ApiIdent::new(name),
+                    inputs.push(IrField {
+                        name: IrIdent::new(name),
                         ty: self.parse_type(&type_string),
                         comments: extract_comments(&pat_type.attrs),
                     });
@@ -140,11 +140,11 @@ impl<'a> Parser<'a> {
                 }
                 ReturnType::Default => {
                     fallible = false;
-                    ApiType::Primitive(ApiTypePrimitive::Unit)
+                    IrType::Primitive(IrTypePrimitive::Unit)
                 }
             });
             mode = Some(
-                if let Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)) = output {
+                if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
                     ApiFuncMode::Sync
                 } else {
                     ApiFuncMode::Normal
@@ -154,7 +154,7 @@ impl<'a> Parser<'a> {
 
         // let comments = func.attrs.iter().filter_map(extract_comments).collect();
 
-        ApiFunc {
+        IrFunc {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
@@ -164,9 +164,9 @@ impl<'a> Parser<'a> {
         }
     }
 
-    fn parse_type(&mut self, ty: &str) -> ApiType {
+    fn parse_type(&mut self, ty: &str) -> IrType {
         debug!("parse_type: {}", ty);
-        None.or_else(|| ApiTypePrimitive::try_from_rust_str(ty).map(Primitive))
+        None.or_else(|| IrTypePrimitive::try_from_rust_str(ty).map(Primitive))
             .or_else(|| self.try_parse_api_type_delegate(ty))
             .or_else(|| self.try_parse_list(ty))
             .or_else(|| self.try_parse_box(ty))
@@ -176,24 +176,24 @@ impl<'a> Parser<'a> {
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
     }
 
-    fn try_parse_stream_sink(&mut self, ty: &str) -> Option<ApiType> {
+    fn try_parse_stream_sink(&mut self, ty: &str) -> Option<IrType> {
         CAPTURE_STREAM_SINK
             .captures(ty)
             .map(|inner| self.parse_type(&inner))
     }
 
-    fn try_parse_api_type_delegate(&mut self, ty: &str) -> Option<ApiType> {
+    fn try_parse_api_type_delegate(&mut self, ty: &str) -> Option<IrType> {
         match ty {
-            "SyncReturn<Vec<u8>>" => Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)),
-            "String" => Some(ApiType::Delegate(ApiTypeDelegate::String)),
-            "Vec<String>" => Some(ApiType::Delegate(ApiTypeDelegate::StringList)),
+            "SyncReturn<Vec<u8>>" => Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)),
+            "String" => Some(IrType::Delegate(IrTypeDelegate::String)),
+            "Vec<String>" => Some(IrType::Delegate(IrTypeDelegate::StringList)),
             _ => {
                 if let Some(inner_type_str) = CAPTURE_ZERO_COPY_BUFFER.captures(ty) {
-                    if let Some(ApiType::PrimitiveList(ApiTypePrimitiveList { primitive })) =
+                    if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) =
                         self.try_parse_list(&inner_type_str)
                     {
-                        return Some(ApiType::Delegate(
-                            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
+                        return Some(IrType::Delegate(
+                            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
                         ));
                     }
                 }
@@ -203,11 +203,11 @@ impl<'a> Parser<'a> {
         }
     }
 
-    fn try_parse_list(&mut self, ty: &str) -> Option<ApiType> {
+    fn try_parse_list(&mut self, ty: &str) -> Option<IrType> {
         if let Some(inner_type_str) = CAPTURE_VEC.captures(ty) {
             match self.parse_type(&inner_type_str) {
-                Primitive(primitive) => Some(PrimitiveList(ApiTypePrimitiveList { primitive })),
-                others => Some(GeneralList(ApiTypeGeneralList {
+                Primitive(primitive) => Some(PrimitiveList(IrTypePrimitiveList { primitive })),
+                others => Some(GeneralList(IrTypeGeneralList {
                     inner: Box::new(others),
                 })),
             }
@@ -216,16 +216,16 @@ impl<'a> Parser<'a> {
         }
     }
 
-    fn try_parse_box(&mut self, ty: &str) -> Option<ApiType> {
+    fn try_parse_box(&mut self, ty: &str) -> Option<IrType> {
         CAPTURE_BOX.captures(ty).map(|inner| {
-            Boxed(ApiTypeBoxed {
+            Boxed(IrTypeBoxed {
                 exist_in_real_api: true,
                 inner: Box::new(self.parse_type(&inner)),
             })
         })
     }
 
-    fn try_parse_option(&mut self, ty: &str) -> Option<ApiType> {
+    fn try_parse_option(&mut self, ty: &str) -> Option<IrType> {
         CAPTURE_OPTION.captures(ty).map(|inner| {
             let inner_option = CAPTURE_OPTION.captures(&inner);
             if let Some(inner_option) = inner_option {
@@ -235,19 +235,19 @@ impl<'a> Parser<'a> {
                 );
             };
             match self.parse_type(&inner) {
-                Primitive(prim) => ApiType::Optional(ApiTypeOptional::new_prim(prim)),
+                Primitive(prim) => IrType::Optional(IrTypeOptional::new_prim(prim)),
                 st @ StructRef(_) => {
-                    ApiType::Optional(ApiTypeOptional::new_ptr(Boxed(ApiTypeBoxed {
+                    IrType::Optional(IrTypeOptional::new_ptr(Boxed(IrTypeBoxed {
                         inner: Box::new(st),
                         exist_in_real_api: false,
                     })))
                 }
-                other => ApiType::Optional(ApiTypeOptional::new_ptr(other)),
+                other => IrType::Optional(IrTypeOptional::new_ptr(other)),
             }
         })
     }
 
-    fn try_parse_struct(&mut self, ty: &str) -> Option<ApiType> {
+    fn try_parse_struct(&mut self, ty: &str) -> Option<IrType> {
         if !self.src_structs.contains_key(ty) {
             return None;
         }
@@ -258,12 +258,12 @@ impl<'a> Parser<'a> {
             self.struct_pool.insert(ty.to_string(), api_struct);
         }
 
-        Some(StructRef(ApiTypeStructRef {
+        Some(StructRef(IrTypeStructRef {
             name: ty.to_string(),
         }))
     }
 
-    fn try_parse_enum(&mut self, ty: &str) -> Option<ApiType> {
+    fn try_parse_enum(&mut self, ty: &str) -> Option<IrType> {
         if !self.src_enums.contains_key(ty) {
             return None;
         }
@@ -273,7 +273,7 @@ impl<'a> Parser<'a> {
             self.enum_pool.insert(ty.to_owned(), enu);
         }
 
-        Some(EnumRef(ApiTypeEnumRef {
+        Some(EnumRef(IrTypeEnumRef {
             name: ty.to_owned(),
             is_struct: self
                 .enum_pool
@@ -293,7 +293,7 @@ impl<'a> Parser<'a> {
             .variants
             .iter()
             .map(|variant| ApiVariant {
-                name: ApiIdent::new(variant.ident.to_string()),
+                name: IrIdent::new(variant.ident.to_string()),
                 comments: extract_comments(&variant.attrs),
                 kind: match variant.fields.iter().next() {
                     None => ApiVariantKind::Value,
@@ -312,8 +312,8 @@ impl<'a> Parser<'a> {
                                 .fields
                                 .iter()
                                 .enumerate()
-                                .map(|(idx, field)| ApiField {
-                                    name: ApiIdent::new(
+                                .map(|(idx, field)| IrField {
+                                    name: IrIdent::new(
                                         field
                                             .ident
                                             .as_ref()
@@ -349,8 +349,8 @@ impl<'a> Parser<'a> {
                 .map_or(format!("field{}", idx), ToString::to_string);
             let field_type_str = type_to_string(&field.ty);
             let field_type = self.parse_type(&field_type_str);
-            fields.push(ApiField {
-                name: ApiIdent::new(field_name),
+            fields.push(IrField {
+                name: IrIdent::new(field_name),
                 ty: field_type,
                 comments: extract_comments(&field.attrs),
             });

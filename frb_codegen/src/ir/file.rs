@@ -1,20 +1,20 @@
 use crate::ir::*;
 use std::collections::{HashMap, HashSet};
 
-pub type ApiStructPool = HashMap<String, ApiStruct>;
-pub type ApiEnumPool = HashMap<String, ApiEnum>;
+pub type IrStructPool = HashMap<String, ApiStruct>;
+pub type IrEnumPool = HashMap<String, ApiEnum>;
 
 #[derive(Debug, Clone)]
-pub struct ApiFile {
-    pub funcs: Vec<ApiFunc>,
-    pub struct_pool: ApiStructPool,
-    pub enum_pool: ApiEnumPool,
+pub struct IrFile {
+    pub funcs: Vec<IrFunc>,
+    pub struct_pool: IrStructPool,
+    pub enum_pool: IrEnumPool,
     pub has_executor: bool,
 }
 
-impl ApiFile {
+impl IrFile {
     /// [f] returns [true] if it wants to stop going to the *children* of this subtree
-    pub fn visit_types<F: FnMut(&ApiType) -> bool>(
+    pub fn visit_types<F: FnMut(&IrType) -> bool>(
         &self,
         f: &mut F,
         include_func_inputs: bool,
@@ -36,7 +36,7 @@ impl ApiFile {
         &self,
         include_func_inputs: bool,
         include_func_output: bool,
-    ) -> Vec<ApiType> {
+    ) -> Vec<IrType> {
         let mut seen_idents = HashSet::new();
         let mut ans = Vec::new();
         self.visit_types(

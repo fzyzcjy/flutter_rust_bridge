@@ -1,12 +1,12 @@
 use convert_case::{Case, Casing};
 use log::debug;
 
-use crate::ir::ApiType::*;
+use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::others::*;
 
 pub fn generate(
-    api_file: &ApiFile,
+    api_file: &IrFile,
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
@@ -145,7 +145,7 @@ pub fn generate(
     (file_prelude, decl_code, impl_code)
 }
 
-fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
+fn generate_api_func(func: &IrFunc) -> (String, String, String) {
     let raw_func_param_list = func
         .inputs
         .iter()
@@ -171,7 +171,7 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
             .iter()
             .map(|input| {
                 // edge case: ffigen performs its own bool-to-int conversions
-                if let ApiType::Primitive(ApiTypePrimitive::Bool) = input.ty {
+                if let IrType::Primitive(IrTypePrimitive::Bool) = input.ty {
                     input.name.dart_style()
                 } else {
                     format!(
@@ -254,19 +254,19 @@ fn generate_api_func(func: &ApiFunc) -> (String, String, String) {
     (signature, implementation, comments)
 }
 
-fn generate_api2wire_func(ty: &ApiType) -> String {
+fn generate_api2wire_func(ty: &IrType) -> String {
     let body = match ty {
-        Primitive(ApiTypePrimitive::Bool) => "return raw ? 1 : 0;".to_owned(),
+        Primitive(IrTypePrimitive::Bool) => "return raw ? 1 : 0;".to_owned(),
         Primitive(_) => "return raw;".to_string(),
         Delegate(d) => match d {
-            ApiTypeDelegate::String => {
+            IrTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
             }
-            ApiTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".to_string(),
-            ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            IrTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".to_string(),
+            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("return _api2wire_{}(raw);", d.get_delegate().safe_ident())
             }
-            ApiTypeDelegate::StringList => "final ans = inner.new_StringList(raw.length);
+            IrTypeDelegate::StringList => "final ans = inner.new_StringList(raw.length);
             for (var i = 0; i < raw.length; i++) {
                 ans.ref.ptr[i] = _api2wire_String(raw[i]);
             }
@@ -337,7 +337,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
     )
 }
 
-fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
+fn generate_api_fill_to_wire_func(ty: &IrType, api_file: &IrFile) -> String {
     let body = match &ty {
         StructRef(s) => {
             let s = s.get(api_file);
@@ -427,19 +427,19 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
     )
 }
 
-fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
+fn generate_wire2api_func(ty: &IrType, api_file: &IrFile) -> String {
     let gen_simple_type_cast = |s: &str| format!("return raw as {};", s);
 
     let body = match ty {
-        Primitive(ApiTypePrimitive::Unit) => "return;".to_owned(),
+        Primitive(IrTypePrimitive::Unit) => "return;".to_owned(),
         Primitive(p) => gen_simple_type_cast(&p.dart_api_type()),
         Delegate(d) => match d {
-            ApiTypeDelegate::String
-            | ApiTypeDelegate::SyncReturnVecU8
-            | ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            IrTypeDelegate::String
+            | IrTypeDelegate::SyncReturnVecU8
+            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_simple_type_cast(&d.dart_api_type())
             }
-            ApiTypeDelegate::StringList => {
+            IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
         },
@@ -536,10 +536,10 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
 }
 
 /// A trailing newline is included if comments is not empty.
-fn dart_comments(comments: &[Comment]) -> String {
+fn dart_comments(comments: &[IrComment]) -> String {
     let mut comments = comments
         .iter()
-        .map(Comment::comment)
+        .map(IrComment::comment)
         .collect::<Vec<_>>()
         .join("\n");
     if !comments.is_empty() {

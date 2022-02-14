@@ -1,12 +1,12 @@
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct ApiTypeGeneralList {
-    pub inner: Box<ApiType>,
+pub struct IrTypeGeneralList {
+    pub inner: Box<IrType>,
 }
 
-impl ApiTypeChild for ApiTypeGeneralList {
-    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+impl ApiTypeChild for IrTypeGeneralList {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         self.inner.visit_types(f, api_file);
     }
 

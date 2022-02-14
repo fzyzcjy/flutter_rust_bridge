@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 use std::collections::HashSet;
 
-use crate::ir::ApiType::*;
+use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::others::*;
 
@@ -12,7 +12,7 @@ pub struct Output {
     pub extern_func_names: Vec<String>,
 }
 
-pub fn generate(api_file: &ApiFile, rust_wire_mod: &str) -> Output {
+pub fn generate(api_file: &IrFile, rust_wire_mod: &str) -> Output {
     let mut generator = Generator::new();
     let code = generator.generate(api_file, rust_wire_mod);
 
@@ -33,7 +33,7 @@ impl Generator {
         }
     }
 
-    fn generate(&mut self, api_file: &ApiFile, rust_wire_mod: &str) -> String {
+    fn generate(&mut self, api_file: &IrFile, rust_wire_mod: &str) -> String {
         let distinct_input_types = api_file.distinct_types(true, false);
         let distinct_output_types = api_file.distinct_types(false, true);
 
@@ -66,7 +66,7 @@ impl Generator {
         let wire_enums = distinct_input_types
             .iter()
             .filter_map(|ty| match ty {
-                ApiType::EnumRef(enu) => Some(self.generate_wire_enum(enu, api_file)),
+                IrType::EnumRef(enu) => Some(self.generate_wire_enum(enu, api_file)),
                 _ => None,
             })
             .collect::<Vec<_>>();
@@ -178,7 +178,7 @@ impl Generator {
         )
     }
 
-    fn generate_import(&self, api_type: &ApiType, api_file: &ApiFile) -> Option<String> {
+    fn generate_import(&self, api_type: &IrType, api_file: &IrFile) -> Option<String> {
         match api_type {
             EnumRef(enum_ref) => {
                 let api_enum = enum_ref.get(api_file);
@@ -204,7 +204,7 @@ impl Generator {
         }
     }
 
-    fn generate_executor(&mut self, api_file: &ApiFile) -> String {
+    fn generate_executor(&mut self, api_file: &IrFile) -> String {
         if api_file.has_executor {
             "/* nothing since executor detected */".to_string()
         } else {
@@ -218,7 +218,7 @@ impl Generator {
         }
     }
 
-    fn generate_wire_func(&mut self, func: &ApiFunc) -> String {
+    fn generate_wire_func(&mut self, func: &IrFunc) -> String {
         let params = [
             if func.mode.has_port_argument() {
                 vec!["port_: i64".to_string()]
@@ -323,14 +323,14 @@ impl Generator {
         )
     }
 
-    fn generate_wire_struct(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
+    fn generate_wire_struct(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_wire_struct: {:?}", ty);
         let fields = match ty {
             PrimitiveList(list) => vec![
                 format!("ptr: *mut {}", list.primitive.rust_wire_type()),
                 "len: i32".to_string(),
             ],
-            Delegate(ty @ ApiTypeDelegate::StringList) => vec![
+            Delegate(ty @ IrTypeDelegate::StringList) => vec![
                 format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type()),
                 "len: i32".to_owned(),
             ],
@@ -374,7 +374,7 @@ impl Generator {
         )
     }
 
-    fn generate_wire_enum(&mut self, enu: &ApiTypeEnumRef, file: &ApiFile) -> String {
+    fn generate_wire_enum(&mut self, enu: &IrTypeEnumRef, file: &IrFile) -> String {
         let src = enu.get(file);
         if !src.is_struct() {
             return "".to_owned();
@@ -435,7 +435,7 @@ impl Generator {
         &mut self,
         safe_ident: &str,
         list: &impl ApiTypeChild,
-        inner: &ApiType,
+        inner: &IrType,
     ) -> String {
         self.extern_func_collector.generate(
             &format!("new_{}", safe_ident),
@@ -454,7 +454,7 @@ impl Generator {
         )
     }
 
-    fn generate_allocate_funcs(&mut self, ty: &ApiType) -> String {
+    fn generate_allocate_funcs(&mut self, ty: &IrType) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
 
         match ty {
@@ -470,7 +470,7 @@ impl Generator {
             ),
             GeneralList(list) =>
                 self.generate_list_allocate_func(&ty.safe_ident(), list, &list.inner),
-            Delegate(list @ ApiTypeDelegate::StringList) =>
+            Delegate(list @ IrTypeDelegate::StringList) =>
                 self.generate_list_allocate_func(&ty.safe_ident(), list, &list.get_delegate()),
             Boxed(b) => {
                 match &*b.inner {
@@ -499,15 +499,15 @@ impl Generator {
         }
     }
 
-    fn generate_wire2api_func(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
+    fn generate_wire2api_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
         let body: Cow<str> = match ty {
             Primitive(_) => "self".into(),
-            Delegate(ApiTypeDelegate::String) => "let vec: Vec<u8> = self.wire2api();
+            Delegate(IrTypeDelegate::String) => "let vec: Vec<u8> = self.wire2api();
             String::from_utf8_lossy(&vec).into_owned()"
                 .into(),
-            Delegate(ApiTypeDelegate::SyncReturnVecU8) => "/*unsupported*/".into(),
-            Delegate(ApiTypeDelegate::ZeroCopyBufferVecPrimitive(_)) => {
+            Delegate(IrTypeDelegate::SyncReturnVecU8) => "/*unsupported*/".into(),
+            Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(_)) => {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
             PrimitiveList(_) => "unsafe {
@@ -515,16 +515,16 @@ impl Generator {
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }"
                 .into(),
-            GeneralList(_) | Delegate(ApiTypeDelegate::StringList) => "
+            GeneralList(_) | Delegate(IrTypeDelegate::StringList) => "
             let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             };
             vec.into_iter().map(Wire2Api::wire2api).collect()"
                 .into(),
-            Boxed(ApiTypeBoxed { inner: box_inner, exist_in_real_api }) => match (box_inner.as_ref(), exist_in_real_api) {
-                (ApiType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
-                (ApiType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
+            Boxed(IrTypeBoxed { inner: box_inner, exist_in_real_api }) => match (box_inner.as_ref(), exist_in_real_api) {
+                (IrType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
+                (IrType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
                 _ => "let wrap = unsafe { support::box_from_leak_ptr(self) }; (*wrap).wire2api().into()".into()
             }
             StructRef(struct_ref) => {
@@ -623,7 +623,7 @@ impl Generator {
         )
     }
 
-    fn generate_new_with_nullptr_func(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
+    fn generate_new_with_nullptr_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         match ty {
             StructRef(st) => self
                 .generate_new_with_nullptr_func_for_struct(st.get(api_file), &ty.rust_wire_type()),
@@ -635,7 +635,7 @@ impl Generator {
         }
     }
 
-    fn generate_impl_intodart(&mut self, ty: &ApiType, api_file: &ApiFile) -> String {
+    fn generate_impl_intodart(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_impl_intodart: {:?}", ty);
         match ty {
             StructRef(s) => self.generate_impl_intodart_for_struct(s.get(api_file)),
@@ -653,7 +653,7 @@ impl Generator {
         enu: &ApiEnum,
         rust_wire_type: &str,
     ) -> String {
-        fn init_of(ty: &ApiType) -> &str {
+        fn init_of(ty: &IrType) -> &str {
             if ty.rust_wire_is_pointer() {
                 "core::ptr::null_mut()"
             } else {

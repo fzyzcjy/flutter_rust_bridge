@@ -1,16 +1,16 @@
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct ApiFunc {
+pub struct IrFunc {
     pub name: String,
-    pub inputs: Vec<ApiField>,
-    pub output: ApiType,
+    pub inputs: Vec<IrField>,
+    pub output: IrType,
     pub fallible: bool,
     pub mode: ApiFuncMode,
-    pub comments: Vec<Comment>,
+    pub comments: Vec<IrComment>,
 }
 
-impl ApiFunc {
+impl IrFunc {
     pub fn wire_func_name(&self) -> String {
         format!("wire_{}", self.name)
     }
