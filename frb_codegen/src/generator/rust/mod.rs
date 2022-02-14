@@ -88,7 +88,7 @@ impl Generator {
 
         lines.push(self.section_header_comment("wire enums"));
         lines.extend(distinct_input_types.iter().filter_map(|ty| match ty {
-            IrType::EnumRef(enu) => Some(self.generate_wire_enum(enu, api_file)),
+            IrType::EnumRef(enu) => Some(generate_wire_enum(enu, api_file)),
             _ => None,
         }));
 
@@ -161,29 +161,7 @@ impl Generator {
     }
 
     fn generate_import(&self, api_type: &IrType, api_file: &IrFile) -> Option<String> {
-        match api_type {
-            EnumRef(enum_ref) => {
-                let api_enum = enum_ref.get(api_file);
-                Some(format!("use {};", api_enum.path.join("::")))
-            }
-            StructRef(struct_ref) => {
-                let api_struct = struct_ref.get(api_file);
-                if api_struct.path.is_some() {
-                    Some(format!(
-                        "use {};",
-                        api_struct.path.as_ref().unwrap().join("::")
-                    ))
-                } else {
-                    None
-                }
-            }
-            Optional(optional_ref) => self.generate_import(&optional_ref.inner, api_file),
-            GeneralList(general_list_ref) => {
-                self.generate_import(&general_list_ref.inner, api_file)
-            }
-            Boxed(boxed_ref) => self.generate_import(&boxed_ref.inner, api_file),
-            _ => None,
-        }
+        TODO.imports()
     }
 
     fn generate_executor(&mut self, api_file: &IrFile) -> String {
@@ -316,41 +294,7 @@ impl Generator {
 
     fn generate_wire_struct(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_wire_struct: {:?}", ty);
-        let fields = match ty {
-            PrimitiveList(list) => vec![
-                format!("ptr: *mut {}", list.primitive.rust_wire_type()),
-                "len: i32".to_string(),
-            ],
-            Delegate(ty @ IrTypeDelegate::StringList) => vec![
-                format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type()),
-                "len: i32".to_owned(),
-            ],
-            GeneralList(list) => vec![
-                format!(
-                    "ptr: *mut {}{}",
-                    list.inner.rust_ptr_modifier(),
-                    list.inner.rust_wire_type()
-                ),
-                "len: i32".to_string(),
-            ],
-            StructRef(s) => {
-                let s = s.get(api_file);
-                s.fields
-                    .iter()
-                    .map(|field| {
-                        format!(
-                            "{}: {}{}",
-                            field.name.rust_style(),
-                            field.ty.rust_wire_modifier(),
-                            field.ty.rust_wire_type()
-                        )
-                    })
-                    .collect()
-            }
-            Primitive(_) | Delegate(_) | Boxed(_) | Optional(_) | EnumRef(_) => {
-                return "".to_string()
-            }
-        };
+        let fields = TODO.wire_struct_fields();
 
         format!(
             r###"
@@ -362,63 +306,6 @@ impl Generator {
         "###,
             ty.rust_wire_type(),
             fields.join(",\n"),
-        )
-    }
-
-    fn generate_wire_enum(&mut self, enu: &IrTypeEnumRef, file: &IrFile) -> String {
-        let src = enu.get(file);
-        if !src.is_struct() {
-            return "".to_owned();
-        }
-        let variant_structs = src
-            .variants()
-            .iter()
-            .map(|variant| {
-                let fields = match &variant.kind {
-                    IrVariantKind::Value => vec![],
-                    IrVariantKind::Struct(s) => s
-                        .fields
-                        .iter()
-                        .map(|field| {
-                            format!(
-                                "{}: {}{},",
-                                field.name.rust_style(),
-                                field.ty.rust_wire_modifier(),
-                                field.ty.rust_wire_type()
-                            )
-                        })
-                        .collect(),
-                };
-                format!(
-                    "#[repr(C)]
-                    #[derive(Clone)]
-                    pub struct {}_{} {{ {} }}",
-                    enu.name,
-                    variant.name,
-                    fields.join("\n")
-                )
-            })
-            .collect::<Vec<_>>();
-        let union_fields = src
-            .variants()
-            .iter()
-            .map(|variant| format!("{0}: *mut {1}_{0},", variant.name, enu.name))
-            .collect::<Vec<_>>();
-        format!(
-            "#[repr(C)]
-            #[derive(Clone)]
-            pub struct {0} {{ tag: i32, kind: *mut {1}Kind }}
-
-            #[repr(C)]
-            pub union {1}Kind {{
-                {2}
-            }}
-
-            {3}",
-            enu.rust_wire_type(),
-            enu.name,
-            union_fields.join("\n"),
-            variant_structs.join("\n\n")
         )
     }
 
@@ -447,47 +334,7 @@ impl Generator {
 
     fn generate_allocate_funcs(&mut self, ty: &IrType) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
-
-        match ty {
-            PrimitiveList(list) => self.extern_func_collector.generate(
-                &format!("new_{}", list.safe_ident()),
-                &["len: i32"],
-                Some(&format!("{}{}", list.rust_wire_modifier(), list.rust_wire_type())),
-                &format!(
-                    "let ans = {} {{ ptr: support::new_leak_vec_ptr(Default::default(), len), len }};
-                support::new_leak_box_ptr(ans)",
-                    list.rust_wire_type(),
-                ),
-            ),
-            GeneralList(list) =>
-                self.generate_list_allocate_func(&ty.safe_ident(), list, &list.inner),
-            Delegate(list @ IrTypeDelegate::StringList) =>
-                self.generate_list_allocate_func(&ty.safe_ident(), list, &list.get_delegate()),
-            Boxed(b) => {
-                match &*b.inner {
-                    Primitive(prim) => {
-                        self.extern_func_collector.generate(
-                            &format!("new_{}", ty.safe_ident()),
-                            &[&format!("value: {}", prim.rust_wire_type())],
-                            Some(&format!("*mut {}", prim.rust_wire_type())),
-                            "support::new_leak_box_ptr(value)",
-                        )
-                    }
-                    inner => {
-                        self.extern_func_collector.generate(
-                            &format!("new_{}", ty.safe_ident()),
-                            &[],
-                            Some(&[ty.rust_wire_modifier(), ty.rust_wire_type()].concat()),
-                            &format!(
-                                "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                                inner.rust_wire_type()
-                            ),
-                        )
-                    }
-                }
-            },
-            Primitive(_) | Delegate(_) | StructRef(_) | EnumRef(_) | Optional(_) => String::new(),
-        }
+        TODO.allocate_funcs()
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
@@ -512,113 +359,7 @@ impl Generator {
 
     fn generate_wire2api_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
-        let body: Cow<str> = match ty {
-            Primitive(_) => "self".into(),
-            Delegate(IrTypeDelegate::String) => "let vec: Vec<u8> = self.wire2api();
-            String::from_utf8_lossy(&vec).into_owned()"
-                .into(),
-            Delegate(IrTypeDelegate::SyncReturnVecU8) => "/*unsupported*/".into(),
-            Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(_)) => {
-                "ZeroCopyBuffer(self.wire2api())".into()
-            }
-            PrimitiveList(_) => "unsafe {
-                let wrap = support::box_from_leak_ptr(self);
-                support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-            }"
-                .into(),
-            GeneralList(_) | Delegate(IrTypeDelegate::StringList) => "
-            let vec = unsafe {
-                let wrap = support::box_from_leak_ptr(self);
-                support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-            };
-            vec.into_iter().map(Wire2Api::wire2api).collect()"
-                .into(),
-            Boxed(IrTypeBoxed { inner: box_inner, exist_in_real_api }) => match (box_inner.as_ref(), exist_in_real_api) {
-                (IrType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
-                (IrType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
-                _ => "let wrap = unsafe { support::box_from_leak_ptr(self) }; (*wrap).wire2api().into()".into()
-            }
-            StructRef(struct_ref) => {
-                let api_struct = struct_ref.get(api_file);
-                let fields_str = &api_struct
-                    .fields
-                    .iter()
-                    .map(|field| {
-                        format!(
-                            "{} self.{}.wire2api()",
-                            if api_struct.is_fields_named {
-                                field.name.rust_style().to_string() + ": "
-                            } else {
-                                String::new()
-                            },
-                            field.name.rust_style()
-                        )
-                    })
-                    .collect::<Vec<_>>()
-                    .join(",");
-
-                let (left, right) = api_struct.brackets_pair();
-                format!("{}{}{}{}", ty.rust_api_type(), left, fields_str, right).into()
-            }
-            EnumRef(enu) if enu.is_struct => {
-                let enu = enu.get(api_file);
-                let variants = enu.variants().iter().enumerate()
-                    .map(|(idx, variant)| {
-                        match &variant.kind {
-                            IrVariantKind::Value => {
-                                format!("{} => {}::{},", idx, enu.name, variant.name)
-                            },
-                            IrVariantKind::Struct(st) => {
-                                let fields: Vec<_> = st.fields
-                                    .iter()
-                                    .map(|field| {
-                                        if st.is_fields_named {
-                                            format!("{0}: ans.{0}.wire2api()", field.name.rust_style())
-                                        } else {
-                                            format!("ans.{}.wire2api()", field.name.rust_style())
-                                        }
-                                    }).collect();
-                                let (left, right) = st.brackets_pair();
-                                format!(
-                                    "{} => unsafe {{
-                                        let ans = support::box_from_leak_ptr(self.kind);
-                                        let ans = support::box_from_leak_ptr(ans.{2});
-                                        {}::{2}{3}{4}{5}
-                                    }}",
-                                    idx, enu.name, variant.name, left, fields.join(","), right
-                                )
-                            }
-                        }
-                    }).collect::<Vec<_>>();
-                format!(
-                    "match self.tag {{
-                        {}
-                        _ => unreachable!(),
-                    }}",
-                    variants.join("\n"),
-                ).into()
-            }
-            EnumRef(enu) => {
-                let enu = enu.get(api_file);
-                let variants = enu
-                    .variants()
-                    .iter()
-                    .enumerate()
-                    .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
-                    .collect::<Vec<_>>()
-                    .join("\n");
-                format!(
-                    "match self {{
-                        {}
-                        _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
-                    }}",
-                    variants, enu.name
-                )
-                    .into()
-            }
-            // handled by common impl
-            Optional(_) => return String::new(),
-        };
+        let body = TODO.wire2api_body();
 
         format!(
             "impl Wire2Api<{}> for {} {{
@@ -648,218 +389,12 @@ impl Generator {
     }
 
     fn generate_new_with_nullptr_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
-        match ty {
-            StructRef(st) => self
-                .generate_new_with_nullptr_func_for_struct(st.get(api_file), &ty.rust_wire_type()),
-            EnumRef(e) if e.is_struct => {
-                self.generate_new_with_nullptr_func_for_enum(e.get(api_file), &ty.rust_wire_type())
-            }
-            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
-            | Optional(_) | EnumRef(_) => String::new(),
-        }
+        TODO.new_with_nullptr()
     }
 
     fn generate_impl_intodart(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_impl_intodart: {:?}", ty);
-        match ty {
-            StructRef(s) => self.generate_impl_intodart_for_struct(s.get(api_file)),
-            EnumRef(e) if e.is_struct => {
-                self.generate_impl_intodart_for_enum_struct(e.get(api_file))
-            }
-            EnumRef(enu) => self.generate_impl_intodart_for_enum(enu.get(api_file)),
-            Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_)
-            | Optional(_) => "".to_string(),
-        }
-    }
-
-    fn generate_new_with_nullptr_func_for_enum(
-        &mut self,
-        enu: &IrEnum,
-        rust_wire_type: &str,
-    ) -> String {
-        fn init_of(ty: &IrType) -> &str {
-            if ty.rust_wire_is_pointer() {
-                "core::ptr::null_mut()"
-            } else {
-                "Default::default()"
-            }
-        }
-        let inflators = enu
-            .variants()
-            .iter()
-            .filter_map(|variant| {
-                let typ = format!("{}_{}", enu.name, variant.name);
-                let body: Vec<_> = if let IrVariantKind::Struct(st) = &variant.kind {
-                    st.fields
-                        .iter()
-                        .map(|field| format!("{}: {}", field.name.rust_style(), init_of(&field.ty)))
-                        .collect()
-                } else {
-                    return None;
-                };
-                Some(self.extern_func_collector.generate(
-                    &format!("inflate_{}", typ),
-                    &[],
-                    Some(&format!("*mut {}Kind", enu.name)),
-                    &format!(
-                        "support::new_leak_box_ptr({}Kind {{
-                        {}: support::new_leak_box_ptr({} {{
-                            {}
-                        }})
-                    }})",
-                        enu.name,
-                        variant.name.rust_style(),
-                        typ,
-                        body.join(",")
-                    ),
-                ))
-            })
-            .collect::<Vec<_>>();
-        format!(
-            "impl NewWithNullPtr for {} {{
-                fn new_with_null_ptr() -> Self {{
-                    Self {{
-                        tag: -1,
-                        kind: core::ptr::null_mut(),
-                    }}
-                }}
-            }}
-            {}",
-            rust_wire_type,
-            inflators.join("\n\n")
-        )
-    }
-
-    fn generate_new_with_nullptr_func_for_struct(
-        &self,
-        s: &IrStruct,
-        rust_wire_type: &str,
-    ) -> String {
-        let body = {
-            s.fields
-                .iter()
-                .map(|field| {
-                    format!(
-                        "{}: {},",
-                        field.name.rust_style(),
-                        if field.ty.rust_wire_is_pointer() {
-                            "core::ptr::null_mut()"
-                        } else {
-                            "Default::default()"
-                        }
-                    )
-                })
-                .collect::<Vec<_>>()
-                .join("\n")
-        };
-        format!(
-            r#"impl NewWithNullPtr for {} {{
-                    fn new_with_null_ptr() -> Self {{
-                        Self {{ {} }}
-                    }}
-                }}
-            "#,
-            rust_wire_type, body,
-        )
-    }
-
-    fn generate_impl_intodart_for_struct(&mut self, s: &IrStruct) -> String {
-        // println!("generate_impl_intodart_for_struct: {}", s.name);
-        let body = s
-            .fields
-            .iter()
-            .map(|field| {
-                format!(
-                    "self.{}.into_dart()",
-                    field.name_rust_style(s.is_fields_named)
-                )
-            })
-            .collect::<Vec<_>>()
-            .join(",\n");
-
-        format!(
-            "impl support::IntoDart for {} {{
-                fn into_dart(self) -> support::DartCObject {{
-                    vec![
-                        {}
-                    ].into_dart()
-                }}
-            }}
-            impl support::IntoDartExceptPrimitive for {} {{}}
-            ",
-            s.name, body, s.name,
-        )
-    }
-
-    fn generate_impl_intodart_for_enum(&mut self, enu: &IrEnum) -> String {
-        let variants = enu
-            .variants()
-            .iter()
-            .enumerate()
-            .map(|(idx, variant)| format!("Self::{} => {},", variant.name, idx))
-            .collect::<Vec<_>>()
-            .join("\n");
-        format!(
-            "impl support::IntoDart for {} {{
-                fn into_dart(self) -> support::DartCObject {{
-                    match self {{
-                        {}
-                    }}.into_dart()
-                }}
-            }}
-            ",
-            enu.name, variants
-        )
-    }
-
-    fn generate_impl_intodart_for_enum_struct(&mut self, enu: &IrEnum) -> String {
-        let variants =
-            enu.variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| {
-                    let tag = format!("{}.into_dart()", idx);
-                    match &variant.kind {
-                        IrVariantKind::Value => {
-                            format!("Self::{} => vec![{}],", variant.name, tag)
-                        }
-                        IrVariantKind::Struct(s) => {
-                            let fields = Some(tag)
-                                .into_iter()
-                                .chain(s.fields.iter().map(|field| {
-                                    format!("{}.into_dart()", field.name.rust_style())
-                                }))
-                                .collect::<Vec<_>>();
-                            let pattern = s
-                                .fields
-                                .iter()
-                                .map(|field| field.name.rust_style().to_owned())
-                                .collect::<Vec<_>>();
-                            let (left, right) = s.brackets_pair();
-                            format!(
-                                "Self::{}{}{}{} => vec![{}],",
-                                variant.name,
-                                left,
-                                pattern.join(","),
-                                right,
-                                fields.join(",")
-                            )
-                        }
-                    }
-                })
-                .collect::<Vec<_>>();
-        format!(
-            "impl support::IntoDart for {} {{
-                fn into_dart(self) -> support::DartCObject {{
-                    match self {{
-                        {}
-                    }}.into_dart()
-                }}
-            }}
-            ",
-            enu.name,
-            variants.join("\n")
-        )
+        TODO.impl_intodart()
     }
 }
 
