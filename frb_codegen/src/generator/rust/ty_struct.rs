@@ -1,6 +1,6 @@
-use crate::generator::rust::ty::TypeGeneratorTrait;
+use crate::generator::rust::ty::TypeRustGeneratorTrait;
 
 #[derive(Debug, Clone)]
 pub struct TypeStructRefGenerator {}
 
-impl TypeGeneratorTrait for TypeStructRefGenerator {}
+impl TypeRustGeneratorTrait for TypeStructRefGenerator {}

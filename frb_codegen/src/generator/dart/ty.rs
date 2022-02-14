@@ -1,7 +1,7 @@
-use crate::generator::rust::*;
+use crate::generator::dart::*;
 use enum_dispatch::enum_dispatch;
 
-#[enum_dispatch(TypeRustGeneratorTrait)]
+#[enum_dispatch(TypeDartGeneratorTrait)]
 #[derive(Debug, Clone)]
 pub enum TypeGenerator {
     Primitive(TypePrimitiveGenerator),
@@ -15,6 +15,6 @@ pub enum TypeGenerator {
 }
 
 #[enum_dispatch]
-pub trait TypeRustGeneratorTrait {
+pub trait TypeDartGeneratorTrait {
     // TODO
 }
