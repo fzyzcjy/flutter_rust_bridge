@@ -425,7 +425,7 @@ impl Generator {
     fn generate_list_allocate_func(
         &mut self,
         safe_ident: &str,
-        list: &impl ApiTypeChild,
+        list: &impl ApiTypeTrait,
         inner: &IrType,
     ) -> String {
         self.extern_func_collector.generate(

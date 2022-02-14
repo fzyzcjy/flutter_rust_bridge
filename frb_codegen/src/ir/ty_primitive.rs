@@ -16,7 +16,7 @@ pub enum IrTypePrimitive {
     Unit,
 }
 
-impl ApiTypeChild for IrTypePrimitive {
+impl ApiTypeTrait for IrTypePrimitive {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _api_file: &IrFile) {}
 
     fn safe_ident(&self) -> String {

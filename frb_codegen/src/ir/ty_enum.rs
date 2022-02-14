@@ -14,7 +14,7 @@ impl IrTypeEnumRef {
     }
 }
 
-impl ApiTypeChild for IrTypeEnumRef {
+impl ApiTypeTrait for IrTypeEnumRef {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         let enu = self.get(api_file);
         for variant in enu.variants() {

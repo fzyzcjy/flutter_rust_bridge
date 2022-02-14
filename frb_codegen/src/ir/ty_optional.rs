@@ -39,7 +39,7 @@ impl IrTypeOptional {
     }
 }
 
-impl ApiTypeChild for IrTypeOptional {
+impl ApiTypeTrait for IrTypeOptional {
     fn safe_ident(&self) -> String {
         format!("opt_{}", self.inner.safe_ident())
     }

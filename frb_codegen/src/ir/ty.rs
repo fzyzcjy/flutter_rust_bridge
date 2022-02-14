@@ -44,7 +44,7 @@ impl IrType {
 }
 
 #[enum_dispatch]
-pub trait ApiTypeChild {
+pub trait ApiTypeTrait {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile);
 
     fn safe_ident(&self) -> String;

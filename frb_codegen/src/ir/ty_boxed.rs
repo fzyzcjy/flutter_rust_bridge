@@ -8,7 +8,7 @@ pub struct IrTypeBoxed {
     pub inner: Box<IrType>,
 }
 
-impl ApiTypeChild for IrTypeBoxed {
+impl ApiTypeTrait for IrTypeBoxed {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         self.inner.visit_types(f, api_file);
     }

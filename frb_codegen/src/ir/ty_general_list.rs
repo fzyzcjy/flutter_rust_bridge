@@ -5,7 +5,7 @@ pub struct IrTypeGeneralList {
     pub inner: Box<IrType>,
 }
 
-impl ApiTypeChild for IrTypeGeneralList {
+impl ApiTypeTrait for IrTypeGeneralList {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
         self.inner.visit_types(f, api_file);
     }
