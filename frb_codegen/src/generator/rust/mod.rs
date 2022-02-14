@@ -469,11 +469,11 @@ impl Generator {
                 ),
             ),
             GeneralList(list) =>
-                self.generate_list_allocate_func(&ty.safe_ident(), list.as_ref(), &list.inner),
+                self.generate_list_allocate_func(&ty.safe_ident(), list, &list.inner),
             Delegate(list @ ApiTypeDelegate::StringList) =>
                 self.generate_list_allocate_func(&ty.safe_ident(), list, &list.get_delegate()),
             Boxed(b) => {
-                match &b.inner {
+                match &*b.inner {
                     Primitive(prim) => {
                         self.extern_func_collector.generate(
                             &format!("new_{}", ty.safe_ident()),
@@ -522,11 +522,9 @@ impl Generator {
             };
             vec.into_iter().map(Wire2Api::wire2api).collect()"
                 .into(),
-            Boxed(inner) => match inner.as_ref() {
-                ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: false } =>
-                    "unsafe { *support::box_from_leak_ptr(self) }".into(),
-                ApiTypeBoxed { inner: ApiType::Primitive(_), exist_in_real_api: true } =>
-                    "unsafe { support::box_from_leak_ptr(self) }".into(),
+            Boxed(ApiTypeBoxed { inner: box_inner, exist_in_real_api }) => match (box_inner.as_ref(), exist_in_real_api) {
+                (ApiType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
+                (ApiType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
                 _ => "let wrap = unsafe { support::box_from_leak_ptr(self) }; (*wrap).wire2api().into()".into()
             }
             StructRef(struct_ref) => {

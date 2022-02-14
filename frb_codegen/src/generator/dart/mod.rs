@@ -306,7 +306,7 @@ fn generate_api2wire_func(ty: &ApiType) -> String {
                 list.inner.safe_ident()
             )
         }
-        Boxed(b) => match &b.inner {
+        Boxed(b) => match &*b.inner {
             Primitive(_) => {
                 format!("return inner.new_{}(raw);", ty.safe_ident())
             }
@@ -407,7 +407,7 @@ fn generate_api_fill_to_wire_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 opt.inner.safe_ident()
             )
         }
-        Boxed(boxed) if !matches!(boxed.inner, Primitive(_)) => format!(
+        Boxed(boxed) if !matches!(*boxed.inner, Primitive(_)) => format!(
             " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
             boxed.inner.safe_ident()
         ),
@@ -518,7 +518,7 @@ fn generate_wire2api_func(ty: &ApiType, api_file: &ApiFile) -> String {
                 variants.join("\n"),
             )
         }
-        Boxed(boxed) => match &boxed.inner {
+        Boxed(boxed) => match &*boxed.inner {
             StructRef(inner) => format!("return _wire2api_{}(raw);", inner.safe_ident()),
             _ => gen_simple_type_cast(&ty.dart_api_type()),
         },

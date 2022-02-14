@@ -34,10 +34,10 @@ fn transform_func_input_add_boxed(input: ApiField) -> ApiField {
                 input
             );
             ApiField {
-                ty: Boxed(Box::new(ApiTypeBoxed {
+                ty: Boxed(ApiTypeBoxed {
                     exist_in_real_api: false, // <--
-                    inner: input.ty.clone(),
-                })),
+                    inner: Box::new(input.ty.clone()),
+                }),
                 ..input
             }
         }

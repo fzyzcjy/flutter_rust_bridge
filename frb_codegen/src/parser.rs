@@ -207,7 +207,9 @@ impl<'a> Parser<'a> {
         if let Some(inner_type_str) = CAPTURE_VEC.captures(ty) {
             match self.parse_type(&inner_type_str) {
                 Primitive(primitive) => Some(PrimitiveList(ApiTypePrimitiveList { primitive })),
-                others => Some(GeneralList(Box::from(ApiTypeGeneralList { inner: others }))),
+                others => Some(GeneralList(ApiTypeGeneralList {
+                    inner: Box::new(others),
+                })),
             }
         } else {
             None
@@ -216,10 +218,10 @@ impl<'a> Parser<'a> {
 
     fn try_parse_box(&mut self, ty: &str) -> Option<ApiType> {
         CAPTURE_BOX.captures(ty).map(|inner| {
-            Boxed(Box::new(ApiTypeBoxed {
+            Boxed(ApiTypeBoxed {
                 exist_in_real_api: true,
-                inner: self.parse_type(&inner),
-            }))
+                inner: Box::new(self.parse_type(&inner)),
+            })
         })
     }
 
@@ -235,10 +237,10 @@ impl<'a> Parser<'a> {
             match self.parse_type(&inner) {
                 Primitive(prim) => ApiType::Optional(ApiTypeOptional::new_prim(prim)),
                 st @ StructRef(_) => {
-                    ApiType::Optional(ApiTypeOptional::new_ptr(Boxed(Box::new(ApiTypeBoxed {
-                        inner: st,
+                    ApiType::Optional(ApiTypeOptional::new_ptr(Boxed(ApiTypeBoxed {
+                        inner: Box::new(st),
                         exist_in_real_api: false,
-                    }))))
+                    })))
                 }
                 other => ApiType::Optional(ApiTypeOptional::new_ptr(other)),
             }

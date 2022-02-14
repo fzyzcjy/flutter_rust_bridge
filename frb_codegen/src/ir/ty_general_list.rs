@@ -2,7 +2,7 @@ use crate::ir::*;
 
 #[derive(Debug, Clone)]
 pub struct ApiTypeGeneralList {
-    pub inner: ApiType,
+    pub inner: Box<ApiType>,
 }
 
 impl ApiTypeChild for ApiTypeGeneralList {

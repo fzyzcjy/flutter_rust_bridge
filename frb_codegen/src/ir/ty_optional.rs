@@ -9,10 +9,10 @@ pub struct ApiTypeOptional {
 impl ApiTypeOptional {
     pub fn new_prim(prim: ApiTypePrimitive) -> Self {
         Self {
-            inner: Box::new(Boxed(Box::new(ApiTypeBoxed {
-                inner: Primitive(prim),
+            inner: Box::new(Boxed(ApiTypeBoxed {
+                inner: Box::new(Primitive(prim)),
                 exist_in_real_api: false,
-            }))),
+            })),
         }
     }
 
@@ -23,7 +23,7 @@ impl ApiTypeOptional {
     }
 
     pub fn is_primitive(&self) -> bool {
-        matches!(&*self.inner, Boxed(boxed) if matches!(boxed.inner, ApiType::Primitive(_)))
+        matches!(&*self.inner, Boxed(boxed) if matches!(*boxed.inner, ApiType::Primitive(_)))
     }
 
     pub fn is_list(&self) -> bool {

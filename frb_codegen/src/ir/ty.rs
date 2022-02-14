@@ -1,34 +1,19 @@
 use crate::ir::*;
+use enum_dispatch::enum_dispatch;
 use ApiType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
+#[enum_dispatch(ApiTypeChild)]
 #[derive(Debug, Clone)]
 pub enum ApiType {
     Primitive(ApiTypePrimitive),
     Delegate(ApiTypeDelegate),
     PrimitiveList(ApiTypePrimitiveList),
     Optional(ApiTypeOptional),
-    GeneralList(Box<ApiTypeGeneralList>),
+    GeneralList(ApiTypeGeneralList),
     StructRef(ApiTypeStructRef),
-    Boxed(Box<ApiTypeBoxed>),
+    Boxed(ApiTypeBoxed),
     EnumRef(ApiTypeEnumRef),
-}
-
-macro_rules! api_type_call_child {
-    ($func:ident, $ret:ty) => {
-        pub fn $func(&self) -> $ret {
-            match self {
-                Primitive(inner) => inner.$func(),
-                Delegate(inner) => inner.$func(),
-                PrimitiveList(inner) => inner.$func(),
-                GeneralList(inner) => inner.$func(),
-                StructRef(inner) => inner.$func(),
-                Boxed(inner) => inner.$func(),
-                Optional(inner) => inner.$func(),
-                EnumRef(inner) => inner.$func(),
-            }
-        }
-    };
 }
 
 impl ApiType {
@@ -64,14 +49,6 @@ impl ApiType {
         }
     }
 
-    api_type_call_child!(safe_ident, String);
-    api_type_call_child!(dart_api_type, String);
-    api_type_call_child!(dart_wire_type, String);
-    api_type_call_child!(rust_api_type, String);
-    api_type_call_child!(rust_wire_type, String);
-    api_type_call_child!(rust_wire_modifier, String);
-    api_type_call_child!(rust_wire_is_pointer, bool);
-
     #[inline]
     pub fn required_modifier(&self) -> &'static str {
         match self {
@@ -99,6 +76,7 @@ impl ApiType {
     }
 }
 
+#[enum_dispatch]
 pub trait ApiTypeChild {
     fn safe_ident(&self) -> String;
 

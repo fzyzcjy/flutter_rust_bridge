@@ -61,10 +61,10 @@ impl ApiEnum {
                 StructRef(_)
                 | EnumRef(ApiTypeEnumRef {
                     is_struct: true, ..
-                }) => ApiType::Boxed(Box::new(ApiTypeBoxed {
+                }) => ApiType::Boxed(ApiTypeBoxed {
                     exist_in_real_api: false,
-                    inner: ty,
-                })),
+                    inner: Box::new(ty),
+                }),
                 _ => ty,
             }
         }
