@@ -27,8 +27,8 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
         })
     }
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some(match self.ir {
+    fn wire2api_body(&self) -> String {
+        match &self.ir {
             IrTypeDelegate::String
             | IrTypeDelegate::SyncReturnVecU8
             | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
@@ -37,6 +37,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
-        })
+        }
     }
 }
