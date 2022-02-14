@@ -44,11 +44,7 @@ pub fn generate(
         .collect::<Vec<_>>();
     let dart_structs = distinct_types
         .iter()
-        .filter_map(|ty| match ty {
-            StructRef(s) => Some(generate_api_struct(s.get(api_file))),
-            EnumRef(enu) => Some(generate_api_enum(enu.get(api_file))),
-            _ => None,
-        })
+        .map(|ty| TODO.structs())
         .collect::<Vec<_>>();
     let dart_api2wire_funcs = distinct_input_types
         .iter()
@@ -275,75 +271,7 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
 }
 
 fn generate_api2wire_func(ty: &IrType) -> String {
-    let body = match ty {
-        Primitive(IrTypePrimitive::Bool) => "return raw ? 1 : 0;".to_owned(),
-        Primitive(_) => "return raw;".to_string(),
-        Delegate(d) => match d {
-            IrTypeDelegate::String => {
-                "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
-            }
-            IrTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".to_string(),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                format!("return _api2wire_{}(raw);", d.get_delegate().safe_ident())
-            }
-            IrTypeDelegate::StringList => "final ans = inner.new_StringList(raw.length);
-            for (var i = 0; i < raw.length; i++) {
-                ans.ref.ptr[i] = _api2wire_String(raw[i]);
-            }
-            return ans;"
-                .to_owned(),
-        },
-        Optional(opt) => format!(
-            "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
-            opt.inner.safe_ident()
-        ),
-        PrimitiveList(_) => {
-            // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
-            // Instead, Rust receives that pointer and now it is in control of Rust.
-            // Therefore, *never* continue to use this pointer after you have passed the pointer
-            // to Rust.
-            // NOTE WARN: Never use the [calloc] provided by Dart FFI to allocate any memory.
-            // Instead, ask Rust to allocate some memory and return raw pointers. Otherwise,
-            // memory will be allocated in one dylib (e.g. libflutter.so), and then be released
-            // by another dylib (e.g. my_rust_code.so), especially in Android platform. It can be
-            // undefined behavior.
-            format!(
-                "final ans = inner.new_{}(raw.length);
-                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-                return ans;",
-                ty.safe_ident(),
-            )
-        }
-        GeneralList(list) => {
-            // NOTE 内存策略同PrimitiveList（比如Uint8List之类），见那边的注释
-            format!(
-                "final ans = inner.new_{}(raw.length);
-                for (var i = 0; i < raw.length; ++i) {{
-                    _api_fill_to_wire_{}(raw[i], ans.ref.ptr[i]);
-                }}
-                return ans;",
-                ty.safe_ident(),
-                list.inner.safe_ident()
-            )
-        }
-        Boxed(b) => match &*b.inner {
-            Primitive(_) => {
-                format!("return inner.new_{}(raw);", ty.safe_ident())
-            }
-            inner => {
-                format!(
-                    "final ptr = inner.new_{}();
-                    _api_fill_to_wire_{}(raw, ptr.ref);
-                    return ptr;",
-                    ty.safe_ident(),
-                    inner.safe_ident(),
-                )
-            }
-        },
-        EnumRef(e) if !e.is_struct => "return raw.index;".to_owned(),
-        // skip, handled by transfomers
-        StructRef(_) | EnumRef(_) => return "".to_string(),
-    };
+    let body = TODO.api2wire_body();
 
     format!(
         "{} _api2wire_{}({} raw) {{
@@ -358,83 +286,7 @@ fn generate_api2wire_func(ty: &IrType) -> String {
 }
 
 fn generate_api_fill_to_wire_func(ty: &IrType, api_file: &IrFile) -> String {
-    let body = match &ty {
-        StructRef(s) => {
-            let s = s.get(api_file);
-            s.fields
-                .iter()
-                .map(|field| {
-                    format!(
-                        "wireObj.{} = _api2wire_{}(apiObj.{});",
-                        field.name.rust_style(),
-                        field.ty.safe_ident(),
-                        field.name.dart_style()
-                    )
-                })
-                .collect::<Vec<_>>()
-                .join("\n")
-        }
-        EnumRef(enu) if enu.is_struct => enu
-            .get(api_file)
-            .variants()
-            .iter()
-            .enumerate()
-            .map(|(idx, variant)| {
-                if let IrVariantKind::Value = &variant.kind {
-                    format!(
-                        "if (apiObj is {}) {{ wireObj.tag = {}; return; }}",
-                        variant.name, idx
-                    )
-                } else {
-                    let r = format!("wireObj.kind.ref.{}.ref", variant.name);
-                    let body: Vec<_> = match &variant.kind {
-                        IrVariantKind::Struct(st) => st
-                            .fields
-                            .iter()
-                            .map(|field| {
-                                format!(
-                                    "{}.{} = _api2wire_{}(apiObj.{});",
-                                    r,
-                                    field.name.rust_style(),
-                                    field.ty.safe_ident(),
-                                    field.name.dart_style()
-                                )
-                            })
-                            .collect(),
-                        _ => unreachable!(),
-                    };
-                    format!(
-                        "if (apiObj is {0}) {{
-                            wireObj.tag = {1};
-                            wireObj.kind = inner.inflate_{2}_{0}();
-                            {3}
-                        }}",
-                        variant.name,
-                        idx,
-                        enu.name,
-                        body.join("\n")
-                    )
-                }
-            })
-            .collect::<Vec<_>>()
-            .join("\n"),
-        Optional(opt) => {
-            if !opt.needs_initialization() || opt.is_list() {
-                return String::new();
-            }
-            format!(
-                "if (apiObj != null) _api_fill_to_wire_{}(apiObj, wireObj);",
-                opt.inner.safe_ident()
-            )
-        }
-        Boxed(boxed) if !matches!(*boxed.inner, Primitive(_)) => format!(
-            " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
-            boxed.inner.safe_ident()
-        ),
-        Primitive(_) | Delegate(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | EnumRef(_) => {
-            return "".to_string();
-        }
-    };
+    let body = TODO.api_fill_to_wire_body();
 
     let target_wire_type = match ty {
         Optional(inner) => &inner.inner,
@@ -453,101 +305,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, api_file: &IrFile) -> String {
 }
 
 fn generate_wire2api_func(ty: &IrType, api_file: &IrFile) -> String {
-    let gen_simple_type_cast = |s: &str| format!("return raw as {};", s);
-
-    let body = match ty {
-        Primitive(IrTypePrimitive::Unit) => "return;".to_owned(),
-        Primitive(p) => gen_simple_type_cast(&p.dart_api_type()),
-        Delegate(d) => match d {
-            IrTypeDelegate::String
-            | IrTypeDelegate::SyncReturnVecU8
-            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                gen_simple_type_cast(&d.dart_api_type())
-            }
-            IrTypeDelegate::StringList => {
-                "return (raw as List<dynamic>).cast<String>();".to_owned()
-            }
-        },
-        Optional(opt) => format!(
-            "return raw == null ? null : _wire2api_{}(raw);",
-            opt.inner.safe_ident()
-        ),
-        PrimitiveList(list) => gen_simple_type_cast(&list.dart_api_type()),
-        GeneralList(list) => format!(
-            "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
-            list.inner.safe_ident()
-        ),
-        StructRef(s_ref) => {
-            let s = s_ref.get(api_file);
-            let inner = s
-                .fields
-                .iter()
-                .enumerate()
-                .map(|(idx, field)| {
-                    format!(
-                        "{}: _wire2api_{}(arr[{}]),",
-                        field.name.dart_style(),
-                        field.ty.safe_ident(),
-                        idx
-                    )
-                })
-                .collect::<Vec<_>>()
-                .join("\n");
-
-            format!(
-                "final arr = raw as List<dynamic>;
-                if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');
-                return {}({});",
-                s.fields.len(),
-                s.fields.len(),
-                s.name, inner,
-            )
-        }
-        EnumRef(enu) if !enu.is_struct => format!("return {}.values[raw];", enu.name),
-        EnumRef(enu) => {
-            let enu = enu.get(api_file);
-            let variants = enu
-                .variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| {
-                    let args = match &variant.kind {
-                        IrVariantKind::Value => "".to_owned(),
-                        IrVariantKind::Struct(st) => st
-                            .fields
-                            .iter()
-                            .enumerate()
-                            .map(|(idx, field)| {
-                                let val = format!(
-                                    "_wire2api_{}(raw[{}]),",
-                                    field.ty.safe_ident(),
-                                    idx + 1
-                                );
-                                if st.is_fields_named {
-                                    format!("{}: {}", field.name.dart_style(), val)
-                                } else {
-                                    val
-                                }
-                            })
-                            .collect::<Vec<_>>()
-                            .join(""),
-                    };
-                    format!("case {}: return {}({});", idx, variant.name, args)
-                })
-                .collect::<Vec<_>>();
-            format!(
-                "switch (raw[0]) {{
-                    {}
-                    default: throw Exception(\"unreachable\");
-                }}",
-                variants.join("\n"),
-            )
-        }
-        Boxed(boxed) => match &*boxed.inner {
-            StructRef(inner) => format!("return _wire2api_{}(raw);", inner.safe_ident()),
-            _ => gen_simple_type_cast(&ty.dart_api_type()),
-        },
-    };
+    let body = TODO.wire2api_body();
 
     format!(
         "{} _wire2api_{}(dynamic raw) {{
@@ -558,6 +316,10 @@ fn generate_wire2api_func(ty: &IrType, api_file: &IrFile) -> String {
         ty.safe_ident(),
         body,
     )
+}
+
+fn gen_wire2api_simple_type_cast(s: &str) -> String {
+    format!("return raw as {};", s)
 }
 
 /// A trailing newline is included if comments is not empty.
@@ -571,137 +333,4 @@ fn dart_comments(comments: &[IrComment]) -> String {
         comments.push('\n');
     }
     comments
-}
-
-fn generate_api_struct(s: &IrStruct) -> String {
-    let field_declarations = s
-        .fields
-        .iter()
-        .map(|f| {
-            let comments = dart_comments(&f.comments);
-            format!(
-                "{}final {} {};",
-                comments,
-                f.ty.dart_api_type(),
-                f.name.dart_style()
-            )
-        })
-        .collect::<Vec<_>>()
-        .join("\n");
-
-    let constructor_params = s
-        .fields
-        .iter()
-        .map(|f| {
-            format!(
-                "{}this.{},",
-                f.ty.dart_required_modifier(),
-                f.name.dart_style()
-            )
-        })
-        .collect::<Vec<_>>()
-        .join("");
-
-    let comments = dart_comments(&s.comments);
-
-    format!(
-        "{}class {} {{
-            {}
-
-            {}({{{}}});
-        }}",
-        comments, s.name, field_declarations, s.name, constructor_params
-    )
-}
-
-fn generate_api_enum(enu: &IrEnum) -> String {
-    let comments = dart_comments(&enu.comments);
-    if enu.is_struct() {
-        let variants = enu
-            .variants()
-            .iter()
-            .map(|variant| {
-                let args = match &variant.kind {
-                    IrVariantKind::Value => "".to_owned(),
-                    IrVariantKind::Struct(IrStruct {
-                        is_fields_named: false,
-                        fields,
-                        ..
-                    }) => {
-                        let types = fields.iter().map(|field| &field.ty).collect::<Vec<_>>();
-                        let split = optional_boundary_index(&types);
-                        let types = fields
-                            .iter()
-                            .map(|field| {
-                                format!(
-                                    "{}{} {},",
-                                    dart_comments(&field.comments),
-                                    field.ty.dart_api_type(),
-                                    field.name.dart_style()
-                                )
-                            })
-                            .collect::<Vec<_>>();
-                        if let Some(idx) = split {
-                            let before = &types[..idx];
-                            let after = &types[idx..];
-                            format!("{}[{}]", before.join(""), after.join(""))
-                        } else {
-                            types.join(",")
-                        }
-                    }
-                    IrVariantKind::Struct(st) => {
-                        let fields = st
-                            .fields
-                            .iter()
-                            .map(|field| {
-                                format!(
-                                    "{}{}{} {},",
-                                    dart_comments(&field.comments),
-                                    field.ty.dart_required_modifier(),
-                                    field.ty.dart_api_type(),
-                                    field.name.dart_style()
-                                )
-                            })
-                            .collect::<Vec<_>>();
-                        format!("{{ {} }}", fields.join(""))
-                    }
-                };
-                format!(
-                    "{}const factory {}.{}({}) = {};",
-                    dart_comments(&variant.comments),
-                    enu.name,
-                    variant.name.dart_style(),
-                    args,
-                    variant.name.rust_style(),
-                )
-            })
-            .collect::<Vec<_>>();
-        format!(
-            "@freezed
-            class {0} with _${0} {{
-                {1}
-            }}",
-            enu.name,
-            variants.join("\n")
-        )
-    } else {
-        let variants = enu
-            .variants()
-            .iter()
-            .map(|variant| {
-                format!(
-                    "{}{},",
-                    dart_comments(&variant.comments),
-                    variant.name.rust_style()
-                )
-            })
-            .collect::<Vec<_>>()
-            .join("\n");
-        format!(
-            "{}enum {} {{
-            {}
-        }}",
-            comments, enu.name, variants
-        )
-    }
 }

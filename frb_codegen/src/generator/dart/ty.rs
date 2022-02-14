@@ -16,5 +16,15 @@ pub enum TypeGenerator {
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
-    // TODO
+    fn api2wire_body(&self) -> String;
+
+    fn api_fill_to_wire_body(&self) -> String {
+        "".to_string()
+    }
+
+    fn wire2api_body(&self) -> String;
+
+    fn structs(&self) -> String {
+        "".to_string()
+    }
 }
