@@ -236,8 +236,6 @@ pub struct wire_uint_8_list {
     len: i32,
 }
 
-// Section: wire enums
-
 // Section: allocate functions
 
 #[no_mangle]
@@ -459,6 +457,7 @@ impl support::IntoDart for TreeNode {
 impl support::IntoDartExceptPrimitive for TreeNode {}
 
 // Section: executor
+
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }
