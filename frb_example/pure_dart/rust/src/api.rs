@@ -46,7 +46,6 @@ pub fn handle_string(s: String) -> String {
 
 pub fn handle_return_unit() -> () {
     println!("handle_return_unit()");
-    ()
 }
 
 // to check that `Vec<u8>` can be used as return type
@@ -381,9 +380,8 @@ pub struct Customized {
     pub non_final_field: Option<String>,
 }
 
-pub fn handle_customized_struct(val: Customized) -> () {
+pub fn handle_customized_struct(val: Customized) {
     println!("{:#?}", val);
-    ()
 }
 
 #[frb]

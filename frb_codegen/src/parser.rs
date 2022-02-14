@@ -128,16 +128,20 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            output = Some(if let ReturnType::Type(_, ty) = &sig.output {
-                let type_string = type_to_string(ty);
-                if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
-                    self.parse_type(&inner)
-                } else {
-                    fallible = false;
-                    self.parse_type(&type_string)
+            output = Some(match &sig.output {
+                ReturnType::Type(_, ty) => {
+                    let type_string = type_to_string(ty);
+                    if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
+                        self.parse_type(&inner)
+                    } else {
+                        fallible = false;
+                        self.parse_type(&type_string)
+                    }
                 }
-            } else {
-                panic!("unsupported output: {:?}", sig.output);
+                ReturnType::Default => {
+                    fallible = false;
+                    ApiType::Primitive(ApiTypePrimitive::Unit)
+                }
             });
             mode = Some(
                 if let Some(ApiType::Delegate(ApiTypeDelegate::SyncReturnVecU8)) = output {
