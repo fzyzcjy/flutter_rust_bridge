@@ -1,3 +1,7 @@
+## 1.18.0
+
+* Refactor to beautify the implementation #338
+
 ## 1.17.0
 
 * Support bridging functions with return types other than `Result` #335 (thanks @antonok-edm)
