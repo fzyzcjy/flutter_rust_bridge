@@ -152,7 +152,7 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
         .map(|input| {
             format!(
                 "{}{} {}",
-                input.ty.required_modifier(),
+                input.ty.dart_required_modifier(),
                 input.ty.dart_api_type(),
                 input.name.dart_style()
             )
@@ -416,13 +416,18 @@ fn generate_api_fill_to_wire_func(ty: &IrType, api_file: &IrFile) -> String {
         }
     };
 
+    let target_wire_type = match ty {
+        Optional(inner) => &inner.inner,
+        it @ _ => it,
+    };
+
     format!(
         "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
             {}
         }}",
         ty.safe_ident(),
         ty.dart_api_type(),
-        ty.optional_inner().dart_wire_type(),
+        target_wire_type.dart_wire_type(),
         body,
     )
 }
@@ -567,7 +572,13 @@ fn generate_api_struct(s: &ApiStruct) -> String {
     let constructor_params = s
         .fields
         .iter()
-        .map(|f| format!("{}this.{},", f.ty.required_modifier(), f.name.dart_style()))
+        .map(|f| {
+            format!(
+                "{}this.{},",
+                f.ty.dart_required_modifier(),
+                f.name.dart_style()
+            )
+        })
         .collect::<Vec<_>>()
         .join("");
 
@@ -626,7 +637,7 @@ fn generate_api_enum(enu: &ApiEnum) -> String {
                                 format!(
                                     "{}{}{} {},",
                                     dart_comments(&field.comments),
-                                    field.ty.required_modifier(),
+                                    field.ty.dart_required_modifier(),
                                     field.ty.dart_api_type(),
                                     field.name.dart_style()
                                 )

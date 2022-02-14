@@ -26,25 +26,16 @@ impl IrType {
     }
 
     #[inline]
-    pub fn required_modifier(&self) -> &'static str {
+    pub fn dart_required_modifier(&self) -> &'static str {
         match self {
             Optional(_) => "",
             _ => "required ",
         }
     }
 
-    // api_fill functions target this type instead of the delegate.
-    #[inline]
-    pub fn optional_inner(&self) -> &IrType {
-        match self {
-            Optional(inner) => &inner.inner,
-            _ => self,
-        }
-    }
-
     /// Additional indirection for types put behind a vector
     #[inline]
-    pub fn optional_ptr_modifier(&self) -> &'static str {
+    pub fn rust_ptr_modifier(&self) -> &'static str {
         match self {
             Optional(_) | Delegate(IrTypeDelegate::String) => "*mut ",
             _ => "",

@@ -337,7 +337,7 @@ impl Generator {
             GeneralList(list) => vec![
                 format!(
                     "ptr: *mut {}{}",
-                    list.inner.optional_ptr_modifier(),
+                    list.inner.rust_ptr_modifier(),
                     list.inner.rust_wire_type()
                 ),
                 "len: i32".to_string(),
@@ -448,7 +448,7 @@ impl Generator {
                 "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
                 support::new_leak_box_ptr(wrap)",
                 list.rust_wire_type(),
-                inner.optional_ptr_modifier(),
+                inner.rust_ptr_modifier(),
                 inner.rust_wire_type()
             ),
         )
