@@ -7,8 +7,8 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn api2wire_body(&self) -> String {
-        match &*self.ir.inner {
+    fn api2wire_body(&self) -> Option<String> {
+        Some(match &*self.ir.inner {
             Primitive(_) => {
                 format!("return inner.new_{}(raw);", self.ir.safe_ident())
             }
@@ -21,17 +21,17 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                     inner.safe_ident(),
                 )
             }
-        }
+        })
     }
 
-    fn api_fill_to_wire_body(&self) -> String {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         if !matches!(*self.ir.inner, Primitive(_)) {
-            format!(
+            Some(format!(
                 " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
                 self.ir.inner.safe_ident()
-            )
+            ))
         } else {
-            "".to_string()
+            None
         }
     }
 

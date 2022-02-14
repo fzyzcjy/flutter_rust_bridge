@@ -6,8 +6,8 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn api2wire_body(&self) -> String {
-        match self.ir {
+    fn api2wire_body(&self) -> Option<String> {
+        Some(match self.ir {
             IrTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
             }
@@ -24,11 +24,11 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             return ans;"
                 .to_owned(),
-        }
+        })
     }
 
-    fn api_fill_to_wire_body(&self) -> String {
-        match self.ir {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
+        Some(match self.ir {
             IrTypeDelegate::String
             | IrTypeDelegate::SyncReturnVecU8
             | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
@@ -37,6 +37,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
-        }
+        })
     }
 }

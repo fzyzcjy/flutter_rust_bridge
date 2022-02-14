@@ -6,62 +6,64 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn api2wire_body(&self) -> String {
+    fn api2wire_body(&self) -> Option<String> {
         if !self.ir.is_struct {
-            "return raw.index;".to_owned()
+            Some("return raw.index;".to_owned())
         } else {
-            "".to_string()
+            None
         }
     }
 
-    fn api_fill_to_wire_body(&self) -> String {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         if self.ir.is_struct {
-            self.ir
-                .get(self.context.ir_file)
-                .variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| {
-                    if let IrVariantKind::Value = &variant.kind {
-                        format!(
-                            "if (apiObj is {}) {{ wireObj.tag = {}; return; }}",
-                            variant.name, idx
-                        )
-                    } else {
-                        let r = format!("wireObj.kind.ref.{}.ref", variant.name);
-                        let body: Vec<_> = match &variant.kind {
-                            IrVariantKind::Struct(st) => st
-                                .fields
-                                .iter()
-                                .map(|field| {
-                                    format!(
-                                        "{}.{} = _api2wire_{}(apiObj.{});",
-                                        r,
-                                        field.name.rust_style(),
-                                        field.ty.safe_ident(),
-                                        field.name.dart_style()
-                                    )
-                                })
-                                .collect(),
-                            _ => unreachable!(),
-                        };
-                        format!(
-                            "if (apiObj is {0}) {{
+            Some(
+                self.ir
+                    .get(self.context.ir_file)
+                    .variants()
+                    .iter()
+                    .enumerate()
+                    .map(|(idx, variant)| {
+                        if let IrVariantKind::Value = &variant.kind {
+                            format!(
+                                "if (apiObj is {}) {{ wireObj.tag = {}; return; }}",
+                                variant.name, idx
+                            )
+                        } else {
+                            let r = format!("wireObj.kind.ref.{}.ref", variant.name);
+                            let body: Vec<_> = match &variant.kind {
+                                IrVariantKind::Struct(st) => st
+                                    .fields
+                                    .iter()
+                                    .map(|field| {
+                                        format!(
+                                            "{}.{} = _api2wire_{}(apiObj.{});",
+                                            r,
+                                            field.name.rust_style(),
+                                            field.ty.safe_ident(),
+                                            field.name.dart_style()
+                                        )
+                                    })
+                                    .collect(),
+                                _ => unreachable!(),
+                            };
+                            format!(
+                                "if (apiObj is {0}) {{
                             wireObj.tag = {1};
                             wireObj.kind = inner.inflate_{2}_{0}();
                             {3}
                         }}",
-                            variant.name,
-                            idx,
-                            self.ir.name,
-                            body.join("\n")
-                        )
-                    }
-                })
-                .collect::<Vec<_>>()
-                .join("\n")
+                                variant.name,
+                                idx,
+                                self.ir.name,
+                                body.join("\n")
+                            )
+                        }
+                    })
+                    .collect::<Vec<_>>()
+                    .join("\n"),
+            )
         } else {
-            "".to_string()
+            None
         }
     }
 

@@ -6,24 +6,26 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn api2wire_body(&self) -> String {
-        "".to_string()
+    fn api2wire_body(&self) -> Option<String> {
+        None
     }
 
-    fn api_fill_to_wire_body(&self) -> String {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         let s = self.ir.get(self.context.ir_file);
-        s.fields
-            .iter()
-            .map(|field| {
-                format!(
-                    "wireObj.{} = _api2wire_{}(apiObj.{});",
-                    field.name.rust_style(),
-                    field.ty.safe_ident(),
-                    field.name.dart_style()
-                )
-            })
-            .collect::<Vec<_>>()
-            .join("\n")
+        Some(
+            s.fields
+                .iter()
+                .map(|field| {
+                    format!(
+                        "wireObj.{} = _api2wire_{}(apiObj.{});",
+                        field.name.rust_style(),
+                        field.ty.safe_ident(),
+                        field.name.dart_style()
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join("\n"),
+        )
     }
 
     fn wire2api_body(&self) -> String {

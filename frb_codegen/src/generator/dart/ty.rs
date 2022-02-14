@@ -3,10 +3,10 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
-    fn api2wire_body(&self) -> String;
+    fn api2wire_body(&self) -> Option<String>;
 
-    fn api_fill_to_wire_body(&self) -> String {
-        "".to_string()
+    fn api_fill_to_wire_body(&self) -> Option<String> {
+        None
     }
 
     fn wire2api_body(&self) -> String {

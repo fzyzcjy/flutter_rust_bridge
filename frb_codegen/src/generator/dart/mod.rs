@@ -276,37 +276,41 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
 }
 
 fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile) -> String {
-    let body = TypeDartGenerator::new(ty.clone(), ir_file).api2wire_body();
-
-    format!(
-        "{} _api2wire_{}({} raw) {{
+    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file).api2wire_body() {
+        format!(
+            "{} _api2wire_{}({} raw) {{
             {}
         }}
         ",
-        ty.dart_wire_type(),
-        ty.safe_ident(),
-        ty.dart_api_type(),
-        body,
-    )
+            ty.dart_wire_type(),
+            ty.safe_ident(),
+            ty.dart_api_type(),
+            body,
+        )
+    } else {
+        "".to_string()
+    }
 }
 
 fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
-    let body = TypeDartGenerator::new(ty.clone(), ir_file).api_fill_to_wire_body();
+    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file).api_fill_to_wire_body() {
+        let target_wire_type = match ty {
+            Optional(inner) => &inner.inner,
+            it @ _ => it,
+        };
 
-    let target_wire_type = match ty {
-        Optional(inner) => &inner.inner,
-        it @ _ => it,
-    };
-
-    format!(
-        "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
+        format!(
+            "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
             {}
         }}",
-        ty.safe_ident(),
-        ty.dart_api_type(),
-        target_wire_type.dart_wire_type(),
-        body,
-    )
+            ty.safe_ident(),
+            ty.dart_api_type(),
+            target_wire_type.dart_wire_type(),
+            body,
+        )
+    } else {
+        "".to_string()
+    }
 }
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile) -> String {
