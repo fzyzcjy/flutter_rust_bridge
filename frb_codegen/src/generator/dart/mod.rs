@@ -32,18 +32,18 @@ pub struct Output {
 }
 
 pub fn generate(
-    api_file: &IrFile,
+    ir_file: &IrFile,
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
 ) -> Output {
-    let distinct_types = api_file.distinct_types(true, true);
-    let distinct_input_types = api_file.distinct_types(true, false);
-    let distinct_output_types = api_file.distinct_types(false, true);
+    let distinct_types = ir_file.distinct_types(true, true);
+    let distinct_input_types = ir_file.distinct_types(true, false);
+    let distinct_output_types = ir_file.distinct_types(false, true);
     debug!("distinct_input_types={:?}", distinct_input_types);
     debug!("distinct_output_types={:?}", distinct_output_types);
 
-    let dart_func_signatures_and_implementations = api_file
+    let dart_func_signatures_and_implementations = ir_file
         .funcs
         .iter()
         .map(generate_api_func)
@@ -58,11 +58,11 @@ pub fn generate(
         .collect::<Vec<_>>();
     let dart_api_fill_to_wire_funcs = distinct_input_types
         .iter()
-        .map(|ty| generate_api_fill_to_wire_func(ty, api_file))
+        .map(|ty| generate_api_fill_to_wire_func(ty, ir_file))
         .collect::<Vec<_>>();
     let dart_wire2api_funcs = distinct_output_types
         .iter()
-        .map(|ty| generate_wire2api_func(ty, api_file))
+        .map(|ty| generate_wire2api_func(ty, ir_file))
         .collect::<Vec<_>>();
 
     let needs_freezed = distinct_types
@@ -290,7 +290,7 @@ fn generate_api2wire_func(ty: &IrType) -> String {
     )
 }
 
-fn generate_api_fill_to_wire_func(ty: &IrType, api_file: &IrFile) -> String {
+fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
     let body = TypeGenerator::new(ty.clone()).api_fill_to_wire_body();
 
     let target_wire_type = match ty {
@@ -309,7 +309,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, api_file: &IrFile) -> String {
     )
 }
 
-fn generate_wire2api_func(ty: &IrType, api_file: &IrFile) -> String {
+fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile) -> String {
     let body = TypeGenerator::new(ty.clone()).wire2api_body();
 
     format!(

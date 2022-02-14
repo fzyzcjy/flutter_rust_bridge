@@ -7,7 +7,7 @@ pub struct TypeEnumRefGenerator(pub IrTypeEnumRef);
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
     fn wire2api_body(&self) -> String {
         if self.0.is_struct {
-            let enu = self.0.get(api_file);
+            let enu = self.0.get(ir_file);
             let variants = enu
                 .variants()
                 .iter()
@@ -54,7 +54,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
             )
             .into()
         } else {
-            let enu = self.0.get(api_file);
+            let enu = self.0.get(ir_file);
             let variants = enu
                 .variants()
                 .iter()
@@ -259,7 +259,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
     }
 
     fn imports(&self) -> Option<String> {
-        let api_enum = self.0.get(api_file);
+        let api_enum = self.0.get(ir_file);
         Some(format!("use {};", api_enum.path.join("::")))
     }
 }

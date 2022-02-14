@@ -13,9 +13,9 @@ impl IrTypeStructRef {
 }
 
 impl IrTypeTrait for IrTypeStructRef {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, api_file: &IrFile) {
-        for field in &self.get(api_file).fields {
-            field.ty.visit_types(f, api_file);
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
+        for field in &self.get(ir_file).fields {
+            field.ty.visit_types(f, ir_file);
         }
     }
 

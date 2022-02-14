@@ -31,9 +31,9 @@ pub struct Output {
     pub extern_func_names: Vec<String>,
 }
 
-pub fn generate(api_file: &IrFile, rust_wire_mod: &str) -> Output {
+pub fn generate(ir_file: &IrFile, rust_wire_mod: &str) -> Output {
     let mut generator = Generator::new();
-    let code = generator.generate(api_file, rust_wire_mod);
+    let code = generator.generate(ir_file, rust_wire_mod);
 
     Output {
         code,
@@ -52,11 +52,11 @@ impl Generator {
         }
     }
 
-    fn generate(&mut self, api_file: &IrFile, rust_wire_mod: &str) -> String {
+    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> String {
         let mut lines: Vec<String> = vec![];
 
-        let distinct_input_types = api_file.distinct_types(true, false);
-        let distinct_output_types = api_file.distinct_types(false, true);
+        let distinct_input_types = ir_file.distinct_types(true, false);
+        let distinct_output_types = ir_file.distinct_types(false, true);
 
         lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, non_snake_case)]"#.to_string());
         lines.push(CODE_HEADER.to_string());
@@ -68,7 +68,7 @@ impl Generator {
 
         lines.push(self.section_header_comment("imports"));
         lines.extend(self.generate_imports(
-            api_file,
+            ir_file,
             rust_wire_mod,
             &distinct_input_types,
             &distinct_output_types,
@@ -76,18 +76,18 @@ impl Generator {
         lines.push(String::new());
 
         lines.push(self.section_header_comment("wire functions"));
-        lines.extend(api_file.funcs.iter().map(|f| self.generate_wire_func(f)));
+        lines.extend(ir_file.funcs.iter().map(|f| self.generate_wire_func(f)));
 
         lines.push(self.section_header_comment("wire structs"));
         lines.extend(
             distinct_input_types
                 .iter()
-                .map(|ty| self.generate_wire_struct(ty, api_file)),
+                .map(|ty| self.generate_wire_struct(ty, ir_file)),
         );
 
         lines.push(self.section_header_comment("wire enums"));
         lines.extend(distinct_input_types.iter().filter_map(|ty| match ty {
-            IrType::EnumRef(enu) => Some(generate_wire_enum(enu, api_file)),
+            IrType::EnumRef(enu) => Some(generate_wire_enum(enu, ir_file)),
             _ => None,
         }));
 
@@ -103,7 +103,7 @@ impl Generator {
         lines.extend(
             distinct_input_types
                 .iter()
-                .map(|ty| self.generate_wire2api_func(ty, api_file)),
+                .map(|ty| self.generate_wire2api_func(ty, ir_file)),
         );
 
         lines.push(self.section_header_comment("impl NewWithNullPtr"));
@@ -111,18 +111,18 @@ impl Generator {
         lines.extend(
             distinct_input_types
                 .iter()
-                .map(|ty| self.generate_new_with_nullptr_func(ty, api_file)),
+                .map(|ty| self.generate_new_with_nullptr_func(ty, ir_file)),
         );
 
         lines.push(self.section_header_comment("impl IntoDart"));
         lines.extend(
             distinct_output_types
                 .iter()
-                .map(|ty| self.generate_impl_intodart(ty, api_file)),
+                .map(|ty| self.generate_impl_intodart(ty, ir_file)),
         );
 
         lines.push(self.section_header_comment("executor"));
-        lines.push(self.generate_executor(api_file));
+        lines.push(self.generate_executor(ir_file));
 
         lines.push(self.section_header_comment("sync execution mode utility"));
         lines.push(self.generate_sync_execution_mode_utility());
@@ -136,17 +136,17 @@ impl Generator {
 
     fn generate_imports(
         &self,
-        api_file: &IrFile,
+        ir_file: &IrFile,
         rust_wire_mod: &str,
         distinct_input_types: &[IrType],
         distinct_output_types: &[IrType],
     ) -> impl Iterator<Item = String> {
         let input_type_imports = distinct_input_types
             .iter()
-            .map(|api_type| self.generate_import(api_type, api_file));
+            .map(|api_type| self.generate_import(api_type, ir_file));
         let output_type_imports = distinct_output_types
             .iter()
-            .map(|api_type| self.generate_import(api_type, api_file));
+            .map(|api_type| self.generate_import(api_type, ir_file));
 
         input_type_imports
             .chain(output_type_imports)
@@ -159,12 +159,12 @@ impl Generator {
             .into_iter()
     }
 
-    fn generate_import(&self, api_type: &IrType, api_file: &IrFile) -> Option<String> {
+    fn generate_import(&self, api_type: &IrType, ir_file: &IrFile) -> Option<String> {
         TypeGenerator::new(self.0.clone()).imports()
     }
 
-    fn generate_executor(&mut self, api_file: &IrFile) -> String {
-        if api_file.has_executor {
+    fn generate_executor(&mut self, ir_file: &IrFile) -> String {
+        if ir_file.has_executor {
             "/* nothing since executor detected */".to_string()
         } else {
             format!(
@@ -291,7 +291,7 @@ impl Generator {
         )
     }
 
-    fn generate_wire_struct(&mut self, ty: &IrType, api_file: &IrFile) -> String {
+    fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_wire_struct: {:?}", ty);
         let fields = TypeGenerator::new(ty.clone()).wire_struct_fields();
 
@@ -356,7 +356,7 @@ impl Generator {
         "
     }
 
-    fn generate_wire2api_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
+    fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
         let body = TypeGenerator::new(ty.clone()).wire2api_body();
 
@@ -387,11 +387,11 @@ impl Generator {
         "
     }
 
-    fn generate_new_with_nullptr_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
+    fn generate_new_with_nullptr_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         TypeGenerator::new(ty.clone()).new_with_nullptr()
     }
 
-    fn generate_impl_intodart(&mut self, ty: &IrType, api_file: &IrFile) -> String {
+    fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_impl_intodart: {:?}", ty);
         TypeGenerator::new(ty.clone()).impl_intodart()
     }

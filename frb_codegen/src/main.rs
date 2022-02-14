@@ -39,16 +39,16 @@ fn main() {
     let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
     info!("Phase: Parse AST to IR");
-    let raw_api_file = parser::parse(&source_rust_content, file_ast, &config.manifest_path);
-    debug!("parsed functions: {:?}", &raw_api_file);
+    let raw_ir_file = parser::parse(&source_rust_content, file_ast, &config.manifest_path);
+    debug!("parsed functions: {:?}", &raw_ir_file);
 
     info!("Phase: Transform IR");
-    let api_file = transformer::transform(raw_api_file);
-    debug!("transformed functions: {:?}", &api_file);
+    let ir_file = transformer::transform(raw_ir_file);
+    debug!("transformed functions: {:?}", &ir_file);
 
     info!("Phase: Generate Rust code");
     let generated_rust = generator::rust::generate(
-        &api_file,
+        &ir_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
     );
     fs::create_dir_all(&rust_output_dir).unwrap();
@@ -56,7 +56,7 @@ fn main() {
 
     info!("Phase: Generate Dart code");
     let generated_dart = generator::dart::generate(
-        &api_file,
+        &ir_file,
         &config.dart_api_class_name(),
         &config.dart_api_impl_class_name(),
         &config.dart_wire_class_name(),
@@ -70,7 +70,7 @@ fn main() {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 
-    let c_struct_names = api_file
+    let c_struct_names = ir_file
         .distinct_types(true, true)
         .iter()
         .filter_map(|ty| {

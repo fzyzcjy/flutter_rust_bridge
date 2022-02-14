@@ -11,7 +11,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator {
     }
 
     fn api_fill_to_wire_body(&self) -> String {
-        let s = self.0.get(api_file);
+        let s = self.0.get(ir_file);
         s.fields
             .iter()
             .map(|field| {
@@ -27,7 +27,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator {
     }
 
     fn wire2api_body(&self) -> String {
-        let s = self.0.get(api_file);
+        let s = self.0.get(ir_file);
         let inner = s
             .fields
             .iter()

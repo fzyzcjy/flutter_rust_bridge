@@ -11,6 +11,11 @@ use crate::ir::*;
 use crate::generator::rust::HANDLER_NAME;
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
+}
 
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
     let crate_map = Crate::new(manifest_path);

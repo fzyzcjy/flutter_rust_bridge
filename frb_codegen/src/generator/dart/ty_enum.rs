@@ -17,7 +17,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
     fn api_fill_to_wire_body(&self) -> String {
         if self.0.is_struct {
             self.0
-                .get(api_file)
+                .get(ir_file)
                 .variants()
                 .iter()
                 .enumerate()
@@ -67,7 +67,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
 
     fn wire2api_body(&self) -> String {
         if self.0.is_struct {
-            let enu = self.0.get(api_file);
+            let enu = self.0.get(ir_file);
             let variants = enu
                 .variants()
                 .iter()

@@ -14,7 +14,6 @@ use crate::source_graph::{Enum, Struct};
 use crate::parser::{extract_comments, type_to_string};
 
 lazy_static! {
-    static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
     static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
     static ref CAPTURE_BOX: GenericCapture = GenericCapture::new("Box");
     static ref CAPTURE_VEC: GenericCapture = GenericCapture::new("Vec");

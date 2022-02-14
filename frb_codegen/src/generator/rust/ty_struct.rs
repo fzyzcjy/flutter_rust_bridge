@@ -6,7 +6,7 @@ pub struct TypeStructRefGenerator(pub IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator {
     fn wire2api_body(&self) -> String {
-        let api_struct = self.0.get(api_file);
+        let api_struct = self.0.get(ir_file);
         let fields_str = &api_struct
             .fields
             .iter()
@@ -29,7 +29,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
     }
 
     fn wire_struct_fields(&self) -> Vec<String> {
-        let s = self.0.get(api_file);
+        let s = self.0.get(ir_file);
         s.fields
             .iter()
             .map(|field| {
@@ -102,7 +102,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
     }
 
     fn imports(&self) -> Option<String> {
-        let api_struct = self.0.get(api_file);
+        let api_struct = self.0.get(ir_file);
         if api_struct.path.is_some() {
             Some(format!(
                 "use {};",

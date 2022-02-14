@@ -35,6 +35,6 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator {
     }
 
     fn imports(&self) -> Option<String> {
-        self.generate_import(&self.0.inner, api_file)
+        self.generate_import(&self.0.inner, ir_file)
     }
 }

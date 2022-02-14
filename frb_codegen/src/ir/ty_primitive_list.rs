@@ -7,7 +7,7 @@ pub struct IrTypePrimitiveList {
 }
 
 impl IrTypeTrait for IrTypePrimitiveList {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, _api_file: &IrFile) {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, _ir_file: &IrFile) {
         f(&IrType::Primitive(self.primitive.clone()));
     }
 
