@@ -3,7 +3,7 @@ use enum_dispatch::enum_dispatch;
 use IrType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
-#[enum_dispatch(ApiTypeChild)]
+#[enum_dispatch(ApiTypeTrait)]
 #[derive(Debug, Clone)]
 pub enum IrType {
     Primitive(IrTypePrimitive),

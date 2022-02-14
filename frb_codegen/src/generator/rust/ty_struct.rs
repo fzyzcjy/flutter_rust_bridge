@@ -1,6 +1,6 @@
 use crate::generator::rust::ty::TypeGeneratorTrait;
 
 #[derive(Debug, Clone)]
-pub struct TypeStructGenerator {}
+pub struct TypeStructRefGenerator {}
 
-impl TypeGeneratorTrait for TypeStructGenerator {}
+impl TypeGeneratorTrait for TypeStructRefGenerator {}
