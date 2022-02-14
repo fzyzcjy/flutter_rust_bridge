@@ -15,6 +15,17 @@ impl ApiTypeEnumRef {
 }
 
 impl ApiTypeChild for ApiTypeEnumRef {
+    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+        let enu = self.get(api_file);
+        for variant in enu.variants() {
+            if let ApiVariantKind::Struct(st) = &variant.kind {
+                st.fields
+                    .iter()
+                    .for_each(|field| field.ty.visit_types(f, api_file));
+            }
+        }
+    }
+
     fn safe_ident(&self) -> String {
         self.dart_api_type().to_case(Case::Snake)
     }

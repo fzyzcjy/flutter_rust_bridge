@@ -58,4 +58,8 @@ impl ApiTypeChild for ApiTypeOptional {
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }
+
+    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+        self.inner.visit_types(f, api_file);
+    }
 }

@@ -17,6 +17,8 @@ pub enum ApiTypePrimitive {
 }
 
 impl ApiTypeChild for ApiTypePrimitive {
+    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, _f: &mut F, _api_file: &ApiFile) {}
+
     fn safe_ident(&self) -> String {
         self.rust_api_type()
     }

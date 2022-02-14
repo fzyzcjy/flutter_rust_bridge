@@ -7,6 +7,10 @@ pub struct ApiTypePrimitiveList {
 }
 
 impl ApiTypeChild for ApiTypePrimitiveList {
+    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, _api_file: &ApiFile) {
+        f(&ApiType::Primitive(self.primitive.clone()));
+    }
+
     fn safe_ident(&self) -> String {
         self.dart_api_type().to_case(Case::Snake)
     }

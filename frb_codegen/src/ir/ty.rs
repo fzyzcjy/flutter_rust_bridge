@@ -22,31 +22,7 @@ impl ApiType {
             return;
         }
 
-        match &self {
-            PrimitiveList(inner) => {
-                f(&ApiType::Primitive(inner.primitive.clone()));
-            }
-            GeneralList(inner) => inner.inner.visit_types(f, api_file),
-            StructRef(struct_ref) => {
-                for field in &struct_ref.get(api_file).fields {
-                    field.ty.visit_types(f, api_file);
-                }
-            }
-            Boxed(inner) => inner.inner.visit_types(f, api_file),
-            Delegate(d) => d.get_delegate().visit_types(f, api_file),
-            Optional(inner) => inner.inner.visit_types(f, api_file),
-            EnumRef(enu) => {
-                let enu = enu.get(api_file);
-                for variant in enu.variants() {
-                    if let ApiVariantKind::Struct(st) = &variant.kind {
-                        st.fields
-                            .iter()
-                            .for_each(|field| field.ty.visit_types(f, api_file));
-                    }
-                }
-            }
-            Primitive(_) => {}
-        }
+        self.visit_sub_types(f, api_file);
     }
 
     #[inline]
@@ -78,6 +54,8 @@ impl ApiType {
 
 #[enum_dispatch]
 pub trait ApiTypeChild {
+    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile);
+
     fn safe_ident(&self) -> String;
 
     fn dart_api_type(&self) -> String;

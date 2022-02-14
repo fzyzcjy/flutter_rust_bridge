@@ -13,6 +13,12 @@ impl ApiTypeStructRef {
 }
 
 impl ApiTypeChild for ApiTypeStructRef {
+    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+        for field in &self.get(api_file).fields {
+            field.ty.visit_types(f, api_file);
+        }
+    }
+
     fn safe_ident(&self) -> String {
         self.dart_api_type().to_case(Case::Snake)
     }

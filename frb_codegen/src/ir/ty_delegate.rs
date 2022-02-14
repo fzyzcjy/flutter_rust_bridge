@@ -29,6 +29,10 @@ impl ApiTypeDelegate {
 }
 
 impl ApiTypeChild for ApiTypeDelegate {
+    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+        self.get_delegate().visit_types(f, api_file);
+    }
+
     fn safe_ident(&self) -> String {
         match self {
             ApiTypeDelegate::String => "String".to_owned(),

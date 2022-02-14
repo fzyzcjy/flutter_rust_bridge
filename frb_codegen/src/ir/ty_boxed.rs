@@ -9,6 +9,10 @@ pub struct ApiTypeBoxed {
 }
 
 impl ApiTypeChild for ApiTypeBoxed {
+    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+        self.inner.visit_types(f, api_file);
+    }
+
     fn safe_ident(&self) -> String {
         format!(
             "box_{}{}",
