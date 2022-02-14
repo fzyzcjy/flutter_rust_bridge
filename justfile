@@ -53,20 +53,24 @@ release old_version new_version:
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_rust/Cargo.toml
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_macros/Cargo.toml
     sed -i '' 's/version: "{{old_version}}"/version: "{{new_version}}"/g' frb_dart/pubspec.yaml
+
     (cd frb_rust && cargo check)
     (cd frb_macros && cargo check)
     (cd frb_example/pure_dart/rust && cargo check)
     (cd frb_example/with_flutter/rust && cargo check)
     (cd frb_example/pure_dart/dart && dart pub get)
     (cd frb_example/with_flutter && dart pub get)
+
     sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/pure_dart/dart/pubspec.lock
     sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/with_flutter/pubspec.lock
+
     git add --all
     git status && git diff --staged | grep ''
     git commit -m "bump from {{old_version}} to {{new_version}}"
     git push
-    awk '/## {{new_version}}/{flag=1} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create {{new_version}} --notes-file "-" --draft
+
+    awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft
     echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
-    open https://github.com/fzyzcjy/flutter_rust_bridge/releases/tag/{{new_version}}
+    open https://github.com/fzyzcjy/flutter_rust_bridge/releases
 
 # vim:expandtab:ts=4:sw=4
