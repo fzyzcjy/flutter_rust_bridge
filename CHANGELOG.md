@@ -1,3 +1,7 @@
+## 1.17.0
+
+* Support bridging functions with return types other than `Result` #335 (thanks @antonok-edm)
+
 ## 1.16.0
 
 * Allow structs and enums to be imported into the api file from elsewhere in the crate #319 (thanks @SecondFlight)
