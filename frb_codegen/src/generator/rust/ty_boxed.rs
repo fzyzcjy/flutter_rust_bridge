@@ -1,6 +1,7 @@
 use crate::generator::rust::ty::TypeRustGeneratorTrait;
+use crate::ir::*;
 
 #[derive(Debug, Clone)]
-pub struct TypeBoxedGenerator {}
+pub struct TypeBoxedGenerator(IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator {}
