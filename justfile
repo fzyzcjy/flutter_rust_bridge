@@ -69,7 +69,7 @@ release old_version new_version:
     git commit -m "bump from {{old_version}} to {{new_version}}"
     git push
 
-    awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft
+    awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
     echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
     open https://github.com/fzyzcjy/flutter_rust_bridge/releases
 
