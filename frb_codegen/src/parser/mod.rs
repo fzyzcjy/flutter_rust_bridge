@@ -1,3 +1,5 @@
+mod ty;
+
 use std::collections::{HashMap, HashSet};
 use std::string::String;
 
@@ -21,15 +23,6 @@ lazy_static! {
     static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
     static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture = GenericCapture::new("ZeroCopyBuffer");
     static ref CAPTURE_SYNC_RETURN: GenericCapture = GenericCapture::new("SyncReturn");
-    static ref ALL_CAPTURES: Vec<&'static GenericCapture> = vec![
-        &CAPTURE_RESULT,
-        &CAPTURE_OPTION,
-        &CAPTURE_BOX,
-        &CAPTURE_VEC,
-        &CAPTURE_STREAM_SINK,
-        &CAPTURE_ZERO_COPY_BUFFER,
-        &CAPTURE_SYNC_RETURN
-    ];
 }
 
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
