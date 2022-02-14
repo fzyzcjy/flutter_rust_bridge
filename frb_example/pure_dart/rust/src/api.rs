@@ -44,6 +44,7 @@ pub fn handle_string(s: String) -> String {
     s + &s2
 }
 
+#[allow(clippy::unused_unit)]
 pub fn handle_return_unit() -> () {
     println!("handle_return_unit()");
 }
