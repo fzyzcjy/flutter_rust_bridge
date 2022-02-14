@@ -17,7 +17,7 @@ If you want to contribute, feel free to create a Pull Request. If you need some 
 Usually this is done by the owner (@fzyzcjy), so you do not need to do the following. If you need to release a new version, the following steps are needed. Bump several versions, change the version number in changelog, and use `cargo check` to automatically update the examples' dependency versions:
 
 ```
-just bump the_old_version the_new_version
+just release
 ```
 
 ### Appendix: Sample commands to run code generator
