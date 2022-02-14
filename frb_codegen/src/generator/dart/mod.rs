@@ -25,12 +25,18 @@ use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::others::*;
 
+pub struct Output {
+    pub file_prelude: DartBasicCode,
+    pub decl_code: DartBasicCode,
+    pub impl_code: DartBasicCode,
+}
+
 pub fn generate(
     api_file: &IrFile,
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
-) -> (DartBasicCode, DartBasicCode, DartBasicCode) {
+) -> Output {
     let distinct_types = api_file.distinct_types(true, true);
     let distinct_input_types = api_file.distinct_types(true, false);
     let distinct_output_types = api_file.distinct_types(false, true);
@@ -158,7 +164,11 @@ pub fn generate(
         body: "".to_string(),
     };
 
-    (file_prelude, decl_code, impl_code)
+    Output {
+        file_prelude,
+        decl_code,
+        impl_code,
+    }
 }
 
 fn generate_api_func(func: &IrFunc) -> (String, String, String) {
