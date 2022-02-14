@@ -3,17 +3,15 @@ use std::string::String;
 
 use lazy_static::lazy_static;
 use log::debug;
-use quote::quote;
 use regex::Regex;
 use syn::*;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
 
-use crate::generator::rust::HANDLER_NAME;
-use crate::source_graph::{Crate, Enum, Struct};
+use crate::source_graph::{Enum, Struct};
 
-use crate::parser::{extract_comments, type_to_string, Parser};
+use crate::parser::{extract_comments, type_to_string};
 
 lazy_static! {
     static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");

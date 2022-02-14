@@ -2,10 +2,8 @@ mod ty;
 
 use std::string::String;
 
-use lazy_static::lazy_static;
 use log::debug;
 use quote::quote;
-use regex::Regex;
 use syn::*;
 
 use crate::ir::*;
