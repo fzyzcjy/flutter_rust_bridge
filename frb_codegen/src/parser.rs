@@ -10,7 +10,7 @@ use syn::*;
 use crate::ir::ApiType::*;
 use crate::ir::*;
 
-use crate::generator_rust::HANDLER_NAME;
+use crate::generator::rust::HANDLER_NAME;
 use crate::source_graph::{Crate, Enum, Struct};
 
 lazy_static! {

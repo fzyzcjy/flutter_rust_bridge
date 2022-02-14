@@ -14,9 +14,7 @@ use crate::utils::*;
 
 mod commands;
 mod config;
-mod generator_c;
-mod generator_dart;
-mod generator_rust;
+mod generator;
 mod ir;
 mod others;
 mod parser;
@@ -49,7 +47,7 @@ fn main() {
     debug!("transformed functions: {:?}", &api_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust = generator_rust::generate(
+    let generated_rust = generator::rust::generate(
         &api_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
     );
@@ -58,7 +56,7 @@ fn main() {
 
     info!("Phase: Generate Dart code");
     let (generated_dart_file_prelude, generated_dart_decl_raw, generated_dart_impl_raw) =
-        generator_dart::generate(
+        generator::dart::generate(
             &api_file,
             &config.dart_api_class_name(),
             &config.dart_api_impl_class_name(),
@@ -112,7 +110,7 @@ fn main() {
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
     .concat();
-    let c_dummy_code = generator_c::generate_dummy(&effective_func_names);
+    let c_dummy_code = generator::c::generate_dummy(&effective_func_names);
     fs::create_dir_all(c_output_dir).unwrap();
     fs::write(
         &config.c_output_path,

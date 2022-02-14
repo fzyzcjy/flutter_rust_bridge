@@ -514,7 +514,7 @@ impl Generator {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }"
-            .into(),
+                .into(),
             GeneralList(_) | Delegate(ApiTypeDelegate::StringList) => "
             let vec = unsafe {
                 let wrap = support::box_from_leak_ptr(self);
@@ -577,7 +577,7 @@ impl Generator {
                                         {}::{2}{3}{4}{5}
                                     }}",
                                     idx, enu.name, variant.name, left, fields.join(","), right
-                               )
+                                )
                             }
                         }
                     }).collect::<Vec<_>>();
@@ -605,7 +605,7 @@ impl Generator {
                     }}",
                     variants, enu.name
                 )
-                .into()
+                    .into()
             }
             // handled by common impl
             Optional(_) => return String::new(),
