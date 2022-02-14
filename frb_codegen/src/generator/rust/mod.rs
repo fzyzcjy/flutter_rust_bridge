@@ -87,7 +87,7 @@ impl Generator {
         lines.extend(
             distinct_input_types
                 .iter()
-                .map(|ty| TypeGenerator::new(ty.clone(), ir_file).structs()),
+                .map(|ty| TypeRustGenerator::new(ty.clone(), ir_file).structs()),
         );
 
         lines.push(self.section_header_comment("allocate functions"));
@@ -142,10 +142,10 @@ impl Generator {
     ) -> impl Iterator<Item = String> {
         let input_type_imports = distinct_input_types
             .iter()
-            .map(|api_type| self.generate_import(api_type, ir_file));
+            .map(|api_type| generate_import(api_type, ir_file));
         let output_type_imports = distinct_output_types
             .iter()
-            .map(|api_type| self.generate_import(api_type, ir_file));
+            .map(|api_type| generate_import(api_type, ir_file));
 
         input_type_imports
             .chain(output_type_imports)
@@ -156,10 +156,6 @@ impl Generator {
             // de-duplicate
             .collect::<HashSet<String>>()
             .into_iter()
-    }
-
-    fn generate_import(&self, api_type: &IrType, ir_file: &IrFile) -> Option<String> {
-        TypeGenerator::new(api_type.clone(), ir_file).imports()
     }
 
     fn generate_executor(&mut self, ir_file: &IrFile) -> String {
@@ -292,7 +288,7 @@ impl Generator {
 
     fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_wire_struct: {:?}", ty);
-        let fields = TypeGenerator::new(ty.clone(), ir_file).wire_struct_fields();
+        let fields = TypeRustGenerator::new(ty.clone(), ir_file).wire_struct_fields();
 
         format!(
             r###"
@@ -307,32 +303,9 @@ impl Generator {
         )
     }
 
-    fn generate_list_allocate_func(
-        &mut self,
-        safe_ident: &str,
-        list: &impl IrTypeTrait,
-        inner: &IrType,
-    ) -> String {
-        self.extern_func_collector.generate(
-            &format!("new_{}", safe_ident),
-            &["len: i32"],
-            Some(&[
-                list.rust_wire_modifier().as_str(),
-                list.rust_wire_type().as_str()
-            ].concat()),
-            &format!(
-                "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
-                support::new_leak_box_ptr(wrap)",
-                list.rust_wire_type(),
-                inner.rust_ptr_modifier(),
-                inner.rust_wire_type()
-            ),
-        )
-    }
-
     fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
-        TypeGenerator::new(ty.clone(), ir_file).allocate_funcs(&mut self.extern_func_collector)
+        TypeRustGenerator::new(ty.clone(), ir_file).allocate_funcs(&mut self.extern_func_collector)
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
@@ -357,7 +330,7 @@ impl Generator {
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
-        let body = TypeGenerator::new(ty.clone(), ir_file).wire2api_body();
+        let body = TypeRustGenerator::new(ty.clone(), ir_file).wire2api_body();
 
         format!(
             "impl Wire2Api<{}> for {} {{
@@ -387,16 +360,44 @@ impl Generator {
     }
 
     fn generate_new_with_nullptr_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        TypeGenerator::new(ty.clone(), ir_file).new_with_nullptr(&mut self.extern_func_collector)
+        TypeRustGenerator::new(ty.clone(), ir_file)
+            .new_with_nullptr(&mut self.extern_func_collector)
     }
 
     fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_impl_intodart: {:?}", ty);
-        TypeGenerator::new(ty.clone(), ir_file).impl_intodart()
+        TypeRustGenerator::new(ty.clone(), ir_file).impl_intodart()
     }
 }
 
-struct ExternFuncCollector {
+pub fn generate_import(api_type: &IrType, ir_file: &IrFile) -> Option<String> {
+    TypeRustGenerator::new(api_type.clone(), ir_file).imports()
+}
+
+pub fn generate_list_allocate_func(
+    collector: &mut ExternFuncCollector,
+    safe_ident: &str,
+    list: &impl IrTypeTrait,
+    inner: &IrType,
+) -> String {
+    collector.generate(
+        &format!("new_{}", safe_ident),
+        &["len: i32"],
+        Some(&[
+            list.rust_wire_modifier().as_str(),
+            list.rust_wire_type().as_str()
+        ].concat()),
+        &format!(
+            "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
+                support::new_leak_box_ptr(wrap)",
+            list.rust_wire_type(),
+            inner.rust_ptr_modifier(),
+            inner.rust_wire_type()
+        ),
+    )
+}
+
+pub struct ExternFuncCollector {
     names: Vec<String>,
 }
 

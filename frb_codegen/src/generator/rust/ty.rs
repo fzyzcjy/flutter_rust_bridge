@@ -48,7 +48,7 @@ macro_rules! type_rust_generator_struct {
 
 #[enum_dispatch(TypeRustGeneratorTrait)]
 #[derive(Debug, Clone)]
-pub enum TypeGenerator<'a> {
+pub enum TypeRustGenerator<'a> {
     Primitive(TypePrimitiveGenerator<'a>),
     Delegate(TypeDelegateGenerator<'a>),
     PrimitiveList(TypePrimitiveListGenerator<'a>),
@@ -59,7 +59,7 @@ pub enum TypeGenerator<'a> {
     EnumRef(TypeEnumRefGenerator<'a>),
 }
 
-impl<'a> TypeGenerator<'a> {
+impl<'a> TypeRustGenerator<'a> {
     pub fn new(ty: IrType, ir_file: &'a IrFile) -> Self {
         let context = TypeGeneratorContext { ir_file };
         match ty {

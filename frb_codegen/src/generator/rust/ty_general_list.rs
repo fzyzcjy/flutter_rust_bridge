@@ -1,5 +1,5 @@
 use crate::generator::rust::ty::*;
-use crate::generator::rust::ExternFuncCollector;
+use crate::generator::rust::{generate_import, generate_list_allocate_func, ExternFuncCollector};
 use crate::ir::*;
 use crate::type_rust_generator_struct;
 
@@ -31,10 +31,10 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     }
 
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
-        self.generate_list_allocate_func(&self.ir.safe_ident(), &self.ir, &self.ir.inner)
+        generate_list_allocate_func(collector, &self.ir.safe_ident(), &self.ir, &self.ir.inner)
     }
 
     fn imports(&self) -> Option<String> {
-        self.generate_import(&self.ir.inner, self.context.ir_file)
+        generate_import(&self.ir.inner, self.context.ir_file)
     }
 }

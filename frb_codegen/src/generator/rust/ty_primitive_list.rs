@@ -22,7 +22,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
     }
 
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
-        self.extern_func_collector.generate(
+        collector.generate(
             &format!("new_{}", self.ir.safe_ident()),
             &["len: i32"],
             Some(&format!(

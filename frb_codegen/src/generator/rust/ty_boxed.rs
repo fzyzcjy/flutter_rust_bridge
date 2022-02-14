@@ -1,5 +1,5 @@
 use crate::generator::rust::ty::*;
-use crate::generator::rust::ExternFuncCollector;
+use crate::generator::rust::{generate_import, ExternFuncCollector};
 use crate::ir::IrType::Primitive;
 use crate::ir::*;
 use crate::type_rust_generator_struct;
@@ -43,6 +43,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        self.generate_import(&self.ir.inner, self.context.ir_file)
+        generate_import(&self.ir.inner, self.context.ir_file)
     }
 }

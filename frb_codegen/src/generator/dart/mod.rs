@@ -50,7 +50,7 @@ pub fn generate(
         .collect::<Vec<_>>();
     let dart_structs = distinct_types
         .iter()
-        .map(|ty| TypeGenerator::new(ty.clone(), ir_file).structs())
+        .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file).structs())
         .collect::<Vec<_>>();
     let dart_api2wire_funcs = distinct_input_types
         .iter()
@@ -276,7 +276,7 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
 }
 
 fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile) -> String {
-    let body = TypeGenerator::new(ty.clone(), ir_file).api2wire_body();
+    let body = TypeDartGenerator::new(ty.clone(), ir_file).api2wire_body();
 
     format!(
         "{} _api2wire_{}({} raw) {{
@@ -291,7 +291,7 @@ fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 }
 
 fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
-    let body = TypeGenerator::new(ty.clone(), ir_file).api_fill_to_wire_body();
+    let body = TypeDartGenerator::new(ty.clone(), ir_file).api_fill_to_wire_body();
 
     let target_wire_type = match ty {
         Optional(inner) => &inner.inner,
@@ -310,7 +310,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 }
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile) -> String {
-    let body = TypeGenerator::new(ty.clone(), ir_file).wire2api_body();
+    let body = TypeDartGenerator::new(ty.clone(), ir_file).wire2api_body();
 
     format!(
         "{} _wire2api_{}(dynamic raw) {{

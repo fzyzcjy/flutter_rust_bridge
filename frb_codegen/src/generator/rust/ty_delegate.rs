@@ -1,5 +1,7 @@
 use crate::generator::rust::ty::*;
-use crate::generator::rust::{ExternFuncCollector, TypeGeneralListGenerator};
+use crate::generator::rust::{
+    generate_list_allocate_func, ExternFuncCollector, TypeGeneralListGenerator,
+};
 use crate::ir::*;
 use crate::type_rust_generator_struct;
 
@@ -31,9 +33,12 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
         match &self.ir {
-            list @ IrTypeDelegate::StringList => {
-                self.generate_list_allocate_func(&self.ir.safe_ident(), list, &list.get_delegate())
-            }
+            list @ IrTypeDelegate::StringList => generate_list_allocate_func(
+                collector,
+                &self.ir.safe_ident(),
+                list,
+                &list.get_delegate(),
+            ),
             _ => "".to_string(),
         }
     }

@@ -256,7 +256,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 }}
             }}
             {}",
-            self.ir.rust_wire_type,
+            self.ir.rust_wire_type(),
             inflators.join("\n\n")
         )
     }

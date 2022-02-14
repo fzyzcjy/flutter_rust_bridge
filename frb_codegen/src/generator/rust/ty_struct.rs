@@ -45,14 +45,15 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn impl_intodart(&self) -> String {
-        let body = self
-            .ir
+        let src = self.ir.get(self.context.ir_file);
+
+        let body = src
             .fields
             .iter()
             .map(|field| {
                 format!(
                     "self.{}.into_dart()",
-                    field.name_rust_style(self.ir.is_fields_named)
+                    field.name_rust_style(src.is_fields_named)
                 )
             })
             .collect::<Vec<_>>()
@@ -72,10 +73,11 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         )
     }
 
-    fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
+    fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
+        let src = self.ir.get(self.context.ir_file);
+
         let body = {
-            self.ir
-                .fields
+            src.fields
                 .iter()
                 .map(|field| {
                     format!(
@@ -98,7 +100,8 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     }}
                 }}
             "#,
-            self.ir.rust_wire_type, body,
+            self.ir.rust_wire_type(),
+            body,
         )
     }
 
