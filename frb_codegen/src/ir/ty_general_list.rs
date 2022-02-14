@@ -6,7 +6,7 @@ pub struct ApiTypeGeneralList {
 }
 
 impl ApiTypeChild for ApiTypeGeneralList {
-    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
+    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile) {
         self.inner.visit_types(f, api_file);
     }
 

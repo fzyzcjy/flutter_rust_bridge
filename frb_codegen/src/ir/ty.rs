@@ -22,7 +22,7 @@ impl ApiType {
             return;
         }
 
-        self.visit_sub_types(f, api_file);
+        self.visit_children_types(f, api_file);
     }
 
     #[inline]
@@ -54,7 +54,7 @@ impl ApiType {
 
 #[enum_dispatch]
 pub trait ApiTypeChild {
-    fn visit_sub_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile);
+    fn visit_children_types<F: FnMut(&ApiType) -> bool>(&self, f: &mut F, api_file: &ApiFile);
 
     fn safe_ident(&self) -> String;
 
