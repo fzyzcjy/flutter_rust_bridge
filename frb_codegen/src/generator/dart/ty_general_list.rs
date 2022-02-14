@@ -1,10 +1,10 @@
-use crate::generator::dart::ty::TypeDartGeneratorTrait;
+use crate::generator::dart::ty::*;
 use crate::ir::*;
+use crate::type_dart_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeGeneralListGenerator(pub IrTypeGeneralList);
+type_dart_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
-impl TypeDartGeneratorTrait for TypeGeneralListGenerator {
+impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn api2wire_body(&self) -> String {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         format!(
@@ -13,15 +13,15 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator {
                     _api_fill_to_wire_{}(raw[i], ans.ref.ptr[i]);
                 }}
                 return ans;",
-            self.0.safe_ident(),
-            self.0.inner.safe_ident()
+            self.ir.safe_ident(),
+            self.ir.inner.safe_ident()
         )
     }
 
     fn wire2api_body(&self) -> String {
         format!(
             "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
-            self.0.inner.safe_ident()
+            self.ir.inner.safe_ident()
         )
     }
 }

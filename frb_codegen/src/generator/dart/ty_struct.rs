@@ -1,17 +1,17 @@
 use crate::generator::dart::dart_comments;
-use crate::generator::dart::ty::TypeDartGeneratorTrait;
+use crate::generator::dart::ty::*;
 use crate::ir::*;
+use crate::type_dart_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeStructRefGenerator(pub IrTypeStructRef);
+type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
-impl TypeDartGeneratorTrait for TypeStructRefGenerator {
+impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     fn api2wire_body(&self) -> String {
         "".to_string()
     }
 
     fn api_fill_to_wire_body(&self) -> String {
-        let s = self.0.get(ir_file);
+        let s = self.ir.get(self.context.ir_file);
         s.fields
             .iter()
             .map(|field| {
@@ -27,7 +27,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator {
     }
 
     fn wire2api_body(&self) -> String {
-        let s = self.0.get(ir_file);
+        let s = self.ir.get(self.context.ir_file);
         let inner = s
             .fields
             .iter()
@@ -84,7 +84,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator {
             .collect::<Vec<_>>()
             .join("");
 
-        let comments = dart_comments(&self.0.comments);
+        let comments = dart_comments(&self.ir.comments);
 
         format!(
             "{}class {} {{
@@ -92,7 +92,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator {
 
             {}({{{}}});
         }}",
-            comments, self.0.name, field_declarations, self.0.name, constructor_params
+            comments, self.ir.name, field_declarations, self.ir.name, constructor_params
         )
     }
 }

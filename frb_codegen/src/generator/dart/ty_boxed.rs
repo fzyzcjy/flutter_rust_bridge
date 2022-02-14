@@ -1,23 +1,23 @@
 use crate::generator::dart::gen_wire2api_simple_type_cast;
-use crate::generator::dart::ty::TypeDartGeneratorTrait;
+use crate::generator::dart::ty::*;
 use crate::ir::IrType::{Primitive, StructRef};
 use crate::ir::*;
+use crate::type_dart_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeBoxedGenerator(pub IrTypeBoxed);
+type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
-impl TypeDartGeneratorTrait for TypeBoxedGenerator {
+impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
     fn api2wire_body(&self) -> String {
-        match &*self.0.inner {
+        match &*self.ir.inner {
             Primitive(_) => {
-                format!("return inner.new_{}(raw);", self.0.safe_ident())
+                format!("return inner.new_{}(raw);", self.ir.safe_ident())
             }
             inner => {
                 format!(
                     "final ptr = inner.new_{}();
                     _api_fill_to_wire_{}(raw, ptr.ref);
                     return ptr;",
-                    self.0.safe_ident(),
+                    self.ir.safe_ident(),
                     inner.safe_ident(),
                 )
             }
@@ -25,10 +25,10 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator {
     }
 
     fn api_fill_to_wire_body(&self) -> String {
-        if !matches!(*self.0.inner, Primitive(_)) {
+        if !matches!(*self.ir.inner, Primitive(_)) {
             format!(
                 " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
-                self.0.inner.safe_ident()
+                self.ir.inner.safe_ident()
             )
         } else {
             "".to_string()
@@ -36,9 +36,9 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator {
     }
 
     fn wire2api_body(&self) -> String {
-        match &*self.0.inner {
+        match &*self.ir.inner {
             StructRef(inner) => format!("return _wire2api_{}(raw);", inner.safe_ident()),
-            _ => gen_wire2api_simple_type_cast(&self.0.dart_api_type()),
+            _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),
         }
     }
 }

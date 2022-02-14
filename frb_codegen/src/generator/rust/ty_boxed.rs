@@ -33,7 +33,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator {
             inner => self.extern_func_collector.generate(
                 &format!("new_{}", self.0.safe_ident()),
                 &[],
-                Some(&[self.0.rust_wire_modifier(), ty.rust_wire_type()].concat()),
+                Some(&[self.0.rust_wire_modifier(), self.0.rust_wire_type()].concat()),
                 &format!(
                     "support::new_leak_box_ptr({}::new_with_null_ptr())",
                     inner.rust_wire_type()

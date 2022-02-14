@@ -1,17 +1,28 @@
 use crate::generator::dart::*;
 use enum_dispatch::enum_dispatch;
 
+#[macro_export]
+macro_rules! type_dart_generator_struct {
+    ($cls:ident, $ir_cls:ty) => {
+        #[derive(Debug, Clone)]
+        pub struct $cls<'a> {
+            pub ir: $ir_cls,
+            pub context: TypeGeneratorContext<'a>,
+        }
+    };
+}
+
 #[enum_dispatch(TypeDartGeneratorTrait)]
 #[derive(Debug, Clone)]
-pub enum TypeGenerator {
-    Primitive(TypePrimitiveGenerator),
-    Delegate(TypeDelegateGenerator),
-    PrimitiveList(TypePrimitiveListGenerator),
-    Optional(TypeOptionalGenerator),
-    GeneralList(TypeGeneralListGenerator),
-    StructRef(TypeStructRefGenerator),
-    Boxed(TypeBoxedGenerator),
-    EnumRef(TypeEnumRefGenerator),
+pub enum TypeGenerator<'a> {
+    Primitive(TypePrimitiveGenerator<'a>),
+    Delegate(TypeDelegateGenerator<'a>),
+    PrimitiveList(TypePrimitiveListGenerator<'a>),
+    Optional(TypeOptionalGenerator<'a>),
+    GeneralList(TypeGeneralListGenerator<'a>),
+    StructRef(TypeStructRefGenerator<'a>),
+    Boxed(TypeBoxedGenerator<'a>),
+    EnumRef(TypeEnumRefGenerator<'a>),
 }
 
 #[enum_dispatch]
@@ -29,17 +40,23 @@ pub trait TypeDartGeneratorTrait {
     }
 }
 
-impl TypeGenerator {
-    pub fn new(ty: IrType) -> TypeGenerator {
+#[derive(Debug, Clone)]
+pub struct TypeGeneratorContext<'a> {
+    pub ir_file: &'a IrFile,
+}
+
+impl<'a> TypeGenerator<'a> {
+    pub fn new(ty: IrType, ir_file: &'a IrFile) -> Self {
+        let context = TypeGeneratorContext { ir_file };
         match ty {
-            Primitive(inner) => TypePrimitiveGenerator(inner).into(),
-            Delegate(inner) => TypeDelegateGenerator(inner).into(),
-            PrimitiveList(inner) => TypePrimitiveListGenerator(inner).into(),
-            Optional(inner) => TypeOptionalGenerator(inner).into(),
-            GeneralList(inner) => TypeGeneralListGenerator(inner).into(),
-            StructRef(inner) => TypeStructRefGenerator(inner).into(),
-            Boxed(inner) => TypeBoxedGenerator(inner).into(),
-            EnumRef(inner) => TypeEnumRefGenerator(inner).into(),
+            Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
+            Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),
+            PrimitiveList(ir) => TypePrimitiveListGenerator { ir, context }.into(),
+            Optional(ir) => TypeOptionalGenerator { ir, context }.into(),
+            GeneralList(ir) => TypeGeneralListGenerator { ir, context }.into(),
+            StructRef(ir) => TypeStructRefGenerator { ir, context }.into(),
+            Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
+            EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
         }
     }
 }

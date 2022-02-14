@@ -1,13 +1,13 @@
 use crate::generator::dart::dart_comments;
-use crate::generator::dart::ty::TypeDartGeneratorTrait;
+use crate::generator::dart::ty::*;
 use crate::ir::*;
+use crate::type_dart_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeEnumRefGenerator(pub IrTypeEnumRef);
+type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
-impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
+impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn api2wire_body(&self) -> String {
-        if !self.0.is_struct {
+        if !self.ir.is_struct {
             "return raw.index;".to_owned()
         } else {
             "".to_string()
@@ -15,9 +15,9 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
     }
 
     fn api_fill_to_wire_body(&self) -> String {
-        if self.0.is_struct {
-            self.0
-                .get(ir_file)
+        if self.ir.is_struct {
+            self.ir
+                .get(self.context.ir_file)
                 .variants()
                 .iter()
                 .enumerate()
@@ -53,7 +53,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
                         }}",
                             variant.name,
                             idx,
-                            self.0.name,
+                            self.ir.name,
                             body.join("\n")
                         )
                     }
@@ -66,8 +66,8 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
     }
 
     fn wire2api_body(&self) -> String {
-        if self.0.is_struct {
-            let enu = self.0.get(ir_file);
+        if self.ir.is_struct {
+            let enu = self.ir.get(self.context.ir_file);
             let variants = enu
                 .variants()
                 .iter()
@@ -105,13 +105,13 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
                 variants.join("\n"),
             )
         } else {
-            format!("return {}.values[raw];", self.0.name)
+            format!("return {}.values[raw];", self.ir.name)
         }
     }
 
     fn structs(&self) -> String {
-        let comments = dart_comments(&self.0.comments);
-        if self.0.is_struct() {
+        let comments = dart_comments(&self.ir.comments);
+        if self.ir.is_struct() {
             let variants = self
                 .0
                 .variants()
@@ -165,7 +165,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
                     format!(
                         "{}const factory {}.{}({}) = {};",
                         dart_comments(&variant.comments),
-                        self.0.name,
+                        self.ir.name,
                         variant.name.dart_style(),
                         args,
                         variant.name.rust_style(),
@@ -177,7 +177,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
                 class {0} with _${0} {{
                     {1}
                 }}",
-                self.0.name,
+                self.ir.name,
                 variants.join("\n")
             )
         } else {
@@ -198,7 +198,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator {
                 "{}enum {} {{
                     {}
                 }}",
-                comments, self.0.name, variants
+                comments, self.ir.name, variants
             )
         }
     }
