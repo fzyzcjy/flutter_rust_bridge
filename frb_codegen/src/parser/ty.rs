@@ -27,7 +27,7 @@ lazy_static! {
 impl<'a> Parser<'a> {
     pub fn parse_type(&mut self, ty: &str) -> IrType {
         debug!("parse_type: {}", ty);
-        None.or_else(|| IrTypePrimitive::try_from_rust_str(ty).map(Primitive))
+        None.or_else(|| self.try_parse_primitive(ty))
             .or_else(|| self.try_parse_api_type_delegate(ty))
             .or_else(|| self.try_parse_list(ty))
             .or_else(|| self.try_parse_box(ty))
@@ -35,6 +35,10 @@ impl<'a> Parser<'a> {
             .or_else(|| self.try_parse_struct(ty))
             .or_else(|| self.try_parse_enum(ty))
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
+    }
+
+    fn try_parse_primitive(&mut self, ty: &str) -> Option<IrType> {
+        IrTypePrimitive::try_from_rust_str(ty).map(Primitive)
     }
 
     fn try_parse_api_type_delegate(&mut self, ty: &str) -> Option<IrType> {
@@ -124,7 +128,7 @@ impl<'a> Parser<'a> {
         }
 
         if self.parsed_enums.insert(ty.to_owned()) {
-            let enu = self.parse_enum(ty);
+            let enu = self.parse_enum_core(ty);
             self.enum_pool.insert(ty.to_owned(), enu);
         }
 
@@ -137,8 +141,10 @@ impl<'a> Parser<'a> {
                 .unwrap_or(true),
         }))
     }
+}
 
-    fn parse_enum(&mut self, ty: &str) -> IrEnum {
+impl<'a> Parser<'a> {
+    fn parse_enum_core(&mut self, ty: &str) -> IrEnum {
         let src_enum = self.src_enums[ty];
         let name = src_enum.ident.to_string();
         let path = src_enum.path.clone();
