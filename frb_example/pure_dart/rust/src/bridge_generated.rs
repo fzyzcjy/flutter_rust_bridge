@@ -617,8 +617,6 @@ pub struct wire_uint_8_list {
     len: i32,
 }
 
-// Section: wire enums
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_KitchenSink {
