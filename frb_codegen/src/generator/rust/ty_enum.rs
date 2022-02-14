@@ -1,13 +1,13 @@
-use crate::generator::rust::ty::TypeRustGeneratorTrait;
+use crate::generator::rust::ty::*;
 use crate::ir::*;
+use crate::type_rust_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeEnumRefGenerator(pub IrTypeEnumRef);
+type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
     fn wire2api_body(&self) -> String {
-        if self.0.is_struct {
-            let enu = self.0.get(ir_file);
+        if self.ir.is_struct {
+            let enu = self.ir.get(self.context.ir_file);
             let variants = enu
                 .variants()
                 .iter()
@@ -54,7 +54,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
             )
             .into()
         } else {
-            let enu = self.0.get(ir_file);
+            let enu = self.ir.get(self.context.ir_file);
             let variants = enu
                 .variants()
                 .iter()
@@ -74,7 +74,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
     }
 
     fn structs(&self) -> String {
-        let src = self.0.get(file);
+        let src = self.ir.get(file);
         if !src.is_struct() {
             return "".to_owned();
         }
@@ -101,7 +101,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                     "#[repr(C)]
                     #[derive(Clone)]
                     pub struct {}_{} {{ {} }}",
-                    self.0.name,
+                    self.ir.name,
                     variant.name,
                     fields.join("\n")
                 )
@@ -110,7 +110,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
         let union_fields = src
             .variants()
             .iter()
-            .map(|variant| format!("{0}: *mut {1}_{0},", variant.name, self.0.name))
+            .map(|variant| format!("{0}: *mut {1}_{0},", variant.name, self.ir.name))
             .collect::<Vec<_>>();
         format!(
             "#[repr(C)]
@@ -123,15 +123,15 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
             }}
 
             {3}",
-            self.0.rust_wire_type(),
-            self.0.name,
+            self.ir.rust_wire_type(),
+            self.ir.name,
             union_fields.join("\n"),
             variant_structs.join("\n\n")
         )
     }
 
     fn impl_intodart(&self) -> String {
-        if self.0.is_struct {
+        if self.ir.is_struct {
             let variants = self
                 .0
                 .variants()
@@ -177,7 +177,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                 }}
             }}
             ",
-                self.0.name,
+                self.ir.name,
                 variants.join("\n")
             )
         } else {
@@ -198,7 +198,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                 }}
             }}
             ",
-                self.0.name, variants
+                self.ir.name, variants
             )
         }
     }
@@ -216,7 +216,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
             .variants()
             .iter()
             .filter_map(|variant| {
-                let typ = format!("{}_{}", self.0.name, variant.name);
+                let typ = format!("{}_{}", self.ir.name, variant.name);
                 let body: Vec<_> = if let IrVariantKind::Struct(st) = &variant.kind {
                     st.fields
                         .iter()
@@ -228,14 +228,14 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
                 Some(self.extern_func_collector.generate(
                     &format!("inflate_{}", typ),
                     &[],
-                    Some(&format!("*mut {}Kind", self.0.name)),
+                    Some(&format!("*mut {}Kind", self.ir.name)),
                     &format!(
                         "support::new_leak_box_ptr({}Kind {{
                         {}: support::new_leak_box_ptr({} {{
                             {}
                         }})
                     }})",
-                        self.0.name,
+                        self.ir.name,
                         variant.name.rust_style(),
                         typ,
                         body.join(",")
@@ -259,7 +259,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator {
     }
 
     fn imports(&self) -> Option<String> {
-        let api_enum = self.0.get(ir_file);
+        let api_enum = self.ir.get(self.context.ir_file);
         Some(format!("use {};", api_enum.path.join("::")))
     }
 }

@@ -1,13 +1,13 @@
-use crate::generator::rust::ty::TypeRustGeneratorTrait;
+use crate::generator::rust::ty::*;
 use crate::generator::rust::{ExternFuncCollector, TypeGeneralListGenerator};
 use crate::ir::*;
+use crate::type_rust_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeDelegateGenerator(pub IrTypeDelegate);
+type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator {
     fn wire2api_body(&self) -> String {
-        match &self.0 {
+        match &self.ir {
             IrTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
             String::from_utf8_lossy(&vec).into_owned()"
                 .into(),
@@ -20,7 +20,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator {
     }
 
     fn wire_struct_fields(&self) -> Vec<String> {
-        match &self.0 {
+        match &self.ir {
             ty @ IrTypeDelegate::StringList => vec![
                 format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type()),
                 "len: i32".to_owned(),
@@ -30,9 +30,9 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator {
     }
 
     fn allocate_funcs(&self, collector: &ExternFuncCollector) -> String {
-        match &self.0 {
+        match &self.ir {
             list @ IrTypeDelegate::StringList => {
-                self.generate_list_allocate_func(&self.0.safe_ident(), list, &list.get_delegate())
+                self.generate_list_allocate_func(&self.ir.safe_ident(), list, &list.get_delegate())
             }
             _ => "".to_string(),
         }

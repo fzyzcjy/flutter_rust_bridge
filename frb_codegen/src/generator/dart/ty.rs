@@ -1,6 +1,26 @@
 use crate::generator::dart::*;
 use enum_dispatch::enum_dispatch;
 
+#[enum_dispatch]
+pub trait TypeDartGeneratorTrait {
+    fn api2wire_body(&self) -> String;
+
+    fn api_fill_to_wire_body(&self) -> String {
+        "".to_string()
+    }
+
+    fn wire2api_body(&self) -> String;
+
+    fn structs(&self) -> String {
+        "".to_string()
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct TypeGeneratorContext<'a> {
+    pub ir_file: &'a IrFile,
+}
+
 #[macro_export]
 macro_rules! type_dart_generator_struct {
     ($cls:ident, $ir_cls:ty) => {
@@ -23,26 +43,6 @@ pub enum TypeGenerator<'a> {
     StructRef(TypeStructRefGenerator<'a>),
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
-}
-
-#[enum_dispatch]
-pub trait TypeDartGeneratorTrait {
-    fn api2wire_body(&self) -> String;
-
-    fn api_fill_to_wire_body(&self) -> String {
-        "".to_string()
-    }
-
-    fn wire2api_body(&self) -> String;
-
-    fn structs(&self) -> String {
-        "".to_string()
-    }
-}
-
-#[derive(Debug, Clone)]
-pub struct TypeGeneratorContext<'a> {
-    pub ir_file: &'a IrFile,
 }
 
 impl<'a> TypeGenerator<'a> {

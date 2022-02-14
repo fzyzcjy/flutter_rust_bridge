@@ -1,8 +1,8 @@
-use crate::generator::rust::ty::TypeRustGeneratorTrait;
+use crate::generator::rust::ty::*;
 use crate::ir::*;
+use crate::type_rust_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypePrimitiveGenerator(pub IrTypePrimitive);
+type_rust_generator_struct!(TypePrimitiveGenerator, IrTypePrimitive);
 
 impl TypeRustGeneratorTrait for TypePrimitiveGenerator {
     fn wire2api_body(&self) -> String {

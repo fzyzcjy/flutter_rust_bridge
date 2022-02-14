@@ -1,9 +1,9 @@
-use crate::generator::rust::ty::TypeRustGeneratorTrait;
+use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
+use crate::type_rust_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeGeneralListGenerator(pub IrTypeGeneralList);
+type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
 impl TypeGeneralListGenerator {
     pub const WIRE2API_BODY: &'static str = "
@@ -23,18 +23,18 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator {
         vec![
             format!(
                 "ptr: *mut {}{}",
-                self.0.inner.rust_ptr_modifier(),
-                self.0.inner.rust_wire_type()
+                self.ir.inner.rust_ptr_modifier(),
+                self.ir.inner.rust_wire_type()
             ),
             "len: i32".to_string(),
         ]
     }
 
     fn allocate_funcs(&self, collector: &ExternFuncCollector) -> String {
-        self.generate_list_allocate_func(&self.0.safe_ident(), &self.0, &self.0.inner)
+        self.generate_list_allocate_func(&self.ir.safe_ident(), &self.ir, &self.ir.inner)
     }
 
     fn imports(&self) -> Option<String> {
-        self.generate_import(&self.0.inner, ir_file)
+        self.generate_import(&self.ir.inner, self.context.ir_file)
     }
 }

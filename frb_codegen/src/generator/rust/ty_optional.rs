@@ -1,8 +1,8 @@
-use crate::generator::rust::ty::TypeRustGeneratorTrait;
+use crate::generator::rust::ty::*;
 use crate::ir::*;
+use crate::type_rust_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeOptionalGenerator(pub IrTypeOptional);
+type_rust_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
 impl TypeRustGeneratorTrait for TypeOptionalGenerator {
     fn wire2api_body(&self) -> String {
@@ -10,6 +10,6 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator {
     }
 
     fn imports(&self) -> Option<String> {
-        self.generate_import(&self.0.inner, ir_file)
+        self.generate_import(&self.ir.inner, self.context.ir_file)
     }
 }

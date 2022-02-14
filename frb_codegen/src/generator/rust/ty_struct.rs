@@ -1,12 +1,12 @@
-use crate::generator::rust::ty::TypeRustGeneratorTrait;
+use crate::generator::rust::ty::*;
 use crate::ir::*;
+use crate::type_rust_generator_struct;
 
-#[derive(Debug, Clone)]
-pub struct TypeStructRefGenerator(pub IrTypeStructRef);
+type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator {
     fn wire2api_body(&self) -> String {
-        let api_struct = self.0.get(ir_file);
+        let api_struct = self.ir.get(self.context.ir_file);
         let fields_str = &api_struct
             .fields
             .iter()
@@ -25,11 +25,11 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
             .join(",");
 
         let (left, right) = api_struct.brackets_pair();
-        format!("{}{}{}{}", self.0.rust_api_type(), left, fields_str, right).into()
+        format!("{}{}{}{}", self.ir.rust_api_type(), left, fields_str, right).into()
     }
 
     fn wire_struct_fields(&self) -> Vec<String> {
-        let s = self.0.get(ir_file);
+        let s = self.ir.get(self.context.ir_file);
         s.fields
             .iter()
             .map(|field| {
@@ -51,7 +51,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
             .map(|field| {
                 format!(
                     "self.{}.into_dart()",
-                    field.name_rust_style(self.0.is_fields_named)
+                    field.name_rust_style(self.ir.is_fields_named)
                 )
             })
             .collect::<Vec<_>>()
@@ -67,13 +67,13 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
             }}
             impl support::IntoDartExceptPrimitive for {} {{}}
             ",
-            self.0.name, body, self.0.name,
+            self.ir.name, body, self.ir.name,
         )
     }
 
     fn new_with_nullptr(&self) -> String {
         let body = {
-            self.0
+            self.ir
                 .fields
                 .iter()
                 .map(|field| {
@@ -102,7 +102,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator {
     }
 
     fn imports(&self) -> Option<String> {
-        let api_struct = self.0.get(ir_file);
+        let api_struct = self.ir.get(self.context.ir_file);
         if api_struct.path.is_some() {
             Some(format!(
                 "use {};",
