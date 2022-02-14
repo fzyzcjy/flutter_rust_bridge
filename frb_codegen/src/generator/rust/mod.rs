@@ -161,7 +161,7 @@ impl Generator {
     }
 
     fn generate_import(&self, api_type: &IrType, api_file: &IrFile) -> Option<String> {
-        TODO.imports()
+        TypeGenerator::new(ty.clone()).imports()
     }
 
     fn generate_executor(&mut self, api_file: &IrFile) -> String {
@@ -294,7 +294,7 @@ impl Generator {
 
     fn generate_wire_struct(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_wire_struct: {:?}", ty);
-        let fields = TODO.wire_struct_fields();
+        let fields = TypeGenerator::new(ty.clone()).wire_struct_fields();
 
         format!(
             r###"
@@ -334,7 +334,7 @@ impl Generator {
 
     fn generate_allocate_funcs(&mut self, ty: &IrType) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
-        TODO.allocate_funcs()
+        TypeGenerator::new(ty.clone()).allocate_funcs()
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
@@ -359,7 +359,7 @@ impl Generator {
 
     fn generate_wire2api_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
-        let body = TODO.wire2api_body();
+        let body = TypeGenerator::new(ty.clone()).wire2api_body();
 
         format!(
             "impl Wire2Api<{}> for {} {{
@@ -389,12 +389,12 @@ impl Generator {
     }
 
     fn generate_new_with_nullptr_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
-        TODO.new_with_nullptr()
+        TypeGenerator::new(ty.clone()).new_with_nullptr()
     }
 
     fn generate_impl_intodart(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_impl_intodart: {:?}", ty);
-        TODO.impl_intodart()
+        TypeGenerator::new(ty.clone()).impl_intodart()
     }
 }
 

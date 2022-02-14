@@ -28,3 +28,18 @@ pub trait TypeDartGeneratorTrait {
         "".to_string()
     }
 }
+
+impl TypeGenerator {
+    pub fn new(ty: IrType) -> TypeGenerator {
+        match ty {
+            Primitive(inner) => TypePrimitiveGenerator(inner).into(),
+            Delegate(inner) => TypeDelegateGenerator(inner).into(),
+            PrimitiveList(inner) => TypePrimitiveListGenerator(inner).into(),
+            Optional(inner) => TypeOptionalGenerator(inner).into(),
+            GeneralList(inner) => TypeGeneralListGenerator(inner).into(),
+            StructRef(inner) => TypeStructRefGenerator(inner).into(),
+            Boxed(inner) => TypeBoxedGenerator(inner).into(),
+            EnumRef(inner) => TypeEnumRefGenerator(inner).into(),
+        }
+    }
+}

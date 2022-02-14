@@ -26,7 +26,7 @@ pub trait TypeRustGeneratorTrait {
         "".to_string()
     }
 
-    fn allocate_funcs(&self, collector: &ExternFuncCollector) -> String {
+    fn allocate_funcs(&self, _collector: &ExternFuncCollector) -> String {
         "".to_string()
     }
 
@@ -39,6 +39,21 @@ pub trait TypeRustGeneratorTrait {
     }
 
     fn imports(&self) -> Option<String> {
-        "".to_string()
+        None
+    }
+}
+
+impl TypeGenerator {
+    pub fn new(ty: IrType) -> TypeGenerator {
+        match ty {
+            Primitive(inner) => TypePrimitiveGenerator(inner).into(),
+            Delegate(inner) => TypeDelegateGenerator(inner).into(),
+            PrimitiveList(inner) => TypePrimitiveListGenerator(inner).into(),
+            Optional(inner) => TypeOptionalGenerator(inner).into(),
+            GeneralList(inner) => TypeGeneralListGenerator(inner).into(),
+            StructRef(inner) => TypeStructRefGenerator(inner).into(),
+            Boxed(inner) => TypeBoxedGenerator(inner).into(),
+            EnumRef(inner) => TypeEnumRefGenerator(inner).into(),
+        }
     }
 }
