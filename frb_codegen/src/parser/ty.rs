@@ -24,7 +24,38 @@ lazy_static! {
     static ref CAPTURE_SYNC_RETURN: GenericCapture = GenericCapture::new("SyncReturn");
 }
 
-impl<'a> Parser<'a> {
+pub struct TypeParser<'a> {
+    src_structs: HashMap<String, &'a Struct>,
+    src_enums: HashMap<String, &'a Enum>,
+
+    parsing_or_parsed_struct_names: HashSet<String>,
+    struct_pool: IrStructPool,
+
+    parsed_enums: HashSet<String>,
+    enum_pool: IrEnumPool,
+}
+
+impl<'a> TypeParser<'a> {
+    pub fn new(
+        src_structs: HashMap<String, &'a Struct>,
+        src_enums: HashMap<String, &'a Enum>,
+    ) -> Self {
+        TypeParser {
+            src_structs,
+            src_enums,
+            struct_pool: HashMap::new(),
+            enum_pool: HashMap::new(),
+            parsing_or_parsed_struct_names: HashSet::new(),
+            parsed_enums: HashSet::new(),
+        }
+    }
+
+    pub fn consume(self) -> (IrStructPool, IrEnumPool) {
+        (self.struct_pool, self.enum_pool)
+    }
+}
+
+impl<'a> TypeParser<'a> {
     pub fn parse_type(&mut self, ty: &str) -> IrType {
         debug!("parse_type: {}", ty);
         None.or_else(|| self.try_parse_primitive(ty))
@@ -143,7 +174,7 @@ impl<'a> Parser<'a> {
     }
 }
 
-impl<'a> Parser<'a> {
+impl<'a> TypeParser<'a> {
     fn parse_enum_core(&mut self, ty: &str) -> IrEnum {
         let src_enum = self.src_enums[ty];
         let name = src_enum.ident.to_string();

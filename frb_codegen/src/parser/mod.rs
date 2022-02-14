@@ -13,6 +13,7 @@ use crate::ir::IrType::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
+use crate::parser::ty::TypeParser;
 use crate::source_graph::{Crate, Enum, Struct};
 
 lazy_static! {
@@ -30,25 +31,18 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFi
     let mut src_enums = HashMap::new();
     crate_map.root_module.collect_enums(&mut src_enums);
 
-    let parser = Parser {
-        src_structs,
-        src_enums,
-        struct_pool: HashMap::new(),
-        enum_pool: HashMap::new(),
-        parsing_or_parsed_struct_names: HashSet::new(),
-        parsed_enums: HashSet::new(),
-    };
+    let parser = Parser::new(TypeParser::new(src_structs, src_enums));
     parser.parse(source_rust_content, src_fns)
 }
 
 struct Parser<'a> {
-    src_structs: HashMap<String, &'a Struct>,
-    parsing_or_parsed_struct_names: HashSet<String>,
-    struct_pool: IrStructPool,
+    type_parser: TypeParser<'a>,
+}
 
-    src_enums: HashMap<String, &'a Enum>,
-    parsed_enums: HashSet<String>,
-    enum_pool: IrEnumPool,
+impl<'a> Parser<'a> {
+    pub fn new(type_parser: TypeParser<'a>) -> Self {
+        Parser { type_parser }
+    }
 }
 
 fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
@@ -71,10 +65,12 @@ impl<'a> Parser<'a> {
 
         let has_executor = source_rust_content.contains(HANDLER_NAME);
 
+        let (struct_pool, enum_pool) = self.type_parser.consume();
+
         IrFile {
             funcs,
-            struct_pool: self.struct_pool,
-            enum_pool: self.enum_pool,
+            struct_pool,
+            enum_pool,
             has_executor,
         }
     }
@@ -105,7 +101,7 @@ impl<'a> Parser<'a> {
                 } else {
                     inputs.push(IrField {
                         name: IrIdent::new(name),
-                        ty: self.parse_type(&type_string),
+                        ty: self.type_parser.parse_type(&type_string),
                         comments: extract_comments(&pat_type.attrs),
                     });
                 }
@@ -119,10 +115,10 @@ impl<'a> Parser<'a> {
                 ReturnType::Type(_, ty) => {
                     let type_string = type_to_string(ty);
                     if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
-                        self.parse_type(&inner)
+                        self.type_parser.parse_type(&inner)
                     } else {
                         fallible = false;
-                        self.parse_type(&type_string)
+                        self.type_parser.parse_type(&type_string)
                     }
                 }
                 ReturnType::Default => {
@@ -154,7 +150,7 @@ impl<'a> Parser<'a> {
     fn try_parse_stream_sink(&mut self, ty: &str) -> Option<IrType> {
         CAPTURE_STREAM_SINK
             .captures(ty)
-            .map(|inner| self.parse_type(&inner))
+            .map(|inner| self.type_parser.parse_type(&inner))
     }
 }
 
