@@ -34,16 +34,102 @@ impl Generator {
     }
 
     fn generate(&mut self, api_file: &IrFile, rust_wire_mod: &str) -> String {
+        let mut lines: Vec<String> = vec![];
+
         let distinct_input_types = api_file.distinct_types(true, false);
         let distinct_output_types = api_file.distinct_types(false, true);
 
+        lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, non_snake_case)]"#.to_string());
+        lines.push(CODE_HEADER.to_string());
+
+        lines.push(String::new());
+        lines.push(format!("use crate::{}::*;", rust_wire_mod));
+        lines.push("use flutter_rust_bridge::*;".to_string());
+        lines.push(String::new());
+
+        lines.push(self.section_header_comment("imports"));
+        lines.extend(self.generate_imports(
+            api_file,
+            rust_wire_mod,
+            &distinct_input_types,
+            &distinct_output_types,
+        ));
+        lines.push(String::new());
+
+        lines.push(self.section_header_comment("wire functions"));
+        lines.extend(api_file.funcs.iter().map(|f| self.generate_wire_func(f)));
+
+        lines.push(self.section_header_comment("wire structs"));
+        lines.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| self.generate_wire_struct(ty, api_file)),
+        );
+
+        lines.push(self.section_header_comment("wire enums"));
+        lines.extend(distinct_input_types.iter().filter_map(|ty| match ty {
+            IrType::EnumRef(enu) => Some(self.generate_wire_enum(enu, api_file)),
+            _ => None,
+        }));
+
+        lines.push(self.section_header_comment("allocate functions"));
+        lines.extend(
+            distinct_input_types
+                .iter()
+                .map(|f| self.generate_allocate_funcs(f)),
+        );
+
+        lines.push(self.section_header_comment("impl Wire2Api"));
+        lines.push(self.generate_wire2api_misc().to_string());
+        lines.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| self.generate_wire2api_func(ty, api_file)),
+        );
+
+        lines.push(self.section_header_comment("impl NewWithNullPtr"));
+        lines.push(self.generate_new_with_nullptr_misc().to_string());
+        lines.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| self.generate_new_with_nullptr_func(ty, api_file)),
+        );
+
+        lines.push(self.section_header_comment("impl IntoDart"));
+        lines.extend(
+            distinct_output_types
+                .iter()
+                .map(|ty| self.generate_impl_intodart(ty, api_file)),
+        );
+
+        lines.push(self.section_header_comment("executor"));
+        lines.push(self.generate_executor(api_file));
+
+        lines.push(self.section_header_comment("sync execution mode utility"));
+        lines.push(self.generate_sync_execution_mode_utility());
+
+        lines.join("\n")
+    }
+
+    fn section_header_comment(&self, section_name: &str) -> String {
+        format!("// Section: {}\n", section_name)
+    }
+
+    fn generate_imports(
+        &self,
+        api_file: &IrFile,
+        rust_wire_mod: &str,
+        distinct_input_types: &[IrType],
+        distinct_output_types: &[IrType],
+    ) -> impl Iterator<Item = String> {
         let input_type_imports = distinct_input_types
             .iter()
             .map(|api_type| self.generate_import(api_type, api_file));
         let output_type_imports = distinct_output_types
             .iter()
             .map(|api_type| self.generate_import(api_type, api_file));
-        let imports: Vec<String> = input_type_imports
+
+        input_type_imports
             .chain(output_type_imports)
             // Filter out `None` and unwrap
             .flatten()
@@ -52,130 +138,6 @@ impl Generator {
             // de-duplicate
             .collect::<HashSet<String>>()
             .into_iter()
-            .collect();
-
-        let wire_funcs = api_file
-            .funcs
-            .iter()
-            .map(|f| self.generate_wire_func(f))
-            .collect::<Vec<_>>();
-        let wire_structs = distinct_input_types
-            .iter()
-            .map(|ty| self.generate_wire_struct(ty, api_file))
-            .collect::<Vec<_>>();
-        let wire_enums = distinct_input_types
-            .iter()
-            .filter_map(|ty| match ty {
-                IrType::EnumRef(enu) => Some(self.generate_wire_enum(enu, api_file)),
-                _ => None,
-            })
-            .collect::<Vec<_>>();
-        let allocate_funcs = distinct_input_types
-            .iter()
-            .map(|f| self.generate_allocate_funcs(f))
-            .collect::<Vec<_>>();
-        let wire2api_funcs = distinct_input_types
-            .iter()
-            .map(|ty| self.generate_wire2api_func(ty, api_file))
-            .collect::<Vec<_>>();
-        let new_with_nullptr_funcs = distinct_input_types
-            .iter()
-            .map(|ty| self.generate_new_with_nullptr_func(ty, api_file))
-            .collect::<Vec<_>>();
-        let impl_intodart = distinct_output_types
-            .iter()
-            .map(|ty| self.generate_impl_intodart(ty, api_file))
-            .collect::<Vec<_>>();
-
-        format!(
-            r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, non_snake_case)]
-        {}
-
-        use crate::{}::*;
-        use flutter_rust_bridge::*;
-
-        // Section: imports
-        {}
-
-        // Section: wire functions
-
-        {}
-
-        // Section: wire structs
-
-        {}
-
-        // Section: wire enums
-
-        {}
-
-        // Section: allocate functions
-
-        {}
-
-        // Section: impl Wire2Api
-
-        pub trait Wire2Api<T> {{
-            fn wire2api(self) -> T;
-        }}
-
-        impl<T, S> Wire2Api<Option<T>> for *mut S
-        where
-            *mut S: Wire2Api<T>
-        {{
-            fn wire2api(self) -> Option<T> {{
-                if self.is_null() {{
-                    None
-                }} else {{
-                    Some(self.wire2api())
-                }}
-            }}
-        }}
-
-        {}
-
-        // Section: impl NewWithNullPtr
-
-        pub trait NewWithNullPtr {{
-            fn new_with_null_ptr() -> Self;
-        }}
-
-        impl<T> NewWithNullPtr for *mut T {{
-            fn new_with_null_ptr() -> Self {{
-                std::ptr::null_mut()
-            }}
-        }}
-
-        {}
-
-        // Section: impl IntoDart
-        {}
-
-        // Section: executor
-        {}
-
-        // Section: sync execution mode utility
-        {}
-
-        "#,
-            CODE_HEADER,
-            rust_wire_mod,
-            imports.join("\n"),
-            wire_funcs.join("\n\n"),
-            wire_structs.join("\n\n"),
-            wire_enums.join("\n\n"),
-            allocate_funcs.join("\n\n"),
-            wire2api_funcs.join("\n\n"),
-            new_with_nullptr_funcs.join("\n\n"),
-            impl_intodart.join("\n\n"),
-            self.generate_executor(api_file),
-            self.extern_func_collector.generate(
-                "free_WireSyncReturnStruct",
-                &["val: support::WireSyncReturnStruct"],
-                None,
-                "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
-            ),
-        )
     }
 
     fn generate_import(&self, api_type: &IrType, api_file: &IrFile) -> Option<String> {
@@ -216,6 +178,15 @@ impl Generator {
                 HANDLER_NAME
             )
         }
+    }
+
+    fn generate_sync_execution_mode_utility(&mut self) -> String {
+        self.extern_func_collector.generate(
+            "free_WireSyncReturnStruct",
+            &["val: support::WireSyncReturnStruct"],
+            None,
+            "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
+        )
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc) -> String {
@@ -499,6 +470,26 @@ impl Generator {
         }
     }
 
+    fn generate_wire2api_misc(&self) -> &'static str {
+        r"pub trait Wire2Api<T> {
+            fn wire2api(self) -> T;
+        }
+        
+        impl<T, S> Wire2Api<Option<T>> for *mut S
+            where
+                *mut S: Wire2Api<T>
+        {
+            fn wire2api(self) -> Option<T> {
+                if self.is_null() {
+                    None
+                } else {
+                    Some(self.wire2api())
+                }
+            }
+        }
+        "
+    }
+
     fn generate_wire2api_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         // println!("generate_wire2api_func: {:?}", ty);
         let body: Cow<str> = match ty {
@@ -623,6 +614,19 @@ impl Generator {
         )
     }
 
+    fn generate_new_with_nullptr_misc(&self) -> &'static str {
+        "pub trait NewWithNullPtr {
+            fn new_with_null_ptr() -> Self;
+        }
+        
+        impl<T> NewWithNullPtr for *mut T {
+            fn new_with_null_ptr() -> Self {
+                std::ptr::null_mut()
+            }
+        }
+        "
+    }
+
     fn generate_new_with_nullptr_func(&mut self, ty: &IrType, api_file: &IrFile) -> String {
         match ty {
             StructRef(st) => self
@@ -733,7 +737,8 @@ impl Generator {
                     fn new_with_null_ptr() -> Self {{
                         Self {{ {} }}
                     }}
-                }}"#,
+                }}
+            "#,
             rust_wire_type, body,
         )
     }
@@ -781,7 +786,8 @@ impl Generator {
                         {}
                     }}.into_dart()
                 }}
-            }}",
+            }}
+            ",
             enu.name, variants
         )
     }
@@ -829,7 +835,8 @@ impl Generator {
                         {}
                     }}.into_dart()
                 }}
-            }}",
+            }}
+            ",
             enu.name,
             variants.join("\n")
         )

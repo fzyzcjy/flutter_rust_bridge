@@ -13,6 +13,7 @@ use crate::api::*;
 use flutter_rust_bridge::*;
 
 // Section: imports
+
 use crate::data::MyEnum;
 use crate::data::MyStruct;
 
@@ -1635,6 +1636,7 @@ impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
 impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
 
 // Section: executor
+
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }
