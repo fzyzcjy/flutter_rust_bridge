@@ -52,6 +52,12 @@ clean:
     cd {{frb_flutter}} && flutter clean
     cd {{frb_flutter}}/rust && cargo clean
 
+publish_all:
+    (cd frb_codegen && cargo publish)
+    (cd frb_rust && cargo publish)
+    (cd frb_macros && cargo publish)
+    (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
+
 release old_version new_version:
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_codegen/Cargo.toml
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_rust/Cargo.toml
@@ -72,6 +78,8 @@ release old_version new_version:
     git status && git diff --staged | grep ''
     git commit -m "bump from {{old_version}} to {{new_version}}"
     git push
+
+    just publish_all
 
     awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
     echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
