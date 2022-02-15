@@ -56,7 +56,7 @@ release old_version new_version:
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_codegen/Cargo.toml
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_rust/Cargo.toml
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_macros/Cargo.toml
-    sed -i '' 's/version: "{{old_version}}"/version: "{{new_version}}"/g' frb_dart/pubspec.yaml
+    sed -i '' 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
 
     (cd frb_rust && cargo check)
     (cd frb_macros && cargo check)
