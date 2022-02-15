@@ -2,14 +2,9 @@
 
 ## What this library is & isn't
 
-This library is nothing but a code generator that helps your Flutter/Dart
-functions call Rust functions. Therefore, you may refer to external materials to
-learn Flutter, learn Rust, learn
-[Flutter FFI](https://flutter.dev/docs/development/platform-integration/c-interop)
-(Dart FFI) and so on. With material on the Internet, you will know how to create
-a mobile application using Flutter, and how that app can call Rust functions via
-Dart FFI (in the C ABI). Then this package comes in, and ease you from the
-burden to write down tons of boilerplate code ;)
+This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. It only generates some boilerplate code that you will manually write down otherwise. Moreover, we have provided detailed tutorials for you to play with examples, set up brand new apps, and integrate with existing apps.
+
+Of course, you may still need to have some basic familiarity with Flutter/Dart, Rust, and its [ffi](https://flutter.dev/docs/development/platform-integration/c-interop).
 
 ## Language features this library supports
 
@@ -44,32 +39,15 @@ Here are other functionalities:
 - Can separate generated definitions from implementations (see #298)
 - Imported symbols can be used normally, such as `use crate::data::{MyEnum, MyStruct};`
 
-## Command line arguments
+## Customize handler's behavior
 
-Simply add `--help` to see full documentation. The following is a (possibly outdated) snapshot when running the command with `--help`:
+By default, the `DefaultHandler` is used. You can implement your own `Handler` doing whatever you want. In order to do this, create a variable named `FLUTTER_RUST_BRIDGE_HANDLER` in the Rust input file (probably using `lazy_static`). You may not need to create a brand new struct implementing `Handler`, but instead, use the `SimpleHandler` and customize its generic arguments such as its `Executor`.
 
-```shell
-flutter_rust_bridge_codegen
+## Setup/init FFI call
 
-USAGE:
-    flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
+If you want that feature, have a look at `FlutterRustBridgeSetupMixin` in the Dart side.
 
-FLAGS:
-        --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
-    -h, --help                   Prints help information
-    -V, --version                Prints version information
+## Async in Rust
 
-OPTIONS:
-    -r, --rust-input <rust-input>                              Path of input Rust code
-    -d, --dart-output <dart-output>                            Path of output generated Dart code
-        --dart-decl-output <dart-decl-output>
-            If provided, generated Dart declaration code to this separate file
+If you want to use async/await or return a Future type from your Rust functions, please refer [this documentation](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/book/src/async_in_rust.md) for a detailed guide.
 
-    -c, --c-output <c-output>                                  Path of output generated C header
-        --rust-crate-dir <rust-crate-dir>                      Crate directory for your Rust project
-        --rust-output <rust-output>                            Path of output generated Rust code
-        --class-name <class-name>                              Generated class name
-        --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
-        --llvm-path <llvm-path>                                Path to the installed LLVM
-        --llvm-compiler-opts <llvm-compiler-opts>              LLVM compiler opts
-```
