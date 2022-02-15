@@ -49,5 +49,5 @@ If you want that feature, have a look at `FlutterRustBridgeSetupMixin` in the Da
 
 ## Async in Rust
 
-If you want to use async/await or return a Future type from your Rust functions, please refer [this documentation](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/book/src/async_in_rust.md) for a detailed guide.
+If you want to use async/await or return a Future type from your Rust functions, please refer to [this documentation](article/async_in_rust.md) for a detailed guide.
 

@@ -48,4 +48,6 @@
 - [Troubleshooting](troubleshooting.md)
 - [Command line arguments](command_line.md)
 - [Set up Flutter/Dart+Rust support from scratch](set_up_from_scratch.md)
+- [Articles](article.md)
+  - [Async in Rust](article/async_in_rust.md)
 
