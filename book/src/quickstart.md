@@ -19,7 +19,7 @@ With bindings automatically generated, you can simply use the following API in F
 Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
 ```
 
-<sub>**Remark**: Why `Future` in Flutter: Flutter is single-threaded. If not using future, just like what you do with plain-old Flutter bindings, your UI will be *stuck* as long as your Rust code is executing. If your Rust code run for a second, your UI will fully freeze for one second.</sub> 
+<sub>**Remark**: Why `Future` in Flutter - [this](feature_details.md).</sub> 
 
 ## Execute by yourself
 
@@ -48,8 +48,6 @@ If you have problems (such as failure on MacOS), please see the ["Troubleshootin
 Use the class in the generated `.dart` file, as if it is a normal Flutter/Dart class! (The abstract class at the top of the generated file.)
 
 Want to see a Flutter tutorial with UI? See [the tutorial section below](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-a-flutterrust-app). Want pure-Dart example? [Here is](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-pure-dart) another tutorial.
-
-<sub>**Remark**: If you are interested, why `abstract` class can be used - it is because of the [factory](https://dart.dev/guides/language/language-tour#factory-constructors) language feature.</sub>
 
 ## See more
 
