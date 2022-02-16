@@ -53,5 +53,3 @@ Add these lines to `Cargo.toml`:
 > **Note** \
 > If you wish to return a `Result`, keep in mind that this library can only run codegen
 > for [`anyhow::Result`](https://docs.rs/anyhow/latest/anyhow/type.Result.html).
-
-[`just`]: https://github.com/casey/just

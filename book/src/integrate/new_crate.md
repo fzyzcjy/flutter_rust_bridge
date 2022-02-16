@@ -18,8 +18,8 @@ folders for ease of config, e.g.:
 └── windows
 ```
 
-*Throughout this section we will refer to your crate name as $crate. Unless otherwise noted, the crate folder
-and the crate name will be used interchangeably.*
+Throughout this section we will refer to your crate name as $crate. Unless otherwise noted, the crate folder
+and the crate name will be used interchangeably.
 
 Next, add these two lines to your `Cargo.toml`:
 
