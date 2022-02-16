@@ -26,7 +26,7 @@
 
 # Part II: User Guide
 
-- [Using template to create your own project](template.md)
+- [Create new projects from a template](template.md)
   - [Creating a new project](template/setup.md)
     - [Android setup](template/setup_android.md)
     - [iOS setup](template/setup_ios.md)
