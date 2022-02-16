@@ -4,17 +4,20 @@ Next, we need to install a few build-time and runtime dependencies.
 
 ## Build-time dependencies
 
-These are the same dependencies listed in [Installing codegen](../generate/install.md), but to reiterate:
+These depdencies are required only in build-time:
 
 - [`flutter_rust_bridge_codegen`](https://lib.rs/crates/flutter_rust_bridge_codegen), the core codegen for Rust-Dart glue code
 - [`cbindgen`](https://lib.rs/crates/cbindgen), to generate C headers from Rust FFI code
 - [`ffigen`](https://pub.dev/packages/ffigen), to generate Dart code from C headers
+- [`cargo-xcode`](https://lib.rs/crates/cargo-xcode), to generate Xcode projects for iOS and MacOS
 - A working installation of LLVM, see [Installing LLVM](https://pub.dev/packages/ffigen#installing-llvm)
 
-An easy way to install the first three dependencies is to run these commands:
-```
+An easy way to install most of these dependencies is to run:
+```bash
 cargo install flutter_rust_bridge_codegen cbindgen
 dart pub global activate ffigen
+# if building for iOS or MacOS
+cargo install cargo-xcode
 ```
 
 ## Dart dependencies
@@ -27,6 +30,14 @@ following dependencies are also needed:
 - `freezed_annotation`
 
 Their usage is explained in [Using `build_runner`](../generate/build_runner.md).
+
+```bash
+flutter pub add flutter_rust_bridge
+# if using Dart codegen
+flutter pub add -d build_runner
+flutter pub add -d freezed
+flutter pub add freezed_annotation
+```
 
 ## Rust dependencies
 

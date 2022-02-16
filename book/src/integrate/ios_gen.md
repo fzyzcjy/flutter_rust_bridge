@@ -22,16 +22,18 @@ then in `$crate/src/lib.rs`:
 ## Running the codegen
 
 Before we can compile the library, we need to generate the bindings first.
-From the root of the app, run this command:
+From the root of the app, run these commands:
 
-```
+```bash
 flutter_rust_bridge_codegen \
     -r $crate/src/api.rs \
     -d lib/bridge_generated.dart \
     -c ios/Runner/bridge_generated.h
+# if MacOS project is present
+cp ios/Runner/bridge_generated.h macos/Runner/bridge_generated.h
 ```
 
-> **Note:** This will be the same command to use whenever you modify your Rust library code.
+> **Note:** These will be the same commands to use whenever you modify your Rust library code.
 
 Running this command yields the C header of the functions and types exported
 by the Rust library, which we will need to keep the symbols from being stripped.

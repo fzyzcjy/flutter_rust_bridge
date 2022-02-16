@@ -16,9 +16,14 @@ Next, add this line to your `CMakeLists.txt` files:
  # Generated plugin build rules, which manage building the plugins and adding
  # them to the application.
  include(flutter/generated_plugins.cmake)
- 
+
 +include(./rust.cmake)
 
  # === Installation ===
  # Support files are copied into place next to the executable, so that it can
 ```
+
+> **Note** \
+> This method depends on `FetchContent` and co. being available, which
+> means that users with CMake versions older than 3.11 will have to install Corrosion
+> permanently on their system. See [additional notes here](../template/setup_others.md).

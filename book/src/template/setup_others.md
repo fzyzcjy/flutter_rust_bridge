@@ -26,15 +26,3 @@ platforms the easiest even from scratch. The template uses [Corrosion] to expedi
 
 [Corrosion]: https://github.com/corrosion-rs/corrosion
 [this guide]: https://github.com/corrosion-rs/corrosion#installation
-
-## Simulator target for iOS
-
-As of XCode 13, the simulator is a separate target from the default iOS target (`aarch64-apple-ios-sim`).
-Among other things, this means that [cargo-lipo] is no longer sufficient nor necessary to create the appropriate binaries. This template uses the techniques demonstrated in the [rust-on-ios] repository and adapted for this particular use-case, but here's the basic gist (details explained in a separate page):
-
-1. Build the *static library* as part of the build process
-2. Link the library to the binary
-3. Import and use generated dummy headers, to prevent symbols being dropped
-
-[cargo-lipo]: https://github.com/TimNN/cargo-lipo
-[rust-on-ios]: https://github.com/brotskydotcom/rust-on-ios
