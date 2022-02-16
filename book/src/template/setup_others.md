@@ -24,5 +24,23 @@ platforms the easiest even from scratch. The template uses [Corrosion] to expedi
 -FetchContent_MakeAvailable(Corrosion)
 ```
 
+## Apple Silicon hosts
+
+For Apple Silicon hosts building Flutter apps, make sure to read [these notes](https://github.com/flutter/flutter/wiki/Developing-with-Flutter-on-Apple-Silicon)
+on the official Flutter repo.
+
+As of writing (Feb 2022) it is possible to build Flutter apps for other architectures using
+the arm64 Dart SDK, albeit unofficially. Using [`flutter_m1_patcher`](https://pub.dev/packages/flutter_m1_patcher)
+will replace the Dart SDK bundled with Flutter with your installation of Dart SDK via Homebrew.
+You will need to repeat this process after every `flutter upgrade`:
+
+```bash
+dart pub global activate flutter_m1_patcher
+flutterpatch
+```
+
+This process will be superseded by [flutter/flutter#60118](https://github.com/flutter/flutter/issues/60118) once
+it lands.
+
 [Corrosion]: https://github.com/corrosion-rs/corrosion
 [this guide]: https://github.com/corrosion-rs/corrosion#installation
