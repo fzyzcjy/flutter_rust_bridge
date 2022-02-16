@@ -19,6 +19,8 @@
   - [Handler](feature/handler.md)
   - [Initialization](feature/init.md)
   - [Async in Rust](feature/async_rust.md)
+  - [Cancellable tasks](feature/cancelable_task.md)
+  - [Object pools](feature/object_pool.md)
   - [Miscellaneous](feature/misc.md)
 
 # User Guide
