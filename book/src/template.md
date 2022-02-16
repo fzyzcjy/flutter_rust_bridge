@@ -1,7 +1,4 @@
-# Creating a new project
+# Using template to create your own project
 
-Start by creating a repository using the template from [flutter_rust_bridge_template]
-and cloning it. This template is set up to be able to `flutter run` for most platforms
-that Flutter supports.
+In this chapter, we are going to use create your own project from a code template. It seems a bit long, but it is just because we have tried to describe *every detail* that you may encounter.
 
-[flutter_rust_bridge_template]: https://github.com/Desdaemon/flutter_rust_bridge_template
