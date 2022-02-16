@@ -110,6 +110,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "antonok-edm",
+      "name": "Anton Lazarev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22821309?v=4",
+      "profile": "https://antonok.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

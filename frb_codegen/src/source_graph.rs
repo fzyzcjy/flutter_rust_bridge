@@ -1,8 +1,8 @@
 /*
     Things this doesn't currently support that it might need to later:
 
-    - Import renames (use a::b as c)
-    - Imports that start with two colons (use ::a::b)
+    - Import renames (use a::b as c) - these are silently ignored (!)
+    - Imports that start with two colons (use ::a::b) - these are also silently ignored (!)
     - As of writing, flutter_rust_bridge doesn't support imports from outside
       the current crate, though that's outside the scope of the code in this
       file
@@ -326,6 +326,12 @@ impl Module {
         }
     }
 
+    pub fn collect_structs_to_vec(&self) -> HashMap<String, &Struct> {
+        let mut ans = HashMap::new();
+        self.collect_structs(&mut ans);
+        ans
+    }
+
     pub fn collect_enums<'a>(&'a self, container: &mut HashMap<String, &'a Enum>) {
         let scope = self.scope.as_ref().unwrap();
         for scope_enum in &scope.enums {
@@ -335,6 +341,18 @@ impl Module {
             scope_module.collect_enums(container);
         }
     }
+
+    pub fn collect_enums_to_vec(&self) -> HashMap<String, &Enum> {
+        let mut ans = HashMap::new();
+        self.collect_enums(&mut ans);
+        ans
+    }
+}
+
+fn flatten_use_tree_rename_abort_warning(use_tree: &UseTree) {
+    debug!("WARNING: flatten_use_tree() found an import rename (use a::b as c). flatten_use_tree() will now abort.");
+    debug!("WARNING: This happened while parsing {:?}", use_tree);
+    debug!("WARNING: This use statement will be ignored.");
 }
 
 /// Takes a use tree and returns a flat list of use paths (list of string tokens)
@@ -346,6 +364,9 @@ impl Module {
 ///         ["a", "b", "c"],
 ///         ["a", "d", "e"]
 ///     ]
+///
+/// Warning: As of writing, import renames (import a::b as c) are silently
+/// ignored.
 fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
     // Vec<(path, is_complete)>
     let mut result = vec![(vec![], false)];
@@ -480,7 +501,8 @@ fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
                             }
                             // UseTree::Group(_) => panic!(),
                             UseTree::Rename(_) => {
-                                panic!("Import renames (use a::b as c) are not currently supported by flutter_rust_bridge")
+                                flatten_use_tree_rename_abort_warning(use_tree);
+                                return vec![];
                             }
                         }
 
@@ -488,7 +510,8 @@ fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
                     }
                 }
                 UseTree::Rename(_) => {
-                    panic!("Import renames (use a::b as c) are not currently supported by flutter_rust_bridge")
+                    flatten_use_tree_rename_abort_warning(use_tree);
+                    return vec![];
                 }
             }
         }
