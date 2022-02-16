@@ -1,8 +1,9 @@
 # Summary
 
-# Core Doc
+[Introduction](index.md)
 
-- [Introduction](index.md)
+# Part I: Core
+
 - [🧭 Quickstart](quickstart.md)
 - [📚 Tutorial: A Flutter+Rust app](tutorial_with_flutter.md)
 - [🎼 Features](feature.md)
@@ -23,7 +24,7 @@
   - [Object pools](feature/object_pool.md)
   - [Miscellaneous](feature/misc.md)
 
-# User Guide
+# Part II: User Guide
 - [Creating a new project](template.md)
   - [Android setup](template/setup_android.md)
   - [iOS setup](template/setup_ios.md)
@@ -57,7 +58,7 @@
   - [Integrating with Web](integrate/web.md)
   - [Using the dynamic library](integrate/usage.md)
 
-# More Doc
+# Part III: More Doc
 
 - [Tutorial: Pure Dart](tutorial_pure_dart.md)
 - [Safety concerns](safety.md)

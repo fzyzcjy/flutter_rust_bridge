@@ -1,27 +1,31 @@
 # Quickstart
 
-## 🧭 Show me the code
+## Show me the code
 
-What you write down (in Rust):
+Write down Rust functions and types normally:
 
-```rust
-pub fn my_function(a: MyTreeNode, b: SomeOtherStruct) -> Result<Vec<u8>> {
-    // ... do my heavy computations ...
-}
+```rust,noplayground
+// A normal Rust function ...
+pub fn my_function(a: TreeNode, b: MyEnum) -> Result<Vec<u8>> { /* ... */ }
 
-// you can use structs (even recursive)
+// ... with rich types
 pub struct TreeNode { pub value: String, pub children: Vec<MyTreeNode> }
+pub enum MyEnum { Hello(String), World(bool) }
 ```
 
-With bindings automatically generated, you can simply use the following API in Flutter/Dart. Nothing more.
+With bindings automatically generated, use it seamlessly in Flutter/Dart:
 
 ```dart
-Future<Uint8List> myFunction(MyTreeNode a, SomeOtherStruct b);
+var output = await api.myFunction(TreeNode(value: "root", ...), MyEnumHello("tom"));
 ```
 
-<sub>**Remark**: Why `Future` in Flutter - [this](feature_details.md).</sub> 
+<sub>PS. [Why](feature/async_dart.md) `await` in Flutter</sub> 
 
 ## Execute by yourself
+
+This section assumes you have knowledge for Flutter, Rust, FFI and so on, and thus is just a very brief installation guide.
+
+The later chapters discuss installation and usage in much more detail.
 
 ### Install
 
@@ -39,16 +43,6 @@ flutter_rust_bridge_codegen \
     --dart-output path/to/file/being/bridge_generated.dart
 ```
 
-If you have problems (such as failure on MacOS), please see the ["Troubleshooting"](troubleshooting.md) section.
-
-(For more options, use `--help`; To see what types and function signatures can you write in Rust, have a look at [this example](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).) (For Windows, you may need `\\` instead of `/` for paths.)
-
 ### Enjoy
 
-Use the class in the generated `.dart` file, as if it is a normal Flutter/Dart class! (The abstract class at the top of the generated file.)
-
-Want to see a Flutter tutorial with UI? See [the tutorial section below](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-a-flutterrust-app). Want pure-Dart example? [Here is](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-pure-dart) another tutorial.
-
-## See more
-
-Want to see more? Have a look at the next section for quickstarts or tutorials.
+Use the class in the generated `.dart` file, as if it is a normal Flutter/Dart class.
