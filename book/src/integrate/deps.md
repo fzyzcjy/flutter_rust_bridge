@@ -41,16 +41,17 @@ flutter pub add freezed_annotation
 
 ## Rust dependencies
 
-Similar to Dart, Rust requires a few dependencies to get going:
-- `flutter_rust_bridge`
-- `anyhow`, which supplies a common `Result` type for all functions
+Similar to Dart, Rust requires the `flutter_rust_bridge` runtime component for support.
 
 Add these lines to `Cargo.toml`:
 
 ```diff
 +[dependencies]
 +flutter_rust_bridge = "1"
-+anyhow = "1"
 ```
+
+> **Note** \
+> If you wish to return a `Result`, keep in mind that this library can only run codegen
+> for [`anyhow::Result`](https://docs.rs/anyhow/latest/anyhow/type.Result.html).
 
 [`just`]: https://github.com/casey/just

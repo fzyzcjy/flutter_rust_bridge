@@ -6,10 +6,8 @@ add a new file at `$crate/src/api.rs` and replace its contents with this snippet
 whatever suits your fancy:
 
 ```rust,ignore
-use anyhow::Result;
-
-pub fn greet() -> Result<String> {
-    Ok("Hello from Rust! 🦀".into())
+pub fn greet() -> String {
+    "Hello from Rust! 🦀".into()
 }
 ```
 
