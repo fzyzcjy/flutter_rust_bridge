@@ -9,13 +9,11 @@ use syn::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
-use crate::parser::ty::{GenericCapture, TypeParser};
+use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
-use lazy_static::lazy_static;
 
-lazy_static! {
-    static ref CAPTURE_RESULT: GenericCapture = GenericCapture::new("Result");
-}
+const STREAM_SINK_IDENT: &str = "StreamSink";
+const RESULT_IDENT: &str = "Result";
 
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
     let crate_map = Crate::new(manifest_path);
@@ -54,6 +52,53 @@ impl<'a> Parser<'a> {
         }
     }
 
+    /// Attempts to parse the type from the return part of a function signature. There is a special
+    /// case for top-level `Result` types.
+    pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
+        let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
+
+        match inner {
+            ty::SupportedInnerType::Path(ty::SupportedPathType {
+                ident,
+                generic: Some(generic),
+            }) if ident == RESULT_IDENT => Some(IrFuncOutput::ResultType(
+                self.type_parser.convert_to_ir_type(*generic)?,
+            )),
+            _ => Some(IrFuncOutput::Type(
+                self.type_parser.convert_to_ir_type(inner)?,
+            )),
+        }
+    }
+
+    /// Attempts to parse the type from an argument of a function signature. There is a special
+    /// case for top-level `StreamSink` types.
+    pub fn try_parse_fn_arg_type(&mut self, ty: &syn::Type) -> Option<IrFuncArg> {
+        match ty {
+            syn::Type::Path(syn::TypePath { path, .. }) => {
+                let last_segment = path.segments.last().unwrap();
+                if last_segment.ident == STREAM_SINK_IDENT {
+                    match &last_segment.arguments {
+                        syn::PathArguments::AngleBracketed(
+                            syn::AngleBracketedGenericArguments { args, .. },
+                        ) if args.len() == 1 => {
+                            // Unwrap is safe here because args.len() == 1
+                            match args.last().unwrap() {
+                                syn::GenericArgument::Type(t) => {
+                                    Some(IrFuncArg::StreamSinkType(self.type_parser.parse_type(t)))
+                                }
+                                _ => None,
+                            }
+                        }
+                        _ => None,
+                    }
+                } else {
+                    Some(IrFuncArg::Type(self.type_parser.parse_type(ty)))
+                }
+            }
+            _ => None,
+        }
+    }
+
     fn parse_function(&mut self, func: &ItemFn) -> IrFunc {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
@@ -72,19 +117,24 @@ impl<'a> Parser<'a> {
                 } else {
                     panic!("unexpected pat_type={:?}", pat_type)
                 };
-                let type_string = type_to_string(&pat_type.ty);
 
-                if let Some(stream_sink_inner_type) =
-                    self.type_parser.try_parse_stream_sink(&type_string)
-                {
-                    output = Some(stream_sink_inner_type);
-                    mode = Some(IrFuncMode::Stream);
-                } else {
-                    inputs.push(IrField {
-                        name: IrIdent::new(name),
-                        ty: self.type_parser.parse_type(&type_string),
-                        comments: extract_comments(&pat_type.attrs),
-                    });
+                match self.try_parse_fn_arg_type(&pat_type.ty).unwrap_or_else(|| {
+                    panic!(
+                        "Failed to parse function argument type `{}`",
+                        type_to_string(&pat_type.ty)
+                    )
+                }) {
+                    IrFuncArg::StreamSinkType(ty) => {
+                        output = Some(ty);
+                        mode = Some(IrFuncMode::Stream);
+                    }
+                    IrFuncArg::Type(ty) => {
+                        inputs.push(IrField {
+                            name: IrIdent::new(name),
+                            ty,
+                            comments: extract_comments(&pat_type.attrs),
+                        });
+                    }
                 }
             } else {
                 panic!("unexpected sig_input={:?}", sig_input);
@@ -94,12 +144,17 @@ impl<'a> Parser<'a> {
         if output.is_none() {
             output = Some(match &sig.output {
                 ReturnType::Type(_, ty) => {
-                    let type_string = type_to_string(ty);
-                    if let Some(inner) = CAPTURE_RESULT.captures(&type_string) {
-                        self.type_parser.parse_type(&inner)
-                    } else {
-                        fallible = false;
-                        self.type_parser.parse_type(&type_string)
+                    match self.try_parse_fn_output_type(ty).unwrap_or_else(|| {
+                        panic!(
+                            "Failed to parse function output type `{}`",
+                            type_to_string(ty)
+                        )
+                    }) {
+                        IrFuncOutput::ResultType(ty) => ty,
+                        IrFuncOutput::Type(ty) => {
+                            fallible = false;
+                            ty
+                        }
                     }
                 }
                 ReturnType::Default => {

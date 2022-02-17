@@ -1,9 +1,6 @@
 use std::collections::{HashMap, HashSet};
 use std::string::String;
 
-use lazy_static::lazy_static;
-use log::debug;
-use regex::Regex;
 use syn::*;
 
 use crate::ir::IrType::*;
@@ -12,15 +9,6 @@ use crate::ir::*;
 use crate::source_graph::{Enum, Struct};
 
 use crate::parser::{extract_comments, type_to_string};
-
-lazy_static! {
-    static ref CAPTURE_OPTION: GenericCapture = GenericCapture::new("Option");
-    static ref CAPTURE_BOX: GenericCapture = GenericCapture::new("Box");
-    static ref CAPTURE_VEC: GenericCapture = GenericCapture::new("Vec");
-    static ref CAPTURE_STREAM_SINK: GenericCapture = GenericCapture::new("StreamSink");
-    static ref CAPTURE_ZERO_COPY_BUFFER: GenericCapture = GenericCapture::new("ZeroCopyBuffer");
-    static ref CAPTURE_SYNC_RETURN: GenericCapture = GenericCapture::new("SyncReturn");
-}
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
@@ -53,134 +41,216 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-impl<'a> TypeParser<'a> {
-    pub fn parse_type(&mut self, ty: &str) -> IrType {
-        debug!("parse_type: {}", ty);
-        None.or_else(|| self.try_parse_primitive(ty))
-            .or_else(|| self.try_parse_api_type_delegate(ty))
-            .or_else(|| self.try_parse_list(ty))
-            .or_else(|| self.try_parse_box(ty))
-            .or_else(|| self.try_parse_option(ty))
-            .or_else(|| self.try_parse_struct(ty))
-            .or_else(|| self.try_parse_enum(ty))
-            .unwrap_or_else(|| panic!("parse_type failed for ty={}", ty))
-    }
+/// Generic intermediate representation of a type that can appear inside a function signature.
+pub enum SupportedInnerType {
+    /// Path types with up to 1 generic type argument on the final segment. All segments before
+    /// the last segment are ignored. The generic type argument must also be a valid
+    /// `SupportedInnerType`.
+    Path(SupportedPathType),
+    /// The unit type `()`.
+    Unit,
+}
 
-    pub fn try_parse_stream_sink(&mut self, ty: &str) -> Option<IrType> {
-        CAPTURE_STREAM_SINK
-            .captures(ty)
-            .map(|inner| self.parse_type(&inner))
-    }
-
-    fn try_parse_primitive(&mut self, ty: &str) -> Option<IrType> {
-        IrTypePrimitive::try_from_rust_str(ty).map(Primitive)
-    }
-
-    fn try_parse_api_type_delegate(&mut self, ty: &str) -> Option<IrType> {
-        match ty {
-            "SyncReturn<Vec<u8>>" => Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)),
-            "String" => Some(IrType::Delegate(IrTypeDelegate::String)),
-            "Vec<String>" => Some(IrType::Delegate(IrTypeDelegate::StringList)),
-            _ => {
-                if let Some(inner_type_str) = CAPTURE_ZERO_COPY_BUFFER.captures(ty) {
-                    if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) =
-                        self.try_parse_list(&inner_type_str)
-                    {
-                        return Some(IrType::Delegate(
-                            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
-                        ));
-                    }
-                }
-
-                None
-            }
+impl std::fmt::Display for SupportedInnerType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Path(p) => write!(f, "{}", p),
+            Self::Unit => write!(f, "()"),
         }
     }
+}
 
-    fn try_parse_list(&mut self, ty: &str) -> Option<IrType> {
-        if let Some(inner_type_str) = CAPTURE_VEC.captures(ty) {
-            match self.parse_type(&inner_type_str) {
-                Primitive(primitive) => Some(PrimitiveList(IrTypePrimitiveList { primitive })),
-                others => Some(GeneralList(IrTypeGeneralList {
-                    inner: Box::new(others),
-                })),
-            }
+/// Represents a named type, with an optional path and up to 1 generic type argument.
+pub struct SupportedPathType {
+    pub ident: syn::Ident,
+    pub generic: Option<Box<SupportedInnerType>>,
+}
+
+impl std::fmt::Display for SupportedPathType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        let ident = self.ident.to_string();
+        if let Some(generic) = &self.generic {
+            write!(f, "{}<{}>", ident, generic)
         } else {
-            None
+            write!(f, "{}", ident)
         }
     }
+}
 
-    fn try_parse_box(&mut self, ty: &str) -> Option<IrType> {
-        CAPTURE_BOX.captures(ty).map(|inner| {
-            Boxed(IrTypeBoxed {
-                exist_in_real_api: true,
-                inner: Box::new(self.parse_type(&inner)),
-            })
-        })
-    }
+impl SupportedInnerType {
+    /// Given a `syn::Type`, returns a simplified representation of the type if it's supported,
+    /// or `None` otherwise.
+    pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
+        match ty {
+            syn::Type::Path(syn::TypePath { path, .. }) => {
+                let last_segment = path.segments.last().unwrap().clone();
+                match last_segment.arguments {
+                    syn::PathArguments::None => Some(SupportedInnerType::Path(SupportedPathType {
+                        ident: last_segment.ident,
+                        generic: None,
+                    })),
+                    syn::PathArguments::AngleBracketed(a) => {
+                        let generic = match a.args.into_iter().next() {
+                            Some(syn::GenericArgument::Type(t)) => {
+                                Some(Box::new(SupportedInnerType::try_from_syn_type(&t)?))
+                            }
+                            _ => None,
+                        };
 
-    fn try_parse_option(&mut self, ty: &str) -> Option<IrType> {
-        CAPTURE_OPTION.captures(ty).map(|inner| {
-            let inner_option = CAPTURE_OPTION.captures(&inner);
-            if let Some(inner_option) = inner_option {
-                panic!(
-                    "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
-                    inner_option
-                );
-            };
-            match self.parse_type(&inner) {
-                Primitive(prim) => IrType::Optional(IrTypeOptional::new_prim(prim)),
-                st @ StructRef(_) => {
-                    IrType::Optional(IrTypeOptional::new_ptr(Boxed(IrTypeBoxed {
-                        inner: Box::new(st),
-                        exist_in_real_api: false,
-                    })))
+                        Some(SupportedInnerType::Path(SupportedPathType {
+                            ident: last_segment.ident,
+                            generic,
+                        }))
+                    }
+                    _ => None,
                 }
-                other => IrType::Optional(IrTypeOptional::new_ptr(other)),
             }
-        })
-    }
-
-    fn try_parse_struct(&mut self, ty: &str) -> Option<IrType> {
-        if !self.src_structs.contains_key(ty) {
-            return None;
+            syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
+                Some(SupportedInnerType::Unit)
+            }
+            _ => None,
         }
-
-        if !self.parsing_or_parsed_struct_names.contains(ty) {
-            self.parsing_or_parsed_struct_names.insert(ty.to_string());
-            let api_struct = self.parse_struct_core(ty);
-            self.struct_pool.insert(ty.to_string(), api_struct);
-        }
-
-        Some(StructRef(IrTypeStructRef {
-            name: ty.to_string(),
-        }))
-    }
-
-    fn try_parse_enum(&mut self, ty: &str) -> Option<IrType> {
-        if !self.src_enums.contains_key(ty) {
-            return None;
-        }
-
-        if self.parsed_enums.insert(ty.to_owned()) {
-            let enu = self.parse_enum_core(ty);
-            self.enum_pool.insert(ty.to_owned(), enu);
-        }
-
-        Some(EnumRef(IrTypeEnumRef {
-            name: ty.to_owned(),
-            is_struct: self
-                .enum_pool
-                .get(ty)
-                .map(IrEnum::is_struct)
-                .unwrap_or(true),
-        }))
     }
 }
 
 impl<'a> TypeParser<'a> {
-    fn parse_enum_core(&mut self, ty: &str) -> IrEnum {
-        let src_enum = self.src_enums[ty];
+    pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
+        let supported_type = SupportedInnerType::try_from_syn_type(ty)
+            .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
+
+        self.convert_to_ir_type(supported_type)
+            .unwrap_or_else(|| panic!("parse_type failed for ty={}", type_to_string(ty)))
+    }
+
+    /// Converts an inner type into an `IrType` if possible.
+    pub fn convert_to_ir_type(&mut self, ty: SupportedInnerType) -> Option<IrType> {
+        match ty {
+            SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
+            SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
+        }
+    }
+
+    /// Converts a path type into an `IrType` if possible.
+    pub fn convert_path_to_ir_type(&mut self, p: SupportedPathType) -> Option<IrType> {
+        let p_as_str = format!("{}", &p);
+        let ident_string = &p.ident.to_string();
+        if let Some(generic) = p.generic {
+            match ident_string.as_str() {
+                "SyncReturn" => {
+                    // Special-case SyncReturn<Vec<u8>>. SyncReturn for any other type is not
+                    // supported.
+                    match *generic {
+                        SupportedInnerType::Path(SupportedPathType {
+                            ident,
+                            generic: Some(generic),
+                        }) if ident == "Vec" => match *generic {
+                            SupportedInnerType::Path(SupportedPathType {
+                                ident,
+                                generic: None,
+                            }) if ident == "u8" => {
+                                Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8))
+                            }
+                            _ => None,
+                        },
+                        _ => None,
+                    }
+                }
+                "Vec" => {
+                    // Special-case Vec<String> as StringList
+                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
+                    {
+                        Some(IrType::Delegate(IrTypeDelegate::StringList))
+                    } else {
+                        self.convert_to_ir_type(*generic).map(|inner| match inner {
+                            Primitive(primitive) => {
+                                PrimitiveList(IrTypePrimitiveList { primitive })
+                            }
+                            others => GeneralList(IrTypeGeneralList {
+                                inner: Box::new(others),
+                            }),
+                        })
+                    }
+                }
+                "ZeroCopyBuffer" => {
+                    let inner = self.convert_to_ir_type(*generic);
+                    if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) = inner {
+                        Some(IrType::Delegate(
+                            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
+                        ))
+                    } else {
+                        None
+                    }
+                }
+                "Box" => self.convert_to_ir_type(*generic).map(|inner| {
+                    Boxed(IrTypeBoxed {
+                        exist_in_real_api: true,
+                        inner: Box::new(inner),
+                    })
+                }),
+                "Option" => {
+                    // Disallow nested Option
+                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
+                    {
+                        panic!(
+                            "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
+                            p_as_str
+                        );
+                    }
+                    self.convert_to_ir_type(*generic).map(|inner| match inner {
+                        Primitive(prim) => IrType::Optional(IrTypeOptional::new_prim(prim)),
+                        st @ StructRef(_) => {
+                            IrType::Optional(IrTypeOptional::new_ptr(Boxed(IrTypeBoxed {
+                                inner: Box::new(st),
+                                exist_in_real_api: false,
+                            })))
+                        }
+                        other => IrType::Optional(IrTypeOptional::new_ptr(other)),
+                    })
+                }
+                _ => None,
+            }
+        } else {
+            IrTypePrimitive::try_from_rust_str(ident_string)
+                .map(Primitive)
+                .or_else(|| {
+                    if ident_string == "String" {
+                        Some(IrType::Delegate(IrTypeDelegate::String))
+                    } else if self.src_structs.contains_key(ident_string) {
+                        if !self.parsing_or_parsed_struct_names.contains(ident_string) {
+                            self.parsing_or_parsed_struct_names
+                                .insert(ident_string.to_owned());
+                            let api_struct = self.parse_struct_core(&p.ident);
+                            self.struct_pool.insert(ident_string.to_owned(), api_struct);
+                        }
+
+                        Some(StructRef(IrTypeStructRef {
+                            name: ident_string.to_owned(),
+                        }))
+                    } else if self.src_enums.contains_key(ident_string) {
+                        if self.parsed_enums.insert(ident_string.to_owned()) {
+                            let enu = self.parse_enum_core(&p.ident);
+                            self.enum_pool.insert(ident_string.to_owned(), enu);
+                        }
+
+                        Some(EnumRef(IrTypeEnumRef {
+                            name: ident_string.to_owned(),
+                            is_struct: self
+                                .enum_pool
+                                .get(ident_string)
+                                .map(IrEnum::is_struct)
+                                .unwrap_or(true),
+                        }))
+                    } else {
+                        None
+                    }
+                })
+        }
+    }
+}
+
+impl<'a> TypeParser<'a> {
+    fn parse_enum_core(&mut self, ident: &syn::Ident) -> IrEnum {
+        let src_enum = self.src_enums[&ident.to_string()];
         let name = src_enum.ident.to_string();
         let path = src_enum.path.clone();
         let comments = extract_comments(&src_enum.src.attrs);
@@ -216,7 +286,7 @@ impl<'a> TypeParser<'a> {
                                             .map(ToString::to_string)
                                             .unwrap_or_else(|| format!("field{}", idx)),
                                     ),
-                                    ty: self.parse_type(&type_to_string(&field.ty)),
+                                    ty: self.parse_type(&field.ty),
                                     comments: extract_comments(&field.attrs),
                                 })
                                 .collect(),
@@ -228,8 +298,8 @@ impl<'a> TypeParser<'a> {
         IrEnum::new(name, path, comments, variants)
     }
 
-    fn parse_struct_core(&mut self, ty: &str) -> IrStruct {
-        let src_struct = self.src_structs[ty];
+    fn parse_struct_core(&mut self, ident: &syn::Ident) -> IrStruct {
+        let src_struct = self.src_structs[&ident.to_string()];
         let mut fields = Vec::new();
 
         let (is_fields_named, struct_fields) = match &src_struct.src.fields {
@@ -243,8 +313,7 @@ impl<'a> TypeParser<'a> {
                 .ident
                 .as_ref()
                 .map_or(format!("field{}", idx), ToString::to_string);
-            let field_type_str = type_to_string(&field.ty);
-            let field_type = self.parse_type(&field_type_str);
+            let field_type = self.parse_type(&field.ty);
             fields.push(IrField {
                 name: IrIdent::new(field_name),
                 ty: field_type,
@@ -262,26 +331,5 @@ impl<'a> TypeParser<'a> {
             is_fields_named,
             comments,
         }
-    }
-}
-
-pub struct GenericCapture {
-    regex: Regex,
-}
-
-impl GenericCapture {
-    pub fn new(cls_name: &str) -> Self {
-        let regex =
-            Regex::new(&*format!("^[^<]*{}<([a-zA-Z0-9_<>()\\[\\];]+)>$", cls_name)).unwrap();
-        Self { regex }
-    }
-
-    /// e.g. List<Tom> => return Some(Tom)
-    pub fn captures(&self, s: &str) -> Option<String> {
-        self.regex
-            .captures(s)
-            .iter()
-            .find_map(|capture| capture.get(1))
-            .map(|inner| inner.as_str().to_owned())
     }
 }
