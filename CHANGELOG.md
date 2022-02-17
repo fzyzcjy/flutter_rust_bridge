@@ -1,3 +1,7 @@
+## 1.19.2
+
+* Avoid converting syn types to strings before parsing #346 (thanks @antonok-edm)
+
 ## 1.19.1
 
 * Documentation overhaul (thanks @Desdaemon as well)
