@@ -16,6 +16,20 @@ impl IrFunc {
     }
 }
 
+/// Represents a function's output type
+#[derive(Debug, Clone)]
+pub enum IrFuncOutput {
+    ResultType(IrType),
+    Type(IrType),
+}
+
+/// Represents the type of an argument to a function
+#[derive(Debug, Clone)]
+pub enum IrFuncArg {
+    StreamSinkType(IrType),
+    Type(IrType),
+}
+
 #[derive(Debug, Clone, PartialOrd, PartialEq)]
 pub enum IrFuncMode {
     Normal,
