@@ -1,3 +1,7 @@
+## 1.19.1
+
+* Documentation overhaul (thanks @Desdaemon as well)
+
 ## 1.18.0
 
 * Refactor to beautify the implementation #338
