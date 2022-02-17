@@ -18,16 +18,22 @@ Create a new Rust project, say, at directory `rust` under the Flutter project.
 
 Edit `Cargo.toml` and add:
 
-```
+```diff
 [lib]
 name = "flutter_rust_bridge_example" # whatever you like
-crate-type = ["cdylib"] # <-- notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
+# notice this type. `cdylib` for android, and `staticlib` for iOS. I write down a script to change it before build.
++ crate-type = ["cdylib"]
 ```
 
 ## Step 4
 
-Follow the standard steps of "how iOS uses static libraries". For example, in XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`. Also, add your `libyour_generate_file.a` to `Link Binary With Libraries` in `Build Phases`. Add `binding.h` to `Copy Bundle Resources`. Add `#import "binding.h"` to `Runner-Bridging-Header`. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings. This lib has already generated a dummy method for you, so you simply need to add `print("dummy_value=\(dummy_method_to_enforce_bundling())");` to swift file's `override func application(...) {}`, and this will prevent symbol stripping - especially in the release build for iOS (i.e. when building ipa file or releasing to App Store). Notice that, we have to use that `dummy_method_to_enforce_bundling()`, otherwise the symbols will not maintain in the release build, and Flutter will complain it cannot find the symbols.
+Follow the standard steps of "how iOS uses static libraries".
+1. In XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`.
+2. Add your `lib{crate}.a` to `Link Binary With Libraries` in `Build Phases`.
+3. Add `binding.h` to `Copy Bundle Resources`.
+4. Add `#import "binding.h"` to `Runner-Bridging-Header`.
+5. Last but not least, add a never-to-be-executed dummy function in Swift that calls any of the generated C bindings. This lib has already generated a dummy method for you, so you simply need to add `print("dummy_value=\(dummy_method_to_enforce_bundling())");` to swift file's `override func application(...) {}`, and this will prevent symbol stripping - especially in the release build for iOS (i.e. when building ipa file or releasing to App Store). Notice that, we have to use that `dummy_method_to_enforce_bundling()`, otherwise the symbols will not maintain in the release build, and Flutter will complain it cannot find the symbols.
 
 ## Step 5
 
-Lastly, in order to build Rust automatically when you are building Flutter, follow [this tutorial](https://stackoverflow.com/q/69515032/4619958).
+Lastly, in order to build the Rust library automatically when you are building Flutter, follow [this tutorial](https://stackoverflow.com/q/69515032/4619958).
