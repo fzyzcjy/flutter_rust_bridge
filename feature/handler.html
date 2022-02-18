@@ -136,7 +136,42 @@
                     <main>
                         <h1 id="handler"><a class="header" href="#handler">Handler</a></h1>
 <p>By default, the <code>DefaultHandler</code> is used. You can implement your own <code>Handler</code> doing whatever you want. In order to do this, create a variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in the Rust input file (probably using <code>lazy_static</code>). You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
-<p>For example, you may want to add logging logic. Or, you may want to report the captured errors to your APM service instead of printing it.</p>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<h3 id="example-report-errors-to-your-backend-in-addition-to-telling-dart"><a class="header" href="#example-report-errors-to-your-backend-in-addition-to-telling-dart">Example: Report errors to your backend in addition to telling Dart</a></h3>
+<pre><code class="language-rust noplayground">pub struct MyErrorHandler(ReportDartErrorHandler);
+
+impl ErrorHandler for MyErrorHandler {
+    fn handle_error(&amp;self, port: i64, error: handler::Error) {
+        send_error_to_your_backend(&amp;error);
+        self.0.handle_error(port, error)
+    }
+    
+    ...
+}
+</code></pre>
+<h3 id="example-log-when-execution-starts-and-ends"><a class="header" href="#example-log-when-execution-starts-and-ends">Example: Log when execution starts and ends</a></h3>
+<pre><code class="language-rust noplayground">pub struct MyExecutor(ThreadPoolExecutor&lt;MyErrorHandler&gt;);
+
+impl Executor for MyExecutor {
+    fn execute&lt;TaskFn, TaskRet&gt;(&amp;self, wrap_info: WrapInfo, task: TaskFn) {
+        let debug_name_string = wrap_info.debug_name.to_string();
+        self.thread_pool_executor
+            .execute(wrap_info, move |task_callback| {
+                Self::log_around(&amp;debug_name_string, move || task(task_callback))
+            })
+    }
+}
+
+impl MyExecutor {
+    fn log_around&lt;F, R&gt;(debug_name: &amp;str, f: F) -&gt; R where F: FnOnce() -&gt; R {
+        let start = Instant::now();
+        debug!(&quot;(Rust) execute [{}] start&quot;, debug_name);
+        let ret = f();
+        debug!(&quot;(Rust) execute [{}] end delta_time={}ms&quot;, debug_name, start.elapsed().as_millis());
+        ret
+    }
+}
+</code></pre>
 
                     </main>
 

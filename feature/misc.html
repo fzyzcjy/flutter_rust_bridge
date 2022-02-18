@@ -135,9 +135,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
-<ul>
-<li>You can separate generated definitions from implementations (see #298)</li>
-</ul>
+<h2 id="separate-generated-definitions-from-implementations"><a class="header" href="#separate-generated-definitions-from-implementations">Separate generated definitions from implementations</a></h2>
+<p>The generated <code>bridge_generated.dart</code> by default contains definitions of the APIs as well as the implementations. With the flag <code>--dart-decl-output</code>, the two can be separated, and the definitions will not contain anything like <code>dart:ffi</code>.</p>
+<p>More information: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/298">#298</a>.</p>
 
                     </main>
 

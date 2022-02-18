@@ -135,41 +135,20 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="quickstart"><a class="header" href="#quickstart">Quickstart</a></h1>
-<h2 id="show-me-the-code"><a class="header" href="#show-me-the-code">Show me the code</a></h2>
-<p>Write down Rust functions and types normally:</p>
+<p>Write down Rust functions and types normally.</p>
 <pre><code class="language-rust ignore">// A normal Rust function ...
-pub fn my_function(a: TreeNode, b: MyEnum) -&gt; Result&lt;Vec&lt;u8&gt;&gt; { /* ... */ }
+pub fn draw_tree(root: TreeNode, mode: DrawMode) -&gt; Result&lt;Vec&lt;u8&gt;&gt; { /* ... */ }
 
 // ... with rich types
 pub struct TreeNode { pub value: String, pub children: Vec&lt;MyTreeNode&gt; }
-pub enum MyEnum { Hello(String), World(bool) }
+pub enum DrawMode { Colorful {palette: String}, Grayscale }
+</code></pre>
+<p>Run the code generator. (It needs some installation steps. You may refer to <a href="tutorial_with_flutter.html">the tutorial</a>, <a href="template.html">create new projects from a template</a> or <a href="integrate.html">integrating with existing projects</a> for details.)</p>
+<pre><code>flutter_rust_bridge_codegen --rust-input path/to/api.rs --dart-output path/to/bridge_generated.dart
 </code></pre>
 <p>With bindings automatically generated, use it seamlessly in Flutter/Dart:</p>
-<pre><code class="language-dart">var output = await api.myFunction(
-    TreeNode(value: &quot;root&quot;, ...),
-    MyEnumHello(&quot;tom&quot;));
+<pre><code class="language-dart">api.drawTree(TreeNode(value: &quot;root&quot;, ...), Colorful(palette: &quot;viridis&quot;));
 </code></pre>
-<p><sub>PS. <a href="feature/async_dart.html">Why</a> <code>await</code> in Flutter</sub> </p>
-<h2 id="execute-by-yourself"><a class="header" href="#execute-by-yourself">Execute by yourself</a></h2>
-<p>This section assumes you have knowledge for Flutter, Rust, FFI and so on,
-and thus is extremely abbreviated.
-For more in-depth guides, see <a href="template.html">Create new projects from a template</a>
-or <a href="integrate.html">Integrating with existing projects</a>.</p>
-<h3 id="install"><a class="header" href="#install">Install</a></h3>
-<ul>
-<li>Install <code>cbindgen</code>: <code>cargo install cbindgen</code> <sub>(may <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/53#issuecomment-939588321">need latest version</a>, thanks @gmorenz)</sub></li>
-<li>Install <code>ffigen</code>:  <code>dart pub global activate ffigen</code>, and <a href="https://pub.dev/packages/ffigen#installing-llvm">install LLVM</a>.</li>
-<li>Install the codegen program: <code>cargo install flutter_rust_bridge_codegen</code>.</li>
-<li>Add <code>flutter_rust_bridge = &quot;1.0&quot;</code> (where <code>1.0</code> should be the latest version) to Rust's <code>Cargo.toml</code>.</li>
-<li>Add <code>flutter_rust_bridge: ^1.0</code> (same as above, should be latest version) to Flutter/Dart's <code>pubspec.yaml</code> under the section of <code>dependencies</code>.</li>
-</ul>
-<h3 id="run"><a class="header" href="#run">Run</a></h3>
-<pre><code class="language-bash">flutter_rust_bridge_codegen \
-    --rust-input path/to/api.rs \
-    --dart-output path/to/bridge_generated.dart
-</code></pre>
-<h3 id="enjoy"><a class="header" href="#enjoy">Enjoy</a></h3>
-<p>Use the class in the generated <code>.dart</code> file, as if it is a normal Flutter/Dart class.</p>
 
                     </main>
 

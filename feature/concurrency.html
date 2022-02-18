@@ -136,6 +136,19 @@
                     <main>
                         <h1 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h1>
 <p>Multiple Rust functions can be running at the same time, and they will be running concurrently. This is because by default we use a thread pool to execute the Rust functions. However, you can fully customize this behavior (and even throw away the thread pool).</p>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Consider the following Rust code:</p>
+<pre><code class="language-rust noplayground">pub fn compute() {
+  thread::sleep(Duration::from_millis(1000));
+}
+</code></pre>
+<p>And the following Dart code using it:</p>
+<pre><code class="language-dart">var a = compute();
+var b = compute();
+var c = compute();
+await Future.wait([a, b, c]); // You may need to learn `Future` and `async` in Dart to understand this
+</code></pre>
+<p>Then it will take 1 second instead of 3 seconds to complete the code, because multiple <code>compute</code> can run concurrently.</p>
 
                     </main>
 
