@@ -145,37 +145,38 @@ jobs:
         id: run_flutter_integration_test
         continue-on-error: true
         timeout-minutes: 30
-        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
+        uses: reactivecircus/android-emulator-runner@v2
         with:
-          cmd: |
+          api-level: 29
+          arch: x86_64
+          profile: ${{ matrix.device }}
+          script: |
             cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
-          api: 29
-          tag: default
-          abi: x86_64
-          hardwareProfile: ${{ matrix.device }}
 
-      # # flaky GitHub Action testing environment... have to retry
-      # # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
-      # - name: Run Flutter integration tests (retry)
-      #   id: run_flutter_integration_test_retry_1
-      #   if: steps.run_flutter_integration_test.outcome == 'failure'
-      #   continue-on-error: true
-      #   timeout-minutes: 30
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     api-level: 29
-      #     script: |
-      #       cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+      # flaky GitHub Action testing environment... have to retry
+      # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
+      - name: Run Flutter integration tests (retry)
+        id: run_flutter_integration_test_retry_1
+        if: steps.run_flutter_integration_test.outcome == 'failure'
+        continue-on-error: true
+        timeout-minutes: 30
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          arch: x86_64
+          profile: ${{ matrix.device }}
+          script: |
+            cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
 
       # https://github.community/t/how-to-retry-a-failed-step-in-github-actions-workflow/125880
-      # - name: Set status
-      #   if: always()
-      #   run: |
-      #     if ${{ steps.run_flutter_integration_test.outcome=='success' || steps.run_flutter_integration_test_retry_1.outcome=='success' }}; then
-      #        echo fine
-      #     else
-      #        exit 1
-      #     fi
+      - name: Set status
+        if: always()
+        run: |
+          if ${{ steps.run_flutter_integration_test.outcome=='success' || steps.run_flutter_integration_test_retry_1.outcome=='success' }}; then
+             echo fine
+          else
+             exit 1
+          fi
 
   flutter_windows_test:
     name: Flutter (Windows) integration test
