@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add examples to documentation
+
 ## 1.19.2
 
 * Avoid converting syn types to strings before parsing #346 (thanks @antonok-edm)

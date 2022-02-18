@@ -10,7 +10,7 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | [`enum { A, B }`](lang_enum.md)                   | `enum`                      |
 | [`enum { A(..) }`](lang_enum.md)                  | `@freezed class`            |
 | [`use ...`](lang_use.md)                          | act normally                |
-| `Option<T>`                                       | `T?`                        |
+| [`Option<T>`](lang_option.md)                     | `T?`                        |
 | `Box<T>`                                          | `T`                         |
 | comments                                          | same                        |
 | `Result::Err`, panic                              | `throw Exception`           |
