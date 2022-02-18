@@ -24,6 +24,8 @@ gen-bridge-rust-only: build
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
                 -c {{frb_flutter}}/ios/Runner/bridge_generated.h \
                 --dart-format-line-length {{line_length}}
+    cp {{frb_flutter}}/ios/Runner/bridge_generated.h \
+       {{frb_flutter}}/macos/Runner/bridge_generated.h
 
 alias g := gen-bridge
 gen-bridge: gen-bridge-rust-only
