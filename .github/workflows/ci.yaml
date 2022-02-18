@@ -231,10 +231,8 @@ jobs:
         run: flutter test -d macos integration_test/main.dart --verbose
 
   flutter_linux_test:
-    # Disabled due to issues running Linux GUI applications in CI
-    if: false
     name: Flutter (Linux) integration test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -246,7 +244,7 @@ jobs:
           toolchain: stable
 
       # From Flutter Gallery CI
-      - uses: subosito/flutter-action@4389e6cbc6cb8a4b18c628ff96ff90be0e926aa8
+      - uses: subosito/flutter-action@v1
         with:
           channel: master
 
