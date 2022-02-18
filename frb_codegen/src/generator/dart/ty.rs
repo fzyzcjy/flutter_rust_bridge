@@ -45,6 +45,7 @@ pub enum TypeDartGenerator<'a> {
     StructRef(TypeStructRefGenerator<'a>),
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
+    Opaque(TypeOpaqueGenerator<'a>),
 }
 
 impl<'a> TypeDartGenerator<'a> {
@@ -59,6 +60,7 @@ impl<'a> TypeDartGenerator<'a> {
             StructRef(ir) => TypeStructRefGenerator { ir, context }.into(),
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
+            Opaque(ir) => TypeOpaqueGenerator { ir, context }.into(),
         }
     }
 }

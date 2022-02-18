@@ -510,7 +510,7 @@ pub extern "C" fn wire_handle_opaque_repr(port_: i64, value: *mut wire_RwLockI32
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_BoxDartDebug {
+pub struct wire_BoxDynDartDebug {
     ptr: *const core::ffi::c_void,
 }
 
@@ -670,7 +670,7 @@ pub struct wire_OpaqueBag {
     primitive: *mut wire_RwLockI32,
     array: *mut wire_RwLockIsize10,
     lifetime: *mut wire_Str,
-    trait_obj: *mut wire_BoxDartDebug,
+    trait_obj: *mut wire_BoxDynDartDebug,
 }
 
 #[repr(C)]
@@ -737,8 +737,8 @@ pub struct KitchenSink_Enums {
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_BoxDartDebug() -> *mut wire_BoxDartDebug {
-    support::new_leak_box_ptr(wire_BoxDartDebug::new_with_null_ptr())
+pub extern "C" fn new_BoxDynDartDebug() -> *mut wire_BoxDynDartDebug {
+    support::new_leak_box_ptr(wire_BoxDynDartDebug::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -986,7 +986,7 @@ where
     }
 }
 
-impl Wire2Api<Opaque<Box<dyn DartDebug>>> for *mut wire_BoxDartDebug {
+impl Wire2Api<Opaque<Box<dyn DartDebug>>> for *mut wire_BoxDynDartDebug {
     fn wire2api(self) -> Opaque<Box<dyn DartDebug>> {
         unsafe {
             let ans = support::box_from_leak_ptr(self);
@@ -1491,14 +1491,13 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
-impl NewWithNullPtr for wire_BoxDartDebug {
+impl NewWithNullPtr for wire_BoxDynDartDebug {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
         }
     }
 }
-
 impl NewWithNullPtr for wire_RwLockI32 {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1506,7 +1505,6 @@ impl NewWithNullPtr for wire_RwLockI32 {
         }
     }
 }
-
 impl NewWithNullPtr for wire_RwLockIsize10 {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1514,7 +1512,6 @@ impl NewWithNullPtr for wire_RwLockIsize10 {
         }
     }
 }
-
 impl NewWithNullPtr for wire_Str {
     fn new_with_null_ptr() -> Self {
         Self {

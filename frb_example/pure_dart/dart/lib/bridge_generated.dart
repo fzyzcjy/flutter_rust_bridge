@@ -86,6 +86,30 @@ abstract class FlutterRustBridgeExample {
   Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
 
   Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
+
+  Future<OpaqueBag> handleOpaque({OpaqueBag? value, dynamic hint});
+
+  Future<String?> handleOpaqueRepr({required RwLockI32 value, dynamic hint});
+}
+
+@sealed
+class BoxDynDartDebug extends FrbOpaque {
+  BoxDynDartDebug._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+@sealed
+class RwLockI32 extends FrbOpaque {
+  RwLockI32._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+@sealed
+class RwLockIsize10 extends FrbOpaque {
+  RwLockIsize10._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+@sealed
+class Str extends FrbOpaque {
+  Str._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class Attribute {
@@ -233,7 +257,7 @@ class OpaqueBag {
   final RwLockI32 primitive;
   final RwLockIsize10 array;
   final Str lifetime;
-  final BoxDartDebug traitObj;
+  final BoxDynDartDebug traitObj;
 
   OpaqueBag({
     required this.primitive,
@@ -652,10 +676,32 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         hint: hint,
       ));
 
+  Future<OpaqueBag> handleOpaque({OpaqueBag? value, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_opaque(port_, _api2wire_opt_box_autoadd_opaque_bag(value)),
+        parseSuccessData: _wire2api_opaque_bag,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_opaque",
+          argNames: ["value"],
+        ),
+        argValues: [value],
+        hint: hint,
+      ));
+
+  Future<String?> handleOpaqueRepr({required RwLockI32 value, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_opaque_repr(port_, _api2wire_RwLockI32(value)),
+        parseSuccessData: _wire2api_opt_String,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_opaque_repr",
+          argNames: ["value"],
+        ),
+        argValues: [value],
+        hint: hint,
+      ));
+
   // Section: api2wire
-  ffi.Pointer<wire_BoxDartDebug> _api2wire_BoxDartDebug(BoxDartDebug raw) {
-    final ptr = inner.new_BoxDartDebug();
-    _api_fill_to_wire_BoxDartDebug(raw, ptr);
+  ffi.Pointer<wire_BoxDynDartDebug> _api2wire_BoxDynDartDebug(BoxDynDartDebug raw) {
+    final ptr = inner.new_BoxDynDartDebug();
+    _api_fill_to_wire_BoxDynDartDebug(raw, ptr);
     return ptr;
   }
 
@@ -1014,7 +1060,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   // Section: api_fill_to_wire
-  void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, ffi.Pointer<wire_BoxDartDebug> wireObj) {
+  void _api_fill_to_wire_BoxDynDartDebug(BoxDynDartDebug apiObj, ffi.Pointer<wire_BoxDynDartDebug> wireObj) {
     wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
   }
 
@@ -1118,32 +1164,27 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       wireObj.kind.ref.Primitives.ref.int32 = _api2wire_i32(apiObj.int32);
       wireObj.kind.ref.Primitives.ref.float64 = _api2wire_f64(apiObj.float64);
       wireObj.kind.ref.Primitives.ref.boolean = _api2wire_bool(apiObj.boolean);
-      return;
     }
     if (apiObj is Nested) {
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
       wireObj.kind.ref.Nested.ref.field0 = _api2wire_box_kitchen_sink(apiObj.field0);
-      return;
     }
     if (apiObj is Optional) {
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_KitchenSink_Optional();
       wireObj.kind.ref.Optional.ref.field0 = _api2wire_opt_box_autoadd_i32(apiObj.field0);
       wireObj.kind.ref.Optional.ref.field1 = _api2wire_opt_box_autoadd_i32(apiObj.field1);
-      return;
     }
     if (apiObj is Buffer) {
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_KitchenSink_Buffer();
       wireObj.kind.ref.Buffer.ref.field0 = _api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
-      return;
     }
     if (apiObj is Enums) {
       wireObj.tag = 5;
       wireObj.kind = inner.inflate_KitchenSink_Enums();
       wireObj.kind.ref.Enums.ref.field0 = _api2wire_weekdays(apiObj.field0);
-      return;
     }
   }
 
@@ -1171,7 +1212,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     wireObj.primitive = _api2wire_RwLockI32(apiObj.primitive);
     wireObj.array = _api2wire_RwLockIsize10(apiObj.array);
     wireObj.lifetime = _api2wire_Str(apiObj.lifetime);
-    wireObj.trait_obj = _api2wire_BoxDartDebug(apiObj.traitObj);
+    wireObj.trait_obj = _api2wire_BoxDynDartDebug(apiObj.traitObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -1197,8 +1238,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 }
 
 // Section: wire2api
-BoxDartDebug _wire2api_BoxDartDebug(dynamic raw) {
-  return BoxDartDebug._(raw[0], raw[1], raw[2]);
+BoxDynDartDebug _wire2api_BoxDynDartDebug(dynamic raw) {
+  return BoxDynDartDebug._(raw[0], raw[1], raw[2]);
 }
 
 RwLockI32 _wire2api_RwLockI32(dynamic raw) {
@@ -1482,7 +1523,7 @@ OpaqueBag _wire2api_opaque_bag(dynamic raw) {
     primitive: _wire2api_RwLockI32(arr[0]),
     array: _wire2api_RwLockIsize10(arr[1]),
     lifetime: _wire2api_Str(arr[2]),
-    traitObj: _wire2api_BoxDartDebug(arr[3]),
+    traitObj: _wire2api_BoxDynDartDebug(arr[3]),
   );
 }
 
@@ -2104,6 +2145,65 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_use_imported_enumPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_use_imported_enum');
   late final _wire_use_imported_enum = _wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
+
+  void wire_handle_opaque(
+    int port_,
+    ffi.Pointer<wire_OpaqueBag> value,
+  ) {
+    return _wire_handle_opaque(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_handle_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueBag>)>>('wire_handle_opaque');
+  late final _wire_handle_opaque = _wire_handle_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueBag>)>();
+
+  void wire_handle_opaque_repr(
+    int port_,
+    ffi.Pointer<wire_RwLockI32> value,
+  ) {
+    return _wire_handle_opaque_repr(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_handle_opaque_reprPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_RwLockI32>)>>('wire_handle_opaque_repr');
+  late final _wire_handle_opaque_repr =
+      _wire_handle_opaque_reprPtr.asFunction<void Function(int, ffi.Pointer<wire_RwLockI32>)>();
+
+  ffi.Pointer<wire_BoxDynDartDebug> new_BoxDynDartDebug() {
+    return _new_BoxDynDartDebug();
+  }
+
+  late final _new_BoxDynDartDebugPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxDynDartDebug> Function()>>('new_BoxDynDartDebug');
+  late final _new_BoxDynDartDebug = _new_BoxDynDartDebugPtr.asFunction<ffi.Pointer<wire_BoxDynDartDebug> Function()>();
+
+  ffi.Pointer<wire_RwLockI32> new_RwLockI32() {
+    return _new_RwLockI32();
+  }
+
+  late final _new_RwLockI32Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_RwLockI32> Function()>>('new_RwLockI32');
+  late final _new_RwLockI32 = _new_RwLockI32Ptr.asFunction<ffi.Pointer<wire_RwLockI32> Function()>();
+
+  ffi.Pointer<wire_RwLockIsize10> new_RwLockIsize10() {
+    return _new_RwLockIsize10();
+  }
+
+  late final _new_RwLockIsize10Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_RwLockIsize10> Function()>>('new_RwLockIsize10');
+  late final _new_RwLockIsize10 = _new_RwLockIsize10Ptr.asFunction<ffi.Pointer<wire_RwLockIsize10> Function()>();
+
+  ffi.Pointer<wire_Str> new_Str() {
+    return _new_Str();
+  }
+
+  late final _new_StrPtr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_Str> Function()>>('new_Str');
+  late final _new_Str = _new_StrPtr.asFunction<ffi.Pointer<wire_Str> Function()>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
@@ -2731,6 +2831,32 @@ class KitchenSink_Enums extends ffi.Struct {
 class wire_MyStruct extends ffi.Struct {
   @ffi.Uint8()
   external int content;
+}
+
+class wire_RwLockI32 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_RwLockIsize10 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_Str extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_BoxDynDartDebug extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_OpaqueBag extends ffi.Struct {
+  external ffi.Pointer<wire_RwLockI32> primitive;
+
+  external ffi.Pointer<wire_RwLockIsize10> array;
+
+  external ffi.Pointer<wire_Str> lifetime;
+
+  external ffi.Pointer<wire_BoxDynDartDebug> trait_obj;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;

@@ -260,7 +260,9 @@ impl Module {
                                 let source_rust_content = fs::read_to_string(&file_path).unwrap();
                                 debug!("Trying to parse {:?}", file_path);
                                 Some(ModuleSource::File(
-                                    syn::parse_file(&source_rust_content).unwrap(),
+                                    syn::parse_file(&source_rust_content).unwrap_or_else(|err| {
+                                        panic!("Failed to read {}: {}", file_path.to_string_lossy(), err)
+                                    }),
                                 ))
                             } else {
                                 None
