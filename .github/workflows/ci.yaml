@@ -130,7 +130,7 @@ jobs:
           java-version: '8.x' # "betterprogramming.pub" says must be java "8"
 
       - name: Install cargo ndk
-        run: cargo install cargo-ndk && rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android i686-linux-android
+        run: cargo install cargo-ndk && rustup target add x86_64-linux-android
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
@@ -139,7 +139,7 @@ jobs:
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
         # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
-        run: cargo ndk -t armeabi-v7a -t arm64-v8a -t x86 -t x86_64 -o ../android/app/src/main/jniLibs build && find ../android/app/src/main/jniLibs
+        run: cargo ndk -t x86_64 -o ../android/app/src/main/jniLibs build
 
       - name: Run Flutter integration tests
         id: run_flutter_integration_test
@@ -151,7 +151,8 @@ jobs:
             cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
           api: 29
           tag: default
-          abi: x86
+          abi: x86_64
+          hardwareProfile: ${{ matrix.device }}
 
       # # flaky GitHub Action testing environment... have to retry
       # # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
