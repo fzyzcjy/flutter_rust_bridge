@@ -3,7 +3,7 @@
 Simply add `--help` to see full documentation. The following is a (possibly outdated) snapshot when running the command with `--help`:
 
 ```shell
-flutter_rust_bridge_codegen
+flutter_rust_bridge_codegen 1.19.2
 
 USAGE:
     flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output <dart-output> --rust-input <rust-input>
@@ -24,6 +24,6 @@ OPTIONS:
         --rust-output <rust-output>                            Path of output generated Rust code
         --class-name <class-name>                              Generated class name
         --dart-format-line-length <dart-format-line-length>    Line length for dart formatting
-        --llvm-path <llvm-path>                                Path to the installed LLVM
+        --llvm-path <llvm-path>...                             Path to the installed LLVM
         --llvm-compiler-opts <llvm-compiler-opts>              LLVM compiler opts
 ```
