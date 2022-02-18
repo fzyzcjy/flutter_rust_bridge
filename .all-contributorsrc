@@ -30,6 +30,15 @@
       ]
     },
     {
+      "login": "SecondFlight",
+      "name": "Joshua Wade",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6700184?v=4",
+      "profile": "https://github.com/SecondFlight",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "smw-wagnerma",
       "name": "Marcel",
       "avatar_url": "https://avatars.githubusercontent.com/u/66412697?v=4",
@@ -94,19 +103,19 @@
       ]
     },
     {
-      "login": "SecondFlight",
-      "name": "Joshua Wade",
-      "avatar_url": "https://avatars.githubusercontent.com/u/6700184?v=4",
-      "profile": "https://sndf.li/",
+      "login": "valeth",
+      "name": "Patrick Auernig",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3198362?v=4",
+      "profile": "https://valeth.me",
       "contributions": [
         "code"
       ]
     },
     {
-      "login": "valeth",
-      "name": "Patrick Auernig",
-      "avatar_url": "https://avatars.githubusercontent.com/u/3198362?v=4",
-      "profile": "https://valeth.me",
+      "login": "antonok-edm",
+      "name": "Anton Lazarev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22821309?v=4",
+      "profile": "https://antonok.com",
       "contributions": [
         "code"
       ]

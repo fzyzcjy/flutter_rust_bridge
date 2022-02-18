@@ -1,17 +1,71 @@
 # Summary
 
-# Core Doc
+[Introduction](index.md)
 
-- [Introduction](index.md)
+# Part I: Core
+
 - [🧭 Quickstart](quickstart.md)
 - [📚 Tutorial: A Flutter+Rust app](tutorial_with_flutter.md)
+- [🎼 Features](feature.md)
+  - [Language translations](feature/lang.md)
+    - [Vec](feature/lang_vec.md)
+    - [Struct](feature/lang_struct.md)
+    - [Enum](feature/lang_enum.md)
+    - [Use](feature/lang_use.md)
+    - [Option](feature/lang_option.md)
+  - [Zero copy](feature/zero_copy.md)
+  - [Stream / Iterator](feature/stream.md)
+  - [Async in Dart](feature/async_dart.md)
+  - [Sync in Dart](feature/sync_dart.md)
+  - [Concurrency](feature/concurrency.md)
+  - [Handler](feature/handler.md)
+  - [Initialization](feature/init.md)
+  - [Async in Rust](feature/async_rust.md)
+  - [Cancellable tasks](feature/cancelable_task.md)
+  - [Object pools](feature/object_pool.md)
+  - [Miscellaneous](feature/misc.md)
 
-# More Doc
+# Part II: User Guide
+
+- [Create new projects from a template](template.md)
+  - [Creating a new project](template/setup.md)
+    - [Android setup](template/setup_android.md)
+    - [iOS setup](template/setup_ios.md)
+    - [Web setup](template/setup_web.md)
+    - [Other platforms](template/setup_others.md)
+  - [Template tour](template/tour.md)
+    - [native/src/api.rs](template/tour_api.md)
+    - [`android/app/build.gradle`](template/tour_gradle.md)
+    - [`native/native.xcodeproj`](template/tour_native_proj.md)
+    - [`justfile`](template/tour_justfile.md)
+    - [`rust.cmake`](template/tour_cmake.md)
+  - [Generating code](template/generate.md)
+    - [Installing codegen](template/generate_install.md)
+    - [Adding new code](template/generate_adding_code.md)
+    - [Using build_runner](template/generate_build_runner.md)
+    - [Wrapping up](template/generate_finish.md)
+- [Integrating with existing projects](integrate.md)
+  - [Creating a new crate](integrate/new_crate.md)
+  - [Installing dependencies](integrate/deps.md)
+  - [Integrating with Android](integrate/android.md)
+    - [Hooking onto tasks](integrate/android_tasks.md)
+    - [CMake with Gradle](integrate/android_cmake.md)
+  - [Integrating with iOS/MacOS](integrate/ios.md)
+    - [Creating the Rust project](integrate/ios_proj.md)
+    - [Linking the project](integrate/ios_linking.md)
+    - [Generating bindings](integrate/ios_gen.md)
+    - [Using dummy headers](integrate/ios_headers.md)
+  - [Integrating with Desktop](integrate/desktop.md)
+  - [Integrating with Web](integrate/web.md)
+  - [Using the dynamic library](integrate/usage.md)
+
+# Part III: More Doc
 
 - [Tutorial: Pure Dart](tutorial_pure_dart.md)
 - [Safety concerns](safety.md)
 - [Troubleshooting](troubleshooting.md)
-- [Feature details](feature_details.md)
-- [Advanced](advanced.md)
+- [Command line arguments](command_line.md)
 - [Set up Flutter/Dart+Rust support from scratch](set_up_from_scratch.md)
+- [Articles](article.md)
+  - [Async in Rust](article/async_in_rust.md)
 

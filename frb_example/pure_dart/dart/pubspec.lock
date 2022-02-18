@@ -175,7 +175,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.15.1"
+    version: "1.19.2"
   freezed:
     dependency: "direct dev"
     description:
@@ -217,7 +217,7 @@ packages:
       name: http_multi_server
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "3.2.0"
   http_parser:
     dependency: transitive
     description:

@@ -83,29 +83,9 @@ abstract class FlutterRustBridgeExample {
 
   Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint});
 
-  Future<OpaqueBag> handleOpaque({OpaqueBag? value, dynamic hint});
+  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
 
-  Future<String?> handleOpaqueRepr({required RwLockI32 value, dynamic hint});
-}
-
-@sealed
-class BoxDartDebug extends FrbOpaque {
-  BoxDartDebug._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
-}
-
-@sealed
-class RwLockI32 extends FrbOpaque {
-  RwLockI32._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
-}
-
-@sealed
-class RwLockIsize10 extends FrbOpaque {
-  RwLockIsize10._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
-}
-
-@sealed
-class Str extends FrbOpaque {
-  Str._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
 }
 
 class Attribute {
@@ -204,6 +184,11 @@ class KitchenSink with _$KitchenSink {
   ) = Enums;
 }
 
+enum MyEnum {
+  False,
+  True,
+}
+
 class MySize {
   final int width;
   final int height;
@@ -211,6 +196,14 @@ class MySize {
   MySize({
     required this.width,
     required this.height,
+  });
+}
+
+class MyStruct {
+  final bool content;
+
+  MyStruct({
+    required this.content,
   });
 }
 
@@ -637,25 +630,25 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         hint: hint,
       ));
 
-  Future<OpaqueBag> handleOpaque({OpaqueBag? value, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_opaque(port_, _api2wire_opt_box_autoadd_opaque_bag(value)),
-        parseSuccessData: _wire2api_opaque_bag,
+  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_use_imported_struct(port_, _api2wire_box_autoadd_my_struct(myStruct)),
+        parseSuccessData: _wire2api_bool,
         constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_opaque",
-          argNames: ["value"],
+          debugName: "use_imported_struct",
+          argNames: ["myStruct"],
         ),
-        argValues: [value],
+        argValues: [myStruct],
         hint: hint,
       ));
 
-  Future<String?> handleOpaqueRepr({required RwLockI32 value, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_opaque_repr(port_, _api2wire_RwLockI32(value)),
-        parseSuccessData: _wire2api_opt_String,
+  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_use_imported_enum(port_, _api2wire_my_enum(myEnum)),
+        parseSuccessData: _wire2api_bool,
         constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_opaque_repr",
-          argNames: ["value"],
+          debugName: "use_imported_enum",
+          argNames: ["myEnum"],
         ),
-        argValues: [value],
+        argValues: [myEnum],
         hint: hint,
       ));
 
@@ -747,6 +740,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   ffi.Pointer<wire_MySize> _api2wire_box_autoadd_my_size(MySize raw) {
     final ptr = inner.new_box_autoadd_my_size();
     _api_fill_to_wire_my_size(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_MyStruct> _api2wire_box_autoadd_my_struct(MyStruct raw) {
+    final ptr = inner.new_box_autoadd_my_struct();
+    _api_fill_to_wire_my_struct(raw, ptr.ref);
     return ptr;
   }
 
@@ -890,6 +889,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       _api_fill_to_wire_opt_box_autoadd_attribute(raw[i], ans.ref.ptr[i]);
     }
     return ans;
+  }
+
+  int _api2wire_my_enum(MyEnum raw) {
+    return raw.index;
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_String(String? raw) {
@@ -1053,6 +1056,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_my_struct(MyStruct apiObj, ffi.Pointer<wire_MyStruct> wireObj) {
+    _api_fill_to_wire_my_struct(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_my_tree_node(MyTreeNode apiObj, ffi.Pointer<wire_MyTreeNode> wireObj) {
     _api_fill_to_wire_my_tree_node(apiObj, wireObj.ref);
   }
@@ -1143,6 +1150,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   void _api_fill_to_wire_my_size(MySize apiObj, wire_MySize wireObj) {
     wireObj.width = _api2wire_i32(apiObj.width);
     wireObj.height = _api2wire_i32(apiObj.height);
+  }
+
+  void _api_fill_to_wire_my_struct(MyStruct apiObj, wire_MyStruct wireObj) {
+    wireObj.content = _api2wire_bool(apiObj.content);
   }
 
   void _api_fill_to_wire_my_tree_node(MyTreeNode apiObj, wire_MyTreeNode wireObj) {
@@ -2065,64 +2076,34 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_enum_struct =
       _wire_handle_enum_structPtr.asFunction<void Function(int, ffi.Pointer<wire_KitchenSink>)>();
 
-  void wire_handle_opaque(
+  void wire_use_imported_struct(
     int port_,
-    ffi.Pointer<wire_OpaqueBag> value,
+    ffi.Pointer<wire_MyStruct> my_struct,
   ) {
-    return _wire_handle_opaque(
+    return _wire_use_imported_struct(
       port_,
-      value,
+      my_struct,
     );
   }
 
-  late final _wire_handle_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueBag>)>>('wire_handle_opaque');
-  late final _wire_handle_opaque = _wire_handle_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueBag>)>();
+  late final _wire_use_imported_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MyStruct>)>>('wire_use_imported_struct');
+  late final _wire_use_imported_struct =
+      _wire_use_imported_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyStruct>)>();
 
-  void wire_handle_opaque_repr(
+  void wire_use_imported_enum(
     int port_,
-    ffi.Pointer<wire_RwLockI32> value,
+    int my_enum,
   ) {
-    return _wire_handle_opaque_repr(
+    return _wire_use_imported_enum(
       port_,
-      value,
+      my_enum,
     );
   }
 
-  late final _wire_handle_opaque_reprPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_RwLockI32>)>>('wire_handle_opaque_repr');
-  late final _wire_handle_opaque_repr =
-      _wire_handle_opaque_reprPtr.asFunction<void Function(int, ffi.Pointer<wire_RwLockI32>)>();
-
-  ffi.Pointer<wire_BoxDartDebug> new_BoxDartDebug() {
-    return _new_BoxDartDebug();
-  }
-
-  late final _new_BoxDartDebugPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxDartDebug> Function()>>('new_BoxDartDebug');
-  late final _new_BoxDartDebug = _new_BoxDartDebugPtr.asFunction<ffi.Pointer<wire_BoxDartDebug> Function()>();
-
-  ffi.Pointer<wire_RwLockI32> new_RwLockI32() {
-    return _new_RwLockI32();
-  }
-
-  late final _new_RwLockI32Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_RwLockI32> Function()>>('new_RwLockI32');
-  late final _new_RwLockI32 = _new_RwLockI32Ptr.asFunction<ffi.Pointer<wire_RwLockI32> Function()>();
-
-  ffi.Pointer<wire_RwLockIsize10> new_RwLockIsize10() {
-    return _new_RwLockIsize10();
-  }
-
-  late final _new_RwLockIsize10Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_RwLockIsize10> Function()>>('new_RwLockIsize10');
-  late final _new_RwLockIsize10 = _new_RwLockIsize10Ptr.asFunction<ffi.Pointer<wire_RwLockIsize10> Function()>();
-
-  ffi.Pointer<wire_Str> new_Str() {
-    return _new_Str();
-  }
-
-  late final _new_StrPtr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_Str> Function()>>('new_Str');
-  late final _new_Str = _new_StrPtr.asFunction<ffi.Pointer<wire_Str> Function()>();
+  late final _wire_use_imported_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_use_imported_enum');
+  late final _wire_use_imported_enum = _wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
@@ -2227,6 +2208,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_my_sizePtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_MySize> Function()>>('new_box_autoadd_my_size');
   late final _new_box_autoadd_my_size = _new_box_autoadd_my_sizePtr.asFunction<ffi.Pointer<wire_MySize> Function()>();
+
+  ffi.Pointer<wire_MyStruct> new_box_autoadd_my_struct() {
+    return _new_box_autoadd_my_struct();
+  }
+
+  late final _new_box_autoadd_my_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyStruct> Function()>>('new_box_autoadd_my_struct');
+  late final _new_box_autoadd_my_struct =
+      _new_box_autoadd_my_structPtr.asFunction<ffi.Pointer<wire_MyStruct> Function()>();
 
   ffi.Pointer<wire_MyTreeNode> new_box_autoadd_my_tree_node() {
     return _new_box_autoadd_my_tree_node();
@@ -2738,30 +2728,9 @@ class KitchenSink_Enums extends ffi.Struct {
   external int field0;
 }
 
-class wire_RwLockI32 extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
-}
-
-class wire_RwLockIsize10 extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
-}
-
-class wire_Str extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
-}
-
-class wire_BoxDartDebug extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
-}
-
-class wire_OpaqueBag extends ffi.Struct {
-  external ffi.Pointer<wire_RwLockI32> primitive;
-
-  external ffi.Pointer<wire_RwLockIsize10> array;
-
-  external ffi.Pointer<wire_Str> lifetime;
-
-  external ffi.Pointer<wire_BoxDartDebug> trait_obj;
+class wire_MyStruct extends ffi.Struct {
+  @ffi.Uint8()
+  external int content;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;

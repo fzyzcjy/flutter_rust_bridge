@@ -1,6 +1,6 @@
 [package]
 name = "flutter_rust_bridge_codegen"
-version = "1.15.1"
+version = "1.19.2"
 edition = "2018"
 description = "High-level memory-safe bindgen for Dart/Flutter <-> Rust"
 license = "MIT"
@@ -23,3 +23,5 @@ structopt = "0.3"
 toml = "0.5.8"
 anyhow = "1.0.44"
 pathdiff = "0.2.1"
+cargo_metadata = "0.14.1"
+enum_dispatch = "0.3.8"

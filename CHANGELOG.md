@@ -1,3 +1,31 @@
+## Unreleased
+
+* Add examples to documentation
+
+## 1.19.2
+
+* Avoid converting syn types to strings before parsing #346 (thanks @antonok-edm)
+
+## 1.19.1
+
+* Documentation overhaul (thanks @Desdaemon as well)
+
+## 1.18.0
+
+* Refactor to beautify the implementation #338
+
+## 1.17.0
+
+* Support bridging functions with return types other than `Result` #335 (thanks @antonok-edm)
+
+## 1.16.0
+
+* Allow structs and enums to be imported into the api file from elsewhere in the crate #319 (thanks @SecondFlight)
+* Refactor command module to fix Windows build failures #325 (thanks @Desdaemon)
+* Quote arguments when calling external commands #322 (thanks @Desdaemon)
+* Update examples to fix compile error
+* Bump dependency version #314
+
 ## 1.15.1
 
 * Bump dependency version #311
