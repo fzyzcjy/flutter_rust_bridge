@@ -58,6 +58,7 @@
   - [Integrating with Desktop](integrate/desktop.md)
   - [Integrating with Web](integrate/web.md)
   - [Using the dynamic library](integrate/usage.md)
+  - [Wrapping up](integrate/finish.md)
 
 # Part III: More Doc
 

@@ -23,12 +23,7 @@ Before we can compile the library, we need to generate the bindings first.
 From the root of the app, run these commands:
 
 ```bash
-flutter_rust_bridge_codegen \
-    -r $crate/src/api.rs \
-    -d lib/bridge_generated.dart \
-    -c ios/Runner/bridge_generated.h
-# if MacOS project is present
-cp ios/Runner/bridge_generated.h macos/Runner/bridge_generated.h
+{{#include command.sh}}
 ```
 
 > **Note:** These will be the same commands to use whenever you modify your Rust library code.
