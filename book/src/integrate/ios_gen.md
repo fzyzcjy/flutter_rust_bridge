@@ -23,7 +23,7 @@ Before we can compile the library, we need to generate the bindings first.
 From the root of the app, run these commands:
 
 ```bash
-{{#include command.sh}}
+{{#include command.sh.txt}}
 ```
 
 > **Note:** These will be the same commands to use whenever you modify your Rust library code.

@@ -8,7 +8,7 @@ As a reminder, you need to run these commands every time your Rust code changes 
 before you run `flutter run`:
 
 ```bash
-{{#include command.sh}}
+{{#include command.sh.txt}}
 # if using Dart codegen
 flutter pub run build_runner build
 ```
