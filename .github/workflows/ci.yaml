@@ -103,7 +103,7 @@ jobs:
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_android_test:
     name: Flutter (Android) integration test
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     strategy:
       matrix:
