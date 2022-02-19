@@ -67,5 +67,5 @@ Same as Windows.
 
 ### MacOS app
 
-Same as iOS.
+Same as Windows. (P.S. Under the hood, `cargo-xcode` is used to automate the process)
 
