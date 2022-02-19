@@ -286,6 +286,49 @@ void main(List<String> args) async {
       );
     }
 
+    print('dart call useImportedStruct()');
+    {
+      expect(
+        await api.useImportedStruct(myStruct: MyStruct(content: false)),
+        false,
+      );
+      expect(
+        await api.useImportedStruct(myStruct: MyStruct(content: true)),
+        true,
+      );
+    }
+
+    print('dart call useImportedEnum()');
+    {
+      expect(
+        await api.useImportedEnum(myEnum: MyEnum.False),
+        false,
+      );
+      expect(
+        await api.useImportedEnum(myEnum: MyEnum.True),
+        true,
+      );
+    }
+
+    print('dart call getAppSettings()');
+    {
+      expect((await api.getAppSettings()).version, "1.0.0-rc.1");
+      expect((await api.getAppSettings()).mode, ApplicationMode.Standalone);
+      expect((await api.getAppSettings()).env.vars[0], "myenv");
+    }
+
+    print('dart call isAppEmbedded()');
+    {
+      expect(
+          await api.isAppEmbedded(
+              appSettings: ApplicationSettings(
+                  name: "from dart",
+                  version: "XX",
+                  mode: ApplicationMode.Embedded,
+                  env: ApplicationEnv(vars: ["sendback"]))),
+          true);
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();

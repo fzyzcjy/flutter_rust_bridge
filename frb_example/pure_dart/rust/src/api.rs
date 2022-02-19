@@ -9,9 +9,11 @@ use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
 
+use crate::data::{MyEnum, MyStruct};
+
 /// Documentation on a simple adder function.
-pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
-    Ok(a + b)
+pub fn simple_adder(a: i32, b: i32) -> i32 {
+    a + b
 }
 
 /**
@@ -20,37 +22,37 @@ pub fn simple_adder(a: i32, b: i32) -> Result<i32> {
 
  Newlines are preserved.
 */
-pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> Result<i32> {
+pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
     println!(
         "primitive_types({}, {}, {}, {})",
         my_i32, my_i64, my_f64, my_bool
     );
-    Ok(42)
+    42
 }
 
-pub fn primitive_u32(my_u32: u32) -> Result<u32> {
+pub fn primitive_u32(my_u32: u32) -> u32 {
     println!("primitive_u32({})", my_u32);
     assert_eq!(my_u32, 0xff112233);
     let ret = 0xfe112233;
     println!("returning {}", ret);
-    Ok(ret)
+    ret
 }
 
-pub fn handle_string(s: String) -> Result<String> {
+pub fn handle_string(s: String) -> String {
     println!("handle_string({})", &s);
     let s2 = s.clone();
-    Ok(s + &s2)
+    s + &s2
 }
 
-pub fn handle_return_unit() -> Result<()> {
+#[allow(clippy::unused_unit)]
+pub fn handle_return_unit() -> () {
     println!("handle_return_unit()");
-    Ok(())
 }
 
 // to check that `Vec<u8>` can be used as return type
-pub fn handle_vec_u8(v: Vec<u8>) -> Result<Vec<u8>> {
+pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
     println!("handle_vec_u8(first few elements: {:?})", &v[..5]);
-    Ok(v.repeat(2))
+    v.repeat(2)
 }
 
 pub struct VecOfPrimitivePack {
@@ -66,8 +68,8 @@ pub struct VecOfPrimitivePack {
     pub float64list: Vec<f64>,
 }
 
-pub fn handle_vec_of_primitive(n: i32) -> Result<VecOfPrimitivePack> {
-    Ok(VecOfPrimitivePack {
+pub fn handle_vec_of_primitive(n: i32) -> VecOfPrimitivePack {
+    VecOfPrimitivePack {
         int8list: vec![42i8; n as usize],
         uint8list: vec![42u8; n as usize],
         int16list: vec![42i16; n as usize],
@@ -78,7 +80,7 @@ pub fn handle_vec_of_primitive(n: i32) -> Result<VecOfPrimitivePack> {
         uint64list: vec![42u64; n as usize],
         float32list: vec![42.0f32; n as usize],
         float64list: vec![42.0f64; n as usize],
-    })
+    }
 }
 
 pub struct ZeroCopyVecOfPrimitivePack {
@@ -94,8 +96,8 @@ pub struct ZeroCopyVecOfPrimitivePack {
     pub float64list: ZeroCopyBuffer<Vec<f64>>,
 }
 
-pub fn handle_zero_copy_vec_of_primitive(n: i32) -> Result<ZeroCopyVecOfPrimitivePack> {
-    Ok(ZeroCopyVecOfPrimitivePack {
+pub fn handle_zero_copy_vec_of_primitive(n: i32) -> ZeroCopyVecOfPrimitivePack {
+    ZeroCopyVecOfPrimitivePack {
         int8list: ZeroCopyBuffer(vec![42i8; n as usize]),
         uint8list: ZeroCopyBuffer(vec![42u8; n as usize]),
         int16list: ZeroCopyBuffer(vec![42i16; n as usize]),
@@ -106,7 +108,7 @@ pub fn handle_zero_copy_vec_of_primitive(n: i32) -> Result<ZeroCopyVecOfPrimitiv
         uint64list: ZeroCopyBuffer(vec![42u64; n as usize]),
         float32list: ZeroCopyBuffer(vec![42.0f32; n as usize]),
         float64list: ZeroCopyBuffer(vec![42.0f64; n as usize]),
-    })
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -115,34 +117,34 @@ pub struct MySize {
     pub height: i32,
 }
 
-pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> Result<MySize> {
+pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
     println!("handle_struct({:?}, {:?})", &arg, &boxed);
-    Ok(MySize {
+    MySize {
         width: arg.width + boxed.width,
         height: arg.height + boxed.height,
-    })
+    }
 }
 
 #[derive(Debug)]
 pub struct NewTypeInt(pub i64);
 
-pub fn handle_newtype(arg: NewTypeInt) -> Result<NewTypeInt> {
+pub fn handle_newtype(arg: NewTypeInt) -> NewTypeInt {
     println!("handle_newtype({:?})", &arg);
-    Ok(NewTypeInt(arg.0 * 2))
+    NewTypeInt(arg.0 * 2)
 }
 
-pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Result<Vec<MySize>> {
+pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
     println!("handle_list_of_struct({:?})", &l);
     let mut ans = l.clone();
     ans.append(&mut l);
-    Ok(ans)
+    ans
 }
 
-pub fn handle_string_list(names: Vec<String>) -> Result<Vec<String>> {
+pub fn handle_string_list(names: Vec<String>) -> Vec<String> {
     for name in &names {
         println!("Hello, {}", name);
     }
-    Ok(names)
+    names
 }
 
 #[derive(Debug, Clone)]
@@ -153,10 +155,10 @@ pub struct MyTreeNode {
     pub children: Vec<MyTreeNode>,
 }
 
-pub fn handle_complex_struct(s: MyTreeNode) -> Result<MyTreeNode> {
+pub fn handle_complex_struct(s: MyTreeNode) -> MyTreeNode {
     println!("handle_complex_struct({:?})", &s);
     let s_cloned = s.clone();
-    Ok(s)
+    s
 }
 
 pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
@@ -204,15 +206,15 @@ pub fn return_err() -> Result<i32> {
     ))
 }
 
-pub fn return_panic() -> Result<i32> {
+pub fn return_panic() -> i32 {
     panic!("return_panic() is called, thus deliberately panic")
 }
 
-pub fn handle_optional_return(left: f64, right: f64) -> Result<Option<f64>> {
+pub fn handle_optional_return(left: f64, right: f64) -> Option<f64> {
     if right == 0. {
-        Ok(None)
+        None
     } else {
-        Ok(Some(left / right))
+        Some(left / right)
     }
 }
 
@@ -230,8 +232,8 @@ pub struct Attribute {
     pub value: String,
 }
 
-pub fn handle_optional_struct(document: Option<String>) -> Result<Option<Element>> {
-    Ok(document.map(|inner| Element {
+pub fn handle_optional_struct(document: Option<String>) -> Option<Element> {
+    document.map(|inner| Element {
         tag: Some("div".to_owned()),
         attributes: Some(vec![Attribute {
             key: "id".to_owned(),
@@ -246,7 +248,7 @@ pub fn handle_optional_struct(document: Option<String>) -> Result<Option<Element
             ..Default::default()
         }]),
         ..Default::default()
-    }))
+    })
 }
 
 #[derive(Debug)]
@@ -269,14 +271,14 @@ pub struct ExoticOptionals {
     pub string_list: Option<Vec<String>>,
 }
 
-pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Result<Option<ExoticOptionals>> {
+pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticOptionals> {
     fn manipulate_list<T>(src: Option<Vec<T>>, push_value: T) -> Option<Vec<T>> {
         let mut list = src.unwrap_or_else(Vec::new);
         list.push(push_value);
         Some(list)
     }
 
-    Ok(opt.map(|mut opt| ExoticOptionals {
+    opt.map(|mut opt| ExoticOptionals {
         int32: Some(opt.int32.unwrap_or(0) + 1),
         int64: Some(opt.int64.unwrap_or(0) + 1),
         float64: Some(opt.float64.unwrap_or(0.) + 1.),
@@ -314,18 +316,13 @@ pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Result<Option<
             list.0.push(0);
             list
         }),
-        string_list: Some({
-            let mut list = opt.string_list.unwrap_or_default();
-            list.push("foo".to_owned());
-            list
-        }),
-    }))
+    })
 }
 
-pub fn handle_increment_boxed_optional(opt: Option<Box<f64>>) -> Result<f64> {
+pub fn handle_increment_boxed_optional(opt: Option<Box<f64>>) -> f64 {
     match opt {
-        Some(e) => Ok(*e + 1.),
-        None => Ok(42.),
+        Some(e) => *e + 1.,
+        None => 42.,
     }
 }
 
@@ -339,11 +336,11 @@ pub fn handle_option_box_arguments(
     f64box: Option<Box<f64>>,
     boolbox: Option<Box<bool>>,
     structbox: Option<Box<ExoticOptionals>>,
-) -> Result<String> {
-    Ok(format!(
+) -> String {
+    format!(
         "handle_option_box_arguments({:?})",
         (i8box, u8box, i32box, i64box, f64box, boolbox, structbox)
-    ))
+    )
 }
 
 /// Simple enums.
@@ -359,8 +356,8 @@ pub enum Weekdays {
     Sunday,
 }
 
-pub fn handle_return_enum(input: String) -> Result<Option<Weekdays>> {
-    Ok(match input.as_str() {
+pub fn handle_return_enum(input: String) -> Option<Weekdays> {
+    match input.as_str() {
         "Monday" => Some(Weekdays::Monday),
         "Tuesday" => Some(Weekdays::Tuesday),
         "Wednesday" => Some(Weekdays::Wednesday),
@@ -369,12 +366,12 @@ pub fn handle_return_enum(input: String) -> Result<Option<Weekdays>> {
         "Saturday" => Some(Weekdays::Saturday),
         "Sunday" => Some(Weekdays::Sunday),
         _ => None,
-    })
+    }
 }
 
-pub fn handle_enum_parameter(weekday: Weekdays) -> Result<Weekdays> {
+pub fn handle_enum_parameter(weekday: Weekdays) -> Weekdays {
     println!("The weekday is {:?}", weekday);
-    Ok(weekday)
+    weekday
 }
 
 pub fn handle_u64_vec(vec: Option<Vec<u64>>) -> Result<Vec<u64>> {
@@ -391,9 +388,8 @@ pub struct Customized {
     pub non_final_field: Option<String>,
 }
 
-pub fn handle_customized_struct(val: Customized) -> Result<()> {
+pub fn handle_customized_struct(val: Customized) {
     println!("{:#?}", val);
-    Ok(())
 }
 
 #[frb]
@@ -421,11 +417,11 @@ pub enum KitchenSink {
 }
 
 #[frb(unimpl_fn_attr)]
-pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
+pub fn handle_enum_struct(val: KitchenSink) -> KitchenSink {
     use KitchenSink::*;
     use Weekdays::*;
     let inc = |x| x + 1;
-    Ok(match val {
+    match val {
         Primitives {
             int32,
             float64,
@@ -451,5 +447,61 @@ pub fn handle_enum_struct(val: KitchenSink) -> Result<KitchenSink> {
             Sunday => Monday,
         }),
         _ => val,
-    })
+    }
+}
+
+// Function that uses imported struct (from within this crate)
+pub fn use_imported_struct(my_struct: MyStruct) -> bool {
+    my_struct.content
+}
+
+// Function that uses imported enum (from within this crate)
+pub fn use_imported_enum(my_enum: MyEnum) -> bool {
+    match my_enum {
+        MyEnum::False => false,
+        MyEnum::True => true,
+    }
+}
+
+// Mirroring example:
+// The goal of mirroring is to use external objects without needing to convert them with an intermediate type
+// In this case, the struct ApplicationSettings is defined in another crate (called external-lib)
+
+// To use an external type with mirroring, it MUST be imported publicly (aka. re-export)
+pub use external_lib::{ApplicationEnv, ApplicationMode, ApplicationSettings};
+
+// To mirror an external struct, you need to define a placeholder type with the same definition
+#[frb(mirror(ApplicationSettings))]
+pub struct _ApplicationSettings {
+    pub name: String,
+    pub version: String,
+    pub mode: ApplicationMode,
+    pub env: Box<ApplicationEnv>,
+}
+
+// It works with basic enums too
+// Enums with struct variants are not yet supported
+#[frb(mirror(ApplicationMode))]
+pub enum _ApplicationMode {
+    Standalone,
+    Embedded,
+}
+
+#[frb(mirror(ApplicationEnv))]
+pub struct _ApplicationEnv {
+    pub vars: Vec<String>,
+}
+
+// This function can directly return an object of the external type ApplicationSettings because it has a mirror
+pub fn get_app_settings() -> ApplicationSettings {
+    external_lib::get_app_settings()
+}
+
+// Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
+pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
+    // println!("env: {}", app_settings.env.vars[0]);
+    match app_settings.mode {
+        ApplicationMode::Standalone => false,
+        ApplicationMode::Embedded => true,
+    }
 }

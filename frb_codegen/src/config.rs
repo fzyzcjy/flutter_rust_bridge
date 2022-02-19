@@ -2,6 +2,8 @@ use std::env;
 use std::ffi::OsString;
 use std::fs;
 use std::path::Path;
+use std::path::PathBuf;
+use std::str::FromStr;
 
 use anyhow::{anyhow, Result};
 use convert_case::{Case, Casing};
@@ -44,7 +46,7 @@ pub struct RawOpts {
     pub skip_add_mod_to_lib: bool,
     /// Path to the installed LLVM
     #[structopt(long)]
-    pub llvm_path: Option<String>,
+    pub llvm_path: Option<Vec<String>>,
     /// LLVM compiler opts
     #[structopt(long)]
     pub llvm_compiler_opts: Option<String>,
@@ -68,9 +70,10 @@ pub struct Opts {
     pub class_name: String,
     pub dart_format_line_length: i32,
     pub skip_add_mod_to_lib: bool,
-    pub llvm_path: String,
+    pub llvm_path: Vec<String>,
     pub llvm_compiler_opts: String,
     pub wasm: bool,
+    pub manifest_path: String,
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
@@ -80,6 +83,11 @@ pub fn parse(raw: RawOpts) -> Opts {
         fallback_rust_crate_dir(&rust_input_path)
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
     }));
+    let manifest_path = {
+        let mut path = std::path::PathBuf::from_str(&rust_crate_dir).unwrap();
+        path.push("Cargo.toml");
+        path_to_string(path).unwrap()
+    };
     let rust_output_path = canon_path(&raw.rust_output.unwrap_or_else(|| {
         fallback_rust_output_path(&rust_input_path)
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_output")))
@@ -107,9 +115,23 @@ pub fn parse(raw: RawOpts) -> Opts {
         class_name,
         dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
         skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
-        llvm_path: raw.llvm_path.unwrap_or_else(|| "".to_string()),
+        llvm_path: raw.llvm_path.unwrap_or_else(|| {
+            vec![
+                "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
+                "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
+                // Possible Linux LLVM roots
+                "/usr/lib/llvm-9/lib".to_owned(),
+                "/usr/lib/llvm-10/lib".to_owned(),
+                "/usr/lib/llvm-11/lib".to_owned(),
+                "/usr/lib/llvm-12/lib".to_owned(),
+                "/usr/lib/llvm-13/lib".to_owned(),
+                "/usr/lib/".to_owned(),
+                "/usr/lib64/".to_owned(),
+            ]
+        }),
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
         wasm: raw.wasm,
+        manifest_path,
     }
 }
 
@@ -206,9 +228,11 @@ fn canon_path(sub_path: &str) -> String {
     let mut path =
         env::current_dir().unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path));
     path.push(sub_path);
-    path.into_os_string()
-        .into_string()
-        .unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+    path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+}
+
+fn path_to_string(path: PathBuf) -> Result<String, OsString> {
+    path.into_os_string().into_string()
 }
 
 impl Opts {
@@ -237,7 +261,11 @@ impl Opts {
     }
 
     pub fn rust_native_output_path(&self) -> Option<String> {
-        wrap_path(&self.rust_output_path, "_native", self.rust_output_file_name())
+        wrap_path(
+            &self.rust_output_path,
+            "_native",
+            self.rust_output_file_name(),
+        )
     }
 }
 

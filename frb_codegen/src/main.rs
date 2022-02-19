@@ -7,24 +7,27 @@ use log::{debug, info};
 use pathdiff::diff_paths;
 use structopt::StructOpt;
 
-use crate::api_types::ApiType;
+use crate::commands::ensure_tools_available;
 use crate::config::RawOpts;
+use crate::ir::*;
 use crate::others::*;
 use crate::utils::*;
 
-mod api_types;
 mod commands;
 mod config;
-mod generator_c;
-mod generator_dart;
-mod generator_rust;
+mod generator;
+mod ir;
+mod markers;
 mod others;
 mod parser;
+mod source_graph;
 mod transformer;
 mod utils;
 
 fn main() {
     env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
+
+    ensure_tools_available();
 
     let config = config::parse(RawOpts::from_args());
     info!("Picked config: {:?}", &config);
@@ -38,54 +41,23 @@ fn main() {
     let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
     info!("Phase: Parse AST to IR");
-    let raw_api_file = parser::parse(&source_rust_content, file_ast);
-    debug!("parsed functions: {:?}", &raw_api_file);
+    let raw_ir_file = parser::parse(&source_rust_content, file_ast, &config.manifest_path);
+    debug!("parsed functions: {:?}", &raw_ir_file);
 
     info!("Phase: Transform IR");
-    let api_file = transformer::transform(raw_api_file);
-    debug!("transformed functions: {:?}", &api_file);
+    let ir_file = transformer::transform(raw_ir_file);
+    debug!("transformed functions: {:?}", &ir_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust = generator_rust::generate(
-        &api_file,
+    let generated_rust = generator::rust::generate(
+        &ir_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
         false,
     );
 
-    fs::create_dir_all(&rust_output_dir).unwrap();
-    let rust_native_path: String;
-    if config.wasm {
-        fs::create_dir_all(
-            PathBuf::from(rust_output_dir).join(config.rust_output_file_name().unwrap()),
-        )
-        .unwrap();
-        rust_native_path = config.rust_native_output_path().unwrap();
-        let generated_rust_wasm = generator_rust::generate(
-            &api_file,
-            &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-            true,
-        );
-        let generated_common =
-            generator_rust::generate_common_mod(&config.rust_output_file_name().unwrap());
-        fs::write(
-            &config.rust_wasm_output_path().unwrap(),
-            generated_rust_wasm.code,
-        )
-        .unwrap();
-        fs::write(&config.rust_output_path, generated_common).unwrap();
-    } else {
-        rust_native_path = config.rust_output_path.clone();
-    }
-    fs::write(&rust_native_path, generated_rust.code).unwrap();
-
     info!("Phase: Generate Dart code");
-    let (
-        generated_dart_file_prelude,
-        generated_dart_decl_raw,
-        generated_dart_impl_raw,
-        generated_dart_web_impl_raw,
-    ) = generator_dart::generate(
-        &api_file,
+    let generated_dart = generator::dart::generate(
+        &ir_file,
         &config.dart_api_class_name(),
         &config.dart_api_impl_class_name(),
         &config.dart_wire_class_name(),
@@ -103,11 +75,11 @@ fn main() {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 
-    let c_struct_names = api_file
+    let c_struct_names = ir_file
         .distinct_types(true, true)
         .iter()
         .filter_map(|ty| {
-            if let ApiType::StructRef(_) = ty {
+            if let IrType::StructRef(_) = ty {
                 Some(ty.rust_wire_type())
             } else {
                 None
@@ -117,28 +89,32 @@ fn main() {
 
     let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile().unwrap();
-    with_changed_file(&rust_native_path, DUMMY_WIRE_CODE_FOR_BINDGEN, || {
-        commands::bindgen_rust_to_dart(
-            &config.rust_crate_dir,
-            temp_bindgen_c_output_file
-                .path()
-                .as_os_str()
-                .to_str()
-                .unwrap(),
-            temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-            &config.dart_wire_class_name(),
-            c_struct_names,
-            &config.llvm_path,
-            &config.llvm_compiler_opts,
-        );
-    });
+    with_changed_file(
+        &config.rust_output_path,
+        DUMMY_WIRE_CODE_FOR_BINDGEN,
+        || {
+            commands::bindgen_rust_to_dart(
+                &config.rust_crate_dir,
+                temp_bindgen_c_output_file
+                    .path()
+                    .as_os_str()
+                    .to_str()
+                    .unwrap(),
+                temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+                &config.dart_wire_class_name(),
+                c_struct_names,
+                &config.llvm_path[..],
+                &config.llvm_compiler_opts,
+            );
+        },
+    );
 
     let effective_func_names = [
         generated_rust.extern_func_names,
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
     .concat();
-    let c_dummy_code = generator_c::generate_dummy(&effective_func_names);
+    let c_dummy_code = generator::c::generate_dummy(&effective_func_names);
     fs::create_dir_all(c_output_dir).unwrap();
     fs::write(
         &config.c_output_path,
@@ -155,8 +131,8 @@ fn main() {
 
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name());
 
-    let generated_dart_decl_all = generated_dart_decl_raw;
-    let generated_dart_impl_all = &generated_dart_impl_raw + &generated_dart_wire;
+    let generated_dart_decl_all = generated_dart.decl_code;
+    let generated_dart_impl_all = &generated_dart.impl_code + &generated_dart_wire;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         let impl_import_decl = DartBasicCode {
             import: format!(
@@ -171,18 +147,18 @@ fn main() {
         };
         fs::write(
             &dart_decl_output_path,
-            (&generated_dart_file_prelude + &generated_dart_decl_all).to_text(),
+            (&generated_dart.file_prelude + &generated_dart_decl_all).to_text(),
         )
         .unwrap();
         fs::write(
             &config.dart_output_path,
-            (&generated_dart_file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
+            (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
         )
         .unwrap();
     } else {
         fs::write(
             &config.dart_output_path,
-            (&generated_dart_file_prelude + &generated_dart_decl_all + &generated_dart_impl_all)
+            (&generated_dart.file_prelude + &generated_dart_decl_all + &generated_dart_impl_all)
                 .to_text(),
         )
         .unwrap();
