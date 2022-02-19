@@ -455,3 +455,39 @@ pub fn use_imported_enum(my_enum: MyEnum) -> bool {
         MyEnum::True => true,
     }
 }
+
+// Mirroring example:
+// The goal of mirroring is to use external objects without needing to convert them with an intermediate type
+// In this case, the struct ApplicationSettings is defined in another crate (called external-lib)
+
+// To use an external type with mirroring, it MUST be imported publicly (aka. re-export)
+pub use external_lib::{ApplicationMode, ApplicationSettings};
+
+// To mirror an external struct, you need to define a placeholder type with the same definition
+#[frb(mirror(ApplicationSettings))]
+pub struct _ApplicationSettings {
+    pub name: String,
+    pub version: String,
+    pub mode: ApplicationMode,
+}
+
+// It works with basic enums too
+// Enums with struct variants are not yet supported
+#[frb(mirror(ApplicationMode))]
+pub enum _ApplicationMode {
+    Standalone,
+    Embedded,
+}
+
+// This function can directly return an object of the external type ApplicationSettings because it has a mirror
+pub fn get_app_settings() -> ApplicationSettings {
+    external_lib::get_app_settings()
+}
+
+// Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
+pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
+    match app_settings.mode {
+        ApplicationMode::Standalone => false,
+        ApplicationMode::Embedded => true,
+    }
+}

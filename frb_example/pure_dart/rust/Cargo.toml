@@ -11,3 +11,7 @@ crate-type = ["cdylib"]
 anyhow = { version = "1.0.53", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust" }
 lazy_static = "1.4.0"
+
+[dependencies.external-lib] # used for demo of external types mirroring
+path = "./external"
+package = "flutter_rust_bridge_example_external"

@@ -128,9 +128,23 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         )
     }
 
+    fn wrapper_struct(&self) -> Option<String> {
+        let src = self.ir.get(self.context.ir_file);
+        src.wrapper_name.as_ref().map(|s| s.clone())
+    }
+
     fn impl_intodart(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
 
+        let name = match &src.wrapper_name {
+            Some(wrapper) => wrapper,
+            None => &src.name,
+        };
+        let (self_ref, self_path): (&str, &str) = if src.wrapper_name.is_some() {
+            ("self.0", &src.name)
+        } else {
+            ("self", "Self")
+        };
         if self.ir.is_struct {
             let variants = src
                 .variants()
@@ -140,7 +154,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     let tag = format!("{}.into_dart()", idx);
                     match &variant.kind {
                         IrVariantKind::Value => {
-                            format!("Self::{} => vec![{}],", variant.name, tag)
+                            format!("{}::{} => vec![{}],", self_path, variant.name, tag)
                         }
                         IrVariantKind::Struct(s) => {
                             let fields = Some(tag)
@@ -156,7 +170,8 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .collect::<Vec<_>>();
                             let (left, right) = s.brackets_pair();
                             format!(
-                                "Self::{}{}{}{} => vec![{}],",
+                                "{}::{}{}{}{} => vec![{}],",
+                                self_path,
                                 variant.name,
                                 left,
                                 pattern.join(","),
@@ -170,13 +185,14 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             format!(
                 "impl support::IntoDart for {} {{
                 fn into_dart(self) -> support::DartCObject {{
-                    match self {{
+                    match {} {{
                         {}
                     }}.into_dart()
                 }}
             }}
             ",
-                self.ir.name,
+                name,
+                self_ref,
                 variants.join("\n")
             )
         } else {
@@ -184,19 +200,19 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .variants()
                 .iter()
                 .enumerate()
-                .map(|(idx, variant)| format!("Self::{} => {},", variant.name, idx))
+                .map(|(idx, variant)| format!("{}::{} => {},", self_path, variant.name, idx))
                 .collect::<Vec<_>>()
                 .join("\n");
             format!(
                 "impl support::IntoDart for {} {{
                 fn into_dart(self) -> support::DartCObject {{
-                    match self {{
+                    match {} {{
                         {}
                     }}.into_dart()
                 }}
             }}
             ",
-                self.ir.name, variants
+                name, self_ref, variants
             )
         }
     }

@@ -310,6 +310,23 @@ void main(List<String> args) async {
       );
     }
 
+    print('dart call getAppSettings()');
+    {
+      expect((await api.getAppSettings()).version, "1.0.0-rc.1");
+      expect((await api.getAppSettings()).mode, ApplicationMode.Standalone);
+    }
+
+    print('dart call isAppEmbedded()');
+    {
+      expect(
+          await api.isAppEmbedded(
+              appSettings: ApplicationSettings(
+                  name: "from dart",
+                  version: "XX",
+                  mode: ApplicationMode.Embedded)),
+          true);
+    }
+
     _createGarbage();
     await Future.delayed(Duration(seconds: 1));
     _createGarbage();

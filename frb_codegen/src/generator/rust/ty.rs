@@ -9,6 +9,10 @@ pub trait TypeRustGeneratorTrait {
         None
     }
 
+    fn wrapper_struct(&self) -> Option<String> {
+        None
+    }
+
     fn structs(&self) -> String {
         "".to_string()
     }

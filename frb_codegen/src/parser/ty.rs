@@ -252,6 +252,11 @@ impl<'a> TypeParser<'a> {
     fn parse_enum_core(&mut self, ident: &syn::Ident) -> IrEnum {
         let src_enum = self.src_enums[&ident.to_string()];
         let name = src_enum.ident.to_string();
+        let wrapper_name = if src_enum.mirror {
+            Some(format!("mirror_{}", name))
+        } else {
+            None
+        };
         let path = src_enum.path.clone();
         let comments = extract_comments(&src_enum.src.attrs);
         let variants = src_enum
@@ -271,6 +276,7 @@ impl<'a> TypeParser<'a> {
                         let variant_ident = variant.ident.to_string();
                         IrVariantKind::Struct(IrStruct {
                             name: variant_ident,
+                            wrapper_name: None,
                             path: None,
                             is_fields_named: field_ident.is_some(),
                             comments: extract_comments(attrs),
@@ -295,7 +301,7 @@ impl<'a> TypeParser<'a> {
                 },
             })
             .collect();
-        IrEnum::new(name, path, comments, variants)
+        IrEnum::new(name, wrapper_name, path, comments, variants)
     }
 
     fn parse_struct_core(&mut self, ident: &syn::Ident) -> IrStruct {
@@ -322,10 +328,16 @@ impl<'a> TypeParser<'a> {
         }
 
         let name = src_struct.ident.to_string();
+        let wrapper_name = if src_struct.mirror {
+            Some(format!("mirror_{}", name))
+        } else {
+            None
+        };
         let path = Some(src_struct.path.clone());
         let comments = extract_comments(&src_struct.src.attrs);
         IrStruct {
             name,
+            wrapper_name,
             path,
             fields,
             is_fields_named,

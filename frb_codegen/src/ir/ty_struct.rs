@@ -42,6 +42,7 @@ impl IrTypeTrait for IrTypeStructRef {
 #[derive(Debug, Clone)]
 pub struct IrStruct {
     pub name: String,
+    pub wrapper_name: Option<String>,
     pub path: Option<Vec<String>>,
     pub fields: Vec<IrField>,
     pub is_fields_named: bool,

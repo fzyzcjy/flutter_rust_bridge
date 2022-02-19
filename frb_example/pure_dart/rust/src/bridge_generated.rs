@@ -476,6 +476,33 @@ pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_get_app_settings(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_app_settings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings())),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_ApplicationSettings) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "is_app_embedded",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_app_settings = app_settings.wire2api();
+            move |task_callback| Ok(is_app_embedded(api_app_settings))
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -483,6 +510,14 @@ pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
 pub struct wire_StringList {
     ptr: *mut *mut wire_uint_8_list,
     len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ApplicationSettings {
+    name: *mut wire_uint_8_list,
+    version: *mut wire_uint_8_list,
+    mode: i32,
 }
 
 #[repr(C)]
@@ -671,6 +706,14 @@ pub struct KitchenSink_Enums {
     field0: i32,
 }
 
+// Section: wrapper structs
+
+#[derive(Clone)]
+struct mirror_ApplicationMode(ApplicationMode);
+
+#[derive(Clone)]
+struct mirror_ApplicationSettings(ApplicationSettings);
+
 // Section: allocate functions
 
 #[no_mangle]
@@ -680,6 +723,11 @@ pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
         len,
     };
     support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_application_settings() -> *mut wire_ApplicationSettings {
+    support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -921,6 +969,26 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<ApplicationMode> for i32 {
+    fn wire2api(self) -> ApplicationMode {
+        match self {
+            0 => ApplicationMode::Standalone,
+            1 => ApplicationMode::Embedded,
+            _ => unreachable!("Invalid variant for ApplicationMode: {}", self),
+        }
+    }
+}
+
+impl Wire2Api<ApplicationSettings> for wire_ApplicationSettings {
+    fn wire2api(self) -> ApplicationSettings {
+        ApplicationSettings {
+            name: self.name.wire2api(),
+            version: self.version.wire2api(),
+            mode: self.mode.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<Attribute> for wire_Attribute {
     fn wire2api(self) -> Attribute {
         Attribute {
@@ -933,6 +1001,13 @@ impl Wire2Api<Attribute> for wire_Attribute {
 impl Wire2Api<bool> for bool {
     fn wire2api(self) -> bool {
         self
+    }
+}
+
+impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
+    fn wire2api(self) -> ApplicationSettings {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
     }
 }
 
@@ -1349,6 +1424,16 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
+impl NewWithNullPtr for wire_ApplicationSettings {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            version: core::ptr::null_mut(),
+            mode: Default::default(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_Attribute {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1483,6 +1568,28 @@ impl NewWithNullPtr for wire_NewTypeInt {
 }
 
 // Section: impl IntoDart
+
+impl support::IntoDart for mirror_ApplicationMode {
+    fn into_dart(self) -> support::DartCObject {
+        match self.0 {
+            ApplicationMode::Standalone => 0,
+            ApplicationMode::Embedded => 1,
+        }
+        .into_dart()
+    }
+}
+
+impl support::IntoDart for mirror_ApplicationSettings {
+    fn into_dart(self) -> support::DartCObject {
+        vec![
+            self.0.name.into_dart(),
+            self.0.version.into_dart(),
+            mirror_ApplicationMode(self.0.mode).into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
 
 impl support::IntoDart for Attribute {
     fn into_dart(self) -> support::DartCObject {

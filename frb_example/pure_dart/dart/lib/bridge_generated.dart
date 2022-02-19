@@ -86,6 +86,27 @@ abstract class FlutterRustBridgeExample {
   Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
 
   Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
+
+  Future<ApplicationSettings> getAppSettings({dynamic hint});
+
+  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
+}
+
+enum ApplicationMode {
+  Standalone,
+  Embedded,
+}
+
+class ApplicationSettings {
+  final String name;
+  final String version;
+  final ApplicationMode mode;
+
+  ApplicationSettings({
+    required this.name,
+    required this.version,
+    required this.mode,
+  });
 }
 
 class Attribute {
@@ -638,6 +659,29 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         hint: hint,
       ));
 
+  Future<ApplicationSettings> getAppSettings({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_app_settings(port_),
+        parseSuccessData: _wire2api_application_settings,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "get_app_settings",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
+  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_is_app_embedded(port_, _api2wire_box_autoadd_application_settings(appSettings)),
+        parseSuccessData: _wire2api_bool,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "is_app_embedded",
+          argNames: ["appSettings"],
+        ),
+        argValues: [appSettings],
+        hint: hint,
+      ));
+
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
@@ -655,8 +699,18 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return _api2wire_uint_8_list(raw);
   }
 
+  int _api2wire_application_mode(ApplicationMode raw) {
+    return raw.index;
+  }
+
   int _api2wire_bool(bool raw) {
     return raw ? 1 : 0;
+  }
+
+  ffi.Pointer<wire_ApplicationSettings> _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
+    final ptr = inner.new_box_autoadd_application_settings();
+    _api_fill_to_wire_application_settings(raw, ptr.ref);
+    return ptr;
   }
 
   ffi.Pointer<wire_Attribute> _api2wire_box_autoadd_attribute(Attribute raw) {
@@ -967,9 +1021,20 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 
   // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_application_settings(ApplicationSettings apiObj, wire_ApplicationSettings wireObj) {
+    wireObj.name = _api2wire_String(apiObj.name);
+    wireObj.version = _api2wire_String(apiObj.version);
+    wireObj.mode = _api2wire_application_mode(apiObj.mode);
+  }
+
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
     wireObj.key = _api2wire_String(apiObj.key);
     wireObj.value = _api2wire_String(apiObj.value);
+  }
+
+  void _api_fill_to_wire_box_autoadd_application_settings(
+      ApplicationSettings apiObj, ffi.Pointer<wire_ApplicationSettings> wireObj) {
+    _api_fill_to_wire_application_settings(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_attribute(Attribute apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -1164,6 +1229,20 @@ Uint64List _wire2api_ZeroCopyBuffer_Uint64List(dynamic raw) {
 
 Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
+}
+
+ApplicationMode _wire2api_application_mode(dynamic raw) {
+  return ApplicationMode.values[raw];
+}
+
+ApplicationSettings _wire2api_application_settings(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+  return ApplicationSettings(
+    name: _wire2api_String(arr[0]),
+    version: _wire2api_String(arr[1]),
+    mode: _wire2api_application_mode(arr[2]),
+  );
 }
 
 Attribute _wire2api_attribute(dynamic raw) {
@@ -1995,6 +2074,34 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_use_imported_enum');
   late final _wire_use_imported_enum = _wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
 
+  void wire_get_app_settings(
+    int port_,
+  ) {
+    return _wire_get_app_settings(
+      port_,
+    );
+  }
+
+  late final _wire_get_app_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_app_settings');
+  late final _wire_get_app_settings = _wire_get_app_settingsPtr.asFunction<void Function(int)>();
+
+  void wire_is_app_embedded(
+    int port_,
+    ffi.Pointer<wire_ApplicationSettings> app_settings,
+  ) {
+    return _wire_is_app_embedded(
+      port_,
+      app_settings,
+    );
+  }
+
+  late final _wire_is_app_embeddedPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ApplicationSettings>)>>(
+          'wire_is_app_embedded');
+  late final _wire_is_app_embedded =
+      _wire_is_app_embeddedPtr.asFunction<void Function(int, ffi.Pointer<wire_ApplicationSettings>)>();
+
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -2006,6 +2113,16 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_StringListPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList');
   late final _new_StringList = _new_StringListPtr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
+
+  ffi.Pointer<wire_ApplicationSettings> new_box_autoadd_application_settings() {
+    return _new_box_autoadd_application_settings();
+  }
+
+  late final _new_box_autoadd_application_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationSettings> Function()>>(
+          'new_box_autoadd_application_settings');
+  late final _new_box_autoadd_application_settings =
+      _new_box_autoadd_application_settingsPtr.asFunction<ffi.Pointer<wire_ApplicationSettings> Function()>();
 
   ffi.Pointer<wire_Attribute> new_box_autoadd_attribute() {
     return _new_box_autoadd_attribute();
@@ -2612,6 +2729,15 @@ class KitchenSink_Enums extends ffi.Struct {
 class wire_MyStruct extends ffi.Struct {
   @ffi.Uint8()
   external int content;
+}
+
+class wire_ApplicationSettings extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+
+  external ffi.Pointer<wire_uint_8_list> version;
+
+  @ffi.Int32()
+  external int mode;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
