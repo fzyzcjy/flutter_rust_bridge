@@ -9,12 +9,6 @@ dylib := if os() == "windows" {
 } else {
     "libflutter_rust_bridge_example.so"
 }
-# Assuming llvm was installed using `brew install llvm`
-llvm := if os() == "macos" {
-    "--llvm-path /opt/homebrew/opt/llvm"
-} else {
-    ""
-}
 
 default: gen-bridge lint
 

@@ -93,8 +93,8 @@ abstract class FlutterRustBridgeExample {
 }
 
 @sealed
-class BoxDynDartDebug extends FrbOpaque {
-  BoxDynDartDebug._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+class BoxDartDebug extends FrbOpaque {
+  BoxDartDebug._(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 @sealed
@@ -257,7 +257,7 @@ class OpaqueBag {
   final RwLockI32 primitive;
   final RwLockIsize10 array;
   final Str lifetime;
-  final BoxDynDartDebug traitObj;
+  final BoxDartDebug traitObj;
 
   OpaqueBag({
     required this.primitive,
@@ -699,9 +699,9 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       ));
 
   // Section: api2wire
-  ffi.Pointer<wire_BoxDynDartDebug> _api2wire_BoxDynDartDebug(BoxDynDartDebug raw) {
-    final ptr = inner.new_BoxDynDartDebug();
-    _api_fill_to_wire_BoxDynDartDebug(raw, ptr);
+  ffi.Pointer<wire_BoxDartDebug> _api2wire_BoxDartDebug(BoxDartDebug raw) {
+    final ptr = inner.new_BoxDartDebug();
+    _api_fill_to_wire_BoxDartDebug(raw, ptr);
     return ptr;
   }
 
@@ -1060,7 +1060,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   // Section: api_fill_to_wire
-  void _api_fill_to_wire_BoxDynDartDebug(BoxDynDartDebug apiObj, ffi.Pointer<wire_BoxDynDartDebug> wireObj) {
+  void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, ffi.Pointer<wire_BoxDartDebug> wireObj) {
     wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
   }
 
@@ -1212,7 +1212,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     wireObj.primitive = _api2wire_RwLockI32(apiObj.primitive);
     wireObj.array = _api2wire_RwLockIsize10(apiObj.array);
     wireObj.lifetime = _api2wire_Str(apiObj.lifetime);
-    wireObj.trait_obj = _api2wire_BoxDynDartDebug(apiObj.traitObj);
+    wireObj.trait_obj = _api2wire_BoxDartDebug(apiObj.traitObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -1238,8 +1238,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 }
 
 // Section: wire2api
-BoxDynDartDebug _wire2api_BoxDynDartDebug(dynamic raw) {
-  return BoxDynDartDebug._(raw[0], raw[1], raw[2]);
+BoxDartDebug _wire2api_BoxDartDebug(dynamic raw) {
+  return BoxDartDebug._(raw[0], raw[1], raw[2]);
 }
 
 RwLockI32 _wire2api_RwLockI32(dynamic raw) {
@@ -1523,7 +1523,7 @@ OpaqueBag _wire2api_opaque_bag(dynamic raw) {
     primitive: _wire2api_RwLockI32(arr[0]),
     array: _wire2api_RwLockIsize10(arr[1]),
     lifetime: _wire2api_Str(arr[2]),
-    traitObj: _wire2api_BoxDynDartDebug(arr[3]),
+    traitObj: _wire2api_BoxDartDebug(arr[3]),
   );
 }
 
@@ -2175,13 +2175,13 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_opaque_repr =
       _wire_handle_opaque_reprPtr.asFunction<void Function(int, ffi.Pointer<wire_RwLockI32>)>();
 
-  ffi.Pointer<wire_BoxDynDartDebug> new_BoxDynDartDebug() {
-    return _new_BoxDynDartDebug();
+  ffi.Pointer<wire_BoxDartDebug> new_BoxDartDebug() {
+    return _new_BoxDartDebug();
   }
 
-  late final _new_BoxDynDartDebugPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxDynDartDebug> Function()>>('new_BoxDynDartDebug');
-  late final _new_BoxDynDartDebug = _new_BoxDynDartDebugPtr.asFunction<ffi.Pointer<wire_BoxDynDartDebug> Function()>();
+  late final _new_BoxDartDebugPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxDartDebug> Function()>>('new_BoxDartDebug');
+  late final _new_BoxDartDebug = _new_BoxDartDebugPtr.asFunction<ffi.Pointer<wire_BoxDartDebug> Function()>();
 
   ffi.Pointer<wire_RwLockI32> new_RwLockI32() {
     return _new_RwLockI32();
@@ -2845,7 +2845,7 @@ class wire_Str extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class wire_BoxDynDartDebug extends ffi.Struct {
+class wire_BoxDartDebug extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
@@ -2856,7 +2856,7 @@ class wire_OpaqueBag extends ffi.Struct {
 
   external ffi.Pointer<wire_Str> lifetime;
 
-  external ffi.Pointer<wire_BoxDynDartDebug> trait_obj;
+  external ffi.Pointer<wire_BoxDartDebug> trait_obj;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;

@@ -15,19 +15,23 @@ fn char_not_alphanumeric(c: char) -> bool {
     !c.is_alphanumeric()
 }
 
+fn rust_type_to_dart_type(rust: &str) -> String {
+    lazy_static! {
+        static ref OPAQUE_FILTER: Regex =
+            Regex::new(r"(\bdyn|'static|\bDartSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b")
+                .unwrap();
+    }
+    OPAQUE_FILTER
+        .replace_all(rust, "")
+        .replace(char_not_alphanumeric, "_")
+        .to_case(Case::Pascal)
+}
+
 impl From<&syn::Type> for IrTypeOpaque {
     fn from(rust_ty: &syn::Type) -> Self {
-        lazy_static! {
-            static ref OPAQUE_FILTER: Regex =
-                Regex::new(r"(\bdyn|'static|\bDartSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b")
-                    .unwrap();
-        }
         let inner_dart = match rust_ty {
             syn::Type::Tuple(tup) if tup.elems.is_empty() => "void".to_owned(),
-            _ => OPAQUE_FILTER
-                .replace_all(&rust_ty.into_token_stream().to_string(), "")
-                .replace(char_not_alphanumeric, "_")
-                .to_case(Case::Pascal),
+            _ => rust_type_to_dart_type(&rust_ty.into_token_stream().to_string()),
         };
 
         Self {
@@ -39,9 +43,7 @@ impl From<&syn::Type> for IrTypeOpaque {
 
 impl From<String> for IrTypeOpaque {
     fn from(inner_rust: String) -> Self {
-        let inner_dart = inner_rust
-            .replace(char_not_alphanumeric, "_")
-            .to_case(Case::Pascal);
+        let inner_dart = rust_type_to_dart_type(&inner_rust);
         Self {
             inner_rust,
             inner_dart,
