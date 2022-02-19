@@ -1,5 +1,6 @@
-## Unreleased
+## 1.20.0
 
+* Add struct mirrors to use external types #352 (thanks @Unoqwy)
 * Add examples to documentation
 
 ## 1.19.2
