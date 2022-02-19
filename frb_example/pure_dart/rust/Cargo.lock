@@ -101,8 +101,13 @@ version = "1.0.0"
 dependencies = [
  "anyhow",
  "flutter_rust_bridge",
+ "flutter_rust_bridge_example_external",
  "lazy_static",
 ]
+
+[[package]]
+name = "flutter_rust_bridge_example_external"
+version = "0.1.0"
 
 [[package]]
 name = "flutter_rust_bridge_macros"

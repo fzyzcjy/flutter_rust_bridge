@@ -22,6 +22,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         })
     }
 
+    fn wrapper_struct(&self) -> Option<String> {
+        let src = TypeRustGenerator::new(*self.ir.inner.clone(), self.context.ir_file);
+        src.wrapper_struct()
+    }
+
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
         match &*self.ir.inner {
             Primitive(prim) => collector.generate(

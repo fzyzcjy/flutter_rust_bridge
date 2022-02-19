@@ -54,6 +54,7 @@ impl IrTypeTrait for IrTypeEnumRef {
 #[derive(Debug, Clone)]
 pub struct IrEnum {
     pub name: String,
+    pub wrapper_name: Option<String>,
     pub path: Vec<String>,
     pub comments: Vec<IrComment>,
     _variants: Vec<IrVariant>,
@@ -63,6 +64,7 @@ pub struct IrEnum {
 impl IrEnum {
     pub fn new(
         name: String,
+        wrapper_name: Option<String>,
         path: Vec<String>,
         comments: Vec<IrComment>,
         mut variants: Vec<IrVariant>,
@@ -106,6 +108,7 @@ impl IrEnum {
         }
         Self {
             name,
+            wrapper_name,
             path,
             comments,
             _variants: variants,
