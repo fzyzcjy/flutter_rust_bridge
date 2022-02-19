@@ -514,10 +514,17 @@ pub struct wire_StringList {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_ApplicationEnv {
+    vars: *mut wire_StringList,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_ApplicationSettings {
     name: *mut wire_uint_8_list,
     version: *mut wire_uint_8_list,
     mode: i32,
+    env: *mut wire_ApplicationEnv,
 }
 
 #[repr(C)]
@@ -709,6 +716,9 @@ pub struct KitchenSink_Enums {
 // Section: wrapper structs
 
 #[derive(Clone)]
+struct mirror_ApplicationEnv(ApplicationEnv);
+
+#[derive(Clone)]
 struct mirror_ApplicationMode(ApplicationMode);
 
 #[derive(Clone)]
@@ -717,10 +727,18 @@ struct mirror_ApplicationSettings(ApplicationSettings);
 // Section: static checks
 
 const _: fn() = || {
-    let ApplicationSettings = None::<ApplicationSettings>.unwrap();
-    let _: String = ApplicationSettings.name;
-    let _: String = ApplicationSettings.version;
-    let _: ApplicationMode = ApplicationSettings.mode;
+    {
+        let ApplicationEnv = None::<ApplicationEnv>.unwrap();
+        let _: Vec<String> = ApplicationEnv.vars;
+    }
+
+    {
+        let ApplicationSettings = None::<ApplicationSettings>.unwrap();
+        let _: String = ApplicationSettings.name;
+        let _: String = ApplicationSettings.version;
+        let _: ApplicationMode = ApplicationSettings.mode;
+        let _: Box<ApplicationEnv> = ApplicationSettings.env;
+    }
 };
 // Section: allocate functions
 
@@ -731,6 +749,11 @@ pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
         len,
     };
     support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_application_env() -> *mut wire_ApplicationEnv {
+    support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -977,6 +1000,14 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<ApplicationEnv> for wire_ApplicationEnv {
+    fn wire2api(self) -> ApplicationEnv {
+        ApplicationEnv {
+            vars: self.vars.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<ApplicationMode> for i32 {
     fn wire2api(self) -> ApplicationMode {
         match self {
@@ -993,6 +1024,7 @@ impl Wire2Api<ApplicationSettings> for wire_ApplicationSettings {
             name: self.name.wire2api(),
             version: self.version.wire2api(),
             mode: self.mode.wire2api(),
+            env: self.env.wire2api(),
         }
     }
 }
@@ -1009,6 +1041,13 @@ impl Wire2Api<Attribute> for wire_Attribute {
 impl Wire2Api<bool> for bool {
     fn wire2api(self) -> bool {
         self
+    }
+}
+
+impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
+    fn wire2api(self) -> Box<ApplicationEnv> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
     }
 }
 
@@ -1432,12 +1471,21 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
+impl NewWithNullPtr for wire_ApplicationEnv {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            vars: core::ptr::null_mut(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_ApplicationSettings {
     fn new_with_null_ptr() -> Self {
         Self {
             name: core::ptr::null_mut(),
             version: core::ptr::null_mut(),
             mode: Default::default(),
+            env: core::ptr::null_mut(),
         }
     }
 }
@@ -1577,6 +1625,13 @@ impl NewWithNullPtr for wire_NewTypeInt {
 
 // Section: impl IntoDart
 
+impl support::IntoDart for mirror_ApplicationEnv {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0.vars.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
+
 impl support::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> support::DartCObject {
         match self.0 {
@@ -1593,6 +1648,7 @@ impl support::IntoDart for mirror_ApplicationSettings {
             self.0.name.into_dart(),
             self.0.version.into_dart(),
             mirror_ApplicationMode(self.0.mode).into_dart(),
+            mirror_ApplicationEnv(*self.0.env).into_dart(),
         ]
         .into_dart()
     }

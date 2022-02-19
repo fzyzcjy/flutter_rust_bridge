@@ -54,9 +54,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
 
     fn static_checks(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_file);
-        if src.wrapper_name.is_none() {
-            return None;
-        }
+        src.wrapper_name.as_ref()?;
 
         let checks = src
             .fields
@@ -66,7 +64,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     "let _: {} = {}.{};\n",
                     field.ty.rust_api_type(),
                     src.name,
-                    field.name.to_string()
+                    field.name
                 )
             })
             .collect::<Vec<_>>()
@@ -102,8 +100,12 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 {
                     Some(wrapper) => {
                         format!(
-                            "{}(self{}.{}).into_dart()",
+                            "{}({}self{}.{}).into_dart()",
                             wrapper,
+                            match field.ty {
+                                IrType::Boxed(_) => "*",
+                                _ => "",
+                            },
                             unwrap,
                             field.name_rust_style(src.is_fields_named)
                         )

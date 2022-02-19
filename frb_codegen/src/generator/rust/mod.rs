@@ -106,7 +106,7 @@ impl Generator {
             .iter()
             .filter_map(|ty| self.generate_static_checks(ty, ir_file))
             .collect();
-        if static_checks.len() > 0 {
+        if !static_checks.is_empty() {
             lines.push("const _: fn() = || {".to_owned());
             lines.extend(static_checks);
             lines.push("};".to_owned());
@@ -387,18 +387,23 @@ impl Generator {
     }
 
     fn generate_wrapper_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file)
-            .wrapper_struct()
-            .map(|wrapper| {
-                format!(
-                    r###"
+        match ty {
+            IrType::StructRef(_) | IrType::EnumRef(_) => {
+                TypeRustGenerator::new(ty.clone(), ir_file)
+                    .wrapper_struct()
+                    .map(|wrapper| {
+                        format!(
+                            r###"
                 #[derive(Clone)]
                 struct {}({});
                 "###,
-                    wrapper,
-                    ty.rust_api_type(),
-                )
-            })
+                            wrapper,
+                            ty.rust_api_type(),
+                        )
+                    })
+            }
+            _ => None,
+        }
     }
 
     fn generate_new_with_nullptr_misc(&self) -> &'static str {

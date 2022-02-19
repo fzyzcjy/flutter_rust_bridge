@@ -92,6 +92,14 @@ abstract class FlutterRustBridgeExample {
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
 }
 
+class ApplicationEnv {
+  final List<String> vars;
+
+  ApplicationEnv({
+    required this.vars,
+  });
+}
+
 enum ApplicationMode {
   Standalone,
   Embedded,
@@ -101,11 +109,13 @@ class ApplicationSettings {
   final String name;
   final String version;
   final ApplicationMode mode;
+  final ApplicationEnv env;
 
   ApplicationSettings({
     required this.name,
     required this.version,
     required this.mode,
+    required this.env,
   });
 }
 
@@ -707,6 +717,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return raw ? 1 : 0;
   }
 
+  ffi.Pointer<wire_ApplicationEnv> _api2wire_box_application_env(ApplicationEnv raw) {
+    final ptr = inner.new_box_application_env();
+    _api_fill_to_wire_application_env(raw, ptr.ref);
+    return ptr;
+  }
+
   ffi.Pointer<wire_ApplicationSettings> _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
     final ptr = inner.new_box_autoadd_application_settings();
     _api_fill_to_wire_application_settings(raw, ptr.ref);
@@ -1021,15 +1037,24 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 
   // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
+    wireObj.vars = _api2wire_StringList(apiObj.vars);
+  }
+
   void _api_fill_to_wire_application_settings(ApplicationSettings apiObj, wire_ApplicationSettings wireObj) {
     wireObj.name = _api2wire_String(apiObj.name);
     wireObj.version = _api2wire_String(apiObj.version);
     wireObj.mode = _api2wire_application_mode(apiObj.mode);
+    wireObj.env = _api2wire_box_application_env(apiObj.env);
   }
 
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
     wireObj.key = _api2wire_String(apiObj.key);
     wireObj.value = _api2wire_String(apiObj.value);
+  }
+
+  void _api_fill_to_wire_box_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
+    _api_fill_to_wire_application_env(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_application_settings(
@@ -1231,17 +1256,26 @@ Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
 }
 
+ApplicationEnv _wire2api_application_env(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return ApplicationEnv(
+    vars: _wire2api_StringList(arr[0]),
+  );
+}
+
 ApplicationMode _wire2api_application_mode(dynamic raw) {
   return ApplicationMode.values[raw];
 }
 
 ApplicationSettings _wire2api_application_settings(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+  if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
   return ApplicationSettings(
     name: _wire2api_String(arr[0]),
     version: _wire2api_String(arr[1]),
     mode: _wire2api_application_mode(arr[2]),
+    env: _wire2api_box_application_env(arr[3]),
   );
 }
 
@@ -1256,6 +1290,10 @@ Attribute _wire2api_attribute(dynamic raw) {
 
 bool _wire2api_bool(dynamic raw) {
   return raw as bool;
+}
+
+ApplicationEnv _wire2api_box_application_env(dynamic raw) {
+  return _wire2api_application_env(raw);
 }
 
 Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
@@ -2114,6 +2152,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList');
   late final _new_StringList = _new_StringListPtr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
 
+  ffi.Pointer<wire_ApplicationEnv> new_box_application_env() {
+    return _new_box_application_env();
+  }
+
+  late final _new_box_application_envPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>('new_box_application_env');
+  late final _new_box_application_env =
+      _new_box_application_envPtr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
+
   ffi.Pointer<wire_ApplicationSettings> new_box_autoadd_application_settings() {
     return _new_box_autoadd_application_settings();
   }
@@ -2731,6 +2778,10 @@ class wire_MyStruct extends ffi.Struct {
   external int content;
 }
 
+class wire_ApplicationEnv extends ffi.Struct {
+  external ffi.Pointer<wire_StringList> vars;
+}
+
 class wire_ApplicationSettings extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 
@@ -2738,6 +2789,8 @@ class wire_ApplicationSettings extends ffi.Struct {
 
   @ffi.Int32()
   external int mode;
+
+  external ffi.Pointer<wire_ApplicationEnv> env;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
