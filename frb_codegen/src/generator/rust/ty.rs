@@ -9,6 +9,10 @@ pub trait TypeRustGeneratorTrait {
         None
     }
 
+    fn static_checks(&self) -> Option<String> {
+        None
+    }
+
     fn wrapper_struct(&self) -> Option<String> {
         None
     }

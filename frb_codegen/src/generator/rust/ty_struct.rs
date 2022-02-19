@@ -52,9 +52,38 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         )
     }
 
+    fn static_checks(&self) -> Option<String> {
+        let src = self.ir.get(self.context.ir_file);
+        if src.wrapper_name.is_none() {
+            return None;
+        }
+
+        let checks = src
+            .fields
+            .iter()
+            .map(|field| {
+                format!(
+                    "let _: {} = {}.{};\n",
+                    field.ty.rust_api_type(),
+                    src.name,
+                    field.name.to_string()
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("");
+        Some(format!(
+            "{{
+                let {0} = None::<{0}>.unwrap();
+                {1}
+            }}
+            ",
+            src.name, checks
+        ))
+    }
+
     fn wrapper_struct(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_file);
-        src.wrapper_name.as_ref().map(|s| s.clone())
+        src.wrapper_name.as_ref().cloned()
     }
 
     fn impl_intodart(&self) -> String {

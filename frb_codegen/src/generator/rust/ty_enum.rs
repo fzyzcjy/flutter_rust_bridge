@@ -130,7 +130,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
 
     fn wrapper_struct(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_file);
-        src.wrapper_name.as_ref().map(|s| s.clone())
+        src.wrapper_name.as_ref().cloned()
     }
 
     fn impl_intodart(&self) -> String {

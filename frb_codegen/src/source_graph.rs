@@ -184,7 +184,7 @@ impl Debug for Module {
 }
 
 /// Get a struct or enum ident, possibly remapped by a mirror marker
-fn get_ident(ident: &Ident, attrs: &Vec<Attribute>) -> (Ident, bool) {
+fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Ident, bool) {
     markers::extract_mirror_marker(attrs)
         .and_then(|path| path.get_ident().map(|ident| (ident.clone(), true)))
         .unwrap_or_else(|| (ident.clone(), false))

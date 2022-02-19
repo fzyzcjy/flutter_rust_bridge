@@ -238,6 +238,8 @@ pub struct wire_uint_8_list {
 
 // Section: wrapper structs
 
+// Section: static checks
+
 // Section: allocate functions
 
 #[no_mangle]

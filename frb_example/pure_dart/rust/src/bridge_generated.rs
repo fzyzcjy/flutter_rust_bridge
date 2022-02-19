@@ -714,6 +714,14 @@ struct mirror_ApplicationMode(ApplicationMode);
 #[derive(Clone)]
 struct mirror_ApplicationSettings(ApplicationSettings);
 
+// Section: static checks
+
+const _: fn() = || {
+    let ApplicationSettings = None::<ApplicationSettings>.unwrap();
+    let _: String = ApplicationSettings.name;
+    let _: String = ApplicationSettings.version;
+    let _: ApplicationMode = ApplicationSettings.mode;
+};
 // Section: allocate functions
 
 #[no_mangle]
