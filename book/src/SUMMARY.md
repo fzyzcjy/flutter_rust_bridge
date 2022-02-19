@@ -11,7 +11,7 @@
     - [Vec](feature/lang_vec.md)
     - [Struct](feature/lang_struct.md)
     - [Enum](feature/lang_enum.md)
-    - [Use](feature/lang_use.md)
+    - [External types](feature/lang_external.md)
     - [Option](feature/lang_option.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)

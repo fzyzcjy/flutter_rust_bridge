@@ -16,6 +16,7 @@ mod commands;
 mod config;
 mod generator;
 mod ir;
+mod markers;
 mod others;
 mod parser;
 mod source_graph;
