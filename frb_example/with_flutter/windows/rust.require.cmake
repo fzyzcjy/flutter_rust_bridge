@@ -9,3 +9,4 @@ set(CRATE_NAME "flutter_rust_bridge_example")
 target_link_libraries(${BINARY_NAME} PUBLIC ${CRATE_NAME})
 
 list(APPEND PLUGIN_BUNDLED_LIBRARIES $<TARGET_FILE:${CRATE_NAME}-shared>)
+
