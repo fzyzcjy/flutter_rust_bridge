@@ -52,21 +52,80 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         )
     }
 
-    fn impl_intodart(&self) -> String {
+    fn static_checks(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_file);
+        src.wrapper_name.as_ref()?;
 
-        let body = src
+        let checks = src
             .fields
             .iter()
             .map(|field| {
                 format!(
-                    "self.{}.into_dart()",
-                    field.name_rust_style(src.is_fields_named)
+                    "let _: {} = {}.{};\n",
+                    field.ty.rust_api_type(),
+                    src.name,
+                    field.name
                 )
+            })
+            .collect::<Vec<_>>()
+            .join("");
+        Some(format!(
+            "{{
+                let {0} = None::<{0}>.unwrap();
+                {1}
+            }}
+            ",
+            src.name, checks
+        ))
+    }
+
+    fn wrapper_struct(&self) -> Option<String> {
+        let src = self.ir.get(self.context.ir_file);
+        src.wrapper_name.as_ref().cloned()
+    }
+
+    fn impl_intodart(&self) -> String {
+        let src = self.ir.get(self.context.ir_file);
+
+        let unwrap = match &src.wrapper_name {
+            Some(_) => ".0",
+            None => "",
+        };
+        let body = src
+            .fields
+            .iter()
+            .map(|field| {
+                match TypeRustGenerator::new(field.ty.clone(), self.context.ir_file)
+                    .wrapper_struct()
+                {
+                    Some(wrapper) => {
+                        format!(
+                            "{}({}self{}.{}).into_dart()",
+                            wrapper,
+                            match field.ty {
+                                IrType::Boxed(_) => "*",
+                                _ => "",
+                            },
+                            unwrap,
+                            field.name_rust_style(src.is_fields_named)
+                        )
+                    }
+                    None => {
+                        format!(
+                            "self{}.{}.into_dart()",
+                            unwrap,
+                            field.name_rust_style(src.is_fields_named)
+                        )
+                    }
+                }
             })
             .collect::<Vec<_>>()
             .join(",\n");
 
+        let name = match &src.wrapper_name {
+            Some(wrapper) => wrapper,
+            None => &src.name,
+        };
         format!(
             "impl support::IntoDart for {} {{
                 fn into_dart(self) -> support::DartCObject {{
@@ -77,7 +136,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             }}
             impl support::IntoDartExceptPrimitive for {} {{}}
             ",
-            self.ir.name, body, self.ir.name,
+            name, body, name,
         )
     }
 

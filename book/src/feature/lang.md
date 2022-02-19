@@ -9,7 +9,7 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | [`struct { .. }`, `struct( .. )`](lang_struct.md) | `class`                     |
 | [`enum { A, B }`](lang_enum.md)                   | `enum`                      |
 | [`enum { A(..) }`](lang_enum.md)                  | `@freezed class`            |
-| [`use ...`](lang_use.md)                          | act normally                |
+| [`use ...`](lang_external.md)                     | act normally                |
 | [`Option<T>`](lang_option.md)                     | `T?`                        |
 | `Box<T>`                                          | `T`                         |
 | comments                                          | same                        |
