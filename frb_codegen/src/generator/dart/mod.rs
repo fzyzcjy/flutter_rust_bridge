@@ -3,22 +3,22 @@ mod ty_boxed;
 mod ty_delegate;
 mod ty_enum;
 mod ty_general_list;
+mod ty_opaque;
 mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
-mod ty_opaque;
 
 pub use ty::*;
 pub use ty_boxed::*;
 pub use ty_delegate::*;
 pub use ty_enum::*;
 pub use ty_general_list::*;
+pub use ty_opaque::*;
 pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
 pub use ty_struct::*;
-pub use ty_opaque::*;
 
 use convert_case::{Case, Casing};
 use log::debug;

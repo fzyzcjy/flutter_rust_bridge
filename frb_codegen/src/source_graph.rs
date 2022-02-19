@@ -261,7 +261,11 @@ impl Module {
                                 debug!("Trying to parse {:?}", file_path);
                                 Some(ModuleSource::File(
                                     syn::parse_file(&source_rust_content).unwrap_or_else(|err| {
-                                        panic!("Failed to read {}: {}", file_path.to_string_lossy(), err)
+                                        panic!(
+                                            "Failed to read {}: {}",
+                                            file_path.to_string_lossy(),
+                                            err
+                                        )
                                     }),
                                 ))
                             } else {

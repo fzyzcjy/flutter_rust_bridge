@@ -8,10 +8,13 @@ type_rust_generator_struct!(TypeOpaqueGenerator, IrTypeOpaque);
 
 impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> Option<String> {
-        Some("unsafe {
+        Some(
+            "unsafe {
             let ans = support::box_from_leak_ptr(self);
             support::opaque_from_dart(ans.ptr as _)
-        }".into())
+        }"
+            .into(),
+        )
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
