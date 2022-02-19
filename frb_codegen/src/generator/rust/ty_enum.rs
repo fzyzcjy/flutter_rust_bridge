@@ -128,23 +128,76 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         )
     }
 
+    fn static_checks(&self) -> Option<String> {
+        let src = self.ir.get(self.context.ir_file);
+        src.wrapper_name.as_ref()?;
+
+        let branches: Vec<_> = src
+            .variants()
+            .iter()
+            .map(|variant| match &variant.kind {
+                IrVariantKind::Value => format!("{}::{} => {{}}", src.name, variant.name),
+                IrVariantKind::Struct(s) => {
+                    let pattern = s
+                        .fields
+                        .iter()
+                        .map(|field| field.name.rust_style().to_owned())
+                        .collect::<Vec<_>>();
+                    let pattern = if s.is_fields_named {
+                        format!("{}::{} {{ {} }}", src.name, variant.name, pattern.join(","))
+                    } else {
+                        format!("{}::{}({})", src.name, variant.name, pattern.join(","))
+                    };
+                    let checks = s
+                        .fields
+                        .iter()
+                        .map(|field| {
+                            format!(
+                                "let _: {} = {};\n",
+                                field.ty.rust_api_type(),
+                                field.name.rust_style(),
+                            )
+                        })
+                        .collect::<Vec<_>>();
+                    format!("{} => {{ {} }}", pattern, checks.join(""))
+                }
+            })
+            .collect();
+        Some(format!(
+            "match None::<{}>.unwrap() {{ {} }}",
+            src.name,
+            branches.join(","),
+        ))
+    }
+
     fn wrapper_struct(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_file);
         src.wrapper_name.as_ref().cloned()
     }
 
+    fn self_access(&self, obj: String) -> String {
+        let src = self.ir.get(self.context.ir_file);
+        match &src.wrapper_name {
+            Some(_) => format!("{}.0", obj),
+            None => obj,
+        }
+    }
+
+    fn wrap_obj(&self, obj: String) -> String {
+        match self.wrapper_struct() {
+            Some(wrapper) => format!("{}({})", wrapper, obj),
+            None => obj,
+        }
+    }
+
     fn impl_intodart(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
 
-        let name = match &src.wrapper_name {
-            Some(wrapper) => wrapper,
-            None => &src.name,
+        let (name, self_path): (&str, &str) = match &src.wrapper_name {
+            Some(wrapper) => (wrapper, &src.name),
+            None => (&src.name, "Self"),
         };
-        let (self_ref, self_path): (&str, &str) = if src.wrapper_name.is_some() {
-            ("self.0", &src.name)
-        } else {
-            ("self", "Self")
-        };
+        let self_ref = self.self_access("self".to_owned());
         if self.ir.is_struct {
             let variants = src
                 .variants()
@@ -160,7 +213,11 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             let fields = Some(tag)
                                 .into_iter()
                                 .chain(s.fields.iter().map(|field| {
-                                    format!("{}.into_dart()", field.name.rust_style())
+                                    let gen = TypeRustGenerator::new(
+                                        field.ty.clone(),
+                                        self.context.ir_file,
+                                    );
+                                    gen.convert_to_dart(field.name.rust_style().to_owned())
                                 }))
                                 .collect::<Vec<_>>();
                             let pattern = s

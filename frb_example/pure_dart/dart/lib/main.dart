@@ -265,6 +265,7 @@ void main(List<String> args) async {
 
     print('dart call handleEnumStruct');
     {
+      print("DA");
       expect(await api.handleEnumStruct(val: Empty()), Empty());
       expect(
         await api.handleEnumStruct(
@@ -312,9 +313,10 @@ void main(List<String> args) async {
 
     print('dart call getAppSettings()');
     {
-      expect((await api.getAppSettings()).version, "1.0.0-rc.1");
-      expect((await api.getAppSettings()).mode, ApplicationMode.Standalone);
-      expect((await api.getAppSettings()).env.vars[0], "myenv");
+      var settings = await api.getAppSettings();
+      expect(settings.version, "1.0.0-rc.1");
+      expect(settings.mode, ApplicationMode.Standalone);
+      expect(settings.env.vars[0].field0, "myenv");
     }
 
     print('dart call isAppEmbedded()');
@@ -325,8 +327,17 @@ void main(List<String> args) async {
                   name: "from dart",
                   version: "XX",
                   mode: ApplicationMode.Embedded,
-                  env: ApplicationEnv(vars: ["sendback"]))),
+                  env: ApplicationEnv(vars: [ApplicationEnvVar(field0: "sendback", field1: true)]))),
           true);
+    }
+
+    print('dart call getMessage()');
+    {
+      var message = await api.getMessage();
+      expect(message is RenderPixel, true);
+      message as RenderPixel;
+      expect(message.x, 5);
+      expect(message.y, 10);
     }
 
     _createGarbage();

@@ -15,6 +15,476 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
+class _$ApplicationMessageTearOff {
+  const _$ApplicationMessageTearOff();
+
+  DisplayMessage displayMessage(String field0) {
+    return DisplayMessage(
+      field0,
+    );
+  }
+
+  RenderPixel renderPixel({required int x, required int y}) {
+    return RenderPixel(
+      x: x,
+      y: y,
+    );
+  }
+
+  Exit exit() {
+    return const Exit();
+  }
+}
+
+/// @nodoc
+const $ApplicationMessage = _$ApplicationMessageTearOff();
+
+/// @nodoc
+mixin _$ApplicationMessage {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) displayMessage,
+    required TResult Function(int x, int y) renderPixel,
+    required TResult Function() exit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function(int x, int y)? renderPixel,
+    TResult Function()? exit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function(int x, int y)? renderPixel,
+    TResult Function()? exit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DisplayMessage value) displayMessage,
+    required TResult Function(RenderPixel value) renderPixel,
+    required TResult Function(Exit value) exit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DisplayMessage value)? displayMessage,
+    TResult Function(RenderPixel value)? renderPixel,
+    TResult Function(Exit value)? exit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DisplayMessage value)? displayMessage,
+    TResult Function(RenderPixel value)? renderPixel,
+    TResult Function(Exit value)? exit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplicationMessageCopyWith<$Res> {
+  factory $ApplicationMessageCopyWith(ApplicationMessage value, $Res Function(ApplicationMessage) then) =
+      _$ApplicationMessageCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ApplicationMessageCopyWithImpl<$Res> implements $ApplicationMessageCopyWith<$Res> {
+  _$ApplicationMessageCopyWithImpl(this._value, this._then);
+
+  final ApplicationMessage _value;
+  // ignore: unused_field
+  final $Res Function(ApplicationMessage) _then;
+}
+
+/// @nodoc
+abstract class $DisplayMessageCopyWith<$Res> {
+  factory $DisplayMessageCopyWith(DisplayMessage value, $Res Function(DisplayMessage) then) =
+      _$DisplayMessageCopyWithImpl<$Res>;
+  $Res call({String field0});
+}
+
+/// @nodoc
+class _$DisplayMessageCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
+    implements $DisplayMessageCopyWith<$Res> {
+  _$DisplayMessageCopyWithImpl(DisplayMessage _value, $Res Function(DisplayMessage) _then)
+      : super(_value, (v) => _then(v as DisplayMessage));
+
+  @override
+  DisplayMessage get _value => super._value as DisplayMessage;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(DisplayMessage(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DisplayMessage implements DisplayMessage {
+  const _$DisplayMessage(this.field0);
+
+  @override
+  final String field0;
+
+  @override
+  String toString() {
+    return 'ApplicationMessage.displayMessage(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DisplayMessage &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  $DisplayMessageCopyWith<DisplayMessage> get copyWith =>
+      _$DisplayMessageCopyWithImpl<DisplayMessage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) displayMessage,
+    required TResult Function(int x, int y) renderPixel,
+    required TResult Function() exit,
+  }) {
+    return displayMessage(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function(int x, int y)? renderPixel,
+    TResult Function()? exit,
+  }) {
+    return displayMessage?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function(int x, int y)? renderPixel,
+    TResult Function()? exit,
+    required TResult orElse(),
+  }) {
+    if (displayMessage != null) {
+      return displayMessage(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DisplayMessage value) displayMessage,
+    required TResult Function(RenderPixel value) renderPixel,
+    required TResult Function(Exit value) exit,
+  }) {
+    return displayMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DisplayMessage value)? displayMessage,
+    TResult Function(RenderPixel value)? renderPixel,
+    TResult Function(Exit value)? exit,
+  }) {
+    return displayMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DisplayMessage value)? displayMessage,
+    TResult Function(RenderPixel value)? renderPixel,
+    TResult Function(Exit value)? exit,
+    required TResult orElse(),
+  }) {
+    if (displayMessage != null) {
+      return displayMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DisplayMessage implements ApplicationMessage {
+  const factory DisplayMessage(String field0) = _$DisplayMessage;
+
+  String get field0;
+  @JsonKey(ignore: true)
+  $DisplayMessageCopyWith<DisplayMessage> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RenderPixelCopyWith<$Res> {
+  factory $RenderPixelCopyWith(RenderPixel value, $Res Function(RenderPixel) then) = _$RenderPixelCopyWithImpl<$Res>;
+  $Res call({int x, int y});
+}
+
+/// @nodoc
+class _$RenderPixelCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
+    implements $RenderPixelCopyWith<$Res> {
+  _$RenderPixelCopyWithImpl(RenderPixel _value, $Res Function(RenderPixel) _then)
+      : super(_value, (v) => _then(v as RenderPixel));
+
+  @override
+  RenderPixel get _value => super._value as RenderPixel;
+
+  @override
+  $Res call({
+    Object? x = freezed,
+    Object? y = freezed,
+  }) {
+    return _then(RenderPixel(
+      x: x == freezed
+          ? _value.x
+          : x // ignore: cast_nullable_to_non_nullable
+              as int,
+      y: y == freezed
+          ? _value.y
+          : y // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RenderPixel implements RenderPixel {
+  const _$RenderPixel({required this.x, required this.y});
+
+  @override
+  final int x;
+  @override
+  final int y;
+
+  @override
+  String toString() {
+    return 'ApplicationMessage.renderPixel(x: $x, y: $y)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RenderPixel &&
+            const DeepCollectionEquality().equals(other.x, x) &&
+            const DeepCollectionEquality().equals(other.y, y));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(x), const DeepCollectionEquality().hash(y));
+
+  @JsonKey(ignore: true)
+  @override
+  $RenderPixelCopyWith<RenderPixel> get copyWith => _$RenderPixelCopyWithImpl<RenderPixel>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) displayMessage,
+    required TResult Function(int x, int y) renderPixel,
+    required TResult Function() exit,
+  }) {
+    return renderPixel(x, y);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function(int x, int y)? renderPixel,
+    TResult Function()? exit,
+  }) {
+    return renderPixel?.call(x, y);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function(int x, int y)? renderPixel,
+    TResult Function()? exit,
+    required TResult orElse(),
+  }) {
+    if (renderPixel != null) {
+      return renderPixel(x, y);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DisplayMessage value) displayMessage,
+    required TResult Function(RenderPixel value) renderPixel,
+    required TResult Function(Exit value) exit,
+  }) {
+    return renderPixel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DisplayMessage value)? displayMessage,
+    TResult Function(RenderPixel value)? renderPixel,
+    TResult Function(Exit value)? exit,
+  }) {
+    return renderPixel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DisplayMessage value)? displayMessage,
+    TResult Function(RenderPixel value)? renderPixel,
+    TResult Function(Exit value)? exit,
+    required TResult orElse(),
+  }) {
+    if (renderPixel != null) {
+      return renderPixel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RenderPixel implements ApplicationMessage {
+  const factory RenderPixel({required int x, required int y}) = _$RenderPixel;
+
+  int get x;
+  int get y;
+  @JsonKey(ignore: true)
+  $RenderPixelCopyWith<RenderPixel> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ExitCopyWith<$Res> {
+  factory $ExitCopyWith(Exit value, $Res Function(Exit) then) = _$ExitCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ExitCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res> implements $ExitCopyWith<$Res> {
+  _$ExitCopyWithImpl(Exit _value, $Res Function(Exit) _then) : super(_value, (v) => _then(v as Exit));
+
+  @override
+  Exit get _value => super._value as Exit;
+}
+
+/// @nodoc
+
+class _$Exit implements Exit {
+  const _$Exit();
+
+  @override
+  String toString() {
+    return 'ApplicationMessage.exit()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is Exit);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) displayMessage,
+    required TResult Function(int x, int y) renderPixel,
+    required TResult Function() exit,
+  }) {
+    return exit();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function(int x, int y)? renderPixel,
+    TResult Function()? exit,
+  }) {
+    return exit?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function(int x, int y)? renderPixel,
+    TResult Function()? exit,
+    required TResult orElse(),
+  }) {
+    if (exit != null) {
+      return exit();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DisplayMessage value) displayMessage,
+    required TResult Function(RenderPixel value) renderPixel,
+    required TResult Function(Exit value) exit,
+  }) {
+    return exit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(DisplayMessage value)? displayMessage,
+    TResult Function(RenderPixel value)? renderPixel,
+    TResult Function(Exit value)? exit,
+  }) {
+    return exit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DisplayMessage value)? displayMessage,
+    TResult Function(RenderPixel value)? renderPixel,
+    TResult Function(Exit value)? exit,
+    required TResult orElse(),
+  }) {
+    if (exit != null) {
+      return exit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Exit implements ApplicationMessage {
+  const factory Exit() = _$Exit;
+}
+
+/// @nodoc
 class _$KitchenSinkTearOff {
   const _$KitchenSinkTearOff();
 

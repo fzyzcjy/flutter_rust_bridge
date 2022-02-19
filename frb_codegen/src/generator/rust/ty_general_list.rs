@@ -30,6 +30,21 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
         ])
     }
 
+    fn wrap_obj(&self, obj: String) -> String {
+        let inner = TypeRustGenerator::new(*self.ir.inner.clone(), self.context.ir_file);
+        inner
+            .wrapper_struct()
+            .map(|wrapper| {
+                format!(
+                    "{}.into_iter().map(|v| {}({})).collect::<Vec<_>>()",
+                    obj,
+                    wrapper,
+                    inner.self_access("v".to_owned())
+                )
+            })
+            .unwrap_or(obj)
+    }
+
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
         generate_list_allocate_func(collector, &self.ir.safe_ident(), &self.ir, &self.ir.inner)
     }
