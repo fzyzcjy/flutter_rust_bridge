@@ -23,6 +23,7 @@
   - [Async in Rust](feature/async_rust.md)
   - [Cancellable tasks](feature/cancelable_task.md)
   - [Object pools](feature/object_pool.md)
+  - [Opaque pointers](feature/opaque.md)
   - [Miscellaneous](feature/misc.md)
 
 # Part II: User Guide

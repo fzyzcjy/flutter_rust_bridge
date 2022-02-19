@@ -286,6 +286,26 @@ void main(List<String> args) async {
       );
     }
 
+    print('dart call handleOpaque');
+    {
+      final op = await api.handleOpaque();
+      final unawaited = api.handleOpaque(value: op);
+      op.array.dispose();
+      op.lifetime.dispose();
+      op.traitObj.dispose();
+      op.primitive.dispose();
+      final op2 = await unawaited;
+      expect(op2.array.isStale(), false);
+      expect(op2.lifetime.isStale(), false);
+      expect(op2.traitObj.isStale(), false);
+      expect(op2.primitive.isStale(), false);
+      expect(await api.handleOpaqueRepr(value: op2.primitive), "1");
+      op2.array.dispose();
+      op2.lifetime.dispose();
+      op2.traitObj.dispose();
+      op2.primitive.dispose();
+    }
+
     print('dart call useImportedStruct()');
     {
       expect(

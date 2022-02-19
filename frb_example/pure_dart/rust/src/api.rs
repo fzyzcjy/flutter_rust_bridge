@@ -1,7 +1,11 @@
 #![allow(unused_variables)]
 
+pub use std::any::Any;
+pub use std::borrow::Cow;
+pub use std::fmt::Debug;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
+pub use std::sync::RwLock;
 use std::thread;
 use std::time::Duration;
 
@@ -454,4 +458,44 @@ pub fn use_imported_enum(my_enum: MyEnum) -> bool {
         MyEnum::False => false,
         MyEnum::True => true,
     }
+}
+
+pub trait DartDebug: DartSafe + Debug {}
+impl<T: DartSafe + Debug> DartDebug for T {}
+
+#[derive(Debug)]
+pub struct OpaqueBag {
+    pub primitive: Opaque<RwLock<i32>>,
+    pub array: Opaque<RwLock<[isize; 10]>>,
+    pub lifetime: Opaque<&'static str>,
+    pub trait_obj: Opaque<Box<dyn DartDebug>>,
+}
+
+pub fn handle_opaque(value: Option<OpaqueBag>) -> Result<OpaqueBag> {
+    Ok(value
+        .map(|val| {
+            if let Some(Ok(mut val)) = val.primitive.write() {
+                *val += 1;
+            }
+            if let Some(Ok(mut val)) = val.array.write() {
+                for i in val.iter_mut() {
+                    *i += 1;
+                }
+            }
+            val
+        })
+        .unwrap_or_else(|| OpaqueBag {
+            primitive: Opaque::new(RwLock::new(0)),
+            array: Opaque::new(RwLock::new([0; 10])),
+            lifetime: Opaque::new("Hello there."),
+            trait_obj: Opaque::new(Box::new(("first", "second"))),
+        }))
+}
+
+pub fn handle_opaque_repr(value: Opaque<RwLock<i32>>) -> Result<Option<String>> {
+    Ok(if let Some(Ok(value)) = value.read() {
+        Some(value.to_string())
+    } else {
+        None
+    })
 }
