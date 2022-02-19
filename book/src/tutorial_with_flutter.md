@@ -15,15 +15,15 @@ Image credit: Wikipedia
 
 </details>
 
-## Get example code
+## Get code
 
-Please [install Flutter](https://flutter.dev/docs/get-started/install), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then get the example codebase:
+Please [install Flutter](https://flutter.dev/docs/get-started/install) (optionally with [desktop support](https://flutter.dev/desktop) if you want to run app on desktop instead of cellphones), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then get the example codebase:
 
 ```shell
 git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd flutter_rust_bridge/example/with_flutter
 ```
 
-## Optional: Run code generator
+## Optional: Run generator
 
 This step is optional, since I have generated the source code already (in quickstart). Even if you do it, you should not see anything changed.
 
@@ -39,49 +39,33 @@ Then, run the code generator:
 flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h
 ```
 
-## Run app for various platforms
+## Run app
 
 ### Prelogue: Command details
 
 The [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/ci.yaml) is useful if you want details of each command. The `flutter_android_test`, `flutter_ios_test`, `flutter_windows_test`, `flutter_macos_test` and `flutter_linux_test` demonstrates the exact commands needed to run this tutorial codebase from a brand new machine.
 
-### Android
+### Android app
 
-Run `cargo ndk -o ../android/app/src/main/jniLibs build`. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`.
+Run `cargo ndk -o ../android/app/src/main/jniLibs build`. Then run the Flutter app normally such as `flutter run`.
 
-Remark: Since my quickstart app is so baremetal, I do not integrate the Rust building process into Flutter building process. But you can look at [this tutorial](https://stackoverflow.com/q/69515032/4619958) to easily do that.
+**Remark**: [This tutorial](https://stackoverflow.com/q/69515032/4619958) will help you automatically execute `cargo` builds when building Flutter app.
 
-### iOS
+### iOS app
 
-Modify `Cargo.toml` to change `cdylib` to `staticlib`. (Again, this is baremetal example so it is done manually. For your project, you can automate it.)
+Modify `Cargo.toml` to change `cdylib` to `staticlib`, then run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally such as `flutter run`.
 
-Run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally as is taught in official tutorial. For example, `flutter run`. (Similarly, [this tutorial](https://stackoverflow.com/q/69515032/4619958) can automate the process.)
+**Remark**: [This tutorial](https://stackoverflow.com/q/69515032/4619958) will help you automatically execute `cargo` builds when building Flutter app.
 
-### Desktop (Windows/Linux/MacOS)
+### Windows app
 
-**Remark**: If you only want to develop a mobile app, skip this section - it is for creating desktop apps.
+Run it directly using `flutter run` assuming [Flutter desktop support](https://flutter.dev/desktop#set-up) has been configured. More details can be seen in [#66](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
 
-Run it directly using `flutter run` assuming [Flutter desktop support](https://flutter.dev/desktop#set-up) has been configured. 
+### Linux app
 
-#### Windows/Linux
-This example (`frb_example/with_flutter`) already demonstrated how to integrate Cargo with CMake on Linux and Windows, and more details can be seen in [#66](https://github.com/fzyzcjy/flutter_rust_bridge/issues/66).
+Same as Windows.
 
-#### MacOS
+### MacOS app
 
-This is only *one* of the possible approaches. For example, [create new projects from a template](template.md) or [integrating with existing projects](integrate.md) discusses two other approaches.
+Same as iOS.
 
-To integrate a dynamic library to your macOS app, you need to configure your `Runner.xcworkspace` in Xcode. Here, I show the instructions for Xcode 13.1:
-1. Open the `yourapp/macos/Runner.xcworkspace` in Xcode.
-2. Drag your precompiled library (`libyourlibrary.dylib`) into `Runner/Frameworks`.
-3. Click `Runner` (with a blue app store logo on the left, not the folder underneath) and go to the `Build Phases` tab.
-    1. Drag `libyourlibrary.dylib` into the `Copy Bundle Resources` list.
-    2. Under `Bundle Frameworks`, drag `libyourlibrary.dylib`  to the list, `Code sign on copy` should be checked by default.
-    3. Under `Link Binary With Libraries`, set status of `libyourlibrary.dylib` to Optional. (We use dynamic linking, no need to statically link.)
-4. Click `Runner` and go to the `General` tab.
-    1. You should see `libyourlibrary.dylib` in the `Frameworks, Libararies and Embedded Content` list, with the option saying `Embed & Sign`.
-    2. If not, drag your library to the list and select the option.
-5. Click `Runner` and go to the `Build Settings` tab.
-    1. In the `Search Paths` section configure the `Library Search Paths` to include the absolute path where libyourlibrary.dylib is located.
-
-In `lib/main.dart`, you can now use `DynamicLibrary.open('libyourlibrary.dylib')` to dynamically link to the symbols. This example app shows how to do dynamic linking on other platforms as well so be sure to take a look at `frb_example/with_flutter/lib/main.dart`.
-Reference the [flutter documentation](https://docs.flutter.dev/development/platform-integration/c-interop#compiled-dynamic-library-macos) for details, do note that the Xcode version they demonstrates in may not be the latest.
