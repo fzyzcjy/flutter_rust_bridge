@@ -268,4 +268,9 @@ impl Opts {
             Some(root)
         }
     }
+
+    pub fn dart_output_freezed_path(&self) -> Option<String> {
+        let name = self.dart_output_path_name()?;
+        Some(canon_path(&format!("{}.freezed.dart", name)))
+    }
 }

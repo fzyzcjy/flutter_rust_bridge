@@ -169,14 +169,21 @@ fn main() {
         .unwrap();
     }
 
+    let dart_root = &config.dart_root;
     if needs_freezed && config.build_runner {
-        let dart_root = config.dart_root.unwrap_or_else(|| {
+        let dart_root = dart_root.as_ref().unwrap_or_else(|| {
             panic!(
                 "build_runner configured to run, but Dart root could not be inferred.
 Please specify --dart-root, or disable build_runner with --no-build-runner."
             )
         });
-        commands::build_runner(&dart_root);
+        commands::build_runner(dart_root);
+        commands::format_dart(
+            &config
+                .dart_output_freezed_path()
+                .expect("Invalid freezed file path"),
+            config.dart_format_line_length,
+        );
     }
 
     commands::format_dart(&config.dart_output_path, config.dart_format_line_length);
