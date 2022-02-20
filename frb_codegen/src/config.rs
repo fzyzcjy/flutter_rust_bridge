@@ -257,4 +257,15 @@ impl Opts {
     pub fn dart_wire_class_name(&self) -> String {
         format!("{}Wire", self.class_name)
     }
+
+    /// Returns None if the path terminates in "..", or not utf8.
+    pub fn dart_output_path_name(&self) -> Option<&str> {
+        let name = Path::new(&self.dart_output_path);
+        let root = name.file_name()?.to_str()?;
+        if let Some((name, _)) = root.split_once('.') {
+            Some(name)
+        } else {
+            Some(root)
+        }
+    }
 }

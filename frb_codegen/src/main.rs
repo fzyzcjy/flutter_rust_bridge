@@ -67,6 +67,7 @@ fn main() {
         &config.dart_api_class_name(),
         &config.dart_api_impl_class_name(),
         &config.dart_wire_class_name(),
+        config.dart_output_path_name().expect("Invalid dart_output_path_name"),
     );
 
     info!("Phase: Other things");

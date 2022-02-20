@@ -36,6 +36,7 @@ pub fn generate(
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
+    dart_output_file_root: &str,
 ) -> (Output, bool) {
     let distinct_types = ir_file.distinct_types(true, true);
     let distinct_input_types = ir_file.distinct_types(true, false);
@@ -71,7 +72,7 @@ pub fn generate(
     let freezed_header = if needs_freezed {
         DartBasicCode {
             import: "import 'package:freezed_annotation/freezed_annotation.dart';".to_string(),
-            part: "part 'bridge_generated.freezed.dart';".to_string(),
+            part: format!("part '{}.freezed.dart';", dart_output_file_root),
             body: "".to_string(),
         }
     } else {

@@ -10,7 +10,7 @@ dylib := if os() == "windows" {
     "libflutter_rust_bridge_example.so"
 }
 
-default: gen-bridge lint
+default: gen-bridge
 
 alias b := build
 build:
