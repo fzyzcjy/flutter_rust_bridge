@@ -57,7 +57,7 @@ pub struct RawOpts {
     pub no_build_runner: bool,
     /// Show debug messages.
     #[structopt(short, long)]
-    pub verbose: bool
+    pub verbose: bool,
 }
 
 #[derive(Debug)]
