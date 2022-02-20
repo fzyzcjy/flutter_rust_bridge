@@ -147,20 +147,19 @@
 <li><strong>Memory-safe</strong>: Never need to think about malloc/free.</li>
 <li><strong>Feature-rich</strong>: <code>enum</code>s with values, platform-optimized <code>Vec</code>, possibly recursive <code>struct</code>, zero-copy big arrays, <code>Stream</code> (iterator) abstraction, error (<code>Result</code>) handling, cancellable tasks, concurrency control, and more. See full features <a href="https://fzyzcjy.github.io/flutter_rust_bridge/feature.html">here</a>. </li>
 <li><strong>Async programming</strong>: Rust code will never block the Flutter. Call Rust naturally from Flutter's main isolate (thread).</li>
-<li><strong>Easy to use</strong>: Merely write down your Rust code, run generator, and the Dart/Flutter code is there.</li>
 <li><strong>Lightweight</strong>: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. <sub>For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).</sub></li>
+<li><strong>Multi-platform</strong>: Android, iOS, Windows, Linux, MacOS (<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/315">Web</a> coming soon)</li>
 <li><strong>Easy to code-review &amp; convince yourself</strong>: This package simply simulates how humans  write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to look at. No magic at all! (<a href="https://fzyzcjy.github.io/flutter_rust_bridge/safety.html">More about</a> safety concerns.)</li>
 <li><strong>Fast</strong>: It is only a thin (though feature-rich) wrapper, without overhead such as protobuf serialization, thus performant. (More <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/318#issuecomment-1034536815">benchmarks</a> later) <small>(Throw away components like thread-pool to make it even faster)</small></li>
-<li><strong>Multi-platform</strong>: Android, iOS, Windows, Linux, MacOS (<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/315">Web</a> coming soon)</li>
 <li><strong>Pure-Dart compatible:</strong> Despite the name, this package is 100% compatible with <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/README.md">pure</a> Dart.</li>
 </ul>
 <h2 id="-user-guide"><a class="header" href="#-user-guide">💡 User Guide</a></h2>
 <p>Check out <a href="https://fzyzcjy.github.io/flutter_rust_bridge/">the user guide</a> for <a href="https://fzyzcjy.github.io/flutter_rust_bridge/quickstart.html">show-me-the-code</a>, <a href="https://fzyzcjy.github.io/flutter_rust_bridge/tutorial_with_flutter.html">tutorials</a>, <a href="https://fzyzcjy.github.io/flutter_rust_bridge/feature.html">features</a> and much more.</p>
-<h2 id="contributors-"><a class="header" href="#contributors-">Contributors ✨</a></h2>
+<h2 id="-contributors"><a class="header" href="#-contributors">✨ Contributors</a></h2>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <p><a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-<p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a>):</p>
+<p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a> following <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -186,7 +185,6 @@
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-<p>This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!</p>
 
                     </main>
 
