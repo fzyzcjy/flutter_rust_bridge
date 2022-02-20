@@ -25,12 +25,12 @@ Next, add this line to your `CMakeLists.txt` files:
 
 ## Linux
 
-On Linux, you will need to bump the minimum CMake version to 3.11 to make use
-of `FetchContent`, which is used by `rust.cmake`. Change this line in `linux/CMakeLists.txt`:
+On Linux, you will need to bump the minimum CMake version to 3.12 to make use
+of [Corrosion](https://github.com/corrosion-rs/corrosion), which is used by `rust.cmake`. Change this line in `linux/CMakeLists.txt`:
 
 ```diff
 -cmake_minimum_required(VERSION 3.10)
-+cmake_minimum_required(VERSION 3.11)
++cmake_minimum_required(VERSION 3.12)
 ```
 
 Alternatively, you can install Corrosion permanently on your system.
