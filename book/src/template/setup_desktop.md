@@ -20,8 +20,8 @@ platforms the easiest even from scratch. The template uses [Corrosion] to expedi
 
 ## Troubleshooting: CMake on Linux
 
-The minimum version of CMake required to use [Corrosion] is 3.12, which is not set
-in the default `CMakeLists.txt`. You will need to modify this line in `linux/CMakeLists.txt`:
+The minimum version of CMake required to use [Corrosion] is 3.12, which is not the version set
+by default in `CMakeLists.txt`. You will need to modify this line in `linux/CMakeLists.txt`:
 
 ```diff
 -cmake_minimum_required(VERSION 3.10)
