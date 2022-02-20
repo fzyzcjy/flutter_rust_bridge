@@ -151,8 +151,8 @@ platforms the easiest even from scratch. The template uses <a href="https://gith
 -FetchContent_MakeAvailable(Corrosion)
 </code></pre>
 <h2 id="troubleshooting-cmake-on-linux"><a class="header" href="#troubleshooting-cmake-on-linux">Troubleshooting: CMake on Linux</a></h2>
-<p>The minimum version of CMake required to use <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a> is 3.12, which is not set
-in the default <code>CMakeLists.txt</code>. You will need to modify this line in <code>linux/CMakeLists.txt</code>:</p>
+<p>The minimum version of CMake required to use <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a> is 3.12, which is not the version set
+by default in <code>CMakeLists.txt</code>. You will need to modify this line in <code>linux/CMakeLists.txt</code>:</p>
 <pre><code class="language-diff">-cmake_minimum_required(VERSION 3.10)
 +cmake_minimum_required(VERSION 3.12)
 </code></pre>

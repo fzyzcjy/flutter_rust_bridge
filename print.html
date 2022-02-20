@@ -186,6 +186,21 @@
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+<p>More specifically, thanks for all these contributions:</p>
+<ul>
+<li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module.</li>
+<li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir.</li>
+<li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
+<li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
+<li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS.</li>
+<li><a href="https://github.com/surban">surban</a>: Support unit return type.</li>
+<li><a href="https://github.com/efc-mw">efc-mw</a>: Improve Windows encoding handling.</li>
+<li><a href="https://github.com/valeth">valeth</a>: Rename callFfi's port.</li>
+<li><a href="https://github.com/trobanga">trobanga</a>: Add a cmd argument.</li>
+<li><a href="https://github.com/Michael-F-Bryan">Michael-F-Bryan</a>: Detect broken bindings.</li>
+<li><a href="https://github.com/bus710">bus710</a>: Add a case in troubleshooting.</li>
+<li><a href="https://github.com/rustui">rustui</a>: Fix a typo.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="quickstart"><a class="header" href="#quickstart">Quickstart</a></h1>
 <p>Write down Rust functions and types normally.</p>
 <pre><code class="language-rust ignore">// A normal Rust function ...
@@ -700,7 +715,7 @@ languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7
 the JNI without additional configuration. Run the above command to install.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ios-setup"><a class="header" href="#ios-setup">iOS setup</a></h1>
 <p>iOS requires some additional Rust targets for cross-compilation:</p>
-<pre><code># 64 bit targets (real device &amp; simulator):
+<pre><code class="language-bash"># 64 bit targets (real device &amp; simulator):
 rustup target add aarch64-apple-ios x86_64-apple-ios
 # New simulator target for Xcode 12 and later
 rustup target add aarch64-apple-ios-sim
@@ -727,8 +742,8 @@ platforms the easiest even from scratch. The template uses <a href="https://gith
 -FetchContent_MakeAvailable(Corrosion)
 </code></pre>
 <h2 id="troubleshooting-cmake-on-linux"><a class="header" href="#troubleshooting-cmake-on-linux">Troubleshooting: CMake on Linux</a></h2>
-<p>The minimum version of CMake required to use <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a> is 3.12, which is not set
-in the default <code>CMakeLists.txt</code>. You will need to modify this line in <code>linux/CMakeLists.txt</code>:</p>
+<p>The minimum version of CMake required to use <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a> is 3.12, which is not the version set
+by default in <code>CMakeLists.txt</code>. You will need to modify this line in <code>linux/CMakeLists.txt</code>:</p>
 <pre><code class="language-diff">-cmake_minimum_required(VERSION 3.10)
 +cmake_minimum_required(VERSION 3.12)
 </code></pre>
@@ -795,7 +810,7 @@ conditional LLVM flag for MacOS. On certain setups, a <code>brew install llvm</c
 <p>Running <code>just</code> by default runs the <code>gen</code> and <code>lint</code> tasks.</p>
 <h2 id="just-gen"><a class="header" href="#just-gen"><code>just gen</code></a></h2>
 <p>Generates the Rust bindings and puts them into the correct folders.
-The <a href="template/../generate.html">Generating new code</a> section goes into detail how to modify
+The <a href="template/generate.html">Generating new code</a> section goes into detail how to modify
 this task to perform side jobs as well.</p>
 <h2 id="just-lint"><a class="header" href="#just-lint"><code>just lint</code></a></h2>
 <p>Runs the default linters for Dart and Rust.</p>
@@ -930,7 +945,7 @@ of it! Here is an example of what you can do with freezed enums.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="integrating-with-existing-projects"><a class="header" href="#integrating-with-existing-projects">Integrating with existing projects</a></h1>
 <p>This guide is an intermediate-level introduction to integrating Rust with
 an existing Flutter project. If you are new to Rust or configuring
-build processes in general, we suggest looking at <a href="tour.html">the template tour</a>
+build processes in general, we suggest looking at <a href="template/tour.html">the template tour</a>
 to learn about the moving parts behind a <code>flutter run</code>.</p>
 <p>Before following this guide, upgrade your Flutter SDK, and if possible
 refresh your native build folders (<code>android</code>, <code>ios</code>, etc.) to make the process
@@ -1173,13 +1188,13 @@ between the two build folders.</p>
  # Support files are copied into place next to the executable, so that it can
 </code></pre>
 <h2 id="linux"><a class="header" href="#linux">Linux</a></h2>
-<p>On Linux, you will need to bump the minimum CMake version to 3.11 to make use
-of <code>FetchContent</code>, which is used by <code>rust.cmake</code>. Change this line in <code>linux/CMakeLists.txt</code>:</p>
+<p>On Linux, you will need to bump the minimum CMake version to 3.12 to make use
+of <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a>, which is used by <code>rust.cmake</code>. Change this line in <code>linux/CMakeLists.txt</code>:</p>
 <pre><code class="language-diff">-cmake_minimum_required(VERSION 3.10)
-+cmake_minimum_required(VERSION 3.11)
++cmake_minimum_required(VERSION 3.12)
 </code></pre>
 <p>Alternatively, you can install Corrosion permanently on your system.
-Read the <a href="integrate/../template/setup_others.html">supplementary notes here</a>.</p>
+Refer to the <a href="integrate/../template/setup_desktop.html">Linux troubleshooting notes</a> here.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="integrating-with-web"><a class="header" href="#integrating-with-web">Integrating with Web</a></h1>
 <p>As of writing, Web support is underway and tracked by <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/315">fzyzcjy/flutter_rust_bridge#315</a>.
 Consider leaving comments and reactions to let us know of the demand for this feature!</p>

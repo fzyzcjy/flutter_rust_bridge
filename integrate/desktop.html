@@ -154,13 +154,13 @@ between the two build folders.</p>
  # Support files are copied into place next to the executable, so that it can
 </code></pre>
 <h2 id="linux"><a class="header" href="#linux">Linux</a></h2>
-<p>On Linux, you will need to bump the minimum CMake version to 3.11 to make use
-of <code>FetchContent</code>, which is used by <code>rust.cmake</code>. Change this line in <code>linux/CMakeLists.txt</code>:</p>
+<p>On Linux, you will need to bump the minimum CMake version to 3.12 to make use
+of <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a>, which is used by <code>rust.cmake</code>. Change this line in <code>linux/CMakeLists.txt</code>:</p>
 <pre><code class="language-diff">-cmake_minimum_required(VERSION 3.10)
-+cmake_minimum_required(VERSION 3.11)
++cmake_minimum_required(VERSION 3.12)
 </code></pre>
 <p>Alternatively, you can install Corrosion permanently on your system.
-Read the <a href="../template/setup_others.html">supplementary notes here</a>.</p>
+Refer to the <a href="../template/setup_desktop.html">Linux troubleshooting notes</a> here.</p>
 
                     </main>
 
