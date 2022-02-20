@@ -38,7 +38,6 @@ fn main() {
     info!("Picked config: {:?}", &config);
 
     let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
-    let c_output_dir = Path::new(&config.c_output_path).parent().unwrap();
     let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
 
     info!("Phase: Parse source code to AST");
@@ -120,12 +119,13 @@ fn main() {
     ]
     .concat();
     let c_dummy_code = generator::c::generate_dummy(&effective_func_names);
-    fs::create_dir_all(c_output_dir).unwrap();
-    fs::write(
-        &config.c_output_path,
-        fs::read_to_string(temp_bindgen_c_output_file).unwrap() + "\n" + &c_dummy_code,
-    )
-    .unwrap();
+    for output in &config.c_output_path {
+        fs::create_dir_all(Path::new(output).parent().unwrap()).unwrap();
+        fs::write(
+            &output,
+            fs::read_to_string(&temp_bindgen_c_output_file).unwrap() + "\n" + &c_dummy_code,
+        ).unwrap();
+    }
 
     fs::create_dir_all(&dart_output_dir).unwrap();
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file).unwrap();

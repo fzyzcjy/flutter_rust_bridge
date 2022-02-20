@@ -24,10 +24,8 @@ gen-bridge: build
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
                 -c {{frb_flutter}}/ios/Runner/bridge_generated.h \
+                -c {{frb_flutter}}/macos/Runner/bridge_generated.h \
                 --dart-format-line-length {{line_length}}
-    cp {{frb_flutter}}/ios/Runner/bridge_generated.h \
-       {{frb_flutter}}/macos/Runner/bridge_generated.h
-
 
 alias l := lint
 lint:

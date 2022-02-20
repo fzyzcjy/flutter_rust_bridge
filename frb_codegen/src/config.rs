@@ -27,7 +27,7 @@ pub struct RawOpts {
 
     /// Path of output generated C header
     #[structopt(short, long)]
-    pub c_output: Option<String>,
+    pub c_output: Option<Vec<String>>,
     /// Crate directory for your Rust project
     #[structopt(long)]
     pub rust_crate_dir: Option<String>,
@@ -65,7 +65,7 @@ pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
     pub dart_decl_output_path: Option<String>,
-    pub c_output_path: String,
+    pub c_output_path: Vec<String>,
     pub rust_crate_dir: String,
     pub rust_output_path: String,
     pub class_name: String,
@@ -98,10 +98,18 @@ pub fn parse(raw: RawOpts) -> Opts {
         fallback_class_name(&*rust_crate_dir)
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("class_name")))
     });
-    let c_output_path = canon_path(&raw.c_output.unwrap_or_else(|| {
-        fallback_c_output_path()
-            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))
-    }));
+    let c_output_path = raw
+        .c_output
+        .map(|outputs| {
+            outputs
+                .iter()
+                .map(|output| canon_path(output))
+                .collect::<Vec<_>>()
+        })
+        .unwrap_or_else(|| {
+            vec![fallback_c_output_path()
+                .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))]
+        });
 
     let dart_root = {
         let dart_output = &raw.dart_output;
