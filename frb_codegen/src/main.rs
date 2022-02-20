@@ -124,7 +124,8 @@ fn main() {
         fs::write(
             &output,
             fs::read_to_string(&temp_bindgen_c_output_file).unwrap() + "\n" + &c_dummy_code,
-        ).unwrap();
+        )
+        .unwrap();
     }
 
     fs::create_dir_all(&dart_output_dir).unwrap();
