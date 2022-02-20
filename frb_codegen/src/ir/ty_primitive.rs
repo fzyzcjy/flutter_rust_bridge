@@ -68,6 +68,13 @@ impl IrTypeTrait for IrTypePrimitive {
         }
         .to_string()
     }
+
+    fn js_wire_type(&self) -> String {
+        match self {
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 => "BigInt".to_owned(),
+            _ => self.dart_api_type(),
+        }
+    }
 }
 
 impl IrTypePrimitive {

@@ -82,4 +82,20 @@ impl IrTypeTrait for IrTypeDelegate {
     fn rust_wire_is_pointer(&self) -> bool {
         self.get_delegate().rust_wire_is_pointer()
     }
+
+    fn wasm_wire_type(&self) -> String {
+        match self {
+            IrTypeDelegate::String => "String".to_owned(),
+            IrTypeDelegate::StringList => "Box<[JsString]>".to_owned(),
+            _ => self.get_delegate().js_wire_type(),
+        }
+    }
+
+    fn is_struct(&self) -> bool {
+        self.get_delegate().is_struct()
+    }
+
+    fn js_wire_type(&self) -> String {
+        self.dart_api_type()
+    }
 }

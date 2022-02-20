@@ -62,4 +62,16 @@ impl IrTypeTrait for IrTypeOptional {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
         self.inner.visit_types(f, ir_file);
     }
+
+    fn wasm_wire_type(&self) -> String {
+        if self.is_struct() {
+            "JsValue".to_owned()
+        } else {
+            format!("Option<{}>", self.inner.wasm_wire_type())
+        }
+    }
+
+    fn js_wire_type(&self) -> String {
+        format!("{}?", self.inner.js_wire_type())
+    }
 }

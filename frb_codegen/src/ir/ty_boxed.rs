@@ -53,4 +53,16 @@ impl IrTypeTrait for IrTypeBoxed {
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }
+
+    fn js_wire_type(&self) -> String {
+        self.inner.js_wire_type()
+    }
+
+    fn wasm_wire_type(&self) -> String {
+        self.inner.wasm_wire_type()
+    }
+
+    fn is_struct(&self) -> bool {
+        self.inner.is_struct()
+    }
 }

@@ -33,4 +33,12 @@ impl IrTypeTrait for IrTypeGeneralList {
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }
+
+    fn wasm_wire_type(&self) -> String {
+        "Box<[JsValue]>".to_owned()
+    }
+
+    fn js_wire_type(&self) -> String {
+        format!("List<{}>", self.inner.js_wire_type())
+    }
 }

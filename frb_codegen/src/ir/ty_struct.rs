@@ -37,6 +37,18 @@ impl IrTypeTrait for IrTypeStructRef {
     fn rust_wire_type(&self) -> String {
         format!("wire_{}", self.name)
     }
+
+    fn wasm_wire_type(&self) -> String {
+        "JsValue".to_owned()
+    }
+
+    fn js_wire_type(&self) -> String {
+        self.rust_wire_type()
+    }
+
+    fn is_struct(&self) -> bool {
+        true
+    }
 }
 
 #[derive(Debug, Clone)]

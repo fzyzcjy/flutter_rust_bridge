@@ -47,4 +47,32 @@ impl IrTypeTrait for IrTypePrimitiveList {
     fn rust_wire_is_pointer(&self) -> bool {
         true
     }
+
+    fn wasm_wire_type(&self) -> String {
+        match &self.primitive {
+            IrTypePrimitive::U8 => "Box<[u8]>",
+            IrTypePrimitive::I8 => "Box<[i8]>",
+            IrTypePrimitive::U16 => "Box<[u16]>",
+            IrTypePrimitive::I16 => "Box<[i16]>",
+            IrTypePrimitive::U32 => "Box<[u32]>",
+            IrTypePrimitive::I32 => "Box<[i32]>",
+            IrTypePrimitive::U64 => "Box<[u64]>",
+            IrTypePrimitive::I64 => "Box<[i64]>",
+            IrTypePrimitive::F32 => "Box<[f32]>",
+            IrTypePrimitive::F64 => "Box<[f64]>",
+            IrTypePrimitive::Bool => "Box<[bool]>",
+            _ => panic!(
+                "Vec<{}> is not supported on the web.",
+                self.primitive.rust_api_type()
+            ),
+        }
+        .to_owned()
+    }
+
+    fn js_wire_type(&self) -> String {
+        match &self.primitive {
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 => "List<BigInt>".to_owned(),
+            _ => self.dart_api_type(),
+        }
+    }
 }

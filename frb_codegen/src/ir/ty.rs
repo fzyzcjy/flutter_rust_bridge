@@ -57,6 +57,10 @@ pub trait IrTypeTrait {
 
     fn rust_wire_type(&self) -> String;
 
+    fn wasm_wire_type(&self) -> String;
+
+    fn js_wire_type(&self) -> String;
+
     fn rust_wire_modifier(&self) -> String {
         if self.rust_wire_is_pointer() {
             "*mut ".to_string()
@@ -66,6 +70,10 @@ pub trait IrTypeTrait {
     }
 
     fn rust_wire_is_pointer(&self) -> bool {
+        false
+    }
+
+    fn is_struct(&self) -> bool {
         false
     }
 }

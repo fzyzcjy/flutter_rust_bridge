@@ -49,6 +49,18 @@ impl IrTypeTrait for IrTypeEnumRef {
             "i32".to_owned()
         }
     }
+
+    fn js_wire_type(&self) -> String {
+        self.dart_wire_type()
+    }
+
+    fn wasm_wire_type(&self) -> String {
+        self.rust_wire_type()
+    }
+
+    fn is_struct(&self) -> bool {
+        self.is_struct
+    }
 }
 
 #[derive(Debug, Clone)]
