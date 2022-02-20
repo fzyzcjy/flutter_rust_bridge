@@ -270,7 +270,7 @@ impl Opts {
     pub fn dart_output_path_name(&self) -> Option<&str> {
         let name = Path::new(&self.dart_output_path);
         let root = name.file_name()?.to_str()?;
-        if let Some((name, _)) = root.split_once('.') {
+        if let Some((name, _)) = root.rsplit_once('.') {
             Some(name)
         } else {
             Some(root)
@@ -278,7 +278,11 @@ impl Opts {
     }
 
     pub fn dart_output_freezed_path(&self) -> Option<String> {
-        let name = self.dart_output_path_name()?;
-        Some(canon_path(&format!("{}.freezed.dart", name)))
+        Some(
+            Path::new(&self.dart_output_path)
+                .with_extension("freezed.dart")
+                .to_str()?
+                .to_owned(),
+        )
     }
 }
