@@ -34,4 +34,4 @@ of `FetchContent`, which is used by `rust.cmake`. Change this line in `linux/CMa
 ```
 
 Alternatively, you can install Corrosion permanently on your system.
-Read the [supplementary notes here](../template/setup_others.md).
+Refer to the [Linux troubleshooting notes](../template/setup_desktop.md) here.
