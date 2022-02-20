@@ -1,3 +1,5 @@
+//! Wrappers and executors for Rust functions.
+
 use std::any::Any;
 use std::mem::ManuallyDrop;
 use std::panic;
@@ -13,30 +15,48 @@ use crate::rust2dart::{Rust2Dart, TaskCallback};
 use crate::support::{into_leak_vec_ptr, WireSyncReturnStruct};
 use crate::SyncReturn;
 
+/// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]
 pub enum FfiCallMode {
+    /// The default mode, returns a Dart `Future<T>`.
     Normal,
+    /// Used by `SyncReturn<Vec<u8>>` to skip spawning workers.
     Sync,
+    /// Returns a Dart `Stream<T>`.
     Stream,
 }
 
+/// Supporting information to idenfity a function's operating mode.
 #[derive(Clone)]
 pub struct WrapInfo {
+    /// A Dart `SendPort`. [None] if the mode is [FfiCallMode::Sync].
     pub port: Option<i64>,
+    /// Usually the name of the function.
     pub debug_name: &'static str,
+    /// The call mode of this function.
     pub mode: FfiCallMode,
 }
 
-/// Provide your own handler to customize how to execute your function calls, etc
+/// Provide your own handler to customize how to execute your function calls, etc.
 pub trait Handler {
-    // Why separate [PrepareFn] and [TaskFn]: because some things cannot be [Send] (e.g. raw
-    // pointers), so those can be done in [PrepareFn], while the real work is done in [TaskFn] with [Send].
+    /// Prepares the arguments, executes a Rust function and sets up its return value.
+    ///
+    /// Why separate `PrepareFn` and `TaskFn`: because some things cannot be [`Send`] (e.g. raw
+    /// pointers), so those can be done in `PrepareFn`, while the real work is done in `TaskFn` with [`Send`].
+    ///
+    /// The generated code depends on the fact that `PrepareFn` is synchronous to maintain
+    /// correctness, therefore implementors of [`Handler`] must also uphold this property.
+    ///
+    /// If a Rust function returns [`SyncReturn`], it must be called with
+    /// [`wrap_sync`](Handler::wrap_sync) instead.
     fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
 
+    /// Same as [`wrap`][Handler::wrap], but the Rust function must return a [SyncReturn] and
+    /// need not implement [Send].
     fn wrap_sync<SyncTaskFn>(
         &self,
         wrap_info: WrapInfo,
@@ -53,6 +73,7 @@ pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
 }
 
 impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
+    /// Create a new default handler.
     pub fn new(executor: E, error_handler: H) -> Self {
         SimpleHandler {
             executor,
@@ -61,6 +82,7 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
     }
 }
 
+/// The default handler used by the generated code.
 pub type DefaultHandler =
     SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
 
@@ -145,12 +167,19 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     }
 }
 
+/// An executor model for Rust functions.
+///
+/// For example, the default model is [ThreadPoolExecutor]
+/// which runs each function in a separate thread.
 pub trait Executor: RefUnwindSafe {
+    /// Executes a Rust function and transforms its return value into a Dart-compatible
+    /// value, i.e. types that implement [`IntoDart`].
     fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart;
 
+    /// Executes a Rust function that returns a [SyncReturn].
     fn execute_sync<SyncTaskFn>(
         &self,
         wrap_info: WrapInfo,
@@ -160,11 +189,15 @@ pub trait Executor: RefUnwindSafe {
         SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe;
 }
 
+/// The default executor used.
+/// It creates an internal thread pool, and each call to a Rust function is
+/// handled by a different thread.
 pub struct ThreadPoolExecutor<EH: ErrorHandler> {
     error_handler: EH,
 }
 
 impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
+    /// Create a new executor backed by a thread pool.
     pub fn new(error_handler: EH) -> Self {
         ThreadPoolExecutor { error_handler }
     }
@@ -231,13 +264,17 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
     }
 }
 
+/// Errors that occur from normal code execution.
 #[derive(Debug)]
 pub enum Error {
+    /// Errors from an [anyhow::Error].
     ResultError(anyhow::Error),
+    /// Exceptional errors from panicking.
     Panic(Box<dyn Any + Send>),
 }
 
 impl Error {
+    /// The identifier of the type of error.
     pub fn code(&self) -> &'static str {
         match self {
             Error::ResultError(_) => "RESULT_ERROR",
@@ -245,6 +282,7 @@ impl Error {
         }
     }
 
+    /// The message of the error.
     pub fn message(&self) -> String {
         match self {
             Error::ResultError(e) => format!("{:?}", e),
@@ -260,12 +298,20 @@ impl Error {
     }
 }
 
+/// A handler model that sends back the error to a Dart `SendPort`.
+///
+/// For example, instead of using the default [`ReportDartErrorHandler`],
+/// you could implement your own handler that logs each error to stderr,
+/// or to an external logging service.
 pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
+    /// The default error handler.
     fn handle_error(&self, port: i64, error: Error);
 
+    /// Special handler only used for synchronous code.
     fn handle_error_sync(&self, error: Error) -> Vec<u8>;
 }
 
+/// The default error handler used by generated code.
 #[derive(Clone, Copy)]
 pub struct ReportDartErrorHandler;
 
