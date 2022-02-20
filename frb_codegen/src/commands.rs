@@ -3,7 +3,7 @@ use std::path::Path;
 use std::process::Command;
 use std::process::Output;
 
-use log::{debug, error, warn};
+use log::{debug, error, warn, info};
 
 /// Known failures that occur from external commands.
 /// If an error occurs frequently enough, consider adding it here and use
@@ -286,5 +286,17 @@ pub fn format_dart(path: &str, line_length: i32) {
             String::from_utf8_lossy(&res.stderr)
         );
         std::process::exit(Failures::Dartfmt as _);
+    }
+}
+
+pub fn build_runner(dart_root: &str) {
+    info!("Running build_runner at {}", dart_root);
+    let out = if cfg!(windows) {
+        call_shell(&format!("cd \"{}\"; dart run build_runner build --delete-conflicting-outputs", dart_root))
+    } else {
+        call_shell(&format!("cd \"{}\" && dart run build_runner build --delete-conflicting-outputs", dart_root))
+    };
+    if !out.status.success() {
+        error!("Failed to run build_runner for {}: {}", dart_root, String::from_utf8_lossy(&out.stdout));
     }
 }

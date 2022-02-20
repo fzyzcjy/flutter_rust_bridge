@@ -16,7 +16,8 @@ alias b := build
 build:
     cd frb_codegen && cargo build
 
-gen-bridge-rust-only: build
+alias g := gen-bridge
+gen-bridge: build
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart \
                 --dart-format-line-length {{line_length}}
@@ -27,9 +28,6 @@ gen-bridge-rust-only: build
     cp {{frb_flutter}}/ios/Runner/bridge_generated.h \
        {{frb_flutter}}/macos/Runner/bridge_generated.h
 
-alias g := gen-bridge
-gen-bridge: gen-bridge-rust-only
-    cd {{frb_pure}}/dart && dart run build_runner build
 
 alias l := lint
 lint:

@@ -24,11 +24,17 @@ mod transformer;
 mod utils;
 
 fn main() {
-    env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
+    let raw_opts = RawOpts::from_args();
+    env_logger::Builder::from_env(Env::default().default_filter_or(if raw_opts.verbose {
+        "debug"
+    } else {
+        "info"
+    }))
+    .init();
 
     ensure_tools_available();
 
-    let config = config::parse(RawOpts::from_args());
+    let config = config::parse(raw_opts);
     info!("Picked config: {:?}", &config);
 
     let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
@@ -56,7 +62,7 @@ fn main() {
     fs::write(&config.rust_output_path, generated_rust.code).unwrap();
 
     info!("Phase: Generate Dart code");
-    let generated_dart = generator::dart::generate(
+    let (generated_dart, needs_freezed) = generator::dart::generate(
         &ir_file,
         &config.dart_api_class_name(),
         &config.dart_api_impl_class_name(),
@@ -158,6 +164,16 @@ fn main() {
                 .to_text(),
         )
         .unwrap();
+    }
+
+    if needs_freezed && config.build_runner {
+        let dart_root = config.dart_root.unwrap_or_else(|| {
+            panic!(
+                "build_runner configured to run, but Dart root could not be inferred.
+Please specify --dart-root, or disable build_runner with --no-build-runner."
+            )
+        });
+        commands::build_runner(&dart_root);
     }
 
     commands::format_dart(&config.dart_output_path, config.dart_format_line_length);
