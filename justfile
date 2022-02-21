@@ -70,7 +70,7 @@ release old_version new_version:
     (cd frb_example/pure_dart/rust && cargo check)
     (cd frb_example/with_flutter/rust && cargo check)
     (cd frb_example/pure_dart/dart && dart pub get)
-    (cd frb_example/with_flutter && dart pub get)
+    (cd frb_example/with_flutter && flutter pub get)
 
     sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/pure_dart/dart/pubspec.lock
     sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/with_flutter/pubspec.lock
