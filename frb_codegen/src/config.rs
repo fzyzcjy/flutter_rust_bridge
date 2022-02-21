@@ -27,7 +27,7 @@ pub struct RawOpts {
 
     /// Path of output generated C header
     #[structopt(short, long)]
-    pub c_output: Option<String>,
+    pub c_output: Option<Vec<String>>,
     /// Crate directory for your Rust project
     #[structopt(long)]
     pub rust_crate_dir: Option<String>,
@@ -49,6 +49,15 @@ pub struct RawOpts {
     /// LLVM compiler opts
     #[structopt(long)]
     pub llvm_compiler_opts: Option<String>,
+    /// Path to root of Dart project, otherwise inferred from --dart-output
+    #[structopt(long)]
+    pub dart_root: Option<String>,
+    /// Skip running build_runner even when codegen-capable code is detected
+    #[structopt(long)]
+    pub no_build_runner: bool,
+    /// Show debug messages.
+    #[structopt(short, long)]
+    pub verbose: bool,
 }
 
 #[derive(Debug)]
@@ -56,7 +65,7 @@ pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
     pub dart_decl_output_path: Option<String>,
-    pub c_output_path: String,
+    pub c_output_path: Vec<String>,
     pub rust_crate_dir: String,
     pub rust_output_path: String,
     pub class_name: String,
@@ -65,6 +74,8 @@ pub struct Opts {
     pub llvm_path: Vec<String>,
     pub llvm_compiler_opts: String,
     pub manifest_path: String,
+    pub dart_root: Option<String>,
+    pub build_runner: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
@@ -87,10 +98,26 @@ pub fn parse(raw: RawOpts) -> Opts {
         fallback_class_name(&*rust_crate_dir)
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("class_name")))
     });
-    let c_output_path = canon_path(&raw.c_output.unwrap_or_else(|| {
-        fallback_c_output_path()
-            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))
-    }));
+    let c_output_path = raw
+        .c_output
+        .map(|outputs| {
+            outputs
+                .iter()
+                .map(|output| canon_path(output))
+                .collect::<Vec<_>>()
+        })
+        .unwrap_or_else(|| {
+            vec![fallback_c_output_path()
+                .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))]
+        });
+
+    let dart_root = {
+        let dart_output = &raw.dart_output;
+        raw.dart_root
+            .as_deref()
+            .map(canon_path)
+            .or_else(|| fallback_dart_root(dart_output).ok())
+    };
 
     Opts {
         rust_input_path,
@@ -121,6 +148,8 @@ pub fn parse(raw: RawOpts) -> Opts {
         }),
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
         manifest_path,
+        dart_root,
+        build_runner: !raw.no_build_runner,
     }
 }
 
@@ -177,6 +206,21 @@ fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
         .to_string())
 }
 
+fn fallback_dart_root(dart_output_path: &str) -> Result<String> {
+    let mut res = canon_pathbuf(dart_output_path);
+    while res.pop() {
+        if res.join("pubspec.yaml").is_file() {
+            return res
+                .to_str()
+                .map(ToString::to_string)
+                .ok_or_else(|| anyhow!("Non-utf8 path"));
+        }
+    }
+    Err(anyhow!(
+        "Root of Dart library could not be inferred from Dart output"
+    ))
+}
+
 fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_path = Path::new(rust_crate_dir).join("Cargo.toml");
     let cargo_toml_content = fs::read_to_string(cargo_toml_path)?;
@@ -194,10 +238,15 @@ fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
 }
 
 fn canon_path(sub_path: &str) -> String {
+    let path = canon_pathbuf(sub_path);
+    path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+}
+
+fn canon_pathbuf(sub_path: &str) -> PathBuf {
     let mut path =
         env::current_dir().unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path));
     path.push(sub_path);
-    path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+    path
 }
 
 fn path_to_string(path: PathBuf) -> Result<String, OsString> {
@@ -215,5 +264,25 @@ impl Opts {
 
     pub fn dart_wire_class_name(&self) -> String {
         format!("{}Wire", self.class_name)
+    }
+
+    /// Returns None if the path terminates in "..", or not utf8.
+    pub fn dart_output_path_name(&self) -> Option<&str> {
+        let name = Path::new(&self.dart_output_path);
+        let root = name.file_name()?.to_str()?;
+        if let Some((name, _)) = root.rsplit_once('.') {
+            Some(name)
+        } else {
+            Some(root)
+        }
+    }
+
+    pub fn dart_output_freezed_path(&self) -> Option<String> {
+        Some(
+            Path::new(&self.dart_output_path)
+                .with_extension("freezed.dart")
+                .to_str()?
+                .to_owned(),
+        )
     }
 }
