@@ -50,6 +50,17 @@ clean:
     cd {{frb_flutter}} && flutter clean
     cd {{frb_flutter}}/rust && cargo clean
 
+refresh_all:
+    (cd frb_rust && cargo check)
+    (cd frb_macros && cargo check)
+    (cd frb_example/pure_dart/rust && cargo check)
+    (cd frb_example/with_flutter/rust && cargo check)
+    (cd frb_example/pure_dart/dart && dart pub get)
+    (cd frb_example/with_flutter && flutter pub get)
+
+    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
+    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
+
 publish_all:
     (cd frb_codegen && cargo publish)
     (cd frb_rust && cargo publish)
@@ -65,15 +76,7 @@ release old_version new_version:
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_macros/Cargo.toml
     sed -i '' 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
 
-    (cd frb_rust && cargo check)
-    (cd frb_macros && cargo check)
-    (cd frb_example/pure_dart/rust && cargo check)
-    (cd frb_example/with_flutter/rust && cargo check)
-    (cd frb_example/pure_dart/dart && dart pub get)
-    (cd frb_example/with_flutter && flutter pub get)
-
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
+    just refresh_all
 
     git add --all
     git status && git diff --staged | grep ''
