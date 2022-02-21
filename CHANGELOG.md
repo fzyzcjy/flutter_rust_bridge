@@ -1,3 +1,8 @@
+## 1.21.0
+
+* CLI improvements: Run `build_runner` automatically, and more flags #363 (thanks @Desdaemon)
+* Disable import parsing in source_graph #364 (thanks @Secondflight)
+
 ## 1.20.1
 
 * More code comments and CI related to Corrosion #358 (thanks @Desdaemon)
