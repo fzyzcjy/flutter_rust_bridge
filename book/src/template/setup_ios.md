@@ -2,7 +2,7 @@
 
 iOS requires some additional Rust targets for cross-compilation:
 
-```
+```bash
 # 64 bit targets (real device & simulator):
 rustup target add aarch64-apple-ios x86_64-apple-ios
 # New simulator target for Xcode 12 and later

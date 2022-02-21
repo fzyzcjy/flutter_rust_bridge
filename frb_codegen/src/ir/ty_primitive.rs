@@ -75,6 +75,10 @@ impl IrTypeTrait for IrTypePrimitive {
             _ => self.dart_api_type(),
         }
     }
+
+    fn wasm_wire_type(&self) -> String {
+        self.rust_wire_type()
+    }
 }
 
 impl IrTypePrimitive {

@@ -28,7 +28,7 @@ pub struct RawOpts {
 
     /// Path of output generated C header
     #[structopt(short, long)]
-    pub c_output: Option<String>,
+    pub c_output: Option<Vec<String>>,
     /// Crate directory for your Rust project
     #[structopt(long)]
     pub rust_crate_dir: Option<String>,
@@ -50,6 +50,15 @@ pub struct RawOpts {
     /// LLVM compiler opts
     #[structopt(long)]
     pub llvm_compiler_opts: Option<String>,
+    /// Path to root of Dart project, otherwise inferred from --dart-output
+    #[structopt(long)]
+    pub dart_root: Option<String>,
+    /// Skip running build_runner even when codegen-capable code is detected
+    #[structopt(long)]
+    pub no_build_runner: bool,
+    /// Show debug messages.
+    #[structopt(short, long)]
+    pub verbose: bool,
     /// Emit glue code to interface with wasm-bindgen.
     /// Enabling this splits the generated code into their respective modules.
     /// For example, if the output is "foo.rs", a native "foo_native.rs" and
@@ -64,7 +73,7 @@ pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
     pub dart_decl_output_path: Option<String>,
-    pub c_output_path: String,
+    pub c_output_path: Vec<String>,
     pub rust_crate_dir: String,
     pub rust_output_path: String,
     pub class_name: String,
@@ -74,6 +83,8 @@ pub struct Opts {
     pub llvm_compiler_opts: String,
     pub wasm: bool,
     pub manifest_path: String,
+    pub dart_root: Option<String>,
+    pub build_runner: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
@@ -96,15 +107,30 @@ pub fn parse(raw: RawOpts) -> Opts {
         fallback_class_name(&*rust_crate_dir)
             .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("class_name")))
     });
-    let c_output_path = canon_path(&raw.c_output.unwrap_or_else(|| {
-        fallback_c_output_path()
-            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))
-    }));
-    let dart_output_path = canon_path(&raw.dart_output);
+    let c_output_path = raw
+        .c_output
+        .map(|outputs| {
+            outputs
+                .iter()
+                .map(|output| canon_path(output))
+                .collect::<Vec<_>>()
+        })
+        .unwrap_or_else(|| {
+            vec![fallback_c_output_path()
+                .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))]
+        });
+
+    let dart_root = {
+        let dart_output = &raw.dart_output;
+        raw.dart_root
+            .as_deref()
+            .map(canon_path)
+            .or_else(|| fallback_dart_root(dart_output).ok())
+    };
 
     Opts {
         rust_input_path,
-        dart_output_path,
+        dart_output_path: canon_path(&raw.dart_output),
         dart_decl_output_path: raw
             .dart_decl_output
             .as_ref()
@@ -132,6 +158,8 @@ pub fn parse(raw: RawOpts) -> Opts {
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
         wasm: raw.wasm,
         manifest_path,
+        dart_root,
+        build_runner: !raw.no_build_runner,
     }
 }
 
@@ -188,24 +216,19 @@ fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
         .to_string())
 }
 
-/// Wraps `path` with `suffix` and `prefix`, e.g. "/foo/bar.rs" becomes
-/// "/foo/{prefix}/bar{suffix}.rs".
-/// Returns None for non-utf8 paths.
-fn wrap_path(path: &str, suffix: &str, prefix: Option<&str>) -> Option<String> {
-    use std::path::*;
-    let mut buf = PathBuf::from(path);
-    let name = buf.file_name()?.to_str()?.to_string();
-    let (name, rest) = name.split_once('.')?;
-    buf.set_file_name(format!("{}{}.{}", name, suffix, rest));
-    if let Some(prefix) = prefix {
-        let name = buf.file_name().map(OsString::from);
-        buf.pop();
-        buf.push(prefix);
-        if let Some(name) = name {
-            buf.push(name);
+fn fallback_dart_root(dart_output_path: &str) -> Result<String> {
+    let mut res = canon_pathbuf(dart_output_path);
+    while res.pop() {
+        if res.join("pubspec.yaml").is_file() {
+            return res
+                .to_str()
+                .map(ToString::to_string)
+                .ok_or_else(|| anyhow!("Non-utf8 path"));
         }
     }
-    buf.to_str().map(ToString::to_string)
+    Err(anyhow!(
+        "Root of Dart library could not be inferred from Dart output"
+    ))
 }
 
 fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
@@ -225,10 +248,15 @@ fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
 }
 
 fn canon_path(sub_path: &str) -> String {
+    let path = canon_pathbuf(sub_path);
+    path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+}
+
+fn canon_pathbuf(sub_path: &str) -> PathBuf {
     let mut path =
         env::current_dir().unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path));
     path.push(sub_path);
-    path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+    path
 }
 
 fn path_to_string(path: PathBuf) -> Result<String, OsString> {
@@ -248,52 +276,23 @@ impl Opts {
         format!("{}Wire", self.class_name)
     }
 
-    pub fn rust_output_file_name(&self) -> Option<&str> {
-        file_prefix_stable(Path::new(&self.rust_output_path))
+    /// Returns None if the path terminates in "..", or not utf8.
+    pub fn dart_output_path_name(&self) -> Option<&str> {
+        let name = Path::new(&self.dart_output_path);
+        let root = name.file_name()?.to_str()?;
+        if let Some((name, _)) = root.rsplit_once('.') {
+            Some(name)
+        } else {
+            Some(root)
+        }
     }
 
-    pub fn dart_wasm_output_path(&self) -> Option<String> {
-        wrap_path(&self.dart_output_path, "_web", None)
-    }
-
-    pub fn rust_wasm_output_path(&self) -> Option<String> {
-        wrap_path(&self.rust_output_path, "_web", self.rust_output_file_name())
-    }
-
-    pub fn rust_native_output_path(&self) -> Option<String> {
-        wrap_path(
-            &self.rust_output_path,
-            "_native",
-            self.rust_output_file_name(),
-        )
-    }
-}
-
-/// Replacement for `Path::file_prefix`[^1] on stable Rust, which as of writing
-/// has not been stabilized yet.
-/// Returns None for non-utf8 paths.
-///
-/// [^1]: https://doc.rust-lang.org/std/path/struct.Path.html#method.file_prefix
-#[inline]
-pub fn file_prefix_stable(path: &Path) -> Option<&str> {
-    Some(path.file_name()?.to_str()?.split_once('.')?.0)
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    #[test]
-    fn test_wrap_path() {
-        assert_eq!(
-            wrap_path("some/path.rs", "_suffix", Some("parent")),
-            Some("some/parent/path_suffix.rs".into())
-        );
-    }
-    #[test]
-    fn test_file_prefix_stable() {
-        assert_eq!(
-            file_prefix_stable(Path::new("foobar.foo.bar")),
-            Some("foobar")
+    pub fn dart_output_freezed_path(&self) -> Option<String> {
+        Some(
+            Path::new(&self.dart_output_path)
+                .with_extension("freezed.dart")
+                .to_str()?
+                .to_owned(),
         )
     }
 }

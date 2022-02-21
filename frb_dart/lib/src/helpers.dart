@@ -54,6 +54,7 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
   @protected
   Future<void> setup();
 
+  /// Configure a logger for error handling.
   @protected
   void log(String message) {}
 }

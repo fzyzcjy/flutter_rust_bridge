@@ -32,6 +32,7 @@
     - [Android setup](template/setup_android.md)
     - [iOS setup](template/setup_ios.md)
     - [Web setup](template/setup_web.md)
+    - [Windows and Linux](template/setup_desktop.md)
     - [Other platforms](template/setup_others.md)
   - [Template tour](template/tour.md)
     - [native/src/api.rs](template/tour_api.md)

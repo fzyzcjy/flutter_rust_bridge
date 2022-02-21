@@ -1,5 +1,6 @@
 //! Functions that support auto-generated Rust code.
 //! These functions are *not* meant to be used by humans directly.
+#![doc(hidden)]
 
 use std::mem;
 
@@ -41,7 +42,7 @@ pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
 }
 
-/// NOTE for maintainer: Please keep this struct in sync with [DUMMY_WIRE_CODE_FOR_BINDGEN]
+/// NOTE for maintainer: Please keep this struct in sync with `DUMMY_WIRE_CODE_FOR_BINDGEN`
 /// in the code generator
 #[cfg(not(target_family = "wasm"))]
 #[repr(C)]

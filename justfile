@@ -16,26 +16,22 @@ llvm := if os() == "macos" {
     ""
 }
 
-default: gen-bridge lint
+default: gen-bridge
 
 alias b := build
 build:
     cd frb_codegen && cargo build
 
-gen-bridge-rust-only: build
+alias g := gen-bridge
+gen-bridge: build
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart \
                 --dart-format-line-length {{line_length}}
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
                 -c {{frb_flutter}}/ios/Runner/bridge_generated.h \
+                -c {{frb_flutter}}/macos/Runner/bridge_generated.h \
                 --dart-format-line-length {{line_length}}
-    cp {{frb_flutter}}/ios/Runner/bridge_generated.h \
-       {{frb_flutter}}/macos/Runner/bridge_generated.h
-
-alias g := gen-bridge
-gen-bridge: gen-bridge-rust-only
-    cd {{frb_pure}}/dart && dart run build_runner build
 
 alias l := lint
 lint:
@@ -79,7 +75,7 @@ release old_version new_version:
     (cd frb_example/pure_dart/rust && cargo check)
     (cd frb_example/with_flutter/rust && cargo check)
     (cd frb_example/pure_dart/dart && dart pub get)
-    (cd frb_example/with_flutter && dart pub get)
+    (cd frb_example/with_flutter && flutter pub get)
 
     sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/pure_dart/dart/pubspec.lock
     sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/with_flutter/pubspec.lock

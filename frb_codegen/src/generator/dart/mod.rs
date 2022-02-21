@@ -36,7 +36,8 @@ pub fn generate(
     dart_api_class_name: &str,
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
-) -> Output {
+    dart_output_file_root: &str,
+) -> (Output, bool) {
     let distinct_types = ir_file.distinct_types(true, true);
     let distinct_input_types = ir_file.distinct_types(true, false);
     let distinct_output_types = ir_file.distinct_types(false, true);
@@ -71,7 +72,7 @@ pub fn generate(
     let freezed_header = if needs_freezed {
         DartBasicCode {
             import: "import 'package:freezed_annotation/freezed_annotation.dart';".to_string(),
-            part: "part 'bridge_generated.freezed.dart';".to_string(),
+            part: format!("part '{}.freezed.dart';", dart_output_file_root),
             body: "".to_string(),
         }
     } else {
@@ -150,7 +151,7 @@ pub fn generate(
 
     let file_prelude = DartBasicCode {
         import: format!("{}
-            
+
                 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import
                 ",
                 CODE_HEADER
@@ -159,11 +160,14 @@ pub fn generate(
         body: "".to_string(),
     };
 
-    Output {
-        file_prelude,
-        decl_code,
-        impl_code,
-    }
+    (
+        Output {
+            file_prelude,
+            decl_code,
+            impl_code,
+        },
+        needs_freezed,
+    )
 }
 
 fn generate_api_func(func: &IrFunc) -> (String, String, String) {
