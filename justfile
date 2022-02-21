@@ -72,8 +72,8 @@ release old_version new_version:
     (cd frb_example/pure_dart/dart && dart pub get)
     (cd frb_example/with_flutter && flutter pub get)
 
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/pure_dart/dart/pubspec.lock
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' frb_example/with_flutter/pubspec.lock
+    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
+    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
 
     git add --all
     git status && git diff --staged | grep ''

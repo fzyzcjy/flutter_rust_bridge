@@ -5,77 +5,77 @@ packages:
     dependency: transitive
     description:
       name: archive
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.6"
   async:
     dependency: transitive
     description:
       name: async
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
   boolean_selector:
     dependency: transitive
     description:
       name: boolean_selector
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
   characters:
     dependency: transitive
     description:
       name: characters
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
   charcode:
     dependency: transitive
     description:
       name: charcode
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
   clock:
     dependency: transitive
     description:
       name: clock
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
   collection:
     dependency: transitive
     description:
       name: collection
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
   crypto:
     dependency: transitive
     description:
       name: crypto
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
   cupertino_icons:
     dependency: "direct main"
     description:
       name: cupertino_icons
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
   fake_async:
     dependency: transitive
     description:
       name: fake_async
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
   file:
     dependency: transitive
     description:
       name: file
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
   flutter:
@@ -92,7 +92,7 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_lints
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
   flutter_rust_bridge:
@@ -121,42 +121,42 @@ packages:
     dependency: transitive
     description:
       name: lints
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
   matcher:
     dependency: transitive
     description:
       name: matcher
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
   meta:
     dependency: transitive
     description:
       name: meta
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
   path:
     dependency: transitive
     description:
       name: path
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
   platform:
     dependency: transitive
     description:
       name: platform
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
   process:
     dependency: transitive
     description:
       name: process
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
   sky_engine:
@@ -168,77 +168,77 @@ packages:
     dependency: transitive
     description:
       name: source_span
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
   stack_trace:
     dependency: transitive
     description:
       name: stack_trace
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
   stream_channel:
     dependency: transitive
     description:
       name: stream_channel
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
   string_scanner:
     dependency: transitive
     description:
       name: string_scanner
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
   sync_http:
     dependency: transitive
     description:
       name: sync_http
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
   term_glyph:
     dependency: transitive
     description:
       name: term_glyph
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
   test_api:
     dependency: transitive
     description:
       name: test_api
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.3"
   typed_data:
     dependency: transitive
     description:
       name: typed_data
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
   vector_math:
     dependency: transitive
     description:
       name: vector_math
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
   vm_service:
     dependency: transitive
     description:
       name: vm_service
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "7.3.0"
   webdriver:
     dependency: transitive
     description:
       name: webdriver
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
 sdks:
