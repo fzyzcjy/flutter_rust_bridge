@@ -1,6 +1,5 @@
 use std::fs;
 use std::path::Path;
-use std::path::PathBuf;
 
 use env_logger::Env;
 use log::{debug, info};
@@ -38,7 +37,7 @@ fn main() {
     let config = config::parse(raw_opts);
     info!("Picked config: {:?}", &config);
 
-    let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
+    // let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
     let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
 
     info!("Phase: Parse source code to AST");
@@ -75,8 +74,8 @@ fn main() {
 
     commands::format_rust(&config.rust_output_path);
     if config.wasm {
-        commands::format_rust(&config.rust_wasm_output_path().unwrap());
-        commands::format_rust(&config.rust_native_output_path().unwrap());
+        commands::format_rust(config.rust_wasm_output_path().unwrap());
+        commands::format_rust(config.rust_native_output_path().unwrap());
     }
 
     if !config.skip_add_mod_to_lib {

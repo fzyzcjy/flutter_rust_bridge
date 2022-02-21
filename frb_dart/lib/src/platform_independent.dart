@@ -1,3 +1,7 @@
+import 'dart:ffi';
+
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'platform/platform.dart';
 import 'package:meta/meta.dart';
 
 /// Base class for various kinds of tasks.
@@ -67,4 +71,58 @@ class FlutterRustBridgeTimeoutException {
   @override
   String toString() =>
       'FlutterRustBridgeTimeoutException(debugName=$debugName,duration=$duration,stackTrace=$stackTrace)';
+}
+
+/// Describes a source for the dynamic library.
+class LibraryMeta {
+  /// Optional override for the dylib file.
+  /// Not used by the iOS platform.
+  final String? override;
+
+  /// Whether to open a [DynamicLibrary.process] on native platforms instead.
+  /// By default, [DynamicLibrary.executable] is used.
+  final bool processDylib;
+
+  const LibraryMeta({this.override, this.processDylib = false});
+}
+
+/// Describes the sources of dynamic libraries across platforms.
+class LibrarySources {
+  /// The base name of the library, usually your crate name. The derived library name will be:
+  /// - `lib$base.so` on Android and Linux
+  /// - `$base.dylib` on MacOS
+  /// - `$base.dll` on Windows
+  /// - `$base_bg.wasm` on WASM
+  ///
+  /// iOS must (and MacOS can) use linked binaries instead.
+  final String base;
+  final LibraryMeta android;
+  final LibraryMeta ios;
+  final LibraryMeta macos;
+  final LibraryMeta linux;
+  final LibraryMeta windows;
+  final LibraryMeta web;
+
+  const LibrarySources(
+    this.base, {
+    this.android = const LibraryMeta(),
+    this.ios = const LibraryMeta(),
+    this.macos = const LibraryMeta(),
+    this.linux = const LibraryMeta(),
+    this.windows = const LibraryMeta(),
+    this.web = const LibraryMeta(),
+  });
+
+  String get libraryName {
+    switch (currentPlatform) {
+      case 'js':
+        return web.override ?? '${base}_bg.wasm';
+      case 'windows':
+        return windows.override ?? '$base.dll';
+      case 'macos':
+        return macos.override ?? '$base.dylib';
+      default:
+        return linux.override ?? 'lib$base.so';
+    }
+  }
 }

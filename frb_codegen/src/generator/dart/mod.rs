@@ -58,6 +58,10 @@ pub fn generate(
         .iter()
         .map(|ty| generate_api2wire_func(ty, ir_file))
         .collect::<Vec<_>>();
+    let dart_wasm_api2wire_funcs = distinct_input_types
+        .iter()
+        .map(|ty| generate_wasm_api2wire_func(ty, ir_file))
+        .collect::<Vec<_>>();
     let dart_api_fill_to_wire_funcs = distinct_input_types
         .iter()
         .map(|ty| generate_api_fill_to_wire_func(ty, ir_file))
@@ -65,6 +69,10 @@ pub fn generate(
     let dart_wire2api_funcs = distinct_output_types
         .iter()
         .map(|ty| generate_wire2api_func(ty, ir_file))
+        .collect::<Vec<_>>();
+    let dart_wasm_wire2api_funcs = distinct_output_types
+        .iter()
+        .map(|ty| generate_wasm_wire2api_func(ty, ir_file))
         .collect::<Vec<_>>();
 
     let needs_freezed = distinct_types
@@ -298,6 +306,22 @@ fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile) -> String {
     }
 }
 
+fn generate_wasm_api2wire_func(ty: &IrType, ir_file: &IrFile) -> String {
+    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file).wasm_api2wire_body() {
+        format!(
+            "{} _api2wire_{}({} raw) {{
+                {}
+            }}",
+            ty.wasm_wire_type(),
+            ty.safe_ident(),
+            ty.dart_api_type(),
+            body
+        )
+    } else {
+        "".to_owned()
+    }
+}
+
 fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
     if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file).api_fill_to_wire_body() {
         let target_wire_type = match ty {
@@ -335,6 +359,19 @@ fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile) -> String {
 
 fn gen_wire2api_simple_type_cast(s: &str) -> String {
     format!("return raw as {};", s)
+}
+
+fn generate_wasm_wire2api_func(ty: &IrType, ir_file: &IrFile) -> String {
+    let body = TypeDartGenerator::new(ty.clone(), ir_file).wasm_wire2api_body();
+
+    format!(
+        "{} _wire2api_{}(dynamic raw) {{
+            {}
+        }}",
+        ty.js_wire_type(),
+        ty.safe_ident(),
+        body
+    )
 }
 
 /// A trailing newline is included if comments is not empty.

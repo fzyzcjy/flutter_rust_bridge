@@ -5,11 +5,17 @@ use enum_dispatch::enum_dispatch;
 pub trait TypeDartGeneratorTrait {
     fn api2wire_body(&self) -> Option<String>;
 
+    fn wasm_api2wire_body(&self) -> Option<String>;
+
     fn api_fill_to_wire_body(&self) -> Option<String> {
         None
     }
 
     fn wire2api_body(&self) -> String {
+        "".to_string()
+    }
+
+    fn wasm_wire2api_body(&self) -> String {
         "".to_string()
     }
 
