@@ -29,6 +29,7 @@ pub struct Output {
     pub file_prelude: DartBasicCode,
     pub decl_code: DartBasicCode,
     pub impl_code: DartBasicCode,
+    pub wasm_code: DartBasicCode,
 }
 
 pub fn generate(
@@ -165,6 +166,7 @@ pub fn generate(
             file_prelude,
             decl_code,
             impl_code,
+            wasm_code: todo!(),
         },
         needs_freezed,
     )

@@ -59,11 +59,7 @@ pub struct RawOpts {
     /// Show debug messages.
     #[structopt(short, long)]
     pub verbose: bool,
-    /// Emit glue code to interface with wasm-bindgen.
-    /// Enabling this splits the generated code into their respective modules.
-    /// For example, if the output is "foo.rs", a native "foo_native.rs" and
-    /// a WASM "foo_web.rs" frontend will be created.
-    /// Overrides `--dart-decl-output`.
+    /// Emit glue code to interface with wasm-bindgen. Overrides --dart-decl-output.
     #[structopt(long)]
     pub wasm: bool,
 }
@@ -294,5 +290,17 @@ impl Opts {
                 .to_str()?
                 .to_owned(),
         )
+    }
+
+    pub fn rust_wasm_output_path(&self) -> Option<&str> {
+        None
+    }
+
+    pub fn dart_wasm_output_path(&self) -> Option<&str> {
+        None
+    }
+
+    pub fn rust_native_output_path(&self) -> Option<&str> {
+        None
     }
 }

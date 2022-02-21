@@ -57,7 +57,7 @@ fn main() {
     let generated_rust = generator::rust::generate(
         &ir_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-        false,
+        // false,
     );
 
     info!("Phase: Generate Dart code");
@@ -176,7 +176,7 @@ fn main() {
     if config.wasm {
         fs::write(
             &config.dart_wasm_output_path().unwrap(),
-            (generated_dart_file_prelude + &generated_dart_web_impl_raw).to_text(),
+            (&generated_dart.file_prelude + &generated_dart.wasm_code).to_text(),
         )
         .unwrap();
     }
