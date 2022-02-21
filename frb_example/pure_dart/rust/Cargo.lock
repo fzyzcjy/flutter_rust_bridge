@@ -23,10 +23,12 @@ dependencies = ["atomic", "js-sys", "wasm-bindgen"]
 
 [[package]]
 name = "anyhow"
-version = "1.0.53"
+version = "1.0.54"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "94a45b455c14666b85fc40a019e8ab9eb75e3a124e05494f5397122bc9eb06e0"
-dependencies = ["backtrace"]
+checksum = "7a99269dff3bc004caa411f38845c20303f1e393ca2bd6581576fa3a7f59577d"
+dependencies = [
+ "backtrace",
+]
 
 [[package]]
 name = "atomic"
@@ -82,7 +84,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.21.0"
+version = "1.21.1"
 dependencies = [
     "allo-isolate",
     "anyhow",
@@ -110,7 +112,7 @@ version = "0.1.0"
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.21.0"
+version = "1.21.1"
 
 [[package]]
 name = "gimli"

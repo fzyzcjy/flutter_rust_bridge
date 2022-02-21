@@ -1,3 +1,7 @@
+## 1.21.1
+
+* Bump dependency version
+
 ## 1.21.0
 
 * CLI improvements: Run `build_runner` automatically, and more flags #363 (thanks @Desdaemon)
