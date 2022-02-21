@@ -1,11 +1,10 @@
 /*
     Things this doesn't currently support that it might need to later:
 
-    - Import renames (use a::b as c) - these are silently ignored (!)
-    - Imports that start with two colons (use ::a::b) - these are also silently ignored (!)
-    - As of writing, flutter_rust_bridge doesn't support imports from outside
-      the current crate, though that's outside the scope of the code in this
-      file
+    - Import parsing is unfinished and so is currently disabled
+    - When import parsing is enabled:
+        - Import renames (use a::b as c) - these are silently ignored
+        - Imports that start with two colons (use ::a::b) - these are also silently ignored
 */
 
 use std::{collections::HashMap, fmt::Debug, fs, path::PathBuf};
@@ -193,7 +192,7 @@ fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Ident, bool) {
 impl Module {
     pub fn resolve(&mut self) {
         self.resolve_modules();
-        self.resolve_imports();
+        // self.resolve_imports();
     }
 
     /// Maps out modules, structs and enums within the scope of this module
@@ -313,6 +312,7 @@ impl Module {
         });
     }
 
+    #[allow(dead_code)]
     fn resolve_imports(&mut self) {
         let imports = &mut self.scope.as_mut().unwrap().imports;
 
