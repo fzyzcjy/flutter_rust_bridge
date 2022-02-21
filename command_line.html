@@ -136,13 +136,15 @@
                     <main>
                         <h1 id="command-line-arguments"><a class="header" href="#command-line-arguments">Command line arguments</a></h1>
 <p>Simply add <code>--help</code> to see full documentation. The following is a (possibly outdated) snapshot when running the command with <code>--help</code>:</p>
-<pre><code class="language-shell">flutter_rust_bridge_codegen 1.19.2
+<pre><code class="language-shell">flutter_rust_bridge_codegen 1.20.1
 
 USAGE:
     flutter_rust_bridge_codegen [FLAGS] [OPTIONS] --dart-output &lt;dart-output&gt; --rust-input &lt;rust-input&gt;
 
 FLAGS:
         --skip-add-mod-to-lib    Skip automatically adding `mod bridge_generated;` to `lib.rs`
+        --no-build-runner        Skip running build_runner even when codegen-capable code is detected
+    -v, --verbose                Show debug messages
     -h, --help                   Prints help information
     -V, --version                Prints version information
 
@@ -152,13 +154,15 @@ OPTIONS:
         --dart-decl-output &lt;dart-decl-output&gt;
             If provided, generated Dart declaration code to this separate file
 
-    -c, --c-output &lt;c-output&gt;                                  Path of output generated C header
+    -c, --c-output &lt;c-output&gt;...                               Path of output generated C header
         --rust-crate-dir &lt;rust-crate-dir&gt;                      Crate directory for your Rust project
         --rust-output &lt;rust-output&gt;                            Path of output generated Rust code
         --class-name &lt;class-name&gt;                              Generated class name
         --dart-format-line-length &lt;dart-format-line-length&gt;    Line length for dart formatting
         --llvm-path &lt;llvm-path&gt;...                             Path to the installed LLVM
         --llvm-compiler-opts &lt;llvm-compiler-opts&gt;              LLVM compiler opts
+        --dart-root &lt;dart-root&gt;
+            Path to root of Dart project, otherwise inferred from --dart-output
 </code></pre>
 
                     </main>
