@@ -12,6 +12,10 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         ))
     }
 
+    fn wasm_api2wire_body(&self) -> Option<String> {
+        self.api2wire_body()
+    }
+
     fn api_fill_to_wire_body(&self) -> Option<String> {
         if !self.ir.needs_initialization() || self.ir.is_list() {
             return None;
@@ -27,5 +31,9 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
             "return raw == null ? null : _wire2api_{}(raw);",
             self.ir.inner.safe_ident()
         )
+    }
+
+    fn wasm_wire2api_body(&self) -> String {
+        self.wire2api_body()
     }
 }

@@ -169,12 +169,31 @@ pub fn generate(
         body: "".to_string(),
     };
 
+    let wasm_body = dbg!(format!(
+        "class {dart_api_impl_class_name} implements {dart_api_class_name} {{
+                // Section: api2wire
+                {}
+            }}
+
+            // Section: wire2api
+            {}",
+        dart_wasm_api2wire_funcs.join("\n\n"),
+        dart_wasm_wire2api_funcs.join("\n\n"),
+        dart_api_impl_class_name = dart_api_impl_class_name,
+        dart_api_class_name = dart_api_class_name
+    ));
+    let wasm_code = &file_prelude
+        + &DartBasicCode {
+            body: wasm_body,
+            ..Default::default()
+        };
+
     (
         Output {
             file_prelude,
             decl_code,
             impl_code,
-            wasm_code: todo!(),
+            wasm_code,
         },
         needs_freezed,
     )
@@ -312,7 +331,7 @@ fn generate_wasm_api2wire_func(ty: &IrType, ir_file: &IrFile) -> String {
             "{} _api2wire_{}({} raw) {{
                 {}
             }}",
-            ty.wasm_wire_type(),
+            ty.js_wire_type(),
             ty.safe_ident(),
             ty.dart_api_type(),
             body
@@ -368,7 +387,7 @@ fn generate_wasm_wire2api_func(ty: &IrType, ir_file: &IrFile) -> String {
         "{} _wire2api_{}(dynamic raw) {{
             {}
         }}",
-        ty.js_wire_type(),
+        ty.dart_api_type(),
         ty.safe_ident(),
         body
     )

@@ -5,7 +5,9 @@ use enum_dispatch::enum_dispatch;
 pub trait TypeDartGeneratorTrait {
     fn api2wire_body(&self) -> Option<String>;
 
-    fn wasm_api2wire_body(&self) -> Option<String>;
+    fn wasm_api2wire_body(&self) -> Option<String> {
+        None
+    }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
         None

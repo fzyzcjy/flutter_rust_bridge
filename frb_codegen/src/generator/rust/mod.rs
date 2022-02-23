@@ -346,7 +346,7 @@ impl Generator {
         r"pub trait Wire2Api<T> {
             fn wire2api(self) -> T;
         }
-        
+
         impl<T, S> Wire2Api<Option<T>> for *mut S
             where
                 *mut S: Wire2Api<T>
@@ -410,7 +410,7 @@ impl Generator {
         "pub trait NewWithNullPtr {
             fn new_with_null_ptr() -> Self;
         }
-        
+
         impl<T> NewWithNullPtr for *mut T {
             fn new_with_null_ptr() -> Self {
                 std::ptr::null_mut()
