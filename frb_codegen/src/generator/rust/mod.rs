@@ -73,7 +73,9 @@ impl Generator {
             "#![allow(
                 non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion,
                 clippy::unit_arg, non_snake_case
-            )]".to_string());
+            )]"
+            .to_string(),
+        );
         lines.push(CODE_HEADER.to_string());
 
         lines.push(String::new());
@@ -168,7 +170,15 @@ impl Generator {
             Code::Multi {
                 native,
                 wasm: "".into(),
-                stub: "".into(),
+                stub: "
+#[cfg(not(target_family = \"wasm\"))]
+mod native;
+
+/// cbindgen:ignore
+#[cfg(target_arch = \"wasm32\")]
+mod wasm;
+"
+                .into(),
             }
         } else {
             Code::Native(native)

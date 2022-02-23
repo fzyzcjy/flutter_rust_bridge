@@ -10,10 +10,11 @@
 use std::{collections::HashMap, fmt::Debug, fs, path::PathBuf};
 
 use cargo_metadata::MetadataCommand;
+use darling::FromAttributes;
 use log::debug;
 use syn::{Attribute, Ident, ItemEnum, ItemStruct, UseTree};
 
-use crate::markers;
+use crate::{markers, attributes::ModuleMeta};
 
 /// Represents a crate, including a map of its modules, imports, structs and
 /// enums.
@@ -240,6 +241,10 @@ impl Module {
                     });
                 }
                 syn::Item::Mod(item_mod) => {
+                    let meta = ModuleMeta::from_attributes(&item_mod.attrs).unwrap();
+                    if meta.ignore {
+                        continue;
+                    }
                     let ident = item_mod.ident.clone();
 
                     let mut module_path = self.module_path.clone();

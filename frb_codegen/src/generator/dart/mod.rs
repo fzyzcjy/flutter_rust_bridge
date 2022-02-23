@@ -184,8 +184,9 @@ pub fn generate(
         dart_api_impl_class_name = dart_api_impl_class_name,
         dart_api_class_name = dart_api_class_name
     );
-    let wasm_code = &file_prelude
+    let wasm_code = &common_header
         + &DartBasicCode {
+            import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';".to_string(),
             body: wasm_body,
             ..Default::default()
         };

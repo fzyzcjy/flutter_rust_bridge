@@ -13,6 +13,7 @@ use crate::ir::*;
 use crate::others::*;
 use crate::utils::*;
 
+mod attributes;
 mod commands;
 mod config;
 mod generator;
@@ -152,18 +153,11 @@ fn main() -> anyhow::Result<()> {
 
     let generated_dart_decl_all = generated_dart.decl_code;
     let generated_dart_impl_all = &generated_dart.impl_code + &generated_dart_wire;
-    if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
-        let impl_import_decl = DartBasicCode {
-            import: format!(
-                "import \"{}\";",
-                diff_paths(dart_decl_output_path, dart_output_dir)
-                    .unwrap()
-                    .to_str()
-                    .unwrap()
-            ),
-            part: String::new(),
-            body: String::new(),
-        };
+    if config.wasm || config.dart_decl_output_path.is_some() {
+        // --wasm forces codegen to split declarations,
+        // but still allows the user to customize the name of the declaration file.
+        let dart_decl_output_path = config.dart_fallback_decl_output_path();
+        let impl_import_decl = import_decl(dart_decl_output_path.to_str().unwrap(), dart_output_dir);
         fs::write(
             &dart_decl_output_path,
             (&generated_dart.file_prelude + &generated_dart_decl_all).to_text(),
@@ -172,6 +166,13 @@ fn main() -> anyhow::Result<()> {
             &config.dart_output_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
         )?;
+        if config.wasm {
+            let wasm_path = config.dart_wasm_output_path().unwrap();
+            fs::write(
+                &wasm_path,
+                (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.wasm_code).to_text(),
+            )?;
+        }
     } else {
         fs::write(
             &config.dart_output_path,
@@ -179,14 +180,23 @@ fn main() -> anyhow::Result<()> {
                 .to_text(),
         )?;
     }
-    if config.wasm {
-        let wasm_path = config.dart_wasm_output_path().unwrap();
-        fs::write(
-            &wasm_path,
-            (&generated_dart.file_prelude + &generated_dart.wasm_code).to_text(),
-        )?;
-        commands::format_dart(&wasm_path, config.dart_format_line_length);
-    }
+    // if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
+    // } else if config.wasm {
+    //     let impl_import_decl = impl_decl(
+    //         config.dart_fallback_decl_output_path().to_str().unwrap(),
+    //         dart_output_dir,
+    //     );
+    //     let wasm_path = config.dart_wasm_output_path().unwrap();
+    // } else {
+    // }
+    // if config.wasm {
+    //     let wasm_path = config.dart_wasm_output_path().unwrap();
+    //     fs::write(
+    //         &wasm_path,
+    //         (&generated_dart.file_prelude + &generated_dart.wasm_code).to_text(),
+    //     )?;
+    //     commands::format_dart(&wasm_path, config.dart_format_line_length);
+    // }
 
     let dart_root = &config.dart_root;
     if needs_freezed && config.build_runner {
@@ -211,4 +221,17 @@ Please specify --dart-root, or disable build_runner with --no-build-runner."
     info!("Success! Now go and use it :)");
 
     Ok(())
+}
+
+fn import_decl(dart_decl_output_path: &str, dart_output_dir: &Path) -> DartBasicCode {
+    DartBasicCode {
+        import: format!(
+            "import \"{}\";",
+            diff_paths(dart_decl_output_path, dart_output_dir)
+                .unwrap()
+                .to_str()
+                .unwrap()
+        ),
+        ..Default::default()
+    }
 }

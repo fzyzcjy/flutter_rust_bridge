@@ -283,6 +283,13 @@ impl Opts {
         }
     }
 
+    pub fn dart_fallback_decl_output_path(&self) -> PathBuf {
+        self.dart_decl_output_path
+            .as_deref()
+            .map(PathBuf::from)
+            .unwrap_or_else(|| Path::new(&self.dart_output_path).with_extension("d.dart"))
+    }
+
     pub fn dart_output_freezed_path(&self) -> PathBuf {
         Path::new(&self.dart_output_path).with_extension("freezed.dart")
     }
@@ -323,7 +330,7 @@ mod tests {
         Opts {
             rust_input_path: "native/src/api.rs".into(),
             dart_output_path: "lib/bridge_generated.dart".into(),
-            dart_decl_output_path: None,
+            dart_decl_output_path: Some("lib/bridge_generated.d.dart".into()),
             c_output_path: vec!["ios/Runner/bridge_generated.dart".into()],
             rust_crate_dir: "native".into(),
             rust_output_path: "native/src/bridge_generated.rs".into(),
