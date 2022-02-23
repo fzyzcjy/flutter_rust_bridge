@@ -8,6 +8,7 @@ use structopt::StructOpt;
 
 use crate::commands::ensure_tools_available;
 use crate::config::RawOpts;
+use crate::generator::rust::Code;
 use crate::ir::*;
 use crate::others::*;
 use crate::utils::*;
@@ -23,7 +24,7 @@ mod source_graph;
 mod transformer;
 mod utils;
 
-fn main() {
+fn main() -> anyhow::Result<()> {
     let raw_opts = RawOpts::from_args();
     env_logger::Builder::from_env(Env::default().default_filter_or(if raw_opts.verbose {
         "debug"
@@ -35,14 +36,13 @@ fn main() {
     ensure_tools_available();
 
     let config = config::parse(raw_opts);
-    info!("Picked config: {:?}", &config);
+    info!("Picked config: {:#?}", &config);
 
-    // let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
     let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
 
     info!("Phase: Parse source code to AST");
-    let source_rust_content = fs::read_to_string(&config.rust_input_path).unwrap();
-    let file_ast = syn::parse_file(&source_rust_content).unwrap();
+    let source_rust_content = fs::read_to_string(&config.rust_input_path)?;
+    let file_ast = syn::parse_file(&source_rust_content)?;
 
     info!("Phase: Parse AST to IR");
     let raw_ir_file = parser::parse(&source_rust_content, file_ast, &config.manifest_path);
@@ -56,8 +56,19 @@ fn main() {
     let generated_rust = generator::rust::generate(
         &ir_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-        // false,
+        config.wasm,
     );
+    match generated_rust.code {
+        Code::Native(native) => {
+            fs::write(&config.rust_native_output_path().unwrap(), native)?;
+        }
+        Code::Multi { native, wasm, stub } => {
+            fs::write(&config.rust_output_path, stub)?;
+            fs::create_dir_all(config.rust_multi_dir().unwrap())?;
+            fs::write(&config.rust_native_output_path().unwrap(), native)?;
+            fs::write(&config.rust_wasm_output_path().unwrap(), wasm)?;
+        }
+    }
 
     info!("Phase: Generate Dart code");
     let (generated_dart, needs_freezed) = generator::dart::generate(
@@ -74,8 +85,8 @@ fn main() {
 
     commands::format_rust(&config.rust_output_path);
     if config.wasm {
-        commands::format_rust(config.rust_wasm_output_path().unwrap());
-        commands::format_rust(config.rust_native_output_path().unwrap());
+        commands::format_rust(config.rust_wasm_output_path().unwrap().to_str().unwrap());
+        commands::format_rust(config.rust_native_output_path().unwrap().to_str().unwrap());
     }
 
     if !config.skip_add_mod_to_lib {
@@ -94,8 +105,8 @@ fn main() {
         })
         .collect();
 
-    let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
-    let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile().unwrap();
+    let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
+    let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
@@ -126,13 +137,12 @@ fn main() {
         fs::create_dir_all(Path::new(output).parent().unwrap()).unwrap();
         fs::write(
             &output,
-            fs::read_to_string(&temp_bindgen_c_output_file).unwrap() + "\n" + &c_dummy_code,
-        )
-        .unwrap();
+            fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
+        )?;
     }
 
-    fs::create_dir_all(&dart_output_dir).unwrap();
-    let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file).unwrap();
+    fs::create_dir_all(&dart_output_dir)?;
+    let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
     let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
         &generated_dart_wire_code_raw,
         &config.dart_wire_class_name(),
@@ -157,27 +167,25 @@ fn main() {
         fs::write(
             &dart_decl_output_path,
             (&generated_dart.file_prelude + &generated_dart_decl_all).to_text(),
-        )
-        .unwrap();
+        )?;
         fs::write(
             &config.dart_output_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
-        )
-        .unwrap();
+        )?;
     } else {
         fs::write(
             &config.dart_output_path,
             (&generated_dart.file_prelude + &generated_dart_decl_all + &generated_dart_impl_all)
                 .to_text(),
-        )
-        .unwrap();
+        )?;
     }
     if config.wasm {
+        let wasm_path = config.dart_wasm_output_path().unwrap();
         fs::write(
-            &config.dart_wasm_output_path().unwrap(),
+            &wasm_path,
             (&generated_dart.file_prelude + &generated_dart.wasm_code).to_text(),
-        )
-        .unwrap();
+        )?;
+        commands::format_dart(&wasm_path, config.dart_format_line_length);
     }
 
     let dart_root = &config.dart_root;
@@ -190,9 +198,7 @@ Please specify --dart-root, or disable build_runner with --no-build-runner."
         });
         commands::build_runner(dart_root);
         commands::format_dart(
-            &config
-                .dart_output_freezed_path()
-                .expect("Invalid freezed file path"),
+            config.dart_output_freezed_path().to_str().unwrap(),
             config.dart_format_line_length,
         );
     }
@@ -203,4 +209,6 @@ Please specify --dart-root, or disable build_runner with --no-build-runner."
     }
 
     info!("Success! Now go and use it :)");
+
+    Ok(())
 }

@@ -283,24 +283,90 @@ impl Opts {
         }
     }
 
-    pub fn dart_output_freezed_path(&self) -> Option<String> {
+    pub fn dart_output_freezed_path(&self) -> PathBuf {
+        Path::new(&self.dart_output_path).with_extension("freezed.dart")
+    }
+
+    pub fn rust_multi_dir(&self) -> Option<PathBuf> {
+        let path = Path::new(&self.rust_output_path).parent()?;
+        let name = self.dart_output_path_name()?;
+        Some(path.join(name))
+    }
+
+    pub fn rust_wasm_output_path(&self) -> Option<PathBuf> {
+        Some(self.rust_multi_dir()?.join("wasm.rs"))
+    }
+
+    pub fn dart_wasm_output_path(&self) -> Option<String> {
         Some(
             Path::new(&self.dart_output_path)
-                .with_extension("freezed.dart")
+                .with_extension("wasm.dart")
                 .to_str()?
                 .to_owned(),
         )
     }
 
-    pub fn rust_wasm_output_path(&self) -> Option<&str> {
-        None
+    pub fn rust_native_output_path(&self) -> Option<PathBuf> {
+        if self.wasm {
+            Some(self.rust_multi_dir()?.join("native.rs"))
+        } else {
+            Some(PathBuf::from(self.rust_output_path.clone()))
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn opts() -> Opts {
+        Opts {
+            rust_input_path: "native/src/api.rs".into(),
+            dart_output_path: "lib/bridge_generated.dart".into(),
+            dart_decl_output_path: None,
+            c_output_path: vec!["ios/Runner/bridge_generated.dart".into()],
+            rust_crate_dir: "native".into(),
+            rust_output_path: "native/src/bridge_generated.rs".into(),
+            class_name: "Native".into(),
+            dart_format_line_length: 120,
+            skip_add_mod_to_lib: false,
+            llvm_path: vec![],
+            llvm_compiler_opts: "".into(),
+            wasm: true,
+            manifest_path: "native/Cargo.toml".into(),
+            dart_root: None,
+            build_runner: true,
+        }
     }
 
-    pub fn dart_wasm_output_path(&self) -> Option<&str> {
-        None
+    #[test]
+    fn test_rust_wasm_output_path() {
+        assert_eq!(
+            opts().rust_wasm_output_path().as_deref(),
+            Some(Path::new("native/src/bridge_generated/wasm.rs"))
+        );
     }
 
-    pub fn rust_native_output_path(&self) -> Option<&str> {
-        None
+    #[test]
+    fn test_dart_wasm_output_path() {
+        assert_eq!(
+            opts().dart_wasm_output_path().as_deref(),
+            Some("lib/bridge_generated.wasm.dart")
+        )
+    }
+
+    #[test]
+    fn test_rust_native_output_path() {
+        let mut opt = opts();
+        opt.wasm = false;
+        assert_eq!(
+            opt.rust_native_output_path().as_deref(),
+            Some(Path::new(&opt.rust_output_path))
+        );
+        opt.wasm = true;
+        assert_eq!(
+            opt.rust_native_output_path().as_deref(),
+            Some(Path::new("native/src/bridge_generated/native.rs"))
+        );
     }
 }

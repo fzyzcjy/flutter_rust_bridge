@@ -169,19 +169,21 @@ pub fn generate(
         body: "".to_string(),
     };
 
-    let wasm_body = dbg!(format!(
+    let wasm_body = format!(
         "class {dart_api_impl_class_name} implements {dart_api_class_name} {{
-                // Section: api2wire
-                {}
-            }}
+            const {dart_api_impl_class_name}();
+        }}
 
-            // Section: wire2api
-            {}",
+        // Section: api2wire
+        {}
+
+        // Section: wire2api
+        {}",
         dart_wasm_api2wire_funcs.join("\n\n"),
         dart_wasm_wire2api_funcs.join("\n\n"),
         dart_api_impl_class_name = dart_api_impl_class_name,
         dart_api_class_name = dart_api_class_name
-    ));
+    );
     let wasm_code = &file_prelude
         + &DartBasicCode {
             body: wasm_body,

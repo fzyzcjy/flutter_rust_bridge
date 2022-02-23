@@ -3,6 +3,7 @@
     unused,
     clippy::redundant_closure,
     clippy::useless_conversion,
+    clippy::unit_arg,
     non_snake_case
 )]
 // AUTO GENERATED FILE, DO NOT EDIT.
@@ -10,6 +11,11 @@
 
 use crate::api::*;
 use flutter_rust_bridge::*;
+
+// Section: imports
+
+use crate::data::MyEnum;
+use crate::data::MyStruct;
 
 // Section: wire functions
 
@@ -24,7 +30,7 @@ pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| simple_adder(api_a, api_b)
+            move |task_callback| Ok(simple_adder(api_a, api_b))
         },
     )
 }
@@ -48,7 +54,14 @@ pub extern "C" fn wire_primitive_types(
             let api_my_i64 = my_i64.wire2api();
             let api_my_f64 = my_f64.wire2api();
             let api_my_bool = my_bool.wire2api();
-            move |task_callback| primitive_types(api_my_i32, api_my_i64, api_my_f64, api_my_bool)
+            move |task_callback| {
+                Ok(primitive_types(
+                    api_my_i32,
+                    api_my_i64,
+                    api_my_f64,
+                    api_my_bool,
+                ))
+            }
         },
     )
 }
@@ -63,7 +76,7 @@ pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
         },
         move || {
             let api_my_u32 = my_u32.wire2api();
-            move |task_callback| primitive_u32(api_my_u32)
+            move |task_callback| Ok(primitive_u32(api_my_u32))
         },
     )
 }
@@ -78,7 +91,7 @@ pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| handle_string(api_s)
+            move |task_callback| Ok(handle_string(api_s))
         },
     )
 }
@@ -91,7 +104,7 @@ pub extern "C" fn wire_handle_return_unit(port_: i64) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| handle_return_unit(),
+        move || move |task_callback| Ok(handle_return_unit()),
     )
 }
 
@@ -105,7 +118,7 @@ pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
         },
         move || {
             let api_v = v.wire2api();
-            move |task_callback| handle_vec_u8(api_v)
+            move |task_callback| Ok(handle_vec_u8(api_v))
         },
     )
 }
@@ -120,7 +133,7 @@ pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| handle_vec_of_primitive(api_n)
+            move |task_callback| Ok(handle_vec_of_primitive(api_n))
         },
     )
 }
@@ -135,7 +148,7 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| handle_zero_copy_vec_of_primitive(api_n)
+            move |task_callback| Ok(handle_zero_copy_vec_of_primitive(api_n))
         },
     )
 }
@@ -151,7 +164,7 @@ pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *
         move || {
             let api_arg = arg.wire2api();
             let api_boxed = boxed.wire2api();
-            move |task_callback| handle_struct(api_arg, api_boxed)
+            move |task_callback| Ok(handle_struct(api_arg, api_boxed))
         },
     )
 }
@@ -166,7 +179,7 @@ pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| handle_newtype(api_arg)
+            move |task_callback| Ok(handle_newtype(api_arg))
         },
     )
 }
@@ -181,7 +194,7 @@ pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_si
         },
         move || {
             let api_l = l.wire2api();
-            move |task_callback| handle_list_of_struct(api_l)
+            move |task_callback| Ok(handle_list_of_struct(api_l))
         },
     )
 }
@@ -196,7 +209,7 @@ pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringLis
         },
         move || {
             let api_names = names.wire2api();
-            move |task_callback| handle_string_list(api_names)
+            move |task_callback| Ok(handle_string_list(api_names))
         },
     )
 }
@@ -211,7 +224,7 @@ pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| handle_complex_struct(api_s)
+            move |task_callback| Ok(handle_complex_struct(api_s))
         },
     )
 }
@@ -268,7 +281,7 @@ pub extern "C" fn wire_return_panic(port_: i64) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| return_panic(),
+        move || move |task_callback| Ok(return_panic()),
     )
 }
 
@@ -283,7 +296,7 @@ pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64)
         move || {
             let api_left = left.wire2api();
             let api_right = right.wire2api();
-            move |task_callback| handle_optional_return(api_left, api_right)
+            move |task_callback| Ok(handle_optional_return(api_left, api_right))
         },
     )
 }
@@ -298,7 +311,7 @@ pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_ui
         },
         move || {
             let api_document = document.wire2api();
-            move |task_callback| handle_optional_struct(api_document)
+            move |task_callback| Ok(handle_optional_struct(api_document))
         },
     )
 }
@@ -313,7 +326,7 @@ pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_Exot
         },
         move || {
             let api_opt = opt.wire2api();
-            move |task_callback| handle_optional_increment(api_opt)
+            move |task_callback| Ok(handle_optional_increment(api_opt))
         },
     )
 }
@@ -328,7 +341,7 @@ pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64
         },
         move || {
             let api_opt = opt.wire2api();
-            move |task_callback| handle_increment_boxed_optional(api_opt)
+            move |task_callback| Ok(handle_increment_boxed_optional(api_opt))
         },
     )
 }
@@ -359,7 +372,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
             let api_boolbox = boolbox.wire2api();
             let api_structbox = structbox.wire2api();
             move |task_callback| {
-                handle_option_box_arguments(
+                Ok(handle_option_box_arguments(
                     api_i8box,
                     api_u8box,
                     api_i32box,
@@ -367,7 +380,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
                     api_f64box,
                     api_boolbox,
                     api_structbox,
-                )
+                ))
             }
         },
     )
@@ -383,7 +396,7 @@ pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_li
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| handle_return_enum(api_input)
+            move |task_callback| Ok(handle_return_enum(api_input))
         },
     )
 }
@@ -398,7 +411,7 @@ pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
         },
         move || {
             let api_weekday = weekday.wire2api();
-            move |task_callback| handle_enum_parameter(api_weekday)
+            move |task_callback| Ok(handle_enum_parameter(api_weekday))
         },
     )
 }
@@ -428,7 +441,7 @@ pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Custo
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| handle_customized_struct(api_val)
+            move |task_callback| Ok(handle_customized_struct(api_val))
         },
     )
 }
@@ -443,7 +456,64 @@ pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| handle_enum_struct(api_val)
+            move |task_callback| Ok(handle_enum_struct(api_val))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_use_imported_struct(port_: i64, my_struct: *mut wire_MyStruct) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "use_imported_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_struct = my_struct.wire2api();
+            move |task_callback| Ok(use_imported_struct(api_my_struct))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "use_imported_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_enum = my_enum.wire2api();
+            move |task_callback| Ok(use_imported_enum(api_my_enum))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_app_settings(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_app_settings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings())),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_ApplicationSettings) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "is_app_embedded",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_app_settings = app_settings.wire2api();
+            move |task_callback| Ok(is_app_embedded(api_app_settings))
         },
     )
 }
@@ -455,6 +525,21 @@ pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink
 pub struct wire_StringList {
     ptr: *mut *mut wire_uint_8_list,
     len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ApplicationEnv {
+    vars: *mut wire_StringList,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ApplicationSettings {
+    name: *mut wire_uint_8_list,
+    version: *mut wire_uint_8_list,
+    mode: i32,
+    env: *mut wire_ApplicationEnv,
 }
 
 #[repr(C)]
@@ -564,6 +649,12 @@ pub struct wire_MySize {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_MyStruct {
+    content: bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_MyTreeNode {
     value_i32: i32,
     value_vec_u8: *mut wire_uint_8_list,
@@ -590,8 +681,6 @@ pub struct wire_uint_8_list {
     ptr: *mut u8,
     len: i32,
 }
-
-// Section: wire enums
 
 #[repr(C)]
 #[derive(Clone)]
@@ -647,6 +736,33 @@ pub struct KitchenSink_Enums {
     field0: i32,
 }
 
+// Section: wrapper structs
+
+#[derive(Clone)]
+struct mirror_ApplicationEnv(ApplicationEnv);
+
+#[derive(Clone)]
+struct mirror_ApplicationMode(ApplicationMode);
+
+#[derive(Clone)]
+struct mirror_ApplicationSettings(ApplicationSettings);
+
+// Section: static checks
+
+const _: fn() = || {
+    {
+        let ApplicationEnv = None::<ApplicationEnv>.unwrap();
+        let _: Vec<String> = ApplicationEnv.vars;
+    }
+
+    {
+        let ApplicationSettings = None::<ApplicationSettings>.unwrap();
+        let _: String = ApplicationSettings.name;
+        let _: String = ApplicationSettings.version;
+        let _: ApplicationMode = ApplicationSettings.mode;
+        let _: Box<ApplicationEnv> = ApplicationSettings.env;
+    }
+};
 // Section: allocate functions
 
 #[no_mangle]
@@ -656,6 +772,16 @@ pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
         len,
     };
     support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_application_env() -> *mut wire_ApplicationEnv {
+    support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_application_settings() -> *mut wire_ApplicationSettings {
+    support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -701,6 +827,11 @@ pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_KitchenSink {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_my_struct() -> *mut wire_MyStruct {
+    support::new_leak_box_ptr(wire_MyStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -869,20 +1000,12 @@ impl<T, S> Wire2Api<Option<T>> for *mut S
 where
     *mut S: Wire2Api<T>,
 {
-    #[inline]
     fn wire2api(self) -> Option<T> {
         if self.is_null() {
             None
         } else {
             Some(self.wire2api())
         }
-    }
-}
-
-impl<T: Wire2Api<U>, U> Wire2Api<Option<U>> for Option<T> {
-    #[inline]
-    fn wire2api(self) -> Option<U> {
-        self.map(Wire2Api::wire2api)
     }
 }
 
@@ -909,6 +1032,35 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<ApplicationEnv> for wire_ApplicationEnv {
+    fn wire2api(self) -> ApplicationEnv {
+        ApplicationEnv {
+            vars: self.vars.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<ApplicationMode> for i32 {
+    fn wire2api(self) -> ApplicationMode {
+        match self {
+            0 => ApplicationMode::Standalone,
+            1 => ApplicationMode::Embedded,
+            _ => unreachable!("Invalid variant for ApplicationMode: {}", self),
+        }
+    }
+}
+
+impl Wire2Api<ApplicationSettings> for wire_ApplicationSettings {
+    fn wire2api(self) -> ApplicationSettings {
+        ApplicationSettings {
+            name: self.name.wire2api(),
+            version: self.version.wire2api(),
+            mode: self.mode.wire2api(),
+            env: self.env.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<Attribute> for wire_Attribute {
     fn wire2api(self) -> Attribute {
         Attribute {
@@ -921,6 +1073,20 @@ impl Wire2Api<Attribute> for wire_Attribute {
 impl Wire2Api<bool> for bool {
     fn wire2api(self) -> bool {
         self
+    }
+}
+
+impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
+    fn wire2api(self) -> Box<ApplicationEnv> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
+    fn wire2api(self) -> ApplicationSettings {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
     }
 }
 
@@ -978,6 +1144,13 @@ impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
 
 impl Wire2Api<MySize> for *mut wire_MySize {
     fn wire2api(self) -> MySize {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<MyStruct> for *mut wire_MyStruct {
+    fn wire2api(self) -> MyStruct {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         (*wrap).wire2api().into()
     }
@@ -1239,11 +1412,29 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribu
     }
 }
 
+impl Wire2Api<MyEnum> for i32 {
+    fn wire2api(self) -> MyEnum {
+        match self {
+            0 => MyEnum::False,
+            1 => MyEnum::True,
+            _ => unreachable!("Invalid variant for MyEnum: {}", self),
+        }
+    }
+}
+
 impl Wire2Api<MySize> for wire_MySize {
     fn wire2api(self) -> MySize {
         MySize {
             width: self.width.wire2api(),
             height: self.height.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<MyStruct> for wire_MyStruct {
+    fn wire2api(self) -> MyStruct {
+        MyStruct {
+            content: self.content.wire2api(),
         }
     }
 }
@@ -1328,27 +1519,46 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
+impl NewWithNullPtr for wire_ApplicationEnv {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            vars: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_ApplicationSettings {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            version: core::ptr::null_mut(),
+            mode: Default::default(),
+            env: core::ptr::null_mut(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_Attribute {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             key: core::ptr::null_mut(),
             value: core::ptr::null_mut(),
-        };
+        }
     }
 }
 
 impl NewWithNullPtr for wire_Customized {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             final_field: core::ptr::null_mut(),
             non_final_field: core::ptr::null_mut(),
-        };
+        }
     }
 }
 
 impl NewWithNullPtr for wire_ExoticOptionals {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             int32: core::ptr::null_mut(),
             int64: core::ptr::null_mut(),
             float64: core::ptr::null_mut(),
@@ -1365,7 +1575,7 @@ impl NewWithNullPtr for wire_ExoticOptionals {
             nullable_attributes: core::ptr::null_mut(),
             newtypeint: core::ptr::null_mut(),
             string_list: core::ptr::null_mut(),
-        };
+        }
     }
 }
 
@@ -1428,33 +1638,71 @@ pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
 
 impl NewWithNullPtr for wire_MySize {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             width: Default::default(),
             height: Default::default(),
-        };
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_MyStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            content: Default::default(),
+        }
     }
 }
 
 impl NewWithNullPtr for wire_MyTreeNode {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             value_i32: Default::default(),
             value_vec_u8: core::ptr::null_mut(),
             value_boolean: Default::default(),
             children: core::ptr::null_mut(),
-        };
+        }
     }
 }
 
 impl NewWithNullPtr for wire_NewTypeInt {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             field0: Default::default(),
-        };
+        }
     }
 }
 
 // Section: impl IntoDart
+
+impl support::IntoDart for mirror_ApplicationEnv {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0.vars.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
+
+impl support::IntoDart for mirror_ApplicationMode {
+    fn into_dart(self) -> support::DartCObject {
+        match self.0 {
+            ApplicationMode::Standalone => 0,
+            ApplicationMode::Embedded => 1,
+        }
+        .into_dart()
+    }
+}
+
+impl support::IntoDart for mirror_ApplicationSettings {
+    fn into_dart(self) -> support::DartCObject {
+        vec![
+            self.0.name.into_dart(),
+            self.0.version.into_dart(),
+            mirror_ApplicationMode(self.0.mode).into_dart(),
+            mirror_ApplicationEnv(*self.0.env).into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
 
 impl support::IntoDart for Attribute {
     fn into_dart(self) -> support::DartCObject {
@@ -1607,6 +1855,7 @@ impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
 impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
 
 // Section: executor
+
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }

@@ -27,12 +27,21 @@ use crate::others::*;
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
 pub struct Output {
-    pub code: String,
+    pub code: Code,
     pub extern_func_names: Vec<String>,
 }
 
-pub fn generate(ir_file: &IrFile, rust_wire_mod: &str) -> Output {
-    let mut generator = Generator::new();
+pub enum Code {
+    Native(String),
+    Multi {
+        native: String,
+        wasm: String,
+        stub: String,
+    },
+}
+
+pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, wasm: bool) -> Output {
+    let mut generator = Generator::new(wasm);
     let code = generator.generate(ir_file, rust_wire_mod);
 
     Output {
@@ -43,22 +52,28 @@ pub fn generate(ir_file: &IrFile, rust_wire_mod: &str) -> Output {
 
 struct Generator {
     extern_func_collector: ExternFuncCollector,
+    wasm: bool,
 }
 
 impl Generator {
-    fn new() -> Self {
+    fn new(wasm: bool) -> Self {
         Self {
             extern_func_collector: ExternFuncCollector::new(),
+            wasm,
         }
     }
 
-    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> String {
+    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> Code {
         let mut lines: Vec<String> = vec![];
 
         let distinct_input_types = ir_file.distinct_types(true, false);
         let distinct_output_types = ir_file.distinct_types(false, true);
 
-        lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, non_snake_case)]"#.to_string());
+        lines.push(
+            "#![allow(
+                non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion,
+                clippy::unit_arg, non_snake_case
+            )]".to_string());
         lines.push(CODE_HEADER.to_string());
 
         lines.push(String::new());
@@ -148,7 +163,16 @@ impl Generator {
         lines.push(self.section_header_comment("sync execution mode utility"));
         lines.push(self.generate_sync_execution_mode_utility());
 
-        lines.join("\n")
+        let native = lines.join("\n");
+        if self.wasm {
+            Code::Multi {
+                native,
+                wasm: "".into(),
+                stub: "".into(),
+            }
+        } else {
+            Code::Native(native)
+        }
     }
 
     fn section_header_comment(&self, section_name: &str) -> String {

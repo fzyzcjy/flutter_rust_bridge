@@ -294,20 +294,12 @@ impl<T, S> Wire2Api<Option<T>> for *mut S
 where
     *mut S: Wire2Api<T>,
 {
-    #[inline]
     fn wire2api(self) -> Option<T> {
         if self.is_null() {
             None
         } else {
             Some(self.wire2api())
         }
-    }
-}
-
-impl<T: Wire2Api<U>, U> Wire2Api<Option<U>> for Option<T> {
-    #[inline]
-    fn wire2api(self) -> Option<U> {
-        self.map(Wire2Api::wire2api)
     }
 }
 
@@ -427,28 +419,28 @@ impl<T> NewWithNullPtr for *mut T {
 
 impl NewWithNullPtr for wire_Point {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             x: Default::default(),
             y: Default::default(),
-        };
+        }
     }
 }
 
 impl NewWithNullPtr for wire_Size {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             width: Default::default(),
             height: Default::default(),
-        };
+        }
     }
 }
 
 impl NewWithNullPtr for wire_TreeNode {
     fn new_with_null_ptr() -> Self {
-        return Self {
+        Self {
             name: core::ptr::null_mut(),
             children: core::ptr::null_mut(),
-        };
+        }
     }
 }
 

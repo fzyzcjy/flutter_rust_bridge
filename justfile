@@ -26,7 +26,7 @@ alias g := gen-bridge
 gen-bridge: build
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart \
-                --dart-format-line-length {{line_length}}
+                --dart-format-line-length {{line_length}} --wasm
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
                 -c {{frb_flutter}}/ios/Runner/bridge_generated.h \
@@ -39,7 +39,9 @@ lint:
     dart format --fix -l {{line_length}} {{frb_flutter}}/lib/**.dart
 
 alias t := test
-test: test-pure test-integration
+test: test-codegen test-pure test-integration
+test-codegen:
+    cd frb_codegen && cargo test
 test-pure:
     cd {{frb_pure}}/rust && cargo b
     cd {{frb_pure}}/dart && \

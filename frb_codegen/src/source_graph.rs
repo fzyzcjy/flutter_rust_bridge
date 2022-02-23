@@ -167,6 +167,7 @@ pub struct Module {
     pub file_path: PathBuf,
     pub module_path: Vec<String>,
     pub source: Option<ModuleSource>,
+    /// To be filled out by `Module::resolve`
     pub scope: Option<ModuleScope>,
 }
 
@@ -261,15 +262,12 @@ impl Module {
                         None => {
                             let folder_path =
                                 self.file_path.parent().unwrap().join(ident.to_string());
-                            let folder_exists = folder_path.exists();
 
-                            let file_path = if folder_exists {
-                                folder_path.join("mod.rs")
+                            let mod_path = folder_path.join("mod.rs");
+                            let file_path = if mod_path.exists() {
+                                mod_path
                             } else {
-                                self.file_path
-                                    .parent()
-                                    .unwrap()
-                                    .join(ident.to_string() + ".rs")
+                                folder_path.with_extension("rs")
                             };
 
                             let file_exists = file_path.exists();
@@ -336,7 +334,7 @@ impl Module {
     }
 
     pub fn collect_structs<'a>(&'a self, container: &mut HashMap<String, &'a Struct>) {
-        let scope = self.scope.as_ref().unwrap();
+        let scope = self.scope.as_ref().unwrap_or_else(|| panic!("{:#?}", self));
         for scope_struct in &scope.structs {
             container.insert(scope_struct.ident.to_string(), scope_struct);
         }
