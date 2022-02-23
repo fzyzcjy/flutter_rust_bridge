@@ -265,7 +265,6 @@ void main(List<String> args) async {
 
     print('dart call handleEnumStruct');
     {
-      print("DA");
       expect(await api.handleEnumStruct(val: Empty()), Empty());
       expect(
         await api.handleEnumStruct(

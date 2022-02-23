@@ -495,7 +495,7 @@ pub fn get_app_settings() -> ApplicationSettings {
 
 // Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
 pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
-    println!("env: {:?}", app_settings.env.vars);
+    // println!("env: {:?}", app_settings.env.vars);
     matches!(app_settings.mode, ApplicationMode::Embedded)
 }
 
