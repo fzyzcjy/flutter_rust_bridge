@@ -10,11 +10,10 @@
 use std::{collections::HashMap, fmt::Debug, fs, path::PathBuf};
 
 use cargo_metadata::MetadataCommand;
-use darling::FromAttributes;
 use log::debug;
 use syn::{Attribute, Ident, ItemEnum, ItemStruct, UseTree};
 
-use crate::{markers, attributes::ModuleMeta};
+use crate::markers;
 
 /// Represents a crate, including a map of its modules, imports, structs and
 /// enums.
@@ -241,10 +240,6 @@ impl Module {
                     });
                 }
                 syn::Item::Mod(item_mod) => {
-                    let meta = ModuleMeta::from_attributes(&item_mod.attrs).unwrap();
-                    if meta.ignore {
-                        continue;
-                    }
                     let ident = item_mod.ident.clone();
 
                     let mut module_path = self.module_path.clone();
@@ -265,16 +260,33 @@ impl Module {
                             child_module
                         }
                         None => {
-                            let folder_path =
-                                self.file_path.parent().unwrap().join(ident.to_string());
-
-                            let mod_path = folder_path.join("mod.rs");
-                            let file_path = if mod_path.exists() {
-                                mod_path
+                            /*
+                             * Within `parent.rs`, the statement `mod foo` may point to any of these three locations:
+                             * 1. `src/parent/foo.rs` (child)
+                             * 2. `src/foo/mod.rs` (sibling, 2015 style)
+                             * 3. `src/foo.rs` (sibling, modern style)
+                             * Of these, 2 and 3 are mutually exclusive.
+                             */
+                            let stem = format!("{}.rs", ident);
+                            let mut file_path = self.file_path.with_file_name(&stem);
+                            let mod_path = self
+                                .file_path
+                                .with_file_name(ident.to_string())
+                                .join("mod.rs");
+                            if file_path.is_file() {
+                                if mod_path.is_file() {
+                                    panic!(
+                                        "Ambiguous files, remove or rename one of {} and {}",
+                                        file_path.to_string_lossy(),
+                                        mod_path.to_string_lossy()
+                                    );
+                                }
                             } else {
-                                folder_path.with_extension("rs")
-                            };
-
+                                file_path = mod_path;
+                            }
+                            if !file_path.exists() {
+                                file_path = self.file_path.with_extension("").join(&stem);
+                            }
                             let file_exists = file_path.exists();
 
                             let source = if file_exists {

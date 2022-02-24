@@ -316,6 +316,11 @@ pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticO
             list.0.push(0);
             list
         }),
+        string_list: Some({
+            let mut list = opt.string_list.unwrap_or_default();
+            list.push("Hello there.".into());
+            list
+        }),
     })
 }
 

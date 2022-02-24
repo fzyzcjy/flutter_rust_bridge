@@ -13,12 +13,12 @@ use regex::RegexBuilder;
 // NOTE please sync [DUMMY_WIRE_CODE_FOR_BINDGEN] and [EXTRA_EXTERN_FUNC_NAMES]
 pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     // ----------- DUMMY CODE FOR BINDGEN ----------
-    
+
     // copied from: allo-isolate
     pub type DartPort = i64;
     pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
     #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
-    
+
     // copied from: frb_rust::support.rs
     #[repr(C)]
     pub struct WireSyncReturnStruct {
@@ -26,7 +26,7 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
         pub len: i32,
         pub success: bool,
     }
-    
+
     // ---------------------------------------------
     "#;
 
@@ -155,7 +155,7 @@ pub fn auto_add_mod_to_lib_core(rust_crate_dir: &str, rust_output_path: &str) ->
 
         let comments = " /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */";
         let modified_content_lib_rs =
-            format!("use flutter_rust_bridge::frb; #[frb(ignore)] {}{}\n{}", expect_code, comments, raw_content_lib_rs);
+            format!("{}{}\n{}", expect_code, comments, raw_content_lib_rs);
 
         fs::write(&path_lib_rs, modified_content_lib_rs).unwrap();
     }

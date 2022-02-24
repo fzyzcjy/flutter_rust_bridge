@@ -13,7 +13,6 @@ use crate::ir::*;
 use crate::others::*;
 use crate::utils::*;
 
-mod attributes;
 mod commands;
 mod config;
 mod generator;
