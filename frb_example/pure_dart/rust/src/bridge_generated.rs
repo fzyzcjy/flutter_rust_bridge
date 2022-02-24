@@ -503,6 +503,18 @@ pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_Appli
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_get_message(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_message",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(mirror_ApplicationMessage(get_message())),
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -515,7 +527,14 @@ pub struct wire_StringList {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_ApplicationEnv {
-    vars: *mut wire_StringList,
+    vars: *mut wire_list_application_env_var,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ApplicationEnvVar {
+    field0: *mut wire_uint_8_list,
+    field1: bool,
 }
 
 #[repr(C)]
@@ -593,6 +612,13 @@ pub struct wire_int_64_list {
 #[derive(Clone)]
 pub struct wire_int_8_list {
     ptr: *mut i8,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_application_env_var {
+    ptr: *mut wire_ApplicationEnvVar,
     len: i32,
 }
 
@@ -719,6 +745,12 @@ pub struct KitchenSink_Enums {
 struct mirror_ApplicationEnv(ApplicationEnv);
 
 #[derive(Clone)]
+struct mirror_ApplicationEnvVar(ApplicationEnvVar);
+
+#[derive(Clone)]
+struct mirror_ApplicationMessage(ApplicationMessage);
+
+#[derive(Clone)]
 struct mirror_ApplicationMode(ApplicationMode);
 
 #[derive(Clone)]
@@ -729,9 +761,27 @@ struct mirror_ApplicationSettings(ApplicationSettings);
 const _: fn() = || {
     {
         let ApplicationEnv = None::<ApplicationEnv>.unwrap();
-        let _: Vec<String> = ApplicationEnv.vars;
+        let _: Vec<ApplicationEnvVar> = ApplicationEnv.vars;
     }
-
+    {
+        let ApplicationEnvVar_ = None::<ApplicationEnvVar>.unwrap();
+        let _: String = ApplicationEnvVar_.0;
+        let _: bool = ApplicationEnvVar_.1;
+    }
+    match None::<ApplicationMessage>.unwrap() {
+        ApplicationMessage::DisplayMessage(field0) => {
+            let _: String = field0;
+        }
+        ApplicationMessage::RenderPixel { x, y } => {
+            let _: i32 = x;
+            let _: i32 = y;
+        }
+        ApplicationMessage::Exit => {}
+    }
+    match None::<ApplicationMode>.unwrap() {
+        ApplicationMode::Standalone => {}
+        ApplicationMode::Embedded => {}
+    }
     {
         let ApplicationSettings = None::<ApplicationSettings>.unwrap();
         let _: String = ApplicationSettings.name;
@@ -912,6 +962,15 @@ pub extern "C" fn new_int_8_list(len: i32) -> *mut wire_int_8_list {
 }
 
 #[no_mangle]
+pub extern "C" fn new_list_application_env_var(len: i32) -> *mut wire_list_application_env_var {
+    let wrap = wire_list_application_env_var {
+        ptr: support::new_leak_vec_ptr(<wire_ApplicationEnvVar>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
     let wrap = wire_list_attribute {
         ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
@@ -1005,6 +1064,12 @@ impl Wire2Api<ApplicationEnv> for wire_ApplicationEnv {
         ApplicationEnv {
             vars: self.vars.wire2api(),
         }
+    }
+}
+
+impl Wire2Api<ApplicationEnvVar> for wire_ApplicationEnvVar {
+    fn wire2api(self) -> ApplicationEnvVar {
+        ApplicationEnvVar(self.field0.wire2api(), self.field1.wire2api())
     }
 }
 
@@ -1339,6 +1404,16 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
     }
 }
 
+impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
+    fn wire2api(self) -> Vec<ApplicationEnvVar> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
 impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
     fn wire2api(self) -> Vec<Attribute> {
         let vec = unsafe {
@@ -1475,6 +1550,15 @@ impl NewWithNullPtr for wire_ApplicationEnv {
     fn new_with_null_ptr() -> Self {
         Self {
             vars: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_ApplicationEnvVar {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+            field1: Default::default(),
         }
     }
 }
@@ -1627,10 +1711,37 @@ impl NewWithNullPtr for wire_NewTypeInt {
 
 impl support::IntoDart for mirror_ApplicationEnv {
     fn into_dart(self) -> support::DartCObject {
-        vec![self.0.vars.into_dart()].into_dart()
+        vec![self
+            .0
+            .vars
+            .into_iter()
+            .map(|v| mirror_ApplicationEnvVar(v))
+            .collect::<Vec<_>>()
+            .into_dart()]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
+
+impl support::IntoDart for mirror_ApplicationEnvVar {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0 .0.into_dart(), self.0 .1.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
+
+impl support::IntoDart for mirror_ApplicationMessage {
+    fn into_dart(self) -> support::DartCObject {
+        match self.0 {
+            ApplicationMessage::DisplayMessage(field0) => vec![0.into_dart(), field0.into_dart()],
+            ApplicationMessage::RenderPixel { x, y } => {
+                vec![1.into_dart(), x.into_dart(), y.into_dart()]
+            }
+            ApplicationMessage::Exit => vec![2.into_dart()],
+        }
+        .into_dart()
+    }
+}
 
 impl support::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> support::DartCObject {

@@ -461,7 +461,9 @@ pub fn use_imported_enum(my_enum: MyEnum) -> bool {
 // In this case, the struct ApplicationSettings is defined in another crate (called external-lib)
 
 // To use an external type with mirroring, it MUST be imported publicly (aka. re-export)
-pub use external_lib::{ApplicationEnv, ApplicationMode, ApplicationSettings};
+pub use external_lib::{
+    ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
+};
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
@@ -472,17 +474,18 @@ pub struct _ApplicationSettings {
     pub env: Box<ApplicationEnv>,
 }
 
-// It works with basic enums too
-// Enums with struct variants are not yet supported
 #[frb(mirror(ApplicationMode))]
 pub enum _ApplicationMode {
     Standalone,
     Embedded,
 }
 
+#[frb(mirror(ApplicationEnvVar))]
+pub struct _ApplicationEnvVar(pub String, pub bool);
+
 #[frb(mirror(ApplicationEnv))]
 pub struct _ApplicationEnv {
-    pub vars: Vec<String>,
+    pub vars: Vec<ApplicationEnvVar>,
 }
 
 // This function can directly return an object of the external type ApplicationSettings because it has a mirror
@@ -492,9 +495,17 @@ pub fn get_app_settings() -> ApplicationSettings {
 
 // Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
 pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
-    // println!("env: {}", app_settings.env.vars[0]);
-    match app_settings.mode {
-        ApplicationMode::Standalone => false,
-        ApplicationMode::Embedded => true,
-    }
+    // println!("env: {:?}", app_settings.env.vars);
+    matches!(app_settings.mode, ApplicationMode::Embedded)
+}
+
+#[frb(mirror(ApplicationMessage))]
+pub enum _ApplicationMessage {
+    DisplayMessage(String),
+    RenderPixel { x: i32, y: i32 },
+    Exit,
+}
+
+pub fn get_message() -> ApplicationMessage {
+    external_lib::poll_messages()[1].clone()
 }

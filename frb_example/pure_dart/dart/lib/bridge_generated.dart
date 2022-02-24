@@ -90,14 +90,38 @@ abstract class FlutterRustBridgeExample {
   Future<ApplicationSettings> getAppSettings({dynamic hint});
 
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
+
+  Future<ApplicationMessage> getMessage({dynamic hint});
 }
 
 class ApplicationEnv {
-  final List<String> vars;
+  final List<ApplicationEnvVar> vars;
 
   ApplicationEnv({
     required this.vars,
   });
+}
+
+class ApplicationEnvVar {
+  final String field0;
+  final bool field1;
+
+  ApplicationEnvVar({
+    required this.field0,
+    required this.field1,
+  });
+}
+
+@freezed
+class ApplicationMessage with _$ApplicationMessage {
+  const factory ApplicationMessage.displayMessage(
+    String field0,
+  ) = DisplayMessage;
+  const factory ApplicationMessage.renderPixel({
+    required int x,
+    required int y,
+  }) = RenderPixel;
+  const factory ApplicationMessage.exit() = Exit;
 }
 
 enum ApplicationMode {
@@ -692,6 +716,17 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         hint: hint,
       ));
 
+  Future<ApplicationMessage> getMessage({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_message(port_),
+        parseSuccessData: _wire2api_application_message,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "get_message",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
@@ -885,6 +920,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return ans;
   }
 
+  ffi.Pointer<wire_list_application_env_var> _api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
+    final ans = inner.new_list_application_env_var(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_application_env_var(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
   ffi.Pointer<wire_list_attribute> _api2wire_list_attribute(List<Attribute> raw) {
     final ans = inner.new_list_attribute(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1038,7 +1081,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   // Section: api_fill_to_wire
 
   void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
-    wireObj.vars = _api2wire_StringList(apiObj.vars);
+    wireObj.vars = _api2wire_list_application_env_var(apiObj.vars);
+  }
+
+  void _api_fill_to_wire_application_env_var(ApplicationEnvVar apiObj, wire_ApplicationEnvVar wireObj) {
+    wireObj.field0 = _api2wire_String(apiObj.field0);
+    wireObj.field1 = _api2wire_bool(apiObj.field1);
   }
 
   void _api_fill_to_wire_application_settings(ApplicationSettings apiObj, wire_ApplicationSettings wireObj) {
@@ -1260,8 +1308,35 @@ ApplicationEnv _wire2api_application_env(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return ApplicationEnv(
-    vars: _wire2api_StringList(arr[0]),
+    vars: _wire2api_list_application_env_var(arr[0]),
   );
+}
+
+ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return ApplicationEnvVar(
+    field0: _wire2api_String(arr[0]),
+    field1: _wire2api_bool(arr[1]),
+  );
+}
+
+ApplicationMessage _wire2api_application_message(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return DisplayMessage(
+        _wire2api_String(raw[1]),
+      );
+    case 1:
+      return RenderPixel(
+        x: _wire2api_i32(raw[1]),
+        y: _wire2api_i32(raw[2]),
+      );
+    case 2:
+      return Exit();
+    default:
+      throw Exception("unreachable");
+  }
 }
 
 ApplicationMode _wire2api_application_mode(dynamic raw) {
@@ -1443,6 +1518,10 @@ KitchenSink _wire2api_kitchen_sink(dynamic raw) {
     default:
       throw Exception("unreachable");
   }
+}
+
+List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
 }
 
 List<Attribute> _wire2api_list_attribute(dynamic raw) {
@@ -2140,6 +2219,17 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_is_app_embedded =
       _wire_is_app_embeddedPtr.asFunction<void Function(int, ffi.Pointer<wire_ApplicationSettings>)>();
 
+  void wire_get_message(
+    int port_,
+  ) {
+    return _wire_get_message(
+      port_,
+    );
+  }
+
+  late final _wire_get_messagePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_message');
+  late final _wire_get_message = _wire_get_messagePtr.asFunction<void Function(int)>();
+
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -2439,6 +2529,20 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_int_8_listPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list');
   late final _new_int_8_list = _new_int_8_listPtr.asFunction<ffi.Pointer<wire_int_8_list> Function(int)>();
+
+  ffi.Pointer<wire_list_application_env_var> new_list_application_env_var(
+    int len,
+  ) {
+    return _new_list_application_env_var(
+      len,
+    );
+  }
+
+  late final _new_list_application_env_varPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_application_env_var> Function(ffi.Int32)>>(
+          'new_list_application_env_var');
+  late final _new_list_application_env_var =
+      _new_list_application_env_varPtr.asFunction<ffi.Pointer<wire_list_application_env_var> Function(int)>();
 
   ffi.Pointer<wire_list_attribute> new_list_attribute(
     int len,
@@ -2778,8 +2882,22 @@ class wire_MyStruct extends ffi.Struct {
   external int content;
 }
 
+class wire_ApplicationEnvVar extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+
+  @ffi.Uint8()
+  external int field1;
+}
+
+class wire_list_application_env_var extends ffi.Struct {
+  external ffi.Pointer<wire_ApplicationEnvVar> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 class wire_ApplicationEnv extends ffi.Struct {
-  external ffi.Pointer<wire_StringList> vars;
+  external ffi.Pointer<wire_list_application_env_var> vars;
 }
 
 class wire_ApplicationSettings extends ffi.Struct {

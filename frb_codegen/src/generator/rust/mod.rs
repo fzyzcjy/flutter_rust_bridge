@@ -260,18 +260,8 @@ impl Generator {
             .collect::<Vec<_>>()
             .join("");
 
-        let wrapper = match &func.output {
-            IrType::StructRef(IrTypeStructRef { .. }) | IrType::EnumRef(IrTypeEnumRef { .. }) => {
-                TypeRustGenerator::new(func.output.clone(), ir_file).wrapper_struct()
-            }
-            _ => None,
-        };
-        let code_call_inner_func = format!("{}({})", func.name, inner_func_params.join(", "));
-        let code_call_inner_func = match wrapper {
-            Some(wrapper) => format!("{}({})", wrapper, code_call_inner_func),
-            None => code_call_inner_func,
-        };
-
+        let code_call_inner_func = TypeRustGenerator::new(func.output.clone(), ir_file)
+            .wrap_obj(format!("{}({})", func.name, inner_func_params.join(", ")));
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func
         } else {
