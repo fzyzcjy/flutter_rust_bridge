@@ -180,7 +180,7 @@ jobs:
 
   flutter_windows_test:
     name: Flutter (Windows) integration test
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
       - name: Install Rust toolchain
