@@ -51,10 +51,10 @@ clean:
     cd {{frb_flutter}}/rust && cargo clean
 
 refresh_all:
-    (cd frb_rust && cargo check)
-    (cd frb_macros && cargo check)
-    (cd frb_example/pure_dart/rust && cargo check)
-    (cd frb_example/with_flutter/rust && cargo check)
+    (cd frb_rust && cargo clippy -- -D warnings)
+    (cd frb_macros && cargo clippy -- -D warnings)
+    (cd frb_example/pure_dart/rust && cargo clippy -- -D warnings)
+    (cd frb_example/with_flutter/rust && cargo clippy -- -D warnings)
     (cd frb_example/pure_dart/dart && dart pub get)
     (cd frb_example/with_flutter && flutter pub get)
 

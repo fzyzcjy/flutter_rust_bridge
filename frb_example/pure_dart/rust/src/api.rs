@@ -272,7 +272,7 @@ pub struct ExoticOptionals {
 
 pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticOptionals> {
     fn manipulate_list<T>(src: Option<Vec<T>>, push_value: T) -> Option<Vec<T>> {
-        let mut list = src.unwrap_or_else(Vec::new);
+        let mut list = src.unwrap_or_default();
         list.push(push_value);
         Some(list)
     }
@@ -289,7 +289,7 @@ pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticO
         float32list: manipulate_list(opt.float32list, 0.),
         float64list: manipulate_list(opt.float64list, 0.),
         attributes: Some({
-            let mut list = opt.attributes.unwrap_or_else(Vec::new);
+            let mut list = opt.attributes.unwrap_or_default();
             list.push(Attribute {
                 key: "some-attrib".to_owned(),
                 value: "some-value".to_owned(),
@@ -297,7 +297,7 @@ pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticO
             list
         }),
         nullable_attributes: Some({
-            let mut list = opt.nullable_attributes.unwrap_or_else(Vec::new);
+            let mut list = opt.nullable_attributes.unwrap_or_default();
             list.push(None);
             list
         }),
