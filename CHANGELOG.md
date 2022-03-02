@@ -1,3 +1,7 @@
+## 1.22.1
+
+* Improve dart analyzer ignores
+
 ## 1.22.0
 
 * Make mirroring work for more use cases: tuple structs, enum variants, wrapping in Vec and Optional #359 (thanks @Unoqwy)
