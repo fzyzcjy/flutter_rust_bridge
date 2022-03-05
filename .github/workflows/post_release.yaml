@@ -39,7 +39,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install valgrind
-        run: sudo apt install -y valgrind
+        run: sudo apt update && sudo apt install -y valgrind
 
       - uses: dart-lang/setup-dart@v1
 
