@@ -1,4 +1,4 @@
-# Integrating with Desktop
+# Integrating with Windows and Linux
 
 This guide groups together instructions for Windows and Linux desktop apps,
 as they use the same build system.
