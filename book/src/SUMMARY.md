@@ -56,7 +56,7 @@
     - [Linking the project](integrate/ios_linking.md)
     - [Generating bindings](integrate/ios_gen.md)
     - [Using dummy headers](integrate/ios_headers.md)
-  - [Integrating with Desktop](integrate/desktop.md)
+  - [Integrating with Windows and Linux](integrate/desktop.md)
   - [Integrating with Web](integrate/web.md)
   - [Using the dynamic library](integrate/usage.md)
   - [Wrapping up](integrate/finish.md)
