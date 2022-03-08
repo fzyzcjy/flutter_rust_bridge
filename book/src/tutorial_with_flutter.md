@@ -63,7 +63,7 @@ Run it directly using `flutter run` assuming [Flutter desktop support](https://f
 
 ### Linux app
 
-Same as Windows.
+Same as Windows. If you install Flutter through `snap`, please be wary of [#53](https://github.com/canonical/flutter-snap/issues/53).
 
 ### MacOS app
 
