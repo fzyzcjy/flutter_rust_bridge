@@ -128,6 +128,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "feber",
+      "name": "Febrian Setianto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1727318?v=4",
+      "profile": "https://feber.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
