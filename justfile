@@ -58,10 +58,10 @@ clean:
     cd {{frb_flutter}}/rust && cargo clean
 
 refresh_all:
-    (cd frb_rust && cargo check)
-    (cd frb_macros && cargo check)
-    (cd frb_example/pure_dart/rust && cargo check)
-    (cd frb_example/with_flutter/rust && cargo check)
+    (cd frb_rust && cargo clippy -- -D warnings)
+    (cd frb_macros && cargo clippy -- -D warnings)
+    (cd frb_example/pure_dart/rust && cargo clippy -- -D warnings)
+    (cd frb_example/with_flutter/rust && cargo clippy -- -D warnings)
     (cd frb_example/pure_dart/dart && dart pub get)
     (cd frb_example/with_flutter && flutter pub get)
 
@@ -90,10 +90,10 @@ release old_version new_version:
     git commit -m "bump from {{old_version}} to {{new_version}}"
     git push
 
-    just publish_all
-
     awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
     echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
     open https://github.com/fzyzcjy/flutter_rust_bridge/releases
+
+    just publish_all
 
 # vim:expandtab:ts=4:sw=4

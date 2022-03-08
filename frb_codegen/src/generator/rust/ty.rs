@@ -17,6 +17,18 @@ pub trait TypeRustGeneratorTrait {
         None
     }
 
+    fn self_access(&self, obj: String) -> String {
+        obj
+    }
+
+    fn wrap_obj(&self, obj: String) -> String {
+        obj
+    }
+
+    fn convert_to_dart(&self, obj: String) -> String {
+        format!("{}.into_dart()", obj)
+    }
+
     fn structs(&self) -> String {
         "".to_string()
     }

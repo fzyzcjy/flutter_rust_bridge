@@ -39,7 +39,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install valgrind
-        run: sudo apt install -y valgrind
+        run: sudo apt update && sudo apt install -y valgrind
 
       - uses: dart-lang/setup-dart@v1
 
@@ -172,7 +172,7 @@ jobs:
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)
         if: ${{ matrix.os.family == 'linux' }}
-        run: sudo apt-get install -y libclang-dev
+        run: sudo apt update && sudo apt-get install -y libclang-dev
 
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)

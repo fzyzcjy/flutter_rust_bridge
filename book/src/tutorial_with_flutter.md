@@ -20,7 +20,7 @@ Image credit: Wikipedia
 Please [install Flutter](https://flutter.dev/docs/get-started/install) (optionally with [desktop support](https://flutter.dev/desktop) if you want to run app on desktop instead of cellphones), [install Rust](https://www.rust-lang.org/learn/get-started), and have some familiarity with them. Then get the example codebase:
 
 ```shell
-git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd flutter_rust_bridge/example/with_flutter
+git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd flutter_rust_bridge/frb_example/with_flutter
 ```
 
 ## Optional: Run generator
@@ -63,7 +63,7 @@ Run it directly using `flutter run` assuming [Flutter desktop support](https://f
 
 ### Linux app
 
-Same as Windows.
+Same as Windows. If you install Flutter through `snap`, please be wary of [#53](https://github.com/canonical/flutter-snap/issues/53).
 
 ### MacOS app
 

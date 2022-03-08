@@ -33,7 +33,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install valgrind
-        run: sudo apt install -y valgrind
+        run: sudo apt update && sudo apt install -y valgrind
 
       - uses: dart-lang/setup-dart@v1
 
@@ -180,7 +180,7 @@ jobs:
 
   flutter_windows_test:
     name: Flutter (Windows) integration test
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
       - name: Install Rust toolchain
@@ -267,7 +267,7 @@ jobs:
           channel: 'stable'
 
       - name: Install Flutter build tools
-        run: sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
+        run: sudo apt update && sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
 
       - run: flutter config --enable-linux-desktop
 
@@ -500,7 +500,7 @@ jobs:
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)
         if: ${{ matrix.os.family == 'linux' }}
-        run: sudo apt-get install -y libclang-dev
+        run: sudo apt update && sudo apt-get install -y libclang-dev
 
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)

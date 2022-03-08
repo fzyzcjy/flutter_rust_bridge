@@ -144,7 +144,7 @@ pub fn auto_add_mod_to_lib_core(rust_crate_dir: &str, rust_output_path: &str) ->
         .to_str()
         .ok_or_else(|| anyhow!(""))?
         .to_string()
-        .replace("/", "::");
+        .replace('/', "::");
     let expect_code = format!("mod {};", mod_name);
 
     let path_lib_rs = path_src_folder.join("lib.rs");
