@@ -1,3 +1,7 @@
+## 1.22.2
+
+* Bump dependency versions
+
 ## 1.22.1
 
 * Improve dart analyzer ignores
