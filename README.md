@@ -9,7 +9,7 @@
 
 ![Logo](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/book/logo.png)
 
-Want to combine the best between `Flutter`, a cross-platform hot-reload rapid-development UI toolkit, and `Rust`, a language empowering everyone to build reliable and efficient software? Here it comes!
+Want to combine the best between [Flutter](https://flutter.dev/), a cross-platform hot-reload rapid-development UI toolkit, and [Rust](https://www.rust-lang.org/), a language empowering everyone to build reliable and efficient software? Here it comes!
 
 ## 🚀 Advantages
 
