@@ -79,6 +79,7 @@ fn main() -> anyhow::Result<()> {
         config
             .dart_output_path_name()
             .expect("Invalid dart_output_path_name"),
+        config.wasm,
     );
 
     info!("Phase: Other things");
@@ -108,7 +109,11 @@ fn main() -> anyhow::Result<()> {
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     with_changed_file(
-        &config.rust_output_path,
+        config
+            .rust_native_output_path()
+            .as_deref()
+            .and_then(Path::to_str)
+            .unwrap(),
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
             commands::bindgen_rust_to_dart(
@@ -156,7 +161,8 @@ fn main() -> anyhow::Result<()> {
         // --wasm forces codegen to split declarations,
         // but still allows the user to customize the name of the declaration file.
         let dart_decl_output_path = config.dart_fallback_decl_output_path();
-        let impl_import_decl = import_decl(dart_decl_output_path.to_str().unwrap(), dart_output_dir);
+        let impl_import_decl =
+            import_decl(dart_decl_output_path.to_str().unwrap(), dart_output_dir);
         fs::write(
             &dart_decl_output_path,
             (&generated_dart.file_prelude + &generated_dart_decl_all).to_text(),
@@ -165,11 +171,12 @@ fn main() -> anyhow::Result<()> {
             &config.dart_output_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
         )?;
-        if config.wasm {
+        if let Some(wasm) = generated_dart.wasm_code {
             let wasm_path = config.dart_wasm_output_path().unwrap();
             fs::write(
                 &wasm_path,
-                (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.wasm_code).to_text(),
+                (&generated_dart.file_prelude + &impl_import_decl + &wasm)
+                    .to_text(),
             )?;
         }
     } else {
@@ -179,23 +186,6 @@ fn main() -> anyhow::Result<()> {
                 .to_text(),
         )?;
     }
-    // if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
-    // } else if config.wasm {
-    //     let impl_import_decl = impl_decl(
-    //         config.dart_fallback_decl_output_path().to_str().unwrap(),
-    //         dart_output_dir,
-    //     );
-    //     let wasm_path = config.dart_wasm_output_path().unwrap();
-    // } else {
-    // }
-    // if config.wasm {
-    //     let wasm_path = config.dart_wasm_output_path().unwrap();
-    //     fs::write(
-    //         &wasm_path,
-    //         (&generated_dart.file_prelude + &generated_dart.wasm_code).to_text(),
-    //     )?;
-    //     commands::format_dart(&wasm_path, config.dart_format_line_length);
-    // }
 
     let dart_root = &config.dart_root;
     if needs_freezed && config.build_runner {
@@ -213,8 +203,21 @@ Please specify --dart-root, or disable build_runner with --no-build-runner."
     }
 
     commands::format_dart(&config.dart_output_path, config.dart_format_line_length);
-    if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
-        commands::format_dart(dart_decl_output_path, config.dart_format_line_length);
+    if config.wasm || config.dart_decl_output_path.is_some() {
+        commands::format_dart(
+            config
+                .dart_fallback_decl_output_path()
+                .as_path()
+                .to_str()
+                .unwrap(),
+            config.dart_format_line_length,
+        );
+    }
+    if config.wasm {
+        commands::format_dart(
+            &config.dart_wasm_output_path().unwrap(),
+            config.dart_format_line_length,
+        );
     }
 
     info!("Success! Now go and use it :)");

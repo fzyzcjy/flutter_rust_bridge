@@ -59,10 +59,9 @@ pub struct RawOpts {
     /// Show debug messages.
     #[structopt(short, long)]
     pub verbose: bool,
-    // TODO: Enable --wasm config once done
-    // /// Emit glue code to interface with wasm-bindgen. Overrides --dart-decl-output.
-    // #[structopt(long)]
-    // pub wasm: bool,
+    /// Emit glue code to interface with wasm-bindgen. Overrides --dart-decl-output.
+    #[structopt(long)]
+    pub wasm: bool,
 }
 
 #[derive(Debug)]
@@ -153,7 +152,7 @@ pub fn parse(raw: RawOpts) -> Opts {
             ]
         }),
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
-        wasm: true,
+        wasm: raw.wasm,
         manifest_path,
         dart_root,
         build_runner: !raw.no_build_runner,

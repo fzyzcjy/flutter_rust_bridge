@@ -26,7 +26,6 @@ checksum = "aae1277d39aeec15cb388266ecc24b11c80469deae6067e17a1a7aa9e5c1f234"
 [[package]]
 name = "allo-isolate"
 version = "0.1.12"
-source = "git+https://github.com/Desdaemon/allo-isolate?branch=wasm-bindgen#a7ecb47575bc1bc301c8807d6879a06ff85b73fc"
 dependencies = [
  "atomic",
  "js-sys",

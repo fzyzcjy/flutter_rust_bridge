@@ -1439,18 +1439,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   FlutterRustBridgeExampleWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
-  void store_dart_post_cobject(
-    DartPostCObjectFnType ptr,
-  ) {
-    return _store_dart_post_cobject(
-      ptr,
-    );
-  }
-
-  late final _store_dart_post_cobjectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
-  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
-
   void wire_simple_adder(
     int port_,
     int a,
@@ -2398,6 +2386,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
   late final _free_WireSyncReturnStruct =
       _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
+
+  void store_dart_post_cobject(
+    DartPostCObjectFnType ptr,
+  ) {
+    return _store_dart_post_cobject(
+      ptr,
+    );
+  }
+
+  late final _store_dart_post_cobjectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
+  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 }
 
 class wire_uint_8_list extends ffi.Struct {

@@ -29,7 +29,7 @@ pub struct Output {
     pub file_prelude: DartBasicCode,
     pub decl_code: DartBasicCode,
     pub impl_code: DartBasicCode,
-    pub wasm_code: DartBasicCode,
+    pub wasm_code: Option<DartBasicCode>,
 }
 
 pub fn generate(
@@ -38,6 +38,7 @@ pub fn generate(
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
     dart_output_file_root: &str,
+    wasm: bool,
 ) -> (Output, bool) {
     let distinct_types = ir_file.distinct_types(true, true);
     let distinct_input_types = ir_file.distinct_types(true, false);
@@ -57,10 +58,6 @@ pub fn generate(
     let dart_api2wire_funcs = distinct_input_types
         .iter()
         .map(|ty| generate_api2wire_func(ty, ir_file))
-        .collect::<Vec<_>>();
-    let dart_wasm_api2wire_funcs = distinct_input_types
-        .iter()
-        .map(|ty| generate_wasm_api2wire_func(ty, ir_file))
         .collect::<Vec<_>>();
     let dart_api_fill_to_wire_funcs = distinct_input_types
         .iter()
@@ -168,9 +165,13 @@ pub fn generate(
         part: "".to_string(),
         body: "".to_string(),
     };
-
-    let wasm_body = format!(
-        "class {dart_api_impl_class_name} implements {dart_api_class_name} {{
+    let wasm_code = wasm.then(|| {
+        let dart_wasm_api2wire_funcs = distinct_input_types
+            .iter()
+            .map(|ty| generate_wasm_api2wire_func(ty, ir_file))
+            .collect::<Vec<_>>();
+        let wasm_body = format!(
+            "class {dart_api_impl_class_name} implements {dart_api_class_name} {{
             const {dart_api_impl_class_name}();
         }}
 
@@ -179,17 +180,19 @@ pub fn generate(
 
         // Section: wire2api
         {}",
-        dart_wasm_api2wire_funcs.join("\n\n"),
-        dart_wasm_wire2api_funcs.join("\n\n"),
-        dart_api_impl_class_name = dart_api_impl_class_name,
-        dart_api_class_name = dart_api_class_name
-    );
-    let wasm_code = &common_header
-        + &DartBasicCode {
-            import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';".to_string(),
-            body: wasm_body,
-            ..Default::default()
-        };
+            dart_wasm_api2wire_funcs.join("\n\n"),
+            dart_wasm_wire2api_funcs.join("\n\n"),
+            dart_api_impl_class_name = dart_api_impl_class_name,
+            dart_api_class_name = dart_api_class_name
+        );
+        &common_header
+            + &DartBasicCode {
+                import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';"
+                    .to_string(),
+                body: wasm_body,
+                ..Default::default()
+            }
+    });
 
     (
         Output {

@@ -2,10 +2,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-typedef int64_t DartPort;
-
-typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
-
 typedef struct wire_Size {
   int32_t width;
   int32_t height;
@@ -42,7 +38,9 @@ typedef struct WireSyncReturnStruct {
   bool success;
 } WireSyncReturnStruct;
 
-void store_dart_post_cobject(DartPostCObjectFnType ptr);
+typedef int64_t DartPort;
+
+typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
 
 void wire_draw_mandelbrot(int64_t port_,
                           struct wire_Size *image_size,
@@ -83,6 +81,8 @@ struct wire_list_tree_node *new_list_tree_node(int32_t len);
 struct wire_uint_8_list *new_uint_8_list(int32_t len);
 
 void free_WireSyncReturnStruct(struct WireSyncReturnStruct val);
+
+void store_dart_post_cobject(DartPostCObjectFnType ptr);
 
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
