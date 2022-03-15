@@ -1,6 +1,6 @@
 use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::*;
-use crate::ir::IrType::{Primitive, StructRef, EnumRef};
+use crate::ir::IrType::{EnumRef, Primitive, StructRef};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
 
