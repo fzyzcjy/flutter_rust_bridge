@@ -284,6 +284,10 @@ void main(List<String> args) async {
         await api.handleEnumStruct(val: Enums(Weekdays.Monday)),
         Enums(Weekdays.Tuesday),
       );
+      expect(
+        await api.handleEnumStruct(val: Nested(Empty(), 0)),
+        Nested(Empty(), 1),
+      );
     }
 
     print('dart call useImportedStruct()');

@@ -225,6 +225,7 @@ class KitchenSink with _$KitchenSink {
   }) = Primitives;
   const factory KitchenSink.nested(
     KitchenSink field0,
+    int field1,
   ) = Nested;
   const factory KitchenSink.optional([
     /// Comment on anonymous field
@@ -1194,6 +1195,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
       wireObj.kind.ref.Nested.ref.field0 = _api2wire_box_kitchen_sink(apiObj.field0);
+      wireObj.kind.ref.Nested.ref.field1 = _api2wire_i32(apiObj.field1);
     }
     if (apiObj is Optional) {
       wireObj.tag = 3;
@@ -1404,7 +1406,7 @@ NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
 }
 
 KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
-  return raw as KitchenSink;
+  return _wire2api_kitchen_sink(raw);
 }
 
 Element _wire2api_element(dynamic raw) {
@@ -1501,6 +1503,7 @@ KitchenSink _wire2api_kitchen_sink(dynamic raw) {
     case 2:
       return Nested(
         _wire2api_box_kitchen_sink(raw[1]),
+        _wire2api_i32(raw[2]),
       );
     case 3:
       return Optional(
@@ -2839,6 +2842,9 @@ class KitchenSink_Primitives extends ffi.Struct {
 
 class KitchenSink_Nested extends ffi.Struct {
   external ffi.Pointer<wire_KitchenSink> field0;
+
+  @ffi.Int32()
+  external int field1;
 }
 
 class wire_KitchenSink extends ffi.Struct {

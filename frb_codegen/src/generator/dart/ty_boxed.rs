@@ -1,6 +1,6 @@
 use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::*;
-use crate::ir::IrType::{Primitive, StructRef};
+use crate::ir::IrType::{EnumRef, Primitive, StructRef};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
 
@@ -38,6 +38,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
     fn wire2api_body(&self) -> String {
         match &*self.ir.inner {
             StructRef(inner) => format!("return _wire2api_{}(raw);", inner.safe_ident()),
+            EnumRef(inner) => format!("return _wire2api_{}(raw);", inner.safe_ident()),
             _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),
         }
     }

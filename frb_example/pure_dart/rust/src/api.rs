@@ -399,7 +399,7 @@ pub enum KitchenSink {
         float64: f64,
         boolean: bool,
     },
-    Nested(Box<KitchenSink>),
+    Nested(Box<KitchenSink>, i32),
     Optional(
         /// Comment on anonymous field
         Option<i32>,
@@ -424,7 +424,7 @@ pub fn handle_enum_struct(val: KitchenSink) -> KitchenSink {
             float64: float64 + 1.,
             boolean: !boolean,
         },
-        Nested(_) => Nested(Box::new(Empty)),
+        Nested(_, val) => Nested(Box::new(Empty), val + 1),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
         Buffer(ZeroCopyBuffer(mut buf)) => {
             buf.push(1);
