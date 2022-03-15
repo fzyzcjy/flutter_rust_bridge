@@ -153,7 +153,7 @@ pub fn parse(raw: RawOpts) -> Opts {
             ]
         }),
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
-        wasm: false,
+        wasm: true,
         manifest_path,
         dart_root,
         build_runner: !raw.no_build_runner,

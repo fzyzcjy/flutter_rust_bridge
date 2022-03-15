@@ -3,72 +3,11 @@
 
 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, prefer_single_quotes
 
-import 'dart:convert';
-import 'dart:typed_data';
-
+import "bridge_generated.d.dart";
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'dart:ffi' as ffi;
-
-abstract class FlutterRustBridgeExample {
-  Future<Uint8List> drawMandelbrot(
-      {required Size imageSize,
-      required Point zoomPoint,
-      required double scale,
-      required int numThreads,
-      dynamic hint});
-
-  Future<String> passingComplexStructs({required TreeNode root, dynamic hint});
-
-  Future<int> offTopicMemoryTestInputArray({required Uint8List input, dynamic hint});
-
-  Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer({required int len, dynamic hint});
-
-  Future<Uint8List> offTopicMemoryTestOutputVecU8({required int len, dynamic hint});
-
-  Future<int> offTopicMemoryTestInputVecOfObject({required List<Size> input, dynamic hint});
-
-  Future<List<Size>> offTopicMemoryTestOutputVecOfObject({required int len, dynamic hint});
-
-  Future<int> offTopicMemoryTestInputComplexStruct({required TreeNode input, dynamic hint});
-
-  Future<TreeNode> offTopicMemoryTestOutputComplexStruct({required int len, dynamic hint});
-
-  Future<int> offTopicDeliberatelyReturnError({dynamic hint});
-
-  Future<int> offTopicDeliberatelyPanic({dynamic hint});
-}
-
-class Point {
-  final double x;
-  final double y;
-
-  Point({
-    required this.x,
-    required this.y,
-  });
-}
-
-class Size {
-  final int width;
-  final int height;
-
-  Size({
-    required this.width,
-    required this.height,
-  });
-}
-
-class TreeNode {
-  final String name;
-  final List<TreeNode> children;
-
-  TreeNode({
-    required this.name,
-    required this.children,
-  });
-}
 
 class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire>
     implements FlutterRustBridgeExample {
@@ -365,6 +304,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   FlutterRustBridgeExampleWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
+  void store_dart_post_cobject(
+    DartPostCObjectFnType ptr,
+  ) {
+    return _store_dart_post_cobject(
+      ptr,
+    );
+  }
+
+  late final _store_dart_post_cobjectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
+  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
+
   void wire_draw_mandelbrot(
     int port_,
     ffi.Pointer<wire_Size> image_size,
@@ -614,18 +565,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
   late final _free_WireSyncReturnStruct =
       _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
-
-  void store_dart_post_cobject(
-    DartPostCObjectFnType ptr,
-  ) {
-    return _store_dart_post_cobject(
-      ptr,
-    );
-  }
-
-  late final _store_dart_post_cobjectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
-  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 }
 
 class wire_Size extends ffi.Struct {
