@@ -77,8 +77,11 @@ fn main() -> anyhow::Result<()> {
         &config.dart_api_impl_class_name(),
         &config.dart_wire_class_name(),
         config
-            .dart_output_path_name()
-            .expect("Invalid dart_output_path_name"),
+            .dart_decl_path()
+            .file_stem()
+            .unwrap()
+            .to_str()
+            .unwrap(),
         config.wasm,
     );
 
@@ -175,8 +178,7 @@ fn main() -> anyhow::Result<()> {
             let wasm_path = config.dart_wasm_output_path().unwrap();
             fs::write(
                 &wasm_path,
-                (&generated_dart.file_prelude + &impl_import_decl + &wasm)
-                    .to_text(),
+                (&generated_dart.file_prelude + &impl_import_decl + &wasm).to_text(),
             )?;
         }
     } else {

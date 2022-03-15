@@ -272,14 +272,14 @@ impl Opts {
         format!("{}Wire", self.class_name)
     }
 
-    /// Returns None if the path terminates in "..", or not utf8.
-    pub fn dart_output_path_name(&self) -> Option<&str> {
-        let name = Path::new(&self.dart_output_path);
-        let root = name.file_name()?.to_str()?;
-        if let Some((name, _)) = root.rsplit_once('.') {
-            Some(name)
+    pub fn dart_decl_path(&self) -> PathBuf {
+        if self.wasm {
+            self.dart_fallback_decl_output_path()
         } else {
-            Some(root)
+            self.dart_decl_output_path
+                .as_deref()
+                .map(PathBuf::from)
+                .unwrap_or_else(|| PathBuf::from(&self.dart_output_path))
         }
     }
 
@@ -291,12 +291,15 @@ impl Opts {
     }
 
     pub fn dart_output_freezed_path(&self) -> PathBuf {
-        Path::new(&self.dart_output_path).with_extension("freezed.dart")
+        self.dart_decl_output_path
+            .as_deref()
+            .map(|decl| Path::new(decl).with_extension("freezed.dart"))
+            .unwrap_or_else(|| Path::new(&self.dart_output_path).with_extension("freezed.dart"))
     }
 
     pub fn rust_multi_dir(&self) -> Option<PathBuf> {
         let path = Path::new(&self.rust_output_path).parent()?;
-        let name = self.dart_output_path_name()?;
+        let name = Path::new(&self.dart_output_path).file_stem()?;
         Some(path.join(name))
     }
 

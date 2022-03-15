@@ -7,7 +7,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'bridge_generated.freezed.dart';
+part 'bridge_generated.d.freezed.dart';
 
 abstract class FlutterRustBridgeExample {
   /// Documentation on a simple adder function.
