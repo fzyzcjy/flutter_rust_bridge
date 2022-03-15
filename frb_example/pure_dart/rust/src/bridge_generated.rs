@@ -718,6 +718,7 @@ pub struct KitchenSink_Primitives {
 #[derive(Clone)]
 pub struct KitchenSink_Nested {
     field0: *mut wire_KitchenSink,
+    field1: i32,
 }
 
 #[repr(C)]
@@ -1382,7 +1383,7 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
             2 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Nested);
-                KitchenSink::Nested(ans.field0.wire2api())
+                KitchenSink::Nested(ans.field0.wire2api(), ans.field1.wire2api())
             },
             3 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
@@ -1639,6 +1640,7 @@ pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
         Nested: support::new_leak_box_ptr(KitchenSink_Nested {
             field0: core::ptr::null_mut(),
+            field1: Default::default(),
         }),
     })
 }
@@ -1824,7 +1826,9 @@ impl support::IntoDart for KitchenSink {
                 float64.into_dart(),
                 boolean.into_dart(),
             ],
-            Self::Nested(field0) => vec![2.into_dart(), field0.into_dart()],
+            Self::Nested(field0, field1) => {
+                vec![2.into_dart(), field0.into_dart(), field1.into_dart()]
+            }
             Self::Optional(field0, field1) => {
                 vec![3.into_dart(), field0.into_dart(), field1.into_dart()]
             }

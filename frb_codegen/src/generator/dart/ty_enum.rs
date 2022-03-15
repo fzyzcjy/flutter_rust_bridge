@@ -145,7 +145,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 let after = &types[idx..];
                                 format!("{}[{}]", before.join(""), after.join(""))
                             } else {
-                                types.join(",")
+                                types.join("")
                             }
                         }
                         IrVariantKind::Struct(st) => {

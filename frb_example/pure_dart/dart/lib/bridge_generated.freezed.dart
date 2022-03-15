@@ -500,9 +500,10 @@ class _$KitchenSinkTearOff {
     );
   }
 
-  Nested nested(KitchenSink field0) {
+  Nested nested(KitchenSink field0, int field1) {
     return Nested(
       field0,
+      field1,
     );
   }
 
@@ -535,7 +536,7 @@ mixin _$KitchenSink {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean) primitives,
-    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
@@ -545,7 +546,7 @@ mixin _$KitchenSink {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -555,7 +556,7 @@ mixin _$KitchenSink {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -645,7 +646,7 @@ class _$Empty implements Empty {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean) primitives,
-    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
@@ -658,7 +659,7 @@ class _$Empty implements Empty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -671,7 +672,7 @@ class _$Empty implements Empty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -810,7 +811,7 @@ class _$Primitives implements Primitives {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean) primitives,
-    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
@@ -823,7 +824,7 @@ class _$Primitives implements Primitives {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -836,7 +837,7 @@ class _$Primitives implements Primitives {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -906,7 +907,7 @@ abstract class Primitives implements KitchenSink {
 /// @nodoc
 abstract class $NestedCopyWith<$Res> {
   factory $NestedCopyWith(Nested value, $Res Function(Nested) then) = _$NestedCopyWithImpl<$Res>;
-  $Res call({KitchenSink field0});
+  $Res call({KitchenSink field0, int field1});
 
   $KitchenSinkCopyWith<$Res> get field0;
 }
@@ -921,12 +922,17 @@ class _$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> impleme
   @override
   $Res call({
     Object? field0 = freezed,
+    Object? field1 = freezed,
   }) {
     return _then(Nested(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as KitchenSink,
+      field1 == freezed
+          ? _value.field1
+          : field1 // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -941,14 +947,16 @@ class _$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> impleme
 /// @nodoc
 
 class _$Nested implements Nested {
-  const _$Nested(this.field0);
+  const _$Nested(this.field0, this.field1);
 
   @override
   final KitchenSink field0;
+  @override
+  final int field1;
 
   @override
   String toString() {
-    return 'KitchenSink.nested(field0: $field0)';
+    return 'KitchenSink.nested(field0: $field0, field1: $field1)';
   }
 
   @override
@@ -956,11 +964,13 @@ class _$Nested implements Nested {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is Nested &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            const DeepCollectionEquality().equals(other.field0, field0) &&
+            const DeepCollectionEquality().equals(other.field1, field1));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(field0), const DeepCollectionEquality().hash(field1));
 
   @JsonKey(ignore: true)
   @override
@@ -971,12 +981,12 @@ class _$Nested implements Nested {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean) primitives,
-    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
   }) {
-    return nested(field0);
+    return nested(field0, field1);
   }
 
   @override
@@ -984,12 +994,12 @@ class _$Nested implements Nested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
   }) {
-    return nested?.call(field0);
+    return nested?.call(field0, field1);
   }
 
   @override
@@ -997,14 +1007,14 @@ class _$Nested implements Nested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
     required TResult orElse(),
   }) {
     if (nested != null) {
-      return nested(field0);
+      return nested(field0, field1);
     }
     return orElse();
   }
@@ -1054,9 +1064,10 @@ class _$Nested implements Nested {
 }
 
 abstract class Nested implements KitchenSink {
-  const factory Nested(KitchenSink field0) = _$Nested;
+  const factory Nested(KitchenSink field0, int field1) = _$Nested;
 
   KitchenSink get field0;
+  int get field1;
   @JsonKey(ignore: true)
   $NestedCopyWith<Nested> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1131,7 +1142,7 @@ class _$Optional implements Optional {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean) primitives,
-    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
@@ -1144,7 +1155,7 @@ class _$Optional implements Optional {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -1157,7 +1168,7 @@ class _$Optional implements Optional {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -1282,7 +1293,7 @@ class _$Buffer implements Buffer {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean) primitives,
-    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
@@ -1295,7 +1306,7 @@ class _$Buffer implements Buffer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -1308,7 +1319,7 @@ class _$Buffer implements Buffer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -1431,7 +1442,7 @@ class _$Enums implements Enums {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean) primitives,
-    required TResult Function(KitchenSink field0) nested,
+    required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(Weekdays field0) enums,
@@ -1444,7 +1455,7 @@ class _$Enums implements Enums {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
@@ -1457,7 +1468,7 @@ class _$Enums implements Enums {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0)? nested,
+    TResult Function(KitchenSink field0, int field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
