@@ -1406,7 +1406,7 @@ NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
 }
 
 KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
-  return raw as KitchenSink;
+  return _wire2api_kitchen_sink(raw);
 }
 
 Element _wire2api_element(dynamic raw) {

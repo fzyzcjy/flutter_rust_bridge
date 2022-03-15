@@ -286,7 +286,7 @@ void main(List<String> args) async {
       );
       expect(
         await api.handleEnumStruct(val: Nested(Empty(), 0)),
-        Nested(Empty(), 1)
+        Nested(Empty(), 1),
       );
     }
 
