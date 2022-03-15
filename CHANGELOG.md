@@ -1,3 +1,7 @@
+## Unreleased
+
+* Fix extra comma in enum structs #391 (thanks @Desdaemon)
+
 ## 1.22.2
 
 * Bump dependency versions
