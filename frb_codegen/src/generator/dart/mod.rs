@@ -30,6 +30,7 @@ pub struct Output {
     pub decl_code: DartBasicCode,
     pub impl_code: DartBasicCode,
     pub wasm_code: Option<DartBasicCode>,
+    pub needs_freezed: bool,
 }
 
 pub fn generate(
@@ -39,7 +40,7 @@ pub fn generate(
     dart_wire_class_name: &str,
     dart_output_file_root: &str,
     wasm: bool,
-) -> (Output, bool) {
+) -> Output {
     let distinct_types = ir_file.distinct_types(true, true);
     let distinct_input_types = ir_file.distinct_types(true, false);
     let distinct_output_types = ir_file.distinct_types(false, true);
@@ -67,10 +68,6 @@ pub fn generate(
         .iter()
         .map(|ty| generate_wire2api_func(ty, ir_file))
         .collect::<Vec<_>>();
-    let dart_wasm_wire2api_funcs = distinct_output_types
-        .iter()
-        .map(|ty| generate_wasm_wire2api_func(ty, ir_file))
-        .collect::<Vec<_>>();
 
     let needs_freezed = distinct_types
         .iter()
@@ -89,8 +86,7 @@ pub fn generate(
         import: "import 'dart:convert';
             import 'dart:typed_data';"
             .to_string(),
-        part: "".to_string(),
-        body: "".to_string(),
+        ..Default::default()
     };
 
     let decl_body = format!(
@@ -166,26 +162,43 @@ pub fn generate(
         body: "".to_string(),
     };
     let wasm_code = wasm.then(|| {
-        let dart_wasm_api2wire_funcs = distinct_input_types
+        let dart_wasm_api2wire_funcs = distinct_output_types
             .iter()
             .map(|ty| generate_wasm_api2wire_func(ty, ir_file))
             .collect::<Vec<_>>();
+        let dart_wasm_wire2api_funcs = distinct_input_types
+            .iter()
+            .map(|ty| generate_wasm_wire2api_func(ty, ir_file))
+            .collect::<Vec<_>>();
+        let dart_fn_imports = ir_file
+            .funcs
+            .iter()
+            .map(generate_wasm_api_func)
+            .collect::<Vec<_>>();
         let wasm_body = format!(
-            "class {dart_api_impl_class_name} implements {dart_api_class_name} {{
-            const {dart_api_impl_class_name}();
-        }}
+            "
+class {dart_api_impl_class_name} implements {dart_api_class_name} {{
+    const {dart_api_impl_class_name}();
+}}
 
-        // Section: api2wire
-        {}
+// Section: function imports
+{}
 
-        // Section: wire2api
-        {}",
+// Section: api2wire
+{}
+
+// Section: wire2api
+{}",
+            dart_fn_imports.join("\n\n"),
             dart_wasm_api2wire_funcs.join("\n\n"),
             dart_wasm_wire2api_funcs.join("\n\n"),
             dart_api_impl_class_name = dart_api_impl_class_name,
             dart_api_class_name = dart_api_class_name
         );
-        &common_header
+        &DartBasicCode {
+            import: "@JS() library bridge_generated_wasm; import 'package:js/js.dart';".to_owned(),
+            ..Default::default()
+        } + &common_header
             + &DartBasicCode {
                 import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';"
                     .to_string(),
@@ -194,15 +207,13 @@ pub fn generate(
             }
     });
 
-    (
-        Output {
-            file_prelude,
-            decl_code,
-            impl_code,
-            wasm_code,
-        },
+    Output {
+        file_prelude,
+        decl_code,
+        impl_code,
+        wasm_code,
         needs_freezed,
-    )
+    }
 }
 
 fn generate_api_func(func: &IrFunc) -> (String, String, String) {
@@ -396,6 +407,27 @@ fn generate_wasm_wire2api_func(ty: &IrType, ir_file: &IrFile) -> String {
         ty.dart_api_type(),
         ty.safe_ident(),
         body
+    )
+}
+
+fn generate_wasm_api_func(func: &IrFunc) -> String {
+    let port = func
+        .mode
+        .has_port_argument()
+        .then(|| "int port_".to_owned());
+    let args = port
+        .into_iter()
+        .chain(
+            func.inputs
+                .iter()
+                .map(|inp| format!("{} {}", inp.ty.js_wire_type(), inp.name.rust_style())),
+        )
+        .collect::<Vec<_>>();
+    format!(
+        r#"@JS(r"wasm_bindgen.{name}")
+        external void _wasm_{name}({args});"#,
+        name = func.wire_func_name(),
+        args = args.join(",")
     )
 }
 

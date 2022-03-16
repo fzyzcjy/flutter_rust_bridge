@@ -71,7 +71,7 @@ fn main() -> anyhow::Result<()> {
     }
 
     info!("Phase: Generate Dart code");
-    let (generated_dart, needs_freezed) = generator::dart::generate(
+    let generated_dart = generator::dart::generate(
         &ir_file,
         &config.dart_api_class_name(),
         &config.dart_api_impl_class_name(),
@@ -178,7 +178,7 @@ fn main() -> anyhow::Result<()> {
             let wasm_path = config.dart_wasm_output_path().unwrap();
             fs::write(
                 &wasm_path,
-                (&generated_dart.file_prelude + &impl_import_decl + &wasm).to_text(),
+                (&wasm + &generated_dart.file_prelude + &impl_import_decl).to_text(),
             )?;
         }
     } else {
@@ -190,7 +190,7 @@ fn main() -> anyhow::Result<()> {
     }
 
     let dart_root = &config.dart_root;
-    if needs_freezed && config.build_runner {
+    if generated_dart.needs_freezed && config.build_runner {
         let dart_root = dart_root.as_ref().unwrap_or_else(|| {
             panic!(
                 "build_runner configured to run, but Dart root could not be inferred.
