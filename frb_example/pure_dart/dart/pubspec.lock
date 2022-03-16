@@ -70,7 +70,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.7"
+    version: "2.1.8"
   build_runner_core:
     dependency: transitive
     description:
@@ -168,7 +168,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.22.2"
+    version: "1.23.0"
   freezed:
     dependency: "direct dev"
     description:
