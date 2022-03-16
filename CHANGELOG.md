@@ -1,4 +1,4 @@
-## Unreleased
+## 1.23.0
 
 * Fix extra comma in enum structs #391 (thanks @Desdaemon)
 
