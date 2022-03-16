@@ -201,115 +201,225 @@ int? _api2wire_opt_weekdays(Weekdays? raw) {
 }
 
 // Section: wire2api
-String _wire2api_String(dynamic raw) {}
+String _wire2api_String(dynamic raw) {
+  throw UnimplementedError();
+}
 
-List<String> _wire2api_StringList(dynamic raw) {}
+List<String> _wire2api_StringList(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {}
+Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ApplicationEnv _wire2api_application_env(dynamic raw) {}
+ApplicationEnv _wire2api_application_env(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {}
+ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ApplicationMode _wire2api_application_mode(dynamic raw) {}
+ApplicationMode _wire2api_application_mode(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ApplicationSettings _wire2api_application_settings(dynamic raw) {}
+ApplicationSettings _wire2api_application_settings(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Attribute _wire2api_attribute(dynamic raw) {}
+Attribute _wire2api_attribute(dynamic raw) {
+  throw UnimplementedError();
+}
 
-bool _wire2api_bool(dynamic raw) {}
+bool _wire2api_bool(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ApplicationEnv _wire2api_box_application_env(dynamic raw) {}
+ApplicationEnv _wire2api_box_application_env(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ApplicationSettings _wire2api_box_autoadd_application_settings(dynamic raw) {}
+ApplicationSettings _wire2api_box_autoadd_application_settings(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Attribute _wire2api_box_autoadd_attribute(dynamic raw) {}
+Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
+  throw UnimplementedError();
+}
 
-bool _wire2api_box_autoadd_bool(dynamic raw) {}
+bool _wire2api_box_autoadd_bool(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Customized _wire2api_box_autoadd_customized(dynamic raw) {}
+Customized _wire2api_box_autoadd_customized(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic raw) {}
+ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic raw) {
+  throw UnimplementedError();
+}
 
-double _wire2api_box_autoadd_f64(dynamic raw) {}
+double _wire2api_box_autoadd_f64(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_box_autoadd_i32(dynamic raw) {}
+int _wire2api_box_autoadd_i32(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_box_autoadd_i64(dynamic raw) {}
+int _wire2api_box_autoadd_i64(dynamic raw) {
+  throw UnimplementedError();
+}
 
-KitchenSink _wire2api_box_autoadd_kitchen_sink(dynamic raw) {}
+KitchenSink _wire2api_box_autoadd_kitchen_sink(dynamic raw) {
+  throw UnimplementedError();
+}
 
-MySize _wire2api_box_autoadd_my_size(dynamic raw) {}
+MySize _wire2api_box_autoadd_my_size(dynamic raw) {
+  throw UnimplementedError();
+}
 
-MyStruct _wire2api_box_autoadd_my_struct(dynamic raw) {}
+MyStruct _wire2api_box_autoadd_my_struct(dynamic raw) {
+  throw UnimplementedError();
+}
 
-MyTreeNode _wire2api_box_autoadd_my_tree_node(dynamic raw) {}
+MyTreeNode _wire2api_box_autoadd_my_tree_node(dynamic raw) {
+  throw UnimplementedError();
+}
 
-NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {}
+NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
+  throw UnimplementedError();
+}
 
-bool _wire2api_box_bool(dynamic raw) {}
+bool _wire2api_box_bool(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ExoticOptionals _wire2api_box_exotic_optionals(dynamic raw) {}
+ExoticOptionals _wire2api_box_exotic_optionals(dynamic raw) {
+  throw UnimplementedError();
+}
 
-double _wire2api_box_f64(dynamic raw) {}
+double _wire2api_box_f64(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_box_i32(dynamic raw) {}
+int _wire2api_box_i32(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_box_i64(dynamic raw) {}
+int _wire2api_box_i64(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_box_i8(dynamic raw) {}
+int _wire2api_box_i8(dynamic raw) {
+  throw UnimplementedError();
+}
 
-KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {}
+KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
+  throw UnimplementedError();
+}
 
-MySize _wire2api_box_my_size(dynamic raw) {}
+MySize _wire2api_box_my_size(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_box_u8(dynamic raw) {}
+int _wire2api_box_u8(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Customized _wire2api_customized(dynamic raw) {}
+Customized _wire2api_customized(dynamic raw) {
+  throw UnimplementedError();
+}
 
-ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {}
+ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
+  throw UnimplementedError();
+}
 
-double _wire2api_f32(dynamic raw) {}
+double _wire2api_f32(dynamic raw) {
+  throw UnimplementedError();
+}
 
-double _wire2api_f64(dynamic raw) {}
+double _wire2api_f64(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Float32List _wire2api_float_32_list(dynamic raw) {}
+Float32List _wire2api_float_32_list(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Float64List _wire2api_float_64_list(dynamic raw) {}
+Float64List _wire2api_float_64_list(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_i32(dynamic raw) {}
+int _wire2api_i32(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_i64(dynamic raw) {}
+int _wire2api_i64(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_i8(dynamic raw) {}
+int _wire2api_i8(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Int32List _wire2api_int_32_list(dynamic raw) {}
+Int32List _wire2api_int_32_list(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Int64List _wire2api_int_64_list(dynamic raw) {}
+Int64List _wire2api_int_64_list(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Int8List _wire2api_int_8_list(dynamic raw) {}
+Int8List _wire2api_int_8_list(dynamic raw) {
+  throw UnimplementedError();
+}
 
-KitchenSink _wire2api_kitchen_sink(dynamic raw) {}
+KitchenSink _wire2api_kitchen_sink(dynamic raw) {
+  throw UnimplementedError();
+}
 
-List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {}
+List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
+  throw UnimplementedError();
+}
 
-List<Attribute> _wire2api_list_attribute(dynamic raw) {}
+List<Attribute> _wire2api_list_attribute(dynamic raw) {
+  throw UnimplementedError();
+}
 
-List<MySize> _wire2api_list_my_size(dynamic raw) {}
+List<MySize> _wire2api_list_my_size(dynamic raw) {
+  throw UnimplementedError();
+}
 
-List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {}
+List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
+  throw UnimplementedError();
+}
 
-List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {}
+List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
+  throw UnimplementedError();
+}
 
-MyEnum _wire2api_my_enum(dynamic raw) {}
+MyEnum _wire2api_my_enum(dynamic raw) {
+  throw UnimplementedError();
+}
 
-MySize _wire2api_my_size(dynamic raw) {}
+MySize _wire2api_my_size(dynamic raw) {
+  throw UnimplementedError();
+}
 
-MyStruct _wire2api_my_struct(dynamic raw) {}
+MyStruct _wire2api_my_struct(dynamic raw) {
+  throw UnimplementedError();
+}
 
-MyTreeNode _wire2api_my_tree_node(dynamic raw) {}
+MyTreeNode _wire2api_my_tree_node(dynamic raw) {
+  throw UnimplementedError();
+}
 
-NewTypeInt _wire2api_new_type_int(dynamic raw) {}
+NewTypeInt _wire2api_new_type_int(dynamic raw) {
+  throw UnimplementedError();
+}
 
 String? _wire2api_opt_String(dynamic raw) {
   return raw == null ? null : _wire2api_String(raw);
@@ -415,14 +525,26 @@ Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_uint_8_list(raw);
 }
 
-int _wire2api_u32(dynamic raw) {}
+int _wire2api_u32(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_u64(dynamic raw) {}
+int _wire2api_u64(dynamic raw) {
+  throw UnimplementedError();
+}
 
-int _wire2api_u8(dynamic raw) {}
+int _wire2api_u8(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Uint64List _wire2api_uint_64_list(dynamic raw) {}
+Uint64List _wire2api_uint_64_list(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Uint8List _wire2api_uint_8_list(dynamic raw) {}
+Uint8List _wire2api_uint_8_list(dynamic raw) {
+  throw UnimplementedError();
+}
 
-Weekdays _wire2api_weekdays(dynamic raw) {}
+Weekdays _wire2api_weekdays(dynamic raw) {
+  throw UnimplementedError();
+}

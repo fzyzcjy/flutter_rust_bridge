@@ -18,7 +18,7 @@ pub trait TypeDartGeneratorTrait {
     }
 
     fn wasm_wire2api_body(&self) -> String {
-        "".to_string()
+        "throw UnimplementedError();".to_string()
     }
 
     fn structs(&self) -> String {
