@@ -548,3 +548,162 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
 Weekdays _wire2api_weekdays(dynamic raw) {
   throw UnimplementedError();
 }
+
+// Section: wire structs
+
+@JS()
+@anonymous
+class wire_ApplicationEnv {
+  external factory wire_ApplicationEnv({
+    required List<wire_ApplicationEnvVar> vars,
+  });
+}
+
+@JS()
+@anonymous
+class wire_ApplicationEnvVar {
+  external factory wire_ApplicationEnvVar({
+    required String field0,
+    required bool field1,
+  });
+}
+
+@JS()
+@anonymous
+class wire_ApplicationSettings {
+  external factory wire_ApplicationSettings({
+    required String name,
+    required String version,
+    required int mode,
+    required wire_ApplicationEnv env,
+  });
+}
+
+@JS()
+@anonymous
+class wire_Attribute {
+  external factory wire_Attribute({
+    required String key,
+    required String value,
+  });
+}
+
+@JS()
+@anonymous
+class wire_Customized {
+  external factory wire_Customized({
+    required String final_field,
+    String? non_final_field,
+  });
+}
+
+@JS()
+@anonymous
+class wire_ExoticOptionals {
+  external factory wire_ExoticOptionals({
+    int? int32,
+    BigInt? int64,
+    double? float64,
+    bool? boolean,
+    Uint8List? zerocopy,
+    Int8List? int8list,
+    Uint8List? uint8list,
+    Int32List? int32list,
+    List<BigInt>? int64list,
+    Float32List? float32list,
+    Float64List? float64list,
+    List<wire_Attribute>? attributes,
+    required List<wire_Attribute?> attributes_nullable,
+    List<wire_Attribute?>? nullable_attributes,
+    wire_NewTypeInt? newtypeint,
+    List<String>? string_list,
+  });
+}
+
+@JS()
+@anonymous
+class wire_KitchenSink {
+  external factory wire_KitchenSink({
+    required int tag,
+    dynamic kind,
+  });
+}
+
+@JS()
+@anonymous
+class KitchenSink_Primitives {
+  external factory KitchenSink_Primitives({
+    required int int32,
+    required double float64,
+    required bool boolean,
+  });
+}
+
+@JS()
+@anonymous
+class KitchenSink_Nested {
+  external factory KitchenSink_Nested({
+    required wire_KitchenSink field0,
+  });
+}
+
+@JS()
+@anonymous
+class KitchenSink_Optional {
+  external factory KitchenSink_Optional({
+    int? field0,
+    int? field1,
+  });
+}
+
+@JS()
+@anonymous
+class KitchenSink_Buffer {
+  external factory KitchenSink_Buffer({
+    required Uint8List field0,
+  });
+}
+
+@JS()
+@anonymous
+class KitchenSink_Enums {
+  external factory KitchenSink_Enums({
+    required int field0,
+  });
+}
+
+@JS()
+@anonymous
+class wire_MySize {
+  external factory wire_MySize({
+    required int width,
+    required int height,
+  });
+}
+
+@JS()
+@anonymous
+class wire_MyStruct {
+  external factory wire_MyStruct({
+    required bool content,
+  });
+}
+
+@JS()
+@anonymous
+class wire_MyTreeNode {
+  external factory wire_MyTreeNode({
+    required int value_i32,
+    required Uint8List value_vec_u8,
+    required bool value_boolean,
+    required List<wire_MyTreeNode> children,
+  });
+}
+
+@JS()
+@anonymous
+class wire_NewTypeInt {
+  external factory wire_NewTypeInt({
+    required BigInt field0,
+  });
+}

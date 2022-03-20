@@ -97,4 +97,28 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             comments, self.ir.name, field_declarations, self.ir.name, constructor_params
         )
     }
+
+    fn wasm_structs(&self) -> String {
+        let params = self
+            .ir
+            .get(self.context.ir_file)
+            .fields
+            .iter()
+            .map(|field| {
+                format!(
+                    "{}{} {}",
+                    field.ty.dart_required_modifier(),
+                    field.ty.js_wire_type(),
+                    field.name.rust_style()
+                )
+            })
+            .collect::<Vec<_>>();
+        format!(
+            "@JS()
+@anonymous
+class {name} {{ external factory {name}({{ {params}, }}); }}",
+            name = self.ir.rust_wire_type(),
+            params = params.join(",")
+        )
+    }
 }

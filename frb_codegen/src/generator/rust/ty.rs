@@ -33,6 +33,10 @@ pub trait TypeRustGeneratorTrait {
         "".to_string()
     }
 
+    fn wasm_structs(&self) -> Option<String> {
+        None
+    }
+
     fn allocate_funcs(&self, _collector: &mut ExternFuncCollector) -> String {
         "".to_string()
     }

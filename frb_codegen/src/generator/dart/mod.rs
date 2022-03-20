@@ -175,6 +175,10 @@ pub fn generate(
             .iter()
             .map(generate_wasm_api_func)
             .collect::<Vec<_>>();
+        let dart_wasm_structs = distinct_input_types
+            .iter()
+            .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file).wasm_structs())
+            .collect::<Vec<_>>();
         let wasm_body = format!(
             "
 class {dart_api_impl_class_name} implements {dart_api_class_name} {{
@@ -188,10 +192,14 @@ class {dart_api_impl_class_name} implements {dart_api_class_name} {{
 {}
 
 // Section: wire2api
+{}
+
+// Section: wire structs
 {}",
             dart_fn_imports.join("\n\n"),
             dart_wasm_api2wire_funcs.join("\n\n"),
             dart_wasm_wire2api_funcs.join("\n\n"),
+            dart_wasm_structs.join("\n\n"),
             dart_api_impl_class_name = dart_api_impl_class_name,
             dart_api_class_name = dart_api_class_name
         );

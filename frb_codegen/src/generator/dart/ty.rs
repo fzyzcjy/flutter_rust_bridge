@@ -24,6 +24,10 @@ pub trait TypeDartGeneratorTrait {
     fn structs(&self) -> String {
         "".to_string()
     }
+
+    fn wasm_structs(&self) -> String {
+        "".to_string()
+    }
 }
 
 #[derive(Debug, Clone)]

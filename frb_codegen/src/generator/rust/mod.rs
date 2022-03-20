@@ -167,9 +167,17 @@ impl Generator {
 
         let native = lines.join("\n");
         if self.wasm {
+            let mut lines = vec!["#[wasm_bindgen] extern \"C\" {".to_owned()];
+            lines.extend(
+                distinct_input_types
+                    .iter()
+                    .filter_map(|ty| TypeRustGenerator::new(ty.clone(), ir_file).wasm_structs()),
+            );
+            lines.push("}".to_owned());
+            let wasm = lines.join("\n");
             Code::Multi {
                 native,
-                wasm: "".into(),
+                wasm,
                 stub: "
 #[cfg(not(target_family = \"wasm\"))]
 mod native;

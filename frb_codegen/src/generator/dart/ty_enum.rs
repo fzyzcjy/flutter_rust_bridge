@@ -204,4 +204,61 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             )
         }
     }
+    fn wasm_structs(&self) -> String {
+        if let IrTypeEnumRef {
+            is_struct: false, ..
+        } = self.ir
+        {
+            return "".to_owned();
+        }
+        /// TODO: Find a better place for this helper
+        fn generate_wire_struct_core(name: &str, fields: &[IrField]) -> String {
+            let params = fields
+                .iter()
+                .map(|field| {
+                    format!(
+                        "{}{} {}",
+                        field.ty.dart_required_modifier(),
+                        field.ty.js_wire_type(),
+                        field.name.rust_style()
+                    )
+                })
+                .collect::<Vec<_>>();
+            format!(
+                "@JS()
+@anonymous
+class {name} {{ external factory {name}({{ {params}, }}); }}",
+                name = name,
+                params = params.join(",")
+            )
+        }
+        let enum_structs = self
+            .ir
+            .get(self.context.ir_file)
+            .variants()
+            .iter()
+            .filter_map(|variant| match &variant.kind {
+                IrVariantKind::Struct(st) => Some(generate_wire_struct_core(
+                    &format!("{}_{}", self.ir.name, variant.name.rust_style()),
+                    &st.fields,
+                )),
+                _ => None,
+            })
+            .collect::<Vec<_>>()
+            .join("\n\n");
+        format!(
+            "@JS()
+        @anonymous
+        class {name} {{
+            external factory {name}({{
+                required int tag,
+                dynamic kind,
+            }});
+        }}
+
+        {}",
+            enum_structs,
+            name = self.ir.wasm_wire_type(),
+        )
+    }
 }
