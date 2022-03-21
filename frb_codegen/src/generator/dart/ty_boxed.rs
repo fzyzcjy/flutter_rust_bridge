@@ -24,6 +24,10 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
         })
     }
 
+    fn wasm_api2wire_body(&self) -> Option<String> {
+        Some("throw UnimplementedError();".to_owned())
+    }
+
     fn api_fill_to_wire_body(&self) -> Option<String> {
         if !matches!(*self.ir.inner, Primitive(_)) {
             Some(format!(

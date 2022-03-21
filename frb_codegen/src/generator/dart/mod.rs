@@ -125,7 +125,7 @@ pub fn generate(
         ",
         dart_func_signatures_and_implementations
             .iter()
-            .map(|(_, imp, _)| imp.clone())
+            .map(|(_, imp, _)| imp.as_str())
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_api2wire_funcs.join("\n\n"),
@@ -183,6 +183,8 @@ pub fn generate(
             "
 class {dart_api_impl_class_name} implements {dart_api_class_name} {{
     const {dart_api_impl_class_name}();
+
+    {}
 }}
 
 // Section: function imports
@@ -196,6 +198,11 @@ class {dart_api_impl_class_name} implements {dart_api_class_name} {{
 
 // Section: wire structs
 {}",
+            dart_func_signatures_and_implementations
+                .iter()
+                .map(|(_, imp, _)| imp.as_str())
+                .collect::<Vec<_>>()
+                .join("\n\n"),
             dart_fn_imports.join("\n\n"),
             dart_wasm_api2wire_funcs.join("\n\n"),
             dart_wasm_wire2api_funcs.join("\n\n"),
@@ -433,7 +440,7 @@ fn generate_wasm_api_func(func: &IrFunc) -> String {
         .collect::<Vec<_>>();
     format!(
         r#"@JS(r"wasm_bindgen.{name}")
-        external void _wasm_{name}({args});"#,
+        external void _{name}({args});"#,
         name = func.wire_func_name(),
         args = args.join(",")
     )

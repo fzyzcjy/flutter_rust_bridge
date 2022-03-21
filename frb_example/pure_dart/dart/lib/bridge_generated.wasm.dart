@@ -14,190 +14,612 @@ import "bridge_generated.d.dart";
 
 class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   const FlutterRustBridgeExampleImpl();
+
+  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_simple_adder(port_, _api2wire_i32(a), _api2wire_i32(b)),
+        parseSuccessData: _wire2api_i32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "simple_adder",
+          argNames: ["a", "b"],
+        ),
+        argValues: [a, b],
+        hint: hint,
+      ));
+
+  Future<int> primitiveTypes(
+          {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            inner.wire_primitive_types(port_, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), myBool),
+        parseSuccessData: _wire2api_i32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "primitive_types",
+          argNames: ["myI32", "myI64", "myF64", "myBool"],
+        ),
+        argValues: [myI32, myI64, myF64, myBool],
+        hint: hint,
+      ));
+
+  Future<int> primitiveU32({required int myU32, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_primitive_u32(port_, _api2wire_u32(myU32)),
+        parseSuccessData: _wire2api_u32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "primitive_u32",
+          argNames: ["myU32"],
+        ),
+        argValues: [myU32],
+        hint: hint,
+      ));
+
+  Future<String> handleString({required String s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_string(port_, _api2wire_String(s)),
+        parseSuccessData: _wire2api_String,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_string",
+          argNames: ["s"],
+        ),
+        argValues: [s],
+        hint: hint,
+      ));
+
+  Future<void> handleReturnUnit({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_return_unit(port_),
+        parseSuccessData: _wire2api_unit,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_return_unit",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
+  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_vec_u8(port_, _api2wire_uint_8_list(v)),
+        parseSuccessData: _wire2api_uint_8_list,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_vec_u8",
+          argNames: ["v"],
+        ),
+        argValues: [v],
+        hint: hint,
+      ));
+
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_vec_of_primitive(port_, _api2wire_i32(n)),
+        parseSuccessData: _wire2api_vec_of_primitive_pack,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_vec_of_primitive",
+          argNames: ["n"],
+        ),
+        argValues: [n],
+        hint: hint,
+      ));
+
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_zero_copy_vec_of_primitive(port_, _api2wire_i32(n)),
+        parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_zero_copy_vec_of_primitive",
+          argNames: ["n"],
+        ),
+        argValues: [n],
+        hint: hint,
+      ));
+
+  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            inner.wire_handle_struct(port_, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
+        parseSuccessData: _wire2api_my_size,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_struct",
+          argNames: ["arg", "boxed"],
+        ),
+        argValues: [arg, boxed],
+        hint: hint,
+      ));
+
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_newtype(port_, _api2wire_box_autoadd_new_type_int(arg)),
+        parseSuccessData: _wire2api_new_type_int,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_newtype",
+          argNames: ["arg"],
+        ),
+        argValues: [arg],
+        hint: hint,
+      ));
+
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_list_of_struct(port_, _api2wire_list_my_size(l)),
+        parseSuccessData: _wire2api_list_my_size,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_list_of_struct",
+          argNames: ["l"],
+        ),
+        argValues: [l],
+        hint: hint,
+      ));
+
+  Future<List<String>> handleStringList({required List<String> names, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_string_list(port_, _api2wire_StringList(names)),
+        parseSuccessData: _wire2api_StringList,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_string_list",
+          argNames: ["names"],
+        ),
+        argValues: [names],
+        hint: hint,
+      ));
+
+  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_complex_struct(port_, _api2wire_box_autoadd_my_tree_node(s)),
+        parseSuccessData: _wire2api_my_tree_node,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_complex_struct",
+          argNames: ["s"],
+        ),
+        argValues: [s],
+        hint: hint,
+      ));
+
+  Uint8List handleSyncReturn({required String mode, dynamic hint}) => executeSync(FlutterRustBridgeSyncTask(
+        callFfi: () => inner.wire_handle_sync_return(_api2wire_String(mode)),
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_sync_return",
+          argNames: ["mode"],
+        ),
+        argValues: [mode],
+        hint: hint,
+      ));
+
+  Stream<String> handleStream({required String arg, dynamic hint}) => executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_stream(port_, _api2wire_String(arg)),
+        parseSuccessData: _wire2api_String,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_stream",
+          argNames: ["arg"],
+        ),
+        argValues: [arg],
+        hint: hint,
+      ));
+
+  Future<int> returnErr({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_err(port_),
+        parseSuccessData: _wire2api_i32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "return_err",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
+  Future<int> returnPanic({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_panic(port_),
+        parseSuccessData: _wire2api_i32,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "return_panic",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
+  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_optional_return(port_, _api2wire_f64(left), _api2wire_f64(right)),
+        parseSuccessData: _wire2api_opt_box_autoadd_f64,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_optional_return",
+          argNames: ["left", "right"],
+        ),
+        argValues: [left, right],
+        hint: hint,
+      ));
+
+  Future<Element?> handleOptionalStruct({String? document, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_optional_struct(port_, _api2wire_opt_String(document)),
+        parseSuccessData: _wire2api_opt_box_autoadd_element,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_optional_struct",
+          argNames: ["document"],
+        ),
+        argValues: [document],
+        hint: hint,
+      ));
+
+  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            inner.wire_handle_optional_increment(port_, _api2wire_opt_box_autoadd_exotic_optionals(opt)),
+        parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_optional_increment",
+          argNames: ["opt"],
+        ),
+        argValues: [opt],
+        hint: hint,
+      ));
+
+  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_increment_boxed_optional(port_, _api2wire_opt_box_f64(opt)),
+        parseSuccessData: _wire2api_f64,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_increment_boxed_optional",
+          argNames: ["opt"],
+        ),
+        argValues: [opt],
+        hint: hint,
+      ));
+
+  Future<String> handleOptionBoxArguments(
+          {int? i8Box,
+          int? u8Box,
+          int? i32Box,
+          int? i64Box,
+          double? f64Box,
+          bool? boolbox,
+          ExoticOptionals? structbox,
+          dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_option_box_arguments(
+            port_,
+            _api2wire_opt_box_i8(i8Box),
+            _api2wire_opt_box_u8(u8Box),
+            _api2wire_opt_box_i32(i32Box),
+            _api2wire_opt_box_i64(i64Box),
+            _api2wire_opt_box_f64(f64Box),
+            _api2wire_opt_box_bool(boolbox),
+            _api2wire_opt_box_exotic_optionals(structbox)),
+        parseSuccessData: _wire2api_String,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_option_box_arguments",
+          argNames: ["i8Box", "u8Box", "i32Box", "i64Box", "f64Box", "boolbox", "structbox"],
+        ),
+        argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
+        hint: hint,
+      ));
+
+  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_return_enum(port_, _api2wire_String(input)),
+        parseSuccessData: _wire2api_opt_weekdays,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_return_enum",
+          argNames: ["input"],
+        ),
+        argValues: [input],
+        hint: hint,
+      ));
+
+  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_enum_parameter(port_, _api2wire_weekdays(weekday)),
+        parseSuccessData: _wire2api_weekdays,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_enum_parameter",
+          argNames: ["weekday"],
+        ),
+        argValues: [weekday],
+        hint: hint,
+      ));
+
+  Future<Uint64List> handleU64Vec({Uint64List? vec, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_u64_vec(port_, _api2wire_opt_uint_64_list(vec)),
+        parseSuccessData: _wire2api_uint_64_list,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_u64_vec",
+          argNames: ["vec"],
+        ),
+        argValues: [vec],
+        hint: hint,
+      ));
+
+  Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_customized_struct(port_, _api2wire_box_autoadd_customized(val)),
+        parseSuccessData: _wire2api_unit,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_customized_struct",
+          argNames: ["val"],
+        ),
+        argValues: [val],
+        hint: hint,
+      ));
+
+  Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_enum_struct(port_, _api2wire_box_autoadd_kitchen_sink(val)),
+        parseSuccessData: _wire2api_kitchen_sink,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_enum_struct",
+          argNames: ["val"],
+        ),
+        argValues: [val],
+        hint: hint,
+      ));
+
+  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_use_imported_struct(port_, _api2wire_box_autoadd_my_struct(myStruct)),
+        parseSuccessData: _wire2api_bool,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "use_imported_struct",
+          argNames: ["myStruct"],
+        ),
+        argValues: [myStruct],
+        hint: hint,
+      ));
+
+  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_use_imported_enum(port_, _api2wire_my_enum(myEnum)),
+        parseSuccessData: _wire2api_bool,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "use_imported_enum",
+          argNames: ["myEnum"],
+        ),
+        argValues: [myEnum],
+        hint: hint,
+      ));
+
+  Future<ApplicationSettings> getAppSettings({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_app_settings(port_),
+        parseSuccessData: _wire2api_application_settings,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "get_app_settings",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
+  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_is_app_embedded(port_, _api2wire_box_autoadd_application_settings(appSettings)),
+        parseSuccessData: _wire2api_bool,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "is_app_embedded",
+          argNames: ["appSettings"],
+        ),
+        argValues: [appSettings],
+        hint: hint,
+      ));
+
+  Future<ApplicationMessage> getMessage({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_message(port_),
+        parseSuccessData: _wire2api_application_message,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "get_message",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
 }
 
 // Section: function imports
 @JS(r"wasm_bindgen.wire_simple_adder")
-external void _wasm_wire_simple_adder(int port_, int a, int b);
+external void _wire_simple_adder(int port_, int a, int b);
 
 @JS(r"wasm_bindgen.wire_primitive_types")
-external void _wasm_wire_primitive_types(int port_, int my_i32, BigInt my_i64, double my_f64, bool my_bool);
+external void _wire_primitive_types(int port_, int my_i32, BigInt my_i64, double my_f64, bool my_bool);
 
 @JS(r"wasm_bindgen.wire_primitive_u32")
-external void _wasm_wire_primitive_u32(int port_, int my_u32);
+external void _wire_primitive_u32(int port_, int my_u32);
 
 @JS(r"wasm_bindgen.wire_handle_string")
-external void _wasm_wire_handle_string(int port_, String s);
+external void _wire_handle_string(int port_, String s);
 
 @JS(r"wasm_bindgen.wire_handle_return_unit")
-external void _wasm_wire_handle_return_unit(int port_);
+external void _wire_handle_return_unit(int port_);
 
 @JS(r"wasm_bindgen.wire_handle_vec_u8")
-external void _wasm_wire_handle_vec_u8(int port_, Uint8List v);
+external void _wire_handle_vec_u8(int port_, Uint8List v);
 
 @JS(r"wasm_bindgen.wire_handle_vec_of_primitive")
-external void _wasm_wire_handle_vec_of_primitive(int port_, int n);
+external void _wire_handle_vec_of_primitive(int port_, int n);
 
 @JS(r"wasm_bindgen.wire_handle_zero_copy_vec_of_primitive")
-external void _wasm_wire_handle_zero_copy_vec_of_primitive(int port_, int n);
+external void _wire_handle_zero_copy_vec_of_primitive(int port_, int n);
 
 @JS(r"wasm_bindgen.wire_handle_struct")
-external void _wasm_wire_handle_struct(int port_, wire_MySize arg, wire_MySize boxed);
+external void _wire_handle_struct(int port_, wire_MySize arg, wire_MySize boxed);
 
 @JS(r"wasm_bindgen.wire_handle_newtype")
-external void _wasm_wire_handle_newtype(int port_, wire_NewTypeInt arg);
+external void _wire_handle_newtype(int port_, wire_NewTypeInt arg);
 
 @JS(r"wasm_bindgen.wire_handle_list_of_struct")
-external void _wasm_wire_handle_list_of_struct(int port_, List<wire_MySize> l);
+external void _wire_handle_list_of_struct(int port_, List<wire_MySize> l);
 
 @JS(r"wasm_bindgen.wire_handle_string_list")
-external void _wasm_wire_handle_string_list(int port_, List<String> names);
+external void _wire_handle_string_list(int port_, List<String> names);
 
 @JS(r"wasm_bindgen.wire_handle_complex_struct")
-external void _wasm_wire_handle_complex_struct(int port_, wire_MyTreeNode s);
+external void _wire_handle_complex_struct(int port_, wire_MyTreeNode s);
 
 @JS(r"wasm_bindgen.wire_handle_sync_return")
-external void _wasm_wire_handle_sync_return(String mode);
+external void _wire_handle_sync_return(String mode);
 
 @JS(r"wasm_bindgen.wire_handle_stream")
-external void _wasm_wire_handle_stream(int port_, String arg);
+external void _wire_handle_stream(int port_, String arg);
 
 @JS(r"wasm_bindgen.wire_return_err")
-external void _wasm_wire_return_err(int port_);
+external void _wire_return_err(int port_);
 
 @JS(r"wasm_bindgen.wire_return_panic")
-external void _wasm_wire_return_panic(int port_);
+external void _wire_return_panic(int port_);
 
 @JS(r"wasm_bindgen.wire_handle_optional_return")
-external void _wasm_wire_handle_optional_return(int port_, double left, double right);
+external void _wire_handle_optional_return(int port_, double left, double right);
 
 @JS(r"wasm_bindgen.wire_handle_optional_struct")
-external void _wasm_wire_handle_optional_struct(int port_, String? document);
+external void _wire_handle_optional_struct(int port_, String? document);
 
 @JS(r"wasm_bindgen.wire_handle_optional_increment")
-external void _wasm_wire_handle_optional_increment(int port_, wire_ExoticOptionals? opt);
+external void _wire_handle_optional_increment(int port_, wire_ExoticOptionals? opt);
 
 @JS(r"wasm_bindgen.wire_handle_increment_boxed_optional")
-external void _wasm_wire_handle_increment_boxed_optional(int port_, double? opt);
+external void _wire_handle_increment_boxed_optional(int port_, double? opt);
 
 @JS(r"wasm_bindgen.wire_handle_option_box_arguments")
-external void _wasm_wire_handle_option_box_arguments(int port_, int? i8box, int? u8box, int? i32box, BigInt? i64box,
+external void _wire_handle_option_box_arguments(int port_, int? i8box, int? u8box, int? i32box, BigInt? i64box,
     double? f64box, bool? boolbox, wire_ExoticOptionals? structbox);
 
 @JS(r"wasm_bindgen.wire_handle_return_enum")
-external void _wasm_wire_handle_return_enum(int port_, String input);
+external void _wire_handle_return_enum(int port_, String input);
 
 @JS(r"wasm_bindgen.wire_handle_enum_parameter")
-external void _wasm_wire_handle_enum_parameter(int port_, int weekday);
+external void _wire_handle_enum_parameter(int port_, int weekday);
 
 @JS(r"wasm_bindgen.wire_handle_u64_vec")
-external void _wasm_wire_handle_u64_vec(int port_, List<BigInt>? vec);
+external void _wire_handle_u64_vec(int port_, List<BigInt>? vec);
 
 @JS(r"wasm_bindgen.wire_handle_customized_struct")
-external void _wasm_wire_handle_customized_struct(int port_, wire_Customized val);
+external void _wire_handle_customized_struct(int port_, wire_Customized val);
 
 @JS(r"wasm_bindgen.wire_handle_enum_struct")
-external void _wasm_wire_handle_enum_struct(int port_, wire_KitchenSink val);
+external void _wire_handle_enum_struct(int port_, wire_KitchenSink val);
 
 @JS(r"wasm_bindgen.wire_use_imported_struct")
-external void _wasm_wire_use_imported_struct(int port_, wire_MyStruct my_struct);
+external void _wire_use_imported_struct(int port_, wire_MyStruct my_struct);
 
 @JS(r"wasm_bindgen.wire_use_imported_enum")
-external void _wasm_wire_use_imported_enum(int port_, int my_enum);
+external void _wire_use_imported_enum(int port_, int my_enum);
 
 @JS(r"wasm_bindgen.wire_get_app_settings")
-external void _wasm_wire_get_app_settings(int port_);
+external void _wire_get_app_settings(int port_);
 
 @JS(r"wasm_bindgen.wire_is_app_embedded")
-external void _wasm_wire_is_app_embedded(int port_, wire_ApplicationSettings app_settings);
+external void _wire_is_app_embedded(int port_, wire_ApplicationSettings app_settings);
 
 @JS(r"wasm_bindgen.wire_get_message")
-external void _wasm_wire_get_message(int port_);
+external void _wire_get_message(int port_);
 
 // Section: api2wire
 
+wire_ApplicationEnv _api2wire_box_application_env(ApplicationEnv raw) {
+  throw UnimplementedError();
+}
+
+wire_Attribute _api2wire_box_autoadd_attribute(Attribute raw) {
+  throw UnimplementedError();
+}
+
+bool _api2wire_box_autoadd_bool(bool raw) {
+  throw UnimplementedError();
+}
+
+wire_Element _api2wire_box_autoadd_element(Element raw) {
+  throw UnimplementedError();
+}
+
+wire_ExoticOptionals _api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
+  throw UnimplementedError();
+}
+
+double _api2wire_box_autoadd_f64(double raw) {
+  throw UnimplementedError();
+}
+
+int _api2wire_box_autoadd_i32(int raw) {
+  throw UnimplementedError();
+}
+
+BigInt _api2wire_box_autoadd_i64(int raw) {
+  throw UnimplementedError();
+}
+
+wire_NewTypeInt _api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
+  throw UnimplementedError();
+}
+
+wire_KitchenSink _api2wire_box_kitchen_sink(KitchenSink raw) {
+  throw UnimplementedError();
+}
+
 String? _api2wire_opt_String(String? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_String(raw);
+  return raw == null ? null : _api2wire_String(raw);
 }
 
 List<String>? _api2wire_opt_StringList(List<String>? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_StringList(raw);
+  return raw == null ? null : _api2wire_StringList(raw);
 }
 
 Uint8List? _api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_ZeroCopyBuffer_Uint8List(raw);
+  return raw == null ? null : _api2wire_ZeroCopyBuffer_Uint8List(raw);
 }
 
 wire_Attribute? _api2wire_opt_box_autoadd_attribute(Attribute? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_box_autoadd_attribute(raw);
+  return raw == null ? null : _api2wire_box_autoadd_attribute(raw);
 }
 
 bool? _api2wire_opt_box_autoadd_bool(bool? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_box_autoadd_bool(raw);
+  return raw == null ? null : _api2wire_box_autoadd_bool(raw);
 }
 
 wire_Element? _api2wire_opt_box_autoadd_element(Element? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_box_autoadd_element(raw);
+  return raw == null ? null : _api2wire_box_autoadd_element(raw);
 }
 
 wire_ExoticOptionals? _api2wire_opt_box_autoadd_exotic_optionals(ExoticOptionals? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_box_autoadd_exotic_optionals(raw);
+  return raw == null ? null : _api2wire_box_autoadd_exotic_optionals(raw);
 }
 
 double? _api2wire_opt_box_autoadd_f64(double? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_box_autoadd_f64(raw);
+  return raw == null ? null : _api2wire_box_autoadd_f64(raw);
 }
 
 int? _api2wire_opt_box_autoadd_i32(int? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_box_autoadd_i32(raw);
+  return raw == null ? null : _api2wire_box_autoadd_i32(raw);
 }
 
 BigInt? _api2wire_opt_box_autoadd_i64(int? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_box_autoadd_i64(raw);
+  return raw == null ? null : _api2wire_box_autoadd_i64(raw);
 }
 
 wire_NewTypeInt? _api2wire_opt_box_autoadd_new_type_int(NewTypeInt? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_box_autoadd_new_type_int(raw);
+  return raw == null ? null : _api2wire_box_autoadd_new_type_int(raw);
 }
 
 Float32List? _api2wire_opt_float_32_list(Float32List? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_float_32_list(raw);
+  return raw == null ? null : _api2wire_float_32_list(raw);
 }
 
 Float64List? _api2wire_opt_float_64_list(Float64List? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_float_64_list(raw);
+  return raw == null ? null : _api2wire_float_64_list(raw);
 }
 
 Int32List? _api2wire_opt_int_32_list(Int32List? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_int_32_list(raw);
+  return raw == null ? null : _api2wire_int_32_list(raw);
 }
 
 List<BigInt>? _api2wire_opt_int_64_list(Int64List? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_int_64_list(raw);
+  return raw == null ? null : _api2wire_int_64_list(raw);
 }
 
 Int8List? _api2wire_opt_int_8_list(Int8List? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_int_8_list(raw);
+  return raw == null ? null : _api2wire_int_8_list(raw);
 }
 
 List<wire_Attribute>? _api2wire_opt_list_attribute(List<Attribute>? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_list_attribute(raw);
+  return raw == null ? null : _api2wire_list_attribute(raw);
 }
 
 List<wire_Element>? _api2wire_opt_list_element(List<Element>? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_list_element(raw);
+  return raw == null ? null : _api2wire_list_element(raw);
 }
 
 List<wire_Attribute?>? _api2wire_opt_list_opt_box_autoadd_attribute(List<Attribute?>? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_list_opt_box_autoadd_attribute(raw);
+  return raw == null ? null : _api2wire_list_opt_box_autoadd_attribute(raw);
 }
 
 Uint8List? _api2wire_opt_uint_8_list(Uint8List? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_uint_8_list(raw);
+  return raw == null ? null : _api2wire_uint_8_list(raw);
 }
 
 int? _api2wire_opt_weekdays(Weekdays? raw) {
-  return raw == null ? ffi.nullptr : _api2wire_weekdays(raw);
+  return raw == null ? null : _api2wire_weekdays(raw);
 }
 
 // Section: wire2api
@@ -422,107 +844,107 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
 }
 
 String? _wire2api_opt_String(dynamic raw) {
-  return raw == null ? null : _wire2api_String(raw);
+  throw UnimplementedError();
 }
 
 List<String>? _wire2api_opt_StringList(dynamic raw) {
-  return raw == null ? null : _wire2api_StringList(raw);
+  throw UnimplementedError();
 }
 
 Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
-  return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
+  throw UnimplementedError();
 }
 
 Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_attribute(raw);
+  throw UnimplementedError();
 }
 
 bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_bool(raw);
+  throw UnimplementedError();
 }
 
 ExoticOptionals? _wire2api_opt_box_autoadd_exotic_optionals(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_exotic_optionals(raw);
+  throw UnimplementedError();
 }
 
 double? _wire2api_opt_box_autoadd_f64(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_f64(raw);
+  throw UnimplementedError();
 }
 
 int? _wire2api_opt_box_autoadd_i32(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_i32(raw);
+  throw UnimplementedError();
 }
 
 int? _wire2api_opt_box_autoadd_i64(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_i64(raw);
+  throw UnimplementedError();
 }
 
 NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
+  throw UnimplementedError();
 }
 
 bool? _wire2api_opt_box_bool(dynamic raw) {
-  return raw == null ? null : _wire2api_box_bool(raw);
+  throw UnimplementedError();
 }
 
 ExoticOptionals? _wire2api_opt_box_exotic_optionals(dynamic raw) {
-  return raw == null ? null : _wire2api_box_exotic_optionals(raw);
+  throw UnimplementedError();
 }
 
 double? _wire2api_opt_box_f64(dynamic raw) {
-  return raw == null ? null : _wire2api_box_f64(raw);
+  throw UnimplementedError();
 }
 
 int? _wire2api_opt_box_i32(dynamic raw) {
-  return raw == null ? null : _wire2api_box_i32(raw);
+  throw UnimplementedError();
 }
 
 int? _wire2api_opt_box_i64(dynamic raw) {
-  return raw == null ? null : _wire2api_box_i64(raw);
+  throw UnimplementedError();
 }
 
 int? _wire2api_opt_box_i8(dynamic raw) {
-  return raw == null ? null : _wire2api_box_i8(raw);
+  throw UnimplementedError();
 }
 
 int? _wire2api_opt_box_u8(dynamic raw) {
-  return raw == null ? null : _wire2api_box_u8(raw);
+  throw UnimplementedError();
 }
 
 Float32List? _wire2api_opt_float_32_list(dynamic raw) {
-  return raw == null ? null : _wire2api_float_32_list(raw);
+  throw UnimplementedError();
 }
 
 Float64List? _wire2api_opt_float_64_list(dynamic raw) {
-  return raw == null ? null : _wire2api_float_64_list(raw);
+  throw UnimplementedError();
 }
 
 Int32List? _wire2api_opt_int_32_list(dynamic raw) {
-  return raw == null ? null : _wire2api_int_32_list(raw);
+  throw UnimplementedError();
 }
 
 Int64List? _wire2api_opt_int_64_list(dynamic raw) {
-  return raw == null ? null : _wire2api_int_64_list(raw);
+  throw UnimplementedError();
 }
 
 Int8List? _wire2api_opt_int_8_list(dynamic raw) {
-  return raw == null ? null : _wire2api_int_8_list(raw);
+  throw UnimplementedError();
 }
 
 List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
-  return raw == null ? null : _wire2api_list_attribute(raw);
+  throw UnimplementedError();
 }
 
 List<Attribute?>? _wire2api_opt_list_opt_box_autoadd_attribute(dynamic raw) {
-  return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
+  throw UnimplementedError();
 }
 
 Uint64List? _wire2api_opt_uint_64_list(dynamic raw) {
-  return raw == null ? null : _wire2api_uint_64_list(raw);
+  throw UnimplementedError();
 }
 
 Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
-  return raw == null ? null : _wire2api_uint_8_list(raw);
+  throw UnimplementedError();
 }
 
 int _wire2api_u32(dynamic raw) {
