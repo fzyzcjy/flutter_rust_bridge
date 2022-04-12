@@ -1,3 +1,7 @@
+## 1.24.0
+
+* Skip unresolvable modules #400 (thanks @Surban)
+
 ## 1.23.0
 
 * Fix extra comma in enum structs #391 (thanks @Desdaemon)
