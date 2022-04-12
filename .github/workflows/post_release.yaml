@@ -146,8 +146,6 @@ jobs:
             family: osx
           - image: macos-11
             family: osx
-          - image: windows-2016
-            family: windows
           - image: windows-2019
             family: windows
           # #113
