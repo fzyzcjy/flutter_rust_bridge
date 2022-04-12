@@ -10,7 +10,7 @@
 use std::{collections::HashMap, fmt::Debug, fs, path::PathBuf};
 
 use cargo_metadata::MetadataCommand;
-use log::debug;
+use log::{debug, warn};
 use syn::{Attribute, Ident, ItemEnum, ItemStruct, UseTree};
 
 use crate::markers;
@@ -273,6 +273,15 @@ impl Module {
                             };
 
                             let file_exists = file_path.exists();
+
+                            if !file_exists {
+                                warn!(
+                                    "Skipping unresolvable module {} (tried {})",
+                                    &ident,
+                                    file_path.to_string_lossy()
+                                );
+                                continue;
+                            }
 
                             let source = if file_exists {
                                 let source_rust_content = fs::read_to_string(&file_path).unwrap();
