@@ -1,3 +1,7 @@
+## Unreleased
+
+* Ignore prefer_const_constructors in generated code #401 (thanks @Surban)
+
 ## 1.24.0
 
 * Skip unresolvable modules #400 (thanks @Surban)
