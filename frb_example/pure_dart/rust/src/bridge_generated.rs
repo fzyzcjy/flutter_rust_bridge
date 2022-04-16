@@ -1744,6 +1744,7 @@ impl support::IntoDart for mirror_ApplicationMessage {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
 
 impl support::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> support::DartCObject {
@@ -1838,6 +1839,7 @@ impl support::IntoDart for KitchenSink {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for KitchenSink {}
 
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartCObject {
