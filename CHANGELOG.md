@@ -1,6 +1,7 @@
-## Unreleased
+## 1.25.0
 
 * Ignore prefer_const_constructors in generated code #401 (thanks @Surban)
+* Add IntoDartExceptPrimitive impl for enums #404 (thanks @Desdaemon)
 
 ## 1.24.0
 
