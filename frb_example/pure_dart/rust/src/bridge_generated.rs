@@ -262,6 +262,18 @@ pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_stream_of_struct(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_stream_of_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || move |task_callback| handle_stream_of_struct(task_callback.stream_sink()),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_return_err(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1847,6 +1859,13 @@ impl support::IntoDart for MySize {
     }
 }
 impl support::IntoDartExceptPrimitive for MySize {}
+
+impl support::IntoDart for MyStreamEntry {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.hello.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyStreamEntry {}
 
 impl support::IntoDart for MyTreeNode {
     fn into_dart(self) -> support::DartCObject {

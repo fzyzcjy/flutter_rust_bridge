@@ -200,6 +200,15 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
     Ok(())
 }
 
+pub struct MyStreamEntry {
+    pub hello: String,
+}
+
+// https://github.com/fzyzcjy/flutter_rust_bridge/issues/398 reports a compile error like this
+pub fn handle_stream_of_struct(sink: StreamSink<MyStreamEntry>) -> Result<()> {
+    Ok(())
+}
+
 pub fn return_err() -> Result<i32> {
     Err(anyhow!(
         "return_err() is called, thus deliberately return Err"

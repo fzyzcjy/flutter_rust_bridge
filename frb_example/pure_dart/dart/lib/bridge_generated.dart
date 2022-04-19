@@ -53,6 +53,8 @@ abstract class FlutterRustBridgeExample {
 
   Stream<String> handleStream({required String arg, dynamic hint});
 
+  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint});
+
   Future<int> returnErr({dynamic hint});
 
   Future<int> returnPanic({dynamic hint});
@@ -252,6 +254,14 @@ class MySize {
   MySize({
     required this.width,
     required this.height,
+  });
+}
+
+class MyStreamEntry {
+  final String hello;
+
+  MyStreamEntry({
+    required this.hello,
   });
 }
 
@@ -527,6 +537,17 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
           argNames: ["arg"],
         ),
         argValues: [arg],
+        hint: hint,
+      ));
+
+  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint}) => executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_stream_of_struct(port_),
+        parseSuccessData: _wire2api_my_stream_entry,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "handle_stream_of_struct",
+          argNames: [],
+        ),
+        argValues: [],
         hint: hint,
       ));
 
@@ -1556,6 +1577,14 @@ MySize _wire2api_my_size(dynamic raw) {
   );
 }
 
+MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return MyStreamEntry(
+    hello: _wire2api_String(arr[0]),
+  );
+}
+
 MyTreeNode _wire2api_my_tree_node(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
@@ -1978,6 +2007,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_stream');
   late final _wire_handle_stream =
       _wire_handle_streamPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_stream_of_struct(
+    int port_,
+  ) {
+    return _wire_handle_stream_of_struct(
+      port_,
+    );
+  }
+
+  late final _wire_handle_stream_of_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_stream_of_struct');
+  late final _wire_handle_stream_of_struct = _wire_handle_stream_of_structPtr.asFunction<void Function(int)>();
 
   void wire_return_err(
     int port_,
