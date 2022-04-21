@@ -144,6 +144,9 @@ pub fn parse(raw: RawOpts) -> Opts {
                 "/usr/lib/llvm-13/lib".to_owned(),
                 "/usr/lib/".to_owned(),
                 "/usr/lib64/".to_owned(),
+                "C:/Program Files/llvm".to_owned(), // Default on Windows
+                "C:/Program Files/LLVM".to_owned(),
+                "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
             ]
         }),
         llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
