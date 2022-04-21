@@ -1,3 +1,7 @@
+## 1.26.0
+
+* Add default LLVM installation path for Windows #408 (thanks @Desdaemon)
+
 ## 1.25.0
 
 * Ignore prefer_const_constructors in generated code #401 (thanks @Surban)
