@@ -79,6 +79,7 @@ More specifically, thanks for all these contributions:
 * [trobanga](https://github.com/trobanga): Add a cmd argument.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
+* [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [feber](https://github.com/feber): Fix doc link.
 * [rustui](https://github.com/rustui): Fix a typo.
 
