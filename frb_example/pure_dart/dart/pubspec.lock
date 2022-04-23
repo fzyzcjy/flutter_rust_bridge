@@ -168,7 +168,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.26.0"
+    version: "1.27.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -413,7 +413,7 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.21.0"
+    version: "1.21.1"
   test_api:
     dependency: transitive
     description:
