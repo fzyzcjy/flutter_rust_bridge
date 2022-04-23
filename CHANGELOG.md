@@ -1,3 +1,7 @@
+## 1.27.0
+
+* Add brackets to boxed variable #414 (thanks @Syndim)
+
 ## 1.26.0
 
 * Add default LLVM installation path for Windows #408 (thanks @Desdaemon)
