@@ -58,7 +58,7 @@ impl Generator {
         let distinct_input_types = ir_file.distinct_types(true, false);
         let distinct_output_types = ir_file.distinct_types(false, true);
 
-        lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, non_snake_case)]"#.to_string());
+        lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double-parens, non_snake_case)]"#.to_string());
         lines.push(CODE_HEADER.to_string());
 
         lines.push(String::new());
