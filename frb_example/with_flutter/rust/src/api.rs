@@ -25,6 +25,12 @@ pub fn passing_complex_structs(root: TreeNode) -> String {
     )
 }
 
+pub fn returning_structs_with_boxed_fields() -> BoxedPoint {
+    BoxedPoint {
+        point: Box::new(Point { x: 0.0, y: 0.0 }),
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct Size {
     pub width: i32,
@@ -41,6 +47,11 @@ pub struct Point {
 pub struct TreeNode {
     pub name: String,
     pub children: Vec<TreeNode>,
+}
+
+#[derive(Debug, Clone)]
+pub struct BoxedPoint {
+    pub point: Box<Point>,
 }
 
 // following are used only for memory tests. Readers of this example do not need to consider it.

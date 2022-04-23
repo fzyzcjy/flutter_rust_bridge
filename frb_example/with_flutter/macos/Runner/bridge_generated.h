@@ -50,6 +50,8 @@ void wire_draw_mandelbrot(int64_t port_,
 
 void wire_passing_complex_structs(int64_t port_, struct wire_TreeNode *root);
 
+void wire_returning_structs_with_boxed_fields(int64_t port_);
+
 void wire_off_topic_memory_test_input_array(int64_t port_, struct wire_uint_8_list *input);
 
 void wire_off_topic_memory_test_output_zero_copy_buffer(int64_t port_, int32_t len);
@@ -88,6 +90,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) wire_draw_mandelbrot);
     dummy_var ^= ((int64_t) (void*) wire_passing_complex_structs);
+    dummy_var ^= ((int64_t) (void*) wire_returning_structs_with_boxed_fields);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_input_array);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_zero_copy_buffer);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_vec_u8);

@@ -4,6 +4,7 @@
     clippy::redundant_closure,
     clippy::useless_conversion,
     clippy::unit_arg,
+    clippy::double_parens,
     non_snake_case
 )]
 // AUTO GENERATED FILE, DO NOT EDIT.
@@ -1774,7 +1775,7 @@ impl support::IntoDart for mirror_ApplicationSettings {
             self.0.name.into_dart(),
             self.0.version.into_dart(),
             mirror_ApplicationMode(self.0.mode).into_dart(),
-            mirror_ApplicationEnv(*self.0.env).into_dart(),
+            mirror_ApplicationEnv((*self.0.env)).into_dart(),
         ]
         .into_dart()
     }

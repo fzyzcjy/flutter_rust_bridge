@@ -4,6 +4,7 @@
     clippy::redundant_closure,
     clippy::useless_conversion,
     clippy::unit_arg,
+    clippy::double_parens,
     non_snake_case
 )]
 // AUTO GENERATED FILE, DO NOT EDIT.
@@ -54,6 +55,18 @@ pub extern "C" fn wire_passing_complex_structs(port_: i64, root: *mut wire_TreeN
             let api_root = root.wire2api();
             move |task_callback| Ok(passing_complex_structs(api_root))
         },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_returning_structs_with_boxed_fields(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "returning_structs_with_boxed_fields",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(returning_structs_with_boxed_fields()),
     )
 }
 
@@ -445,6 +458,20 @@ impl NewWithNullPtr for wire_TreeNode {
 }
 
 // Section: impl IntoDart
+
+impl support::IntoDart for BoxedPoint {
+    fn into_dart(self) -> support::DartCObject {
+        vec![(*self.point).into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for BoxedPoint {}
+
+impl support::IntoDart for Point {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.x.into_dart(), self.y.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Point {}
 
 impl support::IntoDart for Size {
     fn into_dart(self) -> support::DartCObject {
