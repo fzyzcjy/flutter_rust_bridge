@@ -28,7 +28,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     }
 
     fn self_access(&self, obj: String) -> String {
-        format!("*{}", obj)
+        format!("(*{})", obj)
     }
 
     fn wrap_obj(&self, obj: String) -> String {

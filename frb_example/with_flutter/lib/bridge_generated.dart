@@ -21,6 +21,8 @@ abstract class FlutterRustBridgeExample {
 
   Future<String> passingComplexStructs({required TreeNode root, dynamic hint});
 
+  Future<BoxedPoint> returningStructsWithBoxedFields({dynamic hint});
+
   Future<int> offTopicMemoryTestInputArray({required Uint8List input, dynamic hint});
 
   Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer({required int len, dynamic hint});
@@ -38,6 +40,14 @@ abstract class FlutterRustBridgeExample {
   Future<int> offTopicDeliberatelyReturnError({dynamic hint});
 
   Future<int> offTopicDeliberatelyPanic({dynamic hint});
+}
+
+class BoxedPoint {
+  final Point point;
+
+  BoxedPoint({
+    required this.point,
+  });
 }
 
 class Point {
@@ -103,6 +113,17 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
           argNames: ["root"],
         ),
         argValues: [root],
+        hint: hint,
+      ));
+
+  Future<BoxedPoint> returningStructsWithBoxedFields({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_returning_structs_with_boxed_fields(port_),
+        parseSuccessData: _wire2api_boxed_point,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "returning_structs_with_boxed_fields",
+          argNames: [],
+        ),
+        argValues: [],
         hint: hint,
       ));
 
@@ -309,6 +330,22 @@ Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
   return raw as Uint8List;
 }
 
+Point _wire2api_box_point(dynamic raw) {
+  return _wire2api_point(raw);
+}
+
+BoxedPoint _wire2api_boxed_point(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return BoxedPoint(
+    point: _wire2api_box_point(arr[0]),
+  );
+}
+
+double _wire2api_f64(dynamic raw) {
+  return raw as double;
+}
+
 int _wire2api_i32(dynamic raw) {
   return raw as int;
 }
@@ -319,6 +356,15 @@ List<Size> _wire2api_list_size(dynamic raw) {
 
 List<TreeNode> _wire2api_list_tree_node(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_tree_node).toList();
+}
+
+Point _wire2api_point(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Point(
+    x: _wire2api_f64(arr[0]),
+    y: _wire2api_f64(arr[1]),
+  );
 }
 
 Size _wire2api_size(dynamic raw) {
@@ -403,6 +449,19 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           'wire_passing_complex_structs');
   late final _wire_passing_complex_structs =
       _wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
+
+  void wire_returning_structs_with_boxed_fields(
+    int port_,
+  ) {
+    return _wire_returning_structs_with_boxed_fields(
+      port_,
+    );
+  }
+
+  late final _wire_returning_structs_with_boxed_fieldsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_returning_structs_with_boxed_fields');
+  late final _wire_returning_structs_with_boxed_fields =
+      _wire_returning_structs_with_boxed_fieldsPtr.asFunction<void Function(int)>();
 
   void wire_off_topic_memory_test_input_array(
     int port_,
