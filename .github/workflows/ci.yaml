@@ -429,7 +429,8 @@ jobs:
         run: dart pub get
       - name: Verify formatting for dart runtime
         working-directory: ./frb_dart
-        run: dart format --output=none --set-exit-if-changed --line-length 120 .
+        # 80 instead of 120
+        run: dart format --output=none --set-exit-if-changed --line-length 80 .
       - name: Analyze project source for dart runtime
         working-directory: ./frb_dart
         run: dart analyze --fatal-infos
