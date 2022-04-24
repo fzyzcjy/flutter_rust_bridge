@@ -41,7 +41,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
-    return completer.future.then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData));
+    return completer.future.then((dynamic raw) =>
+        _transformRust2DartMessage(raw, task.parseSuccessData));
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -76,7 +77,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     }
   }
 
-  S _transformRust2DartMessage<S>(dynamic raw, S Function(dynamic) parseSuccessData) {
+  S _transformRust2DartMessage<S>(
+      dynamic raw, S Function(dynamic) parseSuccessData) {
     final action = raw[0];
     switch (action) {
       case _RUST2DART_ACTION_SUCCESS:
@@ -93,9 +95,11 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     }
   }
 
-  static const _RUST2DART_ACTION_SUCCESS = 0; // ignore: constant_identifier_names
+  static const _RUST2DART_ACTION_SUCCESS =
+      0; // ignore: constant_identifier_names
   static const _RUST2DART_ACTION_ERROR = 1; // ignore: constant_identifier_names
-  static const _RUST2DART_ACTION_CLOSE_STREAM = 2; // ignore: constant_identifier_names
+  static const _RUST2DART_ACTION_CLOSE_STREAM =
+      2; // ignore: constant_identifier_names
 }
 
 /// A task to call FFI function.
@@ -139,7 +143,10 @@ class FlutterRustBridgeSyncTask extends FlutterRustBridgeBaseTask {
 abstract class FlutterRustBridgeWireBase {
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(
-    ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
+    ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Uint8 Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>
+        ptr,
   );
 
   // ignore: non_constant_identifier_names

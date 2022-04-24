@@ -62,7 +62,8 @@ class FlutterRustBridgeTimeoutException {
   /// The stack trace of the error
   final StackTrace stackTrace;
 
-  FlutterRustBridgeTimeoutException(this.duration, this.debugName, this.stackTrace);
+  FlutterRustBridgeTimeoutException(
+      this.duration, this.debugName, this.stackTrace);
 
   @override
   String toString() =>
