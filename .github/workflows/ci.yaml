@@ -464,7 +464,7 @@ jobs:
 
       - name: Analyze dart package using pana
         working-directory: ./frb_dart
-        run: pana --no-warning --line-length 120 --exit-code-threshold 0
+        run: pana --no-warning --line-length 80 --exit-code-threshold 0
 
   # -------------------------- codegen --------------------------
   codegen:
