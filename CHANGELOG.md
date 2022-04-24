@@ -1,3 +1,7 @@
+## 1.27.2
+
+* Enhance documentation
+
 ## 1.27.1
 
 * Format `frb_dart` package line length from 120 to 80
