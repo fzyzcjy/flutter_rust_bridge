@@ -1,3 +1,7 @@
+## 1.28.0
+
+* Add LLVM 14 #416 (thanks @sagudev)
+
 ## 1.27.2
 
 * Enhance documentation
