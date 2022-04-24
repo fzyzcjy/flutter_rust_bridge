@@ -95,17 +95,23 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     }
   }
 
-  static const _RUST2DART_ACTION_SUCCESS =
-      0; // ignore: constant_identifier_names
-  static const _RUST2DART_ACTION_ERROR = 1; // ignore: constant_identifier_names
-  static const _RUST2DART_ACTION_CLOSE_STREAM =
-      2; // ignore: constant_identifier_names
+  // ignore: constant_identifier_names
+  static const _RUST2DART_ACTION_SUCCESS = 0;
+
+  // ignore: constant_identifier_names
+  static const _RUST2DART_ACTION_ERROR = 1;
+
+  // ignore: constant_identifier_names
+  static const _RUST2DART_ACTION_CLOSE_STREAM = 2;
 }
 
 /// A task to call FFI function.
 @immutable
 class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
+  /// The underlying function to call FFI function, usually the generated wire function
   final void Function(int port) callFfi;
+
+  /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;
 
   const FlutterRustBridgeTask({
@@ -124,6 +130,7 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
 /// A task to call FFI function, but it is synchronous.
 @immutable
 class FlutterRustBridgeSyncTask extends FlutterRustBridgeBaseTask {
+  /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturnStruct Function() callFfi;
 
   const FlutterRustBridgeSyncTask({
@@ -141,6 +148,7 @@ class FlutterRustBridgeSyncTask extends FlutterRustBridgeBaseTask {
 /// This class, together with its subclasses, are only for internal usage.
 /// Usually it should not be used by normal users.
 abstract class FlutterRustBridgeWireBase {
+  /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(
     ffi.Pointer<
@@ -149,6 +157,7 @@ abstract class FlutterRustBridgeWireBase {
         ptr,
   );
 
+  /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void free_WireSyncReturnStruct(WireSyncReturnStruct val);
 }
@@ -158,11 +167,14 @@ class _CloseStreamException {}
 // NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
 /// This class is only for internal usage.
 class WireSyncReturnStruct extends ffi.Struct {
+  /// Not to be used by normal users, but has to be public for generated code
   external ffi.Pointer<ffi.Uint8> ptr;
 
+  /// Not to be used by normal users, but has to be public for generated code
   @ffi.Int32()
   external int len;
 
+  /// Not to be used by normal users, but has to be public for generated code
   @ffi.Uint8()
   external int success;
 }
