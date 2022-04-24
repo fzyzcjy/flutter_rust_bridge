@@ -1,3 +1,7 @@
+## 1.27.1
+
+* Format `frb_dart` package line length from 120 to 80
+
 ## 1.27.0
 
 * Add brackets to boxed variable #414 (thanks @Syndim)
