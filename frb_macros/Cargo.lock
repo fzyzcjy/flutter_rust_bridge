@@ -4,4 +4,4 @@ version = 3
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.27.0"
+version = "1.27.1"
