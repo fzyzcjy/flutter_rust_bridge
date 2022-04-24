@@ -146,6 +146,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sagudev",
+      "name": "sagu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16504129?v=4",
+      "profile": "https://github.com/sagudev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
