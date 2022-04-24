@@ -142,6 +142,7 @@ pub fn parse(raw: RawOpts) -> Opts {
                 "/usr/lib/llvm-11/lib".to_owned(),
                 "/usr/lib/llvm-12/lib".to_owned(),
                 "/usr/lib/llvm-13/lib".to_owned(),
+                "/usr/lib/llvm-14/lib".to_owned(),
                 "/usr/lib/".to_owned(),
                 "/usr/lib64/".to_owned(),
                 "C:/Program Files/llvm".to_owned(), // Default on Windows
