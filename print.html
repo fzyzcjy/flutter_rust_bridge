@@ -150,7 +150,7 @@
 <li><strong>Feature-rich</strong>: <code>enum</code>s with values, platform-optimized <code>Vec</code>, possibly recursive <code>struct</code>, zero-copy big arrays, <code>Stream</code> (iterator) abstraction, error (<code>Result</code>) handling, cancellable tasks, concurrency control, and more. See full features <a href="https://fzyzcjy.github.io/flutter_rust_bridge/feature.html">here</a>. </li>
 <li><strong>Async programming</strong>: Rust code will never block the Flutter. Call Rust naturally from Flutter's main isolate (thread).</li>
 <li><strong>Lightweight</strong>: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. <sub>For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).</sub></li>
-<li><strong>Multi-platform</strong>: Android, iOS, Windows, Linux, MacOS (<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/315">Web</a> coming soon)</li>
+<li><strong>Cross-platform</strong>: Android, iOS, Windows, Linux, MacOS (<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/315">Web</a> coming soon)</li>
 <li><strong>Easy to code-review &amp; convince yourself</strong>: This package simply simulates how humans  write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to look at. No magic at all! (<a href="https://fzyzcjy.github.io/flutter_rust_bridge/safety.html">More about</a> safety concerns.)</li>
 <li><strong>Fast</strong>: It is only a thin (though feature-rich) wrapper, without overhead such as protobuf serialization, thus performant. (More <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/318#issuecomment-1034536815">benchmarks</a> later) <small>(Throw away components like thread-pool to make it even faster)</small></li>
 <li><strong>Pure-Dart compatible:</strong> Despite the name, this package is 100% compatible with <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/README.md">pure</a> Dart.</li>
@@ -159,7 +159,7 @@
 <p>Check out <a href="https://fzyzcjy.github.io/flutter_rust_bridge/">the user guide</a> for <a href="https://fzyzcjy.github.io/flutter_rust_bridge/quickstart.html">show-me-the-code</a>, <a href="https://fzyzcjy.github.io/flutter_rust_bridge/tutorial_with_flutter.html">tutorials</a>, <a href="https://fzyzcjy.github.io/flutter_rust_bridge/feature.html">features</a> and much more.</p>
 <h2 id="-contributors"><a class="header" href="#-contributors">✨ Contributors</a></h2>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a> following <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -184,6 +184,10 @@
     <td align="center"><a href="https://github.com/Unoqwy"><img src="https://avatars.githubusercontent.com/u/65187632?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Unoqwy</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Unoqwy" title="Code">💻</a></td>
     <td align="center"><a href="https://feber.dev"><img src="https://avatars.githubusercontent.com/u/1727318?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Febrian Setianto</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=feber" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/Syndim"><img src="https://avatars.githubusercontent.com/u/835035?v=4?s=100" width="100px;" alt=""/><br /><sub><b>syndim</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=syndim" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/sagudev"><img src="https://avatars.githubusercontent.com/u/16504129?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sagu</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=sagudev" title="Code">💻</a></td>
+  </tr>
 </table>
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
@@ -195,12 +199,14 @@
 <li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
 <li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS.</li>
-<li><a href="https://github.com/surban">surban</a>: Support unit return type.</li>
+<li><a href="https://github.com/surban">surban</a>: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors.</li>
 <li><a href="https://github.com/efc-mw">efc-mw</a>: Improve Windows encoding handling.</li>
 <li><a href="https://github.com/valeth">valeth</a>: Rename callFfi's port.</li>
 <li><a href="https://github.com/trobanga">trobanga</a>: Add a cmd argument.</li>
 <li><a href="https://github.com/Michael-F-Bryan">Michael-F-Bryan</a>: Detect broken bindings.</li>
 <li><a href="https://github.com/bus710">bus710</a>: Add a case in troubleshooting.</li>
+<li><a href="https://github.com/Syndim">Syndim</a>: Add a bracket to box.</li>
+<li><a href="https://github.com/sagudev">sagudev</a>: Add LLVM v14.</li>
 <li><a href="https://github.com/feber">feber</a>: Fix doc link.</li>
 <li><a href="https://github.com/rustui">rustui</a>: Fix a typo.</li>
 </ul>
@@ -714,10 +720,51 @@ languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7
 </code></pre>
 <p>or edit one of the <code>gradle.properties</code> that resides within the <code>android</code> folder.</p>
 <h2 id="cargo-ndk"><a class="header" href="#cargo-ndk"><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a></a></h2>
-<pre><code class="language-shell">cargo install cargo-ndk
+<pre><code class="language-shell">cargo install cargo-ndk --version 2.6.0
 </code></pre>
 <p><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a> is a Cargo plugin for compiling code suitable for plugging into
-the JNI without additional configuration. Run the above command to install.</p>
+the JNI without additional configuration. Run the above command to install.
+Version 2.7.0 of cargo-ndk introduced changes that breaked support for NDK
+version 22 so 2.6.0 must be used for now.</p>
+<h2 id="alternative-ndk-setup"><a class="header" href="#alternative-ndk-setup">Alternative NDK setup</a></h2>
+<p>You can alternatively use the latest version of the Android NDK which is greater than 22.
+However, this requires a hack to prevent the <a href="https://github.com/bbqsrc/cargo-ndk/issues/22">unable to find library -lgcc error</a>.</p>
+<h3 id="android-ndk-1"><a class="header" href="#android-ndk-1">Android NDK</a></h3>
+<p>Install the latest NDK:</p>
+<blockquote>
+<p>Android Studio &gt; SDK Manager &gt; SDK Tools &gt; NDK (Side by side)</p>
+</blockquote>
+<p>Click on OK at the bottom right corner to start the installation.</p>
+<h3 id="cargo-ndk-1"><a class="header" href="#cargo-ndk-1"><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a></a></h3>
+<p>You should install <code>cargo-ndk</code> version 2.7.0 or above which works for
+Android NDK versions greater than 22.</p>
+<pre><code>cargo install cargo-ndk --version ^2.7.0
+</code></pre>
+<p>A workaround may be under development in the cargo-ndk project. Until it is finished,
+you need to manually create four text files to redirect calls from libgcc to libunwind (<a href="https://github.com/rust-lang/rust/pull/85806#issuecomment-1096266946">reference</a>):</p>
+<ol>
+<li>
+<p>Find out all the 4 folders containing file <code>libunwind.a</code>.</p>
+<ul>
+<li>
+<p>On Windows, it is similar to:</p>
+<pre><code>C:\Users\Administrator\AppData\Local\Android\Sdk\ndk\24.0.8215888\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\14.0.1\lib\linux\x86_64\
+</code></pre>
+</li>
+<li>
+<p>On macOS Monterey, it is similar to:</p>
+<pre><code>~/Library/Android/sdk/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/14.0.1/lib/linux/x86_64/
+</code></pre>
+</li>
+</ul>
+<p>The three other folders end with <code>aarch64</code>, <code>arm</code>,    <code>i386</code> instead of <code>x86_64</code>.</p>
+</li>
+<li>
+<p>Create 4 text files named <code>libgcc.a</code> in the four folders mentioned above with this contents</p>
+<pre><code>INPUT(-lunwind)
+</code></pre>
+</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ios-setup"><a class="header" href="#ios-setup">iOS setup</a></h1>
 <p>iOS requires some additional Rust targets for cross-compilation:</p>
 <pre><code class="language-bash"># 64 bit targets (real device &amp; simulator):

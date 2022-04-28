@@ -168,10 +168,51 @@ languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7
 </code></pre>
 <p>or edit one of the <code>gradle.properties</code> that resides within the <code>android</code> folder.</p>
 <h2 id="cargo-ndk"><a class="header" href="#cargo-ndk"><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a></a></h2>
-<pre><code class="language-shell">cargo install cargo-ndk
+<pre><code class="language-shell">cargo install cargo-ndk --version 2.6.0
 </code></pre>
 <p><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a> is a Cargo plugin for compiling code suitable for plugging into
-the JNI without additional configuration. Run the above command to install.</p>
+the JNI without additional configuration. Run the above command to install.
+Version 2.7.0 of cargo-ndk introduced changes that breaked support for NDK
+version 22 so 2.6.0 must be used for now.</p>
+<h2 id="alternative-ndk-setup"><a class="header" href="#alternative-ndk-setup">Alternative NDK setup</a></h2>
+<p>You can alternatively use the latest version of the Android NDK which is greater than 22.
+However, this requires a hack to prevent the <a href="https://github.com/bbqsrc/cargo-ndk/issues/22">unable to find library -lgcc error</a>.</p>
+<h3 id="android-ndk-1"><a class="header" href="#android-ndk-1">Android NDK</a></h3>
+<p>Install the latest NDK:</p>
+<blockquote>
+<p>Android Studio &gt; SDK Manager &gt; SDK Tools &gt; NDK (Side by side)</p>
+</blockquote>
+<p>Click on OK at the bottom right corner to start the installation.</p>
+<h3 id="cargo-ndk-1"><a class="header" href="#cargo-ndk-1"><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a></a></h3>
+<p>You should install <code>cargo-ndk</code> version 2.7.0 or above which works for
+Android NDK versions greater than 22.</p>
+<pre><code>cargo install cargo-ndk --version ^2.7.0
+</code></pre>
+<p>A workaround may be under development in the cargo-ndk project. Until it is finished,
+you need to manually create four text files to redirect calls from libgcc to libunwind (<a href="https://github.com/rust-lang/rust/pull/85806#issuecomment-1096266946">reference</a>):</p>
+<ol>
+<li>
+<p>Find out all the 4 folders containing file <code>libunwind.a</code>.</p>
+<ul>
+<li>
+<p>On Windows, it is similar to:</p>
+<pre><code>C:\Users\Administrator\AppData\Local\Android\Sdk\ndk\24.0.8215888\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\14.0.1\lib\linux\x86_64\
+</code></pre>
+</li>
+<li>
+<p>On macOS Monterey, it is similar to:</p>
+<pre><code>~/Library/Android/sdk/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/14.0.1/lib/linux/x86_64/
+</code></pre>
+</li>
+</ul>
+<p>The three other folders end with <code>aarch64</code>, <code>arm</code>,    <code>i386</code> instead of <code>x86_64</code>.</p>
+</li>
+<li>
+<p>Create 4 text files named <code>libgcc.a</code> in the four folders mentioned above with this contents</p>
+<pre><code>INPUT(-lunwind)
+</code></pre>
+</li>
+</ol>
 
                     </main>
 
