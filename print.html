@@ -198,7 +198,7 @@
 <li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir.</li>
 <li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
 <li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
-<li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS.</li>
+<li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
 <li><a href="https://github.com/surban">surban</a>: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors.</li>
 <li><a href="https://github.com/efc-mw">efc-mw</a>: Improve Windows encoding handling.</li>
 <li><a href="https://github.com/valeth">valeth</a>: Rename callFfi's port.</li>
@@ -957,27 +957,24 @@ flutter pub add freezed_annotation
 <p>With our new definition of <code>Platform</code> in place, we can rewrite the previous code to make use
 of it! Here is an example of what you can do with freezed enums.</p>
 <p>In <code>lib/main.dart</code>:</p>
-<pre><code class="language-diff"> if (snap.data != null) {
--    final text = const {
--        Platform.Ios: 'iOS',
--        Platform.Windows: 'Windows',
--        Platform.Android: 'Android',
--        Platform.Unix: 'Unix',
--        Platform.MacApple: 'MacOS with Apple Silicon',
--        Platform.MacIntel: 'MacOS',
--        Platform.Wasm: 'the Web'
--    }[snap.data]!;
-+    final text = snap.data!.when(
-+        ios: () =&gt; 'iOS',
-+        windows: () =&gt; 'Windows',
-+        android: () =&gt; 'Android',
-+        unix: () =&gt; 'Unix',
-+        macOs: (arch) =&gt; 'MacOS on $arch',
-+        wasm: () =&gt; 'the Web',
-+        unknown: () =&gt; 'Unknown OS',
-+    );
-     ..
- }
+<pre><code class="language-diff">- final text = const {
+-   Platform.Android: 'Android',
+-   Platform.Ios: 'iOS',
+-   Platform.MacApple: 'MacOS with Apple Silicon',
+-   Platform.MacIntel: 'MacOS',
+-   Platform.Windows: 'Windows',
+-   Platform.Unix: 'Unix',
+-   Platform.Wasm: 'the Web',
+- }[platform] ??
+- 'Unknown OS';
++ final text = platform.when(
++   android: () =&gt; 'Android',
++   ios: () =&gt; 'iOS',
++   macOs: (arch) =&gt; 'MacOS on $arch',
++   windows: () =&gt; 'Windows',
++   unix: () =&gt; 'Unix',
++   wasm: () =&gt; 'the Web',
++ );
 </code></pre>
 <p>In <code>native/src/api.rs</code>:</p>
 <pre><code class="language-diff">     } else if cfg!(target_os = &quot;ios&quot;) {
