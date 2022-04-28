@@ -73,7 +73,7 @@ More specifically, thanks for all these contributions:
 * [SecondFlight](https://github.com/SecondFlight): Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir.
 * [Unoqwy](https://github.com/Unoqwy): Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.
 * [antonok-edm](https://github.com/antonok-edm): Avoid converting syn types to strings before parsing to improve code and be more robust.
-* [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS.
+* [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [surban](https://github.com/surban): Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
