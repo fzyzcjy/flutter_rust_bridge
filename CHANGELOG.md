@@ -1,10 +1,7 @@
-## Unreleased
+## 1.28.0
 
 * Add doc for Android NDK bug #423 (thanks @AlienKevin)
 * Update to match current template #426 (thanks @Desdaemon)
-
-## 1.28.0
-
 * Add LLVM 14 #416 (thanks @sagudev)
 
 ## 1.27.2
