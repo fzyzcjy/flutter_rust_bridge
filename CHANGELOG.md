@@ -1,6 +1,7 @@
 ## Unreleased
 
-* Add doc for Android NDK bug #423 (thanks @AlienKevin).
+* Add doc for Android NDK bug #423 (thanks @AlienKevin)
+* Update to match current template #426 (thanks @Desdaemon)
 
 ## 1.28.0
 
