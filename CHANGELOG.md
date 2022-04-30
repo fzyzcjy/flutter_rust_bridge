@@ -1,6 +1,7 @@
 ## 1.28.1
 
 * Fix LLVM path #431 (thanks @sagudev)
+* Bump dependency
 
 ## 1.28.0
 
