@@ -1,3 +1,7 @@
+## 1.28.1
+
+* Fix LLVM path #431 (thanks @sagudev)
+
 ## 1.28.0
 
 * Add doc for Android NDK bug #423 (thanks @AlienKevin)
