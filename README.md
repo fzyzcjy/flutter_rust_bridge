@@ -81,7 +81,7 @@ More specifically, thanks for all these contributions:
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
-* [sagudev](https://github.com/sagudev): Add LLVM v14.
+* [sagudev](https://github.com/sagudev): Fix LLVM paths.
 * [feber](https://github.com/feber): Fix doc link.
 * [rustui](https://github.com/rustui): Fix a typo.
 
