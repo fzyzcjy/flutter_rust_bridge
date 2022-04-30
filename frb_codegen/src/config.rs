@@ -137,12 +137,12 @@ pub fn parse(raw: RawOpts) -> Opts {
                 "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
                 "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
                 // Possible Linux LLVM roots
-                "/usr/lib/llvm-9/lib".to_owned(),
-                "/usr/lib/llvm-10/lib".to_owned(),
-                "/usr/lib/llvm-11/lib".to_owned(),
-                "/usr/lib/llvm-12/lib".to_owned(),
-                "/usr/lib/llvm-13/lib".to_owned(),
-                "/usr/lib/llvm-14/lib".to_owned(),
+                "/usr/lib/llvm-9".to_owned(),
+                "/usr/lib/llvm-10".to_owned(),
+                "/usr/lib/llvm-11".to_owned(),
+                "/usr/lib/llvm-12".to_owned(),
+                "/usr/lib/llvm-13".to_owned(),
+                "/usr/lib/llvm-14".to_owned(),
                 "/usr/lib/".to_owned(),
                 "/usr/lib64/".to_owned(),
                 "C:/Program Files/llvm".to_owned(), // Default on Windows
