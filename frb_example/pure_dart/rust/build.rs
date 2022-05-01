@@ -1,6 +1,6 @@
 use lib_lutter_rust_bridge_codegen::{frb_codegen, Opts};
 
-const BRIDGE_FILE: &'static str = "src/api.rs";
+const BRIDGE_FILE: &str = "src/api.rs";
 
 fn main() {
     // Tell Cargo that if the given file changes, to rerun this build script.
