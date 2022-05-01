@@ -12,6 +12,7 @@ use crate::utils::*;
 
 mod commands;
 mod config;
+mod error;
 mod generator;
 mod ir;
 mod markers;
@@ -20,8 +21,9 @@ mod parser;
 mod source_graph;
 mod transformer;
 mod utils;
+use error::*;
 
-pub fn frb_codegen(raw_opts: Opts) {
+pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
     ensure_tools_available();
 
     let config = config::parse(raw_opts);
@@ -31,8 +33,8 @@ pub fn frb_codegen(raw_opts: Opts) {
     let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
 
     info!("Phase: Parse source code to AST");
-    let source_rust_content = fs::read_to_string(&config.rust_input_path).unwrap();
-    let file_ast = syn::parse_file(&source_rust_content).unwrap();
+    let source_rust_content = fs::read_to_string(&config.rust_input_path)?;
+    let file_ast = syn::parse_file(&source_rust_content)?;
 
     info!("Phase: Parse AST to IR");
     let raw_ir_file = parser::parse(&source_rust_content, file_ast, &config.manifest_path);
@@ -47,8 +49,8 @@ pub fn frb_codegen(raw_opts: Opts) {
         &ir_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
     );
-    fs::create_dir_all(&rust_output_dir).unwrap();
-    fs::write(&config.rust_output_path, generated_rust.code).unwrap();
+    fs::create_dir_all(&rust_output_dir)?;
+    fs::write(&config.rust_output_path, generated_rust.code)?;
 
     info!("Phase: Generate Dart code");
     let (generated_dart, needs_freezed) = generator::dart::generate(
@@ -58,7 +60,7 @@ pub fn frb_codegen(raw_opts: Opts) {
         &config.dart_wire_class_name(),
         config
             .dart_output_path_name()
-            .expect("Invalid dart_output_path_name"),
+            .ok_or_else(|| Error::new("Invalid dart_output_path_name"))?,
     );
 
     info!("Phase: Other things");
@@ -81,8 +83,8 @@ pub fn frb_codegen(raw_opts: Opts) {
         })
         .collect();
 
-    let temp_dart_wire_file = tempfile::NamedTempFile::new().unwrap();
-    let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile().unwrap();
+    let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
+    let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
@@ -110,16 +112,15 @@ pub fn frb_codegen(raw_opts: Opts) {
     .concat();
     let c_dummy_code = generator::c::generate_dummy(&effective_func_names);
     for output in &config.c_output_path {
-        fs::create_dir_all(Path::new(output).parent().unwrap()).unwrap();
+        fs::create_dir_all(Path::new(output).parent().unwrap())?;
         fs::write(
             &output,
-            fs::read_to_string(&temp_bindgen_c_output_file).unwrap() + "\n" + &c_dummy_code,
-        )
-        .unwrap();
+            fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
+        )?;
     }
 
-    fs::create_dir_all(&dart_output_dir).unwrap();
-    let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file).unwrap();
+    fs::create_dir_all(&dart_output_dir)?;
+    let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
     let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
         &generated_dart_wire_code_raw,
         &config.dart_wire_class_name(),
@@ -144,35 +145,32 @@ pub fn frb_codegen(raw_opts: Opts) {
         fs::write(
             &dart_decl_output_path,
             (&generated_dart.file_prelude + &generated_dart_decl_all).to_text(),
-        )
-        .unwrap();
+        )?;
         fs::write(
             &config.dart_output_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
-        )
-        .unwrap();
+        )?;
     } else {
         fs::write(
             &config.dart_output_path,
             (&generated_dart.file_prelude + &generated_dart_decl_all + &generated_dart_impl_all)
                 .to_text(),
-        )
-        .unwrap();
+        )?;
     }
 
     let dart_root = &config.dart_root;
     if needs_freezed && config.build_runner {
-        let dart_root = dart_root.as_ref().unwrap_or_else(|| {
-            panic!(
+        let dart_root = dart_root.as_ref().ok_or_else(|| {
+            Error::new(
                 "build_runner configured to run, but Dart root could not be inferred.
-Please specify --dart-root, or disable build_runner with --no-build-runner."
+        Please specify --dart-root, or disable build_runner with --no-build-runner.",
             )
-        });
+        })?;
         commands::build_runner(dart_root);
         commands::format_dart(
             &config
                 .dart_output_freezed_path()
-                .expect("Invalid freezed file path"),
+                .ok_or_else(|| Error::new("Invalid freezed file path"))?,
             config.dart_format_line_length,
         );
     }
@@ -183,4 +181,5 @@ Please specify --dart-root, or disable build_runner with --no-build-runner."
     }
 
     info!("Success!");
+    Ok(())
 }

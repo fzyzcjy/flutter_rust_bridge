@@ -13,7 +13,7 @@ fn main() {
     }))
     .init();
 
-    frb_codegen(opts);
+    frb_codegen(opts).unwrap();
 
     info!("Now go and use it :)");
 }
