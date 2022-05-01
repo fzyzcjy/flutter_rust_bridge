@@ -7,6 +7,9 @@ edition = "2018"
 name = "flutter_rust_bridge_example"
 crate-type = ["cdylib"]
 
+[build-dependencies]
+flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
+
 [dependencies]
 anyhow = { version = "1.0.57", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust" }
