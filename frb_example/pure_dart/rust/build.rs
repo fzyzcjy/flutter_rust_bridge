@@ -15,5 +15,5 @@ fn main() {
         ..Default::default()
     };
     // run fbr_codegen
-    frb_codegen(opts);
+    frb_codegen(opts).unwrap();
 }
