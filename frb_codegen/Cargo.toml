@@ -8,6 +8,14 @@ repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
 keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
+[lib]
+name = "lib_lutter_rust_bridge_codegen"
+path = "src/lib.rs"
+
+[[bin]]
+name = "flutter_rust_bridge_codegen"
+path = "src/main.rs"
+
 [dependencies]
 syn = { version = "1.0.77", features = ["full", "extra-traits"] }
 quote = "1.0"
