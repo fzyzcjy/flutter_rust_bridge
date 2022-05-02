@@ -22,22 +22,6 @@ pub fn ensure_tools_available() -> Result {
         return Err(Error::MissingExe(String::from("ffigen")));
     }
 
-    check_shell_executable("cbindgen")
-}
-
-pub fn check_shell_executable(cmd: &'static str) -> Result {
-    #[cfg(windows)]
-    let res = execute_command("where", &[cmd], None);
-    #[cfg(not(windows))]
-    let res = execute_command(
-        "sh",
-        &["-c", &format!("test -x \"$(which {})\"", cmd)],
-        None,
-    );
-    if !res.status.success() {
-        return Err(Error::MissingExe(cmd.to_string()));
-    }
-    debug!("{}", String::from_utf8_lossy(&res.stdout));
     Ok(())
 }
 
@@ -50,7 +34,7 @@ pub fn bindgen_rust_to_dart(
     llvm_install_path: &[String],
     llvm_compiler_opts: &str,
 ) -> anyhow::Result<()> {
-    cbindgen(rust_crate_dir, c_output_path, c_struct_names);
+    cbindgen(rust_crate_dir, c_output_path, c_struct_names)?;
     ffigen(
         c_output_path,
         dart_output_path,
@@ -112,34 +96,35 @@ fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Outpu
     result
 }
 
-fn cbindgen(rust_crate_dir: &str, c_output_path: &str, c_struct_names: Vec<String>) {
+fn cbindgen(
+    rust_crate_dir: &str,
+    c_output_path: &str,
+    c_struct_names: Vec<String>,
+) -> anyhow::Result<()> {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
 
-    let config = format!(
-        r#"
-language = "C"
+    let config = cbindgen::Config {
+        language: cbindgen::Language::C,
+        sys_includes: vec![
+            "stdbool.h".to_string(),
+            "stdint.h".to_string(),
+            "stdlib.h".to_string(),
+        ],
+        no_includes: true,
+        export: cbindgen::ExportConfig {
+            include: c_struct_names
+                .iter()
+                .map(|name| format!("\"{}\"", name))
+                .collect::<Vec<_>>(),
+            ..Default::default()
+        },
+        ..Default::default()
+    };
 
-# do NOT include "stdarg.h", see #108 and #53
-sys_includes = ["stdbool.h", "stdint.h", "stdlib.h"]
-no_includes = true
-
-[export]
-include = [{}]
-"#,
-        c_struct_names
-            .iter()
-            .map(|name| format!("\"{}\"", name))
-            .collect::<Vec<_>>()
-            .join(", ")
-    );
-    debug!("cbindgen config: {}", config);
-
-    let mut config_file = tempfile::NamedTempFile::new().unwrap();
-    std::io::Write::write_all(&mut config_file, config.as_bytes()).unwrap();
-    debug!("cbindgen config_file: {:?}", config_file);
+    debug!("cbindgen config: {:?}", config);
 
     let canonical = Path::new(rust_crate_dir)
         .canonicalize()
@@ -151,19 +136,10 @@ include = [{}]
         path = &path[r"\\?\".len()..];
     }
 
-    let res = execute_command(
-        "cbindgen",
-        &[
-            "-v",
-            "--config",
-            config_file.path().to_str().unwrap(),
-            "--output",
-            c_output_path,
-        ],
-        Some(path),
-    );
-    if !res.status.success() {
-        panic!("cbindgen failed: {}", String::from_utf8_lossy(&res.stderr));
+    if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
+        Ok(())
+    } else {
+        Err(Error::str("cbindgen failed writing file").into())
     }
 }
 
