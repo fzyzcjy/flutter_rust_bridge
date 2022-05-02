@@ -32,8 +32,8 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install valgrind
-        run: sudo apt update && sudo apt install -y valgrind
+      - name: Install valgrind and llvm
+        run: sudo apt update && sudo apt install -y valgrind libclang-dev
 
       - uses: dart-lang/setup-dart@v1
 
@@ -312,6 +312,8 @@ jobs:
       - uses: dart-lang/setup-dart@v1
       - name: Install ffigen
         run: dart pub global activate ffigen
+      - name: Install llvm dependency (Linux)
+        run: sudo apt update && sudo apt-get install -y libclang-dev
       - name: Build codegen
         working-directory: ./frb_codegen
         run: cargo build --verbose
@@ -364,6 +366,8 @@ jobs:
       - uses: dart-lang/setup-dart@v1
       - name: Install ffigen
         run: dart pub global activate ffigen
+      - name: Install llvm dependency (Linux)
+        run: sudo apt update && sudo apt-get install -y libclang-dev
 
       - name: Run fmt for codegen
         uses: actions-rs/cargo@v1
