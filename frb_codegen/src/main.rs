@@ -2,7 +2,7 @@ use env_logger::Env;
 use log::info;
 use structopt::StructOpt;
 
-use lib_lutter_rust_bridge_codegen::{frb_codegen, Opts};
+use lib_flutter_rust_bridge_codegen::{frb_codegen, Opts};
 
 fn main() {
     let opts = Opts::from_args();

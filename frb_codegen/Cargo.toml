@@ -9,7 +9,7 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [lib]
-name = "lib_lutter_rust_bridge_codegen"
+name = "lib_flutter_rust_bridge_codegen"
 path = "src/lib.rs"
 
 [[bin]]

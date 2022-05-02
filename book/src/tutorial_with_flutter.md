@@ -27,7 +27,7 @@ git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd flutter_rust_brid
 
 This step is optional, since I have generated the source code already (in quickstart). Even if you do it, you should not see anything changed.
 
-Firstly, you may need to install dependencie of this library:
+Firstly, you may need to install dependencies of this library:
 
 * Install `ffigen`:  `dart pub global activate ffigen`, and [install LLVM](https://pub.dev/packages/ffigen#installing-llvm) which is required by `ffigen`.
 * Install the codegen program: `cargo install flutter_rust_bridge_codegen`.
