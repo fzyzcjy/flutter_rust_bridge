@@ -206,7 +206,10 @@ fn ffigen(
         if err.contains("Couldn't find dynamic library in default locations.") {
             return Err(Error::FfigenLlvm.into());
         }
-        return Err(Error::string(format!("ffigen failed:\n{}", err)).into());
+        let out = String::from_utf8_lossy(&res.stdout);
+        return Err(
+            Error::string(format!("ffigen failed:\nstderr:{}\nstdout:{}", err, out)).into(),
+        );
     }
     Ok(())
 }
