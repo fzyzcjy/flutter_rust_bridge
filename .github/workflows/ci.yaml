@@ -361,6 +361,10 @@ jobs:
           toolchain: stable
           components: rustfmt, clippy
 
+      - uses: dart-lang/setup-dart@v1
+      - name: Install ffigen
+        run: dart pub global activate ffigen
+
       - name: Run fmt for codegen
         uses: actions-rs/cargo@v1
         with:
