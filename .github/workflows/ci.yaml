@@ -37,6 +37,9 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
 
+      - name: Install ffigen
+        run: dart pub global activate ffigen
+
       - name: Install dart dependencies
         working-directory: ./frb_example/pure_dart/dart
         run: dart pub get
@@ -309,9 +312,6 @@ jobs:
       - uses: dart-lang/setup-dart@v1
       - name: Install ffigen
         run: dart pub global activate ffigen
-      - name: Install cbindgen
-        run: cargo install cbindgen
-
       - name: Build codegen
         working-directory: ./frb_codegen
         run: cargo build --verbose
