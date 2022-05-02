@@ -24,7 +24,7 @@ mod utils;
 use error::*;
 
 pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
-    ensure_tools_available();
+    ensure_tools_available()?;
 
     let config = config::parse(raw_opts);
     info!("Picked config: {:?}", &config);
@@ -60,12 +60,12 @@ pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
         &config.dart_wire_class_name(),
         config
             .dart_output_path_name()
-            .ok_or_else(|| Error::new("Invalid dart_output_path_name"))?,
+            .ok_or_else(|| Error::str("Invalid dart_output_path_name"))?,
     );
 
     info!("Phase: Other things");
 
-    commands::format_rust(&config.rust_output_path);
+    commands::format_rust(&config.rust_output_path)?;
 
     if !config.skip_add_mod_to_lib {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
@@ -101,9 +101,9 @@ pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
                 c_struct_names,
                 &config.llvm_path[..],
                 &config.llvm_compiler_opts,
-            );
+            )
         },
-    );
+    )?;
 
     let effective_func_names = [
         generated_rust.extern_func_names,
@@ -126,7 +126,7 @@ pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
         &config.dart_wire_class_name(),
     ));
 
-    sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name());
+    sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
     let generated_dart_decl_all = generated_dart.decl_code;
     let generated_dart_impl_all = &generated_dart.impl_code + &generated_dart_wire;
@@ -161,23 +161,23 @@ pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
     let dart_root = &config.dart_root;
     if needs_freezed && config.build_runner {
         let dart_root = dart_root.as_ref().ok_or_else(|| {
-            Error::new(
+            Error::str(
                 "build_runner configured to run, but Dart root could not be inferred.
         Please specify --dart-root, or disable build_runner with --no-build-runner.",
             )
         })?;
-        commands::build_runner(dart_root);
+        commands::build_runner(dart_root)?;
         commands::format_dart(
             &config
                 .dart_output_freezed_path()
-                .ok_or_else(|| Error::new("Invalid freezed file path"))?,
+                .ok_or_else(|| Error::str("Invalid freezed file path"))?,
             config.dart_format_line_length,
-        );
+        )?;
     }
 
-    commands::format_dart(&config.dart_output_path, config.dart_format_line_length);
+    commands::format_dart(&config.dart_output_path, config.dart_format_line_length)?;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
-        commands::format_dart(dart_decl_output_path, config.dart_format_line_length);
+        commands::format_dart(dart_decl_output_path, config.dart_format_line_length)?;
     }
 
     info!("Success!");

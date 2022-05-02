@@ -1,34 +1,32 @@
-#[derive(Debug)]
-pub struct Error {
-    msg: String,
+use thiserror::Error;
+
+pub type Result = std::result::Result<(), Error>;
+
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("rustfmt failed: {0}")]
+    Rustfmt(String),
+    #[error("dart fmt failed: {0}")]
+    Dartfmt(String),
+    #[error(
+        "ffigen could not find LLVM.
+    Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.:
+    
+        flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>"
+    )]
+    FfigenLlvm,
+    #[error("{0} is not a command, or not executable.")]
+    MissingExe(String),
+    #[error("{0}")]
+    StringError(String),
 }
 
 impl Error {
-    pub fn new(msg: &str) -> Self {
-        Self {
-            msg: msg.to_owned(),
-        }
+    pub fn str(msg: &str) -> Self {
+        Self::StringError(msg.to_owned())
+    }
+
+    pub fn string(msg: String) -> Self {
+        Self::StringError(msg)
     }
 }
-
-impl std::fmt::Display for Error {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.write_str(&self.msg)
-    }
-}
-
-impl From<String> for Error {
-    fn from(error: String) -> Self {
-        Self { msg: error }
-    }
-}
-
-impl From<&str> for Error {
-    fn from(error: &str) -> Self {
-        Self {
-            msg: error.to_string(),
-        }
-    }
-}
-
-impl std::error::Error for Error {}

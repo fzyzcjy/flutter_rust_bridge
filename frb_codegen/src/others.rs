@@ -4,7 +4,7 @@ use std::path::Path;
 
 use anyhow::{anyhow, Result};
 use lazy_static::lazy_static;
-use log::{error, info, warn};
+use log::{info, warn};
 use pathdiff::diff_paths;
 use regex::RegexBuilder;
 
@@ -107,13 +107,18 @@ pub fn extract_dart_wire_content(content: &str) -> DartBasicCode {
     }
 }
 
-pub fn sanity_check(generated_dart_wire_code: &str, dart_wire_class_name: &str) {
+pub fn sanity_check(
+    generated_dart_wire_code: &str,
+    dart_wire_class_name: &str,
+) -> anyhow::Result<()> {
     if !generated_dart_wire_code.contains(dart_wire_class_name) {
-        error!(
+        return Err(crate::error::Error::str(
             "Nothing is generated for dart wire class. \
-            Maybe you forget to put code like `mod the_generated_bridge_code;` to your `lib.rs`?"
-        );
+            Maybe you forget to put code like `mod the_generated_bridge_code;` to your `lib.rs`?",
+        )
+        .into());
     }
+    Ok(())
 }
 
 pub fn try_add_mod_to_lib(rust_crate_dir: &str, rust_output_path: &str) {
