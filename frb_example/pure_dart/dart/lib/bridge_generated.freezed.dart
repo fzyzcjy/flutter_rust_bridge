@@ -89,14 +89,12 @@ mixin _$ApplicationMessage {
 
 /// @nodoc
 abstract class $ApplicationMessageCopyWith<$Res> {
-  factory $ApplicationMessageCopyWith(
-          ApplicationMessage value, $Res Function(ApplicationMessage) then) =
+  factory $ApplicationMessageCopyWith(ApplicationMessage value, $Res Function(ApplicationMessage) then) =
       _$ApplicationMessageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ApplicationMessageCopyWithImpl<$Res>
-    implements $ApplicationMessageCopyWith<$Res> {
+class _$ApplicationMessageCopyWithImpl<$Res> implements $ApplicationMessageCopyWith<$Res> {
   _$ApplicationMessageCopyWithImpl(this._value, this._then);
 
   final ApplicationMessage _value;
@@ -106,18 +104,15 @@ class _$ApplicationMessageCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class $DisplayMessageCopyWith<$Res> {
-  factory $DisplayMessageCopyWith(
-          DisplayMessage value, $Res Function(DisplayMessage) then) =
+  factory $DisplayMessageCopyWith(DisplayMessage value, $Res Function(DisplayMessage) then) =
       _$DisplayMessageCopyWithImpl<$Res>;
   $Res call({String field0});
 }
 
 /// @nodoc
-class _$DisplayMessageCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res>
+class _$DisplayMessageCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
     implements $DisplayMessageCopyWith<$Res> {
-  _$DisplayMessageCopyWithImpl(
-      DisplayMessage _value, $Res Function(DisplayMessage) _then)
+  _$DisplayMessageCopyWithImpl(DisplayMessage _value, $Res Function(DisplayMessage) _then)
       : super(_value, (v) => _then(v as DisplayMessage));
 
   @override
@@ -158,8 +153,7 @@ class _$DisplayMessage implements DisplayMessage {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @JsonKey(ignore: true)
   @override
@@ -240,24 +234,19 @@ abstract class DisplayMessage implements ApplicationMessage {
 
   String get field0;
   @JsonKey(ignore: true)
-  $DisplayMessageCopyWith<DisplayMessage> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DisplayMessageCopyWith<DisplayMessage> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RenderPixelCopyWith<$Res> {
-  factory $RenderPixelCopyWith(
-          RenderPixel value, $Res Function(RenderPixel) then) =
-      _$RenderPixelCopyWithImpl<$Res>;
+  factory $RenderPixelCopyWith(RenderPixel value, $Res Function(RenderPixel) then) = _$RenderPixelCopyWithImpl<$Res>;
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class _$RenderPixelCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res>
+class _$RenderPixelCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
     implements $RenderPixelCopyWith<$Res> {
-  _$RenderPixelCopyWithImpl(
-      RenderPixel _value, $Res Function(RenderPixel) _then)
+  _$RenderPixelCopyWithImpl(RenderPixel _value, $Res Function(RenderPixel) _then)
       : super(_value, (v) => _then(v as RenderPixel));
 
   @override
@@ -306,15 +295,12 @@ class _$RenderPixel implements RenderPixel {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(x),
-      const DeepCollectionEquality().hash(y));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(x), const DeepCollectionEquality().hash(y));
 
   @JsonKey(ignore: true)
   @override
-  $RenderPixelCopyWith<RenderPixel> get copyWith =>
-      _$RenderPixelCopyWithImpl<RenderPixel>(this, _$identity);
+  $RenderPixelCopyWith<RenderPixel> get copyWith => _$RenderPixelCopyWithImpl<RenderPixel>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -391,21 +377,17 @@ abstract class RenderPixel implements ApplicationMessage {
   int get x;
   int get y;
   @JsonKey(ignore: true)
-  $RenderPixelCopyWith<RenderPixel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RenderPixelCopyWith<RenderPixel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ExitCopyWith<$Res> {
-  factory $ExitCopyWith(Exit value, $Res Function(Exit) then) =
-      _$ExitCopyWithImpl<$Res>;
+  factory $ExitCopyWith(Exit value, $Res Function(Exit) then) = _$ExitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ExitCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
-    implements $ExitCopyWith<$Res> {
-  _$ExitCopyWithImpl(Exit _value, $Res Function(Exit) _then)
-      : super(_value, (v) => _then(v as Exit));
+class _$ExitCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res> implements $ExitCopyWith<$Res> {
+  _$ExitCopyWithImpl(Exit _value, $Res Function(Exit) _then) : super(_value, (v) => _then(v as Exit));
 
   @override
   Exit get _value => super._value as Exit;
@@ -423,8 +405,7 @@ class _$Exit implements Exit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Exit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is Exit);
   }
 
   @override
@@ -511,8 +492,7 @@ class _$KitchenSinkTearOff {
     return const Empty();
   }
 
-  Primitives primitives(
-      {required int int32, required double float64, required bool boolean}) {
+  Primitives primitives({required int int32, required double float64, required bool boolean}) {
     return Primitives(
       int32: int32,
       float64: float64,
@@ -555,8 +535,7 @@ mixin _$KitchenSink {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -619,9 +598,7 @@ mixin _$KitchenSink {
 
 /// @nodoc
 abstract class $KitchenSinkCopyWith<$Res> {
-  factory $KitchenSinkCopyWith(
-          KitchenSink value, $Res Function(KitchenSink) then) =
-      _$KitchenSinkCopyWithImpl<$Res>;
+  factory $KitchenSinkCopyWith(KitchenSink value, $Res Function(KitchenSink) then) = _$KitchenSinkCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -635,15 +612,12 @@ class _$KitchenSinkCopyWithImpl<$Res> implements $KitchenSinkCopyWith<$Res> {
 
 /// @nodoc
 abstract class $EmptyCopyWith<$Res> {
-  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
-      _$EmptyCopyWithImpl<$Res>;
+  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) = _$EmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $EmptyCopyWith<$Res> {
-  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then)
-      : super(_value, (v) => _then(v as Empty));
+class _$EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $EmptyCopyWith<$Res> {
+  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then) : super(_value, (v) => _then(v as Empty));
 
   @override
   Empty get _value => super._value as Empty;
@@ -661,8 +635,7 @@ class _$Empty implements Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Empty);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is Empty);
   }
 
   @override
@@ -672,8 +645,7 @@ class _$Empty implements Empty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -762,15 +734,12 @@ abstract class Empty implements KitchenSink {
 
 /// @nodoc
 abstract class $PrimitivesCopyWith<$Res> {
-  factory $PrimitivesCopyWith(
-          Primitives value, $Res Function(Primitives) then) =
-      _$PrimitivesCopyWithImpl<$Res>;
+  factory $PrimitivesCopyWith(Primitives value, $Res Function(Primitives) then) = _$PrimitivesCopyWithImpl<$Res>;
   $Res call({int int32, double float64, bool boolean});
 }
 
 /// @nodoc
-class _$PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $PrimitivesCopyWith<$Res> {
+class _$PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $PrimitivesCopyWith<$Res> {
   _$PrimitivesCopyWithImpl(Primitives _value, $Res Function(Primitives) _then)
       : super(_value, (v) => _then(v as Primitives));
 
@@ -803,8 +772,7 @@ class _$PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Primitives implements Primitives {
-  const _$Primitives(
-      {required this.int32, required this.float64, required this.boolean});
+  const _$Primitives({required this.int32, required this.float64, required this.boolean});
 
   @override
 
@@ -831,23 +799,18 @@ class _$Primitives implements Primitives {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(int32),
-      const DeepCollectionEquality().hash(float64),
-      const DeepCollectionEquality().hash(boolean));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(int32),
+      const DeepCollectionEquality().hash(float64), const DeepCollectionEquality().hash(boolean));
 
   @JsonKey(ignore: true)
   @override
-  $PrimitivesCopyWith<Primitives> get copyWith =>
-      _$PrimitivesCopyWithImpl<Primitives>(this, _$identity);
+  $PrimitivesCopyWith<Primitives> get copyWith => _$PrimitivesCopyWithImpl<Primitives>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -931,34 +894,27 @@ class _$Primitives implements Primitives {
 }
 
 abstract class Primitives implements KitchenSink {
-  const factory Primitives(
-      {required int int32,
-      required double float64,
-      required bool boolean}) = _$Primitives;
+  const factory Primitives({required int int32, required double float64, required bool boolean}) = _$Primitives;
 
   /// Dart field comment
   int get int32;
   double get float64;
   bool get boolean;
   @JsonKey(ignore: true)
-  $PrimitivesCopyWith<Primitives> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PrimitivesCopyWith<Primitives> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NestedCopyWith<$Res> {
-  factory $NestedCopyWith(Nested value, $Res Function(Nested) then) =
-      _$NestedCopyWithImpl<$Res>;
+  factory $NestedCopyWith(Nested value, $Res Function(Nested) then) = _$NestedCopyWithImpl<$Res>;
   $Res call({KitchenSink field0, int field1});
 
   $KitchenSinkCopyWith<$Res> get field0;
 }
 
 /// @nodoc
-class _$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $NestedCopyWith<$Res> {
-  _$NestedCopyWithImpl(Nested _value, $Res Function(Nested) _then)
-      : super(_value, (v) => _then(v as Nested));
+class _$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $NestedCopyWith<$Res> {
+  _$NestedCopyWithImpl(Nested _value, $Res Function(Nested) _then) : super(_value, (v) => _then(v as Nested));
 
   @override
   Nested get _value => super._value as Nested;
@@ -1014,21 +970,17 @@ class _$Nested implements Nested {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(field0),
-      const DeepCollectionEquality().hash(field1));
+      runtimeType, const DeepCollectionEquality().hash(field0), const DeepCollectionEquality().hash(field1));
 
   @JsonKey(ignore: true)
   @override
-  $NestedCopyWith<Nested> get copyWith =>
-      _$NestedCopyWithImpl<Nested>(this, _$identity);
+  $NestedCopyWith<Nested> get copyWith => _$NestedCopyWithImpl<Nested>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -1122,16 +1074,13 @@ abstract class Nested implements KitchenSink {
 
 /// @nodoc
 abstract class $OptionalCopyWith<$Res> {
-  factory $OptionalCopyWith(Optional value, $Res Function(Optional) then) =
-      _$OptionalCopyWithImpl<$Res>;
+  factory $OptionalCopyWith(Optional value, $Res Function(Optional) then) = _$OptionalCopyWithImpl<$Res>;
   $Res call({int? field0, int? field1});
 }
 
 /// @nodoc
-class _$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $OptionalCopyWith<$Res> {
-  _$OptionalCopyWithImpl(Optional _value, $Res Function(Optional) _then)
-      : super(_value, (v) => _then(v as Optional));
+class _$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $OptionalCopyWith<$Res> {
+  _$OptionalCopyWithImpl(Optional _value, $Res Function(Optional) _then) : super(_value, (v) => _then(v as Optional));
 
   @override
   Optional get _value => super._value as Optional;
@@ -1182,21 +1131,17 @@ class _$Optional implements Optional {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(field0),
-      const DeepCollectionEquality().hash(field1));
+      runtimeType, const DeepCollectionEquality().hash(field0), const DeepCollectionEquality().hash(field1));
 
   @JsonKey(ignore: true)
   @override
-  $OptionalCopyWith<Optional> get copyWith =>
-      _$OptionalCopyWithImpl<Optional>(this, _$identity);
+  $OptionalCopyWith<Optional> get copyWith => _$OptionalCopyWithImpl<Optional>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -1286,22 +1231,18 @@ abstract class Optional implements KitchenSink {
   int? get field0;
   int? get field1;
   @JsonKey(ignore: true)
-  $OptionalCopyWith<Optional> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OptionalCopyWith<Optional> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BufferCopyWith<$Res> {
-  factory $BufferCopyWith(Buffer value, $Res Function(Buffer) then) =
-      _$BufferCopyWithImpl<$Res>;
+  factory $BufferCopyWith(Buffer value, $Res Function(Buffer) then) = _$BufferCopyWithImpl<$Res>;
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
-class _$BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $BufferCopyWith<$Res> {
-  _$BufferCopyWithImpl(Buffer _value, $Res Function(Buffer) _then)
-      : super(_value, (v) => _then(v as Buffer));
+class _$BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $BufferCopyWith<$Res> {
+  _$BufferCopyWithImpl(Buffer _value, $Res Function(Buffer) _then) : super(_value, (v) => _then(v as Buffer));
 
   @override
   Buffer get _value => super._value as Buffer;
@@ -1341,20 +1282,17 @@ class _$Buffer implements Buffer {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @JsonKey(ignore: true)
   @override
-  $BufferCopyWith<Buffer> get copyWith =>
-      _$BufferCopyWithImpl<Buffer>(this, _$identity);
+  $BufferCopyWith<Buffer> get copyWith => _$BufferCopyWithImpl<Buffer>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -1447,16 +1385,13 @@ abstract class Buffer implements KitchenSink {
 
 /// @nodoc
 abstract class $EnumsCopyWith<$Res> {
-  factory $EnumsCopyWith(Enums value, $Res Function(Enums) then) =
-      _$EnumsCopyWithImpl<$Res>;
+  factory $EnumsCopyWith(Enums value, $Res Function(Enums) then) = _$EnumsCopyWithImpl<$Res>;
   $Res call({Weekdays field0});
 }
 
 /// @nodoc
-class _$EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
-    implements $EnumsCopyWith<$Res> {
-  _$EnumsCopyWithImpl(Enums _value, $Res Function(Enums) _then)
-      : super(_value, (v) => _then(v as Enums));
+class _$EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements $EnumsCopyWith<$Res> {
+  _$EnumsCopyWithImpl(Enums _value, $Res Function(Enums) _then) : super(_value, (v) => _then(v as Enums));
 
   @override
   Enums get _value => super._value as Enums;
@@ -1496,20 +1431,17 @@ class _$Enums implements Enums {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @JsonKey(ignore: true)
   @override
-  $EnumsCopyWith<Enums> get copyWith =>
-      _$EnumsCopyWithImpl<Enums>(this, _$identity);
+  $EnumsCopyWith<Enums> get copyWith => _$EnumsCopyWithImpl<Enums>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
     required TResult Function(KitchenSink field0, int field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
