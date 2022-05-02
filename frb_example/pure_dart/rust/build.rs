@@ -1,19 +1,22 @@
 use lib_lutter_rust_bridge_codegen::{frb_codegen, Opts};
 
-const BRIDGE_FILE: &str = "src/api.rs";
+/// Path of input Rust code
+const RUST_INPUT: &str = "src/api.rs";
+/// Path of output generated Dart code
+const DART_OUTPUT: &str = "../dart/lib/bridge_generated.dart";
 
 fn main() {
-    // Tell Cargo that if the given file changes, to rerun this build script.
-    println!("cargo:rerun-if-changed={BRIDGE_FILE}");
-    // settings for fbr_codegen
+    // Tell Cargo that if the input Rust code changes, to rerun this build script.
+    println!("cargo:rerun-if-changed={}", RUST_INPUT);
+    // Options for frb_codegen
     let opts = Opts {
         // Path of input Rust code
-        rust_input: BRIDGE_FILE.to_string(),
+        rust_input: RUST_INPUT.to_string(),
         // Path of output generated Dart code
-        dart_output: "../dart/lib/bridge_generated.dart".to_string(),
-        // for other options lets use default
+        dart_output: DART_OUTPUT.to_string(),
+        // for other options use defaults
         ..Default::default()
     };
-    // run fbr_codegen
+    // run flutter_rust_bridge_codegen
     frb_codegen(opts).unwrap();
 }
