@@ -140,13 +140,12 @@
 <p>These depdencies are required only in build-time:</p>
 <ul>
 <li><a href="https://lib.rs/crates/flutter_rust_bridge_codegen"><code>flutter_rust_bridge_codegen</code></a>, the core codegen for Rust-Dart glue code</li>
-<li><a href="https://lib.rs/crates/cbindgen"><code>cbindgen</code></a>, to generate C headers from Rust FFI code</li>
 <li><a href="https://pub.dev/packages/ffigen"><code>ffigen</code></a>, to generate Dart code from C headers</li>
 <li><a href="https://lib.rs/crates/cargo-xcode"><code>cargo-xcode</code></a>, to generate Xcode projects for iOS and MacOS</li>
 <li>A working installation of LLVM, see <a href="https://pub.dev/packages/ffigen#installing-llvm">Installing LLVM</a></li>
 </ul>
 <p>An easy way to install most of these dependencies is to run:</p>
-<pre><code class="language-bash">cargo install flutter_rust_bridge_codegen cbindgen
+<pre><code class="language-bash">cargo install flutter_rust_bridge_codegen
 dart pub global activate ffigen
 # if building for iOS or MacOS
 cargo install cargo-xcode

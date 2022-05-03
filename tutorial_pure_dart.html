@@ -139,13 +139,13 @@
 <p>Unlike the previous tutorial, this one integrates Rust with pure Dart instead of Flutter.</p>
 <h2 id="get-example-code"><a class="header" href="#get-example-code">Get example code</a></h2>
 <p>Please <a href="https://dart.dev/get-dart">install Dart</a>, <a href="https://www.rust-lang.org/learn/get-started">install Rust</a>, and have some familiarity with them. Then run <code>git clone https://github.com/fzyzcjy/flutter_rust_bridge</code>, and my example is in <code>frb_example/pure_dart</code>.</p>
-<h2 id="optional-run-code-generator"><a class="header" href="#optional-run-code-generator">(Optional) Run code generator</a></h2>
-<p>Remark: I have generated the source code already (in quickstart), so this step is optional. Even if you do it, you should not see anything changed.</p>
+<h2 id="optional-manually-run-code-generator"><a class="header" href="#optional-manually-run-code-generator">(Optional) Manually run code generator</a></h2>
+<p>Remark: Bridge is automatically generated upon running <code>cargo build</code> using build-script in build.rs file, so this step is optional. Even if you do it, you should not see anything changed.</p>
 <p>Install it: <code>cargo install flutter_rust_bridge_codegen</code>.</p>
 <p>Run it: <code>flutter_rust_bridge_codegen --rust-input frb_example/pure_dart/rust/src/api.rs --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart</code> (See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml">CI workflow</a> as a reference.) (For Windows, you may need <code>\\</code> instead of <code>/</code> for paths.)</p>
 <h2 id="run-dartrust-app"><a class="header" href="#run-dartrust-app">Run &quot;Dart+Rust&quot; app</a></h2>
 <p>You may run <code>frb_example/pure_dart/dart/lib/main.dart</code> as a normal Dart program, except that you should provide the dynamic linked library of the Rust code (for simplicity, here I only demonstrate the approach for dynamic linked library, but you can for sure use other methods). The detailed steps are as follows.</p>
-<p>Run <code>cargo build</code> in <code>frb_example/pure_dart/rust</code> to build the Rust code into a <code>.so</code> file. Then run <code>dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so </code> to run the Dart program with Rust <code>.so</code> file. (If you have problems, see &quot;Troubleshooting&quot; section.)  (If on MacOS, Rust may indeed generate <code>.dylib</code>, so change the last command to use <code>...dylib</code> instead of <code>...so</code>,)</p>
+<p>Run <code>cargo build</code> in <code>frb_example/pure_dart/rust</code> to build the Rust code into a <code>.so</code> file. Then run <code>dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so</code> to run the Dart program with Rust <code>.so</code> file. (If you have problems, see &quot;Troubleshooting&quot; section.)  (If on MacOS, Rust may indeed generate <code>.dylib</code>, so change the last command to use <code>...dylib</code> instead of <code>...so</code>,)</p>
 <p>P.S. You will only see some tests passing - no fancy UI or functionality in this example.</p>
 
                     </main>
