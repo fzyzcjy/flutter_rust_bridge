@@ -7,14 +7,14 @@ Next, we need to install a few build-time and runtime dependencies.
 These depdencies are required only in build-time:
 
 - [`flutter_rust_bridge_codegen`](https://lib.rs/crates/flutter_rust_bridge_codegen), the core codegen for Rust-Dart glue code
-- [`cbindgen`](https://lib.rs/crates/cbindgen), to generate C headers from Rust FFI code
 - [`ffigen`](https://pub.dev/packages/ffigen), to generate Dart code from C headers
 - [`cargo-xcode`](https://lib.rs/crates/cargo-xcode), to generate Xcode projects for iOS and MacOS
 - A working installation of LLVM, see [Installing LLVM](https://pub.dev/packages/ffigen#installing-llvm)
 
 An easy way to install most of these dependencies is to run:
+
 ```bash
-cargo install flutter_rust_bridge_codegen cbindgen
+cargo install flutter_rust_bridge_codegen
 dart pub global activate ffigen
 # if building for iOS or MacOS
 cargo install cargo-xcode
@@ -25,6 +25,7 @@ cargo install cargo-xcode
 On the Dart side, `flutter_rust_bridge` is the required runtime component of
 `flutter_rust_bridge_codegen`. If you plan to use enum structs in Rust, the
 following dependencies are also needed:
+
 - `build_runner` (dev)
 - `freezed` (dev)
 - `freezed_annotation`

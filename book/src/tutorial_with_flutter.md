@@ -29,7 +29,6 @@ This step is optional, since I have generated the source code already (in quicks
 
 Firstly, you may need to install dependencies of this library:
 
-* Install `cbindgen`: `cargo install cbindgen` <sub>(may [need latest version](https://github.com/fzyzcjy/flutter_rust_bridge/issues/53#issuecomment-939588321), thanks @gmorenz)</sub>
 * Install `ffigen`:  `dart pub global activate ffigen`, and [install LLVM](https://pub.dev/packages/ffigen#installing-llvm) which is required by `ffigen`.
 * Install the codegen program: `cargo install flutter_rust_bridge_codegen`.
 
@@ -68,4 +67,3 @@ Same as Windows. If you install Flutter through `snap`, please be wary of [#53](
 ### MacOS app
 
 Same as Windows. (P.S. Under the hood, `cargo-xcode` is used to automate the process)
-
