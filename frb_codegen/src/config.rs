@@ -12,7 +12,7 @@ use structopt::clap::AppSettings;
 use structopt::StructOpt;
 use toml::Value;
 
-#[derive(StructOpt, Debug, PartialEq, Deserialize)]
+#[derive(StructOpt, Debug, PartialEq, Deserialize, Default)]
 #[structopt(setting(AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
     /// Path of input Rust code

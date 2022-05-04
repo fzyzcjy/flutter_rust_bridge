@@ -1,3 +1,7 @@
+## 1.29.0
+
+* Make code generator a lib to be used in build.rs; add error types for codegen; depend on cbindgen directly; update docs #434 (thanks @sagudev)
+
 ## 1.28.1
 
 * Fix LLVM path #431 (thanks @sagudev)

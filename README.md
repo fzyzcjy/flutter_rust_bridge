@@ -58,7 +58,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/Syndim"><img src="https://avatars.githubusercontent.com/u/835035?v=4?s=100" width="100px;" alt=""/><br /><sub><b>syndim</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=syndim" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/sagudev"><img src="https://avatars.githubusercontent.com/u/16504129?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sagu</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=sagudev" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/sagudev"><img src="https://avatars.githubusercontent.com/u/16504129?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sagu</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=sagudev" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=sagudev" title="Documentation">📖</a></td>
   </tr>
 </table>
 
@@ -75,13 +75,13 @@ More specifically, thanks for all these contributions:
 * [antonok-edm](https://github.com/antonok-edm): Avoid converting syn types to strings before parsing to improve code and be more robust.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [surban](https://github.com/surban): Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors.
+* [sagudev](https://github.com/sagudev): Make code generator a `lib`. Add error types. Depend on `cbindgen`. Fix LLVM paths.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [trobanga](https://github.com/trobanga): Add a cmd argument.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
-* [sagudev](https://github.com/sagudev): Fix LLVM paths.
 * [feber](https://github.com/feber): Fix doc link.
 * [rustui](https://github.com/rustui): Fix a typo.
 

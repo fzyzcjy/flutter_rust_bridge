@@ -3,17 +3,8 @@ use std::path::Path;
 use std::process::Command;
 use std::process::Output;
 
-use log::{debug, error, info, warn};
-
-/// Known failures that occur from external commands.
-/// If an error occurs frequently enough, consider adding it here and use
-/// [std::process::exit] explicitly instead of panicking.
-enum Failures {
-    Rustfmt = 1,
-    Dartfmt,
-    FfigenLlvm,
-    MissingExe,
-}
+use crate::error::{Error, Result};
+use log::{debug, info, warn};
 
 #[must_use]
 fn call_shell(cmd: &str) -> Output {
@@ -24,41 +15,14 @@ fn call_shell(cmd: &str) -> Output {
     execute_command("sh", &["-c", cmd], None)
 }
 
-pub fn ensure_tools_available() {
+pub fn ensure_tools_available() -> Result {
     let output = call_shell("dart pub global list");
     let output = String::from_utf8_lossy(&output.stdout);
     if !output.contains("ffigen") {
-        error!(
-            "
-ffigen is not available, please run \"dart pub global activate ffigen\" first."
-        );
-        std::process::exit(Failures::MissingExe as _);
+        return Err(Error::MissingExe(String::from("ffigen")));
     }
 
-    check_shell_executable("cbindgen");
-}
-
-pub fn check_shell_executable(cmd: &'static str) {
-    #[cfg(windows)]
-    let res = execute_command("where", &[cmd], None);
-    #[cfg(not(windows))]
-    let res = execute_command(
-        "sh",
-        &["-c", &format!("test -x \"$(which {})\"", cmd)],
-        None,
-    );
-    if !res.status.success() {
-        error!(
-            "
-{cmd} is not a command, or not executable.
-Note: This command might be available via cargo, in which case it can be installed with:
-
-    cargo install {cmd}",
-            cmd = cmd
-        );
-        std::process::exit(Failures::MissingExe as _);
-    }
-    debug!("{}", String::from_utf8_lossy(&res.stdout));
+    Ok(())
 }
 
 pub fn bindgen_rust_to_dart(
@@ -69,15 +33,15 @@ pub fn bindgen_rust_to_dart(
     c_struct_names: Vec<String>,
     llvm_install_path: &[String],
     llvm_compiler_opts: &str,
-) {
-    cbindgen(rust_crate_dir, c_output_path, c_struct_names);
+) -> anyhow::Result<()> {
+    cbindgen(rust_crate_dir, c_output_path, c_struct_names)?;
     ffigen(
         c_output_path,
         dart_output_path,
         dart_class_name,
         llvm_install_path,
         llvm_compiler_opts,
-    );
+    )
 }
 
 #[must_use = "Error path must be handled."]
@@ -132,34 +96,35 @@ fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Outpu
     result
 }
 
-fn cbindgen(rust_crate_dir: &str, c_output_path: &str, c_struct_names: Vec<String>) {
+fn cbindgen(
+    rust_crate_dir: &str,
+    c_output_path: &str,
+    c_struct_names: Vec<String>,
+) -> anyhow::Result<()> {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
 
-    let config = format!(
-        r#"
-language = "C"
+    let config = cbindgen::Config {
+        language: cbindgen::Language::C,
+        sys_includes: vec![
+            "stdbool.h".to_string(),
+            "stdint.h".to_string(),
+            "stdlib.h".to_string(),
+        ],
+        no_includes: true,
+        export: cbindgen::ExportConfig {
+            include: c_struct_names
+                .iter()
+                .map(|name| format!("\"{}\"", name))
+                .collect::<Vec<_>>(),
+            ..Default::default()
+        },
+        ..Default::default()
+    };
 
-# do NOT include "stdarg.h", see #108 and #53
-sys_includes = ["stdbool.h", "stdint.h", "stdlib.h"]
-no_includes = true
-
-[export]
-include = [{}]
-"#,
-        c_struct_names
-            .iter()
-            .map(|name| format!("\"{}\"", name))
-            .collect::<Vec<_>>()
-            .join(", ")
-    );
-    debug!("cbindgen config: {}", config);
-
-    let mut config_file = tempfile::NamedTempFile::new().unwrap();
-    std::io::Write::write_all(&mut config_file, config.as_bytes()).unwrap();
-    debug!("cbindgen config_file: {:?}", config_file);
+    debug!("cbindgen config: {:?}", config);
 
     let canonical = Path::new(rust_crate_dir)
         .canonicalize()
@@ -171,19 +136,10 @@ include = [{}]
         path = &path[r"\\?\".len()..];
     }
 
-    let res = execute_command(
-        "cbindgen",
-        &[
-            "-v",
-            "--config",
-            config_file.path().to_str().unwrap(),
-            "--output",
-            c_output_path,
-        ],
-        Some(path),
-    );
-    if !res.status.success() {
-        panic!("cbindgen failed: {}", String::from_utf8_lossy(&res.stderr));
+    if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
+        Ok(())
+    } else {
+        Err(Error::str("cbindgen failed writing file").into())
     }
 }
 
@@ -193,7 +149,7 @@ fn ffigen(
     dart_class_name: &str,
     llvm_path: &[String],
     llvm_compiler_opts: &str,
-) {
+) -> anyhow::Result<()> {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
         c_path, dart_path, llvm_path
@@ -219,10 +175,9 @@ fn ffigen(
             &mut config,
             "
         llvm-path:\n"
-        )
-        .unwrap();
+        )?;
         for path in llvm_path {
-            writeln!(&mut config, "           - '{}'", path).unwrap();
+            writeln!(&mut config, "           - '{}'", path)?;
         }
     }
 
@@ -237,8 +192,8 @@ fn ffigen(
 
     debug!("ffigen config: {}", config);
 
-    let mut config_file = tempfile::NamedTempFile::new().unwrap();
-    std::io::Write::write_all(&mut config_file, config.as_bytes()).unwrap();
+    let mut config_file = tempfile::NamedTempFile::new()?;
+    std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
     // NOTE please install ffigen globally first: `dart pub global activate ffigen`
@@ -248,30 +203,30 @@ fn ffigen(
     ));
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
-        if err.contains("Couldn't find dynamic library in default locations.") {
-            error!(
-                "
-ffigen could not find LLVM.
-Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.:
-
-    flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>"
-            );
-            std::process::exit(Failures::FfigenLlvm as _);
+        let out = String::from_utf8_lossy(&res.stdout);
+        let pat = "Couldn't find dynamic library in default locations.";
+        if err.contains(pat) || out.contains(pat) {
+            return Err(Error::FfigenLlvm.into());
         }
-        panic!("ffigen failed:\n{}", err);
+        return Err(
+            Error::string(format!("ffigen failed:\nstderr: {}\nstdout: {}", err, out)).into(),
+        );
     }
+    Ok(())
 }
 
-pub fn format_rust(path: &str) {
+pub fn format_rust(path: &str) -> Result {
     debug!("execute format_rust path={}", path);
     let res = execute_command("rustfmt", &[path], None);
     if !res.status.success() {
-        error!("rustfmt failed: {}", String::from_utf8_lossy(&res.stderr));
-        std::process::exit(Failures::Rustfmt as _);
+        return Err(Error::Rustfmt(
+            String::from_utf8_lossy(&res.stderr).to_string(),
+        ));
     }
+    Ok(())
 }
 
-pub fn format_dart(path: &str, line_length: i32) {
+pub fn format_dart(path: &str, line_length: i32) -> Result {
     debug!(
         "execute format_dart path={} line_length={}",
         path, line_length
@@ -281,15 +236,14 @@ pub fn format_dart(path: &str, line_length: i32) {
         path, line_length
     ));
     if !res.status.success() {
-        error!(
-            "dart format failed: {}",
-            String::from_utf8_lossy(&res.stderr)
-        );
-        std::process::exit(Failures::Dartfmt as _);
+        return Err(Error::Dartfmt(
+            String::from_utf8_lossy(&res.stderr).to_string(),
+        ));
     }
+    Ok(())
 }
 
-pub fn build_runner(dart_root: &str) {
+pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
     let out = if cfg!(windows) {
         call_shell(&format!(
@@ -303,10 +257,11 @@ pub fn build_runner(dart_root: &str) {
         ))
     };
     if !out.status.success() {
-        error!(
+        return Err(Error::StringError(format!(
             "Failed to run build_runner for {}: {}",
             dart_root,
             String::from_utf8_lossy(&out.stdout)
-        );
+        )));
     }
+    Ok(())
 }
