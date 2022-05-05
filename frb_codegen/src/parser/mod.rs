@@ -2,7 +2,7 @@ mod ty;
 
 use std::string::String;
 
-use log::{debug, info};
+use log::debug;
 use quote::quote;
 use syn::*;
 
@@ -23,10 +23,7 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFi
     let src_enums = crate_map.root_module.collect_enums_to_vec();
 
     let parser = Parser::new(TypeParser::new(src_structs, src_enums));
-    info!("a");
-    let r = parser.parse(source_rust_content, src_fns);
-    info!("b");
-    r
+    parser.parse(source_rust_content, src_fns)
 }
 
 struct Parser<'a> {
