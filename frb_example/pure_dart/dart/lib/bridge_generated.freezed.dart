@@ -12,32 +12,7 @@ part of 'bridge_generated.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ApplicationMessageTearOff {
-  const _$ApplicationMessageTearOff();
-
-  DisplayMessage displayMessage(String field0) {
-    return DisplayMessage(
-      field0,
-    );
-  }
-
-  RenderPixel renderPixel({required int x, required int y}) {
-    return RenderPixel(
-      x: x,
-      y: y,
-    );
-  }
-
-  Exit exit() {
-    return const Exit();
-  }
-}
-
-/// @nodoc
-const $ApplicationMessage = _$ApplicationMessageTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ApplicationMessage {
@@ -230,9 +205,9 @@ class _$DisplayMessage implements DisplayMessage {
 }
 
 abstract class DisplayMessage implements ApplicationMessage {
-  const factory DisplayMessage(String field0) = _$DisplayMessage;
+  const factory DisplayMessage(final String field0) = _$DisplayMessage;
 
-  String get field0;
+  String get field0 => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DisplayMessageCopyWith<DisplayMessage> get copyWith => throw _privateConstructorUsedError;
 }
@@ -372,10 +347,10 @@ class _$RenderPixel implements RenderPixel {
 }
 
 abstract class RenderPixel implements ApplicationMessage {
-  const factory RenderPixel({required int x, required int y}) = _$RenderPixel;
+  const factory RenderPixel({required final int x, required final int y}) = _$RenderPixel;
 
-  int get x;
-  int get y;
+  int get x => throw _privateConstructorUsedError;
+  int get y => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RenderPixelCopyWith<RenderPixel> get copyWith => throw _privateConstructorUsedError;
 }
@@ -483,52 +458,6 @@ class _$Exit implements Exit {
 abstract class Exit implements ApplicationMessage {
   const factory Exit() = _$Exit;
 }
-
-/// @nodoc
-class _$KitchenSinkTearOff {
-  const _$KitchenSinkTearOff();
-
-  Empty empty() {
-    return const Empty();
-  }
-
-  Primitives primitives({required int int32, required double float64, required bool boolean}) {
-    return Primitives(
-      int32: int32,
-      float64: float64,
-      boolean: boolean,
-    );
-  }
-
-  Nested nested(KitchenSink field0, int field1) {
-    return Nested(
-      field0,
-      field1,
-    );
-  }
-
-  Optional optional([int? field0, int? field1]) {
-    return Optional(
-      field0,
-      field1,
-    );
-  }
-
-  Buffer buffer(Uint8List field0) {
-    return Buffer(
-      field0,
-    );
-  }
-
-  Enums enums(Weekdays field0) {
-    return Enums(
-      field0,
-    );
-  }
-}
-
-/// @nodoc
-const $KitchenSink = _$KitchenSinkTearOff();
 
 /// @nodoc
 mixin _$KitchenSink {
@@ -774,9 +703,8 @@ class _$PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> imp
 class _$Primitives implements Primitives {
   const _$Primitives({required this.int32, required this.float64, required this.boolean});
 
-  @override
-
   /// Dart field comment
+  @override
   final int int32;
   @override
   final double float64;
@@ -894,12 +822,13 @@ class _$Primitives implements Primitives {
 }
 
 abstract class Primitives implements KitchenSink {
-  const factory Primitives({required int int32, required double float64, required bool boolean}) = _$Primitives;
+  const factory Primitives({required final int int32, required final double float64, required final bool boolean}) =
+      _$Primitives;
 
   /// Dart field comment
-  int get int32;
-  double get float64;
-  bool get boolean;
+  int get int32 => throw _privateConstructorUsedError;
+  double get float64 => throw _privateConstructorUsedError;
+  bool get boolean => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PrimitivesCopyWith<Primitives> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1064,10 +993,10 @@ class _$Nested implements Nested {
 }
 
 abstract class Nested implements KitchenSink {
-  const factory Nested(KitchenSink field0, int field1) = _$Nested;
+  const factory Nested(final KitchenSink field0, final int field1) = _$Nested;
 
-  KitchenSink get field0;
-  int get field1;
+  KitchenSink get field0 => throw _privateConstructorUsedError;
+  int get field1 => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $NestedCopyWith<Nested> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1108,9 +1037,8 @@ class _$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> imple
 class _$Optional implements Optional {
   const _$Optional([this.field0, this.field1]);
 
-  @override
-
   /// Comment on anonymous field
+  @override
   final int? field0;
   @override
   final int? field1;
@@ -1225,11 +1153,11 @@ class _$Optional implements Optional {
 }
 
 abstract class Optional implements KitchenSink {
-  const factory Optional([int? field0, int? field1]) = _$Optional;
+  const factory Optional([final int? field0, final int? field1]) = _$Optional;
 
   /// Comment on anonymous field
-  int? get field0;
-  int? get field1;
+  int? get field0 => throw _privateConstructorUsedError;
+  int? get field1 => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OptionalCopyWith<Optional> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1376,9 +1304,9 @@ class _$Buffer implements Buffer {
 }
 
 abstract class Buffer implements KitchenSink {
-  const factory Buffer(Uint8List field0) = _$Buffer;
+  const factory Buffer(final Uint8List field0) = _$Buffer;
 
-  Uint8List get field0;
+  Uint8List get field0 => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $BufferCopyWith<Buffer> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1525,9 +1453,9 @@ class _$Enums implements Enums {
 }
 
 abstract class Enums implements KitchenSink {
-  const factory Enums(Weekdays field0) = _$Enums;
+  const factory Enums(final Weekdays field0) = _$Enums;
 
-  Weekdays get field0;
+  Weekdays get field0 => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $EnumsCopyWith<Enums> get copyWith => throw _privateConstructorUsedError;
 }
