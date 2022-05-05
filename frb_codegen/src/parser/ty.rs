@@ -42,11 +42,14 @@ impl<'a> TypeParser<'a> {
 }
 
 /// Generic intermediate representation of a type that can appear inside a function signature.
+#[derive(Debug)]
 pub enum SupportedInnerType {
     /// Path types with up to 1 generic type argument on the final segment. All segments before
     /// the last segment are ignored. The generic type argument must also be a valid
     /// `SupportedInnerType`.
     Path(SupportedPathType),
+    /// Array type
+    Array(Box<Self>, usize),
     /// The unit type `()`.
     Unit,
 }
@@ -55,12 +58,14 @@ impl std::fmt::Display for SupportedInnerType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Path(p) => write!(f, "{}", p),
+            Self::Array(u, len) => write!(f, "[{u}; {len}]"),
             Self::Unit => write!(f, "()"),
         }
     }
 }
 
 /// Represents a named type, with an optional path and up to 1 generic type argument.
+#[derive(Debug)]
 pub struct SupportedPathType {
     pub ident: syn::Ident,
     pub generic: Option<Box<SupportedInnerType>>,
@@ -105,6 +110,19 @@ impl SupportedInnerType {
                     _ => None,
                 }
             }
+            syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
+                let len: usize = match len {
+                    syn::Expr::Lit(lit) => match &lit.lit {
+                        syn::Lit::Int(x) => x.base10_parse().unwrap(),
+                        _ => panic!("Cannot parse array length"),
+                    },
+                    _ => panic!("Cannot parse array length"),
+                };
+                Some(SupportedInnerType::Array(
+                    Box::new(SupportedInnerType::try_from_syn_type(&elem)?),
+                    len,
+                ))
+            }
             syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
                 Some(SupportedInnerType::Unit)
             }
@@ -126,8 +144,23 @@ impl<'a> TypeParser<'a> {
     pub fn convert_to_ir_type(&mut self, ty: SupportedInnerType) -> Option<IrType> {
         match ty {
             SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
+            SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
             SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
         }
+    }
+
+    /// Converts an array type into an `IrType` if possible.
+    pub fn convert_array_to_ir_type(
+        &mut self,
+        generic: SupportedInnerType,
+        _len: usize,
+    ) -> Option<IrType> {
+        self.convert_to_ir_type(generic).map(|inner| match inner {
+            Primitive(primitive) => PrimitiveList(IrTypePrimitiveList { primitive }),
+            others => GeneralList(IrTypeGeneralList {
+                inner: Box::new(others),
+            }),
+        })
     }
 
     /// Converts a path type into an `IrType` if possible.
