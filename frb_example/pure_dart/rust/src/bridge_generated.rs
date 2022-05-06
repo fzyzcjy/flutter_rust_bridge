@@ -528,6 +528,45 @@ pub extern "C" fn wire_get_message(port_: i64) {
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_get_array(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(get_array()),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_complex_array(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_complex_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(get_complex_array()),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_usize(port_: i64, u: usize) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_usize",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_u = u.wire2api();
+            move |task_callback| Ok(get_usize(api_u))
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -1533,6 +1572,12 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<usize> for usize {
+    fn wire2api(self) -> usize {
+        self
+    }
+}
+
 impl Wire2Api<Weekdays> for i32 {
     fn wire2api(self) -> Weekdays {
         match self {
@@ -1887,6 +1932,13 @@ impl support::IntoDart for NewTypeInt {
     }
 }
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
+
+impl support::IntoDart for Point {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.x.into_dart(), self.y.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Point {}
 
 impl support::IntoDart for VecOfPrimitivePack {
     fn into_dart(self) -> support::DartCObject {

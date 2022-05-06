@@ -94,6 +94,12 @@ abstract class FlutterRustBridgeExample {
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
 
   Future<ApplicationMessage> getMessage({dynamic hint});
+
+  Future<Uint8List> getArray({dynamic hint});
+
+  Future<List<Point>> getComplexArray({dynamic hint});
+
+  Future<int> getUsize({required int u, dynamic hint});
 }
 
 class ApplicationEnv {
@@ -292,6 +298,16 @@ class NewTypeInt {
 
   NewTypeInt({
     required this.field0,
+  });
+}
+
+class Point {
+  final double x;
+  final double y;
+
+  Point({
+    required this.x,
+    required this.y,
   });
 }
 
@@ -749,6 +765,39 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         hint: hint,
       ));
 
+  Future<Uint8List> getArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_array(port_),
+        parseSuccessData: _wire2api_uint_8_list,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "get_array",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
+  Future<List<Point>> getComplexArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_complex_array(port_),
+        parseSuccessData: _wire2api_list_point,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "get_complex_array",
+          argNames: [],
+        ),
+        argValues: [],
+        hint: hint,
+      ));
+
+  Future<int> getUsize({required int u, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_usize(port_, _api2wire_usize(u)),
+        parseSuccessData: _wire2api_usize,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "get_usize",
+          argNames: ["u"],
+        ),
+        argValues: [u],
+        hint: hint,
+      ));
+
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
@@ -1094,6 +1143,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     final ans = inner.new_uint_8_list(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
+  }
+
+  int _api2wire_usize(int raw) {
+    return raw;
   }
 
   int _api2wire_weekdays(Weekdays raw) {
@@ -1568,6 +1621,10 @@ List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
 }
 
+List<Point> _wire2api_list_point(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_point).toList();
+}
+
 MySize _wire2api_my_size(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -1684,6 +1741,15 @@ Weekdays? _wire2api_opt_weekdays(dynamic raw) {
   return raw == null ? null : _wire2api_weekdays(raw);
 }
 
+Point _wire2api_point(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Point(
+    x: _wire2api_f32(arr[0]),
+    y: _wire2api_f32(arr[1]),
+  );
+}
+
 int _wire2api_u16(dynamic raw) {
   return raw as int;
 }
@@ -1718,6 +1784,10 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
 
 void _wire2api_unit(dynamic raw) {
   return;
+}
+
+int _wire2api_usize(dynamic raw) {
+  return raw as int;
 }
 
 VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
@@ -2273,6 +2343,43 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   late final _wire_get_messagePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_message');
   late final _wire_get_message = _wire_get_messagePtr.asFunction<void Function(int)>();
+
+  void wire_get_array(
+    int port_,
+  ) {
+    return _wire_get_array(
+      port_,
+    );
+  }
+
+  late final _wire_get_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_array');
+  late final _wire_get_array = _wire_get_arrayPtr.asFunction<void Function(int)>();
+
+  void wire_get_complex_array(
+    int port_,
+  ) {
+    return _wire_get_complex_array(
+      port_,
+    );
+  }
+
+  late final _wire_get_complex_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_complex_array');
+  late final _wire_get_complex_array = _wire_get_complex_arrayPtr.asFunction<void Function(int)>();
+
+  void wire_get_usize(
+    int port_,
+    int u,
+  ) {
+    return _wire_get_usize(
+      port_,
+      u,
+    );
+  }
+
+  late final _wire_get_usizePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_get_usize');
+  late final _wire_get_usize = _wire_get_usizePtr.asFunction<void Function(int, int)>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
@@ -2958,5 +3065,6 @@ class wire_ApplicationSettings extends ffi.Struct {
   external ffi.Pointer<wire_ApplicationEnv> env;
 }
 
+typedef uintptr_t = ffi.Uint64;
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
