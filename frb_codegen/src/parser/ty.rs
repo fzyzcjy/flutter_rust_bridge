@@ -119,7 +119,7 @@ impl SupportedInnerType {
                     _ => panic!("Cannot parse array length"),
                 };
                 Some(SupportedInnerType::Array(
-                    Box::new(SupportedInnerType::try_from_syn_type(&elem)?),
+                    Box::new(SupportedInnerType::try_from_syn_type(elem)?),
                     len,
                 ))
             }
