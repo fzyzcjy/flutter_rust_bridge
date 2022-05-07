@@ -14,6 +14,7 @@ pub enum IrTypePrimitive {
     F64,
     Bool,
     Unit,
+    Usize,
 }
 
 impl IrTypeTrait for IrTypePrimitive {
@@ -32,7 +33,8 @@ impl IrTypeTrait for IrTypePrimitive {
             | IrTypePrimitive::U32
             | IrTypePrimitive::I32
             | IrTypePrimitive::U64
-            | IrTypePrimitive::I64 => "int",
+            | IrTypePrimitive::I64
+            | IrTypePrimitive::Usize => "int",
             IrTypePrimitive::F32 | IrTypePrimitive::F64 => "double",
             IrTypePrimitive::Bool => "bool",
             IrTypePrimitive::Unit => "void",
@@ -65,6 +67,7 @@ impl IrTypeTrait for IrTypePrimitive {
             IrTypePrimitive::F64 => "f64",
             IrTypePrimitive::Bool => "bool",
             IrTypePrimitive::Unit => "unit",
+            IrTypePrimitive::Usize => "usize",
         }
         .to_string()
     }
@@ -87,6 +90,7 @@ impl IrTypePrimitive {
             IrTypePrimitive::F32 => "ffi.Float",
             IrTypePrimitive::F64 => "ffi.Double",
             IrTypePrimitive::Unit => "ffi.Void",
+            IrTypePrimitive::Usize => "ffi.Usize",
         }
     }
     pub fn try_from_rust_str(s: &str) -> Option<Self> {
@@ -103,6 +107,7 @@ impl IrTypePrimitive {
             "f64" => Some(IrTypePrimitive::F64),
             "bool" => Some(IrTypePrimitive::Bool),
             "()" => Some(IrTypePrimitive::Unit),
+            "usize" => Some(IrTypePrimitive::Usize),
             _ => None,
         }
     }

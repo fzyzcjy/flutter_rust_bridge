@@ -354,6 +354,18 @@ void main(List<String> args) async {
       obj = await api.handleComplexStruct(s: obj);
     }
 
+    print('dart call getArray()');
+    expect(await api.getArray(), [1, 2, 3, 4, 5]);
+
+    print('dart call getComplexArray()');
+    final points = await api.getComplexArray();
+
+    expect(points[0].x, 1.0);
+    expect(points[1].x, 2.0);
+
+    print('dart call getUsize');
+    expect(await api.getUsize(u: 2), 2);
+
     print('flutter_rust_bridge example program end');
   });
 }
