@@ -137,7 +137,7 @@ version = "0.23.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b6d248e3ca02f3fbfabcb9284464c596baec223a26d91bbf44a5a62ddb0d900"
 dependencies = [
- "clap 3.1.17",
+ "clap 3.1.15",
  "heck 0.4.0",
  "indexmap",
  "log",
@@ -179,9 +179,9 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "3.1.17"
+version = "3.1.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "47582c09be7c8b32c0ab3a6181825ababb713fde6fff20fc573a3870dd45c6a0"
+checksum = "85a35a599b11c089a7f49105658d089b8f2cf0882993c17daf6de15285c2c35d"
 dependencies = [
  "atty",
  "bitflags",
