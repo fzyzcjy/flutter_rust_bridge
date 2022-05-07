@@ -1,6 +1,8 @@
 ## 1.29.0
 
 * Make code generator a lib to be used in build.rs; add error types for codegen; depend on cbindgen directly; update docs #434 (thanks @sagudev)
+* Update dep in locks #441 (thanks @sagudev)
+* Add support for usize and [T;N] #442 (thanks @trobanga)
 
 ## 1.28.1
 
