@@ -364,7 +364,7 @@ void main(List<String> args) async {
     expect(points[1].x, 2.0);
 
     print('dart call getUsize');
-    expect((await api.getUsize(u: 2)), 2);
+    expect(await api.getUsize(u: 2), 2);
 
     print('flutter_rust_bridge example program end');
   });
