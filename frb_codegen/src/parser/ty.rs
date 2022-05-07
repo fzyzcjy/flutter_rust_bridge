@@ -58,7 +58,7 @@ impl std::fmt::Display for SupportedInnerType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Path(p) => write!(f, "{}", p),
-            Self::Array(u, len) => write!(f, "[{u}; {len}]"),
+            Self::Array(u, len) => write!(f, "[{}; {}]", u, len),
             Self::Unit => write!(f, "()"),
         }
     }
