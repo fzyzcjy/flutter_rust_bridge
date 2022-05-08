@@ -168,21 +168,21 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.28.1"
+    version: "1.29.0"
   freezed:
     dependency: "direct dev"
     description:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "2.0.3"
   freezed_annotation:
     dependency: "direct main"
     description:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.3"
   frontend_server_client:
     dependency: transitive
     description:
