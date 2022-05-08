@@ -524,6 +524,18 @@ pub fn get_array() -> [u8; 5] {
     [1, 2, 3, 4, 5]
 }
 
+// pub fn return_array(a: [u8; 3]) -> [u8; 3] {
+//     a
+// }
+
+pub struct Array {
+    a: [u8; 3],
+}
+
+pub fn return_struct_with_array(a: Array) -> [u8; 3] {
+    a.a
+}
+
 pub struct Point {
     pub x: f32,
     pub y: f32,

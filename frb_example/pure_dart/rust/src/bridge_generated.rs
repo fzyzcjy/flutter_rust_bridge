@@ -541,6 +541,21 @@ pub extern "C" fn wire_get_array(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_return_struct_with_array(port_: i64, a: *mut wire_Array) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_struct_with_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            move |task_callback| Ok(return_struct_with_array(api_a))
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_get_complex_array(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -596,6 +611,12 @@ pub struct wire_ApplicationSettings {
     version: *mut wire_uint_8_list,
     mode: i32,
     env: *mut wire_ApplicationEnv,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Array {
+    a: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -862,6 +883,11 @@ pub extern "C" fn new_box_application_env() -> *mut wire_ApplicationEnv {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_application_settings() -> *mut wire_ApplicationSettings {
     support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_array() -> *mut wire_Array {
+    support::new_leak_box_ptr(wire_Array::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1147,6 +1173,14 @@ impl Wire2Api<ApplicationSettings> for wire_ApplicationSettings {
     }
 }
 
+impl Wire2Api<Array> for wire_Array {
+    fn wire2api(self) -> Array {
+        Array {
+            a: self.a.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<Attribute> for wire_Attribute {
     fn wire2api(self) -> Attribute {
         Attribute {
@@ -1171,6 +1205,13 @@ impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
 
 impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
     fn wire2api(self) -> ApplicationSettings {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<Array> for *mut wire_Array {
+    fn wire2api(self) -> Array {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         (*wrap).wire2api().into()
     }
@@ -1629,6 +1670,14 @@ impl NewWithNullPtr for wire_ApplicationSettings {
             version: core::ptr::null_mut(),
             mode: Default::default(),
             env: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Array {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
         }
     }
 }
