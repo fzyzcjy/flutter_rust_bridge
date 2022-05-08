@@ -352,6 +352,13 @@ jobs:
   rust_linter:
     name: Rust linter using Clippy and rustfmt
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        cargo_toolchain_version:
+          - stable
+          - 1.55.0
+
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -360,7 +367,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: ${{ matrix.cargo_toolchain_version }}
           components: rustfmt, clippy
 
       - uses: dart-lang/setup-dart@v1
