@@ -21,7 +21,9 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::ArrayPrimitive {
                 primitive: _,
                 len: _,
-            } => "unsafe {
+            } => "use std::convert::TryInto;
+
+            unsafe {
             let wrap = support::box_from_leak_ptr(self);
             std::slice::from_raw_parts(wrap.ptr, wrap.len as usize)
                 .try_into()
@@ -31,8 +33,9 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 ir_type_general_list,
                 len,
             } => format!(
-                "
-        let vec: &[{}; {len}] = unsafe {{
+                "use std::convert::TryInto;
+            
+            let vec: &[{}; {len}] = unsafe {{
             let wrap = support::box_from_leak_ptr(self);
             std::slice::from_raw_parts(wrap.ptr, wrap.len as usize)
                 .try_into()
