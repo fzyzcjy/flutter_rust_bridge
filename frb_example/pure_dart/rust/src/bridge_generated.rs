@@ -1183,7 +1183,9 @@ impl Wire2Api<[Point; 2]> for *mut wire_list_point {
                 .try_into()
                 .unwrap()
         };
-        let vec = IntoIterator::into_iter(vec.to_vec())
+        let vec = vec
+            .to_vec()
+            .into_iter()
             .map(Wire2Api::wire2api)
             .collect::<Vec<Point>>();
         vec.try_into().unwrap_or_else(|v: Vec<Point>| panic!())
