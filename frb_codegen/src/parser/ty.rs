@@ -153,12 +153,17 @@ impl<'a> TypeParser<'a> {
     pub fn convert_array_to_ir_type(
         &mut self,
         generic: SupportedInnerType,
-        _len: usize,
+        len: usize,
     ) -> Option<IrType> {
         self.convert_to_ir_type(generic).map(|inner| match inner {
-            Primitive(primitive) => PrimitiveList(IrTypePrimitiveList { primitive }),
-            others => GeneralList(IrTypeGeneralList {
-                inner: Box::new(others),
+            Primitive(primitive) => {
+                IrType::Delegate(IrTypeDelegate::ArrayPrimitive { primitive, len })
+            }
+            others => IrType::Delegate(IrTypeDelegate::ArrayGeneral {
+                ir_type_general_list: IrTypeGeneralList {
+                    inner: Box::new(others),
+                },
+                len,
             }),
         })
     }

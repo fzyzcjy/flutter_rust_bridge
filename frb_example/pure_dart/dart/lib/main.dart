@@ -377,18 +377,24 @@ void main(List<String> args) async {
     print('dart call getArray()');
     expect(await api.getArray(), [1, 2, 3, 4, 5]);
 
-    // print('dart call returnArray()');
-    // expect(await api.returnArray([1, 2, 3]), [1, 2, 3]);
-
     print('dart call returnStructWithArray()');
-    var a = Array(a: [1, 2, 3]);
-    expect(await api.returnStructWithArray(a), [1, 2, 3]);
+    var a = MyArray(a: Uint32List.fromList([1, 2, 3]), b:Uint16List.fromList([1]));
+    expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
 
-    print('dart call getComplexArray()');
-    final points = await api.getComplexArray();
+    print('dart call scaleArray()');
+    final point1 = Point(x: 1.0, y: 2.0);
+    final point2 = Point(x: 3.0, y: 4.0);
+    expect(point1.x, 1.0);
+    expect(point1.y, 2.0);
+    expect(point2.x, 3.0);
+    expect(point2.y, 4.0);
 
-    expect(points[0].x, 1.0);
-    expect(points[1].x, 2.0);
+    final List<Point> points = await api.scaleArray(points: [point1, point2], scale: 2.0);
+
+    expect(points[0].x, 2.0);
+    expect(points[0].y, 4.0);
+    expect(points[1].x, 6.0);
+    expect(points[1].y, 8.0);
 
     print('dart call getUsize');
     expect(await api.getUsize(u: 2), 2);

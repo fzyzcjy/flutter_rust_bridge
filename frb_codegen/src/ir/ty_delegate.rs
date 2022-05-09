@@ -7,6 +7,14 @@ pub enum IrTypeDelegate {
     StringList,
     SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
+    ArrayPrimitive {
+        primitive: IrTypePrimitive,
+        len: usize,
+    },
+    ArrayGeneral {
+        ir_type_general_list: IrTypeGeneralList,
+        len: usize,
+    },
 }
 
 impl IrTypeDelegate {
@@ -24,6 +32,15 @@ impl IrTypeDelegate {
                 })
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::ArrayPrimitive { primitive, len: _ } => {
+                IrType::PrimitiveList(IrTypePrimitiveList {
+                    primitive: primitive.to_owned(),
+                })
+            }
+            IrTypeDelegate::ArrayGeneral {
+                ir_type_general_list,
+                len: _,
+            } => IrType::GeneralList(ir_type_general_list.to_owned()),
         }
     }
 }
@@ -41,6 +58,17 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
+            IrTypeDelegate::ArrayPrimitive { primitive, len } => {
+                format!("ArrayPrimitive_{}_{}", primitive.rust_api_type(), len)
+            }
+            IrTypeDelegate::ArrayGeneral {
+                ir_type_general_list,
+                len,
+            } => format!(
+                "ArrayGeneral_{}_{}",
+                ir_type_general_list.inner.rust_api_type(),
+                len
+            ),
         }
     }
 
@@ -48,9 +76,16 @@ impl IrTypeTrait for IrTypeDelegate {
         match self {
             IrTypeDelegate::String => "String".to_string(),
             IrTypeDelegate::StringList => "List<String>".to_owned(),
-            IrTypeDelegate::SyncReturnVecU8 | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                self.get_delegate().dart_api_type()
+            IrTypeDelegate::SyncReturnVecU8
+            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_)
+            | IrTypeDelegate::ArrayPrimitive {
+                primitive: _,
+                len: _,
             }
+            | IrTypeDelegate::ArrayGeneral {
+                ir_type_general_list: _,
+                len: _,
+            } => self.get_delegate().dart_api_type(),
         }
     }
 
@@ -68,6 +103,17 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::StringList => "Vec<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
+            }
+            IrTypeDelegate::ArrayPrimitive { primitive, len } => {
+                let primitive_api_type = primitive.rust_api_type();
+                format!("[{primitive_api_type}; {len}]")
+            }
+            IrTypeDelegate::ArrayGeneral {
+                ir_type_general_list,
+                len,
+            } => {
+                let inner = ir_type_general_list.inner.rust_api_type();
+                format!("[{inner}; {len}]")
             }
         }
     }

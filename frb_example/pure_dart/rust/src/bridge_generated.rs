@@ -541,29 +541,33 @@ pub extern "C" fn wire_get_array(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_struct_with_array(port_: i64, a: *mut wire_Array) {
+pub extern "C" fn wire_take_and_unpack_array(port_: i64, a: *mut wire_MyArray) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "return_struct_with_array",
+            debug_name: "take_and_unpack_array",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_a = a.wire2api();
-            move |task_callback| Ok(return_struct_with_array(api_a))
+            move |task_callback| Ok(take_and_unpack_array(api_a))
         },
     )
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_complex_array(port_: i64) {
+pub extern "C" fn wire_scale_array(port_: i64, points: *mut wire_list_point, scale: f32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "get_complex_array",
+            debug_name: "scale_array",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(get_complex_array()),
+        move || {
+            let api_points = points.wire2api();
+            let api_scale = scale.wire2api();
+            move |task_callback| Ok(scale_array(api_points, api_scale))
+        },
     )
 }
 
@@ -611,12 +615,6 @@ pub struct wire_ApplicationSettings {
     version: *mut wire_uint_8_list,
     mode: i32,
     env: *mut wire_ApplicationEnv,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Array {
-    a: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -725,6 +723,20 @@ pub struct wire_list_opt_box_autoadd_attribute {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_point {
+    ptr: *mut wire_Point,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MyArray {
+    a: *mut wire_uint_32_list,
+    b: *mut wire_uint_16_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_MySize {
     width: i32,
     height: i32,
@@ -749,6 +761,27 @@ pub struct wire_MyTreeNode {
 #[derive(Clone)]
 pub struct wire_NewTypeInt {
     field0: i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Point {
+    x: f32,
+    y: f32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_16_list {
+    ptr: *mut u16,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_32_list {
+    ptr: *mut u32,
+    len: i32,
 }
 
 #[repr(C)]
@@ -886,11 +919,6 @@ pub extern "C" fn new_box_autoadd_application_settings() -> *mut wire_Applicatio
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_array() -> *mut wire_Array {
-    support::new_leak_box_ptr(wire_Array::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_Attribute {
     support::new_leak_box_ptr(wire_Attribute::new_with_null_ptr())
 }
@@ -928,6 +956,11 @@ pub extern "C" fn new_box_autoadd_i64(value: i64) -> *mut i64 {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_KitchenSink {
     support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_my_array() -> *mut wire_MyArray {
+    support::new_leak_box_ptr(wire_MyArray::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1088,6 +1121,33 @@ pub extern "C" fn new_list_opt_box_autoadd_attribute(
 }
 
 #[no_mangle]
+pub extern "C" fn new_list_point(len: i32) -> *mut wire_list_point {
+    let wrap = wire_list_point {
+        ptr: support::new_leak_vec_ptr(<wire_Point>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_16_list(len: i32) -> *mut wire_uint_16_list {
+    let ans = wire_uint_16_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_32_list(len: i32) -> *mut wire_uint_32_list {
+    let ans = wire_uint_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
 pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
@@ -1111,6 +1171,32 @@ where
             None
         } else {
             Some(self.wire2api())
+        }
+    }
+}
+
+impl Wire2Api<[Point; 2]> for *mut wire_list_point {
+    fn wire2api(self) -> [Point; 2] {
+        let vec: &[wire_Point; 2] = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            std::slice::from_raw_parts(wrap.ptr, wrap.len as usize)
+                .try_into()
+                .unwrap()
+        };
+        let vec = IntoIterator::into_iter(vec.to_vec())
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Point>>();
+        vec.try_into().unwrap_or_else(|v: Vec<Point>| panic!())
+    }
+}
+
+impl Wire2Api<[u32; 3]> for *mut wire_uint_32_list {
+    fn wire2api(self) -> [u32; 3] {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            std::slice::from_raw_parts(wrap.ptr, wrap.len as usize)
+                .try_into()
+                .unwrap()
         }
     }
 }
@@ -1173,14 +1259,6 @@ impl Wire2Api<ApplicationSettings> for wire_ApplicationSettings {
     }
 }
 
-impl Wire2Api<Array> for wire_Array {
-    fn wire2api(self) -> Array {
-        Array {
-            a: self.a.wire2api(),
-        }
-    }
-}
-
 impl Wire2Api<Attribute> for wire_Attribute {
     fn wire2api(self) -> Attribute {
         Attribute {
@@ -1205,13 +1283,6 @@ impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
 
 impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
     fn wire2api(self) -> ApplicationSettings {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
-    }
-}
-
-impl Wire2Api<Array> for *mut wire_Array {
-    fn wire2api(self) -> Array {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         (*wrap).wire2api().into()
     }
@@ -1264,6 +1335,13 @@ impl Wire2Api<i64> for *mut i64 {
 
 impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<MyArray> for *mut wire_MyArray {
+    fn wire2api(self) -> MyArray {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         (*wrap).wire2api().into()
     }
@@ -1548,6 +1626,25 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribu
     }
 }
 
+impl Wire2Api<Vec<Point>> for *mut wire_list_point {
+    fn wire2api(self) -> Vec<Point> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<MyArray> for wire_MyArray {
+    fn wire2api(self) -> MyArray {
+        MyArray {
+            a: self.a.wire2api(),
+            b: self.b.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<MyEnum> for i32 {
     fn wire2api(self) -> MyEnum {
         match self {
@@ -1592,6 +1689,21 @@ impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     }
 }
 
+impl Wire2Api<Point> for wire_Point {
+    fn wire2api(self) -> Point {
+        Point {
+            x: self.x.wire2api(),
+            y: self.y.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<u16> for u16 {
+    fn wire2api(self) -> u16 {
+        self
+    }
+}
+
 impl Wire2Api<u32> for u32 {
     fn wire2api(self) -> u32 {
         self
@@ -1601,6 +1713,24 @@ impl Wire2Api<u32> for u32 {
 impl Wire2Api<u8> for u8 {
     fn wire2api(self) -> u8 {
         self
+    }
+}
+
+impl Wire2Api<Vec<u16>> for *mut wire_uint_16_list {
+    fn wire2api(self) -> Vec<u16> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+
+impl Wire2Api<Vec<u32>> for *mut wire_uint_32_list {
+    fn wire2api(self) -> Vec<u32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
@@ -1670,14 +1800,6 @@ impl NewWithNullPtr for wire_ApplicationSettings {
             version: core::ptr::null_mut(),
             mode: Default::default(),
             env: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_Array {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            a: core::ptr::null_mut(),
         }
     }
 }
@@ -1780,6 +1902,15 @@ pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
     })
 }
 
+impl NewWithNullPtr for wire_MyArray {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+            b: core::ptr::null_mut(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_MySize {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1812,6 +1943,15 @@ impl NewWithNullPtr for wire_NewTypeInt {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: Default::default(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Point {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+            y: Default::default(),
         }
     }
 }

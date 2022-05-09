@@ -97,9 +97,9 @@ abstract class FlutterRustBridgeExample {
 
   Future<Uint8List> getArray({dynamic hint});
 
-  Future<Uint8List> returnStructWithArray({required Array a, dynamic hint});
+  Future<Uint32List> takeAndUnpackArray({required MyArray a, dynamic hint});
 
-  Future<List<Point>> getComplexArray({dynamic hint});
+  Future<List<Point>> scaleArray({required List<Point> points, required double scale, dynamic hint});
 
   Future<int> getUsize({required int u, dynamic hint});
 }
@@ -150,14 +150,6 @@ class ApplicationSettings {
     required this.version,
     required this.mode,
     required this.env,
-  });
-}
-
-class Array {
-  final Uint8List a;
-
-  Array({
-    required this.a,
   });
 }
 
@@ -256,6 +248,16 @@ class KitchenSink with _$KitchenSink {
   const factory KitchenSink.enums(
     Weekdays field0,
   ) = Enums;
+}
+
+class MyArray {
+  final Uint32List a;
+  final Uint16List b;
+
+  MyArray({
+    required this.a,
+    required this.b,
+  });
 }
 
 enum MyEnum {
@@ -777,7 +779,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 
   Future<Uint8List> getArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_array(port_),
-        parseSuccessData: _wire2api_uint_8_list,
+        parseSuccessData: _wire2api_ArrayPrimitive_u8_5,
         constMeta: const FlutterRustBridgeTaskConstMeta(
           debugName: "get_array",
           argNames: [],
@@ -786,25 +788,26 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         hint: hint,
       ));
 
-  Future<Uint8List> returnStructWithArray({required Array a, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_return_struct_with_array(port_, _api2wire_box_autoadd_array(a)),
-        parseSuccessData: _wire2api_uint_8_list,
+  Future<Uint32List> takeAndUnpackArray({required MyArray a, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_take_and_unpack_array(port_, _api2wire_box_autoadd_my_array(a)),
+        parseSuccessData: _wire2api_ArrayPrimitive_u32_3,
         constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "return_struct_with_array",
+          debugName: "take_and_unpack_array",
           argNames: ["a"],
         ),
         argValues: [a],
         hint: hint,
       ));
 
-  Future<List<Point>> getComplexArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_get_complex_array(port_),
-        parseSuccessData: _wire2api_list_point,
+  Future<List<Point>> scaleArray({required List<Point> points, required double scale, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_scale_array(port_, _api2wire_ArrayGeneral_Point_2(points), _api2wire_f32(scale)),
+        parseSuccessData: _wire2api_ArrayGeneral_Point_2,
         constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "get_complex_array",
-          argNames: [],
+          debugName: "scale_array",
+          argNames: ["points", "scale"],
         ),
-        argValues: [],
+        argValues: [points, scale],
         hint: hint,
       ));
 
@@ -820,6 +823,20 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       ));
 
   // Section: api2wire
+  ffi.Pointer<wire_list_point> _api2wire_ArrayGeneral_Point_2(List<Point> raw) {
+    final ans = inner.new_list_point(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_point(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  ffi.Pointer<wire_uint_32_list> _api2wire_ArrayPrimitive_u32_3(Uint32List raw) {
+    final ans = inner.new_uint_32_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
@@ -853,12 +870,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   ffi.Pointer<wire_ApplicationSettings> _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
     final ptr = inner.new_box_autoadd_application_settings();
     _api_fill_to_wire_application_settings(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_Array> _api2wire_box_autoadd_array(Array raw) {
-    final ptr = inner.new_box_autoadd_array();
-    _api_fill_to_wire_array(raw, ptr.ref);
     return ptr;
   }
 
@@ -899,6 +910,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   ffi.Pointer<wire_KitchenSink> _api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
     final ptr = inner.new_box_autoadd_kitchen_sink();
     _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_MyArray> _api2wire_box_autoadd_my_array(MyArray raw) {
+    final ptr = inner.new_box_autoadd_my_array();
+    _api_fill_to_wire_my_array(raw, ptr.ref);
     return ptr;
   }
 
@@ -1058,6 +1075,14 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return ans;
   }
 
+  ffi.Pointer<wire_list_point> _api2wire_list_point(List<Point> raw) {
+    final ans = inner.new_list_point(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_point(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
   int _api2wire_my_enum(MyEnum raw) {
     return raw.index;
   }
@@ -1158,12 +1183,28 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return raw == null ? ffi.nullptr : _api2wire_uint_8_list(raw);
   }
 
+  int _api2wire_u16(int raw) {
+    return raw;
+  }
+
   int _api2wire_u32(int raw) {
     return raw;
   }
 
   int _api2wire_u8(int raw) {
     return raw;
+  }
+
+  ffi.Pointer<wire_uint_16_list> _api2wire_uint_16_list(Uint16List raw) {
+    final ans = inner.new_uint_16_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  ffi.Pointer<wire_uint_32_list> _api2wire_uint_32_list(Uint32List raw) {
+    final ans = inner.new_uint_32_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_uint_8_list(Uint8List raw) {
@@ -1198,10 +1239,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     wireObj.env = _api2wire_box_application_env(apiObj.env);
   }
 
-  void _api_fill_to_wire_array(Array apiObj, wire_Array wireObj) {
-    wireObj.a = _api2wire_uint_8_list(apiObj.a);
-  }
-
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
     wireObj.key = _api2wire_String(apiObj.key);
     wireObj.value = _api2wire_String(apiObj.value);
@@ -1214,10 +1251,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   void _api_fill_to_wire_box_autoadd_application_settings(
       ApplicationSettings apiObj, ffi.Pointer<wire_ApplicationSettings> wireObj) {
     _api_fill_to_wire_application_settings(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_array(Array apiObj, ffi.Pointer<wire_Array> wireObj) {
-    _api_fill_to_wire_array(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_attribute(Attribute apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -1235,6 +1268,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 
   void _api_fill_to_wire_box_autoadd_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_my_array(MyArray apiObj, ffi.Pointer<wire_MyArray> wireObj) {
+    _api_fill_to_wire_my_array(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
@@ -1324,6 +1361,11 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     }
   }
 
+  void _api_fill_to_wire_my_array(MyArray apiObj, wire_MyArray wireObj) {
+    wireObj.a = _api2wire_ArrayPrimitive_u32_3(apiObj.a);
+    wireObj.b = _api2wire_uint_16_list(apiObj.b);
+  }
+
   void _api_fill_to_wire_my_size(MySize apiObj, wire_MySize wireObj) {
     wireObj.width = _api2wire_i32(apiObj.width);
     wireObj.height = _api2wire_i32(apiObj.height);
@@ -1360,9 +1402,26 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   void _api_fill_to_wire_opt_box_exotic_optionals(ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
   }
+
+  void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
+    wireObj.x = _api2wire_f32(apiObj.x);
+    wireObj.y = _api2wire_f32(apiObj.y);
+  }
 }
 
 // Section: wire2api
+List<Point> _wire2api_ArrayGeneral_Point_2(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_point).toList();
+}
+
+Uint32List _wire2api_ArrayPrimitive_u32_3(dynamic raw) {
+  return raw as Uint32List;
+}
+
+Uint8List _wire2api_ArrayPrimitive_u8_5(dynamic raw) {
+  return raw as Uint8List;
+}
+
 String _wire2api_String(dynamic raw) {
   return raw as String;
 }
@@ -2390,33 +2449,39 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_get_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_array');
   late final _wire_get_array = _wire_get_arrayPtr.asFunction<void Function(int)>();
 
-  void wire_return_struct_with_array(
+  void wire_take_and_unpack_array(
     int port_,
-    ffi.Pointer<wire_Array> a,
+    ffi.Pointer<wire_MyArray> a,
   ) {
-    return _wire_return_struct_with_array(
+    return _wire_take_and_unpack_array(
       port_,
       a,
     );
   }
 
-  late final _wire_return_struct_with_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Array>)>>(
-          'wire_return_struct_with_array');
-  late final _wire_return_struct_with_array =
-      _wire_return_struct_with_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_Array>)>();
+  late final _wire_take_and_unpack_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MyArray>)>>(
+          'wire_take_and_unpack_array');
+  late final _wire_take_and_unpack_array =
+      _wire_take_and_unpack_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_MyArray>)>();
 
-  void wire_get_complex_array(
+  void wire_scale_array(
     int port_,
+    ffi.Pointer<wire_list_point> points,
+    double scale,
   ) {
-    return _wire_get_complex_array(
+    return _wire_scale_array(
       port_,
+      points,
+      scale,
     );
   }
 
-  late final _wire_get_complex_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_complex_array');
-  late final _wire_get_complex_array = _wire_get_complex_arrayPtr.asFunction<void Function(int)>();
+  late final _wire_scale_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_point>, ffi.Float)>>(
+          'wire_scale_array');
+  late final _wire_scale_array =
+      _wire_scale_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_list_point>, double)>();
 
   void wire_get_usize(
     int port_,
@@ -2462,14 +2527,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_application_settings');
   late final _new_box_autoadd_application_settings =
       _new_box_autoadd_application_settingsPtr.asFunction<ffi.Pointer<wire_ApplicationSettings> Function()>();
-
-  ffi.Pointer<wire_Array> new_box_autoadd_array() {
-    return _new_box_autoadd_array();
-  }
-
-  late final _new_box_autoadd_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Array> Function()>>('new_box_autoadd_array');
-  late final _new_box_autoadd_array = _new_box_autoadd_arrayPtr.asFunction<ffi.Pointer<wire_Array> Function()>();
 
   ffi.Pointer<wire_Attribute> new_box_autoadd_attribute() {
     return _new_box_autoadd_attribute();
@@ -2554,6 +2611,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>('new_box_autoadd_kitchen_sink');
   late final _new_box_autoadd_kitchen_sink =
       _new_box_autoadd_kitchen_sinkPtr.asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
+
+  ffi.Pointer<wire_MyArray> new_box_autoadd_my_array() {
+    return _new_box_autoadd_my_array();
+  }
+
+  late final _new_box_autoadd_my_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyArray> Function()>>('new_box_autoadd_my_array');
+  late final _new_box_autoadd_my_array =
+      _new_box_autoadd_my_arrayPtr.asFunction<ffi.Pointer<wire_MyArray> Function()>();
 
   ffi.Pointer<wire_MySize> new_box_autoadd_my_size() {
     return _new_box_autoadd_my_size();
@@ -2804,6 +2870,42 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           'new_list_opt_box_autoadd_attribute');
   late final _new_list_opt_box_autoadd_attribute = _new_list_opt_box_autoadd_attributePtr
       .asFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(int)>();
+
+  ffi.Pointer<wire_list_point> new_list_point(
+    int len,
+  ) {
+    return _new_list_point(
+      len,
+    );
+  }
+
+  late final _new_list_pointPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_point> Function(ffi.Int32)>>('new_list_point');
+  late final _new_list_point = _new_list_pointPtr.asFunction<ffi.Pointer<wire_list_point> Function(int)>();
+
+  ffi.Pointer<wire_uint_16_list> new_uint_16_list(
+    int len,
+  ) {
+    return _new_uint_16_list(
+      len,
+    );
+  }
+
+  late final _new_uint_16_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_16_list> Function(ffi.Int32)>>('new_uint_16_list');
+  late final _new_uint_16_list = _new_uint_16_listPtr.asFunction<ffi.Pointer<wire_uint_16_list> Function(int)>();
+
+  ffi.Pointer<wire_uint_32_list> new_uint_32_list(
+    int len,
+  ) {
+    return _new_uint_32_list(
+      len,
+    );
+  }
+
+  late final _new_uint_32_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_32_list> Function(ffi.Int32)>>('new_uint_32_list');
+  late final _new_uint_32_list = _new_uint_32_listPtr.asFunction<ffi.Pointer<wire_uint_32_list> Function(int)>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
@@ -3124,8 +3226,39 @@ class wire_ApplicationSettings extends ffi.Struct {
   external ffi.Pointer<wire_ApplicationEnv> env;
 }
 
-class wire_Array extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> a;
+class wire_uint_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_uint_16_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint16> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_MyArray extends ffi.Struct {
+  external ffi.Pointer<wire_uint_32_list> a;
+
+  external ffi.Pointer<wire_uint_16_list> b;
+}
+
+class wire_Point extends ffi.Struct {
+  @ffi.Float()
+  external double x;
+
+  @ffi.Float()
+  external double y;
+}
+
+class wire_list_point extends ffi.Struct {
+  external ffi.Pointer<wire_Point> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 typedef uintptr_t = ffi.Uint64;

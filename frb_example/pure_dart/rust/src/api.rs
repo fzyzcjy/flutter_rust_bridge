@@ -524,15 +524,12 @@ pub fn get_array() -> [u8; 5] {
     [1, 2, 3, 4, 5]
 }
 
-// pub fn return_array(a: [u8; 3]) -> [u8; 3] {
-//     a
-// }
-
-pub struct Array {
-    a: [u8; 3],
+pub struct MyArray {
+    pub a: [u32; 3],
+    pub b: Vec<u16>,
 }
 
-pub fn return_struct_with_array(a: Array) -> [u8; 3] {
+pub fn take_and_unpack_array(a: MyArray) -> [u32; 3] {
     a.a
 }
 
@@ -541,8 +538,12 @@ pub struct Point {
     pub y: f32,
 }
 
-pub fn get_complex_array() -> [Point; 2] {
-    [Point { x: 1.0, y: 1.0 }, Point { x: 2.0, y: 2.0 }]
+pub fn scale_array(mut points: [Point; 2], scale: f32) -> [Point; 2] {
+    points[0].x *= scale;
+    points[0].y *= scale;
+    points[1].x *= scale;
+    points[1].y *= scale;
+    points
 }
 
 // usize

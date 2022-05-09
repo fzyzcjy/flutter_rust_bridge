@@ -95,6 +95,9 @@ impl<'a> Parser<'a> {
                     Some(IrFuncArg::Type(self.type_parser.parse_type(ty)))
                 }
             }
+            syn::Type::Array(syn::TypeArray { .. }) => {
+                Some(IrFuncArg::Type(self.type_parser.parse_type(ty)))
+            }
             _ => None,
         }
     }
