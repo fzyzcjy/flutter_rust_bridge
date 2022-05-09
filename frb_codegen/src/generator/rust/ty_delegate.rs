@@ -38,7 +38,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 .try_into()
                 .unwrap()
         }};
-        let vec = vec.to_vec().into_iter()
+        let vec = vec.iter().cloned()
             .map(Wire2Api::wire2api)
             .collect::<Vec<{}>>();
         vec.try_into().unwrap_or_else(|v: Vec<{}>| panic!())

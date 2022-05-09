@@ -1184,8 +1184,8 @@ impl Wire2Api<[Point; 2]> for *mut wire_list_point {
                 .unwrap()
         };
         let vec = vec
-            .to_vec()
-            .into_iter()
+            .iter()
+            .cloned()
             .map(Wire2Api::wire2api)
             .collect::<Vec<Point>>();
         vec.try_into().unwrap_or_else(|v: Vec<Point>| panic!())
