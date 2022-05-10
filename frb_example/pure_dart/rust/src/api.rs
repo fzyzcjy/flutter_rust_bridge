@@ -524,6 +524,7 @@ pub fn get_array() -> [u8; 5] {
     [1, 2, 3, 4, 5]
 }
 
+#[derive(Debug)]
 pub struct MyArray {
     pub a: [u32; 3],
     pub b: Vec<u16>,
@@ -533,6 +534,7 @@ pub fn take_and_unpack_array(a: MyArray) -> [u32; 3] {
     a.a
 }
 
+#[derive(Debug)]
 pub struct Point {
     pub x: f32,
     pub y: f32,

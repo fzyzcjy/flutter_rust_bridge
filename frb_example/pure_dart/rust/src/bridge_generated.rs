@@ -1179,11 +1179,9 @@ impl Wire2Api<[Point; 2]> for *mut wire_list_point {
     fn wire2api(self) -> [Point; 2] {
         use std::convert::TryInto;
 
-        let vec: &[wire_Point; 2] = unsafe {
+        let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            std::slice::from_raw_parts(wrap.ptr, wrap.len as usize)
-                .try_into()
-                .unwrap()
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
         let vec = vec
             .iter()
@@ -1200,7 +1198,7 @@ impl Wire2Api<[u32; 3]> for *mut wire_uint_32_list {
 
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            std::slice::from_raw_parts(wrap.ptr, wrap.len as usize)
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
                 .try_into()
                 .unwrap()
         }

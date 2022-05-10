@@ -25,28 +25,25 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
 
             unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            std::slice::from_raw_parts(wrap.ptr, wrap.len as usize)
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
                 .try_into()
                 .unwrap()}"
                 .to_owned(),
             IrTypeDelegate::ArrayGeneral {
                 ir_type_general_list,
-                len,
+                len: _,
             } => format!(
                 "use std::convert::TryInto;
             
-            let vec: &[{}; {len}] = unsafe {{
+            let vec = unsafe {{
             let wrap = support::box_from_leak_ptr(self);
-            std::slice::from_raw_parts(wrap.ptr, wrap.len as usize)
-                .try_into()
-                .unwrap()
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         }};
         let vec = vec.iter().cloned()
             .map(Wire2Api::wire2api)
             .collect::<Vec<{}>>();
         vec.try_into().unwrap_or_else(|v: Vec<{}>| panic!())
         ",
-                ir_type_general_list.inner.rust_wire_type(),
                 ir_type_general_list.inner.rust_api_type(),
                 ir_type_general_list.inner.rust_api_type(),
             ),
