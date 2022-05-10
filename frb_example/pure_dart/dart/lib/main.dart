@@ -358,24 +358,51 @@ void main(List<String> args) async {
     expect(await api.getArray(), [1, 2, 3, 4, 5]);
 
     print('dart call returnStructWithArray()');
-    var a = MyArray(a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
-    expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
+    {
+      var a = MyArray(a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
+      expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
+    }
+
+    print('dart call returnStructWithArray() with wrong sized list');
+    {
+      try {
+        var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
+        await api.takeAndUnpackArray(a: a);
+        fail("exception not thrown");
+      } catch (e) {
+        print(e);
+        expect(e, isA<Exception>());
+      }
+    }
 
     print('dart call scaleArray()');
-    final point1 = Point(x: 1.0, y: 2.0);
-    final point2 = Point(x: 3.0, y: 4.0);
-    expect(point1.x, 1.0);
-    expect(point1.y, 2.0);
-    expect(point2.x, 3.0);
-    expect(point2.y, 4.0);
+    {
+      final point1 = Point(x: 1.0, y: 2.0);
+      final point2 = Point(x: 3.0, y: 4.0);
+      expect(point1.x, 1.0);
+      expect(point1.y, 2.0);
+      expect(point2.x, 3.0);
+      expect(point2.y, 4.0);
 
-    final List<Point> points = await api.scaleArray(points: [point1, point2], scale: 2.0);
+      final List<Point> points = await api.scaleArray(points: [point1, point2], scale: 2.0);
 
-    expect(points[0].x, 2.0);
-    expect(points[0].y, 4.0);
-    expect(points[1].x, 6.0);
-    expect(points[1].y, 8.0);
+      expect(points[0].x, 2.0);
+      expect(points[0].y, 4.0);
+      expect(points[1].x, 6.0);
+      expect(points[1].y, 8.0);
+    }
 
+    print('dart call scaleArray() with wrong sized list');
+    {
+      try {
+        final point1 = Point(x: 1.0, y: 2.0);
+        await api.scaleArray(points: [point1], scale: 2.0);
+        fail("exception not thrown");
+      } catch (e) {
+        print(e);
+        expect(e, isA<Exception>());
+      }
+    }
     print('dart call getUsize');
     expect(await api.getUsize(u: 2), 2);
 

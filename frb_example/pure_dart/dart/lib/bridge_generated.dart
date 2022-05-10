@@ -824,6 +824,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 
   // Section: api2wire
   ffi.Pointer<wire_list_point> _api2wire_ArrayGeneral_Point_2(List<Point> raw) {
+    if (raw.length != 2) throw Exception('List must have lenght 2');
     final ans = inner.new_list_point(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_point(raw[i], ans.ref.ptr[i]);
@@ -832,6 +833,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   ffi.Pointer<wire_uint_32_list> _api2wire_ArrayPrimitive_u32_3(Uint32List raw) {
+    if (raw.length != 3) throw Exception('List must have lenght 3');
     final ans = inner.new_uint_32_list(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
