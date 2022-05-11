@@ -371,7 +371,7 @@ void main(List<String> args) async {
         fail("exception not thrown");
       } catch (e) {
         print(e);
-        expect(e, isA<FfiException>());
+        expect(e, isA<Exception>());
       }
     }
 
@@ -400,7 +400,7 @@ void main(List<String> args) async {
         fail("exception not thrown");
       } catch (e) {
         print(e);
-        expect(e, isA<FfiException>());
+        expect(e, isA<Exception>());
       }
     }
     print('dart call getUsize');

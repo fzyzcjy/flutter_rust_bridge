@@ -1188,8 +1188,7 @@ impl Wire2Api<[Point; 2]> for *mut wire_list_point {
             .cloned()
             .map(Wire2Api::wire2api)
             .collect::<Vec<Point>>();
-        vec.try_into()
-            .unwrap_or_else(|v: Vec<Point>| panic!("Expecting array of length 2"))
+        vec.try_into().unwrap_or_else(|v: Vec<Point>| panic!())
     }
 }
 
@@ -1197,12 +1196,12 @@ impl Wire2Api<[u32; 3]> for *mut wire_uint_32_list {
     fn wire2api(self) -> [u32; 3] {
         use std::convert::TryInto;
 
-        let vec = unsafe {
+        unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.try_into()
-            .unwrap_or_else(|v: Vec<_>| panic!("Expecting array of length 3"))
+                .try_into()
+                .unwrap()
+        }
     }
 }
 
