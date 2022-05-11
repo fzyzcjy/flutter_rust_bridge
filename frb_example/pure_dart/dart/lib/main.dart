@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
@@ -407,6 +408,7 @@ void main(List<String> args) async {
     expect(await api.getUsize(u: 2), 2);
 
     print('flutter_rust_bridge example program end');
+    exit(0);
   });
 }
 
