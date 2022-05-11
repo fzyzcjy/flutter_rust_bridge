@@ -6,6 +6,8 @@ use syn::*;
 use crate::ir::IrType::*;
 use crate::ir::*;
 
+use crate::markers;
+
 use crate::source_graph::{Enum, Struct};
 
 use crate::parser::{extract_comments, type_to_string};
@@ -326,6 +328,7 @@ impl<'a> TypeParser<'a> {
                                             .unwrap_or_else(|| format!("field{}", idx)),
                                     ),
                                     ty: self.parse_type(&field.ty),
+                                    non_final: false,
                                     comments: extract_comments(&field.attrs),
                                 })
                                 .collect(),
@@ -356,6 +359,7 @@ impl<'a> TypeParser<'a> {
             fields.push(IrField {
                 name: IrIdent::new(field_name),
                 ty: field_type,
+                non_final: markers::has_non_final(&field.attrs),
                 comments: extract_comments(&field.attrs),
             });
         }
