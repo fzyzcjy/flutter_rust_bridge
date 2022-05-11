@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
@@ -7,6 +8,8 @@ import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:test/test.dart';
 
 void main(List<String> args) async {
+  bool done = false;
+
   test('main test', () async {
     final dylibPath = args[0];
 
@@ -408,8 +411,10 @@ void main(List<String> args) async {
     expect(await api.getUsize(u: 2), 2);
 
     print('flutter_rust_bridge example program end');
-    exit(0);
+    done = true;
   });
+
+  Timer.periodic(Duration(seconds: 1), (_timer) { if (done) exit(0); });
 }
 
 int _createGarbage() {
