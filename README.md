@@ -78,8 +78,8 @@ More specifically, thanks for all these contributions:
 * [Unoqwy](https://github.com/Unoqwy): Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.
 * [antonok-edm](https://github.com/antonok-edm): Avoid converting syn types to strings before parsing to improve code and be more robust.
 * [sagudev](https://github.com/sagudev): Make code generator a `lib`. Add error types. Depend on `cbindgen`. Fix LLVM paths. Update deps. Fix CI.
+* [surban](https://github.com/surban): Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
-* [surban](https://github.com/surban): Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors.
 * [trobanga](https://github.com/trobanga): Add support for `[T;N]`. Add `usize` support. Add a cmd argument.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
