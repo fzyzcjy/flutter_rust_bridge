@@ -29,7 +29,9 @@ gen-bridge: build
 
 alias l := lint
 lint:
-    dart format --fix -l {{line_length}} .
+    dart format --fix .
+    dart format --fix -l {{line_length}} {{frb_pure}}
+    dart format --fix -l {{line_length}} {{frb_flutter}}
 
 alias t := test
 test: test-pure test-integration
