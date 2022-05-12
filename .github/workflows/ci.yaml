@@ -481,7 +481,7 @@ jobs:
         run: flutter analyze --fatal-infos
 
       - name: Install pana
-        run: pub global activate pana
+        run: flutter pub global activate pana
 
       - name: Analyze dart package using pana
         working-directory: ./frb_dart

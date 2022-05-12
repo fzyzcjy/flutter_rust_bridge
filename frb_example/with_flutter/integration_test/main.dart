@@ -5,7 +5,7 @@ import 'dart:io';
 import 'dart:isolate';
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Size;
 import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:flutter_rust_bridge_example/main.dart' as app;
 import 'package:flutter_test/flutter_test.dart';
