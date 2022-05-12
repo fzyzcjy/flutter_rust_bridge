@@ -132,6 +132,7 @@ impl<'a> Parser<'a> {
                         inputs.push(IrField {
                             name: IrIdent::new(name),
                             ty,
+                            is_final: true,
                             comments: extract_comments(&pat_type.attrs),
                         });
                     }
