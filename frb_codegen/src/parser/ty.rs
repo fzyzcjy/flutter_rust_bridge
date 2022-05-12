@@ -328,7 +328,7 @@ impl<'a> TypeParser<'a> {
                                             .unwrap_or_else(|| format!("field{}", idx)),
                                     ),
                                     ty: self.parse_type(&field.ty),
-                                    non_final: false,
+                                    is_final: true,
                                     comments: extract_comments(&field.attrs),
                                 })
                                 .collect(),
@@ -359,7 +359,7 @@ impl<'a> TypeParser<'a> {
             fields.push(IrField {
                 name: IrIdent::new(field_name),
                 ty: field_type,
-                non_final: markers::has_non_final(&field.attrs),
+                is_final: !markers::has_non_final(&field.attrs),
                 comments: extract_comments(&field.attrs),
             });
         }

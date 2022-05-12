@@ -66,7 +66,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 format!(
                     "{}{} {} {};",
                     comments,
-                    if f.non_final { "" } else { "final" },
+                    if f.is_final { "final" } else { "" },
                     f.ty.dart_api_type(),
                     f.name.dart_style()
                 )
