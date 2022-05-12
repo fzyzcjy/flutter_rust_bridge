@@ -21,7 +21,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   async:
     dependency: transitive
     description:
@@ -91,7 +91,7 @@ packages:
       name: built_value
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.2.3"
+    version: "8.3.0"
   charcode:
     dependency: transitive
     description:
@@ -168,7 +168,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.29.0"
+    version: "1.30.0"
   freezed:
     dependency: "direct dev"
     description:

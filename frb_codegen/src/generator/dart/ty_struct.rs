@@ -64,8 +64,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .map(|f| {
                 let comments = dart_comments(&f.comments);
                 format!(
-                    "{}final {} {};",
+                    "{}{} {} {};",
                     comments,
+                    if f.is_final { "final" } else { "" },
                     f.ty.dart_api_type(),
                     f.name.dart_style()
                 )

@@ -243,7 +243,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.29.0"
+version = "1.30.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -255,7 +255,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "1.29.0"
+version = "1.30.0"
 dependencies = [
  "anyhow",
  "cargo_metadata",
@@ -294,7 +294,7 @@ version = "0.1.0"
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.29.0"
+version = "1.30.0"
 
 [[package]]
 name = "gimli"

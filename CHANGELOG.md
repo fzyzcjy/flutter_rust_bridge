@@ -1,3 +1,7 @@
+## 1.30.0
+
+* Support non-final fields in Dart structs #452 (thanks @surban)
+
 ## 1.29.0
 
 * Make code generator a lib to be used in build.rs; add error types for codegen; depend on cbindgen directly; update docs #434 (thanks @sagudev)
