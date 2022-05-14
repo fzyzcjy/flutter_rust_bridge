@@ -89,4 +89,5 @@ More specifically, thanks for all these contributions:
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [feber](https://github.com/feber): Fix doc link.
 * [rustui](https://github.com/rustui): Fix a typo.
+* [eltociear](https://github.com/eltociear): Fix a typo.
 
