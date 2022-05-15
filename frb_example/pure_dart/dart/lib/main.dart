@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:ffi';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
@@ -8,8 +7,6 @@ import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:test/test.dart';
 
 void main(List<String> args) async {
-  bool done = false;
-
   test('main test', () async {
     final dylibPath = args[0];
 
@@ -371,11 +368,11 @@ void main(List<String> args) async {
     {
       try {
         var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
-        await api.takeAndUnpackArray(a: a);
+        var f = await api.takeAndUnpackArray(a: a);
         fail("exception not thrown");
       } catch (e) {
         print(e);
-        expect(e, isA<Exception>());
+        expect(e, isA<FfiException>());
       }
     }
 
@@ -404,17 +401,15 @@ void main(List<String> args) async {
         fail("exception not thrown");
       } catch (e) {
         print(e);
-        expect(e, isA<Exception>());
+        expect(e, isA<FfiException>());
       }
     }
+
     print('dart call getUsize');
     expect(await api.getUsize(u: 2), 2);
 
     print('flutter_rust_bridge example program end');
-    done = true;
   });
-
-  Timer.periodic(Duration(seconds: 1), (_timer) { if (done) exit(0); });
 }
 
 int _createGarbage() {
