@@ -1,17 +1,19 @@
 import 'dart:async';
 import 'dart:ffi';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:test/test.dart';
 
-void main(List<String> args) async {
+void main() async {
+  String dylibPath = Platform.isWindows ? 'flutter_rust_bridge_example.dll' : 'libflutter_rust_bridge_example.so';
+  dylibPath = '../rust/target/debug/$dylibPath';
+
+  print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
+
   test('main test', () async {
-    final dylibPath = args[0];
-
-    print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
-
     print('construct api');
     final dylib = DynamicLibrary.open(dylibPath);
     final api = FlutterRustBridgeExampleImpl(dylib);
@@ -360,19 +362,19 @@ void main(List<String> args) async {
 
     print('dart call returnStructWithArray()');
     {
-      var a = MyArray(a: Uint32List.fromList([1, 2, 3]));
+      var a = MyArray(a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
       expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
     }
 
     print('dart call returnStructWithArray() with wrong sized list');
     {
       try {
-        var a = MyArray(a: Uint32List.fromList([1, 2]));
+        var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
         await api.takeAndUnpackArray(a: a);
         fail("exception not thrown");
       } catch (e) {
         print(e);
-        expect(e, isA<FfiException>());
+        expect(e, isA<Exception>());
       }
     }
 
@@ -401,7 +403,7 @@ void main(List<String> args) async {
         fail("exception not thrown");
       } catch (e) {
         print(e);
-        expect(e, isA<FfiException>());
+        expect(e, isA<Exception>());
       }
     }
 

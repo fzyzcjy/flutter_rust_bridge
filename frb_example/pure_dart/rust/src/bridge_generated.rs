@@ -732,6 +732,7 @@ pub struct wire_list_point {
 #[derive(Clone)]
 pub struct wire_MyArray {
     a: *mut wire_uint_32_list,
+    b: *mut wire_uint_16_list,
 }
 
 #[repr(C)]
@@ -767,6 +768,13 @@ pub struct wire_NewTypeInt {
 pub struct wire_Point {
     x: f32,
     y: f32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_16_list {
+    ptr: *mut u16,
+    len: i32,
 }
 
 #[repr(C)]
@@ -1119,6 +1127,15 @@ pub extern "C" fn new_list_point(len: i32) -> *mut wire_list_point {
         len,
     };
     support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_16_list(len: i32) -> *mut wire_uint_16_list {
+    let ans = wire_uint_16_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
 }
 
 #[no_mangle]
@@ -1627,6 +1644,7 @@ impl Wire2Api<MyArray> for wire_MyArray {
     fn wire2api(self) -> MyArray {
         MyArray {
             a: self.a.wire2api(),
+            b: self.b.wire2api(),
         }
     }
 }
@@ -1684,6 +1702,12 @@ impl Wire2Api<Point> for wire_Point {
     }
 }
 
+impl Wire2Api<u16> for u16 {
+    fn wire2api(self) -> u16 {
+        self
+    }
+}
+
 impl Wire2Api<u32> for u32 {
     fn wire2api(self) -> u32 {
         self
@@ -1693,6 +1717,15 @@ impl Wire2Api<u32> for u32 {
 impl Wire2Api<u8> for u8 {
     fn wire2api(self) -> u8 {
         self
+    }
+}
+
+impl Wire2Api<Vec<u16>> for *mut wire_uint_16_list {
+    fn wire2api(self) -> Vec<u16> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
     }
 }
 
@@ -1877,6 +1910,7 @@ impl NewWithNullPtr for wire_MyArray {
     fn new_with_null_ptr() -> Self {
         Self {
             a: core::ptr::null_mut(),
+            b: core::ptr::null_mut(),
         }
     }
 }
