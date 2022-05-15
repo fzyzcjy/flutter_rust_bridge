@@ -165,7 +165,7 @@ class Attribute {
 
 class Customized {
   final String finalField;
-  final String? nonFinalField;
+  String? nonFinalField;
 
   Customized({
     required this.finalField,

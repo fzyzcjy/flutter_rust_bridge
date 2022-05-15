@@ -408,6 +408,12 @@ void main(List<String> args) async {
     print('dart call getUsize');
     expect(await api.getUsize(u: 2), 2);
 
+    print('dart check that non-final field is modifiable');
+    var customized = Customized(finalField: "finalField", nonFinalField: "nonFinalField");
+    expect(customized.nonFinalField, "nonFinalField");
+    customized.nonFinalField = "changed";
+    expect(customized.nonFinalField, "changed");
+
     print('flutter_rust_bridge example program end');
   });
 }

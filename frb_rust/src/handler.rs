@@ -108,7 +108,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         // that can cause panic. Otherwise we may touch UB.
         // Why do not report error or something like that if this outer [catch_unwind] really
         // catches something: Because if we report error, that line of code itself can cause panic
-        // as well. Then that new panic will go across language boundry and cause UB.
+        // as well. Then that new panic will go across language boundary and cause UB.
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
         let _ = panic::catch_unwind(move || {
             let wrap_info2 = wrap_info.clone();
@@ -159,7 +159,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             // return the simplest thing possible. Normally the inner [catch_unwind] should catch
             // panic. If no, here is our *LAST* chance before encountering undefined behavior.
             // We just return this data that does not have much sense, but at least much better
-            // than let panic happen across FFI boundry - which is undefined behavior.
+            // than let panic happen across FFI boundary - which is undefined behavior.
             ptr: ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
             len: 0,
             success: false,

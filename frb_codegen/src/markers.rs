@@ -22,3 +22,18 @@ pub fn extract_mirror_marker(attrs: &[Attribute]) -> Option<Path> {
             _ => None,
         })
 }
+
+/// Checks if the `#[frb(non_final)]` attribute is present.
+pub fn has_non_final(attrs: &[Attribute]) -> bool {
+    attrs
+        .iter()
+        .filter(|attr| attr.path.is_ident("frb"))
+        .any(|attr| {
+            match attr.parse_meta() {
+            Ok(Meta::List(MetaList { nested, .. })) => nested.iter().any(|meta| {
+                matches!(meta, NestedMeta::Meta(Meta::Path(path)) if path.is_ident("non_final"))
+            }),
+            _ => false,
+        }
+        })
+}
