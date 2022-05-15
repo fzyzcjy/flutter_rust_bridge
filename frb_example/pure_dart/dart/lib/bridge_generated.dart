@@ -252,11 +252,9 @@ class KitchenSink with _$KitchenSink {
 
 class MyArray {
   final Uint32List a;
-  final Uint16List b;
 
   MyArray({
     required this.a,
-    required this.b,
   });
 }
 
@@ -1183,22 +1181,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return raw == null ? ffi.nullptr : _api2wire_uint_8_list(raw);
   }
 
-  int _api2wire_u16(int raw) {
-    return raw;
-  }
-
   int _api2wire_u32(int raw) {
     return raw;
   }
 
   int _api2wire_u8(int raw) {
     return raw;
-  }
-
-  ffi.Pointer<wire_uint_16_list> _api2wire_uint_16_list(Uint16List raw) {
-    final ans = inner.new_uint_16_list(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
   }
 
   ffi.Pointer<wire_uint_32_list> _api2wire_uint_32_list(Uint32List raw) {
@@ -1363,7 +1351,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 
   void _api_fill_to_wire_my_array(MyArray apiObj, wire_MyArray wireObj) {
     wireObj.a = _api2wire_ArrayPrimitive_u32_3(apiObj.a);
-    wireObj.b = _api2wire_uint_16_list(apiObj.b);
   }
 
   void _api_fill_to_wire_my_size(MySize apiObj, wire_MySize wireObj) {
@@ -2883,18 +2870,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_point> Function(ffi.Int32)>>('new_list_point');
   late final _new_list_point = _new_list_pointPtr.asFunction<ffi.Pointer<wire_list_point> Function(int)>();
 
-  ffi.Pointer<wire_uint_16_list> new_uint_16_list(
-    int len,
-  ) {
-    return _new_uint_16_list(
-      len,
-    );
-  }
-
-  late final _new_uint_16_listPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_16_list> Function(ffi.Int32)>>('new_uint_16_list');
-  late final _new_uint_16_list = _new_uint_16_listPtr.asFunction<ffi.Pointer<wire_uint_16_list> Function(int)>();
-
   ffi.Pointer<wire_uint_32_list> new_uint_32_list(
     int len,
   ) {
@@ -3233,17 +3208,8 @@ class wire_uint_32_list extends ffi.Struct {
   external int len;
 }
 
-class wire_uint_16_list extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint16> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
 class wire_MyArray extends ffi.Struct {
   external ffi.Pointer<wire_uint_32_list> a;
-
-  external ffi.Pointer<wire_uint_16_list> b;
 }
 
 class wire_Point extends ffi.Struct {

@@ -360,15 +360,15 @@ void main(List<String> args) async {
 
     print('dart call returnStructWithArray()');
     {
-      var a = MyArray(a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
+      var a = MyArray(a: Uint32List.fromList([1, 2, 3]));
       expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
     }
 
     print('dart call returnStructWithArray() with wrong sized list');
     {
       try {
-        var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
-        var f = await api.takeAndUnpackArray(a: a);
+        var a = MyArray(a: Uint32List.fromList([1, 2]));
+        await api.takeAndUnpackArray(a: a);
         fail("exception not thrown");
       } catch (e) {
         print(e);

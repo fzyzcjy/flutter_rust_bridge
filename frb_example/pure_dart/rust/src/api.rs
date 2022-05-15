@@ -527,7 +527,6 @@ pub fn get_array() -> [u8; 5] {
 #[derive(Debug)]
 pub struct MyArray {
     pub a: [u32; 3],
-    pub b: Vec<u16>,
 }
 
 pub fn take_and_unpack_array(a: MyArray) -> [u32; 3] {
