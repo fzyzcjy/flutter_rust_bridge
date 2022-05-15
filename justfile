@@ -40,7 +40,7 @@ test-pure:
     cd {{frb_pure}}/rust && cargo b
     cd {{frb_pure}}/dart && \
         dart pub get && \
-        dart lib/main.dart ../rust/target/debug/{{dylib}}
+        dart test lib/main.dart
 test-integration:
     cd {{frb_flutter}} && flutter test integration_test/main.dart
 
