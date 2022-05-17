@@ -1,8 +1,10 @@
+mod annotation;
 mod comment;
 mod field;
 mod file;
 mod func;
 mod ident;
+mod import;
 mod ty;
 mod ty_boxed;
 mod ty_delegate;
@@ -13,11 +15,13 @@ mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
 
+pub use annotation::*;
 pub use comment::*;
 pub use field::*;
 pub use file::*;
 pub use func::*;
 pub use ident::*;
+pub use import::*;
 pub use ty::*;
 pub use ty_boxed::*;
 pub use ty_delegate::*;

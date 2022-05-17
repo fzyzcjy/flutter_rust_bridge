@@ -24,8 +24,7 @@ void main(List<String> args) async {
 
     print('dart call primitiveTypes');
     {
-      expect(await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true),
-          42);
+      expect(await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
     }
 
     print('dart call primitiveU32');
@@ -46,8 +45,7 @@ void main(List<String> args) async {
     print('dart call handleVecU8');
     {
       final len = 100000;
-      expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
-          Uint8List.fromList(List.filled(len * 2, 127)));
+      expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))), Uint8List.fromList(List.filled(len * 2, 127)));
     }
 
     print('dart call handleVecOfPrimitive');
@@ -84,8 +82,7 @@ void main(List<String> args) async {
 
     print('dart call handleStruct');
     {
-      final structResp =
-          await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+      final structResp = await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
       expect(structResp.width, 42 + 1000);
       expect(structResp.height, 100 + 10000);
     }
@@ -98,8 +95,7 @@ void main(List<String> args) async {
 
     print('dart call handleListOfStruct');
     {
-      final listOfStructResp =
-          await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+      final listOfStructResp = await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
       expect(listOfStructResp.length, 4);
       expect(listOfStructResp[0].width, 42);
       expect(listOfStructResp[1].width, 420);
@@ -371,6 +367,10 @@ void main(List<String> args) async {
     expect(customized.nonFinalField, "nonFinalField");
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");
+
+    print('dart call next_user_id');
+    UserId userId = UserId(value: 11);
+    expect(await api.nextUserId(userId: userId), UserId(value: 12));
 
     print('flutter_rust_bridge example program end');
   });

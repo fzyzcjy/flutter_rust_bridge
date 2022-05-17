@@ -4,6 +4,7 @@ use convert_case::{Case, Casing};
 #[derive(Debug, Clone)]
 pub struct IrTypeStructRef {
     pub name: String,
+    pub freezed: bool,
 }
 
 impl IrTypeStructRef {
@@ -46,6 +47,7 @@ pub struct IrStruct {
     pub path: Option<Vec<String>>,
     pub fields: Vec<IrField>,
     pub is_fields_named: bool,
+    pub metadata: Vec<IrAnnotation>,
     pub comments: Vec<IrComment>,
 }
 
@@ -56,5 +58,9 @@ impl IrStruct {
         } else {
             ('(', ')')
         }
+    }
+
+    pub fn freezed(&self) -> bool {
+        self.metadata.iter().any(|it| it.content == "freezed")
     }
 }

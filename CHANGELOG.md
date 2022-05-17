@@ -1,4 +1,6 @@
 ## 1.30.0
+* Support ```#[frb(metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]``` for structs
+## 1.30.0
 
 * Support non-final fields in Dart structs #452 (thanks @surban)
 
@@ -236,4 +238,3 @@
 ## 1.0.0
 
 * Initial release
-
