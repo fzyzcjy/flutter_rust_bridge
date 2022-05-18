@@ -1,4 +1,3 @@
-## 1.30.0
 * Support ```#[frb(metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]``` for structs
 ## 1.30.0
 
