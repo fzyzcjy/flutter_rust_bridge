@@ -539,7 +539,7 @@ pub fn get_usize(u: usize) -> usize {
 }
 
 /// Example for @freezed and @meta.immutable
-#[frb(metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
+#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UserId {
     pub value: u32,
 }

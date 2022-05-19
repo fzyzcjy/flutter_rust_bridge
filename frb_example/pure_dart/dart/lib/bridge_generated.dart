@@ -6,6 +6,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:meta/meta.dart' as meta;
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -314,12 +315,12 @@ class Point {
 }
 
 /// Example for @freezed and @meta.immutable
-class UserId {
-  final int value;
-
-  UserId({
-    required this.value,
-  });
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    required int value,
+  }) = _UserId;
 }
 
 class VecOfPrimitivePack {
