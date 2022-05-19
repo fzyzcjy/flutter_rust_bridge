@@ -263,7 +263,7 @@ impl<'a> TypeParser<'a> {
                             freezed: self
                                 .struct_pool
                                 .get(ident_string)
-                                .map(IrStruct::freezed)
+                                .map(IrStruct::using_freezed)
                                 .unwrap_or(false),
                         }))
                     } else if self.src_enums.contains_key(ident_string) {
@@ -319,7 +319,7 @@ impl<'a> TypeParser<'a> {
                             wrapper_name: None,
                             path: None,
                             is_fields_named: field_ident.is_some(),
-                            metadata: extract_metadata(attrs),
+                            dart_metadata: extract_metadata(attrs),
                             comments: extract_comments(attrs),
                             fields: variant
                                 .fields
@@ -385,7 +385,7 @@ impl<'a> TypeParser<'a> {
             path,
             fields,
             is_fields_named,
-            metadata,
+            dart_metadata: metadata,
             comments,
         }
     }

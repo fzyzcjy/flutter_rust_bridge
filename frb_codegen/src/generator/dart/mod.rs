@@ -86,7 +86,7 @@ pub fn generate(
     let imports = ir_file
         .struct_pool
         .values()
-        .flat_map(|s| s.metadata.iter().flat_map(|it| &it.library))
+        .flat_map(|s| s.dart_metadata.iter().flat_map(|it| &it.library))
         .collect::<HashSet<_>>();
 
     let import_header = if !imports.is_empty() {
@@ -375,11 +375,11 @@ fn dart_comments(comments: &[IrComment]) -> String {
     }
     comments
 }
-fn dart_metadata(metadata: &[IrAnnotation]) -> String {
+fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
     let mut metadata = metadata
         .iter()
         .map(|it| match &it.library {
-            Some(IrImport {
+            Some(IrDartImport {
                 alias: Some(alias), ..
             }) => format!("@{}.{}", alias, it.content),
             _ => format!("@{}", it.content),

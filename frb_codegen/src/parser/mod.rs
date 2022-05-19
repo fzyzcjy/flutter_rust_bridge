@@ -218,7 +218,7 @@ fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
 pub mod frb_keyword {
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
-    syn::custom_keyword!(metadata);
+    syn::custom_keyword!(dart_metadata);
     syn::custom_keyword!(import);
 }
 
@@ -250,21 +250,21 @@ impl Parse for MirrorOption {
 }
 
 #[derive(Clone, Debug)]
-pub struct MetadataAnnotations(Vec<IrAnnotation>);
+pub struct MetadataAnnotations(Vec<IrDartAnnotation>);
 
-impl Parse for IrAnnotation {
+impl Parse for IrDartAnnotation {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let annotation: LitStr = input.parse()?;
         let library = if input.peek(frb_keyword::import) {
             let _ = input.parse::<frb_keyword::import>()?;
-            let library: IrImport = input.parse()?;
+            let library: IrDartImport = input.parse()?;
             Some(library)
         } else {
             None
         };
         Ok(Self {
             content: annotation.value(),
-            library: library,
+            library,
         })
     }
 }
@@ -272,17 +272,18 @@ impl Parse for MetadataAnnotations {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let content;
         parenthesized!(content in input);
-        let annotations = Punctuated::<IrAnnotation, syn::Token![,]>::parse_terminated(&content)?
-            .into_iter()
-            .collect();
+        let annotations =
+            Punctuated::<IrDartAnnotation, syn::Token![,]>::parse_terminated(&content)?
+                .into_iter()
+                .collect();
         Ok(Self(annotations))
     }
 }
 
 #[derive(Clone, Debug)]
-pub struct DartImports(Vec<IrImport>);
+pub struct DartImports(Vec<IrDartImport>);
 
-impl Parse for IrImport {
+impl Parse for IrDartImport {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let uri: LitStr = input.parse()?;
         let alias: Option<String> = if input.peek(token::As) {
@@ -294,7 +295,7 @@ impl Parse for IrImport {
         };
         Ok(Self {
             uri: uri.value(),
-            alias: alias,
+            alias,
         })
     }
 }
@@ -302,7 +303,7 @@ impl Parse for DartImports {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let content;
         parenthesized!(content in input);
-        let imports = Punctuated::<IrImport, syn::Token![,]>::parse_terminated(&content)?
+        let imports = Punctuated::<IrDartImport, syn::Token![,]>::parse_terminated(&content)?
             .into_iter()
             .collect();
         Ok(Self(imports))
@@ -312,7 +313,7 @@ impl Parse for DartImports {
 enum FrbOption {
     Mirror(MirrorOption),
     NonFinal,
-    Metadata(NamedOption<frb_keyword::metadata, MetadataAnnotations>),
+    Metadata(NamedOption<frb_keyword::dart_metadata, MetadataAnnotations>),
 }
 
 impl Parse for FrbOption {
@@ -324,14 +325,14 @@ impl Parse for FrbOption {
             input
                 .parse::<frb_keyword::non_final>()
                 .map(|_| FrbOption::NonFinal)
-        } else if lookahead.peek(frb_keyword::metadata) {
+        } else if lookahead.peek(frb_keyword::dart_metadata) {
             input.parse().map(FrbOption::Metadata)
         } else {
             Err(lookahead.error())
         }
     }
 }
-fn extract_metadata(attrs: &[Attribute]) -> Vec<IrAnnotation> {
+fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
     attrs
         .iter()
         .filter(|attr| attr.path.is_ident("frb"))

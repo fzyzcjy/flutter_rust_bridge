@@ -58,9 +58,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     fn structs(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
         let comments = dart_comments(&src.comments);
-        let metadata = dart_metadata(&src.metadata);
+        let metadata = dart_metadata(&src.dart_metadata);
 
-        if src.freezed() {
+        if src.using_freezed() {
             let constructor_params = src
                 .fields
                 .iter()

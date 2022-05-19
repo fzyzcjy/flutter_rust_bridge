@@ -47,7 +47,7 @@ pub struct IrStruct {
     pub path: Option<Vec<String>>,
     pub fields: Vec<IrField>,
     pub is_fields_named: bool,
-    pub metadata: Vec<IrAnnotation>,
+    pub dart_metadata: Vec<IrDartAnnotation>,
     pub comments: Vec<IrComment>,
 }
 
@@ -60,7 +60,7 @@ impl IrStruct {
         }
     }
 
-    pub fn freezed(&self) -> bool {
-        self.metadata.iter().any(|it| it.content == "freezed")
+    pub fn using_freezed(&self) -> bool {
+        self.dart_metadata.iter().any(|it| it.content == "freezed")
     }
 }
