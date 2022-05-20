@@ -372,6 +372,10 @@ void main(List<String> args) async {
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");
 
+    print('dart call next_user_id to test metadata annotations');
+    UserId userId = UserId(value: 11);
+    expect(await api.nextUserId(userId: userId), UserId(value: 12));
+
     print('flutter_rust_bridge example program end');
   });
 }

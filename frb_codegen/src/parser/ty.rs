@@ -10,7 +10,7 @@ use crate::markers;
 
 use crate::source_graph::{Enum, Struct};
 
-use crate::parser::{extract_comments, type_to_string};
+use crate::parser::{extract_comments, extract_metadata, type_to_string};
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
@@ -260,6 +260,11 @@ impl<'a> TypeParser<'a> {
 
                         Some(StructRef(IrTypeStructRef {
                             name: ident_string.to_owned(),
+                            freezed: self
+                                .struct_pool
+                                .get(ident_string)
+                                .map(IrStruct::using_freezed)
+                                .unwrap_or(false),
                         }))
                     } else if self.src_enums.contains_key(ident_string) {
                         if self.parsed_enums.insert(ident_string.to_owned()) {
@@ -314,6 +319,7 @@ impl<'a> TypeParser<'a> {
                             wrapper_name: None,
                             path: None,
                             is_fields_named: field_ident.is_some(),
+                            dart_metadata: extract_metadata(attrs),
                             comments: extract_comments(attrs),
                             fields: variant
                                 .fields
@@ -371,6 +377,7 @@ impl<'a> TypeParser<'a> {
             None
         };
         let path = Some(src_struct.path.clone());
+        let metadata = extract_metadata(&src_struct.src.attrs);
         let comments = extract_comments(&src_struct.src.attrs);
         IrStruct {
             name,
@@ -378,6 +385,7 @@ impl<'a> TypeParser<'a> {
             path,
             fields,
             is_fields_named,
+            dart_metadata: metadata,
             comments,
         }
     }

@@ -4,6 +4,8 @@ use std::string::String;
 
 use log::debug;
 use quote::quote;
+use syn::parse::{Parse, ParseStream};
+use syn::punctuated::Punctuated;
 use syn::*;
 
 use crate::ir::*;
@@ -209,6 +211,138 @@ fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
                 ..
             })) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
             _ => None,
+        })
+        .collect()
+}
+
+pub mod frb_keyword {
+    syn::custom_keyword!(mirror);
+    syn::custom_keyword!(non_final);
+    syn::custom_keyword!(dart_metadata);
+    syn::custom_keyword!(import);
+}
+
+#[derive(Clone, Debug)]
+pub struct NamedOption<K, V> {
+    pub name: K,
+    pub value: V,
+}
+
+impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let name: K = input.parse()?;
+        let _: Token![=] = input.parse()?;
+        let value = input.parse()?;
+        Ok(Self { name, value })
+    }
+}
+
+#[derive(Clone, Debug)]
+pub struct MirrorOption(Path);
+
+impl Parse for MirrorOption {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let content;
+        parenthesized!(content in input);
+        let path: Path = content.parse()?;
+        Ok(Self(path))
+    }
+}
+
+#[derive(Clone, Debug)]
+pub struct MetadataAnnotations(Vec<IrDartAnnotation>);
+
+impl Parse for IrDartAnnotation {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let annotation: LitStr = input.parse()?;
+        let library = if input.peek(frb_keyword::import) {
+            let _ = input.parse::<frb_keyword::import>()?;
+            let library: IrDartImport = input.parse()?;
+            Some(library)
+        } else {
+            None
+        };
+        Ok(Self {
+            content: annotation.value(),
+            library,
+        })
+    }
+}
+impl Parse for MetadataAnnotations {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let content;
+        parenthesized!(content in input);
+        let annotations =
+            Punctuated::<IrDartAnnotation, syn::Token![,]>::parse_terminated(&content)?
+                .into_iter()
+                .collect();
+        Ok(Self(annotations))
+    }
+}
+
+#[derive(Clone, Debug)]
+pub struct DartImports(Vec<IrDartImport>);
+
+impl Parse for IrDartImport {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let uri: LitStr = input.parse()?;
+        let alias: Option<String> = if input.peek(token::As) {
+            let _ = input.parse::<token::As>()?;
+            let alias: Ident = input.parse()?;
+            Some(alias.to_string())
+        } else {
+            None
+        };
+        Ok(Self {
+            uri: uri.value(),
+            alias,
+        })
+    }
+}
+impl Parse for DartImports {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let content;
+        parenthesized!(content in input);
+        let imports = Punctuated::<IrDartImport, syn::Token![,]>::parse_terminated(&content)?
+            .into_iter()
+            .collect();
+        Ok(Self(imports))
+    }
+}
+
+enum FrbOption {
+    Mirror(MirrorOption),
+    NonFinal,
+    Metadata(NamedOption<frb_keyword::dart_metadata, MetadataAnnotations>),
+}
+
+impl Parse for FrbOption {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let lookahead = input.lookahead1();
+        if lookahead.peek(frb_keyword::mirror) {
+            input.parse().map(FrbOption::Mirror)
+        } else if lookahead.peek(frb_keyword::non_final) {
+            input
+                .parse::<frb_keyword::non_final>()
+                .map(|_| FrbOption::NonFinal)
+        } else if lookahead.peek(frb_keyword::dart_metadata) {
+            input.parse().map(FrbOption::Metadata)
+        } else {
+            Err(lookahead.error())
+        }
+    }
+}
+fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
+    attrs
+        .iter()
+        .filter(|attr| attr.path.is_ident("frb"))
+        .map(|attr| attr.parse_args::<FrbOption>())
+        .flat_map(|frb_option| match frb_option {
+            Ok(FrbOption::Metadata(NamedOption {
+                name: _,
+                value: MetadataAnnotations(annotations),
+            })) => annotations,
+            _ => vec![],
         })
         .collect()
 }

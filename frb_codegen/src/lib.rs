@@ -38,11 +38,9 @@ pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
 
     info!("Phase: Parse AST to IR");
     let raw_ir_file = parser::parse(&source_rust_content, file_ast, &config.manifest_path);
-    debug!("parsed functions: {:?}", &raw_ir_file);
 
     info!("Phase: Transform IR");
     let ir_file = transformer::transform(raw_ir_file);
-    debug!("transformed functions: {:?}", &ir_file);
 
     info!("Phase: Generate Rust code");
     let generated_rust = generator::rust::generate(
