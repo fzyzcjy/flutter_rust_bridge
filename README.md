@@ -81,8 +81,9 @@ More specifically, thanks for all these contributions:
 * [antonok-edm](https://github.com/antonok-edm): Avoid converting syn types to strings before parsing to improve code and be more robust.
 * [sagudev](https://github.com/sagudev): Make code generator a `lib`. Add error types. Depend on `cbindgen`. Fix LLVM paths. Update deps. Fix CI errors.
 * [surban](https://github.com/surban): Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.
+* [trobanga](https://github.com/trobanga): Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
-* [trobanga](https://github.com/trobanga): Add support for `[T;N]`. Add `usize` support. Add a cmd argument.
+* [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
