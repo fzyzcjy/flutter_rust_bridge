@@ -151,6 +151,39 @@
 }
 </code></pre>
 <p>Remark: If you are curious about <code>Future</code>, have a look at <a href="async_dart.html">this</a>.</p>
+<h1 id="dart-metadata-annotations"><a class="header" href="#dart-metadata-annotations">Dart metadata annotations</a></h1>
+<p>You can add dart metadata annotations using <code>dart_metadata</code> parameter in <code>frb</code> macro.</p>
+<ul>
+<li>For annotations that are prelude by dart (eg. @deprecated ...), just put annotation in rust str.</li>
+<li>If importing is needed, then add importing part behind the annotation str.
+<ul>
+<li>Currently two forms of importing supported:
+<ul>
+<li><code>import 'somepackage'</code></li>
+<li><code>import 'somepackage' as somename</code>, and <code>somename</code> will be the prefix of the annotation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Multiple annotations are seperated by comma &quot;,&quot;</li>
+</ul>
+<h2 id="metadata-example"><a class="header" href="#metadata-example">Metadata Example</a></h2>
+<pre><code class="language-rust noplayground">#[frb(dart_metadata=(&quot;freezed&quot;, &quot;immutable&quot; import &quot;package:meta/meta.dart&quot; as meta))]
+pub struct UserId {
+    pub value: u32,
+}
+</code></pre>
+<p>Becomes:</p>
+<pre><code class="language-Dart">import 'package:meta/meta.dart' as meta;
+
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    required int value,
+  }) = _UserId;
+}
+</code></pre>
 
                     </main>
 
