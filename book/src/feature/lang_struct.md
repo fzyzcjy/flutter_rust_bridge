@@ -37,7 +37,7 @@ You can add dart metadata annotations using `dart_metadata` parameter in `frb` m
 * Multiple annotations are seperated by comma ","
 
 
-## Example
+## Metadata Example
 ```rust,noplayground
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UserId {
