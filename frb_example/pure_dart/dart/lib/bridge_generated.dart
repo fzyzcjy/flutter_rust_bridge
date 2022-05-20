@@ -3065,6 +3065,6 @@ class wire_ApplicationSettings extends ffi.Struct {
   external ffi.Pointer<wire_ApplicationEnv> env;
 }
 
-typedef uintptr_t = ffi.Uint64;
+typedef uintptr_t = ffi.UnsignedLong;
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
