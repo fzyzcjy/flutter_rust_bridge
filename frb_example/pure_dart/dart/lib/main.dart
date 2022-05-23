@@ -7,9 +7,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:test/test.dart';
 
-void main() async {
-  String dylibPath = Platform.isWindows ? 'flutter_rust_bridge_example.dll' : 'libflutter_rust_bridge_example.so';
-  dylibPath = '../rust/target/debug/$dylibPath';
+
+void main(List<String> args) async {
+  test('main test', () async {
+    final dylibPath = args[0];
 
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
 
