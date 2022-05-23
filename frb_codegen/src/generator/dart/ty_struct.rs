@@ -1,5 +1,5 @@
-use crate::generator::dart::dart_comments;
 use crate::generator::dart::ty::*;
+use crate::generator::dart::{dart_comments, dart_metadata};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
 
@@ -57,45 +57,79 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 
     fn structs(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
-
-        let field_declarations = src
-            .fields
-            .iter()
-            .map(|f| {
-                let comments = dart_comments(&f.comments);
-                format!(
-                    "{}{} {} {};",
-                    comments,
-                    if f.is_final { "final" } else { "" },
-                    f.ty.dart_api_type(),
-                    f.name.dart_style()
-                )
-            })
-            .collect::<Vec<_>>()
-            .join("\n");
-
-        let constructor_params = src
-            .fields
-            .iter()
-            .map(|f| {
-                format!(
-                    "{}this.{},",
-                    f.ty.dart_required_modifier(),
-                    f.name.dart_style()
-                )
-            })
-            .collect::<Vec<_>>()
-            .join("");
-
         let comments = dart_comments(&src.comments);
+        let metadata = dart_metadata(&src.dart_metadata);
 
-        format!(
-            "{}class {} {{
-            {}
+        if src.using_freezed() {
+            let constructor_params = src
+                .fields
+                .iter()
+                .map(|f| {
+                    format!(
+                        "{} {} {},",
+                        f.ty.dart_required_modifier(),
+                        f.ty.dart_api_type(),
+                        f.name.dart_style()
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join("");
 
-            {}({{{}}});
-        }}",
-            comments, self.ir.name, field_declarations, self.ir.name, constructor_params
-        )
+            format!(
+                "{}{}class {} with _${} {{
+                const factory {}({{{}}}) = _{};
+            }}",
+                comments,
+                metadata,
+                self.ir.name,
+                self.ir.name,
+                self.ir.name,
+                constructor_params,
+                self.ir.name
+            )
+        } else {
+            let field_declarations = src
+                .fields
+                .iter()
+                .map(|f| {
+                    let comments = dart_comments(&f.comments);
+                    format!(
+                        "{}{} {} {};",
+                        comments,
+                        if f.is_final { "final" } else { "" },
+                        f.ty.dart_api_type(),
+                        f.name.dart_style()
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join("\n");
+
+            let constructor_params = src
+                .fields
+                .iter()
+                .map(|f| {
+                    format!(
+                        "{}this.{},",
+                        f.ty.dart_required_modifier(),
+                        f.name.dart_style()
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join("");
+
+            format!(
+                "{}{}class {} {{
+                {}
+
+                {}({{{}}});
+            }}",
+                comments,
+                metadata,
+                self.ir.name,
+                field_declarations,
+                self.ir.name,
+                constructor_params
+            )
+        }
     }
 }

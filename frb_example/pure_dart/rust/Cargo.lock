@@ -28,9 +28,9 @@ dependencies = [
 
 [[package]]
 name = "allo-isolate"
-version = "0.1.13-beta.4"
+version = "0.1.13-beta.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b44a1d0ed256099dc7b4dce1eee037110095aeff9c5913c22d03fc21e2bacfec"
+checksum = "5c1a52c9b965fdaf940102bcb1a0aef4bc2f56489056f5872cef705651c7972e"
 dependencies = [
  "atomic",
 ]
