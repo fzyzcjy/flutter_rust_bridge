@@ -1,7 +1,7 @@
 use std::fs;
 use std::path::Path;
 
-use log::{debug, info};
+use log::info;
 use pathdiff::diff_paths;
 
 use crate::commands::ensure_tools_available;
