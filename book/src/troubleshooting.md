@@ -1,6 +1,6 @@
 # Troubleshooting
 
-## The generated store_dart_post_cobject() has the wrong signature / `'stdarg.h' file not found` in Linux
+## The generated store_dart_post_cobject() has the wrong signature / `'stdarg.h' file not found` in Linux / `stdbool.h` / ...
 
 Try to run code generator with working directory at `/`, or add include path as is described in #108. This is a problem with Rust's builtin `Command`. See [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108) for more details.
 

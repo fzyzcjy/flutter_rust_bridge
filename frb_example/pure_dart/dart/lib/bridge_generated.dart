@@ -6,6 +6,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:meta/meta.dart' as meta;
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -102,6 +103,8 @@ abstract class FlutterRustBridgeExample {
   Future<List<Point>> scaleArray({required List<Point> points, required double scale, dynamic hint});
 
   Future<int> getUsize({required int u, dynamic hint});
+
+  Future<UserId> nextUserId({required UserId userId, dynamic hint});
 }
 
 class ApplicationEnv {
@@ -321,6 +324,15 @@ class Point {
     required this.x,
     required this.y,
   });
+}
+
+/// Example for @freezed and @meta.immutable
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    required int value,
+  }) = _UserId;
 }
 
 class VecOfPrimitivePack {
@@ -822,6 +834,17 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         hint: hint,
       ));
 
+  Future<UserId> nextUserId({required UserId userId, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_next_user_id(port_, _api2wire_box_autoadd_user_id(userId)),
+        parseSuccessData: _wire2api_user_id,
+        constMeta: const FlutterRustBridgeTaskConstMeta(
+          debugName: "next_user_id",
+          argNames: ["userId"],
+        ),
+        argValues: [userId],
+        hint: hint,
+      ));
+
   // Section: api2wire
   ffi.Pointer<wire_list_point> _api2wire_ArrayGeneral_Point_2(List<Point> raw) {
     if (raw.length != 2) throw Exception('List must have lenght 2');
@@ -942,6 +965,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   ffi.Pointer<wire_NewTypeInt> _api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
     final ptr = inner.new_box_autoadd_new_type_int();
     _api_fill_to_wire_new_type_int(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_UserId> _api2wire_box_autoadd_user_id(UserId raw) {
+    final ptr = inner.new_box_autoadd_user_id();
+    _api_fill_to_wire_user_id(raw, ptr.ref);
     return ptr;
   }
 
@@ -1292,6 +1321,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     _api_fill_to_wire_new_type_int(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_user_id(UserId apiObj, ffi.Pointer<wire_UserId> wireObj) {
+    _api_fill_to_wire_user_id(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_exotic_optionals(ExoticOptionals apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
@@ -1408,6 +1441,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
     wireObj.x = _api2wire_f32(apiObj.x);
     wireObj.y = _api2wire_f32(apiObj.y);
+  }
+
+  void _api_fill_to_wire_user_id(UserId apiObj, wire_UserId wireObj) {
+    wireObj.value = _api2wire_u32(apiObj.value);
   }
 }
 
@@ -1880,6 +1917,14 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
 
 void _wire2api_unit(dynamic raw) {
   return;
+}
+
+UserId _wire2api_user_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return UserId(
+    value: _wire2api_u32(arr[0]),
+  );
 }
 
 int _wire2api_usize(dynamic raw) {
@@ -2499,6 +2544,20 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_get_usize');
   late final _wire_get_usize = _wire_get_usizePtr.asFunction<void Function(int, int)>();
 
+  void wire_next_user_id(
+    int port_,
+    ffi.Pointer<wire_UserId> user_id,
+  ) {
+    return _wire_next_user_id(
+      port_,
+      user_id,
+    );
+  }
+
+  late final _wire_next_user_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_UserId>)>>('wire_next_user_id');
+  late final _wire_next_user_id = _wire_next_user_idPtr.asFunction<void Function(int, ffi.Pointer<wire_UserId>)>();
+
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -2657,6 +2716,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_NewTypeInt> Function()>>('new_box_autoadd_new_type_int');
   late final _new_box_autoadd_new_type_int =
       _new_box_autoadd_new_type_intPtr.asFunction<ffi.Pointer<wire_NewTypeInt> Function()>();
+
+  ffi.Pointer<wire_UserId> new_box_autoadd_user_id() {
+    return _new_box_autoadd_user_id();
+  }
+
+  late final _new_box_autoadd_user_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_UserId> Function()>>('new_box_autoadd_user_id');
+  late final _new_box_autoadd_user_id = _new_box_autoadd_user_idPtr.asFunction<ffi.Pointer<wire_UserId> Function()>();
 
   ffi.Pointer<ffi.Uint8> new_box_bool(
     bool value,
@@ -3261,6 +3328,11 @@ class wire_list_point extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
+}
+
+class wire_UserId extends ffi.Struct {
+  @ffi.Uint32()
+  external int value;
 }
 
 typedef uintptr_t = ffi.Uint64;

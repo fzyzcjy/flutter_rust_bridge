@@ -586,6 +586,21 @@ pub extern "C" fn wire_get_usize(port_: i64, u: usize) {
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_next_user_id(port_: i64, user_id: *mut wire_UserId) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "next_user_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_user_id = user_id.wire2api();
+            move |task_callback| Ok(next_user_id(api_user_id))
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -793,6 +808,12 @@ pub struct wire_uint_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_UserId {
+    value: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_KitchenSink {
     tag: i32,
     kind: *mut KitchenSinkKind,
@@ -981,6 +1002,11 @@ pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_MyTreeNode {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_NewTypeInt {
     support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_user_id() -> *mut wire_UserId {
+    support::new_leak_box_ptr(wire_UserId::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1379,6 +1405,13 @@ impl Wire2Api<NewTypeInt> for *mut wire_NewTypeInt {
     }
 }
 
+impl Wire2Api<UserId> for *mut wire_UserId {
+    fn wire2api(self) -> UserId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<Box<bool>> for *mut bool {
     fn wire2api(self) -> Box<bool> {
         unsafe { support::box_from_leak_ptr(self) }
@@ -1747,6 +1780,14 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<UserId> for wire_UserId {
+    fn wire2api(self) -> UserId {
+        UserId {
+            value: self.value.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<usize> for usize {
     fn wire2api(self) -> usize {
         self
@@ -1960,6 +2001,14 @@ impl NewWithNullPtr for wire_Point {
     }
 }
 
+impl NewWithNullPtr for wire_UserId {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            value: Default::default(),
+        }
+    }
+}
+
 // Section: impl IntoDart
 
 impl support::IntoDart for mirror_ApplicationEnv {
@@ -2132,6 +2181,13 @@ impl support::IntoDart for Point {
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+
+impl support::IntoDart for UserId {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.value.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for UserId {}
 
 impl support::IntoDart for VecOfPrimitivePack {
     fn into_dart(self) -> support::DartCObject {

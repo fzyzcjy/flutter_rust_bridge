@@ -7,14 +7,12 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:test/test.dart';
 
-
 void main(List<String> args) async {
   test('main test', () async {
     final dylibPath = args[0];
 
-  print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
+    print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
 
-  test('main test', () async {
     print('construct api');
     final dylib = DynamicLibrary.open(dylibPath);
     final api = FlutterRustBridgeExampleImpl(dylib);
@@ -416,6 +414,10 @@ void main(List<String> args) async {
     expect(customized.nonFinalField, "nonFinalField");
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");
+
+    print('dart call next_user_id to test metadata annotations');
+    UserId userId = UserId(value: 11);
+    expect(await api.nextUserId(userId: userId), UserId(value: 12));
 
     print('flutter_rust_bridge example program end');
   });

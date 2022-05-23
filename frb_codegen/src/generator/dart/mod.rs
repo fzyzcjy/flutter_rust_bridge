@@ -8,6 +8,8 @@ mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
 
+use std::collections::HashSet;
+
 pub use ty::*;
 pub use ty_boxed::*;
 pub use ty_delegate::*;
@@ -66,13 +68,38 @@ pub fn generate(
         .map(|ty| generate_wire2api_func(ty, ir_file))
         .collect::<Vec<_>>();
 
-    let needs_freezed = distinct_types
-        .iter()
-        .any(|ty| matches!(ty, EnumRef(e) if e.is_struct));
+    let needs_freezed = distinct_types.iter().any(|ty| match ty {
+        EnumRef(e) if e.is_struct => true,
+        StructRef(s) if s.freezed => true,
+        _ => false,
+    });
     let freezed_header = if needs_freezed {
         DartBasicCode {
             import: "import 'package:freezed_annotation/freezed_annotation.dart';".to_string(),
             part: format!("part '{}.freezed.dart';", dart_output_file_root),
+            body: "".to_string(),
+        }
+    } else {
+        DartBasicCode::default()
+    };
+
+    let imports = ir_file
+        .struct_pool
+        .values()
+        .flat_map(|s| s.dart_metadata.iter().flat_map(|it| &it.library))
+        .collect::<HashSet<_>>();
+
+    let import_header = if !imports.is_empty() {
+        DartBasicCode {
+            import: imports
+                .iter()
+                .map(|it| match &it.alias {
+                    Some(alias) => format!("import '{}' as {};", it.uri, alias),
+                    _ => format!("import '{}';", it.uri),
+                })
+                .collect::<Vec<_>>()
+                .join("\n"),
+            part: "".to_string(),
             body: "".to_string(),
         }
     } else {
@@ -136,6 +163,7 @@ pub fn generate(
 
     let decl_code = &common_header
         + &freezed_header
+        + &import_header
         + &DartBasicCode {
             import: "".to_string(),
             part: "".to_string(),
@@ -346,4 +374,20 @@ fn dart_comments(comments: &[IrComment]) -> String {
         comments.push('\n');
     }
     comments
+}
+fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
+    let mut metadata = metadata
+        .iter()
+        .map(|it| match &it.library {
+            Some(IrDartImport {
+                alias: Some(alias), ..
+            }) => format!("@{}.{}", alias, it.content),
+            _ => format!("@{}", it.content),
+        })
+        .collect::<Vec<_>>()
+        .join("\n");
+    if !metadata.is_empty() {
+        metadata.push('\n');
+    }
+    metadata
 }
