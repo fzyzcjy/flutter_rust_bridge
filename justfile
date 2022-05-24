@@ -59,6 +59,8 @@ refresh_all:
     (cd frb_example/pure_dart/dart && dart pub get)
     (cd frb_example/with_flutter && flutter pub get)
 
+    just lint
+
     sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
     sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
 
