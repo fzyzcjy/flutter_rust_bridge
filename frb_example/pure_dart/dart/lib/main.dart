@@ -334,9 +334,11 @@ void main(List<String> args) async {
   });
 
   test('dart call returnStructWithArray() with wrong sized list', () async {
-    {
-      var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
-      expect(() async => await api.takeAndUnpackArray(a: a), throwsException);
+    var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
+    try {
+      await api.takeAndUnpackArray(a: a);
+    } catch (e) {
+      expect(e, isA<Exception>());
     }
   });
 
@@ -359,9 +361,11 @@ void main(List<String> args) async {
   });
 
   test('dart call scaleArray() with wrong sized list', () async {
-    {
-      final point1 = Point(x: 1.0, y: 2.0);
-      expect(() async => await api.scaleArray(points: [point1], scale: 2.0), throwsException);
+    final point1 = Point(x: 1.0, y: 2.0);
+    try {
+      await api.scaleArray(points: [point1], scale: 2.0);
+    } catch (e) {
+      expect(e, isA<Exception>());
     }
   });
 

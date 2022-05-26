@@ -300,21 +300,24 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
                 .join(", ");
             let mut par_calls = String::new();
             for (i, p) in wire_param_list.iter().skip(1).enumerate() {
-                par_calls.push_str(&format!("final __unique_var_{i} = {p};"));
+                par_calls.push_str(&format!(
+                    "dynamic __unique_var_{i}; try{{__unique_var_{i} = {p};}}catch(e){{exception = e;}}"
+                ));
             }
             format!(
-                "{} {{{} return {}(FlutterRustBridgeTask(
-            callFfi: (port_) => inner.{}(port_, {}),
+                "{partial} {{
+            Object? exception;
+            {par_calls}
+            if (exception != null) {{
+                throw Exception(exception);
+            }}
+            return {execute_func_name}(FlutterRustBridgeTask(
+            callFfi: (port_) => inner.{}(port_, {par_list}),
             parseSuccessData: _wire2api_{},
-            {}
+            {task_common_args}
         ));}}",
-                partial,
-                par_calls,
-                execute_func_name,
                 func.wire_func_name(),
-                par_list,
                 func.output.safe_ident(),
-                task_common_args,
             )
         }
         _ => format!(

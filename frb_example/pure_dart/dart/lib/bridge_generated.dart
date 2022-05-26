@@ -790,6 +790,11 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       ));
 
   Future<Uint8List> getArray({dynamic hint}) {
+    Object? exception;
+
+    if (exception != null) {
+      throw Exception(exception);
+    }
     return executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => inner.wire_get_array(
         port_,
@@ -805,7 +810,16 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   Future<Uint32List> takeAndUnpackArray({required MyArray a, dynamic hint}) {
-    final __unique_var_0 = _api2wire_box_autoadd_my_array(a);
+    Object? exception;
+    dynamic __unique_var_0;
+    try {
+      __unique_var_0 = _api2wire_box_autoadd_my_array(a);
+    } catch (e) {
+      exception = e;
+    }
+    if (exception != null) {
+      throw Exception(exception);
+    }
     return executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => inner.wire_take_and_unpack_array(port_, __unique_var_0),
       parseSuccessData: _wire2api_ArrayPrimitive_u32_3,
@@ -819,8 +833,22 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   Future<List<Point>> scaleArray({required List<Point> points, required double scale, dynamic hint}) {
-    final __unique_var_0 = _api2wire_ArrayGeneral_Point_2(points);
-    final __unique_var_1 = _api2wire_f32(scale);
+    Object? exception;
+    dynamic __unique_var_0;
+    try {
+      __unique_var_0 = _api2wire_ArrayGeneral_Point_2(points);
+    } catch (e) {
+      exception = e;
+    }
+    dynamic __unique_var_1;
+    try {
+      __unique_var_1 = _api2wire_f32(scale);
+    } catch (e) {
+      exception = e;
+    }
+    if (exception != null) {
+      throw Exception(exception);
+    }
     return executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => inner.wire_scale_array(port_, __unique_var_0, __unique_var_1),
       parseSuccessData: _wire2api_ArrayGeneral_Point_2,
