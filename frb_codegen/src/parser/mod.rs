@@ -171,6 +171,18 @@ impl<'a> Parser<'a> {
             mode = Some(
                 if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
                     IrFuncMode::Sync
+                } else if let Some(IrType::Delegate(
+                    IrTypeDelegate::ArrayGeneral {
+                        ir_type_general_list: _,
+                        len: _,
+                    }
+                    | IrTypeDelegate::ArrayPrimitive {
+                        primitive: _,
+                        len: _,
+                    },
+                )) = output
+                {
+                    IrFuncMode::EagerParEval
                 } else {
                     IrFuncMode::Normal
                 },

@@ -249,6 +249,7 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
         IrFuncMode::Stream => "executeStream",
+        IrFuncMode::EagerParEval => "executeNormal",
     };
 
     let signature = format!("{};", partial);
@@ -289,6 +290,33 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
             wire_param_list.join(", "),
             task_common_args,
         ),
+        IrFuncMode::EagerParEval => {
+            let par_list = wire_param_list
+                .iter()
+                .skip(1)
+                .enumerate()
+                .map(|(i, _)| format!("__unique_var_{i}"))
+                .collect::<Vec<String>>()
+                .join(", ");
+            let mut par_calls = String::new();
+            for (i, p) in wire_param_list.iter().skip(1).enumerate() {
+                par_calls.push_str(&format!("final __unique_var_{i} = {p};"));
+            }
+            format!(
+                "{} {{{} return {}(FlutterRustBridgeTask(
+            callFfi: (port_) => inner.{}(port_, {}),
+            parseSuccessData: _wire2api_{},
+            {}
+        ));}}",
+                partial,
+                par_calls,
+                execute_func_name,
+                func.wire_func_name(),
+                par_list,
+                func.output.safe_ident(),
+                task_common_args,
+            )
+        }
         _ => format!(
             "{} => {}(FlutterRustBridgeTask(
             callFfi: (port_) => inner.{}({}),

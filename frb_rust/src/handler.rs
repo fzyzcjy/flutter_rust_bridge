@@ -24,6 +24,8 @@ pub enum FfiCallMode {
     Sync,
     /// Returns a Dart `Stream<T>`.
     Stream,
+    /// Used for Arrays
+    EagerParEval,
 }
 
 /// Supporting information to idenfity a function's operating mode.
@@ -229,7 +231,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                 match ret {
                     Ok(result) => {
                         match wrap_info2.mode {
-                            FfiCallMode::Normal => {
+                            FfiCallMode::Normal | FfiCallMode::EagerParEval => {
                                 rust2dart.success(result);
                             }
                             FfiCallMode::Stream => {
@@ -237,7 +239,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                             }
                             FfiCallMode::Sync => {
                                 panic!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
-                            }
+                            }                            
                         }
                     }
                     Err(error) => {

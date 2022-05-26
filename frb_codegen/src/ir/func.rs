@@ -35,6 +35,7 @@ pub enum IrFuncMode {
     Normal,
     Sync,
     Stream,
+    EagerParEval,
 }
 
 impl IrFuncMode {
@@ -43,6 +44,7 @@ impl IrFuncMode {
             Self::Normal => format!("Future<{}>", inner),
             Self::Sync => inner.to_string(),
             Self::Stream => format!("Stream<{}>", inner),
+            Self::EagerParEval => format!("Future<{}>", inner),
         }
     }
 
@@ -51,6 +53,7 @@ impl IrFuncMode {
             Self::Normal => "Normal",
             Self::Sync => "Sync",
             Self::Stream => "Stream",
+            Self::EagerParEval => "EagerParEval",
         }
     }
 

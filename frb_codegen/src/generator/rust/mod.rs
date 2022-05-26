@@ -226,7 +226,7 @@ impl Generator {
 
         let inner_func_params = [
             match func.mode {
-                IrFuncMode::Normal | IrFuncMode::Sync => vec![],
+                IrFuncMode::Normal | IrFuncMode::Sync | IrFuncMode::EagerParEval => vec![],
                 IrFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
             },
             func.inputs
@@ -278,7 +278,7 @@ impl Generator {
                     code_wire2api, code_call_inner_func_result,
                 ),
             ),
-            IrFuncMode::Normal | IrFuncMode::Stream => (
+            IrFuncMode::Normal | IrFuncMode::Stream | IrFuncMode::EagerParEval => (
                 "wrap",
                 None,
                 format!(
