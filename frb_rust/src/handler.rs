@@ -239,7 +239,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                             }
                             FfiCallMode::Sync => {
                                 panic!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
-                            }                            
+                            }
                         }
                     }
                     Err(error) => {
