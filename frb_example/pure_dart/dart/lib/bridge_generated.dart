@@ -789,39 +789,49 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         hint: hint,
       ));
 
-  Future<Uint8List> getArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_get_array(port_),
-        parseSuccessData: _wire2api_ArrayPrimitive_u8_5,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "get_array",
-          argNames: [],
-        ),
-        argValues: [],
-        hint: hint,
-      ));
+  Future<Uint8List> getArray({dynamic hint}) {
+    return executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => inner.wire_get_array(
+        port_,
+      ),
+      parseSuccessData: _wire2api_ArrayPrimitive_u8_5,
+      constMeta: const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_array",
+        argNames: [],
+      ),
+      argValues: [],
+      hint: hint,
+    ));
+  }
 
-  Future<Uint32List> takeAndUnpackArray({required MyArray a, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_take_and_unpack_array(port_, _api2wire_box_autoadd_my_array(a)),
-        parseSuccessData: _wire2api_ArrayPrimitive_u32_3,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "take_and_unpack_array",
-          argNames: ["a"],
-        ),
-        argValues: [a],
-        hint: hint,
-      ));
+  Future<Uint32List> takeAndUnpackArray({required MyArray a, dynamic hint}) {
+    final __unique_var_0 = _api2wire_box_autoadd_my_array(a);
+    return executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => inner.wire_take_and_unpack_array(port_, __unique_var_0),
+      parseSuccessData: _wire2api_ArrayPrimitive_u32_3,
+      constMeta: const FlutterRustBridgeTaskConstMeta(
+        debugName: "take_and_unpack_array",
+        argNames: ["a"],
+      ),
+      argValues: [a],
+      hint: hint,
+    ));
+  }
 
-  Future<List<Point>> scaleArray({required List<Point> points, required double scale, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_scale_array(port_, _api2wire_ArrayGeneral_Point_2(points), _api2wire_f32(scale)),
-        parseSuccessData: _wire2api_ArrayGeneral_Point_2,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "scale_array",
-          argNames: ["points", "scale"],
-        ),
-        argValues: [points, scale],
-        hint: hint,
-      ));
+  Future<List<Point>> scaleArray({required List<Point> points, required double scale, dynamic hint}) {
+    final __unique_var_0 = _api2wire_ArrayGeneral_Point_2(points);
+    final __unique_var_1 = _api2wire_f32(scale);
+    return executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => inner.wire_scale_array(port_, __unique_var_0, __unique_var_1),
+      parseSuccessData: _wire2api_ArrayGeneral_Point_2,
+      constMeta: const FlutterRustBridgeTaskConstMeta(
+        debugName: "scale_array",
+        argNames: ["points", "scale"],
+      ),
+      argValues: [points, scale],
+      hint: hint,
+    ));
+  }
 
   Future<int> getUsize({required int u, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_usize(port_, _api2wire_usize(u)),

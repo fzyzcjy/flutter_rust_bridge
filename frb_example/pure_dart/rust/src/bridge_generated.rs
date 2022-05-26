@@ -534,7 +534,7 @@ pub extern "C" fn wire_get_array(port_: i64) {
         WrapInfo {
             debug_name: "get_array",
             port: Some(port_),
-            mode: FfiCallMode::Normal,
+            mode: FfiCallMode::EagerParEval,
         },
         move || move |task_callback| Ok(get_array()),
     )
@@ -546,7 +546,7 @@ pub extern "C" fn wire_take_and_unpack_array(port_: i64, a: *mut wire_MyArray) {
         WrapInfo {
             debug_name: "take_and_unpack_array",
             port: Some(port_),
-            mode: FfiCallMode::Normal,
+            mode: FfiCallMode::EagerParEval,
         },
         move || {
             let api_a = a.wire2api();
@@ -561,7 +561,7 @@ pub extern "C" fn wire_scale_array(port_: i64, points: *mut wire_list_point, sca
         WrapInfo {
             debug_name: "scale_array",
             port: Some(port_),
-            mode: FfiCallMode::Normal,
+            mode: FfiCallMode::EagerParEval,
         },
         move || {
             let api_points = points.wire2api();

@@ -8,17 +8,13 @@ import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:test/test.dart';
 
 void main(List<String> args) async {
+  String dylibPath = args[0];
+  print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
+  print('construct api');
+  final dylib = DynamicLibrary.open(dylibPath);
+  final api = FlutterRustBridgeExampleImpl(dylib);
+
   test('main test', () async {
-    final dylibPath = args[0];
-
-    print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
-
-    print('construct api');
-    final dylib = DynamicLibrary.open(dylibPath);
-    final api = FlutterRustBridgeExampleImpl(dylib);
-
-    print('call functions');
-
     print('dart call simpleAdder');
     {
       expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -355,23 +351,26 @@ void main(List<String> args) async {
     for (var i = 0; i < 500; ++i) {
       obj = await api.handleComplexStruct(s: obj);
     }
+  });
 
-    print('dart call getArray()');
+  test('dart call getArray()', () async {
     expect(await api.getArray(), [1, 2, 3, 4, 5]);
-
-    print('dart call returnStructWithArray()');
+  });
+  test('dart call returnStructWithArray()', () async {
     {
       var a = MyArray(a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
       expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
     }
+  });
 
-    print('dart call returnStructWithArray() with wrong sized list');
+  test('dart call returnStructWithArray() with wrong sized list', () async {
     {
-        var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
-        expect(() async => await api.takeAndUnpackArray(a: a), throwsException);
+      var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
+      expect(() async => await api.takeAndUnpackArray(a: a), throwsException);
     }
+  });
 
-    print('dart call scaleArray()');
+  test('dart call scaleArray()', () async {
     {
       final point1 = Point(x: 1.0, y: 2.0);
       final point2 = Point(x: 3.0, y: 4.0);
@@ -387,28 +386,32 @@ void main(List<String> args) async {
       expect(points[1].x, 6.0);
       expect(points[1].y, 8.0);
     }
+  });
 
-    print('dart call scaleArray() with wrong sized list');
+  test('dart call scaleArray() with wrong sized list', () async {
     {
-        final point1 = Point(x: 1.0, y: 2.0);
-        expect(() async => await api.scaleArray(points: [point1], scale: 2.0) , throwsException);
+      final point1 = Point(x: 1.0, y: 2.0);
+      expect(() async => await api.scaleArray(points: [point1], scale: 2.0), throwsException);
     }
+  });
 
-    print('dart call getUsize');
+  test('dart call getUsize', () async {
     expect(await api.getUsize(u: 2), 2);
+  });
 
-    print('dart check that non-final field is modifiable');
+  test('dart check that non-final field is modifiable', () {
     var customized = Customized(finalField: "finalField", nonFinalField: "nonFinalField");
     expect(customized.nonFinalField, "nonFinalField");
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");
+  });
 
-    print('dart call next_user_id to test metadata annotations');
+  test('dart call next_user_id to test metadata annotations', () async {
     UserId userId = UserId(value: 11);
     expect(await api.nextUserId(userId: userId), UserId(value: 12));
-
-    print('flutter_rust_bridge example program end');
   });
+
+  print('flutter_rust_bridge example program end');
 }
 
 int _createGarbage() {
