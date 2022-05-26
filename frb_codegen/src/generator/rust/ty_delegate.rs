@@ -18,22 +18,27 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
             IrTypeDelegate::StringList => TypeGeneralListGenerator::WIRE2API_BODY.to_string(),
-            IrTypeDelegate::ArrayPrimitive { primitive: _, len } => format!(
+            IrTypeDelegate::ArrayPrimitive { primitive, len } => format!(
                 "use std::convert::TryInto;
 
             let vec = unsafe {{
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }};
-            vec.try_into().unwrap_or_else(|v: Vec<_>| panic!(\"Expecting array of length {len}\"))
-            "
+            if vec.len() == {len} {{
+                vec.try_into().unwrap()
+            }} else {{
+                [{}::default(); {len}]
+            }}
+            ",
+                primitive.rust_api_type()
             ),
             IrTypeDelegate::ArrayGeneral {
                 ir_type_general_list,
                 len,
             } => format!(
                 "use std::convert::TryInto;
-            
+
             let vec = unsafe {{
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -41,7 +46,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             let vec = vec.iter().cloned()
                 .map(Wire2Api::wire2api)
                 .collect::<Vec<{}>>();
-            vec.try_into().unwrap_or_else(|v: Vec<{}>| panic!(\"Expecting array of length {len}\"))
+            if vec.len() == {len} {{
+                vec.try_into().unwrap()
+            }} else {{
+                [{}::default(); {len}]
+            }}
             ",
                 ir_type_general_list.inner.rust_api_type(),
                 ir_type_general_list.inner.rust_api_type(),
