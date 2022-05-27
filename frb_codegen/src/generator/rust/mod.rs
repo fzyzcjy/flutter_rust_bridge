@@ -251,11 +251,21 @@ impl Generator {
             .inputs
             .iter()
             .map(|field| {
-                format!(
-                    "let api_{} = {}.wire2api();",
-                    field.name.rust_style(),
-                    field.name.rust_style()
-                )
+                if let Some(ty) = field.ty.is_array() {
+                    let name = field.name.rust_style();
+                    format!(
+                        "let api_{name}: Option<{ty}> = {name}.wire2api();
+                         if api_{name}.is_none() {{has_error = true;}}
+                         let api_{name} = api_{name}.unwrap_or_default();
+                        ",
+                    )
+                } else {
+                    format!(
+                        "let api_{} = {}.wire2api();",
+                        field.name.rust_style(),
+                        field.name.rust_style()
+                    )
+                }
             })
             .collect::<Vec<_>>()
             .join("");
@@ -283,6 +293,9 @@ impl Generator {
                 None,
                 format!(
                     "{}
+                    if has_error {{
+                        panic!(\"errorororor\");
+                    }}
                     move |task_callback| {}
                     ",
                     code_wire2api, code_call_inner_func_result,
@@ -300,6 +313,7 @@ impl Generator {
             &format!(
                 "
                 {}.{}({}, move || {{
+                    let mut has_error = false;
                     {}
                 }})
                 ",

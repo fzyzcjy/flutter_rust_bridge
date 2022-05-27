@@ -41,6 +41,19 @@ impl IrType {
             _ => "",
         }
     }
+
+    pub fn is_array(&self) -> Option<String> {
+        match self {
+            IrType::Delegate(IrTypeDelegate::ArrayGeneral {
+                ir_type_general_list,
+                len,
+            }) => Some(format!("[{}; {len}]", ir_type_general_list.rust_api_type())),
+            IrType::Delegate(IrTypeDelegate::ArrayPrimitive { primitive, len }) => {
+                Some(format!("[{}; {len}]", primitive.rust_api_type()))
+            }
+            _ => None,
+        }
+    }
 }
 
 #[enum_dispatch]

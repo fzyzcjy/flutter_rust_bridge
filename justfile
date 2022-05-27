@@ -44,6 +44,13 @@ test-pure:
 test-integration:
     cd {{frb_flutter}} && flutter test integration_test/main.dart
 
+valgrind:
+   cd {{frb_pure}}/rust && cargo b
+   cd {{frb_pure}}/dart && \
+       dart pub get && \
+       dart compile exe lib/main.dart -o main && \
+       PYTHONUNBUFFERED=1 ./valgrind_util.py ./main ../rust/target/debug/{{dylib}} --chain-stack-traces
+
 alias c := clean
 clean:
     cd {{frb_pure}}/dart && flutter clean

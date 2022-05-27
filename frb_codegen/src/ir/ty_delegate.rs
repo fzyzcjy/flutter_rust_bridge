@@ -106,7 +106,7 @@ impl IrTypeTrait for IrTypeDelegate {
             }
             IrTypeDelegate::ArrayPrimitive { primitive, len } => {
                 let primitive_api_type = primitive.rust_api_type();
-                format!("[{primitive_api_type}; {len}]")
+                format!("Option<[{primitive_api_type}; {len}]>")
             }
             IrTypeDelegate::ArrayGeneral {
                 ir_type_general_list,

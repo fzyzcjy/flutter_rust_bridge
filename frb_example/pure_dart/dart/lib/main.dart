@@ -13,436 +13,462 @@ void main(List<String> args) async {
   final dylib = DynamicLibrary.open(dylibPath);
   final api = FlutterRustBridgeExampleImpl(dylib);
 
-  // test('dart call simpleAdder', () async {
-  //   expect(await api.simpleAdder(a: 42, b: 100), 142);
-  // });
+  test('dart call simpleAdder', () async {
+    expect(await api.simpleAdder(a: 42, b: 100), 142);
+  });
 
-  // test('dart call primitiveTypes', () async {
-  //   expect(
-  //       await api.primitiveTypes(
-  //           myI32: 123,
-  //           myI64: 10000000000000,
-  //           myF64: 12345678901234567890.123,
-  //           myBool: true),
-  //       42);
-  // });
+  test('dart call primitiveTypes', () async {
+    expect(
+        await api.primitiveTypes(
+            myI32: 123,
+            myI64: 10000000000000,
+            myF64: 12345678901234567890.123,
+            myBool: true),
+        42);
+  });
 
-  // test('dart call primitiveU32', () async {
-  //   expect(await api.primitiveU32(myU32: 0xff112233), 0xfe112233);
-  // });
+  test('dart call primitiveU32', () async {
+    expect(await api.primitiveU32(myU32: 0xff112233), 0xfe112233);
+  });
 
-  // test('dart call handleReturnUnit', () async {
-  //   await api.handleReturnUnit();
-  // });
+  test('dart call handleReturnUnit', () async {
+    await api.handleReturnUnit();
+  });
 
-  // test('dart call handleString', () async {
-  //   expect(await api.handleString(s: "Hello, world!"),
-  //       "Hello, world!Hello, world!");
-  // });
+  test('dart call handleString', () async {
+    expect(await api.handleString(s: "Hello, world!"),
+        "Hello, world!Hello, world!");
+  });
 
-  // test('dart call handleVecU8', () async {
-  //   final len = 100000;
-  //   expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
-  //       Uint8List.fromList(List.filled(len * 2, 127)));
-  // });
+  test('dart call handleVecU8', () async {
+    final len = 100000;
+    expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
+        Uint8List.fromList(List.filled(len * 2, 127)));
+  });
 
-  // test('dart call handleVecOfPrimitive', () async {
-  //   final n = 10000;
-  //   final resp = await api.handleVecOfPrimitive(n: n);
-  //   expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
-  //   expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
-  //   expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
-  //   expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
-  //   expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
-  //   expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
-  //   expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
-  //   expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
-  //   expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
-  //   expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
-  // });
+  test('dart call handleVecOfPrimitive', () async {
+    final n = 10000;
+    final resp = await api.handleVecOfPrimitive(n: n);
+    expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
+    expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
+    expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
+    expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
+    expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
+    expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
+    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
+    expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
+    expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
+  });
 
-  // test('dart call handleZeroCopyVecOfPrimitive', () async {
-  //   final n = 10000;
-  //   final resp = await api.handleZeroCopyVecOfPrimitive(n: n);
-  //   expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
-  //   expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
-  //   expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
-  //   expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
-  //   expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
-  //   expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
-  //   expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
-  //   expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
-  //   expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
-  //   expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
-  // });
+  test('dart call handleZeroCopyVecOfPrimitive', () async {
+    final n = 10000;
+    final resp = await api.handleZeroCopyVecOfPrimitive(n: n);
+    expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
+    expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
+    expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
+    expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
+    expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
+    expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
+    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
+    expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
+    expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
+  });
 
-  // test('dart call handleStruct', () async {
-  //   final structResp = await api.handleStruct(
-  //       arg: MySize(width: 42, height: 100),
-  //       boxed: MySize(width: 1000, height: 10000));
-  //   expect(structResp.width, 42 + 1000);
-  //   expect(structResp.height, 100 + 10000);
-  // });
+  test('dart call handleStruct', () async {
+    final structResp = await api.handleStruct(
+        arg: MySize(width: 42, height: 100),
+        boxed: MySize(width: 1000, height: 10000));
+    expect(structResp.width, 42 + 1000);
+    expect(structResp.height, 100 + 10000);
+  });
 
-  // test('dart call handleNewtype', () async {
-  //   final newtypeResp = await api.handleNewtype(arg: NewTypeInt(field0: 42));
-  //   expect(newtypeResp.field0, 84);
-  // });
+  test('dart call handleNewtype', () async {
+    final newtypeResp = await api.handleNewtype(arg: NewTypeInt(field0: 42));
+    expect(newtypeResp.field0, 84);
+  });
 
-  // test('dart call handleListOfStruct', () async {
-  //   final listOfStructResp = await api.handleListOfStruct(
-  //       l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
-  //   expect(listOfStructResp.length, 4);
-  //   expect(listOfStructResp[0].width, 42);
-  //   expect(listOfStructResp[1].width, 420);
-  //   expect(listOfStructResp[2].width, 42);
-  //   expect(listOfStructResp[3].width, 420);
-  // });
+  test('dart call handleListOfStruct', () async {
+    final listOfStructResp = await api.handleListOfStruct(
+        l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+    expect(listOfStructResp.length, 4);
+    expect(listOfStructResp[0].width, 42);
+    expect(listOfStructResp[1].width, 420);
+    expect(listOfStructResp[2].width, 42);
+    expect(listOfStructResp[3].width, 420);
+  });
 
-  // test('dart call handleStringList', () async {
-  //   final names = await api.handleStringList(names: ['Steve', 'Bob', 'Alex']);
-  //   expect(names, ['Steve', 'Bob', 'Alex']);
-  // });
+  test('dart call handleStringList', () async {
+    final names = await api.handleStringList(names: ['Steve', 'Bob', 'Alex']);
+    expect(names, ['Steve', 'Bob', 'Alex']);
+  });
 
-  // test('dart call handleComplexStruct', () async {
-  //   final arrLen = 5;
-  //   final complexStructResp =
-  //       await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
-  //   expect(complexStructResp.valueI32, 100);
-  //   expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
-  //   expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-  //   expect(complexStructResp.children[0].children[0].valueVecU8,
-  //       List.filled(arrLen, 111));
-  //   expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
-  // });
+  test('dart call handleComplexStruct', () async {
+    final arrLen = 5;
+    final complexStructResp =
+        await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+    expect(complexStructResp.valueI32, 100);
+    expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
+    expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
+    expect(complexStructResp.children[0].children[0].valueVecU8,
+        List.filled(arrLen, 111));
+    expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
+  });
 
-  // test('dart call handle_sync_return', () async {
-  //   expect(api.handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
+  test('dart call handle_sync_return', () async {
+    expect(api.handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
 
-  //   for (final mode in ['RESULT_ERR', 'PANIC']) {
-  //     try {
-  //       api.handleSyncReturn(mode: mode);
-  //       fail("exception not thrown");
-  //     } catch (e) {
-  //       print('dart catch e: $e');
-  //       expect(e, isA<FfiException>());
-  //     }
-  //   }
-  // });
+    for (final mode in ['RESULT_ERR', 'PANIC']) {
+      try {
+        api.handleSyncReturn(mode: mode);
+        fail("exception not thrown");
+      } catch (e) {
+        print('dart catch e: $e');
+        expect(e, isA<FfiException>());
+      }
+    }
+  });
 
-  // test('dart call handle_stream', () async {
-  //   final stream = api.handleStream(arg: 'hello');
-  //   var cnt = 0;
-  //   await for (final value in stream) {
-  //     print("output from handle_stream's stream: $value");
-  //     cnt++;
-  //   }
-  //   expect(cnt, 10);
-  // });
+  test('dart call handle_stream', () async {
+    final stream = api.handleStream(arg: 'hello');
+    var cnt = 0;
+    await for (final value in stream) {
+      print("output from handle_stream's stream: $value");
+      cnt++;
+    }
+    expect(cnt, 10);
+  });
 
-  // test('dart call returnErr', () async {
-  //   try {
-  //     await api.returnErr();
-  //     fail("exception not thrown");
-  //   } catch (e) {
-  //     print('dart catch e: $e');
-  //     expect(e, isA<FfiException>());
-  //   }
-  // });
+  test('dart call returnErr', () async {
+    try {
+      await api.returnErr();
+      fail("exception not thrown");
+    } catch (e) {
+      print('dart catch e: $e');
+      expect(e, isA<FfiException>());
+    }
+  });
 
-  // test('dart call returnPanic', () async {
-  //   try {
-  //     await api.returnPanic();
-  //     fail("exception not thrown");
-  //   } catch (e) {
-  //     print('dart catch e: $e');
-  //     expect(e, isA<FfiException>());
-  //   }
-  // });
+  test('dart call returnPanic', () async {
+    try {
+      await api.returnPanic();
+      fail("exception not thrown");
+    } catch (e) {
+      print('dart catch e: $e');
+      expect(e, isA<FfiException>());
+    }
+  });
 
-  // test('dart call handleOptionalReturn', () async {
-  //   expect((await api.handleOptionalReturn(left: 1, right: 1))!, 1);
-  //   expect(await api.handleOptionalReturn(left: 2, right: 0), null);
-  // });
+  test('dart call handleOptionalReturn', () async {
+    expect((await api.handleOptionalReturn(left: 1, right: 1))!, 1);
+    expect(await api.handleOptionalReturn(left: 2, right: 0), null);
+  });
 
-  // test('dart call handleOptionalStruct', () async {
-  //   {
-  //     expect(await api.handleOptionalStruct(), null);
-  //   }
+  test('dart call handleOptionalStruct', () async {
+    {
+      expect(await api.handleOptionalStruct(), null);
+    }
 
-  //   {
-  //     final message = 'Hello there.';
-  //     final ret = await api.handleOptionalStruct(document: message);
-  //     if (ret == null)
-  //       fail('handleOptionalStruct returned null for non-null document');
-  //     expect(ret.tag, 'div');
-  //     expect(ret.text, null);
-  //     expect(ret.attributes?[0].key, 'id');
-  //     expect(ret.attributes?[0].value, 'root');
+    {
+      final message = 'Hello there.';
+      final ret = await api.handleOptionalStruct(document: message);
+      if (ret == null)
+        fail('handleOptionalStruct returned null for non-null document');
+      expect(ret.tag, 'div');
+      expect(ret.text, null);
+      expect(ret.attributes?[0].key, 'id');
+      expect(ret.attributes?[0].value, 'root');
 
-  //     expect(ret.children?[0].tag, 'p');
-  //     expect(ret.children?[0].text, null);
-  //     expect(ret.children?[0].attributes, null);
-  //     expect(ret.children?[0].children?[0].text, message);
-  //   }
-  // });
+      expect(ret.children?[0].tag, 'p');
+      expect(ret.children?[0].text, null);
+      expect(ret.children?[0].attributes, null);
+      expect(ret.children?[0].children?[0].text, message);
+    }
+  });
 
-  // test('dart call handleOptionalIncrement', () async {
-  //   expect(await api.handleOptionalIncrement(), null);
-  //   {
-  //     var ret = await api.handleOptionalIncrement(
-  //         opt: ExoticOptionals(attributesNullable: []));
-  //     if (ret == null) fail('increment returned null for non-null params');
-  //     final loopFor = 20;
-  //     for (var i = 1; i < loopFor; i++) {
-  //       ret = await api.handleOptionalIncrement(opt: ret);
-  //     }
-  //     if (ret == null) fail('ret nulled after loop');
-  //     expect(ret.int32, loopFor);
-  //     expect(ret.int32, loopFor);
-  //     expect(ret.float64, loopFor);
-  //     expect(ret.boolean, false);
-  //     expect(ret.zerocopy?.length, loopFor);
-  //     expect(ret.int8List?.length, loopFor);
-  //     expect(ret.uint8List?.length, loopFor);
-  //     expect(ret.attributesNullable.length, loopFor);
-  //     expect(ret.nullableAttributes?.length, loopFor);
-  //     expect(ret.newtypeint?.field0, loopFor);
-  //   }
-  // });
+  test('dart call handleOptionalIncrement', () async {
+    expect(await api.handleOptionalIncrement(), null);
+    {
+      var ret = await api.handleOptionalIncrement(
+          opt: ExoticOptionals(attributesNullable: []));
+      if (ret == null) fail('increment returned null for non-null params');
+      final loopFor = 20;
+      for (var i = 1; i < loopFor; i++) {
+        ret = await api.handleOptionalIncrement(opt: ret);
+      }
+      if (ret == null) fail('ret nulled after loop');
+      expect(ret.int32, loopFor);
+      expect(ret.int32, loopFor);
+      expect(ret.float64, loopFor);
+      expect(ret.boolean, false);
+      expect(ret.zerocopy?.length, loopFor);
+      expect(ret.int8List?.length, loopFor);
+      expect(ret.uint8List?.length, loopFor);
+      expect(ret.attributesNullable.length, loopFor);
+      expect(ret.nullableAttributes?.length, loopFor);
+      expect(ret.newtypeint?.field0, loopFor);
+    }
+  });
 
-  // test('dart call handleIncrementBoxedOptional', () async {
-  //   {
-  //     expect(await api.handleIncrementBoxedOptional(), 42);
-  //   }
+  test('dart call handleIncrementBoxedOptional', () async {
+    {
+      expect(await api.handleIncrementBoxedOptional(), 42);
+    }
 
-  //   {
-  //     var ret = 0.0;
-  //     final loopFor = 100;
-  //     for (var i = 0; i < loopFor; i++) {
-  //       ret = await api.handleIncrementBoxedOptional(opt: ret);
-  //     }
-  //     expect(ret, loopFor);
-  //   }
-  // });
+    {
+      var ret = 0.0;
+      final loopFor = 100;
+      for (var i = 0; i < loopFor; i++) {
+        ret = await api.handleIncrementBoxedOptional(opt: ret);
+      }
+      expect(ret, loopFor);
+    }
+  });
 
-  // test('dart call handleOptionBoxArguments', () async {
-  //   print(await api.handleOptionBoxArguments());
+  test('dart call handleOptionBoxArguments', () async {
+    print(await api.handleOptionBoxArguments());
 
-  //   {
-  //     final optional10 = await api.handleOptionBoxArguments(
-  //       boolbox: true,
-  //       structbox: await api.handleOptionalIncrement(
-  //           opt: ExoticOptionals(attributesNullable: [])),
-  //     );
-  //     print(optional10);
-  //   }
-  // });
+    {
+      final optional10 = await api.handleOptionBoxArguments(
+        boolbox: true,
+        structbox: await api.handleOptionalIncrement(
+            opt: ExoticOptionals(attributesNullable: [])),
+      );
+      print(optional10);
+    }
+  });
 
-  // test('dart call handleReturnEnum', () async {
-  //   expect(await api.handleReturnEnum(input: "Tuesday"), Weekdays.Tuesday);
-  //   expect(await api.handleReturnEnum(input: "Foreverday"), null);
-  // });
+  test('dart call handleReturnEnum', () async {
+    expect(await api.handleReturnEnum(input: "Tuesday"), Weekdays.Tuesday);
+    expect(await api.handleReturnEnum(input: "Foreverday"), null);
+  });
 
-  // test('dart call handleEnumParameter', () async {
-  //   expect(await api.handleEnumParameter(weekday: Weekdays.Saturday),
-  //       Weekdays.Saturday);
-  // });
+  test('dart call handleEnumParameter', () async {
+    expect(await api.handleEnumParameter(weekday: Weekdays.Saturday),
+        Weekdays.Saturday);
+  });
 
-  // test('dart call handleEnumStruct', () async {
-  //   expect(await api.handleEnumStruct(val: Empty()), Empty());
-  //   expect(
-  //     await api.handleEnumStruct(
-  //       val: Primitives(int32: 0, float64: 1, boolean: false),
-  //     ),
-  //     Primitives(int32: 1, float64: 2, boolean: true),
-  //   );
-  //   expect(
-  //     await api.handleEnumStruct(val: Optional(null, 0)),
-  //     Optional(null, 1),
-  //   );
-  //   expect(
-  //     await api.handleEnumStruct(val: Buffer(Uint8List.fromList([]))),
-  //     Buffer(Uint8List.fromList([1])),
-  //   );
-  //   expect(
-  //     await api.handleEnumStruct(val: Enums(Weekdays.Monday)),
-  //     Enums(Weekdays.Tuesday),
-  //   );
-  //   expect(
-  //     await api.handleEnumStruct(val: Nested(Empty(), 0)),
-  //     Nested(Empty(), 1),
-  //   );
-  // });
+  test('dart call handleEnumStruct', () async {
+    expect(await api.handleEnumStruct(val: Empty()), Empty());
+    expect(
+      await api.handleEnumStruct(
+        val: Primitives(int32: 0, float64: 1, boolean: false),
+      ),
+      Primitives(int32: 1, float64: 2, boolean: true),
+    );
+    expect(
+      await api.handleEnumStruct(val: Optional(null, 0)),
+      Optional(null, 1),
+    );
+    expect(
+      await api.handleEnumStruct(val: Buffer(Uint8List.fromList([]))),
+      Buffer(Uint8List.fromList([1])),
+    );
+    expect(
+      await api.handleEnumStruct(val: Enums(Weekdays.Monday)),
+      Enums(Weekdays.Tuesday),
+    );
+    expect(
+      await api.handleEnumStruct(val: Nested(Empty(), 0)),
+      Nested(Empty(), 1),
+    );
+  });
 
-  // test('dart call useImportedStruct()', () async {
-  //   expect(
-  //     await api.useImportedStruct(myStruct: MyStruct(content: false)),
-  //     false,
-  //   );
-  //   expect(
-  //     await api.useImportedStruct(myStruct: MyStruct(content: true)),
-  //     true,
-  //   );
-  // });
+  test('dart call useImportedStruct()', () async {
+    expect(
+      await api.useImportedStruct(myStruct: MyStruct(content: false)),
+      false,
+    );
+    expect(
+      await api.useImportedStruct(myStruct: MyStruct(content: true)),
+      true,
+    );
+  });
 
-  // test('dart call useImportedEnum()', () async {
-  //   expect(
-  //     await api.useImportedEnum(myEnum: MyEnum.False),
-  //     false,
-  //   );
-  //   expect(
-  //     await api.useImportedEnum(myEnum: MyEnum.True),
-  //     true,
-  //   );
-  // });
+  test('dart call useImportedEnum()', () async {
+    expect(
+      await api.useImportedEnum(myEnum: MyEnum.False),
+      false,
+    );
+    expect(
+      await api.useImportedEnum(myEnum: MyEnum.True),
+      true,
+    );
+  });
 
-  // test('dart call getAppSettings()', () async {
-  //   var settings = await api.getAppSettings();
-  //   expect(settings.version, "1.0.0-rc.1");
-  //   expect(settings.mode, ApplicationMode.Standalone);
-  //   expect(settings.env.vars[0].field0, "myenv");
-  // });
+  test('dart call getAppSettings()', () async {
+    var settings = await api.getAppSettings();
+    expect(settings.version, "1.0.0-rc.1");
+    expect(settings.mode, ApplicationMode.Standalone);
+    expect(settings.env.vars[0].field0, "myenv");
+  });
 
-  // test('dart call isAppEmbedded()', () async {
-  //   expect(
-  //       await api.isAppEmbedded(
-  //           appSettings: ApplicationSettings(
-  //               name: "from dart",
-  //               version: "XX",
-  //               mode: ApplicationMode.Embedded,
-  //               env: ApplicationEnv(vars: [
-  //                 ApplicationEnvVar(field0: "sendback", field1: true)
-  //               ]))),
-  //       true);
-  // });
+  test('dart call isAppEmbedded()', () async {
+    expect(
+        await api.isAppEmbedded(
+            appSettings: ApplicationSettings(
+                name: "from dart",
+                version: "XX",
+                mode: ApplicationMode.Embedded,
+                env: ApplicationEnv(vars: [
+                  ApplicationEnvVar(field0: "sendback", field1: true)
+                ]))),
+        true);
+  });
 
-  // test('dart call getMessage()', () async {
-  //   var message = await api.getMessage();
-  //   expect(message is RenderPixel, true);
-  //   message as RenderPixel;
-  //   expect(message.x, 5);
-  //   expect(message.y, 10);
+  test('dart call getMessage()', () async {
+    var message = await api.getMessage();
+    expect(message is RenderPixel, true);
+    message as RenderPixel;
+    expect(message.x, 5);
+    expect(message.y, 10);
 
-  //   _createGarbage();
-  //   await Future.delayed(Duration(seconds: 1));
-  //   _createGarbage();
-  //   await Future.delayed(Duration(seconds: 1));
-  // });
+    _createGarbage();
+    await Future.delayed(Duration(seconds: 1));
+    _createGarbage();
+    await Future.delayed(Duration(seconds: 1));
+  });
 
-  // test('loop and call many times', () async {
-  //   var obj = _createMyTreeNode(arrLen: 5);
-  //   for (var i = 0; i < 500; ++i) {
-  //     obj = await api.handleComplexStruct(s: obj);
-  //   }
-  // });
+  test('loop and call many times', () async {
+    var obj = _createMyTreeNode(arrLen: 5);
+    for (var i = 0; i < 500; ++i) {
+      obj = await api.handleComplexStruct(s: obj);
+    }
+  });
 
-  // test('dart call getArray()', () async {
-  //   expect(await api.getArray(), [1, 2, 3, 4, 5]);
-  // });
+  test('dart call getArray()', () async {
+    expect(await api.getArray(), [1, 2, 3, 4, 5]);
+  });
 
-  // test('dart call returnStructWithArray()', () async {
-  //   {
-  //     var a = MyArray(
-  //         a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
-  //     expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
-  //   }
-  // });
+  test('return array', () async {
+    var a = Uint16List.fromList([1, 2]);
+    expect(await api.returnArray(a: a), [1, 2]);
+  });
+
+
+  test('return array and vec - wrong length', () async {
+    var a = Uint16List.fromList([1]);
+    var b = Uint8List.fromList([1]);
+    try {
+      await api.returnArrayAndVec(a: a, b: b);
+      print('aaaa');
+    } catch (e) {
+      expect(e, isA<FfiException>());
+    }
+  });
+
+  test('return array - wrong length', () async {
+    var a = Uint16List.fromList([1]);
+    try {
+      await api.returnArray(a: a);
+      print('aaaa');
+    } catch (e) {
+      expect(e, isA<FfiException>());
+    }
+  });
+
+  test('dart call returnStructWithArray()', () async {
+      var a = MyArray(
+        a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
+      expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
+  });
 
   test('dart call returnStructWithArray() with wrong sized list', () async {
-    var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
+  var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
     try {
       await api.takeAndUnpackArray(a: a);
     } catch (e) {
-      expect(e, isA<Exception>());
+      print(e);
+      expect(e, isA<FfiException>());
     }
   });
 
-  // test('dart call scaleArray()', () async {
-  //   {
-  //     final point1 = Point(x: 1.0, y: 2.0);
-  //     final point2 = Point(x: 3.0, y: 4.0);
-  //     expect(point1.x, 1.0);
-  //     expect(point1.y, 2.0);
-  //     expect(point2.x, 3.0);
-  //     expect(point2.y, 4.0);
+  test('dart call scaleArray()', () async {
+    {
+      final point1 = Point(x: 1.0, y: 2.0);
+      final point2 = Point(x: 3.0, y: 4.0);
+      expect(point1.x, 1.0);
+      expect(point1.y, 2.0);
+      expect(point2.x, 3.0);
+      expect(point2.y, 4.0);
 
-  //     final List<Point> points =
-  //         await api.scaleArray(points: [point1, point2], scale: 2.0);
+      final List<Point> points =
+          await api.scaleArray(points: [point1, point2], scale: 2.0);
 
-  //     expect(points[0].x, 2.0);
-  //     expect(points[0].y, 4.0);
-  //     expect(points[1].x, 6.0);
-  //     expect(points[1].y, 8.0);
-  //   }
-  // });
+      expect(points[0].x, 2.0);
+      expect(points[0].y, 4.0);
+      expect(points[1].x, 6.0);
+      expect(points[1].y, 8.0);
+    }
+  });
 
   test('dart call scaleArray() with wrong sized list', () async {
-    final point1 = Point(x: 1.0, y: 2.0);
-    try {
-      await api.scaleArray(points: [point1], scale: 2.0);
-    } catch (e) {
-      expect(e, isA<Exception>());
-    }
+  final point1 = Point(x: 1.0, y: 2.0);
+  try {
+    await api.scaleArray(points: [point1], scale: 2.0);
+  } catch (e) {
+    expect(e, isA<Exception>());
+  }
   });
 
-  // test('dart call getUsize', () async {
-  //   expect(await api.getUsize(u: 2), 2);
-  // });
+  test('dart call getUsize', () async {
+    expect(await api.getUsize(u: 2), 2);
+  });
 
-  // test('dart check that non-final field is modifiable', () {
-  //   var customized =
-  //       Customized(finalField: "finalField", nonFinalField: "nonFinalField");
-  //   expect(customized.nonFinalField, "nonFinalField");
-  //   customized.nonFinalField = "changed";
-  //   expect(customized.nonFinalField, "changed");
-  // });
+  test('dart check that non-final field is modifiable', () {
+    var customized =
+        Customized(finalField: "finalField", nonFinalField: "nonFinalField");
+    expect(customized.nonFinalField, "nonFinalField");
+    customized.nonFinalField = "changed";
+    expect(customized.nonFinalField, "changed");
+  });
 
-  // test('dart call next_user_id to test metadata annotations', () async {
-  //   UserId userId = UserId(value: 11);
-  //   expect(await api.nextUserId(userId: userId), UserId(value: 12));
-  // });
+  test('dart call next_user_id to test metadata annotations', () async {
+    UserId userId = UserId(value: 11);
+    expect(await api.nextUserId(userId: userId), UserId(value: 12));
+  });
 
   print('flutter_rust_bridge example program end');
 }
 
-// int _createGarbage() {
-//   print('dart create garbage (thus make it more possible to GC)');
-//   var cum = 0;
-//   for (var i = 0; i < 1000; ++i) {
-//     final l = List.filled(5000, 42);
-//     cum += l[42];
-//   }
-//   return cum;
-// }
+int _createGarbage() {
+  print('dart create garbage (thus make it more possible to GC)');
+  var cum = 0;
+  for (var i = 0; i < 1000; ++i) {
+    final l = List.filled(5000, 42);
+    cum += l[42];
+  }
+  return cum;
+}
 
-// MyTreeNode _createMyTreeNode({required int arrLen}) {
-//   return MyTreeNode(
-//     valueI32: 100,
-//     valueVecU8: Uint8List.fromList(List.filled(arrLen, 100)),
-//     valueBoolean: true,
-//     children: [
-//       MyTreeNode(
-//         valueI32: 110,
-//         valueVecU8: Uint8List.fromList(List.filled(arrLen, 110)),
-//         valueBoolean: true,
-//         children: [
-//           MyTreeNode(
-//             valueI32: 111,
-//             valueVecU8: Uint8List.fromList(List.filled(arrLen, 111)),
-//             valueBoolean: true,
-//             children: [],
-//           ),
-//         ],
-//       ),
-//       MyTreeNode(
-//         valueI32: 120,
-//         valueVecU8: Uint8List.fromList(List.filled(arrLen, 120)),
-//         valueBoolean: true,
-//         children: [],
-//       ),
-//     ],
-//   );
-// }
+MyTreeNode _createMyTreeNode({required int arrLen}) {
+  return MyTreeNode(
+    valueI32: 100,
+    valueVecU8: Uint8List.fromList(List.filled(arrLen, 100)),
+    valueBoolean: true,
+    children: [
+      MyTreeNode(
+        valueI32: 110,
+        valueVecU8: Uint8List.fromList(List.filled(arrLen, 110)),
+        valueBoolean: true,
+        children: [
+          MyTreeNode(
+            valueI32: 111,
+            valueVecU8: Uint8List.fromList(List.filled(arrLen, 111)),
+            valueBoolean: true,
+            children: [],
+          ),
+        ],
+      ),
+      MyTreeNode(
+        valueI32: 120,
+        valueVecU8: Uint8List.fromList(List.filled(arrLen, 120)),
+        valueBoolean: true,
+        children: [],
+      ),
+    ],
+  );
+}
 
-// // vim:expandtab:ts=2:sw=2
+// vim:expandtab:ts=2:sw=2

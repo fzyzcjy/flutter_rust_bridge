@@ -309,7 +309,7 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
             Object? exception;
             {par_calls}
             if (exception != null) {{
-                throw Exception(exception);
+                throw exception;
             }}
             return {execute_func_name}(FlutterRustBridgeTask(
             callFfi: (port_) => inner.{}(port_, {par_list}),

@@ -32,10 +32,14 @@ pub extern "C" fn wire_draw_mandelbrot(
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_image_size = image_size.wire2api();
             let api_zoom_point = zoom_point.wire2api();
             let api_scale = scale.wire2api();
             let api_num_threads = num_threads.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| {
                 draw_mandelbrot(api_image_size, api_zoom_point, api_scale, api_num_threads)
             }
@@ -52,7 +56,11 @@ pub extern "C" fn wire_passing_complex_structs(port_: i64, root: *mut wire_TreeN
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_root = root.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| Ok(passing_complex_structs(api_root))
         },
     )
@@ -66,7 +74,14 @@ pub extern "C" fn wire_returning_structs_with_boxed_fields(port_: i64) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(returning_structs_with_boxed_fields()),
+        move || {
+            let mut has_error = false;
+
+            if has_error {
+                panic!("errorororor");
+            }
+            move |task_callback| Ok(returning_structs_with_boxed_fields())
+        },
     )
 }
 
@@ -79,7 +94,11 @@ pub extern "C" fn wire_off_topic_memory_test_input_array(port_: i64, input: *mut
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_input = input.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| Ok(off_topic_memory_test_input_array(api_input))
         },
     )
@@ -94,7 +113,11 @@ pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: i64,
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_len = len.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| Ok(off_topic_memory_test_output_zero_copy_buffer(api_len))
         },
     )
@@ -109,7 +132,11 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port_: i64, len: i32)
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_len = len.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| Ok(off_topic_memory_test_output_vec_u8(api_len))
         },
     )
@@ -127,7 +154,11 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_input = input.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| Ok(off_topic_memory_test_input_vec_of_object(api_input))
         },
     )
@@ -142,7 +173,11 @@ pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port_: i64, le
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_len = len.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| Ok(off_topic_memory_test_output_vec_of_object(api_len))
         },
     )
@@ -160,7 +195,11 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_input = input.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| Ok(off_topic_memory_test_input_complex_struct(api_input))
         },
     )
@@ -175,7 +214,11 @@ pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port_: i64, l
             mode: FfiCallMode::Normal,
         },
         move || {
+            let mut has_error = false;
             let api_len = len.wire2api();
+            if has_error {
+                panic!("errorororor");
+            }
             move |task_callback| Ok(off_topic_memory_test_output_complex_struct(api_len))
         },
     )
@@ -189,7 +232,14 @@ pub extern "C" fn wire_off_topic_deliberately_return_error(port_: i64) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| off_topic_deliberately_return_error(),
+        move || {
+            let mut has_error = false;
+
+            if has_error {
+                panic!("errorororor");
+            }
+            move |task_callback| off_topic_deliberately_return_error()
+        },
     )
 }
 
@@ -201,7 +251,14 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(off_topic_deliberately_panic()),
+        move || {
+            let mut has_error = false;
+
+            if has_error {
+                panic!("errorororor");
+            }
+            move |task_callback| Ok(off_topic_deliberately_panic())
+        },
     )
 }
 

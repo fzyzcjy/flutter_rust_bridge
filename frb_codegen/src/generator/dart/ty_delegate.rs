@@ -24,19 +24,20 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             return ans;"
                 .to_owned(),
-            IrTypeDelegate::ArrayPrimitive { primitive: _, len } => format!(
+            IrTypeDelegate::ArrayPrimitive {
+                primitive: _,
+                len: _,
+            } => format!(
                 "final ans = inner.new_{}(raw.length);
-                if (raw.length != {len}) throw Exception('List must have lenght {len}');
                 ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
                 return ans;",
                 self.ir.get_delegate().safe_ident(),
             ),
             IrTypeDelegate::ArrayGeneral {
                 ir_type_general_list,
-                len,
+                len: _,
             } => format!(
                 "final ans = inner.new_{}(raw.length);
-                if (raw.length != {len}) throw Exception('List must have lenght {len}');
                 for (var i = 0; i < raw.length; ++i) {{
                     _api_fill_to_wire_{}(raw[i], ans.ref.ptr[i]);
                 }}

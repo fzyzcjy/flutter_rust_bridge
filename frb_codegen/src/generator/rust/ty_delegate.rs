@@ -18,7 +18,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
             IrTypeDelegate::StringList => TypeGeneralListGenerator::WIRE2API_BODY.to_string(),
-            IrTypeDelegate::ArrayPrimitive { primitive, len } => format!(
+            IrTypeDelegate::ArrayPrimitive { primitive: _, len } => format!(
                 "use std::convert::TryInto;
 
             let vec = unsafe {{
@@ -26,12 +26,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }};
             if vec.len() == {len} {{
-                vec.try_into().unwrap()
+                Some(vec.try_into().unwrap())
             }} else {{
-                [{}::default(); {len}]
+                None
             }}
-            ",
-                primitive.rust_api_type()
+            "
             ),
             IrTypeDelegate::ArrayGeneral {
                 ir_type_general_list,
@@ -49,6 +48,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             if vec.len() == {len} {{
                 vec.try_into().unwrap()
             }} else {{
+                panic!(\"wuuuuu\");
                 [{}::default(); {len}]
             }}
             ",
