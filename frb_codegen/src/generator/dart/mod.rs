@@ -295,22 +295,16 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
                 .iter()
                 .skip(1)
                 .enumerate()
-                .map(|(i, _)| format!("__unique_var_{i}"))
+                .map(|(i, _)| format!("__api2wireVar_{i}"))
                 .collect::<Vec<String>>()
                 .join(", ");
             let mut par_calls = String::new();
             for (i, p) in wire_param_list.iter().skip(1).enumerate() {
-                par_calls.push_str(&format!(
-                    "dynamic __unique_var_{i}; try{{__unique_var_{i} = {p};}}catch(e){{exception = e;}}"
-                ));
+                par_calls.push_str(&format!("final __api2wireVar_{i} = {p};"));
             }
             format!(
                 "{partial} {{
-            Object? exception;
             {par_calls}
-            if (exception != null) {{
-                throw exception;
-            }}
             return {execute_func_name}(FlutterRustBridgeTask(
             callFfi: (port_) => inner.{}(port_, {par_list}),
             parseSuccessData: _wire2api_{},
