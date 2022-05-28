@@ -29,11 +29,11 @@ pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(simple_adder(api_a, api_b))
         },
@@ -55,13 +55,13 @@ pub extern "C" fn wire_primitive_types(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_my_i32 = my_i32.wire2api();
             let api_my_i64 = my_i64.wire2api();
             let api_my_f64 = my_f64.wire2api();
             let api_my_bool = my_bool.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| {
                 Ok(primitive_types(
@@ -84,10 +84,10 @@ pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_my_u32 = my_u32.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(primitive_u32(api_my_u32))
         },
@@ -103,10 +103,10 @@ pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_s = s.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_string(api_s))
         },
@@ -122,10 +122,10 @@ pub extern "C" fn wire_handle_return_unit(port_: i64) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
 
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_return_unit())
         },
@@ -141,10 +141,10 @@ pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_v = v.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_vec_u8(api_v))
         },
@@ -160,10 +160,10 @@ pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_n = n.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_vec_of_primitive(api_n))
         },
@@ -179,10 +179,10 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_n = n.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_zero_copy_vec_of_primitive(api_n))
         },
@@ -198,11 +198,11 @@ pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_arg = arg.wire2api();
             let api_boxed = boxed.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_struct(api_arg, api_boxed))
         },
@@ -218,10 +218,10 @@ pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_arg = arg.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_newtype(api_arg))
         },
@@ -237,10 +237,10 @@ pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_si
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_l = l.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_list_of_struct(api_l))
         },
@@ -256,10 +256,10 @@ pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringLis
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_names = names.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_string_list(api_names))
         },
@@ -275,10 +275,10 @@ pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_s = s.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_complex_struct(api_s))
         },
@@ -296,7 +296,7 @@ pub extern "C" fn wire_handle_sync_return(
             mode: FfiCallMode::Sync,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_mode = mode.wire2api();
             handle_sync_return(api_mode)
         },
@@ -312,10 +312,10 @@ pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
             mode: FfiCallMode::Stream,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_arg = arg.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| handle_stream(task_callback.stream_sink(), api_arg)
         },
@@ -331,10 +331,10 @@ pub extern "C" fn wire_handle_stream_of_struct(port_: i64) {
             mode: FfiCallMode::Stream,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
 
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| handle_stream_of_struct(task_callback.stream_sink())
         },
@@ -350,10 +350,10 @@ pub extern "C" fn wire_return_err(port_: i64) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
 
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| return_err()
         },
@@ -369,10 +369,10 @@ pub extern "C" fn wire_return_panic(port_: i64) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
 
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(return_panic())
         },
@@ -388,11 +388,11 @@ pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64)
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_left = left.wire2api();
             let api_right = right.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_optional_return(api_left, api_right))
         },
@@ -408,10 +408,10 @@ pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_ui
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_document = document.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_optional_struct(api_document))
         },
@@ -427,10 +427,10 @@ pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_Exot
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_opt = opt.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_optional_increment(api_opt))
         },
@@ -446,10 +446,10 @@ pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_opt = opt.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_increment_boxed_optional(api_opt))
         },
@@ -474,7 +474,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_i8box = i8box.wire2api();
             let api_u8box = u8box.wire2api();
             let api_i32box = i32box.wire2api();
@@ -482,8 +482,8 @@ pub extern "C" fn wire_handle_option_box_arguments(
             let api_f64box = f64box.wire2api();
             let api_boolbox = boolbox.wire2api();
             let api_structbox = structbox.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| {
                 Ok(handle_option_box_arguments(
@@ -509,10 +509,10 @@ pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_li
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_input = input.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_return_enum(api_input))
         },
@@ -528,10 +528,10 @@ pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_weekday = weekday.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_enum_parameter(api_weekday))
         },
@@ -547,10 +547,10 @@ pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Custo
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_val = val.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_customized_struct(api_val))
         },
@@ -566,10 +566,10 @@ pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_val = val.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(handle_enum_struct(api_val))
         },
@@ -585,10 +585,10 @@ pub extern "C" fn wire_use_imported_struct(port_: i64, my_struct: *mut wire_MySt
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_my_struct = my_struct.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(use_imported_struct(api_my_struct))
         },
@@ -604,10 +604,10 @@ pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_my_enum = my_enum.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(use_imported_enum(api_my_enum))
         },
@@ -623,10 +623,10 @@ pub extern "C" fn wire_get_app_settings(port_: i64) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
 
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings()))
         },
@@ -642,10 +642,10 @@ pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_Appli
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_app_settings = app_settings.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(is_app_embedded(api_app_settings))
         },
@@ -661,10 +661,10 @@ pub extern "C" fn wire_get_message(port_: i64) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
 
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(mirror_ApplicationMessage(get_message()))
         },
@@ -680,31 +680,12 @@ pub extern "C" fn wire_get_array(port_: i64) {
             mode: FfiCallMode::EagerParEval,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
 
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(get_array())
-        },
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn wire_take_and_unpack_array(port_: i64, a: *mut wire_MyArray) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "take_and_unpack_array",
-            port: Some(port_),
-            mode: FfiCallMode::EagerParEval,
-        },
-        move || {
-            let mut has_error = false;
-            let api_a = a.wire2api();
-            if has_error {
-                panic!("errorororor");
-            }
-            move |task_callback| Ok(take_and_unpack_array(api_a))
         },
     )
 }
@@ -718,15 +699,15 @@ pub extern "C" fn wire_return_array(port_: i64, a: *mut wire_uint_16_list) {
             mode: FfiCallMode::EagerParEval,
         },
         move || {
-            let mut has_error = false;
-            let api_a: Option<[u16; 2]> = a.wire2api();
-            if api_a.is_none() {
-                has_error = true;
+            let mut error: Option<String> = None;
+            let api_a: Result<[u16; 2], String> = a.wire2api();
+            if let Err(ref e) = api_a {
+                error = Some(e.to_string());
             }
             let api_a = api_a.unwrap_or_default();
 
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(return_array(api_a))
         },
@@ -746,15 +727,15 @@ pub extern "C" fn wire_return_array_and_vec(
             mode: FfiCallMode::EagerParEval,
         },
         move || {
-            let mut has_error = false;
-            let api_a: Option<[u16; 2]> = a.wire2api();
-            if api_a.is_none() {
-                has_error = true;
+            let mut error: Option<String> = None;
+            let api_a: Result<[u16; 2], String> = a.wire2api();
+            if let Err(ref e) = api_a {
+                error = Some(e.to_string());
             }
             let api_a = api_a.unwrap_or_default();
             let api_b = b.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(return_array_and_vec(api_a, api_b))
         },
@@ -770,15 +751,15 @@ pub extern "C" fn wire_scale_array(port_: i64, points: *mut wire_list_point, sca
             mode: FfiCallMode::EagerParEval,
         },
         move || {
-            let mut has_error = false;
-            let api_points: Option<[Vec<Point>; 2]> = points.wire2api();
-            if api_points.is_none() {
-                has_error = true;
+            let mut error: Option<String> = None;
+            let api_points: Result<[Point; 2], String> = points.wire2api();
+            if let Err(ref e) = api_points {
+                error = Some(e.to_string());
             }
             let api_points = api_points.unwrap_or_default();
             let api_scale = scale.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(scale_array(api_points, api_scale))
         },
@@ -794,10 +775,10 @@ pub extern "C" fn wire_get_usize(port_: i64, u: usize) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_u = u.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(get_usize(api_u))
         },
@@ -813,10 +794,10 @@ pub extern "C" fn wire_next_user_id(port_: i64, user_id: *mut wire_UserId) {
             mode: FfiCallMode::Normal,
         },
         move || {
-            let mut has_error = false;
+            let mut error: Option<String> = None;
             let api_user_id = user_id.wire2api();
-            if has_error {
-                panic!("errorororor");
+            if let Some(error) = error {
+                panic!("{}", error);
             }
             move |task_callback| Ok(next_user_id(api_user_id))
         },
@@ -967,13 +948,6 @@ pub struct wire_list_point {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_MyArray {
-    a: *mut wire_uint_32_list,
-    b: *mut wire_uint_16_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_MySize {
     width: i32,
     height: i32,
@@ -1011,13 +985,6 @@ pub struct wire_Point {
 #[derive(Clone)]
 pub struct wire_uint_16_list {
     ptr: *mut u16,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_uint_32_list {
-    ptr: *mut u32,
     len: i32,
 }
 
@@ -1202,11 +1169,6 @@ pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_KitchenSink {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_array() -> *mut wire_MyArray {
-    support::new_leak_box_ptr(wire_MyArray::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
@@ -1387,15 +1349,6 @@ pub extern "C" fn new_uint_16_list(len: i32) -> *mut wire_uint_16_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_32_list(len: i32) -> *mut wire_uint_32_list {
-    let ans = wire_uint_32_list {
-        ptr: support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
 pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
@@ -1423,8 +1376,8 @@ where
     }
 }
 
-impl Wire2Api<[Point; 2]> for *mut wire_list_point {
-    fn wire2api(self) -> [Point; 2] {
+impl Wire2Api<Result<[Point; 2], String>> for *mut wire_list_point {
+    fn wire2api(self) -> Result<[Point; 2], String> {
         use std::convert::TryInto;
 
         let vec = unsafe {
@@ -1436,44 +1389,21 @@ impl Wire2Api<[Point; 2]> for *mut wire_list_point {
             .cloned()
             .map(Wire2Api::wire2api)
             .collect::<Vec<Point>>();
-        if vec.len() == 2 {
-            vec.try_into().unwrap()
-        } else {
-            panic!("wuuuuu");
-            [Point::default(); 2]
-        }
+        vec.try_into()
+            .map_err(|_| "Array must have length 2".to_string())
     }
 }
 
-impl Wire2Api<Option<[u16; 2]>> for *mut wire_uint_16_list {
-    fn wire2api(self) -> Option<[u16; 2]> {
+impl Wire2Api<Result<[u16; 2], String>> for *mut wire_uint_16_list {
+    fn wire2api(self) -> Result<[u16; 2], String> {
         use std::convert::TryInto;
 
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        if vec.len() == 2 {
-            Some(vec.try_into().unwrap())
-        } else {
-            None
-        }
-    }
-}
-
-impl Wire2Api<Option<[u32; 3]>> for *mut wire_uint_32_list {
-    fn wire2api(self) -> Option<[u32; 3]> {
-        use std::convert::TryInto;
-
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        if vec.len() == 3 {
-            Some(vec.try_into().unwrap())
-        } else {
-            None
-        }
+        vec.try_into()
+            .map_err(|_| "Array must have length 2".to_string())
     }
 }
 
@@ -1611,13 +1541,6 @@ impl Wire2Api<i64> for *mut i64 {
 
 impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
-    }
-}
-
-impl Wire2Api<MyArray> for *mut wire_MyArray {
-    fn wire2api(self) -> MyArray {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         (*wrap).wire2api().into()
     }
@@ -1919,15 +1842,6 @@ impl Wire2Api<Vec<Point>> for *mut wire_list_point {
     }
 }
 
-impl Wire2Api<MyArray> for wire_MyArray {
-    fn wire2api(self) -> MyArray {
-        MyArray {
-            a: self.a.wire2api(),
-            b: self.b.wire2api(),
-        }
-    }
-}
-
 impl Wire2Api<MyEnum> for i32 {
     fn wire2api(self) -> MyEnum {
         match self {
@@ -2001,15 +1915,6 @@ impl Wire2Api<u8> for u8 {
 
 impl Wire2Api<Vec<u16>> for *mut wire_uint_16_list {
     fn wire2api(self) -> Vec<u16> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
-    }
-}
-
-impl Wire2Api<Vec<u32>> for *mut wire_uint_32_list {
-    fn wire2api(self) -> Vec<u32> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -2191,15 +2096,6 @@ pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
             field0: Default::default(),
         }),
     })
-}
-
-impl NewWithNullPtr for wire_MyArray {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            a: core::ptr::null_mut(),
-            b: core::ptr::null_mut(),
-        }
-    }
 }
 
 impl NewWithNullPtr for wire_MySize {

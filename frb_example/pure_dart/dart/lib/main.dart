@@ -362,27 +362,26 @@ void main(List<String> args) async {
     var a = Uint16List.fromList([1]);
     try {
       await api.returnArray(a: a);
-      print('aaaa');
     } catch (e) {
       expect(e, isA<FfiException>());
     }
   });
 
-  test('dart call returnStructWithArray()', () async {
-      var a = MyArray(
-        a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
-      expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
-  });
+  // test('dart call returnStructWithArray()', () async {
+  //     var a = MyArray(
+  //       a: Uint32List.fromList([1, 2, 3]), b: Uint16List.fromList([1]));
+  //     expect(await api.takeAndUnpackArray(a: a), [1, 2, 3]);
+  // });
 
-  test('dart call returnStructWithArray() with wrong sized list', () async {
-  var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
-    try {
-      await api.takeAndUnpackArray(a: a);
-    } catch (e) {
-      print(e);
-      expect(e, isA<FfiException>());
-    }
-  });
+  // test('dart call returnStructWithArray() with wrong sized list', () async {
+  // var a = MyArray(a: Uint32List.fromList([1, 2]), b: Uint16List.fromList([1]));
+  //   try {
+  //     await api.takeAndUnpackArray(a: a);
+  //   } catch (e) {
+  //     print(e);
+  //     expect(e, isA<FfiException>());
+  //   }
+  // });
 
   test('dart call scaleArray()', () async {
     {
@@ -408,7 +407,7 @@ void main(List<String> args) async {
   try {
     await api.scaleArray(points: [point1], scale: 2.0);
   } catch (e) {
-    expect(e, isA<Exception>());
+    expect(e, isA<FfiException>());
   }
   });
 

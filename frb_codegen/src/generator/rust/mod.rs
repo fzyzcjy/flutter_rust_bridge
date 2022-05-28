@@ -254,8 +254,8 @@ impl Generator {
                 if let Some(ty) = field.ty.is_array() {
                     let name = field.name.rust_style();
                     format!(
-                        "let api_{name}: Option<{ty}> = {name}.wire2api();
-                         if api_{name}.is_none() {{has_error = true;}}
+                        "let api_{name}: Result<{ty}, String> = {name}.wire2api();
+                         if let Err(ref e) = api_{name} {{error = Some(e.to_string());}}
                          let api_{name} = api_{name}.unwrap_or_default();
                         ",
                     )
@@ -293,8 +293,8 @@ impl Generator {
                 None,
                 format!(
                     "{}
-                    if has_error {{
-                        panic!(\"errorororor\");
+                    if let Some(error) = error {{
+                        panic!(\"{{}}\", error);
                     }}
                     move |task_callback| {}
                     ",
@@ -313,7 +313,7 @@ impl Generator {
             &format!(
                 "
                 {}.{}({}, move || {{
-                    let mut has_error = false;
+                    let mut error: Option<String> = None;
                     {}
                 }})
                 ",

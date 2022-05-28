@@ -25,11 +25,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 let wrap = support::box_from_leak_ptr(self);
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             }};
-            if vec.len() == {len} {{
-                Some(vec.try_into().unwrap())
-            }} else {{
-                None
-            }}
+                vec.try_into().map_err(|_| \"Array must have length {len}\".to_string())
             "
             ),
             IrTypeDelegate::ArrayGeneral {
@@ -45,14 +41,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             let vec = vec.iter().cloned()
                 .map(Wire2Api::wire2api)
                 .collect::<Vec<{}>>();
-            if vec.len() == {len} {{
-                vec.try_into().unwrap()
-            }} else {{
-                panic!(\"wuuuuu\");
-                [{}::default(); {len}]
-            }}
+                vec.try_into().map_err(|_| \"Array must have length {len}\".to_string())
             ",
-                ir_type_general_list.inner.rust_api_type(),
                 ir_type_general_list.inner.rust_api_type(),
             ),
         })
