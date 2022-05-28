@@ -3137,6 +3137,6 @@ class wire_UserId extends ffi.Struct {
   external int value;
 }
 
-typedef uintptr_t = ffi.UnsignedLong;
+typedef uintptr_t = ffi.Uint64;
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
