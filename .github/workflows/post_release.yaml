@@ -38,8 +38,8 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install valgrind
-        run: sudo apt update && sudo apt install -y valgrind
+      - name: Install valgrind and llvm
+        run: sudo apt update && sudo apt install -y valgrind libclang-dev
 
       - uses: dart-lang/setup-dart@v1
 
