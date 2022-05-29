@@ -63,7 +63,7 @@ packages:
       name: build_resolvers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.8"
+    version: "2.0.9"
   build_runner:
     dependency: "direct dev"
     description:
@@ -91,7 +91,7 @@ packages:
       name: built_value
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.3.0"
+    version: "8.3.2"
   checked_yaml:
     dependency: transitive
     description:
@@ -161,7 +161,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.31.0"
+    version: "1.32.0"
   freezed:
     dependency: "direct dev"
     description:
