@@ -1,3 +1,7 @@
+## 1.32.0
+
+* Allow `FlutterRustBridgeTimeoutMixin` to disable timeout
+
 ## 1.31.0
 
 * Support `#[frb(metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]` for structs #463 (thanks @alanlzhang)
