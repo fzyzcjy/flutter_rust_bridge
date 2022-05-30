@@ -38,7 +38,7 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install ffigen
-        run: dart pub global activate ffigen
+        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
 
       - name: Install dart dependencies
         working-directory: ./frb_example/pure_dart/dart
