@@ -168,7 +168,7 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install dart global dependency
-        run: dart pub global activate ffigen
+        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
 
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)
