@@ -58,6 +58,8 @@ pub struct RawOpts {
     /// Show debug messages.
     #[structopt(short, long)]
     pub verbose: bool,
+    #[structopt(long)]
+    pub exclude_sync_execution_mode_utility: Option<bool>,
 }
 
 #[derive(Debug)]
@@ -76,6 +78,7 @@ pub struct Opts {
     pub manifest_path: String,
     pub dart_root: Option<String>,
     pub build_runner: bool,
+    pub exclude_sync_execution_mode_utility: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Opts {
@@ -154,6 +157,7 @@ pub fn parse(raw: RawOpts) -> Opts {
         manifest_path,
         dart_root,
         build_runner: !raw.no_build_runner,
+        exclude_sync_execution_mode_utility: raw.exclude_sync_execution_mode_utility.unwrap_or(false)
     }
 }
 
