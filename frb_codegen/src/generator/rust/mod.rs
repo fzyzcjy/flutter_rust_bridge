@@ -27,11 +27,13 @@ use crate::others::*;
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
 pub struct GeneratorOptions {
-    pub should_generate_sync_execution_mode_utility: bool
+    pub should_generate_sync_execution_mode_utility: bool,
 }
 impl Default for GeneratorOptions {
     fn default() -> Self {
-        Self { should_generate_sync_execution_mode_utility: true }
+        Self {
+            should_generate_sync_execution_mode_utility: true,
+        }
     }
 }
 
@@ -40,7 +42,11 @@ pub struct Output {
     pub extern_func_names: Vec<String>,
 }
 
-pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, options: Option<GeneratorOptions>) -> Output {
+pub fn generate(
+    ir_file: &IrFile,
+    rust_wire_mod: &str,
+    options: Option<GeneratorOptions>,
+) -> Output {
     let mut generator = Generator::new(options.unwrap_or_default());
     let code = generator.generate(ir_file, rust_wire_mod);
 
@@ -52,14 +58,14 @@ pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, options: Option<Generator
 
 struct Generator {
     extern_func_collector: ExternFuncCollector,
-    options: GeneratorOptions
+    options: GeneratorOptions,
 }
 
 impl Generator {
     fn new(options: GeneratorOptions) -> Self {
         Self {
             extern_func_collector: ExternFuncCollector::new(),
-            options
+            options,
         }
     }
 
@@ -155,7 +161,7 @@ impl Generator {
 
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
-        
+
         if self.options.should_generate_sync_execution_mode_utility {
             lines.push(self.section_header_comment("sync execution mode utility"));
             lines.push(self.generate_sync_execution_mode_utility());

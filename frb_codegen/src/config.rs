@@ -157,7 +157,9 @@ pub fn parse(raw: RawOpts) -> Opts {
         manifest_path,
         dart_root,
         build_runner: !raw.no_build_runner,
-        exclude_sync_execution_mode_utility: raw.exclude_sync_execution_mode_utility.unwrap_or(false)
+        exclude_sync_execution_mode_utility: raw
+            .exclude_sync_execution_mode_utility
+            .unwrap_or(false),
     }
 }
 
