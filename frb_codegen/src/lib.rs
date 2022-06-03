@@ -46,6 +46,10 @@ pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
     let generated_rust = generator::rust::generate(
         &ir_file,
         &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
+        Some(generator::rust::GeneratorOptions {
+            should_generate_sync_execution_mode_utility: !config
+                .exclude_sync_execution_mode_utility,
+        }),
     );
     fs::create_dir_all(&rust_output_dir)?;
     fs::write(&config.rust_output_path, generated_rust.code)?;
