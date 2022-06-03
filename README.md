@@ -87,6 +87,7 @@ More specifically, thanks for all these contributions:
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
+* [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
