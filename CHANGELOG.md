@@ -1,3 +1,7 @@
+## 1.33.0
+
+* Adding an option to prevent free_WireSyncReturnStruct function from being generated #481 (thanks @sccheruku)
+
 ## 1.32.0
 
 * Allow `FlutterRustBridgeTimeoutMixin` to disable timeout
