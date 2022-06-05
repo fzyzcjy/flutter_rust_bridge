@@ -91,6 +91,7 @@ More specifically, thanks for all these contributions:
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
+* [TENX-S](https://github.com/TENX-S): Improve doc.
 * [feber](https://github.com/feber): Fix doc link.
 * [rustui](https://github.com/rustui): Fix a typo.
 * [eltociear](https://github.com/eltociear): Fix a typo.
