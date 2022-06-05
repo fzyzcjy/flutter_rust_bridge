@@ -184,6 +184,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "TENX-S",
+      "name": "Ares Andrew",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40336192?v=4",
+      "profile": "https://ares.zone (国内)",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
