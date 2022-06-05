@@ -161,7 +161,7 @@
 <p>If you want to write and debug tests in Flutter conveniently, with action history, time travelling, screenshots, rapid re-execution, video recordings, interactive mode and more, here is my another open-source library: https://github.com/fzyzcjy/flutter_convenient_test.</p>
 <h2 id="-contributors"><a class="header" href="#-contributors">✨ Contributors</a></h2>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a> following <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -191,6 +191,8 @@
     <td align="center"><a href="https://github.com/sagudev"><img src="https://avatars.githubusercontent.com/u/16504129?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sagu</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=sagudev" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=sagudev" title="Documentation">📖</a></td>
     <td align="center"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=eltociear" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/alanlzhang"><img src="https://avatars.githubusercontent.com/u/59032810?v=4?s=100" width="100px;" alt=""/><br /><sub><b>alanlzhang</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=alanlzhang" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=alanlzhang" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/sccheruku"><img src="https://avatars.githubusercontent.com/u/5800058?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sai Chaitanya</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=sccheruku" title="Code">💻</a></td>
+    <td align="center"><a href="https://ares.zone (国内)"><img src="https://avatars.githubusercontent.com/u/40336192?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ares Andrew</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=TENX-S" title="Documentation">📖</a></td>
   </tr>
 </table>
 <!-- markdownlint-restore -->
@@ -204,14 +206,16 @@
 <li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
 <li><a href="https://github.com/sagudev">sagudev</a>: Make code generator a <code>lib</code>. Add error types. Depend on <code>cbindgen</code>. Fix LLVM paths. Update deps. Fix CI errors.</li>
 <li><a href="https://github.com/surban">surban</a>: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.</li>
-<li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument.</li>
+<li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata.</li>
 <li><a href="https://github.com/efc-mw">efc-mw</a>: Improve Windows encoding handling.</li>
 <li><a href="https://github.com/valeth">valeth</a>: Rename callFfi's port.</li>
+<li><a href="https://github.com/sccheruku">sccheruku</a>: Prevent double-generating utility.</li>
 <li><a href="https://github.com/Michael-F-Bryan">Michael-F-Bryan</a>: Detect broken bindings.</li>
 <li><a href="https://github.com/bus710">bus710</a>: Add a case in troubleshooting.</li>
 <li><a href="https://github.com/Syndim">Syndim</a>: Add a bracket to box.</li>
+<li><a href="https://github.com/TENX-S">TENX-S</a>: Improve doc.</li>
 <li><a href="https://github.com/feber">feber</a>: Fix doc link.</li>
 <li><a href="https://github.com/rustui">rustui</a>: Fix a typo.</li>
 <li><a href="https://github.com/eltociear">eltociear</a>: Fix a typo.</li>
@@ -259,7 +263,7 @@ pub enum DrawMode { Colorful {palette: String}, Grayscale }
 <h3 id="prelogue-command-details"><a class="header" href="#prelogue-command-details">Prelogue: Command details</a></h3>
 <p>The <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/ci.yaml">CI workflow</a> is useful if you want details of each command. The <code>flutter_android_test</code>, <code>flutter_ios_test</code>, <code>flutter_windows_test</code>, <code>flutter_macos_test</code> and <code>flutter_linux_test</code> demonstrates the exact commands needed to run this tutorial codebase from a brand new machine.</p>
 <h3 id="android-app"><a class="header" href="#android-app">Android app</a></h3>
-<p>Run <code>cargo ndk -o ../android/app/src/main/jniLibs build</code>. Then run the Flutter app normally such as <code>flutter run</code>.</p>
+<p>Append line <code>ANDROID_NDK=(path to NDK)</code> to <code>android/gradle.properties</code> and run <code>cargo ndk -o ../android/app/src/main/jniLibs build</code>. Then run the Flutter app normally such as <code>flutter run</code>.</p>
 <p><strong>Remark</strong>: <a href="https://stackoverflow.com/q/69515032/4619958">This tutorial</a> will help you automatically execute <code>cargo</code> builds when building Flutter app.</p>
 <h3 id="ios-app"><a class="header" href="#ios-app">iOS app</a></h3>
 <p>Modify <code>Cargo.toml</code> to change <code>cdylib</code> to <code>staticlib</code>, then run <code>cargo lipo &amp;&amp; cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner</code> to build Rust and copy the static library. Then run the Flutter app normally such as <code>flutter run</code>.</p>
