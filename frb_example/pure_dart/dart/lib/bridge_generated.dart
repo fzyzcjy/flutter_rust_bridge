@@ -19,6 +19,8 @@ abstract class FlutterRustBridgeExample {
   /// Documentation on a simple adder function.
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta;
+
   ///
   /// Multiline comments are fine,
   /// but they are not preferred in Rust nor in Dart.
@@ -28,45 +30,87 @@ abstract class FlutterRustBridgeExample {
   Future<int> primitiveTypes(
       {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta;
+
   Future<int> primitiveU32({required int myU32, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta;
 
   Future<String> handleString({required String s, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta;
+
   Future<void> handleReturnUnit({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta;
 
   Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta;
+
   Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta;
 
   Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta;
+
   Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta;
 
   Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta;
+
   Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta;
 
   Future<List<String>> handleStringList({required List<String> names, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta;
+
   Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleComplexStructConstMeta;
 
   Uint8List handleSyncReturn({required String mode, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta;
+
   Stream<String> handleStream({required String arg, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta;
 
   Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleStreamOfStructConstMeta;
+
   Future<int> returnErr({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta;
 
   Future<int> returnPanic({dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta;
+
   Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta;
 
   Future<Element?> handleOptionalStruct({String? document, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta;
+
   Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta;
+
   Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta;
 
   Future<String> handleOptionBoxArguments(
       {int? i8Box,
@@ -78,31 +122,59 @@ abstract class FlutterRustBridgeExample {
       ExoticOptionals? structbox,
       dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta;
+
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta;
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta;
+
   Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta;
 
   Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta;
+
   Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUseImportedStructConstMeta;
 
   Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kUseImportedEnumConstMeta;
+
   Future<ApplicationSettings> getAppSettings({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta;
 
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;
+
   Future<ApplicationMessage> getMessage({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
 
   Future<Uint8List> getArray({dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta;
+
   Future<List<Point>> getComplexArray({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta;
 
   Future<int> getUsize({required int u, dynamic hint});
 
+  FlutterRustBridgeTaskConstMeta get kGetUsizeConstMeta;
+
   Future<UserId> nextUserId({required UserId userId, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta;
 }
 
 class ApplicationEnv {
@@ -398,13 +470,15 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_simple_adder(port_, _api2wire_i32(a), _api2wire_i32(b)),
         parseSuccessData: _wire2api_i32,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "simple_adder",
-          argNames: ["a", "b"],
-        ),
+        constMeta: kSimpleAdderConstMeta,
         argValues: [a, b],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "simple_adder",
+        argNames: ["a", "b"],
+      );
 
   Future<int> primitiveTypes(
           {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
@@ -412,241 +486,283 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
         callFfi: (port_) =>
             inner.wire_primitive_types(port_, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), myBool),
         parseSuccessData: _wire2api_i32,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "primitive_types",
-          argNames: ["myI32", "myI64", "myF64", "myBool"],
-        ),
+        constMeta: kPrimitiveTypesConstMeta,
         argValues: [myI32, myI64, myF64, myBool],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "primitive_types",
+        argNames: ["myI32", "myI64", "myF64", "myBool"],
+      );
+
   Future<int> primitiveU32({required int myU32, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_primitive_u32(port_, _api2wire_u32(myU32)),
         parseSuccessData: _wire2api_u32,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "primitive_u32",
-          argNames: ["myU32"],
-        ),
+        constMeta: kPrimitiveU32ConstMeta,
         argValues: [myU32],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "primitive_u32",
+        argNames: ["myU32"],
+      );
+
   Future<String> handleString({required String s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_string(port_, _api2wire_String(s)),
         parseSuccessData: _wire2api_String,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_string",
-          argNames: ["s"],
-        ),
+        constMeta: kHandleStringConstMeta,
         argValues: [s],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_string",
+        argNames: ["s"],
+      );
+
   Future<void> handleReturnUnit({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_return_unit(port_),
         parseSuccessData: _wire2api_unit,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_return_unit",
-          argNames: [],
-        ),
+        constMeta: kHandleReturnUnitConstMeta,
         argValues: [],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_return_unit",
+        argNames: [],
+      );
+
   Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_vec_u8(port_, _api2wire_uint_8_list(v)),
         parseSuccessData: _wire2api_uint_8_list,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_vec_u8",
-          argNames: ["v"],
-        ),
+        constMeta: kHandleVecU8ConstMeta,
         argValues: [v],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_vec_u8",
+        argNames: ["v"],
+      );
 
   Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_vec_of_primitive(port_, _api2wire_i32(n)),
         parseSuccessData: _wire2api_vec_of_primitive_pack,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_vec_of_primitive",
-          argNames: ["n"],
-        ),
+        constMeta: kHandleVecOfPrimitiveConstMeta,
         argValues: [n],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_vec_of_primitive",
+        argNames: ["n"],
+      );
 
   Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_zero_copy_vec_of_primitive(port_, _api2wire_i32(n)),
         parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_zero_copy_vec_of_primitive",
-          argNames: ["n"],
-        ),
+        constMeta: kHandleZeroCopyVecOfPrimitiveConstMeta,
         argValues: [n],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_zero_copy_vec_of_primitive",
+        argNames: ["n"],
+      );
 
   Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) =>
             inner.wire_handle_struct(port_, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
         parseSuccessData: _wire2api_my_size,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_struct",
-          argNames: ["arg", "boxed"],
-        ),
+        constMeta: kHandleStructConstMeta,
         argValues: [arg, boxed],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_struct",
+        argNames: ["arg", "boxed"],
+      );
+
   Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_newtype(port_, _api2wire_box_autoadd_new_type_int(arg)),
         parseSuccessData: _wire2api_new_type_int,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_newtype",
-          argNames: ["arg"],
-        ),
+        constMeta: kHandleNewtypeConstMeta,
         argValues: [arg],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_newtype",
+        argNames: ["arg"],
+      );
 
   Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_list_of_struct(port_, _api2wire_list_my_size(l)),
         parseSuccessData: _wire2api_list_my_size,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_list_of_struct",
-          argNames: ["l"],
-        ),
+        constMeta: kHandleListOfStructConstMeta,
         argValues: [l],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_list_of_struct",
+        argNames: ["l"],
+      );
 
   Future<List<String>> handleStringList({required List<String> names, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_string_list(port_, _api2wire_StringList(names)),
         parseSuccessData: _wire2api_StringList,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_string_list",
-          argNames: ["names"],
-        ),
+        constMeta: kHandleStringListConstMeta,
         argValues: [names],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_string_list",
+        argNames: ["names"],
+      );
+
   Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_complex_struct(port_, _api2wire_box_autoadd_my_tree_node(s)),
         parseSuccessData: _wire2api_my_tree_node,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_complex_struct",
-          argNames: ["s"],
-        ),
+        constMeta: kHandleComplexStructConstMeta,
         argValues: [s],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleComplexStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_complex_struct",
+        argNames: ["s"],
+      );
+
   Uint8List handleSyncReturn({required String mode, dynamic hint}) => executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => inner.wire_handle_sync_return(_api2wire_String(mode)),
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_sync_return",
-          argNames: ["mode"],
-        ),
+        constMeta: kHandleSyncReturnConstMeta,
         argValues: [mode],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_return",
+        argNames: ["mode"],
+      );
+
   Stream<String> handleStream({required String arg, dynamic hint}) => executeStream(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_stream(port_, _api2wire_String(arg)),
         parseSuccessData: _wire2api_String,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_stream",
-          argNames: ["arg"],
-        ),
+        constMeta: kHandleStreamConstMeta,
         argValues: [arg],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_stream",
+        argNames: ["arg"],
+      );
+
   Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint}) => executeStream(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_stream_of_struct(port_),
         parseSuccessData: _wire2api_my_stream_entry,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_stream_of_struct",
-          argNames: [],
-        ),
+        constMeta: kHandleStreamOfStructConstMeta,
         argValues: [],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamOfStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_stream_of_struct",
+        argNames: [],
+      );
 
   Future<int> returnErr({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_err(port_),
         parseSuccessData: _wire2api_i32,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "return_err",
-          argNames: [],
-        ),
+        constMeta: kReturnErrConstMeta,
         argValues: [],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_err",
+        argNames: [],
+      );
+
   Future<int> returnPanic({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_panic(port_),
         parseSuccessData: _wire2api_i32,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "return_panic",
-          argNames: [],
-        ),
+        constMeta: kReturnPanicConstMeta,
         argValues: [],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_panic",
+        argNames: [],
+      );
 
   Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_optional_return(port_, _api2wire_f64(left), _api2wire_f64(right)),
         parseSuccessData: _wire2api_opt_box_autoadd_f64,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_optional_return",
-          argNames: ["left", "right"],
-        ),
+        constMeta: kHandleOptionalReturnConstMeta,
         argValues: [left, right],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_optional_return",
+        argNames: ["left", "right"],
+      );
+
   Future<Element?> handleOptionalStruct({String? document, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_optional_struct(port_, _api2wire_opt_String(document)),
         parseSuccessData: _wire2api_opt_box_autoadd_element,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_optional_struct",
-          argNames: ["document"],
-        ),
+        constMeta: kHandleOptionalStructConstMeta,
         argValues: [document],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_optional_struct",
+        argNames: ["document"],
+      );
 
   Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) =>
             inner.wire_handle_optional_increment(port_, _api2wire_opt_box_autoadd_exotic_optionals(opt)),
         parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_optional_increment",
-          argNames: ["opt"],
-        ),
+        constMeta: kHandleOptionalIncrementConstMeta,
         argValues: [opt],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_optional_increment",
+        argNames: ["opt"],
+      );
+
   Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_increment_boxed_optional(port_, _api2wire_opt_box_f64(opt)),
         parseSuccessData: _wire2api_f64,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_increment_boxed_optional",
-          argNames: ["opt"],
-        ),
+        constMeta: kHandleIncrementBoxedOptionalConstMeta,
         argValues: [opt],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_increment_boxed_optional",
+        argNames: ["opt"],
+      );
 
   Future<String> handleOptionBoxArguments(
           {int? i8Box,
@@ -668,158 +784,186 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
             _api2wire_opt_box_bool(boolbox),
             _api2wire_opt_box_exotic_optionals(structbox)),
         parseSuccessData: _wire2api_String,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_option_box_arguments",
-          argNames: ["i8Box", "u8Box", "i32Box", "i64Box", "f64Box", "boolbox", "structbox"],
-        ),
+        constMeta: kHandleOptionBoxArgumentsConstMeta,
         argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_option_box_arguments",
+        argNames: ["i8Box", "u8Box", "i32Box", "i64Box", "f64Box", "boolbox", "structbox"],
+      );
+
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_return_enum(port_, _api2wire_String(input)),
         parseSuccessData: _wire2api_opt_weekdays,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_return_enum",
-          argNames: ["input"],
-        ),
+        constMeta: kHandleReturnEnumConstMeta,
         argValues: [input],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_return_enum",
+        argNames: ["input"],
+      );
 
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_enum_parameter(port_, _api2wire_weekdays(weekday)),
         parseSuccessData: _wire2api_weekdays,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_enum_parameter",
-          argNames: ["weekday"],
-        ),
+        constMeta: kHandleEnumParameterConstMeta,
         argValues: [weekday],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_enum_parameter",
+        argNames: ["weekday"],
+      );
+
   Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_customized_struct(port_, _api2wire_box_autoadd_customized(val)),
         parseSuccessData: _wire2api_unit,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_customized_struct",
-          argNames: ["val"],
-        ),
+        constMeta: kHandleCustomizedStructConstMeta,
         argValues: [val],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_customized_struct",
+        argNames: ["val"],
+      );
 
   Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_enum_struct(port_, _api2wire_box_autoadd_kitchen_sink(val)),
         parseSuccessData: _wire2api_kitchen_sink,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "handle_enum_struct",
-          argNames: ["val"],
-        ),
+        constMeta: kHandleEnumStructConstMeta,
         argValues: [val],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_enum_struct",
+        argNames: ["val"],
+      );
+
   Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_use_imported_struct(port_, _api2wire_box_autoadd_my_struct(myStruct)),
         parseSuccessData: _wire2api_bool,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "use_imported_struct",
-          argNames: ["myStruct"],
-        ),
+        constMeta: kUseImportedStructConstMeta,
         argValues: [myStruct],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kUseImportedStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "use_imported_struct",
+        argNames: ["myStruct"],
+      );
+
   Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_use_imported_enum(port_, _api2wire_my_enum(myEnum)),
         parseSuccessData: _wire2api_bool,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "use_imported_enum",
-          argNames: ["myEnum"],
-        ),
+        constMeta: kUseImportedEnumConstMeta,
         argValues: [myEnum],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kUseImportedEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "use_imported_enum",
+        argNames: ["myEnum"],
+      );
+
   Future<ApplicationSettings> getAppSettings({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_app_settings(port_),
         parseSuccessData: _wire2api_application_settings,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "get_app_settings",
-          argNames: [],
-        ),
+        constMeta: kGetAppSettingsConstMeta,
         argValues: [],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_app_settings",
+        argNames: [],
+      );
 
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_is_app_embedded(port_, _api2wire_box_autoadd_application_settings(appSettings)),
         parseSuccessData: _wire2api_bool,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "is_app_embedded",
-          argNames: ["appSettings"],
-        ),
+        constMeta: kIsAppEmbeddedConstMeta,
         argValues: [appSettings],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "is_app_embedded",
+        argNames: ["appSettings"],
+      );
+
   Future<ApplicationMessage> getMessage({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_message(port_),
         parseSuccessData: _wire2api_application_message,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "get_message",
-          argNames: [],
-        ),
+        constMeta: kGetMessageConstMeta,
         argValues: [],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_message",
+        argNames: [],
+      );
 
   Future<Uint8List> getArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_array(port_),
         parseSuccessData: _wire2api_uint_8_list,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "get_array",
-          argNames: [],
-        ),
+        constMeta: kGetArrayConstMeta,
         argValues: [],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_array",
+        argNames: [],
+      );
 
   Future<List<Point>> getComplexArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_complex_array(port_),
         parseSuccessData: _wire2api_list_point,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "get_complex_array",
-          argNames: [],
-        ),
+        constMeta: kGetComplexArrayConstMeta,
         argValues: [],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_complex_array",
+        argNames: [],
+      );
+
   Future<int> getUsize({required int u, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_usize(port_, _api2wire_usize(u)),
         parseSuccessData: _wire2api_usize,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "get_usize",
-          argNames: ["u"],
-        ),
+        constMeta: kGetUsizeConstMeta,
         argValues: [u],
         hint: hint,
       ));
 
+  FlutterRustBridgeTaskConstMeta get kGetUsizeConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_usize",
+        argNames: ["u"],
+      );
+
   Future<UserId> nextUserId({required UserId userId, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_next_user_id(port_, _api2wire_box_autoadd_user_id(userId)),
         parseSuccessData: _wire2api_user_id,
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-          debugName: "next_user_id",
-          argNames: ["userId"],
-        ),
+        constMeta: kNextUserIdConstMeta,
         argValues: [userId],
         hint: hint,
       ));
+
+  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "next_user_id",
+        argNames: ["userId"],
+      );
 
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
