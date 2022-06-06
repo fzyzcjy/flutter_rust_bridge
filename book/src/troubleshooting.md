@@ -21,42 +21,7 @@ If you are running macOS, you will need to specify a path to your llvm:
 ```shell
 flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
 ```
-If you are on Intel, you can install llvm using `brew install llvm` and it will be installed at `/usr/local/homebrew/opt/llvm/` by default.
-
-If you are on M1, you need to install the x86 versions of everything and run them through Rosetta 2, since Flutter does not support M1 yet. Start by installing Rosetta 2 if you haven't already:
-
-```shell
-/usr/sbin/softwareupdate --install-rosetta
-```
-Then, install an x86 version of brew to `/usr/local`:
-```shell
-arch -x86_64 zsh
-cd /usr/local && mkdir homebrew
-curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-```
-Then, you need to use the x86 brew to install the x86 version of llvm:
-```shell
-arch -x86_64 /usr/local/homebrew/bin/brew install llvm
-```
-Reference [this article](https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/) for details.
-
-And when you build with cargo, you need to select x86 as the target:
-
-```shell
-cargo build --target=x86_64-apple-darwin
-```
-
-## On M1 MacOS, ` Failed to load dynamic library '/opt/homebrew/opt/llvm/lib/libclang.dylib'`
-
-Full possible error:
-
-```
-Invalid argument(s): Failed to load dynamic library '/opt/homebrew/opt/llvm/lib/libclang.dylib': dlopen(/opt/homebrew/opt/llvm/lib/libclang.dylib, 0x0001): tried: '/opt/homebrew/opt/llvm/lib/libclang.dylib' (mach-o file, but is an incompatible architecture (have 'arm64', need 'x86_64')), '/usr/lib/libclang.dylib' (no such file), '/opt/homebrew/Cellar/llvm/13.0.0_2/lib/libclang.dylib' (mach-o file, but is an incompatible architecture (have 'arm64', need 'x86_64')), '/usr/lib/libclang.dylib' (no such file)
-```
-
-Solution: Install the arm64 version of dart and put that in PATH instead of the x86_64 version that flutter ships. See https://github.com/dart-lang/ffigen/issues/260.
-
-Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/318#issuecomment-1037718638
+You can install llvm using `brew install llvm` and it will be installed at `/usr/local/homebrew/opt/llvm/` by default.
 
 ## Freezed file is sometimes not generated when it should be
 
