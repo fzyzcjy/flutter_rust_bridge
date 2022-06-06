@@ -46,7 +46,7 @@ pub fn generate(
     debug!("distinct_input_types={:?}", distinct_input_types);
     debug!("distinct_output_types={:?}", distinct_output_types);
 
-    let dart_func_signatures_and_implementations = ir_file
+    let dart_funcs = ir_file
         .funcs
         .iter()
         .map(generate_api_func)
@@ -122,9 +122,12 @@ pub fn generate(
         {}
         ",
         dart_api_class_name,
-        dart_func_signatures_and_implementations
+        dart_funcs
             .iter()
-            .map(|(sig, _, comm)| format!("{}{}", comm, sig))
+            .map(|func| format!(
+                "{}{}\n\n{}",
+                func.comments, func.signature, func.companion_field_signature,
+            ))
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_structs.join("\n\n"),
@@ -148,9 +151,12 @@ pub fn generate(
         // Section: wire2api
         {}
         ",
-        dart_func_signatures_and_implementations
+        dart_funcs
             .iter()
-            .map(|(_, imp, _)| imp.clone())
+            .map(|func| format!(
+                "{}\n\n{}",
+                func.implementation, func.companion_field_implementation,
+            ))
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_api2wire_funcs.join("\n\n"),
@@ -198,7 +204,15 @@ pub fn generate(
     )
 }
 
-fn generate_api_func(func: &IrFunc) -> (String, String, String) {
+struct GeneratedApiFunc {
+    signature: String,
+    implementation: String,
+    comments: String,
+    companion_field_signature: String,
+    companion_field_implementation: String,
+}
+
+fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
     let raw_func_param_list = func
         .inputs
         .iter()
@@ -251,25 +265,19 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
         IrFuncMode::Stream => "executeStream",
     };
 
+    let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
+
     let signature = format!("{};", partial);
 
     let comments = dart_comments(&func.comments);
 
     let task_common_args = format!(
         "
-        constMeta: const FlutterRustBridgeTaskConstMeta(
-            debugName: \"{}\",
-            argNames: [{}],
-        ),
+        constMeta: {},
         argValues: [{}],
         hint: hint,
         ",
-        func.name,
-        func.inputs
-            .iter()
-            .map(|input| format!("\"{}\"", input.name.dart_style()))
-            .collect::<Vec<_>>()
-            .join(", "),
+        const_meta_field_name,
         func.inputs
             .iter()
             .map(|input| input.name.dart_style())
@@ -304,7 +312,34 @@ fn generate_api_func(func: &IrFunc) -> (String, String, String) {
         ),
     };
 
-    (signature, implementation, comments)
+    let companion_field_signature = format!(
+        "FlutterRustBridgeTaskConstMeta get {};",
+        const_meta_field_name,
+    );
+
+    let companion_field_implementation = format!(
+        "
+        FlutterRustBridgeTaskConstMeta get {} => const FlutterRustBridgeTaskConstMeta(
+            debugName: \"{}\",
+            argNames: [{}],
+        );
+        ",
+        const_meta_field_name,
+        func.name,
+        func.inputs
+            .iter()
+            .map(|input| format!("\"{}\"", input.name.dart_style()))
+            .collect::<Vec<_>>()
+            .join(", "),
+    );
+
+    GeneratedApiFunc {
+        signature,
+        implementation,
+        comments,
+        companion_field_signature,
+        companion_field_implementation,
+    }
 }
 
 fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile) -> String {
