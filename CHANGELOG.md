@@ -1,3 +1,7 @@
+## 1.34.0
+
+* Generate Dart `constMeta` as a field, such that users can refer to it when needed #487
+
 ## 1.33.0
 
 * Adding an option to prevent free_WireSyncReturnStruct function from being generated #481 (thanks @sccheruku)
