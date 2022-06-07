@@ -1,3 +1,7 @@
+## 1.34.1
+
+* Add suitable `ignore_for_file`
+
 ## 1.34.0
 
 * Generate Dart `constMeta` as a field, such that users can refer to it when needed #487
