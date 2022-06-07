@@ -147,28 +147,7 @@
 <p>If you are running macOS, you will need to specify a path to your llvm:</p>
 <pre><code class="language-shell">flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
 </code></pre>
-<p>If you are on Intel, you can install llvm using <code>brew install llvm</code> and it will be installed at <code>/usr/local/homebrew/opt/llvm/</code> by default.</p>
-<p>If you are on M1, you need to install the x86 versions of everything and run them through Rosetta 2, since Flutter does not support M1 yet. Start by installing Rosetta 2 if you haven't already:</p>
-<pre><code class="language-shell">/usr/sbin/softwareupdate --install-rosetta
-</code></pre>
-<p>Then, install an x86 version of brew to <code>/usr/local</code>:</p>
-<pre><code class="language-shell">arch -x86_64 zsh
-cd /usr/local &amp;&amp; mkdir homebrew
-curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-</code></pre>
-<p>Then, you need to use the x86 brew to install the x86 version of llvm:</p>
-<pre><code class="language-shell">arch -x86_64 /usr/local/homebrew/bin/brew install llvm
-</code></pre>
-<p>Reference <a href="https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/">this article</a> for details.</p>
-<p>And when you build with cargo, you need to select x86 as the target:</p>
-<pre><code class="language-shell">cargo build --target=x86_64-apple-darwin
-</code></pre>
-<h2 id="on-m1-macos--failed-to-load-dynamic-library-opthomebrewoptllvmliblibclangdylib"><a class="header" href="#on-m1-macos--failed-to-load-dynamic-library-opthomebrewoptllvmliblibclangdylib">On M1 MacOS, <code> Failed to load dynamic library '/opt/homebrew/opt/llvm/lib/libclang.dylib'</code></a></h2>
-<p>Full possible error:</p>
-<pre><code>Invalid argument(s): Failed to load dynamic library '/opt/homebrew/opt/llvm/lib/libclang.dylib': dlopen(/opt/homebrew/opt/llvm/lib/libclang.dylib, 0x0001): tried: '/opt/homebrew/opt/llvm/lib/libclang.dylib' (mach-o file, but is an incompatible architecture (have 'arm64', need 'x86_64')), '/usr/lib/libclang.dylib' (no such file), '/opt/homebrew/Cellar/llvm/13.0.0_2/lib/libclang.dylib' (mach-o file, but is an incompatible architecture (have 'arm64', need 'x86_64')), '/usr/lib/libclang.dylib' (no such file)
-</code></pre>
-<p>Solution: Install the arm64 version of dart and put that in PATH instead of the x86_64 version that flutter ships. See https://github.com/dart-lang/ffigen/issues/260.</p>
-<p>Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/318#issuecomment-1037718638</p>
+<p>You can install llvm using <code>brew install llvm</code> and it will be installed at <code>/usr/local/homebrew/opt/llvm/</code> by default.</p>
 <h2 id="freezed-file-is-sometimes-not-generated-when-it-should-be"><a class="header" href="#freezed-file-is-sometimes-not-generated-when-it-should-be">Freezed file is sometimes not generated when it should be</a></h2>
 <p>If your <code>.freezed.dart</code> or <code>.g.dart</code> seems outdated, ensure you have run the <code>build_runner</code>.</p>
 <p>Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/330</p>
