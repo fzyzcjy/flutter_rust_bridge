@@ -26,10 +26,13 @@ and in `ios/Runner/AppDelegate.swift`:
      _ application: UIApplication,
      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
  ) -> Bool {
-+    dummy_method_to_enforce_bundling()
++    let dummy = dummy_method_to_enforce_bundling()
++    print(dummy)
      ..
  }
 ```
+
+It is important that you use the result of `dummy_method_to_enforce_bundling()` (like in the example above), otherwise the symbols might still get stripped.
 
 
 ## MacOS
