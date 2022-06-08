@@ -1,3 +1,7 @@
+## 1.34.2
+
+* Bump dependency versions
+
 ## 1.34.1
 
 * Add suitable `ignore_for_file`
