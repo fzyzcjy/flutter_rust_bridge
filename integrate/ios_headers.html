@@ -152,10 +152,12 @@ to the <strong>Copy Bundle Resources</strong> phase, if it isn't already present
      _ application: UIApplication,
      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
  ) -&gt; Bool {
-+    dummy_method_to_enforce_bundling()
++    let dummy = dummy_method_to_enforce_bundling()
++    print(dummy)
      ..
  }
 </code></pre>
+<p>It is important that you use the result of <code>dummy_method_to_enforce_bundling()</code> (like in the example above), otherwise the symbols might still get stripped.</p>
 <h2 id="macos"><a class="header" href="#macos">MacOS</a></h2>
 <p>Flutter on MacOS does not use headers by default, so let's go ahead
 and add one ourselves. In the <strong>Build Settings</strong> tab, set the
