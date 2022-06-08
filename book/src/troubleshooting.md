@@ -2,7 +2,11 @@
 
 ## The generated store_dart_post_cobject() has the wrong signature / `'stdarg.h' file not found` in Linux / `stdbool.h` / ...
 
-Try to run code generator with working directory at `/`, or add include path as is described in #108. This is a problem with Rust's builtin `Command`. See [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108) for more details.
+Try to run code generator with working directory at `/`, or set the environment variable:
+```bash
+export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
+```
+as described in [ffigen #257](https://github.com/dart-lang/ffigen/issues/257), or add include path as is described in [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108). This is a problem with Rust's builtin `Command`. See also: [#472](https://github.com/fzyzcjy/flutter_rust_bridge/issues/472) & [#494](https://github.com/fzyzcjy/flutter_rust_bridge/issues/494).
 
 ## Issue with `store_dart_post_cobject`
 
