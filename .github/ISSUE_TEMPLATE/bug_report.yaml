@@ -21,7 +21,7 @@ body:
   - type: textarea
     id: codegen-logs
     attributes:
-      label: Codegen logs with `RUST_LOG=debug` env variable
+      label: Codegen logs with `RUST_LOG=debug` environment variable
       description: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`.
       placeholder: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`.
       render: shell
