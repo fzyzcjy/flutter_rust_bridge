@@ -98,6 +98,7 @@ More specifically, thanks for all these contributions:
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
+* [thomas725](https://github.com/thomas725): Improve doc.
 * [feber](https://github.com/feber): Fix doc link.
 * [rustui](https://github.com/rustui): Fix a typo.
 * [eltociear](https://github.com/eltociear): Fix a typo.
