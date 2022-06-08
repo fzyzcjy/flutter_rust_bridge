@@ -97,6 +97,7 @@ More specifically, thanks for all these contributions:
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
+* [banool](https://github.com/banool): Fix symbol-stripping doc.
 * [TENX-S](https://github.com/TENX-S): Improve doc.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
 * [thomas725](https://github.com/thomas725): Improve doc.
