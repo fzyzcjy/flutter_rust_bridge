@@ -71,6 +71,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # #499, https://github.com/actions/virtual-environments/issues/5595
+      - name: Configure ndk
+        run: |
+           ANDROID_HOME=$HOME/Library/Android/sdk
+           SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+           
+           echo y | $SDKMANAGER "ndk;21.4.7075529"
+           
+           ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+
       - name: Use released version of flutter_rust_bridge instead of master version
         run: |
           cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
