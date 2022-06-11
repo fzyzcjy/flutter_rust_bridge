@@ -220,6 +220,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "w-ensink",
+      "name": "Wouter Ensink",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46427708?v=4",
+      "profile": "https://github.com/w-ensink",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
