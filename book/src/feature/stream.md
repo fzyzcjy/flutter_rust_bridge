@@ -38,6 +38,10 @@ pub fn create_log_stream(s: StreamSink<LogEntry>) {
 }
 ```
 
+Now Rust will probably complain at you because `IntoDart` is not implemented for `LogEntry`. This is expected, because `flutter_rust_bridge` will generate this trait implementation for you.
+To fix this error you should just rerun `flutter_rust_bridge_codegen`.
+
+
 Generated Dart code:
 
 ```Dart
