@@ -40,6 +40,59 @@ pub fn generate(
     dart_wire_class_name: &str,
     dart_output_file_root: &str,
 ) -> (Output, bool) {
+    let DartApiSpec {
+        dart_funcs,
+        dart_structs,
+        dart_api2wire_funcs,
+        dart_api_fill_to_wire_funcs,
+        dart_wire2api_funcs,
+        needs_freezed,
+    } = get_dart_api_spec_from_ir_file(ir_file);
+
+    let common_header = generate_common_header();
+
+    let decl_code = generate_dart_declaration_code(
+        &common_header,
+        generate_freezed_header(dart_output_file_root, needs_freezed),
+        generate_import_header(get_dart_imports(ir_file)),
+        generate_dart_declaration_body(dart_api_class_name, &dart_funcs, &dart_structs),
+    );
+
+    let impl_code = generate_dart_implementation_code(
+        &common_header,
+        generate_dart_implementation_body(
+            &dart_funcs,
+            &dart_api2wire_funcs,
+            &dart_api_fill_to_wire_funcs,
+            &dart_wire2api_funcs,
+            dart_api_impl_class_name,
+            dart_wire_class_name,
+            dart_api_class_name,
+        ),
+    );
+
+    let file_prelude = generate_file_prelude();
+
+    (
+        Output {
+            file_prelude,
+            decl_code,
+            impl_code,
+        },
+        needs_freezed,
+    )
+}
+
+struct DartApiSpec {
+    dart_funcs: Vec<GeneratedApiFunc>,
+    dart_structs: Vec<String>,
+    dart_api2wire_funcs: Vec<String>,
+    dart_api_fill_to_wire_funcs: Vec<String>,
+    dart_wire2api_funcs: Vec<String>,
+    needs_freezed: bool,
+}
+
+fn get_dart_api_spec_from_ir_file(ir_file: &IrFile) -> DartApiSpec {
     let distinct_types = ir_file.distinct_types(true, true);
     let distinct_input_types = ir_file.distinct_types(true, false);
     let distinct_output_types = ir_file.distinct_types(false, true);
@@ -73,7 +126,19 @@ pub fn generate(
         StructRef(s) if s.freezed => true,
         _ => false,
     });
-    let freezed_header = if needs_freezed {
+
+    DartApiSpec {
+        dart_funcs,
+        dart_structs,
+        dart_api2wire_funcs,
+        dart_api_fill_to_wire_funcs,
+        dart_wire2api_funcs,
+        needs_freezed,
+    }
+}
+
+fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> DartBasicCode {
+    if needs_freezed {
         DartBasicCode {
             import: "import 'package:freezed_annotation/freezed_annotation.dart';".to_string(),
             part: format!("part '{}.freezed.dart';", dart_output_file_root),
@@ -81,15 +146,11 @@ pub fn generate(
         }
     } else {
         DartBasicCode::default()
-    };
+    }
+}
 
-    let imports = ir_file
-        .struct_pool
-        .values()
-        .flat_map(|s| s.dart_metadata.iter().flat_map(|it| &it.library))
-        .collect::<HashSet<_>>();
-
-    let import_header = if !imports.is_empty() {
+fn generate_import_header(imports: HashSet<&IrDartImport>) -> DartBasicCode {
+    if !imports.is_empty() {
         DartBasicCode {
             import: imports
                 .iter()
@@ -104,17 +165,33 @@ pub fn generate(
         }
     } else {
         DartBasicCode::default()
-    };
+    }
+}
 
-    let common_header = DartBasicCode {
+fn generate_common_header() -> DartBasicCode {
+    DartBasicCode {
         import: "import 'dart:convert';
             import 'dart:typed_data';"
             .to_string(),
         part: "".to_string(),
         body: "".to_string(),
-    };
+    }
+}
 
-    let decl_body = format!(
+fn get_dart_imports(ir_file: &IrFile) -> HashSet<&IrDartImport> {
+    ir_file
+        .struct_pool
+        .values()
+        .flat_map(|s| s.dart_metadata.iter().flat_map(|it| &it.library))
+        .collect()
+}
+
+fn generate_dart_declaration_body(
+    dart_api_class_name: &str,
+    dart_funcs: &[GeneratedApiFunc],
+    dart_structs: &[String],
+) -> String {
+    format!(
         "abstract class {} {{
             {}
         }}
@@ -131,9 +208,19 @@ pub fn generate(
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_structs.join("\n\n"),
-    );
+    )
+}
 
-    let impl_body = format!(
+fn generate_dart_implementation_body(
+    dart_funcs: &[GeneratedApiFunc],
+    dart_api2wire_funcs: &[String],
+    dart_api_fill_to_wire_funcs: &[String],
+    dart_wire2api_funcs: &[String],
+    dart_api_impl_class_name: &str,
+    dart_wire_class_name: &str,
+    dart_api_class_name: &str,
+) -> String {
+    format!(
         "class {dart_api_impl_class_name} extends FlutterRustBridgeBase<{dart_wire_class_name}> implements {dart_api_class_name} {{
             factory {dart_api_impl_class_name}(ffi.DynamicLibrary dylib) => {dart_api_impl_class_name}.raw({dart_wire_class_name}(dylib));
 
@@ -165,43 +252,48 @@ pub fn generate(
         dart_api_impl_class_name = dart_api_impl_class_name,
         dart_wire_class_name = dart_wire_class_name,
         dart_api_class_name = dart_api_class_name,
-    );
+    )
+}
 
-    let decl_code = &common_header
+fn generate_dart_declaration_code(
+    common_header: &DartBasicCode,
+    freezed_header: DartBasicCode,
+    import_header: DartBasicCode,
+    declaration_body: String,
+) -> DartBasicCode {
+    common_header
         + &freezed_header
         + &import_header
         + &DartBasicCode {
             import: "".to_string(),
             part: "".to_string(),
-            body: decl_body,
-        };
+            body: declaration_body,
+        }
+}
 
-    let impl_code = &common_header
+fn generate_dart_implementation_code(
+    common_header: &DartBasicCode,
+    implementation_body: String,
+) -> DartBasicCode {
+    common_header
         + &DartBasicCode {
             import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';".to_string(),
             part: "".to_string(),
-            body: impl_body,
-        };
+            body: implementation_body,
+        }
+}
 
-    let file_prelude = DartBasicCode {
+fn generate_file_prelude() -> DartBasicCode {
+    DartBasicCode {
         import: format!("{}
 
                 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports
                 ",
-                CODE_HEADER
+                        CODE_HEADER
         ),
         part: "".to_string(),
         body: "".to_string(),
-    };
-
-    (
-        Output {
-            file_prelude,
-            decl_code,
-            impl_code,
-        },
-        needs_freezed,
-    )
+    }
 }
 
 struct GeneratedApiFunc {
@@ -238,7 +330,7 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
             .iter()
             .map(|input| {
                 // edge case: ffigen performs its own bool-to-int conversions
-                if let IrType::Primitive(IrTypePrimitive::Bool) = input.ty {
+                if let Primitive(IrTypePrimitive::Bool) = input.ty {
                     input.name.dart_style()
                 } else {
                     format!(
@@ -410,6 +502,7 @@ fn dart_comments(comments: &[IrComment]) -> String {
     }
     comments
 }
+
 fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
     let mut metadata = metadata
         .iter()
