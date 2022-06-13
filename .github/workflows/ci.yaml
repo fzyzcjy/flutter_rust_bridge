@@ -204,7 +204,7 @@ jobs:
           profile: minimal
           toolchain: stable
 
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
 
@@ -278,7 +278,7 @@ jobs:
           toolchain: stable
 
       # From Flutter Gallery CI
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
 
@@ -479,7 +479,7 @@ jobs:
         working-directory: ./frb_example/pure_dart/dart
         run: dart analyze --fatal-infos
 
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
 
