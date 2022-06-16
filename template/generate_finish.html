@@ -160,7 +160,7 @@ of it! Here is an example of what you can do with freezed enums.</p>
 <p>In <code>native/src/api.rs</code>:</p>
 <pre><code class="language-diff">     } else if cfg!(target_os = &quot;ios&quot;) {
          Platform::Ios
-     } else if cfg!(target_arch = &quot;aarch64-apple-darwin&quot;) {
+     } else if cfg!(all(target_os = &quot;macos&quot;, target_arch = &quot;aarch64&quot;)) {
 -        Platform::MacApple
 +        Platform::MacOs(&quot;Apple Silicon&quot;.into())
      } else if cfg!(target_os = &quot;macos&quot;) {
