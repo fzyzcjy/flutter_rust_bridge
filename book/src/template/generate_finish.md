@@ -4,6 +4,7 @@ With our new definition of `Platform` in place, we can rewrite the previous code
 of it! Here is an example of what you can do with freezed enums.
 
 In `lib/main.dart`:
+
 ```diff
 - final text = const {
 -   Platform.Android: 'Android',
@@ -30,7 +31,7 @@ In `native/src/api.rs`:
 ```diff
      } else if cfg!(target_os = "ios") {
          Platform::Ios
-     } else if cfg!(target_arch = "aarch64-apple-darwin") {
+     } else if cfg!(all(target_os = "macos", target_arch = "aarch64")) {
 -        Platform::MacApple
 +        Platform::MacOs("Apple Silicon".into())
      } else if cfg!(target_os = "macos") {
