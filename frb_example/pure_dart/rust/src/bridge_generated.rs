@@ -595,6 +595,18 @@ pub extern "C" fn wire_register_event_listener(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_close_event_listener(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "close_event_listener",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(close_event_listener()),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_create_event(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

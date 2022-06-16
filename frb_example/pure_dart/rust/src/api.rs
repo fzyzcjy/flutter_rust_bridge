@@ -567,6 +567,15 @@ pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
     Ok(())
 }
 
+pub fn close_event_listener() {
+    if let Some(ref listener) = *EVENT_LISTENER.lock().unwrap() {
+        listener.close();
+    } else {
+        return;
+    }
+    (*EVENT_LISTENER.lock().unwrap()) = None;
+}
+
 pub fn create_event() {
     if let Some(ref listener) = *EVENT_LISTENER.lock().unwrap() {
         listener.add(Event {

@@ -359,6 +359,7 @@ void main(List<String> args) async {
     // without waiting the api doesn't have time register the listener
     // so there is no listener when the event is created
     expect(listenerCalled, equals(false));
+    await api.closeEventListener();
   });
 
   test('dart register event listener & create event after sleep', () async {
@@ -372,6 +373,7 @@ void main(List<String> args) async {
     // waiting with sleep blocks async operations
     // so there is no listener when the event is created
     expect(listenerCalled, equals(false));
+    await api.closeEventListener();
   });
 
   test('dart register event listener & create event after delayed future', () async {
@@ -386,6 +388,7 @@ void main(List<String> args) async {
     // the ongoing futures, so a listener should be registered
     // and thus the callback should be called.
     expect(listenerCalled, equals(true));
+    await api.closeEventListener();
   });
 
   print('flutter_rust_bridge example program end');

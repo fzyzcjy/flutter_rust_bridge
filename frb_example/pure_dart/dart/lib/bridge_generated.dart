@@ -194,6 +194,10 @@ abstract class FlutterRustBridgeExample {
 
   FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta;
 
+  Future<void> closeEventListener({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta;
+
   Future<void> createEvent({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
@@ -1121,6 +1125,21 @@ class FlutterRustBridgeExampleImpl
   FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
         debugName: "register_event_listener",
+        argNames: [],
+      );
+
+  Future<void> closeEventListener({dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_close_event_listener(port_),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kCloseEventListenerConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "close_event_listener",
         argNames: [],
       );
 
@@ -2937,6 +2956,20 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           'wire_register_event_listener');
   late final _wire_register_event_listener =
       _wire_register_event_listenerPtr.asFunction<void Function(int)>();
+
+  void wire_close_event_listener(
+    int port_,
+  ) {
+    return _wire_close_event_listener(
+      port_,
+    );
+  }
+
+  late final _wire_close_event_listenerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_close_event_listener');
+  late final _wire_close_event_listener =
+      _wire_close_event_listenerPtr.asFunction<void Function(int)>();
 
   void wire_create_event(
     int port_,
