@@ -133,8 +133,11 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
 
     // rust output path(s)
     let rust_output_paths = get_outputs_for_flag_requires_full_data(
-        &raw.rust_output, &rust_input_paths,&fallback_rust_output_path,
-        "rust_output","for more than 1 rust blocks, please specify each rust output path clearly with flag \"rust-output\"");
+        &raw.rust_output,
+        &rust_input_paths,
+        &fallback_rust_output_path,
+        "rust_output",
+    );
     let rust_output_paths = rust_output_paths
         .iter()
         .map(|each_path| canon_path(each_path))
@@ -146,9 +149,11 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
 
     // class name(s)
     let class_names = get_outputs_for_flag_requires_full_data(
-        &raw.class_name, &rust_crate_dirs,&fallback_class_name,
+        &raw.class_name,
+        &rust_crate_dirs,
+        &fallback_class_name,
         "class_name",
-        "for more than 1 rust blocks, please specify each class name clearly with flag \"class-name\"");
+    );
     assert!(
         class_names.len() == rust_input_paths.len(),
         "class_name(s) should have the same number of path(s) as rust input(s)"
@@ -227,15 +232,20 @@ fn get_outputs_for_flag_requires_full_data(
     strings: &Option<Vec<String>>,
     fallback_paths: &[String],
     fallback_func: &dyn Fn(&str) -> Result<String>,
-    field_str: &str,
-    panic_str: &str,
+    field_str: &str, // str with underline, like "class_name"
 ) -> Vec<String> {
     strings.clone().unwrap_or_else(|| -> Vec<String> {
         if fallback_paths.len() == 1 {
             vec![fallback_func(&fallback_paths[0])
                 .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error(field_str)))]
         } else {
-            panic!("{}", panic_str);
+            let strs = field_str.split('_').collect::<Vec<_>>();
+            let raw_str = strs.join(" ");
+            let flag_str = strs.join("-");
+            panic!(
+                "for more than 1 rust blocks, please specify each {} clearly with flag \"{}\"",
+                raw_str, flag_str
+            );
         }
     })
 }
