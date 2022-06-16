@@ -132,17 +132,9 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     );
 
     // rust output path(s)
-    let rust_output_paths = match raw.rust_output {
-        Some(rust_outputs) => rust_outputs,
-        None => {
-            if rust_input_paths.len() == 1 {
-                vec![fallback_rust_output_path(&rust_input_paths[0])
-                    .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_output")))]
-            } else {
-                panic!("for more than 1 rust blocks, please specify each rust output path clearly with flag \"rust-output\"");
-            }
-        }
-    };
+    let rust_output_paths = get_outputs_for_flag_requires_full_data(
+        &raw.rust_output, &rust_input_paths,&fallback_rust_output_path,
+        "rust_output","for more than 1 rust blocks, please specify each rust output path clearly with flag \"rust-output\"");
     let rust_output_paths = rust_output_paths
         .iter()
         .map(|each_path| canon_path(each_path))
@@ -153,13 +145,10 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     );
 
     // class name(s)
-    let class_names = raw.class_name.unwrap_or_else(||
-        if rust_input_paths.len() == 1 {
-                    vec![fallback_class_name(&*rust_input_paths[0])
-                  .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("class_name")))]
-                } else {
-                    panic!("for more than 1 rust blocks, please specify each class name clearly with flag \"class-name\"");
-                } );
+    let class_names = get_outputs_for_flag_requires_full_data(
+        &raw.class_name, &rust_input_paths,&fallback_class_name,
+        "class_name",
+        "for more than 1 rust blocks, please specify each class name clearly with flag \"class-name\"");
     assert!(
         class_names.len() == rust_input_paths.len(),
         "class_name(s) should have the same number of path(s) as rust input(s)"
@@ -198,36 +187,56 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         .unwrap_or_else(|| (0..rust_input_paths.len()).map(|i| i != 0).collect());
 
     // build Opt for each rust api block
-    let mut opts = Vec::new();
+    let dart_decl_output_path = raw
+        .dart_decl_output
+        .as_ref()
+        .map(|s| canon_path(s.as_str()));
+    let dart_format_line_length = raw.dart_format_line_length.unwrap_or(80);
     let llvm_paths = get_llvm_paths(&raw.llvm_path);
     let llvm_compiler_opts = raw
         .llvm_compiler_opts
         .clone()
         .unwrap_or_else(|| "".to_string());
-    for i in 0..rust_input_paths.len() {
-        opts.push(Opts {
-            rust_input_path: rust_input_paths[i].clone(),
-            dart_output_path: dart_output_paths[i].clone(),
-            dart_decl_output_path: raw
-                .dart_decl_output
-                .as_ref()
-                .map(|s| canon_path(s.as_str())),
-            c_output_path: c_output_paths.clone(), //same for all rust api blocks
-            rust_crate_dir: rust_crate_dirs[i].clone(),
-            rust_output_path: rust_output_paths[i].clone(),
-            class_name: class_names[i].clone(),
-            dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
-            skip_add_mod_to_lib: raw.skip_add_mod_to_lib, //same for all rust api blocks
-            llvm_path: llvm_paths.clone(),
-            llvm_compiler_opts: llvm_compiler_opts.clone(),
-            manifest_path: manifest_paths[i].clone(),
-            dart_root: dart_roots[i].clone(),
-            build_runner: !raw.no_build_runner, //same for all rust api blocks
-            exclude_sync_execution_mode_utility: exclude_sync_execution_mode_utilities[i],
-        });
-    }
+    let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
+    let build_runner = !raw.no_build_runner;
+    return (0..rust_input_paths.len())
+        .map(|i| {
+            Opts {
+                rust_input_path: rust_input_paths[i].clone(),
+                dart_output_path: dart_output_paths[i].clone(),
+                dart_decl_output_path: dart_decl_output_path.clone(),
+                c_output_path: c_output_paths.clone(), //same for all rust api blocks
+                rust_crate_dir: rust_crate_dirs[i].clone(),
+                rust_output_path: rust_output_paths[i].clone(),
+                class_name: class_names[i].clone(),
+                dart_format_line_length,
+                skip_add_mod_to_lib, //same for all rust api blocks
+                llvm_path: llvm_paths.clone(),
+                llvm_compiler_opts: llvm_compiler_opts.clone(),
+                manifest_path: manifest_paths[i].clone(),
+                dart_root: dart_roots[i].clone(),
+                build_runner, //same for all rust api blocks
+                exclude_sync_execution_mode_utility: exclude_sync_execution_mode_utilities[i],
+            }
+        })
+        .collect();
+}
 
-    return opts;
+fn get_outputs_for_flag_requires_full_data(
+    strings: &Option<Vec<String>>,
+    rust_input_paths: &[String],
+    func: &dyn Fn(&str) -> Result<String>,
+    field_str: &str,
+    panic_str: &str,
+) -> Vec<String> {
+    strings.clone().unwrap_or_else(|| -> Vec<String> {
+        if rust_input_paths.len() == 1 {
+            vec![func(&rust_input_paths[0])
+                .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error(field_str)))]
+        } else {
+            panic!("{}", panic_str);
+        }
+    })
 }
 
 fn get_llvm_paths(llvm_path: &Option<Vec<String>>) -> Vec<String> {
