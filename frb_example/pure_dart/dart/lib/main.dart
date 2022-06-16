@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
@@ -346,6 +347,45 @@ void main(List<String> args) async {
   test('dart call next_user_id to test metadata annotations', () async {
     UserId userId = UserId(value: 11);
     expect(await api.nextUserId(userId: userId), UserId(value: 12));
+  });
+
+  test('dart register event listener & create event without waiting', () async {
+    bool listenerCalled = false;
+    api.registerEventListener().listen((e) {
+      listenerCalled = true;
+    });
+
+    await api.createEvent();
+    // without waiting the api doesn't have time register the listener
+    // so there is no listener when the event is created
+    expect(listenerCalled, equals(false));
+  });
+
+  test('dart register event listener & create event after sleep', () async {
+    bool listenerCalled = false;
+    api.registerEventListener().listen((e) {
+      listenerCalled = true;
+    });
+
+    sleep(const Duration(milliseconds: 100));
+    await api.createEvent();
+    // waiting with sleep blocks async operations
+    // so there is no listener when the event is created
+    expect(listenerCalled, equals(false));
+  });
+
+  test('dart register event listener & create event after delayed future', () async {
+    bool listenerCalled = false;
+    api.registerEventListener().listen((e) {
+      listenerCalled = true;
+    });
+
+    await Future.delayed(const Duration(milliseconds: 10));
+    await api.createEvent();
+    // waiting with an async Future.delayed() call doesn't block
+    // the ongoing futures, so a listener should be registered
+    // and thus the callback should be called.
+    expect(listenerCalled, equals(true));
   });
 
   print('flutter_rust_bridge example program end');
