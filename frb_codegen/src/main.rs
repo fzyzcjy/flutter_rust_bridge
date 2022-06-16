@@ -1,5 +1,5 @@
 use env_logger::Env;
-use lib_flutter_rust_bridge_codegen::{config_parse, ensure_tools_available, frb_codegen, RawOpts};
+use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen, RawOpts};
 use log::{debug, info};
 use structopt::StructOpt;
 

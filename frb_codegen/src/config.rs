@@ -87,7 +87,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     // rust input path(s)
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
     assert!(
-        rust_input_paths.len() >= 1,
+        !rust_input_paths.is_empty(),
         "rust input(s) should have at least 1 path"
     );
 
@@ -146,7 +146,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
 
     // class name(s)
     let class_names = get_outputs_for_flag_requires_full_data(
-        &raw.class_name, &rust_input_paths,&fallback_class_name,
+        &raw.class_name, &rust_crate_dirs,&fallback_class_name,
         "class_name",
         "for more than 1 rust blocks, please specify each class name clearly with flag \"class-name\"");
     assert!(
@@ -176,7 +176,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
             .collect::<Vec<_>>(),
         None => dart_output_paths
             .iter()
-            .map(|each_dart_output_path| fallback_dart_root(&each_dart_output_path).ok())
+            .map(|each_dart_output_path| fallback_dart_root(each_dart_output_path).ok())
             .collect::<Vec<_>>(),
     };
 
@@ -199,7 +199,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         .unwrap_or_else(|| "".to_string());
     let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
     let build_runner = !raw.no_build_runner;
-    return (0..rust_input_paths.len())
+
+    (0..rust_input_paths.len())
         .map(|i| {
             Opts {
                 rust_input_path: rust_input_paths[i].clone(),
@@ -219,19 +220,19 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 exclude_sync_execution_mode_utility: exclude_sync_execution_mode_utilities[i],
             }
         })
-        .collect();
+        .collect()
 }
 
 fn get_outputs_for_flag_requires_full_data(
     strings: &Option<Vec<String>>,
-    rust_input_paths: &[String],
-    func: &dyn Fn(&str) -> Result<String>,
+    fallback_paths: &[String],
+    fallback_func: &dyn Fn(&str) -> Result<String>,
     field_str: &str,
     panic_str: &str,
 ) -> Vec<String> {
     strings.clone().unwrap_or_else(|| -> Vec<String> {
-        if rust_input_paths.len() == 1 {
-            vec![func(&rust_input_paths[0])
+        if fallback_paths.len() == 1 {
+            vec![fallback_func(&fallback_paths[0])
                 .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error(field_str)))]
         } else {
             panic!("{}", panic_str);
@@ -261,12 +262,11 @@ fn get_llvm_paths(llvm_path: &Option<Vec<String>>) -> Vec<String> {
 }
 
 fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
-    let collected_paths = paths
-        .into_iter()
+    paths
+        .iter()
         .filter(|p| !p.trim().is_empty())
-        .map(|p| canon_path(&p))
-        .collect::<Vec<_>>();
-    collected_paths
+        .map(|p| canon_path(p))
+        .collect::<Vec<_>>()
 }
 
 fn format_fail_to_guess_error(name: &str) -> String {
