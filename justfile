@@ -6,6 +6,8 @@ frb_flutter := "frb_example/with_flutter"
 line_length := "120"
 dylib := if os() == "windows" {
     "flutter_rust_bridge_example.dll"
+} else if os() == "macos" {
+    "libflutter_rust_bridge_example.dylib"
 } else {
     "libflutter_rust_bridge_example.so"
 }
