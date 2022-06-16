@@ -26,6 +26,8 @@ mod utils;
 use error::*;
 
 pub fn frb_codegen(config: &config::Opts) -> anyhow::Result<()> {
+    ensure_tools_available()?;
+
     info!("Picked config: {:?}", config);
 
     let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();

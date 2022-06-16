@@ -1,6 +1,6 @@
 use env_logger::Env;
 use lib_flutter_rust_bridge_codegen::{config_parse, ensure_tools_available, frb_codegen, RawOpts};
-use log::info;
+use log::{debug, info};
 use structopt::StructOpt;
 
 fn main() -> anyhow::Result<()> {
@@ -12,13 +12,12 @@ fn main() -> anyhow::Result<()> {
     }))
     .init();
 
-    // initial config(s) before generation
-    ensure_tools_available()?;
     let configs = config_parse(raw_opts);
+    debug!("configs={:?}", configs);
 
     // primary generation of rust api for ffi
-    for each_config in &configs {
-        frb_codegen(each_config).unwrap();
+    for config in &configs {
+        frb_codegen(config).unwrap();
     }
     // TODO:primary check duplicated apis among all rust blocks
 

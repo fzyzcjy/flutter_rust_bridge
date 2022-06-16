@@ -18,7 +18,6 @@ pub struct RawOpts {
     /// Path of input Rust code
     #[structopt(short, long)]
     rust_input: Vec<String>,
-
     /// Path of output generated Dart code
     #[structopt(short, long)]
     pub dart_output: Vec<String>,
@@ -86,24 +85,14 @@ pub struct Opts {
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
     // rust input path(s)
-    let mut rust_input_paths = raw.rust_input.clone();
-    rust_input_paths.retain(|each_path| !each_path.trim().is_empty());
-    let rust_input_paths = rust_input_paths
-        .iter()
-        .map(|each_path| canon_path(each_path))
-        .collect::<Vec<_>>();
+    let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
     assert!(
         rust_input_paths.len() >= 1,
         "rust input(s) should have at least 1 path"
     );
 
     // dart output path(s)
-    let mut dart_output_paths = raw.dart_output.clone();
-    dart_output_paths.retain(|each_path| !each_path.trim().is_empty());
-    let dart_output_paths = dart_output_paths
-        .iter()
-        .map(|each_path| canon_path(each_path))
-        .collect::<Vec<_>>();
+    let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
     assert!(
         dart_output_paths.len() == rust_input_paths.len(),
         "dart output path(s) should have the same number of path(s) as rust input(s)"
@@ -164,17 +153,13 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     );
 
     // class name(s)
-    let class_names = match raw.class_name {
-        Some(class_names) => class_names,
-        None => {
-            if rust_input_paths.len() == 1 {
-                vec![fallback_class_name(&*rust_input_paths[0])
-                    .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("class_name")))]
-            } else {
-                panic!("for more than 1 rust blocks, please specify each class name clearly with flag \"class-name\"");
-            }
-        }
-    };
+    let class_names = raw.class_name.unwrap_or_else(||
+        if rust_input_paths.len() == 1 {
+                    vec![fallback_class_name(&*rust_input_paths[0])
+                  .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("class_name")))]
+                } else {
+                    panic!("for more than 1 rust blocks, please specify each class name clearly with flag \"class-name\"");
+                } );
     assert!(
         class_names.len() == rust_input_paths.len(),
         "class_name(s) should have the same number of path(s) as rust input(s)"
@@ -208,23 +193,17 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
 
     // exclude_sync_execution_mode_utility(s)
     // (due to conflict of dart api of multiple blocks, keep it temporarily)
-    let exclude_sync_execution_mode_utilities = match raw.exclude_sync_execution_mode_utility {
-        Some(exclude_sync_execution_mode_utilities) => exclude_sync_execution_mode_utilities,
-        None => {
-            let mut exclude_sync_execution_mode_utilities = Vec::new();
-            for i in 0..rust_input_paths.len() {
-                if i == 0 {
-                    exclude_sync_execution_mode_utilities.push(false);
-                } else {
-                    exclude_sync_execution_mode_utilities.push(true);
-                }
-            }
-            exclude_sync_execution_mode_utilities
-        }
-    };
+    let exclude_sync_execution_mode_utilities = raw
+        .exclude_sync_execution_mode_utility
+        .unwrap_or_else(|| (0..rust_input_paths.len()).map(|i| i != 0).collect());
 
     // build Opt for each rust api block
     let mut opts = Vec::new();
+    let llvm_paths = get_llvm_paths(&raw.llvm_path);
+    let llvm_compiler_opts = raw
+        .llvm_compiler_opts
+        .clone()
+        .unwrap_or_else(|| "".to_string());
     for i in 0..rust_input_paths.len() {
         opts.push(Opts {
             rust_input_path: rust_input_paths[i].clone(),
@@ -239,28 +218,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
             class_name: class_names[i].clone(),
             dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
             skip_add_mod_to_lib: raw.skip_add_mod_to_lib, //same for all rust api blocks
-            llvm_path: raw.llvm_path.clone().unwrap_or_else(|| {
-                vec![
-                    "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
-                    "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
-                    // Possible Linux LLVM roots
-                    "/usr/lib/llvm-9".to_owned(),
-                    "/usr/lib/llvm-10".to_owned(),
-                    "/usr/lib/llvm-11".to_owned(),
-                    "/usr/lib/llvm-12".to_owned(),
-                    "/usr/lib/llvm-13".to_owned(),
-                    "/usr/lib/llvm-14".to_owned(),
-                    "/usr/lib/".to_owned(),
-                    "/usr/lib64/".to_owned(),
-                    "C:/Program Files/llvm".to_owned(), // Default on Windows
-                    "C:/Program Files/LLVM".to_owned(),
-                    "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
-                ]
-            }),
-            llvm_compiler_opts: raw
-                .llvm_compiler_opts
-                .clone()
-                .unwrap_or_else(|| "".to_string()),
+            llvm_path: llvm_paths.clone(),
+            llvm_compiler_opts: llvm_compiler_opts.clone(),
             manifest_path: manifest_paths[i].clone(),
             dart_root: dart_roots[i].clone(),
             build_runner: !raw.no_build_runner, //same for all rust api blocks
@@ -269,6 +228,36 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     }
 
     return opts;
+}
+
+fn get_llvm_paths(llvm_path: &Option<Vec<String>>) -> Vec<String> {
+    llvm_path.clone().unwrap_or_else(|| {
+        vec![
+            "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
+            "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
+            // Possible Linux LLVM roots
+            "/usr/lib/llvm-9".to_owned(),
+            "/usr/lib/llvm-10".to_owned(),
+            "/usr/lib/llvm-11".to_owned(),
+            "/usr/lib/llvm-12".to_owned(),
+            "/usr/lib/llvm-13".to_owned(),
+            "/usr/lib/llvm-14".to_owned(),
+            "/usr/lib/".to_owned(),
+            "/usr/lib64/".to_owned(),
+            "C:/Program Files/llvm".to_owned(), // Default on Windows
+            "C:/Program Files/LLVM".to_owned(),
+            "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
+        ]
+    })
+}
+
+fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
+    let collected_paths = paths
+        .into_iter()
+        .filter(|p| !p.trim().is_empty())
+        .map(|p| canon_path(&p))
+        .collect::<Vec<_>>();
+    collected_paths
 }
 
 fn format_fail_to_guess_error(name: &str) -> String {
