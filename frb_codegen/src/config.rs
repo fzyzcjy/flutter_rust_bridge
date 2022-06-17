@@ -17,7 +17,7 @@ use toml::Value;
 pub struct RawOpts {
     /// Path of input Rust code
     #[structopt(short, long)]
-    rust_input: Vec<String>,
+    pub rust_input: Vec<String>,
     /// Path of output generated Dart code
     #[structopt(short, long)]
     pub dart_output: Vec<String>,
