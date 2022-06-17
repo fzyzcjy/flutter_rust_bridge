@@ -4,14 +4,16 @@ use std::path::Path;
 use log::info;
 use pathdiff::diff_paths;
 
-use crate::commands::ensure_tools_available;
-pub use crate::config::RawOpts as Opts;
 use crate::ir::*;
 use crate::others::*;
 use crate::utils::*;
 
-mod commands;
 mod config;
+pub use crate::commands::ensure_tools_available;
+pub use crate::config::parse as config_parse;
+pub use crate::config::Opts;
+pub use crate::config::RawOpts;
+mod commands;
 mod error;
 mod generator;
 mod ir;
@@ -23,11 +25,10 @@ mod transformer;
 mod utils;
 use error::*;
 
-pub fn frb_codegen(raw_opts: Opts) -> anyhow::Result<()> {
+pub fn frb_codegen(config: &config::Opts) -> anyhow::Result<()> {
     ensure_tools_available()?;
 
-    let config = config::parse(raw_opts);
-    info!("Picked config: {:?}", &config);
+    info!("Picked config: {:?}", config);
 
     let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
     let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
