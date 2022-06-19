@@ -97,10 +97,10 @@ More specifically, thanks for all these contributions:
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
+* [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
-* [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor.
 * [banool](https://github.com/banool): Fix symbol-stripping doc.
 * [TENX-S](https://github.com/TENX-S): Improve doc.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
