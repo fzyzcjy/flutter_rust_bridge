@@ -175,6 +175,18 @@ abstract class FlutterRustBridgeExample {
   Future<UserId> nextUserId({required UserId userId, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta;
+
+  Stream<Event> registerEventListener({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta;
+
+  Future<void> closeEventListener({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta;
+
+  Future<void> createEvent({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
 }
 
 class ApplicationEnv {
@@ -257,6 +269,16 @@ class Element {
     this.text,
     this.attributes,
     this.children,
+  });
+}
+
+class Event {
+  final String address;
+  final String payload;
+
+  Event({
+    required this.address,
+    required this.payload,
   });
 }
 
@@ -963,6 +985,45 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "next_user_id",
         argNames: ["userId"],
+      );
+
+  Stream<Event> registerEventListener({dynamic hint}) => executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_register_event_listener(port_),
+        parseSuccessData: _wire2api_event,
+        constMeta: kRegisterEventListenerConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "register_event_listener",
+        argNames: [],
+      );
+
+  Future<void> closeEventListener({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_close_event_listener(port_),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kCloseEventListenerConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "close_event_listener",
+        argNames: [],
+      );
+
+  Future<void> createEvent({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_create_event(port_),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kCreateEventConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_event",
+        argNames: [],
       );
 
   // Section: api2wire
@@ -1672,6 +1733,15 @@ Element _wire2api_element(dynamic raw) {
     text: _wire2api_opt_String(arr[1]),
     attributes: _wire2api_opt_list_attribute(arr[2]),
     children: _wire2api_opt_list_element(arr[3]),
+  );
+}
+
+Event _wire2api_event(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Event(
+    address: _wire2api_String(arr[0]),
+    payload: _wire2api_String(arr[1]),
   );
 }
 
@@ -2583,6 +2653,41 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_next_user_idPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_UserId>)>>('wire_next_user_id');
   late final _wire_next_user_id = _wire_next_user_idPtr.asFunction<void Function(int, ffi.Pointer<wire_UserId>)>();
+
+  void wire_register_event_listener(
+    int port_,
+  ) {
+    return _wire_register_event_listener(
+      port_,
+    );
+  }
+
+  late final _wire_register_event_listenerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_register_event_listener');
+  late final _wire_register_event_listener = _wire_register_event_listenerPtr.asFunction<void Function(int)>();
+
+  void wire_close_event_listener(
+    int port_,
+  ) {
+    return _wire_close_event_listener(
+      port_,
+    );
+  }
+
+  late final _wire_close_event_listenerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_close_event_listener');
+  late final _wire_close_event_listener = _wire_close_event_listenerPtr.asFunction<void Function(int)>();
+
+  void wire_create_event(
+    int port_,
+  ) {
+    return _wire_create_event(
+      port_,
+    );
+  }
+
+  late final _wire_create_eventPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_event');
+  late final _wire_create_event = _wire_create_eventPtr.asFunction<void Function(int)>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,

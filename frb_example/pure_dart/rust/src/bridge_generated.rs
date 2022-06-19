@@ -582,6 +582,42 @@ pub extern "C" fn wire_next_user_id(port_: i64, user_id: *mut wire_UserId) {
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_register_event_listener(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "register_event_listener",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || move |task_callback| register_event_listener(task_callback.stream_sink()),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_close_event_listener(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "close_event_listener",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(close_event_listener()),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_create_event(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_event",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(create_event()),
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -1895,6 +1931,13 @@ impl support::IntoDart for Element {
     }
 }
 impl support::IntoDartExceptPrimitive for Element {}
+
+impl support::IntoDart for Event {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.address.into_dart(), self.payload.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Event {}
 
 impl support::IntoDart for ExoticOptionals {
     fn into_dart(self) -> support::DartCObject {

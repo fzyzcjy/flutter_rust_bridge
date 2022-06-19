@@ -1,7 +1,7 @@
 #![allow(unused_variables)]
 
 use std::sync::atomic::{AtomicI32, Ordering};
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
@@ -473,6 +473,7 @@ pub fn use_imported_enum(my_enum: MyEnum) -> bool {
 pub use external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
 };
+use lazy_static::lazy_static;
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
@@ -547,5 +548,39 @@ pub struct UserId {
 pub fn next_user_id(user_id: UserId) -> UserId {
     UserId {
         value: user_id.value + 1,
+    }
+}
+
+// event listener test
+lazy_static! {
+    static ref EVENT_LISTENER: Arc<Mutex<Option<StreamSink<Event>>>> = Default::default();
+}
+
+#[derive(Clone)]
+pub struct Event {
+    pub address: String,
+    pub payload: String,
+}
+
+pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
+    (*EVENT_LISTENER.lock().unwrap()) = Some(listener);
+    Ok(())
+}
+
+pub fn close_event_listener() {
+    if let Some(ref listener) = *EVENT_LISTENER.lock().unwrap() {
+        listener.close();
+    } else {
+        return;
+    }
+    (*EVENT_LISTENER.lock().unwrap()) = None;
+}
+
+pub fn create_event() {
+    if let Some(ref listener) = *EVENT_LISTENER.lock().unwrap() {
+        listener.add(Event {
+            address: "something".into(),
+            payload: "payload".into(),
+        });
     }
 }
