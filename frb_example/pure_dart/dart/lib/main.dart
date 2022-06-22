@@ -348,6 +348,21 @@ void main(List<String> args) async {
     expect(await api.nextUserId(userId: userId), UserId(value: 12));
   });
 
+  test('dart register event listener & create event after delayed future', () async {
+    bool listenerCalled = false;
+    api.registerEventListener().listen((e) {
+      listenerCalled = true;
+    });
+
+    await Future.delayed(const Duration(milliseconds: 10));
+    await api.createEvent();
+    // waiting with an async Future.delayed() call doesn't block
+    // the ongoing futures, so a listener should be registered
+    // and thus the callback should be called.
+    expect(listenerCalled, equals(true));
+    await api.closeEventListener();
+  });
+
   print('flutter_rust_bridge example program end');
 }
 
