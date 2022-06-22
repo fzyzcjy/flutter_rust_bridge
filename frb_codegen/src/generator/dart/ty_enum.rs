@@ -6,7 +6,7 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn api2wire_body(&self) -> Option<String> {
+    fn api2wire_body(&self, _block_cnt: usize) -> Option<String> {
         if !self.ir.is_struct {
             Some("return raw.index;".to_owned())
         } else {

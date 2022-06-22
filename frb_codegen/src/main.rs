@@ -4,6 +4,7 @@ use log::{debug, info};
 use structopt::StructOpt;
 
 fn main() -> anyhow::Result<()> {
+    //  get valiable options from user input command
     let raw_opts = RawOpts::from_args();
     env_logger::Builder::from_env(Env::default().default_filter_or(if raw_opts.verbose {
         "debug"
@@ -15,11 +16,23 @@ fn main() -> anyhow::Result<()> {
     let configs = config_parse(raw_opts);
     debug!("configs={:?}", configs);
 
-    // primary generation of rust api for ffi
+    // before generation, get all symbols to be generated
+    let mut all_symbols = Vec::new();
     for config in &configs {
-        frb_codegen(config).unwrap();
+        let curr_symbols = config
+            .get_ir_file()
+            .funcs
+            .iter()
+            .map(|f| f.name.clone())
+            .collect::<Vec<_>>();
+        all_symbols.extend(curr_symbols);
     }
-    // TODO:primary check duplicated apis among all rust blocks
+
+    // generation of rust api for ffi
+    let mut defined_symbols = vec![];
+    for (i, config) in configs.iter().enumerate() {
+        frb_codegen(config, &mut defined_symbols, &all_symbols, i + 1).unwrap();
+    }
 
     info!("Now go and use it :)");
     Ok(())

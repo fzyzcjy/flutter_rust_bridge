@@ -3,7 +3,7 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
-    fn api2wire_body(&self) -> Option<String>;
+    fn api2wire_body(&self, block_cnt: usize) -> Option<String>;
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
         None

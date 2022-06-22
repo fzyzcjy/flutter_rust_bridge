@@ -31,10 +31,16 @@ pub fn bindgen_rust_to_dart(
     dart_output_path: &str,
     dart_class_name: &str,
     c_struct_names: Vec<String>,
+    exclude_symbols: Vec<String>,
     llvm_install_path: &[String],
     llvm_compiler_opts: &str,
 ) -> anyhow::Result<()> {
-    cbindgen(rust_crate_dir, c_output_path, c_struct_names)?;
+    cbindgen(
+        rust_crate_dir,
+        c_output_path,
+        c_struct_names,
+        exclude_symbols,
+    )?;
     ffigen(
         c_output_path,
         dart_output_path,
@@ -100,12 +106,12 @@ fn cbindgen(
     rust_crate_dir: &str,
     c_output_path: &str,
     c_struct_names: Vec<String>,
+    exclude_symbols: Vec<String>,
 ) -> anyhow::Result<()> {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
-
     let config = cbindgen::Config {
         language: cbindgen::Language::C,
         sys_includes: vec![
@@ -119,6 +125,7 @@ fn cbindgen(
                 .iter()
                 .map(|name| format!("\"{}\"", name))
                 .collect::<Vec<_>>(),
+            exclude: exclude_symbols,
             ..Default::default()
         },
         ..Default::default()

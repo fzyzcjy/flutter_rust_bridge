@@ -33,7 +33,7 @@ pub trait TypeRustGeneratorTrait {
         "".to_string()
     }
 
-    fn allocate_funcs(&self, _collector: &mut ExternFuncCollector) -> String {
+    fn allocate_funcs(&self, _collector: &mut ExternFuncCollector, _block_cnt: usize) -> String {
         "".to_string()
     }
 

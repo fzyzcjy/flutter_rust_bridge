@@ -42,13 +42,9 @@ pub struct Output {
     pub extern_func_names: Vec<String>,
 }
 
-pub fn generate(
-    ir_file: &IrFile,
-    rust_wire_mod: &str,
-    options: Option<GeneratorOptions>,
-) -> Output {
-    let mut generator = Generator::new(options.unwrap_or_default());
-    let code = generator.generate(ir_file, rust_wire_mod);
+pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, block_cnt: usize) -> Output {
+    let mut generator = Generator::new();
+    let code = generator.generate(ir_file, rust_wire_mod, block_cnt);
 
     Output {
         code,
@@ -58,18 +54,16 @@ pub fn generate(
 
 struct Generator {
     extern_func_collector: ExternFuncCollector,
-    options: GeneratorOptions,
 }
 
 impl Generator {
-    fn new(options: GeneratorOptions) -> Self {
+    fn new() -> Self {
         Self {
             extern_func_collector: ExternFuncCollector::new(),
-            options,
         }
     }
 
-    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> String {
+    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str, block_cnt: usize) -> String {
         let mut lines: Vec<String> = vec![];
 
         let distinct_input_types = ir_file.distinct_types(true, false);
@@ -133,7 +127,7 @@ impl Generator {
         lines.extend(
             distinct_input_types
                 .iter()
-                .map(|f| self.generate_allocate_funcs(f, ir_file)),
+                .map(|f| self.generate_allocate_funcs(f, ir_file, block_cnt)),
         );
 
         lines.push(self.section_header_comment("impl Wire2Api"));
@@ -162,7 +156,7 @@ impl Generator {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
-        if self.options.should_generate_sync_execution_mode_utility {
+        if block_cnt == 1 {
             lines.push(self.section_header_comment("sync execution mode utility"));
             lines.push(self.generate_sync_execution_mode_utility());
         }
@@ -346,16 +340,22 @@ impl Generator {
         }
     }
 
-    fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
+    fn generate_allocate_funcs(
+        &mut self,
+        ty: &IrType,
+        ir_file: &IrFile,
+        block_cnt: usize,
+    ) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
-        TypeRustGenerator::new(ty.clone(), ir_file).allocate_funcs(&mut self.extern_func_collector)
+        TypeRustGenerator::new(ty.clone(), ir_file)
+            .allocate_funcs(&mut self.extern_func_collector, block_cnt)
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
         r"pub trait Wire2Api<T> {
             fn wire2api(self) -> T;
         }
-        
+
         impl<T, S> Wire2Api<Option<T>> for *mut S
             where
                 *mut S: Wire2Api<T>
@@ -448,9 +448,10 @@ pub fn generate_list_allocate_func(
     safe_ident: &str,
     list: &impl IrTypeTrait,
     inner: &IrType,
+    block_cnt: usize,
 ) -> String {
     collector.generate(
-        &format!("new_{}", safe_ident),
+        &format!("new_{}_{}", safe_ident,block_cnt),
         &["len: i32"],
         Some(&[
             list.rust_wire_modifier().as_str(),

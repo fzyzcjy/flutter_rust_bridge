@@ -12,6 +12,9 @@ use structopt::clap::AppSettings;
 use structopt::StructOpt;
 use toml::Value;
 
+use crate::ir::IrFile;
+use crate::parser;
+
 #[derive(StructOpt, Debug, PartialEq, Deserialize, Default)]
 #[structopt(setting(AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
@@ -58,8 +61,6 @@ pub struct RawOpts {
     /// Show debug messages.
     #[structopt(short, long)]
     pub verbose: bool,
-    #[structopt(long)]
-    pub exclude_sync_execution_mode_utility: Option<Vec<bool>>,
 }
 
 #[derive(Debug)]
@@ -78,9 +79,6 @@ pub struct Opts {
     pub manifest_path: String,
     pub dart_root: Option<String>,
     pub build_runner: bool,
-
-    // due to conflict of dart api of multiple blocks, keep it temporarily
-    pub exclude_sync_execution_mode_utility: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
@@ -185,12 +183,6 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
             .collect::<Vec<_>>(),
     };
 
-    // exclude_sync_execution_mode_utility(s)
-    // (due to conflict of dart api of multiple blocks, keep it temporarily)
-    let exclude_sync_execution_mode_utilities = raw
-        .exclude_sync_execution_mode_utility
-        .unwrap_or_else(|| (0..rust_input_paths.len()).map(|i| i != 0).collect());
-
     // build Opt for each rust api block
     let dart_decl_output_path = raw
         .dart_decl_output
@@ -222,7 +214,6 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 manifest_path: manifest_paths[i].clone(),
                 dart_root: dart_roots[i].clone(),
                 build_runner, //same for all rust api blocks
-                exclude_sync_execution_mode_utility: exclude_sync_execution_mode_utilities[i],
             }
         })
         .collect()
@@ -380,6 +371,16 @@ fn path_to_string(path: PathBuf) -> Result<String, OsString> {
 }
 
 impl Opts {
+    pub fn get_ir_file(&self) -> IrFile {
+        // info!("Phase: Parse source code to AST");
+        let source_rust_content = fs::read_to_string(&self.rust_input_path).unwrap();
+        let file_ast = syn::parse_file(&source_rust_content).unwrap();
+
+        // info!("Phase: Parse AST to IR");
+
+        parser::parse(&source_rust_content, file_ast, &self.manifest_path)
+    }
+
     pub fn dart_api_class_name(&self) -> String {
         self.class_name.clone()
     }

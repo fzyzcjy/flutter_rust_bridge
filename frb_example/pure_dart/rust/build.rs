@@ -19,8 +19,22 @@ fn main() {
     };
     // get opts from raw opts
     let opts = config_parse(raw_opts);
-    // run flutter_rust_bridge_codegen
+
+    // before generation, get all symbols to be generated
+    let mut all_symbols = Vec::new();
     for opt in &opts {
-        frb_codegen(opt).unwrap();
+        let curr_symbols = opt
+            .get_ir_file()
+            .funcs
+            .iter()
+            .map(|f| f.name.clone())
+            .collect::<Vec<_>>();
+        all_symbols.extend(curr_symbols);
+    }
+
+    // run flutter_rust_bridge_codegen
+    let mut defined_symbols = vec![];
+    for (i, opt) in opts.iter().enumerate() {
+        frb_codegen(opt, &mut defined_symbols, &all_symbols, i + 1).unwrap();
     }
 }
