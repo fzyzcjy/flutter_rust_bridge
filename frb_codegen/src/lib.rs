@@ -41,7 +41,8 @@ pub fn frb_codegen(
     info!("Phase: Parse source code to AST, then to IR");
     let raw_ir_file = config.get_ir_file();
 
-    info!("Phase: check rust Api confict");
+    info!("Phase: check rust Api conflict");
+
     let conflict_symbols = raw_ir_file
         .funcs
         .iter()
