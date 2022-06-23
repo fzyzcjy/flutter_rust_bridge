@@ -76,11 +76,11 @@ struct wire_Size *new_box_autoadd_size(void);
 
 struct wire_TreeNode *new_box_autoadd_tree_node(void);
 
-struct wire_list_size *new_list_size(int32_t len);
+struct wire_list_size *new_list_size_1(int32_t len);
 
-struct wire_list_tree_node *new_list_tree_node(int32_t len);
+struct wire_list_tree_node *new_list_tree_node_1(int32_t len);
 
-struct wire_uint_8_list *new_uint_8_list(int32_t len);
+struct wire_uint_8_list *new_uint_8_list_1(int32_t len);
 
 void free_WireSyncReturnStruct(struct WireSyncReturnStruct val);
 
@@ -103,9 +103,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_point);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_size);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node);
-    dummy_var ^= ((int64_t) (void*) new_list_size);
-    dummy_var ^= ((int64_t) (void*) new_list_tree_node);
-    dummy_var ^= ((int64_t) (void*) new_uint_8_list);
+    dummy_var ^= ((int64_t) (void*) new_list_size_1);
+    dummy_var ^= ((int64_t) (void*) new_list_tree_node_1);
+    dummy_var ^= ((int64_t) (void*) new_uint_8_list_1);
     dummy_var ^= ((int64_t) (void*) free_WireSyncReturnStruct);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     return dummy_var;
