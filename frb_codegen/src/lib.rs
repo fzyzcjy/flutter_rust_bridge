@@ -131,21 +131,27 @@ pub fn frb_codegen(
         .map(|s| format!("wire_{}", s))
         .collect::<Vec<_>>();
 
+    let c_output_path = &temp_bindgen_c_output_file
+        .path()
+        .as_os_str()
+        .to_str()
+        .unwrap();
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
-            commands::bindgen_rust_to_dart(
+            commands::cbindgen(
                 &config.rust_crate_dir,
-                temp_bindgen_c_output_file
-                    .path()
-                    .as_os_str()
-                    .to_str()
-                    .unwrap(),
-                temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-                &config.dart_wire_class_name(),
+                c_output_path,
                 c_struct_names,
                 exclude_symbols,
+            )
+        },
+        || {
+            commands::ffigen(
+                c_output_path,
+                temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+                &config.dart_wire_class_name(),
                 &config.llvm_path[..],
                 &config.llvm_compiler_opts,
             )

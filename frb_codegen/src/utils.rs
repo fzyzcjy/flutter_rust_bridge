@@ -12,15 +12,17 @@ pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
         .replace('/', "::")
 }
 
-pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
+pub fn with_changed_file(
     path: &str,
     append_content: &str,
-    f: F,
+    generate_c_from_rust_func: impl FnOnce() -> anyhow::Result<()>,
+    generate_dart_from_c_func: impl FnOnce() -> anyhow::Result<()>,
 ) -> anyhow::Result<()> {
     let content_original = fs::read_to_string(&path)?;
     fs::write(&path, content_original.clone() + append_content)?;
 
-    f()?;
+    generate_c_from_rust_func()?;
+    generate_dart_from_c_func()?;
 
     Ok(fs::write(&path, content_original)?)
 }
