@@ -653,30 +653,30 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_off_topic_deliberately_panic =
       _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
-  ffi.Pointer<wire_Point> new_box_autoadd_point() {
-    return _new_box_autoadd_point();
+  ffi.Pointer<wire_Point> new_box_autoadd_point_1() {
+    return _new_box_autoadd_point_1();
   }
 
-  late final _new_box_autoadd_pointPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Point> Function()>>('new_box_autoadd_point');
-  late final _new_box_autoadd_point = _new_box_autoadd_pointPtr.asFunction<ffi.Pointer<wire_Point> Function()>();
+  late final _new_box_autoadd_point_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Point> Function()>>('new_box_autoadd_point_1');
+  late final _new_box_autoadd_point_1 = _new_box_autoadd_point_1Ptr.asFunction<ffi.Pointer<wire_Point> Function()>();
 
-  ffi.Pointer<wire_Size> new_box_autoadd_size() {
-    return _new_box_autoadd_size();
+  ffi.Pointer<wire_Size> new_box_autoadd_size_1() {
+    return _new_box_autoadd_size_1();
   }
 
-  late final _new_box_autoadd_sizePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Size> Function()>>('new_box_autoadd_size');
-  late final _new_box_autoadd_size = _new_box_autoadd_sizePtr.asFunction<ffi.Pointer<wire_Size> Function()>();
+  late final _new_box_autoadd_size_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Size> Function()>>('new_box_autoadd_size_1');
+  late final _new_box_autoadd_size_1 = _new_box_autoadd_size_1Ptr.asFunction<ffi.Pointer<wire_Size> Function()>();
 
-  ffi.Pointer<wire_TreeNode> new_box_autoadd_tree_node() {
-    return _new_box_autoadd_tree_node();
+  ffi.Pointer<wire_TreeNode> new_box_autoadd_tree_node_1() {
+    return _new_box_autoadd_tree_node_1();
   }
 
-  late final _new_box_autoadd_tree_nodePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node');
-  late final _new_box_autoadd_tree_node =
-      _new_box_autoadd_tree_nodePtr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
+  late final _new_box_autoadd_tree_node_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node_1');
+  late final _new_box_autoadd_tree_node_1 =
+      _new_box_autoadd_tree_node_1Ptr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
 
   ffi.Pointer<wire_list_size> new_list_size_1(
     int len,

@@ -256,17 +256,17 @@ pub struct wire_uint_8_list {
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_point() -> *mut wire_Point {
+pub extern "C" fn new_box_autoadd_point_1() -> *mut wire_Point {
     support::new_leak_box_ptr(wire_Point::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_size() -> *mut wire_Size {
+pub extern "C" fn new_box_autoadd_size_1() -> *mut wire_Size {
     support::new_leak_box_ptr(wire_Size::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_tree_node() -> *mut wire_TreeNode {
+pub extern "C" fn new_box_autoadd_tree_node_1() -> *mut wire_TreeNode {
     support::new_leak_box_ptr(wire_TreeNode::new_with_null_ptr())
 }
 

@@ -912,17 +912,17 @@ pub extern "C" fn new_StringList_1(len: i32) -> *mut wire_StringList {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_application_env() -> *mut wire_ApplicationEnv {
+pub extern "C" fn new_box_application_env_1() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_application_settings() -> *mut wire_ApplicationSettings {
+pub extern "C" fn new_box_autoadd_application_settings_1() -> *mut wire_ApplicationSettings {
     support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_Attribute {
+pub extern "C" fn new_box_autoadd_attribute_1() -> *mut wire_Attribute {
     support::new_leak_box_ptr(wire_Attribute::new_with_null_ptr())
 }
 
@@ -932,12 +932,12 @@ pub extern "C" fn new_box_autoadd_bool_1(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_customized() -> *mut wire_Customized {
+pub extern "C" fn new_box_autoadd_customized_1() -> *mut wire_Customized {
     support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_exotic_optionals() -> *mut wire_ExoticOptionals {
+pub extern "C" fn new_box_autoadd_exotic_optionals_1() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
 
@@ -957,32 +957,32 @@ pub extern "C" fn new_box_autoadd_i64_1(value: i64) -> *mut i64 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_KitchenSink {
+pub extern "C" fn new_box_autoadd_kitchen_sink_1() -> *mut wire_KitchenSink {
     support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_MySize {
+pub extern "C" fn new_box_autoadd_my_size_1() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_struct() -> *mut wire_MyStruct {
+pub extern "C" fn new_box_autoadd_my_struct_1() -> *mut wire_MyStruct {
     support::new_leak_box_ptr(wire_MyStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_MyTreeNode {
+pub extern "C" fn new_box_autoadd_my_tree_node_1() -> *mut wire_MyTreeNode {
     support::new_leak_box_ptr(wire_MyTreeNode::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_NewTypeInt {
+pub extern "C" fn new_box_autoadd_new_type_int_1() -> *mut wire_NewTypeInt {
     support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_user_id() -> *mut wire_UserId {
+pub extern "C" fn new_box_autoadd_user_id_1() -> *mut wire_UserId {
     support::new_leak_box_ptr(wire_UserId::new_with_null_ptr())
 }
 
@@ -992,7 +992,7 @@ pub extern "C" fn new_box_bool_1(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_exotic_optionals() -> *mut wire_ExoticOptionals {
+pub extern "C" fn new_box_exotic_optionals_1() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
 
@@ -1017,12 +1017,12 @@ pub extern "C" fn new_box_i8_1(value: i8) -> *mut i8 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_kitchen_sink() -> *mut wire_KitchenSink {
+pub extern "C" fn new_box_kitchen_sink_1() -> *mut wire_KitchenSink {
     support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_my_size() -> *mut wire_MySize {
+pub extern "C" fn new_box_my_size_1() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
 
