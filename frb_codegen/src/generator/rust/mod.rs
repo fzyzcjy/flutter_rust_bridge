@@ -42,6 +42,16 @@ pub struct Output {
     pub extern_func_names: Vec<String>,
 }
 
+impl Output {
+    pub fn get_exclude_symbols(&self, all_symbols: &[String]) -> Vec<String> {
+        all_symbols
+            .iter()
+            .filter(|s| !self.extern_func_names.contains(s))
+            .map(|s| (*s).clone())
+            .collect::<Vec<_>>()
+    }
+}
+
 pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, block_cnt: usize) -> Output {
     let mut generator = Generator::new();
     let code = generator.generate(ir_file, rust_wire_mod, block_cnt);
@@ -419,7 +429,7 @@ impl Generator {
         "pub trait NewWithNullPtr {
             fn new_with_null_ptr() -> Self;
         }
-        
+
         impl<T> NewWithNullPtr for *mut T {
             fn new_with_null_ptr() -> Self {
                 std::ptr::null_mut()

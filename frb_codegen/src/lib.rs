@@ -4,15 +4,16 @@ use std::path::Path;
 use log::info;
 use pathdiff::diff_paths;
 
-use crate::ir::*;
 use crate::others::*;
 use crate::utils::*;
 
 mod config;
+
 pub use crate::commands::ensure_tools_available;
 pub use crate::config::parse as config_parse;
 pub use crate::config::Opts;
 pub use crate::config::RawOpts;
+pub use crate::utils::get_symbols_if_no_duplicates;
 mod commands;
 mod error;
 mod generator;
@@ -27,7 +28,6 @@ use error::*;
 
 pub fn frb_codegen(
     config: &config::Opts,
-    defined_symbols: &mut Vec<String>,
     all_symbols: &[String],
     block_cnt: usize,
 ) -> anyhow::Result<()> {
@@ -41,65 +41,17 @@ pub fn frb_codegen(
     info!("Phase: Parse source code to AST, then to IR");
     let raw_ir_file = config.get_ir_file();
 
-    info!("Phase: check rust Api conflict");
-
-    let conflict_symbols = raw_ir_file
-        .funcs
-        .iter()
-        .filter(|f| defined_symbols.contains(&f.name))
-        .collect::<Vec<_>>();
-    if !conflict_symbols.is_empty() {
-        let mut conflict_symbol_strs = conflict_symbols
-            .iter()
-            .map(|&f| f.name.clone() + ",")
-            .collect::<String>();
-        conflict_symbol_strs.pop();
-
-        let symbol_str = if conflict_symbols.len() == 1 {
-            "symbol"
-        } else {
-            "symbols"
-        };
-        let verb_str = if conflict_symbols.len() == 1 {
-            "has"
-        } else {
-            "have"
-        };
-        panic!(
-            "{} [{}] {} already been defined",
-            symbol_str, conflict_symbol_strs, verb_str
-        );
-    }
-    let curr_block_symbols = raw_ir_file
-        .funcs
-        .iter()
-        .map(|f| f.name.clone())
-        .collect::<Vec<_>>();
-    defined_symbols.extend(curr_block_symbols.clone());
-
     info!("Phase: Transform IR");
     let ir_file = transformer::transform(raw_ir_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust = generator::rust::generate(
-        &ir_file,
-        &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-        block_cnt,
-    );
+    let generated_rust = ir_file.generate_rust(config, block_cnt);
+    let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
     fs::create_dir_all(&rust_output_dir)?;
     fs::write(&config.rust_output_path, generated_rust.code)?;
 
     info!("Phase: Generate Dart code");
-    let (generated_dart, needs_freezed) = generator::dart::generate(
-        &ir_file,
-        &config.dart_api_class_name(),
-        &config.dart_api_impl_class_name(),
-        &config.dart_wire_class_name(),
-        config
-            .dart_output_path_name()
-            .ok_or_else(|| Error::str("Invalid dart_output_path_name"))?,
-        block_cnt,
-    );
+    let (generated_dart, needs_freezed) = ir_file.generate_dart(config, block_cnt)?;
 
     info!("Phase: Other things");
 
@@ -109,28 +61,9 @@ pub fn frb_codegen(
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 
-    let c_struct_names = ir_file
-        .distinct_types(true, true)
-        .iter()
-        .filter_map(|ty| {
-            if let IrType::StructRef(_) = ty {
-                Some(ty.rust_wire_type())
-            } else {
-                None
-            }
-        })
-        .collect();
-
+    let c_struct_names = ir_file.get_c_struct_names();
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
-
-    // exclude symbols not belong to this block
-    let exclude_symbols = all_symbols
-        .iter()
-        .filter(|s| !curr_block_symbols.contains(s))
-        .map(|s| format!("wire_{}", s))
-        .collect::<Vec<_>>();
-
     let c_output_path = &temp_bindgen_c_output_file
         .path()
         .as_os_str()

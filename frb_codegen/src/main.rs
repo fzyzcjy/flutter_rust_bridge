@@ -1,5 +1,7 @@
 use env_logger::Env;
-use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen, RawOpts};
+use lib_flutter_rust_bridge_codegen::{
+    config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
+};
 use log::{debug, info};
 use structopt::StructOpt;
 
@@ -16,22 +18,10 @@ fn main() -> anyhow::Result<()> {
     let configs = config_parse(raw_opts);
     debug!("configs={:?}", configs);
 
-    // before generation, get all symbols to be generated
-    let mut all_symbols = Vec::new();
-    for config in &configs {
-        let curr_symbols = config
-            .get_ir_file()
-            .funcs
-            .iter()
-            .map(|f| f.name.clone())
-            .collect::<Vec<_>>();
-        all_symbols.extend(curr_symbols);
-    }
-
     // generation of rust api for ffi
-    let mut defined_symbols = vec![];
+    let all_symbols = get_symbols_if_no_duplicates(&configs)?;
     for (i, config) in configs.iter().enumerate() {
-        frb_codegen(config, &mut defined_symbols, &all_symbols, i + 1).unwrap();
+        frb_codegen(config, &all_symbols, i + 1).unwrap();
     }
 
     info!("Now go and use it :)");
