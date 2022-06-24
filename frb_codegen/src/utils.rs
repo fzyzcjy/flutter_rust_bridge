@@ -63,9 +63,7 @@ pub fn find_all_duplicates(mut vec: Vec<String>) -> anyhow::Result<()> {
 
 /// check api defined by users, if no duplicates, then generate all symbols (api function name)
 /// ,including those generated implicitily by frb
-pub fn get_symbols_if_no_duplicates(
-    configs: &Vec<crate::Opts>,
-) -> Result<Vec<String>, anyhow::Error> {
+pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<String>, anyhow::Error> {
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
     for (i, config) in configs.iter().enumerate() {
