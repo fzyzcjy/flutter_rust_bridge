@@ -58,11 +58,11 @@ jobs:
         working-directory: ./frb_example/pure_dart_multi/dart
         run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
         env:
-        CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
     name: Flutter (iOS) integration test
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     strategy:
       matrix:
@@ -449,7 +449,7 @@ jobs:
           command: clippy
           args: --manifest-path=./frb_example/pure_dart/rust/Cargo.toml -- -D
 
-       - name: Run fmt for pure_dart_multi example
+      - name: Run fmt for pure_dart_multi example
         uses: actions-rs/cargo@v1
         with:
           command: fmt
@@ -591,24 +591,24 @@ jobs:
         if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-        --rust-input ../frb_example/pure_dart_multi/rust/src/api_1.rs rt_multi/rust/src/api_2.rs
-        --dart-output ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
-        --dart-format-line-length 120
-        --rust-output ../frb_example/pure_dart_multi/rust/src/generated_api_1.rs ../frb_example/pure_dart_multi/rust/src/generated_api_2.rs
-        --class-name ApiClass1 ApiClass2
+          --rust-input ../frb_example/pure_dart_multi/rust/src/api_1.rs rt_multi/rust/src/api_2.rs
+          --dart-output ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
+          --dart-format-line-length 120
+          --rust-output ../frb_example/pure_dart_multi/rust/src/generated_api_1.rs ../frb_example/pure_dart_multi/rust/src/generated_api_2.rs
+          --class-name ApiClass1 ApiClass2
         env:
           RUST_LOG: debug
       - name: Run codegen to pure_dart_multi example (windows)
         if: ${{ matrix.os.family == 'windows' }}
         working-directory: ./frb_codegen
-      run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-        --rust-input ..\\frb_example\\pure_dart_multi\\rust\\src\\api_1.rs rt_multi\\rust\\src\\api_2.rs
-        --dart-output ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_1.dart ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_2.dart
-        --dart-format-line-length 120
-        --rust-output ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_2.rs
-        --class-name ApiClass1 ApiClass2
-      env:
-          RUST_LOG: debug
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+          --rust-input ..\\frb_example\\pure_dart_multi\\rust\\src\\api_1.rs rt_multi\\rust\\src\\api_2.rs
+          --dart-output ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_1.dart ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_2.dart
+          --dart-format-line-length 120
+          --rust-output ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_2.rs
+          --class-name ApiClass1 ApiClass2
+        env:
+            RUST_LOG: debug
 
       - name: Run codegen to with_flutter example (non-windows)
         if: ${{ matrix.os.family != 'windows' }}
@@ -631,16 +631,6 @@ jobs:
       - name: "Modify cross-platform code (non-osx) (single block)"
         if: ${{ matrix.os.family != 'osx' }}
         run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.dart
-
-      - name: "Modify cross-platform code (osx) (multi blocks)"
-        if: ${{ matrix.os.family == 'osx' }}
-        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
-        run: sed -i '' -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart
-        run: sed -i '' -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
-      - name: "Modify cross-platform code (non-osx) (multi blocks)"
-        if: ${{ matrix.os.family != 'osx' }}
-        run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart
-        run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
 
       - name: "Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)"
         run: git diff --exit-code
