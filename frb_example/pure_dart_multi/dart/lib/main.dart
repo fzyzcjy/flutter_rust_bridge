@@ -7,8 +7,7 @@ import 'package:test/test.dart';
 void main(List<String> args) {
   String dylibPath1 = args[0];
   String dylibPath2 = args[1];
-  print(
-      'flutter_rust_bridge example program start (dylibPath=$dylibPath1,$dylibPath2)');
+  print('flutter_rust_bridge example program start (dylibPath=$dylibPath1,$dylibPath2)');
   print('construct api');
   final dylib1 = DynamicLibrary.open(dylibPath1);
   final api1 = ApiClass1Impl(dylib1);

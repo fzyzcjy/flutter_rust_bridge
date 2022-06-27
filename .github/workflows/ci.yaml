@@ -54,11 +54,6 @@ jobs:
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
 
-      - name: Run valgrind script (multi blocks)
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
-        env:
-          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
     name: Flutter (iOS) integration test
@@ -447,7 +442,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --manifest-path=./frb_example/pure_dart/rust/Cargo.toml -- -D
+          args: --manifest-path=./frb_example/pure_dart/rust/Cargo.toml -- -D warnings
 
       - name: Run fmt for pure_dart_multi example
         uses: actions-rs/cargo@v1
@@ -591,7 +586,7 @@ jobs:
         if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-          --rust-input ../frb_example/pure_dart_multi/rust/src/api_1.rs rt_multi/rust/src/api_2.rs
+          --rust-input ../frb_example/pure_dart_multi/rust/src/api_1.rs ../frb_example/pure_dart_multi/rust/src/api_2.rs
           --dart-output ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
           --dart-format-line-length 120
           --rust-output ../frb_example/pure_dart_multi/rust/src/generated_api_1.rs ../frb_example/pure_dart_multi/rust/src/generated_api_2.rs
@@ -602,7 +597,7 @@ jobs:
         if: ${{ matrix.os.family == 'windows' }}
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-          --rust-input ..\\frb_example\\pure_dart_multi\\rust\\src\\api_1.rs rt_multi\\rust\\src\\api_2.rs
+          --rust-input ..\\frb_example\\pure_dart_multi\\rust\\src\\api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\api_2.rs
           --dart-output ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_1.dart ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_2.dart
           --dart-format-line-length 120
           --rust-output ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_2.rs
