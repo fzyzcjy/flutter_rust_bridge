@@ -1,4 +1,4 @@
-## Pure-Dart example for `flutter_rust_bridge (single block of rust Api)`
+## Pure-Dart example for `flutter_rust_bridge`
 
 In order to build and run this example, please visit [the pure-dart tutorial section](https://github.com/fzyzcjy/flutter_rust_bridge#-tutorial-pure-dart) of repository readme.
 
