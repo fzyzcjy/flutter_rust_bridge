@@ -1,4 +1,6 @@
+use std::collections::HashSet;
 use std::fs;
+use std::hash::Hash;
 use std::path::Path;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
@@ -27,42 +29,19 @@ pub fn with_changed_file(
     Ok(fs::write(&path, content_original)?)
 }
 
-pub fn find_all_duplicates(mut vec: Vec<String>) -> anyhow::Result<()> {
-    let mut conflicts = vec![];
-    if vec.is_empty() {
-        return Ok(());
-    }
-    vec.sort();
-
-    for i in 0..(vec.len() - 1) {
-        if vec[i] == vec[i + 1] && conflicts.binary_search(&vec[i]).is_err() {
-            conflicts.push(vec[i].clone());
-        }
-    }
-
-    if !conflicts.is_empty() {
-        let mut conflict_symbols = conflicts
-            .iter()
-            .map(|s| s.clone() + ",")
-            .collect::<String>();
-        conflict_symbols.pop();
-
-        let (symbol_str, verb_str) = if conflicts.len() == 1 {
-            ("symbol", "has")
-        } else {
-            ("symbols", "have")
-        };
-        panic!(
-            "{} [{}] {} already been defined",
-            symbol_str, conflict_symbols, verb_str
-        );
-    }
-
-    Ok(())
+pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
+where
+    T: Eq + Hash + Clone,
+{
+    let mut uniq = HashSet::new();
+    iter.iter()
+        .filter(|x| !uniq.insert(*x))
+        .cloned()
+        .collect::<Vec<_>>()
 }
 
-/// check api defined by users, if no duplicates, then generate all symbols (api function name)
-/// ,including those generated implicitily by frb
+/// check api defined by users, if no duplicates, then generate all symbols (api function name),
+/// including those generated implicitily by frb
 pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<String>, anyhow::Error> {
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
@@ -75,6 +54,24 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
         // for avoiding redundant generation in dart
         all_symbols.extend(raw_ir_file.get_all_symbols(config, i + 1));
     }
-    find_all_duplicates(explicit_raw_symbols)?;
+    let duplicates = find_all_duplicates(&explicit_raw_symbols);
+    if !duplicates.is_empty() {
+        let mut duplicated_symbols = duplicates
+            .iter()
+            .map(|s| s.clone() + ",")
+            .collect::<String>();
+        duplicated_symbols.pop();
+
+        let (symbol_str, verb_str) = if duplicates.len() == 1 {
+            ("symbol", "has")
+        } else {
+            ("symbols", "have")
+        };
+        panic!(
+            "{} [{}] {} already been defined",
+            symbol_str, duplicated_symbols, verb_str
+        );
+    }
+
     Ok(all_symbols)
 }
