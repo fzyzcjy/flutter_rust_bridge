@@ -44,7 +44,6 @@ impl IrTypeTrait for IrTypePrimitive {
 
     fn dart_wire_type(&self) -> String {
         match self {
-            IrTypePrimitive::Bool => "int".to_owned(),
             _ => self.dart_api_type(),
         }
     }
@@ -62,12 +61,12 @@ impl IrTypeTrait for IrTypePrimitive {
             IrTypePrimitive::U32 => "u32",
             IrTypePrimitive::I32 => "i32",
             IrTypePrimitive::U64 => "u64",
+            IrTypePrimitive::Unit => "unit",
+            IrTypePrimitive::Usize => "usize",
             IrTypePrimitive::I64 => "i64",
             IrTypePrimitive::F32 => "f32",
             IrTypePrimitive::F64 => "f64",
             IrTypePrimitive::Bool => "bool",
-            IrTypePrimitive::Unit => "unit",
-            IrTypePrimitive::Usize => "usize",
         }
         .to_string()
     }
@@ -79,7 +78,7 @@ impl IrTypePrimitive {
     /// whenever primitives are put behind a pointer.
     pub fn dart_native_type(&self) -> &'static str {
         match self {
-            IrTypePrimitive::U8 | IrTypePrimitive::Bool => "ffi.Uint8",
+            IrTypePrimitive::U8 => "ffi.Uint8",
             IrTypePrimitive::I8 => "ffi.Int8",
             IrTypePrimitive::U16 => "ffi.Uint16",
             IrTypePrimitive::I16 => "ffi.Int16",
@@ -87,10 +86,11 @@ impl IrTypePrimitive {
             IrTypePrimitive::I32 => "ffi.Int32",
             IrTypePrimitive::U64 => "ffi.Uint64",
             IrTypePrimitive::I64 => "ffi.Int64",
+            IrTypePrimitive::Usize => "ffi.Usize",
             IrTypePrimitive::F32 => "ffi.Float",
             IrTypePrimitive::F64 => "ffi.Double",
+            IrTypePrimitive::Bool => "ffi.Bool",
             IrTypePrimitive::Unit => "ffi.Void",
-            IrTypePrimitive::Usize => "ffi.Usize",
         }
     }
     pub fn try_from_rust_str(s: &str) -> Option<Self> {
