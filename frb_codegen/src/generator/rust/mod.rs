@@ -26,17 +26,6 @@ use crate::others::*;
 
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
-pub struct GeneratorOptions {
-    pub should_generate_sync_execution_mode_utility: bool,
-}
-impl Default for GeneratorOptions {
-    fn default() -> Self {
-        Self {
-            should_generate_sync_execution_mode_utility: true,
-        }
-    }
-}
-
 pub struct Output {
     pub code: String,
     pub extern_func_names: Vec<String>,
