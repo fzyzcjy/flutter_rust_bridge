@@ -4,6 +4,7 @@ use std::path::Path;
 use log::info;
 use pathdiff::diff_paths;
 
+use crate::commands::BindgenRustToDartArg;
 use crate::others::*;
 use crate::utils::*;
 
@@ -57,33 +58,26 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 
-    let c_struct_names = ir_file.get_c_struct_names();
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
-    let c_output_path = &temp_bindgen_c_output_file
-        .path()
-        .as_os_str()
-        .to_str()
-        .unwrap();
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
-            commands::cbindgen(
-                &config.rust_crate_dir,
-                c_output_path,
-                c_struct_names,
+            commands::bindgen_rust_to_dart(BindgenRustToDartArg {
+                rust_crate_dir: &config.rust_crate_dir,
+                c_output_path: temp_bindgen_c_output_file
+                    .path()
+                    .as_os_str()
+                    .to_str()
+                    .unwrap(),
+                dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+                dart_class_name: &config.dart_wire_class_name(),
+                c_struct_names: ir_file.get_c_struct_names(),
                 exclude_symbols,
-            )
-        },
-        || {
-            commands::ffigen(
-                c_output_path,
-                temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-                &config.dart_wire_class_name(),
-                &config.llvm_path[..],
-                &config.llvm_compiler_opts,
-            )
+                llvm_install_path: &config.llvm_path[..],
+                llvm_compiler_opts: &config.llvm_compiler_opts,
+            })
         },
     )?;
 

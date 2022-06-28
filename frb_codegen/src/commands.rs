@@ -25,6 +25,33 @@ pub fn ensure_tools_available() -> Result {
     Ok(())
 }
 
+pub(crate) struct BindgenRustToDartArg<'a> {
+    pub rust_crate_dir: &'a str,
+    pub c_output_path: &'a str,
+    pub dart_output_path: &'a str,
+    pub dart_class_name: &'a str,
+    pub c_struct_names: Vec<String>,
+    pub exclude_symbols: Vec<String>,
+    pub llvm_install_path: &'a [String],
+    pub llvm_compiler_opts: &'a str,
+}
+
+pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<()> {
+    cbindgen(
+        arg.rust_crate_dir,
+        arg.c_output_path,
+        arg.c_struct_names,
+        arg.exclude_symbols,
+    )?;
+    ffigen(
+        arg.c_output_path,
+        arg.dart_output_path,
+        arg.dart_class_name,
+        arg.llvm_install_path,
+        arg.llvm_compiler_opts,
+    )
+}
+
 #[must_use = "Error path must be handled."]
 fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Output {
     let mut cmd = Command::new(bin);
@@ -77,7 +104,7 @@ fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Outpu
     result
 }
 
-pub(crate) fn cbindgen(
+fn cbindgen(
     rust_crate_dir: &str,
     c_output_path: &str,
     c_struct_names: Vec<String>,
@@ -125,7 +152,7 @@ pub(crate) fn cbindgen(
     }
 }
 
-pub fn ffigen(
+fn ffigen(
     c_path: &str,
     dart_path: &str,
     dart_class_name: &str,
