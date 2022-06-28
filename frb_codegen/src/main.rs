@@ -20,8 +20,8 @@ fn main() -> anyhow::Result<()> {
 
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
-    for (i, config) in configs.iter().enumerate() {
-        frb_codegen(config, &all_symbols, i + 1).unwrap();
+    for config in configs.iter() {
+        frb_codegen(config, &all_symbols).unwrap();
     }
 
     info!("Now go and use it :)");

@@ -45,13 +45,13 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             .unwrap_or(obj)
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_cnt: usize) -> String {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_index: usize) -> String {
         generate_list_allocate_func(
             collector,
             &self.ir.safe_ident(),
             &self.ir,
             &self.ir.inner,
-            block_cnt,
+            block_index,
         )
     }
 

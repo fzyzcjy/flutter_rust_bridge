@@ -23,9 +23,9 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         ])
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_cnt: usize) -> String {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_index: usize) -> String {
         collector.generate(
-            &format!("new_{}_{}", self.ir.safe_ident(), block_cnt),
+            &format!("new_{}_{}", self.ir.safe_ident(), block_index),
             &["len: i32"],
             Some(&format!(
                 "{}{}",

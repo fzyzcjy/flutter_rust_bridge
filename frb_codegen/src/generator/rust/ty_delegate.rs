@@ -31,14 +31,14 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_cnt: usize) -> String {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_index: usize) -> String {
         match &self.ir {
             list @ IrTypeDelegate::StringList => generate_list_allocate_func(
                 collector,
                 &self.ir.safe_ident(),
                 list,
                 &list.get_delegate(),
-                block_cnt,
+                block_index,
             ),
             _ => "".to_string(),
         }

@@ -45,14 +45,14 @@ where
 pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<String>, anyhow::Error> {
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
-    for (i, config) in configs.iter().enumerate() {
+    for config in configs {
         let raw_ir_file = config.get_ir_file();
 
         // for checking explicit api duplication
         explicit_raw_symbols.extend(raw_ir_file.funcs.iter().map(|f| f.name.clone()));
 
         // for avoiding redundant generation in dart
-        all_symbols.extend(raw_ir_file.get_all_symbols(config, i + 1));
+        all_symbols.extend(raw_ir_file.get_all_symbols(config));
     }
     let duplicates = find_all_duplicates(&explicit_raw_symbols);
     if !duplicates.is_empty() {

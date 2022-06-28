@@ -36,16 +36,16 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         src.wrap_obj(self.self_access(obj))
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_cnt: usize) -> String {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_index: usize) -> String {
         match &*self.ir.inner {
             Primitive(prim) => collector.generate(
-                &format!("new_{}_{}", self.ir.safe_ident(), block_cnt),
+                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
                 &[&format!("value: {}", prim.rust_wire_type())],
                 Some(&format!("*mut {}", prim.rust_wire_type())),
                 "support::new_leak_box_ptr(value)",
             ),
             inner => collector.generate(
-                &format!("new_{}_{}", self.ir.safe_ident(), block_cnt),
+                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
                 &[],
                 Some(&[self.ir.rust_wire_modifier(), self.ir.rust_wire_type()].concat()),
                 &format!(

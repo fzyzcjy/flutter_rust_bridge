@@ -6,7 +6,7 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn api2wire_body(&self, block_cnt: usize) -> Option<String> {
+    fn api2wire_body(&self, block_index: usize) -> Option<String> {
         Some(match self.ir {
             IrTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
@@ -25,7 +25,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     ans.ref.ptr[i] = _api2wire_String(raw[i]);
                 }}
                 return ans;",
-                block_cnt
+                block_index
             ),
         })
     }

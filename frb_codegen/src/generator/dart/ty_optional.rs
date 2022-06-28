@@ -5,7 +5,7 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
 impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
-    fn api2wire_body(&self, _block_cnt: usize) -> Option<String> {
+    fn api2wire_body(&self, _block_index: usize) -> Option<String> {
         Some(format!(
             "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
             self.ir.inner.safe_ident()

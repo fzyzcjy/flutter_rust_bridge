@@ -26,11 +26,7 @@ mod transformer;
 mod utils;
 use error::*;
 
-pub fn frb_codegen(
-    config: &config::Opts,
-    all_symbols: &[String],
-    block_cnt: usize,
-) -> anyhow::Result<()> {
+pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
     ensure_tools_available()?;
 
     info!("Picked config: {:?}", config);
@@ -45,13 +41,13 @@ pub fn frb_codegen(
     let ir_file = transformer::transform(raw_ir_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust = ir_file.generate_rust(config, block_cnt);
+    let generated_rust = ir_file.generate_rust(config);
     let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
     fs::create_dir_all(&rust_output_dir)?;
     fs::write(&config.rust_output_path, generated_rust.code)?;
 
     info!("Phase: Generate Dart code");
-    let (generated_dart, needs_freezed) = ir_file.generate_dart(config, block_cnt)?;
+    let (generated_dart, needs_freezed) = ir_file.generate_dart(config)?;
 
     info!("Phase: Other things");
 

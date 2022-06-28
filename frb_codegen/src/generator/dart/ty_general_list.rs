@@ -5,7 +5,7 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
 impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn api2wire_body(&self, block_cnt: usize) -> Option<String> {
+    fn api2wire_body(&self, block_index: usize) -> Option<String> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         Some(format!(
             "final ans = inner.new_{}_{}(raw.length);
@@ -14,7 +14,7 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
                 }}
                 return ans;",
             self.ir.safe_ident(),
-            block_cnt,
+            block_index,
             self.ir.inner.safe_ident()
         ))
     }

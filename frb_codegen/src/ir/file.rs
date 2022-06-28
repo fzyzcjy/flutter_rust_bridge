@@ -76,18 +76,17 @@ impl IrFile {
         ans
     }
 
-    pub fn generate_rust(&self, config: &Opts, block_cnt: usize) -> generator::rust::Output {
+    pub fn generate_rust(&self, config: &Opts) -> generator::rust::Output {
         generator::rust::generate(
             self,
             &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-            block_cnt,
+            config.block_index,
         )
     }
 
     pub fn generate_dart(
         &self,
         config: &Opts,
-        block_cnt: usize,
     ) -> Result<(generator::dart::Output, bool), anyhow::Error> {
         let (generated_dart, needs_freezed) = generator::dart::generate(
             self,
@@ -97,13 +96,13 @@ impl IrFile {
             config
                 .dart_output_path_name()
                 .ok_or_else(|| Error::str("Invalid dart_output_path_name"))?,
-            block_cnt,
+            config.block_index,
         );
         Ok((generated_dart, needs_freezed))
     }
     /// get all symbols(function names) defined explicitly or implictily
-    pub fn get_all_symbols(&self, config: &Opts, block_cnt: usize) -> Vec<String> {
-        let mut generated_rust = self.generate_rust(config, block_cnt);
+    pub fn get_all_symbols(&self, config: &Opts) -> Vec<String> {
+        let mut generated_rust = self.generate_rust(config);
 
         generated_rust.extern_func_names = generated_rust
             .extern_func_names

@@ -6,7 +6,7 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
 impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
-    fn api2wire_body(&self, block_cnt: usize) -> Option<String> {
+    fn api2wire_body(&self, block_index: usize) -> Option<String> {
         // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
         // Instead, Rust receives that pointer and now it is in control of Rust.
         // Therefore, *never* continue to use this pointer after you have passed the pointer
@@ -21,7 +21,7 @@ impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
                 ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
                 return ans;",
             self.ir.safe_ident(),
-            block_cnt,
+            block_index,
         ))
     }
 

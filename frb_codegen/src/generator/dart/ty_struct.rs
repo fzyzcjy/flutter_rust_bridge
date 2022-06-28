@@ -6,7 +6,7 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn api2wire_body(&self, _block_cnt: usize) -> Option<String> {
+    fn api2wire_body(&self, _block_index: usize) -> Option<String> {
         None
     }
 
