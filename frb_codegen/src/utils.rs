@@ -54,11 +54,7 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
     }
     let duplicates = find_all_duplicates(&explicit_raw_symbols);
     if !duplicates.is_empty() {
-        let mut duplicated_symbols = duplicates
-            .iter()
-            .map(|s| s.clone() + ",")
-            .collect::<String>();
-        duplicated_symbols.pop();
+        let duplicated_symbols = duplicates.join(",");
 
         let (symbol_str, verb_str) = if duplicates.len() == 1 {
             ("symbol", "has")
