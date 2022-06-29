@@ -43,9 +43,7 @@ impl IrTypeTrait for IrTypePrimitive {
     }
 
     fn dart_wire_type(&self) -> String {
-        match self {
-            _ => self.dart_api_type(),
-        }
+        self.dart_api_type()
     }
 
     fn rust_api_type(&self) -> String {
