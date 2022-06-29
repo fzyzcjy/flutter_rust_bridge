@@ -1,4 +1,5 @@
 use std::collections::HashSet;
+use std::fmt::Display;
 use std::fs;
 use std::hash::Hash;
 use std::path::Path;
@@ -68,4 +69,17 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
     }
 
     Ok(all_symbols)
+}
+
+#[derive(PartialEq, Eq, Debug, Clone, Copy)]
+pub struct BlockIndex(pub usize);
+
+impl BlockIndex {
+    pub const PRIMARY: BlockIndex = BlockIndex(0);
+}
+
+impl Display for BlockIndex {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.0 + 1)
+    }
 }

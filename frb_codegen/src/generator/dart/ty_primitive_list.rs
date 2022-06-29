@@ -2,11 +2,12 @@ use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::type_dart_generator_struct;
+use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
 impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
-    fn api2wire_body(&self, block_index: usize) -> Option<String> {
+    fn api2wire_body(&self, block_index: BlockIndex) -> Option<String> {
         // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
         // Instead, Rust receives that pointer and now it is in control of Rust.
         // Therefore, *never* continue to use this pointer after you have passed the pointer

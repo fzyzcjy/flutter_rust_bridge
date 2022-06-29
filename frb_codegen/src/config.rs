@@ -14,6 +14,7 @@ use toml::Value;
 
 use crate::ir::IrFile;
 use crate::parser;
+use crate::utils::BlockIndex;
 
 #[derive(StructOpt, Debug, PartialEq, Deserialize, Default)]
 #[structopt(setting(AppSettings::DeriveDisplayOrder))]
@@ -79,7 +80,7 @@ pub struct Opts {
     pub manifest_path: String,
     pub dart_root: Option<String>,
     pub build_runner: bool,
-    pub block_index: usize, //NOTE: the index is counted from 1, not 0
+    pub block_index: BlockIndex, //NOTE: the index is counted from 1, not 0
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
@@ -215,7 +216,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 manifest_path: manifest_paths[i].clone(),
                 dart_root: dart_roots[i].clone(),
                 build_runner, //same for all rust api blocks
-                block_index: i + 1,
+                block_index: BlockIndex(i),
             }
         })
         .collect()

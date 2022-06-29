@@ -26,6 +26,7 @@ use log::debug;
 use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::others::*;
+use crate::utils::BlockIndex;
 
 pub struct Output {
     pub file_prelude: DartBasicCode,
@@ -39,7 +40,7 @@ pub fn generate(
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
     dart_output_file_root: &str,
-    block_index: usize,
+    block_index: BlockIndex,
 ) -> (Output, bool) {
     let DartApiSpec {
         dart_funcs,
@@ -93,7 +94,7 @@ struct DartApiSpec {
     needs_freezed: bool,
 }
 
-fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, block_index: usize) -> DartApiSpec {
+fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, block_index: BlockIndex) -> DartApiSpec {
     let distinct_types = ir_file.distinct_types(true, true);
     let distinct_input_types = ir_file.distinct_types(true, false);
     let distinct_output_types = ir_file.distinct_types(false, true);
@@ -435,7 +436,7 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
     }
 }
 
-fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, block_index: usize) -> String {
+fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, block_index: BlockIndex) -> String {
     if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file).api2wire_body(block_index) {
         format!(
             "{} _api2wire_{}({} raw) {{

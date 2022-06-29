@@ -3,6 +3,7 @@ use crate::generator::rust::{generate_import, ExternFuncCollector};
 use crate::ir::IrType::Primitive;
 use crate::ir::*;
 use crate::type_rust_generator_struct;
+use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
@@ -36,7 +37,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         src.wrap_obj(self.self_access(obj))
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_index: usize) -> String {
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        block_index: BlockIndex,
+    ) -> String {
         match &*self.ir.inner {
             Primitive(prim) => collector.generate(
                 &format!("new_{}_{}", self.ir.safe_ident(), block_index),

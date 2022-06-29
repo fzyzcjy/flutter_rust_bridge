@@ -3,11 +3,12 @@ use crate::generator::dart::ty::*;
 use crate::ir::IrType::{EnumRef, Primitive, StructRef};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
+use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn api2wire_body(&self, block_index: usize) -> Option<String> {
+    fn api2wire_body(&self, block_index: BlockIndex) -> Option<String> {
         Some(match &*self.ir.inner {
             Primitive(_) => {
                 format!(

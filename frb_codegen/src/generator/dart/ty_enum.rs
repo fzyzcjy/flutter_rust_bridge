@@ -2,11 +2,12 @@ use crate::generator::dart::dart_comments;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::type_dart_generator_struct;
+use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn api2wire_body(&self, _block_index: usize) -> Option<String> {
+    fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
         if !self.ir.is_struct {
             Some("return raw.index;".to_owned())
         } else {

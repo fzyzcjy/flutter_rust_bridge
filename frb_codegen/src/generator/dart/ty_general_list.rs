@@ -1,11 +1,12 @@
 use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::type_dart_generator_struct;
+use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
 impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn api2wire_body(&self, block_index: usize) -> Option<String> {
+    fn api2wire_body(&self, block_index: BlockIndex) -> Option<String> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         Some(format!(
             "final ans = inner.new_{}_{}(raw.length);

@@ -2,6 +2,7 @@ use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
 use crate::type_rust_generator_struct;
+use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
@@ -23,7 +24,11 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         ])
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, block_index: usize) -> String {
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        block_index: BlockIndex,
+    ) -> String {
         collector.generate(
             &format!("new_{}_{}", self.ir.safe_ident(), block_index),
             &["len: i32"],

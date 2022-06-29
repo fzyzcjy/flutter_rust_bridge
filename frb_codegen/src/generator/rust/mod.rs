@@ -23,6 +23,7 @@ use std::collections::HashSet;
 use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::others::*;
+use crate::utils::BlockIndex;
 
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
@@ -41,7 +42,7 @@ impl Output {
     }
 }
 
-pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, block_index: usize) -> Output {
+pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, block_index: BlockIndex) -> Output {
     let mut generator = Generator::new();
     let code = generator.generate(ir_file, rust_wire_mod, block_index);
 
@@ -62,7 +63,12 @@ impl Generator {
         }
     }
 
-    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str, block_index: usize) -> String {
+    fn generate(
+        &mut self,
+        ir_file: &IrFile,
+        rust_wire_mod: &str,
+        block_index: BlockIndex,
+    ) -> String {
         let mut lines: Vec<String> = vec![];
 
         let distinct_input_types = ir_file.distinct_types(true, false);
@@ -155,7 +161,7 @@ impl Generator {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
-        if block_index == 1 {
+        if block_index == BlockIndex::PRIMARY {
             lines.push(self.section_header_comment("sync execution mode utility"));
             lines.push(self.generate_sync_execution_mode_utility());
         }
@@ -343,7 +349,7 @@ impl Generator {
         &mut self,
         ty: &IrType,
         ir_file: &IrFile,
-        block_index: usize,
+        block_index: BlockIndex,
     ) -> String {
         // println!("generate_allocate_funcs: {:?}", ty);
         TypeRustGenerator::new(ty.clone(), ir_file)
@@ -447,7 +453,7 @@ pub fn generate_list_allocate_func(
     safe_ident: &str,
     list: &impl IrTypeTrait,
     inner: &IrType,
-    block_index: usize,
+    block_index: BlockIndex,
 ) -> String {
     collector.generate(
         &format!("new_{}_{}", safe_ident,block_index),
