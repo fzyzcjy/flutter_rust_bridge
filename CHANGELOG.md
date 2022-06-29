@@ -1,3 +1,7 @@
+## 1.35.0
+
+* Fix for `store_dart_post_cobject` signature mismatch with `ffigen` >= 6.0 #536 (thanks @SecondFlight)
+
 ## 1.34.2
 
 * Bump dependency versions
