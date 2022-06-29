@@ -56,7 +56,7 @@ jobs:
 
       - name: Run bash script (multi blocks)
         working-directory: ./frb_example/pure_dart_multi/dart
-        run: chmod +x ./run.sh
+        run: chmod +x ./run.sh && ./run.sh
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
 
