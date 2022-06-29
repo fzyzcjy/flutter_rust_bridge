@@ -571,5 +571,5 @@ jobs:
         if: ${{ matrix.os.family != 'osx' }}
         run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.dart
 
-      - name: "Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)"
+      - name: "Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes! On Windows, see https://github.com/fzyzcjy/flutter_rust_bridge/pull/536#issuecomment-1170259918 for additional instructions.)"
         run: git diff --exit-code
