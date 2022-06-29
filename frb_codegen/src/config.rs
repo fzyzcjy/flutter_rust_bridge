@@ -80,7 +80,7 @@ pub struct Opts {
     pub manifest_path: String,
     pub dart_root: Option<String>,
     pub build_runner: bool,
-    pub block_index: BlockIndex, //NOTE: the index is counted from 1, not 0
+    pub block_index: BlockIndex,
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
