@@ -21,21 +21,26 @@ Let us implement a simple logging system (adapted from the logging system I use 
 The Rust `api.rs`:
 
 ```rust,noplayground
-pub struct LogEntry {
-    pub time_millis: i64,
-    pub level: i32,
-    pub tag: String,
-    pub msg: String,
+use flutter_rust_bridge::{StreamSink};
+
+lazy_static::lazy_static! {
+    pub static ref EVENT_MESSENGER_SINK: Arc<Mutex<Option<StreamSink<LogEntry>>>> =
+        Arc::new(Mutex::new(None));
+}
+pub fn create_log_stream(s: StreamSink<LogEntry>) -> anyhow::Result<()> {
+    EVENT_MESSENGER_SINK.lock().unwrap().replace(s);
+    let e = EVENT_MESSENGER_SINK.clone();
+    std::thread::spawn(move ||{
+        for i in 0..100 {
+            e.lock().unwrap().as_ref().unwrap().add(LogEntry{
+                message: i.to_string()
+            });
+            std::thread::sleep(std::time::Duration::from_secs(1));
+        }
+    });
+    Ok(())
 }
 
-// Simplified just for demonstration.
-// To compile, you need a OnceCell, or Mutex, or RwLock
-// Also see https://github.com/fzyzcjy/flutter_rust_bridge/issues/398
-lazy_static! { static ref log_stream_sink: StreamSink<LogEntry>; }
-
-pub fn create_log_stream(s: StreamSink<LogEntry>) {
-    stream_sink = s;
-}
 ```
 
 Now Rust will probably complain at you because `IntoDart` is not implemented for `LogEntry`. This is expected, because `flutter_rust_bridge` will generate this trait implementation for you.
@@ -52,16 +57,10 @@ Now let us use it in Dart:
 
 ```dart
 Future<void> setup() async {
-    createLogStream().listen((event) {
-      print('log from rust: ${event.level} ${event.tag} ${event.msg} ${event.timeMillis}');
+    myLibInstance.createLogStream().listen((event) {
+      print('log from rust: ${event.message}');
     });
 }
-```
-
-And now we can happily log anything in Rust:
-
-```rust,noplayground
-log_stream_sink.add(LogEntry { msg: "hello I am a log from Rust", ... })
 ```
 
 Of course, you can implement a logger following the Rust's `log` crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like `info!`. I exactly did that in my project.
