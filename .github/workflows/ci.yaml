@@ -38,7 +38,7 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install ffigen
-        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
+        run: dart pub global activate ffigen ^6.0.0
 
       - name: Install dart dependencies
         working-directory: ./frb_example/pure_dart/dart
@@ -324,7 +324,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
       - name: Install ffigen
-        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
+        run: dart pub global activate ffigen ^6.0.0
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
       - name: Build codegen
@@ -385,7 +385,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
       - name: Install ffigen
-        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
+        run: dart pub global activate ffigen ^6.0.0
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
 
@@ -528,7 +528,7 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install dart global dependency
-        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
+        run: dart pub global activate ffigen ^6.0.0
 
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)
