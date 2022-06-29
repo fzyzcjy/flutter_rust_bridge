@@ -38,7 +38,7 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install ffigen
-        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
+        run: dart pub global activate ffigen ^6.0.1
 
       - name: Install dart dependencies
         working-directory: ./frb_example/pure_dart/dart
@@ -324,7 +324,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
       - name: Install ffigen
-        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
+        run: dart pub global activate ffigen ^6.0.1
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
       - name: Build codegen
@@ -385,7 +385,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
       - name: Install ffigen
-        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
+        run: dart pub global activate ffigen ^6.0.1
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
 
@@ -528,7 +528,7 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install dart global dependency
-        run: dart pub global activate ffigen ^5.0.0 # TODO migrate to 6.x later
+        run: dart pub global activate ffigen ^6.0.1
 
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)
@@ -571,5 +571,5 @@ jobs:
         if: ${{ matrix.os.family != 'osx' }}
         run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.dart
 
-      - name: "Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)"
+      - name: "Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes! On Windows, see https://github.com/fzyzcjy/flutter_rust_bridge/pull/536#issuecomment-1170259918 for additional instructions.)"
         run: git diff --exit-code
