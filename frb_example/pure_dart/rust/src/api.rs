@@ -1,6 +1,5 @@
 #![allow(unused_variables)]
 
-use std::collections::HashMap;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
@@ -593,12 +592,11 @@ pub struct Log {
 }
 
 pub fn handle_stream_1(key: u32, max: u32, sink: StreamSink<Log>) -> Result<(), anyhow::Error> {
-    let s = sink.clone();
     std::thread::spawn(move || {
         for i in 0..max {
-            s.add(Log { key, value: i });
+            sink.add(Log { key, value: i });
         }
-        s.close();
+        sink.close();
     });
     Ok(())
 }
