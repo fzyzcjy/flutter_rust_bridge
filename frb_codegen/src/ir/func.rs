@@ -6,7 +6,7 @@ pub struct IrFunc {
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub fallible: bool,
-    pub mode: IrFuncMode,
+    pub mode: (IrFuncMode, Option<usize>),
     pub comments: Vec<IrComment>,
 }
 

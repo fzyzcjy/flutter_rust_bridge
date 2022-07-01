@@ -1,0 +1,2 @@
+[workspace]
+members = ["frb_codegen", "frb_macros", "something"]
