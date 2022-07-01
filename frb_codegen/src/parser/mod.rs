@@ -128,7 +128,7 @@ impl<'a> Parser<'a> {
                 }) {
                     IrFuncArg::StreamSinkType(ty) => {
                         output = Some(ty);
-                        mode = Some(IrFuncMode::Stream { index: i });
+                        mode = Some(IrFuncMode::Stream { argument_index: i });
                     }
                     IrFuncArg::Type(ty) => {
                         inputs.push(IrField {

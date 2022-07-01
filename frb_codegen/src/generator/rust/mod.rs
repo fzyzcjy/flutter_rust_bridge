@@ -253,8 +253,8 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-        if let IrFuncMode::Stream { index } = func.mode {
-            inner_func_params.insert(index, "task_callback.stream_sink()".to_string());
+        if let IrFuncMode::Stream { argument_index } = func.mode {
+            inner_func_params.insert(argument_index, "task_callback.stream_sink()".to_string());
         }
         let wrap_info_obj = format!(
             "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
