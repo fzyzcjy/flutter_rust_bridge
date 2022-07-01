@@ -113,13 +113,14 @@ impl<'a> Parser<'a> {
         let mut fallible = true;
 
         for sig_input in &sig.inputs {
+            log::info!("#123abc sig_input: {:?}", sig_input);
             if let FnArg::Typed(ref pat_type) = sig_input {
                 let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
                     format!("{}", pat_ident.ident)
                 } else {
                     panic!("unexpected pat_type={:?}", pat_type)
                 };
-
+                log::info!("#123abc parsing name: {}", name);
                 match self.try_parse_fn_arg_type(&pat_type.ty).unwrap_or_else(|| {
                     panic!(
                         "Failed to parse function argument type `{}`",
@@ -193,7 +194,17 @@ fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
     for item in file.items.iter() {
         if let Item::Fn(ref item_fn) = item {
             if let Visibility::Public(_) = &item_fn.vis {
+                println!("#123abc item_fn: {:?}", item_fn);
                 src_fns.push(item_fn);
+            }
+        }
+        if let Item::Impl(ref item_impl) = item {
+            for item in &item_impl.items {
+                if let ImplItem::Method(item_method) = item {
+                    if let Visibility::Public(_) = &item_method.vis {
+                        println!("#123abc item_method: {:?}", item_method);
+                    }
+                }
             }
         }
     }
