@@ -6,7 +6,7 @@ pub struct IrFunc {
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub fallible: bool,
-    pub mode: (IrFuncMode, Option<usize>),
+    pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
 }
 
@@ -34,7 +34,7 @@ pub enum IrFuncArg {
 pub enum IrFuncMode {
     Normal,
     Sync,
-    Stream,
+    Stream { index: usize },
 }
 
 impl IrFuncMode {
@@ -42,7 +42,7 @@ impl IrFuncMode {
         match self {
             Self::Normal => format!("Future<{}>", inner),
             Self::Sync => inner.to_string(),
-            Self::Stream => format!("Stream<{}>", inner),
+            Self::Stream { .. } => format!("Stream<{}>", inner),
         }
     }
 
@@ -50,7 +50,7 @@ impl IrFuncMode {
         match self {
             Self::Normal => "Normal",
             Self::Sync => "Sync",
-            Self::Stream => "Stream",
+            Self::Stream { .. } => "Stream",
         }
     }
 

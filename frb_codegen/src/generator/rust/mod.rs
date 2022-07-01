@@ -224,7 +224,7 @@ impl Generator {
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
         let params = [
-            if func.mode.0.has_port_argument() {
+            if func.mode.has_port_argument() {
                 vec!["port_: i64".to_string()]
             } else {
                 vec![]
@@ -242,9 +242,8 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-        println!("#123abc func.mode index: {:?}", func.mode.1);
         let mut inner_func_params = [
-            match func.mode.0 {
+            match func.mode {
                 IrFuncMode::Normal | IrFuncMode::Sync => vec![],
                 _ => vec![],
             },
@@ -254,23 +253,18 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-        if let IrFuncMode::Stream = func.mode.0 {
-            inner_func_params.insert(
-                func.mode
-                    .1
-                    .expect("missing StreamSink index into funciont arguments"),
-                "task_callback.stream_sink()".to_string(),
-            );
+        if let IrFuncMode::Stream { index } = func.mode {
+            inner_func_params.insert(index, "task_callback.stream_sink()".to_string());
         }
         let wrap_info_obj = format!(
             "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
             func.name,
-            if func.mode.0.has_port_argument() {
+            if func.mode.has_port_argument() {
                 "Some(port_)"
             } else {
                 "None"
             },
-            func.mode.0.ffi_call_mode(),
+            func.mode.ffi_call_mode(),
         );
 
         let code_wire2api = func
@@ -294,7 +288,7 @@ impl Generator {
             format!("Ok({})", code_call_inner_func)
         };
 
-        let (handler_func_name, return_type, code_closure) = match func.mode.0 {
+        let (handler_func_name, return_type, code_closure) = match func.mode {
             IrFuncMode::Sync => (
                 "wrap_sync",
                 Some("support::WireSyncReturnStruct"),
@@ -304,7 +298,7 @@ impl Generator {
                     code_wire2api, code_call_inner_func_result,
                 ),
             ),
-            IrFuncMode::Normal | IrFuncMode::Stream => (
+            IrFuncMode::Normal | IrFuncMode::Stream { .. } => (
                 "wrap",
                 None,
                 format!(

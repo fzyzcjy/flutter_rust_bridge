@@ -321,7 +321,7 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let wire_param_list = [
-        if func.mode.0.has_port_argument() {
+        if func.mode.has_port_argument() {
             vec!["port_".to_string()]
         } else {
             vec![]
@@ -346,15 +346,15 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
 
     let partial = format!(
         "{} {}({{ {} }})",
-        func.mode.0.dart_return_type(&func.output.dart_api_type()),
+        func.mode.dart_return_type(&func.output.dart_api_type()),
         func.name.to_case(Case::Camel),
         full_func_param_list.join(","),
     );
 
-    let execute_func_name = match func.mode.0 {
+    let execute_func_name = match func.mode {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
-        IrFuncMode::Stream => "executeStream",
+        IrFuncMode::Stream{..} => "executeStream",
     };
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
@@ -377,7 +377,7 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
             .join(", "),
     );
 
-    let implementation = match func.mode.0 {
+    let implementation = match func.mode {
         IrFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
             callFfi: () => inner.{}({}),

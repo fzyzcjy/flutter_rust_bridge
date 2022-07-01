@@ -109,7 +109,7 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
-        let mut mode: (Option<IrFuncMode>, Option<usize>) = (None, None);
+        let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
         for (i, sig_input) in sig.inputs.iter().enumerate() {
@@ -128,7 +128,7 @@ impl<'a> Parser<'a> {
                 }) {
                     IrFuncArg::StreamSinkType(ty) => {
                         output = Some(ty);
-                        mode = (Some(IrFuncMode::Stream), Some(i));
+                        mode = Some(IrFuncMode::Stream { index: i });
                     }
                     IrFuncArg::Type(ty) => {
                         inputs.push(IrField {
@@ -165,16 +165,11 @@ impl<'a> Parser<'a> {
                     IrType::Primitive(IrTypePrimitive::Unit)
                 }
             });
-            mode = (
-                Some(
-                    if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
-                        IrFuncMode::Sync
-                    } else {
-                        IrFuncMode::Normal
-                    },
-                ),
-                None,
-            );
+            mode = if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
+                Some(IrFuncMode::Sync)
+            } else {
+                Some(IrFuncMode::Normal)
+            };
         }
 
         // let comments = func.attrs.iter().filter_map(extract_comments).collect();
@@ -184,7 +179,7 @@ impl<'a> Parser<'a> {
             inputs,
             output: output.expect("unsupported output"),
             fallible,
-            mode: (mode.0.expect("unsupported mode"), mode.1),
+            mode: mode.expect("missing mode"),
             comments: extract_comments(&func.attrs),
         }
     }
