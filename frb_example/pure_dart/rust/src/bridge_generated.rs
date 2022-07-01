@@ -618,6 +618,54 @@ pub extern "C" fn wire_create_event(port_: i64) {
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_1(port_: i64, key: u32, max: u32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_stream_1",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            let api_key = key.wire2api();
+            let api_max = max.wire2api();
+            move |task_callback| handle_stream_1(api_key, api_max, task_callback.stream_sink())
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_2(port_: i64, key: u32, max: u32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_stream_2",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            let api_key = key.wire2api();
+            let api_max = max.wire2api();
+            move |task_callback| handle_stream_2(api_key, task_callback.stream_sink(), api_max)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_3(port_: i64, key: u32, max: u32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_stream_3",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            let api_key = key.wire2api();
+            let api_max = max.wire2api();
+            move |task_callback| handle_stream_3(task_callback.stream_sink(), api_key, api_max)
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -1990,6 +2038,13 @@ impl support::IntoDart for KitchenSink {
     }
 }
 impl support::IntoDartExceptPrimitive for KitchenSink {}
+
+impl support::IntoDart for Log {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.key.into_dart(), self.value.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Log {}
 
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartCObject {

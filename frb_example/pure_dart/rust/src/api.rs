@@ -1,5 +1,6 @@
 #![allow(unused_variables)]
 
+use std::collections::HashMap;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
@@ -583,4 +584,29 @@ pub fn create_event() {
             payload: "payload".into(),
         });
     }
+}
+
+#[derive(Debug, Clone)]
+pub struct Log {
+    pub key: u32,
+    pub value: u32,
+}
+
+pub fn handle_stream_1(key: u32, max: u32, sink: StreamSink<Log>) -> Result<(), anyhow::Error> {
+    let s = sink.clone();
+    std::thread::spawn(move || {
+        for i in 0..max {
+            s.add(Log { key, value: i });
+        }
+        s.close();
+    });
+    Ok(())
+}
+
+pub fn handle_stream_2(key: u32, sink: StreamSink<Log>, max: u32) -> Result<(), anyhow::Error> {
+    handle_stream_1(key, max, sink)
+}
+
+pub fn handle_stream_3(sink: StreamSink<Log>, key: u32, max: u32) -> Result<(), anyhow::Error> {
+    handle_stream_1(key, max, sink)
 }
