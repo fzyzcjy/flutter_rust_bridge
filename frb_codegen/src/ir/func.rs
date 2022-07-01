@@ -34,6 +34,7 @@ pub enum IrFuncArg {
 pub enum IrFuncMode {
     Normal,
     Sync,
+    // We keep track of the index of StreamSink in the function arguments
     Stream { index: usize },
 }
 
