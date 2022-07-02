@@ -165,11 +165,13 @@ impl<'a> Parser<'a> {
                     IrType::Primitive(IrTypePrimitive::Unit)
                 }
             });
-            mode = if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
-                Some(IrFuncMode::Sync)
-            } else {
-                Some(IrFuncMode::Normal)
-            };
+            mode = Some(
+                if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
+                    IrFuncMode::Sync
+                } else {
+                    IrFuncMode::Normal
+                },
+            );
         }
 
         // let comments = func.attrs.iter().filter_map(extract_comments).collect();

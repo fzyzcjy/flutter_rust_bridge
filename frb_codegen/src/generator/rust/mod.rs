@@ -243,10 +243,7 @@ impl Generator {
         ]
         .concat();
         let mut inner_func_params = [
-            match func.mode {
-                IrFuncMode::Normal | IrFuncMode::Sync => vec![],
-                _ => vec![],
-            },
+            vec![],
             func.inputs
                 .iter()
                 .map(|field| format!("api_{}", field.name.rust_style()))
