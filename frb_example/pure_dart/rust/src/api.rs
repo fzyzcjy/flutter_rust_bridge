@@ -591,7 +591,7 @@ pub struct Log {
     pub value: u32,
 }
 
-pub fn handle_stream_1(key: u32, max: u32, sink: StreamSink<Log>) -> Result<(), anyhow::Error> {
+pub fn handle_stream_sink_at_1(key: u32, max: u32, sink: StreamSink<Log>) -> Result<(), anyhow::Error> {
     std::thread::spawn(move || {
         for i in 0..max {
             sink.add(Log { key, value: i });
@@ -601,10 +601,10 @@ pub fn handle_stream_1(key: u32, max: u32, sink: StreamSink<Log>) -> Result<(), 
     Ok(())
 }
 
-pub fn handle_stream_2(key: u32, sink: StreamSink<Log>, max: u32) -> Result<(), anyhow::Error> {
-    handle_stream_1(key, max, sink)
+pub fn handle_stream_sink_at_2(key: u32, sink: StreamSink<Log>, max: u32) -> Result<(), anyhow::Error> {
+    handle_stream_sink_at_1(key, max, sink)
 }
 
-pub fn handle_stream_3(sink: StreamSink<Log>, key: u32, max: u32) -> Result<(), anyhow::Error> {
-    handle_stream_1(key, max, sink)
+pub fn handle_stream_sink_at_3(sink: StreamSink<Log>, key: u32, max: u32) -> Result<(), anyhow::Error> {
+    handle_stream_sink_at_1(key, max, sink)
 }
