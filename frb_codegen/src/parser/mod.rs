@@ -7,6 +7,7 @@ use quote::quote;
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::*;
+use syn::token::Colon;
 
 use crate::ir::*;
 
@@ -39,7 +40,7 @@ impl<'a> Parser<'a> {
 }
 
 impl<'a> Parser<'a> {
-    fn parse(mut self, source_rust_content: &str, src_fns: Vec<&ItemFn>) -> IrFile {
+    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> IrFile {
         let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
 
         let has_executor = source_rust_content.contains(HANDLER_NAME);
@@ -188,21 +189,24 @@ impl<'a> Parser<'a> {
     }
 }
 
-fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
+fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
     let mut src_fns = Vec::new();
 
     for item in file.items.iter() {
         if let Item::Fn(ref item_fn) = item {
             if let Visibility::Public(_) = &item_fn.vis {
                 println!("#123abc item_fn: {:?}", item_fn);
-                src_fns.push(item_fn);
+                src_fns.push(item_fn.clone());
             }
         }
         if let Item::Impl(ref item_impl) = item {
             for item in &item_impl.items {
                 if let ImplItem::Method(item_method) = item {
                     if let Visibility::Public(_) = &item_method.vis {
-                        println!("#123abc item_method: {:?}", item_method);
+                        let f = item_method_to_function(item_impl, item_method)
+                            .expect("item implementation is unsupported");
+                        println!("#123abc generated f: {:?}", f);
+                        src_fns.push(f);
                     }
                 }
             }
@@ -210,6 +214,65 @@ fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
     }
 
     src_fns
+}
+
+fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -> Option<ItemFn> {
+    println!("item_method_to_function");
+    println!("#123abc item_impl: {:?}", item_impl);
+    println!("#123abc item_method: {:?}", item_method);
+    if let Type::Path(p) = item_impl.self_ty.as_ref() {
+        let struct_name = p.path.segments.first().unwrap().ident.to_string();
+        println!("#123abc struct_name is: {}", struct_name);
+        Some(ItemFn {
+            attrs: vec![],
+            vis: item_method.vis.clone(),
+            sig: Signature {
+                constness: None,
+                asyncness: None,
+                unsafety: None,
+                abi: None,
+                fn_token: item_method.sig.fn_token,
+                ident: Ident::new(
+                    format!("method_{}_{}", struct_name, item_method.sig.ident,).as_str(),
+                    item_method.sig.ident.span(),
+                ),
+                generics: item_method.sig.generics.clone(),
+                paren_token: item_method.sig.paren_token.clone(),
+                inputs: item_method
+                    .sig
+                    .inputs
+                    .iter()
+                    .map(|input| {
+                        if let Receiver::Receiver(r) = input {
+                            FnArg::Typed(PatType {
+                                attrs: vec![],
+                                pat: Box::new(Pat::Ident(PatIdent {
+                                    attrs: vec![],
+                                    by_ref: Some(Ref {
+                                        span: ?,
+                                    }),
+                                    mutability: None,
+                                    ident: Ident::new(struct_name.as_str(), ?),
+                                    subpat: None,
+                                })),
+                                colon_token: Colon{
+                                    spans: item_impl.,
+                                },
+                                ty: todo!(),
+                            })
+                        } else {
+                            input.clone()
+                        }
+                    })
+                    .collect::<Punctuated<_, _>>(),
+                variadic: None,
+                output: item_method.sig.output.clone(),
+            },
+            block: Box::new(item_method.block.clone()),
+        })
+    } else {
+        None
+    }
 }
 
 fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
