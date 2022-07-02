@@ -139,7 +139,7 @@ void main(List<String> args) async {
     expect(cnt, 10);
   });
 
-  test('dart call handle_stream_3', () {
+  test('dart call handle_stream', () {
     Future<void> _testHandleStream(
         Stream<Log> Function({dynamic hint, required int key, required int max})
             handleStreamFunction) async {
