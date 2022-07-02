@@ -96,6 +96,7 @@ More specifically, thanks for all these contributions:
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata.
 * [dbsxdbsx](https://github.com/dbsxdbsx): One command multi files.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
+* [lattice0](https://github.com/lattice0): StreamSink at any argument.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
