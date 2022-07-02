@@ -1,3 +1,7 @@
+## 1.36.0
+
+* Add support for stream sink into any argument #542 (thanks @lattice0)
+
 ## 1.35.0
 
 * Fix for `store_dart_post_cobject` signature mismatch with `ffigen` >= 6.0 #536 (thanks @SecondFlight)
