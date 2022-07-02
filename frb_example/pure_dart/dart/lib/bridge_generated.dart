@@ -187,6 +187,18 @@ abstract class FlutterRustBridgeExample {
   Future<void> createEvent({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
+
+  Stream<Log> handleStreamSinkAt1({required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta;
+
+  Stream<Log> handleStreamSinkAt2({required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta;
+
+  Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
 }
 
 class ApplicationEnv {
@@ -343,6 +355,16 @@ class KitchenSink with _$KitchenSink {
   const factory KitchenSink.enums(
     Weekdays field0,
   ) = Enums;
+}
+
+class Log {
+  final int key;
+  final int value;
+
+  Log({
+    required this.key,
+    required this.value,
+  });
 }
 
 enum MyEnum {
@@ -1024,6 +1046,48 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "create_event",
         argNames: [],
+      );
+
+  Stream<Log> handleStreamSinkAt1({required int key, required int max, dynamic hint}) =>
+      executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_stream_sink_at_1(port_, _api2wire_u32(key), _api2wire_u32(max)),
+        parseSuccessData: _wire2api_log,
+        constMeta: kHandleStreamSinkAt1ConstMeta,
+        argValues: [key, max],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_stream_sink_at_1",
+        argNames: ["key", "max"],
+      );
+
+  Stream<Log> handleStreamSinkAt2({required int key, required int max, dynamic hint}) =>
+      executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_stream_sink_at_2(port_, _api2wire_u32(key), _api2wire_u32(max)),
+        parseSuccessData: _wire2api_log,
+        constMeta: kHandleStreamSinkAt2ConstMeta,
+        argValues: [key, max],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_stream_sink_at_2",
+        argNames: ["key", "max"],
+      );
+
+  Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint}) =>
+      executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_stream_sink_at_3(port_, _api2wire_u32(key), _api2wire_u32(max)),
+        parseSuccessData: _wire2api_log,
+        constMeta: kHandleStreamSinkAt3ConstMeta,
+        argValues: [key, max],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_stream_sink_at_3",
+        argNames: ["key", "max"],
       );
 
   // Section: api2wire
@@ -1876,6 +1940,15 @@ List<Point> _wire2api_list_point(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_point).toList();
 }
 
+Log _wire2api_log(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Log(
+    key: _wire2api_u32(arr[0]),
+    value: _wire2api_u32(arr[1]),
+  );
+}
+
 MySize _wire2api_my_size(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -2688,6 +2761,57 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   late final _wire_create_eventPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_event');
   late final _wire_create_event = _wire_create_eventPtr.asFunction<void Function(int)>();
+
+  void wire_handle_stream_sink_at_1(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_1(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_1');
+  late final _wire_handle_stream_sink_at_1 =
+      _wire_handle_stream_sink_at_1Ptr.asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_sink_at_2(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_2(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_2');
+  late final _wire_handle_stream_sink_at_2 =
+      _wire_handle_stream_sink_at_2Ptr.asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_sink_at_3(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_3(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_3');
+  late final _wire_handle_stream_sink_at_3 =
+      _wire_handle_stream_sink_at_3Ptr.asFunction<void Function(int, int, int)>();
 
   ffi.Pointer<wire_StringList> new_StringList(
     int len,

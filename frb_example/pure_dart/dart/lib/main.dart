@@ -130,6 +130,26 @@ void main(List<String> args) async {
     expect(cnt, 10);
   });
 
+  test('dart call handle_stream', () {
+    Future<void> _testHandleStream(
+        Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
+      final max = 5;
+      final key = 8;
+      final stream = handleStreamFunction(key: key, max: max);
+      var cnt = 0;
+      await for (final value in stream) {
+        print("output from handle_stream_x's stream: $value");
+        expect(value.key, key);
+        cnt++;
+      }
+      expect(cnt, max);
+    }
+
+    _testHandleStream(api.handleStreamSinkAt1);
+    _testHandleStream(api.handleStreamSinkAt2);
+    _testHandleStream(api.handleStreamSinkAt3);
+  });
+
   test('dart call returnErr', () async {
     try {
       await api.returnErr();
