@@ -12,6 +12,15 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'dart:ffi' as ffi;
 
 abstract class Something {
+  Future<void> structWithMethodDoSomethingIsAMethod(
+      {required StructWithMethod structWithMethodIsAMethod,
+      required int u,
+      required String x,
+      dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta
+      get kStructWithMethodDoSomethingIsAMethodConstMeta;
+
   Future<StructWithMethod> returnStruct({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kReturnStructConstMeta;
@@ -32,6 +41,32 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
 
   SomethingImpl.raw(SomethingWire inner) : super(inner);
 
+  Future<void> structWithMethodDoSomethingIsAMethod(
+          {required StructWithMethod structWithMethodIsAMethod,
+          required int u,
+          required String x,
+          dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            inner.wire_StructWithMethod_do_something_is_a_method(
+                port_,
+                _api2wire_box_autoadd_struct_with_method(
+                    structWithMethodIsAMethod),
+                _api2wire_u32(u),
+                _api2wire_String(x)),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kStructWithMethodDoSomethingIsAMethodConstMeta,
+        argValues: [structWithMethodIsAMethod, u, x],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kStructWithMethodDoSomethingIsAMethodConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "StructWithMethod_do_something_is_a_method",
+            argNames: ["structWithMethodIsAMethod", "u", "x"],
+          );
+
   Future<StructWithMethod> returnStruct({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_struct(port_),
@@ -48,9 +83,42 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
       );
 
   // Section: api2wire
+  ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
+    return _api2wire_uint_8_list(utf8.encoder.convert(raw));
+  }
+
+  ffi.Pointer<wire_StructWithMethod> _api2wire_box_autoadd_struct_with_method(
+      StructWithMethod raw) {
+    final ptr = inner.new_box_autoadd_struct_with_method();
+    _api_fill_to_wire_struct_with_method(raw, ptr.ref);
+    return ptr;
+  }
+
+  int _api2wire_u32(int raw) {
+    return raw;
+  }
+
+  int _api2wire_u8(int raw) {
+    return raw;
+  }
+
+  ffi.Pointer<wire_uint_8_list> _api2wire_uint_8_list(Uint8List raw) {
+    final ans = inner.new_uint_8_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
 
   // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_box_autoadd_struct_with_method(
+      StructWithMethod apiObj, ffi.Pointer<wire_StructWithMethod> wireObj) {
+    _api_fill_to_wire_struct_with_method(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_struct_with_method(
+      StructWithMethod apiObj, wire_StructWithMethod wireObj) {
+    wireObj.something = _api2wire_String(apiObj.something);
+  }
 }
 
 // Section: wire2api
@@ -75,6 +143,10 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
   return raw as Uint8List;
 }
 
+void _wire2api_unit(dynamic raw) {
+  return;
+}
+
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 
 // AUTO GENERATED FILE, DO NOT EDIT.
@@ -97,6 +169,30 @@ class SomethingWire implements FlutterRustBridgeWireBase {
           lookup)
       : _lookup = lookup;
 
+  void wire_StructWithMethod_do_something_is_a_method(
+    int port_,
+    ffi.Pointer<wire_StructWithMethod> StructWithMethod_is_a_method,
+    int _u,
+    ffi.Pointer<wire_uint_8_list> _x,
+  ) {
+    return _wire_StructWithMethod_do_something_is_a_method(
+      port_,
+      StructWithMethod_is_a_method,
+      _u,
+      _x,
+    );
+  }
+
+  late final _wire_StructWithMethod_do_something_is_a_methodPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructWithMethod>,
+                  ffi.Uint32, ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_StructWithMethod_do_something_is_a_method');
+  late final _wire_StructWithMethod_do_something_is_a_method =
+      _wire_StructWithMethod_do_something_is_a_methodPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_StructWithMethod>, int,
+              ffi.Pointer<wire_uint_8_list>)>();
+
   void wire_return_struct(
     int port_,
   ) {
@@ -110,6 +206,32 @@ class SomethingWire implements FlutterRustBridgeWireBase {
           'wire_return_struct');
   late final _wire_return_struct =
       _wire_return_structPtr.asFunction<void Function(int)>();
+
+  ffi.Pointer<wire_StructWithMethod> new_box_autoadd_struct_with_method() {
+    return _new_box_autoadd_struct_with_method();
+  }
+
+  late final _new_box_autoadd_struct_with_methodPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<wire_StructWithMethod> Function()>>(
+      'new_box_autoadd_struct_with_method');
+  late final _new_box_autoadd_struct_with_method =
+      _new_box_autoadd_struct_with_methodPtr
+          .asFunction<ffi.Pointer<wire_StructWithMethod> Function()>();
+
+  ffi.Pointer<wire_uint_8_list> new_uint_8_list(
+    int len,
+  ) {
+    return _new_uint_8_list(
+      len,
+    );
+  }
+
+  late final _new_uint_8_listPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_uint_8_list> Function(
+              ffi.Int32)>>('new_uint_8_list');
+  late final _new_uint_8_list = _new_uint_8_listPtr
+      .asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
@@ -138,6 +260,17 @@ class SomethingWire implements FlutterRustBridgeWireBase {
           'store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
+}
+
+class wire_uint_8_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_StructWithMethod extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> something;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<

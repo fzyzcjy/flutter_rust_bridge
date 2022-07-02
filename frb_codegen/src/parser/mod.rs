@@ -6,8 +6,8 @@ use log::debug;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
-use syn::*;
 use syn::token::Colon;
+use syn::*;
 
 use crate::ir::*;
 
@@ -233,7 +233,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 abi: None,
                 fn_token: item_method.sig.fn_token,
                 ident: Ident::new(
-                    format!("method_{}_{}", struct_name, item_method.sig.ident,).as_str(),
+                    format!("{}_{}_is_a_method", struct_name, item_method.sig.ident,).as_str(),
                     item_method.sig.ident.span(),
                 ),
                 generics: item_method.sig.generics.clone(),
@@ -243,22 +243,40 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                     .inputs
                     .iter()
                     .map(|input| {
-                        if let Receiver::Receiver(r) = input {
+                        let span = item_method.sig.ident.span();
+
+                        if let FnArg::Receiver(Receiver {
+                            attrs,
+                            reference,
+                            mutability,
+                            self_token,
+                        }) = input
+                        {
+                            let mut segments = Punctuated::new();
+                            segments.push(PathSegment {
+                                ident: Ident::new(struct_name.as_str(), span),
+                                arguments: PathArguments::None,
+                            });
                             FnArg::Typed(PatType {
                                 attrs: vec![],
                                 pat: Box::new(Pat::Ident(PatIdent {
                                     attrs: vec![],
-                                    by_ref: Some(Ref {
-                                        span: ?,
-                                    }),
-                                    mutability: None,
-                                    ident: Ident::new(struct_name.as_str(), ?),
+                                    by_ref: Some(syn::token::Ref { span }),
+                                    mutability: mutability.clone(),
+                                    ident: Ident::new(
+                                        format!("{}_is_a_method", struct_name.as_str()).as_str(),
+                                        span,
+                                    ),
                                     subpat: None,
                                 })),
-                                colon_token: Colon{
-                                    spans: item_impl.,
-                                },
-                                ty: todo!(),
+                                colon_token: Colon { spans: [span] },
+                                ty: Box::new(Type::Path(TypePath {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments,
+                                    },
+                                })),
                             })
                         } else {
                             input.clone()

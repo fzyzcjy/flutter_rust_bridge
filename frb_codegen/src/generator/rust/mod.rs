@@ -242,8 +242,22 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-
-        let inner_func_params = [
+        //_is_a_method
+        let (is_a_method, struct_name) = {
+            if let Some(input) = func.inputs.get(0) {
+                let possible_method_marker = input.name.to_string();
+                let is_a_method = possible_method_marker.contains("is_a_method");
+                let struct_name = possible_method_marker.replace("_is_a_method", "");
+                (is_a_method, Some(struct_name))
+            } else {
+                (false, None)
+            }
+        };
+        println!(
+            "#123abc is_a_method: {:?}, struct name: {:?}",
+            is_a_method, struct_name
+        );
+        let mut inner_func_params = [
             match func.mode {
                 IrFuncMode::Normal | IrFuncMode::Sync => vec![],
                 IrFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
@@ -254,7 +268,7 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-
+        println!("#123abc inner_func_params: {:?}", inner_func_params);
         let wrap_info_obj = format!(
             "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
             func.name,
@@ -279,8 +293,22 @@ impl Generator {
             .collect::<Vec<_>>()
             .join("");
 
-        let code_call_inner_func = TypeRustGenerator::new(func.output.clone(), ir_file)
-            .wrap_obj(format!("{}({})", func.name, inner_func_params.join(", ")));
+        let code_call_inner_func = if !is_a_method {
+            TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
+                "{}({})",
+                func.name,
+                inner_func_params.join(", ")
+            ))
+        } else {
+            let struct_remove = format!("{}{}", struct_name.clone().unwrap(), "_");
+            inner_func_params[0] = format!("&{}", inner_func_params[0]);
+            TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
+                r"{}::{}({})",
+                struct_name.clone().unwrap(),
+                func.name.replace(&struct_remove, "").replace("_is_a_method", ""),
+                inner_func_params.join(", ")
+            ))
+        };
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func
         } else {

@@ -1,5 +1,5 @@
 pub struct StructWithMethod{
-    something: String
+    pub something: String
 }
 
 impl StructWithMethod {
