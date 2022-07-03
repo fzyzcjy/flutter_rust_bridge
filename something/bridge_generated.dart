@@ -12,14 +12,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'dart:ffi' as ffi;
 
 abstract class Something {
-  Future<void> doSomething(
-      {required StructWithMethod structWithMethodMethod,
-      required int u,
-      required String x,
-      dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kDoSomethingConstMeta;
-
   Future<StructWithMethod> returnStruct({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kReturnStructConstMeta;
@@ -31,6 +23,22 @@ class StructWithMethod {
   StructWithMethod({
     required this.something,
   });
+  Future<void> doSomethingMethod(
+          {required StructWithMethod structWithMethodMethod,
+          required int u,
+          required String x,
+          dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_do_something__method(
+            port_,
+            _api2wire_box_autoadd_struct_with_method(structWithMethodMethod),
+            _api2wire_u32(u),
+            _api2wire_String(x)),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kDoSomethingMethodConstMeta,
+        argValues: [structWithMethodMethod, u, x],
+        hint: hint,
+      ));
 }
 
 class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
@@ -39,29 +47,6 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
       SomethingImpl.raw(SomethingWire(dylib));
 
   SomethingImpl.raw(SomethingWire inner) : super(inner);
-
-  Future<void> doSomething(
-          {required StructWithMethod structWithMethodMethod,
-          required int u,
-          required String x,
-          dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_do_something(
-            port_,
-            _api2wire_box_autoadd_struct_with_method(structWithMethodMethod),
-            _api2wire_u32(u),
-            _api2wire_String(x)),
-        parseSuccessData: _wire2api_unit,
-        constMeta: kDoSomethingConstMeta,
-        argValues: [structWithMethodMethod, u, x],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kDoSomethingConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "do_something",
-        argNames: ["structWithMethodMethod", "u", "x"],
-      );
 
   Future<StructWithMethod> returnStruct({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
@@ -165,13 +150,13 @@ class SomethingWire implements FlutterRustBridgeWireBase {
           lookup)
       : _lookup = lookup;
 
-  void wire_do_something(
+  void wire_do_something__method(
     int port_,
     ffi.Pointer<wire_StructWithMethod> StructWithMethod__method,
     int _u,
     ffi.Pointer<wire_uint_8_list> _x,
   ) {
-    return _wire_do_something(
+    return _wire_do_something__method(
       port_,
       StructWithMethod__method,
       _u,
@@ -179,13 +164,17 @@ class SomethingWire implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _wire_do_somethingPtr = _lookup<
+  late final _wire_do_something__methodPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructWithMethod>,
-              ffi.Uint32, ffi.Pointer<wire_uint_8_list>)>>('wire_do_something');
-  late final _wire_do_something = _wire_do_somethingPtr.asFunction<
-      void Function(int, ffi.Pointer<wire_StructWithMethod>, int,
-          ffi.Pointer<wire_uint_8_list>)>();
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<wire_StructWithMethod>,
+              ffi.Uint32,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_do_something__method');
+  late final _wire_do_something__method =
+      _wire_do_something__methodPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_StructWithMethod>, int,
+              ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_return_struct(
     int port_,

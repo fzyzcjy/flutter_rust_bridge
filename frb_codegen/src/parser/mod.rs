@@ -205,7 +205,7 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
                     if let Visibility::Public(_) = &item_method.vis {
                         let f = item_method_to_function(item_impl, item_method)
                             .expect("item implementation is unsupported");
-                        println!("#123abc generated f: {:?}", f);
+                        println!("#123abc generated method: {:?}", f);
                         src_fns.push(f);
                     }
                 }
@@ -222,7 +222,13 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
     println!("#123abc item_method: {:?}", item_method);
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
+        let span = item_method.sig.ident.span();
         println!("#123abc struct_name is: {}", struct_name);
+        let new_ident = Ident::new(
+            format!("{}__method", item_method.sig.ident.clone().to_string()).as_str(),
+            span,
+        );
+
         Some(ItemFn {
             attrs: vec![],
             vis: item_method.vis.clone(),
@@ -232,7 +238,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 unsafety: None,
                 abi: None,
                 fn_token: item_method.sig.fn_token,
-                ident: item_method.sig.ident.clone(),
+                ident: new_ident,
                 generics: item_method.sig.generics.clone(),
                 paren_token: item_method.sig.paren_token.clone(),
                 inputs: item_method
@@ -240,8 +246,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                     .inputs
                     .iter()
                     .map(|input| {
-                        let span = item_method.sig.ident.span();
-
+                        //let span = item_method.sig.ident.span();
                         if let FnArg::Receiver(Receiver {
                             attrs,
                             reference,

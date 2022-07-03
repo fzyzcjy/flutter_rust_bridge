@@ -243,17 +243,9 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-        let (is_a_method, struct_name) = {
-            if let Some(input) = func.inputs.get(0) {
-                let possible_method = input.name.to_string();
-                let is_a_method = possible_method.contains("__method");
-                let struct_name = possible_method.replace("__method", "");
-                println!("input is a method: {:?}", input);
-                (is_a_method, Some(struct_name))
-            } else {
-                (false, None)
-            }
-        };
+
+        let (is_a_method, struct_name) = test_is_method(func);
+
         println!(
             "#123abc is_a_method: {:?}, struct name: {:?}",
             is_a_method, struct_name
@@ -464,6 +456,18 @@ impl Generator {
     fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         // println!("generate_impl_intodart: {:?}", ty);
         TypeRustGenerator::new(ty.clone(), ir_file).impl_intodart()
+    }
+}
+
+fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
+    if let Some(input) = func.inputs.get(0) {
+        let possible_method = input.name.to_string();
+        let is_a_method = possible_method.contains("__method");
+        let struct_name = possible_method.replace("__method", "");
+        println!("input is a method: {:?}", input);
+        (is_a_method, Some(struct_name))
+    } else {
+        (false, None)
     }
 }
 
