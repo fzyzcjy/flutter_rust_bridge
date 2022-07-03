@@ -187,10 +187,6 @@ abstract class FlutterRustBridgeExample {
   Future<void> createEvent({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
-
-  Future<int> sum({required StructWithMethod structWithMethodMethod, required int a, required int b, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kSumConstMeta;
 }
 
 class ApplicationEnv {
@@ -1036,21 +1032,6 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "create_event",
         argNames: [],
-      );
-
-  Future<int> sum({required StructWithMethod structWithMethodMethod, required int a, required int b, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_sum(port_, _api2wire_box_autoadd_struct_with_method(structWithMethodMethod),
-            _api2wire_u32(a), _api2wire_u32(b)),
-        parseSuccessData: _wire2api_u32,
-        constMeta: kSumConstMeta,
-        argValues: [structWithMethodMethod, a, b],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kSumConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "sum",
-        argNames: ["structWithMethodMethod", "a", "b"],
       );
 
   // Section: api2wire

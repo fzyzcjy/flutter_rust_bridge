@@ -102,12 +102,28 @@ fn get_dart_api_spec_from_ir_file(ir_file: &IrFile) -> DartApiSpec {
     let dart_funcs = ir_file
         .funcs
         .iter()
+        .filter(is_not_method)
         .map(generate_api_func)
         .collect::<Vec<_>>();
     let dart_structs = distinct_types
         .iter()
         .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file).structs())
         .collect::<Vec<_>>();
+    /* 
+    let get_struct_name_for_method = |f: &IrFunc| -> &IrStruct {
+        let name = &f.name;
+        todo!()
+    };
+
+    let dart_methods = ir_file
+        .funcs
+        .iter()
+        .filter(is_method)
+        .map(|f| generate_api_method(f, get_struct_name_for_method(f)))
+        .collect::<Vec<_>>();
+    
+    println!("dart_methods: {:?}", dart_methods);
+    */
     let dart_api2wire_funcs = distinct_input_types
         .iter()
         .map(|ty| generate_api2wire_func(ty, ir_file))
@@ -296,6 +312,7 @@ fn generate_file_prelude() -> DartBasicCode {
     }
 }
 
+#[derive(Debug)]
 struct GeneratedApiFunc {
     signature: String,
     implementation: String,
@@ -304,10 +321,23 @@ struct GeneratedApiFunc {
     companion_field_implementation: String,
 }
 
+fn is_not_method(f: &&IrFunc) -> bool {
+    !f.inputs
+        .iter()
+        .find(|input| input.name.raw.contains("__method"))
+        .is_some()
+}
+
+fn is_method(f: &&IrFunc) -> bool {
+    !is_not_method(f)
+}
+
 fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
+    println!("generate_api_func for {:?}", func);
     let raw_func_param_list = func
         .inputs
         .iter()
+        //.filter(|input| !input.name.raw.contains("__method"))
         .map(|input| {
             format!(
                 "{}{} {}",
@@ -317,7 +347,7 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
             )
         })
         .collect::<Vec<_>>();
-
+    println!("raw_func_param_list: {:?}", raw_func_param_list);
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let wire_param_list = [
@@ -343,6 +373,140 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
             .collect::<Vec<_>>(),
     ]
     .concat();
+    println!("wire_param_list: {:?}", wire_param_list);
+
+    let partial = format!(
+        "{} {}({{ {} }})",
+        func.mode.dart_return_type(&func.output.dart_api_type()),
+        func.name.to_case(Case::Camel),
+        full_func_param_list.join(","),
+    );
+
+    let execute_func_name = match func.mode {
+        IrFuncMode::Normal => "executeNormal",
+        IrFuncMode::Sync => "executeSync",
+        IrFuncMode::Stream => "executeStream",
+    };
+
+    let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
+
+    let signature = format!("{};", partial);
+
+    let comments = dart_comments(&func.comments);
+
+    let task_common_args = format!(
+        "
+        constMeta: {},
+        argValues: [{}],
+        hint: hint,
+        ",
+        const_meta_field_name,
+        func.inputs
+            .iter()
+            .map(|input| input.name.dart_style())
+            .collect::<Vec<_>>()
+            .join(", "),
+    );
+
+    let implementation = match func.mode {
+        IrFuncMode::Sync => format!(
+            "{} => {}(FlutterRustBridgeSyncTask(
+            callFfi: () => inner.{}({}),
+            {}
+        ));",
+            partial,
+            execute_func_name,
+            func.wire_func_name(),
+            wire_param_list.join(", "),
+            task_common_args,
+        ),
+        _ => format!(
+            "{} => {}(FlutterRustBridgeTask(
+            callFfi: (port_) => inner.{}({}),
+            parseSuccessData: _wire2api_{},
+            {}
+        ));",
+            partial,
+            execute_func_name,
+            func.wire_func_name(),
+            wire_param_list.join(", "),
+            func.output.safe_ident(),
+            task_common_args,
+        ),
+    };
+
+    let companion_field_signature = format!(
+        "FlutterRustBridgeTaskConstMeta get {};",
+        const_meta_field_name,
+    );
+
+    let companion_field_implementation = format!(
+        "
+        FlutterRustBridgeTaskConstMeta get {} => const FlutterRustBridgeTaskConstMeta(
+            debugName: \"{}\",
+            argNames: [{}],
+        );
+        ",
+        const_meta_field_name,
+        func.name,
+        func.inputs
+            .iter()
+            .map(|input| format!("\"{}\"", input.name.dart_style()))
+            .collect::<Vec<_>>()
+            .join(", "),
+    );
+
+    GeneratedApiFunc {
+        signature,
+        implementation,
+        comments,
+        companion_field_signature,
+        companion_field_implementation,
+    }
+}
+
+fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiFunc {
+    println!("generate_api_func for {:?}", func);
+    let raw_func_param_list = func
+        .inputs
+        .iter()
+        //.filter(|input| !input.name.raw.contains("__method"))
+        .map(|input| {
+            format!(
+                "{}{} {}",
+                input.ty.dart_required_modifier(),
+                input.ty.dart_api_type(),
+                input.name.dart_style()
+            )
+        })
+        .collect::<Vec<_>>();
+    println!("raw_func_param_list: {:?}", raw_func_param_list);
+    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
+
+    let wire_param_list = [
+        if func.mode.has_port_argument() {
+            vec!["port_".to_string()]
+        } else {
+            vec![]
+        },
+        func.inputs
+            .iter()
+            .map(|input| {
+                // edge case: ffigen performs its own bool-to-int conversions
+                if let Primitive(IrTypePrimitive::Bool) = input.ty {
+                    input.name.dart_style()
+                } else {
+                    format!(
+                        "_api2wire_{}({})",
+                        &input.ty.safe_ident(),
+                        &input.name.dart_style()
+                    )
+                }
+            })
+            .collect::<Vec<_>>(),
+    ]
+    .concat();
+    println!("wire_param_list: {:?}", wire_param_list);
 
     let partial = format!(
         "{} {}({{ {} }})",

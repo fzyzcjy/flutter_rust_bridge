@@ -57,6 +57,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 
     fn structs(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
+        println!("src struct: {:?}", src);
         let comments = dart_comments(&src.comments);
         let metadata = dart_metadata(&src.dart_metadata);
 
