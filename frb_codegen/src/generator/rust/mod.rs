@@ -297,7 +297,7 @@ impl Generator {
             TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
                 r"{}::{}({})",
                 struct_name.clone().unwrap(),
-                func.name,
+                func.name.replace("__method", ""),
                 inner_func_params.join(", ")
             ))
         };
@@ -460,12 +460,10 @@ impl Generator {
 }
 
 fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
-    if let Some(input) = func.inputs.get(0) {
-        let possible_method = input.name.to_string();
-        let is_a_method = possible_method.contains("__method");
-        let struct_name = possible_method.replace("__method", "");
+    if func.name.contains("__method") {
+        let input = func.inputs[0].clone();
         println!("input is a method: {:?}", input);
-        (is_a_method, Some(struct_name))
+        (true, Some(input.name.to_string()))
     } else {
         (false, None)
     }

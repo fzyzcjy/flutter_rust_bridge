@@ -20,7 +20,7 @@ use flutter_rust_bridge::*;
 #[no_mangle]
 pub extern "C" fn wire_do_something__method(
     port_: i64,
-    StructWithMethod__method: *mut wire_StructWithMethod,
+    StructWithMethod: *mut wire_StructWithMethod,
     _u: u32,
     _x: *mut wire_uint_8_list,
 ) {
@@ -31,12 +31,12 @@ pub extern "C" fn wire_do_something__method(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_StructWithMethod__method = StructWithMethod__method.wire2api();
+            let api_StructWithMethod = StructWithMethod.wire2api();
             let api__u = _u.wire2api();
             let api__x = _x.wire2api();
             move |task_callback| {
-                Ok(StructWithMethod::do_something__method(
-                    &api_StructWithMethod__method,
+                Ok(StructWithMethod::do_something(
+                    &api_StructWithMethod,
                     api__u,
                     api__x,
                 ))
@@ -54,6 +54,18 @@ pub extern "C" fn wire_return_struct(port_: i64) {
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| Ok(return_struct()),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_test_struct(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_test_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(return_test_struct()),
     )
 }
 
@@ -182,6 +194,13 @@ impl support::IntoDart for StructWithMethod {
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithMethod {}
+
+impl support::IntoDart for TestStruct {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.test_variable.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TestStruct {}
 
 // Section: executor
 

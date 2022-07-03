@@ -1,0 +1,18 @@
+name: dart
+description: A sample command-line application.
+version: 1.0.0
+# homepage: https://www.example.com
+publish_to: none
+
+environment:
+  sdk: '>=2.17.5 <3.0.0'
+
+# dependencies:
+#   path: ^1.8.0
+dependencies:
+  flutter_rust_bridge:
+    path: ../../frb_dart
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.16.0

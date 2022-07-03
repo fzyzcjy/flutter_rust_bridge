@@ -269,7 +269,8 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                                     by_ref: Some(syn::token::Ref { span }),
                                     mutability: mutability.clone(),
                                     ident: Ident::new(
-                                        format!("{}__method", struct_name.as_str()).as_str(),
+                                        //format!("{}__method", struct_name.as_str()).as_str(),
+                                        struct_name.as_str(),
                                         span,
                                     ),
                                     subpat: None,

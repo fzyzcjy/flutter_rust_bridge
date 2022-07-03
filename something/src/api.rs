@@ -1,5 +1,5 @@
-pub struct StructWithMethod{
-    pub something: String
+pub struct StructWithMethod {
+    pub something: String,
 }
 
 impl StructWithMethod {
@@ -9,5 +9,13 @@ impl StructWithMethod {
 }
 
 pub fn return_struct() -> StructWithMethod {
+    todo!()
+}
+
+pub struct TestStruct {
+    pub test_variable: String,
+}
+
+pub fn return_test_struct() -> TestStruct {
     todo!()
 }
