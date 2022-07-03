@@ -232,10 +232,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 unsafety: None,
                 abi: None,
                 fn_token: item_method.sig.fn_token,
-                ident: Ident::new(
-                    format!("{}_{}_is_a_method", struct_name, item_method.sig.ident,).as_str(),
-                    item_method.sig.ident.span(),
-                ),
+                ident: item_method.sig.ident.clone(),
                 generics: item_method.sig.generics.clone(),
                 paren_token: item_method.sig.paren_token.clone(),
                 inputs: item_method
@@ -257,6 +254,9 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                                 ident: Ident::new(struct_name.as_str(), span),
                                 arguments: PathArguments::None,
                             });
+                            if mutability.is_some() {
+                                panic!("mutable methods are unsupported for safety reasons");
+                            }
                             FnArg::Typed(PatType {
                                 attrs: vec![],
                                 pat: Box::new(Pat::Ident(PatIdent {
@@ -264,7 +264,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                                     by_ref: Some(syn::token::Ref { span }),
                                     mutability: mutability.clone(),
                                     ident: Ident::new(
-                                        format!("{}_is_a_method", struct_name.as_str()).as_str(),
+                                        format!("{}__method", struct_name.as_str()).as_str(),
                                         span,
                                     ),
                                     subpat: None,

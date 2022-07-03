@@ -584,3 +584,13 @@ pub fn create_event() {
         });
     }
 }
+
+pub struct StructWithMethod{
+    pub something: String
+}
+
+impl StructWithMethod {
+    pub fn sum(&self, a: u32, b: u32) -> u32 {
+        a+b
+    }
+}

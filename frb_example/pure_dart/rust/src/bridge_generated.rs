@@ -618,6 +618,34 @@ pub extern "C" fn wire_create_event(port_: i64) {
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_sum(
+    port_: i64,
+    StructWithMethod__method: *mut wire_StructWithMethod,
+    a: u32,
+    b: u32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "sum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_StructWithMethod__method = StructWithMethod__method.wire2api();
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| {
+                Ok(StructWithMethod::sum(
+                    &api_StructWithMethod__method,
+                    api_a,
+                    api_b,
+                ))
+            }
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -779,6 +807,12 @@ pub struct wire_MyTreeNode {
 #[derive(Clone)]
 pub struct wire_NewTypeInt {
     field0: i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_StructWithMethod {
+    something: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -979,6 +1013,11 @@ pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_MyTreeNode {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_NewTypeInt {
     support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_struct_with_method() -> *mut wire_StructWithMethod {
+    support::new_leak_box_ptr(wire_StructWithMethod::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1318,6 +1357,13 @@ impl Wire2Api<NewTypeInt> for *mut wire_NewTypeInt {
     }
 }
 
+impl Wire2Api<StructWithMethod> for *mut wire_StructWithMethod {
+    fn wire2api(self) -> StructWithMethod {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<UserId> for *mut wire_UserId {
     fn wire2api(self) -> UserId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1620,6 +1666,14 @@ impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     }
 }
 
+impl Wire2Api<StructWithMethod> for wire_StructWithMethod {
+    fn wire2api(self) -> StructWithMethod {
+        StructWithMethod {
+            something: self.something.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<u32> for u32 {
     fn wire2api(self) -> u32 {
         self
@@ -1840,6 +1894,14 @@ impl NewWithNullPtr for wire_NewTypeInt {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: Default::default(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_StructWithMethod {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            something: core::ptr::null_mut(),
         }
     }
 }

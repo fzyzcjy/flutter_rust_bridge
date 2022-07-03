@@ -18,25 +18,25 @@ use flutter_rust_bridge::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_StructWithMethod_do_something_is_a_method(
+pub extern "C" fn wire_do_something(
     port_: i64,
-    StructWithMethod_is_a_method: *mut wire_StructWithMethod,
+    StructWithMethod__method: *mut wire_StructWithMethod,
     _u: u32,
     _x: *mut wire_uint_8_list,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "StructWithMethod_do_something_is_a_method",
+            debug_name: "do_something",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_StructWithMethod_is_a_method = StructWithMethod_is_a_method.wire2api();
+            let api_StructWithMethod__method = StructWithMethod__method.wire2api();
             let api__u = _u.wire2api();
             let api__x = _x.wire2api();
             move |task_callback| {
                 Ok(StructWithMethod::do_something(
-                    &api_StructWithMethod_is_a_method,
+                    &api_StructWithMethod__method,
                     api__u,
                     api__x,
                 ))

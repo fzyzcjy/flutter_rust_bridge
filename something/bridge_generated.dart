@@ -12,14 +12,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'dart:ffi' as ffi;
 
 abstract class Something {
-  Future<void> structWithMethodDoSomethingIsAMethod(
-      {required StructWithMethod structWithMethodIsAMethod,
+  Future<void> doSomething(
+      {required StructWithMethod structWithMethodMethod,
       required int u,
       required String x,
       dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kStructWithMethodDoSomethingIsAMethodConstMeta;
+  FlutterRustBridgeTaskConstMeta get kDoSomethingConstMeta;
 
   Future<StructWithMethod> returnStruct({dynamic hint});
 
@@ -41,31 +40,28 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
 
   SomethingImpl.raw(SomethingWire inner) : super(inner);
 
-  Future<void> structWithMethodDoSomethingIsAMethod(
-          {required StructWithMethod structWithMethodIsAMethod,
+  Future<void> doSomething(
+          {required StructWithMethod structWithMethodMethod,
           required int u,
           required String x,
           dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_StructWithMethod_do_something_is_a_method(
-                port_,
-                _api2wire_box_autoadd_struct_with_method(
-                    structWithMethodIsAMethod),
-                _api2wire_u32(u),
-                _api2wire_String(x)),
+        callFfi: (port_) => inner.wire_do_something(
+            port_,
+            _api2wire_box_autoadd_struct_with_method(structWithMethodMethod),
+            _api2wire_u32(u),
+            _api2wire_String(x)),
         parseSuccessData: _wire2api_unit,
-        constMeta: kStructWithMethodDoSomethingIsAMethodConstMeta,
-        argValues: [structWithMethodIsAMethod, u, x],
+        constMeta: kDoSomethingConstMeta,
+        argValues: [structWithMethodMethod, u, x],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kStructWithMethodDoSomethingIsAMethodConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName: "StructWithMethod_do_something_is_a_method",
-            argNames: ["structWithMethodIsAMethod", "u", "x"],
-          );
+  FlutterRustBridgeTaskConstMeta get kDoSomethingConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "do_something",
+        argNames: ["structWithMethodMethod", "u", "x"],
+      );
 
   Future<StructWithMethod> returnStruct({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
@@ -169,29 +165,27 @@ class SomethingWire implements FlutterRustBridgeWireBase {
           lookup)
       : _lookup = lookup;
 
-  void wire_StructWithMethod_do_something_is_a_method(
+  void wire_do_something(
     int port_,
-    ffi.Pointer<wire_StructWithMethod> StructWithMethod_is_a_method,
+    ffi.Pointer<wire_StructWithMethod> StructWithMethod__method,
     int _u,
     ffi.Pointer<wire_uint_8_list> _x,
   ) {
-    return _wire_StructWithMethod_do_something_is_a_method(
+    return _wire_do_something(
       port_,
-      StructWithMethod_is_a_method,
+      StructWithMethod__method,
       _u,
       _x,
     );
   }
 
-  late final _wire_StructWithMethod_do_something_is_a_methodPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructWithMethod>,
-                  ffi.Uint32, ffi.Pointer<wire_uint_8_list>)>>(
-      'wire_StructWithMethod_do_something_is_a_method');
-  late final _wire_StructWithMethod_do_something_is_a_method =
-      _wire_StructWithMethod_do_something_is_a_methodPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_StructWithMethod>, int,
-              ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_do_somethingPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructWithMethod>,
+              ffi.Uint32, ffi.Pointer<wire_uint_8_list>)>>('wire_do_something');
+  late final _wire_do_something = _wire_do_somethingPtr.asFunction<
+      void Function(int, ffi.Pointer<wire_StructWithMethod>, int,
+          ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_return_struct(
     int port_,

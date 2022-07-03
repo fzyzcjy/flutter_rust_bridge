@@ -223,6 +223,7 @@ impl Generator {
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
+        println!("generate_wire_func for func: {:?}", func);
         let params = [
             if func.mode.has_port_argument() {
                 vec!["port_: i64".to_string()]
@@ -242,12 +243,12 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-        //_is_a_method
         let (is_a_method, struct_name) = {
             if let Some(input) = func.inputs.get(0) {
-                let possible_method_marker = input.name.to_string();
-                let is_a_method = possible_method_marker.contains("is_a_method");
-                let struct_name = possible_method_marker.replace("_is_a_method", "");
+                let possible_method = input.name.to_string();
+                let is_a_method = possible_method.contains("__method");
+                let struct_name = possible_method.replace("__method", "");
+                println!("input is a method: {:?}", input);
                 (is_a_method, Some(struct_name))
             } else {
                 (false, None)
@@ -300,12 +301,11 @@ impl Generator {
                 inner_func_params.join(", ")
             ))
         } else {
-            let struct_remove = format!("{}{}", struct_name.clone().unwrap(), "_");
             inner_func_params[0] = format!("&{}", inner_func_params[0]);
             TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
                 r"{}::{}({})",
                 struct_name.clone().unwrap(),
-                func.name.replace(&struct_remove, "").replace("_is_a_method", ""),
+                func.name,
                 inner_func_params.join(", ")
             ))
         };
