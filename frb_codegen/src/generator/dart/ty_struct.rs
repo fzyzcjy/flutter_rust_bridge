@@ -2,10 +2,11 @@ use convert_case::{Case, Casing};
 
 use super::GeneratedApiFunc;
 use crate::generator::dart::TypeDartGenerator::Primitive;
-use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
+use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod, TypeBoxedGenerator};
 use crate::generator::dart::{is_method, ty::*};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
+use crate::generator::dart::TypeDartGenerator::Boxed;
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
@@ -33,8 +34,26 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
+        let src = self.ir.get(self.context.ir_file);
         let s = self.ir.get(self.context.ir_file);
-        let inner = s
+        println!("src struct: {:?}", src);
+        println!("self.context: {:?}", self.context);
+
+        let methods = self
+            .context
+            .ir_file
+            .funcs
+            .iter()
+            .filter(|f| is_method(f, src.name.clone()))
+            .collect::<Vec<_>>();
+        let has_methods = !methods.is_empty();
+        /*
+        let methods = methods
+            .iter()
+            .map(|func| generate_api_method(func, src))
+            .collect::<Vec<_>>();
+        */
+        let mut inner = s
             .fields
             .iter()
             .enumerate()
@@ -46,8 +65,46 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                     idx
                 )
             })
-            .collect::<Vec<_>>()
-            .join("\n");
+            .collect::<Vec<_>>();
+        println!(
+            "s.fields[0].ty.safe_ident(): {:?}",
+            s.fields[0].ty.safe_ident()
+        );
+        println!(
+            "has_methods: {}, s.fields[0].ty.safe_ident(): {}",
+            has_methods,
+            s.fields[0].ty.safe_ident()
+        );
+        let is_method_for_struct = if let TypeGeneratorContext {
+            ir_file:
+                IrFile {
+                    funcs,
+                    struct_pool,
+                    enum_pool,
+                    has_executor,
+                },
+        } = self.context
+        {
+            if let IrField { ty, name, is_final, comments } = &funcs[0].inputs[0] {
+                if let IrType::Boxed(IrTypeBoxed { exist_in_real_api, inner }) = ty {
+                    if let IrType::StructRef(IrTypeStructRef { name, freezed }) = &**inner {
+                        *name == src.name
+                    } else {
+                        false
+                    }
+                } else {
+                    false
+                }
+            } else {
+                false
+            }
+        } else {
+            false
+        };
+        if has_methods && is_method_for_struct {
+            inner.insert(0, "bridge: bridge,".to_string());
+        }
+        let inner = inner.join("\n");
 
         format!(
             "final arr = raw as List<dynamic>;
@@ -66,6 +123,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     fn structs(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
         println!("src struct: {:?}", src);
+        println!("context: {:?}", self.context);
         let comments = dart_comments(&src.comments);
         let metadata = dart_metadata(&src.dart_metadata);
 

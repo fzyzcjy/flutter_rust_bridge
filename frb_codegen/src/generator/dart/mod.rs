@@ -98,12 +98,12 @@ fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, dart_api_class_name: &str) -
     let distinct_output_types = ir_file.distinct_types(false, true);
     debug!("distinct_input_types={:?}", distinct_input_types);
     debug!("distinct_output_types={:?}", distinct_output_types);
-
+    //struct_has_methods(ir_file, "StructWithMethod");
     let dart_funcs = ir_file
         .funcs
         .iter()
         //.filter(is_not_method)
-        .map(generate_api_func)
+        .map(|f| generate_api_func(f, ir_file))
         .collect::<Vec<_>>();
     let dart_structs = distinct_types
         .iter()
@@ -141,7 +141,7 @@ fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, dart_api_class_name: &str) -
         .collect::<Vec<_>>();
     let dart_wire2api_funcs = distinct_output_types
         .iter()
-        .map(|ty| generate_wire2api_func(ty, ir_file))
+        .map(|ty| generate_wire2api_func(ty, ir_file, dart_api_class_name))
         .collect::<Vec<_>>();
 
     let needs_freezed = distinct_types.iter().any(|ty| match ty {
@@ -337,8 +337,17 @@ struct GeneratedApiMethod {
     companion_field_implementation: String,
 }
 
-fn is_not_method(f: &&IrFunc, struct_name: String) -> bool {
-    !is_method(f, struct_name)
+fn has_methods(struct_name: String, ir_file: &IrFile) -> bool {
+    ir_file
+        .funcs
+        .iter()
+        .find(|f| is_method(f, struct_name.clone()))
+        .is_some()
+}
+
+fn has_methods_ir_type(struct_name: String, ir_type: &IrType) -> bool {
+    println!("has_methods_ir_type, ir_type: {:?}", ir_type);
+    false
 }
 
 fn is_method(f: &&IrFunc, struct_name: String) -> bool {
@@ -361,9 +370,9 @@ fn is_method(f: &&IrFunc, struct_name: String) -> bool {
     r
 }
 
-fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
+fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     println!("generate_api_func for {:?}", func);
-    let is_method = func.name.contains("__method");
+    //let is_method = func.name.contains("__method");
 
     let raw_func_param_list = func
         .inputs
@@ -405,6 +414,8 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
     ]
     .concat();
     println!("wire_param_list: {:?}", wire_param_list);
+
+    let is_method = func.name.contains("__method");
 
     let partial = format!(
         "{} {}({{ {} }})",
@@ -454,14 +465,18 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
         _ => format!(
             "{} => {}(FlutterRustBridgeTask(
             callFfi: (port_) => inner.{}({}),
-            parseSuccessData: _wire2api_{},
+            parseSuccessData: {},
             {}
         ));",
             partial,
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
-            func.output.safe_ident(),
+            if !struct_has_methods(ir_file, &func.output) {
+                format!("_wire2api_{}", func.output.safe_ident())
+            } else {
+                format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
+            },
             task_common_args,
         ),
     };
@@ -534,16 +549,30 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
     }
 }
 
-fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile) -> String {
+fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
+    println!(
+        "generate_wire2api_func, ty: {:?}, ir_file: {:?}",
+        ty, ir_file
+    );
+    println!("ty.rust_wire_type(): {}", ty.rust_wire_type());
+    let bridge_requirement = if let StructRef(IrTypeStructRef { name, freezed }) = ty {
+        if has_methods(name.to_string(), ir_file) {
+            format!("{} bridge,", dart_api_class_name)
+        } else {
+            "".to_string()
+        }
+    } else {
+        "".to_string()
+    };
     let body = TypeDartGenerator::new(ty.clone(), ir_file).wire2api_body();
-
     format!(
-        "{} _wire2api_{}(dynamic raw) {{
+        "{} _wire2api_{}({}dynamic raw) {{
             {}
         }}
         ",
         ty.dart_api_type(),
         ty.safe_ident(),
+        bridge_requirement,
         body,
     )
 }
@@ -580,4 +609,45 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
         metadata.push('\n');
     }
     metadata
+}
+
+fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
+    /*
+    file.struct_pool.iter().find(|s| {
+        println!("struct s: {:?}", s);
+        true
+    }).is_some();
+    */
+    println!("struct_has_methods, the_struct: {:?}", the_struct);
+
+    let struct_name = if let StructRef(IrTypeStructRef { name, freezed }) = the_struct {
+        name
+    } else {
+        return false;
+    };
+
+    let struct_has_methods = file
+        .funcs
+        .iter()
+        .find(|f| {
+            println!("f: {:?}", f);
+            if let Some(IrField {
+                ty,
+                name,
+                is_final,
+                comments,
+            }) = f.inputs.get(0)
+            {
+                if name.raw == *struct_name {
+                    true
+                } else {
+                    false
+                }
+            } else {
+                false
+            }
+        })
+        .is_some();
+    println!("has methods? {:?}", struct_has_methods);
+    struct_has_methods
 }

@@ -46,6 +46,52 @@ pub extern "C" fn wire_do_something__method(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_do_more_stuff__method(
+    port_: i64,
+    StructWithMethod: *mut wire_StructWithMethod,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "do_more_stuff__method",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_StructWithMethod = StructWithMethod.wire2api();
+            move |task_callback| Ok(StructWithMethod::do_more_stuff(&api_StructWithMethod))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_do_huge_stuff__method(
+    port_: i64,
+    StructWithMethod: *mut wire_StructWithMethod,
+    s: *mut wire_uint_8_list,
+    a: *mut wire_OtherStruct,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "do_huge_stuff__method",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_StructWithMethod = StructWithMethod.wire2api();
+            let api_s = s.wire2api();
+            let api_a = a.wire2api();
+            move |task_callback| {
+                Ok(StructWithMethod::do_huge_stuff(
+                    &api_StructWithMethod,
+                    api_s,
+                    api_a,
+                ))
+            }
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_return_struct(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -73,6 +119,12 @@ pub extern "C" fn wire_return_test_struct(port_: i64) {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_OtherStruct {
+    u: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_StructWithMethod {
     something: *mut wire_uint_8_list,
 }
@@ -89,6 +141,11 @@ pub struct wire_uint_8_list {
 // Section: static checks
 
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_other_struct() -> *mut wire_OtherStruct {
+    support::new_leak_box_ptr(wire_OtherStruct::new_with_null_ptr())
+}
 
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_struct_with_method() -> *mut wire_StructWithMethod {
@@ -130,10 +187,25 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<OtherStruct> for *mut wire_OtherStruct {
+    fn wire2api(self) -> OtherStruct {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<StructWithMethod> for *mut wire_StructWithMethod {
     fn wire2api(self) -> StructWithMethod {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         (*wrap).wire2api().into()
+    }
+}
+
+impl Wire2Api<OtherStruct> for wire_OtherStruct {
+    fn wire2api(self) -> OtherStruct {
+        OtherStruct {
+            u: self.u.wire2api(),
+        }
     }
 }
 
@@ -175,6 +247,14 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
+    }
+}
+
+impl NewWithNullPtr for wire_OtherStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            u: Default::default(),
+        }
     }
 }
 
