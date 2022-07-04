@@ -462,7 +462,6 @@ impl Generator {
 fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
     if func.name.contains("__method") {
         let input = func.inputs[0].clone();
-        println!("input is a method: {:?}", input);
         (true, Some(input.name.to_string()))
     } else {
         (false, None)

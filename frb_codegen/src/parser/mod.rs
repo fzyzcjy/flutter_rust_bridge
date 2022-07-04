@@ -114,14 +114,12 @@ impl<'a> Parser<'a> {
         let mut fallible = true;
 
         for sig_input in &sig.inputs {
-            log::info!("#123abc sig_input: {:?}", sig_input);
             if let FnArg::Typed(ref pat_type) = sig_input {
                 let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
                     format!("{}", pat_ident.ident)
                 } else {
                     panic!("unexpected pat_type={:?}", pat_type)
                 };
-                log::info!("#123abc parsing name: {}", name);
                 match self.try_parse_fn_arg_type(&pat_type.ty).unwrap_or_else(|| {
                     panic!(
                         "Failed to parse function argument type `{}`",
@@ -176,8 +174,6 @@ impl<'a> Parser<'a> {
             );
         }
 
-        // let comments = func.attrs.iter().filter_map(extract_comments).collect();
-
         IrFunc {
             name: func_name,
             inputs,
@@ -195,7 +191,6 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
     for item in file.items.iter() {
         if let Item::Fn(ref item_fn) = item {
             if let Visibility::Public(_) = &item_fn.vis {
-                println!("#123abc item_fn: {:?}", item_fn);
                 src_fns.push(item_fn.clone());
             }
         }
@@ -205,7 +200,6 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
                     if let Visibility::Public(_) = &item_method.vis {
                         let f = item_method_to_function(item_impl, item_method)
                             .expect("item implementation is unsupported");
-                        println!("#123abc generated method: {:?}", f);
                         src_fns.push(f);
                     }
                 }
@@ -218,13 +212,9 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
 
 // Converts an item implementation (something like fn(&self, ...)) into a function where `&self` is a named parameter to `&Self`
 fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -> Option<ItemFn> {
-    println!("item_method_to_function");
-    println!("#123abc item_impl: {:?}", item_impl);
-    println!("#123abc item_method: {:?}", item_method);
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
-        println!("#123abc struct_name is: {}", struct_name);
         let method_name = Ident::new(
             format!("{}__method", item_method.sig.ident.clone().to_string()).as_str(),
             span,
@@ -247,12 +237,11 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                     .inputs
                     .iter()
                     .map(|input| {
-                        //let span = item_method.sig.ident.span();
                         if let FnArg::Receiver(Receiver {
-                            attrs,
-                            reference,
+                            attrs: _,
+                            reference: _,
                             mutability,
-                            self_token,
+                            self_token: _,
                         }) = input
                         {
                             let mut segments = Punctuated::new();
@@ -269,11 +258,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                                     attrs: vec![],
                                     by_ref: Some(syn::token::Ref { span }),
                                     mutability: mutability.clone(),
-                                    ident: Ident::new(
-                                        //format!("{}__method", struct_name.as_str()).as_str(),
-                                        struct_name.as_str(),
-                                        span,
-                                    ),
+                                    ident: Ident::new(struct_name.as_str(), span),
                                     subpat: None,
                                 })),
                                 colon_token: Colon { spans: [span] },

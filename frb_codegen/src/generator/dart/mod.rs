@@ -116,21 +116,7 @@ fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, dart_api_class_name: &str) -
             .structs()
         })
         .collect::<Vec<_>>();
-    /*
-    let get_struct_name_for_method = |f: &IrFunc| -> &IrStruct {
-        let name = &f.name;
-        todo!()
-    };
 
-    let dart_methods = ir_file
-        .funcs
-        .iter()
-        .filter(is_method)
-        .map(|f| generate_api_method(f, get_struct_name_for_method(f)))
-        .collect::<Vec<_>>();
-
-    println!("dart_methods: {:?}", dart_methods);
-    */
     let dart_api2wire_funcs = distinct_input_types
         .iter()
         .map(|ty| generate_api2wire_func(ty, ir_file))
@@ -332,9 +318,6 @@ struct GeneratedApiFunc {
 struct GeneratedApiMethod {
     signature: String,
     implementation: String,
-    comments: String,
-    companion_field_signature: String,
-    companion_field_implementation: String,
 }
 
 fn has_methods(struct_name: String, ir_file: &IrFile) -> bool {
@@ -345,39 +328,27 @@ fn has_methods(struct_name: String, ir_file: &IrFile) -> bool {
         .is_some()
 }
 
-fn has_methods_ir_type(struct_name: String, ir_type: &IrType) -> bool {
-    println!("has_methods_ir_type, ir_type: {:?}", ir_type);
-    false
-}
-
 fn is_method(f: &&IrFunc, struct_name: String) -> bool {
-    println!("test is method for struct_name: {} f: {:?}", struct_name, f);
-    let r = f.name.contains("__method")
+    f.name.contains("__method")
         && if let Boxed(IrTypeBoxed {
-            exist_in_real_api,
+            exist_in_real_api: _,
             inner,
         }) = &f.inputs[0].ty
         {
-            if let StructRef(IrTypeStructRef { name, freezed }) = &**inner {
+            if let StructRef(IrTypeStructRef { name, freezed: _ }) = &**inner {
                 *name == struct_name
             } else {
                 false
             }
         } else {
             false
-        };
-    println!("result is {}", r);
-    r
+        }
 }
 
 fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
-    println!("generate_api_func for {:?}", func);
-    //let is_method = func.name.contains("__method");
-
     let raw_func_param_list = func
         .inputs
         .iter()
-        //.filter(|input| !input.name.raw.contains("__method"))
         .map(|input| {
             format!(
                 "{}{} {}",
@@ -387,7 +358,6 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             )
         })
         .collect::<Vec<_>>();
-    println!("raw_func_param_list: {:?}", raw_func_param_list);
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let wire_param_list = [
@@ -413,9 +383,6 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             .collect::<Vec<_>>(),
     ]
     .concat();
-    println!("wire_param_list: {:?}", wire_param_list);
-
-    let is_method = func.name.contains("__method");
 
     let partial = format!(
         "{} {}({{ {} }})",
@@ -423,7 +390,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
         func.name.to_case(Case::Camel),
         full_func_param_list.join(","),
     );
-    println!("partial: {}", partial);
+
     let execute_func_name = match func.mode {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
@@ -550,12 +517,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 }
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
-    println!(
-        "generate_wire2api_func, ty: {:?}, ir_file: {:?}",
-        ty, ir_file
-    );
-    println!("ty.rust_wire_type(): {}", ty.rust_wire_type());
-    let bridge_requirement = if let StructRef(IrTypeStructRef { name, freezed }) = ty {
+    let bridge_requirement = if let StructRef(IrTypeStructRef { name, freezed: _ }) = ty {
         if has_methods(name.to_string(), ir_file) {
             format!("{} bridge,", dart_api_class_name)
         } else {
@@ -611,16 +573,10 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
     metadata
 }
 
+// Tests if a given struct has methods, that is, if the `ir_file` contains
+// a function that receives the struct as first argument
 fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
-    /*
-    file.struct_pool.iter().find(|s| {
-        println!("struct s: {:?}", s);
-        true
-    }).is_some();
-    */
-    println!("struct_has_methods, the_struct: {:?}", the_struct);
-
-    let struct_name = if let StructRef(IrTypeStructRef { name, freezed }) = the_struct {
+    let struct_name = if let StructRef(IrTypeStructRef { name, freezed: _ }) = the_struct {
         name
     } else {
         return false;
@@ -630,12 +586,11 @@ fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
         .funcs
         .iter()
         .find(|f| {
-            println!("f: {:?}", f);
             if let Some(IrField {
-                ty,
+                ty: _,
                 name,
-                is_final,
-                comments,
+                is_final: _,
+                comments: _,
             }) = f.inputs.get(0)
             {
                 if name.raw == *struct_name {
@@ -648,6 +603,5 @@ fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
             }
         })
         .is_some();
-    println!("has methods? {:?}", struct_has_methods);
     struct_has_methods
 }
