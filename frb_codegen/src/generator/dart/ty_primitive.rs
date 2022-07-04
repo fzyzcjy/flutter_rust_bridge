@@ -8,7 +8,7 @@ type_dart_generator_struct!(TypePrimitiveGenerator, IrTypePrimitive);
 
 impl TypeDartGeneratorTrait for TypePrimitiveGenerator<'_> {
     fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
-        Some("return raw;".to_string();
+        Some("return raw;".to_string())
     }
 
     fn wire2api_body(&self) -> String {
