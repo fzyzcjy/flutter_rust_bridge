@@ -1133,9 +1133,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return ptr;
   }
 
-
   ffi.Pointer<ffi.Bool> _api2wire_box_autoadd_bool(bool raw) {
-    return inner.new_box_autoadd_bool(raw);
+    return inner.new_box_autoadd_bool_0(raw);
   }
 
   ffi.Pointer<wire_Customized> _api2wire_box_autoadd_customized(Customized raw) {
@@ -1198,9 +1197,8 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return ptr;
   }
 
-
   ffi.Pointer<ffi.Bool> _api2wire_box_bool(bool raw) {
-    return inner.new_box_bool(raw);
+    return inner.new_box_bool_0(raw);
   }
 
   ffi.Pointer<wire_ExoticOptionals> _api2wire_box_exotic_optionals(ExoticOptionals raw) {
@@ -2815,7 +2813,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_handle_stream_sink_at_3 =
       _wire_handle_stream_sink_at_3Ptr.asFunction<void Function(int, int, int)>();
 
-  ffi.Pointer<wire_StringList> new_StringList(
+  ffi.Pointer<wire_StringList> new_StringList_0(
     int len,
   ) {
     return _new_StringList_0(
@@ -2855,19 +2853,17 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_attribute_0 =
       _new_box_autoadd_attribute_0Ptr.asFunction<ffi.Pointer<wire_Attribute> Function()>();
 
-
-  ffi.Pointer<ffi.Bool> new_box_autoadd_bool(
+  ffi.Pointer<ffi.Bool> new_box_autoadd_bool_0(
     bool value,
   ) {
-    return _new_box_autoadd_bool(
+    return _new_box_autoadd_bool_0(
       value,
     );
   }
 
-  late final _new_box_autoadd_boolPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_autoadd_bool');
-  late final _new_box_autoadd_bool = _new_box_autoadd_boolPtr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
-
+  late final _new_box_autoadd_bool_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_autoadd_bool_0');
+  late final _new_box_autoadd_bool_0 = _new_box_autoadd_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
 
   ffi.Pointer<wire_Customized> new_box_autoadd_customized_0() {
     return _new_box_autoadd_customized_0();
@@ -2977,17 +2973,17 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_user_id_0 =
       _new_box_autoadd_user_id_0Ptr.asFunction<ffi.Pointer<wire_UserId> Function()>();
 
-  ffi.Pointer<ffi.Bool> new_box_bool(
+  ffi.Pointer<ffi.Bool> new_box_bool_0(
     bool value,
   ) {
-    return _new_box_bool(
+    return _new_box_bool_0(
       value,
     );
   }
 
-  late final _new_box_boolPtr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_bool');
-  late final _new_box_bool = _new_box_boolPtr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
-
+  late final _new_box_bool_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_bool_0');
+  late final _new_box_bool_0 = _new_box_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
 
   ffi.Pointer<wire_ExoticOptionals> new_box_exotic_optionals_0() {
     return _new_box_exotic_optionals_0();
@@ -3523,6 +3519,6 @@ class wire_UserId extends ffi.Struct {
   external int value;
 }
 
-typedef uintptr_t = ffi.UnsignedLong;
+typedef uintptr_t = ffi.UnsignedLongLong;
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
