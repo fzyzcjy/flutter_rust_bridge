@@ -13,7 +13,7 @@ void main(List<String> args) {
   final dylib = DynamicLibrary.open(dylibPath);
   final api1 = ApiClass1Impl(dylib);
   test('dart call simpleAdder', () async {
-    expect(await api1.simpleAdder1(a: 42, b: 100), 142);
+    expect(await api1.simpleAdder(a: 42, b: 100), 142);
   });
 
   final api2 = ApiClass2Impl(dylib);
