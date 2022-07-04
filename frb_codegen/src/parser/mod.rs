@@ -216,6 +216,7 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
     src_fns
 }
 
+// Converts an item implementation (something like fn(&self, ...)) into a function where `&self` is a named parameter to `&Self`
 fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -> Option<ItemFn> {
     println!("item_method_to_function");
     println!("#123abc item_impl: {:?}", item_impl);
@@ -224,7 +225,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
         println!("#123abc struct_name is: {}", struct_name);
-        let new_ident = Ident::new(
+        let method_name = Ident::new(
             format!("{}__method", item_method.sig.ident.clone().to_string()).as_str(),
             span,
         );
@@ -238,7 +239,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 unsafety: None,
                 abi: None,
                 fn_token: item_method.sig.fn_token,
-                ident: new_ident,
+                ident: method_name,
                 generics: item_method.sig.generics.clone(),
                 paren_token: item_method.sig.paren_token.clone(),
                 inputs: item_method

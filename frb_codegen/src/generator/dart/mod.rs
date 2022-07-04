@@ -102,14 +102,14 @@ fn get_dart_api_spec_from_ir_file(ir_file: &IrFile) -> DartApiSpec {
     let dart_funcs = ir_file
         .funcs
         .iter()
-        .filter(is_not_method)
+        //.filter(is_not_method)
         .map(generate_api_func)
         .collect::<Vec<_>>();
     let dart_structs = distinct_types
         .iter()
         .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file).structs())
         .collect::<Vec<_>>();
-    /* 
+    /*
     let get_struct_name_for_method = |f: &IrFunc| -> &IrStruct {
         let name = &f.name;
         todo!()
@@ -121,7 +121,7 @@ fn get_dart_api_spec_from_ir_file(ir_file: &IrFile) -> DartApiSpec {
         .filter(is_method)
         .map(|f| generate_api_method(f, get_struct_name_for_method(f)))
         .collect::<Vec<_>>();
-    
+
     println!("dart_methods: {:?}", dart_methods);
     */
     let dart_api2wire_funcs = distinct_input_types
@@ -321,19 +321,43 @@ struct GeneratedApiFunc {
     companion_field_implementation: String,
 }
 
-fn is_not_method(f: &&IrFunc) -> bool {
-    !f.inputs
-        .iter()
-        .find(|input| input.name.raw.contains("__method"))
-        .is_some()
+#[derive(Debug)]
+struct GeneratedApiMethod {
+    signature: String,
+    implementation: String,
+    comments: String,
+    companion_field_signature: String,
+    companion_field_implementation: String,
 }
 
-fn is_method(f: &&IrFunc) -> bool {
-    !is_not_method(f)
+fn is_not_method(f: &&IrFunc, struct_name: String) -> bool {
+    !is_method(f, struct_name)
+}
+
+fn is_method(f: &&IrFunc, struct_name: String) -> bool {
+    println!("test is method for struct_name: {} f: {:?}", struct_name, f);
+    let r = f.name.contains("__method")
+        && if let Boxed(IrTypeBoxed {
+            exist_in_real_api,
+            inner,
+        }) = &f.inputs[0].ty
+        {
+            if let StructRef(IrTypeStructRef { name, freezed }) = &**inner {
+                *name == struct_name
+            } else {
+                false
+            }
+        } else {
+            false
+        };
+    println!("result is {}", r);
+    r
 }
 
 fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
     println!("generate_api_func for {:?}", func);
+    let is_method = func.name.contains("__method");
+
     let raw_func_param_list = func
         .inputs
         .iter()
@@ -381,7 +405,7 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
         func.name.to_case(Case::Camel),
         full_func_param_list.join(","),
     );
-
+    println!("partial: {}", partial);
     let execute_func_name = match func.mode {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",

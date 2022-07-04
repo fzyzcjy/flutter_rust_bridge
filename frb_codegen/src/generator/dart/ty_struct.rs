@@ -2,7 +2,7 @@ use convert_case::{Case, Casing};
 
 use super::GeneratedApiFunc;
 use crate::generator::dart::TypeDartGenerator::Primitive;
-use crate::generator::dart::{dart_comments, dart_metadata};
+use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::generator::dart::{is_method, ty::*};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
@@ -66,8 +66,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let metadata = dart_metadata(&src.dart_metadata);
 
         let ir_file = self.context.ir_file;
-        let methods = ir_file.funcs.iter().filter(is_method).collect::<Vec<_>>();
+        let methods = ir_file
+            .funcs
+            .iter()
+            .filter(|f| is_method(f, src.name.clone()))
+            .collect::<Vec<_>>();
         println!("methods size: {}, content: {:?}", methods.len(), methods);
+        let has_methods = !methods.is_empty();
         let methods = methods
             .iter()
             .map(|func| generate_api_method(func, src))
@@ -75,11 +80,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         println!("actual methods: {:?}", methods);
         let methods_string = methods
             .iter()
-            .map(|g| g.implementation.clone())
+            .map(|g| format!("{}=>{};", g.signature.clone(), g.implementation.clone()))
             .collect::<Vec<_>>()
             .concat();
+        let bridge_requirement = "required this.bridge,".to_string();
+        let field_bridge = format!("final {} bridge;", "SomethingImpl");
         if src.using_freezed() {
-            let constructor_params = src
+            let mut constructor_params = src
                 .fields
                 .iter()
                 .map(|f| {
@@ -90,8 +97,11 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         f.name.dart_style()
                     )
                 })
-                .collect::<Vec<_>>()
-                .join("");
+                .collect::<Vec<_>>();
+            if has_methods {
+                constructor_params.insert(0, bridge_requirement);
+            }
+            let constructor_params = constructor_params.join("");
 
             format!(
                 "{}{}class {} with _${} {{
@@ -108,7 +118,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 methods_string
             )
         } else {
-            let field_declarations = src
+            let mut field_declarations = src
                 .fields
                 .iter()
                 .map(|f| {
@@ -121,10 +131,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         f.name.dart_style()
                     )
                 })
-                .collect::<Vec<_>>()
-                .join("\n");
-
-            let constructor_params = src
+                .collect::<Vec<_>>();
+            if has_methods {
+                field_declarations.insert(0, field_bridge);
+            }
+            let field_declarations = field_declarations.join("\n");
+            println!("field_declarations: {}", field_declarations);
+            let mut constructor_params = src
                 .fields
                 .iter()
                 .map(|f| {
@@ -134,8 +147,12 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         f.name.dart_style()
                     )
                 })
-                .collect::<Vec<_>>()
-                .join("");
+                .collect::<Vec<_>>();
+            if has_methods {
+                constructor_params.insert(0, bridge_requirement);
+            }
+            println!("constructor_params: {:?}", constructor_params);
+            let constructor_params = constructor_params.join("");
 
             format!(
                 "{}{}class {} {{
@@ -156,7 +173,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 }
 
-fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiFunc {
+fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMethod {
     println!(
         "generate_api_method for {:?} with ir_struct: {:?}",
         func, ir_struct
@@ -164,6 +181,7 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiFunc 
     let raw_func_param_list = func
         .inputs
         .iter()
+        .skip(1) //skip the first as it's the method 'self'
         .map(|input| {
             format!(
                 "{}{} {}",
@@ -175,7 +193,7 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiFunc 
         .collect::<Vec<_>>();
     println!("raw_func_param_list: {:?}", raw_func_param_list);
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
-
+    /*
     let wire_param_list = [
         if func.mode.has_port_argument() {
             vec!["port_".to_string()]
@@ -200,26 +218,28 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiFunc 
     ]
     .concat();
     println!("wire_param_list: {:?}", wire_param_list);
-
+    */
     let partial = format!(
         "{} {}({{ {} }})",
         func.mode.dart_return_type(&func.output.dart_api_type()),
-        func.name.to_case(Case::Camel),
+        func.name.replace("__method", "").to_case(Case::Camel),
         full_func_param_list.join(","),
     );
-
+    /*
+    println!("partial: {}", partial);
     let execute_func_name = match func.mode {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
         IrFuncMode::Stream => "executeStream",
     };
+    */
+    //let const_meta_field_name = format!("k{}ConstMeta", func.name.replace("__method", "").to_case(Case::Pascal));
 
-    let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
-
-    let signature = format!("{};", partial);
+    let signature = format!("{}", partial);
 
     let comments = dart_comments(&func.comments);
 
+    /*
     let task_common_args = format!(
         "
         constMeta: {},
@@ -281,8 +301,25 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiFunc 
             .collect::<Vec<_>>()
             .join(", "),
     );
+    */
+    let arg_names = func
+        .inputs
+        .iter()
+        .skip(1) //skip the first as it's the method 'self'
+        .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
+        .collect::<Vec<_>>()
+        .concat();
+    println!("arg_names: {}", arg_names);
+    let implementation = format!(
+        "bridge.{}({}: this, {})",
+        func.name.clone().to_case(Case::Camel),
+        func.inputs[0].name.dart_style(),
+        arg_names
+    );
+    let companion_field_signature = "".to_string();
+    let companion_field_implementation = "".to_string();
 
-    GeneratedApiFunc {
+    GeneratedApiMethod {
         signature,
         implementation,
         comments,

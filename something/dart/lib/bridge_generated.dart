@@ -30,11 +30,19 @@ abstract class Something {
 }
 
 class StructWithMethod {
+  final SomethingImpl bridge;
   final String something;
 
   StructWithMethod({
+    required this.bridge,
     required this.something,
   });
+  Future<void> doSomething({required int u, required String x, dynamic hint}) =>
+      bridge.doSomethingMethod(
+        structWithMethod: this,
+        u: u,
+        x: x,
+      );
 }
 
 class TestStruct {
