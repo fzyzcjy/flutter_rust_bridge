@@ -3,7 +3,7 @@ use lib_flutter_rust_bridge_codegen::{
 };
 
 /// Path of input Rust code
-const RUST_INPUT_1: &str = "src/api_1.rs";
+const RUST_INPUT_1: &str = "src/api.rs";
 const RUST_INPUT_2: &str = "src/api_2.rs";
 /// Path of output generated Dart code
 const DART_OUTPUT_1: &str = "../dart/lib/bridge_generated_api_1.dart";
