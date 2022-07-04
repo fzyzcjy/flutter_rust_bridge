@@ -13,6 +13,8 @@ pub trait TypeDartGeneratorTrait {
         "".to_string()
     }
 
+    fn set_dart_api_class_name(&mut self, s: &str) {}
+
     fn structs(&self) -> String {
         "".to_string()
     }
@@ -30,6 +32,7 @@ macro_rules! type_dart_generator_struct {
         pub struct $cls<'a> {
             pub ir: $ir_cls,
             pub context: TypeGeneratorContext<'a>,
+            pub dart_api_class_name: Option<String>,
         }
     };
 }
@@ -51,14 +54,54 @@ impl<'a> TypeDartGenerator<'a> {
     pub fn new(ty: IrType, ir_file: &'a IrFile) -> Self {
         let context = TypeGeneratorContext { ir_file };
         match ty {
-            Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
-            Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),
-            PrimitiveList(ir) => TypePrimitiveListGenerator { ir, context }.into(),
-            Optional(ir) => TypeOptionalGenerator { ir, context }.into(),
-            GeneralList(ir) => TypeGeneralListGenerator { ir, context }.into(),
-            StructRef(ir) => TypeStructRefGenerator { ir, context }.into(),
-            Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
-            EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
+            Primitive(ir) => TypePrimitiveGenerator {
+                ir,
+                context,
+                dart_api_class_name: None,
+            }
+            .into(),
+            Delegate(ir) => TypeDelegateGenerator {
+                ir,
+                context,
+                dart_api_class_name: None,
+            }
+            .into(),
+            PrimitiveList(ir) => TypePrimitiveListGenerator {
+                ir,
+                context,
+                dart_api_class_name: None,
+            }
+            .into(),
+            Optional(ir) => TypeOptionalGenerator {
+                ir,
+                context,
+                dart_api_class_name: None,
+            }
+            .into(),
+            GeneralList(ir) => TypeGeneralListGenerator {
+                ir,
+                context,
+                dart_api_class_name: None,
+            }
+            .into(),
+            StructRef(ir) => TypeStructRefGenerator {
+                ir,
+                context,
+                dart_api_class_name: None,
+            }
+            .into(),
+            Boxed(ir) => TypeBoxedGenerator {
+                ir,
+                context,
+                dart_api_class_name: None,
+            }
+            .into(),
+            EnumRef(ir) => TypeEnumRefGenerator {
+                ir,
+                context,
+                dart_api_class_name: None,
+            }
+            .into(),
         }
     }
 }

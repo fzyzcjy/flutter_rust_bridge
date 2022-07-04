@@ -30,7 +30,7 @@ abstract class Something {
 }
 
 class StructWithMethod {
-  final SomethingImpl bridge;
+  final Something bridge;
   final String something;
 
   StructWithMethod({

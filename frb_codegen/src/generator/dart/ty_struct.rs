@@ -59,6 +59,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         )
     }
 
+    fn set_dart_api_class_name(&mut self, s: &str) {
+        self.dart_api_class_name = Some(s.to_string())
+    }
+
     fn structs(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
         println!("src struct: {:?}", src);
@@ -84,7 +88,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .collect::<Vec<_>>()
             .concat();
         let bridge_requirement = "required this.bridge,".to_string();
-        let field_bridge = format!("final {} bridge;", "SomethingImpl");
+        let field_bridge = format!(
+            "final {} bridge;",
+            self.dart_api_class_name.as_ref().unwrap()
+        );
         if src.using_freezed() {
             let mut constructor_params = src
                 .fields

@@ -47,7 +47,7 @@ pub fn generate(
         dart_api_fill_to_wire_funcs,
         dart_wire2api_funcs,
         needs_freezed,
-    } = get_dart_api_spec_from_ir_file(ir_file);
+    } = get_dart_api_spec_from_ir_file(ir_file, dart_api_class_name);
 
     let common_header = generate_common_header();
 
@@ -92,7 +92,7 @@ struct DartApiSpec {
     needs_freezed: bool,
 }
 
-fn get_dart_api_spec_from_ir_file(ir_file: &IrFile) -> DartApiSpec {
+fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, dart_api_class_name: &str) -> DartApiSpec {
     let distinct_types = ir_file.distinct_types(true, true);
     let distinct_input_types = ir_file.distinct_types(true, false);
     let distinct_output_types = ir_file.distinct_types(false, true);
@@ -107,7 +107,14 @@ fn get_dart_api_spec_from_ir_file(ir_file: &IrFile) -> DartApiSpec {
         .collect::<Vec<_>>();
     let dart_structs = distinct_types
         .iter()
-        .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file).structs())
+        .map(|ty| {
+            {
+                let mut t = TypeDartGenerator::new(ty.clone(), ir_file);
+                t.set_dart_api_class_name(dart_api_class_name);
+                t
+            }
+            .structs()
+        })
         .collect::<Vec<_>>();
     /*
     let get_struct_name_for_method = |f: &IrFunc| -> &IrStruct {
