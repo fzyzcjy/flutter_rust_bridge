@@ -592,10 +592,10 @@ jobs:
         if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-          --rust-input ../frb_example/pure_dart_multi/rust/src/api.rs ../frb_example/pure_dart_multi/rust/src/api_2.rs
+          --rust-input ../frb_example/pure_dart_multi/rust/src/api_1.rs ../frb_example/pure_dart_multi/rust/src/api_2.rs
           --dart-output ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
           --dart-format-line-length 120
-          --rust-output ../frb_example/pure_dart_multi/rust/src/generated_api.rs ../frb_example/pure_dart_multi/rust/src/generated_api_2.rs
+          --rust-output ../frb_example/pure_dart_multi/rust/src/generated_api_1.rs ../frb_example/pure_dart_multi/rust/src/generated_api_2.rs
           --class-name ApiClass1 ApiClass2
         env:
           RUST_LOG: debug
@@ -603,10 +603,10 @@ jobs:
         if: ${{ matrix.os.family == 'windows' }}
         working-directory: ./frb_codegen
         run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-          --rust-input ..\\frb_example\\pure_dart_multi\\rust\\src\\api.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\api_2.rs
+          --rust-input ..\\frb_example\\pure_dart_multi\\rust\\src\\api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\api_2.rs
           --dart-output ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_1.dart ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_2.dart
           --dart-format-line-length 120
-          --rust-output ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_2.rs
+          --rust-output ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_2.rs
           --class-name ApiClass1 ApiClass2
         env:
             RUST_LOG: debug
