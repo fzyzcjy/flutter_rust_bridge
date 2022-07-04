@@ -363,6 +363,10 @@ void main(List<String> args) async {
     await api.closeEventListener();
   });
 
+  test('struct with method test 1', () async {
+    //await api.
+  });
+
   print('flutter_rust_bridge example program end');
 }
 

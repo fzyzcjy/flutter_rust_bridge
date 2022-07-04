@@ -585,12 +585,22 @@ pub fn create_event() {
     }
 }
 
-pub struct StructWithMethod{
-    pub something: String
+pub struct StructWithMethod {
+    pub x: u32,
 }
 
 impl StructWithMethod {
-    pub fn sum(&self, a: u32, b: u32) -> u32 {
-        a+b
+    pub fn sum(&self, y: u32, z: u32) -> u32 {
+        y + z
+    }
+}
+
+pub struct StructWithMethod2 {
+    pub a: String
+}
+
+impl StructWithMethod {
+    pub fn concatenate(&self, b: String) -> String {
+        format!("{}{}", self.a, b)
     }
 }

@@ -12,6 +12,11 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'dart:ffi' as ffi;
 
 abstract class Something {
+  Future<StructWithMethod> newStaticMethodStructWithMethod(
+      {required String something, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodStructWithMethodConstMeta;
+
   Future<void> doSomethingMethod(
       {required StructWithMethod structWithMethod,
       required int u,
@@ -90,6 +95,24 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
       SomethingImpl.raw(SomethingWire(dylib));
 
   SomethingImpl.raw(SomethingWire inner) : super(inner);
+
+  Future<StructWithMethod> newStaticMethodStructWithMethod(
+          {required String something, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_new__static_method___StructWithMethod(
+            port_, _api2wire_String(something)),
+        parseSuccessData: (d) => _wire2api_struct_with_method(this, d),
+        constMeta: kNewStaticMethodStructWithMethodConstMeta,
+        argValues: [something],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kNewStaticMethodStructWithMethodConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "new__static_method___StructWithMethod",
+            argNames: ["something"],
+          );
 
   Future<void> doSomethingMethod(
           {required StructWithMethod structWithMethod,
@@ -250,7 +273,6 @@ StructWithMethod _wire2api_struct_with_method(Something bridge, dynamic raw) {
   if (arr.length != 1)
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return StructWithMethod(
-    bridge: bridge,
     something: _wire2api_String(arr[0]),
   );
 }
@@ -297,6 +319,24 @@ class SomethingWire implements FlutterRustBridgeWireBase {
       ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
           lookup)
       : _lookup = lookup;
+
+  void wire_new__static_method___StructWithMethod(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> something,
+  ) {
+    return _wire_new__static_method___StructWithMethod(
+      port_,
+      something,
+    );
+  }
+
+  late final _wire_new__static_method___StructWithMethodPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_new__static_method___StructWithMethod');
+  late final _wire_new__static_method___StructWithMethod =
+      _wire_new__static_method___StructWithMethodPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_do_something__method(
     int port_,

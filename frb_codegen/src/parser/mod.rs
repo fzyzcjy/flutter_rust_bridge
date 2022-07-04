@@ -212,13 +212,77 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
 
 // Converts an item implementation (something like fn(&self, ...)) into a function where `&self` is a named parameter to `&Self`
 fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -> Option<ItemFn> {
+    println!(
+        "item_method_to_function for {:?}, \n\n\n\nitem_method: {:?}",
+        item_impl, item_method
+    );
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
-        let method_name = Ident::new(
-            format!("{}__method", item_method.sig.ident.clone().to_string()).as_str(),
-            span,
-        );
+        let is_static_method = {
+            let Signature {
+                constness: _,
+                asyncness: _,
+                unsafety: _,
+                abi: _,
+                fn_token: _,
+                ident: _,
+                generics: _,
+                paren_token: _,
+                inputs,
+                variadic: _,
+                output: _,
+            } = &item_method.sig;
+            {
+                if let Some(FnArg::Receiver(..)) = inputs.first() {
+                    false
+                } else {
+                    true
+                }
+            }
+        };
+        let method_name = if is_static_method {
+            let self_type = {
+                let ItemImpl {
+                    attrs: _,
+                    defaultness: _,
+                    unsafety: _,
+                    impl_token: _,
+                    generics: _,
+                    trait_: _,
+                    self_ty,
+                    brace_token: _,
+                    items: _,
+                } = item_impl;
+                if let Type::Path(TypePath { qself: _, path }) = &**self_ty {
+                    if let Some(PathSegment {
+                        ident,
+                        arguments: _,
+                    }) = path.segments.first()
+                    {
+                        Some(ident.to_string())
+                    } else {
+                        None
+                    }
+                } else {
+                    None
+                }
+            };
+            Ident::new(
+                format!(
+                    "{}__static_method___{}",
+                    item_method.sig.ident.clone().to_string(),
+                    self_type.unwrap(),
+                )
+                .as_str(),
+                span,
+            )
+        } else {
+            Ident::new(
+                format!("{}__method", item_method.sig.ident.clone().to_string()).as_str(),
+                span,
+            )
+        };
 
         Some(ItemFn {
             attrs: vec![],

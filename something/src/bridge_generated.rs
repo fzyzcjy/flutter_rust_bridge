@@ -18,6 +18,24 @@ use flutter_rust_bridge::*;
 // Section: wire functions
 
 #[no_mangle]
+pub extern "C" fn wire_new__static_method___StructWithMethod(
+    port_: i64,
+    something: *mut wire_uint_8_list,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "new__static_method___StructWithMethod",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_something = something.wire2api();
+            move |task_callback| Ok(StructWithMethod::new(api_something))
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_do_something__method(
     port_: i64,
     StructWithMethod: *mut wire_StructWithMethod,

@@ -224,6 +224,11 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 }
 
 fn generate_api_method(func: &IrFunc, _ir_struct: &IrStruct) -> GeneratedApiMethod {
+    let is_static_method = {
+        println!("is_static_method for {:?}", func);
+        if let Some(_) = func.inputs.get(0) {};
+        false
+    };
     let raw_func_param_list = func
         .inputs
         .iter()
@@ -243,7 +248,11 @@ fn generate_api_method(func: &IrFunc, _ir_struct: &IrStruct) -> GeneratedApiMeth
     let partial = format!(
         "{} {}({{ {} }})",
         func.mode.dart_return_type(&func.output.dart_api_type()),
-        func.name.replace("__method", "").to_case(Case::Camel),
+        if is_static_method {
+            func.name.replace("__method", "").to_case(Case::Camel)
+        } else {
+            func.name.replace("__method", "").to_case(Case::Camel)
+        },
         full_func_param_list.join(","),
     );
 

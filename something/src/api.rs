@@ -3,10 +3,13 @@ pub struct StructWithMethod {
 }
 
 pub struct OtherStruct {
-    pub u: u32
+    pub u: u32,
 }
 
 impl StructWithMethod {
+    pub fn new(something: String) -> StructWithMethod {
+        StructWithMethod { something }
+    }
     pub fn do_something(&self, _u: u32, _x: String) {
         todo!()
     }

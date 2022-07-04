@@ -224,6 +224,8 @@ impl Generator {
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
         println!("generate_wire_func for func: {:?}", func);
+        println!("generate_wire_func for ir_file: {:?}", ir_file);
+
         let params = [
             if func.mode.has_port_argument() {
                 vec!["port_: i64".to_string()]
@@ -293,11 +295,22 @@ impl Generator {
                 inner_func_params.join(", ")
             ))
         } else {
-            inner_func_params[0] = format!("&{}", inner_func_params[0]);
+            let method_name = if func.name.contains("__method") {
+                inner_func_params[0] = format!("&{}", inner_func_params[0]);
+                func.name.replace("__method", "")
+            } else if func.name.contains("__static_method") {
+                inner_func_params[0] = format!("{}", inner_func_params[0]);
+                func.name.split("__static_method").next().unwrap().to_string()
+            } else {
+                panic!(
+                    "not a method neither static method but should be: {}",
+                    func.name
+                )
+            };
             TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
                 r"{}::{}({})",
                 struct_name.clone().unwrap(),
-                func.name.replace("__method", ""),
+                method_name,
                 inner_func_params.join(", ")
             ))
         };
@@ -348,7 +361,6 @@ impl Generator {
     }
 
     fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        // println!("generate_wire_struct: {:?}", ty);
         if let Some(fields) = TypeRustGenerator::new(ty.clone(), ir_file).wire_struct_fields() {
             format!(
                 r###"
@@ -367,7 +379,6 @@ impl Generator {
     }
 
     fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        // println!("generate_allocate_funcs: {:?}", ty);
         TypeRustGenerator::new(ty.clone(), ir_file).allocate_funcs(&mut self.extern_func_collector)
     }
 
@@ -463,6 +474,16 @@ fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
     if func.name.contains("__method") {
         let input = func.inputs[0].clone();
         (true, Some(input.name.to_string()))
+    } else if func.name.contains("__static_method") {
+        println!("gonna split {}", func.name);
+        println!(
+            "split is {}",
+            func.name.split("___").last().unwrap().to_string()
+        );
+        (
+            true,
+            Some(func.name.split("___").last().unwrap().to_string()),
+        )
     } else {
         (false, None)
     }
