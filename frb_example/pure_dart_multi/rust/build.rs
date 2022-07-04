@@ -1,5 +1,5 @@
 use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,cargo_emit
+    config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts
 };
 
 /// Path of input Rust code
@@ -16,12 +16,6 @@ const CLASS_NAME_1: &str = "ApiClass1";
 const CLASS_NAME_2: &str = "ApiClass2";
 
 fn main() {
-    // Tell Cargo that if the input Rust code changes, to rerun this build script.
-    cargo_emit::rerun_if_changed!(
-        RUST_INPUT_1,
-        RUST_INPUT_2,
-    );
-
     // Options for frb_codegen
     let raw_opts = RawOpts {
         // Path of input Rust code

@@ -110,12 +110,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cargo-emit"
-version = "0.2.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1582e1c9e755dd6ad6b224dcffb135d199399a4568d454bd89fe515ca8425695"
-
-[[package]]
 name = "cargo-platform"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -264,7 +258,6 @@ name = "flutter_rust_bridge_codegen"
 version = "1.36.0"
 dependencies = [
  "anyhow",
- "cargo-emit",
  "cargo_metadata",
  "cbindgen",
  "convert_case",
