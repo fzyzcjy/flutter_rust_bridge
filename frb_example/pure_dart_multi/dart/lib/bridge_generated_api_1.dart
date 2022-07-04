@@ -13,9 +13,9 @@ import 'dart:ffi' as ffi;
 
 abstract class ApiClass1 {
   /// Documentation on a simple adder function.
-  Future<int> simpleAdder({required int a, required int b, dynamic hint});
+  Future<int> simpleAdder1({required int a, required int b, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta;
+  FlutterRustBridgeTaskConstMeta get kSimpleAdder1ConstMeta;
 }
 
 class ApiClass1Impl extends FlutterRustBridgeBase<ApiClass1Wire> implements ApiClass1 {
@@ -23,16 +23,16 @@ class ApiClass1Impl extends FlutterRustBridgeBase<ApiClass1Wire> implements ApiC
 
   ApiClass1Impl.raw(ApiClass1Wire inner) : super(inner);
 
-  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_simple_adder(port_, _api2wire_i32(a), _api2wire_i32(b)),
+  Future<int> simpleAdder1({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_simple_adder_1(port_, _api2wire_i32(a), _api2wire_i32(b)),
         parseSuccessData: _wire2api_i32,
-        constMeta: kSimpleAdderConstMeta,
+        constMeta: kSimpleAdder1ConstMeta,
         argValues: [a, b],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "simple_adder",
+  FlutterRustBridgeTaskConstMeta get kSimpleAdder1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "simple_adder_1",
         argNames: ["a", "b"],
       );
 
@@ -68,21 +68,21 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   ApiClass1Wire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
-  void wire_simple_adder(
+  void wire_simple_adder_1(
     int port_,
     int a,
     int b,
   ) {
-    return _wire_simple_adder(
+    return _wire_simple_adder_1(
       port_,
       a,
       b,
     );
   }
 
-  late final _wire_simple_adderPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder');
-  late final _wire_simple_adder = _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
+  late final _wire_simple_adder_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder_1');
+  late final _wire_simple_adder_1 = _wire_simple_adder_1Ptr.asFunction<void Function(int, int, int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,

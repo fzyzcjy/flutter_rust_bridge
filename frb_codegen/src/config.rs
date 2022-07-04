@@ -376,7 +376,8 @@ fn path_to_string(path: PathBuf) -> Result<String, OsString> {
 impl Opts {
     pub fn get_ir_file(&self) -> IrFile {
         // info!("Phase: Parse source code to AST");
-        let source_rust_content = fs::read_to_string(&self.rust_input_path).unwrap();
+        let source_rust_content = fs::read_to_string(&self.rust_input_path)
+            .unwrap_or_else(|_| panic!("panic with file: {}", &self.rust_input_path));
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
         // info!("Phase: Parse AST to IR");
