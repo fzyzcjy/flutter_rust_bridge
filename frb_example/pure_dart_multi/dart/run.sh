@@ -2,10 +2,10 @@
 
 set -eux
 
-if [[ -z "${CARGO_TARGET_DIR}" ]]; then
-  echo 'Please set environment variable CARGO_TARGET_DIR'
-  exit 1
-fi
+# if [[ -z "${CARGO_TARGET_DIR}" ]]; then
+#   echo 'Please set environment variable CARGO_TARGET_DIR'
+#   exit 1
+# fi
 
 (cd ../rust && cargo build --verbose)
 
@@ -13,4 +13,4 @@ fi
 
 # need to be AOT, since prod environment is AOT, and JIT+valgrind will have strange problems
 dart compile exe lib/main.dart -o main.exe
-./main.exe "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example.so" --chain-stack-traces
+./main.exe "../rust/target/debug/libflutter_rust_bridge_example.so" --chain-stack-traces
