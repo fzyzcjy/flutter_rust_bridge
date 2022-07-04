@@ -324,12 +324,19 @@ fn has_methods(struct_name: String, ir_file: &IrFile) -> bool {
     ir_file
         .funcs
         .iter()
-        .find(|f| is_method(f, struct_name.clone()))
+        .find(|f| {
+            is_method_for_struct(f, struct_name.clone())
+                || is_static_method_for_struct(f, struct_name.clone())
+        })
         .is_some()
 }
 
-fn is_method(f: &&IrFunc, struct_name: String) -> bool {
-    f.name.contains("__method")
+fn is_method_for_struct(f: &&IrFunc, struct_name: String) -> bool {
+    println!(
+        "is_method_for_struct, f: {:?}, struct_name: {}",
+        f, struct_name
+    );
+    let r = f.name.contains("__method")
         && if let Boxed(IrTypeBoxed {
             exist_in_real_api: _,
             inner,
@@ -342,7 +349,20 @@ fn is_method(f: &&IrFunc, struct_name: String) -> bool {
             }
         } else {
             false
-        }
+        };
+    println!("result s is {}", r);
+    r
+}
+
+fn is_static_method_for_struct(f: &&IrFunc, struct_name: String) -> bool {
+    println!(
+        "is_static_method_for_struct, f: {:?}, struct_name: {}",
+        f, struct_name
+    );
+    let r =
+        f.name.contains("__static_method") && f.name.split("___").last().unwrap() == struct_name;
+    println!("result s is {}", r);
+    r
 }
 
 fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {

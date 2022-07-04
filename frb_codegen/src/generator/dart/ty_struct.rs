@@ -1,8 +1,10 @@
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
-use crate::generator::dart::{is_method, ty::*};
+use crate::generator::dart::{is_method_for_struct, ty::*};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
 use convert_case::{Case, Casing};
+
+use super::is_static_method_for_struct;
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
@@ -38,7 +40,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .ir_file
             .funcs
             .iter()
-            .filter(|f| is_method(f, src.name.clone()))
+            .filter(|f| {
+                is_method_for_struct(f, src.name.clone())
+                    || is_static_method_for_struct(f, src.name.clone())
+            })
             .collect::<Vec<_>>();
         let has_methods = !methods.is_empty();
         let mut inner = s
@@ -88,7 +93,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             }
         };
 
-        if has_methods && is_method_for_struct {
+        if has_methods {
             inner.insert(0, "bridge: bridge,".to_string());
         }
         let inner = inner.join("\n");
@@ -116,7 +121,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let methods = ir_file
             .funcs
             .iter()
-            .filter(|f| is_method(f, src.name.clone()))
+            .filter(|f| is_method_for_struct(f, src.name.clone()))
             .collect::<Vec<_>>();
 
         let has_methods = !methods.is_empty();

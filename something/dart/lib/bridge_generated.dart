@@ -273,6 +273,7 @@ StructWithMethod _wire2api_struct_with_method(Something bridge, dynamic raw) {
   if (arr.length != 1)
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return StructWithMethod(
+    bridge: bridge,
     something: _wire2api_String(arr[0]),
   );
 }
