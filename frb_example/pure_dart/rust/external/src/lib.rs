@@ -39,7 +39,7 @@ impl ApplicationSettings {
         Self {
             name: name.into(),
             version: version.into(),
-            mode: mode,
+            mode,
             env: Box::new(ApplicationEnv {
                 vars: env_vars
                     .into_iter()

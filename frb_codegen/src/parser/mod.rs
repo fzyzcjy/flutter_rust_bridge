@@ -109,10 +109,10 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
-        let mut mode = None;
+        let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
-        for sig_input in &sig.inputs {
+        for (i, sig_input) in sig.inputs.iter().enumerate() {
             if let FnArg::Typed(ref pat_type) = sig_input {
                 let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
                     format!("{}", pat_ident.ident)
@@ -128,7 +128,7 @@ impl<'a> Parser<'a> {
                 }) {
                     IrFuncArg::StreamSinkType(ty) => {
                         output = Some(ty);
-                        mode = Some(IrFuncMode::Stream);
+                        mode = Some(IrFuncMode::Stream { argument_index: i });
                     }
                     IrFuncArg::Type(ty) => {
                         inputs.push(IrField {
@@ -181,7 +181,7 @@ impl<'a> Parser<'a> {
             inputs,
             output: output.expect("unsupported output"),
             fallible,
-            mode: mode.expect("unsupported mode"),
+            mode: mode.expect("missing mode"),
             comments: extract_comments(&func.attrs),
         }
     }

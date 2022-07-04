@@ -34,7 +34,10 @@ pub enum IrFuncArg {
 pub enum IrFuncMode {
     Normal,
     Sync,
-    Stream,
+    Stream {
+        // The index of StreamSink in the function arguments
+        argument_index: usize,
+    },
 }
 
 impl IrFuncMode {
@@ -42,7 +45,7 @@ impl IrFuncMode {
         match self {
             Self::Normal => format!("Future<{}>", inner),
             Self::Sync => inner.to_string(),
-            Self::Stream => format!("Stream<{}>", inner),
+            Self::Stream { .. } => format!("Stream<{}>", inner),
         }
     }
 
@@ -50,7 +53,7 @@ impl IrFuncMode {
         match self {
             Self::Normal => "Normal",
             Self::Sync => "Sync",
-            Self::Stream => "Stream",
+            Self::Stream { .. } => "Stream",
         }
     }
 

@@ -356,7 +356,7 @@ fn generate_api_func(func: &IrFunc) -> GeneratedApiFunc {
     let execute_func_name = match func.mode {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
-        IrFuncMode::Stream => "executeStream",
+        IrFuncMode::Stream { .. } => "executeStream",
     };
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
