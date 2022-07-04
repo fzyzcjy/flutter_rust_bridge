@@ -293,19 +293,19 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   ffi.Pointer<wire_Point> _api2wire_box_autoadd_point(Point raw) {
-    final ptr = inner.new_box_autoadd_point_1();
+    final ptr = inner.new_box_autoadd_point_0();
     _api_fill_to_wire_point(raw, ptr.ref);
     return ptr;
   }
 
   ffi.Pointer<wire_Size> _api2wire_box_autoadd_size(Size raw) {
-    final ptr = inner.new_box_autoadd_size_1();
+    final ptr = inner.new_box_autoadd_size_0();
     _api_fill_to_wire_size(raw, ptr.ref);
     return ptr;
   }
 
   ffi.Pointer<wire_TreeNode> _api2wire_box_autoadd_tree_node(TreeNode raw) {
-    final ptr = inner.new_box_autoadd_tree_node_1();
+    final ptr = inner.new_box_autoadd_tree_node_0();
     _api_fill_to_wire_tree_node(raw, ptr.ref);
     return ptr;
   }
@@ -319,7 +319,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   ffi.Pointer<wire_list_size> _api2wire_list_size(List<Size> raw) {
-    final ans = inner.new_list_size_1(raw.length);
+    final ans = inner.new_list_size_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_size(raw[i], ans.ref.ptr[i]);
     }
@@ -327,7 +327,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   ffi.Pointer<wire_list_tree_node> _api2wire_list_tree_node(List<TreeNode> raw) {
-    final ans = inner.new_list_tree_node_1(raw.length);
+    final ans = inner.new_list_tree_node_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_tree_node(raw[i], ans.ref.ptr[i]);
     }
@@ -339,7 +339,7 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_uint_8_list(Uint8List raw) {
-    final ans = inner.new_uint_8_list_1(raw.length);
+    final ans = inner.new_uint_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
@@ -653,67 +653,67 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_off_topic_deliberately_panic =
       _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
-  ffi.Pointer<wire_Point> new_box_autoadd_point_1() {
-    return _new_box_autoadd_point_1();
+  ffi.Pointer<wire_Point> new_box_autoadd_point_0() {
+    return _new_box_autoadd_point_0();
   }
 
-  late final _new_box_autoadd_point_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Point> Function()>>('new_box_autoadd_point_1');
-  late final _new_box_autoadd_point_1 = _new_box_autoadd_point_1Ptr.asFunction<ffi.Pointer<wire_Point> Function()>();
+  late final _new_box_autoadd_point_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Point> Function()>>('new_box_autoadd_point_0');
+  late final _new_box_autoadd_point_0 = _new_box_autoadd_point_0Ptr.asFunction<ffi.Pointer<wire_Point> Function()>();
 
-  ffi.Pointer<wire_Size> new_box_autoadd_size_1() {
-    return _new_box_autoadd_size_1();
+  ffi.Pointer<wire_Size> new_box_autoadd_size_0() {
+    return _new_box_autoadd_size_0();
   }
 
-  late final _new_box_autoadd_size_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Size> Function()>>('new_box_autoadd_size_1');
-  late final _new_box_autoadd_size_1 = _new_box_autoadd_size_1Ptr.asFunction<ffi.Pointer<wire_Size> Function()>();
+  late final _new_box_autoadd_size_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Size> Function()>>('new_box_autoadd_size_0');
+  late final _new_box_autoadd_size_0 = _new_box_autoadd_size_0Ptr.asFunction<ffi.Pointer<wire_Size> Function()>();
 
-  ffi.Pointer<wire_TreeNode> new_box_autoadd_tree_node_1() {
-    return _new_box_autoadd_tree_node_1();
+  ffi.Pointer<wire_TreeNode> new_box_autoadd_tree_node_0() {
+    return _new_box_autoadd_tree_node_0();
   }
 
-  late final _new_box_autoadd_tree_node_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node_1');
-  late final _new_box_autoadd_tree_node_1 =
-      _new_box_autoadd_tree_node_1Ptr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
+  late final _new_box_autoadd_tree_node_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node_0');
+  late final _new_box_autoadd_tree_node_0 =
+      _new_box_autoadd_tree_node_0Ptr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
 
-  ffi.Pointer<wire_list_size> new_list_size_1(
+  ffi.Pointer<wire_list_size> new_list_size_0(
     int len,
   ) {
-    return _new_list_size_1(
+    return _new_list_size_0(
       len,
     );
   }
 
-  late final _new_list_size_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_size> Function(ffi.Int32)>>('new_list_size_1');
-  late final _new_list_size_1 = _new_list_size_1Ptr.asFunction<ffi.Pointer<wire_list_size> Function(int)>();
+  late final _new_list_size_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_size> Function(ffi.Int32)>>('new_list_size_0');
+  late final _new_list_size_0 = _new_list_size_0Ptr.asFunction<ffi.Pointer<wire_list_size> Function(int)>();
 
-  ffi.Pointer<wire_list_tree_node> new_list_tree_node_1(
+  ffi.Pointer<wire_list_tree_node> new_list_tree_node_0(
     int len,
   ) {
-    return _new_list_tree_node_1(
+    return _new_list_tree_node_0(
       len,
     );
   }
 
-  late final _new_list_tree_node_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_tree_node> Function(ffi.Int32)>>('new_list_tree_node_1');
-  late final _new_list_tree_node_1 =
-      _new_list_tree_node_1Ptr.asFunction<ffi.Pointer<wire_list_tree_node> Function(int)>();
+  late final _new_list_tree_node_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_tree_node> Function(ffi.Int32)>>('new_list_tree_node_0');
+  late final _new_list_tree_node_0 =
+      _new_list_tree_node_0Ptr.asFunction<ffi.Pointer<wire_list_tree_node> Function(int)>();
 
-  ffi.Pointer<wire_uint_8_list> new_uint_8_list_1(
+  ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
     int len,
   ) {
-    return _new_uint_8_list_1(
+    return _new_uint_8_list_0(
       len,
     );
   }
 
-  late final _new_uint_8_list_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_1');
-  late final _new_uint_8_list_1 = _new_uint_8_list_1Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+  late final _new_uint_8_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
+  late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
