@@ -35,6 +35,7 @@ impl IrTypeTrait for IrTypeBoxed {
         } else {
             self.inner.dart_wire_type()
         };
+        println!("formatting for wire_type: {:?}", wire_type);
         format!("ffi.Pointer<{}>", wire_type)
     }
 

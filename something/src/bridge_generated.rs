@@ -38,9 +38,9 @@ pub extern "C" fn wire_new__static_method___StructWithMethod(
 #[no_mangle]
 pub extern "C" fn wire_do_something__method(
     port_: i64,
-    StructWithMethod: *mut wire_StructWithMethod,
-    _u: u32,
-    _x: *mut wire_uint_8_list,
+    struct_with_method: *mut wire_StructWithMethod,
+    u: u32,
+    x: *mut wire_uint_8_list,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -49,14 +49,14 @@ pub extern "C" fn wire_do_something__method(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_StructWithMethod = StructWithMethod.wire2api();
-            let api__u = _u.wire2api();
-            let api__x = _x.wire2api();
+            let api_struct_with_method = struct_with_method.wire2api();
+            let api_u = u.wire2api();
+            let api_x = x.wire2api();
             move |task_callback| {
                 Ok(StructWithMethod::do_something(
-                    &api_StructWithMethod,
-                    api__u,
-                    api__x,
+                    &api_struct_with_method,
+                    api_u,
+                    api_x,
                 ))
             }
         },
@@ -66,7 +66,7 @@ pub extern "C" fn wire_do_something__method(
 #[no_mangle]
 pub extern "C" fn wire_do_more_stuff__method(
     port_: i64,
-    StructWithMethod: *mut wire_StructWithMethod,
+    struct_with_method: *mut wire_StructWithMethod,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -75,8 +75,8 @@ pub extern "C" fn wire_do_more_stuff__method(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_StructWithMethod = StructWithMethod.wire2api();
-            move |task_callback| Ok(StructWithMethod::do_more_stuff(&api_StructWithMethod))
+            let api_struct_with_method = struct_with_method.wire2api();
+            move |task_callback| Ok(StructWithMethod::do_more_stuff(&api_struct_with_method))
         },
     )
 }
@@ -84,7 +84,7 @@ pub extern "C" fn wire_do_more_stuff__method(
 #[no_mangle]
 pub extern "C" fn wire_do_huge_stuff__method(
     port_: i64,
-    StructWithMethod: *mut wire_StructWithMethod,
+    struct_with_method: *mut wire_StructWithMethod,
     s: *mut wire_uint_8_list,
     a: *mut wire_OtherStruct,
 ) {
@@ -95,12 +95,12 @@ pub extern "C" fn wire_do_huge_stuff__method(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_StructWithMethod = StructWithMethod.wire2api();
+            let api_struct_with_method = struct_with_method.wire2api();
             let api_s = s.wire2api();
             let api_a = a.wire2api();
             move |task_callback| {
                 Ok(StructWithMethod::do_huge_stuff(
-                    &api_StructWithMethod,
+                    &api_struct_with_method,
                     api_s,
                     api_a,
                 ))

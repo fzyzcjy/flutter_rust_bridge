@@ -2,6 +2,7 @@ mod ty;
 
 use std::string::String;
 
+use convert_case::{Casing, Case};
 use log::debug;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
@@ -322,7 +323,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                                     attrs: vec![],
                                     by_ref: Some(syn::token::Ref { span }),
                                     mutability: mutability.clone(),
-                                    ident: Ident::new(struct_name.as_str(), span),
+                                    ident: Ident::new(str_cap(&struct_name).as_str(), span),
                                     subpat: None,
                                 })),
                                 colon_token: Colon { spans: [span] },
@@ -347,6 +348,16 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
     } else {
         None
     }
+}
+
+fn str_cap(s: &str) -> String {
+    let r = format!(
+        "{}{}",
+        s.chars().next().unwrap().to_lowercase(),
+        s.chars().skip(1).collect::<String>()
+    );
+    println!("str_cap for {}, result: {}", s, r);
+    s.to_case(Case::Snake)
 }
 
 fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {

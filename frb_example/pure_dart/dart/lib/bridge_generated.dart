@@ -3231,13 +3231,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_sum__method(
     int port_,
-    ffi.Pointer<wire_StructWithMethod> StructWithMethod,
+    ffi.Pointer<wire_StructWithMethod> struct_with_method,
     int y,
     int z,
   ) {
     return _wire_sum__method(
       port_,
-      StructWithMethod,
+      struct_with_method,
       y,
       z,
     );
@@ -3252,12 +3252,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_concatenate__method(
     int port_,
-    ffi.Pointer<wire_StructWithMethod> StructWithMethod,
+    ffi.Pointer<wire_StructWithMethod> struct_with_method,
     ffi.Pointer<wire_uint_8_list> b,
   ) {
     return _wire_concatenate__method(
       port_,
-      StructWithMethod,
+      struct_with_method,
       b,
     );
   }

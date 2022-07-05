@@ -675,7 +675,7 @@ pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
 #[no_mangle]
 pub extern "C" fn wire_sum__method(
     port_: i64,
-    StructWithMethod: *mut wire_StructWithMethod,
+    struct_with_method: *mut wire_StructWithMethod,
     y: u32,
     z: u32,
 ) {
@@ -686,10 +686,10 @@ pub extern "C" fn wire_sum__method(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_StructWithMethod = StructWithMethod.wire2api();
+            let api_struct_with_method = struct_with_method.wire2api();
             let api_y = y.wire2api();
             let api_z = z.wire2api();
-            move |task_callback| Ok(StructWithMethod::sum(&api_StructWithMethod, api_y, api_z))
+            move |task_callback| Ok(StructWithMethod::sum(&api_struct_with_method, api_y, api_z))
         },
     )
 }
@@ -697,7 +697,7 @@ pub extern "C" fn wire_sum__method(
 #[no_mangle]
 pub extern "C" fn wire_concatenate__method(
     port_: i64,
-    StructWithMethod: *mut wire_StructWithMethod,
+    struct_with_method: *mut wire_StructWithMethod,
     b: *mut wire_uint_8_list,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
@@ -707,9 +707,14 @@ pub extern "C" fn wire_concatenate__method(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_StructWithMethod = StructWithMethod.wire2api();
+            let api_struct_with_method = struct_with_method.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(StructWithMethod::concatenate(&api_StructWithMethod, api_b))
+            move |task_callback| {
+                Ok(StructWithMethod::concatenate(
+                    &api_struct_with_method,
+                    api_b,
+                ))
+            }
         },
     )
 }

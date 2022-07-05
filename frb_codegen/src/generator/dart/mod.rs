@@ -50,7 +50,10 @@ pub fn generate(
         dart_wire2api_funcs,
         needs_freezed,
     } = get_dart_api_spec_from_ir_file(ir_file, block_index, dart_api_class_name);
-
+    println!("dart_api2wire_funcs: {:?}", dart_api2wire_funcs);
+    println!("dart_api_fill_to_wire_funcs: {:?}", dart_api_fill_to_wire_funcs);
+    println!("dart_funcs: {:?}", dart_funcs);
+    println!("dart_wire2api_funcs: {:?}", dart_wire2api_funcs);
     let common_header = generate_common_header();
 
     let decl_code = generate_dart_declaration_code(
@@ -286,6 +289,7 @@ fn generate_dart_implementation_code(
     common_header: &DartBasicCode,
     implementation_body: String,
 ) -> DartBasicCode {
+    println!("dart implementation body: {}", implementation_body);
     common_header
         + &DartBasicCode {
             import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';".to_string(),
@@ -380,6 +384,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             )
         })
         .collect::<Vec<_>>();
+    println!("raw_func_param_list: {:?}", raw_func_param_list);
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let wire_param_list = [
@@ -405,7 +410,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             .collect::<Vec<_>>(),
     ]
     .concat();
-
+    println!("wire_param_list: {:?}", wire_param_list);
     let partial = format!(
         "{} {}({{ {} }})",
         func.mode.dart_return_type(&func.output.dart_api_type()),
@@ -438,7 +443,9 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             .collect::<Vec<_>>()
             .join(", "),
     );
-
+    println!("func.wire_func_name: {:?}", func.wire_func_name());
+    println!("wire_param_list: {:?}", wire_param_list);
+    println!("partial: {:?}", partial);
     let implementation = match func.mode {
         IrFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
@@ -549,6 +556,7 @@ fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &s
         "".to_string()
     };
     let body = TypeDartGenerator::new(ty.clone(), ir_file).wire2api_body();
+    println!("wire2api_body: {}", body);
     format!(
         "{} _wire2api_{}({}dynamic raw) {{
             {}

@@ -10,7 +10,7 @@ impl StructWithMethod {
     pub fn new(something: String) -> StructWithMethod {
         StructWithMethod { something }
     }
-    pub fn do_something(&self, _u: u32, _x: String) {
+    pub fn do_something(&self, u: u32, x: String) {
         todo!()
     }
 

@@ -101,7 +101,7 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_new__static_method___StructWithMethod(
             port_, _api2wire_String(something)),
-        parseSuccessData: (d) => _wire2api_struct_with_method(this, d),
+        parseSuccessData: _wire2api_struct_with_method,
         constMeta: kNewStaticMethodStructWithMethodConstMeta,
         argValues: [something],
         hint: hint,
@@ -180,7 +180,7 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
   Future<StructWithMethod> returnStruct({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_struct(port_),
-        parseSuccessData: (d) => _wire2api_struct_with_method(this, d),
+        parseSuccessData: _wire2api_struct_with_method,
         constMeta: kReturnStructConstMeta,
         argValues: [],
         hint: hint,
@@ -341,15 +341,15 @@ class SomethingWire implements FlutterRustBridgeWireBase {
 
   void wire_do_something__method(
     int port_,
-    ffi.Pointer<wire_StructWithMethod> StructWithMethod,
-    int _u,
-    ffi.Pointer<wire_uint_8_list> _x,
+    ffi.Pointer<wire_StructWithMethod> struct_with_method,
+    int u,
+    ffi.Pointer<wire_uint_8_list> x,
   ) {
     return _wire_do_something__method(
       port_,
-      StructWithMethod,
-      _u,
-      _x,
+      struct_with_method,
+      u,
+      x,
     );
   }
 
@@ -367,11 +367,11 @@ class SomethingWire implements FlutterRustBridgeWireBase {
 
   void wire_do_more_stuff__method(
     int port_,
-    ffi.Pointer<wire_StructWithMethod> StructWithMethod,
+    ffi.Pointer<wire_StructWithMethod> struct_with_method,
   ) {
     return _wire_do_more_stuff__method(
       port_,
-      StructWithMethod,
+      struct_with_method,
     );
   }
 
@@ -385,13 +385,13 @@ class SomethingWire implements FlutterRustBridgeWireBase {
 
   void wire_do_huge_stuff__method(
     int port_,
-    ffi.Pointer<wire_StructWithMethod> StructWithMethod,
+    ffi.Pointer<wire_StructWithMethod> struct_with_method,
     ffi.Pointer<wire_uint_8_list> s,
     ffi.Pointer<wire_OtherStruct> a,
   ) {
     return _wire_do_huge_stuff__method(
       port_,
-      StructWithMethod,
+      struct_with_method,
       s,
       a,
     );

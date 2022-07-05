@@ -8,6 +8,8 @@ mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
 
+use convert_case::Case;
+use convert_case::Casing;
 pub use ty::*;
 pub use ty_boxed::*;
 pub use ty_delegate::*;
@@ -224,6 +226,7 @@ impl Generator {
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
         println!("generate_wire_func for func: {:?}", func);
         println!("generate_wire_func for ir_file: {:?}", ir_file);
+        let (is_a_method, struct_name) = test_is_method(func);
 
         let params = [
             if func.mode.has_port_argument() {
@@ -244,8 +247,6 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-
-        let (is_a_method, struct_name) = test_is_method(func);
 
         println!(
             "#123abc is_a_method: {:?}, struct name: {:?}",
@@ -485,7 +486,7 @@ impl Generator {
 fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
     if func.name.contains("__method") {
         let input = func.inputs[0].clone();
-        (true, Some(input.name.to_string()))
+        (true, Some(input.name.to_string().to_case(Case::UpperCamel)))
     } else if func.name.contains("__static_method") {
         println!("gonna split {}", func.name);
         println!(
@@ -494,7 +495,7 @@ fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
         );
         (
             true,
-            Some(func.name.split("___").last().unwrap().to_string()),
+            Some(func.name.split("___").last().unwrap().to_string().to_case(Case::UpperCamel)),
         )
     } else {
         (false, None)
