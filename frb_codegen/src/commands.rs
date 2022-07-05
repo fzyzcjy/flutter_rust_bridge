@@ -25,22 +25,30 @@ pub fn ensure_tools_available() -> Result {
     Ok(())
 }
 
-pub fn bindgen_rust_to_dart(
-    rust_crate_dir: &str,
-    c_output_path: &str,
-    dart_output_path: &str,
-    dart_class_name: &str,
-    c_struct_names: Vec<String>,
-    llvm_install_path: &[String],
-    llvm_compiler_opts: &str,
-) -> anyhow::Result<()> {
-    cbindgen(rust_crate_dir, c_output_path, c_struct_names)?;
+pub(crate) struct BindgenRustToDartArg<'a> {
+    pub rust_crate_dir: &'a str,
+    pub c_output_path: &'a str,
+    pub dart_output_path: &'a str,
+    pub dart_class_name: &'a str,
+    pub c_struct_names: Vec<String>,
+    pub exclude_symbols: Vec<String>,
+    pub llvm_install_path: &'a [String],
+    pub llvm_compiler_opts: &'a str,
+}
+
+pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<()> {
+    cbindgen(
+        arg.rust_crate_dir,
+        arg.c_output_path,
+        arg.c_struct_names,
+        arg.exclude_symbols,
+    )?;
     ffigen(
-        c_output_path,
-        dart_output_path,
-        dart_class_name,
-        llvm_install_path,
-        llvm_compiler_opts,
+        arg.c_output_path,
+        arg.dart_output_path,
+        arg.dart_class_name,
+        arg.llvm_install_path,
+        arg.llvm_compiler_opts,
     )
 }
 
@@ -100,12 +108,12 @@ fn cbindgen(
     rust_crate_dir: &str,
     c_output_path: &str,
     c_struct_names: Vec<String>,
+    exclude_symbols: Vec<String>,
 ) -> anyhow::Result<()> {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
-
     let config = cbindgen::Config {
         language: cbindgen::Language::C,
         sys_includes: vec![
@@ -119,6 +127,7 @@ fn cbindgen(
                 .iter()
                 .map(|name| format!("\"{}\"", name))
                 .collect::<Vec<_>>(),
+            exclude: exclude_symbols,
             ..Default::default()
         },
         ..Default::default()

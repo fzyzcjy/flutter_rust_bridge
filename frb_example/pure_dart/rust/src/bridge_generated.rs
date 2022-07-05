@@ -957,7 +957,7 @@ const _: fn() = || {
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
+pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
     let wrap = wire_StringList {
         ptr: support::new_leak_vec_ptr(<*mut wire_uint_8_list>::new_with_null_ptr(), len),
         len,
@@ -966,127 +966,127 @@ pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_application_env() -> *mut wire_ApplicationEnv {
+pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_application_settings() -> *mut wire_ApplicationSettings {
+pub extern "C" fn new_box_autoadd_application_settings_0() -> *mut wire_ApplicationSettings {
     support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_Attribute {
+pub extern "C" fn new_box_autoadd_attribute_0() -> *mut wire_Attribute {
     support::new_leak_box_ptr(wire_Attribute::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
+pub extern "C" fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_customized() -> *mut wire_Customized {
+pub extern "C" fn new_box_autoadd_customized_0() -> *mut wire_Customized {
     support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_exotic_optionals() -> *mut wire_ExoticOptionals {
+pub extern "C" fn new_box_autoadd_exotic_optionals_0() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
+pub extern "C" fn new_box_autoadd_f64_0(value: f64) -> *mut f64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_i32(value: i32) -> *mut i32 {
+pub extern "C" fn new_box_autoadd_i32_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_i64(value: i64) -> *mut i64 {
+pub extern "C" fn new_box_autoadd_i64_0(value: i64) -> *mut i64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_KitchenSink {
+pub extern "C" fn new_box_autoadd_kitchen_sink_0() -> *mut wire_KitchenSink {
     support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_MySize {
+pub extern "C" fn new_box_autoadd_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_struct() -> *mut wire_MyStruct {
+pub extern "C" fn new_box_autoadd_my_struct_0() -> *mut wire_MyStruct {
     support::new_leak_box_ptr(wire_MyStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_MyTreeNode {
+pub extern "C" fn new_box_autoadd_my_tree_node_0() -> *mut wire_MyTreeNode {
     support::new_leak_box_ptr(wire_MyTreeNode::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_NewTypeInt {
+pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut wire_NewTypeInt {
     support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_user_id() -> *mut wire_UserId {
+pub extern "C" fn new_box_autoadd_user_id_0() -> *mut wire_UserId {
     support::new_leak_box_ptr(wire_UserId::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_bool(value: bool) -> *mut bool {
+pub extern "C" fn new_box_bool_0(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_exotic_optionals() -> *mut wire_ExoticOptionals {
+pub extern "C" fn new_box_exotic_optionals_0() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_f64(value: f64) -> *mut f64 {
+pub extern "C" fn new_box_f64_0(value: f64) -> *mut f64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_i32(value: i32) -> *mut i32 {
+pub extern "C" fn new_box_i32_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_i64(value: i64) -> *mut i64 {
+pub extern "C" fn new_box_i64_0(value: i64) -> *mut i64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_i8(value: i8) -> *mut i8 {
+pub extern "C" fn new_box_i8_0(value: i8) -> *mut i8 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_kitchen_sink() -> *mut wire_KitchenSink {
+pub extern "C" fn new_box_kitchen_sink_0() -> *mut wire_KitchenSink {
     support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_my_size() -> *mut wire_MySize {
+pub extern "C" fn new_box_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_u8(value: u8) -> *mut u8 {
+pub extern "C" fn new_box_u8_0(value: u8) -> *mut u8 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_float_32_list(len: i32) -> *mut wire_float_32_list {
+pub extern "C" fn new_float_32_list_0(len: i32) -> *mut wire_float_32_list {
     let ans = wire_float_32_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1095,7 +1095,7 @@ pub extern "C" fn new_float_32_list(len: i32) -> *mut wire_float_32_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_float_64_list(len: i32) -> *mut wire_float_64_list {
+pub extern "C" fn new_float_64_list_0(len: i32) -> *mut wire_float_64_list {
     let ans = wire_float_64_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1104,7 +1104,7 @@ pub extern "C" fn new_float_64_list(len: i32) -> *mut wire_float_64_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_32_list(len: i32) -> *mut wire_int_32_list {
+pub extern "C" fn new_int_32_list_0(len: i32) -> *mut wire_int_32_list {
     let ans = wire_int_32_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1113,7 +1113,7 @@ pub extern "C" fn new_int_32_list(len: i32) -> *mut wire_int_32_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_64_list(len: i32) -> *mut wire_int_64_list {
+pub extern "C" fn new_int_64_list_0(len: i32) -> *mut wire_int_64_list {
     let ans = wire_int_64_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1122,7 +1122,7 @@ pub extern "C" fn new_int_64_list(len: i32) -> *mut wire_int_64_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_8_list(len: i32) -> *mut wire_int_8_list {
+pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
     let ans = wire_int_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1131,7 +1131,7 @@ pub extern "C" fn new_int_8_list(len: i32) -> *mut wire_int_8_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_application_env_var(len: i32) -> *mut wire_list_application_env_var {
+pub extern "C" fn new_list_application_env_var_0(len: i32) -> *mut wire_list_application_env_var {
     let wrap = wire_list_application_env_var {
         ptr: support::new_leak_vec_ptr(<wire_ApplicationEnvVar>::new_with_null_ptr(), len),
         len,
@@ -1140,7 +1140,7 @@ pub extern "C" fn new_list_application_env_var(len: i32) -> *mut wire_list_appli
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
+pub extern "C" fn new_list_attribute_0(len: i32) -> *mut wire_list_attribute {
     let wrap = wire_list_attribute {
         ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
         len,
@@ -1149,7 +1149,7 @@ pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_my_size(len: i32) -> *mut wire_list_my_size {
+pub extern "C" fn new_list_my_size_0(len: i32) -> *mut wire_list_my_size {
     let wrap = wire_list_my_size {
         ptr: support::new_leak_vec_ptr(<wire_MySize>::new_with_null_ptr(), len),
         len,
@@ -1158,7 +1158,7 @@ pub extern "C" fn new_list_my_size(len: i32) -> *mut wire_list_my_size {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_my_tree_node(len: i32) -> *mut wire_list_my_tree_node {
+pub extern "C" fn new_list_my_tree_node_0(len: i32) -> *mut wire_list_my_tree_node {
     let wrap = wire_list_my_tree_node {
         ptr: support::new_leak_vec_ptr(<wire_MyTreeNode>::new_with_null_ptr(), len),
         len,
@@ -1167,7 +1167,7 @@ pub extern "C" fn new_list_my_tree_node(len: i32) -> *mut wire_list_my_tree_node
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_opt_box_autoadd_attribute(
+pub extern "C" fn new_list_opt_box_autoadd_attribute_0(
     len: i32,
 ) -> *mut wire_list_opt_box_autoadd_attribute {
     let wrap = wire_list_opt_box_autoadd_attribute {
@@ -1178,7 +1178,7 @@ pub extern "C" fn new_list_opt_box_autoadd_attribute(
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
+pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,

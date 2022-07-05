@@ -2,6 +2,7 @@ use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, generate_list_allocate_func, ExternFuncCollector};
 use crate::ir::*;
 use crate::type_rust_generator_struct;
+use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
@@ -45,8 +46,18 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             .unwrap_or(obj)
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
-        generate_list_allocate_func(collector, &self.ir.safe_ident(), &self.ir, &self.ir.inner)
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        block_index: BlockIndex,
+    ) -> String {
+        generate_list_allocate_func(
+            collector,
+            &self.ir.safe_ident(),
+            &self.ir,
+            &self.ir.inner,
+            block_index,
+        )
     }
 
     fn imports(&self) -> Option<String> {
