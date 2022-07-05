@@ -606,6 +606,7 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
 // Tests if a given struct has methods, that is, if the `ir_file` contains
 // a function that receives the struct as first argument
 fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
+    println!("struct_has_methods for ir_file {:?}, the_struct: {:?}", file, the_struct);
     let struct_name = if let StructRef(IrTypeStructRef { name, freezed: _ }) = the_struct {
         name
     } else {
@@ -623,7 +624,7 @@ fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
                 comments: _,
             }) = f.inputs.get(0)
             {
-                if name.raw == *struct_name {
+                if name.raw.to_case(Case::UpperCamel) == *struct_name {
                     true
                 } else {
                     false

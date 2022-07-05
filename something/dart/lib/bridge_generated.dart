@@ -101,7 +101,7 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_new__static_method___StructWithMethod(
             port_, _api2wire_String(something)),
-        parseSuccessData: _wire2api_struct_with_method,
+        parseSuccessData: (d) => _wire2api_struct_with_method(this, d),
         constMeta: kNewStaticMethodStructWithMethodConstMeta,
         argValues: [something],
         hint: hint,
@@ -180,7 +180,7 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
   Future<StructWithMethod> returnStruct({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_struct(port_),
-        parseSuccessData: _wire2api_struct_with_method,
+        parseSuccessData: (d) => _wire2api_struct_with_method(this, d),
         constMeta: kReturnStructConstMeta,
         argValues: [],
         hint: hint,

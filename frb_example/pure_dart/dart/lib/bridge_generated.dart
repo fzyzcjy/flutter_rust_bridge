@@ -1165,7 +1165,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_next_user_id(
             port_, _api2wire_box_autoadd_user_id(userId)),
-        parseSuccessData: _wire2api_user_id,
+        parseSuccessData: (d) => _wire2api_user_id(this, d),
         constMeta: kNextUserIdConstMeta,
         argValues: [userId],
         hint: hint,
