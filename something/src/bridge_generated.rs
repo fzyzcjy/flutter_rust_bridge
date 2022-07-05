@@ -110,6 +110,60 @@ pub extern "C" fn wire_do_huge_stuff__method(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_another_st_method__static_method___StructWithMethod(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "another_st_method__static_method___StructWithMethod",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(StructWithMethod::another_st_method()),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_some_st_method__static_method___StructWithMethod(
+    port_: i64,
+    s: *mut wire_uint_8_list,
+    y: u32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "some_st_method__static_method___StructWithMethod",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.wire2api();
+            let api_y = y.wire2api();
+            move |task_callback| Ok(StructWithMethod::some_st_method(api_s, api_y))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_more_st_method_again__static_method___StructWithMethod(
+    port_: i64,
+    s: *mut wire_uint_8_list,
+    y: u32,
+    z: u32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "more_st_method_again__static_method___StructWithMethod",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.wire2api();
+            let api_y = y.wire2api();
+            let api_z = z.wire2api();
+            move |task_callback| Ok(StructWithMethod::more_st_method_again(api_s, api_y, api_z))
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_return_struct(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

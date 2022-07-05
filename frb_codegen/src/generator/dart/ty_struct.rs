@@ -1,10 +1,10 @@
+use super::is_static_method_for_struct;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::generator::dart::{is_method_for_struct, ty::*};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
-use convert_case::{Case, Casing};
-use super::is_static_method_for_struct;
 use crate::utils::BlockIndex;
+use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
@@ -121,7 +121,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let methods = ir_file
             .funcs
             .iter()
-            .filter(|f| is_method_for_struct(f, src.name.clone()))
+            .filter(|f| {
+                is_method_for_struct(f, src.name.clone())
+                    || is_static_method_for_struct(f, src.name.clone())
+            })
             .collect::<Vec<_>>();
 
         let has_methods = !methods.is_empty();
@@ -228,16 +231,18 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 }
 
-fn generate_api_method(func: &IrFunc, _ir_struct: &IrStruct) -> GeneratedApiMethod {
+fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMethod {
     let is_static_method = {
         println!("is_static_method for {:?}", func);
-        if let Some(_) = func.inputs.get(0) {};
-        false
+        let r = func.name.contains("__static_method");
+        println!("gonna return {}", r);
+        r
     };
+    let skip_count = if is_static_method { 0 } else { 1 };
     let raw_func_param_list = func
         .inputs
         .iter()
-        .skip(1) //skip the first as it's the method 'self'
+        .skip(skip_count) //skip the first as it's the method 'self'
         .map(|input| {
             format!(
                 "{}{} {}",
@@ -250,11 +255,16 @@ fn generate_api_method(func: &IrFunc, _ir_struct: &IrStruct) -> GeneratedApiMeth
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
+    let static_function_name = func.name.split("__static_method").next().unwrap();
     let partial = format!(
         "{} {}({{ {} }})",
         func.mode.dart_return_type(&func.output.dart_api_type()),
         if is_static_method {
-            func.name.replace("__method", "").to_case(Case::Camel)
+            if static_function_name=="new" {
+                format!("new{}", ir_struct.name)
+            } else {
+                static_function_name.to_string().to_case(Case::Camel)
+            }
         } else {
             func.name.replace("__method", "").to_case(Case::Camel)
         },
@@ -262,21 +272,30 @@ fn generate_api_method(func: &IrFunc, _ir_struct: &IrStruct) -> GeneratedApiMeth
     );
 
     let signature = format!("{}", partial);
-
+    println!("func signature: {}", signature);
     let arg_names = func
         .inputs
         .iter()
-        .skip(1) //skip the first as it's the method 'self'
+        .skip(skip_count) //skip the first as it's the method 'self'
         .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
         .collect::<Vec<_>>()
         .concat();
 
-    let implementation = format!(
-        "bridge.{}({}: this, {})",
-        func.name.clone().to_case(Case::Camel),
-        func.inputs[0].name.dart_style(),
-        arg_names
-    );
+    let implementation = if !is_static_method {
+        format!(
+            "bridge.{}({}: this, {})",
+            func.name.clone().to_case(Case::Camel),
+            func.inputs[0].name.dart_style(),
+            arg_names
+        )
+    } else {
+        format!(
+            "bridge.{}({})",
+            func.name.clone().to_case(Case::Camel),
+            //func.inputs[0].name.dart_style(),
+            arg_names
+        )
+    };
 
     GeneratedApiMethod {
         signature,

@@ -21,6 +21,18 @@ impl StructWithMethod {
     pub fn do_huge_stuff(&self, s: String, a: OtherStruct) {
         todo!()
     }
+
+    pub fn another_st_method() -> String {
+        todo!()
+    }
+
+    pub fn some_st_method(s: String, y: u32) {
+        todo!()
+    }
+
+    pub fn more_st_method_again(s: String, y: u32, z: u32) -> i32 {
+        todo!()
+    }
 }
 
 pub fn return_struct() -> StructWithMethod {

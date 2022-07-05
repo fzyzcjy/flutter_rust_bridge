@@ -305,7 +305,7 @@ impl Generator {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
                 func.name.replace("__method", "")
             } else if func.name.contains("__static_method") {
-                inner_func_params[0] = format!("{}", inner_func_params[0]);
+                //inner_func_params[0] = format!("{}", inner_func_params[0]);
                 func.name.split("__static_method").next().unwrap().to_string()
             } else {
                 panic!(

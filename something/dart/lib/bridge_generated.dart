@@ -38,6 +38,23 @@ abstract class Something {
 
   FlutterRustBridgeTaskConstMeta get kDoHugeStuffMethodConstMeta;
 
+  Future<String> anotherStMethodStaticMethodStructWithMethod({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta
+      get kAnotherStMethodStaticMethodStructWithMethodConstMeta;
+
+  Future<void> someStMethodStaticMethodStructWithMethod(
+      {required String s, required int y, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta
+      get kSomeStMethodStaticMethodStructWithMethodConstMeta;
+
+  Future<int> moreStMethodAgainStaticMethodStructWithMethod(
+      {required String s, required int y, required int z, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta
+      get kMoreStMethodAgainStaticMethodStructWithMethodConstMeta;
+
   Future<StructWithMethod> returnStruct({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kReturnStructConstMeta;
@@ -63,6 +80,11 @@ class StructWithMethod {
     required this.bridge,
     required this.something,
   });
+  Future<StructWithMethod> newStructWithMethod(
+          {required String something, dynamic hint}) =>
+      bridge.newStaticMethodStructWithMethod(
+        something: something,
+      );
   Future<void> doSomething({required int u, required String x, dynamic hint}) =>
       bridge.doSomethingMethod(
         structWithMethod: this,
@@ -78,6 +100,21 @@ class StructWithMethod {
         structWithMethod: this,
         s: s,
         a: a,
+      );
+  Future<String> anotherStMethod({dynamic hint}) =>
+      bridge.anotherStMethodStaticMethodStructWithMethod();
+  Future<void> someStMethod(
+          {required String s, required int y, dynamic hint}) =>
+      bridge.someStMethodStaticMethodStructWithMethod(
+        s: s,
+        y: y,
+      );
+  Future<int> moreStMethodAgain(
+          {required String s, required int y, required int z, dynamic hint}) =>
+      bridge.moreStMethodAgainStaticMethodStructWithMethod(
+        s: s,
+        y: y,
+        z: z,
       );
 }
 
@@ -177,6 +214,61 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
         argNames: ["structWithMethod", "s", "a"],
       );
 
+  Future<String> anotherStMethodStaticMethodStructWithMethod({dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner
+            .wire_another_st_method__static_method___StructWithMethod(port_),
+        parseSuccessData: _wire2api_String,
+        constMeta: kAnotherStMethodStaticMethodStructWithMethodConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kAnotherStMethodStaticMethodStructWithMethodConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "another_st_method__static_method___StructWithMethod",
+            argNames: [],
+          );
+
+  Future<void> someStMethodStaticMethodStructWithMethod(
+          {required String s, required int y, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            inner.wire_some_st_method__static_method___StructWithMethod(
+                port_, _api2wire_String(s), _api2wire_u32(y)),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kSomeStMethodStaticMethodStructWithMethodConstMeta,
+        argValues: [s, y],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kSomeStMethodStaticMethodStructWithMethodConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "some_st_method__static_method___StructWithMethod",
+            argNames: ["s", "y"],
+          );
+
+  Future<int> moreStMethodAgainStaticMethodStructWithMethod(
+          {required String s, required int y, required int z, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            inner.wire_more_st_method_again__static_method___StructWithMethod(
+                port_, _api2wire_String(s), _api2wire_u32(y), _api2wire_u32(z)),
+        parseSuccessData: _wire2api_i32,
+        constMeta: kMoreStMethodAgainStaticMethodStructWithMethodConstMeta,
+        argValues: [s, y, z],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kMoreStMethodAgainStaticMethodStructWithMethodConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "more_st_method_again__static_method___StructWithMethod",
+            argNames: ["s", "y", "z"],
+          );
+
   Future<StructWithMethod> returnStruct({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_struct(port_),
@@ -266,6 +358,10 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
 // Section: wire2api
 String _wire2api_String(dynamic raw) {
   return raw as String;
+}
+
+int _wire2api_i32(dynamic raw) {
+  return raw as int;
 }
 
 StructWithMethod _wire2api_struct_with_method(Something bridge, dynamic raw) {
@@ -408,6 +504,68 @@ class SomethingWire implements FlutterRustBridgeWireBase {
       _wire_do_huge_stuff__methodPtr.asFunction<
           void Function(int, ffi.Pointer<wire_StructWithMethod>,
               ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_OtherStruct>)>();
+
+  void wire_another_st_method__static_method___StructWithMethod(
+    int port_,
+  ) {
+    return _wire_another_st_method__static_method___StructWithMethod(
+      port_,
+    );
+  }
+
+  late final _wire_another_st_method__static_method___StructWithMethodPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_another_st_method__static_method___StructWithMethod');
+  late final _wire_another_st_method__static_method___StructWithMethod =
+      _wire_another_st_method__static_method___StructWithMethodPtr
+          .asFunction<void Function(int)>();
+
+  void wire_some_st_method__static_method___StructWithMethod(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> s,
+    int y,
+  ) {
+    return _wire_some_st_method__static_method___StructWithMethod(
+      port_,
+      s,
+      y,
+    );
+  }
+
+  late final _wire_some_st_method__static_method___StructWithMethodPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Uint32)>>(
+          'wire_some_st_method__static_method___StructWithMethod');
+  late final _wire_some_st_method__static_method___StructWithMethod =
+      _wire_some_st_method__static_method___StructWithMethodPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  void wire_more_st_method_again__static_method___StructWithMethod(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> s,
+    int y,
+    int z,
+  ) {
+    return _wire_more_st_method_again__static_method___StructWithMethod(
+      port_,
+      s,
+      y,
+      z,
+    );
+  }
+
+  late final _wire_more_st_method_again__static_method___StructWithMethodPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>,
+                      ffi.Uint32, ffi.Uint32)>>(
+          'wire_more_st_method_again__static_method___StructWithMethod');
+  late final _wire_more_st_method_again__static_method___StructWithMethod =
+      _wire_more_st_method_again__static_method___StructWithMethodPtr
+          .asFunction<
+              void Function(int, ffi.Pointer<wire_uint_8_list>, int, int)>();
 
   void wire_return_struct(
     int port_,
