@@ -214,14 +214,14 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
 
   ffi.Pointer<wire_OtherStruct> _api2wire_box_autoadd_other_struct(
       OtherStruct raw) {
-    final ptr = inner.new_box_autoadd_other_struct();
+    final ptr = inner.new_box_autoadd_other_struct_0();
     _api_fill_to_wire_other_struct(raw, ptr.ref);
     return ptr;
   }
 
   ffi.Pointer<wire_StructWithMethod> _api2wire_box_autoadd_struct_with_method(
       StructWithMethod raw) {
-    final ptr = inner.new_box_autoadd_struct_with_method();
+    final ptr = inner.new_box_autoadd_struct_with_method_0();
     _api_fill_to_wire_struct_with_method(raw, ptr.ref);
     return ptr;
   }
@@ -235,7 +235,7 @@ class SomethingImpl extends FlutterRustBridgeBase<SomethingWire>
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_uint_8_list(Uint8List raw) {
-    final ans = inner.new_uint_8_list(raw.length);
+    final ans = inner.new_uint_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
@@ -437,40 +437,41 @@ class SomethingWire implements FlutterRustBridgeWireBase {
   late final _wire_return_test_struct =
       _wire_return_test_structPtr.asFunction<void Function(int)>();
 
-  ffi.Pointer<wire_OtherStruct> new_box_autoadd_other_struct() {
-    return _new_box_autoadd_other_struct();
+  ffi.Pointer<wire_OtherStruct> new_box_autoadd_other_struct_0() {
+    return _new_box_autoadd_other_struct_0();
   }
 
-  late final _new_box_autoadd_other_structPtr =
+  late final _new_box_autoadd_other_struct_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_OtherStruct> Function()>>(
-          'new_box_autoadd_other_struct');
-  late final _new_box_autoadd_other_struct = _new_box_autoadd_other_structPtr
-      .asFunction<ffi.Pointer<wire_OtherStruct> Function()>();
+          'new_box_autoadd_other_struct_0');
+  late final _new_box_autoadd_other_struct_0 =
+      _new_box_autoadd_other_struct_0Ptr
+          .asFunction<ffi.Pointer<wire_OtherStruct> Function()>();
 
-  ffi.Pointer<wire_StructWithMethod> new_box_autoadd_struct_with_method() {
-    return _new_box_autoadd_struct_with_method();
+  ffi.Pointer<wire_StructWithMethod> new_box_autoadd_struct_with_method_0() {
+    return _new_box_autoadd_struct_with_method_0();
   }
 
-  late final _new_box_autoadd_struct_with_methodPtr = _lookup<
+  late final _new_box_autoadd_struct_with_method_0Ptr = _lookup<
           ffi.NativeFunction<ffi.Pointer<wire_StructWithMethod> Function()>>(
-      'new_box_autoadd_struct_with_method');
-  late final _new_box_autoadd_struct_with_method =
-      _new_box_autoadd_struct_with_methodPtr
+      'new_box_autoadd_struct_with_method_0');
+  late final _new_box_autoadd_struct_with_method_0 =
+      _new_box_autoadd_struct_with_method_0Ptr
           .asFunction<ffi.Pointer<wire_StructWithMethod> Function()>();
 
-  ffi.Pointer<wire_uint_8_list> new_uint_8_list(
+  ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
     int len,
   ) {
-    return _new_uint_8_list(
+    return _new_uint_8_list_0(
       len,
     );
   }
 
-  late final _new_uint_8_listPtr = _lookup<
+  late final _new_uint_8_list_0Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<wire_uint_8_list> Function(
-              ffi.Int32)>>('new_uint_8_list');
-  late final _new_uint_8_list = _new_uint_8_listPtr
+              ffi.Int32)>>('new_uint_8_list_0');
+  late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr
       .asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
   void free_WireSyncReturnStruct(

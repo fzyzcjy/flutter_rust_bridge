@@ -161,17 +161,17 @@ pub struct wire_uint_8_list {
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_other_struct() -> *mut wire_OtherStruct {
+pub extern "C" fn new_box_autoadd_other_struct_0() -> *mut wire_OtherStruct {
     support::new_leak_box_ptr(wire_OtherStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_struct_with_method() -> *mut wire_StructWithMethod {
+pub extern "C" fn new_box_autoadd_struct_with_method_0() -> *mut wire_StructWithMethod {
     support::new_leak_box_ptr(wire_StructWithMethod::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
+pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
