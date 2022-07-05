@@ -59,40 +59,6 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 )
             })
             .collect::<Vec<_>>();
-
-        let is_method_for_struct = {
-            let TypeGeneratorContext {
-                ir_file:
-                    IrFile {
-                        funcs,
-                        struct_pool: _,
-                        enum_pool: _,
-                        has_executor: _,
-                    },
-            } = self.context;
-
-            let IrField {
-                ty,
-                name: _,
-                is_final: _,
-                comments: _,
-            } = &funcs[0].inputs[0];
-
-            if let IrType::Boxed(IrTypeBoxed {
-                exist_in_real_api: _,
-                inner,
-            }) = ty
-            {
-                if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &**inner {
-                    *name == src.name
-                } else {
-                    false
-                }
-            } else {
-                false
-            }
-        };
-
         if has_methods {
             inner.insert(0, "bridge: bridge,".to_string());
         }
@@ -232,12 +198,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 }
 
 fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMethod {
-    let is_static_method = {
-        println!("is_static_method for {:?}", func);
-        let r = func.name.contains("__static_method");
-        println!("gonna return {}", r);
-        r
-    };
+    let is_static_method = func.name.contains("__static_method");
     let skip_count = if is_static_method { 0 } else { 1 };
     let raw_func_param_list = func
         .inputs
@@ -256,11 +217,12 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let static_function_name = func.name.split("__static_method").next().unwrap();
+
     let partial = format!(
         "{} {}({{ {} }})",
         func.mode.dart_return_type(&func.output.dart_api_type()),
         if is_static_method {
-            if static_function_name=="new" {
+            if static_function_name == "new" {
                 format!("new{}", ir_struct.name)
             } else {
                 static_function_name.to_string().to_case(Case::Camel)
@@ -272,7 +234,7 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
     );
 
     let signature = format!("{}", partial);
-    println!("func signature: {}", signature);
+
     let arg_names = func
         .inputs
         .iter()
@@ -292,7 +254,6 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
         format!(
             "bridge.{}({})",
             func.name.clone().to_case(Case::Camel),
-            //func.inputs[0].name.dart_style(),
             arg_names
         )
     };

@@ -2,7 +2,7 @@ mod ty;
 
 use std::string::String;
 
-use convert_case::{Casing, Case};
+use convert_case::{Case, Casing};
 use log::debug;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
@@ -213,10 +213,6 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
 
 // Converts an item implementation (something like fn(&self, ...)) into a function where `&self` is a named parameter to `&Self`
 fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -> Option<ItemFn> {
-    println!(
-        "item_method_to_function for {:?}, \n\n\n\nitem_method: {:?}",
-        item_impl, item_method
-    );
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
@@ -323,7 +319,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                                     attrs: vec![],
                                     by_ref: Some(syn::token::Ref { span }),
                                     mutability: mutability.clone(),
-                                    ident: Ident::new(str_cap(&struct_name).as_str(), span),
+                                    ident: Ident::new(&struct_name.to_case(Case::Snake), span),
                                     subpat: None,
                                 })),
                                 colon_token: Colon { spans: [span] },
@@ -348,16 +344,6 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
     } else {
         None
     }
-}
-
-fn str_cap(s: &str) -> String {
-    let r = format!(
-        "{}{}",
-        s.chars().next().unwrap().to_lowercase(),
-        s.chars().skip(1).collect::<String>()
-    );
-    println!("str_cap for {}, result: {}", s, r);
-    s.to_case(Case::Snake)
 }
 
 fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {

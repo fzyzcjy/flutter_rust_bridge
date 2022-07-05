@@ -48,7 +48,6 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     fs::create_dir_all(&rust_output_dir)?;
     fs::write(&config.rust_output_path, generated_rust.code)?;
 
-    println!("ir_file_before: {:?}", ir_file);
     info!("Phase: Generate Dart code");
     let (generated_dart, needs_freezed) = ir_file.generate_dart(config)?;
 

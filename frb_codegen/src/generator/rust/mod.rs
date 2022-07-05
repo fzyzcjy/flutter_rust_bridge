@@ -224,8 +224,6 @@ impl Generator {
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
-        println!("generate_wire_func for func: {:?}", func);
-        println!("generate_wire_func for ir_file: {:?}", ir_file);
         let (is_a_method, struct_name) = test_is_method(func);
 
         let params = [
@@ -248,12 +246,8 @@ impl Generator {
         ]
         .concat();
 
-        println!(
-            "#123abc is_a_method: {:?}, struct name: {:?}",
-            is_a_method, struct_name
-        );
         let mut inner_func_params = [
-            /* 
+            /*
             match func.mode {
                 IrFuncMode::Normal | IrFuncMode::Sync => vec![],
                 IrFuncMode::Stream { .. } => vec!["task_callback.stream_sink()".to_string()],
@@ -266,7 +260,6 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
-        println!("#123abc inner_func_params: {:?}", inner_func_params);
         if let IrFuncMode::Stream { argument_index } = func.mode {
             inner_func_params.insert(argument_index, "task_callback.stream_sink()".to_string());
         }
@@ -305,8 +298,11 @@ impl Generator {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
                 func.name.replace("__method", "")
             } else if func.name.contains("__static_method") {
-                //inner_func_params[0] = format!("{}", inner_func_params[0]);
-                func.name.split("__static_method").next().unwrap().to_string()
+                func.name
+                    .split("__static_method")
+                    .next()
+                    .unwrap()
+                    .to_string()
             } else {
                 panic!(
                     "not a method neither static method but should be: {}",
@@ -390,7 +386,6 @@ impl Generator {
         ir_file: &IrFile,
         block_index: BlockIndex,
     ) -> String {
-        // println!("generate_allocate_funcs: {:?}", ty);
         TypeRustGenerator::new(ty.clone(), ir_file)
             .allocate_funcs(&mut self.extern_func_collector, block_index)
     }
@@ -416,7 +411,6 @@ impl Generator {
     }
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        // println!("generate_wire2api_func: {:?}", ty);
         if let Some(body) = TypeRustGenerator::new(ty.clone(), ir_file).wire2api_body() {
             format!(
                 "impl Wire2Api<{}> for {} {{
@@ -478,7 +472,6 @@ impl Generator {
     }
 
     fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        // println!("generate_impl_intodart: {:?}", ty);
         TypeRustGenerator::new(ty.clone(), ir_file).impl_intodart()
     }
 }
@@ -488,14 +481,16 @@ fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
         let input = func.inputs[0].clone();
         (true, Some(input.name.to_string().to_case(Case::UpperCamel)))
     } else if func.name.contains("__static_method") {
-        println!("gonna split {}", func.name);
-        println!(
-            "split is {}",
-            func.name.split("___").last().unwrap().to_string()
-        );
         (
             true,
-            Some(func.name.split("___").last().unwrap().to_string().to_case(Case::UpperCamel)),
+            Some(
+                func.name
+                    .split("___")
+                    .last()
+                    .unwrap()
+                    .to_string()
+                    .to_case(Case::UpperCamel),
+            ),
         )
     } else {
         (false, None)
