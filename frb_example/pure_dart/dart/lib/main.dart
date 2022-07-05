@@ -10,7 +10,7 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final dylib = DynamicLibrary.open(dylibPath);
-  final api = FlutterRustBridgeExampleImpl(dylib);
+  final api = FlutterRustBridgeExampleSingleBlockTestImpl(dylib);
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
