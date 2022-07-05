@@ -4,7 +4,7 @@ version = "1.0.0"
 edition = "2018"
 
 [lib]
-name = "flutter_rust_bridge_example"
+name = "flutter_rust_bridge_example_multi"
 crate-type = ["cdylib"]
 
 [build-dependencies]
