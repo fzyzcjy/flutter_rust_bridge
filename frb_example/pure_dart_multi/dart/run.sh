@@ -13,4 +13,4 @@ fi
 
 # need to be AOT, since prod environment is AOT, and JIT+valgrind will have strange problems
 dart compile exe lib/main.dart -o main_multi
-./main_multi "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example.so" --chain-stack-traces
+./main_multi "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example_multi.so" --chain-stack-traces
