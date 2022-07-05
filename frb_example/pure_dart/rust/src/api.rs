@@ -585,6 +585,43 @@ pub fn create_event() {
     }
 }
 
+#[derive(Debug, Clone)]
+pub struct Log {
+    pub key: u32,
+    pub value: u32,
+}
+
+pub fn handle_stream_sink_at_1(
+    key: u32,
+    max: u32,
+    sink: StreamSink<Log>,
+) -> Result<(), anyhow::Error> {
+    std::thread::spawn(move || {
+        for i in 0..max {
+            sink.add(Log { key, value: i });
+        }
+        sink.close();
+    });
+    Ok(())
+}
+
+pub fn handle_stream_sink_at_2(
+    key: u32,
+    sink: StreamSink<Log>,
+    max: u32,
+) -> Result<(), anyhow::Error> {
+    handle_stream_sink_at_1(key, max, sink)
+}
+
+pub fn handle_stream_sink_at_3(
+    sink: StreamSink<Log>,
+    key: u32,
+    max: u32,
+) -> Result<(), anyhow::Error> {
+    handle_stream_sink_at_1(key, max, sink)
+}
+
+
 pub struct StructWithMethod {
     pub x: u32,
 }

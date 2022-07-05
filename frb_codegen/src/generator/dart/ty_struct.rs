@@ -3,13 +3,13 @@ use crate::generator::dart::{is_method_for_struct, ty::*};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
 use convert_case::{Case, Casing};
-
 use super::is_static_method_for_struct;
+use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn api2wire_body(&self) -> Option<String> {
+    fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
         None
     }
 

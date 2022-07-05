@@ -23,32 +23,28 @@ use std::collections::HashSet;
 use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::others::*;
+use crate::utils::BlockIndex;
 
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
-
-pub struct GeneratorOptions {
-    pub should_generate_sync_execution_mode_utility: bool,
-}
-impl Default for GeneratorOptions {
-    fn default() -> Self {
-        Self {
-            should_generate_sync_execution_mode_utility: true,
-        }
-    }
-}
 
 pub struct Output {
     pub code: String,
     pub extern_func_names: Vec<String>,
 }
 
-pub fn generate(
-    ir_file: &IrFile,
-    rust_wire_mod: &str,
-    options: Option<GeneratorOptions>,
-) -> Output {
-    let mut generator = Generator::new(options.unwrap_or_default());
-    let code = generator.generate(ir_file, rust_wire_mod);
+impl Output {
+    pub fn get_exclude_symbols(&self, all_symbols: &[String]) -> Vec<String> {
+        all_symbols
+            .iter()
+            .filter(|s| !self.extern_func_names.contains(s))
+            .map(|s| (*s).clone())
+            .collect::<Vec<_>>()
+    }
+}
+
+pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, block_index: BlockIndex) -> Output {
+    let mut generator = Generator::new();
+    let code = generator.generate(ir_file, rust_wire_mod, block_index);
 
     Output {
         code,
@@ -58,18 +54,21 @@ pub fn generate(
 
 struct Generator {
     extern_func_collector: ExternFuncCollector,
-    options: GeneratorOptions,
 }
 
 impl Generator {
-    fn new(options: GeneratorOptions) -> Self {
+    fn new() -> Self {
         Self {
             extern_func_collector: ExternFuncCollector::new(),
-            options,
         }
     }
 
-    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> String {
+    fn generate(
+        &mut self,
+        ir_file: &IrFile,
+        rust_wire_mod: &str,
+        block_index: BlockIndex,
+    ) -> String {
         let mut lines: Vec<String> = vec![];
 
         let distinct_input_types = ir_file.distinct_types(true, false);
@@ -133,7 +132,7 @@ impl Generator {
         lines.extend(
             distinct_input_types
                 .iter()
-                .map(|f| self.generate_allocate_funcs(f, ir_file)),
+                .map(|f| self.generate_allocate_funcs(f, ir_file, block_index)),
         );
 
         lines.push(self.section_header_comment("impl Wire2Api"));
@@ -162,7 +161,7 @@ impl Generator {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
-        if self.options.should_generate_sync_execution_mode_utility {
+        if block_index == BlockIndex::PRIMARY {
             lines.push(self.section_header_comment("sync execution mode utility"));
             lines.push(self.generate_sync_execution_mode_utility());
         }
@@ -253,10 +252,13 @@ impl Generator {
             is_a_method, struct_name
         );
         let mut inner_func_params = [
+            /* 
             match func.mode {
                 IrFuncMode::Normal | IrFuncMode::Sync => vec![],
-                IrFuncMode::Stream => vec!["task_callback.stream_sink()".to_string()],
+                IrFuncMode::Stream { .. } => vec!["task_callback.stream_sink()".to_string()],
             },
+            */
+            vec![],
             func.inputs
                 .iter()
                 .map(|field| format!("api_{}", field.name.rust_style()))
@@ -264,6 +266,9 @@ impl Generator {
         ]
         .concat();
         println!("#123abc inner_func_params: {:?}", inner_func_params);
+        if let IrFuncMode::Stream { argument_index } = func.mode {
+            inner_func_params.insert(argument_index, "task_callback.stream_sink()".to_string());
+        }
         let wrap_info_obj = format!(
             "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
             func.name,
@@ -330,7 +335,7 @@ impl Generator {
                     code_wire2api, code_call_inner_func_result,
                 ),
             ),
-            IrFuncMode::Normal | IrFuncMode::Stream => (
+            IrFuncMode::Normal | IrFuncMode::Stream { .. } => (
                 "wrap",
                 None,
                 format!(
@@ -378,15 +383,22 @@ impl Generator {
         }
     }
 
-    fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        TypeRustGenerator::new(ty.clone(), ir_file).allocate_funcs(&mut self.extern_func_collector)
+    fn generate_allocate_funcs(
+        &mut self,
+        ty: &IrType,
+        ir_file: &IrFile,
+        block_index: BlockIndex,
+    ) -> String {
+        // println!("generate_allocate_funcs: {:?}", ty);
+        TypeRustGenerator::new(ty.clone(), ir_file)
+            .allocate_funcs(&mut self.extern_func_collector, block_index)
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
         r"pub trait Wire2Api<T> {
             fn wire2api(self) -> T;
         }
-        
+
         impl<T, S> Wire2Api<Option<T>> for *mut S
             where
                 *mut S: Wire2Api<T>
@@ -450,7 +462,7 @@ impl Generator {
         "pub trait NewWithNullPtr {
             fn new_with_null_ptr() -> Self;
         }
-        
+
         impl<T> NewWithNullPtr for *mut T {
             fn new_with_null_ptr() -> Self {
                 std::ptr::null_mut()
@@ -498,9 +510,10 @@ pub fn generate_list_allocate_func(
     safe_ident: &str,
     list: &impl IrTypeTrait,
     inner: &IrType,
+    block_index: BlockIndex,
 ) -> String {
     collector.generate(
-        &format!("new_{}", safe_ident),
+        &format!("new_{}_{}", safe_ident,block_index),
         &["len: i32"],
         Some(&[
             list.rust_wire_modifier().as_str(),

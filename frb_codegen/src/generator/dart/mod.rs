@@ -26,6 +26,7 @@ use log::debug;
 use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::others::*;
+use crate::utils::BlockIndex;
 
 pub struct Output {
     pub file_prelude: DartBasicCode,
@@ -39,6 +40,7 @@ pub fn generate(
     dart_api_impl_class_name: &str,
     dart_wire_class_name: &str,
     dart_output_file_root: &str,
+    block_index: BlockIndex,
 ) -> (Output, bool) {
     let DartApiSpec {
         dart_funcs,
@@ -47,7 +49,7 @@ pub fn generate(
         dart_api_fill_to_wire_funcs,
         dart_wire2api_funcs,
         needs_freezed,
-    } = get_dart_api_spec_from_ir_file(ir_file, dart_api_class_name);
+    } = get_dart_api_spec_from_ir_file(ir_file, block_index, dart_api_class_name);
 
     let common_header = generate_common_header();
 
@@ -92,7 +94,7 @@ struct DartApiSpec {
     needs_freezed: bool,
 }
 
-fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, dart_api_class_name: &str) -> DartApiSpec {
+fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, block_index: BlockIndex, dart_api_class_name: &str) -> DartApiSpec {
     let distinct_types = ir_file.distinct_types(true, true);
     let distinct_input_types = ir_file.distinct_types(true, false);
     let distinct_output_types = ir_file.distinct_types(false, true);
@@ -119,7 +121,7 @@ fn get_dart_api_spec_from_ir_file(ir_file: &IrFile, dart_api_class_name: &str) -
 
     let dart_api2wire_funcs = distinct_input_types
         .iter()
-        .map(|ty| generate_api2wire_func(ty, ir_file))
+        .map(|ty| generate_api2wire_func(ty, ir_file, block_index))
         .collect::<Vec<_>>();
     let dart_api_fill_to_wire_funcs = distinct_input_types
         .iter()
@@ -414,7 +416,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     let execute_func_name = match func.mode {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
-        IrFuncMode::Stream => "executeStream",
+        IrFuncMode::Stream { .. } => "executeStream",
     };
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
@@ -498,8 +500,8 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     }
 }
 
-fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile) -> String {
-    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file).api2wire_body() {
+fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, block_index: BlockIndex) -> String {
+    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file).api2wire_body(block_index) {
         format!(
             "{} _api2wire_{}({} raw) {{
             {}

@@ -126,7 +126,7 @@ packages:
       name: coverage
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.0"
+    version: "1.5.0"
   crypto:
     dependency: transitive
     description:
@@ -161,7 +161,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.35.0"
+    version: "1.37.0"
   freezed:
     dependency: "direct dev"
     description:
