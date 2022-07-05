@@ -92,9 +92,9 @@ More specifically, thanks for all these contributions:
 * [sagudev](https://github.com/sagudev): Make code generator a `lib`. Add error types. Depend on `cbindgen`. Fix LLVM paths. Update deps. Fix CI errors.
 * [surban](https://github.com/surban): Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.
 * [trobanga](https://github.com/trobanga): Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests.
+* [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata.
-* [dbsxdbsx](https://github.com/dbsxdbsx): One command multi files.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [lattice0](https://github.com/lattice0): StreamSink at any argument.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
