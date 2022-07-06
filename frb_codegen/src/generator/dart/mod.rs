@@ -550,7 +550,7 @@ fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &s
     } else {
         "".to_string()
     };
-    //let bridge_requirement = "".to_string();
+
     let body = TypeDartGenerator::new(ty.clone(), ir_file).wire2api_body();
     format!(
         "{} _wire2api_{}({}dynamic raw) {{

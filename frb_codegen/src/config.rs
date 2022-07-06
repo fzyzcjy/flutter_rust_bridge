@@ -381,7 +381,7 @@ impl Opts {
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
         // info!("Phase: Parse AST to IR");
-        
+
         parser::parse(&source_rust_content, file_ast, &self.manifest_path)
     }
 
