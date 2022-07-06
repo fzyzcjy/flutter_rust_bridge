@@ -290,7 +290,7 @@ impl Generator {
                 inner_func_params.join(", ")
             ))
         } else {
-            let method_name = if func.name.contains(METHOD_MARKER) {
+            let method_name = if func.name.ends_with(METHOD_MARKER) {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
                 func.name.replace(METHOD_MARKER, "")
             } else if func.name.contains(STATIC_METHOD_MARKER) {
@@ -474,7 +474,7 @@ impl Generator {
 
 //tests if a given `func` is a method, and also returns the struct name that it is a method for
 fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
-    if func.name.contains(METHOD_MARKER) {
+    if func.name.ends_with(METHOD_MARKER) {
         let input = func.inputs[0].clone();
         (true, Some(input.name.to_string().to_case(Case::UpperCamel)))
     } else if func.name.contains(STATIC_METHOD_MARKER) {

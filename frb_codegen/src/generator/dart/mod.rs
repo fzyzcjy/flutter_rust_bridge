@@ -338,7 +338,7 @@ fn has_methods(struct_name: String, ir_file: &IrFile) -> bool {
 
 // Tests if the function in `f` is a method for struct with name `struct_name`
 fn is_method_for_struct(f: &&IrFunc, struct_name: String) -> bool {
-    f.name.contains(METHOD_MARKER)
+    f.name.ends_with(METHOD_MARKER)
         && if let Boxed(IrTypeBoxed {
             exist_in_real_api: _,
             inner,
