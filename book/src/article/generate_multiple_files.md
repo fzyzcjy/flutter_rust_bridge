@@ -1,5 +1,7 @@
 # Generating multiple files
 
+Author: @dbsxdbsx
+
 Before, like the [pure_dart's api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs), all APIs are exposed together in a single file(block). This is not bad when the whole project is simple. But it would become quite hard to maintain or develop, when the project becomes more and more complex, especially when it is a team project. Therefore, it is time to reconstruct code --- classify the exposed Api into proper blocks(files).
 
 (Before going on reading, make sure that you are quite familiar with how to use [template](https://github.com/Desdaemon/flutter_rust_bridge_template) to generate code with flutter_rust_bridge. If not, take a look at the former chapters or [the basic example](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart) again, please.)

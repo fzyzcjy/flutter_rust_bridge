@@ -44,7 +44,6 @@
     - [Installing codegen](template/generate_install.md)
     - [Adding new code](template/generate_adding_code.md)
     - [Using build_runner](template/generate_build_runner.md)
-    - [Generate multiple files](template/generate_multiple_files.md)
     - [Wrapping up](template/generate_finish.md)
 - [Integrating with existing projects](integrate.md)
   - [Creating a new crate](integrate/new_crate.md)
@@ -71,4 +70,4 @@
 - [Set up Flutter/Dart+Rust support from scratch](set_up_from_scratch.md)
 - [Articles](article.md)
   - [Async in Rust](article/async_in_rust.md)
-
+  - [Generate multiple files](article/generate_multiple_files.md)
