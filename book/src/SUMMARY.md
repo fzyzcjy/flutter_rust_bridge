@@ -44,6 +44,7 @@
     - [Installing codegen](template/generate_install.md)
     - [Adding new code](template/generate_adding_code.md)
     - [Using build_runner](template/generate_build_runner.md)
+    - [Generate multiple files](template/generate_multiple_files.md)
     - [Wrapping up](template/generate_finish.md)
 - [Integrating with existing projects](integrate.md)
   - [Creating a new crate](integrate/new_crate.md)

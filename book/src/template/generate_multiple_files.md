@@ -1,4 +1,4 @@
-# Generating code with multiple blocks of APIs
+# Generating multiple files
 
 Before, like the [pure_dart's api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs), all APIs are exposed together in a single file(block). This is not bad when the whole project is simple. But it would become quite hard to maintain or develop, when the project becomes more and more complex, especially when it is a team project. Therefore, it is time to reconstruct code --- classify the exposed Api into proper blocks(files).
 
