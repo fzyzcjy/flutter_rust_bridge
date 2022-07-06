@@ -160,7 +160,7 @@
 <p>If you want to write and debug tests in Flutter conveniently, with action history, time travelling, screenshots, rapid re-execution, video recordings, interactive mode and more, here is my another open-source library: https://github.com/fzyzcjy/flutter_convenient_test.</p>
 <h2 id="-contributors"><a class="header" href="#-contributors">✨ Contributors</a></h2>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p><a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<p><a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a> following <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -198,6 +198,8 @@
     <td align="center"><a href="https://github.com/thomas725"><img src="https://avatars.githubusercontent.com/u/68635351?v=4?s=100" width="100px;" alt=""/><br /><sub><b>thomas725</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=thomas725" title="Documentation">📖</a></td>
     <td align="center"><a href="https://dport.me"><img src="https://avatars.githubusercontent.com/u/7816187?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Porteous (dport)</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=banool" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/w-ensink"><img src="https://avatars.githubusercontent.com/u/46427708?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Wouter Ensink</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=w-ensink" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/dbsxdbsx"><img src="https://avatars.githubusercontent.com/u/17372655?v=4?s=100" width="100px;" alt=""/><br /><sub><b>老董</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=dbsxdbsx" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/lattice0"><img src="https://avatars.githubusercontent.com/u/6632321?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lattice 0</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=lattice0" title="Code">💻</a></td>
   </tr>
 </table>
 <!-- markdownlint-restore -->
@@ -206,21 +208,23 @@
 <p>More specifically, thanks for all these contributions:</p>
 <ul>
 <li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module.</li>
-<li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir.</li>
+<li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir. Fix <code>store_dart_post_cobject</code> error with ffigen 6.0.</li>
 <li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
 <li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
 <li><a href="https://github.com/sagudev">sagudev</a>: Make code generator a <code>lib</code>. Add error types. Depend on <code>cbindgen</code>. Fix LLVM paths. Update deps. Fix CI errors.</li>
 <li><a href="https://github.com/surban">surban</a>: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.</li>
 <li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests.</li>
+<li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata.</li>
 <li><a href="https://github.com/efc-mw">efc-mw</a>: Improve Windows encoding handling.</li>
+<li><a href="https://github.com/lattice0">lattice0</a>: StreamSink at any argument.</li>
 <li><a href="https://github.com/valeth">valeth</a>: Rename callFfi's port.</li>
 <li><a href="https://github.com/sccheruku">sccheruku</a>: Prevent double-generating utility.</li>
+<li><a href="https://github.com/w-ensink">w-ensink</a>: Improve doc. Fix CI. Refactor. Add tests.</li>
 <li><a href="https://github.com/Michael-F-Bryan">Michael-F-Bryan</a>: Detect broken bindings.</li>
 <li><a href="https://github.com/bus710">bus710</a>: Add a case in troubleshooting.</li>
 <li><a href="https://github.com/Syndim">Syndim</a>: Add a bracket to box.</li>
-<li><a href="https://github.com/w-ensink">w-ensink</a>: Improve doc. Fix CI. Refactor.</li>
 <li><a href="https://github.com/banool">banool</a>: Fix symbol-stripping doc.</li>
 <li><a href="https://github.com/TENX-S">TENX-S</a>: Improve doc.</li>
 <li><a href="https://github.com/raphaelrobert">raphaelrobert</a>: Remove oudated doc.</li>
