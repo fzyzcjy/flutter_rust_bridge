@@ -13,6 +13,7 @@ use syn::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
+use crate::markers::{STATIC_METHOD_MARKER, METHOD_MARKER};
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
 
@@ -267,8 +268,9 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             };
             Ident::new(
                 format!(
-                    "{}__static_method___{}",
+                    "{}{}{}",
                     item_method.sig.ident.clone().to_string(),
+                    STATIC_METHOD_MARKER,
                     self_type.unwrap(),
                 )
                 .as_str(),
@@ -276,7 +278,12 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             )
         } else {
             Ident::new(
-                format!("{}__method", item_method.sig.ident.clone().to_string()).as_str(),
+                format!(
+                    "{}{}",
+                    item_method.sig.ident.clone().to_string(),
+                    METHOD_MARKER
+                )
+                .as_str(),
                 span,
             )
         };

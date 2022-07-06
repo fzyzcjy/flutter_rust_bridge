@@ -25,6 +25,7 @@ use log::debug;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
+use crate::markers::{METHOD_MARKER, STATIC_METHOD_MARKER};
 use crate::others::*;
 use crate::utils::BlockIndex;
 
@@ -103,11 +104,10 @@ fn get_dart_api_spec_from_ir_file(
     let distinct_output_types = ir_file.distinct_types(false, true);
     debug!("distinct_input_types={:?}", distinct_input_types);
     debug!("distinct_output_types={:?}", distinct_output_types);
-    //struct_has_methods(ir_file, "StructWithMethod");
+
     let dart_funcs = ir_file
         .funcs
         .iter()
-        //.filter(is_not_method)
         .map(|f| generate_api_func(f, ir_file))
         .collect::<Vec<_>>();
     let dart_structs = distinct_types
@@ -338,7 +338,7 @@ fn has_methods(struct_name: String, ir_file: &IrFile) -> bool {
 
 // Tests if the function in `f` is a method for struct with name `struct_name`
 fn is_method_for_struct(f: &&IrFunc, struct_name: String) -> bool {
-    f.name.contains("__method")
+    f.name.contains(METHOD_MARKER)
         && if let Boxed(IrTypeBoxed {
             exist_in_real_api: _,
             inner,
@@ -356,7 +356,7 @@ fn is_method_for_struct(f: &&IrFunc, struct_name: String) -> bool {
 
 // Tests if the function is `f` is a static method for struct with name `struct_name`
 fn is_static_method_for_struct(f: &&IrFunc, struct_name: String) -> bool {
-    f.name.contains("__static_method") && f.name.split("___").last().unwrap() == struct_name
+    f.name.contains(STATIC_METHOD_MARKER) && f.name.split("___").last().unwrap() == struct_name
 }
 
 fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
@@ -453,7 +453,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
-            if !struct_has_methods(ir_file, &func.output) {
+            if !struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x|&x.ty)) {
                 format!("_wire2api_{}", func.output.safe_ident())
             } else {
                 format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
@@ -589,7 +589,18 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
 
 // Tests if a given struct has methods, that is, if the `ir_file` contains
 // a function that receives the struct as first argument
-fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
+fn struct_has_methods(file: &IrFile, the_struct: Option<&IrType>) -> bool {
+    let the_struct = if let Some(s) = the_struct {
+        s
+    } else {
+        return false;
+    };
+    if the_struct.safe_ident().contains("user_id") {
+        println!(
+            "struct_has_methods for file: {:?}, the_struct: {:?}",
+            file, the_struct
+        );
+    }
     let struct_name = if let StructRef(IrTypeStructRef { name, freezed: _ }) = the_struct {
         name
     } else {
@@ -608,6 +619,11 @@ fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
             }) = f.inputs.get(0)
             {
                 if name.raw.to_case(Case::UpperCamel) == *struct_name {
+                    println!(
+                        "returning true for struct_name: {} and name.raw: {}",
+                        struct_name,
+                        name.raw.to_case(Case::UpperCamel)
+                    );
                     true
                 } else {
                     false

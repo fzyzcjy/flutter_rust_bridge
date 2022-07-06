@@ -2,6 +2,7 @@ use super::is_static_method_for_struct;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::generator::dart::{is_method_for_struct, ty::*};
 use crate::ir::*;
+use crate::markers::{STATIC_METHOD_MARKER, METHOD_MARKER};
 use crate::type_dart_generator_struct;
 use crate::utils::BlockIndex;
 use convert_case::{Case, Casing};
@@ -198,7 +199,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 }
 
 fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMethod {
-    let is_static_method = func.name.contains("__static_method");
+    let is_static_method = func.name.contains(STATIC_METHOD_MARKER);
     let skip_count = if is_static_method { 0 } else { 1 };
     let raw_func_param_list = func
         .inputs
@@ -216,7 +217,7 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
-    let static_function_name = func.name.split("__static_method").next().unwrap();
+    let static_function_name = func.name.split(STATIC_METHOD_MARKER).next().unwrap();
 
     let partial = format!(
         "{} {}({{ {} }})",
@@ -228,7 +229,7 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
                 static_function_name.to_string().to_case(Case::Camel)
             }
         } else {
-            func.name.replace("__method", "").to_case(Case::Camel)
+            func.name.replace(METHOD_MARKER, "").to_case(Case::Camel)
         },
         full_func_param_list.join(","),
     );

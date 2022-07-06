@@ -1,5 +1,8 @@
 use syn::*;
 
+pub const STATIC_METHOD_MARKER: &str = "__static_method";
+pub const METHOD_MARKER: &str = "__method";
+
 /// Extract a path from marker `#[frb(mirror(path), ..)]`
 pub fn extract_mirror_marker(attrs: &[Attribute]) -> Option<Path> {
     attrs

@@ -24,6 +24,8 @@ use std::collections::HashSet;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
+use crate::markers::METHOD_MARKER;
+use crate::markers::STATIC_METHOD_MARKER;
 use crate::others::*;
 use crate::utils::BlockIndex;
 
@@ -247,12 +249,6 @@ impl Generator {
         .concat();
 
         let mut inner_func_params = [
-            /*
-            match func.mode {
-                IrFuncMode::Normal | IrFuncMode::Sync => vec![],
-                IrFuncMode::Stream { .. } => vec!["task_callback.stream_sink()".to_string()],
-            },
-            */
             vec![],
             func.inputs
                 .iter()
@@ -294,12 +290,12 @@ impl Generator {
                 inner_func_params.join(", ")
             ))
         } else {
-            let method_name = if func.name.contains("__method") {
+            let method_name = if func.name.contains(METHOD_MARKER) {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
-                func.name.replace("__method", "")
-            } else if func.name.contains("__static_method") {
+                func.name.replace(METHOD_MARKER, "")
+            } else if func.name.contains(STATIC_METHOD_MARKER) {
                 func.name
-                    .split("__static_method")
+                    .split(STATIC_METHOD_MARKER)
                     .next()
                     .unwrap()
                     .to_string()
@@ -476,11 +472,12 @@ impl Generator {
     }
 }
 
+//tests if a given `func` is a method, and also returns the struct name that it is a method for
 fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
-    if func.name.contains("__method") {
+    if func.name.contains(METHOD_MARKER) {
         let input = func.inputs[0].clone();
         (true, Some(input.name.to_string().to_case(Case::UpperCamel)))
-    } else if func.name.contains("__static_method") {
+    } else if func.name.contains(STATIC_METHOD_MARKER) {
         (
             true,
             Some(

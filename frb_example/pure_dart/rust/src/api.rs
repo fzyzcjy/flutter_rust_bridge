@@ -621,23 +621,36 @@ pub fn handle_stream_sink_at_3(
     handle_stream_sink_at_1(key, max, sink)
 }
 
-
-pub struct StructWithMethod {
+pub struct SumWith {
     pub x: u32,
 }
 
-impl StructWithMethod {
+impl SumWith {
     pub fn sum(&self, y: u32, z: u32) -> u32 {
         y + z
     }
 }
 
-pub struct StructWithMethod2 {
-    pub a: String
+pub struct ConcatenateWith {
+    pub a: String,
 }
 
-impl StructWithMethod {
+impl ConcatenateWith {
+    pub fn new(a: String) -> ConcatenateWith {
+        ConcatenateWith { a }
+    }
     pub fn concatenate(&self, b: String) -> String {
         format!("{}{}", self.a, b)
     }
+    pub fn concatenate_static(a: String, b: String) -> String {
+        format!("{}{}", a, b)
+    }
+}
+
+pub struct StructWithMethod {
+    pub a: String,
+}
+
+impl StructWithMethod {
+    pub fn do_nothing(&self, b: String) {}
 }

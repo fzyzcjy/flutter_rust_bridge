@@ -673,12 +673,7 @@ pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sum__method(
-    port_: i64,
-    struct_with_method: *mut wire_StructWithMethod,
-    y: u32,
-    z: u32,
-) {
+pub extern "C" fn wire_sum__method(port_: i64, sum_with: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "sum__method",
@@ -686,10 +681,25 @@ pub extern "C" fn wire_sum__method(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_struct_with_method = struct_with_method.wire2api();
+            let api_sum_with = sum_with.wire2api();
             let api_y = y.wire2api();
             let api_z = z.wire2api();
-            move |task_callback| Ok(StructWithMethod::sum(&api_struct_with_method, api_y, api_z))
+            move |task_callback| Ok(SumWith::sum(&api_sum_with, api_y, api_z))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_new__static_methodConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "new__static_methodConcatenateWith",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            move |task_callback| Ok(NewStaticMethodConcatenateWith::new(api_a))
         },
     )
 }
@@ -697,7 +707,7 @@ pub extern "C" fn wire_sum__method(
 #[no_mangle]
 pub extern "C" fn wire_concatenate__method(
     port_: i64,
-    struct_with_method: *mut wire_StructWithMethod,
+    concatenate_with: *mut wire_ConcatenateWith,
     b: *mut wire_uint_8_list,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
@@ -707,14 +717,51 @@ pub extern "C" fn wire_concatenate__method(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_struct_with_method = struct_with_method.wire2api();
+            let api_concatenate_with = concatenate_with.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| Ok(ConcatenateWith::concatenate(&api_concatenate_with, api_b))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_concatenate_static__static_methodConcatenateWith(
+    port_: i64,
+    a: *mut wire_uint_8_list,
+    b: *mut wire_uint_8_list,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "concatenate_static__static_methodConcatenateWith",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
             let api_b = b.wire2api();
             move |task_callback| {
-                Ok(StructWithMethod::concatenate(
-                    &api_struct_with_method,
-                    api_b,
-                ))
+                Ok(ConcatenateStaticStaticMethodConcatenateWith::concatenate_static(api_a, api_b))
             }
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_do_nothing__method(
+    port_: i64,
+    struct_with_method: *mut wire_StructWithMethod,
+    b: *mut wire_uint_8_list,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "do_nothing__method",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_struct_with_method = struct_with_method.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| Ok(StructWithMethod::do_nothing(&api_struct_with_method, api_b))
         },
     )
 }
@@ -755,6 +802,12 @@ pub struct wire_ApplicationSettings {
 pub struct wire_Attribute {
     key: *mut wire_uint_8_list,
     value: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ConcatenateWith {
+    a: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -885,6 +938,12 @@ pub struct wire_NewTypeInt {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_StructWithMethod {
+    a: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SumWith {
     x: u32,
 }
 
@@ -1039,6 +1098,11 @@ pub extern "C" fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut wire_ConcatenateWith {
+    support::new_leak_box_ptr(wire_ConcatenateWith::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_customized_0() -> *mut wire_Customized {
     support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
 }
@@ -1091,6 +1155,11 @@ pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut wire_NewTypeInt {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_struct_with_method_0() -> *mut wire_StructWithMethod {
     support::new_leak_box_ptr(wire_StructWithMethod::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_sum_with_0() -> *mut wire_SumWith {
+    support::new_leak_box_ptr(wire_SumWith::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1363,6 +1432,13 @@ impl Wire2Api<bool> for *mut bool {
     }
 }
 
+impl Wire2Api<ConcatenateWith> for *mut wire_ConcatenateWith {
+    fn wire2api(self) -> ConcatenateWith {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<Customized> for *mut wire_Customized {
     fn wire2api(self) -> Customized {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1437,6 +1513,13 @@ impl Wire2Api<StructWithMethod> for *mut wire_StructWithMethod {
     }
 }
 
+impl Wire2Api<SumWith> for *mut wire_SumWith {
+    fn wire2api(self) -> SumWith {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<UserId> for *mut wire_UserId {
     fn wire2api(self) -> UserId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1498,6 +1581,14 @@ impl Wire2Api<Box<MySize>> for *mut wire_MySize {
 impl Wire2Api<Box<u8>> for *mut u8 {
     fn wire2api(self) -> Box<u8> {
         unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<ConcatenateWith> for wire_ConcatenateWith {
+    fn wire2api(self) -> ConcatenateWith {
+        ConcatenateWith {
+            a: self.a.wire2api(),
+        }
     }
 }
 
@@ -1742,6 +1833,14 @@ impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
 impl Wire2Api<StructWithMethod> for wire_StructWithMethod {
     fn wire2api(self) -> StructWithMethod {
         StructWithMethod {
+            a: self.a.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<SumWith> for wire_SumWith {
+    fn wire2api(self) -> SumWith {
+        SumWith {
             x: self.x.wire2api(),
         }
     }
@@ -1842,6 +1941,14 @@ impl NewWithNullPtr for wire_Attribute {
         Self {
             key: core::ptr::null_mut(),
             value: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_ConcatenateWith {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
         }
     }
 }
@@ -1974,6 +2081,14 @@ impl NewWithNullPtr for wire_NewTypeInt {
 impl NewWithNullPtr for wire_StructWithMethod {
     fn new_with_null_ptr() -> Self {
         Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_SumWith {
+    fn new_with_null_ptr() -> Self {
+        Self {
             x: Default::default(),
         }
     }
@@ -2053,6 +2168,13 @@ impl support::IntoDart for Attribute {
     }
 }
 impl support::IntoDartExceptPrimitive for Attribute {}
+
+impl support::IntoDart for ConcatenateWith {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.a.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for ConcatenateWith {}
 
 impl support::IntoDart for Element {
     fn into_dart(self) -> support::DartCObject {
@@ -2248,21 +2370,3 @@ pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) 
         let _ = support::vec_from_leak_ptr(val.ptr, val.len);
     }
 }
-
-    // ----------- DUMMY CODE FOR BINDGEN ----------
-
-    // copied from: allo-isolate
-    pub type DartPort = i64;
-    pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
-    #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
-
-    // copied from: frb_rust::support.rs
-    #[repr(C)]
-    pub struct WireSyncReturnStruct {
-        pub ptr: *mut u8,
-        pub len: i32,
-        pub success: bool,
-    }
-
-    // ---------------------------------------------
-    
