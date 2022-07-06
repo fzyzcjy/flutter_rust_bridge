@@ -239,6 +239,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "lattice0",
+      "name": "Lattice 0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6632321?v=4",
+      "profile": "https://github.com/lattice0",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

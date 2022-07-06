@@ -12,15 +12,19 @@ use structopt::clap::AppSettings;
 use structopt::StructOpt;
 use toml::Value;
 
+use crate::ir::IrFile;
+use crate::parser;
+use crate::utils::BlockIndex;
+
 #[derive(StructOpt, Debug, PartialEq, Deserialize, Default)]
 #[structopt(setting(AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
     /// Path of input Rust code
     #[structopt(short, long)]
-    pub rust_input: String,
+    pub rust_input: Vec<String>,
     /// Path of output generated Dart code
     #[structopt(short, long)]
-    pub dart_output: String,
+    pub dart_output: Vec<String>,
     /// If provided, generated Dart declaration code to this separate file
     #[structopt(long)]
     pub dart_decl_output: Option<String>,
@@ -30,13 +34,13 @@ pub struct RawOpts {
     pub c_output: Option<Vec<String>>,
     /// Crate directory for your Rust project
     #[structopt(long)]
-    pub rust_crate_dir: Option<String>,
+    pub rust_crate_dir: Option<Vec<String>>,
     /// Path of output generated Rust code
     #[structopt(long)]
-    pub rust_output: Option<String>,
+    pub rust_output: Option<Vec<String>>,
     /// Generated class name
     #[structopt(long)]
-    pub class_name: Option<String>,
+    pub class_name: Option<Vec<String>>,
     /// Line length for dart formatting
     #[structopt(long)]
     pub dart_format_line_length: Option<i32>,
@@ -51,15 +55,13 @@ pub struct RawOpts {
     pub llvm_compiler_opts: Option<String>,
     /// Path to root of Dart project, otherwise inferred from --dart-output
     #[structopt(long)]
-    pub dart_root: Option<String>,
+    pub dart_root: Option<Vec<String>>,
     /// Skip running build_runner even when codegen-capable code is detected
     #[structopt(long)]
     pub no_build_runner: bool,
     /// Show debug messages.
     #[structopt(short, long)]
     pub verbose: bool,
-    #[structopt(long)]
-    pub exclude_sync_execution_mode_utility: Option<bool>,
 }
 
 #[derive(Debug)]
@@ -78,30 +80,87 @@ pub struct Opts {
     pub manifest_path: String,
     pub dart_root: Option<String>,
     pub build_runner: bool,
-    pub exclude_sync_execution_mode_utility: bool,
+    pub block_index: BlockIndex,
 }
 
-pub fn parse(raw: RawOpts) -> Opts {
-    let rust_input_path = canon_path(&raw.rust_input);
+pub fn parse(raw: RawOpts) -> Vec<Opts> {
+    // rust input path(s)
+    let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
+    assert!(
+        !rust_input_paths.is_empty(),
+        "rust input(s) should have at least 1 path"
+    );
 
-    let rust_crate_dir = canon_path(&raw.rust_crate_dir.unwrap_or_else(|| {
-        fallback_rust_crate_dir(&rust_input_path)
-            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
-    }));
-    let manifest_path = {
-        let mut path = std::path::PathBuf::from_str(&rust_crate_dir).unwrap();
-        path.push("Cargo.toml");
-        path_to_string(path).unwrap()
-    };
-    let rust_output_path = canon_path(&raw.rust_output.unwrap_or_else(|| {
-        fallback_rust_output_path(&rust_input_path)
-            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_output")))
-    }));
-    let class_name = raw.class_name.unwrap_or_else(|| {
-        fallback_class_name(&*rust_crate_dir)
-            .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("class_name")))
+    // dart output path(s)
+    let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
+    assert!(
+        dart_output_paths.len() == rust_input_paths.len(),
+        "dart output path(s) should have the same number of path(s) as rust input(s)"
+    );
+
+    // rust crate dir(s)
+    let rust_crate_dirs = raw.rust_crate_dir.unwrap_or_else(|| {
+        rust_input_paths
+            .iter()
+            .map(|each_rust_input_path| {
+                fallback_rust_crate_dir(each_rust_input_path)
+                    .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
+            })
+            .collect::<Vec<_>>()
     });
-    let c_output_path = raw
+    let rust_crate_dirs = rust_crate_dirs
+        .iter()
+        .map(|each_path| canon_path(each_path))
+        .collect::<Vec<_>>();
+    assert!(
+        rust_crate_dirs.len() == rust_input_paths.len(),
+        "rust crate dir(s) should have the same number of path(s) as rust input(s)"
+    );
+
+    // manifest path(s)
+    let manifest_paths = rust_crate_dirs
+        .iter()
+        .map(|each| {
+            let mut path = std::path::PathBuf::from_str(each).unwrap();
+            path.push("Cargo.toml");
+            path_to_string(path).unwrap()
+        })
+        .collect::<Vec<_>>();
+    assert!(
+        manifest_paths.len() == rust_input_paths.len(),
+        "manifest path(s) should have the same number of path(s) as rust input(s)"
+    );
+
+    // rust output path(s)
+    let rust_output_paths = get_outputs_for_flag_requires_full_data(
+        &raw.rust_output,
+        &rust_input_paths,
+        &fallback_rust_output_path,
+        "rust_output",
+    );
+    let rust_output_paths = rust_output_paths
+        .iter()
+        .map(|each_path| canon_path(each_path))
+        .collect::<Vec<_>>();
+    assert!(
+        rust_output_paths.len() == rust_input_paths.len(),
+        "rust output path(s) should have the same number of path(s) as rust input(s)"
+    );
+
+    // class name(s)
+    let class_names = get_outputs_for_flag_requires_full_data(
+        &raw.class_name,
+        &rust_crate_dirs,
+        &fallback_class_name,
+        "class_name",
+    );
+    assert!(
+        class_names.len() == rust_input_paths.len(),
+        "class_name(s) should have the same number of path(s) as rust input(s)"
+    );
+
+    // c output path(s) (only 1 list is needed, nothing to do with number of rust_input_paths)
+    let c_output_paths = raw
         .c_output
         .map(|outputs| {
             outputs
@@ -114,53 +173,104 @@ pub fn parse(raw: RawOpts) -> Opts {
                 .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))]
         });
 
-    let dart_root = {
-        let dart_output = &raw.dart_output;
-        raw.dart_root
-            .as_deref()
-            .map(canon_path)
-            .or_else(|| fallback_dart_root(dart_output).ok())
+    // dart root(s)
+    let dart_roots = match raw.dart_root {
+        Some(dart_roots) => dart_roots
+            .into_iter()
+            .map(|each_path| Some(canon_path(&each_path)))
+            .collect::<Vec<_>>(),
+        None => dart_output_paths
+            .iter()
+            .map(|each_dart_output_path| fallback_dart_root(each_dart_output_path).ok())
+            .collect::<Vec<_>>(),
     };
 
-    Opts {
-        rust_input_path,
-        dart_output_path: canon_path(&raw.dart_output),
-        dart_decl_output_path: raw
-            .dart_decl_output
-            .as_ref()
-            .map(|s| canon_path(s.as_str())),
-        c_output_path,
-        rust_crate_dir,
-        rust_output_path,
-        class_name,
-        dart_format_line_length: raw.dart_format_line_length.unwrap_or(80),
-        skip_add_mod_to_lib: raw.skip_add_mod_to_lib,
-        llvm_path: raw.llvm_path.unwrap_or_else(|| {
-            vec![
-                "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
-                "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
-                // Possible Linux LLVM roots
-                "/usr/lib/llvm-9".to_owned(),
-                "/usr/lib/llvm-10".to_owned(),
-                "/usr/lib/llvm-11".to_owned(),
-                "/usr/lib/llvm-12".to_owned(),
-                "/usr/lib/llvm-13".to_owned(),
-                "/usr/lib/llvm-14".to_owned(),
-                "/usr/lib/".to_owned(),
-                "/usr/lib64/".to_owned(),
-                "C:/Program Files/llvm".to_owned(), // Default on Windows
-                "C:/Program Files/LLVM".to_owned(),
-                "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
-            ]
-        }),
-        llvm_compiler_opts: raw.llvm_compiler_opts.unwrap_or_else(|| "".to_string()),
-        manifest_path,
-        dart_root,
-        build_runner: !raw.no_build_runner,
-        exclude_sync_execution_mode_utility: raw
-            .exclude_sync_execution_mode_utility
-            .unwrap_or(false),
-    }
+    // build Opt for each rust api block
+    let dart_decl_output_path = raw
+        .dart_decl_output
+        .as_ref()
+        .map(|s| canon_path(s.as_str()));
+    let dart_format_line_length = raw.dart_format_line_length.unwrap_or(80);
+    let llvm_paths = get_llvm_paths(&raw.llvm_path);
+    let llvm_compiler_opts = raw
+        .llvm_compiler_opts
+        .clone()
+        .unwrap_or_else(|| "".to_string());
+    let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
+    let build_runner = !raw.no_build_runner;
+
+    (0..rust_input_paths.len())
+        .map(|i| {
+            Opts {
+                rust_input_path: rust_input_paths[i].clone(),
+                dart_output_path: dart_output_paths[i].clone(),
+                dart_decl_output_path: dart_decl_output_path.clone(),
+                c_output_path: c_output_paths.clone(), //same for all rust api blocks
+                rust_crate_dir: rust_crate_dirs[i].clone(),
+                rust_output_path: rust_output_paths[i].clone(),
+                class_name: class_names[i].clone(),
+                dart_format_line_length,
+                skip_add_mod_to_lib, //same for all rust api blocks
+                llvm_path: llvm_paths.clone(),
+                llvm_compiler_opts: llvm_compiler_opts.clone(),
+                manifest_path: manifest_paths[i].clone(),
+                dart_root: dart_roots[i].clone(),
+                build_runner, //same for all rust api blocks
+                block_index: BlockIndex(i),
+            }
+        })
+        .collect()
+}
+
+fn get_outputs_for_flag_requires_full_data(
+    strings: &Option<Vec<String>>,
+    fallback_paths: &[String],
+    fallback_func: &dyn Fn(&str) -> Result<String>,
+    field_str: &str, // str with underline, like "class_name"
+) -> Vec<String> {
+    strings.clone().unwrap_or_else(|| -> Vec<String> {
+        if fallback_paths.len() == 1 {
+            vec![fallback_func(&fallback_paths[0])
+                .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error(field_str)))]
+        } else {
+            let strs = field_str.split('_').collect::<Vec<_>>();
+            let raw_str = strs.join(" ");
+            let flag_str = strs.join("-");
+            panic!(
+                "for more than 1 rust blocks, please specify each {} clearly with flag \"{}\"",
+                raw_str, flag_str
+            );
+        }
+    })
+}
+
+fn get_llvm_paths(llvm_path: &Option<Vec<String>>) -> Vec<String> {
+    llvm_path.clone().unwrap_or_else(|| {
+        vec![
+            "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
+            "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
+            // Possible Linux LLVM roots
+            "/usr/lib/llvm-9".to_owned(),
+            "/usr/lib/llvm-10".to_owned(),
+            "/usr/lib/llvm-11".to_owned(),
+            "/usr/lib/llvm-12".to_owned(),
+            "/usr/lib/llvm-13".to_owned(),
+            "/usr/lib/llvm-14".to_owned(),
+            "/usr/lib/".to_owned(),
+            "/usr/lib64/".to_owned(),
+            "C:/Program Files/llvm".to_owned(), // Default on Windows
+            "C:/Program Files/LLVM".to_owned(),
+            "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
+        ]
+    })
+}
+
+fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
+    paths
+        .iter()
+        .filter(|p| !p.trim().is_empty())
+        .map(|p| canon_path(p))
+        .collect::<Vec<_>>()
 }
 
 fn format_fail_to_guess_error(name: &str) -> String {
@@ -264,6 +374,17 @@ fn path_to_string(path: PathBuf) -> Result<String, OsString> {
 }
 
 impl Opts {
+    pub fn get_ir_file(&self) -> IrFile {
+        // info!("Phase: Parse source code to AST");
+        let source_rust_content = fs::read_to_string(&self.rust_input_path)
+            .unwrap_or_else(|_| panic!("panic with file: {}", &self.rust_input_path));
+        let file_ast = syn::parse_file(&source_rust_content).unwrap();
+
+        // info!("Phase: Parse AST to IR");
+
+        parser::parse(&source_rust_content, file_ast, &self.manifest_path)
+    }
+
     pub fn dart_api_class_name(&self) -> String {
         self.class_name.clone()
     }

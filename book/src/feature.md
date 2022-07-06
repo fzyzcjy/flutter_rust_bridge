@@ -12,5 +12,4 @@ Of course, you may still need to have some basic familiarity with Flutter/Dart, 
 
 ### Full examples
 
-If you want to look at a lot of examples - I have to warn you, really too many - have a look at [pure_dart's api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs). It contains all tests for this library.
-
+If you want to look at a lot of examples - I have to warn you, really too many - have a look at [pure_dart's api.rs](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs). It contains all tests for this library. And when you are quite familiar with the basic example, you can then take a look at [pure_dart_multi](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart_multi/rust/src). This example contains multiple blocks of Api instead of 1, which is quite useful for complex project.

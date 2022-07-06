@@ -4,6 +4,7 @@ use crate::generator::rust::{
 };
 use crate::ir::*;
 use crate::type_rust_generator_struct;
+use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
@@ -31,13 +32,18 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        block_index: BlockIndex,
+    ) -> String {
         match &self.ir {
             list @ IrTypeDelegate::StringList => generate_list_allocate_func(
                 collector,
                 &self.ir.safe_ident(),
                 list,
                 &list.get_delegate(),
+                block_index,
             ),
             _ => "".to_string(),
         }
