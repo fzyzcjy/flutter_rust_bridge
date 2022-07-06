@@ -690,10 +690,10 @@ pub extern "C" fn wire_sum__method(port_: i64, sum_with: *mut wire_SumWith, y: u
 }
 
 #[no_mangle]
-pub extern "C" fn wire_new___static_methodConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
+pub extern "C" fn wire_new__static_method___ConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "new___static_methodConcatenateWith",
+            debug_name: "new__static_method___ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
@@ -725,14 +725,14 @@ pub extern "C" fn wire_concatenate__method(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_concatenate_static___static_methodConcatenateWith(
+pub extern "C" fn wire_concatenate_static__static_method___ConcatenateWith(
     port_: i64,
     a: *mut wire_uint_8_list,
     b: *mut wire_uint_8_list,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "concatenate_static___static_methodConcatenateWith",
+            debug_name: "concatenate_static__static_method___ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },

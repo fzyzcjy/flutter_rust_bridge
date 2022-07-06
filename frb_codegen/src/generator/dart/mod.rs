@@ -453,12 +453,20 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
-            if func.name.contains(STATIC_METHOD_MARKER) {
+            if func.name.contains(STATIC_METHOD_MARKER)
+                && func.name.split("___").last().unwrap() == {
+                    if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
+                        name.clone()
+                    } else {
+                        "".to_string()
+                    }
+                }
+            {
                 format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
-            } else if !struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x| &x.ty)) {
-                format!("_wire2api_{}", func.output.safe_ident())
+            } else if struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x| &x.ty)) {
+                format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
             } else {
-                format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
+                format!("_wire2api_{}", func.output.safe_ident())
             },
             task_common_args,
         ),
