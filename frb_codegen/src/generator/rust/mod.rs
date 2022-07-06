@@ -482,7 +482,7 @@ fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
             true,
             Some(
                 func.name
-                    .split("___")
+                    .split(STATIC_METHOD_MARKER)
                     .last()
                     .unwrap()
                     .to_string()

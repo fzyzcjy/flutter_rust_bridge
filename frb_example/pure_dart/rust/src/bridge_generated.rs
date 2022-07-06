@@ -690,16 +690,16 @@ pub extern "C" fn wire_sum__method(port_: i64, sum_with: *mut wire_SumWith, y: u
 }
 
 #[no_mangle]
-pub extern "C" fn wire_new__static_methodConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
+pub extern "C" fn wire_new___static_methodConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "new__static_methodConcatenateWith",
+            debug_name: "new___static_methodConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_a = a.wire2api();
-            move |task_callback| Ok(NewStaticMethodConcatenateWith::new(api_a))
+            move |task_callback| Ok(ConcatenateWith::new(api_a))
         },
     )
 }
@@ -725,23 +725,21 @@ pub extern "C" fn wire_concatenate__method(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_concatenate_static__static_methodConcatenateWith(
+pub extern "C" fn wire_concatenate_static___static_methodConcatenateWith(
     port_: i64,
     a: *mut wire_uint_8_list,
     b: *mut wire_uint_8_list,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "concatenate_static__static_methodConcatenateWith",
+            debug_name: "concatenate_static___static_methodConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| {
-                Ok(ConcatenateStaticStaticMethodConcatenateWith::concatenate_static(api_a, api_b))
-            }
+            move |task_callback| Ok(ConcatenateWith::concatenate_static(api_a, api_b))
         },
     )
 }
