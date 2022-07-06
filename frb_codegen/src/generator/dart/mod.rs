@@ -453,7 +453,9 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
-            if !struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x|&x.ty)) {
+            if func.name.contains(STATIC_METHOD_MARKER) {
+                format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
+            } else if !struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x| &x.ty)) {
                 format!("_wire2api_{}", func.output.safe_ident())
             } else {
                 format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
@@ -540,6 +542,7 @@ fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &s
     } else {
         "".to_string()
     };
+    //let bridge_requirement = "".to_string();
     let body = TypeDartGenerator::new(ty.clone(), ir_file).wire2api_body();
     format!(
         "{} _wire2api_{}({}dynamic raw) {{
