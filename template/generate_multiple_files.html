@@ -139,26 +139,20 @@
 <p>(Before going on reading, make sure that you are quite familiar with how to use <a href="https://github.com/Desdaemon/flutter_rust_bridge_template">template</a> to generate code with flutter_rust_bridge. If not, take a look at the former chapters or <a href="https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart">the basic example</a> again, please.)</p>
 <h2 id="try-to-classify-api-into-different-blocksfiles"><a class="header" href="#try-to-classify-api-into-different-blocksfiles">Try to classify Api into different blocks(files)</a></h2>
 <p>Suppose, you only have two Api in <code>api.rs</code> originally, like this:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span>#![allow(unused_variables)]
+<pre><code class="language-rust noplayground">#![allow(unused_variables)]
 
-<span class="boring">fn main() {
-</span>pub fn simple_add(a: i32, b: i32) -&gt; i32 {
+pub fn simple_add(a: i32, b: i32) -&gt; i32 {
     a + b
 }
 
 pub fn simple_minus(a: i32, b: i32) -&gt; i32 {
     a - b
 }
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>Now you want to classify these 2 Api into 2 blocks for some reason-- say, you put the <code>simple_add</code> Api into file <code>api_1.rs</code> and the other into <code>api_2.rs</code>. And then make a little modification in <code>lib.rs</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>mod api_1;
+<pre><code class="language-rust noplayground">mod api_1;
 mod api_2;
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>Ok, now the question is how to deal with them with flutter_rust_bridge? From the <a href="https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/justfile#L11">template justfile</a>, we know code from a single API file called <code>api_rs</code> can be generated with a command like this:</p>
 <pre><code>gen:
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
@@ -214,41 +208,29 @@ Here, for less misunderstanding, flutter_rust_bridge decides to ask for another 
 <p>That is, flutter_rust_bridge asks you to manually define the generated rust file names, feel free to choose any name you like.</p>
 <h2 id="some-issues-with-separate-commands"><a class="header" href="#some-issues-with-separate-commands">Some issues with separate commands</a></h2>
 <p>Based on the last commands we come up with, everything seems to be fine --- the code generated, you can use them in Dart, and the whole project is compilable. And you would also notice some changes in <code>lib.rs</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>mod api_1;
+<pre><code class="language-rust noplayground">mod api_1;
 mod api_2;
 mod generated_api_1; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
 mod generated_api_2; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>But actually, it is not good enough.</p>
 <h3 id="issue-from-explicit-api-conflict"><a class="header" href="#issue-from-explicit-api-conflict">issue from explicit Api conflict</a></h3>
 <p>Let's say one day, you decide to add another API, say <code>simpleDivide</code>. But when you compile the whole project, the Dart compiler just complains &quot;The symbol <code>simpleDivide</code> has already been defined ...&quot;. Then you check whether this <code>simpleDivide</code> is defined duplicated. Finally, you find that it's already defined in another block. This situation occurs quite a lot, when the other block is in the charge of someone else, especially in a big project. It is easy to see that the whole routine is a little inefficient, since you don't realize the Api conflict until doing compiling, when you've probably coded a lot with this &quot;new defined&quot; Api --- and the more time compiling takes, the more inefficient.</p>
 <h3 id="issue-from-implicit-api-conflict"><a class="header" href="#issue-from-implicit-api-conflict">issue from implicit Api conflict</a></h3>
 <p>And what makes the Api conflict issue more catastrophic? Say you define another Api with parameter <code>String</code> in <code>api_1.rs</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub fn test_string_1(s1: String) {
+<pre><code class="language-rust noplayground">pub fn test_string_1(s1: String) {
     println!(&quot;test implicit parameter conflicts {}&quot;, s1);
 }
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>And then you put another Api with parameter <code>String</code> in <code>api_2.rs</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub fn test_string_2(s2: String) {
+<pre><code class="language-rust noplayground">pub fn test_string_2(s2: String) {
     println!(&quot;test implicit parameter conflicts {}&quot;, s2);
 }
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>These 2 Apis don't violate the uniqueness required by FFI. They should be compilable with no error. But the truth is no! Why? Because for the <code>String</code> parameter, flutter_rust_bridge would automatically generate API like this:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[no_mangle]
+<pre><code class="language-rust noplayground">#[no_mangle]
 pub extern &quot;C&quot; fn new_uint_8_list(len: i32) -&gt; *mut wire_uint_8_list
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>which is used to let rust code easily cooperate with Dart through FFI. So if there are 2 APIs both taking <code>String</code> as parameters over blocks, you should notice a similar panic like &quot;the symbol <code>new_uint_8_list</code> is already defined ...&quot; during compiling(<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/511">issue #511</a>).</p>
 <p>(Actually, since version <a href="https://github.com/fzyzcjy/flutter_rust_bridge/releases/tag/v1.37.0">1.37</a>, even with the separated commands with no Api defined, the whole project is still not compilable with error &quot;symbol <code>free_WireSyncReturnStruct</code> is already defined... &quot;, the symbol <code>free_WireSyncReturnStruct</code> is another implicitly Api generated by flutter_rust_bridge.)</p>
 <p>So these kinds of explicit/implicit Api conflicts are annoying and frustrating. How to resolve it?</p>
