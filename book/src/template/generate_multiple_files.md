@@ -8,7 +8,7 @@ Before, like the [pure_dart's api.rs](https://github.com/fzyzcjy/flutter_rust_br
 
 Suppose, you only have two Api in `api.rs` originally, like this:
 
-```rust
+```rust,noplayground
 #![allow(unused_variables)]
 
 pub fn simple_add(a: i32, b: i32) -> i32 {
@@ -22,7 +22,7 @@ pub fn simple_minus(a: i32, b: i32) -> i32 {
 
 Now you want to classify these 2 Api into 2 blocks for some reason-- say, you put the `simple_add` Api into file `api_1.rs` and the other into `api_2.rs`. And then make a little modification in `lib.rs`:
 
-```rust
+```rust,noplayground
 mod api_1;
 mod api_2;
 ```
@@ -100,7 +100,7 @@ That is, flutter_rust_bridge asks you to manually define the generated rust file
 ## Some issues with separate commands
 Based on the last commands we come up with, everything seems to be fine --- the code generated, you can use them in Dart, and the whole project is compilable. And you would also notice some changes in `lib.rs`:
 
-```rust
+```rust,noplayground
 mod api_1;
 mod api_2;
 mod generated_api_1; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
@@ -117,7 +117,7 @@ Let's say one day, you decide to add another API, say `simpleDivide`. But when y
 
 And what makes the Api conflict issue more catastrophic? Say you define another Api with parameter `String` in `api_1.rs`:
 
-```rust
+```rust,noplayground
 pub fn test_string_1(s1: String) {
     println!("test implicit parameter conflicts {}", s1);
 }
@@ -125,7 +125,7 @@ pub fn test_string_1(s1: String) {
 
 And then you put another Api with parameter `String` in `api_2.rs`:
 
-```rust
+```rust,noplayground
 pub fn test_string_2(s2: String) {
     println!("test implicit parameter conflicts {}", s2);
 }
@@ -133,7 +133,7 @@ pub fn test_string_2(s2: String) {
 
 These 2 Apis don't violate the uniqueness required by FFI. They should be compilable with no error. But the truth is no! Why? Because for the `String` parameter, flutter_rust_bridge would automatically generate API like this:
 
-```rust
+```rust,noplayground
 #[no_mangle]
 pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list
 ```
