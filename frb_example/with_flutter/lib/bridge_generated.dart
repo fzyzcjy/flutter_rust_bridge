@@ -5,13 +5,20 @@
 
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'dart:ffi' as ffi;
 
+part 'bridge_generated.freezed.dart';
+
 abstract class FlutterRustBridgeExample {
+  Future<void> printLink({required Link link, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPrintLinkConstMeta;
+
   Future<Uint8List> drawMandelbrot(
       {required Size imageSize,
       required Point zoomPoint,
@@ -74,6 +81,26 @@ class BoxedPoint {
   });
 }
 
+class Link {
+  final String inner;
+  final LinkType kind;
+
+  Link({
+    required this.inner,
+    required this.kind,
+  });
+}
+
+@freezed
+class LinkType with _$LinkType {
+  const factory LinkType.file() = File;
+  const factory LinkType.dir({
+    required bool includeAll,
+  }) = Dir;
+  const factory LinkType.http() = Http;
+  const factory LinkType.git() = Git;
+}
+
 class Point {
   final double x;
   final double y;
@@ -110,6 +137,19 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
       FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire(dylib));
 
   FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super(inner);
+
+  Future<void> printLink({required Link link, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_print_link(port_, _api2wire_box_autoadd_link(link)),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kPrintLinkConstMeta,
+        argValues: [link],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kPrintLinkConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "print_link",
+        argNames: ["link"],
+      );
 
   Future<Uint8List> drawMandelbrot(
           {required Size imageSize,
@@ -292,6 +332,16 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     return _api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
 
+  bool _api2wire_bool(bool raw) {
+    return raw;
+  }
+
+  ffi.Pointer<wire_Link> _api2wire_box_autoadd_link(Link raw) {
+    final ptr = inner.new_box_autoadd_link();
+    _api_fill_to_wire_link(raw, ptr.ref);
+    return ptr;
+  }
+
   ffi.Pointer<wire_Point> _api2wire_box_autoadd_point(Point raw) {
     final ptr = inner.new_box_autoadd_point();
     _api_fill_to_wire_point(raw, ptr.ref);
@@ -307,6 +357,12 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   ffi.Pointer<wire_TreeNode> _api2wire_box_autoadd_tree_node(TreeNode raw) {
     final ptr = inner.new_box_autoadd_tree_node();
     _api_fill_to_wire_tree_node(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_LinkType> _api2wire_box_link_type(LinkType raw) {
+    final ptr = inner.new_box_link_type();
+    _api_fill_to_wire_link_type(raw, ptr.ref);
     return ptr;
   }
 
@@ -346,6 +402,10 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 
   // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_box_autoadd_link(Link apiObj, ffi.Pointer<wire_Link> wireObj) {
+    _api_fill_to_wire_link(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
     _api_fill_to_wire_point(apiObj, wireObj.ref);
   }
@@ -356,6 +416,35 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
 
   void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<wire_TreeNode> wireObj) {
     _api_fill_to_wire_tree_node(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_link_type(LinkType apiObj, ffi.Pointer<wire_LinkType> wireObj) {
+    _api_fill_to_wire_link_type(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_link(Link apiObj, wire_Link wireObj) {
+    wireObj.inner = _api2wire_String(apiObj.inner);
+    wireObj.kind = _api2wire_box_link_type(apiObj.kind);
+  }
+
+  void _api_fill_to_wire_link_type(LinkType apiObj, wire_LinkType wireObj) {
+    if (apiObj is File) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is Dir) {
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_LinkType_Dir();
+      wireObj.kind.ref.Dir.ref.include_all = _api2wire_bool(apiObj.includeAll);
+    }
+    if (apiObj is Http) {
+      wireObj.tag = 2;
+      return;
+    }
+    if (apiObj is Git) {
+      wireObj.tag = 3;
+      return;
+    }
   }
 
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
@@ -446,6 +535,10 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
   return raw as Uint8List;
 }
 
+void _wire2api_unit(dynamic raw) {
+  return;
+}
+
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 
 // AUTO GENERATED FILE, DO NOT EDIT.
@@ -463,6 +556,20 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   /// The symbols are looked up with [lookup].
   FlutterRustBridgeExampleWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
+
+  void wire_print_link(
+    int port_,
+    ffi.Pointer<wire_Link> link,
+  ) {
+    return _wire_print_link(
+      port_,
+      link,
+    );
+  }
+
+  late final _wire_print_linkPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Link>)>>('wire_print_link');
+  late final _wire_print_link = _wire_print_linkPtr.asFunction<void Function(int, ffi.Pointer<wire_Link>)>();
 
   void wire_draw_mandelbrot(
     int port_,
@@ -653,6 +760,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_off_topic_deliberately_panic =
       _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
+  ffi.Pointer<wire_Link> new_box_autoadd_link() {
+    return _new_box_autoadd_link();
+  }
+
+  late final _new_box_autoadd_linkPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Link> Function()>>('new_box_autoadd_link');
+  late final _new_box_autoadd_link = _new_box_autoadd_linkPtr.asFunction<ffi.Pointer<wire_Link> Function()>();
+
   ffi.Pointer<wire_Point> new_box_autoadd_point() {
     return _new_box_autoadd_point();
   }
@@ -677,6 +792,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node');
   late final _new_box_autoadd_tree_node =
       _new_box_autoadd_tree_nodePtr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
+
+  ffi.Pointer<wire_LinkType> new_box_link_type() {
+    return _new_box_link_type();
+  }
+
+  late final _new_box_link_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_LinkType> Function()>>('new_box_link_type');
+  late final _new_box_link_type = _new_box_link_typePtr.asFunction<ffi.Pointer<wire_LinkType> Function()>();
 
   ffi.Pointer<wire_list_size> new_list_size(
     int len,
@@ -714,6 +837,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
+  ffi.Pointer<LinkTypeKind> inflate_LinkType_Dir() {
+    return _inflate_LinkType_Dir();
+  }
+
+  late final _inflate_LinkType_DirPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<LinkTypeKind> Function()>>('inflate_LinkType_Dir');
+  late final _inflate_LinkType_Dir = _inflate_LinkType_DirPtr.asFunction<ffi.Pointer<LinkTypeKind> Function()>();
+
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
   ) {
@@ -740,6 +871,47 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 }
 
+class wire_uint_8_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class LinkType_File extends ffi.Opaque {}
+
+class LinkType_Dir extends ffi.Struct {
+  @ffi.Uint8()
+  external int include_all;
+}
+
+class LinkType_Http extends ffi.Opaque {}
+
+class LinkType_Git extends ffi.Opaque {}
+
+class LinkTypeKind extends ffi.Union {
+  external ffi.Pointer<LinkType_File> File;
+
+  external ffi.Pointer<LinkType_Dir> Dir;
+
+  external ffi.Pointer<LinkType_Http> Http;
+
+  external ffi.Pointer<LinkType_Git> Git;
+}
+
+class wire_LinkType extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<LinkTypeKind> kind;
+}
+
+class wire_Link extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> inner;
+
+  external ffi.Pointer<wire_LinkType> kind;
+}
+
 class wire_Size extends ffi.Struct {
   @ffi.Int32()
   external int width;
@@ -754,13 +926,6 @@ class wire_Point extends ffi.Struct {
 
   @ffi.Double()
   external double y;
-}
-
-class wire_uint_8_list extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
 }
 
 class wire_list_tree_node extends ffi.Struct {
@@ -783,5 +948,5 @@ class wire_list_size extends ffi.Struct {
   external int len;
 }
 
-typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
+typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Uint8 Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
