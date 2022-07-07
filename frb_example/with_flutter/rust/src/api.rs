@@ -7,6 +7,25 @@ use flutter_rust_bridge::ZeroCopyBuffer;
 // to see more types that this code generator can generate.
 //
 
+#[derive(Debug)]
+pub enum LinkType {
+    File,
+    Dir { include_all: bool },
+    Http,
+    Git,
+}
+
+#[derive(Debug)]
+pub struct Link {
+    pub inner: String,
+    pub kind: Box<LinkType>,
+}
+
+pub fn print_link(link: Link) -> anyhow::Result<()> {
+    println!("{:#?}", link);
+    Ok(())
+}
+
 pub fn draw_mandelbrot(
     image_size: Size,
     zoom_point: Point,

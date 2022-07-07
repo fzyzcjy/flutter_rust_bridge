@@ -18,6 +18,21 @@ use flutter_rust_bridge::*;
 // Section: wire functions
 
 #[no_mangle]
+pub extern "C" fn wire_print_link(port_: i64, link: *mut wire_Link) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "print_link",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_link = link.wire2api();
+            move |task_callback| print_link(api_link)
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_draw_mandelbrot(
     port_: i64,
     image_size: *mut wire_Size,
@@ -209,6 +224,13 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_Link {
+    inner: *mut wire_uint_8_list,
+    kind: *mut wire_LinkType,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_size {
     ptr: *mut wire_Size,
     len: i32,
@@ -249,6 +271,39 @@ pub struct wire_uint_8_list {
     len: i32,
 }
 
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_LinkType {
+    tag: i32,
+    kind: *mut LinkTypeKind,
+}
+
+#[repr(C)]
+pub union LinkTypeKind {
+    File: *mut LinkType_File,
+    Dir: *mut LinkType_Dir,
+    Http: *mut LinkType_Http,
+    Git: *mut LinkType_Git,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct LinkType_File {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct LinkType_Dir {
+    include_all: bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct LinkType_Http {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct LinkType_Git {}
+
 // Section: wrapper structs
 
 // Section: static checks
@@ -256,22 +311,32 @@ pub struct wire_uint_8_list {
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_point_0() -> *mut wire_Point {
+pub extern "C" fn new_box_autoadd_link() -> *mut wire_Link {
+    support::new_leak_box_ptr(wire_Link::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_point() -> *mut wire_Point {
     support::new_leak_box_ptr(wire_Point::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_size_0() -> *mut wire_Size {
+pub extern "C" fn new_box_autoadd_size() -> *mut wire_Size {
     support::new_leak_box_ptr(wire_Size::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_tree_node_0() -> *mut wire_TreeNode {
+pub extern "C" fn new_box_autoadd_tree_node() -> *mut wire_TreeNode {
     support::new_leak_box_ptr(wire_TreeNode::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_size_0(len: i32) -> *mut wire_list_size {
+pub extern "C" fn new_box_link_type() -> *mut wire_LinkType {
+    support::new_leak_box_ptr(wire_LinkType::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_size(len: i32) -> *mut wire_list_size {
     let wrap = wire_list_size {
         ptr: support::new_leak_vec_ptr(<wire_Size>::new_with_null_ptr(), len),
         len,
@@ -280,7 +345,7 @@ pub extern "C" fn new_list_size_0(len: i32) -> *mut wire_list_size {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_tree_node_0(len: i32) -> *mut wire_list_tree_node {
+pub extern "C" fn new_list_tree_node(len: i32) -> *mut wire_list_tree_node {
     let wrap = wire_list_tree_node {
         ptr: support::new_leak_vec_ptr(<wire_TreeNode>::new_with_null_ptr(), len),
         len,
@@ -289,7 +354,7 @@ pub extern "C" fn new_list_tree_node_0(len: i32) -> *mut wire_list_tree_node {
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
+pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -323,6 +388,19 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<bool> for bool {
+    fn wire2api(self) -> bool {
+        self
+    }
+}
+
+impl Wire2Api<Link> for *mut wire_Link {
+    fn wire2api(self) -> Link {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<Point> for *mut wire_Point {
     fn wire2api(self) -> Point {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -344,6 +422,13 @@ impl Wire2Api<TreeNode> for *mut wire_TreeNode {
     }
 }
 
+impl Wire2Api<Box<LinkType>> for *mut wire_LinkType {
+    fn wire2api(self) -> Box<LinkType> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        (*wrap).wire2api().into()
+    }
+}
+
 impl Wire2Api<f64> for f64 {
     fn wire2api(self) -> f64 {
         self
@@ -353,6 +438,33 @@ impl Wire2Api<f64> for f64 {
 impl Wire2Api<i32> for i32 {
     fn wire2api(self) -> i32 {
         self
+    }
+}
+
+impl Wire2Api<Link> for wire_Link {
+    fn wire2api(self) -> Link {
+        Link {
+            inner: self.inner.wire2api(),
+            kind: self.kind.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<LinkType> for wire_LinkType {
+    fn wire2api(self) -> LinkType {
+        match self.tag {
+            0 => LinkType::File,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Dir);
+                LinkType::Dir {
+                    include_all: ans.include_all.wire2api(),
+                }
+            },
+            2 => LinkType::Http,
+            3 => LinkType::Git,
+            _ => unreachable!(),
+        }
     }
 }
 
@@ -428,6 +540,33 @@ impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
     }
+}
+
+impl NewWithNullPtr for wire_Link {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            inner: core::ptr::null_mut(),
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_LinkType {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_LinkType_Dir() -> *mut LinkTypeKind {
+    support::new_leak_box_ptr(LinkTypeKind {
+        Dir: support::new_leak_box_ptr(LinkType_Dir {
+            include_all: Default::default(),
+        }),
+    })
 }
 
 impl NewWithNullPtr for wire_Point {
