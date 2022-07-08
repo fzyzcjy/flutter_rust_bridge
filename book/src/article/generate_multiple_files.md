@@ -115,7 +115,7 @@ But actually, it is not good enough.
 
 ### issue from explicit Api conflict
 
-Let's say one day, you decide to add another API, say `simpleDivide`. But when you compile the whole project, the Dart compiler just complains "The symbol `simpleDivide` has already been defined ...". Then you check whether this `simpleDivide` is defined duplicated. Finally, you find that it's already defined in another block. This situation occurs quite a lot, when the other block is in the charge of someone else, especially in a big project. It is easy to see that the whole routine is a little inefficient, since you don't realize the Api conflict until doing compiling, when you've probably coded a lot with this "new defined" Api --- and the more time compiling takes, the more inefficient.
+Let's say one day, you decide to add another API, say `simpleDivide`. But when you compile the whole project, the Dart compiler just complains "The symbol `simpleDivide` has already been defined ...". Then you check whether this `simpleDivide` is defined duplicated. Finally, you find that it's already defined in another block. This situation occurs quite a lot, when the other block is in the charge of someone else, especially in a big project. It is easy to see that the whole routine is a little inefficient since you don't realize the Api conflict until doing compiling when you've probably coded a lot with this "new defined" Api --- and the more time compiling takes, the more inefficient.
 
 ### issue from implicit Api conflict
 
@@ -148,7 +148,7 @@ which is used to let rust code easily cooperate with Dart through FFI. So if the
 
 So these kinds of explicit/implicit Api conflicts are annoying and frustrating. How to resolve it?
 
-Theoretically, the conflict can be detected earlier during generating code, when flutter_rust_bridge knows every detail about API. But the key is that, **flutter_rust_bridge has to know all Api over all blocks before generating code**. That is, with the separated command stated above, flutter_rust_bridge can't do the check for you in practice. Therefore, it is necessary to union the separated commands into ONE command.
+Theoretically, the conflict can be detected earlier during generating code, when flutter_rust_bridge knows every detail about API. But the key is that **flutter_rust_bridge has to know all Api over all blocks before generating code**. That is, with the separated command stated above, flutter_rust_bridge can't do the check for you in practice. Therefore, it is necessary to unite the separated commands into ONE command.
 
 ## correct command for generating code with multiple blocks
 
@@ -168,7 +168,7 @@ Here, with just 1 command, flutter_rust_bridge would smartly check if there are 
 
 That is, for the explicitly defined APIs like `simple_add` and `simple_minus`, if there are duplicated ones, flutter_rust_bridge would throw a panic like "thread 'main' panicked at 'symbol [simple_add] has already been defined'...", and you are responsible to fix it. And for the implicitly defined API like `new_uint_8_list`, since it is essential, flutter_rust_bridge would try to work around it by adding suffix starting from 0, like `new_uint_8_list_0` and `new_uint_8_list_1`.
 
-To sum up, **there are 4 compulsory flags, when you deal with multiple blocks.** They are `rust-input`, `dart-output`, `class-name` and `rust-output`. Also, the number of fields following each flag should be consistent. You can try to `cargo build` with fewer flags or inconsistent fields to see what kind of panic would be popped up with the [pure_dart_multi](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart_multi/rust/build.rs) example, when doing generation.
+To sum up, **there are 4 compulsory flags when you deal with multiple blocks.** They are `rust-input`, `dart-output`, `class-name` and `rust-output`. Also, the number of fields following each flag should be consistent. You can try to `cargo build` with fewer flags or inconsistent fields to see what kind of panic would be popped up with the [pure_dart_multi](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart_multi/rust/build.rs) example when doing generation.
 
 ## bizarre, weird but compilable command with the disorder
 
