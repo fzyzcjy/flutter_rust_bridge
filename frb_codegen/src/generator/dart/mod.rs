@@ -25,9 +25,10 @@ use log::debug;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
-use crate::markers::{METHOD_MARKER, STATIC_METHOD_MARKER};
 use crate::others::*;
 use crate::utils::BlockIndex;
+use crate::utils::has_methods;
+use crate::utils::is_static_method;
 
 pub struct Output {
     pub file_prelude: DartBasicCode,
@@ -325,40 +326,6 @@ struct GeneratedApiMethod {
     implementation: String,
 }
 
-fn has_methods(struct_name: String, ir_file: &IrFile) -> bool {
-    ir_file
-        .funcs
-        .iter()
-        .find(|f| {
-            is_method_for_struct(f, struct_name.clone())
-                || is_static_method_for_struct(f, struct_name.clone())
-        })
-        .is_some()
-}
-
-// Tests if the function in `f` is a method for struct with name `struct_name`
-fn is_method_for_struct(f: &&IrFunc, struct_name: String) -> bool {
-    f.name.ends_with(METHOD_MARKER)
-        && if let Boxed(IrTypeBoxed {
-            exist_in_real_api: _,
-            inner,
-        }) = &f.inputs[0].ty
-        {
-            if let StructRef(IrTypeStructRef { name, freezed: _ }) = &**inner {
-                *name == struct_name
-            } else {
-                false
-            }
-        } else {
-            false
-        }
-}
-
-// Tests if the function is `f` is a static method for struct with name `struct_name`
-fn is_static_method_for_struct(f: &&IrFunc, struct_name: String) -> bool {
-    f.name.contains(STATIC_METHOD_MARKER) && f.name.split("___").last().unwrap() == struct_name
-}
-
 fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     let raw_func_param_list = func
         .inputs
@@ -453,7 +420,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
-            if func.name.contains(STATIC_METHOD_MARKER)
+            if is_static_method(&func.name)
                 && func.name.split("___").last().unwrap() == {
                     if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                         name.clone()
@@ -542,7 +509,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
     let bridge_requirement = if let StructRef(IrTypeStructRef { name, freezed: _ }) = ty {
-        if has_methods(name.to_string(), ir_file) {
+        if has_methods(&name.to_string(), ir_file) {
             format!("{} bridge,", dart_api_class_name)
         } else {
             "".to_string()

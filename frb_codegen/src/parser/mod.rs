@@ -13,9 +13,9 @@ use syn::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
-use crate::markers::{STATIC_METHOD_MARKER, METHOD_MARKER};
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
+use crate::utils::{STATIC_METHOD_MARKER, METHOD_MARKER};
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
 const RESULT_IDENT: &str = "Result";

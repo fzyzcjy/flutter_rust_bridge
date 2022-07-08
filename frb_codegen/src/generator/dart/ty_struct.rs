@@ -1,10 +1,8 @@
-use super::is_static_method_for_struct;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
-use crate::generator::dart::{is_method_for_struct, ty::*};
+use crate::generator::dart::ty::*;
 use crate::ir::*;
-use crate::markers::{STATIC_METHOD_MARKER, METHOD_MARKER};
 use crate::type_dart_generator_struct;
-use crate::utils::BlockIndex;
+use crate::utils::{BlockIndex, is_method_for_struct, is_static_method_for_struct, is_static_method, clear_method_marker, static_method_return_method_name};
 use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
@@ -42,8 +40,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .funcs
             .iter()
             .filter(|f| {
-                is_method_for_struct(f, src.name.clone())
-                    || is_static_method_for_struct(f, src.name.clone())
+                is_method_for_struct(f, &src.name)
+                    || is_static_method_for_struct(f, &src.name)
             })
             .collect::<Vec<_>>();
         let has_methods = !methods.is_empty();
@@ -89,8 +87,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .funcs
             .iter()
             .filter(|f| {
-                is_method_for_struct(f, src.name.clone())
-                    || is_static_method_for_struct(f, src.name.clone())
+                is_method_for_struct(f, &src.name)
+                    || is_static_method_for_struct(f, &src.name)
             })
             .collect::<Vec<_>>();
 
@@ -199,7 +197,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 }
 
 fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMethod {
-    let is_static_method = func.name.contains(STATIC_METHOD_MARKER);
+    let is_static_method = is_static_method(&func.name);
     let skip_count = if is_static_method { 0 } else { 1 };
     let raw_func_param_list = func
         .inputs
@@ -217,7 +215,7 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
-    let static_function_name = func.name.split(STATIC_METHOD_MARKER).next().unwrap();
+    let static_function_name = static_method_return_method_name(&func.name);
 
     let partial = format!(
         "{} {}({{ {} }})",
@@ -229,7 +227,7 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
                 static_function_name.to_string().to_case(Case::Camel)
             }
         } else {
-            func.name.replace(METHOD_MARKER, "").to_case(Case::Camel)
+            clear_method_marker(&func.name).to_case(Case::Camel)
         },
         full_func_param_list.join(","),
     );

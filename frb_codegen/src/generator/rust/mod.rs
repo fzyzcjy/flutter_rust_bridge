@@ -24,10 +24,13 @@ use std::collections::HashSet;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
-use crate::markers::METHOD_MARKER;
-use crate::markers::STATIC_METHOD_MARKER;
 use crate::others::*;
+use crate::utils::clear_method_marker;
+use crate::utils::is_method;
+use crate::utils::is_static_method;
 use crate::utils::BlockIndex;
+use crate::utils::static_method_return_method_name;
+use crate::utils::static_method_return_struct_name;
 
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
@@ -290,15 +293,11 @@ impl Generator {
                 inner_func_params.join(", ")
             ))
         } else {
-            let method_name = if func.name.ends_with(METHOD_MARKER) {
+            let method_name = if is_method(&func.name) {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
-                func.name.replace(METHOD_MARKER, "")
-            } else if func.name.contains(STATIC_METHOD_MARKER) {
-                func.name
-                    .split(STATIC_METHOD_MARKER)
-                    .next()
-                    .unwrap()
-                    .to_string()
+                clear_method_marker(&func.name)
+            } else if is_static_method(&func.name) {
+                static_method_return_method_name(&func.name)
             } else {
                 panic!(
                     "not a method neither static method but should be: {}",
@@ -474,20 +473,13 @@ impl Generator {
 
 //tests if a given `func` is a method, and also returns the struct name that it is a method for
 fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
-    if func.name.ends_with(METHOD_MARKER) {
+    if is_method(&func.name) {
         let input = func.inputs[0].clone();
         (true, Some(input.name.to_string().to_case(Case::UpperCamel)))
-    } else if func.name.contains(STATIC_METHOD_MARKER) {
+    } else if is_static_method(&func.name) {
         (
             true,
-            Some(
-                func.name
-                    .split(STATIC_METHOD_MARKER)
-                    .last()
-                    .unwrap()
-                    .to_string()
-                    .to_case(Case::UpperCamel),
-            ),
+            Some(static_method_return_struct_name(&func.name).to_case(Case::UpperCamel)),
         )
     } else {
         (false, None)
