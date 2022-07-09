@@ -249,6 +249,7 @@ dependencies = [
  "anyhow",
  "flutter_rust_bridge_macros",
  "lazy_static",
+ "log",
  "parking_lot",
  "threadpool",
 ]
@@ -392,9 +393,9 @@ dependencies = [
 
 [[package]]
 name = "log"
-version = "0.4.16"
+version = "0.4.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6389c490849ff5bc16be905ae24bc913a9c8892e19b2341dbc175e14c341c2b8"
+checksum = "51b9bbe6c47d51fc3e1a9b945965946b4c44142ab8792c50835a980d362c2710"
 dependencies = [
  "cfg-if",
 ]

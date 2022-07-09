@@ -7,6 +7,7 @@ pub use rust2dart::StreamSink;
 pub mod handler;
 pub mod rust2dart;
 pub mod support;
+pub mod tool;
 
 /// Use this struct in return type of your function, in order to tell the code generator
 /// the function should return synchronously. Otherwise, it is by default asynchronously.

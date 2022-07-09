@@ -16,4 +16,9 @@ anyhow = "1.0.58"
 threadpool = "1.8.1"
 lazy_static = "1.4.0"
 parking_lot = "0.12.1"
+parking_lot = "0.12.0"
+log = "0.4.14"
 flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
+
+[features]
+extra_debug_output = []
