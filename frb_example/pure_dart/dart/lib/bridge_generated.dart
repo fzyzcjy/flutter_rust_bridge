@@ -124,6 +124,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta;
 
+  Future<Uint8List> printNote({required Note note, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPrintNoteConstMeta;
+
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta;
@@ -417,6 +421,16 @@ class NewTypeInt {
 
   NewTypeInt({
     required this.field0,
+  });
+}
+
+class Note {
+  final Weekdays day;
+  final String body;
+
+  Note({
+    required this.day,
+    required this.body,
   });
 }
 
@@ -839,6 +853,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: ["i8Box", "u8Box", "i32Box", "i64Box", "f64Box", "boolbox", "structbox"],
       );
 
+  Future<Uint8List> printNote({required Note note, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_print_note(port_, _api2wire_box_autoadd_note(note)),
+        parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
+        constMeta: kPrintNoteConstMeta,
+        argValues: [note],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kPrintNoteConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "print_note",
+        argNames: ["note"],
+      );
+
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_return_enum(port_, _api2wire_String(input)),
         parseSuccessData: _wire2api_opt_weekdays,
@@ -1192,6 +1219,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ptr;
   }
 
+  ffi.Pointer<wire_Note> _api2wire_box_autoadd_note(Note raw) {
+    final ptr = inner.new_box_autoadd_note_0();
+    _api_fill_to_wire_note(raw, ptr.ref);
+    return ptr;
+  }
+
   ffi.Pointer<wire_UserId> _api2wire_box_autoadd_user_id(UserId raw) {
     final ptr = inner.new_box_autoadd_user_id_0();
     _api_fill_to_wire_user_id(raw, ptr.ref);
@@ -1238,6 +1271,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   ffi.Pointer<ffi.Uint8> _api2wire_box_u8(int raw) {
     return inner.new_box_u8_0(raw);
+  }
+
+  ffi.Pointer<int> _api2wire_box_weekdays(Weekdays raw) {
+    final ptr = inner.new_box_weekdays_0();
+    _api_fill_to_wire_weekdays(raw, ptr.ref);
+    return ptr;
   }
 
   double _api2wire_f32(double raw) {
@@ -1517,6 +1556,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     _api_fill_to_wire_new_type_int(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_note(Note apiObj, ffi.Pointer<wire_Note> wireObj) {
+    _api_fill_to_wire_note(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_user_id(UserId apiObj, ffi.Pointer<wire_UserId> wireObj) {
     _api_fill_to_wire_user_id(apiObj, wireObj.ref);
   }
@@ -1531,6 +1574,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_weekdays(Weekdays apiObj, ffi.Pointer<int> wireObj) {
+    _api_fill_to_wire_weekdays(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_customized(Customized apiObj, wire_Customized wireObj) {
@@ -1610,6 +1657,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   void _api_fill_to_wire_new_type_int(NewTypeInt apiObj, wire_NewTypeInt wireObj) {
     wireObj.field0 = _api2wire_i64(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_note(Note apiObj, wire_Note wireObj) {
+    wireObj.day = _api2wire_box_weekdays(apiObj.day);
+    wireObj.body = _api2wire_String(apiObj.body);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -2548,6 +2600,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       void Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
           ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>, ffi.Pointer<wire_ExoticOptionals>)>();
 
+  void wire_print_note(
+    int port_,
+    ffi.Pointer<wire_Note> note,
+  ) {
+    return _wire_print_note(
+      port_,
+      note,
+    );
+  }
+
+  late final _wire_print_notePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Note>)>>('wire_print_note');
+  late final _wire_print_note = _wire_print_notePtr.asFunction<void Function(int, ffi.Pointer<wire_Note>)>();
+
   void wire_handle_return_enum(
     int port_,
     ffi.Pointer<wire_uint_8_list> input,
@@ -2966,6 +3032,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_new_type_int_0 =
       _new_box_autoadd_new_type_int_0Ptr.asFunction<ffi.Pointer<wire_NewTypeInt> Function()>();
 
+  ffi.Pointer<wire_Note> new_box_autoadd_note_0() {
+    return _new_box_autoadd_note_0();
+  }
+
+  late final _new_box_autoadd_note_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Note> Function()>>('new_box_autoadd_note_0');
+  late final _new_box_autoadd_note_0 = _new_box_autoadd_note_0Ptr.asFunction<ffi.Pointer<wire_Note> Function()>();
+
   ffi.Pointer<wire_UserId> new_box_autoadd_user_id_0() {
     return _new_box_autoadd_user_id_0();
   }
@@ -3070,6 +3144,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _new_box_u8_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>('new_box_u8_0');
   late final _new_box_u8_0 = _new_box_u8_0Ptr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
+
+  ffi.Pointer<ffi.Int32> new_box_weekdays_0() {
+    return _new_box_weekdays_0();
+  }
+
+  late final _new_box_weekdays_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function()>>('new_box_weekdays_0');
+  late final _new_box_weekdays_0 = _new_box_weekdays_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function()>();
 
   ffi.Pointer<wire_float_32_list> new_float_32_list_0(
     int len,
@@ -3418,6 +3500,12 @@ class wire_ExoticOptionals extends ffi.Struct {
   external ffi.Pointer<wire_list_opt_box_autoadd_attribute> nullable_attributes;
 
   external ffi.Pointer<wire_NewTypeInt> newtypeint;
+}
+
+class wire_Note extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> day;
+
+  external ffi.Pointer<wire_uint_8_list> body;
 }
 
 class wire_Customized extends ffi.Struct {
