@@ -89,8 +89,8 @@ impl Display for BlockIndex {
 
 // Methods and static methods helper functions
 
-pub const STATIC_METHOD_MARKER: &str = "__static_method___";
-pub const METHOD_MARKER: &str = "__method";
+pub(crate) const STATIC_METHOD_MARKER: &str = "__static_method___";
+pub(crate) const METHOD_MARKER: &str = "__method";
 
 pub fn is_method(s: &String) -> bool {
     s.ends_with(METHOD_MARKER)
@@ -104,7 +104,6 @@ pub fn is_static_method(s: &String) -> bool {
 pub fn is_static_method_for_struct(f: &&IrFunc, struct_name: &String) -> bool {
     f.name.contains(STATIC_METHOD_MARKER) && f.name.split("___").last().unwrap() == struct_name
 }
-
 
 pub fn has_methods(struct_name: &String, ir_file: &IrFile) -> bool {
     ir_file
@@ -135,14 +134,17 @@ pub fn is_method_for_struct(f: &&IrFunc, struct_name: &String) -> bool {
         }
 }
 
+// Returns the name of the struct that this method is for
 pub fn static_method_return_struct_name(s: &String) -> String {
     s.split(STATIC_METHOD_MARKER).last().unwrap().to_string()
 }
 
+// Returns the name of method itself
 pub fn static_method_return_method_name(s: &String) -> String {
     s.split(STATIC_METHOD_MARKER).next().unwrap().to_string()
 }
 
+// Clears the method marker from this method name
 pub fn clear_method_marker(s: &String) -> String {
     s.replace(METHOD_MARKER, "")
 }

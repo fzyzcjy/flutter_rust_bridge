@@ -627,7 +627,7 @@ pub struct SumWith {
 
 impl SumWith {
     pub fn sum(&self, y: u32, z: u32) -> u32 {
-        y + z
+        self.x + y + z
     }
 }
 
@@ -645,12 +645,4 @@ impl ConcatenateWith {
     pub fn concatenate_static(a: String, b: String) -> String {
         format!("{}{}", a, b)
     }
-}
-
-pub struct StructWithMethod {
-    pub a: String,
-}
-
-impl StructWithMethod {
-    pub fn do_nothing(&self, b: String) {}
 }

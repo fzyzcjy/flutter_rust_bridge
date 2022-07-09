@@ -744,26 +744,6 @@ pub extern "C" fn wire_concatenate_static__static_method___ConcatenateWith(
     )
 }
 
-#[no_mangle]
-pub extern "C" fn wire_do_nothing__method(
-    port_: i64,
-    struct_with_method: *mut wire_StructWithMethod,
-    b: *mut wire_uint_8_list,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "do_nothing__method",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_struct_with_method = struct_with_method.wire2api();
-            let api_b = b.wire2api();
-            move |task_callback| Ok(StructWithMethod::do_nothing(&api_struct_with_method, api_b))
-        },
-    )
-}
-
 // Section: wire structs
 
 #[repr(C)]
@@ -931,12 +911,6 @@ pub struct wire_MyTreeNode {
 #[derive(Clone)]
 pub struct wire_NewTypeInt {
     field0: i64,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_StructWithMethod {
-    a: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -1148,11 +1122,6 @@ pub extern "C" fn new_box_autoadd_my_tree_node_0() -> *mut wire_MyTreeNode {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut wire_NewTypeInt {
     support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_struct_with_method_0() -> *mut wire_StructWithMethod {
-    support::new_leak_box_ptr(wire_StructWithMethod::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1504,13 +1473,6 @@ impl Wire2Api<NewTypeInt> for *mut wire_NewTypeInt {
     }
 }
 
-impl Wire2Api<StructWithMethod> for *mut wire_StructWithMethod {
-    fn wire2api(self) -> StructWithMethod {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
-    }
-}
-
 impl Wire2Api<SumWith> for *mut wire_SumWith {
     fn wire2api(self) -> SumWith {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1828,14 +1790,6 @@ impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
     }
 }
 
-impl Wire2Api<StructWithMethod> for wire_StructWithMethod {
-    fn wire2api(self) -> StructWithMethod {
-        StructWithMethod {
-            a: self.a.wire2api(),
-        }
-    }
-}
-
 impl Wire2Api<SumWith> for wire_SumWith {
     fn wire2api(self) -> SumWith {
         SumWith {
@@ -2072,14 +2026,6 @@ impl NewWithNullPtr for wire_NewTypeInt {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: Default::default(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_StructWithMethod {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            a: core::ptr::null_mut(),
         }
     }
 }

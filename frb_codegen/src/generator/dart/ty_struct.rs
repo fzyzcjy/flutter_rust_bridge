@@ -1,8 +1,11 @@
-use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::generator::dart::ty::*;
+use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
-use crate::utils::{BlockIndex, is_method_for_struct, is_static_method_for_struct, is_static_method, clear_method_marker, static_method_return_method_name};
+use crate::utils::{
+    clear_method_marker, is_method_for_struct, is_static_method, is_static_method_for_struct,
+    static_method_return_method_name, BlockIndex,
+};
 use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
@@ -40,8 +43,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .funcs
             .iter()
             .filter(|f| {
-                is_method_for_struct(f, &src.name)
-                    || is_static_method_for_struct(f, &src.name)
+                is_method_for_struct(f, &src.name) || is_static_method_for_struct(f, &src.name)
             })
             .collect::<Vec<_>>();
         let has_methods = !methods.is_empty();
@@ -87,15 +89,20 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .funcs
             .iter()
             .filter(|f| {
-                is_method_for_struct(f, &src.name)
-                    || is_static_method_for_struct(f, &src.name)
+                is_method_for_struct(f, &src.name) || is_static_method_for_struct(f, &src.name)
             })
             .collect::<Vec<_>>();
 
         let has_methods = !methods.is_empty();
         let methods = methods
             .iter()
-            .map(|func| generate_api_method(func, src))
+            .map(|func| {
+                generate_api_method(
+                    func,
+                    src,
+                    self.dart_api_class_name.as_ref().unwrap().clone(),
+                )
+            })
             .collect::<Vec<_>>();
 
         let methods_string = methods
@@ -196,10 +203,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 }
 
-fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMethod {
-    let is_static_method = is_static_method(&func.name);
-    let skip_count = if is_static_method { 0 } else { 1 };
-    let raw_func_param_list = func
+fn generate_api_method(
+    func: &IrFunc,
+    ir_struct: &IrStruct,
+    dart_api_class_name: String,
+) -> GeneratedApiMethod {
+    let skip_count = if is_static_method(&func.name) { 0 } else { 1 };
+    let mut raw_func_param_list = func
         .inputs
         .iter()
         .skip(skip_count) //skip the first as it's the method 'self'
@@ -213,14 +223,19 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
         })
         .collect::<Vec<_>>();
 
+    if is_static_method(&func.name) {
+        raw_func_param_list.insert(0, format!("required {} bridge", dart_api_class_name));
+    }
+
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let static_function_name = static_method_return_method_name(&func.name);
 
     let partial = format!(
-        "{} {}({{ {} }})",
+        "{} {} {}({{ {} }})",
+        if is_static_method(&func.name) {"static"} else {""},
         func.mode.dart_return_type(&func.output.dart_api_type()),
-        if is_static_method {
+        if is_static_method(&func.name) {
             if static_function_name == "new" {
                 format!("new{}", ir_struct.name)
             } else {
@@ -242,7 +257,7 @@ fn generate_api_method(func: &IrFunc, ir_struct: &IrStruct) -> GeneratedApiMetho
         .collect::<Vec<_>>()
         .concat();
 
-    let implementation = if !is_static_method {
+    let implementation = if !is_static_method(&func.name) {
         format!(
             "bridge.{}({}: this, {})",
             func.name.clone().to_case(Case::Camel),
