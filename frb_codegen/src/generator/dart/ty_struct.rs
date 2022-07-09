@@ -37,16 +37,15 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let src = self.ir.get(self.context.ir_file);
         let s = self.ir.get(self.context.ir_file);
 
-        let methods = self
+        let mut methods = self
             .context
             .ir_file
             .funcs
             .iter()
             .filter(|f| {
                 is_method_for_struct(f, &src.name) || is_static_method_for_struct(f, &src.name)
-            })
-            .collect::<Vec<_>>();
-        let has_methods = !methods.is_empty();
+            });
+        let has_methods = methods.next().is_some();
         let mut inner = s
             .fields
             .iter()
@@ -239,7 +238,7 @@ fn generate_api_method(
             if static_function_name == "new" {
                 format!("new{}", ir_struct.name)
             } else {
-                static_function_name.to_string().to_case(Case::Camel)
+                static_function_name.to_case(Case::Camel)
             }
         } else {
             clear_method_marker(&func.name).to_case(Case::Camel)
@@ -247,7 +246,7 @@ fn generate_api_method(
         full_func_param_list.join(","),
     );
 
-    let signature = format!("{}", partial);
+    let signature = partial;
 
     let arg_names = func
         .inputs

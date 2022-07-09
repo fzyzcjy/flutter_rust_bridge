@@ -15,7 +15,7 @@ use crate::ir::*;
 use crate::generator::rust::HANDLER_NAME;
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
-use crate::utils::{STATIC_METHOD_MARKER, METHOD_MARKER};
+use crate::utils::{METHOD_MARKER, STATIC_METHOD_MARKER};
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
 const RESULT_IDENT: &str = "Result";
@@ -232,11 +232,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 output: _,
             } = &item_method.sig;
             {
-                if let Some(FnArg::Receiver(..)) = inputs.first() {
-                    false
-                } else {
-                    true
-                }
+                !matches!(inputs.first(), Some(FnArg::Receiver(..)))
             }
         };
         let method_name = if is_static_method {
@@ -269,7 +265,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             Ident::new(
                 format!(
                     "{}{}{}",
-                    item_method.sig.ident.clone().to_string(),
+                    item_method.sig.ident.clone(),
                     STATIC_METHOD_MARKER,
                     self_type.unwrap(),
                 )
@@ -278,12 +274,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             )
         } else {
             Ident::new(
-                format!(
-                    "{}{}",
-                    item_method.sig.ident.clone().to_string(),
-                    METHOD_MARKER
-                )
-                .as_str(),
+                format!("{}{}", item_method.sig.ident.clone(), METHOD_MARKER).as_str(),
                 span,
             )
         };
@@ -299,7 +290,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 fn_token: item_method.sig.fn_token,
                 ident: method_name,
                 generics: item_method.sig.generics.clone(),
-                paren_token: item_method.sig.paren_token.clone(),
+                paren_token: item_method.sig.paren_token,
                 inputs: item_method
                     .sig
                     .inputs
@@ -325,7 +316,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                                 pat: Box::new(Pat::Ident(PatIdent {
                                     attrs: vec![],
                                     by_ref: Some(syn::token::Ref { span }),
-                                    mutability: mutability.clone(),
+                                    mutability: *mutability,
                                     ident: Ident::new(&struct_name.to_case(Case::Snake), span),
                                     subpat: None,
                                 })),

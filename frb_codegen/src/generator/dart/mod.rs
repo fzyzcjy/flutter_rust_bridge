@@ -26,9 +26,9 @@ use log::debug;
 use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::others::*;
-use crate::utils::BlockIndex;
 use crate::utils::has_methods;
 use crate::utils::is_static_method;
+use crate::utils::BlockIndex;
 
 pub struct Output {
     pub file_prelude: DartBasicCode,
@@ -420,17 +420,16 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
-            if is_static_method(&func.name)
+            if (is_static_method(&func.name)
                 && func.name.split("___").last().unwrap() == {
                     if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                         name.clone()
                     } else {
                         "".to_string()
                     }
-                }
+                })
+                || struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x| &x.ty))
             {
-                format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
-            } else if struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x| &x.ty)) {
                 format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
             } else {
                 format!("_wire2api_{}", func.output.safe_ident())
@@ -509,7 +508,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
     let bridge_requirement = if let StructRef(IrTypeStructRef { name, freezed: _ }) = ty {
-        if has_methods(&name.to_string(), ir_file) {
+        if has_methods(name, ir_file) {
             format!("{} bridge,", dart_api_class_name)
         } else {
             "".to_string()
@@ -585,31 +584,26 @@ fn struct_has_methods(file: &IrFile, the_struct: Option<&IrType>) -> bool {
         return false;
     };
 
-    let struct_has_methods = file
-        .funcs
-        .iter()
-        .find(|f| {
-            if let Some(IrField {
-                ty: _,
-                name,
-                is_final: _,
-                comments: _,
-            }) = f.inputs.get(0)
-            {
-                if name.raw.to_case(Case::UpperCamel) == *struct_name {
-                    println!(
-                        "returning true for struct_name: {} and name.raw: {}",
-                        struct_name,
-                        name.raw.to_case(Case::UpperCamel)
-                    );
-                    true
-                } else {
-                    false
-                }
+    file.funcs.iter().any(|f| {
+        if let Some(IrField {
+            ty: _,
+            name,
+            is_final: _,
+            comments: _,
+        }) = f.inputs.get(0)
+        {
+            if name.raw.to_case(Case::UpperCamel) == *struct_name {
+                println!(
+                    "returning true for struct_name: {} and name.raw: {}",
+                    struct_name,
+                    name.raw.to_case(Case::UpperCamel)
+                );
+                true
             } else {
                 false
             }
-        })
-        .is_some();
-    struct_has_methods
+        } else {
+            false
+        }
+    })
 }

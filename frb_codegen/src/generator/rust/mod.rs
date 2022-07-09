@@ -306,7 +306,7 @@ impl Generator {
             };
             TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
                 r"{}::{}({})",
-                struct_name.clone().unwrap(),
+                struct_name.unwrap(),
                 method_name,
                 inner_func_params.join(", ")
             ))
