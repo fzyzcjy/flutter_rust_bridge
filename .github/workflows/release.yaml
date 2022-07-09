@@ -1,0 +1,97 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+  push:
+    tags:
+      - v1.*-dev
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-upload:
+    name: Build and Upload Binaries
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen_x86_64-unknown-linux-gnu.tar.gz
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen_x86_64-unknown-linux-musl.tar.gz
+          - target: i686-unknown-linux-musl
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen_i686-unknown-linux-musl.tar.gz
+          - target: aarch64-unknown-linux-musl
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen_aarch64-unknown-linux-musl.tar.gz
+          - target: arm-unknown-linux-musleabihf
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen_arm-unknown-linux-musleabihf.tar.gz
+          # - target: x86_64-apple-darwin
+          #   os: macos-latest
+          #   name: flutter_rust_bridge_codegen_x86_64-apple-darwin.tar.gz
+          # - target: aarch64-apple-darwin
+          #   os: macos-latest
+          #   name: flutter_rust_bridge_codegen_aarch64-apple-darwin.tar.gz
+          # - target: x86_64-pc-windows-msvc
+          #   os: windows-latest
+          #   name: flutter_rust_bridge_codegen_x86_64-pc-windows-msvc.zip
+          # - target: i686-pc-windows-msvc
+          #   os: windows-latest
+          #   name: flutter_rust_bridge_codegen_i686-pc-windows-msvc.zip
+          # - target: x86_64-unknown-freebsd
+          #   os: ubuntu-latest
+          #   name: flutter_rust_bridge_codegen_x86_64-unknown-freebsd.tar.gz
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          target: ${{ matrix.target }}
+      - name: Build
+        uses: actions-rs/cargo@v1
+        working-directory: frb-codegen
+        with:
+          command: build
+          args: --release --locked --target ${{ matrix.target }}
+          use-cross: ${{ matrix.os == 'ubuntu-latest' }}
+      - name: Post-build (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          cd frb-codegen/target/${{ matrix.target }}/release
+          strip flutter_rust_bridge_codegen.exe
+          7z a ../../../../${{ matrix.name }} flutter_rust_bridge_codegen.exe
+          cd -
+      - name: Post-build (*nix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          cd frb-codegen/target/${{ matrix.target }}/release
+          strip flutter_rust_bridge_codegen || true
+          tar czvf ../../../../${{ matrix.name }} flutter_rust_bridge_codegen
+          cd -
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.name }}
+          path: ${{ matrix.name }}
+  upload-artifacts:
+    name: Add Build Artifacts to Release
+    needs: build-upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+      - name: Add Artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          files: flutter_rust_bridge_codegen_*/flutter_rust_bridge_codegen_*
+          tag_name: ${{ github.ref_name }}
