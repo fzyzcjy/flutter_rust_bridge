@@ -28,9 +28,9 @@ use crate::others::*;
 use crate::utils::clear_method_marker;
 use crate::utils::is_method;
 use crate::utils::is_static_method;
-use crate::utils::BlockIndex;
 use crate::utils::static_method_return_method_name;
 use crate::utils::static_method_return_struct_name;
+use crate::utils::BlockIndex;
 
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 

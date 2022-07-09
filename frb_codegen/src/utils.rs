@@ -1,11 +1,11 @@
+use crate::ir::IrType::{Boxed, StructRef};
+use crate::ir::IrTypeStructRef;
+use crate::ir::{IrFile, IrFunc, IrTypeBoxed};
 use std::collections::HashSet;
 use std::fmt::Display;
 use std::fs;
 use std::hash::Hash;
 use std::path::Path;
-use crate::ir::IrTypeStructRef;
-use crate::ir::{IrFunc, IrFile, IrTypeBoxed};
-use crate::ir::IrType::{Boxed, StructRef};
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
@@ -106,13 +106,9 @@ pub fn is_static_method_for_struct(f: &&IrFunc, struct_name: &String) -> bool {
 }
 
 pub fn has_methods(struct_name: &String, ir_file: &IrFile) -> bool {
-    ir_file
-        .funcs
-        .iter()
-        .any(|f| {
-            is_method_for_struct(&f, struct_name)
-                || is_static_method_for_struct(&f, struct_name)
-        })
+    ir_file.funcs.iter().any(|f| {
+        is_method_for_struct(&f, struct_name) || is_static_method_for_struct(&f, struct_name)
+    })
 }
 
 // Tests if the function in `f` is a method for struct with name `struct_name`

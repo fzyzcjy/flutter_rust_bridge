@@ -37,14 +37,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let src = self.ir.get(self.context.ir_file);
         let s = self.ir.get(self.context.ir_file);
 
-        let mut methods = self
-            .context
-            .ir_file
-            .funcs
-            .iter()
-            .filter(|f| {
-                is_method_for_struct(f, &src.name) || is_static_method_for_struct(f, &src.name)
-            });
+        let mut methods = self.context.ir_file.funcs.iter().filter(|f| {
+            is_method_for_struct(f, &src.name) || is_static_method_for_struct(f, &src.name)
+        });
         let has_methods = methods.next().is_some();
         let mut inner = s
             .fields
@@ -232,7 +227,11 @@ fn generate_api_method(
 
     let partial = format!(
         "{} {} {}({{ {} }})",
-        if is_static_method(&func.name) {"static"} else {""},
+        if is_static_method(&func.name) {
+            "static"
+        } else {
+            ""
+        },
         func.mode.dart_return_type(&func.output.dart_api_type()),
         if is_static_method(&func.name) {
             if static_function_name == "new" {
