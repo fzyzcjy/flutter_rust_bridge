@@ -366,13 +366,13 @@ pub enum Weekdays {
 
 #[derive(Debug)]
 pub struct Note {
-    day: Box<Weekdays>,
-    body: String,
+    pub day: Box<Weekdays>,
+    pub body: String,
 }
 
-pub fn print_note(note: Note)-> ZeroCopyBuffer<Vec<u8>> {
+pub fn print_note(note: Note) -> ZeroCopyBuffer<Vec<u8>> {
     println!("{:#?}", note);
-    ZeroCopyBuffer(vec![1,2,3])
+    ZeroCopyBuffer(vec![1, 2, 3])
 }
 
 pub fn handle_return_enum(input: String) -> Option<Weekdays> {
