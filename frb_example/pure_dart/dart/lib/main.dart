@@ -400,13 +400,6 @@ void main(List<String> args) async {
     final SumWith sumWith = SumWith(bridge: api, x: 3);
     final int sum = await sumWith.sum(y: 1, z: 5);
     expect(sum, equals(3 + 1 + 5));
-
-    final staticConcatenated = await ConcatenateWith.concatenateStatic(bridge: api, a: "hello ", b: "world");
-    expect(staticConcatenated, equals("hello world"));
-
-    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
-    final String concatenated2 = await concatenatedConstructor.concatenate(b: "world");
-    expect(concatenated2, equals("hello world"));
   });
 
   print('flutter_rust_bridge example program end');
