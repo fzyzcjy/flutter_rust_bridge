@@ -4,15 +4,18 @@ use std::path::Path;
 use log::info;
 use pathdiff::diff_paths;
 
-use crate::ir::*;
+use crate::commands::BindgenRustToDartArg;
 use crate::others::*;
 use crate::utils::*;
 
 mod config;
+
 pub use crate::commands::ensure_tools_available;
 pub use crate::config::parse as config_parse;
 pub use crate::config::Opts;
 pub use crate::config::RawOpts;
+pub use crate::utils::get_symbols_if_no_duplicates;
+
 mod commands;
 mod error;
 mod generator;
@@ -25,7 +28,7 @@ mod transformer;
 mod utils;
 use error::*;
 
-pub fn frb_codegen(config: &config::Opts) -> anyhow::Result<()> {
+pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
     ensure_tools_available()?;
 
     info!("Picked config: {:?}", config);
@@ -33,38 +36,20 @@ pub fn frb_codegen(config: &config::Opts) -> anyhow::Result<()> {
     let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
     let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
 
-    info!("Phase: Parse source code to AST");
-    let source_rust_content = fs::read_to_string(&config.rust_input_path)?;
-    let file_ast = syn::parse_file(&source_rust_content)?;
-
-    info!("Phase: Parse AST to IR");
-    let raw_ir_file = parser::parse(&source_rust_content, file_ast, &config.manifest_path);
+    info!("Phase: Parse source code to AST, then to IR");
+    let raw_ir_file = config.get_ir_file();
 
     info!("Phase: Transform IR");
     let ir_file = transformer::transform(raw_ir_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust = generator::rust::generate(
-        &ir_file,
-        &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-        Some(generator::rust::GeneratorOptions {
-            should_generate_sync_execution_mode_utility: !config
-                .exclude_sync_execution_mode_utility,
-        }),
-    );
+    let generated_rust = ir_file.generate_rust(config);
+    let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
     fs::create_dir_all(&rust_output_dir)?;
     fs::write(&config.rust_output_path, generated_rust.code)?;
 
     info!("Phase: Generate Dart code");
-    let (generated_dart, needs_freezed) = generator::dart::generate(
-        &ir_file,
-        &config.dart_api_class_name(),
-        &config.dart_api_impl_class_name(),
-        &config.dart_wire_class_name(),
-        config
-            .dart_output_path_name()
-            .ok_or_else(|| Error::str("Invalid dart_output_path_name"))?,
-    );
+    let (generated_dart, needs_freezed) = ir_file.generate_dart(config)?;
 
     info!("Phase: Other things");
 
@@ -74,37 +59,26 @@ pub fn frb_codegen(config: &config::Opts) -> anyhow::Result<()> {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 
-    let c_struct_names = ir_file
-        .distinct_types(true, true)
-        .iter()
-        .filter_map(|ty| {
-            if let IrType::StructRef(_) = ty {
-                Some(ty.rust_wire_type())
-            } else {
-                None
-            }
-        })
-        .collect();
-
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
-            commands::bindgen_rust_to_dart(
-                &config.rust_crate_dir,
-                temp_bindgen_c_output_file
+            commands::bindgen_rust_to_dart(BindgenRustToDartArg {
+                rust_crate_dir: &config.rust_crate_dir,
+                c_output_path: temp_bindgen_c_output_file
                     .path()
                     .as_os_str()
                     .to_str()
                     .unwrap(),
-                temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-                &config.dart_wire_class_name(),
-                c_struct_names,
-                &config.llvm_path[..],
-                &config.llvm_compiler_opts,
-            )
+                dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+                dart_class_name: &config.dart_wire_class_name(),
+                c_struct_names: ir_file.get_c_struct_names(),
+                exclude_symbols,
+                llvm_install_path: &config.llvm_path[..],
+                llvm_compiler_opts: &config.llvm_compiler_opts,
+            })
         },
     )?;
 

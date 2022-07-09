@@ -2,6 +2,7 @@
 
 frb_bin := "frb_codegen/target/debug/flutter_rust_bridge_codegen"
 frb_pure := "frb_example/pure_dart"
+frb_pure_multi := "frb_example/pure_dart_multi"
 frb_flutter := "frb_example/with_flutter"
 line_length := "120"
 dylib := if os() == "windows" {
@@ -33,6 +34,7 @@ alias l := lint
 lint:
     dart format --fix .
     dart format --fix -l {{line_length}} {{frb_pure}}
+    dart format --fix -l {{line_length}} {{frb_pure_multi}}
     dart format --fix -l {{line_length}} {{frb_flutter}}
 
 alias t := test
@@ -49,6 +51,8 @@ alias c := clean
 clean:
     cd {{frb_pure}}/dart && flutter clean
     cd {{frb_pure}}/rust && cargo clean
+    cd {{frb_pure_multi}}/dart && flutter clean
+    cd {{frb_pure_multi}}/rust && cargo clean
     cd {{frb_flutter}} && flutter clean
     cd {{frb_flutter}}/rust && cargo clean
 
@@ -56,13 +60,16 @@ refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)
     (cd frb_macros && cargo clippy -- -D warnings)
     (cd frb_example/pure_dart/rust && cargo clippy -- -D warnings)
+    (cd frb_example/pure_dart_multi/rust && cargo clippy -- -D warnings)
     (cd frb_example/with_flutter/rust && cargo clippy -- -D warnings)
     (cd frb_example/pure_dart/dart && dart pub get)
+    (cd frb_example/pure_dart_multi/dart && dart pub get)
     (cd frb_example/with_flutter && flutter pub get)
 
     just lint
 
     sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
+    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
     sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
 
 publish_all:

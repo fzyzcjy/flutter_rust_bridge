@@ -46,11 +46,11 @@ jobs:
       - name: Install ffigen
         run: dart pub global activate ffigen ^6.0.1
 
-      - name: Install dart dependencies
+      - name: Install dart dependencies (single block)
         working-directory: ./frb_example/pure_dart/dart
         run: dart pub get
 
-      - name: Run valgrind script
+      - name: Run valgrind script (single block)
         working-directory: ./frb_example/pure_dart/dart
         run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
         env:

@@ -1,6 +1,20 @@
+## 1.37.1
+
+* Update doc #552 (thanks @dbsxdbsx)
+* Bump dart release since previous one did not release successfully
+
+## 1.37.0
+
+* Allow generating multiple Rust and Dart files #527 (thanks @dbsxdbsx)
+
+## 1.36.0
+
+* Add support for stream sink into any argument #542 (thanks @lattice0)
+
 ## 1.35.0
 
 * Fix for `store_dart_post_cobject` signature mismatch with `ffigen` >= 6.0 #536 (thanks @SecondFlight)
+* Multiple blocks of files in one command #516 (thanks @dbsxdbsx)
 
 ## 1.34.2
 
