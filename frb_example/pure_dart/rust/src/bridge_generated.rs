@@ -1086,11 +1086,6 @@ pub extern "C" fn new_box_u8_0(value: u8) -> *mut u8 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_weekdays_0(value: i32) -> *mut i32 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
 pub extern "C" fn new_float_32_list_0(len: i32) -> *mut wire_float_32_list {
     let ans = wire_float_32_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
@@ -1377,13 +1372,6 @@ impl Wire2Api<NewTypeInt> for *mut wire_NewTypeInt {
     }
 }
 
-impl Wire2Api<Note> for *mut wire_Note {
-    fn wire2api(self) -> Note {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Note>::wire2api(*wrap).into()
-    }
-}
-
 impl Wire2Api<UserId> for *mut wire_UserId {
     fn wire2api(self) -> UserId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1445,13 +1433,6 @@ impl Wire2Api<Box<MySize>> for *mut wire_MySize {
 impl Wire2Api<Box<u8>> for *mut u8 {
     fn wire2api(self) -> Box<u8> {
         unsafe { support::box_from_leak_ptr(self) }
-    }
-}
-
-impl Wire2Api<Box<Weekdays>> for *mut i32 {
-    fn wire2api(self) -> Box<Weekdays> {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Weekdays>::wire2api(*wrap).into()
     }
 }
 
