@@ -41,8 +41,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
-    return completer.future.then((dynamic raw) =>
-        _transformRust2DartMessage(raw, task.parseSuccessData));
+    return completer.future.then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData));
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -77,8 +76,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     }
   }
 
-  S _transformRust2DartMessage<S>(
-      dynamic raw, S Function(dynamic) parseSuccessData) {
+  S _transformRust2DartMessage<S>(dynamic raw, S Function(dynamic) parseSuccessData) {
     final action = raw[0];
     switch (action) {
       case _RUST2DART_ACTION_SUCCESS:
@@ -151,10 +149,7 @@ abstract class FlutterRustBridgeWireBase {
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(
-    ffi.Pointer<
-            ffi.NativeFunction<
-                ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>
-        ptr,
+    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
   );
 
   /// Not to be used by normal users, but has to be public for generated code

@@ -28,6 +28,7 @@ use crate::ir::*;
 use crate::others::*;
 use crate::utils::has_methods;
 use crate::utils::is_static_method;
+use crate::utils::static_method_return_struct_name;
 use crate::utils::BlockIndex;
 
 pub struct Output {
@@ -421,7 +422,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             func.wire_func_name(),
             wire_param_list.join(", "),
             if (is_static_method(&func.name)
-                && func.name.split("___").last().unwrap() == {
+                && static_method_return_struct_name(&func.name) == {
                     if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                         name.clone()
                     } else {
