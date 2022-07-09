@@ -1273,10 +1273,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return inner.new_box_u8_0(_api2wire_u8(raw));
   }
 
-  ffi.Pointer<int> _api2wire_box_weekdays(Weekdays raw) {
-    final ptr = inner.new_box_weekdays_0();
-    _api_fill_to_wire_weekdays(raw, ptr.ref);
-    return ptr;
+  ffi.Pointer<ffi.Int32> _api2wire_box_weekdays(Weekdays raw) {
+    return inner.new_box_weekdays_0(_api2wire_weekdays(raw));
   }
 
   double _api2wire_f32(double raw) {
@@ -1574,10 +1572,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_weekdays(Weekdays apiObj, ffi.Pointer<int> wireObj) {
-    _api_fill_to_wire_weekdays(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_customized(Customized apiObj, wire_Customized wireObj) {
@@ -3145,13 +3139,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_u8_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>('new_box_u8_0');
   late final _new_box_u8_0 = _new_box_u8_0Ptr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
 
-  ffi.Pointer<ffi.Int32> new_box_weekdays_0() {
-    return _new_box_weekdays_0();
+  ffi.Pointer<ffi.Int32> new_box_weekdays_0(
+    int value,
+  ) {
+    return _new_box_weekdays_0(
+      value,
+    );
   }
 
   late final _new_box_weekdays_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function()>>('new_box_weekdays_0');
-  late final _new_box_weekdays_0 = _new_box_weekdays_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_weekdays_0');
+  late final _new_box_weekdays_0 = _new_box_weekdays_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
   ffi.Pointer<wire_float_32_list> new_float_32_list_0(
     int len,
