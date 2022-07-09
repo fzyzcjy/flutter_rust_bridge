@@ -2,6 +2,7 @@ use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, ExternFuncCollector};
 use crate::ir::*;
 use crate::type_rust_generator_struct;
+use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 

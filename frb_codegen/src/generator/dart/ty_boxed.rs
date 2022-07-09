@@ -3,6 +3,7 @@ use crate::generator::dart::ty::*;
 use crate::ir::IrType::{EnumRef, StructRef};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
+use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 

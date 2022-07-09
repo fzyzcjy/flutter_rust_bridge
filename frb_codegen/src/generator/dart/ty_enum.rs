@@ -2,6 +2,7 @@ use crate::generator::dart::dart_comments;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::type_dart_generator_struct;
+use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
