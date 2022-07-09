@@ -996,7 +996,12 @@ pub extern "C" fn new_box_u8(value: u8) -> *mut u8 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_float_32_list(len: i32) -> *mut wire_float_32_list {
+pub extern "C" fn new_box_weekdays_0(value: i32) -> *mut i32 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_float_32_list_0(len: i32) -> *mut wire_float_32_list {
     let ans = wire_float_32_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1191,21 +1196,21 @@ impl Wire2Api<bool> for bool {
 impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
     fn wire2api(self) -> Box<ApplicationEnv> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
     fn wire2api(self) -> ApplicationSettings {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<ApplicationSettings>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<Attribute> for *mut wire_Attribute {
     fn wire2api(self) -> Attribute {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<Attribute>::wire2api(*wrap).into()
     }
 }
 
@@ -1218,14 +1223,14 @@ impl Wire2Api<bool> for *mut bool {
 impl Wire2Api<Customized> for *mut wire_Customized {
     fn wire2api(self) -> Customized {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<Customized>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
     fn wire2api(self) -> ExoticOptionals {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
     }
 }
 
@@ -1250,42 +1255,49 @@ impl Wire2Api<i64> for *mut i64 {
 impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<KitchenSink>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<MySize> for *mut wire_MySize {
     fn wire2api(self) -> MySize {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<MySize>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<MyStruct> for *mut wire_MyStruct {
     fn wire2api(self) -> MyStruct {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<MyStruct>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<MyTreeNode> for *mut wire_MyTreeNode {
     fn wire2api(self) -> MyTreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<MyTreeNode>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<NewTypeInt> for *mut wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<NewTypeInt>::wire2api(*wrap).into()
+    }
+}
+
+impl Wire2Api<Note> for *mut wire_Note {
+    fn wire2api(self) -> Note {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Note>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<UserId> for *mut wire_UserId {
     fn wire2api(self) -> UserId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<UserId>::wire2api(*wrap).into()
     }
 }
 
@@ -1298,7 +1310,7 @@ impl Wire2Api<Box<bool>> for *mut bool {
 impl Wire2Api<Box<ExoticOptionals>> for *mut wire_ExoticOptionals {
     fn wire2api(self) -> Box<ExoticOptionals> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
     }
 }
 
@@ -1329,20 +1341,27 @@ impl Wire2Api<Box<i8>> for *mut i8 {
 impl Wire2Api<Box<KitchenSink>> for *mut wire_KitchenSink {
     fn wire2api(self) -> Box<KitchenSink> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<KitchenSink>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<Box<MySize>> for *mut wire_MySize {
     fn wire2api(self) -> Box<MySize> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<MySize>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<Box<u8>> for *mut u8 {
     fn wire2api(self) -> Box<u8> {
         unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+
+impl Wire2Api<Box<Weekdays>> for *mut i32 {
+    fn wire2api(self) -> Box<Weekdays> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Weekdays>::wire2api(*wrap).into()
     }
 }
 
@@ -1852,7 +1871,6 @@ impl support::IntoDart for mirror_ApplicationMessage {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
-
 impl support::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> support::DartCObject {
         match self.0 {
@@ -1862,7 +1880,6 @@ impl support::IntoDart for mirror_ApplicationMode {
         .into_dart()
     }
 }
-
 impl support::IntoDart for mirror_ApplicationSettings {
     fn into_dart(self) -> support::DartCObject {
         vec![
@@ -2029,7 +2046,6 @@ impl support::IntoDart for Weekdays {
         .into_dart()
     }
 }
-
 impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
     fn into_dart(self) -> support::DartCObject {
         vec![

@@ -272,14 +272,20 @@ impl<'a> TypeParser<'a> {
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }
 
-                        Some(EnumRef(IrTypeEnumRef {
+                        let enum_ref = IrTypeEnumRef {
                             name: ident_string.to_owned(),
-                            is_struct: self
-                                .enum_pool
-                                .get(ident_string)
-                                .map(IrEnum::is_struct)
-                                .unwrap_or(true),
-                        }))
+                        };
+                        let enu = self.enum_pool.get(ident_string);
+                        let is_struct = enu.clone().map(IrEnum::is_struct).unwrap_or(true);
+                        if is_struct {
+                            Some(EnumRef(enum_ref))
+                        } else {
+                            Some(Delegate(IrTypeDelegate::PrimitiveEnum {
+                                ir: enum_ref,
+                                // TODO(Desdaemon): Parse #[repr] from enum
+                                repr: IrTypePrimitive::I32,
+                            }))
+                        }
                     } else {
                         None
                     }

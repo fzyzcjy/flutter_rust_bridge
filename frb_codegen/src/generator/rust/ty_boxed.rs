@@ -1,6 +1,5 @@
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, ExternFuncCollector};
-use crate::ir::IrType::Primitive;
 use crate::ir::*;
 use crate::type_rust_generator_struct;
 
@@ -16,8 +15,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             (IrType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
             (IrType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
             _ => {
-                "let wrap = unsafe { support::box_from_leak_ptr(self) }; (*wrap).wire2api().into()"
-                    .into()
+                format!(
+                    "let wrap = unsafe {{ support::box_from_leak_ptr(self) }};
+                    Wire2Api::<{}>::wire2api(*wrap).into()",
+                    box_inner.rust_api_type()
+                )
             }
         })
     }
@@ -36,23 +38,28 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         src.wrap_obj(self.self_access(obj))
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> String {
-        match &*self.ir.inner {
-            Primitive(prim) => collector.generate(
-                &format!("new_{}", self.ir.safe_ident()),
-                &[&format!("value: {}", prim.rust_wire_type())],
-                Some(&format!("*mut {}", prim.rust_wire_type())),
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        block_index: BlockIndex,
+    ) -> String {
+        if self.ir.inner.is_primitive() {
+            collector.generate(
+                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                &[&format!("value: {}", self.ir.inner.rust_wire_type())],
+                Some(&format!("*mut {}", self.ir.inner.rust_wire_type())),
                 "support::new_leak_box_ptr(value)",
-            ),
-            inner => collector.generate(
-                &format!("new_{}", self.ir.safe_ident()),
+            )
+        } else {
+            collector.generate(
+                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
                 &[],
                 Some(&[self.ir.rust_wire_modifier(), self.ir.rust_wire_type()].concat()),
                 &format!(
                     "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                    inner.rust_wire_type()
+                    self.ir.inner.rust_wire_type()
                 ),
-            ),
+            )
         }
     }
 
