@@ -59,10 +59,10 @@ jobs:
           target: ${{ matrix.target }}
       - name: Build
         uses: actions-rs/cargo@v1
-        working-directory: ./frb-codegen
         with:
           command: build
-          args: --release --locked --target ${{ matrix.target }}
+          args: |
+            --release --locked --target ${{ matrix.target }} --manifest-path frb-codegen/Cargo.toml
           use-cross: ${{ matrix.os == 'ubuntu-latest' }}
       - name: Post-build (Windows)
         if: matrix.os == 'windows-latest'
