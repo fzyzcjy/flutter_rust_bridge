@@ -17,7 +17,8 @@ class FrbCancelableFuture<R> {
     required int subPoolId,
     required FrbCancelableFutureRunner<R> runner,
   }) async {
-    final ans = FrbCancelableFuture<R>._(await nativeVisionUtils.cancelTokenNew(subPoolId: subPoolId));
+    final ans = FrbCancelableFuture<R>._(
+        await nativeVisionUtils.cancelTokenNew(subPoolId: subPoolId));
     unawaited(ans._run(runner));
     return ans;
   }
@@ -29,7 +30,8 @@ class FrbCancelableFuture<R> {
       _completer.complete(result);
     } catch (e, s) {
       // NOTE if directly [completer.completeError], will lose outer stack trace, thus have to bind #1762
-      ErrorHandlerService.I.bindExtraToException(e, 'outerStacktrace=$outerStackTrace');
+      ErrorHandlerService.I
+          .bindExtraToException(e, 'outerStacktrace=$outerStackTrace');
       _completer.completeError(e, s);
     } finally {
       await _removeCancelToken(); // 别忘了清理资源: remove它

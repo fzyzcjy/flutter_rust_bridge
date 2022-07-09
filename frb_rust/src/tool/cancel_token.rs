@@ -1,5 +1,6 @@
 use std::fmt;
 use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
 use std::time::*;
 
 use anyhow::*;
@@ -35,7 +36,7 @@ impl CancelToken {
         F: FnOnce() -> Result<Ret>,
     {
         match f() {
-            Ok(ret) => Ok(Some(ret)),
+            std::result::Result::Ok(ret) => Ok(Some(ret)),
             Err(e) => {
                 if e.downcast_ref::<CancelledError>().is_some() {
                     Ok(None)
@@ -130,7 +131,7 @@ impl CancelToken {
         if cancelled {
             Err(CancelledError)
         } else {
-            Ok(())
+            core::result::Result::Ok(())
         }
     }
 }
@@ -144,7 +145,29 @@ impl fmt::Display for CancelledError {
     }
 }
 
+use super::pool::PoolObjectHandle;
+
 impl std::error::Error for CancelledError {}
+
+#[derive(Debug, PartialEq, Eq, Hash, Clone)]
+pub struct CancelTokenHandle(pub i64, pub i64);
+
+impl_pool_object_handle!(Arc<CancelToken>, CancelTokenHandle);
+
+pub fn cancel_token_new(sub_pool_id: i64) -> Result<CancelTokenHandle> {
+    Ok(CancelTokenHandle::get_pool().put_object(sub_pool_id, Arc::new(CancelToken::new())))
+}
+
+pub fn cancel_token_cancel(cancel_token: CancelTokenHandle) -> Result<()> {
+    let cancel_token = CancelTokenHandle::get_pool().get_cloned_object(cancel_token)?;
+    cancel_token.cancel();
+    Ok(())
+}
+
+pub fn cancel_token_remove(cancel_token: CancelTokenHandle) -> Result<()> {
+    CancelTokenHandle::get_pool().remove_object(cancel_token);
+    Ok(())
+}
 
 #[cfg(test)]
 mod tests {

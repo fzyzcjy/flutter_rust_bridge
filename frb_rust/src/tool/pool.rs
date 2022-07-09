@@ -25,25 +25,26 @@ pub trait PoolObjectHandle: Debug + Eq + Hash + Sized + Clone {
 #[macro_export]
 macro_rules! impl_pool_object_handle {
     ($O:ty, $H:ident) => {
-        impl PoolObjectHandle for $H {
+        impl crate::tool::pool::PoolObjectHandle for $H {
             type Object = $O;
 
-            fn get_pool() -> &'static crate::utils::pool::Pool<Self> {
-                lazy_static! {
-                    static ref POOL: crate::utils::pool::Pool<$H> =
-                        crate::utils::pool::Pool::new(stringify!($H).to_string());
+            fn get_pool() -> &'static crate::tool::pool::Pool<Self> {
+                lazy_static::lazy_static! {
+                    static ref POOL: crate::tool::pool::Pool<$H> =
+                        crate::tool::pool::Pool::new(stringify!($H).to_string());
                 }
                 &POOL
             }
 
-            fn generate_handle(sub_pool_id: crate::utils::pool::SubPoolId) -> $H {
+            fn generate_handle(sub_pool_id: crate::tool::pool::SubPoolId) -> $H {
+                use rand::Rng;
                 Self(sub_pool_id, rand::thread_rng().gen::<i64>())
             }
 
-            fn sub_pool_id(&self) -> crate::utils::pool::SubPoolId {
+            fn sub_pool_id(&self) -> crate::tool::pool::SubPoolId {
                 self.0
             }
-            fn handle_id(&self) -> crate::utils::pool::HandleId {
+            fn handle_id(&self) -> crate::tool::pool::HandleId {
                 self.1
             }
         }
