@@ -276,7 +276,7 @@ impl<'a> TypeParser<'a> {
                             name: ident_string.to_owned(),
                         };
                         let enu = self.enum_pool.get(ident_string);
-                        let is_struct = enu.clone().map(IrEnum::is_struct).unwrap_or(true);
+                        let is_struct = enu.map(IrEnum::is_struct).unwrap_or(true);
                         if is_struct {
                             Some(EnumRef(enum_ref))
                         } else {
