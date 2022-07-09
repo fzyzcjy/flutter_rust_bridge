@@ -62,19 +62,19 @@ jobs:
         with:
           command: build
           args: |
-            --release --locked --target ${{ matrix.target }} --manifest-path frb_codegen/Cargo.toml
+            --release --target ${{ matrix.target }} --manifest-path frb_codegen/Cargo.toml
           use-cross: ${{ matrix.os == 'ubuntu-latest' }}
       - name: Post-build (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          cd frb-codegen/target/${{ matrix.target }}/release
+          cd frb_codegen/target/${{ matrix.target }}/release
           strip flutter_rust_bridge_codegen.exe
           7z a ../../../../${{ matrix.name }} flutter_rust_bridge_codegen.exe
           cd -
       - name: Post-build (*nix)
         if: matrix.os != 'windows-latest'
         run: |
-          cd frb-codegen/target/${{ matrix.target }}/release
+          cd frb_codegen/target/${{ matrix.target }}/release
           strip flutter_rust_bridge_codegen || true
           tar czvf ../../../../${{ matrix.name }} flutter_rust_bridge_codegen
           cd -
