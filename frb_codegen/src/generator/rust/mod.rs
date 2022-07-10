@@ -21,11 +21,7 @@ use std::collections::HashSet;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
-use crate::method_utils::clear_method_marker;
-use crate::method_utils::is_method_return_struct_name;
-use crate::method_utils::is_non_static_method;
-use crate::method_utils::is_static_method;
-use crate::method_utils::static_method_return_method_name;
+use crate::method_utils::StaticMethodNamingUtil;
 use crate::others::*;
 use crate::utils::BlockIndex;
 
@@ -226,7 +222,7 @@ impl Generator {
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
-        let struct_name = is_method_return_struct_name(func);
+        let struct_name = StaticMethodNamingUtil::is_method_return_struct_name(func);
         let is_method = struct_name.is_some();
         let params = [
             if func.mode.has_port_argument() {
@@ -284,11 +280,11 @@ impl Generator {
             .join("");
 
         let code_call_inner_func = if is_method {
-            let method_name = if is_non_static_method(&func.name) {
+            let method_name = if StaticMethodNamingUtil::is_non_static_method(&func.name) {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
-                clear_method_marker(&func.name)
-            } else if is_static_method(&func.name) {
-                static_method_return_method_name(&func.name)
+                StaticMethodNamingUtil::clear_method_marker(&func.name)
+            } else if StaticMethodNamingUtil::is_static_method(&func.name) {
+                StaticMethodNamingUtil::static_method_return_method_name(&func.name)
             } else {
                 panic!(
                     "not a method neither static method but should be: {}",

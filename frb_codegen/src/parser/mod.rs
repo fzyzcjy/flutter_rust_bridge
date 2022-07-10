@@ -13,7 +13,7 @@ use syn::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
-use crate::method_utils::{mark_as_non_static_method, mark_as_static_method};
+use crate::method_utils::StaticMethodNamingUtil;
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
 
@@ -251,13 +251,18 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 }
             };
             Ident::new(
-                &mark_as_static_method(&item_method.sig.ident.to_string(), &self_type.unwrap()),
+                &StaticMethodNamingUtil::mark_as_static_method(
+                    &item_method.sig.ident.to_string(),
+                    &self_type.unwrap(),
+                ),
                 span,
             )
         } else {
             Ident::new(
                 //format!("{}{}", item_method.sig.ident.clone(), METHOD_MARKER).as_str(),
-                &mark_as_non_static_method(&item_method.sig.ident.to_string()),
+                &StaticMethodNamingUtil::mark_as_non_static_method(
+                    &item_method.sig.ident.to_string(),
+                ),
                 span,
             )
         };
