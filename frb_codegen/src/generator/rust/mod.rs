@@ -226,8 +226,8 @@ impl Generator {
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
-        let (is_method, struct_name) = is_method_return_struct_name(func);
-
+        let struct_name = is_method_return_struct_name(func);
+        let is_method = struct_name.is_some();
         let params = [
             if func.mode.has_port_argument() {
                 vec!["port_: i64".to_string()]

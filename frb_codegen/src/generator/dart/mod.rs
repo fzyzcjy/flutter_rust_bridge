@@ -517,7 +517,7 @@ fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &s
     } else {
         "".to_string()
     };
-
+    //matches!(ty, StructRef(IrTypeStructRef{name, ..}) if has_methods(name, ir_file) { format!("{} bridge,", dart_api_class_name) } else {"".to_string()});
     let body = TypeDartGenerator::new(ty.clone(), ir_file).wire2api_body();
     format!(
         "{} _wire2api_{}({}dynamic raw) {{

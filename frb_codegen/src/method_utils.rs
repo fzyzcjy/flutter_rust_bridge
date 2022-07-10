@@ -74,13 +74,7 @@ pub fn struct_has_methods(file: &IrFile, the_struct: Option<&IrType>) -> bool {
     };
 
     file.funcs.iter().any(|f| {
-        if let Some(IrField {
-            ty: _,
-            name,
-            is_final: _,
-            comments: _,
-        }) = f.inputs.get(0)
-        {
+        if let Some(IrField { name, .. }) = f.inputs.get(0) {
             name.raw.to_case(Case::UpperCamel) == *struct_name
         } else {
             false
@@ -97,16 +91,13 @@ pub fn mark_as_non_static_method(s: &str) -> String {
 }
 
 //tests if a given `func` is a method, and also returns the struct name that it is a method for
-pub fn is_method_return_struct_name(func: &IrFunc) -> (bool, Option<String>) {
+pub fn is_method_return_struct_name(func: &IrFunc) -> (Option<String>) {
     if is_non_static_method(&func.name) {
         let input = func.inputs[0].clone();
-        (true, Some(input.name.to_string().to_case(Case::UpperCamel)))
+        Some(input.name.to_string().to_case(Case::UpperCamel))
     } else if is_static_method(&func.name) {
-        (
-            true,
-            Some(static_method_return_struct_name(&func.name).to_case(Case::UpperCamel)),
-        )
+        Some(static_method_return_struct_name(&func.name).to_case(Case::UpperCamel))
     } else {
-        (false, None)
+        None
     }
 }
