@@ -12,6 +12,7 @@ jobs:
   build-upload:
     name: Build and Upload Binaries
     runs-on: ${{ matrix.os }}
+    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
