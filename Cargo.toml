@@ -1,2 +1,0 @@
-[workspace]
-members = ["frb_codegen", "frb_macros", "frb_example/pure_dart/rust"] 
