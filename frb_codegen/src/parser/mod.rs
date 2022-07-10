@@ -23,7 +23,8 @@ const RESULT_IDENT: &str = "Result";
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
     let crate_map = Crate::new(manifest_path);
 
-    let src_fns = extract_fns_from_file(&file);
+    let mut src_fns = extract_fns_from_file(&file);
+    src_fns.extend(extract_methods_from_file(&file));
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
 
@@ -196,6 +197,15 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
                 src_fns.push(item_fn.clone());
             }
         }
+    }
+
+    src_fns
+}
+
+fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
+    let mut src_fns = Vec::new();
+
+    for item in file.items.iter() {
         if let Item::Impl(ref item_impl) = item {
             for item in &item_impl.items {
                 if let ImplItem::Method(item_method) = item {
