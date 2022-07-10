@@ -13,9 +13,9 @@ use syn::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
+use crate::method_utils::{mark_as_non_static_method, mark_as_static_method};
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
-use crate::utils::{METHOD_MARKER, STATIC_METHOD_MARKER};
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
 const RESULT_IDENT: &str = "Result";
@@ -218,19 +218,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
         let is_static_method = {
-            let Signature {
-                constness: _,
-                asyncness: _,
-                unsafety: _,
-                abi: _,
-                fn_token: _,
-                ident: _,
-                generics: _,
-                paren_token: _,
-                inputs,
-                variadic: _,
-                output: _,
-            } = &item_method.sig;
+            let Signature { inputs, .. } = &item_method.sig;
             {
                 !matches!(inputs.first(), Some(FnArg::Receiver(..)))
             }
@@ -263,18 +251,13 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 }
             };
             Ident::new(
-                format!(
-                    "{}{}{}",
-                    item_method.sig.ident.clone(),
-                    STATIC_METHOD_MARKER,
-                    self_type.unwrap(),
-                )
-                .as_str(),
+                &mark_as_static_method(&item_method.sig.ident.to_string(), &self_type.unwrap()),
                 span,
             )
         } else {
             Ident::new(
-                format!("{}{}", item_method.sig.ident.clone(), METHOD_MARKER).as_str(),
+                //format!("{}{}", item_method.sig.ident.clone(), METHOD_MARKER).as_str(),
+                &mark_as_non_static_method(&item_method.sig.ident.to_string()),
                 span,
             )
         };

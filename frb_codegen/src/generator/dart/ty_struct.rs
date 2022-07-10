@@ -1,11 +1,12 @@
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
-use crate::type_dart_generator_struct;
-use crate::utils::{
+use crate::method_utils::{
     clear_method_marker, is_method_for_struct, is_static_method, is_static_method_for_struct,
-    static_method_return_method_name, BlockIndex,
+    static_method_return_method_name,
 };
+use crate::type_dart_generator_struct;
+use crate::utils::BlockIndex;
 use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);

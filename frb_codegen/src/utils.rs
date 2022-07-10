@@ -1,6 +1,3 @@
-use crate::ir::IrType::{Boxed, StructRef};
-use crate::ir::IrTypeStructRef;
-use crate::ir::{IrFile, IrFunc, IrTypeBoxed};
 use std::collections::HashSet;
 use std::fmt::Display;
 use std::fs;
@@ -85,61 +82,4 @@ impl Display for BlockIndex {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.0)
     }
-}
-
-// Methods and static methods helper functions
-
-pub(crate) const STATIC_METHOD_MARKER: &str = "__static_method___";
-pub(crate) const METHOD_MARKER: &str = "__method";
-
-pub fn is_method(s: &str) -> bool {
-    s.ends_with(METHOD_MARKER)
-}
-
-pub fn is_static_method(s: &str) -> bool {
-    s.contains(STATIC_METHOD_MARKER)
-}
-
-// Tests if the function is `f` is a static method for struct with name `struct_name`
-pub fn is_static_method_for_struct(f: &&IrFunc, struct_name: &String) -> bool {
-    f.name.contains(STATIC_METHOD_MARKER) && f.name.split("___").last().unwrap() == struct_name
-}
-
-pub fn has_methods(struct_name: &String, ir_file: &IrFile) -> bool {
-    ir_file.funcs.iter().any(|f| {
-        is_method_for_struct(&f, struct_name) || is_static_method_for_struct(&f, struct_name)
-    })
-}
-
-// Tests if the function in `f` is a method for struct with name `struct_name`
-pub fn is_method_for_struct(f: &&IrFunc, struct_name: &String) -> bool {
-    f.name.ends_with(METHOD_MARKER)
-        && if let Boxed(IrTypeBoxed {
-            exist_in_real_api: _,
-            inner,
-        }) = &f.inputs[0].ty
-        {
-            if let StructRef(IrTypeStructRef { name, freezed: _ }) = &**inner {
-                *name == *struct_name
-            } else {
-                false
-            }
-        } else {
-            false
-        }
-}
-
-// Returns the name of the struct that this method is for
-pub fn static_method_return_struct_name(s: &str) -> String {
-    s.split(STATIC_METHOD_MARKER).last().unwrap().to_string()
-}
-
-// Returns the name of method itself
-pub fn static_method_return_method_name(s: &str) -> String {
-    s.split(STATIC_METHOD_MARKER).next().unwrap().to_string()
-}
-
-// Clears the method marker from this method name
-pub fn clear_method_marker(s: &str) -> String {
-    s.replace(METHOD_MARKER, "")
 }

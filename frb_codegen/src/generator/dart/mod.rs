@@ -25,10 +25,10 @@ use log::debug;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
+use crate::method_utils::{
+    has_methods, is_static_method, static_method_return_struct_name, struct_has_methods,
+};
 use crate::others::*;
-use crate::utils::has_methods;
-use crate::utils::is_static_method;
-use crate::utils::static_method_return_struct_name;
 use crate::utils::BlockIndex;
 
 pub struct Output {
@@ -563,33 +563,4 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
         metadata.push('\n');
     }
     metadata
-}
-
-// Tests if a given struct has methods, that is, if the `ir_file` contains
-// a function that receives the struct as first argument
-fn struct_has_methods(file: &IrFile, the_struct: Option<&IrType>) -> bool {
-    let the_struct = if let Some(s) = the_struct {
-        s
-    } else {
-        return false;
-    };
-    let struct_name = if let StructRef(IrTypeStructRef { name, freezed: _ }) = the_struct {
-        name
-    } else {
-        return false;
-    };
-
-    file.funcs.iter().any(|f| {
-        if let Some(IrField {
-            ty: _,
-            name,
-            is_final: _,
-            comments: _,
-        }) = f.inputs.get(0)
-        {
-            name.raw.to_case(Case::UpperCamel) == *struct_name
-        } else {
-            false
-        }
-    })
 }

@@ -21,6 +21,7 @@ mod error;
 mod generator;
 mod ir;
 mod markers;
+mod method_utils;
 mod others;
 mod parser;
 mod source_graph;

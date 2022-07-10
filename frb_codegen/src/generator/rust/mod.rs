@@ -7,9 +7,6 @@ mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
-
-use convert_case::Case;
-use convert_case::Casing;
 pub use ty::*;
 pub use ty_boxed::*;
 pub use ty_delegate::*;
@@ -24,12 +21,12 @@ use std::collections::HashSet;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
+use crate::method_utils::clear_method_marker;
+use crate::method_utils::is_method_return_struct_name;
+use crate::method_utils::is_non_static_method;
+use crate::method_utils::is_static_method;
+use crate::method_utils::static_method_return_method_name;
 use crate::others::*;
-use crate::utils::clear_method_marker;
-use crate::utils::is_method;
-use crate::utils::is_static_method;
-use crate::utils::static_method_return_method_name;
-use crate::utils::static_method_return_struct_name;
 use crate::utils::BlockIndex;
 
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
@@ -229,7 +226,7 @@ impl Generator {
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
-        let (is_a_method, struct_name) = test_is_method(func);
+        let (is_method, struct_name) = is_method_return_struct_name(func);
 
         let params = [
             if func.mode.has_port_argument() {
@@ -286,14 +283,8 @@ impl Generator {
             .collect::<Vec<_>>()
             .join("");
 
-        let code_call_inner_func = if !is_a_method {
-            TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
-                "{}({})",
-                func.name,
-                inner_func_params.join(", ")
-            ))
-        } else {
-            let method_name = if is_method(&func.name) {
+        let code_call_inner_func = if is_method {
+            let method_name = if is_non_static_method(&func.name) {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
                 clear_method_marker(&func.name)
             } else if is_static_method(&func.name) {
@@ -308,6 +299,12 @@ impl Generator {
                 r"{}::{}({})",
                 struct_name.unwrap(),
                 method_name,
+                inner_func_params.join(", ")
+            ))
+        } else {
+            TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
+                "{}({})",
+                func.name,
                 inner_func_params.join(", ")
             ))
         };
@@ -470,21 +467,6 @@ impl Generator {
 
     fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         TypeRustGenerator::new(ty.clone(), ir_file).impl_intodart()
-    }
-}
-
-//tests if a given `func` is a method, and also returns the struct name that it is a method for
-fn test_is_method(func: &IrFunc) -> (bool, Option<String>) {
-    if is_method(&func.name) {
-        let input = func.inputs[0].clone();
-        (true, Some(input.name.to_string().to_case(Case::UpperCamel)))
-    } else if is_static_method(&func.name) {
-        (
-            true,
-            Some(static_method_return_struct_name(&func.name).to_case(Case::UpperCamel)),
-        )
-    } else {
-        (false, None)
     }
 }
 
