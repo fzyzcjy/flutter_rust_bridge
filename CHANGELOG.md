@@ -1,3 +1,8 @@
+## 1.37.1
+
+* Update doc #552 (thanks @dbsxdbsx)
+* Bump dart release since previous one did not release successfully
+
 ## 1.37.0
 
 * Allow generating multiple Rust and Dart files #527 (thanks @dbsxdbsx)

@@ -138,8 +138,8 @@ fn get_dart_api_spec_from_ir_file(
         .collect::<Vec<_>>();
 
     let needs_freezed = distinct_types.iter().any(|ty| match ty {
-        EnumRef(e) if e.is_struct => true,
-        StructRef(s) if s.freezed => true,
+        EnumRef(_) => true,
+        StructRef(st) if st.freezed => true,
         _ => false,
     });
 
