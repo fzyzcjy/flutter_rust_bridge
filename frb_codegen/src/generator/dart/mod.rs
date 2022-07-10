@@ -573,12 +573,6 @@ fn struct_has_methods(file: &IrFile, the_struct: Option<&IrType>) -> bool {
     } else {
         return false;
     };
-    if the_struct.safe_ident().contains("user_id") {
-        println!(
-            "struct_has_methods for file: {:?}, the_struct: {:?}",
-            file, the_struct
-        );
-    }
     let struct_name = if let StructRef(IrTypeStructRef { name, freezed: _ }) = the_struct {
         name
     } else {
@@ -593,16 +587,7 @@ fn struct_has_methods(file: &IrFile, the_struct: Option<&IrType>) -> bool {
             comments: _,
         }) = f.inputs.get(0)
         {
-            if name.raw.to_case(Case::UpperCamel) == *struct_name {
-                println!(
-                    "returning true for struct_name: {} and name.raw: {}",
-                    struct_name,
-                    name.raw.to_case(Case::UpperCamel)
-                );
-                true
-            } else {
-                false
-            }
+            name.raw.to_case(Case::UpperCamel) == *struct_name
         } else {
             false
         }
