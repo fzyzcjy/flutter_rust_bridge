@@ -393,7 +393,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             .join(", "),
     );
 
-    let parse_sucess_arg = if (StaticMethodNamingUtil::is_static_method(&func.name)
+    let parse_sucess_data = if (StaticMethodNamingUtil::is_static_method(&func.name)
         && StaticMethodNamingUtil::static_method_return_struct_name(&func.name) == {
             if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                 name.clone()
@@ -432,7 +432,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
-            parse_sucess_arg,
+            parse_sucess_data,
             task_common_args,
         ),
     };
