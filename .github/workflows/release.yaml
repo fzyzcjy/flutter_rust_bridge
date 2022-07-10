@@ -96,3 +96,15 @@ jobs:
         with:
           files: flutter_rust_bridge_codegen-*/flutter_rust_bridge_codegen-*
           tag_name: ${{ github.ref_name }}
+  refresh-homebrew:
+    name: Refresh Homebrew formula
+    runs-on: ubuntu-latest
+    needs: upload-artifacts
+    steps:
+      - uses: mislav/bump-homebrew-formula-action@v2
+        with:
+          formula-name: flutter_rust_bridge_codegen
+          homebrew-tap: Desdaemon/repo
+          tag-name: ${{ github.ref_name }}
+        env:
+          COMMITTER_TOKEN: ${{ secrets.GH_PAT }}

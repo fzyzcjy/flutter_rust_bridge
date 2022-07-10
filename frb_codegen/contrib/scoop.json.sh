@@ -1,11 +1,13 @@
 #!/bin/sh
+# Used to bootstrap a Scoop package.
+# If updating, prefer using the CI workflow to this script.
 set -e pipefail
 REPO="https://github.com/fzyzcjy/flutter_rust_bridge"
 MANIFEST=$(cargo read-manifest)
-VERSION=$(echo $MANIFEST | jq -r ".version")
-DESCRIPTION=$(echo $MANIFEST | jq -r ".description")
-NAME=$(echo $MANIFEST | jq -r ".name")
-LICENSE=$(echo $MANIFEST | jq -r ".license")
+VERSION=$(echo "$MANIFEST" | jq -r ".version")
+DESCRIPTION=$(echo "$MANIFEST" | jq -r ".description")
+NAME=$(echo "$MANIFEST" | jq -r ".name")
+LICENSE=$(echo "$MANIFEST" | jq -r ".license")
 TAG="v$VERSION"
 
 cat <<EOF
