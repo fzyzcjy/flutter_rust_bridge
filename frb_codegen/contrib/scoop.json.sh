@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e pipefail
 REPO="https://github.com/fzyzcjy/flutter_rust_bridge"
-MANIFEST=`cargo read-manifest`
-VERSION=`echo $MANIFEST | jq -r '.version'`
-DESCRIPTION=`echo $MANIFEST | jq -r '.description'`
-NAME=`echo $MANIFEST | jq -r '.name'`
-LICENSE=`echo $MANIFEST | jq -r '.license'`
+MANIFEST=$(cargo read-manifest)
+VERSION=$(echo $MANIFEST | jq -r ".version")
+DESCRIPTION=$(echo $MANIFEST | jq -r ".description")
+NAME=$(echo $MANIFEST | jq -r ".name")
+LICENSE=$(echo $MANIFEST | jq -r ".license")
 TAG="v$VERSION"
 
 cat <<EOF
