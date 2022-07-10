@@ -85,7 +85,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 More specifically, thanks for all these contributions:
 
-* [Desdaemon](https://github.com/Desdaemon): Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module.
+* [Desdaemon](https://github.com/Desdaemon): Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Fix bugs.
 * [SecondFlight](https://github.com/SecondFlight): Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir. Fix `store_dart_post_cobject` error with ffigen 6.0.
 * [Unoqwy](https://github.com/Unoqwy): Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.
 * [antonok-edm](https://github.com/antonok-edm): Avoid converting syn types to strings before parsing to improve code and be more robust.
@@ -104,7 +104,7 @@ More specifically, thanks for all these contributions:
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [banool](https://github.com/banool): Fix symbol-stripping doc.
-* [TENX-S](https://github.com/TENX-S): Improve doc.
+* [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
 * [thomas725](https://github.com/thomas725): Improve doc.
 * [feber](https://github.com/feber): Fix doc link.
