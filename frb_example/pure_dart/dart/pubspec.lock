@@ -161,14 +161,14 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.37.1"
+    version: "1.37.2"
   freezed:
     dependency: "direct dev"
     description:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.3+1"
+    version: "2.0.4"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -231,7 +231,7 @@ packages:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.5.0"
+    version: "4.6.0"
   lints:
     dependency: "direct main"
     description:

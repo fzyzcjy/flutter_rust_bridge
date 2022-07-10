@@ -56,6 +56,14 @@ clean:
     cd {{frb_flutter}} && flutter clean
     cd {{frb_flutter}}/rust && cargo clean
 
+check:
+    cd {{frb_pure}}/dart && dart pub get && dart analyze
+    cd {{frb_pure}}/rust && cargo clippy
+    cd {{frb_pure_multi}}/dart && dart pub get && dart analyze
+    cd {{frb_pure_multi}}/rust && cargo clippy
+    cd {{frb_flutter}} && flutter pub get && flutter analyze
+    cd {{frb_flutter}}/rust && cargo clippy
+
 refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)
     (cd frb_macros && cargo clippy -- -D warnings)

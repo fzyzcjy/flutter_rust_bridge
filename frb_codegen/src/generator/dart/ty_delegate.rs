@@ -19,7 +19,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     self.ir.get_delegate().safe_ident()
                 )
             }
-
             IrTypeDelegate::StringList => format!(
                 "final ans = inner.new_StringList_{}(raw.length);
                 for (var i = 0; i < raw.length; i++){{
@@ -28,6 +27,9 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 return ans;",
                 block_index
             ),
+            IrTypeDelegate::PrimitiveEnum { ref repr, .. } => {
+                format!("return _api2wire_{}(raw.index);", repr.safe_ident())
+            }
         })
     }
 
@@ -41,6 +43,21 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
+            IrTypeDelegate::PrimitiveEnum { ir, .. } => {
+                format!("return {}.values[raw];", ir.dart_api_type())
+            }
+        }
+    }
+
+    fn structs(&self) -> String {
+        if let IrTypeDelegate::PrimitiveEnum { ir, .. } = &self.ir {
+            super::TypeEnumRefGenerator {
+                ir: ir.clone(),
+                context: self.context.clone(),
+            }
+            .structs()
+        } else {
+            "".into()
         }
     }
 }

@@ -5,7 +5,6 @@ use convert_case::{Case, Casing};
 #[derive(Debug, Clone)]
 pub struct IrTypeEnumRef {
     pub name: String,
-    pub is_struct: bool,
 }
 
 impl IrTypeEnumRef {
@@ -33,21 +32,13 @@ impl IrTypeTrait for IrTypeEnumRef {
         self.name.to_string()
     }
     fn dart_wire_type(&self) -> String {
-        if self.is_struct {
-            self.rust_wire_type()
-        } else {
-            "int".to_owned()
-        }
+        self.rust_wire_type()
     }
     fn rust_api_type(&self) -> String {
         self.name.to_string()
     }
     fn rust_wire_type(&self) -> String {
-        if self.is_struct {
-            format!("wire_{}", self.name)
-        } else {
-            "i32".to_owned()
-        }
+        format!("wire_{}", self.name)
     }
 }
 
@@ -71,10 +62,7 @@ impl IrEnum {
     ) -> Self {
         fn wrap_box(ty: IrType) -> IrType {
             match ty {
-                StructRef(_)
-                | EnumRef(IrTypeEnumRef {
-                    is_struct: true, ..
-                }) => IrType::Boxed(IrTypeBoxed {
+                StructRef(_) | EnumRef(IrTypeEnumRef { .. }) => IrType::Boxed(IrTypeBoxed {
                     exist_in_real_api: false,
                     inner: Box::new(ty),
                 }),

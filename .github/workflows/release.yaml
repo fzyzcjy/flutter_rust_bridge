@@ -104,7 +104,7 @@ jobs:
       - uses: mislav/bump-homebrew-formula-action@v2
         with:
           formula-name: flutter_rust_bridge_codegen
-          homebrew-tap: Desdaemon/repo
+          homebrew-tap: Desdaemon/homebrew-repo
           tag-name: ${{ github.ref_name }}
         env:
           COMMITTER_TOKEN: ${{ secrets.GH_PAT }}
