@@ -97,6 +97,8 @@ release old_version new_version:
 
     just refresh_all
 
+    cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
+
     git add --all
     git status && git diff --staged | grep ''
     git commit -m "bump from {{old_version}} to {{new_version}}"
