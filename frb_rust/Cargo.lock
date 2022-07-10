@@ -46,7 +46,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.37.1"
+version = "1.37.2"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -58,7 +58,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.37.1"
+version = "1.37.2"
 
 [[package]]
 name = "hermit-abi"

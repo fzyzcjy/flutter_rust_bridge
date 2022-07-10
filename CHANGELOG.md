@@ -1,3 +1,7 @@
+## 1.37.2
+
+* Fix compile errors when using enums within fields #564 (thanks @Desdaemon)
+
 ## 1.37.1
 
 * Update doc #552 (thanks @dbsxdbsx)

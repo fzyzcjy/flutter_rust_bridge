@@ -400,7 +400,9 @@ impl Generator {
 
     fn generate_wrapper_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
         match ty {
-            IrType::StructRef(_) | IrType::EnumRef(_) => {
+            IrType::StructRef(_)
+            | IrType::EnumRef(_)
+            | IrType::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
                 TypeRustGenerator::new(ty.clone(), ir_file)
                     .wrapper_struct()
                     .map(|wrapper| {

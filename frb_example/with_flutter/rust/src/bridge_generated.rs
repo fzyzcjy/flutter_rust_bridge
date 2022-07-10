@@ -326,21 +326,21 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
 impl Wire2Api<Point> for *mut wire_Point {
     fn wire2api(self) -> Point {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<Point>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<Size> for *mut wire_Size {
     fn wire2api(self) -> Size {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<Size>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<TreeNode> for *mut wire_TreeNode {
     fn wire2api(self) -> TreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<TreeNode>::wire2api(*wrap).into()
     }
 }
 
