@@ -16,6 +16,7 @@ macro_rules! cancel_token_checkpoint {
     };
 }
 
+#[cfg(feature = "extra_debug_output")]
 #[derive(Clone)]
 struct CancelTokenDebugInfo {
     construct_time: Instant,
@@ -146,7 +147,7 @@ impl fmt::Display for CancelledError {
 }
 
 use super::pool::PoolObjectHandle;
-
+use crate::impl_pool_object_handle;
 impl std::error::Error for CancelledError {}
 
 #[derive(Debug, PartialEq, Eq, Hash, Clone)]

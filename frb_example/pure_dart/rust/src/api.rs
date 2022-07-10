@@ -11,6 +11,8 @@ use flutter_rust_bridge::*;
 
 use crate::data::{MyEnum, MyStruct};
 
+pub use flutter_rust_bridge::tool::cancel_token::CancelTokenHandle;
+
 /// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> i32 {
     a + b
