@@ -208,7 +208,7 @@
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <p>More specifically, thanks for all these contributions:</p>
 <ul>
-<li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Fix bugs.</li>
+<li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs.</li>
 <li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir. Fix <code>store_dart_post_cobject</code> error with ffigen 6.0.</li>
 <li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
 <li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
@@ -279,7 +279,7 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 <p>Firstly, you may need to install dependencies of this library:</p>
 <ul>
 <li>Install <code>ffigen</code>:  <code>dart pub global activate ffigen</code>, and <a href="https://pub.dev/packages/ffigen#installing-llvm">install LLVM</a> which is required by <code>ffigen</code>.</li>
-<li>Install the codegen program: <code>cargo install flutter_rust_bridge_codegen</code>.</li>
+<li>Install the codegen program: <code>cargo install flutter_rust_bridge_codegen</code> (or other methods described <a href="quickstart.html">here</a>.</li>
 </ul>
 <p>Then, run the code generator:</p>
 <pre><code class="language-shell">flutter_rust_bridge_codegen --rust-input frb_example/with_flutter/rust/src/api.rs --dart-output frb_example/with_flutter/lib/bridge_generated.dart --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h
