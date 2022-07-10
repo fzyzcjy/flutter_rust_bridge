@@ -104,7 +104,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .map(|g| format!("{}=>{};", g.signature.clone(), g.implementation.clone()))
             .collect::<Vec<_>>()
             .concat();
-        let bridge_requirement = "required this.bridge,".to_string();
+        let extra_argument = "required this.bridge,".to_string();
         let field_bridge = format!(
             "final {} bridge;",
             self.dart_api_class_name.as_ref().unwrap()
@@ -123,7 +123,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 })
                 .collect::<Vec<_>>();
             if has_methods {
-                constructor_params.insert(0, bridge_requirement);
+                constructor_params.insert(0, extra_argument);
             }
             let constructor_params = constructor_params.join("");
 
@@ -173,7 +173,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 })
                 .collect::<Vec<_>>();
             if has_methods {
-                constructor_params.insert(0, bridge_requirement);
+                constructor_params.insert(0, extra_argument);
             }
 
             let constructor_params = constructor_params.join("");

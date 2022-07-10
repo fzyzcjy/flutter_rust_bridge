@@ -509,7 +509,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 }
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
-    let bridge_requirement = if let StructRef(IrTypeStructRef { name, freezed: _ }) = ty {
+    let extra_argument = if let StructRef(IrTypeStructRef { name, freezed: _ }) = ty {
         if StaticMethodNamingUtil::has_methods(name, ir_file) {
             format!("{} bridge,", dart_api_class_name)
         } else {
@@ -527,7 +527,7 @@ fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &s
         ",
         ty.dart_api_type(),
         ty.safe_ident(),
-        bridge_requirement,
+        extra_argument,
         body,
     )
 }
