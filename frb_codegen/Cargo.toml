@@ -36,6 +36,10 @@ enum_dispatch = "0.3.8"
 thiserror = "1"
 cbindgen = "0.24"
 
+[profile.release]
+strip = "debuginfo"
+lto = "thin"
+
 [package.metadata.binstall]
 bin-dir = "{bin}{binary-ext}"
 
