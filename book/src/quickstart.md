@@ -18,8 +18,10 @@ cargo install flutter_rust_bridge_codegen
 # or with cargo-binstall
 cargo binstall flutter_rust_bridge_codegen
 # or with scoop (Windows)
-scoop bucket add frb https://github.com/fzyzcjy/flutter_rust_bridge
+scoop bucket add frb https://github.com/Desdaemon/scoop-repo
 scoop install flutter_rust_bridge_codegen
+# or with Homebrew
+brew install desdaemon/repo/flutter_rust_bridge_codegen
 ```
 
 
