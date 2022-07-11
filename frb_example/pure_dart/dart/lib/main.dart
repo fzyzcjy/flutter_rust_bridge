@@ -402,6 +402,44 @@ void main(List<String> args) async {
     expect(sum, equals(3 + 1 + 5));
   });
 
+  test('ConcatenateWith stream sink test', () async {
+    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final int key = 10;
+    final int max = 5;
+    final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
+    int cnt = 0;
+    await for (final value in stream) {
+      print("output from ConcatenateWith's stream: $value");
+      expect(value.value, "hello $cnt");
+      cnt++;
+    }
+    expect(cnt, max);
+  });
+
+  test('ConcatenateWith static stream sink test', () async {
+    final int key = 10;
+    final int max = 5;
+    final stream = ConcatenateWith.handleSomeStaticStreamSink(bridge: api, key: key, max: max);
+    int cnt = 0;
+    await for (final value in stream) {
+      print("output from ConcatenateWith's static stream: $value");
+      expect(value.value, "$cnt");
+      cnt++;
+    }
+    expect(cnt, max);
+  });
+
+  test('ConcatenateWith static stream sink at 1 test', () async {
+    final stream = ConcatenateWith.handleSomeStaticStreamSinkAt1(bridge: api);
+    int cnt = 0;
+    await for (final value in stream) {
+      print("output from ConcatenateWith's static stream: $value");
+      expect(value, cnt);
+      cnt++;
+    }
+    expect(cnt, 5);
+  });
+
   print('flutter_rust_bridge example program end');
 }
 

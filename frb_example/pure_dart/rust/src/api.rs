@@ -646,6 +646,12 @@ pub struct ConcatenateWith {
     pub a: String,
 }
 
+#[derive(Debug, Clone)]
+pub struct Log2 {
+    pub key: u32,
+    pub value: String,
+}
+
 impl ConcatenateWith {
     pub fn new(a: String) -> ConcatenateWith {
         ConcatenateWith { a }
@@ -655,5 +661,61 @@ impl ConcatenateWith {
     }
     pub fn concatenate_static(a: String, b: String) -> String {
         format!("{}{}", a, b)
+    }
+
+    pub fn handle_some_stream_sink(
+        &self,
+        key: u32,
+        max: u32,
+        sink: StreamSink<Log2>,
+    ) -> Result<(), anyhow::Error> {
+        let a = self.a.clone();
+        std::thread::spawn(move || {
+            for i in 0..max {
+                sink.add(Log2 {
+                    key,
+                    value: format!("{}{}", a, i.to_string()),
+                });
+            }
+            sink.close();
+        });
+        Ok(())
+    }
+
+    pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
+        std::thread::spawn(move || {
+            for i in 0..5 {
+                sink.add(i);
+            }
+            sink.close();
+        });
+        Ok(())
+    }
+
+    pub fn handle_some_static_stream_sink(
+        key: u32,
+        max: u32,
+        sink: StreamSink<Log2>,
+    ) -> Result<(), anyhow::Error> {
+        std::thread::spawn(move || {
+            for i in 0..max {
+                sink.add(Log2 {
+                    key,
+                    value: i.to_string(),
+                });
+            }
+            sink.close();
+        });
+        Ok(())
+    }
+
+    pub fn handle_some_static_stream_sink_at_1(sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
+        std::thread::spawn(move || {
+            for i in 0..5 {
+                sink.add(i);
+            }
+            sink.close();
+        });
+        Ok(())
     }
 }

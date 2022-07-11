@@ -13,7 +13,7 @@ use syn::*;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
-use crate::method_utils::StaticMethodNamingUtil;
+use crate::method_utils::FunctionName;
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
 
@@ -235,17 +235,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
         };
         let method_name = if is_static_method {
             let self_type = {
-                let ItemImpl {
-                    attrs: _,
-                    defaultness: _,
-                    unsafety: _,
-                    impl_token: _,
-                    generics: _,
-                    trait_: _,
-                    self_ty,
-                    brace_token: _,
-                    items: _,
-                } = item_impl;
+                let ItemImpl { self_ty, .. } = item_impl;
                 if let Type::Path(TypePath { qself: _, path }) = &**self_ty {
                     if let Some(PathSegment {
                         ident,
@@ -261,18 +251,24 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 }
             };
             Ident::new(
-                &StaticMethodNamingUtil::mark_as_static_method(
+                &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    &self_type.unwrap(),
-                ),
+                    crate::method_utils::MethodInfo::StaticMethod {
+                        struct_name: self_type.unwrap(),
+                    },
+                )
+                .serialize(),
                 span,
             )
         } else {
             Ident::new(
-                //format!("{}{}", item_method.sig.ident.clone(), METHOD_MARKER).as_str(),
-                &StaticMethodNamingUtil::mark_as_non_static_method(
+                &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                ),
+                    crate::method_utils::MethodInfo::NonStaticMethod {
+                        struct_name: struct_name.clone(),
+                    },
+                )
+                .serialize(),
                 span,
             )
         };
@@ -294,13 +290,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                     .inputs
                     .iter()
                     .map(|input| {
-                        if let FnArg::Receiver(Receiver {
-                            attrs: _,
-                            reference: _,
-                            mutability,
-                            self_token: _,
-                        }) = input
-                        {
+                        if let FnArg::Receiver(Receiver { mutability, .. }) = input {
                             let mut segments = Punctuated::new();
                             segments.push(PathSegment {
                                 ident: Ident::new(struct_name.as_str(), span),

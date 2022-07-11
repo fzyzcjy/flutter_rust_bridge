@@ -25,7 +25,7 @@ use log::debug;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
-use crate::method_utils::StaticMethodNamingUtil;
+use crate::method_utils::MethodNamingUtil;
 use crate::others::*;
 use crate::utils::BlockIndex;
 
@@ -393,18 +393,16 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             .join(", "),
     );
 
-    let parse_sucess_data = if (StaticMethodNamingUtil::is_static_method(&func.name)
-        && StaticMethodNamingUtil::static_method_return_struct_name(&func.name) == {
+    let parse_sucess_data = if (MethodNamingUtil::is_static_method(&func.name)
+        && MethodNamingUtil::static_method_return_struct_name(&func.name) == {
             if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                 name.clone()
             } else {
                 "".to_string()
             }
         })
-        || StaticMethodNamingUtil::struct_has_methods(
-            ir_file,
-            func.inputs.get(0).as_ref().map(|x| &x.ty),
-        ) {
+        || MethodNamingUtil::struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x| &x.ty))
+    {
         format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
     } else {
         format!("_wire2api_{}", func.output.safe_ident())
@@ -508,7 +506,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
     let extra_argument = if let StructRef(IrTypeStructRef { name, freezed: _ }) = ty {
-        if StaticMethodNamingUtil::has_methods(name, ir_file) {
+        if MethodNamingUtil::has_methods(name, ir_file) {
             format!("{} bridge,", dart_api_class_name)
         } else {
             "".to_string()

@@ -1,18 +1,20 @@
-use crate::ir::IrType::{self, Boxed, StructRef};
+use crate::ir::IrType::{self, StructRef};
 use crate::ir::{IrField, IrTypeStructRef};
-use crate::ir::{IrFile, IrFunc, IrTypeBoxed};
+use crate::ir::{IrFile, IrFunc};
 use convert_case::{Case, Casing};
 
 const STATIC_METHOD_MARKER: &str = "__static_method___";
-const METHOD_MARKER: &str = "__method";
+const METHOD_MARKER: &str = "__method___";
 
-pub(crate) struct StaticMethodNamingUtil;
+pub(crate) struct MethodNamingUtil;
 
-impl StaticMethodNamingUtil {
+impl MethodNamingUtil {
+    // Is the function name for a non static method?
     pub fn is_non_static_method(s: &str) -> bool {
-        s.ends_with(METHOD_MARKER)
+        s.contains(METHOD_MARKER)
     }
 
+    // Is the function name for a static method?
     pub fn is_static_method(s: &str) -> bool {
         s.contains(STATIC_METHOD_MARKER)
     }
@@ -23,6 +25,7 @@ impl StaticMethodNamingUtil {
             && f.name.split(STATIC_METHOD_MARKER).last().unwrap() == struct_name
     }
 
+    //Does `ir_file` has any methods directed for `struct_name`?
     pub fn has_methods(struct_name: &String, ir_file: &IrFile) -> bool {
         ir_file.funcs.iter().any(|f| {
             Self::is_method_for_struct(&f, struct_name)
@@ -32,20 +35,7 @@ impl StaticMethodNamingUtil {
 
     // Tests if the function in `f` is a method for struct with name `struct_name`
     pub fn is_method_for_struct(f: &&IrFunc, struct_name: &String) -> bool {
-        f.name.ends_with(METHOD_MARKER)
-            && if let Boxed(IrTypeBoxed {
-                exist_in_real_api: _,
-                inner,
-            }) = &f.inputs[0].ty
-            {
-                if let StructRef(IrTypeStructRef { name, freezed: _ }) = &**inner {
-                    *name == *struct_name
-                } else {
-                    false
-                }
-            } else {
-                false
-            }
+        f.name.contains(METHOD_MARKER) && f.name.split(METHOD_MARKER).last().unwrap() == struct_name
     }
 
     // Returns the name of the struct that this method is for
@@ -58,9 +48,14 @@ impl StaticMethodNamingUtil {
         s.split(STATIC_METHOD_MARKER).next().unwrap().to_string()
     }
 
-    // Clears the method marker from this method name
-    pub fn clear_method_marker(s: &str) -> String {
-        s.replace(METHOD_MARKER, "")
+    // Returns the name of the struct that this method is for
+    pub fn non_static_method_return_struct_name(s: &str) -> String {
+        s.split(METHOD_MARKER).last().unwrap().to_string()
+    }
+
+    // Returns the name of method itself
+    pub fn non_static_method_return_method_name(s: &str) -> String {
+        s.split(METHOD_MARKER).next().unwrap().to_string()
     }
 
     // Tests if a given struct has methods, that is, if the `ir_file` contains
@@ -86,23 +81,101 @@ impl StaticMethodNamingUtil {
         })
     }
 
-    pub fn mark_as_static_method(s: &str, struct_name: &str) -> String {
+    fn mark_as_static_method(s: &str, struct_name: &str) -> String {
         format!("{}{}{}", s, STATIC_METHOD_MARKER, struct_name)
     }
 
-    pub fn mark_as_non_static_method(s: &str) -> String {
-        format!("{}{}", s, METHOD_MARKER)
+    fn mark_as_non_static_method(s: &str, struct_name: &str) -> String {
+        format!("{}{}{}", s, METHOD_MARKER, struct_name)
+    }
+}
+
+#[derive(Debug)]
+pub enum MethodInfo {
+    NotMethod,
+    StaticMethod { struct_name: String },
+    NonStaticMethod { struct_name: String },
+}
+
+#[derive(Debug)]
+pub struct FunctionName {
+    actual_name: String,
+    method_info: MethodInfo,
+}
+
+impl FunctionName {
+    pub fn new(name: &str, method_info: MethodInfo) -> FunctionName {
+        FunctionName {
+            actual_name: name.to_string(),
+            method_info,
+        }
+    }
+    // assemble it into a string, e.g. `method_name__static_method___TheStructName` etc
+    pub fn serialize(&self) -> String {
+        match &self.method_info {
+            MethodInfo::NotMethod => self.actual_name.clone(),
+            MethodInfo::StaticMethod { struct_name } => {
+                MethodNamingUtil::mark_as_static_method(&self.actual_name, &struct_name)
+            }
+            MethodInfo::NonStaticMethod { struct_name } => {
+                MethodNamingUtil::mark_as_non_static_method(&self.actual_name, &struct_name)
+            }
+        }
     }
 
-    //tests if a given `func` is a method, and also returns the struct name that it is a method for
-    pub fn is_method_return_struct_name(func: &IrFunc) -> Option<String> {
-        if Self::is_non_static_method(&func.name) {
-            let input = func.inputs[0].clone();
-            Some(input.name.to_string().to_case(Case::UpperCamel))
-        } else if Self::is_static_method(&func.name) {
-            Some(Self::static_method_return_struct_name(&func.name).to_case(Case::UpperCamel))
-        } else {
-            None
+    pub fn deserialize(s: &str) -> Self {
+        let actual_name: String;
+        let method_info = {
+            if MethodNamingUtil::is_static_method(&s) {
+                actual_name = MethodNamingUtil::static_method_return_method_name(&s);
+                MethodInfo::StaticMethod {
+                    struct_name: MethodNamingUtil::static_method_return_struct_name(&s),
+                }
+            } else if MethodNamingUtil::is_non_static_method(&s) {
+                actual_name = MethodNamingUtil::non_static_method_return_method_name(&s);
+                MethodInfo::NonStaticMethod {
+                    struct_name: MethodNamingUtil::non_static_method_return_struct_name(&s),
+                }
+            } else {
+                actual_name = s.to_string();
+                MethodInfo::NotMethod
+            }
+        };
+        FunctionName {
+            actual_name,
+            method_info,
         }
+    }
+
+    pub fn method_name(&self) -> String {
+        self.actual_name.clone()
+    }
+
+    pub fn struct_name(&self) -> Option<String> {
+        match &self.method_info {
+            MethodInfo::NotMethod => None,
+            MethodInfo::StaticMethod { struct_name } => Some(struct_name.clone()),
+            MethodInfo::NonStaticMethod { struct_name } => Some(struct_name.clone()),
+        }
+    }
+
+    pub fn is_static_method(&self) -> bool {
+        matches!(
+            self,
+            FunctionName {
+                actual_name: _,
+                method_info: MethodInfo::StaticMethod { .. }
+            }
+        )
+    }
+
+    pub fn is_non_static_method(&self) -> bool {
+        matches!(
+            self,
+            FunctionName {
+                actual_name: _,
+                method_info: MethodInfo::NonStaticMethod { .. }
+            }
+        )
     }
 }

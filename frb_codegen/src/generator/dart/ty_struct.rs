@@ -1,7 +1,7 @@
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
-use crate::method_utils::StaticMethodNamingUtil;
+use crate::method_utils::{FunctionName, MethodNamingUtil};
 use crate::type_dart_generator_struct;
 use crate::utils::BlockIndex;
 use convert_case::{Case, Casing};
@@ -36,8 +36,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let s = self.ir.get(self.context.ir_file);
 
         let mut methods = self.context.ir_file.funcs.iter().filter(|f| {
-            StaticMethodNamingUtil::is_method_for_struct(f, &src.name)
-                || StaticMethodNamingUtil::is_static_method_for_struct(f, &src.name)
+            MethodNamingUtil::is_method_for_struct(f, &src.name)
+                || MethodNamingUtil::is_static_method_for_struct(f, &src.name)
         });
         let has_methods = methods.next().is_some();
         let mut inner = s
@@ -82,8 +82,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .funcs
             .iter()
             .filter(|f| {
-                StaticMethodNamingUtil::is_method_for_struct(f, &src.name)
-                    || StaticMethodNamingUtil::is_static_method_for_struct(f, &src.name)
+                MethodNamingUtil::is_method_for_struct(f, &src.name)
+                    || MethodNamingUtil::is_static_method_for_struct(f, &src.name)
             })
             .collect::<Vec<_>>();
 
@@ -202,7 +202,7 @@ fn generate_api_method(
     ir_struct: &IrStruct,
     dart_api_class_name: String,
 ) -> GeneratedApiMethod {
-    let skip_count = if StaticMethodNamingUtil::is_static_method(&func.name) {
+    let skip_count = if MethodNamingUtil::is_static_method(&func.name) {
         0
     } else {
         1
@@ -221,30 +221,33 @@ fn generate_api_method(
         })
         .collect::<Vec<_>>();
 
-    if StaticMethodNamingUtil::is_static_method(&func.name) {
+    if MethodNamingUtil::is_static_method(&func.name) {
         raw_func_param_list.insert(0, format!("required {} bridge", dart_api_class_name));
     }
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
-    let static_function_name = StaticMethodNamingUtil::static_method_return_method_name(&func.name);
+    let static_function_name = MethodNamingUtil::static_method_return_method_name(&func.name);
 
     let partial = format!(
         "{} {} {}({{ {} }})",
-        if StaticMethodNamingUtil::is_static_method(&func.name) {
+        if MethodNamingUtil::is_static_method(&func.name) {
             "static"
         } else {
             ""
         },
         func.mode.dart_return_type(&func.output.dart_api_type()),
-        if StaticMethodNamingUtil::is_static_method(&func.name) {
+        if MethodNamingUtil::is_static_method(&func.name) {
             if static_function_name == "new" {
                 format!("new{}", ir_struct.name)
             } else {
                 static_function_name.to_case(Case::Camel)
             }
         } else {
-            StaticMethodNamingUtil::clear_method_marker(&func.name).to_case(Case::Camel)
+            FunctionName::deserialize(&func.name)
+                .method_name()
+                .to_case(Case::Camel)
+            //StaticMethodNamingUtil::clear_method_marker(&func.name).to_case(Case::Camel)
         },
         full_func_param_list.join(","),
     );
@@ -259,7 +262,7 @@ fn generate_api_method(
         .collect::<Vec<_>>()
         .concat();
 
-    let implementation = if !StaticMethodNamingUtil::is_static_method(&func.name) {
+    let implementation = if !MethodNamingUtil::is_static_method(&func.name) {
         format!(
             "bridge.{}({}: this, {})",
             func.name.clone().to_case(Case::Camel),

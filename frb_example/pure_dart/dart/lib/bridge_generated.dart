@@ -221,28 +221,55 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
 
-  Future<int> sumMethod(
+  Future<int> sumMethodSumWith(
       {required SumWith sumWith, required int y, required int z, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kSumMethodConstMeta;
+  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
 
   Future<ConcatenateWith> newStaticMethodConcatenateWith(
       {required String a, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta;
 
-  Future<String> concatenateMethod(
+  Future<String> concatenateMethodConcatenateWith(
       {required ConcatenateWith concatenateWith,
       required String b,
       dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kConcatenateMethodConstMeta;
+  FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta;
 
   Future<String> concatenateStaticStaticMethodConcatenateWith(
       {required String a, required String b, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta
       get kConcatenateStaticStaticMethodConcatenateWithConstMeta;
+
+  Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
+      {required ConcatenateWith concatenateWith,
+      required int key,
+      required int max,
+      dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStreamSinkMethodConcatenateWithConstMeta;
+
+  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith(
+      {required ConcatenateWith concatenateWith, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta;
+
+  Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
+      {required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta;
+
+  Stream<int> handleSomeStaticStreamSinkAt1StaticMethodConcatenateWith(
+      {dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStaticStreamSinkAt1StaticMethodConcatenateWithConstMeta;
 }
 
 class ApplicationEnv {
@@ -320,7 +347,7 @@ class ConcatenateWith {
         a: a,
       );
   Future<String> concatenate({required String b, dynamic hint}) =>
-      bridge.concatenateMethod(
+      bridge.concatenateMethodConcatenateWith(
         concatenateWith: this,
         b: b,
       );
@@ -333,6 +360,30 @@ class ConcatenateWith {
         a: a,
         b: b,
       );
+  Stream<Log2> handleSomeStreamSink(
+          {required int key, required int max, dynamic hint}) =>
+      bridge.handleSomeStreamSinkMethodConcatenateWith(
+        concatenateWith: this,
+        key: key,
+        max: max,
+      );
+  Stream<int> handleSomeStreamSinkAt1({dynamic hint}) =>
+      bridge.handleSomeStreamSinkAt1MethodConcatenateWith(
+        concatenateWith: this,
+      );
+  static Stream<Log2> handleSomeStaticStreamSink(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge,
+          required int key,
+          required int max,
+          dynamic hint}) =>
+      bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(
+        key: key,
+        max: max,
+      );
+  static Stream<int> handleSomeStaticStreamSinkAt1(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge,
+          dynamic hint}) =>
+      bridge.handleSomeStaticStreamSinkAt1StaticMethodConcatenateWith();
 }
 
 class Customized {
@@ -442,6 +493,16 @@ class Log {
   });
 }
 
+class Log2 {
+  final int key;
+  final String value;
+
+  Log2({
+    required this.key,
+    required this.value,
+  });
+}
+
 enum MyEnum {
   False,
   True,
@@ -524,7 +585,7 @@ class SumWith {
     required this.x,
   });
   Future<int> sum({required int y, required int z, dynamic hint}) =>
-      bridge.sumMethod(
+      bridge.sumMethodSumWith(
         sumWith: this,
         y: y,
         z: z,
@@ -1337,26 +1398,26 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: ["key", "max"],
       );
 
-  Future<int> sumMethod(
+  Future<int> sumMethodSumWith(
           {required SumWith sumWith,
           required int y,
           required int z,
           dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_sum__method(
+        callFfi: (port_) => inner.wire_sum__method___SumWith(
             port_,
             _api2wire_box_autoadd_sum_with(sumWith),
             _api2wire_u32(y),
             _api2wire_u32(z)),
         parseSuccessData: _wire2api_u32,
-        constMeta: kSumMethodConstMeta,
+        constMeta: kSumMethodSumWithConstMeta,
         argValues: [sumWith, y, z],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kSumMethodConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "sum__method",
+        debugName: "sum__method___SumWith",
         argNames: ["sumWith", "y", "z"],
       );
 
@@ -1377,26 +1438,27 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: ["a"],
       );
 
-  Future<String> concatenateMethod(
+  Future<String> concatenateMethodConcatenateWith(
           {required ConcatenateWith concatenateWith,
           required String b,
           dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_concatenate__method(
+        callFfi: (port_) => inner.wire_concatenate__method___ConcatenateWith(
             port_,
             _api2wire_box_autoadd_concatenate_with(concatenateWith),
             _api2wire_String(b)),
         parseSuccessData: _wire2api_String,
-        constMeta: kConcatenateMethodConstMeta,
+        constMeta: kConcatenateMethodConcatenateWithConstMeta,
         argValues: [concatenateWith, b],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kConcatenateMethodConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "concatenate__method",
-        argNames: ["concatenateWith", "b"],
-      );
+  FlutterRustBridgeTaskConstMeta
+      get kConcatenateMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "concatenate__method___ConcatenateWith",
+            argNames: ["concatenateWith", "b"],
+          );
 
   Future<String> concatenateStaticStaticMethodConcatenateWith(
           {required String a, required String b, dynamic hint}) =>
@@ -1415,6 +1477,92 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
           const FlutterRustBridgeTaskConstMeta(
             debugName: "concatenate_static__static_method___ConcatenateWith",
             argNames: ["a", "b"],
+          );
+
+  Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
+          {required ConcatenateWith concatenateWith,
+          required int key,
+          required int max,
+          dynamic hint}) =>
+      executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            inner.wire_handle_some_stream_sink__method___ConcatenateWith(
+                port_,
+                _api2wire_box_autoadd_concatenate_with(concatenateWith),
+                _api2wire_u32(key),
+                _api2wire_u32(max)),
+        parseSuccessData: _wire2api_log_2,
+        constMeta: kHandleSomeStreamSinkMethodConcatenateWithConstMeta,
+        argValues: [concatenateWith, key, max],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStreamSinkMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "handle_some_stream_sink__method___ConcatenateWith",
+            argNames: ["concatenateWith", "key", "max"],
+          );
+
+  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith(
+          {required ConcatenateWith concatenateWith, dynamic hint}) =>
+      executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            inner.wire_handle_some_stream_sink_at_1__method___ConcatenateWith(
+                port_, _api2wire_box_autoadd_concatenate_with(concatenateWith)),
+        parseSuccessData: _wire2api_u32,
+        constMeta: kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta,
+        argValues: [concatenateWith],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "handle_some_stream_sink_at_1__method___ConcatenateWith",
+            argNames: ["concatenateWith"],
+          );
+
+  Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
+          {required int key, required int max, dynamic hint}) =>
+      executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner
+            .wire_handle_some_static_stream_sink__static_method___ConcatenateWith(
+                port_, _api2wire_u32(key), _api2wire_u32(max)),
+        parseSuccessData: _wire2api_log_2,
+        constMeta:
+            kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta,
+        argValues: [key, max],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName:
+                "handle_some_static_stream_sink__static_method___ConcatenateWith",
+            argNames: ["key", "max"],
+          );
+
+  Stream<int> handleSomeStaticStreamSinkAt1StaticMethodConcatenateWith(
+          {dynamic hint}) =>
+      executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner
+            .wire_handle_some_static_stream_sink_at_1__static_method___ConcatenateWith(
+                port_),
+        parseSuccessData: _wire2api_u32,
+        constMeta:
+            kHandleSomeStaticStreamSinkAt1StaticMethodConcatenateWithConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStaticStreamSinkAt1StaticMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName:
+                "handle_some_static_stream_sink_at_1__static_method___ConcatenateWith",
+            argNames: [],
           );
 
   // Section: api2wire
@@ -2409,6 +2557,16 @@ Log _wire2api_log(dynamic raw) {
   );
 }
 
+Log2 _wire2api_log_2(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Log2(
+    key: _wire2api_u32(arr[0]),
+    value: _wire2api_String(arr[1]),
+  );
+}
+
 MySize _wire2api_my_size(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2)
@@ -3392,13 +3550,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   late final _wire_handle_stream_sink_at_3 = _wire_handle_stream_sink_at_3Ptr
       .asFunction<void Function(int, int, int)>();
 
-  void wire_sum__method(
+  void wire_sum__method___SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> sum_with,
     int y,
     int z,
   ) {
-    return _wire_sum__method(
+    return _wire_sum__method___SumWith(
       port_,
       sum_with,
       y,
@@ -3406,11 +3564,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_sum__methodPtr = _lookup<
+  late final _wire_sum__method___SumWithPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SumWith>, ffi.Uint32,
-              ffi.Uint32)>>('wire_sum__method');
-  late final _wire_sum__method = _wire_sum__methodPtr
+              ffi.Uint32)>>('wire_sum__method___SumWith');
+  late final _wire_sum__method___SumWith = _wire_sum__method___SumWithPtr
       .asFunction<void Function(int, ffi.Pointer<wire_SumWith>, int, int)>();
 
   void wire_new__static_method___ConcatenateWith(
@@ -3431,24 +3589,25 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       _wire_new__static_method___ConcatenateWithPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_concatenate__method(
+  void wire_concatenate__method___ConcatenateWith(
     int port_,
     ffi.Pointer<wire_ConcatenateWith> concatenate_with,
     ffi.Pointer<wire_uint_8_list> b,
   ) {
-    return _wire_concatenate__method(
+    return _wire_concatenate__method___ConcatenateWith(
       port_,
       concatenate_with,
       b,
     );
   }
 
-  late final _wire_concatenate__methodPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>,
-              ffi.Pointer<wire_uint_8_list>)>>('wire_concatenate__method');
-  late final _wire_concatenate__method =
-      _wire_concatenate__methodPtr.asFunction<
+  late final _wire_concatenate__method___ConcatenateWithPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>,
+                  ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_concatenate__method___ConcatenateWith');
+  late final _wire_concatenate__method___ConcatenateWith =
+      _wire_concatenate__method___ConcatenateWithPtr.asFunction<
           void Function(int, ffi.Pointer<wire_ConcatenateWith>,
               ffi.Pointer<wire_uint_8_list>)>();
 
@@ -3474,6 +3633,90 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       _wire_concatenate_static__static_method___ConcatenateWithPtr.asFunction<
           void Function(int, ffi.Pointer<wire_uint_8_list>,
               ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_some_stream_sink__method___ConcatenateWith(
+    int port_,
+    ffi.Pointer<wire_ConcatenateWith> concatenate_with,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_some_stream_sink__method___ConcatenateWith(
+      port_,
+      concatenate_with,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_some_stream_sink__method___ConcatenateWithPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<wire_ConcatenateWith>,
+                      ffi.Uint32,
+                      ffi.Uint32)>>(
+          'wire_handle_some_stream_sink__method___ConcatenateWith');
+  late final _wire_handle_some_stream_sink__method___ConcatenateWith =
+      _wire_handle_some_stream_sink__method___ConcatenateWithPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_ConcatenateWith>, int, int)>();
+
+  void wire_handle_some_stream_sink_at_1__method___ConcatenateWith(
+    int port_,
+    ffi.Pointer<wire_ConcatenateWith> concatenate_with,
+  ) {
+    return _wire_handle_some_stream_sink_at_1__method___ConcatenateWith(
+      port_,
+      concatenate_with,
+    );
+  }
+
+  late final _wire_handle_some_stream_sink_at_1__method___ConcatenateWithPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_ConcatenateWith>)>>(
+          'wire_handle_some_stream_sink_at_1__method___ConcatenateWith');
+  late final _wire_handle_some_stream_sink_at_1__method___ConcatenateWith =
+      _wire_handle_some_stream_sink_at_1__method___ConcatenateWithPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_ConcatenateWith>)>();
+
+  void wire_handle_some_static_stream_sink__static_method___ConcatenateWith(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_some_static_stream_sink__static_method___ConcatenateWith(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_some_static_stream_sink__static_method___ConcatenateWithPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+          'wire_handle_some_static_stream_sink__static_method___ConcatenateWith');
+  late final _wire_handle_some_static_stream_sink__static_method___ConcatenateWith =
+      _wire_handle_some_static_stream_sink__static_method___ConcatenateWithPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void
+      wire_handle_some_static_stream_sink_at_1__static_method___ConcatenateWith(
+    int port_,
+  ) {
+    return _wire_handle_some_static_stream_sink_at_1__static_method___ConcatenateWith(
+      port_,
+    );
+  }
+
+  late final _wire_handle_some_static_stream_sink_at_1__static_method___ConcatenateWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_handle_some_static_stream_sink_at_1__static_method___ConcatenateWith');
+  late final _wire_handle_some_static_stream_sink_at_1__static_method___ConcatenateWith =
+      _wire_handle_some_static_stream_sink_at_1__static_method___ConcatenateWithPtr
+          .asFunction<void Function(int)>();
 
   ffi.Pointer<wire_StringList> new_StringList_0(
     int len,
