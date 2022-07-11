@@ -247,32 +247,33 @@ fn generate_api_method(
             FunctionName::deserialize(&func.name)
                 .method_name()
                 .to_case(Case::Camel)
-            //StaticMethodNamingUtil::clear_method_marker(&func.name).to_case(Case::Camel)
         },
         full_func_param_list.join(","),
     );
 
     let signature = partial;
 
-    let arg_names = func
+    let mut arg_names = func
         .inputs
         .iter()
         .skip(skip_count) //skip the first as it's the method 'self'
         .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
-        .collect::<Vec<_>>()
-        .concat();
+        .collect::<Vec<_>>();
 
-    let implementation = if !MethodNamingUtil::is_static_method(&func.name) {
+    let implementation = if MethodNamingUtil::is_static_method(&func.name) {
+        arg_names.push("hint: hint".to_string());
+        let arg_names = arg_names.concat();
+        format!(
+            "bridge.{}({})",
+            func.name.clone().to_case(Case::Camel),
+            arg_names
+        )
+    } else {
+        let arg_names = arg_names.concat();
         format!(
             "bridge.{}({}: this, {})",
             func.name.clone().to_case(Case::Camel),
             func.inputs[0].name.dart_style(),
-            arg_names
-        )
-    } else {
-        format!(
-            "bridge.{}({})",
-            func.name.clone().to_case(Case::Camel),
             arg_names
         )
     };
