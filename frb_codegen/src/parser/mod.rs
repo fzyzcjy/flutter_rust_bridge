@@ -252,7 +252,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             Ident::new(
                 &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    crate::method_utils::MethodInfo::StaticMethod {
+                    crate::method_utils::MethodInfo::Static {
                         struct_name: self_type.unwrap(),
                     },
                 )
@@ -263,7 +263,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             Ident::new(
                 &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    crate::method_utils::MethodInfo::NonStaticMethod {
+                    crate::method_utils::MethodInfo::NonStatic {
                         struct_name: struct_name.clone(),
                     },
                 )

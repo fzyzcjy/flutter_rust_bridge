@@ -674,7 +674,7 @@ impl ConcatenateWith {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
-                    value: format!("{}{}", a, i.to_string()),
+                    value: format!("{}{}", a, i),
                 });
             }
             sink.close();

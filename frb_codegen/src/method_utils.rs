@@ -92,9 +92,9 @@ impl MethodNamingUtil {
 
 #[derive(Debug)]
 pub enum MethodInfo {
-    NotMethod,
-    StaticMethod { struct_name: String },
-    NonStaticMethod { struct_name: String },
+    Not,
+    Static { struct_name: String },
+    NonStatic { struct_name: String },
 }
 
 #[derive(Debug)]
@@ -113,12 +113,12 @@ impl FunctionName {
     // assemble it into a string, e.g. `method_name__static_method___TheStructName` etc
     pub fn serialize(&self) -> String {
         match &self.method_info {
-            MethodInfo::NotMethod => self.actual_name.clone(),
-            MethodInfo::StaticMethod { struct_name } => {
-                MethodNamingUtil::mark_as_static_method(&self.actual_name, &struct_name)
+            MethodInfo::Not => self.actual_name.clone(),
+            MethodInfo::Static { struct_name } => {
+                MethodNamingUtil::mark_as_static_method(&self.actual_name, struct_name)
             }
-            MethodInfo::NonStaticMethod { struct_name } => {
-                MethodNamingUtil::mark_as_non_static_method(&self.actual_name, &struct_name)
+            MethodInfo::NonStatic { struct_name } => {
+                MethodNamingUtil::mark_as_non_static_method(&self.actual_name, struct_name)
             }
         }
     }
@@ -126,19 +126,19 @@ impl FunctionName {
     pub fn deserialize(s: &str) -> Self {
         let actual_name: String;
         let method_info = {
-            if MethodNamingUtil::is_static_method(&s) {
-                actual_name = MethodNamingUtil::static_method_return_method_name(&s);
-                MethodInfo::StaticMethod {
-                    struct_name: MethodNamingUtil::static_method_return_struct_name(&s),
+            if MethodNamingUtil::is_static_method(s) {
+                actual_name = MethodNamingUtil::static_method_return_method_name(s);
+                MethodInfo::Static {
+                    struct_name: MethodNamingUtil::static_method_return_struct_name(s),
                 }
-            } else if MethodNamingUtil::is_non_static_method(&s) {
-                actual_name = MethodNamingUtil::non_static_method_return_method_name(&s);
-                MethodInfo::NonStaticMethod {
-                    struct_name: MethodNamingUtil::non_static_method_return_struct_name(&s),
+            } else if MethodNamingUtil::is_non_static_method(s) {
+                actual_name = MethodNamingUtil::non_static_method_return_method_name(s);
+                MethodInfo::NonStatic {
+                    struct_name: MethodNamingUtil::non_static_method_return_struct_name(s),
                 }
             } else {
                 actual_name = s.to_string();
-                MethodInfo::NotMethod
+                MethodInfo::Not
             }
         };
         FunctionName {
@@ -153,9 +153,9 @@ impl FunctionName {
 
     pub fn struct_name(&self) -> Option<String> {
         match &self.method_info {
-            MethodInfo::NotMethod => None,
-            MethodInfo::StaticMethod { struct_name } => Some(struct_name.clone()),
-            MethodInfo::NonStaticMethod { struct_name } => Some(struct_name.clone()),
+            MethodInfo::Not => None,
+            MethodInfo::Static { struct_name } => Some(struct_name.clone()),
+            MethodInfo::NonStatic { struct_name } => Some(struct_name.clone()),
         }
     }
 
@@ -164,7 +164,7 @@ impl FunctionName {
             self,
             FunctionName {
                 actual_name: _,
-                method_info: MethodInfo::StaticMethod { .. }
+                method_info: MethodInfo::Static { .. }
             }
         )
     }
@@ -174,7 +174,7 @@ impl FunctionName {
             self,
             FunctionName {
                 actual_name: _,
-                method_info: MethodInfo::NonStaticMethod { .. }
+                method_info: MethodInfo::NonStatic { .. }
             }
         )
     }
