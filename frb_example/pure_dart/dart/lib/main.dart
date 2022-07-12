@@ -430,7 +430,7 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWith.handleSomeStaticStreamSinkAt1(bridge: api);
+    final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");

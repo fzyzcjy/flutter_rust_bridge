@@ -21,7 +21,7 @@ use std::collections::HashSet;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
-use crate::method_utils::{FunctionName, MethodNamingUtil};
+use crate::method_utils::FunctionName;
 use crate::others::*;
 use crate::utils::BlockIndex;
 
@@ -280,11 +280,11 @@ impl Generator {
             .join("");
 
         let code_call_inner_func = if f.is_non_static_method() || f.is_static_method() {
-            let method_name = if MethodNamingUtil::is_non_static_method(&func.name) {
+            let method_name = if f.is_non_static_method() {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
                 FunctionName::deserialize(&func.name).method_name()
             } else if f.is_static_method() {
-                MethodNamingUtil::static_method_return_method_name(&func.name)
+                FunctionName::deserialize(&func.name).static_method_name()
             } else {
                 panic!(
                     "not a method neither static method but should be: {}",

@@ -688,10 +688,10 @@ pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sum__method___SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
+pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "sum__method___SumWith",
+            debug_name: "sum__method__SumWith",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
@@ -705,10 +705,10 @@ pub extern "C" fn wire_sum__method___SumWith(port_: i64, that: *mut wire_SumWith
 }
 
 #[no_mangle]
-pub extern "C" fn wire_new__static_method___ConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
+pub extern "C" fn wire_new__static_method__ConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "new__static_method___ConcatenateWith",
+            debug_name: "new__static_method__ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
@@ -720,14 +720,14 @@ pub extern "C" fn wire_new__static_method___ConcatenateWith(port_: i64, a: *mut 
 }
 
 #[no_mangle]
-pub extern "C" fn wire_concatenate__method___ConcatenateWith(
+pub extern "C" fn wire_concatenate__method__ConcatenateWith(
     port_: i64,
     that: *mut wire_ConcatenateWith,
     b: *mut wire_uint_8_list,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "concatenate__method___ConcatenateWith",
+            debug_name: "concatenate__method__ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
@@ -740,14 +740,14 @@ pub extern "C" fn wire_concatenate__method___ConcatenateWith(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_concatenate_static__static_method___ConcatenateWith(
+pub extern "C" fn wire_concatenate_static__static_method__ConcatenateWith(
     port_: i64,
     a: *mut wire_uint_8_list,
     b: *mut wire_uint_8_list,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "concatenate_static__static_method___ConcatenateWith",
+            debug_name: "concatenate_static__static_method__ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
@@ -760,7 +760,7 @@ pub extern "C" fn wire_concatenate_static__static_method___ConcatenateWith(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_some_stream_sink__method___ConcatenateWith(
+pub extern "C" fn wire_handle_some_stream_sink__method__ConcatenateWith(
     port_: i64,
     that: *mut wire_ConcatenateWith,
     key: u32,
@@ -768,7 +768,7 @@ pub extern "C" fn wire_handle_some_stream_sink__method___ConcatenateWith(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "handle_some_stream_sink__method___ConcatenateWith",
+            debug_name: "handle_some_stream_sink__method__ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Stream,
         },
@@ -789,13 +789,13 @@ pub extern "C" fn wire_handle_some_stream_sink__method___ConcatenateWith(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_some_stream_sink_at_1__method___ConcatenateWith(
+pub extern "C" fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
     port_: i64,
     that: *mut wire_ConcatenateWith,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "handle_some_stream_sink_at_1__method___ConcatenateWith",
+            debug_name: "handle_some_stream_sink_at_1__method__ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Stream,
         },
@@ -812,14 +812,14 @@ pub extern "C" fn wire_handle_some_stream_sink_at_1__method___ConcatenateWith(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_some_static_stream_sink__static_method___ConcatenateWith(
+pub extern "C" fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
     port_: i64,
     key: u32,
     max: u32,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "handle_some_static_stream_sink__static_method___ConcatenateWith",
+            debug_name: "handle_some_static_stream_sink__static_method__ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Stream,
         },
@@ -838,18 +838,20 @@ pub extern "C" fn wire_handle_some_static_stream_sink__static_method___Concatena
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_some_static_stream_sink_at_1__static_method___ConcatenateWith(
+pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
     port_: i64,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "handle_some_static_stream_sink_at_1__static_method___ConcatenateWith",
+            debug_name: "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
             port: Some(port_),
             mode: FfiCallMode::Stream,
         },
         move || {
             move |task_callback| {
-                ConcatenateWith::handle_some_static_stream_sink_at_1(task_callback.stream_sink())
+                ConcatenateWith::handle_some_static_stream_sink_single_arg(
+                    task_callback.stream_sink(),
+                )
             }
         },
     )

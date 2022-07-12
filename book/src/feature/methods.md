@@ -1,6 +1,6 @@
 # Methods
 
-There is support for struct with methods
+There is support for structs with methods
 
 ## Example
 
@@ -28,11 +28,7 @@ class SumWith {
     required this.bridge,
     required this.x,
   });
-  Future<int> sum({required int y, dynamic hint}) =>
-      bridge.sumMethodSumWith(
-        sumWith: this,
-        y: y,
-      );
+  Future<int> sum({required int y, dynamic hint}) => ..
 }
 ```
 

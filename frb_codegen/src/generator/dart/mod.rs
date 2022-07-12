@@ -25,7 +25,7 @@ use log::debug;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
-use crate::method_utils::MethodNamingUtil;
+use crate::method_utils::{FunctionName, MethodNamingUtil};
 use crate::others::*;
 use crate::utils::BlockIndex;
 
@@ -113,7 +113,7 @@ fn get_dart_api_spec_from_ir_file(
     let dart_structs = distinct_types
         .iter()
         .map(|ty| {
-            { TypeDartGenerator::new(ty.clone(), ir_file, Some(dart_api_class_name.to_string())) }
+            TypeDartGenerator::new(ty.clone(), ir_file, Some(dart_api_class_name.to_string()))
                 .structs()
         })
         .collect::<Vec<_>>();
@@ -393,15 +393,17 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             .join(", "),
     );
 
-    let parse_sucess_data = if (MethodNamingUtil::is_static_method(&func.name)
-        && MethodNamingUtil::static_method_return_struct_name(&func.name) == {
+    let input_0 = func.inputs.get(0).as_ref().map(|x| &x.ty);
+    let f = FunctionName::deserialize(&func.name);
+    let parse_sucess_data = if (f.is_static_method()
+        && f.struct_name().unwrap() == {
             if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                 name.clone()
             } else {
                 "".to_string()
             }
         })
-        || MethodNamingUtil::struct_has_methods(ir_file, func.inputs.get(0).as_ref().map(|x| &x.ty))
+        || (input_0.is_some() && MethodNamingUtil::struct_has_methods(ir_file, input_0.unwrap()))
     {
         format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
     } else {
@@ -505,16 +507,12 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 }
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
-    let extra_argument = if let StructRef(IrTypeStructRef { name, freezed: _ }) = ty {
-        if MethodNamingUtil::has_methods(name, ir_file) {
-            format!("{} bridge,", dart_api_class_name)
-        } else {
-            "".to_string()
-        }
+    let extra_argument = if matches!(ty, StructRef(IrTypeStructRef { name, freezed: _ }) if MethodNamingUtil::has_methods(name, ir_file))
+    {
+        format!("{} bridge,", dart_api_class_name)
     } else {
         "".to_string()
     };
-    //matches!(ty, StructRef(IrTypeStructRef{name, ..}) if has_methods(name, ir_file) { format!("{} bridge,", dart_api_class_name) } else {"".to_string()});
     let body = TypeDartGenerator::new(ty.clone(), ir_file, None).wire2api_body();
     format!(
         "{} _wire2api_{}({}dynamic raw) {{

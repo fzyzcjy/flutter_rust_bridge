@@ -709,7 +709,9 @@ impl ConcatenateWith {
         Ok(())
     }
 
-    pub fn handle_some_static_stream_sink_at_1(sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
+    pub fn handle_some_static_stream_sink_single_arg(
+        sink: StreamSink<u32>,
+    ) -> Result<(), anyhow::Error> {
         std::thread::spawn(move || {
             for i in 0..5 {
                 sink.add(i);
