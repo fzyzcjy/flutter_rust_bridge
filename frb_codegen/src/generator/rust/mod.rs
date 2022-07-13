@@ -284,7 +284,9 @@ impl Generator {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
                 FunctionName::deserialize(&func.name).method_name()
             } else if f.is_static_method() {
-                FunctionName::deserialize(&func.name).static_method_name()
+                FunctionName::deserialize(&func.name)
+                    .static_method_name()
+                    .unwrap()
             } else {
                 panic!(
                     "not a method neither static method but should be: {}",

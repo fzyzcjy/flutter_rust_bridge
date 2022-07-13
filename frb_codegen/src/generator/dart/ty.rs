@@ -13,8 +13,6 @@ pub trait TypeDartGeneratorTrait {
         "".to_string()
     }
 
-    fn set_dart_api_class_name(&mut self, _s: &str) {}
-
     fn structs(&self) -> String {
         "".to_string()
     }

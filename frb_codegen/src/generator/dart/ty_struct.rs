@@ -1,7 +1,7 @@
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
-use crate::method_utils::{FunctionName, MethodNamingUtil};
+use crate::method_utils::FunctionName;
 use crate::type_dart_generator_struct;
 use crate::utils::BlockIndex;
 use convert_case::{Case, Casing};
@@ -36,8 +36,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let s = self.ir.get(self.context.ir_file);
 
         let mut methods = self.context.ir_file.funcs.iter().filter(|f| {
-            MethodNamingUtil::is_method_for_struct(f, &src.name)
-                || MethodNamingUtil::is_static_method_for_struct(f, &src.name)
+            let f = FunctionName::deserialize(&f.name);
+            f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
         let has_methods = methods.next().is_some();
         let mut inner = s
@@ -78,8 +78,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .funcs
             .iter()
             .filter(|f| {
-                MethodNamingUtil::is_method_for_struct(f, &src.name)
-                    || MethodNamingUtil::is_static_method_for_struct(f, &src.name)
+                let f = FunctionName::deserialize(&f.name);
+                f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
             })
             .collect::<Vec<_>>();
 
