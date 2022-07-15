@@ -14,6 +14,7 @@
     - [External types](feature/lang_external.md)
     - [Option](feature/lang_option.md)
   - [Zero copy](feature/zero_copy.md)
+  - [Methods](feature/methods.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)
   - [Sync in Dart](feature/sync_dart.md)

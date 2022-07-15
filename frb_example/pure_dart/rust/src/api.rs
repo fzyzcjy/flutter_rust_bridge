@@ -631,3 +631,93 @@ pub fn handle_stream_sink_at_3(
 ) -> Result<(), anyhow::Error> {
     handle_stream_sink_at_1(key, max, sink)
 }
+
+pub struct SumWith {
+    pub x: u32,
+}
+
+impl SumWith {
+    pub fn sum(&self, y: u32, z: u32) -> u32 {
+        self.x + y + z
+    }
+}
+
+pub struct ConcatenateWith {
+    pub a: String,
+}
+
+#[derive(Debug, Clone)]
+pub struct Log2 {
+    pub key: u32,
+    pub value: String,
+}
+
+impl ConcatenateWith {
+    pub fn new(a: String) -> ConcatenateWith {
+        ConcatenateWith { a }
+    }
+    pub fn concatenate(&self, b: String) -> String {
+        format!("{}{}", self.a, b)
+    }
+    pub fn concatenate_static(a: String, b: String) -> String {
+        format!("{}{}", a, b)
+    }
+
+    pub fn handle_some_stream_sink(
+        &self,
+        key: u32,
+        max: u32,
+        sink: StreamSink<Log2>,
+    ) -> Result<(), anyhow::Error> {
+        let a = self.a.clone();
+        std::thread::spawn(move || {
+            for i in 0..max {
+                sink.add(Log2 {
+                    key,
+                    value: format!("{}{}", a, i),
+                });
+            }
+            sink.close();
+        });
+        Ok(())
+    }
+
+    pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
+        std::thread::spawn(move || {
+            for i in 0..5 {
+                sink.add(i);
+            }
+            sink.close();
+        });
+        Ok(())
+    }
+
+    pub fn handle_some_static_stream_sink(
+        key: u32,
+        max: u32,
+        sink: StreamSink<Log2>,
+    ) -> Result<(), anyhow::Error> {
+        std::thread::spawn(move || {
+            for i in 0..max {
+                sink.add(Log2 {
+                    key,
+                    value: i.to_string(),
+                });
+            }
+            sink.close();
+        });
+        Ok(())
+    }
+
+    pub fn handle_some_static_stream_sink_single_arg(
+        sink: StreamSink<u32>,
+    ) -> Result<(), anyhow::Error> {
+        std::thread::spawn(move || {
+            for i in 0..5 {
+                sink.add(i);
+            }
+            sink.close();
+        });
+        Ok(())
+    }
+}

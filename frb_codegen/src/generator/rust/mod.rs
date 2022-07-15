@@ -7,7 +7,6 @@ mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
-
 pub use ty::*;
 pub use ty_boxed::*;
 pub use ty_delegate::*;
@@ -22,6 +21,7 @@ use std::collections::HashSet;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
+use crate::method_utils::FunctionName;
 use crate::others::*;
 use crate::utils::BlockIndex;
 
@@ -222,6 +222,8 @@ impl Generator {
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
+        let f = FunctionName::deserialize(&func.name);
+        let struct_name = f.struct_name();
         let params = [
             if func.mode.has_port_argument() {
                 vec!["port_: i64".to_string()]
@@ -241,6 +243,7 @@ impl Generator {
                 .collect::<Vec<_>>(),
         ]
         .concat();
+
         let mut inner_func_params = [
             vec![],
             func.inputs
@@ -276,8 +279,33 @@ impl Generator {
             .collect::<Vec<_>>()
             .join("");
 
-        let code_call_inner_func = TypeRustGenerator::new(func.output.clone(), ir_file)
-            .wrap_obj(format!("{}({})", func.name, inner_func_params.join(", ")));
+        let code_call_inner_func = if f.is_non_static_method() || f.is_static_method() {
+            let method_name = if f.is_non_static_method() {
+                inner_func_params[0] = format!("&{}", inner_func_params[0]);
+                FunctionName::deserialize(&func.name).method_name()
+            } else if f.is_static_method() {
+                FunctionName::deserialize(&func.name)
+                    .static_method_name()
+                    .unwrap()
+            } else {
+                panic!(
+                    "not a method neither static method but should be: {}",
+                    func.name
+                )
+            };
+            TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
+                r"{}::{}({})",
+                struct_name.unwrap(),
+                method_name,
+                inner_func_params.join(", ")
+            ))
+        } else {
+            TypeRustGenerator::new(func.output.clone(), ir_file).wrap_obj(format!(
+                "{}({})",
+                func.name,
+                inner_func_params.join(", ")
+            ))
+        };
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func
         } else {
@@ -325,7 +353,6 @@ impl Generator {
     }
 
     fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        // println!("generate_wire_struct: {:?}", ty);
         if let Some(fields) = TypeRustGenerator::new(ty.clone(), ir_file).wire_struct_fields() {
             format!(
                 r###"
@@ -349,7 +376,6 @@ impl Generator {
         ir_file: &IrFile,
         block_index: BlockIndex,
     ) -> String {
-        // println!("generate_allocate_funcs: {:?}", ty);
         TypeRustGenerator::new(ty.clone(), ir_file)
             .allocate_funcs(&mut self.extern_func_collector, block_index)
     }
@@ -375,7 +401,6 @@ impl Generator {
     }
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        // println!("generate_wire2api_func: {:?}", ty);
         if let Some(body) = TypeRustGenerator::new(ty.clone(), ir_file).wire2api_body() {
             format!(
                 "impl Wire2Api<{}> for {} {{
@@ -439,7 +464,6 @@ impl Generator {
     }
 
     fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        // println!("generate_impl_intodart: {:?}", ty);
         TypeRustGenerator::new(ty.clone(), ir_file).impl_intodart()
     }
 }
