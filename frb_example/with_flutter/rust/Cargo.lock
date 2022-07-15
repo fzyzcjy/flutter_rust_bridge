@@ -327,7 +327,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.37.2"
+version = "1.38.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -350,7 +350,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.37.2"
+version = "1.38.0"
 
 [[package]]
 name = "futures-core"

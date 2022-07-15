@@ -1,6 +1,6 @@
 [package]
 name = "flutter_rust_bridge"
-version = "1.37.2"
+version = "1.38.0"
 edition = "2018"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
 license = "MIT"
