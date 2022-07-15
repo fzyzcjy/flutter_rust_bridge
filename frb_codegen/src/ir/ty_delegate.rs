@@ -7,6 +7,11 @@ pub enum IrTypeDelegate {
     StringList,
     SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
+    PrimitiveEnum {
+        ir: IrTypeEnumRef,
+        /// Allows for `#[repr]`'s other than [i32]
+        repr: IrTypePrimitive,
+    },
 }
 
 impl IrTypeDelegate {
@@ -24,6 +29,7 @@ impl IrTypeDelegate {
                 })
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::PrimitiveEnum { repr, .. } => IrType::Primitive(repr.clone()),
         }
     }
 }
@@ -41,6 +47,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
+            IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
         }
     }
 
@@ -51,6 +58,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::SyncReturnVecU8 | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 self.get_delegate().dart_api_type()
             }
+            IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
         }
     }
 
@@ -69,6 +77,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
+            IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
         }
     }
 

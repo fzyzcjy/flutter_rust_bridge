@@ -30,7 +30,7 @@ This step is optional, since I have generated the source code already (in quicks
 Firstly, you may need to install dependencies of this library:
 
 * Install `ffigen`:  `dart pub global activate ffigen`, and [install LLVM](https://pub.dev/packages/ffigen#installing-llvm) which is required by `ffigen`.
-* Install the codegen program: `cargo install flutter_rust_bridge_codegen`.
+* Install the codegen program: `cargo install flutter_rust_bridge_codegen` (or other probably faster methods described [here](quickstart.md)).
 
 Then, run the code generator:
 

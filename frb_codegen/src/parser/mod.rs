@@ -6,11 +6,13 @@ use log::debug;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
+use syn::token::Colon;
 use syn::*;
 
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
+use crate::method_utils::FunctionName;
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
 
@@ -20,7 +22,8 @@ const RESULT_IDENT: &str = "Result";
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
     let crate_map = Crate::new(manifest_path);
 
-    let src_fns = extract_fns_from_file(&file);
+    let mut src_fns = extract_fns_from_file(&file);
+    src_fns.extend(extract_methods_from_file(&file));
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
 
@@ -39,7 +42,7 @@ impl<'a> Parser<'a> {
 }
 
 impl<'a> Parser<'a> {
-    fn parse(mut self, source_rust_content: &str, src_fns: Vec<&ItemFn>) -> IrFile {
+    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> IrFile {
         let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
 
         let has_executor = source_rust_content.contains(HANDLER_NAME);
@@ -109,17 +112,16 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
-        let mut mode = None;
+        let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
-        for sig_input in &sig.inputs {
+        for (i, sig_input) in sig.inputs.iter().enumerate() {
             if let FnArg::Typed(ref pat_type) = sig_input {
                 let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
                     format!("{}", pat_ident.ident)
                 } else {
                     panic!("unexpected pat_type={:?}", pat_type)
                 };
-
                 match self.try_parse_fn_arg_type(&pat_type.ty).unwrap_or_else(|| {
                     panic!(
                         "Failed to parse function argument type `{}`",
@@ -128,7 +130,7 @@ impl<'a> Parser<'a> {
                 }) {
                     IrFuncArg::StreamSinkType(ty) => {
                         output = Some(ty);
-                        mode = Some(IrFuncMode::Stream);
+                        mode = Some(IrFuncMode::Stream { argument_index: i });
                     }
                     IrFuncArg::Type(ty) => {
                         inputs.push(IrField {
@@ -174,31 +176,159 @@ impl<'a> Parser<'a> {
             );
         }
 
-        // let comments = func.attrs.iter().filter_map(extract_comments).collect();
-
         IrFunc {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
             fallible,
-            mode: mode.expect("unsupported mode"),
+            mode: mode.expect("missing mode"),
             comments: extract_comments(&func.attrs),
         }
     }
 }
 
-fn extract_fns_from_file(file: &File) -> Vec<&ItemFn> {
+fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
     let mut src_fns = Vec::new();
 
     for item in file.items.iter() {
         if let Item::Fn(ref item_fn) = item {
             if let Visibility::Public(_) = &item_fn.vis {
-                src_fns.push(item_fn);
+                src_fns.push(item_fn.clone());
             }
         }
     }
 
     src_fns
+}
+
+fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
+    let mut src_fns = Vec::new();
+
+    for item in file.items.iter() {
+        if let Item::Impl(ref item_impl) = item {
+            for item in &item_impl.items {
+                if let ImplItem::Method(item_method) = item {
+                    if let Visibility::Public(_) = &item_method.vis {
+                        let f = item_method_to_function(item_impl, item_method)
+                            .expect("item implementation is unsupported");
+                        src_fns.push(f);
+                    }
+                }
+            }
+        }
+    }
+
+    src_fns
+}
+
+// Converts an item implementation (something like fn(&self, ...)) into a function where `&self` is a named parameter to `&Self`
+fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -> Option<ItemFn> {
+    if let Type::Path(p) = item_impl.self_ty.as_ref() {
+        let struct_name = p.path.segments.first().unwrap().ident.to_string();
+        let span = item_method.sig.ident.span();
+        let is_static_method = {
+            let Signature { inputs, .. } = &item_method.sig;
+            {
+                !matches!(inputs.first(), Some(FnArg::Receiver(..)))
+            }
+        };
+        let method_name = if is_static_method {
+            let self_type = {
+                let ItemImpl { self_ty, .. } = item_impl;
+                if let Type::Path(TypePath { qself: _, path }) = &**self_ty {
+                    if let Some(PathSegment {
+                        ident,
+                        arguments: _,
+                    }) = path.segments.first()
+                    {
+                        Some(ident.to_string())
+                    } else {
+                        None
+                    }
+                } else {
+                    None
+                }
+            };
+            Ident::new(
+                &FunctionName::new(
+                    &item_method.sig.ident.to_string(),
+                    crate::method_utils::MethodInfo::Static {
+                        struct_name: self_type.unwrap(),
+                    },
+                )
+                .serialize(),
+                span,
+            )
+        } else {
+            Ident::new(
+                &FunctionName::new(
+                    &item_method.sig.ident.to_string(),
+                    crate::method_utils::MethodInfo::NonStatic {
+                        struct_name: struct_name.clone(),
+                    },
+                )
+                .serialize(),
+                span,
+            )
+        };
+
+        Some(ItemFn {
+            attrs: vec![],
+            vis: item_method.vis.clone(),
+            sig: Signature {
+                constness: None,
+                asyncness: None,
+                unsafety: None,
+                abi: None,
+                fn_token: item_method.sig.fn_token,
+                ident: method_name,
+                generics: item_method.sig.generics.clone(),
+                paren_token: item_method.sig.paren_token,
+                inputs: item_method
+                    .sig
+                    .inputs
+                    .iter()
+                    .map(|input| {
+                        if let FnArg::Receiver(Receiver { mutability, .. }) = input {
+                            let mut segments = Punctuated::new();
+                            segments.push(PathSegment {
+                                ident: Ident::new(struct_name.as_str(), span),
+                                arguments: PathArguments::None,
+                            });
+                            if mutability.is_some() {
+                                panic!("mutable methods are unsupported for safety reasons");
+                            }
+                            FnArg::Typed(PatType {
+                                attrs: vec![],
+                                pat: Box::new(Pat::Ident(PatIdent {
+                                    attrs: vec![],
+                                    by_ref: Some(syn::token::Ref { span }),
+                                    mutability: *mutability,
+                                    ident: Ident::new("that", span),
+                                    subpat: None,
+                                })),
+                                colon_token: Colon { spans: [span] },
+                                ty: Box::new(Type::Path(TypePath {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments,
+                                    },
+                                })),
+                            })
+                        } else {
+                            input.clone()
+                        }
+                    })
+                    .collect::<Punctuated<_, _>>(),
+                variadic: None,
+                output: item_method.sig.output.clone(),
+            },
+            block: Box::new(item_method.block.clone()),
+        })
+    } else {
+        None
+    }
 }
 
 fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {

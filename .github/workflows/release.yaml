@@ -1,0 +1,111 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-upload:
+    name: Build and Upload Binaries
+    runs-on: ${{ matrix.os }}
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen-x86_64-unknown-linux-gnu-${{ github.ref_name }}.tgz
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen-x86_64-unknown-linux-musl-${{ github.ref_name }}.tgz
+          - target: i686-unknown-linux-musl
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen-i686-unknown-linux-musl-${{ github.ref_name }}.tgz
+          - target: aarch64-unknown-linux-musl
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen-aarch64-unknown-linux-musl-${{ github.ref_name }}.tgz
+          - target: arm-unknown-linux-musleabihf
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen-arm-unknown-linux-musleabihf-${{ github.ref_name }}.tgz
+          - target: x86_64-apple-darwin
+            os: macos-latest
+            name: flutter_rust_bridge_codegen-x86_64-apple-darwin-${{ github.ref_name }}.tgz
+          - target: aarch64-apple-darwin
+            os: macos-latest
+            name: flutter_rust_bridge_codegen-aarch64-apple-darwin-${{ github.ref_name }}.tgz
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+            name: flutter_rust_bridge_codegen-x86_64-pc-windows-msvc-${{ github.ref_name }}.zip
+          - target: i686-pc-windows-msvc
+            os: windows-latest
+            name: flutter_rust_bridge_codegen-i686-pc-windows-msvc-${{ github.ref_name }}.zip
+          - target: x86_64-unknown-freebsd
+            os: ubuntu-latest
+            name: flutter_rust_bridge_codegen-x86_64-unknown-freebsd-${{ github.ref_name }}.tgz
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          target: ${{ matrix.target }}
+      - name: Build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: |
+            --release --target ${{ matrix.target }} --manifest-path frb_codegen/Cargo.toml
+          use-cross: ${{ matrix.os == 'ubuntu-latest' }}
+      - name: Post-build (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          cd frb_codegen/target/${{ matrix.target }}/release
+          7z a ../../../../${{ matrix.name }} flutter_rust_bridge_codegen.exe
+          cd -
+      - name: Post-build (*nix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          cd frb_codegen/target/${{ matrix.target }}/release
+          tar czvf ../../../../${{ matrix.name }} flutter_rust_bridge_codegen
+          cd -
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.name }}
+          path: ${{ matrix.name }}
+  upload-artifacts:
+    name: Add Build Artifacts to Release
+    needs: build-upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+      - name: Generate checksums
+        run: |
+          for file in flutter_rust_bridge_codegen-*/flutter_rust_bridge_codegen-*; do
+            openssl dgst -sha256 -r "$file" | awk '{print $1}' > "${file}.sha256";
+          done
+      - name: Add Artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          files: flutter_rust_bridge_codegen-*/flutter_rust_bridge_codegen-*
+          tag_name: ${{ github.ref_name }}
+  refresh-homebrew:
+    name: Refresh Homebrew formula
+    runs-on: ubuntu-latest
+    needs: upload-artifacts
+    steps:
+      - uses: mislav/bump-homebrew-formula-action@v2
+        with:
+          formula-name: flutter_rust_bridge_codegen
+          homebrew-tap: Desdaemon/homebrew-repo
+          tag-name: ${{ github.ref_name }}
+        env:
+          COMMITTER_TOKEN: ${{ secrets.GH_PAT }}

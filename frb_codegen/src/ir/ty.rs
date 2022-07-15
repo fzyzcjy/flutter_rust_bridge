@@ -41,6 +41,24 @@ impl IrType {
             _ => "",
         }
     }
+
+    #[inline]
+    pub fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        match self {
+            Primitive(repr) | Delegate(IrTypeDelegate::PrimitiveEnum { repr, .. }) => Some(repr),
+            _ => None,
+        }
+    }
+
+    #[inline]
+    pub fn is_primitive(&self) -> bool {
+        self.as_primitive().is_some()
+    }
+
+    #[inline]
+    pub fn is_struct(&self) -> bool {
+        matches!(self, StructRef(_) | EnumRef(_))
+    }
 }
 
 #[enum_dispatch]

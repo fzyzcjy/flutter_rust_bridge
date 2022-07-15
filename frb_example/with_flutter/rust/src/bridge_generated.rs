@@ -256,22 +256,22 @@ pub struct wire_uint_8_list {
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_point() -> *mut wire_Point {
+pub extern "C" fn new_box_autoadd_point_0() -> *mut wire_Point {
     support::new_leak_box_ptr(wire_Point::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_size() -> *mut wire_Size {
+pub extern "C" fn new_box_autoadd_size_0() -> *mut wire_Size {
     support::new_leak_box_ptr(wire_Size::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_tree_node() -> *mut wire_TreeNode {
+pub extern "C" fn new_box_autoadd_tree_node_0() -> *mut wire_TreeNode {
     support::new_leak_box_ptr(wire_TreeNode::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_size(len: i32) -> *mut wire_list_size {
+pub extern "C" fn new_list_size_0(len: i32) -> *mut wire_list_size {
     let wrap = wire_list_size {
         ptr: support::new_leak_vec_ptr(<wire_Size>::new_with_null_ptr(), len),
         len,
@@ -280,7 +280,7 @@ pub extern "C" fn new_list_size(len: i32) -> *mut wire_list_size {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_tree_node(len: i32) -> *mut wire_list_tree_node {
+pub extern "C" fn new_list_tree_node_0(len: i32) -> *mut wire_list_tree_node {
     let wrap = wire_list_tree_node {
         ptr: support::new_leak_vec_ptr(<wire_TreeNode>::new_with_null_ptr(), len),
         len,
@@ -289,7 +289,7 @@ pub extern "C" fn new_list_tree_node(len: i32) -> *mut wire_list_tree_node {
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
+pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -326,21 +326,21 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
 impl Wire2Api<Point> for *mut wire_Point {
     fn wire2api(self) -> Point {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<Point>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<Size> for *mut wire_Size {
     fn wire2api(self) -> Size {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<Size>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<TreeNode> for *mut wire_TreeNode {
     fn wire2api(self) -> TreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        (*wrap).wire2api().into()
+        Wire2Api::<TreeNode>::wire2api(*wrap).into()
     }
 }
 

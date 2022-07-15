@@ -10,7 +10,7 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final dylib = DynamicLibrary.open(dylibPath);
-  final api = FlutterRustBridgeExampleImpl(dylib);
+  final api = FlutterRustBridgeExampleSingleBlockTestImpl(dylib);
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -128,6 +128,26 @@ void main(List<String> args) async {
       cnt++;
     }
     expect(cnt, 10);
+  });
+
+  test('dart call handle_stream', () {
+    Future<void> _testHandleStream(
+        Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
+      final max = 5;
+      final key = 8;
+      final stream = handleStreamFunction(key: key, max: max);
+      var cnt = 0;
+      await for (final value in stream) {
+        print("output from handle_stream_x's stream: $value");
+        expect(value.key, key);
+        cnt++;
+      }
+      expect(cnt, max);
+    }
+
+    _testHandleStream(api.handleStreamSinkAt1);
+    _testHandleStream(api.handleStreamSinkAt2);
+    _testHandleStream(api.handleStreamSinkAt3);
   });
 
   test('dart call returnErr', () async {
@@ -361,6 +381,63 @@ void main(List<String> args) async {
     // and thus the callback should be called.
     expect(listenerCalled, equals(true));
     await api.closeEventListener();
+  });
+
+  test('ConcatenateWith test', () async {
+    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final String concatenated = await concatenateWith.concatenate(b: "world");
+    expect(concatenated, equals("hello world"));
+
+    final staticConcatenated = await ConcatenateWith.concatenateStatic(bridge: api, a: "hello ", b: "world");
+    expect(staticConcatenated, equals("hello world"));
+
+    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
+    final String concatenated2 = await concatenatedConstructor.concatenate(b: "world");
+    expect(concatenated2, equals("hello world"));
+  });
+
+  test('SumWith test', () async {
+    final SumWith sumWith = SumWith(bridge: api, x: 3);
+    final int sum = await sumWith.sum(y: 1, z: 5);
+    expect(sum, equals(3 + 1 + 5));
+  });
+
+  test('ConcatenateWith stream sink test', () async {
+    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final int key = 10;
+    final int max = 5;
+    final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
+    int cnt = 0;
+    await for (final value in stream) {
+      print("output from ConcatenateWith's stream: $value");
+      expect(value.value, "hello $cnt");
+      cnt++;
+    }
+    expect(cnt, max);
+  });
+
+  test('ConcatenateWith static stream sink test', () async {
+    final int key = 10;
+    final int max = 5;
+    final stream = ConcatenateWith.handleSomeStaticStreamSink(bridge: api, key: key, max: max);
+    int cnt = 0;
+    await for (final value in stream) {
+      print("output from ConcatenateWith's static stream: $value");
+      expect(value.value, "$cnt");
+      cnt++;
+    }
+    expect(cnt, max);
+  });
+
+  test('ConcatenateWith static stream sink at 1 test', () async {
+    final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
+    int cnt = 0;
+    await for (final value in stream) {
+      print("output from ConcatenateWith's static stream: $value");
+      expect(value, cnt);
+      cnt++;
+    }
+    expect(cnt, 5);
   });
 
   print('flutter_rust_bridge example program end');

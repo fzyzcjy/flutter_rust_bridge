@@ -1,4 +1,6 @@
-use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen, RawOpts};
+use lib_flutter_rust_bridge_codegen::{
+    config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
+};
 
 /// Path of input Rust code
 const RUST_INPUT: &str = "src/api.rs";
@@ -18,9 +20,11 @@ fn main() {
         ..Default::default()
     };
     // get opts from raw opts
-    let opts = config_parse(raw_opts);
-    // run flutter_rust_bridge_codegen
-    for opt in &opts {
-        frb_codegen(opt).unwrap();
+    let configs = config_parse(raw_opts);
+
+    // generation of rust api for ffi
+    let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
+    for config in configs.iter() {
+        frb_codegen(config, &all_symbols).unwrap();
     }
 }

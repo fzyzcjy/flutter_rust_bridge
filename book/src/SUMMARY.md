@@ -14,6 +14,7 @@
     - [External types](feature/lang_external.md)
     - [Option](feature/lang_option.md)
   - [Zero copy](feature/zero_copy.md)
+  - [Methods](feature/methods.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)
   - [Sync in Dart](feature/sync_dart.md)
@@ -21,6 +22,7 @@
   - [Handler](feature/handler.md)
   - [Initialization](feature/init.md)
   - [Async in Rust](feature/async_rust.md)
+  - [Multiple files](feature/multiple_files.md)
   - [Cancellable tasks](feature/cancelable_task.md)
   - [Object pools](feature/object_pool.md)
   - [Miscellaneous](feature/misc.md)
@@ -70,4 +72,4 @@
 - [Set up Flutter/Dart+Rust support from scratch](set_up_from_scratch.md)
 - [Articles](article.md)
   - [Async in Rust](article/async_in_rust.md)
-
+  - [Generate multiple files](article/generate_multiple_files.md)

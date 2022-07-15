@@ -40,20 +40,32 @@ jobs:
       - name: Install ffigen
         run: dart pub global activate ffigen ^6.0.1
 
-      - name: Install dart dependencies
+      - name: Install dart dependencies (single block)
         working-directory: ./frb_example/pure_dart/dart
         run: dart pub get
 
-      - name: Run valgrind script
+      - name: Install dart dependencies (multi blocks)
+        working-directory: ./frb_example/pure_dart_multi/dart
+        run: dart pub get
+
+      - name: Run valgrind script (single block)
         working-directory: ./frb_example/pure_dart/dart
         run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+          
+      - name: Run valgrind script (multi blocks)
+        working-directory: ./frb_example/pure_dart_multi/dart
+        run: chmod +x ./run.sh && ./run.sh
+        env:
+          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+
+
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
     name: Flutter (iOS) integration test
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     strategy:
       matrix:
@@ -118,15 +130,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       # #499, https://github.com/actions/virtual-environments/issues/5595
       - name: Configure ndk
         run: |
            ANDROID_HOME=$HOME/Library/Android/sdk
            SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
-           
+
            echo y | $SDKMANAGER "ndk;21.4.7075529"
-           
+
            ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
 
       - name: Install Rust toolchain
@@ -355,6 +367,13 @@ jobs:
         working-directory: ./frb_example/pure_dart/rust
         run: cargo test --verbose
 
+      - name: Build pure_dart_multi example
+        working-directory: ./frb_example/pure_dart_multi/rust
+        run: cargo build --verbose
+      - name: Run tests for pure_dart_multi example
+        working-directory: ./frb_example/pure_dart_multi/rust
+        run: cargo test --verbose
+
       - name: Build with_flutter example
         working-directory: ./frb_example/with_flutter/rust
         run: cargo build --verbose
@@ -433,6 +452,17 @@ jobs:
           command: clippy
           args: --manifest-path=./frb_example/pure_dart/rust/Cargo.toml -- -D warnings
 
+      - name: Run fmt for pure_dart_multi example
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --manifest-path=./frb_example/pure_dart_multi/rust/Cargo.toml --all -- --check
+      - name: Run clippy for pure_dart_multi example
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path=./frb_example/pure_dart_multi/rust/Cargo.toml -- -D warnings
+
       - name: Run fmt for with_flutter example
         uses: actions-rs/cargo@v1
         with:
@@ -477,6 +507,16 @@ jobs:
         run: dart format --output=none --set-exit-if-changed --line-length 120 .
       - name: Analyze project source for pure_dart example
         working-directory: ./frb_example/pure_dart/dart
+        run: dart analyze --fatal-infos
+
+      - name: Install dependencies for pure_dart_multi example
+        working-directory: ./frb_example/pure_dart_multi/dart
+        run: dart pub get
+      - name: Verify formatting for pure_dart_multi example
+        working-directory: ./frb_example/pure_dart_multi/dart
+        run: dart format --output=none --set-exit-if-changed --line-length 120 .
+      - name: Analyze project source for pure_dart_multi example
+        working-directory: ./frb_example/pure_dart_multi/dart
         run: dart analyze --fatal-infos
 
       - uses: subosito/flutter-action@v2
@@ -549,6 +589,30 @@ jobs:
         env:
           RUST_LOG: debug
 
+      # NOTE in windows, need "\\" instead of "/"
+      - name: Run codegen to pure_dart_multi example (non-windows)
+        if: ${{ matrix.os.family != 'windows' }}
+        working-directory: ./frb_codegen
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+          --rust-input ../frb_example/pure_dart_multi/rust/src/api_1.rs ../frb_example/pure_dart_multi/rust/src/api_2.rs
+          --dart-output ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
+          --dart-format-line-length 120
+          --rust-output ../frb_example/pure_dart_multi/rust/src/generated_api_1.rs ../frb_example/pure_dart_multi/rust/src/generated_api_2.rs
+          --class-name ApiClass1 ApiClass2
+        env:
+          RUST_LOG: debug
+      - name: Run codegen to pure_dart_multi example (windows)
+        if: ${{ matrix.os.family == 'windows' }}
+        working-directory: ./frb_codegen
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+          --rust-input ..\\frb_example\\pure_dart_multi\\rust\\src\\api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\api_2.rs
+          --dart-output ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_1.dart ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_2.dart
+          --dart-format-line-length 120
+          --rust-output ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_2.rs
+          --class-name ApiClass1 ApiClass2
+        env:
+            RUST_LOG: debug
+
       - name: Run codegen to with_flutter example (non-windows)
         if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
@@ -563,11 +627,11 @@ jobs:
           RUST_LOG: debug
 
       # #467
-      - name: "Modify cross-platform code (osx)"
+      - name: "Modify cross-platform code (osx) (single block)"
         if: ${{ matrix.os.family == 'osx' }}
         # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
         run: sed -i '' -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.dart
-      - name: "Modify cross-platform code (non-osx)"
+      - name: "Modify cross-platform code (non-osx) (single block)"
         if: ${{ matrix.os.family != 'osx' }}
         run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.dart
 
