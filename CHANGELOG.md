@@ -1,3 +1,7 @@
+## 1.38.0
+
+* Support methods, such that Rust struct impls can be converted to Dart class methods #543 (thanks @lattice0)
+
 ## 1.37.2
 
 * Fix compile errors when using enums within fields #564 (thanks @Desdaemon)
