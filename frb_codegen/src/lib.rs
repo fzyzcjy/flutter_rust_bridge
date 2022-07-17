@@ -1,3 +1,5 @@
+//! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
+
 use std::fs;
 use std::path::Path;
 

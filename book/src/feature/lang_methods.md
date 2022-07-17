@@ -19,7 +19,6 @@ impl SumWith {
 Becomes:
 
 ```Dart
-
 class SumWith {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   final int x;
@@ -33,3 +32,4 @@ class SumWith {
 ```
 
 Remark: If you are curious about `Future`, have a look at [this](async_dart.md).
+
