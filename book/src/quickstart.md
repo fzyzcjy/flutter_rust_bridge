@@ -11,10 +11,25 @@ pub struct TreeNode { pub value: String, pub children: Vec<MyTreeNode> }
 pub enum DrawMode { Colorful {palette: String}, Grayscale }
 ```
 
-Run the code generator. (It needs some installation steps. You may refer to [the tutorial](tutorial_with_flutter.md), [create new projects from a template](template.md) or [integrating with existing projects](integrate.md) for details.)
+Install the code generator `flutter_rust_bridge_codegen`:
 
+```bash
+cargo install flutter_rust_bridge_codegen
+# or with cargo-binstall
+cargo binstall flutter_rust_bridge_codegen
+# or with scoop (Windows)
+scoop bucket add frb https://github.com/Desdaemon/scoop-repo
+scoop install flutter_rust_bridge_codegen
+# or with Homebrew
+brew install desdaemon/repo/flutter_rust_bridge_codegen
 ```
-flutter_rust_bridge_codegen --rust-input path/to/api.rs --dart-output path/to/bridge_generated.dart
+
+
+Then run the code generator. (It needs some installation steps. You may refer to [the tutorial](tutorial_with_flutter.md), [create new projects from a template](template.md) or [integrating with existing projects](integrate.md) for details.)
+
+```bash
+flutter_rust_bridge_codegen --rust-input path/to/api.rs \
+                            --dart-output path/to/bridge_generated.dart
 ```
 
 With bindings automatically generated, use it seamlessly in Flutter/Dart:

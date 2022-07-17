@@ -1,4 +1,3 @@
-use crate::ir::IrType::Primitive;
 use crate::ir::*;
 
 #[derive(Debug, Clone)]
@@ -30,11 +29,11 @@ impl IrTypeTrait for IrTypeBoxed {
     }
 
     fn dart_wire_type(&self) -> String {
-        let wire_type = if let Primitive(prim) = &*self.inner {
-            prim.dart_native_type().to_owned()
-        } else {
-            self.inner.dart_wire_type()
-        };
+        let wire_type = self
+            .inner
+            .as_primitive()
+            .map(|prim| prim.dart_native_type().to_owned())
+            .unwrap_or_else(|| self.inner.dart_wire_type());
         format!("ffi.Pointer<{}>", wire_type)
     }
 

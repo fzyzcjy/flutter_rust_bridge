@@ -56,6 +56,14 @@ clean:
     cd {{frb_flutter}} && flutter clean
     cd {{frb_flutter}}/rust && cargo clean
 
+check:
+    cd {{frb_pure}}/dart && dart pub get && dart analyze
+    cd {{frb_pure}}/rust && cargo clippy
+    cd {{frb_pure_multi}}/dart && dart pub get && dart analyze
+    cd {{frb_pure_multi}}/rust && cargo clippy
+    cd {{frb_flutter}} && flutter pub get && flutter analyze
+    cd {{frb_flutter}}/rust && cargo clippy
+
 refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)
     (cd frb_macros && cargo clippy -- -D warnings)
@@ -88,6 +96,8 @@ release old_version new_version:
     sed -i '' 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
 
     just refresh_all
+
+    cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
 
     git add --all
     git status && git diff --staged | grep ''

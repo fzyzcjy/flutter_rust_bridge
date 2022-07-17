@@ -13,6 +13,7 @@
     - [Enum](feature/lang_enum.md)
     - [External types](feature/lang_external.md)
     - [Option](feature/lang_option.md)
+    - [Methods](feature/methods.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)

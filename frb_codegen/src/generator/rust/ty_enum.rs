@@ -8,67 +8,50 @@ type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn wire2api_body(&self) -> Option<String> {
         let enu = self.ir.get(self.context.ir_file);
-        Some(if self.ir.is_struct {
-            let variants = enu
-                .variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| match &variant.kind {
-                    IrVariantKind::Value => {
-                        format!("{} => {}::{},", idx, enu.name, variant.name)
-                    }
-                    IrVariantKind::Struct(st) => {
-                        let fields: Vec<_> = st
-                            .fields
-                            .iter()
-                            .map(|field| {
-                                if st.is_fields_named {
-                                    format!("{0}: ans.{0}.wire2api()", field.name.rust_style())
-                                } else {
-                                    format!("ans.{}.wire2api()", field.name.rust_style())
-                                }
-                            })
-                            .collect();
-                        let (left, right) = st.brackets_pair();
-                        format!(
-                            "{} => unsafe {{
-                                        let ans = support::box_from_leak_ptr(self.kind);
-                                        let ans = support::box_from_leak_ptr(ans.{2});
-                                        {}::{2}{3}{4}{5}
-                                    }}",
-                            idx,
-                            enu.name,
-                            variant.name,
-                            left,
-                            fields.join(","),
-                            right
-                        )
-                    }
-                })
-                .collect::<Vec<_>>();
-            format!(
-                "match self.tag {{
-                        {}
-                        _ => unreachable!(),
-                    }}",
-                variants.join("\n"),
-            )
-        } else {
-            let variants = enu
-                .variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
-                .collect::<Vec<_>>()
-                .join("\n");
-            format!(
-                "match self {{
-                        {}
-                        _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
-                    }}",
-                variants, enu.name
-            )
-        })
+        let variants = enu
+            .variants()
+            .iter()
+            .enumerate()
+            .map(|(idx, variant)| match &variant.kind {
+                IrVariantKind::Value => {
+                    format!("{} => {}::{},", idx, enu.name, variant.name)
+                }
+                IrVariantKind::Struct(st) => {
+                    let fields: Vec<_> = st
+                        .fields
+                        .iter()
+                        .map(|field| {
+                            if st.is_fields_named {
+                                format!("{0}: ans.{0}.wire2api()", field.name.rust_style())
+                            } else {
+                                format!("ans.{}.wire2api()", field.name.rust_style())
+                            }
+                        })
+                        .collect();
+                    let (left, right) = st.brackets_pair();
+                    format!(
+                        "{} => unsafe {{
+                            let ans = support::box_from_leak_ptr(self.kind);
+                            let ans = support::box_from_leak_ptr(ans.{2});
+                            {}::{2}{3}{4}{5}
+                        }}",
+                        idx,
+                        enu.name,
+                        variant.name,
+                        left,
+                        fields.join(","),
+                        right
+                    )
+                }
+            })
+            .collect::<Vec<_>>();
+        Some(format!(
+            "match self.tag {{
+                {}
+                _ => unreachable!(),
+            }}",
+            variants.join("\n"),
+        ))
     }
 
     fn structs(&self) -> String {
@@ -198,88 +181,60 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             None => (&src.name, "Self"),
         };
         let self_ref = self.self_access("self".to_owned());
-        if self.ir.is_struct {
-            let variants = src
-                .variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| {
-                    let tag = format!("{}.into_dart()", idx);
-                    match &variant.kind {
-                        IrVariantKind::Value => {
-                            format!("{}::{} => vec![{}],", self_path, variant.name, tag)
-                        }
-                        IrVariantKind::Struct(s) => {
-                            let fields = Some(tag)
-                                .into_iter()
-                                .chain(s.fields.iter().map(|field| {
-                                    let gen = TypeRustGenerator::new(
-                                        field.ty.clone(),
-                                        self.context.ir_file,
-                                    );
-                                    gen.convert_to_dart(field.name.rust_style().to_owned())
-                                }))
-                                .collect::<Vec<_>>();
-                            let pattern = s
-                                .fields
-                                .iter()
-                                .map(|field| field.name.rust_style().to_owned())
-                                .collect::<Vec<_>>();
-                            let (left, right) = s.brackets_pair();
-                            format!(
-                                "{}::{}{}{}{} => vec![{}],",
-                                self_path,
-                                variant.name,
-                                left,
-                                pattern.join(","),
-                                right,
-                                fields.join(",")
-                            )
-                        }
+        let variants = src
+            .variants()
+            .iter()
+            .enumerate()
+            .map(|(idx, variant)| {
+                let tag = format!("{}.into_dart()", idx);
+                match &variant.kind {
+                    IrVariantKind::Value => {
+                        format!("{}::{} => vec![{}],", self_path, variant.name, tag)
                     }
-                })
-                .collect::<Vec<_>>();
-            format!(
-                "impl support::IntoDart for {} {{
-                    fn into_dart(self) -> support::DartCObject {{
-                        match {} {{
-                            {}
-                        }}.into_dart()
-                    }}
-                }}
-                impl support::IntoDartExceptPrimitive for {0} {{}}
-                ",
-                name,
-                self_ref,
-                variants.join("\n")
-            )
-        } else {
-            let variants = src
-                .variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| format!("{}::{} => {},", self_path, variant.name, idx))
-                .collect::<Vec<_>>()
-                .join("\n");
-            format!(
-                "impl support::IntoDart for {} {{
+                    IrVariantKind::Struct(st) => {
+                        let fields = Some(tag)
+                            .into_iter()
+                            .chain(st.fields.iter().map(|field| {
+                                let gen =
+                                    TypeRustGenerator::new(field.ty.clone(), self.context.ir_file);
+                                gen.convert_to_dart(field.name.rust_style().to_owned())
+                            }))
+                            .collect::<Vec<_>>();
+                        let pattern = st
+                            .fields
+                            .iter()
+                            .map(|field| field.name.rust_style().to_owned())
+                            .collect::<Vec<_>>();
+                        let (left, right) = st.brackets_pair();
+                        format!(
+                            "{}::{}{}{}{} => vec![{}],",
+                            self_path,
+                            variant.name,
+                            left,
+                            pattern.join(","),
+                            right,
+                            fields.join(",")
+                        )
+                    }
+                }
+            })
+            .collect::<Vec<_>>();
+        format!(
+            "impl support::IntoDart for {} {{
                 fn into_dart(self) -> support::DartCObject {{
                     match {} {{
                         {}
                     }}.into_dart()
                 }}
             }}
-            ",
-                name, self_ref, variants
-            )
-        }
+            impl support::IntoDartExceptPrimitive for {0} {{}}",
+            name,
+            self_ref,
+            variants.join("\n")
+        )
     }
 
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
-        if !self.ir.is_struct {
-            return "".to_string();
-        }
-
         fn init_of(ty: &IrType) -> &str {
             if ty.rust_wire_is_pointer() {
                 "core::ptr::null_mut()"
@@ -309,10 +264,10 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     Some(&format!("*mut {}Kind", self.ir.name)),
                     &format!(
                         "support::new_leak_box_ptr({}Kind {{
-                        {}: support::new_leak_box_ptr({} {{
-                            {}
-                        }})
-                    }})",
+                            {}: support::new_leak_box_ptr({} {{
+                                {}
+                            }})
+                        }})",
                         self.ir.name,
                         variant.name.rust_style(),
                         typ,
