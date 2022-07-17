@@ -1,18 +1,15 @@
 # Methods
 
-There is support for structs with methods
+There is support for structs with methods. Both static methods, and non-static methods are supported.
 
 ## Example
 
 ```rust,noplayground
-pub struct SumWith {
-    pub x: u32,
-}
+pub struct SumWith { pub x: u32 }
 
 impl SumWith {
-    pub fn sum(&self, y: u32) -> u32 {
-        self.x + y 
-    }
+    pub fn sum(&self, y: u32) -> u32 { self.x + y }
+    pub fn sum_static(x: u32, y: u32) -> u32 { x + y }
 }
 ```
 
@@ -27,7 +24,9 @@ class SumWith {
     required this.bridge,
     required this.x,
   });
+
   Future<int> sum({required int y, dynamic hint}) => ..
+  static Future<int> sum({required int x, required int y, dynamic hint}) => ..
 }
 ```
 
