@@ -135,16 +135,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="methods"><a class="header" href="#methods">Methods</a></h1>
-<p>There is support for structs with methods</p>
+<p>There is support for structs with methods. Both static methods, and non-static methods are supported.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
-<pre><code class="language-rust noplayground">pub struct SumWith {
-    pub x: u32,
-}
+<pre><code class="language-rust noplayground">pub struct SumWith { pub x: u32 }
 
 impl SumWith {
-    pub fn sum(&amp;self, y: u32) -&gt; u32 {
-        self.x + y 
-    }
+    pub fn sum(&amp;self, y: u32) -&gt; u32 { self.x + y }
+    pub fn sum_static(x: u32, y: u32) -&gt; u32 { x + y }
 }
 </code></pre>
 <p>Becomes:</p>
@@ -156,7 +153,9 @@ impl SumWith {
     required this.bridge,
     required this.x,
   });
+
   Future&lt;int&gt; sum({required int y, dynamic hint}) =&gt; ..
+  static Future&lt;int&gt; sum({required int x, required int y, dynamic hint}) =&gt; ..
 }
 </code></pre>
 <p>Remark: If you are curious about <code>Future</code>, have a look at <a href="async_dart.html">this</a>.</p>
