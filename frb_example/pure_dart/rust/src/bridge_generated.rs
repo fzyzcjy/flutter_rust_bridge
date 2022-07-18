@@ -897,6 +897,81 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_new__static_method__SomeStruct(port_: i64, value: u32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "new__static_method__SomeStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_value = value.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(SomeStruct::new(api_value))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_static_return_err_custom_error__static_method__SomeStruct(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "static_return_err_custom_error__static_method__SomeStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| SomeStruct::static_return_err_custom_error(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_static_return_ok_custom_error__static_method__SomeStruct(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "static_return_ok_custom_error__static_method__SomeStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| SomeStruct::static_return_ok_custom_error(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_non_static_return_err_custom_error__method__SomeStruct(
+    port_: i64,
+    that: *mut wire_SomeStruct,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "non_static_return_err_custom_error__method__SomeStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| SomeStruct::non_static_return_err_custom_error(&api_that)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_non_static_return_ok_custom_error__method__SomeStruct(
+    port_: i64,
+    that: *mut wire_SomeStruct,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "non_static_return_ok_custom_error__method__SomeStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| SomeStruct::non_static_return_ok_custom_error(&api_that)
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -1071,6 +1146,12 @@ pub struct wire_NewTypeInt {
 pub struct wire_Note {
     day: *mut i32,
     body: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SomeStruct {
+    value: u32,
 }
 
 #[repr(C)]
@@ -1287,6 +1368,11 @@ pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut wire_NewTypeInt {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_note_0() -> *mut wire_Note {
     support::new_leak_box_ptr(wire_Note::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_some_struct_0() -> *mut wire_SomeStruct {
+    support::new_leak_box_ptr(wire_SomeStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1650,6 +1736,13 @@ impl Wire2Api<Note> for *mut wire_Note {
     }
 }
 
+impl Wire2Api<SomeStruct> for *mut wire_SomeStruct {
+    fn wire2api(self) -> SomeStruct {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SomeStruct>::wire2api(*wrap).into()
+    }
+}
+
 impl Wire2Api<SumWith> for *mut wire_SumWith {
     fn wire2api(self) -> SumWith {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1983,6 +2076,14 @@ impl Wire2Api<Note> for wire_Note {
     }
 }
 
+impl Wire2Api<SomeStruct> for wire_SomeStruct {
+    fn wire2api(self) -> SomeStruct {
+        SomeStruct {
+            value: self.value.wire2api(),
+        }
+    }
+}
+
 impl Wire2Api<SumWith> for wire_SumWith {
     fn wire2api(self) -> SumWith {
         SumWith {
@@ -2232,6 +2333,14 @@ impl NewWithNullPtr for wire_Note {
     }
 }
 
+impl NewWithNullPtr for wire_SomeStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            value: Default::default(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_SumWith {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2457,6 +2566,13 @@ impl support::IntoDart for Point {
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+
+impl support::IntoDart for SomeStruct {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.value.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for SomeStruct {}
 
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartCObject {

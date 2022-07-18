@@ -739,3 +739,28 @@ pub fn return_ok_custom_error() -> Result<u32, CustomError> {
 pub fn return_custom_error_type() -> CustomError {
     todo!()
 }
+
+pub struct SomeStruct {
+    pub value: u32,
+}
+
+impl SomeStruct {
+    pub fn new(value: u32) -> SomeStruct {
+        SomeStruct { value }
+    }
+    pub fn static_return_err_custom_error() -> Result<u32, CustomError> {
+        Err(CustomError::Error2(3))
+    }
+
+    pub fn static_return_ok_custom_error() -> Result<u32, CustomError> {
+        Ok(3)
+    }
+
+    pub fn non_static_return_err_custom_error(&self) -> Result<u32, CustomError> {
+        Err(CustomError::Error2(self.value))
+    }
+
+    pub fn non_static_return_ok_custom_error(&self) -> Result<u32, CustomError> {
+        Ok(self.value)
+    }
+}

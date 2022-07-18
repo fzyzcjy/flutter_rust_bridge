@@ -456,9 +456,33 @@ void main(List<String> args) async {
   });
 
   test('Do not throw CustomError', () async {
-    bool didCatch = false;
     try {
       final r = await api.returnOkCustomError();
+      expect(r, 3);
+    } catch (e) {
+      throw Exception("test should have not catch");
+    }
+  });
+
+  test('Throw CustomError static method', () async {
+    bool didCatch = false;
+    try {
+      final r = await SomeStruct.staticReturnErrCustomError(bridge: api);
+      print("received $r");
+    } catch (e) {
+      print('dart catch e: $e');
+      didCatch = true;
+      expect(e, isA<CustomError>());
+    }
+    if (!didCatch) {
+      throw Exception("test should have catch");
+    }
+  });
+
+  test('Do not throw CustomError static method', () async {
+    bool didCatch = false;
+    try {
+      final r = await SomeStruct.staticReturnOkCustomError(bridge: api);
       expect(r, 3);
     } catch (e) {
       print('dart catch e: $e');
@@ -466,6 +490,45 @@ void main(List<String> args) async {
       expect(e, isA<CustomError>());
     }
     if (didCatch) {
+      throw Exception("test should have not catch");
+    }
+  });
+
+  test('Do not throw CustomError', () async {
+    try {
+      final r = await api.returnOkCustomError();
+      expect(r, 3);
+    } catch (e) {
+      print('dart catch e: $e');
+      expect(e, isA<CustomError>());
+      throw Exception("test should have not catch");
+    }
+  });
+
+  test('Throw CustomError nonstatic method', () async {
+    bool didCatch = false;
+    try {
+      final int value = 7;
+      final SomeStruct someStruct = SomeStruct(bridge: api, value: value);
+      final r = await someStruct.nonStaticReturnErrCustomError();
+      print("received $r");
+    } catch (e) {
+      print('dart catch e: $e');
+      didCatch = true;
+      expect(e, isA<CustomError>());
+    }
+    if (!didCatch) {
+      throw Exception("test should have catch");
+    }
+  });
+
+  test('Do not throw CustomError nonstatic method', () async {
+    try {
+      final int value = 6;
+      final SomeStruct someStruct = SomeStruct(bridge: api, value: value);
+      final r = await someStruct.nonStaticReturnOkCustomError();
+      expect(r, value);
+    } catch (e) {
       throw Exception("test should have not catch");
     }
   });
