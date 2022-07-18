@@ -212,10 +212,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta;
 
-  Future<CustomError> returnCustomErrorType({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kReturnCustomErrorTypeConstMeta;
-
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -1368,20 +1364,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_ok_custom_error",
-        argNames: [],
-      );
-
-  Future<CustomError> returnCustomErrorType({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_return_custom_error_type(port_),
-        parseSuccessData: _wire2api_custom_error,
-        parseErrorData: null,
-        constMeta: kReturnCustomErrorTypeConstMeta,
-        argValues: [],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kReturnCustomErrorTypeConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "return_custom_error_type",
         argNames: [],
       );
 
@@ -3466,18 +3448,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_return_ok_custom_errorPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_ok_custom_error');
   late final _wire_return_ok_custom_error = _wire_return_ok_custom_errorPtr.asFunction<void Function(int)>();
-
-  void wire_return_custom_error_type(
-    int port_,
-  ) {
-    return _wire_return_custom_error_type(
-      port_,
-    );
-  }
-
-  late final _wire_return_custom_error_typePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_error_type');
-  late final _wire_return_custom_error_type = _wire_return_custom_error_typePtr.asFunction<void Function(int)>();
 
   void wire_sum__method__SumWith(
     int port_,

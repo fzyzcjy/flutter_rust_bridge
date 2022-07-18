@@ -31,7 +31,11 @@ impl IrFile {
             if include_func_output {
                 println!("func: {:?}", func);
                 println!("visiting func.output: {:?}", func.output);
+                println!("visiting func.error_output: {:?}", func.error_output);
                 func.output.visit_types(f, self);
+                if let Some(error_output) = &func.error_output {
+                    error_output.visit_types(f, self);
+                }
             }
         }
     }

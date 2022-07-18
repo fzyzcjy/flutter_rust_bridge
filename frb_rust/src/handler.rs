@@ -7,7 +7,6 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 
 use allo_isolate::ffi::DartCObject;
 use allo_isolate::IntoDart;
-//use anyhow::Result;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
 use threadpool::ThreadPool;
@@ -294,7 +293,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::CustomError(e) => format!("custom error"),
+            Error::CustomError(_e) => format!("custom error"),
             Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
                 Some(s) => *s,
                 None => match panic_err.downcast_ref::<String>() {

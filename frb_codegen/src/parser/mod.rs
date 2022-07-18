@@ -60,14 +60,12 @@ impl<'a> Parser<'a> {
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
-        println!("parsing type: {:?}", ty);
         let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
 
         match inner {
             ty::SupportedInnerType::Path(ty::SupportedPathType { ident, mut generic })
                 if ident == RESULT_IDENT && !generic.is_empty() =>
             {
-                println!("parsing result, generic: {:?}", generic);
                 let first_argument = self
                     .type_parser
                     .convert_to_ir_type(generic.remove(0))
@@ -81,7 +79,6 @@ impl<'a> Parser<'a> {
                 } else {
                     None
                 };
-                println!("second argument: {:?}", second_argument);
                 Some(IrFuncOutput::ResultType(first_argument, second_argument))
             }
             _ => Some(IrFuncOutput::Type(

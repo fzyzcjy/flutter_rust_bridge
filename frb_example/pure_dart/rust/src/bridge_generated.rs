@@ -714,18 +714,6 @@ pub extern "C" fn wire_return_ok_custom_error(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_custom_error_type(port_: i64) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "return_custom_error_type",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || move |task_callback| Result::<_, ()>::Ok(return_custom_error_type()),
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

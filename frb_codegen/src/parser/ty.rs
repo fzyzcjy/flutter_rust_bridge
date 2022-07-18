@@ -98,14 +98,6 @@ impl SupportedInnerType {
                     })),
                     syn::PathArguments::AngleBracketed(a) => {
                         let args = a.args.into_iter().collect::<Vec<GenericArgument>>();
-                        /*
-                        let generic = match a.args.into_iter().next() {
-                            Some(syn::GenericArgument::Type(t)) => {
-                                Some(Box::new(SupportedInnerType::try_from_syn_type(&t)?))
-                            }
-                            _ => None,
-                        };
-                        */
                         let mut supported_inner_types: Vec<SupportedInnerType> = Vec::new();
                         for arg in args {
                             if let syn::GenericArgument::Type(t) = arg {
@@ -154,14 +146,8 @@ impl<'a> TypeParser<'a> {
     /// Converts an inner type into an `IrType` if possible.
     pub fn convert_to_ir_type(&mut self, ty: SupportedInnerType) -> Option<IrType> {
         match ty {
-            SupportedInnerType::Path(p) => {
-                //println!("is path: {:?}", ty);
-                self.convert_path_to_ir_type(p)
-            }
-            SupportedInnerType::Array(p, len) => {
-                println!("is array");
-                self.convert_array_to_ir_type(*p, len)
-            }
+            SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
+            SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
             SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
         }
     }
@@ -182,9 +168,9 @@ impl<'a> TypeParser<'a> {
 
     /// Converts a path type into an `IrType` if possible.
     pub fn convert_path_to_ir_type(&mut self, mut p: SupportedPathType) -> Option<IrType> {
+        println!("convert_path_to_ir_type for {:?}", p);
         let p_as_str = format!("{}", &p);
         let ident_string = &p.ident.to_string();
-        println!("convert_path_to_ir_type for p: {:?}", p);
         if !p.generic.is_empty() {
             match ident_string.as_str() {
                 "SyncReturn" => {
@@ -263,23 +249,20 @@ impl<'a> TypeParser<'a> {
                             other => IrType::Optional(IrTypeOptional::new_ptr(other)),
                         })
                 }
-                "Result" => {
-                    panic!("result reached: {:?}", p);
-                    let inner = self.convert_to_ir_type(p.generic[0]);
-                    if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) = inner {
-                        Some(IrType::Delegate(
-                            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
-                        ))
-                    } else {
-                        None
-                    }
-                }
                 _ => None,
             }
         } else {
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {
+                    println!(
+                        "mapping ident {}, self.src_structs.contains_key(ident_string) ?: {}",
+                        ident_string,
+                        self.src_structs.contains_key(ident_string)
+                    );
+                    println!("src_structs: {:?}", self.src_structs);
+                    println!("src_enums: {:?}", self.src_enums);
+
                     if ident_string == "String" {
                         Some(IrType::Delegate(IrTypeDelegate::String))
                     } else if self.src_structs.contains_key(ident_string) {
@@ -299,7 +282,9 @@ impl<'a> TypeParser<'a> {
                                 .unwrap_or(false),
                         }))
                     } else if self.src_enums.contains_key(ident_string) {
+                        println!("src_enum contains key!");
                         if self.parsed_enums.insert(ident_string.to_owned()) {
+                            println!("added enum!");
                             let enu = self.parse_enum_core(&p.ident);
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }

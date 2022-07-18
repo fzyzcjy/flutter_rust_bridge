@@ -736,10 +736,6 @@ pub fn return_ok_custom_error() -> Result<u32, CustomError> {
     Ok(3)
 }
 
-pub fn return_custom_error_type() -> CustomError {
-    todo!()
-}
-
 pub struct SomeStruct {
     pub value: u32,
 }
