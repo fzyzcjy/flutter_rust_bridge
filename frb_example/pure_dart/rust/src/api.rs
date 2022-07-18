@@ -722,7 +722,6 @@ impl ConcatenateWith {
     }
 }
 
-
 pub enum CustomError {
     Error1(String),
     Error2(u32),

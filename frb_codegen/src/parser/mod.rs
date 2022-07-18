@@ -72,7 +72,7 @@ impl<'a> Parser<'a> {
                     .type_parser
                     .convert_to_ir_type(generic.remove(0))
                     .unwrap();
-                let second_argument = if generic.len() > 1 {
+                let second_argument = if generic.len() == 1 {
                     Some(
                         self.type_parser
                             .convert_to_ir_type(generic.remove(0))
@@ -81,6 +81,7 @@ impl<'a> Parser<'a> {
                 } else {
                     None
                 };
+                println!("second argument: {:?}", second_argument);
                 Some(IrFuncOutput::ResultType(first_argument, second_argument))
             }
             _ => Some(IrFuncOutput::Type(

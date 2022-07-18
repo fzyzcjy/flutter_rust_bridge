@@ -411,9 +411,9 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     };
 
     let parse_error_data = if let Some(error_output) = &func.error_output {
-        format!("parseErrorData: _wire2api_{}", error_output.safe_ident())
+        format!("parseErrorData: _wire2api_{},", error_output.safe_ident())
     } else {
-        "".to_string()
+        "parseErrorData: null,".to_string()
     };
 
     let implementation = match func.mode {

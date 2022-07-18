@@ -37,7 +37,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
   @protected
-  Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) {
+  Future<S> executeNormal<S, E>(FlutterRustBridgeTask<S, E> task) {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
@@ -64,7 +64,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   @protected
-  Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
+  Stream<S> executeStream<S, E>(FlutterRustBridgeTask<S, E> task) async* {
     final receivePort = ReceivePort();
     task.callFfi(receivePort.sendPort.nativePort);
 
@@ -107,7 +107,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
 /// A task to call FFI function.
 @immutable
-class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
+class FlutterRustBridgeTask<S, E> extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(int port) callFfi;
 
@@ -115,12 +115,12 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
   final S Function(dynamic) parseSuccessData;
 
   /// Parse the returned errordata from the underlying function
-  final S Function(dynamic)? parseErrorData;
+  final E Function(dynamic)? parseErrorData;
 
   const FlutterRustBridgeTask({
     required this.callFfi,
     required this.parseSuccessData,
-    this.parseErrorData,
+    required this.parseErrorData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,
