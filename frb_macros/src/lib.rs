@@ -1,3 +1,5 @@
+//! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
+
 use proc_macro::*;
 
 fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
@@ -32,13 +34,7 @@ fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
 
 /// Attribute to guide code generation.
 ///
-/// ## Attributes on struct fields
-///
-/// The following attributes are supported on struct fields:
-///
-///   - `#[frb(non_final)]` — do not mark the field in the corresponding
-///     Dart struct as final.
-///
+/// For what it can do, have a look at the documentation website.
 #[proc_macro_attribute]
 pub fn frb(_: TokenStream, item: TokenStream) -> TokenStream {
     remove_marker_attr(item, "frb")

@@ -25,10 +25,18 @@ Next, add these lines near the bottom of `android/app/build.gradle`:
     tasks.register("cargoBuild$taskPostfix", Exec) {
         // Until https://github.com/bbqsrc/cargo-ndk/pull/13 is merged,
         // this workaround is necessary.
-        commandLine 'sh', '-c', """cd ../../$crate && \
-        ANDROID_NDK_HOME="$ANDROID_NDK" cargo ndk \
-            -t armeabi-v7a -t arm64-v8a \
+        
+        def ndk_command = """cargo ndk \
+            -t armeabi-v7a -t arm64-v8a -t x86_64 -t x86 \
             -o ../android/app/src/main/jniLibs build $profileMode"""
+
+        workingDir "../../$crate"
+        environment "ANDROID_NDK_HOME", "$ANDROID_NDK"
+        if (org.gradle.nativeplatform.platform.internal.DefaultNativePlatform.currentOperatingSystem.isWindows()) {
+            commandLine 'cmd', '/C', ndk_command
+        } else {
+            commandLine 'sh', '-c', ndk_command
+        }
     }
 }
 ```
