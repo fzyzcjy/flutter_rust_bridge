@@ -455,6 +455,38 @@ void main(List<String> args) async {
     }
   });
 
+  test('Throw CustomError variant 0', () async {
+    bool didCatch = false;
+    try {
+      final r = await api.returnErrorVariant(variant: 0);
+      print("received $r");
+    } catch (e) {
+      final CustomError customError = e as CustomError;
+      print('dart catch customError: $customError');
+      didCatch = true;
+      expect(customError, CustomError.error0("variant0"));
+    }
+    if (!didCatch) {
+      throw Exception("test should have catch");
+    }
+  });
+
+  test('Throw CustomError variant 1', () async {
+    bool didCatch = false;
+    try {
+      final r = await api.returnErrorVariant(variant: 1);
+      print("received $r");
+    } catch (e) {
+      final CustomError customError = e as CustomError;
+      print('dart catch customError: $customError');
+      didCatch = true;
+      expect(customError, CustomError.error1(1));
+    }
+    if (!didCatch) {
+      throw Exception("test should have catch");
+    }
+  });
+
   test('Do not throw CustomError', () async {
     try {
       final r = await api.returnOkCustomError();

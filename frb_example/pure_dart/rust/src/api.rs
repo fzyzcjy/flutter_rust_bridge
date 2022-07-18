@@ -723,17 +723,24 @@ impl ConcatenateWith {
 }
 
 pub enum CustomError {
-    Error1(String),
-    Error2(u32),
-    Error3(i32),
+    Error0(String),
+    Error1(u32),
 }
 
 pub fn return_err_custom_error() -> Result<u32, CustomError> {
-    Err(CustomError::Error2(3))
+    Err(CustomError::Error1(3))
 }
 
 pub fn return_ok_custom_error() -> Result<u32, CustomError> {
     Ok(3)
+}
+
+pub fn return_error_variant(variant: u32) -> Result<u32, CustomError> {
+    match variant {
+        0 => Err(CustomError::Error0("variant0".to_string())),
+        1 => Err(CustomError::Error1(1)),
+        _ => panic!("unsupported variant"),
+    }
 }
 
 pub struct SomeStruct {
@@ -745,7 +752,7 @@ impl SomeStruct {
         SomeStruct { value }
     }
     pub fn static_return_err_custom_error() -> Result<u32, CustomError> {
-        Err(CustomError::Error2(3))
+        Err(CustomError::Error1(3))
     }
 
     pub fn static_return_ok_custom_error() -> Result<u32, CustomError> {
@@ -753,7 +760,7 @@ impl SomeStruct {
     }
 
     pub fn non_static_return_err_custom_error(&self) -> Result<u32, CustomError> {
-        Err(CustomError::Error2(self.value))
+        Err(CustomError::Error1(self.value))
     }
 
     pub fn non_static_return_ok_custom_error(&self) -> Result<u32, CustomError> {

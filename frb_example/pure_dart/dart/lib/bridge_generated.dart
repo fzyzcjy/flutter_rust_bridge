@@ -212,6 +212,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta;
 
+  Future<int> returnErrorVariant({required int variant, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrorVariantConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -376,15 +380,12 @@ class ConcatenateWith {
 
 @freezed
 class CustomError with _$CustomError {
-  const factory CustomError.error1(
+  const factory CustomError.error0(
     String field0,
+  ) = Error0;
+  const factory CustomError.error1(
+    int field0,
   ) = Error1;
-  const factory CustomError.error2(
-    int field0,
-  ) = Error2;
-  const factory CustomError.error3(
-    int field0,
-  ) = Error3;
 }
 
 class Customized {
@@ -1365,6 +1366,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_ok_custom_error",
         argNames: [],
+      );
+
+  Future<int> returnErrorVariant({required int variant, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_error_variant(port_, _api2wire_u32(variant)),
+        parseSuccessData: _wire2api_u32,
+        parseErrorData: _wire2api_custom_error,
+        constMeta: kReturnErrorVariantConstMeta,
+        argValues: [variant],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrorVariantConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_error_variant",
+        argNames: ["variant"],
       );
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
@@ -2352,16 +2367,12 @@ ConcatenateWith _wire2api_concatenate_with(FlutterRustBridgeExampleSingleBlockTe
 CustomError _wire2api_custom_error(dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return Error1(
+      return Error0(
         _wire2api_String(raw[1]),
       );
     case 1:
-      return Error2(
+      return Error1(
         _wire2api_u32(raw[1]),
-      );
-    case 2:
-      return Error3(
-        _wire2api_i32(raw[1]),
       );
     default:
       throw Exception("unreachable");
@@ -3448,6 +3459,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_return_ok_custom_errorPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_ok_custom_error');
   late final _wire_return_ok_custom_error = _wire_return_ok_custom_errorPtr.asFunction<void Function(int)>();
+
+  void wire_return_error_variant(
+    int port_,
+    int variant,
+  ) {
+    return _wire_return_error_variant(
+      port_,
+      variant,
+    );
+  }
+
+  late final _wire_return_error_variantPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_return_error_variant');
+  late final _wire_return_error_variant = _wire_return_error_variantPtr.asFunction<void Function(int, int)>();
 
   void wire_sum__method__SumWith(
     int port_,

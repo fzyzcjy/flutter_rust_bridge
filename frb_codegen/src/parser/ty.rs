@@ -168,7 +168,6 @@ impl<'a> TypeParser<'a> {
 
     /// Converts a path type into an `IrType` if possible.
     pub fn convert_path_to_ir_type(&mut self, mut p: SupportedPathType) -> Option<IrType> {
-        println!("convert_path_to_ir_type for {:?}", p);
         let p_as_str = format!("{}", &p);
         let ident_string = &p.ident.to_string();
         if !p.generic.is_empty() {
@@ -219,15 +218,12 @@ impl<'a> TypeParser<'a> {
                         None
                     }
                 }
-                "Box" => {
-                    println!("is box!");
-                    self.convert_to_ir_type(p.generic.remove(0)).map(|inner| {
-                        Boxed(IrTypeBoxed {
-                            exist_in_real_api: true,
-                            inner: Box::new(inner),
-                        })
+                "Box" => self.convert_to_ir_type(p.generic.remove(0)).map(|inner| {
+                    Boxed(IrTypeBoxed {
+                        exist_in_real_api: true,
+                        inner: Box::new(inner),
                     })
-                }
+                }),
                 "Option" => {
                     // Disallow nested Option
                     if matches!(p.generic[0], SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
@@ -255,14 +251,6 @@ impl<'a> TypeParser<'a> {
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {
-                    println!(
-                        "mapping ident {}, self.src_structs.contains_key(ident_string) ?: {}",
-                        ident_string,
-                        self.src_structs.contains_key(ident_string)
-                    );
-                    println!("src_structs: {:?}", self.src_structs);
-                    println!("src_enums: {:?}", self.src_enums);
-
                     if ident_string == "String" {
                         Some(IrType::Delegate(IrTypeDelegate::String))
                     } else if self.src_structs.contains_key(ident_string) {
@@ -282,9 +270,7 @@ impl<'a> TypeParser<'a> {
                                 .unwrap_or(false),
                         }))
                     } else if self.src_enums.contains_key(ident_string) {
-                        println!("src_enum contains key!");
                         if self.parsed_enums.insert(ident_string.to_owned()) {
-                            println!("added enum!");
                             let enu = self.parse_enum_core(&p.ident);
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }

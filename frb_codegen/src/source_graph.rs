@@ -207,7 +207,6 @@ impl Module {
         };
 
         for item in items.iter() {
-            println!("parsing item: {:?}", item);
             match item {
                 syn::Item::Struct(item_struct) => {
                     let (ident, mirror) = get_ident(&item_struct.ident, &item_struct.attrs);

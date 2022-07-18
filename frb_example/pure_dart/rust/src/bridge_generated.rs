@@ -714,6 +714,21 @@ pub extern "C" fn wire_return_ok_custom_error(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_return_error_variant(port_: i64, variant: u32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_error_variant",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_variant = variant.wire2api();
+            move |task_callback| return_error_variant(api_variant)
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -2420,9 +2435,8 @@ impl support::IntoDartExceptPrimitive for ConcatenateWith {}
 impl support::IntoDart for CustomError {
     fn into_dart(self) -> support::DartCObject {
         match self {
-            Self::Error1(field0) => vec![0.into_dart(), field0.into_dart()],
-            Self::Error2(field0) => vec![1.into_dart(), field0.into_dart()],
-            Self::Error3(field0) => vec![2.into_dart(), field0.into_dart()],
+            Self::Error0(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::Error1(field0) => vec![1.into_dart(), field0.into_dart()],
         }
         .into_dart()
     }

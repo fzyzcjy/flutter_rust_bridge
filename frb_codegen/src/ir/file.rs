@@ -29,9 +29,6 @@ impl IrFile {
                 }
             }
             if include_func_output {
-                println!("func: {:?}", func);
-                println!("visiting func.output: {:?}", func.output);
-                println!("visiting func.error_output: {:?}", func.error_output);
                 func.output.visit_types(f, self);
                 if let Some(error_output) = &func.error_output {
                     error_output.visit_types(f, self);
@@ -64,10 +61,6 @@ impl IrFile {
         let mut ans = Vec::new();
         self.visit_types(
             &mut |ty| {
-                println!(
-                    "scanning type: {:?}, include_func_output: {}",
-                    ty, include_func_output
-                );
                 let ident = ty.safe_ident();
                 let contains = seen_idents.contains(&ident);
                 if !contains {
