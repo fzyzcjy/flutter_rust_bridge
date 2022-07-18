@@ -767,3 +767,21 @@ impl SomeStruct {
         Ok(self.value)
     }
 }
+
+#[allow(dead_code)]
+pub enum CustomNestedError1 {
+    CustomNested1(String),
+    ErrorNested(CustomNestedError2),
+}
+
+#[allow(dead_code)]
+pub enum CustomNestedError2 {
+    CustomNested2(String),
+    CustomNested2Number(u32),
+}
+
+pub fn return_custom_nested_error_1() -> Result<(), CustomNestedError1> {
+    Err(CustomNestedError1::ErrorNested(
+        CustomNestedError2::CustomNested2Number(3),
+    ))
+}

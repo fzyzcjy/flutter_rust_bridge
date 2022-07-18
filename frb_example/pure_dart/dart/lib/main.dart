@@ -455,6 +455,22 @@ void main(List<String> args) async {
     }
   });
 
+  test('Throw CustomNestedError1', () async {
+    bool didCatch = false;
+    try {
+      await api.returnCustomNestedError1();
+    } catch (e) {
+      print('dart catch e: $e');
+      didCatch = true;
+      expect(e, isA<CustomNestedError1>());
+      final CustomNestedError1 customNestedError1 = e as CustomNestedError1;
+      expect(customNestedError1, CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3)));
+    }
+    if (!didCatch) {
+      throw Exception("test should have catch");
+    }
+  });
+
   test('Throw CustomError variant 0', () async {
     bool didCatch = false;
     try {

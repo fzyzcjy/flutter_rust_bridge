@@ -216,6 +216,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnErrorVariantConstMeta;
 
+  Future<void> returnCustomNestedError1({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1ConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -386,6 +390,26 @@ class CustomError with _$CustomError {
   const factory CustomError.error1(
     int field0,
   ) = Error1;
+}
+
+@freezed
+class CustomNestedError1 with _$CustomNestedError1 {
+  const factory CustomNestedError1.customNested1(
+    String field0,
+  ) = CustomNested1;
+  const factory CustomNestedError1.errorNested(
+    CustomNestedError2 field0,
+  ) = ErrorNested;
+}
+
+@freezed
+class CustomNestedError2 with _$CustomNestedError2 {
+  const factory CustomNestedError2.customNested2(
+    String field0,
+  ) = CustomNested2;
+  const factory CustomNestedError2.customNested2Number(
+    int field0,
+  ) = CustomNested2Number;
 }
 
 class Customized {
@@ -1382,6 +1406,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: ["variant"],
       );
 
+  Future<void> returnCustomNestedError1({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_custom_nested_error_1(port_),
+        parseSuccessData: _wire2api_unit,
+        parseErrorData: _wire2api_custom_nested_error_1,
+        constMeta: kReturnCustomNestedError1ConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_1",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_sum__method__SumWith(
@@ -2327,6 +2365,10 @@ bool _wire2api_box_autoadd_bool(dynamic raw) {
   return raw as bool;
 }
 
+CustomNestedError2 _wire2api_box_autoadd_custom_nested_error_2(dynamic raw) {
+  return _wire2api_custom_nested_error_2(raw);
+}
+
 Element _wire2api_box_autoadd_element(dynamic raw) {
   return _wire2api_element(raw);
 }
@@ -2372,6 +2414,36 @@ CustomError _wire2api_custom_error(dynamic raw) {
       );
     case 1:
       return Error1(
+        _wire2api_u32(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return CustomNested1(
+        _wire2api_String(raw[1]),
+      );
+    case 1:
+      return ErrorNested(
+        _wire2api_box_autoadd_custom_nested_error_2(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+CustomNestedError2 _wire2api_custom_nested_error_2(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return CustomNested2(
+        _wire2api_String(raw[1]),
+      );
+    case 1:
+      return CustomNested2Number(
         _wire2api_u32(raw[1]),
       );
     default:
@@ -3473,6 +3545,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_return_error_variantPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_return_error_variant');
   late final _wire_return_error_variant = _wire_return_error_variantPtr.asFunction<void Function(int, int)>();
+
+  void wire_return_custom_nested_error_1(
+    int port_,
+  ) {
+    return _wire_return_custom_nested_error_1(
+      port_,
+    );
+  }
+
+  late final _wire_return_custom_nested_error_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_nested_error_1');
+  late final _wire_return_custom_nested_error_1 =
+      _wire_return_custom_nested_error_1Ptr.asFunction<void Function(int)>();
 
   void wire_sum__method__SumWith(
     int port_,

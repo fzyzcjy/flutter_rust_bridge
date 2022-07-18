@@ -729,6 +729,18 @@ pub extern "C" fn wire_return_error_variant(port_: i64, variant: u32) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_1(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_custom_nested_error_1",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| return_custom_nested_error_1(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -2442,6 +2454,26 @@ impl support::IntoDart for CustomError {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomError {}
+impl support::IntoDart for CustomNestedError1 {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::CustomNested1(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::ErrorNested(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomNestedError1 {}
+impl support::IntoDart for CustomNestedError2 {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::CustomNested2(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::CustomNested2Number(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomNestedError2 {}
 impl support::IntoDart for Element {
     fn into_dart(self) -> support::DartCObject {
         vec![
