@@ -5,6 +5,7 @@ pub struct IrFunc {
     pub name: String,
     pub inputs: Vec<IrField>,
     pub output: IrType,
+    pub error_output: Option<IrType>,
     pub fallible: bool,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
@@ -19,7 +20,7 @@ impl IrFunc {
 /// Represents a function's output type
 #[derive(Debug, Clone)]
 pub enum IrFuncOutput {
-    ResultType(IrType),
+    ResultType(IrType,IrType),
     Type(IrType),
 }
 

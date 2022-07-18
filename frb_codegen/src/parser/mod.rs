@@ -60,7 +60,8 @@ impl<'a> Parser<'a> {
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
-        let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
+        println!("parsing type: {:?}", ty);
+        let (inner, result_err) = ty::SupportedInnerType::try_from_syn_type(ty)?;
 
         match inner {
             ty::SupportedInnerType::Path(ty::SupportedPathType {
@@ -112,6 +113,7 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
+        let mut error_output = None;
         let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
@@ -147,7 +149,7 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            output = Some(match &sig.output {
+            (output, error_output) = Some(match &sig.output {
                 ReturnType::Type(_, ty) => {
                     match self.try_parse_fn_output_type(ty).unwrap_or_else(|| {
                         panic!(
@@ -155,16 +157,16 @@ impl<'a> Parser<'a> {
                             type_to_string(ty)
                         )
                     }) {
-                        IrFuncOutput::ResultType(ty) => ty,
+                        IrFuncOutput::ResultType(ty, err) => (ty, Some(err)),
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
-                            ty
+                            (ty, None)
                         }
                     }
                 }
                 ReturnType::Default => {
                     fallible = false;
-                    IrType::Primitive(IrTypePrimitive::Unit)
+                    (IrType::Primitive(IrTypePrimitive::Unit), None)
                 }
             });
             mode = Some(
@@ -180,6 +182,7 @@ impl<'a> Parser<'a> {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
+            error_output: None,
             fallible,
             mode: mode.expect("missing mode"),
             comments: extract_comments(&func.attrs),

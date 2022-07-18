@@ -6,7 +6,7 @@ use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
 use allo_isolate::IntoDart;
-use anyhow::Result;
+//use anyhow::Result;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
 use threadpool::ThreadPool;
@@ -49,21 +49,23 @@ pub trait Handler {
     ///
     /// If a Rust function returns [`SyncReturn`], it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart;
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
+        TaskRet: IntoDart,
+        Er: IntoDart + 'static;
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function must return a [SyncReturn] and
     /// need not implement [Send].
-    fn wrap_sync<SyncTaskFn>(
+    fn wrap_sync<SyncTaskFn, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe;
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>, Er> + UnwindSafe,
+        Er: IntoDart + 'static;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
@@ -96,11 +98,12 @@ impl Default for DefaultHandler {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
+        Er: IntoDart + 'static,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
@@ -122,13 +125,14 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         });
     }
 
-    fn wrap_sync<SyncTaskFn>(
+    fn wrap_sync<SyncTaskFn, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>, Er> + UnwindSafe,
+        Er: IntoDart + 'static,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
@@ -138,7 +142,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                     Ok(data) => (data.0, true),
                     Err(err) => (
                         self.error_handler
-                            .handle_error_sync(Error::ResultError(err)),
+                            .handle_error_sync(Error::CustomError(Box::new(err))),
                         false,
                     ),
                 }
@@ -174,19 +178,21 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 pub trait Executor: RefUnwindSafe {
     /// Executes a Rust function and transforms its return value into a Dart-compatible
     /// value, i.e. types that implement [`IntoDart`].
-    fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute<TaskFn, TaskRet, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart;
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
+        TaskRet: IntoDart,
+        Er: IntoDart + 'static;
 
     /// Executes a Rust function that returns a [SyncReturn].
-    fn execute_sync<SyncTaskFn>(
+    fn execute_sync<SyncTaskFn, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<SyncReturn<Vec<u8>>>
+    ) -> Result<SyncReturn<Vec<u8>>, Er>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe;
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>, Er> + UnwindSafe,
+        Er: IntoDart + 'static;
 }
 
 /// The default executor used.
@@ -204,10 +210,11 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
-    fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute<TaskFn, TaskRet, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
+        Er: IntoDart + 'static,
     {
         const NUM_WORKERS: usize = 4;
         lazy_static! {
@@ -241,7 +248,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         }
                     }
                     Err(error) => {
-                        eh2.handle_error(wrap_info2.port.unwrap(), Error::ResultError(error));
+                        eh2.handle_error(wrap_info2.port.unwrap(), Error::CustomError(Box::new(error)));
                     }
                 };
             });
@@ -252,23 +259,24 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         });
     }
 
-    fn execute_sync<SyncTaskFn>(
+    fn execute_sync<SyncTaskFn, Er>(
         &self,
         _wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<SyncReturn<Vec<u8>>>
+    ) -> Result<SyncReturn<Vec<u8>>, Er>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>, Er> + UnwindSafe,
+        Er: IntoDart,
     {
         sync_task()
     }
 }
 
 /// Errors that occur from normal code execution.
-#[derive(Debug)]
+//#[derive(Debug)]
 pub enum Error {
-    /// Errors from an [anyhow::Error].
-    ResultError(anyhow::Error),
+    /// Errors that implement [IntoDart].
+    CustomError(Box<dyn IntoDart>),
     /// Exceptional errors from panicking.
     Panic(Box<dyn Any + Send>),
 }
@@ -277,7 +285,7 @@ impl Error {
     /// The identifier of the type of error.
     pub fn code(&self) -> &'static str {
         match self {
-            Error::ResultError(_) => "RESULT_ERROR",
+            Error::CustomError(_) => "RESULT_ERROR",
             Error::Panic(_) => "PANIC_ERROR",
         }
     }
@@ -285,7 +293,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::ResultError(e) => format!("{:?}", e),
+            Error::CustomError(e) => format!("into dart object"),
             Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
                 Some(s) => *s,
                 None => match panic_err.downcast_ref::<String>() {

@@ -87,29 +87,39 @@ impl std::fmt::Display for SupportedPathType {
 impl SupportedInnerType {
     /// Given a `syn::Type`, returns a simplified representation of the type if it's supported,
     /// or `None` otherwise.
-    pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
+    pub fn try_from_syn_type(ty: &syn::Type) -> (Option<Self>, Option<Self>) {
         match ty {
             syn::Type::Path(syn::TypePath { path, .. }) => {
                 let last_segment = path.segments.last().unwrap().clone();
                 match last_segment.arguments {
-                    syn::PathArguments::None => Some(SupportedInnerType::Path(SupportedPathType {
-                        ident: last_segment.ident,
-                        generic: None,
-                    })),
-                    syn::PathArguments::AngleBracketed(a) => {
-                        let generic = match a.args.into_iter().next() {
-                            Some(syn::GenericArgument::Type(t)) => {
-                                Some(Box::new(SupportedInnerType::try_from_syn_type(&t)?))
-                            }
-                            _ => None,
-                        };
-
+                    syn::PathArguments::None => (
                         Some(SupportedInnerType::Path(SupportedPathType {
                             ident: last_segment.ident,
-                            generic,
-                        }))
+                            generic: None,
+                        })),
+                        None,
+                    ),
+                    syn::PathArguments::AngleBracketed(a) => {
+                        let u = |index: usize| {
+                            let generic = match a.args.into_iter().next() {
+                                Some(syn::GenericArgument::Type(t)) => {
+                                    if index == 0 {
+                                        Some(Box::new(SupportedInnerType::try_from_syn_type(&t).0.unwrap()))
+                                    } else {
+                                        Some(Box::new(SupportedInnerType::try_from_syn_type(&t).1.unwrap()))
+                                    }
+                                }
+                                _ => None,
+                            };
+
+                            Some(SupportedInnerType::Path(SupportedPathType {
+                                ident: last_segment.ident,
+                                generic,
+                            }))
+                        };
+                        (u(0), u(1))
                     }
-                    _ => None,
+                    _ => (None, None),
                 }
             }
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
@@ -120,15 +130,15 @@ impl SupportedInnerType {
                     },
                     _ => panic!("Cannot parse array length"),
                 };
-                Some(SupportedInnerType::Array(
-                    Box::new(SupportedInnerType::try_from_syn_type(elem)?),
+                (Some(SupportedInnerType::Array(
+                    Box::new(SupportedInnerType::try_from_syn_type(elem).0.unwrap()),
                     len,
-                ))
+                )), None)
             }
             syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
-                Some(SupportedInnerType::Unit)
+                (Some(SupportedInnerType::Unit), None)
             }
-            _ => None,
+            _ => (None, None),
         }
     }
 }
@@ -145,8 +155,14 @@ impl<'a> TypeParser<'a> {
     /// Converts an inner type into an `IrType` if possible.
     pub fn convert_to_ir_type(&mut self, ty: SupportedInnerType) -> Option<IrType> {
         match ty {
-            SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
-            SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
+            SupportedInnerType::Path(p) => {
+                println!("is path");
+                self.convert_path_to_ir_type(p)
+            }
+            SupportedInnerType::Array(p, len) => {
+                println!("is array");
+                self.convert_array_to_ir_type(*p, len)
+            }
             SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
         }
     }
@@ -169,6 +185,7 @@ impl<'a> TypeParser<'a> {
     pub fn convert_path_to_ir_type(&mut self, p: SupportedPathType) -> Option<IrType> {
         let p_as_str = format!("{}", &p);
         let ident_string = &p.ident.to_string();
+        println!("convert_path_to_ir_type for p: {:?}", p);
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
                 "SyncReturn" => {
@@ -216,12 +233,15 @@ impl<'a> TypeParser<'a> {
                         None
                     }
                 }
-                "Box" => self.convert_to_ir_type(*generic).map(|inner| {
-                    Boxed(IrTypeBoxed {
-                        exist_in_real_api: true,
-                        inner: Box::new(inner),
+                "Box" => {
+                    println!("is box!");
+                    self.convert_to_ir_type(*generic).map(|inner| {
+                        Boxed(IrTypeBoxed {
+                            exist_in_real_api: true,
+                            inner: Box::new(inner),
+                        })
                     })
-                }),
+                }
                 "Option" => {
                     // Disallow nested Option
                     if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")

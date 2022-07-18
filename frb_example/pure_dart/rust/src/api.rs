@@ -721,3 +721,13 @@ impl ConcatenateWith {
         Ok(())
     }
 }
+
+pub enum CustomError{
+    Error1(String),
+    Error2(u32),
+    Error3(i32)
+}
+
+pub fn return_custom_error() -> Result<u32, CustomError> {
+    Err(CustomError::Error2(3))
+}
