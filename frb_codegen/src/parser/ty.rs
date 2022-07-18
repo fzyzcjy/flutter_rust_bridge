@@ -50,6 +50,9 @@ pub enum SupportedInnerType {
     /// the last segment are ignored. The generic type argument must also be a valid
     /// `SupportedInnerType`.
     Path(SupportedPathType),
+    /// Path types with up to n generic type argument on the final segment.
+    /// The generic type argument must also be a valid `SupportedInnerType`.
+    PathMultiple(Vec<SupportedPathType>),
     /// Array type
     Array(Box<Self>, usize),
     /// The unit type `()`.
@@ -60,6 +63,7 @@ impl std::fmt::Display for SupportedInnerType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Path(p) => write!(f, "{}", p),
+            Self::PathMultiple(p) => write!(f, "{:?}", p),
             Self::Array(u, len) => write!(f, "[{}; {}]", u, len),
             Self::Unit => write!(f, "()"),
         }
@@ -87,39 +91,40 @@ impl std::fmt::Display for SupportedPathType {
 impl SupportedInnerType {
     /// Given a `syn::Type`, returns a simplified representation of the type if it's supported,
     /// or `None` otherwise.
-    pub fn try_from_syn_type(ty: &syn::Type) -> (Option<Self>, Option<Self>) {
+    pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
         match ty {
             syn::Type::Path(syn::TypePath { path, .. }) => {
                 let last_segment = path.segments.last().unwrap().clone();
                 match last_segment.arguments {
-                    syn::PathArguments::None => (
-                        Some(SupportedInnerType::Path(SupportedPathType {
-                            ident: last_segment.ident,
-                            generic: None,
-                        })),
-                        None,
-                    ),
+                    syn::PathArguments::None => Some(SupportedInnerType::Path(SupportedPathType {
+                        ident: last_segment.ident,
+                        generic: None,
+                    })),
                     syn::PathArguments::AngleBracketed(a) => {
-                        let u = |index: usize| {
-                            let generic = match a.args.into_iter().next() {
-                                Some(syn::GenericArgument::Type(t)) => {
-                                    if index == 0 {
-                                        Some(Box::new(SupportedInnerType::try_from_syn_type(&t).0.unwrap()))
-                                    } else {
-                                        Some(Box::new(SupportedInnerType::try_from_syn_type(&t).1.unwrap()))
-                                    }
+                        let m = |arg: &GenericArgument| {
+                            let generic = match arg {
+                                syn::GenericArgument::Type(t) => {
+                                    Some(Box::new(SupportedInnerType::try_from_syn_type(&t).unwrap()))
                                 }
                                 _ => None,
                             };
-
-                            Some(SupportedInnerType::Path(SupportedPathType {
+                            SupportedPathType {
                                 ident: last_segment.ident,
                                 generic,
-                            }))
+                            }
                         };
-                        (u(0), u(1))
+                        let args = a.args.into_iter().collect::<Vec<_>>();
+                        if args.len() == 1 {
+                            Some(SupportedInnerType::Path(m(&args[0])))
+                        } else {
+                            let l = Vec::new();
+                            for arg in args {
+                                l.push(m(&arg))
+                            }
+                            Some(SupportedInnerType::PathMultiple(l))
+                        }
                     }
-                    _ => (None, None),
+                    _ => None,
                 }
             }
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
@@ -130,15 +135,15 @@ impl SupportedInnerType {
                     },
                     _ => panic!("Cannot parse array length"),
                 };
-                (Some(SupportedInnerType::Array(
-                    Box::new(SupportedInnerType::try_from_syn_type(elem).0.unwrap()),
+                Some(SupportedInnerType::Array(
+                    Box::new(SupportedInnerType::try_from_syn_type(elem)?),
                     len,
-                )), None)
+                ))
             }
             syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
-                (Some(SupportedInnerType::Unit), None)
+                Some(SupportedInnerType::Unit)
             }
-            _ => (None, None),
+            _ => None,
         }
     }
 }
@@ -156,6 +161,10 @@ impl<'a> TypeParser<'a> {
     pub fn convert_to_ir_type(&mut self, ty: SupportedInnerType) -> Option<IrType> {
         match ty {
             SupportedInnerType::Path(p) => {
+                println!("is path");
+                self.convert_path_to_ir_type(p)
+            },
+            SupportedInnerType::PathMultiple(p) => {
                 println!("is path");
                 self.convert_path_to_ir_type(p)
             }
@@ -261,6 +270,9 @@ impl<'a> TypeParser<'a> {
                         }
                         other => IrType::Optional(IrTypeOptional::new_ptr(other)),
                     })
+                },
+                "Result" => {
+                    panic!("result reached")
                 }
                 _ => None,
             }
