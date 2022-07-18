@@ -61,15 +61,28 @@ impl<'a> Parser<'a> {
     /// case for top-level `Result` types.
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
         println!("parsing type: {:?}", ty);
-        let (inner, result_err) = ty::SupportedInnerType::try_from_syn_type(ty)?;
+        let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
 
         match inner {
-            ty::SupportedInnerType::Path(ty::SupportedPathType {
-                ident,
-                generic: Some(generic),
-            }) if ident == RESULT_IDENT => Some(IrFuncOutput::ResultType(
-                self.type_parser.convert_to_ir_type(*generic)?,
-            )),
+            ty::SupportedInnerType::Path(ty::SupportedPathType { ident, mut generic })
+                if ident == RESULT_IDENT && !generic.is_empty() =>
+            {
+                println!("parsing result, generic: {:?}", generic);
+                let first_argument = self
+                    .type_parser
+                    .convert_to_ir_type(generic.remove(0))
+                    .unwrap();
+                let second_argument = if generic.len() > 1 {
+                    Some(
+                        self.type_parser
+                            .convert_to_ir_type(generic.remove(0))
+                            .unwrap(),
+                    )
+                } else {
+                    None
+                };
+                Some(IrFuncOutput::ResultType(first_argument, second_argument))
+            }
             _ => Some(IrFuncOutput::Type(
                 self.type_parser.convert_to_ir_type(inner)?,
             )),
@@ -149,7 +162,7 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            (output, error_output) = Some(match &sig.output {
+            (output, error_output) = match &sig.output {
                 ReturnType::Type(_, ty) => {
                     match self.try_parse_fn_output_type(ty).unwrap_or_else(|| {
                         panic!(
@@ -157,18 +170,18 @@ impl<'a> Parser<'a> {
                             type_to_string(ty)
                         )
                     }) {
-                        IrFuncOutput::ResultType(ty, err) => (ty, Some(err)),
+                        IrFuncOutput::ResultType(ty, err) => (Some(ty), err),
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
-                            (ty, None)
+                            (Some(ty), None)
                         }
                     }
                 }
                 ReturnType::Default => {
                     fallible = false;
-                    (IrType::Primitive(IrTypePrimitive::Unit), None)
+                    (Some(IrType::Primitive(IrTypePrimitive::Unit)), None)
                 }
-            });
+            };
             mode = Some(
                 if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
                     IrFuncMode::Sync
@@ -182,7 +195,7 @@ impl<'a> Parser<'a> {
             name: func_name,
             inputs,
             output: output.expect("unsupported output"),
-            error_output: None,
+            error_output,
             fallible,
             mode: mode.expect("missing mode"),
             comments: extract_comments(&func.attrs),

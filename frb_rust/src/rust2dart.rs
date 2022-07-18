@@ -38,8 +38,8 @@ impl Rust2Dart {
     }
 
     /// Send an error back to the specified port.
-    pub fn error(&self, error_code: String, error_message: String) -> bool {
-        self.error_full(error_code, error_message, ())
+    pub fn error(&self, error_code: String, error_message: String, e: impl IntoDart) -> bool {
+        self.error_full(error_code, error_message, e)
     }
 
     /// Send a detailed error back to the specified port.

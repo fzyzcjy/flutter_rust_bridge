@@ -70,14 +70,14 @@ impl std::fmt::Display for SupportedInnerType {
 #[derive(Debug)]
 pub struct SupportedPathType {
     pub ident: syn::Ident,
-    pub generic: Option<Box<SupportedInnerType>>,
+    pub generic: Vec<SupportedInnerType>,
 }
 
 impl std::fmt::Display for SupportedPathType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         let ident = self.ident.to_string();
-        if let Some(generic) = &self.generic {
-            write!(f, "{}<{}>", ident, generic)
+        if !self.generic.is_empty() {
+            write!(f, "{}<{:?}>", ident, self.generic)
         } else {
             write!(f, "{}", ident)
         }
@@ -94,19 +94,28 @@ impl SupportedInnerType {
                 match last_segment.arguments {
                     syn::PathArguments::None => Some(SupportedInnerType::Path(SupportedPathType {
                         ident: last_segment.ident,
-                        generic: None,
+                        generic: Vec::new(),
                     })),
                     syn::PathArguments::AngleBracketed(a) => {
+                        let args = a.args.into_iter().collect::<Vec<GenericArgument>>();
+                        /*
                         let generic = match a.args.into_iter().next() {
                             Some(syn::GenericArgument::Type(t)) => {
                                 Some(Box::new(SupportedInnerType::try_from_syn_type(&t)?))
                             }
                             _ => None,
                         };
-
+                        */
+                        let mut supported_inner_types: Vec<SupportedInnerType> = Vec::new();
+                        for arg in args {
+                            if let syn::GenericArgument::Type(t) = arg {
+                                supported_inner_types
+                                    .push(SupportedInnerType::try_from_syn_type(&t).unwrap());
+                            }
+                        }
                         Some(SupportedInnerType::Path(SupportedPathType {
                             ident: last_segment.ident,
-                            generic,
+                            generic: supported_inner_types,
                         }))
                     }
                     _ => None,
@@ -146,7 +155,7 @@ impl<'a> TypeParser<'a> {
     pub fn convert_to_ir_type(&mut self, ty: SupportedInnerType) -> Option<IrType> {
         match ty {
             SupportedInnerType::Path(p) => {
-                println!("is path");
+                //println!("is path: {:?}", ty);
                 self.convert_path_to_ir_type(p)
             }
             SupportedInnerType::Array(p, len) => {
@@ -172,49 +181,50 @@ impl<'a> TypeParser<'a> {
     }
 
     /// Converts a path type into an `IrType` if possible.
-    pub fn convert_path_to_ir_type(&mut self, p: SupportedPathType) -> Option<IrType> {
+    pub fn convert_path_to_ir_type(&mut self, mut p: SupportedPathType) -> Option<IrType> {
         let p_as_str = format!("{}", &p);
         let ident_string = &p.ident.to_string();
         println!("convert_path_to_ir_type for p: {:?}", p);
-        if let Some(generic) = p.generic {
+        if !p.generic.is_empty() {
             match ident_string.as_str() {
                 "SyncReturn" => {
                     // Special-case SyncReturn<Vec<u8>>. SyncReturn for any other type is not
                     // supported.
-                    match *generic {
-                        SupportedInnerType::Path(SupportedPathType {
-                            ident,
-                            generic: Some(generic),
-                        }) if ident == "Vec" => match *generic {
-                            SupportedInnerType::Path(SupportedPathType {
-                                ident,
-                                generic: None,
-                            }) if ident == "u8" => {
-                                Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8))
+                    match &p.generic[0] {
+                        SupportedInnerType::Path(SupportedPathType { ident, generic })
+                            if ident == "Vec" && !generic.is_empty() =>
+                        {
+                            match &generic[0] {
+                                SupportedInnerType::Path(SupportedPathType { ident, generic })
+                                    if ident == "u8" && generic.is_empty() =>
+                                {
+                                    Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8))
+                                }
+                                _ => None,
                             }
-                            _ => None,
-                        },
+                        }
                         _ => None,
                     }
                 }
                 "Vec" => {
                     // Special-case Vec<String> as StringList
-                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
+                    if matches!(p.generic[0], SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
                     {
                         Some(IrType::Delegate(IrTypeDelegate::StringList))
                     } else {
-                        self.convert_to_ir_type(*generic).map(|inner| match inner {
-                            Primitive(primitive) => {
-                                PrimitiveList(IrTypePrimitiveList { primitive })
-                            }
-                            others => GeneralList(IrTypeGeneralList {
-                                inner: Box::new(others),
-                            }),
-                        })
+                        self.convert_to_ir_type(p.generic.remove(0))
+                            .map(|inner| match inner {
+                                Primitive(primitive) => {
+                                    PrimitiveList(IrTypePrimitiveList { primitive })
+                                }
+                                others => GeneralList(IrTypeGeneralList {
+                                    inner: Box::new(others),
+                                }),
+                            })
                     }
                 }
                 "ZeroCopyBuffer" => {
-                    let inner = self.convert_to_ir_type(*generic);
+                    let inner = self.convert_to_ir_type(p.generic.remove(0));
                     if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) = inner {
                         Some(IrType::Delegate(
                             IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
@@ -225,31 +235,44 @@ impl<'a> TypeParser<'a> {
                 }
                 "Box" => {
                     println!("is box!");
-                    self.convert_to_ir_type(*generic).map(|inner| {
-                    Boxed(IrTypeBoxed {
-                        exist_in_real_api: true,
-                        inner: Box::new(inner),
+                    self.convert_to_ir_type(p.generic.remove(0)).map(|inner| {
+                        Boxed(IrTypeBoxed {
+                            exist_in_real_api: true,
+                            inner: Box::new(inner),
+                        })
                     })
-                })},
+                }
                 "Option" => {
                     // Disallow nested Option
-                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
+                    if matches!(p.generic[0], SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
                     {
                         panic!(
                             "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
                             p_as_str
                         );
                     }
-                    self.convert_to_ir_type(*generic).map(|inner| match inner {
-                        Primitive(prim) => IrType::Optional(IrTypeOptional::new_prim(prim)),
-                        st @ StructRef(_) => {
-                            IrType::Optional(IrTypeOptional::new_ptr(Boxed(IrTypeBoxed {
-                                inner: Box::new(st),
-                                exist_in_real_api: false,
-                            })))
-                        }
-                        other => IrType::Optional(IrTypeOptional::new_ptr(other)),
-                    })
+                    self.convert_to_ir_type(p.generic.remove(0))
+                        .map(|inner| match inner {
+                            Primitive(prim) => IrType::Optional(IrTypeOptional::new_prim(prim)),
+                            st @ StructRef(_) => {
+                                IrType::Optional(IrTypeOptional::new_ptr(Boxed(IrTypeBoxed {
+                                    inner: Box::new(st),
+                                    exist_in_real_api: false,
+                                })))
+                            }
+                            other => IrType::Optional(IrTypeOptional::new_ptr(other)),
+                        })
+                }
+                "Result" => {
+                    panic!("result reached: {:?}", p);
+                    let inner = self.convert_to_ir_type(p.generic[0]);
+                    if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) = inner {
+                        Some(IrType::Delegate(
+                            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
+                        ))
+                    } else {
+                        None
+                    }
                 }
                 _ => None,
             }

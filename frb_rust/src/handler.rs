@@ -6,6 +6,7 @@ use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
 use allo_isolate::IntoDart;
+use allo_isolate::ffi::DartCObject;
 //use anyhow::Result;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
@@ -142,7 +143,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                     Ok(data) => (data.0, true),
                     Err(err) => (
                         self.error_handler
-                            .handle_error_sync(Error::CustomError(Box::new(err))),
+                            .handle_error_sync(Error::CustomError(Box::new(||err.into_dart()))),
                         false,
                     ),
                 }
@@ -248,7 +249,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         }
                     }
                     Err(error) => {
-                        eh2.handle_error(wrap_info2.port.unwrap(), Error::CustomError(Box::new(error)));
+                        eh2.handle_error(wrap_info2.port.unwrap(), Error::CustomError(Box::new(||error.into_dart())));
                     }
                 };
             });
@@ -276,7 +277,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
 //#[derive(Debug)]
 pub enum Error {
     /// Errors that implement [IntoDart].
-    CustomError(Box<dyn IntoDart>),
+    CustomError(Box<dyn FnOnce() -> DartCObject>),
     /// Exceptional errors from panicking.
     Panic(Box<dyn Any + Send>),
 }
@@ -293,7 +294,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::CustomError(e) => format!("into dart object"),
+            Error::CustomError(e) => format!("custom error"),
             Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
                 Some(s) => *s,
                 None => match panic_err.downcast_ref::<String>() {
@@ -302,6 +303,21 @@ impl Error {
                 },
             }
             .to_string(),
+        }
+    }
+}
+
+impl IntoDart for Error {
+    fn into_dart(self) -> allo_isolate::ffi::DartCObject {
+        match self {
+            Error::CustomError(e) => e(),
+            Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
+                Some(s) => s.to_string().into_dart(),
+                None => match panic_err.downcast_ref::<String>() {
+                    Some(s) => s.to_string().into_dart(),
+                    None => "Box<dyn Any>".to_string().into_dart(),
+                },
+            },
         }
     }
 }
@@ -325,7 +341,7 @@ pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
     fn handle_error(&self, port: i64, error: Error) {
-        Rust2Dart::new(port).error(error.code().to_string(), error.message());
+        Rust2Dart::new(port).error(error.code().to_string(), error.message(), error);
     }
 
     fn handle_error_sync(&self, error: Error) -> Vec<u8> {

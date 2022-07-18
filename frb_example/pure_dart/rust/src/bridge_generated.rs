@@ -690,18 +690,6 @@ pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_custom_error(port_: i64) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "return_custom_error",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || move |task_callback| return_custom_error(),
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

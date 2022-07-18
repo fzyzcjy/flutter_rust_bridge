@@ -60,7 +60,10 @@ impl IrFile {
         let mut ans = Vec::new();
         self.visit_types(
             &mut |ty| {
-                println!("scanning type: {:?}, include_func_output: {}", ty, include_func_output);
+                println!(
+                    "scanning type: {:?}, include_func_output: {}",
+                    ty, include_func_output
+                );
                 let ident = ty.safe_ident();
                 let contains = seen_idents.contains(&ident);
                 if !contains {
