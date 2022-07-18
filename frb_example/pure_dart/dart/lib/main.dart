@@ -441,144 +441,45 @@ void main(List<String> args) async {
   });
 
   test('Throw CustomError', () async {
-    bool didCatch = false;
-    try {
-      final r = await api.returnErrCustomError();
-      print("received $r");
-    } catch (e) {
-      print('dart catch e: $e');
-      didCatch = true;
-      expect(e, isA<CustomError>());
-    }
-    if (!didCatch) {
-      throw Exception("test should have catch");
-    }
+    expect(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
   });
 
   test('Throw CustomNestedError1', () async {
-    bool didCatch = false;
-    try {
-      await api.returnCustomNestedError1();
-    } catch (e) {
-      print('dart catch e: $e');
-      didCatch = true;
-      expect(e, isA<CustomNestedError1>());
-      final CustomNestedError1 customNestedError1 = e as CustomNestedError1;
-      expect(customNestedError1, CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3)));
-    }
-    if (!didCatch) {
-      throw Exception("test should have catch");
-    }
+    expect(() async => await api.returnCustomNestedError1(),
+        throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3))));
   });
 
   test('Throw CustomError variant 0', () async {
-    bool didCatch = false;
-    try {
-      final r = await api.returnErrorVariant(variant: 0);
-      print("received $r");
-    } catch (e) {
-      final CustomError customError = e as CustomError;
-      print('dart catch customError: $customError');
-      didCatch = true;
-      expect(customError, CustomError.error0("variant0"));
-    }
-    if (!didCatch) {
-      throw Exception("test should have catch");
-    }
+    expect(() async => await api.returnErrorVariant(variant: 0), throwsA(CustomError.error0("variant0")));
   });
 
   test('Throw CustomError variant 1', () async {
-    bool didCatch = false;
-    try {
-      final r = await api.returnErrorVariant(variant: 1);
-      print("received $r");
-    } catch (e) {
-      final CustomError customError = e as CustomError;
-      print('dart catch customError: $customError');
-      didCatch = true;
-      expect(customError, CustomError.error1(1));
-    }
-    if (!didCatch) {
-      throw Exception("test should have catch");
-    }
+    expect(() async => await api.returnErrorVariant(variant: 1), throwsA(CustomError.error1(1)));
   });
 
   test('Do not throw CustomError', () async {
-    try {
-      final r = await api.returnOkCustomError();
-      expect(r, 3);
-    } catch (e) {
-      throw Exception("test should have not catch");
-    }
+    expect(await api.returnOkCustomError(), 3);
   });
 
   test('Throw CustomError static method', () async {
-    bool didCatch = false;
-    try {
-      final r = await SomeStruct.staticReturnErrCustomError(bridge: api);
-      print("received $r");
-    } catch (e) {
-      print('dart catch e: $e');
-      didCatch = true;
-      expect(e, isA<CustomError>());
-    }
-    if (!didCatch) {
-      throw Exception("test should have catch");
-    }
+    expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(CustomError.error1(3)));
   });
 
   test('Do not throw CustomError static method', () async {
-    bool didCatch = false;
-    try {
-      final r = await SomeStruct.staticReturnOkCustomError(bridge: api);
-      expect(r, 3);
-    } catch (e) {
-      print('dart catch e: $e');
-      didCatch = true;
-      expect(e, isA<CustomError>());
-    }
-    if (didCatch) {
-      throw Exception("test should have not catch");
-    }
+    expect(await SomeStruct.staticReturnOkCustomError(bridge: api), 3);
   });
 
   test('Do not throw CustomError', () async {
-    try {
-      final r = await api.returnOkCustomError();
-      expect(r, 3);
-    } catch (e) {
-      print('dart catch e: $e');
-      expect(e, isA<CustomError>());
-      throw Exception("test should have not catch");
-    }
+    expect(await api.returnOkCustomError(), 3);
   });
 
   test('Throw CustomError nonstatic method', () async {
-    bool didCatch = false;
-    try {
-      final int value = 7;
-      final SomeStruct someStruct = SomeStruct(bridge: api, value: value);
-      final r = await someStruct.nonStaticReturnErrCustomError();
-      print("received $r");
-    } catch (e) {
-      print('dart catch e: $e');
-      didCatch = true;
-      expect(e, isA<CustomError>());
-    }
-    if (!didCatch) {
-      throw Exception("test should have catch");
-    }
+    expect(() async => await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError(),
+        throwsA(CustomError.error1(7)));
   });
 
   test('Do not throw CustomError nonstatic method', () async {
-    try {
-      final int value = 6;
-      final SomeStruct someStruct = SomeStruct(bridge: api, value: value);
-      final r = await someStruct.nonStaticReturnOkCustomError();
-      expect(r, value);
-    } catch (e) {
-      throw Exception("test should have not catch");
-    }
+    expect(await SomeStruct(bridge: api, value: 6).nonStaticReturnOkCustomError(), 6);
   });
 
   print('flutter_rust_bridge example program end');
