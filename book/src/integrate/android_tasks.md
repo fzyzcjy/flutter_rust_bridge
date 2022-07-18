@@ -26,16 +26,16 @@ Next, add these lines near the bottom of `android/app/build.gradle`:
         // Until https://github.com/bbqsrc/cargo-ndk/pull/13 is merged,
         // this workaround is necessary.
         
+        def ndk_command = """cargo ndk \
+            -t armeabi-v7a -t arm64-v8a -t x86_64 -t x86 \
+            -o ../android/app/src/main/jniLibs build $profileMode"""
+
         workingDir "../../$crate"
         environment "ANDROID_NDK_HOME", "$ANDROID_NDK"
         if (org.gradle.nativeplatform.platform.internal.DefaultNativePlatform.currentOperatingSystem.isWindows()) {
-            commandLine 'cmd', '/C', """cargo ndk \
-            -t armeabi-v7a -t arm64-v8a \
-            -o ../android/app/src/main/jniLibs build $profileMode"""
+            commandLine 'cmd', '/C', ndk_command
         } else {
-            commandLine 'sh', '-c', """cargo ndk \
-            -t armeabi-v7a -t arm64-v8a \
-            -o ../android/app/src/main/jniLibs build $profileMode"""
+            commandLine 'sh', '-c', ndk_command
         }
     }
 }
