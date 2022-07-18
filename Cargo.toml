@@ -1,5 +1,0 @@
-[workspace]
-members = ["frb_rust", "frb_example/pure_dart/rust"]
-
-[patch.crates-io]
-allo-isolate = { path="./allo-isolate", features=["anyhow"] }
