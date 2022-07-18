@@ -5,8 +5,8 @@ use std::mem::ManuallyDrop;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
-use allo_isolate::IntoDart;
 use allo_isolate::ffi::DartCObject;
+use allo_isolate::IntoDart;
 //use anyhow::Result;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
@@ -143,7 +143,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                     Ok(data) => (data.0, true),
                     Err(err) => (
                         self.error_handler
-                            .handle_error_sync(Error::CustomError(Box::new(||err.into_dart()))),
+                            .handle_error_sync(Error::CustomError(Box::new(|| err.into_dart()))),
                         false,
                     ),
                 }

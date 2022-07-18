@@ -114,9 +114,13 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
   /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;
 
+  /// Parse the returned errordata from the underlying function
+  final S Function(dynamic)? parseErrorData;
+
   const FlutterRustBridgeTask({
     required this.callFfi,
     required this.parseSuccessData,
+    this.parseErrorData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,

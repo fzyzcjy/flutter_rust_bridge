@@ -722,7 +722,7 @@ impl ConcatenateWith {
     }
 }
 
-/*
+
 pub enum CustomError {
     Error1(String),
     Error2(u32),
@@ -732,4 +732,7 @@ pub enum CustomError {
 pub fn return_custom_error() -> Result<u32, CustomError> {
     Err(CustomError::Error2(3))
 }
-*/
+
+pub fn return_custom_error_type() -> CustomError {
+    todo!()
+}

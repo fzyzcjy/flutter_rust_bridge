@@ -480,6 +480,481 @@ abstract class Exit implements ApplicationMessage {
 }
 
 /// @nodoc
+mixin _$CustomError {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) error1,
+    required TResult Function(int field0) error2,
+    required TResult Function(int field0) error3,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? error1,
+    TResult Function(int field0)? error2,
+    TResult Function(int field0)? error3,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? error1,
+    TResult Function(int field0)? error2,
+    TResult Function(int field0)? error3,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Error1 value) error1,
+    required TResult Function(Error2 value) error2,
+    required TResult Function(Error3 value) error3,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Error1 value)? error1,
+    TResult Function(Error2 value)? error2,
+    TResult Function(Error3 value)? error3,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Error1 value)? error1,
+    TResult Function(Error2 value)? error2,
+    TResult Function(Error3 value)? error3,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomErrorCopyWith<$Res> {
+  factory $CustomErrorCopyWith(
+          CustomError value, $Res Function(CustomError) then) =
+      _$CustomErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CustomErrorCopyWithImpl<$Res> implements $CustomErrorCopyWith<$Res> {
+  _$CustomErrorCopyWithImpl(this._value, this._then);
+
+  final CustomError _value;
+  // ignore: unused_field
+  final $Res Function(CustomError) _then;
+}
+
+/// @nodoc
+abstract class _$$Error1CopyWith<$Res> {
+  factory _$$Error1CopyWith(_$Error1 value, $Res Function(_$Error1) then) =
+      __$$Error1CopyWithImpl<$Res>;
+  $Res call({String field0});
+}
+
+/// @nodoc
+class __$$Error1CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
+    implements _$$Error1CopyWith<$Res> {
+  __$$Error1CopyWithImpl(_$Error1 _value, $Res Function(_$Error1) _then)
+      : super(_value, (v) => _then(v as _$Error1));
+
+  @override
+  _$Error1 get _value => super._value as _$Error1;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$Error1(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Error1 implements Error1 {
+  const _$Error1(this.field0);
+
+  @override
+  final String field0;
+
+  @override
+  String toString() {
+    return 'CustomError.error1(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Error1 &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$Error1CopyWith<_$Error1> get copyWith =>
+      __$$Error1CopyWithImpl<_$Error1>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) error1,
+    required TResult Function(int field0) error2,
+    required TResult Function(int field0) error3,
+  }) {
+    return error1(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? error1,
+    TResult Function(int field0)? error2,
+    TResult Function(int field0)? error3,
+  }) {
+    return error1?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? error1,
+    TResult Function(int field0)? error2,
+    TResult Function(int field0)? error3,
+    required TResult orElse(),
+  }) {
+    if (error1 != null) {
+      return error1(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Error1 value) error1,
+    required TResult Function(Error2 value) error2,
+    required TResult Function(Error3 value) error3,
+  }) {
+    return error1(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Error1 value)? error1,
+    TResult Function(Error2 value)? error2,
+    TResult Function(Error3 value)? error3,
+  }) {
+    return error1?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Error1 value)? error1,
+    TResult Function(Error2 value)? error2,
+    TResult Function(Error3 value)? error3,
+    required TResult orElse(),
+  }) {
+    if (error1 != null) {
+      return error1(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error1 implements CustomError {
+  const factory Error1(final String field0) = _$Error1;
+
+  String get field0;
+  @JsonKey(ignore: true)
+  _$$Error1CopyWith<_$Error1> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$Error2CopyWith<$Res> {
+  factory _$$Error2CopyWith(_$Error2 value, $Res Function(_$Error2) then) =
+      __$$Error2CopyWithImpl<$Res>;
+  $Res call({int field0});
+}
+
+/// @nodoc
+class __$$Error2CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
+    implements _$$Error2CopyWith<$Res> {
+  __$$Error2CopyWithImpl(_$Error2 _value, $Res Function(_$Error2) _then)
+      : super(_value, (v) => _then(v as _$Error2));
+
+  @override
+  _$Error2 get _value => super._value as _$Error2;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$Error2(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Error2 implements Error2 {
+  const _$Error2(this.field0);
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'CustomError.error2(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Error2 &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$Error2CopyWith<_$Error2> get copyWith =>
+      __$$Error2CopyWithImpl<_$Error2>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) error1,
+    required TResult Function(int field0) error2,
+    required TResult Function(int field0) error3,
+  }) {
+    return error2(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? error1,
+    TResult Function(int field0)? error2,
+    TResult Function(int field0)? error3,
+  }) {
+    return error2?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? error1,
+    TResult Function(int field0)? error2,
+    TResult Function(int field0)? error3,
+    required TResult orElse(),
+  }) {
+    if (error2 != null) {
+      return error2(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Error1 value) error1,
+    required TResult Function(Error2 value) error2,
+    required TResult Function(Error3 value) error3,
+  }) {
+    return error2(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Error1 value)? error1,
+    TResult Function(Error2 value)? error2,
+    TResult Function(Error3 value)? error3,
+  }) {
+    return error2?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Error1 value)? error1,
+    TResult Function(Error2 value)? error2,
+    TResult Function(Error3 value)? error3,
+    required TResult orElse(),
+  }) {
+    if (error2 != null) {
+      return error2(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error2 implements CustomError {
+  const factory Error2(final int field0) = _$Error2;
+
+  int get field0;
+  @JsonKey(ignore: true)
+  _$$Error2CopyWith<_$Error2> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$Error3CopyWith<$Res> {
+  factory _$$Error3CopyWith(_$Error3 value, $Res Function(_$Error3) then) =
+      __$$Error3CopyWithImpl<$Res>;
+  $Res call({int field0});
+}
+
+/// @nodoc
+class __$$Error3CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
+    implements _$$Error3CopyWith<$Res> {
+  __$$Error3CopyWithImpl(_$Error3 _value, $Res Function(_$Error3) _then)
+      : super(_value, (v) => _then(v as _$Error3));
+
+  @override
+  _$Error3 get _value => super._value as _$Error3;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$Error3(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Error3 implements Error3 {
+  const _$Error3(this.field0);
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'CustomError.error3(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Error3 &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$Error3CopyWith<_$Error3> get copyWith =>
+      __$$Error3CopyWithImpl<_$Error3>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) error1,
+    required TResult Function(int field0) error2,
+    required TResult Function(int field0) error3,
+  }) {
+    return error3(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? error1,
+    TResult Function(int field0)? error2,
+    TResult Function(int field0)? error3,
+  }) {
+    return error3?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? error1,
+    TResult Function(int field0)? error2,
+    TResult Function(int field0)? error3,
+    required TResult orElse(),
+  }) {
+    if (error3 != null) {
+      return error3(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Error1 value) error1,
+    required TResult Function(Error2 value) error2,
+    required TResult Function(Error3 value) error3,
+  }) {
+    return error3(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Error1 value)? error1,
+    TResult Function(Error2 value)? error2,
+    TResult Function(Error3 value)? error3,
+  }) {
+    return error3?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Error1 value)? error1,
+    TResult Function(Error2 value)? error2,
+    TResult Function(Error3 value)? error3,
+    required TResult orElse(),
+  }) {
+    if (error3 != null) {
+      return error3(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error3 implements CustomError {
+  const factory Error3(final int field0) = _$Error3;
+
+  int get field0;
+  @JsonKey(ignore: true)
+  _$$Error3CopyWith<_$Error3> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$KitchenSink {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({

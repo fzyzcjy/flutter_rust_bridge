@@ -410,6 +410,12 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
         format!("_wire2api_{}", func.output.safe_ident())
     };
 
+    let parse_error_data = if let Some(error_output) = &func.error_output {
+        format!("parseErrorData: _wire2api_{}", error_output.safe_ident())
+    } else {
+        "".to_string()
+    };
+
     let implementation = match func.mode {
         IrFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
@@ -427,12 +433,14 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             callFfi: (port_) => inner.{}({}),
             parseSuccessData: {},
             {}
+            {}
         ));",
             partial,
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
             parse_sucess_data,
+            parse_error_data,
             task_common_args,
         ),
     };
