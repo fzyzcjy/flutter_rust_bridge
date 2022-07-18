@@ -156,7 +156,7 @@ void main(List<String> args) async {
       fail("exception not thrown");
     } catch (e) {
       print('dart catch e: $e');
-      expect(e, isA<FfiException>());
+      expect(e, isA<Exception>());
     }
   });
 
@@ -166,7 +166,7 @@ void main(List<String> args) async {
       fail("exception not thrown");
     } catch (e) {
       print('dart catch e: $e');
-      expect(e, isA<FfiException>());
+      expect(e, isA<Exception>());
     }
   });
 
@@ -438,6 +438,36 @@ void main(List<String> args) async {
       cnt++;
     }
     expect(cnt, 5);
+  });
+
+  test('Throw CustomError', () async {
+    bool didCatch = false;
+    try {
+      final r = await api.returnErrCustomError();
+      print("received $r");
+    } catch (e) {
+      print('dart catch e: $e');
+      didCatch = true;
+      expect(e, isA<CustomError>());
+    }
+    if (!didCatch) {
+      throw Exception("test should have catch");
+    }
+  });
+
+  test('Do not throw CustomError', () async {
+    bool didCatch = false;
+    try {
+      final r = await api.returnOkCustomError();
+      expect(r, 3);
+    } catch (e) {
+      print('dart catch e: $e');
+      didCatch = true;
+      expect(e, isA<CustomError>());
+    }
+    if (didCatch) {
+      throw Exception("test should have not catch");
+    }
   });
 
   print('flutter_rust_bridge example program end');

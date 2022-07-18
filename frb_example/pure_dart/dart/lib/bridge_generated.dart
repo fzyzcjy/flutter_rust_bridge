@@ -221,9 +221,13 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
 
-  Future<int> returnCustomError({dynamic hint});
+  Future<int> returnErrCustomError({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kReturnCustomErrorConstMeta;
+  FlutterRustBridgeTaskConstMeta get kReturnErrCustomErrorConstMeta;
+
+  Future<int> returnOkCustomError({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta;
 
   Future<CustomError> returnCustomErrorType({dynamic hint});
 
@@ -1462,19 +1466,35 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: ["key", "max"],
       );
 
-  Future<int> returnCustomError({dynamic hint}) =>
+  Future<int> returnErrCustomError({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_return_custom_error(port_),
+        callFfi: (port_) => inner.wire_return_err_custom_error(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
-        constMeta: kReturnCustomErrorConstMeta,
+        constMeta: kReturnErrCustomErrorConstMeta,
         argValues: [],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnCustomErrorConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kReturnErrCustomErrorConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "return_custom_error",
+        debugName: "return_err_custom_error",
+        argNames: [],
+      );
+
+  Future<int> returnOkCustomError({dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_ok_custom_error(port_),
+        parseSuccessData: _wire2api_u32,
+        parseErrorData: _wire2api_custom_error,
+        constMeta: kReturnOkCustomErrorConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_ok_custom_error",
         argNames: [],
       );
 
@@ -3671,19 +3691,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   late final _wire_handle_stream_sink_at_3 = _wire_handle_stream_sink_at_3Ptr
       .asFunction<void Function(int, int, int)>();
 
-  void wire_return_custom_error(
+  void wire_return_err_custom_error(
     int port_,
   ) {
-    return _wire_return_custom_error(
+    return _wire_return_err_custom_error(
       port_,
     );
   }
 
-  late final _wire_return_custom_errorPtr =
+  late final _wire_return_err_custom_errorPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_return_custom_error');
-  late final _wire_return_custom_error =
-      _wire_return_custom_errorPtr.asFunction<void Function(int)>();
+          'wire_return_err_custom_error');
+  late final _wire_return_err_custom_error =
+      _wire_return_err_custom_errorPtr.asFunction<void Function(int)>();
+
+  void wire_return_ok_custom_error(
+    int port_,
+  ) {
+    return _wire_return_ok_custom_error(
+      port_,
+    );
+  }
+
+  late final _wire_return_ok_custom_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_ok_custom_error');
+  late final _wire_return_ok_custom_error =
+      _wire_return_ok_custom_errorPtr.asFunction<void Function(int)>();
 
   void wire_return_custom_error_type(
     int port_,

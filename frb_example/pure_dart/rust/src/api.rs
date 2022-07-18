@@ -728,8 +728,12 @@ pub enum CustomError {
     Error3(i32),
 }
 
-pub fn return_custom_error() -> Result<u32, CustomError> {
+pub fn return_err_custom_error() -> Result<u32, CustomError> {
     Err(CustomError::Error2(3))
+}
+
+pub fn return_ok_custom_error() -> Result<u32, CustomError> {
+    Ok(3)
 }
 
 pub fn return_custom_error_type() -> CustomError {
