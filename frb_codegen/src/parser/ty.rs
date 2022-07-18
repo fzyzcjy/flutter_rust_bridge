@@ -50,9 +50,6 @@ pub enum SupportedInnerType {
     /// the last segment are ignored. The generic type argument must also be a valid
     /// `SupportedInnerType`.
     Path(SupportedPathType),
-    /// Path types with up to n generic type argument on the final segment.
-    /// The generic type argument must also be a valid `SupportedInnerType`.
-    PathMultiple(Vec<SupportedPathType>),
     /// Array type
     Array(Box<Self>, usize),
     /// The unit type `()`.
@@ -63,7 +60,6 @@ impl std::fmt::Display for SupportedInnerType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Path(p) => write!(f, "{}", p),
-            Self::PathMultiple(p) => write!(f, "{:?}", p),
             Self::Array(u, len) => write!(f, "[{}; {}]", u, len),
             Self::Unit => write!(f, "()"),
         }
@@ -101,28 +97,17 @@ impl SupportedInnerType {
                         generic: None,
                     })),
                     syn::PathArguments::AngleBracketed(a) => {
-                        let m = |arg: &GenericArgument| {
-                            let generic = match arg {
-                                syn::GenericArgument::Type(t) => {
-                                    Some(Box::new(SupportedInnerType::try_from_syn_type(&t).unwrap()))
-                                }
-                                _ => None,
-                            };
-                            SupportedPathType {
-                                ident: last_segment.ident,
-                                generic,
+                        let generic = match a.args.into_iter().next() {
+                            Some(syn::GenericArgument::Type(t)) => {
+                                Some(Box::new(SupportedInnerType::try_from_syn_type(&t)?))
                             }
+                            _ => None,
                         };
-                        let args = a.args.into_iter().collect::<Vec<_>>();
-                        if args.len() == 1 {
-                            Some(SupportedInnerType::Path(m(&args[0])))
-                        } else {
-                            let l = Vec::new();
-                            for arg in args {
-                                l.push(m(&arg))
-                            }
-                            Some(SupportedInnerType::PathMultiple(l))
-                        }
+
+                        Some(SupportedInnerType::Path(SupportedPathType {
+                            ident: last_segment.ident,
+                            generic,
+                        }))
                     }
                     _ => None,
                 }
@@ -161,10 +146,6 @@ impl<'a> TypeParser<'a> {
     pub fn convert_to_ir_type(&mut self, ty: SupportedInnerType) -> Option<IrType> {
         match ty {
             SupportedInnerType::Path(p) => {
-                println!("is path");
-                self.convert_path_to_ir_type(p)
-            },
-            SupportedInnerType::PathMultiple(p) => {
                 println!("is path");
                 self.convert_path_to_ir_type(p)
             }
@@ -245,12 +226,11 @@ impl<'a> TypeParser<'a> {
                 "Box" => {
                     println!("is box!");
                     self.convert_to_ir_type(*generic).map(|inner| {
-                        Boxed(IrTypeBoxed {
-                            exist_in_real_api: true,
-                            inner: Box::new(inner),
-                        })
+                    Boxed(IrTypeBoxed {
+                        exist_in_real_api: true,
+                        inner: Box::new(inner),
                     })
-                }
+                })},
                 "Option" => {
                     // Disallow nested Option
                     if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
@@ -270,9 +250,6 @@ impl<'a> TypeParser<'a> {
                         }
                         other => IrType::Optional(IrTypeOptional::new_ptr(other)),
                     })
-                },
-                "Result" => {
-                    panic!("result reached")
                 }
                 _ => None,
             }
