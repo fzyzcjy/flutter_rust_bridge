@@ -201,10 +201,6 @@ fn generate_dart_declaration_body(
     dart_funcs: &[GeneratedApiFunc],
     dart_structs: &[String],
 ) -> String {
-    println!(
-        "generate_dart_declaration_body for dart_structs: {:?}",
-        dart_structs
-    );
     format!(
         "abstract class {} {{
             {}
