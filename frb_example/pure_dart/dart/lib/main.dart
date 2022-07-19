@@ -448,6 +448,28 @@ void main(List<String> args) async {
     expect(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
   });
 
+  test('Do not throw CustomStructError', () async {
+    expect(await api.returnCustomStructOk(), 3);
+  });
+
+  test('Throw CustomStructError non static method', () async {
+    expect(() async => await CustomStruct(bridge: api, message: "hello").nonstaticReturnCustomStructError(),
+        throwsA(isA<CustomStructError>()));
+  });
+
+  test('Do not throw CustomStructError non static method', () async {
+    expect(await CustomStruct(bridge: api, message: "hello").nonstaticReturnCustomStructOk(), 3);
+  });
+
+  test('Throw CustomStructError static method', () async {
+    expect(
+        () async => await CustomStruct.staticReturnCustomStructError(bridge: api), throwsA(isA<CustomStructError>()));
+  });
+
+  test('Do not throw CustomStructError static method', () async {
+    expect(await CustomStruct.staticReturnCustomStructOk(bridge: api), 3);
+  });
+
   test('Throw CustomNestedError1', () async {
     expect(() async => await api.returnCustomNestedError1(),
         throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3))));

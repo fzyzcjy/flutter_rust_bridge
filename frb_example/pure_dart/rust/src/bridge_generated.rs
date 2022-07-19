@@ -753,6 +753,18 @@ pub extern "C" fn wire_return_custom_struct_error(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_return_custom_struct_ok(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_custom_struct_ok",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| return_custom_struct_ok(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -999,6 +1011,84 @@ pub extern "C" fn wire_non_static_return_ok_custom_error__method__SomeStruct(
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_new__static_method__CustomStruct(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "new__static_method__CustomStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(CustomStruct::new(api_message))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_static_return_custom_struct_error__static_method__CustomStruct(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "static_return_custom_struct_error__static_method__CustomStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| CustomStruct::static_return_custom_struct_error(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_static_return_custom_struct_ok__static_method__CustomStruct(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "static_return_custom_struct_ok__static_method__CustomStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| CustomStruct::static_return_custom_struct_ok(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_nonstatic_return_custom_struct_error__method__CustomStruct(
+    port_: i64,
+    that: *mut wire_CustomStruct,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "nonstatic_return_custom_struct_error__method__CustomStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| CustomStruct::nonstatic_return_custom_struct_error(&api_that)
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_nonstatic_return_custom_struct_ok__method__CustomStruct(
+    port_: i64,
+    that: *mut wire_CustomStruct,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "nonstatic_return_custom_struct_ok__method__CustomStruct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| CustomStruct::nonstatic_return_custom_struct_ok(&api_that)
+        },
+    )
+}
+
 // Section: wire structs
 
 #[repr(C)]
@@ -1041,6 +1131,12 @@ pub struct wire_Attribute {
 #[derive(Clone)]
 pub struct wire_ConcatenateWith {
     a: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomStruct {
+    message: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -1340,6 +1436,11 @@ pub extern "C" fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut wire_ConcatenateWith {
     support::new_leak_box_ptr(wire_ConcatenateWith::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_struct_0() -> *mut wire_CustomStruct {
+    support::new_leak_box_ptr(wire_CustomStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1689,6 +1790,13 @@ impl Wire2Api<ConcatenateWith> for *mut wire_ConcatenateWith {
     }
 }
 
+impl Wire2Api<CustomStruct> for *mut wire_CustomStruct {
+    fn wire2api(self) -> CustomStruct {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<CustomStruct>::wire2api(*wrap).into()
+    }
+}
+
 impl Wire2Api<Customized> for *mut wire_Customized {
     fn wire2api(self) -> Customized {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1852,6 +1960,14 @@ impl Wire2Api<ConcatenateWith> for wire_ConcatenateWith {
     fn wire2api(self) -> ConcatenateWith {
         ConcatenateWith {
             a: self.a.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<CustomStruct> for wire_CustomStruct {
+    fn wire2api(self) -> CustomStruct {
+        CustomStruct {
+            message: self.message.wire2api(),
         }
     }
 }
@@ -2226,6 +2342,14 @@ impl NewWithNullPtr for wire_ConcatenateWith {
     }
 }
 
+impl NewWithNullPtr for wire_CustomStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_Customized {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2486,6 +2610,13 @@ impl support::IntoDart for CustomNestedError2 {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomNestedError2 {}
+impl support::IntoDart for CustomStruct {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.message.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomStruct {}
+
 impl support::IntoDart for CustomStructError {
     fn into_dart(self) -> support::DartCObject {
         vec![self.message.into_dart()].into_dart()

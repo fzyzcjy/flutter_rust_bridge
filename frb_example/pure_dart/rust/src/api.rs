@@ -795,3 +795,37 @@ pub fn return_custom_struct_error() -> Result<(), CustomStructError> {
         message: "error message".to_string(),
     })
 }
+
+pub fn return_custom_struct_ok() -> Result<u32, CustomStructError> {
+    Ok(3)
+}
+
+pub struct CustomStruct {
+    pub message: String,
+}
+
+impl CustomStruct {
+    pub fn new(message: String) -> CustomStruct {
+        CustomStruct { message }
+    }
+
+    pub fn static_return_custom_struct_error() -> Result<(), CustomStructError> {
+        Err(CustomStructError {
+            message: "error message".to_string(),
+        })
+    }
+
+    pub fn static_return_custom_struct_ok() -> Result<u32, CustomStructError> {
+        Ok(3)
+    }
+
+    pub fn nonstatic_return_custom_struct_error(&self) -> Result<(), CustomStructError> {
+        Err(CustomStructError {
+            message: self.message.clone(),
+        })
+    }
+
+    pub fn nonstatic_return_custom_struct_ok(&self) -> Result<u32, CustomStructError> {
+        Ok(3)
+    }
+}
