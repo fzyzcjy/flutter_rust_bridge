@@ -31,6 +31,7 @@ macro_rules! type_dart_generator_struct {
             pub ir: $ir_cls,
             pub context: TypeGeneratorContext<'a>,
             pub dart_api_class_name: Option<String>,
+            pub is_exception: bool,
         }
     };
 }
@@ -56,50 +57,64 @@ impl<'a> TypeDartGenerator<'a> {
                 ir,
                 context,
                 dart_api_class_name,
+                is_exception: false,
             }
             .into(),
             Delegate(ir) => TypeDelegateGenerator {
                 ir,
                 context,
                 dart_api_class_name,
+                is_exception: false,
             }
             .into(),
             PrimitiveList(ir) => TypePrimitiveListGenerator {
                 ir,
                 context,
                 dart_api_class_name,
+                is_exception: false,
             }
             .into(),
             Optional(ir) => TypeOptionalGenerator {
                 ir,
                 context,
                 dart_api_class_name,
+                is_exception: false,
             }
             .into(),
             GeneralList(ir) => TypeGeneralListGenerator {
                 ir,
                 context,
                 dart_api_class_name,
+                is_exception: false,
             }
             .into(),
-            StructRef(ir) => TypeStructRefGenerator {
-                ir,
-                context,
-                dart_api_class_name,
+            StructRef(ir) => {
+                let is_exception = ir.is_exception;
+                TypeStructRefGenerator {
+                    ir,
+                    context,
+                    dart_api_class_name,
+                    is_exception,
+                }
+                .into()
             }
-            .into(),
             Boxed(ir) => TypeBoxedGenerator {
                 ir,
                 context,
                 dart_api_class_name,
+                is_exception: false,
             }
             .into(),
-            EnumRef(ir) => TypeEnumRefGenerator {
-                ir,
-                context,
-                dart_api_class_name,
+            EnumRef(ir) => {
+                let is_exception = ir.is_exception;
+                TypeEnumRefGenerator {
+                    ir,
+                    context,
+                    dart_api_class_name,
+                    is_exception,
+                }
+                .into()
             }
-            .into(),
         }
     }
 }

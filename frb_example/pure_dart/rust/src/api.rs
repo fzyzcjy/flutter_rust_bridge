@@ -785,3 +785,13 @@ pub fn return_custom_nested_error_1() -> Result<(), CustomNestedError1> {
         CustomNestedError2::CustomNested2Number(3),
     ))
 }
+
+pub struct CustomStructError {
+    pub message: String,
+}
+
+pub fn return_custom_struct_error() -> Result<(), CustomStructError> {
+    Err(CustomStructError {
+        message: "error message".to_string(),
+    })
+}

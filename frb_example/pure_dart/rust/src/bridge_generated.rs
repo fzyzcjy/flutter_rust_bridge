@@ -741,6 +741,18 @@ pub extern "C" fn wire_return_custom_nested_error_1(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_return_custom_struct_error(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_custom_struct_error",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| return_custom_struct_error(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -2474,6 +2486,13 @@ impl support::IntoDart for CustomNestedError2 {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomNestedError2 {}
+impl support::IntoDart for CustomStructError {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.message.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomStructError {}
+
 impl support::IntoDart for Element {
     fn into_dart(self) -> support::DartCObject {
         vec![

@@ -444,6 +444,10 @@ void main(List<String> args) async {
     expect(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
   });
 
+  test('Throw CustomStructError', () async {
+    expect(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
+  });
+
   test('Throw CustomNestedError1', () async {
     expect(() async => await api.returnCustomNestedError1(),
         throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3))));

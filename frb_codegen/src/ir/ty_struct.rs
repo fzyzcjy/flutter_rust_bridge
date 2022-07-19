@@ -5,6 +5,7 @@ use convert_case::{Case, Casing};
 pub struct IrTypeStructRef {
     pub name: String,
     pub freezed: bool,
+    pub is_exception: bool,
 }
 
 impl IrTypeStructRef {

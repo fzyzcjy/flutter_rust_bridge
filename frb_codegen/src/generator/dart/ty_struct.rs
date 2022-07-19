@@ -124,7 +124,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             let constructor_params = constructor_params.join("");
 
             format!(
-                "{}{}class {} with _${} {{
+                "{}{}class {} with _${} {} {{
                 const factory {}({{{}}}) = _{};
                 {}
             }}",
@@ -132,6 +132,11 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 metadata,
                 self.ir.name,
                 self.ir.name,
+                if self.ir.is_exception {
+                    "implements Exception"
+                } else {
+                    ""
+                },
                 self.ir.name,
                 constructor_params,
                 self.ir.name,

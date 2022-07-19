@@ -164,10 +164,15 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .collect::<Vec<_>>();
             format!(
                 "@freezed
-                class {0} with _${0} {{
-                    {1}
+                class {0} with _${0} {1} {{
+                    {2}
                 }}",
                 self.ir.name,
+                if self.ir.is_exception {
+                    "implements Exception"
+                } else {
+                    ""
+                },
                 variants.join("\n")
             )
         } else {
