@@ -1,7 +1,4 @@
 use crate::ir::IrFile;
-use crate::ir::IrType::{self, StructRef};
-use crate::ir::{IrField, IrTypeStructRef};
-use convert_case::{Case, Casing};
 
 const STATIC_METHOD_MARKER: &str = "__static_method__";
 const METHOD_MARKER: &str = "__method__";
@@ -45,24 +42,6 @@ impl MethodNamingUtil {
 
     fn mark_as_non_static_method(s: &str, struct_name: &str) -> String {
         format!("{}{}{}", s, METHOD_MARKER, struct_name)
-    }
-
-    // Tests if a given struct has methods, that is, if the `ir_file` contains
-    // a function that receives the struct as first argument
-    pub fn struct_has_methods(file: &IrFile, the_struct: &IrType) -> bool {
-        let struct_name = if let StructRef(IrTypeStructRef { name, .. }) = the_struct {
-            name
-        } else {
-            return false;
-        };
-
-        file.funcs.iter().any(|f| {
-            if let Some(IrField { name, .. }) = f.inputs.get(0) {
-                name.raw.to_case(Case::UpperCamel) == *struct_name
-            } else {
-                false
-            }
-        })
     }
 
     //Does `ir_file` has any methods directed for `struct_name`?

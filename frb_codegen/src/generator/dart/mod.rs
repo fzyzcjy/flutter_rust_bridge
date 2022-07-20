@@ -394,6 +394,11 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     );
 
     let input_0 = func.inputs.get(0).as_ref().map(|x| &x.ty);
+    let input_0_struct_name = if let Some(StructRef(IrTypeStructRef { name, .. })) = &input_0 {
+        Some(name)
+    } else {
+        None
+    };
     let f = FunctionName::deserialize(&func.name);
     let func_output_struct_name = if let StructRef(IrTypeStructRef { name, .. }) = &func.output {
         Some(name)
@@ -409,7 +414,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             }
         })
         // If struct has a method with first element `input0`
-        || (input_0.is_some() && MethodNamingUtil::struct_has_methods(ir_file, input_0.unwrap()))
+        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), ir_file))
         //If output is a struct with methods
         || (func_output_struct_name.is_some()
             && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_file))
