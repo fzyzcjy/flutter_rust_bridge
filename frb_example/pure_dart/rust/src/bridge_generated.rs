@@ -688,6 +688,18 @@ pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_get_sum_struct(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_sum_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(get_sum_struct()),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -2406,6 +2418,13 @@ impl support::IntoDart for Point {
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+
+impl support::IntoDart for SumWith {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.x.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for SumWith {}
 
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartCObject {
