@@ -412,7 +412,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
         || (input_0.is_some() && MethodNamingUtil::struct_has_methods(ir_file, input_0.unwrap()))
         //If output is a struct with methods
         || (func_output_struct_name.is_some()
-            && MethodNamingUtil::has_methods(&func_output_struct_name.unwrap(), ir_file))
+            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_file))
     {
         format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
     } else {
