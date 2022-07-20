@@ -1,6 +1,16 @@
-# `Vec<u8>` and `Vec<T>`
+# Vec and array
 
-In Dart, when you want to express a long byte array such as a big image or some binary blob, people normally use `Uint8List` instead of `List<int>` since the former is much performant. `flutter_rust_bridge` takes this into consideration for you. When you have `Vec<u8>` (or `Vec<i8>`, or `Vec<i32>`, etc), it will be translated it into `Uint8List` or its friends; but when you have normal `Vec<T>` for other `T` types, it will be normal `List<T>`.
+## `Vec<u8>`, `Vec<i8>`, ...
+
+In Dart, when you want to express a long byte array such as a big image or some binary blob, people normally use `Uint8List` instead of `List<int>` since the former is much performant. `flutter_rust_bridge` takes this into consideration for you. When you have `Vec<u8>` (or `Vec<i8>`, or `Vec<i32>`, etc), it will be translated it into `Uint8List` or its friends.
+
+## `Vec<T>`
+
+When you have normal `Vec<T>` for `T` types other than `u8`, `i8` etc, it will be converted to normal `List<T>`.
+
+## `[T; N]`
+
+Since Dart does not have special treatment for static-sized arrays, it is converted to `List<T>` as well.
 
 ## Example
 
