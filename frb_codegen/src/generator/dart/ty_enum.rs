@@ -75,6 +75,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         .iter()
                         .enumerate()
                         .map(|(idx, field)| {
+                            println!("mapping field: {:?}", field);
                             let val =
                                 format!("_wire2api_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
                             if st.is_fields_named {
@@ -86,9 +87,23 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         .collect::<Vec<_>>()
                         .join(""),
                 };
-                format!("case {}: return {}({});", idx, variant.name, args)
+                let backtrace = if self.ir.is_exception {
+                    "if (raw[1] != null) {{
+                        Backtrace backtrace = Backtrace(raw[1] as String);
+                        e.setBacktrace(backtrace);
+                  }}"
+                } else {
+                    ""
+                };
+                format!(
+                    "case {}: final e = {}({}); 
+                    {}
+                  return e;",
+                    idx, variant.name, args, backtrace
+                )
             })
             .collect::<Vec<_>>();
+        println!("variants: {:?}", variants);
         format!(
             "switch (raw[0]) {{
                 {}
@@ -164,12 +179,12 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .collect::<Vec<_>>();
             format!(
                 "@freezed
-                class {0} with _${0} {1} {{
+                class {0} {1} with _${0} {{
                     {2}
                 }}",
                 self.ir.name,
                 if self.ir.is_exception {
-                    "implements Exception"
+                    "extends FrbException"
                 } else {
                     ""
                 },

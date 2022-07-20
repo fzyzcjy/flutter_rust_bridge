@@ -191,7 +191,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 metadata,
                 self.ir.name,
                 if self.ir.is_exception {
-                    "implements Exception"
+                    "extends FrbException"
                 } else {
                     ""
                 },
