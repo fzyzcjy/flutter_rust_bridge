@@ -204,6 +204,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
 
+  Future<SumWith> getSumStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -1224,6 +1228,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_sink_at_3",
         argNames: ["key", "max"],
+      );
+
+  Future<SumWith> getSumStruct({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_sum_struct(port_),
+        parseSuccessData: (d) => _wire2api_sum_with(this, d),
+        constMeta: kGetSumStructConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_sum_struct",
+        argNames: [],
       );
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
@@ -2401,6 +2418,15 @@ Point _wire2api_point(dynamic raw) {
   );
 }
 
+SumWith _wire2api_sum_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return SumWith(
+    bridge: bridge,
+    x: _wire2api_u32(arr[0]),
+  );
+}
+
 int _wire2api_u16(dynamic raw) {
   return raw as int;
 }
@@ -3154,6 +3180,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_3');
   late final _wire_handle_stream_sink_at_3 =
       _wire_handle_stream_sink_at_3Ptr.asFunction<void Function(int, int, int)>();
+
+  void wire_get_sum_struct(
+    int port_,
+  ) {
+    return _wire_get_sum_struct(
+      port_,
+    );
+  }
+
+  late final _wire_get_sum_structPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_sum_struct');
+  late final _wire_get_sum_struct = _wire_get_sum_structPtr.asFunction<void Function(int)>();
 
   void wire_sum__method__SumWith(
     int port_,
