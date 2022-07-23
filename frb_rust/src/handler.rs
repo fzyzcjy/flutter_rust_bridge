@@ -5,15 +5,13 @@ use std::mem::ManuallyDrop;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
-use allo_isolate::IntoDart;
+use crate::ffi::{IntoDart, MessagePort};
 use anyhow::Result;
-use lazy_static::lazy_static;
-use parking_lot::Mutex;
-use threadpool::ThreadPool;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
 use crate::support::{into_leak_vec_ptr, WireSyncReturnStruct};
 use crate::SyncReturn;
+// use wasm_bindgen::{prelude::*, JsCast};
 
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]
@@ -30,7 +28,7 @@ pub enum FfiCallMode {
 #[derive(Clone)]
 pub struct WrapInfo {
     /// A Dart `SendPort`. [None] if the mode is [FfiCallMode::Sync].
-    pub port: Option<i64>,
+    pub port: Option<MessagePort>,
     /// Usually the name of the function.
     pub debug_name: &'static str,
     /// The call mode of this function.
@@ -204,31 +202,44 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
+    #[allow(clippy::clone_on_copy, clippy::redundant_clone)]
     fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
     {
         const NUM_WORKERS: usize = 4;
-        lazy_static! {
-            static ref THREAD_POOL: Mutex<ThreadPool> = Mutex::new(ThreadPool::with_name(
-                "frb_executor".to_string(),
-                NUM_WORKERS
-            ));
+        #[cfg(not(target_family = "wasm"))]
+        lazy_static::lazy_static! {
+            static ref THREAD_POOL: parking_lot::Mutex<threadpool::ThreadPool> =
+                parking_lot::Mutex::new(threadpool::ThreadPool::with_name(
+                    "frb_executor".to_string(),
+                    NUM_WORKERS
+                ));
+        }
+
+        #[cfg(target_family = "wasm")]
+        thread_local! {
+            static WORKER_POOL: crate::pool::WorkerPool = crate::pool::WorkerPool::new(
+                NUM_WORKERS, std::option_env!("FRB_JS").expect("FRB_JS not set").into()
+            ).expect("Failed to create worker pool")
         }
 
         let eh = self.error_handler;
         let eh2 = self.error_handler;
-        THREAD_POOL.lock().execute(move || {
-            let wrap_info2 = wrap_info.clone();
-            let thread_result = panic::catch_unwind(move || {
-                let rust2dart = Rust2Dart::new(wrap_info2.port.unwrap());
 
-                let ret = task(TaskCallback::new(rust2dart)).map(|ret| ret.into_dart());
+        let WrapInfo { port, mode, .. } = wrap_info;
+        let worker = move |port: Option<MessagePort>| {
+            let port2 = port.as_ref().cloned();
+            let thread_result = panic::catch_unwind(move || {
+                let port2 = port2.expect("(worker) thread");
+                let rust2dart = Rust2Dart::new(port2.clone());
+
+                let ret = task(TaskCallback::new(rust2dart.clone())).map(IntoDart::into_dart);
 
                 match ret {
                     Ok(result) => {
-                        match wrap_info2.mode {
+                        match mode {
                             FfiCallMode::Normal => {
                                 rust2dart.success(result);
                             }
@@ -241,13 +252,30 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         }
                     }
                     Err(error) => {
-                        eh2.handle_error(wrap_info2.port.unwrap(), Error::ResultError(error));
+                        eh2.handle_error(port2, Error::ResultError(error));
                     }
                 };
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error(wrap_info.port.unwrap(), Error::Panic(error));
+                eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
+            }
+        };
+        #[cfg(not(target_family = "wasm"))]
+        THREAD_POOL.lock().execute(move || worker(port));
+
+        #[cfg(target_family = "wasm")]
+        WORKER_POOL.with(|pool| {
+            use wasm_bindgen::{JsCast, JsValue};
+            // MessagePort is not thread-safe (as it is only a pointer to a JS scope-local heap)
+            // but is transferrable, so we have to delegate to JS for marshalling.
+            // TODO(Desdaemon): Make a thread-safe adapter for MessagePort
+            let worker = |transfers: &[JsValue]| {
+                let port = transfers[0].dyn_ref::<MessagePort>().cloned();
+                worker(port)
+            };
+            if let Err(err) = pool.run(worker, Some(&[port.into()])) {
+                crate::console_error!("worker error: {:?}", err);
             }
         });
     }
@@ -305,7 +333,7 @@ impl Error {
 /// or to an external logging service.
 pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     /// The default error handler.
-    fn handle_error(&self, port: i64, error: Error);
+    fn handle_error(&self, port: MessagePort, error: Error);
 
     /// Special handler only used for synchronous code.
     fn handle_error_sync(&self, error: Error) -> Vec<u8>;
@@ -316,7 +344,7 @@ pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
 pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
-    fn handle_error(&self, port: i64, error: Error) {
+    fn handle_error(&self, port: MessagePort, error: Error) {
         Rust2Dart::new(port).error(error.code().to_string(), error.message());
     }
 

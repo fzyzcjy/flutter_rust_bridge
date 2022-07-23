@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/src/basic.dart';
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:meta/meta.dart';
+export 'ffi.dart';
 
 /// Allow custom setup hooks before ffi can be executed.
 /// All other ffi calls will wait (async) until the setup ffi finishes.
@@ -11,8 +12,7 @@ import 'package:meta/meta.dart';
 ///
 /// 1. Please call [setupMixinConstructor] inside the constructor of your class.
 /// 2. Inside your [setup], please call ffi functions with hint=[kHintSetup].
-mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase>
-    on FlutterRustBridgeBase<T> {
+mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
   /// Inside your [setup], please call ffi functions with hint=[kHintSetup].
   static const kHintSetup = _FlutterRustBridgeSetupMixinSkipWaitHint._();
 
@@ -44,8 +44,7 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase>
   }
 
   Future<void> _beforeExecute<S>(FlutterRustBridgeTask<S> task) async {
-    if (!_setupCompleter.isCompleted &&
-        task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
+    if (!_setupCompleter.isCompleted && task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
       log('FlutterRustBridgeSetupMixin.beforeExecute start waiting setup to complete (task=${task.debugName})');
       await _setupCompleter.future;
       log('FlutterRustBridgeSetupMixin.beforeExecute end waiting setup to complete (task=${task.debugName})');
@@ -66,8 +65,7 @@ class _FlutterRustBridgeSetupMixinSkipWaitHint {
 }
 
 /// Add a timeout to [executeNormal]
-mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
-    on FlutterRustBridgeBase<T> {
+mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
   @override
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) {
     // capture a stack trace at *here*, such that when timeout, can have a good stack trace
@@ -78,8 +76,8 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
     var future = super.executeNormal(task);
     if (timeLimitForExecuteNormal != null) {
       future = future.timeout(timeLimitForExecuteNormal,
-          onTimeout: () => throw FlutterRustBridgeTimeoutException(
-              timeLimitForExecuteNormal, task.debugName, stackTrace));
+          onTimeout: () =>
+              throw FlutterRustBridgeTimeoutException(timeLimitForExecuteNormal, task.debugName, stackTrace));
     }
 
     return future;
@@ -88,4 +86,17 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
   /// The time limit for methods using [executeNormal]. Return null means *disable* this functionality.
   @protected
   Duration? get timeLimitForExecuteNormal;
+}
+
+class MissingHeaderException implements Exception {
+  static const message = '''
+Buffers cannot be shared due to missing cross-origin headers.
+Make sure your web server responds with the following headers:
+- Cross-Origin-Opener-Policy: same-origin
+- Cross-Origin-Embedder-Policy: credentialless OR require-corp
+
+If running from Flutter, consider `flutter build web` and running a custom static-file server.''';
+
+  @override
+  String toString() => message;
 }

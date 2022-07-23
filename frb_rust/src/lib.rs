@@ -1,10 +1,16 @@
-pub use allo_isolate::ZeroCopyBuffer;
-
 pub use flutter_rust_bridge_macros::frb;
 pub use handler::{FfiCallMode, Handler, WrapInfo};
 pub use rust2dart::StreamSink;
+#[cfg(target_family = "wasm")]
+pub use wasm_bindgen;
+#[cfg(target_family = "wasm")]
+pub use wasm_bindgen::prelude::*;
 
+pub mod ffi;
+pub use ffi::*;
 pub mod handler;
+#[cfg(target_family = "wasm")]
+mod pool;
 pub mod rust2dart;
 pub mod support;
 

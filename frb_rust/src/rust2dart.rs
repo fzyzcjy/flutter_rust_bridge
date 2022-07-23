@@ -6,12 +6,10 @@ use std::marker::PhantomData;
 ///
 /// Its implementation lies with the Dart language and therefore should not be
 /// depended on to be stable.
-pub use allo_isolate::ffi::DartCObject;
-pub use allo_isolate::IntoDart;
-use allo_isolate::Isolate;
+pub use crate::ffi::*;
 
 /// A wrapper around a Dart [`Isolate`].
-#[derive(Copy, Clone)]
+#[derive(Clone)]
 pub struct Rust2Dart {
     isolate: Isolate,
 }
@@ -23,7 +21,7 @@ const RUST2DART_ACTION_CLOSE_STREAM: i32 = 2;
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
     /// Create a new wrapper from a raw port number.
-    pub fn new(port: i64) -> Self {
+    pub fn new(port: crate::ffi::MessagePort) -> Self {
         Rust2Dart {
             isolate: Isolate::new(port),
         }
@@ -77,7 +75,7 @@ impl TaskCallback {
 
     /// Create a new [StreamSink] of the specified type.
     pub fn stream_sink<T: IntoDart>(&self) -> StreamSink<T> {
-        StreamSink::new(self.rust2dart)
+        StreamSink::new(self.rust2dart.clone())
     }
 }
 
