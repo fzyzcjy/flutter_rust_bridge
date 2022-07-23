@@ -126,14 +126,15 @@ fn cbindgen(
             include: c_struct_names
                 .iter()
                 .map(|name| format!("\"{}\"", name))
-                .collect::<Vec<_>>(),
+                .collect(),
             exclude: exclude_symbols,
+            rename: [("MessagePort".into(), "int64_t".into())].into(),
             ..Default::default()
         },
         ..Default::default()
     };
 
-    debug!("cbindgen config: {:?}", config);
+    debug!("cbindgen config: {:#?}", config);
 
     let canonical = Path::new(rust_crate_dir)
         .canonicalize()
@@ -235,7 +236,7 @@ pub fn format_rust(path: &str) -> Result {
     Ok(())
 }
 
-pub fn format_dart(path: &str, line_length: i32) -> Result {
+pub fn format_dart(path: &str, line_length: u32) -> Result {
     debug!(
         "execute format_dart path={} line_length={}",
         path, line_length

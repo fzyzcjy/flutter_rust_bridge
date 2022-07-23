@@ -12,6 +12,7 @@ dylib := if os() == "windows" {
 } else {
     "libflutter_rust_bridge_example.so"
 }
+args := ""
 
 default: gen-bridge
 
@@ -23,12 +24,14 @@ alias g := gen-bridge
 gen-bridge: build
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart \
-                --dart-format-line-length {{line_length}}
+                --dart-decl-output {{frb_pure}}/dart/lib/bridge_definitions.dart \
+                --dart-format-line-length {{line_length}} {{args}}
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
+                --dart-decl-output {{frb_flutter}}/lib/bridge_definitions.dart \
                 -c {{frb_flutter}}/ios/Runner/bridge_generated.h \
                 -c {{frb_flutter}}/macos/Runner/bridge_generated.h \
-                --dart-format-line-length {{line_length}}
+                --dart-format-line-length {{line_length}} {{args}}
 
 alias l := lint
 lint:
