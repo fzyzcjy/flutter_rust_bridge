@@ -45,7 +45,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                         "{}: {}{}",
                         field.name.rust_style(),
                         field.ty.rust_wire_modifier(),
-                        field.ty.rust_wire_type()
+                        field.ty.rust_wire_type(self.context.wasm())
                     )
                 })
                 .collect(),
@@ -115,7 +115,11 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 } else {
                     i.to_string()
                 };
-                let gen = TypeRustGenerator::new(field.ty.clone(), self.context.ir_file);
+                let gen = TypeRustGenerator::new(
+                    field.ty.clone(),
+                    self.context.ir_file,
+                    self.context.config,
+                );
                 gen.convert_to_dart(gen.wrap_obj(format!("self{}.{}", unwrap, field_ref)))
             })
             .collect::<Vec<_>>()
@@ -166,7 +170,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     }}
                 }}
             "#,
-            self.ir.rust_wire_type(),
+            self.ir.rust_wire_type(self.context.wasm()),
             body,
         )
     }

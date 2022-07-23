@@ -43,8 +43,8 @@ impl IrTypeTrait for IrTypeOptional {
     fn safe_ident(&self) -> String {
         format!("opt_{}", self.inner.safe_ident())
     }
-    fn rust_wire_type(&self) -> String {
-        self.inner.rust_wire_type()
+    fn rust_wire_type(&self, wasm: bool) -> String {
+        self.inner.rust_wire_type(wasm)
     }
     fn rust_api_type(&self) -> String {
         format!("Option<{}>", self.inner.rust_api_type())

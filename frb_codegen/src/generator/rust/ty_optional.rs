@@ -11,7 +11,11 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn convert_to_dart(&self, obj: String) -> String {
-        let inner = TypeRustGenerator::new(*self.ir.inner.clone(), self.context.ir_file);
+        let inner = TypeRustGenerator::new(
+            *self.ir.inner.clone(),
+            self.context.ir_file,
+            self.context.config,
+        );
         let obj = match inner.wrapper_struct() {
             Some(wrapper) => format!(
                 "{}.map(|v| {}({}))",
@@ -25,6 +29,6 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file)
+        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
     }
 }

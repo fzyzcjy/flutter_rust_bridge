@@ -19,7 +19,10 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         Some(vec![
-            format!("ptr: *mut {}", self.ir.primitive.rust_wire_type()),
+            format!(
+                "ptr: *mut {}",
+                self.ir.primitive.rust_wire_type(self.context.wasm())
+            ),
             "len: i32".to_string(),
         ])
     }
@@ -35,12 +38,12 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
             Some(&format!(
                 "{}{}",
                 self.ir.rust_wire_modifier(),
-                self.ir.rust_wire_type()
+                self.ir.rust_wire_type(self.context.wasm())
             )),
             &format!(
                 "let ans = {} {{ ptr: support::new_leak_vec_ptr(Default::default(), len), len }};
                 support::new_leak_box_ptr(ans)",
-                self.ir.rust_wire_type(),
+                self.ir.rust_wire_type(self.context.wasm()),
             ),
         )
     }

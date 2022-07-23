@@ -81,10 +81,10 @@ impl IrTypeTrait for IrTypeDelegate {
         }
     }
 
-    fn rust_wire_type(&self) -> String {
+    fn rust_wire_type(&self, wasm: bool) -> String {
         match self {
             IrTypeDelegate::StringList => "wire_StringList".to_owned(),
-            _ => self.get_delegate().rust_wire_type(),
+            _ => self.get_delegate().rust_wire_type(wasm),
         }
     }
 

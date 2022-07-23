@@ -57,6 +57,14 @@ pub trait TypeRustGeneratorTrait {
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {
     pub ir_file: &'a IrFile,
+    pub config: &'a Opts,
+}
+
+impl TypeGeneratorContext<'_> {
+    #[inline]
+    pub fn wasm(&self) -> bool {
+        self.config.wasm
+    }
 }
 
 #[macro_export]
@@ -84,8 +92,8 @@ pub enum TypeRustGenerator<'a> {
 }
 
 impl<'a> TypeRustGenerator<'a> {
-    pub fn new(ty: IrType, ir_file: &'a IrFile) -> Self {
-        let context = TypeGeneratorContext { ir_file };
+    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
+        let context = TypeGeneratorContext { ir_file, config };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
             Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),

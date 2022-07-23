@@ -40,7 +40,7 @@ impl IrTypeTrait for IrTypePrimitiveList {
         format!("Vec<{}>", self.primitive.rust_api_type())
     }
 
-    fn rust_wire_type(&self) -> String {
+    fn rust_wire_type(&self, wasm: bool) -> String {
         format!("wire_{}", self.safe_ident())
     }
 

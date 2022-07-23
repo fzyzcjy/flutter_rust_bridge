@@ -20,8 +20,8 @@ use crate::data::MyStruct;
 
 // Section: wire functions
 
-#[no_mangle]
-pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
+#[wasm_bindgen]
+pub fn wire_simple_adder(port_: MessagePort, a: i32, b: i32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "simple_adder",
@@ -35,15 +35,14 @@ pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_primitive_types(
-    port_: i64,
+#[wasm_bindgen]
+pub fn wire_primitive_types(
+    port_: MessagePort,
     my_i32: i32,
     my_i64: i64,
     my_f64: f64,
     my_bool: bool,
-) {
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "primitive_types",
@@ -66,9 +65,8 @@ pub extern "C" fn wire_primitive_types(
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
+#[wasm_bindgen]
+pub fn wire_primitive_u32(port_: MessagePort, my_u32: u32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "primitive_u32",
@@ -81,9 +79,8 @@ pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
+#[wasm_bindgen]
+pub fn wire_handle_string(port_: MessagePort, s: *mut wire_uint_8_list) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string",
@@ -96,9 +93,8 @@ pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_return_unit(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_handle_return_unit(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_return_unit",
@@ -108,9 +104,8 @@ pub extern "C" fn wire_handle_return_unit(port_: i64) {
         move || move |task_callback| Ok(handle_return_unit()),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
+#[wasm_bindgen]
+pub fn wire_handle_vec_u8(port_: MessagePort, v: *mut wire_uint_8_list) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_u8",
@@ -123,9 +118,8 @@ pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
+#[wasm_bindgen]
+pub fn wire_handle_vec_of_primitive(port_: MessagePort, n: i32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_of_primitive",
@@ -138,9 +132,8 @@ pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
+#[wasm_bindgen]
+pub fn wire_handle_zero_copy_vec_of_primitive(port_: MessagePort, n: i32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_zero_copy_vec_of_primitive",
@@ -153,9 +146,12 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *mut wire_MySize) {
+#[wasm_bindgen]
+pub fn wire_handle_struct(
+    port_: MessagePort,
+    arg: *mut wire_MySize,
+    boxed: *mut wire_MySize,
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_struct",
@@ -169,9 +165,8 @@ pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
+#[wasm_bindgen]
+pub fn wire_handle_newtype(port_: MessagePort, arg: *mut wire_NewTypeInt) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_newtype",
@@ -184,9 +179,8 @@ pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_size) {
+#[wasm_bindgen]
+pub fn wire_handle_list_of_struct(port_: MessagePort, l: *mut wire_list_my_size) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_list_of_struct",
@@ -199,9 +193,8 @@ pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_si
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringList) {
+#[wasm_bindgen]
+pub fn wire_handle_string_list(port_: MessagePort, names: *mut wire_StringList) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string_list",
@@ -214,9 +207,8 @@ pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringLis
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode) {
+#[wasm_bindgen]
+pub fn wire_handle_complex_struct(port_: MessagePort, s: *mut wire_MyTreeNode) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_complex_struct",
@@ -229,11 +221,8 @@ pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_sync_return(
-    mode: *mut wire_uint_8_list,
-) -> support::WireSyncReturnStruct {
+#[wasm_bindgen]
+pub fn wire_handle_sync_return(mode: *mut wire_uint_8_list) -> support::WireSyncReturnStruct {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_sync_return",
@@ -246,9 +235,8 @@ pub extern "C" fn wire_handle_sync_return(
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
+#[wasm_bindgen]
+pub fn wire_handle_stream(port_: MessagePort, arg: *mut wire_uint_8_list) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream",
@@ -261,9 +249,8 @@ pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_stream_of_struct(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_handle_stream_of_struct(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream_of_struct",
@@ -273,9 +260,8 @@ pub extern "C" fn wire_handle_stream_of_struct(port_: i64) {
         move || move |task_callback| handle_stream_of_struct(task_callback.stream_sink()),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_return_err(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_return_err(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_err",
@@ -285,9 +271,8 @@ pub extern "C" fn wire_return_err(port_: i64) {
         move || move |task_callback| return_err(),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_return_panic(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_return_panic(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_panic",
@@ -297,9 +282,8 @@ pub extern "C" fn wire_return_panic(port_: i64) {
         move || move |task_callback| Ok(return_panic()),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64) {
+#[wasm_bindgen]
+pub fn wire_handle_optional_return(port_: MessagePort, left: f64, right: f64) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_return",
@@ -313,9 +297,8 @@ pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64)
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_uint_8_list) {
+#[wasm_bindgen]
+pub fn wire_handle_optional_struct(port_: MessagePort, document: *mut wire_uint_8_list) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_struct",
@@ -328,9 +311,8 @@ pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_ui
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_ExoticOptionals) {
+#[wasm_bindgen]
+pub fn wire_handle_optional_increment(port_: MessagePort, opt: *mut wire_ExoticOptionals) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_increment",
@@ -343,9 +325,8 @@ pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_Exot
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64) {
+#[wasm_bindgen]
+pub fn wire_handle_increment_boxed_optional(port_: MessagePort, opt: *mut f64) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_increment_boxed_optional",
@@ -358,10 +339,9 @@ pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_option_box_arguments(
-    port_: i64,
+#[wasm_bindgen]
+pub fn wire_handle_option_box_arguments(
+    port_: MessagePort,
     i8box: *mut i8,
     u8box: *mut u8,
     i32box: *mut i32,
@@ -369,7 +349,7 @@ pub extern "C" fn wire_handle_option_box_arguments(
     f64box: *mut f64,
     boolbox: *mut bool,
     structbox: *mut wire_ExoticOptionals,
-) {
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_option_box_arguments",
@@ -398,9 +378,8 @@ pub extern "C" fn wire_handle_option_box_arguments(
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_print_note(port_: i64, note: *mut wire_Note) {
+#[wasm_bindgen]
+pub fn wire_print_note(port_: MessagePort, note: *mut wire_Note) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "print_note",
@@ -413,9 +392,8 @@ pub extern "C" fn wire_print_note(port_: i64, note: *mut wire_Note) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_list) {
+#[wasm_bindgen]
+pub fn wire_handle_return_enum(port_: MessagePort, input: *mut wire_uint_8_list) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_return_enum",
@@ -428,9 +406,8 @@ pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_li
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
+#[wasm_bindgen]
+pub fn wire_handle_enum_parameter(port_: MessagePort, weekday: i32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_parameter",
@@ -443,9 +420,8 @@ pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Customized) {
+#[wasm_bindgen]
+pub fn wire_handle_customized_struct(port_: MessagePort, val: *mut wire_Customized) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_customized_struct",
@@ -458,9 +434,8 @@ pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Custo
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink) {
+#[wasm_bindgen]
+pub fn wire_handle_enum_struct(port_: MessagePort, val: *mut wire_KitchenSink) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_struct",
@@ -473,9 +448,8 @@ pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_use_imported_struct(port_: i64, my_struct: *mut wire_MyStruct) {
+#[wasm_bindgen]
+pub fn wire_use_imported_struct(port_: MessagePort, my_struct: *mut wire_MyStruct) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "use_imported_struct",
@@ -488,9 +462,8 @@ pub extern "C" fn wire_use_imported_struct(port_: i64, my_struct: *mut wire_MySt
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
+#[wasm_bindgen]
+pub fn wire_use_imported_enum(port_: MessagePort, my_enum: i32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "use_imported_enum",
@@ -503,9 +476,8 @@ pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_get_app_settings(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_get_app_settings(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_app_settings",
@@ -515,9 +487,8 @@ pub extern "C" fn wire_get_app_settings(port_: i64) {
         move || move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings())),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_ApplicationSettings) {
+#[wasm_bindgen]
+pub fn wire_is_app_embedded(port_: MessagePort, app_settings: *mut wire_ApplicationSettings) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "is_app_embedded",
@@ -530,9 +501,8 @@ pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_Appli
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_get_message(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_get_message(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_message",
@@ -542,9 +512,8 @@ pub extern "C" fn wire_get_message(port_: i64) {
         move || move |task_callback| Ok(mirror_ApplicationMessage(get_message())),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_get_array(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_get_array(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_array",
@@ -554,9 +523,8 @@ pub extern "C" fn wire_get_array(port_: i64) {
         move || move |task_callback| Ok(get_array()),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_get_complex_array(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_get_complex_array(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_complex_array",
@@ -566,9 +534,8 @@ pub extern "C" fn wire_get_complex_array(port_: i64) {
         move || move |task_callback| Ok(get_complex_array()),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_get_usize(port_: i64, u: usize) {
+#[wasm_bindgen]
+pub fn wire_get_usize(port_: MessagePort, u: usize) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_usize",
@@ -581,9 +548,8 @@ pub extern "C" fn wire_get_usize(port_: i64, u: usize) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_next_user_id(port_: i64, user_id: *mut wire_UserId) {
+#[wasm_bindgen]
+pub fn wire_next_user_id(port_: MessagePort, user_id: *mut wire_UserId) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "next_user_id",
@@ -596,9 +562,8 @@ pub extern "C" fn wire_next_user_id(port_: i64, user_id: *mut wire_UserId) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_register_event_listener(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_register_event_listener(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "register_event_listener",
@@ -608,9 +573,8 @@ pub extern "C" fn wire_register_event_listener(port_: i64) {
         move || move |task_callback| register_event_listener(task_callback.stream_sink()),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_close_event_listener(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_close_event_listener(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "close_event_listener",
@@ -620,9 +584,8 @@ pub extern "C" fn wire_close_event_listener(port_: i64) {
         move || move |task_callback| Ok(close_event_listener()),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_create_event(port_: i64) {
+#[wasm_bindgen]
+pub fn wire_create_event(port_: MessagePort) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "create_event",
@@ -632,9 +595,8 @@ pub extern "C" fn wire_create_event(port_: i64) {
         move || move |task_callback| Ok(create_event()),
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_stream_sink_at_1(port_: i64, key: u32, max: u32) {
+#[wasm_bindgen]
+pub fn wire_handle_stream_sink_at_1(port_: MessagePort, key: u32, max: u32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream_sink_at_1",
@@ -650,9 +612,8 @@ pub extern "C" fn wire_handle_stream_sink_at_1(port_: i64, key: u32, max: u32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_stream_sink_at_2(port_: i64, key: u32, max: u32) {
+#[wasm_bindgen]
+pub fn wire_handle_stream_sink_at_2(port_: MessagePort, key: u32, max: u32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream_sink_at_2",
@@ -668,9 +629,8 @@ pub extern "C" fn wire_handle_stream_sink_at_2(port_: i64, key: u32, max: u32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
+#[wasm_bindgen]
+pub fn wire_handle_stream_sink_at_3(port_: MessagePort, key: u32, max: u32) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream_sink_at_3",
@@ -686,9 +646,13 @@ pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
+#[wasm_bindgen]
+pub fn wire_sum__method__SumWith(
+    port_: MessagePort,
+    that: *mut wire_SumWith,
+    y: u32,
+    z: u32,
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "sum__method__SumWith",
@@ -703,9 +667,11 @@ pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith,
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_new__static_method__ConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
+#[wasm_bindgen]
+pub fn wire_new__static_method__ConcatenateWith(
+    port_: MessagePort,
+    a: *mut wire_uint_8_list,
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "new__static_method__ConcatenateWith",
@@ -718,13 +684,12 @@ pub extern "C" fn wire_new__static_method__ConcatenateWith(port_: i64, a: *mut w
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_concatenate__method__ConcatenateWith(
-    port_: i64,
+#[wasm_bindgen]
+pub fn wire_concatenate__method__ConcatenateWith(
+    port_: MessagePort,
     that: *mut wire_ConcatenateWith,
     b: *mut wire_uint_8_list,
-) {
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "concatenate__method__ConcatenateWith",
@@ -738,13 +703,12 @@ pub extern "C" fn wire_concatenate__method__ConcatenateWith(
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_concatenate_static__static_method__ConcatenateWith(
-    port_: i64,
+#[wasm_bindgen]
+pub fn wire_concatenate_static__static_method__ConcatenateWith(
+    port_: MessagePort,
     a: *mut wire_uint_8_list,
     b: *mut wire_uint_8_list,
-) {
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "concatenate_static__static_method__ConcatenateWith",
@@ -758,14 +722,13 @@ pub extern "C" fn wire_concatenate_static__static_method__ConcatenateWith(
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_some_stream_sink__method__ConcatenateWith(
-    port_: i64,
+#[wasm_bindgen]
+pub fn wire_handle_some_stream_sink__method__ConcatenateWith(
+    port_: MessagePort,
     that: *mut wire_ConcatenateWith,
     key: u32,
     max: u32,
-) {
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_some_stream_sink__method__ConcatenateWith",
@@ -787,12 +750,11 @@ pub extern "C" fn wire_handle_some_stream_sink__method__ConcatenateWith(
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
-    port_: i64,
+#[wasm_bindgen]
+pub fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+    port_: MessagePort,
     that: *mut wire_ConcatenateWith,
-) {
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_some_stream_sink_at_1__method__ConcatenateWith",
@@ -810,13 +772,12 @@ pub extern "C" fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
-    port_: i64,
+#[wasm_bindgen]
+pub fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+    port_: MessagePort,
     key: u32,
     max: u32,
-) {
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_some_static_stream_sink__static_method__ConcatenateWith",
@@ -836,11 +797,10 @@ pub extern "C" fn wire_handle_some_static_stream_sink__static_method__Concatenat
         },
     )
 }
-
-#[no_mangle]
-pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
-    port_: i64,
-) {
+#[wasm_bindgen]
+pub fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+    port_: MessagePort,
+) -> () {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
@@ -856,200 +816,235 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
         },
     )
 }
-
 // Section: wire structs
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_StringList {
-    ptr: *mut *mut wire_uint_8_list,
-    len: i32,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_StringList;
+    /*
+                            ptr: *mut *mut wire_uint_8_list
+    len: i32
+                            */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ApplicationEnv {
-    vars: *mut wire_list_application_env_var,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_ApplicationEnv;
+    /*
+    vars: *mut wire_list_application_env_var
+    */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_ApplicationEnvVar;
+    /*
+                            field0: *mut wire_uint_8_list
+    field1: bool
+                            */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ApplicationEnvVar {
-    field0: *mut wire_uint_8_list,
-    field1: bool,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_ApplicationSettings;
+    /*
+                            name: *mut wire_uint_8_list
+    version: *mut wire_uint_8_list
+    mode: i32
+    env: *mut wire_ApplicationEnv
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_Attribute;
+    /*
+                            key: *mut wire_uint_8_list
+    value: *mut wire_uint_8_list
+                            */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ApplicationSettings {
-    name: *mut wire_uint_8_list,
-    version: *mut wire_uint_8_list,
-    mode: i32,
-    env: *mut wire_ApplicationEnv,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_ConcatenateWith;
+    /*
+    a: *mut wire_uint_8_list
+    */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_Customized;
+    /*
+                            final_field: *mut wire_uint_8_list
+    non_final_field: *mut wire_uint_8_list
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_ExoticOptionals;
+    /*
+                            int32: *mut i32
+    int64: *mut i64
+    float64: *mut f64
+    boolean: *mut bool
+    zerocopy: *mut wire_uint_8_list
+    int8list: *mut wire_int_8_list
+    uint8list: *mut wire_uint_8_list
+    int32list: *mut wire_int_32_list
+    int64list: *mut wire_int_64_list
+    float32list: *mut wire_float_32_list
+    float64list: *mut wire_float_64_list
+    attributes: *mut wire_list_attribute
+    attributes_nullable: *mut wire_list_opt_box_autoadd_attribute
+    nullable_attributes: *mut wire_list_opt_box_autoadd_attribute
+    newtypeint: *mut wire_NewTypeInt
+                            */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Attribute {
-    key: *mut wire_uint_8_list,
-    value: *mut wire_uint_8_list,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_float_32_list;
+    /*
+                            ptr: *mut f32
+    len: i32
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_float_64_list;
+    /*
+                            ptr: *mut f64
+    len: i32
+                            */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ConcatenateWith {
-    a: *mut wire_uint_8_list,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_int_32_list;
+    /*
+                            ptr: *mut i32
+    len: i32
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_int_64_list;
+    /*
+                            ptr: *mut i64
+    len: i32
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_int_8_list;
+    /*
+                            ptr: *mut i8
+    len: i32
+                            */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Customized {
-    final_field: *mut wire_uint_8_list,
-    non_final_field: *mut wire_uint_8_list,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_list_application_env_var;
+    /*
+                            ptr: *mut wire_ApplicationEnvVar
+    len: i32
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_list_attribute;
+    /*
+                            ptr: *mut wire_Attribute
+    len: i32
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_list_my_size;
+    /*
+                            ptr: *mut wire_MySize
+    len: i32
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_list_my_tree_node;
+    /*
+                            ptr: *mut wire_MyTreeNode
+    len: i32
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_list_opt_box_autoadd_attribute;
+    /*
+                            ptr: *mut *mut wire_Attribute
+    len: i32
+                            */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ExoticOptionals {
-    int32: *mut i32,
-    int64: *mut i64,
-    float64: *mut f64,
-    boolean: *mut bool,
-    zerocopy: *mut wire_uint_8_list,
-    int8list: *mut wire_int_8_list,
-    uint8list: *mut wire_uint_8_list,
-    int32list: *mut wire_int_32_list,
-    int64list: *mut wire_int_64_list,
-    float32list: *mut wire_float_32_list,
-    float64list: *mut wire_float_64_list,
-    attributes: *mut wire_list_attribute,
-    attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
-    nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
-    newtypeint: *mut wire_NewTypeInt,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_MySize;
+    /*
+                            width: i32
+    height: i32
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_MyStruct;
+    /*
+    content: bool
+    */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_MyTreeNode;
+    /*
+                            value_i32: i32
+    value_vec_u8: *mut wire_uint_8_list
+    value_boolean: bool
+    children: *mut wire_list_my_tree_node
+                            */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_NewTypeInt;
+    /*
+    field0: i64
+    */
+}
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_Note;
+    /*
+                            day: *mut i32
+    body: *mut wire_uint_8_list
+                            */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_float_32_list {
-    ptr: *mut f32,
-    len: i32,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_SumWith;
+    /*
+    x: u32
+    */
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_float_64_list {
-    ptr: *mut f64,
-    len: i32,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_uint_8_list;
+    /*
+                            ptr: *mut u8
+    len: i32
+                            */
 }
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_int_32_list {
-    ptr: *mut i32,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_int_64_list {
-    ptr: *mut i64,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_int_8_list {
-    ptr: *mut i8,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_application_env_var {
-    ptr: *mut wire_ApplicationEnvVar,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_attribute {
-    ptr: *mut wire_Attribute,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_my_size {
-    ptr: *mut wire_MySize,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_my_tree_node {
-    ptr: *mut wire_MyTreeNode,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_opt_box_autoadd_attribute {
-    ptr: *mut *mut wire_Attribute,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_MySize {
-    width: i32,
-    height: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_MyStruct {
-    content: bool,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_MyTreeNode {
-    value_i32: i32,
-    value_vec_u8: *mut wire_uint_8_list,
-    value_boolean: bool,
-    children: *mut wire_list_my_tree_node,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_NewTypeInt {
-    field0: i64,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Note {
-    day: *mut i32,
-    body: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_SumWith {
-    x: u32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_uint_8_list {
-    ptr: *mut u8,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_UserId {
-    value: u32,
+#[wasm_bindgen]
+extern "C" {
+    pub type wire_UserId;
+    /*
+    value: u32
+    */
 }
 
 #[repr(C)]
@@ -1158,258 +1153,6 @@ const _: fn() = || {
         let _: Box<ApplicationEnv> = ApplicationSettings.env;
     }
 };
-// Section: allocate functions
-
-#[no_mangle]
-pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
-    let wrap = wire_StringList {
-        ptr: support::new_leak_vec_ptr(<*mut wire_uint_8_list>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
-    support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_application_settings_0() -> *mut wire_ApplicationSettings {
-    support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_attribute_0() -> *mut wire_Attribute {
-    support::new_leak_box_ptr(wire_Attribute::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut wire_ConcatenateWith {
-    support::new_leak_box_ptr(wire_ConcatenateWith::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_customized_0() -> *mut wire_Customized {
-    support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_exotic_optionals_0() -> *mut wire_ExoticOptionals {
-    support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_f64_0(value: f64) -> *mut f64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_i32_0(value: i32) -> *mut i32 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_i64_0(value: i64) -> *mut i64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_kitchen_sink_0() -> *mut wire_KitchenSink {
-    support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size_0() -> *mut wire_MySize {
-    support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_my_struct_0() -> *mut wire_MyStruct {
-    support::new_leak_box_ptr(wire_MyStruct::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_my_tree_node_0() -> *mut wire_MyTreeNode {
-    support::new_leak_box_ptr(wire_MyTreeNode::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut wire_NewTypeInt {
-    support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_note_0() -> *mut wire_Note {
-    support::new_leak_box_ptr(wire_Note::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_sum_with_0() -> *mut wire_SumWith {
-    support::new_leak_box_ptr(wire_SumWith::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_user_id_0() -> *mut wire_UserId {
-    support::new_leak_box_ptr(wire_UserId::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_bool_0(value: bool) -> *mut bool {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_exotic_optionals_0() -> *mut wire_ExoticOptionals {
-    support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_f64_0(value: f64) -> *mut f64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_i32_0(value: i32) -> *mut i32 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_i64_0(value: i64) -> *mut i64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_i8_0(value: i8) -> *mut i8 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_kitchen_sink_0() -> *mut wire_KitchenSink {
-    support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_my_size_0() -> *mut wire_MySize {
-    support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_u8_0(value: u8) -> *mut u8 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_weekdays_0(value: i32) -> *mut i32 {
-    support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_float_32_list_0(len: i32) -> *mut wire_float_32_list {
-    let ans = wire_float_32_list {
-        ptr: support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
-pub extern "C" fn new_float_64_list_0(len: i32) -> *mut wire_float_64_list {
-    let ans = wire_float_64_list {
-        ptr: support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
-pub extern "C" fn new_int_32_list_0(len: i32) -> *mut wire_int_32_list {
-    let ans = wire_int_32_list {
-        ptr: support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
-pub extern "C" fn new_int_64_list_0(len: i32) -> *mut wire_int_64_list {
-    let ans = wire_int_64_list {
-        ptr: support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
-pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
-    let ans = wire_int_8_list {
-        ptr: support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_application_env_var_0(len: i32) -> *mut wire_list_application_env_var {
-    let wrap = wire_list_application_env_var {
-        ptr: support::new_leak_vec_ptr(<wire_ApplicationEnvVar>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_attribute_0(len: i32) -> *mut wire_list_attribute {
-    let wrap = wire_list_attribute {
-        ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_my_size_0(len: i32) -> *mut wire_list_my_size {
-    let wrap = wire_list_my_size {
-        ptr: support::new_leak_vec_ptr(<wire_MySize>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_my_tree_node_0(len: i32) -> *mut wire_list_my_tree_node {
-    let wrap = wire_list_my_tree_node {
-        ptr: support::new_leak_vec_ptr(<wire_MyTreeNode>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_opt_box_autoadd_attribute_0(
-    len: i32,
-) -> *mut wire_list_opt_box_autoadd_attribute {
-    let wrap = wire_list_opt_box_autoadd_attribute {
-        ptr: support::new_leak_vec_ptr(<*mut wire_Attribute>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
-    let ans = wire_uint_8_list {
-        ptr: support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    support::new_leak_box_ptr(ans)
-}
-
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {
@@ -1997,213 +1740,6 @@ impl Wire2Api<Weekdays> for i32 {
             5 => Weekdays::Saturday,
             6 => Weekdays::Sunday,
             _ => unreachable!("Invalid variant for Weekdays: {}", self),
-        }
-    }
-}
-
-// Section: impl NewWithNullPtr
-
-pub trait NewWithNullPtr {
-    fn new_with_null_ptr() -> Self;
-}
-
-impl<T> NewWithNullPtr for *mut T {
-    fn new_with_null_ptr() -> Self {
-        std::ptr::null_mut()
-    }
-}
-
-impl NewWithNullPtr for wire_ApplicationEnv {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            vars: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_ApplicationEnvVar {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            field0: core::ptr::null_mut(),
-            field1: Default::default(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_ApplicationSettings {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            name: core::ptr::null_mut(),
-            version: core::ptr::null_mut(),
-            mode: Default::default(),
-            env: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_Attribute {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            key: core::ptr::null_mut(),
-            value: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_ConcatenateWith {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            a: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_Customized {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            final_field: core::ptr::null_mut(),
-            non_final_field: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_ExoticOptionals {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            int32: core::ptr::null_mut(),
-            int64: core::ptr::null_mut(),
-            float64: core::ptr::null_mut(),
-            boolean: core::ptr::null_mut(),
-            zerocopy: core::ptr::null_mut(),
-            int8list: core::ptr::null_mut(),
-            uint8list: core::ptr::null_mut(),
-            int32list: core::ptr::null_mut(),
-            int64list: core::ptr::null_mut(),
-            float32list: core::ptr::null_mut(),
-            float64list: core::ptr::null_mut(),
-            attributes: core::ptr::null_mut(),
-            attributes_nullable: core::ptr::null_mut(),
-            nullable_attributes: core::ptr::null_mut(),
-            newtypeint: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_KitchenSink {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
-    support::new_leak_box_ptr(KitchenSinkKind {
-        Primitives: support::new_leak_box_ptr(KitchenSink_Primitives {
-            int32: Default::default(),
-            float64: Default::default(),
-            boolean: Default::default(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
-    support::new_leak_box_ptr(KitchenSinkKind {
-        Nested: support::new_leak_box_ptr(KitchenSink_Nested {
-            field0: core::ptr::null_mut(),
-            field1: Default::default(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_KitchenSink_Optional() -> *mut KitchenSinkKind {
-    support::new_leak_box_ptr(KitchenSinkKind {
-        Optional: support::new_leak_box_ptr(KitchenSink_Optional {
-            field0: core::ptr::null_mut(),
-            field1: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_KitchenSink_Buffer() -> *mut KitchenSinkKind {
-    support::new_leak_box_ptr(KitchenSinkKind {
-        Buffer: support::new_leak_box_ptr(KitchenSink_Buffer {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
-    support::new_leak_box_ptr(KitchenSinkKind {
-        Enums: support::new_leak_box_ptr(KitchenSink_Enums {
-            field0: Default::default(),
-        }),
-    })
-}
-
-impl NewWithNullPtr for wire_MySize {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            width: Default::default(),
-            height: Default::default(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_MyStruct {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            content: Default::default(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_MyTreeNode {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            value_i32: Default::default(),
-            value_vec_u8: core::ptr::null_mut(),
-            value_boolean: Default::default(),
-            children: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_NewTypeInt {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            field0: Default::default(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_Note {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            day: core::ptr::null_mut(),
-            body: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_SumWith {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            x: Default::default(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_UserId {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            value: Default::default(),
         }
     }
 }

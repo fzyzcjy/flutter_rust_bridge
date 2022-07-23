@@ -47,10 +47,10 @@ impl IrTypeTrait for IrTypePrimitive {
     }
 
     fn rust_api_type(&self) -> String {
-        self.rust_wire_type()
+        self.rust_wire_type(false)
     }
 
-    fn rust_wire_type(&self) -> String {
+    fn rust_wire_type(&self, wasm: bool) -> String {
         match self {
             IrTypePrimitive::U8 => "u8",
             IrTypePrimitive::I8 => "i8",

@@ -45,8 +45,8 @@ impl IrTypeTrait for IrTypeBoxed {
         }
     }
 
-    fn rust_wire_type(&self) -> String {
-        self.inner.rust_wire_type()
+    fn rust_wire_type(&self, wasm: bool) -> String {
+        self.inner.rust_wire_type(wasm)
     }
 
     fn rust_wire_is_pointer(&self) -> bool {

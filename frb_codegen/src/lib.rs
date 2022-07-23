@@ -52,7 +52,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     fs::write(&config.rust_output_path, generated_rust.code)?;
 
     info!("Phase: Generate Dart code");
-    let (generated_dart, needs_freezed) = ir_file.generate_dart(config)?;
+    let generated_dart = ir_file.generate_dart(config);
 
     info!("Phase: Other things");
 
@@ -139,7 +139,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     }
 
     let dart_root = &config.dart_root;
-    if needs_freezed && config.build_runner {
+    if generated_dart.needs_freezed && config.build_runner {
         let dart_root = dart_root.as_ref().ok_or_else(|| {
             Error::str(
                 "build_runner configured to run, but Dart root could not be inferred.

@@ -73,7 +73,7 @@ pub trait IrTypeTrait {
 
     fn rust_api_type(&self) -> String;
 
-    fn rust_wire_type(&self) -> String;
+    fn rust_wire_type(&self, wasm: bool) -> String;
 
     fn rust_wire_modifier(&self) -> String {
         if self.rust_wire_is_pointer() {

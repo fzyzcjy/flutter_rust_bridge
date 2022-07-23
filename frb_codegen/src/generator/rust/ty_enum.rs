@@ -73,7 +73,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 "{}: {}{},",
                                 field.name.rust_style(),
                                 field.ty.rust_wire_modifier(),
-                                field.ty.rust_wire_type()
+                                field.ty.rust_wire_type(self.context.wasm())
                             )
                         })
                         .collect(),
@@ -104,7 +104,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             }}
 
             {3}",
-            self.ir.rust_wire_type(),
+            self.ir.rust_wire_type(self.context.wasm()),
             self.ir.name,
             union_fields.join("\n"),
             variant_structs.join("\n\n")
@@ -195,8 +195,11 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         let fields = Some(tag)
                             .into_iter()
                             .chain(st.fields.iter().map(|field| {
-                                let gen =
-                                    TypeRustGenerator::new(field.ty.clone(), self.context.ir_file);
+                                let gen = TypeRustGenerator::new(
+                                    field.ty.clone(),
+                                    self.context.ir_file,
+                                    self.context.config,
+                                );
                                 gen.convert_to_dart(field.name.rust_style().to_owned())
                             }))
                             .collect::<Vec<_>>();
@@ -286,7 +289,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 }}
             }}
             {}",
-            self.ir.rust_wire_type(),
+            self.ir.rust_wire_type(false),
             inflators.join("\n\n")
         )
     }

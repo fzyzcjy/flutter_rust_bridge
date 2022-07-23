@@ -1,4 +1,4 @@
-use crate::generator::dart::*;
+use crate::{generator::dart::*, Opts};
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
@@ -21,6 +21,8 @@ pub trait TypeDartGeneratorTrait {
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {
     pub ir_file: &'a IrFile,
+    pub config: &'a Opts,
+    pub dart_api_class_name: Option<String>,
 }
 
 #[macro_export]
@@ -30,7 +32,6 @@ macro_rules! type_dart_generator_struct {
         pub struct $cls<'a> {
             pub ir: $ir_cls,
             pub context: TypeGeneratorContext<'a>,
-            pub dart_api_class_name: Option<String>,
         }
     };
 }
@@ -49,57 +50,26 @@ pub enum TypeDartGenerator<'a> {
 }
 
 impl<'a> TypeDartGenerator<'a> {
-    pub fn new(ty: IrType, ir_file: &'a IrFile, dart_api_class_name: Option<String>) -> Self {
-        let context = TypeGeneratorContext { ir_file };
+    pub fn new(
+        ty: IrType,
+        ir_file: &'a IrFile,
+        dart_api_class_name: Option<String>,
+        config: &'a Opts,
+    ) -> Self {
+        let context = TypeGeneratorContext {
+            ir_file,
+            config,
+            dart_api_class_name,
+        };
         match ty {
-            Primitive(ir) => TypePrimitiveGenerator {
-                ir,
-                context,
-                dart_api_class_name,
-            }
-            .into(),
-            Delegate(ir) => TypeDelegateGenerator {
-                ir,
-                context,
-                dart_api_class_name,
-            }
-            .into(),
-            PrimitiveList(ir) => TypePrimitiveListGenerator {
-                ir,
-                context,
-                dart_api_class_name,
-            }
-            .into(),
-            Optional(ir) => TypeOptionalGenerator {
-                ir,
-                context,
-                dart_api_class_name,
-            }
-            .into(),
-            GeneralList(ir) => TypeGeneralListGenerator {
-                ir,
-                context,
-                dart_api_class_name,
-            }
-            .into(),
-            StructRef(ir) => TypeStructRefGenerator {
-                ir,
-                context,
-                dart_api_class_name,
-            }
-            .into(),
-            Boxed(ir) => TypeBoxedGenerator {
-                ir,
-                context,
-                dart_api_class_name,
-            }
-            .into(),
-            EnumRef(ir) => TypeEnumRefGenerator {
-                ir,
-                context,
-                dart_api_class_name,
-            }
-            .into(),
+            Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
+            Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),
+            PrimitiveList(ir) => TypePrimitiveListGenerator { ir, context }.into(),
+            Optional(ir) => TypeOptionalGenerator { ir, context }.into(),
+            GeneralList(ir) => TypeGeneralListGenerator { ir, context }.into(),
+            StructRef(ir) => TypeStructRefGenerator { ir, context }.into(),
+            Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
+            EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
         }
     }
 }

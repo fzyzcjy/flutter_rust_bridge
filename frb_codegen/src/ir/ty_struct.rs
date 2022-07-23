@@ -26,16 +26,16 @@ impl IrTypeTrait for IrTypeStructRef {
     fn dart_api_type(&self) -> String {
         self.name.to_string()
     }
-
+    // TODO: Change this
     fn dart_wire_type(&self) -> String {
-        self.rust_wire_type()
+        self.rust_wire_type(false)
     }
 
     fn rust_api_type(&self) -> String {
         self.name.to_string()
     }
 
-    fn rust_wire_type(&self) -> String {
+    fn rust_wire_type(&self, wasm: bool) -> String {
         format!("wire_{}", self.name)
     }
 }

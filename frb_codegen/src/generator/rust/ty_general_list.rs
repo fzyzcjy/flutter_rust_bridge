@@ -25,14 +25,18 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             format!(
                 "ptr: *mut {}{}",
                 self.ir.inner.rust_ptr_modifier(),
-                self.ir.inner.rust_wire_type()
+                self.ir.inner.rust_wire_type(self.context.wasm())
             ),
             "len: i32".to_string(),
         ])
     }
 
     fn wrap_obj(&self, obj: String) -> String {
-        let inner = TypeRustGenerator::new(*self.ir.inner.clone(), self.context.ir_file);
+        let inner = TypeRustGenerator::new(
+            *self.ir.inner.clone(),
+            self.context.ir_file,
+            self.context.config,
+        );
         inner
             .wrapper_struct()
             .map(|wrapper| {
@@ -56,11 +60,11 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             &self.ir.safe_ident(),
             &self.ir,
             &self.ir.inner,
-            block_index,
+            self.context.config,
         )
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file)
+        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
     }
 }

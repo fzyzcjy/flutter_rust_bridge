@@ -56,7 +56,10 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         match &self.ir {
             ty @ IrTypeDelegate::StringList => Some(vec![
-                format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type()),
+                format!(
+                    "ptr: *mut *mut {}",
+                    ty.get_delegate().rust_wire_type(self.context.config.wasm)
+                ),
                 "len: i32".to_owned(),
             ]),
             _ => None,
@@ -74,7 +77,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 &self.ir.safe_ident(),
                 list,
                 &list.get_delegate(),
-                block_index,
+                self.context.config,
             ),
             _ => "".to_string(),
         }
