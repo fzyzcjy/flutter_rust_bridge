@@ -42,7 +42,7 @@ impl IrTypeTrait for IrTypePrimitive {
         .to_string()
     }
 
-    fn dart_wire_type(&self) -> String {
+    fn dart_wire_type(&self, _wasm: bool) -> String {
         self.dart_api_type()
     }
 
@@ -50,7 +50,7 @@ impl IrTypeTrait for IrTypePrimitive {
         self.rust_wire_type(false)
     }
 
-    fn rust_wire_type(&self, wasm: bool) -> String {
+    fn rust_wire_type(&self, _wasm: bool) -> String {
         match self {
             IrTypePrimitive::U8 => "u8",
             IrTypePrimitive::I8 => "i8",

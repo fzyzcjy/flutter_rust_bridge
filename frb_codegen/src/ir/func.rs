@@ -41,6 +41,7 @@ pub enum IrFuncMode {
 }
 
 impl IrFuncMode {
+    #[inline]
     pub fn dart_return_type(&self, inner: &str) -> String {
         match self {
             Self::Normal => format!("Future<{}>", inner),
@@ -49,6 +50,7 @@ impl IrFuncMode {
         }
     }
 
+    #[inline]
     pub fn ffi_call_mode(&self) -> &'static str {
         match self {
             Self::Normal => "Normal",
@@ -57,7 +59,19 @@ impl IrFuncMode {
         }
     }
 
+    #[inline]
     pub fn has_port_argument(&self) -> bool {
-        self != &Self::Sync
+        !matches!(self, Self::Sync)
+    }
+
+    #[inline]
+    pub fn dart_port_param<'a, T: From<&'a str>>(&self) -> Option<T> {
+        self.has_port_argument()
+            .then(|| "NativePortType port_".into())
+    }
+
+    #[inline]
+    pub fn dart_port_var(&self) -> Option<&str> {
+        self.has_port_argument().then(|| "port_")
     }
 }

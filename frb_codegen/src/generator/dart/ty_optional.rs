@@ -1,14 +1,18 @@
 use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::type_dart_generator_struct;
-use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
 impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
-    fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
+    fn api2wire_body(&self) -> Option<String> {
         Some(format!(
-            "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
+            "return raw == null ? {} : _api2wire_{}(raw);",
+            if self.context.config.wasm {
+                "null"
+            } else {
+                "ffi.nullptr"
+            },
             self.ir.inner.safe_ident()
         ))
     }

@@ -31,15 +31,22 @@ impl IrTypeTrait for IrTypeEnumRef {
     fn dart_api_type(&self) -> String {
         self.name.to_string()
     }
-    // TODO: Change this
-    fn dart_wire_type(&self) -> String {
-        self.rust_wire_type(false)
+    fn dart_wire_type(&self, wasm: bool) -> String {
+        if wasm {
+            "List<dynamic>".into()
+        } else {
+            self.rust_wire_type(wasm)
+        }
     }
     fn rust_api_type(&self) -> String {
         self.name.to_string()
     }
     fn rust_wire_type(&self, wasm: bool) -> String {
-        format!("wire_{}", self.name)
+        if wasm {
+            "Box<[JsValue]>".into()
+        } else {
+            format!("wire_{}", self.name)
+        }
     }
 }
 

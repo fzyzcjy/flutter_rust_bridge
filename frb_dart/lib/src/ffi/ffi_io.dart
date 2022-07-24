@@ -2,7 +2,15 @@ import 'dart:ffi' as ffi;
 export 'dart:ffi';
 import 'dart:typed_data';
 
+/// Abstraction over a Dart SendPort and a JS MessagePort.
 typedef NativePortType = int;
+Future<dynamic> promiseToFuture(Object promise) => throw UnimplementedError("Not implemented on non-WASM platforms");
+dynamic eval(String jsScript) => throw UnimplementedError("Not implemented on non-WASM platforms");
+
+class JS {
+  /// Dummy JS attribute.
+  const JS([String? name]);
+}
 
 /// This class, together with its subclasses, are only for internal usage.
 /// Usually it should not be used by normal users.
@@ -11,11 +19,11 @@ abstract class FlutterRustBridgeWireBase {
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(
     ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
-  );
+  ) {}
 
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
-  void free_WireSyncReturnStruct(WireSyncReturnStruct val);
+  void free_WireSyncReturnStruct(WireSyncReturnStruct val) {}
 }
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {

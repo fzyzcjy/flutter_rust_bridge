@@ -62,10 +62,14 @@ impl IrTypeTrait for IrTypeDelegate {
         }
     }
 
-    fn dart_wire_type(&self) -> String {
-        match self {
-            IrTypeDelegate::StringList => "ffi.Pointer<wire_StringList>".to_owned(),
-            _ => self.get_delegate().dart_wire_type(),
+    // TODO: Refactor these overrides
+    fn dart_wire_type(&self, wasm: bool) -> String {
+        match (self, wasm) {
+            (IrTypeDelegate::String, true) => "String".into(),
+            (IrTypeDelegate::StringList, false) => "ffi.Pointer<wire_StringList>".to_owned(),
+            (IrTypeDelegate::StringList, true) => "List<String>".into(),
+            (IrTypeDelegate::SyncReturnVecU8, _) => "WireSyncReturnStruct".to_owned(),
+            _ => self.get_delegate().dart_wire_type(wasm),
         }
     }
 
@@ -81,14 +85,17 @@ impl IrTypeTrait for IrTypeDelegate {
         }
     }
 
+    // TODO: Refactor these overrides
     fn rust_wire_type(&self, wasm: bool) -> String {
-        match self {
-            IrTypeDelegate::StringList => "wire_StringList".to_owned(),
+        match (self, wasm) {
+            (IrTypeDelegate::String, true) => "String".into(),
+            (IrTypeDelegate::StringList, false) => "wire_StringList".to_owned(),
+            (IrTypeDelegate::StringList, true) => "Box<[JsString]>".into(),
             _ => self.get_delegate().rust_wire_type(wasm),
         }
     }
 
-    fn rust_wire_is_pointer(&self) -> bool {
-        self.get_delegate().rust_wire_is_pointer()
+    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
+        self.get_delegate().rust_wire_is_pointer(wasm)
     }
 }

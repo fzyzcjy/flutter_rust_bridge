@@ -32,8 +32,12 @@ impl IrTypeTrait for IrTypePrimitiveList {
         .to_string()
     }
 
-    fn dart_wire_type(&self) -> String {
-        format!("ffi.Pointer<wire_{}>", self.safe_ident())
+    fn dart_wire_type(&self, wasm: bool) -> String {
+        if wasm {
+            self.dart_api_type()
+        } else {
+            format!("ffi.Pointer<wire_{}>", self.safe_ident())
+        }
     }
 
     fn rust_api_type(&self) -> String {
@@ -41,10 +45,17 @@ impl IrTypeTrait for IrTypePrimitiveList {
     }
 
     fn rust_wire_type(&self, wasm: bool) -> String {
-        format!("wire_{}", self.safe_ident())
+        if wasm {
+            match self.primitive {
+                IrTypePrimitive::Bool | IrTypePrimitive::Unit => "Box<[JsValue]>".into(),
+                _ => format!("Box<[{}]>", self.primitive.rust_api_type()),
+            }
+        } else {
+            format!("wire_{}", self.safe_ident())
+        }
     }
 
-    fn rust_wire_is_pointer(&self) -> bool {
-        true
+    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
+        !wasm
     }
 }

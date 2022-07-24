@@ -12,7 +12,6 @@ dylib := if os() == "windows" {
 } else {
     "libflutter_rust_bridge_example.so"
 }
-args := ""
 
 default: gen-bridge
 
@@ -21,7 +20,7 @@ build:
     cd frb_codegen && cargo build
 
 alias g := gen-bridge
-gen-bridge: build
+gen-bridge *args="": build
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart \
                 --dart-decl-output {{frb_pure}}/dart/lib/bridge_definitions.dart \

@@ -28,13 +28,21 @@ impl IrTypeTrait for IrTypeBoxed {
         self.inner.dart_api_type()
     }
 
-    fn dart_wire_type(&self) -> String {
-        let wire_type = self
-            .inner
-            .as_primitive()
-            .map(|prim| prim.dart_native_type().to_owned())
-            .unwrap_or_else(|| self.inner.dart_wire_type());
-        format!("ffi.Pointer<{}>", wire_type)
+    fn dart_wire_type(&self, wasm: bool) -> String {
+        if wasm {
+            if self.inner.is_js_value() {
+                self.inner.dart_wire_type(wasm)
+            } else {
+                format!("int /* *{} */", self.inner.rust_wire_type(wasm))
+            }
+        } else {
+            let wire_type = self
+                .inner
+                .as_primitive()
+                .map(|prim| prim.dart_native_type().to_owned())
+                .unwrap_or_else(|| self.inner.dart_wire_type(wasm));
+            format!("ffi.Pointer<{}>", wire_type)
+        }
     }
 
     fn rust_api_type(&self) -> String {
@@ -46,10 +54,17 @@ impl IrTypeTrait for IrTypeBoxed {
     }
 
     fn rust_wire_type(&self, wasm: bool) -> String {
-        self.inner.rust_wire_type(wasm)
+        if wasm && !self.inner.is_js_value() {
+            format!("usize /* {} */", self.inner.rust_wire_type(wasm))
+        } else {
+            self.inner.rust_wire_type(wasm)
+        }
     }
 
-    fn rust_wire_is_pointer(&self) -> bool {
-        true
+    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
+        // In a parameter position, it doesn't make sense to have a JsValue sit behind
+        // a Rust heap allocation (it is already in the JS heap!)
+        // Vectors, (enum) structs and typed arrays (aka buffers) are JsValues.
+        !wasm || !self.inner.is_js_value()
     }
 }

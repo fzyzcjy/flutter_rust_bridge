@@ -32,18 +32,19 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         collector: &mut ExternFuncCollector,
         block_index: BlockIndex,
     ) -> String {
+        let wasm = self.context.wasm();
         collector.generate(
             &format!("new_{}_{}", self.ir.safe_ident(), block_index),
             &["len: i32"],
             Some(&format!(
                 "{}{}",
-                self.ir.rust_wire_modifier(),
-                self.ir.rust_wire_type(self.context.wasm())
+                self.ir.rust_wire_modifier(wasm),
+                self.ir.rust_wire_type(wasm)
             )),
             &format!(
                 "let ans = {} {{ ptr: support::new_leak_vec_ptr(Default::default(), len), len }};
                 support::new_leak_box_ptr(ans)",
-                self.ir.rust_wire_type(self.context.wasm()),
+                self.ir.rust_wire_type(wasm),
             ),
         )
     }

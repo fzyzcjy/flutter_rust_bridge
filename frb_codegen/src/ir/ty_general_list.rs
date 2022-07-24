@@ -18,8 +18,12 @@ impl IrTypeTrait for IrTypeGeneralList {
         format!("List<{}>", self.inner.dart_api_type())
     }
 
-    fn dart_wire_type(&self) -> String {
-        format!("ffi.Pointer<wire_{}>", self.safe_ident())
+    fn dart_wire_type(&self, wasm: bool) -> String {
+        if wasm {
+            "List<dynamic>".into()
+        } else {
+            format!("ffi.Pointer<wire_{}>", self.safe_ident())
+        }
     }
 
     fn rust_api_type(&self) -> String {
@@ -27,10 +31,14 @@ impl IrTypeTrait for IrTypeGeneralList {
     }
 
     fn rust_wire_type(&self, wasm: bool) -> String {
-        format!("wire_{}", self.safe_ident())
+        if wasm {
+            "Box<[JsValue]>".into()
+        } else {
+            format!("wire_{}", self.safe_ident())
+        }
     }
 
-    fn rust_wire_is_pointer(&self) -> bool {
-        true
+    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
+        !wasm
     }
 }

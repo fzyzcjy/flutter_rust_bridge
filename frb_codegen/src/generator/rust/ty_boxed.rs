@@ -3,7 +3,6 @@ use crate::generator::rust::{generate_import, ExternFuncCollector};
 use crate::ir::*;
 use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
-use crate::Opts;
 
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
@@ -13,6 +12,9 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             inner: box_inner,
             exist_in_real_api,
         } = &self.ir;
+        if self.context.wasm() && box_inner.is_js_value() {
+            return None;
+        }
         Some(match (box_inner.as_ref(), exist_in_real_api) {
             (IrType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
             (IrType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
@@ -51,9 +53,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
-        block_index: BlockIndex, // Opts {
-                                 //     block_index, wasm, ..
-                                 // }: &Opts,
+        block_index: BlockIndex,
     ) -> String {
         let wasm = false;
         if self.ir.inner.is_primitive() {
@@ -67,7 +67,13 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             collector.generate(
                 &format!("new_{}_{}", self.ir.safe_ident(), block_index),
                 &[],
-                Some(&[self.ir.rust_wire_modifier(), self.ir.rust_wire_type(wasm)].concat()),
+                Some(
+                    &[
+                        self.ir.rust_wire_modifier(wasm),
+                        self.ir.rust_wire_type(wasm),
+                    ]
+                    .concat(),
+                ),
                 &format!(
                     "support::new_leak_box_ptr({}::new_with_null_ptr())",
                     self.ir.inner.rust_wire_type(wasm)

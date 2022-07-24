@@ -32,7 +32,6 @@ macro_rules! console_error {
 #[cfg(target_family = "wasm")]
 pub use web::*;
 #[cfg(target_family = "wasm")]
-#[allow(clippy::type_complexity)]
 mod web {
     use js_sys::{global, Array};
     use std::iter::FromIterator;
@@ -48,9 +47,11 @@ mod web {
         fn into_dart(self) -> DartCObject;
     }
 
-    pub trait IntoDartExceptPrimitive {}
+    pub trait IntoDartExceptPrimitive: IntoDart {}
+    impl IntoDartExceptPrimitive for JsValue {}
 
     impl IntoDart for () {
+        #[inline]
         fn into_dart(self) -> DartCObject {
             JsValue::undefined()
         }
@@ -58,8 +59,19 @@ mod web {
     macro_rules! delegate {
         ($( $ty:ty )*) => {$(
             impl IntoDart for $ty {
-                #[inline] fn into_dart(self) -> DartCObject {
+                #[inline]
+                fn into_dart(self) -> DartCObject {
                     DartCObject::from(self)
+                }
+            }
+        )*};
+    }
+    macro_rules! delegate_buffer {
+        ($( $ty:ty => $buffer:ty )*) => {$(
+            impl IntoDart for $ty {
+                #[inline]
+                fn into_dart(self) -> DartCObject {
+                    <$buffer>::from(self.as_slice()).into()
                 }
             }
         )*};
@@ -67,15 +79,45 @@ mod web {
     // Orphan rules do not benefit our implementation, so we manually delegate From conversions here.
     delegate! {
         bool i8 u8 i16 u16 i32 u32 i64 u64 i128 u128 isize usize
-        &str String JsValue
+        f32 f64 &str String JsValue
+    }
+    delegate_buffer! {
+        Vec<i8> => js_sys::Int8Array
+        Vec<u8> => js_sys::Uint8Array
+        Vec<i16> => js_sys::Int16Array
+        Vec<u16> => js_sys::Uint16Array
+        Vec<i32> => js_sys::Int32Array
+        Vec<u32> => js_sys::Uint32Array
+        Vec<f32> => js_sys::Float32Array
+        Vec<f64> => js_sys::Float64Array
+        ZeroCopyBuffer<Vec<i8>> => js_sys::Int8Array
+        ZeroCopyBuffer<Vec<u8>> => js_sys::Uint8Array
+        ZeroCopyBuffer<Vec<i16>> => js_sys::Int16Array
+        ZeroCopyBuffer<Vec<u16>> => js_sys::Uint16Array
+        ZeroCopyBuffer<Vec<i32>> => js_sys::Int32Array
+        ZeroCopyBuffer<Vec<u32>> => js_sys::Uint32Array
+        ZeroCopyBuffer<Vec<f32>> => js_sys::Float32Array
+        ZeroCopyBuffer<Vec<f64>> => js_sys::Float64Array
     }
 
-    impl<T: IntoDart> IntoDart for Vec<T> {
+    impl<T: IntoDartExceptPrimitive> IntoDart for Vec<T> {
+        #[inline]
         fn into_dart(self) -> DartCObject {
-            <Array as std::iter::FromIterator<DartCObject>>::from_iter(
-                self.into_iter().map(IntoDart::into_dart),
-            )
-            .into()
+            Array::from_iter(self.into_iter().map(IntoDart::into_dart)).into()
+        }
+    }
+
+    impl<T: IntoDart> IntoDart for Option<T> {
+        #[inline]
+        fn into_dart(self) -> DartCObject {
+            self.map(T::into_dart).unwrap_or_else(JsValue::null)
+        }
+    }
+
+    impl<T: IntoDart + Clone> IntoDart for &T {
+        #[inline]
+        fn into_dart(self) -> DartCObject {
+            self.clone().into_dart()
         }
     }
 
@@ -104,22 +146,24 @@ mod web {
         pub fn log(msg: &str);
         #[wasm_bindgen(js_namespace = console)]
         pub fn error(msg: &str);
-        fn eval(script: &str);
+        // fn eval(script: &str);
     }
+
+    type RawClosure<T> = Box<dyn FnOnce(&[T]) + Send + 'static>;
 
     pub struct TransferClosure<'a, T> {
         transfer: &'a [T],
-        closure: Box<dyn for<'any> FnOnce(&'any [T]) + Send + 'static>,
+        closure: RawClosure<T>,
     }
 
     pub struct TransferClosurePayload {
-        func: Box<dyn FnOnce(&[JsValue]) + Send + 'static>,
+        func: RawClosure<JsValue>,
     }
 
     impl<'a> TransferClosure<'a, JsValue> {
         pub fn new(
             transfer: &'a [JsValue],
-            closure: impl for<'any> FnOnce(&'any [JsValue]) + Send + 'static,
+            closure: impl FnOnce(&[JsValue]) + Send + 'static,
         ) -> Self {
             Self {
                 transfer,
@@ -160,4 +204,11 @@ mod web {
     }
 
     pub struct ZeroCopyBuffer<T>(pub T);
+
+    impl<T> ZeroCopyBuffer<Vec<T>> {
+        #[inline]
+        pub fn as_slice(&self) -> &[T] {
+            self.0.as_slice()
+        }
+    }
 }

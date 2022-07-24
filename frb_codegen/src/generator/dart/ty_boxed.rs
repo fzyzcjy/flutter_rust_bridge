@@ -3,33 +3,32 @@ use crate::generator::dart::ty::*;
 use crate::ir::IrType::{EnumRef, StructRef};
 use crate::ir::*;
 use crate::type_dart_generator_struct;
-use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn api2wire_body(&self, block_index: BlockIndex) -> Option<String> {
-        if self.ir.inner.is_primitive() {
-            Some(format!(
+    fn api2wire_body(&self) -> Option<String> {
+        match (self.ir.inner.is_primitive(), self.context.config.wasm) {
+            (true, _) => Some(format!(
                 "return inner.new_{}_{}(_api2wire_{}(raw));",
                 self.ir.safe_ident(),
-                block_index,
+                self.context.config.block_index,
                 self.ir.inner.safe_ident(),
-            ))
-        } else {
-            Some(format!(
+            )),
+            (false, false) => Some(format!(
                 "final ptr = inner.new_{}_{}();
                 _api_fill_to_wire_{}(raw, ptr.ref);
                 return ptr;",
                 self.ir.safe_ident(),
-                block_index,
+                self.context.config.block_index,
                 self.ir.inner.safe_ident(),
-            ))
+            )),
+            (false, true) => Some("return const [];".into()),
         }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        (!self.ir.inner.is_primitive()).then(|| {
+        (!self.ir.inner.is_primitive() && !self.context.config.wasm).then(|| {
             format!(
                 " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
                 self.ir.inner.safe_ident()

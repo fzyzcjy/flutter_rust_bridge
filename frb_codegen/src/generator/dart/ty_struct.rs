@@ -3,14 +3,13 @@ use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
 use crate::method_utils::FunctionName;
 use crate::type_dart_generator_struct;
-use crate::utils::BlockIndex;
 use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
-        None
+    fn api2wire_body(&self) -> Option<String> {
+        self.context.config.wasm.then(|| "return const [];".into())
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {

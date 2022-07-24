@@ -66,11 +66,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        block_index: BlockIndex,
-    ) -> String {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, _: BlockIndex) -> String {
         match &self.ir {
             list @ IrTypeDelegate::StringList => generate_list_allocate_func(
                 collector,

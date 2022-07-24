@@ -44,19 +44,27 @@ impl IrTypeTrait for IrTypeOptional {
         format!("opt_{}", self.inner.safe_ident())
     }
     fn rust_wire_type(&self, wasm: bool) -> String {
-        self.inner.rust_wire_type(wasm)
+        if wasm {
+            format!("Option<{}>", self.inner.rust_wire_type(wasm))
+        } else {
+            self.inner.rust_wire_type(wasm)
+        }
     }
     fn rust_api_type(&self) -> String {
         format!("Option<{}>", self.inner.rust_api_type())
     }
-    fn dart_wire_type(&self) -> String {
-        self.inner.dart_wire_type()
+    fn dart_wire_type(&self, wasm: bool) -> String {
+        if wasm {
+            format!("{}?", self.inner.dart_wire_type(wasm))
+        } else {
+            self.inner.dart_wire_type(wasm)
+        }
     }
     fn dart_api_type(&self) -> String {
         format!("{}?", self.inner.dart_api_type())
     }
-    fn rust_wire_is_pointer(&self) -> bool {
-        true
+    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
+        !wasm
     }
 
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {

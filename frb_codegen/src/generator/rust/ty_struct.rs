@@ -44,7 +44,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     format!(
                         "{}: {}{}",
                         field.name.rust_style(),
-                        field.ty.rust_wire_modifier(),
+                        field.ty.rust_wire_modifier(false),
                         field.ty.rust_wire_type(self.context.wasm())
                     )
                 })
@@ -153,7 +153,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     format!(
                         "{}: {},",
                         field.name.rust_style(),
-                        if field.ty.rust_wire_is_pointer() {
+                        if field.ty.rust_wire_is_pointer(false) {
                             "core::ptr::null_mut()"
                         } else {
                             "Default::default()"

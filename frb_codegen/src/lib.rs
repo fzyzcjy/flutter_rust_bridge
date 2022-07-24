@@ -46,22 +46,31 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     let ir_file = transformer::transform(raw_ir_file);
 
     info!("Phase: Generate Rust code");
-    let generated_rust = ir_file.generate_rust(config);
-    let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
     fs::create_dir_all(&rust_output_dir)?;
-    fs::write(&config.rust_output_path, generated_rust.code)?;
+    let generated_rust = {
+        let generated_rust = ir_file.generate_rust(&config.with_wasm(false));
+        fs::write(&config.rust_output_path, &generated_rust.code)?;
+        generated_rust
+    };
+    if config.wasm {
+        let generated_rust = ir_file.generate_rust(config);
+        fs::write(config.rust_wasm_output_path(), generated_rust.code)?;
+    }
 
     info!("Phase: Generate Dart code");
-    let generated_dart = ir_file.generate_dart(config);
-
-    info!("Phase: Other things");
+    let generated_dart = ir_file.generate_dart(&config.with_wasm(false));
+    let wasm_generated_dart = config.wasm.then(|| ir_file.generate_dart(config));
 
     commands::format_rust(&config.rust_output_path)?;
+    if config.wasm {
+        commands::format_rust(config.rust_wasm_output_path().to_str().unwrap())?;
+    }
 
     if !config.skip_add_mod_to_lib {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 
+    info!("Phase: Generating Dart bindings for Rust");
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     with_changed_file(
@@ -78,7 +87,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
                 dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                 dart_class_name: &config.dart_wire_class_name(),
                 c_struct_names: ir_file.get_c_struct_names(),
-                exclude_symbols,
+                exclude_symbols: generated_rust.get_exclude_symbols(all_symbols),
                 llvm_install_path: &config.llvm_path[..],
                 llvm_compiler_opts: &config.llvm_compiler_opts,
             })
@@ -130,6 +139,12 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
             &config.dart_output_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
         )?;
+        if let Some(wasm) = wasm_generated_dart {
+            fs::write(
+                config.dart_wasm_output_path(),
+                (wasm.file_prelude + &impl_import_decl + &wasm.impl_code).to_text(),
+            )?;
+        }
     } else {
         fs::write(
             &config.dart_output_path,
@@ -138,6 +153,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         )?;
     }
 
+    info!("Phase: Running build_runner");
     let dart_root = &config.dart_root;
     if generated_dart.needs_freezed && config.build_runner {
         let dart_root = dart_root.as_ref().ok_or_else(|| {
@@ -148,16 +164,23 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         })?;
         commands::build_runner(dart_root)?;
         commands::format_dart(
-            &config
-                .dart_output_freezed_path()
+            config
+                .dart_output_root()
                 .ok_or_else(|| Error::str("Invalid freezed file path"))?,
             config.dart_format_line_length,
         )?;
     }
 
+    info!("Phase: Formatting Dart code");
     commands::format_dart(&config.dart_output_path, config.dart_format_line_length)?;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         commands::format_dart(dart_decl_output_path, config.dart_format_line_length)?;
+    }
+    if config.wasm {
+        commands::format_dart(
+            config.dart_wasm_output_path().to_str().unwrap(),
+            config.dart_format_line_length,
+        )?;
     }
 
     info!("Success!");

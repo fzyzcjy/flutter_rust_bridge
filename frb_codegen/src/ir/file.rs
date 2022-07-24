@@ -1,4 +1,3 @@
-use crate::error::Error;
 use crate::utils::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};

@@ -8,11 +8,9 @@ use std::str::FromStr;
 
 use anyhow::{anyhow, Result};
 use clap::IntoApp;
+use clap::Parser;
 use convert_case::{Case, Casing};
 use serde::Deserialize;
-// use structopt::clap::AppSettings;
-// use structopt::StructOpt;
-use clap::Parser;
 use toml::Value;
 
 use crate::ir::IrFile;
@@ -413,27 +411,28 @@ impl Opts {
         format!("{}Wire", self.class_name)
     }
 
-    /// Returns None if the path terminates in "..", or not utf8.
-    pub fn dart_output_path_name(&self) -> Option<&str> {
-        let name = Path::new(&self.dart_output_path);
-        let root = name.file_name()?.to_str()?;
-        if let Some((name, _)) = root.rsplit_once('.') {
-            Some(name)
-        } else {
-            Some(root)
-        }
-    }
-
-    pub fn dart_output_freezed_path(&self) -> Option<String> {
-        Some(
-            Path::new(&self.dart_output_path)
-                .with_extension("freezed.dart")
-                .to_str()?
-                .to_owned(),
+    pub(crate) fn dart_output_root(&self) -> Option<&str> {
+        Path::new(
+            self.dart_decl_output_path
+                .as_ref()
+                .unwrap_or(&self.dart_output_path),
         )
+        .file_stem()?
+        .to_str()
     }
 
     pub fn dart_wasm_output_path(&self) -> PathBuf {
-        Path::new(&self.dart_output_path).with_extension("web.rs")
+        Path::new(&self.dart_output_path).with_extension("web.dart")
+    }
+
+    pub fn rust_wasm_output_path(&self) -> PathBuf {
+        Path::new(&self.rust_output_path).with_extension("web.rs")
+    }
+
+    pub fn with_wasm(&self, wasm: bool) -> Self {
+        Self {
+            wasm,
+            ..self.clone()
+        }
     }
 }
