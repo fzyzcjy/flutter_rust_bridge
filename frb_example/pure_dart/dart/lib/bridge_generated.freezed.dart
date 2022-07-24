@@ -481,22 +481,23 @@ abstract class Exit implements ApplicationMessage {
 
 /// @nodoc
 mixin _$CustomError {
+  Backtrace? get backtrace => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String field0) error0,
-    required TResult Function(int field0) error1,
+    required TResult Function(String field0, Backtrace? backtrace) error0,
+    required TResult Function(int field0, Backtrace? backtrace) error1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? error0,
-    TResult Function(int field0)? error1,
+    TResult Function(String field0, Backtrace? backtrace)? error0,
+    TResult Function(int field0, Backtrace? backtrace)? error1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? error0,
-    TResult Function(int field0)? error1,
+    TResult Function(String field0, Backtrace? backtrace)? error0,
+    TResult Function(int field0, Backtrace? backtrace)? error1,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -519,6 +520,10 @@ mixin _$CustomError {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CustomErrorCopyWith<CustomError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -526,6 +531,7 @@ abstract class $CustomErrorCopyWith<$Res> {
   factory $CustomErrorCopyWith(
           CustomError value, $Res Function(CustomError) then) =
       _$CustomErrorCopyWithImpl<$Res>;
+  $Res call({Backtrace? backtrace});
 }
 
 /// @nodoc
@@ -535,13 +541,26 @@ class _$CustomErrorCopyWithImpl<$Res> implements $CustomErrorCopyWith<$Res> {
   final CustomError _value;
   // ignore: unused_field
   final $Res Function(CustomError) _then;
+
+  @override
+  $Res call({
+    Object? backtrace = freezed,
+  }) {
+    return _then(_value.copyWith(
+      backtrace: backtrace == freezed
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as Backtrace?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$Error0CopyWith<$Res> {
+abstract class _$$Error0CopyWith<$Res> implements $CustomErrorCopyWith<$Res> {
   factory _$$Error0CopyWith(_$Error0 value, $Res Function(_$Error0) then) =
       __$$Error0CopyWithImpl<$Res>;
-  $Res call({String field0});
+  @override
+  $Res call({String field0, Backtrace? backtrace});
 }
 
 /// @nodoc
@@ -556,12 +575,17 @@ class __$$Error0CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? field0 = freezed,
+    Object? backtrace = freezed,
   }) {
     return _then(_$Error0(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as String,
+      backtrace == freezed
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as Backtrace?,
     ));
   }
 }
@@ -569,22 +593,32 @@ class __$$Error0CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Error0 implements Error0 {
-  const _$Error0(this.field0);
+  const _$Error0(this.field0, this.backtrace);
 
   @override
   final String field0;
+  @override
+  final Backtrace? backtrace;
+
+  @override
+  String toString() {
+    return 'CustomError.error0(field0: $field0, backtrace: $backtrace)';
+  }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Error0 &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            const DeepCollectionEquality().equals(other.field0, field0) &&
+            const DeepCollectionEquality().equals(other.backtrace, backtrace));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(field0),
+      const DeepCollectionEquality().hash(backtrace));
 
   @JsonKey(ignore: true)
   @override
@@ -594,30 +628,30 @@ class _$Error0 implements Error0 {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String field0) error0,
-    required TResult Function(int field0) error1,
+    required TResult Function(String field0, Backtrace? backtrace) error0,
+    required TResult Function(int field0, Backtrace? backtrace) error1,
   }) {
-    return error0(field0);
+    return error0(field0, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? error0,
-    TResult Function(int field0)? error1,
+    TResult Function(String field0, Backtrace? backtrace)? error0,
+    TResult Function(int field0, Backtrace? backtrace)? error1,
   }) {
-    return error0?.call(field0);
+    return error0?.call(field0, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? error0,
-    TResult Function(int field0)? error1,
+    TResult Function(String field0, Backtrace? backtrace)? error0,
+    TResult Function(int field0, Backtrace? backtrace)? error1,
     required TResult orElse(),
   }) {
     if (error0 != null) {
-      return error0(field0);
+      return error0(field0, backtrace);
     }
     return orElse();
   }
@@ -654,20 +688,25 @@ class _$Error0 implements Error0 {
   }
 }
 
-abstract class Error0 implements CustomError {
-  const factory Error0(final String field0) = _$Error0;
+abstract class Error0 implements CustomError, FrbBacktracedException {
+  const factory Error0(final String field0, final Backtrace? backtrace) =
+      _$Error0;
 
   String get field0;
+  @override
+  Backtrace? get backtrace;
+  @override
   @JsonKey(ignore: true)
   _$$Error0CopyWith<_$Error0> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Error1CopyWith<$Res> {
+abstract class _$$Error1CopyWith<$Res> implements $CustomErrorCopyWith<$Res> {
   factory _$$Error1CopyWith(_$Error1 value, $Res Function(_$Error1) then) =
       __$$Error1CopyWithImpl<$Res>;
-  $Res call({int field0});
+  @override
+  $Res call({int field0, Backtrace? backtrace});
 }
 
 /// @nodoc
@@ -682,12 +721,17 @@ class __$$Error1CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? field0 = freezed,
+    Object? backtrace = freezed,
   }) {
     return _then(_$Error1(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as int,
+      backtrace == freezed
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as Backtrace?,
     ));
   }
 }
@@ -695,22 +739,32 @@ class __$$Error1CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Error1 implements Error1 {
-  const _$Error1(this.field0);
+  const _$Error1(this.field0, this.backtrace);
 
   @override
   final int field0;
+  @override
+  final Backtrace? backtrace;
+
+  @override
+  String toString() {
+    return 'CustomError.error1(field0: $field0, backtrace: $backtrace)';
+  }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Error1 &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            const DeepCollectionEquality().equals(other.field0, field0) &&
+            const DeepCollectionEquality().equals(other.backtrace, backtrace));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(field0),
+      const DeepCollectionEquality().hash(backtrace));
 
   @JsonKey(ignore: true)
   @override
@@ -720,30 +774,30 @@ class _$Error1 implements Error1 {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String field0) error0,
-    required TResult Function(int field0) error1,
+    required TResult Function(String field0, Backtrace? backtrace) error0,
+    required TResult Function(int field0, Backtrace? backtrace) error1,
   }) {
-    return error1(field0);
+    return error1(field0, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? error0,
-    TResult Function(int field0)? error1,
+    TResult Function(String field0, Backtrace? backtrace)? error0,
+    TResult Function(int field0, Backtrace? backtrace)? error1,
   }) {
-    return error1?.call(field0);
+    return error1?.call(field0, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? error0,
-    TResult Function(int field0)? error1,
+    TResult Function(String field0, Backtrace? backtrace)? error0,
+    TResult Function(int field0, Backtrace? backtrace)? error1,
     required TResult orElse(),
   }) {
     if (error1 != null) {
-      return error1(field0);
+      return error1(field0, backtrace);
     }
     return orElse();
   }
@@ -780,10 +834,13 @@ class _$Error1 implements Error1 {
   }
 }
 
-abstract class Error1 implements CustomError {
-  const factory Error1(final int field0) = _$Error1;
+abstract class Error1 implements CustomError, FrbBacktracedException {
+  const factory Error1(final int field0, final Backtrace? backtrace) = _$Error1;
 
   int get field0;
+  @override
+  Backtrace? get backtrace;
+  @override
   @JsonKey(ignore: true)
   _$$Error1CopyWith<_$Error1> get copyWith =>
       throw _privateConstructorUsedError;
@@ -791,22 +848,27 @@ abstract class Error1 implements CustomError {
 
 /// @nodoc
 mixin _$CustomNestedError1 {
+  Backtrace? get backtrace => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String field0) customNested1,
-    required TResult Function(CustomNestedError2 field0) errorNested,
+    required TResult Function(String field0, Backtrace? backtrace)
+        customNested1,
+    required TResult Function(CustomNestedError2 field0, Backtrace? backtrace)
+        errorNested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? customNested1,
-    TResult Function(CustomNestedError2 field0)? errorNested,
+    TResult Function(String field0, Backtrace? backtrace)? customNested1,
+    TResult Function(CustomNestedError2 field0, Backtrace? backtrace)?
+        errorNested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? customNested1,
-    TResult Function(CustomNestedError2 field0)? errorNested,
+    TResult Function(String field0, Backtrace? backtrace)? customNested1,
+    TResult Function(CustomNestedError2 field0, Backtrace? backtrace)?
+        errorNested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -829,6 +891,10 @@ mixin _$CustomNestedError1 {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CustomNestedError1CopyWith<CustomNestedError1> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -836,6 +902,7 @@ abstract class $CustomNestedError1CopyWith<$Res> {
   factory $CustomNestedError1CopyWith(
           CustomNestedError1 value, $Res Function(CustomNestedError1) then) =
       _$CustomNestedError1CopyWithImpl<$Res>;
+  $Res call({Backtrace? backtrace});
 }
 
 /// @nodoc
@@ -846,14 +913,28 @@ class _$CustomNestedError1CopyWithImpl<$Res>
   final CustomNestedError1 _value;
   // ignore: unused_field
   final $Res Function(CustomNestedError1) _then;
+
+  @override
+  $Res call({
+    Object? backtrace = freezed,
+  }) {
+    return _then(_value.copyWith(
+      backtrace: backtrace == freezed
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as Backtrace?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$CustomNested1CopyWith<$Res> {
+abstract class _$$CustomNested1CopyWith<$Res>
+    implements $CustomNestedError1CopyWith<$Res> {
   factory _$$CustomNested1CopyWith(
           _$CustomNested1 value, $Res Function(_$CustomNested1) then) =
       __$$CustomNested1CopyWithImpl<$Res>;
-  $Res call({String field0});
+  @override
+  $Res call({String field0, Backtrace? backtrace});
 }
 
 /// @nodoc
@@ -870,12 +951,17 @@ class __$$CustomNested1CopyWithImpl<$Res>
   @override
   $Res call({
     Object? field0 = freezed,
+    Object? backtrace = freezed,
   }) {
     return _then(_$CustomNested1(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as String,
+      backtrace == freezed
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as Backtrace?,
     ));
   }
 }
@@ -883,22 +969,32 @@ class __$$CustomNested1CopyWithImpl<$Res>
 /// @nodoc
 
 class _$CustomNested1 implements CustomNested1 {
-  const _$CustomNested1(this.field0);
+  const _$CustomNested1(this.field0, this.backtrace);
 
   @override
   final String field0;
+  @override
+  final Backtrace? backtrace;
+
+  @override
+  String toString() {
+    return 'CustomNestedError1.customNested1(field0: $field0, backtrace: $backtrace)';
+  }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNested1 &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            const DeepCollectionEquality().equals(other.field0, field0) &&
+            const DeepCollectionEquality().equals(other.backtrace, backtrace));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(field0),
+      const DeepCollectionEquality().hash(backtrace));
 
   @JsonKey(ignore: true)
   @override
@@ -908,30 +1004,34 @@ class _$CustomNested1 implements CustomNested1 {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String field0) customNested1,
-    required TResult Function(CustomNestedError2 field0) errorNested,
+    required TResult Function(String field0, Backtrace? backtrace)
+        customNested1,
+    required TResult Function(CustomNestedError2 field0, Backtrace? backtrace)
+        errorNested,
   }) {
-    return customNested1(field0);
+    return customNested1(field0, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? customNested1,
-    TResult Function(CustomNestedError2 field0)? errorNested,
+    TResult Function(String field0, Backtrace? backtrace)? customNested1,
+    TResult Function(CustomNestedError2 field0, Backtrace? backtrace)?
+        errorNested,
   }) {
-    return customNested1?.call(field0);
+    return customNested1?.call(field0, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? customNested1,
-    TResult Function(CustomNestedError2 field0)? errorNested,
+    TResult Function(String field0, Backtrace? backtrace)? customNested1,
+    TResult Function(CustomNestedError2 field0, Backtrace? backtrace)?
+        errorNested,
     required TResult orElse(),
   }) {
     if (customNested1 != null) {
-      return customNested1(field0);
+      return customNested1(field0, backtrace);
     }
     return orElse();
   }
@@ -968,21 +1068,28 @@ class _$CustomNested1 implements CustomNested1 {
   }
 }
 
-abstract class CustomNested1 implements CustomNestedError1 {
-  const factory CustomNested1(final String field0) = _$CustomNested1;
+abstract class CustomNested1
+    implements CustomNestedError1, FrbBacktracedException {
+  const factory CustomNested1(final String field0, final Backtrace? backtrace) =
+      _$CustomNested1;
 
   String get field0;
+  @override
+  Backtrace? get backtrace;
+  @override
   @JsonKey(ignore: true)
   _$$CustomNested1CopyWith<_$CustomNested1> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorNestedCopyWith<$Res> {
+abstract class _$$ErrorNestedCopyWith<$Res>
+    implements $CustomNestedError1CopyWith<$Res> {
   factory _$$ErrorNestedCopyWith(
           _$ErrorNested value, $Res Function(_$ErrorNested) then) =
       __$$ErrorNestedCopyWithImpl<$Res>;
-  $Res call({CustomNestedError2 field0});
+  @override
+  $Res call({CustomNestedError2 field0, Backtrace? backtrace});
 
   $CustomNestedError2CopyWith<$Res> get field0;
 }
@@ -1001,12 +1108,17 @@ class __$$ErrorNestedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? field0 = freezed,
+    Object? backtrace = freezed,
   }) {
     return _then(_$ErrorNested(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as CustomNestedError2,
+      backtrace == freezed
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as Backtrace?,
     ));
   }
 
@@ -1021,22 +1133,32 @@ class __$$ErrorNestedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorNested implements ErrorNested {
-  const _$ErrorNested(this.field0);
+  const _$ErrorNested(this.field0, this.backtrace);
 
   @override
   final CustomNestedError2 field0;
+  @override
+  final Backtrace? backtrace;
+
+  @override
+  String toString() {
+    return 'CustomNestedError1.errorNested(field0: $field0, backtrace: $backtrace)';
+  }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorNested &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            const DeepCollectionEquality().equals(other.field0, field0) &&
+            const DeepCollectionEquality().equals(other.backtrace, backtrace));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(field0),
+      const DeepCollectionEquality().hash(backtrace));
 
   @JsonKey(ignore: true)
   @override
@@ -1046,30 +1168,34 @@ class _$ErrorNested implements ErrorNested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String field0) customNested1,
-    required TResult Function(CustomNestedError2 field0) errorNested,
+    required TResult Function(String field0, Backtrace? backtrace)
+        customNested1,
+    required TResult Function(CustomNestedError2 field0, Backtrace? backtrace)
+        errorNested,
   }) {
-    return errorNested(field0);
+    return errorNested(field0, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? customNested1,
-    TResult Function(CustomNestedError2 field0)? errorNested,
+    TResult Function(String field0, Backtrace? backtrace)? customNested1,
+    TResult Function(CustomNestedError2 field0, Backtrace? backtrace)?
+        errorNested,
   }) {
-    return errorNested?.call(field0);
+    return errorNested?.call(field0, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? customNested1,
-    TResult Function(CustomNestedError2 field0)? errorNested,
+    TResult Function(String field0, Backtrace? backtrace)? customNested1,
+    TResult Function(CustomNestedError2 field0, Backtrace? backtrace)?
+        errorNested,
     required TResult orElse(),
   }) {
     if (errorNested != null) {
-      return errorNested(field0);
+      return errorNested(field0, backtrace);
     }
     return orElse();
   }
@@ -1106,10 +1232,16 @@ class _$ErrorNested implements ErrorNested {
   }
 }
 
-abstract class ErrorNested implements CustomNestedError1 {
-  const factory ErrorNested(final CustomNestedError2 field0) = _$ErrorNested;
+abstract class ErrorNested
+    implements CustomNestedError1, FrbBacktracedException {
+  const factory ErrorNested(
+          final CustomNestedError2 field0, final Backtrace? backtrace) =
+      _$ErrorNested;
 
   CustomNestedError2 get field0;
+  @override
+  Backtrace? get backtrace;
+  @override
   @JsonKey(ignore: true)
   _$$ErrorNestedCopyWith<_$ErrorNested> get copyWith =>
       throw _privateConstructorUsedError;

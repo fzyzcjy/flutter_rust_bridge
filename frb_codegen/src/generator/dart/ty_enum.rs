@@ -70,12 +70,12 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             .map(|(idx, variant)| {
                 let args = match &variant.kind {
                     IrVariantKind::Value => "".to_owned(),
-                    IrVariantKind::Struct(st) => st
+                    IrVariantKind::Struct(st) => {
+                        let mut st = st
                         .fields
                         .iter()
                         .enumerate()
                         .map(|(idx, field)| {
-                            println!("mapping field: {:?}", field);
                             let val =
                                 format!("_wire2api_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
                             if st.is_fields_named {
@@ -84,13 +84,17 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 val
                             }
                         })
-                        .collect::<Vec<_>>()
-                        .join(""),
+                        .collect::<Vec<_>>();
+                        if self.ir.is_exception{
+                            st.push(format!("raw[{}]", st.len()+1));
+                        }
+                        st.join("")
+                    }
                 };
                 let backtrace = if self.ir.is_exception {
                     "if (raw[1] != null) {{
-                        Backtrace backtrace = Backtrace(raw[1] as String);
-                        e.setBacktrace(backtrace);
+                        //Backtrace backtrace = Backtrace(raw[1] as String);
+                        //e.setBacktrace(backtrace);
                   }}"
                 } else {
                     ""
@@ -167,24 +171,32 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             format!("{{ {} }}", fields.join(""))
                         }
                     };
+                    let implements_exception = {
+                        if self.ir.is_exception {
+                            "@Implements<FrbBacktracedException>()"
+                        } else {
+                            ""
+                        }
+                    };
                     format!(
-                        "{}const factory {}.{}({}) = {};",
+                        "{} {}const factory {}.{}({}) = {};",
+                        implements_exception,
                         dart_comments(&variant.comments),
                         self.ir.name,
                         variant.name.dart_style(),
-                        args,
+                        if self.ir.is_exception {format!("{} Backtrace? backtrace", args)} else {args},
                         variant.name.rust_style(),
                     )
                 })
                 .collect::<Vec<_>>();
             format!(
                 "@freezed
-                class {0} {1} with _${0} {{
+                class {0} with _${0} {1} {{
                     {2}
                 }}",
                 self.ir.name,
                 if self.ir.is_exception {
-                    "extends FrbException"
+                    "implements FrbException"
                 } else {
                     ""
                 },

@@ -120,6 +120,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 .collect::<Vec<_>>();
             if has_methods {
                 constructor_params.insert(0, extra_argument);
+                if self.ir.is_exception {
+                    constructor_params.push("Backtrace? backtrace".to_string());
+                }
             }
             let constructor_params = constructor_params.join("");
 
@@ -191,7 +194,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 metadata,
                 self.ir.name,
                 if self.ir.is_exception {
-                    "extends FrbException"
+                    "implements FrbException"
                 } else {
                     ""
                 },

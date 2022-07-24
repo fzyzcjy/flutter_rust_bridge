@@ -467,23 +467,22 @@ class ConcatenateWith {
 }
 
 @freezed
-class CustomError extends FrbException with _$CustomError {
-  const factory CustomError.error0(
-    String field0,
-  ) = Error0;
-  const factory CustomError.error1(
-    int field0,
-  ) = Error1;
+class CustomError with _$CustomError implements FrbException {
+  @Implements<FrbBacktracedException>()
+  const factory CustomError.error0(String field0, Backtrace? backtrace) =
+      Error0;
+  @Implements<FrbBacktracedException>()
+  const factory CustomError.error1(int field0, Backtrace? backtrace) = Error1;
 }
 
 @freezed
-class CustomNestedError1 extends FrbException with _$CustomNestedError1 {
+class CustomNestedError1 with _$CustomNestedError1 implements FrbException {
+  @Implements<FrbBacktracedException>()
   const factory CustomNestedError1.customNested1(
-    String field0,
-  ) = CustomNested1;
+      String field0, Backtrace? backtrace) = CustomNested1;
+  @Implements<FrbBacktracedException>()
   const factory CustomNestedError1.errorNested(
-    CustomNestedError2 field0,
-  ) = ErrorNested;
+      CustomNestedError2 field0, Backtrace? backtrace) = ErrorNested;
 }
 
 @freezed
@@ -532,7 +531,7 @@ class CustomStruct {
       );
 }
 
-class CustomStructError extends FrbException {
+class CustomStructError implements FrbException {
   final String message;
 
   CustomStructError({
@@ -2976,24 +2975,20 @@ ConcatenateWith _wire2api_concatenate_with(
 CustomError _wire2api_custom_error(dynamic raw) {
   switch (raw[0]) {
     case 0:
-      final e = Error0(
-        _wire2api_String(raw[1]),
-      );
+      final e = Error0(_wire2api_String(raw[1]), raw[2]);
       if (raw[1] != null) {
         {
-          Backtrace backtrace = Backtrace(raw[1] as String);
-          e.setBacktrace(backtrace);
+          //Backtrace backtrace = Backtrace(raw[1] as String);
+          //e.setBacktrace(backtrace);
         }
       }
       return e;
     case 1:
-      final e = Error1(
-        _wire2api_u32(raw[1]),
-      );
+      final e = Error1(_wire2api_u32(raw[1]), raw[2]);
       if (raw[1] != null) {
         {
-          Backtrace backtrace = Backtrace(raw[1] as String);
-          e.setBacktrace(backtrace);
+          //Backtrace backtrace = Backtrace(raw[1] as String);
+          //e.setBacktrace(backtrace);
         }
       }
       return e;
@@ -3005,24 +3000,21 @@ CustomError _wire2api_custom_error(dynamic raw) {
 CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
   switch (raw[0]) {
     case 0:
-      final e = CustomNested1(
-        _wire2api_String(raw[1]),
-      );
+      final e = CustomNested1(_wire2api_String(raw[1]), raw[2]);
       if (raw[1] != null) {
         {
-          Backtrace backtrace = Backtrace(raw[1] as String);
-          e.setBacktrace(backtrace);
+          //Backtrace backtrace = Backtrace(raw[1] as String);
+          //e.setBacktrace(backtrace);
         }
       }
       return e;
     case 1:
       final e = ErrorNested(
-        _wire2api_box_autoadd_custom_nested_error_2(raw[1]),
-      );
+          _wire2api_box_autoadd_custom_nested_error_2(raw[1]), raw[2]);
       if (raw[1] != null) {
         {
-          Backtrace backtrace = Backtrace(raw[1] as String);
-          e.setBacktrace(backtrace);
+          //Backtrace backtrace = Backtrace(raw[1] as String);
+          //e.setBacktrace(backtrace);
         }
       }
       return e;

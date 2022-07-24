@@ -185,6 +185,7 @@ class Backtrace {
 }
 
 class FrbException implements Exception {
+  /*
   Backtrace? backtrace;
 
   FrbException();
@@ -200,6 +201,11 @@ class FrbException implements Exception {
 
   @override
   String toString() => 'FrbException(backtrace: $backtrace)';
+  */
+}
+
+abstract class FrbBacktracedException {
+  Backtrace? get backtrace;
 }
 
 // NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
