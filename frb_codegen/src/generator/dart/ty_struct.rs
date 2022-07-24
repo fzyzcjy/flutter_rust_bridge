@@ -64,9 +64,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         }
         let inner = inner.join("\n");
         let cast = if self.is_exception {
-            format!("final arr = raw as Map<String, dynamic>;")
+            "final arr = raw as Map<String, dynamic>;".to_string()
         } else {
-            format!("final arr = raw as List<dynamic>;")
+            "final arr = raw as List<dynamic>;".to_string()
         };
         let safe_check = if self.is_exception {
             "".to_string()

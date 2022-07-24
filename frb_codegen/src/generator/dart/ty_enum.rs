@@ -89,7 +89,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             })
                             .collect::<Vec<_>>();
                         if self.ir.is_exception {
-                            st.push(format!("raw['backtrace']"));
+                            st.push("raw['backtrace']".to_string());
                         }
                         st.join("")
                     }

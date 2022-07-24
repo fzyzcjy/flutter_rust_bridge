@@ -296,7 +296,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::CustomError(_e) => format!("custom error"),
+            Error::CustomError(_e) => "custom error".to_string(),
             Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
                 Some(s) => *s,
                 None => match panic_err.downcast_ref::<String>() {
