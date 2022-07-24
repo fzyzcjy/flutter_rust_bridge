@@ -402,6 +402,12 @@ void main(List<String> args) async {
     expect(sum, equals(3 + 1 + 5));
   });
 
+  test('return SumWith test', () async {
+    final SumWith sumWith = await api.getSumStruct();
+    final int sum = await sumWith.sum(y: 1, z: 5);
+    expect(sum, equals(21 + 1 + 5));
+  });
+
   test('ConcatenateWith stream sink test', () async {
     final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
     final int key = 10;
