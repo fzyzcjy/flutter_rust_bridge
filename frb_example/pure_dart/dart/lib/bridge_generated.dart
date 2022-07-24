@@ -28,11 +28,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   /// Newlines are preserved.
   ///
   Future<int> primitiveTypes(
-      {required int myI32,
-      required int myI64,
-      required double myF64,
-      required bool myBool,
-      dynamic hint});
+      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta;
 
@@ -52,18 +48,15 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta;
 
-  Future<VecOfPrimitivePack> handleVecOfPrimitive(
-      {required int n, dynamic hint});
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta;
 
-  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
-      {required int n, dynamic hint});
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta;
 
-  Future<MySize> handleStruct(
-      {required MySize arg, required MySize boxed, dynamic hint});
+  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta;
 
@@ -71,13 +64,11 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta;
 
-  Future<List<MySize>> handleListOfStruct(
-      {required List<MySize> l, dynamic hint});
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta;
 
-  Future<List<String>> handleStringList(
-      {required List<String> names, dynamic hint});
+  Future<List<String>> handleStringList({required List<String> names, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta;
 
@@ -105,8 +96,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta;
 
-  Future<double?> handleOptionalReturn(
-      {required double left, required double right, dynamic hint});
+  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta;
 
@@ -114,8 +104,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta;
 
-  Future<ExoticOptionals?> handleOptionalIncrement(
-      {ExoticOptionals? opt, dynamic hint});
+  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta;
 
@@ -143,8 +132,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta;
 
-  Future<Weekdays> handleEnumParameter(
-      {required Weekdays weekday, dynamic hint});
+  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta;
 
@@ -152,8 +140,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta;
 
-  Future<KitchenSink> handleEnumStruct(
-      {required KitchenSink val, dynamic hint});
+  Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta;
 
@@ -169,8 +156,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta;
 
-  Future<bool> isAppEmbedded(
-      {required ApplicationSettings appSettings, dynamic hint});
+  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;
 
@@ -206,18 +192,15 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
 
-  Stream<Log> handleStreamSinkAt1(
-      {required int key, required int max, dynamic hint});
+  Stream<Log> handleStreamSinkAt1({required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta;
 
-  Stream<Log> handleStreamSinkAt2(
-      {required int key, required int max, dynamic hint});
+  Stream<Log> handleStreamSinkAt2({required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta;
 
-  Stream<Log> handleStreamSinkAt3(
-      {required int key, required int max, dynamic hint});
+  Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
 
@@ -249,109 +232,79 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnCustomStructOkConstMeta;
 
-  Future<int> sumMethodSumWith(
-      {required SumWith that, required int y, required int z, dynamic hint});
+  Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
 
-  Future<ConcatenateWith> newStaticMethodConcatenateWith(
-      {required String a, dynamic hint});
+  Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta;
 
-  Future<String> concatenateMethodConcatenateWith(
-      {required ConcatenateWith that, required String b, dynamic hint});
+  Future<String> concatenateMethodConcatenateWith({required ConcatenateWith that, required String b, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta;
 
-  Future<String> concatenateStaticStaticMethodConcatenateWith(
-      {required String a, required String b, dynamic hint});
+  Future<String> concatenateStaticStaticMethodConcatenateWith({required String a, required String b, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kConcatenateStaticStaticMethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kConcatenateStaticStaticMethodConcatenateWithConstMeta;
 
   Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
-      {required ConcatenateWith that,
-      required int key,
-      required int max,
-      dynamic hint});
+      {required ConcatenateWith that, required int key, required int max, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStreamSinkMethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkMethodConcatenateWithConstMeta;
 
-  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith(
-      {required ConcatenateWith that, dynamic hint});
+  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith({required ConcatenateWith that, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta;
 
   Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
       {required int key, required int max, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta;
 
-  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(
-      {dynamic hint});
+  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
 
-  Future<SomeStruct> newStaticMethodSomeStruct(
-      {required int value, dynamic hint});
+  Future<SomeStruct> newStaticMethodSomeStruct({required int value, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodSomeStructConstMeta;
 
   Future<int> staticReturnErrCustomErrorStaticMethodSomeStruct({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta;
 
   Future<int> staticReturnOkCustomErrorStaticMethodSomeStruct({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta;
 
-  Future<int> nonStaticReturnErrCustomErrorMethodSomeStruct(
-      {required SomeStruct that, dynamic hint});
+  Future<int> nonStaticReturnErrCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta;
 
-  Future<int> nonStaticReturnOkCustomErrorMethodSomeStruct(
-      {required SomeStruct that, dynamic hint});
+  Future<int> nonStaticReturnOkCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta;
 
-  Future<CustomStruct> newStaticMethodCustomStruct(
-      {required String message, dynamic hint});
+  Future<CustomStruct> newStaticMethodCustomStruct({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodCustomStructConstMeta;
 
-  Future<void> staticReturnCustomStructErrorStaticMethodCustomStruct(
-      {dynamic hint});
+  Future<void> staticReturnCustomStructErrorStaticMethodCustomStruct({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta;
 
-  Future<int> staticReturnCustomStructOkStaticMethodCustomStruct(
-      {dynamic hint});
+  Future<int> staticReturnCustomStructOkStaticMethodCustomStruct({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta;
 
-  Future<void> nonstaticReturnCustomStructErrorMethodCustomStruct(
-      {required CustomStruct that, dynamic hint});
+  Future<void> nonstaticReturnCustomStructErrorMethodCustomStruct({required CustomStruct that, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta;
 
-  Future<int> nonstaticReturnCustomStructOkMethodCustomStruct(
-      {required CustomStruct that, dynamic hint});
+  Future<int> nonstaticReturnCustomStructOkMethodCustomStruct({required CustomStruct that, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kNonstaticReturnCustomStructOkMethodCustomStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructOkMethodCustomStructConstMeta;
 }
 
 class ApplicationEnv {
@@ -423,13 +376,10 @@ class ConcatenateWith {
   });
 
   static Future<ConcatenateWith> newConcatenateWith(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          required String a,
-          dynamic hint}) =>
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, dynamic hint}) =>
       bridge.newStaticMethodConcatenateWith(a: a, hint: hint);
 
-  Future<String> concatenate({required String b, dynamic hint}) =>
-      bridge.concatenateMethodConcatenateWith(
+  Future<String> concatenate({required String b, dynamic hint}) => bridge.concatenateMethodConcatenateWith(
         that: this,
         b: b,
       );
@@ -439,19 +389,16 @@ class ConcatenateWith {
           required String a,
           required String b,
           dynamic hint}) =>
-      bridge.concatenateStaticStaticMethodConcatenateWith(
-          a: a, b: b, hint: hint);
+      bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b, hint: hint);
 
-  Stream<Log2> handleSomeStreamSink(
-          {required int key, required int max, dynamic hint}) =>
+  Stream<Log2> handleSomeStreamSink({required int key, required int max, dynamic hint}) =>
       bridge.handleSomeStreamSinkMethodConcatenateWith(
         that: this,
         key: key,
         max: max,
       );
 
-  Stream<int> handleSomeStreamSinkAt1({dynamic hint}) =>
-      bridge.handleSomeStreamSinkAt1MethodConcatenateWith(
+  Stream<int> handleSomeStreamSinkAt1({dynamic hint}) => bridge.handleSomeStreamSinkAt1MethodConcatenateWith(
         that: this,
       );
 
@@ -460,21 +407,17 @@ class ConcatenateWith {
           required int key,
           required int max,
           dynamic hint}) =>
-      bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(
-          key: key, max: max, hint: hint);
+      bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(key: key, max: max, hint: hint);
 
   static Stream<int> handleSomeStaticStreamSinkSingleArg(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          dynamic hint}) =>
-      bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(
-          hint: hint);
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
+      bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(hint: hint);
 }
 
 @freezed
 class CustomError with _$CustomError implements FrbException {
   @Implements<FrbBacktracedException>()
-  const factory CustomError.error0(String field0, Backtrace? backtrace) =
-      Error0;
+  const factory CustomError.error0(String field0, Backtrace? backtrace) = Error0;
   @Implements<FrbBacktracedException>()
   const factory CustomError.error1(int field0, Backtrace? backtrace) = Error1;
 }
@@ -482,11 +425,9 @@ class CustomError with _$CustomError implements FrbException {
 @freezed
 class CustomNestedError1 with _$CustomNestedError1 implements FrbException {
   @Implements<FrbBacktracedException>()
-  const factory CustomNestedError1.customNested1(
-      String field0, Backtrace? backtrace) = CustomNested1;
+  const factory CustomNestedError1.customNested1(String field0, Backtrace? backtrace) = CustomNested1;
   @Implements<FrbBacktracedException>()
-  const factory CustomNestedError1.errorNested(
-      CustomNestedError2 field0, Backtrace? backtrace) = ErrorNested;
+  const factory CustomNestedError1.errorNested(CustomNestedError2 field0, Backtrace? backtrace) = ErrorNested;
 }
 
 @freezed
@@ -509,19 +450,15 @@ class CustomStruct {
   });
 
   static Future<CustomStruct> newCustomStruct(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          required String message,
-          dynamic hint}) =>
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, required String message, dynamic hint}) =>
       bridge.newStaticMethodCustomStruct(message: message, hint: hint);
 
   static Future<void> staticReturnCustomStructError(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          dynamic hint}) =>
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
       bridge.staticReturnCustomStructErrorStaticMethodCustomStruct(hint: hint);
 
   static Future<int> staticReturnCustomStructOk(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          dynamic hint}) =>
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
       bridge.staticReturnCustomStructOkStaticMethodCustomStruct(hint: hint);
 
   Future<void> nonstaticReturnCustomStructError({dynamic hint}) =>
@@ -529,8 +466,7 @@ class CustomStruct {
         that: this,
       );
 
-  Future<int> nonstaticReturnCustomStructOk({dynamic hint}) =>
-      bridge.nonstaticReturnCustomStructOkMethodCustomStruct(
+  Future<int> nonstaticReturnCustomStructOk({dynamic hint}) => bridge.nonstaticReturnCustomStructOkMethodCustomStruct(
         that: this,
       );
 }
@@ -743,28 +679,22 @@ class SomeStruct {
   });
 
   static Future<SomeStruct> newSomeStruct(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          required int value,
-          dynamic hint}) =>
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, required int value, dynamic hint}) =>
       bridge.newStaticMethodSomeStruct(value: value, hint: hint);
 
   static Future<int> staticReturnErrCustomError(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          dynamic hint}) =>
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
       bridge.staticReturnErrCustomErrorStaticMethodSomeStruct(hint: hint);
 
   static Future<int> staticReturnOkCustomError(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          dynamic hint}) =>
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
       bridge.staticReturnOkCustomErrorStaticMethodSomeStruct(hint: hint);
 
-  Future<int> nonStaticReturnErrCustomError({dynamic hint}) =>
-      bridge.nonStaticReturnErrCustomErrorMethodSomeStruct(
+  Future<int> nonStaticReturnErrCustomError({dynamic hint}) => bridge.nonStaticReturnErrCustomErrorMethodSomeStruct(
         that: this,
       );
 
-  Future<int> nonStaticReturnOkCustomError({dynamic hint}) =>
-      bridge.nonStaticReturnOkCustomErrorMethodSomeStruct(
+  Future<int> nonStaticReturnOkCustomError({dynamic hint}) => bridge.nonStaticReturnOkCustomErrorMethodSomeStruct(
         that: this,
       );
 }
@@ -778,8 +708,7 @@ class SumWith {
     required this.x,
   });
 
-  Future<int> sum({required int y, required int z, dynamic hint}) =>
-      bridge.sumMethodSumWith(
+  Future<int> sum({required int y, required int z, dynamic hint}) => bridge.sumMethodSumWith(
         that: this,
         y: y,
         z: z,
@@ -863,19 +792,13 @@ class ZeroCopyVecOfPrimitivePack {
 class FlutterRustBridgeExampleSingleBlockTestImpl
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire>
     implements FlutterRustBridgeExampleSingleBlockTest {
-  factory FlutterRustBridgeExampleSingleBlockTestImpl(
-          ffi.DynamicLibrary dylib) =>
-      FlutterRustBridgeExampleSingleBlockTestImpl.raw(
-          FlutterRustBridgeExampleSingleBlockTestWire(dylib));
+  factory FlutterRustBridgeExampleSingleBlockTestImpl(ffi.DynamicLibrary dylib) =>
+      FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestWire(dylib));
 
-  FlutterRustBridgeExampleSingleBlockTestImpl.raw(
-      FlutterRustBridgeExampleSingleBlockTestWire inner)
-      : super(inner);
+  FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestWire inner) : super(inner);
 
-  Future<int> simpleAdder({required int a, required int b, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_simple_adder(port_, _api2wire_i32(a), _api2wire_i32(b)),
+  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_simple_adder(port_, _api2wire_i32(a), _api2wire_i32(b)),
         parseSuccessData: _wire2api_i32,
         parseErrorData: null,
         constMeta: kSimpleAdderConstMeta,
@@ -883,25 +806,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "simple_adder",
         argNames: ["a", "b"],
       );
 
   Future<int> primitiveTypes(
-          {required int myI32,
-          required int myI64,
-          required double myF64,
-          required bool myBool,
-          dynamic hint}) =>
+          {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_primitive_types(
-            port_,
-            _api2wire_i32(myI32),
-            _api2wire_i64(myI64),
-            _api2wire_f64(myF64),
-            myBool),
+        callFfi: (port_) =>
+            inner.wire_primitive_types(port_, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), myBool),
         parseSuccessData: _wire2api_i32,
         parseErrorData: null,
         constMeta: kPrimitiveTypesConstMeta,
@@ -909,16 +823,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "primitive_types",
         argNames: ["myI32", "myI64", "myF64", "myBool"],
       );
 
-  Future<int> primitiveU32({required int myU32, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_primitive_u32(port_, _api2wire_u32(myU32)),
+  Future<int> primitiveU32({required int myU32, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_primitive_u32(port_, _api2wire_u32(myU32)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: null,
         constMeta: kPrimitiveU32ConstMeta,
@@ -926,16 +837,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "primitive_u32",
         argNames: ["myU32"],
       );
 
-  Future<String> handleString({required String s, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_string(port_, _api2wire_String(s)),
+  Future<String> handleString({required String s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_string(port_, _api2wire_String(s)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
         constMeta: kHandleStringConstMeta,
@@ -943,14 +851,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_string",
         argNames: ["s"],
       );
 
-  Future<void> handleReturnUnit({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<void> handleReturnUnit({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_return_unit(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: null,
@@ -959,16 +865,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_return_unit",
         argNames: [],
       );
 
-  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_vec_u8(port_, _api2wire_uint_8_list(v)),
+  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_vec_u8(port_, _api2wire_uint_8_list(v)),
         parseSuccessData: _wire2api_uint_8_list,
         parseErrorData: null,
         constMeta: kHandleVecU8ConstMeta,
@@ -976,17 +879,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_vec_u8",
         argNames: ["v"],
       );
 
-  Future<VecOfPrimitivePack> handleVecOfPrimitive(
-          {required int n, dynamic hint}) =>
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_vec_of_primitive(port_, _api2wire_i32(n)),
+        callFfi: (port_) => inner.wire_handle_vec_of_primitive(port_, _api2wire_i32(n)),
         parseSuccessData: _wire2api_vec_of_primitive_pack,
         parseErrorData: null,
         constMeta: kHandleVecOfPrimitiveConstMeta,
@@ -994,17 +894,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_vec_of_primitive",
         argNames: ["n"],
       );
 
-  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
-          {required int n, dynamic hint}) =>
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_zero_copy_vec_of_primitive(
-            port_, _api2wire_i32(n)),
+        callFfi: (port_) => inner.wire_handle_zero_copy_vec_of_primitive(port_, _api2wire_i32(n)),
         parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
         parseErrorData: null,
         constMeta: kHandleZeroCopyVecOfPrimitiveConstMeta,
@@ -1012,17 +909,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_zero_copy_vec_of_primitive",
         argNames: ["n"],
       );
 
-  Future<MySize> handleStruct(
-          {required MySize arg, required MySize boxed, dynamic hint}) =>
+  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_struct(port_,
-            _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
+        callFfi: (port_) =>
+            inner.wire_handle_struct(port_, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
         parseSuccessData: _wire2api_my_size,
         parseErrorData: null,
         constMeta: kHandleStructConstMeta,
@@ -1030,16 +925,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_struct",
         argNames: ["arg", "boxed"],
       );
 
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_newtype(
-            port_, _api2wire_box_autoadd_new_type_int(arg)),
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_newtype(port_, _api2wire_box_autoadd_new_type_int(arg)),
         parseSuccessData: _wire2api_new_type_int,
         parseErrorData: null,
         constMeta: kHandleNewtypeConstMeta,
@@ -1047,17 +939,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_newtype",
         argNames: ["arg"],
       );
 
-  Future<List<MySize>> handleListOfStruct(
-          {required List<MySize> l, dynamic hint}) =>
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_list_of_struct(port_, _api2wire_list_my_size(l)),
+        callFfi: (port_) => inner.wire_handle_list_of_struct(port_, _api2wire_list_my_size(l)),
         parseSuccessData: _wire2api_list_my_size,
         parseErrorData: null,
         constMeta: kHandleListOfStructConstMeta,
@@ -1065,17 +954,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_list_of_struct",
         argNames: ["l"],
       );
 
-  Future<List<String>> handleStringList(
-          {required List<String> names, dynamic hint}) =>
+  Future<List<String>> handleStringList({required List<String> names, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_string_list(port_, _api2wire_StringList(names)),
+        callFfi: (port_) => inner.wire_handle_string_list(port_, _api2wire_StringList(names)),
         parseSuccessData: _wire2api_StringList,
         parseErrorData: null,
         constMeta: kHandleStringListConstMeta,
@@ -1083,17 +969,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_string_list",
         argNames: ["names"],
       );
 
-  Future<MyTreeNode> handleComplexStruct(
-          {required MyTreeNode s, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_complex_struct(
-            port_, _api2wire_box_autoadd_my_tree_node(s)),
+  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_complex_struct(port_, _api2wire_box_autoadd_my_tree_node(s)),
         parseSuccessData: _wire2api_my_tree_node,
         parseErrorData: null,
         constMeta: kHandleComplexStructConstMeta,
@@ -1101,30 +983,25 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleComplexStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleComplexStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_complex_struct",
         argNames: ["s"],
       );
 
-  Uint8List handleSyncReturn({required String mode, dynamic hint}) =>
-      executeSync(FlutterRustBridgeSyncTask(
+  Uint8List handleSyncReturn({required String mode, dynamic hint}) => executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => inner.wire_handle_sync_return(_api2wire_String(mode)),
         constMeta: kHandleSyncReturnConstMeta,
         argValues: [mode],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_return",
         argNames: ["mode"],
       );
 
-  Stream<String> handleStream({required String arg, dynamic hint}) =>
-      executeStream(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_stream(port_, _api2wire_String(arg)),
+  Stream<String> handleStream({required String arg, dynamic hint}) => executeStream(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_stream(port_, _api2wire_String(arg)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
         constMeta: kHandleStreamConstMeta,
@@ -1132,14 +1009,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream",
         argNames: ["arg"],
       );
 
-  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint}) =>
-      executeStream(FlutterRustBridgeTask(
+  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint}) => executeStream(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_handle_stream_of_struct(port_),
         parseSuccessData: _wire2api_my_stream_entry,
         parseErrorData: null,
@@ -1148,8 +1023,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamOfStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamOfStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_of_struct",
         argNames: [],
       );
@@ -1163,14 +1037,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_err",
         argNames: [],
       );
 
-  Future<int> returnPanic({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<int> returnPanic({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_panic(port_),
         parseSuccessData: _wire2api_i32,
         parseErrorData: null,
@@ -1179,17 +1051,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_panic",
         argNames: [],
       );
 
-  Future<double?> handleOptionalReturn(
-          {required double left, required double right, dynamic hint}) =>
+  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_optional_return(
-            port_, _api2wire_f64(left), _api2wire_f64(right)),
+        callFfi: (port_) => inner.wire_handle_optional_return(port_, _api2wire_f64(left), _api2wire_f64(right)),
         parseSuccessData: _wire2api_opt_box_autoadd_f64,
         parseErrorData: null,
         constMeta: kHandleOptionalReturnConstMeta,
@@ -1197,16 +1066,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_optional_return",
         argNames: ["left", "right"],
       );
 
-  Future<Element?> handleOptionalStruct({String? document, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_optional_struct(
-            port_, _api2wire_opt_String(document)),
+  Future<Element?> handleOptionalStruct({String? document, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_optional_struct(port_, _api2wire_opt_String(document)),
         parseSuccessData: _wire2api_opt_box_autoadd_element,
         parseErrorData: null,
         constMeta: kHandleOptionalStructConstMeta,
@@ -1214,17 +1080,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_optional_struct",
         argNames: ["document"],
       );
 
-  Future<ExoticOptionals?> handleOptionalIncrement(
-          {ExoticOptionals? opt, dynamic hint}) =>
+  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_optional_increment(
-            port_, _api2wire_opt_box_autoadd_exotic_optionals(opt)),
+        callFfi: (port_) =>
+            inner.wire_handle_optional_increment(port_, _api2wire_opt_box_autoadd_exotic_optionals(opt)),
         parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
         parseErrorData: null,
         constMeta: kHandleOptionalIncrementConstMeta,
@@ -1232,16 +1096,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_optional_increment",
         argNames: ["opt"],
       );
 
-  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_increment_boxed_optional(
-            port_, _api2wire_opt_box_f64(opt)),
+  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_increment_boxed_optional(port_, _api2wire_opt_box_f64(opt)),
         parseSuccessData: _wire2api_f64,
         parseErrorData: null,
         constMeta: kHandleIncrementBoxedOptionalConstMeta,
@@ -1249,8 +1110,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_increment_boxed_optional",
         argNames: ["opt"],
       );
@@ -1281,24 +1141,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_option_box_arguments",
-        argNames: [
-          "i8Box",
-          "u8Box",
-          "i32Box",
-          "i64Box",
-          "f64Box",
-          "boolbox",
-          "structbox"
-        ],
+        argNames: ["i8Box", "u8Box", "i32Box", "i64Box", "f64Box", "boolbox", "structbox"],
       );
 
-  Future<Uint8List> printNote({required Note note, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_print_note(port_, _api2wire_box_autoadd_note(note)),
+  Future<Uint8List> printNote({required Note note, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_print_note(port_, _api2wire_box_autoadd_note(note)),
         parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
         parseErrorData: null,
         constMeta: kPrintNoteConstMeta,
@@ -1306,16 +1155,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kPrintNoteConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kPrintNoteConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "print_note",
         argNames: ["note"],
       );
 
-  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_return_enum(port_, _api2wire_String(input)),
+  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_return_enum(port_, _api2wire_String(input)),
         parseSuccessData: _wire2api_opt_weekdays,
         parseErrorData: null,
         constMeta: kHandleReturnEnumConstMeta,
@@ -1323,17 +1169,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_return_enum",
         argNames: ["input"],
       );
 
-  Future<Weekdays> handleEnumParameter(
-          {required Weekdays weekday, dynamic hint}) =>
+  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_enum_parameter(
-            port_, _api2wire_weekdays(weekday)),
+        callFfi: (port_) => inner.wire_handle_enum_parameter(port_, _api2wire_weekdays(weekday)),
         parseSuccessData: _wire2api_weekdays,
         parseErrorData: null,
         constMeta: kHandleEnumParameterConstMeta,
@@ -1341,17 +1184,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_enum_parameter",
         argNames: ["weekday"],
       );
 
-  Future<void> handleCustomizedStruct(
-          {required Customized val, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_customized_struct(
-            port_, _api2wire_box_autoadd_customized(val)),
+  Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_customized_struct(port_, _api2wire_box_autoadd_customized(val)),
         parseSuccessData: _wire2api_unit,
         parseErrorData: null,
         constMeta: kHandleCustomizedStructConstMeta,
@@ -1359,17 +1198,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_customized_struct",
         argNames: ["val"],
       );
 
-  Future<KitchenSink> handleEnumStruct(
-          {required KitchenSink val, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_enum_struct(
-            port_, _api2wire_box_autoadd_kitchen_sink(val)),
+  Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_enum_struct(port_, _api2wire_box_autoadd_kitchen_sink(val)),
         parseSuccessData: _wire2api_kitchen_sink,
         parseErrorData: null,
         constMeta: kHandleEnumStructConstMeta,
@@ -1377,16 +1212,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_enum_struct",
         argNames: ["val"],
       );
 
-  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_use_imported_struct(
-            port_, _api2wire_box_autoadd_my_struct(myStruct)),
+  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_use_imported_struct(port_, _api2wire_box_autoadd_my_struct(myStruct)),
         parseSuccessData: _wire2api_bool,
         parseErrorData: null,
         constMeta: kUseImportedStructConstMeta,
@@ -1394,16 +1226,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kUseImportedStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kUseImportedStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "use_imported_struct",
         argNames: ["myStruct"],
       );
 
-  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_use_imported_enum(port_, _api2wire_my_enum(myEnum)),
+  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_use_imported_enum(port_, _api2wire_my_enum(myEnum)),
         parseSuccessData: _wire2api_bool,
         parseErrorData: null,
         constMeta: kUseImportedEnumConstMeta,
@@ -1411,14 +1240,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kUseImportedEnumConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kUseImportedEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "use_imported_enum",
         argNames: ["myEnum"],
       );
 
-  Future<ApplicationSettings> getAppSettings({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<ApplicationSettings> getAppSettings({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_app_settings(port_),
         parseSuccessData: _wire2api_application_settings,
         parseErrorData: null,
@@ -1427,17 +1254,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "get_app_settings",
         argNames: [],
       );
 
-  Future<bool> isAppEmbedded(
-          {required ApplicationSettings appSettings, dynamic hint}) =>
+  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_is_app_embedded(
-            port_, _api2wire_box_autoadd_application_settings(appSettings)),
+        callFfi: (port_) => inner.wire_is_app_embedded(port_, _api2wire_box_autoadd_application_settings(appSettings)),
         parseSuccessData: _wire2api_bool,
         parseErrorData: null,
         constMeta: kIsAppEmbeddedConstMeta,
@@ -1445,14 +1269,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "is_app_embedded",
         argNames: ["appSettings"],
       );
 
-  Future<ApplicationMessage> getMessage({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<ApplicationMessage> getMessage({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_message(port_),
         parseSuccessData: _wire2api_application_message,
         parseErrorData: null,
@@ -1461,14 +1283,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "get_message",
         argNames: [],
       );
 
-  Future<Uint8List> getArray({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<Uint8List> getArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_array(port_),
         parseSuccessData: _wire2api_uint_8_list,
         parseErrorData: null,
@@ -1477,14 +1297,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "get_array",
         argNames: [],
       );
 
-  Future<List<Point>> getComplexArray({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<List<Point>> getComplexArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_complex_array(port_),
         parseSuccessData: _wire2api_list_point,
         parseErrorData: null,
@@ -1493,14 +1311,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "get_complex_array",
         argNames: [],
       );
 
-  Future<int> getUsize({required int u, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<int> getUsize({required int u, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_usize(port_, _api2wire_usize(u)),
         parseSuccessData: _wire2api_usize,
         parseErrorData: null,
@@ -1509,16 +1325,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kGetUsizeConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetUsizeConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "get_usize",
         argNames: ["u"],
       );
 
-  Future<UserId> nextUserId({required UserId userId, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_next_user_id(
-            port_, _api2wire_box_autoadd_user_id(userId)),
+  Future<UserId> nextUserId({required UserId userId, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_next_user_id(port_, _api2wire_box_autoadd_user_id(userId)),
         parseSuccessData: _wire2api_user_id,
         parseErrorData: null,
         constMeta: kNextUserIdConstMeta,
@@ -1526,14 +1339,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "next_user_id",
         argNames: ["userId"],
       );
 
-  Stream<Event> registerEventListener({dynamic hint}) =>
-      executeStream(FlutterRustBridgeTask(
+  Stream<Event> registerEventListener({dynamic hint}) => executeStream(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_register_event_listener(port_),
         parseSuccessData: _wire2api_event,
         parseErrorData: null,
@@ -1542,14 +1353,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "register_event_listener",
         argNames: [],
       );
 
-  Future<void> closeEventListener({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<void> closeEventListener({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_close_event_listener(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: null,
@@ -1558,14 +1367,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "close_event_listener",
         argNames: [],
       );
 
-  Future<void> createEvent({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<void> createEvent({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_create_event(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: null,
@@ -1574,17 +1381,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "create_event",
         argNames: [],
       );
 
-  Stream<Log> handleStreamSinkAt1(
-          {required int key, required int max, dynamic hint}) =>
+  Stream<Log> handleStreamSinkAt1({required int key, required int max, dynamic hint}) =>
       executeStream(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_stream_sink_at_1(
-            port_, _api2wire_u32(key), _api2wire_u32(max)),
+        callFfi: (port_) => inner.wire_handle_stream_sink_at_1(port_, _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log,
         parseErrorData: null,
         constMeta: kHandleStreamSinkAt1ConstMeta,
@@ -1592,17 +1396,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_sink_at_1",
         argNames: ["key", "max"],
       );
 
-  Stream<Log> handleStreamSinkAt2(
-          {required int key, required int max, dynamic hint}) =>
+  Stream<Log> handleStreamSinkAt2({required int key, required int max, dynamic hint}) =>
       executeStream(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_stream_sink_at_2(
-            port_, _api2wire_u32(key), _api2wire_u32(max)),
+        callFfi: (port_) => inner.wire_handle_stream_sink_at_2(port_, _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log,
         parseErrorData: null,
         constMeta: kHandleStreamSinkAt2ConstMeta,
@@ -1610,17 +1411,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_sink_at_2",
         argNames: ["key", "max"],
       );
 
-  Stream<Log> handleStreamSinkAt3(
-          {required int key, required int max, dynamic hint}) =>
+  Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint}) =>
       executeStream(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_handle_stream_sink_at_3(
-            port_, _api2wire_u32(key), _api2wire_u32(max)),
+        callFfi: (port_) => inner.wire_handle_stream_sink_at_3(port_, _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log,
         parseErrorData: null,
         constMeta: kHandleStreamSinkAt3ConstMeta,
@@ -1628,14 +1426,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_sink_at_3",
         argNames: ["key", "max"],
       );
 
-  Future<SumWith> getSumStruct({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<SumWith> getSumStruct({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_sum_struct(port_),
         parseSuccessData: (d) => _wire2api_sum_with(this, d),
         parseErrorData: null,
@@ -1644,14 +1440,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "get_sum_struct",
         argNames: [],
       );
 
-  Future<int> returnErrCustomError({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<int> returnErrCustomError({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_err_custom_error(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
@@ -1660,14 +1454,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnErrCustomErrorConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnErrCustomErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_err_custom_error",
         argNames: [],
       );
 
-  Future<int> returnOkCustomError({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<int> returnOkCustomError({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_ok_custom_error(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
@@ -1676,16 +1468,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_ok_custom_error",
         argNames: [],
       );
 
-  Future<int> returnErrorVariant({required int variant, dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_return_error_variant(port_, _api2wire_u32(variant)),
+  Future<int> returnErrorVariant({required int variant, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_error_variant(port_, _api2wire_u32(variant)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
         constMeta: kReturnErrorVariantConstMeta,
@@ -1693,14 +1482,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnErrorVariantConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnErrorVariantConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_error_variant",
         argNames: ["variant"],
       );
 
-  Future<void> returnCustomNestedError1({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<void> returnCustomNestedError1({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_custom_nested_error_1(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_nested_error_1,
@@ -1709,14 +1496,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_custom_nested_error_1",
         argNames: [],
       );
 
-  Future<void> returnCustomStructError({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<void> returnCustomStructError({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_custom_struct_error(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_struct_error,
@@ -1725,14 +1510,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnCustomStructErrorConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnCustomStructErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_custom_struct_error",
         argNames: [],
       );
 
-  Future<int> returnCustomStructOk({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
+  Future<int> returnCustomStructOk({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_custom_struct_ok(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_struct_error,
@@ -1741,23 +1524,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kReturnCustomStructOkConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnCustomStructOkConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_custom_struct_ok",
         argNames: [],
       );
 
-  Future<int> sumMethodSumWith(
-          {required SumWith that,
-          required int y,
-          required int z,
-          dynamic hint}) =>
+  Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_sum__method__SumWith(
-            port_,
-            _api2wire_box_autoadd_sum_with(that),
-            _api2wire_u32(y),
-            _api2wire_u32(z)),
+            port_, _api2wire_box_autoadd_sum_with(that), _api2wire_u32(y), _api2wire_u32(z)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: null,
         constMeta: kSumMethodSumWithConstMeta,
@@ -1765,17 +1540,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "sum__method__SumWith",
         argNames: ["that", "y", "z"],
       );
 
-  Future<ConcatenateWith> newStaticMethodConcatenateWith(
-          {required String a, dynamic hint}) =>
+  Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_new__static_method__ConcatenateWith(
-            port_, _api2wire_String(a)),
+        callFfi: (port_) => inner.wire_new__static_method__ConcatenateWith(port_, _api2wire_String(a)),
         parseSuccessData: (d) => _wire2api_concatenate_with(this, d),
         parseErrorData: null,
         constMeta: kNewStaticMethodConcatenateWithConstMeta,
@@ -1783,19 +1555,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "new__static_method__ConcatenateWith",
         argNames: ["a"],
       );
 
-  Future<String> concatenateMethodConcatenateWith(
-          {required ConcatenateWith that, required String b, dynamic hint}) =>
+  Future<String> concatenateMethodConcatenateWith({required ConcatenateWith that, required String b, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_concatenate__method__ConcatenateWith(
-            port_,
-            _api2wire_box_autoadd_concatenate_with(that),
-            _api2wire_String(b)),
+            port_, _api2wire_box_autoadd_concatenate_with(that), _api2wire_String(b)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
         constMeta: kConcatenateMethodConcatenateWithConstMeta,
@@ -1803,19 +1571,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kConcatenateMethodConcatenateWithConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName: "concatenate__method__ConcatenateWith",
-            argNames: ["that", "b"],
-          );
+  FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "concatenate__method__ConcatenateWith",
+        argNames: ["that", "b"],
+      );
 
-  Future<String> concatenateStaticStaticMethodConcatenateWith(
-          {required String a, required String b, dynamic hint}) =>
+  Future<String> concatenateStaticStaticMethodConcatenateWith({required String a, required String b, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_concatenate_static__static_method__ConcatenateWith(
-                port_, _api2wire_String(a), _api2wire_String(b)),
+        callFfi: (port_) => inner.wire_concatenate_static__static_method__ConcatenateWith(
+            port_, _api2wire_String(a), _api2wire_String(b)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
         constMeta: kConcatenateStaticStaticMethodConcatenateWithConstMeta,
@@ -1823,25 +1587,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kConcatenateStaticStaticMethodConcatenateWithConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName: "concatenate_static__static_method__ConcatenateWith",
-            argNames: ["a", "b"],
-          );
+  FlutterRustBridgeTaskConstMeta get kConcatenateStaticStaticMethodConcatenateWithConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "concatenate_static__static_method__ConcatenateWith",
+        argNames: ["a", "b"],
+      );
 
   Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
-          {required ConcatenateWith that,
-          required int key,
-          required int max,
-          dynamic hint}) =>
+          {required ConcatenateWith that, required int key, required int max, dynamic hint}) =>
       executeStream(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_some_stream_sink__method__ConcatenateWith(
-                port_,
-                _api2wire_box_autoadd_concatenate_with(that),
-                _api2wire_u32(key),
-                _api2wire_u32(max)),
+        callFfi: (port_) => inner.wire_handle_some_stream_sink__method__ConcatenateWith(
+            port_, _api2wire_box_autoadd_concatenate_with(that), _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log_2,
         parseErrorData: null,
         constMeta: kHandleSomeStreamSinkMethodConcatenateWithConstMeta,
@@ -1849,19 +1605,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStreamSinkMethodConcatenateWithConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName: "handle_some_stream_sink__method__ConcatenateWith",
-            argNames: ["that", "key", "max"],
-          );
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkMethodConcatenateWithConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_some_stream_sink__method__ConcatenateWith",
+        argNames: ["that", "key", "max"],
+      );
 
-  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith(
-          {required ConcatenateWith that, dynamic hint}) =>
+  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith({required ConcatenateWith that, dynamic hint}) =>
       executeStream(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
-                port_, _api2wire_box_autoadd_concatenate_with(that)),
+        callFfi: (port_) => inner.wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+            port_, _api2wire_box_autoadd_concatenate_with(that)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: null,
         constMeta: kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta,
@@ -1869,62 +1622,49 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName: "handle_some_stream_sink_at_1__method__ConcatenateWith",
-            argNames: ["that"],
-          );
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_some_stream_sink_at_1__method__ConcatenateWith",
+        argNames: ["that"],
+      );
 
   Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
           {required int key, required int max, dynamic hint}) =>
       executeStream(FlutterRustBridgeTask(
-        callFfi: (port_) => inner
-            .wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
-                port_, _api2wire_u32(key), _api2wire_u32(max)),
+        callFfi: (port_) => inner.wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+            port_, _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log_2,
         parseErrorData: null,
-        constMeta:
-            kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta,
+        constMeta: kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta,
         argValues: [key, max],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName:
-                "handle_some_static_stream_sink__static_method__ConcatenateWith",
-            argNames: ["key", "max"],
-          );
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_some_static_stream_sink__static_method__ConcatenateWith",
+        argNames: ["key", "max"],
+      );
 
-  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(
-          {dynamic hint}) =>
+  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint}) =>
       executeStream(FlutterRustBridgeTask(
-        callFfi: (port_) => inner
-            .wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
-                port_),
+        callFfi: (port_) => inner.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: null,
-        constMeta:
-            kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta,
+        constMeta: kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta,
         argValues: [],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName:
-                "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
-            argNames: [],
-          );
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
+        argNames: [],
+      );
 
-  Future<SomeStruct> newStaticMethodSomeStruct(
-          {required int value, dynamic hint}) =>
+  Future<SomeStruct> newStaticMethodSomeStruct({required int value, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_new__static_method__SomeStruct(
-            port_, _api2wire_u32(value)),
+        callFfi: (port_) => inner.wire_new__static_method__SomeStruct(port_, _api2wire_u32(value)),
         parseSuccessData: (d) => _wire2api_some_struct(this, d),
         parseErrorData: null,
         constMeta: kNewStaticMethodSomeStructConstMeta,
@@ -1932,18 +1672,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kNewStaticMethodSomeStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodSomeStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "new__static_method__SomeStruct",
         argNames: ["value"],
       );
 
-  Future<int> staticReturnErrCustomErrorStaticMethodSomeStruct(
-          {dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner
-            .wire_static_return_err_custom_error__static_method__SomeStruct(
-                port_),
+  Future<int> staticReturnErrCustomErrorStaticMethodSomeStruct({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_static_return_err_custom_error__static_method__SomeStruct(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
         constMeta: kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta,
@@ -1951,19 +1686,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName:
-                "static_return_err_custom_error__static_method__SomeStruct",
-            argNames: [],
-          );
+  FlutterRustBridgeTaskConstMeta get kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_err_custom_error__static_method__SomeStruct",
+        argNames: [],
+      );
 
-  Future<int> staticReturnOkCustomErrorStaticMethodSomeStruct({dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_static_return_ok_custom_error__static_method__SomeStruct(
-                port_),
+  Future<int> staticReturnOkCustomErrorStaticMethodSomeStruct({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_static_return_ok_custom_error__static_method__SomeStruct(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
         constMeta: kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta,
@@ -1971,20 +1701,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName:
-                "static_return_ok_custom_error__static_method__SomeStruct",
-            argNames: [],
-          );
+  FlutterRustBridgeTaskConstMeta get kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_ok_custom_error__static_method__SomeStruct",
+        argNames: [],
+      );
 
-  Future<int> nonStaticReturnErrCustomErrorMethodSomeStruct(
-          {required SomeStruct that, dynamic hint}) =>
+  Future<int> nonStaticReturnErrCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_non_static_return_err_custom_error__method__SomeStruct(
-                port_, _api2wire_box_autoadd_some_struct(that)),
+        callFfi: (port_) => inner.wire_non_static_return_err_custom_error__method__SomeStruct(
+            port_, _api2wire_box_autoadd_some_struct(that)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
         constMeta: kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta,
@@ -1992,19 +1718,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName: "non_static_return_err_custom_error__method__SomeStruct",
-            argNames: ["that"],
-          );
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "non_static_return_err_custom_error__method__SomeStruct",
+        argNames: ["that"],
+      );
 
-  Future<int> nonStaticReturnOkCustomErrorMethodSomeStruct(
-          {required SomeStruct that, dynamic hint}) =>
+  Future<int> nonStaticReturnOkCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_non_static_return_ok_custom_error__method__SomeStruct(
-                port_, _api2wire_box_autoadd_some_struct(that)),
+        callFfi: (port_) => inner.wire_non_static_return_ok_custom_error__method__SomeStruct(
+            port_, _api2wire_box_autoadd_some_struct(that)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
         constMeta: kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta,
@@ -2012,18 +1735,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName: "non_static_return_ok_custom_error__method__SomeStruct",
-            argNames: ["that"],
-          );
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "non_static_return_ok_custom_error__method__SomeStruct",
+        argNames: ["that"],
+      );
 
-  Future<CustomStruct> newStaticMethodCustomStruct(
-          {required String message, dynamic hint}) =>
+  Future<CustomStruct> newStaticMethodCustomStruct({required String message, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_new__static_method__CustomStruct(
-            port_, _api2wire_String(message)),
+        callFfi: (port_) => inner.wire_new__static_method__CustomStruct(port_, _api2wire_String(message)),
         parseSuccessData: (d) => _wire2api_custom_struct(this, d),
         parseErrorData: null,
         constMeta: kNewStaticMethodCustomStructConstMeta,
@@ -2031,40 +1751,29 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kNewStaticMethodCustomStructConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodCustomStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "new__static_method__CustomStruct",
         argNames: ["message"],
       );
 
-  Future<void> staticReturnCustomStructErrorStaticMethodCustomStruct(
-          {dynamic hint}) =>
+  Future<void> staticReturnCustomStructErrorStaticMethodCustomStruct({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner
-            .wire_static_return_custom_struct_error__static_method__CustomStruct(
-                port_),
+        callFfi: (port_) => inner.wire_static_return_custom_struct_error__static_method__CustomStruct(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_struct_error,
-        constMeta:
-            kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta,
+        constMeta: kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta,
         argValues: [],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName:
-                "static_return_custom_struct_error__static_method__CustomStruct",
-            argNames: [],
-          );
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_custom_struct_error__static_method__CustomStruct",
+        argNames: [],
+      );
 
-  Future<int> staticReturnCustomStructOkStaticMethodCustomStruct(
-          {dynamic hint}) =>
-      executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner
-            .wire_static_return_custom_struct_ok__static_method__CustomStruct(
-                port_),
+  Future<int> staticReturnCustomStructOkStaticMethodCustomStruct({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_static_return_custom_struct_ok__static_method__CustomStruct(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_struct_error,
         constMeta: kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta,
@@ -2072,20 +1781,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName:
-                "static_return_custom_struct_ok__static_method__CustomStruct",
-            argNames: [],
-          );
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_custom_struct_ok__static_method__CustomStruct",
+        argNames: [],
+      );
 
-  Future<void> nonstaticReturnCustomStructErrorMethodCustomStruct(
-          {required CustomStruct that, dynamic hint}) =>
+  Future<void> nonstaticReturnCustomStructErrorMethodCustomStruct({required CustomStruct that, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner
-            .wire_nonstatic_return_custom_struct_error__method__CustomStruct(
-                port_, _api2wire_box_autoadd_custom_struct(that)),
+        callFfi: (port_) => inner.wire_nonstatic_return_custom_struct_error__method__CustomStruct(
+            port_, _api2wire_box_autoadd_custom_struct(that)),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_struct_error,
         constMeta: kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta,
@@ -2093,20 +1798,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName:
-                "nonstatic_return_custom_struct_error__method__CustomStruct",
-            argNames: ["that"],
-          );
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "nonstatic_return_custom_struct_error__method__CustomStruct",
+        argNames: ["that"],
+      );
 
-  Future<int> nonstaticReturnCustomStructOkMethodCustomStruct(
-          {required CustomStruct that, dynamic hint}) =>
+  Future<int> nonstaticReturnCustomStructOkMethodCustomStruct({required CustomStruct that, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            inner.wire_nonstatic_return_custom_struct_ok__method__CustomStruct(
-                port_, _api2wire_box_autoadd_custom_struct(that)),
+        callFfi: (port_) => inner.wire_nonstatic_return_custom_struct_ok__method__CustomStruct(
+            port_, _api2wire_box_autoadd_custom_struct(that)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_struct_error,
         constMeta: kNonstaticReturnCustomStructOkMethodCustomStructConstMeta,
@@ -2114,13 +1815,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta
-      get kNonstaticReturnCustomStructOkMethodCustomStructConstMeta =>
-          const FlutterRustBridgeTaskConstMeta(
-            debugName:
-                "nonstatic_return_custom_struct_ok__method__CustomStruct",
-            argNames: ["that"],
-          );
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructOkMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "nonstatic_return_custom_struct_ok__method__CustomStruct",
+        argNames: ["that"],
+      );
 
   // Section: api2wire
   ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
@@ -2135,8 +1834,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ans;
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(
-      Uint8List raw) {
+  ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
     return _api2wire_uint_8_list(raw);
   }
 
@@ -2148,15 +1846,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return raw;
   }
 
-  ffi.Pointer<wire_ApplicationEnv> _api2wire_box_application_env(
-      ApplicationEnv raw) {
+  ffi.Pointer<wire_ApplicationEnv> _api2wire_box_application_env(ApplicationEnv raw) {
     final ptr = inner.new_box_application_env_0();
     _api_fill_to_wire_application_env(raw, ptr.ref);
     return ptr;
   }
 
-  ffi.Pointer<wire_ApplicationSettings>
-      _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
+  ffi.Pointer<wire_ApplicationSettings> _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
     final ptr = inner.new_box_autoadd_application_settings_0();
     _api_fill_to_wire_application_settings(raw, ptr.ref);
     return ptr;
@@ -2172,29 +1868,25 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return inner.new_box_autoadd_bool_0(_api2wire_bool(raw));
   }
 
-  ffi.Pointer<wire_ConcatenateWith> _api2wire_box_autoadd_concatenate_with(
-      ConcatenateWith raw) {
+  ffi.Pointer<wire_ConcatenateWith> _api2wire_box_autoadd_concatenate_with(ConcatenateWith raw) {
     final ptr = inner.new_box_autoadd_concatenate_with_0();
     _api_fill_to_wire_concatenate_with(raw, ptr.ref);
     return ptr;
   }
 
-  ffi.Pointer<wire_CustomStruct> _api2wire_box_autoadd_custom_struct(
-      CustomStruct raw) {
+  ffi.Pointer<wire_CustomStruct> _api2wire_box_autoadd_custom_struct(CustomStruct raw) {
     final ptr = inner.new_box_autoadd_custom_struct_0();
     _api_fill_to_wire_custom_struct(raw, ptr.ref);
     return ptr;
   }
 
-  ffi.Pointer<wire_Customized> _api2wire_box_autoadd_customized(
-      Customized raw) {
+  ffi.Pointer<wire_Customized> _api2wire_box_autoadd_customized(Customized raw) {
     final ptr = inner.new_box_autoadd_customized_0();
     _api_fill_to_wire_customized(raw, ptr.ref);
     return ptr;
   }
 
-  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_autoadd_exotic_optionals(
-      ExoticOptionals raw) {
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
     final ptr = inner.new_box_autoadd_exotic_optionals_0();
     _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
     return ptr;
@@ -2212,8 +1904,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return inner.new_box_autoadd_i64_0(_api2wire_i64(raw));
   }
 
-  ffi.Pointer<wire_KitchenSink> _api2wire_box_autoadd_kitchen_sink(
-      KitchenSink raw) {
+  ffi.Pointer<wire_KitchenSink> _api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
     final ptr = inner.new_box_autoadd_kitchen_sink_0();
     _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
     return ptr;
@@ -2231,15 +1922,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ptr;
   }
 
-  ffi.Pointer<wire_MyTreeNode> _api2wire_box_autoadd_my_tree_node(
-      MyTreeNode raw) {
+  ffi.Pointer<wire_MyTreeNode> _api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
     final ptr = inner.new_box_autoadd_my_tree_node_0();
     _api_fill_to_wire_my_tree_node(raw, ptr.ref);
     return ptr;
   }
 
-  ffi.Pointer<wire_NewTypeInt> _api2wire_box_autoadd_new_type_int(
-      NewTypeInt raw) {
+  ffi.Pointer<wire_NewTypeInt> _api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
     final ptr = inner.new_box_autoadd_new_type_int_0();
     _api_fill_to_wire_new_type_int(raw, ptr.ref);
     return ptr;
@@ -2251,8 +1940,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ptr;
   }
 
-  ffi.Pointer<wire_SomeStruct> _api2wire_box_autoadd_some_struct(
-      SomeStruct raw) {
+  ffi.Pointer<wire_SomeStruct> _api2wire_box_autoadd_some_struct(SomeStruct raw) {
     final ptr = inner.new_box_autoadd_some_struct_0();
     _api_fill_to_wire_some_struct(raw, ptr.ref);
     return ptr;
@@ -2274,8 +1962,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return inner.new_box_bool_0(_api2wire_bool(raw));
   }
 
-  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_exotic_optionals(
-      ExoticOptionals raw) {
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_exotic_optionals(ExoticOptionals raw) {
     final ptr = inner.new_box_exotic_optionals_0();
     _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
     return ptr;
@@ -2367,8 +2054,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ans;
   }
 
-  ffi.Pointer<wire_list_application_env_var> _api2wire_list_application_env_var(
-      List<ApplicationEnvVar> raw) {
+  ffi.Pointer<wire_list_application_env_var> _api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
     final ans = inner.new_list_application_env_var_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_application_env_var(raw[i], ans.ref.ptr[i]);
@@ -2376,8 +2062,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ans;
   }
 
-  ffi.Pointer<wire_list_attribute> _api2wire_list_attribute(
-      List<Attribute> raw) {
+  ffi.Pointer<wire_list_attribute> _api2wire_list_attribute(List<Attribute> raw) {
     final ans = inner.new_list_attribute_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_attribute(raw[i], ans.ref.ptr[i]);
@@ -2393,8 +2078,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ans;
   }
 
-  ffi.Pointer<wire_list_my_tree_node> _api2wire_list_my_tree_node(
-      List<MyTreeNode> raw) {
+  ffi.Pointer<wire_list_my_tree_node> _api2wire_list_my_tree_node(List<MyTreeNode> raw) {
     final ans = inner.new_list_my_tree_node_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_my_tree_node(raw[i], ans.ref.ptr[i]);
@@ -2402,8 +2086,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ans;
   }
 
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute>
-      _api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
+  ffi.Pointer<wire_list_opt_box_autoadd_attribute> _api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
     final ans = inner.new_list_opt_box_autoadd_attribute_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_opt_box_autoadd_attribute(raw[i], ans.ref.ptr[i]);
@@ -2419,13 +2102,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return raw == null ? ffi.nullptr : _api2wire_String(raw);
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_opt_ZeroCopyBuffer_Uint8List(
-      Uint8List? raw) {
+  ffi.Pointer<wire_uint_8_list> _api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_ZeroCopyBuffer_Uint8List(raw);
   }
 
-  ffi.Pointer<wire_Attribute> _api2wire_opt_box_autoadd_attribute(
-      Attribute? raw) {
+  ffi.Pointer<wire_Attribute> _api2wire_opt_box_autoadd_attribute(Attribute? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_attribute(raw);
   }
 
@@ -2433,11 +2114,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_bool(raw);
   }
 
-  ffi.Pointer<wire_ExoticOptionals> _api2wire_opt_box_autoadd_exotic_optionals(
-      ExoticOptionals? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : _api2wire_box_autoadd_exotic_optionals(raw);
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_opt_box_autoadd_exotic_optionals(ExoticOptionals? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_box_autoadd_exotic_optionals(raw);
   }
 
   ffi.Pointer<ffi.Double> _api2wire_opt_box_autoadd_f64(double? raw) {
@@ -2452,8 +2130,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_i64(raw);
   }
 
-  ffi.Pointer<wire_NewTypeInt> _api2wire_opt_box_autoadd_new_type_int(
-      NewTypeInt? raw) {
+  ffi.Pointer<wire_NewTypeInt> _api2wire_opt_box_autoadd_new_type_int(NewTypeInt? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_autoadd_new_type_int(raw);
   }
 
@@ -2461,8 +2138,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return raw == null ? ffi.nullptr : _api2wire_box_bool(raw);
   }
 
-  ffi.Pointer<wire_ExoticOptionals> _api2wire_opt_box_exotic_optionals(
-      ExoticOptionals? raw) {
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_opt_box_exotic_optionals(ExoticOptionals? raw) {
     return raw == null ? ffi.nullptr : _api2wire_box_exotic_optionals(raw);
   }
 
@@ -2486,13 +2162,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return raw == null ? ffi.nullptr : _api2wire_box_u8(raw);
   }
 
-  ffi.Pointer<wire_float_32_list> _api2wire_opt_float_32_list(
-      Float32List? raw) {
+  ffi.Pointer<wire_float_32_list> _api2wire_opt_float_32_list(Float32List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_float_32_list(raw);
   }
 
-  ffi.Pointer<wire_float_64_list> _api2wire_opt_float_64_list(
-      Float64List? raw) {
+  ffi.Pointer<wire_float_64_list> _api2wire_opt_float_64_list(Float64List? raw) {
     return raw == null ? ffi.nullptr : _api2wire_float_64_list(raw);
   }
 
@@ -2508,16 +2182,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return raw == null ? ffi.nullptr : _api2wire_int_8_list(raw);
   }
 
-  ffi.Pointer<wire_list_attribute> _api2wire_opt_list_attribute(
-      List<Attribute>? raw) {
+  ffi.Pointer<wire_list_attribute> _api2wire_opt_list_attribute(List<Attribute>? raw) {
     return raw == null ? ffi.nullptr : _api2wire_list_attribute(raw);
   }
 
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute>
-      _api2wire_opt_list_opt_box_autoadd_attribute(List<Attribute?>? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : _api2wire_list_opt_box_autoadd_attribute(raw);
+  ffi.Pointer<wire_list_opt_box_autoadd_attribute> _api2wire_opt_list_opt_box_autoadd_attribute(List<Attribute?>? raw) {
+    return raw == null ? ffi.nullptr : _api2wire_list_opt_box_autoadd_attribute(raw);
   }
 
   ffi.Pointer<wire_uint_8_list> _api2wire_opt_uint_8_list(Uint8List? raw) {
@@ -2548,19 +2218,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   // Section: api_fill_to_wire
 
-  void _api_fill_to_wire_application_env(
-      ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
+  void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
     wireObj.vars = _api2wire_list_application_env_var(apiObj.vars);
   }
 
-  void _api_fill_to_wire_application_env_var(
-      ApplicationEnvVar apiObj, wire_ApplicationEnvVar wireObj) {
+  void _api_fill_to_wire_application_env_var(ApplicationEnvVar apiObj, wire_ApplicationEnvVar wireObj) {
     wireObj.field0 = _api2wire_String(apiObj.field0);
     wireObj.field1 = _api2wire_bool(apiObj.field1);
   }
 
-  void _api_fill_to_wire_application_settings(
-      ApplicationSettings apiObj, wire_ApplicationSettings wireObj) {
+  void _api_fill_to_wire_application_settings(ApplicationSettings apiObj, wire_ApplicationSettings wireObj) {
     wireObj.name = _api2wire_String(apiObj.name);
     wireObj.version = _api2wire_String(apiObj.version);
     wireObj.mode = _api2wire_application_mode(apiObj.mode);
@@ -2572,19 +2239,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     wireObj.value = _api2wire_String(apiObj.value);
   }
 
-  void _api_fill_to_wire_box_application_env(
-      ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
+  void _api_fill_to_wire_box_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
     _api_fill_to_wire_application_env(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_application_settings(
-      ApplicationSettings apiObj,
-      ffi.Pointer<wire_ApplicationSettings> wireObj) {
+      ApplicationSettings apiObj, ffi.Pointer<wire_ApplicationSettings> wireObj) {
     _api_fill_to_wire_application_settings(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_attribute(
-      Attribute apiObj, ffi.Pointer<wire_Attribute> wireObj) {
+  void _api_fill_to_wire_box_autoadd_attribute(Attribute apiObj, ffi.Pointer<wire_Attribute> wireObj) {
     _api_fill_to_wire_attribute(apiObj, wireObj.ref);
   }
 
@@ -2593,13 +2257,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     _api_fill_to_wire_concatenate_with(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_custom_struct(
-      CustomStruct apiObj, ffi.Pointer<wire_CustomStruct> wireObj) {
+  void _api_fill_to_wire_box_autoadd_custom_struct(CustomStruct apiObj, ffi.Pointer<wire_CustomStruct> wireObj) {
     _api_fill_to_wire_custom_struct(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_customized(
-      Customized apiObj, ffi.Pointer<wire_Customized> wireObj) {
+  void _api_fill_to_wire_box_autoadd_customized(Customized apiObj, ffi.Pointer<wire_Customized> wireObj) {
     _api_fill_to_wire_customized(apiObj, wireObj.ref);
   }
 
@@ -2608,84 +2270,68 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_kitchen_sink(
-      KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
+  void _api_fill_to_wire_box_autoadd_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_my_size(
-      MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
+  void _api_fill_to_wire_box_autoadd_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_my_struct(
-      MyStruct apiObj, ffi.Pointer<wire_MyStruct> wireObj) {
+  void _api_fill_to_wire_box_autoadd_my_struct(MyStruct apiObj, ffi.Pointer<wire_MyStruct> wireObj) {
     _api_fill_to_wire_my_struct(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_my_tree_node(
-      MyTreeNode apiObj, ffi.Pointer<wire_MyTreeNode> wireObj) {
+  void _api_fill_to_wire_box_autoadd_my_tree_node(MyTreeNode apiObj, ffi.Pointer<wire_MyTreeNode> wireObj) {
     _api_fill_to_wire_my_tree_node(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_new_type_int(
-      NewTypeInt apiObj, ffi.Pointer<wire_NewTypeInt> wireObj) {
+  void _api_fill_to_wire_box_autoadd_new_type_int(NewTypeInt apiObj, ffi.Pointer<wire_NewTypeInt> wireObj) {
     _api_fill_to_wire_new_type_int(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_note(
-      Note apiObj, ffi.Pointer<wire_Note> wireObj) {
+  void _api_fill_to_wire_box_autoadd_note(Note apiObj, ffi.Pointer<wire_Note> wireObj) {
     _api_fill_to_wire_note(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_some_struct(
-      SomeStruct apiObj, ffi.Pointer<wire_SomeStruct> wireObj) {
+  void _api_fill_to_wire_box_autoadd_some_struct(SomeStruct apiObj, ffi.Pointer<wire_SomeStruct> wireObj) {
     _api_fill_to_wire_some_struct(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_sum_with(
-      SumWith apiObj, ffi.Pointer<wire_SumWith> wireObj) {
+  void _api_fill_to_wire_box_autoadd_sum_with(SumWith apiObj, ffi.Pointer<wire_SumWith> wireObj) {
     _api_fill_to_wire_sum_with(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_user_id(
-      UserId apiObj, ffi.Pointer<wire_UserId> wireObj) {
+  void _api_fill_to_wire_box_autoadd_user_id(UserId apiObj, ffi.Pointer<wire_UserId> wireObj) {
     _api_fill_to_wire_user_id(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_exotic_optionals(
-      ExoticOptionals apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
+  void _api_fill_to_wire_box_exotic_optionals(ExoticOptionals apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_kitchen_sink(
-      KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
+  void _api_fill_to_wire_box_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_my_size(
-      MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
+  void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_concatenate_with(
-      ConcatenateWith apiObj, wire_ConcatenateWith wireObj) {
+  void _api_fill_to_wire_concatenate_with(ConcatenateWith apiObj, wire_ConcatenateWith wireObj) {
     wireObj.a = _api2wire_String(apiObj.a);
   }
 
-  void _api_fill_to_wire_custom_struct(
-      CustomStruct apiObj, wire_CustomStruct wireObj) {
+  void _api_fill_to_wire_custom_struct(CustomStruct apiObj, wire_CustomStruct wireObj) {
     wireObj.message = _api2wire_String(apiObj.message);
   }
 
-  void _api_fill_to_wire_customized(
-      Customized apiObj, wire_Customized wireObj) {
+  void _api_fill_to_wire_customized(Customized apiObj, wire_Customized wireObj) {
     wireObj.final_field = _api2wire_String(apiObj.finalField);
     wireObj.non_final_field = _api2wire_opt_String(apiObj.nonFinalField);
   }
 
-  void _api_fill_to_wire_exotic_optionals(
-      ExoticOptionals apiObj, wire_ExoticOptionals wireObj) {
+  void _api_fill_to_wire_exotic_optionals(ExoticOptionals apiObj, wire_ExoticOptionals wireObj) {
     wireObj.int32 = _api2wire_opt_box_autoadd_i32(apiObj.int32);
     wireObj.int64 = _api2wire_opt_box_autoadd_i64(apiObj.int64);
     wireObj.float64 = _api2wire_opt_box_autoadd_f64(apiObj.float64);
@@ -2698,16 +2344,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     wireObj.float32list = _api2wire_opt_float_32_list(apiObj.float32List);
     wireObj.float64list = _api2wire_opt_float_64_list(apiObj.float64List);
     wireObj.attributes = _api2wire_opt_list_attribute(apiObj.attributes);
-    wireObj.attributes_nullable =
-        _api2wire_list_opt_box_autoadd_attribute(apiObj.attributesNullable);
-    wireObj.nullable_attributes =
-        _api2wire_opt_list_opt_box_autoadd_attribute(apiObj.nullableAttributes);
-    wireObj.newtypeint =
-        _api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
+    wireObj.attributes_nullable = _api2wire_list_opt_box_autoadd_attribute(apiObj.attributesNullable);
+    wireObj.nullable_attributes = _api2wire_opt_list_opt_box_autoadd_attribute(apiObj.nullableAttributes);
+    wireObj.newtypeint = _api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
   }
 
-  void _api_fill_to_wire_kitchen_sink(
-      KitchenSink apiObj, wire_KitchenSink wireObj) {
+  void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, wire_KitchenSink wireObj) {
     if (apiObj is Empty) {
       wireObj.tag = 0;
       return;
@@ -2722,23 +2364,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     if (apiObj is Nested) {
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
-      wireObj.kind.ref.Nested.ref.field0 =
-          _api2wire_box_kitchen_sink(apiObj.field0);
+      wireObj.kind.ref.Nested.ref.field0 = _api2wire_box_kitchen_sink(apiObj.field0);
       wireObj.kind.ref.Nested.ref.field1 = _api2wire_i32(apiObj.field1);
     }
     if (apiObj is Optional) {
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_KitchenSink_Optional();
-      wireObj.kind.ref.Optional.ref.field0 =
-          _api2wire_opt_box_autoadd_i32(apiObj.field0);
-      wireObj.kind.ref.Optional.ref.field1 =
-          _api2wire_opt_box_autoadd_i32(apiObj.field1);
+      wireObj.kind.ref.Optional.ref.field0 = _api2wire_opt_box_autoadd_i32(apiObj.field0);
+      wireObj.kind.ref.Optional.ref.field1 = _api2wire_opt_box_autoadd_i32(apiObj.field1);
     }
     if (apiObj is Buffer) {
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_KitchenSink_Buffer();
-      wireObj.kind.ref.Buffer.ref.field0 =
-          _api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
+      wireObj.kind.ref.Buffer.ref.field0 = _api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
     }
     if (apiObj is Enums) {
       wireObj.tag = 5;
@@ -2756,16 +2394,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     wireObj.content = _api2wire_bool(apiObj.content);
   }
 
-  void _api_fill_to_wire_my_tree_node(
-      MyTreeNode apiObj, wire_MyTreeNode wireObj) {
+  void _api_fill_to_wire_my_tree_node(MyTreeNode apiObj, wire_MyTreeNode wireObj) {
     wireObj.value_i32 = _api2wire_i32(apiObj.valueI32);
     wireObj.value_vec_u8 = _api2wire_uint_8_list(apiObj.valueVecU8);
     wireObj.value_boolean = _api2wire_bool(apiObj.valueBoolean);
     wireObj.children = _api2wire_list_my_tree_node(apiObj.children);
   }
 
-  void _api_fill_to_wire_new_type_int(
-      NewTypeInt apiObj, wire_NewTypeInt wireObj) {
+  void _api_fill_to_wire_new_type_int(NewTypeInt apiObj, wire_NewTypeInt wireObj) {
     wireObj.field0 = _api2wire_i64(apiObj.field0);
   }
 
@@ -2774,31 +2410,24 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     wireObj.body = _api2wire_String(apiObj.body);
   }
 
-  void _api_fill_to_wire_opt_box_autoadd_attribute(
-      Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
-    if (apiObj != null)
-      _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
+  void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_exotic_optionals(
       ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
-    if (apiObj != null)
-      _api_fill_to_wire_box_autoadd_exotic_optionals(apiObj, wireObj);
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_exotic_optionals(apiObj, wireObj);
   }
 
-  void _api_fill_to_wire_opt_box_autoadd_new_type_int(
-      NewTypeInt? apiObj, ffi.Pointer<wire_NewTypeInt> wireObj) {
-    if (apiObj != null)
-      _api_fill_to_wire_box_autoadd_new_type_int(apiObj, wireObj);
+  void _api_fill_to_wire_opt_box_autoadd_new_type_int(NewTypeInt? apiObj, ffi.Pointer<wire_NewTypeInt> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_new_type_int(apiObj, wireObj);
   }
 
-  void _api_fill_to_wire_opt_box_exotic_optionals(
-      ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
+  void _api_fill_to_wire_opt_box_exotic_optionals(ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
   }
 
-  void _api_fill_to_wire_some_struct(
-      SomeStruct apiObj, wire_SomeStruct wireObj) {
+  void _api_fill_to_wire_some_struct(SomeStruct apiObj, wire_SomeStruct wireObj) {
     wireObj.value = _api2wire_u32(apiObj.value);
   }
 
@@ -2866,8 +2495,7 @@ Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
 
 ApplicationEnv _wire2api_application_env(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 1)
-    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return ApplicationEnv(
     vars: _wire2api_list_application_env_var(arr[0]),
   );
@@ -2875,8 +2503,7 @@ ApplicationEnv _wire2api_application_env(dynamic raw) {
 
 ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 2)
-    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
   return ApplicationEnvVar(
     field0: _wire2api_String(arr[0]),
     field1: _wire2api_bool(arr[1]),
@@ -2908,8 +2535,7 @@ ApplicationMode _wire2api_application_mode(dynamic raw) {
 
 ApplicationSettings _wire2api_application_settings(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 4)
-    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
   return ApplicationSettings(
     name: _wire2api_String(arr[0]),
     version: _wire2api_String(arr[1]),
@@ -2920,8 +2546,7 @@ ApplicationSettings _wire2api_application_settings(dynamic raw) {
 
 Attribute _wire2api_attribute(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 2)
-    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
   return Attribute(
     key: _wire2api_String(arr[0]),
     value: _wire2api_String(arr[1]),
@@ -2976,11 +2601,9 @@ KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
   return _wire2api_kitchen_sink(raw);
 }
 
-ConcatenateWith _wire2api_concatenate_with(
-    FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
+ConcatenateWith _wire2api_concatenate_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 1)
-    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return ConcatenateWith(
     bridge: bridge,
     a: _wire2api_String(arr[0]),
@@ -3005,8 +2628,7 @@ CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
     case 0:
       return CustomNested1(_wire2api_String(access[1]), raw['backtrace']);
     case 1:
-      return ErrorNested(_wire2api_box_autoadd_custom_nested_error_2(access[1]),
-          raw['backtrace']);
+      return ErrorNested(_wire2api_box_autoadd_custom_nested_error_2(access[1]), raw['backtrace']);
     default:
       throw Exception("unreachable");
   }
@@ -3028,11 +2650,9 @@ CustomNestedError2 _wire2api_custom_nested_error_2(dynamic raw) {
   }
 }
 
-CustomStruct _wire2api_custom_struct(
-    FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
+CustomStruct _wire2api_custom_struct(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 1)
-    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return CustomStruct(
     bridge: bridge,
     message: _wire2api_String(arr[0]),
@@ -3049,8 +2669,7 @@ CustomStructError _wire2api_custom_struct_error(dynamic raw) {
 
 Element _wire2api_element(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 4)
-    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
   return Element(
     tag: _wire2api_opt_String(arr[0]),
     text: _wire2api_opt_String(arr[1]),
@@ -3061,8 +2680,7 @@ Element _wire2api_element(dynamic raw) {
 
 Event _wire2api_event(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 2)
-    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
   return Event(
     address: _wire2api_String(arr[0]),
     payload: _wire2api_String(arr[1]),
@@ -3071,8 +2689,7 @@ Event _wire2api_event(dynamic raw) {
 
 ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 15)
-    throw Exception('unexpected arr length: expect 15 but see ${arr.length}');
+  if (arr.length != 15) throw Exception('unexpected arr length: expect 15 but see ${arr.length}');
   return ExoticOptionals(
     int32: _wire2api_opt_box_autoadd_i32(arr[0]),
     int64: _wire2api_opt_box_autoadd_i64(arr[1]),
@@ -3195,9 +2812,7 @@ List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
 }
 
 List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
-  return (raw as List<dynamic>)
-      .map(_wire2api_opt_box_autoadd_attribute)
-      .toList();
+  return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
 }
 
 List<Point> _wire2api_list_point(dynamic raw) {
@@ -3206,8 +2821,7 @@ List<Point> _wire2api_list_point(dynamic raw) {
 
 Log _wire2api_log(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 2)
-    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
   return Log(
     key: _wire2api_u32(arr[0]),
     value: _wire2api_u32(arr[1]),
@@ -3216,8 +2830,7 @@ Log _wire2api_log(dynamic raw) {
 
 Log2 _wire2api_log_2(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 2)
-    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
   return Log2(
     key: _wire2api_u32(arr[0]),
     value: _wire2api_String(arr[1]),
@@ -3226,8 +2839,7 @@ Log2 _wire2api_log_2(dynamic raw) {
 
 MySize _wire2api_my_size(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 2)
-    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
   return MySize(
     width: _wire2api_i32(arr[0]),
     height: _wire2api_i32(arr[1]),
@@ -3236,8 +2848,7 @@ MySize _wire2api_my_size(dynamic raw) {
 
 MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 1)
-    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return MyStreamEntry(
     hello: _wire2api_String(arr[0]),
   );
@@ -3245,8 +2856,7 @@ MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
 
 MyTreeNode _wire2api_my_tree_node(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 4)
-    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
   return MyTreeNode(
     valueI32: _wire2api_i32(arr[0]),
     valueVecU8: _wire2api_uint_8_list(arr[1]),
@@ -3257,8 +2867,7 @@ MyTreeNode _wire2api_my_tree_node(dynamic raw) {
 
 NewTypeInt _wire2api_new_type_int(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 1)
-    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return NewTypeInt(
     field0: _wire2api_i64(arr[0]),
   );
@@ -3346,30 +2955,25 @@ Weekdays? _wire2api_opt_weekdays(dynamic raw) {
 
 Point _wire2api_point(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 2)
-    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
   return Point(
     x: _wire2api_f32(arr[0]),
     y: _wire2api_f32(arr[1]),
   );
 }
 
-SomeStruct _wire2api_some_struct(
-    FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
+SomeStruct _wire2api_some_struct(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 1)
-    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return SomeStruct(
     bridge: bridge,
     value: _wire2api_u32(arr[0]),
   );
 }
 
-SumWith _wire2api_sum_with(
-    FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
+SumWith _wire2api_sum_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 1)
-    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return SumWith(
     bridge: bridge,
     x: _wire2api_u32(arr[0]),
@@ -3414,8 +3018,7 @@ void _wire2api_unit(dynamic raw) {
 
 UserId _wire2api_user_id(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 1)
-    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return UserId(
     value: _wire2api_u32(arr[0]),
   );
@@ -3427,8 +3030,7 @@ int _wire2api_usize(dynamic raw) {
 
 VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 10)
-    throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+  if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
   return VecOfPrimitivePack(
     int8List: _wire2api_int_8_list(arr[0]),
     uint8List: _wire2api_uint_8_list(arr[1]),
@@ -3447,11 +3049,9 @@ Weekdays _wire2api_weekdays(dynamic raw) {
   return Weekdays.values[raw];
 }
 
-ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(
-    dynamic raw) {
+ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
   final arr = raw as List<dynamic>;
-  if (arr.length != 10)
-    throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+  if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
   return ZeroCopyVecOfPrimitivePack(
     int8List: _wire2api_ZeroCopyBuffer_Int8List(arr[0]),
     uint8List: _wire2api_ZeroCopyBuffer_Uint8List(arr[1]),
@@ -3473,20 +3073,16 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(
 // Generated by `package:ffigen`.
 
 /// generated by flutter_rust_bridge
-class FlutterRustBridgeExampleSingleBlockTestWire
-    implements FlutterRustBridgeWireBase {
+class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWireBase {
   /// Holds the symbol lookup function.
-  final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
-      _lookup;
+  final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) _lookup;
 
   /// The symbols are looked up in [dynamicLibrary].
-  FlutterRustBridgeExampleSingleBlockTestWire(ffi.DynamicLibrary dynamicLibrary)
-      : _lookup = dynamicLibrary.lookup;
+  FlutterRustBridgeExampleSingleBlockTestWire(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
 
   /// The symbols are looked up with [lookup].
   FlutterRustBridgeExampleSingleBlockTestWire.fromLookup(
-      ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
-          lookup)
+      ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
   void wire_simple_adder(
@@ -3501,12 +3097,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_simple_adderPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder');
-  late final _wire_simple_adder =
-      _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
+  late final _wire_simple_adderPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder');
+  late final _wire_simple_adder = _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
 
   void wire_primitive_types(
     int port_,
@@ -3524,12 +3117,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_primitive_typesPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double,
-              ffi.Bool)>>('wire_primitive_types');
-  late final _wire_primitive_types = _wire_primitive_typesPtr
-      .asFunction<void Function(int, int, int, double, bool)>();
+  late final _wire_primitive_typesPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
+          'wire_primitive_types');
+  late final _wire_primitive_types = _wire_primitive_typesPtr.asFunction<void Function(int, int, int, double, bool)>();
 
   void wire_primitive_u32(
     int port_,
@@ -3542,10 +3133,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_primitive_u32Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
-          'wire_primitive_u32');
-  late final _wire_primitive_u32 =
-      _wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_primitive_u32');
+  late final _wire_primitive_u32 = _wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
 
   void wire_handle_string(
     int port_,
@@ -3557,12 +3146,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_stringPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_string');
-  late final _wire_handle_string = _wire_handle_stringPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_handle_stringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_string');
+  late final _wire_handle_string =
+      _wire_handle_stringPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_return_unit(
     int port_,
@@ -3573,10 +3160,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_handle_return_unitPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_handle_return_unit');
-  late final _wire_handle_return_unit =
-      _wire_handle_return_unitPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_return_unit');
+  late final _wire_handle_return_unit = _wire_handle_return_unitPtr.asFunction<void Function(int)>();
 
   void wire_handle_vec_u8(
     int port_,
@@ -3588,12 +3173,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_vec_u8Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_vec_u8');
-  late final _wire_handle_vec_u8 = _wire_handle_vec_u8Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_handle_vec_u8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_vec_u8');
+  late final _wire_handle_vec_u8 =
+      _wire_handle_vec_u8Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_vec_of_primitive(
     int port_,
@@ -3606,10 +3189,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_handle_vec_of_primitivePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_handle_vec_of_primitive');
-  late final _wire_handle_vec_of_primitive =
-      _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_vec_of_primitive');
+  late final _wire_handle_vec_of_primitive = _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
   void wire_handle_zero_copy_vec_of_primitive(
     int port_,
@@ -3622,11 +3203,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_handle_zero_copy_vec_of_primitivePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_handle_zero_copy_vec_of_primitive');
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_zero_copy_vec_of_primitive');
   late final _wire_handle_zero_copy_vec_of_primitive =
-      _wire_handle_zero_copy_vec_of_primitivePtr
-          .asFunction<void Function(int, int)>();
+      _wire_handle_zero_copy_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
   void wire_handle_struct(
     int port_,
@@ -3640,12 +3219,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_structPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MySize>,
-              ffi.Pointer<wire_MySize>)>>('wire_handle_struct');
-  late final _wire_handle_struct = _wire_handle_structPtr.asFunction<
-      void Function(int, ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>();
+  late final _wire_handle_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>>(
+          'wire_handle_struct');
+  late final _wire_handle_struct =
+      _wire_handle_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>();
 
   void wire_handle_newtype(
     int port_,
@@ -3657,12 +3235,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_newtypePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_NewTypeInt>)>>('wire_handle_newtype');
-  late final _wire_handle_newtype = _wire_handle_newtypePtr
-      .asFunction<void Function(int, ffi.Pointer<wire_NewTypeInt>)>();
+  late final _wire_handle_newtypePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_NewTypeInt>)>>('wire_handle_newtype');
+  late final _wire_handle_newtype =
+      _wire_handle_newtypePtr.asFunction<void Function(int, ffi.Pointer<wire_NewTypeInt>)>();
 
   void wire_handle_list_of_struct(
     int port_,
@@ -3674,12 +3250,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_list_of_structPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_list_my_size>)>>('wire_handle_list_of_struct');
-  late final _wire_handle_list_of_struct = _wire_handle_list_of_structPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_list_my_size>)>();
+  late final _wire_handle_list_of_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_my_size>)>>(
+          'wire_handle_list_of_struct');
+  late final _wire_handle_list_of_struct =
+      _wire_handle_list_of_structPtr.asFunction<void Function(int, ffi.Pointer<wire_list_my_size>)>();
 
   void wire_handle_string_list(
     int port_,
@@ -3691,12 +3266,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_string_listPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_StringList>)>>('wire_handle_string_list');
-  late final _wire_handle_string_list = _wire_handle_string_listPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
+  late final _wire_handle_string_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StringList>)>>(
+          'wire_handle_string_list');
+  late final _wire_handle_string_list =
+      _wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
 
   void wire_handle_complex_struct(
     int port_,
@@ -3708,12 +3282,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_complex_structPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_MyTreeNode>)>>('wire_handle_complex_struct');
-  late final _wire_handle_complex_struct = _wire_handle_complex_structPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_MyTreeNode>)>();
+  late final _wire_handle_complex_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MyTreeNode>)>>(
+          'wire_handle_complex_struct');
+  late final _wire_handle_complex_struct =
+      _wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyTreeNode>)>();
 
   WireSyncReturnStruct wire_handle_sync_return(
     ffi.Pointer<wire_uint_8_list> mode,
@@ -3723,12 +3296,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_sync_returnPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncReturnStruct Function(
-              ffi.Pointer<wire_uint_8_list>)>>('wire_handle_sync_return');
-  late final _wire_handle_sync_return = _wire_handle_sync_returnPtr.asFunction<
-      WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_handle_sync_returnPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_sync_return');
+  late final _wire_handle_sync_return =
+      _wire_handle_sync_returnPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_stream(
     int port_,
@@ -3740,12 +3312,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_streamPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_stream');
-  late final _wire_handle_stream = _wire_handle_streamPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_handle_streamPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_stream');
+  late final _wire_handle_stream =
+      _wire_handle_streamPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_stream_of_struct(
     int port_,
@@ -3756,10 +3326,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_handle_stream_of_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_handle_stream_of_struct');
-  late final _wire_handle_stream_of_struct =
-      _wire_handle_stream_of_structPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_stream_of_struct');
+  late final _wire_handle_stream_of_struct = _wire_handle_stream_of_structPtr.asFunction<void Function(int)>();
 
   void wire_return_err(
     int port_,
@@ -3769,11 +3337,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_return_errPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_return_err');
-  late final _wire_return_err =
-      _wire_return_errPtr.asFunction<void Function(int)>();
+  late final _wire_return_errPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_err');
+  late final _wire_return_err = _wire_return_errPtr.asFunction<void Function(int)>();
 
   void wire_return_panic(
     int port_,
@@ -3783,11 +3348,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_return_panicPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_return_panic');
-  late final _wire_return_panic =
-      _wire_return_panicPtr.asFunction<void Function(int)>();
+  late final _wire_return_panicPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_panic');
+  late final _wire_return_panic = _wire_return_panicPtr.asFunction<void Function(int)>();
 
   void wire_handle_optional_return(
     int port_,
@@ -3801,12 +3363,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_optional_returnPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Double,
-              ffi.Double)>>('wire_handle_optional_return');
-  late final _wire_handle_optional_return = _wire_handle_optional_returnPtr
-      .asFunction<void Function(int, double, double)>();
+  late final _wire_handle_optional_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double, ffi.Double)>>('wire_handle_optional_return');
+  late final _wire_handle_optional_return =
+      _wire_handle_optional_returnPtr.asFunction<void Function(int, double, double)>();
 
   void wire_handle_optional_struct(
     int port_,
@@ -3818,12 +3378,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_optional_structPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_uint_8_list>)>>('wire_handle_optional_struct');
-  late final _wire_handle_optional_struct = _wire_handle_optional_structPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_handle_optional_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_optional_struct');
+  late final _wire_handle_optional_struct =
+      _wire_handle_optional_structPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_optional_increment(
     int port_,
@@ -3835,13 +3394,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_optional_incrementPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ExoticOptionals>)>>(
-      'wire_handle_optional_increment');
+  late final _wire_handle_optional_incrementPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ExoticOptionals>)>>(
+          'wire_handle_optional_increment');
   late final _wire_handle_optional_increment =
-      _wire_handle_optional_incrementPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_ExoticOptionals>)>();
+      _wire_handle_optional_incrementPtr.asFunction<void Function(int, ffi.Pointer<wire_ExoticOptionals>)>();
 
   void wire_handle_increment_boxed_optional(
     int port_,
@@ -3853,13 +3410,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_increment_boxed_optionalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>(
-      'wire_handle_increment_boxed_optional');
+  late final _wire_handle_increment_boxed_optionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>(
+          'wire_handle_increment_boxed_optional');
   late final _wire_handle_increment_boxed_optional =
-      _wire_handle_increment_boxed_optionalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
+      _wire_handle_increment_boxed_optionalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
 
   void wire_handle_option_box_arguments(
     int port_,
@@ -3884,28 +3439,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_handle_option_box_argumentsPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64,
-                  ffi.Pointer<ffi.Int8>,
-                  ffi.Pointer<ffi.Uint8>,
-                  ffi.Pointer<ffi.Int32>,
-                  ffi.Pointer<ffi.Int64>,
-                  ffi.Pointer<ffi.Double>,
-                  ffi.Pointer<ffi.Bool>,
-                  ffi.Pointer<wire_ExoticOptionals>)>>(
-      'wire_handle_option_box_arguments');
-  late final _wire_handle_option_box_arguments =
-      _wire_handle_option_box_argumentsPtr.asFunction<
-          void Function(
-              int,
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64,
               ffi.Pointer<ffi.Int8>,
               ffi.Pointer<ffi.Uint8>,
               ffi.Pointer<ffi.Int32>,
               ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>,
               ffi.Pointer<ffi.Bool>,
-              ffi.Pointer<wire_ExoticOptionals>)>();
+              ffi.Pointer<wire_ExoticOptionals>)>>('wire_handle_option_box_arguments');
+  late final _wire_handle_option_box_arguments = _wire_handle_option_box_argumentsPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
+          ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>, ffi.Pointer<wire_ExoticOptionals>)>();
 
   void wire_print_note(
     int port_,
@@ -3917,12 +3463,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_print_notePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_Note>)>>('wire_print_note');
-  late final _wire_print_note = _wire_print_notePtr
-      .asFunction<void Function(int, ffi.Pointer<wire_Note>)>();
+  late final _wire_print_notePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Note>)>>('wire_print_note');
+  late final _wire_print_note = _wire_print_notePtr.asFunction<void Function(int, ffi.Pointer<wire_Note>)>();
 
   void wire_handle_return_enum(
     int port_,
@@ -3934,12 +3477,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_return_enumPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_uint_8_list>)>>('wire_handle_return_enum');
-  late final _wire_handle_return_enum = _wire_handle_return_enumPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_handle_return_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_return_enum');
+  late final _wire_handle_return_enum =
+      _wire_handle_return_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_enum_parameter(
     int port_,
@@ -3952,10 +3494,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_handle_enum_parameterPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_handle_enum_parameter');
-  late final _wire_handle_enum_parameter =
-      _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_enum_parameter');
+  late final _wire_handle_enum_parameter = _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
 
   void wire_handle_customized_struct(
     int port_,
@@ -3967,12 +3507,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_customized_structPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_Customized>)>>('wire_handle_customized_struct');
-  late final _wire_handle_customized_struct = _wire_handle_customized_structPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_Customized>)>();
+  late final _wire_handle_customized_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Customized>)>>(
+          'wire_handle_customized_struct');
+  late final _wire_handle_customized_struct =
+      _wire_handle_customized_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Customized>)>();
 
   void wire_handle_enum_struct(
     int port_,
@@ -3984,12 +3523,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_enum_structPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_KitchenSink>)>>('wire_handle_enum_struct');
-  late final _wire_handle_enum_struct = _wire_handle_enum_structPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_KitchenSink>)>();
+  late final _wire_handle_enum_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_KitchenSink>)>>(
+          'wire_handle_enum_struct');
+  late final _wire_handle_enum_struct =
+      _wire_handle_enum_structPtr.asFunction<void Function(int, ffi.Pointer<wire_KitchenSink>)>();
 
   void wire_use_imported_struct(
     int port_,
@@ -4001,12 +3539,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_use_imported_structPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_MyStruct>)>>('wire_use_imported_struct');
-  late final _wire_use_imported_struct = _wire_use_imported_structPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_MyStruct>)>();
+  late final _wire_use_imported_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MyStruct>)>>('wire_use_imported_struct');
+  late final _wire_use_imported_struct =
+      _wire_use_imported_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyStruct>)>();
 
   void wire_use_imported_enum(
     int port_,
@@ -4019,10 +3555,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_use_imported_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_use_imported_enum');
-  late final _wire_use_imported_enum =
-      _wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_use_imported_enum');
+  late final _wire_use_imported_enum = _wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
 
   void wire_get_app_settings(
     int port_,
@@ -4033,10 +3567,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_get_app_settingsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_get_app_settings');
-  late final _wire_get_app_settings =
-      _wire_get_app_settingsPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_app_settings');
+  late final _wire_get_app_settings = _wire_get_app_settingsPtr.asFunction<void Function(int)>();
 
   void wire_is_app_embedded(
     int port_,
@@ -4048,12 +3580,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_is_app_embeddedPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              ffi.Pointer<wire_ApplicationSettings>)>>('wire_is_app_embedded');
-  late final _wire_is_app_embedded = _wire_is_app_embeddedPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_ApplicationSettings>)>();
+  late final _wire_is_app_embeddedPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ApplicationSettings>)>>(
+          'wire_is_app_embedded');
+  late final _wire_is_app_embedded =
+      _wire_is_app_embeddedPtr.asFunction<void Function(int, ffi.Pointer<wire_ApplicationSettings>)>();
 
   void wire_get_message(
     int port_,
@@ -4063,11 +3594,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_get_messagePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_get_message');
-  late final _wire_get_message =
-      _wire_get_messagePtr.asFunction<void Function(int)>();
+  late final _wire_get_messagePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_message');
+  late final _wire_get_message = _wire_get_messagePtr.asFunction<void Function(int)>();
 
   void wire_get_array(
     int port_,
@@ -4077,11 +3605,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_get_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_get_array');
-  late final _wire_get_array =
-      _wire_get_arrayPtr.asFunction<void Function(int)>();
+  late final _wire_get_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_array');
+  late final _wire_get_array = _wire_get_arrayPtr.asFunction<void Function(int)>();
 
   void wire_get_complex_array(
     int port_,
@@ -4092,10 +3617,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_get_complex_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_get_complex_array');
-  late final _wire_get_complex_array =
-      _wire_get_complex_arrayPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_complex_array');
+  late final _wire_get_complex_array = _wire_get_complex_arrayPtr.asFunction<void Function(int)>();
 
   void wire_get_usize(
     int port_,
@@ -4108,10 +3631,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_get_usizePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>(
-          'wire_get_usize');
-  late final _wire_get_usize =
-      _wire_get_usizePtr.asFunction<void Function(int, int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_get_usize');
+  late final _wire_get_usize = _wire_get_usizePtr.asFunction<void Function(int, int)>();
 
   void wire_next_user_id(
     int port_,
@@ -4123,12 +3644,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_next_user_idPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_UserId>)>>('wire_next_user_id');
-  late final _wire_next_user_id = _wire_next_user_idPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_UserId>)>();
+  late final _wire_next_user_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_UserId>)>>('wire_next_user_id');
+  late final _wire_next_user_id = _wire_next_user_idPtr.asFunction<void Function(int, ffi.Pointer<wire_UserId>)>();
 
   void wire_register_event_listener(
     int port_,
@@ -4139,10 +3657,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_register_event_listenerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_register_event_listener');
-  late final _wire_register_event_listener =
-      _wire_register_event_listenerPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_register_event_listener');
+  late final _wire_register_event_listener = _wire_register_event_listenerPtr.asFunction<void Function(int)>();
 
   void wire_close_event_listener(
     int port_,
@@ -4153,10 +3669,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_close_event_listenerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_close_event_listener');
-  late final _wire_close_event_listener =
-      _wire_close_event_listenerPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_close_event_listener');
+  late final _wire_close_event_listener = _wire_close_event_listenerPtr.asFunction<void Function(int)>();
 
   void wire_create_event(
     int port_,
@@ -4166,11 +3680,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_create_eventPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_create_event');
-  late final _wire_create_event =
-      _wire_create_eventPtr.asFunction<void Function(int)>();
+  late final _wire_create_eventPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_event');
+  late final _wire_create_event = _wire_create_eventPtr.asFunction<void Function(int)>();
 
   void wire_handle_stream_sink_at_1(
     int port_,
@@ -4184,12 +3695,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_stream_sink_at_1Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Uint32,
-              ffi.Uint32)>>('wire_handle_stream_sink_at_1');
-  late final _wire_handle_stream_sink_at_1 = _wire_handle_stream_sink_at_1Ptr
-      .asFunction<void Function(int, int, int)>();
+  late final _wire_handle_stream_sink_at_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_1');
+  late final _wire_handle_stream_sink_at_1 =
+      _wire_handle_stream_sink_at_1Ptr.asFunction<void Function(int, int, int)>();
 
   void wire_handle_stream_sink_at_2(
     int port_,
@@ -4203,12 +3712,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_stream_sink_at_2Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Uint32,
-              ffi.Uint32)>>('wire_handle_stream_sink_at_2');
-  late final _wire_handle_stream_sink_at_2 = _wire_handle_stream_sink_at_2Ptr
-      .asFunction<void Function(int, int, int)>();
+  late final _wire_handle_stream_sink_at_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_2');
+  late final _wire_handle_stream_sink_at_2 =
+      _wire_handle_stream_sink_at_2Ptr.asFunction<void Function(int, int, int)>();
 
   void wire_handle_stream_sink_at_3(
     int port_,
@@ -4222,12 +3729,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_stream_sink_at_3Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Uint32,
-              ffi.Uint32)>>('wire_handle_stream_sink_at_3');
-  late final _wire_handle_stream_sink_at_3 = _wire_handle_stream_sink_at_3Ptr
-      .asFunction<void Function(int, int, int)>();
+  late final _wire_handle_stream_sink_at_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_3');
+  late final _wire_handle_stream_sink_at_3 =
+      _wire_handle_stream_sink_at_3Ptr.asFunction<void Function(int, int, int)>();
 
   void wire_get_sum_struct(
     int port_,
@@ -4237,11 +3742,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_get_sum_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_get_sum_struct');
-  late final _wire_get_sum_struct =
-      _wire_get_sum_structPtr.asFunction<void Function(int)>();
+  late final _wire_get_sum_structPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_sum_struct');
+  late final _wire_get_sum_struct = _wire_get_sum_structPtr.asFunction<void Function(int)>();
 
   void wire_return_err_custom_error(
     int port_,
@@ -4252,10 +3754,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_return_err_custom_errorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_return_err_custom_error');
-  late final _wire_return_err_custom_error =
-      _wire_return_err_custom_errorPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_err_custom_error');
+  late final _wire_return_err_custom_error = _wire_return_err_custom_errorPtr.asFunction<void Function(int)>();
 
   void wire_return_ok_custom_error(
     int port_,
@@ -4266,10 +3766,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_return_ok_custom_errorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_return_ok_custom_error');
-  late final _wire_return_ok_custom_error =
-      _wire_return_ok_custom_errorPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_ok_custom_error');
+  late final _wire_return_ok_custom_error = _wire_return_ok_custom_errorPtr.asFunction<void Function(int)>();
 
   void wire_return_error_variant(
     int port_,
@@ -4282,10 +3780,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_return_error_variantPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
-          'wire_return_error_variant');
-  late final _wire_return_error_variant =
-      _wire_return_error_variantPtr.asFunction<void Function(int, int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_return_error_variant');
+  late final _wire_return_error_variant = _wire_return_error_variantPtr.asFunction<void Function(int, int)>();
 
   void wire_return_custom_nested_error_1(
     int port_,
@@ -4296,8 +3792,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_return_custom_nested_error_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_return_custom_nested_error_1');
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_nested_error_1');
   late final _wire_return_custom_nested_error_1 =
       _wire_return_custom_nested_error_1Ptr.asFunction<void Function(int)>();
 
@@ -4310,10 +3805,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_return_custom_struct_errorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_return_custom_struct_error');
-  late final _wire_return_custom_struct_error =
-      _wire_return_custom_struct_errorPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_struct_error');
+  late final _wire_return_custom_struct_error = _wire_return_custom_struct_errorPtr.asFunction<void Function(int)>();
 
   void wire_return_custom_struct_ok(
     int port_,
@@ -4324,10 +3817,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_return_custom_struct_okPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_return_custom_struct_ok');
-  late final _wire_return_custom_struct_ok =
-      _wire_return_custom_struct_okPtr.asFunction<void Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_struct_ok');
+  late final _wire_return_custom_struct_ok = _wire_return_custom_struct_okPtr.asFunction<void Function(int)>();
 
   void wire_sum__method__SumWith(
     int port_,
@@ -4343,12 +3834,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_sum__method__SumWithPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SumWith>, ffi.Uint32,
-              ffi.Uint32)>>('wire_sum__method__SumWith');
-  late final _wire_sum__method__SumWith = _wire_sum__method__SumWithPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_SumWith>, int, int)>();
+  late final _wire_sum__method__SumWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SumWith>, ffi.Uint32, ffi.Uint32)>>(
+          'wire_sum__method__SumWith');
+  late final _wire_sum__method__SumWith =
+      _wire_sum__method__SumWithPtr.asFunction<void Function(int, ffi.Pointer<wire_SumWith>, int, int)>();
 
   void wire_new__static_method__ConcatenateWith(
     int port_,
@@ -4360,13 +3850,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_new__static_method__ConcatenateWithPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-      'wire_new__static_method__ConcatenateWith');
+  late final _wire_new__static_method__ConcatenateWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_new__static_method__ConcatenateWith');
   late final _wire_new__static_method__ConcatenateWith =
-      _wire_new__static_method__ConcatenateWithPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+      _wire_new__static_method__ConcatenateWithPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_concatenate__method__ConcatenateWith(
     int port_,
@@ -4381,14 +3869,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_concatenate__method__ConcatenateWithPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>,
-                  ffi.Pointer<wire_uint_8_list>)>>(
-      'wire_concatenate__method__ConcatenateWith');
-  late final _wire_concatenate__method__ConcatenateWith =
-      _wire_concatenate__method__ConcatenateWithPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_ConcatenateWith>,
-              ffi.Pointer<wire_uint_8_list>)>();
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_concatenate__method__ConcatenateWith');
+  late final _wire_concatenate__method__ConcatenateWith = _wire_concatenate__method__ConcatenateWithPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_ConcatenateWith>, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_concatenate_static__static_method__ConcatenateWith(
     int port_,
@@ -4402,16 +3887,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_concatenate_static__static_method__ConcatenateWithPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>,
-                      ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_concatenate_static__static_method__ConcatenateWith');
+  late final _wire_concatenate_static__static_method__ConcatenateWithPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_concatenate_static__static_method__ConcatenateWith');
   late final _wire_concatenate_static__static_method__ConcatenateWith =
-      _wire_concatenate_static__static_method__ConcatenateWithPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_uint_8_list>,
-              ffi.Pointer<wire_uint_8_list>)>();
+      _wire_concatenate_static__static_method__ConcatenateWithPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_some_stream_sink__method__ConcatenateWith(
     int port_,
@@ -4427,18 +3909,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_handle_some_stream_sink__method__ConcatenateWithPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(
-                      ffi.Int64,
-                      ffi.Pointer<wire_ConcatenateWith>,
-                      ffi.Uint32,
-                      ffi.Uint32)>>(
-          'wire_handle_some_stream_sink__method__ConcatenateWith');
+  late final _wire_handle_some_stream_sink__method__ConcatenateWithPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>, ffi.Uint32, ffi.Uint32)>>(
+      'wire_handle_some_stream_sink__method__ConcatenateWith');
   late final _wire_handle_some_stream_sink__method__ConcatenateWith =
-      _wire_handle_some_stream_sink__method__ConcatenateWithPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_ConcatenateWith>, int, int)>();
+      _wire_handle_some_stream_sink__method__ConcatenateWithPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_ConcatenateWith>, int, int)>();
 
   void wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
     int port_,
@@ -4451,10 +3927,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_handle_some_stream_sink_at_1__method__ConcatenateWithPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(
-                      ffi.Int64, ffi.Pointer<wire_ConcatenateWith>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>)>>(
           'wire_handle_some_stream_sink_at_1__method__ConcatenateWith');
   late final _wire_handle_some_stream_sink_at_1__method__ConcatenateWith =
       _wire_handle_some_stream_sink_at_1__method__ConcatenateWithPtr
@@ -4473,16 +3946,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_handle_some_static_stream_sink__static_method__ConcatenateWithPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
           'wire_handle_some_static_stream_sink__static_method__ConcatenateWith');
   late final _wire_handle_some_static_stream_sink__static_method__ConcatenateWith =
       _wire_handle_some_static_stream_sink__static_method__ConcatenateWithPtr
           .asFunction<void Function(int, int, int)>();
 
-  void
-      wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+  void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
     int port_,
   ) {
     return _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
@@ -4508,11 +3978,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_new__static_method__SomeStructPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
-          'wire_new__static_method__SomeStruct');
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_new__static_method__SomeStruct');
   late final _wire_new__static_method__SomeStruct =
-      _wire_new__static_method__SomeStructPtr
-          .asFunction<void Function(int, int)>();
+      _wire_new__static_method__SomeStructPtr.asFunction<void Function(int, int)>();
 
   void wire_static_return_err_custom_error__static_method__SomeStruct(
     int port_,
@@ -4526,8 +3994,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
           'wire_static_return_err_custom_error__static_method__SomeStruct');
   late final _wire_static_return_err_custom_error__static_method__SomeStruct =
-      _wire_static_return_err_custom_error__static_method__SomeStructPtr
-          .asFunction<void Function(int)>();
+      _wire_static_return_err_custom_error__static_method__SomeStructPtr.asFunction<void Function(int)>();
 
   void wire_static_return_ok_custom_error__static_method__SomeStruct(
     int port_,
@@ -4541,8 +4008,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
           'wire_static_return_ok_custom_error__static_method__SomeStruct');
   late final _wire_static_return_ok_custom_error__static_method__SomeStruct =
-      _wire_static_return_ok_custom_error__static_method__SomeStructPtr
-          .asFunction<void Function(int)>();
+      _wire_static_return_ok_custom_error__static_method__SomeStructPtr.asFunction<void Function(int)>();
 
   void wire_non_static_return_err_custom_error__method__SomeStruct(
     int port_,
@@ -4555,9 +4021,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_non_static_return_err_custom_error__method__SomeStructPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SomeStruct>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SomeStruct>)>>(
           'wire_non_static_return_err_custom_error__method__SomeStruct');
   late final _wire_non_static_return_err_custom_error__method__SomeStruct =
       _wire_non_static_return_err_custom_error__method__SomeStructPtr
@@ -4574,9 +4038,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_non_static_return_ok_custom_error__method__SomeStructPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SomeStruct>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SomeStruct>)>>(
           'wire_non_static_return_ok_custom_error__method__SomeStruct');
   late final _wire_non_static_return_ok_custom_error__method__SomeStruct =
       _wire_non_static_return_ok_custom_error__method__SomeStructPtr
@@ -4592,13 +4054,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _wire_new__static_method__CustomStructPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-      'wire_new__static_method__CustomStruct');
+  late final _wire_new__static_method__CustomStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_new__static_method__CustomStruct');
   late final _wire_new__static_method__CustomStruct =
-      _wire_new__static_method__CustomStructPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+      _wire_new__static_method__CustomStructPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_static_return_custom_struct_error__static_method__CustomStruct(
     int port_,
@@ -4612,8 +4072,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
           'wire_static_return_custom_struct_error__static_method__CustomStruct');
   late final _wire_static_return_custom_struct_error__static_method__CustomStruct =
-      _wire_static_return_custom_struct_error__static_method__CustomStructPtr
-          .asFunction<void Function(int)>();
+      _wire_static_return_custom_struct_error__static_method__CustomStructPtr.asFunction<void Function(int)>();
 
   void wire_static_return_custom_struct_ok__static_method__CustomStruct(
     int port_,
@@ -4627,8 +4086,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
           'wire_static_return_custom_struct_ok__static_method__CustomStruct');
   late final _wire_static_return_custom_struct_ok__static_method__CustomStruct =
-      _wire_static_return_custom_struct_ok__static_method__CustomStructPtr
-          .asFunction<void Function(int)>();
+      _wire_static_return_custom_struct_ok__static_method__CustomStructPtr.asFunction<void Function(int)>();
 
   void wire_nonstatic_return_custom_struct_error__method__CustomStruct(
     int port_,
@@ -4641,10 +4099,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_nonstatic_return_custom_struct_error__method__CustomStructPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(
-                      ffi.Int64, ffi.Pointer<wire_CustomStruct>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_CustomStruct>)>>(
           'wire_nonstatic_return_custom_struct_error__method__CustomStruct');
   late final _wire_nonstatic_return_custom_struct_error__method__CustomStruct =
       _wire_nonstatic_return_custom_struct_error__method__CustomStructPtr
@@ -4661,10 +4116,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _wire_nonstatic_return_custom_struct_ok__method__CustomStructPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(
-                      ffi.Int64, ffi.Pointer<wire_CustomStruct>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_CustomStruct>)>>(
           'wire_nonstatic_return_custom_struct_ok__method__CustomStruct');
   late final _wire_nonstatic_return_custom_struct_ok__method__CustomStruct =
       _wire_nonstatic_return_custom_struct_ok__method__CustomStructPtr
@@ -4678,43 +4130,37 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_StringList_0Ptr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>(
-      'new_StringList_0');
-  late final _new_StringList_0 = _new_StringList_0Ptr
-      .asFunction<ffi.Pointer<wire_StringList> Function(int)>();
+  late final _new_StringList_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList_0');
+  late final _new_StringList_0 = _new_StringList_0Ptr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
 
   ffi.Pointer<wire_ApplicationEnv> new_box_application_env_0() {
     return _new_box_application_env_0();
   }
 
   late final _new_box_application_env_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>(
-          'new_box_application_env_0');
-  late final _new_box_application_env_0 = _new_box_application_env_0Ptr
-      .asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>('new_box_application_env_0');
+  late final _new_box_application_env_0 =
+      _new_box_application_env_0Ptr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
 
-  ffi.Pointer<wire_ApplicationSettings>
-      new_box_autoadd_application_settings_0() {
+  ffi.Pointer<wire_ApplicationSettings> new_box_autoadd_application_settings_0() {
     return _new_box_autoadd_application_settings_0();
   }
 
-  late final _new_box_autoadd_application_settings_0Ptr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<wire_ApplicationSettings> Function()>>(
-      'new_box_autoadd_application_settings_0');
+  late final _new_box_autoadd_application_settings_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationSettings> Function()>>(
+          'new_box_autoadd_application_settings_0');
   late final _new_box_autoadd_application_settings_0 =
-      _new_box_autoadd_application_settings_0Ptr
-          .asFunction<ffi.Pointer<wire_ApplicationSettings> Function()>();
+      _new_box_autoadd_application_settings_0Ptr.asFunction<ffi.Pointer<wire_ApplicationSettings> Function()>();
 
   ffi.Pointer<wire_Attribute> new_box_autoadd_attribute_0() {
     return _new_box_autoadd_attribute_0();
   }
 
   late final _new_box_autoadd_attribute_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Attribute> Function()>>(
-          'new_box_autoadd_attribute_0');
-  late final _new_box_autoadd_attribute_0 = _new_box_autoadd_attribute_0Ptr
-      .asFunction<ffi.Pointer<wire_Attribute> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Attribute> Function()>>('new_box_autoadd_attribute_0');
+  late final _new_box_autoadd_attribute_0 =
+      _new_box_autoadd_attribute_0Ptr.asFunction<ffi.Pointer<wire_Attribute> Function()>();
 
   ffi.Pointer<ffi.Bool> new_box_autoadd_bool_0(
     bool value,
@@ -4725,53 +4171,44 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_autoadd_bool_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>(
-          'new_box_autoadd_bool_0');
-  late final _new_box_autoadd_bool_0 = _new_box_autoadd_bool_0Ptr
-      .asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_autoadd_bool_0');
+  late final _new_box_autoadd_bool_0 = _new_box_autoadd_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
 
   ffi.Pointer<wire_ConcatenateWith> new_box_autoadd_concatenate_with_0() {
     return _new_box_autoadd_concatenate_with_0();
   }
 
   late final _new_box_autoadd_concatenate_with_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ConcatenateWith> Function()>>(
-          'new_box_autoadd_concatenate_with_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ConcatenateWith> Function()>>('new_box_autoadd_concatenate_with_0');
   late final _new_box_autoadd_concatenate_with_0 =
-      _new_box_autoadd_concatenate_with_0Ptr
-          .asFunction<ffi.Pointer<wire_ConcatenateWith> Function()>();
+      _new_box_autoadd_concatenate_with_0Ptr.asFunction<ffi.Pointer<wire_ConcatenateWith> Function()>();
 
   ffi.Pointer<wire_CustomStruct> new_box_autoadd_custom_struct_0() {
     return _new_box_autoadd_custom_struct_0();
   }
 
   late final _new_box_autoadd_custom_struct_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_CustomStruct> Function()>>(
-          'new_box_autoadd_custom_struct_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_CustomStruct> Function()>>('new_box_autoadd_custom_struct_0');
   late final _new_box_autoadd_custom_struct_0 =
-      _new_box_autoadd_custom_struct_0Ptr
-          .asFunction<ffi.Pointer<wire_CustomStruct> Function()>();
+      _new_box_autoadd_custom_struct_0Ptr.asFunction<ffi.Pointer<wire_CustomStruct> Function()>();
 
   ffi.Pointer<wire_Customized> new_box_autoadd_customized_0() {
     return _new_box_autoadd_customized_0();
   }
 
   late final _new_box_autoadd_customized_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Customized> Function()>>(
-          'new_box_autoadd_customized_0');
-  late final _new_box_autoadd_customized_0 = _new_box_autoadd_customized_0Ptr
-      .asFunction<ffi.Pointer<wire_Customized> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Customized> Function()>>('new_box_autoadd_customized_0');
+  late final _new_box_autoadd_customized_0 =
+      _new_box_autoadd_customized_0Ptr.asFunction<ffi.Pointer<wire_Customized> Function()>();
 
   ffi.Pointer<wire_ExoticOptionals> new_box_autoadd_exotic_optionals_0() {
     return _new_box_autoadd_exotic_optionals_0();
   }
 
   late final _new_box_autoadd_exotic_optionals_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ExoticOptionals> Function()>>(
-          'new_box_autoadd_exotic_optionals_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ExoticOptionals> Function()>>('new_box_autoadd_exotic_optionals_0');
   late final _new_box_autoadd_exotic_optionals_0 =
-      _new_box_autoadd_exotic_optionals_0Ptr
-          .asFunction<ffi.Pointer<wire_ExoticOptionals> Function()>();
+      _new_box_autoadd_exotic_optionals_0Ptr.asFunction<ffi.Pointer<wire_ExoticOptionals> Function()>();
 
   ffi.Pointer<ffi.Double> new_box_autoadd_f64_0(
     double value,
@@ -4782,10 +4219,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_autoadd_f64_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>(
-          'new_box_autoadd_f64_0');
-  late final _new_box_autoadd_f64_0 = _new_box_autoadd_f64_0Ptr
-      .asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64_0');
+  late final _new_box_autoadd_f64_0 = _new_box_autoadd_f64_0Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
 
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32_0(
     int value,
@@ -4796,10 +4231,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_autoadd_i32_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>(
-          'new_box_autoadd_i32_0');
-  late final _new_box_autoadd_i32_0 = _new_box_autoadd_i32_0Ptr
-      .asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_autoadd_i32_0');
+  late final _new_box_autoadd_i32_0 = _new_box_autoadd_i32_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
   ffi.Pointer<ffi.Int64> new_box_autoadd_i64_0(
     int value,
@@ -4810,103 +4243,88 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_autoadd_i64_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>(
-          'new_box_autoadd_i64_0');
-  late final _new_box_autoadd_i64_0 = _new_box_autoadd_i64_0Ptr
-      .asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_autoadd_i64_0');
+  late final _new_box_autoadd_i64_0 = _new_box_autoadd_i64_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
   ffi.Pointer<wire_KitchenSink> new_box_autoadd_kitchen_sink_0() {
     return _new_box_autoadd_kitchen_sink_0();
   }
 
   late final _new_box_autoadd_kitchen_sink_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>(
-          'new_box_autoadd_kitchen_sink_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>('new_box_autoadd_kitchen_sink_0');
   late final _new_box_autoadd_kitchen_sink_0 =
-      _new_box_autoadd_kitchen_sink_0Ptr
-          .asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
+      _new_box_autoadd_kitchen_sink_0Ptr.asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
 
   ffi.Pointer<wire_MySize> new_box_autoadd_my_size_0() {
     return _new_box_autoadd_my_size_0();
   }
 
   late final _new_box_autoadd_my_size_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MySize> Function()>>(
-          'new_box_autoadd_my_size_0');
-  late final _new_box_autoadd_my_size_0 = _new_box_autoadd_my_size_0Ptr
-      .asFunction<ffi.Pointer<wire_MySize> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MySize> Function()>>('new_box_autoadd_my_size_0');
+  late final _new_box_autoadd_my_size_0 =
+      _new_box_autoadd_my_size_0Ptr.asFunction<ffi.Pointer<wire_MySize> Function()>();
 
   ffi.Pointer<wire_MyStruct> new_box_autoadd_my_struct_0() {
     return _new_box_autoadd_my_struct_0();
   }
 
   late final _new_box_autoadd_my_struct_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyStruct> Function()>>(
-          'new_box_autoadd_my_struct_0');
-  late final _new_box_autoadd_my_struct_0 = _new_box_autoadd_my_struct_0Ptr
-      .asFunction<ffi.Pointer<wire_MyStruct> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyStruct> Function()>>('new_box_autoadd_my_struct_0');
+  late final _new_box_autoadd_my_struct_0 =
+      _new_box_autoadd_my_struct_0Ptr.asFunction<ffi.Pointer<wire_MyStruct> Function()>();
 
   ffi.Pointer<wire_MyTreeNode> new_box_autoadd_my_tree_node_0() {
     return _new_box_autoadd_my_tree_node_0();
   }
 
   late final _new_box_autoadd_my_tree_node_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyTreeNode> Function()>>(
-          'new_box_autoadd_my_tree_node_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyTreeNode> Function()>>('new_box_autoadd_my_tree_node_0');
   late final _new_box_autoadd_my_tree_node_0 =
-      _new_box_autoadd_my_tree_node_0Ptr
-          .asFunction<ffi.Pointer<wire_MyTreeNode> Function()>();
+      _new_box_autoadd_my_tree_node_0Ptr.asFunction<ffi.Pointer<wire_MyTreeNode> Function()>();
 
   ffi.Pointer<wire_NewTypeInt> new_box_autoadd_new_type_int_0() {
     return _new_box_autoadd_new_type_int_0();
   }
 
   late final _new_box_autoadd_new_type_int_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_NewTypeInt> Function()>>(
-          'new_box_autoadd_new_type_int_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_NewTypeInt> Function()>>('new_box_autoadd_new_type_int_0');
   late final _new_box_autoadd_new_type_int_0 =
-      _new_box_autoadd_new_type_int_0Ptr
-          .asFunction<ffi.Pointer<wire_NewTypeInt> Function()>();
+      _new_box_autoadd_new_type_int_0Ptr.asFunction<ffi.Pointer<wire_NewTypeInt> Function()>();
 
   ffi.Pointer<wire_Note> new_box_autoadd_note_0() {
     return _new_box_autoadd_note_0();
   }
 
   late final _new_box_autoadd_note_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Note> Function()>>(
-          'new_box_autoadd_note_0');
-  late final _new_box_autoadd_note_0 = _new_box_autoadd_note_0Ptr
-      .asFunction<ffi.Pointer<wire_Note> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Note> Function()>>('new_box_autoadd_note_0');
+  late final _new_box_autoadd_note_0 = _new_box_autoadd_note_0Ptr.asFunction<ffi.Pointer<wire_Note> Function()>();
 
   ffi.Pointer<wire_SomeStruct> new_box_autoadd_some_struct_0() {
     return _new_box_autoadd_some_struct_0();
   }
 
   late final _new_box_autoadd_some_struct_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SomeStruct> Function()>>(
-          'new_box_autoadd_some_struct_0');
-  late final _new_box_autoadd_some_struct_0 = _new_box_autoadd_some_struct_0Ptr
-      .asFunction<ffi.Pointer<wire_SomeStruct> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SomeStruct> Function()>>('new_box_autoadd_some_struct_0');
+  late final _new_box_autoadd_some_struct_0 =
+      _new_box_autoadd_some_struct_0Ptr.asFunction<ffi.Pointer<wire_SomeStruct> Function()>();
 
   ffi.Pointer<wire_SumWith> new_box_autoadd_sum_with_0() {
     return _new_box_autoadd_sum_with_0();
   }
 
   late final _new_box_autoadd_sum_with_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SumWith> Function()>>(
-          'new_box_autoadd_sum_with_0');
-  late final _new_box_autoadd_sum_with_0 = _new_box_autoadd_sum_with_0Ptr
-      .asFunction<ffi.Pointer<wire_SumWith> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SumWith> Function()>>('new_box_autoadd_sum_with_0');
+  late final _new_box_autoadd_sum_with_0 =
+      _new_box_autoadd_sum_with_0Ptr.asFunction<ffi.Pointer<wire_SumWith> Function()>();
 
   ffi.Pointer<wire_UserId> new_box_autoadd_user_id_0() {
     return _new_box_autoadd_user_id_0();
   }
 
   late final _new_box_autoadd_user_id_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_UserId> Function()>>(
-          'new_box_autoadd_user_id_0');
-  late final _new_box_autoadd_user_id_0 = _new_box_autoadd_user_id_0Ptr
-      .asFunction<ffi.Pointer<wire_UserId> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_UserId> Function()>>('new_box_autoadd_user_id_0');
+  late final _new_box_autoadd_user_id_0 =
+      _new_box_autoadd_user_id_0Ptr.asFunction<ffi.Pointer<wire_UserId> Function()>();
 
   ffi.Pointer<ffi.Bool> new_box_bool_0(
     bool value,
@@ -4917,20 +4335,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_bool_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>(
-          'new_box_bool_0');
-  late final _new_box_bool_0 =
-      _new_box_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_bool_0');
+  late final _new_box_bool_0 = _new_box_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
 
   ffi.Pointer<wire_ExoticOptionals> new_box_exotic_optionals_0() {
     return _new_box_exotic_optionals_0();
   }
 
   late final _new_box_exotic_optionals_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ExoticOptionals> Function()>>(
-          'new_box_exotic_optionals_0');
-  late final _new_box_exotic_optionals_0 = _new_box_exotic_optionals_0Ptr
-      .asFunction<ffi.Pointer<wire_ExoticOptionals> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ExoticOptionals> Function()>>('new_box_exotic_optionals_0');
+  late final _new_box_exotic_optionals_0 =
+      _new_box_exotic_optionals_0Ptr.asFunction<ffi.Pointer<wire_ExoticOptionals> Function()>();
 
   ffi.Pointer<ffi.Double> new_box_f64_0(
     double value,
@@ -4941,10 +4356,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_f64_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>(
-          'new_box_f64_0');
-  late final _new_box_f64_0 =
-      _new_box_f64_0Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_f64_0');
+  late final _new_box_f64_0 = _new_box_f64_0Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
 
   ffi.Pointer<ffi.Int32> new_box_i32_0(
     int value,
@@ -4955,10 +4368,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_i32_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>(
-          'new_box_i32_0');
-  late final _new_box_i32_0 =
-      _new_box_i32_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_i32_0');
+  late final _new_box_i32_0 = _new_box_i32_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
   ffi.Pointer<ffi.Int64> new_box_i64_0(
     int value,
@@ -4969,10 +4380,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_i64_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>(
-          'new_box_i64_0');
-  late final _new_box_i64_0 =
-      _new_box_i64_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_i64_0');
+  late final _new_box_i64_0 = _new_box_i64_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
   ffi.Pointer<ffi.Int8> new_box_i8_0(
     int value,
@@ -4982,31 +4391,25 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_box_i8_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int8)>>(
-          'new_box_i8_0');
-  late final _new_box_i8_0 =
-      _new_box_i8_0Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+  late final _new_box_i8_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int8)>>('new_box_i8_0');
+  late final _new_box_i8_0 = _new_box_i8_0Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
   ffi.Pointer<wire_KitchenSink> new_box_kitchen_sink_0() {
     return _new_box_kitchen_sink_0();
   }
 
   late final _new_box_kitchen_sink_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>(
-          'new_box_kitchen_sink_0');
-  late final _new_box_kitchen_sink_0 = _new_box_kitchen_sink_0Ptr
-      .asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>('new_box_kitchen_sink_0');
+  late final _new_box_kitchen_sink_0 =
+      _new_box_kitchen_sink_0Ptr.asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
 
   ffi.Pointer<wire_MySize> new_box_my_size_0() {
     return _new_box_my_size_0();
   }
 
   late final _new_box_my_size_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MySize> Function()>>(
-          'new_box_my_size_0');
-  late final _new_box_my_size_0 =
-      _new_box_my_size_0Ptr.asFunction<ffi.Pointer<wire_MySize> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MySize> Function()>>('new_box_my_size_0');
+  late final _new_box_my_size_0 = _new_box_my_size_0Ptr.asFunction<ffi.Pointer<wire_MySize> Function()>();
 
   ffi.Pointer<ffi.Uint8> new_box_u8_0(
     int value,
@@ -5016,11 +4419,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_box_u8_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>(
-          'new_box_u8_0');
-  late final _new_box_u8_0 =
-      _new_box_u8_0Ptr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
+  late final _new_box_u8_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>('new_box_u8_0');
+  late final _new_box_u8_0 = _new_box_u8_0Ptr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
 
   ffi.Pointer<ffi.Int32> new_box_weekdays_0(
     int value,
@@ -5031,10 +4431,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _new_box_weekdays_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>(
-          'new_box_weekdays_0');
-  late final _new_box_weekdays_0 =
-      _new_box_weekdays_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_weekdays_0');
+  late final _new_box_weekdays_0 = _new_box_weekdays_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
   ffi.Pointer<wire_float_32_list> new_float_32_list_0(
     int len,
@@ -5044,12 +4442,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_float_32_list_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_float_32_list> Function(
-              ffi.Int32)>>('new_float_32_list_0');
-  late final _new_float_32_list_0 = _new_float_32_list_0Ptr
-      .asFunction<ffi.Pointer<wire_float_32_list> Function(int)>();
+  late final _new_float_32_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list_0');
+  late final _new_float_32_list_0 = _new_float_32_list_0Ptr.asFunction<ffi.Pointer<wire_float_32_list> Function(int)>();
 
   ffi.Pointer<wire_float_64_list> new_float_64_list_0(
     int len,
@@ -5059,12 +4454,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_float_64_list_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_float_64_list> Function(
-              ffi.Int32)>>('new_float_64_list_0');
-  late final _new_float_64_list_0 = _new_float_64_list_0Ptr
-      .asFunction<ffi.Pointer<wire_float_64_list> Function(int)>();
+  late final _new_float_64_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_64_list> Function(ffi.Int32)>>('new_float_64_list_0');
+  late final _new_float_64_list_0 = _new_float_64_list_0Ptr.asFunction<ffi.Pointer<wire_float_64_list> Function(int)>();
 
   ffi.Pointer<wire_int_32_list> new_int_32_list_0(
     int len,
@@ -5074,12 +4466,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_int_32_list_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_int_32_list> Function(
-              ffi.Int32)>>('new_int_32_list_0');
-  late final _new_int_32_list_0 = _new_int_32_list_0Ptr
-      .asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
+  late final _new_int_32_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list_0');
+  late final _new_int_32_list_0 = _new_int_32_list_0Ptr.asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
 
   ffi.Pointer<wire_int_64_list> new_int_64_list_0(
     int len,
@@ -5089,12 +4478,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_int_64_list_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_int_64_list> Function(
-              ffi.Int32)>>('new_int_64_list_0');
-  late final _new_int_64_list_0 = _new_int_64_list_0Ptr
-      .asFunction<ffi.Pointer<wire_int_64_list> Function(int)>();
+  late final _new_int_64_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_64_list> Function(ffi.Int32)>>('new_int_64_list_0');
+  late final _new_int_64_list_0 = _new_int_64_list_0Ptr.asFunction<ffi.Pointer<wire_int_64_list> Function(int)>();
 
   ffi.Pointer<wire_int_8_list> new_int_8_list_0(
     int len,
@@ -5104,11 +4490,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_int_8_list_0Ptr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<wire_int_8_list> Function(ffi.Int32)>>(
-      'new_int_8_list_0');
-  late final _new_int_8_list_0 = _new_int_8_list_0Ptr
-      .asFunction<ffi.Pointer<wire_int_8_list> Function(int)>();
+  late final _new_int_8_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list_0');
+  late final _new_int_8_list_0 = _new_int_8_list_0Ptr.asFunction<ffi.Pointer<wire_int_8_list> Function(int)>();
 
   ffi.Pointer<wire_list_application_env_var> new_list_application_env_var_0(
     int len,
@@ -5118,13 +4502,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_list_application_env_var_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_list_application_env_var> Function(
-              ffi.Int32)>>('new_list_application_env_var_0');
+  late final _new_list_application_env_var_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_application_env_var> Function(ffi.Int32)>>(
+          'new_list_application_env_var_0');
   late final _new_list_application_env_var_0 =
-      _new_list_application_env_var_0Ptr.asFunction<
-          ffi.Pointer<wire_list_application_env_var> Function(int)>();
+      _new_list_application_env_var_0Ptr.asFunction<ffi.Pointer<wire_list_application_env_var> Function(int)>();
 
   ffi.Pointer<wire_list_attribute> new_list_attribute_0(
     int len,
@@ -5134,12 +4516,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_list_attribute_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_list_attribute> Function(
-              ffi.Int32)>>('new_list_attribute_0');
-  late final _new_list_attribute_0 = _new_list_attribute_0Ptr
-      .asFunction<ffi.Pointer<wire_list_attribute> Function(int)>();
+  late final _new_list_attribute_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_attribute> Function(ffi.Int32)>>('new_list_attribute_0');
+  late final _new_list_attribute_0 =
+      _new_list_attribute_0Ptr.asFunction<ffi.Pointer<wire_list_attribute> Function(int)>();
 
   ffi.Pointer<wire_list_my_size> new_list_my_size_0(
     int len,
@@ -5149,12 +4529,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_list_my_size_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_list_my_size> Function(
-              ffi.Int32)>>('new_list_my_size_0');
-  late final _new_list_my_size_0 = _new_list_my_size_0Ptr
-      .asFunction<ffi.Pointer<wire_list_my_size> Function(int)>();
+  late final _new_list_my_size_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_my_size> Function(ffi.Int32)>>('new_list_my_size_0');
+  late final _new_list_my_size_0 = _new_list_my_size_0Ptr.asFunction<ffi.Pointer<wire_list_my_size> Function(int)>();
 
   ffi.Pointer<wire_list_my_tree_node> new_list_my_tree_node_0(
     int len,
@@ -5164,15 +4541,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_list_my_tree_node_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_list_my_tree_node> Function(
-              ffi.Int32)>>('new_list_my_tree_node_0');
-  late final _new_list_my_tree_node_0 = _new_list_my_tree_node_0Ptr
-      .asFunction<ffi.Pointer<wire_list_my_tree_node> Function(int)>();
+  late final _new_list_my_tree_node_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_my_tree_node> Function(ffi.Int32)>>('new_list_my_tree_node_0');
+  late final _new_list_my_tree_node_0 =
+      _new_list_my_tree_node_0Ptr.asFunction<ffi.Pointer<wire_list_my_tree_node> Function(int)>();
 
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute>
-      new_list_opt_box_autoadd_attribute_0(
+  ffi.Pointer<wire_list_opt_box_autoadd_attribute> new_list_opt_box_autoadd_attribute_0(
     int len,
   ) {
     return _new_list_opt_box_autoadd_attribute_0(
@@ -5180,13 +4554,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_list_opt_box_autoadd_attribute_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(
-              ffi.Int32)>>('new_list_opt_box_autoadd_attribute_0');
-  late final _new_list_opt_box_autoadd_attribute_0 =
-      _new_list_opt_box_autoadd_attribute_0Ptr.asFunction<
-          ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(int)>();
+  late final _new_list_opt_box_autoadd_attribute_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(ffi.Int32)>>(
+          'new_list_opt_box_autoadd_attribute_0');
+  late final _new_list_opt_box_autoadd_attribute_0 = _new_list_opt_box_autoadd_attribute_0Ptr
+      .asFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(int)>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
     int len,
@@ -5196,63 +4568,54 @@ class FlutterRustBridgeExampleSingleBlockTestWire
     );
   }
 
-  late final _new_uint_8_list_0Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_uint_8_list> Function(
-              ffi.Int32)>>('new_uint_8_list_0');
-  late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr
-      .asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+  late final _new_uint_8_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
+  late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
   ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Primitives() {
     return _inflate_KitchenSink_Primitives();
   }
 
   late final _inflate_KitchenSink_PrimitivesPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
-          'inflate_KitchenSink_Primitives');
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Primitives');
   late final _inflate_KitchenSink_Primitives =
-      _inflate_KitchenSink_PrimitivesPtr
-          .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+      _inflate_KitchenSink_PrimitivesPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
 
   ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Nested() {
     return _inflate_KitchenSink_Nested();
   }
 
   late final _inflate_KitchenSink_NestedPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
-          'inflate_KitchenSink_Nested');
-  late final _inflate_KitchenSink_Nested = _inflate_KitchenSink_NestedPtr
-      .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Nested');
+  late final _inflate_KitchenSink_Nested =
+      _inflate_KitchenSink_NestedPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
 
   ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Optional() {
     return _inflate_KitchenSink_Optional();
   }
 
   late final _inflate_KitchenSink_OptionalPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
-          'inflate_KitchenSink_Optional');
-  late final _inflate_KitchenSink_Optional = _inflate_KitchenSink_OptionalPtr
-      .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Optional');
+  late final _inflate_KitchenSink_Optional =
+      _inflate_KitchenSink_OptionalPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
 
   ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Buffer() {
     return _inflate_KitchenSink_Buffer();
   }
 
   late final _inflate_KitchenSink_BufferPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
-          'inflate_KitchenSink_Buffer');
-  late final _inflate_KitchenSink_Buffer = _inflate_KitchenSink_BufferPtr
-      .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Buffer');
+  late final _inflate_KitchenSink_Buffer =
+      _inflate_KitchenSink_BufferPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
 
   ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Enums() {
     return _inflate_KitchenSink_Enums();
   }
 
   late final _inflate_KitchenSink_EnumsPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
-          'inflate_KitchenSink_Enums');
-  late final _inflate_KitchenSink_Enums = _inflate_KitchenSink_EnumsPtr
-      .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Enums');
+  late final _inflate_KitchenSink_Enums =
+      _inflate_KitchenSink_EnumsPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
@@ -5263,10 +4626,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _free_WireSyncReturnStructPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>(
-          'free_WireSyncReturnStruct');
-  late final _free_WireSyncReturnStruct = _free_WireSyncReturnStructPtr
-      .asFunction<void Function(WireSyncReturnStruct)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
+  late final _free_WireSyncReturnStruct =
+      _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
@@ -5277,10 +4639,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   }
 
   late final _store_dart_post_cobjectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>(
-          'store_dart_post_cobject');
-  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
-      .asFunction<void Function(DartPostCObjectFnType)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
+  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 }
 
 class wire_uint_8_list extends ffi.Struct {
@@ -5549,6 +4909,5 @@ class wire_CustomStruct extends ffi.Struct {
 }
 
 typedef uintptr_t = ffi.UnsignedLong;
-typedef DartPostCObjectFnType = ffi.Pointer<
-    ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
+typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
