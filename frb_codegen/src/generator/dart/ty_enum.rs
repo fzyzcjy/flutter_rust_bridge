@@ -72,21 +72,24 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     IrVariantKind::Value => "".to_owned(),
                     IrVariantKind::Struct(st) => {
                         let mut st = st
-                        .fields
-                        .iter()
-                        .enumerate()
-                        .map(|(idx, field)| {
-                            let val =
-                                format!("_wire2api_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
-                            if st.is_fields_named {
-                                format!("{}: {}", field.name.dart_style(), val)
-                            } else {
-                                val
-                            }
-                        })
-                        .collect::<Vec<_>>();
-                        if self.ir.is_exception{
-                            st.push(format!("raw[{}]", st.len()+1));
+                            .fields
+                            .iter()
+                            .enumerate()
+                            .map(|(idx, field)| {
+                                let val = format!(
+                                    "_wire2api_{}(raw[{}]),",
+                                    field.ty.safe_ident(),
+                                    idx + 1
+                                );
+                                if st.is_fields_named {
+                                    format!("{}: {}", field.name.dart_style(), val)
+                                } else {
+                                    val
+                                }
+                            })
+                            .collect::<Vec<_>>();
+                        if self.ir.is_exception {
+                            st.push(format!("raw[{}]", st.len() + 1));
                         }
                         st.join("")
                     }
@@ -184,7 +187,11 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         dart_comments(&variant.comments),
                         self.ir.name,
                         variant.name.dart_style(),
-                        if self.ir.is_exception {format!("{} Backtrace? backtrace", args)} else {args},
+                        if self.ir.is_exception {
+                            format!("{} Backtrace? backtrace", args)
+                        } else {
+                            args
+                        },
                         variant.name.rust_style(),
                     )
                 })

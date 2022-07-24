@@ -472,15 +472,15 @@ void main(List<String> args) async {
 
   test('Throw CustomNestedError1', () async {
     expect(() async => await api.returnCustomNestedError1(),
-        throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3))));
+        throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3), null)));
   });
 
   test('Throw CustomError variant 0', () async {
-    expect(() async => await api.returnErrorVariant(variant: 0), throwsA(CustomError.error0("variant0")));
+    expect(() async => await api.returnErrorVariant(variant: 0), throwsA(CustomError.error0("variant0", null)));
   });
 
   test('Throw CustomError variant 1', () async {
-    expect(() async => await api.returnErrorVariant(variant: 1), throwsA(CustomError.error1(1)));
+    expect(() async => await api.returnErrorVariant(variant: 1), throwsA(CustomError.error1(1, null)));
   });
 
   test('Do not throw CustomError', () async {
@@ -488,7 +488,7 @@ void main(List<String> args) async {
   });
 
   test('Throw CustomError static method', () async {
-    expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(CustomError.error1(3)));
+    expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(CustomError.error1(3, null)));
   });
 
   test('Do not throw CustomError static method', () async {
@@ -501,7 +501,7 @@ void main(List<String> args) async {
 
   test('Throw CustomError nonstatic method', () async {
     expect(() async => await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError(),
-        throwsA(CustomError.error1(7)));
+        throwsA(CustomError.error1(7, null)));
   });
 
   test('Do not throw CustomError nonstatic method', () async {

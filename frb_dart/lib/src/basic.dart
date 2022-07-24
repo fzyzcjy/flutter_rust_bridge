@@ -184,25 +184,7 @@ class Backtrace {
   String toString() => backtrace;
 }
 
-class FrbException implements Exception {
-  /*
-  Backtrace? backtrace;
-
-  FrbException();
-  //FrbException({required this.backtrace});
-
-  void setBacktrace(Backtrace backtrace) {
-    this.backtrace = backtrace;
-  }
-
-  Backtrace? getBacktrace() {
-    return backtrace;
-  }
-
-  @override
-  String toString() => 'FrbException(backtrace: $backtrace)';
-  */
-}
+class FrbException implements Exception {}
 
 abstract class FrbBacktracedException {
   Backtrace? get backtrace;
