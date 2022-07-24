@@ -89,25 +89,12 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             })
                             .collect::<Vec<_>>();
                         if self.ir.is_exception {
-                            st.push(format!("raw[3]"));
+                            st.push(format!("raw['backtrace']"));
                         }
                         st.join("")
                     }
                 };
-                let backtrace = if self.ir.is_exception {
-                    "if (raw[1] != null) {{
-                        //Backtrace backtrace = Backtrace(raw[1] as String);
-                        //e.setBacktrace(backtrace);
-                  }}"
-                } else {
-                    ""
-                };
-                format!(
-                    "case {}: final e = {}({}); 
-                    {}
-                  return e;",
-                    idx, variant.name, args, backtrace
-                )
+                format!("case {}: return {}({});", idx, variant.name, args)
             })
             .collect::<Vec<_>>();
         format!(
