@@ -40,15 +40,21 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
         let has_methods = methods.next().is_some();
+        let access = if self.is_exception {
+            "arr['dart_object']"
+        } else {
+            "arr"
+        };
         let mut inner = s
             .fields
             .iter()
             .enumerate()
             .map(|(idx, field)| {
                 format!(
-                    "{}: _wire2api_{}(arr[{}]),",
+                    "{}: _wire2api_{}({}[{}]),",
                     field.name.dart_style(),
                     field.ty.safe_ident(),
+                    access,
                     idx
                 )
             })
@@ -57,11 +63,16 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             inner.insert(0, "bridge: bridge,".to_string());
         }
         let inner = inner.join("\n");
-
+        let cast = if self.is_exception {
+            format!("final arr = raw as Map<String, dynamic>;")
+        } else {
+            format!("final arr = raw as List<dynamic>;")
+        };
         format!(
-            "final arr = raw as List<dynamic>;
-                if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');
+            "{}
+                //if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');
                 return {}({});",
+            cast,
             s.fields.len(),
             s.fields.len(),
             s.name, inner,
