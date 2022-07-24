@@ -77,7 +77,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             .enumerate()
                             .map(|(idx, field)| {
                                 let val = format!(
-                                    "_wire2api_{}(raw[{}]),",
+                                    "_wire2api_{}(raw[0][{}]),",
                                     field.ty.safe_ident(),
                                     idx + 1
                                 );
@@ -89,7 +89,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             })
                             .collect::<Vec<_>>();
                         if self.ir.is_exception {
-                            st.push(format!("raw[{}]", st.len() + 1));
+                            st.push(format!("raw[3]"));
                         }
                         st.join("")
                     }
@@ -112,7 +112,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             .collect::<Vec<_>>();
         println!("variants: {:?}", variants);
         format!(
-            "switch (raw[0]) {{
+            "print(\"raw is \"+raw.toString());switch (raw[0][0]) {{
                 {}
                 default: throw Exception(\"unreachable\");
             }}",

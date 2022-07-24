@@ -2493,17 +2493,18 @@ ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
 }
 
 ApplicationMessage _wire2api_application_message(dynamic raw) {
-  switch (raw[0]) {
+  print("raw is " + raw.toString());
+  switch (raw[0][0]) {
     case 0:
       final e = DisplayMessage(
-        _wire2api_String(raw[1]),
+        _wire2api_String(raw[0][1]),
       );
 
       return e;
     case 1:
       final e = RenderPixel(
-        x: _wire2api_i32(raw[1]),
-        y: _wire2api_i32(raw[2]),
+        x: _wire2api_i32(raw[0][1]),
+        y: _wire2api_i32(raw[0][2]),
       );
 
       return e;
@@ -2598,9 +2599,10 @@ ConcatenateWith _wire2api_concatenate_with(FlutterRustBridgeExampleSingleBlockTe
 }
 
 CustomError _wire2api_custom_error(dynamic raw) {
-  switch (raw[0]) {
+  print("raw is " + raw.toString());
+  switch (raw[0][0]) {
     case 0:
-      final e = Error0(_wire2api_String(raw[1]), raw[2]);
+      final e = Error0(_wire2api_String(raw[0][1]), raw[3]);
       if (raw[1] != null) {
         {
           //Backtrace backtrace = Backtrace(raw[1] as String);
@@ -2609,7 +2611,7 @@ CustomError _wire2api_custom_error(dynamic raw) {
       }
       return e;
     case 1:
-      final e = Error1(_wire2api_u32(raw[1]), raw[2]);
+      final e = Error1(_wire2api_u32(raw[0][1]), raw[3]);
       if (raw[1] != null) {
         {
           //Backtrace backtrace = Backtrace(raw[1] as String);
@@ -2623,9 +2625,10 @@ CustomError _wire2api_custom_error(dynamic raw) {
 }
 
 CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
-  switch (raw[0]) {
+  print("raw is " + raw.toString());
+  switch (raw[0][0]) {
     case 0:
-      final e = CustomNested1(_wire2api_String(raw[1]), raw[2]);
+      final e = CustomNested1(_wire2api_String(raw[0][1]), raw[3]);
       if (raw[1] != null) {
         {
           //Backtrace backtrace = Backtrace(raw[1] as String);
@@ -2634,7 +2637,7 @@ CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
       }
       return e;
     case 1:
-      final e = ErrorNested(_wire2api_box_autoadd_custom_nested_error_2(raw[1]), raw[2]);
+      final e = ErrorNested(_wire2api_box_autoadd_custom_nested_error_2(raw[0][1]), raw[3]);
       if (raw[1] != null) {
         {
           //Backtrace backtrace = Backtrace(raw[1] as String);
@@ -2648,16 +2651,17 @@ CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
 }
 
 CustomNestedError2 _wire2api_custom_nested_error_2(dynamic raw) {
-  switch (raw[0]) {
+  print("raw is " + raw.toString());
+  switch (raw[0][0]) {
     case 0:
       final e = CustomNested2(
-        _wire2api_String(raw[1]),
+        _wire2api_String(raw[0][1]),
       );
 
       return e;
     case 1:
       final e = CustomNested2Number(
-        _wire2api_u32(raw[1]),
+        _wire2api_u32(raw[0][1]),
       );
 
       return e;
@@ -2774,42 +2778,43 @@ Int8List _wire2api_int_8_list(dynamic raw) {
 }
 
 KitchenSink _wire2api_kitchen_sink(dynamic raw) {
-  switch (raw[0]) {
+  print("raw is " + raw.toString());
+  switch (raw[0][0]) {
     case 0:
       final e = Empty();
 
       return e;
     case 1:
       final e = Primitives(
-        int32: _wire2api_i32(raw[1]),
-        float64: _wire2api_f64(raw[2]),
-        boolean: _wire2api_bool(raw[3]),
+        int32: _wire2api_i32(raw[0][1]),
+        float64: _wire2api_f64(raw[0][2]),
+        boolean: _wire2api_bool(raw[0][3]),
       );
 
       return e;
     case 2:
       final e = Nested(
-        _wire2api_box_kitchen_sink(raw[1]),
-        _wire2api_i32(raw[2]),
+        _wire2api_box_kitchen_sink(raw[0][1]),
+        _wire2api_i32(raw[0][2]),
       );
 
       return e;
     case 3:
       final e = Optional(
-        _wire2api_opt_box_autoadd_i32(raw[1]),
-        _wire2api_opt_box_autoadd_i32(raw[2]),
+        _wire2api_opt_box_autoadd_i32(raw[0][1]),
+        _wire2api_opt_box_autoadd_i32(raw[0][2]),
       );
 
       return e;
     case 4:
       final e = Buffer(
-        _wire2api_ZeroCopyBuffer_Uint8List(raw[1]),
+        _wire2api_ZeroCopyBuffer_Uint8List(raw[0][1]),
       );
 
       return e;
     case 5:
       final e = Enums(
-        _wire2api_weekdays(raw[1]),
+        _wire2api_weekdays(raw[0][1]),
       );
 
       return e;
