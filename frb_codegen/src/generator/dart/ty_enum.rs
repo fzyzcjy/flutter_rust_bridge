@@ -110,10 +110,8 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 )
             })
             .collect::<Vec<_>>();
-        println!("variants: {:?}", variants);
         format!(
-            "print(\"raw is: \" + raw.toString());
-            final access = raw is Map?raw['dart_object']:raw;
+            "final access = raw is Map?raw['dart_object']:raw;
             switch (access[0]) {{
                 {}
                 default: throw Exception(\"unreachable\");

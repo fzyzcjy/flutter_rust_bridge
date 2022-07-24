@@ -92,7 +92,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
       case _RUST2DART_ACTION_ERROR:
         assert(raw.length == 5);
         if (parseErrorData != null) {
-          print("switching raw: " + raw.toString());
           throw parseErrorData(
               {'dart_object': raw[3], 'raw2': raw[2], 'backtrace': raw[4]});
         }
