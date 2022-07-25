@@ -14,7 +14,7 @@
     - [Enum](feature/lang_enum.md)
     - [External types](feature/lang_external.md)
     - [Option](feature/lang_option.md)
-    - [Methods](feature/methods.md)
+    - [Methods](feature/lang_methods.md)
     - [Result](feature/lang_result.md)
     - [Return types](feature/lang_return_types.md)
   - [Zero copy](feature/zero_copy.md)
