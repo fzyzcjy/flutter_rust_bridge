@@ -19,7 +19,6 @@ pub fn return_err_custom_error() -> Result<u32, CustomError> {
 Becomes something that can be used like this:
 
 ```Dart
-
 try {
       final r = await api.returnErrCustomError();
       print("received $r");
