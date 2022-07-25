@@ -15,7 +15,7 @@
     - [External types](feature/lang_external.md)
     - [Option](feature/lang_option.md)
     - [Methods](feature/methods.md)
-    - [Result](feature/feature_result.md)
+    - [Result](feature/lang_result.md)
     - [Return types](feature/lang_return_types.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)
