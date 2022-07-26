@@ -243,10 +243,10 @@ fn generate_dart_implementation_body(
 
             // Section: api_fill_to_wire
             {}
-        }}
 
-        // Section: wire2api
-        {}
+            // Section: wire2api
+            {}
+        }}
         ",
         dart_funcs
             .iter()
