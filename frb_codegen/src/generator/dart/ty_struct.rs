@@ -54,7 +54,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             })
             .collect::<Vec<_>>();
         if has_methods {
-            inner.insert(0, "bridge: bridge,".to_string());
+            inner.insert(0, "bridge: this,".to_string());
         }
         let inner = inner.join("\n");
 
