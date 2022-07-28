@@ -254,15 +254,21 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
+    // what is the correct way to differentiate a Dart project from a Flutter project ?
+    // or is it better to let the user specify it, let's say with an env var ?
+    let is_dart = true; // FIXME: determine whether it's a Dart or Flutter project
+    let cmd = if is_dart { "dart run build_runner build" } else { "flutter pub run build_runner build" };
     let out = if cfg!(windows) {
         call_shell(&format!(
-            "cd \"{}\"; dart run build_runner build --delete-conflicting-outputs",
-            dart_root
+            "cd \"{}\"; {} --delete-conflicting-outputs",
+            dart_root,
+            cmd
         ))
     } else {
         call_shell(&format!(
-            "cd \"{}\" && dart run build_runner build --delete-conflicting-outputs",
-            dart_root
+            "cd \"{}\" && {} --delete-conflicting-outputs",
+            dart_root,
+            cmd
         ))
     };
     if !out.status.success() {
