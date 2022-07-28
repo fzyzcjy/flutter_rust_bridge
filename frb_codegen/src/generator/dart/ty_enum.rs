@@ -70,21 +70,29 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             .map(|(idx, variant)| {
                 let args = match &variant.kind {
                     IrVariantKind::Value => "".to_owned(),
-                    IrVariantKind::Struct(st) => st
-                        .fields
-                        .iter()
-                        .enumerate()
-                        .map(|(idx, field)| {
-                            let val =
-                                format!("_wire2api_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
-                            if st.is_fields_named {
-                                format!("{}: {}", field.name.dart_style(), val)
-                            } else {
-                                val
-                            }
-                        })
-                        .collect::<Vec<_>>()
-                        .join(""),
+                    IrVariantKind::Struct(st) => {
+                        let st = st
+                            .fields
+                            .iter()
+                            .enumerate()
+                            .map(|(idx, field)| {
+                                let val = format!(
+                                    "_wire2api_{}(raw[{}]),",
+                                    field.ty.safe_ident(),
+                                    idx + 1
+                                );
+                                if st.is_fields_named {
+                                    format!("{}: {}", field.name.dart_style(), val)
+                                } else {
+                                    val
+                                }
+                            })
+                            .collect::<Vec<_>>();
+                        if self.ir.is_exception {
+                            //st.push("raw['backtrace']".to_string());
+                        }
+                        st.join("")
+                    }
                 };
                 format!("case {}: return {}({});", idx, variant.name, args)
             })
@@ -107,6 +115,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .variants()
                 .iter()
                 .map(|variant| {
+                    let mut has_backtrace = false;
                     let args = match &variant.kind {
                         IrVariantKind::Value => "".to_owned(),
                         IrVariantKind::Struct(IrStruct {
@@ -140,6 +149,9 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .fields
                                 .iter()
                                 .map(|field| {
+                                    if field.name.raw.contains("backtrace") {
+                                        has_backtrace = true;
+                                    }
                                     format!(
                                         "{}{}{} {},",
                                         dart_comments(&field.comments),
@@ -152,22 +164,35 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             format!("{{ {} }}", fields.join(""))
                         }
                     };
+                    let implements_exception = {
+                        if self.ir.is_exception && has_backtrace {
+                            "@Implements<FrbBacktracedException>()"
+                        } else {
+                            ""
+                        }
+                    };
                     format!(
-                        "{}const factory {}.{}({}) = {};",
+                        "{} {}const factory {}.{}({}) = {};",
+                        implements_exception,
                         dart_comments(&variant.comments),
                         self.ir.name,
                         variant.name.dart_style(),
-                        args,
+                        if self.ir.is_exception { args } else { args },
                         variant.name.rust_style(),
                     )
                 })
                 .collect::<Vec<_>>();
             format!(
                 "@freezed
-                class {0} with _${0} {{
-                    {1}
+                class {0} with _${0} {1} {{
+                    {2}
                 }}",
                 self.ir.name,
+                if self.ir.is_exception {
+                    "implements FrbException"
+                } else {
+                    ""
+                },
                 variants.join("\n")
             )
         } else {

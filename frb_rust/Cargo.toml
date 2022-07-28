@@ -9,7 +9,7 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [dependencies]
-allo-isolate = "0.1.13-beta.5"
+allo-isolate = {version = "0.1.13-beta.5", git="https://github.com/lattice0/allo-isolate", branch = "anyhow", features=["anyhow"]}
 # allo-isolate = { git = "https://github.com/Desdaemon/allo-isolate" } # hack, until upstream PR is merged and released
 # allo-isolate = { path = "../../allo-isolate" }
 anyhow = "1.0.58"
@@ -17,3 +17,4 @@ threadpool = "1.8.1"
 lazy_static = "1.4.0"
 parking_lot = "0.12.1"
 flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
+

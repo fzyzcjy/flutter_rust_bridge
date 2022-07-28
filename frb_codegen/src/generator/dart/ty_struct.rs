@@ -40,15 +40,17 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
         let has_methods = methods.next().is_some();
+        let access = "arr";
         let mut inner = s
             .fields
             .iter()
             .enumerate()
             .map(|(idx, field)| {
                 format!(
-                    "{}: _wire2api_{}(arr[{}]),",
+                    "{}: _wire2api_{}({}[{}]),",
                     field.name.dart_style(),
                     field.ty.safe_ident(),
+                    access,
                     idx
                 )
             })
@@ -57,14 +59,17 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             inner.insert(0, "bridge: bridge,".to_string());
         }
         let inner = inner.join("\n");
-
+        let cast = "final arr = raw as List<dynamic>;".to_string();
+        let safe_check = if self.is_exception {
+            "".to_string()
+        } else {
+            format!("if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');", s.fields.len(), s.fields.len())
+        };
         format!(
-            "final arr = raw as List<dynamic>;
-                if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');
+            "{}
+                {}
                 return {}({});",
-            s.fields.len(),
-            s.fields.len(),
-            s.name, inner,
+            cast, safe_check, s.name, inner,
         )
     }
 
@@ -120,11 +125,14 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 .collect::<Vec<_>>();
             if has_methods {
                 constructor_params.insert(0, extra_argument);
+                if self.ir.is_exception {
+                    constructor_params.push("Backtrace? backtrace".to_string());
+                }
             }
             let constructor_params = constructor_params.join("");
 
             format!(
-                "{}{}class {} with _${} {{
+                "{}{}class {} with _${} {} {{
                 const factory {}({{{}}}) = _{};
                 {}
             }}",
@@ -132,6 +140,11 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 metadata,
                 self.ir.name,
                 self.ir.name,
+                if self.ir.is_exception {
+                    "implements Exception"
+                } else {
+                    ""
+                },
                 self.ir.name,
                 constructor_params,
                 self.ir.name,
@@ -156,7 +169,6 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 field_declarations.insert(0, field_bridge);
             }
             let field_declarations = field_declarations.join("\n");
-
             let mut constructor_params = src
                 .fields
                 .iter()
@@ -175,7 +187,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             let constructor_params = constructor_params.join("");
 
             format!(
-                "{}{}class {} {{
+                "{}{}class {} {} {{
                 {}
 
                 {}({{{}}});
@@ -185,6 +197,11 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 comments,
                 metadata,
                 self.ir.name,
+                if self.ir.is_exception {
+                    "implements FrbException"
+                } else {
+                    ""
+                },
                 field_declarations,
                 self.ir.name,
                 constructor_params,

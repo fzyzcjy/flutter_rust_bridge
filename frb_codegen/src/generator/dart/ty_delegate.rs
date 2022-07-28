@@ -55,6 +55,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 ir: ir.clone(),
                 context: self.context.clone(),
                 dart_api_class_name: None,
+                is_exception: false,
             }
             .structs()
         } else {

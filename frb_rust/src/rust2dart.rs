@@ -1,7 +1,5 @@
 //! Manages receiving and sending values across the FFI boundary.
 
-use std::marker::PhantomData;
-
 /// The representation of a Dart object outside of the Dart heap.
 ///
 /// Its implementation lies with the Dart language and therefore should not be
@@ -9,7 +7,7 @@ use std::marker::PhantomData;
 pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::IntoDart;
 use allo_isolate::Isolate;
-
+use std::marker::PhantomData;
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Copy, Clone)]
 pub struct Rust2Dart {
@@ -38,23 +36,14 @@ impl Rust2Dart {
     }
 
     /// Send an error back to the specified port.
-    pub fn error(&self, error_code: String, error_message: String) -> bool {
-        self.error_full(error_code, error_message, ())
+    pub fn error(&self, e: impl IntoDart) -> bool {
+        self.error_full(e)
     }
 
     /// Send a detailed error back to the specified port.
-    pub fn error_full(
-        &self,
-        error_code: String,
-        error_message: String,
-        error_details: impl IntoDart,
-    ) -> bool {
-        self.isolate.post(vec![
-            RUST2DART_ACTION_ERROR.into_dart(),
-            error_code.into_dart(),
-            error_message.into_dart(),
-            error_details.into_dart(),
-        ])
+    pub fn error_full(&self, e: impl IntoDart) -> bool {
+        self.isolate
+            .post(vec![RUST2DART_ACTION_ERROR.into_dart(), e.into_dart()])
     }
 
     /// Close the stream and ignore further messages.

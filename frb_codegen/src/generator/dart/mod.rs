@@ -407,7 +407,12 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     };
     let parse_sucess_data = if (f.is_static_method()
         && f.struct_name().unwrap() == {
-            if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
+            if let IrType::StructRef(IrTypeStructRef {
+                name,
+                freezed: _,
+                is_exception: _,
+            }) = &func.output
+            {
                 name.clone()
             } else {
                 "".to_string()
@@ -422,6 +427,12 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
         format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
     } else {
         format!("_wire2api_{}", func.output.safe_ident())
+    };
+
+    let parse_error_data = if let Some(error_output) = &func.error_output {
+        format!("parseErrorData: _wire2api_{},", error_output.safe_ident())
+    } else {
+        "parseErrorData: null,".to_string()
     };
 
     let implementation = match func.mode {
@@ -441,12 +452,14 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             callFfi: (port_) => inner.{}({}),
             parseSuccessData: {},
             {}
+            {}
         ));",
             partial,
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
             parse_sucess_data,
+            parse_error_data,
             task_common_args,
         ),
     };
@@ -521,7 +534,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 }
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
-    let extra_argument = if matches!(ty, StructRef(IrTypeStructRef { name, freezed: _ }) if MethodNamingUtil::has_methods(name, ir_file))
+    let extra_argument = if matches!(ty, StructRef(IrTypeStructRef { name, freezed: _ , is_exception: _}) if MethodNamingUtil::has_methods(name, ir_file))
     {
         format!("{} bridge,", dart_api_class_name)
     } else {
