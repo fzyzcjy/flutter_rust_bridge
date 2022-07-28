@@ -40,11 +40,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
         let has_methods = methods.next().is_some();
-        let access = if self.is_exception {
-            "arr['dart_object']"
-        } else {
-            "arr"
-        };
+        let access = "arr";
         let mut inner = s
             .fields
             .iter()
@@ -63,11 +59,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             inner.insert(0, "bridge: bridge,".to_string());
         }
         let inner = inner.join("\n");
-        let cast = if self.is_exception {
-            "final arr = raw as Map<String, dynamic>;".to_string()
-        } else {
-            "final arr = raw as List<dynamic>;".to_string()
-        };
+        let cast = "final arr = raw as List<dynamic>;".to_string();
         let safe_check = if self.is_exception {
             "".to_string()
         } else {
@@ -177,7 +169,6 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 field_declarations.insert(0, field_bridge);
             }
             let field_declarations = field_declarations.join("\n");
-
             let mut constructor_params = src
                 .fields
                 .iter()

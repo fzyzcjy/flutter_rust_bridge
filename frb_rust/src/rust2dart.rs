@@ -1,8 +1,5 @@
 //! Manages receiving and sending values across the FFI boundary.
 
-use std::marker::PhantomData;
-
-use super::handler::Backtrace;
 /// The representation of a Dart object outside of the Dart heap.
 ///
 /// Its implementation lies with the Dart language and therefore should not be
@@ -10,6 +7,7 @@ use super::handler::Backtrace;
 pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::IntoDart;
 use allo_isolate::Isolate;
+use std::marker::PhantomData;
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Copy, Clone)]
 pub struct Rust2Dart {
@@ -38,35 +36,14 @@ impl Rust2Dart {
     }
 
     /// Send an error back to the specified port.
-    pub fn error(
-        &self,
-        error_code: String,
-        error_message: String,
-        e: impl IntoDart,
-        backtrace: Option<&dyn Backtrace>,
-    ) -> bool {
-        self.error_full(error_code, error_message, e, backtrace)
+    pub fn error(&self, e: impl IntoDart) -> bool {
+        self.error_full(e)
     }
 
     /// Send a detailed error back to the specified port.
-    pub fn error_full(
-        &self,
-        error_code: String,
-        error_message: String,
-        error_details: impl IntoDart,
-        backtrace: Option<&dyn Backtrace>,
-    ) -> bool {
-        self.isolate.post(vec![
-            RUST2DART_ACTION_ERROR.into_dart(),
-            error_code.into_dart(),
-            error_message.into_dart(),
-            error_details.into_dart(),
-            if let Some(backtrace) = backtrace {
-                backtrace.to_backtrace_string().into_dart()
-            } else {
-                Option::<()>::None.into_dart()
-            },
-        ])
+    pub fn error_full(&self, e: impl IntoDart) -> bool {
+        self.isolate
+            .post(vec![RUST2DART_ACTION_ERROR.into_dart(), e.into_dart()])
     }
 
     /// Close the stream and ignore further messages.

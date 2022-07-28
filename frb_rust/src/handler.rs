@@ -120,7 +120,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 self.executor.execute(wrap_info2, task);
             }) {
                 self.error_handler
-                    .handle_error(wrap_info.port.unwrap(), Error::Panic(error), None);
+                    .handle_error(wrap_info.port.unwrap(), Error::Panic(error));
             }
         });
     }
@@ -141,10 +141,8 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 match self.executor.execute_sync(wrap_info, sync_task) {
                     Ok(data) => (data.0, true),
                     Err(err) => (
-                        self.error_handler.handle_error_sync(
-                            Error::CustomError(Box::new(|| err.into_dart())),
-                            None,
-                        ),
+                        self.error_handler
+                            .handle_error_sync(Error::CustomError(Box::new(|| err.into_dart()))),
                         false,
                     ),
                 }
@@ -152,8 +150,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 
             let (bytes, success) = catch_unwind_result.unwrap_or_else(|error| {
                 (
-                    self.error_handler
-                        .handle_error_sync(Error::Panic(error), None),
+                    self.error_handler.handle_error_sync(Error::Panic(error)),
                     false,
                 )
             });
@@ -251,13 +248,13 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         }
                     }
                     Err(error) => {
-                        eh2.handle_error(wrap_info2.port.unwrap(), Error::CustomError(Box::new(||error.into_dart())), None);
+                        eh2.handle_error(wrap_info2.port.unwrap(), Error::CustomError(Box::new(||error.into_dart())));
                     }
                 };
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error(wrap_info.port.unwrap(), Error::Panic(error), None);
+                eh.handle_error(wrap_info.port.unwrap(), Error::Panic(error));
             }
         });
     }
@@ -324,20 +321,6 @@ impl IntoDart for Error {
     }
 }
 
-pub trait Backtrace {
-    fn to_backtrace_string(&self) -> String;
-}
-
-pub struct SimpleBacktrace {
-    backtrace: String,
-}
-
-impl Backtrace for SimpleBacktrace {
-    fn to_backtrace_string(&self) -> String {
-        self.backtrace.clone()
-    }
-}
-
 /// A handler model that sends back the error to a Dart `SendPort`.
 ///
 /// For example, instead of using the default [`ReportDartErrorHandler`],
@@ -345,10 +328,10 @@ impl Backtrace for SimpleBacktrace {
 /// or to an external logging service.
 pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     /// The default error handler.
-    fn handle_error(&self, port: i64, error: Error, backtrace: Option<&dyn Backtrace>);
+    fn handle_error(&self, port: i64, error: Error);
 
     /// Special handler only used for synchronous code.
-    fn handle_error_sync(&self, error: Error, backtrace: Option<&dyn Backtrace>) -> Vec<u8>;
+    fn handle_error_sync(&self, error: Error) -> Vec<u8>;
 }
 
 /// The default error handler used by generated code.
@@ -356,21 +339,11 @@ pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
 pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
-    fn handle_error(&self, port: i64, error: Error, backtrace: Option<&dyn Backtrace>) {
-        Rust2Dart::new(port).error(error.code().to_string(), error.message(), error, backtrace);
+    fn handle_error(&self, port: i64, error: Error) {
+        Rust2Dart::new(port).error(error);
     }
 
-    fn handle_error_sync(&self, error: Error, backtrace: Option<&dyn Backtrace>) -> Vec<u8> {
-        format!(
-            "{}: {}, backtrace: {}",
-            error.code(),
-            error.message(),
-            if let Some(backtrace) = backtrace {
-                backtrace.to_backtrace_string()
-            } else {
-                "".to_string()
-            }
-        )
-        .into_bytes()
+    fn handle_error_sync(&self, error: Error) -> Vec<u8> {
+        format!("{}", error.code(),).into_bytes()
     }
 }

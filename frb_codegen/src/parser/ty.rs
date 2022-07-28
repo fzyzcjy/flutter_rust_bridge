@@ -90,6 +90,15 @@ impl SupportedInnerType {
     /// or `None` otherwise.
     pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
         match ty {
+            syn::Type::Path(syn::TypePath { path, .. })
+                if path.segments.last().unwrap().ident == "Backtrace" =>
+            {
+                Some(SupportedInnerType::Path(SupportedPathType {
+                    ident: Ident::new("String", path.segments.last().unwrap().ident.span()),
+                    generic: vec![],
+                    is_exception: false,
+                }))
+            }
             syn::Type::Path(syn::TypePath { path, .. }) => {
                 let last_segment = path.segments.last().unwrap().clone();
                 match last_segment.arguments {

@@ -224,6 +224,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1ConstMeta;
 
+  Future<void> returnCustomNestedError1Variant1({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1Variant1ConstMeta;
+
+  Future<void> returnCustomNestedError2({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError2ConstMeta;
+
   Future<void> returnCustomStructError({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kReturnCustomStructErrorConstMeta;
@@ -417,17 +425,25 @@ class ConcatenateWith {
 @freezed
 class CustomError with _$CustomError implements FrbException {
   @Implements<FrbBacktracedException>()
-  const factory CustomError.error0(String field0, Backtrace? backtrace) = Error0;
+  const factory CustomError.error0({
+    required String e,
+    required String backtrace,
+  }) = Error0;
   @Implements<FrbBacktracedException>()
-  const factory CustomError.error1(int field0, Backtrace? backtrace) = Error1;
+  const factory CustomError.error1({
+    required int e,
+    required String backtrace,
+  }) = Error1;
 }
 
 @freezed
 class CustomNestedError1 with _$CustomNestedError1 implements FrbException {
-  @Implements<FrbBacktracedException>()
-  const factory CustomNestedError1.customNested1(String field0, Backtrace? backtrace) = CustomNested1;
-  @Implements<FrbBacktracedException>()
-  const factory CustomNestedError1.errorNested(CustomNestedError2 field0, Backtrace? backtrace) = ErrorNested;
+  const factory CustomNestedError1.customNested1(
+    String field0,
+  ) = CustomNested1;
+  const factory CustomNestedError1.errorNested(
+    CustomNestedError2 field0,
+  ) = ErrorNested;
 }
 
 @freezed
@@ -1501,6 +1517,34 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: [],
       );
 
+  Future<void> returnCustomNestedError1Variant1({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_custom_nested_error_1_variant1(port_),
+        parseSuccessData: _wire2api_unit,
+        parseErrorData: _wire2api_custom_nested_error_1,
+        constMeta: kReturnCustomNestedError1Variant1ConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1Variant1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_1_variant1",
+        argNames: [],
+      );
+
+  Future<void> returnCustomNestedError2({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_custom_nested_error_2(port_),
+        parseSuccessData: _wire2api_unit,
+        parseErrorData: _wire2api_custom_nested_error_2,
+        constMeta: kReturnCustomNestedError2ConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_2",
+        argNames: [],
+      );
+
   Future<void> returnCustomStructError({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_custom_struct_error(port_),
         parseSuccessData: _wire2api_unit,
@@ -2511,16 +2555,15 @@ ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
 }
 
 ApplicationMessage _wire2api_application_message(dynamic raw) {
-  final access = raw is Map ? raw['dart_object'] : raw;
-  switch (access[0]) {
+  switch (raw[0]) {
     case 0:
       return DisplayMessage(
-        _wire2api_String(access[1]),
+        _wire2api_String(raw[1]),
       );
     case 1:
       return RenderPixel(
-        x: _wire2api_i32(access[1]),
-        y: _wire2api_i32(access[2]),
+        x: _wire2api_i32(raw[1]),
+        y: _wire2api_i32(raw[2]),
       );
     case 2:
       return Exit();
@@ -2611,39 +2654,46 @@ ConcatenateWith _wire2api_concatenate_with(FlutterRustBridgeExampleSingleBlockTe
 }
 
 CustomError _wire2api_custom_error(dynamic raw) {
-  final access = raw is Map ? raw['dart_object'] : raw;
-  switch (access[0]) {
+  switch (raw[0]) {
     case 0:
-      return Error0(_wire2api_String(access[1]), raw['backtrace']);
+      return Error0(
+        e: _wire2api_String(raw[1]),
+        backtrace: _wire2api_String(raw[2]),
+      );
     case 1:
-      return Error1(_wire2api_u32(access[1]), raw['backtrace']);
+      return Error1(
+        e: _wire2api_u32(raw[1]),
+        backtrace: _wire2api_String(raw[2]),
+      );
     default:
       throw Exception("unreachable");
   }
 }
 
 CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
-  final access = raw is Map ? raw['dart_object'] : raw;
-  switch (access[0]) {
+  switch (raw[0]) {
     case 0:
-      return CustomNested1(_wire2api_String(access[1]), raw['backtrace']);
+      return CustomNested1(
+        _wire2api_String(raw[1]),
+      );
     case 1:
-      return ErrorNested(_wire2api_box_autoadd_custom_nested_error_2(access[1]), raw['backtrace']);
+      return ErrorNested(
+        _wire2api_box_autoadd_custom_nested_error_2(raw[1]),
+      );
     default:
       throw Exception("unreachable");
   }
 }
 
 CustomNestedError2 _wire2api_custom_nested_error_2(dynamic raw) {
-  final access = raw is Map ? raw['dart_object'] : raw;
-  switch (access[0]) {
+  switch (raw[0]) {
     case 0:
       return CustomNested2(
-        _wire2api_String(access[1]),
+        _wire2api_String(raw[1]),
       );
     case 1:
       return CustomNested2Number(
-        _wire2api_u32(access[1]),
+        _wire2api_u32(raw[1]),
       );
     default:
       throw Exception("unreachable");
@@ -2660,10 +2710,10 @@ CustomStruct _wire2api_custom_struct(FlutterRustBridgeExampleSingleBlockTest bri
 }
 
 CustomStructError _wire2api_custom_struct_error(dynamic raw) {
-  final arr = raw as Map<String, dynamic>;
+  final arr = raw as List<dynamic>;
 
   return CustomStructError(
-    message: _wire2api_String(arr['dart_object'][0]),
+    message: _wire2api_String(arr[0]),
   );
 }
 
@@ -2758,33 +2808,32 @@ Int8List _wire2api_int_8_list(dynamic raw) {
 }
 
 KitchenSink _wire2api_kitchen_sink(dynamic raw) {
-  final access = raw is Map ? raw['dart_object'] : raw;
-  switch (access[0]) {
+  switch (raw[0]) {
     case 0:
       return Empty();
     case 1:
       return Primitives(
-        int32: _wire2api_i32(access[1]),
-        float64: _wire2api_f64(access[2]),
-        boolean: _wire2api_bool(access[3]),
+        int32: _wire2api_i32(raw[1]),
+        float64: _wire2api_f64(raw[2]),
+        boolean: _wire2api_bool(raw[3]),
       );
     case 2:
       return Nested(
-        _wire2api_box_kitchen_sink(access[1]),
-        _wire2api_i32(access[2]),
+        _wire2api_box_kitchen_sink(raw[1]),
+        _wire2api_i32(raw[2]),
       );
     case 3:
       return Optional(
-        _wire2api_opt_box_autoadd_i32(access[1]),
-        _wire2api_opt_box_autoadd_i32(access[2]),
+        _wire2api_opt_box_autoadd_i32(raw[1]),
+        _wire2api_opt_box_autoadd_i32(raw[2]),
       );
     case 4:
       return Buffer(
-        _wire2api_ZeroCopyBuffer_Uint8List(access[1]),
+        _wire2api_ZeroCopyBuffer_Uint8List(raw[1]),
       );
     case 5:
       return Enums(
-        _wire2api_weekdays(access[1]),
+        _wire2api_weekdays(raw[1]),
       );
     default:
       throw Exception("unreachable");
@@ -3795,6 +3844,32 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_nested_error_1');
   late final _wire_return_custom_nested_error_1 =
       _wire_return_custom_nested_error_1Ptr.asFunction<void Function(int)>();
+
+  void wire_return_custom_nested_error_1_variant1(
+    int port_,
+  ) {
+    return _wire_return_custom_nested_error_1_variant1(
+      port_,
+    );
+  }
+
+  late final _wire_return_custom_nested_error_1_variant1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_nested_error_1_variant1');
+  late final _wire_return_custom_nested_error_1_variant1 =
+      _wire_return_custom_nested_error_1_variant1Ptr.asFunction<void Function(int)>();
+
+  void wire_return_custom_nested_error_2(
+    int port_,
+  ) {
+    return _wire_return_custom_nested_error_2(
+      port_,
+    );
+  }
+
+  late final _wire_return_custom_nested_error_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_nested_error_2');
+  late final _wire_return_custom_nested_error_2 =
+      _wire_return_custom_nested_error_2Ptr.asFunction<void Function(int)>();
 
   void wire_return_custom_struct_error(
     int port_,

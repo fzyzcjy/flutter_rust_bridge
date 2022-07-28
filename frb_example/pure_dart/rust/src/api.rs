@@ -1,11 +1,11 @@
 #![allow(unused_variables)]
 
+use anyhow::{anyhow, Result};
+use std::backtrace::Backtrace;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
-
-use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
 
@@ -727,12 +727,15 @@ impl ConcatenateWith {
 }
 
 pub enum CustomError {
-    Error0(String),
-    Error1(u32),
+    Error0 { e: String, backtrace: Backtrace },
+    Error1 { e: u32, backtrace: Backtrace },
 }
 
 pub fn return_err_custom_error() -> Result<u32, CustomError> {
-    Err(CustomError::Error1(3))
+    Err(CustomError::Error0 {
+        e: "".into(),
+        backtrace: Backtrace::force_capture(),
+    })
 }
 
 pub fn return_ok_custom_error() -> Result<u32, CustomError> {
@@ -741,8 +744,14 @@ pub fn return_ok_custom_error() -> Result<u32, CustomError> {
 
 pub fn return_error_variant(variant: u32) -> Result<u32, CustomError> {
     match variant {
-        0 => Err(CustomError::Error0("variant0".to_string())),
-        1 => Err(CustomError::Error1(1)),
+        0 => Err(CustomError::Error0 {
+            e: "variant0".to_string(),
+            backtrace: Backtrace::capture(),
+        }),
+        1 => Err(CustomError::Error1 {
+            e: 1,
+            backtrace: Backtrace::capture(),
+        }),
         _ => panic!("unsupported variant"),
     }
 }
@@ -756,7 +765,10 @@ impl SomeStruct {
         SomeStruct { value }
     }
     pub fn static_return_err_custom_error() -> Result<u32, CustomError> {
-        Err(CustomError::Error1(3))
+        Err(CustomError::Error1 {
+            e: 3,
+            backtrace: Backtrace::capture(),
+        })
     }
 
     pub fn static_return_ok_custom_error() -> Result<u32, CustomError> {
@@ -764,7 +776,10 @@ impl SomeStruct {
     }
 
     pub fn non_static_return_err_custom_error(&self) -> Result<u32, CustomError> {
-        Err(CustomError::Error1(self.value))
+        Err(CustomError::Error1 {
+            e: self.value,
+            backtrace: Backtrace::capture(),
+        })
     }
 
     pub fn non_static_return_ok_custom_error(&self) -> Result<u32, CustomError> {
@@ -772,13 +787,11 @@ impl SomeStruct {
     }
 }
 
-#[allow(dead_code)]
 pub enum CustomNestedError1 {
     CustomNested1(String),
     ErrorNested(CustomNestedError2),
 }
 
-#[allow(dead_code)]
 pub enum CustomNestedError2 {
     CustomNested2(String),
     CustomNested2Number(u32),
@@ -790,6 +803,13 @@ pub fn return_custom_nested_error_1() -> Result<(), CustomNestedError1> {
     ))
 }
 
+pub fn return_custom_nested_error_1_variant1() -> Result<(), CustomNestedError1> {
+    Err(CustomNestedError1::CustomNested1("custom".to_string()))
+}
+
+pub fn return_custom_nested_error_2() -> Result<(), CustomNestedError2> {
+    Err(CustomNestedError2::CustomNested2("custom".to_string()))
+}
 pub struct CustomStructError {
     pub message: String,
 }

@@ -71,13 +71,13 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 let args = match &variant.kind {
                     IrVariantKind::Value => "".to_owned(),
                     IrVariantKind::Struct(st) => {
-                        let mut st = st
+                        let st = st
                             .fields
                             .iter()
                             .enumerate()
                             .map(|(idx, field)| {
                                 let val = format!(
-                                    "_wire2api_{}(access[{}]),",
+                                    "_wire2api_{}(raw[{}]),",
                                     field.ty.safe_ident(),
                                     idx + 1
                                 );
@@ -89,7 +89,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             })
                             .collect::<Vec<_>>();
                         if self.ir.is_exception {
-                            st.push("raw['backtrace']".to_string());
+                            //st.push("raw['backtrace']".to_string());
                         }
                         st.join("")
                     }
@@ -98,8 +98,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             })
             .collect::<Vec<_>>();
         format!(
-            "final access = raw is Map?raw['dart_object']:raw;
-            switch (access[0]) {{
+            "switch (raw[0]) {{
                 {}
                 default: throw Exception(\"unreachable\");
             }}",
@@ -116,6 +115,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .variants()
                 .iter()
                 .map(|variant| {
+                    let mut has_backtrace = false;
                     let args = match &variant.kind {
                         IrVariantKind::Value => "".to_owned(),
                         IrVariantKind::Struct(IrStruct {
@@ -149,6 +149,9 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .fields
                                 .iter()
                                 .map(|field| {
+                                    if field.name.raw.contains("backtrace") {
+                                        has_backtrace = true;
+                                    }
                                     format!(
                                         "{}{}{} {},",
                                         dart_comments(&field.comments),
@@ -162,7 +165,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         }
                     };
                     let implements_exception = {
-                        if self.ir.is_exception {
+                        if self.ir.is_exception && has_backtrace {
                             "@Implements<FrbBacktracedException>()"
                         } else {
                             ""
@@ -174,11 +177,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         dart_comments(&variant.comments),
                         self.ir.name,
                         variant.name.dart_style(),
-                        if self.ir.is_exception {
-                            format!("{} Backtrace? backtrace", args)
-                        } else {
-                            args
-                        },
+                        if self.ir.is_exception { args } else { args },
                         variant.name.rust_style(),
                     )
                 })

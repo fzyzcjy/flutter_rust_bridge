@@ -92,8 +92,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
       case _RUST2DART_ACTION_ERROR:
         assert(raw.length == 5);
         if (parseErrorData != null) {
-          throw parseErrorData(
-              {'dart_object': raw[3], 'raw2': raw[2], 'backtrace': raw[4]});
+          throw parseErrorData(raw[1]);
         }
         throw Exception("tried to parse error data but function is null");
       case _RUST2DART_ACTION_CLOSE_STREAM:
@@ -188,7 +187,7 @@ class Backtrace {
 class FrbException implements Exception {}
 
 abstract class FrbBacktracedException {
-  Backtrace? get backtrace;
+  String? get backtrace;
 }
 
 // NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust

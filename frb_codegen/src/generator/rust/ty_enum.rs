@@ -195,9 +195,15 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         let fields = Some(tag)
                             .into_iter()
                             .chain(st.fields.iter().map(|field| {
-                                let gen =
-                                    TypeRustGenerator::new(field.ty.clone(), self.context.ir_file);
-                                gen.convert_to_dart(field.name.rust_style().to_owned())
+                                if field.name.raw == "backtrace" {
+                                    "backtrace.to_string().into_dart()".to_string()
+                                } else {
+                                    let gen = TypeRustGenerator::new(
+                                        field.ty.clone(),
+                                        self.context.ir_file,
+                                    );
+                                    gen.convert_to_dart(field.name.rust_style().to_owned())
+                                }
                             }))
                             .collect::<Vec<_>>();
                         let pattern = st

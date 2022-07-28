@@ -753,6 +753,30 @@ pub extern "C" fn wire_return_custom_nested_error_1(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_1_variant1(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_custom_nested_error_1_variant1",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| return_custom_nested_error_1_variant1(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_2(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_custom_nested_error_2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| return_custom_nested_error_2(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_return_custom_struct_error(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -2595,8 +2619,16 @@ impl support::IntoDartExceptPrimitive for ConcatenateWith {}
 impl support::IntoDart for CustomError {
     fn into_dart(self) -> support::DartCObject {
         match self {
-            Self::Error0(field0) => vec![0.into_dart(), field0.into_dart()],
-            Self::Error1(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::Error0 { e, backtrace } => vec![
+                0.into_dart(),
+                e.into_dart(),
+                backtrace.to_string().into_dart(),
+            ],
+            Self::Error1 { e, backtrace } => vec![
+                1.into_dart(),
+                e.into_dart(),
+                backtrace.to_string().into_dart(),
+            ],
         }
         .into_dart()
     }

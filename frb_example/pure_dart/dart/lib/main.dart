@@ -478,15 +478,26 @@ void main(List<String> args) async {
 
   test('Throw CustomNestedError1', () async {
     expect(() async => await api.returnCustomNestedError1(),
-        throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3), null)));
+        throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3))));
+  });
+
+  test('Throw CustomNestedError1 variant 1', () async {
+    expect(
+        () async => await api.returnCustomNestedError1Variant1(), throwsA(CustomNestedError1.customNested1("custom")));
+  });
+
+  test('Throw CustomNestedError2', () async {
+    expect(() async => await api.returnCustomNestedError2(), throwsA(CustomNestedError2.customNested2("custom")));
   });
 
   test('Throw CustomError variant 0', () async {
-    expect(() async => await api.returnErrorVariant(variant: 0), throwsA(CustomError.error0("variant0", null)));
+    expect(() async => await api.returnErrorVariant(variant: 0),
+        throwsA(CustomError.error0(e: "variant0", backtrace: "disabled backtrace")));
   });
 
   test('Throw CustomError variant 1', () async {
-    expect(() async => await api.returnErrorVariant(variant: 1), throwsA(CustomError.error1(1, null)));
+    expect(() async => await api.returnErrorVariant(variant: 1),
+        throwsA(CustomError.error1(e: 1, backtrace: "disabled backtrace")));
   });
 
   test('Do not throw CustomError', () async {
@@ -494,7 +505,8 @@ void main(List<String> args) async {
   });
 
   test('Throw CustomError static method', () async {
-    expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(CustomError.error1(3, null)));
+    expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api),
+        throwsA(CustomError.error1(e: 3, backtrace: "disabled backtrace")));
   });
 
   test('Do not throw CustomError static method', () async {
@@ -507,7 +519,7 @@ void main(List<String> args) async {
 
   test('Throw CustomError nonstatic method', () async {
     expect(() async => await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError(),
-        throwsA(CustomError.error1(7, null)));
+        throwsA(CustomError.error1(e: 7, backtrace: "disabled backtrace")));
   });
 
   test('Do not throw CustomError nonstatic method', () async {
