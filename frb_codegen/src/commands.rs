@@ -1,10 +1,13 @@
+use std::collections::HashMap;
 use std::fmt::Write;
 use std::path::Path;
+use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
 
 use crate::error::{Error, Result};
 use log::{debug, info, warn};
+use serde::Deserialize;
 
 #[must_use]
 fn call_shell(cmd: &str) -> Output {
@@ -254,15 +257,21 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
+    let context = guess_context(&dart_root)?;
+    let cmd = if context == Context::Dart {
+        "dart run build_runner build"
+    } else {
+        "flutter pub run build_runner build"
+    };
     let out = if cfg!(windows) {
         call_shell(&format!(
-            "cd \"{}\"; dart run build_runner build --delete-conflicting-outputs",
-            dart_root
+            "cd \"{}\"; {} --delete-conflicting-outputs",
+            dart_root, cmd
         ))
     } else {
         call_shell(&format!(
-            "cd \"{}\" && dart run build_runner build --delete-conflicting-outputs",
-            dart_root
+            "cd \"{}\" && {} --delete-conflicting-outputs",
+            dart_root, cmd
         ))
     };
     if !out.status.success() {
@@ -273,4 +282,89 @@ pub fn build_runner(dart_root: &str) -> Result {
         )));
     }
     Ok(())
+}
+
+pub fn guess_context(dart_root: &str) -> std::result::Result<Context, Error> {
+    info!("Guessing context the runner is run into");
+    let pubspec = PathBuf::from(dart_root).join("pubspec.lock");
+    if !pubspec.exists() {
+        return Err(Error::StringError(format!(
+            "missing pubspec.lock in {}",
+            dart_root
+        )));
+    }
+    let pubspec = std::fs::read_to_string(pubspec)
+        .map_err(|_| Error::StringError(format!("unable to read pubspec.lock in {}", dart_root)))?;
+    let pubspec: Pubspec = serde_yaml::from_str(&pubspec).map_err(|_| {
+        Error::StringError(format!("unable to parse pubspec.lock in {}", dart_root))
+    })?;
+    if pubspec.packages.contains_key("flutter") {
+        return Ok(Context::Flutter);
+    }
+    Ok(Context::Dart)
+}
+
+#[derive(Debug, PartialEq)]
+pub enum Context {
+    Dart,
+    Flutter,
+}
+
+#[derive(Debug, Deserialize)]
+struct Pubspec {
+    pub packages: HashMap<String, Info>,
+}
+
+#[derive(Debug, Deserialize)]
+#[allow(dead_code)]
+struct Info {
+    pub version: String,
+}
+
+#[cfg(test)]
+mod tests {
+    use std::path::PathBuf;
+
+    use crate::commands::{guess_context, Context};
+
+    #[test]
+    fn guess_dart_context() {
+        let root = env!("CARGO_MANIFEST_DIR");
+        let at = PathBuf::from(root)
+            .join("..")
+            .join("frb_example")
+            .join("pure_dart")
+            .join("dart")
+            .into_os_string()
+            .into_string()
+            .unwrap();
+        let context = guess_context(&at).expect("can get context from frb_example/pure_dart/dart");
+        assert_eq!(context, Context::Dart);
+
+        let at = PathBuf::from(root)
+            .join("..")
+            .join("frb_example")
+            .join("pure_dart_multi")
+            .join("dart")
+            .into_os_string()
+            .into_string()
+            .unwrap();
+        let context =
+            guess_context(&at).expect("can get context from frb_example/pure_dart_multi/dart");
+        assert_eq!(context, Context::Dart);
+    }
+
+    #[test]
+    fn guess_flutter_context() {
+        let root = env!("CARGO_MANIFEST_DIR");
+        let at = PathBuf::from(root)
+            .join("..")
+            .join("frb_example")
+            .join("with_flutter")
+            .into_os_string()
+            .into_string()
+            .unwrap();
+        let context = guess_context(&at).expect("can get context from frb_example/with_flutter");
+        assert_eq!(context, Context::Flutter);
+    }
 }
