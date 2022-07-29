@@ -257,7 +257,7 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
-    let context = guess_context(&dart_root)?;
+    let context = guess_context(dart_root).unwrap();
     let cmd = if context == Context::Dart {
         "dart run build_runner build"
     } else {
@@ -284,19 +284,19 @@ pub fn build_runner(dart_root: &str) -> Result {
     Ok(())
 }
 
-fn guess_context(dart_root: &str) -> std::result::Result<Context, Error> {
+fn guess_context(dart_root: &str) -> anyhow::Result<Context> {
     info!("Guessing context the runner is run into");
     let pubspec = PathBuf::from(dart_root).join("pubspec.lock");
     if !pubspec.exists() {
-        return Err(Error::StringError(format!(
+        return Err(anyhow::Error::msg(format!(
             "missing pubspec.lock in {}",
             dart_root
         )));
     }
     let pubspec = std::fs::read_to_string(pubspec)
-        .map_err(|_| Error::StringError(format!("unable to read pubspec.lock in {}", dart_root)))?;
+        .map_err(|_| anyhow::Error::msg(format!("unable to read pubspec.lock in {}", dart_root)))?;
     let pubspec: Pubspec = serde_yaml::from_str(&pubspec).map_err(|_| {
-        Error::StringError(format!("unable to parse pubspec.lock in {}", dart_root))
+        anyhow::Error::msg(format!("unable to parse pubspec.lock in {}", dart_root))
     })?;
     if pubspec.packages.contains_key("flutter") {
         return Ok(Context::Flutter);
