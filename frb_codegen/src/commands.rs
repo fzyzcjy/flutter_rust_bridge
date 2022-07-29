@@ -285,7 +285,7 @@ pub fn build_runner(dart_root: &str) -> Result {
 }
 
 fn guess_context(dart_root: &str) -> anyhow::Result<Context> {
-    info!("Guessing context the runner is run into");
+    debug!("Guessing context the runner is run into");
     let pubspec = PathBuf::from(dart_root).join("pubspec.lock");
     if !pubspec.exists() {
         return Err(anyhow::Error::msg(format!(
