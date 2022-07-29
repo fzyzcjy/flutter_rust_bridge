@@ -312,13 +312,7 @@ enum Context {
 
 #[derive(Debug, Deserialize)]
 struct Pubspec {
-    pub packages: HashMap<String, Info>,
-}
-
-#[derive(Debug, Deserialize)]
-#[allow(dead_code)]
-struct Info {
-    pub version: String,
+    pub packages: HashMap<String, serde_yaml::Value>,
 }
 
 #[cfg(test)]
