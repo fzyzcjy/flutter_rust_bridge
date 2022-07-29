@@ -258,18 +258,20 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
     let context = guess_context(&dart_root)?;
-    let cmd = if context == Context::Dart { "dart run build_runner build" } else { "flutter pub run build_runner build" };
+    let cmd = if context == Context::Dart {
+        "dart run build_runner build"
+    } else {
+        "flutter pub run build_runner build"
+    };
     let out = if cfg!(windows) {
         call_shell(&format!(
             "cd \"{}\"; {} --delete-conflicting-outputs",
-            dart_root,
-            cmd
+            dart_root, cmd
         ))
     } else {
         call_shell(&format!(
             "cd \"{}\" && {} --delete-conflicting-outputs",
-            dart_root,
-            cmd
+            dart_root, cmd
         ))
     };
     if !out.status.success() {
@@ -284,13 +286,18 @@ pub fn build_runner(dart_root: &str) -> Result {
 
 pub fn guess_context(dart_root: &str) -> std::result::Result<Context, Error> {
     info!("Guessing context the runner is run into");
-    let pubspec = PathBuf::from(dart_root)
-        .join("pubspec.lock");
-    if !pubspec.exists() { return Err(Error::StringError(format!("missing pubspec.lock in {}", dart_root))); }
+    let pubspec = PathBuf::from(dart_root).join("pubspec.lock");
+    if !pubspec.exists() {
+        return Err(Error::StringError(format!(
+            "missing pubspec.lock in {}",
+            dart_root
+        )));
+    }
     let pubspec = std::fs::read_to_string(pubspec)
         .map_err(|_| Error::StringError(format!("unable to read pubspec.lock in {}", dart_root)))?;
-    let pubspec: Pubspec = serde_yaml::from_str(&pubspec)
-        .map_err(|_| Error::StringError(format!("unable to parse pubspec.lock in {}", dart_root)))?;
+    let pubspec: Pubspec = serde_yaml::from_str(&pubspec).map_err(|_| {
+        Error::StringError(format!("unable to parse pubspec.lock in {}", dart_root))
+    })?;
     if pubspec.packages.contains_key("flutter") {
         return Ok(Context::Flutter);
     }
@@ -300,18 +307,18 @@ pub fn guess_context(dart_root: &str) -> std::result::Result<Context, Error> {
 #[derive(Debug, PartialEq)]
 pub enum Context {
     Dart,
-    Flutter
+    Flutter,
 }
 
 #[derive(Debug, Deserialize)]
 struct Pubspec {
-  pub packages: HashMap<String, Info>,
+    pub packages: HashMap<String, Info>,
 }
 
 #[derive(Debug, Deserialize)]
 #[allow(dead_code)]
 struct Info {
-  pub version: String,
+    pub version: String,
 }
 
 #[cfg(test)]
@@ -324,15 +331,14 @@ mod tests {
     fn guess_dart_context() {
         let root = env!("CARGO_MANIFEST_DIR");
         let at = PathBuf::from(root)
-        .join("..")
-        .join("frb_example")
-        .join("pure_dart")
-        .join("dart")
-        .into_os_string()
-        .into_string()
-        .unwrap();
-        let context = guess_context(&at)
-        .expect("can get context from frb_example/pure_dart/dart");
+            .join("..")
+            .join("frb_example")
+            .join("pure_dart")
+            .join("dart")
+            .into_os_string()
+            .into_string()
+            .unwrap();
+        let context = guess_context(&at).expect("can get context from frb_example/pure_dart/dart");
         assert_eq!(context, Context::Dart);
     }
 
@@ -340,14 +346,13 @@ mod tests {
     fn guess_flutter_context() {
         let root = env!("CARGO_MANIFEST_DIR");
         let at = PathBuf::from(root)
-        .join("..")
-        .join("frb_example")
-        .join("with_flutter")
-        .into_os_string()
-        .into_string()
-        .unwrap();
-        let context = guess_context(&at)
-        .expect("can get context from frb_example/with_flutter");
+            .join("..")
+            .join("frb_example")
+            .join("with_flutter")
+            .into_os_string()
+            .into_string()
+            .unwrap();
+        let context = guess_context(&at).expect("can get context from frb_example/with_flutter");
         assert_eq!(context, Context::Flutter);
     }
 }
