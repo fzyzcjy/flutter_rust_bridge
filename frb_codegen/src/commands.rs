@@ -284,7 +284,7 @@ pub fn build_runner(dart_root: &str) -> Result {
     Ok(())
 }
 
-pub fn guess_context(dart_root: &str) -> std::result::Result<Context, Error> {
+fn guess_context(dart_root: &str) -> std::result::Result<Context, Error> {
     info!("Guessing context the runner is run into");
     let pubspec = PathBuf::from(dart_root).join("pubspec.lock");
     if !pubspec.exists() {
