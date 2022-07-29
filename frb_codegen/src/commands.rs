@@ -266,7 +266,7 @@ pub fn build_runner(dart_root: &str) -> Result {
         ))
     } else {
         call_shell(&format!(
-            "cd \"{}\" && {} --delete-conflicting-outputs",
+            "cd \"{}\" && {} run build_runner build --delete-conflicting-outputs",
             dart_root,
             context.as_run_command()
         ))
