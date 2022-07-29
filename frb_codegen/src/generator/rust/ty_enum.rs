@@ -196,7 +196,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             .into_iter()
                             .chain(st.fields.iter().map(|field| {
                                 if field.name.raw == "backtrace" {
-                                    "backtrace.to_string().into_dart()".to_string()
+                                    "format!(\"{:?}\", backtrace).into_dart()".to_string()
                                 } else {
                                     let gen = TypeRustGenerator::new(
                                         field.ty.clone(),

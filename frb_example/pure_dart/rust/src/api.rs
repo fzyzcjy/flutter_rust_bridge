@@ -733,7 +733,7 @@ pub enum CustomError {
 pub fn return_err_custom_error() -> Result<u32, CustomError> {
     Err(CustomError::Error0 {
         e: "".into(),
-        backtrace: Backtrace::force_capture(),
+        backtrace: Backtrace::new(),
     })
 }
 
@@ -745,11 +745,11 @@ pub fn return_error_variant(variant: u32) -> Result<u32, CustomError> {
     match variant {
         0 => Err(CustomError::Error0 {
             e: "variant0".to_string(),
-            backtrace: Backtrace::capture(),
+            backtrace: Backtrace::new(),
         }),
         1 => Err(CustomError::Error1 {
             e: 1,
-            backtrace: Backtrace::capture(),
+            backtrace: Backtrace::new(),
         }),
         _ => panic!("unsupported variant"),
     }
@@ -766,7 +766,7 @@ impl SomeStruct {
     pub fn static_return_err_custom_error() -> Result<u32, CustomError> {
         Err(CustomError::Error1 {
             e: 3,
-            backtrace: Backtrace::capture(),
+            backtrace: Backtrace::new(),
         })
     }
 
@@ -777,7 +777,7 @@ impl SomeStruct {
     pub fn non_static_return_err_custom_error(&self) -> Result<u32, CustomError> {
         Err(CustomError::Error1 {
             e: self.value,
-            backtrace: Backtrace::capture(),
+            backtrace: Backtrace::new(),
         })
     }
 

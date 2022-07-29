@@ -2622,12 +2622,12 @@ impl support::IntoDart for CustomError {
             Self::Error0 { e, backtrace } => vec![
                 0.into_dart(),
                 e.into_dart(),
-                backtrace.to_string().into_dart(),
+                format!("{:?}", backtrace).into_dart(),
             ],
             Self::Error1 { e, backtrace } => vec![
                 1.into_dart(),
                 e.into_dart(),
-                backtrace.to_string().into_dart(),
+                format!("{:?}", backtrace).into_dart(),
             ],
         }
         .into_dart()
