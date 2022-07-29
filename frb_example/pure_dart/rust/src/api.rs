@@ -1,13 +1,13 @@
 #![allow(unused_variables)]
 
 use anyhow::{anyhow, Result};
+use backtrace::Backtrace;
+use flutter_rust_bridge::*;
 use std::backtrace::Backtrace;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
-
-use flutter_rust_bridge::*;
 
 use crate::data::{MyEnum, MyStruct};
 
