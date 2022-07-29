@@ -305,7 +305,7 @@ fn guess_context(dart_root: &str) -> anyhow::Result<Context> {
 }
 
 #[derive(Debug, PartialEq)]
-pub enum Context {
+enum Context {
     Dart,
     Flutter,
 }
