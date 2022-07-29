@@ -258,20 +258,17 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
     let context = guess_context(dart_root).unwrap();
-    let cmd = if context == Context::Dart {
-        "dart run build_runner build"
-    } else {
-        "flutter pub run build_runner build"
-    };
     let out = if cfg!(windows) {
         call_shell(&format!(
-            "cd \"{}\"; {} --delete-conflicting-outputs",
-            dart_root, cmd
+            "cd \"{}\"; {} run build_runner build --delete-conflicting-outputs",
+            dart_root,
+            context.as_run_command()
         ))
     } else {
         call_shell(&format!(
             "cd \"{}\" && {} --delete-conflicting-outputs",
-            dart_root, cmd
+            dart_root,
+            context.as_run_command()
         ))
     };
     if !out.status.success() {
@@ -308,6 +305,15 @@ fn guess_context(dart_root: &str) -> anyhow::Result<Context> {
 enum Context {
     Dart,
     Flutter,
+}
+
+impl Context {
+    fn as_run_command(&self) -> &'static str {
+        match self {
+            Context::Dart => "dart",
+            Context::Flutter => "flutter pub",
+        }
+    }
 }
 
 #[derive(Debug, Deserialize)]
