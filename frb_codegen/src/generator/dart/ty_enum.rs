@@ -177,7 +177,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         dart_comments(&variant.comments),
                         self.ir.name,
                         variant.name.dart_style(),
-                        if self.ir.is_exception { args } else { args },
+                        args,
                         variant.name.rust_style(),
                     )
                 })

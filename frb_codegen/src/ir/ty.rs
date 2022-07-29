@@ -94,7 +94,7 @@ pub fn optional_boundary_index(types: &[&IrType]) -> Option<usize> {
         .enumerate()
         .find(|ty| matches!(ty.1, Optional(_)))
         .and_then(|(idx, _)| {
-            (&types[idx..])
+            (types[idx..])
                 .iter()
                 .all(|ty| matches!(ty, Optional(_)))
                 .then(|| idx)

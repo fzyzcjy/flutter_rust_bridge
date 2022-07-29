@@ -14,6 +14,7 @@ flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
 anyhow = { version = "1.0.58", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust" }
 lazy_static = "1.4.0"
+backtrace = "0.3.66"
 
 [dependencies.external-lib] # used for demo of external types mirroring
 path = "./external"
