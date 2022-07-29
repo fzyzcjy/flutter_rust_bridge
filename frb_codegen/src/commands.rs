@@ -340,6 +340,18 @@ mod tests {
             .unwrap();
         let context = guess_context(&at).expect("can get context from frb_example/pure_dart/dart");
         assert_eq!(context, Context::Dart);
+
+        let at = PathBuf::from(root)
+            .join("..")
+            .join("frb_example")
+            .join("pure_dart_multi")
+            .join("dart")
+            .into_os_string()
+            .into_string()
+            .unwrap();
+        let context =
+            guess_context(&at).expect("can get context from frb_example/pure_dart_multi/dart");
+        assert_eq!(context, Context::Dart);
     }
 
     #[test]
