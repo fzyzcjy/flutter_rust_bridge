@@ -313,3 +313,41 @@ struct Pubspec {
 struct Info {
   pub version: String,
 }
+
+#[cfg(test)]
+mod tests {
+    use std::path::PathBuf;
+
+    use crate::commands::{guess_context, Context};
+
+    #[test]
+    fn guess_dart_context() {
+        let root = env!("CARGO_MANIFEST_DIR");
+        let at = PathBuf::from(root)
+        .join("..")
+        .join("frb_example")
+        .join("pure_dart")
+        .join("dart")
+        .into_os_string()
+        .into_string()
+        .unwrap();
+        let context = guess_context(&at)
+        .expect("can get context from frb_example/pure_dart/dart");
+        assert_eq!(context, Context::Dart);
+    }
+
+    #[test]
+    fn guess_flutter_context() {
+        let root = env!("CARGO_MANIFEST_DIR");
+        let at = PathBuf::from(root)
+        .join("..")
+        .join("frb_example")
+        .join("with_flutter")
+        .into_os_string()
+        .into_string()
+        .unwrap();
+        let context = guess_context(&at)
+        .expect("can get context from frb_example/with_flutter");
+        assert_eq!(context, Context::Flutter);
+    }
+}
