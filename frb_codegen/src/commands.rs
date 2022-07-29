@@ -1,10 +1,13 @@
+use std::collections::HashMap;
 use std::fmt::Write;
 use std::path::Path;
+use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
 
 use crate::error::{Error, Result};
 use log::{debug, info, warn};
+use serde::Deserialize;
 
 #[must_use]
 fn call_shell(cmd: &str) -> Output {
@@ -254,10 +257,8 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
-    // what is the correct way to differentiate a Dart project from a Flutter project ?
-    // or is it better to let the user specify it, let's say with an env var ?
-    let is_dart = true; // FIXME: determine whether it's a Dart or Flutter project
-    let cmd = if is_dart { "dart run build_runner build" } else { "flutter pub run build_runner build" };
+    let context = guess_context(&dart_root)?;
+    let cmd = if context == Context::Dart { "dart run build_runner build" } else { "flutter pub run build_runner build" };
     let out = if cfg!(windows) {
         call_shell(&format!(
             "cd \"{}\"; {} --delete-conflicting-outputs",
@@ -279,4 +280,36 @@ pub fn build_runner(dart_root: &str) -> Result {
         )));
     }
     Ok(())
+}
+
+pub fn guess_context(dart_root: &str) -> std::result::Result<Context, Error> {
+    info!("Guessing context the runner is run into");
+    let pubspec = PathBuf::from(dart_root)
+        .join("pubspec.lock");
+    if !pubspec.exists() { return Err(Error::StringError(format!("missing pubspec.lock in {}", dart_root))); }
+    let pubspec = std::fs::read_to_string(pubspec)
+        .map_err(|_| Error::StringError(format!("unable to read pubspec.lock in {}", dart_root)))?;
+    let pubspec: Pubspec = serde_yaml::from_str(&pubspec)
+        .map_err(|_| Error::StringError(format!("unable to parse pubspec.lock in {}", dart_root)))?;
+    if pubspec.packages.contains_key("flutter") {
+        return Ok(Context::Flutter);
+    }
+    Ok(Context::Dart)
+}
+
+#[derive(Debug, PartialEq)]
+pub enum Context {
+    Dart,
+    Flutter
+}
+
+#[derive(Debug, Deserialize)]
+struct Pubspec {
+  pub packages: HashMap<String, Info>,
+}
+
+#[derive(Debug, Deserialize)]
+#[allow(dead_code)]
+struct Info {
+  pub version: String,
 }
