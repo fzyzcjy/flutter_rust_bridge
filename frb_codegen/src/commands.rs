@@ -1,10 +1,13 @@
+use std::collections::HashMap;
 use std::fmt::Write;
 use std::path::Path;
+use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
 
 use crate::error::{Error, Result};
 use log::{debug, info, warn};
+use serde::Deserialize;
 
 #[must_use]
 fn call_shell(cmd: &str) -> Output {
@@ -254,15 +257,18 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
+    let toolchain = guess_toolchain(dart_root).unwrap();
     let out = if cfg!(windows) {
         call_shell(&format!(
-            "cd \"{}\"; dart run build_runner build --delete-conflicting-outputs",
-            dart_root
+            "cd \"{}\"; {} run build_runner build --delete-conflicting-outputs",
+            dart_root,
+            toolchain.as_run_command()
         ))
     } else {
         call_shell(&format!(
-            "cd \"{}\" && dart run build_runner build --delete-conflicting-outputs",
-            dart_root
+            "cd \"{}\" && {} run build_runner build --delete-conflicting-outputs",
+            dart_root,
+            toolchain.as_run_command()
         ))
     };
     if !out.status.success() {
@@ -273,4 +279,91 @@ pub fn build_runner(dart_root: &str) -> Result {
         )));
     }
     Ok(())
+}
+
+fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> {
+    debug!("Guessing toolchain the runner is run into");
+    let lock_file = PathBuf::from(dart_root).join("pubspec.lock");
+    if !lock_file.exists() {
+        return Err(anyhow::Error::msg(format!(
+            "missing pubspec.lock in {}",
+            dart_root
+        )));
+    }
+    let lock_file = std::fs::read_to_string(lock_file)
+        .map_err(|_| anyhow::Error::msg(format!("unable to read pubspec.lock in {}", dart_root)))?;
+    let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|_| {
+        anyhow::Error::msg(format!("unable to parse pubspec.lock in {}", dart_root))
+    })?;
+    if lock_file.packages.contains_key("flutter") {
+        return Ok(DartToolchain::Flutter);
+    }
+    Ok(DartToolchain::Dart)
+}
+
+#[derive(Debug, PartialEq)]
+enum DartToolchain {
+    Dart,
+    Flutter,
+}
+
+impl DartToolchain {
+    fn as_run_command(&self) -> &'static str {
+        match self {
+            DartToolchain::Dart => "dart",
+            DartToolchain::Flutter => "flutter pub",
+        }
+    }
+}
+
+#[derive(Debug, Deserialize)]
+struct PubspecLock {
+    pub packages: HashMap<String, serde_yaml::Value>,
+}
+
+#[cfg(test)]
+mod tests {
+    use std::path::{Path, PathBuf};
+
+    use crate::commands::{guess_toolchain, DartToolchain};
+    use lazy_static::lazy_static;
+
+    lazy_static! {
+        static ref FRB_EXAMPLES_FOLDER: PathBuf = {
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join("..")
+                .join("frb_example")
+        };
+    }
+
+    fn guess_toolchain_base(path: &Path, expect_toolchain: DartToolchain) {
+        let toolchain = guess_toolchain(&path.to_string_lossy()).expect(&format!(
+            "can get toolchain from {}",
+            path.to_string_lossy()
+        ));
+        assert_eq!(toolchain, expect_toolchain);
+    }
+
+    #[test]
+    fn guess_dart_toolchain() {
+        guess_toolchain_base(
+            FRB_EXAMPLES_FOLDER.join("pure_dart").join("dart").as_path(),
+            DartToolchain::Dart,
+        );
+        guess_toolchain_base(
+            FRB_EXAMPLES_FOLDER
+                .join("pure_dart_multi")
+                .join("dart")
+                .as_path(),
+            DartToolchain::Dart,
+        );
+    }
+
+    #[test]
+    fn guess_flutter_toolchain() {
+        guess_toolchain_base(
+            FRB_EXAMPLES_FOLDER.join("with_flutter").as_path(),
+            DartToolchain::Flutter,
+        );
+    }
 }
