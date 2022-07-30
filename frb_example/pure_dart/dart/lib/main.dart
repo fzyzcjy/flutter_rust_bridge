@@ -156,7 +156,7 @@ void main(List<String> args) async {
       fail("exception not thrown");
     } catch (e) {
       print('dart catch e: $e');
-      expect(e, isA<Exception>());
+      expect(e, isA<FrbException>());
     }
   });
 
@@ -166,7 +166,7 @@ void main(List<String> args) async {
       fail("exception not thrown");
     } catch (e) {
       print('dart catch e: $e');
-      expect(e, isA<Exception>());
+      expect(e, isA<FrbException>());
     }
   });
 
