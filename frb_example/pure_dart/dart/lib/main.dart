@@ -496,8 +496,7 @@ void main(List<String> args) async {
   });
 
   test('Throw CustomError variant 1', () async {
-    expect(() async => await api.returnErrorVariant(variant: 1),
-        throwsA(CustomError.error1(e: 1, backtrace: "0")));
+    expect(() async => await api.returnErrorVariant(variant: 1), throwsA(CustomError.error1(e: 1, backtrace: "0")));
   });
 
   test('Do not throw CustomError', () async {
