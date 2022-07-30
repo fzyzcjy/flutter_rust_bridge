@@ -99,6 +99,7 @@ More specifically, thanks for all these contributions:
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
+* [Roms1383](https://github.com/Roms1383): Fix build_runner calling bug.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
