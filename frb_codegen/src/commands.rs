@@ -257,18 +257,18 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
-    let context = guess_context(dart_root).unwrap();
+    let toolchain = guess_toolchain(dart_root).unwrap();
     let out = if cfg!(windows) {
         call_shell(&format!(
             "cd \"{}\"; {} run build_runner build --delete-conflicting-outputs",
             dart_root,
-            context.as_run_command()
+            toolchain.as_run_command()
         ))
     } else {
         call_shell(&format!(
             "cd \"{}\" && {} run build_runner build --delete-conflicting-outputs",
             dart_root,
-            context.as_run_command()
+            toolchain.as_run_command()
         ))
     };
     if !out.status.success() {
@@ -281,8 +281,8 @@ pub fn build_runner(dart_root: &str) -> Result {
     Ok(())
 }
 
-fn guess_context(dart_root: &str) -> anyhow::Result<DartToolchain> {
-    debug!("Guessing context the runner is run into");
+fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> {
+    debug!("Guessing toolchain the runner is run into");
     let lock_file = PathBuf::from(dart_root).join("pubspec.lock");
     if !lock_file.exists() {
         return Err(anyhow::Error::msg(format!(
@@ -325,9 +325,9 @@ struct PubspecLock {
 mod tests {
     use std::path::PathBuf;
 
-    use crate::commands::{guess_context, DartToolchain};
+    use crate::commands::{guess_toolchain, DartToolchain};
 
-    fn guess_context_base(path: PathBuf, expect_context: DartToolchain) {
+    fn guess_toolchain_base(path: PathBuf, expect_toolchain: DartToolchain) {
         let root = env!("CARGO_MANIFEST_DIR");
         let at = PathBuf::from(root)
             .join(path)
@@ -335,20 +335,20 @@ mod tests {
             .into_string()
             .unwrap();
 
-        let ctx = guess_context(&at).expect(&format!("can get context from {}", at));
-        assert_eq!(ctx, expect_context);
+        let ctx = guess_toolchain(&at).expect(&format!("can get toolchain from {}", at));
+        assert_eq!(ctx, expect_toolchain);
     }
 
     #[test]
-    fn guess_dart_context() {
-        guess_context_base(
+    fn guess_dart_toolchain() {
+        guess_toolchain_base(
             PathBuf::from("..")
                 .join("frb_example")
                 .join("pure_dart")
                 .join("dart"),
             DartToolchain::Dart,
         );
-        guess_context_base(
+        guess_toolchain_base(
             PathBuf::from("..")
                 .join("frb_example")
                 .join("pure_dart_multi")
@@ -358,8 +358,8 @@ mod tests {
     }
 
     #[test]
-    fn guess_flutter_context() {
-        guess_context_base(
+    fn guess_flutter_toolchain() {
+        guess_toolchain_base(
             PathBuf::from("..").join("frb_example").join("with_flutter"),
             DartToolchain::Flutter,
         );
