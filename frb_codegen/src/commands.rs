@@ -323,36 +323,38 @@ struct PubspecLock {
 
 #[cfg(test)]
 mod tests {
-    use std::path::PathBuf;
+    use std::path::{Path, PathBuf};
 
     use crate::commands::{guess_toolchain, DartToolchain};
+    use lazy_static::lazy_static;
 
-    fn guess_toolchain_base(path: PathBuf, expect_toolchain: DartToolchain) {
-        let root = env!("CARGO_MANIFEST_DIR");
-        let at = PathBuf::from(root)
-            .join(path)
-            .into_os_string()
-            .into_string()
-            .unwrap();
+    lazy_static! {
+        static ref FRB_EXAMPLES_FOLDER: PathBuf = {
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join("..")
+                .join("frb_example")
+        };
+    }
 
-        let ctx = guess_toolchain(&at).expect(&format!("can get toolchain from {}", at));
-        assert_eq!(ctx, expect_toolchain);
+    fn guess_toolchain_base(path: &Path, expect_toolchain: DartToolchain) {
+        let toolchain = guess_toolchain(&path.to_string_lossy()).expect(&format!(
+            "can get toolchain from {}",
+            path.to_string_lossy()
+        ));
+        assert_eq!(toolchain, expect_toolchain);
     }
 
     #[test]
     fn guess_dart_toolchain() {
         guess_toolchain_base(
-            PathBuf::from("..")
-                .join("frb_example")
-                .join("pure_dart")
-                .join("dart"),
+            FRB_EXAMPLES_FOLDER.join("pure_dart").join("dart").as_path(),
             DartToolchain::Dart,
         );
         guess_toolchain_base(
-            PathBuf::from("..")
-                .join("frb_example")
+            FRB_EXAMPLES_FOLDER
                 .join("pure_dart_multi")
-                .join("dart"),
+                .join("dart")
+                .as_path(),
             DartToolchain::Dart,
         );
     }
@@ -360,7 +362,7 @@ mod tests {
     #[test]
     fn guess_flutter_toolchain() {
         guess_toolchain_base(
-            PathBuf::from("..").join("frb_example").join("with_flutter"),
+            FRB_EXAMPLES_FOLDER.join("with_flutter").as_path(),
             DartToolchain::Flutter,
         );
     }
