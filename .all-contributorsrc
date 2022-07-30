@@ -258,6 +258,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Roms1383",
+      "name": "Rom's",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21016014?v=4",
+      "profile": "https://github.com/Roms1383",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
