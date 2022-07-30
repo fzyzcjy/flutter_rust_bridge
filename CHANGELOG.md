@@ -1,3 +1,7 @@
+## 1.38.2
+
+* Run build_runner either for Dart or Flutter #599 (thanks @Roms1383)
+
 ## 1.38.1
 
 * Fix case when returning a struct with a method in a non method function #587 (thanks @lattice0)
