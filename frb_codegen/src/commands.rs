@@ -281,7 +281,7 @@ pub fn build_runner(dart_root: &str) -> Result {
     Ok(())
 }
 
-fn guess_context(dart_root: &str) -> anyhow::Result<Context> {
+fn guess_context(dart_root: &str) -> anyhow::Result<DartToolchain> {
     debug!("Guessing context the runner is run into");
     let pubspec = PathBuf::from(dart_root).join("pubspec.lock");
     if !pubspec.exists() {
@@ -296,22 +296,22 @@ fn guess_context(dart_root: &str) -> anyhow::Result<Context> {
         anyhow::Error::msg(format!("unable to parse pubspec.lock in {}", dart_root))
     })?;
     if pubspec.packages.contains_key("flutter") {
-        return Ok(Context::Flutter);
+        return Ok(DartToolchain::Flutter);
     }
-    Ok(Context::Dart)
+    Ok(DartToolchain::Dart)
 }
 
 #[derive(Debug, PartialEq)]
-enum Context {
+enum DartToolchain {
     Dart,
     Flutter,
 }
 
-impl Context {
+impl DartToolchain {
     fn as_run_command(&self) -> &'static str {
         match self {
-            Context::Dart => "dart",
-            Context::Flutter => "flutter pub",
+            DartToolchain::Dart => "dart",
+            DartToolchain::Flutter => "flutter pub",
         }
     }
 }
@@ -325,7 +325,7 @@ struct Pubspec {
 mod tests {
     use std::path::PathBuf;
 
-    use crate::commands::{guess_context, Context};
+    use crate::commands::{guess_context, DartToolchain};
 
     #[test]
     fn guess_dart_context() {
@@ -339,7 +339,7 @@ mod tests {
             .into_string()
             .unwrap();
         let context = guess_context(&at).expect("can get context from frb_example/pure_dart/dart");
-        assert_eq!(context, Context::Dart);
+        assert_eq!(context, DartToolchain::Dart);
 
         let at = PathBuf::from(root)
             .join("..")
@@ -351,7 +351,7 @@ mod tests {
             .unwrap();
         let context =
             guess_context(&at).expect("can get context from frb_example/pure_dart_multi/dart");
-        assert_eq!(context, Context::Dart);
+        assert_eq!(context, DartToolchain::Dart);
     }
 
     #[test]
@@ -365,6 +365,6 @@ mod tests {
             .into_string()
             .unwrap();
         let context = guess_context(&at).expect("can get context from frb_example/with_flutter");
-        assert_eq!(context, Context::Flutter);
+        assert_eq!(context, DartToolchain::Flutter);
     }
 }
