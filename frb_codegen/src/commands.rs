@@ -283,19 +283,19 @@ pub fn build_runner(dart_root: &str) -> Result {
 
 fn guess_context(dart_root: &str) -> anyhow::Result<DartToolchain> {
     debug!("Guessing context the runner is run into");
-    let pubspec = PathBuf::from(dart_root).join("pubspec.lock");
-    if !pubspec.exists() {
+    let lock_file = PathBuf::from(dart_root).join("pubspec.lock");
+    if !lock_file.exists() {
         return Err(anyhow::Error::msg(format!(
             "missing pubspec.lock in {}",
             dart_root
         )));
     }
-    let pubspec = std::fs::read_to_string(pubspec)
+    let lock_file = std::fs::read_to_string(lock_file)
         .map_err(|_| anyhow::Error::msg(format!("unable to read pubspec.lock in {}", dart_root)))?;
-    let pubspec: Pubspec = serde_yaml::from_str(&pubspec).map_err(|_| {
+    let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|_| {
         anyhow::Error::msg(format!("unable to parse pubspec.lock in {}", dart_root))
     })?;
-    if pubspec.packages.contains_key("flutter") {
+    if lock_file.packages.contains_key("flutter") {
         return Ok(DartToolchain::Flutter);
     }
     Ok(DartToolchain::Dart)
@@ -317,7 +317,7 @@ impl DartToolchain {
 }
 
 #[derive(Debug, Deserialize)]
-struct Pubspec {
+struct PubspecLock {
     pub packages: HashMap<String, serde_yaml::Value>,
 }
 
