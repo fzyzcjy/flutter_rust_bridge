@@ -28,3 +28,14 @@ try {
     }
 }
 ```
+
+## Backtrace example
+
+Errors with custom fields are also supported, and you can even pass a backtrace
+
+```rust
+pub enum CustomStructError {
+    Error0 { e: String, backtrace: Backtrace },
+    Error1 { e: u32, backtrace: Backtrace },
+}
+```
