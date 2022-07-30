@@ -327,44 +327,41 @@ mod tests {
 
     use crate::commands::{guess_context, DartToolchain};
 
-    #[test]
-    fn guess_dart_context() {
+    fn guess_context_base(path: PathBuf, expect_context: DartToolchain) {
         let root = env!("CARGO_MANIFEST_DIR");
         let at = PathBuf::from(root)
-            .join("..")
-            .join("frb_example")
-            .join("pure_dart")
-            .join("dart")
+            .join(path)
             .into_os_string()
             .into_string()
             .unwrap();
-        let context = guess_context(&at).expect("can get context from frb_example/pure_dart/dart");
-        assert_eq!(context, DartToolchain::Dart);
 
-        let at = PathBuf::from(root)
-            .join("..")
-            .join("frb_example")
-            .join("pure_dart_multi")
-            .join("dart")
-            .into_os_string()
-            .into_string()
-            .unwrap();
-        let context =
-            guess_context(&at).expect("can get context from frb_example/pure_dart_multi/dart");
-        assert_eq!(context, DartToolchain::Dart);
+        let ctx = guess_context(&at).expect(&format!("can get context from {}", at));
+        assert_eq!(ctx, expect_context);
+    }
+
+    #[test]
+    fn guess_dart_context() {
+        guess_context_base(
+            PathBuf::from("..")
+                .join("frb_example")
+                .join("pure_dart")
+                .join("dart"),
+            DartToolchain::Dart,
+        );
+        guess_context_base(
+            PathBuf::from("..")
+                .join("frb_example")
+                .join("pure_dart_multi")
+                .join("dart"),
+            DartToolchain::Dart,
+        );
     }
 
     #[test]
     fn guess_flutter_context() {
-        let root = env!("CARGO_MANIFEST_DIR");
-        let at = PathBuf::from(root)
-            .join("..")
-            .join("frb_example")
-            .join("with_flutter")
-            .into_os_string()
-            .into_string()
-            .unwrap();
-        let context = guess_context(&at).expect("can get context from frb_example/with_flutter");
-        assert_eq!(context, DartToolchain::Flutter);
+        guess_context_base(
+            PathBuf::from("..").join("frb_example").join("with_flutter"),
+            DartToolchain::Flutter,
+        );
     }
 }
