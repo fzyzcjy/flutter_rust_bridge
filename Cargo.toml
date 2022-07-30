@@ -1,0 +1,5 @@
+[workspace]
+members = ["frb_rust", "frb_example/pure_dart/rust", "frb_example/with_flutter/rust", "frb_example/pure_dart_multi/rust"]
+
+#[patch.crates-io]
+#allo-isolate = { path="./allo-isolate", features=["anyhow"] }
