@@ -16,6 +16,22 @@
 * `.github`: GitHub-related.
   * `workflows/ci.yaml`: Definition of CI workflows.
 
+## Code-generator structure
+
+The pipeline is as follows:
+
+```
+----------     parser      ------      generator       ---------------
+| api.rs | --------------> | IR | -------------------> | Rust & Dart |
+----------                 ------                      ---------------
+```
+
+* The input, `api.rs` in the figure, is the user-provided handwritten Rust code.
+* The parser (`src/parser`) converts the input code (indeed [syn](https://crates.io/crates/syn) tree) into IR.
+* IR (`src/ir`), or internal representation, is a data structure that represents the information of the code that we are interested in.
+* The generator (`src/generator`) converts the IR into final outputs. More specifcially, as you can probably guess, `src/generator/dart` generates Dart code, `src/generator/rust` is for Rust code, and `src/generator/c` is for (a bit of) C code.
+* The outputs (`Rust & Dart` in the figure) are written to corresponding files.
+
 ## TODO
 
 TODO
