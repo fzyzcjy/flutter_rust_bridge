@@ -104,18 +104,20 @@ impl SupportedInnerType {
                 match last_segment.arguments {
                     syn::PathArguments::None => Some(SupportedInnerType::Path(SupportedPathType {
                         ident: last_segment.ident,
-                        generic: Vec::new(),
+                        generic: vec![],
                         is_exception: false,
                     })),
                     syn::PathArguments::AngleBracketed(a) => {
                         let args = a.args.into_iter().collect::<Vec<GenericArgument>>();
                         let mut supported_inner_types: Vec<SupportedInnerType> = Vec::new();
-                        for arg in args {
-                            if let syn::GenericArgument::Type(t) = arg {
-                                supported_inner_types
-                                    .push(SupportedInnerType::try_from_syn_type(&t).unwrap());
-                            }
-                        }
+                        args.iter()
+                            .map(|arg| {
+                                if let syn::GenericArgument::Type(t) = arg {
+                                    supported_inner_types
+                                        .push(SupportedInnerType::try_from_syn_type(&t).unwrap());
+                                }
+                            })
+                            .count();
                         Some(SupportedInnerType::Path(SupportedPathType {
                             ident: last_segment.ident,
                             generic: supported_inner_types,
@@ -189,7 +191,6 @@ impl<'a> TypeParser<'a> {
         mut p: SupportedPathType,
         is_exception: bool,
     ) -> Option<IrType> {
-        println!("convert path");
         let p_as_str = format!("{}", &p);
         let ident_string = &p.ident.to_string();
         if !p.generic.is_empty() {
@@ -198,20 +199,20 @@ impl<'a> TypeParser<'a> {
                     // Special-case SyncReturn<Vec<u8>>. SyncReturn for any other type is not
                     // supported.
                     match &p.generic[0] {
-                        SupportedInnerType::Path(SupportedPathType {
-                            ident,
-                            generic,
-                            is_exception: _,
-                        }) if ident == "Vec" && !generic.is_empty() => match &generic[0] {
-                            SupportedInnerType::Path(SupportedPathType {
-                                ident,
-                                generic,
-                                is_exception: _,
-                            }) if ident == "u8" && generic.is_empty() => {
-                                Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8))
+                        SupportedInnerType::Path(SupportedPathType { ident, generic, .. })
+                            if ident == "Vec" && !generic.is_empty() =>
+                        {
+                            match &generic[0] {
+                                SupportedInnerType::Path(SupportedPathType {
+                                    ident,
+                                    generic,
+                                    ..
+                                }) if ident == "u8" && generic.is_empty() => {
+                                    Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8))
+                                }
+                                _ => None,
                             }
-                            _ => None,
-                        },
+                        }
                         _ => None,
                     }
                 }
@@ -277,7 +278,6 @@ impl<'a> TypeParser<'a> {
                 _ => None,
             }
         } else {
-            println!("else case");
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

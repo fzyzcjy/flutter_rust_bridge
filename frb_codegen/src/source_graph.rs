@@ -352,7 +352,6 @@ impl Module {
         for scope_module in &scope.modules {
             scope_module.collect_structs(container);
         }
-        println!("structs: {:?}", container);
     }
 
     pub fn collect_structs_to_vec(&self) -> HashMap<String, &Struct> {

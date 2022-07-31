@@ -64,15 +64,13 @@ impl<'a> Parser<'a> {
 
         match inner {
             ty::SupportedInnerType::Path(ty::SupportedPathType {
-                ident,
-                mut generic,
-                is_exception: _,
+                ident, mut generic, ..
             }) if ident == RESULT_IDENT && !generic.is_empty() => {
-                let first_argument = self
+                let result = self
                     .type_parser
                     .convert_to_ir_type(generic.remove(0), false)
                     .unwrap();
-                let second_argument = if generic.len() == 1 {
+                let error = if generic.len() == 1 {
                     println!("parsing second argument: {:?}", generic);
                     Some(
                         self.type_parser
@@ -82,7 +80,7 @@ impl<'a> Parser<'a> {
                 } else {
                     None
                 };
-                Some(IrFuncOutput::ResultType(first_argument, second_argument))
+                Some(IrFuncOutput::ResultType { result, error })
             }
             _ => Some(IrFuncOutput::Type(
                 self.type_parser.convert_to_ir_type(inner, false)?,
@@ -171,7 +169,7 @@ impl<'a> Parser<'a> {
                             type_to_string(ty)
                         )
                     }) {
-                        IrFuncOutput::ResultType(ty, err) => (Some(ty), err),
+                        IrFuncOutput::ResultType { result, error } => (Some(result), error),
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
                             (Some(ty), None)

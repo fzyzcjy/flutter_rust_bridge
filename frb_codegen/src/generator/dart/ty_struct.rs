@@ -120,9 +120,6 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 
             if has_methods {
                 constructor_params.insert(0, extra_argument);
-                if self.ir.is_exception {
-                    //constructor_params.push("Backtrace? backtrace".to_string());
-                }
             }
             let constructor_params = constructor_params.join("");
 
@@ -136,7 +133,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 self.ir.name,
                 self.ir.name,
                 if self.ir.is_exception {
-                    "implements Exception"
+                    "implements FrbException"
                 } else {
                     ""
                 },

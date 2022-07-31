@@ -10,7 +10,6 @@ pub struct IrTypeStructRef {
 
 impl IrTypeStructRef {
     pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
-        println!("getting name: {:?}", self.name);
         &f.struct_pool[&self.name]
     }
 }

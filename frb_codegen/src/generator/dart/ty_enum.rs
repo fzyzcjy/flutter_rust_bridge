@@ -116,7 +116,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         is_fields_named: true,
                         fields,
                         ..
-                    }) if fields.iter().any(|field| field.name.raw.contains("backtrace")));
+                    }) if fields.iter().any(|field| field.name.raw =="backtrace"));
                     let args = match &variant.kind {
                         IrVariantKind::Value => "".to_owned(),
                         IrVariantKind::Struct(IrStruct {
