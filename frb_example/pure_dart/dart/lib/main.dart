@@ -506,6 +506,11 @@ void main(List<String> args) async {
     expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<CustomError>()));
   });
 
+  test('Throw CustomError static method, verifies implements Frb', () async {
+    expect(
+        () async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<FrbBacktracedException>()));
+  });
+
   test('Do not throw CustomError static method', () async {
     expect(await SomeStruct.staticReturnOkCustomError(bridge: api), 3);
   });
