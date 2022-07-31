@@ -2,7 +2,15 @@
 
 There is support for Rust's `std::Result`, where you can return either a value or an error.
 
-## Example
+## `anyhow`
+
+You can use `anyhow::Result` as a return value, and backtraces will be captured automatically.
+
+## Custom errors
+
+Errors with custom fields are also supported, and you can even pass a backtrace.
+
+### Example 1: Without backtrace
 
 ```rust,noplayground
 
@@ -29,9 +37,9 @@ try {
 }
 ```
 
-## Backtrace example
+### Example 2: With backtrace
 
-Errors with custom fields are also supported, and you can even pass a backtrace
+Errors with custom fields are also supported, and you can even pass a backtrace:
 
 ```rust
 pub enum CustomStructError {
@@ -39,3 +47,5 @@ pub enum CustomStructError {
     Error1 { e: u32, backtrace: Backtrace },
 }
 ```
+
+As for how to fill it in or use it, you can refer to `thiserror` crate for some hints.
