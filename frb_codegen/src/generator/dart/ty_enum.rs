@@ -6,6 +6,16 @@ use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
+impl<'a> TypeEnumRefGenerator<'a> {
+    fn dart_implements(&self) -> &'static str {
+        if self.ir.is_exception {
+            "implements FrbException"
+        } else {
+            ""
+        }
+    }
+}
+
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
         None
@@ -162,12 +172,10 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             format!("{{ {} }}", fields.join(""))
                         }
                     };
-                    let implements_exception = {
-                        if self.ir.is_exception && has_backtrace {
-                            "@Implements<FrbBacktracedException>()"
-                        } else {
-                            ""
-                        }
+                    let implements_exception = if self.ir.is_exception && has_backtrace {
+                        "@Implements<FrbBacktracedException>()"
+                    } else {
+                        ""
                     };
                     format!(
                         "{} {}const factory {}.{}({}) = {};",
@@ -186,11 +194,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     {2}
                 }}",
                 self.ir.name,
-                if self.ir.is_exception {
-                    "implements FrbException"
-                } else {
-                    ""
-                },
+                self.dart_implements(),
                 variants.join("\n")
             )
         } else {

@@ -8,6 +8,16 @@ use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
+impl<'a> TypeStructRefGenerator<'a> {
+    fn dart_implements(&self) -> &'static str {
+        if self.ir.is_exception {
+            "implements FrbException"
+        } else {
+            ""
+        }
+    }
+}
+
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
         None
@@ -132,11 +142,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 metadata,
                 self.ir.name,
                 self.ir.name,
-                if self.ir.is_exception {
-                    "implements FrbException"
-                } else {
-                    ""
-                },
+                self.dart_implements(),
                 self.ir.name,
                 constructor_params,
                 self.ir.name,
@@ -189,11 +195,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 comments,
                 metadata,
                 self.ir.name,
-                if self.ir.is_exception {
-                    "implements FrbException"
-                } else {
-                    ""
-                },
+                self.dart_implements(),
                 field_declarations,
                 self.ir.name,
                 constructor_params,
