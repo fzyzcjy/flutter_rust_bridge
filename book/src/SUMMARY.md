@@ -68,7 +68,8 @@
 
 # Part III: Contributor Guide
 
-- [Introduction](contributing/intro.md)
+- [Overview](contributing/overview.md)
+- [Overall design](contributing/design.md)
 - [Appendix](contributing/appendix.md)
 
 # Part IV: More Doc
