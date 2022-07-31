@@ -40,17 +40,15 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
         let has_methods = methods.next().is_some();
-        let access = "arr";
         let mut inner = s
             .fields
             .iter()
             .enumerate()
             .map(|(idx, field)| {
                 format!(
-                    "{}: _wire2api_{}({}[{}]),",
+                    "{}: _wire2api_{}(arr[{}]),",
                     field.name.dart_style(),
                     field.ty.safe_ident(),
-                    access,
                     idx
                 )
             })
@@ -119,10 +117,11 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                     )
                 })
                 .collect::<Vec<_>>();
+
             if has_methods {
                 constructor_params.insert(0, extra_argument);
                 if self.ir.is_exception {
-                    constructor_params.push("Backtrace? backtrace".to_string());
+                    //constructor_params.push("Backtrace? backtrace".to_string());
                 }
             }
             let constructor_params = constructor_params.join("");

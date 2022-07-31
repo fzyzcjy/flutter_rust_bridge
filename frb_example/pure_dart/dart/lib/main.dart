@@ -517,6 +517,16 @@ void main(List<String> args) async {
   test('Throw CustomError nonstatic method', () async {
     expect(() async => await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError(),
         throwsA(isA<CustomError>()));
+    bool didCatch = false;
+    try {
+      await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError();
+    } catch (e) {
+      final FrbBacktracedException ex = e as FrbBacktracedException;
+      print("backtrace: ${ex.backtrace}");
+      assert(ex.backtrace.contains("wire_non_static_return_err_custom_error__method__SomeStruct::"));
+      didCatch = true;
+    }
+    assert(didCatch);
   });
 
   test('Do not throw CustomError nonstatic method', () async {
