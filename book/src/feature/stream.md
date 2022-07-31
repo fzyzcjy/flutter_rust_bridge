@@ -70,7 +70,7 @@ Of course, you can implement a logger following the Rust's `log` crate wrapping 
 
 ### Example: Simple timer
 
-Credits: https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744 and https://github.com/fzyzcjy/flutter_rust_bridge/issues/347
+Credits: [this](https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744) and [#347](https://github.com/fzyzcjy/flutter_rust_bridge/issues/347).
 
 ```rust,noplayground
 use anyhow::Result;
