@@ -160,9 +160,9 @@
 </ul>
 <h2 id="code-generator-structure"><a class="header" href="#code-generator-structure">Code-generator structure</a></h2>
 <p>The pipeline is as follows:</p>
-<pre><code>----------     parser      ------      generator       ---------------
-| api.rs | --------------&gt; | IR | -------------------&gt; | Rust &amp; Dart |
-----------                 ------                      ---------------
+<pre><code>----------    src/parser    ----------    src/generator     ---------------
+| api.rs | ---------------&gt; | src/ir | -------------------&gt; | Rust &amp; Dart |
+----------                  ----------                      ---------------
 </code></pre>
 <ul>
 <li>The input, <code>api.rs</code> in the figure, is the user-provided handwritten Rust code.</li>
