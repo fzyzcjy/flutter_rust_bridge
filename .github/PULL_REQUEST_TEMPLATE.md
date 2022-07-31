@@ -2,6 +2,10 @@
 
 ## Checklist
 
-- [ ] New tests are added to ensure new features are working (probably by modifying the `frb_example/pure_dart` example).
-- [ ] All existing and new tests are passing.
-- [ ] If this PR adds/changes features, documentations (in `book` folder) are modified as well.
+- [ ] An issue to be fixed by this PR is listed above.
+- [ ] New tests are added to ensure new features are working. End-to-end tests are usually in the `./frb_example/pure_dart` example, more specifically, `rust/src/api.rs` and `dart/lib/main.dart`.
+- [ ] The code generator has been run, and code changes are commited. (Otherwise, CI will fail.)
+- [ ] If this PR adds/changes features, documentations (in the `./book` folder) are updated.
+- [ ] CI is passing.
+
+Remark: If the PR is submitted but I do not reply for a few days, maybe I just did not see it, so please ping me.
