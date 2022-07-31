@@ -1427,7 +1427,31 @@ file, for example if you use this command instead:</p>
 <h2 id="overall-design"><a class="header" href="#overall-design">Overall design</a></h2>
 <p>To get a high-level idea how this library is implemented, here is the overall design: <a href="contributing/design.html">link</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="overall-design-1"><a class="header" href="#overall-design-1">Overall design</a></h1>
-<p>TODO: https://github.com/fzyzcjy/flutter_rust_bridge/issues/593</p>
+<blockquote>
+<p>This doc is still WIP. Tracking issue: https://github.com/fzyzcjy/flutter_rust_bridge/issues/593</p>
+</blockquote>
+<h2 id="folder-structure"><a class="header" href="#folder-structure">Folder structure</a></h2>
+<ul>
+<li><code>frb_codegen</code>: Code generator. It inputs <code>api.rs</code> and outputs Rust and Dart code files.</li>
+<li><code>frb_example</code>: Examples.
+<ul>
+<li><code>pure_dart</code>: Not only an example, but, more importantly, serves as end-to-end tests.</li>
+<li><code>with_flutter</code>: Example with integration into Flutter.</li>
+<li><code>pure_dart_multi</code>: Demonstrate multi-file usage.</li>
+</ul>
+</li>
+<li><code>frb_dart</code>: Support library for Dart - to be imported by users.</li>
+<li><code>frb_rust</code>: Support library for Rust - to be imported by users.</li>
+<li><code>frb_macros</code>: Indeed part of <code>frb_rust</code>. <small>It is a separate package simply because limitation of proc macros.</small></li>
+<li><code>book</code>: The documentation.</li>
+<li><code>.github</code>: GitHub-related.
+<ul>
+<li><code>workflows/ci.yaml</code>: Definition of CI workflows.</li>
+</ul>
+</li>
+</ul>
+<h2 id="todo"><a class="header" href="#todo">TODO</a></h2>
+<p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
 <blockquote>
 <p>Remark: Some docs here seem to be outdated. Refer to ci.yaml, main doc, justfile, etc to see an up-to-date version. This appendix will be overhauled.</p>
