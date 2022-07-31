@@ -257,7 +257,9 @@ scoop install flutter_rust_bridge_codegen
 # or with Homebrew
 brew install desdaemon/repo/flutter_rust_bridge_codegen
 </code></pre>
-<p>Then run the code generator. (It needs some installation steps. You may refer to <a href="tutorial_with_flutter.html">the tutorial</a>, <a href="template.html">create new projects from a template</a> or <a href="integrate.html">integrating with existing projects</a> for details.)</p>
+<p><small>(Remark: Thanks @Desdaemon for scripts to publish to brew/scoop)</small></p>
+<p>Then run the code generator.</p>
+<p><small>Remark: It needs some installation steps. You may refer to <a href="tutorial_with_flutter.html">the tutorial</a>, <a href="template.html">create new projects from a template</a> or <a href="integrate.html">integrating with existing projects</a> for details.</small></p>
 <pre><code class="language-bash">flutter_rust_bridge_codegen --rust-input path/to/api.rs \
                             --dart-output path/to/bridge_generated.dart
 </code></pre>
@@ -625,7 +627,7 @@ To fix this error you should just rerun <code>flutter_rust_bridge_codegen</code>
 </code></pre>
 <p>Of course, you can implement a logger following the Rust's <code>log</code> crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like <code>info!</code>. I exactly did that in my project.</p>
 <h3 id="example-simple-timer"><a class="header" href="#example-simple-timer">Example: Simple timer</a></h3>
-<p>Credits: https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744 and https://github.com/fzyzcjy/flutter_rust_bridge/issues/347</p>
+<p>Credits: <a href="https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744">this</a> and <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/347">#347</a>.</p>
 <pre><code class="language-rust noplayground">use anyhow::Result;
 use std::{thread::sleep, time::Duration};
 
@@ -785,7 +787,7 @@ impl MyExecutor {
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="initialization"><a class="header" href="#initialization">Initialization</a></h1>
-<p>If you want that feature, have a look at <code>FlutterRustBridgeSetupMixin</code> in the Dart side. (More documentaions to be added; you can create an issue if you have questions now)</p>
+<p>If you want that feature, have a look at <code>FlutterRustBridgeSetupMixin</code> in the Dart side. (More documentaions to be added; you can create an issue if you have questions now.)</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="async-in-rust"><a class="header" href="#async-in-rust">Async in Rust</a></h1>
 <p>To use async/await or return a Future type from your Rust functions, please refer to <a href="feature/../article/async_in_rust.html">this documentation</a>. If you have interest in more integrated generator, please create and issue.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="multiple-files"><a class="header" href="#multiple-files">Multiple files</a></h1>
@@ -803,7 +805,7 @@ impl MyExecutor {
 <p>The second approach is to integrate it into <code>build.rs</code> of your project. With this approach, the code generator is automatically triggered whenever you build your Rust project. For example configuration, have a look at this <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/build.rs">build.rs</a> file.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cancellable-tasks"><a class="header" href="#cancellable-tasks">Cancellable tasks</a></h1>
 <p>When the Rust code is computationally heavy, you may want to cancel it at the middle when, for example, the user does not need it anymore. Then the precious computation power can be saved.</p>
-<p>Installation: Currently, the feature is complete, and I have used it in my own app for a long time. (I have not merge this PR to the main repo just because I need to figure out how to put those code as if in <code>api.rs</code>.) Thus, visit https://github.com/fzyzcjy/flutter_rust_bridge/pull/333 and copy the code directly to your project, and use it as normal.</p>
+<p>Installation: Currently, the feature is complete, and I have used it in my own app for a long time. (I have not merge this PR to the main repo just because I need to figure out how to put those code as if in <code>api.rs</code>.) Thus, visit <a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/333">#333</a> and copy the code directly to your project, and use it as normal.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="object-pools"><a class="header" href="#object-pools">Object pools</a></h1>
 <p>When there are some big objects in the Rust side, you may not want to copy them between Rust and Dart over and over again. That is when object pools become useful: You only pass around a &quot;object handle&quot; (indeed just a few integers) between Rust and Dart, and the Rust side will convert that handle from and to the real object.</p>
 <p>Installation: Same as <a href="feature/cancelable_task.html">cancelable tasks</a>, please see doc there.</p>
