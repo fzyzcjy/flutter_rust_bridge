@@ -21,9 +21,9 @@
 The pipeline is as follows:
 
 ```
-----------     parser      ------      generator       ---------------
-| api.rs | --------------> | IR | -------------------> | Rust & Dart |
-----------                 ------                      ---------------
+----------    src/parser    ----------    src/generator     ---------------
+| api.rs | ---------------> | src/ir | -------------------> | Rust & Dart |
+----------                  ----------                      ---------------
 ```
 
 * The input, `api.rs` in the figure, is the user-provided handwritten Rust code.
