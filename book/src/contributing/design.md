@@ -32,6 +32,26 @@ The pipeline is as follows:
 * The generator (`src/generator`) converts the IR into final outputs. More specifcially, as you can probably guess, `src/generator/dart` generates Dart code, `src/generator/rust` is for Rust code, and `src/generator/c` is for (a bit of) C code.
 * The outputs (`Rust & Dart` in the figure) are written to corresponding files.
 
-## TODO
+## Data flow
+
+### Dart -> Rust
+
+TODO: a figure
+
+TODO: api2wire, wire2api
+
+### Rust -> Dart
+
+TODO: a figure
+
+TODO: api2wire, wire2api
+
+### A function call
 
 TODO
+
+## Data copies
+
+TODO: normal case
+
+TODO: ZeroCopyBuffer and its impl
