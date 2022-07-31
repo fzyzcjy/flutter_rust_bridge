@@ -409,8 +409,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
         && f.struct_name().unwrap() == {
             if let IrType::StructRef(IrTypeStructRef {
                 name,
-                freezed: _,
-                is_exception: _,
+                ..
             }) = &func.output
             {
                 name.clone()
@@ -430,9 +429,9 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     };
 
     let parse_error_data = if let Some(error_output) = &func.error_output {
-        format!("parseErrorData: _wire2api_{},", error_output.safe_ident())
+        format!("_wire2api_{},", error_output.safe_ident())
     } else {
-        "parseErrorData: null,".to_string()
+        "null,".to_string()
     };
 
     let implementation = match func.mode {
@@ -451,7 +450,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             "{} => {}(FlutterRustBridgeTask(
             callFfi: (port_) => inner.{}({}),
             parseSuccessData: {},
-            {}
+            parseErrorData: {}
             {}
         ));",
             partial,
@@ -534,7 +533,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
 }
 
 fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
-    let extra_argument = if matches!(ty, StructRef(IrTypeStructRef { name, freezed: _ , is_exception: _}) if MethodNamingUtil::has_methods(name, ir_file))
+    let extra_argument = if matches!(ty, StructRef(IrTypeStructRef { name, ..}) if MethodNamingUtil::has_methods(name, ir_file))
     {
         format!("{} bridge,", dart_api_class_name)
     } else {

@@ -90,7 +90,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
         assert(raw.length == 2);
         return parseSuccessData(raw[1]);
       case _RUST2DART_ACTION_ERROR:
-        assert(raw.length == 5);
+        assert(raw.length == 2);
         if (parseErrorData != null) {
           throw parseErrorData(raw[1]);
         }
@@ -177,17 +177,10 @@ abstract class FlutterRustBridgeWireBase {
 
 class _CloseStreamException {}
 
-class Backtrace {
-  Backtrace(this.backtrace);
-  final String backtrace;
-  @override
-  String toString() => backtrace;
-}
-
 class FrbException implements Exception {}
 
-abstract class FrbBacktracedException {
-  String? get backtrace;
+abstract class FrbBacktracedException extends FrbException {
+  String get backtrace;
 }
 
 // NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust

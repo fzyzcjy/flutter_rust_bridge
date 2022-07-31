@@ -282,14 +282,6 @@ pub enum Error {
 }
 
 impl Error {
-    /// The identifier of the type of error.
-    pub fn code(&self) -> &'static str {
-        match self {
-            Error::CustomError(_) => "RESULT_ERROR",
-            Error::Panic(_) => "PANIC_ERROR",
-        }
-    }
-
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
@@ -344,6 +336,6 @@ impl ErrorHandler for ReportDartErrorHandler {
     }
 
     fn handle_error_sync(&self, error: Error) -> Vec<u8> {
-        error.code().to_string().into_bytes()
+        format!("{}", error.message()).into_bytes()
     }
 }

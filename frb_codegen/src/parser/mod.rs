@@ -73,6 +73,7 @@ impl<'a> Parser<'a> {
                     .convert_to_ir_type(generic.remove(0), false)
                     .unwrap();
                 let second_argument = if generic.len() == 1 {
+                    println!("parsing second argument: {:?}", generic);
                     Some(
                         self.type_parser
                             .convert_to_ir_type(generic.remove(0), true)

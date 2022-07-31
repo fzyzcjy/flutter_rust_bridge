@@ -189,6 +189,7 @@ impl<'a> TypeParser<'a> {
         mut p: SupportedPathType,
         is_exception: bool,
     ) -> Option<IrType> {
+        println!("convert path");
         let p_as_str = format!("{}", &p);
         let ident_string = &p.ident.to_string();
         if !p.generic.is_empty() {
@@ -270,15 +271,30 @@ impl<'a> TypeParser<'a> {
                             other => IrType::Optional(IrTypeOptional::new_ptr(other)),
                         })
                 }
+                "Error" => {
+                    panic!("is anyhow error");
+                }
                 _ => None,
             }
         } else {
+            println!("else case");
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {
                     if ident_string == "String" {
                         Some(IrType::Delegate(IrTypeDelegate::String))
-                    } else if self.src_structs.contains_key(ident_string) {
+                    } 
+                    /* 
+                    else if ident_string == "Error" {
+                        //debug_assert!(self.src_structs.contains_key("AnyhowError"));
+                        Some(StructRef(IrTypeStructRef {
+                            name: "AnyhowError".to_string(),
+                            freezed: false,
+                            is_exception: true,
+                        }))
+                    } 
+                    */
+                    else if self.src_structs.contains_key(ident_string) {
                         if !self.parsing_or_parsed_struct_names.contains(ident_string) {
                             self.parsing_or_parsed_struct_names
                                 .insert(ident_string.to_owned());

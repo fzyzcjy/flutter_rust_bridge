@@ -523,6 +523,10 @@ void main(List<String> args) async {
     expect(await SomeStruct(bridge: api, value: 6).nonStaticReturnOkCustomError(), 6);
   });
 
+  test('Throw anyhow error', () async {
+    expect(() async => await api.throwAnyhow(), throwsA("anyhow error"));
+  });
+
   print('flutter_rust_bridge example program end');
 }
 

@@ -208,7 +208,7 @@ pub fn handle_stream_of_struct(sink: StreamSink<MyStreamEntry>) -> Result<()> {
     Ok(())
 }
 
-pub fn return_err() -> Result<i32> {
+pub fn return_err() -> anyhow::Result<i32> {
     Err(anyhow!(
         "return_err() is called, thus deliberately return Err"
     ))
@@ -852,3 +852,9 @@ impl CustomStruct {
         Ok(3)
     }
 }
+
+/*
+pub fn throw_anyhow() -> Result<(), anyhow::Error> {
+    Err(anyhow!("anyhow error"))
+}
+*/
