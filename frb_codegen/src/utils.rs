@@ -71,6 +71,14 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
     Ok(all_symbols)
 }
 
+pub fn first<T>(vec: &Vec<T>) -> Option<&T> {
+    vec.get(0)
+}
+
+pub fn remove_first<T>(vec: &mut Vec<T>) -> T {
+    vec.remove(0)
+}
+
 #[derive(PartialEq, Eq, Debug, Clone, Copy)]
 pub struct BlockIndex(pub usize);
 

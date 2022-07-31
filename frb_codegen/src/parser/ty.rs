@@ -11,6 +11,7 @@ use crate::markers;
 use crate::source_graph::{Enum, Struct};
 
 use crate::parser::{extract_comments, extract_metadata, type_to_string};
+use crate::utils::{first, remove_first};
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
@@ -196,13 +197,14 @@ impl<'a> TypeParser<'a> {
         if !p.generic.is_empty() {
             match ident_string.as_str() {
                 "SyncReturn" => {
+                    println!("SYNC RETURN CASE!");
                     // Special-case SyncReturn<Vec<u8>>. SyncReturn for any other type is not
                     // supported.
-                    match &p.generic[0] {
+                    match first(&p.generic).unwrap() {
                         SupportedInnerType::Path(SupportedPathType { ident, generic, .. })
                             if ident == "Vec" && !generic.is_empty() =>
                         {
-                            match &generic[0] {
+                            match first(&generic).unwrap() {
                                 SupportedInnerType::Path(SupportedPathType {
                                     ident,
                                     generic,
@@ -218,11 +220,11 @@ impl<'a> TypeParser<'a> {
                 }
                 "Vec" => {
                     // Special-case Vec<String> as StringList
-                    if matches!(p.generic[0], SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
+                    if matches!(first(&p.generic).unwrap(), SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
                     {
                         Some(IrType::Delegate(IrTypeDelegate::StringList))
                     } else {
-                        self.convert_to_ir_type(p.generic.remove(0), is_exception)
+                        self.convert_to_ir_type(remove_first(&mut p.generic), is_exception)
                             .map(|inner| match inner {
                                 Primitive(primitive) => {
                                     PrimitiveList(IrTypePrimitiveList { primitive })
@@ -234,7 +236,7 @@ impl<'a> TypeParser<'a> {
                     }
                 }
                 "ZeroCopyBuffer" => {
-                    let inner = self.convert_to_ir_type(p.generic.remove(0), is_exception);
+                    let inner = self.convert_to_ir_type(remove_first(&mut p.generic), is_exception);
                     if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) = inner {
                         Some(IrType::Delegate(
                             IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
@@ -253,14 +255,14 @@ impl<'a> TypeParser<'a> {
                     }),
                 "Option" => {
                     // Disallow nested Option
-                    if matches!(p.generic[0], SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
+                    if matches!(first(&p.generic).unwrap(), SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
                     {
                         panic!(
                             "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
                             p_as_str
                         );
                     }
-                    self.convert_to_ir_type(p.generic.remove(0), is_exception)
+                    self.convert_to_ir_type(remove_first(&mut p.generic), is_exception)
                         .map(|inner| match inner {
                             Primitive(prim) => IrType::Optional(IrTypeOptional::new_prim(prim)),
                             st @ StructRef(_) => {
@@ -271,9 +273,6 @@ impl<'a> TypeParser<'a> {
                             }
                             other => IrType::Optional(IrTypeOptional::new_ptr(other)),
                         })
-                }
-                "Error" => {
-                    panic!("is anyhow error");
                 }
                 _ => None,
             }

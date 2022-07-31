@@ -61,7 +61,7 @@ impl<'a> Parser<'a> {
     /// case for top-level `Result` types.
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
         let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
-
+        println!("parsing inner: {:?}", inner);
         match inner {
             ty::SupportedInnerType::Path(ty::SupportedPathType {
                 ident, mut generic, ..
