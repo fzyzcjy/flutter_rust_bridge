@@ -1450,6 +1450,19 @@ file, for example if you use this command instead:</p>
 </ul>
 </li>
 </ul>
+<h2 id="code-generator-structure"><a class="header" href="#code-generator-structure">Code-generator structure</a></h2>
+<p>The pipeline is as follows:</p>
+<pre><code>----------     parser      ------      generator       ---------------
+| api.rs | --------------&gt; | IR | -------------------&gt; | Rust &amp; Dart |
+----------                 ------                      ---------------
+</code></pre>
+<ul>
+<li>The input, <code>api.rs</code> in the figure, is the user-provided handwritten Rust code.</li>
+<li>The parser (<code>src/parser</code>) converts the input code (indeed <a href="https://crates.io/crates/syn">syn</a> tree) into IR.</li>
+<li>IR (<code>src/ir</code>), or internal representation, is a data structure that represents the information of the code that we are interested in.</li>
+<li>The generator (<code>src/generator</code>) converts the IR into final outputs. More specifcially, as you can probably guess, <code>src/generator/dart</code> generates Dart code, <code>src/generator/rust</code> is for Rust code, and <code>src/generator/c</code> is for (a bit of) C code.</li>
+<li>The outputs (<code>Rust &amp; Dart</code> in the figure) are written to corresponding files.</li>
+</ul>
 <h2 id="todo"><a class="header" href="#todo">TODO</a></h2>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
