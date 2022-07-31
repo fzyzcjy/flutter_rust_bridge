@@ -283,8 +283,8 @@ impl<'a> TypeParser<'a> {
                 .or_else(|| {
                     if ident_string == "String" {
                         Some(IrType::Delegate(IrTypeDelegate::String))
-                    } 
-                    /* 
+                    }
+                    /*
                     else if ident_string == "Error" {
                         //debug_assert!(self.src_structs.contains_key("AnyhowError"));
                         Some(StructRef(IrTypeStructRef {
@@ -292,7 +292,7 @@ impl<'a> TypeParser<'a> {
                             freezed: false,
                             is_exception: true,
                         }))
-                    } 
+                    }
                     */
                     else if self.src_structs.contains_key(ident_string) {
                         if !self.parsing_or_parsed_struct_names.contains(ident_string) {
