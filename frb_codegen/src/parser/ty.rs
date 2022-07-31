@@ -311,6 +311,7 @@ impl<'a> TypeParser<'a> {
             .iter()
             .map(|variant| IrVariant {
                 name: IrIdent::new(variant.ident.to_string()),
+                wrapper_name: IrIdent::new(format!("{}_{}_Variant", src_enum.ident, variant.ident)),
                 comments: extract_comments(&variant.attrs),
                 kind: match variant.fields.iter().next() {
                     None => IrVariantKind::Value,

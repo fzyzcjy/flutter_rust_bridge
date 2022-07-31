@@ -116,6 +116,7 @@ impl IrEnum {
 #[derive(Debug, Clone)]
 pub struct IrVariant {
     pub name: IrIdent,
+    pub wrapper_name: IrIdent,
     pub comments: Vec<IrComment>,
     pub kind: IrVariantKind,
 }

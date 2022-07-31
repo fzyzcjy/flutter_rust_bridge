@@ -15,6 +15,341 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
+mixin _$API {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(KilometerPoint field0) kilometerPoint,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(KilometerPoint field0)? kilometerPoint,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(KilometerPoint field0)? kilometerPoint,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(API_Speed_Variant value) speed,
+    required TResult Function(API_KilometerPoint_Variant value) kilometerPoint,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(API_Speed_Variant value)? speed,
+    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(API_Speed_Variant value)? speed,
+    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $APICopyWith<$Res> {
+  factory $APICopyWith(API value, $Res Function(API) then) = _$APICopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$APICopyWithImpl<$Res> implements $APICopyWith<$Res> {
+  _$APICopyWithImpl(this._value, this._then);
+
+  final API _value;
+  // ignore: unused_field
+  final $Res Function(API) _then;
+}
+
+/// @nodoc
+abstract class _$$API_Speed_VariantCopyWith<$Res> {
+  factory _$$API_Speed_VariantCopyWith(_$API_Speed_Variant value, $Res Function(_$API_Speed_Variant) then) =
+      __$$API_Speed_VariantCopyWithImpl<$Res>;
+  $Res call({Speed field0});
+
+  $SpeedCopyWith<$Res> get field0;
+}
+
+/// @nodoc
+class __$$API_Speed_VariantCopyWithImpl<$Res> extends _$APICopyWithImpl<$Res>
+    implements _$$API_Speed_VariantCopyWith<$Res> {
+  __$$API_Speed_VariantCopyWithImpl(_$API_Speed_Variant _value, $Res Function(_$API_Speed_Variant) _then)
+      : super(_value, (v) => _then(v as _$API_Speed_Variant));
+
+  @override
+  _$API_Speed_Variant get _value => super._value as _$API_Speed_Variant;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$API_Speed_Variant(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Speed,
+    ));
+  }
+
+  @override
+  $SpeedCopyWith<$Res> get field0 {
+    return $SpeedCopyWith<$Res>(_value.field0, (value) {
+      return _then(_value.copyWith(field0: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$API_Speed_Variant implements API_Speed_Variant {
+  const _$API_Speed_Variant(this.field0);
+
+  @override
+  final Speed field0;
+
+  @override
+  String toString() {
+    return 'API.speed(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$API_Speed_Variant &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$API_Speed_VariantCopyWith<_$API_Speed_Variant> get copyWith =>
+      __$$API_Speed_VariantCopyWithImpl<_$API_Speed_Variant>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(KilometerPoint field0) kilometerPoint,
+  }) {
+    return speed(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(KilometerPoint field0)? kilometerPoint,
+  }) {
+    return speed?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(KilometerPoint field0)? kilometerPoint,
+    required TResult orElse(),
+  }) {
+    if (speed != null) {
+      return speed(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(API_Speed_Variant value) speed,
+    required TResult Function(API_KilometerPoint_Variant value) kilometerPoint,
+  }) {
+    return speed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(API_Speed_Variant value)? speed,
+    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
+  }) {
+    return speed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(API_Speed_Variant value)? speed,
+    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
+    required TResult orElse(),
+  }) {
+    if (speed != null) {
+      return speed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class API_Speed_Variant implements API {
+  const factory API_Speed_Variant(final Speed field0) = _$API_Speed_Variant;
+
+  Speed get field0;
+  @JsonKey(ignore: true)
+  _$$API_Speed_VariantCopyWith<_$API_Speed_Variant> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$API_KilometerPoint_VariantCopyWith<$Res> {
+  factory _$$API_KilometerPoint_VariantCopyWith(
+          _$API_KilometerPoint_Variant value, $Res Function(_$API_KilometerPoint_Variant) then) =
+      __$$API_KilometerPoint_VariantCopyWithImpl<$Res>;
+  $Res call({KilometerPoint field0});
+
+  $KilometerPointCopyWith<$Res> get field0;
+}
+
+/// @nodoc
+class __$$API_KilometerPoint_VariantCopyWithImpl<$Res> extends _$APICopyWithImpl<$Res>
+    implements _$$API_KilometerPoint_VariantCopyWith<$Res> {
+  __$$API_KilometerPoint_VariantCopyWithImpl(
+      _$API_KilometerPoint_Variant _value, $Res Function(_$API_KilometerPoint_Variant) _then)
+      : super(_value, (v) => _then(v as _$API_KilometerPoint_Variant));
+
+  @override
+  _$API_KilometerPoint_Variant get _value => super._value as _$API_KilometerPoint_Variant;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$API_KilometerPoint_Variant(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as KilometerPoint,
+    ));
+  }
+
+  @override
+  $KilometerPointCopyWith<$Res> get field0 {
+    return $KilometerPointCopyWith<$Res>(_value.field0, (value) {
+      return _then(_value.copyWith(field0: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$API_KilometerPoint_Variant implements API_KilometerPoint_Variant {
+  const _$API_KilometerPoint_Variant(this.field0);
+
+  @override
+  final KilometerPoint field0;
+
+  @override
+  String toString() {
+    return 'API.kilometerPoint(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$API_KilometerPoint_Variant &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$API_KilometerPoint_VariantCopyWith<_$API_KilometerPoint_Variant> get copyWith =>
+      __$$API_KilometerPoint_VariantCopyWithImpl<_$API_KilometerPoint_Variant>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(KilometerPoint field0) kilometerPoint,
+  }) {
+    return kilometerPoint(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(KilometerPoint field0)? kilometerPoint,
+  }) {
+    return kilometerPoint?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(KilometerPoint field0)? kilometerPoint,
+    required TResult orElse(),
+  }) {
+    if (kilometerPoint != null) {
+      return kilometerPoint(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(API_Speed_Variant value) speed,
+    required TResult Function(API_KilometerPoint_Variant value) kilometerPoint,
+  }) {
+    return kilometerPoint(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(API_Speed_Variant value)? speed,
+    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
+  }) {
+    return kilometerPoint?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(API_Speed_Variant value)? speed,
+    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
+    required TResult orElse(),
+  }) {
+    if (kilometerPoint != null) {
+      return kilometerPoint(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class API_KilometerPoint_Variant implements API {
+  const factory API_KilometerPoint_Variant(final KilometerPoint field0) = _$API_KilometerPoint_Variant;
+
+  KilometerPoint get field0;
+  @JsonKey(ignore: true)
+  _$$API_KilometerPoint_VariantCopyWith<_$API_KilometerPoint_Variant> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ApplicationMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -40,23 +375,23 @@ mixin _$ApplicationMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DisplayMessage value) displayMessage,
-    required TResult Function(RenderPixel value) renderPixel,
-    required TResult Function(Exit value) exit,
+    required TResult Function(ApplicationMessage_DisplayMessage_Variant value) displayMessage,
+    required TResult Function(ApplicationMessage_RenderPixel_Variant value) renderPixel,
+    required TResult Function(ApplicationMessage_Exit_Variant value) exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(DisplayMessage value)? displayMessage,
-    TResult Function(RenderPixel value)? renderPixel,
-    TResult Function(Exit value)? exit,
+    TResult Function(ApplicationMessage_DisplayMessage_Variant value)? displayMessage,
+    TResult Function(ApplicationMessage_RenderPixel_Variant value)? renderPixel,
+    TResult Function(ApplicationMessage_Exit_Variant value)? exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DisplayMessage value)? displayMessage,
-    TResult Function(RenderPixel value)? renderPixel,
-    TResult Function(Exit value)? exit,
+    TResult Function(ApplicationMessage_DisplayMessage_Variant value)? displayMessage,
+    TResult Function(ApplicationMessage_RenderPixel_Variant value)? renderPixel,
+    TResult Function(ApplicationMessage_Exit_Variant value)? exit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,26 +413,28 @@ class _$ApplicationMessageCopyWithImpl<$Res> implements $ApplicationMessageCopyW
 }
 
 /// @nodoc
-abstract class _$$DisplayMessageCopyWith<$Res> {
-  factory _$$DisplayMessageCopyWith(_$DisplayMessage value, $Res Function(_$DisplayMessage) then) =
-      __$$DisplayMessageCopyWithImpl<$Res>;
+abstract class _$$ApplicationMessage_DisplayMessage_VariantCopyWith<$Res> {
+  factory _$$ApplicationMessage_DisplayMessage_VariantCopyWith(_$ApplicationMessage_DisplayMessage_Variant value,
+          $Res Function(_$ApplicationMessage_DisplayMessage_Variant) then) =
+      __$$ApplicationMessage_DisplayMessage_VariantCopyWithImpl<$Res>;
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$DisplayMessageCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
-    implements _$$DisplayMessageCopyWith<$Res> {
-  __$$DisplayMessageCopyWithImpl(_$DisplayMessage _value, $Res Function(_$DisplayMessage) _then)
-      : super(_value, (v) => _then(v as _$DisplayMessage));
+class __$$ApplicationMessage_DisplayMessage_VariantCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
+    implements _$$ApplicationMessage_DisplayMessage_VariantCopyWith<$Res> {
+  __$$ApplicationMessage_DisplayMessage_VariantCopyWithImpl(_$ApplicationMessage_DisplayMessage_Variant _value,
+      $Res Function(_$ApplicationMessage_DisplayMessage_Variant) _then)
+      : super(_value, (v) => _then(v as _$ApplicationMessage_DisplayMessage_Variant));
 
   @override
-  _$DisplayMessage get _value => super._value as _$DisplayMessage;
+  _$ApplicationMessage_DisplayMessage_Variant get _value => super._value as _$ApplicationMessage_DisplayMessage_Variant;
 
   @override
   $Res call({
     Object? field0 = freezed,
   }) {
-    return _then(_$DisplayMessage(
+    return _then(_$ApplicationMessage_DisplayMessage_Variant(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -108,8 +445,8 @@ class __$$DisplayMessageCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithI
 
 /// @nodoc
 
-class _$DisplayMessage implements DisplayMessage {
-  const _$DisplayMessage(this.field0);
+class _$ApplicationMessage_DisplayMessage_Variant implements ApplicationMessage_DisplayMessage_Variant {
+  const _$ApplicationMessage_DisplayMessage_Variant(this.field0);
 
   @override
   final String field0;
@@ -123,7 +460,7 @@ class _$DisplayMessage implements DisplayMessage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DisplayMessage &&
+            other is _$ApplicationMessage_DisplayMessage_Variant &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -132,8 +469,9 @@ class _$DisplayMessage implements DisplayMessage {
 
   @JsonKey(ignore: true)
   @override
-  _$$DisplayMessageCopyWith<_$DisplayMessage> get copyWith =>
-      __$$DisplayMessageCopyWithImpl<_$DisplayMessage>(this, _$identity);
+  _$$ApplicationMessage_DisplayMessage_VariantCopyWith<_$ApplicationMessage_DisplayMessage_Variant> get copyWith =>
+      __$$ApplicationMessage_DisplayMessage_VariantCopyWithImpl<_$ApplicationMessage_DisplayMessage_Variant>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -172,9 +510,9 @@ class _$DisplayMessage implements DisplayMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DisplayMessage value) displayMessage,
-    required TResult Function(RenderPixel value) renderPixel,
-    required TResult Function(Exit value) exit,
+    required TResult Function(ApplicationMessage_DisplayMessage_Variant value) displayMessage,
+    required TResult Function(ApplicationMessage_RenderPixel_Variant value) renderPixel,
+    required TResult Function(ApplicationMessage_Exit_Variant value) exit,
   }) {
     return displayMessage(this);
   }
@@ -182,9 +520,9 @@ class _$DisplayMessage implements DisplayMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(DisplayMessage value)? displayMessage,
-    TResult Function(RenderPixel value)? renderPixel,
-    TResult Function(Exit value)? exit,
+    TResult Function(ApplicationMessage_DisplayMessage_Variant value)? displayMessage,
+    TResult Function(ApplicationMessage_RenderPixel_Variant value)? renderPixel,
+    TResult Function(ApplicationMessage_Exit_Variant value)? exit,
   }) {
     return displayMessage?.call(this);
   }
@@ -192,9 +530,9 @@ class _$DisplayMessage implements DisplayMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DisplayMessage value)? displayMessage,
-    TResult Function(RenderPixel value)? renderPixel,
-    TResult Function(Exit value)? exit,
+    TResult Function(ApplicationMessage_DisplayMessage_Variant value)? displayMessage,
+    TResult Function(ApplicationMessage_RenderPixel_Variant value)? renderPixel,
+    TResult Function(ApplicationMessage_Exit_Variant value)? exit,
     required TResult orElse(),
   }) {
     if (displayMessage != null) {
@@ -204,36 +542,40 @@ class _$DisplayMessage implements DisplayMessage {
   }
 }
 
-abstract class DisplayMessage implements ApplicationMessage {
-  const factory DisplayMessage(final String field0) = _$DisplayMessage;
+abstract class ApplicationMessage_DisplayMessage_Variant implements ApplicationMessage {
+  const factory ApplicationMessage_DisplayMessage_Variant(final String field0) =
+      _$ApplicationMessage_DisplayMessage_Variant;
 
   String get field0;
   @JsonKey(ignore: true)
-  _$$DisplayMessageCopyWith<_$DisplayMessage> get copyWith => throw _privateConstructorUsedError;
+  _$$ApplicationMessage_DisplayMessage_VariantCopyWith<_$ApplicationMessage_DisplayMessage_Variant> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RenderPixelCopyWith<$Res> {
-  factory _$$RenderPixelCopyWith(_$RenderPixel value, $Res Function(_$RenderPixel) then) =
-      __$$RenderPixelCopyWithImpl<$Res>;
+abstract class _$$ApplicationMessage_RenderPixel_VariantCopyWith<$Res> {
+  factory _$$ApplicationMessage_RenderPixel_VariantCopyWith(_$ApplicationMessage_RenderPixel_Variant value,
+          $Res Function(_$ApplicationMessage_RenderPixel_Variant) then) =
+      __$$ApplicationMessage_RenderPixel_VariantCopyWithImpl<$Res>;
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class __$$RenderPixelCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
-    implements _$$RenderPixelCopyWith<$Res> {
-  __$$RenderPixelCopyWithImpl(_$RenderPixel _value, $Res Function(_$RenderPixel) _then)
-      : super(_value, (v) => _then(v as _$RenderPixel));
+class __$$ApplicationMessage_RenderPixel_VariantCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
+    implements _$$ApplicationMessage_RenderPixel_VariantCopyWith<$Res> {
+  __$$ApplicationMessage_RenderPixel_VariantCopyWithImpl(
+      _$ApplicationMessage_RenderPixel_Variant _value, $Res Function(_$ApplicationMessage_RenderPixel_Variant) _then)
+      : super(_value, (v) => _then(v as _$ApplicationMessage_RenderPixel_Variant));
 
   @override
-  _$RenderPixel get _value => super._value as _$RenderPixel;
+  _$ApplicationMessage_RenderPixel_Variant get _value => super._value as _$ApplicationMessage_RenderPixel_Variant;
 
   @override
   $Res call({
     Object? x = freezed,
     Object? y = freezed,
   }) {
-    return _then(_$RenderPixel(
+    return _then(_$ApplicationMessage_RenderPixel_Variant(
       x: x == freezed
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -248,8 +590,8 @@ class __$$RenderPixelCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl
 
 /// @nodoc
 
-class _$RenderPixel implements RenderPixel {
-  const _$RenderPixel({required this.x, required this.y});
+class _$ApplicationMessage_RenderPixel_Variant implements ApplicationMessage_RenderPixel_Variant {
+  const _$ApplicationMessage_RenderPixel_Variant({required this.x, required this.y});
 
   @override
   final int x;
@@ -265,7 +607,7 @@ class _$RenderPixel implements RenderPixel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RenderPixel &&
+            other is _$ApplicationMessage_RenderPixel_Variant &&
             const DeepCollectionEquality().equals(other.x, x) &&
             const DeepCollectionEquality().equals(other.y, y));
   }
@@ -276,7 +618,9 @@ class _$RenderPixel implements RenderPixel {
 
   @JsonKey(ignore: true)
   @override
-  _$$RenderPixelCopyWith<_$RenderPixel> get copyWith => __$$RenderPixelCopyWithImpl<_$RenderPixel>(this, _$identity);
+  _$$ApplicationMessage_RenderPixel_VariantCopyWith<_$ApplicationMessage_RenderPixel_Variant> get copyWith =>
+      __$$ApplicationMessage_RenderPixel_VariantCopyWithImpl<_$ApplicationMessage_RenderPixel_Variant>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -315,9 +659,9 @@ class _$RenderPixel implements RenderPixel {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DisplayMessage value) displayMessage,
-    required TResult Function(RenderPixel value) renderPixel,
-    required TResult Function(Exit value) exit,
+    required TResult Function(ApplicationMessage_DisplayMessage_Variant value) displayMessage,
+    required TResult Function(ApplicationMessage_RenderPixel_Variant value) renderPixel,
+    required TResult Function(ApplicationMessage_Exit_Variant value) exit,
   }) {
     return renderPixel(this);
   }
@@ -325,9 +669,9 @@ class _$RenderPixel implements RenderPixel {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(DisplayMessage value)? displayMessage,
-    TResult Function(RenderPixel value)? renderPixel,
-    TResult Function(Exit value)? exit,
+    TResult Function(ApplicationMessage_DisplayMessage_Variant value)? displayMessage,
+    TResult Function(ApplicationMessage_RenderPixel_Variant value)? renderPixel,
+    TResult Function(ApplicationMessage_Exit_Variant value)? exit,
   }) {
     return renderPixel?.call(this);
   }
@@ -335,9 +679,9 @@ class _$RenderPixel implements RenderPixel {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DisplayMessage value)? displayMessage,
-    TResult Function(RenderPixel value)? renderPixel,
-    TResult Function(Exit value)? exit,
+    TResult Function(ApplicationMessage_DisplayMessage_Variant value)? displayMessage,
+    TResult Function(ApplicationMessage_RenderPixel_Variant value)? renderPixel,
+    TResult Function(ApplicationMessage_Exit_Variant value)? exit,
     required TResult orElse(),
   }) {
     if (renderPixel != null) {
@@ -347,32 +691,39 @@ class _$RenderPixel implements RenderPixel {
   }
 }
 
-abstract class RenderPixel implements ApplicationMessage {
-  const factory RenderPixel({required final int x, required final int y}) = _$RenderPixel;
+abstract class ApplicationMessage_RenderPixel_Variant implements ApplicationMessage {
+  const factory ApplicationMessage_RenderPixel_Variant({required final int x, required final int y}) =
+      _$ApplicationMessage_RenderPixel_Variant;
 
   int get x;
   int get y;
   @JsonKey(ignore: true)
-  _$$RenderPixelCopyWith<_$RenderPixel> get copyWith => throw _privateConstructorUsedError;
+  _$$ApplicationMessage_RenderPixel_VariantCopyWith<_$ApplicationMessage_RenderPixel_Variant> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ExitCopyWith<$Res> {
-  factory _$$ExitCopyWith(_$Exit value, $Res Function(_$Exit) then) = __$$ExitCopyWithImpl<$Res>;
+abstract class _$$ApplicationMessage_Exit_VariantCopyWith<$Res> {
+  factory _$$ApplicationMessage_Exit_VariantCopyWith(
+          _$ApplicationMessage_Exit_Variant value, $Res Function(_$ApplicationMessage_Exit_Variant) then) =
+      __$$ApplicationMessage_Exit_VariantCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ExitCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res> implements _$$ExitCopyWith<$Res> {
-  __$$ExitCopyWithImpl(_$Exit _value, $Res Function(_$Exit) _then) : super(_value, (v) => _then(v as _$Exit));
+class __$$ApplicationMessage_Exit_VariantCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
+    implements _$$ApplicationMessage_Exit_VariantCopyWith<$Res> {
+  __$$ApplicationMessage_Exit_VariantCopyWithImpl(
+      _$ApplicationMessage_Exit_Variant _value, $Res Function(_$ApplicationMessage_Exit_Variant) _then)
+      : super(_value, (v) => _then(v as _$ApplicationMessage_Exit_Variant));
 
   @override
-  _$Exit get _value => super._value as _$Exit;
+  _$ApplicationMessage_Exit_Variant get _value => super._value as _$ApplicationMessage_Exit_Variant;
 }
 
 /// @nodoc
 
-class _$Exit implements Exit {
-  const _$Exit();
+class _$ApplicationMessage_Exit_Variant implements ApplicationMessage_Exit_Variant {
+  const _$ApplicationMessage_Exit_Variant();
 
   @override
   String toString() {
@@ -381,7 +732,7 @@ class _$Exit implements Exit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Exit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ApplicationMessage_Exit_Variant);
   }
 
   @override
@@ -424,9 +775,9 @@ class _$Exit implements Exit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DisplayMessage value) displayMessage,
-    required TResult Function(RenderPixel value) renderPixel,
-    required TResult Function(Exit value) exit,
+    required TResult Function(ApplicationMessage_DisplayMessage_Variant value) displayMessage,
+    required TResult Function(ApplicationMessage_RenderPixel_Variant value) renderPixel,
+    required TResult Function(ApplicationMessage_Exit_Variant value) exit,
   }) {
     return exit(this);
   }
@@ -434,9 +785,9 @@ class _$Exit implements Exit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(DisplayMessage value)? displayMessage,
-    TResult Function(RenderPixel value)? renderPixel,
-    TResult Function(Exit value)? exit,
+    TResult Function(ApplicationMessage_DisplayMessage_Variant value)? displayMessage,
+    TResult Function(ApplicationMessage_RenderPixel_Variant value)? renderPixel,
+    TResult Function(ApplicationMessage_Exit_Variant value)? exit,
   }) {
     return exit?.call(this);
   }
@@ -444,9 +795,9 @@ class _$Exit implements Exit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DisplayMessage value)? displayMessage,
-    TResult Function(RenderPixel value)? renderPixel,
-    TResult Function(Exit value)? exit,
+    TResult Function(ApplicationMessage_DisplayMessage_Variant value)? displayMessage,
+    TResult Function(ApplicationMessage_RenderPixel_Variant value)? renderPixel,
+    TResult Function(ApplicationMessage_Exit_Variant value)? exit,
     required TResult orElse(),
   }) {
     if (exit != null) {
@@ -456,8 +807,300 @@ class _$Exit implements Exit {
   }
 }
 
-abstract class Exit implements ApplicationMessage {
-  const factory Exit() = _$Exit;
+abstract class ApplicationMessage_Exit_Variant implements ApplicationMessage {
+  const factory ApplicationMessage_Exit_Variant() = _$ApplicationMessage_Exit_Variant;
+}
+
+/// @nodoc
+mixin _$KilometerPoint {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) sncf,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? sncf,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? sncf,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(KilometerPoint_Unknown_Variant value) unknown,
+    required TResult Function(KilometerPoint_SNCF_Variant value) sncf,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
+    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
+    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $KilometerPointCopyWith<$Res> {
+  factory $KilometerPointCopyWith(KilometerPoint value, $Res Function(KilometerPoint) then) =
+      _$KilometerPointCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$KilometerPointCopyWithImpl<$Res> implements $KilometerPointCopyWith<$Res> {
+  _$KilometerPointCopyWithImpl(this._value, this._then);
+
+  final KilometerPoint _value;
+  // ignore: unused_field
+  final $Res Function(KilometerPoint) _then;
+}
+
+/// @nodoc
+abstract class _$$KilometerPoint_Unknown_VariantCopyWith<$Res> {
+  factory _$$KilometerPoint_Unknown_VariantCopyWith(
+          _$KilometerPoint_Unknown_Variant value, $Res Function(_$KilometerPoint_Unknown_Variant) then) =
+      __$$KilometerPoint_Unknown_VariantCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$KilometerPoint_Unknown_VariantCopyWithImpl<$Res> extends _$KilometerPointCopyWithImpl<$Res>
+    implements _$$KilometerPoint_Unknown_VariantCopyWith<$Res> {
+  __$$KilometerPoint_Unknown_VariantCopyWithImpl(
+      _$KilometerPoint_Unknown_Variant _value, $Res Function(_$KilometerPoint_Unknown_Variant) _then)
+      : super(_value, (v) => _then(v as _$KilometerPoint_Unknown_Variant));
+
+  @override
+  _$KilometerPoint_Unknown_Variant get _value => super._value as _$KilometerPoint_Unknown_Variant;
+}
+
+/// @nodoc
+
+class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant {
+  const _$KilometerPoint_Unknown_Variant();
+
+  @override
+  String toString() {
+    return 'KilometerPoint.unknown()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$KilometerPoint_Unknown_Variant);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) sncf,
+  }) {
+    return unknown();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? sncf,
+  }) {
+    return unknown?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? sncf,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(KilometerPoint_Unknown_Variant value) unknown,
+    required TResult Function(KilometerPoint_SNCF_Variant value) sncf,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
+    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
+    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class KilometerPoint_Unknown_Variant implements KilometerPoint {
+  const factory KilometerPoint_Unknown_Variant() = _$KilometerPoint_Unknown_Variant;
+}
+
+/// @nodoc
+abstract class _$$KilometerPoint_SNCF_VariantCopyWith<$Res> {
+  factory _$$KilometerPoint_SNCF_VariantCopyWith(
+          _$KilometerPoint_SNCF_Variant value, $Res Function(_$KilometerPoint_SNCF_Variant) then) =
+      __$$KilometerPoint_SNCF_VariantCopyWithImpl<$Res>;
+  $Res call({double field0});
+}
+
+/// @nodoc
+class __$$KilometerPoint_SNCF_VariantCopyWithImpl<$Res> extends _$KilometerPointCopyWithImpl<$Res>
+    implements _$$KilometerPoint_SNCF_VariantCopyWith<$Res> {
+  __$$KilometerPoint_SNCF_VariantCopyWithImpl(
+      _$KilometerPoint_SNCF_Variant _value, $Res Function(_$KilometerPoint_SNCF_Variant) _then)
+      : super(_value, (v) => _then(v as _$KilometerPoint_SNCF_Variant));
+
+  @override
+  _$KilometerPoint_SNCF_Variant get _value => super._value as _$KilometerPoint_SNCF_Variant;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$KilometerPoint_SNCF_Variant(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$KilometerPoint_SNCF_Variant implements KilometerPoint_SNCF_Variant {
+  const _$KilometerPoint_SNCF_Variant(this.field0);
+
+  @override
+  final double field0;
+
+  @override
+  String toString() {
+    return 'KilometerPoint.sncf(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$KilometerPoint_SNCF_Variant &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$KilometerPoint_SNCF_VariantCopyWith<_$KilometerPoint_SNCF_Variant> get copyWith =>
+      __$$KilometerPoint_SNCF_VariantCopyWithImpl<_$KilometerPoint_SNCF_Variant>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) sncf,
+  }) {
+    return sncf(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? sncf,
+  }) {
+    return sncf?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? sncf,
+    required TResult orElse(),
+  }) {
+    if (sncf != null) {
+      return sncf(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(KilometerPoint_Unknown_Variant value) unknown,
+    required TResult Function(KilometerPoint_SNCF_Variant value) sncf,
+  }) {
+    return sncf(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
+    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+  }) {
+    return sncf?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
+    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    required TResult orElse(),
+  }) {
+    if (sncf != null) {
+      return sncf(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class KilometerPoint_SNCF_Variant implements KilometerPoint {
+  const factory KilometerPoint_SNCF_Variant(final double field0) = _$KilometerPoint_SNCF_Variant;
+
+  double get field0;
+  @JsonKey(ignore: true)
+  _$$KilometerPoint_SNCF_VariantCopyWith<_$KilometerPoint_SNCF_Variant> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -495,32 +1138,32 @@ mixin _$KitchenSink {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Primitives value) primitives,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
+    required TResult Function(KitchenSink_Empty_Variant value) empty,
+    required TResult Function(KitchenSink_Primitives_Variant value) primitives,
+    required TResult Function(KitchenSink_Nested_Variant value) nested,
+    required TResult Function(KitchenSink_Optional_Variant value) optional,
+    required TResult Function(KitchenSink_Buffer_Variant value) buffer,
+    required TResult Function(KitchenSink_Enums_Variant value) enums,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -541,22 +1184,27 @@ class _$KitchenSinkCopyWithImpl<$Res> implements $KitchenSinkCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$EmptyCopyWith<$Res> {
-  factory _$$EmptyCopyWith(_$Empty value, $Res Function(_$Empty) then) = __$$EmptyCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_Empty_VariantCopyWith<$Res> {
+  factory _$$KitchenSink_Empty_VariantCopyWith(
+          _$KitchenSink_Empty_Variant value, $Res Function(_$KitchenSink_Empty_Variant) then) =
+      __$$KitchenSink_Empty_VariantCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements _$$EmptyCopyWith<$Res> {
-  __$$EmptyCopyWithImpl(_$Empty _value, $Res Function(_$Empty) _then) : super(_value, (v) => _then(v as _$Empty));
+class __$$KitchenSink_Empty_VariantCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements _$$KitchenSink_Empty_VariantCopyWith<$Res> {
+  __$$KitchenSink_Empty_VariantCopyWithImpl(
+      _$KitchenSink_Empty_Variant _value, $Res Function(_$KitchenSink_Empty_Variant) _then)
+      : super(_value, (v) => _then(v as _$KitchenSink_Empty_Variant));
 
   @override
-  _$Empty get _value => super._value as _$Empty;
+  _$KitchenSink_Empty_Variant get _value => super._value as _$KitchenSink_Empty_Variant;
 }
 
 /// @nodoc
 
-class _$Empty implements Empty {
-  const _$Empty();
+class _$KitchenSink_Empty_Variant implements KitchenSink_Empty_Variant {
+  const _$KitchenSink_Empty_Variant();
 
   @override
   String toString() {
@@ -565,7 +1213,7 @@ class _$Empty implements Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Empty);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$KitchenSink_Empty_Variant);
   }
 
   @override
@@ -617,12 +1265,12 @@ class _$Empty implements Empty {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Primitives value) primitives,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
+    required TResult Function(KitchenSink_Empty_Variant value) empty,
+    required TResult Function(KitchenSink_Primitives_Variant value) primitives,
+    required TResult Function(KitchenSink_Nested_Variant value) nested,
+    required TResult Function(KitchenSink_Optional_Variant value) optional,
+    required TResult Function(KitchenSink_Buffer_Variant value) buffer,
+    required TResult Function(KitchenSink_Enums_Variant value) enums,
   }) {
     return empty(this);
   }
@@ -630,12 +1278,12 @@ class _$Empty implements Empty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
   }) {
     return empty?.call(this);
   }
@@ -643,12 +1291,12 @@ class _$Empty implements Empty {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -658,24 +1306,27 @@ class _$Empty implements Empty {
   }
 }
 
-abstract class Empty implements KitchenSink {
-  const factory Empty() = _$Empty;
+abstract class KitchenSink_Empty_Variant implements KitchenSink {
+  const factory KitchenSink_Empty_Variant() = _$KitchenSink_Empty_Variant;
 }
 
 /// @nodoc
-abstract class _$$PrimitivesCopyWith<$Res> {
-  factory _$$PrimitivesCopyWith(_$Primitives value, $Res Function(_$Primitives) then) =
-      __$$PrimitivesCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_Primitives_VariantCopyWith<$Res> {
+  factory _$$KitchenSink_Primitives_VariantCopyWith(
+          _$KitchenSink_Primitives_Variant value, $Res Function(_$KitchenSink_Primitives_Variant) then) =
+      __$$KitchenSink_Primitives_VariantCopyWithImpl<$Res>;
   $Res call({int int32, double float64, bool boolean});
 }
 
 /// @nodoc
-class __$$PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements _$$PrimitivesCopyWith<$Res> {
-  __$$PrimitivesCopyWithImpl(_$Primitives _value, $Res Function(_$Primitives) _then)
-      : super(_value, (v) => _then(v as _$Primitives));
+class __$$KitchenSink_Primitives_VariantCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements _$$KitchenSink_Primitives_VariantCopyWith<$Res> {
+  __$$KitchenSink_Primitives_VariantCopyWithImpl(
+      _$KitchenSink_Primitives_Variant _value, $Res Function(_$KitchenSink_Primitives_Variant) _then)
+      : super(_value, (v) => _then(v as _$KitchenSink_Primitives_Variant));
 
   @override
-  _$Primitives get _value => super._value as _$Primitives;
+  _$KitchenSink_Primitives_Variant get _value => super._value as _$KitchenSink_Primitives_Variant;
 
   @override
   $Res call({
@@ -683,7 +1334,7 @@ class __$$PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> i
     Object? float64 = freezed,
     Object? boolean = freezed,
   }) {
-    return _then(_$Primitives(
+    return _then(_$KitchenSink_Primitives_Variant(
       int32: int32 == freezed
           ? _value.int32
           : int32 // ignore: cast_nullable_to_non_nullable
@@ -702,8 +1353,8 @@ class __$$PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> i
 
 /// @nodoc
 
-class _$Primitives implements Primitives {
-  const _$Primitives({required this.int32, required this.float64, required this.boolean});
+class _$KitchenSink_Primitives_Variant implements KitchenSink_Primitives_Variant {
+  const _$KitchenSink_Primitives_Variant({required this.int32, required this.float64, required this.boolean});
 
   /// Dart field comment
   @override
@@ -722,7 +1373,7 @@ class _$Primitives implements Primitives {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Primitives &&
+            other is _$KitchenSink_Primitives_Variant &&
             const DeepCollectionEquality().equals(other.int32, int32) &&
             const DeepCollectionEquality().equals(other.float64, float64) &&
             const DeepCollectionEquality().equals(other.boolean, boolean));
@@ -734,7 +1385,8 @@ class _$Primitives implements Primitives {
 
   @JsonKey(ignore: true)
   @override
-  _$$PrimitivesCopyWith<_$Primitives> get copyWith => __$$PrimitivesCopyWithImpl<_$Primitives>(this, _$identity);
+  _$$KitchenSink_Primitives_VariantCopyWith<_$KitchenSink_Primitives_Variant> get copyWith =>
+      __$$KitchenSink_Primitives_VariantCopyWithImpl<_$KitchenSink_Primitives_Variant>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -782,12 +1434,12 @@ class _$Primitives implements Primitives {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Primitives value) primitives,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
+    required TResult Function(KitchenSink_Empty_Variant value) empty,
+    required TResult Function(KitchenSink_Primitives_Variant value) primitives,
+    required TResult Function(KitchenSink_Nested_Variant value) nested,
+    required TResult Function(KitchenSink_Optional_Variant value) optional,
+    required TResult Function(KitchenSink_Buffer_Variant value) buffer,
+    required TResult Function(KitchenSink_Enums_Variant value) enums,
   }) {
     return primitives(this);
   }
@@ -795,12 +1447,12 @@ class _$Primitives implements Primitives {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
   }) {
     return primitives?.call(this);
   }
@@ -808,12 +1460,12 @@ class _$Primitives implements Primitives {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
     required TResult orElse(),
   }) {
     if (primitives != null) {
@@ -823,39 +1475,47 @@ class _$Primitives implements Primitives {
   }
 }
 
-abstract class Primitives implements KitchenSink {
-  const factory Primitives({required final int int32, required final double float64, required final bool boolean}) =
-      _$Primitives;
+abstract class KitchenSink_Primitives_Variant implements KitchenSink {
+  const factory KitchenSink_Primitives_Variant(
+      {required final int int32,
+      required final double float64,
+      required final bool boolean}) = _$KitchenSink_Primitives_Variant;
 
   /// Dart field comment
   int get int32;
   double get float64;
   bool get boolean;
   @JsonKey(ignore: true)
-  _$$PrimitivesCopyWith<_$Primitives> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_Primitives_VariantCopyWith<_$KitchenSink_Primitives_Variant> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NestedCopyWith<$Res> {
-  factory _$$NestedCopyWith(_$Nested value, $Res Function(_$Nested) then) = __$$NestedCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_Nested_VariantCopyWith<$Res> {
+  factory _$$KitchenSink_Nested_VariantCopyWith(
+          _$KitchenSink_Nested_Variant value, $Res Function(_$KitchenSink_Nested_Variant) then) =
+      __$$KitchenSink_Nested_VariantCopyWithImpl<$Res>;
   $Res call({KitchenSink field0, int field1});
 
   $KitchenSinkCopyWith<$Res> get field0;
 }
 
 /// @nodoc
-class __$$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements _$$NestedCopyWith<$Res> {
-  __$$NestedCopyWithImpl(_$Nested _value, $Res Function(_$Nested) _then) : super(_value, (v) => _then(v as _$Nested));
+class __$$KitchenSink_Nested_VariantCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements _$$KitchenSink_Nested_VariantCopyWith<$Res> {
+  __$$KitchenSink_Nested_VariantCopyWithImpl(
+      _$KitchenSink_Nested_Variant _value, $Res Function(_$KitchenSink_Nested_Variant) _then)
+      : super(_value, (v) => _then(v as _$KitchenSink_Nested_Variant));
 
   @override
-  _$Nested get _value => super._value as _$Nested;
+  _$KitchenSink_Nested_Variant get _value => super._value as _$KitchenSink_Nested_Variant;
 
   @override
   $Res call({
     Object? field0 = freezed,
     Object? field1 = freezed,
   }) {
-    return _then(_$Nested(
+    return _then(_$KitchenSink_Nested_Variant(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -877,8 +1537,8 @@ class __$$NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> imple
 
 /// @nodoc
 
-class _$Nested implements Nested {
-  const _$Nested(this.field0, this.field1);
+class _$KitchenSink_Nested_Variant implements KitchenSink_Nested_Variant {
+  const _$KitchenSink_Nested_Variant(this.field0, this.field1);
 
   @override
   final KitchenSink field0;
@@ -894,7 +1554,7 @@ class _$Nested implements Nested {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Nested &&
+            other is _$KitchenSink_Nested_Variant &&
             const DeepCollectionEquality().equals(other.field0, field0) &&
             const DeepCollectionEquality().equals(other.field1, field1));
   }
@@ -905,7 +1565,8 @@ class _$Nested implements Nested {
 
   @JsonKey(ignore: true)
   @override
-  _$$NestedCopyWith<_$Nested> get copyWith => __$$NestedCopyWithImpl<_$Nested>(this, _$identity);
+  _$$KitchenSink_Nested_VariantCopyWith<_$KitchenSink_Nested_Variant> get copyWith =>
+      __$$KitchenSink_Nested_VariantCopyWithImpl<_$KitchenSink_Nested_Variant>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -953,12 +1614,12 @@ class _$Nested implements Nested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Primitives value) primitives,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
+    required TResult Function(KitchenSink_Empty_Variant value) empty,
+    required TResult Function(KitchenSink_Primitives_Variant value) primitives,
+    required TResult Function(KitchenSink_Nested_Variant value) nested,
+    required TResult Function(KitchenSink_Optional_Variant value) optional,
+    required TResult Function(KitchenSink_Buffer_Variant value) buffer,
+    required TResult Function(KitchenSink_Enums_Variant value) enums,
   }) {
     return nested(this);
   }
@@ -966,12 +1627,12 @@ class _$Nested implements Nested {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
   }) {
     return nested?.call(this);
   }
@@ -979,12 +1640,12 @@ class _$Nested implements Nested {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -994,35 +1655,40 @@ class _$Nested implements Nested {
   }
 }
 
-abstract class Nested implements KitchenSink {
-  const factory Nested(final KitchenSink field0, final int field1) = _$Nested;
+abstract class KitchenSink_Nested_Variant implements KitchenSink {
+  const factory KitchenSink_Nested_Variant(final KitchenSink field0, final int field1) = _$KitchenSink_Nested_Variant;
 
   KitchenSink get field0;
   int get field1;
   @JsonKey(ignore: true)
-  _$$NestedCopyWith<_$Nested> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_Nested_VariantCopyWith<_$KitchenSink_Nested_Variant> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OptionalCopyWith<$Res> {
-  factory _$$OptionalCopyWith(_$Optional value, $Res Function(_$Optional) then) = __$$OptionalCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_Optional_VariantCopyWith<$Res> {
+  factory _$$KitchenSink_Optional_VariantCopyWith(
+          _$KitchenSink_Optional_Variant value, $Res Function(_$KitchenSink_Optional_Variant) then) =
+      __$$KitchenSink_Optional_VariantCopyWithImpl<$Res>;
   $Res call({int? field0, int? field1});
 }
 
 /// @nodoc
-class __$$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements _$$OptionalCopyWith<$Res> {
-  __$$OptionalCopyWithImpl(_$Optional _value, $Res Function(_$Optional) _then)
-      : super(_value, (v) => _then(v as _$Optional));
+class __$$KitchenSink_Optional_VariantCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements _$$KitchenSink_Optional_VariantCopyWith<$Res> {
+  __$$KitchenSink_Optional_VariantCopyWithImpl(
+      _$KitchenSink_Optional_Variant _value, $Res Function(_$KitchenSink_Optional_Variant) _then)
+      : super(_value, (v) => _then(v as _$KitchenSink_Optional_Variant));
 
   @override
-  _$Optional get _value => super._value as _$Optional;
+  _$KitchenSink_Optional_Variant get _value => super._value as _$KitchenSink_Optional_Variant;
 
   @override
   $Res call({
     Object? field0 = freezed,
     Object? field1 = freezed,
   }) {
-    return _then(_$Optional(
+    return _then(_$KitchenSink_Optional_Variant(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1037,8 +1703,8 @@ class __$$OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> imp
 
 /// @nodoc
 
-class _$Optional implements Optional {
-  const _$Optional([this.field0, this.field1]);
+class _$KitchenSink_Optional_Variant implements KitchenSink_Optional_Variant {
+  const _$KitchenSink_Optional_Variant([this.field0, this.field1]);
 
   /// Comment on anonymous field
   @override
@@ -1055,7 +1721,7 @@ class _$Optional implements Optional {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Optional &&
+            other is _$KitchenSink_Optional_Variant &&
             const DeepCollectionEquality().equals(other.field0, field0) &&
             const DeepCollectionEquality().equals(other.field1, field1));
   }
@@ -1066,7 +1732,8 @@ class _$Optional implements Optional {
 
   @JsonKey(ignore: true)
   @override
-  _$$OptionalCopyWith<_$Optional> get copyWith => __$$OptionalCopyWithImpl<_$Optional>(this, _$identity);
+  _$$KitchenSink_Optional_VariantCopyWith<_$KitchenSink_Optional_Variant> get copyWith =>
+      __$$KitchenSink_Optional_VariantCopyWithImpl<_$KitchenSink_Optional_Variant>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1114,12 +1781,12 @@ class _$Optional implements Optional {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Primitives value) primitives,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
+    required TResult Function(KitchenSink_Empty_Variant value) empty,
+    required TResult Function(KitchenSink_Primitives_Variant value) primitives,
+    required TResult Function(KitchenSink_Nested_Variant value) nested,
+    required TResult Function(KitchenSink_Optional_Variant value) optional,
+    required TResult Function(KitchenSink_Buffer_Variant value) buffer,
+    required TResult Function(KitchenSink_Enums_Variant value) enums,
   }) {
     return optional(this);
   }
@@ -1127,12 +1794,12 @@ class _$Optional implements Optional {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
   }) {
     return optional?.call(this);
   }
@@ -1140,12 +1807,12 @@ class _$Optional implements Optional {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -1155,34 +1822,40 @@ class _$Optional implements Optional {
   }
 }
 
-abstract class Optional implements KitchenSink {
-  const factory Optional([final int? field0, final int? field1]) = _$Optional;
+abstract class KitchenSink_Optional_Variant implements KitchenSink {
+  const factory KitchenSink_Optional_Variant([final int? field0, final int? field1]) = _$KitchenSink_Optional_Variant;
 
   /// Comment on anonymous field
   int? get field0;
   int? get field1;
   @JsonKey(ignore: true)
-  _$$OptionalCopyWith<_$Optional> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_Optional_VariantCopyWith<_$KitchenSink_Optional_Variant> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BufferCopyWith<$Res> {
-  factory _$$BufferCopyWith(_$Buffer value, $Res Function(_$Buffer) then) = __$$BufferCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_Buffer_VariantCopyWith<$Res> {
+  factory _$$KitchenSink_Buffer_VariantCopyWith(
+          _$KitchenSink_Buffer_Variant value, $Res Function(_$KitchenSink_Buffer_Variant) then) =
+      __$$KitchenSink_Buffer_VariantCopyWithImpl<$Res>;
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
-class __$$BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements _$$BufferCopyWith<$Res> {
-  __$$BufferCopyWithImpl(_$Buffer _value, $Res Function(_$Buffer) _then) : super(_value, (v) => _then(v as _$Buffer));
+class __$$KitchenSink_Buffer_VariantCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements _$$KitchenSink_Buffer_VariantCopyWith<$Res> {
+  __$$KitchenSink_Buffer_VariantCopyWithImpl(
+      _$KitchenSink_Buffer_Variant _value, $Res Function(_$KitchenSink_Buffer_Variant) _then)
+      : super(_value, (v) => _then(v as _$KitchenSink_Buffer_Variant));
 
   @override
-  _$Buffer get _value => super._value as _$Buffer;
+  _$KitchenSink_Buffer_Variant get _value => super._value as _$KitchenSink_Buffer_Variant;
 
   @override
   $Res call({
     Object? field0 = freezed,
   }) {
-    return _then(_$Buffer(
+    return _then(_$KitchenSink_Buffer_Variant(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1193,8 +1866,8 @@ class __$$BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> imple
 
 /// @nodoc
 
-class _$Buffer implements Buffer {
-  const _$Buffer(this.field0);
+class _$KitchenSink_Buffer_Variant implements KitchenSink_Buffer_Variant {
+  const _$KitchenSink_Buffer_Variant(this.field0);
 
   @override
   final Uint8List field0;
@@ -1208,7 +1881,7 @@ class _$Buffer implements Buffer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Buffer &&
+            other is _$KitchenSink_Buffer_Variant &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -1217,7 +1890,8 @@ class _$Buffer implements Buffer {
 
   @JsonKey(ignore: true)
   @override
-  _$$BufferCopyWith<_$Buffer> get copyWith => __$$BufferCopyWithImpl<_$Buffer>(this, _$identity);
+  _$$KitchenSink_Buffer_VariantCopyWith<_$KitchenSink_Buffer_Variant> get copyWith =>
+      __$$KitchenSink_Buffer_VariantCopyWithImpl<_$KitchenSink_Buffer_Variant>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1265,12 +1939,12 @@ class _$Buffer implements Buffer {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Primitives value) primitives,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
+    required TResult Function(KitchenSink_Empty_Variant value) empty,
+    required TResult Function(KitchenSink_Primitives_Variant value) primitives,
+    required TResult Function(KitchenSink_Nested_Variant value) nested,
+    required TResult Function(KitchenSink_Optional_Variant value) optional,
+    required TResult Function(KitchenSink_Buffer_Variant value) buffer,
+    required TResult Function(KitchenSink_Enums_Variant value) enums,
   }) {
     return buffer(this);
   }
@@ -1278,12 +1952,12 @@ class _$Buffer implements Buffer {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
   }) {
     return buffer?.call(this);
   }
@@ -1291,12 +1965,12 @@ class _$Buffer implements Buffer {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -1306,32 +1980,38 @@ class _$Buffer implements Buffer {
   }
 }
 
-abstract class Buffer implements KitchenSink {
-  const factory Buffer(final Uint8List field0) = _$Buffer;
+abstract class KitchenSink_Buffer_Variant implements KitchenSink {
+  const factory KitchenSink_Buffer_Variant(final Uint8List field0) = _$KitchenSink_Buffer_Variant;
 
   Uint8List get field0;
   @JsonKey(ignore: true)
-  _$$BufferCopyWith<_$Buffer> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_Buffer_VariantCopyWith<_$KitchenSink_Buffer_Variant> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumsCopyWith<$Res> {
-  factory _$$EnumsCopyWith(_$Enums value, $Res Function(_$Enums) then) = __$$EnumsCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_Enums_VariantCopyWith<$Res> {
+  factory _$$KitchenSink_Enums_VariantCopyWith(
+          _$KitchenSink_Enums_Variant value, $Res Function(_$KitchenSink_Enums_Variant) then) =
+      __$$KitchenSink_Enums_VariantCopyWithImpl<$Res>;
   $Res call({Weekdays field0});
 }
 
 /// @nodoc
-class __$$EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implements _$$EnumsCopyWith<$Res> {
-  __$$EnumsCopyWithImpl(_$Enums _value, $Res Function(_$Enums) _then) : super(_value, (v) => _then(v as _$Enums));
+class __$$KitchenSink_Enums_VariantCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+    implements _$$KitchenSink_Enums_VariantCopyWith<$Res> {
+  __$$KitchenSink_Enums_VariantCopyWithImpl(
+      _$KitchenSink_Enums_Variant _value, $Res Function(_$KitchenSink_Enums_Variant) _then)
+      : super(_value, (v) => _then(v as _$KitchenSink_Enums_Variant));
 
   @override
-  _$Enums get _value => super._value as _$Enums;
+  _$KitchenSink_Enums_Variant get _value => super._value as _$KitchenSink_Enums_Variant;
 
   @override
   $Res call({
     Object? field0 = freezed,
   }) {
-    return _then(_$Enums(
+    return _then(_$KitchenSink_Enums_Variant(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1342,8 +2022,8 @@ class __$$EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res> implem
 
 /// @nodoc
 
-class _$Enums implements Enums {
-  const _$Enums(this.field0);
+class _$KitchenSink_Enums_Variant implements KitchenSink_Enums_Variant {
+  const _$KitchenSink_Enums_Variant(this.field0);
 
   @override
   final Weekdays field0;
@@ -1357,7 +2037,7 @@ class _$Enums implements Enums {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Enums &&
+            other is _$KitchenSink_Enums_Variant &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -1366,7 +2046,8 @@ class _$Enums implements Enums {
 
   @JsonKey(ignore: true)
   @override
-  _$$EnumsCopyWith<_$Enums> get copyWith => __$$EnumsCopyWithImpl<_$Enums>(this, _$identity);
+  _$$KitchenSink_Enums_VariantCopyWith<_$KitchenSink_Enums_Variant> get copyWith =>
+      __$$KitchenSink_Enums_VariantCopyWithImpl<_$KitchenSink_Enums_Variant>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1414,12 +2095,12 @@ class _$Enums implements Enums {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Empty value) empty,
-    required TResult Function(Primitives value) primitives,
-    required TResult Function(Nested value) nested,
-    required TResult Function(Optional value) optional,
-    required TResult Function(Buffer value) buffer,
-    required TResult Function(Enums value) enums,
+    required TResult Function(KitchenSink_Empty_Variant value) empty,
+    required TResult Function(KitchenSink_Primitives_Variant value) primitives,
+    required TResult Function(KitchenSink_Nested_Variant value) nested,
+    required TResult Function(KitchenSink_Optional_Variant value) optional,
+    required TResult Function(KitchenSink_Buffer_Variant value) buffer,
+    required TResult Function(KitchenSink_Enums_Variant value) enums,
   }) {
     return enums(this);
   }
@@ -1427,12 +2108,12 @@ class _$Enums implements Enums {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
   }) {
     return enums?.call(this);
   }
@@ -1440,12 +2121,12 @@ class _$Enums implements Enums {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Empty value)? empty,
-    TResult Function(Primitives value)? primitives,
-    TResult Function(Nested value)? nested,
-    TResult Function(Optional value)? optional,
-    TResult Function(Buffer value)? buffer,
-    TResult Function(Enums value)? enums,
+    TResult Function(KitchenSink_Empty_Variant value)? empty,
+    TResult Function(KitchenSink_Primitives_Variant value)? primitives,
+    TResult Function(KitchenSink_Nested_Variant value)? nested,
+    TResult Function(KitchenSink_Optional_Variant value)? optional,
+    TResult Function(KitchenSink_Buffer_Variant value)? buffer,
+    TResult Function(KitchenSink_Enums_Variant value)? enums,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -1455,12 +2136,298 @@ class _$Enums implements Enums {
   }
 }
 
-abstract class Enums implements KitchenSink {
-  const factory Enums(final Weekdays field0) = _$Enums;
+abstract class KitchenSink_Enums_Variant implements KitchenSink {
+  const factory KitchenSink_Enums_Variant(final Weekdays field0) = _$KitchenSink_Enums_Variant;
 
   Weekdays get field0;
   @JsonKey(ignore: true)
-  _$$EnumsCopyWith<_$Enums> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_Enums_VariantCopyWith<_$KitchenSink_Enums_Variant> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$Speed {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) gps,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Speed_Unknown_Variant value) unknown,
+    required TResult Function(Speed_GPS_Variant value) gps,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Speed_Unknown_Variant value)? unknown,
+    TResult Function(Speed_GPS_Variant value)? gps,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Speed_Unknown_Variant value)? unknown,
+    TResult Function(Speed_GPS_Variant value)? gps,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SpeedCopyWith<$Res> {
+  factory $SpeedCopyWith(Speed value, $Res Function(Speed) then) = _$SpeedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SpeedCopyWithImpl<$Res> implements $SpeedCopyWith<$Res> {
+  _$SpeedCopyWithImpl(this._value, this._then);
+
+  final Speed _value;
+  // ignore: unused_field
+  final $Res Function(Speed) _then;
+}
+
+/// @nodoc
+abstract class _$$Speed_Unknown_VariantCopyWith<$Res> {
+  factory _$$Speed_Unknown_VariantCopyWith(_$Speed_Unknown_Variant value, $Res Function(_$Speed_Unknown_Variant) then) =
+      __$$Speed_Unknown_VariantCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$Speed_Unknown_VariantCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res>
+    implements _$$Speed_Unknown_VariantCopyWith<$Res> {
+  __$$Speed_Unknown_VariantCopyWithImpl(_$Speed_Unknown_Variant _value, $Res Function(_$Speed_Unknown_Variant) _then)
+      : super(_value, (v) => _then(v as _$Speed_Unknown_Variant));
+
+  @override
+  _$Speed_Unknown_Variant get _value => super._value as _$Speed_Unknown_Variant;
+}
+
+/// @nodoc
+
+class _$Speed_Unknown_Variant implements Speed_Unknown_Variant {
+  const _$Speed_Unknown_Variant();
+
+  @override
+  String toString() {
+    return 'Speed.unknown()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Speed_Unknown_Variant);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) gps,
+  }) {
+    return unknown();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+  }) {
+    return unknown?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Speed_Unknown_Variant value) unknown,
+    required TResult Function(Speed_GPS_Variant value) gps,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Speed_Unknown_Variant value)? unknown,
+    TResult Function(Speed_GPS_Variant value)? gps,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Speed_Unknown_Variant value)? unknown,
+    TResult Function(Speed_GPS_Variant value)? gps,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Speed_Unknown_Variant implements Speed {
+  const factory Speed_Unknown_Variant() = _$Speed_Unknown_Variant;
+}
+
+/// @nodoc
+abstract class _$$Speed_GPS_VariantCopyWith<$Res> {
+  factory _$$Speed_GPS_VariantCopyWith(_$Speed_GPS_Variant value, $Res Function(_$Speed_GPS_Variant) then) =
+      __$$Speed_GPS_VariantCopyWithImpl<$Res>;
+  $Res call({double field0});
+}
+
+/// @nodoc
+class __$$Speed_GPS_VariantCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res>
+    implements _$$Speed_GPS_VariantCopyWith<$Res> {
+  __$$Speed_GPS_VariantCopyWithImpl(_$Speed_GPS_Variant _value, $Res Function(_$Speed_GPS_Variant) _then)
+      : super(_value, (v) => _then(v as _$Speed_GPS_Variant));
+
+  @override
+  _$Speed_GPS_Variant get _value => super._value as _$Speed_GPS_Variant;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$Speed_GPS_Variant(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Speed_GPS_Variant implements Speed_GPS_Variant {
+  const _$Speed_GPS_Variant(this.field0);
+
+  @override
+  final double field0;
+
+  @override
+  String toString() {
+    return 'Speed.gps(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Speed_GPS_Variant &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$Speed_GPS_VariantCopyWith<_$Speed_GPS_Variant> get copyWith =>
+      __$$Speed_GPS_VariantCopyWithImpl<_$Speed_GPS_Variant>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) gps,
+  }) {
+    return gps(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+  }) {
+    return gps?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+    required TResult orElse(),
+  }) {
+    if (gps != null) {
+      return gps(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Speed_Unknown_Variant value) unknown,
+    required TResult Function(Speed_GPS_Variant value) gps,
+  }) {
+    return gps(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Speed_Unknown_Variant value)? unknown,
+    TResult Function(Speed_GPS_Variant value)? gps,
+  }) {
+    return gps?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Speed_Unknown_Variant value)? unknown,
+    TResult Function(Speed_GPS_Variant value)? gps,
+    required TResult orElse(),
+  }) {
+    if (gps != null) {
+      return gps(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Speed_GPS_Variant implements Speed {
+  const factory Speed_GPS_Variant(final double field0) = _$Speed_GPS_Variant;
+
+  double get field0;
+  @JsonKey(ignore: true)
+  _$$Speed_GPS_VariantCopyWith<_$Speed_GPS_Variant> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

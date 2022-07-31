@@ -256,28 +256,28 @@ void main(List<String> args) async {
   });
 
   test('dart call handleEnumStruct', () async {
-    expect(await api.handleEnumStruct(val: Empty()), Empty());
+    expect(await api.handleEnumStruct(val: KitchenSink_Empty_Variant()), KitchenSink_Empty_Variant());
     expect(
       await api.handleEnumStruct(
-        val: Primitives(int32: 0, float64: 1, boolean: false),
+        val: KitchenSink_Primitives_Variant(int32: 0, float64: 1, boolean: false),
       ),
-      Primitives(int32: 1, float64: 2, boolean: true),
+      KitchenSink_Primitives_Variant(int32: 1, float64: 2, boolean: true),
     );
     expect(
-      await api.handleEnumStruct(val: Optional(null, 0)),
-      Optional(null, 1),
+      await api.handleEnumStruct(val: KitchenSink_Optional_Variant(null, 0)),
+      KitchenSink_Optional_Variant(null, 1),
     );
     expect(
-      await api.handleEnumStruct(val: Buffer(Uint8List.fromList([]))),
-      Buffer(Uint8List.fromList([1])),
+      await api.handleEnumStruct(val: KitchenSink_Buffer_Variant(Uint8List.fromList([]))),
+      KitchenSink_Buffer_Variant(Uint8List.fromList([1])),
     );
     expect(
-      await api.handleEnumStruct(val: Enums(Weekdays.Monday)),
-      Enums(Weekdays.Tuesday),
+      await api.handleEnumStruct(val: KitchenSink_Enums_Variant(Weekdays.Monday)),
+      KitchenSink_Enums_Variant(Weekdays.Tuesday),
     );
     expect(
-      await api.handleEnumStruct(val: Nested(Empty(), 0)),
-      Nested(Empty(), 1),
+      await api.handleEnumStruct(val: KitchenSink_Nested_Variant(KitchenSink_Empty_Variant(), 0)),
+      KitchenSink_Nested_Variant(KitchenSink_Empty_Variant(), 1),
     );
   });
 
@@ -323,8 +323,8 @@ void main(List<String> args) async {
 
   test('dart call getMessage()', () async {
     var message = await api.getMessage();
-    expect(message is RenderPixel, true);
-    message as RenderPixel;
+    expect(message is ApplicationMessage_RenderPixel_Variant, true);
+    message as ApplicationMessage_RenderPixel_Variant;
     expect(message.x, 5);
     expect(message.y, 10);
 

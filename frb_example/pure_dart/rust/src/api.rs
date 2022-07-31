@@ -725,3 +725,36 @@ impl ConcatenateWith {
         Ok(())
     }
 }
+
+#[derive(Debug, Clone)]
+#[frb(freezed)]
+pub enum Speed {
+    Unknown,
+    GPS(f64),
+}
+
+#[derive(Debug, Clone)]
+#[frb(freezed)]
+pub enum KilometerPoint {
+    Unknown,
+    SNCF(f64),
+}
+
+#[derive(Debug, Clone)]
+#[frb(freezed)]
+pub enum API {
+    Speed(Box<Speed>),
+    KilometerPoint(Box<KilometerPoint>),
+}
+
+pub fn handle_api(api: API) -> anyhow::Result<()> {
+    match api {
+        API::Speed(v) => {
+            println!("speed changed: {:#?}", *v);
+        }
+        API::KilometerPoint(v) => {
+            println!("kilometer point changed: {:#?}", *v);
+        }
+    };
+    Ok(())
+}

@@ -700,6 +700,21 @@ pub extern "C" fn wire_get_sum_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_api(port_: i64, api: *mut wire_API) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_api",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_api = api.wire2api();
+            move |task_callback| handle_api(api_api)
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1066,6 +1081,53 @@ pub struct wire_UserId {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_API {
+    tag: i32,
+    kind: *mut APIKind,
+}
+
+#[repr(C)]
+pub union APIKind {
+    Speed: *mut API_Speed,
+    KilometerPoint: *mut API_KilometerPoint,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct API_Speed {
+    field0: *mut wire_Speed,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct API_KilometerPoint {
+    field0: *mut wire_KilometerPoint,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KilometerPoint {
+    tag: i32,
+    kind: *mut KilometerPointKind,
+}
+
+#[repr(C)]
+pub union KilometerPointKind {
+    Unknown: *mut KilometerPoint_Unknown,
+    SNCF: *mut KilometerPoint_SNCF,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KilometerPoint_Unknown {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct KilometerPoint_SNCF {
+    field0: f64,
+}
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_KitchenSink {
     tag: i32,
     kind: *mut KitchenSinkKind,
@@ -1117,6 +1179,29 @@ pub struct KitchenSink_Buffer {
 #[derive(Clone)]
 pub struct KitchenSink_Enums {
     field0: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Speed {
+    tag: i32,
+    kind: *mut SpeedKind,
+}
+
+#[repr(C)]
+pub union SpeedKind {
+    Unknown: *mut Speed_Unknown,
+    GPS: *mut Speed_GPS,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct Speed_Unknown {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct Speed_GPS {
+    field0: f64,
 }
 
 // Section: wrapper structs
@@ -1184,6 +1269,11 @@ pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
 #[no_mangle]
 pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_api_0() -> *mut wire_API {
+    support::new_leak_box_ptr(wire_API::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1302,6 +1392,11 @@ pub extern "C" fn new_box_i8_0(value: i8) -> *mut i8 {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_kilometer_point_0() -> *mut wire_KilometerPoint {
+    support::new_leak_box_ptr(wire_KilometerPoint::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_kitchen_sink_0() -> *mut wire_KitchenSink {
     support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
 }
@@ -1309,6 +1404,11 @@ pub extern "C" fn new_box_kitchen_sink_0() -> *mut wire_KitchenSink {
 #[no_mangle]
 pub extern "C" fn new_box_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_speed_0() -> *mut wire_Speed {
+    support::new_leak_box_ptr(wire_Speed::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1464,6 +1564,24 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     }
 }
 
+impl Wire2Api<API> for wire_API {
+    fn wire2api(self) -> API {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Speed);
+                API::Speed(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.KilometerPoint);
+                API::KilometerPoint(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+
 impl Wire2Api<ApplicationEnv> for wire_ApplicationEnv {
     fn wire2api(self) -> ApplicationEnv {
         ApplicationEnv {
@@ -1518,6 +1636,13 @@ impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
     fn wire2api(self) -> Box<ApplicationEnv> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
+    }
+}
+
+impl Wire2Api<API> for *mut wire_API {
+    fn wire2api(self) -> API {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<API>::wire2api(*wrap).into()
     }
 }
 
@@ -1673,6 +1798,13 @@ impl Wire2Api<Box<i8>> for *mut i8 {
     }
 }
 
+impl Wire2Api<Box<KilometerPoint>> for *mut wire_KilometerPoint {
+    fn wire2api(self) -> Box<KilometerPoint> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<KilometerPoint>::wire2api(*wrap).into()
+    }
+}
+
 impl Wire2Api<Box<KitchenSink>> for *mut wire_KitchenSink {
     fn wire2api(self) -> Box<KitchenSink> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1684,6 +1816,13 @@ impl Wire2Api<Box<MySize>> for *mut wire_MySize {
     fn wire2api(self) -> Box<MySize> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MySize>::wire2api(*wrap).into()
+    }
+}
+
+impl Wire2Api<Box<Speed>> for *mut wire_Speed {
+    fn wire2api(self) -> Box<Speed> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Speed>::wire2api(*wrap).into()
     }
 }
 
@@ -1810,6 +1949,20 @@ impl Wire2Api<Vec<i8>> for *mut wire_int_8_list {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+
+impl Wire2Api<KilometerPoint> for wire_KilometerPoint {
+    fn wire2api(self) -> KilometerPoint {
+        match self.tag {
+            0 => KilometerPoint::Unknown,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.SNCF);
+                KilometerPoint::SNCF(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
         }
     }
 }
@@ -1955,6 +2108,20 @@ impl Wire2Api<Note> for wire_Note {
     }
 }
 
+impl Wire2Api<Speed> for wire_Speed {
+    fn wire2api(self) -> Speed {
+        match self.tag {
+            0 => Speed::Unknown,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.GPS);
+                Speed::GPS(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+
 impl Wire2Api<SumWith> for wire_SumWith {
     fn wire2api(self) -> SumWith {
         SumWith {
@@ -2023,6 +2190,33 @@ impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
     }
+}
+
+impl NewWithNullPtr for wire_API {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_API_Speed() -> *mut APIKind {
+    support::new_leak_box_ptr(APIKind {
+        Speed: support::new_leak_box_ptr(API_Speed {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_API_KilometerPoint() -> *mut APIKind {
+    support::new_leak_box_ptr(APIKind {
+        KilometerPoint: support::new_leak_box_ptr(API_KilometerPoint {
+            field0: core::ptr::null_mut(),
+        }),
+    })
 }
 
 impl NewWithNullPtr for wire_ApplicationEnv {
@@ -2099,6 +2293,24 @@ impl NewWithNullPtr for wire_ExoticOptionals {
             newtypeint: core::ptr::null_mut(),
         }
     }
+}
+
+impl NewWithNullPtr for wire_KilometerPoint {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KilometerPoint_SNCF() -> *mut KilometerPointKind {
+    support::new_leak_box_ptr(KilometerPointKind {
+        SNCF: support::new_leak_box_ptr(KilometerPoint_SNCF {
+            field0: Default::default(),
+        }),
+    })
 }
 
 impl NewWithNullPtr for wire_KitchenSink {
@@ -2202,6 +2414,24 @@ impl NewWithNullPtr for wire_Note {
             body: core::ptr::null_mut(),
         }
     }
+}
+
+impl NewWithNullPtr for wire_Speed {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Speed_GPS() -> *mut SpeedKind {
+    support::new_leak_box_ptr(SpeedKind {
+        GPS: support::new_leak_box_ptr(Speed_GPS {
+            field0: Default::default(),
+        }),
+    })
 }
 
 impl NewWithNullPtr for wire_SumWith {

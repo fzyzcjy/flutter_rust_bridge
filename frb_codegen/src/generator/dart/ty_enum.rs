@@ -22,7 +22,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     if let IrVariantKind::Value = &variant.kind {
                         format!(
                             "if (apiObj is {}) {{ wireObj.tag = {}; return; }}",
-                            variant.name, idx
+                            variant.wrapper_name, idx
                         )
                     } else {
                         let r = format!("wireObj.kind.ref.{}.ref", variant.name);
@@ -43,7 +43,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             _ => unreachable!(),
                         };
                         format!(
-                            "if (apiObj is {0}) {{
+                            "if (apiObj is {4}) {{
                                 wireObj.tag = {1};
                                 wireObj.kind = inner.inflate_{2}_{0}();
                                 {3}
@@ -51,7 +51,8 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             variant.name,
                             idx,
                             self.ir.name,
-                            body.join("\n")
+                            body.join("\n"),
+                            variant.wrapper_name
                         )
                     }
                 })
@@ -86,7 +87,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         .collect::<Vec<_>>()
                         .join(""),
                 };
-                format!("case {}: return {}({});", idx, variant.name, args)
+                format!("case {}: return {}({});", idx, variant.wrapper_name, args)
             })
             .collect::<Vec<_>>();
         format!(
@@ -158,7 +159,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         self.ir.name,
                         variant.name.dart_style(),
                         args,
-                        variant.name.rust_style(),
+                        variant.wrapper_name.rust_style(),
                     )
                 })
                 .collect::<Vec<_>>();

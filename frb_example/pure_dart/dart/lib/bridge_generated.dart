@@ -208,6 +208,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta;
 
+  Future<void> handleApi({required API api, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleApiConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -243,6 +247,16 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
 }
 
+@freezed
+class API with _$API {
+  const factory API.speed(
+    Speed field0,
+  ) = API_Speed_Variant;
+  const factory API.kilometerPoint(
+    KilometerPoint field0,
+  ) = API_KilometerPoint_Variant;
+}
+
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
@@ -265,12 +279,12 @@ class ApplicationEnvVar {
 class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.displayMessage(
     String field0,
-  ) = DisplayMessage;
+  ) = ApplicationMessage_DisplayMessage_Variant;
   const factory ApplicationMessage.renderPixel({
     required int x,
     required int y,
-  }) = RenderPixel;
-  const factory ApplicationMessage.exit() = Exit;
+  }) = ApplicationMessage_RenderPixel_Variant;
+  const factory ApplicationMessage.exit() = ApplicationMessage_Exit_Variant;
 }
 
 enum ApplicationMode {
@@ -421,30 +435,38 @@ class ExoticOptionals {
 }
 
 @freezed
+class KilometerPoint with _$KilometerPoint {
+  const factory KilometerPoint.unknown() = KilometerPoint_Unknown_Variant;
+  const factory KilometerPoint.sncf(
+    double field0,
+  ) = KilometerPoint_SNCF_Variant;
+}
+
+@freezed
 class KitchenSink with _$KitchenSink {
   /// Comment on variant
-  const factory KitchenSink.empty() = Empty;
+  const factory KitchenSink.empty() = KitchenSink_Empty_Variant;
   const factory KitchenSink.primitives({
     /// Dart field comment
     required int int32,
     required double float64,
     required bool boolean,
-  }) = Primitives;
+  }) = KitchenSink_Primitives_Variant;
   const factory KitchenSink.nested(
     KitchenSink field0,
     int field1,
-  ) = Nested;
+  ) = KitchenSink_Nested_Variant;
   const factory KitchenSink.optional([
     /// Comment on anonymous field
     int? field0,
     int? field1,
-  ]) = Optional;
+  ]) = KitchenSink_Optional_Variant;
   const factory KitchenSink.buffer(
     Uint8List field0,
-  ) = Buffer;
+  ) = KitchenSink_Buffer_Variant;
   const factory KitchenSink.enums(
     Weekdays field0,
-  ) = Enums;
+  ) = KitchenSink_Enums_Variant;
 }
 
 class Log {
@@ -538,6 +560,14 @@ class Point {
     required this.x,
     required this.y,
   });
+}
+
+@freezed
+class Speed with _$Speed {
+  const factory Speed.unknown() = Speed_Unknown_Variant;
+  const factory Speed.gps(
+    double field0,
+  ) = Speed_GPS_Variant;
 }
 
 class SumWith {
@@ -1243,6 +1273,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: [],
       );
 
+  Future<void> handleApi({required API api, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_handle_api(port_, _api2wire_box_autoadd_api(api)),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kHandleApiConstMeta,
+        argValues: [api],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleApiConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_api",
+        argNames: ["api"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_sum__method__SumWith(
@@ -1399,6 +1442,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ptr;
   }
 
+  ffi.Pointer<wire_API> _api2wire_box_autoadd_api(API raw) {
+    final ptr = inner.new_box_autoadd_api_0();
+    _api_fill_to_wire_api(raw, ptr.ref);
+    return ptr;
+  }
+
   ffi.Pointer<wire_ApplicationSettings> _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
     final ptr = inner.new_box_autoadd_application_settings_0();
     _api_fill_to_wire_application_settings(raw, ptr.ref);
@@ -1519,6 +1568,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return inner.new_box_i8_0(_api2wire_i8(raw));
   }
 
+  ffi.Pointer<wire_KilometerPoint> _api2wire_box_kilometer_point(KilometerPoint raw) {
+    final ptr = inner.new_box_kilometer_point_0();
+    _api_fill_to_wire_kilometer_point(raw, ptr.ref);
+    return ptr;
+  }
+
   ffi.Pointer<wire_KitchenSink> _api2wire_box_kitchen_sink(KitchenSink raw) {
     final ptr = inner.new_box_kitchen_sink_0();
     _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
@@ -1528,6 +1583,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   ffi.Pointer<wire_MySize> _api2wire_box_my_size(MySize raw) {
     final ptr = inner.new_box_my_size_0();
     _api_fill_to_wire_my_size(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_Speed> _api2wire_box_speed(Speed raw) {
+    final ptr = inner.new_box_speed_0();
+    _api_fill_to_wire_speed(raw, ptr.ref);
     return ptr;
   }
 
@@ -1753,6 +1814,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_api(API apiObj, wire_API wireObj) {
+    if (apiObj is API_Speed_Variant) {
+      wireObj.tag = 0;
+      wireObj.kind = inner.inflate_API_Speed();
+      wireObj.kind.ref.Speed.ref.field0 = _api2wire_box_speed(apiObj.field0);
+    }
+    if (apiObj is API_KilometerPoint_Variant) {
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_API_KilometerPoint();
+      wireObj.kind.ref.KilometerPoint.ref.field0 = _api2wire_box_kilometer_point(apiObj.field0);
+    }
+  }
+
   void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
     wireObj.vars = _api2wire_list_application_env_var(apiObj.vars);
   }
@@ -1776,6 +1850,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   void _api_fill_to_wire_box_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
     _api_fill_to_wire_application_env(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_api(API apiObj, ffi.Pointer<wire_API> wireObj) {
+    _api_fill_to_wire_api(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_application_settings(
@@ -1837,12 +1915,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_kilometer_point(KilometerPoint apiObj, ffi.Pointer<wire_KilometerPoint> wireObj) {
+    _api_fill_to_wire_kilometer_point(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_speed(Speed apiObj, ffi.Pointer<wire_Speed> wireObj) {
+    _api_fill_to_wire_speed(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_concatenate_with(ConcatenateWith apiObj, wire_ConcatenateWith wireObj) {
@@ -1872,36 +1958,48 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     wireObj.newtypeint = _api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
   }
 
-  void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, wire_KitchenSink wireObj) {
-    if (apiObj is Empty) {
+  void _api_fill_to_wire_kilometer_point(KilometerPoint apiObj, wire_KilometerPoint wireObj) {
+    if (apiObj is KilometerPoint_Unknown_Variant) {
       wireObj.tag = 0;
       return;
     }
-    if (apiObj is Primitives) {
+    if (apiObj is KilometerPoint_SNCF_Variant) {
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_KilometerPoint_SNCF();
+      wireObj.kind.ref.SNCF.ref.field0 = _api2wire_f64(apiObj.field0);
+    }
+  }
+
+  void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, wire_KitchenSink wireObj) {
+    if (apiObj is KitchenSink_Empty_Variant) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is KitchenSink_Primitives_Variant) {
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_KitchenSink_Primitives();
       wireObj.kind.ref.Primitives.ref.int32 = _api2wire_i32(apiObj.int32);
       wireObj.kind.ref.Primitives.ref.float64 = _api2wire_f64(apiObj.float64);
       wireObj.kind.ref.Primitives.ref.boolean = _api2wire_bool(apiObj.boolean);
     }
-    if (apiObj is Nested) {
+    if (apiObj is KitchenSink_Nested_Variant) {
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
       wireObj.kind.ref.Nested.ref.field0 = _api2wire_box_kitchen_sink(apiObj.field0);
       wireObj.kind.ref.Nested.ref.field1 = _api2wire_i32(apiObj.field1);
     }
-    if (apiObj is Optional) {
+    if (apiObj is KitchenSink_Optional_Variant) {
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_KitchenSink_Optional();
       wireObj.kind.ref.Optional.ref.field0 = _api2wire_opt_box_autoadd_i32(apiObj.field0);
       wireObj.kind.ref.Optional.ref.field1 = _api2wire_opt_box_autoadd_i32(apiObj.field1);
     }
-    if (apiObj is Buffer) {
+    if (apiObj is KitchenSink_Buffer_Variant) {
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_KitchenSink_Buffer();
       wireObj.kind.ref.Buffer.ref.field0 = _api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
     }
-    if (apiObj is Enums) {
+    if (apiObj is KitchenSink_Enums_Variant) {
       wireObj.tag = 5;
       wireObj.kind = inner.inflate_KitchenSink_Enums();
       wireObj.kind.ref.Enums.ref.field0 = _api2wire_weekdays(apiObj.field0);
@@ -1948,6 +2046,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   void _api_fill_to_wire_opt_box_exotic_optionals(ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_speed(Speed apiObj, wire_Speed wireObj) {
+    if (apiObj is Speed_Unknown_Variant) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is Speed_GPS_Variant) {
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_Speed_GPS();
+      wireObj.kind.ref.GPS.ref.field0 = _api2wire_f64(apiObj.field0);
+    }
   }
 
   void _api_fill_to_wire_sum_with(SumWith apiObj, wire_SumWith wireObj) {
@@ -2032,16 +2142,16 @@ ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
 ApplicationMessage _wire2api_application_message(dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return DisplayMessage(
+      return ApplicationMessage_DisplayMessage_Variant(
         _wire2api_String(raw[1]),
       );
     case 1:
-      return RenderPixel(
+      return ApplicationMessage_RenderPixel_Variant(
         x: _wire2api_i32(raw[1]),
         y: _wire2api_i32(raw[2]),
       );
     case 2:
-      return Exit();
+      return ApplicationMessage_Exit_Variant();
     default:
       throw Exception("unreachable");
   }
@@ -2217,29 +2327,29 @@ Int8List _wire2api_int_8_list(dynamic raw) {
 KitchenSink _wire2api_kitchen_sink(dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return Empty();
+      return KitchenSink_Empty_Variant();
     case 1:
-      return Primitives(
+      return KitchenSink_Primitives_Variant(
         int32: _wire2api_i32(raw[1]),
         float64: _wire2api_f64(raw[2]),
         boolean: _wire2api_bool(raw[3]),
       );
     case 2:
-      return Nested(
+      return KitchenSink_Nested_Variant(
         _wire2api_box_kitchen_sink(raw[1]),
         _wire2api_i32(raw[2]),
       );
     case 3:
-      return Optional(
+      return KitchenSink_Optional_Variant(
         _wire2api_opt_box_autoadd_i32(raw[1]),
         _wire2api_opt_box_autoadd_i32(raw[2]),
       );
     case 4:
-      return Buffer(
+      return KitchenSink_Buffer_Variant(
         _wire2api_ZeroCopyBuffer_Uint8List(raw[1]),
       );
     case 5:
-      return Enums(
+      return KitchenSink_Enums_Variant(
         _wire2api_weekdays(raw[1]),
       );
     default:
@@ -3192,6 +3302,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_get_sum_structPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_sum_struct');
   late final _wire_get_sum_struct = _wire_get_sum_structPtr.asFunction<void Function(int)>();
 
+  void wire_handle_api(
+    int port_,
+    ffi.Pointer<wire_API> api,
+  ) {
+    return _wire_handle_api(
+      port_,
+      api,
+    );
+  }
+
+  late final _wire_handle_apiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_API>)>>('wire_handle_api');
+  late final _wire_handle_api = _wire_handle_apiPtr.asFunction<void Function(int, ffi.Pointer<wire_API>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -3359,6 +3483,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>('new_box_application_env_0');
   late final _new_box_application_env_0 =
       _new_box_application_env_0Ptr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
+
+  ffi.Pointer<wire_API> new_box_autoadd_api_0() {
+    return _new_box_autoadd_api_0();
+  }
+
+  late final _new_box_autoadd_api_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_API> Function()>>('new_box_autoadd_api_0');
+  late final _new_box_autoadd_api_0 = _new_box_autoadd_api_0Ptr.asFunction<ffi.Pointer<wire_API> Function()>();
 
   ffi.Pointer<wire_ApplicationSettings> new_box_autoadd_application_settings_0() {
     return _new_box_autoadd_application_settings_0();
@@ -3593,6 +3725,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_i8_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int8)>>('new_box_i8_0');
   late final _new_box_i8_0 = _new_box_i8_0Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
+  ffi.Pointer<wire_KilometerPoint> new_box_kilometer_point_0() {
+    return _new_box_kilometer_point_0();
+  }
+
+  late final _new_box_kilometer_point_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KilometerPoint> Function()>>('new_box_kilometer_point_0');
+  late final _new_box_kilometer_point_0 =
+      _new_box_kilometer_point_0Ptr.asFunction<ffi.Pointer<wire_KilometerPoint> Function()>();
+
   ffi.Pointer<wire_KitchenSink> new_box_kitchen_sink_0() {
     return _new_box_kitchen_sink_0();
   }
@@ -3609,6 +3750,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_my_size_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_MySize> Function()>>('new_box_my_size_0');
   late final _new_box_my_size_0 = _new_box_my_size_0Ptr.asFunction<ffi.Pointer<wire_MySize> Function()>();
+
+  ffi.Pointer<wire_Speed> new_box_speed_0() {
+    return _new_box_speed_0();
+  }
+
+  late final _new_box_speed_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_Speed> Function()>>('new_box_speed_0');
+  late final _new_box_speed_0 = _new_box_speed_0Ptr.asFunction<ffi.Pointer<wire_Speed> Function()>();
 
   ffi.Pointer<ffi.Uint8> new_box_u8_0(
     int value,
@@ -3771,6 +3919,30 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
   late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
+  ffi.Pointer<APIKind> inflate_API_Speed() {
+    return _inflate_API_Speed();
+  }
+
+  late final _inflate_API_SpeedPtr = _lookup<ffi.NativeFunction<ffi.Pointer<APIKind> Function()>>('inflate_API_Speed');
+  late final _inflate_API_Speed = _inflate_API_SpeedPtr.asFunction<ffi.Pointer<APIKind> Function()>();
+
+  ffi.Pointer<APIKind> inflate_API_KilometerPoint() {
+    return _inflate_API_KilometerPoint();
+  }
+
+  late final _inflate_API_KilometerPointPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<APIKind> Function()>>('inflate_API_KilometerPoint');
+  late final _inflate_API_KilometerPoint = _inflate_API_KilometerPointPtr.asFunction<ffi.Pointer<APIKind> Function()>();
+
+  ffi.Pointer<KilometerPointKind> inflate_KilometerPoint_SNCF() {
+    return _inflate_KilometerPoint_SNCF();
+  }
+
+  late final _inflate_KilometerPoint_SNCFPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KilometerPointKind> Function()>>('inflate_KilometerPoint_SNCF');
+  late final _inflate_KilometerPoint_SNCF =
+      _inflate_KilometerPoint_SNCFPtr.asFunction<ffi.Pointer<KilometerPointKind> Function()>();
+
   ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Primitives() {
     return _inflate_KitchenSink_Primitives();
   }
@@ -3815,6 +3987,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Enums');
   late final _inflate_KitchenSink_Enums =
       _inflate_KitchenSink_EnumsPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<SpeedKind> inflate_Speed_GPS() {
+    return _inflate_Speed_GPS();
+  }
+
+  late final _inflate_Speed_GPSPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SpeedKind> Function()>>('inflate_Speed_GPS');
+  late final _inflate_Speed_GPS = _inflate_Speed_GPSPtr.asFunction<ffi.Pointer<SpeedKind> Function()>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
@@ -4087,6 +4267,67 @@ class wire_ApplicationSettings extends ffi.Struct {
 class wire_UserId extends ffi.Struct {
   @ffi.Uint32()
   external int value;
+}
+
+class Speed_Unknown extends ffi.Opaque {}
+
+class Speed_GPS extends ffi.Struct {
+  @ffi.Double()
+  external double field0;
+}
+
+class SpeedKind extends ffi.Union {
+  external ffi.Pointer<Speed_Unknown> Unknown;
+
+  external ffi.Pointer<Speed_GPS> GPS;
+}
+
+class wire_Speed extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<SpeedKind> kind;
+}
+
+class API_Speed extends ffi.Struct {
+  external ffi.Pointer<wire_Speed> field0;
+}
+
+class KilometerPoint_Unknown extends ffi.Opaque {}
+
+class KilometerPoint_SNCF extends ffi.Struct {
+  @ffi.Double()
+  external double field0;
+}
+
+class KilometerPointKind extends ffi.Union {
+  external ffi.Pointer<KilometerPoint_Unknown> Unknown;
+
+  external ffi.Pointer<KilometerPoint_SNCF> SNCF;
+}
+
+class wire_KilometerPoint extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<KilometerPointKind> kind;
+}
+
+class API_KilometerPoint extends ffi.Struct {
+  external ffi.Pointer<wire_KilometerPoint> field0;
+}
+
+class APIKind extends ffi.Union {
+  external ffi.Pointer<API_Speed> Speed;
+
+  external ffi.Pointer<API_KilometerPoint> KilometerPoint;
+}
+
+class wire_API extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<APIKind> kind;
 }
 
 class wire_SumWith extends ffi.Struct {
