@@ -32,10 +32,7 @@ mod utils;
 use error::*;
 
 pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
-    let dart_root = config
-        .dart_root
-        .clone()
-        .unwrap_or_else(|| env!("CARGO_MANIFEST_DIR").to_string());
+    let dart_root = config.dart_root_or_default();
     ensure_tools_available(&dart_root)?;
 
     info!("Picked config: {:?}", config);
