@@ -34,24 +34,64 @@ The pipeline is as follows:
 
 ## Data flow
 
-### Dart -> Rust
+Let us see what happens when a function is called.
 
-TODO: a figure
+Suppose a user calls a (generated) Dart function `func({required String str})`. Then, the following happens:
 
-TODO: api2wire, wire2api
+1. The generated Dart function, `func({required String str})`, convert "*Dart api data*" (i.e. the data that user really provides) into "*Dart wire data*" (i.e. the data that will really pass between Dart and Rust). More specifically, it calls `_api2wire_String(str)` and get a `ffi.Pointer<wire_uint_8_list>` (because `String`s use `pub struct wire_uint_8_list { ptr: *mut u8, len: i32 }` under the hood).
+2. Now we call the Dart version of `wire_func`, with low-level data like `wire_uint_8_list`. We have used our codegen to create a Rust `wire_func` function, and use `cbindgen` to generate the corresponding C function, and use `ffigen` to get the cooresponding Dart function. Here, we call the Dart version of `wire_func`. Since Dart FFI and Rust FFI is C-compatible, it seamlessly calls the Rust version of `wire_func`. Notice that, since we are utilizing C-compatible functions (and it is the only feasible way), we can only pass around low-level things like pointers, instead of high-level and safe things.
+2. Surely, the Rust `wire_func` is called. The function uses `.wire2api()` to convert "*Rust wire data*" (`wire_uint_8_list` here) into "*Rust api data*" (`String` here, i.e. data that users really use). 
+2. The `FLUTTER_RUST_BRIDGE_HANDLER` is called with "*Rust api data*". That handler is user-customizable, so users may provide their own implementation other than the default thread-pool, etc. By default, we use a thread pool, and we call the user-written `func` Rust function in `api.rs`.
+2. The user-written `fn func(str: String) { ... }` is called.
+2. [TODO how the value is returned]
 
-### Rust -> Dart
+## Memory safety
 
-TODO: a figure
+How is memory safety implemented? This is a case-by-case problem. For example, suppose we want to see how a `String` is safely passed from Dart to Rust. Then, we need to examine the Dart `_api2wire_String` and the Rust `.wire2api()` for it.
 
-TODO: api2wire, wire2api
+Indeed `String` is implemented by delegating to `Vec<u8>`, so we need to see code related to String as well as `Vec<u8>`. By simply clicking a few times and jump around code, we will see that:
 
-### A function call
+```dart
+ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
+  return _api2wire_uint_8_list(utf8.encoder.convert(raw));
+}
 
-TODO
+ffi.Pointer<wire_uint_8_list> _api2wire_uint_8_list(Uint8List raw) {
+  final ans = inner.new_uint_8_list_0(raw.length);
+  ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+  return ans;
+}
+```
 
-## Data copies
+and
 
-TODO: normal case
+```rust,noplayground
+impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> Vec<u8> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
 
-TODO: ZeroCopyBuffer and its impl
+impl Wire2Api<String> for *mut wire_uint_8_list {
+    fn wire2api(self) -> String {
+        let vec: Vec<u8> = self.wire2api();
+        String::from_utf8_lossy(&vec).into_owned()
+    }
+}
+
+pub struct wire_uint_8_list {
+    ptr: *mut u8,
+    len: i32,
+}
+```
+
+In other words, String (or `Vec<u8>`) is converted to a raw struct with pointer and length field. The memory is manipulated carefully so there is no leak or double free.
+
+We use Valgrind to check as well, and I use it in production environment without problems, so no worries about memory problems :)
+
+## Want to know more? Tell me
+
+What do you want to know? Feel free to create an issue in GitHub, and I will tell more :)
