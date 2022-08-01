@@ -1,5 +1,7 @@
 use thiserror::Error;
 
+use crate::utils::PackageManager;
+
 pub type Result = std::result::Result<(), Error>;
 
 #[derive(Error, Debug)]
@@ -19,10 +21,18 @@ pub enum Error {
     MissingExe(String),
     #[error("{0}")]
     StringError(String),
-    #[error("please add {0} to your {1}. (version {2})")]
-    MissingDep(String, String, String),
-    #[error("please update version of {0} in your {1}. (version {2})")]
-    InvalidDep(String, String, String),
+    #[error("please add {name} to your {context}. (version {version})")]
+    MissingDep {
+        name: String,
+        context: PackageManager,
+        version: String,
+    },
+    #[error("please update version of {name} in your {context}. (version {version})")]
+    InvalidDep {
+        name: String,
+        context: PackageManager,
+        version: String,
+    },
 }
 
 impl Error {

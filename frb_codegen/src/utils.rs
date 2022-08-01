@@ -116,9 +116,18 @@ enum DependencyVersion {
 }
 
 #[derive(Debug, PartialEq)]
-pub(crate) enum DependenciesContext {
-    Prod,
-    Dev,
+pub enum PackageManager {
+    Dependencies,
+    DevDependencies,
+}
+
+impl std::fmt::Display for PackageManager {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            PackageManager::Dependencies => write!(f, "dependencies"),
+            PackageManager::DevDependencies => write!(f, "dev_dependencies"),
+        }
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -155,35 +164,29 @@ pub(crate) fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> 
 
 pub(crate) fn ensure_dependencies(
     dart_root: &str,
-    key: &str,
-    ctx: DependenciesContext,
+    package: &str,
+    manager: PackageManager,
 ) -> anyhow::Result<Option<VersionReq>> {
     debug!(
-        "Checking presence of {} in {} in {}",
-        key,
-        if ctx == DependenciesContext::Dev {
-            "dev_dependencies"
-        } else {
-            "dependencies"
-        },
-        dart_root
+        "Checking presence of {} in {} at {}",
+        package, manager, dart_root
     );
     let manifest_file = read_file(dart_root, "pubspec.yaml")?;
     let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|_| {
         anyhow::Error::msg(format!("unable to parse pubspec.yaml in {}", dart_root))
     })?;
-    let deps = if ctx == DependenciesContext::Dev {
+    let deps = if manager == PackageManager::DevDependencies {
         manifest_file.dev_dependencies.unwrap_or_default()
     } else {
         manifest_file.dependencies.unwrap_or_default()
     };
-    let version = deps.get(key);
+    let version = deps.get(package);
     let version = version.map(|v| match v {
         DependencyVersion::Inline(ref version) => VersionReq::parse(version).unwrap(),
         DependencyVersion::Multiline { ref version } => VersionReq::parse(
             version
                 .as_ref()
-                .unwrap_or_else(|| panic!("please specify a version for {}", key)),
+                .unwrap_or_else(|| panic!("please specify a version for {}", package)),
         )
         .unwrap(),
     });
