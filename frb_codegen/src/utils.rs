@@ -1,10 +1,12 @@
 use std::collections::{HashMap, HashSet};
+use std::convert::TryFrom;
 use std::fmt::Display;
 use std::fs;
 use std::hash::Hash;
 use std::path::{Path, PathBuf};
+use std::str::FromStr;
 
-use cargo_metadata::VersionReq;
+use cargo_metadata::{Version, VersionReq};
 use log::debug;
 use serde::Deserialize;
 
@@ -110,9 +112,58 @@ struct PubspecLock {
 
 #[derive(Debug, Deserialize)]
 #[serde(untagged)]
-enum DependencyVersion {
+pub enum PackageVersion {
     Inline(String),
     Multiline { version: Option<String> },
+}
+
+#[derive(Debug)]
+pub enum PackageVersionKind {
+    Exact(Version),
+    Range(VersionReq),
+}
+
+impl TryFrom<&PackageVersion> for PackageVersionKind {
+    type Error = anyhow::Error;
+    fn try_from(version: &PackageVersion) -> Result<Self, Self::Error> {
+        match version {
+            PackageVersion::Inline(ref version) => {
+                let version = PackageVersionKind::from_str(version)?;
+                Ok(version)
+            }
+            PackageVersion::Multiline { ref version } => {
+                if let Some(version) = version {
+                    let version = PackageVersionKind::from_str(&version)?;
+                    return Ok(version);
+                }
+                Err(anyhow::anyhow!("no version found"))
+            }
+        }
+    }
+}
+
+impl FromStr for PackageVersionKind {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let range: [char; 4] = ['>', '<', '=', '^'];
+        if s.contains(range) {
+            let version_req = VersionReq::parse(s)?;
+            Ok(PackageVersionKind::Range(version_req))
+        } else {
+            let version = Version::parse(s)?;
+            Ok(PackageVersionKind::Exact(version))
+        }
+    }
+}
+
+impl ToString for PackageVersionKind {
+    fn to_string(&self) -> String {
+        match self {
+            PackageVersionKind::Exact(v) => v.to_string(),
+            PackageVersionKind::Range(v) => v.to_string(),
+        }
+    }
 }
 
 #[derive(Debug, PartialEq)]
@@ -132,8 +183,8 @@ impl std::fmt::Display for PackageManager {
 
 #[derive(Debug, Deserialize)]
 struct Pubspec {
-    pub dependencies: Option<HashMap<String, DependencyVersion>>,
-    pub dev_dependencies: Option<HashMap<String, DependencyVersion>>,
+    pub dependencies: Option<HashMap<String, PackageVersion>>,
+    pub dev_dependencies: Option<HashMap<String, PackageVersion>>,
 }
 
 #[inline]
@@ -166,7 +217,7 @@ pub(crate) fn ensure_dependencies(
     dart_root: &str,
     package: &str,
     manager: PackageManager,
-) -> anyhow::Result<Option<VersionReq>> {
+) -> anyhow::Result<Option<PackageVersionKind>> {
     debug!(
         "Checking presence of {} in {} at {}",
         package, manager, dart_root
@@ -181,15 +232,7 @@ pub(crate) fn ensure_dependencies(
         manifest_file.dependencies.unwrap_or_default()
     };
     let version = deps.get(package);
-    let version = version.map(|v| match v {
-        DependencyVersion::Inline(ref version) => VersionReq::parse(version).unwrap(),
-        DependencyVersion::Multiline { ref version } => VersionReq::parse(
-            version
-                .as_ref()
-                .unwrap_or_else(|| panic!("please specify a version for {}", package)),
-        )
-        .unwrap(),
-    });
+    let version = version.map(|v| PackageVersionKind::try_from(v).unwrap());
     Ok(version)
 }
 

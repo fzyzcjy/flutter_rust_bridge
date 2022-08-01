@@ -6,7 +6,6 @@ use std::process::Output;
 use crate::error::{Error, Result};
 use crate::utils::PackageManager;
 use crate::utils::{ensure_dependencies, guess_toolchain, DartToolchain};
-use cargo_metadata::VersionReq;
 use log::{debug, info, warn};
 
 #[must_use]
@@ -31,15 +30,7 @@ pub fn ensure_tools_available(dart_root: &str) -> Result {
     };
 
     let ffi = ensure_dependencies(dart_root, "ffi", PackageManager::Dependencies).unwrap();
-    if let Some(ffi) = ffi {
-        if VersionReq::parse("^2.0.1").unwrap() != ffi {
-            return Err(Error::InvalidDep {
-                name: "ffi".into(),
-                context: PackageManager::Dependencies,
-                version: "^2.0.1".into(),
-            });
-        }
-    } else {
+    if ffi.is_none() {
         return Err(Error::MissingDep {
             name: "ffi".into(),
             context: PackageManager::Dependencies,
@@ -48,15 +39,7 @@ pub fn ensure_tools_available(dart_root: &str) -> Result {
     }
 
     let ffigen = ensure_dependencies(dart_root, "ffigen", PackageManager::DevDependencies).unwrap();
-    if let Some(ffigen) = ffigen {
-        if VersionReq::parse("^6.0.1").unwrap() != ffigen {
-            return Err(Error::InvalidDep {
-                name: "ffigen".into(),
-                context: PackageManager::DevDependencies,
-                version: "^6.0.1".into(),
-            });
-        }
-    } else {
+    if ffigen.is_none() {
         return Err(Error::MissingDep {
             name: "ffigen".into(),
             context: PackageManager::DevDependencies,
