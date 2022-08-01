@@ -82,7 +82,10 @@ pub(crate) struct BindgenRustToDartArg<'a> {
     pub llvm_compiler_opts: &'a str,
 }
 
-pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg, dart_root: &Option<String>) -> anyhow::Result<()> {
+pub(crate) fn bindgen_rust_to_dart(
+    arg: BindgenRustToDartArg,
+    dart_root: &Option<String>,
+) -> anyhow::Result<()> {
     cbindgen(
         arg.rust_crate_dir,
         arg.c_output_path,
@@ -95,7 +98,9 @@ pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg, dart_root: &Option
         arg.dart_class_name,
         arg.llvm_install_path,
         arg.llvm_compiler_opts,
-        dart_root.as_deref().unwrap_or(env!("CARGO_MANIFEST_DIR").into())
+        dart_root
+            .as_deref()
+            .unwrap_or(env!("CARGO_MANIFEST_DIR").into()),
     )
 }
 
@@ -253,7 +258,11 @@ fn ffigen(
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    let cmd = if guess_toolchain(dart_root).unwrap() == DartToolchain::Dart { "dart run" } else { "flutter pub run" };
+    let cmd = if guess_toolchain(dart_root).unwrap() == DartToolchain::Dart {
+        "dart run"
+    } else {
+        "flutter pub run"
+    };
     let res = call_shell(&format!(
         "cd {}{}{} ffigen --config \"{}\"",
         dart_root,

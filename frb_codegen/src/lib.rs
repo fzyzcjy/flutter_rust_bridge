@@ -68,21 +68,23 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
-            commands::bindgen_rust_to_dart(BindgenRustToDartArg {
-                rust_crate_dir: &config.rust_crate_dir,
-                c_output_path: temp_bindgen_c_output_file
-                    .path()
-                    .as_os_str()
-                    .to_str()
-                    .unwrap(),
-                dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-                dart_class_name: &config.dart_wire_class_name(),
-                c_struct_names: ir_file.get_c_struct_names(),
-                exclude_symbols,
-                llvm_install_path: &config.llvm_path[..],
-                llvm_compiler_opts: &config.llvm_compiler_opts,
-                
-            }, &config.dart_root)
+            commands::bindgen_rust_to_dart(
+                BindgenRustToDartArg {
+                    rust_crate_dir: &config.rust_crate_dir,
+                    c_output_path: temp_bindgen_c_output_file
+                        .path()
+                        .as_os_str()
+                        .to_str()
+                        .unwrap(),
+                    dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+                    dart_class_name: &config.dart_wire_class_name(),
+                    c_struct_names: ir_file.get_c_struct_names(),
+                    exclude_symbols,
+                    llvm_install_path: &config.llvm_path[..],
+                    llvm_compiler_opts: &config.llvm_compiler_opts,
+                },
+                &config.dart_root,
+            )
         },
     )?;
 
