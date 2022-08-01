@@ -32,7 +32,7 @@ mod utils;
 use error::*;
 
 pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
-    ensure_tools_available()?;
+    ensure_tools_available(&config.dart_root)?;
 
     info!("Picked config: {:?}", config);
 
@@ -81,7 +81,8 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
                 exclude_symbols,
                 llvm_install_path: &config.llvm_path[..],
                 llvm_compiler_opts: &config.llvm_compiler_opts,
-            })
+                
+            }, &config.dart_root)
         },
     )?;
 

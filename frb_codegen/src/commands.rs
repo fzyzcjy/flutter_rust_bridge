@@ -6,6 +6,7 @@ use std::process::Command;
 use std::process::Output;
 
 use crate::error::{Error, Result};
+use cargo_metadata::VersionReq;
 use log::{debug, info, warn};
 use serde::Deserialize;
 
@@ -18,11 +19,53 @@ fn call_shell(cmd: &str) -> Output {
     execute_command("sh", &["-c", cmd], None)
 }
 
-pub fn ensure_tools_available() -> Result {
-    let output = call_shell("dart pub global list");
-    let output = String::from_utf8_lossy(&output.stdout);
-    if !output.contains("ffigen") {
-        return Err(Error::MissingExe(String::from("ffigen")));
+pub fn ensure_tools_available(maybe_dart_root: &Option<String>) -> Result {
+    let dart_root = maybe_dart_root
+        .as_deref()
+        .unwrap_or(env!("CARGO_MANIFEST_DIR").into());
+    let toolchain = guess_toolchain(&dart_root).unwrap();
+    if toolchain == DartToolchain::Dart {
+        if !call_shell("dart --version").status.success() {
+            return Err(Error::MissingExe(String::from("dart")));
+        };
+    } else {
+        if !call_shell("flutter --version").status.success() {
+            return Err(Error::MissingExe(String::from("flutter")));
+        };
+    };
+
+    let ffi = ensure_dependencies(&dart_root, "ffi").unwrap();
+    if let Some(ffi) = ffi {
+        if VersionReq::parse("^2.0.1").unwrap() != ffi {
+            return Err(Error::InvalidDep(
+                "ffi".into(),
+                "dependencies".into(),
+                "^2.0.1".into(),
+            ));
+        }
+    } else {
+        return Err(Error::MissingDep(
+            "ffi".into(),
+            "dependencies".into(),
+            "^2.0.1".into(),
+        ));
+    }
+
+    let ffigen = ensure_dev_dependencies(&dart_root, "ffigen").unwrap();
+    if let Some(ffigen) = ffigen {
+        if VersionReq::parse("^6.0.1").unwrap() != ffigen {
+            return Err(Error::InvalidDep(
+                "ffigen".into(),
+                "dev_dependencies".into(),
+                "^6.0.1".into(),
+            ));
+        }
+    } else {
+        return Err(Error::MissingDep(
+            "ffigen".into(),
+            "dev_dependencies".into(),
+            "^6.0.1".into(),
+        ));
     }
 
     Ok(())
@@ -39,7 +82,7 @@ pub(crate) struct BindgenRustToDartArg<'a> {
     pub llvm_compiler_opts: &'a str,
 }
 
-pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<()> {
+pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg, dart_root: &Option<String>) -> anyhow::Result<()> {
     cbindgen(
         arg.rust_crate_dir,
         arg.c_output_path,
@@ -52,6 +95,7 @@ pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<
         arg.dart_class_name,
         arg.llvm_install_path,
         arg.llvm_compiler_opts,
+        dart_root.as_deref().unwrap_or(env!("CARGO_MANIFEST_DIR").into())
     )
 }
 
@@ -161,6 +205,7 @@ fn ffigen(
     dart_class_name: &str,
     llvm_path: &[String],
     llvm_compiler_opts: &str,
+    dart_root: &str,
 ) -> anyhow::Result<()> {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
@@ -208,9 +253,12 @@ fn ffigen(
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    // NOTE please install ffigen globally first: `dart pub global activate ffigen`
+    let cmd = if guess_toolchain(dart_root).unwrap() == DartToolchain::Dart { "dart run" } else { "flutter pub run" };
     let res = call_shell(&format!(
-        "dart pub global run ffigen --config \"{}\"",
+        "cd {}{}{} ffigen --config \"{}\"",
+        dart_root,
+        if cfg!(windows) { "; " } else { " && " },
+        cmd,
         config_file.path().to_string_lossy()
     ));
     if !res.status.success() {
@@ -281,17 +329,23 @@ pub fn build_runner(dart_root: &str) -> Result {
     Ok(())
 }
 
-fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> {
-    debug!("Guessing toolchain the runner is run into");
-    let lock_file = PathBuf::from(dart_root).join("pubspec.lock");
-    if !lock_file.exists() {
+#[inline]
+fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
+    let file = PathBuf::from(at).join(filename);
+    if !file.exists() {
         return Err(anyhow::Error::msg(format!(
-            "missing pubspec.lock in {}",
-            dart_root
+            "missing {} in {}",
+            filename, at
         )));
     }
-    let lock_file = std::fs::read_to_string(lock_file)
-        .map_err(|_| anyhow::Error::msg(format!("unable to read pubspec.lock in {}", dart_root)))?;
+    let content = std::fs::read_to_string(file)
+        .map_err(|_| anyhow::Error::msg(format!("unable to read {} in {}", filename, at)))?;
+    Ok(content)
+}
+
+fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> {
+    debug!("Guessing toolchain the runner is run into");
+    let lock_file = read_file(dart_root, "pubspec.lock")?;
     let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|_| {
         anyhow::Error::msg(format!("unable to parse pubspec.lock in {}", dart_root))
     })?;
@@ -299,6 +353,58 @@ fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> {
         return Ok(DartToolchain::Flutter);
     }
     Ok(DartToolchain::Dart)
+}
+
+fn ensure_dependencies(dart_root: &str, key: &str) -> anyhow::Result<Option<VersionReq>> {
+    debug!(
+        "Checking presence of {} in dependencies in {}",
+        key, dart_root
+    );
+    let manifest_file = read_file(dart_root, "pubspec.yaml")?;
+    info!("{:#?}", manifest_file);
+    let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|e| {
+        info!("{}", e);
+        anyhow::Error::msg(format!("unable to parse pubspec.yaml in {}", dart_root))
+    })?;
+    let deps = manifest_file.dependencies.unwrap_or_default();
+    let version = deps.get(key);
+    let version = version.map(|v| match v {
+        DependencyVersion::Inline(ref version) => VersionReq::parse(version).unwrap(),
+        DependencyVersion::Multiline { ref version } => VersionReq::parse(
+            version
+                .as_ref()
+                .expect(&format!("please specify a version for {}", key)),
+        )
+        .unwrap(),
+    });
+    info!("found version {:#?} for {}", version, key);
+    Ok(version)
+}
+
+fn ensure_dev_dependencies(dart_root: &str, key: &str) -> anyhow::Result<Option<VersionReq>> {
+    debug!(
+        "Checking presence of {} in dev_dependencies in {}",
+        key, dart_root
+    );
+    let manifest_file = read_file(dart_root, "pubspec.yaml")?;
+    info!("{:#?}", manifest_file);
+    let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|e| {
+        info!("{}", e);
+        anyhow::Error::msg(format!("unable to parse pubspec.yaml in {}", dart_root))
+    })?;
+    let deps = manifest_file.dev_dependencies.unwrap_or_default();
+    let version = deps.get(key);
+    let version = version.map(|v| match v {
+        DependencyVersion::Inline(ref version) => VersionReq::parse(version).unwrap(),
+        DependencyVersion::Multiline { ref version } => VersionReq::parse(
+            version
+                .as_ref()
+                .expect(&format!("please specify a version for {}", key)),
+        )
+        .unwrap(),
+    });
+    info!("found version {:#?} for {}", version, key);
+    Ok(version)
 }
 
 #[derive(Debug, PartialEq)]
@@ -319,6 +425,19 @@ impl DartToolchain {
 #[derive(Debug, Deserialize)]
 struct PubspecLock {
     pub packages: HashMap<String, serde_yaml::Value>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(untagged)]
+enum DependencyVersion {
+    Inline(String),
+    Multiline { version: Option<String> },
+}
+
+#[derive(Debug, Deserialize)]
+struct Pubspec {
+    pub dependencies: Option<HashMap<String, DependencyVersion>>,
+    pub dev_dependencies: Option<HashMap<String, DependencyVersion>>,
 }
 
 #[cfg(test)]

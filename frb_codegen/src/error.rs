@@ -19,6 +19,10 @@ pub enum Error {
     MissingExe(String),
     #[error("{0}")]
     StringError(String),
+    #[error("please add {0} to your {1}. (version {2})")]
+    MissingDep(String, String, String),
+    #[error("please update version of {0} in your {1}. (version {2})")]
+    InvalidDep(String, String, String),
 }
 
 impl Error {
