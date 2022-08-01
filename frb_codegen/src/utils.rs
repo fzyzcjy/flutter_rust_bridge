@@ -115,6 +115,12 @@ enum DependencyVersion {
     Multiline { version: Option<String> },
 }
 
+#[derive(Debug, PartialEq)]
+pub(crate) enum DependenciesContext {
+    Prod,
+    Dev,
+}
+
 #[derive(Debug, Deserialize)]
 struct Pubspec {
     pub dependencies: Option<HashMap<String, DependencyVersion>>,
@@ -150,42 +156,27 @@ pub(crate) fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> 
 pub(crate) fn ensure_dependencies(
     dart_root: &str,
     key: &str,
+    ctx: DependenciesContext,
 ) -> anyhow::Result<Option<VersionReq>> {
     debug!(
-        "Checking presence of {} in dependencies in {}",
-        key, dart_root
+        "Checking presence of {} in {} in {}",
+        key,
+        if ctx == DependenciesContext::Dev {
+            "dev_dependencies"
+        } else {
+            "dependencies"
+        },
+        dart_root
     );
     let manifest_file = read_file(dart_root, "pubspec.yaml")?;
     let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|_| {
         anyhow::Error::msg(format!("unable to parse pubspec.yaml in {}", dart_root))
     })?;
-    let deps = manifest_file.dependencies.unwrap_or_default();
-    let version = deps.get(key);
-    let version = version.map(|v| match v {
-        DependencyVersion::Inline(ref version) => VersionReq::parse(version).unwrap(),
-        DependencyVersion::Multiline { ref version } => VersionReq::parse(
-            version
-                .as_ref()
-                .expect(&format!("please specify a version for {}", key)),
-        )
-        .unwrap(),
-    });
-    Ok(version)
-}
-
-pub(crate) fn ensure_dev_dependencies(
-    dart_root: &str,
-    key: &str,
-) -> anyhow::Result<Option<VersionReq>> {
-    debug!(
-        "Checking presence of {} in dev_dependencies in {}",
-        key, dart_root
-    );
-    let manifest_file = read_file(dart_root, "pubspec.yaml")?;
-    let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|_| {
-        anyhow::Error::msg(format!("unable to parse pubspec.yaml in {}", dart_root))
-    })?;
-    let deps = manifest_file.dev_dependencies.unwrap_or_default();
+    let deps = if ctx == DependenciesContext::Dev {
+        manifest_file.dev_dependencies.unwrap_or_default()
+    } else {
+        manifest_file.dependencies.unwrap_or_default()
+    };
     let version = deps.get(key);
     let version = version.map(|v| match v {
         DependencyVersion::Inline(ref version) => VersionReq::parse(version).unwrap(),

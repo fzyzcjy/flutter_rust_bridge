@@ -4,7 +4,8 @@ use std::process::Command;
 use std::process::Output;
 
 use crate::error::{Error, Result};
-use crate::utils::{ensure_dependencies, ensure_dev_dependencies, guess_toolchain, DartToolchain};
+use crate::utils::DependenciesContext;
+use crate::utils::{ensure_dependencies, guess_toolchain, DartToolchain};
 use cargo_metadata::VersionReq;
 use log::{debug, info, warn};
 
@@ -32,7 +33,7 @@ pub fn ensure_tools_available(maybe_dart_root: &Option<String>) -> Result {
         };
     };
 
-    let ffi = ensure_dependencies(&dart_root, "ffi").unwrap();
+    let ffi = ensure_dependencies(&dart_root, "ffi", DependenciesContext::Prod).unwrap();
     if let Some(ffi) = ffi {
         if VersionReq::parse("^2.0.1").unwrap() != ffi {
             return Err(Error::InvalidDep(
@@ -49,7 +50,7 @@ pub fn ensure_tools_available(maybe_dart_root: &Option<String>) -> Result {
         ));
     }
 
-    let ffigen = ensure_dev_dependencies(&dart_root, "ffigen").unwrap();
+    let ffigen = ensure_dependencies(&dart_root, "ffigen", DependenciesContext::Dev).unwrap();
     if let Some(ffigen) = ffigen {
         if VersionReq::parse("^6.0.1").unwrap() != ffigen {
             return Err(Error::InvalidDep(
