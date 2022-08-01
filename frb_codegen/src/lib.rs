@@ -32,7 +32,11 @@ mod utils;
 use error::*;
 
 pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
-    ensure_tools_available(&config.dart_root)?;
+    let dart_root = config
+        .dart_root
+        .clone()
+        .unwrap_or_else(|| env!("CARGO_MANIFEST_DIR").to_string());
+    ensure_tools_available(&dart_root)?;
 
     info!("Picked config: {:?}", config);
 
@@ -83,7 +87,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
                     llvm_install_path: &config.llvm_path[..],
                     llvm_compiler_opts: &config.llvm_compiler_opts,
                 },
-                &config.dart_root,
+                &dart_root,
             )
         },
     )?;
@@ -141,9 +145,8 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         )?;
     }
 
-    let dart_root = &config.dart_root;
     if needs_freezed && config.build_runner {
-        let dart_root = dart_root.as_ref().ok_or_else(|| {
+        let dart_root = config.dart_root.as_ref().ok_or_else(|| {
             Error::str(
                 "build_runner configured to run, but Dart root could not be inferred.
         Please specify --dart-root, or disable build_runner with --no-build-runner.",

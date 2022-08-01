@@ -18,10 +18,7 @@ fn call_shell(cmd: &str) -> Output {
     execute_command("sh", &["-c", cmd], None)
 }
 
-pub fn ensure_tools_available(maybe_dart_root: &Option<String>) -> Result {
-    let dart_root = maybe_dart_root
-        .as_deref()
-        .unwrap_or(env!("CARGO_MANIFEST_DIR").into());
+pub fn ensure_tools_available(dart_root: &str) -> Result {
     let toolchain = guess_toolchain(&dart_root).unwrap();
     if toolchain == DartToolchain::Dart {
         if !call_shell("dart --version").status.success() {
@@ -83,7 +80,7 @@ pub(crate) struct BindgenRustToDartArg<'a> {
 
 pub(crate) fn bindgen_rust_to_dart(
     arg: BindgenRustToDartArg,
-    dart_root: &Option<String>,
+    dart_root: &str,
 ) -> anyhow::Result<()> {
     cbindgen(
         arg.rust_crate_dir,
@@ -97,9 +94,7 @@ pub(crate) fn bindgen_rust_to_dart(
         arg.dart_class_name,
         arg.llvm_install_path,
         arg.llvm_compiler_opts,
-        dart_root
-            .as_deref()
-            .unwrap_or(env!("CARGO_MANIFEST_DIR").into()),
+        dart_root,
     )
 }
 
