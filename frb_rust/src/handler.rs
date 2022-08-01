@@ -1,7 +1,6 @@
 //! Wrappers and executors for Rust functions.
 
 use std::any::Any;
-use std::mem::ManuallyDrop;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
@@ -9,9 +8,8 @@ use crate::ffi::{IntoDart, MessagePort};
 use anyhow::Result;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
-use crate::support::{into_leak_vec_ptr, WireSyncReturnStruct};
-use crate::SyncReturn;
-// use wasm_bindgen::{prelude::*, JsCast};
+use crate::support::WireSyncReturnStruct;
+use crate::{transfer, SyncReturn};
 
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]
@@ -149,18 +147,31 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 )
             });
 
-            let (ptr, len) = into_leak_vec_ptr(bytes);
+            #[cfg(not(target_family = "wasm"))]
+            {
+                let (ptr, len) = crate::support::into_leak_vec_ptr(bytes);
+                WireSyncReturnStruct { ptr, len, success }
+            }
 
-            WireSyncReturnStruct { ptr, len, success }
+            #[cfg(target_family = "wasm")]
+            {
+                vec![bytes.into_dart(), success.into_dart()].into_dart()
+            }
         })
-        .unwrap_or_else(|_| WireSyncReturnStruct {
-            // return the simplest thing possible. Normally the inner [catch_unwind] should catch
-            // panic. If no, here is our *LAST* chance before encountering undefined behavior.
-            // We just return this data that does not have much sense, but at least much better
-            // than let panic happen across FFI boundary - which is undefined behavior.
-            ptr: ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
-            len: 0,
-            success: false,
+        .unwrap_or_else(|_| {
+            #[cfg(not(target_family = "wasm"))]
+            return WireSyncReturnStruct {
+                // return the simplest thing possible. Normally the inner [catch_unwind] should catch
+                // panic. If no, here is our *LAST* chance before encountering undefined behavior.
+                // We just return this data that does not have much sense, but at least much better
+                // than let panic happen across FFI boundary - which is undefined behavior.
+                ptr: core::mem::ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
+                len: 0,
+                success: false,
+            };
+
+            #[cfg(target_family = "wasm")]
+            return vec![wasm_bindgen::JsValue::null(), false.into_dart()].into_dart();
         })
     }
 }
@@ -229,7 +240,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         let eh2 = self.error_handler;
 
         let WrapInfo { port, mode, .. } = wrap_info;
-        let worker = move |port: Option<MessagePort>| {
+        let worker = transfer!(|port: Option<MessagePort>| {
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
@@ -260,22 +271,14 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
             if let Err(error) = thread_result {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
-        };
+        });
         #[cfg(not(target_family = "wasm"))]
-        THREAD_POOL.lock().execute(move || worker(port));
+        THREAD_POOL.lock().execute(worker);
 
         #[cfg(target_family = "wasm")]
         WORKER_POOL.with(|pool| {
-            use wasm_bindgen::{JsCast, JsValue};
-            // MessagePort is not thread-safe (as it is only a pointer to a JS scope-local heap)
-            // but is transferrable, so we have to delegate to JS for marshalling.
-            // TODO(Desdaemon): Make a thread-safe adapter for MessagePort
-            let worker = |transfers: &[JsValue]| {
-                let port = transfers[0].dyn_ref::<MessagePort>().cloned();
-                worker(port)
-            };
-            if let Err(err) = pool.run(worker, Some(&[port.into()])) {
-                crate::console_error!("worker error: {:?}", err);
+            if let Err(err) = pool.run(worker) {
+                crate::console_error!("worker error: {:#?}", err)
             }
         });
     }

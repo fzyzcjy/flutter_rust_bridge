@@ -26,11 +26,6 @@ struct PoolState {
     callback: Closure<dyn FnMut(Event)>,
 }
 
-#[allow(dead_code)]
-struct Work {
-    func: Box<dyn FnOnce() + Send>,
-}
-
 #[wasm_bindgen]
 impl WorkerPool {
     /// Creates a new `WorkerPool` which immediately creates `initial` workers.
@@ -107,8 +102,8 @@ impl WorkerPool {
         // instantiating the wasm module. Later it might receive further
         // messages about code to run on the wasm module.
         let module = wasm_bindgen::module();
-        let buffer = wasm_bindgen::memory();
-        worker.post_message(&Array::from_iter([module, buffer]))?;
+        let memory = wasm_bindgen::memory();
+        worker.post_message(&Array::from_iter([module, memory]))?;
 
         Ok(worker)
     }
@@ -142,17 +137,9 @@ impl WorkerPool {
     ///
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
-    fn execute(
-        &self,
-        f: impl FnOnce(&[JsValue]) + Send + 'static,
-        transfer: Option<&[JsValue]>,
-    ) -> Result<Worker, JsValue> {
+    fn execute(&self, closure: TransferClosure<JsValue>) -> Result<Worker, JsValue> {
         let worker = self.worker()?;
-        let closure = TransferClosure::new(transfer.unwrap_or(&[]), f);
-        match closure.apply(&worker) {
-            Ok(()) => Ok(worker),
-            Err(e) => Err(e),
-        }
+        closure.apply(&worker).map(|_| worker)
     }
 
     /// Configures an `onmessage` callback for the `worker` specified for the
@@ -161,7 +148,7 @@ impl WorkerPool {
     ///
     /// Currently this `WorkerPool` abstraction is intended to execute one-off
     /// style work where the work itself doesn't send any notifications and
-    /// whatn it's done the worker is ready to execute more work. This method is
+    /// when it's done the worker is ready to execute more work. This method is
     /// used for all spawned workers to ensure that when the work is finished
     /// the worker is reclaimed back into this pool.
     fn reclaim_on_message(&self, worker: Worker) {
@@ -221,12 +208,8 @@ impl WorkerPool {
     /// Certain types in [js_sys] and [web_sys] are transferrable, for which [Send]
     /// can be unsafely implemented **only if** they are passed to the transferrables of
     /// a `post_message`. Examples are `Buffer`s, `MessagePort`s, etc...
-    pub fn run(
-        &self,
-        f: impl FnOnce(&[JsValue]) + Send + 'static,
-        transfer: Option<&[JsValue]>,
-    ) -> Result<(), JsValue> {
-        let worker = self.execute(f, transfer)?;
+    pub fn run(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
+        let worker = self.execute(closure)?;
         self.reclaim_on_message(worker);
         Ok(())
     }
@@ -246,20 +229,7 @@ impl PoolState {
     }
 }
 
-/// Entry point invoked by `worker.js`, a bit of a hack but see the "TODO" above
-/// about `worker.js` in general.
-#[wasm_bindgen]
-#[allow(dead_code)]
-pub fn child_entry_point(ptr: u32) -> Result<(), JsValue> {
-    let ptr = unsafe { Box::from_raw(ptr as *mut Work) };
-    let global = js_sys::global().unchecked_into::<DedicatedWorkerGlobalScope>();
-    (ptr.func)();
-    global.post_message(&JsValue::undefined())?;
-    Ok(())
-}
-
 #[wasm_bindgen(start)]
 pub fn run_hooks() {
-    #[cfg(feature = "console_error_panic_hook")]
     console_error_panic_hook::set_once();
 }

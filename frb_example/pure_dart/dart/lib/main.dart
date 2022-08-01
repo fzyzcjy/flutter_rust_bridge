@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'bridge_definitions.dart';
+// import 'bridge_definitions.dart';
 import 'bridge_generated.dart';
 import 'package:test/test.dart';
 

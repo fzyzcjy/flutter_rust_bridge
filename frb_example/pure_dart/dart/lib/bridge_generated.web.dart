@@ -6,12 +6,13 @@
 import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:typed_data';
+import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestImpl
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire>
     implements FlutterRustBridgeExampleSingleBlockTest {
-  factory FlutterRustBridgeExampleSingleBlockTestImpl(WasmModule dylib) =>
+  factory FlutterRustBridgeExampleSingleBlockTestImpl(FutureOr<WasmModule> dylib) =>
       FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestWire(dylib));
 
   FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestWire inner) : super(inner);
@@ -747,11 +748,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_application_env(ApplicationEnv raw) {
-    return const [];
+    return [_api2wire_list_application_env_var(raw.vars)];
   }
 
   List<dynamic> _api2wire_application_env_var(ApplicationEnvVar raw) {
-    return const [];
+    return [_api2wire_String(raw.field0), _api2wire_bool(raw.field1)];
   }
 
   int _api2wire_application_mode(ApplicationMode raw) {
@@ -759,11 +760,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_application_settings(ApplicationSettings raw) {
-    return const [];
+    return [
+      _api2wire_String(raw.name),
+      _api2wire_String(raw.version),
+      _api2wire_application_mode(raw.mode),
+      _api2wire_box_application_env(raw.env)
+    ];
   }
 
   List<dynamic> _api2wire_attribute(Attribute raw) {
-    return const [];
+    return [_api2wire_String(raw.key), _api2wire_String(raw.value)];
   }
 
   bool _api2wire_bool(bool raw) {
@@ -771,15 +777,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_box_application_env(ApplicationEnv raw) {
-    return const [];
+    return _api2wire_application_env(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
-    return const [];
+    return _api2wire_application_settings(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_attribute(Attribute raw) {
-    return const [];
+    return _api2wire_attribute(raw);
   }
 
   int /* *bool */ _api2wire_box_autoadd_bool(bool raw) {
@@ -787,15 +793,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_box_autoadd_concatenate_with(ConcatenateWith raw) {
-    return const [];
+    return _api2wire_concatenate_with(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_customized(Customized raw) {
-    return const [];
+    return _api2wire_customized(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
-    return const [];
+    return _api2wire_exotic_optionals(raw);
   }
 
   int /* *f64 */ _api2wire_box_autoadd_f64(double raw) {
@@ -811,35 +817,35 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
-    return const [];
+    return _api2wire_kitchen_sink(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_my_size(MySize raw) {
-    return const [];
+    return _api2wire_my_size(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_my_struct(MyStruct raw) {
-    return const [];
+    return _api2wire_my_struct(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
-    return const [];
+    return _api2wire_my_tree_node(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
-    return const [];
+    return _api2wire_new_type_int(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_note(Note raw) {
-    return const [];
+    return _api2wire_note(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_sum_with(SumWith raw) {
-    return const [];
+    return _api2wire_sum_with(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_user_id(UserId raw) {
-    return const [];
+    return _api2wire_user_id(raw);
   }
 
   int /* *bool */ _api2wire_box_bool(bool raw) {
@@ -847,7 +853,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_box_exotic_optionals(ExoticOptionals raw) {
-    return const [];
+    return _api2wire_exotic_optionals(raw);
   }
 
   int /* *f64 */ _api2wire_box_f64(double raw) {
@@ -867,11 +873,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_box_kitchen_sink(KitchenSink raw) {
-    return const [];
+    return _api2wire_kitchen_sink(raw);
   }
 
   List<dynamic> _api2wire_box_my_size(MySize raw) {
-    return const [];
+    return _api2wire_my_size(raw);
   }
 
   int /* *u8 */ _api2wire_box_u8(int raw) {
@@ -883,15 +889,31 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_concatenate_with(ConcatenateWith raw) {
-    return const [];
+    return [_api2wire_String(raw.a)];
   }
 
   List<dynamic> _api2wire_customized(Customized raw) {
-    return const [];
+    return [_api2wire_String(raw.finalField), _api2wire_opt_String(raw.nonFinalField)];
   }
 
   List<dynamic> _api2wire_exotic_optionals(ExoticOptionals raw) {
-    return const [];
+    return [
+      _api2wire_opt_box_autoadd_i32(raw.int32),
+      _api2wire_opt_box_autoadd_i64(raw.int64),
+      _api2wire_opt_box_autoadd_f64(raw.float64),
+      _api2wire_opt_box_autoadd_bool(raw.boolean),
+      _api2wire_opt_ZeroCopyBuffer_Uint8List(raw.zerocopy),
+      _api2wire_opt_int_8_list(raw.int8List),
+      _api2wire_opt_uint_8_list(raw.uint8List),
+      _api2wire_opt_int_32_list(raw.int32List),
+      _api2wire_opt_int_64_list(raw.int64List),
+      _api2wire_opt_float_32_list(raw.float32List),
+      _api2wire_opt_float_64_list(raw.float64List),
+      _api2wire_opt_list_attribute(raw.attributes),
+      _api2wire_list_opt_box_autoadd_attribute(raw.attributesNullable),
+      _api2wire_opt_list_opt_box_autoadd_attribute(raw.nullableAttributes),
+      _api2wire_opt_box_autoadd_new_type_int(raw.newtypeint)
+    ];
   }
 
   double _api2wire_f32(double raw) {
@@ -963,23 +985,28 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_my_size(MySize raw) {
-    return const [];
+    return [_api2wire_i32(raw.width), _api2wire_i32(raw.height)];
   }
 
   List<dynamic> _api2wire_my_struct(MyStruct raw) {
-    return const [];
+    return [_api2wire_bool(raw.content)];
   }
 
   List<dynamic> _api2wire_my_tree_node(MyTreeNode raw) {
-    return const [];
+    return [
+      _api2wire_i32(raw.valueI32),
+      _api2wire_uint_8_list(raw.valueVecU8),
+      _api2wire_bool(raw.valueBoolean),
+      _api2wire_list_my_tree_node(raw.children)
+    ];
   }
 
   List<dynamic> _api2wire_new_type_int(NewTypeInt raw) {
-    return const [];
+    return [_api2wire_i64(raw.field0)];
   }
 
   List<dynamic> _api2wire_note(Note raw) {
-    return const [];
+    return [_api2wire_box_weekdays(raw.day), _api2wire_String(raw.body)];
   }
 
   String? _api2wire_opt_String(String? raw) {
@@ -1079,7 +1106,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_sum_with(SumWith raw) {
-    return const [];
+    return [_api2wire_u32(raw.x)];
   }
 
   int _api2wire_u32(int raw) {
@@ -1095,7 +1122,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   }
 
   List<dynamic> _api2wire_user_id(UserId raw) {
-    return const [];
+    return [_api2wire_u32(raw.value)];
   }
 
   int _api2wire_usize(int raw) {
@@ -1820,10 +1847,8 @@ external void _wire_handle_some_static_stream_sink__static_method__ConcatenateWi
 external void _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_);
 
 // Section: WASM wire module
-class FlutterRustBridgeExampleSingleBlockTestWire extends FlutterRustBridgeWireBase {
-  Future<void> init;
-  FlutterRustBridgeExampleSingleBlockTestWire(WasmModule module)
-      : init = promiseToFuture(module()).then((_) => eval('window.wasm_bindgen = wasm_bindgen'));
+class FlutterRustBridgeExampleSingleBlockTestWire extends FlutterRustBridgeWasmWireBase {
+  FlutterRustBridgeExampleSingleBlockTestWire(FutureOr<WasmModule> module) : super(module);
 
   void wire_simple_adder(NativePortType port_, int a, int b) => init.then((_) => _wire_simple_adder(port_, a, b));
 

@@ -6,11 +6,12 @@
 import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:typed_data';
+import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire>
     implements FlutterRustBridgeExample {
-  factory FlutterRustBridgeExampleImpl(WasmModule dylib) =>
+  factory FlutterRustBridgeExampleImpl(FutureOr<WasmModule> dylib) =>
       FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire(dylib));
 
   FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExampleWire inner) : super(inner);
@@ -197,15 +198,15 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   List<dynamic> _api2wire_box_autoadd_point(Point raw) {
-    return const [];
+    return _api2wire_point(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_size(Size raw) {
-    return const [];
+    return _api2wire_size(raw);
   }
 
   List<dynamic> _api2wire_box_autoadd_tree_node(TreeNode raw) {
-    return const [];
+    return _api2wire_tree_node(raw);
   }
 
   double _api2wire_f64(double raw) {
@@ -225,15 +226,15 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
   }
 
   List<dynamic> _api2wire_point(Point raw) {
-    return const [];
+    return [_api2wire_f64(raw.x), _api2wire_f64(raw.y)];
   }
 
   List<dynamic> _api2wire_size(Size raw) {
-    return const [];
+    return [_api2wire_i32(raw.width), _api2wire_i32(raw.height)];
   }
 
   List<dynamic> _api2wire_tree_node(TreeNode raw) {
-    return const [];
+    return [_api2wire_String(raw.name), _api2wire_list_tree_node(raw.children)];
   }
 
   int _api2wire_u8(int raw) {
@@ -359,10 +360,8 @@ external void _wire_off_topic_deliberately_return_error(NativePortType port_);
 external void _wire_off_topic_deliberately_panic(NativePortType port_);
 
 // Section: WASM wire module
-class FlutterRustBridgeExampleWire extends FlutterRustBridgeWireBase {
-  Future<void> init;
-  FlutterRustBridgeExampleWire(WasmModule module)
-      : init = promiseToFuture(module()).then((_) => eval('window.wasm_bindgen = wasm_bindgen'));
+class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase {
+  FlutterRustBridgeExampleWire(FutureOr<WasmModule> module) : super(module);
 
   void wire_draw_mandelbrot(
           NativePortType port_, List<dynamic> image_size, List<dynamic> zoom_point, double scale, int num_threads) =>

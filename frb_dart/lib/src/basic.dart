@@ -43,10 +43,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
-    await task.init;
     task.callFfi(sendPort.nativePort);
-    return completer.future.then((dynamic raw) =>
-        _transformRust2DartMessage(raw, task.parseSuccessData));
+    return completer.future.then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData));
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -67,7 +65,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   @protected
   Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
     final receivePort = ReceivePort();
-    await task.init;
     task.callFfi(receivePort.sendPort.nativePort);
 
     await for (final raw in receivePort) {
@@ -79,8 +76,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     }
   }
 
-  S _transformRust2DartMessage<S>(
-      dynamic raw, S Function(dynamic) parseSuccessData) {
+  S _transformRust2DartMessage<S>(dynamic raw, S Function(dynamic) parseSuccessData) {
     final action = raw[0];
     switch (action) {
       case _RUST2DART_ACTION_SUCCESS:
@@ -116,16 +112,12 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
   /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;
 
-  /// Optional initialization signal to wait for.
-  final Future<void>? init;
-
   const FlutterRustBridgeTask({
     required this.callFfi,
     required this.parseSuccessData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,
-    this.init,
   }) : super(
           constMeta: constMeta,
           argValues: argValues,

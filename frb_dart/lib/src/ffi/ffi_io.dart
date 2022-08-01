@@ -1,11 +1,20 @@
+import 'dart:async';
 import 'dart:ffi' as ffi;
 export 'dart:ffi';
+
 import 'dart:typed_data';
+import '../ffi.dart' show WasmModule;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 typedef NativePortType = int;
 Future<dynamic> promiseToFuture(Object promise) => throw UnimplementedError("Not implemented on non-WASM platforms");
 dynamic eval(String jsScript) => throw UnimplementedError("Not implemented on non-WASM platforms");
+
+/// Whether the web platform has been isolated by COOP and COEP headers,
+/// and is capable of sharing buffers between workers.
+///
+/// Note: not available on all browsers, in which case it will return null.
+bool? get crossOriginIsolated => throw UnimplementedError('Not implemented on non-WASM platforms');
 
 class JS {
   /// Dummy JS attribute.
@@ -24,6 +33,11 @@ abstract class FlutterRustBridgeWireBase {
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void free_WireSyncReturnStruct(WireSyncReturnStruct val) {}
+}
+
+class FlutterRustBridgeWasmWireBase extends FlutterRustBridgeWireBase {
+  final Future<void> init = Future.error(UnimplementedError("Not implemented on non-WASM platforms"));
+  FlutterRustBridgeWasmWireBase([FutureOr<WasmModule>? _]);
 }
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {

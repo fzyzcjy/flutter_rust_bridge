@@ -1,9 +1,16 @@
+use std::borrow::Cow;
+
 use crate::generator::rust::*;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeRustGeneratorTrait {
     fn wire2api_body(&self) -> Option<String>;
+
+    /// Handles JsValue to Self conversions.
+    fn wasm2api_body(&self) -> Option<Cow<str>> {
+        None
+    }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         None

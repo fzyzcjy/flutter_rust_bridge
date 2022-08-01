@@ -8,13 +8,17 @@ type_rust_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
 impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
     fn wire2api_body(&self) -> Option<String> {
-        Some(
-            "unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }"
-            .into(),
-        )
+        if self.context.wasm() {
+            Some("self.into_vec()".into())
+        } else {
+            Some(
+                "unsafe {
+                    let wrap = support::box_from_leak_ptr(self);
+                    support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+                }"
+                .into(),
+            )
+        }
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {

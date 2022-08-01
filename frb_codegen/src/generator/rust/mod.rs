@@ -144,6 +144,13 @@ impl<'a> Generator<'a> {
                 .map(|ty| self.generate_wire2api_func(ty, ir_file)),
         );
 
+        lines.push(self.section_header_comment("impl Wire2Api for JsValue"));
+        lines.extend(
+            distinct_input_types
+                .iter()
+                .filter_map(|ty| self.generate_wasm2api_func(ty, ir_file)),
+        );
+
         if !self.config.wasm {
             lines.push(self.section_header_comment("impl NewWithNullPtr"));
             lines.push(self.generate_new_with_nullptr_misc().to_string());
@@ -164,7 +171,7 @@ impl<'a> Generator<'a> {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
-        if self.config.block_index == BlockIndex::PRIMARY {
+        if self.config.block_index == BlockIndex::PRIMARY && !self.config.wasm {
             lines.push(self.section_header_comment("sync execution mode utility"));
             lines.push(self.generate_sync_execution_mode_utility());
         }
@@ -484,6 +491,22 @@ impl<'a> Generator<'a> {
 
     fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config).impl_intodart()
+    }
+
+    fn generate_wasm2api_func(&self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
+        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+            .wasm2api_body()
+            .map(|body| {
+                format!(
+                    "impl Wire2Api<{wire_type}> for JsValue {{
+                        fn wire2api(self) -> {wire_type} {{
+                            {}
+                        }}
+                    }}",
+                    body,
+                    wire_type = ty.rust_wire_type(true)
+                )
+            })
     }
 }
 

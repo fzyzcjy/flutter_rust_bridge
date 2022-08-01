@@ -5,6 +5,7 @@
 
 import 'dart:convert';
 import 'dart:typed_data';
+import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart' as meta;

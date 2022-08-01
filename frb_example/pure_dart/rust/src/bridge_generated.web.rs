@@ -147,7 +147,7 @@ pub fn wire_handle_zero_copy_vec_of_primitive(port_: MessagePort, n: i32) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_struct(port_: MessagePort, arg: Box<[JsValue]>, boxed: Box<[JsValue]>) {
+pub fn wire_handle_struct(port_: MessagePort, arg: JsValue, boxed: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_struct",
@@ -162,7 +162,7 @@ pub fn wire_handle_struct(port_: MessagePort, arg: Box<[JsValue]>, boxed: Box<[J
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_newtype(port_: MessagePort, arg: Box<[JsValue]>) {
+pub fn wire_handle_newtype(port_: MessagePort, arg: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_newtype",
@@ -176,7 +176,7 @@ pub fn wire_handle_newtype(port_: MessagePort, arg: Box<[JsValue]>) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_list_of_struct(port_: MessagePort, l: Box<[JsValue]>) {
+pub fn wire_handle_list_of_struct(port_: MessagePort, l: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_list_of_struct",
@@ -190,7 +190,7 @@ pub fn wire_handle_list_of_struct(port_: MessagePort, l: Box<[JsValue]>) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_string_list(port_: MessagePort, names: Box<[JsString]>) {
+pub fn wire_handle_string_list(port_: MessagePort, names: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string_list",
@@ -204,7 +204,7 @@ pub fn wire_handle_string_list(port_: MessagePort, names: Box<[JsString]>) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_complex_struct(port_: MessagePort, s: Box<[JsValue]>) {
+pub fn wire_handle_complex_struct(port_: MessagePort, s: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_complex_struct",
@@ -308,7 +308,7 @@ pub fn wire_handle_optional_struct(port_: MessagePort, document: Option<String>)
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_optional_increment(port_: MessagePort, opt: Option<Box<[JsValue]>>) {
+pub fn wire_handle_optional_increment(port_: MessagePort, opt: Option<JsValue>) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_optional_increment",
@@ -322,7 +322,7 @@ pub fn wire_handle_optional_increment(port_: MessagePort, opt: Option<Box<[JsVal
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_increment_boxed_optional(port_: MessagePort, opt: Option<usize /* f64 */>) {
+pub fn wire_handle_increment_boxed_optional(port_: MessagePort, opt: Option<isize /* *f64 */>) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_increment_boxed_optional",
@@ -338,13 +338,13 @@ pub fn wire_handle_increment_boxed_optional(port_: MessagePort, opt: Option<usiz
 #[wasm_bindgen]
 pub fn wire_handle_option_box_arguments(
     port_: MessagePort,
-    i8box: Option<usize /* i8 */>,
-    u8box: Option<usize /* u8 */>,
-    i32box: Option<usize /* i32 */>,
-    i64box: Option<usize /* i64 */>,
-    f64box: Option<usize /* f64 */>,
-    boolbox: Option<usize /* bool */>,
-    structbox: Option<Box<[JsValue]>>,
+    i8box: Option<isize /* *i8 */>,
+    u8box: Option<isize /* *u8 */>,
+    i32box: Option<isize /* *i32 */>,
+    i64box: Option<isize /* *i64 */>,
+    f64box: Option<isize /* *f64 */>,
+    boolbox: Option<isize /* *bool */>,
+    structbox: Option<JsValue>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -375,7 +375,7 @@ pub fn wire_handle_option_box_arguments(
     )
 }
 #[wasm_bindgen]
-pub fn wire_print_note(port_: MessagePort, note: Box<[JsValue]>) {
+pub fn wire_print_note(port_: MessagePort, note: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "print_note",
@@ -417,7 +417,7 @@ pub fn wire_handle_enum_parameter(port_: MessagePort, weekday: i32) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_customized_struct(port_: MessagePort, val: Box<[JsValue]>) {
+pub fn wire_handle_customized_struct(port_: MessagePort, val: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_customized_struct",
@@ -431,7 +431,7 @@ pub fn wire_handle_customized_struct(port_: MessagePort, val: Box<[JsValue]>) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_handle_enum_struct(port_: MessagePort, val: Box<[JsValue]>) {
+pub fn wire_handle_enum_struct(port_: MessagePort, val: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_struct",
@@ -445,7 +445,7 @@ pub fn wire_handle_enum_struct(port_: MessagePort, val: Box<[JsValue]>) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_use_imported_struct(port_: MessagePort, my_struct: Box<[JsValue]>) {
+pub fn wire_use_imported_struct(port_: MessagePort, my_struct: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "use_imported_struct",
@@ -484,7 +484,7 @@ pub fn wire_get_app_settings(port_: MessagePort) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_is_app_embedded(port_: MessagePort, app_settings: Box<[JsValue]>) {
+pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "is_app_embedded",
@@ -545,7 +545,7 @@ pub fn wire_get_usize(port_: MessagePort, u: usize) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_next_user_id(port_: MessagePort, user_id: Box<[JsValue]>) {
+pub fn wire_next_user_id(port_: MessagePort, user_id: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "next_user_id",
@@ -643,7 +643,7 @@ pub fn wire_handle_stream_sink_at_3(port_: MessagePort, key: u32, max: u32) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_sum__method__SumWith(port_: MessagePort, that: Box<[JsValue]>, y: u32, z: u32) {
+pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "sum__method__SumWith",
@@ -673,11 +673,7 @@ pub fn wire_new__static_method__ConcatenateWith(port_: MessagePort, a: String) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_concatenate__method__ConcatenateWith(
-    port_: MessagePort,
-    that: Box<[JsValue]>,
-    b: String,
-) {
+pub fn wire_concatenate__method__ConcatenateWith(port_: MessagePort, that: JsValue, b: String) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "concatenate__method__ConcatenateWith",
@@ -713,7 +709,7 @@ pub fn wire_concatenate_static__static_method__ConcatenateWith(
 #[wasm_bindgen]
 pub fn wire_handle_some_stream_sink__method__ConcatenateWith(
     port_: MessagePort,
-    that: Box<[JsValue]>,
+    that: JsValue,
     key: u32,
     max: u32,
 ) {
@@ -741,7 +737,7 @@ pub fn wire_handle_some_stream_sink__method__ConcatenateWith(
 #[wasm_bindgen]
 pub fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
     port_: MessagePort,
-    that: Box<[JsValue]>,
+    that: JsValue,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -876,11 +872,10 @@ where
 
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
-        let vec: Vec<u8> = self.wire2api();
-        String::from_utf8_lossy(&vec).into_owned()
+        self
     }
 }
-impl Wire2Api<Vec<String>> for Box<[JsString]> {
+impl Wire2Api<Vec<String>> for JsValue {
     fn wire2api(self) -> Vec<String> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -894,16 +889,18 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
         ZeroCopyBuffer(self.wire2api())
     }
 }
-impl Wire2Api<ApplicationEnv> for Box<[JsValue]> {
+impl Wire2Api<ApplicationEnv> for JsValue {
     fn wire2api(self) -> ApplicationEnv {
+        let self_ = self.unchecked_into::<JsArray>();
         ApplicationEnv {
-            vars: self.vars.wire2api(),
+            vars: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<ApplicationEnvVar> for Box<[JsValue]> {
+impl Wire2Api<ApplicationEnvVar> for JsValue {
     fn wire2api(self) -> ApplicationEnvVar {
-        ApplicationEnvVar(self.field0.wire2api(), self.field1.wire2api())
+        let self_ = self.unchecked_into::<JsArray>();
+        ApplicationEnvVar(self_.get(0).wire2api(), self_.get(1).wire2api())
     }
 }
 impl Wire2Api<ApplicationMode> for i32 {
@@ -915,21 +912,23 @@ impl Wire2Api<ApplicationMode> for i32 {
         }
     }
 }
-impl Wire2Api<ApplicationSettings> for Box<[JsValue]> {
+impl Wire2Api<ApplicationSettings> for JsValue {
     fn wire2api(self) -> ApplicationSettings {
+        let self_ = self.unchecked_into::<JsArray>();
         ApplicationSettings {
-            name: self.name.wire2api(),
-            version: self.version.wire2api(),
-            mode: self.mode.wire2api(),
-            env: self.env.wire2api(),
+            name: self_.get(0).wire2api(),
+            version: self_.get(1).wire2api(),
+            mode: self_.get(2).wire2api(),
+            env: self_.get(3).wire2api(),
         }
     }
 }
-impl Wire2Api<Attribute> for Box<[JsValue]> {
+impl Wire2Api<Attribute> for JsValue {
     fn wire2api(self) -> Attribute {
+        let self_ = self.unchecked_into::<JsArray>();
         Attribute {
-            key: self.key.wire2api(),
-            value: self.value.wire2api(),
+            key: self_.get(0).wire2api(),
+            value: self_.get(1).wire2api(),
         }
     }
 }
@@ -939,99 +938,102 @@ impl Wire2Api<bool> for bool {
     }
 }
 
-impl Wire2Api<bool> for *mut usize /* bool */ {
+impl Wire2Api<bool> for isize /* *bool */ {
     fn wire2api(self) -> bool {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
 
-impl Wire2Api<f64> for *mut usize /* f64 */ {
+impl Wire2Api<f64> for isize /* *f64 */ {
     fn wire2api(self) -> f64 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<i32> for *mut usize /* i32 */ {
+impl Wire2Api<i32> for isize /* *i32 */ {
     fn wire2api(self) -> i32 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<i64> for *mut usize /* i64 */ {
+impl Wire2Api<i64> for isize /* *i64 */ {
     fn wire2api(self) -> i64 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
 
-impl Wire2Api<Box<bool>> for *mut usize /* bool */ {
+impl Wire2Api<Box<bool>> for isize /* *bool */ {
     fn wire2api(self) -> Box<bool> {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
 
-impl Wire2Api<Box<f64>> for *mut usize /* f64 */ {
+impl Wire2Api<Box<f64>> for isize /* *f64 */ {
     fn wire2api(self) -> Box<f64> {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<i32>> for *mut usize /* i32 */ {
+impl Wire2Api<Box<i32>> for isize /* *i32 */ {
     fn wire2api(self) -> Box<i32> {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<i64>> for *mut usize /* i64 */ {
+impl Wire2Api<Box<i64>> for isize /* *i64 */ {
     fn wire2api(self) -> Box<i64> {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<i8>> for *mut usize /* i8 */ {
+impl Wire2Api<Box<i8>> for isize /* *i8 */ {
     fn wire2api(self) -> Box<i8> {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
 
-impl Wire2Api<Box<u8>> for *mut usize /* u8 */ {
+impl Wire2Api<Box<u8>> for isize /* *u8 */ {
     fn wire2api(self) -> Box<u8> {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<Weekdays>> for *mut usize /* i32 */ {
+impl Wire2Api<Box<Weekdays>> for isize /* *i32 */ {
     fn wire2api(self) -> Box<Weekdays> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Weekdays>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ConcatenateWith> for Box<[JsValue]> {
+impl Wire2Api<ConcatenateWith> for JsValue {
     fn wire2api(self) -> ConcatenateWith {
+        let self_ = self.unchecked_into::<JsArray>();
         ConcatenateWith {
-            a: self.a.wire2api(),
+            a: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<Customized> for Box<[JsValue]> {
+impl Wire2Api<Customized> for JsValue {
     fn wire2api(self) -> Customized {
+        let self_ = self.unchecked_into::<JsArray>();
         Customized {
-            final_field: self.final_field.wire2api(),
-            non_final_field: self.non_final_field.wire2api(),
+            final_field: self_.get(0).wire2api(),
+            non_final_field: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<ExoticOptionals> for Box<[JsValue]> {
+impl Wire2Api<ExoticOptionals> for JsValue {
     fn wire2api(self) -> ExoticOptionals {
+        let self_ = self.unchecked_into::<JsArray>();
         ExoticOptionals {
-            int32: self.int32.wire2api(),
-            int64: self.int64.wire2api(),
-            float64: self.float64.wire2api(),
-            boolean: self.boolean.wire2api(),
-            zerocopy: self.zerocopy.wire2api(),
-            int8list: self.int8list.wire2api(),
-            uint8list: self.uint8list.wire2api(),
-            int32list: self.int32list.wire2api(),
-            int64list: self.int64list.wire2api(),
-            float32list: self.float32list.wire2api(),
-            float64list: self.float64list.wire2api(),
-            attributes: self.attributes.wire2api(),
-            attributes_nullable: self.attributes_nullable.wire2api(),
-            nullable_attributes: self.nullable_attributes.wire2api(),
-            newtypeint: self.newtypeint.wire2api(),
+            int32: self_.get(0).wire2api(),
+            int64: self_.get(1).wire2api(),
+            float64: self_.get(2).wire2api(),
+            boolean: self_.get(3).wire2api(),
+            zerocopy: self_.get(4).wire2api(),
+            int8list: self_.get(5).wire2api(),
+            uint8list: self_.get(6).wire2api(),
+            int32list: self_.get(7).wire2api(),
+            int64list: self_.get(8).wire2api(),
+            float32list: self_.get(9).wire2api(),
+            float64list: self_.get(10).wire2api(),
+            attributes: self_.get(11).wire2api(),
+            attributes_nullable: self_.get(12).wire2api(),
+            nullable_attributes: self_.get(13).wire2api(),
+            newtypeint: self_.get(14).wire2api(),
         }
     }
 }
@@ -1047,18 +1049,12 @@ impl Wire2Api<f64> for f64 {
 }
 impl Wire2Api<Vec<f32>> for Box<[f32]> {
     fn wire2api(self) -> Vec<f32> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
+        self.into_vec()
     }
 }
 impl Wire2Api<Vec<f64>> for Box<[f64]> {
     fn wire2api(self) -> Vec<f64> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
+        self.into_vec()
     }
 }
 impl Wire2Api<i32> for i32 {
@@ -1078,29 +1074,20 @@ impl Wire2Api<i8> for i8 {
 }
 impl Wire2Api<Vec<i32>> for Box<[i32]> {
     fn wire2api(self) -> Vec<i32> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
+        self.into_vec()
     }
 }
 impl Wire2Api<Vec<i64>> for Box<[i64]> {
     fn wire2api(self) -> Vec<i64> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
+        self.into_vec()
     }
 }
 impl Wire2Api<Vec<i8>> for Box<[i8]> {
     fn wire2api(self) -> Vec<i8> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
+        self.into_vec()
     }
 }
-impl Wire2Api<KitchenSink> for Box<[JsValue]> {
+impl Wire2Api<KitchenSink> for JsValue {
     fn wire2api(self) -> KitchenSink {
         match self.tag {
             0 => KitchenSink::Empty,
@@ -1137,49 +1124,44 @@ impl Wire2Api<KitchenSink> for Box<[JsValue]> {
         }
     }
 }
-impl Wire2Api<Vec<ApplicationEnvVar>> for Box<[JsValue]> {
+impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
     fn wire2api(self) -> Vec<ApplicationEnvVar> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        self.unchecked_into::<JsArray>()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
-impl Wire2Api<Vec<Attribute>> for Box<[JsValue]> {
+impl Wire2Api<Vec<Attribute>> for JsValue {
     fn wire2api(self) -> Vec<Attribute> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        self.unchecked_into::<JsArray>()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
-impl Wire2Api<Vec<MySize>> for Box<[JsValue]> {
+impl Wire2Api<Vec<MySize>> for JsValue {
     fn wire2api(self) -> Vec<MySize> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        self.unchecked_into::<JsArray>()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
-impl Wire2Api<Vec<MyTreeNode>> for Box<[JsValue]> {
+impl Wire2Api<Vec<MyTreeNode>> for JsValue {
     fn wire2api(self) -> Vec<MyTreeNode> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        self.unchecked_into::<JsArray>()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
-impl Wire2Api<Vec<Option<Attribute>>> for Box<[JsValue]> {
+impl Wire2Api<Vec<Option<Attribute>>> for JsValue {
     fn wire2api(self) -> Vec<Option<Attribute>> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        self.unchecked_into::<JsArray>()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
 impl Wire2Api<MyEnum> for i32 {
@@ -1191,49 +1173,55 @@ impl Wire2Api<MyEnum> for i32 {
         }
     }
 }
-impl Wire2Api<MySize> for Box<[JsValue]> {
+impl Wire2Api<MySize> for JsValue {
     fn wire2api(self) -> MySize {
+        let self_ = self.unchecked_into::<JsArray>();
         MySize {
-            width: self.width.wire2api(),
-            height: self.height.wire2api(),
+            width: self_.get(0).wire2api(),
+            height: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<MyStruct> for Box<[JsValue]> {
+impl Wire2Api<MyStruct> for JsValue {
     fn wire2api(self) -> MyStruct {
+        let self_ = self.unchecked_into::<JsArray>();
         MyStruct {
-            content: self.content.wire2api(),
+            content: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<MyTreeNode> for Box<[JsValue]> {
+impl Wire2Api<MyTreeNode> for JsValue {
     fn wire2api(self) -> MyTreeNode {
+        let self_ = self.unchecked_into::<JsArray>();
         MyTreeNode {
-            value_i32: self.value_i32.wire2api(),
-            value_vec_u8: self.value_vec_u8.wire2api(),
-            value_boolean: self.value_boolean.wire2api(),
-            children: self.children.wire2api(),
+            value_i32: self_.get(0).wire2api(),
+            value_vec_u8: self_.get(1).wire2api(),
+            value_boolean: self_.get(2).wire2api(),
+            children: self_.get(3).wire2api(),
         }
     }
 }
-impl Wire2Api<NewTypeInt> for Box<[JsValue]> {
+impl Wire2Api<NewTypeInt> for JsValue {
     fn wire2api(self) -> NewTypeInt {
-        NewTypeInt(self.field0.wire2api())
+        let self_ = self.unchecked_into::<JsArray>();
+        NewTypeInt(self_.get(0).wire2api())
     }
 }
-impl Wire2Api<Note> for Box<[JsValue]> {
+impl Wire2Api<Note> for JsValue {
     fn wire2api(self) -> Note {
+        let self_ = self.unchecked_into::<JsArray>();
         Note {
-            day: self.day.wire2api(),
-            body: self.body.wire2api(),
+            day: self_.get(0).wire2api(),
+            body: self_.get(1).wire2api(),
         }
     }
 }
 
-impl Wire2Api<SumWith> for Box<[JsValue]> {
+impl Wire2Api<SumWith> for JsValue {
     fn wire2api(self) -> SumWith {
+        let self_ = self.unchecked_into::<JsArray>();
         SumWith {
-            x: self.x.wire2api(),
+            x: self_.get(0).wire2api(),
         }
     }
 }
@@ -1249,16 +1237,14 @@ impl Wire2Api<u8> for u8 {
 }
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
+        self.into_vec()
     }
 }
-impl Wire2Api<UserId> for Box<[JsValue]> {
+impl Wire2Api<UserId> for JsValue {
     fn wire2api(self) -> UserId {
+        let self_ = self.unchecked_into::<JsArray>();
         UserId {
-            value: self.value.wire2api(),
+            value: self_.get(0).wire2api(),
         }
     }
 }
@@ -1279,6 +1265,58 @@ impl Wire2Api<Weekdays> for i32 {
             6 => Weekdays::Sunday,
             _ => unreachable!("Invalid variant for Weekdays: {}", self),
         }
+    }
+}
+// Section: impl Wire2Api for JsValue
+
+impl Wire2Api<String> for JsValue {
+    fn wire2api(self) -> String {
+        self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<bool> for JsValue {
+    fn wire2api(self) -> bool {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<f32> for JsValue {
+    fn wire2api(self) -> f32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<f64> for JsValue {
+    fn wire2api(self) -> f64 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i32> for JsValue {
+    fn wire2api(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i64> for JsValue {
+    fn wire2api(self) -> i64 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i8> for JsValue {
+    fn wire2api(self) -> i8 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u32> for JsValue {
+    fn wire2api(self) -> u32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u8> for JsValue {
+    fn wire2api(self) -> u8 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<usize> for JsValue {
+    fn wire2api(self) -> usize {
+        self.unchecked_into_f64() as _
     }
 }
 // Section: impl IntoDart
@@ -1543,12 +1581,4 @@ impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
 
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
-}
-// Section: sync execution mode utility
-
-#[no_mangle]
-pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) {
-    unsafe {
-        let _ = support::vec_from_leak_ptr(val.ptr, val.len);
-    }
 }

@@ -1,0 +1,26 @@
+#[cfg(wasm)]
+pub type DartCObject = wasm_bindgen::JsValue;
+#[cfg(not(wasm))]
+pub use allo_isolate::ffi::DartCObject;
+
+#[cfg(wasm)]
+pub trait IntoDart {
+    fn into_dart(self) -> DartCObject;
+}
+#[cfg(not(wasm))]
+pub use allo_isolate::IntoDart;
+
+#[cfg(wasm)]
+pub use web_sys::MessagePort;
+#[cfg(not(wasm))]
+pub type MessagePort = i64;
+
+#[cfg(wasm)]
+pub mod web;
+#[cfg(wasm)]
+pub use web::*;
+
+#[cfg(not(wasm))]
+pub mod io;
+#[cfg(not(wasm))]
+pub use io::*;

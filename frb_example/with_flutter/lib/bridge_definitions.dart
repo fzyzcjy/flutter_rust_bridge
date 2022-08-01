@@ -5,6 +5,7 @@
 
 import 'dart:convert';
 import 'dart:typed_data';
+import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 abstract class FlutterRustBridgeExample {

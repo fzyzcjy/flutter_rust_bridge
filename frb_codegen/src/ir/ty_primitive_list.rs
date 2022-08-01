@@ -47,7 +47,7 @@ impl IrTypeTrait for IrTypePrimitiveList {
     fn rust_wire_type(&self, wasm: bool) -> String {
         if wasm {
             match self.primitive {
-                IrTypePrimitive::Bool | IrTypePrimitive::Unit => "Box<[JsValue]>".into(),
+                IrTypePrimitive::Bool | IrTypePrimitive::Unit => "JsValue".into(),
                 _ => format!("Box<[{}]>", self.primitive.rust_api_type()),
             }
         } else {

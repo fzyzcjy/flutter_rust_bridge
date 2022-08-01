@@ -1,24 +1,15 @@
 import 'dart:async';
-import 'dart:ffi';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart' hide Size;
-import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'bridge_definitions.dart';
 import 'package:flutter_rust_bridge_example/off_topic_code.dart';
 
+import 'ffi.dart' if (dart.library.html) 'ffi.web.dart';
+export 'ffi.dart' if (dart.library.html) 'ffi.web.dart' show api;
+
 // Simple Flutter code. If you are not familiar with Flutter, this may sounds a bit long. But indeed
 // it is quite trivial and Flutter is just like that. Please refer to Flutter's tutorial to learn Flutter.
-
-const base = 'flutter_rust_bridge_example';
-final path = Platform.isWindows ? '$base.dll' : 'lib$base.so';
-late final dylib = Platform.isIOS
-    ? DynamicLibrary.process()
-    : Platform.isMacOS
-        ? DynamicLibrary.executable()
-        : DynamicLibrary.open(path);
-late final api = FlutterRustBridgeExampleImpl(dylib);
 
 void main() => runApp(const MyApp());
 

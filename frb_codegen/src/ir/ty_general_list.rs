@@ -32,7 +32,7 @@ impl IrTypeTrait for IrTypeGeneralList {
 
     fn rust_wire_type(&self, wasm: bool) -> String {
         if wasm {
-            "Box<[JsValue]>".into()
+            "JsValue".into()
         } else {
             format!("wire_{}", self.safe_ident())
         }

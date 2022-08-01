@@ -55,7 +55,8 @@ impl IrTypeTrait for IrTypeBoxed {
 
     fn rust_wire_type(&self, wasm: bool) -> String {
         if wasm && !self.inner.is_js_value() {
-            format!("usize /* {} */", self.inner.rust_wire_type(wasm))
+            // wasm_bindgen doesn't allow Option<*T> yet, replace with isize.
+            format!("isize /* *{} */", self.inner.rust_wire_type(wasm))
         } else {
             self.inner.rust_wire_type(wasm)
         }
@@ -65,6 +66,6 @@ impl IrTypeTrait for IrTypeBoxed {
         // In a parameter position, it doesn't make sense to have a JsValue sit behind
         // a Rust heap allocation (it is already in the JS heap!)
         // Vectors, (enum) structs and typed arrays (aka buffers) are JsValues.
-        !wasm || !self.inner.is_js_value()
+        !wasm
     }
 }

@@ -25,9 +25,14 @@ macro_rules! delegate_enum {
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Option<String> {
         Some(match &self.ir {
-            IrTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
-            String::from_utf8_lossy(&vec).into_owned()"
-                .into(),
+            IrTypeDelegate::String => {
+                if self.context.wasm() {
+                    "self".into()
+                } else {
+                    "let vec: Vec<u8> = self.wire2api(); String::from_utf8_lossy(&vec).into_owned()"
+                        .into()
+                }
+            }
             IrTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer(self.wire2api())".into()
@@ -107,6 +112,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
 
         "".into()
+    }
+
+    fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
+        matches!(self.ir, IrTypeDelegate::String)
+            .then(|| "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into())
     }
 
     fn imports(&self) -> Option<String> {

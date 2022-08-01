@@ -9,7 +9,24 @@ type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     fn api2wire_body(&self) -> Option<String> {
-        self.context.config.wasm.then(|| "return const [];".into())
+        self.context.config.wasm.then(|| {
+            format!(
+                "return [{}];",
+                self.ir
+                    .get(self.context.ir_file)
+                    .fields
+                    .iter()
+                    .map(|field| {
+                        format!(
+                            "_api2wire_{}(raw.{})",
+                            field.ty.safe_ident(),
+                            field.name.dart_style()
+                        )
+                    })
+                    .collect::<Vec<_>>()
+                    .join(",")
+            )
+        })
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {

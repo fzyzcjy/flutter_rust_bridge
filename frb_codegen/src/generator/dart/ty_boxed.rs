@@ -23,7 +23,10 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 self.context.config.block_index,
                 self.ir.inner.safe_ident(),
             )),
-            (false, true) => Some("return const [];".into()),
+            (false, true) => Some(format!(
+                "return _api2wire_{}(raw);",
+                self.ir.inner.safe_ident()
+            )),
         }
     }
 

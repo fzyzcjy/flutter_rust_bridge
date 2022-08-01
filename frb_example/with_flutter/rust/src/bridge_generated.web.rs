@@ -20,8 +20,8 @@ use flutter_rust_bridge::*;
 #[wasm_bindgen]
 pub fn wire_draw_mandelbrot(
     port_: MessagePort,
-    image_size: Box<[JsValue]>,
-    zoom_point: Box<[JsValue]>,
+    image_size: JsValue,
+    zoom_point: JsValue,
     scale: f64,
     num_threads: i32,
 ) {
@@ -43,7 +43,7 @@ pub fn wire_draw_mandelbrot(
     )
 }
 #[wasm_bindgen]
-pub fn wire_passing_complex_structs(port_: MessagePort, root: Box<[JsValue]>) {
+pub fn wire_passing_complex_structs(port_: MessagePort, root: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "passing_complex_structs",
@@ -110,7 +110,7 @@ pub fn wire_off_topic_memory_test_output_vec_u8(port_: MessagePort, len: i32) {
     )
 }
 #[wasm_bindgen]
-pub fn wire_off_topic_memory_test_input_vec_of_object(port_: MessagePort, input: Box<[JsValue]>) {
+pub fn wire_off_topic_memory_test_input_vec_of_object(port_: MessagePort, input: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_vec_of_object",
@@ -138,7 +138,7 @@ pub fn wire_off_topic_memory_test_output_vec_of_object(port_: MessagePort, len: 
     )
 }
 #[wasm_bindgen]
-pub fn wire_off_topic_memory_test_input_complex_struct(port_: MessagePort, input: Box<[JsValue]>) {
+pub fn wire_off_topic_memory_test_input_complex_struct(port_: MessagePort, input: JsValue) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_complex_struct",
@@ -212,8 +212,7 @@ where
 
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
-        let vec: Vec<u8> = self.wire2api();
-        String::from_utf8_lossy(&vec).into_owned()
+        self
     }
 }
 
@@ -227,45 +226,46 @@ impl Wire2Api<i32> for i32 {
         self
     }
 }
-impl Wire2Api<Vec<Size>> for Box<[JsValue]> {
+impl Wire2Api<Vec<Size>> for JsValue {
     fn wire2api(self) -> Vec<Size> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        self.unchecked_into::<JsArray>()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
-impl Wire2Api<Vec<TreeNode>> for Box<[JsValue]> {
+impl Wire2Api<Vec<TreeNode>> for JsValue {
     fn wire2api(self) -> Vec<TreeNode> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        self.unchecked_into::<JsArray>()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
-impl Wire2Api<Point> for Box<[JsValue]> {
+impl Wire2Api<Point> for JsValue {
     fn wire2api(self) -> Point {
+        let self_ = self.unchecked_into::<JsArray>();
         Point {
-            x: self.x.wire2api(),
-            y: self.y.wire2api(),
+            x: self_.get(0).wire2api(),
+            y: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<Size> for Box<[JsValue]> {
+impl Wire2Api<Size> for JsValue {
     fn wire2api(self) -> Size {
+        let self_ = self.unchecked_into::<JsArray>();
         Size {
-            width: self.width.wire2api(),
-            height: self.height.wire2api(),
+            width: self_.get(0).wire2api(),
+            height: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<TreeNode> for Box<[JsValue]> {
+impl Wire2Api<TreeNode> for JsValue {
     fn wire2api(self) -> TreeNode {
+        let self_ = self.unchecked_into::<JsArray>();
         TreeNode {
-            name: self.name.wire2api(),
-            children: self.children.wire2api(),
+            name: self_.get(0).wire2api(),
+            children: self_.get(1).wire2api(),
         }
     }
 }
@@ -276,10 +276,29 @@ impl Wire2Api<u8> for u8 {
 }
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
+        self.into_vec()
+    }
+}
+// Section: impl Wire2Api for JsValue
+
+impl Wire2Api<String> for JsValue {
+    fn wire2api(self) -> String {
+        self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<f64> for JsValue {
+    fn wire2api(self) -> f64 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i32> for JsValue {
+    fn wire2api(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u8> for JsValue {
+    fn wire2api(self) -> u8 {
+        self.unchecked_into_f64() as _
     }
 }
 // Section: impl IntoDart
@@ -316,12 +335,4 @@ impl support::IntoDartExceptPrimitive for TreeNode {}
 
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
-}
-// Section: sync execution mode utility
-
-#[no_mangle]
-pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) {
-    unsafe {
-        let _ = support::vec_from_leak_ptr(val.ptr, val.len);
-    }
 }

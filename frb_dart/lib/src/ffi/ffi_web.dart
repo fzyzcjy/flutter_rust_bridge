@@ -1,7 +1,15 @@
+import 'dart:async';
+
 import 'package:js/js.dart';
 export 'package:js/js.dart';
+import 'package:js/js_util.dart' show promiseToFuture;
 export 'package:js/js_util.dart' show promiseToFuture;
+
 import 'dart:typed_data';
+import '../ffi.dart' show WasmModule;
+
+@JS()
+external bool? get crossOriginIsolated;
 
 @JS('Function')
 class _UnaryFunction {
@@ -21,6 +29,14 @@ abstract class FlutterRustBridgeWireBase {
 class WireSyncReturnStruct {
   external final Uint8List buffer;
   external final int success;
+}
+
+class FlutterRustBridgeWasmWireBase extends FlutterRustBridgeWireBase {
+  final Future<void> init;
+  FlutterRustBridgeWasmWireBase(FutureOr<WasmModule> module)
+      : init = Future.value(module)
+            .then((module) => promiseToFuture(module()))
+            .then((_) => eval("window.wasm_bindgen = wasm_bindgen"));
 }
 
 extension WireSyncReturnStructExt on WireSyncReturnStruct {

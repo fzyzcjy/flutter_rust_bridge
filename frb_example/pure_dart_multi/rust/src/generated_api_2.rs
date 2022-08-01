@@ -18,7 +18,7 @@ use flutter_rust_bridge::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_simple_adder_2(port_: i64, a: i32, b: i32) {
+pub extern "C" fn wire_simple_adder_2(port_: MessagePort, a: i32, b: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "simple_adder_2",
@@ -65,7 +65,13 @@ impl Wire2Api<i32> for i32 {
         self
     }
 }
+// Section: impl Wire2Api for JsValue
 
+impl Wire2Api<i32> for JsValue {
+    fn wire2api(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
 // Section: impl NewWithNullPtr
 
 pub trait NewWithNullPtr {

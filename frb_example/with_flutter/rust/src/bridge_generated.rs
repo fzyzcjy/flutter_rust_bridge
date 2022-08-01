@@ -408,6 +408,28 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
         }
     }
 }
+// Section: impl Wire2Api for JsValue
+
+impl Wire2Api<String> for JsValue {
+    fn wire2api(self) -> String {
+        self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<f64> for JsValue {
+    fn wire2api(self) -> f64 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i32> for JsValue {
+    fn wire2api(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u8> for JsValue {
+    fn wire2api(self) -> u8 {
+        self.unchecked_into_f64() as _
+    }
+}
 // Section: impl NewWithNullPtr
 
 pub trait NewWithNullPtr {

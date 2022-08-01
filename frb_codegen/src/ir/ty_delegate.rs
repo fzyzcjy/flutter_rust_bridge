@@ -90,7 +90,7 @@ impl IrTypeTrait for IrTypeDelegate {
         match (self, wasm) {
             (IrTypeDelegate::String, true) => "String".into(),
             (IrTypeDelegate::StringList, false) => "wire_StringList".to_owned(),
-            (IrTypeDelegate::StringList, true) => "Box<[JsString]>".into(),
+            (IrTypeDelegate::StringList, true) => "JsValue".into(),
             _ => self.get_delegate().rust_wire_type(wasm),
         }
     }

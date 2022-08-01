@@ -1,6 +1,6 @@
 # To use this file, install Just: cargo install just
 
-frb_bin := "frb_codegen/target/debug/flutter_rust_bridge_codegen"
+frb_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --"
 frb_pure := "frb_example/pure_dart"
 frb_pure_multi := "frb_example/pure_dart_multi"
 frb_flutter := "frb_example/with_flutter"
@@ -20,7 +20,7 @@ build:
     cd frb_codegen && cargo build
 
 alias g := gen-bridge
-gen-bridge *args="": build
+gen-bridge *args="":
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart \
                 --dart-decl-output {{frb_pure}}/dart/lib/bridge_definitions.dart \
@@ -65,6 +65,9 @@ check:
     cd {{frb_pure_multi}}/rust && cargo clippy
     cd {{frb_flutter}} && flutter pub get && flutter analyze
     cd {{frb_flutter}}/rust && cargo clippy
+
+serve *args="":
+    cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_cors/bin/server.dart {{args}}
 
 refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)

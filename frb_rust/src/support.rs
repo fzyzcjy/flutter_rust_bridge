@@ -44,8 +44,12 @@ pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
 /// NOTE for maintainer: Please keep this struct in sync with `DUMMY_WIRE_CODE_FOR_BINDGEN`
 /// in the code generator
 #[repr(C)]
+#[cfg(not(wasm))]
 pub struct WireSyncReturnStruct {
     pub ptr: *mut u8,
     pub len: i32,
     pub success: bool,
 }
+
+#[cfg(wasm)]
+pub type WireSyncReturnStruct = wasm_bindgen::JsValue;

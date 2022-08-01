@@ -1951,6 +1951,58 @@ impl Wire2Api<Weekdays> for i32 {
         }
     }
 }
+// Section: impl Wire2Api for JsValue
+
+impl Wire2Api<String> for JsValue {
+    fn wire2api(self) -> String {
+        self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<bool> for JsValue {
+    fn wire2api(self) -> bool {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<f32> for JsValue {
+    fn wire2api(self) -> f32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<f64> for JsValue {
+    fn wire2api(self) -> f64 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i32> for JsValue {
+    fn wire2api(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i64> for JsValue {
+    fn wire2api(self) -> i64 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i8> for JsValue {
+    fn wire2api(self) -> i8 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u32> for JsValue {
+    fn wire2api(self) -> u32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u8> for JsValue {
+    fn wire2api(self) -> u8 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<usize> for JsValue {
+    fn wire2api(self) -> usize {
+        self.unchecked_into_f64() as _
+    }
+}
 // Section: impl NewWithNullPtr
 
 pub trait NewWithNullPtr {

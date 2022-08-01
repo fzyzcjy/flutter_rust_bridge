@@ -192,6 +192,7 @@ fn generate_common_header() -> DartBasicCode {
     DartBasicCode {
         import: "import 'dart:convert';
             import 'dart:typed_data';
+            import 'dart:async';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';"
             .to_string(),
         part: "".to_string(),
@@ -209,10 +210,8 @@ fn get_dart_imports(ir_file: &IrFile) -> HashSet<&IrDartImport> {
 
 fn generate_wasm_module(funcs: &[IrFunc], dart_wire_class_name: &str) -> String {
     format!(
-        "class {cls} extends FlutterRustBridgeWireBase {{
-            Future<void> init;
-            {cls}(WasmModule module): init = promiseToFuture(module())
-                .then((_) => eval('window.wasm_bindgen = wasm_bindgen'));
+        "class {cls} extends FlutterRustBridgeWasmWireBase {{
+            {cls}(FutureOr<WasmModule> module) : super(module);
             
             {}
         }}
@@ -305,7 +304,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Strin
         dart_wire_class_name = dart_wire_class_name,
         dart_api_class_name = dart_api_class_name,
         external_lib_type = if wasm {
-            "WasmModule"
+            "FutureOr<WasmModule>"
         } else {
             "ffi.DynamicLibrary"
         }

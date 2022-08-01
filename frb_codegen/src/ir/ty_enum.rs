@@ -43,7 +43,7 @@ impl IrTypeTrait for IrTypeEnumRef {
     }
     fn rust_wire_type(&self, wasm: bool) -> String {
         if wasm {
-            "Box<[JsValue]>".into()
+            "JsValue".into()
         } else {
             format!("wire_{}", self.name)
         }

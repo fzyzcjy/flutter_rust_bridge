@@ -8,18 +8,25 @@ type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     fn wire2api_body(&self) -> Option<String> {
         let api_struct = self.ir.get(self.context.ir_file);
+        let wasm = self.context.wasm();
         let fields_str = &api_struct
             .fields
             .iter()
-            .map(|field| {
+            .enumerate()
+            .map(|(idx, field)| {
+                let access = if wasm {
+                    format!("self_.get({}).wire2api()", idx)
+                } else {
+                    format!("self.{}.wire2api()", field.name.rust_style())
+                };
                 format!(
-                    "{} self.{}.wire2api()",
+                    "{} {}",
                     if api_struct.is_fields_named {
                         field.name.rust_style().to_string() + ": "
                     } else {
                         String::new()
                     },
-                    field.name.rust_style()
+                    access
                 )
             })
             .collect::<Vec<_>>()
@@ -27,7 +34,12 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
 
         let (left, right) = api_struct.brackets_pair();
         Some(format!(
-            "{}{}{}{}",
+            "{}{}{}{}{}",
+            if wasm {
+                "let self_ = self.unchecked_into::<JsArray>();"
+            } else {
+                ""
+            },
             self.ir.rust_api_type(),
             left,
             fields_str,

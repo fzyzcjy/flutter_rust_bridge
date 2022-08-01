@@ -13,11 +13,17 @@ impl TypeGeneralListGenerator<'_> {
                 support::vec_from_leak_ptr(wrap.ptr, wrap.len)
             };
             vec.into_iter().map(Wire2Api::wire2api).collect()";
+    pub const WIRE2API_BODY_WASM: &'static str =
+        "self.unchecked_into::<JsArray>().iter().map(Wire2Api::wire2api).collect()";
 }
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn wire2api_body(&self) -> Option<String> {
-        Some(TypeGeneralListGenerator::WIRE2API_BODY.to_string())
+        if self.context.wasm() {
+            Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_string())
+        } else {
+            Some(TypeGeneralListGenerator::WIRE2API_BODY.to_string())
+        }
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
