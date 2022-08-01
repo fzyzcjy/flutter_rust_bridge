@@ -291,7 +291,7 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
-    let toolchain = crate::utils::guess_toolchain(dart_root).unwrap();
+    let toolchain = guess_toolchain(dart_root).unwrap();
     let out = if cfg!(windows) {
         call_shell(&format!(
             "cd \"{}\"; {} run build_runner build --delete-conflicting-outputs",
