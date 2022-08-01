@@ -67,6 +67,7 @@ check:
     cd {{frb_pure_multi}}/rust && cargo clippy
     cd {{frb_flutter}} && flutter pub get && flutter analyze
     cd {{frb_flutter}}/rust && cargo clippy
+    cd frb_codegen && cargo clippy
 
 refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)
