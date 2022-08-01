@@ -13,12 +13,22 @@ These depdencies are required only in build-time:
 
 An easy way to install most of these dependencies is to run:
 
-```bash
-cargo install flutter_rust_bridge_codegen
-dart pub global activate ffigen
-# if building for iOS or MacOS
-cargo install cargo-xcode
-```
+* dart project
+  ```bash
+  cargo install flutter_rust_bridge_codegen just
+  dart pub add --dev ffigen
+  dart pub add ffi
+  # if building for iOS or MacOS
+  cargo install cargo-xcode
+  ```
+* flutter project
+  ```bash
+  cargo install flutter_rust_bridge_codegen just
+  flutter pub add --dev ffigen
+  flutter pub add ffi
+  # if building for iOS or MacOS
+  cargo install cargo-xcode
+  ```
 
 ## Dart dependencies
 

@@ -5,7 +5,15 @@
 
 An easy way to install the first three dependencies is to run these commands:
 
-```shell
-cargo install flutter_rust_bridge_codegen just
-dart pub global activate ffigen
-```
+* dart project
+  ```shell
+  cargo install flutter_rust_bridge_codegen just
+  dart pub add --dev ffigen
+  dart pub add ffi
+  ```
+* flutter project
+  ```shell
+  cargo install flutter_rust_bridge_codegen just
+  flutter pub add --dev ffigen
+  flutter pub add ffi
+  ```
