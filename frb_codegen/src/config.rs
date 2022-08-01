@@ -418,8 +418,8 @@ impl Opts {
     }
 
     pub fn dart_root_or_default(&self) -> String {
-      self.dart_root
-      .clone()
-      .unwrap_or_else(|| env!("CARGO_MANIFEST_DIR").to_string())
+        self.dart_root
+            .clone()
+            .unwrap_or_else(|| env!("CARGO_MANIFEST_DIR").to_string())
     }
 }

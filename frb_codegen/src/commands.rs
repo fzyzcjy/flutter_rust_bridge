@@ -19,18 +19,16 @@ fn call_shell(cmd: &str) -> Output {
 }
 
 pub fn ensure_tools_available(dart_root: &str) -> Result {
-    let toolchain = guess_toolchain(&dart_root).unwrap();
+    let toolchain = guess_toolchain(dart_root).unwrap();
     if toolchain == DartToolchain::Dart {
         if !call_shell("dart --version").status.success() {
             return Err(Error::MissingExe(String::from("dart")));
         };
-    } else {
-        if !call_shell("flutter --version").status.success() {
-            return Err(Error::MissingExe(String::from("flutter")));
-        };
+    } else if !call_shell("flutter --version").status.success() {
+        return Err(Error::MissingExe(String::from("flutter")));
     };
 
-    let ffi = ensure_dependencies(&dart_root, "ffi", DependenciesContext::Prod).unwrap();
+    let ffi = ensure_dependencies(dart_root, "ffi", DependenciesContext::Prod).unwrap();
     if let Some(ffi) = ffi {
         if VersionReq::parse("^2.0.1").unwrap() != ffi {
             return Err(Error::InvalidDep(
@@ -47,7 +45,7 @@ pub fn ensure_tools_available(dart_root: &str) -> Result {
         ));
     }
 
-    let ffigen = ensure_dependencies(&dart_root, "ffigen", DependenciesContext::Dev).unwrap();
+    let ffigen = ensure_dependencies(dart_root, "ffigen", DependenciesContext::Dev).unwrap();
     if let Some(ffigen) = ffigen {
         if VersionReq::parse("^6.0.1").unwrap() != ffigen {
             return Err(Error::InvalidDep(

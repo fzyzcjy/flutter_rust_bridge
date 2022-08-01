@@ -183,7 +183,7 @@ pub(crate) fn ensure_dependencies(
         DependencyVersion::Multiline { ref version } => VersionReq::parse(
             version
                 .as_ref()
-                .expect(&format!("please specify a version for {}", key)),
+                .unwrap_or_else(|| panic!("please specify a version for {}", key)),
         )
         .unwrap(),
     });
