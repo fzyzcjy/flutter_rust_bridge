@@ -42,8 +42,10 @@ Suppose a user calls a (generated) Dart function `func({required String str})`. 
 2. Now we call the Dart version of `wire_func`, with low-level data like `wire_uint_8_list`. We have used our codegen to create a Rust `wire_func` function, and use `cbindgen` to generate the corresponding C function, and use `ffigen` to get the cooresponding Dart function. Here, we call the Dart version of `wire_func`. Since Dart FFI and Rust FFI is C-compatible, it seamlessly calls the Rust version of `wire_func`. Notice that, since we are utilizing C-compatible functions (and it is the only feasible way), we can only pass around low-level things like pointers, instead of high-level and safe things.
 2. Surely, the Rust `wire_func` is called. The function uses `.wire2api()` to convert "*Rust wire data*" (`wire_uint_8_list` here) into "*Rust api data*" (`String` here, i.e. data that users really use). 
 2. The `FLUTTER_RUST_BRIDGE_HANDLER` is called with "*Rust api data*". That handler is user-customizable, so users may provide their own implementation other than the default thread-pool, etc. By default, we use a thread pool, and we call the user-written `func` Rust function in `api.rs`.
-2. The user-written `fn func(str: String) { ... }` is called.
-2. [TODO how the value is returned]
+2. The user-written `fn func(str: String) -> String { ... }` is called, and we get a return value.
+2. The return value, a `String`, is posted to the Dart side. It is done by the Dart-provided API, [`Dart_PostCObject`](https://github.com/dart-lang/sdk/blob/fd0d3b254690007d0ebc84175f30fa7d7491ec3e/runtime/include/dart_native_api.h#L124), which let us provide C structs and it will automatically become Dart data on the other side. We use the Rust-safe wrapper `allo-isolate` for it. We deliberately choose this, because this enables Dart code to be *async* instead of sync.
+2. On the Dart side, we now see some Dart objects (indeed "*Dart wire data*"). We use functions like `_wire2api_SomeType` to convert it to the final "*Dart api data*". Notice this "wire2api" is on *Dart* side, so it means "*Dart* wire data to *Dart* api data", and is different from the one above which is for Rust. For example, since `Dart_PostCObject` does not provide a way to construct arbitrary structs(classes), we have to pass Rust structs as lists, and use the `wire2api` to convert them to corresponding Dart classes.
+2. The final result value is provided as return value of the Dart function, `func`, that the user called just now. A function call finishes!
 
 ## Memory safety
 
