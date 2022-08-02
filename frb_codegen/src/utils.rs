@@ -133,7 +133,7 @@ impl TryFrom<&PackageVersion> for PackageVersionKind {
             }
             PackageVersion::Multiline { ref version } => {
                 if let Some(version) = version {
-                    let version = PackageVersionKind::from_str(&version)?;
+                    let version = PackageVersionKind::from_str(version)?;
                     return Ok(version);
                 }
                 Err(anyhow::anyhow!("no version found"))
