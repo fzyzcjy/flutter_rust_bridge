@@ -168,6 +168,10 @@ jobs:
     runs-on: ${{ matrix.os.image }}
 
     steps:
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      
       - uses: actions/checkout@v2
 
       - name: Install released version of codegen
