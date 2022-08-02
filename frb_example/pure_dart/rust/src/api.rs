@@ -735,26 +735,29 @@ pub enum Speed {
 
 #[derive(Debug, Clone)]
 #[frb(freezed)]
-pub enum KilometerPoint {
+pub enum Distance {
     Unknown,
-    SNCF(f64),
+    Map(f64),
 }
 
 #[derive(Debug, Clone)]
 #[frb(freezed)]
-pub enum API {
+pub enum Measure {
     Speed(Box<Speed>),
-    KilometerPoint(Box<KilometerPoint>),
+    Distance(Box<Distance>),
 }
 
-pub fn handle_api(api: API) -> anyhow::Result<()> {
-    match api {
-        API::Speed(v) => {
-            println!("speed changed: {:#?}", *v);
-        }
-        API::KilometerPoint(v) => {
-            println!("kilometer point changed: {:#?}", *v);
-        }
-    };
-    Ok(())
+pub fn multiply_by_ten(measure: Measure) -> Option<Measure> {
+    match measure {
+        Measure::Speed(b) => match *b {
+            Speed::GPS(v) => Some(Measure::Speed(Box::new(Speed::GPS(v * 10.)))),
+            Speed::Unknown => None,
+        },
+        Measure::Distance(b) => match *b {
+            Distance::Map(v) => Some(Measure::Distance(Box::new(
+                Distance::Map(v * 10.),
+            ))),
+            Distance::Unknown => None,
+        },
+    }
 }

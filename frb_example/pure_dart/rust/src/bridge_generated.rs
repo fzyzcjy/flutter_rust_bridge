@@ -700,16 +700,16 @@ pub extern "C" fn wire_get_sum_struct(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_api(port_: i64, api: *mut wire_API) {
+pub extern "C" fn wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "handle_api",
+            debug_name: "multiply_by_ten",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_api = api.wire2api();
-            move |task_callback| handle_api(api_api)
+            let api_measure = measure.wire2api();
+            move |task_callback| Ok(multiply_by_ten(api_measure))
         },
     )
 }
@@ -1081,51 +1081,27 @@ pub struct wire_UserId {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_API {
+pub struct wire_Distance {
     tag: i32,
-    kind: *mut APIKind,
+    kind: *mut DistanceKind,
 }
 
 #[repr(C)]
-pub union APIKind {
-    Speed: *mut API_Speed,
-    KilometerPoint: *mut API_KilometerPoint,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct API_Speed {
-    field0: *mut wire_Speed,
+pub union DistanceKind {
+    Unknown: *mut Distance_Unknown,
+    Map: *mut Distance_Map,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct API_KilometerPoint {
-    field0: *mut wire_KilometerPoint,
-}
+pub struct Distance_Unknown {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_KilometerPoint {
-    tag: i32,
-    kind: *mut KilometerPointKind,
-}
-
-#[repr(C)]
-pub union KilometerPointKind {
-    Unknown: *mut KilometerPoint_Unknown,
-    SNCF: *mut KilometerPoint_SNCF,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct KilometerPoint_Unknown {}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct KilometerPoint_SNCF {
+pub struct Distance_Map {
     field0: f64,
 }
+
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_KitchenSink {
@@ -1179,6 +1155,31 @@ pub struct KitchenSink_Buffer {
 #[derive(Clone)]
 pub struct KitchenSink_Enums {
     field0: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Measure {
+    tag: i32,
+    kind: *mut MeasureKind,
+}
+
+#[repr(C)]
+pub union MeasureKind {
+    Speed: *mut Measure_Speed,
+    Distance: *mut Measure_Distance,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct Measure_Speed {
+    field0: *mut wire_Speed,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct Measure_Distance {
+    field0: *mut wire_Distance,
 }
 
 #[repr(C)]
@@ -1272,11 +1273,6 @@ pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_api_0() -> *mut wire_API {
-    support::new_leak_box_ptr(wire_API::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_application_settings_0() -> *mut wire_ApplicationSettings {
     support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
 }
@@ -1327,6 +1323,11 @@ pub extern "C" fn new_box_autoadd_kitchen_sink_0() -> *mut wire_KitchenSink {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_measure_0() -> *mut wire_Measure {
+    support::new_leak_box_ptr(wire_Measure::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
@@ -1367,6 +1368,11 @@ pub extern "C" fn new_box_bool_0(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_distance_0() -> *mut wire_Distance {
+    support::new_leak_box_ptr(wire_Distance::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_exotic_optionals_0() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
@@ -1389,11 +1395,6 @@ pub extern "C" fn new_box_i64_0(value: i64) -> *mut i64 {
 #[no_mangle]
 pub extern "C" fn new_box_i8_0(value: i8) -> *mut i8 {
     support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_kilometer_point_0() -> *mut wire_KilometerPoint {
-    support::new_leak_box_ptr(wire_KilometerPoint::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1564,24 +1565,6 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
     }
 }
 
-impl Wire2Api<API> for wire_API {
-    fn wire2api(self) -> API {
-        match self.tag {
-            0 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Speed);
-                API::Speed(ans.field0.wire2api())
-            },
-            1 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.KilometerPoint);
-                API::KilometerPoint(ans.field0.wire2api())
-            },
-            _ => unreachable!(),
-        }
-    }
-}
-
 impl Wire2Api<ApplicationEnv> for wire_ApplicationEnv {
     fn wire2api(self) -> ApplicationEnv {
         ApplicationEnv {
@@ -1636,13 +1619,6 @@ impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
     fn wire2api(self) -> Box<ApplicationEnv> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
-    }
-}
-
-impl Wire2Api<API> for *mut wire_API {
-    fn wire2api(self) -> API {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<API>::wire2api(*wrap).into()
     }
 }
 
@@ -1712,6 +1688,13 @@ impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
     }
 }
 
+impl Wire2Api<Measure> for *mut wire_Measure {
+    fn wire2api(self) -> Measure {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Measure>::wire2api(*wrap).into()
+    }
+}
+
 impl Wire2Api<MySize> for *mut wire_MySize {
     fn wire2api(self) -> MySize {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1767,6 +1750,13 @@ impl Wire2Api<Box<bool>> for *mut bool {
     }
 }
 
+impl Wire2Api<Box<Distance>> for *mut wire_Distance {
+    fn wire2api(self) -> Box<Distance> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Distance>::wire2api(*wrap).into()
+    }
+}
+
 impl Wire2Api<Box<ExoticOptionals>> for *mut wire_ExoticOptionals {
     fn wire2api(self) -> Box<ExoticOptionals> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1795,13 +1785,6 @@ impl Wire2Api<Box<i64>> for *mut i64 {
 impl Wire2Api<Box<i8>> for *mut i8 {
     fn wire2api(self) -> Box<i8> {
         unsafe { support::box_from_leak_ptr(self) }
-    }
-}
-
-impl Wire2Api<Box<KilometerPoint>> for *mut wire_KilometerPoint {
-    fn wire2api(self) -> Box<KilometerPoint> {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<KilometerPoint>::wire2api(*wrap).into()
     }
 }
 
@@ -1852,6 +1835,20 @@ impl Wire2Api<Customized> for wire_Customized {
         Customized {
             final_field: self.final_field.wire2api(),
             non_final_field: self.non_final_field.wire2api(),
+        }
+    }
+}
+
+impl Wire2Api<Distance> for wire_Distance {
+    fn wire2api(self) -> Distance {
+        match self.tag {
+            0 => Distance::Unknown,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Map);
+                Distance::Map(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
         }
     }
 }
@@ -1953,20 +1950,6 @@ impl Wire2Api<Vec<i8>> for *mut wire_int_8_list {
     }
 }
 
-impl Wire2Api<KilometerPoint> for wire_KilometerPoint {
-    fn wire2api(self) -> KilometerPoint {
-        match self.tag {
-            0 => KilometerPoint::Unknown,
-            1 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.SNCF);
-                KilometerPoint::SNCF(ans.field0.wire2api())
-            },
-            _ => unreachable!(),
-        }
-    }
-}
-
 impl Wire2Api<KitchenSink> for wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
         match self.tag {
@@ -2052,6 +2035,24 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribu
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
         vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<Measure> for wire_Measure {
+    fn wire2api(self) -> Measure {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Speed);
+                Measure::Speed(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Distance);
+                Measure::Distance(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
     }
 }
 
@@ -2192,33 +2193,6 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
-impl NewWithNullPtr for wire_API {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_API_Speed() -> *mut APIKind {
-    support::new_leak_box_ptr(APIKind {
-        Speed: support::new_leak_box_ptr(API_Speed {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_API_KilometerPoint() -> *mut APIKind {
-    support::new_leak_box_ptr(APIKind {
-        KilometerPoint: support::new_leak_box_ptr(API_KilometerPoint {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
 impl NewWithNullPtr for wire_ApplicationEnv {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2273,6 +2247,24 @@ impl NewWithNullPtr for wire_Customized {
     }
 }
 
+impl NewWithNullPtr for wire_Distance {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Distance_Map() -> *mut DistanceKind {
+    support::new_leak_box_ptr(DistanceKind {
+        Map: support::new_leak_box_ptr(Distance_Map {
+            field0: Default::default(),
+        }),
+    })
+}
+
 impl NewWithNullPtr for wire_ExoticOptionals {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2293,24 +2285,6 @@ impl NewWithNullPtr for wire_ExoticOptionals {
             newtypeint: core::ptr::null_mut(),
         }
     }
-}
-
-impl NewWithNullPtr for wire_KilometerPoint {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_KilometerPoint_SNCF() -> *mut KilometerPointKind {
-    support::new_leak_box_ptr(KilometerPointKind {
-        SNCF: support::new_leak_box_ptr(KilometerPoint_SNCF {
-            field0: Default::default(),
-        }),
-    })
 }
 
 impl NewWithNullPtr for wire_KitchenSink {
@@ -2367,6 +2341,33 @@ pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
         Enums: support::new_leak_box_ptr(KitchenSink_Enums {
             field0: Default::default(),
+        }),
+    })
+}
+
+impl NewWithNullPtr for wire_Measure {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Measure_Speed() -> *mut MeasureKind {
+    support::new_leak_box_ptr(MeasureKind {
+        Speed: support::new_leak_box_ptr(Measure_Speed {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Measure_Distance() -> *mut MeasureKind {
+    support::new_leak_box_ptr(MeasureKind {
+        Distance: support::new_leak_box_ptr(Measure_Distance {
+            field0: core::ptr::null_mut(),
         }),
     })
 }
@@ -2522,6 +2523,16 @@ impl support::IntoDart for ConcatenateWith {
 }
 impl support::IntoDartExceptPrimitive for ConcatenateWith {}
 
+impl support::IntoDart for Distance {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::Unknown => vec![0.into_dart()],
+            Self::Map(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Distance {}
 impl support::IntoDart for Element {
     fn into_dart(self) -> support::DartCObject {
         vec![
@@ -2608,6 +2619,16 @@ impl support::IntoDart for Log2 {
 }
 impl support::IntoDartExceptPrimitive for Log2 {}
 
+impl support::IntoDart for Measure {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::Speed(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::Distance(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Measure {}
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartCObject {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
@@ -2649,6 +2670,16 @@ impl support::IntoDart for Point {
 }
 impl support::IntoDartExceptPrimitive for Point {}
 
+impl support::IntoDart for Speed {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::Unknown => vec![0.into_dart()],
+            Self::GPS(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Speed {}
 impl support::IntoDart for SumWith {
     fn into_dart(self) -> support::DartCObject {
         vec![self.x.into_dart()].into_dart()

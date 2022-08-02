@@ -15,341 +15,6 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$API {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Speed field0) speed,
-    required TResult Function(KilometerPoint field0) kilometerPoint,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(KilometerPoint field0)? kilometerPoint,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(KilometerPoint field0)? kilometerPoint,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(API_Speed_Variant value) speed,
-    required TResult Function(API_KilometerPoint_Variant value) kilometerPoint,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(API_Speed_Variant value)? speed,
-    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(API_Speed_Variant value)? speed,
-    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $APICopyWith<$Res> {
-  factory $APICopyWith(API value, $Res Function(API) then) = _$APICopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$APICopyWithImpl<$Res> implements $APICopyWith<$Res> {
-  _$APICopyWithImpl(this._value, this._then);
-
-  final API _value;
-  // ignore: unused_field
-  final $Res Function(API) _then;
-}
-
-/// @nodoc
-abstract class _$$API_Speed_VariantCopyWith<$Res> {
-  factory _$$API_Speed_VariantCopyWith(_$API_Speed_Variant value, $Res Function(_$API_Speed_Variant) then) =
-      __$$API_Speed_VariantCopyWithImpl<$Res>;
-  $Res call({Speed field0});
-
-  $SpeedCopyWith<$Res> get field0;
-}
-
-/// @nodoc
-class __$$API_Speed_VariantCopyWithImpl<$Res> extends _$APICopyWithImpl<$Res>
-    implements _$$API_Speed_VariantCopyWith<$Res> {
-  __$$API_Speed_VariantCopyWithImpl(_$API_Speed_Variant _value, $Res Function(_$API_Speed_Variant) _then)
-      : super(_value, (v) => _then(v as _$API_Speed_Variant));
-
-  @override
-  _$API_Speed_Variant get _value => super._value as _$API_Speed_Variant;
-
-  @override
-  $Res call({
-    Object? field0 = freezed,
-  }) {
-    return _then(_$API_Speed_Variant(
-      field0 == freezed
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as Speed,
-    ));
-  }
-
-  @override
-  $SpeedCopyWith<$Res> get field0 {
-    return $SpeedCopyWith<$Res>(_value.field0, (value) {
-      return _then(_value.copyWith(field0: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$API_Speed_Variant implements API_Speed_Variant {
-  const _$API_Speed_Variant(this.field0);
-
-  @override
-  final Speed field0;
-
-  @override
-  String toString() {
-    return 'API.speed(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$API_Speed_Variant &&
-            const DeepCollectionEquality().equals(other.field0, field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$API_Speed_VariantCopyWith<_$API_Speed_Variant> get copyWith =>
-      __$$API_Speed_VariantCopyWithImpl<_$API_Speed_Variant>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Speed field0) speed,
-    required TResult Function(KilometerPoint field0) kilometerPoint,
-  }) {
-    return speed(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(KilometerPoint field0)? kilometerPoint,
-  }) {
-    return speed?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(KilometerPoint field0)? kilometerPoint,
-    required TResult orElse(),
-  }) {
-    if (speed != null) {
-      return speed(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(API_Speed_Variant value) speed,
-    required TResult Function(API_KilometerPoint_Variant value) kilometerPoint,
-  }) {
-    return speed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(API_Speed_Variant value)? speed,
-    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
-  }) {
-    return speed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(API_Speed_Variant value)? speed,
-    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
-    required TResult orElse(),
-  }) {
-    if (speed != null) {
-      return speed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class API_Speed_Variant implements API {
-  const factory API_Speed_Variant(final Speed field0) = _$API_Speed_Variant;
-
-  Speed get field0;
-  @JsonKey(ignore: true)
-  _$$API_Speed_VariantCopyWith<_$API_Speed_Variant> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$API_KilometerPoint_VariantCopyWith<$Res> {
-  factory _$$API_KilometerPoint_VariantCopyWith(
-          _$API_KilometerPoint_Variant value, $Res Function(_$API_KilometerPoint_Variant) then) =
-      __$$API_KilometerPoint_VariantCopyWithImpl<$Res>;
-  $Res call({KilometerPoint field0});
-
-  $KilometerPointCopyWith<$Res> get field0;
-}
-
-/// @nodoc
-class __$$API_KilometerPoint_VariantCopyWithImpl<$Res> extends _$APICopyWithImpl<$Res>
-    implements _$$API_KilometerPoint_VariantCopyWith<$Res> {
-  __$$API_KilometerPoint_VariantCopyWithImpl(
-      _$API_KilometerPoint_Variant _value, $Res Function(_$API_KilometerPoint_Variant) _then)
-      : super(_value, (v) => _then(v as _$API_KilometerPoint_Variant));
-
-  @override
-  _$API_KilometerPoint_Variant get _value => super._value as _$API_KilometerPoint_Variant;
-
-  @override
-  $Res call({
-    Object? field0 = freezed,
-  }) {
-    return _then(_$API_KilometerPoint_Variant(
-      field0 == freezed
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as KilometerPoint,
-    ));
-  }
-
-  @override
-  $KilometerPointCopyWith<$Res> get field0 {
-    return $KilometerPointCopyWith<$Res>(_value.field0, (value) {
-      return _then(_value.copyWith(field0: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$API_KilometerPoint_Variant implements API_KilometerPoint_Variant {
-  const _$API_KilometerPoint_Variant(this.field0);
-
-  @override
-  final KilometerPoint field0;
-
-  @override
-  String toString() {
-    return 'API.kilometerPoint(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$API_KilometerPoint_Variant &&
-            const DeepCollectionEquality().equals(other.field0, field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$API_KilometerPoint_VariantCopyWith<_$API_KilometerPoint_Variant> get copyWith =>
-      __$$API_KilometerPoint_VariantCopyWithImpl<_$API_KilometerPoint_Variant>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Speed field0) speed,
-    required TResult Function(KilometerPoint field0) kilometerPoint,
-  }) {
-    return kilometerPoint(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(KilometerPoint field0)? kilometerPoint,
-  }) {
-    return kilometerPoint?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(KilometerPoint field0)? kilometerPoint,
-    required TResult orElse(),
-  }) {
-    if (kilometerPoint != null) {
-      return kilometerPoint(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(API_Speed_Variant value) speed,
-    required TResult Function(API_KilometerPoint_Variant value) kilometerPoint,
-  }) {
-    return kilometerPoint(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(API_Speed_Variant value)? speed,
-    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
-  }) {
-    return kilometerPoint?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(API_Speed_Variant value)? speed,
-    TResult Function(API_KilometerPoint_Variant value)? kilometerPoint,
-    required TResult orElse(),
-  }) {
-    if (kilometerPoint != null) {
-      return kilometerPoint(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class API_KilometerPoint_Variant implements API {
-  const factory API_KilometerPoint_Variant(final KilometerPoint field0) = _$API_KilometerPoint_Variant;
-
-  KilometerPoint get field0;
-  @JsonKey(ignore: true)
-  _$$API_KilometerPoint_VariantCopyWith<_$API_KilometerPoint_Variant> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$ApplicationMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -812,93 +477,92 @@ abstract class ApplicationMessage_Exit_Variant implements ApplicationMessage {
 }
 
 /// @nodoc
-mixin _$KilometerPoint {
+mixin _$Distance {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
-    required TResult Function(double field0) sncf,
+    required TResult Function(double field0) map,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unknown,
-    TResult Function(double field0)? sncf,
+    TResult Function(double field0)? map,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
-    TResult Function(double field0)? sncf,
+    TResult Function(double field0)? map,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KilometerPoint_Unknown_Variant value) unknown,
-    required TResult Function(KilometerPoint_SNCF_Variant value) sncf,
+    required TResult Function(Distance_Unknown_Variant value) unknown,
+    required TResult Function(Distance_Map_Variant value) map,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
-    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    TResult Function(Distance_Unknown_Variant value)? unknown,
+    TResult Function(Distance_Map_Variant value)? map,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
-    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    TResult Function(Distance_Unknown_Variant value)? unknown,
+    TResult Function(Distance_Map_Variant value)? map,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $KilometerPointCopyWith<$Res> {
-  factory $KilometerPointCopyWith(KilometerPoint value, $Res Function(KilometerPoint) then) =
-      _$KilometerPointCopyWithImpl<$Res>;
+abstract class $DistanceCopyWith<$Res> {
+  factory $DistanceCopyWith(Distance value, $Res Function(Distance) then) = _$DistanceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$KilometerPointCopyWithImpl<$Res> implements $KilometerPointCopyWith<$Res> {
-  _$KilometerPointCopyWithImpl(this._value, this._then);
+class _$DistanceCopyWithImpl<$Res> implements $DistanceCopyWith<$Res> {
+  _$DistanceCopyWithImpl(this._value, this._then);
 
-  final KilometerPoint _value;
+  final Distance _value;
   // ignore: unused_field
-  final $Res Function(KilometerPoint) _then;
+  final $Res Function(Distance) _then;
 }
 
 /// @nodoc
-abstract class _$$KilometerPoint_Unknown_VariantCopyWith<$Res> {
-  factory _$$KilometerPoint_Unknown_VariantCopyWith(
-          _$KilometerPoint_Unknown_Variant value, $Res Function(_$KilometerPoint_Unknown_Variant) then) =
-      __$$KilometerPoint_Unknown_VariantCopyWithImpl<$Res>;
+abstract class _$$Distance_Unknown_VariantCopyWith<$Res> {
+  factory _$$Distance_Unknown_VariantCopyWith(
+          _$Distance_Unknown_Variant value, $Res Function(_$Distance_Unknown_Variant) then) =
+      __$$Distance_Unknown_VariantCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$KilometerPoint_Unknown_VariantCopyWithImpl<$Res> extends _$KilometerPointCopyWithImpl<$Res>
-    implements _$$KilometerPoint_Unknown_VariantCopyWith<$Res> {
-  __$$KilometerPoint_Unknown_VariantCopyWithImpl(
-      _$KilometerPoint_Unknown_Variant _value, $Res Function(_$KilometerPoint_Unknown_Variant) _then)
-      : super(_value, (v) => _then(v as _$KilometerPoint_Unknown_Variant));
+class __$$Distance_Unknown_VariantCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res>
+    implements _$$Distance_Unknown_VariantCopyWith<$Res> {
+  __$$Distance_Unknown_VariantCopyWithImpl(
+      _$Distance_Unknown_Variant _value, $Res Function(_$Distance_Unknown_Variant) _then)
+      : super(_value, (v) => _then(v as _$Distance_Unknown_Variant));
 
   @override
-  _$KilometerPoint_Unknown_Variant get _value => super._value as _$KilometerPoint_Unknown_Variant;
+  _$Distance_Unknown_Variant get _value => super._value as _$Distance_Unknown_Variant;
 }
 
 /// @nodoc
 
-class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant {
-  const _$KilometerPoint_Unknown_Variant();
+class _$Distance_Unknown_Variant implements Distance_Unknown_Variant {
+  const _$Distance_Unknown_Variant();
 
   @override
   String toString() {
-    return 'KilometerPoint.unknown()';
+    return 'Distance.unknown()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$KilometerPoint_Unknown_Variant);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Distance_Unknown_Variant);
   }
 
   @override
@@ -908,7 +572,7 @@ class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
-    required TResult Function(double field0) sncf,
+    required TResult Function(double field0) map,
   }) {
     return unknown();
   }
@@ -917,7 +581,7 @@ class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unknown,
-    TResult Function(double field0)? sncf,
+    TResult Function(double field0)? map,
   }) {
     return unknown?.call();
   }
@@ -926,7 +590,7 @@ class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
-    TResult Function(double field0)? sncf,
+    TResult Function(double field0)? map,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -938,8 +602,8 @@ class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KilometerPoint_Unknown_Variant value) unknown,
-    required TResult Function(KilometerPoint_SNCF_Variant value) sncf,
+    required TResult Function(Distance_Unknown_Variant value) unknown,
+    required TResult Function(Distance_Map_Variant value) map,
   }) {
     return unknown(this);
   }
@@ -947,8 +611,8 @@ class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
-    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    TResult Function(Distance_Unknown_Variant value)? unknown,
+    TResult Function(Distance_Map_Variant value)? map,
   }) {
     return unknown?.call(this);
   }
@@ -956,8 +620,8 @@ class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
-    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    TResult Function(Distance_Unknown_Variant value)? unknown,
+    TResult Function(Distance_Map_Variant value)? map,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -967,33 +631,31 @@ class _$KilometerPoint_Unknown_Variant implements KilometerPoint_Unknown_Variant
   }
 }
 
-abstract class KilometerPoint_Unknown_Variant implements KilometerPoint {
-  const factory KilometerPoint_Unknown_Variant() = _$KilometerPoint_Unknown_Variant;
+abstract class Distance_Unknown_Variant implements Distance {
+  const factory Distance_Unknown_Variant() = _$Distance_Unknown_Variant;
 }
 
 /// @nodoc
-abstract class _$$KilometerPoint_SNCF_VariantCopyWith<$Res> {
-  factory _$$KilometerPoint_SNCF_VariantCopyWith(
-          _$KilometerPoint_SNCF_Variant value, $Res Function(_$KilometerPoint_SNCF_Variant) then) =
-      __$$KilometerPoint_SNCF_VariantCopyWithImpl<$Res>;
+abstract class _$$Distance_Map_VariantCopyWith<$Res> {
+  factory _$$Distance_Map_VariantCopyWith(_$Distance_Map_Variant value, $Res Function(_$Distance_Map_Variant) then) =
+      __$$Distance_Map_VariantCopyWithImpl<$Res>;
   $Res call({double field0});
 }
 
 /// @nodoc
-class __$$KilometerPoint_SNCF_VariantCopyWithImpl<$Res> extends _$KilometerPointCopyWithImpl<$Res>
-    implements _$$KilometerPoint_SNCF_VariantCopyWith<$Res> {
-  __$$KilometerPoint_SNCF_VariantCopyWithImpl(
-      _$KilometerPoint_SNCF_Variant _value, $Res Function(_$KilometerPoint_SNCF_Variant) _then)
-      : super(_value, (v) => _then(v as _$KilometerPoint_SNCF_Variant));
+class __$$Distance_Map_VariantCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res>
+    implements _$$Distance_Map_VariantCopyWith<$Res> {
+  __$$Distance_Map_VariantCopyWithImpl(_$Distance_Map_Variant _value, $Res Function(_$Distance_Map_Variant) _then)
+      : super(_value, (v) => _then(v as _$Distance_Map_Variant));
 
   @override
-  _$KilometerPoint_SNCF_Variant get _value => super._value as _$KilometerPoint_SNCF_Variant;
+  _$Distance_Map_Variant get _value => super._value as _$Distance_Map_Variant;
 
   @override
   $Res call({
     Object? field0 = freezed,
   }) {
-    return _then(_$KilometerPoint_SNCF_Variant(
+    return _then(_$Distance_Map_Variant(
       field0 == freezed
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1004,22 +666,22 @@ class __$$KilometerPoint_SNCF_VariantCopyWithImpl<$Res> extends _$KilometerPoint
 
 /// @nodoc
 
-class _$KilometerPoint_SNCF_Variant implements KilometerPoint_SNCF_Variant {
-  const _$KilometerPoint_SNCF_Variant(this.field0);
+class _$Distance_Map_Variant implements Distance_Map_Variant {
+  const _$Distance_Map_Variant(this.field0);
 
   @override
   final double field0;
 
   @override
   String toString() {
-    return 'KilometerPoint.sncf(field0: $field0)';
+    return 'Distance.map(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KilometerPoint_SNCF_Variant &&
+            other is _$Distance_Map_Variant &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -1028,36 +690,36 @@ class _$KilometerPoint_SNCF_Variant implements KilometerPoint_SNCF_Variant {
 
   @JsonKey(ignore: true)
   @override
-  _$$KilometerPoint_SNCF_VariantCopyWith<_$KilometerPoint_SNCF_Variant> get copyWith =>
-      __$$KilometerPoint_SNCF_VariantCopyWithImpl<_$KilometerPoint_SNCF_Variant>(this, _$identity);
+  _$$Distance_Map_VariantCopyWith<_$Distance_Map_Variant> get copyWith =>
+      __$$Distance_Map_VariantCopyWithImpl<_$Distance_Map_Variant>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
-    required TResult Function(double field0) sncf,
+    required TResult Function(double field0) map,
   }) {
-    return sncf(field0);
+    return map(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unknown,
-    TResult Function(double field0)? sncf,
+    TResult Function(double field0)? map,
   }) {
-    return sncf?.call(field0);
+    return map?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
-    TResult Function(double field0)? sncf,
+    TResult Function(double field0)? map,
     required TResult orElse(),
   }) {
-    if (sncf != null) {
-      return sncf(field0);
+    if (map != null) {
+      return map(field0);
     }
     return orElse();
   }
@@ -1065,42 +727,41 @@ class _$KilometerPoint_SNCF_Variant implements KilometerPoint_SNCF_Variant {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KilometerPoint_Unknown_Variant value) unknown,
-    required TResult Function(KilometerPoint_SNCF_Variant value) sncf,
+    required TResult Function(Distance_Unknown_Variant value) unknown,
+    required TResult Function(Distance_Map_Variant value) map,
   }) {
-    return sncf(this);
+    return map(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
-    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    TResult Function(Distance_Unknown_Variant value)? unknown,
+    TResult Function(Distance_Map_Variant value)? map,
   }) {
-    return sncf?.call(this);
+    return map?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KilometerPoint_Unknown_Variant value)? unknown,
-    TResult Function(KilometerPoint_SNCF_Variant value)? sncf,
+    TResult Function(Distance_Unknown_Variant value)? unknown,
+    TResult Function(Distance_Map_Variant value)? map,
     required TResult orElse(),
   }) {
-    if (sncf != null) {
-      return sncf(this);
+    if (map != null) {
+      return map(this);
     }
     return orElse();
   }
 }
 
-abstract class KilometerPoint_SNCF_Variant implements KilometerPoint {
-  const factory KilometerPoint_SNCF_Variant(final double field0) = _$KilometerPoint_SNCF_Variant;
+abstract class Distance_Map_Variant implements Distance {
+  const factory Distance_Map_Variant(final double field0) = _$Distance_Map_Variant;
 
   double get field0;
   @JsonKey(ignore: true)
-  _$$KilometerPoint_SNCF_VariantCopyWith<_$KilometerPoint_SNCF_Variant> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$Distance_Map_VariantCopyWith<_$Distance_Map_Variant> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2142,6 +1803,340 @@ abstract class KitchenSink_Enums_Variant implements KitchenSink {
   Weekdays get field0;
   @JsonKey(ignore: true)
   _$$KitchenSink_Enums_VariantCopyWith<_$KitchenSink_Enums_Variant> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$Measure {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(Distance field0) distance,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Measure_Speed_Variant value) speed,
+    required TResult Function(Measure_Distance_Variant value) distance,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Measure_Speed_Variant value)? speed,
+    TResult Function(Measure_Distance_Variant value)? distance,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Measure_Speed_Variant value)? speed,
+    TResult Function(Measure_Distance_Variant value)? distance,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MeasureCopyWith<$Res> {
+  factory $MeasureCopyWith(Measure value, $Res Function(Measure) then) = _$MeasureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$MeasureCopyWithImpl<$Res> implements $MeasureCopyWith<$Res> {
+  _$MeasureCopyWithImpl(this._value, this._then);
+
+  final Measure _value;
+  // ignore: unused_field
+  final $Res Function(Measure) _then;
+}
+
+/// @nodoc
+abstract class _$$Measure_Speed_VariantCopyWith<$Res> {
+  factory _$$Measure_Speed_VariantCopyWith(_$Measure_Speed_Variant value, $Res Function(_$Measure_Speed_Variant) then) =
+      __$$Measure_Speed_VariantCopyWithImpl<$Res>;
+  $Res call({Speed field0});
+
+  $SpeedCopyWith<$Res> get field0;
+}
+
+/// @nodoc
+class __$$Measure_Speed_VariantCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res>
+    implements _$$Measure_Speed_VariantCopyWith<$Res> {
+  __$$Measure_Speed_VariantCopyWithImpl(_$Measure_Speed_Variant _value, $Res Function(_$Measure_Speed_Variant) _then)
+      : super(_value, (v) => _then(v as _$Measure_Speed_Variant));
+
+  @override
+  _$Measure_Speed_Variant get _value => super._value as _$Measure_Speed_Variant;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$Measure_Speed_Variant(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Speed,
+    ));
+  }
+
+  @override
+  $SpeedCopyWith<$Res> get field0 {
+    return $SpeedCopyWith<$Res>(_value.field0, (value) {
+      return _then(_value.copyWith(field0: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$Measure_Speed_Variant implements Measure_Speed_Variant {
+  const _$Measure_Speed_Variant(this.field0);
+
+  @override
+  final Speed field0;
+
+  @override
+  String toString() {
+    return 'Measure.speed(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Measure_Speed_Variant &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$Measure_Speed_VariantCopyWith<_$Measure_Speed_Variant> get copyWith =>
+      __$$Measure_Speed_VariantCopyWithImpl<_$Measure_Speed_Variant>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(Distance field0) distance,
+  }) {
+    return speed(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+  }) {
+    return speed?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+    required TResult orElse(),
+  }) {
+    if (speed != null) {
+      return speed(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Measure_Speed_Variant value) speed,
+    required TResult Function(Measure_Distance_Variant value) distance,
+  }) {
+    return speed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Measure_Speed_Variant value)? speed,
+    TResult Function(Measure_Distance_Variant value)? distance,
+  }) {
+    return speed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Measure_Speed_Variant value)? speed,
+    TResult Function(Measure_Distance_Variant value)? distance,
+    required TResult orElse(),
+  }) {
+    if (speed != null) {
+      return speed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Measure_Speed_Variant implements Measure {
+  const factory Measure_Speed_Variant(final Speed field0) = _$Measure_Speed_Variant;
+
+  Speed get field0;
+  @JsonKey(ignore: true)
+  _$$Measure_Speed_VariantCopyWith<_$Measure_Speed_Variant> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$Measure_Distance_VariantCopyWith<$Res> {
+  factory _$$Measure_Distance_VariantCopyWith(
+          _$Measure_Distance_Variant value, $Res Function(_$Measure_Distance_Variant) then) =
+      __$$Measure_Distance_VariantCopyWithImpl<$Res>;
+  $Res call({Distance field0});
+
+  $DistanceCopyWith<$Res> get field0;
+}
+
+/// @nodoc
+class __$$Measure_Distance_VariantCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res>
+    implements _$$Measure_Distance_VariantCopyWith<$Res> {
+  __$$Measure_Distance_VariantCopyWithImpl(
+      _$Measure_Distance_Variant _value, $Res Function(_$Measure_Distance_Variant) _then)
+      : super(_value, (v) => _then(v as _$Measure_Distance_Variant));
+
+  @override
+  _$Measure_Distance_Variant get _value => super._value as _$Measure_Distance_Variant;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$Measure_Distance_Variant(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Distance,
+    ));
+  }
+
+  @override
+  $DistanceCopyWith<$Res> get field0 {
+    return $DistanceCopyWith<$Res>(_value.field0, (value) {
+      return _then(_value.copyWith(field0: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$Measure_Distance_Variant implements Measure_Distance_Variant {
+  const _$Measure_Distance_Variant(this.field0);
+
+  @override
+  final Distance field0;
+
+  @override
+  String toString() {
+    return 'Measure.distance(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Measure_Distance_Variant &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$Measure_Distance_VariantCopyWith<_$Measure_Distance_Variant> get copyWith =>
+      __$$Measure_Distance_VariantCopyWithImpl<_$Measure_Distance_Variant>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(Distance field0) distance,
+  }) {
+    return distance(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+  }) {
+    return distance?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+    required TResult orElse(),
+  }) {
+    if (distance != null) {
+      return distance(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Measure_Speed_Variant value) speed,
+    required TResult Function(Measure_Distance_Variant value) distance,
+  }) {
+    return distance(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Measure_Speed_Variant value)? speed,
+    TResult Function(Measure_Distance_Variant value)? distance,
+  }) {
+    return distance?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Measure_Speed_Variant value)? speed,
+    TResult Function(Measure_Distance_Variant value)? distance,
+    required TResult orElse(),
+  }) {
+    if (distance != null) {
+      return distance(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Measure_Distance_Variant implements Measure {
+  const factory Measure_Distance_Variant(final Distance field0) = _$Measure_Distance_Variant;
+
+  Distance get field0;
+  @JsonKey(ignore: true)
+  _$$Measure_Distance_VariantCopyWith<_$Measure_Distance_Variant> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
