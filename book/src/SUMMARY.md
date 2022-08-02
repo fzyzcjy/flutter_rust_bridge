@@ -66,7 +66,13 @@
   - [Using the dynamic library](integrate/usage.md)
   - [Wrapping up](integrate/finish.md)
 
-# Part III: More Doc
+# Part III: Contributor Guide
+
+- [Overview](contributing/overview.md)
+- [Overall design](contributing/design.md)
+- [Appendix](contributing/appendix.md)
+
+# Part IV: More Doc
 
 - [Tutorial: Pure Dart](tutorial_pure_dart.md)
 - [Safety concerns](safety.md)
