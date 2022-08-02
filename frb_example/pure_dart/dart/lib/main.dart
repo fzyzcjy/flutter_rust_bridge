@@ -446,6 +446,17 @@ void main(List<String> args) async {
     expect(cnt, 5);
   });
 
+  test('dart call multiplyByTen()', () async {
+    expect(
+      await api.multiplyByTen(measure: Measure.speed(Speed_GPS_Variant(10.0))),
+      Measure.speed(Speed_GPS_Variant(100.0)),
+    );
+    expect(
+      await api.multiplyByTen(measure: Measure.speed(Speed_Unknown_Variant())),
+      null,
+    );
+  });
+
   print('flutter_rust_bridge example program end');
 }
 
