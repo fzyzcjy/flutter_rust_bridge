@@ -455,6 +455,10 @@ void main(List<String> args) async {
       await api.multiplyByTen(measure: Measure.speed(Speed_Unknown_Variant())),
       null,
     );
+    expect((Speed_Unknown_Variant).toString(), 'Speed_Unknown_Variant');
+    expect((Speed_GPS_Variant).toString(), 'Speed_GPS_Variant');
+    expect((Distance_Unknown_Variant).toString(), 'Distance_Unknown_Variant');
+    expect((Distance_Map_Variant).toString(), 'Distance_Map_Variant');
   });
 
   print('flutter_rust_bridge example program end');
