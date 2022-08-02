@@ -8,17 +8,16 @@ These depdencies are required only in build-time:
 
 - [`flutter_rust_bridge_codegen`](https://lib.rs/crates/flutter_rust_bridge_codegen), the core codegen for Rust-Dart glue code
 - [`ffigen`](https://pub.dev/packages/ffigen), to generate Dart code from C headers
-- [`cargo-xcode`](https://lib.rs/crates/cargo-xcode), to generate Xcode projects for iOS and MacOS
-- A working installation of LLVM, see [Installing LLVM](https://pub.dev/packages/ffigen#installing-llvm)
+- A working installation of LLVM, see [Installing LLVM](https://pub.dev/packages/ffigen#installing-llvm), used by `ffigen`
+- (Optional) [`cargo-xcode`](https://lib.rs/crates/cargo-xcode), if you want to generate Xcode projects for iOS and MacOS
 
 An easy way to install most of these dependencies is to run:
 
 - dart project
   
   ```bash
-  cargo install flutter_rust_bridge_codegen just
-  dart pub add --dev ffigen
-  dart pub add ffi
+  cargo install flutter_rust_bridge_codegen
+  dart pub add --dev ffigen && dart pub add ffi
   # if building for iOS or MacOS
   cargo install cargo-xcode
   ```
@@ -26,9 +25,8 @@ An easy way to install most of these dependencies is to run:
 - flutter project
 
   ```bash
-  cargo install flutter_rust_bridge_codegen just
-  flutter pub add --dev ffigen
-  flutter pub add ffi
+  cargo install flutter_rust_bridge_codegen
+  flutter pub add --dev ffigen && flutter pub add ffi
   # if building for iOS or MacOS
   cargo install cargo-xcode
   ```
@@ -67,6 +65,3 @@ Add these lines to `Cargo.toml`:
 +flutter_rust_bridge = "1"
 ```
 
-> **Note** \
-> If you wish to return a `Result`, keep in mind that this library can only run codegen
-> for [`anyhow::Result`](https://docs.rs/anyhow/latest/anyhow/type.Result.html).
