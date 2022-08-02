@@ -7,14 +7,18 @@ import '../ffi.dart' show WasmModule;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 typedef NativePortType = int;
-Future<dynamic> promiseToFuture(Object promise) => throw UnimplementedError("Not implemented on non-WASM platforms");
-dynamic eval(String jsScript) => throw UnimplementedError("Not implemented on non-WASM platforms");
+typedef ExternalLibrary = ffi.DynamicLibrary;
+Future<dynamic> promiseToFuture(Object promise) =>
+    throw UnimplementedError("Not implemented on non-WASM platforms");
+dynamic eval(String jsScript) =>
+    throw UnimplementedError("Not implemented on non-WASM platforms");
 
 /// Whether the web platform has been isolated by COOP and COEP headers,
 /// and is capable of sharing buffers between workers.
 ///
 /// Note: not available on all browsers, in which case it will return null.
-bool? get crossOriginIsolated => throw UnimplementedError('Not implemented on non-WASM platforms');
+bool? get crossOriginIsolated =>
+    throw UnimplementedError('Not implemented on non-WASM platforms');
 
 class JS {
   /// Dummy JS attribute.
@@ -27,7 +31,10 @@ abstract class FlutterRustBridgeWireBase {
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(
-    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
+    ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>
+        ptr,
   ) {}
 
   /// Not to be used by normal users, but has to be public for generated code
@@ -36,7 +43,8 @@ abstract class FlutterRustBridgeWireBase {
 }
 
 class FlutterRustBridgeWasmWireBase extends FlutterRustBridgeWireBase {
-  final Future<void> init = Future.error(UnimplementedError("Not implemented on non-WASM platforms"));
+  final Future<void> init =
+      Future.error(UnimplementedError("Not implemented on non-WASM platforms"));
   FlutterRustBridgeWasmWireBase([FutureOr<WasmModule>? _]);
 }
 

@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::*;
 use crate::ir::IrType::{EnumRef, StructRef};
@@ -7,31 +8,35 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn api2wire_body(&self) -> Option<String> {
-        match (self.ir.inner.is_primitive(), self.context.config.wasm) {
-            (true, _) => Some(format!(
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        let as_primitive = self.ir.inner.is_primitive().then(|| {
+            format!(
                 "return inner.new_{}_{}(_api2wire_{}(raw));",
                 self.ir.safe_ident(),
                 self.context.config.block_index,
                 self.ir.inner.safe_ident(),
-            )),
-            (false, false) => Some(format!(
-                "final ptr = inner.new_{}_{}();
-                _api_fill_to_wire_{}(raw, ptr.ref);
-                return ptr;",
-                self.ir.safe_ident(),
-                self.context.config.block_index,
-                self.ir.inner.safe_ident(),
-            )),
-            (false, true) => Some(format!(
-                "return _api2wire_{}(raw);",
-                self.ir.inner.safe_ident()
-            )),
+            )
+        });
+        Acc {
+            io: Some(as_primitive.clone().unwrap_or_else(|| {
+                format!(
+                    "final ptr = inner.new_{}_{}();
+                    _api_fill_to_wire_{}(raw, ptr.ref);
+                    return ptr;",
+                    self.ir.safe_ident(),
+                    self.context.config.block_index,
+                    self.ir.inner.safe_ident(),
+                )
+            })),
+            wasm: Some(as_primitive.unwrap_or_else(|| {
+                format!("return _api2wire_{}(raw);", self.ir.inner.safe_ident())
+            })),
+            ..Default::default()
         }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        (!self.ir.inner.is_primitive() && !self.context.config.wasm).then(|| {
+        (!self.ir.inner.is_primitive() && !self.context.config.wasm_enabled).then(|| {
             format!(
                 " _api_fill_to_wire_{}(apiObj, wireObj.ref);",
                 self.ir.inner.safe_ident()

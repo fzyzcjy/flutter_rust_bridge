@@ -19,6 +19,7 @@ pub use ty_struct::*;
 
 use std::collections::HashSet;
 
+use crate::config::Acc;
 use crate::ir::IrType::*;
 use crate::method_utils::FunctionName;
 use crate::others::*;
@@ -28,7 +29,7 @@ use crate::{ir::*, Opts};
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
 pub struct Output {
-    pub code: String,
+    pub code: Acc<String>,
     pub extern_func_names: Vec<String>,
 }
 
@@ -65,8 +66,8 @@ impl<'a> Generator<'a> {
         }
     }
 
-    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> String {
-        let mut lines: Vec<String> = vec![];
+    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> Acc<String> {
+        let mut lines = Acc::<Vec<_>>::default();
 
         let distinct_input_types = ir_file.distinct_types(true, false);
         let distinct_output_types = ir_file.distinct_types(false, true);
@@ -77,6 +78,7 @@ impl<'a> Generator<'a> {
         lines.push(String::new());
         lines.push(format!("use crate::{}::*;", rust_wire_mod));
         lines.push("use flutter_rust_bridge::*;".to_string());
+        lines.push("use core::panic::UnwindSafe;".to_owned());
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));
@@ -89,26 +91,23 @@ impl<'a> Generator<'a> {
         lines.push(String::new());
 
         lines.push(self.section_header_comment("wire functions"));
-        lines.extend(
-            ir_file
-                .funcs
-                .iter()
-                .map(|f| self.generate_wire_func(f, ir_file)),
-        );
+        lines += ir_file
+            .funcs
+            .iter()
+            .map(|f| self.generate_wire_func(f, ir_file))
+            .collect();
 
-        if !self.config.wasm {
-            lines.push(self.section_header_comment("wire structs"));
-            lines.extend(
-                distinct_input_types
-                    .iter()
-                    .map(|ty| self.generate_wire_struct(ty, ir_file, self.config.wasm)),
-            );
-            lines.extend(
-                distinct_input_types
-                    .iter()
-                    .map(|ty| TypeRustGenerator::new(ty.clone(), ir_file, self.config).structs()),
-            );
-        }
+        lines.io.push(self.section_header_comment("wire structs"));
+        lines.io.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| self.generate_wire_struct(ty, ir_file)),
+        );
+        lines.io.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| TypeRustGenerator::new(ty.clone(), ir_file, self.config).structs()),
+        );
 
         lines.push(self.section_header_comment("wrapper structs"));
         lines.extend(
@@ -127,39 +126,34 @@ impl<'a> Generator<'a> {
             lines.push("};".to_owned());
         }
 
-        if !self.config.wasm {
-            lines.push(self.section_header_comment("allocate functions"));
-            lines.extend(
-                distinct_input_types
-                    .iter()
-                    .map(|f| self.generate_allocate_funcs(f, ir_file)),
-            );
-        }
+        (lines.io).push(self.section_header_comment("allocate functions"));
+        lines.io.extend(
+            distinct_input_types
+                .iter()
+                .map(|f| self.generate_allocate_funcs(f, ir_file)),
+        );
 
         lines.push(self.section_header_comment("impl Wire2Api"));
         lines.push(self.generate_wire2api_misc().to_string());
-        lines.extend(
-            distinct_input_types
-                .iter()
-                .map(|ty| self.generate_wire2api_func(ty, ir_file)),
-        );
+        lines += distinct_input_types
+            .iter()
+            .map(|ty| self.generate_wire2api_func(ty, ir_file))
+            .collect();
 
-        lines.push(self.section_header_comment("impl Wire2Api for JsValue"));
-        lines.extend(
+        (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
+        lines.wasm.extend(
             distinct_input_types
                 .iter()
                 .filter_map(|ty| self.generate_wasm2api_func(ty, ir_file)),
         );
 
-        if !self.config.wasm {
-            lines.push(self.section_header_comment("impl NewWithNullPtr"));
-            lines.push(self.generate_new_with_nullptr_misc().to_string());
-            lines.extend(
-                distinct_input_types
-                    .iter()
-                    .map(|ty| self.generate_new_with_nullptr_func(ty, ir_file)),
-            );
-        }
+        (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
+        (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
+        lines.io.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| self.generate_new_with_nullptr_func(ty, ir_file)),
+        );
 
         lines.push(self.section_header_comment("impl IntoDart"));
         lines.extend(
@@ -171,9 +165,9 @@ impl<'a> Generator<'a> {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
-        if self.config.block_index == BlockIndex::PRIMARY && !self.config.wasm {
-            lines.push(self.section_header_comment("sync execution mode utility"));
-            lines.push(self.generate_sync_execution_mode_utility());
+        if self.config.block_index == BlockIndex::PRIMARY {
+            (lines.io).push(self.section_header_comment("sync execution mode utility"));
+            lines.io.push(self.generate_sync_execution_mode_utility());
         }
 
         lines.join("\n")
@@ -230,29 +224,43 @@ impl<'a> Generator<'a> {
         )
     }
 
-    fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> String {
+    fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> Acc<String> {
         let f = FunctionName::deserialize(&func.name);
         let struct_name = f.struct_name();
-        let wasm = self.config.wasm;
-        let params = [
-            if func.mode.has_port_argument() {
-                vec!["port_: MessagePort".to_string()]
-            } else {
-                vec![]
-            },
-            func.inputs
-                .iter()
-                .map(|field| {
-                    format!(
+        let mut params = if func.mode.has_port_argument() {
+            Acc {
+                io: vec!["port_: i64".to_owned()],
+                wasm: vec!["port_: MessagePort".to_owned()],
+                common: vec!["port_: MessagePort".to_owned()],
+            }
+        } else {
+            Acc::default()
+        };
+        params += (func.inputs)
+            .iter()
+            .map(|field| {
+                let name = field.name.rust_style();
+                Acc {
+                    io: format!(
                         "{}: {}{}",
-                        field.name.rust_style(),
-                        field.ty.rust_wire_modifier(wasm),
-                        field.ty.rust_wire_type(wasm)
-                    )
-                })
-                .collect::<Vec<_>>(),
-        ]
-        .concat();
+                        name,
+                        field.ty.rust_wire_modifier(false),
+                        field.ty.rust_wire_type(false)
+                    ),
+                    wasm: format!(
+                        "{}: {}{}",
+                        name,
+                        field.ty.rust_wire_modifier(true),
+                        field.ty.rust_wire_type(true)
+                    ),
+                    common: format!(
+                        "{}: impl Wire2Api<{}> + UnwindSafe",
+                        name,
+                        field.ty.rust_api_type()
+                    ),
+                }
+            })
+            .collect();
 
         let mut inner_func_params = [
             vec![],
@@ -279,13 +287,7 @@ impl<'a> Generator<'a> {
         let code_wire2api = func
             .inputs
             .iter()
-            .map(|field| {
-                format!(
-                    "let api_{} = {}.wire2api();",
-                    field.name.rust_style(),
-                    field.name.rust_style()
-                )
-            })
+            .map(|field| format!("let api_{0} = {0}.wire2api();", field.name.rust_style()))
             .collect::<Vec<_>>()
             .join("");
 
@@ -333,9 +335,7 @@ impl<'a> Generator<'a> {
                 "wrap",
                 None,
                 format!(
-                    "{}
-                    move |task_callback| {}
-                    ",
+                    "{} move |task_callback| {}",
                     code_wire2api, code_call_inner_func_result,
                 ),
             ),
@@ -345,57 +345,62 @@ impl<'a> Generator<'a> {
             "{}.{}({}, move || {{ {} }})",
             HANDLER_NAME, handler_func_name, wrap_info_obj, code_closure,
         );
-        if self.config.wasm {
-            format!(
-                "#[wasm_bindgen] pub fn {}({}) {} {{ {} }}",
-                func.wire_func_name(),
-                params.join(","),
-                return_type
-                    .map(|t| format!("-> {t}"))
-                    .unwrap_or_else(String::new),
-                body
-            )
-        } else {
-            self.extern_func_collector.generate(
+        let redirect_body = format!(
+            "{}_impl({})",
+            func.wire_func_name(),
+            (func.mode.has_port_argument().then(|| "port_"))
+                .into_iter()
+                .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
+                .collect::<Vec<_>>()
+                .join(","),
+        );
+        Acc {
+            io: self.extern_func_collector.generate(
                 &func.wire_func_name(),
                 &params
+                    .io
                     .iter()
                     .map(std::ops::Deref::deref)
                     .collect::<Vec<_>>(),
                 return_type,
-                &body,
-            )
+                &redirect_body,
+            ),
+            wasm: (self.config.wasm_enabled)
+                .then(|| {
+                    format!(
+                        "#[wasm_bindgen] pub fn {}({}) {} {{ {} }}",
+                        func.wire_func_name(),
+                        params.wasm.join(","),
+                        return_type.map(|t| format!("-> {}", t)).unwrap_or_default(),
+                        redirect_body,
+                    )
+                })
+                .unwrap_or_default(),
+            common: format!(
+                "fn {}_impl({}) {} {{ {} }}",
+                func.wire_func_name(),
+                params.common.join(","),
+                return_type.map(|t| format!("-> {}", t)).unwrap_or_default(),
+                body,
+            ),
         }
     }
 
-    fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile, wasm: bool) -> String {
+    fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
         if let Some(fields) =
             TypeRustGenerator::new(ty.clone(), ir_file, self.config).wire_struct_fields()
         {
-            if !wasm {
-                format!(
-                    r###"
+            format!(
+                r###"
                 #[repr(C)]
                 #[derive(Clone)]
                 pub struct {} {{
                     {}
                 }}
                 "###,
-                    ty.rust_wire_type(wasm),
-                    fields.join(",\n"),
-                )
-            } else {
-                format!(
-                    "#[wasm_bindgen] extern \"C\" {{
-                        pub type {};
-                        /* 
-                        {}
-                        */
-                    }}",
-                    ty.rust_wire_type(wasm),
-                    fields.join("\n")
-                )
-            }
+                ty.rust_wire_type(false),
+                fields.join(",\n"),
+            )
         } else {
             "".to_string()
         }
@@ -426,22 +431,27 @@ impl<'a> Generator<'a> {
         "
     }
 
-    fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        if let Some(body) = TypeRustGenerator::new(ty.clone(), ir_file, self.config).wire2api_body()
-        {
+    fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+        let wrap = |wasm: bool, body: &str| {
             format!(
-                "impl Wire2Api<{}> for {} {{
-                    fn wire2api(self) -> {} {{
+                "impl Wire2Api<{out}> for {} {{
+                    fn wire2api(self) -> {out} {{
                         {}
                     }}
                 }}",
-                ty.rust_api_type(),
-                ty.rust_wire_modifier(self.config.wasm) + &ty.rust_wire_type(self.config.wasm),
-                ty.rust_api_type(),
+                ty.rust_wire_modifier(wasm) + &ty.rust_wire_type(wasm),
                 body,
+                out = ty.rust_api_type(),
             )
-        } else {
-            "".to_string()
+        };
+        let Acc { common, io, wasm } =
+            TypeRustGenerator::new(ty.clone(), ir_file, self.config).wire2api_body();
+        Acc {
+            common: common
+                .map(|common| wrap(false, &common))
+                .unwrap_or_default(),
+            io: io.map(|io| wrap(false, &io)).unwrap_or_default(),
+            wasm: wasm.map(|wasm| wrap(true, &wasm)).unwrap_or_default(),
         }
     }
 
@@ -519,11 +529,9 @@ pub fn generate_list_allocate_func(
     safe_ident: &str,
     list: &impl IrTypeTrait,
     inner: &IrType,
-    Opts {
-        wasm, block_index, ..
-    }: &Opts,
+    block_index: BlockIndex,
 ) -> String {
-    let wasm = *wasm;
+    let wasm = false;
     collector.generate(
         &format!("new_{}_{}", safe_ident, block_index),
         &["len: i32"],

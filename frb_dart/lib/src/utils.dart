@@ -77,7 +77,8 @@ SendPort singleCompletePort<R, P>(
           completer.completeError(e, st);
         }
       } else {
-        completer.completeError(TimeoutException('Future not completed', timeout));
+        completer
+            .completeError(TimeoutException('Future not completed', timeout));
       }
     });
   }

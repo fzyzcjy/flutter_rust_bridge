@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
@@ -8,25 +9,28 @@ use convert_case::{Case, Casing};
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn api2wire_body(&self) -> Option<String> {
-        self.context.config.wasm.then(|| {
-            format!(
-                "return [{}];",
-                self.ir
-                    .get(self.context.ir_file)
-                    .fields
-                    .iter()
-                    .map(|field| {
-                        format!(
-                            "_api2wire_{}(raw.{})",
-                            field.ty.safe_ident(),
-                            field.name.dart_style()
-                        )
-                    })
-                    .collect::<Vec<_>>()
-                    .join(",")
-            )
-        })
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        Acc {
+            wasm: self.context.wasm().then(|| {
+                format!(
+                    "return [{}];",
+                    self.ir
+                        .get(self.context.ir_file)
+                        .fields
+                        .iter()
+                        .map(|field| {
+                            format!(
+                                "_api2wire_{}(raw.{})",
+                                field.ty.safe_ident(),
+                                field.name.dart_style()
+                            )
+                        })
+                        .collect::<Vec<_>>()
+                        .join(",")
+                )
+            }),
+            ..Default::default()
+        }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {

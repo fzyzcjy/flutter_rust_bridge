@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
@@ -6,8 +7,8 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypePrimitiveGenerator, IrTypePrimitive);
 
 impl TypeDartGeneratorTrait for TypePrimitiveGenerator<'_> {
-    fn api2wire_body(&self) -> Option<String> {
-        Some("return raw;".to_string())
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        "return raw;".into()
     }
 
     fn wire2api_body(&self) -> String {

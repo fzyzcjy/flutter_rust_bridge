@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
@@ -6,45 +7,43 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
+    fn wire2api_body(&self) -> Acc<Option<String>> {
         let api_struct = self.ir.get(self.context.ir_file);
-        let wasm = self.context.wasm();
-        let fields_str = &api_struct
+        let (fields_wasm, fields_io): (Vec<_>, Vec<_>) = api_struct
             .fields
             .iter()
             .enumerate()
             .map(|(idx, field)| {
-                let access = if wasm {
-                    format!("self_.get({}).wire2api()", idx)
+                let field_ = if api_struct.is_fields_named {
+                    field.name.rust_style().to_string() + ": "
                 } else {
-                    format!("self.{}.wire2api()", field.name.rust_style())
+                    String::new()
                 };
-                format!(
-                    "{} {}",
-                    if api_struct.is_fields_named {
-                        field.name.rust_style().to_string() + ": "
-                    } else {
-                        String::new()
-                    },
-                    access
+                (
+                    format!("{} self_.get({}).wire2api()", field_, idx),
+                    format!("{} self.{}.wire2api()", field_, field.name.rust_style()),
                 )
             })
-            .collect::<Vec<_>>()
-            .join(",");
+            .unzip();
 
         let (left, right) = api_struct.brackets_pair();
-        Some(format!(
-            "{}{}{}{}{}",
-            if wasm {
-                "let self_ = self.unchecked_into::<JsArray>();"
-            } else {
-                ""
-            },
-            self.ir.rust_api_type(),
-            left,
-            fields_str,
-            right
-        ))
+        Acc {
+            io: Some(format!(
+                "{}{}{}{}",
+                self.ir.rust_api_type(),
+                left,
+                fields_io.join(","),
+                right
+            )),
+            wasm: Some(format!(
+                "let self_ = self.unchecked_into::<JsArray>(); {}{}{}{}",
+                self.ir.rust_api_type(),
+                left,
+                fields_wasm.join(","),
+                right
+            )),
+            ..Default::default()
+        }
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
@@ -57,7 +56,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                         "{}: {}{}",
                         field.name.rust_style(),
                         field.ty.rust_wire_modifier(false),
-                        field.ty.rust_wire_type(self.context.wasm())
+                        field.ty.rust_wire_type(false)
                     )
                 })
                 .collect(),
@@ -182,7 +181,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     }}
                 }}
             "#,
-            self.ir.rust_wire_type(self.context.wasm()),
+            self.ir.rust_wire_type(false),
             body,
         )
     }

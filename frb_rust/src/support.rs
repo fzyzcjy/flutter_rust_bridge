@@ -5,6 +5,7 @@
 use std::mem;
 
 pub use crate::ffi::*;
+pub use cfg_if::cfg_if;
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;

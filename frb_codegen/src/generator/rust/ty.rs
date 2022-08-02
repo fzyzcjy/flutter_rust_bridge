@@ -1,11 +1,12 @@
 use std::borrow::Cow;
 
+use crate::config::Acc;
 use crate::generator::rust::*;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeRustGeneratorTrait {
-    fn wire2api_body(&self) -> Option<String>;
+    fn wire2api_body(&self) -> Acc<Option<String>>;
 
     /// Handles JsValue to Self conversions.
     fn wasm2api_body(&self) -> Option<Cow<str>> {
@@ -70,7 +71,7 @@ pub struct TypeGeneratorContext<'a> {
 impl TypeGeneratorContext<'_> {
     #[inline]
     pub fn wasm(&self) -> bool {
-        self.config.wasm
+        self.config.wasm_enabled
     }
 }
 

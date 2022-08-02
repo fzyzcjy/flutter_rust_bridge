@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, ExternFuncCollector};
 use crate::ir::*;
@@ -7,15 +8,12 @@ use crate::utils::BlockIndex;
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
+    fn wire2api_body(&self) -> Acc<Option<String>> {
         let IrTypeBoxed {
             inner: box_inner,
             exist_in_real_api,
         } = &self.ir;
-        if self.context.wasm() && box_inner.is_js_value() {
-            return None;
-        }
-        Some(match (box_inner.as_ref(), exist_in_real_api) {
+        let io = Some(match (box_inner.as_ref(), exist_in_real_api) {
             (IrType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
             (IrType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
             _ => {
@@ -25,7 +23,12 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                     box_inner.rust_api_type()
                 )
             }
-        })
+        });
+        Acc {
+            wasm: (!box_inner.is_js_value()).then(|| io.clone().unwrap_or_default()),
+            io,
+            ..Default::default()
+        }
     }
 
     fn wrapper_struct(&self) -> Option<String> {

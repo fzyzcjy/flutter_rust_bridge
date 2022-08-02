@@ -8,6 +8,8 @@ export 'package:js/js_util.dart' show promiseToFuture;
 import 'dart:typed_data';
 import '../ffi.dart' show WasmModule;
 
+typedef ExternalLibrary = FutureOr<WasmModule>;
+
 @JS()
 external bool? get crossOriginIsolated;
 

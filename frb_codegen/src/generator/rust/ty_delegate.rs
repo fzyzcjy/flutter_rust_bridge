@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{
     generate_list_allocate_func, ExternFuncCollector, TypeGeneralListGenerator,
@@ -23,27 +24,26 @@ macro_rules! delegate_enum {
 }
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
-        Some(match &self.ir {
+    fn wire2api_body(&self) -> Acc<Option<String>> {
+        match &self.ir {
             IrTypeDelegate::String => {
-                if self.context.wasm() {
-                    "self".into()
-                } else {
-                    "let vec: Vec<u8> = self.wire2api(); String::from_utf8_lossy(&vec).into_owned()"
-                        .into()
+                Acc {
+                    wasm: Some("self".into()),
+                    io: Some("let vec: Vec<u8> = self.wire2api(); String::from_utf8_lossy(&vec).into_owned()".into()),
+                    ..Default::default()
                 }
             }
             IrTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                "ZeroCopyBuffer(self.wire2api())".into()
+                Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
             }
-            IrTypeDelegate::StringList => TypeGeneralListGenerator::WIRE2API_BODY.to_string(),
+            IrTypeDelegate::StringList => Acc::distribute(Some(TypeGeneralListGenerator::WIRE2API_BODY.into())),
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 let enu = ir.get(self.context.ir_file);
-                let variants = enu
+                let variants = (enu
                     .variants()
                     .iter()
-                    .enumerate()
+                    .enumerate())
                     .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
                     .collect::<Vec<_>>()
                     .join("\n");
@@ -53,18 +53,15 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                         _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
                     }}",
                     variants, enu.name
-                )
+                ).into()
             }
-        })
+        }
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         match &self.ir {
             ty @ IrTypeDelegate::StringList => Some(vec![
-                format!(
-                    "ptr: *mut *mut {}",
-                    ty.get_delegate().rust_wire_type(self.context.config.wasm)
-                ),
+                format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type(false)),
                 "len: i32".to_owned(),
             ]),
             _ => None,
@@ -78,7 +75,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 &self.ir.safe_ident(),
                 list,
                 &list.get_delegate(),
-                self.context.config,
+                self.context.config.block_index,
             ),
             _ => "".to_string(),
         }

@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
@@ -6,10 +7,8 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
 impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
-    fn api2wire_body(&self) -> Option<String> {
-        if self.context.config.wasm {
-            Some("return raw;".into())
-        } else {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        Acc {
             // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
             // Instead, Rust receives that pointer and now it is in control of Rust.
             // Therefore, *never* continue to use this pointer after you have passed the pointer
@@ -19,13 +18,15 @@ impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
             // memory will be allocated in one dylib (e.g. libflutter.so), and then be released
             // by another dylib (e.g. my_rust_code.so), especially in Android platform. It can be
             // undefined behavior.
-            Some(format!(
+            io: Some(format!(
                 "final ans = inner.new_{}_{}(raw.length);
                 ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
                 return ans;",
                 self.ir.safe_ident(),
                 self.context.config.block_index,
-            ))
+            )),
+            wasm: self.context.wasm().then(|| "return raw;".into()),
+            ..Default::default()
         }
     }
 

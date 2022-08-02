@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, generate_list_allocate_func, ExternFuncCollector};
 use crate::ir::*;
@@ -18,11 +19,12 @@ impl TypeGeneralListGenerator<'_> {
 }
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
-        if self.context.wasm() {
-            Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_string())
-        } else {
-            Some(TypeGeneralListGenerator::WIRE2API_BODY.to_string())
+    fn wire2api_body(&self) -> Acc<Option<String>> {
+        Acc {
+            wasm: (self.context.wasm())
+                .then(|| TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
+            io: Some(TypeGeneralListGenerator::WIRE2API_BODY.into()),
+            ..Default::default()
         }
     }
 
@@ -31,7 +33,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             format!(
                 "ptr: *mut {}{}",
                 self.ir.inner.rust_ptr_modifier(),
-                self.ir.inner.rust_wire_type(self.context.wasm())
+                self.ir.inner.rust_wire_type(false)
             ),
             "len: i32".to_string(),
         ])
@@ -62,7 +64,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             &self.ir.safe_ident(),
             &self.ir,
             &self.ir.inner,
-            self.context.config,
+            self.context.config.block_index,
         )
     }
 

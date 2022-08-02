@@ -3,7 +3,7 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
-    fn api2wire_body(&self) -> Option<String>;
+    fn api2wire_body(&self) -> Acc<Option<String>>;
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
         None
@@ -23,6 +23,13 @@ pub struct TypeGeneratorContext<'a> {
     pub ir_file: &'a IrFile,
     pub config: &'a Opts,
     pub dart_api_class_name: Option<String>,
+}
+
+impl TypeGeneratorContext<'_> {
+    #[inline]
+    pub fn wasm(&self) -> bool {
+        self.config.wasm_enabled
+    }
 }
 
 #[macro_export]

@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::dart::dart_comments;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
@@ -6,8 +7,12 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn api2wire_body(&self) -> Option<String> {
-        self.context.config.wasm.then(|| "return const [];".into())
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        // TODO: Implement enums for WASM
+        Acc {
+            wasm: Some("return const [];".into()),
+            ..Default::default()
+        }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {

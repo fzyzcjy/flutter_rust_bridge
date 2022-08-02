@@ -7,6 +7,7 @@ use log::info;
 use pathdiff::diff_paths;
 
 use crate::commands::BindgenRustToDartArg;
+use crate::config::Acc;
 use crate::others::*;
 use crate::utils::*;
 
@@ -47,24 +48,53 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
 
     info!("Phase: Generate Rust code");
     fs::create_dir_all(&rust_output_dir)?;
-    let generated_rust = {
-        let generated_rust = ir_file.generate_rust(&config.with_wasm(false));
-        fs::write(&config.rust_output_path, &generated_rust.code)?;
-        generated_rust
-    };
-    if config.wasm {
-        let generated_rust = ir_file.generate_rust(config);
-        fs::write(config.rust_wasm_output_path(), generated_rust.code)?;
+    let generated_rust = ir_file.generate_rust(config);
+    if config.wasm_enabled {
+        let Acc { common, io, wasm } = &generated_rust.code;
+        let common = format!(
+            "{}
+
+            /// cbindgen:ignore
+            #[cfg(target_family = \"wasm\")]
+            mod web {{
+                use super::*;
+                {}
+            }}
+            #[cfg(target_family = \"wasm\")]
+            pub use web::*;
+
+            #[cfg(not(target_family = \"wasm\"))]
+            mod io {{
+                use super::*;
+                {}
+            }}
+            #[cfg(not(target_family = \"wasm\"))]
+            pub use io::*;
+            ",
+            common, wasm, io
+        );
+        fs::write(&config.rust_output_path, common)?;
+    } else {
+        let Acc { common, io, .. } = &generated_rust.code;
+        let output = format!(
+            "{}
+            
+            #[cfg(not(target_family = \"wasm\"))]
+            mod io {{
+                use super::*;
+                {}
+            }}
+            #[cfg(not(target_family = \"wasm\"))]
+            pub use io::*;",
+            common, io,
+        );
+        fs::write(&config.rust_output_path, output)?;
     }
 
     info!("Phase: Generate Dart code");
-    let generated_dart = ir_file.generate_dart(&config.with_wasm(false));
-    let wasm_generated_dart = config.wasm.then(|| ir_file.generate_dart(config));
+    let generated_dart = ir_file.generate_dart(config);
 
     commands::format_rust(&config.rust_output_path)?;
-    if config.wasm {
-        commands::format_rust(config.rust_wasm_output_path().to_str().unwrap())?;
-    }
 
     if !config.skip_add_mod_to_lib {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
@@ -118,7 +148,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
     let generated_dart_decl_all = generated_dart.decl_code;
-    let generated_dart_impl_all = &generated_dart.impl_code + &generated_dart_wire;
+    let generated_dart_impl_io_wire = &generated_dart.impl_code.io + &generated_dart_wire;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         let impl_import_decl = DartBasicCode {
             import: format!(
@@ -128,27 +158,47 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
                     .to_str()
                     .unwrap()
             ),
-            part: String::new(),
-            body: String::new(),
+            ..Default::default()
         };
         fs::write(
             &dart_decl_output_path,
             (&generated_dart.file_prelude + &generated_dart_decl_all).to_text(),
         )?;
-        fs::write(
-            &config.dart_output_path,
-            (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_all).to_text(),
-        )?;
-        if let Some(wasm) = wasm_generated_dart {
+        if config.wasm_enabled {
+            fs::write(
+                &config.dart_output_path,
+                (&generated_dart.file_prelude
+                    + &impl_import_decl
+                    + &generated_dart.impl_code.common)
+                    .to_text(),
+            )?;
+            fs::write(
+                &config.dart_io_output_path(),
+                (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_io_wire)
+                    .to_text(),
+            )?;
             fs::write(
                 config.dart_wasm_output_path(),
-                (wasm.file_prelude + &impl_import_decl + &wasm.impl_code).to_text(),
+                (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.impl_code.wasm)
+                    .to_text(),
+            )?;
+        } else {
+            fs::write(
+                &config.dart_output_path,
+                (&generated_dart.file_prelude
+                    + &impl_import_decl
+                    + &generated_dart.impl_code.common
+                    + &generated_dart_impl_io_wire)
+                    .to_text(),
             )?;
         }
     } else {
         fs::write(
             &config.dart_output_path,
-            (&generated_dart.file_prelude + &generated_dart_decl_all + &generated_dart_impl_all)
+            (&generated_dart.file_prelude
+                + &generated_dart_decl_all
+                + &generated_dart.impl_code.common
+                + &generated_dart_impl_io_wire)
                 .to_text(),
         )?;
     }
@@ -163,25 +213,23 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
             )
         })?;
         commands::build_runner(dart_root)?;
-        commands::format_dart(
-            config
-                .dart_output_root()
-                .ok_or_else(|| Error::str("Invalid freezed file path"))?,
-            config.dart_format_line_length,
-        )?;
     }
 
     info!("Phase: Formatting Dart code");
-    commands::format_dart(&config.dart_output_path, config.dart_format_line_length)?;
-    if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
-        commands::format_dart(dart_decl_output_path, config.dart_format_line_length)?;
+    let mut generated_dart_files = vec![config.dart_output_path.clone()];
+    if let Some(decl) = config.dart_decl_output_path.clone() {
+        generated_dart_files.push(decl);
     }
-    if config.wasm {
-        commands::format_dart(
-            config.dart_wasm_output_path().to_str().unwrap(),
-            config.dart_format_line_length,
-        )?;
+    if config.wasm_enabled {
+        generated_dart_files.extend([
+            config.dart_wasm_output_path().to_str().unwrap().to_owned(),
+            config.dart_io_output_path().to_str().unwrap().to_owned(),
+        ]);
     }
+    commands::format_dart(
+        &generated_dart_files.join(" "),
+        config.dart_format_line_length,
+    )?;
 
     info!("Success!");
     Ok(())

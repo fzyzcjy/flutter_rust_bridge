@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::rust::generate_import;
 use crate::generator::rust::ty::*;
 use crate::ir::*;
@@ -6,8 +7,8 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
 impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
-        None
+    fn wire2api_body(&self) -> Acc<Option<String>> {
+        Default::default()
     }
 
     fn convert_to_dart(&self, obj: String) -> String {

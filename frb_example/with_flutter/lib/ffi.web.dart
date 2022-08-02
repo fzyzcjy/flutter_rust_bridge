@@ -2,7 +2,7 @@
 
 import 'dart:html';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'bridge_generated.web.dart';
+import 'bridge_generated.dart';
 
 @JS()
 external WasmModule get wasmBindgen;
@@ -18,4 +18,4 @@ Future<WasmModule> _initModule() {
   });
 }
 
-final api = FlutterRustBridgeExampleImpl(_initModule());
+final api = FlutterRustBridgeExampleImpl(_initModule() as ExternalLibrary);

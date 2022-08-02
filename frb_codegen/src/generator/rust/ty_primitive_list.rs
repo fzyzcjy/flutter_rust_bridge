@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
@@ -7,26 +8,23 @@ use crate::utils::BlockIndex;
 type_rust_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
 impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
-        if self.context.wasm() {
-            Some("self.into_vec()".into())
-        } else {
-            Some(
+    fn wire2api_body(&self) -> Acc<Option<String>> {
+        Acc {
+            wasm: self.context.wasm().then(|| "self.into_vec()".into()),
+            io: Some(
                 "unsafe {
                     let wrap = support::box_from_leak_ptr(self);
                     support::vec_from_leak_ptr(wrap.ptr, wrap.len)
                 }"
                 .into(),
-            )
+            ),
+            ..Default::default()
         }
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         Some(vec![
-            format!(
-                "ptr: *mut {}",
-                self.ir.primitive.rust_wire_type(self.context.wasm())
-            ),
+            format!("ptr: *mut {}", self.ir.primitive.rust_wire_type(false)),
             "len: i32".to_string(),
         ])
     }
@@ -36,7 +34,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         collector: &mut ExternFuncCollector,
         block_index: BlockIndex,
     ) -> String {
-        let wasm = self.context.wasm();
+        let wasm = false;
         collector.generate(
             &format!("new_{}_{}", self.ir.safe_ident(), block_index),
             &["len: i32"],

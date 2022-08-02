@@ -121,6 +121,7 @@ fn cbindgen(
             "stdint.h".to_string(),
             "stdlib.h".to_string(),
         ],
+        defines: [("target_family = 'wasm'".into(), "DEFINE_WASM".into())].into(),
         no_includes: true,
         export: cbindgen::ExportConfig {
             include: c_struct_names
@@ -128,7 +129,6 @@ fn cbindgen(
                 .map(|name| format!("\"{}\"", name))
                 .collect(),
             exclude: exclude_symbols,
-            rename: [("MessagePort".into(), "int64_t".into())].into(),
             ..Default::default()
         },
         ..Default::default()

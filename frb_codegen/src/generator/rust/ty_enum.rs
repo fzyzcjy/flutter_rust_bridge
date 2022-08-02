@@ -1,3 +1,4 @@
+use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
@@ -6,7 +7,7 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
+    fn wire2api_body(&self) -> Acc<Option<String>> {
         let enu = self.ir.get(self.context.ir_file);
         let variants = enu
             .variants()
@@ -45,13 +46,16 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 }
             })
             .collect::<Vec<_>>();
-        Some(format!(
-            "match self.tag {{
-                {}
-                _ => unreachable!(),
-            }}",
-            variants.join("\n"),
-        ))
+        Acc {
+            io: Some(format!(
+                "match self.tag {{
+                    {}
+                    _ => unreachable!(),
+                }}",
+                variants.join("\n"),
+            )),
+            ..Default::default()
+        }
     }
 
     fn structs(&self) -> String {
@@ -59,7 +63,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         if !src.is_struct() {
             return "".to_owned();
         }
-        let wasm = self.context.wasm();
+        let wasm = false;
         let variant_structs = src
             .variants()
             .iter()
@@ -105,7 +109,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             }}
 
             {3}",
-            self.ir.rust_wire_type(self.context.wasm()),
+            self.ir.rust_wire_type(wasm),
             self.ir.name,
             union_fields.join("\n"),
             variant_structs.join("\n\n")
