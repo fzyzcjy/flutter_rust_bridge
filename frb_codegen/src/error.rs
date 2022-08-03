@@ -47,7 +47,7 @@ impl Error {
 
 impl From<anyhow::Error> for Error {
     fn from(e: anyhow::Error) -> Self {
-        if let Some(e) = e.downcast_ref::<Error>() {
+        if let Some(e) = e.downcast_ref::<Self>() {
             return e.clone();
         }
         Error::StringError(e.to_string())

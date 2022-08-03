@@ -34,7 +34,7 @@ pub fn ensure_tools_available(dart_root: &str) -> Result {
         return Err(e.into());
     }
 
-    if let Err(e) = repo.has_installed(
+    if let Err(e) = repo.has_specified(
         "ffigen",
         PackageManager::DevDependencies,
         &FFIGEN_REQUIREMENT,
