@@ -214,6 +214,16 @@ pub fn return_err() -> anyhow::Result<i32> {
     ))
 }
 
+pub struct VeryCustomStruct {
+    pub a: String,
+}
+
+pub fn return_err_2() -> anyhow::Result<VeryCustomStruct> {
+    Err(anyhow!(
+        "return_err() is called, thus deliberately return Err"
+    ))
+}
+
 pub fn return_panic() -> i32 {
     panic!("return_panic() is called, thus deliberately panic")
 }

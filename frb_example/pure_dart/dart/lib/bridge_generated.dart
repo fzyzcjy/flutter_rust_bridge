@@ -92,6 +92,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta;
 
+  Future<VeryCustomStruct> returnErr2({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnErr2ConstMeta;
+
   Future<int> returnPanic({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta;
@@ -766,6 +770,14 @@ class VecOfPrimitivePack {
   });
 }
 
+class VeryCustomStruct {
+  final String a;
+
+  VeryCustomStruct({
+    required this.a,
+  });
+}
+
 /// Simple enums.
 enum Weekdays {
   Monday,
@@ -1055,6 +1067,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_err",
+        argNames: [],
+      );
+
+  Future<VeryCustomStruct> returnErr2({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_return_err_2(port_),
+        parseSuccessData: _wire2api_very_custom_struct,
+        parseErrorData: null,
+        constMeta: kReturnErr2ConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnErr2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_err_2",
         argNames: [],
       );
 
@@ -3094,6 +3120,14 @@ VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
   );
 }
 
+VeryCustomStruct _wire2api_very_custom_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return VeryCustomStruct(
+    a: _wire2api_String(arr[0]),
+  );
+}
+
 Weekdays _wire2api_weekdays(dynamic raw) {
   return Weekdays.values[raw];
 }
@@ -3388,6 +3422,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _wire_return_errPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_err');
   late final _wire_return_err = _wire_return_errPtr.asFunction<void Function(int)>();
+
+  void wire_return_err_2(
+    int port_,
+  ) {
+    return _wire_return_err_2(
+      port_,
+    );
+  }
+
+  late final _wire_return_err_2Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_err_2');
+  late final _wire_return_err_2 = _wire_return_err_2Ptr.asFunction<void Function(int)>();
 
   void wire_return_panic(
     int port_,

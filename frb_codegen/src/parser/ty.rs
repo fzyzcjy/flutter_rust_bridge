@@ -197,7 +197,6 @@ impl<'a> TypeParser<'a> {
         if !p.generic.is_empty() {
             match ident_string.as_str() {
                 "SyncReturn" => {
-                    println!("SYNC RETURN CASE!");
                     // Special-case SyncReturn<Vec<u8>>. SyncReturn for any other type is not
                     // supported.
                     match first(&p.generic).unwrap() {
