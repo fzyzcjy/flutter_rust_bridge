@@ -233,11 +233,10 @@ fn ffigen(
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    let cmd = if guess_toolchain(dart_root).unwrap() == DartToolchain::Dart {
-        "dart run"
-    } else {
-        "flutter pub run"
-    };
+    let cmd = format!(
+        "{} run",
+        guess_toolchain(dart_root).unwrap().as_run_command()
+    );
     let res = call_shell(&format!(
         "cd {}{}{} ffigen --config \"{}\"",
         dart_root,
