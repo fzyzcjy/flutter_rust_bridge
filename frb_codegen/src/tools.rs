@@ -1,10 +1,18 @@
 use std::{collections::HashMap, convert::TryFrom, path::PathBuf, str::FromStr};
 
 use cargo_metadata::{Version, VersionReq};
+use lazy_static::lazy_static;
 use log::debug;
 use serde::Deserialize;
 
 use crate::{commands::call_shell, error::Error};
+
+lazy_static! {
+    pub(crate) static ref FFI_REQUIREMENT: VersionReq =
+        VersionReq::from_str(">= 2.0.1, < 3.0.0").unwrap();
+    pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
+        VersionReq::from_str(">= 6.0.1, < 7.0.0").unwrap();
+}
 
 #[derive(Debug, PartialEq)]
 pub(crate) enum DartToolchain {

@@ -7,7 +7,8 @@ use std::str::FromStr;
 use crate::error::{Error, Result};
 use crate::tools::DartRepository;
 use crate::tools::PackageManager;
-use cargo_metadata::VersionReq;
+use crate::tools::FFIGEN_REQUIREMENT;
+use crate::tools::FFI_REQUIREMENT;
 use log::{debug, info, warn};
 
 #[must_use]
@@ -26,23 +27,29 @@ pub fn ensure_tools_available(dart_root: &str) -> Result {
         return Err(Error::MissingExe(repo.toolchain.to_string()));
     }
 
-    let requirement = VersionReq::parse(">= 2.0.1, < 3.0.0").unwrap();
     if repo
-        .has_specified("ffi", PackageManager::Dependencies, &requirement)
+        .has_specified("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)
         .is_err()
     {}
     if repo
-        .has_installed("ffi", PackageManager::Dependencies, &requirement)
+        .has_installed("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)
         .is_err()
     {}
 
-    let requirement = VersionReq::parse(">= 6.0.1, < 7.0.0").unwrap();
     if repo
-        .has_specified("ffigen", PackageManager::DevDependencies, &requirement)
+        .has_specified(
+            "ffigen",
+            PackageManager::DevDependencies,
+            &FFIGEN_REQUIREMENT,
+        )
         .is_err()
     {}
     if repo
-        .has_installed("ffigen", PackageManager::DevDependencies, &requirement)
+        .has_installed(
+            "ffigen",
+            PackageManager::DevDependencies,
+            &FFIGEN_REQUIREMENT,
+        )
         .is_err()
     {}
 

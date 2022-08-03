@@ -1,17 +1,8 @@
-use std::collections::{HashMap, HashSet};
-use std::convert::TryFrom;
+use std::collections::HashSet;
 use std::fmt::Display;
 use std::fs;
 use std::hash::Hash;
-use std::path::{Path, PathBuf};
-use std::str::FromStr;
-
-use cargo_metadata::{Version, VersionReq};
-use log::debug;
-use serde::Deserialize;
-
-use crate::commands::call_shell;
-use crate::error::Error;
+use std::path::Path;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
