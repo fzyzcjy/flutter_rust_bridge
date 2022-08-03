@@ -223,27 +223,13 @@ impl DartRepository {
         } else {
             manifest_file.dependencies.unwrap_or_default()
         };
-        let version = deps.get(package);
-        let version = match version {
-            Some(v) => PackageVersionKind::try_from(v).ok(),
-            None => None,
-        };
-        match version {
-            // if user specifies an exact version, let's see if it matches
-            Some(PackageVersionKind::Exact(ref v)) if requirement.matches(v) => Ok(()),
-            // if user specifies a range of versions, we cannot check if it matches yet, but let's not fail early
-            Some(PackageVersionKind::Range(_)) => Ok(()),
-            None => Err(anyhow::Error::new(Error::MissingDep {
+        deps.get(package)
+            .map(|_| ())
+            .ok_or(anyhow::Error::new(Error::MissingDep {
                 name: package.to_string(),
                 manager,
                 requirement: requirement.to_string(),
-            })),
-            Some(PackageVersionKind::Exact(_)) => Err(anyhow::Error::new(Error::InvalidDep {
-                name: package.to_string(),
-                manager,
-                requirement: requirement.to_string(),
-            })),
-        }
+            }))
     }
     /// check whether a package has been correctly pinned in pubspec.lock
     pub(crate) fn has_installed(
