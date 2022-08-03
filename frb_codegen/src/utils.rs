@@ -117,6 +117,15 @@ pub enum PackageVersion {
     Multiline { version: Option<String> },
 }
 
+impl PackageVersion {
+    pub(crate) fn version(&self) -> Option<String> {
+        match self {
+            PackageVersion::Inline(v) => Some(v.clone()),
+            PackageVersion::Multiline { version } => version.clone(),
+        }
+    }
+}
+
 #[derive(Debug)]
 pub enum PackageVersionKind {
     Exact(Version),
@@ -126,19 +135,10 @@ pub enum PackageVersionKind {
 impl TryFrom<&PackageVersion> for PackageVersionKind {
     type Error = anyhow::Error;
     fn try_from(version: &PackageVersion) -> Result<Self, Self::Error> {
-        match version {
-            PackageVersion::Inline(ref version) => {
-                let version = PackageVersionKind::from_str(version)?;
-                Ok(version)
-            }
-            PackageVersion::Multiline { ref version } => {
-                if let Some(version) = version {
-                    let version = PackageVersionKind::from_str(version)?;
-                    return Ok(version);
-                }
-                Err(anyhow::anyhow!("no version found"))
-            }
+        if let Some(ref version) = version.version() {
+            return Self::from_str(version);
         }
+        Err(anyhow::anyhow!("no version found"))
     }
 }
 
