@@ -20,6 +20,62 @@ pub(crate) enum DartToolchain {
     Flutter,
 }
 
+#[derive(Debug)]
+pub(crate) struct DartRepository {
+    pub(crate) at: PathBuf,
+    pub(crate) toolchain: DartToolchain,
+}
+
+#[derive(Debug, Deserialize)]
+struct PubspecLock {
+    pub packages: HashMap<String, PubspecLockDependency>,
+}
+
+#[derive(Debug, Deserialize)]
+struct PubspecLockDependency {
+    pub dependency: String,
+    pub version: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(untagged)]
+pub enum PackageVersion {
+    Inline(String),
+    Multiline { version: Option<String> },
+}
+
+#[derive(Debug)]
+pub enum PackageVersionKind {
+    Exact(Version),
+    Range(VersionReq),
+}
+
+#[derive(Debug, PartialEq)]
+pub enum PackageManager {
+    Dependencies,
+    DevDependencies,
+}
+
+#[derive(Debug, Deserialize)]
+struct Pubspec {
+    pub dependencies: Option<HashMap<String, PackageVersion>>,
+    pub dev_dependencies: Option<HashMap<String, PackageVersion>>,
+}
+
+#[inline]
+fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
+    let file = PathBuf::from(at).join(filename);
+    if !file.exists() {
+        return Err(anyhow::Error::msg(format!(
+            "missing {} in {}",
+            filename, at
+        )));
+    }
+    let content = std::fs::read_to_string(file)
+        .map_err(|_| anyhow::Error::msg(format!("unable to read {} in {}", filename, at)))?;
+    Ok(content)
+}
+
 impl ToString for DartToolchain {
     fn to_string(&self) -> String {
         match self {
@@ -54,12 +110,6 @@ impl DartToolchain {
             DartToolchain::Flutter => call_shell("flutter --version").status.success(),
         }
     }
-}
-
-#[derive(Debug)]
-pub(crate) struct DartRepository {
-    pub(crate) at: PathBuf,
-    pub(crate) toolchain: DartToolchain,
 }
 
 impl FromStr for DartRepository {
@@ -197,24 +247,6 @@ impl DartRepository {
     }
 }
 
-#[derive(Debug, Deserialize)]
-struct PubspecLock {
-    pub packages: HashMap<String, PubspecLockDependency>,
-}
-
-#[derive(Debug, Deserialize)]
-struct PubspecLockDependency {
-    pub dependency: String,
-    pub version: String,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(untagged)]
-pub enum PackageVersion {
-    Inline(String),
-    Multiline { version: Option<String> },
-}
-
 impl PackageVersion {
     pub(crate) fn version(&self) -> Option<String> {
         match self {
@@ -222,12 +254,6 @@ impl PackageVersion {
             PackageVersion::Multiline { version } => version.clone(),
         }
     }
-}
-
-#[derive(Debug)]
-pub enum PackageVersionKind {
-    Exact(Version),
-    Range(VersionReq),
 }
 
 impl TryFrom<&PackageVersion> for PackageVersionKind {
@@ -271,12 +297,6 @@ impl ToString for PackageVersionKind {
     }
 }
 
-#[derive(Debug, PartialEq)]
-pub enum PackageManager {
-    Dependencies,
-    DevDependencies,
-}
-
 impl std::fmt::Display for PackageManager {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
@@ -284,26 +304,6 @@ impl std::fmt::Display for PackageManager {
             PackageManager::DevDependencies => write!(f, "dev_dependencies"),
         }
     }
-}
-
-#[derive(Debug, Deserialize)]
-struct Pubspec {
-    pub dependencies: Option<HashMap<String, PackageVersion>>,
-    pub dev_dependencies: Option<HashMap<String, PackageVersion>>,
-}
-
-#[inline]
-fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
-    let file = PathBuf::from(at).join(filename);
-    if !file.exists() {
-        return Err(anyhow::Error::msg(format!(
-            "missing {} in {}",
-            filename, at
-        )));
-    }
-    let content = std::fs::read_to_string(file)
-        .map_err(|_| anyhow::Error::msg(format!("unable to read {} in {}", filename, at)))?;
-    Ok(content)
 }
 
 #[cfg(test)]
