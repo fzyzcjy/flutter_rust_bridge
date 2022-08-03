@@ -1,3 +1,5 @@
+//! tools and environment checking
+
 use std::{collections::HashMap, convert::TryFrom, path::PathBuf, str::FromStr};
 
 use cargo_metadata::{Version, VersionReq};
@@ -14,29 +16,34 @@ lazy_static! {
         VersionReq::from_str(">= 6.0.1, < 7.0.0").unwrap();
 }
 
+/// represents dart or flutter toolchain
 #[derive(Debug, PartialEq)]
 pub(crate) enum DartToolchain {
     Dart,
     Flutter,
 }
 
+/// represents a dart / flutter repository
 #[derive(Debug)]
 pub(crate) struct DartRepository {
     pub(crate) at: PathBuf,
     pub(crate) toolchain: DartToolchain,
 }
 
+/// used to deserialize packages from pubspec.lock
 #[derive(Debug, Deserialize)]
 struct PubspecLock {
     pub packages: HashMap<String, PubspecLockDependency>,
 }
 
+/// represents a dependency from pubspec.lock
 #[derive(Debug, Deserialize)]
 struct PubspecLockDependency {
     pub dependency: String,
     pub version: String,
 }
 
+/// handle different formatting of dependencies version in pubspec.yaml
 #[derive(Debug, Deserialize)]
 #[serde(untagged)]
 pub enum PackageVersion {
@@ -44,18 +51,25 @@ pub enum PackageVersion {
     Multiline { version: Option<String> },
 }
 
+/// represents a package version kind
 #[derive(Debug)]
 pub enum PackageVersionKind {
+    /// exact dependency requirement
+    /// e.g. `1.2.3`
     Exact(Version),
+    /// a range of dependencies requirement
+    /// e.g. `^1.2.3`
     Range(VersionReq),
 }
 
+/// represents dependencies package manager
 #[derive(Debug, PartialEq)]
 pub enum PackageManager {
     Dependencies,
     DevDependencies,
 }
 
+/// used to deserialize `dependencies` and `dev_dependencies` from pubspec.yaml
 #[derive(Debug, Deserialize)]
 struct Pubspec {
     pub dependencies: Option<HashMap<String, PackageVersion>>,
