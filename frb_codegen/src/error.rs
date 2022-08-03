@@ -21,17 +21,17 @@ pub enum Error {
     MissingExe(String),
     #[error("{0}")]
     StringError(String),
-    #[error("please add {name} to your {context}. (version {version})")]
+    #[error("please add {name} to your {manager}. (version {requirement})")]
     MissingDep {
         name: String,
-        context: PackageManager,
-        version: String,
+        manager: PackageManager,
+        requirement: String,
     },
-    #[error("please update version of {name} in your {context}. (version {version})")]
+    #[error("please update version of {name} in your {manager}. (version {requirement})")]
     InvalidDep {
         name: String,
-        context: PackageManager,
-        version: String,
+        manager: PackageManager,
+        requirement: String,
     },
 }
 

@@ -10,6 +10,9 @@ use cargo_metadata::{Version, VersionReq};
 use log::debug;
 use serde::Deserialize;
 
+use crate::commands::call_shell;
+use crate::error::Error;
+
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
         .strip_prefix(Path::new(crate_path).join("src"))
@@ -96,6 +99,27 @@ pub(crate) enum DartToolchain {
     Flutter,
 }
 
+impl ToString for DartToolchain {
+    fn to_string(&self) -> String {
+        match self {
+            DartToolchain::Dart => "dart",
+            DartToolchain::Flutter => "flutter",
+        }
+        .to_string()
+    }
+}
+
+impl DartToolchain {
+    #[inline]
+    pub fn manifest_filename() -> &'static str {
+        "pubspec.yaml"
+    }
+    #[inline]
+    pub fn lock_filename() -> &'static str {
+        "pubspec.lock"
+    }
+}
+
 impl DartToolchain {
     pub(crate) fn as_run_command(&self) -> &'static str {
         match self {
@@ -103,11 +127,164 @@ impl DartToolchain {
             DartToolchain::Flutter => "flutter pub",
         }
     }
+    pub(crate) fn available(&self) -> bool {
+        match self {
+            DartToolchain::Dart => call_shell("dart --version").status.success(),
+            DartToolchain::Flutter => call_shell("flutter --version").status.success(),
+        }
+    }
+}
+
+#[derive(Debug)]
+pub(crate) struct DartRepository {
+    pub(crate) at: PathBuf,
+    pub(crate) toolchain: DartToolchain,
+}
+
+impl FromStr for DartRepository {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        debug!("Guessing toolchain the runner is run into");
+        let filename = DartToolchain::lock_filename();
+        let lock_file = read_file(s, filename)?;
+        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file)
+            .map_err(|_| anyhow::Error::msg(format!("unable to parse {} in {}", filename, s)))?;
+        if lock_file
+            .packages
+            .contains_key(&DartToolchain::Flutter.to_string())
+        {
+            return Ok(DartRepository {
+                at: PathBuf::from(s),
+                toolchain: DartToolchain::Flutter,
+            });
+        }
+        Ok(DartRepository {
+            at: PathBuf::from(s),
+            toolchain: DartToolchain::Dart,
+        })
+    }
+}
+
+impl DartRepository {
+    pub(crate) fn toolchain_available(&self) -> bool {
+        self.toolchain.available()
+    }
+    pub(crate) fn has_specified(
+        &self,
+        package: &str,
+        manager: PackageManager,
+        requirement: &VersionReq,
+    ) -> anyhow::Result<()> {
+        let at = self.at.to_str().unwrap();
+        debug!("Checking presence of {} in {} at {}", package, manager, at);
+        let manifest_file = read_file(at, DartToolchain::manifest_filename())?;
+        let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|_| {
+            anyhow::Error::msg(format!(
+                "unable to parse {} in {}",
+                DartToolchain::manifest_filename(),
+                at
+            ))
+        })?;
+        let deps = if manager == PackageManager::DevDependencies {
+            manifest_file.dev_dependencies.unwrap_or_default()
+        } else {
+            manifest_file.dependencies.unwrap_or_default()
+        };
+        let version = deps.get(package);
+        let version = match version {
+            Some(v) => PackageVersionKind::try_from(v).ok(),
+            None => None,
+        };
+        match version {
+            // if user specifies an exact version, let's see if it matches
+            Some(PackageVersionKind::Exact(ref v)) if requirement.matches(v) => Ok(()),
+            // if user specifies a range of versions, we cannot check if it matches yet, but let's not fail early
+            Some(PackageVersionKind::Range(_)) => Ok(()),
+            None => Err(anyhow::Error::new(Error::MissingDep {
+                name: package.to_string(),
+                manager,
+                requirement: requirement.to_string(),
+            })),
+            Some(PackageVersionKind::Exact(_)) => Err(anyhow::Error::new(Error::InvalidDep {
+                name: package.to_string(),
+                manager,
+                requirement: requirement.to_string(),
+            })),
+        }
+    }
+    pub(crate) fn has_installed(
+        &self,
+        package: &str,
+        manager: PackageManager,
+        requirement: &VersionReq,
+    ) -> anyhow::Result<()> {
+        let at = self.at.to_str().unwrap();
+        debug!("Checking presence of {} in {} at {}", package, manager, at);
+        let lock_file = read_file(at, DartToolchain::lock_filename())?;
+        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|_| {
+            anyhow::Error::msg(format!(
+                "unable to parse {} in {}",
+                DartToolchain::lock_filename(),
+                at
+            ))
+        })?;
+        let dependency = lock_file.packages.get(package);
+        let version = match dependency {
+            Some(dependency) => {
+                if (manager == PackageManager::Dependencies
+                    && dependency.dependency != "direct main")
+                    || (manager == PackageManager::DevDependencies
+                        && dependency.dependency != "direct dev")
+                {
+                    return Err(anyhow::Error::new(Error::InvalidDep {
+                        name: package.to_string(),
+                        manager,
+                        requirement: requirement.to_string(),
+                    }));
+                }
+                PackageVersionKind::try_from(dependency).map_err(|_| {
+                    anyhow::Error::msg(format!(
+                        "unable to parse {} version in {}",
+                        package,
+                        DartToolchain::lock_filename(),
+                    ))
+                })?
+            }
+            None => {
+                return Err(anyhow::Error::new(Error::MissingDep {
+                    name: package.to_string(),
+                    manager,
+                    requirement: requirement.to_string(),
+                }))
+            }
+        };
+
+        match version {
+            PackageVersionKind::Exact(ref v) if requirement.matches(v) => Ok(()),
+            PackageVersionKind::Range(_) => Err(anyhow::Error::new(Error::StringError(format!(
+                "unexpected version range for {} in {}",
+                package,
+                DartToolchain::lock_filename()
+            )))),
+            _ => Err(anyhow::Error::new(Error::InvalidDep {
+                name: package.to_string(),
+                manager,
+                requirement: requirement.to_string(),
+            })),
+        }
+    }
 }
 
 #[derive(Debug, Deserialize)]
 struct PubspecLock {
-    pub packages: HashMap<String, serde_yaml::Value>,
+    pub packages: HashMap<String, PubspecLockDependency>,
+}
+
+#[derive(Debug, Deserialize)]
+struct PubspecLockDependency {
+    pub dependency: String,
+    pub version: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -139,6 +316,13 @@ impl TryFrom<&PackageVersion> for PackageVersionKind {
             return Self::from_str(version);
         }
         Err(anyhow::anyhow!("no version found"))
+    }
+}
+
+impl TryFrom<&PubspecLockDependency> for PackageVersionKind {
+    type Error = anyhow::Error;
+    fn try_from(dependency: &PubspecLockDependency) -> Result<Self, Self::Error> {
+        Self::from_str(&dependency.version)
     }
 }
 
@@ -201,46 +385,16 @@ fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
     Ok(content)
 }
 
-pub(crate) fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> {
-    debug!("Guessing toolchain the runner is run into");
-    let lock_file = read_file(dart_root, "pubspec.lock")?;
-    let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|_| {
-        anyhow::Error::msg(format!("unable to parse pubspec.lock in {}", dart_root))
-    })?;
-    if lock_file.packages.contains_key("flutter") {
-        return Ok(DartToolchain::Flutter);
-    }
-    Ok(DartToolchain::Dart)
-}
-
-pub(crate) fn ensure_dependencies(
-    dart_root: &str,
-    package: &str,
-    manager: PackageManager,
-) -> anyhow::Result<Option<PackageVersionKind>> {
-    debug!(
-        "Checking presence of {} in {} at {}",
-        package, manager, dart_root
-    );
-    let manifest_file = read_file(dart_root, "pubspec.yaml")?;
-    let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|_| {
-        anyhow::Error::msg(format!("unable to parse pubspec.yaml in {}", dart_root))
-    })?;
-    let deps = if manager == PackageManager::DevDependencies {
-        manifest_file.dev_dependencies.unwrap_or_default()
-    } else {
-        manifest_file.dependencies.unwrap_or_default()
-    };
-    let version = deps.get(package);
-    let version = version.map(|v| PackageVersionKind::try_from(v).unwrap());
-    Ok(version)
-}
-
 #[cfg(test)]
 mod tests {
-    use std::path::{Path, PathBuf};
+    use std::{
+        path::{Path, PathBuf},
+        str::FromStr,
+    };
 
-    use super::{guess_toolchain, DartToolchain};
+    use crate::utils::DartRepository;
+
+    use super::DartToolchain;
     use lazy_static::lazy_static;
 
     lazy_static! {
@@ -252,11 +406,11 @@ mod tests {
     }
 
     fn guess_toolchain_base(path: &Path, expect_toolchain: DartToolchain) {
-        let toolchain = guess_toolchain(&path.to_string_lossy()).expect(&format!(
+        let repo = DartRepository::from_str(&path.to_string_lossy()).expect(&format!(
             "can get toolchain from {}",
             path.to_string_lossy()
         ));
-        assert_eq!(toolchain, expect_toolchain);
+        assert_eq!(repo.toolchain, expect_toolchain);
     }
 
     #[test]
