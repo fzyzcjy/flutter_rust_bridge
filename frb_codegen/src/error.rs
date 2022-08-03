@@ -4,7 +4,7 @@ use crate::tools::PackageManager;
 
 pub type Result = std::result::Result<(), Error>;
 
-#[derive(Error, Debug)]
+#[derive(Error, Debug, Clone)]
 pub enum Error {
     #[error("rustfmt failed: {0}")]
     Rustfmt(String),
@@ -42,5 +42,14 @@ impl Error {
 
     pub fn string(msg: String) -> Self {
         Self::StringError(msg)
+    }
+}
+
+impl From<anyhow::Error> for Error {
+    fn from(e: anyhow::Error) -> Self {
+        if let Some(e) = e.downcast_ref::<Error>() {
+            return e.clone();
+        }
+        Error::StringError(e.to_string())
     }
 }

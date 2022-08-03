@@ -71,7 +71,6 @@ impl From<&DartDependencyVersion> for CargoDependencyVersion {
     ///
     /// see module level comments for more informations.
     fn from(v: &DartDependencyVersion) -> Self {
-        println!("{:#?}", v);
         if v.0.starts_with('^') {
             let version = Version::parse(v.0.split_at(1).1).unwrap();
 
@@ -118,7 +117,7 @@ pub enum PackageVersionKind {
 }
 
 /// represents dependencies package manager
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PackageManager {
     Dependencies,
     DevDependencies,
