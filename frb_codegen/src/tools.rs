@@ -43,7 +43,17 @@ struct PubspecLockDependency {
     pub version: String,
 }
 
-/// handle different formatting of dependencies version in pubspec.yaml
+/// extract dependency version in pubspec.yaml, no matter its format
+/// 
+/// e.g.
+/// ```yaml
+/// freezed: ^2.0.1
+/// ```
+/// or
+/// ```yaml
+/// freezed:
+///   version: ^2.0.1
+/// ```
 #[derive(Debug, Deserialize)]
 #[serde(untagged)]
 pub enum PackageVersion {
@@ -152,9 +162,11 @@ impl FromStr for DartRepository {
 }
 
 impl DartRepository {
+    /// check whether the toolchain is available from the CLI
     pub(crate) fn toolchain_available(&self) -> bool {
         self.toolchain.available()
     }
+    /// check whether a package has been correctly specified in pubspec.yaml
     pub(crate) fn has_specified(
         &self,
         package: &str,
@@ -198,6 +210,7 @@ impl DartRepository {
             })),
         }
     }
+    /// check whether a package has been correctly pinned in pubspec.lock
     pub(crate) fn has_installed(
         &self,
         package: &str,
