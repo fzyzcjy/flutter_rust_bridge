@@ -182,7 +182,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.38.2"
+    version: "1.39.0"
   freezed:
     dependency: "direct dev"
     description:
