@@ -141,15 +141,30 @@
 <ul>
 <li><a href="https://lib.rs/crates/flutter_rust_bridge_codegen"><code>flutter_rust_bridge_codegen</code></a>, the core codegen for Rust-Dart glue code</li>
 <li><a href="https://pub.dev/packages/ffigen"><code>ffigen</code></a>, to generate Dart code from C headers</li>
-<li><a href="https://lib.rs/crates/cargo-xcode"><code>cargo-xcode</code></a>, to generate Xcode projects for iOS and MacOS</li>
-<li>A working installation of LLVM, see <a href="https://pub.dev/packages/ffigen#installing-llvm">Installing LLVM</a></li>
+<li>A working installation of LLVM, see <a href="https://pub.dev/packages/ffigen#installing-llvm">Installing LLVM</a>, used by <code>ffigen</code></li>
+<li>(Optional) <a href="https://lib.rs/crates/cargo-xcode"><code>cargo-xcode</code></a>, if you want to generate Xcode projects for iOS and MacOS</li>
 </ul>
 <p>An easy way to install most of these dependencies is to run:</p>
+<ul>
+<li>
+<p>dart project</p>
 <pre><code class="language-bash">cargo install flutter_rust_bridge_codegen
-dart pub global activate ffigen
+dart pub add --dev ffigen &amp;&amp; dart pub add ffi
 # if building for iOS or MacOS
 cargo install cargo-xcode
 </code></pre>
+</li>
+<li>
+<p>flutter project</p>
+<pre><code class="language-bash">cargo install flutter_rust_bridge_codegen
+flutter pub add --dev ffigen &amp;&amp; flutter pub add ffi
+# if building for iOS or MacOS
+cargo install cargo-xcode
+</code></pre>
+</li>
+</ul>
+<p>Alternatively, each of these dependencies may provide prebuilt binaries. Check with
+your package manager and review them individually.</p>
 <h2 id="dart-dependencies"><a class="header" href="#dart-dependencies">Dart dependencies</a></h2>
 <p>On the Dart side, <code>flutter_rust_bridge</code> is the required runtime component of
 <code>flutter_rust_bridge_codegen</code>. If you plan to use enum structs in Rust, the
@@ -172,11 +187,6 @@ flutter pub add freezed_annotation
 <pre><code class="language-diff">+[dependencies]
 +flutter_rust_bridge = &quot;1&quot;
 </code></pre>
-<blockquote>
-<p><strong>Note</strong> <br />
-If you wish to return a <code>Result</code>, keep in mind that this library can only run codegen
-for <a href="https://docs.rs/anyhow/latest/anyhow/type.Result.html"><code>anyhow::Result</code></a>.</p>
-</blockquote>
 
                     </main>
 
