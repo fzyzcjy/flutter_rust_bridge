@@ -177,8 +177,6 @@ jobs:
       - name: Install released version of codegen
         run: cargo install flutter_rust_bridge_codegen
 
-      - uses: dart-lang/setup-dart@v1
-
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)
         if: ${{ matrix.os.family == 'linux' }}

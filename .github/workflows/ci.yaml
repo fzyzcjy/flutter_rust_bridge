@@ -562,8 +562,6 @@ jobs:
       
       - uses: actions/checkout@v2
 
-      - uses: dart-lang/setup-dart@v1
-
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)
         if: ${{ matrix.os.family == 'linux' }}
