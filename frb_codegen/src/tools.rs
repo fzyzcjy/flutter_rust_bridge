@@ -47,6 +47,16 @@ struct PubspecLockDependency {
     pub version: DartDependencyVersion,
 }
 
+impl PubspecLockDependency {
+    pub(crate) fn installed_in(&self) -> Option<PackageManager> {
+        match self.dependency.as_str() {
+            "direct dev" => Some(PackageManager::DevDependencies),
+            "direct main" => Some(PackageManager::Dependencies),
+            _ => None,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Deserialize)]
 #[serde(transparent)]
 pub struct DartDependencyVersion(String);
@@ -223,13 +233,13 @@ impl DartRepository {
         } else {
             manifest_file.dependencies.unwrap_or_default()
         };
-        deps.get(package)
-            .map(|_| ())
-            .ok_or(anyhow::Error::new(Error::MissingDep {
+        deps.get(package).map(|_| ()).ok_or_else(|| {
+            anyhow::Error::new(Error::MissingDep {
                 name: package.to_string(),
                 manager,
                 requirement: requirement.to_string(),
-            }))
+            })
+        })
     }
     /// check whether a package has been correctly pinned in pubspec.lock
     pub(crate) fn has_installed(
@@ -251,11 +261,8 @@ impl DartRepository {
         let dependency = lock_file.packages.get(package);
         let version = match dependency {
             Some(dependency) => {
-                if (manager == PackageManager::Dependencies
-                    && dependency.dependency != "direct main")
-                    || (manager == PackageManager::DevDependencies
-                        && dependency.dependency != "direct dev")
-                {
+                let pm = dependency.installed_in();
+                if pm.is_none() || (pm.unwrap() != manager) {
                     return Err(anyhow::Error::new(Error::InvalidDep {
                         name: package.to_string(),
                         manager,
