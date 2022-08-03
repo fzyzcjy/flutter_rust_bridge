@@ -1,9 +1,6 @@
 ## 1.39.0
 
 * Avoid global ffigen #605 (thanks @Roms1383)
-
-## 1.38.3
-
 * Code cleanup #603 (thanks @Roms1383)
 
 ## 1.38.2
