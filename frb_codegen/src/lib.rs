@@ -32,7 +32,8 @@ mod utils;
 use error::*;
 
 pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
-    ensure_tools_available()?;
+    let dart_root = config.dart_root_or_default();
+    ensure_tools_available(&dart_root)?;
 
     info!("Picked config: {:?}", config);
 
@@ -68,20 +69,23 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
-            commands::bindgen_rust_to_dart(BindgenRustToDartArg {
-                rust_crate_dir: &config.rust_crate_dir,
-                c_output_path: temp_bindgen_c_output_file
-                    .path()
-                    .as_os_str()
-                    .to_str()
-                    .unwrap(),
-                dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-                dart_class_name: &config.dart_wire_class_name(),
-                c_struct_names: ir_file.get_c_struct_names(),
-                exclude_symbols,
-                llvm_install_path: &config.llvm_path[..],
-                llvm_compiler_opts: &config.llvm_compiler_opts,
-            })
+            commands::bindgen_rust_to_dart(
+                BindgenRustToDartArg {
+                    rust_crate_dir: &config.rust_crate_dir,
+                    c_output_path: temp_bindgen_c_output_file
+                        .path()
+                        .as_os_str()
+                        .to_str()
+                        .unwrap(),
+                    dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+                    dart_class_name: &config.dart_wire_class_name(),
+                    c_struct_names: ir_file.get_c_struct_names(),
+                    exclude_symbols,
+                    llvm_install_path: &config.llvm_path[..],
+                    llvm_compiler_opts: &config.llvm_compiler_opts,
+                },
+                &dart_root,
+            )
         },
     )?;
 
@@ -138,9 +142,8 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         )?;
     }
 
-    let dart_root = &config.dart_root;
     if needs_freezed && config.build_runner {
-        let dart_root = dart_root.as_ref().ok_or_else(|| {
+        let dart_root = config.dart_root.as_ref().ok_or_else(|| {
             Error::str(
                 "build_runner configured to run, but Dart root could not be inferred.
         Please specify --dart-root, or disable build_runner with --no-build-runner.",

@@ -37,9 +37,6 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
 
-      - name: Install ffigen
-        run: dart pub global activate ffigen ^6.0.1
-
       - name: Install dart dependencies (single block)
         working-directory: ./frb_example/pure_dart/dart
         run: dart pub get
@@ -335,8 +332,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: dart-lang/setup-dart@v1
-      - name: Install ffigen
-        run: dart pub global activate ffigen ^6.0.1
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
       - name: Build codegen
@@ -403,8 +398,6 @@ jobs:
           components: rustfmt, clippy
 
       - uses: dart-lang/setup-dart@v1
-      - name: Install ffigen
-        run: dart pub global activate ffigen ^6.0.1
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
 
@@ -563,17 +556,28 @@ jobs:
     runs-on: ${{ matrix.os.image }}
 
     steps:
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      
       - uses: actions/checkout@v2
-
-      - uses: dart-lang/setup-dart@v1
-
-      - name: Install dart global dependency
-        run: dart pub global activate ffigen ^6.0.1
 
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)
         if: ${{ matrix.os.family == 'linux' }}
         run: sudo apt update && sudo apt-get install -y libclang-dev
+
+      - name: Install dart dependencies (single block)
+        working-directory: ./frb_example/pure_dart/dart
+        run: dart pub get
+
+      - name: Install dart dependencies (multi blocks)
+        working-directory: ./frb_example/pure_dart_multi/dart
+        run: dart pub get
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
 
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)

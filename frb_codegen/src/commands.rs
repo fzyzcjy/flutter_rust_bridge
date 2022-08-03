@@ -1,13 +1,12 @@
-use std::collections::HashMap;
 use std::fmt::Write;
 use std::path::Path;
-use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
 
 use crate::error::{Error, Result};
+use crate::utils::PackageManager;
+use crate::utils::{ensure_dependencies, guess_toolchain, DartToolchain};
 use log::{debug, info, warn};
-use serde::Deserialize;
 
 #[must_use]
 fn call_shell(cmd: &str) -> Output {
@@ -18,11 +17,32 @@ fn call_shell(cmd: &str) -> Output {
     execute_command("sh", &["-c", cmd], None)
 }
 
-pub fn ensure_tools_available() -> Result {
-    let output = call_shell("dart pub global list");
-    let output = String::from_utf8_lossy(&output.stdout);
-    if !output.contains("ffigen") {
-        return Err(Error::MissingExe(String::from("ffigen")));
+pub fn ensure_tools_available(dart_root: &str) -> Result {
+    let toolchain = guess_toolchain(dart_root).unwrap();
+    if toolchain == DartToolchain::Dart && !call_shell("dart --version").status.success() {
+        return Err(Error::MissingExe("dart".to_string()));
+    } else if toolchain == DartToolchain::Flutter
+        && !call_shell("flutter --version").status.success()
+    {
+        return Err(Error::MissingExe("flutter".to_string()));
+    }
+
+    let ffi = ensure_dependencies(dart_root, "ffi", PackageManager::Dependencies).unwrap();
+    if ffi.is_none() {
+        return Err(Error::MissingDep {
+            name: "ffi".into(),
+            context: PackageManager::Dependencies,
+            version: "^2.0.1".into(),
+        });
+    }
+
+    let ffigen = ensure_dependencies(dart_root, "ffigen", PackageManager::DevDependencies).unwrap();
+    if ffigen.is_none() {
+        return Err(Error::MissingDep {
+            name: "ffigen".into(),
+            context: PackageManager::DevDependencies,
+            version: "^6.0.1".into(),
+        });
     }
 
     Ok(())
@@ -39,7 +59,10 @@ pub(crate) struct BindgenRustToDartArg<'a> {
     pub llvm_compiler_opts: &'a str,
 }
 
-pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<()> {
+pub(crate) fn bindgen_rust_to_dart(
+    arg: BindgenRustToDartArg,
+    dart_root: &str,
+) -> anyhow::Result<()> {
     cbindgen(
         arg.rust_crate_dir,
         arg.c_output_path,
@@ -52,6 +75,7 @@ pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<
         arg.dart_class_name,
         arg.llvm_install_path,
         arg.llvm_compiler_opts,
+        dart_root,
     )
 }
 
@@ -161,6 +185,7 @@ fn ffigen(
     dart_class_name: &str,
     llvm_path: &[String],
     llvm_compiler_opts: &str,
+    dart_root: &str,
 ) -> anyhow::Result<()> {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
@@ -208,9 +233,15 @@ fn ffigen(
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    // NOTE please install ffigen globally first: `dart pub global activate ffigen`
+    let cmd = format!(
+        "{} run",
+        guess_toolchain(dart_root).unwrap().as_run_command()
+    );
     let res = call_shell(&format!(
-        "dart pub global run ffigen --config \"{}\"",
+        "cd {}{}{} ffigen --config \"{}\"",
+        dart_root,
+        if cfg!(windows) { "; " } else { " && " },
+        cmd,
         config_file.path().to_string_lossy()
     ));
     if !res.status.success() {
@@ -279,91 +310,4 @@ pub fn build_runner(dart_root: &str) -> Result {
         )));
     }
     Ok(())
-}
-
-fn guess_toolchain(dart_root: &str) -> anyhow::Result<DartToolchain> {
-    debug!("Guessing toolchain the runner is run into");
-    let lock_file = PathBuf::from(dart_root).join("pubspec.lock");
-    if !lock_file.exists() {
-        return Err(anyhow::Error::msg(format!(
-            "missing pubspec.lock in {}",
-            dart_root
-        )));
-    }
-    let lock_file = std::fs::read_to_string(lock_file)
-        .map_err(|_| anyhow::Error::msg(format!("unable to read pubspec.lock in {}", dart_root)))?;
-    let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|_| {
-        anyhow::Error::msg(format!("unable to parse pubspec.lock in {}", dart_root))
-    })?;
-    if lock_file.packages.contains_key("flutter") {
-        return Ok(DartToolchain::Flutter);
-    }
-    Ok(DartToolchain::Dart)
-}
-
-#[derive(Debug, PartialEq)]
-enum DartToolchain {
-    Dart,
-    Flutter,
-}
-
-impl DartToolchain {
-    fn as_run_command(&self) -> &'static str {
-        match self {
-            DartToolchain::Dart => "dart",
-            DartToolchain::Flutter => "flutter pub",
-        }
-    }
-}
-
-#[derive(Debug, Deserialize)]
-struct PubspecLock {
-    pub packages: HashMap<String, serde_yaml::Value>,
-}
-
-#[cfg(test)]
-mod tests {
-    use std::path::{Path, PathBuf};
-
-    use crate::commands::{guess_toolchain, DartToolchain};
-    use lazy_static::lazy_static;
-
-    lazy_static! {
-        static ref FRB_EXAMPLES_FOLDER: PathBuf = {
-            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-                .join("..")
-                .join("frb_example")
-        };
-    }
-
-    fn guess_toolchain_base(path: &Path, expect_toolchain: DartToolchain) {
-        let toolchain = guess_toolchain(&path.to_string_lossy()).expect(&format!(
-            "can get toolchain from {}",
-            path.to_string_lossy()
-        ));
-        assert_eq!(toolchain, expect_toolchain);
-    }
-
-    #[test]
-    fn guess_dart_toolchain() {
-        guess_toolchain_base(
-            FRB_EXAMPLES_FOLDER.join("pure_dart").join("dart").as_path(),
-            DartToolchain::Dart,
-        );
-        guess_toolchain_base(
-            FRB_EXAMPLES_FOLDER
-                .join("pure_dart_multi")
-                .join("dart")
-                .as_path(),
-            DartToolchain::Dart,
-        );
-    }
-
-    #[test]
-    fn guess_flutter_toolchain() {
-        guess_toolchain_base(
-            FRB_EXAMPLES_FOLDER.join("with_flutter").as_path(),
-            DartToolchain::Flutter,
-        );
-    }
 }
