@@ -19,15 +19,13 @@ fn call_shell(cmd: &str) -> Output {
 
 pub fn ensure_tools_available(dart_root: &str) -> Result {
     let toolchain = guess_toolchain(dart_root).unwrap();
-    match toolchain {
-        DartToolchain::Dart if !call_shell("dart --version").status.success() => {
-            return Err(Error::MissingExe("dart".to_string()));
-        }
-        DartToolchain::Flutter if !call_shell("flutter --version").status.success() => {
-            return Err(Error::MissingExe("flutter".to_string()));
-        }
-        _ => {}
-    };
+    if toolchain == DartToolchain::Dart && !call_shell("dart --version").status.success() {
+        return Err(Error::MissingExe("dart".to_string()));
+    } else if toolchain == DartToolchain::Flutter
+        && !call_shell("flutter --version").status.success()
+    {
+        return Err(Error::MissingExe("flutter".to_string()));
+    }
 
     let ffi = ensure_dependencies(dart_root, "ffi", PackageManager::Dependencies).unwrap();
     if ffi.is_none() {
