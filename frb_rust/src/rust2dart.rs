@@ -100,3 +100,13 @@ impl<T: IntoDart> StreamSink<T> {
         self.rust2dart.close_stream()
     }
 }
+
+pub trait BoxIntoDart {
+    fn box_into_dart(self: Box<Self>) -> DartCObject;
+}
+
+impl<T: IntoDart> BoxIntoDart for T {
+    fn box_into_dart(self: Box<T>) -> DartCObject {
+        self.into_dart()
+    }
+}
