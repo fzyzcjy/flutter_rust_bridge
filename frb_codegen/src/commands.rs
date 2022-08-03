@@ -5,8 +5,8 @@ use std::process::Output;
 use std::str::FromStr;
 
 use crate::error::{Error, Result};
-use crate::utils::DartRepository;
-use crate::utils::PackageManager;
+use crate::tools::DartRepository;
+use crate::tools::PackageManager;
 use cargo_metadata::VersionReq;
 use log::{debug, info, warn};
 

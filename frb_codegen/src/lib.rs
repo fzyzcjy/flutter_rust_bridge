@@ -11,6 +11,7 @@ use crate::others::*;
 use crate::utils::*;
 
 mod config;
+mod tools;
 
 pub use crate::commands::ensure_tools_available;
 pub use crate::config::parse as config_parse;

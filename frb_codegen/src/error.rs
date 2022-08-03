@@ -1,6 +1,6 @@
 use thiserror::Error;
 
-use crate::utils::PackageManager;
+use crate::tools::PackageManager;
 
 pub type Result = std::result::Result<(), Error>;
 
