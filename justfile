@@ -36,6 +36,10 @@ lint:
     dart format --fix -l {{line_length}} {{frb_pure}}
     dart format --fix -l {{line_length}} {{frb_pure_multi}}
     dart format --fix -l {{line_length}} {{frb_flutter}}
+    cd {{frb_pure}}/rust && cargo fmt
+    cd {{frb_pure_multi}}/rust && cargo fmt
+    cd {{frb_flutter}}/rust && cargo fmt
+    cd frb_codegen && cargo fmt
 
 alias t := test
 test: test-pure test-integration
@@ -63,6 +67,7 @@ check:
     cd {{frb_pure_multi}}/rust && cargo clippy
     cd {{frb_flutter}} && flutter pub get && flutter analyze
     cd {{frb_flutter}}/rust && cargo clippy
+    cd frb_codegen && cargo clippy
 
 refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)

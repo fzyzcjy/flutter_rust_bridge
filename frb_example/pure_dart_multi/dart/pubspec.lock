@@ -99,6 +99,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  cli_util:
+    dependency: transitive
+    description:
+      name: cli_util
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.5"
   code_builder:
     dependency: transitive
     description:
@@ -141,6 +148,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.3"
+  ffi:
+    dependency: "direct main"
+    description:
+      name: ffi
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
+  ffigen:
+    dependency: "direct dev"
+    description:
+      name: ffigen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.1"
   file:
     dependency: transitive
     description:
@@ -161,7 +182,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.38.2"
+    version: "1.39.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -309,6 +330,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   shelf:
     dependency: transitive
     description:
