@@ -35,6 +35,7 @@ cargo_metadata = "0.14.1"
 enum_dispatch = "0.3.8"
 thiserror = "1"
 cbindgen = "0.24"
+semver = "1.0.12"
 
 [profile.release]
 strip = "debuginfo"

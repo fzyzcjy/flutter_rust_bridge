@@ -1,4 +1,8 @@
 //! tools and environment checking
+//!
+//! please note that in the future this can probably be greatly simplified,
+//! and beware that Cargo and Dart interpret semantic versioning differently :
+//! see this [discussion](https://github.com/fzyzcjy/flutter_rust_bridge/pull/605#discussion_r935180160) for more informations.
 
 use std::{collections::HashMap, convert::TryFrom, path::PathBuf, str::FromStr};
 
@@ -11,9 +15,9 @@ use crate::{commands::call_shell, error::Error};
 
 lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
-        VersionReq::from_str(">= 2.0.1, < 3.0.0").unwrap();
+        VersionReq::parse(">= 2.0.1, < 3.0.0").unwrap();
     pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
-        VersionReq::from_str(">= 6.0.1, < 7.0.0").unwrap();
+        VersionReq::parse(">= 6.0.1, < 7.0.0").unwrap();
 }
 
 /// represents dart or flutter toolchain
@@ -40,11 +44,40 @@ struct PubspecLock {
 #[derive(Debug, Deserialize)]
 struct PubspecLockDependency {
     pub dependency: String,
-    pub version: String,
+    pub version: DartDependencyVersion,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+#[serde(transparent)]
+pub struct DartDependencyVersion(String);
+
+#[derive(Debug, Clone)]
+pub struct CargoDependencyVersion(String);
+
+impl From<&DartDependencyVersion> for CargoDependencyVersion {
+    /// convert from a dependency version in Dart syntax to Cargo syntax (to be used with VersionReq later on)
+    ///
+    /// be careful because this is where you can shoot yourself in the foot :)
+    ///
+    /// see module level comments for more informations.
+    fn from(v: &DartDependencyVersion) -> Self {
+        println!("{:#?}", v);
+        if v.0.starts_with('^') {
+            let version = Version::parse(v.0.split_at(1).1).unwrap();
+
+            if version.major > 0 {
+                return CargoDependencyVersion(version.to_string());
+            }
+            return CargoDependencyVersion(
+                version.to_string().rsplit_once('.').unwrap().0.to_string(),
+            );
+        }
+        CargoDependencyVersion(v.0.clone())
+    }
 }
 
 /// extract dependency version in pubspec.yaml, no matter its format
-/// 
+///
 /// e.g.
 /// ```yaml
 /// freezed: ^2.0.1
@@ -57,12 +90,14 @@ struct PubspecLockDependency {
 #[derive(Debug, Deserialize)]
 #[serde(untagged)]
 pub enum PackageVersion {
-    Inline(String),
-    Multiline { version: Option<String> },
+    Inline(DartDependencyVersion),
+    Multiline {
+        version: Option<DartDependencyVersion>,
+    },
 }
 
 /// represents a package version kind
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum PackageVersionKind {
     /// exact dependency requirement
     /// e.g. `1.2.3`
@@ -275,7 +310,7 @@ impl DartRepository {
 }
 
 impl PackageVersion {
-    pub(crate) fn version(&self) -> Option<String> {
+    pub(crate) fn version(&self) -> Option<DartDependencyVersion> {
         match self {
             PackageVersion::Inline(v) => Some(v.clone()),
             PackageVersion::Multiline { version } => version.clone(),
@@ -287,7 +322,7 @@ impl TryFrom<&PackageVersion> for PackageVersionKind {
     type Error = anyhow::Error;
     fn try_from(version: &PackageVersion) -> Result<Self, Self::Error> {
         if let Some(ref version) = version.version() {
-            return Self::from_str(version);
+            return Self::try_from(version);
         }
         Err(anyhow::anyhow!("no version found"))
     }
@@ -296,20 +331,28 @@ impl TryFrom<&PackageVersion> for PackageVersionKind {
 impl TryFrom<&PubspecLockDependency> for PackageVersionKind {
     type Error = anyhow::Error;
     fn try_from(dependency: &PubspecLockDependency) -> Result<Self, Self::Error> {
-        Self::from_str(&dependency.version)
+        Self::try_from(&dependency.version)
     }
 }
 
-impl FromStr for PackageVersionKind {
-    type Err = anyhow::Error;
+impl TryFrom<&DartDependencyVersion> for PackageVersionKind {
+    type Error = anyhow::Error;
 
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let range: [char; 4] = ['>', '<', '=', '^'];
-        if s.contains(range) {
-            let version_req = VersionReq::parse(s)?;
+    fn try_from(s: &DartDependencyVersion) -> Result<Self, Self::Error> {
+        Self::try_from(&CargoDependencyVersion::from(s))
+    }
+}
+
+impl TryFrom<&CargoDependencyVersion> for PackageVersionKind {
+    type Error = anyhow::Error;
+
+    fn try_from(s: &CargoDependencyVersion) -> Result<Self, Self::Error> {
+        let range: [char; 4] = ['>', '<', '=', '~'];
+        if s.0.contains(range) {
+            let version_req = VersionReq::parse(&s.0)?;
             Ok(PackageVersionKind::Range(version_req))
         } else {
-            let version = Version::parse(s)?;
+            let version = Version::parse(&s.0)?;
             Ok(PackageVersionKind::Exact(version))
         }
     }
@@ -342,7 +385,9 @@ mod tests {
 
     use super::DartRepository;
     use super::DartToolchain;
+    use cargo_metadata::VersionReq;
     use lazy_static::lazy_static;
+    use semver::Op;
 
     lazy_static! {
         static ref FRB_EXAMPLES_FOLDER: PathBuf = {
@@ -380,6 +425,26 @@ mod tests {
         guess_toolchain_base(
             FRB_EXAMPLES_FOLDER.join("with_flutter").as_path(),
             DartToolchain::Flutter,
+        );
+    }
+
+    #[test]
+    fn cannot_parse_dart_range_syntax() {
+        assert!(VersionReq::parse(">=0.1.2 <0.2.0").is_err());
+    }
+
+    #[test]
+    fn can_parse_dart_caret_syntax() {
+        let caret = VersionReq::parse("^0.1.2");
+        assert!(caret.is_ok());
+        assert_eq!(caret.unwrap().comparators.first().unwrap().op, Op::Caret);
+    }
+
+    #[test]
+    fn cannot_compare_version_req_with_different_op() {
+        assert_ne!(
+            VersionReq::parse("0.2.1").unwrap(),
+            VersionReq::parse(">=0.2.1, <0.3.0").unwrap()
         );
     }
 }
