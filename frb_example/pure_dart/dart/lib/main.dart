@@ -507,8 +507,7 @@ void main(List<String> args) async {
   });
 
   test('Throw CustomError static method, verifies implements Frb', () async {
-    expect(
-        () async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<FrbBacktracedException>()));
+    expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<FrbException>()));
   });
 
   test('Do not throw CustomError static method', () async {
@@ -538,11 +537,10 @@ void main(List<String> args) async {
     expect(await SomeStruct(bridge: api, value: 6).nonStaticReturnOkCustomError(), 6);
   });
 
-/*
   test('Throw anyhow error', () async {
-    expect(() async => await api.throwAnyhow(), throwsA("anyhow error"));
+    expect(() async => await api.throwAnyhow(), throwsA(isA<FrbException>()));
   });
-*/
+
   print('flutter_rust_bridge example program end');
 }
 

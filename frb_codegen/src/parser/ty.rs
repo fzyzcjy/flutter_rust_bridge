@@ -71,6 +71,7 @@ impl std::fmt::Display for SupportedInnerType {
 #[derive(Debug)]
 pub struct SupportedPathType {
     pub ident: syn::Ident,
+    pub path_segments: Vec<PathSegment>,
     pub generic: Vec<SupportedInnerType>,
     pub is_exception: bool,
 }
@@ -90,12 +91,14 @@ impl SupportedInnerType {
     /// Given a `syn::Type`, returns a simplified representation of the type if it's supported,
     /// or `None` otherwise.
     pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
+        println!("trying from syn ty: {:?}", ty);
         match ty {
             syn::Type::Path(syn::TypePath { path, .. })
                 if path.segments.last().unwrap().ident == "Backtrace" =>
             {
                 Some(SupportedInnerType::Path(SupportedPathType {
                     ident: Ident::new("String", path.segments.last().unwrap().ident.span()),
+                    path_segments: vec![],
                     generic: vec![],
                     is_exception: false,
                 }))
@@ -106,6 +109,7 @@ impl SupportedInnerType {
                     syn::PathArguments::None => Some(SupportedInnerType::Path(SupportedPathType {
                         ident: last_segment.ident,
                         generic: vec![],
+                        path_segments: path.segments.iter().map(|x| x.clone()).collect(),
                         is_exception: false,
                     })),
                     syn::PathArguments::AngleBracketed(a) => {
@@ -122,6 +126,7 @@ impl SupportedInnerType {
                         Some(SupportedInnerType::Path(SupportedPathType {
                             ident: last_segment.ident,
                             generic: supported_inner_types,
+                            path_segments: path.segments.iter().map(|x| x.clone()).collect(),
                             is_exception: false,
                         }))
                     }
@@ -273,6 +278,7 @@ impl<'a> TypeParser<'a> {
                             other => IrType::Optional(IrTypeOptional::new_ptr(other)),
                         })
                 }
+                "Backtrace" => Some(IrType::Delegate(IrTypeDelegate::String)),
                 _ => None,
             }
         } else {
@@ -281,18 +287,11 @@ impl<'a> TypeParser<'a> {
                 .or_else(|| {
                     if ident_string == "String" {
                         Some(IrType::Delegate(IrTypeDelegate::String))
-                    }
-                    /*
-                    else if ident_string == "Error" {
-                        //debug_assert!(self.src_structs.contains_key("AnyhowError"));
-                        Some(StructRef(IrTypeStructRef {
-                            name: "AnyhowError".to_string(),
-                            freezed: false,
-                            is_exception: true,
-                        }))
-                    }
-                    */
-                    else if self.src_structs.contains_key(ident_string) {
+                    } else if ident_string == "Error"
+                        && p.path_segments.iter().any(|x| x.ident == "anyhow")
+                    {
+                        Some(Delegate(IrTypeDelegate::Anyhow))
+                    } else if self.src_structs.contains_key(ident_string) {
                         if !self.parsing_or_parsed_struct_names.contains(ident_string) {
                             self.parsing_or_parsed_struct_names
                                 .insert(ident_string.to_owned());

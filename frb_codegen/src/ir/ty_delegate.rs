@@ -12,6 +12,8 @@ pub enum IrTypeDelegate {
         /// Allows for `#[repr]`'s other than [i32]
         repr: IrTypePrimitive,
     },
+    Backtrace,
+    Anyhow,
 }
 
 impl IrTypeDelegate {
@@ -30,6 +32,8 @@ impl IrTypeDelegate {
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::PrimitiveEnum { repr, .. } => IrType::Primitive(repr.clone()),
+            IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::Anyhow => IrType::Delegate(IrTypeDelegate::String),
         }
     }
 }
@@ -48,6 +52,8 @@ impl IrTypeTrait for IrTypeDelegate {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
+            IrTypeDelegate::Backtrace => "String".to_owned(),
+            IrTypeDelegate::Anyhow => "String".to_owned(),
         }
     }
 
@@ -59,6 +65,8 @@ impl IrTypeTrait for IrTypeDelegate {
                 self.get_delegate().dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
+            IrTypeDelegate::Backtrace => "String".to_string(),
+            IrTypeDelegate::Anyhow => "String".to_string(),
         }
     }
 
@@ -78,6 +86,8 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
+            IrTypeDelegate::Backtrace => "String".to_owned(),
+            IrTypeDelegate::Anyhow => "String".to_owned(),
         }
     }
 

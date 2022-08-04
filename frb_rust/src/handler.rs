@@ -5,7 +5,6 @@ use std::mem::ManuallyDrop;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
-use allo_isolate::ffi::DartCObject;
 use allo_isolate::IntoDart;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;

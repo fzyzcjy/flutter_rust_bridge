@@ -12,7 +12,8 @@ categories = ["development-tools::ffi"]
 # allo-isolate = { path="../allo-isolate", features=["anyhow"] }
 # allo-isolate = { git = "https://github.com/Desdaemon/allo-isolate" } # hack, until upstream PR is merged and released
 # allo-isolate = { path = "../../allo-isolate" }
-allo-isolate = { version = "0.1.13", features=["anyhow"] }
+#allo-isolate = { version = "0.1.13", features=["anyhow"] }
+allo-isolate = { git = "https://github.com/lattice0/allo-isolate", branch="backtrace", features=["backtrace", "anyhow"] } 
 anyhow = "1.0.58"
 threadpool = "1.8.1"
 lazy_static = "1.4.0"

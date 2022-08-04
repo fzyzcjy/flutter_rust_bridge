@@ -1,5 +1,6 @@
 #![allow(unused_variables)]
 
+use crate::data::{MyEnum, MyStruct};
 use anyhow::{anyhow, Result};
 use backtrace::Backtrace;
 use flutter_rust_bridge::*;
@@ -7,8 +8,6 @@ use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
-
-use crate::data::{MyEnum, MyStruct};
 
 /// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> i32 {
@@ -863,8 +862,6 @@ impl CustomStruct {
     }
 }
 
-/*
 pub fn throw_anyhow() -> Result<(), anyhow::Error> {
     Err(anyhow!("anyhow error"))
 }
-*/
