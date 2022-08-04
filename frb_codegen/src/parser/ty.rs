@@ -93,6 +93,7 @@ impl SupportedInnerType {
     pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
         println!("trying from syn ty: {:?}", ty);
         match ty {
+            /*
             syn::Type::Path(syn::TypePath { path, .. })
                 if path.segments.last().unwrap().ident == "Backtrace" =>
             {
@@ -103,6 +104,7 @@ impl SupportedInnerType {
                     is_exception: false,
                 }))
             }
+            */
             syn::Type::Path(syn::TypePath { path, .. }) => {
                 let last_segment = path.segments.last().unwrap().clone();
                 match last_segment.arguments {
@@ -291,6 +293,8 @@ impl<'a> TypeParser<'a> {
                         && p.path_segments.iter().any(|x| x.ident == "anyhow")
                     {
                         Some(Delegate(IrTypeDelegate::Anyhow))
+                    } else if ident_string == "Backtrace" {
+                        Some(Delegate(IrTypeDelegate::Backtrace))
                     } else if self.src_structs.contains_key(ident_string) {
                         if !self.parsing_or_parsed_struct_names.contains(ident_string) {
                             self.parsing_or_parsed_struct_names
