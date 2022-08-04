@@ -8,4 +8,4 @@
 - [ ] If this PR adds/changes features, documentations (in the `./book` folder) are updated.
 - [ ] CI is passing.
 
-Remark: If the PR is submitted but I do not reply for a few days, maybe I just did not see it, so please ping me.
+Remark for PR creator: If the PR is submitted but the owner (fzyzcjy) does not reply for a few days, maybe he just did not see it, so please ping him.
