@@ -36,6 +36,9 @@ enum_dispatch = "0.3.8"
 thiserror = "1"
 cbindgen = "0.24"
 
+[dev-dependencies]
+semver = "1.0.12"
+
 [profile.release]
 strip = "debuginfo"
 lto = "thin"
