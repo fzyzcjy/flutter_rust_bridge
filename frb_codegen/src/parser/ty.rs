@@ -111,7 +111,7 @@ impl SupportedInnerType {
                     syn::PathArguments::None => Some(SupportedInnerType::Path(SupportedPathType {
                         ident: last_segment.ident,
                         generic: vec![],
-                        path_segments: path.segments.iter().map(|x| x.clone()).collect(),
+                        path_segments: path.segments.iter().cloned().collect(),
                         is_exception: false,
                     })),
                     syn::PathArguments::AngleBracketed(a) => {
@@ -121,14 +121,14 @@ impl SupportedInnerType {
                             .map(|arg| {
                                 if let syn::GenericArgument::Type(t) = arg {
                                     supported_inner_types
-                                        .push(SupportedInnerType::try_from_syn_type(&t).unwrap());
+                                        .push(SupportedInnerType::try_from_syn_type(t).unwrap());
                                 }
                             })
                             .count();
                         Some(SupportedInnerType::Path(SupportedPathType {
                             ident: last_segment.ident,
                             generic: supported_inner_types,
-                            path_segments: path.segments.iter().map(|x| x.clone()).collect(),
+                            path_segments: path.segments.iter().cloned().collect(),
                             is_exception: false,
                         }))
                     }
@@ -210,7 +210,7 @@ impl<'a> TypeParser<'a> {
                         SupportedInnerType::Path(SupportedPathType { ident, generic, .. })
                             if ident == "Vec" && !generic.is_empty() =>
                         {
-                            match first(&generic).unwrap() {
+                            match first(generic).unwrap() {
                                 SupportedInnerType::Path(SupportedPathType {
                                     ident,
                                     generic,

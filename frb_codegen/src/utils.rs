@@ -71,7 +71,7 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
     Ok(all_symbols)
 }
 
-pub fn first<T>(vec: &Vec<T>) -> Option<&T> {
+pub fn first<T>(vec: &[T]) -> Option<&T> {
     vec.get(0)
 }
 

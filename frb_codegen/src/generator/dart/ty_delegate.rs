@@ -39,7 +39,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
         match &self.ir {
             IrTypeDelegate::String
             | IrTypeDelegate::Backtrace
-            | IrTypeDelegate::Anyhow
             | IrTypeDelegate::SyncReturnVecU8
             | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_wire2api_simple_type_cast(&self.ir.dart_api_type())
@@ -49,6 +48,9 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 format!("return {}.values[raw];", ir.dart_api_type())
+            }
+            IrTypeDelegate::Anyhow => {
+                format!("return Anyhow(raw as String);")
             }
         }
     }

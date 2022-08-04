@@ -335,6 +335,6 @@ impl ErrorHandler for ReportDartErrorHandler {
     }
 
     fn handle_error_sync(&self, error: Error) -> Vec<u8> {
-        format!("{}", error.message()).into_bytes()
+        error.message().into_bytes()
     }
 }

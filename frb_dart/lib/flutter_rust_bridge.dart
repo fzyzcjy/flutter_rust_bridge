@@ -12,3 +12,9 @@ class PanicError extends FrbException {
 PanicError wire2apiPanicError(dynamic raw) {
   return PanicError(raw as String);
 }
+
+class Anyhow implements FrbException {
+  String anyhow;
+
+  Anyhow(this.anyhow);
+}
