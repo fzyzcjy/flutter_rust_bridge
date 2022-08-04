@@ -27,15 +27,15 @@ pub fn ensure_tools_available(dart_root: &str) -> Result {
         return Err(Error::MissingExe(repo.toolchain.to_string()));
     }
 
-    let _ = repo.has_specified("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
-    let _ = repo.has_installed("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
+    repo.has_specified("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
+    repo.has_installed("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
 
-    let _ = repo.has_specified(
+    repo.has_specified(
         "ffigen",
         PackageManager::DevDependencies,
         &FFIGEN_REQUIREMENT,
     )?;
-    let _ = repo.has_installed(
+    repo.has_installed(
         "ffigen",
         PackageManager::DevDependencies,
         &FFIGEN_REQUIREMENT,
