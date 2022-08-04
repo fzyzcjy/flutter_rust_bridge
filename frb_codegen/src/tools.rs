@@ -227,10 +227,9 @@ impl DartRepository {
                 at
             ))
         })?;
-        let deps = if manager == PackageManager::DevDependencies {
-            manifest_file.dev_dependencies.unwrap_or_default()
-        } else {
-            manifest_file.dependencies.unwrap_or_default()
+        let deps = match manager {
+            PackageManager::Dependencies => manifest_file.dependencies.unwrap_or_default(),
+            PackageManager::DevDependencies => manifest_file.dev_dependencies.unwrap_or_default(),
         };
         deps.get(package).map(|_| ()).ok_or_else(|| {
             anyhow::Error::new(Error::MissingDep {
