@@ -260,7 +260,7 @@ impl DartRepository {
         let version = match dependency {
             Some(dependency) => {
                 let pm = dependency.installed_in();
-                if pm.is_none() || (pm.unwrap() != manager) {
+                if pm.as_ref() != Some(&manager) {
                     return Err(anyhow::Error::new(Error::InvalidDep {
                         name: package.to_string(),
                         manager,
