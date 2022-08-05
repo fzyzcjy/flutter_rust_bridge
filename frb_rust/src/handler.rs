@@ -280,19 +280,23 @@ pub enum Error {
     Panic(Box<dyn Any + Send>),
 }
 
+fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
+    match panic_err.downcast_ref::<&'static str>() {
+        Some(s) => *s,
+        None => match panic_err.downcast_ref::<String>() {
+            Some(s) => &s[..],
+            None => "Box<dyn Any>",
+        },
+    }
+    .to_string()
+}
+
 impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
             Error::CustomError(_e) => "Box<dyn BoxIntoDart>".to_string(),
-            Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
-                Some(s) => *s,
-                None => match panic_err.downcast_ref::<String>() {
-                    Some(s) => &s[..],
-                    None => "Box<dyn Any>",
-                },
-            }
-            .to_string(),
+            Error::Panic(panic_err) => error_to_string(panic_err),
         }
     }
 }
@@ -301,13 +305,7 @@ impl IntoDart for Error {
     fn into_dart(self) -> allo_isolate::ffi::DartCObject {
         match self {
             Error::CustomError(e) => e.box_into_dart(),
-            Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
-                Some(s) => s.to_string().into_dart(),
-                None => match panic_err.downcast_ref::<String>() {
-                    Some(s) => s.to_string().into_dart(),
-                    None => "Box<dyn Any>".to_string().into_dart(),
-                },
-            },
+            Error::Panic(panic_err) => error_to_string(&panic_err).into_dart(),
         }
     }
 }
