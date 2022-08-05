@@ -49,7 +49,6 @@ impl<'a> Parser<'a> {
         let has_executor = source_rust_content.contains(HANDLER_NAME);
 
         let (struct_pool, enum_pool) = self.type_parser.consume();
-        println!("struct_pool: {:?}", struct_pool);
         IrFile {
             funcs,
             struct_pool,
@@ -62,7 +61,6 @@ impl<'a> Parser<'a> {
     /// case for top-level `Result` types.
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
         let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
-        println!("parsing inner: {:?}", inner);
         match inner {
             ty::SupportedInnerType::Path(ty::SupportedPathType {
                 ident,
@@ -70,14 +68,11 @@ impl<'a> Parser<'a> {
                 path_segments,
                 ..
             }) if ident == RESULT_IDENT && !generic.is_empty() => {
-                println!("identified result for inner");
-                println!("parsing first argument: {:?}", generic);
                 let result = self
                     .type_parser
                     .convert_to_ir_type(generic.remove(0), false)
                     .unwrap();
                 let error = if generic.len() == 1 {
-                    println!("parsing second argument: {:?}", generic);
                     Some(
                         self.type_parser
                             .convert_to_ir_type(generic.remove(0), true)
@@ -88,7 +83,7 @@ impl<'a> Parser<'a> {
                 } else {
                     None
                 };
-                Some(IrFuncOutput::ResultType { result, error })
+                Some(IrFuncOutput::ResultType { ok: result, error })
             }
             _ => Some(IrFuncOutput::Type(
                 self.type_parser.convert_to_ir_type(inner, false)?,
@@ -177,7 +172,7 @@ impl<'a> Parser<'a> {
                             type_to_string(ty)
                         )
                     }) {
-                        IrFuncOutput::ResultType { result, error } => (Some(result), error),
+                        IrFuncOutput::ResultType { ok: result, error } => (Some(result), error),
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
                             (Some(ty), None)

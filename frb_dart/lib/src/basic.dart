@@ -11,13 +11,13 @@ import 'package:meta/meta.dart';
 
 final _instances = <Type>{};
 
-class PanicError extends FrbException {
-  String error;
-  PanicError(this.error);
+class PanicException extends FrbException {
+  final String error;
+  PanicException(this.error);
 }
 
-PanicError wire2apiPanicError(dynamic raw) {
-  return PanicError(raw as String);
+PanicException wire2apiPanicError(dynamic raw) {
+  return PanicException(raw as String);
 }
 
 /// Base class for generated bindings of Flutter Rust Bridge.
@@ -46,8 +46,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
   @protected
-  Future<S> executeNormal<S, E extends Object, P extends Object>(
-      FlutterRustBridgeTask<S, E, P> task) {
+  Future<S> executeNormal<S, E extends Object>(
+      FlutterRustBridgeTask<S, E> task) {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
@@ -74,8 +74,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   @protected
-  Stream<S> executeStream<S, E extends Object, P extends Object>(
-      FlutterRustBridgeTask<S, E, P> task) async* {
+  Stream<S> executeStream<S, E extends Object>(
+      FlutterRustBridgeTask<S, E> task) async* {
     final receivePort = ReceivePort();
     task.callFfi(receivePort.sendPort.nativePort);
 
@@ -93,7 +93,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
       dynamic raw,
       S Function(dynamic) parseSuccessData,
       E Function(dynamic)? parseErrorData,
-      E Function(dynamic)? parsePanicData) {
+      PanicException Function(dynamic)? parsePanicData) {
     final action = raw[0];
     switch (action) {
       case _RUST2DART_ACTION_SUCCESS:
@@ -134,7 +134,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
 /// A task to call FFI function.
 @immutable
-class FlutterRustBridgeTask<S, E extends Object, P extends Object>
+class FlutterRustBridgeTask<S, E extends Object>
     extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(int port) callFfi;

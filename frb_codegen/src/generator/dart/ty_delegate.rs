@@ -50,7 +50,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 format!("return {}.values[raw];", ir.dart_api_type())
             }
             IrTypeDelegate::Anyhow => {
-                format!("return Anyhow(raw as String);")
+                format!("return FrbAnyhowException(raw as String);")
             }
         }
     }

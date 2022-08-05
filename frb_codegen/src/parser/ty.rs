@@ -11,7 +11,9 @@ use crate::markers;
 use crate::source_graph::{Enum, Struct};
 
 use crate::parser::{extract_comments, extract_metadata, type_to_string};
-use crate::utils::{first, remove_first};
+use crate::utils::remove_first;
+
+use super::ANYHOW_IDENT;
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
@@ -91,7 +93,6 @@ impl SupportedInnerType {
     /// Given a `syn::Type`, returns a simplified representation of the type if it's supported,
     /// or `None` otherwise.
     pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
-        println!("trying from syn ty: {:?}", ty);
         match ty {
             /*
             syn::Type::Path(syn::TypePath { path, .. })
@@ -206,11 +207,11 @@ impl<'a> TypeParser<'a> {
                 "SyncReturn" => {
                     // Special-case SyncReturn<Vec<u8>>. SyncReturn for any other type is not
                     // supported.
-                    match first(&p.generic).unwrap() {
+                    match p.generic.first().unwrap() {
                         SupportedInnerType::Path(SupportedPathType { ident, generic, .. })
                             if ident == "Vec" && !generic.is_empty() =>
                         {
-                            match first(generic).unwrap() {
+                            match generic.first().unwrap() {
                                 SupportedInnerType::Path(SupportedPathType {
                                     ident,
                                     generic,
@@ -226,7 +227,7 @@ impl<'a> TypeParser<'a> {
                 }
                 "Vec" => {
                     // Special-case Vec<String> as StringList
-                    if matches!(first(&p.generic).unwrap(), SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
+                    if matches!(p.generic.first().unwrap(), SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
                     {
                         Some(IrType::Delegate(IrTypeDelegate::StringList))
                     } else {
@@ -261,7 +262,7 @@ impl<'a> TypeParser<'a> {
                     }),
                 "Option" => {
                     // Disallow nested Option
-                    if matches!(first(&p.generic).unwrap(), SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
+                    if matches!(p.generic.first().unwrap(), SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
                     {
                         panic!(
                             "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
@@ -290,7 +291,7 @@ impl<'a> TypeParser<'a> {
                     if ident_string == "String" {
                         Some(IrType::Delegate(IrTypeDelegate::String))
                     } else if ident_string == "Error"
-                        && p.path_segments.iter().any(|x| x.ident == "anyhow")
+                        && p.path_segments.iter().any(|x| x.ident == ANYHOW_IDENT)
                     {
                         Some(Delegate(IrTypeDelegate::Anyhow))
                     } else if ident_string == "Backtrace" {

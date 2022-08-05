@@ -50,8 +50,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     variants, enu.name
                 )
             }
-            IrTypeDelegate::Backtrace => "self.wire2api()".to_owned(),
-            IrTypeDelegate::Anyhow => "self.wire2api()".to_owned(),
+            IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "self.wire2api()".to_owned(),
         })
     }
 
@@ -83,7 +82,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     }
 
     fn impl_intodart(&self) -> String {
-        println!("impl_intodart called for self: {:?}", self.ir);
         if let IrTypeDelegate::PrimitiveEnum { ir, .. } = &self.ir {
             let src = ir.get(self.context.ir_file);
             let (name, self_path): (&str, &str) = match &src.wrapper_name {

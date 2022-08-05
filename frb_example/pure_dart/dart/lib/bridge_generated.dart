@@ -1055,7 +1055,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   Future<int> returnErr({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_err(port_),
         parseSuccessData: _wire2api_i32,
-        parseErrorData: _wire2api_Anyhow,
+        parseErrorData: _wire2api_FrbAnyhowException,
         constMeta: kReturnErrConstMeta,
         argValues: [],
         hint: hint,
@@ -1584,7 +1584,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   Future<void> throwAnyhow({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_throw_anyhow(port_),
         parseSuccessData: _wire2api_unit,
-        parseErrorData: _wire2api_Anyhow,
+        parseErrorData: _wire2api_FrbAnyhowException,
         constMeta: kThrowAnyhowConstMeta,
         argValues: [],
         hint: hint,
@@ -2521,8 +2521,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 }
 
 // Section: wire2api
-Anyhow _wire2api_Anyhow(dynamic raw) {
-  return Anyhow(raw as String);
+FrbAnyhowException _wire2api_FrbAnyhowException(dynamic raw) {
+  return FrbAnyhowException(raw as String);
 }
 
 String _wire2api_String(dynamic raw) {

@@ -2,19 +2,10 @@ use crate::generator::dart::dart_comments;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::type_dart_generator_struct;
+use crate::utils::dart_maybe_implements_exception;
 use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
-
-impl<'a> TypeEnumRefGenerator<'a> {
-    fn dart_implements(&self) -> &'static str {
-        if self.ir.is_exception {
-            "implements FrbException"
-        } else {
-            ""
-        }
-    }
-}
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
@@ -194,7 +185,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     {2}
                 }}",
                 self.ir.name,
-                self.dart_implements(),
+                dart_maybe_implements_exception(self.ir.is_exception),
                 variants.join("\n")
             )
         } else {

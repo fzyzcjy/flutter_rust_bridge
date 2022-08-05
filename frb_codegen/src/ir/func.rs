@@ -20,10 +20,7 @@ impl IrFunc {
 /// Represents a function's output type
 #[derive(Debug, Clone)]
 pub enum IrFuncOutput {
-    ResultType {
-        result: IrType,
-        error: Option<IrType>,
-    },
+    ResultType { ok: IrType, error: Option<IrType> },
     Type(IrType),
 }
 

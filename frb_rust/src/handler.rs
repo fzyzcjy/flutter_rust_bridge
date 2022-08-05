@@ -253,7 +253,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
             });
 
             if let Err(error) = thread_result {
-                eh.handle_panic(wrap_info.port.unwrap(), Error::Panic(error));
+                eh.handle_error(wrap_info.port.unwrap(), Error::Panic(error));
             }
         });
     }
@@ -284,7 +284,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::CustomError(_e) => "custom error".to_string(),
+            Error::CustomError(_e) => "Box<dyn BoxIntoDart>".to_string(),
             Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
                 Some(s) => *s,
                 None => match panic_err.downcast_ref::<String>() {
@@ -321,9 +321,6 @@ pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     /// The default error handler.
     fn handle_error(&self, port: i64, error: Error);
 
-    /// The default panic handler.
-    fn handle_panic(&self, port: i64, error: Error);
-
     /// Special handler only used for synchronous code.
     fn handle_error_sync(&self, error: Error) -> Vec<u8>;
 }
@@ -334,11 +331,10 @@ pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
     fn handle_error(&self, port: i64, error: Error) {
-        Rust2Dart::new(port).error(error);
-    }
-
-    fn handle_panic(&self, port: i64, error: Error) {
-        Rust2Dart::new(port).panic(error);
+        match error {
+            e @ Error::CustomError(_) => Rust2Dart::new(port).error(e),
+            e @ Error::Panic(_) => Rust2Dart::new(port).panic(e),
+        };
     }
 
     fn handle_error_sync(&self, error: Error) -> Vec<u8> {

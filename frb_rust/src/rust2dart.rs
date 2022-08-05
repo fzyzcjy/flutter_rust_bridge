@@ -36,18 +36,13 @@ impl Rust2Dart {
         ])
     }
 
-    /// Send an error back to the specified port.
-    pub fn error(&self, e: impl IntoDart) -> bool {
-        self.error_full(e)
-    }
-
     /// Send a panic back to the specified port.
     pub fn panic(&self, e: impl IntoDart) -> bool {
         self.panic_full(e)
     }
 
     /// Send a detailed error back to the specified port.
-    pub fn error_full(&self, e: impl IntoDart) -> bool {
+    pub fn error(&self, e: impl IntoDart) -> bool {
         self.isolate
             .post(vec![RUST2DART_ACTION_ERROR.into_dart(), e.into_dart()])
     }
@@ -113,6 +108,7 @@ impl<T: IntoDart> StreamSink<T> {
     }
 }
 
+// IntoDart consumes `self` so we need a trait for the `Box` case
 pub trait BoxIntoDart {
     fn box_into_dart(self: Box<Self>) -> DartCObject;
 }

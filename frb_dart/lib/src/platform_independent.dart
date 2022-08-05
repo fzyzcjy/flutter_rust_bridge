@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import '../flutter_rust_bridge.dart';
 
 /// Base class for various kinds of tasks.
 /// Note: Normally you do not manually create instances of this task (or its brothers), but instead
@@ -107,4 +108,10 @@ bool _listEquals<T>(List<T>? a, List<T>? b) {
     if (a[index] != b[index]) return false;
   }
   return true;
+}
+
+class FrbAnyhowException implements FrbException {
+  String anyhow;
+
+  FrbAnyhowException(this.anyhow);
 }

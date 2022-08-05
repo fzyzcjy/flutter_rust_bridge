@@ -539,10 +539,24 @@ void main(List<String> args) async {
 
   test('Throw anyhow error', () async {
     expect(() async => await api.throwAnyhow(), throwsA(isA<FrbException>()));
+    try {
+      await api.throwAnyhow();
+    } catch (e) {
+      final FrbAnyhowException p = e as FrbAnyhowException;
+      print("anyhow error: ${p.anyhow}");
+      assert(p.anyhow.contains("anyhow error"));
+    }
   });
 
   test('Function with custom result panics', () async {
     expect(() async => await api.panicWithCustomResult(), throwsA(isA<FrbException>()));
+    try {
+      await api.panicWithCustomResult();
+    } catch (e) {
+      final PanicException p = e as PanicException;
+      print("panic error: ${p.error}");
+      assert(p.error.contains("just a panic"));
+    }
   });
 
   print('flutter_rust_bridge example program end');

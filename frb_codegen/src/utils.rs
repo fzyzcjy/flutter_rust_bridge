@@ -71,10 +71,6 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
     Ok(all_symbols)
 }
 
-pub fn first<T>(vec: &[T]) -> Option<&T> {
-    vec.get(0)
-}
-
 pub fn remove_first<T>(vec: &mut Vec<T>) -> T {
     vec.remove(0)
 }
@@ -89,5 +85,13 @@ impl BlockIndex {
 impl Display for BlockIndex {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.0)
+    }
+}
+
+pub fn dart_maybe_implements_exception(is_exception: bool) -> &'static str {
+    if is_exception {
+        "implements FrbException"
+    } else {
+        ""
     }
 }

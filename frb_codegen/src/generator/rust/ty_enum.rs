@@ -195,7 +195,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         let fields = Some(tag)
                             .into_iter()
                             .chain(st.fields.iter().map(|field| {
-                                println!("initiating type: {:?}", st);
                                 let gen =
                                     TypeRustGenerator::new(field.ty.clone(), self.context.ir_file);
                                 gen.convert_to_dart(field.name.rust_style().to_owned())
@@ -206,7 +205,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             .iter()
                             .map(|field| field.name.rust_style().to_owned())
                             .collect::<Vec<_>>();
-                        println!("pattern: {:?}", pattern);
                         let (left, right) = st.brackets_pair();
                         format!(
                             "{}::{}{}{}{} => vec![{}],",
@@ -221,7 +219,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 }
             })
             .collect::<Vec<_>>();
-        println!("variantss: {:?}", variants);
         format!(
             "impl support::IntoDart for {} {{
                 fn into_dart(self) -> support::DartCObject {{

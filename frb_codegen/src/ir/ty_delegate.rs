@@ -53,7 +53,7 @@ impl IrTypeTrait for IrTypeDelegate {
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
             IrTypeDelegate::Backtrace => "String".to_owned(),
-            IrTypeDelegate::Anyhow => "Anyhow".to_owned(),
+            IrTypeDelegate::Anyhow => "FrbAnyhowException".to_owned(),
         }
     }
 
@@ -66,7 +66,7 @@ impl IrTypeTrait for IrTypeDelegate {
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
             IrTypeDelegate::Backtrace => "String".to_string(),
-            IrTypeDelegate::Anyhow => "Anyhow".to_string(),
+            IrTypeDelegate::Anyhow => "FrbAnyhowException".to_string(),
         }
     }
 

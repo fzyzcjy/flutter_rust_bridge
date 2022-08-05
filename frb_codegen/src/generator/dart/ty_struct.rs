@@ -3,20 +3,10 @@ use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
 use crate::method_utils::FunctionName;
 use crate::type_dart_generator_struct;
-use crate::utils::BlockIndex;
+use crate::utils::{dart_maybe_implements_exception, BlockIndex};
 use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
-
-impl<'a> TypeStructRefGenerator<'a> {
-    fn dart_implements(&self) -> &'static str {
-        if self.ir.is_exception {
-            "implements FrbException"
-        } else {
-            ""
-        }
-    }
-}
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
@@ -142,7 +132,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 metadata,
                 self.ir.name,
                 self.ir.name,
-                self.dart_implements(),
+                dart_maybe_implements_exception(self.ir.is_exception),
                 self.ir.name,
                 constructor_params,
                 self.ir.name,
@@ -195,7 +185,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 comments,
                 metadata,
                 self.ir.name,
-                self.dart_implements(),
+                dart_maybe_implements_exception(self.ir.is_exception),
                 field_declarations,
                 self.ir.name,
                 constructor_params,
