@@ -71,26 +71,21 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             .map(|(idx, variant)| {
                 let args = match &variant.kind {
                     IrVariantKind::Value => "".to_owned(),
-                    IrVariantKind::Struct(st) => {
-                        let st = st
-                            .fields
-                            .iter()
-                            .enumerate()
-                            .map(|(idx, field)| {
-                                let val = format!(
-                                    "_wire2api_{}(raw[{}]),",
-                                    field.ty.safe_ident(),
-                                    idx + 1
-                                );
-                                if st.is_fields_named {
-                                    format!("{}: {}", field.name.dart_style(), val)
-                                } else {
-                                    val
-                                }
-                            })
-                            .collect::<Vec<_>>();
-                        st.join("")
-                    }
+                    IrVariantKind::Struct(st) => st
+                        .fields
+                        .iter()
+                        .enumerate()
+                        .map(|(idx, field)| {
+                            let val =
+                                format!("_wire2api_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
+                            if st.is_fields_named {
+                                format!("{}: {}", field.name.dart_style(), val)
+                            } else {
+                                val
+                            }
+                        })
+                        .collect::<Vec<_>>()
+                        .join(""),
                 };
                 format!("case {}: return {}({});", idx, variant.name, args)
             })
