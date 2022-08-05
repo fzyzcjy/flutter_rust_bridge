@@ -865,3 +865,7 @@ impl CustomStruct {
 pub fn throw_anyhow() -> Result<(), anyhow::Error> {
     Err(anyhow!("anyhow error"))
 }
+
+pub fn panic_with_custom_result() -> Result<(), CustomError> {
+    panic!("just a panic");
+}

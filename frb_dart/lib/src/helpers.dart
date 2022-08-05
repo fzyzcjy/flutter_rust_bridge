@@ -32,21 +32,21 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase>
   }
 
   @override
-  Future<S> executeNormal<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) async {
+  Future<S> executeNormal<S, E extends Object, P extends Object>(
+      FlutterRustBridgeTask<S, E, P> task) async {
     await _beforeExecute(task);
     return await super.executeNormal(task);
   }
 
   @override
-  Stream<S> executeStream<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) async* {
+  Stream<S> executeStream<S, E extends Object, P extends Object>(
+      FlutterRustBridgeTask<S, E, P> task) async* {
     await _beforeExecute(task);
     yield* super.executeStream(task);
   }
 
-  Future<void> _beforeExecute<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) async {
+  Future<void> _beforeExecute<S, E extends Object, P extends Object>(
+      FlutterRustBridgeTask<S, E, P> task) async {
     if (!_setupCompleter.isCompleted &&
         task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
       log('FlutterRustBridgeSetupMixin.beforeExecute start waiting setup to complete (task=${task.debugName})');
@@ -72,8 +72,8 @@ class _FlutterRustBridgeSetupMixinSkipWaitHint {
 mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
     on FlutterRustBridgeBase<T> {
   @override
-  Future<S> executeNormal<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) {
+  Future<S> executeNormal<S, E extends Object, P extends Object>(
+      FlutterRustBridgeTask<S, E, P> task) {
     // capture a stack trace at *here*, such that when timeout, can have a good stack trace
     final stackTrace = StackTrace.current;
 

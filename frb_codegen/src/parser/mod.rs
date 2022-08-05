@@ -66,6 +66,7 @@ impl<'a> Parser<'a> {
             ty::SupportedInnerType::Path(ty::SupportedPathType {
                 ident, mut generic, ..
             }) if ident == RESULT_IDENT && !generic.is_empty() => {
+                println!("identified result for inner");
                 let result = self
                     .type_parser
                     .convert_to_ir_type(generic.remove(0), false)

@@ -253,7 +253,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error(wrap_info.port.unwrap(), Error::Panic(error));
+                eh.handle_panic(wrap_info.port.unwrap(), Error::Panic(error));
             }
         });
     }
@@ -321,6 +321,9 @@ pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     /// The default error handler.
     fn handle_error(&self, port: i64, error: Error);
 
+    /// The default panic handler.
+    fn handle_panic(&self, port: i64, error: Error);
+
     /// Special handler only used for synchronous code.
     fn handle_error_sync(&self, error: Error) -> Vec<u8>;
 }
@@ -332,6 +335,10 @@ pub struct ReportDartErrorHandler;
 impl ErrorHandler for ReportDartErrorHandler {
     fn handle_error(&self, port: i64, error: Error) {
         Rust2Dart::new(port).error(error);
+    }
+
+    fn handle_panic(&self, port: i64, error: Error) {
+        Rust2Dart::new(port).panic(error);
     }
 
     fn handle_error_sync(&self, error: Error) -> Vec<u8> {

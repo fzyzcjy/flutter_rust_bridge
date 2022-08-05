@@ -825,6 +825,18 @@ pub extern "C" fn wire_throw_anyhow(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_panic_with_custom_result(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "panic_with_custom_result",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| panic_with_custom_result(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

@@ -17,6 +17,7 @@ pub struct Rust2Dart {
 const RUST2DART_ACTION_SUCCESS: i32 = 0;
 const RUST2DART_ACTION_ERROR: i32 = 1;
 const RUST2DART_ACTION_CLOSE_STREAM: i32 = 2;
+const RUST2DART_ACTION_PANIC: i32 = 3;
 
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
@@ -40,10 +41,21 @@ impl Rust2Dart {
         self.error_full(e)
     }
 
+    /// Send a panic back to the specified port.
+    pub fn panic(&self, e: impl IntoDart) -> bool {
+        self.panic_full(e)
+    }
+
     /// Send a detailed error back to the specified port.
     pub fn error_full(&self, e: impl IntoDart) -> bool {
         self.isolate
             .post(vec![RUST2DART_ACTION_ERROR.into_dart(), e.into_dart()])
+    }
+
+    /// Send a detailed error back to the specified port.
+    pub fn panic_full(&self, e: impl IntoDart) -> bool {
+        self.isolate
+            .post(vec![RUST2DART_ACTION_PANIC.into_dart(), e.into_dart()])
     }
 
     /// Close the stream and ignore further messages.

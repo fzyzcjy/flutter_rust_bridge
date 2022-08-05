@@ -541,6 +541,10 @@ void main(List<String> args) async {
     expect(() async => await api.throwAnyhow(), throwsA(isA<FrbException>()));
   });
 
+  test('Function with custom result panics', () async {
+    expect(() async => await api.panicWithCustomResult(), throwsA(isA<FrbException>()));
+  });
+
   print('flutter_rust_bridge example program end');
 }
 

@@ -37,13 +37,13 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
   @protected
-  Future<S> executeNormal<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) {
+  Future<S> executeNormal<S, E extends Object, P extends Object>(
+      FlutterRustBridgeTask<S, E, P> task) {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
     return completer.future.then((dynamic raw) => _transformRust2DartMessage(
-        raw, task.parseSuccessData, task.parseErrorData));
+        raw, task.parseSuccessData, task.parseErrorData, task.parsePanicData));
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -65,15 +65,15 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   @protected
-  Stream<S> executeStream<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) async* {
+  Stream<S> executeStream<S, E extends Object, P extends Object>(
+      FlutterRustBridgeTask<S, E, P> task) async* {
     final receivePort = ReceivePort();
     task.callFfi(receivePort.sendPort.nativePort);
 
     await for (final raw in receivePort) {
       try {
-        yield _transformRust2DartMessage(
-            raw, task.parseSuccessData, task.parseErrorData);
+        yield _transformRust2DartMessage(raw, task.parseSuccessData,
+            task.parseErrorData, task.parsePanicData);
       } on _CloseStreamException {
         receivePort.close();
       }
@@ -83,7 +83,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   S _transformRust2DartMessage<S, E extends Object>(
       dynamic raw,
       S Function(dynamic) parseSuccessData,
-      E Function(dynamic)? parseErrorData) {
+      E Function(dynamic)? parseErrorData,
+      E Function(dynamic)? parsePanicData) {
     final action = raw[0];
     switch (action) {
       case _RUST2DART_ACTION_SUCCESS:
@@ -95,6 +96,12 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
           throw parseErrorData(raw[1]);
         }
         throw Exception("tried to parse error data but function is null");
+      case _RUST2DART_ACTION_PANIC:
+        assert(raw.length == 2);
+        if (parsePanicData != null) {
+          throw parsePanicData(raw[1]);
+        }
+        throw Exception("tried to parse panic data but function is null");
       case _RUST2DART_ACTION_CLOSE_STREAM:
         assert(raw.length == 1);
         throw _CloseStreamException();
@@ -111,17 +118,23 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   // ignore: constant_identifier_names
   static const _RUST2DART_ACTION_CLOSE_STREAM = 2;
+
+  // ignore: constant_identifier_names
+  static const _RUST2DART_ACTION_PANIC = 3;
 }
 
 /// A task to call FFI function.
 @immutable
-class FlutterRustBridgeTask<S, E extends Object>
+class FlutterRustBridgeTask<S, E extends Object, P extends Object>
     extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(int port) callFfi;
 
   /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;
+
+  /// Parse the returned data from the underlying function
+  final P Function(dynamic) parsePanicData;
 
   /// Parse the returned errordata from the underlying function
   final E Function(dynamic)? parseErrorData;
@@ -130,6 +143,7 @@ class FlutterRustBridgeTask<S, E extends Object>
     required this.callFfi,
     required this.parseSuccessData,
     required this.parseErrorData,
+    required this.parsePanicData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,

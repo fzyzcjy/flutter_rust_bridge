@@ -431,8 +431,10 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     let parse_error_data = if let Some(error_output) = &func.error_output {
         format!("_wire2api_{},", error_output.safe_ident())
     } else {
-        "wire2apiPanicError,".to_string()
+        "null,".to_string()
     };
+
+    let parse_panic_data = "wire2apiPanicError,";
 
     let implementation = match func.mode {
         IrFuncMode::Sync => format!(
@@ -451,6 +453,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             callFfi: (port_) => inner.{}({}),
             parseSuccessData: {},
             parseErrorData: {}
+            parsePanicData: {}
             {}
         ));",
             partial,
@@ -459,6 +462,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
             wire_param_list.join(", "),
             parse_sucess_data,
             parse_error_data,
+            parse_panic_data,
             task_common_args,
         ),
     };
