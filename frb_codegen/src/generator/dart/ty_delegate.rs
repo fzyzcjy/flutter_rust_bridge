@@ -49,9 +49,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 format!("return {}.values[raw];", ir.dart_api_type())
             }
-            IrTypeDelegate::Anyhow => {
-                format!("return FrbAnyhowException(raw as String);")
-            }
+            IrTypeDelegate::Anyhow => "return FrbAnyhowException(raw as String);".to_string(),
         }
     }
 
