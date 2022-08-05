@@ -92,10 +92,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta;
 
-  Future<VeryCustomStruct> returnErr2({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kReturnErr2ConstMeta;
-
   Future<int> returnPanic({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta;
@@ -778,14 +774,6 @@ class VecOfPrimitivePack {
   });
 }
 
-class VeryCustomStruct {
-  final String a;
-
-  VeryCustomStruct({
-    required this.a,
-  });
-}
-
 /// Simple enums.
 enum Weekdays {
   Monday,
@@ -837,7 +825,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_simple_adder(port_, _api2wire_i32(a), _api2wire_i32(b)),
         parseSuccessData: _wire2api_i32,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kSimpleAdderConstMeta,
         argValues: [a, b],
         hint: hint,
@@ -855,7 +842,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             inner.wire_primitive_types(port_, _api2wire_i32(myI32), _api2wire_i64(myI64), _api2wire_f64(myF64), myBool),
         parseSuccessData: _wire2api_i32,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kPrimitiveTypesConstMeta,
         argValues: [myI32, myI64, myF64, myBool],
         hint: hint,
@@ -870,7 +856,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_primitive_u32(port_, _api2wire_u32(myU32)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kPrimitiveU32ConstMeta,
         argValues: [myU32],
         hint: hint,
@@ -885,7 +870,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_string(port_, _api2wire_String(s)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleStringConstMeta,
         argValues: [s],
         hint: hint,
@@ -900,7 +884,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_return_unit(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleReturnUnitConstMeta,
         argValues: [],
         hint: hint,
@@ -915,7 +898,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_vec_u8(port_, _api2wire_uint_8_list(v)),
         parseSuccessData: _wire2api_uint_8_list,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleVecU8ConstMeta,
         argValues: [v],
         hint: hint,
@@ -931,7 +913,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_vec_of_primitive(port_, _api2wire_i32(n)),
         parseSuccessData: _wire2api_vec_of_primitive_pack,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleVecOfPrimitiveConstMeta,
         argValues: [n],
         hint: hint,
@@ -947,7 +928,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_zero_copy_vec_of_primitive(port_, _api2wire_i32(n)),
         parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleZeroCopyVecOfPrimitiveConstMeta,
         argValues: [n],
         hint: hint,
@@ -964,7 +944,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             inner.wire_handle_struct(port_, _api2wire_box_autoadd_my_size(arg), _api2wire_box_my_size(boxed)),
         parseSuccessData: _wire2api_my_size,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleStructConstMeta,
         argValues: [arg, boxed],
         hint: hint,
@@ -979,7 +958,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_newtype(port_, _api2wire_box_autoadd_new_type_int(arg)),
         parseSuccessData: _wire2api_new_type_int,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleNewtypeConstMeta,
         argValues: [arg],
         hint: hint,
@@ -995,7 +973,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_list_of_struct(port_, _api2wire_list_my_size(l)),
         parseSuccessData: _wire2api_list_my_size,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleListOfStructConstMeta,
         argValues: [l],
         hint: hint,
@@ -1011,7 +988,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_string_list(port_, _api2wire_StringList(names)),
         parseSuccessData: _wire2api_StringList,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleStringListConstMeta,
         argValues: [names],
         hint: hint,
@@ -1026,7 +1002,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_complex_struct(port_, _api2wire_box_autoadd_my_tree_node(s)),
         parseSuccessData: _wire2api_my_tree_node,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleComplexStructConstMeta,
         argValues: [s],
         hint: hint,
@@ -1053,7 +1028,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_stream(port_, _api2wire_String(arg)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleStreamConstMeta,
         argValues: [arg],
         hint: hint,
@@ -1068,7 +1042,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_stream_of_struct(port_),
         parseSuccessData: _wire2api_my_stream_entry,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleStreamOfStructConstMeta,
         argValues: [],
         hint: hint,
@@ -1082,8 +1055,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   Future<int> returnErr({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_err(port_),
         parseSuccessData: _wire2api_i32,
-        parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
+        parseErrorData: _wire2api_Anyhow,
         constMeta: kReturnErrConstMeta,
         argValues: [],
         hint: hint,
@@ -1094,26 +1066,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: [],
       );
 
-  Future<VeryCustomStruct> returnErr2({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_return_err_2(port_),
-        parseSuccessData: _wire2api_very_custom_struct,
-        parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
-        constMeta: kReturnErr2ConstMeta,
-        argValues: [],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kReturnErr2ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "return_err_2",
-        argNames: [],
-      );
-
   Future<int> returnPanic({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_return_panic(port_),
         parseSuccessData: _wire2api_i32,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnPanicConstMeta,
         argValues: [],
         hint: hint,
@@ -1129,7 +1085,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_optional_return(port_, _api2wire_f64(left), _api2wire_f64(right)),
         parseSuccessData: _wire2api_opt_box_autoadd_f64,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleOptionalReturnConstMeta,
         argValues: [left, right],
         hint: hint,
@@ -1144,7 +1099,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_optional_struct(port_, _api2wire_opt_String(document)),
         parseSuccessData: _wire2api_opt_box_autoadd_element,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleOptionalStructConstMeta,
         argValues: [document],
         hint: hint,
@@ -1161,7 +1115,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             inner.wire_handle_optional_increment(port_, _api2wire_opt_box_autoadd_exotic_optionals(opt)),
         parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleOptionalIncrementConstMeta,
         argValues: [opt],
         hint: hint,
@@ -1176,7 +1129,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_increment_boxed_optional(port_, _api2wire_opt_box_f64(opt)),
         parseSuccessData: _wire2api_f64,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleIncrementBoxedOptionalConstMeta,
         argValues: [opt],
         hint: hint,
@@ -1208,7 +1160,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             _api2wire_opt_box_exotic_optionals(structbox)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleOptionBoxArgumentsConstMeta,
         argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
         hint: hint,
@@ -1223,7 +1174,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_print_note(port_, _api2wire_box_autoadd_note(note)),
         parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kPrintNoteConstMeta,
         argValues: [note],
         hint: hint,
@@ -1238,7 +1188,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_return_enum(port_, _api2wire_String(input)),
         parseSuccessData: _wire2api_opt_weekdays,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleReturnEnumConstMeta,
         argValues: [input],
         hint: hint,
@@ -1254,7 +1203,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_enum_parameter(port_, _api2wire_weekdays(weekday)),
         parseSuccessData: _wire2api_weekdays,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleEnumParameterConstMeta,
         argValues: [weekday],
         hint: hint,
@@ -1269,7 +1217,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_customized_struct(port_, _api2wire_box_autoadd_customized(val)),
         parseSuccessData: _wire2api_unit,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleCustomizedStructConstMeta,
         argValues: [val],
         hint: hint,
@@ -1284,7 +1231,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_enum_struct(port_, _api2wire_box_autoadd_kitchen_sink(val)),
         parseSuccessData: _wire2api_kitchen_sink,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleEnumStructConstMeta,
         argValues: [val],
         hint: hint,
@@ -1299,7 +1245,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_use_imported_struct(port_, _api2wire_box_autoadd_my_struct(myStruct)),
         parseSuccessData: _wire2api_bool,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kUseImportedStructConstMeta,
         argValues: [myStruct],
         hint: hint,
@@ -1314,7 +1259,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_use_imported_enum(port_, _api2wire_my_enum(myEnum)),
         parseSuccessData: _wire2api_bool,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kUseImportedEnumConstMeta,
         argValues: [myEnum],
         hint: hint,
@@ -1329,7 +1273,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_get_app_settings(port_),
         parseSuccessData: _wire2api_application_settings,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kGetAppSettingsConstMeta,
         argValues: [],
         hint: hint,
@@ -1345,7 +1288,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_is_app_embedded(port_, _api2wire_box_autoadd_application_settings(appSettings)),
         parseSuccessData: _wire2api_bool,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kIsAppEmbeddedConstMeta,
         argValues: [appSettings],
         hint: hint,
@@ -1360,7 +1302,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_get_message(port_),
         parseSuccessData: _wire2api_application_message,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kGetMessageConstMeta,
         argValues: [],
         hint: hint,
@@ -1375,7 +1316,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_get_array(port_),
         parseSuccessData: _wire2api_uint_8_list,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kGetArrayConstMeta,
         argValues: [],
         hint: hint,
@@ -1390,7 +1330,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_get_complex_array(port_),
         parseSuccessData: _wire2api_list_point,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kGetComplexArrayConstMeta,
         argValues: [],
         hint: hint,
@@ -1405,7 +1344,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_get_usize(port_, _api2wire_usize(u)),
         parseSuccessData: _wire2api_usize,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kGetUsizeConstMeta,
         argValues: [u],
         hint: hint,
@@ -1420,7 +1358,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_next_user_id(port_, _api2wire_box_autoadd_user_id(userId)),
         parseSuccessData: _wire2api_user_id,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kNextUserIdConstMeta,
         argValues: [userId],
         hint: hint,
@@ -1435,7 +1372,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_register_event_listener(port_),
         parseSuccessData: _wire2api_event,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kRegisterEventListenerConstMeta,
         argValues: [],
         hint: hint,
@@ -1450,7 +1386,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_close_event_listener(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kCloseEventListenerConstMeta,
         argValues: [],
         hint: hint,
@@ -1465,7 +1400,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_create_event(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kCreateEventConstMeta,
         argValues: [],
         hint: hint,
@@ -1481,7 +1415,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_stream_sink_at_1(port_, _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleStreamSinkAt1ConstMeta,
         argValues: [key, max],
         hint: hint,
@@ -1497,7 +1430,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_stream_sink_at_2(port_, _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleStreamSinkAt2ConstMeta,
         argValues: [key, max],
         hint: hint,
@@ -1513,7 +1445,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_stream_sink_at_3(port_, _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleStreamSinkAt3ConstMeta,
         argValues: [key, max],
         hint: hint,
@@ -1528,7 +1459,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_get_sum_struct(port_),
         parseSuccessData: (d) => _wire2api_sum_with(this, d),
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kGetSumStructConstMeta,
         argValues: [],
         hint: hint,
@@ -1543,7 +1473,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_return_err_custom_error(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnErrCustomErrorConstMeta,
         argValues: [],
         hint: hint,
@@ -1558,7 +1487,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_return_ok_custom_error(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnOkCustomErrorConstMeta,
         argValues: [],
         hint: hint,
@@ -1573,7 +1501,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_return_error_variant(port_, _api2wire_u32(variant)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnErrorVariantConstMeta,
         argValues: [variant],
         hint: hint,
@@ -1588,7 +1515,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_return_custom_nested_error_1(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_nested_error_1,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnCustomNestedError1ConstMeta,
         argValues: [],
         hint: hint,
@@ -1603,7 +1529,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_return_custom_nested_error_1_variant1(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_nested_error_1,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnCustomNestedError1Variant1ConstMeta,
         argValues: [],
         hint: hint,
@@ -1618,7 +1543,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_return_custom_nested_error_2(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_nested_error_2,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnCustomNestedError2ConstMeta,
         argValues: [],
         hint: hint,
@@ -1633,7 +1557,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_return_custom_struct_error(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_struct_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnCustomStructErrorConstMeta,
         argValues: [],
         hint: hint,
@@ -1648,7 +1571,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_return_custom_struct_ok(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_struct_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kReturnCustomStructOkConstMeta,
         argValues: [],
         hint: hint,
@@ -1663,7 +1585,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_throw_anyhow(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_Anyhow,
-        parsePanicData: wire2apiPanicError,
         constMeta: kThrowAnyhowConstMeta,
         argValues: [],
         hint: hint,
@@ -1678,7 +1599,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_panic_with_custom_result(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kPanicWithCustomResultConstMeta,
         argValues: [],
         hint: hint,
@@ -1695,7 +1615,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_box_autoadd_sum_with(that), _api2wire_u32(y), _api2wire_u32(z)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kSumMethodSumWithConstMeta,
         argValues: [that, y, z],
         hint: hint,
@@ -1711,7 +1630,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_new__static_method__ConcatenateWith(port_, _api2wire_String(a)),
         parseSuccessData: (d) => _wire2api_concatenate_with(this, d),
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kNewStaticMethodConcatenateWithConstMeta,
         argValues: [a],
         hint: hint,
@@ -1728,7 +1646,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_box_autoadd_concatenate_with(that), _api2wire_String(b)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kConcatenateMethodConcatenateWithConstMeta,
         argValues: [that, b],
         hint: hint,
@@ -1745,7 +1662,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_String(a), _api2wire_String(b)),
         parseSuccessData: _wire2api_String,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kConcatenateStaticStaticMethodConcatenateWithConstMeta,
         argValues: [a, b],
         hint: hint,
@@ -1764,7 +1680,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_box_autoadd_concatenate_with(that), _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log_2,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleSomeStreamSinkMethodConcatenateWithConstMeta,
         argValues: [that, key, max],
         hint: hint,
@@ -1782,7 +1697,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_box_autoadd_concatenate_with(that)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta,
         argValues: [that],
         hint: hint,
@@ -1801,7 +1715,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_u32(key), _api2wire_u32(max)),
         parseSuccessData: _wire2api_log_2,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta,
         argValues: [key, max],
         hint: hint,
@@ -1818,7 +1731,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta,
         argValues: [],
         hint: hint,
@@ -1835,7 +1747,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_new__static_method__SomeStruct(port_, _api2wire_u32(value)),
         parseSuccessData: (d) => _wire2api_some_struct(this, d),
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kNewStaticMethodSomeStructConstMeta,
         argValues: [value],
         hint: hint,
@@ -1850,7 +1761,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_static_return_err_custom_error__static_method__SomeStruct(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta,
         argValues: [],
         hint: hint,
@@ -1866,7 +1776,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_static_return_ok_custom_error__static_method__SomeStruct(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta,
         argValues: [],
         hint: hint,
@@ -1884,7 +1793,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_box_autoadd_some_struct(that)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta,
         argValues: [that],
         hint: hint,
@@ -1902,7 +1810,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_box_autoadd_some_struct(that)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta,
         argValues: [that],
         hint: hint,
@@ -1919,7 +1826,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_new__static_method__CustomStruct(port_, _api2wire_String(message)),
         parseSuccessData: (d) => _wire2api_custom_struct(this, d),
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kNewStaticMethodCustomStructConstMeta,
         argValues: [message],
         hint: hint,
@@ -1935,7 +1841,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_static_return_custom_struct_error__static_method__CustomStruct(port_),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_struct_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta,
         argValues: [],
         hint: hint,
@@ -1951,7 +1856,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         callFfi: (port_) => inner.wire_static_return_custom_struct_ok__static_method__CustomStruct(port_),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_struct_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta,
         argValues: [],
         hint: hint,
@@ -1969,7 +1873,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_box_autoadd_custom_struct(that)),
         parseSuccessData: _wire2api_unit,
         parseErrorData: _wire2api_custom_struct_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta,
         argValues: [that],
         hint: hint,
@@ -1987,7 +1890,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
             port_, _api2wire_box_autoadd_custom_struct(that)),
         parseSuccessData: _wire2api_u32,
         parseErrorData: _wire2api_custom_struct_error,
-        parsePanicData: wire2apiPanicError,
         constMeta: kNonstaticReturnCustomStructOkMethodCustomStructConstMeta,
         argValues: [that],
         hint: hint,
@@ -3232,14 +3134,6 @@ VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
   );
 }
 
-VeryCustomStruct _wire2api_very_custom_struct(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return VeryCustomStruct(
-    a: _wire2api_String(arr[0]),
-  );
-}
-
 Weekdays _wire2api_weekdays(dynamic raw) {
   return Weekdays.values[raw];
 }
@@ -3534,17 +3428,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _wire_return_errPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_err');
   late final _wire_return_err = _wire_return_errPtr.asFunction<void Function(int)>();
-
-  void wire_return_err_2(
-    int port_,
-  ) {
-    return _wire_return_err_2(
-      port_,
-    );
-  }
-
-  late final _wire_return_err_2Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_err_2');
-  late final _wire_return_err_2 = _wire_return_err_2Ptr.asFunction<void Function(int)>();
 
   void wire_return_panic(
     int port_,

@@ -27,7 +27,6 @@ class ApiClass2Impl extends FlutterRustBridgeBase<ApiClass2Wire> implements ApiC
         callFfi: (port_) => inner.wire_simple_adder_2(port_, _api2wire_i32(a), _api2wire_i32(b)),
         parseSuccessData: _wire2api_i32,
         parseErrorData: null,
-        parsePanicData: wire2apiPanicError,
         constMeta: kSimpleAdder2ConstMeta,
         argValues: [a, b],
         hint: hint,

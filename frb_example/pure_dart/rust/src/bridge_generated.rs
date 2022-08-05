@@ -287,18 +287,6 @@ pub extern "C" fn wire_return_err(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_err_2(port_: i64) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "return_err_2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || move |task_callback| return_err_2(),
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn wire_return_panic(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -2866,13 +2854,6 @@ impl support::IntoDart for VecOfPrimitivePack {
     }
 }
 impl support::IntoDartExceptPrimitive for VecOfPrimitivePack {}
-
-impl support::IntoDart for VeryCustomStruct {
-    fn into_dart(self) -> support::DartCObject {
-        vec![self.a.into_dart()].into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for VeryCustomStruct {}
 
 impl support::IntoDart for Weekdays {
     fn into_dart(self) -> support::DartCObject {

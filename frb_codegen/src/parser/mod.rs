@@ -18,6 +18,7 @@ use crate::source_graph::Crate;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
 const RESULT_IDENT: &str = "Result";
+const ANYHOW_IDENT: &str = "anyhow";
 
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
     let crate_map = Crate::new(manifest_path);
@@ -64,9 +65,13 @@ impl<'a> Parser<'a> {
         println!("parsing inner: {:?}", inner);
         match inner {
             ty::SupportedInnerType::Path(ty::SupportedPathType {
-                ident, mut generic, ..
+                ident,
+                mut generic,
+                path_segments,
+                ..
             }) if ident == RESULT_IDENT && !generic.is_empty() => {
                 println!("identified result for inner");
+                println!("parsing first argument: {:?}", generic);
                 let result = self
                     .type_parser
                     .convert_to_ir_type(generic.remove(0), false)
@@ -78,6 +83,8 @@ impl<'a> Parser<'a> {
                             .convert_to_ir_type(generic.remove(0), true)
                             .unwrap(),
                     )
+                } else if path_segments.iter().any(|x| x.ident == ANYHOW_IDENT) {
+                    Some(IrType::Delegate(IrTypeDelegate::Anyhow))
                 } else {
                     None
                 };

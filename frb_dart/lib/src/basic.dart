@@ -11,6 +11,15 @@ import 'package:meta/meta.dart';
 
 final _instances = <Type>{};
 
+class PanicError extends FrbException {
+  String error;
+  PanicError(this.error);
+}
+
+PanicError wire2apiPanicError(dynamic raw) {
+  return PanicError(raw as String);
+}
+
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
 /// users should directly use the generated class.
@@ -43,7 +52,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
     return completer.future.then((dynamic raw) => _transformRust2DartMessage(
-        raw, task.parseSuccessData, task.parseErrorData, task.parsePanicData));
+        raw, task.parseSuccessData, task.parseErrorData, wire2apiPanicError));
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -73,7 +82,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     await for (final raw in receivePort) {
       try {
         yield _transformRust2DartMessage(raw, task.parseSuccessData,
-            task.parseErrorData, task.parsePanicData);
+            task.parseErrorData, wire2apiPanicError);
       } on _CloseStreamException {
         receivePort.close();
       }
@@ -133,9 +142,6 @@ class FlutterRustBridgeTask<S, E extends Object, P extends Object>
   /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;
 
-  /// Parse the returned data from the underlying function
-  final P Function(dynamic) parsePanicData;
-
   /// Parse the returned errordata from the underlying function
   final E Function(dynamic)? parseErrorData;
 
@@ -143,7 +149,6 @@ class FlutterRustBridgeTask<S, E extends Object, P extends Object>
     required this.callFfi,
     required this.parseSuccessData,
     required this.parseErrorData,
-    required this.parsePanicData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,
