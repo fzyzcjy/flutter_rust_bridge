@@ -34,7 +34,7 @@ jobs:
 
       - name: Install valgrind and llvm
         run: |
-          sudo apt update && sudo apt install -ylibclang-dev \
+          sudo apt update && sudo apt install -y libclang-dev \
           && wget -O valgrind.tar.bz2 https://sourceware.org/pub/valgrind/valgrind-3.19.0.tar.bz2 \
           && mkdir valgrind && tar -xvjf valgrind.tar.bz2 -C valgrind --strip-components=1 \
           && cd valgrind && ./configure && make && make install
