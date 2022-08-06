@@ -7,6 +7,8 @@ pub enum IrTypeDelegate {
     StringList,
     SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
+    ArrayPrimitive(usize, IrTypePrimitive),
+    ArrayGeneral(usize, Box<IrType>),
 }
 
 impl IrTypeDelegate {
@@ -24,6 +26,14 @@ impl IrTypeDelegate {
                 })
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::ArrayGeneral(_, inner) => IrType::GeneralList(IrTypeGeneralList {
+                inner: inner.clone(),
+            }),
+            IrTypeDelegate::ArrayPrimitive(_, primitive) => {
+                IrType::PrimitiveList(IrTypePrimitiveList {
+                    primitive: primitive.clone(),
+                })
+            }
         }
     }
 }
@@ -41,6 +51,9 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
+            IrTypeDelegate::ArrayGeneral(len, _) | IrTypeDelegate::ArrayPrimitive(len, _) => {
+                format!("Array{len}_") + &self.get_delegate().dart_api_type()
+            }
         }
     }
 
@@ -48,9 +61,10 @@ impl IrTypeTrait for IrTypeDelegate {
         match self {
             IrTypeDelegate::String => "String".to_string(),
             IrTypeDelegate::StringList => "List<String>".to_owned(),
-            IrTypeDelegate::SyncReturnVecU8 | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                self.get_delegate().dart_api_type()
-            }
+            IrTypeDelegate::SyncReturnVecU8
+            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_)
+            | IrTypeDelegate::ArrayGeneral(_, _)
+            | IrTypeDelegate::ArrayPrimitive(_, _) => self.get_delegate().dart_api_type(),
         }
     }
 
@@ -68,6 +82,12 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::StringList => "Vec<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
+            }
+            IrTypeDelegate::ArrayGeneral(len, inner) => {
+                format!("[{};{len}]", inner.rust_api_type())
+            }
+            IrTypeDelegate::ArrayPrimitive(len, inner) => {
+                format!("[{};{len}]", inner.rust_api_type())
             }
         }
     }

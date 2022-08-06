@@ -18,6 +18,22 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
             IrTypeDelegate::StringList => TypeGeneralListGenerator::WIRE2API_BODY.to_string(),
+            array @ IrTypeDelegate::ArrayPrimitive(_, _) => format!(
+                "let vec: {} = self.wire2api();
+                let slice = vec.as_slice();
+                let ptr = slice.as_ptr() as *const {};
+                unsafe {{ *ptr }}",
+                array.get_delegate().rust_api_type(),
+                array.rust_api_type()
+            ),
+            array @ IrTypeDelegate::ArrayGeneral(_, _) => format!(
+                "let vec: {} = self.wire2api();
+                let slice = vec.as_slice();
+                let ptr = slice.as_ptr() as *const {};
+                unsafe {{ *ptr }}",
+                array.get_delegate().rust_api_type(),
+                array.rust_api_type()
+            ),
         })
     }
 

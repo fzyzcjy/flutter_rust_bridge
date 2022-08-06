@@ -24,6 +24,21 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             return ans;"
                 .to_owned(),
+            IrTypeDelegate::ArrayPrimitive(_, _) => format!(
+                "final ans = inner.new_{}(raw.length);
+                    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                    return ans;",
+                self.ir.safe_ident(),
+            ),
+            IrTypeDelegate::ArrayGeneral(_, ref inner) => format!(
+                "final ans = inner.new_{}(raw.length);
+                    for (var i = 0; i < raw.length; ++i) {{
+                        _api_fill_to_wire_{}(raw[i], ans.ref.ptr[i]);
+                    }}
+                    return ans;",
+                self.ir.safe_ident(),
+                inner.safe_ident()
+            ),
         })
     }
 
@@ -31,12 +46,18 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
         match &self.ir {
             IrTypeDelegate::String
             | IrTypeDelegate::SyncReturnVecU8
-            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_)
+            | IrTypeDelegate::ArrayPrimitive(_, _) => {
                 gen_wire2api_simple_type_cast(&self.ir.dart_api_type())
             }
             IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
+
+            IrTypeDelegate::ArrayGeneral(_, inner) => format!(
+                "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
+                inner.safe_ident()
+            ),
         }
     }
 }
