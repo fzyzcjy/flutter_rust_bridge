@@ -445,12 +445,10 @@ void main(List<String> args) async {
     }
     expect(cnt, 5);
   });
-
   /*
   test('Throw CustomError', () async {
     expect(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
   });
-  */
 
   test('Throw CustomStructError', () async {
     expect(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
@@ -492,16 +490,13 @@ void main(List<String> args) async {
     expect(() async => await api.returnCustomNestedError2(), throwsA(CustomNestedError2.customNested2("custom")));
   });
 
-/*
   test('Throw CustomError variant 0', () async {
     expect(() async => await api.returnErrorVariant(variant: 0), throwsA(isA<CustomError>()));
   });
-*/
-/*
+
   test('Throw CustomError variant 1', () async {
     expect(() async => await api.returnErrorVariant(variant: 1), throwsA(isA<CustomError>()));
   });
-*/
 
   test('Do not throw CustomError', () async {
     expect(await api.returnOkCustomError(), 3);
@@ -563,7 +558,7 @@ void main(List<String> args) async {
       assert(p.error.contains("just a panic"));
     }
   });
-
+  */
   print('flutter_rust_bridge example program end');
 }
 
