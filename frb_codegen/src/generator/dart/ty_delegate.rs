@@ -28,7 +28,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 "final ans = inner.new_{}(raw.length);
                     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
                     return ans;",
-                self.ir.safe_ident(),
+                self.ir.get_delegate().safe_ident(),
             ),
             IrTypeDelegate::ArrayGeneral(_, ref inner) => format!(
                 "final ans = inner.new_{}(raw.length);
@@ -36,7 +36,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                         _api_fill_to_wire_{}(raw[i], ans.ref.ptr[i]);
                     }}
                     return ans;",
-                self.ir.safe_ident(),
+                self.ir.get_delegate().safe_ident(),
                 inner.safe_ident()
             ),
         })
