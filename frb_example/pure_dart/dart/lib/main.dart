@@ -492,10 +492,11 @@ void main(List<String> args) async {
     expect(() async => await api.returnCustomNestedError2(), throwsA(CustomNestedError2.customNested2("custom")));
   });
 
+/*
   test('Throw CustomError variant 0', () async {
     expect(() async => await api.returnErrorVariant(variant: 0), throwsA(isA<CustomError>()));
   });
-
+*/
 /*
   test('Throw CustomError variant 1', () async {
     expect(() async => await api.returnErrorVariant(variant: 1), throwsA(isA<CustomError>()));
