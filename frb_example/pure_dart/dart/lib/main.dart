@@ -451,7 +451,7 @@ void main(List<String> args) async {
     expect(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
   });
   */
-  
+
   test('Throw CustomStructError', () async {
     expect(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
   });
@@ -496,9 +496,11 @@ void main(List<String> args) async {
     expect(() async => await api.returnErrorVariant(variant: 0), throwsA(isA<CustomError>()));
   });
 
+/*
   test('Throw CustomError variant 1', () async {
     expect(() async => await api.returnErrorVariant(variant: 1), throwsA(isA<CustomError>()));
   });
+*/
 
   test('Do not throw CustomError', () async {
     expect(await api.returnOkCustomError(), 3);
