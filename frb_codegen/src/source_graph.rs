@@ -183,10 +183,11 @@ impl Debug for Module {
 }
 
 /// Get a struct or enum ident, possibly remapped by a mirror marker
-fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Ident, bool) {
+fn get_ident(attrs: &[Attribute]) -> Vec<Ident> {
     markers::extract_mirror_marker(attrs)
-        .and_then(|path| path.get_ident().map(|ident| (ident.clone(), true)))
-        .unwrap_or_else(|| (ident.clone(), false))
+        .into_iter()
+        .filter_map(|path| path.get_ident().map(|ident| ident.clone()))
+        .collect()
 }
 
 impl Module {
@@ -209,34 +210,70 @@ impl Module {
         for item in items.iter() {
             match item {
                 syn::Item::Struct(item_struct) => {
-                    let (ident, mirror) = get_ident(&item_struct.ident, &item_struct.attrs);
-                    let ident_str = ident.to_string();
-                    scope_structs.push(Struct {
-                        ident,
-                        src: item_struct.clone(),
-                        visibility: syn_vis_to_visibility(&item_struct.vis),
-                        path: {
-                            let mut path = self.module_path.clone();
-                            path.push(ident_str);
-                            path
-                        },
-                        mirror,
-                    });
+                    let idents = get_ident(&item_struct.attrs);
+                    if idents.is_empty() {
+                        let ident = item_struct.ident.clone();
+                        let ident_str = ident.to_string();
+                        scope_structs.push(Struct {
+                            ident,
+                            src: item_struct.clone(),
+                            visibility: syn_vis_to_visibility(&item_struct.vis),
+                            path: {
+                                let mut path = self.module_path.clone();
+                                path.push(ident_str);
+                                path
+                            },
+                            mirror: false,
+                        });
+                    } else {
+                        for ident in idents {
+                            let ident_str = ident.to_string();
+                            scope_structs.push(Struct {
+                                ident,
+                                src: item_struct.clone(),
+                                visibility: syn_vis_to_visibility(&item_struct.vis),
+                                path: {
+                                    let mut path = self.module_path.clone();
+                                    path.push(ident_str);
+                                    path
+                                },
+                                mirror: true,
+                            });
+                        }
+                    }
                 }
                 syn::Item::Enum(item_enum) => {
-                    let (ident, mirror) = get_ident(&item_enum.ident, &item_enum.attrs);
-                    let ident_str = ident.to_string();
-                    scope_enums.push(Enum {
-                        ident,
-                        src: item_enum.clone(),
-                        visibility: syn_vis_to_visibility(&item_enum.vis),
-                        path: {
-                            let mut path = self.module_path.clone();
-                            path.push(ident_str);
-                            path
-                        },
-                        mirror,
-                    });
+                    let idents = get_ident(&item_enum.attrs);
+                    if idents.is_empty() {
+                        let ident = item_enum.ident.clone();
+                        let ident_str = ident.to_string();
+                        scope_enums.push(Enum {
+                            ident,
+                            src: item_enum.clone(),
+                            visibility: syn_vis_to_visibility(&item_enum.vis),
+                            path: {
+                                let mut path = self.module_path.clone();
+                                path.push(ident_str);
+                                path
+                            },
+                            mirror: false,
+                        });
+                    } else {
+                        for ident in idents {
+                            let ident_str = ident.to_string();
+                            scope_enums.push(Enum {
+                                ident,
+                                src: item_enum.clone(),
+                                visibility: syn_vis_to_visibility(&item_enum.vis),
+                                path: {
+                                    let mut path = self.module_path.clone();
+                                    path.push(ident_str);
+                                    path
+                                },
+                                mirror: true,
+                            });
+                        }
+                    }
                 }
                 syn::Item::Mod(item_mod) => {
                     let ident = item_mod.ident.clone();
