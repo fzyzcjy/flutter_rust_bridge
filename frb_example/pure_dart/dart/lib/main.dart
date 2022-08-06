@@ -445,11 +445,11 @@ void main(List<String> args) async {
     }
     expect(cnt, 5);
   });
-  /*
+  
   test('Throw CustomError', () async {
     expect(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
   });
-  */
+  
   test('Throw CustomStructError', () async {
     expect(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
   });
