@@ -576,6 +576,36 @@ pub extern "C" fn wire_repeat_sequence(port_: i64, seq: i32, times: usize) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_first_number(port_: i64, nums: *mut wire_Numbers) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "first_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_nums = nums.wire2api();
+            move |task_callback| Ok(first_number(api_nums))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_first_sequence(port_: i64, seqs: *mut wire_Sequences) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "first_sequence",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_seqs = seqs.wire2api();
+            move |task_callback| Ok(first_sequence(api_seqs))
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_get_array(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1079,6 +1109,18 @@ pub struct wire_Note {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_Numbers {
+    field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Sequences {
+    field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_SumWith {
     x: u32,
 }
@@ -1305,6 +1347,16 @@ pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut wire_NewTypeInt {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_note_0() -> *mut wire_Note {
     support::new_leak_box_ptr(wire_Note::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_numbers_0() -> *mut wire_Numbers {
+    support::new_leak_box_ptr(wire_Numbers::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_sequences_0() -> *mut wire_Sequences {
+    support::new_leak_box_ptr(wire_Sequences::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1668,6 +1720,20 @@ impl Wire2Api<Note> for *mut wire_Note {
     }
 }
 
+impl Wire2Api<Numbers> for *mut wire_Numbers {
+    fn wire2api(self) -> Numbers {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Numbers>::wire2api(*wrap).into()
+    }
+}
+
+impl Wire2Api<Sequences> for *mut wire_Sequences {
+    fn wire2api(self) -> Sequences {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Sequences>::wire2api(*wrap).into()
+    }
+}
+
 impl Wire2Api<SumWith> for *mut wire_SumWith {
     fn wire2api(self) -> SumWith {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -2001,6 +2067,18 @@ impl Wire2Api<Note> for wire_Note {
     }
 }
 
+impl Wire2Api<Numbers> for wire_Numbers {
+    fn wire2api(self) -> Numbers {
+        Numbers(self.field0.wire2api())
+    }
+}
+
+impl Wire2Api<Sequences> for wire_Sequences {
+    fn wire2api(self) -> Sequences {
+        Sequences(self.field0.wire2api())
+    }
+}
+
 impl Wire2Api<SumWith> for wire_SumWith {
     fn wire2api(self) -> SumWith {
         SumWith {
@@ -2246,6 +2324,22 @@ impl NewWithNullPtr for wire_Note {
         Self {
             day: core::ptr::null_mut(),
             body: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Numbers {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Sequences {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
         }
     }
 }

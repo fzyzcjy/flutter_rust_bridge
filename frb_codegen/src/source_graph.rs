@@ -228,9 +228,9 @@ impl Module {
                 syn::Item::Struct(item_struct) => {
                     let (idents, mirror) = get_ident(&item_struct.ident, &item_struct.attrs);
 
-                    for ident in idents {
+                    scope_structs.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
-                        scope_structs.push(Struct {
+                        Struct {
                             ident,
                             src: item_struct.clone(),
                             visibility: syn_vis_to_visibility(&item_struct.vis),
@@ -240,15 +240,15 @@ impl Module {
                                 path
                             },
                             mirror,
-                        });
-                    }
+                        }
+                    }));
                 }
                 syn::Item::Enum(item_enum) => {
                     let (idents, mirror) = get_ident(&item_enum.ident, &item_enum.attrs);
 
-                    for ident in idents {
+                    scope_enums.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
-                        scope_enums.push(Enum {
+                        Enum {
                             ident,
                             src: item_enum.clone(),
                             visibility: syn_vis_to_visibility(&item_enum.vis),
@@ -258,8 +258,8 @@ impl Module {
                                 path
                             },
                             mirror,
-                        });
-                    }
+                        }
+                    }));
                 }
                 syn::Item::Mod(item_mod) => {
                     let ident = item_mod.ident.clone();

@@ -543,6 +543,14 @@ pub fn repeat_sequence(seq: i32, times: usize) -> Sequences {
     external_lib::repeat_sequences(seq, times)
 }
 
+pub fn first_number(nums: Numbers) -> Option<i32> {
+    nums.0.get(1).copied()
+}
+
+pub fn first_sequence(seqs: Sequences) -> Option<i32> {
+    seqs.0.get(1).copied()
+}
+
 // [T; N] example
 pub fn get_array() -> [u8; 5] {
     [1, 2, 3, 4, 5]

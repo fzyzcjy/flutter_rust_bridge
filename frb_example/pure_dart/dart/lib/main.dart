@@ -362,6 +362,18 @@ void main(List<String> args) async {
         Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
+  test('dart call firstNumber()', () async {
+    var numbers = Numbers(field0: Int32List.fromList([1]));
+    var first = await api.firstNumber(nums: numbers);
+    expect(first, 1);
+  });
+
+  test('dart call firstSequence()', () async {
+    var sequences = Sequences(field0: Int32List.fromList([1]));
+    var first = await api.firstSequence(seqs: sequences);
+    expect(first, 1);
+  });
+
   test('loop and call many times', () async {
     var obj = _createMyTreeNode(arrLen: 5);
     for (var i = 0; i < 500; ++i) {
@@ -414,15 +426,19 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith test', () async {
-    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final ConcatenateWith concatenateWith =
+        ConcatenateWith(a: "hello ", bridge: api);
     final String concatenated = await concatenateWith.concatenate(b: "world");
     expect(concatenated, equals("hello world"));
 
-    final staticConcatenated = await ConcatenateWith.concatenateStatic(bridge: api, a: "hello ", b: "world");
+    final staticConcatenated = await ConcatenateWith.concatenateStatic(
+        bridge: api, a: "hello ", b: "world");
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
-    final String concatenated2 = await concatenatedConstructor.concatenate(b: "world");
+    final concatenatedConstructor =
+        await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
+    final String concatenated2 =
+        await concatenatedConstructor.concatenate(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -439,7 +455,8 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith stream sink test', () async {
-    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final ConcatenateWith concatenateWith =
+        ConcatenateWith(a: "hello ", bridge: api);
     final int key = 10;
     final int max = 5;
     final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
@@ -455,7 +472,8 @@ void main(List<String> args) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream = ConcatenateWith.handleSomeStaticStreamSink(bridge: api, key: key, max: max);
+    final stream = ConcatenateWith.handleSomeStaticStreamSink(
+        bridge: api, key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -466,7 +484,8 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
+    final stream =
+        ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
