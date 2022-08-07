@@ -11,15 +11,19 @@ pub fn extract_mirror_marker(attrs: &[Attribute]) -> Vec<Path> {
                     path,
                     nested: mirror,
                     ..
-                })) if path.is_ident("mirror") && !mirror.is_empty() => {
-                    let mut res = Vec::with_capacity(mirror.len());
-                    for mirror_lable in mirror.into_iter() {
-                        if let NestedMeta::Meta(Meta::Path(path)) = mirror_lable {
-                            res.push(path.clone());
-                        }
-                    }
-                    Some(res)
-                }
+                })) if path.is_ident("mirror") && !mirror.is_empty() => Some(
+                    mirror
+                        .into_iter()
+                        .filter_map(|lable| {
+                            if let NestedMeta::Meta(Meta::Path(path)) = lable {
+                                Some(path)
+                            } else {
+                                None
+                            }
+                        })
+                        .cloned()
+                        .collect::<Vec<_>>(),
+                ),
                 _ => None,
             }),
             _ => None,
