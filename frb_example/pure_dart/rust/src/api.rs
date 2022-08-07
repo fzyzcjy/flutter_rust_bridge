@@ -472,6 +472,7 @@ pub fn use_imported_enum(my_enum: MyEnum) -> bool {
 // To use an external type with mirroring, it MUST be imported publicly (aka. re-export)
 pub use external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
+    Numbers, Sequences,
 };
 use lazy_static::lazy_static;
 
@@ -518,6 +519,17 @@ pub enum _ApplicationMessage {
 
 pub fn get_message() -> ApplicationMessage {
     external_lib::poll_messages()[1].clone()
+}
+
+#[frb(mirror(Numbers, Sequences))]
+pub struct _Numbers(pub Vec<i32>);
+
+pub fn repeat_number(num: i32, times: usize) -> Numbers {
+    external_lib::repeat_number(num, times)
+}
+
+pub fn repeat_sequence(seq: i32, times: usize) -> Sequences {
+    external_lib::repeat_sequences(seq, times)
 }
 
 // [T; N] example

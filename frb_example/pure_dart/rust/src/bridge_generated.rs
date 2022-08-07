@@ -529,6 +529,38 @@ pub extern "C" fn wire_get_message(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_repeat_number(port_: i64, num: i32, times: usize) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "repeat_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_num = num.wire2api();
+            let api_times = times.wire2api();
+            move |task_callback| Ok(mirror_Numbers(repeat_number(api_num, api_times)))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_repeat_sequence(port_: i64, seq: i32, times: usize) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "repeat_sequence",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_seq = seq.wire2api();
+            let api_times = times.wire2api();
+            move |task_callback| Ok(mirror_Sequences(repeat_sequence(api_seq, api_times)))
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_get_array(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -920,6 +952,12 @@ struct mirror_ApplicationMode(ApplicationMode);
 #[derive(Clone)]
 struct mirror_ApplicationSettings(ApplicationSettings);
 
+#[derive(Clone)]
+struct mirror_Numbers(Numbers);
+
+#[derive(Clone)]
+struct mirror_Sequences(Sequences);
+
 // Section: static checks
 
 const _: fn() = || {
@@ -952,6 +990,14 @@ const _: fn() = || {
         let _: String = ApplicationSettings.version;
         let _: ApplicationMode = ApplicationSettings.mode;
         let _: Box<ApplicationEnv> = ApplicationSettings.env;
+    }
+    {
+        let Numbers_ = None::<Numbers>.unwrap();
+        let _: Vec<i32> = Numbers_.0;
+    }
+    {
+        let Sequences_ = None::<Sequences>.unwrap();
+        let _: Vec<i32> = Sequences_.0;
     }
 };
 // Section: allocate functions
@@ -2086,12 +2132,26 @@ impl support::IntoDart for NewTypeInt {
 }
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
 
+impl support::IntoDart for mirror_Numbers {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0 .0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_Numbers {}
+
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartCObject {
         vec![self.x.into_dart(), self.y.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+
+impl support::IntoDart for mirror_Sequences {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0 .0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_Sequences {}
 
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartCObject {
