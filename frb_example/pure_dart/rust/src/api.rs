@@ -544,11 +544,11 @@ pub fn repeat_sequence(seq: i32, times: usize) -> Sequences {
 }
 
 pub fn first_number(nums: Numbers) -> Option<i32> {
-    nums.0.get(1).copied()
+    nums.0.get(0).copied()
 }
 
 pub fn first_sequence(seqs: Sequences) -> Option<i32> {
-    seqs.0.get(1).copied()
+    seqs.0.get(0).copied()
 }
 
 // [T; N] example
