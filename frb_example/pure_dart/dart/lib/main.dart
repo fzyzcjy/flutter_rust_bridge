@@ -18,12 +18,7 @@ void main(List<String> args) async {
 
   test('dart call primitiveTypes', () async {
     expect(
-        await api.primitiveTypes(
-            myI32: 123,
-            myI64: 10000000000000,
-            myF64: 12345678901234567890.123,
-            myBool: true),
-        42);
+        await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
   });
 
   test('dart call primitiveU32', () async {
@@ -35,8 +30,7 @@ void main(List<String> args) async {
   });
 
   test('dart call handleString', () async {
-    expect(await api.handleString(s: "Hello, world!"),
-        "Hello, world!Hello, world!");
+    expect(await api.handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
   });
 
   test('dart call handleVecU8', () async {
@@ -76,9 +70,8 @@ void main(List<String> args) async {
   });
 
   test('dart call handleStruct', () async {
-    final structResp = await api.handleStruct(
-        arg: MySize(width: 42, height: 100),
-        boxed: MySize(width: 1000, height: 10000));
+    final structResp =
+        await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
@@ -89,8 +82,8 @@ void main(List<String> args) async {
   });
 
   test('dart call handleListOfStruct', () async {
-    final listOfStructResp = await api.handleListOfStruct(
-        l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+    final listOfStructResp =
+        await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
     expect(listOfStructResp.length, 4);
     expect(listOfStructResp[0].width, 42);
     expect(listOfStructResp[1].width, 420);
@@ -105,13 +98,11 @@ void main(List<String> args) async {
 
   test('dart call handleComplexStruct', () async {
     final arrLen = 5;
-    final complexStructResp =
-        await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+    final complexStructResp = await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
     expect(complexStructResp.valueI32, 100);
     expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
     expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-    expect(complexStructResp.children[0].children[0].valueVecU8,
-        List.filled(arrLen, 111));
+    expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
     expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
   });
 
@@ -141,8 +132,7 @@ void main(List<String> args) async {
 
   test('dart call handle_stream', () {
     Future<void> _testHandleStream(
-        Stream<Log> Function({dynamic hint, required int key, required int max})
-            handleStreamFunction) async {
+        Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
       final max = 5;
       final key = 8;
       final stream = handleStreamFunction(key: key, max: max);
@@ -193,8 +183,7 @@ void main(List<String> args) async {
     {
       final message = 'Hello there.';
       final ret = await api.handleOptionalStruct(document: message);
-      if (ret == null)
-        fail('handleOptionalStruct returned null for non-null document');
+      if (ret == null) fail('handleOptionalStruct returned null for non-null document');
       expect(ret.tag, 'div');
       expect(ret.text, null);
       expect(ret.attributes?[0].key, 'id');
@@ -210,8 +199,7 @@ void main(List<String> args) async {
   test('dart call handleOptionalIncrement', () async {
     expect(await api.handleOptionalIncrement(), null);
     {
-      var ret = await api.handleOptionalIncrement(
-          opt: ExoticOptionals(attributesNullable: []));
+      var ret = await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
       final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
@@ -252,8 +240,7 @@ void main(List<String> args) async {
     {
       final optional10 = await api.handleOptionBoxArguments(
         boolbox: true,
-        structbox: await api.handleOptionalIncrement(
-            opt: ExoticOptionals(attributesNullable: [])),
+        structbox: await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: [])),
       );
       print(optional10);
     }
@@ -265,8 +252,7 @@ void main(List<String> args) async {
   });
 
   test('dart call handleEnumParameter', () async {
-    expect(await api.handleEnumParameter(weekday: Weekdays.Saturday),
-        Weekdays.Saturday);
+    expect(await api.handleEnumParameter(weekday: Weekdays.Saturday), Weekdays.Saturday);
   });
 
   test('dart call handleEnumStruct', () async {
@@ -331,9 +317,7 @@ void main(List<String> args) async {
                 name: "from dart",
                 version: "XX",
                 mode: ApplicationMode.Embedded,
-                env: ApplicationEnv(vars: [
-                  ApplicationEnvVar(field0: "sendback", field1: true)
-                ]))),
+                env: ApplicationEnv(vars: [ApplicationEnvVar(field0: "sendback", field1: true)]))),
         true);
   });
 
@@ -352,14 +336,12 @@ void main(List<String> args) async {
 
   test('dart call repeatNumber()', () async {
     var numbers = await api.repeatNumber(num: 1, times: 10);
-    expect(numbers.field0.toList(),
-        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    expect(numbers.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call repeatSequence()', () async {
     var sequences = await api.repeatSequence(seq: 1, times: 10);
-    expect(sequences.field0.toList(),
-        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    expect(sequences.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call firstNumber()', () async {
@@ -397,8 +379,7 @@ void main(List<String> args) async {
   });
 
   test('dart check that non-final field is modifiable', () {
-    var customized =
-        Customized(finalField: "finalField", nonFinalField: "nonFinalField");
+    var customized = Customized(finalField: "finalField", nonFinalField: "nonFinalField");
     expect(customized.nonFinalField, "nonFinalField");
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");
@@ -409,8 +390,7 @@ void main(List<String> args) async {
     expect(await api.nextUserId(userId: userId), UserId(value: 12));
   });
 
-  test('dart register event listener & create event after delayed future',
-      () async {
+  test('dart register event listener & create event after delayed future', () async {
     bool listenerCalled = false;
     api.registerEventListener().listen((e) {
       listenerCalled = true;
@@ -426,19 +406,15 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith test', () async {
-    final ConcatenateWith concatenateWith =
-        ConcatenateWith(a: "hello ", bridge: api);
+    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
     final String concatenated = await concatenateWith.concatenate(b: "world");
     expect(concatenated, equals("hello world"));
 
-    final staticConcatenated = await ConcatenateWith.concatenateStatic(
-        bridge: api, a: "hello ", b: "world");
+    final staticConcatenated = await ConcatenateWith.concatenateStatic(bridge: api, a: "hello ", b: "world");
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor =
-        await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
-    final String concatenated2 =
-        await concatenatedConstructor.concatenate(b: "world");
+    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
+    final String concatenated2 = await concatenatedConstructor.concatenate(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -455,8 +431,7 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith stream sink test', () async {
-    final ConcatenateWith concatenateWith =
-        ConcatenateWith(a: "hello ", bridge: api);
+    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
     final int key = 10;
     final int max = 5;
     final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
@@ -472,8 +447,7 @@ void main(List<String> args) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream = ConcatenateWith.handleSomeStaticStreamSink(
-        bridge: api, key: key, max: max);
+    final stream = ConcatenateWith.handleSomeStaticStreamSink(bridge: api, key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -484,8 +458,7 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream =
-        ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
+    final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
