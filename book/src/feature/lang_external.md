@@ -29,6 +29,8 @@ No need to worry whether this breaks the DRY principle, or what happens when you
 
 More information: [#352](https://github.com/fzyzcjy/flutter_rust_bridge/pull/352)
 
+When multiple structs have the same fields, you can mirror them *once* using grammar like `#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]`. ([#619](https://github.com/fzyzcjy/flutter_rust_bridge/pull/619))
+
 ### Example
 
 ```rust,noplayground
@@ -76,3 +78,19 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
 }
 ```
 
+Another example using one struct to mirror multiple structs:
+
+
+```rust,noplayground
+// *no* need to do these
+#[frb(mirror(MessageId))]
+pub struct MId(pub [u8; 32]);
+#[frb(mirror(BlobId))]
+pub struct BId(pub [u8; 32]);
+#[frb(mirror(FeedId))]
+pub struct FId(pub [u8; 32]);
+
+// simply do this is sufficient
+#[frb(mirror(MessageId, BlobId, FeedId))]
+pub struct Id(pub [u8; 32]);
+```
