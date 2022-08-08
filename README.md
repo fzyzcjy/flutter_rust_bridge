@@ -101,6 +101,7 @@ More specifically, thanks for all these contributions:
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
+* [Cupnfish](https://github.com/Cupnfish): Allow multi mirror.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
