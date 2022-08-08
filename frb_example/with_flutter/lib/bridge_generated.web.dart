@@ -13,7 +13,7 @@ export 'bridge_generated.dart';
 import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
-  FlutterRustBridgeExamplePlatform(FutureOr<WasmModule> dylib) : super(FlutterRustBridgeExampleWire(dylib));
+  FlutterRustBridgeExamplePlatform(FutureOr<WasmModule> dylib) : super(FlutterRustBridgeExampleWire(dylib as dynamic));
 // Section: api2wire
 
   @protected
@@ -67,83 +67,83 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 }
 
-// Section: WASM wire functions
-
-@JS(r'wasm_bindgen.wire_draw_mandelbrot')
-external void _wire_draw_mandelbrot(
-    NativePortType port_, List<dynamic> image_size, List<dynamic> zoom_point, double scale, int num_threads);
-
-@JS(r'wasm_bindgen.wire_passing_complex_structs')
-external void _wire_passing_complex_structs(NativePortType port_, List<dynamic> root);
-
-@JS(r'wasm_bindgen.wire_returning_structs_with_boxed_fields')
-external void _wire_returning_structs_with_boxed_fields(NativePortType port_);
-
-@JS(r'wasm_bindgen.wire_off_topic_memory_test_input_array')
-external void _wire_off_topic_memory_test_input_array(NativePortType port_, Uint8List input);
-
-@JS(r'wasm_bindgen.wire_off_topic_memory_test_output_zero_copy_buffer')
-external void _wire_off_topic_memory_test_output_zero_copy_buffer(NativePortType port_, int len);
-
-@JS(r'wasm_bindgen.wire_off_topic_memory_test_output_vec_u8')
-external void _wire_off_topic_memory_test_output_vec_u8(NativePortType port_, int len);
-
-@JS(r'wasm_bindgen.wire_off_topic_memory_test_input_vec_of_object')
-external void _wire_off_topic_memory_test_input_vec_of_object(NativePortType port_, List<dynamic> input);
-
-@JS(r'wasm_bindgen.wire_off_topic_memory_test_output_vec_of_object')
-external void _wire_off_topic_memory_test_output_vec_of_object(NativePortType port_, int len);
-
-@JS(r'wasm_bindgen.wire_off_topic_memory_test_input_complex_struct')
-external void _wire_off_topic_memory_test_input_complex_struct(NativePortType port_, List<dynamic> input);
-
-@JS(r'wasm_bindgen.wire_off_topic_memory_test_output_complex_struct')
-external void _wire_off_topic_memory_test_output_complex_struct(NativePortType port_, int len);
-
-@JS(r'wasm_bindgen.wire_off_topic_deliberately_return_error')
-external void _wire_off_topic_deliberately_return_error(NativePortType port_);
-
-@JS(r'wasm_bindgen.wire_off_topic_deliberately_panic')
-external void _wire_off_topic_deliberately_panic(NativePortType port_);
 // Section: WASM wire module
 
-class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase {
-  FlutterRustBridgeExampleWire(FutureOr<WasmModule> module) : super(module);
+@JS('wasm_bindgen')
+external FlutterRustBridgeExampleWasmModule get wasmModule;
+
+@JS()
+@anonymous
+class FlutterRustBridgeExampleWasmModule implements WasmModule {
+  external Object /* Promise */ call([String? moduleName]);
+  external FlutterRustBridgeExampleWasmModule bind(WasmModule module, String moduleName);
+
+  external void wire_draw_mandelbrot(
+      NativePortType port_, List<dynamic> image_size, List<dynamic> zoom_point, double scale, int num_threads);
+
+  external void wire_passing_complex_structs(NativePortType port_, List<dynamic> root);
+
+  external void wire_returning_structs_with_boxed_fields(NativePortType port_);
+
+  external void wire_off_topic_memory_test_input_array(NativePortType port_, Uint8List input);
+
+  external void wire_off_topic_memory_test_output_zero_copy_buffer(NativePortType port_, int len);
+
+  external void wire_off_topic_memory_test_output_vec_u8(NativePortType port_, int len);
+
+  external void wire_off_topic_memory_test_input_vec_of_object(NativePortType port_, List<dynamic> input);
+
+  external void wire_off_topic_memory_test_output_vec_of_object(NativePortType port_, int len);
+
+  external void wire_off_topic_memory_test_input_complex_struct(NativePortType port_, List<dynamic> input);
+
+  external void wire_off_topic_memory_test_output_complex_struct(NativePortType port_, int len);
+
+  external void wire_off_topic_deliberately_return_error(NativePortType port_);
+
+  external void wire_off_topic_deliberately_panic(NativePortType port_);
+}
+
+// Section: WASM wire connector
+
+class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<FlutterRustBridgeExampleWasmModule> {
+  FlutterRustBridgeExampleWire(FutureOr<WasmModule> module)
+      : super(module as FutureOr<FlutterRustBridgeExampleWasmModule>);
 
   void wire_draw_mandelbrot(
           NativePortType port_, List<dynamic> image_size, List<dynamic> zoom_point, double scale, int num_threads) =>
-      init.then((_) => _wire_draw_mandelbrot(port_, image_size, zoom_point, scale, num_threads));
+      init.then((inner) => inner.wire_draw_mandelbrot(port_, image_size, zoom_point, scale, num_threads));
 
   void wire_passing_complex_structs(NativePortType port_, List<dynamic> root) =>
-      init.then((_) => _wire_passing_complex_structs(port_, root));
+      init.then((inner) => inner.wire_passing_complex_structs(port_, root));
 
   void wire_returning_structs_with_boxed_fields(NativePortType port_) =>
-      init.then((_) => _wire_returning_structs_with_boxed_fields(port_));
+      init.then((inner) => inner.wire_returning_structs_with_boxed_fields(port_));
 
   void wire_off_topic_memory_test_input_array(NativePortType port_, Uint8List input) =>
-      init.then((_) => _wire_off_topic_memory_test_input_array(port_, input));
+      init.then((inner) => inner.wire_off_topic_memory_test_input_array(port_, input));
 
   void wire_off_topic_memory_test_output_zero_copy_buffer(NativePortType port_, int len) =>
-      init.then((_) => _wire_off_topic_memory_test_output_zero_copy_buffer(port_, len));
+      init.then((inner) => inner.wire_off_topic_memory_test_output_zero_copy_buffer(port_, len));
 
   void wire_off_topic_memory_test_output_vec_u8(NativePortType port_, int len) =>
-      init.then((_) => _wire_off_topic_memory_test_output_vec_u8(port_, len));
+      init.then((inner) => inner.wire_off_topic_memory_test_output_vec_u8(port_, len));
 
   void wire_off_topic_memory_test_input_vec_of_object(NativePortType port_, List<dynamic> input) =>
-      init.then((_) => _wire_off_topic_memory_test_input_vec_of_object(port_, input));
+      init.then((inner) => inner.wire_off_topic_memory_test_input_vec_of_object(port_, input));
 
   void wire_off_topic_memory_test_output_vec_of_object(NativePortType port_, int len) =>
-      init.then((_) => _wire_off_topic_memory_test_output_vec_of_object(port_, len));
+      init.then((inner) => inner.wire_off_topic_memory_test_output_vec_of_object(port_, len));
 
   void wire_off_topic_memory_test_input_complex_struct(NativePortType port_, List<dynamic> input) =>
-      init.then((_) => _wire_off_topic_memory_test_input_complex_struct(port_, input));
+      init.then((inner) => inner.wire_off_topic_memory_test_input_complex_struct(port_, input));
 
   void wire_off_topic_memory_test_output_complex_struct(NativePortType port_, int len) =>
-      init.then((_) => _wire_off_topic_memory_test_output_complex_struct(port_, len));
+      init.then((inner) => inner.wire_off_topic_memory_test_output_complex_struct(port_, len));
 
   void wire_off_topic_deliberately_return_error(NativePortType port_) =>
-      init.then((_) => _wire_off_topic_deliberately_return_error(port_));
+      init.then((inner) => inner.wire_off_topic_deliberately_return_error(port_));
 
   void wire_off_topic_deliberately_panic(NativePortType port_) =>
-      init.then((_) => _wire_off_topic_deliberately_panic(port_));
+      init.then((inner) => inner.wire_off_topic_deliberately_panic(port_));
 }

@@ -24,7 +24,8 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   ///
   /// Newlines are preserved.
   ///
-  Future<int> primitiveTypes({required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
+  Future<int> primitiveTypes(
+      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta;
 
@@ -108,7 +109,15 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta;
 
-  Future<String> handleOptionBoxArguments({int? i8Box, int? u8Box, int? i32Box, int? i64Box, double? f64Box, bool? boolbox, ExoticOptionals? structbox, dynamic hint});
+  Future<String> handleOptionBoxArguments(
+      {int? i8Box,
+      int? u8Box,
+      int? i32Box,
+      int? i64Box,
+      double? f64Box,
+      bool? boolbox,
+      ExoticOptionals? structbox,
+      dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta;
 
@@ -208,7 +217,8 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kConcatenateStaticStaticMethodConcatenateWithConstMeta;
 
-  Stream<Log2> handleSomeStreamSinkMethodConcatenateWith({required ConcatenateWith that, required int key, required int max, dynamic hint});
+  Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
+      {required ConcatenateWith that, required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkMethodConcatenateWithConstMeta;
 
@@ -216,7 +226,8 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta;
 
-  Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith({required int key, required int max, dynamic hint});
+  Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
+      {required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta;
 
@@ -293,16 +304,24 @@ class ConcatenateWith {
     required this.a,
   });
 
-  static Future<ConcatenateWith> newConcatenateWith({required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, dynamic hint}) => bridge.newStaticMethodConcatenateWith(a: a, hint: hint);
+  static Future<ConcatenateWith> newConcatenateWith(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, dynamic hint}) =>
+      bridge.newStaticMethodConcatenateWith(a: a, hint: hint);
 
   Future<String> concatenate({required String b, dynamic hint}) => bridge.concatenateMethodConcatenateWith(
         that: this,
         b: b,
       );
 
-  static Future<String> concatenateStatic({required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, required String b, dynamic hint}) => bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b, hint: hint);
+  static Future<String> concatenateStatic(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge,
+          required String a,
+          required String b,
+          dynamic hint}) =>
+      bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b, hint: hint);
 
-  Stream<Log2> handleSomeStreamSink({required int key, required int max, dynamic hint}) => bridge.handleSomeStreamSinkMethodConcatenateWith(
+  Stream<Log2> handleSomeStreamSink({required int key, required int max, dynamic hint}) =>
+      bridge.handleSomeStreamSinkMethodConcatenateWith(
         that: this,
         key: key,
         max: max,
@@ -312,9 +331,16 @@ class ConcatenateWith {
         that: this,
       );
 
-  static Stream<Log2> handleSomeStaticStreamSink({required FlutterRustBridgeExampleSingleBlockTest bridge, required int key, required int max, dynamic hint}) => bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(key: key, max: max, hint: hint);
+  static Stream<Log2> handleSomeStaticStreamSink(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge,
+          required int key,
+          required int max,
+          dynamic hint}) =>
+      bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(key: key, max: max, hint: hint);
 
-  static Stream<int> handleSomeStaticStreamSinkSingleArg({required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) => bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(hint: hint);
+  static Stream<int> handleSomeStaticStreamSinkSingleArg(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
+      bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(hint: hint);
 }
 
 class Customized {
