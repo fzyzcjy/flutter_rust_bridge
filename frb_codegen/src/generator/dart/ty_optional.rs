@@ -1,6 +1,6 @@
-use crate::config::Acc;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
+use crate::target::Acc;
 use crate::type_dart_generator_struct;
 
 type_dart_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
@@ -9,12 +9,12 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(format!(
-                "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
+                "return raw == null ? ffi.nullptr : api2wire_{}(raw);",
                 self.ir.inner.safe_ident()
             )),
             wasm: self.context.wasm().then(|| {
                 format!(
-                    "return raw == null ? null : _api2wire_{}(raw);",
+                    "return raw == null ? null : api2wire_{}(raw);",
                     self.ir.inner.safe_ident()
                 )
             }),
@@ -23,7 +23,7 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        if !self.ir.needs_initialization() || self.ir.is_list() {
+        if !self.ir.needs_initialization() || self.ir.is_list() || self.ir.is_boxed_primitive() {
             return None;
         }
         Some(format!(

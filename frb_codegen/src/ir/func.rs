@@ -1,4 +1,4 @@
-use crate::ir::*;
+use crate::{ir::*, target::Target};
 
 #[derive(Debug, Clone)]
 pub struct IrFunc {
@@ -8,6 +8,42 @@ pub struct IrFunc {
     pub fallible: bool,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
+}
+
+/// A stand-in for [`IrFunc`] used for output only.
+///
+/// Input is `(Rust-style ident, Dart wire type)`.
+#[derive(Debug, Clone)]
+pub struct IrFuncLike {
+    pub name: String,
+    pub inputs: Vec<(String, String)>,
+    pub output: String,
+    pub has_port_argument: bool,
+}
+
+impl IrFuncLike {
+    pub fn from_ir(func: &IrFunc, target: Target) -> Self {
+        let wasm = target.is_wasm();
+        Self {
+            name: func.wire_func_name(),
+            has_port_argument: func.mode.has_port_argument(),
+            inputs: (func.mode.has_port_argument())
+                .then(|| ("port_".to_owned(), "NativePortType".to_owned()))
+                .into_iter()
+                .chain(func.inputs.iter().map(|input| {
+                    (
+                        input.name.rust_style().to_owned(),
+                        input.ty.dart_wire_type(wasm),
+                    )
+                }))
+                .collect(),
+            output: if func.mode.has_port_argument() {
+                "void".to_owned()
+            } else {
+                func.output.dart_wire_type(wasm)
+            },
+        }
+    }
 }
 
 impl IrFunc {

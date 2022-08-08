@@ -348,6 +348,7 @@ dependencies = [
  "allo-isolate",
  "anyhow",
  "build-target",
+ "cfg-if",
  "console_error_panic_hook",
  "flutter_rust_bridge_macros",
  "js-sys",

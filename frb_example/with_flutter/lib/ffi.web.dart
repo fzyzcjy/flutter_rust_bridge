@@ -18,4 +18,4 @@ Future<WasmModule> _initModule() {
   });
 }
 
-final api = FlutterRustBridgeExampleImpl(_initModule() as ExternalLibrary);
+final api = FlutterRustBridgeExampleImpl.wasm(_initModule());

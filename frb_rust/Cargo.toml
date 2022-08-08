@@ -10,7 +10,7 @@ categories = ["development-tools::ffi"]
 
 [dependencies]
 anyhow = "1.0.58"
-cfg-if = "1.0.0"
+bytemuck = "1.11.0"
 flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
 lazy_static = { version = "1.4.0" }
 
@@ -37,3 +37,4 @@ web-sys = { version = "0.3.58", features = [
 
 [build-dependencies]
 build-target = "0.4.0"
+rustc_version = "0.4.0"

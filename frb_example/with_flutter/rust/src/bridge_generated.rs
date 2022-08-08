@@ -204,6 +204,8 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
 
 // Section: static checks
 
+// Section: allocate functions
+
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {
@@ -280,6 +282,8 @@ support::lazy_static! {
 #[cfg(target_family = "wasm")]
 mod web {
     use super::*;
+    // Section: wire functions
+
     #[wasm_bindgen]
     pub fn wire_draw_mandelbrot(
         port_: MessagePort,
@@ -290,50 +294,64 @@ mod web {
     ) {
         wire_draw_mandelbrot_impl(port_, image_size, zoom_point, scale, num_threads)
     }
+
     #[wasm_bindgen]
     pub fn wire_passing_complex_structs(port_: MessagePort, root: JsValue) {
         wire_passing_complex_structs_impl(port_, root)
     }
+
     #[wasm_bindgen]
     pub fn wire_returning_structs_with_boxed_fields(port_: MessagePort) {
         wire_returning_structs_with_boxed_fields_impl(port_)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_memory_test_input_array(port_: MessagePort, input: Box<[u8]>) {
         wire_off_topic_memory_test_input_array_impl(port_, input)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: MessagePort, len: i32) {
         wire_off_topic_memory_test_output_zero_copy_buffer_impl(port_, len)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_memory_test_output_vec_u8(port_: MessagePort, len: i32) {
         wire_off_topic_memory_test_output_vec_u8_impl(port_, len)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_memory_test_input_vec_of_object(port_: MessagePort, input: JsValue) {
         wire_off_topic_memory_test_input_vec_of_object_impl(port_, input)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_memory_test_output_vec_of_object(port_: MessagePort, len: i32) {
         wire_off_topic_memory_test_output_vec_of_object_impl(port_, len)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_memory_test_input_complex_struct(port_: MessagePort, input: JsValue) {
         wire_off_topic_memory_test_input_complex_struct_impl(port_, input)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_memory_test_output_complex_struct(port_: MessagePort, len: i32) {
         wire_off_topic_memory_test_output_complex_struct_impl(port_, len)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_deliberately_return_error(port_: MessagePort) {
         wire_off_topic_deliberately_return_error_impl(port_)
     }
+
     #[wasm_bindgen]
     pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
         wire_off_topic_deliberately_panic_impl(port_)
     }
+
+    // Section: allocate functions
+
     impl Wire2Api<String> for String {
         fn wire2api(self) -> String {
             self
@@ -418,6 +436,7 @@ pub use web::*;
 #[cfg(not(target_family = "wasm"))]
 mod io {
     use super::*;
+    // Section: wire functions
 
     #[no_mangle]
     pub extern "C" fn wire_draw_mandelbrot(

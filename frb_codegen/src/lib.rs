@@ -1,14 +1,16 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
 
+use std::ffi::OsStr;
 use std::fs;
 use std::path::Path;
 
+use itertools::Itertools;
 use log::info;
 use pathdiff::diff_paths;
 
 use crate::commands::BindgenRustToDartArg;
-use crate::config::Acc;
 use crate::others::*;
+use crate::target::Acc;
 use crate::utils::*;
 
 mod config;
@@ -28,6 +30,7 @@ mod method_utils;
 mod others;
 mod parser;
 mod source_graph;
+mod target;
 mod transformer;
 mod utils;
 use error::*;
@@ -54,26 +57,54 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         let common = format!(
             "{}
 
-            /// cbindgen:ignore
-            #[cfg(target_family = \"wasm\")]
-            mod web {{
-                use super::*;
-                {}
-            }}
-            #[cfg(target_family = \"wasm\")]
-            pub use web::*;
+/// cbindgen:ignore
+#[cfg(target_family = \"wasm\")]
+{mod_web}
+#[cfg(target_family = \"wasm\")]
+pub use web::*;
 
-            #[cfg(not(target_family = \"wasm\"))]
-            mod io {{
-                use super::*;
-                {}
-            }}
-            #[cfg(not(target_family = \"wasm\"))]
-            pub use io::*;
-            ",
-            common, wasm, io
+#[cfg(not(target_family = \"wasm\"))]
+{mod_io}
+#[cfg(not(target_family = \"wasm\"))]
+pub use io::*;
+",
+            common,
+            mod_web = if config.inline_rust {
+                format!("mod web {{ use super::*;\n {} }}", wasm)
+            } else {
+                format!(
+                    "#[path = \"{}\"] mod web;",
+                    config
+                        .rust_wasm_output_path()
+                        .file_name()
+                        .and_then(OsStr::to_str)
+                        .unwrap()
+                )
+            },
+            mod_io = if config.inline_rust {
+                format!("mod io {{ use super::*;\n {} }}", io)
+            } else {
+                format!(
+                    "#[path = \"{}\"] mod io;",
+                    config
+                        .rust_io_output_path()
+                        .file_name()
+                        .and_then(OsStr::to_str)
+                        .unwrap()
+                )
+            }
         );
         fs::write(&config.rust_output_path, common)?;
+        if !config.inline_rust {
+            fs::write(
+                &config.rust_io_output_path(),
+                format!("use super::*;\n{}", io),
+            )?;
+            fs::write(
+                &config.rust_wasm_output_path(),
+                format!("use super::*;\n{}", wasm),
+            )?;
+        }
     } else {
         let Acc { common, io, .. } = &generated_rust.code;
         let output = format!(
@@ -92,9 +123,14 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     }
 
     info!("Phase: Generate Dart code");
-    let generated_dart = ir_file.generate_dart(config);
+    let generated_dart = ir_file.generate_dart(config, &generated_rust.wasm_exports);
 
-    commands::format_rust(&config.rust_output_path)?;
+    run!(
+        commands::format_rust,
+        &config.rust_output_path,
+        (!config.inline_rust, config.rust_io_output_path()),
+        (!config.inline_rust, config.rust_wasm_output_path())
+    )?;
 
     if !config.skip_add_mod_to_lib {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
@@ -193,14 +229,12 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
             )?;
         }
     } else {
-        fs::write(
-            &config.dart_output_path,
-            (&generated_dart.file_prelude
-                + &generated_dart_decl_all
-                + &generated_dart.impl_code.common
-                + &generated_dart_impl_io_wire)
-                .to_text(),
-        )?;
+        let mut out = &generated_dart.file_prelude
+            + &generated_dart_decl_all
+            + &generated_dart.impl_code.common
+            + &generated_dart_impl_io_wire;
+        out.import = out.import.lines().unique().join("\n");
+        fs::write(&config.dart_output_path, out.to_text())?;
     }
 
     info!("Phase: Running build_runner");
@@ -216,19 +250,15 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     }
 
     info!("Phase: Formatting Dart code");
-    let mut generated_dart_files = vec![config.dart_output_path.clone()];
-    if let Some(decl) = config.dart_decl_output_path.clone() {
-        generated_dart_files.push(decl);
-    }
-    if config.wasm_enabled {
-        generated_dart_files.extend([
-            config.dart_wasm_output_path().to_str().unwrap().to_owned(),
-            config.dart_io_output_path().to_str().unwrap().to_owned(),
-        ]);
-    }
-    commands::format_dart(
-        &generated_dart_files.join(" "),
-        config.dart_format_line_length,
+    run!(
+        commands::format_dart[config.dart_format_line_length],
+        &config.dart_output_path,
+        ?config.dart_decl_output_path,
+        (
+            config.wasm_enabled,
+            config.dart_wasm_output_path(),
+            config.dart_io_output_path(),
+        )
     )?;
 
     info!("Success!");

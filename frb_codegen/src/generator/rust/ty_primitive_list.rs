@@ -1,7 +1,8 @@
-use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
+use crate::target::Acc;
+use crate::target::Target;
 use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
 
@@ -22,6 +23,28 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         }
     }
 
+    fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
+        match self.ir.primitive {
+            IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(
+                format!(
+                    "let buf = self.unchecked_into::<{}>();
+                    let buf = js_sys::Uint8Array::new(&buf.buffer());
+                    support::slice_from_byte_buffer(buf.to_vec()).into()",
+                    self.ir.rust_wasm_wire_type()
+                )
+                .into(),
+            ),
+            _ => Some(
+                format!(
+                    "self.unchecked_into::<{}>().to_vec().into()",
+                    self.ir.rust_wasm_wire_type()
+                )
+                .into(),
+            ),
+        }
+    }
+
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         Some(vec![
             format!("ptr: *mut {}", self.ir.primitive.rust_wire_type(false)),
@@ -33,21 +56,25 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         &self,
         collector: &mut ExternFuncCollector,
         block_index: BlockIndex,
-    ) -> String {
+    ) -> Acc<Option<String>> {
         let wasm = false;
-        collector.generate(
-            &format!("new_{}_{}", self.ir.safe_ident(), block_index),
-            &["len: i32"],
-            Some(&format!(
-                "{}{}",
-                self.ir.rust_wire_modifier(wasm),
-                self.ir.rust_wire_type(wasm)
+        Acc {
+            io: Some(collector.generate(
+                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                [("len: i32", "int")],
+                Some(&format!(
+                    "{}{}",
+                    self.ir.rust_wire_modifier(wasm),
+                    self.ir.rust_wire_type(wasm)
+                )),
+                &format!(
+                    "let ans = {} {{ ptr: support::new_leak_vec_ptr(Default::default(), len), len }};
+                    support::new_leak_box_ptr(ans)",
+                    self.ir.rust_wire_type(wasm),
+                ),
+                Target::Io,
             )),
-            &format!(
-                "let ans = {} {{ ptr: support::new_leak_vec_ptr(Default::default(), len), len }};
-                support::new_leak_box_ptr(ans)",
-                self.ir.rust_wire_type(wasm),
-            ),
-        )
+            ..Default::default()
+        }
     }
 }

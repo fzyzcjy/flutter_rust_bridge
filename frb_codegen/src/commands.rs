@@ -1,22 +1,72 @@
 use std::fmt::Write;
 use std::path::Path;
+use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
 
 use crate::error::{Error, Result};
+use itertools::Itertools;
 use log::{debug, info, warn};
+
+/// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
+/// - Following arguments are either:
+///   - An expression to turn into a [`PathBuf`]; or
+///   - `?<expr>` to add `expr` only if `expr` is a [`Some`]; or
+///   - A tuple of `(condition, expr, ...expr)` that adds `expr`s to the arguments only if `condition` is satisfied.
+///
+/// Returns [`Output`] if executing a command name, or the return value of the specified function.
+#[macro_export]
+macro_rules! run {
+    ($binary:literal, $($rest:tt)*) => {{
+        let args = $crate::args!($($rest)*);
+        $crate::commands::execute_command($binary, args.iter(), None)
+    }};
+    ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
+        let args = $crate::args!($($rest)*);
+        $command(&args[..] $(, $($args),* )?)
+    }};
+}
+
+/// Formats a list of [`PathBuf`]s using the syntax detailed in [`run`].
+#[macro_export]
+macro_rules! args {
+    (@args $args:ident $(,)?) => {};
+    (@args $args:ident ($cond:expr, $($expr:expr),+ $(,)?), $($rest:tt)*) => {
+        if $cond {
+            $(
+                $args.push(::std::path::PathBuf::from($expr));
+            )+
+        }
+        $crate::args!(@args $args $($rest)*);
+    };
+    (@args $args:ident ?$src:expr, $($rest:tt)*) => {
+        if let Some(it) = (&$src) {
+            $args.push(::std::path::PathBuf::from(it));
+        }
+        $crate::args!(@args $args $($rest)*);
+    };
+    (@args $args:ident $expr:expr, $($rest:tt)*) => {
+        $args.push(::std::path::PathBuf::from($expr));
+        $crate::args!(@args $args $($rest)*);
+    };
+    ($($rest:tt)*) => {{
+        let mut args = vec![];
+        $crate::args!(@args args $($rest)*,);
+        args
+    }};
+}
 
 #[must_use]
 fn call_shell(cmd: &str) -> Output {
     #[cfg(windows)]
-    return execute_command("powershell", &["-noprofile", "-c", cmd], None);
+    return run!("powershell", "-noprofile", "-c", cmd);
 
     #[cfg(not(windows))]
-    execute_command("sh", &["-c", cmd], None)
+    run!("sh", "-c", cmd)
 }
 
 pub fn ensure_tools_available() -> Result {
-    let output = call_shell("dart pub global list");
+    let output = run!("dart", "pub", "global", "list");
     let output = String::from_utf8_lossy(&output.stdout);
     if !output.contains("ffigen") {
         return Err(Error::MissingExe(String::from("ffigen")));
@@ -53,8 +103,14 @@ pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<
 }
 
 #[must_use = "Error path must be handled."]
-fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Output {
+fn execute_command<'a>(
+    bin: &str,
+    args: impl IntoIterator<Item = &'a std::path::PathBuf>,
+    current_dir: Option<&str>,
+) -> Output {
     let mut cmd = Command::new(bin);
+    let args = args.into_iter().collect::<Vec<_>>();
+    let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     cmd.args(args);
 
     if let Some(current_dir) = current_dir {
@@ -63,12 +119,12 @@ fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Outpu
 
     debug!(
         "execute command: bin={} args={:?} current_dir={:?} cmd={:?}",
-        bin, args, current_dir, cmd
+        bin, args_display, current_dir, cmd
     );
 
     let result = cmd
         .output()
-        .unwrap_or_else(|err| panic!("\"{}\" \"{}\" failed: {}", bin, args.join(" "), err));
+        .unwrap_or_else(|err| panic!("\"{}\" \"{}\" failed: {}", bin, args_display, err));
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {
@@ -80,7 +136,7 @@ fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Outpu
         );
         if stdout.contains("fatal error") {
             warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", cmd, result);
-        } else if args.contains(&"ffigen") && stdout.contains("[SEVERE]") {
+        } else if args_display.contains("ffigen") && stdout.contains("[SEVERE]") {
             // HACK: If ffigen can't find a header file it will generate broken
             // bindings but still exit successfully. We can detect these broken
             // bindings by looking for a "[SEVERE]" log message.
@@ -207,10 +263,15 @@ fn ffigen(
     debug!("ffigen config_file: {:?}", config_file);
 
     // NOTE please install ffigen globally first: `dart pub global activate ffigen`
-    let res = call_shell(&format!(
-        "dart pub global run ffigen --config \"{}\"",
-        config_file.path().to_string_lossy()
-    ));
+    let res = run!(
+        "dart",
+        "pub",
+        "global",
+        "run",
+        "ffigen",
+        "--config",
+        config_file.path(),
+    );
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
         let out = String::from_utf8_lossy(&res.stdout);
@@ -225,9 +286,10 @@ fn ffigen(
     Ok(())
 }
 
-pub fn format_rust(path: &str) -> Result {
-    debug!("execute format_rust path={}", path);
-    let res = execute_command("rustfmt", &[path], None);
+pub fn format_rust(path: &[PathBuf]) -> Result {
+    // debug!("execute format_rust path={}", path);
+    debug!("execute format_rust");
+    let res = execute_command("rustfmt", path, None);
     if !res.status.success() {
         return Err(Error::Rustfmt(
             String::from_utf8_lossy(&res.stderr).to_string(),
@@ -236,15 +298,14 @@ pub fn format_rust(path: &str) -> Result {
     Ok(())
 }
 
-pub fn format_dart(path: &str, line_length: u32) -> Result {
-    debug!(
-        "execute format_dart path={} line_length={}",
-        path, line_length
-    );
-    let res = call_shell(&format!(
-        "dart format {} --line-length {}",
-        path, line_length
-    ));
+pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
+    debug!("execute format_dart line_length={}", line_length);
+    let mut args = args!("format", "--line-length", line_length.to_string());
+    args.extend(path.iter().cloned());
+    let res = Command::new("dart")
+        .args(args)
+        .output()
+        .map_err(|err| Error::StringError(format!("{}", err)))?;
     if !res.status.success() {
         return Err(Error::Dartfmt(
             String::from_utf8_lossy(&res.stderr).to_string(),

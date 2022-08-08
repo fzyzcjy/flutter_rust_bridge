@@ -23,7 +23,11 @@ impl IrTypeOptional {
     }
 
     pub fn is_primitive(&self) -> bool {
-        matches!(&*self.inner, Boxed(boxed) if matches!(*boxed.inner, IrType::Primitive(_)))
+        matches!(&*self.inner, Boxed(boxed) if !boxed.exist_in_real_api && matches!(*boxed.inner, IrType::Primitive(_)))
+    }
+
+    pub fn is_boxed_primitive(&self) -> bool {
+        matches!(&*self.inner, Boxed(boxed) if boxed.exist_in_real_api && matches!(*boxed.inner, IrType::Primitive(_)))
     }
 
     pub fn is_list(&self) -> bool {
@@ -45,7 +49,11 @@ impl IrTypeTrait for IrTypeOptional {
     }
     fn rust_wire_type(&self, wasm: bool) -> String {
         if wasm {
-            format!("Option<{}>", self.inner.rust_wire_type(wasm))
+            if self.inner.is_js_value() {
+                self.inner.rust_wire_type(wasm)
+            } else {
+                format!("Option<{}>", self.inner.rust_wire_type(wasm))
+            }
         } else {
             self.inner.rust_wire_type(wasm)
         }

@@ -8,35 +8,43 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import "bridge_generated.dart";
+import 'bridge_generated.dart';
+export 'bridge_generated.dart';
+import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
-extension FlutterRustBridgeExampleImplIoExt on FlutterRustBridgeExampleImpl {
+class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
+  FlutterRustBridgeExamplePlatform(ffi.DynamicLibrary dylib) : super(FlutterRustBridgeExampleWire(dylib));
 // Section: api2wire
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
-    return _api2wire_uint_8_list(utf8.encoder.convert(raw));
+  @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
+    return api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
 
-  ffi.Pointer<wire_Point> _api2wire_box_autoadd_point(Point raw) {
+  @protected
+  ffi.Pointer<wire_Point> api2wire_box_autoadd_point(Point raw) {
     final ptr = inner.new_box_autoadd_point_0();
     _api_fill_to_wire_point(raw, ptr.ref);
     return ptr;
   }
 
-  ffi.Pointer<wire_Size> _api2wire_box_autoadd_size(Size raw) {
+  @protected
+  ffi.Pointer<wire_Size> api2wire_box_autoadd_size(Size raw) {
     final ptr = inner.new_box_autoadd_size_0();
     _api_fill_to_wire_size(raw, ptr.ref);
     return ptr;
   }
 
-  ffi.Pointer<wire_TreeNode> _api2wire_box_autoadd_tree_node(TreeNode raw) {
+  @protected
+  ffi.Pointer<wire_TreeNode> api2wire_box_autoadd_tree_node(TreeNode raw) {
     final ptr = inner.new_box_autoadd_tree_node_0();
     _api_fill_to_wire_tree_node(raw, ptr.ref);
     return ptr;
   }
 
-  ffi.Pointer<wire_list_size> _api2wire_list_size(List<Size> raw) {
+  @protected
+  ffi.Pointer<wire_list_size> api2wire_list_size(List<Size> raw) {
     final ans = inner.new_list_size_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_size(raw[i], ans.ref.ptr[i]);
@@ -44,7 +52,8 @@ extension FlutterRustBridgeExampleImplIoExt on FlutterRustBridgeExampleImpl {
     return ans;
   }
 
-  ffi.Pointer<wire_list_tree_node> _api2wire_list_tree_node(List<TreeNode> raw) {
+  @protected
+  ffi.Pointer<wire_list_tree_node> api2wire_list_tree_node(List<TreeNode> raw) {
     final ans = inner.new_list_tree_node_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_tree_node(raw[i], ans.ref.ptr[i]);
@@ -52,26 +61,39 @@ extension FlutterRustBridgeExampleImplIoExt on FlutterRustBridgeExampleImpl {
     return ans;
   }
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_uint_8_list(Uint8List raw) {
+  @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
     final ans = inner.new_uint_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
+    _api_fill_to_wire_point(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_size(Size apiObj, ffi.Pointer<wire_Size> wireObj) {
+    _api_fill_to_wire_size(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<wire_TreeNode> wireObj) {
+    _api_fill_to_wire_tree_node(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
-    wireObj.x = _api2wire_f64(apiObj.x);
-    wireObj.y = _api2wire_f64(apiObj.y);
+    wireObj.x = api2wire_f64(apiObj.x);
+    wireObj.y = api2wire_f64(apiObj.y);
   }
 
   void _api_fill_to_wire_size(Size apiObj, wire_Size wireObj) {
-    wireObj.width = _api2wire_i32(apiObj.width);
-    wireObj.height = _api2wire_i32(apiObj.height);
+    wireObj.width = api2wire_i32(apiObj.width);
+    wireObj.height = api2wire_i32(apiObj.height);
   }
 
   void _api_fill_to_wire_tree_node(TreeNode apiObj, wire_TreeNode wireObj) {
-    wireObj.name = _api2wire_String(apiObj.name);
-    wireObj.children = _api2wire_list_tree_node(apiObj.children);
+    wireObj.name = api2wire_String(apiObj.name);
+    wireObj.children = api2wire_list_tree_node(apiObj.children);
   }
 }
 

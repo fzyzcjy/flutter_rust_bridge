@@ -8,10 +8,12 @@ mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
 
+use std::borrow::Cow;
 use std::collections::HashSet;
 use std::ffi::OsStr;
 use std::path::Path;
 
+use itertools::Itertools;
 pub use ty::*;
 pub use ty_boxed::*;
 pub use ty_delegate::*;
@@ -25,10 +27,11 @@ pub use ty_struct::*;
 use convert_case::{Case, Casing};
 use log::debug;
 
-use crate::config::Acc;
 use crate::ir::IrType::*;
 use crate::method_utils::{FunctionName, MethodNamingUtil};
 use crate::others::*;
+use crate::target::Target::*;
+use crate::target::{Acc, Target};
 use crate::{ir::*, Opts};
 
 pub struct Output {
@@ -38,10 +41,10 @@ pub struct Output {
     pub needs_freezed: bool,
 }
 
-pub fn generate(ir_file: &IrFile, config: &Opts) -> Output {
+pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncLike]) -> Output {
     let dart_api_class_name = &config.dart_api_class_name();
     let dart_output_file_root = config.dart_output_root().expect("Internal error");
-    let spec = DartApiSpec::from_ir_file(ir_file, config);
+    let spec = DartApiSpec::from(ir_file, config, wasm_funcs);
     let DartApiSpec {
         dart_funcs,
         dart_structs,
@@ -84,7 +87,7 @@ struct DartApiSpec {
 }
 
 impl DartApiSpec {
-    fn from_ir_file(ir_file: &IrFile, config: &Opts) -> Self {
+    fn from(ir_file: &IrFile, config: &Opts, extra_funcs: &[IrFuncLike]) -> Self {
         let dart_api_class_name = config.dart_api_class_name();
         let dart_wire_class_name = config.dart_wire_class_name();
         let distinct_types = ir_file.distinct_types(true, true);
@@ -93,11 +96,6 @@ impl DartApiSpec {
         debug!("distinct_input_types={:?}", distinct_input_types);
         debug!("distinct_output_types={:?}", distinct_output_types);
 
-        let dart_funcs = ir_file
-            .funcs
-            .iter()
-            .map(|f| generate_api_func(f, ir_file))
-            .collect::<Vec<_>>();
         let dart_structs = distinct_types
             .iter()
             .map(|ty| {
@@ -110,12 +108,16 @@ impl DartApiSpec {
                 .structs()
             })
             .collect::<Vec<_>>();
-
         let dart_api2wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api2wire_func(ty, ir_file, config))
             .collect::<Acc<_>>()
             .join("\n");
+        let dart_funcs = ir_file
+            .funcs
+            .iter()
+            .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common))
+            .collect::<Vec<_>>();
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api_fill_to_wire_func(ty, ir_file, config))
@@ -125,17 +127,22 @@ impl DartApiSpec {
             .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
             .collect::<Vec<_>>();
 
-        let dart_wasm_funcs = (config.wasm_enabled)
-            .then(|| {
-                ir_file
-                    .funcs
-                    .iter()
-                    .map(generate_wasm_wire_func_decl)
-                    .collect::<Vec<_>>()
-            })
-            .unwrap_or_default();
-        let dart_wasm_module = (config.wasm_enabled)
-            .then(|| generate_wasm_module(&ir_file.funcs, &dart_wire_class_name));
+        let ir_wasm_func_exports = config.wasm_enabled.then(|| {
+            ir_file
+                .funcs
+                .iter()
+                .map(|fun| IrFuncLike::from_ir(fun, Target::Wasm))
+                .chain(extra_funcs.iter().cloned())
+                .collect::<Vec<_>>()
+        });
+        let dart_wasm_funcs = if let Some(exports) = &ir_wasm_func_exports {
+            exports.iter().map(generate_wasm_wire_func_decl).collect()
+        } else {
+            Default::default()
+        };
+        let dart_wasm_module = (ir_wasm_func_exports.as_ref()).map(|exports| {
+            generate_wasm_module(exports, &dart_wire_class_name, &config.dart_wasm_module())
+        });
 
         let needs_freezed = distinct_types.iter().any(|ty| match ty {
             EnumRef(_) => true,
@@ -207,20 +214,25 @@ fn get_dart_imports(ir_file: &IrFile) -> HashSet<&IrDartImport> {
         .collect()
 }
 
-fn generate_wasm_module(funcs: &[IrFunc], dart_wire_class_name: &str) -> String {
+fn generate_wasm_module<'a>(
+    funcs: impl IntoIterator<Item = &'a IrFuncLike>,
+    dart_wire_class_name: &str,
+    dart_wasm_module_name: &str,
+) -> String {
     format!(
-        "class {cls} extends FlutterRustBridgeWasmWireBase {{
-            {cls}(FutureOr<WasmModule> module) : super(module);
+        "class {cls} extends FlutterRustBridgeWasmWireBase<{wasm}> {{
+            {cls}(FutureOr<WasmModule> module) : super(module as FutureOr<{wasm}>);
             
             {}
         }}
         ",
         funcs
-            .iter()
+            .into_iter()
             .map(generate_wasm_wire_func_method)
             .collect::<Vec<_>>()
             .join("\n\n"),
-        cls = dart_wire_class_name
+        cls = dart_wire_class_name,
+        wasm = dart_wasm_module_name,
     )
 }
 
@@ -253,12 +265,18 @@ fn section_header(header: &str) -> String {
     format!("// Section: {}\n", header)
 }
 
+/// A Dart bridge module consists of several members:
+/// - An `_Impl` class exposing the public Rust functions
+/// - One or more `_Platform` classes implementing platform-specific helpers
+///
+/// The `_Impl` class takes a `_Platform _plat` instance as a private member,
+/// and the `_Platform` exposes all of its methods decorated as `@protected`.
 fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<DartBasicCode> {
     let mut lines = Acc::<Vec<_>>::default();
     let dart_api_impl_class_name = config.dart_api_impl_class_name();
     let dart_wire_class_name = config.dart_wire_class_name();
     let dart_api_class_name = config.dart_api_class_name();
-    let wasm = config.wasm_enabled;
+    let dart_platform_class_name = config.dart_platform_class_name();
     let DartApiSpec {
         dart_funcs,
         dart_api2wire_funcs,
@@ -270,9 +288,94 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         needs_freezed: _,
     } = spec;
 
-    let common_import = config.wasm_enabled.then(|| {
+    lines.push_acc(Acc::new(|target| match target {
+        Common => format!(
+            "class {impl} implements {} {{
+                final {plat} _plat;
+                factory {impl}(ExternalLibrary dylib) => {impl}.raw({plat}(dylib));
+
+                /// Only valid on web/WASM platforms.
+                factory {impl}.wasm(FutureOr<WasmModule> module) =>
+                    {impl}(module as ExternalLibrary);
+                {impl}.raw(this._plat);",
+            dart_api_class_name,
+            impl = dart_api_impl_class_name,
+            plat = dart_platform_class_name,
+        ),
+        Io | Wasm => format!(
+            "class {plat} extends FlutterRustBridgeBase<{wire}> {{
+                {plat}({dylib_type} dylib) : super({wire}(dylib as dynamic));",
+            plat = dart_platform_class_name,
+            wire = dart_wire_class_name,
+            dylib_type = match target {
+                Io => "ffi.DynamicLibrary",
+                Wasm => "FutureOr<WasmModule>",
+                Common => unreachable!(),
+            }
+        ),
+    }));
+
+    lines.extend(dart_funcs.iter().map(|func| {
         format!(
-            "import \"{}\" if (dart.library.html) \"{}\";",
+            "{}\n\n{}",
+            func.implementation, func.companion_field_implementation,
+        )
+    }));
+
+    lines.push("}\n".into());
+
+    lines.push_all(section_header("api2wire"));
+    lines.push_acc(dart_api2wire_funcs.clone());
+
+    lines.io.push(section_header("api_fill_to_wire"));
+    lines.io.push(dart_api_fill_to_wire_funcs.join("\n\n"));
+
+    lines.push_acc(Acc::new(|target| match target {
+        Io | Wasm => "}\n".into(),
+        Common => "".into(),
+    }));
+
+    lines.push(section_header("wire2api"));
+    lines.push(dart_wire2api_funcs.join("\n\n"));
+
+    if config.wasm_enabled {
+        let dart_wasm_module_name = config.dart_wasm_module();
+        lines.wasm.push(section_header("WASM wire module"));
+        lines.wasm.push(format!(
+            "@JS('wasm_bindgen') external {} get wasmModule;",
+            dart_wasm_module_name,
+        ));
+        lines.wasm.push(format!(
+            "@JS() @anonymous class {wasm} implements WasmModule {{
+                external Object /* Promise */ call([String? moduleName]);
+                external {wasm} bind(WasmModule module, String moduleName);
+            ",
+            wasm = dart_wasm_module_name,
+        ));
+        lines.wasm.push(dart_wasm_funcs.join("\n\n"));
+        lines.wasm.push("}\n".into());
+
+        lines.wasm.push(section_header("WASM wire connector"));
+        (lines.wasm).push(dart_wasm_module.as_deref().unwrap_or_default().to_string());
+    }
+
+    let Acc { common, io, wasm } = lines.join("\n");
+    let impl_import = if config.wasm_enabled {
+        format!(
+            "import '{}';
+            export '{0}';
+            import 'package:meta/meta.dart';",
+            Path::new(&config.dart_output_path)
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap()
+        )
+    } else {
+        String::new()
+    };
+    let common_import = if config.wasm_enabled {
+        format!(
+            "import '{}' if (dart.library.html) '{}'; import 'package:meta/meta.dart';",
             config
                 .dart_io_output_path()
                 .file_name()
@@ -284,79 +387,22 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 .and_then(OsStr::to_str)
                 .unwrap(),
         )
-    });
-
-    let common_impl_import = config
-        .wasm_enabled
-        .then(|| {
-            let common_path: &str = Path::new(&config.dart_output_path)
-                .file_name()
-                .and_then(OsStr::to_str)
-                .unwrap();
-            format!("import \"{}\";", common_path)
-        })
-        .unwrap_or_default();
-
-    // The common declaration will include the class and its constructor, but its methods
-    // are defined by platform-specific extensions.
-    lines.push(format!(
-        "class {api} extends FlutterRustBridgeBase<{wire}> implements {} {{
-            factory {api}(ExternalLibrary dylib) => {api}.raw({wire}(dylib));
-            {api}.raw({wire} inner) : super(inner);",
-        dart_api_class_name,
-        api = dart_api_impl_class_name,
-        wire = dart_wire_class_name
-    ));
-
-    lines.io.push(format!(
-        "extension {0}IoExt on {0} {{",
-        dart_api_impl_class_name
-    ));
-    lines.wasm.push(format!(
-        "extension {0}WasmExt on {0} {{",
-        dart_api_impl_class_name
-    ));
-
-    lines.extend(dart_funcs.iter().map(|func| {
-        format!(
-            "{}\n\n{}",
-            func.implementation, func.companion_field_implementation,
-        )
-    }));
-
-    lines.push_all(section_header("api2wire"));
-    lines.push_acc(dart_api2wire_funcs.clone());
-
-    lines.io.push(section_header("api_fill_to_wire"));
-    lines.io.push(dart_api_fill_to_wire_funcs.join("\n\n"));
-
-    lines.push_all("}\n".into());
-
-    lines.push(section_header("wire2api"));
-    lines.push(dart_wire2api_funcs.join("\n\n"));
-
-    if wasm {
-        lines.wasm.push(section_header("WASM wire functions"));
-        lines.wasm.push(dart_wasm_funcs.join("\n\n"));
-
-        lines.wasm.push(section_header("WASM wire module"));
-        (lines.wasm).push(dart_wasm_module.as_deref().unwrap_or_default().to_string());
-    }
-
-    let Acc { common, io, wasm } = lines.join("\n");
+    } else {
+        String::new()
+    };
     Acc {
         common: DartBasicCode {
-            import: common_import.unwrap_or_default(),
             body: common,
+            import: common_import,
             ..Default::default()
         },
         io: DartBasicCode {
-            import: common_impl_import.clone(),
+            import: impl_import.clone(),
             body: io,
             ..Default::default()
         },
         wasm: DartBasicCode {
-            import: common_impl_import,
+            import: impl_import,
             body: wasm,
             ..Default::default()
         },
@@ -383,7 +429,7 @@ fn generate_dart_implementation_code(
     common_header: &DartBasicCode,
     implementation_body: Acc<DartBasicCode>,
 ) -> Acc<DartBasicCode> {
-    implementation_body.map(|body| common_header + &body)
+    implementation_body.map(|body, _| common_header + &body)
 }
 
 fn generate_file_prelude() -> DartBasicCode {
@@ -414,7 +460,11 @@ struct GeneratedApiMethod {
     implementation: String,
 }
 
-fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
+fn generate_api_func(
+    func: &IrFunc,
+    ir_file: &IrFile,
+    common_api2wire_body: &str,
+) -> GeneratedApiFunc {
     let raw_func_param_list = func
         .inputs
         .iter()
@@ -442,9 +492,15 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
                 if let Primitive(IrTypePrimitive::Bool) = input.ty {
                     input.name.dart_style()
                 } else {
+                    let func = format!("api2wire_{}", input.ty.safe_ident());
                     format!(
-                        "_api2wire_{}({})",
-                        &input.ty.safe_ident(),
+                        "{}{}({})",
+                        if common_api2wire_body.contains(&func) {
+                            ""
+                        } else {
+                            "_plat."
+                        },
+                        func,
                         &input.name.dart_style()
                     )
                 }
@@ -461,9 +517,9 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     );
 
     let execute_func_name = match func.mode {
-        IrFuncMode::Normal => "executeNormal",
-        IrFuncMode::Sync => "executeSync",
-        IrFuncMode::Stream { .. } => "executeStream",
+        IrFuncMode::Normal => "_plat.executeNormal",
+        IrFuncMode::Sync => "_plat.executeSync",
+        IrFuncMode::Stream { .. } => "_plat.executeStream",
     };
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
@@ -506,7 +562,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     let implementation = match func.mode {
         IrFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
-                callFfi: () => inner.{}({}),
+                callFfi: () => _plat.inner.{}({}),
                 {}
             ));",
             func_expr,
@@ -517,7 +573,7 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
         ),
         _ => format!(
             "{} => {}(FlutterRustBridgeTask(
-                callFfi: (port_) => inner.{}({}),
+                callFfi: (port_) => _plat.inner.{}({}),
                 parseSuccessData: {},
                 {}
             ));",
@@ -560,56 +616,50 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
     }
 }
 
-fn generate_wasm_wire_func_decl(func: &IrFunc) -> String {
+fn rust_wire_to_dart_wire(ty: &str) -> Cow<str> {
+    let ty = ty.trim();
+    if matches!(ty, "void" | "WireSyncReturnStruct") {
+        return ty.into();
+    }
+    if ty.starts_with("*mut") {
+        return format!("int /* {} */", ty).into();
+    }
+    return format!("dynamic /* {} */", ty).into();
+}
+
+fn generate_wasm_wire_func_decl(func: &IrFuncLike) -> String {
     format!(
-        "@JS(r'wasm_bindgen.wire_{name}') external {} _wire_{name}({});",
-        (!func.mode.has_port_argument())
-            .then(|| func.output.dart_wire_type(true))
-            .unwrap_or_else(|| "void".into()),
-        (func.mode.dart_port_param())
-            .into_iter()
-            .chain(func.inputs.iter().map(|input| {
-                format!(
-                    "{} {}",
-                    input.ty.dart_wire_type(true),
-                    input.name.rust_style()
-                )
-            }))
-            .collect::<Vec<_>>()
+        "external {} {name}({});",
+        rust_wire_to_dart_wire(&func.output),
+        func.inputs
+            .iter()
+            .map(|(key, ty)| format!("{} {}", ty, key))
             .join(","),
         name = func.name,
     )
 }
 
-fn generate_wasm_wire_func_method(func: &IrFunc) -> String {
-    let params = (func.mode.dart_port_param())
-        .into_iter()
-        .chain(func.inputs.iter().map(|input| {
-            format!(
-                "{} {}",
-                input.ty.dart_wire_type(true),
-                input.name.rust_style()
-            )
-        }))
-        .collect::<Vec<_>>();
-    let vars = (func.mode.dart_port_var())
-        .into_iter()
-        .chain(func.inputs.iter().map(|input| input.name.rust_style()))
-        .collect::<Vec<_>>();
+fn generate_wasm_wire_func_method(func: &IrFuncLike) -> String {
+    let vars = func.inputs.iter().map(|(key, _)| key).join(",");
     format!(
-        "{} wire_{name}({}) => {};",
-        (!func.mode.has_port_argument())
-            .then(|| func.output.dart_wire_type(true))
-            .unwrap_or_else(|| "void".into()),
-        params.join(","),
-        if func.mode.has_port_argument() {
+        "{} {name}({}) => {};",
+        if func.has_port_argument {
+            "void".into()
+        } else {
+            rust_wire_to_dart_wire(&func.output)
+        },
+        func.inputs
+            .iter()
+            .map(|(key, ty)| format!("{} {}", ty, key))
+            .join(","),
+        if func.has_port_argument {
             format!(
-                "init.then((_) => _wire_{name}({}))",
-                vars.join(","),
+                "init.then((inner) => inner.{name}({}))",
+                vars,
                 name = func.name
             )
         } else {
-            format!("_wire_{name}({})", vars.join(","), name = func.name)
+            format!("inner.{name}({})", vars, name = func.name)
         },
         name = func.name
     )
@@ -620,9 +670,10 @@ fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<S
         TypeDartGenerator::new(ty.clone(), ir_file, None, config).api2wire_body();
     let wrapper = |body: &str, wasm: bool| {
         format!(
-            "{} _api2wire_{}({} raw) {{
-                    {}
-                }}",
+            "@protected
+            {} api2wire_{}({} raw) {{
+                {}
+            }}",
             ty.dart_wire_type(wasm),
             ty.safe_ident(),
             ty.dart_api_type(),

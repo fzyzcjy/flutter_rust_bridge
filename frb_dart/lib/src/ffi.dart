@@ -4,10 +4,11 @@ export 'ffi/ffi_io.dart' if (dart.library.html) 'ffi/ffi_web.dart';
 ///
 /// Example:
 /// ```dart
-/// // Assume that there exists a pkg/my-module.js in the web/ directory
+/// // Assume that there exists a pkg/my_module.js in the web/ directory
 /// // that was built by "wasm-pack -t no-modules"
 /// import 'dart:html';
 /// import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+/// import 'bridge_generated.dart';
 ///
 /// @JS()
 /// external WasmModule get wasm_bindgen;
@@ -16,16 +17,16 @@ export 'ffi/ffi_io.dart' if (dart.library.html) 'ffi/ffi_web.dart';
 ///   // Some essential web features require cross-origin isolation.
 ///   if (crossOriginIsolated != true) return Future.error(MissingHeaderException());
 ///
-///   final script = ScriptElement()..src = 'pkg/my-module.js';
+///   final script = ScriptElement()..src = 'pkg/my_module.js';
 ///   document.head!.append(script);
 ///   return script.onLoad.first.then((_) {
 ///     // bring the wasm_bindgen variable into the global window scope
 ///     eval("window.wasm_bindgen = wasm_bindgen");
-///     return wasm_bindgen;
+///     return ([String? module]) => wasm_bindgen(module ?? 'pkg/my_module_bg.wasm');
 ///   });
 /// }
 ///
-/// final MyModule api = MyModule(_initModule());
+/// final MyModule api = MyModule.wasm(_initModule());
 /// ```
 ///
 /// ## Enabling cross-origin isolation
@@ -57,4 +58,9 @@ export 'ffi/ffi_io.dart' if (dart.library.html) 'ffi/ffi_web.dart';
 ///   print('🎉 Serving at $addr');
 /// }
 /// ```
-typedef WasmModule = Object Function([String? moduleName]);
+abstract class WasmModule {
+  Object call([String? moduleName]);
+
+  /// Create a new WASM module initializer that is bound to the specified module name.
+  WasmModule bind(WasmModule module, String moduleName);
+}

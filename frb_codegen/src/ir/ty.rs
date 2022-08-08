@@ -61,13 +61,14 @@ impl IrType {
     }
 
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap
-    /// and therefore does not implement [Send].
+    /// and therefore do not implement [Send].
     #[inline]
     pub fn is_js_value(&self) -> bool {
-        matches!(
-            self,
-            Self::GeneralList(_) | Self::PrimitiveList(_) | Self::StructRef(_) | Self::EnumRef(_)
-        )
+        match self {
+            Self::GeneralList(_) | Self::StructRef(_) | Self::EnumRef(_) => true,
+            Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
+            _ => false,
+        }
     }
 }
 

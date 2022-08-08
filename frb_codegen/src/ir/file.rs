@@ -83,18 +83,21 @@ impl IrFile {
         )
     }
 
-    pub fn generate_dart(&self, config: &Opts) -> generator::dart::Output {
-        generator::dart::generate(self, config)
+    pub fn generate_dart(
+        &self,
+        config: &Opts,
+        wasm_funcs: &[IrFuncLike],
+    ) -> generator::dart::Output {
+        generator::dart::generate(self, config, wasm_funcs)
     }
     /// get all symbols(function names) defined explicitly or implictily
     pub fn get_all_symbols(&self, config: &Opts) -> Vec<String> {
-        let mut generated_rust = self.generate_rust(config);
+        let generated_rust = self.generate_rust(config);
 
-        generated_rust.extern_func_names = generated_rust
+        generated_rust
             .extern_func_names
             .into_iter()
             .filter(|s| *s != "free_WireSyncReturnStruct")
-            .collect::<Vec<_>>();
-        generated_rust.extern_func_names
+            .collect::<Vec<_>>()
     }
 }

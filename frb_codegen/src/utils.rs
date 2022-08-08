@@ -1,4 +1,5 @@
 use std::collections::HashSet;
+use std::ffi::OsStr;
 use std::fmt::Display;
 use std::fs;
 use std::hash::Hash;
@@ -81,5 +82,16 @@ impl BlockIndex {
 impl Display for BlockIndex {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.0)
+    }
+}
+
+pub trait PathExt {
+    fn file_name_str(&self) -> Option<&str>;
+}
+
+impl PathExt for std::path::Path {
+    #[inline]
+    fn file_name_str(&self) -> Option<&str> {
+        self.file_name().and_then(OsStr::to_str)
     }
 }

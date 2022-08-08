@@ -1,16 +1,15 @@
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-// import 'bridge_definitions.dart';
-import 'bridge_generated.dart';
 import 'package:test/test.dart';
+import 'ffi.dart' if (dart.library.html) 'ffi.web.dart';
+import 'bridge_definitions.dart';
 
 void main(List<String> args) async {
-  String dylibPath = args[0];
+  String dylibPath = args.isEmpty ? 'stub' : args[0];
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
-  final dylib = DynamicLibrary.open(dylibPath);
-  final api = FlutterRustBridgeExampleSingleBlockTestImpl(dylib);
+  final api = initializeExternalLibrary(dylibPath);
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);

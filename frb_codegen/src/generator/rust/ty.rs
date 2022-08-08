@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
-use crate::config::Acc;
 use crate::generator::rust::*;
+use crate::target::Acc;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
@@ -45,8 +45,8 @@ pub trait TypeRustGeneratorTrait {
         &self,
         _collector: &mut ExternFuncCollector,
         _block_index: BlockIndex,
-    ) -> String {
-        "".to_string()
+    ) -> Acc<Option<String>> {
+        Acc::default()
     }
 
     fn impl_intodart(&self) -> String {

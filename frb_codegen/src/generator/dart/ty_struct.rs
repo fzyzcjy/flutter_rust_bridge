@@ -1,8 +1,8 @@
-use crate::config::Acc;
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
 use crate::method_utils::FunctionName;
+use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use convert_case::{Case, Casing};
 
@@ -20,7 +20,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         .iter()
                         .map(|field| {
                             format!(
-                                "_api2wire_{}(raw.{})",
+                                "api2wire_{}(raw.{})",
                                 field.ty.safe_ident(),
                                 field.name.dart_style()
                             )
@@ -40,7 +40,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 .iter()
                 .map(|field| {
                     format!(
-                        "wireObj.{} = _api2wire_{}(apiObj.{});",
+                        "wireObj.{} = api2wire_{}(apiObj.{});",
                         field.name.rust_style(),
                         field.ty.safe_ident(),
                         field.name.dart_style()

@@ -14,15 +14,16 @@ typedef ExternalLibrary = FutureOr<WasmModule>;
 external bool? get crossOriginIsolated;
 
 @JS('Function')
-class _UnaryFunction {
+class _Function {
   external dynamic call();
-  external factory _UnaryFunction(String script);
+  external factory _Function(String script);
 }
 
-dynamic eval(String script) => _UnaryFunction(script)();
+dynamic eval(String script) => _Function(script)();
 
 abstract class FlutterRustBridgeWireBase {
   void storeDartPostCObject() {}
+  // ignore: non_constant_identifier_names
   void free_WireSyncReturnStruct(WireSyncReturnStruct raw) {}
 }
 
@@ -33,12 +34,17 @@ class WireSyncReturnStruct {
   external final int success;
 }
 
-class FlutterRustBridgeWasmWireBase extends FlutterRustBridgeWireBase {
-  final Future<void> init;
-  FlutterRustBridgeWasmWireBase(FutureOr<WasmModule> module)
-      : init = Future.value(module)
-            .then((module) => promiseToFuture(module()))
-            .then((_) => eval("window.wasm_bindgen = wasm_bindgen"));
+class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBridgeWireBase {
+  late final Future<T> init;
+  late final T inner;
+
+  FlutterRustBridgeWasmWireBase(FutureOr<T> module) {
+    init = Future.value(module).then((module) async {
+      eval('window.wasm_bindgen = wasm_bindgen');
+      inner = await promiseToFuture<T>(module());
+      return inner;
+    });
+  }
 }
 
 extension WireSyncReturnStructExt on WireSyncReturnStruct {

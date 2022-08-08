@@ -1,7 +1,11 @@
-use crate::config::Acc;
+use itertools::Itertools;
+
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
+use crate::generator::rust::NO_PARAMS;
 use crate::ir::*;
+use crate::target::Acc;
+use crate::target::Target::*;
 use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
@@ -9,53 +13,86 @@ type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         let enu = self.ir.get(self.context.ir_file);
-        let variants = enu
-            .variants()
-            .iter()
-            .enumerate()
-            .map(|(idx, variant)| match &variant.kind {
-                IrVariantKind::Value => {
-                    format!("{} => {}::{},", idx, enu.name, variant.name)
-                }
-                IrVariantKind::Struct(st) => {
-                    let fields: Vec<_> = st
-                        .fields
-                        .iter()
-                        .map(|field| {
-                            if st.is_fields_named {
-                                format!("{0}: ans.{0}.wire2api()", field.name.rust_style())
+        Acc::new(|target| {
+            if matches!(target, Common) {
+                return None;
+            }
+            let wasm = target.is_wasm();
+            let mut variants =
+                (enu.variants())
+                    .iter()
+                    .enumerate()
+                    .map(|(idx, variant)| match &variant.kind {
+                        IrVariantKind::Value => {
+                            format!("{} => {}::{},", idx, enu.name, variant.name)
+                        }
+                        IrVariantKind::Struct(st) => {
+                            let mut fields = (st.fields).iter().enumerate().map(|(idx, field)| {
+                                if !target.is_wasm() {
+                                    if st.is_fields_named {
+                                        format!("{}: ans.{0}.wire2api()", field.name.rust_style())
+                                    } else {
+                                        format!("ans.{}.wire2api()", field.name.rust_style())
+                                    }
+                                } else {
+                                    if st.is_fields_named {
+                                        format!(
+                                            "{}: self_.get({}).wire2api()",
+                                            field.name.rust_style(),
+                                            idx + 1
+                                        )
+                                    } else {
+                                        format!("self_.get({}).wire2api()", idx + 1)
+                                    }
+                                }
+                            });
+                            let (left, right) = st.brackets_pair();
+                            if target.is_wasm() {
+                                format!(
+                                    "{} => {}::{}{}{}{},",
+                                    idx,
+                                    enu.name,
+                                    variant.name,
+                                    left,
+                                    fields.join(","),
+                                    right
+                                )
                             } else {
-                                format!("ans.{}.wire2api()", field.name.rust_style())
+                                format!(
+                                    "{} => unsafe {{
+                                        let ans = support::box_from_leak_ptr(self.kind);
+                                        let ans = support::box_from_leak_ptr(ans.{2});
+                                        {}::{2}{3}{4}{5}
+                                    }}",
+                                    idx,
+                                    enu.name,
+                                    variant.name,
+                                    left,
+                                    fields.join(","),
+                                    right
+                                )
                             }
-                        })
-                        .collect();
-                    let (left, right) = st.brackets_pair();
-                    format!(
-                        "{} => unsafe {{
-                            let ans = support::box_from_leak_ptr(self.kind);
-                            let ans = support::box_from_leak_ptr(ans.{2});
-                            {}::{2}{3}{4}{5}
-                        }}",
-                        idx,
-                        enu.name,
-                        variant.name,
-                        left,
-                        fields.join(","),
-                        right
-                    )
-                }
-            })
-            .collect::<Vec<_>>();
-        Acc {
-            io: Some(format!(
-                "match self.tag {{
+                        }
+                    });
+            Some(format!(
+                "{}
+                match self{} {{
                     {}
                     _ => unreachable!(),
                 }}",
+                if wasm {
+                    "let self_ = self.unchecked_into::<JsArray>();"
+                } else {
+                    ""
+                },
+                if wasm {
+                    "_.get(0).unchecked_into_f64() as _"
+                } else {
+                    ".tag"
+                },
                 variants.join("\n"),
-            )),
-            ..Default::default()
-        }
+            ))
+        })
     }
 
     fn structs(&self) -> String {
@@ -268,7 +305,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 };
                 Some(collector.generate(
                     &format!("inflate_{}", typ),
-                    &[],
+                    NO_PARAMS,
                     Some(&format!("*mut {}Kind", self.ir.name)),
                     &format!(
                         "support::new_leak_box_ptr({}Kind {{
@@ -279,8 +316,9 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         self.ir.name,
                         variant.name.rust_style(),
                         typ,
-                        body.join(",")
+                        body.join(","),
                     ),
+                    Io,
                 ))
             })
             .collect::<Vec<_>>();

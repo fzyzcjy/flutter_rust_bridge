@@ -1,7 +1,7 @@
-use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
+use crate::target::Acc;
 use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
@@ -36,11 +36,14 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 right
             )),
             wasm: Some(format!(
-                "let self_ = self.unchecked_into::<JsArray>(); {}{}{}{}",
+                "let self_ = self.unchecked_into::<JsArray>();
+                debug_assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
+                {}{}{}{}",
                 self.ir.rust_api_type(),
                 left,
                 fields_wasm.join(","),
-                right
+                right,
+                len = api_struct.fields.len(),
             )),
             ..Default::default()
         }

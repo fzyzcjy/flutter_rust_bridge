@@ -1,9 +1,9 @@
-use crate::config::Acc;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{
     generate_list_allocate_func, ExternFuncCollector, TypeGeneralListGenerator,
 };
 use crate::ir::*;
+use crate::target::Acc;
 use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
 
@@ -37,7 +37,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
             }
-            IrTypeDelegate::StringList => Acc::distribute(Some(TypeGeneralListGenerator::WIRE2API_BODY.into())),
+            IrTypeDelegate::StringList => Acc{
+                io: Some(TypeGeneralListGenerator::WIRE2API_BODY.into()),
+                wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
+                ..Default::default()
+            },
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 let enu = ir.get(self.context.ir_file);
                 let variants = (enu
@@ -68,16 +72,23 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector, _: BlockIndex) -> String {
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _: BlockIndex,
+    ) -> Acc<Option<String>> {
         match &self.ir {
-            list @ IrTypeDelegate::StringList => generate_list_allocate_func(
-                collector,
-                &self.ir.safe_ident(),
-                list,
-                &list.get_delegate(),
-                self.context.config.block_index,
-            ),
-            _ => "".to_string(),
+            list @ IrTypeDelegate::StringList => Acc {
+                io: Some(generate_list_allocate_func(
+                    collector,
+                    &self.ir.safe_ident(),
+                    list,
+                    &list.get_delegate(),
+                    self.context.config.block_index,
+                )),
+                ..Default::default()
+            },
+            _ => Default::default(),
         }
     }
 
@@ -112,8 +123,20 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     }
 
     fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
-        matches!(self.ir, IrTypeDelegate::String)
-            .then(|| "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into())
+        Some(match &self.ir {
+            IrTypeDelegate::String => {
+                "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()
+            }
+            IrTypeDelegate::PrimitiveEnum { repr, .. } => format!(
+                "(self.unchecked_into_f64() as {}).wire2api()",
+                repr.rust_wire_type(true)
+            )
+            .into(),
+            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+                "ZeroCopyBuffer(self.wire2api())".into()
+            }
+            _ => return None,
+        })
     }
 
     fn imports(&self) -> Option<String> {

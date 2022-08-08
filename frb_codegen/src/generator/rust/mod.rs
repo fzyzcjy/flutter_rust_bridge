@@ -18,19 +18,24 @@ pub use ty_primitive_list::*;
 pub use ty_struct::*;
 
 use std::collections::HashSet;
+use std::fmt::Display;
 
-use crate::config::Acc;
 use crate::ir::IrType::*;
 use crate::method_utils::FunctionName;
 use crate::others::*;
+use crate::target::Acc;
+use crate::target::Target;
+use crate::target::Target::*;
 use crate::utils::BlockIndex;
 use crate::{ir::*, Opts};
+use itertools::Itertools;
 
 pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 
 pub struct Output {
     pub code: Acc<String>,
     pub extern_func_names: Vec<String>,
+    pub wasm_exports: Vec<IrFuncLike>,
 }
 
 impl Output {
@@ -50,6 +55,7 @@ pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, config: &Opts) -> Output 
     Output {
         code,
         extern_func_names: generator.extern_func_collector.names,
+        wasm_exports: generator.extern_func_collector.wasm_exports,
     }
 }
 
@@ -90,7 +96,7 @@ impl<'a> Generator<'a> {
         ));
         lines.push(String::new());
 
-        lines.push(self.section_header_comment("wire functions"));
+        lines.push_all(self.section_header_comment("wire functions"));
         lines += ir_file
             .funcs
             .iter()
@@ -126,14 +132,13 @@ impl<'a> Generator<'a> {
             lines.push("};".to_owned());
         }
 
-        (lines.io).push(self.section_header_comment("allocate functions"));
-        lines.io.extend(
-            distinct_input_types
-                .iter()
-                .map(|f| self.generate_allocate_funcs(f, ir_file)),
-        );
+        lines.push_all(self.section_header_comment("allocate functions"));
+        lines += distinct_input_types
+            .iter()
+            .map(|f| self.generate_allocate_funcs(f, ir_file))
+            .collect();
 
-        lines.push(self.section_header_comment("impl Wire2Api"));
+        lines.push_all(self.section_header_comment("impl Wire2Api"));
         lines.push(self.generate_wire2api_misc().to_string());
         lines += distinct_input_types
             .iter()
@@ -218,9 +223,10 @@ impl<'a> Generator<'a> {
     fn generate_sync_execution_mode_utility(&mut self) -> String {
         self.extern_func_collector.generate(
             "free_WireSyncReturnStruct",
-            &["val: support::WireSyncReturnStruct"],
+            [("val: support::WireSyncReturnStruct", "")],
             None,
             "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
+            Io,
         )
     }
 
@@ -240,25 +246,19 @@ impl<'a> Generator<'a> {
             .iter()
             .map(|field| {
                 let name = field.name.rust_style();
-                Acc {
-                    io: format!(
-                        "{}: {}{}",
-                        name,
-                        field.ty.rust_wire_modifier(false),
-                        field.ty.rust_wire_type(false)
-                    ),
-                    wasm: format!(
-                        "{}: {}{}",
-                        name,
-                        field.ty.rust_wire_modifier(true),
-                        field.ty.rust_wire_type(true)
-                    ),
-                    common: format!(
+                Acc::new(|target| match target {
+                    Common => format!(
                         "{}: impl Wire2Api<{}> + UnwindSafe",
                         name,
                         field.ty.rust_api_type()
                     ),
-                }
+                    Io | Wasm => format!(
+                        "{}: {}{}",
+                        name,
+                        field.ty.rust_wire_modifier(target.is_wasm()),
+                        field.ty.rust_wire_type(target.is_wasm())
+                    ),
+                })
             })
             .collect();
 
@@ -354,36 +354,29 @@ impl<'a> Generator<'a> {
                 .collect::<Vec<_>>()
                 .join(","),
         );
-        Acc {
-            io: self.extern_func_collector.generate(
+        Acc::new(|target| match target {
+            Io | Wasm => self.extern_func_collector.generate(
                 &func.wire_func_name(),
-                &params
-                    .io
-                    .iter()
-                    .map(std::ops::Deref::deref)
-                    .collect::<Vec<_>>(),
+                if target.is_wasm() {
+                    &params.wasm[..]
+                } else {
+                    &params.io[..]
+                }
+                .iter()
+                .map(|item| (item, ""))
+                .collect::<Vec<_>>(),
                 return_type,
                 &redirect_body,
+                target,
             ),
-            wasm: (self.config.wasm_enabled)
-                .then(|| {
-                    format!(
-                        "#[wasm_bindgen] pub fn {}({}) {} {{ {} }}",
-                        func.wire_func_name(),
-                        params.wasm.join(","),
-                        return_type.map(|t| format!("-> {}", t)).unwrap_or_default(),
-                        redirect_body,
-                    )
-                })
-                .unwrap_or_default(),
-            common: format!(
+            Common => format!(
                 "fn {}_impl({}) {} {{ {} }}",
                 func.wire_func_name(),
                 params.common.join(","),
                 return_type.map(|t| format!("-> {}", t)).unwrap_or_default(),
                 body,
             ),
-        }
+        })
     }
 
     fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
@@ -406,9 +399,10 @@ impl<'a> Generator<'a> {
         }
     }
 
-    fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
+    fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
             .allocate_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .map(|func, _| func.unwrap_or_default())
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
@@ -421,38 +415,32 @@ impl<'a> Generator<'a> {
                 *mut S: Wire2Api<T>
         {
             fn wire2api(self) -> Option<T> {
-                if self.is_null() {
-                    None
-                } else {
-                    Some(self.wire2api())
-                }
+                (!self.is_null()).then(|| self.wire2api())
             }
         }
         "
     }
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
-        let wrap = |wasm: bool, body: &str| {
-            format!(
-                "impl Wire2Api<{out}> for {} {{
-                    fn wire2api(self) -> {out} {{
-                        {}
-                    }}
-                }}",
-                ty.rust_wire_modifier(wasm) + &ty.rust_wire_type(wasm),
-                body,
-                out = ty.rust_api_type(),
-            )
-        };
-        let Acc { common, io, wasm } =
-            TypeRustGenerator::new(ty.clone(), ir_file, self.config).wire2api_body();
-        Acc {
-            common: common
-                .map(|common| wrap(false, &common))
-                .unwrap_or_default(),
-            io: io.map(|io| wrap(false, &io)).unwrap_or_default(),
-            wasm: wasm.map(|wasm| wrap(true, &wasm)).unwrap_or_default(),
-        }
+        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+            .wire2api_body()
+            .map(|body, target| {
+                body.map(|body| {
+                    let wasm = target.is_wasm();
+                    format!(
+                        "impl Wire2Api<{api}> for {}{} {{
+                            fn wire2api(self) -> {api} {{
+                                {}
+                            }}
+                        }}",
+                        ty.rust_wire_modifier(wasm),
+                        ty.rust_wire_type(wasm),
+                        body,
+                        api = ty.rust_api_type(),
+                    )
+                })
+                .unwrap_or_default()
+            })
     }
 
     fn generate_static_checks(&mut self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
@@ -508,13 +496,13 @@ impl<'a> Generator<'a> {
             .wasm2api_body()
             .map(|body| {
                 format!(
-                    "impl Wire2Api<{wire_type}> for JsValue {{
-                        fn wire2api(self) -> {wire_type} {{
+                    "impl Wire2Api<{api}> for JsValue {{
+                        fn wire2api(self) -> {api} {{
                             {}
                         }}
                     }}",
                     body,
-                    wire_type = ty.rust_wire_type(true)
+                    api = ty.rust_api_type()
                 )
             })
     }
@@ -534,7 +522,7 @@ pub fn generate_list_allocate_func(
     let wasm = false;
     collector.generate(
         &format!("new_{}_{}", safe_ident, block_index),
-        &["len: i32"],
+        [("len: i32", "int")],
         Some(&[
             list.rust_wire_modifier(wasm).as_str(),
             list.rust_wire_type(wasm).as_str()
@@ -546,38 +534,67 @@ pub fn generate_list_allocate_func(
             inner.rust_ptr_modifier(),
             inner.rust_wire_type(wasm)
         ),
+        Io,
     )
 }
 
+pub const NO_PARAMS: Option<(&str, &str)> = None;
+
 pub struct ExternFuncCollector {
     names: Vec<String>,
+    wasm_exports: Vec<IrFuncLike>,
 }
 
 impl ExternFuncCollector {
     fn new() -> Self {
-        ExternFuncCollector { names: vec![] }
+        ExternFuncCollector {
+            names: Default::default(),
+            wasm_exports: vec![],
+        }
     }
 
+    /// Functions starting with "wire_" are assumed to be from the original set of IrFuncs
+    /// and not re-exported to WASM.
     fn generate(
         &mut self,
         func_name: &str,
-        params: &[&str],
+        params: impl IntoIterator<Item = (impl Display, impl Display)>,
         return_type: Option<&str>,
         body: &str,
+        target: Target,
     ) -> String {
-        self.names.push(func_name.to_string());
+        let params = params.into_iter().collect::<Vec<_>>();
+        if matches!(target, Io) {
+            self.names.push(func_name.to_string());
+        } else if target.is_wasm() && !func_name.starts_with("wire_") {
+            self.wasm_exports.push(IrFuncLike {
+                name: func_name.to_owned(),
+                inputs: params
+                    .iter()
+                    .map(|(verbatim, dart)| {
+                        let verbatim = format!("{}", verbatim);
+                        let (key, _) = verbatim.split_once(':').expect("Missing middle colon");
+                        (key.to_owned(), format!("{}", dart))
+                    })
+                    .collect(),
+                output: return_type.map(String::from).unwrap_or_default(),
+                has_port_argument: false,
+            })
+        }
 
         format!(
             r#"
-                #[no_mangle]
-                pub extern "C" fn {}({}) {} {{
+                {attr}
+                pub {call_conv} fn {}({}) {} {{
                     {}
                 }}
             "#,
             func_name,
-            params.join(", "),
+            params.into_iter().map(|param| param.0).join(","),
             return_type.map_or("".to_string(), |r| format!("-> {}", r)),
             body,
+            attr = target.extern_func_attr(),
+            call_conv = target.call_convention(),
         )
     }
 }

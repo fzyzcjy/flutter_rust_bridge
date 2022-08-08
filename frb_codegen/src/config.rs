@@ -2,7 +2,6 @@ use std::borrow::Cow;
 use std::env;
 use std::ffi::OsString;
 use std::fs;
-use std::iter::FromIterator;
 use std::path::Path;
 use std::path::PathBuf;
 use std::str::FromStr;
@@ -67,112 +66,9 @@ pub struct RawOpts {
     /// Requires: --dart-decl-output
     #[clap(long, requires = "dart-decl-output")]
     pub wasm: bool,
-}
-
-/// Generic accumulator over the targets.
-///
-/// [`Acc<Option<String>>`] implements [`From<T>`] where <code>T: [ToString]</code>
-/// for code shared between all platforms.
-#[derive(Debug, Default, Clone)]
-pub struct Acc<T> {
-    pub common: T,
-    pub io: T,
-    pub wasm: T,
-}
-
-impl<T> std::ops::AddAssign for Acc<Vec<T>> {
-    #[inline]
-    fn add_assign(&mut self, rhs: Self) {
-        self.common.extend(rhs.common);
-        self.io.extend(rhs.io);
-        self.wasm.extend(rhs.wasm);
-    }
-}
-
-impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
-    fn from_iter<A: IntoIterator<Item = Acc<T>>>(iter: A) -> Self {
-        iter.into_iter()
-            .fold(Acc::<Vec<T>>::default(), |mut acc, x| {
-                acc.common.push(x.common);
-                acc.io.push(x.io);
-                acc.wasm.push(x.wasm);
-                acc
-            })
-    }
-}
-
-impl<T> Acc<T> {
-    pub fn map<O>(self, mut mapper: impl FnMut(T) -> O) -> Acc<O> {
-        Acc {
-            common: mapper(self.common),
-            io: mapper(self.io),
-            wasm: mapper(self.wasm),
-        }
-    }
-    /// Assign this value to all non-common targets.
-    pub fn distribute(value: T) -> Self
-    where
-        T: Clone + Default,
-    {
-        Self {
-            common: T::default(),
-            io: value.clone(),
-            wasm: value,
-        }
-    }
-}
-
-impl<T: ToString> From<T> for Acc<Option<String>> {
-    #[inline]
-    fn from(common: T) -> Self {
-        Acc {
-            common: Some(common.to_string()),
-            ..Default::default()
-        }
-    }
-}
-
-impl<T> Acc<Vec<T>> {
-    /// Push to the common buffer.
-    #[inline]
-    pub fn push(&mut self, common: T) {
-        self.common.push(common)
-    }
-
-    /// Extend to the common buffer.
-    #[inline]
-    pub fn extend(&mut self, common: impl IntoIterator<Item = T>) {
-        self.common.extend(common)
-    }
-
-    #[inline]
-    pub fn push_acc(&mut self, acc: Acc<T>) {
-        let Acc { common, io, wasm } = acc;
-        self.common.push(common);
-        self.io.push(io);
-        self.wasm.push(wasm);
-    }
-
-    #[inline]
-    pub fn push_all(&mut self, item: T)
-    where
-        T: Clone,
-    {
-        self.common.push(item.clone());
-        self.io.push(item.clone());
-        self.wasm.push(item);
-    }
-}
-
-impl Acc<Vec<String>> {
-    #[inline]
-    pub fn join(&self, sep: &str) -> Acc<String> {
-        Acc {
-            common: self.common.join(sep),
-            io: self.io.join(sep),
-            wasm: self.wasm.join(sep),
-        }
-    }
+    /// Inline declaration of Rust bridge modules
+    #[clap(long)]
+    pub inline_rust: bool,
 }
 
 #[derive(Debug, Clone)]
@@ -193,6 +89,7 @@ pub struct Opts {
     pub build_runner: bool,
     pub block_index: BlockIndex,
     pub wasm_enabled: bool,
+    pub inline_rust: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
@@ -314,6 +211,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
     let build_runner = !raw.no_build_runner;
     let wasm = raw.wasm;
+    let inline_rust = raw.inline_rust;
 
     (0..rust_input_paths.len())
         .map(|i| {
@@ -334,6 +232,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 build_runner, //same for all rust api blocks
                 block_index: BlockIndex(i),
                 wasm_enabled: wasm,
+                inline_rust,
             }
         })
         .collect()
@@ -518,6 +417,14 @@ impl Opts {
         format!("{}Wire", self.class_name)
     }
 
+    pub fn dart_platform_class_name(&self) -> String {
+        format!("{}Platform", self.class_name)
+    }
+
+    pub fn dart_wasm_module(&self) -> String {
+        format!("{}WasmModule", self.class_name)
+    }
+
     pub(crate) fn dart_output_root(&self) -> Option<&str> {
         Path::new(
             self.dart_decl_output_path
@@ -534,6 +441,10 @@ impl Opts {
 
     pub fn dart_io_output_path(&self) -> PathBuf {
         Path::new(&self.dart_output_path).with_extension("io.dart")
+    }
+
+    pub fn dart_common_output_path(&self) -> PathBuf {
+        Path::new(&self.dart_output_path).with_extension("common.dart")
     }
 
     pub fn rust_wasm_output_path(&self) -> PathBuf {

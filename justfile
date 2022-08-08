@@ -23,7 +23,8 @@ alias g := gen-bridge
 gen-bridge:
     {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart \
-                --dart-format-line-length {{line_length}}
+                --dart-decl-output {{frb_pure}}/dart/lib/bridge_definitions.dart \
+                --dart-format-line-length {{line_length}} --wasm
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
                 --dart-decl-output {{frb_flutter}}/lib/bridge_definitions.dart \
@@ -34,9 +35,7 @@ gen-bridge:
 alias l := lint
 lint:
     dart format --fix .
-    dart format --fix -l {{line_length}} {{frb_pure}}
-    dart format --fix -l {{line_length}} {{frb_pure_multi}}
-    dart format --fix -l {{line_length}} {{frb_flutter}}
+    dart format --fix -l {{line_length}} {{frb_pure}} {{frb_pure_multi}} {{frb_flutter}}
 
 alias t := test
 test: test-pure test-integration
@@ -45,6 +44,8 @@ test-pure:
     cd {{frb_pure}}/dart && \
         dart pub get && \
         dart lib/main.dart ../rust/target/debug/{{dylib}}
+test-pure-web:
+    cd {{frb_pure}}/dart && just serve --dart-input lib/main.dart --root web/ -c ../rust --port 8081
 test-integration:
     cd {{frb_flutter}} && flutter test integration_test/main.dart
 
@@ -66,7 +67,8 @@ check:
     cd {{frb_flutter}}/rust && cargo clippy
 
 serve *args="":
-    cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_cors/bin/server.dart {{args}}
+    cd frb_dart && dart pub get
+    cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
 refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)

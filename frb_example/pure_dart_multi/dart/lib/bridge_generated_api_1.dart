@@ -51,9 +51,6 @@ class ApiClass1Impl extends FlutterRustBridgeBase<ApiClass1Wire> implements ApiC
 
 // Section: api2wire
 
-  int _api2wire_i32(int raw) {
-    return raw;
-  }
 }
 
 // Section: wire2api
@@ -65,6 +62,9 @@ int _wire2api_i32(dynamic raw) {
 extension ApiClass1ImplIoExt on ApiClass1Impl {
 // Section: api2wire
 
+  int _api2wire_i32(int raw) {
+    return raw;
+  }
 // Section: api_fill_to_wire
 
 }

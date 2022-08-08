@@ -1,6 +1,6 @@
-use crate::config::Acc;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
+use crate::target::Acc;
 use crate::type_dart_generator_struct;
 
 type_dart_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
@@ -21,7 +21,7 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
             )),
             wasm: self.context.wasm().then(|| {
                 format!(
-                    "return raw.map(_api2wire_{}).toList();",
+                    "return raw.map(api2wire_{}).toList();",
                     self.ir.inner.safe_ident()
                 )
             }),

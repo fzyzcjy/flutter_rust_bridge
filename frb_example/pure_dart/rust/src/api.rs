@@ -1,5 +1,6 @@
 #![allow(unused_variables)]
 
+use std::collections::VecDeque;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
@@ -178,6 +179,8 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
     // just to show that, you can send data to sink even in other threads
     let cnt2 = cnt.clone();
     let sink2 = sink.clone();
+
+    #[cfg(not(target_family = "wasm"))]
     thread::spawn(move || {
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
@@ -242,6 +245,7 @@ pub struct Attribute {
 }
 
 pub fn handle_optional_struct(document: Option<String>) -> Option<Element> {
+    //asd
     document.map(|inner| Element {
         tag: Some("div".to_owned()),
         attributes: Some(vec![Attribute {
@@ -270,7 +274,6 @@ pub struct ExoticOptionals {
     pub int8list: Option<Vec<i8>>,
     pub uint8list: Option<Vec<u8>>,
     pub int32list: Option<Vec<i32>>,
-    pub int64list: Option<Vec<i64>>,
     pub float32list: Option<Vec<f32>>,
     pub float64list: Option<Vec<f64>>,
     pub attributes: Option<Vec<Attribute>>,
@@ -294,7 +297,6 @@ pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticO
         int8list: manipulate_list(opt.int8list, 0),
         uint8list: manipulate_list(opt.uint8list, 0),
         int32list: manipulate_list(opt.int32list, 0),
-        int64list: manipulate_list(opt.int64list, 0),
         float32list: manipulate_list(opt.float32list, 0.),
         float64list: manipulate_list(opt.float64list, 0.),
         attributes: Some({
@@ -484,7 +486,6 @@ pub fn use_imported_enum(my_enum: MyEnum) -> bool {
 pub use external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
 };
-use lazy_static::lazy_static;
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
@@ -563,8 +564,8 @@ pub fn next_user_id(user_id: UserId) -> UserId {
 }
 
 // event listener test
-lazy_static! {
-    static ref EVENT_LISTENER: Arc<Mutex<Option<StreamSink<Event>>>> = Default::default();
+lazy_static::lazy_static! {
+    static ref EVENTS: Arc<Mutex<Option<VecDeque<Event>>>> = Arc::new(Mutex::new(Some(Default::default())));
 }
 
 #[derive(Clone)]
@@ -574,22 +575,28 @@ pub struct Event {
 }
 
 pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
-    (*EVENT_LISTENER.lock().unwrap()) = Some(listener);
+    while let Ok(mut guard) = EVENTS.lock() {
+        if let Some(event) = guard.as_mut().and_then(|queue| queue.pop_front()) {
+            listener.add(event);
+        }
+    }
     Ok(())
 }
 
 pub fn close_event_listener() {
-    if let Ok(Some(listener)) = EVENT_LISTENER.lock().map(|guard| guard.take()) {
-        listener.close()
+    if let Ok(mut queue) = EVENTS.lock() {
+        let _ = queue.take();
     }
 }
 
 pub fn create_event() {
-    if let Some(ref listener) = *EVENT_LISTENER.lock().unwrap() {
-        listener.add(Event {
-            address: "something".into(),
-            payload: "payload".into(),
-        });
+    if let Ok(mut guard) = EVENTS.lock() {
+        if let Some(queue) = guard.as_mut() {
+            queue.push_back(Event {
+                address: "something".into(),
+                payload: "payload".into(),
+            });
+        }
     }
 }
 
@@ -604,6 +611,7 @@ pub fn handle_stream_sink_at_1(
     max: u32,
     sink: StreamSink<Log>,
 ) -> Result<(), anyhow::Error> {
+    #[cfg(not(target_family = "wasm"))]
     std::thread::spawn(move || {
         for i in 0..max {
             sink.add(Log { key, value: i });
@@ -667,6 +675,7 @@ impl ConcatenateWith {
         sink: StreamSink<Log2>,
     ) -> Result<(), anyhow::Error> {
         let a = self.a.clone();
+        #[cfg(not(target_family = "wasm"))]
         std::thread::spawn(move || {
             for i in 0..max {
                 sink.add(Log2 {
@@ -680,6 +689,7 @@ impl ConcatenateWith {
     }
 
     pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
+        #[cfg(not(target_family = "wasm"))]
         std::thread::spawn(move || {
             for i in 0..5 {
                 sink.add(i);
@@ -694,6 +704,7 @@ impl ConcatenateWith {
         max: u32,
         sink: StreamSink<Log2>,
     ) -> Result<(), anyhow::Error> {
+        #[cfg(not(target_family = "wasm"))]
         std::thread::spawn(move || {
             for i in 0..max {
                 sink.add(Log2 {
@@ -709,6 +720,7 @@ impl ConcatenateWith {
     pub fn handle_some_static_stream_sink_single_arg(
         sink: StreamSink<u32>,
     ) -> Result<(), anyhow::Error> {
+        #[cfg(not(target_family = "wasm"))]
         std::thread::spawn(move || {
             for i in 0..5 {
                 sink.add(i);

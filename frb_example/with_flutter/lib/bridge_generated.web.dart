@@ -8,48 +8,61 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import "bridge_generated.dart";
+import 'bridge_generated.dart';
+export 'bridge_generated.dart';
+import 'package:meta/meta.dart';
 
-extension FlutterRustBridgeExampleImplWasmExt on FlutterRustBridgeExampleImpl {
+class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
+  FlutterRustBridgeExamplePlatform(FutureOr<WasmModule> dylib) : super(FlutterRustBridgeExampleWire(dylib));
 // Section: api2wire
 
-  String _api2wire_String(String raw) {
+  @protected
+  String api2wire_String(String raw) {
     return raw;
   }
 
-  List<dynamic> _api2wire_box_autoadd_point(Point raw) {
-    return _api2wire_point(raw);
+  @protected
+  List<dynamic> api2wire_box_autoadd_point(Point raw) {
+    return api2wire_point(raw);
   }
 
-  List<dynamic> _api2wire_box_autoadd_size(Size raw) {
-    return _api2wire_size(raw);
+  @protected
+  List<dynamic> api2wire_box_autoadd_size(Size raw) {
+    return api2wire_size(raw);
   }
 
-  List<dynamic> _api2wire_box_autoadd_tree_node(TreeNode raw) {
-    return _api2wire_tree_node(raw);
+  @protected
+  List<dynamic> api2wire_box_autoadd_tree_node(TreeNode raw) {
+    return api2wire_tree_node(raw);
   }
 
-  List<dynamic> _api2wire_list_size(List<Size> raw) {
-    return raw.map(_api2wire_size).toList();
+  @protected
+  List<dynamic> api2wire_list_size(List<Size> raw) {
+    return raw.map(api2wire_size).toList();
   }
 
-  List<dynamic> _api2wire_list_tree_node(List<TreeNode> raw) {
-    return raw.map(_api2wire_tree_node).toList();
+  @protected
+  List<dynamic> api2wire_list_tree_node(List<TreeNode> raw) {
+    return raw.map(api2wire_tree_node).toList();
   }
 
-  List<dynamic> _api2wire_point(Point raw) {
-    return [_api2wire_f64(raw.x), _api2wire_f64(raw.y)];
+  @protected
+  List<dynamic> api2wire_point(Point raw) {
+    return [api2wire_f64(raw.x), api2wire_f64(raw.y)];
   }
 
-  List<dynamic> _api2wire_size(Size raw) {
-    return [_api2wire_i32(raw.width), _api2wire_i32(raw.height)];
+  @protected
+  List<dynamic> api2wire_size(Size raw) {
+    return [api2wire_i32(raw.width), api2wire_i32(raw.height)];
   }
 
-  List<dynamic> _api2wire_tree_node(TreeNode raw) {
-    return [_api2wire_String(raw.name), _api2wire_list_tree_node(raw.children)];
+  @protected
+  List<dynamic> api2wire_tree_node(TreeNode raw) {
+    return [api2wire_String(raw.name), api2wire_list_tree_node(raw.children)];
   }
 
-  Uint8List _api2wire_uint_8_list(Uint8List raw) {
+  @protected
+  Uint8List api2wire_uint_8_list(Uint8List raw) {
     return raw;
   }
 }

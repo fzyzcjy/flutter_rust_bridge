@@ -1,11 +1,10 @@
 //! Functions that support auto-generated Rust code.
-//! These functions are *not* meant to be used by humans directly.
+//! These functions are& *not* meant to be used by humans directly.
 #![doc(hidden)]
 
 use std::mem;
 
 pub use crate::ffi::*;
-pub use cfg_if::cfg_if;
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
@@ -40,6 +39,28 @@ pub fn new_leak_box_ptr<T>(t: T) -> *mut T {
 /// Use it in pair with [new_leak_box_ptr].
 pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
+}
+
+mod sealed {
+    pub trait Sealed {}
+    impl Sealed for i64 {}
+    impl Sealed for u64 {}
+}
+
+/// Cast a byte buffer into a boxed slice of the target type without making any copies.
+/// Panics if the cast is unsuccessful in debug mode, otherwise an empty slice is returned.
+pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
+    let buf = Box::leak(buffer.into_boxed_slice());
+    match bytemuck::try_cast_slice_mut(buf) {
+        Ok(buf) => unsafe { Box::from_raw(buf) },
+        Err(err) => {
+            unsafe { core::ptr::drop_in_place(buf) }
+            #[cfg(debug_assertions)]
+            panic!("{}", err);
+            #[cfg(not(debug_assertions))]
+            Box::new([])
+        }
+    }
 }
 
 /// NOTE for maintainer: Please keep this struct in sync with `DUMMY_WIRE_CODE_FOR_BINDGEN`
