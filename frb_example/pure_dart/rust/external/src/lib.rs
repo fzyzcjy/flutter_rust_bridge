@@ -27,6 +27,12 @@ pub enum ApplicationMessage {
 }
 
 #[derive(Debug, Clone)]
+pub struct Numbers(pub Vec<i32>);
+
+#[derive(Debug, Clone)]
+pub struct Sequences(pub Vec<i32>);
+
+#[derive(Debug, Clone)]
 pub struct ApplicationEnvVar(pub String, pub bool);
 
 impl ApplicationSettings {
@@ -65,4 +71,12 @@ pub fn poll_messages() -> Vec<ApplicationMessage> {
         ApplicationMessage::RenderPixel { x: 5, y: 10 },
         ApplicationMessage::Exit,
     ]
+}
+
+pub fn repeat_number(num: i32, times: usize) -> Numbers {
+    Numbers(vec![num; times])
+}
+
+pub fn repeat_sequences(seq: i32, times: usize) -> Sequences {
+    Sequences(vec![seq; times])
 }
