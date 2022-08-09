@@ -5,8 +5,10 @@ import 'package:test/test.dart';
 import 'ffi.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
 
+const wasm = bool.hasEnvironment('dart.library.html');
+
 void main(List<String> args) async {
-  String dylibPath = args.isEmpty ? 'stub' : args[0];
+  String dylibPath = args[0];
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
@@ -51,7 +53,7 @@ void main(List<String> args) async {
     expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
     expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
     expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
-  });
+  }, skip: wasm ? 'Int64List not supported on web' : null);
 
   test('dart call handleZeroCopyVecOfPrimitive', () async {
     final n = 10000;

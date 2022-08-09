@@ -47,15 +47,7 @@ mod pointer {
     #[automatically_derived]
     impl<T> WasmDescribe for Pointer<T> {
         fn describe() {
-            inform(RUST_STRUCT);
-            inform(7);
-            inform(b'P' as _);
-            inform(b'o' as _);
-            inform(b'i' as _);
-            inform(b'n' as _);
-            inform(b't' as _);
-            inform(b'e' as _);
-            inform(b'r' as _);
+            inform(EXTERNREF);
         }
     }
 

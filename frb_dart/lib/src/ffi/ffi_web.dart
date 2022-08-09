@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:js/js.dart';
 export 'package:js/js.dart';
 import 'package:js/js_util.dart' show promiseToFuture;
-export 'package:js/js_util.dart' show promiseToFuture;
+export 'package:js/js_util.dart' show promiseToFuture, getProperty;
 
 import 'dart:typed_data';
 import '../ffi.dart' show WasmModule;
@@ -30,21 +30,16 @@ abstract class FlutterRustBridgeWireBase {
   void free_WireSyncReturnStruct(WireSyncReturnStruct raw) {}
 }
 
-@JS()
-@anonymous
-class WireSyncReturnStruct {
-  external final Uint8List buffer;
-  external final int success;
+typedef WireSyncReturnStruct = List<dynamic>;
+
+extension WireSyncReturnStructExt on WireSyncReturnStruct {
+  Uint8List get buffer => this[0];
+  bool get isSuccess => this[1];
 }
 
-class FlutterRustBridgeWasmWireBase<T extends WasmModule>
-    extends FlutterRustBridgeWireBase {
+class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBridgeWireBase {
   final Future<T> init;
 
   FlutterRustBridgeWasmWireBase(FutureOr<T> module)
       : init = Future.value(module).then((module) => promiseToFuture(module()));
-}
-
-extension WireSyncReturnStructExt on WireSyncReturnStruct {
-  bool get isSuccess => success > 0;
 }
