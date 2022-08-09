@@ -18,6 +18,7 @@ fn main() {
         dart_output: vec![DART_OUTPUT.to_string()],
         wasm: true,
         dart_decl_output: Some("../dart/lib/bridge_definitions.dart".into()),
+        dart_format_line_length: 120,
         // for other options use defaults
         ..Default::default()
     };

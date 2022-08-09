@@ -1,4 +1,5 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
+#![warn(clippy::wildcard_enum_match_arm)]
 
 use std::ffi::OsStr;
 use std::fs;

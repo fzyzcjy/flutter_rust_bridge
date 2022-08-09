@@ -24,7 +24,7 @@ macro_rules! transfer {
                 )*
                 { $($body)* }
             };
-            $crate::ffi::TransferClosure::new(vec![$(JsValue::from($param)),*], worker)
+            $crate::ffi::TransferClosure::new(vec![$(<$ty>::into($param)),*], worker)
         }
     }};
 }

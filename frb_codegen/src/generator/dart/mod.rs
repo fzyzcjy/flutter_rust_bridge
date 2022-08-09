@@ -221,7 +221,7 @@ fn generate_wasm_module<'a>(
 ) -> String {
     format!(
         "class {cls} extends FlutterRustBridgeWasmWireBase<{wasm}> {{
-            {cls}(FutureOr<WasmModule> module) : super(module as FutureOr<{wasm}>);
+            {cls}(FutureOr<WasmModule> module) : super(WasmModule.cast<{wasm}>(module));
             
             {}
         }}
@@ -302,16 +302,20 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             impl = dart_api_impl_class_name,
             plat = dart_platform_class_name,
         ),
-        Io | Wasm => format!(
+        Io => format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> {{
-                {plat}({dylib_type} dylib) : super({wire}(dylib as dynamic));",
+                {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib));",
             plat = dart_platform_class_name,
             wire = dart_wire_class_name,
-            dylib_type = match target {
-                Io => "ffi.DynamicLibrary",
-                Wasm => "FutureOr<WasmModule>",
-                Common => unreachable!(),
-            }
+        ),
+        Wasm => format!(
+            "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
+                {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
+                    setupMixinConstructor();
+                }}
+                Future<void> setup() => inner.init;",
+            plat = dart_platform_class_name,
+            wire = dart_wire_class_name,
         ),
     }));
 
@@ -348,7 +352,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         lines.wasm.push(format!(
             "@JS() @anonymous class {wasm} implements WasmModule {{
                 external Object /* Promise */ call([String? moduleName]);
-                external {wasm} bind(WasmModule module, String moduleName);
+                external {wasm} bind(dynamic thisArg, String moduleName);
             ",
             wasm = dart_wasm_module_name,
         ));
@@ -640,28 +644,19 @@ fn generate_wasm_wire_func_decl(func: &IrFuncLike) -> String {
 }
 
 fn generate_wasm_wire_func_method(func: &IrFuncLike) -> String {
-    let vars = func.inputs.iter().map(|(key, _)| key).join(",");
     format!(
-        "{} {name}({}) => {};",
-        if func.has_port_argument {
-            "void".into()
-        } else {
-            rust_wire_to_dart_wire(&func.output)
-        },
+        "{out} {name}({}) => wasmModule.{name}({});",
         func.inputs
             .iter()
             .map(|(key, ty)| format!("{} {}", ty, key))
             .join(","),
-        if func.has_port_argument {
-            format!(
-                "init.then((inner) => inner.{name}({}))",
-                vars,
-                name = func.name
-            )
+        func.inputs.iter().map(|(key, _)| key.to_string()).join(","),
+        name = func.name,
+        out = if func.has_port_argument {
+            "void".into()
         } else {
-            format!("inner.{name}({})", vars, name = func.name)
+            rust_wire_to_dart_wire(&func.output)
         },
-        name = func.name
     )
 }
 

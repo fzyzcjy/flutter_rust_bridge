@@ -17,7 +17,7 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
                 }
                 .into(),
             ),
-            io: Some("(!self.is_null()).then(|| self.wire2api())".into()),
+            // io: Some("(!self.is_null()).then(|| self.wire2api())".into()),
             ..Default::default()
         }
     }

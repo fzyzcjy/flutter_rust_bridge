@@ -13,9 +13,12 @@ export 'bridge_generated.dart';
 import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
-    extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> {
+    extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> with FlutterRustBridgeSetupMixin {
   FlutterRustBridgeExampleSingleBlockTestPlatform(FutureOr<WasmModule> dylib)
-      : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib as dynamic));
+      : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
+    setupMixinConstructor();
+  }
+  Future<void> setup() => inner.init;
 // Section: api2wire
 
   @protected
@@ -462,7 +465,7 @@ external FlutterRustBridgeExampleSingleBlockTestWasmModule get wasmModule;
 @anonymous
 class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
-  external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(WasmModule module, String moduleName);
+  external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
 
   external void wire_simple_adder(NativePortType port_, int a, int b);
 
@@ -604,68 +607,61 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 class FlutterRustBridgeExampleSingleBlockTestWire
     extends FlutterRustBridgeWasmWireBase<FlutterRustBridgeExampleSingleBlockTestWasmModule> {
   FlutterRustBridgeExampleSingleBlockTestWire(FutureOr<WasmModule> module)
-      : super(module as FutureOr<FlutterRustBridgeExampleSingleBlockTestWasmModule>);
+      : super(WasmModule.cast<FlutterRustBridgeExampleSingleBlockTestWasmModule>(module));
 
-  void wire_simple_adder(NativePortType port_, int a, int b) =>
-      init.then((inner) => inner.wire_simple_adder(port_, a, b));
+  void wire_simple_adder(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder(port_, a, b);
 
   void wire_primitive_types(NativePortType port_, int my_i32, int my_i64, double my_f64, bool my_bool) =>
-      init.then((inner) => inner.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool));
+      wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
 
-  void wire_primitive_u32(NativePortType port_, int my_u32) =>
-      init.then((inner) => inner.wire_primitive_u32(port_, my_u32));
+  void wire_primitive_u32(NativePortType port_, int my_u32) => wasmModule.wire_primitive_u32(port_, my_u32);
 
-  void wire_handle_string(NativePortType port_, String s) => init.then((inner) => inner.wire_handle_string(port_, s));
+  void wire_handle_string(NativePortType port_, String s) => wasmModule.wire_handle_string(port_, s);
 
-  void wire_handle_return_unit(NativePortType port_) => init.then((inner) => inner.wire_handle_return_unit(port_));
+  void wire_handle_return_unit(NativePortType port_) => wasmModule.wire_handle_return_unit(port_);
 
-  void wire_handle_vec_u8(NativePortType port_, Uint8List v) =>
-      init.then((inner) => inner.wire_handle_vec_u8(port_, v));
+  void wire_handle_vec_u8(NativePortType port_, Uint8List v) => wasmModule.wire_handle_vec_u8(port_, v);
 
-  void wire_handle_vec_of_primitive(NativePortType port_, int n) =>
-      init.then((inner) => inner.wire_handle_vec_of_primitive(port_, n));
+  void wire_handle_vec_of_primitive(NativePortType port_, int n) => wasmModule.wire_handle_vec_of_primitive(port_, n);
 
   void wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n) =>
-      init.then((inner) => inner.wire_handle_zero_copy_vec_of_primitive(port_, n));
+      wasmModule.wire_handle_zero_copy_vec_of_primitive(port_, n);
 
   void wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
-      init.then((inner) => inner.wire_handle_struct(port_, arg, boxed));
+      wasmModule.wire_handle_struct(port_, arg, boxed);
 
-  void wire_handle_newtype(NativePortType port_, List<dynamic> arg) =>
-      init.then((inner) => inner.wire_handle_newtype(port_, arg));
+  void wire_handle_newtype(NativePortType port_, List<dynamic> arg) => wasmModule.wire_handle_newtype(port_, arg);
 
   void wire_handle_list_of_struct(NativePortType port_, List<dynamic> l) =>
-      init.then((inner) => inner.wire_handle_list_of_struct(port_, l));
+      wasmModule.wire_handle_list_of_struct(port_, l);
 
   void wire_handle_string_list(NativePortType port_, List<String> names) =>
-      init.then((inner) => inner.wire_handle_string_list(port_, names));
+      wasmModule.wire_handle_string_list(port_, names);
 
   void wire_handle_complex_struct(NativePortType port_, List<dynamic> s) =>
-      init.then((inner) => inner.wire_handle_complex_struct(port_, s));
+      wasmModule.wire_handle_complex_struct(port_, s);
 
-  WireSyncReturnStruct wire_handle_sync_return(String mode) => inner.wire_handle_sync_return(mode);
+  WireSyncReturnStruct wire_handle_sync_return(String mode) => wasmModule.wire_handle_sync_return(mode);
 
-  void wire_handle_stream(NativePortType port_, String arg) =>
-      init.then((inner) => inner.wire_handle_stream(port_, arg));
+  void wire_handle_stream(NativePortType port_, String arg) => wasmModule.wire_handle_stream(port_, arg);
 
-  void wire_handle_stream_of_struct(NativePortType port_) =>
-      init.then((inner) => inner.wire_handle_stream_of_struct(port_));
+  void wire_handle_stream_of_struct(NativePortType port_) => wasmModule.wire_handle_stream_of_struct(port_);
 
-  void wire_return_err(NativePortType port_) => init.then((inner) => inner.wire_return_err(port_));
+  void wire_return_err(NativePortType port_) => wasmModule.wire_return_err(port_);
 
-  void wire_return_panic(NativePortType port_) => init.then((inner) => inner.wire_return_panic(port_));
+  void wire_return_panic(NativePortType port_) => wasmModule.wire_return_panic(port_);
 
   void wire_handle_optional_return(NativePortType port_, double left, double right) =>
-      init.then((inner) => inner.wire_handle_optional_return(port_, left, right));
+      wasmModule.wire_handle_optional_return(port_, left, right);
 
   void wire_handle_optional_struct(NativePortType port_, String? document) =>
-      init.then((inner) => inner.wire_handle_optional_struct(port_, document));
+      wasmModule.wire_handle_optional_struct(port_, document);
 
   void wire_handle_optional_increment(NativePortType port_, List<dynamic>? opt) =>
-      init.then((inner) => inner.wire_handle_optional_increment(port_, opt));
+      wasmModule.wire_handle_optional_increment(port_, opt);
 
   void wire_handle_increment_boxed_optional(NativePortType port_, int /* *f64 */ ? opt) =>
-      init.then((inner) => inner.wire_handle_increment_boxed_optional(port_, opt));
+      wasmModule.wire_handle_increment_boxed_optional(port_, opt);
 
   void wire_handle_option_box_arguments(
           NativePortType port_,
@@ -676,106 +672,100 @@ class FlutterRustBridgeExampleSingleBlockTestWire
           int /* *f64 */ ? f64box,
           int /* *bool */ ? boolbox,
           List<dynamic>? structbox) =>
-      init.then((inner) =>
-          inner.wire_handle_option_box_arguments(port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox));
+      wasmModule.wire_handle_option_box_arguments(port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
 
-  void wire_print_note(NativePortType port_, List<dynamic> note) =>
-      init.then((inner) => inner.wire_print_note(port_, note));
+  void wire_print_note(NativePortType port_, List<dynamic> note) => wasmModule.wire_print_note(port_, note);
 
-  void wire_handle_return_enum(NativePortType port_, String input) =>
-      init.then((inner) => inner.wire_handle_return_enum(port_, input));
+  void wire_handle_return_enum(NativePortType port_, String input) => wasmModule.wire_handle_return_enum(port_, input);
 
   void wire_handle_enum_parameter(NativePortType port_, int weekday) =>
-      init.then((inner) => inner.wire_handle_enum_parameter(port_, weekday));
+      wasmModule.wire_handle_enum_parameter(port_, weekday);
 
   void wire_handle_customized_struct(NativePortType port_, List<dynamic> val) =>
-      init.then((inner) => inner.wire_handle_customized_struct(port_, val));
+      wasmModule.wire_handle_customized_struct(port_, val);
 
   void wire_handle_enum_struct(NativePortType port_, List<dynamic> val) =>
-      init.then((inner) => inner.wire_handle_enum_struct(port_, val));
+      wasmModule.wire_handle_enum_struct(port_, val);
 
   void wire_use_imported_struct(NativePortType port_, List<dynamic> my_struct) =>
-      init.then((inner) => inner.wire_use_imported_struct(port_, my_struct));
+      wasmModule.wire_use_imported_struct(port_, my_struct);
 
-  void wire_use_imported_enum(NativePortType port_, int my_enum) =>
-      init.then((inner) => inner.wire_use_imported_enum(port_, my_enum));
+  void wire_use_imported_enum(NativePortType port_, int my_enum) => wasmModule.wire_use_imported_enum(port_, my_enum);
 
-  void wire_get_app_settings(NativePortType port_) => init.then((inner) => inner.wire_get_app_settings(port_));
+  void wire_get_app_settings(NativePortType port_) => wasmModule.wire_get_app_settings(port_);
 
   void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings) =>
-      init.then((inner) => inner.wire_is_app_embedded(port_, app_settings));
+      wasmModule.wire_is_app_embedded(port_, app_settings);
 
-  void wire_get_message(NativePortType port_) => init.then((inner) => inner.wire_get_message(port_));
+  void wire_get_message(NativePortType port_) => wasmModule.wire_get_message(port_);
 
-  void wire_get_array(NativePortType port_) => init.then((inner) => inner.wire_get_array(port_));
+  void wire_get_array(NativePortType port_) => wasmModule.wire_get_array(port_);
 
-  void wire_get_complex_array(NativePortType port_) => init.then((inner) => inner.wire_get_complex_array(port_));
+  void wire_get_complex_array(NativePortType port_) => wasmModule.wire_get_complex_array(port_);
 
-  void wire_get_usize(NativePortType port_, int u) => init.then((inner) => inner.wire_get_usize(port_, u));
+  void wire_get_usize(NativePortType port_, int u) => wasmModule.wire_get_usize(port_, u);
 
-  void wire_next_user_id(NativePortType port_, List<dynamic> user_id) =>
-      init.then((inner) => inner.wire_next_user_id(port_, user_id));
+  void wire_next_user_id(NativePortType port_, List<dynamic> user_id) => wasmModule.wire_next_user_id(port_, user_id);
 
-  void wire_register_event_listener(NativePortType port_) =>
-      init.then((inner) => inner.wire_register_event_listener(port_));
+  void wire_register_event_listener(NativePortType port_) => wasmModule.wire_register_event_listener(port_);
 
-  void wire_close_event_listener(NativePortType port_) => init.then((inner) => inner.wire_close_event_listener(port_));
+  void wire_close_event_listener(NativePortType port_) => wasmModule.wire_close_event_listener(port_);
 
-  void wire_create_event(NativePortType port_) => init.then((inner) => inner.wire_create_event(port_));
+  void wire_create_event(NativePortType port_) => wasmModule.wire_create_event(port_);
 
   void wire_handle_stream_sink_at_1(NativePortType port_, int key, int max) =>
-      init.then((inner) => inner.wire_handle_stream_sink_at_1(port_, key, max));
+      wasmModule.wire_handle_stream_sink_at_1(port_, key, max);
 
   void wire_handle_stream_sink_at_2(NativePortType port_, int key, int max) =>
-      init.then((inner) => inner.wire_handle_stream_sink_at_2(port_, key, max));
+      wasmModule.wire_handle_stream_sink_at_2(port_, key, max);
 
   void wire_handle_stream_sink_at_3(NativePortType port_, int key, int max) =>
-      init.then((inner) => inner.wire_handle_stream_sink_at_3(port_, key, max));
+      wasmModule.wire_handle_stream_sink_at_3(port_, key, max);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
-      init.then((inner) => inner.wire_sum__method__SumWith(port_, that, y, z));
+      wasmModule.wire_sum__method__SumWith(port_, that, y, z);
 
   void wire_new__static_method__ConcatenateWith(NativePortType port_, String a) =>
-      init.then((inner) => inner.wire_new__static_method__ConcatenateWith(port_, a));
+      wasmModule.wire_new__static_method__ConcatenateWith(port_, a);
 
   void wire_concatenate__method__ConcatenateWith(NativePortType port_, List<dynamic> that, String b) =>
-      init.then((inner) => inner.wire_concatenate__method__ConcatenateWith(port_, that, b));
+      wasmModule.wire_concatenate__method__ConcatenateWith(port_, that, b);
 
   void wire_concatenate_static__static_method__ConcatenateWith(NativePortType port_, String a, String b) =>
-      init.then((inner) => inner.wire_concatenate_static__static_method__ConcatenateWith(port_, a, b));
+      wasmModule.wire_concatenate_static__static_method__ConcatenateWith(port_, a, b);
 
   void wire_handle_some_stream_sink__method__ConcatenateWith(
           NativePortType port_, List<dynamic> that, int key, int max) =>
-      init.then((inner) => inner.wire_handle_some_stream_sink__method__ConcatenateWith(port_, that, key, max));
+      wasmModule.wire_handle_some_stream_sink__method__ConcatenateWith(port_, that, key, max);
 
   void wire_handle_some_stream_sink_at_1__method__ConcatenateWith(NativePortType port_, List<dynamic> that) =>
-      init.then((inner) => inner.wire_handle_some_stream_sink_at_1__method__ConcatenateWith(port_, that));
+      wasmModule.wire_handle_some_stream_sink_at_1__method__ConcatenateWith(port_, that);
 
   void wire_handle_some_static_stream_sink__static_method__ConcatenateWith(NativePortType port_, int key, int max) =>
-      init.then((inner) => inner.wire_handle_some_static_stream_sink__static_method__ConcatenateWith(port_, key, max));
+      wasmModule.wire_handle_some_static_stream_sink__static_method__ConcatenateWith(port_, key, max);
 
   void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_) =>
-      init.then((inner) => inner.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_));
+      wasmModule.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_);
 
-  int /* *mut bool */ new_box_autoadd_bool_0(bool value) => inner.new_box_autoadd_bool_0(value);
+  int /* *mut bool */ new_box_autoadd_bool_0(bool value) => wasmModule.new_box_autoadd_bool_0(value);
 
-  int /* *mut f64 */ new_box_autoadd_f64_0(double value) => inner.new_box_autoadd_f64_0(value);
+  int /* *mut f64 */ new_box_autoadd_f64_0(double value) => wasmModule.new_box_autoadd_f64_0(value);
 
-  int /* *mut i32 */ new_box_autoadd_i32_0(int value) => inner.new_box_autoadd_i32_0(value);
+  int /* *mut i32 */ new_box_autoadd_i32_0(int value) => wasmModule.new_box_autoadd_i32_0(value);
 
-  int /* *mut i64 */ new_box_autoadd_i64_0(int value) => inner.new_box_autoadd_i64_0(value);
+  int /* *mut i64 */ new_box_autoadd_i64_0(int value) => wasmModule.new_box_autoadd_i64_0(value);
 
-  int /* *mut bool */ new_box_bool_0(bool value) => inner.new_box_bool_0(value);
+  int /* *mut bool */ new_box_bool_0(bool value) => wasmModule.new_box_bool_0(value);
 
-  int /* *mut f64 */ new_box_f64_0(double value) => inner.new_box_f64_0(value);
+  int /* *mut f64 */ new_box_f64_0(double value) => wasmModule.new_box_f64_0(value);
 
-  int /* *mut i32 */ new_box_i32_0(int value) => inner.new_box_i32_0(value);
+  int /* *mut i32 */ new_box_i32_0(int value) => wasmModule.new_box_i32_0(value);
 
-  int /* *mut i64 */ new_box_i64_0(int value) => inner.new_box_i64_0(value);
+  int /* *mut i64 */ new_box_i64_0(int value) => wasmModule.new_box_i64_0(value);
 
-  int /* *mut i8 */ new_box_i8_0(int value) => inner.new_box_i8_0(value);
+  int /* *mut i8 */ new_box_i8_0(int value) => wasmModule.new_box_i8_0(value);
 
-  int /* *mut u8 */ new_box_u8_0(int value) => inner.new_box_u8_0(value);
+  int /* *mut u8 */ new_box_u8_0(int value) => wasmModule.new_box_u8_0(value);
 
-  int /* *mut i32 */ new_box_weekdays_0(int value) => inner.new_box_weekdays_0(value);
+  int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
 }

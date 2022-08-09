@@ -67,7 +67,7 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     fn spawn(&self) -> Result<Worker, JsValue> {
-        // console_log!("spawning new worker");
+        console_log!("spawning new worker");
         // TODO: what do do about `./worker.js`:
         //
         // * the path is only known by the bundler. How can we, as a

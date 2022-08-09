@@ -103,3 +103,10 @@ If running from Flutter, consider `flutter build web` and running a custom stati
   @override
   String toString() => _message;
 }
+
+class PlatformMismatchException implements Exception {
+  static const _wasm = 'Not implemented on non-WASM platforms';
+
+  @override
+  String toString() => _wasm;
+}

@@ -16,7 +16,7 @@ import 'dart:ffi' as ffi;
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> {
   FlutterRustBridgeExampleSingleBlockTestPlatform(ffi.DynamicLibrary dylib)
-      : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib as dynamic));
+      : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib));
 // Section: api2wire
 
   @protected

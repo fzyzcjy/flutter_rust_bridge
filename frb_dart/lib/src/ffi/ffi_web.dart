@@ -10,6 +10,9 @@ import '../ffi.dart' show WasmModule;
 
 typedef ExternalLibrary = FutureOr<WasmModule>;
 
+@JS('console.log')
+external void nativeLog([Object? _]);
+
 @JS()
 external bool? get crossOriginIsolated;
 
@@ -34,17 +37,12 @@ class WireSyncReturnStruct {
   external final int success;
 }
 
-class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBridgeWireBase {
-  late final Future<T> init;
-  late final T inner;
+class FlutterRustBridgeWasmWireBase<T extends WasmModule>
+    extends FlutterRustBridgeWireBase {
+  final Future<T> init;
 
-  FlutterRustBridgeWasmWireBase(FutureOr<T> module) {
-    init = Future.value(module).then((module) async {
-      eval('window.wasm_bindgen = wasm_bindgen');
-      inner = await promiseToFuture<T>(module());
-      return inner;
-    });
-  }
+  FlutterRustBridgeWasmWireBase(FutureOr<T> module)
+      : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
 
 extension WireSyncReturnStructExt on WireSyncReturnStruct {

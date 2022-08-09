@@ -18,10 +18,12 @@ impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
 mod pointer {
     use std::marker::PhantomData;
+    use std::ptr::NonNull;
     use wasm_bindgen::convert::*;
     use wasm_bindgen::describe::*;
 
-    /// A non-nullable pointer wrapping a [u32].
+    /// A non-nullable pointer wrapping a [NonNull].
+    /// Represented in JS as an unsigned integer.
     ///
     /// Designed as a replacement for [`Option<*mut T>`].
     ///
@@ -31,16 +33,20 @@ mod pointer {
     /// `Option<T>` | Yes | Yes
     /// `&T` | No | No
     /// `&mut T` | No | No
-    pub struct Pointer<T>(u32, PhantomData<*mut T>);
+    pub struct Pointer<T>(NonNull<()>, PhantomData<*mut T>);
+
     impl<T> Pointer<T> {
         pub const fn as_mut(self) -> *mut T {
-            self.0 as _
+            self.0.as_ptr() as _
         }
     }
 
+    // HACK: This is wasm_bindgen's implementation detail, so it is not expected to
+    // be stable. In the future when `Option<*mut T>` can be exported to JS,
+    // this struct should be removed.
+    #[automatically_derived]
     impl<T> WasmDescribe for Pointer<T> {
         fn describe() {
-            // <*const T>::describe();
             inform(RUST_STRUCT);
             inform(7);
             inform(b'P' as _);
@@ -57,8 +63,11 @@ mod pointer {
         type Abi = u32;
 
         unsafe fn from_abi(js: Self::Abi) -> Self {
-            debug_assert!(js != 0, "Attempted to retrieve a nullptr");
-            Self(js as _, PhantomData)
+            if let Some(ptr) = NonNull::new(js as _) {
+                Self(ptr, PhantomData)
+            } else {
+                panic!("Attempted to retrieve a nullptr")
+            }
         }
     }
 
@@ -72,8 +81,7 @@ mod pointer {
         type Abi = u32;
 
         fn into_abi(self) -> Self::Abi {
-            debug_assert!(self.0 != 0, "Attempted to return a nullptr.");
-            self.0 as _
+            self.0.as_ptr() as _
         }
     }
 
@@ -175,7 +183,7 @@ macro_rules! delegate_big_buffers {
         let ptr = Box::into_raw($buf.into_boxed_slice()) as *mut i32;
         // Reassemble into a new slice, now with more length and shorter byte length
         let buf = unsafe { Box::from_raw(core::slice::from_raw_parts_mut(ptr, len)) };
-        // Turn into an Int32Array
+        // Turn into an Int32Array view
         let out = Int32Array::from(&buf[..]);
         // And transfer its buffer to output.
         return <$buffer>::new(&out.buffer()).into();
@@ -218,7 +226,6 @@ impl Isolate {
             .post_message(&msg.into_dart())
             .map_err(|err| {
                 crate::console_error!("post: {:?}", err);
-                err
             })
             .is_ok()
     }
@@ -230,7 +237,8 @@ extern "C" {
     pub fn log(msg: &str);
     #[wasm_bindgen(js_namespace = console)]
     pub fn error(msg: &str);
-    // fn eval(script: &str);
+    #[wasm_bindgen(js_namespace = console, js_name = "log")]
+    pub fn log_js(js: &JsValue);
 }
 
 type RawClosure<T> = Box<dyn FnOnce(&[T]) + Send + 'static>;
@@ -255,9 +263,9 @@ impl TransferClosure<JsValue> {
     /// to receive the message.
     pub fn apply(self, worker: &Worker) -> Result<(), JsValue> {
         let transfer = Array::from_iter(self.transfer);
+        let data = Array::from(&transfer);
         // The worker is responsible for cleaning up the leak here.
         let payload = Box::into_raw(Box::new(TransferClosurePayload { func: self.closure }));
-        let data = Array::from(&transfer);
         data.unshift(&JsValue::from(payload as i32));
         worker
             .post_message_with_transfer(&data, &transfer)
@@ -296,7 +304,7 @@ macro_rules! delegate_from_dart {
         impl FromDart for $ty {
             #[inline]
             fn from_dart(value: &JsValue) -> Self {
-                value.unchecked_ref::<Self>().clone()
+                value.dyn_ref::<Self>().cloned().expect("FromDart failed")
             }
         }
     )*};

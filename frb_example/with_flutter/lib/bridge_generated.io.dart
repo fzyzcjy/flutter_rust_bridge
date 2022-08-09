@@ -14,7 +14,7 @@ import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
 class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
-  FlutterRustBridgeExamplePlatform(ffi.DynamicLibrary dylib) : super(FlutterRustBridgeExampleWire(dylib as dynamic));
+  FlutterRustBridgeExamplePlatform(ffi.DynamicLibrary dylib) : super(FlutterRustBridgeExampleWire(dylib));
 // Section: api2wire
 
   @protected

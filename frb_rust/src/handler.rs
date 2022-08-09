@@ -232,7 +232,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         #[cfg(target_family = "wasm")]
         thread_local! {
             static WORKER_POOL: crate::pool::WorkerPool = crate::pool::WorkerPool::new(
-                NUM_WORKERS, std::option_env!("FRB_JS").expect("FRB_JS not set").into()
+                NUM_WORKERS, std::option_env!("FRB_JS").expect("FRB_JS not provided").into()
             ).expect("Failed to create worker pool")
         }
 
@@ -278,7 +278,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         #[cfg(target_family = "wasm")]
         WORKER_POOL.with(|pool| {
             if let Err(err) = pool.run(worker) {
-                crate::console_error!("worker error: {:#?}", err)
+                crate::console_error!("worker error:\n{:#?}", err)
             }
         });
     }

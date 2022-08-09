@@ -1,3 +1,4 @@
+import 'dart:async';
 export 'ffi/ffi_io.dart' if (dart.library.html) 'ffi/ffi_web.dart';
 
 /// A JS function that returns a Promise to a WASM module.
@@ -62,5 +63,9 @@ abstract class WasmModule {
   Object call([String? moduleName]);
 
   /// Create a new WASM module initializer that is bound to the specified module name.
-  WasmModule bind(WasmModule module, String moduleName);
+  WasmModule bind(dynamic thisArg, String moduleName);
+
+  static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {
+    return Future.value(module).then((module) => module as T).catchError(print);
+  }
 }

@@ -2,19 +2,18 @@
 
 import 'dart:html';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'bridge_generated.dart';
+import 'bridge_generated.web.dart';
 
-@JS()
-external WasmModule get wasmBindgen;
+const root = 'pkg/flutter_rust_bridge_example';
 
 Future<WasmModule> _initModule() {
   if (crossOriginIsolated != true) return Future.error(MissingHeaderException());
 
-  final script = ScriptElement()..src = 'pkg/flutter_rust_bridge_example.js';
+  final script = ScriptElement()..src = '$root.js';
   document.head!.append(script);
   return script.onLoad.first.then((_) {
-    eval("window.wasmBindgen = wasm_bindgen");
-    return ([String? module]) => wasmBindgen(module ?? 'pkg/flutter_rust_bridge_example_bg.wasm');
+    eval("window.wasm_bindgen = wasm_bindgen");
+    return wasmModule.bind(wasmModule, '${root}_bg.wasm');
   });
 }
 

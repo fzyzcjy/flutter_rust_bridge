@@ -34,16 +34,14 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     } else {
                                         format!("ans.{}.wire2api()", field.name.rust_style())
                                     }
+                                } else if st.is_fields_named {
+                                    format!(
+                                        "{}: self_.get({}).wire2api()",
+                                        field.name.rust_style(),
+                                        idx + 1
+                                    )
                                 } else {
-                                    if st.is_fields_named {
-                                        format!(
-                                            "{}: self_.get({}).wire2api()",
-                                            field.name.rust_style(),
-                                            idx + 1
-                                        )
-                                    } else {
-                                        format!("self_.get({}).wire2api()", idx + 1)
-                                    }
+                                    format!("self_.get({}).wire2api()", idx + 1)
                                 }
                             });
                             let (left, right) = st.brackets_pair();

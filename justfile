@@ -46,6 +46,8 @@ test-pure:
         dart lib/main.dart ../rust/target/debug/{{dylib}}
 test-pure-web:
     cd {{frb_pure}}/dart && just serve --dart-input lib/main.dart --root web/ -c ../rust --port 8081
+test-flutter-web:
+    cd {{frb_flutter}} && just serve -c rust --wasm-output web/pkg
 test-integration:
     cd {{frb_flutter}} && flutter test integration_test/main.dart
 
