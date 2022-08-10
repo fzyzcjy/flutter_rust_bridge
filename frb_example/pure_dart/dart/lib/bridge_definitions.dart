@@ -160,6 +160,22 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
 
+  Future<Numbers> repeatNumber({required int num, required int times, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta;
+
+  Future<Sequences> repeatSequence({required int seq, required int times, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRepeatSequenceConstMeta;
+
+  Future<int?> firstNumber({required Numbers nums, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kFirstNumberConstMeta;
+
+  Future<int?> firstSequence({required Sequences seqs, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta;
+
   Future<Uint8List> getArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta;
@@ -199,6 +215,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
+
+  Future<SumWith> getSumStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta;
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
@@ -520,6 +540,14 @@ class Note {
   });
 }
 
+class Numbers {
+  final Int32List field0;
+
+  Numbers({
+    required this.field0,
+  });
+}
+
 class Point {
   final double x;
   final double y;
@@ -527,6 +555,14 @@ class Point {
   Point({
     required this.x,
     required this.y,
+  });
+}
+
+class Sequences {
+  final Int32List field0;
+
+  Sequences({
+    required this.field0,
   });
 }
 

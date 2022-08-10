@@ -10,7 +10,7 @@ categories = ["development-tools::ffi"]
 
 [dependencies]
 bytemuck = "1.11.0"
-allo-isolate = "0.1.14-beta.1"
+# allo-isolate = "0.1.14-beta.1"
 # allo-isolate = { git = "https://github.com/Desdaemon/allo-isolate" } # hack, until upstream PR is merged and released
 # allo-isolate = { path = "../../allo-isolate" }
 anyhow = "1.0.59"
@@ -18,10 +18,9 @@ threadpool = "1.8.1"
 lazy_static = "1.4.0"
 parking_lot = "0.12.1"
 flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
-lazy_static = { version = "1.4.0" }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-allo-isolate = { version = "0.1.13-beta.5" }
+allo-isolate = { version = "0.1.14-beta.1" }
 parking_lot = { version = "0.12.1" }
 threadpool = { version = "1.8.1" }
 

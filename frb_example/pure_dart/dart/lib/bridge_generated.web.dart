@@ -141,6 +141,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_numbers(Numbers raw) {
+    return api2wire_numbers(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_sequences(Sequences raw) {
+    return api2wire_sequences(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_sum_with(SumWith raw) {
     return api2wire_sum_with(raw);
   }
@@ -330,6 +340,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_numbers(Numbers raw) {
+    return [api2wire_int_32_list(raw.field0)];
+  }
+
+  @protected
   String? api2wire_opt_String(String? raw) {
     return raw == null ? null : api2wire_String(raw);
   }
@@ -445,6 +460,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_sequences(Sequences raw) {
+    return [api2wire_int_32_list(raw.field0)];
+  }
+
+  @protected
   List<dynamic> api2wire_sum_with(SumWith raw) {
     return [api2wire_u32(raw.x)];
   }
@@ -545,6 +565,14 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_get_message(NativePortType port_);
 
+  external void wire_repeat_number(NativePortType port_, int num, int times);
+
+  external void wire_repeat_sequence(NativePortType port_, int seq, int times);
+
+  external void wire_first_number(NativePortType port_, List<dynamic> nums);
+
+  external void wire_first_sequence(NativePortType port_, List<dynamic> seqs);
+
   external void wire_get_array(NativePortType port_);
 
   external void wire_get_complex_array(NativePortType port_);
@@ -564,6 +592,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external void wire_handle_stream_sink_at_2(NativePortType port_, int key, int max);
 
   external void wire_handle_stream_sink_at_3(NativePortType port_, int key, int max);
+
+  external void wire_get_sum_struct(NativePortType port_);
 
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
@@ -703,6 +733,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_get_message(NativePortType port_) => wasmModule.wire_get_message(port_);
 
+  void wire_repeat_number(NativePortType port_, int num, int times) => wasmModule.wire_repeat_number(port_, num, times);
+
+  void wire_repeat_sequence(NativePortType port_, int seq, int times) =>
+      wasmModule.wire_repeat_sequence(port_, seq, times);
+
+  void wire_first_number(NativePortType port_, List<dynamic> nums) => wasmModule.wire_first_number(port_, nums);
+
+  void wire_first_sequence(NativePortType port_, List<dynamic> seqs) => wasmModule.wire_first_sequence(port_, seqs);
+
   void wire_get_array(NativePortType port_) => wasmModule.wire_get_array(port_);
 
   void wire_get_complex_array(NativePortType port_) => wasmModule.wire_get_complex_array(port_);
@@ -725,6 +764,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_handle_stream_sink_at_3(NativePortType port_, int key, int max) =>
       wasmModule.wire_handle_stream_sink_at_3(port_, key, max);
+
+  void wire_get_sum_struct(NativePortType port_) => wasmModule.wire_get_sum_struct(port_);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

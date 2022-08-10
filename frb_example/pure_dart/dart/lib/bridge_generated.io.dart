@@ -142,6 +142,20 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_Numbers> api2wire_box_autoadd_numbers(Numbers raw) {
+    final ptr = inner.new_box_autoadd_numbers_0();
+    _api_fill_to_wire_numbers(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_Sequences> api2wire_box_autoadd_sequences(Sequences raw) {
+    final ptr = inner.new_box_autoadd_sequences_0();
+    _api_fill_to_wire_sequences(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_SumWith> api2wire_box_autoadd_sum_with(SumWith raw) {
     final ptr = inner.new_box_autoadd_sum_with_0();
     _api_fill_to_wire_sum_with(raw, ptr.ref);
@@ -485,6 +499,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_note(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_numbers(Numbers apiObj, ffi.Pointer<wire_Numbers> wireObj) {
+    _api_fill_to_wire_numbers(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<wire_Sequences> wireObj) {
+    _api_fill_to_wire_sequences(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_sum_with(SumWith apiObj, ffi.Pointer<wire_SumWith> wireObj) {
     _api_fill_to_wire_sum_with(apiObj, wireObj.ref);
   }
@@ -586,6 +608,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.body = api2wire_String(apiObj.body);
   }
 
+  void _api_fill_to_wire_numbers(Numbers apiObj, wire_Numbers wireObj) {
+    wireObj.field0 = api2wire_int_32_list(apiObj.field0);
+  }
+
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
@@ -601,6 +627,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_opt_box_exotic_optionals(ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_sequences(Sequences apiObj, wire_Sequences wireObj) {
+    wireObj.field0 = api2wire_int_32_list(apiObj.field0);
   }
 
   void _api_fill_to_wire_sum_with(SumWith apiObj, wire_SumWith wireObj) {
@@ -1155,6 +1185,67 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_get_messagePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_message');
   late final _wire_get_message = _wire_get_messagePtr.asFunction<void Function(int)>();
 
+  void wire_repeat_number(
+    int port_,
+    int num,
+    int times,
+  ) {
+    return _wire_repeat_number(
+      port_,
+      num,
+      times,
+    );
+  }
+
+  late final _wire_repeat_numberPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, uintptr_t)>>('wire_repeat_number');
+  late final _wire_repeat_number = _wire_repeat_numberPtr.asFunction<void Function(int, int, int)>();
+
+  void wire_repeat_sequence(
+    int port_,
+    int seq,
+    int times,
+  ) {
+    return _wire_repeat_sequence(
+      port_,
+      seq,
+      times,
+    );
+  }
+
+  late final _wire_repeat_sequencePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, uintptr_t)>>('wire_repeat_sequence');
+  late final _wire_repeat_sequence = _wire_repeat_sequencePtr.asFunction<void Function(int, int, int)>();
+
+  void wire_first_number(
+    int port_,
+    ffi.Pointer<wire_Numbers> nums,
+  ) {
+    return _wire_first_number(
+      port_,
+      nums,
+    );
+  }
+
+  late final _wire_first_numberPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Numbers>)>>('wire_first_number');
+  late final _wire_first_number = _wire_first_numberPtr.asFunction<void Function(int, ffi.Pointer<wire_Numbers>)>();
+
+  void wire_first_sequence(
+    int port_,
+    ffi.Pointer<wire_Sequences> seqs,
+  ) {
+    return _wire_first_sequence(
+      port_,
+      seqs,
+    );
+  }
+
+  late final _wire_first_sequencePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Sequences>)>>('wire_first_sequence');
+  late final _wire_first_sequence =
+      _wire_first_sequencePtr.asFunction<void Function(int, ffi.Pointer<wire_Sequences>)>();
+
   void wire_get_array(
     int port_,
   ) {
@@ -1291,6 +1382,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_3');
   late final _wire_handle_stream_sink_at_3 =
       _wire_handle_stream_sink_at_3Ptr.asFunction<void Function(int, int, int)>();
+
+  void wire_get_sum_struct(
+    int port_,
+  ) {
+    return _wire_get_sum_struct(
+      port_,
+    );
+  }
+
+  late final _wire_get_sum_structPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_sum_struct');
+  late final _wire_get_sum_struct = _wire_get_sum_structPtr.asFunction<void Function(int)>();
 
   void wire_sum__method__SumWith(
     int port_,
@@ -1606,6 +1708,24 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_note_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_Note> Function()>>('new_box_autoadd_note_0');
   late final _new_box_autoadd_note_0 = _new_box_autoadd_note_0Ptr.asFunction<ffi.Pointer<wire_Note> Function()>();
+
+  ffi.Pointer<wire_Numbers> new_box_autoadd_numbers_0() {
+    return _new_box_autoadd_numbers_0();
+  }
+
+  late final _new_box_autoadd_numbers_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Numbers> Function()>>('new_box_autoadd_numbers_0');
+  late final _new_box_autoadd_numbers_0 =
+      _new_box_autoadd_numbers_0Ptr.asFunction<ffi.Pointer<wire_Numbers> Function()>();
+
+  ffi.Pointer<wire_Sequences> new_box_autoadd_sequences_0() {
+    return _new_box_autoadd_sequences_0();
+  }
+
+  late final _new_box_autoadd_sequences_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Sequences> Function()>>('new_box_autoadd_sequences_0');
+  late final _new_box_autoadd_sequences_0 =
+      _new_box_autoadd_sequences_0Ptr.asFunction<ffi.Pointer<wire_Sequences> Function()>();
 
   ffi.Pointer<wire_SumWith> new_box_autoadd_sum_with_0() {
     return _new_box_autoadd_sum_with_0();
@@ -2149,6 +2269,14 @@ class wire_ApplicationSettings extends ffi.Struct {
   external int mode;
 
   external ffi.Pointer<wire_ApplicationEnv> env;
+}
+
+class wire_Numbers extends ffi.Struct {
+  external ffi.Pointer<wire_int_32_list> field0;
+}
+
+class wire_Sequences extends ffi.Struct {
+  external ffi.Pointer<wire_int_32_list> field0;
 }
 
 class wire_UserId extends ffi.Struct {

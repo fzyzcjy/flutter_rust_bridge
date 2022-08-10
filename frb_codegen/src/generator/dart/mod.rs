@@ -557,7 +557,7 @@ fn generate_api_func(
     } else {
         None
     };
-    let parse_sucess_data = if (f.is_static_method()
+    let parse_success_data = if (f.is_static_method()
         && f.struct_name().unwrap() == {
             if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                 name.clone()

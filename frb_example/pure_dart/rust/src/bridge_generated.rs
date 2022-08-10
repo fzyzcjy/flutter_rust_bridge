@@ -517,8 +517,69 @@ fn wire_get_message_impl(port_: MessagePort) {
         move || move |task_callback| Ok(mirror_ApplicationMessage(get_message())),
     )
 }
+fn wire_repeat_number_impl(
+    port_: MessagePort,
+    num: impl Wire2Api<i32> + UnwindSafe,
+    times: impl Wire2Api<usize> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "repeat_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_num = num.wire2api();
+            let api_times = times.wire2api();
+            move |task_callback| Ok(mirror_Numbers(repeat_number(api_num, api_times)))
+        },
+    )
+}
+fn wire_repeat_sequence_impl(
+    port_: MessagePort,
+    seq: impl Wire2Api<i32> + UnwindSafe,
+    times: impl Wire2Api<usize> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "repeat_sequence",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_seq = seq.wire2api();
+            let api_times = times.wire2api();
+            move |task_callback| Ok(mirror_Sequences(repeat_sequence(api_seq, api_times)))
+        },
+    )
+}
+fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "first_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_nums = nums.wire2api();
+            move |task_callback| Ok(first_number(api_nums))
+        },
+    )
+}
+fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "first_sequence",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_seqs = seqs.wire2api();
+            move |task_callback| Ok(first_sequence(api_seqs))
+        },
+    )
+}
 fn wire_get_array_impl(port_: MessagePort) {
-
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_array",
@@ -652,6 +713,16 @@ fn wire_handle_stream_sink_at_3_impl(
                 handle_stream_sink_at_3(task_callback.stream_sink(), api_key, api_max)
             }
         },
+    )
+}
+fn wire_get_sum_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_sum_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(get_sum_struct()),
     )
 }
 fn wire_sum__method__SumWith_impl(
@@ -816,7 +887,6 @@ fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWit
         },
     )
 }
-
 // Section: wrapper structs
 
 #[derive(Clone)]
@@ -952,7 +1022,6 @@ impl Wire2Api<MyEnum> for i32 {
     }
 }
 
-
 impl Wire2Api<u32> for u32 {
     fn wire2api(self) -> u32 {
         self
@@ -969,7 +1038,6 @@ impl Wire2Api<usize> for usize {
         self
     }
 }
-
 impl Wire2Api<Weekdays> for i32 {
     fn wire2api(self) -> Weekdays {
         match self {
@@ -984,7 +1052,6 @@ impl Wire2Api<Weekdays> for i32 {
         }
     }
 }
-
 // Section: impl IntoDart
 
 impl support::IntoDart for mirror_ApplicationEnv {

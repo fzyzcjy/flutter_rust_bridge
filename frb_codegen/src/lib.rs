@@ -142,6 +142,7 @@ pub use io::*;
     info!("Phase: Generating Dart bindings for Rust");
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
+    let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,

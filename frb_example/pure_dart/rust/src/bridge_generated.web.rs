@@ -184,6 +184,26 @@ pub fn wire_get_message(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_repeat_number(port_: MessagePort, num: i32, times: usize) {
+    wire_repeat_number_impl(port_, num, times)
+}
+
+#[wasm_bindgen]
+pub fn wire_repeat_sequence(port_: MessagePort, seq: i32, times: usize) {
+    wire_repeat_sequence_impl(port_, seq, times)
+}
+
+#[wasm_bindgen]
+pub fn wire_first_number(port_: MessagePort, nums: JsValue) {
+    wire_first_number_impl(port_, nums)
+}
+
+#[wasm_bindgen]
+pub fn wire_first_sequence(port_: MessagePort, seqs: JsValue) {
+    wire_first_sequence_impl(port_, seqs)
+}
+
+#[wasm_bindgen]
 pub fn wire_get_array(port_: MessagePort) {
     wire_get_array_impl(port_)
 }
@@ -231,6 +251,11 @@ pub fn wire_handle_stream_sink_at_2(port_: MessagePort, key: u32, max: u32) {
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_3(port_: MessagePort, key: u32, max: u32) {
     wire_handle_stream_sink_at_3_impl(port_, key, max)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_sum_struct(port_: MessagePort) {
+    wire_get_sum_struct_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -693,6 +718,18 @@ impl Wire2Api<Note> for JsValue {
         }
     }
 }
+impl Wire2Api<Numbers> for JsValue {
+    fn wire2api(self) -> Numbers {
+        let self_ = self.unchecked_into::<JsArray>();
+        debug_assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        Numbers(self_.get(0).wire2api())
+    }
+}
 impl Wire2Api<Option<String>> for Option<String> {
     fn wire2api(self) -> Option<String> {
         self.map(Wire2Api::wire2api)
@@ -806,6 +843,18 @@ impl Wire2Api<Option<Vec<Option<Attribute>>>> for JsValue {
 impl Wire2Api<Option<Vec<u8>>> for Option<Box<[u8]>> {
     fn wire2api(self) -> Option<Vec<u8>> {
         self.map(Wire2Api::wire2api)
+    }
+}
+impl Wire2Api<Sequences> for JsValue {
+    fn wire2api(self) -> Sequences {
+        let self_ = self.unchecked_into::<JsArray>();
+        debug_assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        Sequences(self_.get(0).wire2api())
     }
 }
 impl Wire2Api<SumWith> for JsValue {

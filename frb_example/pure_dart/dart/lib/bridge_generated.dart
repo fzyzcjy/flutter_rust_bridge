@@ -15,659 +15,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   factory FlutterRustBridgeExampleSingleBlockTestImpl(ExternalLibrary dylib) =>
       FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
 
-abstract class FlutterRustBridgeExampleSingleBlockTest {
-  /// Documentation on a simple adder function.
-  Future<int> simpleAdder({required int a, required int b, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta;
-
-  ///
-  /// Multiline comments are fine,
-  /// but they are not preferred in Rust nor in Dart.
-  ///
-  /// Newlines are preserved.
-  ///
-  Future<int> primitiveTypes(
-      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta;
-
-  Future<int> primitiveU32({required int myU32, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta;
-
-  Future<String> handleString({required String s, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta;
-
-  Future<void> handleReturnUnit({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta;
-
-  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta;
-
-  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta;
-
-  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta;
-
-  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta;
-
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta;
-
-  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta;
-
-  Future<List<String>> handleStringList({required List<String> names, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta;
-
-  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleComplexStructConstMeta;
-
-  Uint8List handleSyncReturn({required String mode, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta;
-
-  Stream<String> handleStream({required String arg, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta;
-
-  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStreamOfStructConstMeta;
-
-  Future<int> returnErr({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta;
-
-  Future<int> returnPanic({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta;
-
-  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta;
-
-  Future<Element?> handleOptionalStruct({String? document, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta;
-
-  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta;
-
-  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta;
-
-  Future<String> handleOptionBoxArguments(
-      {int? i8Box,
-      int? u8Box,
-      int? i32Box,
-      int? i64Box,
-      double? f64Box,
-      bool? boolbox,
-      ExoticOptionals? structbox,
-      dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta;
-
-  Future<Uint8List> printNote({required Note note, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kPrintNoteConstMeta;
-
-  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta;
-
-  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta;
-
-  Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta;
-
-  Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta;
-
-  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kUseImportedStructConstMeta;
-
-  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kUseImportedEnumConstMeta;
-
-  Future<ApplicationSettings> getAppSettings({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta;
-
-  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;
-
-  Future<ApplicationMessage> getMessage({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
-
-  Future<Numbers> repeatNumber({required int num, required int times, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta;
-
-  Future<Sequences> repeatSequence({required int seq, required int times, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kRepeatSequenceConstMeta;
-
-  Future<int?> firstNumber({required Numbers nums, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kFirstNumberConstMeta;
-
-  Future<int?> firstSequence({required Sequences seqs, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta;
-
-  Future<Uint8List> getArray({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta;
-
-  Future<List<Point>> getComplexArray({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta;
-
-  Future<int> getUsize({required int u, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kGetUsizeConstMeta;
-
-  Future<UserId> nextUserId({required UserId userId, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta;
-
-  Stream<Event> registerEventListener({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta;
-
-  Future<void> closeEventListener({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta;
-
-  Future<void> createEvent({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
-
-  Stream<Log> handleStreamSinkAt1({required int key, required int max, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta;
-
-  Stream<Log> handleStreamSinkAt2({required int key, required int max, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta;
-
-  Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
-
-  Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
-
-  Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta;
-
-  Future<String> concatenateMethodConcatenateWith({required ConcatenateWith that, required String b, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta;
-
-  Future<String> concatenateStaticStaticMethodConcatenateWith({required String a, required String b, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kConcatenateStaticStaticMethodConcatenateWithConstMeta;
-
-  Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
-      {required ConcatenateWith that, required int key, required int max, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkMethodConcatenateWithConstMeta;
-
-  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith({required ConcatenateWith that, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta;
-
-  Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
-      {required int key, required int max, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta;
-
-  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
-}
-
-class ApplicationEnv {
-  final List<ApplicationEnvVar> vars;
-
-  ApplicationEnv({
-    required this.vars,
-  });
-}
-
-class ApplicationEnvVar {
-  final String field0;
-  final bool field1;
-
-  ApplicationEnvVar({
-    required this.field0,
-    required this.field1,
-  });
-}
-
-@freezed
-class ApplicationMessage with _$ApplicationMessage {
-  const factory ApplicationMessage.displayMessage(
-    String field0,
-  ) = DisplayMessage;
-  const factory ApplicationMessage.renderPixel({
-    required int x,
-    required int y,
-  }) = RenderPixel;
-  const factory ApplicationMessage.exit() = Exit;
-}
-
-enum ApplicationMode {
-  Standalone,
-  Embedded,
-}
-
-class ApplicationSettings {
-  final String name;
-  final String version;
-  final ApplicationMode mode;
-  final ApplicationEnv env;
-
-  ApplicationSettings({
-    required this.name,
-    required this.version,
-    required this.mode,
-    required this.env,
-  });
-}
-
-class Attribute {
-  final String key;
-  final String value;
-
-  Attribute({
-    required this.key,
-    required this.value,
-  });
-}
-
-class ConcatenateWith {
-  final FlutterRustBridgeExampleSingleBlockTest bridge;
-  final String a;
-
-  ConcatenateWith({
-    required this.bridge,
-    required this.a,
-  });
-
-  static Future<ConcatenateWith> newConcatenateWith(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, dynamic hint}) =>
-      bridge.newStaticMethodConcatenateWith(a: a, hint: hint);
-
-  Future<String> concatenate({required String b, dynamic hint}) => bridge.concatenateMethodConcatenateWith(
-        that: this,
-        b: b,
-      );
-
-  static Future<String> concatenateStatic(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          required String a,
-          required String b,
-          dynamic hint}) =>
-      bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b, hint: hint);
-
-  Stream<Log2> handleSomeStreamSink({required int key, required int max, dynamic hint}) =>
-      bridge.handleSomeStreamSinkMethodConcatenateWith(
-        that: this,
-        key: key,
-        max: max,
-      );
-
-  Stream<int> handleSomeStreamSinkAt1({dynamic hint}) => bridge.handleSomeStreamSinkAt1MethodConcatenateWith(
-        that: this,
-      );
-
-  static Stream<Log2> handleSomeStaticStreamSink(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          required int key,
-          required int max,
-          dynamic hint}) =>
-      bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(key: key, max: max, hint: hint);
-
-  static Stream<int> handleSomeStaticStreamSinkSingleArg(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
-      bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(hint: hint);
-}
-
-class Customized {
-  final String finalField;
-  String? nonFinalField;
-
-  Customized({
-    required this.finalField,
-    this.nonFinalField,
-  });
-}
-
-class Element {
-  final String? tag;
-  final String? text;
-  final List<Attribute>? attributes;
-  final List<Element>? children;
-
-  Element({
-    this.tag,
-    this.text,
-    this.attributes,
-    this.children,
-  });
-}
-
-class Event {
-  final String address;
-  final String payload;
-
-  Event({
-    required this.address,
-    required this.payload,
-  });
-}
-
-class ExoticOptionals {
-  final int? int32;
-  final int? int64;
-  final double? float64;
-  final bool? boolean;
-  final Uint8List? zerocopy;
-  final Int8List? int8List;
-  final Uint8List? uint8List;
-  final Int32List? int32List;
-  final Int64List? int64List;
-  final Float32List? float32List;
-  final Float64List? float64List;
-  final List<Attribute>? attributes;
-  final List<Attribute?> attributesNullable;
-  final List<Attribute?>? nullableAttributes;
-  final NewTypeInt? newtypeint;
-
-  ExoticOptionals({
-    this.int32,
-    this.int64,
-    this.float64,
-    this.boolean,
-    this.zerocopy,
-    this.int8List,
-    this.uint8List,
-    this.int32List,
-    this.int64List,
-    this.float32List,
-    this.float64List,
-    this.attributes,
-    required this.attributesNullable,
-    this.nullableAttributes,
-    this.newtypeint,
-  });
-}
-
-@freezed
-class KitchenSink with _$KitchenSink {
-  /// Comment on variant
-  const factory KitchenSink.empty() = Empty;
-  const factory KitchenSink.primitives({
-    /// Dart field comment
-    required int int32,
-    required double float64,
-    required bool boolean,
-  }) = Primitives;
-  const factory KitchenSink.nested(
-    KitchenSink field0,
-    int field1,
-  ) = Nested;
-  const factory KitchenSink.optional([
-    /// Comment on anonymous field
-    int? field0,
-    int? field1,
-  ]) = Optional;
-  const factory KitchenSink.buffer(
-    Uint8List field0,
-  ) = Buffer;
-  const factory KitchenSink.enums(
-    Weekdays field0,
-  ) = Enums;
-}
-
-class Log {
-  final int key;
-  final int value;
-
-  Log({
-    required this.key,
-    required this.value,
-  });
-}
-
-class Log2 {
-  final int key;
-  final String value;
-
-  Log2({
-    required this.key,
-    required this.value,
-  });
-}
-
-enum MyEnum {
-  False,
-  True,
-}
-
-class MySize {
-  final int width;
-  final int height;
-
-  MySize({
-    required this.width,
-    required this.height,
-  });
-}
-
-class MyStreamEntry {
-  final String hello;
-
-  MyStreamEntry({
-    required this.hello,
-  });
-}
-
-class MyStruct {
-  final bool content;
-
-  MyStruct({
-    required this.content,
-  });
-}
-
-class MyTreeNode {
-  final int valueI32;
-  final Uint8List valueVecU8;
-  final bool valueBoolean;
-  final List<MyTreeNode> children;
-
-  MyTreeNode({
-    required this.valueI32,
-    required this.valueVecU8,
-    required this.valueBoolean,
-    required this.children,
-  });
-}
-
-class NewTypeInt {
-  final int field0;
-
-  NewTypeInt({
-    required this.field0,
-  });
-}
-
-class Note {
-  final Weekdays day;
-  final String body;
-
-  Note({
-    required this.day,
-    required this.body,
-  });
-}
-
-class Numbers {
-  final Int32List field0;
-
-  Numbers({
-    required this.field0,
-  });
-}
-
-class Point {
-  final double x;
-  final double y;
-
-  Point({
-    required this.x,
-    required this.y,
-  });
-}
-
-class Sequences {
-  final Int32List field0;
-
-  Sequences({
-    required this.field0,
-  });
-}
-
-class SumWith {
-  final FlutterRustBridgeExampleSingleBlockTest bridge;
-  final int x;
-
-  SumWith({
-    required this.bridge,
-    required this.x,
-  });
-
-  Future<int> sum({required int y, required int z, dynamic hint}) => bridge.sumMethodSumWith(
-        that: this,
-        y: y,
-        z: z,
-      );
-}
-
-/// Example for @freezed and @meta.immutable
-@freezed
-@meta.immutable
-class UserId with _$UserId {
-  const factory UserId({
-    required int value,
-  }) = _UserId;
-}
-
-class VecOfPrimitivePack {
-  final Int8List int8List;
-  final Uint8List uint8List;
-  final Int16List int16List;
-  final Uint16List uint16List;
-  final Uint32List uint32List;
-  final Int32List int32List;
-  final Uint64List uint64List;
-  final Int64List int64List;
-  final Float32List float32List;
-  final Float64List float64List;
-
-  VecOfPrimitivePack({
-    required this.int8List,
-    required this.uint8List,
-    required this.int16List,
-    required this.uint16List,
-    required this.uint32List,
-    required this.int32List,
-    required this.uint64List,
-    required this.int64List,
-    required this.float32List,
-    required this.float64List,
-  });
-}
-
-/// Simple enums.
-enum Weekdays {
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday,
-
-  /// Best day of the week.
-  Saturday,
-  Sunday,
-}
-
-class ZeroCopyVecOfPrimitivePack {
-  final Int8List int8List;
-  final Uint8List uint8List;
-  final Int16List int16List;
-  final Uint16List uint16List;
-  final Uint32List uint32List;
-  final Int32List int32List;
-  final Uint64List uint64List;
-  final Int64List int64List;
-  final Float32List float32List;
-  final Float64List float64List;
-
-  ZeroCopyVecOfPrimitivePack({
-    required this.int8List,
-    required this.uint8List,
-    required this.int16List,
-    required this.uint16List,
-    required this.uint32List,
-    required this.int32List,
-    required this.uint64List,
-    required this.int64List,
-    required this.float32List,
-    required this.float64List,
-  });
-}
-
-class FlutterRustBridgeExampleSingleBlockTestImpl
-    extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire>
-    implements FlutterRustBridgeExampleSingleBlockTest {
-  factory FlutterRustBridgeExampleSingleBlockTestImpl(ffi.DynamicLibrary dylib) =>
-      FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestWire(dylib));
-
-  FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestWire inner) : super(inner);
-
-  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_simple_adder(port_, _api2wire_i32(a), _api2wire_i32(b)),
+  /// Only valid on web/WASM platforms.
+  factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(FutureOr<WasmModule> module) =>
+      FlutterRustBridgeExampleSingleBlockTestImpl(module as ExternalLibrary);
+  FlutterRustBridgeExampleSingleBlockTestImpl.raw(this._plat);
+  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => _plat.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _plat.inner.wire_simple_adder(port_, api2wire_i32(a), api2wire_i32(b)),
         parseSuccessData: _wire2api_i32,
         constMeta: kSimpleAdderConstMeta,
         argValues: [a, b],
@@ -1133,9 +486,62 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: [],
       );
 
+  Future<Numbers> repeatNumber({required int num, required int times, dynamic hint}) =>
+      _plat.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _plat.inner.wire_repeat_number(port_, api2wire_i32(num), api2wire_usize(times)),
+        parseSuccessData: _wire2api_numbers,
+        constMeta: kRepeatNumberConstMeta,
+        argValues: [num, times],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "repeat_number",
+        argNames: ["num", "times"],
+      );
+
+  Future<Sequences> repeatSequence({required int seq, required int times, dynamic hint}) =>
+      _plat.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _plat.inner.wire_repeat_sequence(port_, api2wire_i32(seq), api2wire_usize(times)),
+        parseSuccessData: _wire2api_sequences,
+        constMeta: kRepeatSequenceConstMeta,
+        argValues: [seq, times],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kRepeatSequenceConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "repeat_sequence",
+        argNames: ["seq", "times"],
+      );
+
+  Future<int?> firstNumber({required Numbers nums, dynamic hint}) => _plat.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _plat.inner.wire_first_number(port_, _plat.api2wire_box_autoadd_numbers(nums)),
+        parseSuccessData: _wire2api_opt_box_autoadd_i32,
+        constMeta: kFirstNumberConstMeta,
+        argValues: [nums],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kFirstNumberConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "first_number",
+        argNames: ["nums"],
+      );
+
+  Future<int?> firstSequence({required Sequences seqs, dynamic hint}) => _plat.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _plat.inner.wire_first_sequence(port_, _plat.api2wire_box_autoadd_sequences(seqs)),
+        parseSuccessData: _wire2api_opt_box_autoadd_i32,
+        constMeta: kFirstSequenceConstMeta,
+        argValues: [seqs],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "first_sequence",
+        argNames: ["seqs"],
+      );
+
   Future<Uint8List> getArray({dynamic hint}) => _plat.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _plat.inner.wire_get_array(port_),
-
         parseSuccessData: _wire2api_uint_8_list,
         constMeta: kGetArrayConstMeta,
         argValues: [],
@@ -1267,8 +673,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: ["key", "max"],
       );
 
-  Future<SumWith> getSumStruct({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_get_sum_struct(port_),
+  Future<SumWith> getSumStruct({dynamic hint}) => _plat.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _plat.inner.wire_get_sum_struct(port_),
         parseSuccessData: (d) => _wire2api_sum_with(this, d),
         constMeta: kGetSumStructConstMeta,
         argValues: [],
@@ -1407,222 +813,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
       );
 }
 
-  // Section: api2wire
-  ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
-    return _api2wire_uint_8_list(utf8.encoder.convert(raw));
-  }
+// Section: api2wire
 
-  ffi.Pointer<wire_StringList> _api2wire_StringList(List<String> raw) {
-    final ans = inner.new_StringList_0(raw.length);
-    for (var i = 0; i < raw.length; i++) {
-      ans.ref.ptr[i] = _api2wire_String(raw[i]);
-    }
-    return ans;
-  }
+@protected
+int api2wire_application_mode(ApplicationMode raw) {
+  return api2wire_i32(raw.index);
+}
 
-  ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
-    return _api2wire_uint_8_list(raw);
-  }
+@protected
+bool api2wire_bool(bool raw) {
+  return raw;
+}
 
-  int _api2wire_application_mode(ApplicationMode raw) {
-    return _api2wire_i32(raw.index);
-  }
+@protected
+double api2wire_f32(double raw) {
+  return raw;
+}
 
-  bool _api2wire_bool(bool raw) {
-    return raw;
-  }
+@protected
+double api2wire_f64(double raw) {
+  return raw;
+}
 
-  ffi.Pointer<wire_ApplicationEnv> _api2wire_box_application_env(ApplicationEnv raw) {
-    final ptr = inner.new_box_application_env_0();
-    _api_fill_to_wire_application_env(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_ApplicationSettings> _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
-    final ptr = inner.new_box_autoadd_application_settings_0();
-    _api_fill_to_wire_application_settings(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_Attribute> _api2wire_box_autoadd_attribute(Attribute raw) {
-    final ptr = inner.new_box_autoadd_attribute_0();
-    _api_fill_to_wire_attribute(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<ffi.Bool> _api2wire_box_autoadd_bool(bool raw) {
-    return inner.new_box_autoadd_bool_0(_api2wire_bool(raw));
-  }
-
-  ffi.Pointer<wire_ConcatenateWith> _api2wire_box_autoadd_concatenate_with(ConcatenateWith raw) {
-    final ptr = inner.new_box_autoadd_concatenate_with_0();
-    _api_fill_to_wire_concatenate_with(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_Customized> _api2wire_box_autoadd_customized(Customized raw) {
-    final ptr = inner.new_box_autoadd_customized_0();
-    _api_fill_to_wire_customized(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
-    final ptr = inner.new_box_autoadd_exotic_optionals_0();
-    _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<ffi.Double> _api2wire_box_autoadd_f64(double raw) {
-    return inner.new_box_autoadd_f64_0(_api2wire_f64(raw));
-  }
-
-  ffi.Pointer<ffi.Int32> _api2wire_box_autoadd_i32(int raw) {
-    return inner.new_box_autoadd_i32_0(_api2wire_i32(raw));
-  }
-
-  ffi.Pointer<ffi.Int64> _api2wire_box_autoadd_i64(int raw) {
-    return inner.new_box_autoadd_i64_0(_api2wire_i64(raw));
-  }
-
-  ffi.Pointer<wire_KitchenSink> _api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
-    final ptr = inner.new_box_autoadd_kitchen_sink_0();
-    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_MySize> _api2wire_box_autoadd_my_size(MySize raw) {
-    final ptr = inner.new_box_autoadd_my_size_0();
-    _api_fill_to_wire_my_size(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_MyStruct> _api2wire_box_autoadd_my_struct(MyStruct raw) {
-    final ptr = inner.new_box_autoadd_my_struct_0();
-    _api_fill_to_wire_my_struct(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_MyTreeNode> _api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
-    final ptr = inner.new_box_autoadd_my_tree_node_0();
-    _api_fill_to_wire_my_tree_node(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_NewTypeInt> _api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
-    final ptr = inner.new_box_autoadd_new_type_int_0();
-    _api_fill_to_wire_new_type_int(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_Note> _api2wire_box_autoadd_note(Note raw) {
-    final ptr = inner.new_box_autoadd_note_0();
-    _api_fill_to_wire_note(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_Numbers> _api2wire_box_autoadd_numbers(Numbers raw) {
-    final ptr = inner.new_box_autoadd_numbers_0();
-    _api_fill_to_wire_numbers(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_Sequences> _api2wire_box_autoadd_sequences(Sequences raw) {
-    final ptr = inner.new_box_autoadd_sequences_0();
-    _api_fill_to_wire_sequences(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_SumWith> _api2wire_box_autoadd_sum_with(SumWith raw) {
-    final ptr = inner.new_box_autoadd_sum_with_0();
-    _api_fill_to_wire_sum_with(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_UserId> _api2wire_box_autoadd_user_id(UserId raw) {
-    final ptr = inner.new_box_autoadd_user_id_0();
-    _api_fill_to_wire_user_id(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<ffi.Bool> _api2wire_box_bool(bool raw) {
-    return inner.new_box_bool_0(_api2wire_bool(raw));
-  }
-
-  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_exotic_optionals(ExoticOptionals raw) {
-    final ptr = inner.new_box_exotic_optionals_0();
-    _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<ffi.Double> _api2wire_box_f64(double raw) {
-    return inner.new_box_f64_0(_api2wire_f64(raw));
-  }
-
-  ffi.Pointer<ffi.Int32> _api2wire_box_i32(int raw) {
-    return inner.new_box_i32_0(_api2wire_i32(raw));
-  }
-
-  ffi.Pointer<ffi.Int64> _api2wire_box_i64(int raw) {
-    return inner.new_box_i64_0(_api2wire_i64(raw));
-  }
-
-  ffi.Pointer<ffi.Int8> _api2wire_box_i8(int raw) {
-    return inner.new_box_i8_0(_api2wire_i8(raw));
-  }
-
-  ffi.Pointer<wire_KitchenSink> _api2wire_box_kitchen_sink(KitchenSink raw) {
-    final ptr = inner.new_box_kitchen_sink_0();
-    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<wire_MySize> _api2wire_box_my_size(MySize raw) {
-    final ptr = inner.new_box_my_size_0();
-    _api_fill_to_wire_my_size(raw, ptr.ref);
-    return ptr;
-  }
-
-  ffi.Pointer<ffi.Uint8> _api2wire_box_u8(int raw) {
-    return inner.new_box_u8_0(_api2wire_u8(raw));
-  }
-
-  ffi.Pointer<ffi.Int32> _api2wire_box_weekdays(Weekdays raw) {
-    return inner.new_box_weekdays_0(_api2wire_weekdays(raw));
-  }
-
-  double _api2wire_f32(double raw) {
-    return raw;
-  }
-
-  double _api2wire_f64(double raw) {
-    return raw;
-  }
-
-  ffi.Pointer<wire_float_32_list> _api2wire_float_32_list(Float32List raw) {
-    final ans = inner.new_float_32_list_0(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  ffi.Pointer<wire_float_64_list> _api2wire_float_64_list(Float64List raw) {
-    final ans = inner.new_float_64_list_0(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  int _api2wire_i32(int raw) {
-    return raw;
-  }
-
-  int _api2wire_i64(int raw) {
-    return raw;
-  }
+@protected
+int api2wire_i32(int raw) {
+  return raw;
+}
 
 @protected
 int api2wire_i8(int raw) {
   return raw;
 }
-
 
 @protected
 int api2wire_my_enum(MyEnum raw) {
@@ -1638,7 +859,6 @@ int api2wire_u32(int raw) {
 int api2wire_u8(int raw) {
   return raw;
 }
-
 
 @protected
 int api2wire_usize(int raw) {
