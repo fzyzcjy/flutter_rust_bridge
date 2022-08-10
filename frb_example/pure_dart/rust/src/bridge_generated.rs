@@ -518,6 +518,7 @@ fn wire_get_message_impl(port_: MessagePort) {
     )
 }
 fn wire_get_array_impl(port_: MessagePort) {
+
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_array",
@@ -815,6 +816,7 @@ fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWit
         },
     )
 }
+
 // Section: wrapper structs
 
 #[derive(Clone)]
@@ -831,6 +833,12 @@ struct mirror_ApplicationMode(ApplicationMode);
 
 #[derive(Clone)]
 struct mirror_ApplicationSettings(ApplicationSettings);
+
+#[derive(Clone)]
+struct mirror_Numbers(Numbers);
+
+#[derive(Clone)]
+struct mirror_Sequences(Sequences);
 
 // Section: static checks
 
@@ -864,6 +872,14 @@ const _: fn() = || {
         let _: String = ApplicationSettings.version;
         let _: ApplicationMode = ApplicationSettings.mode;
         let _: Box<ApplicationEnv> = ApplicationSettings.env;
+    }
+    {
+        let Numbers_ = None::<Numbers>.unwrap();
+        let _: Vec<i32> = Numbers_.0;
+    }
+    {
+        let Sequences_ = None::<Sequences>.unwrap();
+        let _: Vec<i32> = Sequences_.0;
     }
 };
 // Section: allocate functions
@@ -936,6 +952,7 @@ impl Wire2Api<MyEnum> for i32 {
     }
 }
 
+
 impl Wire2Api<u32> for u32 {
     fn wire2api(self) -> u32 {
         self
@@ -952,6 +969,7 @@ impl Wire2Api<usize> for usize {
         self
     }
 }
+
 impl Wire2Api<Weekdays> for i32 {
     fn wire2api(self) -> Weekdays {
         match self {
@@ -966,6 +984,7 @@ impl Wire2Api<Weekdays> for i32 {
         }
     }
 }
+
 // Section: impl IntoDart
 
 impl support::IntoDart for mirror_ApplicationEnv {
@@ -1157,12 +1176,26 @@ impl support::IntoDart for NewTypeInt {
 }
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
 
+impl support::IntoDart for mirror_Numbers {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0 .0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_Numbers {}
+
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartCObject {
         vec![self.x.into_dart(), self.y.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+
+impl support::IntoDart for mirror_Sequences {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0 .0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_Sequences {}
 
 impl support::IntoDart for SumWith {
     fn into_dart(self) -> support::DartCObject {

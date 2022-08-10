@@ -1,3 +1,7 @@
+## 1.41.0
+
+* Allow multi-`mirror` #619 (thanks @Cupnfish)
+
 ## 1.40.0
 
 * Improve version check #613 (thanks @Roms1383)

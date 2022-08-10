@@ -268,6 +268,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "Cupnfish",
+      "name": "Cupnfish",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40173605?v=4",
+      "profile": "https://github.com/Cupnfish",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

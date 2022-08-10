@@ -1,7 +1,7 @@
 use syn::*;
 
 /// Extract a path from marker `#[frb(mirror(path), ..)]`
-pub fn extract_mirror_marker(attrs: &[Attribute]) -> Option<Path> {
+pub fn extract_mirror_marker(attrs: &[Attribute]) -> Vec<Path> {
     attrs
         .iter()
         .filter(|attr| attr.path.is_ident("frb"))
@@ -11,16 +11,24 @@ pub fn extract_mirror_marker(attrs: &[Attribute]) -> Option<Path> {
                     path,
                     nested: mirror,
                     ..
-                })) if path.is_ident("mirror") && mirror.len() == 1 => {
-                    match mirror.first().unwrap() {
-                        NestedMeta::Meta(Meta::Path(path)) => Some(path.clone()),
-                        _ => None,
-                    }
-                }
+                })) if path.is_ident("mirror") && !mirror.is_empty() => Some(
+                    mirror
+                        .into_iter()
+                        .filter_map(|lable| {
+                            if let NestedMeta::Meta(Meta::Path(path)) = lable {
+                                Some(path)
+                            } else {
+                                None
+                            }
+                        })
+                        .cloned()
+                        .collect::<Vec<_>>(),
+                ),
                 _ => None,
             }),
             _ => None,
         })
+        .unwrap_or_default()
 }
 
 /// Checks if the `#[frb(non_final)]` attribute is present.
