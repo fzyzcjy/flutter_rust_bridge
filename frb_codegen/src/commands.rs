@@ -2,14 +2,17 @@ use std::fmt::Write;
 use std::path::Path;
 use std::process::Command;
 use std::process::Output;
+use std::str::FromStr;
 
 use crate::error::{Error, Result};
-use crate::utils::PackageManager;
-use crate::utils::{ensure_dependencies, guess_toolchain, DartToolchain};
+use crate::tools::DartRepository;
+use crate::tools::PackageManager;
+use crate::tools::FFIGEN_REQUIREMENT;
+use crate::tools::FFI_REQUIREMENT;
 use log::{debug, info, warn};
 
 #[must_use]
-fn call_shell(cmd: &str) -> Output {
+pub(crate) fn call_shell(cmd: &str) -> Output {
     #[cfg(windows)]
     return execute_command("powershell", &["-noprofile", "-c", cmd], None);
 
@@ -18,32 +21,25 @@ fn call_shell(cmd: &str) -> Output {
 }
 
 pub fn ensure_tools_available(dart_root: &str) -> Result {
-    let toolchain = guess_toolchain(dart_root).unwrap();
-    if toolchain == DartToolchain::Dart && !call_shell("dart --version").status.success() {
-        return Err(Error::MissingExe("dart".to_string()));
-    } else if toolchain == DartToolchain::Flutter
-        && !call_shell("flutter --version").status.success()
-    {
-        return Err(Error::MissingExe("flutter".to_string()));
+    let repo =
+        DartRepository::from_str(dart_root).map_err(|e| Error::StringError(e.to_string()))?;
+    if !repo.toolchain_available() {
+        return Err(Error::MissingExe(repo.toolchain.to_string()));
     }
 
-    let ffi = ensure_dependencies(dart_root, "ffi", PackageManager::Dependencies).unwrap();
-    if ffi.is_none() {
-        return Err(Error::MissingDep {
-            name: "ffi".into(),
-            context: PackageManager::Dependencies,
-            version: "^2.0.1".into(),
-        });
-    }
+    repo.has_specified("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
+    repo.has_installed("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
 
-    let ffigen = ensure_dependencies(dart_root, "ffigen", PackageManager::DevDependencies).unwrap();
-    if ffigen.is_none() {
-        return Err(Error::MissingDep {
-            name: "ffigen".into(),
-            context: PackageManager::DevDependencies,
-            version: "^6.0.1".into(),
-        });
-    }
+    repo.has_specified(
+        "ffigen",
+        PackageManager::DevDependencies,
+        &FFIGEN_REQUIREMENT,
+    )?;
+    repo.has_installed(
+        "ffigen",
+        PackageManager::DevDependencies,
+        &FFIGEN_REQUIREMENT,
+    )?;
 
     Ok(())
 }
@@ -233,10 +229,8 @@ fn ffigen(
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    let cmd = format!(
-        "{} run",
-        guess_toolchain(dart_root).unwrap().as_run_command()
-    );
+    let repo = DartRepository::from_str(dart_root).unwrap();
+    let cmd = format!("{} run", repo.toolchain.as_run_command());
     let res = call_shell(&format!(
         "cd {}{}{} ffigen --config \"{}\"",
         dart_root,
@@ -288,18 +282,18 @@ pub fn format_dart(path: &str, line_length: i32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
-    let toolchain = guess_toolchain(dart_root).unwrap();
+    let repo = DartRepository::from_str(dart_root).unwrap();
     let out = if cfg!(windows) {
         call_shell(&format!(
             "cd \"{}\"; {} run build_runner build --delete-conflicting-outputs",
             dart_root,
-            toolchain.as_run_command()
+            repo.toolchain.as_run_command()
         ))
     } else {
         call_shell(&format!(
             "cd \"{}\" && {} run build_runner build --delete-conflicting-outputs",
             dart_root,
-            toolchain.as_run_command()
+            repo.toolchain.as_run_command()
         ))
     };
     if !out.status.success() {

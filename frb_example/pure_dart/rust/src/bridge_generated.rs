@@ -544,6 +544,68 @@ pub extern "C" fn wire_get_message(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_repeat_number(port_: i64, num: i32, times: usize) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "repeat_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_num = num.wire2api();
+            let api_times = times.wire2api();
+            move |task_callback| Ok(mirror_Numbers(repeat_number(api_num, api_times)))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_repeat_sequence(port_: i64, seq: i32, times: usize) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "repeat_sequence",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_seq = seq.wire2api();
+            let api_times = times.wire2api();
+            move |task_callback| Ok(mirror_Sequences(repeat_sequence(api_seq, api_times)))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_first_number(port_: i64, nums: *mut wire_Numbers) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "first_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_nums = nums.wire2api();
+            move |task_callback| Ok(first_number(api_nums))
+        },
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_first_sequence(port_: i64, seqs: *mut wire_Sequences) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "first_sequence",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_seqs = seqs.wire2api();
+            move |task_callback| Ok(first_sequence(api_seqs))
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_get_array(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1062,6 +1124,18 @@ pub struct wire_Note {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_Numbers {
+    field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Sequences {
+    field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_SumWith {
     x: u32,
 }
@@ -1222,6 +1296,12 @@ struct mirror_ApplicationMode(ApplicationMode);
 #[derive(Clone)]
 struct mirror_ApplicationSettings(ApplicationSettings);
 
+#[derive(Clone)]
+struct mirror_Numbers(Numbers);
+
+#[derive(Clone)]
+struct mirror_Sequences(Sequences);
+
 // Section: static checks
 
 const _: fn() = || {
@@ -1254,6 +1334,14 @@ const _: fn() = || {
         let _: String = ApplicationSettings.version;
         let _: ApplicationMode = ApplicationSettings.mode;
         let _: Box<ApplicationEnv> = ApplicationSettings.env;
+    }
+    {
+        let Numbers_ = None::<Numbers>.unwrap();
+        let _: Vec<i32> = Numbers_.0;
+    }
+    {
+        let Sequences_ = None::<Sequences>.unwrap();
+        let _: Vec<i32> = Sequences_.0;
     }
 };
 // Section: allocate functions
@@ -1350,6 +1438,16 @@ pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut wire_NewTypeInt {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_note_0() -> *mut wire_Note {
     support::new_leak_box_ptr(wire_Note::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_numbers_0() -> *mut wire_Numbers {
+    support::new_leak_box_ptr(wire_Numbers::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_sequences_0() -> *mut wire_Sequences {
+    support::new_leak_box_ptr(wire_Sequences::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1727,6 +1825,20 @@ impl Wire2Api<Note> for *mut wire_Note {
     fn wire2api(self) -> Note {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Note>::wire2api(*wrap).into()
+    }
+}
+
+impl Wire2Api<Numbers> for *mut wire_Numbers {
+    fn wire2api(self) -> Numbers {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Numbers>::wire2api(*wrap).into()
+    }
+}
+
+impl Wire2Api<Sequences> for *mut wire_Sequences {
+    fn wire2api(self) -> Sequences {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Sequences>::wire2api(*wrap).into()
     }
 }
 
@@ -2109,6 +2221,18 @@ impl Wire2Api<Note> for wire_Note {
     }
 }
 
+impl Wire2Api<Numbers> for wire_Numbers {
+    fn wire2api(self) -> Numbers {
+        Numbers(self.field0.wire2api())
+    }
+}
+
+impl Wire2Api<Sequences> for wire_Sequences {
+    fn wire2api(self) -> Sequences {
+        Sequences(self.field0.wire2api())
+    }
+}
+
 impl Wire2Api<Speed> for wire_Speed {
     fn wire2api(self) -> Speed {
         match self.tag {
@@ -2417,6 +2541,22 @@ impl NewWithNullPtr for wire_Note {
     }
 }
 
+impl NewWithNullPtr for wire_Numbers {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_Sequences {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_Speed {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2663,12 +2803,26 @@ impl support::IntoDart for NewTypeInt {
 }
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
 
+impl support::IntoDart for mirror_Numbers {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0 .0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_Numbers {}
+
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartCObject {
         vec![self.x.into_dart(), self.y.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+
+impl support::IntoDart for mirror_Sequences {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.0 .0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_Sequences {}
 
 impl support::IntoDart for Speed {
     fn into_dart(self) -> support::DartCObject {

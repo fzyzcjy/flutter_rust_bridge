@@ -164,6 +164,22 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
 
+  Future<Numbers> repeatNumber({required int num, required int times, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta;
+
+  Future<Sequences> repeatSequence({required int seq, required int times, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRepeatSequenceConstMeta;
+
+  Future<int?> firstNumber({required Numbers nums, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kFirstNumberConstMeta;
+
+  Future<int?> firstSequence({required Sequences seqs, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta;
+
   Future<Uint8List> getArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta;
@@ -552,6 +568,14 @@ class Note {
   });
 }
 
+class Numbers {
+  final Int32List field0;
+
+  Numbers({
+    required this.field0,
+  });
+}
+
 class Point {
   final double x;
   final double y;
@@ -559,6 +583,14 @@ class Point {
   Point({
     required this.x,
     required this.y,
+  });
+}
+
+class Sequences {
+  final Int32List field0;
+
+  Sequences({
+    required this.field0,
   });
 }
 
@@ -1127,6 +1159,60 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: [],
       );
 
+  Future<Numbers> repeatNumber({required int num, required int times, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_repeat_number(port_, _api2wire_i32(num), _api2wire_usize(times)),
+        parseSuccessData: _wire2api_numbers,
+        constMeta: kRepeatNumberConstMeta,
+        argValues: [num, times],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "repeat_number",
+        argNames: ["num", "times"],
+      );
+
+  Future<Sequences> repeatSequence({required int seq, required int times, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_repeat_sequence(port_, _api2wire_i32(seq), _api2wire_usize(times)),
+        parseSuccessData: _wire2api_sequences,
+        constMeta: kRepeatSequenceConstMeta,
+        argValues: [seq, times],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kRepeatSequenceConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "repeat_sequence",
+        argNames: ["seq", "times"],
+      );
+
+  Future<int?> firstNumber({required Numbers nums, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_first_number(port_, _api2wire_box_autoadd_numbers(nums)),
+        parseSuccessData: _wire2api_opt_box_autoadd_i32,
+        constMeta: kFirstNumberConstMeta,
+        argValues: [nums],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kFirstNumberConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "first_number",
+        argNames: ["nums"],
+      );
+
+  Future<int?> firstSequence({required Sequences seqs, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_first_sequence(port_, _api2wire_box_autoadd_sequences(seqs)),
+        parseSuccessData: _wire2api_opt_box_autoadd_i32,
+        constMeta: kFirstSequenceConstMeta,
+        argValues: [seqs],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "first_sequence",
+        argNames: ["seqs"],
+      );
+
   Future<Uint8List> getArray({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_array(port_),
         parseSuccessData: _wire2api_uint_8_list,
@@ -1530,6 +1616,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     return ptr;
   }
 
+  ffi.Pointer<wire_Numbers> _api2wire_box_autoadd_numbers(Numbers raw) {
+    final ptr = inner.new_box_autoadd_numbers_0();
+    _api_fill_to_wire_numbers(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_Sequences> _api2wire_box_autoadd_sequences(Sequences raw) {
+    final ptr = inner.new_box_autoadd_sequences_0();
+    _api_fill_to_wire_sequences(raw, ptr.ref);
+    return ptr;
+  }
+
   ffi.Pointer<wire_SumWith> _api2wire_box_autoadd_sum_with(SumWith raw) {
     final ptr = inner.new_box_autoadd_sum_with_0();
     _api_fill_to_wire_sum_with(raw, ptr.ref);
@@ -1890,6 +1988,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     _api_fill_to_wire_note(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_numbers(Numbers apiObj, ffi.Pointer<wire_Numbers> wireObj) {
+    _api_fill_to_wire_numbers(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<wire_Sequences> wireObj) {
+    _api_fill_to_wire_sequences(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_sum_with(SumWith apiObj, ffi.Pointer<wire_SumWith> wireObj) {
     _api_fill_to_wire_sum_with(apiObj, wireObj.ref);
   }
@@ -2031,6 +2137,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     wireObj.body = _api2wire_String(apiObj.body);
   }
 
+  void _api_fill_to_wire_numbers(Numbers apiObj, wire_Numbers wireObj) {
+    wireObj.field0 = _api2wire_int_32_list(apiObj.field0);
+  }
+
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
@@ -2046,6 +2156,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   void _api_fill_to_wire_opt_box_exotic_optionals(ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_sequences(Sequences apiObj, wire_Sequences wireObj) {
+    wireObj.field0 = _api2wire_int_32_list(apiObj.field0);
   }
 
   void _api_fill_to_wire_speed(Speed apiObj, wire_Speed wireObj) {
@@ -2475,6 +2589,14 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
   );
 }
 
+Numbers _wire2api_numbers(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return Numbers(
+    field0: _wire2api_int_32_list(arr[0]),
+  );
+}
+
 String? _wire2api_opt_String(dynamic raw) {
   return raw == null ? null : _wire2api_String(raw);
 }
@@ -2565,6 +2687,14 @@ Point _wire2api_point(dynamic raw) {
   return Point(
     x: _wire2api_f32(arr[0]),
     y: _wire2api_f32(arr[1]),
+  );
+}
+
+Sequences _wire2api_sequences(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return Sequences(
+    field0: _wire2api_int_32_list(arr[0]),
   );
 }
 
@@ -3207,6 +3337,67 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_get_messagePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_message');
   late final _wire_get_message = _wire_get_messagePtr.asFunction<void Function(int)>();
 
+  void wire_repeat_number(
+    int port_,
+    int num,
+    int times,
+  ) {
+    return _wire_repeat_number(
+      port_,
+      num,
+      times,
+    );
+  }
+
+  late final _wire_repeat_numberPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, uintptr_t)>>('wire_repeat_number');
+  late final _wire_repeat_number = _wire_repeat_numberPtr.asFunction<void Function(int, int, int)>();
+
+  void wire_repeat_sequence(
+    int port_,
+    int seq,
+    int times,
+  ) {
+    return _wire_repeat_sequence(
+      port_,
+      seq,
+      times,
+    );
+  }
+
+  late final _wire_repeat_sequencePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, uintptr_t)>>('wire_repeat_sequence');
+  late final _wire_repeat_sequence = _wire_repeat_sequencePtr.asFunction<void Function(int, int, int)>();
+
+  void wire_first_number(
+    int port_,
+    ffi.Pointer<wire_Numbers> nums,
+  ) {
+    return _wire_first_number(
+      port_,
+      nums,
+    );
+  }
+
+  late final _wire_first_numberPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Numbers>)>>('wire_first_number');
+  late final _wire_first_number = _wire_first_numberPtr.asFunction<void Function(int, ffi.Pointer<wire_Numbers>)>();
+
+  void wire_first_sequence(
+    int port_,
+    ffi.Pointer<wire_Sequences> seqs,
+  ) {
+    return _wire_first_sequence(
+      port_,
+      seqs,
+    );
+  }
+
+  late final _wire_first_sequencePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Sequences>)>>('wire_first_sequence');
+  late final _wire_first_sequence =
+      _wire_first_sequencePtr.asFunction<void Function(int, ffi.Pointer<wire_Sequences>)>();
+
   void wire_get_array(
     int port_,
   ) {
@@ -3693,6 +3884,24 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_note_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_Note> Function()>>('new_box_autoadd_note_0');
   late final _new_box_autoadd_note_0 = _new_box_autoadd_note_0Ptr.asFunction<ffi.Pointer<wire_Note> Function()>();
+
+  ffi.Pointer<wire_Numbers> new_box_autoadd_numbers_0() {
+    return _new_box_autoadd_numbers_0();
+  }
+
+  late final _new_box_autoadd_numbers_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Numbers> Function()>>('new_box_autoadd_numbers_0');
+  late final _new_box_autoadd_numbers_0 =
+      _new_box_autoadd_numbers_0Ptr.asFunction<ffi.Pointer<wire_Numbers> Function()>();
+
+  ffi.Pointer<wire_Sequences> new_box_autoadd_sequences_0() {
+    return _new_box_autoadd_sequences_0();
+  }
+
+  late final _new_box_autoadd_sequences_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Sequences> Function()>>('new_box_autoadd_sequences_0');
+  late final _new_box_autoadd_sequences_0 =
+      _new_box_autoadd_sequences_0Ptr.asFunction<ffi.Pointer<wire_Sequences> Function()>();
 
   ffi.Pointer<wire_SumWith> new_box_autoadd_sum_with_0() {
     return _new_box_autoadd_sum_with_0();
@@ -4316,6 +4525,14 @@ class wire_ApplicationSettings extends ffi.Struct {
   external int mode;
 
   external ffi.Pointer<wire_ApplicationEnv> env;
+}
+
+class wire_Numbers extends ffi.Struct {
+  external ffi.Pointer<wire_int_32_list> field0;
+}
+
+class wire_Sequences extends ffi.Struct {
+  external ffi.Pointer<wire_int_32_list> field0;
 }
 
 class wire_UserId extends ffi.Struct {

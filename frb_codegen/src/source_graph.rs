@@ -11,7 +11,7 @@ use std::{collections::HashMap, fmt::Debug, fs, path::PathBuf};
 
 use cargo_metadata::MetadataCommand;
 use log::{debug, warn};
-use syn::{Attribute, Ident, ItemEnum, ItemStruct, UseTree};
+use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, UseTree};
 
 use crate::markers;
 
@@ -183,10 +183,27 @@ impl Debug for Module {
 }
 
 /// Get a struct or enum ident, possibly remapped by a mirror marker
-fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Ident, bool) {
-    markers::extract_mirror_marker(attrs)
-        .and_then(|path| path.get_ident().map(|ident| (ident.clone(), true)))
-        .unwrap_or_else(|| (ident.clone(), false))
+fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Vec<Ident>, bool) {
+    let res = markers::extract_mirror_marker(attrs)
+        .into_iter()
+        .filter_map(|path| {
+            // eq: path.get_ident().map(Clone::clone)
+            if path.leading_colon.is_none()
+                && path.segments.len() == 1
+                && path.segments[0].arguments == PathArguments::None
+            {
+                Some(path.segments.into_iter().next().unwrap().ident)
+            } else {
+                None
+            }
+        })
+        .collect::<Vec<_>>();
+    let mirror = !res.is_empty();
+    if mirror {
+        (res, mirror)
+    } else {
+        (vec![ident.clone()], mirror)
+    }
 }
 
 impl Module {
@@ -209,34 +226,40 @@ impl Module {
         for item in items.iter() {
             match item {
                 syn::Item::Struct(item_struct) => {
-                    let (ident, mirror) = get_ident(&item_struct.ident, &item_struct.attrs);
-                    let ident_str = ident.to_string();
-                    scope_structs.push(Struct {
-                        ident,
-                        src: item_struct.clone(),
-                        visibility: syn_vis_to_visibility(&item_struct.vis),
-                        path: {
-                            let mut path = self.module_path.clone();
-                            path.push(ident_str);
-                            path
-                        },
-                        mirror,
-                    });
+                    let (idents, mirror) = get_ident(&item_struct.ident, &item_struct.attrs);
+
+                    scope_structs.extend(idents.into_iter().map(|ident| {
+                        let ident_str = ident.to_string();
+                        Struct {
+                            ident,
+                            src: item_struct.clone(),
+                            visibility: syn_vis_to_visibility(&item_struct.vis),
+                            path: {
+                                let mut path = self.module_path.clone();
+                                path.push(ident_str);
+                                path
+                            },
+                            mirror,
+                        }
+                    }));
                 }
                 syn::Item::Enum(item_enum) => {
-                    let (ident, mirror) = get_ident(&item_enum.ident, &item_enum.attrs);
-                    let ident_str = ident.to_string();
-                    scope_enums.push(Enum {
-                        ident,
-                        src: item_enum.clone(),
-                        visibility: syn_vis_to_visibility(&item_enum.vis),
-                        path: {
-                            let mut path = self.module_path.clone();
-                            path.push(ident_str);
-                            path
-                        },
-                        mirror,
-                    });
+                    let (idents, mirror) = get_ident(&item_enum.ident, &item_enum.attrs);
+
+                    scope_enums.extend(idents.into_iter().map(|ident| {
+                        let ident_str = ident.to_string();
+                        Enum {
+                            ident,
+                            src: item_enum.clone(),
+                            visibility: syn_vis_to_visibility(&item_enum.vis),
+                            path: {
+                                let mut path = self.module_path.clone();
+                                path.push(ident_str);
+                                path
+                            },
+                            mirror,
+                        }
+                    }));
                 }
                 syn::Item::Mod(item_mod) => {
                     let ident = item_mod.ident.clone();

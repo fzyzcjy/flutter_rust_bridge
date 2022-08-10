@@ -334,6 +334,28 @@ void main(List<String> args) async {
     await Future.delayed(Duration(seconds: 1));
   });
 
+  test('dart call repeatNumber()', () async {
+    var numbers = await api.repeatNumber(num: 1, times: 10);
+    expect(numbers.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+  });
+
+  test('dart call repeatSequence()', () async {
+    var sequences = await api.repeatSequence(seq: 1, times: 10);
+    expect(sequences.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+  });
+
+  test('dart call firstNumber()', () async {
+    var numbers = Numbers(field0: Int32List.fromList([1]));
+    var first = await api.firstNumber(nums: numbers);
+    expect(first, 1);
+  });
+
+  test('dart call firstSequence()', () async {
+    var sequences = Sequences(field0: Int32List.fromList([1]));
+    var first = await api.firstSequence(seqs: sequences);
+    expect(first, 1);
+  });
+
   test('loop and call many times', () async {
     var obj = _createMyTreeNode(arrLen: 5);
     for (var i = 0; i < 500; ++i) {

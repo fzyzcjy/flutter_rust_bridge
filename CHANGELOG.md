@@ -1,3 +1,11 @@
+## 1.41.0
+
+* Allow multi-`mirror` #619 (thanks @Cupnfish)
+
+## 1.40.0
+
+* Improve version check #613 (thanks @Roms1383)
+
 ## 1.39.0
 
 * Avoid global ffigen #605 (thanks @Roms1383)

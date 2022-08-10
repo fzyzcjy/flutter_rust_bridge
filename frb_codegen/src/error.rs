@@ -1,10 +1,10 @@
 use thiserror::Error;
 
-use crate::utils::PackageManager;
+use crate::tools::PackageManager;
 
 pub type Result = std::result::Result<(), Error>;
 
-#[derive(Error, Debug)]
+#[derive(Error, Debug, Clone)]
 pub enum Error {
     #[error("rustfmt failed: {0}")]
     Rustfmt(String),
@@ -21,17 +21,17 @@ pub enum Error {
     MissingExe(String),
     #[error("{0}")]
     StringError(String),
-    #[error("please add {name} to your {context}. (version {version})")]
+    #[error("please add {name} to your {manager}. (version {requirement})")]
     MissingDep {
         name: String,
-        context: PackageManager,
-        version: String,
+        manager: PackageManager,
+        requirement: String,
     },
-    #[error("please update version of {name} in your {context}. (version {version})")]
+    #[error("please update version of {name} in your {manager}. (version {requirement})")]
     InvalidDep {
         name: String,
-        context: PackageManager,
-        version: String,
+        manager: PackageManager,
+        requirement: String,
     },
 }
 
@@ -42,5 +42,14 @@ impl Error {
 
     pub fn string(msg: String) -> Self {
         Self::StringError(msg)
+    }
+}
+
+impl From<anyhow::Error> for Error {
+    fn from(e: anyhow::Error) -> Self {
+        if let Some(e) = e.downcast_ref::<Self>() {
+            return e.clone();
+        }
+        Error::StringError(e.to_string())
     }
 }

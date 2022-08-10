@@ -182,6 +182,10 @@ jobs:
         if: ${{ matrix.os.family == 'linux' }}
         run: sudo apt update && sudo apt-get install -y libclang-dev
 
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)
         if: ${{ matrix.os.family != 'windows' }}
