@@ -45,7 +45,7 @@ test-pure:
         dart pub get && \
         dart lib/main.dart ../rust/target/debug/{{dylib}}
 test-pure-web:
-    cd {{frb_pure}}/dart && just serve --dart-input lib/main.dart --root web/ -c ../rust --port 8081
+    cd {{frb_pure}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081
 test-flutter-web:
     cd {{frb_flutter}} && just serve -c rust --wasm-output web/pkg
 test-integration:
@@ -71,6 +71,8 @@ check:
 serve *args="":
     cd frb_dart && dart pub get
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
+
+
 
 refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)

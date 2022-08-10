@@ -196,7 +196,7 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
         let old_cnt = cnt.fetch_add(1, Ordering::Relaxed);
         let msg = format!("(thread=normal, i={}, old_cnt={})", i, old_cnt);
         format!("send data to sink msg={}", msg);
-        sink.add(msg);
+        let _ = sink.add(msg);
         thread::sleep(Duration::from_millis(50));
     }
 
@@ -575,9 +575,18 @@ pub struct Event {
 }
 
 pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
+    let mut sleep = 1;
     while let Ok(mut guard) = EVENTS.lock() {
-        if let Some(event) = guard.as_mut().and_then(|queue| queue.pop_front()) {
-            listener.add(event);
+        if let Some(queue) = guard.as_mut() {
+            if let Some(event) = queue.pop_front() {
+                let _ = listener.add(event);
+                sleep = 1;
+            } else {
+                std::thread::sleep(Duration::from_secs(sleep));
+                sleep *= 2;
+            }
+        } else {
+            return Ok(());
         }
     }
     Ok(())

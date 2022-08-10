@@ -5,7 +5,6 @@
 
 import "bridge_definitions.dart";
 import 'dart:convert';
-import 'dart:typed_data';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated.dart';
@@ -242,6 +241,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  BigInt api2wire_i64(int raw) {
+    return BigInt.from(raw);
+  }
+
+  @protected
   Int32List api2wire_int_32_list(Int32List raw) {
     return raw;
   }
@@ -469,7 +473,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_simple_adder(NativePortType port_, int a, int b);
 
-  external void wire_primitive_types(NativePortType port_, int my_i32, int my_i64, double my_f64, bool my_bool);
+  external void wire_primitive_types(NativePortType port_, int my_i32, BigInt my_i64, double my_f64, bool my_bool);
 
   external void wire_primitive_u32(NativePortType port_, int my_u32);
 
@@ -585,7 +589,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external int /* *mut i32 */ new_box_autoadd_i32_0(int value);
 
-  external int /* *mut i64 */ new_box_autoadd_i64_0(int value);
+  external int /* *mut i64 */ new_box_autoadd_i64_0(BigInt value);
 
   external int /* *mut bool */ new_box_bool_0(bool value);
 
@@ -593,7 +597,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external int /* *mut i32 */ new_box_i32_0(int value);
 
-  external int /* *mut i64 */ new_box_i64_0(int value);
+  external int /* *mut i64 */ new_box_i64_0(BigInt value);
 
   external int /* *mut i8 */ new_box_i8_0(int value);
 
@@ -611,7 +615,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_simple_adder(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder(port_, a, b);
 
-  void wire_primitive_types(NativePortType port_, int my_i32, int my_i64, double my_f64, bool my_bool) =>
+  void wire_primitive_types(NativePortType port_, int my_i32, BigInt my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
 
   void wire_primitive_u32(NativePortType port_, int my_u32) => wasmModule.wire_primitive_u32(port_, my_u32);
@@ -753,7 +757,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *mut i32 */ new_box_autoadd_i32_0(int value) => wasmModule.new_box_autoadd_i32_0(value);
 
-  int /* *mut i64 */ new_box_autoadd_i64_0(int value) => wasmModule.new_box_autoadd_i64_0(value);
+  int /* *mut i64 */ new_box_autoadd_i64_0(BigInt value) => wasmModule.new_box_autoadd_i64_0(value);
 
   int /* *mut bool */ new_box_bool_0(bool value) => wasmModule.new_box_bool_0(value);
 
@@ -761,7 +765,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *mut i32 */ new_box_i32_0(int value) => wasmModule.new_box_i32_0(value);
 
-  int /* *mut i64 */ new_box_i64_0(int value) => wasmModule.new_box_i64_0(value);
+  int /* *mut i64 */ new_box_i64_0(BigInt value) => wasmModule.new_box_i64_0(value);
 
   int /* *mut i8 */ new_box_i8_0(int value) => wasmModule.new_box_i8_0(value);
 

@@ -99,6 +99,7 @@ impl<T: IntoDart> StreamSink<T> {
 
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
+    #[must_use = "Must check if data was sent."]
     pub fn add(&self, value: T) -> bool {
         self.rust2dart.success(value)
     }

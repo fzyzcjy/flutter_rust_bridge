@@ -42,11 +42,11 @@
     const colorize = (value) => {
       const pre = document.createElement("pre");
       pre.innerHTML = new Option(String(value)).innerHTML
-        .replaceAll("[31m", "<span class='red'>")
-        .replaceAll("[32m", "<span class='green'>")
-        .replaceAll("[33m", "<span class='yellow'>")
-        .replaceAll("[0m", "</span>")
-        .replaceAll("[1m", "<strong>")
+        .replaceAll("\033[31m", "<span class='red'>")
+        .replaceAll("\033[32m", "<span class='green'>")
+        .replaceAll("\033[33m", "<span class='yellow'>")
+        .replaceAll("\033[0m", "</span>")
+        .replaceAll("\033[1m", "<strong>")
         .replaceAll(linkRegex, '<a href="\$1">\$1</a>');
       return pre;
     };
@@ -73,5 +73,5 @@
       error(...args);
     };
   </script>
-  <script src="main.dart.js"></script>
+  <script src="main.web.dart.js"></script>
 </html>

@@ -5,7 +5,6 @@
 
 import "bridge_definitions.dart";
 import 'dart:convert';
-import 'dart:typed_data';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
@@ -37,7 +36,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
           {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) =>
       _plat.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _plat.inner
-            .wire_primitive_types(port_, api2wire_i32(myI32), api2wire_i64(myI64), api2wire_f64(myF64), myBool),
+            .wire_primitive_types(port_, api2wire_i32(myI32), _plat.api2wire_i64(myI64), api2wire_f64(myF64), myBool),
         parseSuccessData: _wire2api_i32,
         constMeta: kPrimitiveTypesConstMeta,
         argValues: [myI32, myI64, myF64, myBool],
@@ -775,11 +774,6 @@ int api2wire_i32(int raw) {
 }
 
 @protected
-int api2wire_i64(int raw) {
-  return raw;
-}
-
-@protected
 int api2wire_i8(int raw) {
   return raw;
 }
@@ -955,7 +949,7 @@ int _wire2api_box_autoadd_i32(dynamic raw) {
 }
 
 int _wire2api_box_autoadd_i64(dynamic raw) {
-  return raw as int;
+  return _wire2api_i64(raw);
 }
 
 NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
@@ -1041,7 +1035,7 @@ int _wire2api_i32(dynamic raw) {
 }
 
 int _wire2api_i64(dynamic raw) {
-  return raw as int;
+  return raw is int ? raw : castInt(raw);
 }
 
 int _wire2api_i8(dynamic raw) {
@@ -1273,7 +1267,7 @@ int _wire2api_u32(dynamic raw) {
 }
 
 int _wire2api_u64(dynamic raw) {
-  return raw as int;
+  return raw is int ? raw : castInt(raw);
 }
 
 int _wire2api_u8(dynamic raw) {
@@ -1309,7 +1303,7 @@ UserId _wire2api_user_id(dynamic raw) {
 }
 
 int _wire2api_usize(dynamic raw) {
-  return raw as int;
+  return raw is int ? raw : castInt(raw);
 }
 
 VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {

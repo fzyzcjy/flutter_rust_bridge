@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ffi' as ffi;
 export 'dart:ffi' show NativePort, DynamicLibrary;
 
-import 'dart:typed_data';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
@@ -15,7 +14,10 @@ abstract class FlutterRustBridgeWireBase {
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(
-    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>> ptr,
+    ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>
+        ptr,
   ) {}
 
   /// Not to be used by normal users, but has to be public for generated code
@@ -23,7 +25,8 @@ abstract class FlutterRustBridgeWireBase {
   void free_WireSyncReturnStruct(WireSyncReturnStruct val) {}
 }
 
-abstract class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBridgeWireBase {
+abstract class FlutterRustBridgeWasmWireBase<T extends WasmModule>
+    extends FlutterRustBridgeWireBase {
   Future<T> get init => Future.error(PlatformMismatchException());
   FlutterRustBridgeWasmWireBase([FutureOr<T>? _]);
 }
@@ -54,8 +57,10 @@ class WireSyncReturnStruct extends ffi.Struct {
 
 // Stubs for the web library
 
-Future<dynamic> promiseToFuture(Object promise) => throw PlatformMismatchException();
+Future<dynamic> promiseToFuture(Object promise) =>
+    throw PlatformMismatchException();
 dynamic eval(String jsScript) => throw PlatformMismatchException();
+int castInt(Object? value) => throw PlatformMismatchException();
 
 const nativeLog = print;
 

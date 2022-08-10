@@ -25,7 +25,7 @@ impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
                 self.ir.safe_ident(),
                 self.context.config.block_index,
             )),
-            wasm: self.context.wasm().then(|| "return raw;".into()),
+            wasm: Some("return raw;".into()),
             ..Default::default()
         }
     }

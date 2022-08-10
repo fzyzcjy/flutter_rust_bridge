@@ -197,7 +197,6 @@ fn generate_import_header(imports: HashSet<&IrDartImport>) -> DartBasicCode {
 fn generate_common_header() -> DartBasicCode {
     DartBasicCode {
         import: "import 'dart:convert';
-            import 'dart:typed_data';
             import 'dart:async';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';"
             .to_string(),

@@ -42,8 +42,11 @@ impl IrTypeTrait for IrTypePrimitive {
         .to_string()
     }
 
-    fn dart_wire_type(&self, _wasm: bool) -> String {
-        self.dart_api_type()
+    fn dart_wire_type(&self, wasm: bool) -> String {
+        match self {
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 if wasm => "BigInt".into(),
+            _ => self.dart_api_type(),
+        }
     }
 
     fn rust_api_type(&self) -> String {

@@ -5,7 +5,6 @@
 
 import "bridge_definitions.dart";
 import 'dart:convert';
-import 'dart:typed_data';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated.dart';
@@ -224,6 +223,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     final ans = inner.new_float_64_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
+  }
+
+  @protected
+  int api2wire_i64(int raw) {
+    return raw;
   }
 
   @protected

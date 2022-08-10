@@ -66,6 +66,6 @@ abstract class WasmModule {
   WasmModule bind(dynamic thisArg, String moduleName);
 
   static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {
-    return Future.value(module).then((module) => module as T).catchError(print);
+    return Future.value(module).then((module) => module as T);
   }
 }
