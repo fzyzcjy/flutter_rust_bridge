@@ -546,8 +546,18 @@ fn generate_api_func(
     );
 
     let input_0 = func.inputs.get(0).as_ref().map(|x| &x.ty);
+    let input_0_struct_name = if let Some(StructRef(IrTypeStructRef { name, .. })) = &input_0 {
+        Some(name)
+    } else {
+        None
+    };
     let f = FunctionName::deserialize(&func.name);
-    let parse_success_data = if (f.is_static_method()
+    let func_output_struct_name = if let StructRef(IrTypeStructRef { name, .. }) = &func.output {
+        Some(name)
+    } else {
+        None
+    };
+    let parse_sucess_data = if (f.is_static_method()
         && f.struct_name().unwrap() == {
             if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                 name.clone()
@@ -555,7 +565,11 @@ fn generate_api_func(
                 "".to_string()
             }
         })
-        || (input_0.is_some() && MethodNamingUtil::struct_has_methods(ir_file, input_0.unwrap()))
+        // If struct has a method with first element `input0`
+        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), ir_file))
+        //If output is a struct with methods
+        || (func_output_struct_name.is_some()
+            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_file))
     {
         format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
     } else {

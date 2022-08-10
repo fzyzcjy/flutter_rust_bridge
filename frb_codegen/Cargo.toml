@@ -1,6 +1,6 @@
 [package]
 name = "flutter_rust_bridge_codegen"
-version = "1.38.0"
+version = "1.40.0"
 edition = "2018"
 description = "High-level memory-safe bindgen for Dart/Flutter <-> Rust"
 license = "MIT"
@@ -36,6 +36,9 @@ thiserror = "1"
 cbindgen = "0.24"
 clap = { version = "3.2.14", features = ["derive"] }
 itertools = "0.10.3"
+
+[dev-dependencies]
+semver = "1.0.12"
 
 [profile.release]
 strip = "debuginfo"

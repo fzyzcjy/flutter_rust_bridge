@@ -250,7 +250,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.38.0"
+version = "1.40.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -266,7 +266,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "1.38.0"
+version = "1.40.0"
 dependencies = [
  "anyhow",
  "cargo_metadata",
@@ -300,7 +300,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.38.0"
+version = "1.40.0"
 
 [[package]]
 name = "gimli"
@@ -578,9 +578,9 @@ checksum = "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
 
 [[package]]
 name = "semver"
-version = "1.0.7"
+version = "1.0.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d65bd28f48be7196d222d95b9243287f48d27aca604e08497513019ff0502cc4"
+checksum = "93f6841e709003d68bb2deee8c343572bf446003ec20a583e76f7b15cebf3711"
 dependencies = [
  "serde",
 ]

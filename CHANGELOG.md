@@ -1,3 +1,20 @@
+## 1.40.0
+
+* Improve version check #613 (thanks @Roms1383)
+
+## 1.39.0
+
+* Avoid global ffigen #605 (thanks @Roms1383)
+* Code cleanup #603 (thanks @Roms1383)
+
+## 1.38.2
+
+* Run build_runner either for Dart or Flutter #599 (thanks @Roms1383)
+
+## 1.38.1
+
+* Fix case when returning a struct with a method in a non method function #587 (thanks @lattice0)
+
 ## 1.38.0
 
 * Support methods, such that Rust struct impls can be converted to Dart class methods #543 (thanks @lattice0)

@@ -3,9 +3,13 @@ use std::path::Path;
 use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
+use std::str::FromStr;
 
 use crate::error::{Error, Result};
-use itertools::Itertools;
+use crate::tools::DartRepository;
+use crate::tools::PackageManager;
+use crate::tools::FFIGEN_REQUIREMENT;
+use crate::tools::FFI_REQUIREMENT;
 use log::{debug, info, warn};
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
@@ -57,7 +61,7 @@ macro_rules! args {
 }
 
 #[must_use]
-fn call_shell(cmd: &str) -> Output {
+pub(crate) fn call_shell(cmd: &str) -> Output {
     #[cfg(windows)]
     return run!("powershell", "-noprofile", "-c", cmd);
 
@@ -65,12 +69,26 @@ fn call_shell(cmd: &str) -> Output {
     run!("sh", "-c", cmd)
 }
 
-pub fn ensure_tools_available() -> Result {
-    let output = run!("dart", "pub", "global", "list");
-    let output = String::from_utf8_lossy(&output.stdout);
-    if !output.contains("ffigen") {
-        return Err(Error::MissingExe(String::from("ffigen")));
+pub fn ensure_tools_available(dart_root: &str) -> Result {
+    let repo =
+        DartRepository::from_str(dart_root).map_err(|e| Error::StringError(e.to_string()))?;
+    if !repo.toolchain_available() {
+        return Err(Error::MissingExe(repo.toolchain.to_string()));
     }
+
+    repo.has_specified("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
+    repo.has_installed("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
+
+    repo.has_specified(
+        "ffigen",
+        PackageManager::DevDependencies,
+        &FFIGEN_REQUIREMENT,
+    )?;
+    repo.has_installed(
+        "ffigen",
+        PackageManager::DevDependencies,
+        &FFIGEN_REQUIREMENT,
+    )?;
 
     Ok(())
 }
@@ -86,7 +104,10 @@ pub(crate) struct BindgenRustToDartArg<'a> {
     pub llvm_compiler_opts: &'a str,
 }
 
-pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<()> {
+pub(crate) fn bindgen_rust_to_dart(
+    arg: BindgenRustToDartArg,
+    dart_root: &str,
+) -> anyhow::Result<()> {
     cbindgen(
         arg.rust_crate_dir,
         arg.c_output_path,
@@ -99,6 +120,7 @@ pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<
         arg.dart_class_name,
         arg.llvm_install_path,
         arg.llvm_compiler_opts,
+        dart_root,
     )
 }
 
@@ -215,6 +237,7 @@ fn ffigen(
     dart_class_name: &str,
     llvm_path: &[String],
     llvm_compiler_opts: &str,
+    dart_root: &str,
 ) -> anyhow::Result<()> {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
@@ -262,16 +285,15 @@ fn ffigen(
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    // NOTE please install ffigen globally first: `dart pub global activate ffigen`
-    let res = run!(
-        "dart",
-        "pub",
-        "global",
-        "run",
-        "ffigen",
-        "--config",
-        config_file.path(),
-    );
+    let repo = DartRepository::from_str(dart_root).unwrap();
+    let cmd = format!("{} run", repo.toolchain.as_run_command());
+    let res = call_shell(&format!(
+        "cd {}{}{} ffigen --config \"{}\"",
+        dart_root,
+        if cfg!(windows) { "; " } else { " && " },
+        cmd,
+        config_file.path().to_string_lossy()
+    ));
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
         let out = String::from_utf8_lossy(&res.stdout);
@@ -316,15 +338,18 @@ pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
+    let repo = DartRepository::from_str(dart_root).unwrap();
     let out = if cfg!(windows) {
         call_shell(&format!(
-            "cd \"{}\"; dart run build_runner build --delete-conflicting-outputs",
-            dart_root
+            "cd \"{}\"; {} run build_runner build --delete-conflicting-outputs",
+            dart_root,
+            repo.toolchain.as_run_command()
         ))
     } else {
         call_shell(&format!(
-            "cd \"{}\" && dart run build_runner build --delete-conflicting-outputs",
-            dart_root
+            "cd \"{}\" && {} run build_runner build --delete-conflicting-outputs",
+            dart_root,
+            repo.toolchain.as_run_command()
         ))
     };
     if !out.status.success() {

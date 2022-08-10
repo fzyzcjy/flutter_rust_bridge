@@ -1164,6 +1164,13 @@ impl support::IntoDart for Point {
 }
 impl support::IntoDartExceptPrimitive for Point {}
 
+impl support::IntoDart for SumWith {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.x.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for SumWith {}
+
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartCObject {
         vec![self.value.into_dart()].into_dart()

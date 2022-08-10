@@ -454,4 +454,10 @@ impl Opts {
     pub fn rust_io_output_path(&self) -> PathBuf {
         Path::new(&self.rust_output_path).with_extension("io.rs")
     }
+
+    pub fn dart_root_or_default(&self) -> String {
+        self.dart_root
+            .clone()
+            .unwrap_or_else(|| env!("CARGO_MANIFEST_DIR").to_string())
+    }
 }

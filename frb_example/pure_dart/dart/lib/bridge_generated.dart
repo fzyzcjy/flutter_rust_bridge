@@ -15,12 +15,627 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   factory FlutterRustBridgeExampleSingleBlockTestImpl(ExternalLibrary dylib) =>
       FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
 
-  /// Only valid on web/WASM platforms.
-  factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(FutureOr<WasmModule> module) =>
-      FlutterRustBridgeExampleSingleBlockTestImpl(module as ExternalLibrary);
-  FlutterRustBridgeExampleSingleBlockTestImpl.raw(this._plat);
-  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => _plat.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _plat.inner.wire_simple_adder(port_, api2wire_i32(a), api2wire_i32(b)),
+abstract class FlutterRustBridgeExampleSingleBlockTest {
+  /// Documentation on a simple adder function.
+  Future<int> simpleAdder({required int a, required int b, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta;
+
+  ///
+  /// Multiline comments are fine,
+  /// but they are not preferred in Rust nor in Dart.
+  ///
+  /// Newlines are preserved.
+  ///
+  Future<int> primitiveTypes(
+      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta;
+
+  Future<int> primitiveU32({required int myU32, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta;
+
+  Future<String> handleString({required String s, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta;
+
+  Future<void> handleReturnUnit({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta;
+
+  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta;
+
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta;
+
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta;
+
+  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta;
+
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta;
+
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta;
+
+  Future<List<String>> handleStringList({required List<String> names, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta;
+
+  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleComplexStructConstMeta;
+
+  Uint8List handleSyncReturn({required String mode, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta;
+
+  Stream<String> handleStream({required String arg, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta;
+
+  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamOfStructConstMeta;
+
+  Future<int> returnErr({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta;
+
+  Future<int> returnPanic({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta;
+
+  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta;
+
+  Future<Element?> handleOptionalStruct({String? document, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta;
+
+  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta;
+
+  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta;
+
+  Future<String> handleOptionBoxArguments(
+      {int? i8Box,
+      int? u8Box,
+      int? i32Box,
+      int? i64Box,
+      double? f64Box,
+      bool? boolbox,
+      ExoticOptionals? structbox,
+      dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta;
+
+  Future<Uint8List> printNote({required Note note, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPrintNoteConstMeta;
+
+  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta;
+
+  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta;
+
+  Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta;
+
+  Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta;
+
+  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUseImportedStructConstMeta;
+
+  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUseImportedEnumConstMeta;
+
+  Future<ApplicationSettings> getAppSettings({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta;
+
+  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;
+
+  Future<ApplicationMessage> getMessage({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
+
+  Future<Uint8List> getArray({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta;
+
+  Future<List<Point>> getComplexArray({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta;
+
+  Future<int> getUsize({required int u, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetUsizeConstMeta;
+
+  Future<UserId> nextUserId({required UserId userId, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta;
+
+  Stream<Event> registerEventListener({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta;
+
+  Future<void> closeEventListener({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta;
+
+  Future<void> createEvent({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
+
+  Stream<Log> handleStreamSinkAt1({required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta;
+
+  Stream<Log> handleStreamSinkAt2({required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta;
+
+  Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
+
+  Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
+
+  Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta;
+
+  Future<String> concatenateMethodConcatenateWith({required ConcatenateWith that, required String b, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta;
+
+  Future<String> concatenateStaticStaticMethodConcatenateWith({required String a, required String b, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kConcatenateStaticStaticMethodConcatenateWithConstMeta;
+
+  Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
+      {required ConcatenateWith that, required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkMethodConcatenateWithConstMeta;
+
+  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith({required ConcatenateWith that, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta;
+
+  Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
+      {required int key, required int max, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta;
+
+  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
+}
+
+class ApplicationEnv {
+  final List<ApplicationEnvVar> vars;
+
+  ApplicationEnv({
+    required this.vars,
+  });
+}
+
+class ApplicationEnvVar {
+  final String field0;
+  final bool field1;
+
+  ApplicationEnvVar({
+    required this.field0,
+    required this.field1,
+  });
+}
+
+@freezed
+class ApplicationMessage with _$ApplicationMessage {
+  const factory ApplicationMessage.displayMessage(
+    String field0,
+  ) = DisplayMessage;
+  const factory ApplicationMessage.renderPixel({
+    required int x,
+    required int y,
+  }) = RenderPixel;
+  const factory ApplicationMessage.exit() = Exit;
+}
+
+enum ApplicationMode {
+  Standalone,
+  Embedded,
+}
+
+class ApplicationSettings {
+  final String name;
+  final String version;
+  final ApplicationMode mode;
+  final ApplicationEnv env;
+
+  ApplicationSettings({
+    required this.name,
+    required this.version,
+    required this.mode,
+    required this.env,
+  });
+}
+
+class Attribute {
+  final String key;
+  final String value;
+
+  Attribute({
+    required this.key,
+    required this.value,
+  });
+}
+
+class ConcatenateWith {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  final String a;
+
+  ConcatenateWith({
+    required this.bridge,
+    required this.a,
+  });
+
+  static Future<ConcatenateWith> newConcatenateWith(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, dynamic hint}) =>
+      bridge.newStaticMethodConcatenateWith(a: a, hint: hint);
+
+  Future<String> concatenate({required String b, dynamic hint}) => bridge.concatenateMethodConcatenateWith(
+        that: this,
+        b: b,
+      );
+
+  static Future<String> concatenateStatic(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge,
+          required String a,
+          required String b,
+          dynamic hint}) =>
+      bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b, hint: hint);
+
+  Stream<Log2> handleSomeStreamSink({required int key, required int max, dynamic hint}) =>
+      bridge.handleSomeStreamSinkMethodConcatenateWith(
+        that: this,
+        key: key,
+        max: max,
+      );
+
+  Stream<int> handleSomeStreamSinkAt1({dynamic hint}) => bridge.handleSomeStreamSinkAt1MethodConcatenateWith(
+        that: this,
+      );
+
+  static Stream<Log2> handleSomeStaticStreamSink(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge,
+          required int key,
+          required int max,
+          dynamic hint}) =>
+      bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(key: key, max: max, hint: hint);
+
+  static Stream<int> handleSomeStaticStreamSinkSingleArg(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
+      bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(hint: hint);
+}
+
+class Customized {
+  final String finalField;
+  String? nonFinalField;
+
+  Customized({
+    required this.finalField,
+    this.nonFinalField,
+  });
+}
+
+class Element {
+  final String? tag;
+  final String? text;
+  final List<Attribute>? attributes;
+  final List<Element>? children;
+
+  Element({
+    this.tag,
+    this.text,
+    this.attributes,
+    this.children,
+  });
+}
+
+class Event {
+  final String address;
+  final String payload;
+
+  Event({
+    required this.address,
+    required this.payload,
+  });
+}
+
+class ExoticOptionals {
+  final int? int32;
+  final int? int64;
+  final double? float64;
+  final bool? boolean;
+  final Uint8List? zerocopy;
+  final Int8List? int8List;
+  final Uint8List? uint8List;
+  final Int32List? int32List;
+  final Int64List? int64List;
+  final Float32List? float32List;
+  final Float64List? float64List;
+  final List<Attribute>? attributes;
+  final List<Attribute?> attributesNullable;
+  final List<Attribute?>? nullableAttributes;
+  final NewTypeInt? newtypeint;
+
+  ExoticOptionals({
+    this.int32,
+    this.int64,
+    this.float64,
+    this.boolean,
+    this.zerocopy,
+    this.int8List,
+    this.uint8List,
+    this.int32List,
+    this.int64List,
+    this.float32List,
+    this.float64List,
+    this.attributes,
+    required this.attributesNullable,
+    this.nullableAttributes,
+    this.newtypeint,
+  });
+}
+
+@freezed
+class KitchenSink with _$KitchenSink {
+  /// Comment on variant
+  const factory KitchenSink.empty() = Empty;
+  const factory KitchenSink.primitives({
+    /// Dart field comment
+    required int int32,
+    required double float64,
+    required bool boolean,
+  }) = Primitives;
+  const factory KitchenSink.nested(
+    KitchenSink field0,
+    int field1,
+  ) = Nested;
+  const factory KitchenSink.optional([
+    /// Comment on anonymous field
+    int? field0,
+    int? field1,
+  ]) = Optional;
+  const factory KitchenSink.buffer(
+    Uint8List field0,
+  ) = Buffer;
+  const factory KitchenSink.enums(
+    Weekdays field0,
+  ) = Enums;
+}
+
+class Log {
+  final int key;
+  final int value;
+
+  Log({
+    required this.key,
+    required this.value,
+  });
+}
+
+class Log2 {
+  final int key;
+  final String value;
+
+  Log2({
+    required this.key,
+    required this.value,
+  });
+}
+
+enum MyEnum {
+  False,
+  True,
+}
+
+class MySize {
+  final int width;
+  final int height;
+
+  MySize({
+    required this.width,
+    required this.height,
+  });
+}
+
+class MyStreamEntry {
+  final String hello;
+
+  MyStreamEntry({
+    required this.hello,
+  });
+}
+
+class MyStruct {
+  final bool content;
+
+  MyStruct({
+    required this.content,
+  });
+}
+
+class MyTreeNode {
+  final int valueI32;
+  final Uint8List valueVecU8;
+  final bool valueBoolean;
+  final List<MyTreeNode> children;
+
+  MyTreeNode({
+    required this.valueI32,
+    required this.valueVecU8,
+    required this.valueBoolean,
+    required this.children,
+  });
+}
+
+class NewTypeInt {
+  final int field0;
+
+  NewTypeInt({
+    required this.field0,
+  });
+}
+
+class Note {
+  final Weekdays day;
+  final String body;
+
+  Note({
+    required this.day,
+    required this.body,
+  });
+}
+
+class Point {
+  final double x;
+  final double y;
+
+  Point({
+    required this.x,
+    required this.y,
+  });
+}
+
+class SumWith {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  final int x;
+
+  SumWith({
+    required this.bridge,
+    required this.x,
+  });
+
+  Future<int> sum({required int y, required int z, dynamic hint}) => bridge.sumMethodSumWith(
+        that: this,
+        y: y,
+        z: z,
+      );
+}
+
+/// Example for @freezed and @meta.immutable
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    required int value,
+  }) = _UserId;
+}
+
+class VecOfPrimitivePack {
+  final Int8List int8List;
+  final Uint8List uint8List;
+  final Int16List int16List;
+  final Uint16List uint16List;
+  final Uint32List uint32List;
+  final Int32List int32List;
+  final Uint64List uint64List;
+  final Int64List int64List;
+  final Float32List float32List;
+  final Float64List float64List;
+
+  VecOfPrimitivePack({
+    required this.int8List,
+    required this.uint8List,
+    required this.int16List,
+    required this.uint16List,
+    required this.uint32List,
+    required this.int32List,
+    required this.uint64List,
+    required this.int64List,
+    required this.float32List,
+    required this.float64List,
+  });
+}
+
+/// Simple enums.
+enum Weekdays {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+
+  /// Best day of the week.
+  Saturday,
+  Sunday,
+}
+
+class ZeroCopyVecOfPrimitivePack {
+  final Int8List int8List;
+  final Uint8List uint8List;
+  final Int16List int16List;
+  final Uint16List uint16List;
+  final Uint32List uint32List;
+  final Int32List int32List;
+  final Uint64List uint64List;
+  final Int64List int64List;
+  final Float32List float32List;
+  final Float64List float64List;
+
+  ZeroCopyVecOfPrimitivePack({
+    required this.int8List,
+    required this.uint8List,
+    required this.int16List,
+    required this.uint16List,
+    required this.uint32List,
+    required this.int32List,
+    required this.uint64List,
+    required this.int64List,
+    required this.float32List,
+    required this.float64List,
+  });
+}
+
+class FlutterRustBridgeExampleSingleBlockTestImpl
+    extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire>
+    implements FlutterRustBridgeExampleSingleBlockTest {
+  factory FlutterRustBridgeExampleSingleBlockTestImpl(ffi.DynamicLibrary dylib) =>
+      FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestWire(dylib));
+
+  FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestWire inner) : super(inner);
+
+  Future<int> simpleAdder({required int a, required int b, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_simple_adder(port_, _api2wire_i32(a), _api2wire_i32(b)),
         parseSuccessData: _wire2api_i32,
         constMeta: kSimpleAdderConstMeta,
         argValues: [a, b],
@@ -619,6 +1234,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["key", "max"],
       );
 
+  Future<SumWith> getSumStruct({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_sum_struct(port_),
+        parseSuccessData: (d) => _wire2api_sum_with(this, d),
+        constMeta: kGetSumStructConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_sum_struct",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _plat.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _plat.inner.wire_sum__method__SumWith(
@@ -746,32 +1374,204 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       );
 }
 
-// Section: api2wire
+  // Section: api2wire
+  ffi.Pointer<wire_uint_8_list> _api2wire_String(String raw) {
+    return _api2wire_uint_8_list(utf8.encoder.convert(raw));
+  }
 
-@protected
-int api2wire_application_mode(ApplicationMode raw) {
-  return api2wire_i32(raw.index);
-}
+  ffi.Pointer<wire_StringList> _api2wire_StringList(List<String> raw) {
+    final ans = inner.new_StringList_0(raw.length);
+    for (var i = 0; i < raw.length; i++) {
+      ans.ref.ptr[i] = _api2wire_String(raw[i]);
+    }
+    return ans;
+  }
 
-@protected
-bool api2wire_bool(bool raw) {
-  return raw;
-}
+  ffi.Pointer<wire_uint_8_list> _api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
+    return _api2wire_uint_8_list(raw);
+  }
 
-@protected
-double api2wire_f32(double raw) {
-  return raw;
-}
+  int _api2wire_application_mode(ApplicationMode raw) {
+    return _api2wire_i32(raw.index);
+  }
 
-@protected
-double api2wire_f64(double raw) {
-  return raw;
-}
+  bool _api2wire_bool(bool raw) {
+    return raw;
+  }
 
-@protected
-int api2wire_i32(int raw) {
-  return raw;
-}
+  ffi.Pointer<wire_ApplicationEnv> _api2wire_box_application_env(ApplicationEnv raw) {
+    final ptr = inner.new_box_application_env_0();
+    _api_fill_to_wire_application_env(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_ApplicationSettings> _api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
+    final ptr = inner.new_box_autoadd_application_settings_0();
+    _api_fill_to_wire_application_settings(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_Attribute> _api2wire_box_autoadd_attribute(Attribute raw) {
+    final ptr = inner.new_box_autoadd_attribute_0();
+    _api_fill_to_wire_attribute(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<ffi.Bool> _api2wire_box_autoadd_bool(bool raw) {
+    return inner.new_box_autoadd_bool_0(_api2wire_bool(raw));
+  }
+
+  ffi.Pointer<wire_ConcatenateWith> _api2wire_box_autoadd_concatenate_with(ConcatenateWith raw) {
+    final ptr = inner.new_box_autoadd_concatenate_with_0();
+    _api_fill_to_wire_concatenate_with(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_Customized> _api2wire_box_autoadd_customized(Customized raw) {
+    final ptr = inner.new_box_autoadd_customized_0();
+    _api_fill_to_wire_customized(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
+    final ptr = inner.new_box_autoadd_exotic_optionals_0();
+    _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<ffi.Double> _api2wire_box_autoadd_f64(double raw) {
+    return inner.new_box_autoadd_f64_0(_api2wire_f64(raw));
+  }
+
+  ffi.Pointer<ffi.Int32> _api2wire_box_autoadd_i32(int raw) {
+    return inner.new_box_autoadd_i32_0(_api2wire_i32(raw));
+  }
+
+  ffi.Pointer<ffi.Int64> _api2wire_box_autoadd_i64(int raw) {
+    return inner.new_box_autoadd_i64_0(_api2wire_i64(raw));
+  }
+
+  ffi.Pointer<wire_KitchenSink> _api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
+    final ptr = inner.new_box_autoadd_kitchen_sink_0();
+    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_MySize> _api2wire_box_autoadd_my_size(MySize raw) {
+    final ptr = inner.new_box_autoadd_my_size_0();
+    _api_fill_to_wire_my_size(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_MyStruct> _api2wire_box_autoadd_my_struct(MyStruct raw) {
+    final ptr = inner.new_box_autoadd_my_struct_0();
+    _api_fill_to_wire_my_struct(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_MyTreeNode> _api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
+    final ptr = inner.new_box_autoadd_my_tree_node_0();
+    _api_fill_to_wire_my_tree_node(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_NewTypeInt> _api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
+    final ptr = inner.new_box_autoadd_new_type_int_0();
+    _api_fill_to_wire_new_type_int(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_Note> _api2wire_box_autoadd_note(Note raw) {
+    final ptr = inner.new_box_autoadd_note_0();
+    _api_fill_to_wire_note(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_SumWith> _api2wire_box_autoadd_sum_with(SumWith raw) {
+    final ptr = inner.new_box_autoadd_sum_with_0();
+    _api_fill_to_wire_sum_with(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_UserId> _api2wire_box_autoadd_user_id(UserId raw) {
+    final ptr = inner.new_box_autoadd_user_id_0();
+    _api_fill_to_wire_user_id(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<ffi.Bool> _api2wire_box_bool(bool raw) {
+    return inner.new_box_bool_0(_api2wire_bool(raw));
+  }
+
+  ffi.Pointer<wire_ExoticOptionals> _api2wire_box_exotic_optionals(ExoticOptionals raw) {
+    final ptr = inner.new_box_exotic_optionals_0();
+    _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<ffi.Double> _api2wire_box_f64(double raw) {
+    return inner.new_box_f64_0(_api2wire_f64(raw));
+  }
+
+  ffi.Pointer<ffi.Int32> _api2wire_box_i32(int raw) {
+    return inner.new_box_i32_0(_api2wire_i32(raw));
+  }
+
+  ffi.Pointer<ffi.Int64> _api2wire_box_i64(int raw) {
+    return inner.new_box_i64_0(_api2wire_i64(raw));
+  }
+
+  ffi.Pointer<ffi.Int8> _api2wire_box_i8(int raw) {
+    return inner.new_box_i8_0(_api2wire_i8(raw));
+  }
+
+  ffi.Pointer<wire_KitchenSink> _api2wire_box_kitchen_sink(KitchenSink raw) {
+    final ptr = inner.new_box_kitchen_sink_0();
+    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<wire_MySize> _api2wire_box_my_size(MySize raw) {
+    final ptr = inner.new_box_my_size_0();
+    _api_fill_to_wire_my_size(raw, ptr.ref);
+    return ptr;
+  }
+
+  ffi.Pointer<ffi.Uint8> _api2wire_box_u8(int raw) {
+    return inner.new_box_u8_0(_api2wire_u8(raw));
+  }
+
+  ffi.Pointer<ffi.Int32> _api2wire_box_weekdays(Weekdays raw) {
+    return inner.new_box_weekdays_0(_api2wire_weekdays(raw));
+  }
+
+  double _api2wire_f32(double raw) {
+    return raw;
+  }
+
+  double _api2wire_f64(double raw) {
+    return raw;
+  }
+
+  ffi.Pointer<wire_float_32_list> _api2wire_float_32_list(Float32List raw) {
+    final ans = inner.new_float_32_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  ffi.Pointer<wire_float_64_list> _api2wire_float_64_list(Float64List raw) {
+    final ans = inner.new_float_64_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  int _api2wire_i32(int raw) {
+    return raw;
+  }
+
+  int _api2wire_i64(int raw) {
+    return raw;
+  }
 
 @protected
 int api2wire_i8(int raw) {
@@ -1258,6 +2058,15 @@ Point _wire2api_point(dynamic raw) {
   );
 }
 
+SumWith _wire2api_sum_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return SumWith(
+    bridge: bridge,
+    x: _wire2api_u32(arr[0]),
+  );
+}
+
 int _wire2api_u16(dynamic raw) {
   return raw as int;
 }
@@ -1343,3 +2152,1583 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw
     float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[9]),
   );
 }
+<<<<<<< HEAD
+=======
+
+// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
+
+// AUTO GENERATED FILE, DO NOT EDIT.
+//
+// Generated by `package:ffigen`.
+
+/// generated by flutter_rust_bridge
+class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWireBase {
+  /// Holds the symbol lookup function.
+  final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) _lookup;
+
+  /// The symbols are looked up in [dynamicLibrary].
+  FlutterRustBridgeExampleSingleBlockTestWire(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
+
+  /// The symbols are looked up with [lookup].
+  FlutterRustBridgeExampleSingleBlockTestWire.fromLookup(
+      ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
+      : _lookup = lookup;
+
+  void wire_simple_adder(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_simple_adder(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_simple_adderPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder');
+  late final _wire_simple_adder = _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
+
+  void wire_primitive_types(
+    int port_,
+    int my_i32,
+    int my_i64,
+    double my_f64,
+    bool my_bool,
+  ) {
+    return _wire_primitive_types(
+      port_,
+      my_i32,
+      my_i64,
+      my_f64,
+      my_bool,
+    );
+  }
+
+  late final _wire_primitive_typesPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
+          'wire_primitive_types');
+  late final _wire_primitive_types = _wire_primitive_typesPtr.asFunction<void Function(int, int, int, double, bool)>();
+
+  void wire_primitive_u32(
+    int port_,
+    int my_u32,
+  ) {
+    return _wire_primitive_u32(
+      port_,
+      my_u32,
+    );
+  }
+
+  late final _wire_primitive_u32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_primitive_u32');
+  late final _wire_primitive_u32 = _wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
+
+  void wire_handle_string(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> s,
+  ) {
+    return _wire_handle_string(
+      port_,
+      s,
+    );
+  }
+
+  late final _wire_handle_stringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_string');
+  late final _wire_handle_string =
+      _wire_handle_stringPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_return_unit(
+    int port_,
+  ) {
+    return _wire_handle_return_unit(
+      port_,
+    );
+  }
+
+  late final _wire_handle_return_unitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_return_unit');
+  late final _wire_handle_return_unit = _wire_handle_return_unitPtr.asFunction<void Function(int)>();
+
+  void wire_handle_vec_u8(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> v,
+  ) {
+    return _wire_handle_vec_u8(
+      port_,
+      v,
+    );
+  }
+
+  late final _wire_handle_vec_u8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_vec_u8');
+  late final _wire_handle_vec_u8 =
+      _wire_handle_vec_u8Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_vec_of_primitive(
+    int port_,
+    int n,
+  ) {
+    return _wire_handle_vec_of_primitive(
+      port_,
+      n,
+    );
+  }
+
+  late final _wire_handle_vec_of_primitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_vec_of_primitive');
+  late final _wire_handle_vec_of_primitive = _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
+
+  void wire_handle_zero_copy_vec_of_primitive(
+    int port_,
+    int n,
+  ) {
+    return _wire_handle_zero_copy_vec_of_primitive(
+      port_,
+      n,
+    );
+  }
+
+  late final _wire_handle_zero_copy_vec_of_primitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_zero_copy_vec_of_primitive');
+  late final _wire_handle_zero_copy_vec_of_primitive =
+      _wire_handle_zero_copy_vec_of_primitivePtr.asFunction<void Function(int, int)>();
+
+  void wire_handle_struct(
+    int port_,
+    ffi.Pointer<wire_MySize> arg,
+    ffi.Pointer<wire_MySize> boxed,
+  ) {
+    return _wire_handle_struct(
+      port_,
+      arg,
+      boxed,
+    );
+  }
+
+  late final _wire_handle_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>>(
+          'wire_handle_struct');
+  late final _wire_handle_struct =
+      _wire_handle_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>();
+
+  void wire_handle_newtype(
+    int port_,
+    ffi.Pointer<wire_NewTypeInt> arg,
+  ) {
+    return _wire_handle_newtype(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_handle_newtypePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_NewTypeInt>)>>('wire_handle_newtype');
+  late final _wire_handle_newtype =
+      _wire_handle_newtypePtr.asFunction<void Function(int, ffi.Pointer<wire_NewTypeInt>)>();
+
+  void wire_handle_list_of_struct(
+    int port_,
+    ffi.Pointer<wire_list_my_size> l,
+  ) {
+    return _wire_handle_list_of_struct(
+      port_,
+      l,
+    );
+  }
+
+  late final _wire_handle_list_of_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_my_size>)>>(
+          'wire_handle_list_of_struct');
+  late final _wire_handle_list_of_struct =
+      _wire_handle_list_of_structPtr.asFunction<void Function(int, ffi.Pointer<wire_list_my_size>)>();
+
+  void wire_handle_string_list(
+    int port_,
+    ffi.Pointer<wire_StringList> names,
+  ) {
+    return _wire_handle_string_list(
+      port_,
+      names,
+    );
+  }
+
+  late final _wire_handle_string_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StringList>)>>(
+          'wire_handle_string_list');
+  late final _wire_handle_string_list =
+      _wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
+
+  void wire_handle_complex_struct(
+    int port_,
+    ffi.Pointer<wire_MyTreeNode> s,
+  ) {
+    return _wire_handle_complex_struct(
+      port_,
+      s,
+    );
+  }
+
+  late final _wire_handle_complex_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MyTreeNode>)>>(
+          'wire_handle_complex_struct');
+  late final _wire_handle_complex_struct =
+      _wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyTreeNode>)>();
+
+  WireSyncReturnStruct wire_handle_sync_return(
+    ffi.Pointer<wire_uint_8_list> mode,
+  ) {
+    return _wire_handle_sync_return(
+      mode,
+    );
+  }
+
+  late final _wire_handle_sync_returnPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_sync_return');
+  late final _wire_handle_sync_return =
+      _wire_handle_sync_returnPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_stream(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> arg,
+  ) {
+    return _wire_handle_stream(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_handle_streamPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_stream');
+  late final _wire_handle_stream =
+      _wire_handle_streamPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_stream_of_struct(
+    int port_,
+  ) {
+    return _wire_handle_stream_of_struct(
+      port_,
+    );
+  }
+
+  late final _wire_handle_stream_of_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_stream_of_struct');
+  late final _wire_handle_stream_of_struct = _wire_handle_stream_of_structPtr.asFunction<void Function(int)>();
+
+  void wire_return_err(
+    int port_,
+  ) {
+    return _wire_return_err(
+      port_,
+    );
+  }
+
+  late final _wire_return_errPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_err');
+  late final _wire_return_err = _wire_return_errPtr.asFunction<void Function(int)>();
+
+  void wire_return_panic(
+    int port_,
+  ) {
+    return _wire_return_panic(
+      port_,
+    );
+  }
+
+  late final _wire_return_panicPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_panic');
+  late final _wire_return_panic = _wire_return_panicPtr.asFunction<void Function(int)>();
+
+  void wire_handle_optional_return(
+    int port_,
+    double left,
+    double right,
+  ) {
+    return _wire_handle_optional_return(
+      port_,
+      left,
+      right,
+    );
+  }
+
+  late final _wire_handle_optional_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double, ffi.Double)>>('wire_handle_optional_return');
+  late final _wire_handle_optional_return =
+      _wire_handle_optional_returnPtr.asFunction<void Function(int, double, double)>();
+
+  void wire_handle_optional_struct(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> document,
+  ) {
+    return _wire_handle_optional_struct(
+      port_,
+      document,
+    );
+  }
+
+  late final _wire_handle_optional_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_optional_struct');
+  late final _wire_handle_optional_struct =
+      _wire_handle_optional_structPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_optional_increment(
+    int port_,
+    ffi.Pointer<wire_ExoticOptionals> opt,
+  ) {
+    return _wire_handle_optional_increment(
+      port_,
+      opt,
+    );
+  }
+
+  late final _wire_handle_optional_incrementPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ExoticOptionals>)>>(
+          'wire_handle_optional_increment');
+  late final _wire_handle_optional_increment =
+      _wire_handle_optional_incrementPtr.asFunction<void Function(int, ffi.Pointer<wire_ExoticOptionals>)>();
+
+  void wire_handle_increment_boxed_optional(
+    int port_,
+    ffi.Pointer<ffi.Double> opt,
+  ) {
+    return _wire_handle_increment_boxed_optional(
+      port_,
+      opt,
+    );
+  }
+
+  late final _wire_handle_increment_boxed_optionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>(
+          'wire_handle_increment_boxed_optional');
+  late final _wire_handle_increment_boxed_optional =
+      _wire_handle_increment_boxed_optionalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
+
+  void wire_handle_option_box_arguments(
+    int port_,
+    ffi.Pointer<ffi.Int8> i8box,
+    ffi.Pointer<ffi.Uint8> u8box,
+    ffi.Pointer<ffi.Int32> i32box,
+    ffi.Pointer<ffi.Int64> i64box,
+    ffi.Pointer<ffi.Double> f64box,
+    ffi.Pointer<ffi.Bool> boolbox,
+    ffi.Pointer<wire_ExoticOptionals> structbox,
+  ) {
+    return _wire_handle_option_box_arguments(
+      port_,
+      i8box,
+      u8box,
+      i32box,
+      i64box,
+      f64box,
+      boolbox,
+      structbox,
+    );
+  }
+
+  late final _wire_handle_option_box_argumentsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Uint8>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int64>,
+              ffi.Pointer<ffi.Double>,
+              ffi.Pointer<ffi.Bool>,
+              ffi.Pointer<wire_ExoticOptionals>)>>('wire_handle_option_box_arguments');
+  late final _wire_handle_option_box_arguments = _wire_handle_option_box_argumentsPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
+          ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>, ffi.Pointer<wire_ExoticOptionals>)>();
+
+  void wire_print_note(
+    int port_,
+    ffi.Pointer<wire_Note> note,
+  ) {
+    return _wire_print_note(
+      port_,
+      note,
+    );
+  }
+
+  late final _wire_print_notePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Note>)>>('wire_print_note');
+  late final _wire_print_note = _wire_print_notePtr.asFunction<void Function(int, ffi.Pointer<wire_Note>)>();
+
+  void wire_handle_return_enum(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> input,
+  ) {
+    return _wire_handle_return_enum(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_return_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_return_enum');
+  late final _wire_handle_return_enum =
+      _wire_handle_return_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_enum_parameter(
+    int port_,
+    int weekday,
+  ) {
+    return _wire_handle_enum_parameter(
+      port_,
+      weekday,
+    );
+  }
+
+  late final _wire_handle_enum_parameterPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_enum_parameter');
+  late final _wire_handle_enum_parameter = _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
+
+  void wire_handle_customized_struct(
+    int port_,
+    ffi.Pointer<wire_Customized> val,
+  ) {
+    return _wire_handle_customized_struct(
+      port_,
+      val,
+    );
+  }
+
+  late final _wire_handle_customized_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Customized>)>>(
+          'wire_handle_customized_struct');
+  late final _wire_handle_customized_struct =
+      _wire_handle_customized_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Customized>)>();
+
+  void wire_handle_enum_struct(
+    int port_,
+    ffi.Pointer<wire_KitchenSink> val,
+  ) {
+    return _wire_handle_enum_struct(
+      port_,
+      val,
+    );
+  }
+
+  late final _wire_handle_enum_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_KitchenSink>)>>(
+          'wire_handle_enum_struct');
+  late final _wire_handle_enum_struct =
+      _wire_handle_enum_structPtr.asFunction<void Function(int, ffi.Pointer<wire_KitchenSink>)>();
+
+  void wire_use_imported_struct(
+    int port_,
+    ffi.Pointer<wire_MyStruct> my_struct,
+  ) {
+    return _wire_use_imported_struct(
+      port_,
+      my_struct,
+    );
+  }
+
+  late final _wire_use_imported_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MyStruct>)>>('wire_use_imported_struct');
+  late final _wire_use_imported_struct =
+      _wire_use_imported_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyStruct>)>();
+
+  void wire_use_imported_enum(
+    int port_,
+    int my_enum,
+  ) {
+    return _wire_use_imported_enum(
+      port_,
+      my_enum,
+    );
+  }
+
+  late final _wire_use_imported_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_use_imported_enum');
+  late final _wire_use_imported_enum = _wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
+
+  void wire_get_app_settings(
+    int port_,
+  ) {
+    return _wire_get_app_settings(
+      port_,
+    );
+  }
+
+  late final _wire_get_app_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_app_settings');
+  late final _wire_get_app_settings = _wire_get_app_settingsPtr.asFunction<void Function(int)>();
+
+  void wire_is_app_embedded(
+    int port_,
+    ffi.Pointer<wire_ApplicationSettings> app_settings,
+  ) {
+    return _wire_is_app_embedded(
+      port_,
+      app_settings,
+    );
+  }
+
+  late final _wire_is_app_embeddedPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ApplicationSettings>)>>(
+          'wire_is_app_embedded');
+  late final _wire_is_app_embedded =
+      _wire_is_app_embeddedPtr.asFunction<void Function(int, ffi.Pointer<wire_ApplicationSettings>)>();
+
+  void wire_get_message(
+    int port_,
+  ) {
+    return _wire_get_message(
+      port_,
+    );
+  }
+
+  late final _wire_get_messagePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_message');
+  late final _wire_get_message = _wire_get_messagePtr.asFunction<void Function(int)>();
+
+  void wire_get_array(
+    int port_,
+  ) {
+    return _wire_get_array(
+      port_,
+    );
+  }
+
+  late final _wire_get_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_array');
+  late final _wire_get_array = _wire_get_arrayPtr.asFunction<void Function(int)>();
+
+  void wire_get_complex_array(
+    int port_,
+  ) {
+    return _wire_get_complex_array(
+      port_,
+    );
+  }
+
+  late final _wire_get_complex_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_complex_array');
+  late final _wire_get_complex_array = _wire_get_complex_arrayPtr.asFunction<void Function(int)>();
+
+  void wire_get_usize(
+    int port_,
+    int u,
+  ) {
+    return _wire_get_usize(
+      port_,
+      u,
+    );
+  }
+
+  late final _wire_get_usizePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_get_usize');
+  late final _wire_get_usize = _wire_get_usizePtr.asFunction<void Function(int, int)>();
+
+  void wire_next_user_id(
+    int port_,
+    ffi.Pointer<wire_UserId> user_id,
+  ) {
+    return _wire_next_user_id(
+      port_,
+      user_id,
+    );
+  }
+
+  late final _wire_next_user_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_UserId>)>>('wire_next_user_id');
+  late final _wire_next_user_id = _wire_next_user_idPtr.asFunction<void Function(int, ffi.Pointer<wire_UserId>)>();
+
+  void wire_register_event_listener(
+    int port_,
+  ) {
+    return _wire_register_event_listener(
+      port_,
+    );
+  }
+
+  late final _wire_register_event_listenerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_register_event_listener');
+  late final _wire_register_event_listener = _wire_register_event_listenerPtr.asFunction<void Function(int)>();
+
+  void wire_close_event_listener(
+    int port_,
+  ) {
+    return _wire_close_event_listener(
+      port_,
+    );
+  }
+
+  late final _wire_close_event_listenerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_close_event_listener');
+  late final _wire_close_event_listener = _wire_close_event_listenerPtr.asFunction<void Function(int)>();
+
+  void wire_create_event(
+    int port_,
+  ) {
+    return _wire_create_event(
+      port_,
+    );
+  }
+
+  late final _wire_create_eventPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_event');
+  late final _wire_create_event = _wire_create_eventPtr.asFunction<void Function(int)>();
+
+  void wire_handle_stream_sink_at_1(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_1(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_1');
+  late final _wire_handle_stream_sink_at_1 =
+      _wire_handle_stream_sink_at_1Ptr.asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_sink_at_2(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_2(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_2');
+  late final _wire_handle_stream_sink_at_2 =
+      _wire_handle_stream_sink_at_2Ptr.asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_sink_at_3(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_3(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>('wire_handle_stream_sink_at_3');
+  late final _wire_handle_stream_sink_at_3 =
+      _wire_handle_stream_sink_at_3Ptr.asFunction<void Function(int, int, int)>();
+
+  void wire_sum__method__SumWith(
+    int port_,
+    ffi.Pointer<wire_SumWith> that,
+    int y,
+    int z,
+  ) {
+    return _wire_sum__method__SumWith(
+      port_,
+      that,
+      y,
+      z,
+    );
+  }
+
+  late final _wire_sum__method__SumWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SumWith>, ffi.Uint32, ffi.Uint32)>>(
+          'wire_sum__method__SumWith');
+  late final _wire_sum__method__SumWith =
+      _wire_sum__method__SumWithPtr.asFunction<void Function(int, ffi.Pointer<wire_SumWith>, int, int)>();
+
+  void wire_new__static_method__ConcatenateWith(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> a,
+  ) {
+    return _wire_new__static_method__ConcatenateWith(
+      port_,
+      a,
+    );
+  }
+
+  late final _wire_new__static_method__ConcatenateWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_new__static_method__ConcatenateWith');
+  late final _wire_new__static_method__ConcatenateWith =
+      _wire_new__static_method__ConcatenateWithPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_concatenate__method__ConcatenateWith(
+    int port_,
+    ffi.Pointer<wire_ConcatenateWith> that,
+    ffi.Pointer<wire_uint_8_list> b,
+  ) {
+    return _wire_concatenate__method__ConcatenateWith(
+      port_,
+      that,
+      b,
+    );
+  }
+
+  late final _wire_concatenate__method__ConcatenateWithPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_concatenate__method__ConcatenateWith');
+  late final _wire_concatenate__method__ConcatenateWith = _wire_concatenate__method__ConcatenateWithPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_ConcatenateWith>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_concatenate_static__static_method__ConcatenateWith(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> a,
+    ffi.Pointer<wire_uint_8_list> b,
+  ) {
+    return _wire_concatenate_static__static_method__ConcatenateWith(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_concatenate_static__static_method__ConcatenateWithPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_concatenate_static__static_method__ConcatenateWith');
+  late final _wire_concatenate_static__static_method__ConcatenateWith =
+      _wire_concatenate_static__static_method__ConcatenateWithPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_some_stream_sink__method__ConcatenateWith(
+    int port_,
+    ffi.Pointer<wire_ConcatenateWith> that,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_some_stream_sink__method__ConcatenateWith(
+      port_,
+      that,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_some_stream_sink__method__ConcatenateWithPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>, ffi.Uint32, ffi.Uint32)>>(
+      'wire_handle_some_stream_sink__method__ConcatenateWith');
+  late final _wire_handle_some_stream_sink__method__ConcatenateWith =
+      _wire_handle_some_stream_sink__method__ConcatenateWithPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_ConcatenateWith>, int, int)>();
+
+  void wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+    int port_,
+    ffi.Pointer<wire_ConcatenateWith> that,
+  ) {
+    return _wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_handle_some_stream_sink_at_1__method__ConcatenateWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ConcatenateWith>)>>(
+          'wire_handle_some_stream_sink_at_1__method__ConcatenateWith');
+  late final _wire_handle_some_stream_sink_at_1__method__ConcatenateWith =
+      _wire_handle_some_stream_sink_at_1__method__ConcatenateWithPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_ConcatenateWith>)>();
+
+  void wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_some_static_stream_sink__static_method__ConcatenateWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+          'wire_handle_some_static_stream_sink__static_method__ConcatenateWith');
+  late final _wire_handle_some_static_stream_sink__static_method__ConcatenateWith =
+      _wire_handle_some_static_stream_sink__static_method__ConcatenateWithPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+    int port_,
+  ) {
+    return _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+      port_,
+    );
+  }
+
+  late final _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith');
+  late final _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith =
+      _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr
+          .asFunction<void Function(int)>();
+
+  ffi.Pointer<wire_StringList> new_StringList_0(
+    int len,
+  ) {
+    return _new_StringList_0(
+      len,
+    );
+  }
+
+  late final _new_StringList_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList_0');
+  late final _new_StringList_0 = _new_StringList_0Ptr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
+
+  ffi.Pointer<wire_ApplicationEnv> new_box_application_env_0() {
+    return _new_box_application_env_0();
+  }
+
+  late final _new_box_application_env_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>('new_box_application_env_0');
+  late final _new_box_application_env_0 =
+      _new_box_application_env_0Ptr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
+
+  ffi.Pointer<wire_ApplicationSettings> new_box_autoadd_application_settings_0() {
+    return _new_box_autoadd_application_settings_0();
+  }
+
+  late final _new_box_autoadd_application_settings_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationSettings> Function()>>(
+          'new_box_autoadd_application_settings_0');
+  late final _new_box_autoadd_application_settings_0 =
+      _new_box_autoadd_application_settings_0Ptr.asFunction<ffi.Pointer<wire_ApplicationSettings> Function()>();
+
+  ffi.Pointer<wire_Attribute> new_box_autoadd_attribute_0() {
+    return _new_box_autoadd_attribute_0();
+  }
+
+  late final _new_box_autoadd_attribute_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Attribute> Function()>>('new_box_autoadd_attribute_0');
+  late final _new_box_autoadd_attribute_0 =
+      _new_box_autoadd_attribute_0Ptr.asFunction<ffi.Pointer<wire_Attribute> Function()>();
+
+  ffi.Pointer<ffi.Bool> new_box_autoadd_bool_0(
+    bool value,
+  ) {
+    return _new_box_autoadd_bool_0(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_bool_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_autoadd_bool_0');
+  late final _new_box_autoadd_bool_0 = _new_box_autoadd_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
+
+  ffi.Pointer<wire_ConcatenateWith> new_box_autoadd_concatenate_with_0() {
+    return _new_box_autoadd_concatenate_with_0();
+  }
+
+  late final _new_box_autoadd_concatenate_with_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ConcatenateWith> Function()>>('new_box_autoadd_concatenate_with_0');
+  late final _new_box_autoadd_concatenate_with_0 =
+      _new_box_autoadd_concatenate_with_0Ptr.asFunction<ffi.Pointer<wire_ConcatenateWith> Function()>();
+
+  ffi.Pointer<wire_Customized> new_box_autoadd_customized_0() {
+    return _new_box_autoadd_customized_0();
+  }
+
+  late final _new_box_autoadd_customized_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Customized> Function()>>('new_box_autoadd_customized_0');
+  late final _new_box_autoadd_customized_0 =
+      _new_box_autoadd_customized_0Ptr.asFunction<ffi.Pointer<wire_Customized> Function()>();
+
+  ffi.Pointer<wire_ExoticOptionals> new_box_autoadd_exotic_optionals_0() {
+    return _new_box_autoadd_exotic_optionals_0();
+  }
+
+  late final _new_box_autoadd_exotic_optionals_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ExoticOptionals> Function()>>('new_box_autoadd_exotic_optionals_0');
+  late final _new_box_autoadd_exotic_optionals_0 =
+      _new_box_autoadd_exotic_optionals_0Ptr.asFunction<ffi.Pointer<wire_ExoticOptionals> Function()>();
+
+  ffi.Pointer<ffi.Double> new_box_autoadd_f64_0(
+    double value,
+  ) {
+    return _new_box_autoadd_f64_0(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_f64_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64_0');
+  late final _new_box_autoadd_f64_0 = _new_box_autoadd_f64_0Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+
+  ffi.Pointer<ffi.Int32> new_box_autoadd_i32_0(
+    int value,
+  ) {
+    return _new_box_autoadd_i32_0(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_i32_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_autoadd_i32_0');
+  late final _new_box_autoadd_i32_0 = _new_box_autoadd_i32_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
+  ffi.Pointer<ffi.Int64> new_box_autoadd_i64_0(
+    int value,
+  ) {
+    return _new_box_autoadd_i64_0(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_i64_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_autoadd_i64_0');
+  late final _new_box_autoadd_i64_0 = _new_box_autoadd_i64_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+
+  ffi.Pointer<wire_KitchenSink> new_box_autoadd_kitchen_sink_0() {
+    return _new_box_autoadd_kitchen_sink_0();
+  }
+
+  late final _new_box_autoadd_kitchen_sink_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>('new_box_autoadd_kitchen_sink_0');
+  late final _new_box_autoadd_kitchen_sink_0 =
+      _new_box_autoadd_kitchen_sink_0Ptr.asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
+
+  ffi.Pointer<wire_MySize> new_box_autoadd_my_size_0() {
+    return _new_box_autoadd_my_size_0();
+  }
+
+  late final _new_box_autoadd_my_size_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MySize> Function()>>('new_box_autoadd_my_size_0');
+  late final _new_box_autoadd_my_size_0 =
+      _new_box_autoadd_my_size_0Ptr.asFunction<ffi.Pointer<wire_MySize> Function()>();
+
+  ffi.Pointer<wire_MyStruct> new_box_autoadd_my_struct_0() {
+    return _new_box_autoadd_my_struct_0();
+  }
+
+  late final _new_box_autoadd_my_struct_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyStruct> Function()>>('new_box_autoadd_my_struct_0');
+  late final _new_box_autoadd_my_struct_0 =
+      _new_box_autoadd_my_struct_0Ptr.asFunction<ffi.Pointer<wire_MyStruct> Function()>();
+
+  ffi.Pointer<wire_MyTreeNode> new_box_autoadd_my_tree_node_0() {
+    return _new_box_autoadd_my_tree_node_0();
+  }
+
+  late final _new_box_autoadd_my_tree_node_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyTreeNode> Function()>>('new_box_autoadd_my_tree_node_0');
+  late final _new_box_autoadd_my_tree_node_0 =
+      _new_box_autoadd_my_tree_node_0Ptr.asFunction<ffi.Pointer<wire_MyTreeNode> Function()>();
+
+  ffi.Pointer<wire_NewTypeInt> new_box_autoadd_new_type_int_0() {
+    return _new_box_autoadd_new_type_int_0();
+  }
+
+  late final _new_box_autoadd_new_type_int_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_NewTypeInt> Function()>>('new_box_autoadd_new_type_int_0');
+  late final _new_box_autoadd_new_type_int_0 =
+      _new_box_autoadd_new_type_int_0Ptr.asFunction<ffi.Pointer<wire_NewTypeInt> Function()>();
+
+  ffi.Pointer<wire_Note> new_box_autoadd_note_0() {
+    return _new_box_autoadd_note_0();
+  }
+
+  late final _new_box_autoadd_note_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Note> Function()>>('new_box_autoadd_note_0');
+  late final _new_box_autoadd_note_0 = _new_box_autoadd_note_0Ptr.asFunction<ffi.Pointer<wire_Note> Function()>();
+
+  ffi.Pointer<wire_SumWith> new_box_autoadd_sum_with_0() {
+    return _new_box_autoadd_sum_with_0();
+  }
+
+  late final _new_box_autoadd_sum_with_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SumWith> Function()>>('new_box_autoadd_sum_with_0');
+  late final _new_box_autoadd_sum_with_0 =
+      _new_box_autoadd_sum_with_0Ptr.asFunction<ffi.Pointer<wire_SumWith> Function()>();
+
+  ffi.Pointer<wire_UserId> new_box_autoadd_user_id_0() {
+    return _new_box_autoadd_user_id_0();
+  }
+
+  late final _new_box_autoadd_user_id_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_UserId> Function()>>('new_box_autoadd_user_id_0');
+  late final _new_box_autoadd_user_id_0 =
+      _new_box_autoadd_user_id_0Ptr.asFunction<ffi.Pointer<wire_UserId> Function()>();
+
+  ffi.Pointer<ffi.Bool> new_box_bool_0(
+    bool value,
+  ) {
+    return _new_box_bool_0(
+      value,
+    );
+  }
+
+  late final _new_box_bool_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_bool_0');
+  late final _new_box_bool_0 = _new_box_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
+
+  ffi.Pointer<wire_ExoticOptionals> new_box_exotic_optionals_0() {
+    return _new_box_exotic_optionals_0();
+  }
+
+  late final _new_box_exotic_optionals_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ExoticOptionals> Function()>>('new_box_exotic_optionals_0');
+  late final _new_box_exotic_optionals_0 =
+      _new_box_exotic_optionals_0Ptr.asFunction<ffi.Pointer<wire_ExoticOptionals> Function()>();
+
+  ffi.Pointer<ffi.Double> new_box_f64_0(
+    double value,
+  ) {
+    return _new_box_f64_0(
+      value,
+    );
+  }
+
+  late final _new_box_f64_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_f64_0');
+  late final _new_box_f64_0 = _new_box_f64_0Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+
+  ffi.Pointer<ffi.Int32> new_box_i32_0(
+    int value,
+  ) {
+    return _new_box_i32_0(
+      value,
+    );
+  }
+
+  late final _new_box_i32_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_i32_0');
+  late final _new_box_i32_0 = _new_box_i32_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
+  ffi.Pointer<ffi.Int64> new_box_i64_0(
+    int value,
+  ) {
+    return _new_box_i64_0(
+      value,
+    );
+  }
+
+  late final _new_box_i64_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_i64_0');
+  late final _new_box_i64_0 = _new_box_i64_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+
+  ffi.Pointer<ffi.Int8> new_box_i8_0(
+    int value,
+  ) {
+    return _new_box_i8_0(
+      value,
+    );
+  }
+
+  late final _new_box_i8_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int8)>>('new_box_i8_0');
+  late final _new_box_i8_0 = _new_box_i8_0Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+
+  ffi.Pointer<wire_KitchenSink> new_box_kitchen_sink_0() {
+    return _new_box_kitchen_sink_0();
+  }
+
+  late final _new_box_kitchen_sink_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_KitchenSink> Function()>>('new_box_kitchen_sink_0');
+  late final _new_box_kitchen_sink_0 =
+      _new_box_kitchen_sink_0Ptr.asFunction<ffi.Pointer<wire_KitchenSink> Function()>();
+
+  ffi.Pointer<wire_MySize> new_box_my_size_0() {
+    return _new_box_my_size_0();
+  }
+
+  late final _new_box_my_size_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MySize> Function()>>('new_box_my_size_0');
+  late final _new_box_my_size_0 = _new_box_my_size_0Ptr.asFunction<ffi.Pointer<wire_MySize> Function()>();
+
+  ffi.Pointer<ffi.Uint8> new_box_u8_0(
+    int value,
+  ) {
+    return _new_box_u8_0(
+      value,
+    );
+  }
+
+  late final _new_box_u8_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Uint8)>>('new_box_u8_0');
+  late final _new_box_u8_0 = _new_box_u8_0Ptr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
+
+  ffi.Pointer<ffi.Int32> new_box_weekdays_0(
+    int value,
+  ) {
+    return _new_box_weekdays_0(
+      value,
+    );
+  }
+
+  late final _new_box_weekdays_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_weekdays_0');
+  late final _new_box_weekdays_0 = _new_box_weekdays_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
+  ffi.Pointer<wire_float_32_list> new_float_32_list_0(
+    int len,
+  ) {
+    return _new_float_32_list_0(
+      len,
+    );
+  }
+
+  late final _new_float_32_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list_0');
+  late final _new_float_32_list_0 = _new_float_32_list_0Ptr.asFunction<ffi.Pointer<wire_float_32_list> Function(int)>();
+
+  ffi.Pointer<wire_float_64_list> new_float_64_list_0(
+    int len,
+  ) {
+    return _new_float_64_list_0(
+      len,
+    );
+  }
+
+  late final _new_float_64_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_64_list> Function(ffi.Int32)>>('new_float_64_list_0');
+  late final _new_float_64_list_0 = _new_float_64_list_0Ptr.asFunction<ffi.Pointer<wire_float_64_list> Function(int)>();
+
+  ffi.Pointer<wire_int_32_list> new_int_32_list_0(
+    int len,
+  ) {
+    return _new_int_32_list_0(
+      len,
+    );
+  }
+
+  late final _new_int_32_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list_0');
+  late final _new_int_32_list_0 = _new_int_32_list_0Ptr.asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
+
+  ffi.Pointer<wire_int_64_list> new_int_64_list_0(
+    int len,
+  ) {
+    return _new_int_64_list_0(
+      len,
+    );
+  }
+
+  late final _new_int_64_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_64_list> Function(ffi.Int32)>>('new_int_64_list_0');
+  late final _new_int_64_list_0 = _new_int_64_list_0Ptr.asFunction<ffi.Pointer<wire_int_64_list> Function(int)>();
+
+  ffi.Pointer<wire_int_8_list> new_int_8_list_0(
+    int len,
+  ) {
+    return _new_int_8_list_0(
+      len,
+    );
+  }
+
+  late final _new_int_8_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list_0');
+  late final _new_int_8_list_0 = _new_int_8_list_0Ptr.asFunction<ffi.Pointer<wire_int_8_list> Function(int)>();
+
+  ffi.Pointer<wire_list_application_env_var> new_list_application_env_var_0(
+    int len,
+  ) {
+    return _new_list_application_env_var_0(
+      len,
+    );
+  }
+
+  late final _new_list_application_env_var_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_application_env_var> Function(ffi.Int32)>>(
+          'new_list_application_env_var_0');
+  late final _new_list_application_env_var_0 =
+      _new_list_application_env_var_0Ptr.asFunction<ffi.Pointer<wire_list_application_env_var> Function(int)>();
+
+  ffi.Pointer<wire_list_attribute> new_list_attribute_0(
+    int len,
+  ) {
+    return _new_list_attribute_0(
+      len,
+    );
+  }
+
+  late final _new_list_attribute_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_attribute> Function(ffi.Int32)>>('new_list_attribute_0');
+  late final _new_list_attribute_0 =
+      _new_list_attribute_0Ptr.asFunction<ffi.Pointer<wire_list_attribute> Function(int)>();
+
+  ffi.Pointer<wire_list_my_size> new_list_my_size_0(
+    int len,
+  ) {
+    return _new_list_my_size_0(
+      len,
+    );
+  }
+
+  late final _new_list_my_size_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_my_size> Function(ffi.Int32)>>('new_list_my_size_0');
+  late final _new_list_my_size_0 = _new_list_my_size_0Ptr.asFunction<ffi.Pointer<wire_list_my_size> Function(int)>();
+
+  ffi.Pointer<wire_list_my_tree_node> new_list_my_tree_node_0(
+    int len,
+  ) {
+    return _new_list_my_tree_node_0(
+      len,
+    );
+  }
+
+  late final _new_list_my_tree_node_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_my_tree_node> Function(ffi.Int32)>>('new_list_my_tree_node_0');
+  late final _new_list_my_tree_node_0 =
+      _new_list_my_tree_node_0Ptr.asFunction<ffi.Pointer<wire_list_my_tree_node> Function(int)>();
+
+  ffi.Pointer<wire_list_opt_box_autoadd_attribute> new_list_opt_box_autoadd_attribute_0(
+    int len,
+  ) {
+    return _new_list_opt_box_autoadd_attribute_0(
+      len,
+    );
+  }
+
+  late final _new_list_opt_box_autoadd_attribute_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(ffi.Int32)>>(
+          'new_list_opt_box_autoadd_attribute_0');
+  late final _new_list_opt_box_autoadd_attribute_0 = _new_list_opt_box_autoadd_attribute_0Ptr
+      .asFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(int)>();
+
+  ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
+    int len,
+  ) {
+    return _new_uint_8_list_0(
+      len,
+    );
+  }
+
+  late final _new_uint_8_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
+  late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Primitives() {
+    return _inflate_KitchenSink_Primitives();
+  }
+
+  late final _inflate_KitchenSink_PrimitivesPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Primitives');
+  late final _inflate_KitchenSink_Primitives =
+      _inflate_KitchenSink_PrimitivesPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Nested() {
+    return _inflate_KitchenSink_Nested();
+  }
+
+  late final _inflate_KitchenSink_NestedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Nested');
+  late final _inflate_KitchenSink_Nested =
+      _inflate_KitchenSink_NestedPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Optional() {
+    return _inflate_KitchenSink_Optional();
+  }
+
+  late final _inflate_KitchenSink_OptionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Optional');
+  late final _inflate_KitchenSink_Optional =
+      _inflate_KitchenSink_OptionalPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Buffer() {
+    return _inflate_KitchenSink_Buffer();
+  }
+
+  late final _inflate_KitchenSink_BufferPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Buffer');
+  late final _inflate_KitchenSink_Buffer =
+      _inflate_KitchenSink_BufferPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Enums() {
+    return _inflate_KitchenSink_Enums();
+  }
+
+  late final _inflate_KitchenSink_EnumsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>('inflate_KitchenSink_Enums');
+  late final _inflate_KitchenSink_Enums =
+      _inflate_KitchenSink_EnumsPtr.asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  void free_WireSyncReturnStruct(
+    WireSyncReturnStruct val,
+  ) {
+    return _free_WireSyncReturnStruct(
+      val,
+    );
+  }
+
+  late final _free_WireSyncReturnStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
+  late final _free_WireSyncReturnStruct =
+      _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
+
+  void store_dart_post_cobject(
+    DartPostCObjectFnType ptr,
+  ) {
+    return _store_dart_post_cobject(
+      ptr,
+    );
+  }
+
+  late final _store_dart_post_cobjectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
+  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
+}
+
+class wire_uint_8_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_MySize extends ffi.Struct {
+  @ffi.Int32()
+  external int width;
+
+  @ffi.Int32()
+  external int height;
+}
+
+class wire_NewTypeInt extends ffi.Struct {
+  @ffi.Int64()
+  external int field0;
+}
+
+class wire_list_my_size extends ffi.Struct {
+  external ffi.Pointer<wire_MySize> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_StringList extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_uint_8_list>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_list_my_tree_node extends ffi.Struct {
+  external ffi.Pointer<wire_MyTreeNode> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_MyTreeNode extends ffi.Struct {
+  @ffi.Int32()
+  external int value_i32;
+
+  external ffi.Pointer<wire_uint_8_list> value_vec_u8;
+
+  @ffi.Bool()
+  external bool value_boolean;
+
+  external ffi.Pointer<wire_list_my_tree_node> children;
+}
+
+class wire_int_8_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_int_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_int_64_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_float_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Float> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_float_64_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Double> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_Attribute extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> key;
+
+  external ffi.Pointer<wire_uint_8_list> value;
+}
+
+class wire_list_attribute extends ffi.Struct {
+  external ffi.Pointer<wire_Attribute> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_list_opt_box_autoadd_attribute extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_Attribute>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_ExoticOptionals extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> int32;
+
+  external ffi.Pointer<ffi.Int64> int64;
+
+  external ffi.Pointer<ffi.Double> float64;
+
+  external ffi.Pointer<ffi.Bool> boolean;
+
+  external ffi.Pointer<wire_uint_8_list> zerocopy;
+
+  external ffi.Pointer<wire_int_8_list> int8list;
+
+  external ffi.Pointer<wire_uint_8_list> uint8list;
+
+  external ffi.Pointer<wire_int_32_list> int32list;
+
+  external ffi.Pointer<wire_int_64_list> int64list;
+
+  external ffi.Pointer<wire_float_32_list> float32list;
+
+  external ffi.Pointer<wire_float_64_list> float64list;
+
+  external ffi.Pointer<wire_list_attribute> attributes;
+
+  external ffi.Pointer<wire_list_opt_box_autoadd_attribute> attributes_nullable;
+
+  external ffi.Pointer<wire_list_opt_box_autoadd_attribute> nullable_attributes;
+
+  external ffi.Pointer<wire_NewTypeInt> newtypeint;
+}
+
+class wire_Note extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> day;
+
+  external ffi.Pointer<wire_uint_8_list> body;
+}
+
+class wire_Customized extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> final_field;
+
+  external ffi.Pointer<wire_uint_8_list> non_final_field;
+}
+
+class KitchenSink_Empty extends ffi.Opaque {}
+
+class KitchenSink_Primitives extends ffi.Struct {
+  @ffi.Int32()
+  external int int32;
+
+  @ffi.Double()
+  external double float64;
+
+  @ffi.Bool()
+  external bool boolean;
+}
+
+class KitchenSink_Nested extends ffi.Struct {
+  external ffi.Pointer<wire_KitchenSink> field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+class wire_KitchenSink extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<KitchenSinkKind> kind;
+}
+
+class KitchenSinkKind extends ffi.Union {
+  external ffi.Pointer<KitchenSink_Empty> Empty;
+
+  external ffi.Pointer<KitchenSink_Primitives> Primitives;
+
+  external ffi.Pointer<KitchenSink_Nested> Nested;
+
+  external ffi.Pointer<KitchenSink_Optional> Optional;
+
+  external ffi.Pointer<KitchenSink_Buffer> Buffer;
+
+  external ffi.Pointer<KitchenSink_Enums> Enums;
+}
+
+class KitchenSink_Optional extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> field0;
+
+  external ffi.Pointer<ffi.Int32> field1;
+}
+
+class KitchenSink_Buffer extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+}
+
+class KitchenSink_Enums extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
+
+class wire_MyStruct extends ffi.Struct {
+  @ffi.Bool()
+  external bool content;
+}
+
+class wire_ApplicationEnvVar extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+
+  @ffi.Bool()
+  external bool field1;
+}
+
+class wire_list_application_env_var extends ffi.Struct {
+  external ffi.Pointer<wire_ApplicationEnvVar> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_ApplicationEnv extends ffi.Struct {
+  external ffi.Pointer<wire_list_application_env_var> vars;
+}
+
+class wire_ApplicationSettings extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+
+  external ffi.Pointer<wire_uint_8_list> version;
+
+  @ffi.Int32()
+  external int mode;
+
+  external ffi.Pointer<wire_ApplicationEnv> env;
+}
+
+class wire_UserId extends ffi.Struct {
+  @ffi.Uint32()
+  external int value;
+}
+
+class wire_SumWith extends ffi.Struct {
+  @ffi.Uint32()
+  external int x;
+}
+
+class wire_ConcatenateWith extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> a;
+}
+
+typedef uintptr_t = ffi.UnsignedLong;
+typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
+typedef DartPort = ffi.Int64;

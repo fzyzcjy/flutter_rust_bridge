@@ -15,6 +15,7 @@ use crate::target::Acc;
 use crate::utils::*;
 
 mod config;
+mod tools;
 
 pub use crate::commands::ensure_tools_available;
 pub use crate::config::parse as config_parse;
@@ -37,7 +38,8 @@ mod utils;
 use error::*;
 
 pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
-    ensure_tools_available()?;
+    let dart_root = config.dart_root_or_default();
+    ensure_tools_available(&dart_root)?;
 
     info!("Picked config: {:?}", config);
 
@@ -144,20 +146,23 @@ pub use io::*;
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
         || {
-            commands::bindgen_rust_to_dart(BindgenRustToDartArg {
-                rust_crate_dir: &config.rust_crate_dir,
-                c_output_path: temp_bindgen_c_output_file
-                    .path()
-                    .as_os_str()
-                    .to_str()
-                    .unwrap(),
-                dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-                dart_class_name: &config.dart_wire_class_name(),
-                c_struct_names: ir_file.get_c_struct_names(),
-                exclude_symbols: generated_rust.get_exclude_symbols(all_symbols),
-                llvm_install_path: &config.llvm_path[..],
-                llvm_compiler_opts: &config.llvm_compiler_opts,
-            })
+            commands::bindgen_rust_to_dart(
+                BindgenRustToDartArg {
+                    rust_crate_dir: &config.rust_crate_dir,
+                    c_output_path: temp_bindgen_c_output_file
+                        .path()
+                        .as_os_str()
+                        .to_str()
+                        .unwrap(),
+                    dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+                    dart_class_name: &config.dart_wire_class_name(),
+                    c_struct_names: ir_file.get_c_struct_names(),
+                    exclude_symbols,
+                    llvm_install_path: &config.llvm_path[..],
+                    llvm_compiler_opts: &config.llvm_compiler_opts,
+                },
+                &dart_root,
+            )
         },
     )?;
 

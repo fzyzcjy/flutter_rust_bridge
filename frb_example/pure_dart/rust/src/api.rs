@@ -656,6 +656,10 @@ impl SumWith {
     }
 }
 
+pub fn get_sum_struct() -> SumWith {
+    SumWith { x: 21 }
+}
+
 pub struct ConcatenateWith {
     pub a: String,
 }
