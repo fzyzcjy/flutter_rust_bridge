@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 import 'ffi.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
 
-const wasm = bool.hasEnvironment('dart.library.html');
+const wasm = bool.fromEnvironment('dart.library.html');
 
 void main(List<String> args) async {
   String dylibPath = args[0];
@@ -53,16 +53,8 @@ void main(List<String> args) async {
     expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
     expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
     expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
-    // if (wasm) {
-    // expect has problems with Dart foreign types, so we test this in a different way.
-    // expect(resp.uint64List.length, n);
-    // expect(resp.int64List.length, n);
-    // expect(resp.uint64List[0], 42);
-    // expect(resp.int64List[0], 42);
-    // } else {
     expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
     expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
-    // }
     expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
     expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
   });
@@ -365,12 +357,14 @@ void main(List<String> args) async {
 
   test('dart call repeatNumber()', () async {
     var numbers = await api.repeatNumber(num: 1, times: 10);
-    expect(numbers.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    expect(numbers.field0.toList(),
+        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call repeatSequence()', () async {
     var sequences = await api.repeatSequence(seq: 1, times: 10);
-    expect(sequences.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    expect(sequences.field0.toList(),
+        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call firstNumber()', () async {
@@ -420,20 +414,14 @@ void main(List<String> args) async {
     expect(await api.nextUserId(userId: userId), UserId(value: 12));
   });
 
-  test('dart register event listener & create event after delayed future',
-      () async {
-    bool listenerCalled = false;
-    api.registerEventListener().listen((e) {
-      listenerCalled = true;
-    });
-
-    await Future.delayed(const Duration(milliseconds: 10));
-    await api.createEvent();
-    // waiting with an async Future.delayed() call doesn't block
-    // the ongoing futures, so a listener should be registered
-    // and thus the callback should be called.
-    expect(listenerCalled, equals(true));
+  test('dart register event listener & create event', () async {
+    final stream = expectLater(
+      api.registerEventListener(),
+      emits(Event(address: 'foo', payload: 'bar')),
+    );
+    await api.createEvent(address: 'foo', payload: 'bar');
     await api.closeEventListener();
+    await stream;
   });
 
   test('ConcatenateWith test', () async {

@@ -73,12 +73,13 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
         yield _transformRust2DartMessage(raw, task.parseSuccessData);
       } on _CloseStreamException {
         receivePort.close();
+        return;
       }
     }
   }
 
   S _transformRust2DartMessage<S>(
-      dynamic raw, S Function(dynamic) parseSuccessData) {
+      List<dynamic> raw, S Function(dynamic) parseSuccessData) {
     final action = raw[0];
     switch (action) {
       case _RUST2DART_ACTION_SUCCESS:

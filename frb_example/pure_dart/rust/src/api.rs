@@ -588,6 +588,7 @@ lazy_static::lazy_static! {
     static ref EVENTS: Arc<Mutex<Option<VecDeque<Event>>>> = Arc::new(Mutex::new(Some(Default::default())));
 }
 
+#[frb(dart_metadata = ("freezed"))]
 #[derive(Clone)]
 pub struct Event {
     pub address: String,
@@ -595,36 +596,40 @@ pub struct Event {
 }
 
 pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
-    let mut sleep = 1;
     while let Ok(mut guard) = EVENTS.lock() {
         if let Some(queue) = guard.as_mut() {
             if let Some(event) = queue.pop_front() {
                 let _ = listener.add(event);
-                sleep = 1;
-            } else {
-                std::thread::sleep(Duration::from_secs(sleep));
-                sleep *= 2;
             }
         } else {
-            return Ok(());
+            break;
         }
     }
+    listener.close();
     Ok(())
 }
 
 pub fn close_event_listener() {
-    if let Ok(mut queue) = EVENTS.lock() {
-        let _ = queue.take();
+    loop {
+        if let Ok(mut guard) = EVENTS.try_lock() {
+            match guard.as_ref() {
+                None => return,
+                Some(queue) if queue.len() > 0 => {
+                    continue;
+                }
+                _ => {
+                    let _ = guard.take();
+                    return;
+                }
+            }
+        }
     }
 }
 
-pub fn create_event() {
+pub fn create_event(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(queue) = guard.as_mut() {
-            queue.push_back(Event {
-                address: "something".into(),
-                payload: "payload".into(),
-            });
+            queue.push_back(Event { address, payload });
         }
     }
 }

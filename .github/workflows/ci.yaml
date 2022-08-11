@@ -322,6 +322,34 @@ jobs:
           set -euxo pipefail
           mv linux/rust.require.cmake linux/rust.cmake
           flutter test -d linux integration_test/main.dart --verbose
+  
+  dart_web_test:
+    name: Pure Dart unit tests (Web)
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          target: wasm32-unknown-unknown
+      - name: Install ffigen
+        run: dart pub global add ffigen
+      - name: Install wasm-pack
+        uses: actions-rs/install@v0.1.2
+        with:
+          crate: wasm-pack
+          version: latest
+          use-tool-cache: true
+      - name: Run tests
+        run: |
+          export FRB_DART=$(pwd)/frb_dart
+          cd $FRB_DART && dart pub get
+          cd frb_example/pure_dart/dart && dart pub get && \
+            dart run $FRB_DART/bin/serve.dart -c ../rust --dart-input lib/main.web.dart --root web/
+          
 
   # -------------------------- linter --------------------------
   rust_build_and_test:

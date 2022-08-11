@@ -200,7 +200,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta;
 
-  Future<void> createEvent({dynamic hint});
+  Future<void> createEvent({required String address, required String payload, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
 
@@ -386,14 +386,12 @@ class Element {
   });
 }
 
-class Event {
-  final String address;
-  final String payload;
-
-  Event({
-    required this.address,
-    required this.payload,
-  });
+@freezed
+class Event with _$Event {
+  const factory Event({
+    required String address,
+    required String payload,
+  }) = _Event;
 }
 
 class ExoticOptionals {

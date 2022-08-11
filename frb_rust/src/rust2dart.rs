@@ -28,7 +28,7 @@ impl Rust2Dart {
     }
 
     /// Send a success message back to the specified port.
-    pub fn success<T: IntoDart>(&self, result: T) -> bool {
+    pub fn success(&self, result: impl IntoDart) -> bool {
         self.isolate.post(vec![
             RUST2DART_ACTION_SUCCESS.into_dart(),
             result.into_dart(),

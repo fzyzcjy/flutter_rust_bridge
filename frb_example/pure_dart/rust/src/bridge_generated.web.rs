@@ -234,8 +234,8 @@ pub fn wire_close_event_listener(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_create_event(port_: MessagePort) {
-    wire_create_event_impl(port_)
+pub fn wire_create_event(port_: MessagePort, address: String, payload: String) {
+    wire_create_event_impl(port_, address, payload)
 }
 
 #[wasm_bindgen]

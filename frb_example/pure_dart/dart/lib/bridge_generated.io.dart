@@ -1323,14 +1323,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   void wire_create_event(
     int port_,
+    ffi.Pointer<wire_uint_8_list> address,
+    ffi.Pointer<wire_uint_8_list> payload,
   ) {
     return _wire_create_event(
       port_,
+      address,
+      payload,
     );
   }
 
-  late final _wire_create_eventPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_event');
-  late final _wire_create_event = _wire_create_eventPtr.asFunction<void Function(int)>();
+  late final _wire_create_eventPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>>('wire_create_event');
+  late final _wire_create_event = _wire_create_eventPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_stream_sink_at_1(
     int port_,

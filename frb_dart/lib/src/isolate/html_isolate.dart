@@ -45,7 +45,7 @@ class ReceivePort extends Stream<dynamic> {
     bool? cancelOnError,
   }) {
     return port.receivePort.onMessage.listen(
-      onData,
+      (event) => onData?.call(event.data),
       onError: onError,
       onDone: onDone,
       cancelOnError: cancelOnError,

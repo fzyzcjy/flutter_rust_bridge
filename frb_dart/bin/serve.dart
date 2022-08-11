@@ -11,7 +11,8 @@ final which = Platform.isWindows ? 'where.exe' : 'which';
 final open = Platform.isWindows ? 'start' : 'open';
 
 /// Wrap text in bold red.
-String err(String msg) => stderr.supportsAnsiEscapes ? '\x1b[1;31m$msg\x1b[0m' : msg;
+String err(String msg) =>
+    stderr.supportsAnsiEscapes ? '\x1b[1;31m$msg\x1b[0m' : msg;
 
 void eprintln([Object? msg = '']) {
   stderr.writeln('${err('error')}: $msg');
@@ -62,14 +63,22 @@ void main(List<String> args) async {
   final parser = ArgParser()
     ..addSeparator('Develop Rust WASM modules with cross-origin isolation.')
     ..addSeparator('Usage: $exec -w=<WASM> [OPTIONS]')
-    ..addOption('port', abbr: 'p', help: 'HTTP port to listen to', defaultsTo: '8080')
+    ..addOption('port',
+        abbr: 'p', help: 'HTTP port to listen to', defaultsTo: '8080')
     ..addOption('root', abbr: 'r', help: 'Root of the Flutter/Dart output.')
-    ..addOption('crate', abbr: 'c', help: 'Directory of the crate', defaultsTo: 'native')
-    ..addOption('dart-input', help: 'Run "dart compile" with the specified input instead of "flutter build".')
+    ..addOption('crate',
+        abbr: 'c', help: 'Directory of the crate', defaultsTo: 'native')
+    ..addOption('dart-input',
+        help:
+            'Run "dart compile" with the specified input instead of "flutter build".')
     ..addOption('wasm-output', help: 'WASM output path.')
     ..addFlag('release', help: 'Compile in release mode')
-    ..addFlag('weak-refs', help: 'Enable the weak references proposal\nRequires wasm-bindgen in path.')
-    ..addFlag('reference-types', help: 'Enable the reference types proposal\nRequires wasm-bindgen in path.')
+    ..addFlag('weak-refs',
+        help:
+            'Enable the weak references proposal\nRequires wasm-bindgen in path.')
+    ..addFlag('reference-types',
+        help:
+            'Enable the reference types proposal\nRequires wasm-bindgen in path.')
     ..addFlag('help', abbr: 'h', help: 'Print this help message');
   final config = parser.parse(args);
   if (config['help']) {
@@ -101,11 +110,13 @@ void main(List<String> args) async {
   final String root;
   final String wasmOutput;
   if (config['dart-input'] != null) {
-    assert_(config['root'] != null, 'The --root option is required when building plain Dart projects.');
+    assert_(config['root'] != null,
+        'The --root option is required when building plain Dart projects.');
     root = p.canonicalize(config['root']);
     wasmOutput = p.canonicalize(config['wasm-output'] ?? '$root/pkg');
   } else {
-    assert_(config['wasm-output'] != null, 'The --wasm-output option is required when building Flutter projects.');
+    assert_(config['wasm-output'] != null,
+        'The --wasm-output option is required when building Flutter projects.');
     root = p.canonicalize(config['root'] ?? 'build/web');
     wasmOutput = p.canonicalize(config['wasm-output']);
   }
@@ -176,6 +187,8 @@ void main(List<String> args) async {
 
   final ip = InternetAddress.anyIPv4;
 
+  final staticFilesHandler =
+      createStaticHandler(root, defaultDocument: 'index.html');
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
       final res = await handler(req);
@@ -184,10 +197,18 @@ void main(List<String> args) async {
         'Cross-Origin-Embedder-Policy': 'credentialless',
       });
     };
-  }).addHandler(createStaticHandler(
-    root,
-    defaultDocument: 'index.html',
-  ));
+  }).addHandler((req) async {
+    if (req.requestedUri.path == '/_test' && req.method == 'POST') {
+      final result = json.decode(await req.readAsString());
+      if (result is int) {
+        exit(result);
+      } else if (result is bool) {
+        exit(result ? 0 : 1);
+      }
+      return Response.badRequest(body: json.encode(result));
+    }
+    return staticFilesHandler(req);
+  });
 
   final port = int.parse(Platform.environment['PORT'] ?? config['port']);
   final addr = 'http://localhost:$port';

@@ -585,7 +585,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_close_event_listener(NativePortType port_);
 
-  external void wire_create_event(NativePortType port_);
+  external void wire_create_event(NativePortType port_, String address, String payload);
 
   external void wire_handle_stream_sink_at_1(NativePortType port_, int key, int max);
 
@@ -754,7 +754,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_close_event_listener(NativePortType port_) => wasmModule.wire_close_event_listener(port_);
 
-  void wire_create_event(NativePortType port_) => wasmModule.wire_create_event(port_);
+  void wire_create_event(NativePortType port_, String address, String payload) =>
+      wasmModule.wire_create_event(port_, address, payload);
 
   void wire_handle_stream_sink_at_1(NativePortType port_, int key, int max) =>
       wasmModule.wire_handle_stream_sink_at_1(port_, key, max);
