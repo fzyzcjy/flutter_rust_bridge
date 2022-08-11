@@ -81,7 +81,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 format!(
                     "#[repr(C)]
                     #[derive(Clone)]
-                    pub struct {}_{} {{ {} }}",
+                    pub struct wire_{}_{} {{ {} }}",
                     self.ir.name,
                     variant.name,
                     fields.join("\n")
