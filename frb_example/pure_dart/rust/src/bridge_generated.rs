@@ -43,8 +43,8 @@ pub struct wire_Distance {
 
 #[repr(C)]
 pub union DistanceKind {
-    Unknown: *mut Distance_Unknown,
-    Map: *mut Distance_Map,
+    Unknown: *mut wire_Distance_Unknown,
+    Map: *mut wire_Distance_Map,
 }
 
 #[repr(C)]
@@ -66,8 +66,8 @@ pub struct wire_Measure {
 
 #[repr(C)]
 pub union MeasureKind {
-    Speed: *mut Measure_Speed,
-    Distance: *mut Measure_Distance,
+    Speed: *mut wire_Measure_Speed,
+    Distance: *mut wire_Measure_Distance,
 }
 
 #[repr(C)]
@@ -90,8 +90,8 @@ pub struct wire_Speed {
 
 #[repr(C)]
 pub union SpeedKind {
-    Unknown: *mut Speed_Unknown,
-    GPS: *mut Speed_GPS,
+    Unknown: *mut wire_Speed_Unknown,
+    GPS: *mut wire_Speed_GPS,
 }
 
 #[repr(C)]

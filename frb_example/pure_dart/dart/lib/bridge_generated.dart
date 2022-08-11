@@ -315,23 +315,41 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 }
 
-class MeasureKind extends ffi.Union {
-  external ffi.Pointer<ffi.Int> Speed;
+class wire_Speed_Unknown extends ffi.Opaque {}
 
-  external ffi.Pointer<ffi.Int> Distance;
+class wire_Speed_GPS extends ffi.Struct {
+  @ffi.Double()
+  external double field0;
 }
 
-class wire_Measure extends ffi.Struct {
+class SpeedKind extends ffi.Union {
+  external ffi.Pointer<wire_Speed_Unknown> Unknown;
+
+  external ffi.Pointer<wire_Speed_GPS> GPS;
+}
+
+class wire_Speed extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
-  external ffi.Pointer<MeasureKind> kind;
+  external ffi.Pointer<SpeedKind> kind;
+}
+
+class wire_Measure_Speed extends ffi.Struct {
+  external ffi.Pointer<wire_Speed> field0;
+}
+
+class wire_Distance_Unknown extends ffi.Opaque {}
+
+class wire_Distance_Map extends ffi.Struct {
+  @ffi.Double()
+  external double field0;
 }
 
 class DistanceKind extends ffi.Union {
-  external ffi.Pointer<ffi.Int> Unknown;
+  external ffi.Pointer<wire_Distance_Unknown> Unknown;
 
-  external ffi.Pointer<ffi.Int> Map;
+  external ffi.Pointer<wire_Distance_Map> Map;
 }
 
 class wire_Distance extends ffi.Struct {
@@ -341,17 +359,21 @@ class wire_Distance extends ffi.Struct {
   external ffi.Pointer<DistanceKind> kind;
 }
 
-class SpeedKind extends ffi.Union {
-  external ffi.Pointer<ffi.Int> Unknown;
-
-  external ffi.Pointer<ffi.Int> GPS;
+class wire_Measure_Distance extends ffi.Struct {
+  external ffi.Pointer<wire_Distance> field0;
 }
 
-class wire_Speed extends ffi.Struct {
+class MeasureKind extends ffi.Union {
+  external ffi.Pointer<wire_Measure_Speed> Speed;
+
+  external ffi.Pointer<wire_Measure_Distance> Distance;
+}
+
+class wire_Measure extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
-  external ffi.Pointer<SpeedKind> kind;
+  external ffi.Pointer<MeasureKind> kind;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
