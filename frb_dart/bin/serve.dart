@@ -8,7 +8,11 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' as p;
 
 final which = Platform.isWindows ? 'where.exe' : 'which';
-final open = Platform.isWindows ? 'start' : 'open';
+final open = Platform.isWindows
+    ? 'start'
+    : Platform.isMacOS
+        ? 'open'
+        : 'xdg-open';
 
 /// Wrap text in bold red.
 String err(String msg) =>
@@ -79,6 +83,7 @@ void main(List<String> args) async {
     ..addFlag('reference-types',
         help:
             'Enable the reference types proposal\nRequires wasm-bindgen in path.')
+    // ..addFlag('headless', help: 'Run in headless Chrome.')
     ..addFlag('help', abbr: 'h', help: 'Print this help message');
   final config = parser.parse(args);
   if (config['help']) {

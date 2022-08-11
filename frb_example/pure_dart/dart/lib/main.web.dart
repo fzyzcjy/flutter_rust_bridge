@@ -2,6 +2,7 @@
 
 import 'main.dart' as io;
 import 'package:js/js.dart';
+import 'package:js/js_util.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';
@@ -29,6 +30,8 @@ void main() async {
       printPath: false,
     ),
   );
-  fetch('/_test', FetchOptions(method: 'POST', body: '$result'));
+  await promiseToFuture(
+    fetch('/_test', FetchOptions(method: 'POST', body: '$result')),
+  );
   close();
 }
