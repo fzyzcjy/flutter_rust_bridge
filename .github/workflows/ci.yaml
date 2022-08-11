@@ -335,6 +335,7 @@ jobs:
         with:
           toolchain: nightly
           target: wasm32-unknown-unknown
+          components: rust-src
       - name: Install ffigen
         run: dart pub global activate ffigen
       - name: Install wasm-pack

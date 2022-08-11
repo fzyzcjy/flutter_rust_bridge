@@ -8,8 +8,7 @@ const root = 'pkg/flutter_rust_bridge_example_single_block_test';
 
 FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(void _) {
   if (crossOriginIsolated != true) {
-    return FlutterRustBridgeExampleSingleBlockTestImpl.wasm(
-        Future.error(MissingHeaderException()));
+    return FlutterRustBridgeExampleSingleBlockTestImpl.wasm(Future.error(MissingHeaderException()));
   }
 
   final script = ScriptElement()..src = '$root.js';
