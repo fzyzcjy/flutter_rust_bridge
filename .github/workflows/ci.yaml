@@ -324,7 +324,7 @@ jobs:
           flutter test -d linux integration_test/main.dart --verbose
   
   dart_web_test:
-    name: Pure Dart unit tests (Web)
+    name: Dart (Web) unit tests
     runs-on: ubuntu-latest
     
     steps:
@@ -335,7 +335,9 @@ jobs:
         with:
           toolchain: nightly
           target: wasm32-unknown-unknown
-          components: rust-src
+          components: rust-src,rustfmt
+      - name: Install Chrome
+        run: sudo apt install -y google-chrome-stable
       - name: Install ffigen
         run: dart pub global activate ffigen
       - name: Install wasm-pack

@@ -240,7 +240,7 @@ packages:
     source: hosted
     version: "1.0.3"
   js:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: js
       url: "https://pub.dartlang.org"
@@ -443,7 +443,7 @@ packages:
     source: hosted
     version: "0.4.12"
   test_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: test_core
       url: "https://pub.dartlang.org"

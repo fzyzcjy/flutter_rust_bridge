@@ -1,3 +1,5 @@
+// ignore_for_file: implementation_imports
+
 import 'main.dart' as io;
 import 'package:js/js.dart';
 import 'package:test_core/src/direct_run.dart';

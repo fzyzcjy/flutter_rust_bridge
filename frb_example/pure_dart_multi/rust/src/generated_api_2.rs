@@ -40,6 +40,8 @@ fn wire_simple_adder_2_impl(
 
 // Section: static checks
 
+// Section: allocate functions
+
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {
@@ -51,11 +53,7 @@ where
     *mut S: Wire2Api<T>,
 {
     fn wire2api(self) -> Option<T> {
-        if self.is_null() {
-            None
-        } else {
-            Some(self.wire2api())
-        }
+        (!self.is_null()).then(|| self.wire2api())
     }
 }
 
@@ -75,6 +73,7 @@ support::lazy_static! {
 #[cfg(not(target_family = "wasm"))]
 mod io {
     use super::*;
+    // Section: wire functions
 
     #[no_mangle]
     pub extern "C" fn wire_simple_adder_2(port_: i64, a: i32, b: i32) {
@@ -84,6 +83,8 @@ mod io {
     // Section: wire structs
 
     // Section: allocate functions
+
+    // Section: impl Wire2Api
 
     // Section: impl NewWithNullPtr
 
