@@ -315,41 +315,23 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 }
 
-class Speed_Unknown extends ffi.Opaque {}
+class MeasureKind extends ffi.Union {
+  external ffi.Pointer<ffi.Int> Speed;
 
-class Speed_GPS extends ffi.Struct {
-  @ffi.Double()
-  external double field0;
+  external ffi.Pointer<ffi.Int> Distance;
 }
 
-class SpeedKind extends ffi.Union {
-  external ffi.Pointer<Speed_Unknown> Unknown;
-
-  external ffi.Pointer<Speed_GPS> GPS;
-}
-
-class wire_Speed extends ffi.Struct {
+class wire_Measure extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
-  external ffi.Pointer<SpeedKind> kind;
-}
-
-class Measure_Speed extends ffi.Struct {
-  external ffi.Pointer<wire_Speed> field0;
-}
-
-class Distance_Unknown extends ffi.Opaque {}
-
-class Distance_Map extends ffi.Struct {
-  @ffi.Double()
-  external double field0;
+  external ffi.Pointer<MeasureKind> kind;
 }
 
 class DistanceKind extends ffi.Union {
-  external ffi.Pointer<Distance_Unknown> Unknown;
+  external ffi.Pointer<ffi.Int> Unknown;
 
-  external ffi.Pointer<Distance_Map> Map;
+  external ffi.Pointer<ffi.Int> Map;
 }
 
 class wire_Distance extends ffi.Struct {
@@ -359,21 +341,17 @@ class wire_Distance extends ffi.Struct {
   external ffi.Pointer<DistanceKind> kind;
 }
 
-class Measure_Distance extends ffi.Struct {
-  external ffi.Pointer<wire_Distance> field0;
+class SpeedKind extends ffi.Union {
+  external ffi.Pointer<ffi.Int> Unknown;
+
+  external ffi.Pointer<ffi.Int> GPS;
 }
 
-class MeasureKind extends ffi.Union {
-  external ffi.Pointer<Measure_Speed> Speed;
-
-  external ffi.Pointer<Measure_Distance> Distance;
-}
-
-class wire_Measure extends ffi.Struct {
+class wire_Speed extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
-  external ffi.Pointer<MeasureKind> kind;
+  external ffi.Pointer<SpeedKind> kind;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;

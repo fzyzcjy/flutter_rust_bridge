@@ -49,11 +49,11 @@ pub union DistanceKind {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct Distance_Unknown {}
+pub struct wire_Distance_Unknown {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct Distance_Map {
+pub struct wire_Distance_Map {
     field0: f64,
 }
 
@@ -72,13 +72,13 @@ pub union MeasureKind {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct Measure_Speed {
+pub struct wire_Measure_Speed {
     field0: *mut wire_Speed,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct Measure_Distance {
+pub struct wire_Measure_Distance {
     field0: *mut wire_Distance,
 }
 #[repr(C)]
@@ -96,11 +96,11 @@ pub union SpeedKind {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct Speed_Unknown {}
+pub struct wire_Speed_Unknown {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct Speed_GPS {
+pub struct wire_Speed_GPS {
     field0: f64,
 }
 // Section: wrapper structs
