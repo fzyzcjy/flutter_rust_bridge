@@ -290,13 +290,13 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     lines.push_acc(Acc::new(|target| match target {
         Common => format!(
             "class {impl} implements {} {{
-                final {plat} _plat;
+                final {plat} _platform;
                 factory {impl}(ExternalLibrary dylib) => {impl}.raw({plat}(dylib));
 
                 /// Only valid on web/WASM platforms.
                 factory {impl}.wasm(FutureOr<WasmModule> module) =>
                     {impl}(module as ExternalLibrary);
-                {impl}.raw(this._plat);",
+                {impl}.raw(this._platform);",
             dart_api_class_name,
             impl = dart_api_impl_class_name,
             plat = dart_platform_class_name,
@@ -439,7 +439,7 @@ fn generate_file_prelude() -> DartBasicCode {
     DartBasicCode {
         import: format!("{}
 
-                // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member
+                // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names
                 ",
                         CODE_HEADER
         ),
@@ -501,7 +501,7 @@ fn generate_api_func(
                         if common_api2wire_body.contains(&func) {
                             ""
                         } else {
-                            "_plat."
+                            "_platform."
                         },
                         func,
                         &input.name.dart_style()
@@ -520,9 +520,9 @@ fn generate_api_func(
     );
 
     let execute_func_name = match func.mode {
-        IrFuncMode::Normal => "_plat.executeNormal",
-        IrFuncMode::Sync => "_plat.executeSync",
-        IrFuncMode::Stream { .. } => "_plat.executeStream",
+        IrFuncMode::Normal => "_platform.executeNormal",
+        IrFuncMode::Sync => "_platform.executeSync",
+        IrFuncMode::Stream { .. } => "_platform.executeStream",
     };
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
@@ -579,7 +579,7 @@ fn generate_api_func(
     let implementation = match func.mode {
         IrFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
-                callFfi: () => _plat.inner.{}({}),
+                callFfi: () => _platform.inner.{}({}),
                 {}
             ));",
             func_expr,
@@ -590,7 +590,7 @@ fn generate_api_func(
         ),
         _ => format!(
             "{} => {}(FlutterRustBridgeTask(
-                callFfi: (port_) => _plat.inner.{}({}),
+                callFfi: (port_) => _platform.inner.{}({}),
                 parseSuccessData: {},
                 {}
             ));",

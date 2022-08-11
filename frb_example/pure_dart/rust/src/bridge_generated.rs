@@ -645,14 +645,22 @@ fn wire_close_event_listener_impl(port_: MessagePort) {
         move || move |task_callback| Ok(close_event_listener()),
     )
 }
-fn wire_create_event_impl(port_: MessagePort) {
+fn wire_create_event_impl(
+    port_: MessagePort,
+    address: impl Wire2Api<String> + UnwindSafe,
+    payload: impl Wire2Api<String> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "create_event",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(create_event()),
+        move || {
+            let api_address = address.wire2api();
+            let api_payload = payload.wire2api();
+            move |task_callback| Ok(create_event(api_address, api_payload))
+        },
     )
 }
 fn wire_handle_stream_sink_at_1_impl(

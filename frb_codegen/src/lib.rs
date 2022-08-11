@@ -1,5 +1,5 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
-#![warn(clippy::wildcard_enum_match_arm)]
+// #![warn(clippy::wildcard_enum_match_arm)]
 
 use std::ffi::OsStr;
 use std::fs;
@@ -131,8 +131,11 @@ pub use io::*;
     run!(
         commands::format_rust,
         &config.rust_output_path,
-        (!config.inline_rust, config.rust_io_output_path()),
-        (!config.inline_rust, config.rust_wasm_output_path())
+        (
+            config.wasm_enabled,
+            config.rust_io_output_path(),
+            config.rust_wasm_output_path(),
+        )
     )?;
 
     if !config.skip_add_mod_to_lib {
