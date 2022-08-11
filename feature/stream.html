@@ -143,7 +143,10 @@
 <p>The <code>StreamSink</code> can be placed at any location. For example, <code>fn f(a: i32, b: StreamSink&lt;String&gt;)</code> and <code>fn f(a: StreamSink&lt;String&gt;, b: i32)</code> are both valid.</p>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
 <p>The following examples only serve to deepen your understanding for this <code>Stream</code> feature.</p>
-<h3 id="example-logger"><a class="header" href="#example-logger">Example: Logger</a></h3>
+<h3 id="example-logger-in-production"><a class="header" href="#example-logger-in-production">Example: Logger in production</a></h3>
+<p>In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as <code>info!</code> and <code>debug!</code> macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process it using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).</p>
+<p>The <em>full</em> code related to logging in my app can be seen here: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/486">#486</a>.</p>
+<h3 id="example-simple-logger"><a class="header" href="#example-simple-logger">Example: Simple logger</a></h3>
 <p>Let us implement a simple logging system (adapted from the logging system I use with <code>flutter_rust_bridge</code> in my app in production), where Rust code can send logs to Dart code.</p>
 <p>The Rust <code>api.rs</code>:</p>
 <pre><code class="language-rust noplayground">pub struct LogEntry {
