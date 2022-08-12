@@ -340,20 +340,28 @@ jobs:
         run: sudo apt install -y google-chrome-stable
       - name: Install ffigen
         run: dart pub global activate ffigen
+      - name: Retrieve wasm-pack from cache
+        id: wasm-pack
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/.cargo/bin/wasm-pack
+          key: ${{ runner.os }}-wasm-pack
       - name: Install wasm-pack
+        if: steps.wasm-pack.outputs.cache-hit != 'true'
         uses: actions-rs/install@v0.1.2
         with:
           crate: wasm-pack
           version: latest
           use-tool-cache: true
+      - name: Setup Dart dependencies
+        run: |
+          (cd frb_dart && dart pub get);
+          (cd frb_example/pure_dart/dart && dart pub get);
       - name: Run headless tests
         uses: GabrielBB/xvfb-action@v1
         with:
-          run: |
-            export FRB_DART=$(pwd)/frb_dart
-            (cd $FRB_DART && dart pub get);
-            (cd frb_example/pure_dart/dart && dart pub get && \
-              dart run $FRB_DART/bin/serve.dart -c ../rust --dart-input lib/main.web.dart --root web/ --browser google-chrome);
+          run: dart run ../../../frb_dart/bin/serve.dart -c ../rust --dart-input lib/main.web.dart --root web/ --browser google-chrome
+          working-directory: frb_example/pure_dart/dart
           
 
   # -------------------------- linter --------------------------
