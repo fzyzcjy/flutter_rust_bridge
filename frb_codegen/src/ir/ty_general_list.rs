@@ -1,4 +1,5 @@
 use crate::ir::*;
+use crate::target::Target;
 
 #[derive(Debug, Clone)]
 pub struct IrTypeGeneralList {
@@ -18,8 +19,8 @@ impl IrTypeTrait for IrTypeGeneralList {
         format!("List<{}>", self.inner.dart_api_type())
     }
 
-    fn dart_wire_type(&self, wasm: bool) -> String {
-        if wasm {
+    fn dart_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
             "List<dynamic>".into()
         } else {
             format!("ffi.Pointer<wire_{}>", self.safe_ident())
@@ -30,15 +31,15 @@ impl IrTypeTrait for IrTypeGeneralList {
         format!("Vec<{}>", self.inner.rust_api_type())
     }
 
-    fn rust_wire_type(&self, wasm: bool) -> String {
-        if wasm {
+    fn rust_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
             "JsValue".into()
         } else {
             format!("wire_{}", self.safe_ident())
         }
     }
 
-    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
-        !wasm
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        !target.is_wasm()
     }
 }

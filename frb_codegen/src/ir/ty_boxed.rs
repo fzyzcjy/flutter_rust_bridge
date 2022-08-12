@@ -1,4 +1,5 @@
 use crate::ir::*;
+use crate::target::Target;
 
 #[derive(Debug, Clone)]
 pub struct IrTypeBoxed {
@@ -28,20 +29,24 @@ impl IrTypeTrait for IrTypeBoxed {
         self.inner.dart_api_type()
     }
 
-    fn dart_wire_type(&self, wasm: bool) -> String {
-        if wasm {
-            if self.inner.is_js_value() {
-                self.inner.dart_wire_type(wasm)
-            } else {
-                format!("int /* *{} */", self.inner.rust_wire_type(wasm))
+    fn dart_wire_type(&self, target: Target) -> String {
+        match target {
+            Target::Wasm => {
+                if self.inner.is_js_value() {
+                    self.inner.dart_wire_type(target)
+                } else {
+                    format!("int /* *{} */", self.inner.rust_wire_type(target))
+                }
             }
-        } else {
-            let wire_type = self
-                .inner
-                .as_primitive()
-                .map(|prim| prim.dart_native_type().to_owned())
-                .unwrap_or_else(|| self.inner.dart_wire_type(wasm));
-            format!("ffi.Pointer<{}>", wire_type)
+            Target::Io => {
+                let wire_type = self
+                    .inner
+                    .as_primitive()
+                    .map(|prim| prim.dart_native_type().to_owned())
+                    .unwrap_or_else(|| self.inner.dart_wire_type(target));
+                format!("ffi.Pointer<{}>", wire_type)
+            }
+            Target::Common => "".into(),
         }
     }
 
@@ -53,15 +58,15 @@ impl IrTypeTrait for IrTypeBoxed {
         }
     }
 
-    fn rust_wire_type(&self, wasm: bool) -> String {
-        if wasm && !self.inner.is_js_value() {
-            format!("Pointer<{}>", self.inner.rust_wire_type(wasm))
+    fn rust_wire_type(&self, target: Target) -> String {
+        if target.is_wasm() && !self.inner.is_js_value() {
+            format!("Pointer<{}>", self.inner.rust_wire_type(target))
         } else {
-            self.inner.rust_wire_type(wasm)
+            self.inner.rust_wire_type(target)
         }
     }
 
-    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
-        !wasm
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        !target.is_wasm()
     }
 }

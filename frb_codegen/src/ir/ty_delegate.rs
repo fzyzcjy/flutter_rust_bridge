@@ -1,4 +1,5 @@
 use crate::ir::*;
+use crate::target::Target;
 
 /// types that delegate to another type
 #[derive(Debug, Clone)]
@@ -63,13 +64,13 @@ impl IrTypeTrait for IrTypeDelegate {
     }
 
     // TODO: Refactor these overrides
-    fn dart_wire_type(&self, wasm: bool) -> String {
-        match (self, wasm) {
-            (IrTypeDelegate::String, true) => "String".into(),
-            (IrTypeDelegate::StringList, false) => "ffi.Pointer<wire_StringList>".to_owned(),
-            (IrTypeDelegate::StringList, true) => "List<String>".into(),
+    fn dart_wire_type(&self, target: Target) -> String {
+        match (self, target) {
+            (IrTypeDelegate::String, Target::Wasm) => "String".into(),
+            (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
+            (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_StringList>".to_owned(),
             (IrTypeDelegate::SyncReturnVecU8, _) => "WireSyncReturnStruct".to_owned(),
-            _ => self.get_delegate().dart_wire_type(wasm),
+            _ => self.get_delegate().dart_wire_type(target),
         }
     }
 
@@ -86,16 +87,16 @@ impl IrTypeTrait for IrTypeDelegate {
     }
 
     // TODO: Refactor these overrides
-    fn rust_wire_type(&self, wasm: bool) -> String {
-        match (self, wasm) {
-            (IrTypeDelegate::String, true) => "String".into(),
-            (IrTypeDelegate::StringList, false) => "wire_StringList".to_owned(),
-            (IrTypeDelegate::StringList, true) => "JsValue".into(),
-            _ => self.get_delegate().rust_wire_type(wasm),
+    fn rust_wire_type(&self, target: Target) -> String {
+        match (self, target) {
+            (IrTypeDelegate::String, Target::Wasm) => "String".into(),
+            (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
+            (IrTypeDelegate::StringList, Target::Wasm) => "JsValue".into(),
+            _ => self.get_delegate().rust_wire_type(target),
         }
     }
 
-    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
-        self.get_delegate().rust_wire_is_pointer(wasm)
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        self.get_delegate().rust_wire_is_pointer(target)
     }
 }

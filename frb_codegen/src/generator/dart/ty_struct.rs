@@ -106,13 +106,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let has_methods = !methods.is_empty();
         let methods = methods
             .iter()
-            .map(|func| {
-                generate_api_method(
-                    func,
-                    src,
-                    self.context.dart_api_class_name.as_ref().unwrap().clone(),
-                )
-            })
+            .map(|func| generate_api_method(func, src, self.context.config.dart_api_class_name()))
             .collect::<Vec<_>>();
 
         let methods_string = methods
@@ -123,7 +117,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let extra_argument = "required this.bridge,".to_string();
         let field_bridge = format!(
             "final {} bridge;",
-            self.context.dart_api_class_name.as_ref().unwrap()
+            self.context.config.dart_api_class_name(),
         );
         if src.using_freezed() {
             let mut constructor_params = src

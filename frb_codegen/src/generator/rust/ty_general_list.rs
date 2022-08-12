@@ -1,7 +1,7 @@
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, generate_list_allocate_func, ExternFuncCollector};
 use crate::ir::*;
-use crate::target::Acc;
+use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
 
@@ -33,7 +33,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             format!(
                 "ptr: *mut {}{}",
                 self.ir.inner.rust_ptr_modifier(),
-                self.ir.inner.rust_wire_type(false)
+                self.ir.inner.rust_wire_type(Target::Io)
             ),
             "len: i32".to_string(),
         ])

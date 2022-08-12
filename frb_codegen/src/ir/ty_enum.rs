@@ -1,5 +1,6 @@
 use crate::ir::IrType::{EnumRef, StructRef};
 use crate::ir::*;
+use crate::target::Target;
 use convert_case::{Case, Casing};
 
 #[derive(Debug, Clone)]
@@ -31,18 +32,18 @@ impl IrTypeTrait for IrTypeEnumRef {
     fn dart_api_type(&self) -> String {
         self.name.to_string()
     }
-    fn dart_wire_type(&self, wasm: bool) -> String {
-        if wasm {
+    fn dart_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
             "List<dynamic>".into()
         } else {
-            self.rust_wire_type(wasm)
+            self.rust_wire_type(target)
         }
     }
     fn rust_api_type(&self) -> String {
         self.name.to_string()
     }
-    fn rust_wire_type(&self, wasm: bool) -> String {
-        if wasm {
+    fn rust_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
             "JsValue".into()
         } else {
             format!("wire_{}", self.name)

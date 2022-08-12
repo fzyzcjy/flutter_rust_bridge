@@ -23,6 +23,7 @@ pub use crate::config::Opts;
 pub use crate::config::RawOpts;
 pub use crate::utils::get_symbols_if_no_duplicates;
 
+#[macro_use]
 mod commands;
 mod error;
 mod generator;

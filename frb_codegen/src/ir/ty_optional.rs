@@ -1,5 +1,6 @@
 use crate::ir::IrType::*;
 use crate::ir::*;
+use crate::target::Target;
 
 #[derive(Debug, Clone)]
 pub struct IrTypeOptional {
@@ -47,32 +48,32 @@ impl IrTypeTrait for IrTypeOptional {
     fn safe_ident(&self) -> String {
         format!("opt_{}", self.inner.safe_ident())
     }
-    fn rust_wire_type(&self, wasm: bool) -> String {
-        if wasm {
+    fn rust_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
             if self.inner.is_js_value() {
-                self.inner.rust_wire_type(wasm)
+                self.inner.rust_wire_type(target)
             } else {
-                format!("Option<{}>", self.inner.rust_wire_type(wasm))
+                format!("Option<{}>", self.inner.rust_wire_type(target))
             }
         } else {
-            self.inner.rust_wire_type(wasm)
+            self.inner.rust_wire_type(target)
         }
     }
     fn rust_api_type(&self) -> String {
         format!("Option<{}>", self.inner.rust_api_type())
     }
-    fn dart_wire_type(&self, wasm: bool) -> String {
-        if wasm {
-            format!("{}?", self.inner.dart_wire_type(wasm))
+    fn dart_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
+            format!("{}?", self.inner.dart_wire_type(target))
         } else {
-            self.inner.dart_wire_type(wasm)
+            self.inner.dart_wire_type(target)
         }
     }
     fn dart_api_type(&self) -> String {
         format!("{}?", self.inner.dart_api_type())
     }
-    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
-        !wasm
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        !target.is_wasm()
     }
 
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {

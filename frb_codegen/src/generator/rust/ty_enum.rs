@@ -98,7 +98,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         if !src.is_struct() {
             return "".to_owned();
         }
-        let wasm = false;
         let variant_structs = src
             .variants()
             .iter()
@@ -112,8 +111,8 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             format!(
                                 "{}: {}{},",
                                 field.name.rust_style(),
-                                field.ty.rust_wire_modifier(wasm),
-                                field.ty.rust_wire_type(wasm)
+                                field.ty.rust_wire_modifier(Io),
+                                field.ty.rust_wire_type(Io)
                             )
                         })
                         .collect(),
@@ -144,7 +143,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             }}
 
             {3}",
-            self.ir.rust_wire_type(wasm),
+            self.ir.rust_wire_type(Io),
             self.ir.name,
             union_fields.join("\n"),
             variant_structs.join("\n\n")
@@ -279,7 +278,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
 
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         fn init_of(ty: &IrType) -> &str {
-            if ty.rust_wire_is_pointer(false) {
+            if ty.rust_wire_is_pointer(Io) {
                 "core::ptr::null_mut()"
             } else {
                 "Default::default()"
@@ -330,7 +329,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 }}
             }}
             {}",
-            self.ir.rust_wire_type(false),
+            self.ir.rust_wire_type(Io),
             inflators.join("\n\n")
         )
     }

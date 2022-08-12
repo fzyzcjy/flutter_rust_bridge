@@ -1,3 +1,4 @@
+use crate::target::Target;
 use crate::utils::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
@@ -39,7 +40,7 @@ impl IrFile {
             .iter()
             .filter_map(|ty| {
                 if let IrType::StructRef(_) = ty {
-                    Some(ty.rust_wire_type(false))
+                    Some(ty.rust_wire_type(Target::Io))
                 } else {
                     None
                 }
