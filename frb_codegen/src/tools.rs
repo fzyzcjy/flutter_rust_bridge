@@ -106,7 +106,7 @@ pub enum PackageVersion {
 }
 
 /// represents a package version kind
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum PackageVersionKind {
     /// exact dependency requirement
     /// e.g. `1.2.3`
@@ -117,7 +117,7 @@ pub enum PackageVersionKind {
 }
 
 /// represents dependencies package manager
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum PackageManager {
     Dependencies,
     DevDependencies,
