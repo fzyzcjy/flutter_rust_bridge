@@ -325,7 +325,7 @@ jobs:
   
   dart_web_test:
     name: Dart (Web) unit tests
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v2
@@ -336,8 +336,6 @@ jobs:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
-      # - name: Install Chrome
-      #   run: sudo apt install -y google-chrome-stable
       - name: Install ffigen
         run: dart pub global activate ffigen
       - name: Retrieve wasm-pack from cache
