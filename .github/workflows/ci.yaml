@@ -325,7 +325,7 @@ jobs:
   
   dart_web_test:
     name: Dart (Web) unit tests
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
       - uses: actions/checkout@v2
@@ -336,8 +336,8 @@ jobs:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
-      - name: Install Chrome
-        run: sudo apt install -y google-chrome-stable
+      # - name: Install Chrome
+      #   run: sudo apt install -y google-chrome-stable
       - name: Install ffigen
         run: dart pub global activate ffigen
       - name: Retrieve wasm-pack from cache
@@ -354,14 +354,14 @@ jobs:
           version: latest
           use-tool-cache: true
       - name: Setup Dart dependencies
+        run: dart pub get
+        working-directory: frb_dart
+      - name: Run tests
+        working-directory: frb_example/pure_dart/dart
         run: |
-          (cd frb_dart && dart pub get);
-          (cd frb_example/pure_dart/dart && dart pub get);
-      - name: Run headless tests
-        uses: GabrielBB/xvfb-action@v1
-        with:
-          run: dart run ../../../frb_dart/bin/serve.dart -c ../rust --dart-input lib/main.web.dart --root web/ --browser google-chrome
-          working-directory: frb_example/pure_dart/dart
+          dart pub get && \
+            dart run ../../../frb_dart/bin/serve.dart -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
+
           
 
   # -------------------------- linter --------------------------

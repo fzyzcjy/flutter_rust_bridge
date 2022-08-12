@@ -8,6 +8,7 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' as p;
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:puppeteer/puppeteer.dart';
 
 final which = Platform.isWindows ? 'where.exe' : 'which';
 final open = Platform.isWindows
@@ -78,7 +79,7 @@ void main(List<String> args) async {
         help:
             'Run "dart compile" with the specified input instead of "flutter build".')
     ..addOption('wasm-output', help: 'WASM output path.')
-    ..addOption('browser', help: 'Specify which browser executable to launch.')
+    ..addFlag('run-tests', help: 'Run all tests and exit')
     ..addFlag('release', help: 'Compile in release mode')
     ..addFlag('weak-refs',
         help:
@@ -196,11 +197,15 @@ void main(List<String> args) async {
 
   final staticFilesHandler =
       createStaticHandler(root, defaultDocument: 'index.html');
+  late Browser browser;
+
+  // Test helper.
   final socketHandler = webSocketHandler((WebSocketChannel channel) async {
     await for (final mes in channel.stream) {
       try {
         final data = jsonDecode(mes);
         if (data is Map && data.containsKey('__result__')) {
+          await browser.close();
           exit(data['__result__'] ? 0 : 1);
         } else {
           print(data);
@@ -224,8 +229,14 @@ void main(List<String> args) async {
   final addr = 'http://localhost:$port';
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
-  if (config.wasParsed('browser')) {
-    system(config['browser'], [addr]);
+  if (config['run-tests']) {
+    browser = await puppeteer.launch(
+      executablePath: 'google-chrome',
+      headless: true,
+      noSandboxFlag: true,
+    );
+    final page = await browser.newPage();
+    await page.goto(addr);
   } else {
     system(open, [addr]);
   }
