@@ -346,12 +346,14 @@ jobs:
           crate: wasm-pack
           version: latest
           use-tool-cache: true
-      - name: Run tests
-        run: |
-          export FRB_DART=$(pwd)/frb_dart
-          (cd $FRB_DART && dart pub get);
-          (cd frb_example/pure_dart/dart && dart pub get && \
-            dart run $FRB_DART/bin/serve.dart -c ../rust --dart-input lib/main.web.dart --root web/);
+      - name: Run headless tests
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: |
+            export FRB_DART=$(pwd)/frb_dart
+            (cd $FRB_DART && dart pub get);
+            (cd frb_example/pure_dart/dart && dart pub get && \
+              dart run $FRB_DART/bin/serve.dart -c ../rust --dart-input lib/main.web.dart --root web/ --browser google-chrome);
           
 
   # -------------------------- linter --------------------------

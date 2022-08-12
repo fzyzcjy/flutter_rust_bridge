@@ -6,6 +6,8 @@ import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as p;
+import 'package:shelf_web_socket/shelf_web_socket.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 final which = Platform.isWindows ? 'where.exe' : 'which';
 final open = Platform.isWindows
@@ -76,6 +78,7 @@ void main(List<String> args) async {
         help:
             'Run "dart compile" with the specified input instead of "flutter build".')
     ..addOption('wasm-output', help: 'WASM output path.')
+    ..addOption('browser', help: 'Specify which browser executable to launch.')
     ..addFlag('release', help: 'Compile in release mode')
     ..addFlag('weak-refs',
         help:
@@ -83,7 +86,6 @@ void main(List<String> args) async {
     ..addFlag('reference-types',
         help:
             'Enable the reference types proposal\nRequires wasm-bindgen in path.')
-    // ..addFlag('headless', help: 'Run in headless Chrome.')
     ..addFlag('help', abbr: 'h', help: 'Print this help message');
   final config = parser.parse(args);
   if (config['help']) {
@@ -194,6 +196,20 @@ void main(List<String> args) async {
 
   final staticFilesHandler =
       createStaticHandler(root, defaultDocument: 'index.html');
+  final socketHandler = webSocketHandler((WebSocketChannel channel) async {
+    await for (final mes in channel.stream) {
+      try {
+        final data = jsonDecode(mes);
+        if (data is Map && data.containsKey('__result__')) {
+          exit(data['__result__'] ? 0 : 1);
+        } else {
+          print(data);
+        }
+      } catch (err, st) {
+        print('$err\n$st');
+      }
+    }
+  });
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
       final res = await handler(req);
@@ -202,22 +218,15 @@ void main(List<String> args) async {
         'Cross-Origin-Embedder-Policy': 'credentialless',
       });
     };
-  }).addHandler((req) async {
-    if (req.requestedUri.path == '/_test' && req.method == 'POST') {
-      final result = json.decode(await req.readAsString());
-      if (result is int) {
-        exit(result);
-      } else if (result is bool) {
-        exit(result ? 0 : 1);
-      }
-      return Response.badRequest(body: json.encode(result));
-    }
-    return staticFilesHandler(req);
-  });
+  }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
 
   final port = int.parse(Platform.environment['PORT'] ?? config['port']);
   final addr = 'http://localhost:$port';
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
-  system(open, [addr]);
+  if (config.wasParsed('browser')) {
+    system(config['browser'], [addr]);
+  } else {
+    system(open, [addr]);
+  }
 }
