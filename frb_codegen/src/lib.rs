@@ -132,7 +132,7 @@ pub use io::*;
         commands::format_rust,
         &config.rust_output_path,
         (
-            config.wasm_enabled,
+            config.wasm_enabled && !config.inline_rust,
             config.rust_io_output_path(),
             config.rust_wasm_output_path(),
         )
