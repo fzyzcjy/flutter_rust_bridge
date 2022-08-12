@@ -270,7 +270,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         }})",
                         self.ir.name,
                         variant.name.rust_style(),
-                        typ,
+                        format!("wire_{}", typ),
                         body.join(",")
                     ),
                 ))
