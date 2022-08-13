@@ -1,3 +1,7 @@
+## 1.41.1
+
+* Fix bug with conflicting names in enum name and variant #604 (thanks @Roms1383)
+
 ## 1.41.0
 
 * Allow multi-`mirror` #619 (thanks @Cupnfish)
