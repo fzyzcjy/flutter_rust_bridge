@@ -29,26 +29,24 @@ macro_rules! transfer {
     }};
 }
 
-#[macro_export]
-macro_rules! console_log {
-    ($lit:literal) => {
-        #[allow(unused_unsafe)]
-        unsafe { $crate::ffi::log($lit) }
-    };
-    ($( $tt:tt )*) => {
-        #[allow(unused_unsafe)]
-        unsafe { $crate::ffi::log(&format!($( $tt )*)) }
-    };
-}
+// macro_rules! console_log {
+//     ($lit:literal) => {
+//         #[allow(unused_unsafe)]
+//         unsafe { $crate::ffi::log($lit) }
+//     };
+//     ($( $tt:tt )*) => {
+//         #[allow(unused_unsafe)]
+//         unsafe { $crate::ffi::log(&format!($( $tt )*)) }
+//     };
+// }
 
-#[macro_export]
-macro_rules! console_error {
-    ($lit:literal) => {
-        #[allow(unused_unsafe)]
-        unsafe { $crate::ffi::error($lit) }
-    };
-    ($( $tt:tt )*) => {
-        #[allow(unused_unsafe)]
-        unsafe { $crate::ffi::error(&format!($( $tt )*)) }
-    };
-}
+// macro_rules! console_error {
+//     ($lit:literal) => {
+//         #[allow(unused_unsafe)]
+//         unsafe { $crate::ffi::error($lit) }
+//     };
+//     ($( $tt:tt )*) => {
+//         #[allow(unused_unsafe)]
+//         unsafe { $crate::ffi::error(&format!($( $tt )*)) }
+//     };
+// }

@@ -186,7 +186,7 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
             let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
             let msg = format!("(thread=child, i={}, old_cnt={})", i, old_cnt);
             format!("send data to sink msg={}", msg);
-            sink2.add(msg);
+            let _ = sink2.add(msg);
             thread::sleep(Duration::from_millis(100));
         }
         sink2.close();
@@ -545,11 +545,11 @@ pub fn repeat_sequence(seq: i32, times: usize) -> Sequences {
 }
 
 pub fn first_number(nums: Numbers) -> Option<i32> {
-    nums.0.get(0).copied()
+    nums.0.first().copied()
 }
 
 pub fn first_sequence(seqs: Sequences) -> Option<i32> {
-    seqs.0.get(0).copied()
+    seqs.0.first().copied()
 }
 
 // [T; N] example
@@ -614,7 +614,7 @@ pub fn close_event_listener() {
         if let Ok(mut guard) = EVENTS.try_lock() {
             match guard.as_ref() {
                 None => return,
-                Some(queue) if queue.len() > 0 => {
+                Some(queue) if !queue.is_empty() => {
                     continue;
                 }
                 _ => {
@@ -648,7 +648,7 @@ pub fn handle_stream_sink_at_1(
     #[cfg(not(target_family = "wasm"))]
     std::thread::spawn(move || {
         for i in 0..max {
-            sink.add(Log { key, value: i });
+            let _ = sink.add(Log { key, value: i });
         }
         sink.close();
     });
@@ -716,7 +716,7 @@ impl ConcatenateWith {
         #[cfg(not(target_family = "wasm"))]
         std::thread::spawn(move || {
             for i in 0..max {
-                sink.add(Log2 {
+                let _ = sink.add(Log2 {
                     key,
                     value: format!("{}{}", a, i),
                 });
@@ -730,7 +730,7 @@ impl ConcatenateWith {
         #[cfg(not(target_family = "wasm"))]
         std::thread::spawn(move || {
             for i in 0..5 {
-                sink.add(i);
+                let _ = sink.add(i);
             }
             sink.close();
         });
@@ -745,7 +745,7 @@ impl ConcatenateWith {
         #[cfg(not(target_family = "wasm"))]
         std::thread::spawn(move || {
             for i in 0..max {
-                sink.add(Log2 {
+                let _ = sink.add(Log2 {
                     key,
                     value: i.to_string(),
                 });
@@ -761,7 +761,7 @@ impl ConcatenateWith {
         #[cfg(not(target_family = "wasm"))]
         std::thread::spawn(move || {
             for i in 0..5 {
-                sink.add(i);
+                let _ = sink.add(i);
             }
             sink.close();
         });

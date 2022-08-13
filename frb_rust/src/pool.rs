@@ -3,7 +3,6 @@
 //! File: https://github.com/rustwasm/wasm-bindgen/blob/main/examples/raytrace-parallel/src/pool.rs
 
 use crate::TransferClosure;
-use crate::{console_error, console_log};
 use js_sys::Array;
 use std::cell::RefCell;
 use std::iter::FromIterator;
@@ -44,8 +43,8 @@ impl WorkerPool {
             name,
             state: Rc::new(PoolState {
                 workers: RefCell::new(Vec::with_capacity(initial)),
-                callback: Closure::new(|event: Event| {
-                    console_log!("unhandled event: {}", event.type_());
+                callback: Closure::new(|_: Event| {
+                    // console_log!("unhandled event: {}", event.type_());
                 }),
             }),
         };
@@ -67,7 +66,7 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     fn spawn(&self) -> Result<Worker, JsValue> {
-        console_log!("spawning new worker");
+        // console_log!("spawning new worker");
         // TODO: what do do about `./worker.js`:
         //
         // * the path is only known by the bundler. How can we, as a
@@ -157,8 +156,8 @@ impl WorkerPool {
         let reclaim_slot = Rc::new(RefCell::new(None));
         let slot2 = reclaim_slot.clone();
         let reclaim = Closure::<dyn FnMut(_)>::new(move |event: Event| {
-            if let Some(error) = event.dyn_ref::<ErrorEvent>() {
-                console_error!("error in worker: {}", error.message());
+            if event.dyn_ref::<ErrorEvent>().is_some() {
+                // console_error!("error in worker: {}", error.message());
                 // TODO: this probably leaks memory somehow? It's sort of
                 // unclear what to do about errors in workers right now.
                 return;
@@ -171,10 +170,9 @@ impl WorkerPool {
                     state.push(worker2.clone());
                 }
                 *slot2.borrow_mut() = None;
-                return;
             }
 
-            console_log!("unhandled event while reclaiming: {}", event.type_());
+            // console_log!("unhandled event while reclaiming: {}", event.type_());
             // crate::logv(&event);
             // TODO: like above, maybe a memory leak here?
         });

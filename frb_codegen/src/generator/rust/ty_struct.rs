@@ -146,7 +146,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         };
         format!(
             "impl support::IntoDart for {} {{
-                fn into_dart(self) -> support::DartCObject {{
+                fn into_dart(self) -> support::DartAbi {{
                     vec![
                         {}
                     ].into_dart()

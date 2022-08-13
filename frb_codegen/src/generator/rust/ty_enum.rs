@@ -263,7 +263,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             .collect::<Vec<_>>();
         format!(
             "impl support::IntoDart for {} {{
-                fn into_dart(self) -> support::DartCObject {{
+                fn into_dart(self) -> support::DartAbi {{
                     match {} {{
                         {}
                     }}.into_dart()

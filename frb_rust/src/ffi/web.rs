@@ -1,4 +1,4 @@
-use super::DartCObject;
+use super::DartAbi;
 use super::IntoDart;
 use super::MessagePort;
 pub use js_sys;
@@ -87,7 +87,7 @@ pub use pointer::Pointer;
 
 impl IntoDart for () {
     #[inline]
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         JsValue::undefined()
     }
 }
@@ -95,8 +95,8 @@ macro_rules! delegate {
     ($( $ty:ty )*) => {$(
         impl IntoDart for $ty {
             #[inline]
-            fn into_dart(self) -> DartCObject {
-                DartCObject::from(self)
+            fn into_dart(self) -> DartAbi {
+                DartAbi::from(self)
             }
         }
     )*};
@@ -105,7 +105,7 @@ macro_rules! delegate_buffer {
     ($( $ty:ty => $buffer:ty )*) => {$(
         impl IntoDart for $ty {
             #[inline]
-            fn into_dart(self) -> DartCObject {
+            fn into_dart(self) -> DartAbi {
                 <$buffer>::from(self.as_slice()).into()
             }
         }
@@ -139,21 +139,21 @@ delegate_buffer! {
 
 impl<T: IntoDartExceptPrimitive> IntoDart for Vec<T> {
     #[inline]
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         Array::from_iter(self.into_iter().map(IntoDart::into_dart)).into()
     }
 }
 
 impl<T: IntoDart> IntoDart for Option<T> {
     #[inline]
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         self.map(T::into_dart).unwrap_or_else(JsValue::null)
     }
 }
 
 impl<const N: usize, T: IntoDartExceptPrimitive> IntoDart for [T; N] {
     #[inline]
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         let boxed: Box<[T]> = Box::new(self);
         boxed.into_vec().into_dart()
     }
@@ -161,7 +161,7 @@ impl<const N: usize, T: IntoDartExceptPrimitive> IntoDart for [T; N] {
 
 impl<const N: usize> IntoDart for [u8; N] {
     #[inline]
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         Vec::from(self).into_dart()
     }
 }
@@ -184,22 +184,22 @@ macro_rules! delegate_big_buffers {
 }
 
 impl IntoDart for Vec<i64> {
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         delegate_big_buffers!(self, i64 => BigInt64Array);
     }
 }
 impl IntoDart for Vec<u64> {
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         delegate_big_buffers!(self, u64 => BigUint64Array);
     }
 }
 impl IntoDart for ZeroCopyBuffer<Vec<i64>> {
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         self.0.into_dart()
     }
 }
 impl IntoDart for ZeroCopyBuffer<Vec<u64>> {
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         self.0.into_dart()
     }
 }
@@ -217,7 +217,7 @@ impl Isolate {
         self.port
             .post_message(&msg.into_dart())
             .map_err(|err| {
-                crate::console_error!("post: {:?}", err);
+                crate::ffi::log(&format!("post: {:?}", err));
             })
             .is_ok()
     }

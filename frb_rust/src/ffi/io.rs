@@ -1,2 +1,3 @@
+pub use super::DartAbi;
 pub use super::MessagePort;
-pub use allo_isolate::{ffi::DartCObject, *};
+pub use allo_isolate::*;

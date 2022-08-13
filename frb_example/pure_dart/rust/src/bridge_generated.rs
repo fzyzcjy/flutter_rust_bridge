@@ -1063,7 +1063,7 @@ impl Wire2Api<Weekdays> for i32 {
 // Section: impl IntoDart
 
 impl support::IntoDart for mirror_ApplicationEnv {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self
             .0
             .vars
@@ -1077,14 +1077,14 @@ impl support::IntoDart for mirror_ApplicationEnv {
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
 
 impl support::IntoDart for mirror_ApplicationEnvVar {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.0 .0.into_dart(), self.0 .1.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
 
 impl support::IntoDart for mirror_ApplicationMessage {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         match self.0 {
             ApplicationMessage::DisplayMessage(field0) => vec![0.into_dart(), field0.into_dart()],
             ApplicationMessage::RenderPixel { x, y } => {
@@ -1097,7 +1097,7 @@ impl support::IntoDart for mirror_ApplicationMessage {
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
 impl support::IntoDart for mirror_ApplicationMode {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         match self.0 {
             ApplicationMode::Standalone => 0,
             ApplicationMode::Embedded => 1,
@@ -1106,7 +1106,7 @@ impl support::IntoDart for mirror_ApplicationMode {
     }
 }
 impl support::IntoDart for mirror_ApplicationSettings {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![
             self.0.name.into_dart(),
             self.0.version.into_dart(),
@@ -1119,21 +1119,21 @@ impl support::IntoDart for mirror_ApplicationSettings {
 impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
 
 impl support::IntoDart for Attribute {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.key.into_dart(), self.value.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Attribute {}
 
 impl support::IntoDart for ConcatenateWith {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.a.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for ConcatenateWith {}
 
 impl support::IntoDart for Element {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![
             self.tag.into_dart(),
             self.text.into_dart(),
@@ -1146,14 +1146,14 @@ impl support::IntoDart for Element {
 impl support::IntoDartExceptPrimitive for Element {}
 
 impl support::IntoDart for Event {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.address.into_dart(), self.payload.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Event {}
 
 impl support::IntoDart for ExoticOptionals {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![
             self.int32.into_dart(),
             self.int64.into_dart(),
@@ -1176,7 +1176,7 @@ impl support::IntoDart for ExoticOptionals {
 impl support::IntoDartExceptPrimitive for ExoticOptionals {}
 
 impl support::IntoDart for KitchenSink {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         match self {
             Self::Empty => vec![0.into_dart()],
             Self::Primitives {
@@ -1204,35 +1204,35 @@ impl support::IntoDart for KitchenSink {
 impl support::IntoDartExceptPrimitive for KitchenSink {}
 
 impl support::IntoDart for Log {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.key.into_dart(), self.value.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Log {}
 
 impl support::IntoDart for Log2 {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.key.into_dart(), self.value.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Log2 {}
 
 impl support::IntoDart for MySize {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MySize {}
 
 impl support::IntoDart for MyStreamEntry {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.hello.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MyStreamEntry {}
 
 impl support::IntoDart for MyTreeNode {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![
             self.value_i32.into_dart(),
             self.value_vec_u8.into_dart(),
@@ -1245,49 +1245,49 @@ impl support::IntoDart for MyTreeNode {
 impl support::IntoDartExceptPrimitive for MyTreeNode {}
 
 impl support::IntoDart for NewTypeInt {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
 
 impl support::IntoDart for mirror_Numbers {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.0 .0.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_Numbers {}
 
 impl support::IntoDart for Point {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.x.into_dart(), self.y.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
 
 impl support::IntoDart for mirror_Sequences {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.0 .0.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_Sequences {}
 
 impl support::IntoDart for SumWith {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.x.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for SumWith {}
 
 impl support::IntoDart for UserId {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.value.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for UserId {}
 
 impl support::IntoDart for VecOfPrimitivePack {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![
             self.int8list.into_dart(),
             self.uint8list.into_dart(),
@@ -1306,7 +1306,7 @@ impl support::IntoDart for VecOfPrimitivePack {
 impl support::IntoDartExceptPrimitive for VecOfPrimitivePack {}
 
 impl support::IntoDart for Weekdays {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         match self {
             Self::Monday => 0,
             Self::Tuesday => 1,
@@ -1320,7 +1320,7 @@ impl support::IntoDart for Weekdays {
     }
 }
 impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![
             self.int8list.into_dart(),
             self.uint8list.into_dart(),

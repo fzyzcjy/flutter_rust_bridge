@@ -112,7 +112,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 .join("\n");
             return format!(
                 "impl support::IntoDart for {} {{
-                    fn into_dart(self) -> support::DartCObject {{
+                    fn into_dart(self) -> support::DartAbi {{
                         match {} {{
                             {}
                         }}.into_dart()
