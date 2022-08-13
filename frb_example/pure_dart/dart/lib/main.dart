@@ -261,28 +261,28 @@ void main(List<String> args) async {
   });
 
   test('dart call handleEnumStruct', () async {
-    expect(await api.handleEnumStruct(val: Empty()), Empty());
+    expect(await api.handleEnumStruct(val: KitchenSink_Empty()), KitchenSink_Empty());
     expect(
       await api.handleEnumStruct(
-        val: Primitives(int32: 0, float64: 1, boolean: false),
+        val: KitchenSink_Primitives(int32: 0, float64: 1, boolean: false),
       ),
-      Primitives(int32: 1, float64: 2, boolean: true),
+      KitchenSink_Primitives(int32: 1, float64: 2, boolean: true),
     );
     expect(
-      await api.handleEnumStruct(val: Optional(null, 0)),
-      Optional(null, 1),
+      await api.handleEnumStruct(val: KitchenSink_Optional(null, 0)),
+      KitchenSink_Optional(null, 1),
     );
     expect(
-      await api.handleEnumStruct(val: Buffer(Uint8List.fromList([]))),
-      Buffer(Uint8List.fromList([1])),
+      await api.handleEnumStruct(val: KitchenSink_Buffer(Uint8List.fromList([]))),
+      KitchenSink_Buffer(Uint8List.fromList([1])),
     );
     expect(
-      await api.handleEnumStruct(val: Enums(Weekdays.Monday)),
-      Enums(Weekdays.Tuesday),
+      await api.handleEnumStruct(val: KitchenSink_Enums(Weekdays.Monday)),
+      KitchenSink_Enums(Weekdays.Tuesday),
     );
     expect(
-      await api.handleEnumStruct(val: Nested(Empty(), 0)),
-      Nested(Empty(), 1),
+      await api.handleEnumStruct(val: KitchenSink_Nested(KitchenSink_Empty(), 0)),
+      KitchenSink_Nested(KitchenSink_Empty(), 1),
     );
   });
 
@@ -328,8 +328,8 @@ void main(List<String> args) async {
 
   test('dart call getMessage()', () async {
     var message = await api.getMessage();
-    expect(message is RenderPixel, true);
-    message as RenderPixel;
+    expect(message is ApplicationMessage_RenderPixel, true);
+    message as ApplicationMessage_RenderPixel;
     expect(message.x, 5);
     expect(message.y, 10);
 
@@ -467,6 +467,21 @@ void main(List<String> args) async {
     }
     expect(cnt, 5);
   }, skip: wasm ? 'StreamSink does not work with threads yet.' : null);
+
+  test('dart call multiplyByTen()', () async {
+    expect(
+      await api.multiplyByTen(measure: Measure.speed(Speed_GPS(10.0))),
+      Measure.speed(Speed_GPS(100.0)),
+    );
+    expect(
+      await api.multiplyByTen(measure: Measure.speed(Speed_Unknown())),
+      null,
+    );
+    expect((Speed_Unknown).toString(), 'Speed_Unknown');
+    expect((Speed_GPS).toString(), 'Speed_GPS');
+    expect((Distance_Unknown).toString(), 'Distance_Unknown');
+    expect((Distance_Map).toString(), 'Distance_Map');
+  });
 
   print('flutter_rust_bridge example program end');
 }

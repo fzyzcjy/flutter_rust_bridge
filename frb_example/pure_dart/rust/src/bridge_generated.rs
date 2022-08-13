@@ -726,11 +726,14 @@ fn wire_handle_stream_sink_at_3_impl(
 fn wire_get_sum_struct_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "get_sum_struct",
+            debug_name: "multiply_by_ten",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(get_sum_struct()),
+        move || {
+            let api_measure = measure.wire2api();
+            move |task_callback| Ok(multiply_by_ten(api_measure))
+        },
     )
 }
 fn wire_sum__method__SumWith_impl(
@@ -1020,6 +1023,24 @@ impl Wire2Api<i8> for i8 {
     }
 }
 
+impl Wire2Api<Measure> for wire_Measure {
+    fn wire2api(self) -> Measure {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Speed);
+                Measure::Speed(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Distance);
+                Measure::Distance(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+
 impl Wire2Api<MyEnum> for i32 {
     fn wire2api(self) -> MyEnum {
         match self {
@@ -1132,6 +1153,16 @@ impl support::IntoDart for ConcatenateWith {
 }
 impl support::IntoDartExceptPrimitive for ConcatenateWith {}
 
+impl support::IntoDart for Distance {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::Unknown => vec![0.into_dart()],
+            Self::Map(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Distance {}
 impl support::IntoDart for Element {
     fn into_dart(self) -> support::DartCObject {
         vec![
@@ -1217,6 +1248,16 @@ impl support::IntoDart for Log2 {
 }
 impl support::IntoDartExceptPrimitive for Log2 {}
 
+impl support::IntoDart for Measure {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::Speed(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::Distance(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Measure {}
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartCObject {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
@@ -1272,6 +1313,16 @@ impl support::IntoDart for mirror_Sequences {
 }
 impl support::IntoDartExceptPrimitive for mirror_Sequences {}
 
+impl support::IntoDart for Speed {
+    fn into_dart(self) -> support::DartCObject {
+        match self {
+            Self::Unknown => vec![0.into_dart()],
+            Self::GPS(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Speed {}
 impl support::IntoDart for SumWith {
     fn into_dart(self) -> support::DartCObject {
         vec![self.x.into_dart()].into_dart()

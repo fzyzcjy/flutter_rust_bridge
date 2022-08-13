@@ -696,6 +696,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<Measure?> multiplyByTen({required Measure measure, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_multiply_by_ten(port_, _api2wire_box_autoadd_measure(measure)),
+        parseSuccessData: _wire2api_opt_measure,
+        constMeta: kMultiplyByTenConstMeta,
+        argValues: [measure],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kMultiplyByTenConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "multiply_by_ten",
+        argNames: ["measure"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -955,16 +968,16 @@ ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
 ApplicationMessage _wire2api_application_message(dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return DisplayMessage(
+      return ApplicationMessage_DisplayMessage(
         _wire2api_String(raw[1]),
       );
     case 1:
-      return RenderPixel(
+      return ApplicationMessage_RenderPixel(
         x: _wire2api_i32(raw[1]),
         y: _wire2api_i32(raw[2]),
       );
     case 2:
-      return Exit();
+      return ApplicationMessage_Exit();
     default:
       throw Exception("unreachable");
   }
@@ -1034,8 +1047,16 @@ NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
   return _wire2api_new_type_int(raw);
 }
 
+Distance _wire2api_box_distance(dynamic raw) {
+  return _wire2api_distance(raw);
+}
+
 KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
   return _wire2api_kitchen_sink(raw);
+}
+
+Speed _wire2api_box_speed(dynamic raw) {
+  return _wire2api_speed(raw);
 }
 
 ConcatenateWith _wire2api_concatenate_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
@@ -1045,6 +1066,19 @@ ConcatenateWith _wire2api_concatenate_with(FlutterRustBridgeExampleSingleBlockTe
     bridge: bridge,
     a: _wire2api_String(arr[0]),
   );
+}
+
+Distance _wire2api_distance(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return Distance_Unknown();
+    case 1:
+      return Distance_Map(
+        _wire2api_f64(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
 }
 
 Element _wire2api_element(dynamic raw) {
@@ -1139,29 +1173,29 @@ Int8List _wire2api_int_8_list(dynamic raw) {
 KitchenSink _wire2api_kitchen_sink(dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return Empty();
+      return KitchenSink_Empty();
     case 1:
-      return Primitives(
+      return KitchenSink_Primitives(
         int32: _wire2api_i32(raw[1]),
         float64: _wire2api_f64(raw[2]),
         boolean: _wire2api_bool(raw[3]),
       );
     case 2:
-      return Nested(
+      return KitchenSink_Nested(
         _wire2api_box_kitchen_sink(raw[1]),
         _wire2api_i32(raw[2]),
       );
     case 3:
-      return Optional(
+      return KitchenSink_Optional(
         _wire2api_opt_box_autoadd_i32(raw[1]),
         _wire2api_opt_box_autoadd_i32(raw[2]),
       );
     case 4:
-      return Buffer(
+      return KitchenSink_Buffer(
         _wire2api_ZeroCopyBuffer_Uint8List(raw[1]),
       );
     case 5:
-      return Enums(
+      return KitchenSink_Enums(
         _wire2api_weekdays(raw[1]),
       );
     default:
@@ -1213,6 +1247,21 @@ Log2 _wire2api_log_2(dynamic raw) {
     key: _wire2api_u32(arr[0]),
     value: _wire2api_String(arr[1]),
   );
+}
+
+Measure _wire2api_measure(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return Measure_Speed(
+        _wire2api_box_speed(raw[1]),
+      );
+    case 1:
+      return Measure_Distance(
+        _wire2api_box_distance(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
 }
 
 MySize _wire2api_my_size(dynamic raw) {
@@ -1327,6 +1376,10 @@ List<Attribute?>? _wire2api_opt_list_opt_box_autoadd_attribute(dynamic raw) {
   return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
 }
 
+Measure? _wire2api_opt_measure(dynamic raw) {
+  return raw == null ? null : _wire2api_measure(raw);
+}
+
 Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
   return raw == null ? null : _wire2api_uint_8_list(raw);
 }
@@ -1350,6 +1403,19 @@ Sequences _wire2api_sequences(dynamic raw) {
   return Sequences(
     field0: _wire2api_int_32_list(arr[0]),
   );
+}
+
+Speed _wire2api_speed(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return Speed_Unknown();
+    case 1:
+      return Speed_GPS(
+        _wire2api_f64(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
 }
 
 SumWith _wire2api_sum_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
@@ -1446,3 +1512,5 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw
     float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[9]),
   );
 }
+<<<<<<< HEAD
+=======

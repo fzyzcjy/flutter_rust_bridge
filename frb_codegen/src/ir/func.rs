@@ -66,7 +66,7 @@ pub enum IrFuncArg {
     Type(IrType),
 }
 
-#[derive(Debug, Clone, PartialOrd, PartialEq)]
+#[derive(Debug, Clone, PartialOrd, PartialEq, Eq)]
 pub enum IrFuncMode {
     Normal,
     Sync,

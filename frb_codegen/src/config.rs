@@ -17,7 +17,7 @@ use crate::ir::IrFile;
 use crate::parser;
 use crate::utils::BlockIndex;
 
-#[derive(Parser, Debug, PartialEq, Deserialize, Default)]
+#[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
 #[clap(version, setting(clap::AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
     /// Path of input Rust code
