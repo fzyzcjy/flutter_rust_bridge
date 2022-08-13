@@ -1,6 +1,6 @@
 [package]
 name = "flutter_rust_bridge_macros"
-version = "1.41.0"
+version = "1.41.1"
 edition = "2018"
 description = "Supporting procedural macros for flutter_rust_bridge"
 license = "MIT"
