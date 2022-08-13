@@ -63,10 +63,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
         if let IrTypeDelegate::PrimitiveEnum { ir, .. } = &self.ir {
             super::TypeEnumRefGenerator {
                 ir: ir.clone(),
-                context: TypeGeneratorContext {
-                    dart_api_class_name: None,
-                    ..self.context.clone()
-                },
+                context: self.context.clone(),
             }
             .structs()
         } else {

@@ -1,9 +1,13 @@
+#![allow(clippy::vec_init_then_push)]
+
 use itertools::Itertools;
+use log::log_enabled;
 use std::fmt::Write;
 use std::path::Path;
 use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
+use std::process::Stdio;
 use std::str::FromStr;
 
 use crate::error::{Error, Result};
@@ -20,7 +24,6 @@ use log::{debug, info, warn};
 ///   - A tuple of `(condition, expr, ...expr)` that adds `expr`s to the arguments only if `condition` is satisfied.
 ///
 /// Returns [`Output`] if executing a command name, or the return value of the specified function.
-#[macro_export]
 macro_rules! run {
     ($binary:literal, $($rest:tt)*) => {{
         let args = $crate::args!($($rest)*);
@@ -33,6 +36,7 @@ macro_rules! run {
 }
 
 /// Formats a list of [`PathBuf`]s using the syntax detailed in [`run`].
+#[doc(hidden)]
 #[macro_export]
 macro_rules! args {
     (@args $args:ident $(,)?) => {};
@@ -55,7 +59,7 @@ macro_rules! args {
         $crate::args!(@args $args $($rest)*);
     };
     ($($rest:tt)*) => {{
-        let mut args = vec![];
+        let mut args = Vec::new();
         $crate::args!(@args args $($rest)*,);
         args
     }};
@@ -131,10 +135,13 @@ fn execute_command<'a>(
     args: impl IntoIterator<Item = &'a std::path::PathBuf>,
     current_dir: Option<&str>,
 ) -> Output {
-    let mut cmd = Command::new(bin);
     let args = args.into_iter().collect::<Vec<_>>();
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
+    let mut cmd = Command::new(bin);
     cmd.args(args);
+    if log_enabled!(log::Level::Info) {
+        cmd.stdout(Stdio::inherit()).stderr(Stdio::inherit());
+    }
 
     if let Some(current_dir) = current_dir {
         cmd.current_dir(current_dir);
@@ -200,7 +207,7 @@ fn cbindgen(
             "stdint.h".to_string(),
             "stdlib.h".to_string(),
         ],
-        defines: [("target_family = 'wasm'".into(), "DEFINE_WASM".into())].into(),
+        defines: [("target_family = wasm".into(), "DEFINE_WASM".into())].into(),
         no_includes: true,
         export: cbindgen::ExportConfig {
             include: c_struct_names

@@ -1,4 +1,4 @@
-use crate::ir::*;
+use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
 use IrType::*;
 
@@ -80,21 +80,21 @@ pub trait IrTypeTrait {
 
     fn dart_api_type(&self) -> String;
 
-    fn dart_wire_type(&self, wasm: bool) -> String;
+    fn dart_wire_type(&self, target: Target) -> String;
 
     fn rust_api_type(&self) -> String;
 
-    fn rust_wire_type(&self, wasm: bool) -> String;
+    fn rust_wire_type(&self, target: Target) -> String;
 
-    fn rust_wire_modifier(&self, wasm: bool) -> String {
-        if self.rust_wire_is_pointer(wasm) {
+    fn rust_wire_modifier(&self, target: Target) -> String {
+        if self.rust_wire_is_pointer(target) {
             "*mut ".to_string()
         } else {
             "".to_string()
         }
     }
 
-    fn rust_wire_is_pointer(&self, _wasm: bool) -> bool {
+    fn rust_wire_is_pointer(&self, _target: Target) -> bool {
         false
     }
 }

@@ -1,4 +1,5 @@
 use crate::ir::*;
+use crate::target::Target;
 use convert_case::{Case, Casing};
 
 #[derive(Debug, Clone)]
@@ -32,8 +33,8 @@ impl IrTypeTrait for IrTypePrimitiveList {
         .to_string()
     }
 
-    fn dart_wire_type(&self, wasm: bool) -> String {
-        if wasm {
+    fn dart_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
             self.dart_api_type()
         } else {
             format!("ffi.Pointer<wire_{}>", self.safe_ident())
@@ -44,8 +45,8 @@ impl IrTypeTrait for IrTypePrimitiveList {
         format!("Vec<{}>", self.primitive.rust_api_type())
     }
 
-    fn rust_wire_type(&self, wasm: bool) -> String {
-        if wasm {
+    fn rust_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
             match self.primitive {
                 IrTypePrimitive::Bool | IrTypePrimitive::Unit => "JsValue".into(),
                 _ => format!("Box<[{}]>", self.primitive.rust_api_type()),
@@ -55,8 +56,8 @@ impl IrTypeTrait for IrTypePrimitiveList {
         }
     }
 
-    fn rust_wire_is_pointer(&self, wasm: bool) -> bool {
-        !wasm
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        !target.is_wasm()
     }
 }
 

@@ -3,7 +3,7 @@ use crate::generator::rust::{
     generate_list_allocate_func, ExternFuncCollector, TypeGeneralListGenerator,
 };
 use crate::ir::*;
-use crate::target::Acc;
+use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
 
@@ -65,7 +65,10 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         match &self.ir {
             ty @ IrTypeDelegate::StringList => Some(vec![
-                format!("ptr: *mut *mut {}", ty.get_delegate().rust_wire_type(false)),
+                format!(
+                    "ptr: *mut *mut {}",
+                    ty.get_delegate().rust_wire_type(Target::Io)
+                ),
                 "len: i32".to_owned(),
             ]),
             _ => None,
@@ -109,7 +112,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 .join("\n");
             return format!(
                 "impl support::IntoDart for {} {{
-                    fn into_dart(self) -> support::DartCObject {{
+                    fn into_dart(self) -> support::DartAbi {{
                         match {} {{
                             {}
                         }}.into_dart()
@@ -129,7 +132,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             IrTypeDelegate::PrimitiveEnum { repr, .. } => format!(
                 "(self.unchecked_into_f64() as {}).wire2api()",
-                repr.rust_wire_type(true)
+                repr.rust_wire_type(Target::Wasm)
             )
             .into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {

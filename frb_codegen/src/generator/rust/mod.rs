@@ -255,8 +255,8 @@ impl<'a> Generator<'a> {
                     Io | Wasm => format!(
                         "{}: {}{}",
                         name,
-                        field.ty.rust_wire_modifier(target.is_wasm()),
-                        field.ty.rust_wire_type(target.is_wasm())
+                        field.ty.rust_wire_modifier(target),
+                        field.ty.rust_wire_type(target)
                     ),
                 })
             })
@@ -391,7 +391,7 @@ impl<'a> Generator<'a> {
                     {}
                 }}
                 "###,
-                ty.rust_wire_type(false),
+                ty.rust_wire_type(Target::Io),
                 fields.join(",\n"),
             )
         } else {
@@ -426,15 +426,14 @@ impl<'a> Generator<'a> {
             .wire2api_body()
             .map(|body, target| {
                 body.map(|body| {
-                    let wasm = target.is_wasm();
                     format!(
                         "impl Wire2Api<{api}> for {}{} {{
                             fn wire2api(self) -> {api} {{
                                 {}
                             }}
                         }}",
-                        ty.rust_wire_modifier(wasm),
-                        ty.rust_wire_type(wasm),
+                        ty.rust_wire_modifier(target),
+                        ty.rust_wire_type(target),
                         body,
                         api = ty.rust_api_type(),
                     )
@@ -519,20 +518,20 @@ pub fn generate_list_allocate_func(
     inner: &IrType,
     block_index: BlockIndex,
 ) -> String {
-    let wasm = false;
+    // let wasm = false;
     collector.generate(
         &format!("new_{}_{}", safe_ident, block_index),
         [("len: i32", "int")],
         Some(&[
-            list.rust_wire_modifier(wasm).as_str(),
-            list.rust_wire_type(wasm).as_str()
+            list.rust_wire_modifier(Target::Io).as_str(),
+            list.rust_wire_type(Target::Io).as_str()
         ].concat()),
         &format!(
             "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
                 support::new_leak_box_ptr(wrap)",
-            list.rust_wire_type(wasm),
+            list.rust_wire_type(Target::Io),
             inner.rust_ptr_modifier(),
-            inner.rust_wire_type(wasm)
+            inner.rust_wire_type(Target::Io)
         ),
         Io,
     )

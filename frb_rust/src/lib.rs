@@ -8,7 +8,8 @@ pub mod ffi;
 pub use ffi::*;
 
 pub mod handler;
-pub mod macros;
+#[macro_use]
+mod macros;
 #[cfg(wasm)]
 mod pool;
 pub mod rust2dart;

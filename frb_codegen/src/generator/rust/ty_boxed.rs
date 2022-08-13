@@ -74,15 +74,15 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     ) -> Acc<Option<String>> {
         if self.ir.inner.is_primitive() {
             Acc::new(|target| {
-                let wasm = target.is_wasm();
+                // let wasm = target.is_wasm();
                 match target {
                     Io | Wasm => Some(collector.generate(
                         &format!("new_{}_{}", self.ir.safe_ident(), block_index),
                         [(
-                            format!("value: {}", self.ir.inner.rust_wire_type(wasm)),
-                            self.ir.inner.dart_wire_type(wasm),
+                            format!("value: {}", self.ir.inner.rust_wire_type(target)),
+                            self.ir.inner.dart_wire_type(target),
                         )],
-                        Some(&format!("*mut {}", self.ir.inner.rust_wire_type(false))),
+                        Some(&format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
                         "support::new_leak_box_ptr(value)",
                         target,
                     )),
@@ -90,26 +90,17 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                 }
             })
         } else {
-            let wasm = false;
             Acc {
-                io: Some(
-                    collector.generate(
-                        &format!("new_{}_{}", self.ir.safe_ident(), block_index),
-                        NO_PARAMS,
-                        Some(
-                            &[
-                                self.ir.rust_wire_modifier(wasm),
-                                self.ir.rust_wire_type(wasm),
-                            ]
-                            .concat(),
-                        ),
-                        &format!(
-                            "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                            self.ir.inner.rust_wire_type(wasm)
-                        ),
-                        Io,
+                io: Some(collector.generate(
+                    &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                    NO_PARAMS,
+                    Some(&[self.ir.rust_wire_modifier(Io), self.ir.rust_wire_type(Io)].concat()),
+                    &format!(
+                        "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                        self.ir.inner.rust_wire_type(Io)
                     ),
-                ),
+                    Io,
+                )),
                 ..Default::default()
             }
         }

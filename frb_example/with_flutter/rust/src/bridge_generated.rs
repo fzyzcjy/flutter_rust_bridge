@@ -241,28 +241,28 @@ impl Wire2Api<u8> for u8 {
 // Section: impl IntoDart
 
 impl support::IntoDart for BoxedPoint {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![(*self.point).into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for BoxedPoint {}
 
 impl support::IntoDart for Point {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.x.into_dart(), self.y.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
 
 impl support::IntoDart for Size {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Size {}
 
 impl support::IntoDart for TreeNode {
-    fn into_dart(self) -> support::DartCObject {
+    fn into_dart(self) -> support::DartAbi {
         vec![self.name.into_dart(), self.children.into_dart()].into_dart()
     }
 }

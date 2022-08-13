@@ -102,7 +102,7 @@ impl DartApiSpec {
                 TypeDartGenerator::new(
                     ty.clone(),
                     ir_file,
-                    Some(dart_api_class_name.to_string()),
+                    // Some(dart_api_class_name.to_string()),
                     config,
                 )
                 .structs()
@@ -166,7 +166,8 @@ impl DartApiSpec {
 fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> DartBasicCode {
     if needs_freezed {
         DartBasicCode {
-            import: "import 'package:freezed_annotation/freezed_annotation.dart';".to_string(),
+            import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
+                .to_string(),
             part: format!("part '{}.freezed.dart';", dart_output_file_root),
             body: "".to_string(),
         }
@@ -374,7 +375,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 .unwrap()
         )
     } else {
-        String::new()
+        "import 'package:meta/meta.dart';".into()
     };
     let common_import = if config.wasm_enabled {
         format!(
@@ -641,7 +642,7 @@ fn rust_wire_to_dart_wire(ty: &str) -> Cow<str> {
     if ty.starts_with("*mut") {
         return format!("int /* {} */", ty).into();
     }
-    return format!("dynamic /* {} */", ty).into();
+    format!("dynamic /* {} */", ty).into()
 }
 
 fn generate_wasm_wire_func_decl(func: &IrFuncLike) -> String {
@@ -674,32 +675,27 @@ fn generate_wasm_wire_func_method(func: &IrFuncLike) -> String {
 }
 
 fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<String> {
-    let Acc { common, io, wasm } =
-        TypeDartGenerator::new(ty.clone(), ir_file, None, config).api2wire_body();
-    let wrapper = |body: &str, wasm: bool| {
-        format!(
-            "@protected
-            {} api2wire_{}({} raw) {{
-                {}
-            }}",
-            ty.dart_wire_type(wasm),
-            ty.safe_ident(),
-            ty.dart_api_type(),
-            body,
-        )
-    };
-    Acc {
-        common: common
-            .map(|common| wrapper(&common, true))
-            .unwrap_or_default(),
-        io: io.map(|io| wrapper(&io, false)).unwrap_or_default(),
-        wasm: wasm.map(|wasm| wrapper(&wasm, true)).unwrap_or_default(),
-    }
+    TypeDartGenerator::new(ty.clone(), ir_file, config)
+        .api2wire_body()
+        .map(|body, target| {
+            body.map(|body| {
+                format!(
+                    "@protected
+                    {} api2wire_{}({} raw) {{
+                        {}
+                    }}",
+                    ty.dart_wire_type(target),
+                    ty.safe_ident(),
+                    ty.dart_api_type(),
+                    body,
+                )
+            })
+            .unwrap_or_default()
+        })
 }
 
 fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> String {
-    if let Some(body) =
-        TypeDartGenerator::new(ty.clone(), ir_file, None, config).api_fill_to_wire_body()
+    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file, config).api_fill_to_wire_body()
     {
         let target_wire_type = match ty {
             Optional(inner) => &inner.inner,
@@ -712,7 +708,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) 
             }}",
             ty.safe_ident(),
             ty.dart_api_type(),
-            target_wire_type.dart_wire_type(false),
+            target_wire_type.dart_wire_type(Target::Io),
             body,
         )
     } else {
@@ -732,7 +728,7 @@ fn generate_wire2api_func(
     } else {
         "".to_string()
     };
-    let body = TypeDartGenerator::new(ty.clone(), ir_file, None, config).wire2api_body();
+    let body = TypeDartGenerator::new(ty.clone(), ir_file, config).wire2api_body();
     format!(
         "{} _wire2api_{}({}dynamic raw) {{
             {}

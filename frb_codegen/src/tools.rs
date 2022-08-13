@@ -21,7 +21,7 @@ lazy_static! {
 }
 
 /// represents dart or flutter toolchain
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub(crate) enum DartToolchain {
     Dart,
     Flutter,

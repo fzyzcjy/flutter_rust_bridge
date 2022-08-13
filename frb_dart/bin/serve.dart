@@ -21,6 +21,10 @@ final open = Platform.isWindows
 String err(String msg) =>
     stderr.supportsAnsiEscapes ? '\x1b[1;31m$msg\x1b[0m' : msg;
 
+/// Wrap text in bold yellow.
+String warn(String msg) =>
+    stderr.supportsAnsiEscapes ? '\x1b[1;33m$msg\x1b[0m' : msg;
+
 void eprintln([Object? msg = '']) {
   stderr.writeln('${err('error')}: $msg');
 }
@@ -138,26 +142,29 @@ void main(List<String> args) async {
 
   // --- Checks end ---
 
-  final manifest = await system(
+  final manifest = json.decode(await system(
     'cargo',
     ['read-manifest'],
     pwd: crateDir,
     silent: true,
-  );
-  final crateName = (json.decode(manifest)['name'] as String).trim();
-  assert_(crateName.isNotEmpty, 'Crate name cannot be empty.');
+  ));
+  // final crateName = (json.decode(manifest)['name'] as String).trim();
+  final packageName = (manifest['name'] as String).trim();
+  final String crateName = (manifest['targets'] as List).firstWhere(
+      (target) => (target['crate_types'] as List).contains('cdylib'))['name'];
+  assert_(packageName.isNotEmpty, 'Crate name cannot be empty.');
   await system(
     'wasm-pack',
     [
       'build', '-t', 'no-modules', '-d', wasmOutput, '--no-typescript',
-      '--out-name', crateName,
+      '--out-name', packageName,
       if (!config['release']) '--dev', '.',
       '--', // cargo build args
       '-Z', 'build-std=std,panic_abort'
     ],
     pwd: crateDir,
     env: {
-      'FRB_JS': 'pkg/$crateName',
+      'FRB_JS': 'pkg/$packageName',
       'RUSTUP_TOOLCHAIN': 'nightly',
       'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
       if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
@@ -230,8 +237,24 @@ void main(List<String> args) async {
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
   if (config['run-tests']) {
+    String? chromeExecutable;
+    for (final exe in const [
+      'google-chrome',
+      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+    ]) {
+      try {
+        await system(which, [exe]);
+        chromeExecutable = exe;
+        break;
+      } on ProcessException catch (_) {
+        continue;
+      }
+    }
+    if (chromeExecutable == null) {
+      eprintln('${warn('warning')}: Chrome executable not found.');
+    }
     browser = await puppeteer.launch(
-      executablePath: 'google-chrome',
+      executablePath: chromeExecutable,
       headless: true,
       noSandboxFlag: true,
     );

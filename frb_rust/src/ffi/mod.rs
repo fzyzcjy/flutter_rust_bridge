@@ -1,11 +1,11 @@
 #[cfg(wasm)]
-pub type DartCObject = wasm_bindgen::JsValue;
+pub type DartAbi = wasm_bindgen::JsValue;
 #[cfg(not(wasm))]
-pub use allo_isolate::ffi::DartCObject;
+pub type DartAbi = allo_isolate::ffi::DartCObject;
 
 #[cfg(wasm)]
 pub trait IntoDart {
-    fn into_dart(self) -> DartCObject;
+    fn into_dart(self) -> DartAbi;
 }
 #[cfg(not(wasm))]
 pub use allo_isolate::IntoDart;

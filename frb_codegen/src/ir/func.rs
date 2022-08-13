@@ -23,7 +23,6 @@ pub struct IrFuncLike {
 
 impl IrFuncLike {
     pub fn from_ir(func: &IrFunc, target: Target) -> Self {
-        let wasm = target.is_wasm();
         Self {
             name: func.wire_func_name(),
             has_port_argument: func.mode.has_port_argument(),
@@ -33,14 +32,14 @@ impl IrFuncLike {
                 .chain(func.inputs.iter().map(|input| {
                     (
                         input.name.rust_style().to_owned(),
-                        input.ty.dart_wire_type(wasm),
+                        input.ty.dart_wire_type(target),
                     )
                 }))
                 .collect(),
             output: if func.mode.has_port_argument() {
                 "void".to_owned()
             } else {
-                func.output.dart_wire_type(wasm)
+                func.output.dart_wire_type(target)
             },
         }
     }

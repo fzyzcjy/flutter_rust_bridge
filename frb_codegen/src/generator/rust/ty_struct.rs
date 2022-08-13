@@ -2,6 +2,7 @@ use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
 use crate::target::Acc;
+use crate::target::Target;
 use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
@@ -58,8 +59,8 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     format!(
                         "{}: {}{}",
                         field.name.rust_style(),
-                        field.ty.rust_wire_modifier(false),
-                        field.ty.rust_wire_type(false)
+                        field.ty.rust_wire_modifier(Target::Io),
+                        field.ty.rust_wire_type(Target::Io)
                     )
                 })
                 .collect(),
@@ -145,7 +146,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         };
         format!(
             "impl support::IntoDart for {} {{
-                fn into_dart(self) -> support::DartCObject {{
+                fn into_dart(self) -> support::DartAbi {{
                     vec![
                         {}
                     ].into_dart()
@@ -167,7 +168,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     format!(
                         "{}: {},",
                         field.name.rust_style(),
-                        if field.ty.rust_wire_is_pointer(false) {
+                        if field.ty.rust_wire_is_pointer(Target::Io) {
                             "core::ptr::null_mut()"
                         } else {
                             "Default::default()"
@@ -184,7 +185,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     }}
                 }}
             "#,
-            self.ir.rust_wire_type(false),
+            self.ir.rust_wire_type(Target::Io),
             body,
         )
     }

@@ -220,7 +220,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         TaskRet: IntoDart,
     {
         const NUM_WORKERS: usize = 4;
-        #[cfg(not(target_family = "wasm"))]
+        #[cfg(not(wasm))]
         lazy_static::lazy_static! {
             static ref THREAD_POOL: parking_lot::Mutex<threadpool::ThreadPool> =
                 parking_lot::Mutex::new(threadpool::ThreadPool::with_name(
@@ -229,7 +229,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                 ));
         }
 
-        #[cfg(target_family = "wasm")]
+        #[cfg(wasm)]
         thread_local! {
             static WORKER_POOL: crate::pool::WorkerPool = crate::pool::WorkerPool::new(
                 NUM_WORKERS, std::option_env!("FRB_JS").expect("FRB_JS not provided").into()
@@ -272,13 +272,13 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
         });
-        #[cfg(not(target_family = "wasm"))]
+        #[cfg(not(wasm))]
         THREAD_POOL.lock().execute(worker);
 
-        #[cfg(target_family = "wasm")]
+        #[cfg(wasm)]
         WORKER_POOL.with(|pool| {
             if let Err(err) = pool.run(worker) {
-                crate::console_error!("worker error:\n{:#?}", err)
+                crate::ffi::log(&format!("worker error: {:?}", err));
             }
         });
     }
