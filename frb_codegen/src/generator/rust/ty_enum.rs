@@ -81,7 +81,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 format!(
                     "#[repr(C)]
                     #[derive(Clone)]
-                    pub struct {}_{} {{ {} }}",
+                    pub struct wire_{}_{} {{ {} }}",
                     self.ir.name,
                     variant.name,
                     fields.join("\n")
@@ -91,7 +91,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         let union_fields = src
             .variants()
             .iter()
-            .map(|variant| format!("{0}: *mut {1}_{0},", variant.name, self.ir.name))
+            .map(|variant| format!("{0}: *mut wire_{1}_{0},", variant.name, self.ir.name))
             .collect::<Vec<_>>();
         format!(
             "#[repr(C)]
@@ -270,7 +270,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         }})",
                         self.ir.name,
                         variant.name.rust_style(),
-                        typ,
+                        format_args!("wire_{}", typ),
                         body.join(",")
                     ),
                 ))

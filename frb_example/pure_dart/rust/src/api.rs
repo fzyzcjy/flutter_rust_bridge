@@ -544,11 +544,11 @@ pub fn repeat_sequence(seq: i32, times: usize) -> Sequences {
 }
 
 pub fn first_number(nums: Numbers) -> Option<i32> {
-    nums.0.get(0).copied()
+    nums.0.first().copied()
 }
 
 pub fn first_sequence(seqs: Sequences) -> Option<i32> {
-    seqs.0.get(0).copied()
+    seqs.0.first().copied()
 }
 
 // [T; N] example
@@ -743,5 +743,39 @@ impl ConcatenateWith {
             sink.close();
         });
         Ok(())
+    }
+}
+
+#[derive(Debug, Clone)]
+#[frb(freezed)]
+pub enum Speed {
+    Unknown,
+    GPS(f64),
+}
+
+#[derive(Debug, Clone)]
+#[frb(freezed)]
+pub enum Distance {
+    Unknown,
+    Map(f64),
+}
+
+#[derive(Debug, Clone)]
+#[frb(freezed)]
+pub enum Measure {
+    Speed(Box<Speed>),
+    Distance(Box<Distance>),
+}
+
+pub fn multiply_by_ten(measure: Measure) -> Option<Measure> {
+    match measure {
+        Measure::Speed(b) => match *b {
+            Speed::GPS(v) => Some(Measure::Speed(Box::new(Speed::GPS(v * 10.)))),
+            Speed::Unknown => None,
+        },
+        Measure::Distance(b) => match *b {
+            Distance::Map(v) => Some(Measure::Distance(Box::new(Distance::Map(v * 10.)))),
+            Distance::Unknown => None,
+        },
     }
 }
