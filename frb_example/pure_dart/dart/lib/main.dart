@@ -4,7 +4,6 @@ import 'ffi.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
 
 const wasm = bool.fromEnvironment('dart.library.html');
-
 void main(List<String> args) async {
   String dylibPath = args[0];
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
@@ -127,32 +126,32 @@ void main(List<String> args) async {
       cnt++;
     }
     expect(cnt, 10);
-  }, skip: wasm ? 'StreamSink does not work with threads yet.' : null);
+  });
 
-  group('dart call handle_stream', () {
-    Future<void> _testHandleStream(
-        Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
-      final max = 5;
-      final key = 8;
-      final stream = handleStreamFunction(key: key, max: max);
-      var cnt = 0;
-      await for (final value in stream) {
-        print("output from handle_stream_x's stream: $value");
-        expect(value.key, key);
-        cnt++;
-      }
-      expect(cnt, max);
+  Future<void> _testHandleStream(
+      Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
+    final max = 5;
+    final key = 8;
+    final stream = handleStreamFunction(key: key, max: max);
+    var cnt = 0;
+    await for (final value in stream) {
+      print("output from handle_stream_x's stream: $value");
+      expect(value.key, key);
+      cnt++;
     }
+    expect(cnt, max);
+  }
 
-    test('dart call handle_stream_sink_at_1', () {
-      _testHandleStream(api.handleStreamSinkAt1);
-    }, skip: wasm ? 'StreamSink does not work with threads yet.' : null);
-    test('dart call handle_stream_sink_at_2', () {
-      _testHandleStream(api.handleStreamSinkAt2);
-    });
-    test('dart call handle_stream_sink_at_3', () {
-      _testHandleStream(api.handleStreamSinkAt3);
-    });
+  test('dart call handle_stream_sink_at_1', () {
+    _testHandleStream(api.handleStreamSinkAt1);
+  });
+
+  test('dart call handle_stream_sink_at_2', () {
+    _testHandleStream(api.handleStreamSinkAt2);
+  });
+
+  test('dart call handle_stream_sink_at_3', () {
+    _testHandleStream(api.handleStreamSinkAt3);
   });
 
   test('dart call returnErr', () async {
@@ -442,7 +441,7 @@ void main(List<String> args) async {
       cnt++;
     }
     expect(cnt, max);
-  }, skip: wasm ? 'StreamSink does not work with threads yet.' : null);
+  });
 
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
@@ -455,7 +454,7 @@ void main(List<String> args) async {
       cnt++;
     }
     expect(cnt, max);
-  }, skip: wasm ? 'StreamSink does not work with threads yet.' : null);
+  });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
     final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
@@ -466,7 +465,7 @@ void main(List<String> args) async {
       cnt++;
     }
     expect(cnt, 5);
-  }, skip: wasm ? 'StreamSink does not work with threads yet.' : null);
+  });
 
   test('dart call multiplyByTen()', () async {
     expect(

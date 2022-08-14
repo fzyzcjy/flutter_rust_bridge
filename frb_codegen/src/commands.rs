@@ -146,6 +146,9 @@ fn execute_command<'a>(
     if let Some(current_dir) = current_dir {
         cmd.current_dir(current_dir);
     }
+    if log_enabled!(log::Level::Info) {
+        cmd.stdout(Stdio::inherit()).stderr(Stdio::inherit());
+    }
 
     debug!(
         "execute command: bin={} args={:?} current_dir={:?} cmd={:?}",

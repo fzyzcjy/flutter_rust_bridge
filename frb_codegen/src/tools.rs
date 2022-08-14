@@ -389,10 +389,8 @@ mod tests {
     }
 
     fn guess_toolchain_base(path: &Path, expect_toolchain: DartToolchain) {
-        let repo = DartRepository::from_str(&path.to_string_lossy()).expect(&format!(
-            "can get toolchain from {}",
-            path.to_string_lossy()
-        ));
+        let repo = DartRepository::from_str(&path.to_string_lossy())
+            .unwrap_or_else(|_| panic!("can get toolchain from {}", path.to_string_lossy()));
         assert_eq!(repo.toolchain, expect_toolchain);
     }
 

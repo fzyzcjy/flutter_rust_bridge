@@ -10,14 +10,14 @@ use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use web_sys::BlobPropertyBag;
+use web_sys::MessageEvent;
 use web_sys::{Blob, Url};
-use web_sys::{DedicatedWorkerGlobalScope, MessageEvent};
 use web_sys::{ErrorEvent, Event, Worker};
 
 #[wasm_bindgen]
 pub struct WorkerPool {
     state: Rc<PoolState>,
-    name: String,
+    script_src: String,
 }
 
 struct PoolState {
@@ -38,13 +38,13 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     #[wasm_bindgen(constructor)]
-    pub fn new(initial: usize, name: String) -> Result<WorkerPool, JsValue> {
+    pub fn new(initial: usize, script_src: String) -> Result<WorkerPool, JsValue> {
         let pool = WorkerPool {
-            name,
+            script_src,
             state: Rc::new(PoolState {
                 workers: RefCell::new(Vec::with_capacity(initial)),
-                callback: Closure::new(|_: Event| {
-                    // console_log!("unhandled event: {}", event.type_());
+                callback: Closure::new(|event: Event| {
+                    crate::ffi::console_log(&format!("noop callback dropped: {:?}", event));
                 }),
             }),
         };
@@ -66,19 +66,13 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     fn spawn(&self) -> Result<Worker, JsValue> {
-        // console_log!("spawning new worker");
-        // TODO: what do do about `./worker.js`:
-        //
-        // * the path is only known by the bundler. How can we, as a
-        //   library, know what's going on?
-        // * How do we not fetch a script N times? It internally then
-        //   causes another script to get fetched N times...
-        let name = &self.name;
-        let origin = js_sys::global()
-            .unchecked_ref::<DedicatedWorkerGlobalScope>()
-            .origin();
+        let name = &self.script_src;
+        // let origin = js_sys::global()
+        //     .unchecked_ref::<DedicatedWorkerGlobalScope>()
+        //     .origin();
         let script = format!(
-            "importScripts('{origin}/{name}.js'); onmessage = event => {{
+            "importScripts('{name}')
+            onmessage = event => {{
                 let init = wasm_bindgen(...event.data).catch(err => {{
                     setTimeout(() => {{ throw err }})
                     throw err

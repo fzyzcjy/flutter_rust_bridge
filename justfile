@@ -14,6 +14,7 @@ dylib := if os() == "windows" {
 }
 
 default: gen-bridge
+precommit: gen-bridge check lint
 
 alias b := build
 build:

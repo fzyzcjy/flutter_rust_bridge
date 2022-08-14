@@ -1,8 +1,10 @@
-/// On WASM, [JsValue][wasm_bindgen::JsValue]s cannot be shared between workers but instead can be
-/// "transferred". Rust however is not aware of transferables and therefore cannot
-/// capture these values. This macro returns a [TransferClosure] on WASM platforms
-/// which will capture these special values, and a normal [FnOnce] on other platforms.
+/// On WASM, [JsValue][wasm_bindgen::JsValue]s cannot be shared between scopes but instead can be
+/// ["transferred"]. Rust however is not aware of transferables and therefore cannot
+/// capture these values. This macro wraps a closure and returns a [TransferClosure] on WASM platforms
+/// which will capture these special values, or a normal [FnOnce] on other platforms.
 /// Note that the parameter names must match available variables/bindings from the outer scope.
+///
+/// ["transferred"]: https://developer.mozilla.org/en-US/docs/Glossary/Transferable_objects
 #[macro_export]
 macro_rules! transfer {
     (|$($param:ident: $ty:ty),*| { $($body:tt)* }) => {{

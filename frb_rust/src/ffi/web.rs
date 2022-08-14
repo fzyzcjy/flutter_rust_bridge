@@ -9,6 +9,7 @@ pub use wasm_bindgen;
 pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
+use web_sys::BroadcastChannel;
 use web_sys::{DedicatedWorkerGlobalScope, Worker};
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
@@ -17,12 +18,11 @@ impl IntoDartExceptPrimitive for String {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
 mod pointer {
-    use std::marker::PhantomData;
     use std::ptr::NonNull;
     use wasm_bindgen::convert::*;
     use wasm_bindgen::describe::*;
 
-    /// A non-nullable pointer wrapping a [NonNull].
+    /// A non-nullable pointer wrapping a [`NonNull`].
     /// Represented in JS as an unsigned integer.
     ///
     /// Designed as a replacement for [`Option<*mut T>`].
@@ -33,7 +33,7 @@ mod pointer {
     /// `Option<T>` | Yes | Yes
     /// `&T` | No | No
     /// `&mut T` | No | No
-    pub struct Pointer<T>(NonNull<()>, PhantomData<*mut T>);
+    pub struct Pointer<T>(NonNull<T>);
 
     impl<T> Pointer<T> {
         pub const fn as_mut(self) -> *mut T {
@@ -43,8 +43,7 @@ mod pointer {
 
     // HACK: This is wasm_bindgen's implementation detail, so it is not expected to
     // be stable. In the future when `Option<*mut T>` can be exported to JS,
-    // this struct should be removed.
-    #[automatically_derived]
+    // this struct should be deprecated.
     impl<T> WasmDescribe for Pointer<T> {
         fn describe() {
             inform(EXTERNREF);
@@ -56,7 +55,7 @@ mod pointer {
 
         unsafe fn from_abi(js: Self::Abi) -> Self {
             if let Some(ptr) = NonNull::new(js as _) {
-                Self(ptr, PhantomData)
+                Self(ptr)
             } else {
                 panic!("Attempted to retrieve a nullptr")
             }
@@ -150,6 +149,18 @@ impl<T: IntoDart> IntoDart for Option<T> {
         self.map(T::into_dart).unwrap_or_else(JsValue::null)
     }
 }
+impl<T> IntoDart for *const T {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        (self as u32).into_dart()
+    }
+}
+impl<T> IntoDart for *mut T {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        (self as u32).into_dart()
+    }
+}
 
 impl<const N: usize, T: IntoDartExceptPrimitive> IntoDart for [T; N] {
     #[inline]
@@ -173,7 +184,7 @@ macro_rules! delegate_big_buffers {
         let len = $buf.len() * RATIO;
         // Turn Vec into a Box, dropping excess capacity.
         let ptr = Box::into_raw($buf.into_boxed_slice()) as *mut i32;
-        // Reassemble into a new slice, now with more length and shorter byte length
+        // Reassemble into a new slice, now with longer length and shorter byte length
         let buf = unsafe { Box::from_raw(core::slice::from_raw_parts_mut(ptr, len)) };
         // Turn into an Int32Array view
         let out = Int32Array::from(&buf[..]);
@@ -217,18 +228,23 @@ impl Isolate {
         self.port
             .post_message(&msg.into_dart())
             .map_err(|err| {
-                crate::ffi::log(&format!("post: {:?}", err));
+                crate::ffi::console_log(&format!("post: {:?}", err));
             })
             .is_ok()
+    }
+    pub(crate) fn broadcast_name(&self) -> Option<String> {
+        self.port
+            .dyn_ref::<BroadcastChannel>()
+            .map(|channel| channel.name())
     }
 }
 
 #[wasm_bindgen]
 extern "C" {
-    #[wasm_bindgen(js_namespace = console)]
-    pub fn log(msg: &str);
-    #[wasm_bindgen(js_namespace = console)]
-    pub fn error(msg: &str);
+    #[wasm_bindgen(js_namespace = console, js_name = "log")]
+    pub fn console_log(msg: &str);
+    #[wasm_bindgen(js_namespace = console, js_name = "error")]
+    pub fn console_error(msg: &str);
     #[wasm_bindgen(js_namespace = console, js_name = "log")]
     pub fn log_js(js: &JsValue);
 }
@@ -259,6 +275,8 @@ impl TransferClosure<JsValue> {
         // The worker is responsible for cleaning up the leak here.
         let payload = Box::into_raw(Box::new(TransferClosurePayload { func: self.closure }));
         data.unshift(&JsValue::from(payload as i32));
+        // Remove untransferables
+        let transfer = transfer.filter(&mut |val, _, _| val.is_truthy());
         worker
             .post_message_with_transfer(&data, &transfer)
             .map_err(|err| {
@@ -284,10 +302,10 @@ pub trait FromDart {
     fn from_dart(value: &JsValue) -> Self;
 }
 
-impl<T: JsCast + Clone> FromDart for Option<T> {
+impl<T: FromDart> FromDart for Option<T> {
     #[inline]
     fn from_dart(value: &JsValue) -> Self {
-        value.dyn_ref().cloned()
+        (!value.is_null() && !value.is_undefined()).then(|| T::from_dart(value))
     }
 }
 
@@ -296,14 +314,14 @@ macro_rules! delegate_from_dart {
         impl FromDart for $ty {
             #[inline]
             fn from_dart(value: &JsValue) -> Self {
-                value.dyn_ref::<Self>().cloned().expect("FromDart failed")
+                value.clone().unchecked_into()
             }
         }
     )*};
 }
 
 delegate_from_dart! {
-    MessagePort ArrayBuffer
+    PortLike ArrayBuffer
 }
 
 /// ## Safety
@@ -324,4 +342,44 @@ pub fn receive_transfer_closure(
     global()
         .unchecked_into::<DedicatedWorkerGlobalScope>()
         .post_message(&JsValue::UNDEFINED)
+}
+
+#[wasm_bindgen]
+extern "C" {
+    /// Any object implementing the interface of [`web_sys::MessagePort`].
+    ///
+    /// Attempts to coerce [`JsValue`]s into this interface using [`dyn_into`][JsCast::dyn_into]
+    /// or [`dyn_ref`][JsCast::dyn_ref] will fail at runtime.
+    #[derive(Clone)]
+    pub type PortLike;
+    #[wasm_bindgen(method, catch, js_name = "postMessage")]
+    pub fn post_message(this: &PortLike, value: &JsValue) -> Result<(), JsValue>;
+    #[wasm_bindgen(method, catch)]
+    pub fn close(this: &PortLike) -> Result<(), JsValue>;
+}
+
+impl PortLike {
+    /// Create a [`BroadcastChannel`] with the specified name.
+    pub fn broadcast(name: &str) -> Self {
+        BroadcastChannel::new(name)
+            .expect("Failed to create broadcast channel")
+            .unchecked_into()
+    }
+}
+
+/// Copied from https://github.com/chemicstry/wasm_thread/blob/main/src/script_path.js
+pub fn script_path() -> Option<String> {
+    js_sys::eval(
+        r#"
+(() => {
+    try {
+        throw new Error();
+    } catch (e) {
+        let parts = e.stack.match(/(?:\(|@)(\S+):\d+:\d+/);
+        return parts[1];
+    }
+})()"#,
+    )
+    .ok()?
+    .as_string()
 }

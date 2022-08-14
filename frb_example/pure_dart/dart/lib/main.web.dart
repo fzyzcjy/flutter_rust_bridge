@@ -22,29 +22,40 @@ class FetchOptions {
 }
 
 class WebSocketSink extends PrintSink {
-  final channel = WebSocket(Uri.base.replace(scheme: 'ws').toString());
+  final WebSocket socket;
+  final Future<void> opened;
+  WebSocketSink._(this.socket) : opened = socket.onOpen.first;
+  factory WebSocketSink() => WebSocketSink._(WebSocket(Uri.base.replace(scheme: 'ws').toString()));
 
   @override
   void write(Object? obj) {
     super.write(obj);
-    channel.sendString(jsonEncode(obj));
+    opened.then((_) {
+      socket.sendString(jsonEncode(obj));
+    });
   }
 
   @override
   void writeAll(Iterable objects, [String separator = ' ']) {
     super.writeAll(objects, separator);
-    objects.map(jsonEncode).forEach(channel.sendString);
+    opened.then((_) {
+      objects.map(jsonEncode).forEach(socket.sendString);
+    });
   }
 
   @override
   void writeln([Object? obj]) {
     super.writeln(obj);
-    channel.sendString(jsonEncode(obj));
+    opened.then((_) {
+      socket.sendString(jsonEncode(obj));
+    });
   }
 
   void close_(bool result) {
-    channel.sendString(jsonEncode({'__result__': result}));
-    close();
+    opened.then((_) {
+      socket.sendString(jsonEncode({'__result__': result}));
+      close();
+    });
   }
 }
 

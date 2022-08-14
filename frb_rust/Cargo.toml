@@ -38,6 +38,7 @@ web-sys = { version = "0.3.58", features = [
     "BlobPropertyBag",
     "Worker",
     "Url",
+    "BroadcastChannel",
 ] }
 
 [build-dependencies]

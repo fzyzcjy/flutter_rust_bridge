@@ -73,25 +73,32 @@ void main(List<String> args) async {
   final exec = Platform.script.pathSegments.last;
   final parser = ArgParser()
     ..addSeparator('Develop Rust WASM modules with cross-origin isolation.')
-    ..addSeparator('Usage: $exec -w=<WASM> [OPTIONS]')
+    ..addSeparator("""Usage:
+\t$exec --wasm-output <PKG> [options]
+\t$exec --dart-input <ENTRY> --root <WEB_ROOT> [options]""")
+    ..addSeparator('Options:')
     ..addOption('port',
         abbr: 'p', help: 'HTTP port to listen to', defaultsTo: '8080')
-    ..addOption('root', abbr: 'r', help: 'Root of the Flutter/Dart output.')
+    ..addOption('root', abbr: 'r', help: 'Root of the Flutter/Dart output')
     ..addOption('crate',
         abbr: 'c', help: 'Directory of the crate', defaultsTo: 'native')
     ..addOption('dart-input',
+        abbr: 'd',
         help:
-            'Run "dart compile" with the specified input instead of "flutter build".')
-    ..addOption('wasm-output', help: 'WASM output path.')
-    ..addFlag('run-tests', help: 'Run all tests and exit')
-    ..addFlag('release', help: 'Compile in release mode')
+            'Run "dart compile" with the specified input instead of "flutter build"')
+    ..addOption('wasm-output', abbr: 'w', help: 'WASM output path')
+    ..addSeparator('Flags:')
+    ..addFlag('verbose', abbr: 'v', help: 'Display more verbose information')
+    ..addFlag('run-tests', help: 'Run all tests and exit', negatable: false)
+    ..addFlag('release', help: 'Compile in release mode', negatable: false)
     ..addFlag('weak-refs',
         help:
-            'Enable the weak references proposal\nRequires wasm-bindgen in path.')
+            'Enable the weak references proposal\nRequires wasm-bindgen in path')
     ..addFlag('reference-types',
         help:
-            'Enable the reference types proposal\nRequires wasm-bindgen in path.')
-    ..addFlag('help', abbr: 'h', help: 'Print this help message');
+            'Enable the reference types proposal\nRequires wasm-bindgen in path')
+    ..addFlag('help',
+        abbr: 'h', help: 'Print this help message', negatable: false);
   final config = parser.parse(args);
   if (config['help']) {
     print(parser.usage);
@@ -142,29 +149,26 @@ void main(List<String> args) async {
 
   // --- Checks end ---
 
-  final manifest = json.decode(await system(
+  final manifest = jsonDecode(await system(
     'cargo',
     ['read-manifest'],
     pwd: crateDir,
     silent: true,
   ));
-  // final crateName = (json.decode(manifest)['name'] as String).trim();
-  final packageName = (manifest['name'] as String).trim();
   final String crateName = (manifest['targets'] as List).firstWhere(
-      (target) => (target['crate_types'] as List).contains('cdylib'))['name'];
-  assert_(packageName.isNotEmpty, 'Crate name cannot be empty.');
+      (target) => (target['kind'] as List).contains('cdylib'))['name'];
+  assert_(crateName.isNotEmpty, 'Crate name cannot be empty.');
   await system(
     'wasm-pack',
     [
       'build', '-t', 'no-modules', '-d', wasmOutput, '--no-typescript',
-      '--out-name', packageName,
-      if (!config['release']) '--dev', '.',
+      '--out-name', crateName,
+      if (!config['release']) '--dev', crateDir,
       '--', // cargo build args
       '-Z', 'build-std=std,panic_abort'
     ],
-    pwd: crateDir,
     env: {
-      'FRB_JS': 'pkg/$packageName',
+      'FRB_JS': 'pkg/$crateName',
       'RUSTUP_TOOLCHAIN': 'nightly',
       'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
       if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
@@ -174,7 +178,7 @@ void main(List<String> args) async {
     await system('wasm-bindgen', [
       '$crateDir/target/wasm32-unknown-unknown/${config['release'] ? 'release' : 'debug'}/$crateName.wasm',
       '--out-dir',
-      'web/pkg',
+      wasmOutput,
       '--no-typescript',
       '--target',
       'no-modules',
@@ -191,6 +195,7 @@ void main(List<String> args) async {
       '$root/$output.js',
       if (config['release']) '-O2',
       if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
+      if (config['verbose']) '--verbose',
       config['dart-input'],
     ]);
   } else {
@@ -204,7 +209,7 @@ void main(List<String> args) async {
 
   final staticFilesHandler =
       createStaticHandler(root, defaultDocument: 'index.html');
-  late Browser browser;
+  Browser? browser;
 
   // Test helper.
   final socketHandler = webSocketHandler((WebSocketChannel channel) async {
@@ -212,7 +217,7 @@ void main(List<String> args) async {
       try {
         final data = jsonDecode(mes);
         if (data is Map && data.containsKey('__result__')) {
-          await browser.close();
+          await browser?.close();
           exit(data['__result__'] ? 0 : 1);
         } else {
           print(data);

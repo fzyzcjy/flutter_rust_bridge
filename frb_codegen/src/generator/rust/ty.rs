@@ -68,13 +68,6 @@ pub struct TypeGeneratorContext<'a> {
     pub config: &'a Opts,
 }
 
-impl TypeGeneratorContext<'_> {
-    #[inline]
-    pub fn wasm(&self) -> bool {
-        self.config.wasm_enabled
-    }
-}
-
 #[macro_export]
 macro_rules! type_rust_generator_struct {
     ($cls:ident, $ir_cls:ty) => {

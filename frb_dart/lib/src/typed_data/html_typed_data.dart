@@ -11,10 +11,11 @@ external int _castInt(Object? value);
 @JS('TypedArray')
 abstract class TypedArray implements List {
   @override
-  int get length;
+  external int get length;
   external ByteBuffer get buffer;
+  @JS('at')
   @override
-  external dynamic at(int index);
+  external dynamic elementAt(int index);
   external int get byteLength;
   external int get byteOffset;
   external TypedArray copyWithin(target, int start, [int? end]);
@@ -25,11 +26,13 @@ abstract class TypedArray implements List {
   external bool any(callback);
   @override
   external List<T> map<T>(T Function(dynamic) callback);
+  @JS('includes')
+  @override
+  external bool contains(Object? obj);
 }
 
 extension TypedArrayExt on TypedArray {
   int operator [](int index) => _castInt(getProperty(this, index));
-  int elementAt(int index) => at(index);
   Iterator<int> get iterator => entries().map(_castInt).iterator;
 }
 
@@ -38,7 +41,7 @@ abstract class Int64List extends TypedArray {
   external factory Int64List(Object lengthOrBuffer, [int? offset, int? length]);
 
   factory Int64List.fromList(List<int> list) =>
-      Int64List(list.map((n) => BigInt.from(n)));
+      Int64List(list.map((n) => BigInt.from(n)).toList());
 
   factory Int64List.view(
     ByteBuffer buffer, [
@@ -58,7 +61,7 @@ abstract class Uint64List extends TypedArray {
       [int? offset, int? buffer]);
 
   factory Uint64List.fromList(List<int> list) =>
-      Uint64List(list.map((n) => BigInt.from(n)));
+      Uint64List(list.map((n) => BigInt.from(n)).toList());
 
   factory Uint64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
       Uint64List(buffer, offset, length);

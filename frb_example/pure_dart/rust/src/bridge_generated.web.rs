@@ -259,6 +259,11 @@ pub fn wire_get_sum_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_multiply_by_ten(port_: MessagePort, measure: JsValue) {
+    wire_multiply_by_ten_impl(port_, measure)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -537,6 +542,16 @@ impl Wire2Api<Customized> for JsValue {
         }
     }
 }
+impl Wire2Api<Distance> for JsValue {
+    fn wire2api(self) -> Distance {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Distance::Unknown,
+            1 => Distance::Map(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<ExoticOptionals> for JsValue {
     fn wire2api(self) -> ExoticOptionals {
         let self_ = self.unchecked_into::<JsArray>();
@@ -642,6 +657,16 @@ impl Wire2Api<Vec<Option<Attribute>>> for JsValue {
             .iter()
             .map(Wire2Api::wire2api)
             .collect()
+    }
+}
+impl Wire2Api<Measure> for JsValue {
+    fn wire2api(self) -> Measure {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Measure::Speed(self_.get(1).wire2api()),
+            1 => Measure::Distance(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
     }
 }
 
@@ -857,6 +882,16 @@ impl Wire2Api<Sequences> for JsValue {
         Sequences(self_.get(0).wire2api())
     }
 }
+impl Wire2Api<Speed> for JsValue {
+    fn wire2api(self) -> Speed {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Speed::Unknown,
+            1 => Speed::GPS(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<SumWith> for JsValue {
     fn wire2api(self) -> SumWith {
         let self_ = self.unchecked_into::<JsArray>();
@@ -924,6 +959,11 @@ impl Wire2Api<Box<bool>> for JsValue {
         Box::new(self.wire2api())
     }
 }
+impl Wire2Api<Box<Distance>> for JsValue {
+    fn wire2api(self) -> Box<Distance> {
+        Box::new(self.wire2api())
+    }
+}
 impl Wire2Api<Box<ExoticOptionals>> for JsValue {
     fn wire2api(self) -> Box<ExoticOptionals> {
         Box::new(self.wire2api())
@@ -956,6 +996,11 @@ impl Wire2Api<Box<KitchenSink>> for JsValue {
 }
 impl Wire2Api<Box<MySize>> for JsValue {
     fn wire2api(self) -> Box<MySize> {
+        Box::new(self.wire2api())
+    }
+}
+impl Wire2Api<Box<Speed>> for JsValue {
+    fn wire2api(self) -> Box<Speed> {
         Box::new(self.wire2api())
     }
 }

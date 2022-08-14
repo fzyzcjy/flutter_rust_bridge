@@ -232,7 +232,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         #[cfg(wasm)]
         thread_local! {
             static WORKER_POOL: crate::pool::WorkerPool = crate::pool::WorkerPool::new(
-                NUM_WORKERS, std::option_env!("FRB_JS").expect("FRB_JS not provided").into()
+                NUM_WORKERS, crate::script_path().expect("Could not get script path"),
             ).expect("Failed to create worker pool")
         }
 
@@ -240,7 +240,22 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         let eh2 = self.error_handler;
 
         let WrapInfo { port, mode, .. } = wrap_info;
+
+        // BroadcastChannel can't actually cross the thread border since
+        // it is not a transferable, but we can carry its name instead.
+        #[cfg(wasm)]
+        let (port, channel) = if let Some(channel) = port
+            .as_deref()
+            .and_then(wasm_bindgen::JsCast::dyn_ref::<web_sys::BroadcastChannel>)
+        {
+            (None, Some(crate::rust2dart::Channel(channel.name())))
+        } else {
+            (port, None)
+        };
+
         let worker = transfer!(|port: Option<MessagePort>| {
+            #[cfg(wasm)]
+            let port = port.or_else(|| channel.as_ref().map(crate::rust2dart::Channel::port));
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
@@ -272,13 +287,14 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
         });
+
         #[cfg(not(wasm))]
         THREAD_POOL.lock().execute(worker);
 
         #[cfg(wasm)]
         WORKER_POOL.with(|pool| {
             if let Err(err) = pool.run(worker) {
-                crate::ffi::log(&format!("worker error: {:?}", err));
+                crate::ffi::console_error(&format!("worker error: {:?}", err));
             }
         });
     }

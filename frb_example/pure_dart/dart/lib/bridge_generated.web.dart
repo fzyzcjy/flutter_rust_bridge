@@ -116,6 +116,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_measure(Measure raw) {
+    return api2wire_measure(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_my_size(MySize raw) {
     return api2wire_my_size(raw);
   }
@@ -166,6 +171,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_distance(Distance raw) {
+    return api2wire_distance(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_exotic_optionals(ExoticOptionals raw) {
     return api2wire_exotic_optionals(raw);
   }
@@ -201,6 +211,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_speed(Speed raw) {
+    return api2wire_speed(raw);
+  }
+
+  @protected
   int /* *u8 */ api2wire_box_u8(int raw) {
     return inner.new_box_u8_0(api2wire_u8(raw));
   }
@@ -218,6 +233,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_customized(Customized raw) {
     return [api2wire_String(raw.finalField), api2wire_opt_String(raw.nonFinalField)];
+  }
+
+  @protected
+  List<dynamic> api2wire_distance(Distance raw) {
+    if (raw is Distance_Unknown) {
+      return [0];
+    } else if (raw is Distance_Map) {
+      return [1, api2wire_f64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -267,17 +293,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_kitchen_sink(KitchenSink raw) {
-    if (raw is Empty) {
+    if (raw is KitchenSink_Empty) {
       return [0];
-    } else if (raw is Primitives) {
+    } else if (raw is KitchenSink_Primitives) {
       return [1, api2wire_i32(raw.int32), api2wire_f64(raw.float64), api2wire_bool(raw.boolean)];
-    } else if (raw is Nested) {
+    } else if (raw is KitchenSink_Nested) {
       return [2, api2wire_box_kitchen_sink(raw.field0), api2wire_i32(raw.field1)];
-    } else if (raw is Optional) {
+    } else if (raw is KitchenSink_Optional) {
       return [3, api2wire_opt_box_autoadd_i32(raw.field0), api2wire_opt_box_autoadd_i32(raw.field1)];
-    } else if (raw is Buffer) {
+    } else if (raw is KitchenSink_Buffer) {
       return [4, api2wire_ZeroCopyBuffer_Uint8List(raw.field0)];
-    } else if (raw is Enums) {
+    } else if (raw is KitchenSink_Enums) {
       return [5, api2wire_weekdays(raw.field0)];
     }
 
@@ -307,6 +333,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
     return raw.map(api2wire_opt_box_autoadd_attribute).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_measure(Measure raw) {
+    if (raw is Measure_Speed) {
+      return [0, api2wire_box_speed(raw.field0)];
+    } else if (raw is Measure_Distance) {
+      return [1, api2wire_box_distance(raw.field0)];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -465,6 +502,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_speed(Speed raw) {
+    if (raw is Speed_Unknown) {
+      return [0];
+    } else if (raw is Speed_GPS) {
+      return [1, api2wire_f64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_sum_with(SumWith raw) {
     return [api2wire_u32(raw.x)];
   }
@@ -594,6 +642,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external void wire_handle_stream_sink_at_3(NativePortType port_, int key, int max);
 
   external void wire_get_sum_struct(NativePortType port_);
+
+  external void wire_multiply_by_ten(NativePortType port_, List<dynamic> measure);
 
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
@@ -767,6 +817,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       wasmModule.wire_handle_stream_sink_at_3(port_, key, max);
 
   void wire_get_sum_struct(NativePortType port_) => wasmModule.wire_get_sum_struct(port_);
+
+  void wire_multiply_by_ten(NativePortType port_, List<dynamic> measure) =>
+      wasmModule.wire_multiply_by_ten(port_, measure);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

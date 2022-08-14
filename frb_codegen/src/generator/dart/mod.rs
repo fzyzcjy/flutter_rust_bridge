@@ -269,7 +269,7 @@ fn section_header(header: &str) -> String {
 /// - An `_Impl` class exposing the public Rust functions
 /// - One or more `_Platform` classes implementing platform-specific helpers
 ///
-/// The `_Impl` class takes a `_Platform _plat` instance as a private member,
+/// The `_Impl` class takes a `_Platform _platform` instance as a private member,
 /// and the `_Platform` exposes all of its methods decorated as `@protected`.
 fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<DartBasicCode> {
     let mut lines = Acc::<Vec<_>>::default();

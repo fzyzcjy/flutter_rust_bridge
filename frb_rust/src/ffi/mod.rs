@@ -11,7 +11,7 @@ pub trait IntoDart {
 pub use allo_isolate::IntoDart;
 
 #[cfg(wasm)]
-pub use web_sys::MessagePort;
+pub type MessagePort = web::PortLike;
 #[cfg(not(wasm))]
 pub type MessagePort = i64;
 

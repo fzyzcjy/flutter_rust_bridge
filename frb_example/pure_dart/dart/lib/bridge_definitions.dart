@@ -220,6 +220,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta;
 
+  Future<Measure?> multiplyByTen({required Measure measure, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kMultiplyByTenConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -277,12 +281,12 @@ class ApplicationEnvVar {
 class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.displayMessage(
     String field0,
-  ) = DisplayMessage;
+  ) = ApplicationMessage_DisplayMessage;
   const factory ApplicationMessage.renderPixel({
     required int x,
     required int y,
-  }) = RenderPixel;
-  const factory ApplicationMessage.exit() = Exit;
+  }) = ApplicationMessage_RenderPixel;
+  const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
 }
 
 enum ApplicationMode {
@@ -372,6 +376,14 @@ class Customized {
   });
 }
 
+@freezed
+class Distance with _$Distance {
+  const factory Distance.unknown() = Distance_Unknown;
+  const factory Distance.map(
+    double field0,
+  ) = Distance_Map;
+}
+
 class Element {
   final String? tag;
   final String? text;
@@ -431,28 +443,28 @@ class ExoticOptionals {
 @freezed
 class KitchenSink with _$KitchenSink {
   /// Comment on variant
-  const factory KitchenSink.empty() = Empty;
+  const factory KitchenSink.empty() = KitchenSink_Empty;
   const factory KitchenSink.primitives({
     /// Dart field comment
     required int int32,
     required double float64,
     required bool boolean,
-  }) = Primitives;
+  }) = KitchenSink_Primitives;
   const factory KitchenSink.nested(
     KitchenSink field0,
     int field1,
-  ) = Nested;
+  ) = KitchenSink_Nested;
   const factory KitchenSink.optional([
     /// Comment on anonymous field
     int? field0,
     int? field1,
-  ]) = Optional;
+  ]) = KitchenSink_Optional;
   const factory KitchenSink.buffer(
     Uint8List field0,
-  ) = Buffer;
+  ) = KitchenSink_Buffer;
   const factory KitchenSink.enums(
     Weekdays field0,
-  ) = Enums;
+  ) = KitchenSink_Enums;
 }
 
 class Log {
@@ -473,6 +485,16 @@ class Log2 {
     required this.key,
     required this.value,
   });
+}
+
+@freezed
+class Measure with _$Measure {
+  const factory Measure.speed(
+    Speed field0,
+  ) = Measure_Speed;
+  const factory Measure.distance(
+    Distance field0,
+  ) = Measure_Distance;
 }
 
 enum MyEnum {
@@ -562,6 +584,14 @@ class Sequences {
   Sequences({
     required this.field0,
   });
+}
+
+@freezed
+class Speed with _$Speed {
+  const factory Speed.unknown() = Speed_Unknown;
+  const factory Speed.gps(
+    double field0,
+  ) = Speed_GPS;
 }
 
 class SumWith {

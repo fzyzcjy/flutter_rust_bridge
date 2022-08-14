@@ -1,14 +1,17 @@
 #![allow(unused_variables)]
 
-use std::collections::VecDeque;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
+#[cfg(not(target_family = "wasm"))]
 use std::thread;
 use std::time::Duration;
+#[cfg(target_family = "wasm")]
+use wasm_thread as thread;
 
 use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
+use lazy_static::lazy_static;
 
 use crate::data::{MyEnum, MyStruct};
 
@@ -180,7 +183,6 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
     let cnt2 = cnt.clone();
     let sink2 = sink.clone();
 
-    #[cfg(not(target_family = "wasm"))]
     thread::spawn(move || {
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
@@ -584,8 +586,9 @@ pub fn next_user_id(user_id: UserId) -> UserId {
 }
 
 // event listener test
-lazy_static::lazy_static! {
-    static ref EVENTS: Arc<Mutex<Option<VecDeque<Event>>>> = Arc::new(Mutex::new(Some(Default::default())));
+
+lazy_static! {
+    static ref EVENTS: Mutex<Option<StreamSink<Event>>> = Default::default();
 }
 
 #[frb(dart_metadata = ("freezed"))]
@@ -596,40 +599,22 @@ pub struct Event {
 }
 
 pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
-    while let Ok(mut guard) = EVENTS.lock() {
-        if let Some(queue) = guard.as_mut() {
-            if let Some(event) = queue.pop_front() {
-                let _ = listener.add(event);
-            }
-        } else {
-            break;
-        }
+    if let Ok(mut guard) = EVENTS.lock() {
+        *guard = Some(listener);
     }
-    listener.close();
     Ok(())
 }
 
 pub fn close_event_listener() {
-    loop {
-        if let Ok(mut guard) = EVENTS.try_lock() {
-            match guard.as_ref() {
-                None => return,
-                Some(queue) if !queue.is_empty() => {
-                    continue;
-                }
-                _ => {
-                    let _ = guard.take();
-                    return;
-                }
-            }
-        }
+    if let Ok(Some(sink)) = EVENTS.lock().map(|mut guard| guard.take()) {
+        sink.close();
     }
 }
 
 pub fn create_event(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
-        if let Some(queue) = guard.as_mut() {
-            queue.push_back(Event { address, payload });
+        if let Some(sink) = guard.as_mut() {
+            sink.add(Event { address, payload });
         }
     }
 }
@@ -645,8 +630,7 @@ pub fn handle_stream_sink_at_1(
     max: u32,
     sink: StreamSink<Log>,
 ) -> Result<(), anyhow::Error> {
-    #[cfg(not(target_family = "wasm"))]
-    std::thread::spawn(move || {
+    thread::spawn(move || {
         for i in 0..max {
             let _ = sink.add(Log { key, value: i });
         }
@@ -713,8 +697,7 @@ impl ConcatenateWith {
         sink: StreamSink<Log2>,
     ) -> Result<(), anyhow::Error> {
         let a = self.a.clone();
-        #[cfg(not(target_family = "wasm"))]
-        std::thread::spawn(move || {
+        thread::spawn(move || {
             for i in 0..max {
                 let _ = sink.add(Log2 {
                     key,
@@ -727,8 +710,7 @@ impl ConcatenateWith {
     }
 
     pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
-        #[cfg(not(target_family = "wasm"))]
-        std::thread::spawn(move || {
+        thread::spawn(move || {
             for i in 0..5 {
                 let _ = sink.add(i);
             }
@@ -742,8 +724,7 @@ impl ConcatenateWith {
         max: u32,
         sink: StreamSink<Log2>,
     ) -> Result<(), anyhow::Error> {
-        #[cfg(not(target_family = "wasm"))]
-        std::thread::spawn(move || {
+        thread::spawn(move || {
             for i in 0..max {
                 let _ = sink.add(Log2 {
                     key,
@@ -758,8 +739,7 @@ impl ConcatenateWith {
     pub fn handle_some_static_stream_sink_single_arg(
         sink: StreamSink<u32>,
     ) -> Result<(), anyhow::Error> {
-        #[cfg(not(target_family = "wasm"))]
-        std::thread::spawn(move || {
+        thread::spawn(move || {
             for i in 0..5 {
                 let _ = sink.add(i);
             }

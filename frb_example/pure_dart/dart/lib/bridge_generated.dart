@@ -696,8 +696,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  Future<Measure?> multiplyByTen({required Measure measure, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_multiply_by_ten(port_, _api2wire_box_autoadd_measure(measure)),
+  Future<Measure?> multiplyByTen({required Measure measure, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_multiply_by_ten(port_, _platform.api2wire_box_autoadd_measure(measure)),
         parseSuccessData: _wire2api_opt_measure,
         constMeta: kMultiplyByTenConstMeta,
         argValues: [measure],
@@ -1512,5 +1514,3 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw
     float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[9]),
   );
 }
-<<<<<<< HEAD
-=======

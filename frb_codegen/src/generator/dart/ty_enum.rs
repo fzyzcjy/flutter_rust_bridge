@@ -34,7 +34,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     }}",
                     idx,
                     fields,
-                    variant = variant.name.rust_style(),
+                    variant = variant.wrapper_name.rust_style(),
                 )
             })
             .join("else\n");

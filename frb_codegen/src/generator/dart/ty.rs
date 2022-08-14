@@ -22,7 +22,6 @@ pub trait TypeDartGeneratorTrait {
 pub struct TypeGeneratorContext<'a> {
     pub ir_file: &'a IrFile,
     pub config: &'a Opts,
-    // pub dart_api_class_name: Option<String>,
 }
 
 impl TypeGeneratorContext<'_> {
@@ -57,17 +56,8 @@ pub enum TypeDartGenerator<'a> {
 }
 
 impl<'a> TypeDartGenerator<'a> {
-    pub fn new(
-        ty: IrType,
-        ir_file: &'a IrFile,
-        // dart_api_class_name: Option<String>,
-        config: &'a Opts,
-    ) -> Self {
-        let context = TypeGeneratorContext {
-            ir_file,
-            config,
-            // dart_api_class_name,
-        };
+    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
+        let context = TypeGeneratorContext { ir_file, config };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
             Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),

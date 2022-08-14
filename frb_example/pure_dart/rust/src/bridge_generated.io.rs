@@ -265,6 +265,11 @@ pub extern "C" fn wire_get_sum_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
+    wire_multiply_by_ten_impl(port_, measure)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -527,6 +532,29 @@ pub struct wire_UserId {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_Distance {
+    tag: i32,
+    kind: *mut DistanceKind,
+}
+
+#[repr(C)]
+pub union DistanceKind {
+    Unknown: *mut wire_Distance_Unknown,
+    Map: *mut wire_Distance_Map,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Distance_Unknown {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Distance_Map {
+    field0: f64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_KitchenSink {
     tag: i32,
     kind: *mut KitchenSinkKind,
@@ -534,21 +562,21 @@ pub struct wire_KitchenSink {
 
 #[repr(C)]
 pub union KitchenSinkKind {
-    Empty: *mut KitchenSink_Empty,
-    Primitives: *mut KitchenSink_Primitives,
-    Nested: *mut KitchenSink_Nested,
-    Optional: *mut KitchenSink_Optional,
-    Buffer: *mut KitchenSink_Buffer,
-    Enums: *mut KitchenSink_Enums,
+    Empty: *mut wire_KitchenSink_Empty,
+    Primitives: *mut wire_KitchenSink_Primitives,
+    Nested: *mut wire_KitchenSink_Nested,
+    Optional: *mut wire_KitchenSink_Optional,
+    Buffer: *mut wire_KitchenSink_Buffer,
+    Enums: *mut wire_KitchenSink_Enums,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct KitchenSink_Empty {}
+pub struct wire_KitchenSink_Empty {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct KitchenSink_Primitives {
+pub struct wire_KitchenSink_Primitives {
     int32: i32,
     float64: f64,
     boolean: bool,
@@ -556,28 +584,76 @@ pub struct KitchenSink_Primitives {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct KitchenSink_Nested {
+pub struct wire_KitchenSink_Nested {
     field0: *mut wire_KitchenSink,
     field1: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct KitchenSink_Optional {
+pub struct wire_KitchenSink_Optional {
     field0: *mut i32,
     field1: *mut i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct KitchenSink_Buffer {
+pub struct wire_KitchenSink_Buffer {
     field0: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct KitchenSink_Enums {
+pub struct wire_KitchenSink_Enums {
     field0: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Measure {
+    tag: i32,
+    kind: *mut MeasureKind,
+}
+
+#[repr(C)]
+pub union MeasureKind {
+    Speed: *mut wire_Measure_Speed,
+    Distance: *mut wire_Measure_Distance,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Measure_Speed {
+    field0: *mut wire_Speed,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Measure_Distance {
+    field0: *mut wire_Distance,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Speed {
+    tag: i32,
+    kind: *mut SpeedKind,
+}
+
+#[repr(C)]
+pub union SpeedKind {
+    Unknown: *mut wire_Speed_Unknown,
+    GPS: *mut wire_Speed_GPS,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Speed_Unknown {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Speed_GPS {
+    field0: f64,
 }
 
 // Section: allocate functions
@@ -647,6 +723,11 @@ pub extern "C" fn new_box_autoadd_kitchen_sink_0() -> *mut wire_KitchenSink {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_measure_0() -> *mut wire_Measure {
+    support::new_leak_box_ptr(wire_Measure::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
@@ -697,6 +778,11 @@ pub extern "C" fn new_box_bool_0(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_distance_0() -> *mut wire_Distance {
+    support::new_leak_box_ptr(wire_Distance::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_exotic_optionals_0() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
@@ -729,6 +815,11 @@ pub extern "C" fn new_box_kitchen_sink_0() -> *mut wire_KitchenSink {
 #[no_mangle]
 pub extern "C" fn new_box_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_speed_0() -> *mut wire_Speed {
+    support::new_leak_box_ptr(wire_Speed::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -949,6 +1040,12 @@ impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
         Wire2Api::<KitchenSink>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<Measure> for *mut wire_Measure {
+    fn wire2api(self) -> Measure {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Measure>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<MySize> for *mut wire_MySize {
     fn wire2api(self) -> MySize {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1008,6 +1105,12 @@ impl Wire2Api<Box<bool>> for *mut bool {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<Box<Distance>> for *mut wire_Distance {
+    fn wire2api(self) -> Box<Distance> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Distance>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Box<ExoticOptionals>> for *mut wire_ExoticOptionals {
     fn wire2api(self) -> Box<ExoticOptionals> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1046,6 +1149,12 @@ impl Wire2Api<Box<MySize>> for *mut wire_MySize {
         Wire2Api::<MySize>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<Box<Speed>> for *mut wire_Speed {
+    fn wire2api(self) -> Box<Speed> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Speed>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Box<u8>> for *mut u8 {
     fn wire2api(self) -> Box<u8> {
         unsafe { support::box_from_leak_ptr(self) }
@@ -1069,6 +1178,19 @@ impl Wire2Api<Customized> for wire_Customized {
         Customized {
             final_field: self.final_field.wire2api(),
             non_final_field: self.non_final_field.wire2api(),
+        }
+    }
+}
+impl Wire2Api<Distance> for wire_Distance {
+    fn wire2api(self) -> Distance {
+        match self.tag {
+            0 => Distance::Unknown,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Map);
+                Distance::Map(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
         }
     }
 }
@@ -1208,6 +1330,23 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribu
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
+impl Wire2Api<Measure> for wire_Measure {
+    fn wire2api(self) -> Measure {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Speed);
+                Measure::Speed(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Distance);
+                Measure::Distance(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
 
 impl Wire2Api<MySize> for wire_MySize {
     fn wire2api(self) -> MySize {
@@ -1256,6 +1395,19 @@ impl Wire2Api<Numbers> for wire_Numbers {
 impl Wire2Api<Sequences> for wire_Sequences {
     fn wire2api(self) -> Sequences {
         Sequences(self.field0.wire2api())
+    }
+}
+impl Wire2Api<Speed> for wire_Speed {
+    fn wire2api(self) -> Speed {
+        match self.tag {
+            0 => Speed::Unknown,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.GPS);
+                Speed::GPS(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
     }
 }
 impl Wire2Api<SumWith> for wire_SumWith {
@@ -1348,6 +1500,24 @@ impl NewWithNullPtr for wire_Customized {
     }
 }
 
+impl NewWithNullPtr for wire_Distance {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Distance_Map() -> *mut DistanceKind {
+    support::new_leak_box_ptr(DistanceKind {
+        Map: support::new_leak_box_ptr(wire_Distance_Map {
+            field0: Default::default(),
+        }),
+    })
+}
+
 impl NewWithNullPtr for wire_ExoticOptionals {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1381,7 +1551,7 @@ impl NewWithNullPtr for wire_KitchenSink {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Primitives: support::new_leak_box_ptr(KitchenSink_Primitives {
+        Primitives: support::new_leak_box_ptr(wire_KitchenSink_Primitives {
             int32: Default::default(),
             float64: Default::default(),
             boolean: Default::default(),
@@ -1392,7 +1562,7 @@ pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Nested: support::new_leak_box_ptr(KitchenSink_Nested {
+        Nested: support::new_leak_box_ptr(wire_KitchenSink_Nested {
             field0: core::ptr::null_mut(),
             field1: Default::default(),
         }),
@@ -1402,7 +1572,7 @@ pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Optional() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Optional: support::new_leak_box_ptr(KitchenSink_Optional {
+        Optional: support::new_leak_box_ptr(wire_KitchenSink_Optional {
             field0: core::ptr::null_mut(),
             field1: core::ptr::null_mut(),
         }),
@@ -1412,7 +1582,7 @@ pub extern "C" fn inflate_KitchenSink_Optional() -> *mut KitchenSinkKind {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Buffer() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Buffer: support::new_leak_box_ptr(KitchenSink_Buffer {
+        Buffer: support::new_leak_box_ptr(wire_KitchenSink_Buffer {
             field0: core::ptr::null_mut(),
         }),
     })
@@ -1421,8 +1591,35 @@ pub extern "C" fn inflate_KitchenSink_Buffer() -> *mut KitchenSinkKind {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Enums: support::new_leak_box_ptr(KitchenSink_Enums {
+        Enums: support::new_leak_box_ptr(wire_KitchenSink_Enums {
             field0: Default::default(),
+        }),
+    })
+}
+
+impl NewWithNullPtr for wire_Measure {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Measure_Speed() -> *mut MeasureKind {
+    support::new_leak_box_ptr(MeasureKind {
+        Speed: support::new_leak_box_ptr(wire_Measure_Speed {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Measure_Distance() -> *mut MeasureKind {
+    support::new_leak_box_ptr(MeasureKind {
+        Distance: support::new_leak_box_ptr(wire_Measure_Distance {
+            field0: core::ptr::null_mut(),
         }),
     })
 }
@@ -1486,6 +1683,24 @@ impl NewWithNullPtr for wire_Sequences {
             field0: core::ptr::null_mut(),
         }
     }
+}
+
+impl NewWithNullPtr for wire_Speed {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Speed_GPS() -> *mut SpeedKind {
+    support::new_leak_box_ptr(SpeedKind {
+        GPS: support::new_leak_box_ptr(wire_Speed_GPS {
+            field0: Default::default(),
+        }),
+    })
 }
 
 impl NewWithNullPtr for wire_SumWith {

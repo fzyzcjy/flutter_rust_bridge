@@ -11,7 +11,7 @@ pub use crate::ffi::*;
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Clone)]
 pub struct Rust2Dart {
-    isolate: Isolate,
+    pub(crate) isolate: Isolate,
 }
 
 const RUST2DART_ACTION_SUCCESS: i32 = 0;
@@ -20,8 +20,8 @@ const RUST2DART_ACTION_CLOSE_STREAM: i32 = 2;
 
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
-    /// Create a new wrapper from a raw port number.
-    pub fn new(port: crate::ffi::MessagePort) -> Self {
+    /// Create a new wrapper from a raw port.
+    pub fn new(port: MessagePort) -> Self {
         Rust2Dart {
             isolate: Isolate::new(port),
         }
@@ -79,12 +79,27 @@ impl TaskCallback {
     }
 }
 
+#[derive(Clone)]
+pub struct Channel(pub String);
+
+impl Channel {
+    #[cfg(wasm)]
+    pub fn port(&self) -> MessagePort {
+        PortLike::broadcast(&self.0)
+    }
+}
+
 /// A sink to send asynchronous data back to Dart.
 /// Represented as a Dart
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
 pub struct StreamSink<T: IntoDart> {
+    #[cfg(not(wasm))]
     rust2dart: Rust2Dart,
+    /// On WASM, [`Rust2Dart`] is not [`Send`] so we only
+    /// carry the name of the broadcast channel.
+    #[cfg(wasm)]
+    channel: Channel,
     _phantom_data: PhantomData<T>,
 }
 
@@ -92,21 +107,37 @@ impl<T: IntoDart> StreamSink<T> {
     /// Create a new sink from a port wrapper.
     pub fn new(rust2dart: Rust2Dart) -> Self {
         Self {
+            #[cfg(not(wasm))]
             rust2dart,
+            #[cfg(wasm)]
+            channel: Channel(
+                rust2dart
+                    .isolate
+                    .broadcast_name()
+                    .expect("Not a BroadcastChannel"),
+            ),
             _phantom_data: PhantomData,
         }
     }
 
+    fn rust2dart(&self) -> Rust2Dart {
+        #[cfg(not(wasm))]
+        return self.rust2dart.clone();
+
+        #[cfg(wasm)]
+        Rust2Dart::new(self.channel.port())
+    }
+
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    #[must_use = "Must check if data was sent."]
+    // #[must_use = "Must check if data was sent."]
     pub fn add(&self, value: T) -> bool {
-        self.rust2dart.success(value)
+        self.rust2dart().success(value)
     }
 
     /// Close the stream and ignore further messages. Returns false when
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
-        self.rust2dart.close_stream()
+        self.rust2dart().close_stream()
     }
 }

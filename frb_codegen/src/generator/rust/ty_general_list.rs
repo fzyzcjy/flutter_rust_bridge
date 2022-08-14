@@ -21,8 +21,7 @@ impl TypeGeneralListGenerator<'_> {
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: (self.context.wasm())
-                .then(|| TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
+            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
             io: Some(TypeGeneralListGenerator::WIRE2API_BODY.into()),
             ..Default::default()
         }
