@@ -73,21 +73,18 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         if self.ir.inner.is_primitive() {
-            Acc::new(|target| {
-                // let wasm = target.is_wasm();
-                match target {
-                    Io | Wasm => Some(collector.generate(
-                        &format!("new_{}_{}", self.ir.safe_ident(), block_index),
-                        [(
-                            format!("value: {}", self.ir.inner.rust_wire_type(target)),
-                            self.ir.inner.dart_wire_type(target),
-                        )],
-                        Some(&format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
-                        "support::new_leak_box_ptr(value)",
-                        target,
-                    )),
-                    _ => None,
-                }
+            Acc::new(|target| match target {
+                Io | Wasm => Some(collector.generate(
+                    &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                    [(
+                        format!("value: {}", self.ir.inner.rust_wire_type(target)),
+                        self.ir.inner.dart_wire_type(target),
+                    )],
+                    Some(&format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
+                    "support::new_leak_box_ptr(value)",
+                    target,
+                )),
+                _ => None,
             })
         } else {
             Acc {

@@ -34,11 +34,11 @@ gen-bridge:
                 --dart-format-line-length {{line_length}} --wasm
 
 alias l := lint
-lint:
-    dart format --fix .
-    dart format --fix -l {{line_length}} {{frb_pure}}
-    dart format --fix -l {{line_length}} {{frb_pure_multi}}
-    dart format --fix -l {{line_length}} {{frb_flutter}}
+lint *args="":
+    dart format --fix . {{args}}
+    dart format --fix -l {{line_length}} {{frb_pure}} {{args}}
+    dart format --fix -l {{line_length}} {{frb_pure_multi}} {{args}}
+    dart format --fix -l {{line_length}} {{frb_flutter}} {{args}}
     cd {{frb_pure}}/rust && cargo fmt
     cd {{frb_pure_multi}}/rust && cargo fmt
     cd {{frb_flutter}}/rust && cargo fmt

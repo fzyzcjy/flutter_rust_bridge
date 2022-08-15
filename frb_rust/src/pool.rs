@@ -66,12 +66,10 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     fn spawn(&self) -> Result<Worker, JsValue> {
-        let name = &self.script_src;
-        // let origin = js_sys::global()
-        //     .unchecked_ref::<DedicatedWorkerGlobalScope>()
-        //     .origin();
+        crate::console_log("Spawned a new thread");
+        let src = &self.script_src;
         let script = format!(
-            "importScripts('{name}')
+            "importScripts('{}')
             onmessage = event => {{
                 let init = wasm_bindgen(...event.data).catch(err => {{
                     setTimeout(() => {{ throw err }})
@@ -80,9 +78,18 @@ impl WorkerPool {
                 onmessage = async event => {{
                     await init
                     const [payload, ...transfer] = event.data
-                    wasm_bindgen.receive_transfer_closure(payload, transfer)
+                    try {{
+                        wasm_bindgen.receive_transfer_closure(payload, transfer)
+                    }} catch (err) {{
+                        if (transfer[0].postMessage) {{
+                            transfer[0].postMessage([1, 'ABORT', err.toString(), err.stack])
+                        }}
+                        setTimeout(() => {{ throw err }})
+                        throw err
+                    }}
                 }}
-            }}"
+            }}",
+            src
         );
         let blob = Blob::new_with_blob_sequence_and_options(
             &Array::from_iter([JsValue::from(script)]).into(),
@@ -132,6 +139,8 @@ impl WorkerPool {
     /// message is sent to it.
     fn execute(&self, closure: TransferClosure<JsValue>) -> Result<Worker, JsValue> {
         let worker = self.worker()?;
+        self.reclaim_on_message(&worker);
+        self.terminate_on_error(&worker);
         closure.apply(&worker).map(|_| worker)
     }
 
@@ -144,33 +153,31 @@ impl WorkerPool {
     /// when it's done the worker is ready to execute more work. This method is
     /// used for all spawned workers to ensure that when the work is finished
     /// the worker is reclaimed back into this pool.
-    fn reclaim_on_message(&self, worker: Worker) {
+    fn reclaim_on_message(&self, worker: &Worker) {
         let state = Rc::downgrade(&self.state);
         let worker2 = worker.clone();
         let reclaim_slot = Rc::new(RefCell::new(None));
         let slot2 = reclaim_slot.clone();
-        let reclaim = Closure::<dyn FnMut(_)>::new(move |event: Event| {
-            if event.dyn_ref::<ErrorEvent>().is_some() {
-                // console_error!("error in worker: {}", error.message());
-                // TODO: this probably leaks memory somehow? It's sort of
-                // unclear what to do about errors in workers right now.
-                return;
+        let reclaim = Closure::<dyn FnMut(_)>::new(move |_: MessageEvent| {
+            if let Some(state) = state.upgrade() {
+                state.push(worker2.clone());
             }
-
-            // If this is a completion event then can deallocate our own
-            // callback by clearing out `slot2` which contains our own closure.
-            if event.dyn_ref::<MessageEvent>().is_some() {
-                if let Some(state) = state.upgrade() {
-                    state.push(worker2.clone());
-                }
-                *slot2.borrow_mut() = None;
-            }
-
-            // console_log!("unhandled event while reclaiming: {}", event.type_());
-            // crate::logv(&event);
-            // TODO: like above, maybe a memory leak here?
+            *slot2.borrow_mut() = None;
         });
         worker.set_onmessage(Some(reclaim.as_ref().unchecked_ref()));
+        *reclaim_slot.borrow_mut() = Some(reclaim);
+    }
+
+    fn terminate_on_error(&self, worker: &Worker) {
+        let worker2 = worker.clone();
+        let reclaim_slot = Rc::new(RefCell::new(None));
+        let slot2 = reclaim_slot.clone();
+        let reclaim = Closure::<dyn FnMut(_)>::new(move |_: ErrorEvent| {
+            crate::console_log(&format!("terminating {:?}", worker2));
+            worker2.terminate();
+            *slot2.borrow_mut() = None;
+        });
+        worker.set_onmessageerror(Some(reclaim.as_ref().unchecked_ref()));
         *reclaim_slot.borrow_mut() = Some(reclaim);
     }
 }
@@ -201,8 +208,7 @@ impl WorkerPool {
     /// can be unsafely implemented **only if** they are passed to the transferrables of
     /// a `post_message`. Examples are `Buffer`s, `MessagePort`s, etc...
     pub fn run(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
-        let worker = self.execute(closure)?;
-        self.reclaim_on_message(worker);
+        self.execute(closure)?;
         Ok(())
     }
 }

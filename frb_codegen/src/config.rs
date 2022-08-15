@@ -460,4 +460,13 @@ impl Opts {
             .clone()
             .unwrap_or_else(|| env!("CARGO_MANIFEST_DIR").to_string())
     }
+
+    pub fn dart_freezed_path(&self) -> PathBuf {
+        PathBuf::from(
+            self.dart_decl_output_path
+                .as_deref()
+                .unwrap_or(&self.dart_output_path),
+        )
+        .with_extension("freezed.dart")
+    }
 }

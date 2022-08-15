@@ -52,7 +52,12 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
   Uint8List executeSync(FlutterRustBridgeSyncTask task) {
-    final raw = task.callFfi();
+    final WireSyncReturnStruct raw;
+    try {
+      raw = task.callFfi();
+    } catch (err, st) {
+      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+    }
     final bytes = raw.buffer;
     inner.free_WireSyncReturnStruct(raw);
 

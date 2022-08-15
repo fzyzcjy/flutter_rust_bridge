@@ -1080,22 +1080,38 @@ impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for JsValue {
 }
 impl Wire2Api<Option<bool>> for JsValue {
     fn wire2api(self) -> Option<bool> {
-        (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+        if !self.is_null() && !self.is_undefined() {
+            Pointer::from_js(&self).map(Wire2Api::wire2api)
+        } else {
+            None
+        }
     }
 }
 impl Wire2Api<Option<f64>> for JsValue {
     fn wire2api(self) -> Option<f64> {
-        (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+        if !self.is_null() && !self.is_undefined() {
+            Pointer::from_js(&self).map(Wire2Api::wire2api)
+        } else {
+            None
+        }
     }
 }
 impl Wire2Api<Option<i32>> for JsValue {
     fn wire2api(self) -> Option<i32> {
-        (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+        if !self.is_null() && !self.is_undefined() {
+            Pointer::from_js(&self).map(Wire2Api::wire2api)
+        } else {
+            None
+        }
     }
 }
 impl Wire2Api<Option<i64>> for JsValue {
     fn wire2api(self) -> Option<i64> {
-        (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+        if !self.is_null() && !self.is_undefined() {
+            Pointer::from_js(&self).map(Wire2Api::wire2api)
+        } else {
+            None
+        }
     }
 }
 impl Wire2Api<Option<Box<bool>>> for JsValue {

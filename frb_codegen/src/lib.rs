@@ -269,6 +269,10 @@ pub use io::*;
             config.wasm_enabled,
             config.dart_wasm_output_path(),
             config.dart_io_output_path(),
+        ),
+        (
+            generated_dart.needs_freezed && config.build_runner,
+            config.dart_freezed_path(),
         )
     )?;
 

@@ -7,7 +7,9 @@ import 'bridge_generated.web.dart';
 const root = 'pkg/flutter_rust_bridge_example';
 
 Future<WasmModule> _initModule() {
-  if (crossOriginIsolated != true) return Future.error(MissingHeaderException());
+  if (crossOriginIsolated != true) {
+    return Future.error(MissingHeaderException());
+  }
 
   final script = ScriptElement()..src = '$root.js';
   document.head!.append(script);

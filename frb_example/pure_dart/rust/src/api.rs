@@ -599,10 +599,13 @@ pub struct Event {
 }
 
 pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
-    if let Ok(mut guard) = EVENTS.lock() {
-        *guard = Some(listener);
+    match EVENTS.lock() {
+        Ok(mut guard) => {
+            *guard = Some(listener);
+            Ok(())
+        }
+        Err(err) => Err(anyhow!("Could not register event listener: {}", err)),
     }
-    Ok(())
 }
 
 pub fn close_event_listener() {

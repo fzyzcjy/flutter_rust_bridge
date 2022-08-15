@@ -36,7 +36,7 @@ abstract class FlutterRustBridgeWireBase {
 typedef WireSyncReturnStruct = List<dynamic>;
 
 extension WireSyncReturnStructExt on WireSyncReturnStruct {
-  Uint8List get buffer => Uint8List.view(getProperty(this[0], 'buffer'));
+  Uint8List get buffer => this[0];
   bool get isSuccess => this[1];
 }
 

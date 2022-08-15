@@ -23,8 +23,18 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
-        (!self.ir.inner.is_primitive() && !self.ir.inner.is_js_value())
-            .then(|| "(!self.is_null() && !self.is_undefined()).then(|| self.wire2api())".into())
+        (!self.ir.inner.is_js_value()).then(|| {
+            if self.ir.is_primitive() {
+                "if !self.is_null() && !self.is_undefined() {
+                    Pointer::from_js(&self).map(Wire2Api::wire2api)
+                } else {
+                    None
+                }"
+            } else {
+                "(!self.is_null() && !self.is_undefined()).then(|| self.wire2api())"
+            }
+            .into()
+        })
     }
 
     fn convert_to_dart(&self, obj: String) -> String {

@@ -1,5 +1,6 @@
 #![allow(clippy::vec_init_then_push)]
 
+use anyhow::anyhow;
 use itertools::Itertools;
 use log::log_enabled;
 use std::fmt::Write;
@@ -18,18 +19,31 @@ use crate::tools::FFI_REQUIREMENT;
 use log::{debug, info, warn};
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
+///   - The command may be followed by `in <expr>` to specify the working directory.
+///   - The function must be in the form of <code>fn(&\[[PathBuf]], ...)</code>
+///   - The function may be followed by an array of rest parameters to pass.
 /// - Following arguments are either:
 ///   - An expression to turn into a [`PathBuf`]; or
 ///   - `?<expr>` to add `expr` only if `expr` is a [`Some`]; or
+///   - `*<expr>` to concatenate an iterable of such expressions; or
 ///   - A tuple of `(condition, expr, ...expr)` that adds `expr`s to the arguments only if `condition` is satisfied.
 ///
-/// Returns [`Output`] if executing a command name, or the return value of the specified function.
+/// Returns [`Result<Output>`] if executing a command name, or the return value of the specified function.
+#[doc(hidden)]
+#[macro_export]
 macro_rules! run {
     ($binary:literal, $($rest:tt)*) => {{
+        #[allow(clippy::vec_init_then_push)]
         let args = $crate::args!($($rest)*);
         $crate::commands::execute_command($binary, args.iter(), None)
     }};
+    ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
+        #[allow(clippy::vec_init_then_push)]
+        let args = $crate::args!($($rest)*);
+        $crate::commands::execute_command($binary, args.iter(), $pwd)
+    }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
+        #[allow(clippy::vec_init_then_push)]
         let args = $crate::args!($($rest)*);
         $command(&args[..] $(, $($args),* )?)
     }};
@@ -54,6 +68,10 @@ macro_rules! args {
         }
         $crate::args!(@args $args $($rest)*);
     };
+    (@args $args:ident *$src:expr, $($rest:tt)*) => {
+        $args.extend($src.iter().map(::std::path::PathBuf::from));
+        $crate::args!(@args $args $($rest)*);
+    };
     (@args $args:ident $expr:expr, $($rest:tt)*) => {
         $args.push(::std::path::PathBuf::from($expr));
         $crate::args!(@args $args $($rest)*);
@@ -65,13 +83,16 @@ macro_rules! args {
     }};
 }
 
-#[must_use]
-pub(crate) fn call_shell(cmd: &str) -> Output {
+pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> Result<Output> {
+    let cmd = cmd
+        .iter()
+        .map(|section| format!("\"{:?}\"", section))
+        .join(" ");
     #[cfg(windows)]
-    return run!("powershell", "-noprofile", "-c", cmd);
+    return run!("powershell" in pwd, "-noprofile", "-c", cmd);
 
     #[cfg(not(windows))]
-    run!("sh", "-c", cmd)
+    run!("sh" in pwd, "-c", cmd)
 }
 
 pub fn ensure_tools_available(dart_root: &str) -> Result {
@@ -134,7 +155,7 @@ fn execute_command<'a>(
     bin: &str,
     args: impl IntoIterator<Item = &'a std::path::PathBuf>,
     current_dir: Option<&str>,
-) -> Output {
+) -> Result<Output> {
     let args = args.into_iter().collect::<Vec<_>>();
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     let mut cmd = Command::new(bin);
@@ -157,7 +178,7 @@ fn execute_command<'a>(
 
     let result = cmd
         .output()
-        .unwrap_or_else(|err| panic!("\"{}\" \"{}\" failed: {}", bin, args_display, err));
+        .map_err(|err| anyhow!("\"{}\" \"{}\" failed: {}", bin, args_display, err))?;
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {
@@ -190,7 +211,7 @@ fn execute_command<'a>(
             String::from_utf8_lossy(&result.stderr)
         );
     }
-    result
+    Ok(result)
 }
 
 fn cbindgen(
@@ -297,14 +318,14 @@ fn ffigen(
     debug!("ffigen config_file: {:?}", config_file);
 
     let repo = DartRepository::from_str(dart_root).unwrap();
-    let cmd = format!("{} run", repo.toolchain.as_run_command());
-    let res = call_shell(&format!(
-        "cd {}{}{} ffigen --config \"{}\"",
-        dart_root,
-        if cfg!(windows) { "; " } else { " && " },
-        cmd,
-        config_file.path().to_string_lossy()
-    ));
+    let res = run!(
+        call_shell[Some(dart_root)],
+        repo.toolchain.as_run_command(),
+        "run",
+        "ffigen",
+        "--config",
+        config_file.path()
+    )?;
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
         let out = String::from_utf8_lossy(&res.stdout);
@@ -320,9 +341,9 @@ fn ffigen(
 }
 
 pub fn format_rust(path: &[PathBuf]) -> Result {
-    // debug!("execute format_rust path={}", path);
+    debug!("execute format_rust path={:?}", path);
     debug!("execute format_rust");
-    let res = execute_command("rustfmt", path, None);
+    let res = execute_command("rustfmt", path, None)?;
     if !res.status.success() {
         return Err(Error::Rustfmt(
             String::from_utf8_lossy(&res.stderr).to_string(),
@@ -332,13 +353,19 @@ pub fn format_rust(path: &[PathBuf]) -> Result {
 }
 
 pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
-    debug!("execute format_dart line_length={}", line_length);
-    let mut args = args!("format", "--line-length", line_length.to_string());
-    args.extend(path.iter().cloned());
-    let res = Command::new("dart")
-        .args(args)
-        .output()
-        .map_err(|err| Error::StringError(format!("{}", err)))?;
+    debug!(
+        "execute format_dart path={:?} line_length={}",
+        path, line_length
+    );
+    let res = run!(
+        call_shell[None],
+        "dart",
+        "format",
+        "--line-length",
+        line_length.to_string(),
+        *path
+    )
+    .map_err(|err| Error::StringError(format!("{}", err)))?;
     if !res.status.success() {
         return Err(Error::Dartfmt(
             String::from_utf8_lossy(&res.stderr).to_string(),
@@ -350,19 +377,14 @@ pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
     let repo = DartRepository::from_str(dart_root).unwrap();
-    let out = if cfg!(windows) {
-        call_shell(&format!(
-            "cd \"{}\"; {} run build_runner build --delete-conflicting-outputs",
-            dart_root,
-            repo.toolchain.as_run_command()
-        ))
-    } else {
-        call_shell(&format!(
-            "cd \"{}\" && {} run build_runner build --delete-conflicting-outputs",
-            dart_root,
-            repo.toolchain.as_run_command()
-        ))
-    };
+    let out = run!(
+        call_shell[Some(dart_root)],
+        repo.toolchain.as_run_command(),
+        "run",
+        "build_runner",
+        "build",
+        "--delete-conflicting-outputs"
+    )?;
     if !out.status.success() {
         return Err(Error::StringError(format!(
             "Failed to run build_runner for {}: {}",

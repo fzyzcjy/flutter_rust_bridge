@@ -221,7 +221,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  int /* *i32 */ api2wire_box_weekdays(Weekdays raw) {
+  int api2wire_box_weekdays(Weekdays raw) {
     return inner.new_box_weekdays_0(api2wire_weekdays(raw));
   }
 

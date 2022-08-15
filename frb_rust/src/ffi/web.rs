@@ -21,6 +21,7 @@ mod pointer {
     use std::ptr::NonNull;
     use wasm_bindgen::convert::*;
     use wasm_bindgen::describe::*;
+    use wasm_bindgen::JsValue;
 
     /// A non-nullable pointer wrapping a [`NonNull`].
     /// Represented in JS as an unsigned integer.
@@ -36,8 +37,13 @@ mod pointer {
     pub struct Pointer<T>(NonNull<T>);
 
     impl<T> Pointer<T> {
+        #[inline]
         pub const fn as_mut(self) -> *mut T {
             self.0.as_ptr() as _
+        }
+        #[inline]
+        pub fn from_js(value: &JsValue) -> Option<Self> {
+            NonNull::new(value.unchecked_into_f64() as u32 as *mut T).map(Self)
         }
     }
 
@@ -54,11 +60,8 @@ mod pointer {
         type Abi = u32;
 
         unsafe fn from_abi(js: Self::Abi) -> Self {
-            if let Some(ptr) = NonNull::new(js as _) {
-                Self(ptr)
-            } else {
-                panic!("Attempted to retrieve a nullptr")
-            }
+            let js = JsValue::from_abi(js);
+            Self::from_js(&js).expect("Attempted to retrieve a nullptr")
         }
     }
 
@@ -228,7 +231,7 @@ impl Isolate {
         self.port
             .post_message(&msg.into_dart())
             .map_err(|err| {
-                crate::ffi::console_log(&format!("post: {:?}", err));
+                crate::ffi::console_error(&format!("post: {:?}", err));
             })
             .is_ok()
     }

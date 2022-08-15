@@ -113,3 +113,8 @@ class PlatformMismatchException implements Exception {
   @override
   String toString() => _wasm;
 }
+
+T dbg<T>(T obj) {
+  print('$T($obj)');
+  return obj;
+}
