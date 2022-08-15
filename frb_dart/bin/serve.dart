@@ -89,6 +89,9 @@ void main(List<String> args) async {
     ..addOption('wasm-output', abbr: 'w', help: 'WASM output path')
     ..addSeparator('Flags:')
     ..addFlag('verbose', abbr: 'v', help: 'Display more verbose information')
+    ..addFlag('relax-coep',
+        help: 'Set COEP to credentialless, useful for Flutter')
+    ..addFlag('open', help: 'Open the webpage in a browser', defaultsTo: true)
     ..addFlag('run-tests', help: 'Run all tests and exit', negatable: false)
     ..addFlag('release', help: 'Compile in release mode', negatable: false)
     ..addFlag('weak-refs',
@@ -201,7 +204,7 @@ void main(List<String> args) async {
   } else {
     await system(
       'flutter',
-      ['build', 'web', if (config['release']) '--release'] + config.rest,
+      ['build', 'web', if (!config['release']) '--profile'] + config.rest,
     );
   }
 
@@ -230,9 +233,10 @@ void main(List<String> args) async {
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
       final res = await handler(req);
-      return res.change(headers: const {
+      return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
-        'Cross-Origin-Embedder-Policy': 'credentialless',
+        'Cross-Origin-Embedder-Policy':
+            config['relax-coep'] ? 'credentialless' : 'require-corp',
       });
     };
   }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
@@ -265,7 +269,7 @@ void main(List<String> args) async {
     );
     final page = await browser.newPage();
     await page.goto(addr);
-  } else {
+  } else if (config['open']) {
     system(open, [addr]);
   }
 }

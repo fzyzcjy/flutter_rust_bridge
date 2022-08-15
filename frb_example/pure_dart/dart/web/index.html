@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flutter Rust Bridge Pure Dart</title>
   </head>
-  <body>
-    <div id="output" class="console"></div>
+  <body class="console">
+    <div id="output"></div>
     <style>
       .red {
         color: red;
@@ -18,16 +18,20 @@
       .yellow {
         color: yellow;
       }
+      .console {
+        background-color: #111;
+      }
       a {
-        color: darkcyan;
+        color: darkorange;
       }
       pre {
-        font-family: "JetBrainsMono Nerd Font", "Courier New", Courier,
-          monospace;
+        font-family: SF Mono, "JetBrainsMono Nerd Font", "Fira Sans", "Hack",
+          "Monaco", "Courier New", Consolas, Courier, monospace;
         overflow: auto;
+        color: #aaa;
       }
       .error {
-        background-color: #faa;
+        background-color: #633;
         overflow: auto;
         padding: 14px;
         border-top: 3px solid red;

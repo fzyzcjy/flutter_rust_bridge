@@ -702,7 +702,7 @@ impl ConcatenateWith {
         let a = self.a.clone();
         thread::spawn(move || {
             for i in 0..max {
-                let _ = sink.add(Log2 {
+                sink.add(Log2 {
                     key,
                     value: format!("{}{}", a, i),
                 });
@@ -715,7 +715,7 @@ impl ConcatenateWith {
     pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
         thread::spawn(move || {
             for i in 0..5 {
-                let _ = sink.add(i);
+                sink.add(i);
             }
             sink.close();
         });

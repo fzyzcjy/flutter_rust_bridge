@@ -12,7 +12,7 @@ use wasm_bindgen::JsCast;
 use web_sys::BlobPropertyBag;
 use web_sys::MessageEvent;
 use web_sys::{Blob, Url};
-use web_sys::{ErrorEvent, Event, Worker};
+use web_sys::{Event, Worker};
 
 #[wasm_bindgen]
 pub struct WorkerPool {
@@ -69,8 +69,7 @@ impl WorkerPool {
         crate::console_log("Spawned a new thread");
         let src = &self.script_src;
         let script = format!(
-            "importScripts('{}')
-            onmessage = event => {{
+            "importScripts('{}'); onmessage = event => {{
                 let init = wasm_bindgen(...event.data).catch(err => {{
                     setTimeout(() => {{ throw err }})
                     throw err
@@ -81,7 +80,7 @@ impl WorkerPool {
                     try {{
                         wasm_bindgen.receive_transfer_closure(payload, transfer)
                     }} catch (err) {{
-                        if (transfer[0].postMessage) {{
+                        if (transfer[0]?.postMessage) {{
                             transfer[0].postMessage([1, 'ABORT', err.toString(), err.stack])
                         }}
                         setTimeout(() => {{ throw err }})
@@ -140,7 +139,6 @@ impl WorkerPool {
     fn execute(&self, closure: TransferClosure<JsValue>) -> Result<Worker, JsValue> {
         let worker = self.worker()?;
         self.reclaim_on_message(&worker);
-        self.terminate_on_error(&worker);
         closure.apply(&worker).map(|_| worker)
     }
 
@@ -165,19 +163,6 @@ impl WorkerPool {
             *slot2.borrow_mut() = None;
         });
         worker.set_onmessage(Some(reclaim.as_ref().unchecked_ref()));
-        *reclaim_slot.borrow_mut() = Some(reclaim);
-    }
-
-    fn terminate_on_error(&self, worker: &Worker) {
-        let worker2 = worker.clone();
-        let reclaim_slot = Rc::new(RefCell::new(None));
-        let slot2 = reclaim_slot.clone();
-        let reclaim = Closure::<dyn FnMut(_)>::new(move |_: ErrorEvent| {
-            crate::console_log(&format!("terminating {:?}", worker2));
-            worker2.terminate();
-            *slot2.borrow_mut() = None;
-        });
-        worker.set_onmessageerror(Some(reclaim.as_ref().unchecked_ref()));
         *reclaim_slot.borrow_mut() = Some(reclaim);
     }
 }

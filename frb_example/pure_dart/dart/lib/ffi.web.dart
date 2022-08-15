@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:html';
 import 'bridge_generated.web.dart';
 export 'bridge_generated.web.dart';
@@ -8,7 +7,8 @@ const root = 'pkg/flutter_rust_bridge_example';
 
 FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(void _) {
   if (crossOriginIsolated != true) {
-    return FlutterRustBridgeExampleSingleBlockTestImpl.wasm(Future.error(MissingHeaderException()));
+    print('Not cross-origin isolated, aborting...');
+    throw MissingHeaderException();
   }
 
   final script = ScriptElement()..src = '$root.js';

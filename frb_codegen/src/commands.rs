@@ -1,5 +1,3 @@
-#![allow(clippy::vec_init_then_push)]
-
 use anyhow::anyhow;
 use itertools::Itertools;
 use log::log_enabled;
@@ -33,17 +31,14 @@ use log::{debug, info, warn};
 #[macro_export]
 macro_rules! run {
     ($binary:literal, $($rest:tt)*) => {{
-        #[allow(clippy::vec_init_then_push)]
         let args = $crate::args!($($rest)*);
         $crate::commands::execute_command($binary, args.iter(), None)
     }};
     ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
-        #[allow(clippy::vec_init_then_push)]
         let args = $crate::args!($($rest)*);
         $crate::commands::execute_command($binary, args.iter(), $pwd)
     }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
-        #[allow(clippy::vec_init_then_push)]
         let args = $crate::args!($($rest)*);
         $command(&args[..] $(, $($args),* )?)
     }};
@@ -84,10 +79,7 @@ macro_rules! args {
 }
 
 pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> Result<Output> {
-    let cmd = cmd
-        .iter()
-        .map(|section| format!("\"{:?}\"", section))
-        .join(" ");
+    let cmd = cmd.iter().map(|section| format!("{:?}", section)).join(" ");
     #[cfg(windows)]
     return run!("powershell" in pwd, "-noprofile", "-c", cmd);
 
@@ -320,7 +312,7 @@ fn ffigen(
     let repo = DartRepository::from_str(dart_root).unwrap();
     let res = run!(
         call_shell[Some(dart_root)],
-        repo.toolchain.as_run_command(),
+        *repo.toolchain.as_run_command(),
         "run",
         "ffigen",
         "--config",
@@ -379,7 +371,7 @@ pub fn build_runner(dart_root: &str) -> Result {
     let repo = DartRepository::from_str(dart_root).unwrap();
     let out = run!(
         call_shell[Some(dart_root)],
-        repo.toolchain.as_run_command(),
+        *repo.toolchain.as_run_command(),
         "run",
         "build_runner",
         "build",

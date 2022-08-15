@@ -11,7 +11,7 @@ use lazy_static::lazy_static;
 use log::debug;
 use serde::Deserialize;
 
-use crate::{commands::call_shell, error::Error, run};
+use crate::{args, commands::call_shell, error::Error, run};
 
 lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
@@ -166,10 +166,10 @@ impl DartToolchain {
 }
 
 impl DartToolchain {
-    pub(crate) fn as_run_command(&self) -> &'static str {
+    pub(crate) fn as_run_command(&self) -> Vec<PathBuf> {
         match self {
-            DartToolchain::Dart => "dart",
-            DartToolchain::Flutter => "flutter pub",
+            DartToolchain::Dart => args!("dart"),
+            DartToolchain::Flutter => args!("flutter", "pub"),
         }
     }
     pub(crate) fn available(&self) -> bool {
