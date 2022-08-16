@@ -65,6 +65,8 @@ class ReceivePort extends Stream<dynamic> {
   /// The receive port.
   final RawReceivePort port;
 
+  static dynamic _extractData(MessageEvent event) => event.data;
+
   /// Create a new receive port from an optional [RawReceivePort].
   ReceivePort([RawReceivePort? port]) : port = port ?? RawReceivePort();
 
@@ -75,12 +77,12 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    return port.receivePort.onMessage.listen(
-      (event) => onData?.call(event.data),
-      onError: onError,
-      onDone: onDone,
-      cancelOnError: cancelOnError,
-    );
+    return port.receivePort.onMessage.map(_extractData).listen(
+          onData,
+          onError: onError,
+          onDone: onDone,
+          cancelOnError: cancelOnError,
+        );
   }
 
   /// The send port.

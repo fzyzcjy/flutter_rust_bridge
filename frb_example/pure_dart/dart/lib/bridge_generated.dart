@@ -927,7 +927,7 @@ Int32List _wire2api_ZeroCopyBuffer_Int32List(dynamic raw) {
 }
 
 Int64List _wire2api_ZeroCopyBuffer_Int64List(dynamic raw) {
-  return raw as Int64List;
+  return _wire2api_int_64_list(raw);
 }
 
 Int8List _wire2api_ZeroCopyBuffer_Int8List(dynamic raw) {
@@ -943,7 +943,7 @@ Uint32List _wire2api_ZeroCopyBuffer_Uint32List(dynamic raw) {
 }
 
 Uint64List _wire2api_ZeroCopyBuffer_Uint64List(dynamic raw) {
-  return raw as Uint64List;
+  return _wire2api_uint_64_list(raw);
 }
 
 Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
@@ -1165,7 +1165,7 @@ Int32List _wire2api_int_32_list(dynamic raw) {
 }
 
 Int64List _wire2api_int_64_list(dynamic raw) {
-  return raw as Int64List;
+  return int64ListFrom(raw);
 }
 
 Int8List _wire2api_int_8_list(dynamic raw) {
@@ -1454,7 +1454,7 @@ Uint32List _wire2api_uint_32_list(dynamic raw) {
 }
 
 Uint64List _wire2api_uint_64_list(dynamic raw) {
-  return raw as Uint64List;
+  return uint64ListFrom(raw);
 }
 
 Uint8List _wire2api_uint_8_list(dynamic raw) {

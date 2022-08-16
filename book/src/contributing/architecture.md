@@ -7,7 +7,7 @@ This document describes implementation details of this library.
 **Rust Wire** types refers to the C types that the Dart VM uses to communicate with the Rust library.
 
 **Dart Wire** types are the Dart counterpart of Rust wire types, but in
-the `*.io.dart` files. Both Rust and Dart wire types communicate the
+the `*.io.dart` files. Both Rust and Dart wire types communicate using the
 vocabulary of C types, aka primitives, structs, unions and pointers.
 
 **Rust JS** (also WASM) types are the WASM equivalent of Rust wire
@@ -50,7 +50,7 @@ Does not include delegated types.
 On Web platforms, for lack of a proper `SendPort` there exists replacements from `dart:html`.
 
 **MessagePort** replaces `dart:ffi`'s `SendPort` and is created from `MessageChannel`. The Dart
-thread creates a channel, keeps the receive port to itself and transfers the send port to the workers.
+thread creates a channel, keeps the receive port and transfers the send port to the workers.
 
 ```mermaid
 sequenceDiagram
@@ -87,8 +87,8 @@ It is theoretically possible to have a one-to-one implementation of Isolate usin
   generalize for other use-cases.
 - `Int64List` and `Uint64List` throws when used on Web platforms. They are left intentionally
   unimplemented by the Dart language developers, perhaps due to the differences between `int` and `BigInt`.
-  This library provides a barebones shim that is missing many features, so please create an issue/PR if the shim
-  is missing a function you need.
+  This library provides a barebones pure Dart shim whose behavior may differ from the specifications,
+  so please create an issue/PR if you notice any significant digressions.
 - Support for the various components of WASM is not universal among browsers. Here is a (non-exhaustive) list
   of trackers for how widely available some of the features are across browsers:
   - [`MessagePort` error events](https://caniuse.com/mdn-api_messageport_messageerror_event)
@@ -103,7 +103,7 @@ It is theoretically possible to have a one-to-one implementation of Isolate usin
 
 [^1]: When behind a `ffi.Pointer`, they are their respective types from `dart:ffi`: `ffi.Int8`, `ffi.Int16`, etc.
 [^2]:
-    These types are unspported on Web by `dart:typed_list`, so this library provides a barebores shim over the JS native types.
+    These types are unsupported on Web by `dart:typed_list`, so this library provides a barebores shim over the JS native types.
     If you wish to use these types, replace all `dart:typed_list` imports with this library.
 
 [^3]: The `Pointer` JS type is provisional and may be removed in the future.

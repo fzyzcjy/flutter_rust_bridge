@@ -52,12 +52,12 @@ mod pointer {
     // this struct should be deprecated.
     impl<T> WasmDescribe for Pointer<T> {
         fn describe() {
-            inform(EXTERNREF);
+            JsValue::describe()
         }
     }
 
     impl<T> FromWasmAbi for Pointer<T> {
-        type Abi = u32;
+        type Abi = <JsValue as FromWasmAbi>::Abi;
 
         unsafe fn from_abi(js: Self::Abi) -> Self {
             let js = JsValue::from_abi(js);

@@ -45,6 +45,9 @@ impl WorkerPool {
                 workers: RefCell::new(Vec::with_capacity(initial)),
                 callback: Closure::new(|event: Event| {
                     crate::ffi::console_log(&format!("noop callback dropped: {:?}", event));
+                    if let Some(event) = event.dyn_ref::<MessageEvent>() {
+                        crate::ffi::console_log(&format!("with data: {:?}", event.data()));
+                    }
                 }),
             }),
         };
@@ -138,7 +141,6 @@ impl WorkerPool {
     /// message is sent to it.
     fn execute(&self, closure: TransferClosure<JsValue>) -> Result<Worker, JsValue> {
         let worker = self.worker()?;
-        self.reclaim_on_message(&worker);
         closure.apply(&worker).map(|_| worker)
     }
 
@@ -193,7 +195,8 @@ impl WorkerPool {
     /// can be unsafely implemented **only if** they are passed to the transferrables of
     /// a `post_message`. Examples are `Buffer`s, `MessagePort`s, etc...
     pub fn run(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
-        self.execute(closure)?;
+        let worker = self.execute(closure)?;
+        self.reclaim_on_message(&worker);
         Ok(())
     }
 }

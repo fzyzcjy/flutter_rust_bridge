@@ -586,12 +586,6 @@ jobs:
             family: windows
           - image: ubuntu-20.04
             family: linux
-          # #611
-          # - image: macos-10.15
-          #   family: osx
-          # #113
-          # - image: ubuntu-18.04
-          #  family: linux
 
     runs-on: ${{ matrix.os.image }}
 
@@ -623,13 +617,24 @@ jobs:
       - name: Run codegen to pure_dart example (non-windows)
         if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- --rust-input ../frb_example/pure_dart/rust/src/api.rs --dart-output ../frb_example/pure_dart/dart/lib/bridge_generated.dart --dart-format-line-length 120
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+          --rust-input ../frb_example/pure_dart/rust/src/api.rs
+          --dart-output ../frb_example/pure_dart/dart/lib/bridge_generated.dart
+          --dart-decl-output ../frb_example/pure_dart/dart/lib/bridge_definitions.dart
+          --dart-format-line-length 120
+          --wasm
         env:
           RUST_LOG: debug
+
       - name: Run codegen to pure_dart example (windows)
         if: ${{ matrix.os.family == 'windows' }}
         working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- --rust-input ..\\frb_example\\pure_dart\\rust\\src\\api.rs --dart-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_generated.dart --dart-format-line-length 120
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+          --rust-input ..\\frb_example\\pure_dart\\rust\\src\\api.rs
+          --dart-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_generated.dart
+          --dart-decl-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_definitions.dart
+          --dart-format-line-length 120
+          --wasm
         env:
           RUST_LOG: debug
 
@@ -660,13 +665,25 @@ jobs:
       - name: Run codegen to with_flutter example (non-windows)
         if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- --rust-input ../frb_example/with_flutter/rust/src/api.rs --dart-output ../frb_example/with_flutter/lib/bridge_generated.dart --c-output ../frb_example/with_flutter/ios/Runner/bridge_generated.h --dart-format-line-length 120
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+          --rust-input ../frb_example/with_flutter/rust/src/api.rs
+          --dart-output ../frb_example/with_flutter/lib/bridge_generated.dart
+          --c-output ../frb_example/with_flutter/ios/Runner/bridge_generated.h
+          --dart-decl-output ../frb_example/with_flutter/lib/bridge_definitions.dart
+          --dart-format-line-length 120
+          --wasm
         env:
           RUST_LOG: debug
       - name: Run codegen to with_flutter example (windows)
         if: ${{ matrix.os.family == 'windows' }}
         working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen -- --rust-input ..\\frb_example\\with_flutter\\rust\\src\\api.rs --dart-output ..\\frb_example\\with_flutter\\lib\\bridge_generated.dart --c-output ..\\frb_example\\with_flutter\\ios\\Runner\\bridge_generated.h --dart-format-line-length 120
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+          --rust-input ..\\frb_example\\with_flutter\\rust\\src\\api.rs
+          --dart-output ..\\frb_example\\with_flutter\\lib\\bridge_generated.dart
+          --c-output ..\\frb_example\\with_flutter\\ios\\Runner\\bridge_generated.h
+          --dart-decl-output ..\\frb_example\\with_flutter\\lib\\bridge_definitions.dart
+          --dart-format-line-length 120
+          --wasm
         env:
           RUST_LOG: debug
 

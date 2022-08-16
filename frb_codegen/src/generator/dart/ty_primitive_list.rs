@@ -25,12 +25,22 @@ impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
                 self.ir.safe_ident(),
                 self.context.config.block_index,
             )),
-            wasm: Some("return raw;".into()),
+            wasm: Some(
+                match &self.ir.primitive {
+                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "return raw.inner;",
+                    _ => "return raw;",
+                }
+                .into(),
+            ),
             ..Default::default()
         }
     }
 
     fn wire2api_body(&self) -> String {
-        gen_wire2api_simple_type_cast(&self.ir.dart_api_type())
+        match &self.ir.primitive {
+            IrTypePrimitive::I64 => "return int64ListFrom(raw);".into(),
+            IrTypePrimitive::U64 => "return uint64ListFrom(raw);".into(),
+            _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),
+        }
     }
 }

@@ -45,6 +45,14 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         match &self.ir {
+            IrTypeDelegate::ZeroCopyBufferVecPrimitive(
+                IrTypePrimitive::I64 | IrTypePrimitive::U64,
+            ) => {
+                format!(
+                    "return _wire2api_{}(raw);",
+                    self.ir.get_delegate().safe_ident()
+                )
+            }
             IrTypeDelegate::String
             | IrTypeDelegate::SyncReturnVecU8
             | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {

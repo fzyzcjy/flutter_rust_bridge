@@ -47,15 +47,8 @@ void main(List<String> args) async {
     expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
     expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
     expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
-    try {
-      expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
-      expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
-    } on TestFailure {
-      rethrow;
-    } catch (err, st) {
-      print('$err\n$st');
-      markTestSkipped('Skip: Matcher has problems with JS native types');
-    }
+    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
   });
 
   test('dart call handleZeroCopyVecOfPrimitive', () async {
@@ -69,15 +62,8 @@ void main(List<String> args) async {
     expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
     expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
     expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
-    try {
-      expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
-      expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
-    } on TestFailure {
-      rethrow;
-    } catch (err, st) {
-      print('$err\n$st');
-      markTestSkipped('Skip: Matcher has problems with JS native types');
-    }
+    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
   });
 
   test('dart call handleStruct', () async {
@@ -445,6 +431,7 @@ void main(List<String> args) async {
     final int max = 5;
     final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
     int cnt = 0;
+    print('start listening');
     await for (final value in stream) {
       print("output from ConcatenateWith's stream: $value");
       expect(value.value, "hello $cnt");
@@ -458,6 +445,7 @@ void main(List<String> args) async {
     final int max = 5;
     final stream = ConcatenateWith.handleSomeStaticStreamSink(bridge: api, key: key, max: max);
     int cnt = 0;
+    print('start listening');
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
       expect(value.value, "$cnt");
@@ -468,13 +456,8 @@ void main(List<String> args) async {
 
   test('ConcatenateWith static stream sink at 1 test', () async {
     final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
-    int cnt = 0;
-    await for (final value in stream) {
-      print("output from ConcatenateWith's static stream: $value");
-      expect(value, cnt);
-      cnt++;
-    }
-    expect(cnt, 5);
+    print('start listening');
+    expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
   test('dart call multiplyByTen()', () async {
@@ -490,6 +473,23 @@ void main(List<String> args) async {
     expect((Speed_GPS).toString(), 'Speed_GPS');
     expect((Distance_Unknown).toString(), 'Distance_Unknown');
     expect((Distance_Map).toString(), 'Distance_Map');
+  });
+
+  group('Platform-specific support', () {
+    test('Int64List', () {
+      final list = Int64List.fromList([-1, -2, -3, -4, -5]);
+      expect(list[0].toString(), '-1');
+      expect(list.map((el) => el * el), DeepMatchesLooseInts([1, 4, 9, 16, 25]));
+      list[1] = -123;
+      expect(list[1].toString(), '-123');
+    });
+    test('Uint64List', () {
+      final list = Uint64List.fromList([1, 2, 3, 4, 5]);
+      expect(list[0].toString(), '1');
+      expect(list.map((el) => el * el), DeepMatchesLooseInts([1, 4, 9, 16, 25]));
+      list[1] = 123;
+      expect(list[1].toString(), '123');
+    });
   });
 
   print('flutter_rust_bridge example program end');
@@ -532,6 +532,19 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
       ),
     ],
   );
+}
+
+class DeepMatchesLooseInts extends CustomMatcher {
+  /// On WASM platforms, indexing into a [Int64List] or [Uint64List] will return
+  /// an Int64 from the fixnum library, which fails the type test. This asserts
+  /// that they only have to match by their values.
+  DeepMatchesLooseInts(matcher) : super("is a numeric", "value", matcher);
+  @override
+  Object? featureValueOf(actual) {
+    if (actual is Iterable) return actual.map(featureValueOf);
+    if (actual is int) return actual;
+    return int.tryParse('$actual');
+  }
 }
 
 // vim:expandtab:ts=2:sw=2
