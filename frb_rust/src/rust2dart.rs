@@ -89,12 +89,12 @@ impl Channel {
     }
 }
 
-#[cfg(wasm)]
-#[derive(Default)]
-struct Signal {
-    started: std::sync::Mutex<bool>,
-    cvar: std::sync::Condvar,
-}
+// #[cfg(wasm)]
+// #[derive(Default)]
+// struct Signal {
+//     started: std::sync::Mutex<bool>,
+//     cvar: std::sync::Condvar,
+// }
 
 /// A sink to send asynchronous data back to Dart.
 /// Represented as a Dart
@@ -107,37 +107,37 @@ pub struct StreamSink<T: IntoDart> {
     /// carry the name of the broadcast channel.
     #[cfg(wasm)]
     channel: Channel,
-    #[cfg(wasm)]
-    signal: std::sync::Arc<Signal>,
+    // #[cfg(wasm)]
+    // signal: std::sync::Arc<Signal>,
     _phantom_data: PhantomData<T>,
 }
 
-#[cfg(wasm)]
-lazy_static::lazy_static! {
-    static ref SINK_INIT: std::sync::Mutex<std::collections::HashMap<String, std::sync::Arc<Signal>>> = Default::default();
-}
+// #[cfg(wasm)]
+// lazy_static::lazy_static! {
+//     static ref SINK_INIT: std::sync::Mutex<std::collections::HashMap<String, std::sync::Arc<Signal>>> = Default::default();
+// }
 
-#[cfg(wasm)]
-#[doc(hidden)]
-#[wasm_bindgen]
-pub fn __start_streamsink(name: String) {
-    use crate::pool::WorkerPool;
-    thread_local! {
-        static CONTROL_POOL: WorkerPool = WorkerPool::new(1, script_path().unwrap()).unwrap();
-    }
+// #[cfg(wasm)]
+// #[doc(hidden)]
+// #[wasm_bindgen]
+// pub fn __start_streamsink(name: String) {
+//     use crate::pool::WorkerPool;
+//     thread_local! {
+//         static CONTROL_POOL: WorkerPool = WorkerPool::new(1, script_path().unwrap()).unwrap();
+//     }
 
-    CONTROL_POOL.with(|pool| {
-        pool.run(transfer!(|| {
-            if let Some(signal) = SINK_INIT.lock().unwrap().get(&name) {
-                *signal.started.lock().unwrap() = true;
-                signal.cvar.notify_all();
-            } else {
-                console_error(&format!("Did not make it in time: {}", name));
-            }
-        }))
-        .unwrap();
-    });
-}
+//     CONTROL_POOL.with(|pool| {
+//         pool.run(transfer!(|| {
+//             if let Some(signal) = SINK_INIT.lock().unwrap().get(&name) {
+//                 *signal.started.lock().unwrap() = true;
+//                 signal.cvar.notify_all();
+//             } else {
+//                 console_error(&format!("StreamSink was not registered in time: {}", name));
+//             }
+//         }))
+//         .unwrap();
+//     });
+// }
 
 impl<T: IntoDart> StreamSink<T> {
     /// Create a new sink from a port wrapper.
@@ -151,16 +151,16 @@ impl<T: IntoDart> StreamSink<T> {
             #[cfg(not(wasm))]
             rust2dart,
             #[cfg(wasm)]
-            channel: Channel(name.clone()),
-            #[cfg(wasm)]
-            signal: {
-                let mut signals = SINK_INIT.lock().unwrap();
-                if signals.contains_key(&name) {
-                    drop(signals);
-                    panic!("Name collision: {}", name);
-                }
-                signals.entry(name).or_default().clone()
-            },
+            channel: Channel(name),
+            // #[cfg(wasm)]
+            // signal: {
+            //     let mut signals = SINK_INIT.lock().unwrap();
+            //     if signals.contains_key(&name) {
+            //         drop(signals);
+            //         panic!("Name collision: {}", name);
+            //     }
+            //     signals.entry(name).or_default().clone()
+            // },
             _phantom_data: PhantomData,
         }
     }
@@ -174,14 +174,14 @@ impl<T: IntoDart> StreamSink<T> {
     }
 
     fn wait_init(&self) {
-        #[cfg(wasm)]
-        {
-            let mut started = self.signal.started.lock().unwrap();
-            while !*started {
-                console_log("StreamSink waiting...");
-                started = self.signal.cvar.wait(started).unwrap();
-            }
-        }
+        // #[cfg(wasm)]
+        // {
+        //     let mut started = self.signal.started.lock().unwrap();
+        //     while !*started {
+        //         console_log("StreamSink waiting...");
+        //         started = self.signal.cvar.wait(started).unwrap();
+        //     }
+        // }
     }
 
     /// Add data to the stream. Returns false when data could not be sent,

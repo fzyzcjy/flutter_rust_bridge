@@ -9,7 +9,7 @@ use anyhow::Result;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
 use crate::support::WireSyncReturnStruct;
-use crate::{transfer, SyncReturn};
+use crate::{SyncReturn, spawn};
 
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]
@@ -219,23 +219,6 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
     {
-        const NUM_WORKERS: usize = 4;
-        #[cfg(not(wasm))]
-        lazy_static::lazy_static! {
-            static ref THREAD_POOL: parking_lot::Mutex<threadpool::ThreadPool> =
-                parking_lot::Mutex::new(threadpool::ThreadPool::with_name(
-                    "frb_executor".to_string(),
-                    NUM_WORKERS
-                ));
-        }
-
-        #[cfg(wasm)]
-        thread_local! {
-            static WORKER_POOL: crate::pool::WorkerPool = crate::pool::WorkerPool::new(
-                NUM_WORKERS, crate::script_path().expect("Could not get script path"),
-            ).expect("Failed to create worker pool")
-        }
-
         let eh = self.error_handler;
         let eh2 = self.error_handler;
 
@@ -253,7 +236,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
             (port, None)
         };
 
-        let worker = transfer!(|port: Option<MessagePort>| {
+        spawn!(|port: Option<MessagePort>| {
             #[cfg(wasm)]
             let port = port.or_else(|| channel.as_ref().map(crate::rust2dart::Channel::port));
             let port2 = port.as_ref().cloned();
@@ -285,16 +268,6 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
 
             if let Err(error) = thread_result {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
-            }
-        });
-
-        #[cfg(not(wasm))]
-        THREAD_POOL.lock().execute(worker);
-
-        #[cfg(wasm)]
-        WORKER_POOL.with(|pool| {
-            if let Err(err) = pool.run(worker) {
-                crate::ffi::console_error(&format!("worker error: {:?}", err));
             }
         });
     }

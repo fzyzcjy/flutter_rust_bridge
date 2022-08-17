@@ -5,7 +5,7 @@ use env_logger::Env;
 use lib_flutter_rust_bridge_codegen::{
     config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
 };
-use log::{debug, info, error};
+use log::{debug, error, info};
 
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command

@@ -2,11 +2,8 @@
 
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
-#[cfg(not(target_family = "wasm"))]
-use std::thread;
+use std::thread::sleep;
 use std::time::Duration;
-#[cfg(target_family = "wasm")]
-use wasm_thread as thread;
 
 use anyhow::{anyhow, Result};
 
@@ -183,13 +180,13 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
     let cnt2 = cnt.clone();
     let sink2 = sink.clone();
 
-    thread::spawn(move || {
+    spawn!(|| {
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
             let msg = format!("(thread=child, i={}, old_cnt={})", i, old_cnt);
             format!("send data to sink msg={}", msg);
             let _ = sink2.add(msg);
-            thread::sleep(Duration::from_millis(100));
+            sleep(Duration::from_millis(100));
         }
         sink2.close();
     });
@@ -199,7 +196,7 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
         let msg = format!("(thread=normal, i={}, old_cnt={})", i, old_cnt);
         format!("send data to sink msg={}", msg);
         let _ = sink.add(msg);
-        thread::sleep(Duration::from_millis(50));
+        sleep(Duration::from_millis(50));
     }
 
     Ok(())
@@ -633,7 +630,7 @@ pub fn handle_stream_sink_at_1(
     max: u32,
     sink: StreamSink<Log>,
 ) -> Result<(), anyhow::Error> {
-    thread::spawn(move || {
+    spawn!(|| {
         for i in 0..max {
             let _ = sink.add(Log { key, value: i });
         }
@@ -700,7 +697,7 @@ impl ConcatenateWith {
         sink: StreamSink<Log2>,
     ) -> Result<(), anyhow::Error> {
         let a = self.a.clone();
-        thread::spawn(move || {
+        spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
@@ -713,7 +710,7 @@ impl ConcatenateWith {
     }
 
     pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
-        thread::spawn(move || {
+        spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
@@ -727,7 +724,7 @@ impl ConcatenateWith {
         max: u32,
         sink: StreamSink<Log2>,
     ) -> Result<(), anyhow::Error> {
-        thread::spawn(move || {
+        spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
@@ -742,7 +739,7 @@ impl ConcatenateWith {
     pub fn handle_some_static_stream_sink_single_arg(
         sink: StreamSink<u32>,
     ) -> Result<(), anyhow::Error> {
-        thread::spawn(move || {
+        spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }

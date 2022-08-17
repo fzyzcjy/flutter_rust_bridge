@@ -79,9 +79,12 @@ Worker 2 ->> Dart: channel.postMessage
 It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 `BroadcastChannel`s and `Worker`s, but it remains to be seen how practical such an approach would be.
 
-## Limitations of Rust WASM
+## Limitations of WASM
 
-- `panic::catch_unwind` does not currently work on the Web. When a Rust thread panics, it aborts and throws a
+- Safari cannot spawn nested `Worker`s. To get around this limitation, build two variants of the library,
+  one with multithreading and one without, and serve Safari users the single-threaded variant.
+  For a more general solution, check out [wasm-feature-detect](https://github.com/GoogleChromeLabs/wasm-feature-detect).
+- `panic::catch_unwind` currently does not work on the Web. When a Rust thread panics, it aborts and throws a
   JavaScript `RuntimeError` that cannot be caught by name in Dart. Right now, the implementation to
   catch these errors resides within the bodies of the workers, i.e. it is not straightforward enough to
   generalize for other use-cases.

@@ -79,9 +79,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     final name = '__frb_streamsink_${func}_$nextIndex';
     final receivePort = broadcastPort(name);
     task.callFfi(receivePort.sendPort.nativePort);
-    await Future.delayed(const Duration(milliseconds: 20));
 
-    startStreamSink(name);
+    // await Future.delayed(const Duration(milliseconds: 10), () => startStreamSink(name));
     await for (final raw in receivePort) {
       try {
         yield _transformRust2DartMessage(raw, task.parseSuccessData);

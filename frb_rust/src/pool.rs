@@ -4,6 +4,7 @@
 
 use crate::TransferClosure;
 use js_sys::Array;
+use web_sys::ErrorEvent;
 use std::cell::RefCell;
 use std::iter::FromIterator;
 use std::rc::Rc;
@@ -44,9 +45,10 @@ impl WorkerPool {
             state: Rc::new(PoolState {
                 workers: RefCell::new(Vec::with_capacity(initial)),
                 callback: Closure::new(|event: Event| {
-                    crate::ffi::console_log(&format!("noop callback dropped: {:?}", event));
                     if let Some(event) = event.dyn_ref::<MessageEvent>() {
-                        crate::ffi::console_log(&format!("with data: {:?}", event.data()));
+                        crate::ffi::console_error(&format!("Dropped data:: {:?}", event.data()));
+                    } else if let Some(event) = event.dyn_ref::<ErrorEvent>() {
+                        crate::ffi::console_error(&format!("Failed to initialize: {}", event.message()));
                     }
                 }),
             }),
@@ -72,7 +74,8 @@ impl WorkerPool {
         crate::console_log("Spawned a new thread");
         let src = &self.script_src;
         let script = format!(
-            "importScripts('{}'); onmessage = event => {{
+            "importScripts('{}');
+            onmessage = event => {{
                 let init = wasm_bindgen(...event.data).catch(err => {{
                     setTimeout(() => {{ throw err }})
                     throw err
@@ -83,7 +86,7 @@ impl WorkerPool {
                     try {{
                         wasm_bindgen.receive_transfer_closure(payload, transfer)
                     }} catch (err) {{
-                        if (transfer[0]?.postMessage) {{
+                        if (transfer[0] && typeof transfer[0].postMessage === 'function') {{
                             transfer[0].postMessage([1, 'ABORT', err.toString(), err.stack])
                         }}
                         setTimeout(() => {{ throw err }})

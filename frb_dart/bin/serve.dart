@@ -258,7 +258,10 @@ void main(List<String> args) async {
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
   if (config['run-tests']) {
-    browser = await puppeteer.launch(headless: true);
+    browser = await puppeteer.launch(
+      headless: true,
+      timeout: const Duration(minutes: 5),
+    );
     final page = await browser.newPage();
     await page.goto(addr);
   } else if (config['open']) {

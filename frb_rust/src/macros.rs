@@ -25,7 +25,7 @@ macro_rules! transfer {
         #[cfg(target_family = "wasm")]
         {
             use wasm_bindgen::JsValue;
-            #[allow(unused_assignments, unused_variables)]
+            #[allow(unused_variables)]
             let worker = move |transfer: &[JsValue]| {
                 let idx = 0;
                 $(
@@ -39,24 +39,33 @@ macro_rules! transfer {
     }};
 }
 
-// macro_rules! console_log {
-//     ($lit:literal) => {
-//         #[allow(unused_unsafe)]
-//         unsafe { $crate::ffi::log($lit) }
-//     };
-//     ($( $tt:tt )*) => {
-//         #[allow(unused_unsafe)]
-//         unsafe { $crate::ffi::log(&format!($( $tt )*)) }
-//     };
-// }
+/// Spawn a task using the internal thread pool.
+/// Interprets the parameters as a list of captured transferables to
+/// send to this thread.
+/// 
+/// Also see [`transfer`].
+#[macro_export]
+macro_rules! spawn {
+    ($($tt:tt)*) => {{
+        let worker = $crate::transfer!($($tt)*);
+        #[cfg(not(target_family = "wasm"))]
+        {
+            $crate::thread::THREAD_POOL.lock().execute(worker)
+        }
 
-// macro_rules! console_error {
-//     ($lit:literal) => {
-//         #[allow(unused_unsafe)]
-//         unsafe { $crate::ffi::error($lit) }
-//     };
-//     ($( $tt:tt )*) => {
-//         #[allow(unused_unsafe)]
-//         unsafe { $crate::ffi::error(&format!($( $tt )*)) }
-//     };
-// }
+        #[cfg(target_family = "wasm")]
+        {
+            use anyhow::anyhow;
+            let res = $crate::thread::WORKER_POOL.with(|pool| {
+                if let Some(pool) = pool.as_ref() {
+                    pool.run(worker).map_err(|err| anyhow!("worker error: {:?}", err))
+                } else {
+                    Err(anyhow!("Worker was not initialized."))
+                }
+            });
+            if let Err(err) = res {
+                $crate::console_error(&format!("{}", err));
+            }
+        }
+    }};
+}
