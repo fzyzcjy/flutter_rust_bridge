@@ -313,7 +313,8 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
                     setupMixinConstructor();
                 }}
-                Future<void> setup() => inner.init;",
+                Future<void> setup() => inner.init;
+                @protected void startStreamSink(String name) => wasmModule.__start_streamsink(name);",
             plat = dart_platform_class_name,
             wire = dart_wire_class_name,
         ),
@@ -353,6 +354,8 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             "@JS() @anonymous class {wasm} implements WasmModule {{
                 external Object /* Promise */ call([String? moduleName]);
                 external {wasm} bind(dynamic thisArg, String moduleName);
+
+                external void __start_streamsink(String name);
             ",
             wasm = dart_wasm_module_name,
         ));

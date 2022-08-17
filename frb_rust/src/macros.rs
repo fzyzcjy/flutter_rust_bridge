@@ -7,24 +7,32 @@
 /// ["transferred"]: https://developer.mozilla.org/en-US/docs/Glossary/Transferable_objects
 #[macro_export]
 macro_rules! transfer {
-    (|$($param:ident: $ty:ty),*| { $($body:tt)* }) => {{
+    (|| $block:block) => {{
+        #[cfg(not(target_family = "wasm"))]
+        { move || $block }
+
+        #[cfg(target_family = "wasm")]
+        {
+            $crate::ffi::TransferClosure::new(vec![], move |_: &[JsValue]| $block)
+        }
+    }};
+    (|$($param:ident: $ty:ty),*| $block:block) => {{
         #[cfg(not(target_family = "wasm"))]
         {
-            move || { $($body)* }
+            move || $block
         }
 
         #[cfg(target_family = "wasm")]
         {
             use wasm_bindgen::JsValue;
-            use $crate::ffi::FromDart;
-            #[allow(unused_assignments)]
+            #[allow(unused_assignments, unused_variables)]
             let worker = move |transfer: &[JsValue]| {
-                let mut idx = 0;
+                let idx = 0;
                 $(
-                    let $param = <$ty>::from_dart(&transfer[idx]);
-                    idx += 1;
+                    let $param: $ty = $crate::ffi::FromDart::from_dart(&transfer[idx]);
+                    let idx = idx + 1;
                 )*
-                { $($body)* }
+                $block
             };
             $crate::ffi::TransferClosure::new(vec![$(<$ty>::into($param)),*], worker)
         }
