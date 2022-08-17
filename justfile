@@ -26,6 +26,7 @@ gen-bridge:
                 -d {{frb_pure}}/dart/lib/bridge_generated.dart \
                 --dart-decl-output {{frb_pure}}/dart/lib/bridge_definitions.dart \
                 --dart-format-line-length {{line_length}} --wasm
+    cd {{frb_flutter}} && flutter pub get
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
                 --dart-decl-output {{frb_flutter}}/lib/bridge_definitions.dart \

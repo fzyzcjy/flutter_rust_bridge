@@ -18,7 +18,6 @@ use log::{debug, info, warn};
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
-///   - The function must be in the form of <code>fn(&\[[PathBuf]], ...)</code>
 ///   - The function may be followed by an array of rest parameters to pass.
 /// - Following arguments are either:
 ///   - An expression to turn into a [`PathBuf`]; or
@@ -81,7 +80,7 @@ macro_rules! args {
 pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> Result<Output> {
     let cmd = cmd.iter().map(|section| format!("{:?}", section)).join(" ");
     #[cfg(windows)]
-    return run!("powershell" in pwd, "-noprofile", "-c", format!("\"{}\"", cmd));
+    return run!("powershell" in pwd, "-noprofile", "-c", cmd);
 
     #[cfg(not(windows))]
     run!("sh" in pwd, "-c", cmd)
