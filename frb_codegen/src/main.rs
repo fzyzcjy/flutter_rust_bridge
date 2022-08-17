@@ -1,9 +1,11 @@
+use std::process::exit;
+
 use clap::Parser;
 use env_logger::Env;
 use lib_flutter_rust_bridge_codegen::{
     config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
 };
-use log::{debug, info};
+use log::{debug, info, error};
 
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
@@ -21,7 +23,10 @@ fn main() -> anyhow::Result<()> {
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
     for config in configs.iter() {
-        frb_codegen(config, &all_symbols).unwrap();
+        if let Err(err) = frb_codegen(config, &all_symbols) {
+            error!("fatal: {}", err);
+            exit(1);
+        }
     }
 
     info!("Now go and use it :)");

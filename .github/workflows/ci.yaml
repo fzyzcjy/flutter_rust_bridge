@@ -349,22 +349,22 @@ jobs:
             ~/.cargo/git/db/
             frb_codegen/target
             frb_example/pure_dart/rust/target/
+            frb_example/pure_dart/dart/.local-chromium
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-      - name: Install wasm-pack
+      - name: Install crates
         if: steps.test-cache.outputs.cache-hit != 'true'
-        uses: actions-rs/install@v0.1.2
-        with:
-          crate: wasm-pack
-          version: latest
-          use-tool-cache: true
+        run: |
+          sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
       - name: Setup Dart dependencies
         run: dart pub get
         working-directory: frb_dart
       - name: Run tests
         working-directory: frb_example/pure_dart/dart
-        run: |
-          dart pub get && \
-            dart run ../../../frb_dart/bin/serve.dart -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
+        timeout-minutes: 20
+        run: dart pub get &&
+          dart run ../../../frb_dart/bin/serve.dart
+          -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
+
 
           
 
