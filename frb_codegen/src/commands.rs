@@ -81,7 +81,6 @@ pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> Result<Output> {
     let cmd = cmd.iter().map(|section| format!("{:?}", section)).join(" ");
     #[cfg(windows)]
     {
-        let cmd = cmd.replace('"', "'");
         return run!("powershell" in pwd, "-noprofile", "-command", format!("& {}", cmd));
     }
 
