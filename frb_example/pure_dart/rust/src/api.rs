@@ -729,7 +729,7 @@ impl ConcatenateWith {
     ) -> Result<(), anyhow::Error> {
         thread::spawn(move || {
             for i in 0..max {
-                let _ = sink.add(Log2 {
+                sink.add(Log2 {
                     key,
                     value: i.to_string(),
                 });
@@ -744,7 +744,7 @@ impl ConcatenateWith {
     ) -> Result<(), anyhow::Error> {
         thread::spawn(move || {
             for i in 0..5 {
-                let _ = sink.add(i);
+                sink.add(i);
             }
             sink.close();
         });

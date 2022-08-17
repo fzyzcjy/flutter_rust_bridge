@@ -431,7 +431,6 @@ void main(List<String> args) async {
     final int max = 5;
     final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
     int cnt = 0;
-    print('start listening');
     await for (final value in stream) {
       print("output from ConcatenateWith's stream: $value");
       expect(value.value, "hello $cnt");
@@ -445,7 +444,6 @@ void main(List<String> args) async {
     final int max = 5;
     final stream = ConcatenateWith.handleSomeStaticStreamSink(bridge: api, key: key, max: max);
     int cnt = 0;
-    print('start listening');
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
       expect(value.value, "$cnt");
@@ -456,7 +454,6 @@ void main(List<String> args) async {
 
   test('ConcatenateWith static stream sink at 1 test', () async {
     final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
-    print('start listening');
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 

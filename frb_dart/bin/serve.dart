@@ -103,7 +103,7 @@ void main(List<String> args) async {
         help: 'Set COEP to credentialless\n' 'Defaults to true for Flutter')
     ..addFlag('open', help: 'Open the webpage in a browser', defaultsTo: true)
     ..addFlag('run-tests',
-        help: 'Run tests in headless Chrome', negatable: false)
+        help: 'Run tests in headless Chromium', negatable: false)
     ..addFlag('release', help: 'Compile in release mode', negatable: false)
     ..addFlag('weak-refs',
         help:
@@ -258,27 +258,7 @@ void main(List<String> args) async {
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
   if (config['run-tests']) {
-    String? chromeExecutable;
-    for (final exe in const [
-      'google-chrome',
-      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-    ]) {
-      try {
-        await system(which, [exe]);
-        chromeExecutable = exe;
-        break;
-      } on ProcessException catch (_) {
-        continue;
-      }
-    }
-    if (chromeExecutable == null) {
-      eprintln('${warn('warning')}: Chrome executable not found.');
-    }
-    browser = await puppeteer.launch(
-      executablePath: chromeExecutable,
-      headless: true,
-      noSandboxFlag: true,
-    );
+    browser = await puppeteer.launch(headless: true);
     final page = await browser.newPage();
     await page.goto(addr);
   } else if (config['open']) {

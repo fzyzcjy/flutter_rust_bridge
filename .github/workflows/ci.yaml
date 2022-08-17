@@ -688,10 +688,6 @@ jobs:
           RUST_LOG: debug
 
       # #467
-      # - name: "Modify cross-platform code (osx) (single block)"
-      #   if: ${{ matrix.os.family == 'osx' }}
-      #   # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
-      #   run: sed -i '' -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.dart
       - name: "Modify cross-platform code (windows) (single block)"
         if: ${{ matrix.os.family == 'windows' }}
         run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.io.dart

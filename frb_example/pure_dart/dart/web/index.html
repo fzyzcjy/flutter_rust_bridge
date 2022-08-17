@@ -63,9 +63,12 @@
       pre.classList.add("error");
       return pre;
     };
+    const href = window.location.href.replace("http", "ws");
+    const channel = new WebSocket(href);
     console.log = (...args) => {
       for (const a of args) {
         output.appendChild(colorize(a));
+        channel.send(JSON.stringify(a));
       }
       log(...args);
     };
@@ -73,9 +76,10 @@
     console.error = (...args) => {
       for (const a of args) {
         output.append(decorateError(a));
+        channel.send(JSON.stringify(a));
       }
       error(...args);
     };
   </script>
-  <script src="main.web.dart.js"></script>
+  <script src="main.web.dart.js" async></script>
 </html>

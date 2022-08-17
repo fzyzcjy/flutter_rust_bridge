@@ -82,7 +82,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
         yield _transformRust2DartMessage(raw, task.parseSuccessData);
       } on _CloseStreamException {
         receivePort.close();
-        return;
+        break;
       }
     }
   }
