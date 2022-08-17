@@ -338,14 +338,20 @@ jobs:
           components: rust-src,rustfmt
       - name: Install ffigen
         run: dart pub global activate ffigen
-      - name: Retrieve wasm-pack from cache
-        id: wasm-pack
+      - name: Cache dependencies
+        id: test-cache
         uses: actions/cache@v3
         with:
-          path: /home/runner/.cargo/bin/wasm-pack
-          key: ${{ runner.os }}-wasm-pack
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            frb_codegen/target
+            frb_example/pure_dart/rust/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Install wasm-pack
-        if: steps.wasm-pack.outputs.cache-hit != 'true'
+        if: steps.test-cache.outputs.cache-hit != 'true'
         uses: actions-rs/install@v0.1.2
         with:
           crate: wasm-pack

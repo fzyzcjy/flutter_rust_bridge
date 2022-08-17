@@ -78,7 +78,6 @@ check:
     cd frb_codegen && cargo clippy -- -D warnings
 
 serve *args="":
-    cd frb_dart && dart pub get
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
 refresh_all:
