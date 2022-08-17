@@ -110,3 +110,12 @@ It is theoretically possible to have a one-to-one implementation of Isolate usin
 [^4]: While `Option<*mut T>` would fit this better, as of writing wasm_bindgen does not support this type.
 [^5]: Refers to C-style enums only (no fields).
 [^6]: This is currently implemented as a monotonically-increasing index.
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+let mdbookTheme = localStorage.getItem("mdbook-theme") || default_theme;
+mermaid.initialize({
+    startOnLoad: true,
+    theme: mdbookTheme == 'light' || mdbookTheme == 'rust' ? 'light' : 'dark',
+});
+</script>
