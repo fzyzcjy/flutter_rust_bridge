@@ -4,13 +4,13 @@
 
 use crate::TransferClosure;
 use js_sys::Array;
-use web_sys::ErrorEvent;
 use std::cell::RefCell;
 use std::iter::FromIterator;
 use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use web_sys::BlobPropertyBag;
+use web_sys::ErrorEvent;
 use web_sys::MessageEvent;
 use web_sys::{Blob, Url};
 use web_sys::{Event, Worker};
@@ -48,7 +48,10 @@ impl WorkerPool {
                     if let Some(event) = event.dyn_ref::<MessageEvent>() {
                         crate::ffi::console_error(&format!("Dropped data:: {:?}", event.data()));
                     } else if let Some(event) = event.dyn_ref::<ErrorEvent>() {
-                        crate::ffi::console_error(&format!("Failed to initialize: {}", event.message()));
+                        crate::ffi::console_error(&format!(
+                            "Failed to initialize: {}",
+                            event.message()
+                        ));
                     }
                 }),
             }),

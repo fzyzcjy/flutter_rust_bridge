@@ -3,13 +3,15 @@ pub const WORKERS_COUNT: usize = 4;
 #[cfg(not(wasm))]
 mod io {
     use super::*;
+    use lazy_static::lazy_static;
     use parking_lot::Mutex;
     use threadpool::ThreadPool;
-    use lazy_static::lazy_static;
 
     lazy_static! {
-        pub static ref THREAD_POOL: Mutex<ThreadPool> =
-            Mutex::new(ThreadPool::with_name("frb_workerpool".into(), WORKERS_COUNT));
+        pub static ref THREAD_POOL: Mutex<ThreadPool> = Mutex::new(ThreadPool::with_name(
+            "frb_workerpool".into(),
+            WORKERS_COUNT
+        ));
     }
 }
 
@@ -23,8 +25,7 @@ mod web {
     use super::*;
 
     thread_local! {
-        pub static WORKER_POOL: Option<WorkerPool> =
-            WorkerPool::new(WORKERS_COUNT, script_path().unwrap())
+        pub static WORKER_POOL: Option<WorkerPool> = WorkerPool::new(WORKERS_COUNT, script_path().unwrap())
                 .map_err(|err| crate::console_error(&format!("Failed to spawn worker: {:?}", err))).ok()
     }
 }

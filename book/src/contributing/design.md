@@ -94,6 +94,16 @@ In other words, String (or `Vec<u8>`) is converted to a raw struct with pointer 
 
 We use Valgrind to check as well, and I use it in production environment without problems, so no worries about memory problems :)
 
+## Dart bridge hierarchy
+
+A bridge module consists of several classes:
+- One `_Impl` class implementing the wire functions and common helpers; and
+- One or more `_Platform` classes implementing the platform-specific helpers.
+
+The implementor class takes a platform class as a private attribute, and the platform
+class exposes all of its members decorated with `@protected`. The specific platform class
+to be used is gated by conditional imports.
+
 ## Want to know more? Tell me
 
 What do you want to know? Feel free to create an issue in GitHub, and I will tell more :)

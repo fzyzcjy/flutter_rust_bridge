@@ -28,7 +28,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
             IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(
                 format!(
-                    "let buf = self.unchecked_into::<{}>();
+                    "let buf = self.dyn_into::<{}>().unwrap();
                     let buf = js_sys::Uint8Array::new(&buf.buffer());
                     support::slice_from_byte_buffer(buf.to_vec()).into()",
                     self.ir.rust_wasm_wire_type()

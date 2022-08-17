@@ -9,7 +9,7 @@ use anyhow::Result;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
 use crate::support::WireSyncReturnStruct;
-use crate::{SyncReturn, spawn};
+use crate::{spawn, SyncReturn};
 
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]

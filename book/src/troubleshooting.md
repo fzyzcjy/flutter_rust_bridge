@@ -47,6 +47,11 @@ Indeed all generated code are necessary (if you find something that can be simpl
 
 Dart SDK `>=2.14.0` is needed not by this library, but by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
 
+## Issues on Web?
+
+Check out [Limitations on WASM](./wasm_limitations.md) for some common problems and solutions
+to adapt existing code to WASM.
+
 ## Other problems?
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose)! I usually reply within minutes or hours (except when sleeping, of course).

@@ -15,7 +15,7 @@ impl TypeGeneralListGenerator<'_> {
             };
             vec.into_iter().map(Wire2Api::wire2api).collect()";
     pub const WIRE2API_BODY_WASM: &'static str =
-        "self.unchecked_into::<JsArray>().iter().map(Wire2Api::wire2api).collect()";
+        "self.dyn_into::<JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()";
 }
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {

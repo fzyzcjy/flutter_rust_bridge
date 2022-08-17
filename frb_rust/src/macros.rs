@@ -42,7 +42,7 @@ macro_rules! transfer {
 /// Spawn a task using the internal thread pool.
 /// Interprets the parameters as a list of captured transferables to
 /// send to this thread.
-/// 
+///
 /// Also see [`transfer`].
 #[macro_export]
 macro_rules! spawn {

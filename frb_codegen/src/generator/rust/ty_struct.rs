@@ -37,7 +37,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 right
             )),
             wasm: Some(format!(
-                "let self_ = self.unchecked_into::<JsArray>();
+                "let self_ = self.dyn_into::<JsArray>().unwrap();
                 debug_assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
                 {}{}{}{}",
                 self.ir.rust_api_type(),

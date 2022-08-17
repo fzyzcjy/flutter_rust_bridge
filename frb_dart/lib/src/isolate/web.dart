@@ -105,7 +105,6 @@ abstract class PortLike extends EventTarget {
   NativePortType get nativePort;
 }
 
-// TODO: Find a way to make this less verbose
 class _MessagePortWrapper implements PortLike, html.MessagePort {
   final html.MessagePort port;
   _MessagePortWrapper(this.port);
