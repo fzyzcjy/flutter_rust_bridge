@@ -88,7 +88,7 @@ It is theoretically possible to have a one-to-one implementation of Isolate usin
 - `Int64List` and `Uint64List` throws when used on Web platforms. They are left intentionally
   unimplemented by the Dart language developers, perhaps due to the differences between `int` and `BigInt`.
   This library provides a barebones pure Dart shim whose behavior may differ from the specifications,
-  so please create an issue/PR if you notice any significant digressions.
+  so please create an issue/PR if you encounter any significant digression.
 - Support for the various components of WASM is not universal among browsers. Here is a (non-exhaustive) list
   of trackers for how widely available some of the features are across browsers:
   - [`MessagePort` error events](https://caniuse.com/mdn-api_messageport_messageerror_event)

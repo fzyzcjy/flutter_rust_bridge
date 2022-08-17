@@ -1,5 +1,28 @@
 # Web setup
 
-As of writing, Web support is underway and tracked by [fzyzcjy/flutter_rust_bridge#315](https://github.com/fzyzcjy/flutter_rust_bridge/issues/315).
-Consider leaving comments and reactions to let us know of the demand for this feature!
+Building on web requires nightly Rust, the `wasm32-unknown-unknown` target
+and [wasm-pack], which can be installed using these commands:
 
+```bash
+rustup toolchain install nightly
+rustup +nightly component add rust-src
+rustup +nightly target add wasm32-unknown-unknown
+# either of these
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+cargo install wasm-pack
+```
+
+Optionally (but highly recommended), install `flutter_rust_bridge_serve`
+to expedite the process of building the WASM binary and setting up HTTP headers:
+
+```bash
+# in your Flutter/Dart package
+flutter pub add flutter_rust_bridge
+# then run this instead of "flutter web -d chrome"
+dart run flutter_rust_bridge:serve
+# or install globally
+dart pub global activate flutter_rust_bridge
+flutter_rust_bridge_serve
+```
+
+[wasm-pack]: https://rustwasm.github.io/wasm-pack/

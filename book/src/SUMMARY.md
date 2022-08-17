@@ -70,6 +70,7 @@
 
 - [Overview](contributing/overview.md)
 - [Overall design](contributing/design.md)
+- [Architecture](contributing/architecture.md)
 - [Appendix](contributing/appendix.md)
 
 # Part IV: More Doc
@@ -79,6 +80,7 @@
 - [Troubleshooting](troubleshooting.md)
 - [Command line arguments](command_line.md)
 - [Set up Flutter/Dart+Rust support from scratch](set_up_from_scratch.md)
+- [Building a WASM binary manually](build_wasm.md)
 - [Articles](article.md)
   - [Async in Rust](article/async_in_rust.md)
   - [Generate multiple files](article/generate_multiple_files.md)

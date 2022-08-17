@@ -1,16 +1,14 @@
 # Wrapping up
 
-Congratulations! You have successfully added a Rust component to your Flutter app
-using `flutter_rust_bridge` and configured `flutter run` to build your Rust library
-and link it to the app.
+Congratulations! You have successfully added a Rust component to
+your Flutter app using `flutter_rust_bridge` and configured
+`flutter run` (more on web later) to build your Rust library and link it to the app.
 
 As a reminder, you need to run these commands every time your Rust code changes *and*
 before you run `flutter run`:
 
 ```bash
 {{#include command.sh.txt}}
-# if using Dart codegen
-flutter pub run build_runner build
 ```
 
 ## Renaming the Rust bridge module
@@ -28,6 +26,13 @@ flutter_rust_bridge_codegen \
 then you need to modify this in `lib.rs`:
 
 ```diff
--mod bridge_generated;
-+mod my_bridge;
+- mod bridge_generated;
++ mod my_bridge;
 ```
+
+## `flutter_rust_bridge_serve`-less workflows
+
+If you don't need to run Flutter Web in development
+mode and would rather build in release mode once
+in a while, [read here](../build_wasm.md) for instructions on how to build your WASM
+binary without `flutter_rust_bridge_serve`.

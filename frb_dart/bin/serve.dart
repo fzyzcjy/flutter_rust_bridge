@@ -70,29 +70,40 @@ void assert_(bool condition, [String? message]) {
 }
 
 void main(List<String> args) async {
-  final exec = Platform.script.pathSegments.last;
+  const exec = 'flutter_rust_bridge_serve';
   final parser = ArgParser()
     ..addSeparator('Develop Rust WASM modules with cross-origin isolation.')
-    ..addSeparator("""Usage:
-\t$exec --wasm-output <PKG> [options]
-\t$exec --dart-input <ENTRY> --root <WEB_ROOT> [options]""")
-    ..addSeparator('Options:')
+    ..addSeparator("""USAGE:
+\t$exec [OPTIONS]
+\t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS]""")
+    ..addSeparator('OPTIONS:')
     ..addOption('port',
-        abbr: 'p', help: 'HTTP port to listen to', defaultsTo: '8080')
-    ..addOption('root', abbr: 'r', help: 'Root of the Flutter/Dart output')
+        abbr: 'p',
+        valueHelp: 'PORT',
+        help: 'HTTP port to listen to',
+        defaultsTo: '8080')
+    ..addOption('root',
+        abbr: 'r', valueHelp: 'ROOT', help: 'Root of the Flutter/Dart output')
     ..addOption('crate',
-        abbr: 'c', help: 'Directory of the crate', defaultsTo: 'native')
-    ..addOption('dart-input',
-        abbr: 'd',
-        help:
-            'Run "dart compile" with the specified input instead of "flutter build"')
-    ..addOption('wasm-output', abbr: 'w', help: 'WASM output path')
-    ..addSeparator('Flags:')
+        abbr: 'c',
+        valueHelp: 'CRATE',
+        help: 'Directory of the crate',
+        defaultsTo: 'native')
+    ..addOption(
+      'dart-input',
+      abbr: 'd',
+      valueHelp: 'ENTRY',
+      help:
+          'Run "dart compile" with the specified input instead of "flutter build"',
+    )
+    ..addOption('wasm-output',
+        abbr: 'w', valueHelp: 'PKG', help: 'WASM output path')
     ..addFlag('verbose', abbr: 'v', help: 'Display more verbose information')
     ..addFlag('relax-coep',
-        help: 'Set COEP to credentialless, useful for Flutter')
+        help: 'Set COEP to credentialless\n' 'Defaults to true for Flutter')
     ..addFlag('open', help: 'Open the webpage in a browser', defaultsTo: true)
-    ..addFlag('run-tests', help: 'Run all tests and exit', negatable: false)
+    ..addFlag('run-tests',
+        help: 'Run tests in headless Chrome', negatable: false)
     ..addFlag('release', help: 'Compile in release mode', negatable: false)
     ..addFlag('weak-refs',
         help:
@@ -137,10 +148,8 @@ void main(List<String> args) async {
     root = p.canonicalize(config['root']);
     wasmOutput = p.canonicalize(config['wasm-output'] ?? '$root/pkg');
   } else {
-    assert_(config['wasm-output'] != null,
-        'The --wasm-output option is required when building Flutter projects.');
     root = p.canonicalize(config['root'] ?? 'build/web');
-    wasmOutput = p.canonicalize(config['wasm-output']);
+    wasmOutput = p.canonicalize(config['wasm-output'] ?? 'web/pkg');
   }
 
   final crateDir = config['crate'];
@@ -230,13 +239,16 @@ void main(List<String> args) async {
       }
     }
   });
+  // If not set by user, relax COEP on Flutter.
+  final shouldRelaxCoep = config['relax-coep'] ||
+      (!config.wasParsed('relax-coep') && config['dart-input'] == null);
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
       final res = await handler(req);
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
         'Cross-Origin-Embedder-Policy':
-            config['relax-coep'] ? 'credentialless' : 'require-corp',
+            shouldRelaxCoep ? 'credentialless' : 'require-corp',
       });
     };
   }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);

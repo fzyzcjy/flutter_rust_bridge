@@ -54,7 +54,7 @@ test-pure:
 test-pure-web *args="":
     cd {{frb_pure}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
 test-flutter-web *args="":
-    cd {{frb_flutter}} && just serve -c rust --wasm-output web/pkg --relax-coep {{args}}
+    cd {{frb_flutter}} && just serve -c rust {{args}}
 test-integration:
     cd {{frb_flutter}} && flutter test integration_test/main.dart
 
@@ -79,8 +79,6 @@ check:
 serve *args="":
     cd frb_dart && dart pub get
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
-
-
 
 refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)
@@ -127,5 +125,9 @@ release old_version new_version:
     open https://github.com/fzyzcjy/flutter_rust_bridge/releases
 
     just publish_all
+
+gen-help:
+    cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt
+    dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
 
 # vim:expandtab:ts=4:sw=4
