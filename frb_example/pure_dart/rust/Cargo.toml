@@ -11,7 +11,7 @@ crate-type = ["cdylib"]
 flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
 
 [dependencies]
-anyhow = { version = "1.0.61", features = ["backtrace"] }
+anyhow = { version = "1.0.62", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust" }
 lazy_static = "1.4.0"
 
