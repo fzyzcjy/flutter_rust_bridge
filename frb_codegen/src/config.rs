@@ -62,6 +62,9 @@ pub struct RawOpts {
     /// Show debug messages.
     #[structopt(short, long)]
     pub verbose: bool,
+    /// Skip dependencies check.
+    #[structopt(long)]
+    pub skip_deps_check: bool,
 }
 
 #[derive(Debug)]
@@ -81,6 +84,7 @@ pub struct Opts {
     pub dart_root: Option<String>,
     pub build_runner: bool,
     pub block_index: BlockIndex,
+    pub skip_deps_check: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
@@ -159,6 +163,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         "class_name(s) should have the same number of path(s) as rust input(s)"
     );
 
+    let skip_deps_check = raw.skip_deps_check;
+
     // c output path(s) (only 1 list is needed, nothing to do with number of rust_input_paths)
     let c_output_paths = raw
         .c_output
@@ -217,6 +223,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 dart_root: dart_roots[i].clone(),
                 build_runner, //same for all rust api blocks
                 block_index: BlockIndex(i),
+                skip_deps_check,
             }
         })
         .collect()

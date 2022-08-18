@@ -34,7 +34,7 @@ use error::*;
 
 pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
     let dart_root = config.dart_root_or_default();
-    ensure_tools_available(&dart_root)?;
+    ensure_tools_available(&dart_root, config.skip_deps_check)?;
 
     info!("Picked config: {:?}", config);
 
