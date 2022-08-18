@@ -213,7 +213,6 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
-    #[allow(clippy::clone_on_copy, clippy::redundant_clone)]
     fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
@@ -242,6 +241,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
+                #[allow(clippy::clone_on_copy)]
                 let rust2dart = Rust2Dart::new(port2.clone());
 
                 let ret = task(TaskCallback::new(rust2dart.clone())).map(IntoDart::into_dart);

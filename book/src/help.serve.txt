@@ -1,8 +1,8 @@
 Develop Rust WASM modules with cross-origin isolation.
 
 USAGE:
-	flutter_rust_bridge_serve [OPTIONS]
-	flutter_rust_bridge_serve --dart-input <ENTRY> --root <ROOT> [OPTIONS]
+	flutter_rust_bridge_serve [OPTIONS] [..REST]
+	flutter_rust_bridge_serve --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]
 
 OPTIONS:
 -p, --port=<PORT>             HTTP port to listen to
@@ -17,7 +17,7 @@ OPTIONS:
                               Defaults to true for Flutter
     --[no-]open               Open the webpage in a browser
                               (defaults to on)
-    --run-tests               Run tests in headless Chrome
+    --run-tests               Run tests in headless Chromium
     --release                 Compile in release mode
     --[no-]weak-refs          Enable the weak references proposal
                               Requires wasm-bindgen in path

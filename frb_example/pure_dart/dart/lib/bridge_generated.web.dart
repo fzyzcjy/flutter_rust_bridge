@@ -18,8 +18,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
-  @protected
-  void startStreamSink(String name) => wasmModule.__start_streamsink(name);
+  // @protected void startStreamSink(String name) => wasmModule.__start_streamsink(name);
 // Section: api2wire
 
   @protected
@@ -241,7 +240,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   List<dynamic> api2wire_distance(Distance raw) {
     if (raw is Distance_Unknown) {
       return [0];
-    } else if (raw is Distance_Map) {
+    }
+    if (raw is Distance_Map) {
       return [1, api2wire_f64(raw.field0)];
     }
 
@@ -297,15 +297,20 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   List<dynamic> api2wire_kitchen_sink(KitchenSink raw) {
     if (raw is KitchenSink_Empty) {
       return [0];
-    } else if (raw is KitchenSink_Primitives) {
+    }
+    if (raw is KitchenSink_Primitives) {
       return [1, api2wire_i32(raw.int32), api2wire_f64(raw.float64), api2wire_bool(raw.boolean)];
-    } else if (raw is KitchenSink_Nested) {
+    }
+    if (raw is KitchenSink_Nested) {
       return [2, api2wire_box_kitchen_sink(raw.field0), api2wire_i32(raw.field1)];
-    } else if (raw is KitchenSink_Optional) {
+    }
+    if (raw is KitchenSink_Optional) {
       return [3, api2wire_opt_box_autoadd_i32(raw.field0), api2wire_opt_box_autoadd_i32(raw.field1)];
-    } else if (raw is KitchenSink_Buffer) {
+    }
+    if (raw is KitchenSink_Buffer) {
       return [4, api2wire_ZeroCopyBuffer_Uint8List(raw.field0)];
-    } else if (raw is KitchenSink_Enums) {
+    }
+    if (raw is KitchenSink_Enums) {
       return [5, api2wire_weekdays(raw.field0)];
     }
 
@@ -341,7 +346,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   List<dynamic> api2wire_measure(Measure raw) {
     if (raw is Measure_Speed) {
       return [0, api2wire_box_speed(raw.field0)];
-    } else if (raw is Measure_Distance) {
+    }
+    if (raw is Measure_Distance) {
       return [1, api2wire_box_distance(raw.field0)];
     }
 
@@ -507,7 +513,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   List<dynamic> api2wire_speed(Speed raw) {
     if (raw is Speed_Unknown) {
       return [0];
-    } else if (raw is Speed_GPS) {
+    }
+    if (raw is Speed_GPS) {
       return [1, api2wire_f64(raw.field0)];
     }
 
@@ -541,7 +548,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
 
-  external void __start_streamsink(String name);
+  // external void __start_streamsink(String name);
 
   external void wire_simple_adder(NativePortType port_, int a, int b);
 

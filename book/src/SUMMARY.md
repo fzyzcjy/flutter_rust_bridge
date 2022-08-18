@@ -28,6 +28,7 @@
   - [Run in build.rs](feature/build_rs.md)
   - [Cancellable tasks](feature/cancelable_task.md)
   - [Object pools](feature/object_pool.md)
+  - [WASM](feature/wasm.md)
   - [Miscellaneous](feature/misc.md)
 
 # Part II: User Guide

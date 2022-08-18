@@ -37,7 +37,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     variant = variant.wrapper_name.rust_style(),
                 )
             })
-            .join("else\n");
+            .join("\n");
         Acc {
             wasm: Some(format!(
                 "{}
@@ -85,6 +85,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 wireObj.tag = {1};
                                 wireObj.kind = inner.inflate_{2}_{0}();
                                 {3}
+                                return;
                             }}",
                             variant.name,
                             idx,
@@ -94,7 +95,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         )
                     }
                 })
-                .join("else\n"),
+                .join("\n"),
         )
     }
 

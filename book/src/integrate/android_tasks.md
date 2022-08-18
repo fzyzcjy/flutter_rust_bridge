@@ -7,7 +7,7 @@ Go ahead and install `cargo-ndk` if you have not already done so:
 cargo install cargo-ndk
 ```
 
-Next, add these lines near the bottom of `android/app/build.gradle`:
+Next, add these lines[^1] near the bottom of `android/app/build.gradle`:
 
 ```gradle
 [
@@ -25,7 +25,7 @@ Next, add these lines near the bottom of `android/app/build.gradle`:
     tasks.register("cargoBuild$taskPostfix", Exec) {
         // Until https://github.com/bbqsrc/cargo-ndk/pull/13 is merged,
         // this workaround is necessary.
-        
+
         def ndk_command = """cargo ndk \
             -t armeabi-v7a -t arm64-v8a -t x86_64 -t x86 \
             -o ../android/app/src/main/jniLibs build $profileMode"""
@@ -41,7 +41,7 @@ Next, add these lines near the bottom of `android/app/build.gradle`:
 }
 ```
 
-Note the ANDROID\_NDK variable, this is a Gradle property that points to
+Note the ANDROID_NDK variable, this is a Gradle property that points to
 your installation of the Android NDK. If you don't rely on portability,
 you can hardcode this value, but note that it can be supplied by one
 of the many `gradle.properties` scattered throughout your filesystem.
@@ -51,3 +51,7 @@ and fill it with this:
 ```
 ANDROID_NDK=(path to NDK)
 ```
+
+[^1]:
+    This excerpt might be outdated, please check out
+    the source file at the template repository.

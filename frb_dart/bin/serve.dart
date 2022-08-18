@@ -62,11 +62,9 @@ Future<String> system(
   return ret.join('');
 }
 
-void assert_(bool condition, [String? message]) {
-  if (!condition) {
-    eprintln(message);
-    exit(1);
-  }
+Never bail([String? message]) {
+  eprintln(message);
+  exit(1);
 }
 
 void main(List<String> args) async {
@@ -74,8 +72,8 @@ void main(List<String> args) async {
   final parser = ArgParser()
     ..addSeparator('Develop Rust WASM modules with cross-origin isolation.')
     ..addSeparator("""USAGE:
-\t$exec [OPTIONS]
-\t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS]""")
+\t$exec [OPTIONS] [..REST]
+\t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]""")
     ..addSeparator('OPTIONS:')
     ..addOption('port',
         abbr: 'p',
@@ -143,8 +141,9 @@ void main(List<String> args) async {
   final String root;
   final String wasmOutput;
   if (config['dart-input'] != null) {
-    assert_(config['root'] != null,
-        'The --root option is required when building plain Dart projects.');
+    if (config['root'] == null) {
+      bail('The --root option is required when building plain Dart projects.');
+    }
     root = p.canonicalize(config['root']);
     wasmOutput = p.canonicalize(config['wasm-output'] ?? '$root/pkg');
   } else {
@@ -153,11 +152,12 @@ void main(List<String> args) async {
   }
 
   final crateDir = config['crate'];
-  assert_(
-    await File('$crateDir/Cargo.toml').exists(),
-    '$crateDir is not a crate directory.\n'
-    'Please specify the crate directory using "--crate <CRATE>".',
-  );
+  if (!await File('$crateDir/Cargo.toml').exists()) {
+    bail(
+      '$crateDir is not a crate directory.\n'
+      'Please specify the crate directory using "--crate <CRATE>".',
+    );
+  }
 
   // --- Checks end ---
 
@@ -169,7 +169,7 @@ void main(List<String> args) async {
   ));
   final String crateName = (manifest['targets'] as List).firstWhere(
       (target) => (target['kind'] as List).contains('cdylib'))['name'];
-  assert_(crateName.isNotEmpty, 'Crate name cannot be empty.');
+  if (crateName.isEmpty) bail('Crate name cannot be empty.');
   await system(
     'wasm-pack',
     [
@@ -180,7 +180,6 @@ void main(List<String> args) async {
       '-Z', 'build-std=std,panic_abort'
     ],
     env: {
-      'FRB_JS': 'pkg/$crateName',
       'RUSTUP_TOOLCHAIN': 'nightly',
       'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
       if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',

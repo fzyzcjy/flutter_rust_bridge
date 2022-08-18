@@ -12,7 +12,7 @@ export 'ffi/ffi_io.dart' if (dart.library.html) 'ffi/ffi_web.dart';
 abstract class WasmModule {
   Object call([String? moduleName]);
 
-  /// Create a new WASM module initializer that is bound to the specified module name.
+  /// Create a new WASM module initializer that is bound to the specified binary.
   WasmModule bind(dynamic thisArg, String moduleName);
 
   static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {

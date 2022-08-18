@@ -573,10 +573,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     if (apiObj is Distance_Unknown) {
       wireObj.tag = 0;
       return;
-    } else if (apiObj is Distance_Map) {
+    }
+    if (apiObj is Distance_Map) {
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Distance_Map();
       wireObj.kind.ref.Map.ref.field0 = api2wire_f64(apiObj.field0);
+      return;
     }
   }
 
@@ -601,30 +603,40 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     if (apiObj is KitchenSink_Empty) {
       wireObj.tag = 0;
       return;
-    } else if (apiObj is KitchenSink_Primitives) {
+    }
+    if (apiObj is KitchenSink_Primitives) {
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_KitchenSink_Primitives();
       wireObj.kind.ref.Primitives.ref.int32 = api2wire_i32(apiObj.int32);
       wireObj.kind.ref.Primitives.ref.float64 = api2wire_f64(apiObj.float64);
       wireObj.kind.ref.Primitives.ref.boolean = api2wire_bool(apiObj.boolean);
-    } else if (apiObj is KitchenSink_Nested) {
+      return;
+    }
+    if (apiObj is KitchenSink_Nested) {
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
       wireObj.kind.ref.Nested.ref.field0 = api2wire_box_kitchen_sink(apiObj.field0);
       wireObj.kind.ref.Nested.ref.field1 = api2wire_i32(apiObj.field1);
-    } else if (apiObj is KitchenSink_Optional) {
+      return;
+    }
+    if (apiObj is KitchenSink_Optional) {
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_KitchenSink_Optional();
       wireObj.kind.ref.Optional.ref.field0 = api2wire_opt_box_autoadd_i32(apiObj.field0);
       wireObj.kind.ref.Optional.ref.field1 = api2wire_opt_box_autoadd_i32(apiObj.field1);
-    } else if (apiObj is KitchenSink_Buffer) {
+      return;
+    }
+    if (apiObj is KitchenSink_Buffer) {
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_KitchenSink_Buffer();
       wireObj.kind.ref.Buffer.ref.field0 = api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
-    } else if (apiObj is KitchenSink_Enums) {
+      return;
+    }
+    if (apiObj is KitchenSink_Enums) {
       wireObj.tag = 5;
       wireObj.kind = inner.inflate_KitchenSink_Enums();
       wireObj.kind.ref.Enums.ref.field0 = api2wire_weekdays(apiObj.field0);
+      return;
     }
   }
 
@@ -633,10 +645,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       wireObj.tag = 0;
       wireObj.kind = inner.inflate_Measure_Speed();
       wireObj.kind.ref.Speed.ref.field0 = api2wire_box_speed(apiObj.field0);
-    } else if (apiObj is Measure_Distance) {
+      return;
+    }
+    if (apiObj is Measure_Distance) {
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Measure_Distance();
       wireObj.kind.ref.Distance.ref.field0 = api2wire_box_distance(apiObj.field0);
+      return;
     }
   }
 
@@ -694,10 +709,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     if (apiObj is Speed_Unknown) {
       wireObj.tag = 0;
       return;
-    } else if (apiObj is Speed_GPS) {
+    }
+    if (apiObj is Speed_GPS) {
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Speed_GPS();
       wireObj.kind.ref.GPS.ref.field0 = api2wire_f64(apiObj.field0);
+      return;
     }
   }
 

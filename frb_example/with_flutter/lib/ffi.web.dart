@@ -8,7 +8,7 @@ const root = 'pkg/flutter_rust_bridge_example';
 
 Future<WasmModule> _initModule() {
   if (crossOriginIsolated != true) {
-    return Future.error(MissingHeaderException());
+    return Future.error(const MissingHeaderException());
   }
 
   final script = ScriptElement()..src = '$root.js';
