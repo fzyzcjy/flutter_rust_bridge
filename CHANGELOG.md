@@ -1,3 +1,7 @@
+## 1.41.2
+
+* Add cli arg to skip dependencies check #640 (thanks @Roms1383)
+
 ## 1.41.1
 
 * Fix bug with conflicting names in enum name and variant #604 (thanks @Roms1383)
