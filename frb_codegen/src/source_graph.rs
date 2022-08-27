@@ -7,7 +7,12 @@
         - Imports that start with two colons (use ::a::b) - these are also silently ignored
 */
 
-use std::{collections::HashMap, fmt::Debug, fs, path::PathBuf};
+use std::{
+    collections::HashMap,
+    fmt::Debug,
+    fs,
+    path::{Path, PathBuf},
+};
 
 use cargo_metadata::MetadataCommand;
 use log::{debug, warn};
@@ -284,7 +289,7 @@ impl Module {
                         None => {
                             fn get_module_file_path(
                                 module_name: String,
-                                parent_module_file_path: &PathBuf,
+                                parent_module_file_path: &Path,
                             ) -> Result<PathBuf, Vec<PathBuf>> {
                                 let folder_path = parent_module_file_path.parent().unwrap();
                                 let file_path = folder_path.join(&module_name).with_extension("rs");
@@ -350,7 +355,7 @@ impl Module {
                                             .map(|it| it.to_string_lossy().to_string())
                                             .fold(String::new(), |mut a, b| {
                                                 a.push_str(&b);
-                                                a.push_str(",");
+                                                a.push(',');
                                                 a
                                             })
                                     );
