@@ -282,53 +282,81 @@ impl Module {
                             child_module
                         }
                         None => {
-                            let folder_path =
-                                self.file_path.parent().unwrap().join(ident.to_string());
-                            let folder_exists = folder_path.exists();
+                            fn get_module_file_path(
+                                module_name: String,
+                                parent_module_file_path: &PathBuf,
+                            ) -> Result<PathBuf, Vec<PathBuf>> {
+                                let folder_path = parent_module_file_path.parent().unwrap();
+                                let file_path = folder_path.join(&module_name).with_extension("rs");
+                                let mut tried = Vec::new();
 
-                            let file_path = if folder_exists {
-                                folder_path.join("mod.rs")
-                            } else {
-                                self.file_path
-                                    .parent()
-                                    .unwrap()
-                                    .join(ident.to_string() + ".rs")
-                            };
+                                if file_path.exists() {
+                                    return Ok(file_path);
+                                }
 
-                            let file_exists = file_path.exists();
+                                tried.push(file_path);
+                                let file_path = folder_path.join(&module_name).join("mod.rs");
+                                if file_path.exists() {
+                                    return Ok(file_path);
+                                }
 
-                            if !file_exists {
-                                warn!(
-                                    "Skipping unresolvable module {} (tried {})",
-                                    &ident,
-                                    file_path.to_string_lossy()
-                                );
-                                continue;
+                                tried.push(file_path);
+                                let folder_path = parent_module_file_path.with_extension("");
+                                let file_path = folder_path.join(&module_name).with_extension("rs");
+                                if file_path.exists() {
+                                    return Ok(file_path);
+                                }
+
+                                tried.push(file_path);
+                                let file_path = folder_path.join(&module_name).join("mod.rs");
+                                if file_path.exists() {
+                                    return Ok(file_path);
+                                }
+
+                                tried.push(file_path);
+                                Err(tried)
                             }
 
-                            let source = if file_exists {
-                                let source_rust_content = fs::read_to_string(&file_path).unwrap();
-                                debug!("Trying to parse {:?}", file_path);
-                                Some(ModuleSource::File(
-                                    syn::parse_file(&source_rust_content).unwrap(),
-                                ))
-                            } else {
-                                None
-                            };
+                            let file_path =
+                                get_module_file_path(ident.to_string(), &self.file_path);
 
-                            let mut child_module = Module {
-                                visibility: syn_vis_to_visibility(&item_mod.vis),
-                                file_path,
-                                module_path,
-                                source,
-                                scope: None,
-                            };
+                            match file_path {
+                                Ok(file_path) => {
+                                    let source = {
+                                        let source_rust_content =
+                                            fs::read_to_string(&file_path).unwrap();
+                                        debug!("Trying to parse {:?}", file_path);
+                                        Some(ModuleSource::File(
+                                            syn::parse_file(&source_rust_content).unwrap(),
+                                        ))
+                                    };
+                                    let mut child_module = Module {
+                                        visibility: syn_vis_to_visibility(&item_mod.vis),
+                                        file_path,
+                                        module_path,
+                                        source,
+                                        scope: None,
+                                    };
 
-                            if file_exists {
-                                child_module.resolve();
+                                    child_module.resolve();
+                                    child_module
+                                }
+                                Err(tried) => {
+                                    warn!(
+                                        "Skipping unresolvable module {} (tried {})",
+                                        &ident,
+                                        tried
+                                            .into_iter()
+                                            .map(|it| it.to_string_lossy().to_string())
+                                            .fold(String::new(), |mut a, b| {
+                                                a.push_str(&b);
+                                                a.push_str(",");
+                                                a
+                                            })
+                                    );
+                                    continue;
+                                }
                             }
-
-                            child_module
                         }
                     });
                 }
