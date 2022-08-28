@@ -10,6 +10,8 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 
 use crate::data::{MyEnum, MyStruct};
+use crate::new_module_system::use_new_module_system;
+use crate::old_module_system::use_old_module_system;
 
 /// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> i32 {
@@ -778,4 +780,11 @@ pub fn multiply_by_ten(measure: Measure) -> Option<Measure> {
             Distance::Unknown => None,
         },
     }
+}
+
+pub fn call_both_module_system() -> String {
+    let n = use_new_module_system(1);
+    let o = use_old_module_system(2);
+
+    format!("{}/{}", n.field, o.field)
 }

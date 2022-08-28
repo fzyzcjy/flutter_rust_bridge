@@ -777,6 +777,18 @@ pub extern "C" fn wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_call_both_module_system(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "call_both_module_system",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(call_both_module_system()),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

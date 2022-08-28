@@ -211,6 +211,49 @@ fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Vec<Ident>, bool) {
     }
 }
 
+fn try_get_module_file_path(
+    folder_path: &Path,
+    module_name: &str,
+    tried: &mut Vec<PathBuf>,
+) -> Option<PathBuf> {
+    let file_path = folder_path.join(module_name).with_extension("rs");
+    if file_path.exists() {
+        return Some(file_path);
+    }
+    tried.push(file_path);
+
+    let file_path = folder_path.join(module_name).join("mod.rs");
+    if file_path.exists() {
+        return Some(file_path);
+    }
+    tried.push(file_path);
+
+    None
+}
+
+fn get_module_file_path(
+    module_name: String,
+    parent_module_file_path: &Path,
+) -> Result<PathBuf, Vec<PathBuf>> {
+    let mut tried = Vec::new();
+
+    if let Some(file_path) = try_get_module_file_path(
+        parent_module_file_path.parent().unwrap(),
+        &module_name,
+        &mut tried,
+    ) {
+        return Ok(file_path);
+    }
+    if let Some(file_path) = try_get_module_file_path(
+        &parent_module_file_path.with_extension(""),
+        &module_name,
+        &mut tried,
+    ) {
+        return Ok(file_path);
+    }
+    Err(tried)
+}
+
 impl Module {
     pub fn resolve(&mut self) {
         self.resolve_modules();
@@ -287,41 +330,6 @@ impl Module {
                             child_module
                         }
                         None => {
-                            fn get_module_file_path(
-                                module_name: String,
-                                parent_module_file_path: &Path,
-                            ) -> Result<PathBuf, Vec<PathBuf>> {
-                                let folder_path = parent_module_file_path.parent().unwrap();
-                                let file_path = folder_path.join(&module_name).with_extension("rs");
-                                let mut tried = Vec::new();
-
-                                if file_path.exists() {
-                                    return Ok(file_path);
-                                }
-
-                                tried.push(file_path);
-                                let file_path = folder_path.join(&module_name).join("mod.rs");
-                                if file_path.exists() {
-                                    return Ok(file_path);
-                                }
-
-                                tried.push(file_path);
-                                let folder_path = parent_module_file_path.with_extension("");
-                                let file_path = folder_path.join(&module_name).with_extension("rs");
-                                if file_path.exists() {
-                                    return Ok(file_path);
-                                }
-
-                                tried.push(file_path);
-                                let file_path = folder_path.join(&module_name).join("mod.rs");
-                                if file_path.exists() {
-                                    return Ok(file_path);
-                                }
-
-                                tried.push(file_path);
-                                Err(tried)
-                            }
-
                             let file_path =
                                 get_module_file_path(ident.to_string(), &self.file_path);
 
@@ -355,7 +363,7 @@ impl Module {
                                             .map(|it| it.to_string_lossy().to_string())
                                             .fold(String::new(), |mut a, b| {
                                                 a.push_str(&b);
-                                                a.push(',');
+                                                a.push_str(", ");
                                                 a
                                             })
                                     );
