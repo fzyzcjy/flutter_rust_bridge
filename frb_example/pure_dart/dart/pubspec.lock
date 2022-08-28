@@ -161,7 +161,7 @@ packages:
       name: ffigen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.1"
+    version: "6.1.2"
   file:
     dependency: transitive
     description:
@@ -182,7 +182,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.41.2"
+    version: "1.41.3"
   freezed:
     dependency: "direct dev"
     description:
