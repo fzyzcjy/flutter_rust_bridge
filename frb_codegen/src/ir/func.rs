@@ -1,3 +1,4 @@
+use crate::consts::*;
 use crate::{ir::*, target::Target};
 
 #[derive(Debug, Clone)]
@@ -37,7 +38,7 @@ impl IrFuncLike {
                 }))
                 .collect(),
             output: if func.mode.has_port_argument() {
-                "void".to_owned()
+                VOID.to_owned()
             } else {
                 func.output.dart_wire_type(target)
             },

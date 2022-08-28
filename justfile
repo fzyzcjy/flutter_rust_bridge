@@ -14,7 +14,7 @@ dylib := if os() == "windows" {
 }
 
 default: gen-bridge
-precommit: gen-bridge check lint
+precommit: gen-bridge check lint gen-help
 
 alias b := build
 build:
@@ -76,6 +76,8 @@ check:
     cd {{frb_flutter}} && flutter pub get && flutter analyze
     cd {{frb_flutter}}/rust && cargo clippy
     cd frb_codegen && cargo clippy -- -D warnings
+    cd frb_rust && cargo clippy -- -D warnings
+    cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
 
 serve *args="":
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}

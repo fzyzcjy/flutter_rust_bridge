@@ -4,20 +4,20 @@ This document describes implementation details of this library.
 
 ## Terminology
 
-**Rust Wire** types refers to the C types that the Dart VM uses to communicate with the Rust library.
+**Rust IO Wire** types refers to the C types the Dart VM uses to communicate with the Rust library.
 
-**Dart Wire** types are the Dart counterpart of Rust wire types, but in
+**Dart IO Wire** types are the Dart counterpart of Rust IO wire types, but in
 the `*.io.dart` files. Both Rust and Dart wire types communicate using the
 vocabulary of C types, aka primitives, structs, unions and pointers.
 
-**Rust JS** (also WASM) types are the WASM equivalent of Rust wire
-types, many of which are distinct from their C siblings. In addition,
-these types may also take the form of the catch-all `JsValue`.
+**Rust JS Wire** types are the WASM equivalent of Rust IO
+wire types, many of which are distinct from their C siblings.
+In addition, these types may also take the form of the catch-all `JsValue`.
 
-**Dart JS** types are the WASM equivalent of Dart wire types, but
-different from Rust JS types most of these remain identical to their real API types.
-Similar to the the relationship between Rust and Dart wire types, Rust JS and Dart JS's
-uses the vocabulary of JavaScript types, aka primitives, arrays, typed arrays and objects.
+**Dart JS Wire** types are the WASM equivalent of Dart IO wire types, but
+unlike Rust JS wire types, most of these types remain identical to their real API counterparts.
+Similar to the the relationship between Rust IO and Dart IO wire types, Rust JS and Dart JS wire types
+use the vocabulary of JavaScript types, aka primitives, arrays, typed arrays and objects.
 
 ## Type Mappings
 
@@ -45,7 +45,7 @@ Does not include delegated types.
 | enum/struct `T`  | `*mut wire_t`            | `ffi.Pointer<T>`         | `Array`                  | `List`             | class `T`         |
 | enum `T`[^5]     | `int`                    | `int`[^1]                | `i32`                    | `int`              | enum `T`          |
 
-## Cross-scope communication in Dart JS
+## Cross-scope communication in the browser
 
 On Web platforms, for lack of a proper `SendPort` there exists replacements from `dart:html`.
 
@@ -70,15 +70,14 @@ a new `BroadcastChannel` will be created from its name.
 ```mermaid
 sequenceDiagram
 Dart ->> Rust: channel
-Rust ->> Worker 1: channel.name
-Worker 1 ->> Dart: channel.postMessage
-Rust ->> Worker 2: channel.name
-Worker 2 ->> Dart: channel.postMessage
+Rust ->> Rust Worker 1: channel.name
+Rust Worker 1 ->> Dart: channel.postMessage
+Rust ->> Rust Worker 2: channel.name
+Rust Worker 2 ->> Dart: channel.postMessage
 ```
 
 It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 `BroadcastChannel`s and `Worker`s, but it remains to be seen how practical such an approach would be.
-
 
 [^1]: When behind a `ffi.Pointer`, they are their respective types from `dart:ffi`: `ffi.Int8`, `ffi.Int16`, etc.
 [^2]:

@@ -18,7 +18,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
-  // @protected void startStreamSink(String name) => wasmModule.__start_streamsink(name);
 // Section: api2wire
 
   @protected
@@ -547,9 +546,6 @@ external FlutterRustBridgeExampleSingleBlockTestWasmModule get wasmModule;
 class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
-
-  // external void __start_streamsink(String name);
-
   external void wire_simple_adder(NativePortType port_, int a, int b);
 
   external void wire_primitive_types(NativePortType port_, int my_i32, BigInt my_i64, double my_f64, bool my_bool);

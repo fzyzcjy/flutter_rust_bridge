@@ -17,7 +17,6 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
-  // @protected void startStreamSink(String name) => wasmModule.__start_streamsink(name);
 // Section: api2wire
 
   @protected
@@ -81,9 +80,6 @@ external FlutterRustBridgeExampleWasmModule get wasmModule;
 class FlutterRustBridgeExampleWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleWasmModule bind(dynamic thisArg, String moduleName);
-
-  // external void __start_streamsink(String name);
-
   external void wire_draw_mandelbrot(
       NativePortType port_, List<dynamic> image_size, List<dynamic> zoom_point, double scale, int num_threads);
 

@@ -11,7 +11,7 @@ pub use crate::ffi::*;
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Clone)]
 pub struct Rust2Dart {
-    pub(crate) isolate: Isolate,
+    pub(crate) channel: Channel,
 }
 
 const RUST2DART_ACTION_SUCCESS: i32 = 0;
@@ -23,13 +23,13 @@ impl Rust2Dart {
     /// Create a new wrapper from a raw port.
     pub fn new(port: MessagePort) -> Self {
         Rust2Dart {
-            isolate: Isolate::new(port),
+            channel: Channel::new(port),
         }
     }
 
     /// Send a success message back to the specified port.
     pub fn success(&self, result: impl IntoDart) -> bool {
-        self.isolate.post(vec![
+        self.channel.post(vec![
             RUST2DART_ACTION_SUCCESS.into_dart(),
             result.into_dart(),
         ])
@@ -47,7 +47,7 @@ impl Rust2Dart {
         error_message: String,
         error_details: impl IntoDart,
     ) -> bool {
-        self.isolate.post(vec![
+        self.channel.post(vec![
             RUST2DART_ACTION_ERROR.into_dart(),
             error_code.into_dart(),
             error_message.into_dart(),
@@ -57,7 +57,7 @@ impl Rust2Dart {
 
     /// Close the stream and ignore further messages.
     pub fn close_stream(&self) -> bool {
-        self.isolate
+        self.channel
             .post(vec![RUST2DART_ACTION_CLOSE_STREAM.into_dart()])
     }
 }
@@ -79,22 +79,16 @@ impl TaskCallback {
     }
 }
 
+/// A handle to a [`web_sys::BroadcastChannel`].
 #[derive(Clone)]
-pub struct Channel(pub String);
+pub struct ChannelHandle(pub String);
 
-impl Channel {
+impl ChannelHandle {
     #[cfg(wasm)]
     pub fn port(&self) -> MessagePort {
         PortLike::broadcast(&self.0)
     }
 }
-
-// #[cfg(wasm)]
-// #[derive(Default)]
-// struct Signal {
-//     started: std::sync::Mutex<bool>,
-//     cvar: std::sync::Condvar,
-// }
 
 /// A sink to send asynchronous data back to Dart.
 /// Represented as a Dart
@@ -103,64 +97,24 @@ impl Channel {
 pub struct StreamSink<T: IntoDart> {
     #[cfg(not(wasm))]
     rust2dart: Rust2Dart,
-    /// On WASM, [`Rust2Dart`] is not [`Send`] so we only
-    /// carry the name of the broadcast channel.
     #[cfg(wasm)]
-    channel: Channel,
-    // #[cfg(wasm)]
-    // signal: std::sync::Arc<Signal>,
+    handle: ChannelHandle,
     _phantom_data: PhantomData<T>,
 }
-
-// #[cfg(wasm)]
-// lazy_static::lazy_static! {
-//     static ref SINK_INIT: std::sync::Mutex<std::collections::HashMap<String, std::sync::Arc<Signal>>> = Default::default();
-// }
-
-// #[cfg(wasm)]
-// #[doc(hidden)]
-// #[wasm_bindgen]
-// pub fn __start_streamsink(name: String) {
-//     use crate::pool::WorkerPool;
-//     thread_local! {
-//         static CONTROL_POOL: WorkerPool = WorkerPool::new(1, script_path().unwrap()).unwrap();
-//     }
-
-//     CONTROL_POOL.with(|pool| {
-//         pool.run(transfer!(|| {
-//             if let Some(signal) = SINK_INIT.lock().unwrap().get(&name) {
-//                 *signal.started.lock().unwrap() = true;
-//                 signal.cvar.notify_all();
-//             } else {
-//                 console_error(&format!("StreamSink was not registered in time: {}", name));
-//             }
-//         }))
-//         .unwrap();
-//     });
-// }
 
 impl<T: IntoDart> StreamSink<T> {
     /// Create a new sink from a port wrapper.
     pub fn new(rust2dart: Rust2Dart) -> Self {
         #[cfg(wasm)]
         let name = rust2dart
-            .isolate
+            .channel
             .broadcast_name()
             .expect("Not a BroadcastChannel");
         Self {
             #[cfg(not(wasm))]
             rust2dart,
             #[cfg(wasm)]
-            channel: Channel(name),
-            // #[cfg(wasm)]
-            // signal: {
-            //     let mut signals = SINK_INIT.lock().unwrap();
-            //     if signals.contains_key(&name) {
-            //         drop(signals);
-            //         panic!("Name collision: {}", name);
-            //     }
-            //     signals.entry(name).or_default().clone()
-            // },
+            handle: ChannelHandle(name),
             _phantom_data: PhantomData,
         }
     }
@@ -170,18 +124,7 @@ impl<T: IntoDart> StreamSink<T> {
         return self.rust2dart.clone();
 
         #[cfg(wasm)]
-        Rust2Dart::new(self.channel.port())
-    }
-
-    fn wait_init(&self) {
-        // #[cfg(wasm)]
-        // {
-        //     let mut started = self.signal.started.lock().unwrap();
-        //     while !*started {
-        //         console_log("StreamSink waiting...");
-        //         started = self.signal.cvar.wait(started).unwrap();
-        //     }
-        // }
+        Rust2Dart::new(self.handle.port())
     }
 
     /// Add data to the stream. Returns false when data could not be sent,
@@ -190,7 +133,6 @@ impl<T: IntoDart> StreamSink<T> {
     /// On WASM platforms, will block the thread until the Dart thread gives
     /// the start signal.
     pub fn add(&self, value: T) -> bool {
-        self.wait_init();
         self.rust2dart().success(value)
     }
 
@@ -200,7 +142,6 @@ impl<T: IntoDart> StreamSink<T> {
     /// On WASM platforms, will block the thread until the Dart thread gives
     /// the start signal.
     pub fn close(&self) -> bool {
-        self.wait_init();
         self.rust2dart().close_stream()
     }
 }

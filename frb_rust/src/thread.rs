@@ -26,7 +26,7 @@ mod web {
 
     thread_local! {
         pub static WORKER_POOL: Option<WorkerPool> = WorkerPool::new(WORKERS_COUNT, script_path().unwrap())
-                .map_err(|err| crate::console_error(&format!("Failed to spawn worker: {:?}", err))).ok()
+                .map_err(|err| crate::console_error!("Failed to spawn worker: {:?}", err)).ok()
     }
 }
 

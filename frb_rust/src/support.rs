@@ -1,5 +1,5 @@
 //! Functions that support auto-generated Rust code.
-//! These functions are& *not* meant to be used by humans directly.
+//! These functions are *not* meant to be used by humans directly.
 #![doc(hidden)]
 
 use std::mem;

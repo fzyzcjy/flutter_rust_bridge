@@ -5,6 +5,8 @@ use std::fs;
 use std::hash::Hash;
 use std::path::Path;
 
+use anyhow::anyhow;
+
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
         .strip_prefix(Path::new(crate_path).join("src"))
@@ -63,10 +65,12 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
         } else {
             ("symbols", "have")
         };
-        panic!(
+        return Err(anyhow!(
             "{} [{}] {} already been defined",
-            symbol_str, duplicated_symbols, verb_str
-        );
+            symbol_str,
+            duplicated_symbols,
+            verb_str
+        ));
     }
 
     Ok(all_symbols)

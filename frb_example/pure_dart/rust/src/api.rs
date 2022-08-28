@@ -244,7 +244,6 @@ pub struct Attribute {
 }
 
 pub fn handle_optional_struct(document: Option<String>) -> Option<Element> {
-    //asd
     document.map(|inner| Element {
         tag: Some("div".to_owned()),
         attributes: Some(vec![Attribute {

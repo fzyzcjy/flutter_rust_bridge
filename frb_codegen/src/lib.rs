@@ -1,6 +1,7 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
-// #![warn(clippy::wildcard_enum_match_arm)]
 #![allow(clippy::vec_init_then_push)]
+#![deny(clippy::too_many_lines)]
+// #![warn(clippy::wildcard_enum_match_arm)]
 
 use std::ffi::OsStr;
 use std::fs;
@@ -26,6 +27,7 @@ pub use crate::utils::get_symbols_if_no_duplicates;
 
 #[macro_use]
 mod commands;
+mod consts;
 mod error;
 mod generator;
 mod ir;
@@ -58,58 +60,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     fs::create_dir_all(&rust_output_dir)?;
     let generated_rust = ir_file.generate_rust(config);
     if config.wasm_enabled {
-        let Acc { common, io, wasm } = &generated_rust.code;
-        let common = format!(
-            "{}
-
-/// cbindgen:ignore
-#[cfg(target_family = \"wasm\")]
-{mod_web}
-#[cfg(target_family = \"wasm\")]
-pub use web::*;
-
-#[cfg(not(target_family = \"wasm\"))]
-{mod_io}
-#[cfg(not(target_family = \"wasm\"))]
-pub use io::*;
-",
-            common,
-            mod_web = if config.inline_rust {
-                format!("mod web {{ use super::*;\n {} }}", wasm)
-            } else {
-                format!(
-                    "#[path = \"{}\"] mod web;",
-                    config
-                        .rust_wasm_output_path()
-                        .file_name()
-                        .and_then(OsStr::to_str)
-                        .unwrap()
-                )
-            },
-            mod_io = if config.inline_rust {
-                format!("mod io {{ use super::*;\n {} }}", io)
-            } else {
-                format!(
-                    "#[path = \"{}\"] mod io;",
-                    config
-                        .rust_io_output_path()
-                        .file_name()
-                        .and_then(OsStr::to_str)
-                        .unwrap()
-                )
-            }
-        );
-        fs::write(&config.rust_output_path, common)?;
-        if !config.inline_rust {
-            fs::write(
-                &config.rust_io_output_path(),
-                format!("use super::*;\n{}", io),
-            )?;
-            fs::write(
-                &config.rust_wasm_output_path(),
-                format!("use super::*;\n{}", wasm),
-            )?;
-        }
+        write_rust_wasm(config, &generated_rust)?;
     } else {
         let Acc { common, io, .. } = &generated_rust.code;
         let output = format!(
@@ -195,54 +146,20 @@ pub use io::*;
 
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
-    let generated_dart_decl_all = generated_dart.decl_code;
+    let generated_dart_decl_all = &generated_dart.decl_code;
     let generated_dart_impl_io_wire = &generated_dart.impl_code.io + &generated_dart_wire;
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
-        let impl_import_decl = DartBasicCode {
-            import: format!(
-                "import \"{}\";",
-                diff_paths(dart_decl_output_path, dart_output_dir)
-                    .unwrap()
-                    .to_str()
-                    .unwrap()
-            ),
-            ..Default::default()
-        };
-        fs::write(
-            &dart_decl_output_path,
-            (&generated_dart.file_prelude + &generated_dart_decl_all).to_text(),
+        write_dart_decls(
+            config,
+            dart_decl_output_path,
+            dart_output_dir,
+            &generated_dart,
+            generated_dart_decl_all,
+            &generated_dart_impl_io_wire,
         )?;
-        if config.wasm_enabled {
-            fs::write(
-                &config.dart_output_path,
-                (&generated_dart.file_prelude
-                    + &impl_import_decl
-                    + &generated_dart.impl_code.common)
-                    .to_text(),
-            )?;
-            fs::write(
-                &config.dart_io_output_path(),
-                (&generated_dart.file_prelude + &impl_import_decl + &generated_dart_impl_io_wire)
-                    .to_text(),
-            )?;
-            fs::write(
-                config.dart_wasm_output_path(),
-                (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.impl_code.wasm)
-                    .to_text(),
-            )?;
-        } else {
-            fs::write(
-                &config.dart_output_path,
-                (&generated_dart.file_prelude
-                    + &impl_import_decl
-                    + &generated_dart.impl_code.common
-                    + &generated_dart_impl_io_wire)
-                    .to_text(),
-            )?;
-        }
     } else {
-        let mut out = &generated_dart.file_prelude
-            + &generated_dart_decl_all
+        let mut out = generated_dart.file_prelude
+            + generated_dart_decl_all
             + &generated_dart.impl_code.common
             + &generated_dart_impl_io_wire;
         out.import = out.import.lines().unique().join("\n");
@@ -278,5 +195,115 @@ pub use io::*;
     )?;
 
     info!("Success!");
+    Ok(())
+}
+
+fn write_dart_decls(
+    config: &Opts,
+    dart_decl_output_path: &str,
+    dart_output_dir: &Path,
+    generated_dart: &crate::generator::dart::Output,
+    generated_dart_decl_all: &DartBasicCode,
+    generated_dart_impl_io_wire: &DartBasicCode,
+) -> anyhow::Result<()> {
+    let impl_import_decl = DartBasicCode {
+        import: format!(
+            "import \"{}\";",
+            diff_paths(dart_decl_output_path, dart_output_dir)
+                .unwrap()
+                .to_str()
+                .unwrap()
+        ),
+        ..Default::default()
+    };
+    fs::write(
+        &dart_decl_output_path,
+        (&generated_dart.file_prelude + generated_dart_decl_all).to_text(),
+    )?;
+    if config.wasm_enabled {
+        fs::write(
+            &config.dart_output_path,
+            (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.impl_code.common)
+                .to_text(),
+        )?;
+        fs::write(
+            &config.dart_io_output_path(),
+            (&generated_dart.file_prelude + &impl_import_decl + generated_dart_impl_io_wire)
+                .to_text(),
+        )?;
+        fs::write(
+            config.dart_wasm_output_path(),
+            (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.impl_code.wasm)
+                .to_text(),
+        )?;
+    } else {
+        fs::write(
+            &config.dart_output_path,
+            (&generated_dart.file_prelude
+                + &impl_import_decl
+                + &generated_dart.impl_code.common
+                + generated_dart_impl_io_wire)
+                .to_text(),
+        )?;
+    }
+    Ok(())
+}
+
+fn write_rust_wasm(
+    config: &Opts,
+    generated_rust: &crate::generator::rust::Output,
+) -> anyhow::Result<()> {
+    let Acc { common, io, wasm } = &generated_rust.code;
+    let common = format!(
+        "{}
+
+/// cbindgen:ignore
+#[cfg(target_family = \"wasm\")]
+{mod_web}
+#[cfg(target_family = \"wasm\")]
+pub use web::*;
+
+#[cfg(not(target_family = \"wasm\"))]
+{mod_io}
+#[cfg(not(target_family = \"wasm\"))]
+pub use io::*;
+",
+        common,
+        mod_web = if config.inline_rust {
+            format!("mod web {{ use super::*;\n {} }}", wasm)
+        } else {
+            format!(
+                "#[path = \"{}\"] mod web;",
+                config
+                    .rust_wasm_output_path()
+                    .file_name()
+                    .and_then(OsStr::to_str)
+                    .unwrap()
+            )
+        },
+        mod_io = if config.inline_rust {
+            format!("mod io {{ use super::*;\n {} }}", io)
+        } else {
+            format!(
+                "#[path = \"{}\"] mod io;",
+                config
+                    .rust_io_output_path()
+                    .file_name()
+                    .and_then(OsStr::to_str)
+                    .unwrap()
+            )
+        }
+    );
+    fs::write(&config.rust_output_path, common)?;
+    if !config.inline_rust {
+        fs::write(
+            &config.rust_io_output_path(),
+            format!("use super::*;\n{}", io),
+        )?;
+        fs::write(
+            &config.rust_wasm_output_path(),
+            format!("use super::*;\n{}", wasm),
+        )?;
+    }
     Ok(())
 }

@@ -21,6 +21,9 @@ pub mod web;
 pub use web::*;
 
 #[cfg(not(wasm))]
+pub type Channel = allo_isolate::Isolate;
+
+#[cfg(not(wasm))]
 pub mod io;
 #[cfg(not(wasm))]
 pub use io::*;

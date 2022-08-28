@@ -4,9 +4,11 @@
   one with multithreading and one without, and serve Safari users the single-threaded variant.
   For a more general solution, check out [wasm-feature-detect](https://github.com/GoogleChromeLabs/wasm-feature-detect).
 - `std::thread::spawn` and replacements (e.g. `wasm_thread`) are not fully supported. This library includes
-  a `spawn!` macro which spawns a new thread/worker using the internal thread pool.
-- `panic::catch_unwind` currently does not work on the Web. When a Rust thread panics, it aborts and throws a
-  JavaScript `RuntimeError` that cannot be caught by name in Dart. Right now, the implementation to
+  a `spawn!` macro which spawns a new thread using the internal thread pool.
+- When a Rust thread panics, it aborts and throws a JavaScript `RuntimeError` that cannot be caught by name in
+  Dart. This is expected to change as the exception handling story for WASM improves, but a rule of thumb
+  is to replace `.unwrap` with `.expect` or `Err`s.
+- As a consequence, `panic::catch_unwind` does not work on the Web. As of writing, the implementation to
   catch these errors resides within the bodies of the workers, i.e. it is not straightforward enough to
   generalize for other use-cases.
 - `Int64List` and `Uint64List` throws when used on Web platforms. They are left intentionally
@@ -23,4 +25,4 @@
   - [`BigInt64Array`](https://caniuse.com/mdn-javascript_builtins_bigint64array)
   - [WebAssembly](https://caniuse.com/wasm)
   - [WebAssembly roadmap](https://webassembly.org/roadmap/)
-- Support for JavaScript runtimes (Node.js, Deno, etc.) is unimplemented, but should be straightforward enough.
+- JavaScript runtimes (Node.js, Deno, etc.) support is not yet implemented.

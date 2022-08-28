@@ -46,12 +46,9 @@ impl WorkerPool {
                 workers: RefCell::new(Vec::with_capacity(initial)),
                 callback: Closure::new(|event: Event| {
                     if let Some(event) = event.dyn_ref::<MessageEvent>() {
-                        crate::ffi::console_error(&format!("Dropped data:: {:?}", event.data()));
+                        crate::console_error!("Dropped data:: {:?}", event.data());
                     } else if let Some(event) = event.dyn_ref::<ErrorEvent>() {
-                        crate::ffi::console_error(&format!(
-                            "Failed to initialize: {}",
-                            event.message()
-                        ));
+                        crate::console_error!("Failed to initialize: {}", event.message());
                     }
                 }),
             }),
@@ -74,7 +71,6 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     fn spawn(&self) -> Result<Worker, JsValue> {
-        crate::console_log("Spawned a new thread");
         let src = &self.script_src;
         let script = format!(
             "importScripts('{}');
@@ -93,6 +89,7 @@ impl WorkerPool {
                             transfer[0].postMessage([1, 'ABORT', err.toString(), err.stack])
                         }}
                         setTimeout(() => {{ throw err }})
+                        postMessage(null)
                         throw err
                     }}
                 }}

@@ -295,8 +295,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
                     setupMixinConstructor();
                 }}
-                Future<void> setup() => inner.init;
-                // @protected void startStreamSink(String name) => wasmModule.__start_streamsink(name);",
+                Future<void> setup() => inner.init;",
             plat = dart_platform_class_name,
             wire = dart_wire_class_name,
         ),

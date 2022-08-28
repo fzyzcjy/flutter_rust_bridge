@@ -82,6 +82,7 @@
 - [Command line arguments](command_line.md)
 - [Set up Flutter/Dart+Rust support from scratch](set_up_from_scratch.md)
 - [Building a WASM binary manually](build_wasm.md)
+- [Limitations of WASM](wasm_limitations.md)
 - [Articles](article.md)
   - [Async in Rust](article/async_in_rust.md)
   - [Generate multiple files](article/generate_multiple_files.md)

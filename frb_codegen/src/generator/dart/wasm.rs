@@ -1,8 +1,5 @@
 use super::*;
 
-const VOID: &str = "void";
-const WIRE_SYNC_RETURN_STRUCT: &str = "WireSyncReturnStruct";
-
 pub fn generate_wasm_module<'a>(
     funcs: impl IntoIterator<Item = &'a IrFuncLike>,
     dart_wire_class_name: &str,
@@ -40,10 +37,7 @@ pub fn push_wasm_module(
     lines.wasm.push(format!(
         "@JS() @anonymous class {wasm} implements WasmModule {{
             external Object /* Promise */ call([String? moduleName]);
-            external {wasm} bind(dynamic thisArg, String moduleName);
-
-            // external void __start_streamsink(String name);
-        ",
+            external {wasm} bind(dynamic thisArg, String moduleName);",
         wasm = dart_wasm_module_name,
     ));
     lines.wasm.push(dart_wasm_funcs.join("\n\n"));
@@ -67,7 +61,9 @@ fn is_rust_pointer(ty: &str) -> bool {
 /// In practice however this is optional as unlike Rust, Dart values are
 /// aware of their own types (via the `runtimeType` property) and can
 /// safely assume the `dynamic` or `Object` type instead.
-pub fn reconstruct_dart_wire_from_rust_wire(ty: &str) -> Cow<str> {
+pub fn reconstruct_dart_wire_from_raw_repr(ty: &str) -> Cow<str> {
+    use crate::consts::*;
+
     let ty = ty.trim();
     if matches!(ty, VOID | WIRE_SYNC_RETURN_STRUCT) {
         return ty.into();
@@ -82,7 +78,7 @@ pub fn reconstruct_dart_wire_from_rust_wire(ty: &str) -> Cow<str> {
 pub fn generate_wasm_wire_func_decl(func: &IrFuncLike) -> String {
     format!(
         "external {} {name}({});",
-        reconstruct_dart_wire_from_rust_wire(&func.output),
+        reconstruct_dart_wire_from_raw_repr(&func.output),
         func.inputs
             .iter()
             .map(|(key, ty)| format!("{} {}", ty, key))
@@ -103,7 +99,7 @@ pub fn generate_wasm_wire_func_method(func: &IrFuncLike) -> String {
         out = if func.has_port_argument {
             "void".into()
         } else {
-            reconstruct_dart_wire_from_rust_wire(&func.output)
+            reconstruct_dart_wire_from_raw_repr(&func.output)
         },
     )
 }

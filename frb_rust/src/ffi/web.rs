@@ -17,13 +17,14 @@ impl IntoDartExceptPrimitive for JsValue {}
 impl IntoDartExceptPrimitive for String {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
+pub use pointer::Pointer;
 mod pointer {
     use std::ptr::NonNull;
     use wasm_bindgen::convert::*;
     use wasm_bindgen::describe::*;
     use wasm_bindgen::JsValue;
 
-    /// A non-nullable pointer wrapping a [`NonNull`].
+    /// A JS-compatible wrapper around a [`NonNull`].
     /// Represented in JS as an unsigned integer.
     ///
     /// Designed as a replacement for [`Option<*mut T>`].
@@ -50,6 +51,8 @@ mod pointer {
     // HACK: This is wasm_bindgen's implementation detail, so it is not expected to
     // be stable. In the future when `Option<*mut T>` can be exported to JS,
     // this struct should be deprecated.
+    // Although it would be ideal to masquerade Pointer as a plain u32,
+    // wasm_bindgen current does not allow this behavior.
     impl<T> WasmDescribe for Pointer<T> {
         fn describe() {
             JsValue::describe()
@@ -57,6 +60,7 @@ mod pointer {
     }
 
     impl<T> FromWasmAbi for Pointer<T> {
+        // Abi is an index to the JS object heap.
         type Abi = <JsValue as FromWasmAbi>::Abi;
 
         unsafe fn from_abi(js: Self::Abi) -> Self {
@@ -67,7 +71,12 @@ mod pointer {
 
     impl<T> OptionFromWasmAbi for Pointer<T> {
         fn is_none(abi: &Self::Abi) -> bool {
-            *abi == 0
+            let js = unsafe { JsValue::ref_from_abi(*abi) };
+            if let Some(ptr) = js.as_f64() {
+                ptr == 0.
+            } else {
+                true
+            }
         }
     }
 
@@ -75,17 +84,16 @@ mod pointer {
         type Abi = u32;
 
         fn into_abi(self) -> Self::Abi {
-            self.0.as_ptr() as _
+            JsValue::from(self.0.as_ptr() as u32).into_abi()
         }
     }
 
     impl<T> OptionIntoWasmAbi for Pointer<T> {
         fn none() -> Self::Abi {
-            0
+            JsValue::from(core::ptr::null_mut::<T>() as u32).into_abi()
         }
     }
 }
-pub use pointer::Pointer;
 
 impl IntoDart for () {
     #[inline]
@@ -219,11 +227,11 @@ impl IntoDart for ZeroCopyBuffer<Vec<u64>> {
 }
 
 #[derive(Clone)]
-pub struct Isolate {
+pub struct Channel {
     port: MessagePort,
 }
 
-impl Isolate {
+impl Channel {
     pub fn new(port: MessagePort) -> Self {
         Self { port }
     }
@@ -231,7 +239,7 @@ impl Isolate {
         self.port
             .post_message(&msg.into_dart())
             .map_err(|err| {
-                crate::ffi::console_error(&format!("post: {:?}", err));
+                crate::console_error!("post: {:?}", err);
             })
             .is_ok()
     }
@@ -244,12 +252,8 @@ impl Isolate {
 
 #[wasm_bindgen]
 extern "C" {
-    #[wasm_bindgen(js_namespace = console, js_name = "log")]
-    pub fn console_log(msg: &str);
     #[wasm_bindgen(js_namespace = console, js_name = "error")]
-    pub fn console_error(msg: &str);
-    #[wasm_bindgen(js_namespace = console, js_name = "log")]
-    pub fn log_js(js: &JsValue);
+    pub fn error(msg: &str);
 }
 
 type RawClosure<T> = Box<dyn FnOnce(&[T]) + Send + 'static>;
