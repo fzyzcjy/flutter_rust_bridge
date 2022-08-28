@@ -17,7 +17,8 @@ void main(List<String> args) async {
   });
 
   test('dart call primitiveTypes', () async {
-    expect(await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
+    expect(
+        await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
   });
 
   test('dart call primitiveU32', () async {
@@ -34,7 +35,8 @@ void main(List<String> args) async {
 
   test('dart call handleVecU8', () async {
     final len = 100000;
-    expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))), Uint8List.fromList(List.filled(len * 2, 127)));
+    expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
+        Uint8List.fromList(List.filled(len * 2, 127)));
   });
 
   test('dart call handleVecOfPrimitive', () async {
@@ -68,7 +70,8 @@ void main(List<String> args) async {
   });
 
   test('dart call handleStruct', () async {
-    final structResp = await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+    final structResp =
+        await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
@@ -79,7 +82,8 @@ void main(List<String> args) async {
   });
 
   test('dart call handleListOfStruct', () async {
-    final listOfStructResp = await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+    final listOfStructResp =
+        await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
     expect(listOfStructResp.length, 4);
     expect(listOfStructResp[0].width, 42);
     expect(listOfStructResp[1].width, 420);
@@ -127,7 +131,8 @@ void main(List<String> args) async {
   });
 
   test('dart call handle_stream', () {
-    Future<void> _testHandleStream(Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
+    Future<void> _testHandleStream(
+        Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
       final max = 5;
       final key = 8;
       final stream = handleStreamFunction(key: key, max: max);
