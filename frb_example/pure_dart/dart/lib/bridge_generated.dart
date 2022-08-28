@@ -247,9 +247,13 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kMultiplyByTenConstMeta;
 
-  Future<String> callBothModuleSystem({dynamic hint});
+  Future<OldSimpleStruct> callOldModuleSystem({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kCallBothModuleSystemConstMeta;
+  FlutterRustBridgeTaskConstMeta get kCallOldModuleSystemConstMeta;
+
+  Future<NewSimpleStruct> callNewModuleSystem({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCallNewModuleSystemConstMeta;
 
   Future<int> sumMethodSumWith(
       {required SumWith that, required int y, required int z, dynamic hint});
@@ -596,6 +600,14 @@ class MyTreeNode {
   });
 }
 
+class NewSimpleStruct {
+  final int field;
+
+  NewSimpleStruct({
+    required this.field,
+  });
+}
+
 class NewTypeInt {
   final int field0;
 
@@ -619,6 +631,14 @@ class Numbers {
 
   Numbers({
     required this.field0,
+  });
+}
+
+class OldSimpleStruct {
+  final int field;
+
+  OldSimpleStruct({
+    required this.field,
   });
 }
 
@@ -1568,18 +1588,33 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: ["measure"],
       );
 
-  Future<String> callBothModuleSystem({dynamic hint}) =>
+  Future<OldSimpleStruct> callOldModuleSystem({dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => inner.wire_call_both_module_system(port_),
-        parseSuccessData: _wire2api_String,
-        constMeta: kCallBothModuleSystemConstMeta,
+        callFfi: (port_) => inner.wire_call_old_module_system(port_),
+        parseSuccessData: _wire2api_old_simple_struct,
+        constMeta: kCallOldModuleSystemConstMeta,
         argValues: [],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kCallBothModuleSystemConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kCallOldModuleSystemConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "call_both_module_system",
+        debugName: "call_old_module_system",
+        argNames: [],
+      );
+
+  Future<NewSimpleStruct> callNewModuleSystem({dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_call_new_module_system(port_),
+        parseSuccessData: _wire2api_new_simple_struct,
+        constMeta: kCallNewModuleSystemConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kCallNewModuleSystemConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "call_new_module_system",
         argNames: [],
       );
 
@@ -2918,6 +2953,15 @@ MyTreeNode _wire2api_my_tree_node(dynamic raw) {
   );
 }
 
+NewSimpleStruct _wire2api_new_simple_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return NewSimpleStruct(
+    field: _wire2api_i32(arr[0]),
+  );
+}
+
 NewTypeInt _wire2api_new_type_int(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1)
@@ -2933,6 +2977,15 @@ Numbers _wire2api_numbers(dynamic raw) {
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return Numbers(
     field0: _wire2api_int_32_list(arr[0]),
+  );
+}
+
+OldSimpleStruct _wire2api_old_simple_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return OldSimpleStruct(
+    field: _wire2api_i32(arr[0]),
   );
 }
 
@@ -4019,19 +4072,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   late final _wire_multiply_by_ten = _wire_multiply_by_tenPtr
       .asFunction<void Function(int, ffi.Pointer<wire_Measure>)>();
 
-  void wire_call_both_module_system(
+  void wire_call_old_module_system(
     int port_,
   ) {
-    return _wire_call_both_module_system(
+    return _wire_call_old_module_system(
       port_,
     );
   }
 
-  late final _wire_call_both_module_systemPtr =
+  late final _wire_call_old_module_systemPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_call_both_module_system');
-  late final _wire_call_both_module_system =
-      _wire_call_both_module_systemPtr.asFunction<void Function(int)>();
+          'wire_call_old_module_system');
+  late final _wire_call_old_module_system =
+      _wire_call_old_module_systemPtr.asFunction<void Function(int)>();
+
+  void wire_call_new_module_system(
+    int port_,
+  ) {
+    return _wire_call_new_module_system(
+      port_,
+    );
+  }
+
+  late final _wire_call_new_module_systemPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_call_new_module_system');
+  late final _wire_call_new_module_system =
+      _wire_call_new_module_systemPtr.asFunction<void Function(int)>();
 
   void wire_sum__method__SumWith(
     int port_,

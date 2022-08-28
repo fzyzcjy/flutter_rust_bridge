@@ -17,6 +17,8 @@ use flutter_rust_bridge::*;
 
 use crate::data::MyEnum;
 use crate::data::MyStruct;
+use crate::new_module_system::sub_module::NewSimpleStruct;
+use crate::old_module_system::sub_module::OldSimpleStruct;
 
 // Section: wire functions
 
@@ -777,14 +779,26 @@ pub extern "C" fn wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_call_both_module_system(port_: i64) {
+pub extern "C" fn wire_call_old_module_system(port_: i64) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "call_both_module_system",
+            debug_name: "call_old_module_system",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(call_both_module_system()),
+        move || move |task_callback| Ok(call_old_module_system()),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_call_new_module_system(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "call_new_module_system",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(call_new_module_system()),
     )
 }
 
@@ -2808,6 +2822,13 @@ impl support::IntoDart for MyTreeNode {
 }
 impl support::IntoDartExceptPrimitive for MyTreeNode {}
 
+impl support::IntoDart for NewSimpleStruct {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.field.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for NewSimpleStruct {}
+
 impl support::IntoDart for NewTypeInt {
     fn into_dart(self) -> support::DartCObject {
         vec![self.0.into_dart()].into_dart()
@@ -2821,6 +2842,13 @@ impl support::IntoDart for mirror_Numbers {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_Numbers {}
+
+impl support::IntoDart for OldSimpleStruct {
+    fn into_dart(self) -> support::DartCObject {
+        vec![self.field.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for OldSimpleStruct {}
 
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartCObject {
