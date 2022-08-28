@@ -1,3 +1,7 @@
+## 1.41.3
+
+* Fix "Skipping unresolvable module" by align latest #651 (thanks @alanlzhang)
+
 ## 1.41.2
 
 * Add cli arg to skip dependencies check #640 (thanks @Roms1383)
