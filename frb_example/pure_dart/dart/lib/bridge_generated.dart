@@ -4700,6 +4700,6 @@ class wire_ConcatenateWith extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> a;
 }
 
-typedef uintptr_t = ffi.UnsignedLongLong;
+typedef uintptr_t = ffi.UnsignedLong;
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
