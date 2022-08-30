@@ -764,6 +764,23 @@ pub extern "C" fn wire_get_sum_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_get_sum_array(port_: i64, a: u32, b: u32, c: u32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_sum_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            let api_c = c.wire2api();
+            move |task_callback| Ok(get_sum_array(api_a, api_b, api_c))
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

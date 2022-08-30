@@ -1,0 +1,2 @@
+[workspace]
+members = ["frb_rust", "frb_example/pure_dart/rust"]
