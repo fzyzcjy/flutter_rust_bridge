@@ -372,78 +372,78 @@ class FlutterRustBridgeExampleImpl extends FlutterRustBridgeBase<FlutterRustBrid
     wireObj.name = _api2wire_String(apiObj.name);
     wireObj.children = _api2wire_list_tree_node(apiObj.children);
   }
-}
 
-// Section: wire2api
-String _wire2api_String(dynamic raw) {
-  return raw as String;
-}
+  // Section: wire2api
+  String _wire2api_String(dynamic raw) {
+    return raw as String;
+  }
 
-Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
-  return raw as Uint8List;
-}
+  Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
+    return raw as Uint8List;
+  }
 
-Point _wire2api_box_point(dynamic raw) {
-  return _wire2api_point(raw);
-}
+  Point _wire2api_box_point(dynamic raw) {
+    return _wire2api_point(raw);
+  }
 
-BoxedPoint _wire2api_boxed_point(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return BoxedPoint(
-    point: _wire2api_box_point(arr[0]),
-  );
-}
+  BoxedPoint _wire2api_boxed_point(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BoxedPoint(
+      point: _wire2api_box_point(arr[0]),
+    );
+  }
 
-double _wire2api_f64(dynamic raw) {
-  return raw as double;
-}
+  double _wire2api_f64(dynamic raw) {
+    return raw as double;
+  }
 
-int _wire2api_i32(dynamic raw) {
-  return raw as int;
-}
+  int _wire2api_i32(dynamic raw) {
+    return raw as int;
+  }
 
-List<Size> _wire2api_list_size(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_size).toList();
-}
+  List<Size> _wire2api_list_size(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_size).toList();
+  }
 
-List<TreeNode> _wire2api_list_tree_node(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_tree_node).toList();
-}
+  List<TreeNode> _wire2api_list_tree_node(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_tree_node).toList();
+  }
 
-Point _wire2api_point(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Point(
-    x: _wire2api_f64(arr[0]),
-    y: _wire2api_f64(arr[1]),
-  );
-}
+  Point _wire2api_point(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Point(
+      x: _wire2api_f64(arr[0]),
+      y: _wire2api_f64(arr[1]),
+    );
+  }
 
-Size _wire2api_size(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Size(
-    width: _wire2api_i32(arr[0]),
-    height: _wire2api_i32(arr[1]),
-  );
-}
+  Size _wire2api_size(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Size(
+      width: _wire2api_i32(arr[0]),
+      height: _wire2api_i32(arr[1]),
+    );
+  }
 
-TreeNode _wire2api_tree_node(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return TreeNode(
-    name: _wire2api_String(arr[0]),
-    children: _wire2api_list_tree_node(arr[1]),
-  );
-}
+  TreeNode _wire2api_tree_node(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TreeNode(
+      name: _wire2api_String(arr[0]),
+      children: _wire2api_list_tree_node(arr[1]),
+    );
+  }
 
-int _wire2api_u8(dynamic raw) {
-  return raw as int;
-}
+  int _wire2api_u8(dynamic raw) {
+    return raw as int;
+  }
 
-Uint8List _wire2api_uint_8_list(dynamic raw) {
-  return raw as Uint8List;
+  Uint8List _wire2api_uint_8_list(dynamic raw) {
+    return raw as Uint8List;
+  }
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
