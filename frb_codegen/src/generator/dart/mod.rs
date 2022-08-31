@@ -520,7 +520,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile) -> String {
     }
 }
 
-fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, dart_api_class_name: &str) -> String {
+fn generate_wire2api_func(ty: &IrType, ir_file: &IrFile, _dart_api_class_name: &str) -> String {
     let body = TypeDartGenerator::new(ty.clone(), ir_file, None).wire2api_body();
     format!(
         "{} _wire2api_{}(dynamic raw) {{
