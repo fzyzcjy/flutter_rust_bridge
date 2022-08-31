@@ -8,18 +8,17 @@ pub struct IrTypeOptional {
 }
 
 impl IrTypeOptional {
-    pub fn new_prim(prim: IrTypePrimitive) -> Self {
-        Self {
-            inner: Box::new(Boxed(IrTypeBoxed {
-                inner: Box::new(Primitive(prim)),
-                exist_in_real_api: false,
-            })),
-        }
-    }
-
-    pub fn new_ptr(ptr: IrType) -> Self {
+    pub fn new(ptr: IrType) -> Self {
         Self {
             inner: Box::new(ptr),
+        }
+    }
+    pub fn new_primitive(prim: IrTypePrimitive) -> Self {
+        Self {
+            inner: Box::new(Boxed(IrTypeBoxed {
+                exist_in_real_api: false,
+                inner: Box::new(Primitive(prim)),
+            })),
         }
     }
 
@@ -49,21 +48,18 @@ impl IrTypeTrait for IrTypeOptional {
         format!("opt_{}", self.inner.safe_ident())
     }
     fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            if self.inner.is_js_value() {
-                self.inner.rust_wire_type(target)
-            } else {
-                format!("Option<{}>", self.inner.rust_wire_type(target))
-            }
-        } else {
+        if self.inner.rust_wire_is_pointer(target) || (target.is_wasm() && self.inner.is_js_value())
+        {
             self.inner.rust_wire_type(target)
+        } else {
+            format!("Option<{}>", self.inner.rust_wire_type(target))
         }
     }
     fn rust_api_type(&self) -> String {
         format!("Option<{}>", self.inner.rust_api_type())
     }
     fn dart_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
+        if target.is_wasm() {
             format!("{}?", self.inner.dart_wire_type(target))
         } else {
             self.inner.dart_wire_type(target)
@@ -73,7 +69,7 @@ impl IrTypeTrait for IrTypeOptional {
         format!("{}?", self.inner.dart_api_type())
     }
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        !target.is_wasm()
+        !target.is_wasm() || self.inner.rust_wire_is_pointer(target)
     }
 
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {

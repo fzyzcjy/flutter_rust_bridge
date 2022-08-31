@@ -6,8 +6,8 @@ import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
 import 'package:meta/meta.dart';
 import 'ffi.dart';
-import 'isolate.dart';
 export 'ffi.dart';
+import 'isolate.dart';
 export 'isolate.dart';
 
 final _instances = <Type>{};

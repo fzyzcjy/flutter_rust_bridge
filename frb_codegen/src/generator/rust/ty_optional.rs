@@ -9,15 +9,13 @@ type_rust_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: Some(
-                if self.ir.inner.is_js_value() {
-                    "(!self.is_null() && !self.is_undefined()).then(|| Wire2Api::wire2api(self))"
-                } else {
-                    "self.map(Wire2Api::wire2api)"
-                }
-                .into(),
-            ),
-            // io: Some("(!self.is_null()).then(|| self.wire2api())".into()),
+            wasm: if self.ir.inner.is_js_value() {
+                Some("(!self.is_undefined() && !self.is_null()).then(|| self.wire2api())".into())
+            } else if self.ir.is_primitive() || self.ir.is_boxed_primitive() {
+                None
+            } else {
+                Some("self.map(Wire2Api::wire2api)".into())
+            },
             ..Default::default()
         }
     }
@@ -25,15 +23,14 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
         (!self.ir.inner.is_js_value()).then(|| {
             if self.ir.is_primitive() {
-                "if !self.is_null() && !self.is_undefined() {
-                    Pointer::from_js(&self).map(Wire2Api::wire2api)
-                } else {
-                    None
-                }"
+                format!(
+                    "(self != 0).then(|| *Wire2Api::<Box<{}>>::wire2api(self))",
+                    self.ir.inner.rust_api_type(),
+                )
+                .into()
             } else {
-                "(!self.is_null() && !self.is_undefined()).then(|| self.wire2api())"
+                "(!self.is_undefined() && !self.is_null()).then(|| self.wire2api())".into()
             }
-            .into()
         })
     }
 

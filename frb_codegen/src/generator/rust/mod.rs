@@ -406,19 +406,18 @@ impl<'a> Generator<'a> {
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
-        r"pub trait Wire2Api<T> {
+        r#"pub trait Wire2Api<T> {
             fn wire2api(self) -> T;
         }
 
         impl<T, S> Wire2Api<Option<T>> for *mut S
-            where
-                *mut S: Wire2Api<T>
+        where
+            *mut S: Wire2Api<T>
         {
             fn wire2api(self) -> Option<T> {
                 (!self.is_null()).then(|| self.wire2api())
             }
-        }
-        "
+        }"#
     }
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {

@@ -996,11 +996,7 @@ impl Wire2Api<Attribute> for *mut wire_Attribute {
         Wire2Api::<Attribute>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<bool> for *mut bool {
-    fn wire2api(self) -> bool {
-        unsafe { *support::box_from_leak_ptr(self) }
-    }
-}
+
 impl Wire2Api<ConcatenateWith> for *mut wire_ConcatenateWith {
     fn wire2api(self) -> ConcatenateWith {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1019,21 +1015,7 @@ impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
         Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<f64> for *mut f64 {
-    fn wire2api(self) -> f64 {
-        unsafe { *support::box_from_leak_ptr(self) }
-    }
-}
-impl Wire2Api<i32> for *mut i32 {
-    fn wire2api(self) -> i32 {
-        unsafe { *support::box_from_leak_ptr(self) }
-    }
-}
-impl Wire2Api<i64> for *mut i64 {
-    fn wire2api(self) -> i64 {
-        unsafe { *support::box_from_leak_ptr(self) }
-    }
-}
+
 impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1100,11 +1082,7 @@ impl Wire2Api<UserId> for *mut wire_UserId {
         Wire2Api::<UserId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<bool>> for *mut bool {
-    fn wire2api(self) -> Box<bool> {
-        unsafe { support::box_from_leak_ptr(self) }
-    }
-}
+
 impl Wire2Api<Box<Distance>> for *mut wire_Distance {
     fn wire2api(self) -> Box<Distance> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1117,26 +1095,7 @@ impl Wire2Api<Box<ExoticOptionals>> for *mut wire_ExoticOptionals {
         Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<f64>> for *mut f64 {
-    fn wire2api(self) -> Box<f64> {
-        unsafe { support::box_from_leak_ptr(self) }
-    }
-}
-impl Wire2Api<Box<i32>> for *mut i32 {
-    fn wire2api(self) -> Box<i32> {
-        unsafe { support::box_from_leak_ptr(self) }
-    }
-}
-impl Wire2Api<Box<i64>> for *mut i64 {
-    fn wire2api(self) -> Box<i64> {
-        unsafe { support::box_from_leak_ptr(self) }
-    }
-}
-impl Wire2Api<Box<i8>> for *mut i8 {
-    fn wire2api(self) -> Box<i8> {
-        unsafe { support::box_from_leak_ptr(self) }
-    }
-}
+
 impl Wire2Api<Box<KitchenSink>> for *mut wire_KitchenSink {
     fn wire2api(self) -> Box<KitchenSink> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1155,11 +1114,7 @@ impl Wire2Api<Box<Speed>> for *mut wire_Speed {
         Wire2Api::<Speed>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<u8>> for *mut u8 {
-    fn wire2api(self) -> Box<u8> {
-        unsafe { support::box_from_leak_ptr(self) }
-    }
-}
+
 impl Wire2Api<Box<Weekdays>> for *mut i32 {
     fn wire2api(self) -> Box<Weekdays> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };

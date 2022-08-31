@@ -4,10 +4,9 @@ library html_typed_data;
 import 'dart:collection';
 import 'package:js/js.dart';
 import 'package:fixnum/fixnum.dart';
+import 'package:js/js_util.dart';
 
 import 'dart:typed_data' hide Int64List, Uint64List;
-
-import 'package:js/js_util.dart';
 export 'dart:typed_data' hide Int64List, Uint64List;
 
 Int64List int64ListFrom(dynamic raw) => Int64List.from(raw);
@@ -15,25 +14,25 @@ Int64List int64ListFrom(dynamic raw) => Int64List.from(raw);
 Uint64List uint64ListFrom(dynamic raw) => Uint64List.from(raw);
 
 // Borrowed from wasm_bindgen
-final _int64Shim = BigInt64Array(1);
+final _int64Shim = Uint64List(1);
 final _int32Shim = Int32List.view(_int64Shim.buffer);
 final _byteShim = Uint8List.view(_int64Shim.buffer);
 
 @JS('TypedArray')
-class TypedArray {
+abstract class TypedArray {
   external ByteBuffer get buffer;
   external int length;
   external at(int index);
 }
 
-extension TypedArrayExt on TypedArray {
-  void operator []=(int index, value) {
+extension on TypedArray {
+  operator []=(int index, value) {
     setProperty(this, index, value);
   }
 }
 
 @JS('BigInt64Array')
-class BigInt64Array extends TypedArray {
+abstract class BigInt64Array extends TypedArray {
   external factory BigInt64Array(Object lengthOrBuffer,
       [int? offset, int? length]);
 
@@ -53,7 +52,7 @@ class BigInt64Array extends TypedArray {
 }
 
 @JS('BigUint64Array')
-class BigUint64Array extends TypedArray {
+abstract class BigUint64Array extends TypedArray {
   external factory BigUint64Array(Object lengthOrBuffer,
       [int? offset, int? buffer]);
 
@@ -69,21 +68,21 @@ class BigUint64Array extends TypedArray {
       BigUint64Array(array.buffer, offset, length);
 }
 
-abstract class TypedList extends ListMixin {
+abstract class TypedList<T> extends ListMixin<T> {
   TypedArray get inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
-  dynamic _cast(Object? value);
+  T js2dart(Object? value);
 
   /// How to convert a Dart integer-like value to an acceptable JS value.
-  dynamic _convert(Object? value);
+  dynamic dart2js(Object? value);
 
   @override
-  operator [](int index) => _cast(inner.at(index));
+  T operator [](int index) => js2dart(inner.at(index));
 
   @override
   void operator []=(int index, value) {
-    inner[index] = _convert(value);
+    inner[index] = dart2js(value);
   }
 
   @override
@@ -91,6 +90,8 @@ abstract class TypedList extends ListMixin {
 
   @override
   set length(int newLength) => throw UnmodifiableTypedListException();
+
+  ByteBuffer get buffer => inner.buffer;
 }
 
 Int64 _castBigInt(Object bigInt) {
@@ -104,7 +105,7 @@ Object _convertBigInt(Object dart) {
   if (dart is int) return BigInt.from(dart);
   if (dart is Int64) {
     _byteShim.setAll(0, dart.toBytes());
-    return _int64Shim.at(0);
+    return _int64Shim[0];
   }
   // Assume value is already JS safe.
   return dart;
@@ -116,9 +117,9 @@ class Int64List extends TypedList {
   Int64List.from(this.inner);
 
   @override
-  _cast(Object? value) => _castBigInt(value!);
+  js2dart(Object? value) => _castBigInt(value!);
   @override
-  _convert(Object? value) => _convertBigInt(value!);
+  dart2js(Object? value) => _convertBigInt(value!);
 
   factory Int64List(int length) => Int64List.from(BigInt64Array(length));
   factory Int64List.fromList(List<int> list) =>
@@ -136,9 +137,9 @@ class Uint64List extends TypedList {
   Uint64List.from(this.inner);
 
   @override
-  _cast(Object? value) => _castBigInt(value!);
+  js2dart(Object? value) => _castBigInt(value!);
   @override
-  _convert(Object? value) => _convertBigInt(value!);
+  dart2js(Object? value) => _convertBigInt(value!);
 
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
   factory Uint64List.fromList(List<int> list) =>

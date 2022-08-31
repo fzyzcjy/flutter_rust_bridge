@@ -17,84 +17,6 @@ impl IntoDartExceptPrimitive for JsValue {}
 impl IntoDartExceptPrimitive for String {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
-pub use pointer::Pointer;
-mod pointer {
-    use std::ptr::NonNull;
-    use wasm_bindgen::convert::*;
-    use wasm_bindgen::describe::*;
-    use wasm_bindgen::JsValue;
-
-    /// A JS-compatible wrapper around a [`NonNull`].
-    /// Represented in JS as an unsigned integer.
-    ///
-    /// Designed as a replacement for [`Option<*mut T>`].
-    ///
-    /// Usage | Parameter | Return
-    /// ----- | --------- | ------
-    /// `T` | Yes | Yes
-    /// `Option<T>` | Yes | Yes
-    /// `&T` | No | No
-    /// `&mut T` | No | No
-    pub struct Pointer<T>(NonNull<T>);
-
-    impl<T> Pointer<T> {
-        #[inline]
-        pub const fn as_mut(self) -> *mut T {
-            self.0.as_ptr() as _
-        }
-        #[inline]
-        pub fn from_js(value: &JsValue) -> Option<Self> {
-            NonNull::new(value.unchecked_into_f64() as u32 as *mut T).map(Self)
-        }
-    }
-
-    // HACK: This is wasm_bindgen's implementation detail, so it is not expected to
-    // be stable. In the future when `Option<*mut T>` can be exported to JS,
-    // this struct should be deprecated.
-    // Although it would be ideal to masquerade Pointer as a plain u32,
-    // wasm_bindgen current does not allow this behavior.
-    impl<T> WasmDescribe for Pointer<T> {
-        fn describe() {
-            JsValue::describe()
-        }
-    }
-
-    impl<T> FromWasmAbi for Pointer<T> {
-        // Abi is an index to the JS object heap.
-        type Abi = <JsValue as FromWasmAbi>::Abi;
-
-        unsafe fn from_abi(js: Self::Abi) -> Self {
-            let js = JsValue::from_abi(js);
-            Self::from_js(&js).expect("Attempted to retrieve a nullptr")
-        }
-    }
-
-    impl<T> OptionFromWasmAbi for Pointer<T> {
-        fn is_none(abi: &Self::Abi) -> bool {
-            let js = unsafe { JsValue::ref_from_abi(*abi) };
-            if let Some(ptr) = js.as_f64() {
-                ptr == 0.
-            } else {
-                true
-            }
-        }
-    }
-
-    impl<T> IntoWasmAbi for Pointer<T> {
-        type Abi = u32;
-
-        fn into_abi(self) -> Self::Abi {
-            JsValue::from(self.0.as_ptr() as u32).into_abi()
-        }
-    }
-
-    impl<T> OptionIntoWasmAbi for Pointer<T> {
-        fn none() -> Self::Abi {
-            JsValue::from(core::ptr::null_mut::<T>() as u32).into_abi()
-        }
-    }
-}
-
 impl IntoDart for () {
     #[inline]
     fn into_dart(self) -> DartAbi {
@@ -189,38 +111,28 @@ impl<const N: usize> IntoDart for [u8; N] {
 }
 
 macro_rules! delegate_big_buffers {
-    ($buf:ident, $prim:ty => $buffer:ty) => {
-        const RATIO: usize = core::mem::size_of::<$prim>() / core::mem::size_of::<i32>();
-        // Multiply the length by the difference in byte length
-        let len = $buf.len() * RATIO;
-        // Turn Vec into a Box, dropping excess capacity.
-        let ptr = Box::into_raw($buf.into_boxed_slice()) as *mut i32;
-        // Reassemble into a new slice, now with longer length and shorter byte length
-        let buf = unsafe { Box::from_raw(core::slice::from_raw_parts_mut(ptr, len)) };
-        // Turn into an Int32Array view
-        let out = Int32Array::from(&buf[..]);
-        // And transfer its buffer to output.
-        return <$buffer>::new(&out.buffer()).into();
-        // buf is dropped here, safely.
-    };
+    ($($buf:ty => $buffer:ty)*) => {$(
+        impl IntoDart for $buf {
+            fn into_dart(self) -> DartAbi {
+                let buf: &[i32] = bytemuck::cast_slice(&self[..]);
+                let buf = Int32Array::from(buf);
+                <$buffer>::new(&buf.buffer()).into()
+            }
+        }
+    )*};
 }
-
-impl IntoDart for Vec<i64> {
-    fn into_dart(self) -> DartAbi {
-        delegate_big_buffers!(self, i64 => BigInt64Array);
-    }
-}
-impl IntoDart for Vec<u64> {
-    fn into_dart(self) -> DartAbi {
-        delegate_big_buffers!(self, u64 => BigUint64Array);
-    }
+delegate_big_buffers! {
+    Vec<i64> => BigInt64Array
+    Vec<u64> => BigUint64Array
 }
 impl IntoDart for ZeroCopyBuffer<Vec<i64>> {
+    #[inline]
     fn into_dart(self) -> DartAbi {
         self.0.into_dart()
     }
 }
 impl IntoDart for ZeroCopyBuffer<Vec<u64>> {
+    #[inline]
     fn into_dart(self) -> DartAbi {
         self.0.into_dart()
     }

@@ -57,7 +57,6 @@ where
         (!self.is_null()).then(|| self.wire2api())
     }
 }
-
 impl Wire2Api<i32> for i32 {
     fn wire2api(self) -> i32 {
         self

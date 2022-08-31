@@ -59,14 +59,10 @@ impl IrTypeTrait for IrTypeBoxed {
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        if target.is_wasm() && !self.inner.is_js_value() {
-            format!("Pointer<{}>", self.inner.rust_wire_type(target))
-        } else {
-            self.inner.rust_wire_type(target)
-        }
+        self.inner.rust_wire_type(target)
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        !target.is_wasm()
+        !target.is_wasm() || !self.inner.is_js_value()
     }
 }

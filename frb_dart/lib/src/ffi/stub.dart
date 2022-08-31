@@ -71,7 +71,7 @@ abstract class WasmModule {
   }
 
   /// Initialize a [WasmModule] with the specified kind of [Modules].
-  static FutureOr<WasmModule> initialize(WasmModule module,
+  static FutureOr<WasmModule> initialize(WasmModule Function() module,
           {required Modules kind}) =>
       throw UnimplementedError();
 }

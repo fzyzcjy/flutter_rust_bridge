@@ -63,7 +63,6 @@ impl IrTypeTrait for IrTypeDelegate {
         }
     }
 
-    // TODO: Refactor these overrides
     fn dart_wire_type(&self, target: Target) -> String {
         match (self, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
@@ -86,7 +85,6 @@ impl IrTypeTrait for IrTypeDelegate {
         }
     }
 
-    // TODO: Refactor these overrides
     fn rust_wire_type(&self, target: Target) -> String {
         match (self, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),

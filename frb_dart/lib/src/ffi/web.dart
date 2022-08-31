@@ -15,7 +15,7 @@ abstract class WasmModule {
     return Future.value(module).then((module) => module as T);
   }
 
-  static FutureOr<WasmModule> initialize(WasmModule module,
+  static FutureOr<WasmModule> initialize(WasmModule Function() module,
           {required Modules kind}) =>
       kind.initializeModule(module);
 }
@@ -26,7 +26,7 @@ abstract class Modules {
   const factory Modules.noModules({required String root}) =
       _WasmBindgenNoModules;
 
-  FutureOr<WasmModule> initializeModule(WasmModule module);
+  FutureOr<WasmModule> initializeModule(WasmModule Function() module);
 
   void _ensureCrossOriginIsolated() {
     switch (crossOriginIsolated) {
@@ -45,13 +45,13 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  FutureOr<WasmModule> initializeModule(WasmModule module) {
+  FutureOr<WasmModule> initializeModule(WasmModule Function() module) {
     _ensureCrossOriginIsolated();
     final script = ScriptElement()..src = '$root.js';
     document.head!.append(script);
     return script.onLoad.first.then((_) {
       eval('window.wasm_bindgen = wasm_bindgen');
-      return module.bind(null, '${root}_bg.wasm');
+      return module().bind(null, '${root}_bg.wasm');
     });
   }
 }

@@ -38,7 +38,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
             }
             IrTypeDelegate::StringList => Acc{
-                io: Some(TypeGeneralListGenerator::WIRE2API_BODY.into()),
+                io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.into()),
                 wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
                 ..Default::default()
             },

@@ -15,19 +15,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         let box_inner = self.ir.inner.as_ref();
         let exist_in_real_api = self.ir.exist_in_real_api;
         Acc::new(|target| match (target, self.ir.inner.as_ref()) {
-            (Io, IrType::Primitive(_)) => Some(
+            (Common, IrType::Primitive(_)) => Some(
                 if exist_in_real_api {
                     "unsafe { support::box_from_leak_ptr(self) }"
                 } else {
                     "unsafe { *support::box_from_leak_ptr(self) }"
-                }
-                .into(),
-            ),
-            (Wasm, IrType::Primitive(_)) => Some(
-                if exist_in_real_api {
-                    "unsafe { support::box_from_leak_ptr(self.as_mut()) }"
-                } else {
-                    "unsafe { *support::box_from_leak_ptr(self.as_mut()) }"
                 }
                 .into(),
             ),
@@ -42,7 +34,14 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     }
 
     fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
-        (self.ir.exist_in_real_api).then(|| "Box::new(self.wire2api())".into())
+        (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
+            IrType::Primitive(_) => format!(
+                "(self.unchecked_into_f64() as usize as *mut {}).wire2api()",
+                self.ir.inner.rust_wire_type(Wasm),
+            )
+            .into(),
+            _ => "Box::new(self.wire2api())".into(),
+        })
     }
 
     fn wrapper_struct(&self) -> Option<String> {
@@ -72,10 +71,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         collector: &mut ExternFuncCollector,
         block_index: BlockIndex,
     ) -> Acc<Option<String>> {
+        let func_name = format!("new_{}_{}", self.ir.safe_ident(), block_index);
         if self.ir.inner.is_primitive() {
             Acc::new(|target| match target {
                 Io | Wasm => Some(collector.generate(
-                    &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                    &func_name,
                     [(
                         format!("value: {}", self.ir.inner.rust_wire_type(target)),
                         self.ir.inner.dart_wire_type(target),
@@ -89,7 +89,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         } else {
             Acc {
                 io: Some(collector.generate(
-                    &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                    &func_name,
                     NO_PARAMS,
                     Some(&[self.ir.rust_wire_modifier(Io), self.ir.rust_wire_type(Io)].concat()),
                     &format!(

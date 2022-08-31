@@ -405,7 +405,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   int /* *bool */ ? api2wire_opt_box_autoadd_bool(bool? raw) {
-    return raw == null ? null : api2wire_box_autoadd_bool(raw);
+    return raw == null ? 0 : api2wire_box_autoadd_bool(raw);
   }
 
   @protected
@@ -415,17 +415,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   int /* *f64 */ ? api2wire_opt_box_autoadd_f64(double? raw) {
-    return raw == null ? null : api2wire_box_autoadd_f64(raw);
+    return raw == null ? 0 : api2wire_box_autoadd_f64(raw);
   }
 
   @protected
   int /* *i32 */ ? api2wire_opt_box_autoadd_i32(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_i32(raw);
+    return raw == null ? 0 : api2wire_box_autoadd_i32(raw);
   }
 
   @protected
   int /* *i64 */ ? api2wire_opt_box_autoadd_i64(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_i64(raw);
+    return raw == null ? 0 : api2wire_box_autoadd_i64(raw);
   }
 
   @protected
@@ -435,7 +435,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   int /* *bool */ ? api2wire_opt_box_bool(bool? raw) {
-    return raw == null ? null : api2wire_box_bool(raw);
+    return raw == null ? 0 : api2wire_box_bool(raw);
   }
 
   @protected
@@ -445,27 +445,27 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   int /* *f64 */ ? api2wire_opt_box_f64(double? raw) {
-    return raw == null ? null : api2wire_box_f64(raw);
+    return raw == null ? 0 : api2wire_box_f64(raw);
   }
 
   @protected
   int /* *i32 */ ? api2wire_opt_box_i32(int? raw) {
-    return raw == null ? null : api2wire_box_i32(raw);
+    return raw == null ? 0 : api2wire_box_i32(raw);
   }
 
   @protected
   int /* *i64 */ ? api2wire_opt_box_i64(int? raw) {
-    return raw == null ? null : api2wire_box_i64(raw);
+    return raw == null ? 0 : api2wire_box_i64(raw);
   }
 
   @protected
   int /* *i8 */ ? api2wire_opt_box_i8(int? raw) {
-    return raw == null ? null : api2wire_box_i8(raw);
+    return raw == null ? 0 : api2wire_box_i8(raw);
   }
 
   @protected
   int /* *u8 */ ? api2wire_opt_box_u8(int? raw) {
-    return raw == null ? null : api2wire_box_u8(raw);
+    return raw == null ? 0 : api2wire_box_u8(raw);
   }
 
   @protected
