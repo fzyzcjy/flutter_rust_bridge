@@ -2,13 +2,12 @@ import 'dart:ffi' as ffi;
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
 import 'stub.dart' show FlutterRustBridgeWireBase;
-export 'stub.dart' show castInt;
+export 'stub.dart' show castInt, FlutterRustBridgeWireBase, WasmModule;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 typedef NativePortType = int;
 typedef ExternalLibrary = ffi.DynamicLibrary;
-typedef DartPostCObject = ffi.Pointer<
-    ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
+typedef DartPostCObject = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
