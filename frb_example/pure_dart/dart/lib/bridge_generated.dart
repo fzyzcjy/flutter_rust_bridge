@@ -224,6 +224,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta;
 
+  Future<List<SumWith>> getSumArray({required int a, required int b, required int c, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetSumArrayConstMeta;
+
   Future<Measure?> multiplyByTen({required Measure measure, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kMultiplyByTenConstMeta;
@@ -1372,7 +1376,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   Future<SumWith> getSumStruct({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_get_sum_struct(port_),
-        parseSuccessData: (d) => _wire2api_sum_with(this, d),
+        parseSuccessData: (d) => _wire2api_sum_with(d),
         constMeta: kGetSumStructConstMeta,
         argValues: [],
         hint: hint,
@@ -1381,6 +1385,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "get_sum_struct",
         argNames: [],
+      );
+
+  Future<List<SumWith>> getSumArray({required int a, required int b, required int c, dynamic hint}) =>
+      executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_get_sum_array(port_, _api2wire_u32(a), _api2wire_u32(b), _api2wire_u32(c)),
+        parseSuccessData: _wire2api_list_sum_with,
+        constMeta: kGetSumArrayConstMeta,
+        argValues: [a, b, c],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kGetSumArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_sum_array",
+        argNames: ["a", "b", "c"],
       );
 
   Future<Measure?> multiplyByTen({required Measure measure, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
@@ -1440,7 +1458,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_new__static_method__ConcatenateWith(port_, _api2wire_String(a)),
-        parseSuccessData: (d) => _wire2api_concatenate_with(this, d),
+        parseSuccessData: (d) => _wire2api_concatenate_with(d),
         constMeta: kNewStaticMethodConcatenateWithConstMeta,
         argValues: [a],
         hint: hint,
@@ -2231,645 +2249,649 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
   void _api_fill_to_wire_user_id(UserId apiObj, wire_UserId wireObj) {
     wireObj.value = _api2wire_u32(apiObj.value);
   }
-}
 
-// Section: wire2api
-String _wire2api_String(dynamic raw) {
-  return raw as String;
-}
-
-List<String> _wire2api_StringList(dynamic raw) {
-  return (raw as List<dynamic>).cast<String>();
-}
-
-Uint8List _wire2api_SyncReturnVecU8(dynamic raw) {
-  return raw as Uint8List;
-}
-
-Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
-  return raw as Float32List;
-}
-
-Float64List _wire2api_ZeroCopyBuffer_Float64List(dynamic raw) {
-  return raw as Float64List;
-}
-
-Int16List _wire2api_ZeroCopyBuffer_Int16List(dynamic raw) {
-  return raw as Int16List;
-}
-
-Int32List _wire2api_ZeroCopyBuffer_Int32List(dynamic raw) {
-  return raw as Int32List;
-}
-
-Int64List _wire2api_ZeroCopyBuffer_Int64List(dynamic raw) {
-  return raw as Int64List;
-}
-
-Int8List _wire2api_ZeroCopyBuffer_Int8List(dynamic raw) {
-  return raw as Int8List;
-}
-
-Uint16List _wire2api_ZeroCopyBuffer_Uint16List(dynamic raw) {
-  return raw as Uint16List;
-}
-
-Uint32List _wire2api_ZeroCopyBuffer_Uint32List(dynamic raw) {
-  return raw as Uint32List;
-}
-
-Uint64List _wire2api_ZeroCopyBuffer_Uint64List(dynamic raw) {
-  return raw as Uint64List;
-}
-
-Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
-  return raw as Uint8List;
-}
-
-ApplicationEnv _wire2api_application_env(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return ApplicationEnv(
-    vars: _wire2api_list_application_env_var(arr[0]),
-  );
-}
-
-ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return ApplicationEnvVar(
-    field0: _wire2api_String(arr[0]),
-    field1: _wire2api_bool(arr[1]),
-  );
-}
-
-ApplicationMessage _wire2api_application_message(dynamic raw) {
-  switch (raw[0]) {
-    case 0:
-      return ApplicationMessage_DisplayMessage(
-        _wire2api_String(raw[1]),
-      );
-    case 1:
-      return ApplicationMessage_RenderPixel(
-        x: _wire2api_i32(raw[1]),
-        y: _wire2api_i32(raw[2]),
-      );
-    case 2:
-      return ApplicationMessage_Exit();
-    default:
-      throw Exception("unreachable");
+  // Section: wire2api
+  String _wire2api_String(dynamic raw) {
+    return raw as String;
   }
-}
 
-ApplicationMode _wire2api_application_mode(dynamic raw) {
-  return ApplicationMode.values[raw];
-}
-
-ApplicationSettings _wire2api_application_settings(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-  return ApplicationSettings(
-    name: _wire2api_String(arr[0]),
-    version: _wire2api_String(arr[1]),
-    mode: _wire2api_application_mode(arr[2]),
-    env: _wire2api_box_application_env(arr[3]),
-  );
-}
-
-Attribute _wire2api_attribute(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Attribute(
-    key: _wire2api_String(arr[0]),
-    value: _wire2api_String(arr[1]),
-  );
-}
-
-bool _wire2api_bool(dynamic raw) {
-  return raw as bool;
-}
-
-ApplicationEnv _wire2api_box_application_env(dynamic raw) {
-  return _wire2api_application_env(raw);
-}
-
-Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
-  return _wire2api_attribute(raw);
-}
-
-bool _wire2api_box_autoadd_bool(dynamic raw) {
-  return raw as bool;
-}
-
-Element _wire2api_box_autoadd_element(dynamic raw) {
-  return _wire2api_element(raw);
-}
-
-ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic raw) {
-  return _wire2api_exotic_optionals(raw);
-}
-
-double _wire2api_box_autoadd_f64(dynamic raw) {
-  return raw as double;
-}
-
-int _wire2api_box_autoadd_i32(dynamic raw) {
-  return raw as int;
-}
-
-int _wire2api_box_autoadd_i64(dynamic raw) {
-  return raw as int;
-}
-
-NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
-  return _wire2api_new_type_int(raw);
-}
-
-Distance _wire2api_box_distance(dynamic raw) {
-  return _wire2api_distance(raw);
-}
-
-KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
-  return _wire2api_kitchen_sink(raw);
-}
-
-Speed _wire2api_box_speed(dynamic raw) {
-  return _wire2api_speed(raw);
-}
-
-ConcatenateWith _wire2api_concatenate_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return ConcatenateWith(
-    bridge: bridge,
-    a: _wire2api_String(arr[0]),
-  );
-}
-
-Distance _wire2api_distance(dynamic raw) {
-  switch (raw[0]) {
-    case 0:
-      return Distance_Unknown();
-    case 1:
-      return Distance_Map(
-        _wire2api_f64(raw[1]),
-      );
-    default:
-      throw Exception("unreachable");
+  List<String> _wire2api_StringList(dynamic raw) {
+    return (raw as List<dynamic>).cast<String>();
   }
-}
 
-Element _wire2api_element(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-  return Element(
-    tag: _wire2api_opt_String(arr[0]),
-    text: _wire2api_opt_String(arr[1]),
-    attributes: _wire2api_opt_list_attribute(arr[2]),
-    children: _wire2api_opt_list_element(arr[3]),
-  );
-}
-
-Event _wire2api_event(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Event(
-    address: _wire2api_String(arr[0]),
-    payload: _wire2api_String(arr[1]),
-  );
-}
-
-ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 15) throw Exception('unexpected arr length: expect 15 but see ${arr.length}');
-  return ExoticOptionals(
-    int32: _wire2api_opt_box_autoadd_i32(arr[0]),
-    int64: _wire2api_opt_box_autoadd_i64(arr[1]),
-    float64: _wire2api_opt_box_autoadd_f64(arr[2]),
-    boolean: _wire2api_opt_box_autoadd_bool(arr[3]),
-    zerocopy: _wire2api_opt_ZeroCopyBuffer_Uint8List(arr[4]),
-    int8List: _wire2api_opt_int_8_list(arr[5]),
-    uint8List: _wire2api_opt_uint_8_list(arr[6]),
-    int32List: _wire2api_opt_int_32_list(arr[7]),
-    int64List: _wire2api_opt_int_64_list(arr[8]),
-    float32List: _wire2api_opt_float_32_list(arr[9]),
-    float64List: _wire2api_opt_float_64_list(arr[10]),
-    attributes: _wire2api_opt_list_attribute(arr[11]),
-    attributesNullable: _wire2api_list_opt_box_autoadd_attribute(arr[12]),
-    nullableAttributes: _wire2api_opt_list_opt_box_autoadd_attribute(arr[13]),
-    newtypeint: _wire2api_opt_box_autoadd_new_type_int(arr[14]),
-  );
-}
-
-double _wire2api_f32(dynamic raw) {
-  return raw as double;
-}
-
-double _wire2api_f64(dynamic raw) {
-  return raw as double;
-}
-
-Float32List _wire2api_float_32_list(dynamic raw) {
-  return raw as Float32List;
-}
-
-Float64List _wire2api_float_64_list(dynamic raw) {
-  return raw as Float64List;
-}
-
-int _wire2api_i16(dynamic raw) {
-  return raw as int;
-}
-
-int _wire2api_i32(dynamic raw) {
-  return raw as int;
-}
-
-int _wire2api_i64(dynamic raw) {
-  return raw as int;
-}
-
-int _wire2api_i8(dynamic raw) {
-  return raw as int;
-}
-
-Int16List _wire2api_int_16_list(dynamic raw) {
-  return raw as Int16List;
-}
-
-Int32List _wire2api_int_32_list(dynamic raw) {
-  return raw as Int32List;
-}
-
-Int64List _wire2api_int_64_list(dynamic raw) {
-  return raw as Int64List;
-}
-
-Int8List _wire2api_int_8_list(dynamic raw) {
-  return raw as Int8List;
-}
-
-KitchenSink _wire2api_kitchen_sink(dynamic raw) {
-  switch (raw[0]) {
-    case 0:
-      return KitchenSink_Empty();
-    case 1:
-      return KitchenSink_Primitives(
-        int32: _wire2api_i32(raw[1]),
-        float64: _wire2api_f64(raw[2]),
-        boolean: _wire2api_bool(raw[3]),
-      );
-    case 2:
-      return KitchenSink_Nested(
-        _wire2api_box_kitchen_sink(raw[1]),
-        _wire2api_i32(raw[2]),
-      );
-    case 3:
-      return KitchenSink_Optional(
-        _wire2api_opt_box_autoadd_i32(raw[1]),
-        _wire2api_opt_box_autoadd_i32(raw[2]),
-      );
-    case 4:
-      return KitchenSink_Buffer(
-        _wire2api_ZeroCopyBuffer_Uint8List(raw[1]),
-      );
-    case 5:
-      return KitchenSink_Enums(
-        _wire2api_weekdays(raw[1]),
-      );
-    default:
-      throw Exception("unreachable");
+  Uint8List _wire2api_SyncReturnVecU8(dynamic raw) {
+    return raw as Uint8List;
   }
-}
 
-List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
-}
-
-List<Attribute> _wire2api_list_attribute(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_attribute).toList();
-}
-
-List<Element> _wire2api_list_element(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_element).toList();
-}
-
-List<MySize> _wire2api_list_my_size(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_my_size).toList();
-}
-
-List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
-}
-
-List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
-}
-
-List<Point> _wire2api_list_point(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_point).toList();
-}
-
-Log _wire2api_log(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Log(
-    key: _wire2api_u32(arr[0]),
-    value: _wire2api_u32(arr[1]),
-  );
-}
-
-Log2 _wire2api_log_2(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Log2(
-    key: _wire2api_u32(arr[0]),
-    value: _wire2api_String(arr[1]),
-  );
-}
-
-Measure _wire2api_measure(dynamic raw) {
-  switch (raw[0]) {
-    case 0:
-      return Measure_Speed(
-        _wire2api_box_speed(raw[1]),
-      );
-    case 1:
-      return Measure_Distance(
-        _wire2api_box_distance(raw[1]),
-      );
-    default:
-      throw Exception("unreachable");
+  Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
+    return raw as Float32List;
   }
-}
 
-MySize _wire2api_my_size(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return MySize(
-    width: _wire2api_i32(arr[0]),
-    height: _wire2api_i32(arr[1]),
-  );
-}
-
-MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return MyStreamEntry(
-    hello: _wire2api_String(arr[0]),
-  );
-}
-
-MyTreeNode _wire2api_my_tree_node(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-  return MyTreeNode(
-    valueI32: _wire2api_i32(arr[0]),
-    valueVecU8: _wire2api_uint_8_list(arr[1]),
-    valueBoolean: _wire2api_bool(arr[2]),
-    children: _wire2api_list_my_tree_node(arr[3]),
-  );
-}
-
-NewSimpleStruct _wire2api_new_simple_struct(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return NewSimpleStruct(
-    field: _wire2api_i32(arr[0]),
-  );
-}
-
-NewTypeInt _wire2api_new_type_int(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return NewTypeInt(
-    field0: _wire2api_i64(arr[0]),
-  );
-}
-
-Numbers _wire2api_numbers(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return Numbers(
-    field0: _wire2api_int_32_list(arr[0]),
-  );
-}
-
-OldSimpleStruct _wire2api_old_simple_struct(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return OldSimpleStruct(
-    field: _wire2api_i32(arr[0]),
-  );
-}
-
-String? _wire2api_opt_String(dynamic raw) {
-  return raw == null ? null : _wire2api_String(raw);
-}
-
-Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
-  return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
-}
-
-Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_attribute(raw);
-}
-
-bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_bool(raw);
-}
-
-Element? _wire2api_opt_box_autoadd_element(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_element(raw);
-}
-
-ExoticOptionals? _wire2api_opt_box_autoadd_exotic_optionals(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_exotic_optionals(raw);
-}
-
-double? _wire2api_opt_box_autoadd_f64(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_f64(raw);
-}
-
-int? _wire2api_opt_box_autoadd_i32(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_i32(raw);
-}
-
-int? _wire2api_opt_box_autoadd_i64(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_i64(raw);
-}
-
-NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
-  return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
-}
-
-Float32List? _wire2api_opt_float_32_list(dynamic raw) {
-  return raw == null ? null : _wire2api_float_32_list(raw);
-}
-
-Float64List? _wire2api_opt_float_64_list(dynamic raw) {
-  return raw == null ? null : _wire2api_float_64_list(raw);
-}
-
-Int32List? _wire2api_opt_int_32_list(dynamic raw) {
-  return raw == null ? null : _wire2api_int_32_list(raw);
-}
-
-Int64List? _wire2api_opt_int_64_list(dynamic raw) {
-  return raw == null ? null : _wire2api_int_64_list(raw);
-}
-
-Int8List? _wire2api_opt_int_8_list(dynamic raw) {
-  return raw == null ? null : _wire2api_int_8_list(raw);
-}
-
-List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
-  return raw == null ? null : _wire2api_list_attribute(raw);
-}
-
-List<Element>? _wire2api_opt_list_element(dynamic raw) {
-  return raw == null ? null : _wire2api_list_element(raw);
-}
-
-List<Attribute?>? _wire2api_opt_list_opt_box_autoadd_attribute(dynamic raw) {
-  return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
-}
-
-Measure? _wire2api_opt_measure(dynamic raw) {
-  return raw == null ? null : _wire2api_measure(raw);
-}
-
-Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
-  return raw == null ? null : _wire2api_uint_8_list(raw);
-}
-
-Weekdays? _wire2api_opt_weekdays(dynamic raw) {
-  return raw == null ? null : _wire2api_weekdays(raw);
-}
-
-Point _wire2api_point(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return Point(
-    x: _wire2api_f32(arr[0]),
-    y: _wire2api_f32(arr[1]),
-  );
-}
-
-Sequences _wire2api_sequences(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return Sequences(
-    field0: _wire2api_int_32_list(arr[0]),
-  );
-}
-
-Speed _wire2api_speed(dynamic raw) {
-  switch (raw[0]) {
-    case 0:
-      return Speed_Unknown();
-    case 1:
-      return Speed_GPS(
-        _wire2api_f64(raw[1]),
-      );
-    default:
-      throw Exception("unreachable");
+  Float64List _wire2api_ZeroCopyBuffer_Float64List(dynamic raw) {
+    return raw as Float64List;
   }
-}
 
-SumWith _wire2api_sum_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return SumWith(
-    bridge: bridge,
-    x: _wire2api_u32(arr[0]),
-  );
-}
+  Int16List _wire2api_ZeroCopyBuffer_Int16List(dynamic raw) {
+    return raw as Int16List;
+  }
 
-int _wire2api_u16(dynamic raw) {
-  return raw as int;
-}
+  Int32List _wire2api_ZeroCopyBuffer_Int32List(dynamic raw) {
+    return raw as Int32List;
+  }
 
-int _wire2api_u32(dynamic raw) {
-  return raw as int;
-}
+  Int64List _wire2api_ZeroCopyBuffer_Int64List(dynamic raw) {
+    return raw as Int64List;
+  }
 
-int _wire2api_u64(dynamic raw) {
-  return raw as int;
-}
+  Int8List _wire2api_ZeroCopyBuffer_Int8List(dynamic raw) {
+    return raw as Int8List;
+  }
 
-int _wire2api_u8(dynamic raw) {
-  return raw as int;
-}
+  Uint16List _wire2api_ZeroCopyBuffer_Uint16List(dynamic raw) {
+    return raw as Uint16List;
+  }
 
-Uint16List _wire2api_uint_16_list(dynamic raw) {
-  return raw as Uint16List;
-}
+  Uint32List _wire2api_ZeroCopyBuffer_Uint32List(dynamic raw) {
+    return raw as Uint32List;
+  }
 
-Uint32List _wire2api_uint_32_list(dynamic raw) {
-  return raw as Uint32List;
-}
+  Uint64List _wire2api_ZeroCopyBuffer_Uint64List(dynamic raw) {
+    return raw as Uint64List;
+  }
 
-Uint64List _wire2api_uint_64_list(dynamic raw) {
-  return raw as Uint64List;
-}
+  Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
+    return raw as Uint8List;
+  }
 
-Uint8List _wire2api_uint_8_list(dynamic raw) {
-  return raw as Uint8List;
-}
+  ApplicationEnv _wire2api_application_env(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ApplicationEnv(
+      vars: _wire2api_list_application_env_var(arr[0]),
+    );
+  }
 
-void _wire2api_unit(dynamic raw) {
-  return;
-}
+  ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ApplicationEnvVar(
+      field0: _wire2api_String(arr[0]),
+      field1: _wire2api_bool(arr[1]),
+    );
+  }
 
-UserId _wire2api_user_id(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return UserId(
-    value: _wire2api_u32(arr[0]),
-  );
-}
+  ApplicationMessage _wire2api_application_message(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return ApplicationMessage_DisplayMessage(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return ApplicationMessage_RenderPixel(
+          x: _wire2api_i32(raw[1]),
+          y: _wire2api_i32(raw[2]),
+        );
+      case 2:
+        return ApplicationMessage_Exit();
+      default:
+        throw Exception("unreachable");
+    }
+  }
 
-int _wire2api_usize(dynamic raw) {
-  return raw as int;
-}
+  ApplicationMode _wire2api_application_mode(dynamic raw) {
+    return ApplicationMode.values[raw];
+  }
 
-VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
-  return VecOfPrimitivePack(
-    int8List: _wire2api_int_8_list(arr[0]),
-    uint8List: _wire2api_uint_8_list(arr[1]),
-    int16List: _wire2api_int_16_list(arr[2]),
-    uint16List: _wire2api_uint_16_list(arr[3]),
-    uint32List: _wire2api_uint_32_list(arr[4]),
-    int32List: _wire2api_int_32_list(arr[5]),
-    uint64List: _wire2api_uint_64_list(arr[6]),
-    int64List: _wire2api_int_64_list(arr[7]),
-    float32List: _wire2api_float_32_list(arr[8]),
-    float64List: _wire2api_float_64_list(arr[9]),
-  );
-}
+  ApplicationSettings _wire2api_application_settings(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return ApplicationSettings(
+      name: _wire2api_String(arr[0]),
+      version: _wire2api_String(arr[1]),
+      mode: _wire2api_application_mode(arr[2]),
+      env: _wire2api_box_application_env(arr[3]),
+    );
+  }
 
-Weekdays _wire2api_weekdays(dynamic raw) {
-  return Weekdays.values[raw];
-}
+  Attribute _wire2api_attribute(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Attribute(
+      key: _wire2api_String(arr[0]),
+      value: _wire2api_String(arr[1]),
+    );
+  }
 
-ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
-  return ZeroCopyVecOfPrimitivePack(
-    int8List: _wire2api_ZeroCopyBuffer_Int8List(arr[0]),
-    uint8List: _wire2api_ZeroCopyBuffer_Uint8List(arr[1]),
-    int16List: _wire2api_ZeroCopyBuffer_Int16List(arr[2]),
-    uint16List: _wire2api_ZeroCopyBuffer_Uint16List(arr[3]),
-    uint32List: _wire2api_ZeroCopyBuffer_Uint32List(arr[4]),
-    int32List: _wire2api_ZeroCopyBuffer_Int32List(arr[5]),
-    uint64List: _wire2api_ZeroCopyBuffer_Uint64List(arr[6]),
-    int64List: _wire2api_ZeroCopyBuffer_Int64List(arr[7]),
-    float32List: _wire2api_ZeroCopyBuffer_Float32List(arr[8]),
-    float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[9]),
-  );
+  bool _wire2api_bool(dynamic raw) {
+    return raw as bool;
+  }
+
+  ApplicationEnv _wire2api_box_application_env(dynamic raw) {
+    return _wire2api_application_env(raw);
+  }
+
+  Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
+    return _wire2api_attribute(raw);
+  }
+
+  bool _wire2api_box_autoadd_bool(dynamic raw) {
+    return raw as bool;
+  }
+
+  Element _wire2api_box_autoadd_element(dynamic raw) {
+    return _wire2api_element(raw);
+  }
+
+  ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic raw) {
+    return _wire2api_exotic_optionals(raw);
+  }
+
+  double _wire2api_box_autoadd_f64(dynamic raw) {
+    return raw as double;
+  }
+
+  int _wire2api_box_autoadd_i32(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_box_autoadd_i64(dynamic raw) {
+    return raw as int;
+  }
+
+  NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
+    return _wire2api_new_type_int(raw);
+  }
+
+  Distance _wire2api_box_distance(dynamic raw) {
+    return _wire2api_distance(raw);
+  }
+
+  KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
+    return _wire2api_kitchen_sink(raw);
+  }
+
+  Speed _wire2api_box_speed(dynamic raw) {
+    return _wire2api_speed(raw);
+  }
+
+  ConcatenateWith _wire2api_concatenate_with(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ConcatenateWith(
+      bridge: this,
+      a: _wire2api_String(arr[0]),
+    );
+  }
+
+  Distance _wire2api_distance(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return Distance_Unknown();
+      case 1:
+        return Distance_Map(
+          _wire2api_f64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  Element _wire2api_element(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return Element(
+      tag: _wire2api_opt_String(arr[0]),
+      text: _wire2api_opt_String(arr[1]),
+      attributes: _wire2api_opt_list_attribute(arr[2]),
+      children: _wire2api_opt_list_element(arr[3]),
+    );
+  }
+
+  Event _wire2api_event(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Event(
+      address: _wire2api_String(arr[0]),
+      payload: _wire2api_String(arr[1]),
+    );
+  }
+
+  ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 15) throw Exception('unexpected arr length: expect 15 but see ${arr.length}');
+    return ExoticOptionals(
+      int32: _wire2api_opt_box_autoadd_i32(arr[0]),
+      int64: _wire2api_opt_box_autoadd_i64(arr[1]),
+      float64: _wire2api_opt_box_autoadd_f64(arr[2]),
+      boolean: _wire2api_opt_box_autoadd_bool(arr[3]),
+      zerocopy: _wire2api_opt_ZeroCopyBuffer_Uint8List(arr[4]),
+      int8List: _wire2api_opt_int_8_list(arr[5]),
+      uint8List: _wire2api_opt_uint_8_list(arr[6]),
+      int32List: _wire2api_opt_int_32_list(arr[7]),
+      int64List: _wire2api_opt_int_64_list(arr[8]),
+      float32List: _wire2api_opt_float_32_list(arr[9]),
+      float64List: _wire2api_opt_float_64_list(arr[10]),
+      attributes: _wire2api_opt_list_attribute(arr[11]),
+      attributesNullable: _wire2api_list_opt_box_autoadd_attribute(arr[12]),
+      nullableAttributes: _wire2api_opt_list_opt_box_autoadd_attribute(arr[13]),
+      newtypeint: _wire2api_opt_box_autoadd_new_type_int(arr[14]),
+    );
+  }
+
+  double _wire2api_f32(dynamic raw) {
+    return raw as double;
+  }
+
+  double _wire2api_f64(dynamic raw) {
+    return raw as double;
+  }
+
+  Float32List _wire2api_float_32_list(dynamic raw) {
+    return raw as Float32List;
+  }
+
+  Float64List _wire2api_float_64_list(dynamic raw) {
+    return raw as Float64List;
+  }
+
+  int _wire2api_i16(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_i32(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_i64(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_i8(dynamic raw) {
+    return raw as int;
+  }
+
+  Int16List _wire2api_int_16_list(dynamic raw) {
+    return raw as Int16List;
+  }
+
+  Int32List _wire2api_int_32_list(dynamic raw) {
+    return raw as Int32List;
+  }
+
+  Int64List _wire2api_int_64_list(dynamic raw) {
+    return raw as Int64List;
+  }
+
+  Int8List _wire2api_int_8_list(dynamic raw) {
+    return raw as Int8List;
+  }
+
+  KitchenSink _wire2api_kitchen_sink(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSink_Empty();
+      case 1:
+        return KitchenSink_Primitives(
+          int32: _wire2api_i32(raw[1]),
+          float64: _wire2api_f64(raw[2]),
+          boolean: _wire2api_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSink_Nested(
+          _wire2api_box_kitchen_sink(raw[1]),
+          _wire2api_i32(raw[2]),
+        );
+      case 3:
+        return KitchenSink_Optional(
+          _wire2api_opt_box_autoadd_i32(raw[1]),
+          _wire2api_opt_box_autoadd_i32(raw[2]),
+        );
+      case 4:
+        return KitchenSink_Buffer(
+          _wire2api_ZeroCopyBuffer_Uint8List(raw[1]),
+        );
+      case 5:
+        return KitchenSink_Enums(
+          _wire2api_weekdays(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
+  }
+
+  List<Attribute> _wire2api_list_attribute(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_attribute).toList();
+  }
+
+  List<Element> _wire2api_list_element(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_element).toList();
+  }
+
+  List<MySize> _wire2api_list_my_size(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_my_size).toList();
+  }
+
+  List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
+  }
+
+  List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
+  }
+
+  List<Point> _wire2api_list_point(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_point).toList();
+  }
+
+  List<SumWith> _wire2api_list_sum_with(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_sum_with).toList();
+  }
+
+  Log _wire2api_log(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log(
+      key: _wire2api_u32(arr[0]),
+      value: _wire2api_u32(arr[1]),
+    );
+  }
+
+  Log2 _wire2api_log_2(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2(
+      key: _wire2api_u32(arr[0]),
+      value: _wire2api_String(arr[1]),
+    );
+  }
+
+  Measure _wire2api_measure(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return Measure_Speed(
+          _wire2api_box_speed(raw[1]),
+        );
+      case 1:
+        return Measure_Distance(
+          _wire2api_box_distance(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  MySize _wire2api_my_size(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MySize(
+      width: _wire2api_i32(arr[0]),
+      height: _wire2api_i32(arr[1]),
+    );
+  }
+
+  MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStreamEntry(
+      hello: _wire2api_String(arr[0]),
+    );
+  }
+
+  MyTreeNode _wire2api_my_tree_node(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MyTreeNode(
+      valueI32: _wire2api_i32(arr[0]),
+      valueVecU8: _wire2api_uint_8_list(arr[1]),
+      valueBoolean: _wire2api_bool(arr[2]),
+      children: _wire2api_list_my_tree_node(arr[3]),
+    );
+  }
+
+  NewSimpleStruct _wire2api_new_simple_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewSimpleStruct(
+      field: _wire2api_i32(arr[0]),
+    );
+  }
+
+  NewTypeInt _wire2api_new_type_int(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewTypeInt(
+      field0: _wire2api_i64(arr[0]),
+    );
+  }
+
+  Numbers _wire2api_numbers(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return Numbers(
+      field0: _wire2api_int_32_list(arr[0]),
+    );
+  }
+
+  OldSimpleStruct _wire2api_old_simple_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return OldSimpleStruct(
+      field: _wire2api_i32(arr[0]),
+    );
+  }
+
+  String? _wire2api_opt_String(dynamic raw) {
+    return raw == null ? null : _wire2api_String(raw);
+  }
+
+  Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
+    return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
+  }
+
+  Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_attribute(raw);
+  }
+
+  bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_bool(raw);
+  }
+
+  Element? _wire2api_opt_box_autoadd_element(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_element(raw);
+  }
+
+  ExoticOptionals? _wire2api_opt_box_autoadd_exotic_optionals(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_exotic_optionals(raw);
+  }
+
+  double? _wire2api_opt_box_autoadd_f64(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_f64(raw);
+  }
+
+  int? _wire2api_opt_box_autoadd_i32(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_i32(raw);
+  }
+
+  int? _wire2api_opt_box_autoadd_i64(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_i64(raw);
+  }
+
+  NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
+  }
+
+  Float32List? _wire2api_opt_float_32_list(dynamic raw) {
+    return raw == null ? null : _wire2api_float_32_list(raw);
+  }
+
+  Float64List? _wire2api_opt_float_64_list(dynamic raw) {
+    return raw == null ? null : _wire2api_float_64_list(raw);
+  }
+
+  Int32List? _wire2api_opt_int_32_list(dynamic raw) {
+    return raw == null ? null : _wire2api_int_32_list(raw);
+  }
+
+  Int64List? _wire2api_opt_int_64_list(dynamic raw) {
+    return raw == null ? null : _wire2api_int_64_list(raw);
+  }
+
+  Int8List? _wire2api_opt_int_8_list(dynamic raw) {
+    return raw == null ? null : _wire2api_int_8_list(raw);
+  }
+
+  List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
+    return raw == null ? null : _wire2api_list_attribute(raw);
+  }
+
+  List<Element>? _wire2api_opt_list_element(dynamic raw) {
+    return raw == null ? null : _wire2api_list_element(raw);
+  }
+
+  List<Attribute?>? _wire2api_opt_list_opt_box_autoadd_attribute(dynamic raw) {
+    return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
+  }
+
+  Measure? _wire2api_opt_measure(dynamic raw) {
+    return raw == null ? null : _wire2api_measure(raw);
+  }
+
+  Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
+    return raw == null ? null : _wire2api_uint_8_list(raw);
+  }
+
+  Weekdays? _wire2api_opt_weekdays(dynamic raw) {
+    return raw == null ? null : _wire2api_weekdays(raw);
+  }
+
+  Point _wire2api_point(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Point(
+      x: _wire2api_f32(arr[0]),
+      y: _wire2api_f32(arr[1]),
+    );
+  }
+
+  Sequences _wire2api_sequences(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return Sequences(
+      field0: _wire2api_int_32_list(arr[0]),
+    );
+  }
+
+  Speed _wire2api_speed(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return Speed_Unknown();
+      case 1:
+        return Speed_GPS(
+          _wire2api_f64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  SumWith _wire2api_sum_with(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SumWith(
+      bridge: this,
+      x: _wire2api_u32(arr[0]),
+    );
+  }
+
+  int _wire2api_u16(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_u32(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_u64(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_u8(dynamic raw) {
+    return raw as int;
+  }
+
+  Uint16List _wire2api_uint_16_list(dynamic raw) {
+    return raw as Uint16List;
+  }
+
+  Uint32List _wire2api_uint_32_list(dynamic raw) {
+    return raw as Uint32List;
+  }
+
+  Uint64List _wire2api_uint_64_list(dynamic raw) {
+    return raw as Uint64List;
+  }
+
+  Uint8List _wire2api_uint_8_list(dynamic raw) {
+    return raw as Uint8List;
+  }
+
+  void _wire2api_unit(dynamic raw) {
+    return;
+  }
+
+  UserId _wire2api_user_id(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserId(
+      value: _wire2api_u32(arr[0]),
+    );
+  }
+
+  int _wire2api_usize(dynamic raw) {
+    return raw as int;
+  }
+
+  VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+    return VecOfPrimitivePack(
+      int8List: _wire2api_int_8_list(arr[0]),
+      uint8List: _wire2api_uint_8_list(arr[1]),
+      int16List: _wire2api_int_16_list(arr[2]),
+      uint16List: _wire2api_uint_16_list(arr[3]),
+      uint32List: _wire2api_uint_32_list(arr[4]),
+      int32List: _wire2api_int_32_list(arr[5]),
+      uint64List: _wire2api_uint_64_list(arr[6]),
+      int64List: _wire2api_int_64_list(arr[7]),
+      float32List: _wire2api_float_32_list(arr[8]),
+      float64List: _wire2api_float_64_list(arr[9]),
+    );
+  }
+
+  Weekdays _wire2api_weekdays(dynamic raw) {
+    return Weekdays.values[raw];
+  }
+
+  ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+    return ZeroCopyVecOfPrimitivePack(
+      int8List: _wire2api_ZeroCopyBuffer_Int8List(arr[0]),
+      uint8List: _wire2api_ZeroCopyBuffer_Uint8List(arr[1]),
+      int16List: _wire2api_ZeroCopyBuffer_Int16List(arr[2]),
+      uint16List: _wire2api_ZeroCopyBuffer_Uint16List(arr[3]),
+      uint32List: _wire2api_ZeroCopyBuffer_Uint32List(arr[4]),
+      int32List: _wire2api_ZeroCopyBuffer_Int32List(arr[5]),
+      uint64List: _wire2api_ZeroCopyBuffer_Uint64List(arr[6]),
+      int64List: _wire2api_ZeroCopyBuffer_Int64List(arr[7]),
+      float32List: _wire2api_ZeroCopyBuffer_Float32List(arr[8]),
+      float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[9]),
+    );
+  }
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
@@ -3611,6 +3633,25 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _wire_get_sum_structPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_sum_struct');
   late final _wire_get_sum_struct = _wire_get_sum_structPtr.asFunction<void Function(int)>();
+
+  void wire_get_sum_array(
+    int port_,
+    int a,
+    int b,
+    int c,
+  ) {
+    return _wire_get_sum_array(
+      port_,
+      a,
+      b,
+      c,
+    );
+  }
+
+  late final _wire_get_sum_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32, ffi.Uint32)>>(
+          'wire_get_sum_array');
+  late final _wire_get_sum_array = _wire_get_sum_arrayPtr.asFunction<void Function(int, int, int, int)>();
 
   void wire_multiply_by_ten(
     int port_,
