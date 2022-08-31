@@ -433,8 +433,8 @@ void main(List<String> args) async {
   test('return SumWith array test', () async {
     final List<SumWith> sumWithList = await api.getSumArray(a: 12, b: 23, c: 67);
     expect(sumWithList[0].sum(y: 23, z: 67), 12 + 23 + 67);
-    expect(sumWithList[0].sum(y: 12, z: 67), 12 + 23 + 67);
-    expect(sumWithList[0].sum(y: 12, z: 23), 12 + 23 + 67);
+    expect(sumWithList[1].sum(y: 12, z: 67), 12 + 23 + 67);
+    expect(sumWithList[2].sum(y: 12, z: 23), 12 + 23 + 67);
   });
 
   test('ConcatenateWith stream sink test', () async {
