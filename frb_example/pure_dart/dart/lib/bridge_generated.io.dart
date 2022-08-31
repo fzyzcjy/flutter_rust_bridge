@@ -1502,6 +1502,30 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_multiply_by_ten =
       _wire_multiply_by_tenPtr.asFunction<void Function(int, ffi.Pointer<wire_Measure>)>();
 
+  void wire_call_old_module_system(
+    int port_,
+  ) {
+    return _wire_call_old_module_system(
+      port_,
+    );
+  }
+
+  late final _wire_call_old_module_systemPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_call_old_module_system');
+  late final _wire_call_old_module_system = _wire_call_old_module_systemPtr.asFunction<void Function(int)>();
+
+  void wire_call_new_module_system(
+    int port_,
+  ) {
+    return _wire_call_new_module_system(
+      port_,
+    );
+  }
+
+  late final _wire_call_new_module_systemPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_call_new_module_system');
+  late final _wire_call_new_module_system = _wire_call_new_module_systemPtr.asFunction<void Function(int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

@@ -74,7 +74,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.41.1"
+version = "1.41.3"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -94,7 +94,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.41.1"
+version = "1.41.3"
 
 [[package]]
 name = "hermit-abi"

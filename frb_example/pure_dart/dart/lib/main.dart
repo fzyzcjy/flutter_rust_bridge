@@ -472,6 +472,15 @@ void main(List<String> args) async {
     expect((Distance_Map).toString(), 'Distance_Map');
   });
 
+  test('resolve module for old module system', () async {
+    final o = await api.callOldModuleSystem();
+    expect(o.field, 2);
+  });
+  test('resolve module for new module system', () async {
+    final n = await api.callNewModuleSystem();
+    expect(n.field, 1);
+  });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);

@@ -69,6 +69,9 @@ pub struct RawOpts {
     /// Inline declaration of Rust bridge modules
     #[clap(long)]
     pub inline_rust: bool,
+    /// Skip dependencies check.
+    #[clap(long)]
+    pub skip_deps_check: bool,
 }
 
 #[derive(Debug, Clone)]
@@ -88,6 +91,7 @@ pub struct Opts {
     pub dart_root: Option<String>,
     pub build_runner: bool,
     pub block_index: BlockIndex,
+    pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
 }
@@ -171,6 +175,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         );
     }
 
+    let skip_deps_check = raw.skip_deps_check;
+
     // c output path(s) (only 1 list is needed, nothing to do with number of rust_input_paths)
     let c_output_paths = raw
         .c_output
@@ -231,6 +237,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 dart_root: dart_roots[i].clone(),
                 build_runner, //same for all rust api blocks
                 block_index: BlockIndex(i),
+                skip_deps_check,
                 wasm_enabled: wasm,
                 inline_rust,
             }

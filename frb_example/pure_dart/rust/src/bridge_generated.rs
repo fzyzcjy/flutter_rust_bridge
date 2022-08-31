@@ -19,6 +19,8 @@ use flutter_rust_bridge::*;
 
 use crate::data::MyEnum;
 use crate::data::MyStruct;
+use crate::new_module_system::sub_module::NewSimpleStruct;
+use crate::old_module_system::sub_module::OldSimpleStruct;
 
 // Section: wire functions
 
@@ -747,6 +749,26 @@ fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure>
         },
     )
 }
+fn wire_call_old_module_system_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "call_old_module_system",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(call_old_module_system()),
+    )
+}
+fn wire_call_new_module_system_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "call_new_module_system",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(call_new_module_system()),
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1333,6 +1355,13 @@ impl support::IntoDart for MyTreeNode {
 }
 impl support::IntoDartExceptPrimitive for MyTreeNode {}
 
+impl support::IntoDart for NewSimpleStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.field.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for NewSimpleStruct {}
+
 impl support::IntoDart for NewTypeInt {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_dart()].into_dart()
@@ -1346,6 +1375,13 @@ impl support::IntoDart for mirror_Numbers {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_Numbers {}
+
+impl support::IntoDart for OldSimpleStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.field.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for OldSimpleStruct {}
 
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartAbi {

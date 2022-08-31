@@ -1,4 +1,4 @@
-flutter_rust_bridge_codegen 1.41.1
+flutter_rust_bridge_codegen 1.41.3
 
 USAGE:
     flutter_rust_bridge_codegen [OPTIONS] --rust-input <RUST_INPUT>... --dart-output <DART_OUTPUT>...
@@ -51,6 +51,9 @@ OPTIONS:
 
         --inline-rust
             Inline declaration of Rust bridge modules
+
+        --skip-deps-check
+            Skip dependencies check
 
     -h, --help
             Print help information

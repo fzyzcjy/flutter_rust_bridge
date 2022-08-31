@@ -88,26 +88,28 @@ pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> Result<Output> {
     run!("sh" in pwd, "-c", cmd)
 }
 
-pub fn ensure_tools_available(dart_root: &str) -> Result {
+pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result {
     let repo =
         DartRepository::from_str(dart_root).map_err(|e| Error::StringError(e.to_string()))?;
     if !repo.toolchain_available() {
         return Err(Error::MissingExe(repo.toolchain.to_string()));
     }
 
-    repo.has_specified("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
-    repo.has_installed("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
+    if !skip_deps_check {
+        repo.has_specified("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
+        repo.has_installed("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
 
-    repo.has_specified(
-        "ffigen",
-        PackageManager::DevDependencies,
-        &FFIGEN_REQUIREMENT,
-    )?;
-    repo.has_installed(
-        "ffigen",
-        PackageManager::DevDependencies,
-        &FFIGEN_REQUIREMENT,
-    )?;
+        repo.has_specified(
+            "ffigen",
+            PackageManager::DevDependencies,
+            &FFIGEN_REQUIREMENT,
+        )?;
+        repo.has_installed(
+            "ffigen",
+            PackageManager::DevDependencies,
+            &FFIGEN_REQUIREMENT,
+        )?;
+    }
 
     Ok(())
 }

@@ -264,6 +264,16 @@ pub fn wire_multiply_by_ten(port_: MessagePort, measure: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_call_old_module_system(port_: MessagePort) {
+    wire_call_old_module_system_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_call_new_module_system(port_: MessagePort) {
+    wire_call_new_module_system_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

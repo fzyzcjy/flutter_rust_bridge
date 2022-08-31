@@ -270,6 +270,16 @@ pub extern "C" fn wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_call_old_module_system(port_: i64) {
+    wire_call_old_module_system_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_call_new_module_system(port_: i64) {
+    wire_call_new_module_system_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

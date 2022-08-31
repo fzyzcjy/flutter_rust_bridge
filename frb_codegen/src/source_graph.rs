@@ -7,7 +7,12 @@
         - Imports that start with two colons (use ::a::b) - these are also silently ignored
 */
 
-use std::{collections::HashMap, fmt::Debug, fs, path::PathBuf};
+use std::{
+    collections::HashMap,
+    fmt::Debug,
+    fs,
+    path::{Path, PathBuf},
+};
 
 use cargo_metadata::MetadataCommand;
 use log::{debug, warn};
@@ -206,6 +211,49 @@ fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Vec<Ident>, bool) {
     }
 }
 
+fn try_get_module_file_path(
+    folder_path: &Path,
+    module_name: &str,
+    tried: &mut Vec<PathBuf>,
+) -> Option<PathBuf> {
+    let file_path = folder_path.join(module_name).with_extension("rs");
+    if file_path.exists() {
+        return Some(file_path);
+    }
+    tried.push(file_path);
+
+    let file_path = folder_path.join(module_name).join("mod.rs");
+    if file_path.exists() {
+        return Some(file_path);
+    }
+    tried.push(file_path);
+
+    None
+}
+
+fn get_module_file_path(
+    module_name: String,
+    parent_module_file_path: &Path,
+) -> Result<PathBuf, Vec<PathBuf>> {
+    let mut tried = Vec::new();
+
+    if let Some(file_path) = try_get_module_file_path(
+        parent_module_file_path.parent().unwrap(),
+        &module_name,
+        &mut tried,
+    ) {
+        return Ok(file_path);
+    }
+    if let Some(file_path) = try_get_module_file_path(
+        &parent_module_file_path.with_extension(""),
+        &module_name,
+        &mut tried,
+    ) {
+        return Ok(file_path);
+    }
+    Err(tried)
+}
+
 impl Module {
     pub fn resolve(&mut self) {
         self.resolve_modules();
@@ -282,53 +330,46 @@ impl Module {
                             child_module
                         }
                         None => {
-                            let folder_path =
-                                self.file_path.parent().unwrap().join(ident.to_string());
-                            let folder_exists = folder_path.exists();
+                            let file_path =
+                                get_module_file_path(ident.to_string(), &self.file_path);
 
-                            let file_path = if folder_exists {
-                                folder_path.join("mod.rs")
-                            } else {
-                                self.file_path
-                                    .parent()
-                                    .unwrap()
-                                    .join(ident.to_string() + ".rs")
-                            };
+                            match file_path {
+                                Ok(file_path) => {
+                                    let source = {
+                                        let source_rust_content =
+                                            fs::read_to_string(&file_path).unwrap();
+                                        debug!("Trying to parse {:?}", file_path);
+                                        Some(ModuleSource::File(
+                                            syn::parse_file(&source_rust_content).unwrap(),
+                                        ))
+                                    };
+                                    let mut child_module = Module {
+                                        visibility: syn_vis_to_visibility(&item_mod.vis),
+                                        file_path,
+                                        module_path,
+                                        source,
+                                        scope: None,
+                                    };
 
-                            let file_exists = file_path.exists();
-
-                            if !file_exists {
-                                warn!(
-                                    "Skipping unresolvable module {} (tried {})",
-                                    &ident,
-                                    file_path.to_string_lossy()
-                                );
-                                continue;
+                                    child_module.resolve();
+                                    child_module
+                                }
+                                Err(tried) => {
+                                    warn!(
+                                        "Skipping unresolvable module {} (tried {})",
+                                        &ident,
+                                        tried
+                                            .into_iter()
+                                            .map(|it| it.to_string_lossy().to_string())
+                                            .fold(String::new(), |mut a, b| {
+                                                a.push_str(&b);
+                                                a.push_str(", ");
+                                                a
+                                            })
+                                    );
+                                    continue;
+                                }
                             }
-
-                            let source = if file_exists {
-                                let source_rust_content = fs::read_to_string(&file_path).unwrap();
-                                debug!("Trying to parse {:?}", file_path);
-                                Some(ModuleSource::File(
-                                    syn::parse_file(&source_rust_content).unwrap(),
-                                ))
-                            } else {
-                                None
-                            };
-
-                            let mut child_module = Module {
-                                visibility: syn_vis_to_visibility(&item_mod.vis),
-                                file_path,
-                                module_path,
-                                source,
-                                scope: None,
-                            };
-
-                            if file_exists {
-                                child_module.resolve();
-                            }
-
-                            child_module
                         }
                     });
                 }

@@ -711,6 +711,32 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["measure"],
       );
 
+  Future<OldSimpleStruct> callOldModuleSystem({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_call_old_module_system(port_),
+        parseSuccessData: _wire2api_old_simple_struct,
+        constMeta: kCallOldModuleSystemConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kCallOldModuleSystemConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "call_old_module_system",
+        argNames: [],
+      );
+
+  Future<NewSimpleStruct> callNewModuleSystem({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_call_new_module_system(port_),
+        parseSuccessData: _wire2api_new_simple_struct,
+        constMeta: kCallNewModuleSystemConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kCallNewModuleSystemConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "call_new_module_system",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1294,6 +1320,14 @@ MyTreeNode _wire2api_my_tree_node(dynamic raw) {
   );
 }
 
+NewSimpleStruct _wire2api_new_simple_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return NewSimpleStruct(
+    field: _wire2api_i32(arr[0]),
+  );
+}
+
 NewTypeInt _wire2api_new_type_int(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
@@ -1307,6 +1341,14 @@ Numbers _wire2api_numbers(dynamic raw) {
   if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return Numbers(
     field0: _wire2api_int_32_list(arr[0]),
+  );
+}
+
+OldSimpleStruct _wire2api_old_simple_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return OldSimpleStruct(
+    field: _wire2api_i32(arr[0]),
   );
 }
 

@@ -224,6 +224,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kMultiplyByTenConstMeta;
 
+  Future<OldSimpleStruct> callOldModuleSystem({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCallOldModuleSystemConstMeta;
+
+  Future<NewSimpleStruct> callNewModuleSystem({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCallNewModuleSystemConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -542,6 +550,14 @@ class MyTreeNode {
   });
 }
 
+class NewSimpleStruct {
+  final int field;
+
+  NewSimpleStruct({
+    required this.field,
+  });
+}
+
 class NewTypeInt {
   final int field0;
 
@@ -565,6 +581,14 @@ class Numbers {
 
   Numbers({
     required this.field0,
+  });
+}
+
+class OldSimpleStruct {
+  final int field;
+
+  OldSimpleStruct({
+    required this.field,
   });
 }
 

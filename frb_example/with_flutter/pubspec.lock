@@ -98,7 +98,7 @@ packages:
       name: built_value
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.4.0"
+    version: "8.4.1"
   characters:
     dependency: transitive
     description:
@@ -189,7 +189,7 @@ packages:
       name: ffigen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.1"
+    version: "6.1.2"
   file:
     dependency: transitive
     description:
@@ -227,7 +227,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.41.1"
+    version: "1.41.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
