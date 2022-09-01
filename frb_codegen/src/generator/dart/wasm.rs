@@ -1,7 +1,7 @@
 use super::*;
 
 pub fn generate_wasm_module<'a>(
-    funcs: impl IntoIterator<Item = &'a IrFuncLike>,
+    funcs: impl IntoIterator<Item = &'a IrFuncDisplay>,
     dart_wire_class_name: &str,
     dart_wasm_module_name: &str,
 ) -> String {
@@ -75,26 +75,29 @@ pub fn reconstruct_dart_wire_from_raw_repr(ty: &str) -> Cow<str> {
     format!("dynamic /* {} */", ty).into()
 }
 
-pub fn generate_wasm_wire_func_decl(func: &IrFuncLike) -> String {
+pub fn generate_wasm_wire_func_decl(func: &IrFuncDisplay) -> String {
     format!(
         "external {} {name}({});",
         reconstruct_dart_wire_from_raw_repr(&func.output),
         func.inputs
             .iter()
-            .map(|(key, ty)| format!("{} {}", ty, key))
+            .map(|param| format!("{} {}", param.ty, param.name))
             .join(","),
         name = func.name,
     )
 }
 
-pub fn generate_wasm_wire_func_method(func: &IrFuncLike) -> String {
+pub fn generate_wasm_wire_func_method(func: &IrFuncDisplay) -> String {
     format!(
         "{out} {name}({}) => wasmModule.{name}({});",
         func.inputs
             .iter()
-            .map(|(key, ty)| format!("{} {}", ty, key))
+            .map(|param| format!("{} {}", param.ty, param.name))
             .join(","),
-        func.inputs.iter().map(|(key, _)| key.to_string()).join(","),
+        func.inputs
+            .iter()
+            .map(|param| param.name.to_string())
+            .join(","),
         name = func.name,
         out = if func.has_port_argument {
             "void".into()

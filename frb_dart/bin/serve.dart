@@ -1,14 +1,17 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
-import 'package:args/args.dart';
 import 'package:path/path.dart' as p;
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:puppeteer/puppeteer.dart';
+import 'package:colorize/colorize.dart';
+
+part 'serve.g.dart';
 
 final which = Platform.isWindows ? 'where.exe' : 'which';
 final open = Platform.isWindows
@@ -17,17 +20,15 @@ final open = Platform.isWindows
         ? 'open'
         : 'xdg-open';
 
-/// Wrap text in bold red.
 String err(String msg) =>
-    stderr.supportsAnsiEscapes ? '\x1b[1;31m$msg\x1b[0m' : msg;
+    stderr.supportsAnsiEscapes ? Colorize(msg).red().bold().toString() : msg;
 
-/// Wrap text in bold yellow.
-String warn(String msg) =>
-    stderr.supportsAnsiEscapes ? '\x1b[1;33m$msg\x1b[0m' : msg;
-
-void eprintln([Object? msg = '']) {
+void eprint([Object? msg = '']) {
   stderr.writeln('${err('error')}: $msg');
 }
+
+final arrow =
+    stdout.supportsAnsiEscapes ? Colorize('>').green().bold().toString() : '>';
 
 Future<String> system(
   String command,
@@ -37,7 +38,7 @@ Future<String> system(
   bool shell = true,
   bool silent = false,
 }) async {
-  print('> $command ${arguments.join(' ')}');
+  print('$arrow $command ${arguments.join(' ')}');
   final process = await Process.start(
     command,
     arguments,
@@ -63,95 +64,127 @@ Future<String> system(
 }
 
 Never bail([String? message]) {
-  eprintln(message);
+  eprint(message);
   exit(1);
+}
+
+@CliOptions()
+class Opts {
+  @CliOption(
+    abbr: 'p',
+    help: 'HTTP port to listen to',
+    valueHelp: 'PORT',
+    defaultsTo: 8080,
+  )
+  late int port;
+  @CliOption(
+    abbr: 'r',
+    help: 'Root of the Flutter/Dart output',
+    valueHelp: 'ROOT',
+  )
+  late String? root;
+  @CliOption(
+    abbr: 'c',
+    help: 'Directory of the crate',
+    valueHelp: 'CRATE',
+    defaultsTo: 'native',
+  )
+  late String crate;
+  @CliOption(
+    abbr: 'd',
+    help:
+        'Run "dart compile" with the specified input instead of "flutter build"',
+    valueHelp: 'ENTRY',
+  )
+  late String? dartInput;
+  @CliOption(abbr: 'w', help: 'WASM output path', valueHelp: 'PKG')
+  late String? wasmOutput;
+  @CliOption(abbr: 'v', help: 'Display more verbose information')
+  late bool verbose;
+  @CliOption(
+    help: 'Set COEP to credentialless\n'
+        'Defaults to true for Flutter',
+  )
+  late bool relaxCoep;
+  late bool relaxCoepWasParsed;
+  @CliOption(help: 'Open the webpage in a browser', defaultsTo: true)
+  late bool open;
+  @CliOption(help: 'Run tests in headless Chromium', negatable: false)
+  late bool runTests;
+  @CliOption(help: 'Compile in release mode', negatable: false)
+  late bool release;
+  @CliOption(
+    help: 'Enable the weak references proposal\n'
+        'Requires wasm-bindgen in path',
+  )
+  late bool weakRefs;
+  @CliOption(
+    help: 'Enable the reference types proposal\n'
+        'Requires wasm-bindgen in path',
+  )
+  late bool referenceTypes;
+  @CliOption(abbr: 'h', help: 'Print this help message', negatable: false)
+  late bool help;
+
+  static List<String> rest(List<String> args) =>
+      _$parserForOpts.parse(args).rest;
+}
+
+extension on Opts {
+  bool get shouldRunBindgen => weakRefs || referenceTypes;
+
+  /// If not set by user, relax COEP on Flutter.
+  bool get shouldRelaxCoep =>
+      relaxCoep || (!relaxCoepWasParsed && dartInput == null);
 }
 
 void main(List<String> args) async {
   const exec = 'flutter_rust_bridge_serve';
-  final parser = ArgParser()
-    ..addSeparator('Develop Rust WASM modules with cross-origin isolation.')
-    ..addSeparator("""USAGE:
+  final config = parseOpts(args);
+  if (config.help) {
+    print("""
+Develop Rust WASM modules with cross-origin isolation.
+
+USAGE:
 \t$exec [OPTIONS] [..REST]
-\t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]""")
-    ..addSeparator('OPTIONS:')
-    ..addOption('port',
-        abbr: 'p',
-        valueHelp: 'PORT',
-        help: 'HTTP port to listen to',
-        defaultsTo: '8080')
-    ..addOption('root',
-        abbr: 'r', valueHelp: 'ROOT', help: 'Root of the Flutter/Dart output')
-    ..addOption('crate',
-        abbr: 'c',
-        valueHelp: 'CRATE',
-        help: 'Directory of the crate',
-        defaultsTo: 'native')
-    ..addOption(
-      'dart-input',
-      abbr: 'd',
-      valueHelp: 'ENTRY',
-      help:
-          'Run "dart compile" with the specified input instead of "flutter build"',
-    )
-    ..addOption('wasm-output',
-        abbr: 'w', valueHelp: 'PKG', help: 'WASM output path')
-    ..addFlag('verbose', abbr: 'v', help: 'Display more verbose information')
-    ..addFlag('relax-coep',
-        help: 'Set COEP to credentialless\n' 'Defaults to true for Flutter')
-    ..addFlag('open', help: 'Open the webpage in a browser', defaultsTo: true)
-    ..addFlag('run-tests',
-        help: 'Run tests in headless Chromium', negatable: false)
-    ..addFlag('release', help: 'Compile in release mode', negatable: false)
-    ..addFlag('weak-refs',
-        help:
-            'Enable the weak references proposal\nRequires wasm-bindgen in path')
-    ..addFlag('reference-types',
-        help:
-            'Enable the reference types proposal\nRequires wasm-bindgen in path')
-    ..addFlag('help',
-        abbr: 'h', help: 'Print this help message', negatable: false);
-  final config = parser.parse(args);
-  if (config['help']) {
-    print(parser.usage);
+\t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]
+
+OPTIONS:""");
+    print(_$parserForOpts.usage);
     return;
   }
 
   await system(which, ['wasm-pack']).catchError((_) {
-    eprintln(
+    bail(
       'wasm-pack is required, but not found in the path.\n'
       'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
       'or running `cargo install wasm-pack`.',
     );
-    exit(1);
   });
 
-  final shouldRunBindgen = config['weak-refs'] || config['reference-types'];
-
-  if (shouldRunBindgen) {
+  if (config.shouldRunBindgen) {
     await system(which, ['wasm-bindgen']).catchError((_) {
-      eprintln(
+      bail(
         'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
         'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
       );
-      exit(1);
     });
   }
 
   final String root;
   final String wasmOutput;
-  if (config['dart-input'] != null) {
-    if (config['root'] == null) {
+  if (config.dartInput != null) {
+    if (config.root == null) {
       bail('The --root option is required when building plain Dart projects.');
     }
-    root = p.canonicalize(config['root']);
-    wasmOutput = p.canonicalize(config['wasm-output'] ?? '$root/pkg');
+    root = p.canonicalize(config.root!);
+    wasmOutput = p.canonicalize(config.wasmOutput ?? '$root/pkg');
   } else {
-    root = p.canonicalize(config['root'] ?? 'build/web');
-    wasmOutput = p.canonicalize(config['wasm-output'] ?? 'web/pkg');
+    root = p.canonicalize(config.root ?? 'build/web');
+    wasmOutput = p.canonicalize(config.wasmOutput ?? 'web/pkg');
   }
 
-  final crateDir = config['crate'];
+  final crateDir = config.crate;
   if (!await File('$crateDir/Cargo.toml').exists()) {
     bail(
       '$crateDir is not a crate directory.\n'
@@ -170,49 +203,45 @@ void main(List<String> args) async {
   final String crateName = (manifest['targets'] as List).firstWhere(
       (target) => (target['kind'] as List).contains('cdylib'))['name'];
   if (crateName.isEmpty) bail('Crate name cannot be empty.');
-  await system(
-    'wasm-pack',
-    [
-      'build', '-t', 'no-modules', '-d', wasmOutput, '--no-typescript',
-      '--out-name', crateName,
-      if (!config['release']) '--dev', crateDir,
-      '--', // cargo build args
-      '-Z', 'build-std=std,panic_abort'
-    ],
-    env: {
-      'RUSTUP_TOOLCHAIN': 'nightly',
-      'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
-      if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
-    },
-  );
-  if (shouldRunBindgen) {
+  await system('wasm-pack', [
+    'build', '-t', 'no-modules', '-d', wasmOutput, '--no-typescript',
+    '--out-name', crateName,
+    if (!config.release) '--dev', crateDir,
+    '--', // cargo build args
+    '-Z', 'build-std=std,panic_abort'
+  ], env: {
+    'RUSTUP_TOOLCHAIN': 'nightly',
+    'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
+    if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
+  });
+  if (config.shouldRunBindgen) {
     await system('wasm-bindgen', [
-      '$crateDir/target/wasm32-unknown-unknown/${config['release'] ? 'release' : 'debug'}/$crateName.wasm',
+      '$crateDir/target/wasm32-unknown-unknown/${config.release ? 'release' : 'debug'}/$crateName.wasm',
       '--out-dir',
       wasmOutput,
       '--no-typescript',
       '--target',
       'no-modules',
-      if (config['weak-refs']) '--weak-refs',
-      if (config['reference-types']) '--reference-types',
+      if (config.weakRefs) '--weak-refs',
+      if (config.referenceTypes) '--reference-types',
     ]);
   }
-  if (config['dart-input'] != null) {
-    final output = p.basename(config['dart-input']);
+  if (config.dartInput != null) {
+    final output = p.basename(config.dartInput!);
     await system('dart', [
       'compile',
       'js',
       '-o',
       '$root/$output.js',
-      if (config['release']) '-O2',
+      if (config.release) '-O2',
       if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
-      if (config['verbose']) '--verbose',
-      config['dart-input'],
+      if (config.verbose) '--verbose',
+      config.dartInput!,
     ]);
   } else {
     await system(
       'flutter',
-      ['build', 'web', if (!config['release']) '--profile'] + config.rest,
+      ['build', 'web', if (!config.release) '--release'] + Opts.rest(args),
     );
   }
 
@@ -234,13 +263,11 @@ void main(List<String> args) async {
           print(data);
         }
       } catch (err, st) {
-        print('$err\n$st');
+        print('$err\nStacktrace:\n$st');
       }
     }
   });
-  // If not set by user, relax COEP on Flutter.
-  final shouldRelaxCoep = config['relax-coep'] ||
-      (!config.wasParsed('relax-coep') && config['dart-input'] == null);
+  final shouldRelaxCoep = config.shouldRelaxCoep;
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
       final res = await handler(req);
@@ -252,18 +279,19 @@ void main(List<String> args) async {
     };
   }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
 
-  final port = int.parse(Platform.environment['PORT'] ?? config['port']);
+  final portEnv = Platform.environment['PORT'];
+  final port = portEnv == null ? config.port : int.parse(portEnv);
   final addr = 'http://localhost:$port';
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
-  if (config['run-tests']) {
+  if (config.runTests) {
     browser = await puppeteer.launch(
       headless: true,
       timeout: const Duration(minutes: 5),
     );
     final page = await browser.newPage();
     await page.goto(addr);
-  } else if (config['open']) {
+  } else if (config.open) {
     system(open, [addr]);
   }
 }

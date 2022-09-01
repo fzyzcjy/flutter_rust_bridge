@@ -115,3 +115,12 @@ class PlatformMismatchException implements Exception {
   @override
   String toString() => _wasm;
 }
+
+class UnmodifiableTypedListException implements Exception {
+  const UnmodifiableTypedListException();
+
+  static const _message = 'Cannot modify the length of typed lists.';
+
+  @override
+  String toString() => _message;
+}

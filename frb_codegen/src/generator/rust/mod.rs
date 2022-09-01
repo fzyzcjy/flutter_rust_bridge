@@ -35,7 +35,7 @@ pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
 pub struct Output {
     pub code: Acc<String>,
     pub extern_func_names: Vec<String>,
-    pub wasm_exports: Vec<IrFuncLike>,
+    pub wasm_exports: Vec<IrFuncDisplay>,
 }
 
 impl Output {
@@ -540,7 +540,7 @@ pub const NO_PARAMS: Option<(&str, &str)> = None;
 
 pub struct ExternFuncCollector {
     names: Vec<String>,
-    wasm_exports: Vec<IrFuncLike>,
+    wasm_exports: Vec<IrFuncDisplay>,
 }
 
 impl ExternFuncCollector {
@@ -565,14 +565,17 @@ impl ExternFuncCollector {
         if matches!(target, Io) {
             self.names.push(func_name.to_string());
         } else if target.is_wasm() && !func_name.starts_with("wire_") {
-            self.wasm_exports.push(IrFuncLike {
+            self.wasm_exports.push(IrFuncDisplay {
                 name: func_name.to_owned(),
                 inputs: params
                     .iter()
                     .map(|(verbatim, dart)| {
                         let verbatim = format!("{}", verbatim);
                         let (key, _) = verbatim.split_once(':').expect("Missing middle colon");
-                        (key.to_owned(), format!("{}", dart))
+                        IrParam {
+                            name: key.to_owned(),
+                            ty: format!("{}", dart),
+                        }
                     })
                     .collect(),
                 output: return_type.map(String::from).unwrap_or_default(),

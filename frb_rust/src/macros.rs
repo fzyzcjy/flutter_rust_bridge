@@ -1,6 +1,6 @@
 /// On WASM, [JsValue][wasm_bindgen::JsValue]s cannot be shared between scopes but instead can be
 /// ["transferred"]. Rust however is not aware of transferables and therefore cannot
-/// capture these values. This macro wraps a closure and returns a [TransferClosure] on WASM platforms
+/// capture these values. This macro wraps a closure and returns a [TransferClosure][crate::ffi::TransferClosure] on WASM platforms
 /// which will capture these special values, or a normal [FnOnce] on other platforms.
 /// Note that the parameter names must match available variables/bindings from the outer scope.
 ///
@@ -46,7 +46,7 @@ macro_rules! transfer {
 /// Also see [`transfer`].
 ///
 /// Example:
-/// ```rust,noplayground
+/// ```
 /// let (tx, rx) = std::sync::mpsc::channel();
 /// flutter_rust_bridge::spawn!(|| {
 ///     tx.send(true).unwrap();
@@ -56,7 +56,8 @@ macro_rules! transfer {
 ///
 /// Sending a JS transferable:
 ///
-/// ```rust,noplayground
+/// ```
+/// # #[cfg(target_family = "wasm")] fn main() {
 /// use web_sys::{MessagePort, MessageEvent};
 /// use wasm_bindgen::prelude::*;
 ///
@@ -72,6 +73,7 @@ macro_rules! transfer {
 /// flutter_rust_bridge::spawn!(|port2: MessagePort| {
 ///     port2.post_message(&JsValue::from(true)).unwrap();
 /// });
+/// # } #[cfg(not(target_family = "wasm"))] fn main() {}
 /// ```
 #[macro_export]
 macro_rules! spawn {

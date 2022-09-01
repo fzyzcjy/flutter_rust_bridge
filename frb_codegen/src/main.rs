@@ -13,7 +13,7 @@ fn main() -> anyhow::Result<()> {
     env_logger::Builder::from_env(Env::default().default_filter_or(if raw_opts.verbose {
         "debug"
     } else {
-        "info,cbindgen=warn"
+        "info,cbindgen=error"
     }))
     .init();
 

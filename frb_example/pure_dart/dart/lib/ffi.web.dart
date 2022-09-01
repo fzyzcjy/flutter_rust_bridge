@@ -6,5 +6,5 @@ const root = 'pkg/flutter_rust_bridge_example';
 
 FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(void _) =>
     FlutterRustBridgeExampleSingleBlockTestImpl.wasm(
-      WasmModule.initialize(() => wasmModule, kind: const Modules.noModules(root: root)),
+      WasmModule.initialize(kind: const Modules.noModules(root: root)),
     );

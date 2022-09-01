@@ -19,7 +19,7 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
                 self.context.config.block_index,
                 self.ir.inner.safe_ident()
             )),
-            wasm: self.context.wasm().then(|| {
+            wasm: self.context.config.wasm_enabled.then(|| {
                 format!(
                     "return raw.map(api2wire_{}).toList();",
                     self.ir.inner.safe_ident()

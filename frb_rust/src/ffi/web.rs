@@ -85,13 +85,13 @@ impl<T: IntoDart> IntoDart for Option<T> {
 impl<T> IntoDart for *const T {
     #[inline]
     fn into_dart(self) -> DartAbi {
-        (self as u32).into_dart()
+        (self as usize).into_dart()
     }
 }
 impl<T> IntoDart for *mut T {
     #[inline]
     fn into_dart(self) -> DartAbi {
-        (self as u32).into_dart()
+        (self as usize).into_dart()
     }
 }
 

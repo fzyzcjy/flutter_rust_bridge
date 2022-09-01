@@ -45,7 +45,7 @@ pub struct Output {
     pub needs_freezed: bool,
 }
 
-pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncLike]) -> Output {
+pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -> Output {
     let dart_api_class_name = &config.dart_api_class_name();
     let dart_output_file_root = config.dart_output_root().expect("Internal error");
     let spec = DartApiSpec::from(ir_file, config, wasm_funcs);
@@ -91,7 +91,7 @@ struct DartApiSpec {
 }
 
 impl DartApiSpec {
-    fn from(ir_file: &IrFile, config: &Opts, extra_funcs: &[IrFuncLike]) -> Self {
+    fn from(ir_file: &IrFile, config: &Opts, extra_funcs: &[IrFuncDisplay]) -> Self {
         let dart_api_class_name = config.dart_api_class_name();
         let dart_wire_class_name = config.dart_wire_class_name();
         let distinct_types = ir_file.distinct_types(true, true);
@@ -135,7 +135,7 @@ impl DartApiSpec {
             ir_file
                 .funcs
                 .iter()
-                .map(|fun| IrFuncLike::from_ir(fun, Target::Wasm))
+                .map(|fun| IrFuncDisplay::from_ir(fun, Target::Wasm))
                 .chain(extra_funcs.iter().cloned())
                 .collect::<Vec<_>>()
         });

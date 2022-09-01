@@ -129,18 +129,12 @@ impl<T: IntoDart> StreamSink<T> {
 
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    ///
-    /// On WASM platforms, will block the thread until the Dart thread gives
-    /// the start signal.
     pub fn add(&self, value: T) -> bool {
         self.rust2dart().success(value)
     }
 
     /// Close the stream and ignore further messages. Returns false when
     /// the stream could not be closed, or when it has already been closed.
-    ///
-    /// On WASM platforms, will block the thread until the Dart thread gives
-    /// the start signal.
     pub fn close(&self) -> bool {
         self.rust2dart().close_stream()
     }

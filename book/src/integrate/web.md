@@ -22,20 +22,7 @@ import 'dart:html';
 
 // Path to the wasm_bindgen generated files
 const root = 'pkg/native';
-final api = NativeImpl.wasm(_initWasm());
-
-Future<WasmModule> _initWasm() {
-    final script = ScriptElement()
-        ..src = '$root.js';
-    document.head!.append(script);
-    return script.onLoad.first.then((_) {
-        // wasm_bindgen defines the module on the top-level scope
-        // so we bring it into Dart's scope.
-        eval('window.wasm_bindgen = wasm_bindgen');
-        // wasmModule is a native JS function,
-        // the first argument is the "this" of this function
-        // and should be left as null.
-        return wasmModule.bind(null, '${root}_bg.wasm');
-    });
-}
+final api = NativeImpl.wasm(WasmModule.initialize(
+    kind: const Modules.noModules(root: root),
+));
 ```

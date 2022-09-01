@@ -226,7 +226,6 @@ fn cbindgen(
             "stdint.h".to_string(),
             "stdlib.h".to_string(),
         ],
-        defines: [("target_family = wasm".into(), "DEFINE_WASM".into())].into(),
         no_includes: true,
         export: cbindgen::ExportConfig {
             include: c_struct_names
@@ -337,7 +336,6 @@ fn ffigen(
 
 pub fn format_rust(path: &[PathBuf]) -> Result {
     debug!("execute format_rust path={:?}", path);
-    debug!("execute format_rust");
     let res = execute_command("rustfmt", path, None)?;
     if !res.status.success() {
         return Err(Error::Rustfmt(

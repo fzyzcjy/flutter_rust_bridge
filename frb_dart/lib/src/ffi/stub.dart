@@ -71,8 +71,8 @@ abstract class WasmModule {
   }
 
   /// Initialize a [WasmModule] with the specified kind of [Modules].
-  static FutureOr<WasmModule> initialize(WasmModule Function() module,
-          {required Modules kind}) =>
+  static FutureOr<WasmModule> initialize(
+          {required Modules kind, WasmModule Function()? module}) =>
       throw UnimplementedError();
 }
 
@@ -93,7 +93,7 @@ abstract class Modules {
   /// How a WASM module is brought into Dart's scope and initialized.
   ///
   /// Override this method to define custom initialization processes.
-  FutureOr<WasmModule> initializeModule(WasmModule module);
+  FutureOr<WasmModule> initializeModule(WasmModule Function()? module);
 }
 
 class _WasmBindgenNoModules extends Modules {
@@ -101,6 +101,6 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  FutureOr<WasmModule> initializeModule(WasmModule module) =>
+  FutureOr<WasmModule> initializeModule(WasmModule Function()? module) =>
       throw UnimplementedError();
 }

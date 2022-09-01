@@ -87,7 +87,7 @@ impl IrFile {
     pub fn generate_dart(
         &self,
         config: &Opts,
-        wasm_funcs: &[IrFuncLike],
+        wasm_funcs: &[IrFuncDisplay],
     ) -> generator::dart::Output {
         generator::dart::generate(self, config, wasm_funcs)
     }

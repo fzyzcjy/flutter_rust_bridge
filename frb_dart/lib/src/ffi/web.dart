@@ -15,8 +15,8 @@ abstract class WasmModule {
     return Future.value(module).then((module) => module as T);
   }
 
-  static FutureOr<WasmModule> initialize(WasmModule Function() module,
-          {required Modules kind}) =>
+  static FutureOr<WasmModule> initialize(
+          {required Modules kind, WasmModule Function()? module}) =>
       kind.initializeModule(module);
 }
 
@@ -26,12 +26,12 @@ abstract class Modules {
   const factory Modules.noModules({required String root}) =
       _WasmBindgenNoModules;
 
-  FutureOr<WasmModule> initializeModule(WasmModule Function() module);
+  FutureOr<WasmModule> initializeModule(WasmModule Function()? module);
 
   void _ensureCrossOriginIsolated() {
     switch (crossOriginIsolated) {
       case false:
-        throw MissingHeaderException();
+        throw const MissingHeaderException();
       case null:
         warn(
             'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
@@ -45,13 +45,14 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  FutureOr<WasmModule> initializeModule(WasmModule Function() module) {
+  FutureOr<WasmModule> initializeModule(WasmModule Function()? module) {
     _ensureCrossOriginIsolated();
     final script = ScriptElement()..src = '$root.js';
     document.head!.append(script);
     return script.onLoad.first.then((_) {
       eval('window.wasm_bindgen = wasm_bindgen');
-      return module().bind(null, '${root}_bg.wasm');
+      final module_ = module?.call() ?? _noModules!;
+      return module_.bind(null, '${root}_bg.wasm');
     });
   }
 }
@@ -73,6 +74,9 @@ class _Function {
   external dynamic call();
   external factory _Function(String script);
 }
+
+@JS('wasm_bindgen')
+external WasmModule? get _noModules;
 
 dynamic eval(String script) => _Function(script)();
 

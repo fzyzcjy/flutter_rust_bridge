@@ -7,6 +7,8 @@ import 'package:fixnum/fixnum.dart';
 import 'package:js/js_util.dart';
 
 import 'dart:typed_data' hide Int64List, Uint64List;
+
+import '../helpers.dart' show UnmodifiableTypedListException;
 export 'dart:typed_data' hide Int64List, Uint64List;
 
 Int64List int64ListFrom(dynamic raw) => Int64List.from(raw);
@@ -68,7 +70,16 @@ abstract class BigUint64Array extends TypedArray {
       BigUint64Array(array.buffer, offset, length);
 }
 
-abstract class TypedList<T> extends ListMixin<T> {
+/// Opt out of type safety for setting the value.
+/// Helpful if the array needs to accept multiple types.
+abstract class _SetAnyListMixin<T> extends ListMixin<T> {
+  @override
+  void operator []=(int index, dynamic value) {
+    this[index] = value;
+  }
+}
+
+abstract class TypedList<T> extends _SetAnyListMixin<T> {
   TypedArray get inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
@@ -111,7 +122,7 @@ Object _convertBigInt(Object dart) {
   return dart;
 }
 
-class Int64List extends TypedList {
+class Int64List extends TypedList<Int64> {
   @override
   final BigInt64Array inner;
   Int64List.from(this.inner);
@@ -131,7 +142,7 @@ class Int64List extends TypedList {
       Int64List.from(BigInt64Array.sublistView(array, offset, length));
 }
 
-class Uint64List extends TypedList {
+class Uint64List extends TypedList<Int64> {
   @override
   final BigUint64Array inner;
   Uint64List.from(this.inner);
@@ -149,13 +160,4 @@ class Uint64List extends TypedList {
   factory Uint64List.sublistView(TypedData array,
           [int offset = 0, int? length]) =>
       Uint64List.from(BigUint64Array.sublistView(array, offset, length));
-}
-
-class UnmodifiableTypedListException implements Exception {
-  const UnmodifiableTypedListException();
-
-  static const _message = 'Cannot modify the length of typed lists.';
-
-  @override
-  String toString() => _message;
 }

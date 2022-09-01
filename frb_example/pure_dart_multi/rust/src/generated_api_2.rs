@@ -71,32 +71,7 @@ support::lazy_static! {
 }
 
 #[cfg(not(target_family = "wasm"))]
-mod io {
-    use super::*;
-    // Section: wire functions
-
-    #[no_mangle]
-    pub extern "C" fn wire_simple_adder_2(port_: i64, a: i32, b: i32) {
-        wire_simple_adder_2_impl(port_, a, b)
-    }
-
-    // Section: wire structs
-
-    // Section: allocate functions
-
-    // Section: impl Wire2Api
-
-    // Section: impl NewWithNullPtr
-
-    pub trait NewWithNullPtr {
-        fn new_with_null_ptr() -> Self;
-    }
-
-    impl<T> NewWithNullPtr for *mut T {
-        fn new_with_null_ptr() -> Self {
-            std::ptr::null_mut()
-        }
-    }
-}
+#[path = "generated_api_2.io.rs"]
+mod io;
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;

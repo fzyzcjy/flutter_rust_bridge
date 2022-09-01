@@ -1191,7 +1191,7 @@ Int32List _wire2api_int_32_list(dynamic raw) {
 }
 
 Int64List _wire2api_int_64_list(dynamic raw) {
-  return int64ListFrom(raw);
+  return Int64List.from(raw);
 }
 
 Int8List _wire2api_int_8_list(dynamic raw) {
@@ -1496,7 +1496,7 @@ Uint32List _wire2api_uint_32_list(dynamic raw) {
 }
 
 Uint64List _wire2api_uint_64_list(dynamic raw) {
-  return uint64ListFrom(raw);
+  return Uint64List.from(raw);
 }
 
 Uint8List _wire2api_uint_8_list(dynamic raw) {

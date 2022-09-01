@@ -11,7 +11,7 @@ type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: self.context.wasm().then(|| {
+            wasm: self.context.config.wasm_enabled.then(|| {
                 format!(
                     "return [{}];",
                     self.ir

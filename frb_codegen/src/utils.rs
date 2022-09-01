@@ -89,11 +89,8 @@ impl Display for BlockIndex {
     }
 }
 
-pub trait PathExt {
-    fn file_name_str(&self) -> Option<&str>;
-}
-
-impl PathExt for std::path::Path {
+#[extend::ext]
+impl std::path::Path {
     #[inline]
     fn file_name_str(&self) -> Option<&str> {
         self.file_name().and_then(OsStr::to_str)

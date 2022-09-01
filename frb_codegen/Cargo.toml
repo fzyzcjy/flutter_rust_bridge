@@ -36,6 +36,7 @@ thiserror = "1"
 cbindgen = "0.24"
 clap = { version = "3.2.14", features = ["derive"] }
 itertools = "0.10.3"
+extend = "1.1.2"
 
 [dev-dependencies]
 semver = "1.0.12"

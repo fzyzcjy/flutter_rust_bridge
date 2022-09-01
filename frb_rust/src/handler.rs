@@ -147,19 +147,19 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 )
             });
 
-            #[cfg(not(target_family = "wasm"))]
+            #[cfg(not(wasm))]
             {
                 let (ptr, len) = crate::support::into_leak_vec_ptr(bytes);
                 WireSyncReturnStruct { ptr, len, success }
             }
 
-            #[cfg(target_family = "wasm")]
+            #[cfg(wasm)]
             {
                 vec![bytes.into_dart(), success.into_dart()].into_dart()
             }
         })
         .unwrap_or_else(|_| {
-            #[cfg(not(target_family = "wasm"))]
+            #[cfg(not(wasm))]
             return WireSyncReturnStruct {
                 // return the simplest thing possible. Normally the inner [catch_unwind] should catch
                 // panic. If no, here is our *LAST* chance before encountering undefined behavior.
@@ -170,7 +170,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 success: false,
             };
 
-            #[cfg(target_family = "wasm")]
+            #[cfg(wasm)]
             return vec![wasm_bindgen::JsValue::null(), false.into_dart()].into_dart();
         })
     }

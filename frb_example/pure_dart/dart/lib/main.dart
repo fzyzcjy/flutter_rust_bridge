@@ -485,14 +485,14 @@ void main(List<String> args) async {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);
       expect(list[0].toString(), '-1');
-      expect(list.map((el) => el * el), DeepMatchesLooseInts([1, 4, 9, 16, 25]));
+      expect(list.map((el) => _convert(el * el)), MatchInt64([1, 4, 9, 16, 25]));
       list[1] = -123;
       expect(list[1].toString(), '-123');
     });
     test('Uint64List', () {
       final list = Uint64List.fromList([1, 2, 3, 4, 5]);
       expect(list[0].toString(), '1');
-      expect(list.map((el) => el * el), DeepMatchesLooseInts([1, 4, 9, 16, 25]));
+      expect(list.map((el) => _convert(el * el)), MatchInt64([1, 4, 9, 16, 25]));
       list[1] = 123;
       expect(list[1].toString(), '123');
     });
@@ -540,16 +540,17 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
   );
 }
 
-class DeepMatchesLooseInts extends CustomMatcher {
-  /// On WASM platforms, indexing into a [Int64List] or [Uint64List] will return
-  /// an Int64 from the fixnum library, which fails the type test. This asserts
-  /// that they only have to match by their values.
-  DeepMatchesLooseInts(matcher) : super("is a numeric", "value", matcher);
+Int64 _convert(dynamic value) => value is int ? Int64(value) : value;
+
+class MatchInt64 extends CustomMatcher {
+  MatchInt64(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
   @override
-  Object? featureValueOf(actual) {
-    if (actual is Iterable) return actual.map(featureValueOf);
-    if (actual is int) return actual;
-    return int.tryParse('$actual');
+  Object? featureValueOf(actual) => _featureValueOf(actual);
+
+  static Object? _featureValueOf(actual) {
+    if (actual is Iterable) return actual.map(_featureValueOf);
+    if (actual is int || actual is Int64) return _convert(actual);
+    return actual;
   }
 }
 

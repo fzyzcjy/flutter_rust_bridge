@@ -2,7 +2,8 @@
 
 - Safari cannot spawn nested `Worker`s. To get around this limitation, build two variants of the library,
   one with multithreading and one without, and serve Safari users the single-threaded variant.
-  For a more general solution, check out [wasm-feature-detect](https://github.com/GoogleChromeLabs/wasm-feature-detect).
+  For a more general solution, check out [wasm-feature-detect](https://github.com/GoogleChromeLabs/wasm-feature-detect)
+  or [nested-worker](https://github.com/johanholmerin/nested-worker).
 - `std::thread::spawn` and replacements (e.g. `wasm_thread`) are not fully supported. This library includes
   a `spawn!` macro which spawns a new thread using the internal thread pool.
 - When a Rust thread panics, it aborts and throws a JavaScript `RuntimeError` that cannot be caught by name in

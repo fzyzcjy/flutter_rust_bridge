@@ -12,29 +12,36 @@ pub struct IrFunc {
 }
 
 /// A stand-in for [`IrFunc`] used for output only.
-///
-/// Input is `(Rust-style ident, Dart wire type)`.
 #[derive(Debug, Clone)]
-pub struct IrFuncLike {
+pub struct IrFuncDisplay {
     pub name: String,
-    pub inputs: Vec<(String, String)>,
+    pub inputs: Vec<IrParam>,
     pub output: String,
     pub has_port_argument: bool,
 }
 
-impl IrFuncLike {
+#[derive(Debug, Clone)]
+pub struct IrParam {
+    /// Rust-style ident.
+    pub name: String,
+    /// Dart wire type.
+    pub ty: String,
+}
+
+impl IrFuncDisplay {
     pub fn from_ir(func: &IrFunc, target: Target) -> Self {
         Self {
             name: func.wire_func_name(),
             has_port_argument: func.mode.has_port_argument(),
             inputs: (func.mode.has_port_argument())
-                .then(|| ("port_".to_owned(), "NativePortType".to_owned()))
+                .then(|| IrParam {
+                    name: "port_".to_owned(),
+                    ty: "NativePortType".to_owned(),
+                })
                 .into_iter()
-                .chain(func.inputs.iter().map(|input| {
-                    (
-                        input.name.rust_style().to_owned(),
-                        input.ty.dart_wire_type(target),
-                    )
+                .chain(func.inputs.iter().map(|input| IrParam {
+                    name: input.name.rust_style().to_owned(),
+                    ty: input.ty.dart_wire_type(target),
                 }))
                 .collect(),
             output: if func.mode.has_port_argument() {

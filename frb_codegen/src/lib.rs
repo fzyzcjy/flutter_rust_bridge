@@ -14,6 +14,7 @@ use pathdiff::diff_paths;
 use crate::commands::BindgenRustToDartArg;
 use crate::others::*;
 use crate::target::Acc;
+use crate::target::Target;
 use crate::utils::*;
 
 mod config;
@@ -59,24 +60,24 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     info!("Phase: Generate Rust code");
     fs::create_dir_all(&rust_output_dir)?;
     let generated_rust = ir_file.generate_rust(config);
-    if config.wasm_enabled {
-        write_rust_wasm(config, &generated_rust)?;
-    } else {
-        let Acc { common, io, .. } = &generated_rust.code;
-        let output = format!(
-            "{}
-            
-            #[cfg(not(target_family = \"wasm\"))]
-            mod io {{
-                use super::*;
-                {}
-            }}
-            #[cfg(not(target_family = \"wasm\"))]
-            pub use io::*;",
-            common, io,
-        );
-        fs::write(&config.rust_output_path, output)?;
-    }
+    // if config.wasm_enabled {
+    write_rust_modules(config, &generated_rust)?;
+    // } else {
+    //     let Acc { common, io, .. } = &generated_rust.code;
+    //     let output = format!(
+    //         "{}
+
+    //         #[cfg(not(target_family = \"wasm\"))]
+    //         mod io {{
+    //             use super::*;
+    //             {}
+    //         }}
+    //         #[cfg(not(target_family = \"wasm\"))]
+    //         pub use io::*;",
+    //         common, io,
+    //     );
+    //     fs::write(&config.rust_output_path, output)?;
+    // }
 
     info!("Phase: Generate Dart code");
     let generated_dart = ir_file.generate_dart(config, &generated_rust.wasm_exports);
@@ -249,19 +250,27 @@ fn write_dart_decls(
     Ok(())
 }
 
-fn write_rust_wasm(
+fn write_rust_modules(
     config: &Opts,
     generated_rust: &crate::generator::rust::Output,
 ) -> anyhow::Result<()> {
     let Acc { common, io, wasm } = &generated_rust.code;
+    fn emit_platform_module(name: &str, body: &str, config: &Opts, target: Target) -> String {
+        if config.inline_rust {
+            format!("mod {} {{ use super::*;\n {} }}", name, body)
+        } else {
+            let path = match target {
+                Target::Io => config.rust_io_output_path(),
+                Target::Wasm => config.rust_wasm_output_path(),
+                _ => panic!("unsupported target: {:?}", target),
+            };
+            let path = path.file_name().and_then(OsStr::to_str).unwrap();
+            format!("#[path = \"{}\"] mod {};", path, name)
+        }
+    }
     let common = format!(
         "{}
-
-/// cbindgen:ignore
-#[cfg(target_family = \"wasm\")]
 {mod_web}
-#[cfg(target_family = \"wasm\")]
-pub use web::*;
 
 #[cfg(not(target_family = \"wasm\"))]
 {mod_io}
@@ -269,30 +278,20 @@ pub use web::*;
 pub use io::*;
 ",
         common,
-        mod_web = if config.inline_rust {
-            format!("mod web {{ use super::*;\n {} }}", wasm)
-        } else {
+        mod_web = if config.wasm_enabled {
             format!(
-                "#[path = \"{}\"] mod web;",
-                config
-                    .rust_wasm_output_path()
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap()
+                "
+/// cbindgen:ignore
+#[cfg(target_family = \"wasm\")] 
+{}
+#[cfg(target_family = \"wasm\")]
+pub use web::*;",
+                emit_platform_module("web", wasm, config, Target::Wasm)
             )
+        } else {
+            "".into()
         },
-        mod_io = if config.inline_rust {
-            format!("mod io {{ use super::*;\n {} }}", io)
-        } else {
-            format!(
-                "#[path = \"{}\"] mod io;",
-                config
-                    .rust_io_output_path()
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap()
-            )
-        }
+        mod_io = emit_platform_module("io", io, config, Target::Io),
     );
     fs::write(&config.rust_output_path, common)?;
     if !config.inline_rust {
@@ -300,10 +299,12 @@ pub use io::*;
             &config.rust_io_output_path(),
             format!("use super::*;\n{}", io),
         )?;
-        fs::write(
-            &config.rust_wasm_output_path(),
-            format!("use super::*;\n{}", wasm),
-        )?;
+        if config.wasm_enabled {
+            fs::write(
+                &config.rust_wasm_output_path(),
+                format!("use super::*;\n{}", wasm),
+            )?;
+        }
     }
     Ok(())
 }

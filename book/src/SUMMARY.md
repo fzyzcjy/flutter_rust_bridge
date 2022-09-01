@@ -71,7 +71,6 @@
 
 - [Overview](contributing/overview.md)
 - [Overall design](contributing/design.md)
-- [Architecture](contributing/architecture.md)
 - [Appendix](contributing/appendix.md)
 
 # Part IV: More Doc

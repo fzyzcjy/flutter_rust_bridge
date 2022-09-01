@@ -38,8 +38,8 @@ impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         match &self.ir.primitive {
-            IrTypePrimitive::I64 => "return int64ListFrom(raw);".into(),
-            IrTypePrimitive::U64 => "return uint64ListFrom(raw);".into(),
+            IrTypePrimitive::I64 => "return Int64List.from(raw);".into(),
+            IrTypePrimitive::U64 => "return Uint64List.from(raw);".into(),
             _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),
         }
     }
