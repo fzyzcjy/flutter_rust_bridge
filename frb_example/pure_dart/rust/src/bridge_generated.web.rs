@@ -274,6 +274,11 @@ pub fn wire_call_new_module_system(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_big_buffers(port_: MessagePort) {
+    wire_handle_big_buffers_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

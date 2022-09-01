@@ -60,24 +60,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     info!("Phase: Generate Rust code");
     fs::create_dir_all(&rust_output_dir)?;
     let generated_rust = ir_file.generate_rust(config);
-    // if config.wasm_enabled {
     write_rust_modules(config, &generated_rust)?;
-    // } else {
-    //     let Acc { common, io, .. } = &generated_rust.code;
-    //     let output = format!(
-    //         "{}
-
-    //         #[cfg(not(target_family = \"wasm\"))]
-    //         mod io {{
-    //             use super::*;
-    //             {}
-    //         }}
-    //         #[cfg(not(target_family = \"wasm\"))]
-    //         pub use io::*;",
-    //         common, io,
-    //     );
-    //     fs::write(&config.rust_output_path, output)?;
-    // }
 
     info!("Phase: Generate Dart code");
     let generated_dart = ir_file.generate_dart(config, &generated_rust.wasm_exports);

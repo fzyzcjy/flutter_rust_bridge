@@ -4,17 +4,19 @@ import 'dart:typed_data' as $data;
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
-abstract class _Int64List extends ListMixin<Int64> {
+abstract class _TypedList<T> extends ListMixin<T> {
   List<int> get inner;
   @override
-  _Int64List operator +(Object other);
+  _TypedList<T> operator +(Object other);
+
+  T raw2dart(int value);
+  int dart2raw(dynamic value);
 
   @override
-  Int64 operator [](int index) => Int64(inner[index]);
+  T operator [](int index) => raw2dart(inner[index]);
 
   @override
-  void operator []=(int index, dynamic value) =>
-      inner[index] = value is Int64 ? value.toInt() : value;
+  void operator []=(int index, dynamic value) => inner[index] = dart2raw(value);
 
   @override
   int get length => inner.length;
@@ -24,7 +26,7 @@ abstract class _Int64List extends ListMixin<Int64> {
 }
 
 /// A strict version of [$data.Int64List] which always returns an [Int64].
-class Int64List extends _Int64List {
+class Int64List extends _TypedList<BigInt> {
   @override
   final $data.Int64List inner;
   Int64List.from(this.inner);
@@ -35,6 +37,16 @@ class Int64List extends _Int64List {
       : inner = $data.Int64List.sublistView(data, start, end);
 
   @override
+  int dart2raw(value) {
+    if (value is BigInt) return value.toInt();
+    if (value is int) return value;
+    throw ArgumentError.value(value);
+  }
+
+  @override
+  BigInt raw2dart(int value) => BigInt.from(value);
+
+  @override
   Int64List operator +(Object other) {
     if (other is Int64List) return Int64List.fromList(inner + other.inner);
     if (other is $data.Int64List) return Int64List.fromList(inner + other);
@@ -42,14 +54,12 @@ class Int64List extends _Int64List {
     if (other is Iterable<int>) {
       return Int64List.fromList(inner + other.toList(growable: false));
     }
-    throw UnimplementedError(
-      'Cannot add list of unrelated type: ${other.runtimeType}',
-    );
+    throw ArgumentError.value(other);
   }
 }
 
 /// A strict version of [$data.Uint64List] which always returns an [Int64].
-class Uint64List extends _Int64List {
+class Uint64List extends _TypedList<BigInt> {
   @override
   final $data.Uint64List inner;
   Uint64List.from(this.inner);
@@ -59,6 +69,30 @@ class Uint64List extends _Int64List {
   Uint64List.sublistView($data.TypedData data, [int start = 0, int? end])
       : inner = $data.Uint64List.sublistView(data, start, end);
 
+  static final _maxI64 = BigInt.from(0x7FFFFFFFFFFFFFFF);
+  static const _minI64 = 0x8000000000000000;
+
+  @override
+  BigInt raw2dart(int value) {
+    if (value < 0) {
+      return _maxI64 + BigInt.from(value - _minI64);
+    }
+    return BigInt.from(value);
+  }
+
+  @override
+  int dart2raw(value) {
+    if (value is int) return value;
+    if (value is BigInt) {
+      if (value > _maxI64) {
+        return (-(value - _maxI64)).toInt();
+      } else {
+        return value.toInt();
+      }
+    }
+    throw ArgumentError.value(value);
+  }
+
   @override
   Uint64List operator +(Object other) {
     if (other is Uint64List) return Uint64List.fromList(inner + other.inner);
@@ -67,8 +101,6 @@ class Uint64List extends _Int64List {
     if (other is Iterable<int>) {
       return Uint64List.fromList(inner + other.toList(growable: false));
     }
-    throw UnimplementedError(
-      'Cannot add list of unrelated type: ${other.runtimeType}',
-    );
+    throw ArgumentError.value(other, 'other');
   }
 }

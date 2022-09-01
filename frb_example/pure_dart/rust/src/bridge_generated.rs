@@ -769,6 +769,16 @@ fn wire_call_new_module_system_impl(port_: MessagePort) {
         move || move |task_callback| Ok(call_new_module_system()),
     )
 }
+fn wire_handle_big_buffers_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_big_buffers",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(handle_big_buffers()),
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1215,6 +1225,13 @@ impl support::IntoDart for Attribute {
     }
 }
 impl support::IntoDartExceptPrimitive for Attribute {}
+
+impl support::IntoDart for BigBuffers {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.int64.into_dart(), self.uint64.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for BigBuffers {}
 
 impl support::IntoDart for ConcatenateWith {
     fn into_dart(self) -> support::DartAbi {

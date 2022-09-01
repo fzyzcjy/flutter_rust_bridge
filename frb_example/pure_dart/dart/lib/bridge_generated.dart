@@ -737,6 +737,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<BigBuffers> handleBigBuffers({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_handle_big_buffers(port_),
+        parseSuccessData: _wire2api_big_buffers,
+        constMeta: kHandleBigBuffersConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleBigBuffersConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_big_buffers",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1032,6 +1045,15 @@ Attribute _wire2api_attribute(dynamic raw) {
   return Attribute(
     key: _wire2api_String(arr[0]),
     value: _wire2api_String(arr[1]),
+  );
+}
+
+BigBuffers _wire2api_big_buffers(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return BigBuffers(
+    int64: _wire2api_int_64_list(arr[0]),
+    uint64: _wire2api_uint_64_list(arr[1]),
   );
 }
 

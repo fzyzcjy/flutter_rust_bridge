@@ -232,6 +232,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCallNewModuleSystemConstMeta;
 
+  Future<BigBuffers> handleBigBuffers({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleBigBuffersConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -323,6 +327,16 @@ class Attribute {
   Attribute({
     required this.key,
     required this.value,
+  });
+}
+
+class BigBuffers {
+  final Int64List int64;
+  final Uint64List uint64;
+
+  BigBuffers({
+    required this.int64,
+    required this.uint64,
   });
 }
 

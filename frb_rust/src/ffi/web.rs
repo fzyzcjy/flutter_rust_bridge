@@ -12,6 +12,9 @@ pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 use web_sys::{DedicatedWorkerGlobalScope, Worker};
 
+mod wasm_bindgen_src;
+pub use wasm_bindgen_src::*;
+
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
 impl IntoDartExceptPrimitive for String {}
@@ -184,26 +187,6 @@ impl TransferClosure<JsValue> {
         let closure = Box::new(closure);
         Self { transfer, closure }
     }
-    /// Posts a <code>[*mut [TransferClosurePayload], ...[JsValue]]</code> message to this worker.
-    ///
-    /// The worker's `onmessage` should run the corresponding [`receive_transfer_closure`]
-    /// to receive the message.
-    pub fn apply(self, worker: &Worker) -> Result<(), JsValue> {
-        let transfer = Array::from_iter(self.transfer);
-        let data = Array::from(&transfer);
-        // The worker is responsible for cleaning up the leak here.
-        let payload = Box::into_raw(Box::new(TransferClosurePayload { func: self.closure }));
-        data.unshift(&JsValue::from(payload as i32));
-        // Remove untransferables
-        let transfer = transfer.filter(&mut |val, _, _| val.is_truthy());
-        worker
-            .post_message_with_transfer(&data, &transfer)
-            .map_err(|err| {
-                // post message failed, ownership remains with us.
-                drop(unsafe { Box::from_raw(payload) });
-                err
-            })
-    }
 }
 
 #[derive(Debug)]
@@ -241,26 +224,6 @@ macro_rules! delegate_from_dart {
 
 delegate_from_dart! {
     PortLike ArrayBuffer
-}
-
-/// ## Safety
-/// This function reclaims a raw pointer created by [`TransferClosure`], and therefore
-/// should **only** be used in conjunction with it.
-/// Furthermore, the WASM module in the worker must have been initialized with the shared
-/// memory from the host JS scope.
-// wasm_bindgen cannot work with unsafe functions, hence the clippy ignore.
-#[wasm_bindgen]
-#[allow(clippy::not_unsafe_ptr_arg_deref)]
-pub fn receive_transfer_closure(
-    payload: *mut TransferClosurePayload<JsValue>,
-    transfer: Box<[JsValue]>,
-) -> Result<(), JsValue> {
-    let closure = unsafe { Box::from_raw(payload) };
-    (closure.func)(&transfer);
-    // Once we're done here, notify the host scope so that it can reclaim this worker.
-    global()
-        .unchecked_into::<DedicatedWorkerGlobalScope>()
-        .post_message(&JsValue::UNDEFINED)
 }
 
 #[wasm_bindgen]

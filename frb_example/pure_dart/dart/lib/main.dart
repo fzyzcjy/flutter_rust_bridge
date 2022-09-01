@@ -484,21 +484,27 @@ void main(List<String> args) async {
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);
-      expect(list[0].toString(), '-1');
-      expect(list.map((el) => _convert(el * el)), MatchInt64([1, 4, 9, 16, 25]));
+      expect(list[0], BigInt.from(-1));
+      expect(list.map((el) => el * el), MatchBigInt([1, 4, 9, 16, 25]));
       list[1] = -123;
-      expect(list[1].toString(), '-123');
+      expect(list[1], BigInt.from(-123));
     });
     test('Uint64List', () {
       final list = Uint64List.fromList([1, 2, 3, 4, 5]);
-      expect(list[0].toString(), '1');
-      expect(list.map((el) => _convert(el * el)), MatchInt64([1, 4, 9, 16, 25]));
+      expect(list[0], BigInt.one);
+      expect(list.map((el) => el * el), MatchBigInt([1, 4, 9, 16, 25]));
       list[1] = 123;
-      expect(list[1].toString(), '123');
+      expect(list[1], BigInt.from(123));
+      list[1] += BigInt.one;
+      expect(list[1], BigInt.from(124));
+    });
+    test('Lossless big buffers', () async {
+      final list = await api.handleBigBuffers();
+      expect(list.int64[0], BigInt.parse('-9223372036854775808'));
+      expect(list.int64[1], BigInt.parse('9223372036854775807'));
+      expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'));
     });
   });
-
-  print('flutter_rust_bridge example program end');
 }
 
 int _createGarbage() {
@@ -540,16 +546,14 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
   );
 }
 
-Int64 _convert(dynamic value) => value is int ? Int64(value) : value;
-
-class MatchInt64 extends CustomMatcher {
-  MatchInt64(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
+class MatchBigInt extends CustomMatcher {
+  MatchBigInt(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
   @override
   Object? featureValueOf(actual) => _featureValueOf(actual);
 
   static Object? _featureValueOf(actual) {
     if (actual is Iterable) return actual.map(_featureValueOf);
-    if (actual is int || actual is Int64) return _convert(actual);
+    if (actual is int) return BigInt.from(actual);
     return actual;
   }
 }

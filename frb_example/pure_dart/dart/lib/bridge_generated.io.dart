@@ -1526,6 +1526,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_call_new_module_system');
   late final _wire_call_new_module_system = _wire_call_new_module_systemPtr.asFunction<void Function(int)>();
 
+  void wire_handle_big_buffers(
+    int port_,
+  ) {
+    return _wire_handle_big_buffers(
+      port_,
+    );
+  }
+
+  late final _wire_handle_big_buffersPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_big_buffers');
+  late final _wire_handle_big_buffers = _wire_handle_big_buffersPtr.asFunction<void Function(int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

@@ -280,6 +280,11 @@ pub extern "C" fn wire_call_new_module_system(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_big_buffers(port_: i64) {
+    wire_handle_big_buffers_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

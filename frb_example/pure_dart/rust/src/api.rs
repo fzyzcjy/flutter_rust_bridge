@@ -790,3 +790,15 @@ pub fn call_old_module_system() -> OldSimpleStruct {
 pub fn call_new_module_system() -> NewSimpleStruct {
     use_new_module_system(1)
 }
+
+pub struct BigBuffers {
+    pub int64: Vec<i64>,
+    pub uint64: Vec<u64>,
+}
+
+pub fn handle_big_buffers() -> BigBuffers {
+    BigBuffers {
+        int64: vec![i64::MIN, i64::MAX],
+        uint64: vec![u64::MAX],
+    }
+}

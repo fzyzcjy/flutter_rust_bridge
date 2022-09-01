@@ -14,11 +14,12 @@ import 'package:colorize/colorize.dart';
 part 'serve.g.dart';
 
 final which = Platform.isWindows ? 'where.exe' : 'which';
-final open = Platform.isWindows
-    ? 'start'
-    : Platform.isMacOS
-        ? 'open'
-        : 'xdg-open';
+final open = const {
+      'linux': 'xdg-open',
+      'macos': 'open',
+      'windows': 'start',
+    }[Platform.operatingSystem] ??
+    'open';
 
 String err(String msg) =>
     stderr.supportsAnsiEscapes ? Colorize(msg).red().bold().toString() : msg;
@@ -194,6 +195,18 @@ OPTIONS:""");
 
   // --- Checks end ---
 
+  await build(config,
+      crateDir: crateDir, wasmOutput: wasmOutput, root: root, args: args);
+  await runServer(config, root: root);
+}
+
+Future<void> build(
+  Opts config, {
+  required String crateDir,
+  required String wasmOutput,
+  required String root,
+  required List<String> args,
+}) async {
   final manifest = jsonDecode(await system(
     'cargo',
     ['read-manifest'],
@@ -244,7 +257,9 @@ OPTIONS:""");
       ['build', 'web', if (!config.release) '--release'] + Opts.rest(args),
     );
   }
+}
 
+Future<void> runServer(Opts config, {required String root}) async {
   final ip = InternetAddress.anyIPv4;
 
   final staticFilesHandler =

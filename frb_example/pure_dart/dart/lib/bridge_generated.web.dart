@@ -656,6 +656,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_call_new_module_system(NativePortType port_);
 
+  external void wire_handle_big_buffers(NativePortType port_);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -835,6 +837,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_call_old_module_system(NativePortType port_) => wasmModule.wire_call_old_module_system(port_);
 
   void wire_call_new_module_system(NativePortType port_) => wasmModule.wire_call_new_module_system(port_);
+
+  void wire_handle_big_buffers(NativePortType port_) => wasmModule.wire_handle_big_buffers(port_);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);
