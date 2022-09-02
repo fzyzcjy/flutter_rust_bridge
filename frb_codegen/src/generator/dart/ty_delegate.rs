@@ -12,7 +12,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
             }
-            IrTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".to_string(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!(
                     "return _api2wire_{}(raw);",
@@ -35,9 +34,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         match &self.ir {
-            IrTypeDelegate::String
-            | IrTypeDelegate::SyncReturnVecU8
-            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            IrTypeDelegate::String | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_wire2api_simple_type_cast(&self.ir.dart_api_type())
             }
             IrTypeDelegate::StringList => {

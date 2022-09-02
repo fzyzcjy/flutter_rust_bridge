@@ -7,6 +7,7 @@ mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
+mod ty_sync_return;
 
 use std::collections::HashSet;
 
@@ -19,6 +20,7 @@ pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
 pub use ty_struct::*;
+pub use ty_sync_return::*;
 
 use convert_case::{Case, Casing};
 use log::debug;
@@ -428,12 +430,14 @@ fn generate_api_func(func: &IrFunc, ir_file: &IrFile) -> GeneratedApiFunc {
         IrFuncMode::Sync => format!(
             "{} => {}(FlutterRustBridgeSyncTask(
             callFfi: () => inner.{}({}),
+            parseSuccessData: {},
             {}
         ));",
             partial,
             execute_func_name,
             func.wire_func_name(),
             wire_param_list.join(", "),
+            parse_sucess_data,
             task_common_args,
         ),
         _ => format!(
