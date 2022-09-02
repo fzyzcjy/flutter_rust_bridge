@@ -502,7 +502,8 @@ void main(List<String> args) async {
       final list = await api.handleBigBuffers();
       expect(list.int64[0], BigInt.parse('-9223372036854775808'));
       expect(list.int64[1], BigInt.parse('9223372036854775807'));
-      expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'));
+      print(list.uint64);
+      expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'), reason: 'uint64');
     });
   });
 }
