@@ -171,25 +171,19 @@ impl<'a> TypeParser<'a> {
         let ident_string = &p.ident.to_string();
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
-                "SyncReturn" => {
-                    // Special-case SyncReturn<Vec<u8>>. SyncReturn for any other type is not
-                    // supported.
-                    match *generic {
-                        SupportedInnerType::Path(SupportedPathType {
-                            ident,
-                            generic: Some(generic),
-                        }) if ident == "Vec" => match *generic {
-                            SupportedInnerType::Path(SupportedPathType {
-                                ident,
-                                generic: None,
-                            }) if ident == "u8" => {
-                                Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8))
-                            }
-                            _ => None,
-                        },
-                        _ => None,
+                "SyncReturn" => match self.convert_to_ir_type(*generic) {
+                    Some(Primitive(primitive)) => {
+                        Some(SyncReturn(IrTypeSyncReturn::Primitive(primitive)))
                     }
-                }
+                    Some(Delegate(IrTypeDelegate::String)) => {
+                        Some(SyncReturn(IrTypeSyncReturn::String))
+                    }
+                    Some(PrimitiveList(primitive)) => match primitive.primitive {
+                        IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::VecU8)),
+                        _ => None,
+                    },
+                    _ => None,
+                },
                 "Vec" => {
                     // Special-case Vec<String> as StringList
                     if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")

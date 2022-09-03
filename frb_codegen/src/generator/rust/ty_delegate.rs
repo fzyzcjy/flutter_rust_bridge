@@ -28,7 +28,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::String => "let vec: Vec<u8> = self.wire2api();
             String::from_utf8_lossy(&vec).into_owned()"
                 .into(),
-            IrTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
