@@ -1,3 +1,7 @@
+## 1.42.0
+
+* Refactor and enhance SyncReturn to support more types #663 (thanks @SoLongAndThanksForAllThePizza)
+
 ## 1.41.3
 
 * Fix "Skipping unresolvable module" by align latest #651 (thanks @alanlzhang)
