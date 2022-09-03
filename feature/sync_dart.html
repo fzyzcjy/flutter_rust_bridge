@@ -135,9 +135,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="synchronous-in-dart"><a class="header" href="#synchronous-in-dart">Synchronous in Dart</a></h1>
-<p>If you really need to generate synchronous functions in Dart, you can use the <code>SyncReturn&lt;Vec&lt;u8&gt;&gt;</code> as the return type.</p>
+<p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type.</p>
 <p>We suggest only do this for very quick Rust functions, or the Dart UI will be blocked.</p>
-<p>Currently, due to the lack of need, the only type supported is <code>Vec&lt;u8&gt;</code>, and the workaround of using other types is by using a serialization approach such as JSON or Protobuf. Notice that this is <em>only needed</em> in <em>this</em> very tiny part, and 99% of <code>flutter_rust_bridge</code> does not need this bare-matel approach. Moreover, please open an issue if you need other types.</p>
+<p>Currently, <code>SyncReturn</code> supports <code>String</code>, <code>Vec&lt;u8&gt;</code> and primitive types(<code>bool</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>f32</code>, <code>f64</code>). Please open an issue if you need other types.</p>
 
                     </main>
 

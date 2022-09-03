@@ -161,7 +161,7 @@
 <p>If you want to write and debug tests in Flutter conveniently, with action history, time travelling, screenshots, rapid re-execution, video recordings, interactive mode and more, here is my another open-source library: https://github.com/fzyzcjy/flutter_convenient_test.</p>
 <h2 id="-contributors"><a class="header" href="#-contributors">✨ Contributors</a></h2>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-29-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-30-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a> following <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -206,6 +206,7 @@
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/Cupnfish"><img src="https://avatars.githubusercontent.com/u/40173605?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cupnfish</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Cupnfish" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/SoLongAndThanksForAllThePizza"><img src="https://avatars.githubusercontent.com/u/103753680?v=4?s=100" width="100px;" alt=""/><br /><sub><b>SoLongAndThanksForAllThePizza</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=SoLongAndThanksForAllThePizza" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=SoLongAndThanksForAllThePizza" title="Documentation">📖</a></td>
   </tr>
 </table>
 <!-- markdownlint-restore -->
@@ -221,10 +222,11 @@
 <li><a href="https://github.com/sagudev">sagudev</a>: Make code generator a <code>lib</code>. Add error types. Depend on <code>cbindgen</code>. Fix LLVM paths. Update deps. Fix CI errors.</li>
 <li><a href="https://github.com/surban">surban</a>: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.</li>
 <li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests.</li>
+<li><a href="https://github.com/Roms1383">Roms1383</a>: Fix build_runner calling bug. Remove global <code>ffigen</code> dependency. Improve version check. Fix enum name-variant conflicts. Update CI. Code cleanup.</li>
 <li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files.</li>
-<li><a href="https://github.com/Roms1383">Roms1383</a>: Fix build_runner calling bug. Remove global <code>ffigen</code> dependency. Improve version check. Code cleanup.</li>
+<li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types.</li>
+<li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata. Enhance module parser.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
-<li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata.</li>
 <li><a href="https://github.com/efc-mw">efc-mw</a>: Improve Windows encoding handling.</li>
 <li><a href="https://github.com/valeth">valeth</a>: Rename callFfi's port.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Allow multi mirror.</li>
@@ -745,9 +747,9 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
 <p>Indeed async and <code>Future</code>s is almost everywhere in Flutter/Dart, and it has very good built-in support. So no worries about it ;)</p>
 <p>Remark: A common mistake is to call Rust code in <em>another</em> Dart isolate (i.e. &quot;thread&quot;) instead of the main isolate. That is completely not needed, and will only make your life harder. As is described above, even if your Rust code computes for 100ms, the async call will only take, say, 0.1ms, and will not block your UI.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="synchronous-in-dart"><a class="header" href="#synchronous-in-dart">Synchronous in Dart</a></h1>
-<p>If you really need to generate synchronous functions in Dart, you can use the <code>SyncReturn&lt;Vec&lt;u8&gt;&gt;</code> as the return type.</p>
+<p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type.</p>
 <p>We suggest only do this for very quick Rust functions, or the Dart UI will be blocked.</p>
-<p>Currently, due to the lack of need, the only type supported is <code>Vec&lt;u8&gt;</code>, and the workaround of using other types is by using a serialization approach such as JSON or Protobuf. Notice that this is <em>only needed</em> in <em>this</em> very tiny part, and 99% of <code>flutter_rust_bridge</code> does not need this bare-matel approach. Moreover, please open an issue if you need other types.</p>
+<p>Currently, <code>SyncReturn</code> supports <code>String</code>, <code>Vec&lt;u8&gt;</code> and primitive types(<code>bool</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>f32</code>, <code>f64</code>). Please open an issue if you need other types.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h1>
 <p>Multiple Rust functions can be running at the same time, and they will be running concurrently. This is because by default we use a thread pool to execute the Rust functions. However, you can fully customize this behavior (and even throw away the thread pool).</p>
 <h2 id="example-9"><a class="header" href="#example-9">Example</a></h2>
