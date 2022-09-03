@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/basic.dart';
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
@@ -88,4 +89,9 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
   /// The time limit for methods using [executeNormal]. Return null means *disable* this functionality.
   @protected
   Duration? get timeLimitForExecuteNormal;
+}
+
+bool uint8ListToBool(Uint8List raw) {
+  final dataView = ByteData.view(raw.buffer);
+  return dataView.getUint8(0) != 0;
 }

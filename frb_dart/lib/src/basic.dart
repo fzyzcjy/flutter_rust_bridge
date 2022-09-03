@@ -131,7 +131,7 @@ class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   final WireSyncReturnStruct Function() callFfi;
 
   /// Parse the returned data from the underlying function
-  final S Function(dynamic) parseSuccessData;
+  final S Function(Uint8List) parseSuccessData;
 
   const FlutterRustBridgeSyncTask({
     required this.callFfi,
@@ -178,9 +178,4 @@ class WireSyncReturnStruct extends ffi.Struct {
   /// Not to be used by normal users, but has to be public for generated code
   @ffi.Uint8()
   external int success;
-}
-
-bool uint8ListToBool(Uint8List raw) {
-  final dataView = ByteData.view(raw.buffer);
-  return dataView.getUint8(0) != 0;
 }

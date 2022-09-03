@@ -13,7 +13,7 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
     fn wire2api_body(&self) -> String {
         match self.ir {
             IrTypeSyncReturn::Primitive(ref primitive) => match primitive {
-                IrTypePrimitive::Bool => "return uint8ListToBool(raw as Uint8List);".into(),
+                IrTypePrimitive::Bool => "return uint8ListToBool(raw);".into(),
                 primitive => {
                     let primitive_name = match primitive {
                         IrTypePrimitive::U8 => "Uint8",
@@ -32,16 +32,16 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
                         ),
                     };
                     format!(
-                        "{}{}{}",
-                        "final dataView = ByteData.view((raw as Uint8List).buffer);
-                        return dataView.get",
-                        primitive_name,
-                        "(0);"
+                        r#"
+                        final dataView = ByteData.view(raw.buffer);
+                        return dataView.get{primitive_name}(0);
+                        "#,
+                        primitive_name = primitive_name
                     )
                 }
             },
-            IrTypeSyncReturn::String => "return utf8.decode(raw as Uint8List);".into(),
-            IrTypeSyncReturn::VecU8 => "return raw as Uint8List;".into(),
+            IrTypeSyncReturn::String => "return utf8.decode(raw);".into(),
+            IrTypeSyncReturn::VecU8 => "return raw;".into(),
         }
     }
 }

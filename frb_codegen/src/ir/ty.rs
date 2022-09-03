@@ -87,6 +87,10 @@ pub trait IrTypeTrait {
     fn rust_wire_is_pointer(&self) -> bool {
         false
     }
+
+    fn dart_param_type(&self) -> &'static str {
+        "dynamic"
+    }
 }
 
 pub fn optional_boundary_index(types: &[&IrType]) -> Option<usize> {

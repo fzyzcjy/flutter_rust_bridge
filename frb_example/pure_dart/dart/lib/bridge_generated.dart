@@ -2460,64 +2460,64 @@ List<String> _wire2api_StringList(dynamic raw) {
 }
 
 String _wire2api_SyncReturn_String(dynamic raw) {
-  return utf8.decode(raw as Uint8List);
+  return utf8.decode(raw);
 }
 
 Uint8List _wire2api_SyncReturn_Uint8List(dynamic raw) {
-  return raw as Uint8List;
+  return raw;
 }
 
 bool _wire2api_SyncReturn_bool(dynamic raw) {
-  return uint8ListToBool(raw as Uint8List);
+  return uint8ListToBool(raw);
 }
 
 double _wire2api_SyncReturn_f32(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getFloat32(0);
 }
 
 double _wire2api_SyncReturn_f64(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getFloat64(0);
 }
 
 int _wire2api_SyncReturn_i16(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getInt16(0);
 }
 
 int _wire2api_SyncReturn_i32(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getInt32(0);
 }
 
 int _wire2api_SyncReturn_i64(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getInt64(0);
 }
 
 int _wire2api_SyncReturn_i8(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getInt8(0);
 }
 
 int _wire2api_SyncReturn_u16(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getUint16(0);
 }
 
 int _wire2api_SyncReturn_u32(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getUint32(0);
 }
 
 int _wire2api_SyncReturn_u64(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getUint64(0);
 }
 
 int _wire2api_SyncReturn_u8(dynamic raw) {
-  final dataView = ByteData.view((raw as Uint8List).buffer);
+  final dataView = ByteData.view(raw.buffer);
   return dataView.getUint8(0);
 }
 

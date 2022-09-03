@@ -44,6 +44,10 @@ impl IrTypeTrait for IrTypeSyncReturn {
     fn rust_wire_is_pointer(&self) -> bool {
         self.get_inner().rust_wire_is_pointer()
     }
+
+    fn dart_param_type(&self) -> &'static str {
+        "dynamic"
+    }
 }
 
 impl IrTypeSyncReturn {
