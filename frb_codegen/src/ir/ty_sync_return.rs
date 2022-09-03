@@ -46,7 +46,7 @@ impl IrTypeTrait for IrTypeSyncReturn {
     }
 
     fn dart_param_type(&self) -> &'static str {
-        "dynamic"
+        "Uint8List"
     }
 }
 
