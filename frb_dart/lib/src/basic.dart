@@ -179,3 +179,8 @@ class WireSyncReturnStruct extends ffi.Struct {
   @ffi.Uint8()
   external int success;
 }
+
+bool uint8ListToBool(Uint8List raw) {
+  final dataView = ByteData.view(raw.buffer);
+  return dataView.getUint8(0) != 0;
+}

@@ -12,7 +12,7 @@ use parking_lot::Mutex;
 use threadpool::ThreadPool;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
-use crate::support::WireSyncReturnStruct;
+use crate::support::{WireSyncReturnData, WireSyncReturnStruct};
 use crate::SyncReturn;
 
 /// The types of return values for a particular Rust function.
@@ -62,7 +62,7 @@ pub trait Handler {
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        WireSyncReturnStruct: From<TaskRet>,
+        WireSyncReturnData: From<TaskRet>,
         SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe;
 }
 
@@ -128,7 +128,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        WireSyncReturnStruct: From<TaskRet>,
+        WireSyncReturnData: From<TaskRet>,
         SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
@@ -136,7 +136,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self.executor.execute_sync(wrap_info, sync_task) {
-                    Ok(data) => WireSyncReturnStruct::from(data.0),
+                    Ok(data) => WireSyncReturnStruct::from(WireSyncReturnData::from(data.0)),
                     Err(err) => self
                         .error_handler
                         .handle_error_sync(Error::ResultError(err)),
@@ -176,7 +176,7 @@ pub trait Executor: RefUnwindSafe {
         sync_task: SyncTaskFn,
     ) -> Result<SyncReturn<TaskRet>>
     where
-        WireSyncReturnStruct: From<TaskRet>,
+        WireSyncReturnData: From<TaskRet>,
         SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe;
 }
 
@@ -249,7 +249,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         sync_task: SyncTaskFn,
     ) -> Result<SyncReturn<TaskRet>>
     where
-        WireSyncReturnStruct: From<TaskRet>,
+        WireSyncReturnData: From<TaskRet>,
         SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
     {
         sync_task()
@@ -313,9 +313,9 @@ impl ErrorHandler for ReportDartErrorHandler {
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct {
-        let mut error_struct = WireSyncReturnStruct::from(
+        let mut error_struct = WireSyncReturnStruct::from(WireSyncReturnData::from(
             format!("{}: {}", error.code(), error.message()).into_bytes(),
-        );
+        ));
         error_struct.success = false;
         error_struct
     }

@@ -7,15 +7,13 @@ type_dart_generator_struct!(TypeSyncReturnGenerator, IrTypeSyncReturn);
 
 impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
     fn api2wire_body(&self, _: BlockIndex) -> Option<String> {
-        Some("/*unsupported*/".to_string())
+        unimplemented!("SyncReturn generator for Dart: api2wire_body is not supported")
     }
 
     fn wire2api_body(&self) -> String {
         match self.ir {
             IrTypeSyncReturn::Primitive(ref primitive) => match primitive {
-                IrTypePrimitive::Bool => "final dataView = ByteData.view(raw.buffer);
-                        return dataView.getUint8(0) != 0;"
-                    .into(),
+                IrTypePrimitive::Bool => "return uint8ListToBool(raw as Uint8List);".into(),
                 primitive => {
                     let primitive_name = match primitive {
                         IrTypePrimitive::U8 => "Uint8",
@@ -28,19 +26,22 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
                         IrTypePrimitive::I64 => "Int64",
                         IrTypePrimitive::F32 => "Float32",
                         IrTypePrimitive::F64 => "Float64",
-                        _ => "/*unsupported*/",
+                        _ => panic!(
+                            "SyncReturn generator for Dart: type {} is not supported",
+                            primitive.rust_api_type()
+                        ),
                     };
                     format!(
                         "{}{}{}",
-                        "final dataView = ByteData.view(raw.buffer);
+                        "final dataView = ByteData.view((raw as Uint8List).buffer);
                         return dataView.get",
                         primitive_name,
                         "(0);"
                     )
                 }
             },
-            IrTypeSyncReturn::String => "return utf8.decode(raw);".into(),
-            IrTypeSyncReturn::VecU8 => "return raw;".into(),
+            IrTypeSyncReturn::String => "return utf8.decode(raw as Uint8List);".into(),
+            IrTypeSyncReturn::VecU8 => "return raw as Uint8List;".into(),
         }
     }
 }

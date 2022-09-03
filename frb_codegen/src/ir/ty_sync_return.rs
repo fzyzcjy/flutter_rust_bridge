@@ -18,6 +18,7 @@ impl IrTypeTrait for IrTypeSyncReturn {
     fn safe_ident(&self) -> String {
         match self {
             IrTypeSyncReturn::Primitive(_) => {
+                // We use Rust API type here because some primitive types in Dart share the same API type.
                 "SyncReturn_".to_owned() + &self.get_inner().rust_api_type()
             }
             _ => "SyncReturn_".to_owned() + &self.get_inner().dart_api_type(),
@@ -37,7 +38,7 @@ impl IrTypeTrait for IrTypeSyncReturn {
     }
 
     fn rust_wire_type(&self) -> String {
-        self.get_inner().rust_wire_type()
+        unimplemented!("SyncReturn: rust_wire_type is not supported")
     }
 
     fn rust_wire_is_pointer(&self) -> bool {

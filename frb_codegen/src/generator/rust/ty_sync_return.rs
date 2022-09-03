@@ -6,6 +6,6 @@ type_rust_generator_struct!(TypeSyncReturnGenerator, IrTypeSyncReturn);
 
 impl TypeRustGeneratorTrait for TypeSyncReturnGenerator<'_> {
     fn wire2api_body(&self) -> Option<String> {
-        Some("/*unsupported*/".into())
+        unimplemented!("SyncReturn generator for Rust: wire2api_body is not supported")
     }
 }

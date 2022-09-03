@@ -51,19 +51,47 @@ pub struct WireSyncReturnStruct {
     pub success: bool,
 }
 
-/// Macro for implementing [`From<Primitive>`] for [`WireSyncReturnStruct`].
+impl From<WireSyncReturnData> for WireSyncReturnStruct {
+    fn from(data: WireSyncReturnData) -> Self {
+        let (ptr, len) = into_leak_vec_ptr(data.0);
+        WireSyncReturnStruct {
+            ptr,
+            len,
+            success: true,
+        }
+    }
+}
+
+/// Wrapper struct for [`WireSyncReturnStruct`].
+pub struct WireSyncReturnData(Vec<u8>);
+
+impl From<Vec<u8>> for WireSyncReturnData {
+    fn from(data: Vec<u8>) -> Self {
+        WireSyncReturnData(data)
+    }
+}
+
+/// Bool will be converted to u8 where 0 stands for false and 1 stands for true.
+impl From<bool> for WireSyncReturnData {
+    fn from(data: bool) -> Self {
+        if data { 1_u8 } else { 0_u8 }.to_be_bytes().to_vec().into()
+    }
+}
+
+/// String will be converted to UTF-8 bytes.
+impl From<String> for WireSyncReturnData {
+    fn from(data: String) -> Self {
+        data.as_bytes().to_vec().into()
+    }
+}
+
+/// Macro for implementing [`From<Primitive>`] for [`WireSyncReturnData`].
 /// This conversion won't fail.
 macro_rules! primitive_to_sync_return {
     ($($t:ty),+) => {
-        $(impl From<$t> for WireSyncReturnStruct {
+        $(impl From<$t> for WireSyncReturnData {
             fn from(data: $t) -> Self {
-                let bytes = data.to_be_bytes().to_vec();
-                let (ptr, len) = into_leak_vec_ptr(bytes);
-                WireSyncReturnStruct {
-                    ptr,
-                    len,
-                    success: true,
-                }
+                data.to_be_bytes().to_vec().into()
             }
         })*
     }
@@ -71,39 +99,3 @@ macro_rules! primitive_to_sync_return {
 
 // For simple types, use macro to implement [`From`] trait.
 primitive_to_sync_return!(u8, i8, u16, i16, u32, i32, u64, i64, f32, f64);
-
-/// Bool will be converted to u8 where 0 stands for false and 1 stands for true.
-impl From<bool> for WireSyncReturnStruct {
-    fn from(data: bool) -> Self {
-        let bytes = if data { 1_u8 } else { 0_u8 }.to_be_bytes().to_vec();
-        let (ptr, len) = into_leak_vec_ptr(bytes);
-        WireSyncReturnStruct {
-            ptr,
-            len,
-            success: true,
-        }
-    }
-}
-
-impl From<String> for WireSyncReturnStruct {
-    fn from(data: String) -> Self {
-        let bytes = data.as_bytes().to_vec();
-        let (ptr, len) = into_leak_vec_ptr(bytes);
-        WireSyncReturnStruct {
-            ptr,
-            len,
-            success: true,
-        }
-    }
-}
-
-impl From<Vec<u8>> for WireSyncReturnStruct {
-    fn from(data: Vec<u8>) -> Self {
-        let (ptr, len) = into_leak_vec_ptr(data);
-        WireSyncReturnStruct {
-            ptr,
-            len,
-            success: true,
-        }
-    }
-}
