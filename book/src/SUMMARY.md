@@ -29,6 +29,7 @@
   - [Cancellable tasks](feature/cancelable_task.md)
   - [Object pools](feature/object_pool.md)
   - [Miscellaneous](feature/misc.md)
+  - [Logging](feature/logging.md)
 
 # Part II: User Guide
 
