@@ -6,7 +6,6 @@ use crate::target::Target;
 pub enum IrTypeDelegate {
     String,
     StringList,
-    SyncReturnVecU8,
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
     PrimitiveEnum {
         ir: IrTypeEnumRef,
@@ -19,9 +18,6 @@ impl IrTypeDelegate {
     pub fn get_delegate(&self) -> IrType {
         match self {
             IrTypeDelegate::String => IrType::PrimitiveList(IrTypePrimitiveList {
-                primitive: IrTypePrimitive::U8,
-            }),
-            IrTypeDelegate::SyncReturnVecU8 => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
@@ -44,7 +40,6 @@ impl IrTypeTrait for IrTypeDelegate {
         match self {
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "StringList".to_owned(),
-            IrTypeDelegate::SyncReturnVecU8 => "SyncReturnVecU8".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
@@ -56,9 +51,7 @@ impl IrTypeTrait for IrTypeDelegate {
         match self {
             IrTypeDelegate::String => "String".to_string(),
             IrTypeDelegate::StringList => "List<String>".to_owned(),
-            IrTypeDelegate::SyncReturnVecU8 | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                self.get_delegate().dart_api_type()
-            }
+            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
         }
     }
@@ -76,7 +69,6 @@ impl IrTypeTrait for IrTypeDelegate {
     fn rust_api_type(&self) -> String {
         match self {
             IrTypeDelegate::String => "String".to_owned(),
-            IrTypeDelegate::SyncReturnVecU8 => "SyncReturn<Vec<u8>>".to_string(),
             IrTypeDelegate::StringList => "Vec<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())

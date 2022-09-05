@@ -14,6 +14,7 @@ pub enum IrType {
     StructRef(IrTypeStructRef),
     Boxed(IrTypeBoxed),
     EnumRef(IrTypeEnumRef),
+    SyncReturn(IrTypeSyncReturn),
 }
 
 impl IrType {
@@ -99,6 +100,10 @@ pub trait IrTypeTrait {
 
     fn rust_wire_is_pointer(&self, _target: Target) -> bool {
         false
+    }
+
+    fn dart_param_type(&self) -> &'static str {
+        "dynamic"
     }
 }
 

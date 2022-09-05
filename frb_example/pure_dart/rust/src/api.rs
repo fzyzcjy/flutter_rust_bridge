@@ -164,6 +164,7 @@ pub fn handle_complex_struct(s: MyTreeNode) -> MyTreeNode {
     s
 }
 
+// Test if sync return is working as expected by using Vec<u8> as return value.
 pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
     match &mode[..] {
         "NORMAL" => Ok(SyncReturn(vec![42u8; 100])),
@@ -171,6 +172,44 @@ pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
         "PANIC" => panic!("deliberate panic in handle_sync_return_panic"),
         _ => panic!("unknown mode"),
     }
+}
+
+// Test other sync return types except for Vec<u8> since it's being tested in handle_sync_return.
+pub fn handle_sync_bool(input: bool) -> SyncReturn<bool> {
+    SyncReturn(input)
+}
+pub fn handle_sync_u8(input: u8) -> SyncReturn<u8> {
+    SyncReturn(input)
+}
+pub fn handle_sync_u16(input: u16) -> SyncReturn<u16> {
+    SyncReturn(input)
+}
+pub fn handle_sync_u32(input: u32) -> SyncReturn<u32> {
+    SyncReturn(input)
+}
+pub fn handle_sync_u64(input: u64) -> SyncReturn<u64> {
+    SyncReturn(input)
+}
+pub fn handle_sync_i8(input: i8) -> SyncReturn<i8> {
+    SyncReturn(input)
+}
+pub fn handle_sync_i16(input: i16) -> SyncReturn<i16> {
+    SyncReturn(input)
+}
+pub fn handle_sync_i32(input: i32) -> SyncReturn<i32> {
+    SyncReturn(input)
+}
+pub fn handle_sync_i64(input: i64) -> SyncReturn<i64> {
+    SyncReturn(input)
+}
+pub fn handle_sync_f32(input: f32) -> SyncReturn<f32> {
+    SyncReturn(input)
+}
+pub fn handle_sync_f64(input: f64) -> SyncReturn<f64> {
+    SyncReturn(input)
+}
+pub fn handle_sync_string(input: String) -> SyncReturn<String> {
+    SyncReturn(input)
 }
 
 pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {

@@ -941,8 +941,9 @@ String _wire2api_String(dynamic raw) {
   return raw as String;
 }
 
-List<String> _wire2api_StringList(dynamic raw) {
-  return (raw as List<dynamic>).cast<String>();
+int _wire2api_SyncReturn_u64(Uint8List raw) {
+  final dataView = ByteData.view(raw.buffer);
+  return dataView.getUint64(0);
 }
 
 Uint8List _wire2api_SyncReturnVecU8(dynamic raw) {

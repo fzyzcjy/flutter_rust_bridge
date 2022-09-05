@@ -8,6 +8,7 @@ mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
+mod ty_sync_return;
 mod wasm;
 
 use func::*;
@@ -27,6 +28,7 @@ pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
 pub use ty_struct::*;
+pub use ty_sync_return::*;
 
 use convert_case::{Case, Casing};
 use log::{debug, warn};
@@ -491,13 +493,14 @@ fn generate_wire2api_func(
     };
     let body = TypeDartGenerator::new(ty.clone(), ir_file, config).wire2api_body();
     format!(
-        "{} _wire2api_{}({}dynamic raw) {{
+        "{} _wire2api_{}({}{} raw) {{
             {}
         }}
         ",
         ty.dart_api_type(),
         ty.safe_ident(),
         extra_argument,
+        ty.dart_param_type(),
         body,
     )
 }

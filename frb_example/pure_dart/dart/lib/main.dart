@@ -103,6 +103,7 @@ void main(List<String> args) async {
     expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
   });
 
+  // Test if sync return is working as expected.
   test('dart call handle_sync_return', () async {
     expect(api.handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
 
@@ -114,6 +115,37 @@ void main(List<String> args) async {
         print('dart catch e: $e');
       }
     }
+  });
+  // Test other sync return types.
+  test('dart call handle_sync_bool', () async {
+    expect(api.handleSyncBool(input: true), true);
+  });
+  test('dart call handle_sync_u8', () async {
+    expect(api.handleSyncU8(input: 42), 42);
+  });
+  test('dart call handle_sync_u16', () async {
+    expect(api.handleSyncU16(input: 42), 42);
+  });
+  test('dart call handle_sync_u32', () async {
+    expect(api.handleSyncU32(input: 42), 42);
+  });
+  test('dart call handle_sync_u64', () async {
+    expect(api.handleSyncU64(input: 42), 42);
+  });
+  test('dart call handle_sync_i8', () async {
+    expect(api.handleSyncI8(input: 42), 42);
+  });
+  test('dart call handle_sync_i16', () async {
+    expect(api.handleSyncI16(input: 42), 42);
+  });
+  test('dart call handle_sync_i32', () async {
+    expect(api.handleSyncI32(input: 42), 42);
+  });
+  test('dart call handle_sync_i64', () async {
+    expect(api.handleSyncI64(input: 42), 42);
+  });
+  test('dart call handle_sync_string', () async {
+    expect(api.handleSyncString(input: "Hello Rust!"), "Hello Rust!");
   });
 
   test('dart call handle_stream', () async {
