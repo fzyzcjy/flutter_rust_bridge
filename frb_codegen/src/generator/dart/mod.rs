@@ -145,7 +145,7 @@ impl DartApiSpec {
             Default::default()
         };
         let dart_wasm_module = (ir_wasm_func_exports.as_ref()).map(|exports| {
-            generate_wasm_module(exports, &dart_wire_class_name, &config.dart_wasm_module())
+            generate_wasm_wire(exports, &dart_wire_class_name, &config.dart_wasm_module())
         });
 
         let needs_freezed = distinct_types.iter().any(|ty| match ty {

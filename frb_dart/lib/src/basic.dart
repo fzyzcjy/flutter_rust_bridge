@@ -25,8 +25,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   @protected
   final T inner;
 
-  void startStreamSink(String name) {}
-
   void _sanityCheckSingleton() {
     if (_instances.contains(runtimeType)) {
       throw Exception(
@@ -80,7 +78,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     final receivePort = broadcastPort(name);
     task.callFfi(receivePort.sendPort.nativePort);
 
-    // await Future.delayed(const Duration(milliseconds: 10), () => startStreamSink(name));
     await for (final raw in receivePort) {
       try {
         yield _transformRust2DartMessage(raw, task.parseSuccessData);

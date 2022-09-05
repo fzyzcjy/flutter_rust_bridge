@@ -1,6 +1,6 @@
 use super::*;
 
-pub fn generate_wasm_module<'a>(
+pub fn generate_wasm_wire<'a>(
     funcs: impl IntoIterator<Item = &'a IrFuncDisplay>,
     dart_wire_class_name: &str,
     dart_wasm_module_name: &str,
