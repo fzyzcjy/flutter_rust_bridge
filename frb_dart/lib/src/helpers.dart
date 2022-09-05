@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/basic.dart';
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
@@ -123,4 +124,9 @@ class UnmodifiableTypedListException implements Exception {
 
   @override
   String toString() => _message;
+}
+
+bool uint8ListToBool(Uint8List raw) {
+  final dataView = ByteData.view(raw.buffer);
+  return dataView.getUint8(0) != 0;
 }

@@ -11,7 +11,7 @@ import 'isolate.dart';
 export 'isolate.dart';
 
 final _instances = <Type>{};
-final _index = <String, int>{};
+final _streamSinkNameIndex = <String, int>{};
 
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
@@ -24,8 +24,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   @protected
   final T inner;
-
-  void startStreamSink(String name) {}
 
   void _sanityCheckSingleton() {
     if (_instances.contains(runtimeType)) {
@@ -53,7 +51,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
-  Uint8List executeSync(FlutterRustBridgeSyncTask task) {
+  S executeSync<S>(FlutterRustBridgeSyncTask task) {
     final WireSyncReturnStruct raw;
     try {
       raw = task.callFfi();
@@ -64,7 +62,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     inner.free_WireSyncReturnStruct(raw);
 
     if (raw.isSuccess) {
-      return bytes;
+      return task.parseSuccessData(bytes);
     } else {
       throw FfiException('EXECUTE_SYNC', utf8.decode(bytes), null);
     }
@@ -74,13 +72,12 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   @protected
   Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
     final func = task.constMeta.debugName;
-    final nextIndex =
-        _index.update(func, (value) => value + 1, ifAbsent: () => 0);
+    final nextIndex = _streamSinkNameIndex.update(func, (value) => value + 1,
+        ifAbsent: () => 0);
     final name = '__frb_streamsink_${func}_$nextIndex';
     final receivePort = broadcastPort(name);
     task.callFfi(receivePort.sendPort.nativePort);
 
-    // await Future.delayed(const Duration(milliseconds: 10), () => startStreamSink(name));
     await for (final raw in receivePort) {
       try {
         yield _transformRust2DartMessage(raw, task.parseSuccessData);
@@ -143,12 +140,16 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
 
 /// A task to call FFI function, but it is synchronous.
 @immutable
-class FlutterRustBridgeSyncTask extends FlutterRustBridgeBaseTask {
+class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturnStruct Function() callFfi;
 
+  /// Parse the returned data from the underlying function
+  final S Function(Uint8List) parseSuccessData;
+
   const FlutterRustBridgeSyncTask({
     required this.callFfi,
+    required this.parseSuccessData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,

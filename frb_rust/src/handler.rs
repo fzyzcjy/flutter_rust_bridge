@@ -8,7 +8,7 @@ use crate::ffi::{IntoDart, MessagePort};
 use anyhow::Result;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
-use crate::support::WireSyncReturnStruct;
+use crate::support::{WireSyncReturnData, WireSyncReturnStruct};
 use crate::{spawn, SyncReturn};
 
 /// The types of return values for a particular Rust function.
@@ -16,7 +16,7 @@ use crate::{spawn, SyncReturn};
 pub enum FfiCallMode {
     /// The default mode, returns a Dart `Future<T>`.
     Normal,
-    /// Used by `SyncReturn<Vec<u8>>` to skip spawning workers.
+    /// Used by `SyncReturn<T>` to skip spawning workers.
     Sync,
     /// Returns a Dart `Stream<T>`.
     Stream,
@@ -32,7 +32,6 @@ pub struct WrapInfo {
     /// The call mode of this function.
     pub mode: FfiCallMode,
 }
-
 /// Provide your own handler to customize how to execute your function calls, etc.
 pub trait Handler {
     /// Prepares the arguments, executes a Rust function and sets up its return value.
@@ -53,13 +52,14 @@ pub trait Handler {
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function must return a [SyncReturn] and
     /// need not implement [Send].
-    fn wrap_sync<SyncTaskFn>(
+    fn wrap_sync<SyncTaskFn, TaskRet>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe;
+        WireSyncReturnData: From<TaskRet>,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
@@ -118,45 +118,28 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         });
     }
 
-    fn wrap_sync<SyncTaskFn>(
+    fn wrap_sync<SyncTaskFn, TaskRet>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe,
+        WireSyncReturnData: From<TaskRet>,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self.executor.execute_sync(wrap_info, sync_task) {
-                    Ok(data) => (data.0, true),
-                    Err(err) => (
-                        self.error_handler
-                            .handle_error_sync(Error::ResultError(err)),
-                        false,
-                    ),
+                    Ok(data) => wire_sync_from_data(WireSyncReturnData::from(data.0), true),
+                    Err(err) => self
+                        .error_handler
+                        .handle_error_sync(Error::ResultError(err)),
                 }
             });
-
-            let (bytes, success) = catch_unwind_result.unwrap_or_else(|error| {
-                (
-                    self.error_handler.handle_error_sync(Error::Panic(error)),
-                    false,
-                )
-            });
-
-            #[cfg(not(wasm))]
-            {
-                let (ptr, len) = crate::support::into_leak_vec_ptr(bytes);
-                WireSyncReturnStruct { ptr, len, success }
-            }
-
-            #[cfg(wasm)]
-            {
-                vec![bytes.into_dart(), success.into_dart()].into_dart()
-            }
+            catch_unwind_result
+                .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
         })
         .unwrap_or_else(|_| {
             #[cfg(not(wasm))]
@@ -189,13 +172,14 @@ pub trait Executor: RefUnwindSafe {
         TaskRet: IntoDart;
 
     /// Executes a Rust function that returns a [SyncReturn].
-    fn execute_sync<SyncTaskFn>(
+    fn execute_sync<SyncTaskFn, TaskRet>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<SyncReturn<Vec<u8>>>
+    ) -> Result<SyncReturn<TaskRet>>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe;
+        WireSyncReturnData: From<TaskRet>,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe;
 }
 
 /// The default executor used.
@@ -258,13 +242,14 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         });
     }
 
-    fn execute_sync<SyncTaskFn>(
+    fn execute_sync<SyncTaskFn, TaskRet>(
         &self,
         _wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<SyncReturn<Vec<u8>>>
+    ) -> Result<SyncReturn<TaskRet>>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<Vec<u8>>> + UnwindSafe,
+        WireSyncReturnData: From<TaskRet>,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
     {
         sync_task()
     }
@@ -314,7 +299,7 @@ pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     fn handle_error(&self, port: MessagePort, error: Error);
 
     /// Special handler only used for synchronous code.
-    fn handle_error_sync(&self, error: Error) -> Vec<u8>;
+    fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct;
 }
 
 /// The default error handler used by generated code.
@@ -326,7 +311,23 @@ impl ErrorHandler for ReportDartErrorHandler {
         Rust2Dart::new(port).error(error.code().to_string(), error.message());
     }
 
-    fn handle_error_sync(&self, error: Error) -> Vec<u8> {
-        format!("{}: {}", error.code(), error.message()).into_bytes()
+    fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct {
+        wire_sync_from_data(
+            WireSyncReturnData::from(format!("{}: {}", error.code(), error.message()).into_bytes()),
+            false,
+        )
+    }
+}
+
+fn wire_sync_from_data(data: WireSyncReturnData, success: bool) -> WireSyncReturnStruct {
+    #[cfg(not(wasm))]
+    {
+        let (ptr, len) = crate::support::into_leak_vec_ptr(data.0);
+        WireSyncReturnStruct { ptr, len, success }
+    }
+
+    #[cfg(wasm)]
+    {
+        vec![data.0.into_dart(), success.into_dart()].into_dart()
     }
 }

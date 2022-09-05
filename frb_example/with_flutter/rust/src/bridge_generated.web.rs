@@ -98,7 +98,7 @@ impl Wire2Api<Vec<TreeNode>> for JsValue {
 impl Wire2Api<Point> for JsValue {
     fn wire2api(self) -> Point {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             2,
             "Expected 2 elements, got {}",
@@ -113,7 +113,7 @@ impl Wire2Api<Point> for JsValue {
 impl Wire2Api<Size> for JsValue {
     fn wire2api(self) -> Size {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             2,
             "Expected 2 elements, got {}",
@@ -128,7 +128,7 @@ impl Wire2Api<Size> for JsValue {
 impl Wire2Api<TreeNode> for JsValue {
     fn wire2api(self) -> TreeNode {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             2,
             "Expected 2 elements, got {}",

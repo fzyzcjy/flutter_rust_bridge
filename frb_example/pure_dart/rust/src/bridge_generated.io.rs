@@ -80,6 +80,68 @@ pub extern "C" fn wire_handle_sync_return(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_sync_bool(input: bool) -> support::WireSyncReturnStruct {
+    wire_handle_sync_bool_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_u8(input: u8) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u8_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_u16(input: u16) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u16_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_u32(input: u32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_u64(input: u64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_i8(input: i8) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i8_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_i16(input: i16) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i16_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_i32(input: i32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_i64(input: i64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_f32(input: f32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_f32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_f64(input: f64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_f64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_string(
+    input: *mut wire_uint_8_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_string_impl(input)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
     wire_handle_stream_impl(port_, arg)
 }
@@ -344,331 +406,6 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
     port_: i64,
 ) {
     wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(port_)
-}
-
-// Section: wire structs
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_StringList {
-    ptr: *mut *mut wire_uint_8_list,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ApplicationEnv {
-    vars: *mut wire_list_application_env_var,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ApplicationEnvVar {
-    field0: *mut wire_uint_8_list,
-    field1: bool,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ApplicationSettings {
-    name: *mut wire_uint_8_list,
-    version: *mut wire_uint_8_list,
-    mode: i32,
-    env: *mut wire_ApplicationEnv,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Attribute {
-    key: *mut wire_uint_8_list,
-    value: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ConcatenateWith {
-    a: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Customized {
-    final_field: *mut wire_uint_8_list,
-    non_final_field: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_ExoticOptionals {
-    int32: *mut i32,
-    int64: *mut i64,
-    float64: *mut f64,
-    boolean: *mut bool,
-    zerocopy: *mut wire_uint_8_list,
-    int8list: *mut wire_int_8_list,
-    uint8list: *mut wire_uint_8_list,
-    int32list: *mut wire_int_32_list,
-    float32list: *mut wire_float_32_list,
-    float64list: *mut wire_float_64_list,
-    attributes: *mut wire_list_attribute,
-    attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
-    nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
-    newtypeint: *mut wire_NewTypeInt,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_float_32_list {
-    ptr: *mut f32,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_float_64_list {
-    ptr: *mut f64,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_int_32_list {
-    ptr: *mut i32,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_int_8_list {
-    ptr: *mut i8,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_application_env_var {
-    ptr: *mut wire_ApplicationEnvVar,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_attribute {
-    ptr: *mut wire_Attribute,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_my_size {
-    ptr: *mut wire_MySize,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_my_tree_node {
-    ptr: *mut wire_MyTreeNode,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_opt_box_autoadd_attribute {
-    ptr: *mut *mut wire_Attribute,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_MySize {
-    width: i32,
-    height: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_MyStruct {
-    content: bool,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_MyTreeNode {
-    value_i32: i32,
-    value_vec_u8: *mut wire_uint_8_list,
-    value_boolean: bool,
-    children: *mut wire_list_my_tree_node,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_NewTypeInt {
-    field0: i64,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Note {
-    day: *mut i32,
-    body: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Numbers {
-    field0: *mut wire_int_32_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Sequences {
-    field0: *mut wire_int_32_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_SumWith {
-    x: u32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_uint_8_list {
-    ptr: *mut u8,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_UserId {
-    value: u32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Distance {
-    tag: i32,
-    kind: *mut DistanceKind,
-}
-
-#[repr(C)]
-pub union DistanceKind {
-    Unknown: *mut wire_Distance_Unknown,
-    Map: *mut wire_Distance_Map,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Distance_Unknown {}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Distance_Map {
-    field0: f64,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_KitchenSink {
-    tag: i32,
-    kind: *mut KitchenSinkKind,
-}
-
-#[repr(C)]
-pub union KitchenSinkKind {
-    Empty: *mut wire_KitchenSink_Empty,
-    Primitives: *mut wire_KitchenSink_Primitives,
-    Nested: *mut wire_KitchenSink_Nested,
-    Optional: *mut wire_KitchenSink_Optional,
-    Buffer: *mut wire_KitchenSink_Buffer,
-    Enums: *mut wire_KitchenSink_Enums,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_KitchenSink_Empty {}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_KitchenSink_Primitives {
-    int32: i32,
-    float64: f64,
-    boolean: bool,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_KitchenSink_Nested {
-    field0: *mut wire_KitchenSink,
-    field1: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_KitchenSink_Optional {
-    field0: *mut i32,
-    field1: *mut i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_KitchenSink_Buffer {
-    field0: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_KitchenSink_Enums {
-    field0: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Measure {
-    tag: i32,
-    kind: *mut MeasureKind,
-}
-
-#[repr(C)]
-pub union MeasureKind {
-    Speed: *mut wire_Measure_Speed,
-    Distance: *mut wire_Measure_Distance,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Measure_Speed {
-    field0: *mut wire_Speed,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Measure_Distance {
-    field0: *mut wire_Distance,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Speed {
-    tag: i32,
-    kind: *mut SpeedKind,
-}
-
-#[repr(C)]
-pub union SpeedKind {
-    Unknown: *mut wire_Speed_Unknown,
-    GPS: *mut wire_Speed_GPS,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Speed_Unknown {}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Speed_GPS {
-    field0: f64,
 }
 
 // Section: allocate functions
@@ -1402,6 +1139,331 @@ impl Wire2Api<UserId> for wire_UserId {
             value: self.value.wire2api(),
         }
     }
+}
+
+// Section: wire structs
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_StringList {
+    ptr: *mut *mut wire_uint_8_list,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ApplicationEnv {
+    vars: *mut wire_list_application_env_var,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ApplicationEnvVar {
+    field0: *mut wire_uint_8_list,
+    field1: bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ApplicationSettings {
+    name: *mut wire_uint_8_list,
+    version: *mut wire_uint_8_list,
+    mode: i32,
+    env: *mut wire_ApplicationEnv,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Attribute {
+    key: *mut wire_uint_8_list,
+    value: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ConcatenateWith {
+    a: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Customized {
+    final_field: *mut wire_uint_8_list,
+    non_final_field: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ExoticOptionals {
+    int32: *mut i32,
+    int64: *mut i64,
+    float64: *mut f64,
+    boolean: *mut bool,
+    zerocopy: *mut wire_uint_8_list,
+    int8list: *mut wire_int_8_list,
+    uint8list: *mut wire_uint_8_list,
+    int32list: *mut wire_int_32_list,
+    float32list: *mut wire_float_32_list,
+    float64list: *mut wire_float_64_list,
+    attributes: *mut wire_list_attribute,
+    attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
+    nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
+    newtypeint: *mut wire_NewTypeInt,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_float_32_list {
+    ptr: *mut f32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_float_64_list {
+    ptr: *mut f64,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_32_list {
+    ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_8_list {
+    ptr: *mut i8,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_application_env_var {
+    ptr: *mut wire_ApplicationEnvVar,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_attribute {
+    ptr: *mut wire_Attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_my_size {
+    ptr: *mut wire_MySize,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_my_tree_node {
+    ptr: *mut wire_MyTreeNode,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_box_autoadd_attribute {
+    ptr: *mut *mut wire_Attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MySize {
+    width: i32,
+    height: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MyStruct {
+    content: bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MyTreeNode {
+    value_i32: i32,
+    value_vec_u8: *mut wire_uint_8_list,
+    value_boolean: bool,
+    children: *mut wire_list_my_tree_node,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_NewTypeInt {
+    field0: i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Note {
+    day: *mut i32,
+    body: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Numbers {
+    field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Sequences {
+    field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SumWith {
+    x: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_8_list {
+    ptr: *mut u8,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_UserId {
+    value: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Distance {
+    tag: i32,
+    kind: *mut DistanceKind,
+}
+
+#[repr(C)]
+pub union DistanceKind {
+    Unknown: *mut wire_Distance_Unknown,
+    Map: *mut wire_Distance_Map,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Distance_Unknown {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Distance_Map {
+    field0: f64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink {
+    tag: i32,
+    kind: *mut KitchenSinkKind,
+}
+
+#[repr(C)]
+pub union KitchenSinkKind {
+    Empty: *mut wire_KitchenSink_Empty,
+    Primitives: *mut wire_KitchenSink_Primitives,
+    Nested: *mut wire_KitchenSink_Nested,
+    Optional: *mut wire_KitchenSink_Optional,
+    Buffer: *mut wire_KitchenSink_Buffer,
+    Enums: *mut wire_KitchenSink_Enums,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Empty {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Primitives {
+    int32: i32,
+    float64: f64,
+    boolean: bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Nested {
+    field0: *mut wire_KitchenSink,
+    field1: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Optional {
+    field0: *mut i32,
+    field1: *mut i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Buffer {
+    field0: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Enums {
+    field0: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Measure {
+    tag: i32,
+    kind: *mut MeasureKind,
+}
+
+#[repr(C)]
+pub union MeasureKind {
+    Speed: *mut wire_Measure_Speed,
+    Distance: *mut wire_Measure_Distance,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Measure_Speed {
+    field0: *mut wire_Speed,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Measure_Distance {
+    field0: *mut wire_Distance,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Speed {
+    tag: i32,
+    kind: *mut SpeedKind,
+}
+
+#[repr(C)]
+pub union SpeedKind {
+    Unknown: *mut wire_Speed_Unknown,
+    GPS: *mut wire_Speed_GPS,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Speed_Unknown {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Speed_GPS {
+    field0: f64,
 }
 
 // Section: impl NewWithNullPtr

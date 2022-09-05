@@ -33,7 +33,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     ..Default::default()
                 }
             }
-            IrTypeDelegate::SyncReturnVecU8 => "/*unsupported*/".into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
             }

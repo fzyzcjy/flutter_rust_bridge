@@ -5,9 +5,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 export 'package:js/js.dart';
 export 'package:js/js_util.dart' show promiseToFuture, getProperty;
 
-// ignore: camel_case_types
-typedef longint = BigInt;
-
 abstract class WasmModule {
   Object call([String? moduleName]);
 

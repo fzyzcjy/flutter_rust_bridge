@@ -203,7 +203,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.41.3"
+    version: "1.42.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -532,7 +532,7 @@ packages:
       name: webkit_inspection_protocol
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.0"
   yaml:
     dependency: transitive
     description:

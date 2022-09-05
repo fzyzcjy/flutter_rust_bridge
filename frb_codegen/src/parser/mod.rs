@@ -167,13 +167,11 @@ impl<'a> Parser<'a> {
                     IrType::Primitive(IrTypePrimitive::Unit)
                 }
             });
-            mode = Some(
-                if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
-                    IrFuncMode::Sync
-                } else {
-                    IrFuncMode::Normal
-                },
-            );
+            mode = Some(if let Some(IrType::SyncReturn(_)) = output {
+                IrFuncMode::Sync
+            } else {
+                IrFuncMode::Normal
+            });
         }
 
         IrFunc {

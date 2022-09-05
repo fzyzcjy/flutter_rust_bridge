@@ -14,6 +14,8 @@ impl TypeRustGeneratorTrait for TypePrimitiveGenerator<'_> {
         Some(
             match self.ir {
                 Bool => "self.is_truthy()",
+                //  This is a bit nuanced: it applies the unary plus operator
+                // which leaves numbers unchanged and coerces BigInts into numbers.
                 _ => "self.unchecked_into_f64() as _",
             }
             .into(),

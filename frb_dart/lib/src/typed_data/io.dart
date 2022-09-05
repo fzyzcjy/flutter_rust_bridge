@@ -69,14 +69,14 @@ class Uint64List extends _TypedList<BigInt> {
   Uint64List.sublistView($data.TypedData data, [int start = 0, int? end])
       : inner = $data.Uint64List.sublistView(data, start, end);
 
-  static final _maxi64b = BigInt.from(0x7FFFFFFFFFFFFFFF);
-  static const _mini64 = 0x8000000000000000;
+  static final _maxI64b = BigInt.from(0x7FFFFFFFFFFFFFFF);
+  static const _minI64 = 0x8000000000000000;
 
   @override
   BigInt raw2dart(int value) {
     if (value < 0) {
       // two's complement signed integer to unsigned bigint
-      return _maxi64b + BigInt.from(value - _mini64) + BigInt.one;
+      return _maxI64b + BigInt.from(value - _minI64) + BigInt.one;
     }
     return BigInt.from(value);
   }
@@ -85,11 +85,11 @@ class Uint64List extends _TypedList<BigInt> {
   int dart2raw(value) {
     if (value is int) return value;
     if (value is BigInt) {
-      if (value > _maxi64b) {
+      if (value > _maxI64b) {
         // unsigned bigint (64 bits) to two's complement signed integer
-        value -= _maxi64b;
+        value -= _maxI64b;
         value -= BigInt.one;
-        return value.toInt() + _mini64;
+        return value.toInt() + _minI64;
       } else {
         return value.toInt();
       }

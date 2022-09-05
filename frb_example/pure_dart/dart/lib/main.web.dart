@@ -10,16 +10,7 @@ import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';
 
 @JS()
-external Object fetch(String path, [FetchOptions? options]);
-
-@JS()
 external void close();
-
-@JS()
-@anonymous
-class FetchOptions {
-  external factory FetchOptions({String method, dynamic body});
-}
 
 void main() async {
   final result = await directRunTests(

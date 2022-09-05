@@ -5,6 +5,8 @@ import 'dart:async';
 import 'dart:html' as html;
 import 'dart:html' hide MessagePort;
 
+import 'package:flutter_rust_bridge/src/ffi/web.dart';
+
 typedef MessagePort = PortLike;
 
 /// An alias to [MessagePort] on web platforms.
@@ -105,60 +107,52 @@ abstract class PortLike extends EventTarget {
   NativePortType get nativePort;
 }
 
-class _MessagePortWrapper implements PortLike, html.MessagePort {
-  final html.MessagePort port;
-  _MessagePortWrapper(this.port);
-
-  @override
-  get nativePort => port;
+/// Delegates a subset of PortLike methods verbatim.
+abstract class _DelegatedPort implements PortLike {
   @override
   void addEventListener(String type, html.EventListener? listener,
           [bool? useCapture]) =>
-      port.addEventListener(type, listener, useCapture);
-  @override
-  bool dispatchEvent(html.Event event) => port.dispatchEvent(event);
+      nativePort.addEventListener(type, listener, useCapture);
+
   @override
   void removeEventListener(String type, html.EventListener? listener,
           [bool? useCapture]) =>
-      port.removeEventListener(type, listener, useCapture);
+      nativePort.removeEventListener(type, listener, useCapture);
+
   @override
-  void postMessage(message, [List<Object>? transfer]) =>
-      port.postMessage(message, transfer);
+  void close() => nativePort.close();
+
   @override
-  void close() => port.close();
+  bool dispatchEvent(html.Event event) => nativePort.dispatchEvent(event);
+
   @override
-  html.Events get on => port.on;
-  @override
-  Stream<html.MessageEvent> get onMessage => port.onMessage;
+  html.Events get on => nativePort.on;
 }
 
-class _BroadcastPortWrapper implements PortLike, html.BroadcastChannel {
-  final html.BroadcastChannel channel;
-  _BroadcastPortWrapper(this.channel);
+class _MessagePortWrapper extends _DelegatedPort {
+  @override
+  final html.MessagePort nativePort;
+  _MessagePortWrapper(this.nativePort);
 
   @override
-  get nativePort => channel;
-  @override
-  void addEventListener(String type, html.EventListener? listener,
-          [bool? useCapture]) =>
-      channel.addEventListener(type, listener, useCapture);
-  @override
-  bool dispatchEvent(html.Event event) => channel.dispatchEvent(event);
-  @override
-  void removeEventListener(String type, html.EventListener? listener,
-          [bool? useCapture]) =>
-      channel.removeEventListener(type, listener, useCapture);
-  @override
   void postMessage(message, [List<Object>? transfer]) =>
-      channel.postMessage(message ?? false);
+      nativePort.postMessage(message, transfer);
+}
+
+class _BroadcastPortWrapper extends _DelegatedPort {
   @override
-  void close() => channel.close();
+  final html.BroadcastChannel nativePort;
+  _BroadcastPortWrapper(this.nativePort);
+
+  /// This presents a limitation of BroadcastChannel,
+  /// i.e. it cannot carry transferables and will unconditionally clone the items.
   @override
-  html.Events get on => channel.on;
-  @override
-  Stream<html.MessageEvent> get onMessage => channel.onMessage;
-  @override
-  String? get name => channel.name;
+  void postMessage(message, [List<Object>? transfer]) {
+    if (transfer != null && transfer.isNotEmpty) {
+      warn("Ignoring transferables for BroadcastPort:", transfer);
+    }
+    nativePort.postMessage(message ?? false);
+  }
 }
 
 extension on PortLike {
