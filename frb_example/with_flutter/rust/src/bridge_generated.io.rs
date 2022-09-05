@@ -73,50 +73,6 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
     wire_off_topic_deliberately_panic_impl(port_)
 }
 
-// Section: wire structs
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_size {
-    ptr: *mut wire_Size,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_tree_node {
-    ptr: *mut wire_TreeNode,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Point {
-    x: f64,
-    y: f64,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_Size {
-    width: i32,
-    height: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_TreeNode {
-    name: *mut wire_uint_8_list,
-    children: *mut wire_list_tree_node,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_uint_8_list {
-    ptr: *mut u8,
-    len: i32,
-}
-
 // Section: allocate functions
 
 #[no_mangle]
@@ -239,6 +195,50 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
         }
     }
 }
+// Section: wire structs
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_size {
+    ptr: *mut wire_Size,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_tree_node {
+    ptr: *mut wire_TreeNode,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Point {
+    x: f64,
+    y: f64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Size {
+    width: i32,
+    height: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_TreeNode {
+    name: *mut wire_uint_8_list,
+    children: *mut wire_list_tree_node,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_8_list {
+    ptr: *mut u8,
+    len: i32,
+}
+
 // Section: impl NewWithNullPtr
 
 pub trait NewWithNullPtr {

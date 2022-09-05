@@ -1,4 +1,4 @@
-use crate::ir::*;
+use crate::{ir::*, target::Target};
 
 /// Types that have synchronized return
 /// NOTE for maintainer: Please make sure all the types here
@@ -29,20 +29,20 @@ impl IrTypeTrait for IrTypeSyncReturn {
         self.get_inner().dart_api_type()
     }
 
-    fn dart_wire_type(&self) -> String {
-        self.get_inner().dart_wire_type()
+    fn dart_wire_type(&self, target: Target) -> String {
+        self.get_inner().dart_wire_type(target)
     }
 
     fn rust_api_type(&self) -> String {
         format!("SyncReturn<{}>", self.get_inner().rust_api_type())
     }
 
-    fn rust_wire_type(&self) -> String {
+    fn rust_wire_type(&self, _: Target) -> String {
         unimplemented!("SyncReturn: rust_wire_type is not supported")
     }
 
-    fn rust_wire_is_pointer(&self) -> bool {
-        self.get_inner().rust_wire_is_pointer()
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        self.get_inner().rust_wire_is_pointer(target)
     }
 
     fn dart_param_type(&self) -> &'static str {

@@ -1,3 +1,5 @@
+use crate::consts::VOID;
+
 use super::*;
 
 pub fn generate_wasm_wire<'a>(
@@ -62,16 +64,13 @@ fn is_rust_pointer(ty: &str) -> bool {
 /// aware of their own types (via the `runtimeType` property) and can
 /// safely assume the `dynamic` or `Object` type instead.
 pub fn reconstruct_dart_wire_from_raw_repr(ty: &str) -> Cow<str> {
-    use crate::consts::*;
-
     let ty = ty.trim();
-    if matches!(ty, VOID | WIRE_SYNC_RETURN_STRUCT) {
-        return ty.into();
-    }
     if is_rust_pointer(ty) {
         return format!("int /* {} */", ty).into();
     }
-    warn!("unknown string repr of ty={}", ty);
+    if matches!(ty, VOID) {
+        return ty.into();
+    }
     format!("dynamic /* {} */", ty).into()
 }
 

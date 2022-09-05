@@ -68,19 +68,8 @@ pub struct WireSyncReturnStruct {
 #[cfg(wasm)]
 pub type WireSyncReturnStruct = wasm_bindgen::JsValue;
 
-impl From<WireSyncReturnData> for WireSyncReturnStruct {
-    fn from(data: WireSyncReturnData) -> Self {
-        let (ptr, len) = into_leak_vec_ptr(data.0);
-        WireSyncReturnStruct {
-            ptr,
-            len,
-            success: true,
-        }
-    }
-}
-
 /// Safe version of [`WireSyncReturnStruct`].
-pub struct WireSyncReturnData(Vec<u8>);
+pub struct WireSyncReturnData(pub(crate) Vec<u8>);
 
 impl From<Vec<u8>> for WireSyncReturnData {
     fn from(data: Vec<u8>) -> Self {

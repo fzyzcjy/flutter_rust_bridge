@@ -31,7 +31,7 @@ pub use ty_struct::*;
 pub use ty_sync_return::*;
 
 use convert_case::{Case, Casing};
-use log::{debug, warn};
+use log::debug;
 
 use crate::ir::IrType::*;
 use crate::method_utils::{FunctionName, MethodNamingUtil};

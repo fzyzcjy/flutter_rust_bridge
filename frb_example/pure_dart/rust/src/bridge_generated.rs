@@ -237,6 +237,186 @@ fn wire_handle_sync_return_impl(
         },
     )
 }
+fn wire_handle_sync_bool_impl(
+    input: impl Wire2Api<bool> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_bool",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_bool(api_input))
+        },
+    )
+}
+fn wire_handle_sync_u8_impl(
+    input: impl Wire2Api<u8> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_u8",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_u8(api_input))
+        },
+    )
+}
+fn wire_handle_sync_u16_impl(
+    input: impl Wire2Api<u16> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_u16",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_u16(api_input))
+        },
+    )
+}
+fn wire_handle_sync_u32_impl(
+    input: impl Wire2Api<u32> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_u32",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_u32(api_input))
+        },
+    )
+}
+fn wire_handle_sync_u64_impl(
+    input: impl Wire2Api<u64> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_u64",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_u64(api_input))
+        },
+    )
+}
+fn wire_handle_sync_i8_impl(
+    input: impl Wire2Api<i8> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_i8",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_i8(api_input))
+        },
+    )
+}
+fn wire_handle_sync_i16_impl(
+    input: impl Wire2Api<i16> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_i16",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_i16(api_input))
+        },
+    )
+}
+fn wire_handle_sync_i32_impl(
+    input: impl Wire2Api<i32> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_i32",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_i32(api_input))
+        },
+    )
+}
+fn wire_handle_sync_i64_impl(
+    input: impl Wire2Api<i64> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_i64",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_i64(api_input))
+        },
+    )
+}
+fn wire_handle_sync_f32_impl(
+    input: impl Wire2Api<f32> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_f32",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_f32(api_input))
+        },
+    )
+}
+fn wire_handle_sync_f64_impl(
+    input: impl Wire2Api<f64> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_f64",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_f64(api_input))
+        },
+    )
+}
+fn wire_handle_sync_string_impl(
+    input: impl Wire2Api<String> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_sync_string",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_input = input.wire2api();
+            Ok(handle_sync_string(api_input))
+        },
+    )
+}
 fn wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1105,6 +1285,11 @@ impl Wire2Api<f64> for f64 {
     }
 }
 
+impl Wire2Api<i16> for i16 {
+    fn wire2api(self) -> i16 {
+        self
+    }
+}
 impl Wire2Api<i32> for i32 {
     fn wire2api(self) -> i32 {
         self
@@ -1131,8 +1316,18 @@ impl Wire2Api<MyEnum> for i32 {
     }
 }
 
+impl Wire2Api<u16> for u16 {
+    fn wire2api(self) -> u16 {
+        self
+    }
+}
 impl Wire2Api<u32> for u32 {
     fn wire2api(self) -> u32 {
+        self
+    }
+}
+impl Wire2Api<u64> for u64 {
+    fn wire2api(self) -> u64 {
         self
     }
 }

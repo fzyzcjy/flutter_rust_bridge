@@ -6,11 +6,11 @@ pub extern "C" fn wire_simple_adder_1(port_: i64, a: i32, b: i32) {
     wire_simple_adder_1_impl(port_, a, b)
 }
 
-// Section: wire structs
-
 // Section: allocate functions
 
 // Section: impl Wire2Api
+
+// Section: wire structs
 
 // Section: impl NewWithNullPtr
 

@@ -119,32 +119,26 @@ pub(crate) fn generate_api_func(
         format!("_wire2api_{}", func.output.safe_ident())
     };
 
-    let implementation = match func.mode {
-        IrFuncMode::Sync => format!(
-            "{} => {}(FlutterRustBridgeSyncTask(
-                callFfi: () => _platform.inner.{}({}),
-                {}
-            ));",
-            func_expr,
-            execute_func_name,
-            func.wire_func_name(),
-            wire_param_list.join(", "),
-            task_common_args,
-        ),
-        _ => format!(
-            "{} => {}(FlutterRustBridgeTask(
-                callFfi: (port_) => _platform.inner.{}({}),
-                parseSuccessData: {},
-                {}
-            ));",
-            func_expr,
-            execute_func_name,
-            func.wire_func_name(),
-            wire_param_list.join(", "),
-            parse_success_data,
-            task_common_args,
-        ),
-    };
+    let is_sync = matches!(func.mode, IrFuncMode::Sync);
+    let implementation = format!(
+        "{} => {}({task}(
+            callFfi: ({args}) => _platform.inner.{}({}),
+            parseSuccessData: {},
+            {}
+        ));",
+        func_expr,
+        execute_func_name,
+        func.wire_func_name(),
+        wire_param_list.join(", "),
+        parse_success_data,
+        task_common_args,
+        task = if is_sync {
+            "FlutterRustBridgeSyncTask"
+        } else {
+            "FlutterRustBridgeTask"
+        },
+        args = if is_sync { "" } else { "port_" },
+    );
 
     let companion_field_signature = format!(
         "FlutterRustBridgeTaskConstMeta get {};",

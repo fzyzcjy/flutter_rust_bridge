@@ -132,7 +132,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self.executor.execute_sync(wrap_info, sync_task) {
-                    Ok(data) => WireSyncReturnStruct::from(WireSyncReturnData::from(data.0)),
+                    Ok(data) => wire_sync_from_data(WireSyncReturnData::from(data.0), true),
                     Err(err) => self
                         .error_handler
                         .handle_error_sync(Error::ResultError(err)),
@@ -312,10 +312,22 @@ impl ErrorHandler for ReportDartErrorHandler {
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct {
-        let mut error_struct = WireSyncReturnStruct::from(WireSyncReturnData::from(
-            format!("{}: {}", error.code(), error.message()).into_bytes(),
-        ));
-        error_struct.success = false;
-        error_struct
+        wire_sync_from_data(
+            WireSyncReturnData::from(format!("{}: {}", error.code(), error.message()).into_bytes()),
+            false,
+        )
+    }
+}
+
+fn wire_sync_from_data(data: WireSyncReturnData, success: bool) -> WireSyncReturnStruct {
+    #[cfg(not(wasm))]
+    {
+        let (ptr, len) = crate::support::into_leak_vec_ptr(data.0);
+        WireSyncReturnStruct { ptr, len, success }
+    }
+
+    #[cfg(wasm)]
+    {
+        vec![data.0.into_dart(), success.into_dart()].into_dart()
     }
 }

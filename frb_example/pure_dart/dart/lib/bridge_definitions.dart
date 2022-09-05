@@ -76,6 +76,54 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta;
 
+  bool handleSyncBool({required bool input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncBoolConstMeta;
+
+  int handleSyncU8({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU8ConstMeta;
+
+  int handleSyncU16({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU16ConstMeta;
+
+  int handleSyncU32({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU32ConstMeta;
+
+  int handleSyncU64({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU64ConstMeta;
+
+  int handleSyncI8({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI8ConstMeta;
+
+  int handleSyncI16({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI16ConstMeta;
+
+  int handleSyncI32({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI32ConstMeta;
+
+  int handleSyncI64({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI64ConstMeta;
+
+  double handleSyncF32({required double input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncF32ConstMeta;
+
+  double handleSyncF64({required double input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncF64ConstMeta;
+
+  String handleSyncString({required String input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncStringConstMeta;
+
   Stream<String> handleStream({required String arg, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta;

@@ -3,6 +3,10 @@ import 'package:test/test.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
 
+const isWeb = bool.fromEnvironment('dart.library.html');
+
+String? skipWeb([String reason = 'unspecified']) => isWeb ? 'Skipped on web (reason: $reason)' : null;
+
 void main(List<String> args) async {
   String dylibPath = args[0];
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
@@ -131,7 +135,7 @@ void main(List<String> args) async {
   });
   test('dart call handle_sync_u64', () async {
     expect(api.handleSyncU64(input: 42), 42);
-  });
+  }, skip: skipWeb('Not supported by dart2js'));
   test('dart call handle_sync_i8', () async {
     expect(api.handleSyncI8(input: 42), 42);
   });
@@ -143,7 +147,7 @@ void main(List<String> args) async {
   });
   test('dart call handle_sync_i64', () async {
     expect(api.handleSyncI64(input: 42), 42);
-  });
+  }, skip: skipWeb('Not supported by dart2js'));
   test('dart call handle_sync_string', () async {
     expect(api.handleSyncString(input: "Hello Rust!"), "Hello Rust!");
   });

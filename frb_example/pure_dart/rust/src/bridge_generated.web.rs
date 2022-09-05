@@ -78,6 +78,66 @@ pub fn wire_handle_sync_return(mode: String) -> support::WireSyncReturnStruct {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_sync_bool(input: bool) -> support::WireSyncReturnStruct {
+    wire_handle_sync_bool_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_u8(input: u8) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u8_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_u16(input: u16) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u16_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_u32(input: u32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u32_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_u64(input: u64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u64_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_i8(input: i8) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i8_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_i16(input: i16) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i16_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_i32(input: i32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i32_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_i64(input: i64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i64_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_f32(input: f32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_f32_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_f64(input: f64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_f64_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_string(input: String) -> support::WireSyncReturnStruct {
+    wire_handle_sync_string_impl(input)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_stream(port_: MessagePort, arg: String) {
     wire_handle_stream_impl(port_, arg)
 }
@@ -958,6 +1018,11 @@ impl Wire2Api<Vec<f64>> for JsValue {
             .into()
     }
 }
+impl Wire2Api<i16> for JsValue {
+    fn wire2api(self) -> i16 {
+        self.unchecked_into_f64() as _
+    }
+}
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
         self.unchecked_into_f64() as _
@@ -1073,8 +1138,18 @@ impl Wire2Api<Option<Vec<u8>>> for JsValue {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
+impl Wire2Api<u16> for JsValue {
+    fn wire2api(self) -> u16 {
+        self.unchecked_into_f64() as _
+    }
+}
 impl Wire2Api<u32> for JsValue {
     fn wire2api(self) -> u32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u64> for JsValue {
+    fn wire2api(self) -> u64 {
         self.unchecked_into_f64() as _
     }
 }

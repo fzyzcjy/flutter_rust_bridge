@@ -526,6 +526,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  BigInt api2wire_u64(int raw) {
+    return BigInt.from(raw);
+  }
+
+  @protected
   Uint8List api2wire_uint_8_list(Uint8List raw) {
     return raw;
   }
@@ -572,7 +577,31 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_handle_complex_struct(NativePortType port_, List<dynamic> s);
 
-  external WireSyncReturnStruct wire_handle_sync_return(String mode);
+  external dynamic /* Uint8List */ wire_handle_sync_return(String mode);
+
+  external dynamic /* bool */ wire_handle_sync_bool(bool input);
+
+  external dynamic /* int */ wire_handle_sync_u8(int input);
+
+  external dynamic /* int */ wire_handle_sync_u16(int input);
+
+  external dynamic /* int */ wire_handle_sync_u32(int input);
+
+  external dynamic /* BigInt */ wire_handle_sync_u64(BigInt input);
+
+  external dynamic /* int */ wire_handle_sync_i8(int input);
+
+  external dynamic /* int */ wire_handle_sync_i16(int input);
+
+  external dynamic /* int */ wire_handle_sync_i32(int input);
+
+  external dynamic /* BigInt */ wire_handle_sync_i64(BigInt input);
+
+  external dynamic /* double */ wire_handle_sync_f32(double input);
+
+  external dynamic /* double */ wire_handle_sync_f64(double input);
+
+  external dynamic /* String */ wire_handle_sync_string(String input);
 
   external void wire_handle_stream(NativePortType port_, String arg);
 
@@ -738,7 +767,31 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_handle_complex_struct(NativePortType port_, List<dynamic> s) =>
       wasmModule.wire_handle_complex_struct(port_, s);
 
-  WireSyncReturnStruct wire_handle_sync_return(String mode) => wasmModule.wire_handle_sync_return(mode);
+  dynamic /* Uint8List */ wire_handle_sync_return(String mode) => wasmModule.wire_handle_sync_return(mode);
+
+  dynamic /* bool */ wire_handle_sync_bool(bool input) => wasmModule.wire_handle_sync_bool(input);
+
+  dynamic /* int */ wire_handle_sync_u8(int input) => wasmModule.wire_handle_sync_u8(input);
+
+  dynamic /* int */ wire_handle_sync_u16(int input) => wasmModule.wire_handle_sync_u16(input);
+
+  dynamic /* int */ wire_handle_sync_u32(int input) => wasmModule.wire_handle_sync_u32(input);
+
+  dynamic /* BigInt */ wire_handle_sync_u64(BigInt input) => wasmModule.wire_handle_sync_u64(input);
+
+  dynamic /* int */ wire_handle_sync_i8(int input) => wasmModule.wire_handle_sync_i8(input);
+
+  dynamic /* int */ wire_handle_sync_i16(int input) => wasmModule.wire_handle_sync_i16(input);
+
+  dynamic /* int */ wire_handle_sync_i32(int input) => wasmModule.wire_handle_sync_i32(input);
+
+  dynamic /* BigInt */ wire_handle_sync_i64(BigInt input) => wasmModule.wire_handle_sync_i64(input);
+
+  dynamic /* double */ wire_handle_sync_f32(double input) => wasmModule.wire_handle_sync_f32(input);
+
+  dynamic /* double */ wire_handle_sync_f64(double input) => wasmModule.wire_handle_sync_f64(input);
+
+  dynamic /* String */ wire_handle_sync_string(String input) => wasmModule.wire_handle_sync_string(input);
 
   void wire_handle_stream(NativePortType port_, String arg) => wasmModule.wire_handle_stream(port_, arg);
 

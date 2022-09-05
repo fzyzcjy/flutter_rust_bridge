@@ -80,6 +80,68 @@ pub extern "C" fn wire_handle_sync_return(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_sync_bool(input: bool) -> support::WireSyncReturnStruct {
+    wire_handle_sync_bool_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_u8(input: u8) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u8_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_u16(input: u16) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u16_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_u32(input: u32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_u64(input: u64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_u64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_i8(input: i8) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i8_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_i16(input: i16) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i16_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_i32(input: i32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_i64(input: i64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_i64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_f32(input: f32) -> support::WireSyncReturnStruct {
+    wire_handle_sync_f32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_f64(input: f64) -> support::WireSyncReturnStruct {
+    wire_handle_sync_f64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_string(
+    input: *mut wire_uint_8_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_string_impl(input)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
     wire_handle_stream_impl(port_, arg)
 }
