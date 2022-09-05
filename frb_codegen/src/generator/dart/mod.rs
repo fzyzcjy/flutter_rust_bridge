@@ -297,11 +297,10 @@ fn generate_dart_implementation_code(
 
 fn generate_file_prelude() -> DartBasicCode {
     DartBasicCode {
-        import: format!("{}
+        import: format!("{CODE_HEADER} @ {CARGO_PKG_VERSION}
 
                 // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports
-                ",
-                        CODE_HEADER
+                "
         ),
         part: "".to_string(),
         body: "".to_string(),
