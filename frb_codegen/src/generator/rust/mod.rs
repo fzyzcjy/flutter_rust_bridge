@@ -103,18 +103,6 @@ impl<'a> Generator<'a> {
             .map(|f| self.generate_wire_func(f, ir_file))
             .collect();
 
-        lines.io.push(self.section_header_comment("wire structs"));
-        lines.io.extend(
-            distinct_input_types
-                .iter()
-                .map(|ty| self.generate_wire_struct(ty, ir_file)),
-        );
-        lines.io.extend(
-            distinct_input_types
-                .iter()
-                .map(|ty| TypeRustGenerator::new(ty.clone(), ir_file, self.config).structs()),
-        );
-
         lines.push(self.section_header_comment("wrapper structs"));
         lines.extend(
             distinct_output_types
@@ -145,21 +133,6 @@ impl<'a> Generator<'a> {
             .map(|ty| self.generate_wire2api_func(ty, ir_file))
             .collect();
 
-        (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
-        lines.wasm.extend(
-            distinct_input_types
-                .iter()
-                .filter_map(|ty| self.generate_wasm2api_func(ty, ir_file)),
-        );
-
-        (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
-        (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
-        lines.io.extend(
-            distinct_input_types
-                .iter()
-                .map(|ty| self.generate_new_with_nullptr_func(ty, ir_file)),
-        );
-
         lines.push(self.section_header_comment("impl IntoDart"));
         lines.extend(
             distinct_output_types
@@ -170,12 +143,54 @@ impl<'a> Generator<'a> {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
+        self.generate_io_part(&mut lines, &distinct_input_types, ir_file);
+        self.generate_wasm_part(&mut lines, &distinct_input_types, ir_file);
+
+        lines.join("\n")
+    }
+
+    fn generate_io_part(
+        &mut self,
+        lines: &mut Acc<Vec<String>>,
+        distinct_input_types: &[IrType],
+        ir_file: &IrFile,
+    ) {
+        lines.io.push(self.section_header_comment("wire structs"));
+        lines.io.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| self.generate_wire_struct(ty, ir_file)),
+        );
+        lines.io.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| TypeRustGenerator::new(ty.clone(), ir_file, self.config).structs()),
+        );
+        (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
+        (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
+        lines.io.extend(
+            distinct_input_types
+                .iter()
+                .map(|ty| self.generate_new_with_nullptr_func(ty, ir_file)),
+        );
         if self.config.block_index == BlockIndex::PRIMARY {
             (lines.io).push(self.section_header_comment("sync execution mode utility"));
             lines.io.push(self.generate_sync_execution_mode_utility());
         }
+    }
 
-        lines.join("\n")
+    fn generate_wasm_part(
+        &mut self,
+        lines: &mut Acc<Vec<String>>,
+        distinct_input_types: &[IrType],
+        ir_file: &IrFile,
+    ) {
+        (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
+        lines.wasm.extend(
+            distinct_input_types
+                .iter()
+                .filter_map(|ty| self.generate_wasm2api_func(ty, ir_file)),
+        );
     }
 
     fn section_header_comment(&self, section_name: &str) -> String {

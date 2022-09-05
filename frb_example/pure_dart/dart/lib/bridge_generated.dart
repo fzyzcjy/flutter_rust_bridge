@@ -1197,7 +1197,7 @@ int _wire2api_i32(dynamic raw) {
 }
 
 int _wire2api_i64(dynamic raw) {
-  return raw is int ? raw : castInt(raw);
+  return castInt(raw);
 }
 
 int _wire2api_i8(dynamic raw) {
@@ -1502,7 +1502,7 @@ int _wire2api_u32(dynamic raw) {
 }
 
 int _wire2api_u64(dynamic raw) {
-  return raw is int ? raw : castInt(raw);
+  return castInt(raw);
 }
 
 int _wire2api_u8(dynamic raw) {
@@ -1538,7 +1538,7 @@ UserId _wire2api_user_id(dynamic raw) {
 }
 
 int _wire2api_usize(dynamic raw) {
-  return raw is int ? raw : castInt(raw);
+  return castInt(raw);
 }
 
 VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {

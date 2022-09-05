@@ -5,8 +5,8 @@ import 'package:flutter/material.dart' hide Size;
 import 'bridge_definitions.dart';
 import 'package:flutter_rust_bridge_example/off_topic_code.dart';
 
-import 'ffi.dart' if (dart.library.html) 'ffi.web.dart';
-export 'ffi.dart' if (dart.library.html) 'ffi.web.dart' show api;
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
+export 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart' show api;
 
 // Simple Flutter code. If you are not familiar with Flutter, this may sounds a bit long. But indeed
 // it is quite trivial and Flutter is just like that. Please refer to Flutter's tutorial to learn Flutter.

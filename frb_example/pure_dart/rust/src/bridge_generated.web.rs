@@ -417,7 +417,7 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
 impl Wire2Api<ApplicationEnv> for JsValue {
     fn wire2api(self) -> ApplicationEnv {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             1,
             "Expected 1 elements, got {}",
@@ -431,7 +431,7 @@ impl Wire2Api<ApplicationEnv> for JsValue {
 impl Wire2Api<ApplicationEnvVar> for JsValue {
     fn wire2api(self) -> ApplicationEnvVar {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             2,
             "Expected 2 elements, got {}",
@@ -444,7 +444,7 @@ impl Wire2Api<ApplicationEnvVar> for JsValue {
 impl Wire2Api<ApplicationSettings> for JsValue {
     fn wire2api(self) -> ApplicationSettings {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             4,
             "Expected 4 elements, got {}",
@@ -461,7 +461,7 @@ impl Wire2Api<ApplicationSettings> for JsValue {
 impl Wire2Api<Attribute> for JsValue {
     fn wire2api(self) -> Attribute {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             2,
             "Expected 2 elements, got {}",
@@ -477,7 +477,7 @@ impl Wire2Api<Attribute> for JsValue {
 impl Wire2Api<ConcatenateWith> for JsValue {
     fn wire2api(self) -> ConcatenateWith {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             1,
             "Expected 1 elements, got {}",
@@ -491,7 +491,7 @@ impl Wire2Api<ConcatenateWith> for JsValue {
 impl Wire2Api<Customized> for JsValue {
     fn wire2api(self) -> Customized {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             2,
             "Expected 2 elements, got {}",
@@ -516,7 +516,7 @@ impl Wire2Api<Distance> for JsValue {
 impl Wire2Api<ExoticOptionals> for JsValue {
     fn wire2api(self) -> ExoticOptionals {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             14,
             "Expected 14 elements, got {}",
@@ -639,7 +639,7 @@ impl Wire2Api<Measure> for JsValue {
 impl Wire2Api<MySize> for JsValue {
     fn wire2api(self) -> MySize {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             2,
             "Expected 2 elements, got {}",
@@ -654,7 +654,7 @@ impl Wire2Api<MySize> for JsValue {
 impl Wire2Api<MyStruct> for JsValue {
     fn wire2api(self) -> MyStruct {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             1,
             "Expected 1 elements, got {}",
@@ -668,7 +668,7 @@ impl Wire2Api<MyStruct> for JsValue {
 impl Wire2Api<MyTreeNode> for JsValue {
     fn wire2api(self) -> MyTreeNode {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             4,
             "Expected 4 elements, got {}",
@@ -685,7 +685,7 @@ impl Wire2Api<MyTreeNode> for JsValue {
 impl Wire2Api<NewTypeInt> for JsValue {
     fn wire2api(self) -> NewTypeInt {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             1,
             "Expected 1 elements, got {}",
@@ -697,7 +697,7 @@ impl Wire2Api<NewTypeInt> for JsValue {
 impl Wire2Api<Note> for JsValue {
     fn wire2api(self) -> Note {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             2,
             "Expected 2 elements, got {}",
@@ -712,7 +712,7 @@ impl Wire2Api<Note> for JsValue {
 impl Wire2Api<Numbers> for JsValue {
     fn wire2api(self) -> Numbers {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             1,
             "Expected 1 elements, got {}",
@@ -793,7 +793,7 @@ impl Wire2Api<Option<Vec<u8>>> for Option<Box<[u8]>> {
 impl Wire2Api<Sequences> for JsValue {
     fn wire2api(self) -> Sequences {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             1,
             "Expected 1 elements, got {}",
@@ -815,7 +815,7 @@ impl Wire2Api<Speed> for JsValue {
 impl Wire2Api<SumWith> for JsValue {
     fn wire2api(self) -> SumWith {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             1,
             "Expected 1 elements, got {}",
@@ -835,7 +835,7 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
 impl Wire2Api<UserId> for JsValue {
     fn wire2api(self) -> UserId {
         let self_ = self.dyn_into::<JsArray>().unwrap();
-        debug_assert_eq!(
+        assert_eq!(
             self_.length(),
             1,
             "Expected 1 elements, got {}",

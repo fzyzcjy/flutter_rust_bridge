@@ -11,7 +11,7 @@ import 'isolate.dart';
 export 'isolate.dart';
 
 final _instances = <Type>{};
-final _index = <String, int>{};
+final _streamSinkNameIndex = <String, int>{};
 
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
@@ -72,8 +72,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   @protected
   Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
     final func = task.constMeta.debugName;
-    final nextIndex =
-        _index.update(func, (value) => value + 1, ifAbsent: () => 0);
+    final nextIndex = _streamSinkNameIndex.update(func, (value) => value + 1,
+        ifAbsent: () => 0);
     final name = '__frb_streamsink_${func}_$nextIndex';
     final receivePort = broadcastPort(name);
     task.callFfi(receivePort.sendPort.nativePort);

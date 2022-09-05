@@ -5,9 +5,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 export 'package:js/js.dart';
 export 'package:js/js_util.dart' show promiseToFuture, getProperty;
 
-// ignore: camel_case_types
-typedef longint = BigInt;
-
 abstract class WasmModule {
   Object call([String? moduleName]);
 
@@ -18,16 +15,14 @@ abstract class WasmModule {
     return Future.value(module).then((module) => module as T);
   }
 
-  static FutureOr<WasmModule> initialize(
-          {required Modules kind, WasmModule Function()? module}) =>
+  static FutureOr<WasmModule> initialize({required Modules kind, WasmModule Function()? module}) =>
       kind.initializeModule(module);
 }
 
 abstract class Modules {
   const Modules();
 
-  const factory Modules.noModules({required String root}) =
-      _WasmBindgenNoModules;
+  const factory Modules.noModules({required String root}) = _WasmBindgenNoModules;
 
   FutureOr<WasmModule> initializeModule(WasmModule Function()? module);
 
@@ -36,8 +31,7 @@ abstract class Modules {
       case false:
         throw const MissingHeaderException();
       case null:
-        warn(
-            'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
+        warn('Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
         return;
     }
   }
@@ -96,8 +90,7 @@ extension WireSyncReturnStructExt on WireSyncReturnStruct {
   bool get isSuccess => this[1];
 }
 
-class FlutterRustBridgeWasmWireBase<T extends WasmModule>
-    extends FlutterRustBridgeWireBase {
+class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBridgeWireBase {
   final Future<T> init;
 
   FlutterRustBridgeWasmWireBase(FutureOr<T> module)

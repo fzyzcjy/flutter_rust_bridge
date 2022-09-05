@@ -10,7 +10,7 @@ type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         let api_struct = self.ir.get(self.context.ir_file);
-        let (fields_wasm, fields_io): (Vec<_>, Vec<_>) = api_struct
+        let fields = api_struct
             .fields
             .iter()
             .enumerate()
@@ -20,12 +20,13 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 } else {
                     String::new()
                 };
-                (
-                    format!("{} self_.get({}).wire2api()", field_, idx),
-                    format!("{} self.{}.wire2api()", field_, field.name.rust_style()),
-                )
+                Acc {
+                    wasm: format!("{} self_.get({}).wire2api()", field_, idx),
+                    io: format!("{} self.{}.wire2api()", field_, field.name.rust_style()),
+                    ..Default::default()
+                }
             })
-            .unzip();
+            .collect::<Acc<Vec<_>>>();
 
         let (left, right) = api_struct.brackets_pair();
         Acc {
@@ -33,16 +34,16 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 "{}{}{}{}",
                 self.ir.rust_api_type(),
                 left,
-                fields_io.join(","),
+                fields.io.join(","),
                 right
             )),
             wasm: Some(format!(
                 "let self_ = self.dyn_into::<JsArray>().unwrap();
-                debug_assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
+                assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
                 {}{}{}{}",
                 self.ir.rust_api_type(),
                 left,
-                fields_wasm.join(","),
+                fields.wasm.join(","),
                 right,
                 len = api_struct.fields.len(),
             )),
