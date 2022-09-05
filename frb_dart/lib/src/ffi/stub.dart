@@ -3,7 +3,7 @@ import 'dart:async';
 import 'io.dart' if (dart.library.html) 'web.dart'
     show DartPostCObject, WireSyncReturnStruct, NativePortType;
 export 'io.dart' if (dart.library.html) 'web.dart'
-    show ExternalLibrary, WireSyncReturnStruct, NativePortType;
+    show ExternalLibrary, WireSyncReturnStruct, NativePortType, bigint;
 import '../isolate.dart' show SendPort;
 
 /// This class, together with its subclasses, are only for internal usage.

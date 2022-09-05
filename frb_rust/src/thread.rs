@@ -20,7 +20,7 @@ pub use io::THREAD_POOL;
 
 #[cfg(wasm)]
 mod web {
-    use crate::{pool::WorkerPool, script_path};
+    use crate::{script_path, wasm_bindgen_src::pool::WorkerPool};
 
     use super::*;
 

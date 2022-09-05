@@ -223,21 +223,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
 
         let WrapInfo { port, mode, .. } = wrap_info;
 
-        // BroadcastChannel can't actually cross the thread border since
-        // it is not a transferable, but we can carry its name instead.
-        #[cfg(wasm)]
-        let (port, handle) = if let Some(channel) = port
-            .as_deref()
-            .and_then(wasm_bindgen::JsCast::dyn_ref::<web_sys::BroadcastChannel>)
-        {
-            (None, Some(crate::rust2dart::ChannelHandle(channel.name())))
-        } else {
-            (port, None)
-        };
-
         spawn!(|port: Option<MessagePort>| {
-            #[cfg(wasm)]
-            let port = port.or_else(|| handle.as_ref().map(crate::rust2dart::ChannelHandle::port));
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");

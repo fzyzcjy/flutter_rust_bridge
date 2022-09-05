@@ -13,7 +13,7 @@ macro_rules! transfer {
 
         #[cfg(target_family = "wasm")]
         {
-            $crate::ffi::TransferClosure::new(vec![], move |_: &[JsValue]| $block)
+            $crate::ffi::TransferClosure::new(vec![], vec![], move |_: &[JsValue]| $block)
         }
     }};
     (|$($param:ident: $ty:ty),*| $block:block) => {{
@@ -25,16 +25,18 @@ macro_rules! transfer {
         #[cfg(target_family = "wasm")]
         {
             use wasm_bindgen::JsValue;
+            use $crate::ffi::Transfer;
             #[allow(unused_variables)]
             let worker = move |transfer: &[JsValue]| {
                 let idx = 0;
                 $(
-                    let $param: $ty = $crate::ffi::FromDart::from_dart(&transfer[idx]);
+                    let $param = <$ty>::deserialize(&transfer[idx]);
                     let idx = idx + 1;
                 )*
                 $block
             };
-            $crate::ffi::TransferClosure::new(vec![$(<$ty>::into($param)),*], worker)
+            let transferables = [$($param.transferables()),*].concat();
+            $crate::ffi::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker)
         }
     }};
 }

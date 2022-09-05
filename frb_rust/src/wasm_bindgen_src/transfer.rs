@@ -1,6 +1,7 @@
-//! Code copied from the wasm_bindgen repository.
-
-use super::*;
+use crate::ffi::web::*;
+use js_sys::{global, Array};
+use std::iter::FromIterator;
+use web_sys::{DedicatedWorkerGlobalScope, Worker};
 
 impl TransferClosure<JsValue> {
     /// Posts a <code>[*mut [TransferClosurePayload], ...[JsValue]]</code> message to this worker.
@@ -8,13 +9,12 @@ impl TransferClosure<JsValue> {
     /// The worker's `onmessage` should run the corresponding [`receive_transfer_closure`]
     /// to receive the message.
     pub fn apply(self, worker: &Worker) -> Result<(), JsValue> {
-        let transfer = Array::from_iter(self.transfer);
-        let data = Array::from(&transfer);
+        let transfer = self.transfer.into_iter().filter(|value| value.is_truthy());
+        let transfer = Array::from_iter(transfer);
+        let data = Array::from_iter(self.data);
         // The worker is responsible for cleaning up the leak here.
         let payload = Box::into_raw(Box::new(TransferClosurePayload { func: self.closure }));
         data.unshift(&JsValue::from(payload as i32));
-        // Remove untransferables
-        let transfer = transfer.filter(&mut |val, _, _| val.is_truthy());
         worker
             .post_message_with_transfer(&data, &transfer)
             .map_err(|err| {

@@ -10,10 +10,8 @@ pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
-use web_sys::{DedicatedWorkerGlobalScope, Worker};
 
-mod wasm_bindgen_src;
-pub use wasm_bindgen_src::*;
+pub use crate::wasm_bindgen_src::transfer::*;
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
@@ -174,18 +172,27 @@ extern "C" {
 type RawClosure<T> = Box<dyn FnOnce(&[T]) + Send + 'static>;
 
 pub struct TransferClosure<T> {
-    transfer: Vec<T>,
-    closure: RawClosure<T>,
+    pub(crate) data: Vec<T>,
+    pub(crate) transfer: Vec<T>,
+    pub(crate) closure: RawClosure<T>,
 }
 
 pub struct TransferClosurePayload<T> {
-    func: RawClosure<T>,
+    pub(crate) func: RawClosure<T>,
 }
 
 impl TransferClosure<JsValue> {
-    pub fn new(transfer: Vec<JsValue>, closure: impl FnOnce(&[JsValue]) + Send + 'static) -> Self {
+    pub fn new(
+        data: Vec<JsValue>,
+        transfer: Vec<JsValue>,
+        closure: impl FnOnce(&[JsValue]) + Send + 'static,
+    ) -> Self {
         let closure = Box::new(closure);
-        Self { transfer, closure }
+        Self {
+            data,
+            transfer,
+            closure,
+        }
     }
 }
 
@@ -200,35 +207,68 @@ impl<T> ZeroCopyBuffer<Vec<T>> {
 }
 
 /// Internal implementations for transferables on WASM platforms.
-pub trait FromDart {
-    fn from_dart(value: &JsValue) -> Self;
+pub trait Transfer {
+    /// Recover the self value from a [JsValue].
+    fn deserialize(value: &JsValue) -> Self;
+    /// Transform the self value into a [JsValue].
+    fn serialize(self) -> JsValue;
+    /// Extract items that are valid to be passed as the "transfer" argument.
+    fn transferables(&self) -> Vec<JsValue>;
 }
 
-impl<T: FromDart> FromDart for Option<T> {
-    #[inline]
-    fn from_dart(value: &JsValue) -> Self {
-        (!value.is_null() && !value.is_undefined()).then(|| T::from_dart(value))
+impl<T: Transfer> Transfer for Option<T> {
+    fn deserialize(value: &JsValue) -> Self {
+        (!value.is_undefined() && !value.is_null()).then(|| T::deserialize(value))
+    }
+    fn serialize(self) -> JsValue {
+        self.map(T::serialize).unwrap_or_default()
+    }
+    fn transferables(&self) -> Vec<JsValue> {
+        self.as_ref().map(T::transferables).unwrap_or_default()
     }
 }
 
-macro_rules! delegate_from_dart {
-    ($($ty:ty)*) => {$(
-        impl FromDart for $ty {
-            #[inline]
-            fn from_dart(value: &JsValue) -> Self {
-                value.clone().unchecked_into()
-            }
+impl Transfer for PortLike {
+    fn deserialize(value: &JsValue) -> Self {
+        if let Some(name) = value.as_string() {
+            BroadcastChannel::new(&name).unwrap().unchecked_into()
+        } else if value.dyn_ref::<web_sys::MessagePort>().is_some() {
+            value.unchecked_ref::<Self>().clone()
+        } else {
+            panic!("Not a PortLike: {:?}", value)
         }
-    )*};
+    }
+    fn serialize(self) -> JsValue {
+        if let Some(channel) = self.dyn_ref::<BroadcastChannel>() {
+            channel.name().into()
+        } else {
+            self.into()
+        }
+    }
+    fn transferables(&self) -> Vec<JsValue> {
+        if let Some(port) = self.dyn_ref::<web_sys::MessagePort>() {
+            vec![port.clone().into()]
+        } else {
+            vec![]
+        }
+    }
 }
 
-delegate_from_dart! {
-    PortLike ArrayBuffer
+impl Transfer for ArrayBuffer {
+    fn deserialize(value: &JsValue) -> Self {
+        value.dyn_ref().cloned().unwrap()
+    }
+    fn serialize(self) -> JsValue {
+        self.into()
+    }
+    fn transferables(&self) -> Vec<JsValue> {
+        vec![self.into()]
+    }
 }
 
 #[wasm_bindgen]
 extern "C" {
-    /// Any object implementing the interface of [`web_sys::MessagePort`].
+    /// Objects implementing the interface of [`web_sys::MessagePort`].
     ///
     /// Attempts to coerce [`JsValue`]s into this interface using [`dyn_into`][JsCast::dyn_into]
     /// or [`dyn_ref`][JsCast::dyn_ref] will fail at runtime.

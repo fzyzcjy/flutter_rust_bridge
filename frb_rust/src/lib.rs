@@ -12,10 +12,11 @@ pub mod thread;
 pub mod handler;
 #[macro_use]
 mod macros;
-#[cfg(wasm)]
-mod pool;
 pub mod rust2dart;
 pub mod support;
+
+#[cfg(wasm)]
+mod wasm_bindgen_src;
 
 /// Use this struct in return type of your function, in order to tell the code generator
 /// the function should return synchronously. Otherwise, it is by default asynchronously.
