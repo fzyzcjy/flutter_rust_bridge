@@ -985,6 +985,21 @@ pub extern "C" fn wire_call_new_module_system(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_what_time_is_it(port_: i64, mine: *mut wire_FeatureChrono) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "what_time_is_it",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_mine = mine.wire2api();
+            move |task_callback| Ok(what_time_is_it(api_mine))
+        },
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1223,6 +1238,12 @@ pub struct wire_ExoticOptionals {
     attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
     nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
     newtypeint: *mut wire_NewTypeInt,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_FeatureChrono {
+    date: i64,
 }
 
 #[repr(C)]
@@ -1604,6 +1625,11 @@ pub extern "C" fn new_box_autoadd_f64_0(value: f64) -> *mut f64 {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_feature_chrono_0() -> *mut wire_FeatureChrono {
+    support::new_leak_box_ptr(wire_FeatureChrono::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_i32_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
@@ -1975,6 +2001,13 @@ impl Wire2Api<f64> for *mut f64 {
     }
 }
 
+impl Wire2Api<FeatureChrono> for *mut wire_FeatureChrono {
+    fn wire2api(self) -> FeatureChrono {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<FeatureChrono>::wire2api(*wrap).into()
+    }
+}
+
 impl Wire2Api<i32> for *mut i32 {
     fn wire2api(self) -> i32 {
         unsafe { *support::box_from_leak_ptr(self) }
@@ -2204,6 +2237,14 @@ impl Wire2Api<f32> for f32 {
 impl Wire2Api<f64> for f64 {
     fn wire2api(self) -> f64 {
         self
+    }
+}
+
+impl Wire2Api<FeatureChrono> for wire_FeatureChrono {
+    fn wire2api(self) -> FeatureChrono {
+        FeatureChrono {
+            date: self.date.wire2api(),
+        }
     }
 }
 
@@ -2633,6 +2674,14 @@ impl NewWithNullPtr for wire_ExoticOptionals {
             attributes_nullable: core::ptr::null_mut(),
             nullable_attributes: core::ptr::null_mut(),
             newtypeint: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_FeatureChrono {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            date: Default::default(),
         }
     }
 }

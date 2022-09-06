@@ -284,6 +284,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCallNewModuleSystemConstMeta;
 
+  Future<int> whatTimeIsIt({required FeatureChrono mine, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kWhatTimeIsItConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -501,6 +505,14 @@ class ExoticOptionals {
     required this.attributesNullable,
     this.nullableAttributes,
     this.newtypeint,
+  });
+}
+
+class FeatureChrono {
+  final int date;
+
+  FeatureChrono({
+    required this.date,
   });
 }
 
@@ -1627,6 +1639,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
         argNames: [],
       );
 
+  Future<int> whatTimeIsIt({required FeatureChrono mine, dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_what_time_is_it(port_, _api2wire_box_autoadd_feature_chrono(mine)),
+        parseSuccessData: _wire2api_i64,
+        constMeta: kWhatTimeIsItConstMeta,
+        argValues: [mine],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kWhatTimeIsItConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "what_time_is_it",
+        argNames: ["mine"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => inner.wire_sum__method__SumWith(
@@ -1819,6 +1844,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
 
   ffi.Pointer<ffi.Double> _api2wire_box_autoadd_f64(double raw) {
     return inner.new_box_autoadd_f64_0(_api2wire_f64(raw));
+  }
+
+  ffi.Pointer<wire_FeatureChrono> _api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
+    final ptr = inner.new_box_autoadd_feature_chrono_0();
+    _api_fill_to_wire_feature_chrono(raw, ptr.ref);
+    return ptr;
   }
 
   ffi.Pointer<ffi.Int32> _api2wire_box_autoadd_i32(int raw) {
@@ -2227,6 +2258,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_feature_chrono(FeatureChrono apiObj, ffi.Pointer<wire_FeatureChrono> wireObj) {
+    _api_fill_to_wire_feature_chrono(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
@@ -2328,6 +2363,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl
     wireObj.attributes_nullable = _api2wire_list_opt_box_autoadd_attribute(apiObj.attributesNullable);
     wireObj.nullable_attributes = _api2wire_opt_list_opt_box_autoadd_attribute(apiObj.nullableAttributes);
     wireObj.newtypeint = _api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
+  }
+
+  void _api_fill_to_wire_feature_chrono(FeatureChrono apiObj, wire_FeatureChrono wireObj) {
+    wireObj.date = _api2wire_i64(apiObj.date);
   }
 
   void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, wire_KitchenSink wireObj) {
@@ -4072,6 +4111,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_call_new_module_system');
   late final _wire_call_new_module_system = _wire_call_new_module_systemPtr.asFunction<void Function(int)>();
 
+  void wire_what_time_is_it(
+    int port_,
+    ffi.Pointer<wire_FeatureChrono> mine,
+  ) {
+    return _wire_what_time_is_it(
+      port_,
+      mine,
+    );
+  }
+
+  late final _wire_what_time_is_itPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_FeatureChrono>)>>(
+          'wire_what_time_is_it');
+  late final _wire_what_time_is_it =
+      _wire_what_time_is_itPtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureChrono>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -4309,6 +4364,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_f64_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64_0');
   late final _new_box_autoadd_f64_0 = _new_box_autoadd_f64_0Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+
+  ffi.Pointer<wire_FeatureChrono> new_box_autoadd_feature_chrono_0() {
+    return _new_box_autoadd_feature_chrono_0();
+  }
+
+  late final _new_box_autoadd_feature_chrono_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_FeatureChrono> Function()>>('new_box_autoadd_feature_chrono_0');
+  late final _new_box_autoadd_feature_chrono_0 =
+      _new_box_autoadd_feature_chrono_0Ptr.asFunction<ffi.Pointer<wire_FeatureChrono> Function()>();
 
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32_0(
     int value,
@@ -5110,6 +5174,11 @@ class wire_Measure extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<MeasureKind> kind;
+}
+
+class wire_FeatureChrono extends ffi.Struct {
+  @ffi.Int64()
+  external int date;
 }
 
 class wire_SumWith extends ffi.Struct {
