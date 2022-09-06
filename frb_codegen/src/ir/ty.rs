@@ -47,6 +47,7 @@ impl IrType {
     pub fn as_primitive(&self) -> Option<&IrTypePrimitive> {
         match self {
             Primitive(repr) | Delegate(IrTypeDelegate::PrimitiveEnum { repr, .. }) => Some(repr),
+            IrType::Delegate(IrTypeDelegate::DateTime) => self.as_primitive(),
             _ => None,
         }
     }

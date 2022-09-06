@@ -11,7 +11,7 @@ pub enum IrTypeDelegate {
         /// Allows for `#[repr]`'s other than [i32]
         repr: IrTypePrimitive,
     },
-    DateTime(IrTypeDateTime),
+    DateTime,
 }
 
 impl IrTypeDelegate {
@@ -27,9 +27,7 @@ impl IrTypeDelegate {
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::PrimitiveEnum { repr, .. } => IrType::Primitive(repr.clone()),
-            IrTypeDelegate::DateTime(repr) => {
-                IrType::Delegate(IrTypeDelegate::DateTime(repr.clone()))
-            }
+            IrTypeDelegate::DateTime => IrType::Delegate(IrTypeDelegate::DateTime),
         }
     }
 }
@@ -47,7 +45,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
-            IrTypeDelegate::DateTime(ir) => ir.safe_ident(),
+            IrTypeDelegate::DateTime => "DateTime".to_string(),
         }
     }
 
@@ -57,7 +55,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
-            IrTypeDelegate::DateTime(ir) => ir.dart_api_type(),
+            IrTypeDelegate::DateTime => "DateTime".to_string(),
         }
     }
 
@@ -76,7 +74,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
-            IrTypeDelegate::DateTime(ir) => ir.rust_api_type(),
+            IrTypeDelegate::DateTime => "chrono::DateTime<chrono::Utc>".to_owned(),
         }
     }
 
