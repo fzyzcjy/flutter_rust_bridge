@@ -30,6 +30,7 @@ class Int64List extends _TypedList<BigInt> {
   @override
   final $data.Int64List inner;
   Int64List.from(this.inner);
+  factory Int64List(int length) => Int64List.from($data.Int64List(length));
   Int64List.fromList(List<int> ints) : inner = $data.Int64List.fromList(ints);
   Int64List.view($data.ByteBuffer buffer, [int offsetInBytes = 0, int? length])
       : inner = $data.Int64List.view(buffer, offsetInBytes, length);
@@ -63,6 +64,7 @@ class Uint64List extends _TypedList<BigInt> {
   @override
   final $data.Uint64List inner;
   Uint64List.from(this.inner);
+  factory Uint64List(int length) => Uint64List.from($data.Uint64List(length));
   Uint64List.fromList(List<int> ints) : inner = $data.Uint64List.fromList(ints);
   Uint64List.view($data.ByteBuffer buffer, [int offsetInBytes = 0, int? length])
       : inner = $data.Uint64List.view(buffer, offsetInBytes, length);

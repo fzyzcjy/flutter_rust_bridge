@@ -1,5 +1,3 @@
-// #![cfg_attr(nightly, feature(generic_const_exprs))]
-
 pub use flutter_rust_bridge_macros::frb;
 pub use handler::{FfiCallMode, Handler, WrapInfo};
 pub use rust2dart::StreamSink;

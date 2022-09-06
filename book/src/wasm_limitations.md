@@ -16,6 +16,8 @@
   unimplemented by the Dart language developers, perhaps due to the differences between `int` and `BigInt`.
   This library provides a barebones pure Dart shim whose behavior may differ from the specifications,
   so please create an issue/PR if you encounter any significant digression.
+- `Int64List` and `Uint64List` arithmetics clamp on native platforms, but wrap on the Web. If your use-case
+  requires precision around large integer values, please be mindful of these platform-specific differences.
 - Support for the various components of WASM is not universal among browsers. Here is a (non-exhaustive) list
   of trackers for how widely available some of the features are across browsers:
   - [`MessagePort` error events](https://caniuse.com/mdn-api_messageport_messageerror_event)
