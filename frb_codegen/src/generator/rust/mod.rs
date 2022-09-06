@@ -82,7 +82,7 @@ impl<'a> Generator<'a> {
         let distinct_output_types = ir_file.distinct_types(false, true);
 
         lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#.to_string());
-        lines.push(CODE_HEADER.to_string());
+        lines.push(code_header());
 
         lines.push(String::new());
         lines.push(format!("use crate::{}::*;", rust_wire_mod));

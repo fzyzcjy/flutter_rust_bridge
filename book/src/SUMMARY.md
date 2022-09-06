@@ -30,6 +30,7 @@
   - [Object pools](feature/object_pool.md)
   - [WASM](feature/wasm.md)
   - [Miscellaneous](feature/misc.md)
+  - [Logging](feature/logging.md)
 
 # Part II: User Guide
 

@@ -1,3 +1,7 @@
+## 1.43.0
+
+* Add crate version to generated code header #666 (thanks @Roms1383)
+
 ## 1.42.0
 
 * Refactor and enhance SyncReturn to support more types #663 (thanks @SoLongAndThanksForAllThePizza)
