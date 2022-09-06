@@ -236,6 +236,13 @@ impl<'a> TypeParser<'a> {
                         other => IrType::Optional(IrTypeOptional::new_ptr(other)),
                     })
                 }
+                "DateTime" => {
+                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Utc")
+                    {
+                        return Some(IrType::Primitive(IrTypePrimitive::I64));
+                    }
+                    panic!("Only DateTime<Utc> supported at the moment");
+                }
                 _ => None,
             }
         } else {

@@ -9,6 +9,7 @@ type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
     fn api2wire_body(&self, block_index: BlockIndex) -> Option<String> {
         Some(match self.ir {
+            IrTypeDelegate::DateTime(_) => "return raw.microsecondsSinceEpoch;".to_string(),
             IrTypeDelegate::String => {
                 "return _api2wire_uint_8_list(utf8.encoder.convert(raw));".to_string()
             }
@@ -34,6 +35,9 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         match &self.ir {
+            IrTypeDelegate::DateTime(_) => {
+                "return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: true);".to_owned()
+            }
             IrTypeDelegate::String | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_wire2api_simple_type_cast(&self.ir.dart_api_type())
             }

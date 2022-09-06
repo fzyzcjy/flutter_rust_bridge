@@ -827,3 +827,12 @@ pub fn call_old_module_system() -> OldSimpleStruct {
 pub fn call_new_module_system() -> NewSimpleStruct {
     use_new_module_system(1)
 }
+
+#[derive(Debug, Clone)]
+pub struct FeatureChrono {
+    pub date: chrono::DateTime<chrono::Utc>,
+}
+
+pub fn what_time_is_it(mine: FeatureChrono) -> chrono::DateTime<chrono::Utc> {
+    mine.date
+}

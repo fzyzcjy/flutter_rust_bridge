@@ -49,6 +49,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     variants, enu.name
                 )
             }
+            IrTypeDelegate::DateTime(_) => "let ts: i64 = self.wire2api();
+              chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(ts / 1_000_000 as i64, 0u32), chrono::Utc)".into()
         })
     }
 
@@ -103,6 +105,18 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     }}
                 }}",
                 name, self_ref, variants
+            );
+        }
+        if let IrTypeDelegate::DateTime(_) = &self.ir {
+            return format!(
+                "impl support::IntoDart for chrono::DateTime<chrono::Utc> {{
+            fn into_dart(self) -> support::DartCObject {{
+              return DartCObject {{
+                ty: DartCObjectType::DartInt64,
+                value: DartCObjectValue {{ as_i64: self.timestamp_micros() }}
+              }}
+            }}
+          }}"
             );
         }
 
