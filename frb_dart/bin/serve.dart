@@ -10,8 +10,21 @@ import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:puppeteer/puppeteer.dart';
 import 'package:colorize/colorize.dart';
+import 'package:yaml/yaml.dart';
 
 part 'serve.g.dart';
+
+final YamlMap? pubspec = () {
+  final pubspecPath = Platform.script.resolve('../pubspec.yaml');
+  final pubpsec = File(pubspecPath.toFilePath());
+  try {
+    return loadYaml(pubpsec.readAsStringSync(), sourceUrl: pubspecPath);
+  } catch (err) {
+    eprint('Failed to read pubspec: $err');
+  }
+}();
+
+String get version => pubspec?['version'] ?? '';
 
 final which = Platform.isWindows ? 'where.exe' : 'which';
 final open = const {
@@ -24,7 +37,7 @@ final open = const {
 String err(String msg) =>
     stderr.supportsAnsiEscapes ? Colorize(msg).red().bold().toString() : msg;
 
-void eprint([Object? msg = '']) {
+void eprint([Object? msg = 'unspecified']) {
   stderr.writeln('${err('error')}: $msg');
 }
 
@@ -144,6 +157,7 @@ void main(List<String> args) async {
   final config = parseOpts(args);
   if (config.help) {
     print("""
+$exec $version
 Develop Rust WASM modules with cross-origin isolation.
 
 USAGE:
