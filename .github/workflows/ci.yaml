@@ -340,9 +340,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
         with:
-          sdk: '2.17.6' # TODO upgrade later #655
+          channel: "stable"
+          flutter-version: '3.0.5' # TODO upgrade later #655
+          architecture: x64
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
       - name: Build codegen
