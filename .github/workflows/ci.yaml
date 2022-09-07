@@ -200,41 +200,42 @@ jobs:
         run: cargo ndk -t x86_64 -o ../android/app/src/main/jniLibs build
 
       - name: Run Flutter integration tests
-        id: run_flutter_integration_test
         continue-on-error: true
-        timeout-minutes: 30
-        uses: reactivecircus/android-emulator-runner@v2
+        timeout-minutes: 20
+        uses: Wandalen/wretry.action@v1.0.25
         with:
-          api-level: 29
-          arch: x86_64
-          profile: ${{ matrix.device }}
-          script: |
-            cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+          action: reactivecircus/android-emulator-runner@v2
+          with: |
+            api-level: 29
+            arch: x86_64
+            profile: ${{ matrix.device }}
+            script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
 
-      # flaky GitHub Action testing environment... have to retry
-      # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
-      - name: Run Flutter integration tests (retry)
-        id: run_flutter_integration_test_retry_1
-        if: steps.run_flutter_integration_test.outcome == 'failure'
-        continue-on-error: true
-        timeout-minutes: 30
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          arch: x86_64
-          profile: ${{ matrix.device }}
-          script: |
-            cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+      # # flaky GitHub Action testing environment... have to retry
+      # # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
+      # - name: Run Flutter integration tests (retry)
+      #   id: run_flutter_integration_test_retry_1
+      #   if: steps.run_flutter_integration_test.outcome == 'failure'
+      #   continue-on-error: true
+      #   timeout-minutes: 30
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 29
+      #     arch: x86_64
+      #     profile: ${{ matrix.device }}
+      #     script: |
+      #       cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
 
-      # https://github.community/t/how-to-retry-a-failed-step-in-github-actions-workflow/125880
-      - name: Set status
-        if: always()
-        run: |
-          if ${{ steps.run_flutter_integration_test.outcome=='success' || steps.run_flutter_integration_test_retry_1.outcome=='success' }}; then
-             echo fine
-          else
-             exit 1
-          fi
+      # # https://github.community/t/how-to-retry-a-failed-step-in-github-actions-workflow/125880
+      # - name: Set status
+      #   if: always()
+      #   run: |
+      #     if ${{ steps.run_flutter_integration_test.outcome=='success' || steps.run_flutter_integration_test_retry_1.outcome=='success' }}; then
+      #        echo fine
+      #     else
+      #        exit 1
+      #     fi
+
 
   flutter_windows_test:
     name: Flutter (Windows) integration test
@@ -397,17 +398,20 @@ jobs:
       - name: Setup Dart dependencies
         run: dart pub get
         working-directory: frb_dart
-      - name: Run tests
-        working-directory: frb_example/pure_dart/dart
-        timeout-minutes: 20
-        run: dart pub get &&
-          dart run ../../../frb_dart/bin/serve.dart
-          -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
       - name: Run library unit tests
         working-directory: ./frb_dart
         run:
+          dart pub get &&
           dart test test/*.dart &&
           dart test -p chrome test/*.dart
+      - name: Run tests
+        timeout-minutes: 20
+        uses: Wandalen/wretry.action@v1.0.25
+        with:
+          command:
+            dart run ../../../frb_dart/bin/serve.dart
+            -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
+          current_path: frb_example/pure_dart/dart
 
 
           
