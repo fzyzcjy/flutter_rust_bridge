@@ -59,3 +59,7 @@ Same as Windows. If you install Flutter through `snap`, please be wary of [#53](
 ### MacOS app
 
 Same as Windows. (P.S. Under the hood, `cargo-xcode` is used to automate the process)
+
+### Web (as a webpage)
+
+Doc is [WIP](https://github.com/fzyzcjy/flutter_rust_bridge/issues/682), but the feature is done.
