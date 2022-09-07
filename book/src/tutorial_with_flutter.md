@@ -62,4 +62,5 @@ Same as Windows. (P.S. Under the hood, `cargo-xcode` is used to automate the pro
 
 ### Web (as a webpage)
 
-Doc is [WIP](https://github.com/fzyzcjy/flutter_rust_bridge/issues/682), but the feature is done.
+Install `flutter_rust_bridge_serve` to simplify the process of building and serving a WASM binary.
+See [Web setup](template/setup_web.md) for more details.
