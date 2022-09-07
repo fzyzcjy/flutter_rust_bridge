@@ -1,12 +1,12 @@
 use crate::generator::dart::ty::*;
 use crate::ir::*;
+use crate::target::Acc;
 use crate::type_dart_generator_struct;
-use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeSyncReturnGenerator, IrTypeSyncReturn);
 
 impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
-    fn api2wire_body(&self, _: BlockIndex) -> Option<String> {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
         unimplemented!("SyncReturn generator for Dart: api2wire_body is not supported")
     }
 

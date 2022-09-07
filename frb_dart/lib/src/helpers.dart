@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter_rust_bridge/src/basic.dart';
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:meta/meta.dart';
+export 'ffi.dart';
 
 /// Allow custom setup hooks before ffi can be executed.
 /// All other ffi calls will wait (async) until the setup ffi finishes.
@@ -89,6 +90,40 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
   /// The time limit for methods using [executeNormal]. Return null means *disable* this functionality.
   @protected
   Duration? get timeLimitForExecuteNormal;
+}
+
+/// Thrown when the browser is not run in a [cross-origin isolated] environment.
+///
+/// [cross-origin isolated]: https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated
+class MissingHeaderException implements Exception {
+  const MissingHeaderException();
+  static const _message = '''
+Buffers cannot be shared due to missing cross-origin headers.
+Make sure your web server responds with the following headers:
+- Cross-Origin-Opener-Policy: same-origin
+- Cross-Origin-Embedder-Policy: credentialless OR require-corp
+
+If running from Flutter, consider `flutter build web` and running a custom static-file server.''';
+
+  @override
+  String toString() => _message;
+}
+
+class PlatformMismatchException implements Exception {
+  const PlatformMismatchException();
+  static const _wasm = 'Not implemented on non-WASM platforms';
+
+  @override
+  String toString() => _wasm;
+}
+
+class UnmodifiableTypedListException implements Exception {
+  const UnmodifiableTypedListException();
+
+  static const _message = 'Cannot modify the length of typed lists.';
+
+  @override
+  String toString() => _message;
 }
 
 bool uint8ListToBool(Uint8List raw) {

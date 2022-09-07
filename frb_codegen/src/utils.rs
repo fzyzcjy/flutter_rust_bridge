@@ -1,8 +1,11 @@
 use std::collections::HashSet;
+use std::ffi::OsStr;
 use std::fmt::Display;
 use std::fs;
 use std::hash::Hash;
 use std::path::Path;
+
+use anyhow::anyhow;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
@@ -62,10 +65,12 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
         } else {
             ("symbols", "have")
         };
-        panic!(
+        return Err(anyhow!(
             "{} [{}] {} already been defined",
-            symbol_str, duplicated_symbols, verb_str
-        );
+            symbol_str,
+            duplicated_symbols,
+            verb_str
+        ));
     }
 
     Ok(all_symbols)
@@ -81,5 +86,13 @@ impl BlockIndex {
 impl Display for BlockIndex {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.0)
+    }
+}
+
+#[extend::ext]
+impl std::path::Path {
+    #[inline]
+    fn file_name_str(&self) -> Option<&str> {
+        self.file_name().and_then(OsStr::to_str)
     }
 }

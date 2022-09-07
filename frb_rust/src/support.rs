@@ -4,8 +4,7 @@
 
 use std::mem;
 
-pub use allo_isolate::ffi::DartCObject;
-pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
+pub use crate::ffi::*;
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
@@ -42,28 +41,35 @@ pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
 }
 
+/// Cast a byte buffer into a boxed slice of the target type without making any copies.
+/// Panics if the cast fails.
+pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
+    let buf = Box::leak(buffer.into_boxed_slice());
+    match bytemuck::try_cast_slice_mut(buf) {
+        Ok(buf) => unsafe { Box::from_raw(buf) },
+        Err(err) => {
+            // clean up before panicking
+            unsafe { core::ptr::drop_in_place(buf) }
+            panic!("cast error: {}", err);
+        }
+    }
+}
+
 /// NOTE for maintainer: Please keep this struct in sync with `DUMMY_WIRE_CODE_FOR_BINDGEN`
 /// in the code generator
 #[repr(C)]
+#[cfg(not(wasm))]
 pub struct WireSyncReturnStruct {
     pub ptr: *mut u8,
     pub len: i32,
     pub success: bool,
 }
 
-impl From<WireSyncReturnData> for WireSyncReturnStruct {
-    fn from(data: WireSyncReturnData) -> Self {
-        let (ptr, len) = into_leak_vec_ptr(data.0);
-        WireSyncReturnStruct {
-            ptr,
-            len,
-            success: true,
-        }
-    }
-}
+#[cfg(wasm)]
+pub type WireSyncReturnStruct = wasm_bindgen::JsValue;
 
 /// Safe version of [`WireSyncReturnStruct`].
-pub struct WireSyncReturnData(Vec<u8>);
+pub struct WireSyncReturnData(pub(crate) Vec<u8>);
 
 impl From<Vec<u8>> for WireSyncReturnData {
     fn from(data: Vec<u8>) -> Self {

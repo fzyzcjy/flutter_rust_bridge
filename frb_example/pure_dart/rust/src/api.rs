@@ -2,12 +2,13 @@
 
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::{Arc, Mutex};
-use std::thread;
+use std::thread::sleep;
 use std::time::Duration;
 
 use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
+use lazy_static::lazy_static;
 
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
@@ -219,13 +220,14 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
     // just to show that, you can send data to sink even in other threads
     let cnt2 = cnt.clone();
     let sink2 = sink.clone();
-    thread::spawn(move || {
+
+    spawn!(|| {
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
             let msg = format!("(thread=child, i={}, old_cnt={})", i, old_cnt);
             format!("send data to sink msg={}", msg);
-            sink2.add(msg);
-            thread::sleep(Duration::from_millis(100));
+            let _ = sink2.add(msg);
+            sleep(Duration::from_millis(100));
         }
         sink2.close();
     });
@@ -234,8 +236,8 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
         let old_cnt = cnt.fetch_add(1, Ordering::Relaxed);
         let msg = format!("(thread=normal, i={}, old_cnt={})", i, old_cnt);
         format!("send data to sink msg={}", msg);
-        sink.add(msg);
-        thread::sleep(Duration::from_millis(50));
+        let _ = sink.add(msg);
+        sleep(Duration::from_millis(50));
     }
 
     Ok(())
@@ -311,7 +313,6 @@ pub struct ExoticOptionals {
     pub int8list: Option<Vec<i8>>,
     pub uint8list: Option<Vec<u8>>,
     pub int32list: Option<Vec<i32>>,
-    pub int64list: Option<Vec<i64>>,
     pub float32list: Option<Vec<f32>>,
     pub float64list: Option<Vec<f64>>,
     pub attributes: Option<Vec<Attribute>>,
@@ -335,7 +336,6 @@ pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticO
         int8list: manipulate_list(opt.int8list, 0),
         uint8list: manipulate_list(opt.uint8list, 0),
         int32list: manipulate_list(opt.int32list, 0),
-        int64list: manipulate_list(opt.int64list, 0),
         float32list: manipulate_list(opt.float32list, 0.),
         float64list: manipulate_list(opt.float64list, 0.),
         attributes: Some({
@@ -526,7 +526,6 @@ pub use external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
     Numbers, Sequences,
 };
-use lazy_static::lazy_static;
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
@@ -624,10 +623,12 @@ pub fn next_user_id(user_id: UserId) -> UserId {
 }
 
 // event listener test
+
 lazy_static! {
-    static ref EVENT_LISTENER: Arc<Mutex<Option<StreamSink<Event>>>> = Default::default();
+    static ref EVENTS: Mutex<Option<StreamSink<Event>>> = Default::default();
 }
 
+#[frb(dart_metadata = ("freezed"))]
 #[derive(Clone)]
 pub struct Event {
     pub address: String,
@@ -635,25 +636,26 @@ pub struct Event {
 }
 
 pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
-    (*EVENT_LISTENER.lock().unwrap()) = Some(listener);
-    Ok(())
+    match EVENTS.lock() {
+        Ok(mut guard) => {
+            *guard = Some(listener);
+            Ok(())
+        }
+        Err(err) => Err(anyhow!("Could not register event listener: {}", err)),
+    }
 }
 
 pub fn close_event_listener() {
-    if let Some(ref listener) = *EVENT_LISTENER.lock().unwrap() {
-        listener.close();
-    } else {
-        return;
+    if let Ok(Some(sink)) = EVENTS.lock().map(|mut guard| guard.take()) {
+        sink.close();
     }
-    (*EVENT_LISTENER.lock().unwrap()) = None;
 }
 
-pub fn create_event() {
-    if let Some(ref listener) = *EVENT_LISTENER.lock().unwrap() {
-        listener.add(Event {
-            address: "something".into(),
-            payload: "payload".into(),
-        });
+pub fn create_event(address: String, payload: String) {
+    if let Ok(mut guard) = EVENTS.lock() {
+        if let Some(sink) = guard.as_mut() {
+            sink.add(Event { address, payload });
+        }
     }
 }
 
@@ -668,9 +670,9 @@ pub fn handle_stream_sink_at_1(
     max: u32,
     sink: StreamSink<Log>,
 ) -> Result<(), anyhow::Error> {
-    std::thread::spawn(move || {
+    spawn!(|| {
         for i in 0..max {
-            sink.add(Log { key, value: i });
+            let _ = sink.add(Log { key, value: i });
         }
         sink.close();
     });
@@ -735,7 +737,7 @@ impl ConcatenateWith {
         sink: StreamSink<Log2>,
     ) -> Result<(), anyhow::Error> {
         let a = self.a.clone();
-        std::thread::spawn(move || {
+        spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
@@ -748,7 +750,7 @@ impl ConcatenateWith {
     }
 
     pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
-        std::thread::spawn(move || {
+        spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
@@ -762,7 +764,7 @@ impl ConcatenateWith {
         max: u32,
         sink: StreamSink<Log2>,
     ) -> Result<(), anyhow::Error> {
-        std::thread::spawn(move || {
+        spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
@@ -777,7 +779,7 @@ impl ConcatenateWith {
     pub fn handle_some_static_stream_sink_single_arg(
         sink: StreamSink<u32>,
     ) -> Result<(), anyhow::Error> {
-        std::thread::spawn(move || {
+        spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
@@ -826,4 +828,16 @@ pub fn call_old_module_system() -> OldSimpleStruct {
 }
 pub fn call_new_module_system() -> NewSimpleStruct {
     use_new_module_system(1)
+}
+
+pub struct BigBuffers {
+    pub int64: Vec<i64>,
+    pub uint64: Vec<u64>,
+}
+
+pub fn handle_big_buffers() -> BigBuffers {
+    BigBuffers {
+        int64: vec![i64::MIN, i64::MAX],
+        uint64: vec![u64::MAX],
+    }
 }

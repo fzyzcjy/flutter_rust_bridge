@@ -1,19 +1,15 @@
 //! Wrappers and executors for Rust functions.
 
 use std::any::Any;
-use std::mem::ManuallyDrop;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
-use allo_isolate::IntoDart;
+use crate::ffi::{IntoDart, MessagePort};
 use anyhow::Result;
-use lazy_static::lazy_static;
-use parking_lot::Mutex;
-use threadpool::ThreadPool;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
 use crate::support::{WireSyncReturnData, WireSyncReturnStruct};
-use crate::SyncReturn;
+use crate::{spawn, SyncReturn};
 
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]
@@ -30,7 +26,7 @@ pub enum FfiCallMode {
 #[derive(Clone)]
 pub struct WrapInfo {
     /// A Dart `SendPort`. [None] if the mode is [FfiCallMode::Sync].
-    pub port: Option<i64>,
+    pub port: Option<MessagePort>,
     /// Usually the name of the function.
     pub debug_name: &'static str,
     /// The call mode of this function.
@@ -136,7 +132,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self.executor.execute_sync(wrap_info, sync_task) {
-                    Ok(data) => WireSyncReturnStruct::from(WireSyncReturnData::from(data.0)),
+                    Ok(data) => wire_sync_from_data(WireSyncReturnData::from(data.0), true),
                     Err(err) => self
                         .error_handler
                         .handle_error_sync(Error::ResultError(err)),
@@ -145,14 +141,20 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             catch_unwind_result
                 .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
         })
-        .unwrap_or_else(|_| WireSyncReturnStruct {
-            // return the simplest thing possible. Normally the inner [catch_unwind] should catch
-            // panic. If no, here is our *LAST* chance before encountering undefined behavior.
-            // We just return this data that does not have much sense, but at least much better
-            // than let panic happen across FFI boundary - which is undefined behavior.
-            ptr: ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
-            len: 0,
-            success: false,
+        .unwrap_or_else(|_| {
+            #[cfg(not(wasm))]
+            return WireSyncReturnStruct {
+                // return the simplest thing possible. Normally the inner [catch_unwind] should catch
+                // panic. If no, here is our *LAST* chance before encountering undefined behavior.
+                // We just return this data that does not have much sense, but at least much better
+                // than let panic happen across FFI boundary - which is undefined behavior.
+                ptr: core::mem::ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
+                len: 0,
+                success: false,
+            };
+
+            #[cfg(wasm)]
+            return vec![wasm_bindgen::JsValue::null(), false.into_dart()].into_dart();
         })
     }
 }
@@ -200,26 +202,23 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
         TaskRet: IntoDart,
     {
-        const NUM_WORKERS: usize = 4;
-        lazy_static! {
-            static ref THREAD_POOL: Mutex<ThreadPool> = Mutex::new(ThreadPool::with_name(
-                "frb_executor".to_string(),
-                NUM_WORKERS
-            ));
-        }
-
         let eh = self.error_handler;
         let eh2 = self.error_handler;
-        THREAD_POOL.lock().execute(move || {
-            let wrap_info2 = wrap_info.clone();
-            let thread_result = panic::catch_unwind(move || {
-                let rust2dart = Rust2Dart::new(wrap_info2.port.unwrap());
 
-                let ret = task(TaskCallback::new(rust2dart)).map(|ret| ret.into_dart());
+        let WrapInfo { port, mode, .. } = wrap_info;
+
+        spawn!(|port: Option<MessagePort>| {
+            let port2 = port.as_ref().cloned();
+            let thread_result = panic::catch_unwind(move || {
+                let port2 = port2.expect("(worker) thread");
+                #[allow(clippy::clone_on_copy)]
+                let rust2dart = Rust2Dart::new(port2.clone());
+
+                let ret = task(TaskCallback::new(rust2dart.clone())).map(IntoDart::into_dart);
 
                 match ret {
                     Ok(result) => {
-                        match wrap_info2.mode {
+                        match mode {
                             FfiCallMode::Normal => {
                                 rust2dart.success(result);
                             }
@@ -232,13 +231,13 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         }
                     }
                     Err(error) => {
-                        eh2.handle_error(wrap_info2.port.unwrap(), Error::ResultError(error));
+                        eh2.handle_error(port2, Error::ResultError(error));
                     }
                 };
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error(wrap_info.port.unwrap(), Error::Panic(error));
+                eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
         });
     }
@@ -297,7 +296,7 @@ impl Error {
 /// or to an external logging service.
 pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     /// The default error handler.
-    fn handle_error(&self, port: i64, error: Error);
+    fn handle_error(&self, port: MessagePort, error: Error);
 
     /// Special handler only used for synchronous code.
     fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct;
@@ -308,15 +307,27 @@ pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
 pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
-    fn handle_error(&self, port: i64, error: Error) {
+    fn handle_error(&self, port: MessagePort, error: Error) {
         Rust2Dart::new(port).error(error.code().to_string(), error.message());
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct {
-        let mut error_struct = WireSyncReturnStruct::from(WireSyncReturnData::from(
-            format!("{}: {}", error.code(), error.message()).into_bytes(),
-        ));
-        error_struct.success = false;
-        error_struct
+        wire_sync_from_data(
+            WireSyncReturnData::from(format!("{}: {}", error.code(), error.message()).into_bytes()),
+            false,
+        )
+    }
+}
+
+fn wire_sync_from_data(data: WireSyncReturnData, success: bool) -> WireSyncReturnStruct {
+    #[cfg(not(wasm))]
+    {
+        let (ptr, len) = crate::support::into_leak_vec_ptr(data.0);
+        WireSyncReturnStruct { ptr, len, success }
+    }
+
+    #[cfg(wasm)]
+    {
+        vec![data.0.into_dart(), success.into_dart()].into_dart()
     }
 }

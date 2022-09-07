@@ -1,15 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:ffi' as ffi;
-import 'dart:ffi';
-import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
 import 'package:meta/meta.dart';
+import 'ffi.dart';
+export 'ffi.dart';
+import 'isolate.dart';
+export 'isolate.dart';
 
 final _instances = <Type>{};
+final _streamSinkNameIndex = <String, int>{};
 
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
@@ -26,13 +28,15 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   void _sanityCheckSingleton() {
     if (_instances.contains(runtimeType)) {
       throw Exception(
-          'Subclasses of `FlutterRustBridgeBase` should be singletons - there should not be two instances (runtimeType=$runtimeType)');
+        'Subclasses of `FlutterRustBridgeBase` should be singletons - '
+        'there should not be two instances (runtimeType=$runtimeType)',
+      );
     }
     _instances.add(runtimeType);
   }
 
   void _setUpRustToDartComm() {
-    inner.store_dart_post_cobject(NativeApi.postCObject.cast());
+    inner.storeDartPostCObject();
   }
 
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
@@ -48,11 +52,16 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
   S executeSync<S>(FlutterRustBridgeSyncTask task) {
-    final raw = task.callFfi();
-    final bytes = Uint8List.fromList(raw.ptr.asTypedList(raw.len));
-    final success = raw.success > 0;
+    final WireSyncReturnStruct raw;
+    try {
+      raw = task.callFfi();
+    } catch (err, st) {
+      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+    }
+    final bytes = raw.buffer;
     inner.free_WireSyncReturnStruct(raw);
-    if (success) {
+
+    if (raw.isSuccess) {
       return task.parseSuccessData(bytes);
     } else {
       throw FfiException('EXECUTE_SYNC', utf8.decode(bytes), null);
@@ -62,7 +71,11 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   @protected
   Stream<S> executeStream<S>(FlutterRustBridgeTask<S> task) async* {
-    final receivePort = ReceivePort();
+    final func = task.constMeta.debugName;
+    final nextIndex = _streamSinkNameIndex.update(func, (value) => value + 1,
+        ifAbsent: () => 0);
+    final name = '__frb_streamsink_${func}_$nextIndex';
+    final receivePort = broadcastPort(name);
     task.callFfi(receivePort.sendPort.nativePort);
 
     await for (final raw in receivePort) {
@@ -70,12 +83,13 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
         yield _transformRust2DartMessage(raw, task.parseSuccessData);
       } on _CloseStreamException {
         receivePort.close();
+        break;
       }
     }
   }
 
   S _transformRust2DartMessage<S>(
-      dynamic raw, S Function(dynamic) parseSuccessData) {
+      List<dynamic> raw, S Function(dynamic) parseSuccessData) {
     final action = raw[0];
     switch (action) {
       case _RUST2DART_ACTION_SUCCESS:
@@ -106,7 +120,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 @immutable
 class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
-  final void Function(int port) callFfi;
+  final void Function(NativePortType port) callFfi;
 
   /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;
@@ -146,36 +160,4 @@ class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
         );
 }
 
-/// This class, together with its subclasses, are only for internal usage.
-/// Usually it should not be used by normal users.
-abstract class FlutterRustBridgeWireBase {
-  /// Not to be used by normal users, but has to be public for generated code
-  // ignore: non_constant_identifier_names
-  void store_dart_post_cobject(
-    ffi.Pointer<
-            ffi.NativeFunction<
-                ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>
-        ptr,
-  );
-
-  /// Not to be used by normal users, but has to be public for generated code
-  // ignore: non_constant_identifier_names
-  void free_WireSyncReturnStruct(WireSyncReturnStruct val);
-}
-
 class _CloseStreamException {}
-
-// NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
-/// This class is only for internal usage.
-class WireSyncReturnStruct extends ffi.Struct {
-  /// Not to be used by normal users, but has to be public for generated code
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  /// Not to be used by normal users, but has to be public for generated code
-  @ffi.Int32()
-  external int len;
-
-  /// Not to be used by normal users, but has to be public for generated code
-  @ffi.Uint8()
-  external int success;
-}

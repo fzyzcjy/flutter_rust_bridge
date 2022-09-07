@@ -226,14 +226,14 @@ impl<'a> TypeParser<'a> {
                         );
                     }
                     self.convert_to_ir_type(*generic).map(|inner| match inner {
-                        Primitive(prim) => IrType::Optional(IrTypeOptional::new_prim(prim)),
+                        Primitive(prim) => IrType::Optional(IrTypeOptional::new_primitive(prim)),
                         st @ StructRef(_) => {
-                            IrType::Optional(IrTypeOptional::new_ptr(Boxed(IrTypeBoxed {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
                                 inner: Box::new(st),
                                 exist_in_real_api: false,
                             })))
                         }
-                        other => IrType::Optional(IrTypeOptional::new_ptr(other)),
+                        other => IrType::Optional(IrTypeOptional::new(other)),
                     })
                 }
                 _ => None,

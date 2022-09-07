@@ -2,7 +2,7 @@ use thiserror::Error;
 
 use crate::tools::PackageManager;
 
-pub type Result = std::result::Result<(), Error>;
+pub type Result<T = ()> = std::result::Result<T, Error>;
 
 #[derive(Error, Debug, Clone)]
 pub enum Error {

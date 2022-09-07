@@ -4,3 +4,8 @@ language = "en"
 multilingual = false
 src = "src"
 title = "flutter_rust_bridge"
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"

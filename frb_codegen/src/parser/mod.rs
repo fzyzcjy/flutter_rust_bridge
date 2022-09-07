@@ -1,4 +1,4 @@
-mod ty;
+pub(crate) mod ty;
 
 use std::string::String;
 

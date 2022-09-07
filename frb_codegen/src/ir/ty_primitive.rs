@@ -1,4 +1,5 @@
 use crate::ir::*;
+use crate::target::Target;
 
 #[derive(Debug, Clone)]
 pub enum IrTypePrimitive {
@@ -42,15 +43,18 @@ impl IrTypeTrait for IrTypePrimitive {
         .to_string()
     }
 
-    fn dart_wire_type(&self) -> String {
-        self.dart_api_type()
+    fn dart_wire_type(&self, target: Target) -> String {
+        match self {
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 if target.is_wasm() => "BigInt".into(),
+            _ => self.dart_api_type(),
+        }
     }
 
     fn rust_api_type(&self) -> String {
-        self.rust_wire_type()
+        self.rust_wire_type(Target::Io)
     }
 
-    fn rust_wire_type(&self) -> String {
+    fn rust_wire_type(&self, _target: Target) -> String {
         match self {
             IrTypePrimitive::U8 => "u8",
             IrTypePrimitive::I8 => "i8",

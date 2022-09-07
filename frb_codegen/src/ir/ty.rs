@@ -1,4 +1,4 @@
-use crate::ir::*;
+use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
 use IrType::*;
 
@@ -60,6 +60,20 @@ impl IrType {
     pub fn is_struct(&self) -> bool {
         matches!(self, StructRef(_) | EnumRef(_))
     }
+
+    /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap
+    /// and therefore do not implement [Send].
+    #[inline]
+    pub fn is_js_value(&self) -> bool {
+        match self {
+            Self::GeneralList(_)
+            | Self::StructRef(_)
+            | Self::EnumRef(_)
+            | Self::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => true,
+            Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
+            _ => false,
+        }
+    }
 }
 
 #[enum_dispatch]
@@ -70,21 +84,21 @@ pub trait IrTypeTrait {
 
     fn dart_api_type(&self) -> String;
 
-    fn dart_wire_type(&self) -> String;
+    fn dart_wire_type(&self, target: Target) -> String;
 
     fn rust_api_type(&self) -> String;
 
-    fn rust_wire_type(&self) -> String;
+    fn rust_wire_type(&self, target: Target) -> String;
 
-    fn rust_wire_modifier(&self) -> String {
-        if self.rust_wire_is_pointer() {
+    fn rust_wire_modifier(&self, target: Target) -> String {
+        if self.rust_wire_is_pointer(target) {
             "*mut ".to_string()
         } else {
             "".to_string()
         }
     }
 
-    fn rust_wire_is_pointer(&self) -> bool {
+    fn rust_wire_is_pointer(&self, _target: Target) -> bool {
         false
     }
 

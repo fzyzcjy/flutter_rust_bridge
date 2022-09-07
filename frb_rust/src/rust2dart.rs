@@ -6,14 +6,12 @@ use std::marker::PhantomData;
 ///
 /// Its implementation lies with the Dart language and therefore should not be
 /// depended on to be stable.
-pub use allo_isolate::ffi::DartCObject;
-pub use allo_isolate::IntoDart;
-use allo_isolate::Isolate;
+pub use crate::ffi::*;
 
 /// A wrapper around a Dart [`Isolate`].
-#[derive(Copy, Clone)]
+#[derive(Clone)]
 pub struct Rust2Dart {
-    isolate: Isolate,
+    pub(crate) channel: Channel,
 }
 
 const RUST2DART_ACTION_SUCCESS: i32 = 0;
@@ -22,16 +20,16 @@ const RUST2DART_ACTION_CLOSE_STREAM: i32 = 2;
 
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
-    /// Create a new wrapper from a raw port number.
-    pub fn new(port: i64) -> Self {
+    /// Create a new wrapper from a raw port.
+    pub fn new(port: MessagePort) -> Self {
         Rust2Dart {
-            isolate: Isolate::new(port),
+            channel: Channel::new(port),
         }
     }
 
     /// Send a success message back to the specified port.
-    pub fn success<T: IntoDart>(&self, result: T) -> bool {
-        self.isolate.post(vec![
+    pub fn success(&self, result: impl IntoDart) -> bool {
+        self.channel.post(vec![
             RUST2DART_ACTION_SUCCESS.into_dart(),
             result.into_dart(),
         ])
@@ -49,7 +47,7 @@ impl Rust2Dart {
         error_message: String,
         error_details: impl IntoDart,
     ) -> bool {
-        self.isolate.post(vec![
+        self.channel.post(vec![
             RUST2DART_ACTION_ERROR.into_dart(),
             error_code.into_dart(),
             error_message.into_dart(),
@@ -59,7 +57,7 @@ impl Rust2Dart {
 
     /// Close the stream and ignore further messages.
     pub fn close_stream(&self) -> bool {
-        self.isolate
+        self.channel
             .post(vec![RUST2DART_ACTION_CLOSE_STREAM.into_dart()])
     }
 }
@@ -77,7 +75,18 @@ impl TaskCallback {
 
     /// Create a new [StreamSink] of the specified type.
     pub fn stream_sink<T: IntoDart>(&self) -> StreamSink<T> {
-        StreamSink::new(self.rust2dart)
+        StreamSink::new(self.rust2dart.clone())
+    }
+}
+
+/// A handle to a [`web_sys::BroadcastChannel`].
+#[derive(Clone)]
+pub struct ChannelHandle(pub String);
+
+impl ChannelHandle {
+    #[cfg(wasm)]
+    pub fn port(&self) -> MessagePort {
+        PortLike::broadcast(&self.0)
     }
 }
 
@@ -86,28 +95,47 @@ impl TaskCallback {
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
 pub struct StreamSink<T: IntoDart> {
+    #[cfg(not(wasm))]
     rust2dart: Rust2Dart,
+    #[cfg(wasm)]
+    handle: ChannelHandle,
     _phantom_data: PhantomData<T>,
 }
 
 impl<T: IntoDart> StreamSink<T> {
     /// Create a new sink from a port wrapper.
     pub fn new(rust2dart: Rust2Dart) -> Self {
+        #[cfg(wasm)]
+        let name = rust2dart
+            .channel
+            .broadcast_name()
+            .expect("Not a BroadcastChannel");
         Self {
+            #[cfg(not(wasm))]
             rust2dart,
+            #[cfg(wasm)]
+            handle: ChannelHandle(name),
             _phantom_data: PhantomData,
         }
+    }
+
+    fn rust2dart(&self) -> Rust2Dart {
+        #[cfg(not(wasm))]
+        return self.rust2dart.clone();
+
+        #[cfg(wasm)]
+        Rust2Dart::new(self.handle.port())
     }
 
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
     pub fn add(&self, value: T) -> bool {
-        self.rust2dart.success(value)
+        self.rust2dart().success(value)
     }
 
     /// Close the stream and ignore further messages. Returns false when
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
-        self.rust2dart.close_stream()
+        self.rust2dart().close_stream()
     }
 }
