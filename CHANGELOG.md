@@ -1,3 +1,7 @@
+## 1.44.0
+
+* Bump dependency versions
+
 ## 1.43.0
 
 * Add crate version to generated code header #666 (thanks @Roms1383)

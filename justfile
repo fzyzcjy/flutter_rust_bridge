@@ -23,12 +23,13 @@ build:
     cd frb_codegen && cargo build
 
 alias g := gen-bridge
-gen-bridge:
-    {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
-                -d {{frb_pure}}/dart/lib/bridge_generated.dart \
-                --dart-decl-output {{frb_pure}}/dart/lib/bridge_definitions.dart \
-                --dart-format-line-length {{line_length}} --wasm
-    cd {{frb_flutter}} && flutter pub get
+gen-bridge: build
+    # no longer needed, since will auto generate when building
+    # {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
+    #             -d {{frb_pure}}/dart/lib/bridge_generated.dart \
+    #             --dart-format-line-length {{line_length}}
+
+    (cd {{frb_flutter}} && flutter pub get)
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
                 --dart-decl-output {{frb_flutter}}/lib/bridge_definitions.dart \
@@ -97,6 +98,7 @@ serve *args="":
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
 refresh_all:
+    just gen-bridge 
     (cd frb_rust && cargo clippy -- -D warnings)
     (cd frb_macros && cargo clippy -- -D warnings)
     (cd frb_example/pure_dart/rust && cargo clippy -- -D warnings)
