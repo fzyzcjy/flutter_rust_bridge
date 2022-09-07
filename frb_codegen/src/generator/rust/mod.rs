@@ -509,7 +509,7 @@ impl<'a> Generator<'a> {
 
     fn generate_wasm2api_func(&self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-            .wasm2api_body()
+            .wire2api_jsvalue()
             .map(|body| {
                 format!(
                     "impl Wire2Api<{api}> for JsValue {{

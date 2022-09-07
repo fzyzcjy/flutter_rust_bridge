@@ -124,7 +124,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         "".into()
     }
 
-    fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         Some(match &self.ir {
             IrTypeDelegate::String => {
                 "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()

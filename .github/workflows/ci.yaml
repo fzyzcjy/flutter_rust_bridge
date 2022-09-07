@@ -373,6 +373,14 @@ jobs:
         run: dart pub get &&
           dart run ../../../frb_dart/bin/serve.dart
           -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
+      - name: Run library unit tests (native)
+        working-directory: ./frb_dart
+        run: dart test test/*.dart
+      - name: Run library unit tests (headless Web)
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: dart test -p chrome test/*.dart
+          working-directory: ./frb_dart
 
 
           

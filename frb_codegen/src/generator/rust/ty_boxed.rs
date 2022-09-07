@@ -33,7 +33,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         })
     }
 
-    fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
             IrType::Primitive(_) => format!(
                 "(self.unchecked_into_f64() as usize as *mut {}).wire2api()",

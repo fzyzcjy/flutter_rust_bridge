@@ -20,7 +20,7 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
         }
     }
 
-    fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         (!self.ir.inner.is_js_value()).then(|| {
             if self.ir.is_primitive() {
                 format!(

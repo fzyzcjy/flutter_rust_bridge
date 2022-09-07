@@ -9,7 +9,7 @@ pub trait TypeRustGeneratorTrait {
     fn wire2api_body(&self) -> Acc<Option<String>>;
 
     /// Handles JsValue to Self conversions.
-    fn wasm2api_body(&self) -> Option<Cow<str>> {
+    fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
         None
     }
 

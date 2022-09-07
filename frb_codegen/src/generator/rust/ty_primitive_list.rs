@@ -23,7 +23,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         }
     }
 
-    fn wasm2api_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         match self.ir.primitive {
             IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(
