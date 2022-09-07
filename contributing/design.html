@@ -172,10 +172,10 @@ Similar to the the relationship between Rust IO and Dart IO wire types, Rust JS 
 use the vocabulary of JavaScript types, aka primitives, arrays, typed arrays and objects.</p>
 <h2 id="code-generator-structure"><a class="header" href="#code-generator-structure">Code-generator structure</a></h2>
 <p>The pipeline is as follows:</p>
-<pre><code class="language-mermaid">flowchart LR
+<pre class="mermaid">flowchart LR
 api.rs -- src/parser --&gt; src/ir
 src/ir -- src/generator --&gt; rd[Rust &amp; Dart]
-</code></pre>
+</pre>
 <ul>
 <li>The input, <code>api.rs</code> in the figure, is the user-provided handwritten Rust code.</li>
 <li>The parser (<code>src/parser</code>) converts the input code (indeed <a href="https://crates.io/crates/syn">syn</a> tree) into IR.</li>
@@ -270,24 +270,24 @@ to be used is gated by conditional imports.</p>
 <p>On Web platforms, for lack of a proper <code>SendPort</code> there exists replacements from <code>dart:html</code>.</p>
 <p><strong>MessagePort</strong> replaces <code>dart:ffi</code>'s <code>SendPort</code> and is created from <code>MessageChannel</code>. The Dart
 thread creates a channel, keeps the receive port and transfers the send port to the workers.</p>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
 Dart -&gt;&gt; Rust: port2
 Rust -&gt;&gt; Rust Worker: port2
 Rust Worker -&gt;&gt; Dart: port2.postMessage
-</code></pre>
+</pre>
 <p><strong>BroadcastChannel</strong> replaces <code>dart:ffi</code>'s <code>SendPort</code> for <code>StreamSink</code>s, due to the fact that wasm_bindgen
 keeps the ports in a JS-local scope that cannot be shared with other threads. A broadcast channel
 is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
 When other workers refer to a <code>StreamSink</code> from another worker, e.g. if the sink was put in a static variable,
 a new <code>BroadcastChannel</code> will be created from its name.</p>
 <p><code>BroadcastChannel</code>s are guaranteed to be unique for each invocation.<sup class="footnote-reference"><a href="#4">4</a></sup></p>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
 Dart -&gt;&gt; Rust: channel
 Rust -&gt;&gt; Rust Worker 1: channel.name
 Rust Worker 1 -&gt;&gt; Dart: channel.postMessage
 Rust -&gt;&gt; Rust Worker 2: channel.name
 Rust Worker 2 -&gt;&gt; Dart: channel.postMessage
-</code></pre>
+</pre>
 <p>It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 <code>BroadcastChannel</code>s and <code>Worker</code>s, but it remains to be seen how practical such an approach would be.</p>
 <h2 id="want-to-know-more-tell-me"><a class="header" href="#want-to-know-more-tell-me">Want to know more? Tell me</a></h2>

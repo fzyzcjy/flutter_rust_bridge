@@ -136,12 +136,14 @@
                     <main>
                         <h1 id="limitations-of-wasm"><a class="header" href="#limitations-of-wasm">Limitations of WASM</a></h1>
 <ul>
-<li>Safari cannot spawn nested <code>Worker</code>s. To get around this limitation, build two variants of the library,
+<li>Safari cannot spawn nested <code>Worker</code>s. A workaround is to build two variants of the library,
 one with multithreading and one without, and serve Safari users the single-threaded variant.
 For a more general solution, check out <a href="https://github.com/GoogleChromeLabs/wasm-feature-detect">wasm-feature-detect</a>
 or <a href="https://github.com/johanholmerin/nested-worker">nested-worker</a>.</li>
-<li><code>std::thread::spawn</code> and replacements (e.g. <code>wasm_thread</code>) are not fully supported. This library includes
-a <code>spawn!</code> macro which spawns a new thread using the internal thread pool.</li>
+<li><code>std::thread::spawn</code> is unimplemented and replacements (e.g. <code>wasm_thread</code>) are not fully supported. 
+If you must use them, consider wrapping your return type in a <code>SyncReturn&lt;_&gt;</code> to
+avoid the internal thread pool interfering with your threads.
+This library includes a <code>spawn!</code> macro which spawns a new thread using the internal thread pool.</li>
 <li>When a Rust thread panics, it aborts and throws a JavaScript <code>RuntimeError</code> that cannot be caught by name in
 Dart. This is expected to change as the exception handling story for WASM improves, but a rule of thumb
 is to replace <code>.unwrap</code> with <code>.expect</code> or <code>Err</code>s.</li>

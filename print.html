@@ -214,7 +214,7 @@
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <p>More specifically, thanks for all these contributions:</p>
 <ul>
-<li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs.</li>
+<li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values.</li>
 <li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir. Fix <code>store_dart_post_cobject</code> error with ffigen 6.0.</li>
 <li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
 <li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
@@ -306,7 +306,8 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 <h3 id="macos-app"><a class="header" href="#macos-app">MacOS app</a></h3>
 <p>Same as Windows. (P.S. Under the hood, <code>cargo-xcode</code> is used to automate the process)</p>
 <h3 id="web-as-a-webpage"><a class="header" href="#web-as-a-webpage">Web (as a webpage)</a></h3>
-<p>Doc is <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/682">WIP</a>, but the feature is done.</p>
+<p>Install <code>flutter_rust_bridge_serve</code> to simplify the process of building and serving a WASM binary.
+See <a href="template/setup_web.html">Web setup</a> for more details.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="features"><a class="header" href="#features">Features</a></h1>
 <p>In this chapter, we are going to demonstrate the features. Please use the menu bar at the left / left-top of the page to navigate.</p>
 <h2 id="prelogue"><a class="header" href="#prelogue">Prelogue</a></h2>
@@ -976,7 +977,7 @@ dart pub global activate flutter_rust_bridge
 flutter_rust_bridge_serve
 </code></pre>
 <h2 id="limitations-of-wasm"><a class="header" href="#limitations-of-wasm">Limitations of WASM</a></h2>
-<p>Running code on the Web entails several restrictions on the kind of code that
+<p>Running code on the Web entails several restrictions on the kinds of code that
 can be executed. Please refer to <a href="template/../wasm_limitations.html">Limitations of WASM</a>
 to see if your code is compatiable with WASM.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="windows-and-linux"><a class="header" href="#windows-and-linux">Windows and Linux</a></h1>
@@ -1559,10 +1560,10 @@ Similar to the the relationship between Rust IO and Dart IO wire types, Rust JS 
 use the vocabulary of JavaScript types, aka primitives, arrays, typed arrays and objects.</p>
 <h2 id="code-generator-structure"><a class="header" href="#code-generator-structure">Code-generator structure</a></h2>
 <p>The pipeline is as follows:</p>
-<pre><code class="language-mermaid">flowchart LR
+<pre class="mermaid">flowchart LR
 api.rs -- src/parser --&gt; src/ir
 src/ir -- src/generator --&gt; rd[Rust &amp; Dart]
-</code></pre>
+</pre>
 <ul>
 <li>The input, <code>api.rs</code> in the figure, is the user-provided handwritten Rust code.</li>
 <li>The parser (<code>src/parser</code>) converts the input code (indeed <a href="https://crates.io/crates/syn">syn</a> tree) into IR.</li>
@@ -1657,24 +1658,24 @@ to be used is gated by conditional imports.</p>
 <p>On Web platforms, for lack of a proper <code>SendPort</code> there exists replacements from <code>dart:html</code>.</p>
 <p><strong>MessagePort</strong> replaces <code>dart:ffi</code>'s <code>SendPort</code> and is created from <code>MessageChannel</code>. The Dart
 thread creates a channel, keeps the receive port and transfers the send port to the workers.</p>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
 Dart -&gt;&gt; Rust: port2
 Rust -&gt;&gt; Rust Worker: port2
 Rust Worker -&gt;&gt; Dart: port2.postMessage
-</code></pre>
+</pre>
 <p><strong>BroadcastChannel</strong> replaces <code>dart:ffi</code>'s <code>SendPort</code> for <code>StreamSink</code>s, due to the fact that wasm_bindgen
 keeps the ports in a JS-local scope that cannot be shared with other threads. A broadcast channel
 is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
 When other workers refer to a <code>StreamSink</code> from another worker, e.g. if the sink was put in a static variable,
 a new <code>BroadcastChannel</code> will be created from its name.</p>
 <p><code>BroadcastChannel</code>s are guaranteed to be unique for each invocation.<sup class="footnote-reference"><a href="#4">4</a></sup></p>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
 Dart -&gt;&gt; Rust: channel
 Rust -&gt;&gt; Rust Worker 1: channel.name
 Rust Worker 1 -&gt;&gt; Dart: channel.postMessage
 Rust -&gt;&gt; Rust Worker 2: channel.name
 Rust Worker 2 -&gt;&gt; Dart: channel.postMessage
-</code></pre>
+</pre>
 <p>It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 <code>BroadcastChannel</code>s and <code>Worker</code>s, but it remains to be seen how practical such an approach would be.</p>
 <h2 id="want-to-know-more-tell-me"><a class="header" href="#want-to-know-more-tell-me">Want to know more? Tell me</a></h2>
@@ -1958,12 +1959,14 @@ instead.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="limitations-of-wasm-1"><a class="header" href="#limitations-of-wasm-1">Limitations of WASM</a></h1>
 <ul>
-<li>Safari cannot spawn nested <code>Worker</code>s. To get around this limitation, build two variants of the library,
+<li>Safari cannot spawn nested <code>Worker</code>s. A workaround is to build two variants of the library,
 one with multithreading and one without, and serve Safari users the single-threaded variant.
 For a more general solution, check out <a href="https://github.com/GoogleChromeLabs/wasm-feature-detect">wasm-feature-detect</a>
 or <a href="https://github.com/johanholmerin/nested-worker">nested-worker</a>.</li>
-<li><code>std::thread::spawn</code> and replacements (e.g. <code>wasm_thread</code>) are not fully supported. This library includes
-a <code>spawn!</code> macro which spawns a new thread using the internal thread pool.</li>
+<li><code>std::thread::spawn</code> is unimplemented and replacements (e.g. <code>wasm_thread</code>) are not fully supported. 
+If you must use them, consider wrapping your return type in a <code>SyncReturn&lt;_&gt;</code> to
+avoid the internal thread pool interfering with your threads.
+This library includes a <code>spawn!</code> macro which spawns a new thread using the internal thread pool.</li>
 <li>When a Rust thread panics, it aborts and throws a JavaScript <code>RuntimeError</code> that cannot be caught by name in
 Dart. This is expected to change as the exception handling story for WASM improves, but a rule of thumb
 is to replace <code>.unwrap</code> with <code>.expect</code> or <code>Err</code>s.</li>
