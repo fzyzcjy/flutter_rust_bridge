@@ -24,11 +24,6 @@ build:
 
 alias g := gen-bridge
 gen-bridge: build
-    # no longer needed, since will auto generate when building
-    # {{frb_bin}} -r {{frb_pure}}/rust/src/api.rs \
-    #             -d {{frb_pure}}/dart/lib/bridge_generated.dart \
-    #             --dart-format-line-length {{line_length}}
-
     (cd {{frb_flutter}} && flutter pub get)
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
                 -d {{frb_flutter}}/lib/bridge_generated.dart \
