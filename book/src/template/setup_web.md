@@ -27,7 +27,7 @@ flutter_rust_bridge_serve
 
 ## Limitations of WASM
 
-Running code on the Web entails several restrictions on the kind of code that
+Running code on the Web entails several restrictions on the kinds of code that
 can be executed. Please refer to [Limitations of WASM](../wasm_limitations.md)
 to see if your code is compatiable with WASM.
 
