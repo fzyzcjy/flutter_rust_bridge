@@ -13,7 +13,7 @@ dylib := if os() == "windows" {
     "libflutter_rust_bridge_example.so"
 }
 frb_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
-frb_tools := justfile_directory() / "tools"
+frb_tools := "{{justfile_directory()}}/tools"
 
 default: gen-bridge
 precommit: gen-bridge check lint gen-help
