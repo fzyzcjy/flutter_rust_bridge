@@ -13,3 +13,4 @@ flutter_rust_bridge = { path = "../../../frb_rust" }
 num = "0.4" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
 image = "0.24.3" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
 crossbeam = "0.8" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
+chrono = "0.4.22"
