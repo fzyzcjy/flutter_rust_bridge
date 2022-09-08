@@ -198,9 +198,29 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
         debugName: "off_topic_deliberately_panic",
         argNames: [],
       );
+
+  Future<DateTime> whatTimeIsIt({required FeatureChrono mine, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_what_time_is_it(port_, _platform.api2wire_box_autoadd_feature_chrono(mine)),
+        parseSuccessData: _wire2api_DateTime,
+        constMeta: kWhatTimeIsItConstMeta,
+        argValues: [mine],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kWhatTimeIsItConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "what_time_is_it",
+        argNames: ["mine"],
+      );
 }
 
 // Section: api2wire
+
+@protected
+int api2wire_DateTime(DateTime raw) {
+  return raw.microsecondsSinceEpoch;
+}
 
 @protected
 double api2wire_f64(double raw) {
@@ -218,6 +238,10 @@ int api2wire_u8(int raw) {
 }
 
 // Section: wire2api
+
+DateTime _wire2api_DateTime(dynamic raw) {
+  return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: true);
+}
 
 String _wire2api_String(dynamic raw) {
   return raw as String;
@@ -245,6 +269,10 @@ double _wire2api_f64(dynamic raw) {
 
 int _wire2api_i32(dynamic raw) {
   return raw as int;
+}
+
+int _wire2api_i64(dynamic raw) {
+  return castInt(raw);
 }
 
 List<Size> _wire2api_list_size(dynamic raw) {

@@ -59,6 +59,10 @@ abstract class FlutterRustBridgeExample {
   Future<int> offTopicDeliberatelyPanic({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOffTopicDeliberatelyPanicConstMeta;
+
+  Future<DateTime> whatTimeIsIt({required FeatureChrono mine, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kWhatTimeIsItConstMeta;
 }
 
 class BoxedPoint {
@@ -66,6 +70,14 @@ class BoxedPoint {
 
   BoxedPoint({
     required this.point,
+  });
+}
+
+class FeatureChrono {
+  final DateTime date;
+
+  FeatureChrono({
+    required this.date,
   });
 }
 

@@ -73,7 +73,17 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
     wire_off_topic_deliberately_panic_impl(port_)
 }
 
+#[no_mangle]
+pub extern "C" fn wire_what_time_is_it(port_: i64, mine: *mut wire_FeatureChrono) {
+    wire_what_time_is_it_impl(port_, mine)
+}
+
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_feature_chrono_0() -> *mut wire_FeatureChrono {
+    support::new_leak_box_ptr(wire_FeatureChrono::new_with_null_ptr())
+}
 
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_point_0() -> *mut wire_Point {
@@ -119,10 +129,24 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(raw, 0),
+            chrono::Utc,
+        )
+    }
+}
 impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
         String::from_utf8_lossy(&vec).into_owned()
+    }
+}
+impl Wire2Api<FeatureChrono> for *mut wire_FeatureChrono {
+    fn wire2api(self) -> FeatureChrono {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<FeatureChrono>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Point> for *mut wire_Point {
@@ -141,6 +165,14 @@ impl Wire2Api<TreeNode> for *mut wire_TreeNode {
     fn wire2api(self) -> TreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<TreeNode>::wire2api(*wrap).into()
+    }
+}
+
+impl Wire2Api<FeatureChrono> for wire_FeatureChrono {
+    fn wire2api(self) -> FeatureChrono {
+        FeatureChrono {
+            date: self.date.wire2api(),
+        }
     }
 }
 
@@ -199,6 +231,12 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_FeatureChrono {
+    date: i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_size {
     ptr: *mut wire_Size,
     len: i32,
@@ -248,6 +286,14 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
+    }
+}
+
+impl NewWithNullPtr for wire_FeatureChrono {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            date: Default::default(),
+        }
     }
 }
 

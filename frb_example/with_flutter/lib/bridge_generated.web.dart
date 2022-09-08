@@ -24,6 +24,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
+    return api2wire_feature_chrono(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_point(Point raw) {
     return api2wire_point(raw);
   }
@@ -36,6 +41,16 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   @protected
   List<dynamic> api2wire_box_autoadd_tree_node(TreeNode raw) {
     return api2wire_tree_node(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_feature_chrono(FeatureChrono raw) {
+    return [api2wire_DateTime(raw.date)];
+  }
+
+  @protected
+  BigInt api2wire_i64(int raw) {
+    return BigInt.from(raw);
   }
 
   @protected
@@ -103,6 +118,8 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
   external void wire_off_topic_deliberately_return_error(NativePortType port_);
 
   external void wire_off_topic_deliberately_panic(NativePortType port_);
+
+  external void wire_what_time_is_it(NativePortType port_, List<dynamic> mine);
 }
 
 // Section: WASM wire connector
@@ -146,4 +163,6 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
       wasmModule.wire_off_topic_deliberately_return_error(port_);
 
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
+
+  void wire_what_time_is_it(NativePortType port_, List<dynamic> mine) => wasmModule.wire_what_time_is_it(port_, mine);
 }

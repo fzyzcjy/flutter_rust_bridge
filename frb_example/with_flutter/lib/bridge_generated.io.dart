@@ -21,6 +21,13 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  ffi.Pointer<wire_FeatureChrono> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
+    final ptr = inner.new_box_autoadd_feature_chrono_0();
+    _api_fill_to_wire_feature_chrono(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_Point> api2wire_box_autoadd_point(Point raw) {
     final ptr = inner.new_box_autoadd_point_0();
     _api_fill_to_wire_point(raw, ptr.ref);
@@ -39,6 +46,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     final ptr = inner.new_box_autoadd_tree_node_0();
     _api_fill_to_wire_tree_node(raw, ptr.ref);
     return ptr;
+  }
+
+  @protected
+  int api2wire_i64(int raw) {
+    return raw;
   }
 
   @protected
@@ -67,6 +79,10 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_box_autoadd_feature_chrono(FeatureChrono apiObj, ffi.Pointer<wire_FeatureChrono> wireObj) {
+    _api_fill_to_wire_feature_chrono(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
     _api_fill_to_wire_point(apiObj, wireObj.ref);
   }
@@ -77,6 +93,10 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 
   void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<wire_TreeNode> wireObj) {
     _api_fill_to_wire_tree_node(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_feature_chrono(FeatureChrono apiObj, wire_FeatureChrono wireObj) {
+    wireObj.date = api2wire_DateTime(apiObj.date);
   }
 
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
@@ -314,6 +334,31 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_off_topic_deliberately_panic =
       _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
+  void wire_what_time_is_it(
+    int port_,
+    ffi.Pointer<wire_FeatureChrono> mine,
+  ) {
+    return _wire_what_time_is_it(
+      port_,
+      mine,
+    );
+  }
+
+  late final _wire_what_time_is_itPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_FeatureChrono>)>>(
+          'wire_what_time_is_it');
+  late final _wire_what_time_is_it =
+      _wire_what_time_is_itPtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureChrono>)>();
+
+  ffi.Pointer<wire_FeatureChrono> new_box_autoadd_feature_chrono_0() {
+    return _new_box_autoadd_feature_chrono_0();
+  }
+
+  late final _new_box_autoadd_feature_chrono_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_FeatureChrono> Function()>>('new_box_autoadd_feature_chrono_0');
+  late final _new_box_autoadd_feature_chrono_0 =
+      _new_box_autoadd_feature_chrono_0Ptr.asFunction<ffi.Pointer<wire_FeatureChrono> Function()>();
+
   ffi.Pointer<wire_Point> new_box_autoadd_point_0() {
     return _new_box_autoadd_point_0();
   }
@@ -431,6 +476,11 @@ class wire_list_size extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
+}
+
+class wire_FeatureChrono extends ffi.Struct {
+  @ffi.Int64()
+  external int date;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;

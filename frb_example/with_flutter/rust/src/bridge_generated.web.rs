@@ -67,6 +67,11 @@ pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
     wire_off_topic_deliberately_panic_impl(port_)
 }
 
+#[wasm_bindgen]
+pub fn wire_what_time_is_it(port_: MessagePort, mine: JsValue) {
+    wire_what_time_is_it_impl(port_, mine)
+}
+
 // Section: allocate functions
 
 // Section: impl Wire2Api
@@ -74,6 +79,21 @@ pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self
+    }
+}
+
+impl Wire2Api<FeatureChrono> for JsValue {
+    fn wire2api(self) -> FeatureChrono {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        FeatureChrono {
+            date: self_.get(0).wire2api(),
+        }
     }
 }
 
@@ -160,6 +180,11 @@ impl Wire2Api<f64> for JsValue {
 }
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<i64> for JsValue {
+    fn wire2api(self) -> i64 {
         self.unchecked_into_f64() as _
     }
 }
