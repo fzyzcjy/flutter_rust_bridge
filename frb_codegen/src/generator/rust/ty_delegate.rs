@@ -57,7 +57,12 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     }}",
                     variants, enu.name
                 ).into()
-            }
+            },
+            IrTypeDelegate::DateTime => Acc {
+              io: Some("chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(raw, 0), chrono::Utc)".into()),
+              common: None,
+              wasm: None,
+            },
         }
     }
 

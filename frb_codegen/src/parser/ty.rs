@@ -236,6 +236,9 @@ impl<'a> TypeParser<'a> {
                         other => IrType::Optional(IrTypeOptional::new(other)),
                     })
                 }
+                "DateTime" if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Utc") => {
+                    Some(Delegate(IrTypeDelegate::DateTime))
+                }
                 _ => None,
             }
         } else {

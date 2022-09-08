@@ -12,6 +12,7 @@ pub enum IrTypeDelegate {
         /// Allows for `#[repr]`'s other than [i32]
         repr: IrTypePrimitive,
     },
+    DateTime,
 }
 
 impl IrTypeDelegate {
@@ -27,6 +28,7 @@ impl IrTypeDelegate {
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::PrimitiveEnum { repr, .. } => IrType::Primitive(repr.clone()),
+            IrTypeDelegate::DateTime => IrType::Primitive(IrTypePrimitive::I64),
         }
     }
 }
@@ -44,6 +46,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
+            IrTypeDelegate::DateTime => "DateTime".to_owned(),
         }
     }
 
@@ -53,6 +56,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
+            IrTypeDelegate::DateTime => "DateTime".to_string(),
         }
     }
 
@@ -61,6 +65,7 @@ impl IrTypeTrait for IrTypeDelegate {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
             (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_StringList>".to_owned(),
+            (IrTypeDelegate::DateTime, _) => "int".to_owned(),
             _ => self.get_delegate().dart_wire_type(target),
         }
     }
@@ -73,6 +78,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
+            IrTypeDelegate::DateTime => "chrono::DateTime::<chrono::Utc>".to_owned(),
         }
     }
 
