@@ -248,7 +248,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.44.0"
+    version: "1.45.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -438,7 +438,7 @@ packages:
       name: pubspec_parse
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.1"
   puppeteer:
     dependency: transitive
     description:
