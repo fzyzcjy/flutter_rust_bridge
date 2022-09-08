@@ -106,3 +106,12 @@ pub fn off_topic_deliberately_panic() -> i32 {
     std::env::set_var("RUST_BACKTRACE", "1"); // optional, just to see more info...
     panic!("deliberately panic!")
 }
+
+#[derive(Debug, Clone)]
+pub struct FeatureChrono {
+    pub date: chrono::DateTime<chrono::Utc>,
+}
+
+pub fn what_time_is_it(mine: FeatureChrono) -> anyhow::Result<chrono::DateTime<chrono::Utc>> {
+    Ok(mine.date)
+}
