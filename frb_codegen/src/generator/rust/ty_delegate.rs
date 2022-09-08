@@ -125,20 +125,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 name, self_ref, variants
             );
         }
-        if let IrTypeDelegate::DateTime = &self.ir {
-            return "impl support::IntoDart for chrono::DateTime::<chrono::Utc> {
-            fn into_dart(self) -> support::DartAbi {
-                Self {
-                  ty: allo_isolate::ffi::DartCObjectType::DartInt64,
-                  value: allo_isolate::ffi::DartCObjectValue {
-                    as_int64: self.timestamp_micros(),
-                    ..default::Default()
-                  }
-                }
-            }
-        }"
-            .into();
-        }
 
         "".into()
     }
