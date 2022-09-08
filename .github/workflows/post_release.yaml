@@ -46,14 +46,33 @@ jobs:
           sdk: '2.17.6' # TODO upgrade later #655
 
       - name: Install dart dependencies (single block)
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart pub get
+        run: |
+          (cd frb_dart && dart pub get);
+          (cd frb_example/pure_dart/dart && dart pub get);
 
       - name: Run valgrind script (single block)
         working-directory: ./frb_example/pure_dart/dart
         run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+      
+      - name: Setup Rust targets
+        run:
+          rustup +nightly target add wasm32-unknown-unknown &&
+          rustup +nightly component add rust-src rustfmt
+
+      - name: Install `wasm-pack`
+        run: sh -c
+          "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+      
+      - name: Run web tests
+        timeout-minutes: 20
+        uses: Wandalen/wretry.action@v1.0.25
+        with:
+          command:
+            dart run ../../../frb_dart/bin/serve.dart
+            -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
+          current_path: frb_example/pure_dart/dart
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_android_test:
