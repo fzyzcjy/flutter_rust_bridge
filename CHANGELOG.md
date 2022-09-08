@@ -1,3 +1,7 @@
+## 1.45.0
+
+* Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values #589 (thanks @Desdaemon)
+
 ## 1.44.0
 
 * Bump dependency versions
