@@ -260,6 +260,18 @@ impl Wire2Api<u8> for u8 {
 
 // Section: impl IntoDart
 
+impl support::IntoDart for chrono::DateTime<chrono::Utc> {
+    fn into_dart(self) -> support::DartAbi {
+        Self {
+            ty: allo_isolate::ffi::DartCObjectType::DartInt64,
+            value: allo_isolate::ffi::DartCObjectValue {
+                as_int64: self.timestamp_micros(),
+                ..default::Default()
+            },
+        }
+    }
+}
+
 impl support::IntoDart for BoxedPoint {
     fn into_dart(self) -> support::DartAbi {
         vec![(*self.point).into_dart()].into_dart()
