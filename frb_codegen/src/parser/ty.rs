@@ -245,9 +245,9 @@ impl<'a> TypeParser<'a> {
                 _ => None,
             }
         } else if ident_string.as_str() == "Duration" {
-            return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)));
+            Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)))
         } else if ident_string.as_str() == "NaiveDateTime" {
-            return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)));
+            Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)))
         } else {
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
