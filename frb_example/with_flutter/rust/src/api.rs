@@ -109,9 +109,12 @@ pub fn off_topic_deliberately_panic() -> i32 {
 
 #[derive(Debug, Clone)]
 pub struct FeatureChrono {
-    pub date: chrono::DateTime<chrono::Utc>,
+    pub utc: chrono::DateTime<chrono::Utc>,
+    pub local: chrono::DateTime<chrono::Local>,
+    pub duration: chrono::Duration,
+    pub naive: chrono::NaiveDateTime,
 }
 
 pub fn what_time_is_it(mine: FeatureChrono) -> anyhow::Result<chrono::DateTime<chrono::Utc>> {
-    Ok(mine.date)
+    Ok(mine.utc)
 }

@@ -237,10 +237,17 @@ impl<'a> TypeParser<'a> {
                     })
                 }
                 "DateTime" if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Utc") => {
-                    Some(Delegate(IrTypeDelegate::DateTime))
+                    Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc)))
+                }
+                "DateTime" if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if  ident == "Local") => {
+                    Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Local)))
                 }
                 _ => None,
             }
+        } else if ident_string.as_str() == "Duration" {
+            return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)));
+        } else if ident_string.as_str() == "NaiveDateTime" {
+            return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)));
         } else {
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
