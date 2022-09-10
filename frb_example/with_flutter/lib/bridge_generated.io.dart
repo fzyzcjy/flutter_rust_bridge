@@ -96,7 +96,10 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   void _api_fill_to_wire_feature_chrono(FeatureChrono apiObj, wire_FeatureChrono wireObj) {
-    wireObj.date = api2wire_DateTime(apiObj.date);
+    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
+    wireObj.local = api2wire_Chrono_Local(apiObj.local);
+    wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
+    wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
   }
 
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
@@ -480,7 +483,16 @@ class wire_list_size extends ffi.Struct {
 
 class wire_FeatureChrono extends ffi.Struct {
   @ffi.Int64()
-  external int date;
+  external int utc;
+
+  @ffi.Int64()
+  external int local;
+
+  @ffi.Int64()
+  external int duration;
+
+  @ffi.Int64()
+  external int naive;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;

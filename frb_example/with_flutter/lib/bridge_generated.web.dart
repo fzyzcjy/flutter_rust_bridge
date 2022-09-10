@@ -45,7 +45,12 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 
   @protected
   List<dynamic> api2wire_feature_chrono(FeatureChrono raw) {
-    return [api2wire_DateTime(raw.date)];
+    return [
+      api2wire_Chrono_Utc(raw.utc),
+      api2wire_Chrono_Local(raw.local),
+      api2wire_Chrono_Duration(raw.duration),
+      api2wire_Chrono_Naive(raw.naive)
+    ];
   }
 
   @protected

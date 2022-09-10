@@ -37,7 +37,10 @@ typedef struct wire_list_size {
 } wire_list_size;
 
 typedef struct wire_FeatureChrono {
-  int64_t date;
+  int64_t utc;
+  int64_t local;
+  int64_t duration;
+  int64_t naive;
 } wire_FeatureChrono;
 
 typedef struct WireSyncReturnStruct {

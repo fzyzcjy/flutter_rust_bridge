@@ -203,7 +203,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) =>
             _platform.inner.wire_what_time_is_it(port_, _platform.api2wire_box_autoadd_feature_chrono(mine)),
-        parseSuccessData: _wire2api_DateTime,
+        parseSuccessData: _wire2api_Chrono_Utc,
         constMeta: kWhatTimeIsItConstMeta,
         argValues: [mine],
         hint: hint,
@@ -218,7 +218,22 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
 // Section: api2wire
 
 @protected
-int api2wire_DateTime(DateTime raw) {
+int api2wire_Chrono_Duration(Duration raw) {
+  return raw.inMicroseconds;
+}
+
+@protected
+int api2wire_Chrono_Local(DateTime raw) {
+  return raw.toUtc().microsecondsSinceEpoch;
+}
+
+@protected
+int api2wire_Chrono_Naive(DateTime raw) {
+  return raw.toUtc().microsecondsSinceEpoch;
+}
+
+@protected
+int api2wire_Chrono_Utc(DateTime raw) {
   return raw.microsecondsSinceEpoch;
 }
 
@@ -239,7 +254,7 @@ int api2wire_u8(int raw) {
 
 // Section: wire2api
 
-DateTime _wire2api_DateTime(dynamic raw) {
+DateTime _wire2api_Chrono_Utc(dynamic raw) {
   return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: true);
 }
 

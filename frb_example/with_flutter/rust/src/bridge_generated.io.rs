@@ -129,12 +129,27 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<chrono::Duration> for i64 {
+    fn wire2api(self) -> chrono::Duration {
+        chrono::Duration::microseconds(self)
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
+        use chrono::TimeZone;
+        chrono::Local.from_utc_datetime(&self.wire2api())
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for i64 {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        let s = (self / 1_000_000) as i64;
+        let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
+        chrono::NaiveDateTime::from_timestamp(s, ns)
+    }
+}
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(self, 0),
-            chrono::Utc,
-        )
+        chrono::DateTime::<chrono::Utc>::from_utc(self.wire2api(), chrono::Utc)
     }
 }
 impl Wire2Api<String> for *mut wire_uint_8_list {
@@ -171,7 +186,10 @@ impl Wire2Api<TreeNode> for *mut wire_TreeNode {
 impl Wire2Api<FeatureChrono> for wire_FeatureChrono {
     fn wire2api(self) -> FeatureChrono {
         FeatureChrono {
-            date: self.date.wire2api(),
+            utc: self.utc.wire2api(),
+            local: self.local.wire2api(),
+            duration: self.duration.wire2api(),
+            naive: self.naive.wire2api(),
         }
     }
 }
@@ -232,7 +250,10 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_FeatureChrono {
-    date: i64,
+    utc: i64,
+    local: i64,
+    duration: i64,
+    naive: i64,
 }
 
 #[repr(C)]
@@ -292,7 +313,10 @@ impl<T> NewWithNullPtr for *mut T {
 impl NewWithNullPtr for wire_FeatureChrono {
     fn new_with_null_ptr() -> Self {
         Self {
-            date: Default::default(),
+            utc: Default::default(),
+            local: Default::default(),
+            duration: Default::default(),
+            naive: Default::default(),
         }
     }
 }

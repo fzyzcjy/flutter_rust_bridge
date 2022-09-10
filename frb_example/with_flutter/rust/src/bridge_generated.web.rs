@@ -87,12 +87,15 @@ impl Wire2Api<FeatureChrono> for JsValue {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
-            1,
-            "Expected 1 elements, got {}",
+            4,
+            "Expected 4 elements, got {}",
             self_.length()
         );
         FeatureChrono {
-            date: self_.get(0).wire2api(),
+            utc: self_.get(0).wire2api(),
+            local: self_.get(1).wire2api(),
+            duration: self_.get(2).wire2api(),
+            naive: self_.get(3).wire2api(),
         }
     }
 }

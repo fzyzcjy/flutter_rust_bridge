@@ -74,10 +74,16 @@ class BoxedPoint {
 }
 
 class FeatureChrono {
-  final DateTime date;
+  final DateTime utc;
+  final DateTime local;
+  final Duration duration;
+  final DateTime naive;
 
   FeatureChrono({
-    required this.date,
+    required this.utc,
+    required this.local,
+    required this.duration,
+    required this.naive,
   });
 }
 
