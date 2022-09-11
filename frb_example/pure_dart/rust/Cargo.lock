@@ -29,6 +29,7 @@ dependencies = [
 [[package]]
 name = "allo-isolate"
 version = "0.1.14-beta.1"
+source = "git+https://github.com/Roms1383/allo-isolate.git?branch=feat/chrono#5b84473fe4523f58367146f3ce3bdf9b8ee11c99"
 dependencies = [
  "anyhow",
  "atomic",
