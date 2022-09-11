@@ -959,6 +959,22 @@ fn wire_handle_big_buffers_impl(port_: MessagePort) {
         move || move |task_callback| Ok(handle_big_buffers()),
     )
 }
+fn wire_datetime_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "datetime",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Ok(datetime(api_d))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1690,13 +1706,6 @@ impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }
-
-/// cbindgen:ignore
-#[cfg(target_family = "wasm")]
-#[path = "bridge_generated.web.rs"]
-mod web;
-#[cfg(target_family = "wasm")]
-pub use web::*;
 
 #[cfg(not(target_family = "wasm"))]
 #[path = "bridge_generated.io.rs"]

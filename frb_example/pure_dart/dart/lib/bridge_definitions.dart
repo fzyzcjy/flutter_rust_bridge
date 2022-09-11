@@ -283,6 +283,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleBigBuffersConstMeta;
 
+  Future<DateTime> datetime({required DateTime d, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kDatetimeConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;

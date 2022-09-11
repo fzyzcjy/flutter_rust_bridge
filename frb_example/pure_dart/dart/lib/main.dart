@@ -540,6 +540,18 @@ void main(List<String> args) async {
       expect(list.int64[1], BigInt.parse('9223372036854775807'));
       expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'), reason: 'uint64');
     });
+    test('DateTime', () async {
+      final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.datetime(d: date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
   });
 }
 

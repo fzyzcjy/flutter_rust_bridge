@@ -841,3 +841,7 @@ pub fn handle_big_buffers() -> BigBuffers {
         uint64: vec![u64::MAX],
     }
 }
+
+pub fn datetime(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
+    d
+}

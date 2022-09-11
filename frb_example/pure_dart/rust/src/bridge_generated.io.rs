@@ -347,6 +347,11 @@ pub extern "C" fn wire_handle_big_buffers(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_datetime(port_: i64, d: i64) {
+    wire_datetime_impl(port_, d)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -678,6 +683,16 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        let s = (self / 1_000_000) as i64;
+        let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
+        chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        )
+    }
+}
 impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
