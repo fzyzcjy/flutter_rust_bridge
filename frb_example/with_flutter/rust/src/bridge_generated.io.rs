@@ -137,7 +137,9 @@ impl Wire2Api<chrono::Duration> for i64 {
 impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
         use chrono::TimeZone;
-        chrono::Local.from_utc_datetime(&self.wire2api())
+        let s = (self / 1_000_000) as i64;
+        let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
+        chrono::Local.from_utc_datetime(&chrono::NaiveDateTime::from_timestamp(s, ns))
     }
 }
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
@@ -149,7 +151,12 @@ impl Wire2Api<chrono::NaiveDateTime> for i64 {
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        chrono::DateTime::<chrono::Utc>::from_utc(self.wire2api(), chrono::Utc)
+        let s = (self / 1_000_000) as i64;
+        let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
+        chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        )
     }
 }
 impl Wire2Api<String> for *mut wire_uint_8_list {
