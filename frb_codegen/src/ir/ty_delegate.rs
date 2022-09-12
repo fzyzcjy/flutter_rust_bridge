@@ -113,7 +113,8 @@ impl IrTypeTrait for IrTypeDelegate {
         match (self, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
-            (IrTypeDelegate::StringList, Target::Wasm) => "JsValue".into(),
+            (IrTypeDelegate::StringList, Target::Wasm)
+            | (IrTypeDelegate::Time(_), Target::Wasm) => "JsValue".into(),
             _ => self.get_delegate().rust_wire_type(target),
         }
     }
