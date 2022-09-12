@@ -24,6 +24,18 @@ impl IntoDart for () {
         JsValue::undefined()
     }
 }
+impl IntoDart for js_sys::Date {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.get_time()
+    }
+}
+impl IntoDart for chrono::DateTime<chrono::Utc> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.timestamp_millis().into_dart()
+    }
+}
 macro_rules! delegate {
     ($( $ty:ty )*) => {$(
         impl IntoDart for $ty {
@@ -260,6 +272,32 @@ impl Transfer for ArrayBuffer {
     }
     fn serialize(self) -> JsValue {
         self.into()
+    }
+    fn transferables(&self) -> Vec<JsValue> {
+        vec![self.into()]
+    }
+}
+
+impl Transfer for js_sys::Date {
+    fn deserialize(value: &JsValue) -> Self {
+        value.as_f64().map(Self::new).unwrap()
+    }
+    fn serialize(self) -> JsValue {
+        self.into()
+    }
+    fn transferables(&self) -> Vec<JsValue> {
+        vec![self.into()]
+    }
+}
+impl Transfer for chrono::DateTime<chrono::Utc> {
+    fn deserialize(value: &JsValue) -> Self {
+        let ms = value.as_f64().unwrap() as i64;
+        let s = (ms / 1_000) as i64;
+        let ns = (ms.rem_euclid(1_000) * 1_000_000) as u32;
+        Self::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc)
+    }
+    fn serialize(self) -> JsValue {
+        self.timestamp_millis().into()
     }
     fn transferables(&self) -> Vec<JsValue> {
         vec![self.into()]
