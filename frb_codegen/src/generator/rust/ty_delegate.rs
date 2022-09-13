@@ -82,9 +82,18 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                   let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
                   chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc)".into()),
                   common: None,
-                  wasm: None,
+                  wasm: Some("
+                  let raw = self.as_f64().expect(\"unable to cast js value as f64\") as i64;
+                  let s = (raw / 1_000) as i64;
+                  let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+                  chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc)
+                  ".into()),
                 },
-                IrTypeTime::Duration => Acc { common: None, io: Some("chrono::Duration::microseconds(self)".into()), wasm: None },
+                IrTypeTime::Duration => Acc {
+                  common: None,
+                  io: Some("chrono::Duration::microseconds(self)".into()),
+                  wasm: Some("chrono::Duration::milliseconds(self as i64)".into())
+                },
             },
         }
     }
