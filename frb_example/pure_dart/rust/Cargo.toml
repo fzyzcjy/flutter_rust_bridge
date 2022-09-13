@@ -8,11 +8,13 @@ name = "flutter_rust_bridge_example"
 crate-type = ["cdylib"]
 
 [build-dependencies]
-flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
+flutter_rust_bridge_codegen = { path = "../../../frb_codegen", features = [
+  "chrono",
+] }
 
 [dependencies]
 anyhow = { version = "1.0.64", features = ["backtrace"] }
-flutter_rust_bridge = { path = "../../../frb_rust" }
+flutter_rust_bridge = { path = "../../../frb_rust", features = ["chrono"] }
 lazy_static = "1.4.0"
 chrono = "0.4.20"
 # wasm_thread = "0.2.0"

@@ -38,6 +38,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::PrimitiveEnum { ref repr, .. } => {
                 format!("return api2wire_{}(raw.index);", repr.safe_ident()).into()
             }
+            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ref ir) => match ir {
                 IrTypeTime::Utc => Acc {
                     io: Some("return raw.microsecondsSinceEpoch;".into()),
@@ -77,6 +78,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 format!("return {}.values[raw];", ir.dart_api_type())
             }
+            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeTime::Naive | IrTypeTime::Local | IrTypeTime::Utc => {
                     "return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: true);".to_owned()

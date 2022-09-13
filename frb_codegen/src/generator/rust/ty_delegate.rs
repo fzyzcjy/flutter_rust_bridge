@@ -58,6 +58,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     variants, enu.name
                 ).into()
             },
+            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeTime::Naive => Acc {
                   io: Some("

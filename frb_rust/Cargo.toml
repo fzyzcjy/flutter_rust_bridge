@@ -11,6 +11,7 @@ categories = ["development-tools::ffi"]
 [dependencies]
 bytemuck = "1.11.0"
 anyhow = "1.0.64"
+chrono = { version = "0.4.20", optional = true }
 threadpool = "1.8.1"
 lazy_static = "1.4.0"
 parking_lot = "0.12.1"

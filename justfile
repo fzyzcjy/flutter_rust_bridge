@@ -1,6 +1,6 @@
 # To use this file, install Just: cargo install just
 
-frb_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --"
+frb_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --features chrono --"
 frb_pure := "frb_example/pure_dart"
 frb_pure_multi := "frb_example/pure_dart_multi"
 frb_flutter := "frb_example/with_flutter"
@@ -46,7 +46,7 @@ lint *args="":
 alias t := test
 test: test-support test-pure test-integration
 test-pure:
-    cd {{frb_pure}}/rust && cargo b
+    cd {{frb_pure}}/rust && cargo b --features chrono
     cd {{frb_pure}}/dart && \
         dart pub get && \
         dart lib/main.dart ../rust/target/debug/{{dylib}}
