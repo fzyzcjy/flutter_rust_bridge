@@ -9,8 +9,8 @@ pub enum IrTypeTime {
     Duration,
 }
 
-impl AsRef<str> for IrTypeTime {
-    fn as_ref(&self) -> &str {
+impl IrTypeTime {
+    fn safe_ident(&self) -> &str {
         match self {
             IrTypeTime::Local => "Local",
             IrTypeTime::Utc => "Utc",
@@ -65,7 +65,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
-            IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.as_ref()),
+            IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.safe_ident()),
         }
     }
 
