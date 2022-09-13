@@ -76,6 +76,23 @@ pub fn wire_what_time_is_it(port_: MessagePort, mine: JsValue) {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<chrono::Duration> for JsValue {
+    fn wire2api(self) -> chrono::Duration {
+        chrono::Duration::milliseconds(self as i64)
+    }
+}
+
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        let raw = self.as_f64().expect("unable to cast js value as f64") as i64;
+        let s = (raw / 1_000) as i64;
+        let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+        chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        )
+    }
+}
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self
