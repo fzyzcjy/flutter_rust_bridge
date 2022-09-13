@@ -283,7 +283,7 @@ impl Transfer for chrono::DateTime<chrono::Utc> {
         self.timestamp_millis().into()
     }
     fn transferables(&self) -> Vec<JsValue> {
-        vec![self.into()]
+        vec![self.serialize()]
     }
 }
 
