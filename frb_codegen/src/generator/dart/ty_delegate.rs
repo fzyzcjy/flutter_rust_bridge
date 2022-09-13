@@ -39,11 +39,21 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 format!("return api2wire_{}(raw.index);", repr.safe_ident()).into()
             }
             IrTypeDelegate::Time(ref ir) => match ir {
-                IrTypeTime::Utc => "return raw.microsecondsSinceEpoch;".into(),
-                IrTypeTime::Local | IrTypeTime::Naive => {
-                    "return raw.toUtc().microsecondsSinceEpoch;".into()
-                }
-                IrTypeTime::Duration => "return raw.inMicroseconds;".into(),
+                IrTypeTime::Utc => Acc {
+                    io: Some("return raw.microsecondsSinceEpoch;".into()),
+                    wasm: Some("return raw.millisecondsSinceEpoch;".into()),
+                    ..Default::default()
+                },
+                IrTypeTime::Local | IrTypeTime::Naive => Acc {
+                    io: Some("return raw.toUtc().microsecondsSinceEpoch;".into()),
+                    wasm: Some("return raw.toUtc().millisecondsSinceEpoch;".into()),
+                    ..Default::default()
+                },
+                IrTypeTime::Duration => Acc {
+                    io: Some("return raw.inMicroseconds;".into()),
+                    wasm: Some("return raw.inMilliseconds;".into()),
+                    ..Default::default()
+                },
             },
         }
     }
