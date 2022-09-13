@@ -24,12 +24,6 @@ impl IntoDart for () {
         JsValue::undefined()
     }
 }
-impl IntoDart for js_sys::Date {
-    #[inline]
-    fn into_dart(self) -> DartAbi {
-        self.get_time()
-    }
-}
 impl IntoDart for chrono::DateTime<chrono::Utc> {
     #[inline]
     fn into_dart(self) -> DartAbi {
@@ -278,17 +272,6 @@ impl Transfer for ArrayBuffer {
     }
 }
 
-impl Transfer for js_sys::Date {
-    fn deserialize(value: &JsValue) -> Self {
-        value.as_f64().map(Self::new).unwrap()
-    }
-    fn serialize(self) -> JsValue {
-        self.into()
-    }
-    fn transferables(&self) -> Vec<JsValue> {
-        vec![self.into()]
-    }
-}
 impl Transfer for chrono::DateTime<chrono::Utc> {
     fn deserialize(value: &JsValue) -> Self {
         let ms = value.as_f64().unwrap() as i64;
