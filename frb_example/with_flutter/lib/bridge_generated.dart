@@ -218,26 +218,6 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
 // Section: api2wire
 
 @protected
-int api2wire_Chrono_Duration(Duration raw) {
-  return raw.inMicroseconds;
-}
-
-@protected
-int api2wire_Chrono_Local(DateTime raw) {
-  return raw.toUtc().microsecondsSinceEpoch;
-}
-
-@protected
-int api2wire_Chrono_Naive(DateTime raw) {
-  return raw.toUtc().microsecondsSinceEpoch;
-}
-
-@protected
-int api2wire_Chrono_Utc(DateTime raw) {
-  return raw.microsecondsSinceEpoch;
-}
-
-@protected
 double api2wire_f64(double raw) {
   return raw;
 }

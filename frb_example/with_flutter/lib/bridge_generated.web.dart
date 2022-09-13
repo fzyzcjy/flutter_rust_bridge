@@ -19,6 +19,26 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 // Section: api2wire
 
   @protected
+  int api2wire_Chrono_Duration(Duration raw) {
+    return raw.inMilliseconds;
+  }
+
+  @protected
+  int api2wire_Chrono_Local(DateTime raw) {
+    return raw.toUtc().millisecondsSinceEpoch;
+  }
+
+  @protected
+  int api2wire_Chrono_Naive(DateTime raw) {
+    return raw.toUtc().millisecondsSinceEpoch;
+  }
+
+  @protected
+  int api2wire_Chrono_Utc(DateTime raw) {
+    return raw.millisecondsSinceEpoch;
+  }
+
+  @protected
   String api2wire_String(String raw) {
     return raw;
   }

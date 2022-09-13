@@ -18,6 +18,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api2wire
 
   @protected
+  int api2wire_Chrono_Utc(DateTime raw) {
+    return raw.microsecondsSinceEpoch;
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
     return api2wire_uint_8_list(utf8.encoder.convert(raw));
   }

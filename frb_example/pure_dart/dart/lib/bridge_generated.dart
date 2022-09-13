@@ -907,7 +907,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       );
 
   Future<DateTime> datetime({required DateTime d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_datetime(port_, api2wire_Chrono_Utc(d)),
+        callFfi: (port_) => _platform.inner.wire_datetime(port_, _platform.api2wire_Chrono_Utc(d)),
         parseSuccessData: _wire2api_Chrono_Utc,
         constMeta: kDatetimeConstMeta,
         argValues: [d],
@@ -1048,11 +1048,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 }
 
 // Section: api2wire
-
-@protected
-int api2wire_Chrono_Utc(DateTime raw) {
-  return raw.microsecondsSinceEpoch;
-}
 
 @protected
 int api2wire_application_mode(ApplicationMode raw) {
