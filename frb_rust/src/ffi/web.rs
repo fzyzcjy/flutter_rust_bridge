@@ -24,6 +24,7 @@ impl IntoDart for () {
         JsValue::undefined()
     }
 }
+#[cfg(feature = "chrono")]
 impl IntoDart for chrono::DateTime<chrono::Utc> {
     #[inline]
     fn into_dart(self) -> DartAbi {
@@ -272,6 +273,7 @@ impl Transfer for ArrayBuffer {
     }
 }
 
+#[cfg(feature = "chrono")]
 impl Transfer for chrono::DateTime<chrono::Utc> {
     fn deserialize(value: &JsValue) -> Self {
         let ms = value.as_f64().unwrap() as i64;
