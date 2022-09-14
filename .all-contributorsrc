@@ -287,6 +287,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "Stonks3141",
+      "name": "Sam Nystrom",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82178396?v=4",
+      "profile": "https://github.com/Stonks3141",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
