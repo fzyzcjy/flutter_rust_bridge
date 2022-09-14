@@ -12,7 +12,7 @@ The Mandelbrot set is the set of complex numbers `c` for which the function `f_c
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mandelbrot_sequence_new.gif/220px-Mandelbrot_sequence_new.gif">
 </p>
 
-Image credit: Wikipedia
+Image credit: [Simpsons contributor](https://en.wikipedia.org/wiki/User:Simpsons_contributor)
 
 </details>
 
