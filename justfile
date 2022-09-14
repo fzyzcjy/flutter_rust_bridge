@@ -1,6 +1,6 @@
 # To use this file, install Just: cargo install just
 
-frb_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --features chrono --"
+frb_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --"
 frb_pure := "frb_example/pure_dart"
 frb_pure_multi := "frb_example/pure_dart_multi"
 frb_flutter := "frb_example/with_flutter"
