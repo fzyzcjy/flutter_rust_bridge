@@ -53,5 +53,5 @@ x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 i686-pc-windows-msvc = { pkg-fmt = "zip" }
 
 [features]
-default = []
+default = ["chrono"]
 chrono = []
