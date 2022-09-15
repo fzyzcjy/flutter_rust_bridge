@@ -843,5 +843,16 @@ pub fn handle_big_buffers() -> BigBuffers {
 }
 
 pub fn datetime(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
+    use chrono::Datelike;
+    use chrono::Timelike;
+    let y = &d.year();
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &09);
+    assert_eq!(&d.day(), &10);
+    assert_eq!(&d.hour(), &20);
+    assert_eq!(&d.minute(), &48);
+    assert_eq!(&d.second(), &53);
+    assert_eq!(&d.nanosecond(), &123_000_000);
+    // TODO: add io conditional check on microseconds
     d
 }
