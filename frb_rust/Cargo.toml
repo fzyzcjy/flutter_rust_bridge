@@ -17,7 +17,7 @@ parking_lot = "0.12.1"
 flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-allo-isolate = { version = "0.1.14-beta.1" }
+allo-isolate = { version = "0.1.14-beta.2" }
 parking_lot = { version = "0.12.1" }
 threadpool = { version = "1.8.1" }
 
