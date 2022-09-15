@@ -18,10 +18,7 @@ parking_lot = "0.12.1"
 flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-allo-isolate = { git = "https://github.com/Roms1383/allo-isolate.git", branch = "feat/chrono", features = [
-  "anyhow",
-  "chrono",
-] }
+allo-isolate = { version = "0.1.14-beta.2", features = ["anyhow", "chrono"] }
 parking_lot = { version = "0.12.1" }
 threadpool = { version = "1.8.1" }
 
