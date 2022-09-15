@@ -1117,7 +1117,7 @@ int api2wire_weekdays(Weekdays raw) {
 // Section: wire2api
 
 DateTime _wire2api_Chrono_Utc(dynamic raw) {
-  return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: true);
+  return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);
 }
 
 String _wire2api_String(dynamic raw) {
