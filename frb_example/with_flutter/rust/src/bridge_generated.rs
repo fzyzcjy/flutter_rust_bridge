@@ -201,19 +201,6 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
         move || move |task_callback| Ok(off_topic_deliberately_panic()),
     )
 }
-fn wire_what_time_is_it_impl(port_: MessagePort, mine: impl Wire2Api<FeatureChrono> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "what_time_is_it",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_mine = mine.wire2api();
-            move |task_callback| what_time_is_it(api_mine)
-        },
-    )
-}
 // Section: wrapper structs
 
 // Section: static checks
@@ -240,14 +227,8 @@ impl Wire2Api<f64> for f64 {
         self
     }
 }
-
 impl Wire2Api<i32> for i32 {
     fn wire2api(self) -> i32 {
-        self
-    }
-}
-impl Wire2Api<i64> for i64 {
-    fn wire2api(self) -> i64 {
         self
     }
 }
