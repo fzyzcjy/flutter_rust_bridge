@@ -540,9 +540,9 @@ void main(List<String> args) async {
       expect(list.int64[1], BigInt.parse('9223372036854775807'));
       expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'), reason: 'uint64');
     });
-    test('DateTime', () async {
+    test('DateTime<Utc>', () async {
       final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
-      final resp = await api.datetime(d: date);
+      final resp = await api.datetimeUtc(d: date);
       expect(resp.year, date.year);
       expect(resp.month, date.month);
       expect(resp.day, date.day);
