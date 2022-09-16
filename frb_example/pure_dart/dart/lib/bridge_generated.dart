@@ -919,6 +919,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["d"],
       );
 
+  Future<Duration> duration({required Duration d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_duration(port_, _platform.api2wire_Chrono_Duration(d)),
+        parseSuccessData: _wire2api_Chrono_Duration,
+        constMeta: kDurationConstMeta,
+        argValues: [d],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kDurationConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "duration",
+        argNames: ["d"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1115,6 +1128,10 @@ int api2wire_weekdays(Weekdays raw) {
 }
 
 // Section: wire2api
+
+Duration _wire2api_Chrono_Duration(dynamic raw) {
+  return Duration(milliseconds: _wire2api_i64(raw));
+}
 
 DateTime _wire2api_Chrono_Utc(dynamic raw) {
   return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);

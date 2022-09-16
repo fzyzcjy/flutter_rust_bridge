@@ -352,6 +352,11 @@ pub extern "C" fn wire_datetime_utc(port_: i64, d: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_duration(port_: i64, d: i64) {
+    wire_duration_impl(port_, d)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -683,6 +688,11 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<chrono::Duration> for i64 {
+    fn wire2api(self) -> chrono::Duration {
+        chrono::Duration::microseconds(self)
+    }
+}
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let s = (self / 1_000_000) as i64;

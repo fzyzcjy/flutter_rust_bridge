@@ -344,6 +344,11 @@ pub fn wire_datetime_utc(port_: MessagePort, d: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_duration(port_: MessagePort, d: JsValue) {
+    wire_duration_impl(port_, d)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -460,6 +465,11 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<chrono::Duration> for JsValue {
+    fn wire2api(self) -> chrono::Duration {
+        chrono::Duration::milliseconds(self.as_f64().expect("unable to cast js value as f64") as i64)
+    }
+}
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let raw = self.as_f64().expect("unable to cast js value as f64") as i64;
