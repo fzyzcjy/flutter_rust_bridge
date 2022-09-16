@@ -875,19 +875,17 @@ pub fn datetime_local(d: chrono::DateTime<chrono::Local>) -> chrono::DateTime<ch
 }
 
 pub fn naivedatetime(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
-    #[allow(unused_imports)]
     use chrono::{Datelike, Timelike};
-    // TODO: fix conversion issue from wire to Rust (following assertions fail)
-    // assert_eq!(&d.year(), &2022);
-    // assert_eq!(&d.month(), &9);
-    // assert_eq!(&d.day(), &10);
-    // assert_eq!(&d.hour(), &20);
-    // assert_eq!(&d.minute(), &48);
-    // assert_eq!(&d.second(), &53);
-    // #[cfg(target_arch = "wasm32")]
-    // assert_eq!(&d.nanosecond(), &123_000_000);
-    // #[cfg(not(target_arch = "wasm32"))]
-    // assert_eq!(&d.nanosecond(), &123_456_000);
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &9);
+    assert_eq!(&d.day(), &10);
+    assert_eq!(&d.hour(), &20);
+    assert_eq!(&d.minute(), &48);
+    assert_eq!(&d.second(), &53);
+    #[cfg(target_arch = "wasm32")]
+    assert_eq!(&d.nanosecond(), &123_000_000);
+    #[cfg(not(target_arch = "wasm32"))]
+    assert_eq!(&d.nanosecond(), &123_456_000);
     d
 }
 

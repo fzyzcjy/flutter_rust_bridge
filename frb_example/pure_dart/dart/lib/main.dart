@@ -565,7 +565,7 @@ void main(List<String> args) async {
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
     });
     test('NaiveDateTime', () async {
-      final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
+      final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
       final resp = await api.naivedatetime(d: date);
       expect(resp.year, date.year);
       expect(resp.month, date.month);
