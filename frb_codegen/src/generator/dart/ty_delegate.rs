@@ -84,8 +84,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 format!("return {}.values[raw];", ir.dart_api_type())
             }
             #[cfg(feature = "chrono")]
-            IrTypeDelegate::Time(ir) => match ir {
-                // TODO: alternate body based on platform
+            IrTypeDelegate::Time(ir) if self.context.config.wasm_enabled => match ir {
                 IrTypeTime::Local => "
                 return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);"
                     .to_owned(),
@@ -94,6 +93,19 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     .to_owned(),
                 IrTypeTime::Duration => "
                 return Duration(milliseconds: _wire2api_i64(raw));"
+                    .to_owned(),
+            },
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(ir) => match ir {
+                // TODO: alternate body based on platform
+                IrTypeTime::Local => "
+              return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);"
+                    .to_owned(),
+                IrTypeTime::Naive | IrTypeTime::Utc => "
+              return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);"
+                    .to_owned(),
+                IrTypeTime::Duration => "
+              return Duration(microseconds: _wire2api_i64(raw));"
                     .to_owned(),
             },
         }
