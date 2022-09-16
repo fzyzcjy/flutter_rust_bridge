@@ -97,7 +97,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             },
             #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => match ir {
-                // TODO: alternate body based on platform
                 IrTypeTime::Local => "
               return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);"
                     .to_owned(),
