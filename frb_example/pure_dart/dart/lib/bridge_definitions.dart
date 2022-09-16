@@ -287,6 +287,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kDatetimeUtcConstMeta;
 
+  Future<DateTime> datetimeLocal({required DateTime d, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kDatetimeLocalConstMeta;
+
   Future<Duration> duration({required Duration d, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kDurationConstMeta;

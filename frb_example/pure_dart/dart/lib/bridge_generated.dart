@@ -919,6 +919,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["d"],
       );
 
+  Future<DateTime> datetimeLocal({required DateTime d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_datetime_local(port_, _platform.api2wire_Chrono_Local(d)),
+        parseSuccessData: _wire2api_Chrono_Local,
+        constMeta: kDatetimeLocalConstMeta,
+        argValues: [d],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kDatetimeLocalConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "datetime_local",
+        argNames: ["d"],
+      );
+
   Future<Duration> duration({required Duration d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_duration(port_, _platform.api2wire_Chrono_Duration(d)),
         parseSuccessData: _wire2api_Chrono_Duration,
@@ -1131,6 +1144,10 @@ int api2wire_weekdays(Weekdays raw) {
 
 Duration _wire2api_Chrono_Duration(dynamic raw) {
   return Duration(milliseconds: _wire2api_i64(raw));
+}
+
+DateTime _wire2api_Chrono_Local(dynamic raw) {
+  return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);
 }
 
 DateTime _wire2api_Chrono_Utc(dynamic raw) {

@@ -23,6 +23,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  int api2wire_Chrono_Local(DateTime raw) {
+    return raw.toUtc().microsecondsSinceEpoch;
+  }
+
+  @protected
   int api2wire_Chrono_Utc(DateTime raw) {
     return raw.microsecondsSinceEpoch;
   }
@@ -1711,6 +1716,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_datetime_utcPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_datetime_utc');
   late final _wire_datetime_utc = _wire_datetime_utcPtr.asFunction<void Function(int, int)>();
+
+  void wire_datetime_local(
+    int port_,
+    int d,
+  ) {
+    return _wire_datetime_local(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_datetime_localPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_datetime_local');
+  late final _wire_datetime_local = _wire_datetime_localPtr.asFunction<void Function(int, int)>();
 
   void wire_duration(
     int port_,
