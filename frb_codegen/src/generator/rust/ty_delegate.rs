@@ -67,9 +67,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                   chrono::NaiveDateTime::from_timestamp(s, ns)".into()),
                   common: None,
                   wasm: Some("
-                  let raw = self.as_f64().expect(\"unable to cast js value as f64\") as i64;
-                  let s = (raw / 1_000) as i64;
-                  let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+                  let s = (self / 1_000) as i64;
+                  let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
                   chrono::NaiveDateTime::from_timestamp(s, ns)".into()),
                 },
                 IrTypeTime::Local => Acc {
@@ -80,9 +79,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                   chrono::Local.from_utc_datetime(&chrono::NaiveDateTime::from_timestamp(s, ns))".into()),
                   common: None,
                   wasm: Some("
-                  let raw = self.as_f64().expect(\"unable to cast js value as f64\") as i64;
-                  let s = (raw / 1_000) as i64;
-                  let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+                  let s = (self / 1_000) as i64;
+                  let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
                   chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc))
                   ".into()),
                 },
@@ -93,16 +91,15 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                   chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc)".into()),
                   common: None,
                   wasm: Some("
-                  let raw = self.as_f64().expect(\"unable to cast js value as f64\") as i64;
-                  let s = (raw / 1_000) as i64;
-                  let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+                  let s = (self / 1_000) as i64;
+                  let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
                   chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc)
                   ".into()),
                 },
                 IrTypeTime::Duration => Acc {
                   common: None,
                   io: Some("chrono::Duration::microseconds(self)".into()),
-                  wasm: Some("chrono::Duration::milliseconds(self.as_f64().expect(\"unable to cast js value as f64\") as i64)".into())
+                  wasm: Some("chrono::Duration::milliseconds(self)".into())
                 },
             },
         }
