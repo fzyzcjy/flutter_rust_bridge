@@ -1164,7 +1164,7 @@ DateTime _wire2api_Chrono_Local(dynamic raw) {
 }
 
 DateTime _wire2api_Chrono_Naive(dynamic raw) {
-  return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);
+  return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);
 }
 
 DateTime _wire2api_Chrono_Utc(dynamic raw) {
