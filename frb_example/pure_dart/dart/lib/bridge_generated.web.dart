@@ -21,22 +21,22 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   BigInt api2wire_Chrono_Duration(Duration raw) {
-    return BigInt.from(raw.inMilliseconds);
+    return api2wire_i64(raw.inMilliseconds);
   }
 
   @protected
   BigInt api2wire_Chrono_Local(DateTime raw) {
-    return BigInt.from(raw.millisecondsSinceEpoch);
+    return api2wire_i64(raw.millisecondsSinceEpoch);
   }
 
   @protected
   BigInt api2wire_Chrono_Naive(DateTime raw) {
-    return BigInt.from(raw.millisecondsSinceEpoch);
+    return api2wire_i64(raw.millisecondsSinceEpoch);
   }
 
   @protected
   BigInt api2wire_Chrono_Utc(DateTime raw) {
-    return BigInt.from(raw.millisecondsSinceEpoch);
+    return api2wire_i64(raw.millisecondsSinceEpoch);
   }
 
   @protected
