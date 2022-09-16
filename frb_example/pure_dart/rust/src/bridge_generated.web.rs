@@ -339,22 +339,22 @@ pub fn wire_handle_big_buffers(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_datetime_utc(port_: MessagePort, d: JsValue) {
+pub fn wire_datetime_utc(port_: MessagePort, d: i64) {
     wire_datetime_utc_impl(port_, d)
 }
 
 #[wasm_bindgen]
-pub fn wire_datetime_local(port_: MessagePort, d: JsValue) {
+pub fn wire_datetime_local(port_: MessagePort, d: i64) {
     wire_datetime_local_impl(port_, d)
 }
 
 #[wasm_bindgen]
-pub fn wire_naivedatetime(port_: MessagePort, d: JsValue) {
+pub fn wire_naivedatetime(port_: MessagePort, d: i64) {
     wire_naivedatetime_impl(port_, d)
 }
 
 #[wasm_bindgen]
-pub fn wire_duration(port_: MessagePort, d: JsValue) {
+pub fn wire_duration(port_: MessagePort, d: i64) {
     wire_duration_impl(port_, d)
 }
 
@@ -475,35 +475,32 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
 
 // Section: impl Wire2Api
 
-impl Wire2Api<chrono::Duration> for JsValue {
+impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
-        chrono::Duration::milliseconds(self.as_f64().expect("unable to cast js value as f64") as i64)
+        chrono::Duration::milliseconds(self)
     }
 }
-impl Wire2Api<chrono::DateTime<chrono::Local>> for JsValue {
+impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
-        let raw = self.as_f64().expect("unable to cast js value as f64") as i64;
-        let s = (raw / 1_000) as i64;
-        let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+        let s = (self / 1_000) as i64;
+        let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
         chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
         ))
     }
 }
-impl Wire2Api<chrono::NaiveDateTime> for JsValue {
+impl Wire2Api<chrono::NaiveDateTime> for i64 {
     fn wire2api(self) -> chrono::NaiveDateTime {
-        let raw = self.as_f64().expect("unable to cast js value as f64") as i64;
-        let s = (raw / 1_000) as i64;
-        let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+        let s = (self / 1_000) as i64;
+        let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
         chrono::NaiveDateTime::from_timestamp(s, ns)
     }
 }
-impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        let raw = self.as_f64().expect("unable to cast js value as f64") as i64;
-        let s = (raw / 1_000) as i64;
-        let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+        let s = (self / 1_000) as i64;
+        let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
         chrono::DateTime::<chrono::Utc>::from_utc(
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
