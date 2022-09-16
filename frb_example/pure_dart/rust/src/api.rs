@@ -846,7 +846,7 @@ pub fn datetime_utc(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono
     use chrono::Datelike;
     use chrono::Timelike;
     assert_eq!(&d.year(), &2022);
-    assert_eq!(&d.month(), &09);
+    assert_eq!(&d.month(), &9);
     assert_eq!(&d.day(), &10);
     assert_eq!(&d.hour(), &20);
     assert_eq!(&d.minute(), &48);
@@ -862,7 +862,7 @@ pub fn datetime_local(d: chrono::DateTime<chrono::Local>) -> chrono::DateTime<ch
     use chrono::Datelike;
     use chrono::Timelike;
     assert_eq!(&d.year(), &2022);
-    assert_eq!(&d.month(), &09);
+    assert_eq!(&d.month(), &9);
     assert_eq!(&d.day(), &10);
     assert_eq!(&d.hour(), &20);
     assert_eq!(&d.minute(), &48);
@@ -875,11 +875,11 @@ pub fn datetime_local(d: chrono::DateTime<chrono::Local>) -> chrono::DateTime<ch
 }
 
 pub fn naivedatetime(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
-    use chrono::Datelike;
-    use chrono::Timelike;
+    #[allow(unused_imports)]
+    use chrono::{Datelike, Timelike};
     // TODO: fix conversion issue from wire to Rust (following assertions fail)
     // assert_eq!(&d.year(), &2022);
-    // assert_eq!(&d.month(), &09);
+    // assert_eq!(&d.month(), &9);
     // assert_eq!(&d.day(), &10);
     // assert_eq!(&d.hour(), &20);
     // assert_eq!(&d.minute(), &48);
