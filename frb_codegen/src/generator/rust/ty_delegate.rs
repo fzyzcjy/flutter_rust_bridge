@@ -66,7 +66,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                   let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
                   chrono::NaiveDateTime::from_timestamp(s, ns)".into()),
                   common: None,
-                  wasm: None,
+                  wasm: Some("
+                  let raw = self.as_f64().expect(\"unable to cast js value as f64\") as i64;
+                  let s = (raw / 1_000) as i64;
+                  let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+                  chrono::NaiveDateTime::from_timestamp(s, ns)".into()),
                 },
                 IrTypeTime::Local => Acc {
                   io: Some("

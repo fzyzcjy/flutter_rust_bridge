@@ -32,19 +32,26 @@ impl IntoDart for chrono::DateTime<chrono::Utc> {
     }
 }
 #[cfg(feature = "chrono")]
-impl IntoDart for chrono::Duration {
-    #[inline]
-    fn into_dart(self) -> DartAbi {
-        self.num_milliseconds().into_dart()
-    }
-}
-#[cfg(feature = "chrono")]
 impl IntoDart for chrono::DateTime<chrono::Local> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         chrono::DateTime::<chrono::Utc>::from(self)
             .timestamp_millis()
             .into_dart()
+    }
+}
+#[cfg(feature = "chrono")]
+impl IntoDart for chrono::NaiveDateTime {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.timestamp_millis().into_dart()
+    }
+}
+#[cfg(feature = "chrono")]
+impl IntoDart for chrono::Duration {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.num_milliseconds().into_dart()
     }
 }
 macro_rules! delegate {

@@ -45,9 +45,14 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     wasm: Some("return raw.millisecondsSinceEpoch;".into()),
                     ..Default::default()
                 },
-                IrTypeTime::Local | IrTypeTime::Naive => Acc {
+                IrTypeTime::Local => Acc {
                     io: Some("return raw.toUtc().microsecondsSinceEpoch;".into()),
                     wasm: Some("return raw.toUtc().millisecondsSinceEpoch;".into()),
+                    ..Default::default()
+                },
+                IrTypeTime::Naive => Acc {
+                    io: Some("return raw.microsecondsSinceEpoch;".into()),
+                    wasm: Some("return raw.millisecondsSinceEpoch;".into()),
                     ..Default::default()
                 },
                 IrTypeTime::Duration => Acc {

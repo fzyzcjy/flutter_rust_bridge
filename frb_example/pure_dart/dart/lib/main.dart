@@ -564,10 +564,22 @@ void main(List<String> args) async {
       expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
     });
+    test('NaiveDateTime', () async {
+      final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.naivedatetime(d: date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
     test('Duration', () async {
-      final date = Duration(hours: 4);
-      final resp = await api.duration(d: date);
-      expect(resp.inHours, date.inHours);
+      final duration = Duration(hours: 4);
+      final resp = await api.duration(d: duration);
+      expect(resp.inHours, duration.inHours);
     });
   });
 }
