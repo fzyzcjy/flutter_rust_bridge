@@ -858,6 +858,22 @@ pub fn datetime_utc(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono
     d
 }
 
+pub fn datetime_local(d: chrono::DateTime<chrono::Local>) -> chrono::DateTime<chrono::Local> {
+    use chrono::Datelike;
+    use chrono::Timelike;
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &09);
+    assert_eq!(&d.day(), &10);
+    assert_eq!(&d.hour(), &20);
+    assert_eq!(&d.minute(), &48);
+    assert_eq!(&d.second(), &53);
+    #[cfg(target_arch = "wasm32")]
+    assert_eq!(&d.nanosecond(), &123_000_000);
+    #[cfg(not(target_arch = "wasm32"))]
+    assert_eq!(&d.nanosecond(), &123_456_000);
+    d
+}
+
 pub fn duration(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);
     d
