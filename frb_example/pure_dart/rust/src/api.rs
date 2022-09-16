@@ -857,3 +857,8 @@ pub fn datetime_utc(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono
     assert_eq!(&d.nanosecond(), &123_456_000);
     d
 }
+
+pub fn duration(d: chrono::Duration) -> chrono::Duration {
+    assert_eq!(&d.num_hours(), &4);
+    d
+}

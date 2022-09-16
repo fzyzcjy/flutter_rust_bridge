@@ -31,6 +31,13 @@ impl IntoDart for chrono::DateTime<chrono::Utc> {
         self.timestamp_millis().into_dart()
     }
 }
+#[cfg(feature = "chrono")]
+impl IntoDart for chrono::Duration {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.num_milliseconds().into_dart()
+    }
+}
 macro_rules! delegate {
     ($( $ty:ty )*) => {$(
         impl IntoDart for $ty {

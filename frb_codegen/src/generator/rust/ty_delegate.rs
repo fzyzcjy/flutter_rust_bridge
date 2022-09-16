@@ -93,7 +93,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 IrTypeTime::Duration => Acc {
                   common: None,
                   io: Some("chrono::Duration::microseconds(self)".into()),
-                  wasm: Some("chrono::Duration::milliseconds(self as i64)".into())
+                  wasm: Some("chrono::Duration::milliseconds(self.as_f64().expect(\"unable to cast js value as f64\") as i64)".into())
                 },
             },
         }

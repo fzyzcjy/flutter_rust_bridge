@@ -552,6 +552,11 @@ void main(List<String> args) async {
       expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
     });
+    test('Duration', () async {
+      final date = Duration(hours: 4);
+      final resp = await api.duration(d: date);
+      expect(resp.inHours, date.inHours);
+    });
   });
 }
 
