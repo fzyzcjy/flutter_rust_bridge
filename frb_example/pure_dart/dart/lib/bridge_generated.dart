@@ -932,6 +932,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["d"],
       );
 
+  Future<DateTime> naivedatetime({required DateTime d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_naivedatetime(port_, _platform.api2wire_Chrono_Naive(d)),
+        parseSuccessData: _wire2api_Chrono_Naive,
+        constMeta: kNaivedatetimeConstMeta,
+        argValues: [d],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kNaivedatetimeConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "naivedatetime",
+        argNames: ["d"],
+      );
+
   Future<Duration> duration({required Duration d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_duration(port_, _platform.api2wire_Chrono_Duration(d)),
         parseSuccessData: _wire2api_Chrono_Duration,
@@ -1147,6 +1160,10 @@ Duration _wire2api_Chrono_Duration(dynamic raw) {
 }
 
 DateTime _wire2api_Chrono_Local(dynamic raw) {
+  return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);
+}
+
+DateTime _wire2api_Chrono_Naive(dynamic raw) {
   return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);
 }
 

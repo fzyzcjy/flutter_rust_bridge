@@ -30,6 +30,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  int api2wire_Chrono_Naive(DateTime raw) {
+    return raw.millisecondsSinceEpoch;
+  }
+
+  @protected
   int api2wire_Chrono_Utc(DateTime raw) {
     return raw.millisecondsSinceEpoch;
   }
@@ -705,6 +710,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_datetime_local(NativePortType port_, int d);
 
+  external void wire_naivedatetime(NativePortType port_, int d);
+
   external void wire_duration(NativePortType port_, int d);
 
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
@@ -916,6 +923,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_datetime_utc(NativePortType port_, int d) => wasmModule.wire_datetime_utc(port_, d);
 
   void wire_datetime_local(NativePortType port_, int d) => wasmModule.wire_datetime_local(port_, d);
+
+  void wire_naivedatetime(NativePortType port_, int d) => wasmModule.wire_naivedatetime(port_, d);
 
   void wire_duration(NativePortType port_, int d) => wasmModule.wire_duration(port_, d);
 

@@ -349,6 +349,11 @@ pub fn wire_datetime_local(port_: MessagePort, d: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_naivedatetime(port_: MessagePort, d: JsValue) {
+    wire_naivedatetime_impl(port_, d)
+}
+
+#[wasm_bindgen]
 pub fn wire_duration(port_: MessagePort, d: JsValue) {
     wire_duration_impl(port_, d)
 }
@@ -484,6 +489,14 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for JsValue {
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
         ))
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for JsValue {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        let raw = self.as_f64().expect("unable to cast js value as f64") as i64;
+        let s = (raw / 1_000) as i64;
+        let ns = (raw.rem_euclid(1_000) * 1_000_000) as u32;
+        chrono::NaiveDateTime::from_timestamp(s, ns)
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {

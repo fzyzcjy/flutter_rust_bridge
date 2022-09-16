@@ -991,6 +991,22 @@ fn wire_datetime_local_impl(
         },
     )
 }
+fn wire_naivedatetime_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "naivedatetime",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Ok(naivedatetime(api_d))
+        },
+    )
+}
 fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

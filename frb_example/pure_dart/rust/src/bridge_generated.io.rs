@@ -357,6 +357,11 @@ pub extern "C" fn wire_datetime_local(port_: i64, d: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_naivedatetime(port_: i64, d: i64) {
+    wire_naivedatetime_impl(port_, d)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_duration(port_: i64, d: i64) {
     wire_duration_impl(port_, d)
 }
@@ -704,6 +709,13 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
         let s = (self / 1_000_000) as i64;
         let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
         chrono::Local.from_utc_datetime(&chrono::NaiveDateTime::from_timestamp(s, ns))
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for i64 {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        let s = (self / 1_000_000) as i64;
+        let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
+        chrono::NaiveDateTime::from_timestamp(s, ns)
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
