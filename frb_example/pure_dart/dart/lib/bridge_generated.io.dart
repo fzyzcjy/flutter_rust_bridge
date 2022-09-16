@@ -1693,18 +1693,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_big_buffers');
   late final _wire_handle_big_buffers = _wire_handle_big_buffersPtr.asFunction<void Function(int)>();
 
-  void wire_datetime(
+  void wire_datetime_utc(
     int port_,
     int d,
   ) {
-    return _wire_datetime(
+    return _wire_datetime_utc(
       port_,
       d,
     );
   }
 
-  late final _wire_datetimePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_datetime');
-  late final _wire_datetime = _wire_datetimePtr.asFunction<void Function(int, int)>();
+  late final _wire_datetime_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_datetime_utc');
+  late final _wire_datetime_utc = _wire_datetime_utcPtr.asFunction<void Function(int, int)>();
 
   void wire_sum__method__SumWith(
     int port_,

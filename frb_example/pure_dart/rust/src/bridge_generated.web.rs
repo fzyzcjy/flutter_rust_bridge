@@ -339,8 +339,8 @@ pub fn wire_handle_big_buffers(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_datetime(port_: MessagePort, d: JsValue) {
-    wire_datetime_impl(port_, d)
+pub fn wire_datetime_utc(port_: MessagePort, d: JsValue) {
+    wire_datetime_utc_impl(port_, d)
 }
 
 #[wasm_bindgen]

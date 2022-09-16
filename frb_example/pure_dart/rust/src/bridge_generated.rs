@@ -959,19 +959,19 @@ fn wire_handle_big_buffers_impl(port_: MessagePort) {
         move || move |task_callback| Ok(handle_big_buffers()),
     )
 }
-fn wire_datetime_impl(
+fn wire_datetime_utc_impl(
     port_: MessagePort,
     d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "datetime",
+            debug_name: "datetime_utc",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(datetime(api_d))
+            move |task_callback| Ok(datetime_utc(api_d))
         },
     )
 }

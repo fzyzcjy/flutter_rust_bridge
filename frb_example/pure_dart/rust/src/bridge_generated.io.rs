@@ -347,8 +347,8 @@ pub extern "C" fn wire_handle_big_buffers(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_datetime(port_: i64, d: i64) {
-    wire_datetime_impl(port_, d)
+pub extern "C" fn wire_datetime_utc(port_: i64, d: i64) {
+    wire_datetime_utc_impl(port_, d)
 }
 
 #[no_mangle]

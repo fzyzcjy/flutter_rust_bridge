@@ -906,16 +906,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  Future<DateTime> datetime({required DateTime d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_datetime(port_, _platform.api2wire_Chrono_Utc(d)),
+  Future<DateTime> datetimeUtc({required DateTime d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_datetime_utc(port_, _platform.api2wire_Chrono_Utc(d)),
         parseSuccessData: _wire2api_Chrono_Utc,
-        constMeta: kDatetimeConstMeta,
+        constMeta: kDatetimeUtcConstMeta,
         argValues: [d],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kDatetimeConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "datetime",
+  FlutterRustBridgeTaskConstMeta get kDatetimeUtcConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "datetime_utc",
         argNames: ["d"],
       );
 
