@@ -73,10 +73,9 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 },
                 IrTypeTime::Local => Acc {
                   io: Some("
-                  use chrono::TimeZone;
                   let s = (self / 1_000_000) as i64;
                   let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
-                  chrono::Local.from_utc_datetime(&chrono::NaiveDateTime::from_timestamp(s, ns))".into()),
+                  chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc))".into()),
                   common: None,
                   wasm: Some("
                   let s = (self / 1_000) as i64;
