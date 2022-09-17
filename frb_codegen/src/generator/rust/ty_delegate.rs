@@ -204,3 +204,25 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         delegate_enum!(self, static_checks(), None)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn io_wire2api() {
+        // input in microseconds
+        let input: i64 = 3_496_567_123;
+        let s = (input / 1_000_000) as i64;
+        let ns = (input.rem_euclid(1_000_000) * 1_000) as u32;
+        assert_eq!(s, 3_496);
+        assert_eq!(ns, 567_123_000);
+    }
+    #[test]
+    fn wasm_wire2api() {
+        // input in milliseconds
+        let input: i64 = 3_496_567;
+        let s = (input / 1_000) as i64;
+        let ns = (input.rem_euclid(1_000) * 1_000_000) as u32;
+        assert_eq!(s, 3_496);
+        assert_eq!(ns, 567_000_000);
+    }
+}
