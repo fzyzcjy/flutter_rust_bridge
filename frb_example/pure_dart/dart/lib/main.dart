@@ -162,7 +162,7 @@ void main(List<String> args) async {
     expect(cnt, 10);
   });
 
-  Future<void> _testHandleStream(
+  Future<void> testHandleStream(
       Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
     final max = 5;
     final key = 8;
@@ -177,15 +177,15 @@ void main(List<String> args) async {
   }
 
   test('dart call handle_stream_sink_at_1', () {
-    _testHandleStream(api.handleStreamSinkAt1);
+    testHandleStream(api.handleStreamSinkAt1);
   });
 
   test('dart call handle_stream_sink_at_2', () {
-    _testHandleStream(api.handleStreamSinkAt2);
+    testHandleStream(api.handleStreamSinkAt2);
   });
 
   test('dart call handle_stream_sink_at_3', () {
-    _testHandleStream(api.handleStreamSinkAt3);
+    testHandleStream(api.handleStreamSinkAt3);
   });
 
   test('dart call returnErr', () async {
