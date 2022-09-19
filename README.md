@@ -106,6 +106,7 @@ More specifically, thanks for all these contributions:
 * [Roms1383](https://github.com/Roms1383): Fix build_runner calling bug. Remove global `ffigen` dependency. Improve version check. Fix enum name-variant conflicts. Update CI. Update header comments. Code cleanup.
 * [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files.
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types.
+* [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
