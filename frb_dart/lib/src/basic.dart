@@ -58,13 +58,14 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     } catch (err, st) {
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     }
-    final bytes = raw.buffer;
-    inner.free_WireSyncReturnStruct(raw);
-
     if (raw.isSuccess) {
-      return task.parseSuccessData(bytes);
+      final result = task.parseSuccessData(raw.buffer);
+      inner.free_WireSyncReturnStruct(raw);
+      return result;
     } else {
-      throw FfiException('EXECUTE_SYNC', utf8.decode(bytes), null);
+      final errMessage = utf8.decode(raw.buffer);
+      inner.free_WireSyncReturnStruct(raw);
+      throw FfiException('EXECUTE_SYNC', errMessage, null);
     }
   }
 
