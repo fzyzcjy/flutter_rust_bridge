@@ -95,6 +95,8 @@ serve *args="":
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
 refresh_all:
+    gen-help
+
     just gen-bridge 
     (cd frb_rust && cargo clippy -- -D warnings)
     (cd frb_macros && cargo clippy -- -D warnings)
