@@ -305,6 +305,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "trdthg",
+      "name": "trdthg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69898423?v=4",
+      "profile": "https://trdthg.github.io/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
