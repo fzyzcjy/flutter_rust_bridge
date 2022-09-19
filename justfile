@@ -31,6 +31,8 @@ gen-bridge: build
                 -c {{frb_flutter}}/ios/Runner/bridge_generated.h \
                 -c {{frb_flutter}}/macos/Runner/bridge_generated.h \
                 --dart-format-line-length {{line_length}} --wasm
+    cd {{frb_pure}}/rust && cargo build
+    cd {{frb_pure_multi}}/rust && cargo build
 
 alias l := lint
 lint *args="":
