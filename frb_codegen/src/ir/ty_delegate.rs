@@ -2,7 +2,7 @@ use crate::ir::*;
 use crate::target::Target;
 
 #[cfg(feature = "chrono")]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum IrTypeTime {
     Local,
     Utc,
