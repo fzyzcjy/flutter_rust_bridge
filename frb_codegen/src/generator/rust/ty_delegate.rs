@@ -59,47 +59,40 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 ).into()
             },
             #[cfg(feature = "chrono")]
-            IrTypeDelegate::Time(ir) => match ir {
-                IrTypeTime::Naive => Acc {
-                  io: Some("
-                  let s = (self / 1_000_000) as i64;
-                  let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
-                  chrono::NaiveDateTime::from_timestamp(s, ns)".into()),
-                  common: None,
-                  wasm: Some("
-                  let s = (self / 1_000) as i64;
-                  let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
-                  chrono::NaiveDateTime::from_timestamp(s, ns)".into()),
-                },
-                IrTypeTime::Local => Acc {
-                  io: Some("
-                  let s = (self / 1_000_000) as i64;
-                  let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
-                  chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc))".into()),
-                  common: None,
-                  wasm: Some("
-                  let s = (self / 1_000) as i64;
-                  let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
-                  chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc))
-                  ".into()),
-                },
-                IrTypeTime::Utc => Acc {
-                  io: Some("
-                  let s = (self / 1_000_000) as i64;
-                  let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;
-                  chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc)".into()),
-                  common: None,
-                  wasm: Some("
-                  let s = (self / 1_000) as i64;
-                  let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
-                  chrono::DateTime::<chrono::Utc>::from_utc(chrono::NaiveDateTime::from_timestamp(s, ns), chrono::Utc)
-                  ".into()),
-                },
-                IrTypeTime::Duration => Acc {
-                  common: None,
+            IrTypeDelegate::Time(ir) => {
+              if ir == &IrTypeTime::Duration {
+                return Acc {
                   io: Some("chrono::Duration::microseconds(self)".into()),
-                  wasm: Some("chrono::Duration::milliseconds(self)".into())
-                },
+                  wasm: Some("chrono::Duration::milliseconds(self)".into()),
+                  ..Default::default()
+                };
+              }
+              let codegen_io = "
+              let s = (self / 1_000_000) as i64;
+              let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;";
+              let codegen_wasm = "
+              let s = (self / 1_000) as i64;
+              let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;";
+              let codegen_naive = "chrono::NaiveDateTime::from_timestamp(s, ns)".to_string();
+              let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
+              let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
+              let codegen_conversion = match ir {
+                IrTypeTime::Naive => codegen_naive.as_str(),
+                IrTypeTime::Utc => codegen_utc.as_str(),
+                IrTypeTime::Local => codegen_local.as_str(),
+                IrTypeTime::Duration => unreachable!(),
+              };
+              Acc {
+                io: Some(format!("
+                {codegen_io}
+                {codegen_conversion}
+                ")),
+                wasm: Some(format!("
+                {codegen_wasm}
+                {codegen_conversion}
+                ")),
+                ..Default::default()
+              }
             },
         }
     }
