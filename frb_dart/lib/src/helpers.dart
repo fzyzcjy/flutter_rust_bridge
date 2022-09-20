@@ -6,6 +6,8 @@ import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:meta/meta.dart';
 export 'ffi.dart';
 
+const bool kIsWeb = identical(0, 0.0);
+
 /// Allow custom setup hooks before ffi can be executed.
 /// All other ffi calls will wait (async) until the setup ffi finishes.
 ///
