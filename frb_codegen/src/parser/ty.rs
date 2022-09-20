@@ -249,12 +249,11 @@ impl<'a> TypeParser<'a> {
             }
         } else {
             #[cfg(feature = "chrono")]
-            if ident_string.as_str() == "Duration" || ident_string.as_str() == "NaiveDateTime" {
-                if ident_string.as_str() == "Duration" {
-                    return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)));
-                }
-                return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)));
-            }
+            match ident_string.as_str() {
+                "Duration" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration))),
+                "NaiveDateTime" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive))),
+                _ => {}
+            };
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {
