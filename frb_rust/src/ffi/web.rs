@@ -312,6 +312,55 @@ impl Transfer for chrono::DateTime<chrono::Utc> {
     }
 }
 
+#[cfg(feature = "chrono")]
+impl Transfer for chrono::DateTime<chrono::Local> {
+    fn deserialize(value: &JsValue) -> Self {
+        let ms = value.as_f64().unwrap() as i64;
+        let s = (ms / 1_000) as i64;
+        let ns = (ms.rem_euclid(1_000) * 1_000_000) as u32;
+        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        ))
+    }
+    fn serialize(self) -> JsValue {
+        self.timestamp_millis().into()
+    }
+    fn transferables(&self) -> Vec<JsValue> {
+        vec![self.serialize()]
+    }
+}
+
+#[cfg(feature = "chrono")]
+impl Transfer for chrono::NaiveDateTime {
+    fn deserialize(value: &JsValue) -> Self {
+        let ms = value.as_f64().unwrap() as i64;
+        let s = (ms / 1_000) as i64;
+        let ns = (ms.rem_euclid(1_000) * 1_000_000) as u32;
+        chrono::NaiveDateTime::from_timestamp(s, ns)
+    }
+    fn serialize(self) -> JsValue {
+        self.timestamp_millis().into()
+    }
+    fn transferables(&self) -> Vec<JsValue> {
+        vec![self.serialize()]
+    }
+}
+
+#[cfg(feature = "chrono")]
+impl Transfer for chrono::Duration {
+    fn deserialize(value: &JsValue) -> Self {
+        let ms = value.as_f64().unwrap() as i64;
+        chrono::Duration::milliseconds(ms)
+    }
+    fn serialize(self) -> JsValue {
+        self.num_milliseconds().into()
+    }
+    fn transferables(&self) -> Vec<JsValue> {
+        vec![self.serialize()]
+    }
+}
+
 #[wasm_bindgen]
 extern "C" {
     /// Objects implementing the interface of [`web_sys::MessagePort`].
