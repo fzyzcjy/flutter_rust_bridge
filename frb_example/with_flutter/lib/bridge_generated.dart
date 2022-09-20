@@ -198,6 +198,21 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
         debugName: "off_topic_deliberately_panic",
         argNames: [],
       );
+
+  Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_how_long_does_it_take(port_, _platform.api2wire_box_autoadd_feature_chrono(mine)),
+        parseSuccessData: _wire2api_Chrono_Duration,
+        constMeta: kHowLongDoesItTakeConstMeta,
+        argValues: [mine],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "how_long_does_it_take",
+        argNames: ["mine"],
+      );
 }
 
 // Section: api2wire
@@ -218,6 +233,13 @@ int api2wire_u8(int raw) {
 }
 
 // Section: wire2api
+
+Duration _wire2api_Chrono_Duration(dynamic raw) {
+  if (identical(0, 0.0)) {
+    return Duration(milliseconds: _wire2api_i64(raw));
+  }
+  return Duration(microseconds: _wire2api_i64(raw));
+}
 
 String _wire2api_String(dynamic raw) {
   return raw as String;
@@ -245,6 +267,10 @@ double _wire2api_f64(dynamic raw) {
 
 int _wire2api_i32(dynamic raw) {
   return raw as int;
+}
+
+int _wire2api_i64(dynamic raw) {
+  return castInt(raw);
 }
 
 List<Size> _wire2api_list_size(dynamic raw) {

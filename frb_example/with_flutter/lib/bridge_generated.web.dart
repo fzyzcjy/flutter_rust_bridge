@@ -19,8 +19,33 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 // Section: api2wire
 
   @protected
+  BigInt api2wire_Chrono_Duration(Duration raw) {
+    return api2wire_i64(raw.inMilliseconds);
+  }
+
+  @protected
+  BigInt api2wire_Chrono_Local(DateTime raw) {
+    return api2wire_i64(raw.millisecondsSinceEpoch);
+  }
+
+  @protected
+  BigInt api2wire_Chrono_Naive(DateTime raw) {
+    return api2wire_i64(raw.millisecondsSinceEpoch);
+  }
+
+  @protected
+  BigInt api2wire_Chrono_Utc(DateTime raw) {
+    return api2wire_i64(raw.millisecondsSinceEpoch);
+  }
+
+  @protected
   String api2wire_String(String raw) {
     return raw;
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
+    return api2wire_feature_chrono(raw);
   }
 
   @protected
@@ -36,6 +61,21 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   @protected
   List<dynamic> api2wire_box_autoadd_tree_node(TreeNode raw) {
     return api2wire_tree_node(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_feature_chrono(FeatureChrono raw) {
+    return [
+      api2wire_Chrono_Utc(raw.utc),
+      api2wire_Chrono_Local(raw.local),
+      api2wire_Chrono_Duration(raw.duration),
+      api2wire_Chrono_Naive(raw.naive)
+    ];
+  }
+
+  @protected
+  BigInt api2wire_i64(int raw) {
+    return BigInt.from(raw);
   }
 
   @protected
@@ -103,6 +143,8 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
   external void wire_off_topic_deliberately_return_error(NativePortType port_);
 
   external void wire_off_topic_deliberately_panic(NativePortType port_);
+
+  external void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
 }
 
 // Section: WASM wire connector
@@ -146,4 +188,7 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
       wasmModule.wire_off_topic_deliberately_return_error(port_);
 
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
+
+  void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine) =>
+      wasmModule.wire_how_long_does_it_take(port_, mine);
 }
