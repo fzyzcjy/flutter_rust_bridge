@@ -235,7 +235,7 @@ int api2wire_u8(int raw) {
 // Section: wire2api
 
 Duration _wire2api_Chrono_Duration(dynamic raw) {
-  if (identical(0, 0.0)) {
+  if (kIsWeb) {
     return Duration(milliseconds: _wire2api_i64(raw));
   }
   return Duration(microseconds: _wire2api_i64(raw));
