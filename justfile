@@ -31,6 +31,8 @@ gen-bridge: build
                 -c {{frb_flutter}}/ios/Runner/bridge_generated.h \
                 -c {{frb_flutter}}/macos/Runner/bridge_generated.h \
                 --dart-format-line-length {{line_length}} --wasm
+    cd {{frb_pure}}/rust && cargo build
+    cd {{frb_pure_multi}}/rust && cargo build
 
 alias l := lint
 lint *args="":
@@ -93,6 +95,8 @@ serve *args="":
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
 refresh_all:
+    just gen-help
+
     just gen-bridge 
     (cd frb_rust && cargo clippy -- -D warnings)
     (cd frb_macros && cargo clippy -- -D warnings)
