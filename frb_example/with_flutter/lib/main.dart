@@ -29,6 +29,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     runPeriodically(_callExampleFfiOne);
     _callExampleFfiTwo();
+    _callExampleFfiChrono();
   }
 
   @override
@@ -47,4 +48,14 @@ class _MyAppState extends State<MyApp> {
     final receivedText = await api.passingComplexStructs(root: createExampleTree());
     if (mounted) setState(() => exampleText = receivedText);
   }
+}
+
+Future<void> _callExampleFfiChrono() async {
+  const duration = Duration(hours: 4);
+  final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+  final local = DateTime.now();
+  final utc = DateTime.now().toUtc();
+  final difference =
+      await api.howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
+  debugPrint('$difference');
 }

@@ -107,15 +107,27 @@ pub fn off_topic_deliberately_panic() -> i32 {
     panic!("deliberately panic!")
 }
 
-// TODO: reintroduce once tests in pure dart pass
-// #[derive(Debug, Clone)]
-// pub struct FeatureChrono {
-//     pub utc: chrono::DateTime<chrono::Utc>,
-//     pub local: chrono::DateTime<chrono::Local>,
-//     pub duration: chrono::Duration,
-//     pub naive: chrono::NaiveDateTime,
-// }
+#[derive(Debug, Clone)]
+pub struct FeatureChrono {
+    pub utc: chrono::DateTime<chrono::Utc>,
+    pub local: chrono::DateTime<chrono::Local>,
+    pub duration: chrono::Duration,
+    pub naive: chrono::NaiveDateTime,
+}
 
-// pub fn what_time_is_it(mine: FeatureChrono) -> anyhow::Result<chrono::DateTime<chrono::Utc>> {
-//     Ok(mine.utc)
-// }
+pub fn how_long_does_it_take(mine: FeatureChrono) -> anyhow::Result<chrono::Duration> {
+    use chrono::{Datelike, Timelike};
+    let difference: chrono::Duration = chrono::Utc::now() - mine.utc;
+    assert_eq!(&mine.duration.num_hours(), &4);
+    assert_eq!(&mine.naive.year(), &2022);
+    assert_eq!(&mine.naive.month(), &9);
+    assert_eq!(&mine.naive.day(), &10);
+    assert_eq!(&mine.naive.hour(), &20);
+    assert_eq!(&mine.naive.minute(), &48);
+    assert_eq!(&mine.naive.second(), &53);
+    #[cfg(target_arch = "wasm32")]
+    assert_eq!(&mine.naive.nanosecond(), &123_000_000);
+    #[cfg(not(target_arch = "wasm32"))]
+    assert_eq!(&mine.naive.nanosecond(), &123_456_000);
+    Ok(difference)
+}
