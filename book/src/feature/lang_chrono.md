@@ -16,4 +16,4 @@ Codegen optionally support [chrono crate](https://docs.rs/chrono) with feature `
 
 :bulb: Also a `DateTime<Local>` will always be translated into local time of the device, which might not be what you want if you expect them to be sent *as-is*.
 
-> In that case, you could implement it in your codebase by sending a `u32` (timezone offset) alongside the `i64` (timestamp) over the wire, or open a issue / PR here to further discuss it.
+> In that case, you could implement it in your codebase by sending a `u32` (timezone offset) alongside the `i64` (timestamp) over the wire, or open a issue / PR here to further discuss it. The reason why this choice was originally made is to have all `DateTime<Utc>`, `DateTime<Local>` and `NaiveDateTime` been represented by a single `i64`.
