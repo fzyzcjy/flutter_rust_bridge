@@ -54,6 +54,15 @@ impl IntoDart for chrono::Duration {
         self.num_milliseconds().into_dart()
     }
 }
+
+#[cfg(feature = "uuid")]
+impl IntoDart for uuid::Uuid {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.as_bytes().to_vec().into_dart()
+    }
+}
+
 macro_rules! delegate {
     ($( $ty:ty )*) => {$(
         impl IntoDart for $ty {

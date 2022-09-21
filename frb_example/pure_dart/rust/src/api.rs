@@ -918,3 +918,7 @@ pub fn how_long_does_it_take(mine: FeatureChrono) -> anyhow::Result<chrono::Dura
     assert_eq!(&mine.naive.nanosecond(), &123_456_000);
     Ok(difference)
 }
+
+pub fn handle_uuid(id: uuid::Uuid) -> anyhow::Result<uuid::Uuid> {
+    Ok(id)
+}

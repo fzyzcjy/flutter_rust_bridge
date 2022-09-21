@@ -256,6 +256,11 @@ impl<'a> TypeParser<'a> {
                 "NaiveDateTime" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive))),
                 _ => {}
             };
+            #[cfg(feature = "uuid")]
+            match ident_string.as_str() {
+                "Uuid" => return Some(Delegate(IrTypeDelegate::Uuid)),
+                _ => {}
+            };
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

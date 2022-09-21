@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
+import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
 
@@ -595,6 +596,13 @@ void main(List<String> args) async {
           await api.howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
       log('$difference');
     });
+  });
+
+  test('uuid feature', () async {
+    final uuid = Uuid();
+    final id = uuid.v4obj();
+    final output = await api.handleUuid(id: id);
+    expect(id, output);
   });
 }
 

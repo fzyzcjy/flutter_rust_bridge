@@ -29,12 +29,12 @@ dependencies = [
 [[package]]
 name = "allo-isolate"
 version = "0.1.14-beta.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f5b87bcc97026b6557def5230f18efba99e733257f7ab772456a56a31d4e49c3"
+source = "git+https://github.com/Roms1383/allo-isolate.git?branch=feat/uuid#a342fa771cb09edb7714419ff97e7b3b3d985725"
 dependencies = [
  "anyhow",
  "atomic",
  "chrono",
+ "uuid",
 ]
 
 [[package]]
@@ -812,6 +812,12 @@ name = "unicode-xid"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8ccb82d61f80a663efe1f787a51b16b5a51e3314d6ac365b08639f52387b33f3"
+
+[[package]]
+name = "uuid"
+version = "1.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dd6469f4314d5f1ffec476e05f17cc9a78bc7a27a6a857842170bdf8d6f98d2f"
 
 [[package]]
 name = "version_check"

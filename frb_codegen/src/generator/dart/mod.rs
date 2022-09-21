@@ -203,10 +203,18 @@ fn generate_import_header(imports: HashSet<&IrDartImport>) -> DartBasicCode {
 
 fn generate_common_header() -> DartBasicCode {
     DartBasicCode {
-        import: "import 'dart:convert';
+        import: if cfg!(feature = "uuid") {
+            "import 'dart:convert';
+            import 'dart:async';
+            import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+            import 'package:uuid/uuid.dart';"
+                .to_string()
+        } else {
+            "import 'dart:convert';
             import 'dart:async';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';"
-            .to_string(),
+                .to_string()
+        },
         part: "".to_string(),
         body: "".to_string(),
     }
