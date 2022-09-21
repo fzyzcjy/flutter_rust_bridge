@@ -959,6 +959,83 @@ fn wire_handle_big_buffers_impl(port_: MessagePort) {
         move || move |task_callback| Ok(handle_big_buffers()),
     )
 }
+fn wire_datetime_utc_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "datetime_utc",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Ok(datetime_utc(api_d))
+        },
+    )
+}
+fn wire_datetime_local_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "datetime_local",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Ok(datetime_local(api_d))
+        },
+    )
+}
+fn wire_naivedatetime_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "naivedatetime",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Ok(naivedatetime(api_d))
+        },
+    )
+}
+fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "duration",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Ok(duration(api_d))
+        },
+    )
+}
+fn wire_how_long_does_it_take_impl(
+    port_: MessagePort,
+    mine: impl Wire2Api<FeatureChrono> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "how_long_does_it_take",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_mine = mine.wire2api();
+            move |task_callback| how_long_does_it_take(api_mine)
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1230,6 +1307,7 @@ impl Wire2Api<f64> for *mut f64 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
+
 impl Wire2Api<i32> for *mut i32 {
     fn wire2api(self) -> i32 {
         unsafe { *support::box_from_leak_ptr(self) }

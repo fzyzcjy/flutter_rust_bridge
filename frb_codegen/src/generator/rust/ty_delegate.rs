@@ -57,7 +57,38 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     }}",
                     variants, enu.name
                 ).into()
-            }
+            },
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(ir) => {
+              if ir == &IrTypeTime::Duration {
+                return Acc {
+                  io: Some("chrono::Duration::microseconds(self)".into()),
+                  wasm: Some("chrono::Duration::milliseconds(self)".into()),
+                  ..Default::default()
+                };
+              }
+              let codegen_timestamp = "let Timestamp { s, ns } = wire2api_timestamp(self);";
+              let codegen_naive = "chrono::NaiveDateTime::from_timestamp(s, ns)".to_string();
+              let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
+              let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
+              let codegen_conversion = match ir {
+                IrTypeTime::Naive => codegen_naive.as_str(),
+                IrTypeTime::Utc => codegen_utc.as_str(),
+                IrTypeTime::Local => codegen_local.as_str(),
+                IrTypeTime::Duration => unreachable!(),
+              };
+              Acc {
+                io: Some(format!("
+                {codegen_timestamp}
+                {codegen_conversion}
+                ")),
+                wasm: Some(format!("
+                {codegen_timestamp}
+                {codegen_conversion}
+                ")),
+                ..Default::default()
+              }
+            },
         }
     }
 
@@ -137,6 +168,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(_) => "(self.unchecked_into_f64() as i64).wire2api()".into(),
             _ => return None,
         })
     }

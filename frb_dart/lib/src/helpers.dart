@@ -6,6 +6,10 @@ import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:meta/meta.dart';
 export 'ffi.dart';
 
+/// borrowed from flutter foundation [kIsWeb](https://api.flutter.dev/flutter/foundation/kIsWeb-constant.html),
+/// but allows for using it in a Dart context alike
+const bool kIsWeb = identical(0, 0.0);
+
 /// Allow custom setup hooks before ffi can be executed.
 /// All other ffi calls will wait (async) until the setup ffi finishes.
 ///
@@ -129,4 +133,18 @@ class UnmodifiableTypedListException implements Exception {
 bool uint8ListToBool(Uint8List raw) {
   final dataView = ByteData.view(raw.buffer);
   return dataView.getUint8(0) != 0;
+}
+
+DateTime wire2apiTimestamp({required int ts, required bool isUtc}) {
+  if (kIsWeb) {
+    return DateTime.fromMillisecondsSinceEpoch(ts, isUtc: isUtc);
+  }
+  return DateTime.fromMicrosecondsSinceEpoch(ts, isUtc: isUtc);
+}
+
+Duration wire2apiDuration(int ts) {
+  if (kIsWeb) {
+    return Duration(milliseconds: ts);
+  }
+  return Duration(microseconds: ts);
 }

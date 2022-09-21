@@ -1,6 +1,27 @@
 use crate::ir::*;
 use crate::target::Target;
 
+#[cfg(feature = "chrono")]
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum IrTypeTime {
+    Local,
+    Utc,
+    Naive,
+    Duration,
+}
+
+#[cfg(feature = "chrono")]
+impl IrTypeTime {
+    fn safe_ident(&self) -> &str {
+        match self {
+            IrTypeTime::Local => "Local",
+            IrTypeTime::Utc => "Utc",
+            IrTypeTime::Duration => "Duration",
+            IrTypeTime::Naive => "Naive",
+        }
+    }
+}
+
 /// types that delegate to another type
 #[derive(Debug, Clone)]
 pub enum IrTypeDelegate {
@@ -12,6 +33,8 @@ pub enum IrTypeDelegate {
         /// Allows for `#[repr]`'s other than [i32]
         repr: IrTypePrimitive,
     },
+    #[cfg(feature = "chrono")]
+    Time(IrTypeTime),
 }
 
 impl IrTypeDelegate {
@@ -27,6 +50,8 @@ impl IrTypeDelegate {
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::PrimitiveEnum { repr, .. } => IrType::Primitive(repr.clone()),
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(_) => IrType::Primitive(IrTypePrimitive::I64),
         }
     }
 }
@@ -44,6 +69,8 @@ impl IrTypeTrait for IrTypeDelegate {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.safe_ident()),
         }
     }
 
@@ -53,6 +80,11 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(ir) => match ir {
+                IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive => "DateTime".to_string(),
+                IrTypeTime::Duration => "Duration".to_string(),
+            },
         }
     }
 
@@ -73,6 +105,13 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(ir) => match ir {
+                IrTypeTime::Naive => "chrono::NaiveDateTime".to_owned(),
+                IrTypeTime::Local => "chrono::DateTime::<chrono::Local>".to_owned(),
+                IrTypeTime::Utc => "chrono::DateTime::<chrono::Utc>".to_owned(),
+                IrTypeTime::Duration => "chrono::Duration".to_owned(),
+            },
         }
     }
 

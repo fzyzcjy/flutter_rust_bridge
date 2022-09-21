@@ -841,3 +841,80 @@ pub fn handle_big_buffers() -> BigBuffers {
         uint64: vec![u64::MAX],
     }
 }
+
+pub fn datetime_utc(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
+    use chrono::Datelike;
+    use chrono::Timelike;
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &9);
+    assert_eq!(&d.day(), &10);
+    assert_eq!(&d.hour(), &20);
+    assert_eq!(&d.minute(), &48);
+    assert_eq!(&d.second(), &53);
+    #[cfg(target_arch = "wasm32")]
+    assert_eq!(&d.nanosecond(), &123_000_000);
+    #[cfg(not(target_arch = "wasm32"))]
+    assert_eq!(&d.nanosecond(), &123_456_000);
+    d
+}
+
+pub fn datetime_local(d: chrono::DateTime<chrono::Local>) -> chrono::DateTime<chrono::Local> {
+    use chrono::Datelike;
+    use chrono::Timelike;
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &9);
+    assert_eq!(&d.day(), &10);
+    assert_eq!(&d.hour(), &20);
+    assert_eq!(&d.minute(), &48);
+    assert_eq!(&d.second(), &53);
+    #[cfg(target_arch = "wasm32")]
+    assert_eq!(&d.nanosecond(), &123_000_000);
+    #[cfg(not(target_arch = "wasm32"))]
+    assert_eq!(&d.nanosecond(), &123_456_000);
+    d
+}
+
+pub fn naivedatetime(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
+    use chrono::{Datelike, Timelike};
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &9);
+    assert_eq!(&d.day(), &10);
+    assert_eq!(&d.hour(), &20);
+    assert_eq!(&d.minute(), &48);
+    assert_eq!(&d.second(), &53);
+    #[cfg(target_arch = "wasm32")]
+    assert_eq!(&d.nanosecond(), &123_000_000);
+    #[cfg(not(target_arch = "wasm32"))]
+    assert_eq!(&d.nanosecond(), &123_456_000);
+    d
+}
+
+pub fn duration(d: chrono::Duration) -> chrono::Duration {
+    assert_eq!(&d.num_hours(), &4);
+    d
+}
+
+#[derive(Debug, Clone)]
+pub struct FeatureChrono {
+    pub utc: chrono::DateTime<chrono::Utc>,
+    pub local: chrono::DateTime<chrono::Local>,
+    pub duration: chrono::Duration,
+    pub naive: chrono::NaiveDateTime,
+}
+
+pub fn how_long_does_it_take(mine: FeatureChrono) -> anyhow::Result<chrono::Duration> {
+    use chrono::{Datelike, Timelike};
+    let difference: chrono::Duration = chrono::Utc::now() - mine.utc;
+    assert_eq!(&mine.duration.num_hours(), &4);
+    assert_eq!(&mine.naive.year(), &2022);
+    assert_eq!(&mine.naive.month(), &9);
+    assert_eq!(&mine.naive.day(), &10);
+    assert_eq!(&mine.naive.hour(), &20);
+    assert_eq!(&mine.naive.minute(), &48);
+    assert_eq!(&mine.naive.second(), &53);
+    #[cfg(target_arch = "wasm32")]
+    assert_eq!(&mine.naive.nanosecond(), &123_000_000);
+    #[cfg(not(target_arch = "wasm32"))]
+    assert_eq!(&mine.naive.nanosecond(), &123_456_000);
+    Ok(difference)
+}

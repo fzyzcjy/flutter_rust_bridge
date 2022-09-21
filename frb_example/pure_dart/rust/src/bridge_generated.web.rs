@@ -339,6 +339,31 @@ pub fn wire_handle_big_buffers(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_datetime_utc(port_: MessagePort, d: i64) {
+    wire_datetime_utc_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_datetime_local(port_: MessagePort, d: i64) {
+    wire_datetime_local_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_naivedatetime(port_: MessagePort, d: i64) {
+    wire_naivedatetime_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_duration(port_: MessagePort, d: i64) {
+    wire_duration_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_how_long_does_it_take(port_: MessagePort, mine: JsValue) {
+    wire_how_long_does_it_take_impl(port_, mine)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -455,6 +480,35 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<chrono::Duration> for i64 {
+    fn wire2api(self) -> chrono::Duration {
+        chrono::Duration::milliseconds(self)
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        ))
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for i64 {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::NaiveDateTime::from_timestamp(s, ns)
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        )
+    }
+}
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self
@@ -601,6 +655,23 @@ impl Wire2Api<ExoticOptionals> for JsValue {
     }
 }
 
+impl Wire2Api<FeatureChrono> for JsValue {
+    fn wire2api(self) -> FeatureChrono {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        FeatureChrono {
+            utc: self_.get(0).wire2api(),
+            local: self_.get(1).wire2api(),
+            duration: self_.get(2).wire2api(),
+            naive: self_.get(3).wire2api(),
+        }
+    }
+}
 impl Wire2Api<Vec<f32>> for Box<[f32]> {
     fn wire2api(self) -> Vec<f32> {
         self.into_vec()
@@ -909,6 +980,26 @@ impl Wire2Api<UserId> for JsValue {
 
 // Section: impl Wire2Api for JsValue
 
+impl Wire2Api<chrono::Duration> for JsValue {
+    fn wire2api(self) -> chrono::Duration {
+        (self.unchecked_into_f64() as i64).wire2api()
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Local>> for JsValue {
+    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
+        (self.unchecked_into_f64() as i64).wire2api()
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for JsValue {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        (self.unchecked_into_f64() as i64).wire2api()
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        (self.unchecked_into_f64() as i64).wire2api()
+    }
+}
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")

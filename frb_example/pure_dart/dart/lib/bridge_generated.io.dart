@@ -18,6 +18,26 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api2wire
 
   @protected
+  int api2wire_Chrono_Duration(Duration raw) {
+    return api2wire_i64(raw.inMicroseconds);
+  }
+
+  @protected
+  int api2wire_Chrono_Local(DateTime raw) {
+    return api2wire_i64(raw.microsecondsSinceEpoch);
+  }
+
+  @protected
+  int api2wire_Chrono_Naive(DateTime raw) {
+    return api2wire_i64(raw.microsecondsSinceEpoch);
+  }
+
+  @protected
+  int api2wire_Chrono_Utc(DateTime raw) {
+    return api2wire_i64(raw.microsecondsSinceEpoch);
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
     return api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
@@ -86,6 +106,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<ffi.Double> api2wire_box_autoadd_f64(double raw) {
     return inner.new_box_autoadd_f64_0(api2wire_f64(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_FeatureChrono> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
+    final ptr = inner.new_box_autoadd_feature_chrono_0();
+    _api_fill_to_wire_feature_chrono(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -500,6 +527,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_feature_chrono(FeatureChrono apiObj, ffi.Pointer<wire_FeatureChrono> wireObj) {
+    _api_fill_to_wire_feature_chrono(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
@@ -601,6 +632,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.attributes_nullable = api2wire_list_opt_box_autoadd_attribute(apiObj.attributesNullable);
     wireObj.nullable_attributes = api2wire_opt_list_opt_box_autoadd_attribute(apiObj.nullableAttributes);
     wireObj.newtypeint = api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
+  }
+
+  void _api_fill_to_wire_feature_chrono(FeatureChrono apiObj, wire_FeatureChrono wireObj) {
+    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
+    wireObj.local = api2wire_Chrono_Local(apiObj.local);
+    wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
+    wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
   }
 
   void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, wire_KitchenSink wireObj) {
@@ -1688,6 +1726,77 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_big_buffers');
   late final _wire_handle_big_buffers = _wire_handle_big_buffersPtr.asFunction<void Function(int)>();
 
+  void wire_datetime_utc(
+    int port_,
+    int d,
+  ) {
+    return _wire_datetime_utc(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_datetime_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_datetime_utc');
+  late final _wire_datetime_utc = _wire_datetime_utcPtr.asFunction<void Function(int, int)>();
+
+  void wire_datetime_local(
+    int port_,
+    int d,
+  ) {
+    return _wire_datetime_local(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_datetime_localPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_datetime_local');
+  late final _wire_datetime_local = _wire_datetime_localPtr.asFunction<void Function(int, int)>();
+
+  void wire_naivedatetime(
+    int port_,
+    int d,
+  ) {
+    return _wire_naivedatetime(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_naivedatetimePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_naivedatetime');
+  late final _wire_naivedatetime = _wire_naivedatetimePtr.asFunction<void Function(int, int)>();
+
+  void wire_duration(
+    int port_,
+    int d,
+  ) {
+    return _wire_duration(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_durationPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_duration');
+  late final _wire_duration = _wire_durationPtr.asFunction<void Function(int, int)>();
+
+  void wire_how_long_does_it_take(
+    int port_,
+    ffi.Pointer<wire_FeatureChrono> mine,
+  ) {
+    return _wire_how_long_does_it_take(
+      port_,
+      mine,
+    );
+  }
+
+  late final _wire_how_long_does_it_takePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_FeatureChrono>)>>(
+          'wire_how_long_does_it_take');
+  late final _wire_how_long_does_it_take =
+      _wire_how_long_does_it_takePtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureChrono>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -1925,6 +2034,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_f64_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64_0');
   late final _new_box_autoadd_f64_0 = _new_box_autoadd_f64_0Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+
+  ffi.Pointer<wire_FeatureChrono> new_box_autoadd_feature_chrono_0() {
+    return _new_box_autoadd_feature_chrono_0();
+  }
+
+  late final _new_box_autoadd_feature_chrono_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_FeatureChrono> Function()>>('new_box_autoadd_feature_chrono_0');
+  late final _new_box_autoadd_feature_chrono_0 =
+      _new_box_autoadd_feature_chrono_0Ptr.asFunction<ffi.Pointer<wire_FeatureChrono> Function()>();
 
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32_0(
     int value,
@@ -2693,6 +2811,20 @@ class wire_Measure extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<MeasureKind> kind;
+}
+
+class wire_FeatureChrono extends ffi.Struct {
+  @ffi.Int64()
+  external int utc;
+
+  @ffi.Int64()
+  external int local;
+
+  @ffi.Int64()
+  external int duration;
+
+  @ffi.Int64()
+  external int naive;
 }
 
 class wire_SumWith extends ffi.Struct {

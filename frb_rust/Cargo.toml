@@ -11,13 +11,14 @@ categories = ["development-tools::ffi"]
 [dependencies]
 bytemuck = "1.11.0"
 anyhow = "1.0.64"
+chrono = { version = "0.4.20", optional = true }
 threadpool = "1.8.1"
 lazy_static = "1.4.0"
 parking_lot = "0.12.1"
 flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-allo-isolate = { version = "0.1.14-beta.2" }
+allo-isolate = { version = "0.1.14-beta.2", features = ["anyhow", "chrono"] }
 parking_lot = { version = "0.12.1" }
 threadpool = { version = "1.8.1" }
 
@@ -26,15 +27,15 @@ console_error_panic_hook = { version = "0.1.7" }
 wasm-bindgen = { version = "0.2.81" }
 js-sys = { version = "0.3.58" }
 web-sys = { version = "0.3.58", features = [
-    "DedicatedWorkerGlobalScope",
-    "MessageEvent",
-    "MessagePort",
-    "ErrorEvent",
-    "Blob",
-    "BlobPropertyBag",
-    "Worker",
-    "Url",
-    "BroadcastChannel",
+  "DedicatedWorkerGlobalScope",
+  "MessageEvent",
+  "MessagePort",
+  "ErrorEvent",
+  "Blob",
+  "BlobPropertyBag",
+  "Worker",
+  "Url",
+  "BroadcastChannel",
 ] }
 
 [build-dependencies]

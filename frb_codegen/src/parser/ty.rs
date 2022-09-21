@@ -236,9 +236,26 @@ impl<'a> TypeParser<'a> {
                         other => IrType::Optional(IrTypeOptional::new(other)),
                     })
                 }
+                #[cfg(feature = "chrono")]
+                "DateTime" => match *generic {
+                    SupportedInnerType::Path(SupportedPathType { ref ident, .. }) => {
+                        match ident.to_string().as_str() {
+                            "Utc" => Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
+                            "Local" => Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
+                            _ => panic!("Unknown DateTime generic offset"),
+                        }
+                    }
+                    _ => panic!("Invalid DateTime generic"),
+                },
                 _ => None,
             }
         } else {
+            #[cfg(feature = "chrono")]
+            match ident_string.as_str() {
+                "Duration" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration))),
+                "NaiveDateTime" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive))),
+                _ => {}
+            };
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

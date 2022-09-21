@@ -38,6 +38,19 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::PrimitiveEnum { ref repr, .. } => {
                 format!("return api2wire_{}(raw.index);", repr.safe_ident()).into()
             }
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(ref ir) => match ir {
+                IrTypeTime::Utc | IrTypeTime::Local | IrTypeTime::Naive => Acc {
+                    io: Some("return api2wire_i64(raw.microsecondsSinceEpoch);".into()),
+                    wasm: Some("return api2wire_i64(raw.millisecondsSinceEpoch);".into()),
+                    ..Default::default()
+                },
+                IrTypeTime::Duration => Acc {
+                    io: Some("return api2wire_i64(raw.inMicroseconds);".into()),
+                    wasm: Some("return api2wire_i64(raw.inMilliseconds);".into()),
+                    ..Default::default()
+                },
+            },
         }
     }
 
@@ -60,6 +73,14 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 format!("return {}.values[raw];", ir.dart_api_type())
             }
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::Time(ir) => match ir {
+                IrTypeTime::Local | IrTypeTime::Naive | IrTypeTime::Utc => {
+                    let is_utc = ir == &IrTypeTime::Naive || ir == &IrTypeTime::Utc;
+                    format!("return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: {is_utc});")
+                }
+                IrTypeTime::Duration => "return wire2apiDuration(_wire2api_i64(raw));".to_owned(),
+            },
         }
     }
 

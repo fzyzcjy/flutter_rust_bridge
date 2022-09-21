@@ -906,6 +906,73 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<DateTime> datetimeUtc({required DateTime d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_datetime_utc(port_, _platform.api2wire_Chrono_Utc(d)),
+        parseSuccessData: _wire2api_Chrono_Utc,
+        constMeta: kDatetimeUtcConstMeta,
+        argValues: [d],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kDatetimeUtcConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "datetime_utc",
+        argNames: ["d"],
+      );
+
+  Future<DateTime> datetimeLocal({required DateTime d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_datetime_local(port_, _platform.api2wire_Chrono_Local(d)),
+        parseSuccessData: _wire2api_Chrono_Local,
+        constMeta: kDatetimeLocalConstMeta,
+        argValues: [d],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kDatetimeLocalConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "datetime_local",
+        argNames: ["d"],
+      );
+
+  Future<DateTime> naivedatetime({required DateTime d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_naivedatetime(port_, _platform.api2wire_Chrono_Naive(d)),
+        parseSuccessData: _wire2api_Chrono_Naive,
+        constMeta: kNaivedatetimeConstMeta,
+        argValues: [d],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kNaivedatetimeConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "naivedatetime",
+        argNames: ["d"],
+      );
+
+  Future<Duration> duration({required Duration d, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_duration(port_, _platform.api2wire_Chrono_Duration(d)),
+        parseSuccessData: _wire2api_Chrono_Duration,
+        constMeta: kDurationConstMeta,
+        argValues: [d],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kDurationConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "duration",
+        argNames: ["d"],
+      );
+
+  Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_how_long_does_it_take(port_, _platform.api2wire_box_autoadd_feature_chrono(mine)),
+        parseSuccessData: _wire2api_Chrono_Duration,
+        constMeta: kHowLongDoesItTakeConstMeta,
+        argValues: [mine],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "how_long_does_it_take",
+        argNames: ["mine"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1102,6 +1169,22 @@ int api2wire_weekdays(Weekdays raw) {
 }
 
 // Section: wire2api
+
+Duration _wire2api_Chrono_Duration(dynamic raw) {
+  return wire2apiDuration(_wire2api_i64(raw));
+}
+
+DateTime _wire2api_Chrono_Local(dynamic raw) {
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: false);
+}
+
+DateTime _wire2api_Chrono_Naive(dynamic raw) {
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
+}
+
+DateTime _wire2api_Chrono_Utc(dynamic raw) {
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
+}
 
 String _wire2api_String(dynamic raw) {
   return raw as String;

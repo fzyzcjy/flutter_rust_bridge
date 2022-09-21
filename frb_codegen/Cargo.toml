@@ -51,3 +51,7 @@ bin-dir = "{bin}{binary-ext}"
 [package.metadata.binstall.overrides]
 x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 i686-pc-windows-msvc = { pkg-fmt = "zip" }
+
+[features]
+default = ["chrono"]
+chrono = []

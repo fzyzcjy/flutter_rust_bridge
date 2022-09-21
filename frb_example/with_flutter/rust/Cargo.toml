@@ -10,6 +10,6 @@ crate-type = ["cdylib"]
 [dependencies]
 anyhow = { version = "1.0.64", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust" }
-num = "0.4" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
-image = "0.24.3" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
-crossbeam = "0.8" # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
+num = "0.4"                                               # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
+image = "0.24.3"                                          # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
+crossbeam = "0.8"                                         # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.

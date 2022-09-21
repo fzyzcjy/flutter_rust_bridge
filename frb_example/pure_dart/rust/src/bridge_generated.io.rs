@@ -347,6 +347,31 @@ pub extern "C" fn wire_handle_big_buffers(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_datetime_utc(port_: i64, d: i64) {
+    wire_datetime_utc_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_datetime_local(port_: i64, d: i64) {
+    wire_datetime_local_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_naivedatetime(port_: i64, d: i64) {
+    wire_naivedatetime_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_duration(port_: i64, d: i64) {
+    wire_duration_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_how_long_does_it_take(port_: i64, mine: *mut wire_FeatureChrono) {
+    wire_how_long_does_it_take_impl(port_, mine)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -457,6 +482,11 @@ pub extern "C" fn new_box_autoadd_exotic_optionals_0() -> *mut wire_ExoticOption
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_f64_0(value: f64) -> *mut f64 {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_feature_chrono_0() -> *mut wire_FeatureChrono {
+    support::new_leak_box_ptr(wire_FeatureChrono::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -678,6 +708,35 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<chrono::Duration> for i64 {
+    fn wire2api(self) -> chrono::Duration {
+        chrono::Duration::microseconds(self)
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        ))
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for i64 {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::NaiveDateTime::from_timestamp(s, ns)
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        )
+    }
+}
 impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
@@ -765,6 +824,13 @@ impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
     fn wire2api(self) -> ExoticOptionals {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
+    }
+}
+
+impl Wire2Api<FeatureChrono> for *mut wire_FeatureChrono {
+    fn wire2api(self) -> FeatureChrono {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<FeatureChrono>::wire2api(*wrap).into()
     }
 }
 
@@ -922,6 +988,16 @@ impl Wire2Api<ExoticOptionals> for wire_ExoticOptionals {
     }
 }
 
+impl Wire2Api<FeatureChrono> for wire_FeatureChrono {
+    fn wire2api(self) -> FeatureChrono {
+        FeatureChrono {
+            utc: self.utc.wire2api(),
+            local: self.local.wire2api(),
+            duration: self.duration.wire2api(),
+            naive: self.naive.wire2api(),
+        }
+    }
+}
 impl Wire2Api<Vec<f32>> for *mut wire_float_32_list {
     fn wire2api(self) -> Vec<f32> {
         unsafe {
@@ -1209,6 +1285,15 @@ pub struct wire_ExoticOptionals {
     attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
     nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
     newtypeint: *mut wire_NewTypeInt,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_FeatureChrono {
+    utc: i64,
+    local: i64,
+    duration: i64,
+    naive: i64,
 }
 
 #[repr(C)]
@@ -1567,6 +1652,17 @@ impl NewWithNullPtr for wire_ExoticOptionals {
             attributes_nullable: core::ptr::null_mut(),
             nullable_attributes: core::ptr::null_mut(),
             newtypeint: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_FeatureChrono {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            utc: Default::default(),
+            local: Default::default(),
+            duration: Default::default(),
+            naive: Default::default(),
         }
     }
 }

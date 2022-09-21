@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
@@ -539,6 +541,59 @@ void main(List<String> args) async {
       expect(list.int64[0], BigInt.parse('-9223372036854775808'));
       expect(list.int64[1], BigInt.parse('9223372036854775807'));
       expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'), reason: 'uint64');
+    });
+  });
+
+  group('chrono feature', () {
+    test('DateTime<Utc>', () async {
+      final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.datetimeUtc(d: date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
+    test('DateTime<Local>', () async {
+      final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.datetimeLocal(d: date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
+    test('NaiveDateTime', () async {
+      final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.naivedatetime(d: date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
+    test('Duration', () async {
+      final duration = Duration(hours: 4);
+      final resp = await api.duration(d: duration);
+      expect(resp.inHours, duration.inHours);
+    });
+    test('nested chrono types', () async {
+      const duration = Duration(hours: 4);
+      final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+      final local = DateTime.now();
+      final utc = DateTime.now().toUtc();
+      final difference =
+          await api.howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
+      log('$difference');
     });
   });
 }
