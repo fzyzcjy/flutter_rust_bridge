@@ -27,3 +27,12 @@ pub type Channel = allo_isolate::Isolate;
 pub mod io;
 #[cfg(not(wasm))]
 pub use io::*;
+
+#[cfg(feature = "chrono")]
+#[inline]
+pub fn wire2api_timestamp(ts: i64) -> (i64, u32) {
+    #[cfg(target_family = "wasm")]
+    return web::wire2api_timestamp(ts);
+    #[cfg(not(target_family = "wasm"))]
+    return io::wire2api_timestamp(ts);
+}

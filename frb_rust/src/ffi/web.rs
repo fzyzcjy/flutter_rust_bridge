@@ -335,3 +335,24 @@ pub fn script_path() -> Option<String> {
     .ok()?
     .as_string()
 }
+
+#[cfg(feature = "chrono")]
+#[inline]
+pub fn wire2api_timestamp(ts: i64) -> (i64, u32) {
+    let s = (self / 1_000) as i64;
+    let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
+    (s, ns)
+}
+
+#[cfg(test)]
+#[cfg(feature = "chrono")]
+mod tests {
+    #[test]
+    fn wire2api() {
+        // input in milliseconds
+        let input: i64 = 3_496_567;
+        let (s, ns) = super::wire2api_timestamp(input);
+        assert_eq!(s, 3_496);
+        assert_eq!(ns, 567_000_000);
+    }
+}

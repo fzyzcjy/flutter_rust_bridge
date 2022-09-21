@@ -67,12 +67,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                   ..Default::default()
                 };
               }
-              let codegen_io = "
-              let s = (self / 1_000_000) as i64;
-              let ns = (self.rem_euclid(1_000_000) * 1_000) as u32;";
-              let codegen_wasm = "
-              let s = (self / 1_000) as i64;
-              let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;";
+              let codegen_timestamp = "let (s, ns) = wire2api_timestamp(self);";
               let codegen_naive = "chrono::NaiveDateTime::from_timestamp(s, ns)".to_string();
               let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
               let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
@@ -84,11 +79,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
               };
               Acc {
                 io: Some(format!("
-                {codegen_io}
+                {codegen_timestamp}
                 {codegen_conversion}
                 ")),
                 wasm: Some(format!("
-                {codegen_wasm}
+                {codegen_timestamp}
                 {codegen_conversion}
                 ")),
                 ..Default::default()
@@ -195,27 +190,5 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn static_checks(&self) -> Option<String> {
         delegate_enum!(self, static_checks(), None)
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn io_wire2api() {
-        // input in microseconds
-        let input: i64 = 3_496_567_123;
-        let s = (input / 1_000_000) as i64;
-        let ns = (input.rem_euclid(1_000_000) * 1_000) as u32;
-        assert_eq!(s, 3_496);
-        assert_eq!(ns, 567_123_000);
-    }
-    #[test]
-    fn wasm_wire2api() {
-        // input in milliseconds
-        let input: i64 = 3_496_567;
-        let s = (input / 1_000) as i64;
-        let ns = (input.rem_euclid(1_000) * 1_000_000) as u32;
-        assert_eq!(s, 3_496);
-        assert_eq!(ns, 567_000_000);
     }
 }
