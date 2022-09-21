@@ -120,6 +120,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
+    return api2wire_feature_chrono(raw);
+  }
+
+  @protected
   int /* *i32 */ api2wire_box_autoadd_i32(int raw) {
     return inner.new_box_autoadd_i32_0(api2wire_i32(raw));
   }
@@ -283,6 +288,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       api2wire_list_opt_box_autoadd_attribute(raw.attributesNullable),
       api2wire_opt_list_opt_box_autoadd_attribute(raw.nullableAttributes),
       api2wire_opt_box_autoadd_new_type_int(raw.newtypeint)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_feature_chrono(FeatureChrono raw) {
+    return [
+      api2wire_Chrono_Utc(raw.utc),
+      api2wire_Chrono_Local(raw.local),
+      api2wire_Chrono_Duration(raw.duration),
+      api2wire_Chrono_Naive(raw.naive)
     ];
   }
 
@@ -714,6 +729,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_duration(NativePortType port_, BigInt d);
 
+  external void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -927,6 +944,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_naivedatetime(NativePortType port_, BigInt d) => wasmModule.wire_naivedatetime(port_, d);
 
   void wire_duration(NativePortType port_, BigInt d) => wasmModule.wire_duration(port_, d);
+
+  void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine) =>
+      wasmModule.wire_how_long_does_it_take(port_, mine);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

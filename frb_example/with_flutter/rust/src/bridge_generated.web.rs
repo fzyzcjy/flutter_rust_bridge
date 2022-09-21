@@ -67,65 +67,13 @@ pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
     wire_off_topic_deliberately_panic_impl(port_)
 }
 
-#[wasm_bindgen]
-pub fn wire_how_long_does_it_take(port_: MessagePort, mine: JsValue) {
-    wire_how_long_does_it_take_impl(port_, mine)
-}
-
 // Section: allocate functions
 
 // Section: impl Wire2Api
 
-impl Wire2Api<chrono::Duration> for i64 {
-    fn wire2api(self) -> chrono::Duration {
-        chrono::Duration::milliseconds(self)
-    }
-}
-impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
-    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
-        let (s, ns) = wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
-            chrono::Utc,
-        ))
-    }
-}
-impl Wire2Api<chrono::NaiveDateTime> for i64 {
-    fn wire2api(self) -> chrono::NaiveDateTime {
-        let (s, ns) = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp(s, ns)
-    }
-}
-impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
-    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        let (s, ns) = wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
-            chrono::Utc,
-        )
-    }
-}
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self
-    }
-}
-
-impl Wire2Api<FeatureChrono> for JsValue {
-    fn wire2api(self) -> FeatureChrono {
-        let self_ = self.dyn_into::<JsArray>().unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        FeatureChrono {
-            utc: self_.get(0).wire2api(),
-            local: self_.get(1).wire2api(),
-            duration: self_.get(2).wire2api(),
-            naive: self_.get(3).wire2api(),
-        }
     }
 }
 
@@ -212,11 +160,6 @@ impl Wire2Api<f64> for JsValue {
 }
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
-        self.unchecked_into_f64() as _
-    }
-}
-impl Wire2Api<i64> for JsValue {
-    fn wire2api(self) -> i64 {
         self.unchecked_into_f64() as _
     }
 }

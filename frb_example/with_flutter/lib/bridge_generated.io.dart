@@ -16,35 +16,8 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 // Section: api2wire
 
   @protected
-  int api2wire_Chrono_Duration(Duration raw) {
-    return api2wire_i64(raw.inMicroseconds);
-  }
-
-  @protected
-  int api2wire_Chrono_Local(DateTime raw) {
-    return api2wire_i64(raw.microsecondsSinceEpoch);
-  }
-
-  @protected
-  int api2wire_Chrono_Naive(DateTime raw) {
-    return api2wire_i64(raw.microsecondsSinceEpoch);
-  }
-
-  @protected
-  int api2wire_Chrono_Utc(DateTime raw) {
-    return api2wire_i64(raw.microsecondsSinceEpoch);
-  }
-
-  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
     return api2wire_uint_8_list(utf8.encoder.convert(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_FeatureChrono> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
-    final ptr = inner.new_box_autoadd_feature_chrono_0();
-    _api_fill_to_wire_feature_chrono(raw, ptr.ref);
-    return ptr;
   }
 
   @protected
@@ -66,11 +39,6 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     final ptr = inner.new_box_autoadd_tree_node_0();
     _api_fill_to_wire_tree_node(raw, ptr.ref);
     return ptr;
-  }
-
-  @protected
-  int api2wire_i64(int raw) {
-    return raw;
   }
 
   @protected
@@ -99,10 +67,6 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 // Section: api_fill_to_wire
 
-  void _api_fill_to_wire_box_autoadd_feature_chrono(FeatureChrono apiObj, ffi.Pointer<wire_FeatureChrono> wireObj) {
-    _api_fill_to_wire_feature_chrono(apiObj, wireObj.ref);
-  }
-
   void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
     _api_fill_to_wire_point(apiObj, wireObj.ref);
   }
@@ -113,13 +77,6 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 
   void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<wire_TreeNode> wireObj) {
     _api_fill_to_wire_tree_node(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_feature_chrono(FeatureChrono apiObj, wire_FeatureChrono wireObj) {
-    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
-    wireObj.local = api2wire_Chrono_Local(apiObj.local);
-    wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
-    wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
   }
 
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
@@ -357,31 +314,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_off_topic_deliberately_panic =
       _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
-  void wire_how_long_does_it_take(
-    int port_,
-    ffi.Pointer<wire_FeatureChrono> mine,
-  ) {
-    return _wire_how_long_does_it_take(
-      port_,
-      mine,
-    );
-  }
-
-  late final _wire_how_long_does_it_takePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_FeatureChrono>)>>(
-          'wire_how_long_does_it_take');
-  late final _wire_how_long_does_it_take =
-      _wire_how_long_does_it_takePtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureChrono>)>();
-
-  ffi.Pointer<wire_FeatureChrono> new_box_autoadd_feature_chrono_0() {
-    return _new_box_autoadd_feature_chrono_0();
-  }
-
-  late final _new_box_autoadd_feature_chrono_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_FeatureChrono> Function()>>('new_box_autoadd_feature_chrono_0');
-  late final _new_box_autoadd_feature_chrono_0 =
-      _new_box_autoadd_feature_chrono_0Ptr.asFunction<ffi.Pointer<wire_FeatureChrono> Function()>();
-
   ffi.Pointer<wire_Point> new_box_autoadd_point_0() {
     return _new_box_autoadd_point_0();
   }
@@ -499,20 +431,6 @@ class wire_list_size extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
-}
-
-class wire_FeatureChrono extends ffi.Struct {
-  @ffi.Int64()
-  external int utc;
-
-  @ffi.Int64()
-  external int local;
-
-  @ffi.Int64()
-  external int duration;
-
-  @ffi.Int64()
-  external int naive;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;

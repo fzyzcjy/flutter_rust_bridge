@@ -1020,6 +1020,22 @@ fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + U
         },
     )
 }
+fn wire_how_long_does_it_take_impl(
+    port_: MessagePort,
+    mine: impl Wire2Api<FeatureChrono> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "how_long_does_it_take",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_mine = mine.wire2api();
+            move |task_callback| how_long_does_it_take(api_mine)
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1291,6 +1307,7 @@ impl Wire2Api<f64> for *mut f64 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
+
 impl Wire2Api<i32> for *mut i32 {
     fn wire2api(self) -> i32 {
         unsafe { *support::box_from_leak_ptr(self) }

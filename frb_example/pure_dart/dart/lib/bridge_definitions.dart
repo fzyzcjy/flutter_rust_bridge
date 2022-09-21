@@ -299,6 +299,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kDurationConstMeta;
 
+  Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -522,6 +526,20 @@ class ExoticOptionals {
     required this.attributesNullable,
     this.nullableAttributes,
     this.newtypeint,
+  });
+}
+
+class FeatureChrono {
+  final DateTime utc;
+  final DateTime local;
+  final Duration duration;
+  final DateTime naive;
+
+  FeatureChrono({
+    required this.utc,
+    required this.local,
+    required this.duration,
+    required this.naive,
   });
 }
 

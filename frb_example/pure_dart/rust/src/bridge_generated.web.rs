@@ -359,6 +359,11 @@ pub fn wire_duration(port_: MessagePort, d: i64) {
 }
 
 #[wasm_bindgen]
+pub fn wire_how_long_does_it_take(port_: MessagePort, mine: JsValue) {
+    wire_how_long_does_it_take_impl(port_, mine)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -650,6 +655,23 @@ impl Wire2Api<ExoticOptionals> for JsValue {
     }
 }
 
+impl Wire2Api<FeatureChrono> for JsValue {
+    fn wire2api(self) -> FeatureChrono {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        FeatureChrono {
+            utc: self_.get(0).wire2api(),
+            local: self_.get(1).wire2api(),
+            duration: self_.get(2).wire2api(),
+            naive: self_.get(3).wire2api(),
+        }
+    }
+}
 impl Wire2Api<Vec<f32>> for Box<[f32]> {
     fn wire2api(self) -> Vec<f32> {
         self.into_vec()

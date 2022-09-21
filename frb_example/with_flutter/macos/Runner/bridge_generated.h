@@ -36,13 +36,6 @@ typedef struct wire_list_size {
   int32_t len;
 } wire_list_size;
 
-typedef struct wire_FeatureChrono {
-  int64_t utc;
-  int64_t local;
-  int64_t duration;
-  int64_t naive;
-} wire_FeatureChrono;
-
 typedef struct WireSyncReturnStruct {
   uint8_t *ptr;
   int32_t len;
@@ -79,10 +72,6 @@ void wire_off_topic_deliberately_return_error(int64_t port_);
 
 void wire_off_topic_deliberately_panic(int64_t port_);
 
-void wire_how_long_does_it_take(int64_t port_, struct wire_FeatureChrono *mine);
-
-struct wire_FeatureChrono *new_box_autoadd_feature_chrono_0(void);
-
 struct wire_Point *new_box_autoadd_point_0(void);
 
 struct wire_Size *new_box_autoadd_size_0(void);
@@ -111,8 +100,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_complex_struct);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_return_error);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_panic);
-    dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_chrono_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_point_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_size_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node_0);

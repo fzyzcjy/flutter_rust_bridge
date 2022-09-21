@@ -958,6 +958,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["d"],
       );
 
+  Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_how_long_does_it_take(port_, _platform.api2wire_box_autoadd_feature_chrono(mine)),
+        parseSuccessData: _wire2api_Chrono_Duration,
+        constMeta: kHowLongDoesItTakeConstMeta,
+        argValues: [mine],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "how_long_does_it_take",
+        argNames: ["mine"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
