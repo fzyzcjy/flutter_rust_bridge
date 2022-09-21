@@ -980,6 +980,26 @@ impl Wire2Api<UserId> for JsValue {
 
 // Section: impl Wire2Api for JsValue
 
+impl Wire2Api<chrono::Duration> for JsValue {
+    fn wire2api(self) -> chrono::Duration {
+        (self.unchecked_into_f64() as i64).wire2api()
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Local>> for JsValue {
+    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
+        (self.unchecked_into_f64() as i64).wire2api()
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for JsValue {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        (self.unchecked_into_f64() as i64).wire2api()
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        (self.unchecked_into_f64() as i64).wire2api()
+    }
+}
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
