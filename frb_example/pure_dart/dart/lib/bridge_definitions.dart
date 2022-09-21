@@ -5,6 +5,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 
@@ -302,6 +303,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta;
+
+  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta;
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 

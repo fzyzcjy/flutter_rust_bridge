@@ -364,6 +364,11 @@ pub fn wire_how_long_does_it_take(port_: MessagePort, mine: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_uuid(port_: MessagePort, id: Box<[u8]>) {
+    wire_handle_uuid_impl(port_, id)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -521,6 +526,15 @@ impl Wire2Api<Vec<String>> for JsValue {
             .iter()
             .map(Wire2Api::wire2api)
             .collect()
+    }
+}
+impl Wire2Api<uuid::Uuid> for Box<[u8]> {
+    fn wire2api(self) -> uuid::Uuid {
+        let vec: Vec<u8> = self.wire2api();
+        uuid::Uuid::from_bytes(
+            *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(vec.as_slice())
+                .expect("invalid uuid slice"),
+        )
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {

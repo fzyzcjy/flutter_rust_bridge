@@ -372,6 +372,11 @@ pub extern "C" fn wire_how_long_does_it_take(port_: i64, mine: *mut wire_Feature
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_uuid(port_: i64, id: *mut wire_uint_8_list) {
+    wire_handle_uuid_impl(port_, id)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -750,6 +755,15 @@ impl Wire2Api<Vec<String>> for *mut wire_StringList {
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
         vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<uuid::Uuid> for *mut wire_uint_8_list {
+    fn wire2api(self) -> uuid::Uuid {
+        let vec: Vec<u8> = self.wire2api();
+        uuid::Uuid::from_bytes(
+            *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(vec.as_slice())
+                .expect("invalid uuid slice"),
+        )
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {

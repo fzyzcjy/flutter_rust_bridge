@@ -6,6 +6,7 @@ import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
 import 'package:meta/meta.dart';
 
@@ -973,6 +974,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["mine"],
       );
 
+  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_handle_uuid(port_, _platform.api2wire_Uuid(id)),
+        parseSuccessData: _wire2api_Uuid,
+        constMeta: kHandleUuidConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_uuid",
+        argNames: ["id"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1254,6 +1268,10 @@ int _wire2api_SyncReturn_u64(Uint8List raw) {
 int _wire2api_SyncReturn_u8(Uint8List raw) {
   final dataView = ByteData.view(raw.buffer);
   return dataView.getUint8(0);
+}
+
+UuidValue _wire2api_Uuid(dynamic raw) {
+  return UuidValue.fromByteList(raw);
 }
 
 Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {

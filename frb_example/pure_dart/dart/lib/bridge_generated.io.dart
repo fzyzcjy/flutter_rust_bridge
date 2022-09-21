@@ -6,6 +6,7 @@ import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
 import 'package:meta/meta.dart';
@@ -49,6 +50,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       ans.ref.ptr[i] = api2wire_String(raw[i]);
     }
     return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_Uuid(UuidValue raw) {
+    return api2wire_uint_8_list(raw.toBytes());
   }
 
   @protected
@@ -1796,6 +1802,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_how_long_does_it_take');
   late final _wire_how_long_does_it_take =
       _wire_how_long_does_it_takePtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureChrono>)>();
+
+  void wire_handle_uuid(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> id,
+  ) {
+    return _wire_handle_uuid(
+      port_,
+      id,
+    );
+  }
+
+  late final _wire_handle_uuidPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_uuid');
+  late final _wire_handle_uuid = _wire_handle_uuidPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_sum__method__SumWith(
     int port_,
