@@ -715,7 +715,7 @@ impl Wire2Api<chrono::Duration> for i64 {
 }
 impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
-        let (s, ns) = wire2api_timestamp(self);
+        let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
@@ -724,13 +724,13 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
 }
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
     fn wire2api(self) -> chrono::NaiveDateTime {
-        let (s, ns) = wire2api_timestamp(self);
+        let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::NaiveDateTime::from_timestamp(s, ns)
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        let (s, ns) = wire2api_timestamp(self);
+        let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Utc>::from_utc(
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
