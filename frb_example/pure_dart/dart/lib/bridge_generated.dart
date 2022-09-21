@@ -1171,31 +1171,19 @@ int api2wire_weekdays(Weekdays raw) {
 // Section: wire2api
 
 Duration _wire2api_Chrono_Duration(dynamic raw) {
-  if (kIsWeb) {
-    return Duration(milliseconds: _wire2api_i64(raw));
-  }
-  return Duration(microseconds: _wire2api_i64(raw));
+  return wire2apiDuration(_wire2api_i64(raw));
 }
 
 DateTime _wire2api_Chrono_Local(dynamic raw) {
-  if (kIsWeb) {
-    return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);
-  }
-  return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: false);
 }
 
 DateTime _wire2api_Chrono_Naive(dynamic raw) {
-  if (kIsWeb) {
-    return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);
-  }
-  return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
 }
 
 DateTime _wire2api_Chrono_Utc(dynamic raw) {
-  if (kIsWeb) {
-    return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);
-  }
-  return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
 }
 
 String _wire2api_String(dynamic raw) {
