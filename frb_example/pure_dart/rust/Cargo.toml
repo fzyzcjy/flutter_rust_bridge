@@ -8,9 +8,7 @@ name = "flutter_rust_bridge_example"
 crate-type = ["cdylib"]
 
 [build-dependencies]
-flutter_rust_bridge_codegen = { path = "../../../frb_codegen", features = [
-  "chrono",
-] }
+flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
 
 [dependencies]
 anyhow = { version = "1.0.64", features = ["backtrace"] }
