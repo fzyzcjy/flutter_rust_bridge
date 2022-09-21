@@ -381,7 +381,6 @@ dependencies = [
  "anyhow",
  "build-target",
  "bytemuck",
- "chrono",
  "console_error_panic_hook",
  "flutter_rust_bridge_macros",
  "js-sys",
@@ -397,7 +396,6 @@ name = "flutter_rust_bridge_example"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "chrono",
  "crossbeam",
  "flutter_rust_bridge",
  "image",
