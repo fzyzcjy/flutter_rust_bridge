@@ -134,3 +134,17 @@ bool uint8ListToBool(Uint8List raw) {
   final dataView = ByteData.view(raw.buffer);
   return dataView.getUint8(0) != 0;
 }
+
+DateTime wire2apiTimestamp({required int ts, required bool isUtc}) {
+  if (kIsWeb) {
+    return DateTime.fromMillisecondsSinceEpoch(ts, isUtc: isUtc);
+  }
+  return DateTime.fromMicrosecondsSinceEpoch(ts, isUtc: isUtc);
+}
+
+Duration wire2apiDuration(int ts) {
+  if (kIsWeb) {
+    return Duration(milliseconds: ts);
+  }
+  return Duration(microseconds: ts);
+}
