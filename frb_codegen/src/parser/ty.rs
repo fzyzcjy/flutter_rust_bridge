@@ -237,14 +237,16 @@ impl<'a> TypeParser<'a> {
                     })
                 }
                 #[cfg(feature = "chrono")]
-                "DateTime" if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Utc") => {
-                    Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc)))
-                }
-
-                #[cfg(feature = "chrono")]
-                "DateTime" if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if  ident == "Local") => {
-                    Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Local)))
-                }
+                "DateTime" => match *generic {
+                    SupportedInnerType::Path(SupportedPathType { ref ident, .. }) => {
+                        match ident.to_string().as_str() {
+                            "Utc" => Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
+                            "Local" => Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
+                            _ => panic!("Unknown DateTime generic offset"),
+                        }
+                    }
+                    _ => panic!("Invalid DateTime generic"),
+                },
                 _ => None,
             }
         } else {
