@@ -67,7 +67,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                   ..Default::default()
                 };
               }
-              let codegen_timestamp = "let (s, ns) = wire2api_timestamp(self);";
+              let codegen_timestamp = "let Timestamp { s, ns } = wire2api_timestamp(self);";
               let codegen_naive = "chrono::NaiveDateTime::from_timestamp(s, ns)".to_string();
               let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
               let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
