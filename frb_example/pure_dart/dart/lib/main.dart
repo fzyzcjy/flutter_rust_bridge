@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
@@ -583,6 +585,15 @@ void main(List<String> args) async {
       final duration = Duration(hours: 4);
       final resp = await api.duration(d: duration);
       expect(resp.inHours, duration.inHours);
+    });
+    test('nested chrono types', () async {
+      const duration = Duration(hours: 4);
+      final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+      final local = DateTime.now();
+      final utc = DateTime.now().toUtc();
+      final difference =
+          await api.howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
+      log('$difference');
     });
   });
 }
