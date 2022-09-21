@@ -339,9 +339,9 @@ pub fn script_path() -> Option<String> {
 #[cfg(feature = "chrono")]
 #[inline]
 pub fn wire2api_timestamp(ts: i64) -> Timestamp {
-    let s = (self / 1_000) as i64;
-    let ns = (self.rem_euclid(1_000) * 1_000_000) as u32;
-    Timestamp(s, ns)
+    let s = (ts / 1_000) as i64;
+    let ns = (ts.rem_euclid(1_000) * 1_000_000) as u32;
+    Timestamp { s, ns }
 }
 /// a timestamp with milliseconds precision
 #[cfg(feature = "chrono")]
