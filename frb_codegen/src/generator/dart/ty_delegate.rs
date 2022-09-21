@@ -75,18 +75,16 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => match ir {
-                IrTypeTime::Local => "
-                if (kIsWeb) {
-                  return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);
+                IrTypeTime::Local | IrTypeTime::Naive | IrTypeTime::Utc => {
+                    let is_utc = ir == &IrTypeTime::Naive || ir == &IrTypeTime::Utc;
+                    format!(
+                        "
+                        if (kIsWeb) {{
+                          return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: {is_utc});
+                        }}
+                        return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: {is_utc});"
+                    )
                 }
-                return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: false);"
-                    .to_owned(),
-                IrTypeTime::Naive | IrTypeTime::Utc => "
-                if (kIsWeb) {
-                  return DateTime.fromMillisecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);
-                }
-                return DateTime.fromMicrosecondsSinceEpoch(_wire2api_i64(raw), isUtc: true);"
-                    .to_owned(),
                 IrTypeTime::Duration => "
                 if (kIsWeb) {
                   return Duration(milliseconds: _wire2api_i64(raw));
