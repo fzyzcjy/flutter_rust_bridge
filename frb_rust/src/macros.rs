@@ -9,7 +9,11 @@
 macro_rules! transfer {
     (|| $block:block) => {{
         #[cfg(not(target_family = "wasm"))]
-        { move || $block }
+        {
+            move || {
+                $block
+            }
+        }
 
         #[cfg(target_family = "wasm")]
         {
@@ -83,7 +87,16 @@ macro_rules! spawn {
         let worker = $crate::transfer!($($tt)*);
         #[cfg(not(target_family = "wasm"))]
         {
-            $crate::thread::THREAD_POOL.lock().execute(worker)
+            let current_max = $crate::thread::THREAD_POOL.lock().max_count();
+            if $crate::thread::THREAD_POOL.lock().active_count() + 1 >= current_max {
+                $crate::thread::THREAD_POOL.lock().set_num_threads(current_max + 4);
+            }
+            $crate::thread::THREAD_POOL.lock().execute(worker);
+            let current_active = $crate::thread::THREAD_POOL.lock().active_count();
+            let current_max = $crate::thread::THREAD_POOL.lock().max_count();
+            if current_max > 4 && current_max > current_active * 2 {
+                $crate::thread::THREAD_POOL.lock().set_num_threads(current_active + 4);
+            }
         }
 
         #[cfg(target_family = "wasm")]
