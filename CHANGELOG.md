@@ -1,3 +1,7 @@
+## 1.47.0
+
+* Support chrono date time #694 (thanks @Roms1383)
+
 ## 1.46.0
 
 * Fix WireSyncReturnStruct should be freed after buffer being consumed #720 (thanks @hsfzxjy)
