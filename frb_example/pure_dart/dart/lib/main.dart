@@ -598,7 +598,7 @@ void main(List<String> args) async {
     });
   });
 
-  group('chrono feature', () {
+  group('uuid feature', () {
     test('Uuid', () async {
       final uuid = Uuid();
       final id = uuid.v4obj();
