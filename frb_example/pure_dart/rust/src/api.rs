@@ -922,3 +922,7 @@ pub fn how_long_does_it_take(mine: FeatureChrono) -> anyhow::Result<chrono::Dura
 pub fn handle_uuid(id: uuid::Uuid) -> anyhow::Result<uuid::Uuid> {
     Ok(id)
 }
+
+pub fn handle_uuids(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
+    Ok(ids)
+}

@@ -97,6 +97,19 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     .expect(\"invalid uuid slice\"),
             )
             ".into())),
+            #[cfg(feature = "uuid")]
+            IrTypeDelegate::Uuids => Acc::distribute(Some("
+            let vec: Vec<u8> = self.wire2api();
+            vec
+              .as_slice()
+              .chunks(16)
+              .map(|x| 
+                  uuid::Uuid::from_bytes(
+                      *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(x)
+                          .expect(\"invalid uuid slice\"),
+                  )
+              )
+              .collect::<Vec::<uuid::Uuid>>()".into())),
         }
     }
 

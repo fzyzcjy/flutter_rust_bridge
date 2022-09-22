@@ -63,6 +63,19 @@ impl IntoDart for uuid::Uuid {
     }
 }
 
+#[cfg(feature = "uuid")]
+impl IntoDart for Vec<uuid::Uuid> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        use std::io::Write;
+        let mut buffer = Vec::<u8>::with_capacity(self.len() * 16);
+        for id in self {
+            let _ = buffer.write(id.as_bytes());
+        }
+        Uint8Array::from(buffer.as_slice()).into()
+    }
+}
+
 macro_rules! delegate {
     ($( $ty:ty )*) => {$(
         impl IntoDart for $ty {

@@ -598,11 +598,19 @@ void main(List<String> args) async {
     });
   });
 
-  test('uuid feature', () async {
-    final uuid = Uuid();
-    final id = uuid.v4obj();
-    final output = await api.handleUuid(id: id);
-    expect(id, output);
+  group('chrono feature', () {
+    test('Uuid', () async {
+      final uuid = Uuid();
+      final id = uuid.v4obj();
+      final output = await api.handleUuid(id: id);
+      expect(id, output);
+    });
+    test('Vec<Uuid>', () async {
+      final uuid = Uuid();
+      final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+      final outputs = await api.handleUuids(ids: ids);
+      expect(ids, outputs);
+    });
   });
 }
 
