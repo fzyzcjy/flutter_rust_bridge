@@ -308,6 +308,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta;
 
+  Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;

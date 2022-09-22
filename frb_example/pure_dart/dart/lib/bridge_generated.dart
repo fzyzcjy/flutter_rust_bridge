@@ -987,6 +987,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
+  Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_handle_uuids(port_, _platform.api2wire_Uuids(ids)),
+        parseSuccessData: _wire2api_Uuids,
+        constMeta: kHandleUuidsConstMeta,
+        argValues: [ids],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_uuids",
+        argNames: ["ids"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1272,6 +1286,15 @@ int _wire2api_SyncReturn_u8(Uint8List raw) {
 
 UuidValue _wire2api_Uuid(dynamic raw) {
   return UuidValue.fromByteList(raw);
+}
+
+List<UuidValue> _wire2api_Uuids(dynamic raw) {
+  final count = raw.lengthInBytes / 16;
+  var buffer = List<UuidValue>.empty(growable: true);
+  for (var i = 0; i < count; i++) {
+    buffer.add(UuidValue.fromByteList(Uint8List.view(raw.buffer, i * 16, 16)));
+  }
+  return buffer;
 }
 
 Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {

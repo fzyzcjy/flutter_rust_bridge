@@ -377,6 +377,11 @@ pub extern "C" fn wire_handle_uuid(port_: i64, id: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_uuids(port_: i64, ids: *mut wire_uint_8_list) {
+    wire_handle_uuids_impl(port_, ids)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -764,6 +769,20 @@ impl Wire2Api<uuid::Uuid> for *mut wire_uint_8_list {
             *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(vec.as_slice())
                 .expect("invalid uuid slice"),
         )
+    }
+}
+impl Wire2Api<Vec<uuid::Uuid>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> Vec<uuid::Uuid> {
+        let vec: Vec<u8> = self.wire2api();
+        vec.as_slice()
+            .chunks(16)
+            .map(|x| {
+                uuid::Uuid::from_bytes(
+                    *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(x)
+                        .expect("invalid uuid slice"),
+                )
+            })
+            .collect::<Vec<uuid::Uuid>>()
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {

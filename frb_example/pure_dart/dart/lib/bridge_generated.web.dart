@@ -56,6 +56,19 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Uint8List api2wire_Uuids(List<UuidValue> raw) {
+    var builder = BytesBuilder();
+    if (raw.length == 0) {
+      return api2wire_uint_8_list(builder.toBytes());
+    }
+    final count = raw.length;
+    for (var i = 0; i < count; i++) {
+      builder.add(raw[i].toBytes());
+    }
+    return api2wire_uint_8_list(builder.toBytes());
+  }
+
+  @protected
   Uint8List api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
     return api2wire_uint_8_list(raw);
   }
@@ -739,6 +752,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_handle_uuid(NativePortType port_, Uint8List id);
 
+  external void wire_handle_uuids(NativePortType port_, Uint8List ids);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -957,6 +972,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       wasmModule.wire_how_long_does_it_take(port_, mine);
 
   void wire_handle_uuid(NativePortType port_, Uint8List id) => wasmModule.wire_handle_uuid(port_, id);
+
+  void wire_handle_uuids(NativePortType port_, Uint8List ids) => wasmModule.wire_handle_uuids(port_, ids);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

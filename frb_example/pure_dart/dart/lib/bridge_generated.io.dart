@@ -58,6 +58,19 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_Uuids(List<UuidValue> raw) {
+    var builder = BytesBuilder();
+    if (raw.length == 0) {
+      return api2wire_uint_8_list(builder.toBytes());
+    }
+    final count = raw.length;
+    for (var i = 0; i < count; i++) {
+      builder.add(raw[i].toBytes());
+    }
+    return api2wire_uint_8_list(builder.toBytes());
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
     return api2wire_uint_8_list(raw);
   }
@@ -1816,6 +1829,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_uuidPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_uuid');
   late final _wire_handle_uuid = _wire_handle_uuidPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_uuids(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> ids,
+  ) {
+    return _wire_handle_uuids(
+      port_,
+      ids,
+    );
+  }
+
+  late final _wire_handle_uuidsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_uuids');
+  late final _wire_handle_uuids = _wire_handle_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_sum__method__SumWith(
     int port_,
