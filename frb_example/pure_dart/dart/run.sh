@@ -7,7 +7,7 @@ if [[ -z "${CARGO_TARGET_DIR}" ]]; then
   exit 1
 fi
 
-(cd ../rust && cargo build --features "chrono,uuid" --verbose)
+(cd ../rust && cargo build --verbose)
 
 # dart pub get
 
