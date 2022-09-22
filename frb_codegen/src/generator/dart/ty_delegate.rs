@@ -102,10 +102,11 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => "return UuidValue.fromByteList(raw);".to_owned(),
             #[cfg(feature = "uuid")]
-            IrTypeDelegate::Uuids => "
-            final count = raw.lengthInBytes / 16;
-            return List<UuidValue>.generate(count, (int i) => UuidValue.fromByteList(Uint8List.view(raw.buffer, i * 16, 16)), growable: false);"
-            .to_owned(),
+            IrTypeDelegate::Uuids => "return List<UuidValue>.generate(
+              raw.lengthInBytes / 16,
+              (int i) => UuidValue.fromByteList(Uint8List.view(raw.buffer, i * 16, 16)),
+              growable: false);"
+                .to_owned(),
         }
     }
 
