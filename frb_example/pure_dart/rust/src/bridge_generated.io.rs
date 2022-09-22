@@ -775,24 +775,13 @@ impl Wire2Api<Vec<String>> for *mut wire_StringList {
 impl Wire2Api<uuid::Uuid> for *mut wire_uint_8_list {
     fn wire2api(self) -> uuid::Uuid {
         let vec: Vec<u8> = self.wire2api();
-        uuid::Uuid::from_bytes(
-            *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(vec.as_slice())
-                .expect("invalid uuid slice"),
-        )
+        wire2api_uuid_ref(vec.as_slice())
     }
 }
 impl Wire2Api<Vec<uuid::Uuid>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Vec<uuid::Uuid> {
         let vec: Vec<u8> = self.wire2api();
-        vec.as_slice()
-            .chunks(16)
-            .map(|x| {
-                uuid::Uuid::from_bytes(
-                    *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(x)
-                        .expect("invalid uuid slice"),
-                )
-            })
-            .collect::<Vec<uuid::Uuid>>()
+        wire2api_uuids(vec)
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
