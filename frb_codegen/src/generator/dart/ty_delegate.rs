@@ -59,7 +59,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::Uuids => Acc::distribute(Some(
                 "
                 var builder = BytesBuilder();
-                if (raw.length == 0) {
+                if (raw.isEmpty) {
                   return api2wire_uint_8_list(builder.toBytes());
                 }
                 final count = raw.length;
