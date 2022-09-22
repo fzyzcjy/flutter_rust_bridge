@@ -4,5 +4,4 @@ fn main() {
     if let Ok(Family::Wasm) = build_target::target_family() {
         println!("cargo:rustc-cfg=wasm");
     }
-    println!("cargo:rustc-cfg=feature=\"chrono,uuid\"");
 }
