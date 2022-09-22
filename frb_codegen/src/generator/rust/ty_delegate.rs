@@ -191,6 +191,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(_) => "(self.unchecked_into_f64() as i64).wire2api()".into(),
+            #[cfg(feature = "uuid")]
+            IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
+                "self.unchecked_into::<js_sys::Uint8Array>().to_vec().into_boxed_slice().wire2api()"
+                    .into()
+            }
             _ => return None,
         })
     }

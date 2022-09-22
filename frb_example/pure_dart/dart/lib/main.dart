@@ -611,6 +611,15 @@ void main(List<String> args) async {
       final outputs = await api.handleUuids(ids: ids);
       expect(ids, outputs);
     });
+    test('nested uuid types', () async {
+      final uuid = Uuid();
+      final id = uuid.v4obj();
+      final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+      final wrapper = FeatureUuid(one: id, many: ids);
+      final outputs = await api.handleNestedUuids(ids: wrapper);
+      expect(wrapper.one, outputs.one);
+      expect(wrapper.many, outputs.many);
+    });
   });
 }
 
