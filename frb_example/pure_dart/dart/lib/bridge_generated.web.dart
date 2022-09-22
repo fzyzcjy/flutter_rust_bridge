@@ -57,15 +57,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   Uint8List api2wire_Uuids(List<UuidValue> raw) {
-    var builder = BytesBuilder();
-    if (raw.isEmpty) {
-      return api2wire_uint_8_list(builder.toBytes());
-    }
-    final count = raw.length;
-    for (var i = 0; i < count; i++) {
-      builder.add(raw[i].toBytes());
-    }
-    return api2wire_uint_8_list(builder.toBytes());
+    return api2wire_uint_8_list(wire2apiConcatenateBytes(raw));
   }
 
   @protected
