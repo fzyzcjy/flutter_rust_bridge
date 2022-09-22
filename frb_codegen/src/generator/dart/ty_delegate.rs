@@ -57,17 +57,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => Acc::distribute(Some(
-                "
-                var builder = BytesBuilder();
-                if (raw.isEmpty) {
-                  return api2wire_uint_8_list(builder.toBytes());
-                }
-                final count = raw.length;
-                for (var i = 0; i < count; i++) {
-                  builder.add(raw[i].toBytes());
-                }
-                return api2wire_uint_8_list(builder.toBytes());"
-                    .into(),
+                "return api2wire_uint_8_list(wire2apiConcatenateBytes(raw));".into(),
             )),
         }
     }
