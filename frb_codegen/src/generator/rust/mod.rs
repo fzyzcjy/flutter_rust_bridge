@@ -366,7 +366,7 @@ impl<'a> Generator<'a> {
         let redirect_body = format!(
             "{}_impl({})",
             func.wire_func_name(),
-            (func.mode.has_port_argument().then(|| "port_"))
+            (func.mode.has_port_argument().then_some("port_"))
                 .into_iter()
                 .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
                 .collect::<Vec<_>>()
