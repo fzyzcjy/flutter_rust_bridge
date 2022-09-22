@@ -107,7 +107,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::Uuids => "
             final bytes = _wire2api_uint_8_list(raw);
             return List<UuidValue>.generate(
-              (bytes.lengthInBytes / 16) as int,
+              bytes.lengthInBytes ~/ 16,
               (int i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * 16, 16)),
               growable: false);"
                 .to_owned(),
