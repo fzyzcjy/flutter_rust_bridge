@@ -1300,7 +1300,7 @@ int _wire2api_SyncReturn_u8(Uint8List raw) {
 }
 
 UuidValue _wire2api_Uuid(dynamic raw) {
-  return UuidValue.fromByteList(raw);
+  return UuidValue.fromByteList(_wire2api_uint_8_list(raw));
 }
 
 List<UuidValue> _wire2api_Uuids(dynamic raw) {
