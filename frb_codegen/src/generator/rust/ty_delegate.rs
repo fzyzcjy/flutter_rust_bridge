@@ -91,12 +91,12 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             },
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => Acc::distribute(Some("
-            let vec: Vec<u8> = self.wire2api();
-            wire2api_uuid_ref(vec.as_slice())".into())),
+            let single: Vec<u8> = self.wire2api();
+            wire2api_uuid_ref(single.as_slice())".into())),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => Acc::distribute(Some("
-            let vec: Vec<u8> = self.wire2api();
-            wire2api_uuids(vec)".into())),
+            let multiple: Vec<u8> = self.wire2api();
+            wire2api_uuids(multiple)".into())),
         }
     }
 
