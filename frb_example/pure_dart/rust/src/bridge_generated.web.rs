@@ -540,14 +540,14 @@ impl Wire2Api<Vec<String>> for JsValue {
 }
 impl Wire2Api<uuid::Uuid> for Box<[u8]> {
     fn wire2api(self) -> uuid::Uuid {
-        let vec: Vec<u8> = self.wire2api();
-        wire2api_uuid_ref(vec.as_slice())
+        let single: Vec<u8> = self.wire2api();
+        wire2api_uuid_ref(single.as_slice())
     }
 }
 impl Wire2Api<Vec<uuid::Uuid>> for Box<[u8]> {
     fn wire2api(self) -> Vec<uuid::Uuid> {
-        let vec: Vec<u8> = self.wire2api();
-        wire2api_uuids(vec)
+        let multiple: Vec<u8> = self.wire2api();
+        wire2api_uuids(multiple)
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
