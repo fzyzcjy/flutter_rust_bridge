@@ -388,6 +388,7 @@ dependencies = [
  "lazy_static",
  "parking_lot",
  "threadpool",
+ "uuid",
  "wasm-bindgen",
  "web-sys",
 ]

@@ -50,6 +50,6 @@ build-target = "0.4.0"
 wasm-bindgen-test = "0.3.32"
 
 [features]
-default = ["chrono"]
+default = ["chrono", "uuid"]
 uuid = ["dep:uuid"]
 chrono = ["dep:chrono"]
