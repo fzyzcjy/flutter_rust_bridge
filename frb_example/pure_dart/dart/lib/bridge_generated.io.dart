@@ -60,7 +60,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_Uuids(List<UuidValue> raw) {
     var builder = BytesBuilder();
-    if (raw.length == 0) {
+    if (raw.isEmpty) {
       return api2wire_uint_8_list(builder.toBytes());
     }
     final count = raw.length;
