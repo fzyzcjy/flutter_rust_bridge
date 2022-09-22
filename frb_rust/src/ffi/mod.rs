@@ -27,3 +27,26 @@ pub type Channel = allo_isolate::Isolate;
 pub mod io;
 #[cfg(not(wasm))]
 pub use io::*;
+
+#[cfg(feature = "uuid")]
+#[inline]
+pub fn wire2api_uuid_ref(id: &[u8]) -> uuid::Uuid {
+    uuid::Uuid::from_bytes(
+        *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(id).expect("invalid uuid slice"),
+    )
+}
+
+#[cfg(feature = "uuid")]
+#[inline]
+pub fn wire2api_uuid(id: Vec<u8>) -> uuid::Uuid {
+    wire2api_uuid_ref(id.as_slice())
+}
+
+#[cfg(feature = "uuid")]
+#[inline]
+pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
+    ids.as_slice()
+        .chunks(16)
+        .map(wire2api_uuid_ref)
+        .collect::<Vec<uuid::Uuid>>()
+}

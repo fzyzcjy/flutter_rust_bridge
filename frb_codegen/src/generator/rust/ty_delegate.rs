@@ -92,24 +92,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => Acc::distribute(Some("
             let vec: Vec<u8> = self.wire2api();
-            uuid::Uuid::from_bytes(
-                *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(vec.as_slice())
-                    .expect(\"invalid uuid slice\"),
-            )
-            ".into())),
+            wire2api_uuid_ref(vec.as_slice())".into())),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => Acc::distribute(Some("
             let vec: Vec<u8> = self.wire2api();
-            vec
-              .as_slice()
-              .chunks(16)
-              .map(|x| 
-                  uuid::Uuid::from_bytes(
-                      *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(x)
-                          .expect(\"invalid uuid slice\"),
-                  )
-              )
-              .collect::<Vec::<uuid::Uuid>>()".into())),
+            wire2api_uuids(vec)".into())),
         }
     }
 
