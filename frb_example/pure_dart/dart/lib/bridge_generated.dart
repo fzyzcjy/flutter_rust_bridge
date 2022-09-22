@@ -1290,11 +1290,8 @@ UuidValue _wire2api_Uuid(dynamic raw) {
 
 List<UuidValue> _wire2api_Uuids(dynamic raw) {
   final count = raw.lengthInBytes / 16;
-  var buffer = List<UuidValue>.empty(growable: true);
-  for (var i = 0; i < count; i++) {
-    buffer.add(UuidValue.fromByteList(Uint8List.view(raw.buffer, i * 16, 16)));
-  }
-  return buffer;
+  return List<UuidValue>.generate(count, (int i) => UuidValue.fromByteList(Uint8List.view(raw.buffer, i * 16, 16)),
+      growable: false);
 }
 
 Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
