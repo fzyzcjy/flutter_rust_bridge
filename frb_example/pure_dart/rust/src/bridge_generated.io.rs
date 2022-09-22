@@ -382,6 +382,11 @@ pub extern "C" fn wire_handle_uuids(port_: i64, ids: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_nested_uuids(port_: i64, ids: *mut wire_FeatureUuid) {
+    wire_handle_nested_uuids_impl(port_, ids)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -497,6 +502,11 @@ pub extern "C" fn new_box_autoadd_f64_0(value: f64) -> *mut f64 {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_feature_chrono_0() -> *mut wire_FeatureChrono {
     support::new_leak_box_ptr(wire_FeatureChrono::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_feature_uuid_0() -> *mut wire_FeatureUuid {
+    support::new_leak_box_ptr(wire_FeatureUuid::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -866,6 +876,12 @@ impl Wire2Api<FeatureChrono> for *mut wire_FeatureChrono {
         Wire2Api::<FeatureChrono>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<FeatureUuid> for *mut wire_FeatureUuid {
+    fn wire2api(self) -> FeatureUuid {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<FeatureUuid>::wire2api(*wrap).into()
+    }
+}
 
 impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
@@ -1028,6 +1044,14 @@ impl Wire2Api<FeatureChrono> for wire_FeatureChrono {
             local: self.local.wire2api(),
             duration: self.duration.wire2api(),
             naive: self.naive.wire2api(),
+        }
+    }
+}
+impl Wire2Api<FeatureUuid> for wire_FeatureUuid {
+    fn wire2api(self) -> FeatureUuid {
+        FeatureUuid {
+            one: self.one.wire2api(),
+            many: self.many.wire2api(),
         }
     }
 }
@@ -1327,6 +1351,13 @@ pub struct wire_FeatureChrono {
     local: i64,
     duration: i64,
     naive: i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_FeatureUuid {
+    one: *mut wire_uint_8_list,
+    many: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -1696,6 +1727,15 @@ impl NewWithNullPtr for wire_FeatureChrono {
             local: Default::default(),
             duration: Default::default(),
             naive: Default::default(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_FeatureUuid {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            one: core::ptr::null_mut(),
+            many: core::ptr::null_mut(),
         }
     }
 }

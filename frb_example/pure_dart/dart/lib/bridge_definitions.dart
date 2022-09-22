@@ -312,6 +312,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
 
+  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -549,6 +553,16 @@ class FeatureChrono {
     required this.local,
     required this.duration,
     required this.naive,
+  });
+}
+
+class FeatureUuid {
+  final UuidValue one;
+  final List<UuidValue> many;
+
+  FeatureUuid({
+    required this.one,
+    required this.many,
   });
 }
 

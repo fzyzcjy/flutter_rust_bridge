@@ -144,6 +144,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_feature_uuid(FeatureUuid raw) {
+    return api2wire_feature_uuid(raw);
+  }
+
+  @protected
   int /* *i32 */ api2wire_box_autoadd_i32(int raw) {
     return inner.new_box_autoadd_i32_0(api2wire_i32(raw));
   }
@@ -318,6 +323,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       api2wire_Chrono_Duration(raw.duration),
       api2wire_Chrono_Naive(raw.naive)
     ];
+  }
+
+  @protected
+  List<dynamic> api2wire_feature_uuid(FeatureUuid raw) {
+    return [api2wire_Uuid(raw.one), api2wire_Uuids(raw.many)];
   }
 
   @protected
@@ -754,6 +764,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_handle_uuids(NativePortType port_, Uint8List ids);
 
+  external void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -974,6 +986,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_handle_uuid(NativePortType port_, Uint8List id) => wasmModule.wire_handle_uuid(port_, id);
 
   void wire_handle_uuids(NativePortType port_, Uint8List ids) => wasmModule.wire_handle_uuids(port_, ids);
+
+  void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids) =>
+      wasmModule.wire_handle_nested_uuids(port_, ids);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

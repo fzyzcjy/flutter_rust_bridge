@@ -374,6 +374,11 @@ pub fn wire_handle_uuids(port_: MessagePort, ids: Box<[u8]>) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_nested_uuids(port_: MessagePort, ids: JsValue) {
+    wire_handle_nested_uuids_impl(port_, ids)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -702,6 +707,21 @@ impl Wire2Api<FeatureChrono> for JsValue {
             local: self_.get(1).wire2api(),
             duration: self_.get(2).wire2api(),
             naive: self_.get(3).wire2api(),
+        }
+    }
+}
+impl Wire2Api<FeatureUuid> for JsValue {
+    fn wire2api(self) -> FeatureUuid {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        FeatureUuid {
+            one: self_.get(0).wire2api(),
+            many: self_.get(1).wire2api(),
         }
     }
 }
@@ -1036,6 +1056,22 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<uuid::Uuid> for JsValue {
+    fn wire2api(self) -> uuid::Uuid {
+        self.unchecked_into::<js_sys::Uint8Array>()
+            .to_vec()
+            .into_boxed_slice()
+            .wire2api()
+    }
+}
+impl Wire2Api<Vec<uuid::Uuid>> for JsValue {
+    fn wire2api(self) -> Vec<uuid::Uuid> {
+        self.unchecked_into::<js_sys::Uint8Array>()
+            .to_vec()
+            .into_boxed_slice()
+            .wire2api()
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for JsValue {

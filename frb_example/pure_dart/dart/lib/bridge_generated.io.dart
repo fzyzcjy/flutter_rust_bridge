@@ -135,6 +135,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_FeatureUuid> api2wire_box_autoadd_feature_uuid(FeatureUuid raw) {
+    final ptr = inner.new_box_autoadd_feature_uuid_0();
+    _api_fill_to_wire_feature_uuid(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<ffi.Int32> api2wire_box_autoadd_i32(int raw) {
     return inner.new_box_autoadd_i32_0(api2wire_i32(raw));
   }
@@ -550,6 +557,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_feature_chrono(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_feature_uuid(FeatureUuid apiObj, ffi.Pointer<wire_FeatureUuid> wireObj) {
+    _api_fill_to_wire_feature_uuid(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_kitchen_sink(KitchenSink apiObj, ffi.Pointer<wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
@@ -658,6 +669,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.local = api2wire_Chrono_Local(apiObj.local);
     wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
     wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
+  }
+
+  void _api_fill_to_wire_feature_uuid(FeatureUuid apiObj, wire_FeatureUuid wireObj) {
+    wireObj.one = api2wire_Uuid(apiObj.one);
+    wireObj.many = api2wire_Uuids(apiObj.many);
   }
 
   void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, wire_KitchenSink wireObj) {
@@ -1844,6 +1860,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_uuids');
   late final _wire_handle_uuids = _wire_handle_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  void wire_handle_nested_uuids(
+    int port_,
+    ffi.Pointer<wire_FeatureUuid> ids,
+  ) {
+    return _wire_handle_nested_uuids(
+      port_,
+      ids,
+    );
+  }
+
+  late final _wire_handle_nested_uuidsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_FeatureUuid>)>>(
+          'wire_handle_nested_uuids');
+  late final _wire_handle_nested_uuids =
+      _wire_handle_nested_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureUuid>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -2090,6 +2122,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_FeatureChrono> Function()>>('new_box_autoadd_feature_chrono_0');
   late final _new_box_autoadd_feature_chrono_0 =
       _new_box_autoadd_feature_chrono_0Ptr.asFunction<ffi.Pointer<wire_FeatureChrono> Function()>();
+
+  ffi.Pointer<wire_FeatureUuid> new_box_autoadd_feature_uuid_0() {
+    return _new_box_autoadd_feature_uuid_0();
+  }
+
+  late final _new_box_autoadd_feature_uuid_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_FeatureUuid> Function()>>('new_box_autoadd_feature_uuid_0');
+  late final _new_box_autoadd_feature_uuid_0 =
+      _new_box_autoadd_feature_uuid_0Ptr.asFunction<ffi.Pointer<wire_FeatureUuid> Function()>();
 
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32_0(
     int value,
@@ -2872,6 +2913,12 @@ class wire_FeatureChrono extends ffi.Struct {
 
   @ffi.Int64()
   external int naive;
+}
+
+class wire_FeatureUuid extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> one;
+
+  external ffi.Pointer<wire_uint_8_list> many;
 }
 
 class wire_SumWith extends ffi.Struct {

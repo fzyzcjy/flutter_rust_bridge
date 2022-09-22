@@ -1001,6 +1001,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["ids"],
       );
 
+  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_handle_nested_uuids(port_, _platform.api2wire_box_autoadd_feature_uuid(ids)),
+        parseSuccessData: _wire2api_feature_uuid,
+        constMeta: kHandleNestedUuidsConstMeta,
+        argValues: [ids],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_nested_uuids",
+        argNames: ["ids"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1523,6 +1538,15 @@ double _wire2api_f32(dynamic raw) {
 
 double _wire2api_f64(dynamic raw) {
   return raw as double;
+}
+
+FeatureUuid _wire2api_feature_uuid(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return FeatureUuid(
+    one: _wire2api_Uuid(arr[0]),
+    many: _wire2api_Uuids(arr[1]),
+  );
 }
 
 Float32List _wire2api_float_32_list(dynamic raw) {
