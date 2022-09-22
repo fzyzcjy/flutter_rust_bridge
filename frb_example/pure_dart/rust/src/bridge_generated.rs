@@ -426,7 +426,7 @@ fn wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + Unwi
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| handle_stream(task_callback.stream_sink(), api_arg)
+            move |task_callback| Ok(handle_stream(task_callback.stream_sink(), api_arg))
         },
     )
 }
@@ -437,7 +437,7 @@ fn wire_handle_stream_of_struct_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Stream,
         },
-        move || move |task_callback| handle_stream_of_struct(task_callback.stream_sink()),
+        move || move |task_callback| Ok(handle_stream_of_struct(task_callback.stream_sink())),
     )
 }
 fn wire_return_err_impl(port_: MessagePort) {
@@ -861,7 +861,11 @@ fn wire_handle_stream_sink_at_1_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                handle_stream_sink_at_1(api_key, api_max, task_callback.stream_sink())
+                Ok(handle_stream_sink_at_1(
+                    api_key,
+                    api_max,
+                    task_callback.stream_sink(),
+                ))
             }
         },
     )
@@ -881,7 +885,11 @@ fn wire_handle_stream_sink_at_2_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                handle_stream_sink_at_2(api_key, task_callback.stream_sink(), api_max)
+                Ok(handle_stream_sink_at_2(
+                    api_key,
+                    task_callback.stream_sink(),
+                    api_max,
+                ))
             }
         },
     )
@@ -901,7 +909,11 @@ fn wire_handle_stream_sink_at_3_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                handle_stream_sink_at_3(task_callback.stream_sink(), api_key, api_max)
+                Ok(handle_stream_sink_at_3(
+                    task_callback.stream_sink(),
+                    api_key,
+                    api_max,
+                ))
             }
         },
     )
@@ -1125,12 +1137,12 @@ fn wire_handle_some_stream_sink__method__ConcatenateWith_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                ConcatenateWith::handle_some_stream_sink(
+                Ok(ConcatenateWith::handle_some_stream_sink(
                     &api_that,
                     api_key,
                     api_max,
                     task_callback.stream_sink(),
-                )
+                ))
             }
         },
     )
@@ -1148,10 +1160,10 @@ fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(
         move || {
             let api_that = that.wire2api();
             move |task_callback| {
-                ConcatenateWith::handle_some_stream_sink_at_1(
+                Ok(ConcatenateWith::handle_some_stream_sink_at_1(
                     &api_that,
                     task_callback.stream_sink(),
-                )
+                ))
             }
         },
     )
@@ -1171,11 +1183,11 @@ fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                ConcatenateWith::handle_some_static_stream_sink(
+                Ok(ConcatenateWith::handle_some_static_stream_sink(
                     api_key,
                     api_max,
                     task_callback.stream_sink(),
-                )
+                ))
             }
         },
     )
@@ -1191,9 +1203,9 @@ fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWit
         },
         move || {
             move |task_callback| {
-                ConcatenateWith::handle_some_static_stream_sink_single_arg(
+                Ok(ConcatenateWith::handle_some_static_stream_sink_single_arg(
                     task_callback.stream_sink(),
-                )
+                ))
             }
         },
     )

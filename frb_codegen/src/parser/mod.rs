@@ -131,6 +131,13 @@ impl<'a> Parser<'a> {
                     IrFuncArg::StreamSinkType(ty) => {
                         output = Some(ty);
                         mode = Some(IrFuncMode::Stream { argument_index: i });
+                        fallible = match &sig.output {
+                            ReturnType::Default => false,
+                            ReturnType::Type(_, ty) => !matches!(
+                                self.try_parse_fn_output_type(ty),
+                                Some(IrFuncOutput::Type(_))
+                            ),
+                        }
                     }
                     IrFuncArg::Type(ty) => {
                         inputs.push(IrField {
