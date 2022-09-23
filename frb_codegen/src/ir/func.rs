@@ -115,6 +115,6 @@ impl IrFuncMode {
 
     #[inline]
     pub fn dart_port_var(&self) -> Option<&str> {
-        self.has_port_argument().then(|| "port_")
+        self.has_port_argument().then_some("port_")
     }
 }
