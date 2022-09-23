@@ -1305,8 +1305,8 @@ UuidValue _wire2api_Uuid(dynamic raw) {
 
 List<UuidValue> _wire2api_Uuids(dynamic raw) {
   final bytes = _wire2api_uint_8_list(raw);
-  return List<UuidValue>.generate(
-      bytes.lengthInBytes ~/ 16, (int i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * 16, 16)),
+  return List<UuidValue>.generate(bytes.lengthInBytes ~/ uuidSizeInBytes,
+      (int i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * uuidSizeInBytes, uuidSizeInBytes)),
       growable: false);
 }
 
