@@ -10,7 +10,7 @@ categories.workspace = true
 
 [dependencies]
 bytemuck = "1.11.0"
-anyhow = { workspace = true, features = [] }
+anyhow = { workspace = true }
 chrono = { workspace = true, optional = true }
 threadpool = "1.8.1"
 lazy_static.workspace = true

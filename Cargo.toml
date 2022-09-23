@@ -17,17 +17,13 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [workspace.dependencies]
-anyhow = { version = "1.0.64", features = ["backtrace"] }
+anyhow = "1.0.64"
 chrono = "0.4.20"
 lazy_static = "1.4.0"
 
 flutter_rust_bridge_macros = { path = "frb_macros", version = "1" }
-flutter_rust_bridge = { path = "frb_rust", version = "1", features = [
-  "chrono",
-] }
-flutter_rust_bridge_codegen = { path = "frb_codegen", version = "1", features = [
-  "chrono",
-] }
+flutter_rust_bridge = { path = "frb_rust", version = "1" }
+flutter_rust_bridge_codegen = { path = "frb_codegen", version = "1" }
 
 [profile.release]
 strip = "debuginfo"
