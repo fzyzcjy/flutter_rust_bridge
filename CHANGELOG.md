@@ -1,3 +1,7 @@
+## 1.47.1
+
+* Allow streaming functions to omit return type #730 (thanks @Desdaemon)
+
 ## 1.47.0
 
 * Support chrono date time #694 (thanks @Roms1383)

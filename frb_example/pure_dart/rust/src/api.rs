@@ -212,7 +212,7 @@ pub fn handle_sync_string(input: String) -> SyncReturn<String> {
     SyncReturn(input)
 }
 
-pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
+pub fn handle_stream(sink: StreamSink<String>, arg: String) {
     println!("handle_stream arg={}", arg);
 
     let cnt = Arc::new(AtomicI32::new(0));
@@ -239,8 +239,6 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) -> Result<()> {
         let _ = sink.add(msg);
         sleep(Duration::from_millis(50));
     }
-
-    Ok(())
 }
 
 pub struct MyStreamEntry {
@@ -248,8 +246,8 @@ pub struct MyStreamEntry {
 }
 
 // https://github.com/fzyzcjy/flutter_rust_bridge/issues/398 reports a compile error like this
-pub fn handle_stream_of_struct(sink: StreamSink<MyStreamEntry>) -> Result<()> {
-    Ok(())
+pub fn handle_stream_of_struct(sink: StreamSink<MyStreamEntry>) {
+    // Ok(())
 }
 
 pub fn return_err() -> Result<i32> {
@@ -665,33 +663,20 @@ pub struct Log {
     pub value: u32,
 }
 
-pub fn handle_stream_sink_at_1(
-    key: u32,
-    max: u32,
-    sink: StreamSink<Log>,
-) -> Result<(), anyhow::Error> {
+pub fn handle_stream_sink_at_1(key: u32, max: u32, sink: StreamSink<Log>) {
     spawn!(|| {
         for i in 0..max {
             let _ = sink.add(Log { key, value: i });
         }
         sink.close();
     });
-    Ok(())
 }
 
-pub fn handle_stream_sink_at_2(
-    key: u32,
-    sink: StreamSink<Log>,
-    max: u32,
-) -> Result<(), anyhow::Error> {
+pub fn handle_stream_sink_at_2(key: u32, sink: StreamSink<Log>, max: u32) {
     handle_stream_sink_at_1(key, max, sink)
 }
 
-pub fn handle_stream_sink_at_3(
-    sink: StreamSink<Log>,
-    key: u32,
-    max: u32,
-) -> Result<(), anyhow::Error> {
+pub fn handle_stream_sink_at_3(sink: StreamSink<Log>, key: u32, max: u32) {
     handle_stream_sink_at_1(key, max, sink)
 }
 
@@ -730,12 +715,7 @@ impl ConcatenateWith {
         format!("{}{}", a, b)
     }
 
-    pub fn handle_some_stream_sink(
-        &self,
-        key: u32,
-        max: u32,
-        sink: StreamSink<Log2>,
-    ) -> Result<(), anyhow::Error> {
+    pub fn handle_some_stream_sink(&self, key: u32, max: u32, sink: StreamSink<Log2>) {
         let a = self.a.clone();
         spawn!(|| {
             for i in 0..max {
@@ -746,24 +726,18 @@ impl ConcatenateWith {
             }
             sink.close();
         });
-        Ok(())
     }
 
-    pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) -> Result<(), anyhow::Error> {
+    pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) {
         spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
             sink.close();
         });
-        Ok(())
     }
 
-    pub fn handle_some_static_stream_sink(
-        key: u32,
-        max: u32,
-        sink: StreamSink<Log2>,
-    ) -> Result<(), anyhow::Error> {
+    pub fn handle_some_static_stream_sink(key: u32, max: u32, sink: StreamSink<Log2>) {
         spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
@@ -773,19 +747,15 @@ impl ConcatenateWith {
             }
             sink.close();
         });
-        Ok(())
     }
 
-    pub fn handle_some_static_stream_sink_single_arg(
-        sink: StreamSink<u32>,
-    ) -> Result<(), anyhow::Error> {
+    pub fn handle_some_static_stream_sink_single_arg(sink: StreamSink<u32>) {
         spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
             sink.close();
         });
-        Ok(())
     }
 }
 
