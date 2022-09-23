@@ -28,6 +28,7 @@ pub mod io;
 #[cfg(not(wasm))]
 pub use io::*;
 
+/// see [uuid::Bytes](https://docs.rs/uuid/1.1.2/uuid/type.Bytes.html)
 #[cfg(feature = "uuid")]
 const UUID_SIZE_IN_BYTES: usize = 16;
 
