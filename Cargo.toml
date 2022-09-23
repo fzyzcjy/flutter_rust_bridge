@@ -1,0 +1,34 @@
+[workspace]
+members = [
+  "frb_codegen",
+  "frb_rust",
+  "frb_macros",
+  "frb_example/pure_dart/rust",
+  "frb_example/pure_dart_multi/rust",
+  "frb_example/with_flutter/rust",
+]
+
+[workspace.package]
+version = "1.47.0"
+edition = "2018"
+license = "MIT"
+repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
+keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
+categories = ["development-tools::ffi"]
+
+[workspace.dependencies]
+anyhow = { version = "1.0.64", features = ["backtrace"] }
+chrono = "0.4.20"
+lazy_static = "1.4.0"
+
+flutter_rust_bridge_macros = { path = "frb_macros", version = "1.47.0" }
+flutter_rust_bridge = { path = "frb_rust", version = "1.47.0", features = [
+  "chrono",
+] }
+flutter_rust_bridge_codegen = { path = "frb_codegen", version = "1.47.0", features = [
+  "chrono",
+] }
+
+[profile.release]
+strip = "debuginfo"
+lto = "thin"
