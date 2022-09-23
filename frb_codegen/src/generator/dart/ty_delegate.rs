@@ -57,7 +57,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => Acc::distribute(Some(
-                "return api2wire_uint_8_list(wire2apiConcatenateBytes(raw));".into(),
+                "return api2wire_uint_8_list(api2wireConcatenateBytes(raw));".into(),
             )),
         }
     }
@@ -96,10 +96,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "
             final bytes = _wire2api_uint_8_list(raw);
-            return List<UuidValue>.generate(
-              bytes.lengthInBytes ~/ uuidSizeInBytes,
-              (int i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * uuidSizeInBytes, uuidSizeInBytes)),
-              growable: false);"
+            return wire2apiUuids(bytes);"
                 .to_owned(),
         }
     }
