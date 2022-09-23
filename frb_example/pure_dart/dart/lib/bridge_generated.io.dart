@@ -59,7 +59,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_Uuids(List<UuidValue> raw) {
-    return api2wire_uint_8_list(wire2apiConcatenateBytes(raw));
+    return api2wire_uint_8_list(api2wireConcatenateBytes(raw));
   }
 
   @protected
