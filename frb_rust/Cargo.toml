@@ -13,7 +13,7 @@ bytemuck = "1.11.0"
 anyhow = { workspace = true }
 chrono = { workspace = true, optional = true }
 threadpool = "1.8.1"
-lazy_static.workspace = true
+lazy_static = { workspace = true }
 parking_lot = "0.12.1"
 flutter_rust_bridge_macros = { workspace = true }
 
