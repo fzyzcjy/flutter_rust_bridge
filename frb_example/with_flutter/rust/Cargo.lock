@@ -25,8 +25,9 @@ checksum = "aae1277d39aeec15cb388266ecc24b11c80469deae6067e17a1a7aa9e5c1f234"
 
 [[package]]
 name = "allo-isolate"
-version = "0.1.14-beta.2"
-source = "git+https://github.com/Roms1383/allo-isolate.git?branch=feat/uuid#a342fa771cb09edb7714419ff97e7b3b3d985725"
+version = "0.1.14-beta.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "30f25cc9ed6e637ad2911e359adf033448f88f2d62dce179f810eca223048892"
 dependencies = [
  "anyhow",
  "atomic",
