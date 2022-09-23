@@ -153,12 +153,8 @@ Duration wire2apiDuration(int ts) {
 
 Uint8List wire2apiConcatenateBytes(List raw) {
   var builder = BytesBuilder();
-  if (raw.isEmpty) {
-    return builder.toBytes();
-  }
-  final count = raw.length;
-  for (var i = 0; i < count; i++) {
-    builder.add(raw[i].toBytes());
+  for (final element in raw) {
+    builder.add(element.toBytes());
   }
   return builder.toBytes();
 }
