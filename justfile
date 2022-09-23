@@ -120,12 +120,10 @@ publish_all:
     (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
 
 release old_version new_version:
-    grep -q 'version = "{{old_version}}"' frb_codegen/Cargo.toml
+    grep -q 'version = "{{old_version}}"' Cargo.toml
     grep -q '{{new_version}}' CHANGELOG.md
 
-    sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_codegen/Cargo.toml
-    sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_rust/Cargo.toml
-    sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' frb_macros/Cargo.toml
+    sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
     sed -i '' 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
 
     just refresh_all
