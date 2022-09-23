@@ -29,10 +29,14 @@ pub mod io;
 pub use io::*;
 
 #[cfg(feature = "uuid")]
+const UUID_SIZE_IN_BYTES: usize = 16;
+
+#[cfg(feature = "uuid")]
 #[inline]
 pub fn wire2api_uuid_ref(id: &[u8]) -> uuid::Uuid {
     uuid::Uuid::from_bytes(
-        *<&[u8] as std::convert::TryInto<&[u8; 16]>>::try_into(id).expect("invalid uuid slice"),
+        *<&[u8] as std::convert::TryInto<&[u8; UUID_SIZE_IN_BYTES]>>::try_into(id)
+            .expect("invalid uuid slice"),
     )
 }
 
@@ -46,7 +50,7 @@ pub fn wire2api_uuid(id: Vec<u8>) -> uuid::Uuid {
 #[inline]
 pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
     ids.as_slice()
-        .chunks(16)
+        .chunks(UUID_SIZE_IN_BYTES)
         .map(wire2api_uuid_ref)
         .collect::<Vec<uuid::Uuid>>()
 }

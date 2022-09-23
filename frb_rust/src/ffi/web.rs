@@ -1,6 +1,7 @@
 use super::DartAbi;
 use super::IntoDart;
 use super::MessagePort;
+use crate::ffi::UUID_SIZE_IN_BYTES;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
@@ -68,7 +69,7 @@ impl IntoDart for Vec<uuid::Uuid> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         use std::io::Write;
-        let mut buffer = Vec::<u8>::with_capacity(self.len() * 16);
+        let mut buffer = Vec::<u8>::with_capacity(self.len() * UUID_SIZE_IN_BYTES);
         for id in self {
             let _ = buffer.write(id.as_bytes());
         }
