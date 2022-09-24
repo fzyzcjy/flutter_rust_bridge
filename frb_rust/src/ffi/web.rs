@@ -1,6 +1,7 @@
 use super::DartAbi;
 use super::IntoDart;
 use super::MessagePort;
+#[cfg(feature = "uuid")]
 use crate::ffi::UUID_SIZE_IN_BYTES;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
