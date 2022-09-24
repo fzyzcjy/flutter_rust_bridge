@@ -12,6 +12,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  MSRV: 1.64
 
 jobs:
   # -------------------------- test --------------------------
@@ -26,7 +27,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: ${{ env.MSRV }}
 
       - uses: actions/setup-python@v2
         with:
@@ -95,7 +96,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: ${{ env.MSRV }}
 
       - uses: actions/cache@v3
         id: cache-deps
@@ -160,7 +161,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: ${{ env.MSRV }}
 
       - uses: subosito/flutter-action@v2
         with:
@@ -246,7 +247,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: ${{ env.MSRV }}
 
       - uses: subosito/flutter-action@v2
         with:
@@ -290,7 +291,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: ${{ env.MSRV }}
 
       - uses: subosito/flutter-action@v2
         with:
@@ -322,7 +323,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: ${{ env.MSRV }}
 
       # From Flutter Gallery CI
       - uses: subosito/flutter-action@v2
@@ -478,7 +479,7 @@ jobs:
     strategy:
       matrix:
         cargo_toolchain_version:
-          - stable
+          - ${{ env.MSRV }}
 
     steps:
       - name: Checkout sources
