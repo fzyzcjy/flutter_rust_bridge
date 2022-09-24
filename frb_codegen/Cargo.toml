@@ -2,7 +2,7 @@
 name = "flutter_rust_bridge_codegen"
 version.workspace = true
 edition.workspace = true
-description = "High-level memory-safe bindgen for Dart/Flutter <-> Rust"
+description.workspace = true
 license.workspace = true
 repository.workspace = true
 keywords.workspace = true

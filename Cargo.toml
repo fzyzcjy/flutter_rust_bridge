@@ -12,6 +12,7 @@ members = [
 version = "1.48.0"
 edition = "2018"
 license = "MIT"
+description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
 repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
 keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
