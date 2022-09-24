@@ -25,7 +25,7 @@ threadpool = { version = "1.8.1" }
 
 [target.'cfg(target_family = "wasm")'.dependencies]
 console_error_panic_hook = { version = "0.1.7" }
-wasm-bindgen = { version = "0.2.81" }
+wasm-bindgen = { version = "0.2.83" }
 js-sys = { version = "0.3.58" }
 web-sys = { version = "0.3.58", features = [
   "DedicatedWorkerGlobalScope",
