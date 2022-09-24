@@ -27,7 +27,6 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
-          override: true
 
       - uses: actions/setup-python@v2
         with:
@@ -97,18 +96,17 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
-          override: true
 
-      # - uses: actions/cache@v3
-      #   id: cache-deps
-      #   with:
-      #     path: |
-      #       ~/.cargo/bin/
-      #       ~/.cargo/registry/index/
-      #       ~/.cargo/registry/cache/
-      #       ~/.cargo/git/db/
-      #       ./frb_example/with_flutter/rust/target
-      #     key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}
+      - uses: actions/cache@v3
+        id: cache-deps
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            ./frb_example/with_flutter/rust/target
+          key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Add Rust targets
         run: rustup target add aarch64-apple-ios x86_64-apple-ios
@@ -163,7 +161,6 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
-          override: true
 
       - uses: subosito/flutter-action@v2
         with:
@@ -175,16 +172,16 @@ jobs:
         with:
           java-version: "8.x" # "betterprogramming.pub" says must be java "8"
 
-      # - uses: actions/cache@v3
-      #   id: cache-deps
-      #   with:
-      #     path: |
-      #       ~/.cargo/bin/
-      #       ~/.cargo/registry/index/
-      #       ~/.cargo/registry/cache/
-      #       ~/.cargo/git/db/
-      #       ./frb_example/with_flutter/rust/target
-      #     key: ${{ runner.os }}-cargo-integrate-android-${{ hashFiles('**/Cargo.lock') }}
+      - uses: actions/cache@v3
+        id: cache-deps
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            ./frb_example/with_flutter/rust/target
+          key: ${{ runner.os }}-cargo-integrate-android-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Add Rust targets
         run: rustup target add x86_64-linux-android
@@ -250,7 +247,6 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
-          override: true
 
       - uses: subosito/flutter-action@v2
         with:
@@ -295,7 +291,6 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
-          override: true
 
       - uses: subosito/flutter-action@v2
         with:
@@ -328,7 +323,6 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
-          override: true
 
       # From Flutter Gallery CI
       - uses: subosito/flutter-action@v2
@@ -382,22 +376,21 @@ jobs:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
-          override: true
       - name: Install ffigen
         run: dart pub global activate ffigen
-      # - name: Cache dependencies
-      #   id: test-cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: |
-      #       ~/.cargo/bin/
-      #       ~/.cargo/registry/index/
-      #       ~/.cargo/registry/cache/
-      #       ~/.cargo/git/db/
-      #       frb_codegen/target
-      #       frb_example/pure_dart/rust/target/
-      #       frb_example/pure_dart/dart/.local-chromium
-      #     key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: Cache dependencies
+        id: test-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            frb_codegen/target
+            frb_example/pure_dart/rust/target/
+            frb_example/pure_dart/dart/.local-chromium
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Install crates
         if: steps.test-cache.outputs.cache-hit != 'true'
         run: |
@@ -497,7 +490,6 @@ jobs:
           profile: minimal
           toolchain: ${{ matrix.cargo_toolchain_version }}
           components: rustfmt, clippy
-          override: true
 
       - uses: dart-lang/setup-dart@v1
         with:
