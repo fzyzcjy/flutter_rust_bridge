@@ -24,10 +24,6 @@ jobs:
 
       - name: Install toolchain
         uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: 1.64.0
-          default: true
 
       - uses: actions/setup-python@v2
         with:
@@ -94,8 +90,6 @@ jobs:
 
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
 
       - uses: actions/cache@v3
         id: cache-deps
@@ -158,8 +152,6 @@ jobs:
 
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
 
       - uses: subosito/flutter-action@v2
         with:
@@ -243,8 +235,6 @@ jobs:
     steps:
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
 
       - uses: subosito/flutter-action@v2
         with:
@@ -286,8 +276,6 @@ jobs:
     steps:
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
 
       - uses: subosito/flutter-action@v2
         with:
@@ -317,8 +305,6 @@ jobs:
 
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
 
       # From Flutter Gallery CI
       - uses: subosito/flutter-action@v2
@@ -372,6 +358,7 @@ jobs:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
+          profile: default
       - name: Install ffigen
         run: dart pub global activate ffigen
       - name: Cache dependencies
@@ -483,7 +470,6 @@ jobs:
       - name: Install toolchain
         uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
           toolchain: ${{ matrix.cargo_toolchain_version }}
           components: rustfmt, clippy
 
