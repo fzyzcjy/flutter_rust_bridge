@@ -27,6 +27,7 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
+          override: true
 
       - uses: actions/setup-python@v2
         with:
@@ -96,6 +97,7 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
+          override: true
 
       - uses: actions/cache@v3
         id: cache-deps
@@ -161,6 +163,7 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
+          override: true
 
       - uses: subosito/flutter-action@v2
         with:
@@ -247,6 +250,7 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
+          override: true
 
       - uses: subosito/flutter-action@v2
         with:
@@ -291,6 +295,7 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
+          override: true
 
       - uses: subosito/flutter-action@v2
         with:
@@ -323,6 +328,7 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
+          override: true
 
       # From Flutter Gallery CI
       - uses: subosito/flutter-action@v2
@@ -376,6 +382,7 @@ jobs:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
+          override: true
       - name: Install ffigen
         run: dart pub global activate ffigen
       - name: Cache dependencies
@@ -490,6 +497,7 @@ jobs:
           profile: minimal
           toolchain: ${{ matrix.cargo_toolchain_version }}
           components: rustfmt, clippy
+          override: true
 
       - uses: dart-lang/setup-dart@v1
         with:
