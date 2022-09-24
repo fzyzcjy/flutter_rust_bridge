@@ -479,7 +479,6 @@ jobs:
       matrix:
         cargo_toolchain_version:
           - stable
-          - 1.55.0
 
     steps:
       - name: Checkout sources
