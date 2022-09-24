@@ -346,7 +346,8 @@ See <a href="template/setup_web.html">Web setup</a> for more details.</p>
 <tr><td><code>()</code></td><td><code>void</code></td></tr>
 </tbody></table>
 </div>
-<p>Types from <code>chrono</code> crate are supported as a feature, see <a href="feature/lang_chrono.html">here</a>.</p>
+<p>Types from <code>chrono</code> crate are supported as a feature, see <a href="feature/lang_chrono.html">here</a>.
+Types from <code>uuid</code> crate are supported as a feature, see <a href="feature/lang_uuid.html">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vec-and-array"><a class="header" href="#vec-and-array">Vec and array</a></h1>
 <h2 id="vecu8-veci8-"><a class="header" href="#vecu8-veci8-"><code>Vec&lt;u8&gt;</code>, <code>Vec&lt;i8&gt;</code>, ...</a></h2>
 <p>In Dart, when you want to express a long byte array such as a big image or some binary blob, people normally use <code>Uint8List</code> instead of <code>List&lt;int&gt;</code> since the former is much performant. <code>flutter_rust_bridge</code> takes this into consideration for you. When you have <code>Vec&lt;u8&gt;</code> (or <code>Vec&lt;i8&gt;</code>, or <code>Vec&lt;i32&gt;</code>, etc), it will be translated it into <code>Uint8List</code> or its friends.</p>
