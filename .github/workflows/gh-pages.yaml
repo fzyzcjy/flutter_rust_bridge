@@ -25,8 +25,8 @@ jobs:
         with:
           mdbook-version: 'latest'
       
-      - name: Setup `mdbook-mermaid`
-        run: cargo install mdbook-mermaid
+      - name: Setup mdbook plugins (mermaid, linkcheck)
+        run: cargo install mdbook-linkcheck mdbook-mermaid
 
       - run: mdbook build ./book
 

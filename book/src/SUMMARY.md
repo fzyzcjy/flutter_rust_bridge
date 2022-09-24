@@ -16,6 +16,8 @@
     - [Option](feature/lang_option.md)
     - [Methods](feature/lang_methods.md)
     - [Return types](feature/lang_return_types.md)
+    - [`chrono` types](feature/lang_chrono.md)
+    - [`uuid` type](feature/lang_uuid.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)

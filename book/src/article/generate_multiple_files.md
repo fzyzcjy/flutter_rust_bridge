@@ -166,7 +166,7 @@ gen:
 
 Here, with just 1 command, flutter_rust_bridge would smartly check if there are conflicts over all Api over all blocks, be it defined explicitly or implicitly.
 
-That is, for the explicitly defined APIs like `simple_add` and `simple_minus`, if there are duplicated ones, flutter_rust_bridge would throw a panic like "thread 'main' panicked at 'symbol [simple_add] has already been defined'...", and you are responsible to fix it. And for the implicitly defined API like `new_uint_8_list`, since it is essential, flutter_rust_bridge would try to work around it by adding suffix starting from 0, like `new_uint_8_list_0` and `new_uint_8_list_1`.
+That is, for the explicitly defined APIs like `simple_add` and `simple_minus`, if there are duplicated ones, flutter_rust_bridge would throw a panic like "thread 'main' panicked at 'symbol \[simple_add\] has already been defined'...", and you are responsible to fix it. And for the implicitly defined API like `new_uint_8_list`, since it is essential, flutter_rust_bridge would try to work around it by adding suffix starting from 0, like `new_uint_8_list_0` and `new_uint_8_list_1`.
 
 To sum up, **there are 4 compulsory flags when you deal with multiple blocks.** They are `rust-input`, `dart-output`, `class-name` and `rust-output`. Also, the number of fields following each flag should be consistent. You can try to `cargo build` with fewer flags or inconsistent fields to see what kind of panic would be popped up with the [pure_dart_multi](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart_multi/rust/build.rs) example when doing generation.
 
