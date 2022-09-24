@@ -28,6 +28,7 @@ jobs:
           profile: minimal
           toolchain: 1.64.0
           override: true
+          components: rustfmt
 
       - uses: actions/setup-python@v2
         with:
