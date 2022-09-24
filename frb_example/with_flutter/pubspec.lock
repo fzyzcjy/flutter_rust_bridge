@@ -241,7 +241,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.47.1"
+    version: "1.48.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -438,7 +438,7 @@ packages:
       name: puppeteer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.12.0"
+    version: "2.13.0"
   quiver:
     dependency: transitive
     description:
@@ -599,4 +599,4 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.17.0 <3.0.0"
+  dart: ">=2.18.0 <3.0.0"
