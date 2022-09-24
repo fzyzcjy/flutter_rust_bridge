@@ -51,6 +51,14 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     ..Default::default()
                 },
             },
+            #[cfg(feature = "uuid")]
+            IrTypeDelegate::Uuid => {
+                Acc::distribute(Some("return api2wire_uint_8_list(raw.toBytes());".into()))
+            }
+            #[cfg(feature = "uuid")]
+            IrTypeDelegate::Uuids => Acc::distribute(Some(
+                "return api2wire_uint_8_list(api2wireConcatenateBytes(raw));".into(),
+            )),
         }
     }
 
@@ -81,6 +89,15 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 }
                 IrTypeTime::Duration => "return wire2apiDuration(_wire2api_i64(raw));".to_owned(),
             },
+            #[cfg(feature = "uuid")]
+            IrTypeDelegate::Uuid => {
+                "return UuidValue.fromByteList(_wire2api_uint_8_list(raw));".to_owned()
+            }
+            #[cfg(feature = "uuid")]
+            IrTypeDelegate::Uuids => "
+            final bytes = _wire2api_uint_8_list(raw);
+            return wire2apiUuids(bytes);"
+                .to_owned(),
         }
     }
 

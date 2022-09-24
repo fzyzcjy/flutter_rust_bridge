@@ -6,6 +6,7 @@ import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
 import 'package:meta/meta.dart';
 
@@ -973,6 +974,48 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["mine"],
       );
 
+  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_handle_uuid(port_, _platform.api2wire_Uuid(id)),
+        parseSuccessData: _wire2api_Uuid,
+        constMeta: kHandleUuidConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_uuid",
+        argNames: ["id"],
+      );
+
+  Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_handle_uuids(port_, _platform.api2wire_Uuids(ids)),
+        parseSuccessData: _wire2api_Uuids,
+        constMeta: kHandleUuidsConstMeta,
+        argValues: [ids],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_uuids",
+        argNames: ["ids"],
+      );
+
+  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_handle_nested_uuids(port_, _platform.api2wire_box_autoadd_feature_uuid(ids)),
+        parseSuccessData: _wire2api_feature_uuid,
+        constMeta: kHandleNestedUuidsConstMeta,
+        argValues: [ids],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_nested_uuids",
+        argNames: ["ids"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1256,6 +1299,15 @@ int _wire2api_SyncReturn_u8(Uint8List raw) {
   return dataView.getUint8(0);
 }
 
+UuidValue _wire2api_Uuid(dynamic raw) {
+  return UuidValue.fromByteList(_wire2api_uint_8_list(raw));
+}
+
+List<UuidValue> _wire2api_Uuids(dynamic raw) {
+  final bytes = _wire2api_uint_8_list(raw);
+  return wire2apiUuids(bytes);
+}
+
 Float32List _wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
   return raw as Float32List;
 }
@@ -1485,6 +1537,15 @@ double _wire2api_f32(dynamic raw) {
 
 double _wire2api_f64(dynamic raw) {
   return raw as double;
+}
+
+FeatureUuid _wire2api_feature_uuid(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return FeatureUuid(
+    one: _wire2api_Uuid(arr[0]),
+    many: _wire2api_Uuids(arr[1]),
+  );
 }
 
 Float32List _wire2api_float_32_list(dynamic raw) {

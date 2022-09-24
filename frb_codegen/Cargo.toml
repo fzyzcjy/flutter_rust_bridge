@@ -55,3 +55,4 @@ i686-pc-windows-msvc = { pkg-fmt = "zip" }
 [features]
 default = ["chrono"]
 chrono = []
+uuid = []

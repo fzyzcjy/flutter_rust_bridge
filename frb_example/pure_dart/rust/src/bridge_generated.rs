@@ -1048,6 +1048,45 @@ fn wire_how_long_does_it_take_impl(
         },
     )
 }
+fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_uuid",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| handle_uuid(api_id)
+        },
+    )
+}
+fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_uuids",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_ids = ids.wire2api();
+            move |task_callback| handle_uuids(api_ids)
+        },
+    )
+}
+fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureUuid> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_nested_uuids",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_ids = ids.wire2api();
+            move |task_callback| handle_nested_uuids(api_ids)
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1577,6 +1616,13 @@ impl support::IntoDart for ExoticOptionals {
     }
 }
 impl support::IntoDartExceptPrimitive for ExoticOptionals {}
+
+impl support::IntoDart for FeatureUuid {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.one.into_dart(), self.many.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for FeatureUuid {}
 
 impl support::IntoDart for KitchenSink {
     fn into_dart(self) -> support::DartAbi {

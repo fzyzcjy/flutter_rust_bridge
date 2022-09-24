@@ -5,6 +5,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 
@@ -303,6 +304,18 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta;
 
+  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta;
+
+  Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
+
+  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -540,6 +553,16 @@ class FeatureChrono {
     required this.local,
     required this.duration,
     required this.naive,
+  });
+}
+
+class FeatureUuid {
+  final UuidValue one;
+  final List<UuidValue> many;
+
+  FeatureUuid({
+    required this.one,
+    required this.many,
   });
 }
 
