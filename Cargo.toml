@@ -9,7 +9,7 @@ members = [
 ]
 
 [workspace.package]
-version = "1.47.1"
+version = "1.48.0"
 edition = "2018"
 license = "MIT"
 repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
