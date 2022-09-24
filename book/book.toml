@@ -11,3 +11,7 @@ title = "flutter_rust_bridge"
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
+
+[output.html]
+
+[output.linkcheck]
