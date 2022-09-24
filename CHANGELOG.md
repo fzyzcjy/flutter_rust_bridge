@@ -1,3 +1,7 @@
+## 1.48.0
+
+* Support uuid #728 (thanks @Roms1383)
+
 ## 1.47.1
 
 * Allow streaming functions to omit return type #730 (thanks @Desdaemon)
