@@ -21,5 +21,5 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | `String`                                          | `String`                    |
 | `()`                                              | `void`                      |
 
-Types from `chrono` crate are supported as a feature, see [here](lang_chrono.md).
-Types from `uuid` crate are supported as a feature, see [here](lang_uuid.md).
+- Types from `chrono` crate are supported as a feature, see [here](lang_chrono.md).
+- Types from `uuid` crate are supported as a feature, see [here](lang_uuid.md).
