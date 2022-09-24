@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
+import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
 
@@ -594,6 +595,30 @@ void main(List<String> args) async {
       final difference =
           await api.howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
       log('$difference');
+    });
+  });
+
+  group('uuid feature', () {
+    test('Uuid', () async {
+      final uuid = Uuid();
+      final id = uuid.v4obj();
+      final output = await api.handleUuid(id: id);
+      expect(id, output);
+    });
+    test('Vec<Uuid>', () async {
+      final uuid = Uuid();
+      final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+      final outputs = await api.handleUuids(ids: ids);
+      expect(ids, outputs);
+    });
+    test('nested uuid types', () async {
+      final uuid = Uuid();
+      final id = uuid.v4obj();
+      final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+      final wrapper = FeatureUuid(one: id, many: ids);
+      final outputs = await api.handleNestedUuids(ids: wrapper);
+      expect(wrapper.one, outputs.one);
+      expect(wrapper.many, outputs.many);
     });
   });
 }

@@ -35,6 +35,7 @@ dependencies = [
  "anyhow",
  "atomic",
  "chrono",
+ "uuid",
 ]
 
 [[package]]
@@ -443,6 +444,7 @@ dependencies = [
  "lazy_static",
  "parking_lot",
  "threadpool",
+ "uuid",
  "wasm-bindgen",
  "wasm-bindgen-test",
  "web-sys",
@@ -510,6 +512,7 @@ dependencies = [
  "flutter_rust_bridge_codegen",
  "flutter_rust_bridge_example_external",
  "lazy_static",
+ "uuid",
 ]
 
 [[package]]
@@ -1214,6 +1217,12 @@ name = "unicode-ident"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dcc811dc4066ac62f84f11307873c4850cb653bfa9b1719cee2bd2204a4bc5dd"
+
+[[package]]
+name = "uuid"
+version = "1.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dd6469f4314d5f1ffec476e05f17cc9a78bc7a27a6a857842170bdf8d6f98d2f"
 
 [[package]]
 name = "version_check"
