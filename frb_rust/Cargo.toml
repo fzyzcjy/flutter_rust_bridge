@@ -16,7 +16,7 @@ threadpool = "1.8.1"
 lazy_static = { workspace = true }
 parking_lot = "0.12.1"
 flutter_rust_bridge_macros = { workspace = true }
-uuid = { version = "1.1.2", optional = true }
+uuid = { workspace = true, optional = true }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
 allo-isolate = { version = "0.1.14-beta.3", features = ["anyhow"] }
