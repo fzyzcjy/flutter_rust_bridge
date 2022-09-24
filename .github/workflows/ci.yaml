@@ -27,7 +27,6 @@ jobs:
         with:
           profile: minimal
           toolchain: 1.64.0
-          default: true
 
       - uses: actions/setup-python@v2
         with:
@@ -96,6 +95,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
+          toolchain: 1.64.0
 
       - uses: actions/cache@v3
         id: cache-deps
@@ -160,6 +160,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
+          toolchain: 1.64.0
 
       - uses: subosito/flutter-action@v2
         with:
@@ -245,6 +246,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
+          toolchain: 1.64.0
 
       - uses: subosito/flutter-action@v2
         with:
@@ -288,6 +290,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
+          toolchain: 1.64.0
 
       - uses: subosito/flutter-action@v2
         with:
@@ -319,6 +322,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
+          toolchain: 1.64.0
 
       # From Flutter Gallery CI
       - uses: subosito/flutter-action@v2
