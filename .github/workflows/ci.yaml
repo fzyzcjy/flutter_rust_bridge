@@ -238,6 +238,7 @@ jobs:
           profile: minimal
           toolchain: ${{ matrix.cargo_toolchain_version }}
           components: rustfmt, clippy
+          override: true
 
       - uses: dart-lang/setup-dart@v1
         with:
