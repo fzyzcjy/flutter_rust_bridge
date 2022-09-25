@@ -159,6 +159,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: 1.64.0
+          override: true
+          components: rustfmt
+
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: '2.17.6' # TODO upgrade later #655
