@@ -30,6 +30,7 @@ jobs:
           profile: minimal
           toolchain: ${{ inputs.rust_version }}
           override: true
+          components: rustfmt, clippy
 
       - uses: subosito/flutter-action@v2
         with:
