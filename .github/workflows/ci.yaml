@@ -65,74 +65,15 @@ jobs:
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
-    name: Flutter (iOS) integration test
-    runs-on: macos-latest
-
     strategy:
       matrix:
         device:
           - "iPad (7th generation) Simulator (15.2)"
           - "iPhone 12 Pro Max Simulator (15.2)"
       fail-fast: false
-
-    steps:
-      - name: "List all simulators"
-        run: "xcrun xctrace list devices"
-      - name: "Start Simulator"
-        run: |
-          # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (15.2) + Apple Watch Series 5 - 44mm (8.0)"
-          UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
-          echo UDID=$UDID
-          xcrun simctl boot "${UDID:?No Simulator with this name found}"
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          flutter-version: '3.3.1'
-          architecture: x64
-
-      - uses: actions/checkout@v2
-
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: 1.64.0
-          override: true
-
-      - uses: actions/cache@v3
-        id: cache-deps
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            ./frb_example/with_flutter/rust/target
-          key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: Add Rust targets
-        run: rustup target add aarch64-apple-ios x86_64-apple-ios
-
-      - name: Install `cargo-lipo`
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: cargo install cargo-lipo
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      - name: Build Rust lib
-        working-directory: ./frb_example/with_flutter/rust
-        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
-        run: |
-          sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
-          cargo lipo
-          cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
-
-      - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
-        run: flutter test integration_test/main.dart --verbose
+    uses: ./.github/workflows/flutter_ios_test.yml
+    with:
+      uses_cache: false
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_android_test:
