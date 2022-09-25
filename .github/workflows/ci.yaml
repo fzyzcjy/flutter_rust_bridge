@@ -113,7 +113,7 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: 1.66.0-nightly
+          toolchain: 1.65.0-nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
       - name: Install ffigen
