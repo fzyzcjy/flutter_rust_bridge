@@ -12,7 +12,6 @@ on:
 
 jobs:
   flutter_macos_test:
-    name: Flutter (macOS) integration test
     runs-on: macos-11
 
     steps:

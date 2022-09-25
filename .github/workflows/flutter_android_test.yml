@@ -20,7 +20,6 @@ on:
 
 jobs:
   flutter_android_test:
-    name: Flutter (Android) integration test
     runs-on: macos-latest
 
     steps:

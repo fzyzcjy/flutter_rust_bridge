@@ -12,7 +12,6 @@ on:
 
 jobs:
   flutter_linux_test:
-    name: Flutter (Linux) integration test
     runs-on: ubuntu-latest
 
     steps:

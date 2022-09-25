@@ -18,7 +18,6 @@ on:
 
 jobs:
   codegen:
-    name: Run codegen
 
     runs-on: ${{ inputs.image }}
 

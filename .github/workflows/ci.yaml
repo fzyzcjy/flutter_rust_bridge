@@ -65,6 +65,7 @@ jobs:
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
+    name: Flutter (iOS) integration test
     strategy:
       matrix:
         device:
@@ -78,6 +79,7 @@ jobs:
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_android_test:
+    name: Flutter (Android) integration test
     strategy:
       matrix:
         device:
@@ -90,12 +92,15 @@ jobs:
 
 
   flutter_windows_test:
+    name: Flutter (Windows) integration test
     uses: ./.github/workflows/flutter_windows_test.yml
 
   flutter_macos_test:
+    name: Flutter (macOS) integration test
     uses: ./.github/workflows/flutter_macos_test.yml
 
   flutter_linux_test:
+    name: Flutter (Linux) integration test
     uses: ./.github/workflows/flutter_linux_test.yml
   
   dart_web_test:
@@ -378,6 +383,7 @@ jobs:
 
   # -------------------------- codegen --------------------------
   codegen:
+    name: Run codegen
     strategy:
       fail-fast: false
       matrix:

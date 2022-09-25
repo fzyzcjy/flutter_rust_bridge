@@ -16,7 +16,6 @@ on:
 
 jobs:
   flutter_ios_test:
-    name: Flutter (iOS) integration test
     runs-on: macos-latest
 
     steps:
