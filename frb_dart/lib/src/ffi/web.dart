@@ -69,6 +69,9 @@ external void warn([a, b, c, d, e, f, g, h, i]);
 @JS('Number')
 external int castInt(Object? value);
 
+@JS('BigInt')
+external Object castNativeBigInt(Object? value);
+
 @JS('Function')
 class _Function {
   external dynamic call();

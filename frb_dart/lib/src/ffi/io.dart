@@ -2,7 +2,8 @@ import 'dart:ffi' as ffi;
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
 import 'stub.dart' show FlutterRustBridgeWireBase;
-export 'stub.dart' show castInt, FlutterRustBridgeWireBase, WasmModule;
+export 'stub.dart'
+    show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 typedef NativePortType = int;

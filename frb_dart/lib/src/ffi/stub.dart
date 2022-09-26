@@ -34,6 +34,9 @@ bool? get crossOriginIsolated => throw UnimplementedError();
 
 int castInt(Object? value) => value as int;
 
+/// Only used on the Web.
+Object castNativeBigInt(int value) => throw UnimplementedError();
+
 abstract class FlutterRustBridgeWasmWireBase<T extends WasmModule>
     extends FlutterRustBridgeWireBase {
   Future<T> get init => throw UnimplementedError();

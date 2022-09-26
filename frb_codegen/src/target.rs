@@ -31,7 +31,7 @@ impl Target {
 
 /// Generic accumulator over the targets.
 ///
-/// [`Acc<Option<String>>`] implements [`From<T>`] where <code>T: [ToString]</code>
+/// [`Acc<Option<String>>`] implements <code>[From]\<impl [ToString]></code>
 /// for code shared between all platforms.
 #[derive(Debug, Default, Clone)]
 pub struct Acc<T> {
