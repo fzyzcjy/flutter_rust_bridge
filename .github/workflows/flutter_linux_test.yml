@@ -61,5 +61,4 @@ jobs:
         run: |
           set -euxo pipefail
           mv linux/rust.require.cmake linux/rust.cmake
-          rm -rf corrosion
           flutter test -d linux integration_test/main.dart --verbose

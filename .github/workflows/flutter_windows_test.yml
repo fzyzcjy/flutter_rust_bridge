@@ -53,5 +53,4 @@ jobs:
         working-directory: ./frb_example/with_flutter
         run: |
           mv -Force windows/rust.require.cmake windows/rust.cmake
-          rm -rf corrosion
           flutter test -d windows integration_test/main.dart --verbose
