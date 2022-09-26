@@ -184,22 +184,27 @@ impl<'a> TypeParser<'a> {
                     },
                     _ => None,
                 },
-                "Vec" => {
+                "Vec" => match *generic {
                     // Special-case Vec<String> as StringList
-                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
+                    SupportedInnerType::Path(SupportedPathType { ref ident, .. })
+                        if ident == "String" =>
                     {
                         Some(IrType::Delegate(IrTypeDelegate::StringList))
-                    } else {
-                        self.convert_to_ir_type(*generic).map(|inner| match inner {
-                            Primitive(primitive) => {
-                                PrimitiveList(IrTypePrimitiveList { primitive })
-                            }
-                            others => GeneralList(IrTypeGeneralList {
-                                inner: Box::new(others),
-                            }),
-                        })
                     }
-                }
+                    // Special-case Vec<Uuid> as Vec<u8>
+                    #[cfg(feature = "uuid")]
+                    SupportedInnerType::Path(SupportedPathType { ref ident, .. })
+                        if ident == "Uuid" =>
+                    {
+                        Some(IrType::Delegate(IrTypeDelegate::Uuids))
+                    }
+                    _ => self.convert_to_ir_type(*generic).map(|inner| match inner {
+                        Primitive(primitive) => PrimitiveList(IrTypePrimitiveList { primitive }),
+                        others => GeneralList(IrTypeGeneralList {
+                            inner: Box::new(others),
+                        }),
+                    }),
+                },
                 "ZeroCopyBuffer" => {
                     let inner = self.convert_to_ir_type(*generic);
                     if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) = inner {
@@ -254,6 +259,11 @@ impl<'a> TypeParser<'a> {
             match ident_string.as_str() {
                 "Duration" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration))),
                 "NaiveDateTime" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive))),
+                _ => {}
+            };
+            #[cfg(feature = "uuid")]
+            match ident_string.as_str() {
+                "Uuid" => return Some(Delegate(IrTypeDelegate::Uuid)),
                 _ => {}
             };
             IrTypePrimitive::try_from_rust_str(ident_string)

@@ -681,7 +681,7 @@ jobs:
       - name: Run codegen to pure_dart example (non-windows)
         if: ${{ matrix.os.family != 'windows' }}
         working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features "chrono,uuid" --
           --rust-input ../frb_example/pure_dart/rust/src/api.rs
           --dart-output ../frb_example/pure_dart/dart/lib/bridge_generated.dart
           --dart-decl-output ../frb_example/pure_dart/dart/lib/bridge_definitions.dart
@@ -693,7 +693,7 @@ jobs:
       - name: Run codegen to pure_dart example (windows)
         if: ${{ matrix.os.family == 'windows' }}
         working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
+        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features "chrono,uuid" --
           --rust-input ..\\frb_example\\pure_dart\\rust\\src\\api.rs
           --dart-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_generated.dart
           --dart-decl-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_definitions.dart

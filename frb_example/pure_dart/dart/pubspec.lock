@@ -203,7 +203,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.47.1"
+    version: "1.48.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -371,7 +371,7 @@ packages:
       name: puppeteer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.12.0"
+    version: "2.13.0"
   quiver:
     dependency: transitive
     description:
@@ -505,6 +505,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
+  uuid:
+    dependency: "direct main"
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.6"
   vm_service:
     dependency: "direct main"
     description:

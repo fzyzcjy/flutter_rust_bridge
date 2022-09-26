@@ -8,13 +8,20 @@ name = "flutter_rust_bridge_example"
 crate-type = ["cdylib"]
 
 [build-dependencies]
-flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
+flutter_rust_bridge_codegen = { path = "../../../frb_codegen", features = [
+  "chrono",
+  "uuid",
+] }
 
 [dependencies]
-anyhow = { version = "1.0.64", features = ["backtrace"] }
-flutter_rust_bridge = { path = "../../../frb_rust", features = ["chrono"] }
+anyhow = { version = "1.0.65", features = ["backtrace"] }
+flutter_rust_bridge = { path = "../../../frb_rust", features = [
+  "chrono",
+  "uuid",
+] }
 lazy_static = "1.4.0"
 chrono = "0.4.20"
+uuid = "1.1.2"
 # wasm_thread = "0.2.0"
 
 [dependencies.external-lib] # used for demo of external types mirroring
