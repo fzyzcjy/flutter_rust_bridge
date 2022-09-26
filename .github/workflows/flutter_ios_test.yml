@@ -75,7 +75,7 @@ jobs:
         run: |
           sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
           cargo lipo
-          cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
+          cp ../../../target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
