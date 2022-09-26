@@ -72,7 +72,7 @@ jobs:
 
       - name: Install `cargo-ndk`
         if: ${{ !inputs.uses_cache }} || steps.cache-deps.outputs.cache-hit != 'true'
-        run: cargo install cargo-ndk
+        run: cargo install cargo-ndk --force
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
