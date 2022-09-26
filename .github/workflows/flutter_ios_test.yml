@@ -63,7 +63,7 @@ jobs:
 
       - name: Install `cargo-lipo`
         if: ${{ !inputs.uses_cache }} || steps.cache-deps.outputs.cache-hit != 'true'
-        run: cargo install cargo-lipo
+        run: cargo install cargo-lipo --force
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
