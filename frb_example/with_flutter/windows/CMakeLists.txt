@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
+corrosion_import_crate(MANIFEST_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Cargo.toml CRATES flutter_rust_bridge_example)
 project(with_flutter LANGUAGES CXX)
 
 set(BINARY_NAME "with_flutter")
