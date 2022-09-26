@@ -74,7 +74,6 @@ jobs:
       fail-fast: false
     uses: ./.github/workflows/flutter_ios_test.yml
     with:
-      uses_cache: false
       device: ${{ matrix.device }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
@@ -88,7 +87,6 @@ jobs:
       fail-fast: false
     uses: ./.github/workflows/flutter_android_test.yml
     with:
-      uses_cache: false
       device: ${{ matrix.device }}
 
   flutter_windows_test:
