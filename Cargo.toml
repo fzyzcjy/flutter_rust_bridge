@@ -7,27 +7,6 @@ members = [
   "frb_example/pure_dart_multi/rust",
   "frb_example/with_flutter/rust",
 ]
-# TODO: refactor with glob see https://github.com/rust-lang/cargo/issues/6009
-# used to ignore corrosion checkout files in CI tests (Linux / Windows)
-exclude = [
-  "corrosion/test/cpp2rust/rust",
-  "corrosion/test/rust2cpp/rust",
-  "corrosion/test/rustflags/rust",
-  "corrosion/test/nostd/rust",
-  "corrosion/test/hostbuild",
-  "corrosion/test/envvar",
-  "corrosion/test/features/rust",
-  "corrosion/test/gensource/srcgen",
-  "corrosion/test/gensource/generated",
-  "corrosion/test/multitarget",
-  "corrosion/test/gensource/generated",
-  "corrosion/test/workspace/member1",
-  "corrosion/test/workspace/member2",
-  "corrosion/test/workspace/member3",
-  "corrosion/generator",
-  "corrosion/test/cargo_flags/rust",
-  "corrosion/test/custom_profiles/rust",
-]
 
 [workspace.package]
 version = "1.48.0"
