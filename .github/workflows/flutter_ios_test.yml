@@ -40,7 +40,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: ${{ inputs.flutter_version }}
+          toolchain: ${{ inputs.rust_version }}
           override: true
 
       - uses: actions/cache@v3
