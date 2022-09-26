@@ -15,6 +15,16 @@ exclude = [
   "corrosion/test/hostbuild",
   "corrosion/test/envvar",
   "corrosion/test/features/rust",
+  "corrosion/test/gensource/srcgen",
+  "corrosion/test/gensource/generated",
+  "corrosion/test/multitarget",
+  "corrosion/test/gensource/generated",
+  "corrosion/test/workspace/member1",
+  "corrosion/test/workspace/member2",
+  "corrosion/test/workspace/member3",
+  "corrosion/generator",
+  "corrosion/test/cargo_flags/rust",
+  "corrosion/test/custom_profiles/rust",
 ]
 
 [workspace.package]
