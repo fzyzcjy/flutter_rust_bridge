@@ -11,6 +11,7 @@ exclude = [
   "corrosion/test/cpp2rust/rust",
   "corrosion/test/rust2cpp/rust",
   "corrosion/test/rustflags/rust",
+  "corrosion/test/nostd/rust"
 ]
 
 [workspace.package]
