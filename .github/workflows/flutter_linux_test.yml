@@ -52,6 +52,7 @@ jobs:
         run: |
           set -euxo pipefail
           git clone https://github.com/corrosion-rs/corrosion.git
+          export PATH="corrosion:$PATH"
           cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
           cmake --build build --config Release
           sudo cmake --install build --config Release
