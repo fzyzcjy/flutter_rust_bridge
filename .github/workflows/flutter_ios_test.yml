@@ -12,10 +12,6 @@ on:
       device:
         required: true
         type: string
-      uses_cache:
-        required: false
-        type: boolean
-        default: true
 
 jobs:
   flutter_ios_test:
@@ -38,6 +34,7 @@ jobs:
           architecture: x64
 
       - uses: actions/checkout@v2
+        id: checkout
 
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
@@ -47,7 +44,6 @@ jobs:
           override: true
 
       - uses: actions/cache@v3
-        if: ${{ inputs.uses_cache }}
         id: cache-deps
         with:
           path: |
@@ -56,13 +52,13 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             ./frb_example/with_flutter/rust/target
-          key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}-${{ steps.checkout.outputs.rustc_hash }}
 
       - name: Add Rust targets
         run: rustup target add aarch64-apple-ios x86_64-apple-ios
 
       - name: Install `cargo-lipo`
-        if: ${{ !inputs.uses_cache }} || steps.cache-deps.outputs.cache-hit != 'true'
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: cargo install cargo-lipo --force
 
       - name: Install Flutter dependencies
