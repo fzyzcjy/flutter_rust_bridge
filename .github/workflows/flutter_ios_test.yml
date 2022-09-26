@@ -9,6 +9,9 @@ on:
         required: false
         type: string
         default: '1.64.0'
+      device:
+        required: true
+        type: string
       uses_cache:
         required: false
         type: boolean
@@ -24,7 +27,7 @@ jobs:
       - name: "Start Simulator"
         run: |
           # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (15.2) + Apple Watch Series 5 - 44mm (8.0)"
-          UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
+          UDID=$(xcrun xctrace list devices | grep '${{ inputs.device }} (' | awk '{print $NF}' | tr -d '()')
           echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
 

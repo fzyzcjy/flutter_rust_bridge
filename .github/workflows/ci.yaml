@@ -75,7 +75,7 @@ jobs:
     uses: ./.github/workflows/flutter_ios_test.yml
     with:
       uses_cache: false
-
+      device: ${{ matrix.device }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_android_test:
@@ -89,7 +89,7 @@ jobs:
     uses: ./.github/workflows/flutter_android_test.yml
     with:
       uses_cache: false
-
+      device: ${{ matrix.device }}
 
   flutter_windows_test:
     name: Flutter (Windows) integration test

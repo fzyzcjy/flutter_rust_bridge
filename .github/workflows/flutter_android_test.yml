@@ -9,6 +9,9 @@ on:
         required: false
         type: string
         default: '1.64.0'
+      device:
+        required: true
+        type: string
       uses_cache:
         required: false
         type: boolean
@@ -89,7 +92,7 @@ jobs:
           with: |
             api-level: 29
             arch: x86_64
-            profile: ${{ matrix.device }}
+            profile: ${{ inputs.device }}
             script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
 
       # # flaky GitHub Action testing environment... have to retry
@@ -103,7 +106,7 @@ jobs:
       #   with:
       #     api-level: 29
       #     arch: x86_64
-      #     profile: ${{ matrix.device }}
+      #     profile: ${{ inputs.device }}
       #     script: |
       #       cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
 
