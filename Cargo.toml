@@ -14,6 +14,7 @@ exclude = [
   "corrosion/test/nostd/rust",
   "corrosion/test/hostbuild",
   "corrosion/test/envvar",
+  "corrosion/test/features/rust",
 ]
 
 [workspace.package]
