@@ -50,6 +50,7 @@ jobs:
 
       - name: Install Corrosion
         run: |
+          cd ..
           set -euxo pipefail
           git clone https://github.com/corrosion-rs/corrosion.git
           cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
