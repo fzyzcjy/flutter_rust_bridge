@@ -1024,22 +1024,22 @@ impl Wire2Api<UserId> for JsValue {
 
 impl Wire2Api<chrono::Duration> for JsValue {
     fn wire2api(self) -> chrono::Duration {
-        (self.unchecked_into_f64() as i64).wire2api()
+        Wire2Api::<i64>::wire2api(self).wire2api()
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Local>> for JsValue {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
-        (self.unchecked_into_f64() as i64).wire2api()
+        Wire2Api::<i64>::wire2api(self).wire2api()
     }
 }
 impl Wire2Api<chrono::NaiveDateTime> for JsValue {
     fn wire2api(self) -> chrono::NaiveDateTime {
-        (self.unchecked_into_f64() as i64).wire2api()
+        Wire2Api::<i64>::wire2api(self).wire2api()
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        (self.unchecked_into_f64() as i64).wire2api()
+        Wire2Api::<i64>::wire2api(self).wire2api()
     }
 }
 impl Wire2Api<String> for JsValue {
@@ -1179,7 +1179,7 @@ impl Wire2Api<i32> for JsValue {
 }
 impl Wire2Api<i64> for JsValue {
     fn wire2api(self) -> i64 {
-        self.unchecked_into_f64() as _
+        ::std::convert::TryInto::try_into(self.dyn_into::<js_sys::BigInt>().unwrap()).unwrap()
     }
 }
 impl Wire2Api<i8> for JsValue {
@@ -1299,7 +1299,7 @@ impl Wire2Api<u32> for JsValue {
 }
 impl Wire2Api<u64> for JsValue {
     fn wire2api(self) -> u64 {
-        self.unchecked_into_f64() as _
+        ::std::convert::TryInto::try_into(self.dyn_into::<js_sys::BigInt>().unwrap()).unwrap()
     }
 }
 impl Wire2Api<u8> for JsValue {

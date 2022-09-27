@@ -21,22 +21,22 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api2wire
 
   @protected
-  BigInt api2wire_Chrono_Duration(Duration raw) {
+  Object api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i64(raw.inMilliseconds);
   }
 
   @protected
-  BigInt api2wire_Chrono_Local(DateTime raw) {
+  Object api2wire_Chrono_Local(DateTime raw) {
     return api2wire_i64(raw.millisecondsSinceEpoch);
   }
 
   @protected
-  BigInt api2wire_Chrono_Naive(DateTime raw) {
+  Object api2wire_Chrono_Naive(DateTime raw) {
     return api2wire_i64(raw.millisecondsSinceEpoch);
   }
 
   @protected
-  BigInt api2wire_Chrono_Utc(DateTime raw) {
+  Object api2wire_Chrono_Utc(DateTime raw) {
     return api2wire_i64(raw.millisecondsSinceEpoch);
   }
 
@@ -333,8 +333,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  BigInt api2wire_i64(int raw) {
-    return BigInt.from(raw);
+  Object api2wire_i64(int raw) {
+    return castNativeBigInt(raw);
   }
 
   @protected
@@ -581,8 +581,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  BigInt api2wire_u64(int raw) {
-    return BigInt.from(raw);
+  Object api2wire_u64(int raw) {
+    return castNativeBigInt(raw);
   }
 
   @protected
@@ -608,7 +608,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
   external void wire_simple_adder(NativePortType port_, int a, int b);
 
-  external void wire_primitive_types(NativePortType port_, int my_i32, BigInt my_i64, double my_f64, bool my_bool);
+  external void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool);
 
   external void wire_primitive_u32(NativePortType port_, int my_u32);
 
@@ -642,7 +642,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* int */ wire_handle_sync_u32(int input);
 
-  external dynamic /* BigInt */ wire_handle_sync_u64(BigInt input);
+  external dynamic /* Object */ wire_handle_sync_u64(Object input);
 
   external dynamic /* int */ wire_handle_sync_i8(int input);
 
@@ -650,7 +650,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* int */ wire_handle_sync_i32(int input);
 
-  external dynamic /* BigInt */ wire_handle_sync_i64(BigInt input);
+  external dynamic /* Object */ wire_handle_sync_i64(Object input);
 
   external dynamic /* double */ wire_handle_sync_f32(double input);
 
@@ -742,13 +742,13 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_handle_big_buffers(NativePortType port_);
 
-  external void wire_datetime_utc(NativePortType port_, BigInt d);
+  external void wire_datetime_utc(NativePortType port_, Object d);
 
-  external void wire_datetime_local(NativePortType port_, BigInt d);
+  external void wire_datetime_local(NativePortType port_, Object d);
 
-  external void wire_naivedatetime(NativePortType port_, BigInt d);
+  external void wire_naivedatetime(NativePortType port_, Object d);
 
-  external void wire_duration(NativePortType port_, BigInt d);
+  external void wire_duration(NativePortType port_, Object d);
 
   external void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
 
@@ -782,7 +782,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external int /* *mut i32 */ new_box_autoadd_i32_0(int value);
 
-  external int /* *mut i64 */ new_box_autoadd_i64_0(BigInt value);
+  external int /* *mut i64 */ new_box_autoadd_i64_0(Object value);
 
   external int /* *mut bool */ new_box_bool_0(bool value);
 
@@ -790,7 +790,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external int /* *mut i32 */ new_box_i32_0(int value);
 
-  external int /* *mut i64 */ new_box_i64_0(BigInt value);
+  external int /* *mut i64 */ new_box_i64_0(Object value);
 
   external int /* *mut i8 */ new_box_i8_0(int value);
 
@@ -808,7 +808,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_simple_adder(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder(port_, a, b);
 
-  void wire_primitive_types(NativePortType port_, int my_i32, BigInt my_i64, double my_f64, bool my_bool) =>
+  void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
 
   void wire_primitive_u32(NativePortType port_, int my_u32) => wasmModule.wire_primitive_u32(port_, my_u32);
@@ -848,7 +848,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   dynamic /* int */ wire_handle_sync_u32(int input) => wasmModule.wire_handle_sync_u32(input);
 
-  dynamic /* BigInt */ wire_handle_sync_u64(BigInt input) => wasmModule.wire_handle_sync_u64(input);
+  dynamic /* Object */ wire_handle_sync_u64(Object input) => wasmModule.wire_handle_sync_u64(input);
 
   dynamic /* int */ wire_handle_sync_i8(int input) => wasmModule.wire_handle_sync_i8(input);
 
@@ -856,7 +856,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   dynamic /* int */ wire_handle_sync_i32(int input) => wasmModule.wire_handle_sync_i32(input);
 
-  dynamic /* BigInt */ wire_handle_sync_i64(BigInt input) => wasmModule.wire_handle_sync_i64(input);
+  dynamic /* Object */ wire_handle_sync_i64(Object input) => wasmModule.wire_handle_sync_i64(input);
 
   dynamic /* double */ wire_handle_sync_f32(double input) => wasmModule.wire_handle_sync_f32(input);
 
@@ -964,13 +964,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_handle_big_buffers(NativePortType port_) => wasmModule.wire_handle_big_buffers(port_);
 
-  void wire_datetime_utc(NativePortType port_, BigInt d) => wasmModule.wire_datetime_utc(port_, d);
+  void wire_datetime_utc(NativePortType port_, Object d) => wasmModule.wire_datetime_utc(port_, d);
 
-  void wire_datetime_local(NativePortType port_, BigInt d) => wasmModule.wire_datetime_local(port_, d);
+  void wire_datetime_local(NativePortType port_, Object d) => wasmModule.wire_datetime_local(port_, d);
 
-  void wire_naivedatetime(NativePortType port_, BigInt d) => wasmModule.wire_naivedatetime(port_, d);
+  void wire_naivedatetime(NativePortType port_, Object d) => wasmModule.wire_naivedatetime(port_, d);
 
-  void wire_duration(NativePortType port_, BigInt d) => wasmModule.wire_duration(port_, d);
+  void wire_duration(NativePortType port_, Object d) => wasmModule.wire_duration(port_, d);
 
   void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine) =>
       wasmModule.wire_how_long_does_it_take(port_, mine);
@@ -1013,7 +1013,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *mut i32 */ new_box_autoadd_i32_0(int value) => wasmModule.new_box_autoadd_i32_0(value);
 
-  int /* *mut i64 */ new_box_autoadd_i64_0(BigInt value) => wasmModule.new_box_autoadd_i64_0(value);
+  int /* *mut i64 */ new_box_autoadd_i64_0(Object value) => wasmModule.new_box_autoadd_i64_0(value);
 
   int /* *mut bool */ new_box_bool_0(bool value) => wasmModule.new_box_bool_0(value);
 
@@ -1021,7 +1021,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *mut i32 */ new_box_i32_0(int value) => wasmModule.new_box_i32_0(value);
 
-  int /* *mut i64 */ new_box_i64_0(BigInt value) => wasmModule.new_box_i64_0(value);
+  int /* *mut i64 */ new_box_i64_0(Object value) => wasmModule.new_box_i64_0(value);
 
   int /* *mut i8 */ new_box_i8_0(int value) => wasmModule.new_box_i8_0(value);
 
