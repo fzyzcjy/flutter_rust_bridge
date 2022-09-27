@@ -1,12 +1,12 @@
 [package]
 name = "flutter_rust_bridge_macros"
-version = "1.48.0"
-edition = "2018"
+version.workspace = true
+edition.workspace = true
 description = "Supporting procedural macros for flutter_rust_bridge"
-license = "MIT"
-repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
-keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
-categories = ["development-tools::ffi"]
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
 
 [dependencies]
 

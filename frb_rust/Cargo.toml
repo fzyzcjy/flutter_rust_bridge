@@ -1,22 +1,22 @@
 [package]
 name = "flutter_rust_bridge"
-version = "1.48.0"
-edition = "2018"
-description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
-license = "MIT"
-repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
-keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
-categories = ["development-tools::ffi"]
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
 
 [dependencies]
 bytemuck = "1.11.0"
-anyhow = "1.0.64"
-chrono = { version = "0.4.20", optional = true }
+anyhow = { workspace = true }
+chrono = { workspace = true, optional = true }
 threadpool = "1.8.1"
-lazy_static = "1.4.0"
+lazy_static = { workspace = true }
 parking_lot = "0.12.1"
-flutter_rust_bridge_macros = { path = "../frb_macros", version = "1" }
-uuid = { version = "1.1.2", optional = true }
+flutter_rust_bridge_macros = { workspace = true }
+uuid = { workspace = true, optional = true }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
 allo-isolate = { version = "0.1.14-beta.3", features = ["anyhow"] }
@@ -43,7 +43,7 @@ web-sys = { version = "0.3.58", features = [
 build-target = "0.4.0"
 
 [dev-dependencies]
-wasm-bindgen-test = "0.3.33"
+wasm-bindgen-test = "0.3.32"
 
 [features]
 default = ["chrono"]

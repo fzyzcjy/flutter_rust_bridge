@@ -26,7 +26,9 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: 1.64.0
+          override: true
+          components: rustfmt
 
       - uses: actions/setup-python@v2
         with:
@@ -64,304 +66,40 @@ jobs:
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
     name: Flutter (iOS) integration test
-    runs-on: macos-latest
-
     strategy:
       matrix:
         device:
           - "iPad (7th generation) Simulator (15.2)"
           - "iPhone 12 Pro Max Simulator (15.2)"
       fail-fast: false
-
-    steps:
-      - name: "List all simulators"
-        run: "xcrun xctrace list devices"
-      - name: "Start Simulator"
-        run: |
-          # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (15.2) + Apple Watch Series 5 - 44mm (8.0)"
-          UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
-          echo UDID=$UDID
-          xcrun simctl boot "${UDID:?No Simulator with this name found}"
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          flutter-version: '3.3.1'
-          architecture: x64
-
-      - uses: actions/checkout@v2
-
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-
-      - uses: actions/cache@v3
-        id: cache-deps
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            ./frb_example/with_flutter/rust/target
-          key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: Add Rust targets
-        run: rustup target add aarch64-apple-ios x86_64-apple-ios
-
-      - name: Install `cargo-lipo`
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: cargo install cargo-lipo
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      - name: Build Rust lib
-        working-directory: ./frb_example/with_flutter/rust
-        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
-        run: |
-          sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
-          cargo lipo
-          cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
-
-      - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
-        run: flutter test integration_test/main.dart --verbose
+    uses: ./.github/workflows/flutter_ios_test.yml
+    with:
+      device: ${{ matrix.device }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_android_test:
     name: Flutter (Android) integration test
-    runs-on: macos-latest
-
     strategy:
       matrix:
         device:
           - "pixel"
           - "Nexus 6"
       fail-fast: false
-
-    steps:
-      - uses: actions/checkout@v2
-
-      # #499, https://github.com/actions/virtual-environments/issues/5595
-      - name: Configure ndk
-        run: |
-           ANDROID_HOME=$HOME/Library/Android/sdk
-           SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
-
-           echo y | $SDKMANAGER "ndk;21.4.7075529"
-
-           ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
-
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          flutter-version: '3.3.1'
-          architecture: x64
-
-      - uses: actions/setup-java@v1
-        with:
-          java-version: "8.x" # "betterprogramming.pub" says must be java "8"
-
-      - uses: actions/cache@v3
-        id: cache-deps
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            ./frb_example/with_flutter/rust/target
-          key: ${{ runner.os }}-cargo-integrate-android-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: Add Rust targets
-        run: rustup target add x86_64-linux-android
-
-      - name: Install `cargo-ndk`
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: cargo install cargo-ndk
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      - name: Build Rust lib
-        working-directory: ./frb_example/with_flutter/rust
-        # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
-        run: cargo ndk -t x86_64 -o ../android/app/src/main/jniLibs build
-
-      - name: Run Flutter integration tests
-        continue-on-error: true
-        timeout-minutes: 20
-        uses: Wandalen/wretry.action@v1.0.25
-        with:
-          action: reactivecircus/android-emulator-runner@v2
-          with: |
-            api-level: 29
-            arch: x86_64
-            profile: ${{ matrix.device }}
-            script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
-
-      # # flaky GitHub Action testing environment... have to retry
-      # # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
-      # - name: Run Flutter integration tests (retry)
-      #   id: run_flutter_integration_test_retry_1
-      #   if: steps.run_flutter_integration_test.outcome == 'failure'
-      #   continue-on-error: true
-      #   timeout-minutes: 30
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     api-level: 29
-      #     arch: x86_64
-      #     profile: ${{ matrix.device }}
-      #     script: |
-      #       cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
-
-      # # https://github.community/t/how-to-retry-a-failed-step-in-github-actions-workflow/125880
-      # - name: Set status
-      #   if: always()
-      #   run: |
-      #     if ${{ steps.run_flutter_integration_test.outcome=='success' || steps.run_flutter_integration_test_retry_1.outcome=='success' }}; then
-      #        echo fine
-      #     else
-      #        exit 1
-      #     fi
-
+    uses: ./.github/workflows/flutter_android_test.yml
+    with:
+      device: ${{ matrix.device }}
 
   flutter_windows_test:
     name: Flutter (Windows) integration test
-    runs-on: windows-2019
-
-    steps:
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          flutter-version: '3.3.1'
-          architecture: x64
-
-      - uses: actions/checkout@v2
-
-      - name: Enable platform support
-        run: flutter config --enable-windows-desktop
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
-        run: flutter test -d windows integration_test/main.dart --verbose
-
-      - name: Install Corrosion
-        run: |
-          git clone https://github.com/corrosion-rs/corrosion.git
-          cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
-          cmake --build build --config Release
-          cmake --install build --config Release
-          echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-
-      - name: Run Flutter integration tests explicitly requiring Corrosion
-        working-directory: ./frb_example/with_flutter
-        run: |
-          mv -Force windows/rust.require.cmake windows/rust.cmake
-          flutter test -d windows integration_test/main.dart --verbose
+    uses: ./.github/workflows/flutter_windows_test.yml
 
   flutter_macos_test:
     name: Flutter (macOS) integration test
-    runs-on: macos-11
-
-    steps:
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          flutter-version: '3.3.1'
-          architecture: x64
-
-      - uses: actions/checkout@v2
-
-      - name: Enable platform support
-        run: flutter config --enable-macos-desktop
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
-        run: flutter test -d macos integration_test/main.dart --verbose
+    uses: ./.github/workflows/flutter_macos_test.yml
 
   flutter_linux_test:
     name: Flutter (Linux) integration test
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-
-      # From Flutter Gallery CI
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          flutter-version: '3.3.1'
-          architecture: x64
-
-      - name: Install Flutter build tools
-        run: sudo apt update && sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
-
-      - run: flutter config --enable-linux-desktop
-
-      - run: flutter doctor -v
-
-      - run: flutter pub get
-        working-directory: ./frb_example/with_flutter
-
-      - name: Setup headless display
-        uses: pyvista/setup-headless-display-action@v1
-
-      - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
-        run: flutter test -d linux integration_test/main.dart --verbose
-
-      - name: Install Corrosion
-        run: |
-          set -euxo pipefail
-          git clone https://github.com/corrosion-rs/corrosion.git
-          cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
-          cmake --build build --config Release
-          sudo cmake --install build --config Release
-
-      - name: Run Flutter integration tests explicitly requiring Corrosion
-        working-directory: ./frb_example/with_flutter
-        run: |
-          set -euxo pipefail
-          mv linux/rust.require.cmake linux/rust.cmake
-          flutter test -d linux integration_test/main.dart --verbose
+    uses: ./.github/workflows/flutter_linux_test.yml
   
   dart_web_test:
     name: Dart (Web) unit tests
@@ -376,6 +114,7 @@ jobs:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
+          override: true
       - name: Install ffigen
         run: dart pub global activate ffigen
       - name: Cache dependencies
@@ -423,6 +162,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: 1.64.0
+          override: true
+          components: rustfmt
 
       - uses: dart-lang/setup-dart@v1
         with:
@@ -478,8 +225,7 @@ jobs:
     strategy:
       matrix:
         cargo_toolchain_version:
-          - stable
-          - 1.55.0
+          - 1.64.0
 
     steps:
       - name: Checkout sources
@@ -491,6 +237,7 @@ jobs:
           profile: minimal
           toolchain: ${{ matrix.cargo_toolchain_version }}
           components: rustfmt, clippy
+          override: true
 
       - uses: dart-lang/setup-dart@v1
         with:
@@ -637,7 +384,6 @@ jobs:
   # -------------------------- codegen --------------------------
   codegen:
     name: Run codegen
-
     strategy:
       fail-fast: false
       matrix:
@@ -649,126 +395,7 @@ jobs:
           - image: ubuntu-20.04
             family: linux
 
-    runs-on: ${{ matrix.os.image }}
-
-    steps:
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          flutter-version: '3.3.1'
-          architecture: x64
-      
-      - uses: actions/checkout@v2
-
-      # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
-      - name: Install llvm dependency (Linux)
-        if: ${{ matrix.os.family == 'linux' }}
-        run: sudo apt update && sudo apt-get install -y libclang-dev
-
-      - name: Install dart dependencies (single block)
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart pub get
-
-      - name: Install dart dependencies (multi blocks)
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart pub get
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      # NOTE in windows, need "\\" instead of "/"
-      - name: Run codegen to pure_dart example (non-windows)
-        if: ${{ matrix.os.family != 'windows' }}
-        working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features "chrono,uuid" --
-          --rust-input ../frb_example/pure_dart/rust/src/api.rs
-          --dart-output ../frb_example/pure_dart/dart/lib/bridge_generated.dart
-          --dart-decl-output ../frb_example/pure_dart/dart/lib/bridge_definitions.dart
-          --dart-format-line-length 120
-          --wasm
-        env:
-          RUST_LOG: debug
-
-      - name: Run codegen to pure_dart example (windows)
-        if: ${{ matrix.os.family == 'windows' }}
-        working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features "chrono,uuid" --
-          --rust-input ..\\frb_example\\pure_dart\\rust\\src\\api.rs
-          --dart-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_generated.dart
-          --dart-decl-output ..\\frb_example\\pure_dart\\dart\\lib\\bridge_definitions.dart
-          --dart-format-line-length 120
-          --wasm
-        env:
-          RUST_LOG: debug
-
-      # NOTE in windows, need "\\" instead of "/"
-      - name: Run codegen to pure_dart_multi example (non-windows)
-        if: ${{ matrix.os.family != 'windows' }}
-        working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-          --rust-input ../frb_example/pure_dart_multi/rust/src/api_1.rs ../frb_example/pure_dart_multi/rust/src/api_2.rs
-          --dart-output ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart ../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
-          --dart-format-line-length 120
-          --rust-output ../frb_example/pure_dart_multi/rust/src/generated_api_1.rs ../frb_example/pure_dart_multi/rust/src/generated_api_2.rs
-          --class-name ApiClass1 ApiClass2
-        env:
-          RUST_LOG: debug
-      - name: Run codegen to pure_dart_multi example (windows)
-        if: ${{ matrix.os.family == 'windows' }}
-        working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-          --rust-input ..\\frb_example\\pure_dart_multi\\rust\\src\\api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\api_2.rs
-          --dart-output ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_1.dart ..\\frb_example\\pure_dart_multi\\dart\\lib\\bridge_generated_api_2.dart
-          --dart-format-line-length 120
-          --rust-output ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_2.rs
-          --class-name ApiClass1 ApiClass2
-        env:
-            RUST_LOG: debug
-
-      - name: Run codegen to with_flutter example (non-windows)
-        if: ${{ matrix.os.family != 'windows' }}
-        working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-          --rust-input ../frb_example/with_flutter/rust/src/api.rs
-          --dart-output ../frb_example/with_flutter/lib/bridge_generated.dart
-          --c-output ../frb_example/with_flutter/ios/Runner/bridge_generated.h
-          --dart-decl-output ../frb_example/with_flutter/lib/bridge_definitions.dart
-          --dart-format-line-length 120
-          --wasm
-        env:
-          RUST_LOG: debug
-      - name: Run codegen to with_flutter example (windows)
-        if: ${{ matrix.os.family == 'windows' }}
-        working-directory: ./frb_codegen
-        run: cargo run --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --
-          --rust-input ..\\frb_example\\with_flutter\\rust\\src\\api.rs
-          --dart-output ..\\frb_example\\with_flutter\\lib\\bridge_generated.dart
-          --c-output ..\\frb_example\\with_flutter\\ios\\Runner\\bridge_generated.h
-          --dart-decl-output ..\\frb_example\\with_flutter\\lib\\bridge_definitions.dart
-          --dart-format-line-length 120
-          --wasm
-        env:
-          RUST_LOG: debug
-
-      # #467
-      - name: "Modify cross-platform code (windows) (single block)"
-        if: ${{ matrix.os.family == 'windows' }}
-        run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.io.dart
-
-      - name: Generate codegen help
-        working-directory: ./frb_codegen
-        # The file extension is different on Windows.
-        if: ${{ matrix.os.family != 'windows' }}
-        run: cargo run -- --help > ../book/src/help.txt
-
-      - name: Generate server help
-        working-directory: ./frb_dart
-        run: dart pub get && dart run bin/serve.dart --help > ../book/src/help.serve.txt
-
-      - name: "Check no code change
-          (If fail: Please ensure you have run codegen on examples and commit those changes!
-          On Windows, see https://github.com/fzyzcjy/flutter_rust_bridge/pull/536#issuecomment-1170259918
-          for additional instructions.)
-          If you have installed `just`, use `just precommit`."
-        run: git diff --exit-code
+    uses: ./.github/workflows/code_generator.yml
+    with:
+      image: ${{ matrix.os.image }}
+      family: ${{ matrix.os.family }}

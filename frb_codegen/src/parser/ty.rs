@@ -262,10 +262,9 @@ impl<'a> TypeParser<'a> {
                 _ => {}
             };
             #[cfg(feature = "uuid")]
-            match ident_string.as_str() {
-                "Uuid" => return Some(Delegate(IrTypeDelegate::Uuid)),
-                _ => {}
-            };
+            if ident_string.as_str() == "Uuid" {
+                return Some(Delegate(IrTypeDelegate::Uuid));
+            }
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

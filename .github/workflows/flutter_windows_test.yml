@@ -1,0 +1,57 @@
+on:
+  workflow_call:
+    inputs:
+      flutter_version:
+        required: false
+        type: string
+        default: '3.3.1'
+      rust_version:
+        required: false
+        type: string
+        default: '1.64.0'
+
+jobs:
+  flutter_windows_test:
+    runs-on: windows-2019
+
+    steps:
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ inputs.rust_version }}
+          override: true
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: ${{ inputs.flutter_version }}
+          architecture: x64
+
+      - uses: actions/checkout@v2
+
+      - name: Enable platform support
+        run: flutter config --enable-windows-desktop
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Run Flutter integration tests
+        working-directory: ./frb_example/with_flutter
+        run: flutter test -d windows integration_test/main.dart --verbose
+
+      - name: Install Corrosion
+        run: |
+          cd ..
+          git clone https://github.com/corrosion-rs/corrosion.git
+          cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --config Release
+          cmake --install build --config Release
+          echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Run Flutter integration tests explicitly requiring Corrosion
+        working-directory: ./frb_example/with_flutter
+        run: |
+          mv -Force windows/rust.require.cmake windows/rust.cmake
+          flutter test -d windows integration_test/main.dart --verbose
