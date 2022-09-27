@@ -12,7 +12,7 @@ flutter_rust_bridge_codegen = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true, features = ["backtrace"] }
-flutter_rust_bridge = { workspace = true }
+flutter_rust_bridge = { version = "1" }
 lazy_static = { workspace = true }
 
 [dependencies.external-lib] # used for demo of external types mirroring
