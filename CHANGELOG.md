@@ -1,3 +1,7 @@
+## 1.49.0
+
+* Make the CI great again (thanks @Roms1383)
+
 ## 1.48.0
 
 * Support uuid #728 (thanks @Roms1383)
