@@ -25,3 +25,5 @@ OPTIONS:
     --[no-]reference-types    Enable the reference types proposal
                               Requires wasm-bindgen in path
 -h, --help                    Print this help message
+    --[no-]build              Whether to build the library.
+                              (defaults to on)
