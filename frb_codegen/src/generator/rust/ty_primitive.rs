@@ -11,14 +11,10 @@ impl TypeRustGeneratorTrait for TypePrimitiveGenerator<'_> {
     }
     fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         use IrTypePrimitive::*;
-        Some(
-            match self.ir {
-                Bool => "self.is_truthy()",
-                //  This is a bit nuanced: it applies the unary plus operator
-                // which leaves numbers unchanged and coerces BigInts into numbers.
-                _ => "self.unchecked_into_f64() as _",
-            }
-            .into(),
-        )
+        Some(match self.ir {
+            Bool => "self.is_truthy()".into(),
+            I64 | U64 => "::std::convert::TryInto::try_into(self.dyn_into::<js_sys::BigInt>().unwrap()).unwrap()".into(),
+            _ => "self.unchecked_into_f64() as _".into(),
+        })
     }
 }

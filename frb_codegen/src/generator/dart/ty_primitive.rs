@@ -11,7 +11,7 @@ impl TypeDartGeneratorTrait for TypePrimitiveGenerator<'_> {
         match self.ir {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
                 io: Some("return raw;".into()),
-                wasm: Some("return BigInt.from(raw);".into()),
+                wasm: Some("return castNativeBigInt(raw);".into()),
                 ..Default::default()
             },
             _ => "return raw;".into(),

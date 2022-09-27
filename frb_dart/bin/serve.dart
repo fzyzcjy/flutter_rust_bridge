@@ -139,6 +139,8 @@ class Opts {
   late bool referenceTypes;
   @CliOption(abbr: 'h', help: 'Print this help message', negatable: false)
   late bool help;
+  @CliOption(help: 'Whether to build the library.', defaultsTo: true)
+  late bool build;
 
   static List<String> rest(List<String> args) =>
       _$parserForOpts.parse(args).rest;
@@ -209,8 +211,10 @@ OPTIONS:""");
 
   // --- Checks end ---
 
-  await build(config,
-      crateDir: crateDir, wasmOutput: wasmOutput, root: root, args: args);
+  if (config.build) {
+    await build(config,
+        crateDir: crateDir, wasmOutput: wasmOutput, root: root, args: args);
+  }
   await runServer(config, root: root);
 }
 

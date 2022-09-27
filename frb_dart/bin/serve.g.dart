@@ -34,7 +34,8 @@ Opts _$parseOptsResult(ArgResults result) => Opts()
   ..release = result['release'] as bool
   ..weakRefs = result['weak-refs'] as bool
   ..referenceTypes = result['reference-types'] as bool
-  ..help = result['help'] as bool;
+  ..help = result['help'] as bool
+  ..build = result['build'] as bool;
 
 ArgParser _$populateOptsParser(ArgParser parser) => parser
   ..addOption(
@@ -107,6 +108,11 @@ ArgParser _$populateOptsParser(ArgParser parser) => parser
     abbr: 'h',
     help: 'Print this help message',
     negatable: false,
+  )
+  ..addFlag(
+    'build',
+    help: 'Whether to build the library.',
+    defaultsTo: true,
   );
 
 final _$parserForOpts = _$populateOptsParser(ArgParser());
