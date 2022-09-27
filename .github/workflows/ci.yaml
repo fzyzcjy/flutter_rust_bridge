@@ -395,7 +395,7 @@ jobs:
           - image: ubuntu-20.04
             family: linux
 
-    uses: ./.github/workflows/codegenerator.yml
+    uses: ./.github/workflows/code_generator.yml
     with:
       image: ${{ matrix.os.image }}
       family: ${{ matrix.os.family }}
