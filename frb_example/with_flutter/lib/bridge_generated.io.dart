@@ -95,8 +95,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 }
 
-Future<int> wireBenchI64(int value) {
-  return sendI64(value);
+Future<int> wireBenchI64(FlutterRustBridgeExampleImpl impl, int value) {
+  Timeline.startSync("Bench i64");
+  final value = await impl.sendI64(value: value);
+  Timeline.finishSync();
+  return value;
 }
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 

@@ -9,6 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
+import 'dart:developer';
 import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
@@ -1034,6 +1035,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
 }
 
-Future<int> wireBenchI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, int value) {
-  return impl.sendI64(value: value);
+Future<int> wireBenchI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, int value) async {
+  return await impl.sendI64(value: value);
 }

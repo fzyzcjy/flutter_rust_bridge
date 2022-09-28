@@ -9,6 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
+import 'dart:developer';
 import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
@@ -796,8 +797,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 }
 
-Future<int> wireBenchI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, int value) {
-  return impl.sendI64(value: value);
+Future<int> wireBenchI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, int value) async {
+  Timeline.startSync("Bench i64");
+  final output = await impl.sendI64(value: value);
+  Timeline.finishSync();
+  return output;
 }
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 

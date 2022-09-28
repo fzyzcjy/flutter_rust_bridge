@@ -148,6 +148,6 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
 }
 
-Future<int> wireBenchI64(int value) {
-  return sendI64(value);
+Future<int> wireBenchI64(FlutterRustBridgeExampleImpl impl, int value) {
+  return impl.sendI64(value: value);
 }

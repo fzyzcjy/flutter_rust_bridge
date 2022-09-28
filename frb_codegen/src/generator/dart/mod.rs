@@ -350,19 +350,26 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         }}",
             config.dart_api_impl_class_name()
         ));
-        let implos = format!(
-            "Future<int> wireBenchI64({} impl, int value) {{
-          return impl.sendI64(value: value);
-        }}",
+        lines.io.push(format!(
+            "Future<int> wireBenchI64({} impl, int value) async {{
+        Timeline.startSync(\"Bench i64\");
+        final output = await impl.sendI64(value: value);
+        Timeline.finishSync();
+        return output;
+      }}",
             config.dart_api_impl_class_name()
-        );
-        lines.io.push(implos.clone());
-        lines.wasm.push(implos);
+        ));
+        lines.wasm.push(format!(
+            "Future<int> wireBenchI64({} impl, int value) async {{
+        return await impl.sendI64(value: value);
+      }}",
+            config.dart_api_impl_class_name()
+        ));
     }
 
     let Acc { common, io, wasm } = lines.join("\n");
     let impl_import = format!(
-        "{} import 'package:meta/meta.dart';",
+        "{}{} import 'package:meta/meta.dart';",
         if config.wasm_enabled {
             format!(
                 "import '{}'; export '{0}';",
@@ -371,6 +378,11 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                     .and_then(OsStr::to_str)
                     .unwrap()
             )
+        } else {
+            "".into()
+        },
+        if config.bench_extended {
+            format!("import 'dart:developer';")
         } else {
             "".into()
         }
