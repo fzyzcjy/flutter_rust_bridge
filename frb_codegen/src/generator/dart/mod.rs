@@ -262,6 +262,7 @@ fn section_header(header: &str) -> String {
 ///
 /// The `_Impl` class takes a `_Platform _platform` instance as a private member,
 /// and the `_Platform` exposes all of its methods decorated as `@protected`.
+#[allow(clippy::too_many_lines)]
 fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<DartBasicCode> {
     let mut lines = Acc::<Vec<_>>::default();
     let dart_api_impl_class_name = config.dart_api_impl_class_name();
@@ -382,7 +383,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             "".into()
         },
         if config.bench_extended {
-            format!("import 'dart:developer';")
+            "import 'dart:developer';".to_string()
         } else {
             "".into()
         }

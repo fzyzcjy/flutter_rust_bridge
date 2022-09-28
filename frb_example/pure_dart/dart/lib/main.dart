@@ -621,6 +621,13 @@ void main(List<String> args) async {
       expect(wrapper.many, outputs.many);
     });
   });
+
+  group('benchmarking feature', () async {
+    test('send i64', () async {
+      final output = await api.benchSendI64(42);
+      expect(output, 42);
+    });
+  });
 }
 
 int _createGarbage() {

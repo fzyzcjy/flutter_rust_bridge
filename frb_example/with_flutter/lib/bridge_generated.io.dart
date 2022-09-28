@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
+import 'dart:developer';
 import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
@@ -95,11 +96,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 }
 
-Future<int> wireBenchI64(FlutterRustBridgeExampleImpl impl, int value) {
+Future<int> wireBenchI64(FlutterRustBridgeExampleImpl impl, int value) async {
   Timeline.startSync("Bench i64");
-  final value = await impl.sendI64(value: value);
+  final output = await impl.sendI64(value: value);
   Timeline.finishSync();
-  return value;
+  return output;
 }
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 

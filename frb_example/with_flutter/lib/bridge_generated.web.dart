@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
+import 'dart:developer';
 import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire>
@@ -148,6 +149,6 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
 }
 
-Future<int> wireBenchI64(FlutterRustBridgeExampleImpl impl, int value) {
-  return impl.sendI64(value: value);
+Future<int> wireBenchI64(FlutterRustBridgeExampleImpl impl, int value) async {
+  return await impl.sendI64(value: value);
 }
