@@ -345,23 +345,19 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         lines.common.push(format!(
             "extension BenchSendI64Extension on {} {{
           Future<int> benchSendI64(int value) async {{
-            return wireBenchI64(value);
+            return wireBenchI64(this,value);
           }}
         }}",
             config.dart_api_impl_class_name()
         ));
-        // lines.io.push(
-        //     "Future<int> wireBenchI64(int value) {
-        //   return sendI64(value);
-        // }"
-        //     .into(),
-        // );
-        // lines.wasm.push(
-        //     "Future<int> wireBenchI64(int value) {
-        //       return sendI64(value);
-        // }"
-        //     .into(),
-        // );
+        let implos = format!(
+            "Future<int> wireBenchI64({} impl, int value) {{
+          return impl.sendI64(value: value);
+        }}",
+            config.dart_api_impl_class_name()
+        );
+        lines.io.push(implos.clone());
+        lines.wasm.push(implos);
     }
 
     let Acc { common, io, wasm } = lines.join("\n");

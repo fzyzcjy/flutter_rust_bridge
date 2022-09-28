@@ -1033,3 +1033,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
 }
+
+Future<int> wireBenchI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, int value) {
+  return impl.sendI64(value: value);
+}

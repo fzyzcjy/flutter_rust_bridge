@@ -1962,6 +1962,6 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw
 
 extension BenchSendI64Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchSendI64(int value) async {
-    return wireBenchI64(value);
+    return wireBenchI64(this, value);
   }
 }
