@@ -55,6 +55,9 @@ OPTIONS:
         --skip-deps-check
             Skip dependencies check
 
+        --bench-extended <bench-extended>
+            Extends generated code with benchmark extension [default: true]
+
     -h, --help
             Print help information
 

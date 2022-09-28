@@ -387,6 +387,11 @@ pub extern "C" fn wire_handle_nested_uuids(port_: i64, ids: *mut wire_FeatureUui
 }
 
 #[no_mangle]
+pub extern "C" fn wire_send_i64(port_: i64, value: i64) {
+    wire_send_i64_impl(port_, value)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

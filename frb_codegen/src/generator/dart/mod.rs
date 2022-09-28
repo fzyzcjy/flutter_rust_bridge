@@ -341,6 +341,28 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             config,
         );
     }
+    if config.bench_extended {
+        lines.common.push(format!(
+            "extension BenchSendI64Extension on {} {{
+          Future<int> benchSendI64(int value) async {{
+            return wireBenchI64(value);
+          }}
+        }}",
+            config.dart_api_impl_class_name()
+        ));
+        // lines.io.push(
+        //     "Future<int> wireBenchI64(int value) {
+        //   return sendI64(value);
+        // }"
+        //     .into(),
+        // );
+        // lines.wasm.push(
+        //     "Future<int> wireBenchI64(int value) {
+        //       return sendI64(value);
+        // }"
+        //     .into(),
+        // );
+    }
 
     let Acc { common, io, wasm } = lines.join("\n");
     let impl_import = format!(

@@ -1868,6 +1868,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_nested_uuids =
       _wire_handle_nested_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureUuid>)>();
 
+  void wire_send_i64(
+    int port_,
+    int value,
+  ) {
+    return _wire_send_i64(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_send_i64Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_send_i64');
+  late final _wire_send_i64 = _wire_send_i64Ptr.asFunction<void Function(int, int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

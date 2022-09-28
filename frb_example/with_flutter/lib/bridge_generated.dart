@@ -289,3 +289,9 @@ int _wire2api_u8(dynamic raw) {
 Uint8List _wire2api_uint_8_list(dynamic raw) {
   return raw as Uint8List;
 }
+
+extension BenchSendI64Extension on FlutterRustBridgeExampleImpl {
+  Future<int> benchSendI64(int value) async {
+    return wireBenchI64(value);
+  }
+}

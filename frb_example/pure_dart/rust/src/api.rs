@@ -906,3 +906,7 @@ pub fn handle_uuids(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
 pub fn handle_nested_uuids(ids: FeatureUuid) -> anyhow::Result<FeatureUuid> {
     Ok(ids)
 }
+
+pub fn send_i64(value: i64) -> i64 {
+    value
+}

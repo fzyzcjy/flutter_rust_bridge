@@ -1016,6 +1016,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["ids"],
       );
 
+  Future<int> sendI64({required int value, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_send_i64(port_, _platform.api2wire_i64(value)),
+        parseSuccessData: _wire2api_i64,
+        constMeta: kSendI64ConstMeta,
+        argValues: [value],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kSendI64ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "send_i64",
+        argNames: ["value"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1945,4 +1958,10 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw
     float32List: _wire2api_ZeroCopyBuffer_Float32List(arr[8]),
     float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[9]),
   );
+}
+
+extension BenchSendI64Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> benchSendI64(int value) async {
+    return wireBenchI64(value);
+  }
 }

@@ -379,6 +379,11 @@ pub fn wire_handle_nested_uuids(port_: MessagePort, ids: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_send_i64(port_: MessagePort, value: i64) {
+    wire_send_i64_impl(port_, value)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

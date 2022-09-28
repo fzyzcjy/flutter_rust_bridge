@@ -316,6 +316,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
 
+  Future<int> sendI64({required int value, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSendI64ConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
