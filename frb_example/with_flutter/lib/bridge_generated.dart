@@ -290,8 +290,74 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
   return raw as Uint8List;
 }
 
-extension BenchSendI64Extension on FlutterRustBridgeExampleImpl {
-  Future<int> benchSendI64(int value) async {
-    return wireBenchI64(this, value);
+extension BenchwireDrawMandelbrotExtension on FlutterRustBridgeExampleImpl {
+  Future<Uint8List> draw_mandelbrot(dynamic image_size, dynamic zoom_point, dynamic scale, dynamic num_threads) async {
+    return wireDrawMandelbrot(image_size: image_size, zoom_point: zoom_point, scale: scale, num_threads: num_threads);
+  }
+}
+
+extension BenchwirePassingComplexStructsExtension on FlutterRustBridgeExampleImpl {
+  Future<String> passing_complex_structs(dynamic root) async {
+    return wirePassingComplexStructs(root: root);
+  }
+}
+
+extension BenchwireReturningStructsWithBoxedFieldsExtension on FlutterRustBridgeExampleImpl {
+  Future<BoxedPoint> returning_structs_with_boxed_fields() async {
+    return wireReturningStructsWithBoxedFields();
+  }
+}
+
+extension BenchwireOffTopicMemoryTestInputArrayExtension on FlutterRustBridgeExampleImpl {
+  Future<int> off_topic_memory_test_input_array(dynamic input) async {
+    return wireOffTopicMemoryTestInputArray(input: input);
+  }
+}
+
+extension BenchwireOffTopicMemoryTestOutputZeroCopyBufferExtension on FlutterRustBridgeExampleImpl {
+  Future<Uint8List> off_topic_memory_test_output_zero_copy_buffer(dynamic len) async {
+    return wireOffTopicMemoryTestOutputZeroCopyBuffer(len: len);
+  }
+}
+
+extension BenchwireOffTopicMemoryTestOutputVecU8Extension on FlutterRustBridgeExampleImpl {
+  Future<Uint8List> off_topic_memory_test_output_vec_u8(dynamic len) async {
+    return wireOffTopicMemoryTestOutputVecU8(len: len);
+  }
+}
+
+extension BenchwireOffTopicMemoryTestInputVecOfObjectExtension on FlutterRustBridgeExampleImpl {
+  Future<int> off_topic_memory_test_input_vec_of_object(dynamic input) async {
+    return wireOffTopicMemoryTestInputVecOfObject(input: input);
+  }
+}
+
+extension BenchwireOffTopicMemoryTestOutputVecOfObjectExtension on FlutterRustBridgeExampleImpl {
+  Future<List<Size>> off_topic_memory_test_output_vec_of_object(dynamic len) async {
+    return wireOffTopicMemoryTestOutputVecOfObject(len: len);
+  }
+}
+
+extension BenchwireOffTopicMemoryTestInputComplexStructExtension on FlutterRustBridgeExampleImpl {
+  Future<int> off_topic_memory_test_input_complex_struct(dynamic input) async {
+    return wireOffTopicMemoryTestInputComplexStruct(input: input);
+  }
+}
+
+extension BenchwireOffTopicMemoryTestOutputComplexStructExtension on FlutterRustBridgeExampleImpl {
+  Future<TreeNode> off_topic_memory_test_output_complex_struct(dynamic len) async {
+    return wireOffTopicMemoryTestOutputComplexStruct(len: len);
+  }
+}
+
+extension BenchwireOffTopicDeliberatelyReturnErrorExtension on FlutterRustBridgeExampleImpl {
+  Future<int> off_topic_deliberately_return_error() async {
+    return wireOffTopicDeliberatelyReturnError();
+  }
+}
+
+extension BenchwireOffTopicDeliberatelyPanicExtension on FlutterRustBridgeExampleImpl {
+  Future<int> off_topic_deliberately_panic() async {
+    return wireOffTopicDeliberatelyPanic();
   }
 }

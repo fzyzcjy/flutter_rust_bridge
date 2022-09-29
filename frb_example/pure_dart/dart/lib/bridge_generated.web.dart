@@ -1035,6 +1035,275 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
 }
 
-Future<int> wireBenchI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, int value) async {
-  return await impl.sendI64(value: value);
+Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic a, dynamic b) async {
+  return await impl.simple_adder(a: a, b: b);
+}
+
+Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic my_i32, dynamic my_i64,
+    dynamic my_f64, dynamic my_bool) async {
+  return await impl.primitive_types(my_i32: my_i32, my_i64: my_i64, my_f64: my_f64, my_bool: my_bool);
+}
+
+Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic my_u32) async {
+  return await impl.primitive_u32(my_u32: my_u32);
+}
+
+Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic s) async {
+  return await impl.handle_string(s: s);
+}
+
+Future<void> wireHandleReturnUnit(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.handle_return_unit();
+}
+
+Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic v) async {
+  return await impl.handle_vec_u8(v: v);
+}
+
+Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic n) async {
+  return await impl.handle_vec_of_primitive(n: n);
+}
+
+Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic n) async {
+  return await impl.handle_zero_copy_vec_of_primitive(n: n);
+}
+
+Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic arg, dynamic boxed) async {
+  return await impl.handle_struct(arg: arg, boxed: boxed);
+}
+
+Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic arg) async {
+  return await impl.handle_newtype(arg: arg);
+}
+
+Future<List<MySize>> wireHandleListOfStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic l) async {
+  return await impl.handle_list_of_struct(l: l);
+}
+
+Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic names) async {
+  return await impl.handle_string_list(names: names);
+}
+
+Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic s) async {
+  return await impl.handle_complex_struct(s: s);
+}
+
+Future<int> wireReturnErr(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.return_err();
+}
+
+Future<int> wireReturnPanic(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.return_panic();
+}
+
+Future<double?> wireHandleOptionalReturn(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic left, dynamic right) async {
+  return await impl.handle_optional_return(left: left, right: right);
+}
+
+Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic document) async {
+  return await impl.handle_optional_struct(document: document);
+}
+
+Future<ExoticOptionals?> wireHandleOptionalIncrement(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic opt) async {
+  return await impl.handle_optional_increment(opt: opt);
+}
+
+Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic opt) async {
+  return await impl.handle_increment_boxed_optional(opt: opt);
+}
+
+Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic i8box,
+    dynamic u8box, dynamic i32box, dynamic i64box, dynamic f64box, dynamic boolbox, dynamic structbox) async {
+  return await impl.handle_option_box_arguments(
+      i8box: i8box,
+      u8box: u8box,
+      i32box: i32box,
+      i64box: i64box,
+      f64box: f64box,
+      boolbox: boolbox,
+      structbox: structbox);
+}
+
+Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic note) async {
+  return await impl.print_note(note: note);
+}
+
+Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic input) async {
+  return await impl.handle_return_enum(input: input);
+}
+
+Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic weekday) async {
+  return await impl.handle_enum_parameter(weekday: weekday);
+}
+
+Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic val) async {
+  return await impl.handle_customized_struct(val: val);
+}
+
+Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic val) async {
+  return await impl.handle_enum_struct(val: val);
+}
+
+Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic my_struct) async {
+  return await impl.use_imported_struct(my_struct: my_struct);
+}
+
+Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic my_enum) async {
+  return await impl.use_imported_enum(my_enum: my_enum);
+}
+
+Future<ApplicationSettings> wireGetAppSettings(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.get_app_settings();
+}
+
+Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic app_settings) async {
+  return await impl.is_app_embedded(app_settings: app_settings);
+}
+
+Future<ApplicationMessage> wireGetMessage(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.get_message();
+}
+
+Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic num, dynamic times) async {
+  return await impl.repeat_number(num: num, times: times);
+}
+
+Future<Sequences> wireRepeatSequence(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic seq, dynamic times) async {
+  return await impl.repeat_sequence(seq: seq, times: times);
+}
+
+Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic nums) async {
+  return await impl.first_number(nums: nums);
+}
+
+Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic seqs) async {
+  return await impl.first_sequence(seqs: seqs);
+}
+
+Future<Uint8List> wireGetArray(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.get_array();
+}
+
+Future<List<Point>> wireGetComplexArray(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.get_complex_array();
+}
+
+Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic u) async {
+  return await impl.get_usize(u: u);
+}
+
+Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic user_id) async {
+  return await impl.next_user_id(user_id: user_id);
+}
+
+Future<void> wireCloseEventListener(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.close_event_listener();
+}
+
+Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic address, dynamic payload) async {
+  return await impl.create_event(address: address, payload: payload);
+}
+
+Future<SumWith> wireGetSumStruct(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.get_sum_struct();
+}
+
+Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic measure) async {
+  return await impl.multiply_by_ten(measure: measure);
+}
+
+Future<OldSimpleStruct> wireCallOldModuleSystem(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.call_old_module_system();
+}
+
+Future<NewSimpleStruct> wireCallNewModuleSystem(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.call_new_module_system();
+}
+
+Future<BigBuffers> wireHandleBigBuffers(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  return await impl.handle_big_buffers();
+}
+
+Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic d) async {
+  return await impl.datetime_utc(d: d);
+}
+
+Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic d) async {
+  return await impl.datetime_local(d: d);
+}
+
+Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic d) async {
+  return await impl.naivedatetime(d: d);
+}
+
+Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic d) async {
+  return await impl.duration(d: d);
+}
+
+Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic mine) async {
+  return await impl.how_long_does_it_take(mine: mine);
+}
+
+Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic id) async {
+  return await impl.handle_uuid(id: id);
+}
+
+Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic ids) async {
+  return await impl.handle_uuids(ids: ids);
+}
+
+Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic ids) async {
+  return await impl.handle_nested_uuids(ids: ids);
+}
+
+Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic value) async {
+  return await impl.send_i64(value: value);
+}
+
+Future<int> wireSumMethodSumWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic that, dynamic y, dynamic z) async {
+  return await impl.sum__method__SumWith(that: that, y: y, z: z);
+}
+
+Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic a) async {
+  return await impl.new__static_method__ConcatenateWith(a: a);
+}
+
+Future<String> wireConcatenateMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic that, dynamic b) async {
+  return await impl.concatenate__method__ConcatenateWith(that: that, b: b);
+}
+
+Future<String> wireConcatenateStaticStaticMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic a, dynamic b) async {
+  return await impl.concatenate_static__static_method__ConcatenateWith(a: a, b: b);
 }

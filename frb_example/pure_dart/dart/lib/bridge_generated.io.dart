@@ -797,9 +797,449 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 }
 
-Future<int> wireBenchI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, int value) async {
-  Timeline.startSync("Bench i64");
-  final output = await impl.sendI64(value: value);
+Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic a, dynamic b) async {
+  Timeline.startSync("Bench simple_adder");
+  final output = await impl.simple_adder(a: a, b: b);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic my_i32, dynamic my_i64,
+    dynamic my_f64, dynamic my_bool) async {
+  Timeline.startSync("Bench primitive_types");
+  final output = await impl.primitive_types(my_i32: my_i32, my_i64: my_i64, my_f64: my_f64, my_bool: my_bool);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic my_u32) async {
+  Timeline.startSync("Bench primitive_u32");
+  final output = await impl.primitive_u32(my_u32: my_u32);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic s) async {
+  Timeline.startSync("Bench handle_string");
+  final output = await impl.handle_string(s: s);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<void> wireHandleReturnUnit(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench handle_return_unit");
+  final output = await impl.handle_return_unit();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic v) async {
+  Timeline.startSync("Bench handle_vec_u8");
+  final output = await impl.handle_vec_u8(v: v);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic n) async {
+  Timeline.startSync("Bench handle_vec_of_primitive");
+  final output = await impl.handle_vec_of_primitive(n: n);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic n) async {
+  Timeline.startSync("Bench handle_zero_copy_vec_of_primitive");
+  final output = await impl.handle_zero_copy_vec_of_primitive(n: n);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic arg, dynamic boxed) async {
+  Timeline.startSync("Bench handle_struct");
+  final output = await impl.handle_struct(arg: arg, boxed: boxed);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic arg) async {
+  Timeline.startSync("Bench handle_newtype");
+  final output = await impl.handle_newtype(arg: arg);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<List<MySize>> wireHandleListOfStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic l) async {
+  Timeline.startSync("Bench handle_list_of_struct");
+  final output = await impl.handle_list_of_struct(l: l);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic names) async {
+  Timeline.startSync("Bench handle_string_list");
+  final output = await impl.handle_string_list(names: names);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic s) async {
+  Timeline.startSync("Bench handle_complex_struct");
+  final output = await impl.handle_complex_struct(s: s);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int> wireReturnErr(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench return_err");
+  final output = await impl.return_err();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int> wireReturnPanic(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench return_panic");
+  final output = await impl.return_panic();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<double?> wireHandleOptionalReturn(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic left, dynamic right) async {
+  Timeline.startSync("Bench handle_optional_return");
+  final output = await impl.handle_optional_return(left: left, right: right);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic document) async {
+  Timeline.startSync("Bench handle_optional_struct");
+  final output = await impl.handle_optional_struct(document: document);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<ExoticOptionals?> wireHandleOptionalIncrement(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic opt) async {
+  Timeline.startSync("Bench handle_optional_increment");
+  final output = await impl.handle_optional_increment(opt: opt);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic opt) async {
+  Timeline.startSync("Bench handle_increment_boxed_optional");
+  final output = await impl.handle_increment_boxed_optional(opt: opt);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic i8box,
+    dynamic u8box, dynamic i32box, dynamic i64box, dynamic f64box, dynamic boolbox, dynamic structbox) async {
+  Timeline.startSync("Bench handle_option_box_arguments");
+  final output = await impl.handle_option_box_arguments(
+      i8box: i8box,
+      u8box: u8box,
+      i32box: i32box,
+      i64box: i64box,
+      f64box: f64box,
+      boolbox: boolbox,
+      structbox: structbox);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic note) async {
+  Timeline.startSync("Bench print_note");
+  final output = await impl.print_note(note: note);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic input) async {
+  Timeline.startSync("Bench handle_return_enum");
+  final output = await impl.handle_return_enum(input: input);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic weekday) async {
+  Timeline.startSync("Bench handle_enum_parameter");
+  final output = await impl.handle_enum_parameter(weekday: weekday);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic val) async {
+  Timeline.startSync("Bench handle_customized_struct");
+  final output = await impl.handle_customized_struct(val: val);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic val) async {
+  Timeline.startSync("Bench handle_enum_struct");
+  final output = await impl.handle_enum_struct(val: val);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic my_struct) async {
+  Timeline.startSync("Bench use_imported_struct");
+  final output = await impl.use_imported_struct(my_struct: my_struct);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic my_enum) async {
+  Timeline.startSync("Bench use_imported_enum");
+  final output = await impl.use_imported_enum(my_enum: my_enum);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<ApplicationSettings> wireGetAppSettings(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench get_app_settings");
+  final output = await impl.get_app_settings();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic app_settings) async {
+  Timeline.startSync("Bench is_app_embedded");
+  final output = await impl.is_app_embedded(app_settings: app_settings);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<ApplicationMessage> wireGetMessage(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench get_message");
+  final output = await impl.get_message();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic num, dynamic times) async {
+  Timeline.startSync("Bench repeat_number");
+  final output = await impl.repeat_number(num: num, times: times);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Sequences> wireRepeatSequence(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic seq, dynamic times) async {
+  Timeline.startSync("Bench repeat_sequence");
+  final output = await impl.repeat_sequence(seq: seq, times: times);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic nums) async {
+  Timeline.startSync("Bench first_number");
+  final output = await impl.first_number(nums: nums);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic seqs) async {
+  Timeline.startSync("Bench first_sequence");
+  final output = await impl.first_sequence(seqs: seqs);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Uint8List> wireGetArray(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench get_array");
+  final output = await impl.get_array();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<List<Point>> wireGetComplexArray(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench get_complex_array");
+  final output = await impl.get_complex_array();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic u) async {
+  Timeline.startSync("Bench get_usize");
+  final output = await impl.get_usize(u: u);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic user_id) async {
+  Timeline.startSync("Bench next_user_id");
+  final output = await impl.next_user_id(user_id: user_id);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<void> wireCloseEventListener(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench close_event_listener");
+  final output = await impl.close_event_listener();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic address, dynamic payload) async {
+  Timeline.startSync("Bench create_event");
+  final output = await impl.create_event(address: address, payload: payload);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<SumWith> wireGetSumStruct(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench get_sum_struct");
+  final output = await impl.get_sum_struct();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic measure) async {
+  Timeline.startSync("Bench multiply_by_ten");
+  final output = await impl.multiply_by_ten(measure: measure);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<OldSimpleStruct> wireCallOldModuleSystem(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench call_old_module_system");
+  final output = await impl.call_old_module_system();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<NewSimpleStruct> wireCallNewModuleSystem(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench call_new_module_system");
+  final output = await impl.call_new_module_system();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<BigBuffers> wireHandleBigBuffers(
+  FlutterRustBridgeExampleSingleBlockTestImpl impl,
+) async {
+  Timeline.startSync("Bench handle_big_buffers");
+  final output = await impl.handle_big_buffers();
+  Timeline.finishSync();
+  return output;
+}
+
+Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic d) async {
+  Timeline.startSync("Bench datetime_utc");
+  final output = await impl.datetime_utc(d: d);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic d) async {
+  Timeline.startSync("Bench datetime_local");
+  final output = await impl.datetime_local(d: d);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic d) async {
+  Timeline.startSync("Bench naivedatetime");
+  final output = await impl.naivedatetime(d: d);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic d) async {
+  Timeline.startSync("Bench duration");
+  final output = await impl.duration(d: d);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic mine) async {
+  Timeline.startSync("Bench how_long_does_it_take");
+  final output = await impl.how_long_does_it_take(mine: mine);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic id) async {
+  Timeline.startSync("Bench handle_uuid");
+  final output = await impl.handle_uuid(id: id);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic ids) async {
+  Timeline.startSync("Bench handle_uuids");
+  final output = await impl.handle_uuids(ids: ids);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic ids) async {
+  Timeline.startSync("Bench handle_nested_uuids");
+  final output = await impl.handle_nested_uuids(ids: ids);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic value) async {
+  Timeline.startSync("Bench send_i64");
+  final output = await impl.send_i64(value: value);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<int> wireSumMethodSumWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic that, dynamic y, dynamic z) async {
+  Timeline.startSync("Bench sum__method__SumWith");
+  final output = await impl.sum__method__SumWith(that: that, y: y, z: z);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic a) async {
+  Timeline.startSync("Bench new__static_method__ConcatenateWith");
+  final output = await impl.new__static_method__ConcatenateWith(a: a);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<String> wireConcatenateMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic that, dynamic b) async {
+  Timeline.startSync("Bench concatenate__method__ConcatenateWith");
+  final output = await impl.concatenate__method__ConcatenateWith(that: that, b: b);
+  Timeline.finishSync();
+  return output;
+}
+
+Future<String> wireConcatenateStaticStaticMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl impl, dynamic a, dynamic b) async {
+  Timeline.startSync("Bench concatenate_static__static_method__ConcatenateWith");
+  final output = await impl.concatenate_static__static_method__ConcatenateWith(a: a, b: b);
   Timeline.finishSync();
   return output;
 }

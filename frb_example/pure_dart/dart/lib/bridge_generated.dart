@@ -1960,8 +1960,359 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw
   );
 }
 
-extension BenchSendI64Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int> benchSendI64(int value) async {
-    return wireBenchI64(this, value);
+extension BenchwireSimpleAdderExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> simple_adder(dynamic a, dynamic b) async {
+    return wireSimpleAdder(a: a, b: b);
+  }
+}
+
+extension BenchwirePrimitiveTypesExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> primitive_types(dynamic my_i32, dynamic my_i64, dynamic my_f64, dynamic my_bool) async {
+    return wirePrimitiveTypes(my_i32: my_i32, my_i64: my_i64, my_f64: my_f64, my_bool: my_bool);
+  }
+}
+
+extension BenchwirePrimitiveU32Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> primitive_u32(dynamic my_u32) async {
+    return wirePrimitiveU32(my_u32: my_u32);
+  }
+}
+
+extension BenchwireHandleStringExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<String> handle_string(dynamic s) async {
+    return wireHandleString(s: s);
+  }
+}
+
+extension BenchwireHandleReturnUnitExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<void> handle_return_unit() async {
+    return wireHandleReturnUnit();
+  }
+}
+
+extension BenchwireHandleVecU8Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Uint8List> handle_vec_u8(dynamic v) async {
+    return wireHandleVecU8(v: v);
+  }
+}
+
+extension BenchwireHandleVecOfPrimitiveExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<VecOfPrimitivePack> handle_vec_of_primitive(dynamic n) async {
+    return wireHandleVecOfPrimitive(n: n);
+  }
+}
+
+extension BenchwireHandleZeroCopyVecOfPrimitiveExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<ZeroCopyVecOfPrimitivePack> handle_zero_copy_vec_of_primitive(dynamic n) async {
+    return wireHandleZeroCopyVecOfPrimitive(n: n);
+  }
+}
+
+extension BenchwireHandleStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<MySize> handle_struct(dynamic arg, dynamic boxed) async {
+    return wireHandleStruct(arg: arg, boxed: boxed);
+  }
+}
+
+extension BenchwireHandleNewtypeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<NewTypeInt> handle_newtype(dynamic arg) async {
+    return wireHandleNewtype(arg: arg);
+  }
+}
+
+extension BenchwireHandleListOfStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<List<MySize>> handle_list_of_struct(dynamic l) async {
+    return wireHandleListOfStruct(l: l);
+  }
+}
+
+extension BenchwireHandleStringListExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<List<String>> handle_string_list(dynamic names) async {
+    return wireHandleStringList(names: names);
+  }
+}
+
+extension BenchwireHandleComplexStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<MyTreeNode> handle_complex_struct(dynamic s) async {
+    return wireHandleComplexStruct(s: s);
+  }
+}
+
+extension BenchwireReturnErrExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> return_err() async {
+    return wireReturnErr();
+  }
+}
+
+extension BenchwireReturnPanicExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> return_panic() async {
+    return wireReturnPanic();
+  }
+}
+
+extension BenchwireHandleOptionalReturnExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<double?> handle_optional_return(dynamic left, dynamic right) async {
+    return wireHandleOptionalReturn(left: left, right: right);
+  }
+}
+
+extension BenchwireHandleOptionalStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Element?> handle_optional_struct(dynamic document) async {
+    return wireHandleOptionalStruct(document: document);
+  }
+}
+
+extension BenchwireHandleOptionalIncrementExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<ExoticOptionals?> handle_optional_increment(dynamic opt) async {
+    return wireHandleOptionalIncrement(opt: opt);
+  }
+}
+
+extension BenchwireHandleIncrementBoxedOptionalExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<double> handle_increment_boxed_optional(dynamic opt) async {
+    return wireHandleIncrementBoxedOptional(opt: opt);
+  }
+}
+
+extension BenchwireHandleOptionBoxArgumentsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<String> handle_option_box_arguments(dynamic i8box, dynamic u8box, dynamic i32box, dynamic i64box,
+      dynamic f64box, dynamic boolbox, dynamic structbox) async {
+    return wireHandleOptionBoxArguments(
+        i8box: i8box,
+        u8box: u8box,
+        i32box: i32box,
+        i64box: i64box,
+        f64box: f64box,
+        boolbox: boolbox,
+        structbox: structbox);
+  }
+}
+
+extension BenchwirePrintNoteExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Uint8List> print_note(dynamic note) async {
+    return wirePrintNote(note: note);
+  }
+}
+
+extension BenchwireHandleReturnEnumExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Weekdays?> handle_return_enum(dynamic input) async {
+    return wireHandleReturnEnum(input: input);
+  }
+}
+
+extension BenchwireHandleEnumParameterExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Weekdays> handle_enum_parameter(dynamic weekday) async {
+    return wireHandleEnumParameter(weekday: weekday);
+  }
+}
+
+extension BenchwireHandleCustomizedStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<void> handle_customized_struct(dynamic val) async {
+    return wireHandleCustomizedStruct(val: val);
+  }
+}
+
+extension BenchwireHandleEnumStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<KitchenSink> handle_enum_struct(dynamic val) async {
+    return wireHandleEnumStruct(val: val);
+  }
+}
+
+extension BenchwireUseImportedStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<bool> use_imported_struct(dynamic my_struct) async {
+    return wireUseImportedStruct(my_struct: my_struct);
+  }
+}
+
+extension BenchwireUseImportedEnumExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<bool> use_imported_enum(dynamic my_enum) async {
+    return wireUseImportedEnum(my_enum: my_enum);
+  }
+}
+
+extension BenchwireGetAppSettingsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<ApplicationSettings> get_app_settings() async {
+    return wireGetAppSettings();
+  }
+}
+
+extension BenchwireIsAppEmbeddedExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<bool> is_app_embedded(dynamic app_settings) async {
+    return wireIsAppEmbedded(app_settings: app_settings);
+  }
+}
+
+extension BenchwireGetMessageExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<ApplicationMessage> get_message() async {
+    return wireGetMessage();
+  }
+}
+
+extension BenchwireRepeatNumberExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Numbers> repeat_number(dynamic num, dynamic times) async {
+    return wireRepeatNumber(num: num, times: times);
+  }
+}
+
+extension BenchwireRepeatSequenceExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Sequences> repeat_sequence(dynamic seq, dynamic times) async {
+    return wireRepeatSequence(seq: seq, times: times);
+  }
+}
+
+extension BenchwireFirstNumberExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int?> first_number(dynamic nums) async {
+    return wireFirstNumber(nums: nums);
+  }
+}
+
+extension BenchwireFirstSequenceExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int?> first_sequence(dynamic seqs) async {
+    return wireFirstSequence(seqs: seqs);
+  }
+}
+
+extension BenchwireGetArrayExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Uint8List> get_array() async {
+    return wireGetArray();
+  }
+}
+
+extension BenchwireGetComplexArrayExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<List<Point>> get_complex_array() async {
+    return wireGetComplexArray();
+  }
+}
+
+extension BenchwireGetUsizeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> get_usize(dynamic u) async {
+    return wireGetUsize(u: u);
+  }
+}
+
+extension BenchwireNextUserIdExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<UserId> next_user_id(dynamic user_id) async {
+    return wireNextUserId(user_id: user_id);
+  }
+}
+
+extension BenchwireCloseEventListenerExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<void> close_event_listener() async {
+    return wireCloseEventListener();
+  }
+}
+
+extension BenchwireCreateEventExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<void> create_event(dynamic address, dynamic payload) async {
+    return wireCreateEvent(address: address, payload: payload);
+  }
+}
+
+extension BenchwireGetSumStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<SumWith> get_sum_struct() async {
+    return wireGetSumStruct();
+  }
+}
+
+extension BenchwireMultiplyByTenExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Measure?> multiply_by_ten(dynamic measure) async {
+    return wireMultiplyByTen(measure: measure);
+  }
+}
+
+extension BenchwireCallOldModuleSystemExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<OldSimpleStruct> call_old_module_system() async {
+    return wireCallOldModuleSystem();
+  }
+}
+
+extension BenchwireCallNewModuleSystemExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<NewSimpleStruct> call_new_module_system() async {
+    return wireCallNewModuleSystem();
+  }
+}
+
+extension BenchwireHandleBigBuffersExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<BigBuffers> handle_big_buffers() async {
+    return wireHandleBigBuffers();
+  }
+}
+
+extension BenchwireDatetimeUtcExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<DateTime> datetime_utc(dynamic d) async {
+    return wireDatetimeUtc(d: d);
+  }
+}
+
+extension BenchwireDatetimeLocalExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<DateTime> datetime_local(dynamic d) async {
+    return wireDatetimeLocal(d: d);
+  }
+}
+
+extension BenchwireNaivedatetimeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<DateTime> naivedatetime(dynamic d) async {
+    return wireNaivedatetime(d: d);
+  }
+}
+
+extension BenchwireDurationExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Duration> duration(dynamic d) async {
+    return wireDuration(d: d);
+  }
+}
+
+extension BenchwireHowLongDoesItTakeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<Duration> how_long_does_it_take(dynamic mine) async {
+    return wireHowLongDoesItTake(mine: mine);
+  }
+}
+
+extension BenchwireHandleUuidExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<UuidValue> handle_uuid(dynamic id) async {
+    return wireHandleUuid(id: id);
+  }
+}
+
+extension BenchwireHandleUuidsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<List<UuidValue>> handle_uuids(dynamic ids) async {
+    return wireHandleUuids(ids: ids);
+  }
+}
+
+extension BenchwireHandleNestedUuidsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<FeatureUuid> handle_nested_uuids(dynamic ids) async {
+    return wireHandleNestedUuids(ids: ids);
+  }
+}
+
+extension BenchwireSendI64Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> send_i64(dynamic value) async {
+    return wireSendI64(value: value);
+  }
+}
+
+extension BenchwireSumMethodSumWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<int> sum__method__SumWith(dynamic that, dynamic y, dynamic z) async {
+    return wireSumMethodSumWith(that: that, y: y, z: z);
+  }
+}
+
+extension BenchwireNewStaticMethodConcatenateWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<ConcatenateWith> new__static_method__ConcatenateWith(dynamic a) async {
+    return wireNewStaticMethodConcatenateWith(a: a);
+  }
+}
+
+extension BenchwireConcatenateMethodConcatenateWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<String> concatenate__method__ConcatenateWith(dynamic that, dynamic b) async {
+    return wireConcatenateMethodConcatenateWith(that: that, b: b);
+  }
+}
+
+extension BenchwireConcatenateStaticStaticMethodConcatenateWithExtension
+    on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<String> concatenate_static__static_method__ConcatenateWith(dynamic a, dynamic b) async {
+    return wireConcatenateStaticStaticMethodConcatenateWith(a: a, b: b);
   }
 }
