@@ -99,160 +99,163 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge,
     {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
   final int starts = Timeline.now;
-  return bridge.drawMandelbrot(imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print('Bench draw_mandelbrot executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench draw_mandelbrot');
+  return bridge
+      .drawMandelbrot(imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads)
+      .then((value) => value)
+      .whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print('Bench draw_mandelbrot executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl bridge, {required TreeNode root}) async {
   final int starts = Timeline.now;
-  return bridge.passingComplexStructs(root: root).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print('Bench passing_complex_structs executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench passing_complex_structs');
+  return bridge.passingComplexStructs(root: root).then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print('Bench passing_complex_structs executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<BoxedPoint> wireReturningStructsWithBoxedFields(FlutterRustBridgeExampleImpl bridge) async {
   final int starts = Timeline.now;
-  return bridge.returningStructsWithBoxedFields().then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench returning_structs_with_boxed_fields executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench returning_structs_with_boxed_fields');
+  return bridge.returningStructsWithBoxedFields().then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench returning_structs_with_boxed_fields executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge, {required Uint8List input}) async {
   final int starts = Timeline.now;
-  return bridge.offTopicMemoryTestInputArray(input: input).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench off_topic_memory_test_input_array executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_memory_test_input_array');
+  return bridge.offTopicMemoryTestInputArray(input: input).then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench off_topic_memory_test_input_array executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(FlutterRustBridgeExampleImpl bridge,
     {required int len}) async {
   final int starts = Timeline.now;
-  return bridge.offTopicMemoryTestOutputZeroCopyBuffer(len: len).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench off_topic_memory_test_output_zero_copy_buffer executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_memory_test_output_zero_copy_buffer');
+  return bridge.offTopicMemoryTestOutputZeroCopyBuffer(len: len).then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench off_topic_memory_test_output_zero_copy_buffer executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl bridge, {required int len}) async {
   final int starts = Timeline.now;
-  return bridge.offTopicMemoryTestOutputVecU8(len: len).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench off_topic_memory_test_output_vec_u8 executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_memory_test_output_vec_u8');
+  return bridge.offTopicMemoryTestOutputVecU8(len: len).then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench off_topic_memory_test_output_vec_u8 executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl bridge,
     {required List<Size> input}) async {
   final int starts = Timeline.now;
-  return bridge.offTopicMemoryTestInputVecOfObject(input: input).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench off_topic_memory_test_input_vec_of_object executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_memory_test_input_vec_of_object');
+  return bridge.offTopicMemoryTestInputVecOfObject(input: input).then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench off_topic_memory_test_input_vec_of_object executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(FlutterRustBridgeExampleImpl bridge,
     {required int len}) async {
   final int starts = Timeline.now;
-  return bridge.offTopicMemoryTestOutputVecOfObject(len: len).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench off_topic_memory_test_output_vec_of_object executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_memory_test_output_vec_of_object');
+  return bridge.offTopicMemoryTestOutputVecOfObject(len: len).then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench off_topic_memory_test_output_vec_of_object executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl bridge,
     {required TreeNode input}) async {
   final int starts = Timeline.now;
-  return bridge.offTopicMemoryTestInputComplexStruct(input: input).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench off_topic_memory_test_input_complex_struct executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_memory_test_input_complex_struct');
+  return bridge.offTopicMemoryTestInputComplexStruct(input: input).then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench off_topic_memory_test_input_complex_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(FlutterRustBridgeExampleImpl bridge,
     {required int len}) async {
   final int starts = Timeline.now;
-  return bridge.offTopicMemoryTestOutputComplexStruct(len: len).then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench off_topic_memory_test_output_complex_struct executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_memory_test_output_complex_struct');
+  return bridge.offTopicMemoryTestOutputComplexStruct(len: len).then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench off_topic_memory_test_output_complex_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bridge) async {
   final int starts = Timeline.now;
-  return bridge.offTopicDeliberatelyReturnError().then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print(
-          'Bench off_topic_deliberately_return_error executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_deliberately_return_error');
+  return bridge.offTopicDeliberatelyReturnError().then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print(
+        'Bench off_topic_deliberately_return_error executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 
 Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge) async {
   final int starts = Timeline.now;
-  return bridge.offTopicDeliberatelyPanic().then(
-    (value) {
-      final int ends = Timeline.now;
-      final int diff = ends - starts;
-      print('Bench off_topic_deliberately_panic executed in $diff microseconds (started at $starts, ended at $ends)');
-      return value;
-    },
-  );
+  final TimelineTask task = TimelineTask();
+  task.start('Bench off_topic_deliberately_panic');
+  return bridge.offTopicDeliberatelyPanic().then((value) => value).whenComplete(() {
+    final int ends = Timeline.now;
+    final int diff = ends - starts;
+    print('Bench off_topic_deliberately_panic executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    task.finish();
+  });
 }
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 
