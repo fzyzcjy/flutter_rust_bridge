@@ -143,25 +143,24 @@ impl DartApiSpec {
                 if x.mode == IrFuncMode::Normal {
                     let output = x.output.dart_api_type();
                     let name = x.name.clone();
-                    let wire = format!(
-                        "wire{}{}",
-                        x.name.chars().next().unwrap().to_uppercase(),
-                        x.name.as_str()[1..].to_string().to_case(Case::Camel)
-                    );
+                    let camel = x.name.clone().to_case(Case::Camel);
+                    let suffix = x.name.clone().to_case(Case::UpperCamel);
+                    let bench = format!("bench{suffix}",);
+                    let wire = format!("wire{suffix}",);
                     let inputs = x
                         .inputs
                         .iter()
                         .map(|x| {
-                            let field_ty = x.ty.dart_param_type();
-                            let field_name = x.name.to_string();
-                            format!("{field_ty} {field_name}")
+                            let field_ty = x.ty.dart_api_type();
+                            let field_name = x.name.to_string().to_case(Case::Camel);
+                            format!("required {field_ty} {field_name}")
                         })
                         .collect::<Vec<_>>()
                         .join(",");
                     let params = x
                         .inputs
                         .iter()
-                        .map(|x| format!("{}: {0}", x.name))
+                        .map(|x| format!("{}: {0}", x.name.to_string().to_case(Case::Camel)))
                         .collect::<Vec<_>>()
                         .join(",");
                     let target = config.dart_api_impl_class_name();
@@ -169,25 +168,37 @@ impl DartApiSpec {
                     return Some(GeneratedBenchFunc {
                         common: GeneratedExtensionFunc {
                             extend: format!("extension {ext} on {target}"),
-                            signature: format!("Future<{output}> {name}({inputs}) async"),
-                            implementation: format!("return {wire}({params});"),
+                            signature: if inputs.is_empty() {
+                                format!("Future<{output}> {bench}() async")
+                            } else {
+                                format!("Future<{output}> {bench}({{{inputs}}}) async")
+                            },
+                            implementation: format!("return {wire}(this,{params});"),
                         },
                         io: GeneratedFunc {
-                            signature: format!(
-                                "Future<{output}> {wire}({target} impl, {inputs}) async"
-                            ),
+                            signature: if inputs.is_empty() {
+                                format!("Future<{output}> {wire}({target} bridge) async")
+                            } else {
+                                format!(
+                                    "Future<{output}> {wire}({target} bridge, {{{inputs}}}) async"
+                                )
+                            },
                             implementation: format!(
                                 "Timeline.startSync(\"Bench {name}\");
-                            final output = await impl.{name}({params});
+                            final output = await bridge.{camel}({params});
                             Timeline.finishSync();
                             return output;"
                             ),
                         },
                         wasm: GeneratedFunc {
-                            signature: format!(
-                                "Future<{output}> {wire}({target} impl, {inputs}) async"
-                            ),
-                            implementation: format!("return await impl.{name}({params});"),
+                            signature: if inputs.is_empty() {
+                                format!("Future<{output}> {wire}({target} bridge) async")
+                            } else {
+                                format!(
+                                    "Future<{output}> {wire}({target} bridge, {{{inputs}}}) async"
+                                )
+                            },
+                            implementation: format!("return await bridge.{camel}({params});"),
                         },
                     });
                 }

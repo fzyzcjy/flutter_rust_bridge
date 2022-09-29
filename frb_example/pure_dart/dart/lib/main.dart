@@ -624,7 +624,7 @@ void main(List<String> args) async {
 
   group('benchmarking feature', () async {
     test('send i64', () async {
-      final output = await api.benchSendI64(42);
+      final output = await api.benchSendI64(value: 42);
       expect(output, 42);
     });
   });
