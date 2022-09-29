@@ -180,10 +180,10 @@ impl DartApiSpec {
                           stopwatch.stop();
                           final int ends = stopwatch.elapsedMicroseconds;
                           final int diff = ends - starts;
-                          print('Bench {name} executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+                          print('Bench {name} executed in $diff microseconds');
                         }});"
-                      );
-                      let wire_implementation_void = format!(
+                    );
+                    let wire_implementation_void = format!(
                         "
                         final stopwatch = Stopwatch();
                         final int starts = stopwatch.elapsedMicroseconds;
@@ -192,7 +192,7 @@ impl DartApiSpec {
                           stopwatch.stop();
                           final int ends = stopwatch.elapsedMicroseconds;
                           final int diff = ends - starts;
-                          print('Bench {name} executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+                          print('Bench {name} executed in $diff microseconds');
                         }});"
                     );
                     return Some(GeneratedBenchFunc {

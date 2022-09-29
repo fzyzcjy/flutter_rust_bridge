@@ -623,22 +623,52 @@ void main(List<String> args) async {
   });
 
   group('benchmarking feature (roundtrip)', () {
+    const int oneThousand = 1000;
+    const int oneHundredThousand = 100000;
     const int oneMillion = 1000000;
     test('i64', () async {
       final output = await api.benchSendI64(value: 42);
       expect(output, 42);
     });
-    test('one million uuids', () async {
-      final uuid = Uuid();
-      final ids = List<UuidValue>.generate(oneMillion, (idx) => uuid.v4obj());
-      final outputs = await api.benchHandleUuids(ids: ids);
-      expect(ids, outputs);
+    group('lot of uuids', () {
+      test('1,000 uuids', () async {
+        final uuid = Uuid();
+        final ids = List<UuidValue>.generate(oneThousand, (idx) => uuid.v4obj());
+        final outputs = await api.benchHandleUuids(ids: ids);
+        expect(ids, outputs);
+      });
+      test('100,000 uuids', () async {
+        final uuid = Uuid();
+        final ids = List<UuidValue>.generate(oneHundredThousand, (idx) => uuid.v4obj());
+        final outputs = await api.benchHandleUuids(ids: ids);
+        expect(ids, outputs);
+      });
+      test('1,000,000 uuids', () async {
+        final uuid = Uuid();
+        final ids = List<UuidValue>.generate(oneMillion, (idx) => uuid.v4obj());
+        final outputs = await api.benchHandleUuids(ids: ids);
+        expect(ids, outputs);
+      });
     });
-    test('one million strings', () async {
-      final String str = 'something cool';
-      final strs = List<String>.generate(oneMillion, (idx) => str + idx.toString());
-      final outputs = await api.benchHandleStringList(names: strs);
-      expect(strs, outputs);
+    group('lot of strings', () {
+      test('1,000 strings', () async {
+        final String str = 'something cool';
+        final strs = List<String>.generate(oneThousand, (idx) => str + idx.toString());
+        final outputs = await api.benchHandleStringList(names: strs);
+        expect(strs, outputs);
+      });
+      test('100,000 thousand strings', () async {
+        final String str = 'something cool';
+        final strs = List<String>.generate(oneHundredThousand, (idx) => str + idx.toString());
+        final outputs = await api.benchHandleStringList(names: strs);
+        expect(strs, outputs);
+      });
+      test('1,000,000 strings', () async {
+        final String str = 'something cool';
+        final strs = List<String>.generate(oneMillion, (idx) => str + idx.toString());
+        final outputs = await api.benchHandleStringList(names: strs);
+        expect(strs, outputs);
+      });
     });
   });
 }
