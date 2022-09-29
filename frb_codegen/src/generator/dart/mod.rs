@@ -171,28 +171,28 @@ impl DartApiSpec {
                     let ext = format!("Bench{wire}Extension");
                     let wire_implementation_return = format!(
                         "
-                        final int starts = Timeline.now;
-                        final TimelineTask task = TimelineTask();
-                        task.start('Bench {name}');
+                        final stopwatch = Stopwatch();
+                        final int starts = stopwatch.elapsedMicroseconds;
+                        stopwatch.start();
                         return bridge.{camel}({params})
                         .then((value) => value)
                         .whenComplete(() {{
-                          final int ends = Timeline.now;
+                          stopwatch.stop();
+                          final int ends = stopwatch.elapsedMicroseconds;
                           final int diff = ends - starts;
                           print('Bench {name} executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-                          task.finish();
                         }});"
-                    );
-                    let wire_implementation_void = format!(
+                      );
+                      let wire_implementation_void = format!(
                         "
-                        final int starts = Timeline.now;
-                        final TimelineTask task = TimelineTask();
-                        task.start('Bench {name}');
+                        final stopwatch = Stopwatch();
+                        final int starts = stopwatch.elapsedMicroseconds;
+                        stopwatch.start();
                         bridge.{camel}({params}).whenComplete(() {{
-                          final int ends = Timeline.now;
+                          stopwatch.stop();
+                          final int ends = stopwatch.elapsedMicroseconds;
                           final int diff = ends - starts;
                           print('Bench {name} executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-                          task.finish();
                         }});"
                     );
                     return Some(GeneratedBenchFunc {
