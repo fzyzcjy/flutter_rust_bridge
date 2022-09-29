@@ -1037,247 +1037,247 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
 Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int a, required int b}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench simple_adder');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.simpleAdder(a: a, b: b).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench simple_adder executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int myI32, required int myI64, required double myF64, required bool myBool}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench primitive_types');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge
       .primitiveTypes(myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool)
       .then((value) => value)
       .whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench primitive_types executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int myU32}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench primitive_u32');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.primitiveU32(myU32: myU32).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench primitive_u32 executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required String s}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_string');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleString(s: s).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_string executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<void> wireHandleReturnUnit(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_return_unit');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   bridge.handleReturnUnit().whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_return_unit executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Uint8List v}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_vec_u8');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleVecU8(v: v).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_vec_u8 executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int n}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_vec_of_primitive');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleVecOfPrimitive(n: n).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_vec_of_primitive executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int n}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_zero_copy_vec_of_primitive');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleZeroCopyVecOfPrimitive(n: n).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print(
         'Bench handle_zero_copy_vec_of_primitive executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required MySize arg, required MySize boxed}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_struct');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleStruct(arg: arg, boxed: boxed).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required NewTypeInt arg}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_newtype');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleNewtype(arg: arg).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_newtype executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<List<MySize>> wireHandleListOfStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required List<MySize> l}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_list_of_struct');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleListOfStruct(l: l).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_list_of_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required List<String> names}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_string_list');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleStringList(names: names).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_string_list executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required MyTreeNode s}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_complex_struct');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleComplexStruct(s: s).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_complex_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int> wireReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench return_err');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.returnErr().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench return_err executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int> wireReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench return_panic');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.returnPanic().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench return_panic executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required double left, required double right}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_optional_return');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleOptionalReturn(left: left, right: right).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_optional_return executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {String? document}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_optional_struct');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleOptionalStruct(document: document).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_optional_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<ExoticOptionals?> wireHandleOptionalIncrement(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {ExoticOptionals? opt}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_optional_increment');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleOptionalIncrement(opt: opt).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_optional_increment executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {double? opt}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_increment_boxed_optional');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleIncrementBoxedOptional(opt: opt).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print(
         'Bench handle_increment_boxed_optional executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
@@ -1289,9 +1289,9 @@ Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockT
     double? f64Box,
     bool? boolbox,
     ExoticOptionals? structbox}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_option_box_arguments');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge
       .handleOptionBoxArguments(
           i8Box: i8Box,
@@ -1303,485 +1303,485 @@ Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockT
           structbox: structbox)
       .then((value) => value)
       .whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_option_box_arguments executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Note note}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench print_note');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.printNote(note: note).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench print_note executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required String input}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_return_enum');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleReturnEnum(input: input).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_return_enum executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required Weekdays weekday}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_enum_parameter');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleEnumParameter(weekday: weekday).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_enum_parameter executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required Customized val}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_customized_struct');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   bridge.handleCustomizedStruct(val: val).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_customized_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required KitchenSink val}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_enum_struct');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleEnumStruct(val: val).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_enum_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required MyStruct myStruct}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench use_imported_struct');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.useImportedStruct(myStruct: myStruct).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench use_imported_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required MyEnum myEnum}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench use_imported_enum');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.useImportedEnum(myEnum: myEnum).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench use_imported_enum executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<ApplicationSettings> wireGetAppSettings(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench get_app_settings');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.getAppSettings().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench get_app_settings executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required ApplicationSettings appSettings}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench is_app_embedded');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.isAppEmbedded(appSettings: appSettings).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench is_app_embedded executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<ApplicationMessage> wireGetMessage(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench get_message');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.getMessage().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench get_message executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int num, required int times}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench repeat_number');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.repeatNumber(num: num, times: times).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench repeat_number executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Sequences> wireRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int seq, required int times}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench repeat_sequence');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.repeatSequence(seq: seq, times: times).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench repeat_sequence executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Numbers nums}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench first_number');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.firstNumber(nums: nums).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench first_number executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Sequences seqs}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench first_sequence');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.firstSequence(seqs: seqs).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench first_sequence executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Uint8List> wireGetArray(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench get_array');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.getArray().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench get_array executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<List<Point>> wireGetComplexArray(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench get_complex_array');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.getComplexArray().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench get_complex_array executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int u}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench get_usize');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.getUsize(u: u).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench get_usize executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required UserId userId}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench next_user_id');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.nextUserId(userId: userId).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench next_user_id executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<void> wireCloseEventListener(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench close_event_listener');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   bridge.closeEventListener().whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench close_event_listener executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required String address, required String payload}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench create_event');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   bridge.createEvent(address: address, payload: payload).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench create_event executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<SumWith> wireGetSumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench get_sum_struct');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.getSumStruct().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench get_sum_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required Measure measure}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench multiply_by_ten');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.multiplyByTen(measure: measure).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench multiply_by_ten executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<OldSimpleStruct> wireCallOldModuleSystem(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench call_old_module_system');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.callOldModuleSystem().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench call_old_module_system executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<NewSimpleStruct> wireCallNewModuleSystem(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench call_new_module_system');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.callNewModuleSystem().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench call_new_module_system executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<BigBuffers> wireHandleBigBuffers(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_big_buffers');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleBigBuffers().then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_big_buffers executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench datetime_utc');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.datetimeUtc(d: d).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench datetime_utc executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench datetime_local');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.datetimeLocal(d: d).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench datetime_local executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench naivedatetime');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.naivedatetime(d: d).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench naivedatetime executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Duration d}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench duration');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.duration(d: d).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench duration executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required FeatureChrono mine}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench how_long_does_it_take');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.howLongDoesItTake(mine: mine).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench how_long_does_it_take executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required UuidValue id}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_uuid');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleUuid(id: id).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_uuid executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required List<UuidValue> ids}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_uuids');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleUuids(ids: ids).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_uuids executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required FeatureUuid ids}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench handle_nested_uuids');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.handleNestedUuids(ids: ids).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench handle_nested_uuids executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int value}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench send_i64');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.sendI64(value: value).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench send_i64 executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<int> wireSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required SumWith that, required int y, required int z}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench sum__method__SumWith');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.sumMethodSumWith(that: that, y: y, z: z).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print('Bench sum__method__SumWith executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required String a}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench new__static_method__ConcatenateWith');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.newStaticMethodConcatenateWith(a: a).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print(
         'Bench new__static_method__ConcatenateWith executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<String> wireConcatenateMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required ConcatenateWith that, required String b}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench concatenate__method__ConcatenateWith');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.concatenateMethodConcatenateWith(that: that, b: b).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print(
         'Bench concatenate__method__ConcatenateWith executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
 
 Future<String> wireConcatenateStaticStaticMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required String a, required String b}) async {
-  final int starts = Timeline.now;
-  final TimelineTask task = TimelineTask();
-  task.start('Bench concatenate_static__static_method__ConcatenateWith');
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b).then((value) => value).whenComplete(() {
-    final int ends = Timeline.now;
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     print(
         'Bench concatenate_static__static_method__ConcatenateWith executed in $diff microsecond(s) (started at $starts, ended at $ends)');
-    task.finish();
   });
 }
