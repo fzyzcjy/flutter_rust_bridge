@@ -920,7 +920,7 @@ Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTest
 }
 
 Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
-    {required String? document}) async {
+    {String? document}) async {
   Timeline.startSync("Bench handle_optional_struct");
   final output = await bridge.handleOptionalStruct(document: document);
   Timeline.finishSync();
@@ -928,7 +928,7 @@ Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTes
 }
 
 Future<ExoticOptionals?> wireHandleOptionalIncrement(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
-    {required ExoticOptionals? opt}) async {
+    {ExoticOptionals? opt}) async {
   Timeline.startSync("Bench handle_optional_increment");
   final output = await bridge.handleOptionalIncrement(opt: opt);
   Timeline.finishSync();
@@ -936,7 +936,7 @@ Future<ExoticOptionals?> wireHandleOptionalIncrement(FlutterRustBridgeExampleSin
 }
 
 Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
-    {required double? opt}) async {
+    {double? opt}) async {
   Timeline.startSync("Bench handle_increment_boxed_optional");
   final output = await bridge.handleIncrementBoxedOptional(opt: opt);
   Timeline.finishSync();
@@ -944,13 +944,13 @@ Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBl
 }
 
 Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
-    {required int? i8Box,
-    required int? u8Box,
-    required int? i32Box,
-    required int? i64Box,
-    required double? f64Box,
-    required bool? boolbox,
-    required ExoticOptionals? structbox}) async {
+    {int? i8Box,
+    int? u8Box,
+    int? i32Box,
+    int? i64Box,
+    double? f64Box,
+    bool? boolbox,
+    ExoticOptionals? structbox}) async {
   Timeline.startSync("Bench handle_option_box_arguments");
   final output = await bridge.handleOptionBoxArguments(
       i8Box: i8Box,

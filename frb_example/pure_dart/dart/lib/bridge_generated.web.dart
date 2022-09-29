@@ -1110,28 +1110,28 @@ Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTest
 }
 
 Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
-    {required String? document}) async {
+    {String? document}) async {
   return await bridge.handleOptionalStruct(document: document);
 }
 
 Future<ExoticOptionals?> wireHandleOptionalIncrement(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
-    {required ExoticOptionals? opt}) async {
+    {ExoticOptionals? opt}) async {
   return await bridge.handleOptionalIncrement(opt: opt);
 }
 
 Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
-    {required double? opt}) async {
+    {double? opt}) async {
   return await bridge.handleIncrementBoxedOptional(opt: opt);
 }
 
 Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
-    {required int? i8Box,
-    required int? u8Box,
-    required int? i32Box,
-    required int? i64Box,
-    required double? f64Box,
-    required bool? boolbox,
-    required ExoticOptionals? structbox}) async {
+    {int? i8Box,
+    int? u8Box,
+    int? i32Box,
+    int? i64Box,
+    double? f64Box,
+    bool? boolbox,
+    ExoticOptionals? structbox}) async {
   return await bridge.handleOptionBoxArguments(
       i8Box: i8Box,
       u8Box: u8Box,

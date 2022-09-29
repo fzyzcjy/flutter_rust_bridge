@@ -2064,32 +2064,32 @@ extension BenchwireHandleOptionalReturnExtension on FlutterRustBridgeExampleSing
 }
 
 extension BenchwireHandleOptionalStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Element?> benchHandleOptionalStruct({required String? document}) async {
+  Future<Element?> benchHandleOptionalStruct({String? document}) async {
     return wireHandleOptionalStruct(this, document: document);
   }
 }
 
 extension BenchwireHandleOptionalIncrementExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<ExoticOptionals?> benchHandleOptionalIncrement({required ExoticOptionals? opt}) async {
+  Future<ExoticOptionals?> benchHandleOptionalIncrement({ExoticOptionals? opt}) async {
     return wireHandleOptionalIncrement(this, opt: opt);
   }
 }
 
 extension BenchwireHandleIncrementBoxedOptionalExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<double> benchHandleIncrementBoxedOptional({required double? opt}) async {
+  Future<double> benchHandleIncrementBoxedOptional({double? opt}) async {
     return wireHandleIncrementBoxedOptional(this, opt: opt);
   }
 }
 
 extension BenchwireHandleOptionBoxArgumentsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<String> benchHandleOptionBoxArguments(
-      {required int? i8Box,
-      required int? u8Box,
-      required int? i32Box,
-      required int? i64Box,
-      required double? f64Box,
-      required bool? boolbox,
-      required ExoticOptionals? structbox}) async {
+      {int? i8Box,
+      int? u8Box,
+      int? i32Box,
+      int? i64Box,
+      double? f64Box,
+      bool? boolbox,
+      ExoticOptionals? structbox}) async {
     return wireHandleOptionBoxArguments(this,
         i8Box: i8Box,
         u8Box: u8Box,
