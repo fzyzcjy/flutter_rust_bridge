@@ -97,6 +97,7 @@ pub(crate) struct DartApiSpec {
 }
 
 impl DartApiSpec {
+    #[allow(clippy::too_many_lines)]
     fn from(ir_file: &IrFile, config: &Opts, extra_funcs: &[IrFuncDisplay]) -> Self {
         let dart_api_class_name = config.dart_api_class_name();
         let dart_wire_class_name = config.dart_wire_class_name();
@@ -186,12 +187,24 @@ impl DartApiSpec {
                                     "Future<{output}> {wire}({target} bridge, {{{inputs}}}) async"
                                 )
                             },
-                            implementation: format!(
-                                "Timeline.startSync(\"Bench {name}\");
-                            final output = await bridge.{camel}({params});
-                            Timeline.finishSync();
-                            return output;"
-                            ),
+                            implementation: if output != "void" {
+                                format!(
+                                    "final int starts = Timeline.now;
+                                final output = await bridge.{camel}({params});
+                                final int ends = Timeline.now;
+                                final int diff = ends - starts;
+                                print('Bench {name} executed in $diff microseconds');
+                                return output;"
+                                )
+                            } else {
+                                format!(
+                                    "final int starts = Timeline.now;
+                                  await bridge.{camel}({params});
+                                  final int ends = Timeline.now;
+                                  final int diff = ends - starts;
+                                  print('Bench {name} executed in $diff microseconds');"
+                                )
+                            },
                         },
                         wasm: GeneratedFunc {
                             signature: if inputs.is_empty() {
@@ -201,7 +214,24 @@ impl DartApiSpec {
                                     "Future<{output}> {wire}({target} bridge, {{{inputs}}}) async"
                                 )
                             },
-                            implementation: format!("return await bridge.{camel}({params});"),
+                            implementation: if output != "void" {
+                                format!(
+                                    "final int starts = Timeline.now;
+                                  final output = await bridge.{camel}({params});
+                                  final int ends = Timeline.now;
+                                  final int diff = ends - starts;
+                                  print('Bench {name} executed in $diff microseconds');
+                                  return output;"
+                                )
+                            } else {
+                                format!(
+                                    "final int starts = Timeline.now;
+                                  await bridge.{camel}({params});
+                                  final int ends = Timeline.now;
+                                  final int diff = ends - starts;
+                                  print('Bench {name} executed in $diff microseconds');"
+                                )
+                            },
                         },
                     });
                 }
