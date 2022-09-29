@@ -98,92 +98,116 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 
 Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge,
     {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
-  Timeline.startSync("Bench draw_mandelbrot");
+  final int starts = Timeline.now;
   final output =
       await bridge.drawMandelbrot(imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench draw_mandelbrot executed in $diff microseconds');
   return output;
 }
 
 Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl bridge, {required TreeNode root}) async {
-  Timeline.startSync("Bench passing_complex_structs");
+  final int starts = Timeline.now;
   final output = await bridge.passingComplexStructs(root: root);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench passing_complex_structs executed in $diff microseconds');
   return output;
 }
 
 Future<BoxedPoint> wireReturningStructsWithBoxedFields(FlutterRustBridgeExampleImpl bridge) async {
-  Timeline.startSync("Bench returning_structs_with_boxed_fields");
+  final int starts = Timeline.now;
   final output = await bridge.returningStructsWithBoxedFields();
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench returning_structs_with_boxed_fields executed in $diff microseconds');
   return output;
 }
 
 Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge, {required Uint8List input}) async {
-  Timeline.startSync("Bench off_topic_memory_test_input_array");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicMemoryTestInputArray(input: input);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_memory_test_input_array executed in $diff microseconds');
   return output;
 }
 
 Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(FlutterRustBridgeExampleImpl bridge,
     {required int len}) async {
-  Timeline.startSync("Bench off_topic_memory_test_output_zero_copy_buffer");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicMemoryTestOutputZeroCopyBuffer(len: len);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_memory_test_output_zero_copy_buffer executed in $diff microseconds');
   return output;
 }
 
 Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl bridge, {required int len}) async {
-  Timeline.startSync("Bench off_topic_memory_test_output_vec_u8");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicMemoryTestOutputVecU8(len: len);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_memory_test_output_vec_u8 executed in $diff microseconds');
   return output;
 }
 
 Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl bridge,
     {required List<Size> input}) async {
-  Timeline.startSync("Bench off_topic_memory_test_input_vec_of_object");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicMemoryTestInputVecOfObject(input: input);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_memory_test_input_vec_of_object executed in $diff microseconds');
   return output;
 }
 
 Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(FlutterRustBridgeExampleImpl bridge,
     {required int len}) async {
-  Timeline.startSync("Bench off_topic_memory_test_output_vec_of_object");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicMemoryTestOutputVecOfObject(len: len);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_memory_test_output_vec_of_object executed in $diff microseconds');
   return output;
 }
 
 Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl bridge,
     {required TreeNode input}) async {
-  Timeline.startSync("Bench off_topic_memory_test_input_complex_struct");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicMemoryTestInputComplexStruct(input: input);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_memory_test_input_complex_struct executed in $diff microseconds');
   return output;
 }
 
 Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(FlutterRustBridgeExampleImpl bridge,
     {required int len}) async {
-  Timeline.startSync("Bench off_topic_memory_test_output_complex_struct");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicMemoryTestOutputComplexStruct(len: len);
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_memory_test_output_complex_struct executed in $diff microseconds');
   return output;
 }
 
 Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bridge) async {
-  Timeline.startSync("Bench off_topic_deliberately_return_error");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicDeliberatelyReturnError();
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_deliberately_return_error executed in $diff microseconds');
   return output;
 }
 
 Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge) async {
-  Timeline.startSync("Bench off_topic_deliberately_panic");
+  final int starts = Timeline.now;
   final output = await bridge.offTopicDeliberatelyPanic();
-  Timeline.finishSync();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench off_topic_deliberately_panic executed in $diff microseconds');
   return output;
 }
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names

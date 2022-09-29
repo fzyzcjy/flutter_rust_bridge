@@ -1037,91 +1037,185 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
 Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int a, required int b}) async {
-  return await bridge.simpleAdder(a: a, b: b);
+  final int starts = Timeline.now;
+  final output = await bridge.simpleAdder(a: a, b: b);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench simple_adder executed in $diff microseconds');
+  return output;
 }
 
 Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int myI32, required int myI64, required double myF64, required bool myBool}) async {
-  return await bridge.primitiveTypes(myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
+  final int starts = Timeline.now;
+  final output = await bridge.primitiveTypes(myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench primitive_types executed in $diff microseconds');
+  return output;
 }
 
 Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int myU32}) async {
-  return await bridge.primitiveU32(myU32: myU32);
+  final int starts = Timeline.now;
+  final output = await bridge.primitiveU32(myU32: myU32);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench primitive_u32 executed in $diff microseconds');
+  return output;
 }
 
 Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required String s}) async {
-  return await bridge.handleString(s: s);
+  final int starts = Timeline.now;
+  final output = await bridge.handleString(s: s);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_string executed in $diff microseconds');
+  return output;
 }
 
 Future<void> wireHandleReturnUnit(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.handleReturnUnit();
+  final int starts = Timeline.now;
+  await bridge.handleReturnUnit();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_return_unit executed in $diff microseconds');
 }
 
 Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Uint8List v}) async {
-  return await bridge.handleVecU8(v: v);
+  final int starts = Timeline.now;
+  final output = await bridge.handleVecU8(v: v);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_vec_u8 executed in $diff microseconds');
+  return output;
 }
 
 Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int n}) async {
-  return await bridge.handleVecOfPrimitive(n: n);
+  final int starts = Timeline.now;
+  final output = await bridge.handleVecOfPrimitive(n: n);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_vec_of_primitive executed in $diff microseconds');
+  return output;
 }
 
 Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int n}) async {
-  return await bridge.handleZeroCopyVecOfPrimitive(n: n);
+  final int starts = Timeline.now;
+  final output = await bridge.handleZeroCopyVecOfPrimitive(n: n);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_zero_copy_vec_of_primitive executed in $diff microseconds');
+  return output;
 }
 
 Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required MySize arg, required MySize boxed}) async {
-  return await bridge.handleStruct(arg: arg, boxed: boxed);
+  final int starts = Timeline.now;
+  final output = await bridge.handleStruct(arg: arg, boxed: boxed);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_struct executed in $diff microseconds');
+  return output;
 }
 
 Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required NewTypeInt arg}) async {
-  return await bridge.handleNewtype(arg: arg);
+  final int starts = Timeline.now;
+  final output = await bridge.handleNewtype(arg: arg);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_newtype executed in $diff microseconds');
+  return output;
 }
 
 Future<List<MySize>> wireHandleListOfStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required List<MySize> l}) async {
-  return await bridge.handleListOfStruct(l: l);
+  final int starts = Timeline.now;
+  final output = await bridge.handleListOfStruct(l: l);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_list_of_struct executed in $diff microseconds');
+  return output;
 }
 
 Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required List<String> names}) async {
-  return await bridge.handleStringList(names: names);
+  final int starts = Timeline.now;
+  final output = await bridge.handleStringList(names: names);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_string_list executed in $diff microseconds');
+  return output;
 }
 
 Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required MyTreeNode s}) async {
-  return await bridge.handleComplexStruct(s: s);
+  final int starts = Timeline.now;
+  final output = await bridge.handleComplexStruct(s: s);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_complex_struct executed in $diff microseconds');
+  return output;
 }
 
 Future<int> wireReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.returnErr();
+  final int starts = Timeline.now;
+  final output = await bridge.returnErr();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench return_err executed in $diff microseconds');
+  return output;
 }
 
 Future<int> wireReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.returnPanic();
+  final int starts = Timeline.now;
+  final output = await bridge.returnPanic();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench return_panic executed in $diff microseconds');
+  return output;
 }
 
 Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required double left, required double right}) async {
-  return await bridge.handleOptionalReturn(left: left, right: right);
+  final int starts = Timeline.now;
+  final output = await bridge.handleOptionalReturn(left: left, right: right);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_optional_return executed in $diff microseconds');
+  return output;
 }
 
 Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {String? document}) async {
-  return await bridge.handleOptionalStruct(document: document);
+  final int starts = Timeline.now;
+  final output = await bridge.handleOptionalStruct(document: document);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_optional_struct executed in $diff microseconds');
+  return output;
 }
 
 Future<ExoticOptionals?> wireHandleOptionalIncrement(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {ExoticOptionals? opt}) async {
-  return await bridge.handleOptionalIncrement(opt: opt);
+  final int starts = Timeline.now;
+  final output = await bridge.handleOptionalIncrement(opt: opt);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_optional_increment executed in $diff microseconds');
+  return output;
 }
 
 Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {double? opt}) async {
-  return await bridge.handleIncrementBoxedOptional(opt: opt);
+  final int starts = Timeline.now;
+  final output = await bridge.handleIncrementBoxedOptional(opt: opt);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_increment_boxed_optional executed in $diff microseconds');
+  return output;
 }
 
 Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
@@ -1132,7 +1226,8 @@ Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockT
     double? f64Box,
     bool? boolbox,
     ExoticOptionals? structbox}) async {
-  return await bridge.handleOptionBoxArguments(
+  final int starts = Timeline.now;
+  final output = await bridge.handleOptionBoxArguments(
       i8Box: i8Box,
       u8Box: u8Box,
       i32Box: i32Box,
@@ -1140,173 +1235,364 @@ Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockT
       f64Box: f64Box,
       boolbox: boolbox,
       structbox: structbox);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_option_box_arguments executed in $diff microseconds');
+  return output;
 }
 
 Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Note note}) async {
-  return await bridge.printNote(note: note);
+  final int starts = Timeline.now;
+  final output = await bridge.printNote(note: note);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench print_note executed in $diff microseconds');
+  return output;
 }
 
 Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required String input}) async {
-  return await bridge.handleReturnEnum(input: input);
+  final int starts = Timeline.now;
+  final output = await bridge.handleReturnEnum(input: input);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_return_enum executed in $diff microseconds');
+  return output;
 }
 
 Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required Weekdays weekday}) async {
-  return await bridge.handleEnumParameter(weekday: weekday);
+  final int starts = Timeline.now;
+  final output = await bridge.handleEnumParameter(weekday: weekday);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_enum_parameter executed in $diff microseconds');
+  return output;
 }
 
 Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required Customized val}) async {
-  return await bridge.handleCustomizedStruct(val: val);
+  final int starts = Timeline.now;
+  await bridge.handleCustomizedStruct(val: val);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_customized_struct executed in $diff microseconds');
 }
 
 Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required KitchenSink val}) async {
-  return await bridge.handleEnumStruct(val: val);
+  final int starts = Timeline.now;
+  final output = await bridge.handleEnumStruct(val: val);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_enum_struct executed in $diff microseconds');
+  return output;
 }
 
 Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required MyStruct myStruct}) async {
-  return await bridge.useImportedStruct(myStruct: myStruct);
+  final int starts = Timeline.now;
+  final output = await bridge.useImportedStruct(myStruct: myStruct);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench use_imported_struct executed in $diff microseconds');
+  return output;
 }
 
 Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required MyEnum myEnum}) async {
-  return await bridge.useImportedEnum(myEnum: myEnum);
+  final int starts = Timeline.now;
+  final output = await bridge.useImportedEnum(myEnum: myEnum);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench use_imported_enum executed in $diff microseconds');
+  return output;
 }
 
 Future<ApplicationSettings> wireGetAppSettings(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.getAppSettings();
+  final int starts = Timeline.now;
+  final output = await bridge.getAppSettings();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench get_app_settings executed in $diff microseconds');
+  return output;
 }
 
 Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required ApplicationSettings appSettings}) async {
-  return await bridge.isAppEmbedded(appSettings: appSettings);
+  final int starts = Timeline.now;
+  final output = await bridge.isAppEmbedded(appSettings: appSettings);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench is_app_embedded executed in $diff microseconds');
+  return output;
 }
 
 Future<ApplicationMessage> wireGetMessage(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.getMessage();
+  final int starts = Timeline.now;
+  final output = await bridge.getMessage();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench get_message executed in $diff microseconds');
+  return output;
 }
 
 Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int num, required int times}) async {
-  return await bridge.repeatNumber(num: num, times: times);
+  final int starts = Timeline.now;
+  final output = await bridge.repeatNumber(num: num, times: times);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench repeat_number executed in $diff microseconds');
+  return output;
 }
 
 Future<Sequences> wireRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required int seq, required int times}) async {
-  return await bridge.repeatSequence(seq: seq, times: times);
+  final int starts = Timeline.now;
+  final output = await bridge.repeatSequence(seq: seq, times: times);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench repeat_sequence executed in $diff microseconds');
+  return output;
 }
 
 Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Numbers nums}) async {
-  return await bridge.firstNumber(nums: nums);
+  final int starts = Timeline.now;
+  final output = await bridge.firstNumber(nums: nums);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench first_number executed in $diff microseconds');
+  return output;
 }
 
 Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Sequences seqs}) async {
-  return await bridge.firstSequence(seqs: seqs);
+  final int starts = Timeline.now;
+  final output = await bridge.firstSequence(seqs: seqs);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench first_sequence executed in $diff microseconds');
+  return output;
 }
 
 Future<Uint8List> wireGetArray(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.getArray();
+  final int starts = Timeline.now;
+  final output = await bridge.getArray();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench get_array executed in $diff microseconds');
+  return output;
 }
 
 Future<List<Point>> wireGetComplexArray(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.getComplexArray();
+  final int starts = Timeline.now;
+  final output = await bridge.getComplexArray();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench get_complex_array executed in $diff microseconds');
+  return output;
 }
 
 Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int u}) async {
-  return await bridge.getUsize(u: u);
+  final int starts = Timeline.now;
+  final output = await bridge.getUsize(u: u);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench get_usize executed in $diff microseconds');
+  return output;
 }
 
 Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required UserId userId}) async {
-  return await bridge.nextUserId(userId: userId);
+  final int starts = Timeline.now;
+  final output = await bridge.nextUserId(userId: userId);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench next_user_id executed in $diff microseconds');
+  return output;
 }
 
 Future<void> wireCloseEventListener(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.closeEventListener();
+  final int starts = Timeline.now;
+  await bridge.closeEventListener();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench close_event_listener executed in $diff microseconds');
 }
 
 Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required String address, required String payload}) async {
-  return await bridge.createEvent(address: address, payload: payload);
+  final int starts = Timeline.now;
+  await bridge.createEvent(address: address, payload: payload);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench create_event executed in $diff microseconds');
 }
 
 Future<SumWith> wireGetSumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.getSumStruct();
+  final int starts = Timeline.now;
+  final output = await bridge.getSumStruct();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench get_sum_struct executed in $diff microseconds');
+  return output;
 }
 
 Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required Measure measure}) async {
-  return await bridge.multiplyByTen(measure: measure);
+  final int starts = Timeline.now;
+  final output = await bridge.multiplyByTen(measure: measure);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench multiply_by_ten executed in $diff microseconds');
+  return output;
 }
 
 Future<OldSimpleStruct> wireCallOldModuleSystem(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.callOldModuleSystem();
+  final int starts = Timeline.now;
+  final output = await bridge.callOldModuleSystem();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench call_old_module_system executed in $diff microseconds');
+  return output;
 }
 
 Future<NewSimpleStruct> wireCallNewModuleSystem(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.callNewModuleSystem();
+  final int starts = Timeline.now;
+  final output = await bridge.callNewModuleSystem();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench call_new_module_system executed in $diff microseconds');
+  return output;
 }
 
 Future<BigBuffers> wireHandleBigBuffers(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
-  return await bridge.handleBigBuffers();
+  final int starts = Timeline.now;
+  final output = await bridge.handleBigBuffers();
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_big_buffers executed in $diff microseconds');
+  return output;
 }
 
 Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
-  return await bridge.datetimeUtc(d: d);
+  final int starts = Timeline.now;
+  final output = await bridge.datetimeUtc(d: d);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench datetime_utc executed in $diff microseconds');
+  return output;
 }
 
 Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
-  return await bridge.datetimeLocal(d: d);
+  final int starts = Timeline.now;
+  final output = await bridge.datetimeLocal(d: d);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench datetime_local executed in $diff microseconds');
+  return output;
 }
 
 Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
-  return await bridge.naivedatetime(d: d);
+  final int starts = Timeline.now;
+  final output = await bridge.naivedatetime(d: d);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench naivedatetime executed in $diff microseconds');
+  return output;
 }
 
 Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Duration d}) async {
-  return await bridge.duration(d: d);
+  final int starts = Timeline.now;
+  final output = await bridge.duration(d: d);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench duration executed in $diff microseconds');
+  return output;
 }
 
 Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required FeatureChrono mine}) async {
-  return await bridge.howLongDoesItTake(mine: mine);
+  final int starts = Timeline.now;
+  final output = await bridge.howLongDoesItTake(mine: mine);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench how_long_does_it_take executed in $diff microseconds');
+  return output;
 }
 
 Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required UuidValue id}) async {
-  return await bridge.handleUuid(id: id);
+  final int starts = Timeline.now;
+  final output = await bridge.handleUuid(id: id);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_uuid executed in $diff microseconds');
+  return output;
 }
 
 Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required List<UuidValue> ids}) async {
-  return await bridge.handleUuids(ids: ids);
+  final int starts = Timeline.now;
+  final output = await bridge.handleUuids(ids: ids);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_uuids executed in $diff microseconds');
+  return output;
 }
 
 Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required FeatureUuid ids}) async {
-  return await bridge.handleNestedUuids(ids: ids);
+  final int starts = Timeline.now;
+  final output = await bridge.handleNestedUuids(ids: ids);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench handle_nested_uuids executed in $diff microseconds');
+  return output;
 }
 
 Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int value}) async {
-  return await bridge.sendI64(value: value);
+  final int starts = Timeline.now;
+  final output = await bridge.sendI64(value: value);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench send_i64 executed in $diff microseconds');
+  return output;
 }
 
 Future<int> wireSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required SumWith that, required int y, required int z}) async {
-  return await bridge.sumMethodSumWith(that: that, y: y, z: z);
+  final int starts = Timeline.now;
+  final output = await bridge.sumMethodSumWith(that: that, y: y, z: z);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench sum__method__SumWith executed in $diff microseconds');
+  return output;
 }
 
 Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required String a}) async {
-  return await bridge.newStaticMethodConcatenateWith(a: a);
+  final int starts = Timeline.now;
+  final output = await bridge.newStaticMethodConcatenateWith(a: a);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench new__static_method__ConcatenateWith executed in $diff microseconds');
+  return output;
 }
 
 Future<String> wireConcatenateMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required ConcatenateWith that, required String b}) async {
-  return await bridge.concatenateMethodConcatenateWith(that: that, b: b);
+  final int starts = Timeline.now;
+  final output = await bridge.concatenateMethodConcatenateWith(that: that, b: b);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench concatenate__method__ConcatenateWith executed in $diff microseconds');
+  return output;
 }
 
 Future<String> wireConcatenateStaticStaticMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     {required String a, required String b}) async {
-  return await bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b);
+  final int starts = Timeline.now;
+  final output = await bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b);
+  final int ends = Timeline.now;
+  final int diff = ends - starts;
+  print('Bench concatenate_static__static_method__ConcatenateWith executed in $diff microseconds');
+  return output;
 }
