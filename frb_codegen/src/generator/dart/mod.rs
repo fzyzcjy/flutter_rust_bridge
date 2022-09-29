@@ -153,6 +153,9 @@ impl DartApiSpec {
                         .map(|x| {
                             let field_ty = x.ty.dart_api_type();
                             let field_name = x.name.to_string().to_case(Case::Camel);
+                            if x.ty.is_optional() {
+                                return format!("{field_ty} {field_name}");
+                            }
                             format!("required {field_ty} {field_name}")
                         })
                         .collect::<Vec<_>>()
