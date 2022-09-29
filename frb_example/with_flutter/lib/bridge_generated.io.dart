@@ -96,94 +96,93 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 }
 
-Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl impl, dynamic image_size, dynamic zoom_point,
-    dynamic scale, dynamic num_threads) async {
+Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge,
+    {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
   Timeline.startSync("Bench draw_mandelbrot");
-  final output = await impl.draw_mandelbrot(
-      image_size: image_size, zoom_point: zoom_point, scale: scale, num_threads: num_threads);
+  final output =
+      await bridge.drawMandelbrot(imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads);
   Timeline.finishSync();
   return output;
 }
 
-Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl impl, dynamic root) async {
+Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl bridge, {required TreeNode root}) async {
   Timeline.startSync("Bench passing_complex_structs");
-  final output = await impl.passing_complex_structs(root: root);
+  final output = await bridge.passingComplexStructs(root: root);
   Timeline.finishSync();
   return output;
 }
 
-Future<BoxedPoint> wireReturningStructsWithBoxedFields(
-  FlutterRustBridgeExampleImpl impl,
-) async {
+Future<BoxedPoint> wireReturningStructsWithBoxedFields(FlutterRustBridgeExampleImpl bridge) async {
   Timeline.startSync("Bench returning_structs_with_boxed_fields");
-  final output = await impl.returning_structs_with_boxed_fields();
+  final output = await bridge.returningStructsWithBoxedFields();
   Timeline.finishSync();
   return output;
 }
 
-Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl impl, dynamic input) async {
+Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge, {required Uint8List input}) async {
   Timeline.startSync("Bench off_topic_memory_test_input_array");
-  final output = await impl.off_topic_memory_test_input_array(input: input);
+  final output = await bridge.offTopicMemoryTestInputArray(input: input);
   Timeline.finishSync();
   return output;
 }
 
-Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(FlutterRustBridgeExampleImpl impl, dynamic len) async {
+Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(FlutterRustBridgeExampleImpl bridge,
+    {required int len}) async {
   Timeline.startSync("Bench off_topic_memory_test_output_zero_copy_buffer");
-  final output = await impl.off_topic_memory_test_output_zero_copy_buffer(len: len);
+  final output = await bridge.offTopicMemoryTestOutputZeroCopyBuffer(len: len);
   Timeline.finishSync();
   return output;
 }
 
-Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl impl, dynamic len) async {
+Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl bridge, {required int len}) async {
   Timeline.startSync("Bench off_topic_memory_test_output_vec_u8");
-  final output = await impl.off_topic_memory_test_output_vec_u8(len: len);
+  final output = await bridge.offTopicMemoryTestOutputVecU8(len: len);
   Timeline.finishSync();
   return output;
 }
 
-Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl impl, dynamic input) async {
+Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl bridge,
+    {required List<Size> input}) async {
   Timeline.startSync("Bench off_topic_memory_test_input_vec_of_object");
-  final output = await impl.off_topic_memory_test_input_vec_of_object(input: input);
+  final output = await bridge.offTopicMemoryTestInputVecOfObject(input: input);
   Timeline.finishSync();
   return output;
 }
 
-Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(FlutterRustBridgeExampleImpl impl, dynamic len) async {
+Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(FlutterRustBridgeExampleImpl bridge,
+    {required int len}) async {
   Timeline.startSync("Bench off_topic_memory_test_output_vec_of_object");
-  final output = await impl.off_topic_memory_test_output_vec_of_object(len: len);
+  final output = await bridge.offTopicMemoryTestOutputVecOfObject(len: len);
   Timeline.finishSync();
   return output;
 }
 
-Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl impl, dynamic input) async {
+Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl bridge,
+    {required TreeNode input}) async {
   Timeline.startSync("Bench off_topic_memory_test_input_complex_struct");
-  final output = await impl.off_topic_memory_test_input_complex_struct(input: input);
+  final output = await bridge.offTopicMemoryTestInputComplexStruct(input: input);
   Timeline.finishSync();
   return output;
 }
 
-Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(FlutterRustBridgeExampleImpl impl, dynamic len) async {
+Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(FlutterRustBridgeExampleImpl bridge,
+    {required int len}) async {
   Timeline.startSync("Bench off_topic_memory_test_output_complex_struct");
-  final output = await impl.off_topic_memory_test_output_complex_struct(len: len);
+  final output = await bridge.offTopicMemoryTestOutputComplexStruct(len: len);
   Timeline.finishSync();
   return output;
 }
 
-Future<int> wireOffTopicDeliberatelyReturnError(
-  FlutterRustBridgeExampleImpl impl,
-) async {
+Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bridge) async {
   Timeline.startSync("Bench off_topic_deliberately_return_error");
-  final output = await impl.off_topic_deliberately_return_error();
+  final output = await bridge.offTopicDeliberatelyReturnError();
   Timeline.finishSync();
   return output;
 }
 
-Future<int> wireOffTopicDeliberatelyPanic(
-  FlutterRustBridgeExampleImpl impl,
-) async {
+Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge) async {
   Timeline.startSync("Bench off_topic_deliberately_panic");
-  final output = await impl.off_topic_deliberately_panic();
+  final output = await bridge.offTopicDeliberatelyPanic();
   Timeline.finishSync();
   return output;
 }

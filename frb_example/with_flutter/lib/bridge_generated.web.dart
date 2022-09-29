@@ -149,58 +149,56 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
 }
 
-Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl impl, dynamic image_size, dynamic zoom_point,
-    dynamic scale, dynamic num_threads) async {
-  return await impl.draw_mandelbrot(
-      image_size: image_size, zoom_point: zoom_point, scale: scale, num_threads: num_threads);
+Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge,
+    {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
+  return await bridge.drawMandelbrot(imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads);
 }
 
-Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl impl, dynamic root) async {
-  return await impl.passing_complex_structs(root: root);
+Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl bridge, {required TreeNode root}) async {
+  return await bridge.passingComplexStructs(root: root);
 }
 
-Future<BoxedPoint> wireReturningStructsWithBoxedFields(
-  FlutterRustBridgeExampleImpl impl,
-) async {
-  return await impl.returning_structs_with_boxed_fields();
+Future<BoxedPoint> wireReturningStructsWithBoxedFields(FlutterRustBridgeExampleImpl bridge) async {
+  return await bridge.returningStructsWithBoxedFields();
 }
 
-Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl impl, dynamic input) async {
-  return await impl.off_topic_memory_test_input_array(input: input);
+Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge, {required Uint8List input}) async {
+  return await bridge.offTopicMemoryTestInputArray(input: input);
 }
 
-Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(FlutterRustBridgeExampleImpl impl, dynamic len) async {
-  return await impl.off_topic_memory_test_output_zero_copy_buffer(len: len);
+Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(FlutterRustBridgeExampleImpl bridge,
+    {required int len}) async {
+  return await bridge.offTopicMemoryTestOutputZeroCopyBuffer(len: len);
 }
 
-Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl impl, dynamic len) async {
-  return await impl.off_topic_memory_test_output_vec_u8(len: len);
+Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl bridge, {required int len}) async {
+  return await bridge.offTopicMemoryTestOutputVecU8(len: len);
 }
 
-Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl impl, dynamic input) async {
-  return await impl.off_topic_memory_test_input_vec_of_object(input: input);
+Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl bridge,
+    {required List<Size> input}) async {
+  return await bridge.offTopicMemoryTestInputVecOfObject(input: input);
 }
 
-Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(FlutterRustBridgeExampleImpl impl, dynamic len) async {
-  return await impl.off_topic_memory_test_output_vec_of_object(len: len);
+Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(FlutterRustBridgeExampleImpl bridge,
+    {required int len}) async {
+  return await bridge.offTopicMemoryTestOutputVecOfObject(len: len);
 }
 
-Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl impl, dynamic input) async {
-  return await impl.off_topic_memory_test_input_complex_struct(input: input);
+Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl bridge,
+    {required TreeNode input}) async {
+  return await bridge.offTopicMemoryTestInputComplexStruct(input: input);
 }
 
-Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(FlutterRustBridgeExampleImpl impl, dynamic len) async {
-  return await impl.off_topic_memory_test_output_complex_struct(len: len);
+Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(FlutterRustBridgeExampleImpl bridge,
+    {required int len}) async {
+  return await bridge.offTopicMemoryTestOutputComplexStruct(len: len);
 }
 
-Future<int> wireOffTopicDeliberatelyReturnError(
-  FlutterRustBridgeExampleImpl impl,
-) async {
-  return await impl.off_topic_deliberately_return_error();
+Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bridge) async {
+  return await bridge.offTopicDeliberatelyReturnError();
 }
 
-Future<int> wireOffTopicDeliberatelyPanic(
-  FlutterRustBridgeExampleImpl impl,
-) async {
-  return await impl.off_topic_deliberately_panic();
+Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge) async {
+  return await bridge.offTopicDeliberatelyPanic();
 }
