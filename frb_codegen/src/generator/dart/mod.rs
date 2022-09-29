@@ -169,6 +169,27 @@ impl DartApiSpec {
                         .join(",");
                     let target = config.dart_api_impl_class_name();
                     let ext = format!("Bench{wire}Extension");
+                    let wire_implementation_return = format!(
+                        "
+                    final int starts = Timeline.now;
+                    return bridge.{camel}({params}).then(
+                      (value) {{
+                        final int ends = Timeline.now;
+                        final int diff = ends - starts;
+                        print('Bench {name} executed in $diff microseconds (started at $starts, ended at $ends)');
+                        return value;
+                      }},
+                    );"
+                    );
+                    let wire_implementation_void = format!(
+                        "
+                    final int starts = Timeline.now;
+                    bridge.{camel}({params}).then((_) {{
+                      final int ends = Timeline.now;
+                      final int diff = ends - starts;
+                      print('Bench {name} executed in $diff microseconds (started at $starts, ended at $ends)');
+                    }});"
+                    );
                     return Some(GeneratedBenchFunc {
                         common: GeneratedExtensionFunc {
                             extend: format!("extension {ext} on {target}"),
@@ -188,22 +209,9 @@ impl DartApiSpec {
                                 )
                             },
                             implementation: if output != "void" {
-                                format!(
-                                    "final int starts = Timeline.now;
-                                final output = await bridge.{camel}({params});
-                                final int ends = Timeline.now;
-                                final int diff = ends - starts;
-                                print('Bench {name} executed in $diff microseconds');
-                                return output;"
-                                )
+                                wire_implementation_return.clone()
                             } else {
-                                format!(
-                                    "final int starts = Timeline.now;
-                                  await bridge.{camel}({params});
-                                  final int ends = Timeline.now;
-                                  final int diff = ends - starts;
-                                  print('Bench {name} executed in $diff microseconds');"
-                                )
+                                wire_implementation_void.clone()
                             },
                         },
                         wasm: GeneratedFunc {
@@ -215,22 +223,9 @@ impl DartApiSpec {
                                 )
                             },
                             implementation: if output != "void" {
-                                format!(
-                                    "final int starts = Timeline.now;
-                                  final output = await bridge.{camel}({params});
-                                  final int ends = Timeline.now;
-                                  final int diff = ends - starts;
-                                  print('Bench {name} executed in $diff microseconds');
-                                  return output;"
-                                )
+                                wire_implementation_return
                             } else {
-                                format!(
-                                    "final int starts = Timeline.now;
-                                  await bridge.{camel}({params});
-                                  final int ends = Timeline.now;
-                                  final int diff = ends - starts;
-                                  print('Bench {name} executed in $diff microseconds');"
-                                )
+                                wire_implementation_void
                             },
                         },
                     });
