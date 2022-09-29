@@ -1,3 +1,4 @@
+mod bench;
 mod func;
 mod ty;
 mod ty_boxed;
@@ -40,6 +41,8 @@ use crate::target::Target::*;
 use crate::target::{Acc, Target};
 use crate::{ir::*, Opts};
 
+use self::bench::push_benchmark_funcs;
+
 pub struct Output {
     pub file_prelude: DartBasicCode,
     pub decl_code: DartBasicCode,
@@ -81,7 +84,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
     }
 }
 
-struct DartApiSpec {
+pub(crate) struct DartApiSpec {
     dart_funcs: Vec<GeneratedApiFunc>,
     dart_structs: Vec<String>,
     dart_api2wire_funcs: Acc<String>,
@@ -90,6 +93,7 @@ struct DartApiSpec {
     dart_wasm_funcs: Vec<String>,
     dart_wasm_module: Option<String>,
     needs_freezed: bool,
+    dart_bench_funcs: Vec<GeneratedBenchFunc>,
 }
 
 impl DartApiSpec {
@@ -132,6 +136,64 @@ impl DartApiSpec {
             .iter()
             .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
             .collect::<Vec<_>>();
+        let dart_bench_funcs = ir_file
+            .funcs
+            .iter()
+            .filter_map(|x| {
+                if x.mode == IrFuncMode::Normal {
+                    let output = x.output.dart_api_type();
+                    let name = x.name.clone();
+                    let wire = format!(
+                        "wire{}{}",
+                        x.name.chars().next().unwrap().to_uppercase(),
+                        x.name.as_str()[1..].to_string().to_case(Case::Camel)
+                    );
+                    let inputs = x
+                        .inputs
+                        .iter()
+                        .map(|x| {
+                            let field_ty = x.ty.dart_param_type();
+                            let field_name = x.name.to_string();
+                            format!("{field_ty} {field_name}")
+                        })
+                        .collect::<Vec<_>>()
+                        .join(",");
+                    let params = x
+                        .inputs
+                        .iter()
+                        .map(|x| format!("{}: {0}", x.name))
+                        .collect::<Vec<_>>()
+                        .join(",");
+                    let target = config.dart_api_impl_class_name();
+                    let ext = format!("Bench{wire}Extension");
+                    return Some(GeneratedBenchFunc {
+                        common: GeneratedExtensionFunc {
+                            extend: format!("extension {ext} on {target}"),
+                            signature: format!("Future<{output}> {name}({inputs}) async"),
+                            implementation: format!("return {wire}({params});"),
+                        },
+                        io: GeneratedFunc {
+                            signature: format!(
+                                "Future<{output}> {wire}({target} impl, {inputs}) async"
+                            ),
+                            implementation: format!(
+                                "Timeline.startSync(\"Bench {name}\");
+                            final output = await impl.{name}({params});
+                            Timeline.finishSync();
+                            return output;"
+                            ),
+                        },
+                        wasm: GeneratedFunc {
+                            signature: format!(
+                                "Future<{output}> {wire}({target} impl, {inputs}) async"
+                            ),
+                            implementation: format!("return await impl.{name}({params});"),
+                        },
+                    });
+                }
+                None
+            })
+            .collect::<Vec<_>>();
 
         let ir_wasm_func_exports = config.wasm_enabled.then(|| {
             ir_file
@@ -165,6 +227,7 @@ impl DartApiSpec {
             dart_wasm_funcs,
             dart_wasm_module,
             needs_freezed,
+            dart_bench_funcs,
         }
     }
 }
@@ -278,6 +341,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         dart_wasm_module,
         dart_structs: _,
         needs_freezed: _,
+        dart_bench_funcs,
     } = spec;
 
     lines.push_acc(Acc {
@@ -343,29 +407,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         );
     }
     if config.bench_extended {
-        lines.common.push(format!(
-            "extension BenchSendI64Extension on {} {{
-          Future<int> benchSendI64(int value) async {{
-            return wireBenchI64(this,value);
-          }}
-        }}",
-            config.dart_api_impl_class_name()
-        ));
-        lines.io.push(format!(
-            "Future<int> wireBenchI64({} impl, int value) async {{
-        Timeline.startSync(\"Bench i64\");
-        final output = await impl.sendI64(value: value);
-        Timeline.finishSync();
-        return output;
-      }}",
-            config.dart_api_impl_class_name()
-        ));
-        lines.wasm.push(format!(
-            "Future<int> wireBenchI64({} impl, int value) async {{
-        return await impl.sendI64(value: value);
-      }}",
-            config.dart_api_impl_class_name()
-        ));
+        push_benchmark_funcs(&mut lines, dart_bench_funcs);
     }
 
     let Acc { common, io, wasm } = lines.join("\n");
@@ -472,6 +514,26 @@ pub(crate) struct GeneratedApiFunc {
     comments: String,
     companion_field_signature: String,
     companion_field_implementation: String,
+}
+
+#[derive(Debug)]
+pub(crate) struct GeneratedBenchFunc {
+    common: GeneratedExtensionFunc,
+    io: GeneratedFunc,
+    wasm: GeneratedFunc,
+}
+
+#[derive(Debug)]
+pub(crate) struct GeneratedFunc {
+    signature: String,
+    implementation: String,
+}
+
+#[derive(Debug)]
+pub(crate) struct GeneratedExtensionFunc {
+    extend: String,
+    signature: String,
+    implementation: String,
 }
 
 fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<String> {
