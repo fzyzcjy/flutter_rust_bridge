@@ -171,24 +171,29 @@ impl DartApiSpec {
                     let ext = format!("Bench{wire}Extension");
                     let wire_implementation_return = format!(
                         "
-                    final int starts = Timeline.now;
-                    return bridge.{camel}({params}).then(
-                      (value) {{
-                        final int ends = Timeline.now;
-                        final int diff = ends - starts;
-                        print('Bench {name} executed in $diff microseconds (started at $starts, ended at $ends)');
-                        return value;
-                      }},
-                    );"
+                        final int starts = Timeline.now;
+                        final TimelineTask task = TimelineTask();
+                        task.start('Bench {name}');
+                        return bridge.{camel}({params})
+                        .then((value) => value)
+                        .whenComplete(() {{
+                          final int ends = Timeline.now;
+                          final int diff = ends - starts;
+                          print('Bench {name} executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+                          task.finish();
+                        }});"
                     );
                     let wire_implementation_void = format!(
                         "
-                    final int starts = Timeline.now;
-                    bridge.{camel}({params}).then((_) {{
-                      final int ends = Timeline.now;
-                      final int diff = ends - starts;
-                      print('Bench {name} executed in $diff microseconds (started at $starts, ended at $ends)');
-                    }});"
+                        final int starts = Timeline.now;
+                        final TimelineTask task = TimelineTask();
+                        task.start('Bench {name}');
+                        bridge.{camel}({params}).whenComplete(() {{
+                          final int ends = Timeline.now;
+                          final int diff = ends - starts;
+                          print('Bench {name} executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+                          task.finish();
+                        }});"
                     );
                     return Some(GeneratedBenchFunc {
                         common: GeneratedExtensionFunc {
