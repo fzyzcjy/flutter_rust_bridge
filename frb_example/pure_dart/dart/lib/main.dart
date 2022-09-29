@@ -623,19 +623,20 @@ void main(List<String> args) async {
   });
 
   group('benchmarking feature (roundtrip)', () {
+    const int oneMillion = 1000000;
     test('i64', () async {
       final output = await api.benchSendI64(value: 42);
       expect(output, 42);
     });
     test('one million uuids', () async {
       final uuid = Uuid();
-      final ids = List<UuidValue>.generate(1000000, (idx) => uuid.v4obj());
+      final ids = List<UuidValue>.generate(oneMillion, (idx) => uuid.v4obj());
       final outputs = await api.benchHandleUuids(ids: ids);
       expect(ids, outputs);
     });
     test('one million strings', () async {
       final String str = 'something cool';
-      final strs = List<String>.generate(1000000, (idx) => str + idx.toString());
+      final strs = List<String>.generate(oneMillion, (idx) => str + idx.toString());
       final outputs = await api.benchHandleStringList(names: strs);
       expect(strs, outputs);
     });
