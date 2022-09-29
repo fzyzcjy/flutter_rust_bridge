@@ -108,7 +108,7 @@ Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge,
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench draw_mandelbrot executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench draw_mandelbrot executed in $diff microseconds');
   });
 }
 
@@ -120,7 +120,7 @@ Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl bridge, {r
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench passing_complex_structs executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench passing_complex_structs executed in $diff microseconds');
   });
 }
 
@@ -132,8 +132,7 @@ Future<BoxedPoint> wireReturningStructsWithBoxedFields(FlutterRustBridgeExampleI
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench returning_structs_with_boxed_fields executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench returning_structs_with_boxed_fields executed in $diff microseconds');
   });
 }
 
@@ -145,8 +144,7 @@ Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench off_topic_memory_test_input_array executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_memory_test_input_array executed in $diff microseconds');
   });
 }
 
@@ -159,8 +157,7 @@ Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(FlutterRustBridgeEx
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench off_topic_memory_test_output_zero_copy_buffer executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_memory_test_output_zero_copy_buffer executed in $diff microseconds');
   });
 }
 
@@ -172,8 +169,7 @@ Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench off_topic_memory_test_output_vec_u8 executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_memory_test_output_vec_u8 executed in $diff microseconds');
   });
 }
 
@@ -186,8 +182,7 @@ Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl 
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench off_topic_memory_test_input_vec_of_object executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_memory_test_input_vec_of_object executed in $diff microseconds');
   });
 }
 
@@ -200,8 +195,7 @@ Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(FlutterRustBridgeExam
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench off_topic_memory_test_output_vec_of_object executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_memory_test_output_vec_of_object executed in $diff microseconds');
   });
 }
 
@@ -214,8 +208,7 @@ Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImp
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench off_topic_memory_test_input_complex_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_memory_test_input_complex_struct executed in $diff microseconds');
   });
 }
 
@@ -228,8 +221,7 @@ Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(FlutterRustBridgeExam
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench off_topic_memory_test_output_complex_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_memory_test_output_complex_struct executed in $diff microseconds');
   });
 }
 
@@ -241,8 +233,7 @@ Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bri
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench off_topic_deliberately_return_error executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_deliberately_return_error executed in $diff microseconds');
   });
 }
 
@@ -254,7 +245,7 @@ Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge) a
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench off_topic_deliberately_panic executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench off_topic_deliberately_panic executed in $diff microseconds');
   });
 }
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names

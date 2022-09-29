@@ -1044,7 +1044,7 @@ Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench simple_adder executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench simple_adder executed in $diff microseconds');
   });
 }
 
@@ -1060,7 +1060,7 @@ Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridg
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench primitive_types executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench primitive_types executed in $diff microseconds');
   });
 }
 
@@ -1072,7 +1072,7 @@ Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench primitive_u32 executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench primitive_u32 executed in $diff microseconds');
   });
 }
 
@@ -1084,7 +1084,7 @@ Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl brid
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_string executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_string executed in $diff microseconds');
   });
 }
 
@@ -1096,7 +1096,7 @@ Future<void> wireHandleReturnUnit(FlutterRustBridgeExampleSingleBlockTestImpl br
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_return_unit executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_return_unit executed in $diff microseconds');
   });
 }
 
@@ -1108,7 +1108,7 @@ Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl br
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_vec_u8 executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_vec_u8 executed in $diff microseconds');
   });
 }
 
@@ -1121,7 +1121,7 @@ Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(FlutterRustBridgeExampleSing
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_vec_of_primitive executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_vec_of_primitive executed in $diff microseconds');
   });
 }
 
@@ -1134,8 +1134,7 @@ Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(FlutterRustB
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench handle_zero_copy_vec_of_primitive executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_zero_copy_vec_of_primitive executed in $diff microseconds');
   });
 }
 
@@ -1148,7 +1147,7 @@ Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl brid
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_struct executed in $diff microseconds');
   });
 }
 
@@ -1161,7 +1160,7 @@ Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_newtype executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_newtype executed in $diff microseconds');
   });
 }
 
@@ -1174,7 +1173,7 @@ Future<List<MySize>> wireHandleListOfStruct(FlutterRustBridgeExampleSingleBlockT
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_list_of_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_list_of_struct executed in $diff microseconds');
   });
 }
 
@@ -1187,7 +1186,7 @@ Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTes
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_string_list executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_string_list executed in $diff microseconds');
   });
 }
 
@@ -1200,7 +1199,7 @@ Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTe
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_complex_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_complex_struct executed in $diff microseconds');
   });
 }
 
@@ -1212,7 +1211,7 @@ Future<int> wireReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge) as
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench return_err executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench return_err executed in $diff microseconds');
   });
 }
 
@@ -1224,7 +1223,7 @@ Future<int> wireReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge) 
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench return_panic executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench return_panic executed in $diff microseconds');
   });
 }
 
@@ -1237,7 +1236,7 @@ Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTest
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_optional_return executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_optional_return executed in $diff microseconds');
   });
 }
 
@@ -1250,7 +1249,7 @@ Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTes
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_optional_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_optional_struct executed in $diff microseconds');
   });
 }
 
@@ -1263,7 +1262,7 @@ Future<ExoticOptionals?> wireHandleOptionalIncrement(FlutterRustBridgeExampleSin
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_optional_increment executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_optional_increment executed in $diff microseconds');
   });
 }
 
@@ -1276,8 +1275,7 @@ Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBl
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench handle_increment_boxed_optional executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_increment_boxed_optional executed in $diff microseconds');
   });
 }
 
@@ -1306,7 +1304,7 @@ Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockT
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_option_box_arguments executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_option_box_arguments executed in $diff microseconds');
   });
 }
 
@@ -1318,7 +1316,7 @@ Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl brid
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench print_note executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench print_note executed in $diff microseconds');
   });
 }
 
@@ -1331,7 +1329,7 @@ Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestIm
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_return_enum executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_return_enum executed in $diff microseconds');
   });
 }
 
@@ -1344,7 +1342,7 @@ Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTest
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_enum_parameter executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_enum_parameter executed in $diff microseconds');
   });
 }
 
@@ -1357,7 +1355,7 @@ Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestI
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_customized_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_customized_struct executed in $diff microseconds');
   });
 }
 
@@ -1370,7 +1368,7 @@ Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTest
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_enum_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_enum_struct executed in $diff microseconds');
   });
 }
 
@@ -1383,7 +1381,7 @@ Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl b
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench use_imported_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench use_imported_struct executed in $diff microseconds');
   });
 }
 
@@ -1395,7 +1393,7 @@ Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bri
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench use_imported_enum executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench use_imported_enum executed in $diff microseconds');
   });
 }
 
@@ -1407,7 +1405,7 @@ Future<ApplicationSettings> wireGetAppSettings(FlutterRustBridgeExampleSingleBlo
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench get_app_settings executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench get_app_settings executed in $diff microseconds');
   });
 }
 
@@ -1420,7 +1418,7 @@ Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridg
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench is_app_embedded executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench is_app_embedded executed in $diff microseconds');
   });
 }
 
@@ -1432,7 +1430,7 @@ Future<ApplicationMessage> wireGetMessage(FlutterRustBridgeExampleSingleBlockTes
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench get_message executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench get_message executed in $diff microseconds');
   });
 }
 
@@ -1445,7 +1443,7 @@ Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bri
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench repeat_number executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench repeat_number executed in $diff microseconds');
   });
 }
 
@@ -1458,7 +1456,7 @@ Future<Sequences> wireRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench repeat_sequence executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench repeat_sequence executed in $diff microseconds');
   });
 }
 
@@ -1470,7 +1468,7 @@ Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench first_number executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench first_number executed in $diff microseconds');
   });
 }
 
@@ -1482,7 +1480,7 @@ Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridg
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench first_sequence executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench first_sequence executed in $diff microseconds');
   });
 }
 
@@ -1494,7 +1492,7 @@ Future<Uint8List> wireGetArray(FlutterRustBridgeExampleSingleBlockTestImpl bridg
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench get_array executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench get_array executed in $diff microseconds');
   });
 }
 
@@ -1506,7 +1504,7 @@ Future<List<Point>> wireGetComplexArray(FlutterRustBridgeExampleSingleBlockTestI
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench get_complex_array executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench get_complex_array executed in $diff microseconds');
   });
 }
 
@@ -1518,7 +1516,7 @@ Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {re
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench get_usize executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench get_usize executed in $diff microseconds');
   });
 }
 
@@ -1530,7 +1528,7 @@ Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench next_user_id executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench next_user_id executed in $diff microseconds');
   });
 }
 
@@ -1542,7 +1540,7 @@ Future<void> wireCloseEventListener(FlutterRustBridgeExampleSingleBlockTestImpl 
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench close_event_listener executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench close_event_listener executed in $diff microseconds');
   });
 }
 
@@ -1555,7 +1553,7 @@ Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench create_event executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench create_event executed in $diff microseconds');
   });
 }
 
@@ -1567,7 +1565,7 @@ Future<SumWith> wireGetSumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bri
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench get_sum_struct executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench get_sum_struct executed in $diff microseconds');
   });
 }
 
@@ -1580,7 +1578,7 @@ Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl b
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench multiply_by_ten executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench multiply_by_ten executed in $diff microseconds');
   });
 }
 
@@ -1592,7 +1590,7 @@ Future<OldSimpleStruct> wireCallOldModuleSystem(FlutterRustBridgeExampleSingleBl
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench call_old_module_system executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench call_old_module_system executed in $diff microseconds');
   });
 }
 
@@ -1604,7 +1602,7 @@ Future<NewSimpleStruct> wireCallNewModuleSystem(FlutterRustBridgeExampleSingleBl
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench call_new_module_system executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench call_new_module_system executed in $diff microseconds');
   });
 }
 
@@ -1616,7 +1614,7 @@ Future<BigBuffers> wireHandleBigBuffers(FlutterRustBridgeExampleSingleBlockTestI
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_big_buffers executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_big_buffers executed in $diff microseconds');
   });
 }
 
@@ -1628,7 +1626,7 @@ Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bri
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench datetime_utc executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench datetime_utc executed in $diff microseconds');
   });
 }
 
@@ -1640,7 +1638,7 @@ Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl b
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench datetime_local executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench datetime_local executed in $diff microseconds');
   });
 }
 
@@ -1652,7 +1650,7 @@ Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl b
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench naivedatetime executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench naivedatetime executed in $diff microseconds');
   });
 }
 
@@ -1664,7 +1662,7 @@ Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench duration executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench duration executed in $diff microseconds');
   });
 }
 
@@ -1677,7 +1675,7 @@ Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestIm
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench how_long_does_it_take executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench how_long_does_it_take executed in $diff microseconds');
   });
 }
 
@@ -1689,7 +1687,7 @@ Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bri
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_uuid executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_uuid executed in $diff microseconds');
   });
 }
 
@@ -1702,7 +1700,7 @@ Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestI
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_uuids executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_uuids executed in $diff microseconds');
   });
 }
 
@@ -1715,7 +1713,7 @@ Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTes
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench handle_nested_uuids executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench handle_nested_uuids executed in $diff microseconds');
   });
 }
 
@@ -1727,7 +1725,7 @@ Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {req
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench send_i64 executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench send_i64 executed in $diff microseconds');
   });
 }
 
@@ -1740,7 +1738,7 @@ Future<int> wireSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bri
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print('Bench sum__method__SumWith executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench sum__method__SumWith executed in $diff microseconds');
   });
 }
 
@@ -1753,8 +1751,7 @@ Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(FlutterRustBridgeExam
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench new__static_method__ConcatenateWith executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench new__static_method__ConcatenateWith executed in $diff microseconds');
   });
 }
 
@@ -1767,8 +1764,7 @@ Future<String> wireConcatenateMethodConcatenateWith(FlutterRustBridgeExampleSing
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench concatenate__method__ConcatenateWith executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench concatenate__method__ConcatenateWith executed in $diff microseconds');
   });
 }
 
@@ -1781,7 +1777,6 @@ Future<String> wireConcatenateStaticStaticMethodConcatenateWith(FlutterRustBridg
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
-    print(
-        'Bench concatenate_static__static_method__ConcatenateWith executed in $diff microsecond(s) (started at $starts, ended at $ends)');
+    print('Bench concatenate_static__static_method__ConcatenateWith executed in $diff microseconds');
   });
 }
