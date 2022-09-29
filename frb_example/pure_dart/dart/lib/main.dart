@@ -622,7 +622,7 @@ void main(List<String> args) async {
     });
   });
 
-  group('benchmarking feature', () async {
+  group('benchmarking feature', () {
     test('send i64', () async {
       final output = await api.benchSendI64(value: 42);
       expect(output, 42);
