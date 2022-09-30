@@ -1126,7 +1126,7 @@ Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestI
   } else {
     task.start('Bench handle_customized_struct');
   }
-  bridge.handleCustomizedStruct(val: val).whenComplete(() {
+  bridge.handleCustomizedStruct().whenComplete(() {
     task.finish();
   });
 }
@@ -1333,7 +1333,7 @@ Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
   } else {
     task.start('Bench create_event');
   }
-  bridge.createEvent(address: address, payload: payload).whenComplete(() {
+  bridge.createEvent().whenComplete(() {
     task.finish();
   });
 }
