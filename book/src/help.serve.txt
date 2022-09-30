@@ -27,3 +27,4 @@ OPTIONS:
 -h, --help                    Print this help message
     --[no-]build              Whether to build the library.
                               (defaults to on)
+    --bench                   Whether to bench instead of test.

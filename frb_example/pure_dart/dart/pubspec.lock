@@ -43,6 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
+  benchmark_harness:
+    dependency: "direct main"
+    description:
+      name: benchmark_harness
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -189,7 +196,7 @@ packages:
       name: ffigen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.2"
+    version: "6.0.1"
   file:
     dependency: transitive
     description:

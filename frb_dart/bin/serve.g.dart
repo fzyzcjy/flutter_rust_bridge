@@ -119,7 +119,6 @@ ArgParser _$populateOptsParser(ArgParser parser) => parser
     'bench',
     help: 'Whether to bench instead of test.',
     negatable: false,
-    defaultsTo: false,
   );
 
 final _$parserForOpts = _$populateOptsParser(ArgParser());

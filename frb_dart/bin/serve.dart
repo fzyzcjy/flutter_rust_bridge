@@ -291,7 +291,12 @@ Future<void> build(
   } else {
     await system(
       'flutter',
-      ['build', 'web', if (config.release) '--release' else if (config.bench) '--profile'] + Opts.rest(args),
+      [
+            'build',
+            'web',
+            if (config.release) '--release' else if (config.bench) '--profile'
+          ] +
+          Opts.rest(args),
     );
   }
 }

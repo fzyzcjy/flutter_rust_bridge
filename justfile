@@ -51,7 +51,7 @@ test-pure:
     cd {{frb_pure}}/rust && cargo b
     cd {{frb_pure}}/dart && \
         dart pub get && \
-        dart lib/main.dart ../rust/target/debug/{{dylib}}
+        dart lib/main.dart ../../../target/debug/{{dylib}}
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
@@ -150,5 +150,11 @@ gen-help:
 
 runner:
     (cd frb_dart && dart run build_runner build)
+
+bench: runner
+    (cd {{frb_pure}}/rust && cargo build --release)
+    (cd {{frb_pure}}/dart && \
+        dart run lib/benchmark/vecs.dart && \
+        dart run lib/benchmark/strings.dart)
 
 # vim:expandtab:ts=4:sw=4
