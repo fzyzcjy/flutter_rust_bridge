@@ -71,6 +71,9 @@ test-support platform="chrome":
         dart test test/*.dart && \
         dart test -p {{platform}} test/*.dart
 
+bench-pure-web *args="":
+    cd {{frb_pure}}/dart && just serve --dart-input lib/bench.web.dart --root bench/ -c ../rust --port 8081 {{args}}
+
 alias c := clean
 clean:
     cd {{frb_pure}}/dart && flutter clean
@@ -144,5 +147,8 @@ release old_version new_version:
 gen-help:
     cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt
     dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
+
+runner:
+    (cd frb_dart && dart run build_runner build)
 
 # vim:expandtab:ts=4:sw=4
