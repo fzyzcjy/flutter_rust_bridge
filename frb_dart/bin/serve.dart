@@ -91,12 +91,14 @@ class Opts {
     defaultsTo: 8080,
   )
   late int port;
+  
   @CliOption(
     abbr: 'r',
     help: 'Root of the Flutter/Dart output',
     valueHelp: 'ROOT',
   )
   late String? root;
+
   @CliOption(
     abbr: 'c',
     help: 'Directory of the crate',
@@ -104,6 +106,7 @@ class Opts {
     defaultsTo: 'native',
   )
   late String crate;
+
   @CliOption(
     abbr: 'd',
     help:
@@ -111,36 +114,47 @@ class Opts {
     valueHelp: 'ENTRY',
   )
   late String? dartInput;
+
   @CliOption(abbr: 'w', help: 'WASM output path', valueHelp: 'PKG')
   late String? wasmOutput;
+
   @CliOption(abbr: 'v', help: 'Display more verbose information')
   late bool verbose;
+
   @CliOption(
     help: 'Set COEP to credentialless\n'
         'Defaults to true for Flutter',
   )
   late bool relaxCoep;
   late bool relaxCoepWasParsed;
+
   @CliOption(help: 'Open the webpage in a browser', defaultsTo: true)
   late bool open;
+
   @CliOption(help: 'Run tests in headless Chromium', negatable: false)
   late bool runTests;
+
   @CliOption(help: 'Compile in release mode', negatable: false)
   late bool release;
+
   @CliOption(
     help: 'Enable the weak references proposal\n'
         'Requires wasm-bindgen in path',
   )
   late bool weakRefs;
+
   @CliOption(
     help: 'Enable the reference types proposal\n'
         'Requires wasm-bindgen in path',
   )
   late bool referenceTypes;
+
   @CliOption(abbr: 'h', help: 'Print this help message', negatable: false)
   late bool help;
+
   @CliOption(help: 'Whether to build the library.', defaultsTo: true)
   late bool build;
+
   @CliOption(
       help: 'Whether to bench instead of test.',
       negatable: false,
