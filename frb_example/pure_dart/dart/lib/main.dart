@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:math' as math;
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
@@ -623,59 +622,9 @@ void main(List<String> args) async {
     });
   });
 
-  group('benchmarking feature (roundtrip)', () {
-    const int oneThousand = 1000;
-    const int oneHundredThousand = 100000;
-    const int oneMillion = 1000000;
-    test('i64', () async {
-      final output = await api.benchSendI64(value: 42);
-      expect(output, 42);
-    });
-    group('lot of uuids', () {
-      late List<UuidValue> oneThousandUuids;
-      late List<UuidValue> oneHundredThousandUuids;
-      late List<UuidValue> oneMillionUuids;
-      setUp(() {
-        final uuid = Uuid();
-        oneThousandUuids = List<UuidValue>.generate(oneThousand, (_) => uuid.v4obj());
-        oneHundredThousandUuids = List<UuidValue>.generate(oneHundredThousand, (_) => uuid.v4obj());
-        oneMillionUuids = List<UuidValue>.generate(oneMillion, (_) => uuid.v4obj());
-      });
-      test('1,000 uuids', () async {
-        final outputs = await api.benchHandleUuids(ids: oneThousandUuids);
-        expect(oneThousandUuids, outputs);
-      });
-      test('100,000 uuids', () async {
-        final outputs = await api.benchHandleUuids(ids: oneHundredThousandUuids);
-        expect(oneHundredThousandUuids, outputs);
-      });
-      test('1,000,000 uuids', () async {
-        final outputs = await api.benchHandleUuids(ids: oneMillionUuids);
-        expect(oneMillionUuids, outputs);
-      });
-    });
-    group('lot of strings', () {
-      late List<String> oneThousandStrings;
-      late List<String> oneHundredThousandStrings;
-      late List<String> oneMillionStrings;
-      setUp(() {
-        oneThousandStrings = List<String>.generate(oneThousand, (_) => getRandomString(uuidSizeInBytes));
-        oneHundredThousandStrings = List<String>.generate(oneHundredThousand, (_) => getRandomString(uuidSizeInBytes));
-        oneMillionStrings = List<String>.generate(oneMillion, (_) => getRandomString(uuidSizeInBytes));
-      });
-      test('1,000 strings', () async {
-        final outputs = await api.benchHandleStringList(names: oneThousandStrings);
-        expect(oneThousandStrings, outputs);
-      });
-      test('100,000 thousand strings', () async {
-        final outputs = await api.benchHandleStringList(names: oneHundredThousandStrings);
-        expect(oneHundredThousandStrings, outputs);
-      });
-      test('1,000,000 strings', () async {
-        final outputs = await api.benchHandleStringList(names: oneMillionStrings);
-        expect(oneMillionStrings, outputs);
-      });
-    });
+  test('i64', () async {
+    final output = await api.benchSendI64(value: 42);
+    expect(output, 42);
   });
 }
 
@@ -728,13 +677,6 @@ class MatchBigInt extends CustomMatcher {
     if (actual is int) return BigInt.from(actual);
     return actual;
   }
-}
-
-String getRandomString(int length) {
-  const characters = '+-*=?AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
-  math.Random random = math.Random();
-  return String.fromCharCodes(
-      Iterable.generate(length, (_) => characters.codeUnitAt(random.nextInt(characters.length))));
 }
 
 // vim:expandtab:ts=2:sw=2
