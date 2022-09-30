@@ -53,8 +53,8 @@ test-pure *args="":
     cd {{frb_pure}}/dart && \
         dart pub get && \
         dart {{args}} lib/main.dart ../../../target/debug/{{dylib}}
-bench-test-pure:
-  just test-pure --enable-vm-service={{devtools_port}}  --pause-isolates-on-start --pause-isolates-on-exit
+bench-test-pure *args="":
+  just test-pure --enable-vm-service={{devtools_port}} --pause-isolates-on-start --pause-isolates-on-exit {{args}}
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
