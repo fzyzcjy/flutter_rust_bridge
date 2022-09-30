@@ -170,8 +170,13 @@ impl DartApiSpec {
                     let target = config.dart_api_impl_class_name();
                     let ext = format!("Bench{wire}Extension");
                     let wire_implementation_return = format!(
-                        "final task = TimelineTask();
-                        task.start('Bench {name}');
+                        "
+                        final task = TimelineTask();
+                        if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+                          task.start('Bench $timelineTaskName');
+                        }} else {{
+                          task.start('Bench {name}');
+                        }}
                         return bridge.{camel}({params})
                         .then((value) => value)
                         .whenComplete(() {{
@@ -181,7 +186,11 @@ impl DartApiSpec {
                     let wire_implementation_void = format!(
                         "
                         final task = TimelineTask();
-                        task.start('Bench {name}');
+                        if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+                          task.start('Bench $timelineTaskName');
+                        }} else {{
+                          task.start('Bench {name}');
+                        }}
                         bridge.{camel}({params}).whenComplete(() {{
                           task.finish();
                         }});"
@@ -190,18 +199,34 @@ impl DartApiSpec {
                         common: GeneratedExtensionFunc {
                             extend: format!("extension {ext} on {target}"),
                             signature: if inputs.is_empty() {
-                                format!("Future<{output}> {bench}() async")
+                                format!("Future<{output}> {bench}({{String? timelineTaskName}}) async")
                             } else {
-                                format!("Future<{output}> {bench}({{{inputs}}}) async")
+                                format!(
+                                    "Future<{output}> {bench}({{{inputs}, String? timelineTaskName}}) async"
+                                )
                             },
-                            implementation: format!("return {wire}(this,{params});"),
+                            implementation: if inputs.is_empty() {
+                              format!("
+                              if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+                                return {wire}(this,timelineTaskName);
+                              }}
+                              return {wire}(this,null);
+                              ")
+                            } else {
+                              format!("
+                              if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+                                return {wire}(this,timelineTaskName,{params});
+                              }}
+                              return {wire}(this,null,{params});
+                              ")
+                            }
                         },
                         io: GeneratedFunc {
                             signature: if inputs.is_empty() {
-                                format!("Future<{output}> {wire}({target} bridge) async")
+                                format!("Future<{output}> {wire}({target} bridge, String? timelineTaskName) async")
                             } else {
                                 format!(
-                                    "Future<{output}> {wire}({target} bridge, {{{inputs}}}) async"
+                                    "Future<{output}> {wire}({target} bridge, String? timelineTaskName, {{{inputs}}}) async"
                                 )
                             },
                             implementation: if output != "void" {
@@ -212,10 +237,10 @@ impl DartApiSpec {
                         },
                         wasm: GeneratedFunc {
                             signature: if inputs.is_empty() {
-                                format!("Future<{output}> {wire}({target} bridge) async")
+                                format!("Future<{output}> {wire}({target} bridge, String? timelineTaskName) async")
                             } else {
                                 format!(
-                                    "Future<{output}> {wire}({target} bridge, {{{inputs}}}) async"
+                                    "Future<{output}> {wire}({target} bridge, String? timelineTaskName, {{{inputs}}}) async"
                                 )
                             },
                             implementation: if output != "void" {

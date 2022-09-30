@@ -636,19 +636,19 @@ void main(List<String> args) async {
       hundredThousandStrings = List<String>.generate(100000, (index) => getRandomString(uuidSizeInBytes));
     });
     test('1,000 uuids', () async {
-      final output = await api.benchHandleUuids(ids: thousandUuids);
+      final output = await api.benchHandleUuids(ids: thousandUuids, timelineTaskName: '1,000 uuids');
       expect(output, thousandUuids);
     });
     test('1,000 strings', () async {
-      final output = await api.benchHandleStrings(strings: thousandStrings);
+      final output = await api.benchHandleStrings(strings: thousandStrings, timelineTaskName: '1,000 strings');
       expect(output, thousandStrings);
     });
     test('100,000 uuids', () async {
-      final output = await api.benchHandleUuids(ids: hundredThousandUuids);
+      final output = await api.benchHandleUuids(ids: hundredThousandUuids, timelineTaskName: '100,000 uuids');
       expect(output, hundredThousandUuids);
     });
     test('100,000 strings', () async {
-      final output = await api.benchHandleStrings(strings: hundredThousandStrings);
+      final output = await api.benchHandleStrings(strings: hundredThousandStrings, timelineTaskName: '100,000 strings');
       expect(output, hundredThousandStrings);
     });
   });
