@@ -505,10 +505,6 @@ void main(List<String> args) async {
       await api.multiplyByTen(measure: Measure.speed(Speed_Unknown())),
       null,
     );
-    expect((Speed_Unknown).toString(), 'Speed_Unknown');
-    expect((Speed_GPS).toString(), 'Speed_GPS');
-    expect((Distance_Unknown).toString(), 'Distance_Unknown');
-    expect((Distance_Map).toString(), 'Distance_Map');
   });
 
   test('resolve module for old module system', () async {
