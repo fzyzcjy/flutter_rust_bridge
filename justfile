@@ -5,6 +5,7 @@ frb_pure := "frb_example/pure_dart"
 frb_pure_multi := "frb_example/pure_dart_multi"
 frb_flutter := "frb_example/with_flutter"
 line_length := "120"
+devtools_port := env_var_or_default("DEVTOOLS_PORT", "8181")
 dylib := if os() == "windows" {
     "flutter_rust_bridge_example.dll"
 } else if os() == "macos" {
@@ -47,11 +48,13 @@ lint *args="":
 
 alias t := test
 test: test-support test-pure test-integration
-test-pure:
+test-pure *args="":
     cd {{frb_pure}}/rust && cargo b
     cd {{frb_pure}}/dart && \
         dart pub get && \
-        dart lib/main.dart ../../../target/debug/{{dylib}}
+        dart {{args}} lib/main.dart ../../../target/debug/{{dylib}}
+bench-test-pure:
+  just test-pure --enable-vm-service={{devtools_port}}  --pause-isolates-on-start --pause-isolates-on-exit
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
