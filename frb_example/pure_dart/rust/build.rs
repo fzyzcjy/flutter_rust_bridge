@@ -10,7 +10,6 @@ const DART_OUTPUT: &str = "../dart/lib/bridge_generated.dart";
 fn main() {
     // Tell Cargo that if the input Rust code changes, to rerun this build script.
     println!("cargo:rerun-if-changed={}", RUST_INPUT);
-    println!("cargo:rustc-cfg=feature=\"chrono,uuid\"");
     // Options for frb_codegen
     let raw_opts = RawOpts {
         // Path of input Rust code
