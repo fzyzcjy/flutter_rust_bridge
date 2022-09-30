@@ -1975,123 +1975,180 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw
 }
 
 extension BenchwireSimpleAdderExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int> benchSimpleAdder({required int a, required int b}) async {
-    return wireSimpleAdder(this, a: a, b: b);
+  Future<int> benchSimpleAdder({required int a, required int b, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireSimpleAdder(this, timelineTaskName, a: a, b: b);
+    }
+    return wireSimpleAdder(this, null, a: a, b: b);
   }
 }
 
 extension BenchwirePrimitiveTypesExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchPrimitiveTypes(
-      {required int myI32, required int myI64, required double myF64, required bool myBool}) async {
-    return wirePrimitiveTypes(this, myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
+      {required int myI32,
+      required int myI64,
+      required double myF64,
+      required bool myBool,
+      String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wirePrimitiveTypes(this, timelineTaskName, myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
+    }
+    return wirePrimitiveTypes(this, null, myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
   }
 }
 
 extension BenchwirePrimitiveU32Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int> benchPrimitiveU32({required int myU32}) async {
-    return wirePrimitiveU32(this, myU32: myU32);
+  Future<int> benchPrimitiveU32({required int myU32, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wirePrimitiveU32(this, timelineTaskName, myU32: myU32);
+    }
+    return wirePrimitiveU32(this, null, myU32: myU32);
   }
 }
 
 extension BenchwireHandleStringExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<String> benchHandleString({required String s}) async {
-    return wireHandleString(this, s: s);
+  Future<String> benchHandleString({required String s, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleString(this, timelineTaskName, s: s);
+    }
+    return wireHandleString(this, null, s: s);
   }
 }
 
 extension BenchwireHandleReturnUnitExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<void> benchHandleReturnUnit() async {
-    return wireHandleReturnUnit(
-      this,
-    );
+  Future<void> benchHandleReturnUnit({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleReturnUnit(this, timelineTaskName);
+    }
+    return wireHandleReturnUnit(this, null);
   }
 }
 
 extension BenchwireHandleVecU8Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Uint8List> benchHandleVecU8({required Uint8List v}) async {
-    return wireHandleVecU8(this, v: v);
+  Future<Uint8List> benchHandleVecU8({required Uint8List v, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleVecU8(this, timelineTaskName, v: v);
+    }
+    return wireHandleVecU8(this, null, v: v);
   }
 }
 
 extension BenchwireHandleVecOfPrimitiveExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<VecOfPrimitivePack> benchHandleVecOfPrimitive({required int n}) async {
-    return wireHandleVecOfPrimitive(this, n: n);
+  Future<VecOfPrimitivePack> benchHandleVecOfPrimitive({required int n, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleVecOfPrimitive(this, timelineTaskName, n: n);
+    }
+    return wireHandleVecOfPrimitive(this, null, n: n);
   }
 }
 
 extension BenchwireHandleZeroCopyVecOfPrimitiveExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<ZeroCopyVecOfPrimitivePack> benchHandleZeroCopyVecOfPrimitive({required int n}) async {
-    return wireHandleZeroCopyVecOfPrimitive(this, n: n);
+  Future<ZeroCopyVecOfPrimitivePack> benchHandleZeroCopyVecOfPrimitive(
+      {required int n, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleZeroCopyVecOfPrimitive(this, timelineTaskName, n: n);
+    }
+    return wireHandleZeroCopyVecOfPrimitive(this, null, n: n);
   }
 }
 
 extension BenchwireHandleStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<MySize> benchHandleStruct({required MySize arg, required MySize boxed}) async {
-    return wireHandleStruct(this, arg: arg, boxed: boxed);
+  Future<MySize> benchHandleStruct({required MySize arg, required MySize boxed, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleStruct(this, timelineTaskName, arg: arg, boxed: boxed);
+    }
+    return wireHandleStruct(this, null, arg: arg, boxed: boxed);
   }
 }
 
 extension BenchwireHandleNewtypeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<NewTypeInt> benchHandleNewtype({required NewTypeInt arg}) async {
-    return wireHandleNewtype(this, arg: arg);
+  Future<NewTypeInt> benchHandleNewtype({required NewTypeInt arg, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleNewtype(this, timelineTaskName, arg: arg);
+    }
+    return wireHandleNewtype(this, null, arg: arg);
   }
 }
 
 extension BenchwireHandleListOfStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<List<MySize>> benchHandleListOfStruct({required List<MySize> l}) async {
-    return wireHandleListOfStruct(this, l: l);
+  Future<List<MySize>> benchHandleListOfStruct({required List<MySize> l, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleListOfStruct(this, timelineTaskName, l: l);
+    }
+    return wireHandleListOfStruct(this, null, l: l);
   }
 }
 
 extension BenchwireHandleStringListExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<List<String>> benchHandleStringList({required List<String> names}) async {
-    return wireHandleStringList(this, names: names);
+  Future<List<String>> benchHandleStringList({required List<String> names, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleStringList(this, timelineTaskName, names: names);
+    }
+    return wireHandleStringList(this, null, names: names);
   }
 }
 
 extension BenchwireHandleComplexStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<MyTreeNode> benchHandleComplexStruct({required MyTreeNode s}) async {
-    return wireHandleComplexStruct(this, s: s);
+  Future<MyTreeNode> benchHandleComplexStruct({required MyTreeNode s, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleComplexStruct(this, timelineTaskName, s: s);
+    }
+    return wireHandleComplexStruct(this, null, s: s);
   }
 }
 
 extension BenchwireReturnErrExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int> benchReturnErr() async {
-    return wireReturnErr(
-      this,
-    );
+  Future<int> benchReturnErr({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireReturnErr(this, timelineTaskName);
+    }
+    return wireReturnErr(this, null);
   }
 }
 
 extension BenchwireReturnPanicExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int> benchReturnPanic() async {
-    return wireReturnPanic(
-      this,
-    );
+  Future<int> benchReturnPanic({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireReturnPanic(this, timelineTaskName);
+    }
+    return wireReturnPanic(this, null);
   }
 }
 
 extension BenchwireHandleOptionalReturnExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<double?> benchHandleOptionalReturn({required double left, required double right}) async {
-    return wireHandleOptionalReturn(this, left: left, right: right);
+  Future<double?> benchHandleOptionalReturn(
+      {required double left, required double right, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleOptionalReturn(this, timelineTaskName, left: left, right: right);
+    }
+    return wireHandleOptionalReturn(this, null, left: left, right: right);
   }
 }
 
 extension BenchwireHandleOptionalStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Element?> benchHandleOptionalStruct({String? document}) async {
-    return wireHandleOptionalStruct(this, document: document);
+  Future<Element?> benchHandleOptionalStruct({String? document, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleOptionalStruct(this, timelineTaskName, document: document);
+    }
+    return wireHandleOptionalStruct(this, null, document: document);
   }
 }
 
 extension BenchwireHandleOptionalIncrementExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<ExoticOptionals?> benchHandleOptionalIncrement({ExoticOptionals? opt}) async {
-    return wireHandleOptionalIncrement(this, opt: opt);
+  Future<ExoticOptionals?> benchHandleOptionalIncrement({ExoticOptionals? opt, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleOptionalIncrement(this, timelineTaskName, opt: opt);
+    }
+    return wireHandleOptionalIncrement(this, null, opt: opt);
   }
 }
 
 extension BenchwireHandleIncrementBoxedOptionalExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<double> benchHandleIncrementBoxedOptional({double? opt}) async {
-    return wireHandleIncrementBoxedOptional(this, opt: opt);
+  Future<double> benchHandleIncrementBoxedOptional({double? opt, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleIncrementBoxedOptional(this, timelineTaskName, opt: opt);
+    }
+    return wireHandleIncrementBoxedOptional(this, null, opt: opt);
   }
 }
 
@@ -2103,8 +2160,19 @@ extension BenchwireHandleOptionBoxArgumentsExtension on FlutterRustBridgeExample
       int? i64Box,
       double? f64Box,
       bool? boolbox,
-      ExoticOptionals? structbox}) async {
-    return wireHandleOptionBoxArguments(this,
+      ExoticOptionals? structbox,
+      String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleOptionBoxArguments(this, timelineTaskName,
+          i8Box: i8Box,
+          u8Box: u8Box,
+          i32Box: i32Box,
+          i64Box: i64Box,
+          f64Box: f64Box,
+          boolbox: boolbox,
+          structbox: structbox);
+    }
+    return wireHandleOptionBoxArguments(this, null,
         i8Box: i8Box,
         u8Box: u8Box,
         i32Box: i32Box,
@@ -2116,254 +2184,356 @@ extension BenchwireHandleOptionBoxArgumentsExtension on FlutterRustBridgeExample
 }
 
 extension BenchwirePrintNoteExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Uint8List> benchPrintNote({required Note note}) async {
-    return wirePrintNote(this, note: note);
+  Future<Uint8List> benchPrintNote({required Note note, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wirePrintNote(this, timelineTaskName, note: note);
+    }
+    return wirePrintNote(this, null, note: note);
   }
 }
 
 extension BenchwireHandleReturnEnumExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Weekdays?> benchHandleReturnEnum({required String input}) async {
-    return wireHandleReturnEnum(this, input: input);
+  Future<Weekdays?> benchHandleReturnEnum({required String input, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleReturnEnum(this, timelineTaskName, input: input);
+    }
+    return wireHandleReturnEnum(this, null, input: input);
   }
 }
 
 extension BenchwireHandleEnumParameterExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Weekdays> benchHandleEnumParameter({required Weekdays weekday}) async {
-    return wireHandleEnumParameter(this, weekday: weekday);
+  Future<Weekdays> benchHandleEnumParameter({required Weekdays weekday, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleEnumParameter(this, timelineTaskName, weekday: weekday);
+    }
+    return wireHandleEnumParameter(this, null, weekday: weekday);
   }
 }
 
 extension BenchwireHandleCustomizedStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<void> benchHandleCustomizedStruct({required Customized val}) async {
-    return wireHandleCustomizedStruct(this, val: val);
+  Future<void> benchHandleCustomizedStruct({required Customized val, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleCustomizedStruct(this, timelineTaskName, val: val);
+    }
+    return wireHandleCustomizedStruct(this, null, val: val);
   }
 }
 
 extension BenchwireHandleEnumStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<KitchenSink> benchHandleEnumStruct({required KitchenSink val}) async {
-    return wireHandleEnumStruct(this, val: val);
+  Future<KitchenSink> benchHandleEnumStruct({required KitchenSink val, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleEnumStruct(this, timelineTaskName, val: val);
+    }
+    return wireHandleEnumStruct(this, null, val: val);
   }
 }
 
 extension BenchwireUseImportedStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<bool> benchUseImportedStruct({required MyStruct myStruct}) async {
-    return wireUseImportedStruct(this, myStruct: myStruct);
+  Future<bool> benchUseImportedStruct({required MyStruct myStruct, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireUseImportedStruct(this, timelineTaskName, myStruct: myStruct);
+    }
+    return wireUseImportedStruct(this, null, myStruct: myStruct);
   }
 }
 
 extension BenchwireUseImportedEnumExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<bool> benchUseImportedEnum({required MyEnum myEnum}) async {
-    return wireUseImportedEnum(this, myEnum: myEnum);
+  Future<bool> benchUseImportedEnum({required MyEnum myEnum, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireUseImportedEnum(this, timelineTaskName, myEnum: myEnum);
+    }
+    return wireUseImportedEnum(this, null, myEnum: myEnum);
   }
 }
 
 extension BenchwireGetAppSettingsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<ApplicationSettings> benchGetAppSettings() async {
-    return wireGetAppSettings(
-      this,
-    );
+  Future<ApplicationSettings> benchGetAppSettings({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireGetAppSettings(this, timelineTaskName);
+    }
+    return wireGetAppSettings(this, null);
   }
 }
 
 extension BenchwireIsAppEmbeddedExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<bool> benchIsAppEmbedded({required ApplicationSettings appSettings}) async {
-    return wireIsAppEmbedded(this, appSettings: appSettings);
+  Future<bool> benchIsAppEmbedded({required ApplicationSettings appSettings, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireIsAppEmbedded(this, timelineTaskName, appSettings: appSettings);
+    }
+    return wireIsAppEmbedded(this, null, appSettings: appSettings);
   }
 }
 
 extension BenchwireGetMessageExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<ApplicationMessage> benchGetMessage() async {
-    return wireGetMessage(
-      this,
-    );
+  Future<ApplicationMessage> benchGetMessage({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireGetMessage(this, timelineTaskName);
+    }
+    return wireGetMessage(this, null);
   }
 }
 
 extension BenchwireRepeatNumberExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Numbers> benchRepeatNumber({required int num, required int times}) async {
-    return wireRepeatNumber(this, num: num, times: times);
+  Future<Numbers> benchRepeatNumber({required int num, required int times, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireRepeatNumber(this, timelineTaskName, num: num, times: times);
+    }
+    return wireRepeatNumber(this, null, num: num, times: times);
   }
 }
 
 extension BenchwireRepeatSequenceExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Sequences> benchRepeatSequence({required int seq, required int times}) async {
-    return wireRepeatSequence(this, seq: seq, times: times);
+  Future<Sequences> benchRepeatSequence({required int seq, required int times, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireRepeatSequence(this, timelineTaskName, seq: seq, times: times);
+    }
+    return wireRepeatSequence(this, null, seq: seq, times: times);
   }
 }
 
 extension BenchwireFirstNumberExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int?> benchFirstNumber({required Numbers nums}) async {
-    return wireFirstNumber(this, nums: nums);
+  Future<int?> benchFirstNumber({required Numbers nums, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireFirstNumber(this, timelineTaskName, nums: nums);
+    }
+    return wireFirstNumber(this, null, nums: nums);
   }
 }
 
 extension BenchwireFirstSequenceExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int?> benchFirstSequence({required Sequences seqs}) async {
-    return wireFirstSequence(this, seqs: seqs);
+  Future<int?> benchFirstSequence({required Sequences seqs, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireFirstSequence(this, timelineTaskName, seqs: seqs);
+    }
+    return wireFirstSequence(this, null, seqs: seqs);
   }
 }
 
 extension BenchwireGetArrayExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Uint8List> benchGetArray() async {
-    return wireGetArray(
-      this,
-    );
+  Future<Uint8List> benchGetArray({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireGetArray(this, timelineTaskName);
+    }
+    return wireGetArray(this, null);
   }
 }
 
 extension BenchwireGetComplexArrayExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<List<Point>> benchGetComplexArray() async {
-    return wireGetComplexArray(
-      this,
-    );
+  Future<List<Point>> benchGetComplexArray({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireGetComplexArray(this, timelineTaskName);
+    }
+    return wireGetComplexArray(this, null);
   }
 }
 
 extension BenchwireGetUsizeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int> benchGetUsize({required int u}) async {
-    return wireGetUsize(this, u: u);
+  Future<int> benchGetUsize({required int u, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireGetUsize(this, timelineTaskName, u: u);
+    }
+    return wireGetUsize(this, null, u: u);
   }
 }
 
 extension BenchwireNextUserIdExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<UserId> benchNextUserId({required UserId userId}) async {
-    return wireNextUserId(this, userId: userId);
+  Future<UserId> benchNextUserId({required UserId userId, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireNextUserId(this, timelineTaskName, userId: userId);
+    }
+    return wireNextUserId(this, null, userId: userId);
   }
 }
 
 extension BenchwireCloseEventListenerExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<void> benchCloseEventListener() async {
-    return wireCloseEventListener(
-      this,
-    );
+  Future<void> benchCloseEventListener({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireCloseEventListener(this, timelineTaskName);
+    }
+    return wireCloseEventListener(this, null);
   }
 }
 
 extension BenchwireCreateEventExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<void> benchCreateEvent({required String address, required String payload}) async {
-    return wireCreateEvent(this, address: address, payload: payload);
+  Future<void> benchCreateEvent({required String address, required String payload, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireCreateEvent(this, timelineTaskName, address: address, payload: payload);
+    }
+    return wireCreateEvent(this, null, address: address, payload: payload);
   }
 }
 
 extension BenchwireGetSumStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<SumWith> benchGetSumStruct() async {
-    return wireGetSumStruct(
-      this,
-    );
+  Future<SumWith> benchGetSumStruct({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireGetSumStruct(this, timelineTaskName);
+    }
+    return wireGetSumStruct(this, null);
   }
 }
 
 extension BenchwireMultiplyByTenExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Measure?> benchMultiplyByTen({required Measure measure}) async {
-    return wireMultiplyByTen(this, measure: measure);
+  Future<Measure?> benchMultiplyByTen({required Measure measure, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireMultiplyByTen(this, timelineTaskName, measure: measure);
+    }
+    return wireMultiplyByTen(this, null, measure: measure);
   }
 }
 
 extension BenchwireCallOldModuleSystemExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<OldSimpleStruct> benchCallOldModuleSystem() async {
-    return wireCallOldModuleSystem(
-      this,
-    );
+  Future<OldSimpleStruct> benchCallOldModuleSystem({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireCallOldModuleSystem(this, timelineTaskName);
+    }
+    return wireCallOldModuleSystem(this, null);
   }
 }
 
 extension BenchwireCallNewModuleSystemExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<NewSimpleStruct> benchCallNewModuleSystem() async {
-    return wireCallNewModuleSystem(
-      this,
-    );
+  Future<NewSimpleStruct> benchCallNewModuleSystem({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireCallNewModuleSystem(this, timelineTaskName);
+    }
+    return wireCallNewModuleSystem(this, null);
   }
 }
 
 extension BenchwireHandleBigBuffersExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<BigBuffers> benchHandleBigBuffers() async {
-    return wireHandleBigBuffers(
-      this,
-    );
+  Future<BigBuffers> benchHandleBigBuffers({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleBigBuffers(this, timelineTaskName);
+    }
+    return wireHandleBigBuffers(this, null);
   }
 }
 
 extension BenchwireDatetimeUtcExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<DateTime> benchDatetimeUtc({required DateTime d}) async {
-    return wireDatetimeUtc(this, d: d);
+  Future<DateTime> benchDatetimeUtc({required DateTime d, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireDatetimeUtc(this, timelineTaskName, d: d);
+    }
+    return wireDatetimeUtc(this, null, d: d);
   }
 }
 
 extension BenchwireDatetimeLocalExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<DateTime> benchDatetimeLocal({required DateTime d}) async {
-    return wireDatetimeLocal(this, d: d);
+  Future<DateTime> benchDatetimeLocal({required DateTime d, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireDatetimeLocal(this, timelineTaskName, d: d);
+    }
+    return wireDatetimeLocal(this, null, d: d);
   }
 }
 
 extension BenchwireNaivedatetimeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<DateTime> benchNaivedatetime({required DateTime d}) async {
-    return wireNaivedatetime(this, d: d);
+  Future<DateTime> benchNaivedatetime({required DateTime d, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireNaivedatetime(this, timelineTaskName, d: d);
+    }
+    return wireNaivedatetime(this, null, d: d);
   }
 }
 
 extension BenchwireDurationExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Duration> benchDuration({required Duration d}) async {
-    return wireDuration(this, d: d);
+  Future<Duration> benchDuration({required Duration d, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireDuration(this, timelineTaskName, d: d);
+    }
+    return wireDuration(this, null, d: d);
   }
 }
 
 extension BenchwireHowLongDoesItTakeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<Duration> benchHowLongDoesItTake({required FeatureChrono mine}) async {
-    return wireHowLongDoesItTake(this, mine: mine);
+  Future<Duration> benchHowLongDoesItTake({required FeatureChrono mine, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHowLongDoesItTake(this, timelineTaskName, mine: mine);
+    }
+    return wireHowLongDoesItTake(this, null, mine: mine);
   }
 }
 
 extension BenchwireHandleUuidExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<UuidValue> benchHandleUuid({required UuidValue id}) async {
-    return wireHandleUuid(this, id: id);
+  Future<UuidValue> benchHandleUuid({required UuidValue id, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleUuid(this, timelineTaskName, id: id);
+    }
+    return wireHandleUuid(this, null, id: id);
   }
 }
 
 extension BenchwireHandleUuidsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<List<UuidValue>> benchHandleUuids({required List<UuidValue> ids}) async {
-    return wireHandleUuids(this, ids: ids);
+  Future<List<UuidValue>> benchHandleUuids({required List<UuidValue> ids, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleUuids(this, timelineTaskName, ids: ids);
+    }
+    return wireHandleUuids(this, null, ids: ids);
   }
 }
 
 extension BenchwireHandleNestedUuidsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<FeatureUuid> benchHandleNestedUuids({required FeatureUuid ids}) async {
-    return wireHandleNestedUuids(this, ids: ids);
+  Future<FeatureUuid> benchHandleNestedUuids({required FeatureUuid ids, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleNestedUuids(this, timelineTaskName, ids: ids);
+    }
+    return wireHandleNestedUuids(this, null, ids: ids);
   }
 }
 
 extension BenchwireHandleStringsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<List<String>> benchHandleStrings({required List<String> strings}) async {
-    return wireHandleStrings(this, strings: strings);
+  Future<List<String>> benchHandleStrings({required List<String> strings, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireHandleStrings(this, timelineTaskName, strings: strings);
+    }
+    return wireHandleStrings(this, null, strings: strings);
   }
 }
 
 extension BenchwireSendI64Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int> benchSendI64({required int value}) async {
-    return wireSendI64(this, value: value);
+  Future<int> benchSendI64({required int value, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireSendI64(this, timelineTaskName, value: value);
+    }
+    return wireSendI64(this, null, value: value);
   }
 }
 
 extension BenchwireSumMethodSumWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<int> benchSumMethodSumWith({required SumWith that, required int y, required int z}) async {
-    return wireSumMethodSumWith(this, that: that, y: y, z: z);
+  Future<int> benchSumMethodSumWith(
+      {required SumWith that, required int y, required int z, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireSumMethodSumWith(this, timelineTaskName, that: that, y: y, z: z);
+    }
+    return wireSumMethodSumWith(this, null, that: that, y: y, z: z);
   }
 }
 
 extension BenchwireNewStaticMethodConcatenateWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<ConcatenateWith> benchNewStaticMethodConcatenateWith({required String a}) async {
-    return wireNewStaticMethodConcatenateWith(this, a: a);
+  Future<ConcatenateWith> benchNewStaticMethodConcatenateWith({required String a, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireNewStaticMethodConcatenateWith(this, timelineTaskName, a: a);
+    }
+    return wireNewStaticMethodConcatenateWith(this, null, a: a);
   }
 }
 
 extension BenchwireConcatenateMethodConcatenateWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<String> benchConcatenateMethodConcatenateWith({required ConcatenateWith that, required String b}) async {
-    return wireConcatenateMethodConcatenateWith(this, that: that, b: b);
+  Future<String> benchConcatenateMethodConcatenateWith(
+      {required ConcatenateWith that, required String b, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireConcatenateMethodConcatenateWith(this, timelineTaskName, that: that, b: b);
+    }
+    return wireConcatenateMethodConcatenateWith(this, null, that: that, b: b);
   }
 }
 
 extension BenchwireConcatenateStaticStaticMethodConcatenateWithExtension
     on FlutterRustBridgeExampleSingleBlockTestImpl {
-  Future<String> benchConcatenateStaticStaticMethodConcatenateWith({required String a, required String b}) async {
-    return wireConcatenateStaticStaticMethodConcatenateWith(this, a: a, b: b);
+  Future<String> benchConcatenateStaticStaticMethodConcatenateWith(
+      {required String a, required String b, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireConcatenateStaticStaticMethodConcatenateWith(this, timelineTaskName, a: a, b: b);
+    }
+    return wireConcatenateStaticStaticMethodConcatenateWith(this, null, a: a, b: b);
   }
 }

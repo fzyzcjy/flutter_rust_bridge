@@ -1040,19 +1040,27 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
 }
 
-Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int a, required int b}) async {
   final task = TimelineTask();
-  task.start('Bench simple_adder');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench simple_adder');
+  }
   return bridge.simpleAdder(a: a, b: b).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int myI32, required int myI64, required double myF64, required bool myBool}) async {
   final task = TimelineTask();
-  task.start('Bench primitive_types');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench primitive_types');
+  }
   return bridge
       .primitiveTypes(myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool)
       .then((value) => value)
@@ -1061,154 +1069,231 @@ Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int myU32}) async {
+Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required int myU32}) async {
   final task = TimelineTask();
-  task.start('Bench primitive_u32');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench primitive_u32');
+  }
   return bridge.primitiveU32(myU32: myU32).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required String s}) async {
+Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required String s}) async {
   final task = TimelineTask();
-  task.start('Bench handle_string');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_string');
+  }
   return bridge.handleString(s: s).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<void> wireHandleReturnUnit(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<void> wireHandleReturnUnit(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench handle_return_unit');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_return_unit');
+  }
   bridge.handleReturnUnit().whenComplete(() {
     task.finish();
   });
 }
 
-Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Uint8List v}) async {
+Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required Uint8List v}) async {
   final task = TimelineTask();
-  task.start('Bench handle_vec_u8');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_vec_u8');
+  }
   return bridge.handleVecU8(v: v).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int n}) async {
   final task = TimelineTask();
-  task.start('Bench handle_vec_of_primitive');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_vec_of_primitive');
+  }
   return bridge.handleVecOfPrimitive(n: n).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int n}) async {
   final task = TimelineTask();
-  task.start('Bench handle_zero_copy_vec_of_primitive');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_zero_copy_vec_of_primitive');
+  }
   return bridge.handleZeroCopyVecOfPrimitive(n: n).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MySize arg, required MySize boxed}) async {
   final task = TimelineTask();
-  task.start('Bench handle_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_struct');
+  }
   return bridge.handleStruct(arg: arg, boxed: boxed).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required NewTypeInt arg}) async {
   final task = TimelineTask();
-  task.start('Bench handle_newtype');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_newtype');
+  }
   return bridge.handleNewtype(arg: arg).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<List<MySize>> wireHandleListOfStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<List<MySize>> wireHandleListOfStruct(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<MySize> l}) async {
   final task = TimelineTask();
-  task.start('Bench handle_list_of_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_list_of_struct');
+  }
   return bridge.handleListOfStruct(l: l).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<String> names}) async {
   final task = TimelineTask();
-  task.start('Bench handle_string_list');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_string_list');
+  }
   return bridge.handleStringList(names: names).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MyTreeNode s}) async {
   final task = TimelineTask();
-  task.start('Bench handle_complex_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_complex_struct');
+  }
   return bridge.handleComplexStruct(s: s).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<int> wireReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench return_err');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench return_err');
+  }
   return bridge.returnErr().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<int> wireReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench return_panic');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench return_panic');
+  }
   return bridge.returnPanic().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required double left, required double right}) async {
   final task = TimelineTask();
-  task.start('Bench handle_optional_return');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_optional_return');
+  }
   return bridge.handleOptionalReturn(left: left, right: right).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {String? document}) async {
   final task = TimelineTask();
-  task.start('Bench handle_optional_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_optional_struct');
+  }
   return bridge.handleOptionalStruct(document: document).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<ExoticOptionals?> wireHandleOptionalIncrement(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<ExoticOptionals?> wireHandleOptionalIncrement(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {ExoticOptionals? opt}) async {
   final task = TimelineTask();
-  task.start('Bench handle_optional_increment');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_optional_increment');
+  }
   return bridge.handleOptionalIncrement(opt: opt).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<double> wireHandleIncrementBoxedOptional(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<double> wireHandleIncrementBoxedOptional(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {double? opt}) async {
   final task = TimelineTask();
-  task.start('Bench handle_increment_boxed_optional');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_increment_boxed_optional');
+  }
   return bridge.handleIncrementBoxedOptional(opt: opt).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<String> wireHandleOptionBoxArguments(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {int? i8Box,
     int? u8Box,
     int? i32Box,
@@ -1217,7 +1302,11 @@ Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockT
     bool? boolbox,
     ExoticOptionals? structbox}) async {
   final task = TimelineTask();
-  task.start('Bench handle_option_box_arguments');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_option_box_arguments');
+  }
   return bridge
       .handleOptionBoxArguments(
           i8Box: i8Box,
@@ -1233,331 +1322,509 @@ Future<String> wireHandleOptionBoxArguments(FlutterRustBridgeExampleSingleBlockT
   });
 }
 
-Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Note note}) async {
+Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required Note note}) async {
   final task = TimelineTask();
-  task.start('Bench print_note');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench print_note');
+  }
   return bridge.printNote(note: note).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String input}) async {
   final task = TimelineTask();
-  task.start('Bench handle_return_enum');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_return_enum');
+  }
   return bridge.handleReturnEnum(input: input).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Weekdays weekday}) async {
   final task = TimelineTask();
-  task.start('Bench handle_enum_parameter');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_enum_parameter');
+  }
   return bridge.handleEnumParameter(weekday: weekday).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Customized val}) async {
   final task = TimelineTask();
-  task.start('Bench handle_customized_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_customized_struct');
+  }
   bridge.handleCustomizedStruct(val: val).whenComplete(() {
     task.finish();
   });
 }
 
-Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required KitchenSink val}) async {
   final task = TimelineTask();
-  task.start('Bench handle_enum_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_enum_struct');
+  }
   return bridge.handleEnumStruct(val: val).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MyStruct myStruct}) async {
   final task = TimelineTask();
-  task.start('Bench use_imported_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench use_imported_struct');
+  }
   return bridge.useImportedStruct(myStruct: myStruct).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required MyEnum myEnum}) async {
+Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required MyEnum myEnum}) async {
   final task = TimelineTask();
-  task.start('Bench use_imported_enum');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench use_imported_enum');
+  }
   return bridge.useImportedEnum(myEnum: myEnum).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<ApplicationSettings> wireGetAppSettings(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<ApplicationSettings> wireGetAppSettings(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench get_app_settings');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench get_app_settings');
+  }
   return bridge.getAppSettings().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required ApplicationSettings appSettings}) async {
   final task = TimelineTask();
-  task.start('Bench is_app_embedded');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench is_app_embedded');
+  }
   return bridge.isAppEmbedded(appSettings: appSettings).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<ApplicationMessage> wireGetMessage(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<ApplicationMessage> wireGetMessage(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench get_message');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench get_message');
+  }
   return bridge.getMessage().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int num, required int times}) async {
   final task = TimelineTask();
-  task.start('Bench repeat_number');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench repeat_number');
+  }
   return bridge.repeatNumber(num: num, times: times).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Sequences> wireRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<Sequences> wireRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int seq, required int times}) async {
   final task = TimelineTask();
-  task.start('Bench repeat_sequence');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench repeat_sequence');
+  }
   return bridge.repeatSequence(seq: seq, times: times).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Numbers nums}) async {
+Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required Numbers nums}) async {
   final task = TimelineTask();
-  task.start('Bench first_number');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench first_number');
+  }
   return bridge.firstNumber(nums: nums).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Sequences seqs}) async {
+Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required Sequences seqs}) async {
   final task = TimelineTask();
-  task.start('Bench first_sequence');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench first_sequence');
+  }
   return bridge.firstSequence(seqs: seqs).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Uint8List> wireGetArray(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<Uint8List> wireGetArray(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench get_array');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench get_array');
+  }
   return bridge.getArray().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<List<Point>> wireGetComplexArray(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<List<Point>> wireGetComplexArray(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench get_complex_array');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench get_complex_array');
+  }
   return bridge.getComplexArray().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int u}) async {
+Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required int u}) async {
   final task = TimelineTask();
-  task.start('Bench get_usize');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench get_usize');
+  }
   return bridge.getUsize(u: u).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required UserId userId}) async {
+Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required UserId userId}) async {
   final task = TimelineTask();
-  task.start('Bench next_user_id');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench next_user_id');
+  }
   return bridge.nextUserId(userId: userId).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<void> wireCloseEventListener(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<void> wireCloseEventListener(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench close_event_listener');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench close_event_listener');
+  }
   bridge.closeEventListener().whenComplete(() {
     task.finish();
   });
 }
 
-Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String address, required String payload}) async {
   final task = TimelineTask();
-  task.start('Bench create_event');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench create_event');
+  }
   bridge.createEvent(address: address, payload: payload).whenComplete(() {
     task.finish();
   });
 }
 
-Future<SumWith> wireGetSumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<SumWith> wireGetSumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench get_sum_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench get_sum_struct');
+  }
   return bridge.getSumStruct().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Measure measure}) async {
   final task = TimelineTask();
-  task.start('Bench multiply_by_ten');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench multiply_by_ten');
+  }
   return bridge.multiplyByTen(measure: measure).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<OldSimpleStruct> wireCallOldModuleSystem(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<OldSimpleStruct> wireCallOldModuleSystem(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench call_old_module_system');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench call_old_module_system');
+  }
   return bridge.callOldModuleSystem().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<NewSimpleStruct> wireCallNewModuleSystem(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<NewSimpleStruct> wireCallNewModuleSystem(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench call_new_module_system');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench call_new_module_system');
+  }
   return bridge.callNewModuleSystem().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<BigBuffers> wireHandleBigBuffers(FlutterRustBridgeExampleSingleBlockTestImpl bridge) async {
+Future<BigBuffers> wireHandleBigBuffers(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench handle_big_buffers');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_big_buffers');
+  }
   return bridge.handleBigBuffers().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
+Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required DateTime d}) async {
   final task = TimelineTask();
-  task.start('Bench datetime_utc');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench datetime_utc');
+  }
   return bridge.datetimeUtc(d: d).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
+Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required DateTime d}) async {
   final task = TimelineTask();
-  task.start('Bench datetime_local');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench datetime_local');
+  }
   return bridge.datetimeLocal(d: d).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required DateTime d}) async {
+Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required DateTime d}) async {
   final task = TimelineTask();
-  task.start('Bench naivedatetime');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench naivedatetime');
+  }
   return bridge.naivedatetime(d: d).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required Duration d}) async {
+Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required Duration d}) async {
   final task = TimelineTask();
-  task.start('Bench duration');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench duration');
+  }
   return bridge.duration(d: d).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required FeatureChrono mine}) async {
   final task = TimelineTask();
-  task.start('Bench how_long_does_it_take');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench how_long_does_it_take');
+  }
   return bridge.howLongDoesItTake(mine: mine).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required UuidValue id}) async {
+Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required UuidValue id}) async {
   final task = TimelineTask();
-  task.start('Bench handle_uuid');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_uuid');
+  }
   return bridge.handleUuid(id: id).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<UuidValue> ids}) async {
   final task = TimelineTask();
-  task.start('Bench handle_uuids');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_uuids');
+  }
   return bridge.handleUuids(ids: ids).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required FeatureUuid ids}) async {
   final task = TimelineTask();
-  task.start('Bench handle_nested_uuids');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_nested_uuids');
+  }
   return bridge.handleNestedUuids(ids: ids).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<List<String>> wireHandleStrings(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<List<String>> wireHandleStrings(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<String> strings}) async {
   final task = TimelineTask();
-  task.start('Bench handle_strings');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_strings');
+  }
   return bridge.handleStrings(strings: strings).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int value}) async {
+Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required int value}) async {
   final task = TimelineTask();
-  task.start('Bench send_i64');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench send_i64');
+  }
   return bridge.sendI64(value: value).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<int> wireSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required SumWith that, required int y, required int z}) async {
   final task = TimelineTask();
-  task.start('Bench sum__method__SumWith');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench sum__method__SumWith');
+  }
   return bridge.sumMethodSumWith(that: that, y: y, z: z).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String a}) async {
   final task = TimelineTask();
-  task.start('Bench new__static_method__ConcatenateWith');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench new__static_method__ConcatenateWith');
+  }
   return bridge.newStaticMethodConcatenateWith(a: a).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<String> wireConcatenateMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<String> wireConcatenateMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required ConcatenateWith that, required String b}) async {
   final task = TimelineTask();
-  task.start('Bench concatenate__method__ConcatenateWith');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench concatenate__method__ConcatenateWith');
+  }
   return bridge.concatenateMethodConcatenateWith(that: that, b: b).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<String> wireConcatenateStaticStaticMethodConcatenateWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+Future<String> wireConcatenateStaticStaticMethodConcatenateWith(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String a, required String b}) async {
   final task = TimelineTask();
-  task.start('Bench concatenate_static__static_method__ConcatenateWith');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench concatenate_static__static_method__ConcatenateWith');
+  }
   return bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b).then((value) => value).whenComplete(() {
     task.finish();
   });

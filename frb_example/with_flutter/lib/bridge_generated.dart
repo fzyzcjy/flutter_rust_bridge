@@ -292,79 +292,115 @@ Uint8List _wire2api_uint_8_list(dynamic raw) {
 
 extension BenchwireDrawMandelbrotExtension on FlutterRustBridgeExampleImpl {
   Future<Uint8List> benchDrawMandelbrot(
-      {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
-    return wireDrawMandelbrot(this, imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads);
+      {required Size imageSize,
+      required Point zoomPoint,
+      required double scale,
+      required int numThreads,
+      String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireDrawMandelbrot(this, timelineTaskName,
+          imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads);
+    }
+    return wireDrawMandelbrot(this, null,
+        imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads);
   }
 }
 
 extension BenchwirePassingComplexStructsExtension on FlutterRustBridgeExampleImpl {
-  Future<String> benchPassingComplexStructs({required TreeNode root}) async {
-    return wirePassingComplexStructs(this, root: root);
+  Future<String> benchPassingComplexStructs({required TreeNode root, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wirePassingComplexStructs(this, timelineTaskName, root: root);
+    }
+    return wirePassingComplexStructs(this, null, root: root);
   }
 }
 
 extension BenchwireReturningStructsWithBoxedFieldsExtension on FlutterRustBridgeExampleImpl {
-  Future<BoxedPoint> benchReturningStructsWithBoxedFields() async {
-    return wireReturningStructsWithBoxedFields(
-      this,
-    );
+  Future<BoxedPoint> benchReturningStructsWithBoxedFields({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireReturningStructsWithBoxedFields(this, timelineTaskName);
+    }
+    return wireReturningStructsWithBoxedFields(this, null);
   }
 }
 
 extension BenchwireOffTopicMemoryTestInputArrayExtension on FlutterRustBridgeExampleImpl {
-  Future<int> benchOffTopicMemoryTestInputArray({required Uint8List input}) async {
-    return wireOffTopicMemoryTestInputArray(this, input: input);
+  Future<int> benchOffTopicMemoryTestInputArray({required Uint8List input, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicMemoryTestInputArray(this, timelineTaskName, input: input);
+    }
+    return wireOffTopicMemoryTestInputArray(this, null, input: input);
   }
 }
 
 extension BenchwireOffTopicMemoryTestOutputZeroCopyBufferExtension on FlutterRustBridgeExampleImpl {
-  Future<Uint8List> benchOffTopicMemoryTestOutputZeroCopyBuffer({required int len}) async {
-    return wireOffTopicMemoryTestOutputZeroCopyBuffer(this, len: len);
+  Future<Uint8List> benchOffTopicMemoryTestOutputZeroCopyBuffer({required int len, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicMemoryTestOutputZeroCopyBuffer(this, timelineTaskName, len: len);
+    }
+    return wireOffTopicMemoryTestOutputZeroCopyBuffer(this, null, len: len);
   }
 }
 
 extension BenchwireOffTopicMemoryTestOutputVecU8Extension on FlutterRustBridgeExampleImpl {
-  Future<Uint8List> benchOffTopicMemoryTestOutputVecU8({required int len}) async {
-    return wireOffTopicMemoryTestOutputVecU8(this, len: len);
+  Future<Uint8List> benchOffTopicMemoryTestOutputVecU8({required int len, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicMemoryTestOutputVecU8(this, timelineTaskName, len: len);
+    }
+    return wireOffTopicMemoryTestOutputVecU8(this, null, len: len);
   }
 }
 
 extension BenchwireOffTopicMemoryTestInputVecOfObjectExtension on FlutterRustBridgeExampleImpl {
-  Future<int> benchOffTopicMemoryTestInputVecOfObject({required List<Size> input}) async {
-    return wireOffTopicMemoryTestInputVecOfObject(this, input: input);
+  Future<int> benchOffTopicMemoryTestInputVecOfObject({required List<Size> input, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicMemoryTestInputVecOfObject(this, timelineTaskName, input: input);
+    }
+    return wireOffTopicMemoryTestInputVecOfObject(this, null, input: input);
   }
 }
 
 extension BenchwireOffTopicMemoryTestOutputVecOfObjectExtension on FlutterRustBridgeExampleImpl {
-  Future<List<Size>> benchOffTopicMemoryTestOutputVecOfObject({required int len}) async {
-    return wireOffTopicMemoryTestOutputVecOfObject(this, len: len);
+  Future<List<Size>> benchOffTopicMemoryTestOutputVecOfObject({required int len, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicMemoryTestOutputVecOfObject(this, timelineTaskName, len: len);
+    }
+    return wireOffTopicMemoryTestOutputVecOfObject(this, null, len: len);
   }
 }
 
 extension BenchwireOffTopicMemoryTestInputComplexStructExtension on FlutterRustBridgeExampleImpl {
-  Future<int> benchOffTopicMemoryTestInputComplexStruct({required TreeNode input}) async {
-    return wireOffTopicMemoryTestInputComplexStruct(this, input: input);
+  Future<int> benchOffTopicMemoryTestInputComplexStruct({required TreeNode input, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicMemoryTestInputComplexStruct(this, timelineTaskName, input: input);
+    }
+    return wireOffTopicMemoryTestInputComplexStruct(this, null, input: input);
   }
 }
 
 extension BenchwireOffTopicMemoryTestOutputComplexStructExtension on FlutterRustBridgeExampleImpl {
-  Future<TreeNode> benchOffTopicMemoryTestOutputComplexStruct({required int len}) async {
-    return wireOffTopicMemoryTestOutputComplexStruct(this, len: len);
+  Future<TreeNode> benchOffTopicMemoryTestOutputComplexStruct({required int len, String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicMemoryTestOutputComplexStruct(this, timelineTaskName, len: len);
+    }
+    return wireOffTopicMemoryTestOutputComplexStruct(this, null, len: len);
   }
 }
 
 extension BenchwireOffTopicDeliberatelyReturnErrorExtension on FlutterRustBridgeExampleImpl {
-  Future<int> benchOffTopicDeliberatelyReturnError() async {
-    return wireOffTopicDeliberatelyReturnError(
-      this,
-    );
+  Future<int> benchOffTopicDeliberatelyReturnError({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicDeliberatelyReturnError(this, timelineTaskName);
+    }
+    return wireOffTopicDeliberatelyReturnError(this, null);
   }
 }
 
 extension BenchwireOffTopicDeliberatelyPanicExtension on FlutterRustBridgeExampleImpl {
-  Future<int> benchOffTopicDeliberatelyPanic() async {
-    return wireOffTopicDeliberatelyPanic(
-      this,
-    );
+  Future<int> benchOffTopicDeliberatelyPanic({String? timelineTaskName}) async {
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      return wireOffTopicDeliberatelyPanic(this, timelineTaskName);
+    }
+    return wireOffTopicDeliberatelyPanic(this, null);
   }
 }

@@ -149,10 +149,14 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
 }
 
-Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge,
+Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
   final task = TimelineTask();
-  task.start('Bench draw_mandelbrot');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench draw_mandelbrot');
+  }
   return bridge
       .drawMandelbrot(imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads)
       .then((value) => value)
@@ -161,94 +165,145 @@ Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge,
   });
 }
 
-Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl bridge, {required TreeNode root}) async {
+Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+    {required TreeNode root}) async {
   final task = TimelineTask();
-  task.start('Bench passing_complex_structs');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench passing_complex_structs');
+  }
   return bridge.passingComplexStructs(root: root).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<BoxedPoint> wireReturningStructsWithBoxedFields(FlutterRustBridgeExampleImpl bridge) async {
+Future<BoxedPoint> wireReturningStructsWithBoxedFields(
+    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench returning_structs_with_boxed_fields');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench returning_structs_with_boxed_fields');
+  }
   return bridge.returningStructsWithBoxedFields().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge, {required Uint8List input}) async {
+Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+    {required Uint8List input}) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_memory_test_input_array');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_memory_test_input_array');
+  }
   return bridge.offTopicMemoryTestInputArray(input: input).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(FlutterRustBridgeExampleImpl bridge,
+Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(
+    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_memory_test_output_zero_copy_buffer');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_memory_test_output_zero_copy_buffer');
+  }
   return bridge.offTopicMemoryTestOutputZeroCopyBuffer(len: len).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl bridge, {required int len}) async {
+Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+    {required int len}) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_memory_test_output_vec_u8');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_memory_test_output_vec_u8');
+  }
   return bridge.offTopicMemoryTestOutputVecU8(len: len).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl bridge,
+Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required List<Size> input}) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_memory_test_input_vec_of_object');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_memory_test_input_vec_of_object');
+  }
   return bridge.offTopicMemoryTestInputVecOfObject(input: input).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(FlutterRustBridgeExampleImpl bridge,
+Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(
+    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_memory_test_output_vec_of_object');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_memory_test_output_vec_of_object');
+  }
   return bridge.offTopicMemoryTestOutputVecOfObject(len: len).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl bridge,
+Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required TreeNode input}) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_memory_test_input_complex_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_memory_test_input_complex_struct');
+  }
   return bridge.offTopicMemoryTestInputComplexStruct(input: input).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(FlutterRustBridgeExampleImpl bridge,
+Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(
+    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_memory_test_output_complex_struct');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_memory_test_output_complex_struct');
+  }
   return bridge.offTopicMemoryTestOutputComplexStruct(len: len).then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bridge) async {
+Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_deliberately_return_error');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_deliberately_return_error');
+  }
   return bridge.offTopicDeliberatelyReturnError().then((value) => value).whenComplete(() {
     task.finish();
   });
 }
 
-Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge) async {
+Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
-  task.start('Bench off_topic_deliberately_panic');
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench off_topic_deliberately_panic');
+  }
   return bridge.offTopicDeliberatelyPanic().then((value) => value).whenComplete(() {
     task.finish();
   });
