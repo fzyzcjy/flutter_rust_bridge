@@ -1087,6 +1087,19 @@ fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureU
         },
     )
 }
+fn wire_handle_strings_impl(port_: MessagePort, strings: impl Wire2Api<Vec<String>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_strings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_strings = strings.wire2api();
+            move |task_callback| handle_strings(api_strings)
+        },
+    )
+}
 fn wire_send_i64_impl(port_: MessagePort, value: impl Wire2Api<i64> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

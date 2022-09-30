@@ -379,6 +379,11 @@ pub fn wire_handle_nested_uuids(port_: MessagePort, ids: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_strings(port_: MessagePort, strings: JsValue) {
+    wire_handle_strings_impl(port_, strings)
+}
+
+#[wasm_bindgen]
 pub fn wire_send_i64(port_: MessagePort, value: i64) {
     wire_send_i64_impl(port_, value)
 }

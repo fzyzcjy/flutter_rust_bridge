@@ -387,6 +387,11 @@ pub extern "C" fn wire_handle_nested_uuids(port_: i64, ids: *mut wire_FeatureUui
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_strings(port_: i64, strings: *mut wire_StringList) {
+    wire_handle_strings_impl(port_, strings)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_send_i64(port_: i64, value: i64) {
     wire_send_i64_impl(port_, value)
 }

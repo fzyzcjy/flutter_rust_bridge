@@ -316,6 +316,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
 
+  Future<List<String>> handleStrings({required List<String> strings, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStringsConstMeta;
+
   Future<int> sendI64({required int value, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSendI64ConstMeta;

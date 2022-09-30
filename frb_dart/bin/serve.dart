@@ -91,7 +91,7 @@ class Opts {
     defaultsTo: 8080,
   )
   late int port;
-  
+
   @CliOption(
     abbr: 'r',
     help: 'Root of the Flutter/Dart output',

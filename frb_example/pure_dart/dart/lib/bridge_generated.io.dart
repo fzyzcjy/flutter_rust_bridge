@@ -1479,6 +1479,19 @@ Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTes
   });
 }
 
+Future<List<String>> wireHandleStrings(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
+    {required List<String> strings}) async {
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
+  return bridge.handleStrings(strings: strings).then((value) => value).whenComplete(() {
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    print('Bench handle_strings executed in $diff microseconds');
+  });
+}
+
 Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, {required int value}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -2613,6 +2626,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_handle_nested_uuids');
   late final _wire_handle_nested_uuids =
       _wire_handle_nested_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureUuid>)>();
+
+  void wire_handle_strings(
+    int port_,
+    ffi.Pointer<wire_StringList> strings,
+  ) {
+    return _wire_handle_strings(
+      port_,
+      strings,
+    );
+  }
+
+  late final _wire_handle_stringsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StringList>)>>('wire_handle_strings');
+  late final _wire_handle_strings =
+      _wire_handle_stringsPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
 
   void wire_send_i64(
     int port_,

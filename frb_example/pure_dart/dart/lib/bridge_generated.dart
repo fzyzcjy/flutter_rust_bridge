@@ -1016,6 +1016,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["ids"],
       );
 
+  Future<List<String>> handleStrings({required List<String> strings, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_handle_strings(port_, _platform.api2wire_StringList(strings)),
+        parseSuccessData: _wire2api_StringList,
+        constMeta: kHandleStringsConstMeta,
+        argValues: [strings],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleStringsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_strings",
+        argNames: ["strings"],
+      );
+
   Future<int> sendI64({required int value, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_send_i64(port_, _platform.api2wire_i64(value)),
         parseSuccessData: _wire2api_i64,
@@ -2314,6 +2328,12 @@ extension BenchwireHandleUuidsExtension on FlutterRustBridgeExampleSingleBlockTe
 extension BenchwireHandleNestedUuidsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<FeatureUuid> benchHandleNestedUuids({required FeatureUuid ids}) async {
     return wireHandleNestedUuids(this, ids: ids);
+  }
+}
+
+extension BenchwireHandleStringsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<List<String>> benchHandleStrings({required List<String> strings}) async {
+    return wireHandleStrings(this, strings: strings);
   }
 }
 
