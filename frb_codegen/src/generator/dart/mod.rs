@@ -169,6 +169,39 @@ impl DartApiSpec {
                         .join(",");
                     let target = config.dart_api_impl_class_name();
                     let ext = format!("Bench{wire}Extension");
+                    let wire_wasm_implementation_return = format!("
+                        final stopwatch = Stopwatch();
+                        final int starts = stopwatch.elapsedMicroseconds;
+                        stopwatch.start();
+                        return bridge.{camel}({params})
+                        .then((value) => value)
+                        .whenComplete(() {{
+                          stopwatch.stop();
+                          final int ends = stopwatch.elapsedMicroseconds;
+                          final int diff = ends - starts;
+                          if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+                            print('Bench [$timelineTaskName] {name} executed in $diff microsecond(s)');
+                          }} else {{
+                            print('Bench {name} executed in $diff microsecond(s)');
+                          }}
+                        }});
+                    ");
+                    let wire_wasm_implementation_void = format!(
+                        "
+                        final stopwatch = Stopwatch();
+                        final int starts = stopwatch.elapsedMicroseconds;
+                        stopwatch.start();
+                        bridge.{camel}({params}).whenComplete(() {{
+                          stopwatch.stop();
+                          final int ends = stopwatch.elapsedMicroseconds;
+                          final int diff = ends - starts;
+                          if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+                            print('Bench [$timelineTaskName] {name} executed in $diff microsecond(s)');
+                          }} else {{
+                            print('Bench {name} executed in $diff microsecond(s)');
+                          }}
+                        }});"
+                    );
                     let wire_implementation_return = format!(
                         "
                         final task = TimelineTask();
@@ -230,9 +263,9 @@ impl DartApiSpec {
                                 )
                             },
                             implementation: if output != "void" {
-                                wire_implementation_return.clone()
+                                wire_implementation_return
                             } else {
-                                wire_implementation_void.clone()
+                                wire_implementation_void
                             },
                         },
                         wasm: GeneratedFunc {
@@ -244,9 +277,9 @@ impl DartApiSpec {
                                 )
                             },
                             implementation: if output != "void" {
-                                wire_implementation_return
+                                wire_wasm_implementation_return
                             } else {
-                                wire_implementation_void
+                                wire_wasm_implementation_void
                             },
                         },
                     });
