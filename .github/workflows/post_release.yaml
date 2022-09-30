@@ -181,7 +181,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install released version of codegen
-        run: cargo install flutter_rust_bridge_codegen --features="chrono,uuid"
+        run: cargo install flutter_rust_bridge_codegen --features="chrono,uuid,benchmarking"
 
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)

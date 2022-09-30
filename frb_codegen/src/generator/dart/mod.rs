@@ -93,6 +93,7 @@ pub(crate) struct DartApiSpec {
     dart_wasm_funcs: Vec<String>,
     dart_wasm_module: Option<String>,
     needs_freezed: bool,
+    #[cfg(feature = "benchmarking")]
     dart_bench_funcs: Vec<GeneratedBenchFunc>,
 }
 
@@ -137,6 +138,7 @@ impl DartApiSpec {
             .iter()
             .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
             .collect::<Vec<_>>();
+        #[cfg(feature = "benchmarking")]
         let dart_bench_funcs = ir_file
             .funcs
             .iter()
@@ -320,6 +322,7 @@ impl DartApiSpec {
             dart_wasm_funcs,
             dart_wasm_module,
             needs_freezed,
+            #[cfg(feature = "benchmarking")]
             dart_bench_funcs,
         }
     }
@@ -434,6 +437,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         dart_wasm_module,
         dart_structs: _,
         needs_freezed: _,
+        #[cfg(feature = "benchmarking")]
         dart_bench_funcs,
     } = spec;
 
@@ -499,6 +503,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             config,
         );
     }
+    #[cfg(feature = "benchmarking")]
     if config.bench_extended {
         push_benchmark_funcs(&mut lines, dart_bench_funcs);
     }
