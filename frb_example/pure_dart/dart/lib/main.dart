@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge_example/utils.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
@@ -622,9 +623,34 @@ void main(List<String> args) async {
     });
   });
 
-  test('i64', () async {
-    final output = await api.benchSendI64(value: 42);
-    expect(output, 42);
+  group('benchmark simple roundtrip', () {
+    late List<UuidValue> thousandUuids;
+    late List<String> thousandStrings;
+    late List<UuidValue> hundredThousandUuids;
+    late List<String> hundredThousandStrings;
+    setUp(() {
+      final Uuid uuid = Uuid();
+      thousandUuids = List<UuidValue>.generate(1000, (index) => uuid.v4obj());
+      thousandStrings = List<String>.generate(1000, (index) => getRandomString(uuidSizeInBytes));
+      hundredThousandUuids = List<UuidValue>.generate(100000, (index) => uuid.v4obj());
+      hundredThousandStrings = List<String>.generate(100000, (index) => getRandomString(uuidSizeInBytes));
+    });
+    test('1,000 uuids', () async {
+      final output = await api.benchHandleUuids(ids: thousandUuids);
+      expect(output, thousandUuids);
+    });
+    test('1,000 strings', () async {
+      final output = await api.benchHandleStrings(strings: thousandStrings);
+      expect(output, thousandStrings);
+    });
+    test('100,000 uuids', () async {
+      final output = await api.benchHandleUuids(ids: hundredThousandUuids);
+      expect(output, hundredThousandUuids);
+    });
+    test('100,000 strings', () async {
+      final output = await api.benchHandleStrings(strings: hundredThousandStrings);
+      expect(output, hundredThousandStrings);
+    });
   });
 }
 
