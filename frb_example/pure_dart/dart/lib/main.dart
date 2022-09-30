@@ -12,6 +12,11 @@ String? skipWeb([String reason = 'unspecified']) => isWeb ? 'Skipped on web (rea
 
 void main(List<String> args) async {
   String dylibPath = args[0];
+  var releaseMode = true;
+  assert(() {
+    releaseMode = false;
+    return true;
+  }());
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
@@ -505,6 +510,11 @@ void main(List<String> args) async {
       await api.multiplyByTen(measure: Measure.speed(Speed_Unknown())),
       null,
     );
+    final skipMinified = releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+    expect((Speed_Unknown).toString(), 'Speed_Unknown', skip: skipMinified);
+    expect((Speed_GPS).toString(), 'Speed_GPS', skip: skipMinified);
+    expect((Distance_Unknown).toString(), 'Distance_Unknown', skip: skipMinified);
+    expect((Distance_Map).toString(), 'Distance_Map', skip: skipMinified);
   });
 
   test('resolve module for old module system', () async {
