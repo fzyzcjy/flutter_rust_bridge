@@ -34,6 +34,9 @@ impl IrFunc {
             self.bench_extension_name()
         )
     }
+    pub(crate) fn is_void(&self) -> bool {
+        self.output_dart_api_type() == "void" || self.output_dart_api_type() == "Future<void>"
+    }
     /// list of inputs in method signature
     pub(crate) fn as_typed_dart_inputs(&self) -> String {
         self.inputs
@@ -97,7 +100,7 @@ impl IrFunc {
     }
     /// io specific method body
     pub(crate) fn as_io_body(&self) -> String {
-        if self.output_dart_api_type() != "void" {
+        if !self.is_void() {
             return format!(
                 "
                 final task = TimelineTask();
@@ -149,7 +152,7 @@ impl IrFunc {
         )
     }
     pub(crate) fn as_wasm_body(&self) -> String {
-        if self.output_dart_api_type() != "void" {
+        if !self.is_void() {
             return format!(
                 "
                 final stopwatch = Stopwatch();
