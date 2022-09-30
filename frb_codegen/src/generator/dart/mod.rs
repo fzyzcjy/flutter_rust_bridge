@@ -142,152 +142,7 @@ impl DartApiSpec {
         let dart_bench_funcs = ir_file
             .funcs
             .iter()
-            .filter_map(|x| {
-                if x.mode == IrFuncMode::Normal {
-                    let output = x.output.dart_api_type();
-                    let name = x.name.clone();
-                    let camel = x.name.clone().to_case(Case::Camel);
-                    let suffix = x.name.clone().to_case(Case::UpperCamel);
-                    let bench = format!("bench{suffix}",);
-                    let wire = format!("wire{suffix}",);
-                    let inputs = x
-                        .inputs
-                        .iter()
-                        .map(|x| {
-                            let field_ty = x.ty.dart_api_type();
-                            let field_name = x.name.to_string().to_case(Case::Camel);
-                            if x.ty.is_optional() {
-                                return format!("{field_ty} {field_name}");
-                            }
-                            format!("required {field_ty} {field_name}")
-                        })
-                        .collect::<Vec<_>>()
-                        .join(",");
-                    let params = x
-                        .inputs
-                        .iter()
-                        .map(|x| format!("{}: {0}", x.name.to_string().to_case(Case::Camel)))
-                        .collect::<Vec<_>>()
-                        .join(",");
-                    let target = config.dart_api_impl_class_name();
-                    let ext = format!("Bench{wire}Extension");
-                    let wire_wasm_implementation_return = format!("
-                        final stopwatch = Stopwatch();
-                        final int starts = stopwatch.elapsedMicroseconds;
-                        stopwatch.start();
-                        return bridge.{camel}({params})
-                        .then((value) => value)
-                        .whenComplete(() {{
-                          stopwatch.stop();
-                          final int ends = stopwatch.elapsedMicroseconds;
-                          final int diff = ends - starts;
-                          if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                            print('Bench [$timelineTaskName] {name} executed in $diff microsecond(s)');
-                          }} else {{
-                            print('Bench {name} executed in $diff microsecond(s)');
-                          }}
-                        }});
-                    ");
-                    let wire_wasm_implementation_void = format!(
-                        "
-                        final stopwatch = Stopwatch();
-                        final int starts = stopwatch.elapsedMicroseconds;
-                        stopwatch.start();
-                        bridge.{camel}({params}).whenComplete(() {{
-                          stopwatch.stop();
-                          final int ends = stopwatch.elapsedMicroseconds;
-                          final int diff = ends - starts;
-                          if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                            print('Bench [$timelineTaskName] {name} executed in $diff microsecond(s)');
-                          }} else {{
-                            print('Bench {name} executed in $diff microsecond(s)');
-                          }}
-                        }});"
-                    );
-                    let wire_implementation_return = format!(
-                        "
-                        final task = TimelineTask();
-                        if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                          task.start('Bench $timelineTaskName');
-                        }} else {{
-                          task.start('Bench {name}');
-                        }}
-                        return bridge.{camel}({params})
-                        .then((value) => value)
-                        .whenComplete(() {{
-                          task.finish();
-                        }});"
-                    );
-                    let wire_implementation_void = format!(
-                        "
-                        final task = TimelineTask();
-                        if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                          task.start('Bench $timelineTaskName');
-                        }} else {{
-                          task.start('Bench {name}');
-                        }}
-                        bridge.{camel}({params}).whenComplete(() {{
-                          task.finish();
-                        }});"
-                    );
-                    return Some(GeneratedBenchFunc {
-                        common: GeneratedExtensionFunc {
-                            extend: format!("extension {ext} on {target}"),
-                            signature: if inputs.is_empty() {
-                                format!("Future<{output}> {bench}({{String? timelineTaskName}}) async")
-                            } else {
-                                format!(
-                                    "Future<{output}> {bench}({{{inputs}, String? timelineTaskName}}) async"
-                                )
-                            },
-                            implementation: if inputs.is_empty() {
-                              format!("
-                              if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                                return {wire}(this,timelineTaskName);
-                              }}
-                              return {wire}(this,null);
-                              ")
-                            } else {
-                              format!("
-                              if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                                return {wire}(this,timelineTaskName,{params});
-                              }}
-                              return {wire}(this,null,{params});
-                              ")
-                            }
-                        },
-                        io: GeneratedFunc {
-                            signature: if inputs.is_empty() {
-                                format!("Future<{output}> {wire}({target} bridge, String? timelineTaskName) async")
-                            } else {
-                                format!(
-                                    "Future<{output}> {wire}({target} bridge, String? timelineTaskName, {{{inputs}}}) async"
-                                )
-                            },
-                            implementation: if output != "void" {
-                                wire_implementation_return
-                            } else {
-                                wire_implementation_void
-                            },
-                        },
-                        wasm: GeneratedFunc {
-                            signature: if inputs.is_empty() {
-                                format!("Future<{output}> {wire}({target} bridge, String? timelineTaskName) async")
-                            } else {
-                                format!(
-                                    "Future<{output}> {wire}({target} bridge, String? timelineTaskName, {{{inputs}}}) async"
-                                )
-                            },
-                            implementation: if output != "void" {
-                                wire_wasm_implementation_return
-                            } else {
-                                wire_wasm_implementation_void
-                            },
-                        },
-                    });
-                }
-                None
-            })
+            .filter_map(|x| generate_bench_func(x, config))
             .collect::<Vec<_>>();
 
         let ir_wasm_func_exports = config.wasm_enabled.then(|| {
@@ -700,6 +555,165 @@ fn generate_wire2api_func(
         ty.dart_param_type(),
         body,
     )
+}
+
+#[cfg(feature = "benchmarking")]
+#[allow(clippy::too_many_lines)]
+fn generate_bench_func(func: &IrFunc, config: &Opts) -> Option<GeneratedBenchFunc> {
+    if func.mode == IrFuncMode::Normal {
+        let output = func.output.dart_api_type();
+        let name = func.name.clone();
+        let camel = func.name.clone().to_case(Case::Camel);
+        let suffix = func.name.clone().to_case(Case::UpperCamel);
+        let bench = format!("bench{suffix}",);
+        let wire = format!("wire{suffix}",);
+        let inputs = func
+            .inputs
+            .iter()
+            .map(|x| {
+                let field_ty = x.ty.dart_api_type();
+                let field_name = x.name.to_string().to_case(Case::Camel);
+                if x.ty.is_optional() {
+                    return format!("{field_ty} {field_name}");
+                }
+                format!("required {field_ty} {field_name}")
+            })
+            .collect::<Vec<_>>()
+            .join(",");
+        let params = func
+            .inputs
+            .iter()
+            .map(|x| format!("{}: {0}", x.name.to_string().to_case(Case::Camel)))
+            .collect::<Vec<_>>()
+            .join(",");
+        let target = config.dart_api_impl_class_name();
+        let ext = format!("Bench{wire}Extension");
+        let wire_wasm_implementation_return = format!(
+            "
+        final stopwatch = Stopwatch();
+        final int starts = stopwatch.elapsedMicroseconds;
+        stopwatch.start();
+        return bridge.{camel}({params})
+        .then((value) => value)
+        .whenComplete(() {{
+          stopwatch.stop();
+          final int ends = stopwatch.elapsedMicroseconds;
+          final int diff = ends - starts;
+          if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+            print('Bench [$timelineTaskName] {name} executed in $diff microsecond(s)');
+          }} else {{
+            print('Bench {name} executed in $diff microsecond(s)');
+          }}
+        }});
+    "
+        );
+        let wire_wasm_implementation_void = format!(
+            "
+        final stopwatch = Stopwatch();
+        final int starts = stopwatch.elapsedMicroseconds;
+        stopwatch.start();
+        bridge.{camel}({params}).whenComplete(() {{
+          stopwatch.stop();
+          final int ends = stopwatch.elapsedMicroseconds;
+          final int diff = ends - starts;
+          if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+            print('Bench [$timelineTaskName] {name} executed in $diff microsecond(s)');
+          }} else {{
+            print('Bench {name} executed in $diff microsecond(s)');
+          }}
+        }});"
+        );
+        let wire_implementation_return = format!(
+            "
+        final task = TimelineTask();
+        if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+          task.start('Bench $timelineTaskName');
+        }} else {{
+          task.start('Bench {name}');
+        }}
+        return bridge.{camel}({params})
+        .then((value) => value)
+        .whenComplete(() {{
+          task.finish();
+        }});"
+        );
+        let wire_implementation_void = format!(
+            "
+        final task = TimelineTask();
+        if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+          task.start('Bench $timelineTaskName');
+        }} else {{
+          task.start('Bench {name}');
+        }}
+        bridge.{camel}({params}).whenComplete(() {{
+          task.finish();
+        }});"
+        );
+        return Some(GeneratedBenchFunc {
+            common: GeneratedExtensionFunc {
+                extend: format!("extension {ext} on {target}"),
+                signature: if inputs.is_empty() {
+                    format!("Future<{output}> {bench}({{String? timelineTaskName}}) async")
+                } else {
+                    format!(
+                        "Future<{output}> {bench}({{{inputs}, String? timelineTaskName}}) async"
+                    )
+                },
+                implementation: if inputs.is_empty() {
+                    format!(
+                        "
+              if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+                return {wire}(this,timelineTaskName);
+              }}
+              return {wire}(this,null);
+              "
+                    )
+                } else {
+                    format!(
+                        "
+              if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+                return {wire}(this,timelineTaskName,{params});
+              }}
+              return {wire}(this,null,{params});
+              "
+                    )
+                },
+            },
+            io: GeneratedFunc {
+                signature: if inputs.is_empty() {
+                    format!(
+                        "Future<{output}> {wire}({target} bridge, String? timelineTaskName) async"
+                    )
+                } else {
+                    format!(
+                    "Future<{output}> {wire}({target} bridge, String? timelineTaskName, {{{inputs}}}) async"
+                )
+                },
+                implementation: if output != "void" {
+                    wire_implementation_return
+                } else {
+                    wire_implementation_void
+                },
+            },
+            wasm: GeneratedFunc {
+                signature: if inputs.is_empty() {
+                    format!(
+                        "Future<{output}> {wire}({target} bridge, String? timelineTaskName) async"
+                    )
+                } else {
+                    format!(
+                    "Future<{output}> {wire}({target} bridge, String? timelineTaskName, {{{inputs}}}) async"
+                )
+                },
+                implementation: if output != "void" {
+                    wire_wasm_implementation_return
+                } else {
+                    wire_wasm_implementation_void
+                },
+            },
+        });
+    }
+    None
 }
 
 fn gen_wire2api_simple_type_cast(s: &str) -> String {
