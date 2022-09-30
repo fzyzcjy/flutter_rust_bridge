@@ -170,29 +170,20 @@ impl DartApiSpec {
                     let target = config.dart_api_impl_class_name();
                     let ext = format!("Bench{wire}Extension");
                     let wire_implementation_return = format!(
-                        "
-                        final stopwatch = Stopwatch();
-                        final int starts = stopwatch.elapsedMicroseconds;
-                        stopwatch.start();
+                        "final task = TimelineTask();
+                        task.start('Bench {name}');
                         return bridge.{camel}({params})
                         .then((value) => value)
                         .whenComplete(() {{
-                          stopwatch.stop();
-                          final int ends = stopwatch.elapsedMicroseconds;
-                          final int diff = ends - starts;
-                          print('Bench {name} executed in $diff microseconds');
+                          task.finish();
                         }});"
                     );
                     let wire_implementation_void = format!(
                         "
-                        final stopwatch = Stopwatch();
-                        final int starts = stopwatch.elapsedMicroseconds;
-                        stopwatch.start();
+                        final task = TimelineTask();
+                        task.start('Bench {name}');
                         bridge.{camel}({params}).whenComplete(() {{
-                          stopwatch.stop();
-                          final int ends = stopwatch.elapsedMicroseconds;
-                          final int diff = ends - starts;
-                          print('Bench {name} executed in $diff microseconds');
+                          task.finish();
                         }});"
                     );
                     return Some(GeneratedBenchFunc {
