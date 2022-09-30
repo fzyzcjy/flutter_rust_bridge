@@ -149,162 +149,214 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
 }
 
-Future<Uint8List> wireDrawMandelbrot(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<Uint8List> wire_draw_mandelbrot(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench draw_mandelbrot');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge
       .drawMandelbrot(imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads)
       .then((value) => value)
       .whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] draw_mandelbrot executed in $diff microsecond(s)');
+    } else {
+      print('Bench draw_mandelbrot executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<String> wirePassingComplexStructs(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<String> wire_passing_complex_structs(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required TreeNode root}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench passing_complex_structs');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.passingComplexStructs(root: root).then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] passing_complex_structs executed in $diff microsecond(s)');
+    } else {
+      print('Bench passing_complex_structs executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<BoxedPoint> wireReturningStructsWithBoxedFields(
+Future<BoxedPoint> wire_returning_structs_with_boxed_fields(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench returning_structs_with_boxed_fields');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.returningStructsWithBoxedFields().then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] returning_structs_with_boxed_fields executed in $diff microsecond(s)');
+    } else {
+      print('Bench returning_structs_with_boxed_fields executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<int> wireOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<int> wire_off_topic_memory_test_input_array(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required Uint8List input}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_memory_test_input_array');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicMemoryTestInputArray(input: input).then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_memory_test_input_array executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_memory_test_input_array executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<Uint8List> wireOffTopicMemoryTestOutputZeroCopyBuffer(
+Future<Uint8List> wire_off_topic_memory_test_output_zero_copy_buffer(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_memory_test_output_zero_copy_buffer');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicMemoryTestOutputZeroCopyBuffer(len: len).then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_memory_test_output_zero_copy_buffer executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_memory_test_output_zero_copy_buffer executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<Uint8List> wireOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<Uint8List> wire_off_topic_memory_test_output_vec_u8(
+    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_memory_test_output_vec_u8');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicMemoryTestOutputVecU8(len: len).then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_memory_test_output_vec_u8 executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_memory_test_output_vec_u8 executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<int> wireOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<int> wire_off_topic_memory_test_input_vec_of_object(
+    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required List<Size> input}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_memory_test_input_vec_of_object');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicMemoryTestInputVecOfObject(input: input).then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_memory_test_input_vec_of_object executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_memory_test_input_vec_of_object executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<List<Size>> wireOffTopicMemoryTestOutputVecOfObject(
+Future<List<Size>> wire_off_topic_memory_test_output_vec_of_object(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_memory_test_output_vec_of_object');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicMemoryTestOutputVecOfObject(len: len).then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_memory_test_output_vec_of_object executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_memory_test_output_vec_of_object executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<int> wireOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<int> wire_off_topic_memory_test_input_complex_struct(
+    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required TreeNode input}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_memory_test_input_complex_struct');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicMemoryTestInputComplexStruct(input: input).then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_memory_test_input_complex_struct executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_memory_test_input_complex_struct executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<TreeNode> wireOffTopicMemoryTestOutputComplexStruct(
+Future<TreeNode> wire_off_topic_memory_test_output_complex_struct(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_memory_test_output_complex_struct');
-  }
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicMemoryTestOutputComplexStruct(len: len).then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_memory_test_output_complex_struct executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_memory_test_output_complex_struct executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_deliberately_return_error');
-  }
+Future<int> wire_off_topic_deliberately_return_error(
+    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicDeliberatelyReturnError().then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_deliberately_return_error executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_deliberately_return_error executed in $diff microsecond(s)');
+    }
   });
 }
 
-Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench off_topic_deliberately_panic');
-  }
+Future<int> wire_off_topic_deliberately_panic(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
   return bridge.offTopicDeliberatelyPanic().then((value) => value).whenComplete(() {
-    task.finish();
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] off_topic_deliberately_panic executed in $diff microsecond(s)');
+    } else {
+      print('Bench off_topic_deliberately_panic executed in $diff microsecond(s)');
+    }
   });
 }
