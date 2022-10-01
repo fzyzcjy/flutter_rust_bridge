@@ -39,6 +39,10 @@ Ensure min sdk version of Flutter `pubspec.yaml` is at least 2.13.0 to let `ffig
 
 https://github.com/fzyzcjy/flutter_rust_bridge/issues/334
 
+## Imported from both `bridge_definitions.dart` and `bridge_generated.io.dart`
+
+If you use a Rust type with `Kind` in it's name it may conflict with some generated types which can cause a duplicate import error. The workaround is to avoid using `Kind` as a suffix for a type name in Rust.
+
 ## Generated code is so long
 
 Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see >10k lines of Java code generated for a quite simple source proto file.
