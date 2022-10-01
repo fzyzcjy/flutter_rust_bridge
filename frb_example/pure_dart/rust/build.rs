@@ -19,7 +19,6 @@ fn main() {
         wasm: true,
         dart_decl_output: Some("../dart/lib/bridge_definitions.dart".into()),
         dart_format_line_length: 120,
-        bench_extended: true,
         // for other options use defaults
         ..Default::default()
     };

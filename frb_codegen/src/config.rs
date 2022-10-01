@@ -72,9 +72,6 @@ pub struct RawOpts {
     /// Skip dependencies check.
     #[clap(long)]
     pub skip_deps_check: bool,
-    /// Extends generated code with benchmark extension.
-    #[clap(long, default_value = "true")]
-    pub bench_extended: bool,
 }
 
 #[derive(Debug, Clone)]
@@ -97,7 +94,6 @@ pub struct Opts {
     pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
-    pub bench_extended: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
@@ -222,7 +218,6 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     let build_runner = !raw.no_build_runner;
     let wasm = raw.wasm;
     let inline_rust = raw.inline_rust;
-    let bench_extended = raw.bench_extended;
 
     (0..rust_input_paths.len())
         .map(|i| {
@@ -245,7 +240,6 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 skip_deps_check,
                 wasm_enabled: wasm,
                 inline_rust,
-                bench_extended,
             }
         })
         .collect()
