@@ -12,23 +12,19 @@ abstract class FlutterRustBridgeExampleBenchmarkSuite {
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta;
 
-  Future<List<UuidValue>> handleUuids(
-      {required List<UuidValue> ids, dynamic hint});
+  Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
 
-  Future<List<String>> handleUuidsConvertToStrings(
-      {required List<UuidValue> ids, dynamic hint});
+  Future<List<String>> handleUuidsConvertToStrings({required List<UuidValue> ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConvertToStringsConstMeta;
 
-  Future<FeatureUuid> handleNestedUuids(
-      {required FeatureUuid ids, dynamic hint});
+  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
 
-  Future<List<String>> handleStrings(
-      {required List<String> strings, dynamic hint});
+  Future<List<String>> handleStrings({required List<String> strings, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStringsConstMeta;
 
