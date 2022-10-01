@@ -361,8 +361,8 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: '3.3.1'
-          architecture: x64
+          # flutter-version: '3.3.1'
+          # architecture: x64
 
       - name: Install dependencies for with_flutter example
         working-directory: ./frb_example/with_flutter
