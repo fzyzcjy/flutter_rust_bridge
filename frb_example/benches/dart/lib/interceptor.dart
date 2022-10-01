@@ -1,55 +1,33 @@
-import 'dart:developer';
+import 'dart:async';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'interceptor.io.dart' if (dart.library.html) 'interceptor.web.dart';
+import 'bridge_generated.io.dart'
+    if (dart.library.html) 'bridge_generated.web.dart';
 
-class FlutterRustBridgeInterceptor {
-  Future<TimelineTask> beforeExecuteNormal(String benchName) async {
-    return Future.sync(() {
-      final TimelineTask task = TimelineTask();
-      task.start(benchName);
-      return task;
-    });
-  }
+class FlutterRustBridgeExampleBenchmarkSuiteImplBench
+    extends FlutterRustBridgeExampleBenchmarkSuiteImpl {
+  // ignore: unused_field
+  final FlutterRustBridgeInterceptor _interceptor =
+      FlutterRustBridgeInterceptor();
+  factory FlutterRustBridgeExampleBenchmarkSuiteImplBench(
+          ExternalLibrary dylib) =>
+      FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(
+          FlutterRustBridgeExampleBenchmarkSuitePlatform(
+        dylib,
+      ));
 
-  Future<void> afterExecuteNormal<S>(
-      String benchName, TimelineTask task) async {
-    return Future.sync(() {
-      task.finish();
-    });
-  }
-
-  void beforeExecuteSync<S>(
-      String benchName, FlutterRustBridgeSyncTask<S> task) {
-    Timeline.startSync(benchName);
-  }
-
-  void afterExecuteSync<S>(
-      String benchName, FlutterRustBridgeSyncTask<S> task) {
-    Timeline.finishSync();
-  }
-}
-
-mixin FlutterRustBridgeInterceptorMixin<T extends FlutterRustBridgeWireBase>
-    on FlutterRustBridgeBase<T> {
+  /// Only valid on web/WASM platforms.
+  factory FlutterRustBridgeExampleBenchmarkSuiteImplBench.wasm(
+          FutureOr<WasmModule> module) =>
+      FlutterRustBridgeExampleBenchmarkSuiteImplBench(
+          module as ExternalLibrary);
   @override
-  Future<S> executeNormal<S>(FlutterRustBridgeTask<S> scheduledTask) async {
-    final TimelineTask? task = await interceptor
-        ?.beforeExecuteNormal(scheduledTask.constMeta.debugName);
-    final result = await super.executeNormal(scheduledTask);
-    if (task != null) {
-      await interceptor?.afterExecuteNormal(
-          scheduledTask.constMeta.debugName, task);
-    }
-    return result;
-  }
+  FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(
+      FlutterRustBridgeExampleBenchmarkSuitePlatform platform)
+      : super.raw(platform);
 
-  @override
-  S executeSync<S>(FlutterRustBridgeSyncTask task) {
-    interceptor?.beforeExecuteSync(task.constMeta.debugName, task);
-    final result = super.executeSync(task);
-    interceptor?.afterExecuteSync(task.constMeta.debugName, task);
-    return result;
+  FlutterRustBridgeInterceptor get interceptor {
+    return _interceptor;
   }
-
-  FlutterRustBridgeInterceptor? get interceptor;
 }
