@@ -1,12 +1,15 @@
 import 'dart:ffi';
 import 'dart:io';
 
+import 'interceptor.dart';
+
+// ignore: unused_import
 import 'bridge_generated.io.dart';
 export 'bridge_generated.io.dart';
 
-FlutterRustBridgeExampleBenchmarkSuiteImpl initializeExternalLibrary(
+FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeExternalLibrary(
     String path) {
-  return FlutterRustBridgeExampleBenchmarkSuiteImpl(
+  return FlutterRustBridgeExampleBenchmarkSuiteImplBench(
     (Platform.isMacOS || Platform.isIOS) &&
             const bool.fromEnvironment('SILICON', defaultValue: false)
         ? DynamicLibrary.executable()

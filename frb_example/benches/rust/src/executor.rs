@@ -5,7 +5,7 @@ use flutter_rust_bridge::{
         self, ErrorHandler, Executor, ReportDartErrorHandler, SimpleHandler, ThreadPoolExecutor,
     },
     rust2dart::TaskCallback,
-    IntoDart, WrapInfo,
+    IntoDart, MessagePort, WrapInfo,
 };
 
 pub type BenchHandler =
@@ -15,7 +15,7 @@ pub type BenchHandler =
 pub struct BenchErrorHandler(ReportDartErrorHandler);
 
 impl ErrorHandler for BenchErrorHandler {
-    fn handle_error(&self, port: i64, error: handler::Error) {
+    fn handle_error(&self, port: MessagePort, error: handler::Error) {
         self.0.handle_error(port, error)
     }
 
