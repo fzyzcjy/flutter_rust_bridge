@@ -41,7 +41,7 @@ https://github.com/fzyzcjy/flutter_rust_bridge/issues/334
 
 ## Imported from both `bridge_definitions.dart` and `bridge_generated.io.dart`
 
-If you use a Rust type with `Kind` in it's name it may conflict with some generated types which can cause a duplicate import error. The workaround is to avoid using `Kind` as a suffix for a type name in Rust.
+If you use a Rust type with `Kind` in it's name it may conflict with some generated types which can cause a duplicate import error. The workaround is to avoid using `Kind` as a suffix for a type name in Rust. See issue #757 for more details.
 
 ## Generated code is so long
 
