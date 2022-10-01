@@ -78,7 +78,7 @@ impl BenchExecutor {
         println!("(Rust) execute [{}] start", bench_name);
         let ret = f();
         println!(
-            "(Rust) execute [{}] end delta_time={}ns\n\n",
+            "(Rust) execute [{}] end delta_time={}ns",
             bench_name,
             start.elapsed().as_nanos()
         );
