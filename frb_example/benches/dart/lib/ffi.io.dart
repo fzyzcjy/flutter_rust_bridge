@@ -11,7 +11,7 @@ FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeExternalLibrary(
     String path) {
   return FlutterRustBridgeExampleBenchmarkSuiteImplBench(
     (Platform.isMacOS || Platform.isIOS) &&
-            const bool.fromEnvironment('SILICON', defaultValue: false)
+            !const bool.fromEnvironment('SILICON', defaultValue: false)
         ? DynamicLibrary.executable()
         : DynamicLibrary.open(path),
   );
