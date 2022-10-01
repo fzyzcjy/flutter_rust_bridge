@@ -374,6 +374,11 @@ pub fn wire_handle_uuids(port_: MessagePort, ids: Box<[u8]>) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_uuids_convert_to_strings(port_: MessagePort, ids: Box<[u8]>) {
+    wire_handle_uuids_convert_to_strings_impl(port_, ids)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_nested_uuids(port_: MessagePort, ids: JsValue) {
     wire_handle_nested_uuids_impl(port_, ids)
 }

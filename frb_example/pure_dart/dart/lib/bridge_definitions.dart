@@ -312,6 +312,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
 
+  Future<List<String>> handleUuidsConvertToStrings({required List<UuidValue> ids, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidsConvertToStringsConstMeta;
+
   Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;

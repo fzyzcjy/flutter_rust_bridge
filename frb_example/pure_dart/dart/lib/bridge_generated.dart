@@ -1001,6 +1001,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["ids"],
       );
 
+  Future<List<String>> handleUuidsConvertToStrings({required List<UuidValue> ids, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_handle_uuids_convert_to_strings(port_, _platform.api2wire_Uuids(ids)),
+        parseSuccessData: _wire2api_StringList,
+        constMeta: kHandleUuidsConvertToStringsConstMeta,
+        argValues: [ids],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kHandleUuidsConvertToStringsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_uuids_convert_to_strings",
+        argNames: ["ids"],
+      );
+
   Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) =>
@@ -2305,6 +2319,13 @@ extension BenchHandleUuidExtension on FlutterRustBridgeExampleSingleBlockTestImp
 extension BenchHandleUuidsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<List<UuidValue>> benchHandleUuids({required List<UuidValue> ids, String? timelineTaskName}) async {
     return wireBenchHandleUuids(this, timelineTaskName, ids: ids);
+  }
+}
+
+extension BenchHandleUuidsConvertToStringsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
+  Future<List<String>> benchHandleUuidsConvertToStrings(
+      {required List<UuidValue> ids, String? timelineTaskName}) async {
+    return wireBenchHandleUuidsConvertToStrings(this, timelineTaskName, ids: ids);
   }
 }
 

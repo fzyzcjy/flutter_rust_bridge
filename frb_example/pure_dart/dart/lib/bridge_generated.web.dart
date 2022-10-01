@@ -757,6 +757,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_handle_uuids(NativePortType port_, Uint8List ids);
 
+  external void wire_handle_uuids_convert_to_strings(NativePortType port_, Uint8List ids);
+
   external void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
 
   external void wire_handle_strings(NativePortType port_, List<String> strings);
@@ -983,6 +985,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_handle_uuid(NativePortType port_, Uint8List id) => wasmModule.wire_handle_uuid(port_, id);
 
   void wire_handle_uuids(NativePortType port_, Uint8List ids) => wasmModule.wire_handle_uuids(port_, ids);
+
+  void wire_handle_uuids_convert_to_strings(NativePortType port_, Uint8List ids) =>
+      wasmModule.wire_handle_uuids_convert_to_strings(port_, ids);
 
   void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids) =>
       wasmModule.wire_handle_nested_uuids(port_, ids);
@@ -1949,6 +1954,24 @@ Future<List<UuidValue>> wire_handle_uuids(FlutterRustBridgeExampleSingleBlockTes
       print('Bench [$timelineTaskName] handle_uuids executed in $diff microsecond(s)');
     } else {
       print('Bench handle_uuids executed in $diff microsecond(s)');
+    }
+  });
+}
+
+Future<List<String>> wire_handle_uuids_convert_to_strings(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required List<UuidValue> ids}) async {
+  final stopwatch = Stopwatch();
+  final int starts = stopwatch.elapsedMicroseconds;
+  stopwatch.start();
+  return bridge.handleUuidsConvertToStrings(ids: ids).then((value) => value).whenComplete(() {
+    stopwatch.stop();
+    final int ends = stopwatch.elapsedMicroseconds;
+    final int diff = ends - starts;
+    if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+      print('Bench [$timelineTaskName] handle_uuids_convert_to_strings executed in $diff microsecond(s)');
+    } else {
+      print('Bench handle_uuids_convert_to_strings executed in $diff microsecond(s)');
     }
   });
 }

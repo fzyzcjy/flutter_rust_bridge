@@ -1506,6 +1506,20 @@ Future<List<UuidValue>> wireBenchHandleUuids(
   });
 }
 
+Future<List<String>> wireBenchHandleUuidsConvertToStrings(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+    {required List<UuidValue> ids}) async {
+  final task = TimelineTask();
+  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
+    task.start('Bench $timelineTaskName');
+  } else {
+    task.start('Bench handle_uuids_convert_to_strings');
+  }
+  return bridge.handleUuidsConvertToStrings(ids: ids).then((value) => value).whenComplete(() {
+    task.finish();
+  });
+}
+
 Future<FeatureUuid> wireBenchHandleNestedUuids(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required FeatureUuid ids}) async {
@@ -2656,6 +2670,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_uuidsPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_uuids');
   late final _wire_handle_uuids = _wire_handle_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_handle_uuids_convert_to_strings(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> ids,
+  ) {
+    return _wire_handle_uuids_convert_to_strings(
+      port_,
+      ids,
+    );
+  }
+
+  late final _wire_handle_uuids_convert_to_stringsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_uuids_convert_to_strings');
+  late final _wire_handle_uuids_convert_to_strings =
+      _wire_handle_uuids_convert_to_stringsPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_nested_uuids(
     int port_,

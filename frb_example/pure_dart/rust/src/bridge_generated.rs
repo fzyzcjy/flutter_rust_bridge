@@ -1074,6 +1074,22 @@ fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>
         },
     )
 }
+fn wire_handle_uuids_convert_to_strings_impl(
+    port_: MessagePort,
+    ids: impl Wire2Api<Vec<uuid::Uuid>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_uuids_convert_to_strings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_ids = ids.wire2api();
+            move |task_callback| handle_uuids_convert_to_strings(api_ids)
+        },
+    )
+}
 fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureUuid> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

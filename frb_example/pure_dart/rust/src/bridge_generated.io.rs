@@ -382,6 +382,11 @@ pub extern "C" fn wire_handle_uuids(port_: i64, ids: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_uuids_convert_to_strings(port_: i64, ids: *mut wire_uint_8_list) {
+    wire_handle_uuids_convert_to_strings_impl(port_, ids)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_nested_uuids(port_: i64, ids: *mut wire_FeatureUuid) {
     wire_handle_nested_uuids_impl(port_, ids)
 }
