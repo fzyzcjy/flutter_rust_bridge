@@ -165,9 +165,9 @@ impl IrFunc {
           final int ends = stopwatch.elapsedMicroseconds;
           final int diff = ends - starts;
           if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-            print('Bench [$timelineTaskName] {} executed in $diff microsecond(s)');
+            log('Bench [$timelineTaskName] {} executed in $diff microsecond(s)');
           }} else {{
-            print('Bench {0} executed in $diff microsecond(s)');
+            log('Bench {0} executed in $diff microsecond(s)');
           }}
         }});",
             self.name
