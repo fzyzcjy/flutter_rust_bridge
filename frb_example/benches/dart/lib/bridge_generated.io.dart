@@ -9,7 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
-import 'dart:developer';
 import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
@@ -76,98 +75,6 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatform
   }
 }
 
-Future<UuidValue> wireBenchHandleUuid(
-    FlutterRustBridgeExampleBenchmarkSuiteImpl bridge, String? timelineTaskName,
-    {required UuidValue id}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench handle_uuid');
-  }
-  return bridge.handleUuid(id: id).then((value) => value).whenComplete(() {
-    task.finish();
-  });
-}
-
-Future<List<UuidValue>> wireBenchHandleUuids(
-    FlutterRustBridgeExampleBenchmarkSuiteImpl bridge, String? timelineTaskName,
-    {required List<UuidValue> ids}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench handle_uuids');
-  }
-  return bridge.handleUuids(ids: ids).then((value) => value).whenComplete(() {
-    task.finish();
-  });
-}
-
-Future<List<String>> wireBenchHandleUuidsConvertToStrings(
-    FlutterRustBridgeExampleBenchmarkSuiteImpl bridge, String? timelineTaskName,
-    {required List<UuidValue> ids}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench handle_uuids_convert_to_strings');
-  }
-  return bridge
-      .handleUuidsConvertToStrings(ids: ids)
-      .then((value) => value)
-      .whenComplete(() {
-    task.finish();
-  });
-}
-
-Future<FeatureUuid> wireBenchHandleNestedUuids(
-    FlutterRustBridgeExampleBenchmarkSuiteImpl bridge, String? timelineTaskName,
-    {required FeatureUuid ids}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench handle_nested_uuids');
-  }
-  return bridge
-      .handleNestedUuids(ids: ids)
-      .then((value) => value)
-      .whenComplete(() {
-    task.finish();
-  });
-}
-
-Future<List<String>> wireBenchHandleStrings(
-    FlutterRustBridgeExampleBenchmarkSuiteImpl bridge, String? timelineTaskName,
-    {required List<String> strings}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench handle_strings');
-  }
-  return bridge
-      .handleStrings(strings: strings)
-      .then((value) => value)
-      .whenComplete(() {
-    task.finish();
-  });
-}
-
-Future<int> wireBenchSendI64(
-    FlutterRustBridgeExampleBenchmarkSuiteImpl bridge, String? timelineTaskName,
-    {required int value}) async {
-  final task = TimelineTask();
-  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-    task.start('Bench $timelineTaskName');
-  } else {
-    task.start('Bench send_i64');
-  }
-  return bridge.sendI64(value: value).then((value) => value).whenComplete(() {
-    task.finish();
-  });
-}
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 
 // AUTO GENERATED FILE, DO NOT EDIT.
