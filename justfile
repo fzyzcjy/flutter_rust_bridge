@@ -154,7 +154,7 @@ runner:
 bench: runner
     (cd {{frb_pure}}/rust && cargo build --release)
     (cd {{frb_pure}}/dart && \
-        dart run lib/benchmark/vecs.dart && \
+        dart run lib/benchmark/uuids.dart && \
         dart run lib/benchmark/strings.dart)
 
 # vim:expandtab:ts=4:sw=4
