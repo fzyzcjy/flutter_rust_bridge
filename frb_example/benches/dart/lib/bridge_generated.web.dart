@@ -12,7 +12,8 @@ export 'bridge_generated.dart';
 import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleBenchmarkSuitePlatform
-    extends FlutterRustBridgeBase<FlutterRustBridgeExampleBenchmarkSuiteWire> with FlutterRustBridgeSetupMixin {
+    extends FlutterRustBridgeBase<FlutterRustBridgeExampleBenchmarkSuiteWire>
+    with FlutterRustBridgeSetupMixin {
   FlutterRustBridgeExampleBenchmarkSuitePlatform(FutureOr<WasmModule> dylib)
       : super(FlutterRustBridgeExampleBenchmarkSuiteWire(dylib)) {
     setupMixinConstructor();
@@ -70,14 +71,17 @@ external FlutterRustBridgeExampleBenchmarkSuiteWasmModule get wasmModule;
 @anonymous
 class FlutterRustBridgeExampleBenchmarkSuiteWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
-  external FlutterRustBridgeExampleBenchmarkSuiteWasmModule bind(dynamic thisArg, String moduleName);
+  external FlutterRustBridgeExampleBenchmarkSuiteWasmModule bind(
+      dynamic thisArg, String moduleName);
   external void wire_handle_uuid(NativePortType port_, Uint8List id);
 
   external void wire_handle_uuids(NativePortType port_, Uint8List ids);
 
-  external void wire_handle_uuids_convert_to_strings(NativePortType port_, Uint8List ids);
+  external void wire_handle_uuids_convert_to_strings(
+      NativePortType port_, Uint8List ids);
 
-  external void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
+  external void wire_handle_nested_uuids(
+      NativePortType port_, List<dynamic> ids);
 
   external void wire_handle_strings(NativePortType port_, List<String> strings);
 
@@ -87,15 +91,20 @@ class FlutterRustBridgeExampleBenchmarkSuiteWasmModule implements WasmModule {
 // Section: WASM wire connector
 
 class FlutterRustBridgeExampleBenchmarkSuiteWire
-    extends FlutterRustBridgeWasmWireBase<FlutterRustBridgeExampleBenchmarkSuiteWasmModule> {
+    extends FlutterRustBridgeWasmWireBase<
+        FlutterRustBridgeExampleBenchmarkSuiteWasmModule> {
   FlutterRustBridgeExampleBenchmarkSuiteWire(FutureOr<WasmModule> module)
-      : super(WasmModule.cast<FlutterRustBridgeExampleBenchmarkSuiteWasmModule>(module));
+      : super(WasmModule.cast<FlutterRustBridgeExampleBenchmarkSuiteWasmModule>(
+            module));
 
-  void wire_handle_uuid(NativePortType port_, Uint8List id) => wasmModule.wire_handle_uuid(port_, id);
+  void wire_handle_uuid(NativePortType port_, Uint8List id) =>
+      wasmModule.wire_handle_uuid(port_, id);
 
-  void wire_handle_uuids(NativePortType port_, Uint8List ids) => wasmModule.wire_handle_uuids(port_, ids);
+  void wire_handle_uuids(NativePortType port_, Uint8List ids) =>
+      wasmModule.wire_handle_uuids(port_, ids);
 
-  void wire_handle_uuids_convert_to_strings(NativePortType port_, Uint8List ids) =>
+  void wire_handle_uuids_convert_to_strings(
+          NativePortType port_, Uint8List ids) =>
       wasmModule.wire_handle_uuids_convert_to_strings(port_, ids);
 
   void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids) =>
@@ -104,5 +113,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire
   void wire_handle_strings(NativePortType port_, List<String> strings) =>
       wasmModule.wire_handle_strings(port_, strings);
 
-  void wire_send_i64(NativePortType port_, Object value) => wasmModule.wire_send_i64(port_, value);
+  void wire_send_i64(NativePortType port_, Object value) =>
+      wasmModule.wire_send_i64(port_, value);
 }
