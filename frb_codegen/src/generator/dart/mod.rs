@@ -344,8 +344,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     }
 
     let Acc { common, io, wasm } = lines.join("\n");
-    #[cfg(not(feature = "benchmarking"))]
-    let additional_impl_import = "".into();
     let impl_import = format!(
         "{} import 'package:meta/meta.dart';",
         if config.wasm_enabled {

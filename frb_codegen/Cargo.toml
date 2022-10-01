@@ -49,7 +49,6 @@ x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 i686-pc-windows-msvc = { pkg-fmt = "zip" }
 
 [features]
-default = ["chrono","benchmarking"]
+default = ["chrono"]
 chrono = []
 uuid = []
-benchmarking = []
