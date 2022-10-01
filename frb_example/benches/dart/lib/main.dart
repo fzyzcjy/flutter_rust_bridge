@@ -9,7 +9,12 @@ void main(List<String> args) async {
   print(
       'flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   print('construct api');
-  final api = initializeExternalLibrary(dylibPath);
+  String? extra = args.length > 1 ? args[1] : null;
+  final bool json = extra == '--json';
+  if (extra != '--json') {
+    print('CLI extra argument $extra is ignored (expected --json, or none)');
+  }
+  final api = initializeExternalLibrary(dylibPath, useJSON: json);
 
   final Uuid uuid = Uuid();
   final thousandUuids =
