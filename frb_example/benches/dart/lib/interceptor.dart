@@ -42,6 +42,7 @@ class AsyncStopWatch extends Stopwatch {
 
 class FlutterRustBridgeInterceptor {
   Future<AsyncStopWatch> beforeExecuteNormal(String debugName) async {
+    print('⚡');
     print('(Dart) execute [$debugName] start');
     return Future.sync(() {
       final AsyncStopWatch stopwatch = AsyncStopWatch();
