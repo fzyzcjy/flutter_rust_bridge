@@ -67,6 +67,11 @@ test-benches *args="":
     cd {{frb_benches}}/dart && \
         dart pub get && \
         dart {{args}} lib/main.dart ../../../target/release/{{bench_dylib}}
+test-benches-json *args="":
+    cd {{frb_benches}}/rust && cargo b --release
+    cd {{frb_benches}}/dart && \
+        dart pub get && \
+        dart {{args}} lib/main.dart ../../../target/release/{{bench_dylib}} --json
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
