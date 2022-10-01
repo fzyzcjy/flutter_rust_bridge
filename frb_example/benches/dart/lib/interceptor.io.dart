@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge_benchmark/interceptor.dart';
 
 class FlutterRustBridgeInterceptor {
   Future<dynamic> beforeExecuteNormal(String benchName) async {
+    log('received $benchName');
     return Future.sync(() {
       final TimelineTask task = TimelineTask();
       task.start(benchName);
@@ -19,6 +21,7 @@ class FlutterRustBridgeInterceptor {
   }
 
   void beforeExecuteSync<S>(String benchName) {
+    log('received $benchName');
     Timeline.startSync(benchName);
   }
 
@@ -27,26 +30,27 @@ class FlutterRustBridgeInterceptor {
   }
 }
 
-mixin FlutterRustBridgeInterceptorMixin<T extends FlutterRustBridgeWireBase>
-    on FlutterRustBridgeBase<T> {
-  @override
+mixin FlutterRustBridgeInterceptorMixin
+    on FlutterRustBridgeExampleBenchmarkSuiteImplBench {
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> op) async {
+    log('[[[[[[executeNormal]]]]]]');
     final TimelineTask? task =
         await interceptor.beforeExecuteNormal(op.constMeta.debugName);
-    final result = await super.executeNormal(op);
+    final result = await executeNormal(op);
     if (task != null) {
       await interceptor.afterExecuteNormal(op.constMeta.debugName, task);
     }
     return result;
   }
 
-  @override
   S executeSync<S>(FlutterRustBridgeSyncTask op) {
+    log('[[[[[[executeSync]]]]]]');
     interceptor.beforeExecuteSync(op.constMeta.debugName);
-    final result = super.executeSync(op);
+    final result = executeSync(op);
     interceptor.afterExecuteSync(op.constMeta.debugName, null);
     return result;
   }
 
+  @override
   FlutterRustBridgeInterceptor get interceptor;
 }

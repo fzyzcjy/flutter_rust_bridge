@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge_benchmark/interceptor.dart';
 
 class AsyncStopWatch extends Stopwatch {
   int? starts;
@@ -48,13 +49,13 @@ class FlutterRustBridgeInterceptor {
   }
 }
 
-mixin FlutterRustBridgeInterceptorMixin<T extends FlutterRustBridgeWireBase>
-    on FlutterRustBridgeBase<T> {
+mixin FlutterRustBridgeInterceptorMixin
+    on FlutterRustBridgeExampleBenchmarkSuiteImplBench {
   @override
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> op) async {
     final AsyncStopWatch? stopwatch =
         await interceptor.beforeExecuteNormal(op.constMeta.debugName);
-    final result = await super.executeNormal(op);
+    final result = await executeNormal(op);
     if (stopwatch != null) {
       await interceptor.afterExecuteNormal(op.constMeta.debugName, stopwatch);
     }
@@ -63,14 +64,9 @@ mixin FlutterRustBridgeInterceptorMixin<T extends FlutterRustBridgeWireBase>
 
   @override
   S executeSync<S>(FlutterRustBridgeSyncTask op) {
-    final AsyncStopWatch? stopwatch =
-        interceptor.beforeExecuteSync(op.constMeta.debugName);
-    final result = super.executeSync(op);
-    if (stopwatch != null) {
-      interceptor.afterExecuteSync(op.constMeta.debugName, stopwatch);
-    }
+    interceptor.beforeExecuteSync(op.constMeta.debugName);
+    final result = executeSync(op);
+    interceptor.afterExecuteSync(op.constMeta.debugName, null);
     return result;
   }
-
-  FlutterRustBridgeInterceptor get interceptor;
 }

@@ -6,7 +6,8 @@ import 'package:uuid/uuid.dart';
 
 void main(List<String> args) async {
   String dylibPath = args[0];
-  print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
+  print(
+      'flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
 
