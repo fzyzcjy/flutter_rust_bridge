@@ -100,38 +100,39 @@ impl IrFunc {
     }
     /// io specific method body
     pub(crate) fn as_io_body(&self) -> String {
-        if !self.is_void() {
-            return format!(
-                "
-                final task = TimelineTask();
-                if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                  task.start('Bench $timelineTaskName');
-                }} else {{
-                  task.start('Bench {}');
-                }}
-                return bridge.{}({})
-                .then((value) => value)
-                .whenComplete(() {{
-                  task.finish();
-                }});",
-                self.name,
-                self.name_dart_format(),
-                self.as_named_dart_params()
-            );
-        }
-        format!(
+        let pre = format!(
             "
             final task = TimelineTask();
             if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
               task.start('Bench $timelineTaskName');
             }} else {{
               task.start('Bench {}');
-            }}
-            bridge.{}().whenComplete(() {{
-              task.finish();
-            }});",
-            self.name,
+            }}",
+            self.name
+        );
+        let post = "
+        .whenComplete(() {
+          task.finish();
+        });
+        ";
+        if !self.is_void() {
+            return format!(
+                "
+                {pre}
+                return bridge.{}({})
+                .then((value) => value)
+                {post}",
+                self.name_dart_format(),
+                self.as_named_dart_params()
+            );
+        }
+        format!(
+            "
+            {pre}
+            bridge.{}({})
+            {post}",
             self.name_dart_format(),
+            self.as_named_dart_params()
         )
     }
     pub(crate) fn as_wasm_signature(&self, config: &Opts) -> String {
@@ -152,48 +153,43 @@ impl IrFunc {
         )
     }
     pub(crate) fn as_wasm_body(&self) -> String {
+        let pre = "
+                        final stopwatch = Stopwatch();
+                        final int starts = stopwatch.elapsedMicroseconds;
+                        stopwatch.start();";
+        let post = format!(
+            "
+        .whenComplete(() {{
+          stopwatch.stop();
+          final int ends = stopwatch.elapsedMicroseconds;
+          final int diff = ends - starts;
+          if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
+            print('Bench [$timelineTaskName] {} executed in $diff microsecond(s)');
+          }} else {{
+            print('Bench {0} executed in $diff microsecond(s)');
+          }}
+        }});",
+            self.name
+        );
         if !self.is_void() {
             return format!(
                 "
-                final stopwatch = Stopwatch();
-                final int starts = stopwatch.elapsedMicroseconds;
-                stopwatch.start();
+                {pre}
                 return bridge.{}({})
                 .then((value) => value)
-                .whenComplete(() {{
-                  stopwatch.stop();
-                  final int ends = stopwatch.elapsedMicroseconds;
-                  final int diff = ends - starts;
-                  if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                    print('Bench [$timelineTaskName] {} executed in $diff microsecond(s)');
-                  }} else {{
-                    print('Bench {2} executed in $diff microsecond(s)');
-                  }}
-                }});
+                {post}
                 ",
                 self.name_dart_format(),
                 self.as_named_dart_params(),
-                self.name
             );
         }
         format!(
             "
-            final stopwatch = Stopwatch();
-            final int starts = stopwatch.elapsedMicroseconds;
-            stopwatch.start();
-            bridge.{}({}).whenComplete(() {{
-              stopwatch.stop();
-              final int ends = stopwatch.elapsedMicroseconds;
-              final int diff = ends - starts;
-              if (timelineTaskName != null && timelineTaskName.isNotEmpty) {{
-                print('Bench [$timelineTaskName] {} executed in $diff microsecond(s)');
-              }} else {{
-                print('Bench {2} executed in $diff microsecond(s)');
-              }}
-            }});",
+            {pre}
+            bridge.{}({})
+            {post}",
             self.name_dart_format(),
-            self.as_named_dart_params(),
-            self.name
+            self.as_named_dart_params()
         )
     }
 }
