@@ -141,14 +141,14 @@ impl IrFunc {
             return format!(
                 "Future<{}> {}({} bridge, String? timelineTaskName) async",
                 self.output_dart_api_type(),
-                self.wire_func_name(),
+                self.bench_wire_fn_name(),
                 config.dart_api_impl_class_name(),
             );
         }
         format!(
             "Future<{}> {}({} bridge, String? timelineTaskName, {{{}}}) async",
             self.output_dart_api_type(),
-            self.wire_func_name(),
+            self.bench_wire_fn_name(),
             config.dart_api_impl_class_name(),
             self.as_typed_dart_inputs()
         )
