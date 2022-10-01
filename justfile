@@ -169,10 +169,10 @@ gen-help:
 runner:
     (cd frb_dart && dart run build_runner build)
 
-bench: runner
+bench *args="": runner
     (cd {{frb_benches}}/rust && cargo build --release)
     (cd {{frb_benches}}/dart && \
-        dart run lib/benchmark/uuids.dart && \
-        dart run lib/benchmark/strings.dart)
+        dart {{args}} run lib/benchmark/uuids.dart && \
+        dart {{args}} run lib/benchmark/strings.dart)
 
 # vim:expandtab:ts=4:sw=4
