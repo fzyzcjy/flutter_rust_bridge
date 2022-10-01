@@ -157,6 +157,8 @@
 <h2 id="cant-create-typedef-from-non-function-type"><a class="header" href="#cant-create-typedef-from-non-function-type"><code>Can't create typedef from non-function type.</code></a></h2>
 <p>Ensure min sdk version of Flutter <code>pubspec.yaml</code> is at least 2.13.0 to let <code>ffigen</code> happy.</p>
 <p>https://github.com/fzyzcjy/flutter_rust_bridge/issues/334</p>
+<h2 id="imported-from-both-bridge_definitionsdart-and-bridge_generatediodart"><a class="header" href="#imported-from-both-bridge_definitionsdart-and-bridge_generatediodart">Imported from both <code>bridge_definitions.dart</code> and <code>bridge_generated.io.dart</code></a></h2>
+<p>If you use a Rust type with <code>Kind</code> in it's name it may conflict with some generated types which can cause a duplicate import error. The workaround is to avoid using <code>Kind</code> as a suffix for a type name in Rust. See issue #757 for more details.</p>
 <h2 id="generated-code-is-so-long"><a class="header" href="#generated-code-is-so-long">Generated code is so long</a></h2>
 <p>Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see &gt;10k lines of Java code generated for a quite simple source proto file.</p>
 <h2 id="why-need-dart-2140"><a class="header" href="#why-need-dart-2140">Why need Dart <code>2.14.0</code></a></h2>
