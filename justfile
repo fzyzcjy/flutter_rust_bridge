@@ -67,10 +67,6 @@ test-benches *args="":
     cd {{frb_benches}}/dart && \
         dart pub get && \
         dart {{args}} lib/main.dart ../../../target/release/{{bench_dylib}}
-test-benches-devtools *args="":
-    just test-benches {{args}} \
-        --enable-vm-service={{devtools_port}} \
-        --pause-isolates-on-start --pause-isolates-on-exit
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
