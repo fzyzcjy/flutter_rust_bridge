@@ -560,7 +560,6 @@ fn generate_wire2api_func(
 }
 
 #[cfg(feature = "benchmarking")]
-#[allow(clippy::too_many_lines)]
 fn generate_bench_func(func: &IrFunc, config: &Opts) -> Option<GeneratedBenchFunc> {
     if func.mode == IrFuncMode::Normal {
         return Some(GeneratedBenchFunc {

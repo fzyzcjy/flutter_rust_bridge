@@ -10,23 +10,24 @@ impl IrFunc {
     pub(crate) fn output_dart_api_type(&self) -> String {
         self.output.dart_api_type()
     }
-    pub(crate) fn name_dart_format(&self) -> String {
+    pub(crate) fn as_dart_name(&self) -> String {
         use convert_case::{Case, Casing};
         self.name.clone().to_case(Case::Camel)
     }
-    fn as_suffix(&self) -> String {
+    fn as_dart_suffix(&self) -> String {
         use convert_case::{Case, Casing};
         self.name.clone().to_case(Case::UpperCamel)
     }
     /// exposed wrapping bench function
     pub(crate) fn bench_fn_name(&self) -> String {
-        format!("bench{}", self.as_suffix())
+        format!("bench{}", self.as_dart_suffix())
     }
+    /// intermediate io/wasm wire bench function
     pub(crate) fn bench_wire_fn_name(&self) -> String {
-        format!("wireBench{}", self.as_suffix())
+        format!("wireBench{}", self.as_dart_suffix())
     }
     pub(crate) fn bench_extension_name(&self) -> String {
-        format!("Bench{}Extension", self.as_suffix())
+        format!("Bench{}Extension", self.as_dart_suffix())
     }
     pub(crate) fn bench_extesion_on(&self, implementation: &str) -> String {
         format!(
@@ -122,7 +123,7 @@ impl IrFunc {
                 return bridge.{}({})
                 .then((value) => value)
                 {post}",
-                self.name_dart_format(),
+                self.as_dart_name(),
                 self.as_named_dart_params()
             );
         }
@@ -131,7 +132,7 @@ impl IrFunc {
             {pre}
             bridge.{}({})
             {post}",
-            self.name_dart_format(),
+            self.as_dart_name(),
             self.as_named_dart_params()
         )
     }
@@ -179,7 +180,7 @@ impl IrFunc {
                 .then((value) => value)
                 {post}
                 ",
-                self.name_dart_format(),
+                self.as_dart_name(),
                 self.as_named_dart_params(),
             );
         }
@@ -188,7 +189,7 @@ impl IrFunc {
             {pre}
             bridge.{}({})
             {post}",
-            self.name_dart_format(),
+            self.as_dart_name(),
             self.as_named_dart_params()
         )
     }
