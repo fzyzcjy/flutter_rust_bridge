@@ -376,6 +376,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         } else {
             "".into()
         },
+        #[cfg(feature = "benchmarking")]
         if config.bench_extended {
             "import 'dart:developer';".to_string()
         } else {
