@@ -1055,9 +1055,9 @@ Future<int> wireBenchSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bri
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] simple_adder executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] simple_adder executed in $diff microsecond(s)');
     } else {
-      print('Bench simple_adder executed in $diff microsecond(s)');
+      log('Bench simple_adder executed in $diff microsecond(s)');
     }
   });
 }
@@ -1075,9 +1075,9 @@ Future<int> wireBenchPrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl 
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] primitive_types executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] primitive_types executed in $diff microsecond(s)');
     } else {
-      print('Bench primitive_types executed in $diff microsecond(s)');
+      log('Bench primitive_types executed in $diff microsecond(s)');
     }
   });
 }
@@ -1092,9 +1092,9 @@ Future<int> wireBenchPrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl br
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] primitive_u32 executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] primitive_u32 executed in $diff microsecond(s)');
     } else {
-      print('Bench primitive_u32 executed in $diff microsecond(s)');
+      log('Bench primitive_u32 executed in $diff microsecond(s)');
     }
   });
 }
@@ -1109,9 +1109,9 @@ Future<String> wireBenchHandleString(FlutterRustBridgeExampleSingleBlockTestImpl
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_string executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_string executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_string executed in $diff microsecond(s)');
+      log('Bench handle_string executed in $diff microsecond(s)');
     }
   });
 }
@@ -1126,9 +1126,9 @@ Future<void> wireBenchHandleReturnUnit(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_return_unit executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_return_unit executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_return_unit executed in $diff microsecond(s)');
+      log('Bench handle_return_unit executed in $diff microsecond(s)');
     }
   });
 }
@@ -1143,9 +1143,9 @@ Future<Uint8List> wireBenchHandleVecU8(FlutterRustBridgeExampleSingleBlockTestIm
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_vec_u8 executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_vec_u8 executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_vec_u8 executed in $diff microsecond(s)');
+      log('Bench handle_vec_u8 executed in $diff microsecond(s)');
     }
   });
 }
@@ -1161,9 +1161,9 @@ Future<VecOfPrimitivePack> wireBenchHandleVecOfPrimitive(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_vec_of_primitive executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_vec_of_primitive executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_vec_of_primitive executed in $diff microsecond(s)');
+      log('Bench handle_vec_of_primitive executed in $diff microsecond(s)');
     }
   });
 }
@@ -1179,9 +1179,9 @@ Future<ZeroCopyVecOfPrimitivePack> wireBenchHandleZeroCopyVecOfPrimitive(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_zero_copy_vec_of_primitive executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_zero_copy_vec_of_primitive executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_zero_copy_vec_of_primitive executed in $diff microsecond(s)');
+      log('Bench handle_zero_copy_vec_of_primitive executed in $diff microsecond(s)');
     }
   });
 }
@@ -1196,9 +1196,9 @@ Future<MySize> wireBenchHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_struct executed in $diff microsecond(s)');
+      log('Bench handle_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -1213,9 +1213,9 @@ Future<NewTypeInt> wireBenchHandleNewtype(FlutterRustBridgeExampleSingleBlockTes
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_newtype executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_newtype executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_newtype executed in $diff microsecond(s)');
+      log('Bench handle_newtype executed in $diff microsecond(s)');
     }
   });
 }
@@ -1231,9 +1231,9 @@ Future<List<MySize>> wireBenchHandleListOfStruct(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_list_of_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_list_of_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_list_of_struct executed in $diff microsecond(s)');
+      log('Bench handle_list_of_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -1249,9 +1249,9 @@ Future<List<String>> wireBenchHandleStringList(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_string_list executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_string_list executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_string_list executed in $diff microsecond(s)');
+      log('Bench handle_string_list executed in $diff microsecond(s)');
     }
   });
 }
@@ -1267,9 +1267,9 @@ Future<MyTreeNode> wireBenchHandleComplexStruct(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_complex_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_complex_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_complex_struct executed in $diff microsecond(s)');
+      log('Bench handle_complex_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -1283,9 +1283,9 @@ Future<int> wireBenchReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridg
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] return_err executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] return_err executed in $diff microsecond(s)');
     } else {
-      print('Bench return_err executed in $diff microsecond(s)');
+      log('Bench return_err executed in $diff microsecond(s)');
     }
   });
 }
@@ -1299,9 +1299,9 @@ Future<int> wireBenchReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bri
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] return_panic executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] return_panic executed in $diff microsecond(s)');
     } else {
-      print('Bench return_panic executed in $diff microsecond(s)');
+      log('Bench return_panic executed in $diff microsecond(s)');
     }
   });
 }
@@ -1317,9 +1317,9 @@ Future<double?> wireBenchHandleOptionalReturn(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_optional_return executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_optional_return executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_optional_return executed in $diff microsecond(s)');
+      log('Bench handle_optional_return executed in $diff microsecond(s)');
     }
   });
 }
@@ -1335,9 +1335,9 @@ Future<Element?> wireBenchHandleOptionalStruct(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_optional_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_optional_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_optional_struct executed in $diff microsecond(s)');
+      log('Bench handle_optional_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -1353,9 +1353,9 @@ Future<ExoticOptionals?> wireBenchHandleOptionalIncrement(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_optional_increment executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_optional_increment executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_optional_increment executed in $diff microsecond(s)');
+      log('Bench handle_optional_increment executed in $diff microsecond(s)');
     }
   });
 }
@@ -1371,9 +1371,9 @@ Future<double> wireBenchHandleIncrementBoxedOptional(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_increment_boxed_optional executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_increment_boxed_optional executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_increment_boxed_optional executed in $diff microsecond(s)');
+      log('Bench handle_increment_boxed_optional executed in $diff microsecond(s)');
     }
   });
 }
@@ -1405,9 +1405,9 @@ Future<String> wireBenchHandleOptionBoxArguments(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_option_box_arguments executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_option_box_arguments executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_option_box_arguments executed in $diff microsecond(s)');
+      log('Bench handle_option_box_arguments executed in $diff microsecond(s)');
     }
   });
 }
@@ -1422,9 +1422,9 @@ Future<Uint8List> wireBenchPrintNote(FlutterRustBridgeExampleSingleBlockTestImpl
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] print_note executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] print_note executed in $diff microsecond(s)');
     } else {
-      print('Bench print_note executed in $diff microsecond(s)');
+      log('Bench print_note executed in $diff microsecond(s)');
     }
   });
 }
@@ -1440,9 +1440,9 @@ Future<Weekdays?> wireBenchHandleReturnEnum(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_return_enum executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_return_enum executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_return_enum executed in $diff microsecond(s)');
+      log('Bench handle_return_enum executed in $diff microsecond(s)');
     }
   });
 }
@@ -1458,9 +1458,9 @@ Future<Weekdays> wireBenchHandleEnumParameter(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_enum_parameter executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_enum_parameter executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_enum_parameter executed in $diff microsecond(s)');
+      log('Bench handle_enum_parameter executed in $diff microsecond(s)');
     }
   });
 }
@@ -1476,9 +1476,9 @@ Future<void> wireBenchHandleCustomizedStruct(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_customized_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_customized_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_customized_struct executed in $diff microsecond(s)');
+      log('Bench handle_customized_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -1494,9 +1494,9 @@ Future<KitchenSink> wireBenchHandleEnumStruct(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_enum_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_enum_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_enum_struct executed in $diff microsecond(s)');
+      log('Bench handle_enum_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -1511,9 +1511,9 @@ Future<bool> wireBenchUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestI
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] use_imported_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] use_imported_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench use_imported_struct executed in $diff microsecond(s)');
+      log('Bench use_imported_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -1528,9 +1528,9 @@ Future<bool> wireBenchUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImp
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] use_imported_enum executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] use_imported_enum executed in $diff microsecond(s)');
     } else {
-      print('Bench use_imported_enum executed in $diff microsecond(s)');
+      log('Bench use_imported_enum executed in $diff microsecond(s)');
     }
   });
 }
@@ -1545,9 +1545,9 @@ Future<ApplicationSettings> wireBenchGetAppSettings(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] get_app_settings executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] get_app_settings executed in $diff microsecond(s)');
     } else {
-      print('Bench get_app_settings executed in $diff microsecond(s)');
+      log('Bench get_app_settings executed in $diff microsecond(s)');
     }
   });
 }
@@ -1562,9 +1562,9 @@ Future<bool> wireBenchIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl 
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] is_app_embedded executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] is_app_embedded executed in $diff microsecond(s)');
     } else {
-      print('Bench is_app_embedded executed in $diff microsecond(s)');
+      log('Bench is_app_embedded executed in $diff microsecond(s)');
     }
   });
 }
@@ -1579,9 +1579,9 @@ Future<ApplicationMessage> wireBenchGetMessage(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] get_message executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] get_message executed in $diff microsecond(s)');
     } else {
-      print('Bench get_message executed in $diff microsecond(s)');
+      log('Bench get_message executed in $diff microsecond(s)');
     }
   });
 }
@@ -1596,9 +1596,9 @@ Future<Numbers> wireBenchRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImp
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] repeat_number executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] repeat_number executed in $diff microsecond(s)');
     } else {
-      print('Bench repeat_number executed in $diff microsecond(s)');
+      log('Bench repeat_number executed in $diff microsecond(s)');
     }
   });
 }
@@ -1613,9 +1613,9 @@ Future<Sequences> wireBenchRepeatSequence(FlutterRustBridgeExampleSingleBlockTes
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] repeat_sequence executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] repeat_sequence executed in $diff microsecond(s)');
     } else {
-      print('Bench repeat_sequence executed in $diff microsecond(s)');
+      log('Bench repeat_sequence executed in $diff microsecond(s)');
     }
   });
 }
@@ -1630,9 +1630,9 @@ Future<int?> wireBenchFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl br
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] first_number executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] first_number executed in $diff microsecond(s)');
     } else {
-      print('Bench first_number executed in $diff microsecond(s)');
+      log('Bench first_number executed in $diff microsecond(s)');
     }
   });
 }
@@ -1647,9 +1647,9 @@ Future<int?> wireBenchFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl 
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] first_sequence executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] first_sequence executed in $diff microsecond(s)');
     } else {
-      print('Bench first_sequence executed in $diff microsecond(s)');
+      log('Bench first_sequence executed in $diff microsecond(s)');
     }
   });
 }
@@ -1664,9 +1664,9 @@ Future<Uint8List> wireBenchGetArray(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] get_array executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] get_array executed in $diff microsecond(s)');
     } else {
-      print('Bench get_array executed in $diff microsecond(s)');
+      log('Bench get_array executed in $diff microsecond(s)');
     }
   });
 }
@@ -1681,9 +1681,9 @@ Future<List<Point>> wireBenchGetComplexArray(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] get_complex_array executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] get_complex_array executed in $diff microsecond(s)');
     } else {
-      print('Bench get_complex_array executed in $diff microsecond(s)');
+      log('Bench get_complex_array executed in $diff microsecond(s)');
     }
   });
 }
@@ -1698,9 +1698,9 @@ Future<int> wireBenchGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] get_usize executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] get_usize executed in $diff microsecond(s)');
     } else {
-      print('Bench get_usize executed in $diff microsecond(s)');
+      log('Bench get_usize executed in $diff microsecond(s)');
     }
   });
 }
@@ -1715,9 +1715,9 @@ Future<UserId> wireBenchNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl b
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] next_user_id executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] next_user_id executed in $diff microsecond(s)');
     } else {
-      print('Bench next_user_id executed in $diff microsecond(s)');
+      log('Bench next_user_id executed in $diff microsecond(s)');
     }
   });
 }
@@ -1732,9 +1732,9 @@ Future<void> wireBenchCloseEventListener(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] close_event_listener executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] close_event_listener executed in $diff microsecond(s)');
     } else {
-      print('Bench close_event_listener executed in $diff microsecond(s)');
+      log('Bench close_event_listener executed in $diff microsecond(s)');
     }
   });
 }
@@ -1749,9 +1749,9 @@ Future<void> wireBenchCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl br
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] create_event executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] create_event executed in $diff microsecond(s)');
     } else {
-      print('Bench create_event executed in $diff microsecond(s)');
+      log('Bench create_event executed in $diff microsecond(s)');
     }
   });
 }
@@ -1766,9 +1766,9 @@ Future<SumWith> wireBenchGetSumStruct(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] get_sum_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] get_sum_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench get_sum_struct executed in $diff microsecond(s)');
+      log('Bench get_sum_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -1783,9 +1783,9 @@ Future<Measure?> wireBenchMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestI
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] multiply_by_ten executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] multiply_by_ten executed in $diff microsecond(s)');
     } else {
-      print('Bench multiply_by_ten executed in $diff microsecond(s)');
+      log('Bench multiply_by_ten executed in $diff microsecond(s)');
     }
   });
 }
@@ -1800,9 +1800,9 @@ Future<OldSimpleStruct> wireBenchCallOldModuleSystem(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] call_old_module_system executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] call_old_module_system executed in $diff microsecond(s)');
     } else {
-      print('Bench call_old_module_system executed in $diff microsecond(s)');
+      log('Bench call_old_module_system executed in $diff microsecond(s)');
     }
   });
 }
@@ -1817,9 +1817,9 @@ Future<NewSimpleStruct> wireBenchCallNewModuleSystem(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] call_new_module_system executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] call_new_module_system executed in $diff microsecond(s)');
     } else {
-      print('Bench call_new_module_system executed in $diff microsecond(s)');
+      log('Bench call_new_module_system executed in $diff microsecond(s)');
     }
   });
 }
@@ -1834,9 +1834,9 @@ Future<BigBuffers> wireBenchHandleBigBuffers(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_big_buffers executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_big_buffers executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_big_buffers executed in $diff microsecond(s)');
+      log('Bench handle_big_buffers executed in $diff microsecond(s)');
     }
   });
 }
@@ -1851,9 +1851,9 @@ Future<DateTime> wireBenchDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImp
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] datetime_utc executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] datetime_utc executed in $diff microsecond(s)');
     } else {
-      print('Bench datetime_utc executed in $diff microsecond(s)');
+      log('Bench datetime_utc executed in $diff microsecond(s)');
     }
   });
 }
@@ -1868,9 +1868,9 @@ Future<DateTime> wireBenchDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestI
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] datetime_local executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] datetime_local executed in $diff microsecond(s)');
     } else {
-      print('Bench datetime_local executed in $diff microsecond(s)');
+      log('Bench datetime_local executed in $diff microsecond(s)');
     }
   });
 }
@@ -1885,9 +1885,9 @@ Future<DateTime> wireBenchNaivedatetime(FlutterRustBridgeExampleSingleBlockTestI
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] naivedatetime executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] naivedatetime executed in $diff microsecond(s)');
     } else {
-      print('Bench naivedatetime executed in $diff microsecond(s)');
+      log('Bench naivedatetime executed in $diff microsecond(s)');
     }
   });
 }
@@ -1902,9 +1902,9 @@ Future<Duration> wireBenchDuration(FlutterRustBridgeExampleSingleBlockTestImpl b
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] duration executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] duration executed in $diff microsecond(s)');
     } else {
-      print('Bench duration executed in $diff microsecond(s)');
+      log('Bench duration executed in $diff microsecond(s)');
     }
   });
 }
@@ -1920,9 +1920,9 @@ Future<Duration> wireBenchHowLongDoesItTake(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] how_long_does_it_take executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] how_long_does_it_take executed in $diff microsecond(s)');
     } else {
-      print('Bench how_long_does_it_take executed in $diff microsecond(s)');
+      log('Bench how_long_does_it_take executed in $diff microsecond(s)');
     }
   });
 }
@@ -1937,9 +1937,9 @@ Future<UuidValue> wireBenchHandleUuid(FlutterRustBridgeExampleSingleBlockTestImp
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_uuid executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_uuid executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_uuid executed in $diff microsecond(s)');
+      log('Bench handle_uuid executed in $diff microsecond(s)');
     }
   });
 }
@@ -1955,9 +1955,9 @@ Future<List<UuidValue>> wireBenchHandleUuids(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_uuids executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_uuids executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_uuids executed in $diff microsecond(s)');
+      log('Bench handle_uuids executed in $diff microsecond(s)');
     }
   });
 }
@@ -1973,9 +1973,9 @@ Future<List<String>> wireBenchHandleUuidsConvertToStrings(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_uuids_convert_to_strings executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_uuids_convert_to_strings executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_uuids_convert_to_strings executed in $diff microsecond(s)');
+      log('Bench handle_uuids_convert_to_strings executed in $diff microsecond(s)');
     }
   });
 }
@@ -1991,9 +1991,9 @@ Future<FeatureUuid> wireBenchHandleNestedUuids(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_nested_uuids executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_nested_uuids executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_nested_uuids executed in $diff microsecond(s)');
+      log('Bench handle_nested_uuids executed in $diff microsecond(s)');
     }
   });
 }
@@ -2009,9 +2009,9 @@ Future<List<String>> wireBenchHandleStrings(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] handle_strings executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] handle_strings executed in $diff microsecond(s)');
     } else {
-      print('Bench handle_strings executed in $diff microsecond(s)');
+      log('Bench handle_strings executed in $diff microsecond(s)');
     }
   });
 }
@@ -2026,9 +2026,9 @@ Future<int> wireBenchSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] send_i64 executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] send_i64 executed in $diff microsecond(s)');
     } else {
-      print('Bench send_i64 executed in $diff microsecond(s)');
+      log('Bench send_i64 executed in $diff microsecond(s)');
     }
   });
 }
@@ -2043,9 +2043,9 @@ Future<int> wireBenchSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImp
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] sum__method__SumWith executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] sum__method__SumWith executed in $diff microsecond(s)');
     } else {
-      print('Bench sum__method__SumWith executed in $diff microsecond(s)');
+      log('Bench sum__method__SumWith executed in $diff microsecond(s)');
     }
   });
 }
@@ -2061,9 +2061,9 @@ Future<ConcatenateWith> wireBenchNewStaticMethodConcatenateWith(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] new__static_method__ConcatenateWith executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] new__static_method__ConcatenateWith executed in $diff microsecond(s)');
     } else {
-      print('Bench new__static_method__ConcatenateWith executed in $diff microsecond(s)');
+      log('Bench new__static_method__ConcatenateWith executed in $diff microsecond(s)');
     }
   });
 }
@@ -2079,9 +2079,9 @@ Future<String> wireBenchConcatenateMethodConcatenateWith(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] concatenate__method__ConcatenateWith executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] concatenate__method__ConcatenateWith executed in $diff microsecond(s)');
     } else {
-      print('Bench concatenate__method__ConcatenateWith executed in $diff microsecond(s)');
+      log('Bench concatenate__method__ConcatenateWith executed in $diff microsecond(s)');
     }
   });
 }
@@ -2097,10 +2097,9 @@ Future<String> wireBenchConcatenateStaticStaticMethodConcatenateWith(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print(
-          'Bench [$timelineTaskName] concatenate_static__static_method__ConcatenateWith executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] concatenate_static__static_method__ConcatenateWith executed in $diff microsecond(s)');
     } else {
-      print('Bench concatenate_static__static_method__ConcatenateWith executed in $diff microsecond(s)');
+      log('Bench concatenate_static__static_method__ConcatenateWith executed in $diff microsecond(s)');
     }
   });
 }

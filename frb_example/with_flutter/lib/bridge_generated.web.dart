@@ -162,9 +162,9 @@ Future<Uint8List> wireBenchDrawMandelbrot(FlutterRustBridgeExampleImpl bridge, S
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] draw_mandelbrot executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] draw_mandelbrot executed in $diff microsecond(s)');
     } else {
-      print('Bench draw_mandelbrot executed in $diff microsecond(s)');
+      log('Bench draw_mandelbrot executed in $diff microsecond(s)');
     }
   });
 }
@@ -179,9 +179,9 @@ Future<String> wireBenchPassingComplexStructs(FlutterRustBridgeExampleImpl bridg
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] passing_complex_structs executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] passing_complex_structs executed in $diff microsecond(s)');
     } else {
-      print('Bench passing_complex_structs executed in $diff microsecond(s)');
+      log('Bench passing_complex_structs executed in $diff microsecond(s)');
     }
   });
 }
@@ -196,9 +196,9 @@ Future<BoxedPoint> wireBenchReturningStructsWithBoxedFields(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] returning_structs_with_boxed_fields executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] returning_structs_with_boxed_fields executed in $diff microsecond(s)');
     } else {
-      print('Bench returning_structs_with_boxed_fields executed in $diff microsecond(s)');
+      log('Bench returning_structs_with_boxed_fields executed in $diff microsecond(s)');
     }
   });
 }
@@ -213,9 +213,9 @@ Future<int> wireBenchOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl b
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_memory_test_input_array executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_memory_test_input_array executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_memory_test_input_array executed in $diff microsecond(s)');
+      log('Bench off_topic_memory_test_input_array executed in $diff microsecond(s)');
     }
   });
 }
@@ -231,9 +231,9 @@ Future<Uint8List> wireBenchOffTopicMemoryTestOutputZeroCopyBuffer(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_memory_test_output_zero_copy_buffer executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_memory_test_output_zero_copy_buffer executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_memory_test_output_zero_copy_buffer executed in $diff microsecond(s)');
+      log('Bench off_topic_memory_test_output_zero_copy_buffer executed in $diff microsecond(s)');
     }
   });
 }
@@ -248,9 +248,9 @@ Future<Uint8List> wireBenchOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampl
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_memory_test_output_vec_u8 executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_memory_test_output_vec_u8 executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_memory_test_output_vec_u8 executed in $diff microsecond(s)');
+      log('Bench off_topic_memory_test_output_vec_u8 executed in $diff microsecond(s)');
     }
   });
 }
@@ -265,9 +265,9 @@ Future<int> wireBenchOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExample
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_memory_test_input_vec_of_object executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_memory_test_input_vec_of_object executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_memory_test_input_vec_of_object executed in $diff microsecond(s)');
+      log('Bench off_topic_memory_test_input_vec_of_object executed in $diff microsecond(s)');
     }
   });
 }
@@ -283,9 +283,9 @@ Future<List<Size>> wireBenchOffTopicMemoryTestOutputVecOfObject(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_memory_test_output_vec_of_object executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_memory_test_output_vec_of_object executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_memory_test_output_vec_of_object executed in $diff microsecond(s)');
+      log('Bench off_topic_memory_test_output_vec_of_object executed in $diff microsecond(s)');
     }
   });
 }
@@ -300,9 +300,9 @@ Future<int> wireBenchOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExamp
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_memory_test_input_complex_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_memory_test_input_complex_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_memory_test_input_complex_struct executed in $diff microsecond(s)');
+      log('Bench off_topic_memory_test_input_complex_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -318,9 +318,9 @@ Future<TreeNode> wireBenchOffTopicMemoryTestOutputComplexStruct(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_memory_test_output_complex_struct executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_memory_test_output_complex_struct executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_memory_test_output_complex_struct executed in $diff microsecond(s)');
+      log('Bench off_topic_memory_test_output_complex_struct executed in $diff microsecond(s)');
     }
   });
 }
@@ -335,9 +335,9 @@ Future<int> wireBenchOffTopicDeliberatelyReturnError(
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_deliberately_return_error executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_deliberately_return_error executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_deliberately_return_error executed in $diff microsecond(s)');
+      log('Bench off_topic_deliberately_return_error executed in $diff microsecond(s)');
     }
   });
 }
@@ -351,9 +351,9 @@ Future<int> wireBenchOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl brid
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
     if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
-      print('Bench [$timelineTaskName] off_topic_deliberately_panic executed in $diff microsecond(s)');
+      log('Bench [$timelineTaskName] off_topic_deliberately_panic executed in $diff microsecond(s)');
     } else {
-      print('Bench off_topic_deliberately_panic executed in $diff microsecond(s)');
+      log('Bench off_topic_deliberately_panic executed in $diff microsecond(s)');
     }
   });
 }
