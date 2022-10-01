@@ -4,6 +4,7 @@ frb_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --"
 frb_pure := "frb_example/pure_dart"
 frb_pure_multi := "frb_example/pure_dart_multi"
 frb_flutter := "frb_example/with_flutter"
+frb_benches := "frb_example/benches"
 line_length := "120"
 devtools_port := env_var_or_default("DEVTOOLS_PORT", "8181")
 dylib := if os() == "windows" {
@@ -34,6 +35,7 @@ gen-bridge: build
                 --dart-format-line-length {{line_length}} --wasm
     cd {{frb_pure}}/rust && cargo clean -p flutter_rust_bridge_example_single_block_test && cargo build
     cd {{frb_pure_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build
+    cd {{frb_benches}}/rust && cargo clean -p flutter_rust_bridge_example_benchmark_suite && cargo build --release
 
 alias l := lint
 lint *args="":
