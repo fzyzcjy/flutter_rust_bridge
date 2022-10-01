@@ -297,73 +297,73 @@ extension BenchDrawMandelbrotExtension on FlutterRustBridgeExampleImpl {
       required double scale,
       required int numThreads,
       String? timelineTaskName}) async {
-    return wireDrawMandelbrot(this, timelineTaskName,
+    return wireBenchDrawMandelbrot(this, timelineTaskName,
         imageSize: imageSize, zoomPoint: zoomPoint, scale: scale, numThreads: numThreads);
   }
 }
 
 extension BenchPassingComplexStructsExtension on FlutterRustBridgeExampleImpl {
   Future<String> benchPassingComplexStructs({required TreeNode root, String? timelineTaskName}) async {
-    return wirePassingComplexStructs(this, timelineTaskName, root: root);
+    return wireBenchPassingComplexStructs(this, timelineTaskName, root: root);
   }
 }
 
 extension BenchReturningStructsWithBoxedFieldsExtension on FlutterRustBridgeExampleImpl {
   Future<BoxedPoint> benchReturningStructsWithBoxedFields({String? timelineTaskName}) async {
-    return wireReturningStructsWithBoxedFields(this, timelineTaskName);
+    return wireBenchReturningStructsWithBoxedFields(this, timelineTaskName);
   }
 }
 
 extension BenchOffTopicMemoryTestInputArrayExtension on FlutterRustBridgeExampleImpl {
   Future<int> benchOffTopicMemoryTestInputArray({required Uint8List input, String? timelineTaskName}) async {
-    return wireOffTopicMemoryTestInputArray(this, timelineTaskName, input: input);
+    return wireBenchOffTopicMemoryTestInputArray(this, timelineTaskName, input: input);
   }
 }
 
 extension BenchOffTopicMemoryTestOutputZeroCopyBufferExtension on FlutterRustBridgeExampleImpl {
   Future<Uint8List> benchOffTopicMemoryTestOutputZeroCopyBuffer({required int len, String? timelineTaskName}) async {
-    return wireOffTopicMemoryTestOutputZeroCopyBuffer(this, timelineTaskName, len: len);
+    return wireBenchOffTopicMemoryTestOutputZeroCopyBuffer(this, timelineTaskName, len: len);
   }
 }
 
 extension BenchOffTopicMemoryTestOutputVecU8Extension on FlutterRustBridgeExampleImpl {
   Future<Uint8List> benchOffTopicMemoryTestOutputVecU8({required int len, String? timelineTaskName}) async {
-    return wireOffTopicMemoryTestOutputVecU8(this, timelineTaskName, len: len);
+    return wireBenchOffTopicMemoryTestOutputVecU8(this, timelineTaskName, len: len);
   }
 }
 
 extension BenchOffTopicMemoryTestInputVecOfObjectExtension on FlutterRustBridgeExampleImpl {
   Future<int> benchOffTopicMemoryTestInputVecOfObject({required List<Size> input, String? timelineTaskName}) async {
-    return wireOffTopicMemoryTestInputVecOfObject(this, timelineTaskName, input: input);
+    return wireBenchOffTopicMemoryTestInputVecOfObject(this, timelineTaskName, input: input);
   }
 }
 
 extension BenchOffTopicMemoryTestOutputVecOfObjectExtension on FlutterRustBridgeExampleImpl {
   Future<List<Size>> benchOffTopicMemoryTestOutputVecOfObject({required int len, String? timelineTaskName}) async {
-    return wireOffTopicMemoryTestOutputVecOfObject(this, timelineTaskName, len: len);
+    return wireBenchOffTopicMemoryTestOutputVecOfObject(this, timelineTaskName, len: len);
   }
 }
 
 extension BenchOffTopicMemoryTestInputComplexStructExtension on FlutterRustBridgeExampleImpl {
   Future<int> benchOffTopicMemoryTestInputComplexStruct({required TreeNode input, String? timelineTaskName}) async {
-    return wireOffTopicMemoryTestInputComplexStruct(this, timelineTaskName, input: input);
+    return wireBenchOffTopicMemoryTestInputComplexStruct(this, timelineTaskName, input: input);
   }
 }
 
 extension BenchOffTopicMemoryTestOutputComplexStructExtension on FlutterRustBridgeExampleImpl {
   Future<TreeNode> benchOffTopicMemoryTestOutputComplexStruct({required int len, String? timelineTaskName}) async {
-    return wireOffTopicMemoryTestOutputComplexStruct(this, timelineTaskName, len: len);
+    return wireBenchOffTopicMemoryTestOutputComplexStruct(this, timelineTaskName, len: len);
   }
 }
 
 extension BenchOffTopicDeliberatelyReturnErrorExtension on FlutterRustBridgeExampleImpl {
   Future<int> benchOffTopicDeliberatelyReturnError({String? timelineTaskName}) async {
-    return wireOffTopicDeliberatelyReturnError(this, timelineTaskName);
+    return wireBenchOffTopicDeliberatelyReturnError(this, timelineTaskName);
   }
 }
 
 extension BenchOffTopicDeliberatelyPanicExtension on FlutterRustBridgeExampleImpl {
   Future<int> benchOffTopicDeliberatelyPanic({String? timelineTaskName}) async {
-    return wireOffTopicDeliberatelyPanic(this, timelineTaskName);
+    return wireBenchOffTopicDeliberatelyPanic(this, timelineTaskName);
   }
 }

@@ -797,7 +797,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 }
 
-Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int a, required int b}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -810,7 +810,7 @@ Future<int> wireSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge, 
   });
 }
 
-Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchPrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int myI32, required int myI64, required double myF64, required bool myBool}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -826,7 +826,7 @@ Future<int> wirePrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchPrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int myU32}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -839,7 +839,7 @@ Future<int> wirePrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
   });
 }
 
-Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<String> wireBenchHandleString(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String s}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -852,7 +852,8 @@ Future<String> wireHandleString(FlutterRustBridgeExampleSingleBlockTestImpl brid
   });
 }
 
-Future<void> wireHandleReturnUnit(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
+Future<void> wireBenchHandleReturnUnit(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
     task.start('Bench $timelineTaskName');
@@ -864,7 +865,7 @@ Future<void> wireHandleReturnUnit(FlutterRustBridgeExampleSingleBlockTestImpl br
   });
 }
 
-Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Uint8List> wireBenchHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Uint8List v}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -877,7 +878,7 @@ Future<Uint8List> wireHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl br
   });
 }
 
-Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(
+Future<VecOfPrimitivePack> wireBenchHandleVecOfPrimitive(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int n}) async {
   final task = TimelineTask();
@@ -891,7 +892,7 @@ Future<VecOfPrimitivePack> wireHandleVecOfPrimitive(
   });
 }
 
-Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(
+Future<ZeroCopyVecOfPrimitivePack> wireBenchHandleZeroCopyVecOfPrimitive(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int n}) async {
   final task = TimelineTask();
@@ -905,7 +906,7 @@ Future<ZeroCopyVecOfPrimitivePack> wireHandleZeroCopyVecOfPrimitive(
   });
 }
 
-Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<MySize> wireBenchHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MySize arg, required MySize boxed}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -918,7 +919,7 @@ Future<MySize> wireHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl brid
   });
 }
 
-Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<NewTypeInt> wireBenchHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required NewTypeInt arg}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -931,7 +932,7 @@ Future<NewTypeInt> wireHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl
   });
 }
 
-Future<List<MySize>> wireHandleListOfStruct(
+Future<List<MySize>> wireBenchHandleListOfStruct(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<MySize> l}) async {
   final task = TimelineTask();
@@ -945,7 +946,8 @@ Future<List<MySize>> wireHandleListOfStruct(
   });
 }
 
-Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<List<String>> wireBenchHandleStringList(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<String> names}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -958,7 +960,8 @@ Future<List<String>> wireHandleStringList(FlutterRustBridgeExampleSingleBlockTes
   });
 }
 
-Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<MyTreeNode> wireBenchHandleComplexStruct(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MyTreeNode s}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -971,7 +974,7 @@ Future<MyTreeNode> wireHandleComplexStruct(FlutterRustBridgeExampleSingleBlockTe
   });
 }
 
-Future<int> wireReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
+Future<int> wireBenchReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
     task.start('Bench $timelineTaskName');
@@ -983,7 +986,7 @@ Future<int> wireReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge, St
   });
 }
 
-Future<int> wireReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
+Future<int> wireBenchReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
     task.start('Bench $timelineTaskName');
@@ -995,7 +998,8 @@ Future<int> wireReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge, 
   });
 }
 
-Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<double?> wireBenchHandleOptionalReturn(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required double left, required double right}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1008,7 +1012,8 @@ Future<double?> wireHandleOptionalReturn(FlutterRustBridgeExampleSingleBlockTest
   });
 }
 
-Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Element?> wireBenchHandleOptionalStruct(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {String? document}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1021,7 +1026,7 @@ Future<Element?> wireHandleOptionalStruct(FlutterRustBridgeExampleSingleBlockTes
   });
 }
 
-Future<ExoticOptionals?> wireHandleOptionalIncrement(
+Future<ExoticOptionals?> wireBenchHandleOptionalIncrement(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {ExoticOptionals? opt}) async {
   final task = TimelineTask();
@@ -1035,7 +1040,7 @@ Future<ExoticOptionals?> wireHandleOptionalIncrement(
   });
 }
 
-Future<double> wireHandleIncrementBoxedOptional(
+Future<double> wireBenchHandleIncrementBoxedOptional(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {double? opt}) async {
   final task = TimelineTask();
@@ -1049,7 +1054,7 @@ Future<double> wireHandleIncrementBoxedOptional(
   });
 }
 
-Future<String> wireHandleOptionBoxArguments(
+Future<String> wireBenchHandleOptionBoxArguments(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {int? i8Box,
     int? u8Box,
@@ -1079,7 +1084,7 @@ Future<String> wireHandleOptionBoxArguments(
   });
 }
 
-Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Uint8List> wireBenchPrintNote(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Note note}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1092,7 +1097,8 @@ Future<Uint8List> wirePrintNote(FlutterRustBridgeExampleSingleBlockTestImpl brid
   });
 }
 
-Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Weekdays?> wireBenchHandleReturnEnum(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String input}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1105,7 +1111,8 @@ Future<Weekdays?> wireHandleReturnEnum(FlutterRustBridgeExampleSingleBlockTestIm
   });
 }
 
-Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Weekdays> wireBenchHandleEnumParameter(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Weekdays weekday}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1118,7 +1125,8 @@ Future<Weekdays> wireHandleEnumParameter(FlutterRustBridgeExampleSingleBlockTest
   });
 }
 
-Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<void> wireBenchHandleCustomizedStruct(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Customized val}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1131,7 +1139,8 @@ Future<void> wireHandleCustomizedStruct(FlutterRustBridgeExampleSingleBlockTestI
   });
 }
 
-Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<KitchenSink> wireBenchHandleEnumStruct(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required KitchenSink val}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1144,7 +1153,7 @@ Future<KitchenSink> wireHandleEnumStruct(FlutterRustBridgeExampleSingleBlockTest
   });
 }
 
-Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<bool> wireBenchUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MyStruct myStruct}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1157,7 +1166,7 @@ Future<bool> wireUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl b
   });
 }
 
-Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<bool> wireBenchUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MyEnum myEnum}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1170,7 +1179,7 @@ Future<bool> wireUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<ApplicationSettings> wireGetAppSettings(
+Future<ApplicationSettings> wireBenchGetAppSettings(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1183,7 +1192,7 @@ Future<ApplicationSettings> wireGetAppSettings(
   });
 }
 
-Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<bool> wireBenchIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required ApplicationSettings appSettings}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1196,7 +1205,7 @@ Future<bool> wireIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<ApplicationMessage> wireGetMessage(
+Future<ApplicationMessage> wireBenchGetMessage(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1209,7 +1218,7 @@ Future<ApplicationMessage> wireGetMessage(
   });
 }
 
-Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Numbers> wireBenchRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int num, required int times}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1222,7 +1231,7 @@ Future<Numbers> wireRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<Sequences> wireRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Sequences> wireBenchRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int seq, required int times}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1235,7 +1244,7 @@ Future<Sequences> wireRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl
   });
 }
 
-Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int?> wireBenchFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Numbers nums}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1248,7 +1257,7 @@ Future<int?> wireFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
   });
 }
 
-Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int?> wireBenchFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Sequences seqs}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1261,7 +1270,8 @@ Future<int?> wireFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<Uint8List> wireGetArray(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
+Future<Uint8List> wireBenchGetArray(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
     task.start('Bench $timelineTaskName');
@@ -1273,7 +1283,7 @@ Future<Uint8List> wireGetArray(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<List<Point>> wireGetComplexArray(
+Future<List<Point>> wireBenchGetComplexArray(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1286,7 +1296,7 @@ Future<List<Point>> wireGetComplexArray(
   });
 }
 
-Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int u}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1299,7 +1309,7 @@ Future<int> wireGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, Str
   });
 }
 
-Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<UserId> wireBenchNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required UserId userId}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1312,7 +1322,7 @@ Future<UserId> wireNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge
   });
 }
 
-Future<void> wireCloseEventListener(
+Future<void> wireBenchCloseEventListener(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1325,7 +1335,7 @@ Future<void> wireCloseEventListener(
   });
 }
 
-Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<void> wireBenchCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String address, required String payload}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1338,7 +1348,8 @@ Future<void> wireCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge,
   });
 }
 
-Future<SumWith> wireGetSumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
+Future<SumWith> wireBenchGetSumStruct(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
     task.start('Bench $timelineTaskName');
@@ -1350,7 +1361,7 @@ Future<SumWith> wireGetSumStruct(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Measure?> wireBenchMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Measure measure}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1363,7 +1374,7 @@ Future<Measure?> wireMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl b
   });
 }
 
-Future<OldSimpleStruct> wireCallOldModuleSystem(
+Future<OldSimpleStruct> wireBenchCallOldModuleSystem(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1376,7 +1387,7 @@ Future<OldSimpleStruct> wireCallOldModuleSystem(
   });
 }
 
-Future<NewSimpleStruct> wireCallNewModuleSystem(
+Future<NewSimpleStruct> wireBenchCallNewModuleSystem(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1389,7 +1400,7 @@ Future<NewSimpleStruct> wireCallNewModuleSystem(
   });
 }
 
-Future<BigBuffers> wireHandleBigBuffers(
+Future<BigBuffers> wireBenchHandleBigBuffers(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1402,7 +1413,7 @@ Future<BigBuffers> wireHandleBigBuffers(
   });
 }
 
-Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<DateTime> wireBenchDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required DateTime d}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1415,7 +1426,7 @@ Future<DateTime> wireDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<DateTime> wireBenchDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required DateTime d}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1428,7 +1439,7 @@ Future<DateTime> wireDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl b
   });
 }
 
-Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<DateTime> wireBenchNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required DateTime d}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1441,7 +1452,7 @@ Future<DateTime> wireNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl b
   });
 }
 
-Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Duration> wireBenchDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Duration d}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1454,7 +1465,8 @@ Future<Duration> wireDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge
   });
 }
 
-Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Duration> wireBenchHowLongDoesItTake(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required FeatureChrono mine}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1467,7 +1479,7 @@ Future<Duration> wireHowLongDoesItTake(FlutterRustBridgeExampleSingleBlockTestIm
   });
 }
 
-Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<UuidValue> wireBenchHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required UuidValue id}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1480,7 +1492,8 @@ Future<UuidValue> wireHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<List<UuidValue>> wireBenchHandleUuids(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<UuidValue> ids}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1493,7 +1506,8 @@ Future<List<UuidValue>> wireHandleUuids(FlutterRustBridgeExampleSingleBlockTestI
   });
 }
 
-Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<FeatureUuid> wireBenchHandleNestedUuids(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required FeatureUuid ids}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1506,7 +1520,8 @@ Future<FeatureUuid> wireHandleNestedUuids(FlutterRustBridgeExampleSingleBlockTes
   });
 }
 
-Future<List<String>> wireHandleStrings(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<List<String>> wireBenchHandleStrings(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<String> strings}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1519,7 +1534,7 @@ Future<List<String>> wireHandleStrings(FlutterRustBridgeExampleSingleBlockTestIm
   });
 }
 
-Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int value}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1532,7 +1547,7 @@ Future<int> wireSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, Stri
   });
 }
 
-Future<int> wireSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required SumWith that, required int y, required int z}) async {
   final task = TimelineTask();
   if (timelineTaskName != null && timelineTaskName.isNotEmpty) {
@@ -1545,7 +1560,7 @@ Future<int> wireSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(
+Future<ConcatenateWith> wireBenchNewStaticMethodConcatenateWith(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String a}) async {
   final task = TimelineTask();
@@ -1559,7 +1574,7 @@ Future<ConcatenateWith> wireNewStaticMethodConcatenateWith(
   });
 }
 
-Future<String> wireConcatenateMethodConcatenateWith(
+Future<String> wireBenchConcatenateMethodConcatenateWith(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required ConcatenateWith that, required String b}) async {
   final task = TimelineTask();
@@ -1573,7 +1588,7 @@ Future<String> wireConcatenateMethodConcatenateWith(
   });
 }
 
-Future<String> wireConcatenateStaticStaticMethodConcatenateWith(
+Future<String> wireBenchConcatenateStaticStaticMethodConcatenateWith(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String a, required String b}) async {
   final task = TimelineTask();

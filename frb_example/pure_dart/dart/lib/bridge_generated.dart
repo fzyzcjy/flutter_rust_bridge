@@ -1976,7 +1976,7 @@ ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw
 
 extension BenchSimpleAdderExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchSimpleAdder({required int a, required int b, String? timelineTaskName}) async {
-    return wireSimpleAdder(this, timelineTaskName, a: a, b: b);
+    return wireBenchSimpleAdder(this, timelineTaskName, a: a, b: b);
   }
 }
 
@@ -1987,111 +1987,111 @@ extension BenchPrimitiveTypesExtension on FlutterRustBridgeExampleSingleBlockTes
       required double myF64,
       required bool myBool,
       String? timelineTaskName}) async {
-    return wirePrimitiveTypes(this, timelineTaskName, myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
+    return wireBenchPrimitiveTypes(this, timelineTaskName, myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
   }
 }
 
 extension BenchPrimitiveU32Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchPrimitiveU32({required int myU32, String? timelineTaskName}) async {
-    return wirePrimitiveU32(this, timelineTaskName, myU32: myU32);
+    return wireBenchPrimitiveU32(this, timelineTaskName, myU32: myU32);
   }
 }
 
 extension BenchHandleStringExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<String> benchHandleString({required String s, String? timelineTaskName}) async {
-    return wireHandleString(this, timelineTaskName, s: s);
+    return wireBenchHandleString(this, timelineTaskName, s: s);
   }
 }
 
 extension BenchHandleReturnUnitExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<void> benchHandleReturnUnit({String? timelineTaskName}) async {
-    return wireHandleReturnUnit(this, timelineTaskName);
+    return wireBenchHandleReturnUnit(this, timelineTaskName);
   }
 }
 
 extension BenchHandleVecU8Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Uint8List> benchHandleVecU8({required Uint8List v, String? timelineTaskName}) async {
-    return wireHandleVecU8(this, timelineTaskName, v: v);
+    return wireBenchHandleVecU8(this, timelineTaskName, v: v);
   }
 }
 
 extension BenchHandleVecOfPrimitiveExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<VecOfPrimitivePack> benchHandleVecOfPrimitive({required int n, String? timelineTaskName}) async {
-    return wireHandleVecOfPrimitive(this, timelineTaskName, n: n);
+    return wireBenchHandleVecOfPrimitive(this, timelineTaskName, n: n);
   }
 }
 
 extension BenchHandleZeroCopyVecOfPrimitiveExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<ZeroCopyVecOfPrimitivePack> benchHandleZeroCopyVecOfPrimitive(
       {required int n, String? timelineTaskName}) async {
-    return wireHandleZeroCopyVecOfPrimitive(this, timelineTaskName, n: n);
+    return wireBenchHandleZeroCopyVecOfPrimitive(this, timelineTaskName, n: n);
   }
 }
 
 extension BenchHandleStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<MySize> benchHandleStruct({required MySize arg, required MySize boxed, String? timelineTaskName}) async {
-    return wireHandleStruct(this, timelineTaskName, arg: arg, boxed: boxed);
+    return wireBenchHandleStruct(this, timelineTaskName, arg: arg, boxed: boxed);
   }
 }
 
 extension BenchHandleNewtypeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<NewTypeInt> benchHandleNewtype({required NewTypeInt arg, String? timelineTaskName}) async {
-    return wireHandleNewtype(this, timelineTaskName, arg: arg);
+    return wireBenchHandleNewtype(this, timelineTaskName, arg: arg);
   }
 }
 
 extension BenchHandleListOfStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<List<MySize>> benchHandleListOfStruct({required List<MySize> l, String? timelineTaskName}) async {
-    return wireHandleListOfStruct(this, timelineTaskName, l: l);
+    return wireBenchHandleListOfStruct(this, timelineTaskName, l: l);
   }
 }
 
 extension BenchHandleStringListExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<List<String>> benchHandleStringList({required List<String> names, String? timelineTaskName}) async {
-    return wireHandleStringList(this, timelineTaskName, names: names);
+    return wireBenchHandleStringList(this, timelineTaskName, names: names);
   }
 }
 
 extension BenchHandleComplexStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<MyTreeNode> benchHandleComplexStruct({required MyTreeNode s, String? timelineTaskName}) async {
-    return wireHandleComplexStruct(this, timelineTaskName, s: s);
+    return wireBenchHandleComplexStruct(this, timelineTaskName, s: s);
   }
 }
 
 extension BenchReturnErrExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchReturnErr({String? timelineTaskName}) async {
-    return wireReturnErr(this, timelineTaskName);
+    return wireBenchReturnErr(this, timelineTaskName);
   }
 }
 
 extension BenchReturnPanicExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchReturnPanic({String? timelineTaskName}) async {
-    return wireReturnPanic(this, timelineTaskName);
+    return wireBenchReturnPanic(this, timelineTaskName);
   }
 }
 
 extension BenchHandleOptionalReturnExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<double?> benchHandleOptionalReturn(
       {required double left, required double right, String? timelineTaskName}) async {
-    return wireHandleOptionalReturn(this, timelineTaskName, left: left, right: right);
+    return wireBenchHandleOptionalReturn(this, timelineTaskName, left: left, right: right);
   }
 }
 
 extension BenchHandleOptionalStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Element?> benchHandleOptionalStruct({String? document, String? timelineTaskName}) async {
-    return wireHandleOptionalStruct(this, timelineTaskName, document: document);
+    return wireBenchHandleOptionalStruct(this, timelineTaskName, document: document);
   }
 }
 
 extension BenchHandleOptionalIncrementExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<ExoticOptionals?> benchHandleOptionalIncrement({ExoticOptionals? opt, String? timelineTaskName}) async {
-    return wireHandleOptionalIncrement(this, timelineTaskName, opt: opt);
+    return wireBenchHandleOptionalIncrement(this, timelineTaskName, opt: opt);
   }
 }
 
 extension BenchHandleIncrementBoxedOptionalExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<double> benchHandleIncrementBoxedOptional({double? opt, String? timelineTaskName}) async {
-    return wireHandleIncrementBoxedOptional(this, timelineTaskName, opt: opt);
+    return wireBenchHandleIncrementBoxedOptional(this, timelineTaskName, opt: opt);
   }
 }
 
@@ -2105,7 +2105,7 @@ extension BenchHandleOptionBoxArgumentsExtension on FlutterRustBridgeExampleSing
       bool? boolbox,
       ExoticOptionals? structbox,
       String? timelineTaskName}) async {
-    return wireHandleOptionBoxArguments(this, timelineTaskName,
+    return wireBenchHandleOptionBoxArguments(this, timelineTaskName,
         i8Box: i8Box,
         u8Box: u8Box,
         i32Box: i32Box,
@@ -2118,237 +2118,237 @@ extension BenchHandleOptionBoxArgumentsExtension on FlutterRustBridgeExampleSing
 
 extension BenchPrintNoteExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Uint8List> benchPrintNote({required Note note, String? timelineTaskName}) async {
-    return wirePrintNote(this, timelineTaskName, note: note);
+    return wireBenchPrintNote(this, timelineTaskName, note: note);
   }
 }
 
 extension BenchHandleReturnEnumExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Weekdays?> benchHandleReturnEnum({required String input, String? timelineTaskName}) async {
-    return wireHandleReturnEnum(this, timelineTaskName, input: input);
+    return wireBenchHandleReturnEnum(this, timelineTaskName, input: input);
   }
 }
 
 extension BenchHandleEnumParameterExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Weekdays> benchHandleEnumParameter({required Weekdays weekday, String? timelineTaskName}) async {
-    return wireHandleEnumParameter(this, timelineTaskName, weekday: weekday);
+    return wireBenchHandleEnumParameter(this, timelineTaskName, weekday: weekday);
   }
 }
 
 extension BenchHandleCustomizedStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<void> benchHandleCustomizedStruct({required Customized val, String? timelineTaskName}) async {
-    return wireHandleCustomizedStruct(this, timelineTaskName, val: val);
+    return wireBenchHandleCustomizedStruct(this, timelineTaskName, val: val);
   }
 }
 
 extension BenchHandleEnumStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<KitchenSink> benchHandleEnumStruct({required KitchenSink val, String? timelineTaskName}) async {
-    return wireHandleEnumStruct(this, timelineTaskName, val: val);
+    return wireBenchHandleEnumStruct(this, timelineTaskName, val: val);
   }
 }
 
 extension BenchUseImportedStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<bool> benchUseImportedStruct({required MyStruct myStruct, String? timelineTaskName}) async {
-    return wireUseImportedStruct(this, timelineTaskName, myStruct: myStruct);
+    return wireBenchUseImportedStruct(this, timelineTaskName, myStruct: myStruct);
   }
 }
 
 extension BenchUseImportedEnumExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<bool> benchUseImportedEnum({required MyEnum myEnum, String? timelineTaskName}) async {
-    return wireUseImportedEnum(this, timelineTaskName, myEnum: myEnum);
+    return wireBenchUseImportedEnum(this, timelineTaskName, myEnum: myEnum);
   }
 }
 
 extension BenchGetAppSettingsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<ApplicationSettings> benchGetAppSettings({String? timelineTaskName}) async {
-    return wireGetAppSettings(this, timelineTaskName);
+    return wireBenchGetAppSettings(this, timelineTaskName);
   }
 }
 
 extension BenchIsAppEmbeddedExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<bool> benchIsAppEmbedded({required ApplicationSettings appSettings, String? timelineTaskName}) async {
-    return wireIsAppEmbedded(this, timelineTaskName, appSettings: appSettings);
+    return wireBenchIsAppEmbedded(this, timelineTaskName, appSettings: appSettings);
   }
 }
 
 extension BenchGetMessageExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<ApplicationMessage> benchGetMessage({String? timelineTaskName}) async {
-    return wireGetMessage(this, timelineTaskName);
+    return wireBenchGetMessage(this, timelineTaskName);
   }
 }
 
 extension BenchRepeatNumberExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Numbers> benchRepeatNumber({required int num, required int times, String? timelineTaskName}) async {
-    return wireRepeatNumber(this, timelineTaskName, num: num, times: times);
+    return wireBenchRepeatNumber(this, timelineTaskName, num: num, times: times);
   }
 }
 
 extension BenchRepeatSequenceExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Sequences> benchRepeatSequence({required int seq, required int times, String? timelineTaskName}) async {
-    return wireRepeatSequence(this, timelineTaskName, seq: seq, times: times);
+    return wireBenchRepeatSequence(this, timelineTaskName, seq: seq, times: times);
   }
 }
 
 extension BenchFirstNumberExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int?> benchFirstNumber({required Numbers nums, String? timelineTaskName}) async {
-    return wireFirstNumber(this, timelineTaskName, nums: nums);
+    return wireBenchFirstNumber(this, timelineTaskName, nums: nums);
   }
 }
 
 extension BenchFirstSequenceExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int?> benchFirstSequence({required Sequences seqs, String? timelineTaskName}) async {
-    return wireFirstSequence(this, timelineTaskName, seqs: seqs);
+    return wireBenchFirstSequence(this, timelineTaskName, seqs: seqs);
   }
 }
 
 extension BenchGetArrayExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Uint8List> benchGetArray({String? timelineTaskName}) async {
-    return wireGetArray(this, timelineTaskName);
+    return wireBenchGetArray(this, timelineTaskName);
   }
 }
 
 extension BenchGetComplexArrayExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<List<Point>> benchGetComplexArray({String? timelineTaskName}) async {
-    return wireGetComplexArray(this, timelineTaskName);
+    return wireBenchGetComplexArray(this, timelineTaskName);
   }
 }
 
 extension BenchGetUsizeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchGetUsize({required int u, String? timelineTaskName}) async {
-    return wireGetUsize(this, timelineTaskName, u: u);
+    return wireBenchGetUsize(this, timelineTaskName, u: u);
   }
 }
 
 extension BenchNextUserIdExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<UserId> benchNextUserId({required UserId userId, String? timelineTaskName}) async {
-    return wireNextUserId(this, timelineTaskName, userId: userId);
+    return wireBenchNextUserId(this, timelineTaskName, userId: userId);
   }
 }
 
 extension BenchCloseEventListenerExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<void> benchCloseEventListener({String? timelineTaskName}) async {
-    return wireCloseEventListener(this, timelineTaskName);
+    return wireBenchCloseEventListener(this, timelineTaskName);
   }
 }
 
 extension BenchCreateEventExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<void> benchCreateEvent({required String address, required String payload, String? timelineTaskName}) async {
-    return wireCreateEvent(this, timelineTaskName, address: address, payload: payload);
+    return wireBenchCreateEvent(this, timelineTaskName, address: address, payload: payload);
   }
 }
 
 extension BenchGetSumStructExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<SumWith> benchGetSumStruct({String? timelineTaskName}) async {
-    return wireGetSumStruct(this, timelineTaskName);
+    return wireBenchGetSumStruct(this, timelineTaskName);
   }
 }
 
 extension BenchMultiplyByTenExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Measure?> benchMultiplyByTen({required Measure measure, String? timelineTaskName}) async {
-    return wireMultiplyByTen(this, timelineTaskName, measure: measure);
+    return wireBenchMultiplyByTen(this, timelineTaskName, measure: measure);
   }
 }
 
 extension BenchCallOldModuleSystemExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<OldSimpleStruct> benchCallOldModuleSystem({String? timelineTaskName}) async {
-    return wireCallOldModuleSystem(this, timelineTaskName);
+    return wireBenchCallOldModuleSystem(this, timelineTaskName);
   }
 }
 
 extension BenchCallNewModuleSystemExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<NewSimpleStruct> benchCallNewModuleSystem({String? timelineTaskName}) async {
-    return wireCallNewModuleSystem(this, timelineTaskName);
+    return wireBenchCallNewModuleSystem(this, timelineTaskName);
   }
 }
 
 extension BenchHandleBigBuffersExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<BigBuffers> benchHandleBigBuffers({String? timelineTaskName}) async {
-    return wireHandleBigBuffers(this, timelineTaskName);
+    return wireBenchHandleBigBuffers(this, timelineTaskName);
   }
 }
 
 extension BenchDatetimeUtcExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<DateTime> benchDatetimeUtc({required DateTime d, String? timelineTaskName}) async {
-    return wireDatetimeUtc(this, timelineTaskName, d: d);
+    return wireBenchDatetimeUtc(this, timelineTaskName, d: d);
   }
 }
 
 extension BenchDatetimeLocalExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<DateTime> benchDatetimeLocal({required DateTime d, String? timelineTaskName}) async {
-    return wireDatetimeLocal(this, timelineTaskName, d: d);
+    return wireBenchDatetimeLocal(this, timelineTaskName, d: d);
   }
 }
 
 extension BenchNaivedatetimeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<DateTime> benchNaivedatetime({required DateTime d, String? timelineTaskName}) async {
-    return wireNaivedatetime(this, timelineTaskName, d: d);
+    return wireBenchNaivedatetime(this, timelineTaskName, d: d);
   }
 }
 
 extension BenchDurationExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Duration> benchDuration({required Duration d, String? timelineTaskName}) async {
-    return wireDuration(this, timelineTaskName, d: d);
+    return wireBenchDuration(this, timelineTaskName, d: d);
   }
 }
 
 extension BenchHowLongDoesItTakeExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<Duration> benchHowLongDoesItTake({required FeatureChrono mine, String? timelineTaskName}) async {
-    return wireHowLongDoesItTake(this, timelineTaskName, mine: mine);
+    return wireBenchHowLongDoesItTake(this, timelineTaskName, mine: mine);
   }
 }
 
 extension BenchHandleUuidExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<UuidValue> benchHandleUuid({required UuidValue id, String? timelineTaskName}) async {
-    return wireHandleUuid(this, timelineTaskName, id: id);
+    return wireBenchHandleUuid(this, timelineTaskName, id: id);
   }
 }
 
 extension BenchHandleUuidsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<List<UuidValue>> benchHandleUuids({required List<UuidValue> ids, String? timelineTaskName}) async {
-    return wireHandleUuids(this, timelineTaskName, ids: ids);
+    return wireBenchHandleUuids(this, timelineTaskName, ids: ids);
   }
 }
 
 extension BenchHandleNestedUuidsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<FeatureUuid> benchHandleNestedUuids({required FeatureUuid ids, String? timelineTaskName}) async {
-    return wireHandleNestedUuids(this, timelineTaskName, ids: ids);
+    return wireBenchHandleNestedUuids(this, timelineTaskName, ids: ids);
   }
 }
 
 extension BenchHandleStringsExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<List<String>> benchHandleStrings({required List<String> strings, String? timelineTaskName}) async {
-    return wireHandleStrings(this, timelineTaskName, strings: strings);
+    return wireBenchHandleStrings(this, timelineTaskName, strings: strings);
   }
 }
 
 extension BenchSendI64Extension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchSendI64({required int value, String? timelineTaskName}) async {
-    return wireSendI64(this, timelineTaskName, value: value);
+    return wireBenchSendI64(this, timelineTaskName, value: value);
   }
 }
 
 extension BenchSumMethodSumWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<int> benchSumMethodSumWith(
       {required SumWith that, required int y, required int z, String? timelineTaskName}) async {
-    return wireSumMethodSumWith(this, timelineTaskName, that: that, y: y, z: z);
+    return wireBenchSumMethodSumWith(this, timelineTaskName, that: that, y: y, z: z);
   }
 }
 
 extension BenchNewStaticMethodConcatenateWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<ConcatenateWith> benchNewStaticMethodConcatenateWith({required String a, String? timelineTaskName}) async {
-    return wireNewStaticMethodConcatenateWith(this, timelineTaskName, a: a);
+    return wireBenchNewStaticMethodConcatenateWith(this, timelineTaskName, a: a);
   }
 }
 
 extension BenchConcatenateMethodConcatenateWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<String> benchConcatenateMethodConcatenateWith(
       {required ConcatenateWith that, required String b, String? timelineTaskName}) async {
-    return wireConcatenateMethodConcatenateWith(this, timelineTaskName, that: that, b: b);
+    return wireBenchConcatenateMethodConcatenateWith(this, timelineTaskName, that: that, b: b);
   }
 }
 
 extension BenchConcatenateStaticStaticMethodConcatenateWithExtension on FlutterRustBridgeExampleSingleBlockTestImpl {
   Future<String> benchConcatenateStaticStaticMethodConcatenateWith(
       {required String a, required String b, String? timelineTaskName}) async {
-    return wireConcatenateStaticStaticMethodConcatenateWith(this, timelineTaskName, a: a, b: b);
+    return wireBenchConcatenateStaticStaticMethodConcatenateWith(this, timelineTaskName, a: a, b: b);
   }
 }
