@@ -23,7 +23,7 @@ impl IrFunc {
         format!("bench{}", self.as_suffix())
     }
     pub(crate) fn bench_wire_fn_name(&self) -> String {
-        format!("wire{}", self.as_suffix())
+        format!("wireBench{}", self.as_suffix())
     }
     pub(crate) fn bench_extension_name(&self) -> String {
         format!("Bench{}Extension", self.as_suffix())
