@@ -191,7 +191,7 @@ Future<BoxedPoint> wire_returning_structs_with_boxed_fields(
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
   stopwatch.start();
-  return bridge.returningStructsWithBoxedFields().then((value) => value).whenComplete(() {
+  bridge.returningStructsWithBoxedFields().whenComplete(() {
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
@@ -333,7 +333,7 @@ Future<int> wire_off_topic_deliberately_return_error(
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
   stopwatch.start();
-  return bridge.offTopicDeliberatelyReturnError().then((value) => value).whenComplete(() {
+  bridge.offTopicDeliberatelyReturnError().whenComplete(() {
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;
@@ -349,7 +349,7 @@ Future<int> wire_off_topic_deliberately_panic(FlutterRustBridgeExampleImpl bridg
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
   stopwatch.start();
-  return bridge.offTopicDeliberatelyPanic().then((value) => value).whenComplete(() {
+  bridge.offTopicDeliberatelyPanic().whenComplete(() {
     stopwatch.stop();
     final int ends = stopwatch.elapsedMicroseconds;
     final int diff = ends - starts;

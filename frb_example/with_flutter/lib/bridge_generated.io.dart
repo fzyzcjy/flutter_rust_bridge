@@ -133,7 +133,7 @@ Future<BoxedPoint> wireReturningStructsWithBoxedFields(
   } else {
     task.start('Bench returning_structs_with_boxed_fields');
   }
-  return bridge.returningStructsWithBoxedFields().then((value) => value).whenComplete(() {
+  bridge.returningStructsWithBoxedFields().whenComplete(() {
     task.finish();
   });
 }
@@ -239,7 +239,7 @@ Future<int> wireOffTopicDeliberatelyReturnError(FlutterRustBridgeExampleImpl bri
   } else {
     task.start('Bench off_topic_deliberately_return_error');
   }
-  return bridge.offTopicDeliberatelyReturnError().then((value) => value).whenComplete(() {
+  bridge.offTopicDeliberatelyReturnError().whenComplete(() {
     task.finish();
   });
 }
@@ -251,7 +251,7 @@ Future<int> wireOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge, S
   } else {
     task.start('Bench off_topic_deliberately_panic');
   }
-  return bridge.offTopicDeliberatelyPanic().then((value) => value).whenComplete(() {
+  bridge.offTopicDeliberatelyPanic().whenComplete(() {
     task.finish();
   });
 }
