@@ -11,58 +11,26 @@ void main(List<String> args) async {
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
 
-  group('benchmark simple roundtrip', () {
-    late List<UuidValue> thousandUuids;
-    late List<String> thousandStrings;
-    late List<String> thousandUuidsAsStrings;
-    late List<UuidValue> hundredThousandUuids;
-    late List<String> hundredThousandStrings;
-    late List<String> hundredThousandUuidsAsStrings;
-    setUp(() {
-      final Uuid uuid = Uuid();
-      thousandUuids = List<UuidValue>.generate(1000, (index) => uuid.v4obj(),
-          growable: false);
-      thousandStrings = List<String>.generate(
-          1000, (index) => getRandomString(uuidSizeInBytes),
-          growable: false);
-      thousandUuidsAsStrings =
-          thousandUuids.map((e) => e.toString()).toList(growable: false);
-      hundredThousandUuids = List<UuidValue>.generate(
-          100000, (index) => uuid.v4obj(),
-          growable: false);
-      hundredThousandStrings = List<String>.generate(
-          100000, (index) => getRandomString(uuidSizeInBytes),
-          growable: false);
-      hundredThousandUuidsAsStrings =
-          hundredThousandUuids.map((e) => e.toString()).toList(growable: false);
-    });
-    test('1,000 uuids', () async {
-      final output = await api.handleUuids(ids: thousandUuids);
-      expect(output, thousandUuids);
-    });
-    test('1,000 strings', () async {
-      final output = await api.handleStrings(strings: thousandStrings);
-      expect(output, thousandStrings);
-    });
-    test('1,000 uuids -> 1,000 strings', () async {
-      final output = await api.handleUuidsConvertToStrings(ids: thousandUuids);
-      expect(output, thousandUuidsAsStrings);
-    });
-    test('100,000 uuids', () async {
-      final output = await api.handleUuids(ids: hundredThousandUuids);
-      expect(output, hundredThousandUuids);
-    });
-    test('100,000 strings', () async {
-      final output = await api.handleStrings(strings: hundredThousandStrings);
-      expect(output, hundredThousandStrings);
-    });
-    test('100,000 uuids -> 100,000 strings', () async {
-      final output = await api.handleUuidsConvertToStrings(
-        ids: hundredThousandUuids,
-      );
-      expect(output, hundredThousandUuidsAsStrings);
-    });
-  });
+  final Uuid uuid = Uuid();
+  final thousandUuids =
+      List<UuidValue>.generate(1000, (index) => uuid.v4obj(), growable: false);
+  final thousandStrings = List<String>.generate(
+      1000, (index) => getRandomString(uuidSizeInBytes),
+      growable: false);
+  final hundredThousandUuids = List<UuidValue>.generate(
+      100000, (index) => uuid.v4obj(),
+      growable: false);
+  final hundredThousandStrings = List<String>.generate(
+      100000, (index) => getRandomString(uuidSizeInBytes),
+      growable: false);
+  await api.handleUuids(ids: thousandUuids);
+  await api.handleStrings(strings: thousandStrings);
+  await api.handleUuidsConvertToStrings(ids: thousandUuids);
+  await api.handleUuids(ids: hundredThousandUuids);
+  await api.handleStrings(strings: hundredThousandStrings);
+  await api.handleUuidsConvertToStrings(
+    ids: hundredThousandUuids,
+  );
 }
 
 class MatchBigInt extends CustomMatcher {
