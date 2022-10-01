@@ -17,7 +17,7 @@ class TemplateBenchmark extends AsyncBenchmarkBase {
   // The benchmark code.
   @override
   Future<void> run() async {
-    final _ = await api.benchHandleUuids(ids: uuids);
+    final _ = await api.handleUuids(ids: uuids);
   }
 
   // Not measured setup code executed prior to the benchmark runs.
