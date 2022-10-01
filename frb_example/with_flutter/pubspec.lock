@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "48.0.0"
+    version: "49.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0"
+    version: "5.1.0"
   archive:
     dependency: transitive
     description:
@@ -241,7 +241,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.48.0"
+    version: "1.48.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
