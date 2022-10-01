@@ -8,11 +8,16 @@ use flutter_rust_bridge::{
     IntoDart, MessagePort, WrapInfo,
 };
 
-pub type BenchHandler =
-    SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
+pub type BenchHandler = SimpleHandler<BenchExecutor, BenchErrorHandler>;
 
 #[derive(Clone, Copy)]
 pub struct BenchErrorHandler(ReportDartErrorHandler);
+
+impl Default for BenchErrorHandler {
+    fn default() -> Self {
+        Self(ReportDartErrorHandler)
+    }
+}
 
 impl ErrorHandler for BenchErrorHandler {
     fn handle_error(&self, port: MessagePort, error: handler::Error) {
@@ -28,6 +33,12 @@ impl ErrorHandler for BenchErrorHandler {
 }
 
 pub struct BenchExecutor(ThreadPoolExecutor<BenchErrorHandler>);
+
+impl BenchExecutor {
+    pub(crate) fn new(error_handler: BenchErrorHandler) -> Self {
+        Self(ThreadPoolExecutor::new(error_handler))
+    }
+}
 
 impl Executor for BenchExecutor {
     fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)

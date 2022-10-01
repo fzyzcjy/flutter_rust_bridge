@@ -1,9 +1,10 @@
 #![allow(unused_variables)]
 
-use crate::executor::BenchHandler;
+use crate::executor::{BenchErrorHandler, BenchExecutor, BenchHandler};
 
 lazy_static::lazy_static! {
-  pub static ref FLUTTER_RUST_BRIDGE_HANDLER: BenchHandler = BenchHandler::default();
+  pub static ref FLUTTER_RUST_BRIDGE_ERROR_HANDLER: BenchErrorHandler = BenchErrorHandler::default();
+  pub static ref FLUTTER_RUST_BRIDGE_HANDLER: BenchHandler = BenchHandler::new(BenchExecutor::new(FLUTTER_RUST_BRIDGE_ERROR_HANDLER.clone()), FLUTTER_RUST_BRIDGE_ERROR_HANDLER.clone());
 }
 
 #[derive(Debug, Clone)]
