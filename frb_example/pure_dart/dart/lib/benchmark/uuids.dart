@@ -17,6 +17,7 @@ class TemplateBenchmark extends AsyncBenchmarkBase {
   // The benchmark code.
   @override
   Future<void> run() async {
+    // ignore: no_leading_underscores_for_local_identifiers
     final _ = await api.handleUuids(ids: uuids);
   }
 
