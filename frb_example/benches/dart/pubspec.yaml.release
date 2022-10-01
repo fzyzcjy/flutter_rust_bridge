@@ -15,6 +15,7 @@ dependencies:
   test_core: ^0.4.16
   test: ^1.21.4
   uuid: ^3.0.6
+  benchmark_harness: ^2.2.0
 dev_dependencies:
   build_runner: ^2.2.0
   freezed: ^2.1.0+1

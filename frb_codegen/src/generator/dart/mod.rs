@@ -1,4 +1,3 @@
-mod bench;
 mod func;
 mod ty;
 mod ty_boxed;
@@ -40,8 +39,6 @@ use crate::others::*;
 use crate::target::Target::*;
 use crate::target::{Acc, Target};
 use crate::{ir::*, Opts};
-
-use self::bench::push_benchmark_funcs;
 
 pub struct Output {
     pub file_prelude: DartBasicCode,
@@ -93,8 +90,6 @@ pub(crate) struct DartApiSpec {
     dart_wasm_funcs: Vec<String>,
     dart_wasm_module: Option<String>,
     needs_freezed: bool,
-    #[cfg(feature = "benchmarking")]
-    dart_bench_funcs: Vec<GeneratedBenchFunc>,
 }
 
 impl DartApiSpec {
@@ -138,12 +133,6 @@ impl DartApiSpec {
             .iter()
             .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
             .collect::<Vec<_>>();
-        #[cfg(feature = "benchmarking")]
-        let dart_bench_funcs = ir_file
-            .funcs
-            .iter()
-            .filter_map(|x| generate_bench_func(x, config))
-            .collect::<Vec<_>>();
 
         let ir_wasm_func_exports = config.wasm_enabled.then(|| {
             ir_file
@@ -177,8 +166,6 @@ impl DartApiSpec {
             dart_wasm_funcs,
             dart_wasm_module,
             needs_freezed,
-            #[cfg(feature = "benchmarking")]
-            dart_bench_funcs,
         }
     }
 }
@@ -291,8 +278,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         dart_wasm_module,
         dart_structs: _,
         needs_freezed: _,
-        #[cfg(feature = "benchmarking")]
-        dart_bench_funcs,
     } = spec;
 
     lines.push_acc(Acc {
@@ -357,22 +342,12 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             config,
         );
     }
-    #[cfg(feature = "benchmarking")]
-    if config.bench_extended {
-        push_benchmark_funcs(&mut lines, dart_bench_funcs);
-    }
 
     let Acc { common, io, wasm } = lines.join("\n");
-    #[cfg(feature = "benchmarking")]
-    let additional_impl_import = if config.bench_extended && config.wasm_enabled {
-        "import 'dart:developer';".to_string()
-    } else {
-        "".into()
-    };
     #[cfg(not(feature = "benchmarking"))]
     let additional_impl_import = "".into();
     let impl_import = format!(
-        "{}{} import 'package:meta/meta.dart';",
+        "{} import 'package:meta/meta.dart';",
         if config.wasm_enabled {
             format!(
                 "import '{}'; export '{0}';",
@@ -384,7 +359,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         } else {
             "".into()
         },
-        additional_impl_import
     );
     let common_import = format!(
         "{}
@@ -472,28 +446,6 @@ pub(crate) struct GeneratedApiFunc {
     companion_field_implementation: String,
 }
 
-#[cfg(feature = "benchmarking")]
-#[derive(Debug)]
-pub(crate) struct GeneratedBenchFunc {
-    common: GeneratedExtensionFunc,
-    io: GeneratedFunc,
-    wasm: GeneratedFunc,
-}
-
-#[derive(Debug)]
-pub(crate) struct GeneratedFunc {
-    signature: String,
-    implementation: String,
-}
-
-#[cfg(feature = "benchmarking")]
-#[derive(Debug)]
-pub(crate) struct GeneratedExtensionFunc {
-    extend: String,
-    signature: String,
-    implementation: String,
-}
-
 fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<String> {
     TypeDartGenerator::new(ty.clone(), ir_file, config)
         .api2wire_body()
@@ -560,28 +512,6 @@ fn generate_wire2api_func(
         ty.dart_param_type(),
         body,
     )
-}
-
-#[cfg(feature = "benchmarking")]
-fn generate_bench_func(func: &IrFunc, config: &Opts) -> Option<GeneratedBenchFunc> {
-    if func.mode == IrFuncMode::Normal {
-        return Some(GeneratedBenchFunc {
-            common: GeneratedExtensionFunc {
-                extend: func.bench_extesion_on(&config.dart_api_impl_class_name()),
-                signature: func.as_universal_bench_fn_signature(),
-                implementation: func.as_universal_bench_fn_body(),
-            },
-            io: GeneratedFunc {
-                signature: func.as_io_signature(config),
-                implementation: func.as_io_body(),
-            },
-            wasm: GeneratedFunc {
-                signature: func.as_wasm_signature(config),
-                implementation: func.as_wasm_body(),
-            },
-        });
-    }
-    None
 }
 
 fn gen_wire2api_simple_type_cast(s: &str) -> String {

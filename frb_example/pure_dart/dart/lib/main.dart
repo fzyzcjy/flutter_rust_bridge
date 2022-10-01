@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:flutter_rust_bridge_example/utils.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
@@ -626,51 +625,6 @@ void main(List<String> args) async {
       final outputs = await api.handleNestedUuids(ids: wrapper);
       expect(wrapper.one, outputs.one);
       expect(wrapper.many, outputs.many);
-    });
-  });
-
-  group('benchmark simple roundtrip', () {
-    late List<UuidValue> thousandUuids;
-    late List<String> thousandStrings;
-    late List<String> thousandUuidsAsStrings;
-    late List<UuidValue> hundredThousandUuids;
-    late List<String> hundredThousandStrings;
-    late List<String> hundredThousandUuidsAsStrings;
-    setUp(() {
-      final Uuid uuid = Uuid();
-      thousandUuids = List<UuidValue>.generate(1000, (index) => uuid.v4obj(), growable: false);
-      thousandStrings = List<String>.generate(1000, (index) => getRandomString(uuidSizeInBytes), growable: false);
-      thousandUuidsAsStrings = thousandUuids.map((e) => e.toString()).toList(growable: false);
-      hundredThousandUuids = List<UuidValue>.generate(100000, (index) => uuid.v4obj(), growable: false);
-      hundredThousandStrings =
-          List<String>.generate(100000, (index) => getRandomString(uuidSizeInBytes), growable: false);
-      hundredThousandUuidsAsStrings = hundredThousandUuids.map((e) => e.toString()).toList(growable: false);
-    });
-    test('1,000 uuids', () async {
-      final output = await api.benchHandleUuids(ids: thousandUuids, timelineTaskName: '1,000 uuids');
-      expect(output, thousandUuids);
-    });
-    test('1,000 strings', () async {
-      final output = await api.benchHandleStrings(strings: thousandStrings, timelineTaskName: '1,000 strings');
-      expect(output, thousandStrings);
-    });
-    test('1,000 uuids -> 1,000 strings', () async {
-      final output = await api.benchHandleUuidsConvertToStrings(
-          ids: thousandUuids, timelineTaskName: '1,000 uuids -> 1,000 strings');
-      expect(output, thousandUuidsAsStrings);
-    });
-    test('100,000 uuids', () async {
-      final output = await api.benchHandleUuids(ids: hundredThousandUuids, timelineTaskName: '100,000 uuids');
-      expect(output, hundredThousandUuids);
-    });
-    test('100,000 strings', () async {
-      final output = await api.benchHandleStrings(strings: hundredThousandStrings, timelineTaskName: '100,000 strings');
-      expect(output, hundredThousandStrings);
-    });
-    test('100,000 uuids -> 100,000 strings', () async {
-      final output = await api.benchHandleUuidsConvertToStrings(
-          ids: hundredThousandUuids, timelineTaskName: '100,000 uuids -> 100,000 strings');
-      expect(output, hundredThousandUuidsAsStrings);
     });
   });
 }
