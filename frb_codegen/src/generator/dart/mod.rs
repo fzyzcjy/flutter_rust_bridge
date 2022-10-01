@@ -364,7 +364,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
 
     let Acc { common, io, wasm } = lines.join("\n");
     #[cfg(feature = "benchmarking")]
-    let additional_impl_import = if config.bench_extended {
+    let additional_impl_import = if config.bench_extended && config.wasm_enabled {
         "import 'dart:developer';".to_string()
     } else {
         "".into()
