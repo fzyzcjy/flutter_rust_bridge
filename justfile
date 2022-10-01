@@ -14,6 +14,13 @@ dylib := if os() == "windows" {
 } else {
     "libflutter_rust_bridge_example.so"
 }
+bench_dylib := if os() == "windows" {
+    "flutter_rust_bridge_example_benchmark_suite.dll"
+} else if os() == "macos" {
+    "flutter_rust_bridge_example_benchmark_suite.dylib"
+} else {
+    "flutter_rust_bridge_example_benchmark_suite.so"
+}
 frb_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
 frb_tools := justfile_directory() / "tools"
 
@@ -61,7 +68,7 @@ test-benches *args="":
         dart pub get && \
         dart {{args}} --enable-vm-service={{devtools_port}} \
         --pause-isolates-on-start --pause-isolates-on-exit \
-        lib/main.dart ../../../target/release/{{dylib}}
+        lib/main.dart ../../../target/release/{{bench_dylib}}
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
