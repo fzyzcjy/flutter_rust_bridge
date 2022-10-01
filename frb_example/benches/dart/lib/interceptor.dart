@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated.io.dart'
@@ -43,7 +42,7 @@ class AsyncStopWatch extends Stopwatch {
 
 class FlutterRustBridgeInterceptor {
   Future<AsyncStopWatch> beforeExecuteNormal(String debugName) async {
-    log('@beforeExecuteNormal $debugName');
+    print('(Dart) execute [$debugName] start');
     return Future.sync(() {
       final AsyncStopWatch stopwatch = AsyncStopWatch();
       stopwatch.start();
@@ -55,11 +54,13 @@ class FlutterRustBridgeInterceptor {
       String debugName, AsyncStopWatch stopwatch) async {
     return Future.sync(() {
       stopwatch.stop();
-      log('[$debugName] executed in ${stopwatch.ends! - stopwatch.starts!}μs');
+      print(
+          '(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts!}μs');
     });
   }
 
-  AsyncStopWatch beforeExecuteSync<S>(String _) {
+  AsyncStopWatch beforeExecuteSync<S>(String debugName) {
+    print('(Dart) execute [$debugName] start');
     final AsyncStopWatch stopwatch = AsyncStopWatch();
     stopwatch.start();
     return stopwatch;
@@ -67,7 +68,8 @@ class FlutterRustBridgeInterceptor {
 
   void afterExecuteSync<S>(String debugName, AsyncStopWatch stopwatch) {
     stopwatch.stop();
-    log('[$debugName] executed in ${stopwatch.ends! - stopwatch.starts!}μs');
+    print(
+        '(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts!}μs');
   }
 }
 
