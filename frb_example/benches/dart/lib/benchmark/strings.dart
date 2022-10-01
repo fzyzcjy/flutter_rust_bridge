@@ -33,7 +33,7 @@ class TemplateBenchmark extends AsyncBenchmarkBase {
       print(
           'flutter_rust_bridge benchmark $sampleCount strings (dylibPath=$dylibPath)');
       print('setup');
-      api = initializeExternalLibrary(dylibPath);
+      api = initializeBenchExternalLibrary(dylibPath);
       strings = List<String>.generate(
           sampleCount, (_) => getRandomString(uuidSizeInBytes));
     });

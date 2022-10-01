@@ -7,7 +7,7 @@ import 'interceptor.dart';
 import 'bridge_generated.io.dart';
 export 'bridge_generated.io.dart';
 
-FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeExternalLibrary(
+FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeBenchExternalLibrary(
     String path,
     {bool? useJSON}) {
   return FlutterRustBridgeExampleBenchmarkSuiteImplBench(

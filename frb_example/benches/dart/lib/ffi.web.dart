@@ -5,7 +5,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 const root = 'pkg/flutter_rust_bridge_example_benchmark_suite';
 
-FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeExternalLibrary(
+FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeBenchExternalLibrary(
         void _,
         {bool? useJSON}) =>
     FlutterRustBridgeExampleBenchmarkSuiteImplBench.wasm(

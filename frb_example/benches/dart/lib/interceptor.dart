@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
@@ -8,6 +9,7 @@ import 'dart:ffi' as ffi;
 
 class FlutterRustBridgeExampleBenchmarkSuiteImplBench
     extends FlutterRustBridgeExampleBenchmarkSuiteImpl {
+  final FlutterRustBridgeExampleBenchmarkSuitePlatformBench platform;
   factory FlutterRustBridgeExampleBenchmarkSuiteImplBench(ExternalLibrary dylib,
           {bool? useJSON}) =>
       FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(
@@ -26,9 +28,12 @@ class FlutterRustBridgeExampleBenchmarkSuiteImplBench
           useJSON: useJSON ?? false);
 
   @override
-  FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(
-      FlutterRustBridgeExampleBenchmarkSuitePlatformBench platform)
+  FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(this.platform)
       : super.raw(platform);
+
+  Future<void> whenBenchmarkComplete() async {
+    platform.whenBenchmarkComplete();
+  }
 }
 
 class AsyncStopWatch extends Stopwatch {
@@ -122,18 +127,33 @@ class FlutterRustBridgeInterceptorStdOut
 class Metric {
   final int starts;
   int? ends;
-  Metric(this.starts);
+  final String unit;
+  final String debugName;
+  Metric(this.starts, this.debugName, {this.unit = "ns"});
+  Metric.fromJson(Map<String, dynamic> json)
+      : starts = 0,
+        ends = json['elapsed'],
+        unit = json['unit'],
+        debugName = json['debugName'];
+  Map<String, dynamic> toJson() {
+    return {
+      'elapsed': ends,
+      'unit': unit,
+      'debugName': debugName,
+    };
+  }
 }
 
 class FlutterRustBridgeInterceptorJson
     extends FlutterRustBridgeInterceptor<UniqueAsyncStopWatch> {
-  Map<UuidValue, Metric> metrics = {};
+  Map<String, Metric> metrics = {};
   final Uuid generator = Uuid();
   @override
   Future<UniqueAsyncStopWatch> beforeExecuteNormal(String debugName) async {
     final UuidValue uuid = generator.v4obj();
     UniqueAsyncStopWatch stopwatch = UniqueAsyncStopWatch(uuid);
-    metrics.putIfAbsent(uuid, () => Metric(stopwatch.elapsedMicroseconds));
+    metrics.putIfAbsent(uuid.toString(),
+        () => Metric(stopwatch.elapsedMicroseconds, debugName));
     await super._beforeExecuteNormal(debugName, stopwatch);
     return stopwatch;
   }
@@ -142,7 +162,7 @@ class FlutterRustBridgeInterceptorJson
   Future<void> afterExecuteNormal<S>(
       String debugName, UniqueAsyncStopWatch stopwatch) async {
     await super._afterExecuteNormal(debugName, stopwatch);
-    metrics.update(stopwatch.uuid, (value) {
+    metrics.update(stopwatch.uuid.toString(), (value) {
       value.ends = stopwatch.elapsedMicroseconds;
       return value;
     });
@@ -152,7 +172,8 @@ class FlutterRustBridgeInterceptorJson
   UniqueAsyncStopWatch beforeExecuteSync<S>(String debugName) {
     final UuidValue uuid = generator.v4obj();
     UniqueAsyncStopWatch stopwatch = UniqueAsyncStopWatch(uuid);
-    metrics.putIfAbsent(uuid, () => Metric(stopwatch.elapsedMicroseconds));
+    metrics.putIfAbsent(uuid.toString(),
+        () => Metric(stopwatch.elapsedMicroseconds, debugName));
     super._beforeExecuteSync(debugName, stopwatch);
     return stopwatch;
   }
@@ -160,7 +181,7 @@ class FlutterRustBridgeInterceptorJson
   @override
   void afterExecuteSync<S>(String debugName, UniqueAsyncStopWatch stopwatch) {
     super._afterExecuteSync(debugName, stopwatch);
-    metrics.update(stopwatch.uuid, (value) {
+    metrics.update(stopwatch.uuid.toString(), (value) {
       value.ends = stopwatch.elapsedMicroseconds;
       return value;
     });
@@ -191,5 +212,13 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
     final result = super.executeSync(task);
     interceptor.afterExecuteSync(debugName, stopwatch);
     return result;
+  }
+
+  Future<void> whenBenchmarkComplete() async {
+    if (interceptor is FlutterRustBridgeInterceptorJson) {
+      final FlutterRustBridgeInterceptorJson jsonInterceptor =
+          interceptor as FlutterRustBridgeInterceptorJson;
+      print(jsonEncode(jsonInterceptor.metrics));
+    }
   }
 }

@@ -14,7 +14,7 @@ void main(List<String> args) async {
   if (extra != '--json') {
     print('CLI extra argument $extra is ignored (expected --json, or none)');
   }
-  final api = initializeExternalLibrary(dylibPath, useJSON: json);
+  final api = initializeBenchExternalLibrary(dylibPath, useJSON: json);
 
   final Uuid uuid = Uuid();
   final thousandUuids =
@@ -36,6 +36,8 @@ void main(List<String> args) async {
   await api.handleUuidsConvertToStrings(
     ids: hundredThousandUuids,
   );
+
+  await api.whenBenchmarkComplete();
 }
 
 class MatchBigInt extends CustomMatcher {
