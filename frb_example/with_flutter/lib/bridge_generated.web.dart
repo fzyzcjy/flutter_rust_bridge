@@ -149,7 +149,7 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
 }
 
-Future<Uint8List> wire_draw_mandelbrot(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<Uint8List> wireBenchDrawMandelbrot(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required Size imageSize, required Point zoomPoint, required double scale, required int numThreads}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -169,7 +169,7 @@ Future<Uint8List> wire_draw_mandelbrot(FlutterRustBridgeExampleImpl bridge, Stri
   });
 }
 
-Future<String> wire_passing_complex_structs(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<String> wireBenchPassingComplexStructs(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required TreeNode root}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -186,7 +186,7 @@ Future<String> wire_passing_complex_structs(FlutterRustBridgeExampleImpl bridge,
   });
 }
 
-Future<BoxedPoint> wire_returning_structs_with_boxed_fields(
+Future<BoxedPoint> wireBenchReturningStructsWithBoxedFields(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -203,7 +203,7 @@ Future<BoxedPoint> wire_returning_structs_with_boxed_fields(
   });
 }
 
-Future<int> wire_off_topic_memory_test_input_array(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<int> wireBenchOffTopicMemoryTestInputArray(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required Uint8List input}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -220,7 +220,7 @@ Future<int> wire_off_topic_memory_test_input_array(FlutterRustBridgeExampleImpl 
   });
 }
 
-Future<Uint8List> wire_off_topic_memory_test_output_zero_copy_buffer(
+Future<Uint8List> wireBenchOffTopicMemoryTestOutputZeroCopyBuffer(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
   final stopwatch = Stopwatch();
@@ -238,8 +238,7 @@ Future<Uint8List> wire_off_topic_memory_test_output_zero_copy_buffer(
   });
 }
 
-Future<Uint8List> wire_off_topic_memory_test_output_vec_u8(
-    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<Uint8List> wireBenchOffTopicMemoryTestOutputVecU8(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -256,8 +255,7 @@ Future<Uint8List> wire_off_topic_memory_test_output_vec_u8(
   });
 }
 
-Future<int> wire_off_topic_memory_test_input_vec_of_object(
-    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<int> wireBenchOffTopicMemoryTestInputVecOfObject(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required List<Size> input}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -274,7 +272,7 @@ Future<int> wire_off_topic_memory_test_input_vec_of_object(
   });
 }
 
-Future<List<Size>> wire_off_topic_memory_test_output_vec_of_object(
+Future<List<Size>> wireBenchOffTopicMemoryTestOutputVecOfObject(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
   final stopwatch = Stopwatch();
@@ -292,8 +290,7 @@ Future<List<Size>> wire_off_topic_memory_test_output_vec_of_object(
   });
 }
 
-Future<int> wire_off_topic_memory_test_input_complex_struct(
-    FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
+Future<int> wireBenchOffTopicMemoryTestInputComplexStruct(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required TreeNode input}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -310,7 +307,7 @@ Future<int> wire_off_topic_memory_test_input_complex_struct(
   });
 }
 
-Future<TreeNode> wire_off_topic_memory_test_output_complex_struct(
+Future<TreeNode> wireBenchOffTopicMemoryTestOutputComplexStruct(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName,
     {required int len}) async {
   final stopwatch = Stopwatch();
@@ -328,7 +325,7 @@ Future<TreeNode> wire_off_topic_memory_test_output_complex_struct(
   });
 }
 
-Future<int> wire_off_topic_deliberately_return_error(
+Future<int> wireBenchOffTopicDeliberatelyReturnError(
     FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -345,7 +342,7 @@ Future<int> wire_off_topic_deliberately_return_error(
   });
 }
 
-Future<int> wire_off_topic_deliberately_panic(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
+Future<int> wireBenchOffTopicDeliberatelyPanic(FlutterRustBridgeExampleImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
   stopwatch.start();

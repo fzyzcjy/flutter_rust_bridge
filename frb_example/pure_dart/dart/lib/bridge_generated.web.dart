@@ -1045,7 +1045,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
 }
 
-Future<int> wire_simple_adder(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchSimpleAdder(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int a, required int b}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1062,7 +1062,7 @@ Future<int> wire_simple_adder(FlutterRustBridgeExampleSingleBlockTestImpl bridge
   });
 }
 
-Future<int> wire_primitive_types(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchPrimitiveTypes(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int myI32, required int myI64, required double myF64, required bool myBool}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1082,7 +1082,7 @@ Future<int> wire_primitive_types(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<int> wire_primitive_u32(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchPrimitiveU32(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int myU32}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1099,7 +1099,7 @@ Future<int> wire_primitive_u32(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<String> wire_handle_string(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<String> wireBenchHandleString(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String s}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1116,7 +1116,7 @@ Future<String> wire_handle_string(FlutterRustBridgeExampleSingleBlockTestImpl br
   });
 }
 
-Future<void> wire_handle_return_unit(
+Future<void> wireBenchHandleReturnUnit(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1133,7 +1133,7 @@ Future<void> wire_handle_return_unit(
   });
 }
 
-Future<Uint8List> wire_handle_vec_u8(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Uint8List> wireBenchHandleVecU8(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Uint8List v}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1150,7 +1150,7 @@ Future<Uint8List> wire_handle_vec_u8(FlutterRustBridgeExampleSingleBlockTestImpl
   });
 }
 
-Future<VecOfPrimitivePack> wire_handle_vec_of_primitive(
+Future<VecOfPrimitivePack> wireBenchHandleVecOfPrimitive(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int n}) async {
   final stopwatch = Stopwatch();
@@ -1168,7 +1168,7 @@ Future<VecOfPrimitivePack> wire_handle_vec_of_primitive(
   });
 }
 
-Future<ZeroCopyVecOfPrimitivePack> wire_handle_zero_copy_vec_of_primitive(
+Future<ZeroCopyVecOfPrimitivePack> wireBenchHandleZeroCopyVecOfPrimitive(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int n}) async {
   final stopwatch = Stopwatch();
@@ -1186,7 +1186,7 @@ Future<ZeroCopyVecOfPrimitivePack> wire_handle_zero_copy_vec_of_primitive(
   });
 }
 
-Future<MySize> wire_handle_struct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<MySize> wireBenchHandleStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MySize arg, required MySize boxed}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1203,7 +1203,7 @@ Future<MySize> wire_handle_struct(FlutterRustBridgeExampleSingleBlockTestImpl br
   });
 }
 
-Future<NewTypeInt> wire_handle_newtype(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<NewTypeInt> wireBenchHandleNewtype(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required NewTypeInt arg}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1220,7 +1220,7 @@ Future<NewTypeInt> wire_handle_newtype(FlutterRustBridgeExampleSingleBlockTestIm
   });
 }
 
-Future<List<MySize>> wire_handle_list_of_struct(
+Future<List<MySize>> wireBenchHandleListOfStruct(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<MySize> l}) async {
   final stopwatch = Stopwatch();
@@ -1238,7 +1238,7 @@ Future<List<MySize>> wire_handle_list_of_struct(
   });
 }
 
-Future<List<String>> wire_handle_string_list(
+Future<List<String>> wireBenchHandleStringList(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<String> names}) async {
   final stopwatch = Stopwatch();
@@ -1256,7 +1256,7 @@ Future<List<String>> wire_handle_string_list(
   });
 }
 
-Future<MyTreeNode> wire_handle_complex_struct(
+Future<MyTreeNode> wireBenchHandleComplexStruct(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MyTreeNode s}) async {
   final stopwatch = Stopwatch();
@@ -1274,7 +1274,7 @@ Future<MyTreeNode> wire_handle_complex_struct(
   });
 }
 
-Future<int> wire_return_err(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
+Future<int> wireBenchReturnErr(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
   stopwatch.start();
@@ -1290,7 +1290,7 @@ Future<int> wire_return_err(FlutterRustBridgeExampleSingleBlockTestImpl bridge, 
   });
 }
 
-Future<int> wire_return_panic(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
+Future<int> wireBenchReturnPanic(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
   stopwatch.start();
@@ -1306,7 +1306,7 @@ Future<int> wire_return_panic(FlutterRustBridgeExampleSingleBlockTestImpl bridge
   });
 }
 
-Future<double?> wire_handle_optional_return(
+Future<double?> wireBenchHandleOptionalReturn(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required double left, required double right}) async {
   final stopwatch = Stopwatch();
@@ -1324,7 +1324,7 @@ Future<double?> wire_handle_optional_return(
   });
 }
 
-Future<Element?> wire_handle_optional_struct(
+Future<Element?> wireBenchHandleOptionalStruct(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {String? document}) async {
   final stopwatch = Stopwatch();
@@ -1342,7 +1342,7 @@ Future<Element?> wire_handle_optional_struct(
   });
 }
 
-Future<ExoticOptionals?> wire_handle_optional_increment(
+Future<ExoticOptionals?> wireBenchHandleOptionalIncrement(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {ExoticOptionals? opt}) async {
   final stopwatch = Stopwatch();
@@ -1360,7 +1360,7 @@ Future<ExoticOptionals?> wire_handle_optional_increment(
   });
 }
 
-Future<double> wire_handle_increment_boxed_optional(
+Future<double> wireBenchHandleIncrementBoxedOptional(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {double? opt}) async {
   final stopwatch = Stopwatch();
@@ -1378,7 +1378,7 @@ Future<double> wire_handle_increment_boxed_optional(
   });
 }
 
-Future<String> wire_handle_option_box_arguments(
+Future<String> wireBenchHandleOptionBoxArguments(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {int? i8Box,
     int? u8Box,
@@ -1412,7 +1412,7 @@ Future<String> wire_handle_option_box_arguments(
   });
 }
 
-Future<Uint8List> wire_print_note(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Uint8List> wireBenchPrintNote(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Note note}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1429,7 +1429,8 @@ Future<Uint8List> wire_print_note(FlutterRustBridgeExampleSingleBlockTestImpl br
   });
 }
 
-Future<Weekdays?> wire_handle_return_enum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Weekdays?> wireBenchHandleReturnEnum(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String input}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1446,7 +1447,7 @@ Future<Weekdays?> wire_handle_return_enum(FlutterRustBridgeExampleSingleBlockTes
   });
 }
 
-Future<Weekdays> wire_handle_enum_parameter(
+Future<Weekdays> wireBenchHandleEnumParameter(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Weekdays weekday}) async {
   final stopwatch = Stopwatch();
@@ -1464,7 +1465,8 @@ Future<Weekdays> wire_handle_enum_parameter(
   });
 }
 
-Future<void> wire_handle_customized_struct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<void> wireBenchHandleCustomizedStruct(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Customized val}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1481,7 +1483,7 @@ Future<void> wire_handle_customized_struct(FlutterRustBridgeExampleSingleBlockTe
   });
 }
 
-Future<KitchenSink> wire_handle_enum_struct(
+Future<KitchenSink> wireBenchHandleEnumStruct(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required KitchenSink val}) async {
   final stopwatch = Stopwatch();
@@ -1499,7 +1501,7 @@ Future<KitchenSink> wire_handle_enum_struct(
   });
 }
 
-Future<bool> wire_use_imported_struct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<bool> wireBenchUseImportedStruct(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MyStruct myStruct}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1516,7 +1518,7 @@ Future<bool> wire_use_imported_struct(FlutterRustBridgeExampleSingleBlockTestImp
   });
 }
 
-Future<bool> wire_use_imported_enum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<bool> wireBenchUseImportedEnum(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required MyEnum myEnum}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1533,7 +1535,7 @@ Future<bool> wire_use_imported_enum(FlutterRustBridgeExampleSingleBlockTestImpl 
   });
 }
 
-Future<ApplicationSettings> wire_get_app_settings(
+Future<ApplicationSettings> wireBenchGetAppSettings(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1550,7 +1552,7 @@ Future<ApplicationSettings> wire_get_app_settings(
   });
 }
 
-Future<bool> wire_is_app_embedded(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<bool> wireBenchIsAppEmbedded(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required ApplicationSettings appSettings}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1567,7 +1569,7 @@ Future<bool> wire_is_app_embedded(FlutterRustBridgeExampleSingleBlockTestImpl br
   });
 }
 
-Future<ApplicationMessage> wire_get_message(
+Future<ApplicationMessage> wireBenchGetMessage(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1584,7 +1586,7 @@ Future<ApplicationMessage> wire_get_message(
   });
 }
 
-Future<Numbers> wire_repeat_number(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Numbers> wireBenchRepeatNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int num, required int times}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1601,7 +1603,7 @@ Future<Numbers> wire_repeat_number(FlutterRustBridgeExampleSingleBlockTestImpl b
   });
 }
 
-Future<Sequences> wire_repeat_sequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Sequences> wireBenchRepeatSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int seq, required int times}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1618,7 +1620,7 @@ Future<Sequences> wire_repeat_sequence(FlutterRustBridgeExampleSingleBlockTestIm
   });
 }
 
-Future<int?> wire_first_number(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int?> wireBenchFirstNumber(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Numbers nums}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1635,7 +1637,7 @@ Future<int?> wire_first_number(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<int?> wire_first_sequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int?> wireBenchFirstSequence(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Sequences seqs}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1652,7 +1654,8 @@ Future<int?> wire_first_sequence(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<Uint8List> wire_get_array(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
+Future<Uint8List> wireBenchGetArray(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
   stopwatch.start();
@@ -1668,7 +1671,7 @@ Future<Uint8List> wire_get_array(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<List<Point>> wire_get_complex_array(
+Future<List<Point>> wireBenchGetComplexArray(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1685,7 +1688,7 @@ Future<List<Point>> wire_get_complex_array(
   });
 }
 
-Future<int> wire_get_usize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchGetUsize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int u}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1702,7 +1705,7 @@ Future<int> wire_get_usize(FlutterRustBridgeExampleSingleBlockTestImpl bridge, S
   });
 }
 
-Future<UserId> wire_next_user_id(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<UserId> wireBenchNextUserId(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required UserId userId}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1719,7 +1722,7 @@ Future<UserId> wire_next_user_id(FlutterRustBridgeExampleSingleBlockTestImpl bri
   });
 }
 
-Future<void> wire_close_event_listener(
+Future<void> wireBenchCloseEventListener(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1736,7 +1739,7 @@ Future<void> wire_close_event_listener(
   });
 }
 
-Future<void> wire_create_event(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<void> wireBenchCreateEvent(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String address, required String payload}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1753,7 +1756,7 @@ Future<void> wire_create_event(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<SumWith> wire_get_sum_struct(
+Future<SumWith> wireBenchGetSumStruct(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1770,7 +1773,7 @@ Future<SumWith> wire_get_sum_struct(
   });
 }
 
-Future<Measure?> wire_multiply_by_ten(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Measure?> wireBenchMultiplyByTen(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Measure measure}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1787,7 +1790,7 @@ Future<Measure?> wire_multiply_by_ten(FlutterRustBridgeExampleSingleBlockTestImp
   });
 }
 
-Future<OldSimpleStruct> wire_call_old_module_system(
+Future<OldSimpleStruct> wireBenchCallOldModuleSystem(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1804,7 +1807,7 @@ Future<OldSimpleStruct> wire_call_old_module_system(
   });
 }
 
-Future<NewSimpleStruct> wire_call_new_module_system(
+Future<NewSimpleStruct> wireBenchCallNewModuleSystem(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1821,7 +1824,7 @@ Future<NewSimpleStruct> wire_call_new_module_system(
   });
 }
 
-Future<BigBuffers> wire_handle_big_buffers(
+Future<BigBuffers> wireBenchHandleBigBuffers(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1838,7 +1841,7 @@ Future<BigBuffers> wire_handle_big_buffers(
   });
 }
 
-Future<DateTime> wire_datetime_utc(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<DateTime> wireBenchDatetimeUtc(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required DateTime d}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1855,7 +1858,7 @@ Future<DateTime> wire_datetime_utc(FlutterRustBridgeExampleSingleBlockTestImpl b
   });
 }
 
-Future<DateTime> wire_datetime_local(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<DateTime> wireBenchDatetimeLocal(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required DateTime d}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1872,7 +1875,7 @@ Future<DateTime> wire_datetime_local(FlutterRustBridgeExampleSingleBlockTestImpl
   });
 }
 
-Future<DateTime> wire_naivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<DateTime> wireBenchNaivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required DateTime d}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1889,7 +1892,7 @@ Future<DateTime> wire_naivedatetime(FlutterRustBridgeExampleSingleBlockTestImpl 
   });
 }
 
-Future<Duration> wire_duration(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<Duration> wireBenchDuration(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required Duration d}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1906,7 +1909,7 @@ Future<Duration> wire_duration(FlutterRustBridgeExampleSingleBlockTestImpl bridg
   });
 }
 
-Future<Duration> wire_how_long_does_it_take(
+Future<Duration> wireBenchHowLongDoesItTake(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required FeatureChrono mine}) async {
   final stopwatch = Stopwatch();
@@ -1924,7 +1927,7 @@ Future<Duration> wire_how_long_does_it_take(
   });
 }
 
-Future<UuidValue> wire_handle_uuid(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<UuidValue> wireBenchHandleUuid(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required UuidValue id}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1941,7 +1944,8 @@ Future<UuidValue> wire_handle_uuid(FlutterRustBridgeExampleSingleBlockTestImpl b
   });
 }
 
-Future<List<UuidValue>> wire_handle_uuids(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<List<UuidValue>> wireBenchHandleUuids(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<UuidValue> ids}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -1958,7 +1962,7 @@ Future<List<UuidValue>> wire_handle_uuids(FlutterRustBridgeExampleSingleBlockTes
   });
 }
 
-Future<List<String>> wire_handle_uuids_convert_to_strings(
+Future<List<String>> wireBenchHandleUuidsConvertToStrings(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<UuidValue> ids}) async {
   final stopwatch = Stopwatch();
@@ -1976,7 +1980,7 @@ Future<List<String>> wire_handle_uuids_convert_to_strings(
   });
 }
 
-Future<FeatureUuid> wire_handle_nested_uuids(
+Future<FeatureUuid> wireBenchHandleNestedUuids(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required FeatureUuid ids}) async {
   final stopwatch = Stopwatch();
@@ -1994,7 +1998,8 @@ Future<FeatureUuid> wire_handle_nested_uuids(
   });
 }
 
-Future<List<String>> wire_handle_strings(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<List<String>> wireBenchHandleStrings(
+    FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required List<String> strings}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -2011,7 +2016,7 @@ Future<List<String>> wire_handle_strings(FlutterRustBridgeExampleSingleBlockTest
   });
 }
 
-Future<int> wire_send_i64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchSendI64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required int value}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -2028,7 +2033,7 @@ Future<int> wire_send_i64(FlutterRustBridgeExampleSingleBlockTestImpl bridge, St
   });
 }
 
-Future<int> wire_sum__method__SumWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
+Future<int> wireBenchSumMethodSumWith(FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required SumWith that, required int y, required int z}) async {
   final stopwatch = Stopwatch();
   final int starts = stopwatch.elapsedMicroseconds;
@@ -2045,7 +2050,7 @@ Future<int> wire_sum__method__SumWith(FlutterRustBridgeExampleSingleBlockTestImp
   });
 }
 
-Future<ConcatenateWith> wire_new__static_method__ConcatenateWith(
+Future<ConcatenateWith> wireBenchNewStaticMethodConcatenateWith(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String a}) async {
   final stopwatch = Stopwatch();
@@ -2063,7 +2068,7 @@ Future<ConcatenateWith> wire_new__static_method__ConcatenateWith(
   });
 }
 
-Future<String> wire_concatenate__method__ConcatenateWith(
+Future<String> wireBenchConcatenateMethodConcatenateWith(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required ConcatenateWith that, required String b}) async {
   final stopwatch = Stopwatch();
@@ -2081,7 +2086,7 @@ Future<String> wire_concatenate__method__ConcatenateWith(
   });
 }
 
-Future<String> wire_concatenate_static__static_method__ConcatenateWith(
+Future<String> wireBenchConcatenateStaticStaticMethodConcatenateWith(
     FlutterRustBridgeExampleSingleBlockTestImpl bridge, String? timelineTaskName,
     {required String a, required String b}) async {
   final stopwatch = Stopwatch();
