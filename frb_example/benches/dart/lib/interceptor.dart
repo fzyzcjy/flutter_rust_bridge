@@ -58,11 +58,11 @@ class UniqueAsyncStopWatch extends AsyncStopWatch {
 }
 
 abstract class FlutterRustBridgeInterceptor<T extends AsyncStopWatch> {
-  Future<T> beforeExecuteNormal(String debugName);
+  Future<T> beforeExecuteNormal(String debugName, Object? hint);
 
   Future<void> afterExecuteNormal<S>(String debugName, T stopwatch);
 
-  T beforeExecuteSync<S>(String debugName);
+  T beforeExecuteSync<S>(String debugName, Object? hint);
 
   void afterExecuteSync<S>(String debugName, T stopwatch);
 
@@ -92,8 +92,8 @@ abstract class FlutterRustBridgeInterceptor<T extends AsyncStopWatch> {
 class FlutterRustBridgeInterceptorStdOut
     extends FlutterRustBridgeInterceptor<AsyncStopWatch> {
   @override
-  Future<AsyncStopWatch> beforeExecuteNormal(String debugName) async {
-    print('⚡');
+  Future<AsyncStopWatch> beforeExecuteNormal(String debugName, Object? hint) async {
+    print('(Dart) hint [$debugName] => ${hint.toString()}');
     print('(Dart) execute [$debugName] start');
     final AsyncStopWatch stopwatch = AsyncStopWatch();
     await super._beforeExecuteNormal(debugName, stopwatch);
@@ -109,7 +109,7 @@ class FlutterRustBridgeInterceptorStdOut
   }
 
   @override
-  AsyncStopWatch beforeExecuteSync<S>(String debugName) {
+  AsyncStopWatch beforeExecuteSync<S>(String debugName, Object? hint) {
     print('(Dart) execute [$debugName] start');
     final AsyncStopWatch stopwatch = AsyncStopWatch();
     super._beforeExecuteSync(debugName, stopwatch);
@@ -129,17 +129,20 @@ class Metric {
   int? ends;
   final String unit;
   final String debugName;
-  Metric(this.starts, this.debugName, {this.unit = "ns"});
+  final Object? hint;
+  Metric(this.starts, this.debugName, this.hint, {this.unit = "ns"});
   Metric.fromJson(Map<String, dynamic> json)
       : starts = 0,
         ends = json['elapsed'],
         unit = json['unit'],
-        debugName = json['debugName'];
+        debugName = json['debugName'],
+        hint = json['hint'];
   Map<String, dynamic> toJson() {
     return {
       'elapsed': ends,
       'unit': unit,
       'debugName': debugName,
+      'hint': hint?.toString(),
     };
   }
 }
@@ -149,11 +152,11 @@ class FlutterRustBridgeInterceptorJson
   Map<String, Metric> metrics = {};
   final Uuid generator = Uuid();
   @override
-  Future<UniqueAsyncStopWatch> beforeExecuteNormal(String debugName) async {
+  Future<UniqueAsyncStopWatch> beforeExecuteNormal(String debugName, Object? hint) async {
     final UuidValue uuid = generator.v4obj();
     UniqueAsyncStopWatch stopwatch = UniqueAsyncStopWatch(uuid);
     metrics.putIfAbsent(uuid.toString(),
-        () => Metric(stopwatch.elapsedMicroseconds, debugName));
+        () => Metric(stopwatch.elapsedMicroseconds, debugName, hint));
     await super._beforeExecuteNormal(debugName, stopwatch);
     return stopwatch;
   }
@@ -169,11 +172,11 @@ class FlutterRustBridgeInterceptorJson
   }
 
   @override
-  UniqueAsyncStopWatch beforeExecuteSync<S>(String debugName) {
+  UniqueAsyncStopWatch beforeExecuteSync<S>(String debugName, Object? hint) {
     final UuidValue uuid = generator.v4obj();
     UniqueAsyncStopWatch stopwatch = UniqueAsyncStopWatch(uuid);
     metrics.putIfAbsent(uuid.toString(),
-        () => Metric(stopwatch.elapsedMicroseconds, debugName));
+        () => Metric(stopwatch.elapsedMicroseconds, debugName, hint));
     super._beforeExecuteSync(debugName, stopwatch);
     return stopwatch;
   }
@@ -199,7 +202,7 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
     final String debugName = task.constMeta.debugName;
     final AsyncStopWatch stopwatch =
-        await interceptor.beforeExecuteNormal(debugName);
+        await interceptor.beforeExecuteNormal(debugName, task.hint);
     final result = await super.executeNormal(task);
     await interceptor.afterExecuteNormal(debugName, stopwatch);
     return result;
@@ -207,8 +210,9 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
 
   @override
   S executeSync<S>(FlutterRustBridgeSyncTask task) {
+    print(task.hint.toString());
     final String debugName = task.constMeta.debugName;
-    final AsyncStopWatch stopwatch = interceptor.beforeExecuteSync(debugName);
+    final AsyncStopWatch stopwatch = interceptor.beforeExecuteSync(debugName, task.hint);
     final result = super.executeSync(task);
     interceptor.afterExecuteSync(debugName, stopwatch);
     return result;

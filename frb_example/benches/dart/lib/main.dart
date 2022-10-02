@@ -27,13 +27,14 @@ void main(List<String> args) async {
   final hundredThousandStrings = List<String>.generate(
       100000, (index) => getRandomString(uuidSizeInBytes),
       growable: false);
-  await api.handleUuids(ids: thousandUuids);
-  await api.handleStrings(strings: thousandStrings);
-  await api.handleUuidsConvertToStrings(ids: thousandUuids);
-  await api.handleUuids(ids: hundredThousandUuids);
-  await api.handleStrings(strings: hundredThousandStrings);
+  await api.handleUuids(ids: thousandUuids, hint: '⚡ 1,000 uuids');
+  await api.handleStrings(strings: thousandStrings, hint: '⚡ 1,000 strings');
+  await api.handleUuidsConvertToStrings(ids: thousandUuids, hint: '⚡ 1,000 uuids converted to strings');
+  await api.handleUuids(ids: hundredThousandUuids, hint: '⚡ 10,000 uuids');
+  await api.handleStrings(strings: hundredThousandStrings, hint: '⚡ 10,000 strings');
   await api.handleUuidsConvertToStrings(
     ids: hundredThousandUuids,
+    hint: '⚡ 10,000 uuids converted to strings'
   );
 
   await api.whenBenchmarkComplete();
