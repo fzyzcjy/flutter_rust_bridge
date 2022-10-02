@@ -47,11 +47,11 @@ lint *args="":
 
 alias t := test
 test: test-support test-pure test-integration
-test-pure:
+test-pure *args="":
     cd {{frb_pure}}/rust && cargo b
     cd {{frb_pure}}/dart && \
         dart pub get && \
-        dart lib/main.dart ../rust/target/debug/{{dylib}}
+        dart {{args}} lib/main.dart ../../../rust/target/debug/{{dylib}}
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
