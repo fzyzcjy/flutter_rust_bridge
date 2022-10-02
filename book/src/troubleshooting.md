@@ -47,9 +47,9 @@ If you use a Rust type with `Kind` in it's name it may conflict with some genera
 
 Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see >10k lines of Java code generated for a quite simple source proto file.
 
-## Why need Dart `2.14.0`
+## Why need Dart `2.17.0`
 
-Dart SDK `>=2.14.0` is needed not by this library, but by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
+Dart SDK `>=2.17.0` is needed by the latest version of the `ffigen` tool, and for some cool Dart features also used in this library (e.g. enhanced enums). Therefore, write `sdk: ">=2.17.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool, but this is not recommended.
 
 ## Issues on Web?
 
