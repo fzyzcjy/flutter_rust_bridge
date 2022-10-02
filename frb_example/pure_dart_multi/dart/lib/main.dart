@@ -1,7 +1,7 @@
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-
 import 'bridge_generated_api_1.dart';
 import 'bridge_generated_api_2.dart';
+// ignore: implementation_imports
+import 'package:flutter_rust_bridge/src/utils.io.dart';
 import 'package:test/test.dart';
 
 void main(List<String> args) {

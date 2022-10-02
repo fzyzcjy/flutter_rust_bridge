@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'isolate.dart';
-export '' if (dart.library.io) 'utils.io.dart';
 
 // NOTE XXX copy from: https://github.com/dart-archive/isolate/blob/master/lib/ports.dart
 // Because [package:isolate] is not maintained anymore, so the code is copied and maintained by ourselves.
