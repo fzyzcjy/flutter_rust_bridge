@@ -1,17 +1,27 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:logging/logging.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'package:flutter_rust_bridge_benchmark/utils.dart';
 import 'package:uuid/uuid.dart';
 
 void main(List<String> args) async {
   String dylibPath = args[0];
-  print(
-      'flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
-  print('construct api');
+  final log = Logger('frb_example/benches');
   String? extra = args.length > 1 ? args[1] : null;
   final bool json = extra == '--json';
+  if (json) {
+    Logger.root.level = Level.INFO;
+  } else {
+    Logger.root.level = Level.ALL;
+  }
+  Logger.root.onRecord.listen((record) {
+    print('${record.level.name}: ${record.time}: ${record.message}');
+  });
+  log.fine(
+      'flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
+  log.finer('construct api');
   if (extra != '--json') {
-    print('CLI extra argument $extra is ignored (expected --json, or none)');
+    log.warning('CLI extra argument $extra is ignored (expected --json, or none)');
   }
   final api = initializeBenchExternalLibrary(dylibPath, useJSON: json);
 
