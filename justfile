@@ -61,7 +61,7 @@ test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     cd {{frb_pure}}/rust && cargo +nightly b --target x86_64-unknown-linux-gnu
     cd {{frb_pure}}/dart --define={{define}} && \
         {{frb_tools}}/dartsdk/x64/dart pub get && \
-        {{frb_tools}}/dartsdk/x64/dart lib/main.dart  ../rust/{{frb_linux_so}}
+        {{frb_tools}}/dartsdk/x64/dart lib/main.dart  {{justfile_directory()}}/{{frb_linux_so}}
 
 test-pure-web *args="":
     cd {{frb_pure}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
