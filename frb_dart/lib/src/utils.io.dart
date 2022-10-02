@@ -9,26 +9,24 @@ enum DylibSourceKind {
   open;
 
   static DylibSourceKind? fromEnvironment(String value) {
-    const String source = String.fromEnvironment(dylibSource);
-    if (source.isNotEmpty) {
-      if (!['executable', 'process', 'open'].contains(source.trim())) {
-        print(
-            "warning: invalid $dylibSource '$source' ignored (expected 'executable', 'process' or 'open')");
-      } else {
-        print('info: use $dylibSource=$source to open dynamic library');
-      }
-      switch (source) {
-        case 'executable':
-          return DylibSourceKind.executable;
-        case 'process':
-          return DylibSourceKind.process;
-        case 'open':
-          return DylibSourceKind.open;
-        default:
-          break;
-      }
+    String source = String.fromEnvironment(dylibSource).trim();
+    if (source.isEmpty) return null;
+    if (!['executable', 'process', 'open'].contains(source)) {
+      print(
+          "warning: invalid $dylibSource '$source' ignored (expected 'executable', 'process' or 'open')");
+    } else {
+      print('info: use $dylibSource=$source to open dynamic library');
     }
-    return null;
+    switch (source) {
+      case 'executable':
+        return DylibSourceKind.executable;
+      case 'process':
+        return DylibSourceKind.process;
+      case 'open':
+        return DylibSourceKind.open;
+      default:
+        return null;
+    }
   }
 }
 
