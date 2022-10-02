@@ -51,7 +51,7 @@ test-pure *args="":
     cd {{frb_pure}}/rust && cargo b
     cd {{frb_pure}}/dart && \
         dart pub get && \
-        dart {{args}} lib/main.dart ../../../rust/target/debug/{{dylib}}
+        dart {{args}} lib/main.dart ../../../target/debug/{{dylib}}
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
