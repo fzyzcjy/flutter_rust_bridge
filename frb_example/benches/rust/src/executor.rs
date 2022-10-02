@@ -74,13 +74,23 @@ impl BenchExecutor {
     where
         F: FnOnce() -> R,
     {
+        use tracing::{event, span, trace, Level};
+        span!(Level::DEBUG, "frb-executor");
         let start = Instant::now();
-        println!("(Rust) execute [{}] start", bench_name);
+        trace!("(Rust) execute [{}] start", bench_name);
         let ret = f();
-        println!(
+        let elapsed = start.elapsed().as_nanos();
+        trace!(
             "(Rust) execute [{}] end delta_time={}ns",
             bench_name,
-            start.elapsed().as_nanos()
+            elapsed
+        );
+        // as per continuous-benchmark
+        event!(
+            Level::DEBUG,
+            name = bench_name,
+            unit = "ns",
+            value = elapsed
         );
         ret
     }

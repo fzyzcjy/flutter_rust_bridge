@@ -125,27 +125,38 @@ class FlutterRustBridgeInterceptorStdOut
   }
 }
 
+/// metric to export for continuous-benchmark
+/// hence why the conversion like `value`, `name`, `extra`
 class Metric {
   final int starts;
   int? ends;
   final String unit;
   final String debugName;
   final Object? hint;
-  Metric(this.starts, this.debugName, this.hint, {this.unit = "ns"});
+  Metric(this.starts, this.debugName, this.hint, {this.unit = "μs"});
   Metric.fromJson(Map<String, dynamic> json)
       : starts = 0,
-        ends = json['elapsed'],
+        // as per continuous-benchmark
+        ends = json['value'],
+        // as per continuous-benchmark
         unit = json['unit'],
-        debugName = json['debugName'],
-        hint = json['hint'];
+        // as per continuous-benchmark
+        debugName = json['name'],
+        // as per continuous-benchmark
+        hint = json['extra'];
   Map<String, dynamic> toJson() {
     return {
-      'elapsed': ends,
+      // as per continuous-benchmark
+      'value': ends,
+      // as per continuous-benchmark
       'unit': unit,
-      'debugName': debugName,
-      'hint': hint?.toString(),
+      // as per continuous-benchmark
+      'name': debugName,
+      // as per continuous-benchmark
+      'extra': hint?.toString(),
     };
   }
+
 }
 
 class FlutterRustBridgeInterceptorJson
