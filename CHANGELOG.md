@@ -1,3 +1,7 @@
+## 1.48.1
+
+* Pass JS BigInt to wire #747 (thanks @Desdaemon)
+
 ## 1.48.0
 
 * Support uuid #728 (thanks @Roms1383)

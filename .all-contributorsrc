@@ -305,6 +305,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tmpfs",
+      "name": "muji",
+      "avatar_url": "https://avatars.githubusercontent.com/u/238069?v=4",
+      "profile": "https://tmpfs.org",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
