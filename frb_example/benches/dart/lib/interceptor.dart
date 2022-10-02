@@ -125,8 +125,8 @@ class FlutterRustBridgeInterceptorStdOut
   }
 }
 
-/// metric to export for continuous-benchmark
-/// hence why the conversion like `value`, `name`, `extra`
+/// metric to export for [continuous-benchmark](https://github.com/marketplace/actions/continuous-benchmark)
+/// > hence why conversions like `value`, `name`, `extra`
 class Metric {
   final int starts;
   int? ends;
@@ -146,13 +146,9 @@ class Metric {
         hint = json['extra'];
   Map<String, dynamic> toJson() {
     return {
-      // as per continuous-benchmark
       'value': ends,
-      // as per continuous-benchmark
       'unit': unit,
-      // as per continuous-benchmark
       'name': debugName,
-      // as per continuous-benchmark
       'extra': hint?.toString(),
     };
   }
