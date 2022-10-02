@@ -15,8 +15,8 @@ flutter_rust_bridge_codegen = { workspace = true, features = [
 
 [dependencies]
 anyhow = { workspace = true, features = ["backtrace"] }
-lazy_static = { workspace = true }
 chrono = { workspace = true }
 flutter_rust_bridge = { workspace = true, features = ["chrono", "uuid"] }
+lazy_static = { workspace = true }
+tracing = "0.1.36"
 uuid = { workspace = true }
-# wasm_thread = "0.2.0"
