@@ -15,6 +15,28 @@ If calling rust function gives the error below, please consider running **cargo 
 [ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
 ```
 
+### :warning: on latest Apple Silicon
+Users also sometimes face it because of how Rust dynamic library is opened.
+
+At the moment it's not clear yet how to differentiate MacOS lineage in Dart, so in the meantime here's a workaround:
+
+Instead of e.g.:
+
+```sh
+just test-pure
+```
+
+Just run:
+```sh
+just define="DYNAMIC_LIBRARY_SOURCE=open" test-pure
+# must precede the command
+```
+
+Also please note that:
+- :dart: **Dart** uses `define` like `define="DYNAMIC_LIBRARY_SOURCE"=...`.
+- :bird: **Flutter** use `dart-define` like `dart-define="DYNAMIC_LIBRARY_SOURCE"=...`.
+- `DYNAMIC_LIBRARY_SOURCE` possible values: `open`, `process` or `executable` (as per Dart [DynamicLibrary](https://api.dart.dev/stable/2.18.2/dart-ffi/DynamicLibrary-class.html#constructors)).
+
 ## Error running `cargo ndk`: `ld: error: unable to find library -lgcc`
 
 Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.com/bbqsrc/cargo-ndk/issues/22) with `cargo-ndk`, a library unrelated to flutter_rust_bridge but solely used to build the examples, when using Android NDK version 23. (See [#149](https://github.com/fzyzcjy/flutter_rust_bridge/issues/149))
