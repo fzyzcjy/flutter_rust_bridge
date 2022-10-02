@@ -21,7 +21,8 @@ void main(List<String> args) async {
       'flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   log.finer('construct api');
   if (extra != '--json') {
-    log.warning('CLI extra argument $extra is ignored (expected --json, or none)');
+    log.warning(
+        'CLI extra argument $extra is ignored (expected --json, or none)');
   }
   final api = initializeBenchExternalLibrary(dylibPath, useJSON: json);
 

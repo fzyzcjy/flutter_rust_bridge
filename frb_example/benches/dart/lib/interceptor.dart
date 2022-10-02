@@ -154,7 +154,7 @@ class FlutterRustBridgeInterceptorJson
   @override
   Future<UniqueAsyncStopWatch> beforeExecuteNormal(
       String debugName, Object? hint) async {
-        log.finer(hint);
+    log.finer(hint);
     final UuidValue uuid = generator.v4obj();
     UniqueAsyncStopWatch stopwatch = UniqueAsyncStopWatch(uuid);
     metrics.putIfAbsent(uuid.toString(),
