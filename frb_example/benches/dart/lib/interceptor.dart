@@ -134,16 +134,6 @@ class Metric {
   final String debugName;
   final Object? hint;
   Metric(this.starts, this.debugName, this.hint, {this.unit = "μs"});
-  Metric.fromJson(Map<String, dynamic> json)
-      : starts = 0,
-        // as per continuous-benchmark
-        ends = json['value'],
-        // as per continuous-benchmark
-        unit = json['unit'],
-        // as per continuous-benchmark
-        debugName = json['name'],
-        // as per continuous-benchmark
-        hint = json['extra'];
   Map<String, dynamic> toJson() {
     return {
       'value': ends,
@@ -152,7 +142,6 @@ class Metric {
       'extra': hint?.toString(),
     };
   }
-
 }
 
 class FlutterRustBridgeInterceptorJson
