@@ -10,14 +10,11 @@ import 'interceptor.dart';
 export 'interceptor.dart';
 export 'bridge_generated.dart';
 
-class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
-    extends FlutterRustBridgeExampleBenchmarkSuitePlatform {
+class FlutterRustBridgeExampleBenchmarkSuitePlatformBench extends FlutterRustBridgeExampleBenchmarkSuitePlatform {
   final FlutterRustBridgeInterceptor<TimeWatch> _interceptor;
-  FlutterRustBridgeExampleBenchmarkSuitePlatformBench(
-      FutureOr<WasmModule> dylib, bool useJSON)
+  FlutterRustBridgeExampleBenchmarkSuitePlatformBench(FutureOr<WasmModule> dylib, bool useJSON)
       : _interceptor = useJSON
-            ? FlutterRustBridgeInterceptorJsonWasm()
-                as FlutterRustBridgeInterceptor<TimeWatch>
+            ? FlutterRustBridgeInterceptorJsonWasm() as FlutterRustBridgeInterceptor<TimeWatch>
             : FlutterRustBridgeInterceptorStdOutWasm(),
         super(dylib);
   FlutterRustBridgeInterceptor<TimeWatch> get interceptor => _interceptor;
@@ -25,8 +22,7 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
   @override
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
     final String debugName = task.constMeta.debugName;
-    final TimeWatch stopwatch =
-        await interceptor.beforeExecuteNormal(debugName, task.hint);
+    final TimeWatch stopwatch = await interceptor.beforeExecuteNormal(debugName, task.hint);
     final result = await super.executeNormal(task);
     await interceptor.afterExecuteNormal(debugName, stopwatch);
     return result;
@@ -35,8 +31,7 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
   @override
   S executeSync<S>(FlutterRustBridgeSyncTask task) {
     final String debugName = task.constMeta.debugName;
-    final TimeWatch stopwatch =
-        interceptor.beforeExecuteSync(debugName, task.hint);
+    final TimeWatch stopwatch = interceptor.beforeExecuteSync(debugName, task.hint);
     final result = super.executeSync(task);
     interceptor.afterExecuteSync(debugName, stopwatch);
     return result;
@@ -44,8 +39,7 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
 
   Future<List<Metric>?> metrics() async {
     if (interceptor is FlutterRustBridgeInterceptorJson) {
-      final FlutterRustBridgeInterceptorJson jsonInterceptor =
-          interceptor as FlutterRustBridgeInterceptorJson;
+      final FlutterRustBridgeInterceptorJson jsonInterceptor = interceptor as FlutterRustBridgeInterceptorJson;
       List<Metric> metrics = List.empty(growable: true);
       for (var e in jsonInterceptor.metrics.entries) {
         metrics.add(e.value);
@@ -56,8 +50,7 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
   }
 }
 
-class FlutterRustBridgeInterceptorStdOutWasm
-    extends FlutterRustBridgeInterceptorStdOut<WindowPerformance> {
+class FlutterRustBridgeInterceptorStdOutWasm extends FlutterRustBridgeInterceptorStdOut<WindowPerformance> {
   @override
   WindowPerformance create() {
     return WindowPerformance();
@@ -67,8 +60,7 @@ class FlutterRustBridgeInterceptorStdOutWasm
   String get unit => 'ms';
 }
 
-class FlutterRustBridgeInterceptorJsonWasm
-    extends FlutterRustBridgeInterceptorJson<UniqueWindowPerformance> {
+class FlutterRustBridgeInterceptorJsonWasm extends FlutterRustBridgeInterceptorJson<UniqueWindowPerformance> {
   @override
   UniqueWindowPerformance create() {
     return UniqueWindowPerformance.create();
@@ -82,9 +74,7 @@ class WindowPerformance implements TimeWatch {
   int? ends;
   @override
   void start() {
-    print('before setting starts');
     starts = window.performance.now().round();
-    print('after setting starts $starts');
   }
 
   @override
@@ -93,8 +83,7 @@ class WindowPerformance implements TimeWatch {
   }
 }
 
-class UniqueWindowPerformance extends WindowPerformance
-    implements UniqueTimeWatch {
+class UniqueWindowPerformance extends WindowPerformance implements UniqueTimeWatch {
   late UuidValue _uuid;
   UniqueWindowPerformance.create() {
     Uuid generator = Uuid();
@@ -105,9 +94,7 @@ class UniqueWindowPerformance extends WindowPerformance
   UuidValue get uuid => _uuid;
 }
 
-class FlutterRustBridgeExampleBenchmarkSuiteWireBench
-    extends FlutterRustBridgeExampleBenchmarkSuiteWire {
+class FlutterRustBridgeExampleBenchmarkSuiteWireBench extends FlutterRustBridgeExampleBenchmarkSuiteWire {
   FlutterRustBridgeExampleBenchmarkSuiteWireBench(FutureOr<WasmModule> module)
-      : super(WasmModule.cast<FlutterRustBridgeExampleBenchmarkSuiteWasmModule>(
-            module));
+      : super(WasmModule.cast<FlutterRustBridgeExampleBenchmarkSuiteWasmModule>(module));
 }

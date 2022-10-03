@@ -1,7 +1,6 @@
 use std::{
     panic::UnwindSafe,
     sync::{Arc, Mutex},
-    time::Instant,
 };
 
 use flutter_rust_bridge::{
@@ -116,6 +115,7 @@ impl Executor for BenchExecutor {
     }
 }
 
+#[cfg(not(target_family = "wasm"))]
 impl BenchExecutor {
     fn bench_around<F, R>(bench_name: &str, json: bool, f: F) -> R
     where
@@ -126,7 +126,7 @@ impl BenchExecutor {
         if !json {
             trace!("(Rust) execute [{}] start", bench_name);
         }
-        let start = Instant::now();
+        let start = std::time::Instant::now();
         let ret = f();
         let elapsed = start.elapsed().as_nanos();
         if !json {
@@ -138,6 +138,30 @@ impl BenchExecutor {
         } else {
             Self::record(bench_name, elapsed as u64);
         }
+        ret
+    }
+    fn record(debug_name_string: &str, elapsed: u64) {
+        let mut guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
+        guard.push(Metric {
+            name: debug_name_string.to_string(),
+            value: Some(elapsed),
+            extra: None,
+            unit: Unit::Nanoseconds,
+        });
+    }
+}
+
+#[cfg(target_family = "wasm")]
+impl BenchExecutor {
+    fn bench_around<F, R>(bench_name: &str, _: bool, f: F) -> R
+    where
+        F: FnOnce() -> R,
+    {
+        let start = chrono::Utc::now().timestamp_millis() as u64;
+        let ret = f();
+        let end = chrono::Utc::now().timestamp_millis() as u64;
+        let elapsed = end - start;
+        Self::record(bench_name, elapsed);
         ret
     }
     fn record(debug_name_string: &str, elapsed: u64) {

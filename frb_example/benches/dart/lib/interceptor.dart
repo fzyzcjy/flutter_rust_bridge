@@ -6,25 +6,18 @@ import 'bridge_definitions.dart';
 import 'package:uuid/uuid.dart';
 import 'interceptor.io.dart' if (dart.library.html) 'interceptor.web.dart';
 
-class FlutterRustBridgeExampleBenchmarkSuiteImplBench
-    extends FlutterRustBridgeExampleBenchmarkSuiteImpl {
+class FlutterRustBridgeExampleBenchmarkSuiteImplBench extends FlutterRustBridgeExampleBenchmarkSuiteImpl {
   final FlutterRustBridgeExampleBenchmarkSuitePlatformBench platform;
-  factory FlutterRustBridgeExampleBenchmarkSuiteImplBench(ExternalLibrary dylib,
-          {bool? useJSON}) =>
+  factory FlutterRustBridgeExampleBenchmarkSuiteImplBench(ExternalLibrary dylib, {bool? useJSON}) =>
       FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(
-          FlutterRustBridgeExampleBenchmarkSuitePlatformBench(
-              dylib, useJSON ?? false));
+          FlutterRustBridgeExampleBenchmarkSuitePlatformBench(dylib, useJSON ?? false));
 
   /// Only valid on web/WASM platforms.
-  factory FlutterRustBridgeExampleBenchmarkSuiteImplBench.wasm(
-          FutureOr<WasmModule> module,
-          {bool? useJSON}) =>
-      FlutterRustBridgeExampleBenchmarkSuiteImplBench(module as ExternalLibrary,
-          useJSON: useJSON ?? false);
+  factory FlutterRustBridgeExampleBenchmarkSuiteImplBench.wasm(FutureOr<WasmModule> module, {bool? useJSON}) =>
+      FlutterRustBridgeExampleBenchmarkSuiteImplBench(module as ExternalLibrary, useJSON: useJSON ?? false);
 
   @override
-  FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(this.platform)
-      : super.raw((platform));
+  FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(this.platform) : super.raw((platform));
 
   Future<List<Metric>?> dartMetrics() async {
     return platform.metrics();
@@ -71,8 +64,7 @@ abstract class FlutterRustBridgeInterceptor<T extends TimeWatch> {
   }
 }
 
-abstract class FlutterRustBridgeInterceptorStdOut<T extends TimeWatch>
-    extends FlutterRustBridgeInterceptor<T> {
+abstract class FlutterRustBridgeInterceptorStdOut<T extends TimeWatch> extends FlutterRustBridgeInterceptor<T> {
   final log = Logger('FlutterRustBridgeInterceptorStdOut');
   String get unit;
   @override
@@ -85,8 +77,7 @@ abstract class FlutterRustBridgeInterceptorStdOut<T extends TimeWatch>
   @override
   Future<void> afterExecuteNormal<S>(String debugName, T stopwatch) async {
     await super.afterExecuteNormal(debugName, stopwatch);
-    log.fine(
-        '(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts!}$unit');
+    log.fine('(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts!}$unit');
   }
 
   @override
@@ -98,13 +89,11 @@ abstract class FlutterRustBridgeInterceptorStdOut<T extends TimeWatch>
   @override
   void afterExecuteSync<S>(String debugName, T stopwatch) {
     super.afterExecuteSync(debugName, stopwatch);
-    log.fine(
-        '(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts!}$unit');
+    log.fine('(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts!}$unit');
   }
 }
 
-abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch>
-    extends FlutterRustBridgeInterceptor<T> {
+abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch> extends FlutterRustBridgeInterceptor<T> {
   Map<String, Metric> metrics = {};
   final Uuid generator = Uuid();
   final log = Logger('FlutterRustBridgeInterceptorJson');
@@ -113,9 +102,7 @@ abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch>
     final UuidValue uuid = generator.v4obj();
     T stopwatch = create();
     metrics.putIfAbsent(
-        uuid.toString(),
-        () => Metric(
-            name: debugName, extra: hint.toString(), unit: Unit.Microseconds));
+        uuid.toString(), () => Metric(name: debugName, extra: hint.toString(), unit: Unit.Microseconds));
     await super.beforeExecuteNormal(debugName, stopwatch);
     return stopwatch;
   }
@@ -123,26 +110,16 @@ abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch>
   @override
   Future<void> afterExecuteNormal<S>(String debugName, T stopwatch) async {
     await super.afterExecuteNormal(debugName, stopwatch);
-    metrics.update(
-        stopwatch.uuid.toString(),
-        (metric) => Metric(
-            name: metric.name,
-            unit: metric.unit,
-            extra: metric.extra,
-            value: stopwatch.ends));
+    metrics.update(stopwatch.uuid.toString(),
+        (metric) => Metric(name: metric.name, unit: metric.unit, extra: metric.extra, value: stopwatch.ends));
   }
 
   @override
   T beforeExecuteSync<S>(String debugName, Object? hint) {
     final UuidValue uuid = generator.v4obj();
     T stopwatch = create();
-    metrics.putIfAbsent(
-        uuid.toString(),
-        () => Metric(
-            value: stopwatch.ends,
-            name: debugName,
-            extra: hint.toString(),
-            unit: Unit.Microseconds));
+    metrics.putIfAbsent(uuid.toString(),
+        () => Metric(value: stopwatch.ends, name: debugName, extra: hint.toString(), unit: Unit.Microseconds));
     super.beforeExecuteSync(debugName, stopwatch);
     return stopwatch;
   }
@@ -150,12 +127,7 @@ abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch>
   @override
   void afterExecuteSync<S>(String debugName, T stopwatch) {
     super.afterExecuteSync(debugName, stopwatch);
-    metrics.update(
-        stopwatch.uuid.toString(),
-        (metric) => Metric(
-            name: metric.name,
-            unit: metric.unit,
-            extra: metric.extra,
-            value: stopwatch.ends));
+    metrics.update(stopwatch.uuid.toString(),
+        (metric) => Metric(name: metric.name, unit: metric.unit, extra: metric.extra, value: stopwatch.ends));
   }
 }
