@@ -1110,6 +1110,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
+  Future<int> testVecI64({required Int64List vec, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_test_vec_i64(port_, _platform.api2wire_int_64_list(vec)),
+        parseSuccessData: _wire2api_i64,
+        constMeta: kTestVecI64ConstMeta,
+        argValues: [vec],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kTestVecI64ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_vec_i64",
+        argNames: ["vec"],
+      );
+
   Future<int> lastNumber({required I64Array16 array, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_last_number(port_, _platform.api2wire_i64_array_16(array)),
         parseSuccessData: _wire2api_i64,

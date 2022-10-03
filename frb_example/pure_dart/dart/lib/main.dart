@@ -664,6 +664,12 @@ void main(List<String> args) async {
       expect(testId.field0[0], 1);
       expect(testId.field0[1], 2);
     });
+    test('TestVecI64', () async {
+      final list = Int64List(10);
+      list[0] = 111111;
+      final first = await api.testVecI64(vec: list);
+      expect(first, 111111);
+    });
     test('LastNumber', () async {
       final array = I64Array16(Int64List(16));
       array[15] = BigInt.from(88888);

@@ -422,6 +422,11 @@ pub extern "C" fn wire_test_id(port_: i64, id: *mut wire_TestId) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_vec_i64(port_: i64, vec: *mut wire_int_64_list) {
+    wire_test_vec_i64_impl(port_, vec)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_last_number(port_: i64, array: *mut wire_int_64_list) {
     wire_last_number_impl(port_, array)
 }

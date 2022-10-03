@@ -2085,6 +2085,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TestId>)>>('wire_test_id');
   late final _wire_test_id = _wire_test_idPtr.asFunction<void Function(int, ffi.Pointer<wire_TestId>)>();
 
+  void wire_test_vec_i64(
+    int port_,
+    ffi.Pointer<wire_int_64_list> vec,
+  ) {
+    return _wire_test_vec_i64(
+      port_,
+      vec,
+    );
+  }
+
+  late final _wire_test_vec_i64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_int_64_list>)>>('wire_test_vec_i64');
+  late final _wire_test_vec_i64 = _wire_test_vec_i64Ptr.asFunction<void Function(int, ffi.Pointer<wire_int_64_list>)>();
+
   void wire_last_number(
     int port_,
     ffi.Pointer<wire_int_64_list> array,

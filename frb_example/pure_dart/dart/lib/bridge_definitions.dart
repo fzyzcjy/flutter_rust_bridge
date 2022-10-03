@@ -344,6 +344,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestIdConstMeta;
 
+  Future<int> testVecI64({required Int64List vec, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestVecI64ConstMeta;
+
   Future<int> lastNumber({required I64Array16 array, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kLastNumberConstMeta;

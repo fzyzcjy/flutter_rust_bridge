@@ -1178,6 +1178,19 @@ fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe)
         },
     )
 }
+fn wire_test_vec_i64_impl(port_: MessagePort, vec: impl Wire2Api<Vec<i64>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_vec_i64",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_vec = vec.wire2api();
+            move |task_callback| Ok(test_vec_i64(api_vec))
+        },
+    )
+}
 fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[i64; 16]> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

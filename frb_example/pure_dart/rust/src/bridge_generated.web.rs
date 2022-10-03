@@ -414,6 +414,11 @@ pub fn wire_test_id(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_vec_i64(port_: MessagePort, vec: Box<[i64]>) {
+    wire_test_vec_i64_impl(port_, vec)
+}
+
+#[wasm_bindgen]
 pub fn wire_last_number(port_: MessagePort, array: Box<[i64]>) {
     wire_last_number_impl(port_, array)
 }

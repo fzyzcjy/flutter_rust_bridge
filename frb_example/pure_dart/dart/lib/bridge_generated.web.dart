@@ -857,6 +857,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_test_id(NativePortType port_, List<dynamic> id);
 
+  external void wire_test_vec_i64(NativePortType port_, Int64List vec);
+
   external void wire_last_number(NativePortType port_, Int64List array);
 
   external void wire_nested_id(NativePortType port_, List<dynamic> id);
@@ -1099,6 +1101,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       wasmModule.wire_return_boxed_raw_feed_id(port_, id);
 
   void wire_test_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_test_id(port_, id);
+
+  void wire_test_vec_i64(NativePortType port_, Int64List vec) => wasmModule.wire_test_vec_i64(port_, vec);
 
   void wire_last_number(NativePortType port_, Int64List array) => wasmModule.wire_last_number(port_, array);
 
