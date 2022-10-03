@@ -23,6 +23,21 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl
           FutureOr<WasmModule> module) =>
       FlutterRustBridgeExampleBenchmarkSuiteImpl(module as ExternalLibrary);
   FlutterRustBridgeExampleBenchmarkSuiteImpl.raw(this._platform);
+  Future<List<String>> rustMetrics({dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_rust_metrics(port_),
+        parseSuccessData: _wire2api_StringList,
+        constMeta: kRustMetricsConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kRustMetricsConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "rust_metrics",
+        argNames: [],
+      );
+
   Future<UuidValue> handleUuid({required UuidValue id, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner

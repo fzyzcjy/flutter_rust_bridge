@@ -2,6 +2,11 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
+pub extern "C" fn wire_rust_metrics(port_: i64) {
+    wire_rust_metrics_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_uuid(port_: i64, id: *mut wire_uint_8_list) {
     wire_handle_uuid_impl(port_, id)
 }

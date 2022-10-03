@@ -8,6 +8,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class FlutterRustBridgeExampleBenchmarkSuite {
+  Future<List<String>> rustMetrics({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRustMetricsConstMeta;
+
   Future<UuidValue> handleUuid({required UuidValue id, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta;

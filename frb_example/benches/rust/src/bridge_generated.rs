@@ -19,6 +19,16 @@ use flutter_rust_bridge::*;
 
 // Section: wire functions
 
+fn wire_rust_metrics_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "rust_metrics",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| rust_metrics(),
+    )
+}
 fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

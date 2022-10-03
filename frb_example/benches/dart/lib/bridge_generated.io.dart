@@ -112,6 +112,20 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
+  void wire_rust_metrics(
+    int port_,
+  ) {
+    return _wire_rust_metrics(
+      port_,
+    );
+  }
+
+  late final _wire_rust_metricsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_rust_metrics');
+  late final _wire_rust_metrics =
+      _wire_rust_metricsPtr.asFunction<void Function(int)>();
+
   void wire_handle_uuid(
     int port_,
     ffi.Pointer<wire_uint_8_list> id,

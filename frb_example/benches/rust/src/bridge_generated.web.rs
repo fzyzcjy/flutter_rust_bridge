@@ -2,6 +2,11 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
+pub fn wire_rust_metrics(port_: MessagePort) {
+    wire_rust_metrics_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_uuid(port_: MessagePort, id: Box<[u8]>) {
     wire_handle_uuid_impl(port_, id)
 }

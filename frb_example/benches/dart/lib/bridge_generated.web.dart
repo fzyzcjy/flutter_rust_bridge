@@ -73,6 +73,8 @@ class FlutterRustBridgeExampleBenchmarkSuiteWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleBenchmarkSuiteWasmModule bind(
       dynamic thisArg, String moduleName);
+  external void wire_rust_metrics(NativePortType port_);
+
   external void wire_handle_uuid(NativePortType port_, Uint8List id);
 
   external void wire_handle_uuids(NativePortType port_, Uint8List ids);
@@ -96,6 +98,9 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire
   FlutterRustBridgeExampleBenchmarkSuiteWire(FutureOr<WasmModule> module)
       : super(WasmModule.cast<FlutterRustBridgeExampleBenchmarkSuiteWasmModule>(
             module));
+
+  void wire_rust_metrics(NativePortType port_) =>
+      wasmModule.wire_rust_metrics(port_);
 
   void wire_handle_uuid(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid(port_, id);
