@@ -93,7 +93,6 @@ struct DartApiSpec {
 }
 
 impl DartApiSpec {
-    #[allow(clippy::too_many_lines)]
     fn from(ir_file: &IrFile, config: &Opts, extra_funcs: &[IrFuncDisplay]) -> Self {
         let dart_api_class_name = config.dart_api_class_name();
         let dart_wire_class_name = config.dart_wire_class_name();
