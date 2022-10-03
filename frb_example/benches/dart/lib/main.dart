@@ -20,36 +20,25 @@ void main(List<String> args) async {
   Logger.root.onRecord.listen((record) {
     print('${record.level.name}: ${record.time}: ${record.message}');
   });
-  log.fine(
-      'flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
+  log.fine('flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   log.finer('construct api');
   if (extra != '--json') {
-    log.warning(
-        'CLI extra argument $extra is ignored (expected --json, or none)');
+    log.warning('CLI extra argument $extra is ignored (expected --json, or none)');
   }
   final api = initializeBenchExternalLibrary(dylibPath, useJSON: useJSON);
 
   final Uuid uuid = Uuid();
-  final thousandUuids =
-      List<UuidValue>.generate(1000, (index) => uuid.v4obj(), growable: false);
-  final thousandStrings = List<String>.generate(
-      1000, (index) => getRandomString(uuidSizeInBytes),
-      growable: false);
-  final hundredThousandUuids = List<UuidValue>.generate(
-      100000, (index) => uuid.v4obj(),
-      growable: false);
-  final hundredThousandStrings = List<String>.generate(
-      100000, (index) => getRandomString(uuidSizeInBytes),
-      growable: false);
+  final thousandUuids = List<UuidValue>.generate(1000, (index) => uuid.v4obj(), growable: false);
+  final thousandStrings = List<String>.generate(1000, (index) => getRandomString(uuidSizeInBytes), growable: false);
+  final hundredThousandUuids = List<UuidValue>.generate(100000, (index) => uuid.v4obj(), growable: false);
+  final hundredThousandStrings =
+      List<String>.generate(100000, (index) => getRandomString(uuidSizeInBytes), growable: false);
   await api.handleUuids(ids: thousandUuids, hint: '1,000 uuids');
   await api.handleStrings(strings: thousandStrings, hint: '1,000 strings');
-  await api.handleUuidsConvertToStrings(
-      ids: thousandUuids, hint: '1,000 uuids converted to strings');
+  await api.handleUuidsConvertToStrings(ids: thousandUuids, hint: '1,000 uuids converted to strings');
   await api.handleUuids(ids: hundredThousandUuids, hint: '10,000 uuids');
-  await api.handleStrings(
-      strings: hundredThousandStrings, hint: '10,000 strings');
-  await api.handleUuidsConvertToStrings(
-      ids: hundredThousandUuids, hint: '10,000 uuids converted to strings');
+  await api.handleStrings(strings: hundredThousandStrings, hint: '10,000 strings');
+  await api.handleUuidsConvertToStrings(ids: hundredThousandUuids, hint: '10,000 uuids converted to strings');
 
   if (useJSON) {
     final dartMetrics = await api.dartMetrics() ?? List.empty(growable: false);
@@ -65,14 +54,12 @@ void main(List<String> args) async {
       rustMetric.extra = dartMetric.extra;
     }
     final dartMetricsJson = dartMetrics.map((e) => json.encode({
-          'name':
-              e.extra != null ? 'dart:${e.name}:${e.extra}' : 'dart:${e.name}',
+          'name': e.extra != null ? 'dart:${e.name}:${e.extra}' : 'dart:${e.name}',
           'value': e.value,
           'unit': e.unit == Unit.Microseconds ? 'μs' : 'ns',
         }));
     final rustMetricsJson = rustMetrics.map((e) => json.encode({
-          'name':
-              e.extra != null ? 'rust:${e.name}:${e.extra}' : 'rust:${e.name}',
+          'name': e.extra != null ? 'rust:${e.name}:${e.extra}' : 'rust:${e.name}',
           'value': e.value,
           'unit': e.unit == Unit.Microseconds ? 'μs' : 'ns',
         }));

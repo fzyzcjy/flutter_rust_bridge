@@ -7,12 +7,9 @@ import 'interceptor.dart';
 import 'bridge_generated.io.dart';
 export 'bridge_generated.io.dart';
 
-FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeBenchExternalLibrary(
-    String path,
-    {bool? useJSON}) {
+FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeBenchExternalLibrary(String path, {bool? useJSON}) {
   return FlutterRustBridgeExampleBenchmarkSuiteImplBench(
-      (Platform.isMacOS || Platform.isIOS) &&
-              !const bool.fromEnvironment('SILICON', defaultValue: false)
+      (Platform.isMacOS || Platform.isIOS) && !const bool.fromEnvironment('SILICON', defaultValue: false)
           ? DynamicLibrary.executable()
           : DynamicLibrary.open(path),
       useJSON: useJSON ?? false);

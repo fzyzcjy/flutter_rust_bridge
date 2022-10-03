@@ -27,15 +27,12 @@ class TemplateBenchmark extends AsyncBenchmarkBase {
   Future<void> setup() {
     return Future.sync(() {
       String dylibPath = String.fromEnvironment("DYLIB_PATH",
-          defaultValue:
-              "../../../target/release/libflutter_rust_bridge_example.dylib");
+          defaultValue: "../../../target/release/libflutter_rust_bridge_example.dylib");
       int sampleCount = int.fromEnvironment("SAMPLE_COUNT", defaultValue: 1000);
-      print(
-          'flutter_rust_bridge benchmark $sampleCount strings (dylibPath=$dylibPath)');
+      print('flutter_rust_bridge benchmark $sampleCount strings (dylibPath=$dylibPath)');
       print('setup');
       api = initializeBenchExternalLibrary(dylibPath);
-      strings = List<String>.generate(
-          sampleCount, (_) => getRandomString(uuidSizeInBytes));
+      strings = List<String>.generate(sampleCount, (_) => getRandomString(uuidSizeInBytes));
     });
   }
 
