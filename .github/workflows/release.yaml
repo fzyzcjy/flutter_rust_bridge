@@ -66,14 +66,14 @@ jobs:
       - name: Post-build (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          cd frb_codegen/target/${{ matrix.target }}/release
-          7z a ../../../../${{ matrix.name }} flutter_rust_bridge_codegen.exe
+          cd target/${{ matrix.target }}/release
+          7z a ../../../${{ matrix.name }} flutter_rust_bridge_codegen.exe
           cd -
       - name: Post-build (*nix)
         if: matrix.os != 'windows-latest'
         run: |
-          cd frb_codegen/target/${{ matrix.target }}/release
-          tar czvf ../../../../${{ matrix.name }} flutter_rust_bridge_codegen
+          cd target/${{ matrix.target }}/release
+          tar czvf ../../../${{ matrix.name }} flutter_rust_bridge_codegen
           cd -
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
