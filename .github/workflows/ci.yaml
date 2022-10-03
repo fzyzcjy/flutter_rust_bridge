@@ -218,6 +218,21 @@ jobs:
         working-directory: ./frb_example/with_flutter/rust
         run: cargo test --verbose
 
+      - name: Build runner
+        working-directory: ./frb_dart
+        run: dart run build_runner build
+      - name: Build benches example
+        working-directory: ./frb_example/benches/rust
+        # benches are run on release mode in gh-pages workflow
+        # following steps only assert good functioning
+        run: cargo build --verbose && cargo build --target wasm32-unknown-unknown --verbose
+      - name: Run benchmark_harness example
+        working-directory: ./frb_example/benches/dart
+        run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
+      - name: Run benches example
+        working-directory: ./frb_example/benches/dart
+        run: dart lib/main.dart ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so --json
+
   rust_linter:
     name: Rust linter using Clippy and rustfmt
     runs-on: ubuntu-latest
