@@ -127,6 +127,7 @@ refresh_all:
     (cd frb_rust && cargo clippy -- -D warnings)
     (cd frb_macros && cargo clippy -- -D warnings)
     (cd frb_example/pure_dart/rust && cargo clippy -- -D warnings)
+    (cd frb_example/benches/rust && cargo clippy -- -D warnings)
     (cd frb_example/pure_dart_multi/rust && cargo clippy -- -D warnings)
     (cd frb_example/with_flutter/rust && cargo clippy -- -D warnings)
     (cd frb_example/pure_dart/dart && dart pub get)
@@ -138,6 +139,7 @@ refresh_all:
     sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
     sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
     sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
+    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/benches/dart/pubspec.lock
 
 publish_all:
     (cd frb_codegen && cargo publish)
