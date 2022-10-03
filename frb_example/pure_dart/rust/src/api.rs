@@ -903,21 +903,6 @@ pub fn handle_uuids(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
     Ok(ids)
 }
 
-pub fn handle_uuids_convert_to_strings(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<String>> {
-    Ok(ids
-        .into_iter()
-        .map(|x| x.hyphenated().to_string())
-        .collect())
-}
-
 pub fn handle_nested_uuids(ids: FeatureUuid) -> anyhow::Result<FeatureUuid> {
     Ok(ids)
-}
-
-pub fn handle_strings(strings: Vec<String>) -> anyhow::Result<Vec<String>> {
-    Ok(strings)
-}
-
-pub fn send_i64(value: i64) -> i64 {
-    value
 }
