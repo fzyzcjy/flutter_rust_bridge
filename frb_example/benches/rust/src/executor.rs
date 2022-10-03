@@ -1,4 +1,8 @@
-use std::{panic::UnwindSafe, time::Instant};
+use std::{
+    panic::UnwindSafe,
+    sync::{Arc, Mutex},
+    time::Instant,
+};
 
 use flutter_rust_bridge::{
     handler::{
@@ -7,8 +11,24 @@ use flutter_rust_bridge::{
     rust2dart::TaskCallback,
     IntoDart, MessagePort, WrapInfo,
 };
+use tracing_subscriber::FmtSubscriber;
+
+lazy_static::lazy_static! {
+  static ref METRICS: Arc<Mutex<Vec<serde_json::Value>>> = Arc::new(Mutex::new(vec![]));
+}
 
 pub type BenchHandler = SimpleHandler<BenchExecutor, BenchErrorHandler>;
+
+pub trait Metrics {
+    fn metrics(&self) -> Vec<serde_json::Value>;
+}
+
+impl Metrics for SimpleHandler<BenchExecutor, BenchErrorHandler> {
+    fn metrics(&self) -> Vec<serde_json::Value> {
+        let guard = METRICS.lock().expect("Error on mutex lock");
+        guard.clone()
+    }
+}
 
 #[derive(Clone, Copy)]
 pub struct BenchErrorHandler(ReportDartErrorHandler);
@@ -32,11 +52,34 @@ impl ErrorHandler for BenchErrorHandler {
     }
 }
 
-pub struct BenchExecutor(ThreadPoolExecutor<BenchErrorHandler>);
+pub struct BenchExecutor {
+    inner: ThreadPoolExecutor<BenchErrorHandler>,
+    json: bool,
+}
 
 impl BenchExecutor {
     pub(crate) fn new(error_handler: BenchErrorHandler) -> Self {
-        Self(ThreadPoolExecutor::new(error_handler))
+        let json = std::env::var("JSON")
+            .unwrap_or("false".into())
+            .parse::<bool>()
+            .expect("Invalid JSON env var (expected boolean)");
+        let subscriber = if json {
+            None
+        } else {
+            Some(
+                FmtSubscriber::builder()
+                    .with_max_level(tracing::Level::TRACE)
+                    .finish(),
+            )
+        };
+        if let Some(subscriber) = subscriber {
+            tracing::subscriber::set_global_default(subscriber)
+                .expect("Setting default subscriber failed");
+        }
+        Self {
+            inner: ThreadPoolExecutor::new(error_handler),
+            json,
+        }
     }
 }
 
@@ -47,8 +90,9 @@ impl Executor for BenchExecutor {
         TaskRet: IntoDart,
     {
         let debug_name_string = wrap_info.debug_name.to_string();
-        self.0.execute(wrap_info, move |task_callback| {
-            Self::bench_around(&debug_name_string, move || task(task_callback))
+        let json = self.json;
+        self.inner.execute(wrap_info, move |task_callback| {
+            Self::bench_around(&debug_name_string, json, move || task(task_callback))
         })
     }
 
@@ -63,35 +107,39 @@ impl Executor for BenchExecutor {
             + std::panic::UnwindSafe,
     {
         let debug_name_string = wrap_info.debug_name.to_string();
-        self.0.execute_sync(wrap_info, move || {
-            Self::bench_around(&debug_name_string, move || sync_task())
+        self.inner.execute_sync(wrap_info, move || {
+            Self::bench_around(&debug_name_string, self.json, move || sync_task())
         })
     }
 }
 
 impl BenchExecutor {
-    fn bench_around<F, R>(bench_name: &str, f: F) -> R
+    fn bench_around<F, R>(bench_name: &str, json: bool, f: F) -> R
     where
         F: FnOnce() -> R,
     {
-        use tracing::{event, span, trace, Level};
-        span!(Level::DEBUG, "frb-executor");
+        use tracing::{span, trace, Level};
+        span!(Level::TRACE, "frb-executor");
+        if !json {
+            trace!("(Rust) execute [{}] start", bench_name);
+        }
         let start = Instant::now();
-        trace!("(Rust) execute [{}] start", bench_name);
         let ret = f();
         let elapsed = start.elapsed().as_nanos();
-        trace!(
-            "(Rust) execute [{}] end delta_time={}ns",
-            bench_name,
-            elapsed
-        );
-        // as per continuous-benchmark
-        event!(
-            Level::DEBUG,
-            name = bench_name,
-            unit = "ns",
-            value = elapsed
-        );
+        if !json {
+            trace!(
+                "(Rust) execute [{}] end delta_time={}ns",
+                bench_name,
+                elapsed
+            );
+        } else {
+            Self::record(bench_name, elapsed as u64);
+        }
         ret
+    }
+    fn record(debug_name_string: &str, elapsed: u64) {
+        let mut guard = METRICS.lock().expect("Error on mutex lock");
+        guard
+            .push(serde_json::json!({ "name": debug_name_string, "unit": "ns", "value": elapsed, "extra": "rust" }));
     }
 }

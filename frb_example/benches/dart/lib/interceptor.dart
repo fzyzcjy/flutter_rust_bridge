@@ -32,8 +32,8 @@ class FlutterRustBridgeExampleBenchmarkSuiteImplBench
   FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(this.platform)
       : super.raw(platform);
 
-  Future<void> whenBenchmarkComplete() async {
-    platform.whenBenchmarkComplete();
+  Future<List<String>?> dartMetrics() async {
+    return platform.metrics();
   }
 }
 
@@ -136,6 +136,12 @@ class Metric {
   final String debugName;
   final Object? hint;
   Metric(this.starts, this.debugName, this.hint, {this.unit = "μs"});
+  Metric.fromBench(
+      {required this.ends,
+      required this.debugName,
+      this.hint,
+      this.starts = 0,
+      this.unit = "μs"});
   Map<String, dynamic> toJson() {
     return {
       'value': ends,
@@ -222,11 +228,17 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
     return result;
   }
 
-  Future<void> whenBenchmarkComplete() async {
+  Future<List<String>?> metrics() async {
     if (interceptor is FlutterRustBridgeInterceptorJson) {
       final FlutterRustBridgeInterceptorJson jsonInterceptor =
           interceptor as FlutterRustBridgeInterceptorJson;
-      log.info(jsonEncode(jsonInterceptor.metrics));
+      List<String> metrics = List.empty(growable: true);
+      for (var e in jsonInterceptor.metrics.entries) {
+        metrics.add(json.encode(Metric.fromBench(
+            ends: e.value.ends, debugName: e.value.debugName, hint: "dart")));
+      }
+      return metrics;
     }
+    return null;
   }
 }

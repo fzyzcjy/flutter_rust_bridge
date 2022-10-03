@@ -1,6 +1,6 @@
 #![allow(unused_variables)]
 
-use crate::executor::{BenchErrorHandler, BenchExecutor, BenchHandler};
+use crate::executor::{BenchErrorHandler, BenchExecutor, BenchHandler, Metrics};
 
 lazy_static::lazy_static! {
   pub static ref FLUTTER_RUST_BRIDGE_ERROR_HANDLER: BenchErrorHandler = BenchErrorHandler::default();
@@ -11,6 +11,14 @@ lazy_static::lazy_static! {
 pub struct FeatureUuid {
     pub one: uuid::Uuid,
     pub many: Vec<uuid::Uuid>,
+}
+
+pub fn rust_metrics() -> anyhow::Result<Vec<String>> {
+    Ok(FLUTTER_RUST_BRIDGE_HANDLER
+        .metrics()
+        .into_iter()
+        .map(|x| x.to_string())
+        .collect::<Vec<_>>())
 }
 
 pub fn handle_uuid(id: uuid::Uuid) -> anyhow::Result<uuid::Uuid> {

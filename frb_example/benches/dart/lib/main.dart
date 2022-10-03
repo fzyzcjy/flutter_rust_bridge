@@ -8,8 +8,8 @@ void main(List<String> args) async {
   String dylibPath = args[0];
   final log = Logger('frb_example/benches');
   String? extra = args.length > 1 ? args[1] : null;
-  final bool json = extra == '--json';
-  if (json) {
+  final bool useJSON = extra == '--json';
+  if (useJSON) {
     Logger.root.level = Level.INFO;
   } else {
     Logger.root.level = Level.ALL;
@@ -24,7 +24,7 @@ void main(List<String> args) async {
     log.warning(
         'CLI extra argument $extra is ignored (expected --json, or none)');
   }
-  final api = initializeBenchExternalLibrary(dylibPath, useJSON: json);
+  final api = initializeBenchExternalLibrary(dylibPath, useJSON: useJSON);
 
   final Uuid uuid = Uuid();
   final thousandUuids =
@@ -48,7 +48,12 @@ void main(List<String> args) async {
   await api.handleUuidsConvertToStrings(
       ids: hundredThousandUuids, hint: '⚡ 10,000 uuids converted to strings');
 
-  await api.whenBenchmarkComplete();
+  if (useJSON) {
+    final dartMetrics = await api.dartMetrics() ?? List.empty(growable: false);
+    final rustMetrics = await api.rustMetrics();
+    final metrics = List.from(dartMetrics)..addAll(rustMetrics);
+    print(metrics);
+  }
 }
 
 // vim:expandtab:ts=2:sw=2
