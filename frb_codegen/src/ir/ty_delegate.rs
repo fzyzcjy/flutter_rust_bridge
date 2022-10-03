@@ -111,6 +111,14 @@ impl IrTypeDelegate {
             _ => panic!("Unexpected type"),
         }
     }
+
+    pub fn inner_is_js_value(&self) -> bool {
+        match self {
+            IrTypeDelegate::GeneralArray { general, .. } => general.is_js_value(),
+            IrTypeDelegate::PrimitiveArray { .. } => false,
+            _ => panic!("Unexpected type"),
+        }
+    }
 }
 
 impl IrTypeTrait for IrTypeDelegate {

@@ -24,7 +24,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                 .into(),
             ),
             (_, IrType::Primitive(_)) => None,
-            (Io, ir) if ir.is_array() => Some(format!(
+            (Io | Wasm, ir) if ir.is_array() => Some(format!(
                 "Wire2Api::<{}>::wire2api(self).into()",
                 box_inner.rust_api_type()
             )),
@@ -42,6 +42,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             IrType::Primitive(_) => format!(
                 "(self.unchecked_into_f64() as usize as *mut {}).wire2api()",
                 self.ir.inner.rust_wire_type(Wasm),
+            )
+            .into(),
+            ir @ IrType::Delegate(delegate) if ir.is_array() => format!(
+                "let vec: Vec<{}> = self.wire2api(); Box::new(support::from_vec_to_array(vec))",
+                delegate.inner_rust_api_type(),
             )
             .into(),
             _ => "Box::new(self.wire2api())".into(),
