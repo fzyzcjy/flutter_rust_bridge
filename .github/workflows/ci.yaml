@@ -222,7 +222,7 @@ jobs:
         working-directory: ./frb_example/benches/rust
         # benches are run on release mode in gh-pages workflow
         # following steps only assert good functioning
-        run: cargo build --verbose && cargo build --target wasm32-unknown-unknown --verbose
+        run: cargo build --verbose
       - name: Run benchmark_harness example
         working-directory: ./frb_example/benches/dart
         run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
