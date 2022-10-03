@@ -1,27 +1,23 @@
 import 'dart:async';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
+import 'bridge_definitions.dart';
 import 'package:logging/logging.dart';
 import 'package:uuid/uuid.dart';
-import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
-import 'dart:ffi' as ffi;
+import 'interceptor.io.dart' if (dart.library.html) 'interceptor.web.dart';
 
 class FlutterRustBridgeExampleBenchmarkSuiteImplBench extends FlutterRustBridgeExampleBenchmarkSuiteImpl {
   final FlutterRustBridgeExampleBenchmarkSuitePlatformBench platform;
   factory FlutterRustBridgeExampleBenchmarkSuiteImplBench(ExternalLibrary dylib, {bool? useJSON}) =>
-      FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(FlutterRustBridgeExampleBenchmarkSuitePlatformBench(
-          dylib,
-          useJSON ?? false
-              ? FlutterRustBridgeInterceptorJson() as FlutterRustBridgeInterceptor<AsyncStopWatch>
-              : FlutterRustBridgeInterceptorStdOut()));
+      FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(
+          FlutterRustBridgeExampleBenchmarkSuitePlatformBench(dylib, useJSON ?? false));
 
   /// Only valid on web/WASM platforms.
   factory FlutterRustBridgeExampleBenchmarkSuiteImplBench.wasm(FutureOr<WasmModule> module, {bool? useJSON}) =>
       FlutterRustBridgeExampleBenchmarkSuiteImplBench(module as ExternalLibrary, useJSON: useJSON ?? false);
 
   @override
-  FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(this.platform) : super.raw(platform);
+  FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(this.platform) : super.raw((platform));
 
   Future<List<Metric>?> dartMetrics() async {
     return platform.metrics();
@@ -155,52 +151,5 @@ class FlutterRustBridgeInterceptorJson extends FlutterRustBridgeInterceptor<Uniq
         stopwatch.uuid.toString(),
         (metric) =>
             Metric(name: metric.name, unit: metric.unit, extra: metric.extra, value: stopwatch.elapsedMicroseconds));
-  }
-}
-
-class FlutterRustBridgeExampleBenchmarkSuitePlatformBench extends FlutterRustBridgeExampleBenchmarkSuitePlatform {
-  final FlutterRustBridgeInterceptor<AsyncStopWatch> _interceptor;
-  final log = Logger('FlutterRustBridgeExampleBenchmarkSuitePlatformBench');
-  FlutterRustBridgeExampleBenchmarkSuitePlatformBench(ffi.DynamicLibrary dylib, this._interceptor) : super(dylib);
-  FlutterRustBridgeInterceptor<AsyncStopWatch> get interceptor => _interceptor;
-  @override
-  Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
-    final String debugName = task.constMeta.debugName;
-    final AsyncStopWatch stopwatch = await interceptor.beforeExecuteNormal(debugName, task.hint);
-    final result = await super.executeNormal(task);
-    await interceptor.afterExecuteNormal(debugName, stopwatch);
-    return result;
-  }
-
-  @override
-  S executeSync<S>(FlutterRustBridgeSyncTask task) {
-    final String debugName = task.constMeta.debugName;
-    final AsyncStopWatch stopwatch = interceptor.beforeExecuteSync(debugName, task.hint);
-    final result = super.executeSync(task);
-    interceptor.afterExecuteSync(debugName, stopwatch);
-    return result;
-  }
-
-  Future<List<Metric>?> metrics() async {
-    if (interceptor is FlutterRustBridgeInterceptorJson) {
-      final FlutterRustBridgeInterceptorJson jsonInterceptor = interceptor as FlutterRustBridgeInterceptorJson;
-      List<Metric> metrics = List.empty(growable: true);
-      for (var e in jsonInterceptor.metrics.entries) {
-        metrics.add(e.value);
-      }
-      return metrics;
-    }
-    return null;
-  }
-}
-
-extension UnitToJsonExtension on Unit {
-  String convertToJson() {
-    switch (this) {
-      case Unit.Microseconds:
-        return 'μs';
-      case Unit.Nanoseconds:
-        return 'ns';
-    }
   }
 }
