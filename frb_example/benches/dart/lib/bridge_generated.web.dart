@@ -31,28 +31,8 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatform
   }
 
   @protected
-  Uint8List api2wire_Uuid(UuidValue raw) {
-    return api2wire_uint_8_list(raw.toBytes());
-  }
-
-  @protected
   Uint8List api2wire_Uuids(List<UuidValue> raw) {
     return api2wire_uint_8_list(api2wireConcatenateBytes(raw));
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_feature_uuid(FeatureUuid raw) {
-    return api2wire_feature_uuid(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_feature_uuid(FeatureUuid raw) {
-    return [api2wire_Uuid(raw.one), api2wire_Uuids(raw.many)];
-  }
-
-  @protected
-  Object api2wire_i64(int raw) {
-    return castNativeBigInt(raw);
   }
 
   @protected
@@ -73,17 +53,11 @@ class FlutterRustBridgeExampleBenchmarkSuiteWasmModule implements WasmModule {
   external FlutterRustBridgeExampleBenchmarkSuiteWasmModule bind(dynamic thisArg, String moduleName);
   external void wire_rust_metrics(NativePortType port_);
 
-  external void wire_handle_uuid(NativePortType port_, Uint8List id);
-
   external void wire_handle_uuids(NativePortType port_, Uint8List ids);
 
   external void wire_handle_uuids_convert_to_strings(NativePortType port_, Uint8List ids);
 
-  external void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
-
   external void wire_handle_strings(NativePortType port_, List<String> strings);
-
-  external void wire_send_i64(NativePortType port_, Object value);
 }
 
 // Section: WASM wire connector
@@ -95,18 +69,11 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire
 
   void wire_rust_metrics(NativePortType port_) => wasmModule.wire_rust_metrics(port_);
 
-  void wire_handle_uuid(NativePortType port_, Uint8List id) => wasmModule.wire_handle_uuid(port_, id);
-
   void wire_handle_uuids(NativePortType port_, Uint8List ids) => wasmModule.wire_handle_uuids(port_, ids);
 
   void wire_handle_uuids_convert_to_strings(NativePortType port_, Uint8List ids) =>
       wasmModule.wire_handle_uuids_convert_to_strings(port_, ids);
 
-  void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids) =>
-      wasmModule.wire_handle_nested_uuids(port_, ids);
-
   void wire_handle_strings(NativePortType port_, List<String> strings) =>
       wasmModule.wire_handle_strings(port_, strings);
-
-  void wire_send_i64(NativePortType port_, Object value) => wasmModule.wire_send_i64(port_, value);
 }

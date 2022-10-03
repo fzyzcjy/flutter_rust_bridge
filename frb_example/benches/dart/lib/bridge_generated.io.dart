@@ -33,25 +33,8 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatform
   }
 
   @protected
-  ffi.Pointer<wire_uint_8_list> api2wire_Uuid(UuidValue raw) {
-    return api2wire_uint_8_list(raw.toBytes());
-  }
-
-  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_Uuids(List<UuidValue> raw) {
     return api2wire_uint_8_list(api2wireConcatenateBytes(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_FeatureUuid> api2wire_box_autoadd_feature_uuid(FeatureUuid raw) {
-    final ptr = inner.new_box_autoadd_feature_uuid_0();
-    _api_fill_to_wire_feature_uuid(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  int api2wire_i64(int raw) {
-    return raw;
   }
 
   @protected
@@ -62,14 +45,6 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatform
   }
 // Section: api_fill_to_wire
 
-  void _api_fill_to_wire_box_autoadd_feature_uuid(FeatureUuid apiObj, ffi.Pointer<wire_FeatureUuid> wireObj) {
-    _api_fill_to_wire_feature_uuid(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_feature_uuid(FeatureUuid apiObj, wire_FeatureUuid wireObj) {
-    wireObj.one = api2wire_Uuid(apiObj.one);
-    wireObj.many = api2wire_Uuids(apiObj.many);
-  }
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
@@ -114,20 +89,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire implements FlutterRustBridgeWir
   late final _wire_rust_metricsPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_rust_metrics');
   late final _wire_rust_metrics = _wire_rust_metricsPtr.asFunction<void Function(int)>();
 
-  void wire_handle_uuid(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> id,
-  ) {
-    return _wire_handle_uuid(
-      port_,
-      id,
-    );
-  }
-
-  late final _wire_handle_uuidPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_uuid');
-  late final _wire_handle_uuid = _wire_handle_uuidPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
-
   void wire_handle_uuids(
     int port_,
     ffi.Pointer<wire_uint_8_list> ids,
@@ -158,22 +119,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire implements FlutterRustBridgeWir
   late final _wire_handle_uuids_convert_to_strings =
       _wire_handle_uuids_convert_to_stringsPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_handle_nested_uuids(
-    int port_,
-    ffi.Pointer<wire_FeatureUuid> ids,
-  ) {
-    return _wire_handle_nested_uuids(
-      port_,
-      ids,
-    );
-  }
-
-  late final _wire_handle_nested_uuidsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_FeatureUuid>)>>(
-          'wire_handle_nested_uuids');
-  late final _wire_handle_nested_uuids =
-      _wire_handle_nested_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureUuid>)>();
-
   void wire_handle_strings(
     int port_,
     ffi.Pointer<wire_StringList> strings,
@@ -189,19 +134,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire implements FlutterRustBridgeWir
   late final _wire_handle_strings =
       _wire_handle_stringsPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
 
-  void wire_send_i64(
-    int port_,
-    int value,
-  ) {
-    return _wire_send_i64(
-      port_,
-      value,
-    );
-  }
-
-  late final _wire_send_i64Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_send_i64');
-  late final _wire_send_i64 = _wire_send_i64Ptr.asFunction<void Function(int, int)>();
-
   ffi.Pointer<wire_StringList> new_StringList_0(
     int len,
   ) {
@@ -213,15 +145,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire implements FlutterRustBridgeWir
   late final _new_StringList_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList_0');
   late final _new_StringList_0 = _new_StringList_0Ptr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
-
-  ffi.Pointer<wire_FeatureUuid> new_box_autoadd_feature_uuid_0() {
-    return _new_box_autoadd_feature_uuid_0();
-  }
-
-  late final _new_box_autoadd_feature_uuid_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_FeatureUuid> Function()>>('new_box_autoadd_feature_uuid_0');
-  late final _new_box_autoadd_feature_uuid_0 =
-      _new_box_autoadd_feature_uuid_0Ptr.asFunction<ffi.Pointer<wire_FeatureUuid> Function()>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
     int len,
@@ -254,12 +177,6 @@ class wire_uint_8_list extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
-}
-
-class wire_FeatureUuid extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> one;
-
-  external ffi.Pointer<wire_uint_8_list> many;
 }
 
 class wire_StringList extends ffi.Struct {

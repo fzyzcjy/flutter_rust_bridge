@@ -12,10 +12,6 @@ abstract class FlutterRustBridgeExampleBenchmarkSuite {
 
   FlutterRustBridgeTaskConstMeta get kRustMetricsConstMeta;
 
-  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta;
-
   Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
@@ -24,27 +20,9 @@ abstract class FlutterRustBridgeExampleBenchmarkSuite {
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConvertToStringsConstMeta;
 
-  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
-
   Future<List<String>> handleStrings({required List<String> strings, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStringsConstMeta;
-
-  Future<int> sendI64({required int value, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kSendI64ConstMeta;
-}
-
-class FeatureUuid {
-  final UuidValue one;
-  final List<UuidValue> many;
-
-  FeatureUuid({
-    required this.one,
-    required this.many,
-  });
 }
 
 /// metric used for continuous-benchmark worflow

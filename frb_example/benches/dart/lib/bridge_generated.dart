@@ -32,19 +32,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl implements FlutterRustBridgeExa
         argNames: [],
       );
 
-  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_handle_uuid(port_, _platform.api2wire_Uuid(id)),
-        parseSuccessData: _wire2api_Uuid,
-        constMeta: kHandleUuidConstMeta,
-        argValues: [id],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_uuid",
-        argNames: ["id"],
-      );
-
   Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_handle_uuids(port_, _platform.api2wire_Uuids(ids)),
@@ -73,21 +60,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl implements FlutterRustBridgeExa
         argNames: ["ids"],
       );
 
-  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint}) =>
-      _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) =>
-            _platform.inner.wire_handle_nested_uuids(port_, _platform.api2wire_box_autoadd_feature_uuid(ids)),
-        parseSuccessData: _wire2api_feature_uuid,
-        constMeta: kHandleNestedUuidsConstMeta,
-        argValues: [ids],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_nested_uuids",
-        argNames: ["ids"],
-      );
-
   Future<List<String>> handleStrings({required List<String> strings, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_handle_strings(port_, _platform.api2wire_StringList(strings)),
@@ -100,19 +72,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl implements FlutterRustBridgeExa
   FlutterRustBridgeTaskConstMeta get kHandleStringsConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_strings",
         argNames: ["strings"],
-      );
-
-  Future<int> sendI64({required int value, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_send_i64(port_, _platform.api2wire_i64(value)),
-        parseSuccessData: _wire2api_i64,
-        constMeta: kSendI64ConstMeta,
-        argValues: [value],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kSendI64ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "send_i64",
-        argNames: ["value"],
       );
 }
 
@@ -133,10 +92,6 @@ List<String> _wire2api_StringList(dynamic raw) {
   return (raw as List<dynamic>).cast<String>();
 }
 
-UuidValue _wire2api_Uuid(dynamic raw) {
-  return UuidValue.fromByteList(_wire2api_uint_8_list(raw));
-}
-
 List<UuidValue> _wire2api_Uuids(dynamic raw) {
   final bytes = _wire2api_uint_8_list(raw);
   return wire2apiUuids(bytes);
@@ -146,21 +101,8 @@ int _wire2api_box_autoadd_u64(dynamic raw) {
   return _wire2api_u64(raw);
 }
 
-FeatureUuid _wire2api_feature_uuid(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return FeatureUuid(
-    one: _wire2api_Uuid(arr[0]),
-    many: _wire2api_Uuids(arr[1]),
-  );
-}
-
 int _wire2api_i32(dynamic raw) {
   return raw as int;
-}
-
-int _wire2api_i64(dynamic raw) {
-  return castInt(raw);
 }
 
 List<Metric> _wire2api_list_metric(dynamic raw) {
