@@ -916,13 +916,13 @@ pub fn new_msgid(id: [u8; 32]) -> MessageId {
 pub fn use_msgid(id: MessageId) -> [u8; 32] {
     id.0
 }
-pub struct BlobId(pub [u8; 16]);
-pub fn boxed_blob_id(id: Box<[u8; 16]>) -> BlobId {
-    BlobId(*id)
+pub struct Blob(pub [u8; 1600]);
+pub fn boxed_blob(blob: Box<[u8; 1600]>) -> Blob {
+    Blob(*blob)
 }
 
-pub fn use_boxed_blob_id(id: Box<BlobId>) -> [u8; 16] {
-    id.0
+pub fn use_boxed_blob(blob: Box<Blob>) -> [u8; 1600] {
+    blob.0
 }
 
 pub struct FeedId(pub [u8; 8]);

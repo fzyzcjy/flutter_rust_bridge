@@ -24,7 +24,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                 .into(),
             ),
             (_, IrType::Primitive(_)) => None,
-            (Io, ir @ _) if ir.is_array() => Some(format!(
+            (Io, ir) if ir.is_array() => Some(format!(
                 "Wire2Api::<{}>::wire2api(self).into()",
                 box_inner.rust_api_type()
             )),

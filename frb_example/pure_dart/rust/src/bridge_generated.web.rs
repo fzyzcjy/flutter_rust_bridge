@@ -389,13 +389,13 @@ pub fn wire_use_msgid(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_boxed_blob_id(port_: MessagePort, id: *mut Box<[u8]>) {
-    wire_boxed_blob_id_impl(port_, id)
+pub fn wire_boxed_blob(port_: MessagePort, blob: *mut Box<[u8]>) {
+    wire_boxed_blob_impl(port_, blob)
 }
 
 #[wasm_bindgen]
-pub fn wire_use_boxed_blob_id(port_: MessagePort, id: JsValue) {
-    wire_use_boxed_blob_id_impl(port_, id)
+pub fn wire_use_boxed_blob(port_: MessagePort, blob: JsValue) {
+    wire_use_boxed_blob_impl(port_, blob)
 }
 
 #[wasm_bindgen]
@@ -665,8 +665,8 @@ impl Wire2Api<Attribute> for JsValue {
         }
     }
 }
-impl Wire2Api<BlobId> for JsValue {
-    fn wire2api(self) -> BlobId {
+impl Wire2Api<Blob> for JsValue {
+    fn wire2api(self) -> Blob {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -674,7 +674,7 @@ impl Wire2Api<BlobId> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        BlobId(self_.get(0).wire2api())
+        Blob(self_.get(0).wire2api())
     }
 }
 
@@ -1127,8 +1127,8 @@ impl Wire2Api<TestId> for JsValue {
     }
 }
 
-impl Wire2Api<[u8; 16]> for Box<[u8]> {
-    fn wire2api(self) -> [u8; 16] {
+impl Wire2Api<[u8; 1600]> for Box<[u8]> {
+    fn wire2api(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
     }
@@ -1228,8 +1228,8 @@ impl Wire2Api<Box<ApplicationEnv>> for JsValue {
         Box::new(self.wire2api())
     }
 }
-impl Wire2Api<Box<BlobId>> for JsValue {
-    fn wire2api(self) -> Box<BlobId> {
+impl Wire2Api<Box<Blob>> for JsValue {
+    fn wire2api(self) -> Box<Blob> {
         Box::new(self.wire2api())
     }
 }
@@ -1288,8 +1288,8 @@ impl Wire2Api<Box<u8>> for JsValue {
         (self.unchecked_into_f64() as usize as *mut u8).wire2api()
     }
 }
-impl Wire2Api<Box<[u8; 16]>> for JsValue {
-    fn wire2api(self) -> Box<[u8; 16]> {
+impl Wire2Api<Box<[u8; 1600]>> for JsValue {
+    fn wire2api(self) -> Box<[u8; 1600]> {
         Box::new(self.wire2api())
     }
 }

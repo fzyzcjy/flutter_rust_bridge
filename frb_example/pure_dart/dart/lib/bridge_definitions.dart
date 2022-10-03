@@ -324,13 +324,13 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kUseMsgidConstMeta;
 
-  Future<BlobId> boxedBlobId({required U8Array16 id, dynamic hint});
+  Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kBoxedBlobIdConstMeta;
+  FlutterRustBridgeTaskConstMeta get kBoxedBlobConstMeta;
 
-  Future<U8Array16> useBoxedBlobId({required BlobId id, dynamic hint});
+  Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobIdConstMeta;
+  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobConstMeta;
 
   Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint});
 
@@ -504,10 +504,10 @@ class BigBuffers {
   });
 }
 
-class BlobId {
-  final U8Array16 field0;
+class Blob {
+  final U8Array1600 field0;
 
-  BlobId({
+  Blob({
     required this.field0,
   });
 }
@@ -900,12 +900,12 @@ class TestId {
   });
 }
 
-class U8Array16 {
+class U8Array1600 {
   final Uint8List inner;
 
-  U8Array16(this.inner) : assert(inner.length == 16);
+  U8Array1600(this.inner) : assert(inner.length == 1600);
 
-  U8Array16.Unchecked(this.inner);
+  U8Array1600.Unchecked(this.inner);
 
   int operator [](int index) {
     return inner[index];

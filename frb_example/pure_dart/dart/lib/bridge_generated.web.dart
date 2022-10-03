@@ -96,8 +96,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_blob_id(BlobId raw) {
-    return [api2wire_u8_array_16(raw.field0)];
+  List<dynamic> api2wire_blob(Blob raw) {
+    return [api2wire_u8_array_1600(raw.field0)];
   }
 
   @protected
@@ -231,8 +231,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_box_blob_id(BlobId raw) {
-    return api2wire_blob_id(raw);
+  List<dynamic> api2wire_box_blob(Blob raw) {
+    return api2wire_blob(raw);
   }
 
   @protected
@@ -291,8 +291,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Uint8List api2wire_box_u8_array_16(U8Array16 raw) {
-    return api2wire_u8_array_16(raw);
+  Uint8List api2wire_box_u8_array_1600(U8Array1600 raw) {
+    return api2wire_u8_array_1600(raw);
   }
 
   @protected
@@ -656,7 +656,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Uint8List api2wire_u8_array_16(U8Array16 raw) {
+  Uint8List api2wire_u8_array_1600(U8Array1600 raw) {
     return api2wire_uint_8_list(raw.inner);
   }
 
@@ -847,9 +847,9 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_use_msgid(NativePortType port_, List<dynamic> id);
 
-  external void wire_boxed_blob_id(NativePortType port_, Uint8List id);
+  external void wire_boxed_blob(NativePortType port_, Uint8List blob);
 
-  external void wire_use_boxed_blob_id(NativePortType port_, List<dynamic> id);
+  external void wire_use_boxed_blob(NativePortType port_, List<dynamic> blob);
 
   external void wire_return_boxed_feed_id(NativePortType port_, Uint8List id);
 
@@ -1089,9 +1089,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_use_msgid(NativePortType port_, List<dynamic> id) => wasmModule.wire_use_msgid(port_, id);
 
-  void wire_boxed_blob_id(NativePortType port_, Uint8List id) => wasmModule.wire_boxed_blob_id(port_, id);
+  void wire_boxed_blob(NativePortType port_, Uint8List blob) => wasmModule.wire_boxed_blob(port_, blob);
 
-  void wire_use_boxed_blob_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_use_boxed_blob_id(port_, id);
+  void wire_use_boxed_blob(NativePortType port_, List<dynamic> blob) => wasmModule.wire_use_boxed_blob(port_, blob);
 
   void wire_return_boxed_feed_id(NativePortType port_, Uint8List id) => wasmModule.wire_return_boxed_feed_id(port_, id);
 

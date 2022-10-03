@@ -1113,29 +1113,29 @@ fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + Unwind
         },
     )
 }
-fn wire_boxed_blob_id_impl(port_: MessagePort, id: impl Wire2Api<Box<[u8; 16]>> + UnwindSafe) {
+fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "boxed_blob_id",
+            debug_name: "boxed_blob",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_id = id.wire2api();
-            move |task_callback| Ok(boxed_blob_id(api_id))
+            let api_blob = blob.wire2api();
+            move |task_callback| Ok(boxed_blob(api_blob))
         },
     )
 }
-fn wire_use_boxed_blob_id_impl(port_: MessagePort, id: impl Wire2Api<Box<BlobId>> + UnwindSafe) {
+fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "use_boxed_blob_id",
+            debug_name: "use_boxed_blob",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_id = id.wire2api();
-            move |task_callback| Ok(use_boxed_blob_id(api_id))
+            let api_blob = blob.wire2api();
+            move |task_callback| Ok(use_boxed_blob(api_blob))
         },
     )
 }
@@ -1676,12 +1676,12 @@ impl support::IntoDart for BigBuffers {
 }
 impl support::IntoDartExceptPrimitive for BigBuffers {}
 
-impl support::IntoDart for BlobId {
+impl support::IntoDart for Blob {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for BlobId {}
+impl support::IntoDartExceptPrimitive for Blob {}
 
 impl support::IntoDart for ConcatenateWith {
     fn into_dart(self) -> support::DartAbi {

@@ -1042,30 +1042,30 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
-  Future<BlobId> boxedBlobId({required U8Array16 id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_boxed_blob_id(port_, _platform.api2wire_box_u8_array_16(id)),
-        parseSuccessData: _wire2api_blob_id,
-        constMeta: kBoxedBlobIdConstMeta,
-        argValues: [id],
+  Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_boxed_blob(port_, _platform.api2wire_box_u8_array_1600(blob)),
+        parseSuccessData: _wire2api_blob,
+        constMeta: kBoxedBlobConstMeta,
+        argValues: [blob],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kBoxedBlobIdConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "boxed_blob_id",
-        argNames: ["id"],
+  FlutterRustBridgeTaskConstMeta get kBoxedBlobConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "boxed_blob",
+        argNames: ["blob"],
       );
 
-  Future<U8Array16> useBoxedBlobId({required BlobId id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_use_boxed_blob_id(port_, _platform.api2wire_box_blob_id(id)),
-        parseSuccessData: _wire2api_u8_array_16,
-        constMeta: kUseBoxedBlobIdConstMeta,
-        argValues: [id],
+  Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_use_boxed_blob(port_, _platform.api2wire_box_blob(blob)),
+        parseSuccessData: _wire2api_u8_array_1600,
+        constMeta: kUseBoxedBlobConstMeta,
+        argValues: [blob],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobIdConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "use_boxed_blob_id",
-        argNames: ["id"],
+  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "use_boxed_blob",
+        argNames: ["blob"],
       );
 
   Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint}) =>
@@ -1549,11 +1549,11 @@ BigBuffers _wire2api_big_buffers(dynamic raw) {
   );
 }
 
-BlobId _wire2api_blob_id(dynamic raw) {
+Blob _wire2api_blob(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return BlobId(
-    field0: _wire2api_u8_array_16(arr[0]),
+  return Blob(
+    field0: _wire2api_u8_array_1600(arr[0]),
   );
 }
 
@@ -2060,10 +2060,10 @@ int _wire2api_u8(dynamic raw) {
   return raw as int;
 }
 
-U8Array16 _wire2api_u8_array_16(dynamic raw) {
+U8Array1600 _wire2api_u8_array_1600(dynamic raw) {
   final inner = _wire2api_uint_8_list(raw);
-  if (inner.length != 16) throw Exception('unexpected array length: expect 16 but see ${inner.length}');
-  return U8Array16.Unchecked(inner);
+  if (inner.length != 1600) throw Exception('unexpected array length: expect 1600 but see ${inner.length}');
+  return U8Array1600.Unchecked(inner);
 }
 
 U8Array32 _wire2api_u8_array_32(dynamic raw) {

@@ -636,12 +636,12 @@ void main(List<String> args) async {
       expect(inner[2], 14);
     });
     test('BlobId', () async {
-      final inner = Uint8List(16);
+      final inner = Uint8List(1600);
       inner[14] = 99;
-      final BlobId id = await api.boxedBlobId(id: U8Array16(inner));
-      expect(id.field0[14], 99);
-      id.field0[10] = 100;
-      final unboxed = await api.useBoxedBlobId(id: id);
+      final Blob blob = await api.boxedBlob(blob: U8Array1600(inner));
+      expect(blob.field0[14], 99);
+      blob.field0[10] = 100;
+      final unboxed = await api.useBoxedBlob(blob: blob);
       expect(unboxed[10], 100);
       expect(unboxed[14], 99);
     });

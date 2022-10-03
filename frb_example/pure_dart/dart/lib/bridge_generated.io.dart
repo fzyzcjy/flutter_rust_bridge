@@ -247,9 +247,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_BlobId> api2wire_box_blob_id(BlobId raw) {
-    final ptr = inner.new_box_blob_id_0();
-    _api_fill_to_wire_blob_id(raw, ptr.ref);
+  ffi.Pointer<wire_Blob> api2wire_box_blob(Blob raw) {
+    final ptr = inner.new_box_blob_0();
+    _api_fill_to_wire_blob(raw, ptr.ref);
     return ptr;
   }
 
@@ -319,8 +319,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_uint_8_list> api2wire_box_u8_array_16(U8Array16 raw) {
-    return api2wire_u8_array_16(raw);
+  ffi.Pointer<wire_uint_8_list> api2wire_box_u8_array_1600(U8Array1600 raw) {
+    return api2wire_u8_array_1600(raw);
   }
 
   @protected
@@ -553,7 +553,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_uint_8_list> api2wire_u8_array_16(U8Array16 raw) {
+  ffi.Pointer<wire_uint_8_list> api2wire_u8_array_1600(U8Array1600 raw) {
     return api2wire_uint_8_list(raw.inner);
   }
 
@@ -597,8 +597,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.value = api2wire_String(apiObj.value);
   }
 
-  void _api_fill_to_wire_blob_id(BlobId apiObj, wire_BlobId wireObj) {
-    wireObj.field0 = api2wire_u8_array_16(apiObj.field0);
+  void _api_fill_to_wire_blob(Blob apiObj, wire_Blob wireObj) {
+    wireObj.field0 = api2wire_u8_array_1600(apiObj.field0);
   }
 
   void _api_fill_to_wire_box_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
@@ -692,8 +692,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_user_id(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_blob_id(BlobId apiObj, ffi.Pointer<wire_BlobId> wireObj) {
-    _api_fill_to_wire_blob_id(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_blob(Blob apiObj, ffi.Pointer<wire_Blob> wireObj) {
+    _api_fill_to_wire_blob(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_distance(Distance apiObj, ffi.Pointer<wire_Distance> wireObj) {
@@ -716,8 +716,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_speed(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_u8_array_16(U8Array16 apiObj, ffi.Pointer<wire_uint_8_list> wireObj) {
-    wireObj = api2wire_u8_array_16(apiObj);
+  void _api_fill_to_wire_box_u8_array_1600(U8Array1600 apiObj, ffi.Pointer<wire_uint_8_list> wireObj) {
+    wireObj = api2wire_u8_array_1600(apiObj);
   }
 
   void _api_fill_to_wire_concatenate_with(ConcatenateWith apiObj, wire_ConcatenateWith wireObj) {
@@ -2011,35 +2011,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MessageId>)>>('wire_use_msgid');
   late final _wire_use_msgid = _wire_use_msgidPtr.asFunction<void Function(int, ffi.Pointer<wire_MessageId>)>();
 
-  void wire_boxed_blob_id(
+  void wire_boxed_blob(
     int port_,
-    ffi.Pointer<wire_uint_8_list> id,
+    ffi.Pointer<wire_uint_8_list> blob,
   ) {
-    return _wire_boxed_blob_id(
+    return _wire_boxed_blob(
       port_,
-      id,
+      blob,
     );
   }
 
-  late final _wire_boxed_blob_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_boxed_blob_id');
-  late final _wire_boxed_blob_id =
-      _wire_boxed_blob_idPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_boxed_blobPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_boxed_blob');
+  late final _wire_boxed_blob = _wire_boxed_blobPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_use_boxed_blob_id(
+  void wire_use_boxed_blob(
     int port_,
-    ffi.Pointer<wire_BlobId> id,
+    ffi.Pointer<wire_Blob> blob,
   ) {
-    return _wire_use_boxed_blob_id(
+    return _wire_use_boxed_blob(
       port_,
-      id,
+      blob,
     );
   }
 
-  late final _wire_use_boxed_blob_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_BlobId>)>>('wire_use_boxed_blob_id');
-  late final _wire_use_boxed_blob_id =
-      _wire_use_boxed_blob_idPtr.asFunction<void Function(int, ffi.Pointer<wire_BlobId>)>();
+  late final _wire_use_boxed_blobPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Blob>)>>('wire_use_boxed_blob');
+  late final _wire_use_boxed_blob = _wire_use_boxed_blobPtr.asFunction<void Function(int, ffi.Pointer<wire_Blob>)>();
 
   void wire_return_boxed_feed_id(
     int port_,
@@ -2520,13 +2518,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_user_id_0 =
       _new_box_autoadd_user_id_0Ptr.asFunction<ffi.Pointer<wire_UserId> Function()>();
 
-  ffi.Pointer<wire_BlobId> new_box_blob_id_0() {
-    return _new_box_blob_id_0();
+  ffi.Pointer<wire_Blob> new_box_blob_0() {
+    return _new_box_blob_0();
   }
 
-  late final _new_box_blob_id_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BlobId> Function()>>('new_box_blob_id_0');
-  late final _new_box_blob_id_0 = _new_box_blob_id_0Ptr.asFunction<ffi.Pointer<wire_BlobId> Function()>();
+  late final _new_box_blob_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_Blob> Function()>>('new_box_blob_0');
+  late final _new_box_blob_0 = _new_box_blob_0Ptr.asFunction<ffi.Pointer<wire_Blob> Function()>();
 
   ffi.Pointer<ffi.Bool> new_box_bool_0(
     bool value,
@@ -3223,7 +3220,7 @@ class wire_MessageId extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
-class wire_BlobId extends ffi.Struct {
+class wire_Blob extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 

@@ -397,13 +397,13 @@ pub extern "C" fn wire_use_msgid(port_: i64, id: *mut wire_MessageId) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_boxed_blob_id(port_: i64, id: *mut wire_uint_8_list) {
-    wire_boxed_blob_id_impl(port_, id)
+pub extern "C" fn wire_boxed_blob(port_: i64, blob: *mut wire_uint_8_list) {
+    wire_boxed_blob_impl(port_, blob)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_use_boxed_blob_id(port_: i64, id: *mut wire_BlobId) {
-    wire_use_boxed_blob_id_impl(port_, id)
+pub extern "C" fn wire_use_boxed_blob(port_: i64, blob: *mut wire_Blob) {
+    wire_use_boxed_blob_impl(port_, blob)
 }
 
 #[no_mangle]
@@ -635,8 +635,8 @@ pub extern "C" fn new_box_autoadd_user_id_0() -> *mut wire_UserId {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_blob_id_0() -> *mut wire_BlobId {
-    support::new_leak_box_ptr(wire_BlobId::new_with_null_ptr())
+pub extern "C" fn new_box_blob_0() -> *mut wire_Blob {
+    support::new_leak_box_ptr(wire_Blob::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -909,9 +909,9 @@ impl Wire2Api<Attribute> for wire_Attribute {
         }
     }
 }
-impl Wire2Api<BlobId> for wire_BlobId {
-    fn wire2api(self) -> BlobId {
-        BlobId(self.field0.wire2api())
+impl Wire2Api<Blob> for wire_Blob {
+    fn wire2api(self) -> Blob {
+        Blob(self.field0.wire2api())
     }
 }
 
@@ -1050,10 +1050,10 @@ impl Wire2Api<UserId> for *mut wire_UserId {
         Wire2Api::<UserId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<BlobId>> for *mut wire_BlobId {
-    fn wire2api(self) -> Box<BlobId> {
+impl Wire2Api<Box<Blob>> for *mut wire_Blob {
+    fn wire2api(self) -> Box<Blob> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<BlobId>::wire2api(*wrap).into()
+        Wire2Api::<Blob>::wire2api(*wrap).into()
     }
 }
 
@@ -1089,9 +1089,9 @@ impl Wire2Api<Box<Speed>> for *mut wire_Speed {
     }
 }
 
-impl Wire2Api<Box<[u8; 16]>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Box<[u8; 16]> {
-        Wire2Api::<[u8; 16]>::wire2api(self).into()
+impl Wire2Api<Box<[u8; 1600]>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> Box<[u8; 1600]> {
+        Wire2Api::<[u8; 1600]>::wire2api(self).into()
     }
 }
 impl Wire2Api<Box<Weekdays>> for *mut i32 {
@@ -1416,8 +1416,8 @@ impl Wire2Api<TestId> for wire_TestId {
     }
 }
 
-impl Wire2Api<[u8; 16]> for *mut wire_uint_8_list {
-    fn wire2api(self) -> [u8; 16] {
+impl Wire2Api<[u8; 1600]> for *mut wire_uint_8_list {
+    fn wire2api(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
     }
@@ -1490,7 +1490,7 @@ pub struct wire_Attribute {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_BlobId {
+pub struct wire_Blob {
     field0: *mut wire_uint_8_list,
 }
 
@@ -1878,7 +1878,7 @@ impl NewWithNullPtr for wire_Attribute {
     }
 }
 
-impl NewWithNullPtr for wire_BlobId {
+impl NewWithNullPtr for wire_Blob {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
