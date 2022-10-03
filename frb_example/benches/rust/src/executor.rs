@@ -14,7 +14,7 @@ use flutter_rust_bridge::{
 use tracing_subscriber::FmtSubscriber;
 
 use crate::api::{Metric, Unit};
-const ERROR_MUTEX_LOCK: &'static str = "Error on mutex lock";
+const ERROR_MUTEX_LOCK: &str = "Error on mutex lock";
 
 lazy_static::lazy_static! {
   static ref METRICS: Arc<Mutex<Vec<Metric>>> = Arc::new(Mutex::new(vec![]));
@@ -63,7 +63,7 @@ pub struct BenchExecutor {
 impl BenchExecutor {
     pub(crate) fn new(error_handler: BenchErrorHandler) -> Self {
         let json = std::env::var("JSON")
-            .unwrap_or("false".into())
+            .unwrap_or_else(|_| "false".into())
             .parse::<bool>()
             .expect("Invalid JSON env var (expected boolean)");
         let subscriber = if json {
@@ -111,7 +111,7 @@ impl Executor for BenchExecutor {
     {
         let debug_name_string = wrap_info.debug_name.to_string();
         self.inner.execute_sync(wrap_info, move || {
-            Self::bench_around(&debug_name_string, self.json, move || sync_task())
+            Self::bench_around(&debug_name_string, self.json, sync_task)
         })
     }
 }
