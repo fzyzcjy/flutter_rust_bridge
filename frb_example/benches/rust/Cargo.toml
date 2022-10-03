@@ -18,5 +18,7 @@ anyhow = { workspace = true, features = ["backtrace"] }
 chrono = { workspace = true }
 flutter_rust_bridge = { workspace = true, features = ["chrono", "uuid"] }
 lazy_static = { workspace = true }
+serde_json = "1"
 tracing = "0.1.36"
+tracing-subscriber = "0.3.15"
 uuid = { workspace = true }
