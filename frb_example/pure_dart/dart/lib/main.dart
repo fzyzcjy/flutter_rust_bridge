@@ -664,17 +664,11 @@ void main(List<String> args) async {
       expect(testId.field0[0], 1);
       expect(testId.field0[1], 2);
     });
-    test('TestVecI64', () async {
-      final list = Int64List(10);
-      list[0] = 111111;
-      final first = await api.testVecI64(vec: list);
-      expect(first, 111111);
-    });
     test('LastNumber', () async {
-      final array = I64Array16(Int64List(16));
-      array[15] = BigInt.from(88888);
+      final array = F64Array16(Float64List(16));
+      array[15] = 88.888;
       final lastNumber = await api.lastNumber(array: array);
-      expect(BigInt.from(lastNumber), BigInt.from(88888));
+      expect(lastNumber, 88.888);
     });
     test('NestedId', () async {
       final id0 = TestId(field0: I32Array2(Int32List(2)));

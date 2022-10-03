@@ -344,11 +344,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestIdConstMeta;
 
-  Future<int> testVecI64({required Int64List vec, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestVecI64ConstMeta;
-
-  Future<int> lastNumber({required I64Array16 array, dynamic hint});
+  Future<double> lastNumber({required F64Array16 array, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kLastNumberConstMeta;
 
@@ -638,6 +634,22 @@ class ExoticOptionals {
   });
 }
 
+class F64Array16 {
+  final Float64List inner;
+
+  F64Array16(this.inner) : assert(inner.length == 16);
+
+  F64Array16.Unchecked(this.inner);
+
+  double operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, double value) {
+    inner[index] = value;
+  }
+}
+
 class FeatureChrono {
   final DateTime utc;
   final DateTime local;
@@ -682,22 +694,6 @@ class I32Array2 {
   }
 
   void operator []=(int index, int value) {
-    inner[index] = value;
-  }
-}
-
-class I64Array16 {
-  final Int64List inner;
-
-  I64Array16(this.inner) : assert(inner.length == 16);
-
-  I64Array16.Unchecked(this.inner);
-
-  BigInt operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, BigInt value) {
     inner[index] = value;
   }
 }

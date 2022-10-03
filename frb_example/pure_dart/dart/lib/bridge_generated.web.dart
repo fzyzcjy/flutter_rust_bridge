@@ -343,6 +343,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Float64List api2wire_f64_array_16(F64Array16 raw) {
+    return api2wire_float_64_list(raw.inner);
+  }
+
+  @protected
   List<dynamic> api2wire_feature_chrono(FeatureChrono raw) {
     return [
       api2wire_Chrono_Utc(raw.utc),
@@ -383,17 +388,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Int64List api2wire_i64_array_16(I64Array16 raw) {
-    return api2wire_int_64_list(raw.inner);
-  }
-
-  @protected
   Int32List api2wire_int_32_list(Int32List raw) {
-    return raw;
-  }
-
-  @protected
-  Int64List api2wire_int_64_list(Int64List raw) {
     return raw;
   }
 
@@ -857,9 +852,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_test_id(NativePortType port_, List<dynamic> id);
 
-  external void wire_test_vec_i64(NativePortType port_, Int64List vec);
-
-  external void wire_last_number(NativePortType port_, Int64List array);
+  external void wire_last_number(NativePortType port_, Float64List array);
 
   external void wire_nested_id(NativePortType port_, List<dynamic> id);
 
@@ -1102,9 +1095,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_test_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_test_id(port_, id);
 
-  void wire_test_vec_i64(NativePortType port_, Int64List vec) => wasmModule.wire_test_vec_i64(port_, vec);
-
-  void wire_last_number(NativePortType port_, Int64List array) => wasmModule.wire_last_number(port_, array);
+  void wire_last_number(NativePortType port_, Float64List array) => wasmModule.wire_last_number(port_, array);
 
   void wire_nested_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_nested_id(port_, id);
 

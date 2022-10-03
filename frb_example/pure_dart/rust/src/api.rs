@@ -941,11 +941,7 @@ pub fn test_id(id: TestId) -> TestId {
     id
 }
 
-pub fn test_vec_i64(vec: Vec<i64>) -> i64 {
-    vec[0]
-}
-
-pub fn last_number(array: [i64; 16]) -> i64 {
+pub fn last_number(array: [f64; 16]) -> f64 {
     array[15]
 }
 

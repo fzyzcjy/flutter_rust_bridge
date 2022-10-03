@@ -167,7 +167,7 @@ macro_rules! impl_into_dart_for_primitive {
     )*};
 }
 
-impl_into_dart_for_primitive!(i8 u8 i16 u16 i32 u32 i64 u64 f32 f64);
+impl_into_dart_for_primitive!(i8 u8 i16 u16 i32 u32 f32 f64);
 
 macro_rules! delegate_big_buffers {
     ($($buf:ty => $buffer:ty)*) => {$(

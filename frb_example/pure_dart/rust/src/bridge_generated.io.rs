@@ -422,12 +422,7 @@ pub extern "C" fn wire_test_id(port_: i64, id: *mut wire_TestId) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_vec_i64(port_: i64, vec: *mut wire_int_64_list) {
-    wire_test_vec_i64_impl(port_, vec)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_last_number(port_: i64, array: *mut wire_int_64_list) {
+pub extern "C" fn wire_last_number(port_: i64, array: *mut wire_float_64_list) {
     wire_last_number_impl(port_, array)
 }
 
@@ -725,15 +720,6 @@ pub extern "C" fn new_float_64_list_0(len: i32) -> *mut wire_float_64_list {
 #[no_mangle]
 pub extern "C" fn new_int_32_list_0(len: i32) -> *mut wire_int_32_list {
     let ans = wire_int_32_list {
-        ptr: support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
-pub extern "C" fn new_int_64_list_0(len: i32) -> *mut wire_int_64_list {
-    let ans = wire_int_64_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1154,6 +1140,12 @@ impl Wire2Api<ExoticOptionals> for wire_ExoticOptionals {
     }
 }
 
+impl Wire2Api<[f64; 16]> for *mut wire_float_64_list {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<FeatureChrono> for wire_FeatureChrono {
     fn wire2api(self) -> FeatureChrono {
         FeatureChrono {
@@ -1201,23 +1193,8 @@ impl Wire2Api<[i32; 2]> for *mut wire_int_32_list {
     }
 }
 
-impl Wire2Api<[i64; 16]> for *mut wire_int_64_list {
-    fn wire2api(self) -> [i64; 16] {
-        let vec: Vec<i64> = self.wire2api();
-        support::from_vec_to_array(vec)
-    }
-}
-
 impl Wire2Api<Vec<i32>> for *mut wire_int_32_list {
     fn wire2api(self) -> Vec<i32> {
-        unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
-    }
-}
-impl Wire2Api<Vec<i64>> for *mut wire_int_64_list {
-    fn wire2api(self) -> Vec<i64> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1571,13 +1548,6 @@ pub struct wire_float_64_list {
 #[derive(Clone)]
 pub struct wire_int_32_list {
     ptr: *mut i32,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_int_64_list {
-    ptr: *mut i64,
     len: i32,
 }
 

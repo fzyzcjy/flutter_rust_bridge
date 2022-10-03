@@ -329,6 +329,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_float_64_list> api2wire_f64_array_16(F64Array16 raw) {
+    return api2wire_float_64_list(raw.inner);
+  }
+
+  @protected
   ffi.Pointer<wire_float_32_list> api2wire_float_32_list(Float32List raw) {
     final ans = inner.new_float_32_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
@@ -353,21 +358,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_int_64_list> api2wire_i64_array_16(I64Array16 raw) {
-    return api2wire_int_64_list(raw.inner);
-  }
-
-  @protected
   ffi.Pointer<wire_int_32_list> api2wire_int_32_list(Int32List raw) {
     final ans = inner.new_int_32_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_int_64_list> api2wire_int_64_list(Int64List raw) {
-    final ans = inner.new_int_64_list_0(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
     return ans;
   }
 
@@ -2085,23 +2078,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TestId>)>>('wire_test_id');
   late final _wire_test_id = _wire_test_idPtr.asFunction<void Function(int, ffi.Pointer<wire_TestId>)>();
 
-  void wire_test_vec_i64(
-    int port_,
-    ffi.Pointer<wire_int_64_list> vec,
-  ) {
-    return _wire_test_vec_i64(
-      port_,
-      vec,
-    );
-  }
-
-  late final _wire_test_vec_i64Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_int_64_list>)>>('wire_test_vec_i64');
-  late final _wire_test_vec_i64 = _wire_test_vec_i64Ptr.asFunction<void Function(int, ffi.Pointer<wire_int_64_list>)>();
-
   void wire_last_number(
     int port_,
-    ffi.Pointer<wire_int_64_list> array,
+    ffi.Pointer<wire_float_64_list> array,
   ) {
     return _wire_last_number(
       port_,
@@ -2110,8 +2089,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_last_numberPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_int_64_list>)>>('wire_last_number');
-  late final _wire_last_number = _wire_last_numberPtr.asFunction<void Function(int, ffi.Pointer<wire_int_64_list>)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_float_64_list>)>>('wire_last_number');
+  late final _wire_last_number = _wire_last_numberPtr.asFunction<void Function(int, ffi.Pointer<wire_float_64_list>)>();
 
   void wire_nested_id(
     int port_,
@@ -2698,18 +2677,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list_0');
   late final _new_int_32_list_0 = _new_int_32_list_0Ptr.asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
 
-  ffi.Pointer<wire_int_64_list> new_int_64_list_0(
-    int len,
-  ) {
-    return _new_int_64_list_0(
-      len,
-    );
-  }
-
-  late final _new_int_64_list_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_64_list> Function(ffi.Int32)>>('new_int_64_list_0');
-  late final _new_int_64_list_0 = _new_int_64_list_0Ptr.asFunction<ffi.Pointer<wire_int_64_list> Function(int)>();
-
   ffi.Pointer<wire_int_8_list> new_int_8_list_0(
     int len,
   ) {
@@ -3244,13 +3211,6 @@ class wire_FeedId extends ffi.Struct {
 
 class wire_TestId extends ffi.Struct {
   external ffi.Pointer<wire_int_32_list> field0;
-}
-
-class wire_int_64_list extends ffi.Struct {
-  external ffi.Pointer<ffi.Int64> ptr;
-
-  @ffi.Int32()
-  external int len;
 }
 
 class wire_list_test_id extends ffi.Struct {

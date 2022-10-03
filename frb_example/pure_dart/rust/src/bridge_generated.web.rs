@@ -414,12 +414,7 @@ pub fn wire_test_id(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_test_vec_i64(port_: MessagePort, vec: Box<[i64]>) {
-    wire_test_vec_i64_impl(port_, vec)
-}
-
-#[wasm_bindgen]
-pub fn wire_last_number(port_: MessagePort, array: Box<[i64]>) {
+pub fn wire_last_number(port_: MessagePort, array: Box<[f64]>) {
     wire_last_number_impl(port_, array)
 }
 
@@ -751,6 +746,12 @@ impl Wire2Api<ExoticOptionals> for JsValue {
     }
 }
 
+impl Wire2Api<[f64; 16]> for Box<[f64]> {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<FeatureChrono> for JsValue {
     fn wire2api(self) -> FeatureChrono {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -813,20 +814,8 @@ impl Wire2Api<[i32; 2]> for Box<[i32]> {
     }
 }
 
-impl Wire2Api<[i64; 16]> for Box<[i64]> {
-    fn wire2api(self) -> [i64; 16] {
-        let vec: Vec<i64> = self.wire2api();
-        support::from_vec_to_array(vec)
-    }
-}
-
 impl Wire2Api<Vec<i32>> for Box<[i32]> {
     fn wire2api(self) -> Vec<i32> {
-        self.into_vec()
-    }
-}
-impl Wire2Api<Vec<i64>> for Box<[i64]> {
-    fn wire2api(self) -> Vec<i64> {
         self.into_vec()
     }
 }
@@ -1321,6 +1310,12 @@ impl Wire2Api<f64> for JsValue {
         self.unchecked_into_f64() as _
     }
 }
+impl Wire2Api<[f64; 16]> for JsValue {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<Vec<f32>> for JsValue {
     fn wire2api(self) -> Vec<f32> {
         self.unchecked_into::<js_sys::Float32Array>()
@@ -1356,12 +1351,6 @@ impl Wire2Api<i64> for JsValue {
         ::std::convert::TryInto::try_into(self.dyn_into::<js_sys::BigInt>().unwrap()).unwrap()
     }
 }
-impl Wire2Api<[i64; 16]> for JsValue {
-    fn wire2api(self) -> [i64; 16] {
-        let vec: Vec<i64> = self.wire2api();
-        support::from_vec_to_array(vec)
-    }
-}
 impl Wire2Api<i8> for JsValue {
     fn wire2api(self) -> i8 {
         self.unchecked_into_f64() as _
@@ -1370,13 +1359,6 @@ impl Wire2Api<i8> for JsValue {
 impl Wire2Api<Vec<i32>> for JsValue {
     fn wire2api(self) -> Vec<i32> {
         self.unchecked_into::<js_sys::Int32Array>().to_vec().into()
-    }
-}
-impl Wire2Api<Vec<i64>> for JsValue {
-    fn wire2api(self) -> Vec<i64> {
-        let buf = self.dyn_into::<js_sys::BigInt64Array>().unwrap();
-        let buf = js_sys::Uint8Array::new(&buf.buffer());
-        support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<i8>> for JsValue {
