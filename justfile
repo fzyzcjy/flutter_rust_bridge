@@ -113,6 +113,7 @@ check:
     cd {{frb_flutter}}/rust && cargo clippy
     cd {{frb_benches}}/dart && dart pub get && dart analyze
     cd {{frb_benches}}/rust && cargo clippy
+    cd {{frb_benches}}/rust && cargo clippy --target wasm32-unknown-unknown
     cd frb_codegen && cargo clippy -- -D warnings
     cd frb_rust && cargo clippy -- -D warnings
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
