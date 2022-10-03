@@ -1852,22 +1852,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_uuids');
   late final _wire_handle_uuids = _wire_handle_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_handle_uuids_convert_to_strings(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> ids,
-  ) {
-    return _wire_handle_uuids_convert_to_strings(
-      port_,
-      ids,
-    );
-  }
-
-  late final _wire_handle_uuids_convert_to_stringsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_handle_uuids_convert_to_strings');
-  late final _wire_handle_uuids_convert_to_strings =
-      _wire_handle_uuids_convert_to_stringsPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
-
   void wire_handle_nested_uuids(
     int port_,
     ffi.Pointer<wire_FeatureUuid> ids,
@@ -1883,34 +1867,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_handle_nested_uuids');
   late final _wire_handle_nested_uuids =
       _wire_handle_nested_uuidsPtr.asFunction<void Function(int, ffi.Pointer<wire_FeatureUuid>)>();
-
-  void wire_handle_strings(
-    int port_,
-    ffi.Pointer<wire_StringList> strings,
-  ) {
-    return _wire_handle_strings(
-      port_,
-      strings,
-    );
-  }
-
-  late final _wire_handle_stringsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StringList>)>>('wire_handle_strings');
-  late final _wire_handle_strings =
-      _wire_handle_stringsPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
-
-  void wire_send_i64(
-    int port_,
-    int value,
-  ) {
-    return _wire_send_i64(
-      port_,
-      value,
-    );
-  }
-
-  late final _wire_send_i64Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_send_i64');
-  late final _wire_send_i64 = _wire_send_i64Ptr.asFunction<void Function(int, int)>();
 
   void wire_sum__method__SumWith(
     int port_,

@@ -312,21 +312,9 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
 
-  Future<List<String>> handleUuidsConvertToStrings({required List<UuidValue> ids, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleUuidsConvertToStringsConstMeta;
-
   Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
-
-  Future<List<String>> handleStrings({required List<String> strings, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStringsConstMeta;
-
-  Future<int> sendI64({required int value, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kSendI64ConstMeta;
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 

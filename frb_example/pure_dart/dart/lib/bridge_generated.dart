@@ -1001,20 +1001,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["ids"],
       );
 
-  Future<List<String>> handleUuidsConvertToStrings({required List<UuidValue> ids, dynamic hint}) =>
-      _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_handle_uuids_convert_to_strings(port_, _platform.api2wire_Uuids(ids)),
-        parseSuccessData: _wire2api_StringList,
-        constMeta: kHandleUuidsConvertToStringsConstMeta,
-        argValues: [ids],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kHandleUuidsConvertToStringsConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_uuids_convert_to_strings",
-        argNames: ["ids"],
-      );
-
   Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) =>
@@ -1028,33 +1014,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_nested_uuids",
         argNames: ["ids"],
-      );
-
-  Future<List<String>> handleStrings({required List<String> strings, dynamic hint}) =>
-      _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_handle_strings(port_, _platform.api2wire_StringList(strings)),
-        parseSuccessData: _wire2api_StringList,
-        constMeta: kHandleStringsConstMeta,
-        argValues: [strings],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kHandleStringsConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_strings",
-        argNames: ["strings"],
-      );
-
-  Future<int> sendI64({required int value, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_send_i64(port_, _platform.api2wire_i64(value)),
-        parseSuccessData: _wire2api_i64,
-        constMeta: kSendI64ConstMeta,
-        argValues: [value],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kSendI64ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "send_i64",
-        argNames: ["value"],
       );
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
