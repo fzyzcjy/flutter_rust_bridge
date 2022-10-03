@@ -673,11 +673,11 @@ void main(List<String> args) async {
       final id0 = TestId(field0: I32Array2(Int32List(2)));
       id0.field0[1] = 10;
       final id1 = TestId(field0: I32Array2(Int32List(2)));
-      id0.field0[1] = 20;
+      id1.field0[1] = 20;
       final id2 = TestId(field0: I32Array2(Int32List(2)));
-      id0.field0[1] = 30;
+      id2.field0[1] = 30;
       final id3 = TestId(field0: I32Array2(Int32List(2)));
-      id0.field0[1] = 40;
+      id3.field0[1] = 40;
       final nestedId = await api.nestedId(id: TestIdArray4([id0, id1, id2, id3]));
       expect(nestedId[0].field0[1], 10);
       expect(nestedId[1].field0[1], 40);
