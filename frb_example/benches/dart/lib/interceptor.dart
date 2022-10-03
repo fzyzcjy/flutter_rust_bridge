@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:logging/logging.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated.io.dart'
@@ -32,7 +32,7 @@ class FlutterRustBridgeExampleBenchmarkSuiteImplBench
   FlutterRustBridgeExampleBenchmarkSuiteImplBench.raw(this.platform)
       : super.raw(platform);
 
-  Future<List<String>?> dartMetrics() async {
+  Future<List<Metric>?> dartMetrics() async {
     return platform.metrics();
   }
 }
@@ -127,31 +127,6 @@ class FlutterRustBridgeInterceptorStdOut
   }
 }
 
-/// metric to export for [continuous-benchmark](https://github.com/marketplace/actions/continuous-benchmark)
-/// > hence why conversions like `value`, `name`, `extra`
-class Metric {
-  final int starts;
-  int? ends;
-  final String unit;
-  final String debugName;
-  final Object? hint;
-  Metric(this.starts, this.debugName, this.hint, {this.unit = "μs"});
-  Metric.fromBench(
-      {required this.ends,
-      required this.debugName,
-      this.hint,
-      this.starts = 0,
-      this.unit = "μs"});
-  Map<String, dynamic> toJson() {
-    return {
-      'value': ends,
-      'unit': unit,
-      'name': debugName,
-      'extra': hint?.toString(),
-    };
-  }
-}
-
 class FlutterRustBridgeInterceptorJson
     extends FlutterRustBridgeInterceptor<UniqueAsyncStopWatch> {
   Map<String, Metric> metrics = {};
@@ -160,11 +135,12 @@ class FlutterRustBridgeInterceptorJson
   @override
   Future<UniqueAsyncStopWatch> beforeExecuteNormal(
       String debugName, Object? hint) async {
-    log.finer(hint);
     final UuidValue uuid = generator.v4obj();
     UniqueAsyncStopWatch stopwatch = UniqueAsyncStopWatch(uuid);
-    metrics.putIfAbsent(uuid.toString(),
-        () => Metric(stopwatch.elapsedMicroseconds, debugName, hint));
+    metrics.putIfAbsent(
+        uuid.toString(),
+        () => Metric(
+            name: debugName, extra: hint.toString(), unit: Unit.Microseconds));
     await super._beforeExecuteNormal(debugName, stopwatch);
     return stopwatch;
   }
@@ -173,19 +149,26 @@ class FlutterRustBridgeInterceptorJson
   Future<void> afterExecuteNormal<S>(
       String debugName, UniqueAsyncStopWatch stopwatch) async {
     await super._afterExecuteNormal(debugName, stopwatch);
-    metrics.update(stopwatch.uuid.toString(), (value) {
-      value.ends = stopwatch.elapsedMicroseconds;
-      return value;
-    });
+    metrics.update(
+        stopwatch.uuid.toString(),
+        (metric) => Metric(
+            name: metric.name,
+            unit: metric.unit,
+            extra: metric.extra,
+            value: stopwatch.elapsedMicroseconds));
   }
 
   @override
   UniqueAsyncStopWatch beforeExecuteSync<S>(String debugName, Object? hint) {
-    log.finer(hint);
     final UuidValue uuid = generator.v4obj();
     UniqueAsyncStopWatch stopwatch = UniqueAsyncStopWatch(uuid);
-    metrics.putIfAbsent(uuid.toString(),
-        () => Metric(stopwatch.elapsedMicroseconds, debugName, hint));
+    metrics.putIfAbsent(
+        uuid.toString(),
+        () => Metric(
+            value: stopwatch.elapsedMicroseconds,
+            name: debugName,
+            extra: hint.toString(),
+            unit: Unit.Microseconds));
     super._beforeExecuteSync(debugName, stopwatch);
     return stopwatch;
   }
@@ -193,10 +176,13 @@ class FlutterRustBridgeInterceptorJson
   @override
   void afterExecuteSync<S>(String debugName, UniqueAsyncStopWatch stopwatch) {
     super._afterExecuteSync(debugName, stopwatch);
-    metrics.update(stopwatch.uuid.toString(), (value) {
-      value.ends = stopwatch.elapsedMicroseconds;
-      return value;
-    });
+    metrics.update(
+        stopwatch.uuid.toString(),
+        (metric) => Metric(
+            name: metric.name,
+            unit: metric.unit,
+            extra: metric.extra,
+            value: stopwatch.elapsedMicroseconds));
   }
 }
 
@@ -228,17 +214,27 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
     return result;
   }
 
-  Future<List<String>?> metrics() async {
+  Future<List<Metric>?> metrics() async {
     if (interceptor is FlutterRustBridgeInterceptorJson) {
       final FlutterRustBridgeInterceptorJson jsonInterceptor =
           interceptor as FlutterRustBridgeInterceptorJson;
-      List<String> metrics = List.empty(growable: true);
+      List<Metric> metrics = List.empty(growable: true);
       for (var e in jsonInterceptor.metrics.entries) {
-        metrics.add(json.encode(Metric.fromBench(
-            ends: e.value.ends, debugName: e.value.debugName, hint: "dart")));
+        metrics.add(e.value);
       }
       return metrics;
     }
     return null;
+  }
+}
+
+extension UnitToJsonExtension on Unit {
+  String convertToJson() {
+    switch (this) {
+      case Unit.Microseconds:
+        return 'μs';
+      case Unit.Nanoseconds:
+        return 'ns';
+    }
   }
 }

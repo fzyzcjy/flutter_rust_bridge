@@ -1,6 +1,7 @@
 #![allow(unused_variables)]
 
 use crate::executor::{BenchErrorHandler, BenchExecutor, BenchHandler, Metrics};
+use flutter_rust_bridge::frb;
 
 lazy_static::lazy_static! {
   pub static ref FLUTTER_RUST_BRIDGE_ERROR_HANDLER: BenchErrorHandler = BenchErrorHandler::default();
@@ -13,11 +14,29 @@ pub struct FeatureUuid {
     pub many: Vec<uuid::Uuid>,
 }
 
-pub fn rust_metrics() -> anyhow::Result<Vec<String>> {
+#[allow(dead_code)]
+#[derive(Debug, Clone)]
+pub enum Unit {
+    Microseconds,
+    Nanoseconds,
+}
+
+/// metric used for continuous-benchmark worflow
+#[frb]
+#[derive(Debug, Clone)]
+pub struct Metric {
+    pub name: String,
+    pub value: Option<u64>,
+    pub unit: Unit,
+    // non-final to allow setting Rust metric extra from Dart
+    #[frb(non_final)]
+    pub extra: Option<String>,
+}
+
+pub fn rust_metrics() -> anyhow::Result<Vec<Metric>> {
     Ok(FLUTTER_RUST_BRIDGE_HANDLER
         .metrics()
         .into_iter()
-        .map(|x| x.to_string())
         .collect::<Vec<_>>())
 }
 

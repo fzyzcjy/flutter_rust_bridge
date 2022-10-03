@@ -13,19 +13,22 @@ use flutter_rust_bridge::{
 };
 use tracing_subscriber::FmtSubscriber;
 
+use crate::api::{Metric, Unit};
+const ERROR_MUTEX_LOCK: &'static str = "Error on mutex lock";
+
 lazy_static::lazy_static! {
-  static ref METRICS: Arc<Mutex<Vec<serde_json::Value>>> = Arc::new(Mutex::new(vec![]));
+  static ref METRICS: Arc<Mutex<Vec<Metric>>> = Arc::new(Mutex::new(vec![]));
 }
 
 pub type BenchHandler = SimpleHandler<BenchExecutor, BenchErrorHandler>;
 
 pub trait Metrics {
-    fn metrics(&self) -> Vec<serde_json::Value>;
+    fn metrics(&self) -> Vec<Metric>;
 }
 
 impl Metrics for SimpleHandler<BenchExecutor, BenchErrorHandler> {
-    fn metrics(&self) -> Vec<serde_json::Value> {
-        let guard = METRICS.lock().expect("Error on mutex lock");
+    fn metrics(&self) -> Vec<Metric> {
+        let guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
         guard.clone()
     }
 }
@@ -138,8 +141,12 @@ impl BenchExecutor {
         ret
     }
     fn record(debug_name_string: &str, elapsed: u64) {
-        let mut guard = METRICS.lock().expect("Error on mutex lock");
-        guard
-            .push(serde_json::json!({ "name": debug_name_string, "unit": "ns", "value": elapsed, "extra": "rust" }));
+        let mut guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
+        guard.push(Metric {
+            name: debug_name_string.to_string(),
+            value: Some(elapsed),
+            extra: None,
+            unit: Unit::Nanoseconds,
+        });
     }
 }

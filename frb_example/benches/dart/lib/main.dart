@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:logging/logging.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'package:flutter_rust_bridge_benchmark/utils.dart';
@@ -38,21 +41,42 @@ void main(List<String> args) async {
   final hundredThousandStrings = List<String>.generate(
       100000, (index) => getRandomString(uuidSizeInBytes),
       growable: false);
-  await api.handleUuids(ids: thousandUuids, hint: '⚡ 1,000 uuids');
-  await api.handleStrings(strings: thousandStrings, hint: '⚡ 1,000 strings');
+  await api.handleUuids(ids: thousandUuids, hint: '1,000 uuids');
+  await api.handleStrings(strings: thousandStrings, hint: '1,000 strings');
   await api.handleUuidsConvertToStrings(
-      ids: thousandUuids, hint: '⚡ 1,000 uuids converted to strings');
-  await api.handleUuids(ids: hundredThousandUuids, hint: '⚡ 10,000 uuids');
+      ids: thousandUuids, hint: '1,000 uuids converted to strings');
+  await api.handleUuids(ids: hundredThousandUuids, hint: '10,000 uuids');
   await api.handleStrings(
-      strings: hundredThousandStrings, hint: '⚡ 10,000 strings');
+      strings: hundredThousandStrings, hint: '10,000 strings');
   await api.handleUuidsConvertToStrings(
-      ids: hundredThousandUuids, hint: '⚡ 10,000 uuids converted to strings');
+      ids: hundredThousandUuids, hint: '10,000 uuids converted to strings');
 
   if (useJSON) {
     final dartMetrics = await api.dartMetrics() ?? List.empty(growable: false);
     final rustMetrics = await api.rustMetrics();
-    final metrics = List.from(dartMetrics)..addAll(rustMetrics);
-    print(metrics);
+    assert(rustMetrics.length == dartMetrics.length);
+    final int count = rustMetrics.length;
+    for (var i = 0; i < count; i++) {
+      final dartMetric = dartMetrics[i];
+      final rustMetric = rustMetrics[i];
+      if (dartMetric.name != rustMetric.name) {
+        throw Exception('metric should come in the same order');
+      }
+      rustMetric.extra = dartMetric.extra;
+    }
+    final dartMetricsJson = dartMetrics.map((e) => json.encode({
+          'name':
+              e.extra != null ? 'dart:${e.name}:${e.extra}' : 'dart:${e.name}',
+          'value': e.value,
+          'unit': e.unit == Unit.Microseconds ? 'μs' : 'ns',
+        }));
+    final rustMetricsJson = rustMetrics.map((e) => json.encode({
+          'name':
+              e.extra != null ? 'rust:${e.name}:${e.extra}' : 'rust:${e.name}',
+          'value': e.value,
+          'unit': e.unit == Unit.Microseconds ? 'μs' : 'ns',
+        }));
+    print(List.from(dartMetricsJson)..addAll(rustMetricsJson));
   }
 }
 
