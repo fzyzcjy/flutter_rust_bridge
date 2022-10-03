@@ -23,10 +23,10 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl
           FutureOr<WasmModule> module) =>
       FlutterRustBridgeExampleBenchmarkSuiteImpl(module as ExternalLibrary);
   FlutterRustBridgeExampleBenchmarkSuiteImpl.raw(this._platform);
-  Future<List<String>> rustMetrics({dynamic hint}) =>
+  Future<List<Metric>> rustMetrics({dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_rust_metrics(port_),
-        parseSuccessData: _wire2api_StringList,
+        parseSuccessData: _wire2api_list_metric,
         constMeta: kRustMetricsConstMeta,
         argValues: [],
         hint: hint,
@@ -166,6 +166,10 @@ List<UuidValue> _wire2api_Uuids(dynamic raw) {
   return wire2apiUuids(bytes);
 }
 
+int _wire2api_box_autoadd_u64(dynamic raw) {
+  return _wire2api_u64(raw);
+}
+
 FeatureUuid _wire2api_feature_uuid(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2)
@@ -176,7 +180,39 @@ FeatureUuid _wire2api_feature_uuid(dynamic raw) {
   );
 }
 
+int _wire2api_i32(dynamic raw) {
+  return raw as int;
+}
+
 int _wire2api_i64(dynamic raw) {
+  return castInt(raw);
+}
+
+List<Metric> _wire2api_list_metric(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_metric).toList();
+}
+
+Metric _wire2api_metric(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 4)
+    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  return Metric(
+    name: _wire2api_String(arr[0]),
+    value: _wire2api_opt_box_autoadd_u64(arr[1]),
+    unit: _wire2api_unit(arr[2]),
+    extra: _wire2api_opt_String(arr[3]),
+  );
+}
+
+String? _wire2api_opt_String(dynamic raw) {
+  return raw == null ? null : _wire2api_String(raw);
+}
+
+int? _wire2api_opt_box_autoadd_u64(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_u64(raw);
+}
+
+int _wire2api_u64(dynamic raw) {
   return castInt(raw);
 }
 
@@ -186,4 +222,8 @@ int _wire2api_u8(dynamic raw) {
 
 Uint8List _wire2api_uint_8_list(dynamic raw) {
   return raw as Uint8List;
+}
+
+Unit _wire2api_unit(dynamic raw) {
+  return Unit.values[raw];
 }

@@ -151,6 +151,28 @@ impl support::IntoDart for FeatureUuid {
 }
 impl support::IntoDartExceptPrimitive for FeatureUuid {}
 
+impl support::IntoDart for Metric {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.name.into_dart(),
+            self.value.into_dart(),
+            self.unit.into_dart(),
+            self.extra.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Metric {}
+
+impl support::IntoDart for Unit {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Microseconds => 0,
+            Self::Nanoseconds => 1,
+        }
+        .into_dart()
+    }
+}
 // Section: executor
 
 /* nothing since executor detected */

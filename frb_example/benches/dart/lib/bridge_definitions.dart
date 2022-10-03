@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class FlutterRustBridgeExampleBenchmarkSuite {
-  Future<List<String>> rustMetrics({dynamic hint});
+  Future<List<Metric>> rustMetrics({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRustMetricsConstMeta;
 
@@ -49,4 +49,24 @@ class FeatureUuid {
     required this.one,
     required this.many,
   });
+}
+
+/// metric used for continuous-benchmark worflow
+class Metric {
+  final String name;
+  final int? value;
+  final Unit unit;
+  String? extra;
+
+  Metric({
+    required this.name,
+    this.value,
+    required this.unit,
+    this.extra,
+  });
+}
+
+enum Unit {
+  Microseconds,
+  Nanoseconds,
 }
