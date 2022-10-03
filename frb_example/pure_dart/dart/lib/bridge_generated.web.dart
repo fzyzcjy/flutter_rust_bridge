@@ -51,6 +51,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_TestId_array_4(TestIdArray4 raw) {
+    return api2wire_list_test_id(raw.inner);
+  }
+
+  @protected
   Uint8List api2wire_Uuid(UuidValue raw) {
     return api2wire_uint_8_list(raw.toBytes());
   }
@@ -88,6 +93,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_attribute(Attribute raw) {
     return [api2wire_String(raw.key), api2wire_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> api2wire_blob_id(BlobId raw) {
+    return [api2wire_u8_array_16(raw.field0)];
   }
 
   @protected
@@ -141,6 +151,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_feed_id(FeedId raw) {
+    return api2wire_feed_id(raw);
+  }
+
+  @protected
   int /* *i32 */ api2wire_box_autoadd_i32(int raw) {
     return inner.new_box_autoadd_i32_0(api2wire_i32(raw));
   }
@@ -158,6 +173,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_autoadd_measure(Measure raw) {
     return api2wire_measure(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_message_id(MessageId raw) {
+    return api2wire_message_id(raw);
   }
 
   @protected
@@ -201,8 +221,18 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_test_id(TestId raw) {
+    return api2wire_test_id(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_user_id(UserId raw) {
     return api2wire_user_id(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_blob_id(BlobId raw) {
+    return api2wire_blob_id(raw);
   }
 
   @protected
@@ -258,6 +288,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   int /* *u8 */ api2wire_box_u8(int raw) {
     return inner.new_box_u8_0(api2wire_u8(raw));
+  }
+
+  @protected
+  Uint8List api2wire_box_u8_array_16(U8Array16 raw) {
+    return api2wire_u8_array_16(raw);
   }
 
   @protected
@@ -323,6 +358,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_feed_id(FeedId raw) {
+    return [api2wire_u8_array_8(raw.field0)];
+  }
+
+  @protected
   Float32List api2wire_float_32_list(Float32List raw) {
     return raw;
   }
@@ -333,12 +373,27 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Int32List api2wire_i32_array_2(I32Array2 raw) {
+    return api2wire_int_32_list(raw.inner);
+  }
+
+  @protected
   Object api2wire_i64(int raw) {
     return castNativeBigInt(raw);
   }
 
   @protected
+  Int64List api2wire_i64_array_16(I64Array16 raw) {
+    return api2wire_int_64_list(raw.inner);
+  }
+
+  @protected
   Int32List api2wire_int_32_list(Int32List raw) {
+    return raw;
+  }
+
+  @protected
+  Int64List api2wire_int_64_list(Int64List raw) {
     return raw;
   }
 
@@ -397,6 +452,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_list_test_id(List<TestId> raw) {
+    return raw.map(api2wire_test_id).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_measure(Measure raw) {
     if (raw is Measure_Speed) {
       return [0, api2wire_box_speed(raw.field0)];
@@ -406,6 +466,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_message_id(MessageId raw) {
+    return [api2wire_u8_array_32(raw.field0)];
   }
 
   @protected
@@ -581,8 +646,28 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_test_id(TestId raw) {
+    return [api2wire_i32_array_2(raw.field0)];
+  }
+
+  @protected
   Object api2wire_u64(int raw) {
     return castNativeBigInt(raw);
+  }
+
+  @protected
+  Uint8List api2wire_u8_array_16(U8Array16 raw) {
+    return api2wire_uint_8_list(raw.inner);
+  }
+
+  @protected
+  Uint8List api2wire_u8_array_32(U8Array32 raw) {
+    return api2wire_uint_8_list(raw.inner);
+  }
+
+  @protected
+  Uint8List api2wire_u8_array_8(U8Array8 raw) {
+    return api2wire_uint_8_list(raw.inner);
   }
 
   @protected
@@ -757,6 +842,24 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external void wire_handle_uuids(NativePortType port_, Uint8List ids);
 
   external void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
+
+  external void wire_new_msgid(NativePortType port_, Uint8List id);
+
+  external void wire_use_msgid(NativePortType port_, List<dynamic> id);
+
+  external void wire_boxed_blob_id(NativePortType port_, Uint8List id);
+
+  external void wire_use_boxed_blob_id(NativePortType port_, List<dynamic> id);
+
+  external void wire_return_boxed_feed_id(NativePortType port_, Uint8List id);
+
+  external void wire_return_boxed_raw_feed_id(NativePortType port_, List<dynamic> id);
+
+  external void wire_test_id(NativePortType port_, List<dynamic> id);
+
+  external void wire_last_number(NativePortType port_, Int64List array);
+
+  external void wire_nested_id(NativePortType port_, List<dynamic> id);
 
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
@@ -981,6 +1084,25 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids) =>
       wasmModule.wire_handle_nested_uuids(port_, ids);
+
+  void wire_new_msgid(NativePortType port_, Uint8List id) => wasmModule.wire_new_msgid(port_, id);
+
+  void wire_use_msgid(NativePortType port_, List<dynamic> id) => wasmModule.wire_use_msgid(port_, id);
+
+  void wire_boxed_blob_id(NativePortType port_, Uint8List id) => wasmModule.wire_boxed_blob_id(port_, id);
+
+  void wire_use_boxed_blob_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_use_boxed_blob_id(port_, id);
+
+  void wire_return_boxed_feed_id(NativePortType port_, Uint8List id) => wasmModule.wire_return_boxed_feed_id(port_, id);
+
+  void wire_return_boxed_raw_feed_id(NativePortType port_, List<dynamic> id) =>
+      wasmModule.wire_return_boxed_raw_feed_id(port_, id);
+
+  void wire_test_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_test_id(port_, id);
+
+  void wire_last_number(NativePortType port_, Int64List array) => wasmModule.wire_last_number(port_, array);
+
+  void wire_nested_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_nested_id(port_, id);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

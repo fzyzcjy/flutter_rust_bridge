@@ -1,3 +1,5 @@
+use convert_case::{Case, Casing};
+
 use crate::ir::*;
 use crate::target::Target;
 
@@ -25,6 +27,14 @@ impl IrTypeTime {
 /// types that delegate to another type
 #[derive(Debug, Clone)]
 pub enum IrTypeDelegate {
+    GeneralArray {
+        length: usize,
+        general: Box<IrType>,
+    },
+    PrimitiveArray {
+        length: usize,
+        primitive: IrTypePrimitive,
+    },
     String,
     StringList,
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
@@ -44,6 +54,16 @@ pub enum IrTypeDelegate {
 impl IrTypeDelegate {
     pub fn get_delegate(&self) -> IrType {
         match self {
+            IrTypeDelegate::GeneralArray { general, .. } => {
+                IrType::GeneralList(IrTypeGeneralList {
+                    inner: general.clone(),
+                })
+            }
+            IrTypeDelegate::PrimitiveArray { primitive, .. } => {
+                IrType::PrimitiveList(IrTypePrimitiveList {
+                    primitive: primitive.clone(),
+                })
+            }
             IrTypeDelegate::String => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
@@ -66,6 +86,31 @@ impl IrTypeDelegate {
             }),
         }
     }
+
+    pub fn inner_dart_api_type(&self) -> String {
+        match self {
+            IrTypeDelegate::GeneralArray { general, .. } => general.dart_api_type(),
+            IrTypeDelegate::PrimitiveArray { primitive, .. } => {
+                use IrTypePrimitive::*;
+                match &primitive {
+                    U8 | I8 | U16 | I16 | U32 | I32 | Usize => "int",
+                    U64 | I64 => "BigInt",
+                    F32 | F64 => "double",
+                    Bool => "bool",
+                    Unit => "void",
+                }
+                .to_string()
+            }
+            _ => panic!("Unexpected type"),
+        }
+    }
+    pub fn inner_rust_api_type(&self) -> String {
+        match self {
+            IrTypeDelegate::GeneralArray { general, .. } => general.rust_api_type(),
+            IrTypeDelegate::PrimitiveArray { primitive, .. } => primitive.rust_api_type(),
+            _ => panic!("Unexpected type"),
+        }
+    }
 }
 
 impl IrTypeTrait for IrTypeDelegate {
@@ -75,6 +120,12 @@ impl IrTypeTrait for IrTypeDelegate {
 
     fn safe_ident(&self) -> String {
         match self {
+            IrTypeDelegate::GeneralArray { general, length } => {
+                format!("{}_array_{length}", general.dart_api_type())
+            }
+            IrTypeDelegate::PrimitiveArray { primitive, length } => {
+                format!("{}_array_{length}", primitive.safe_ident())
+            }
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "StringList".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
@@ -92,6 +143,15 @@ impl IrTypeTrait for IrTypeDelegate {
 
     fn dart_api_type(&self) -> String {
         match self {
+            IrTypeDelegate::GeneralArray { general, length } => {
+                format!("{}Array{length}", general.dart_api_type())
+            }
+            IrTypeDelegate::PrimitiveArray { primitive, length } => {
+                format!(
+                    "{}Array{length}",
+                    primitive.safe_ident().to_case(Case::Pascal)
+                )
+            }
             IrTypeDelegate::String => "String".to_string(),
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
@@ -119,6 +179,10 @@ impl IrTypeTrait for IrTypeDelegate {
 
     fn rust_api_type(&self) -> String {
         match self {
+            IrTypeDelegate::GeneralArray { length, .. }
+            | IrTypeDelegate::PrimitiveArray { length, .. } => {
+                format!("[{}; {length}]", self.inner_rust_api_type())
+            }
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "Vec<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {

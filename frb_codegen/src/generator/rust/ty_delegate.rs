@@ -26,6 +26,9 @@ macro_rules! delegate_enum {
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         match &self.ir {
+            IrTypeDelegate::PrimitiveArray { ..}| IrTypeDelegate::GeneralArray { .. } => {
+                Acc::distribute(Some(format!("let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",self.ir.inner_rust_api_type())))
+            },
             IrTypeDelegate::String => {
                 Acc {
                     wasm: Some("self".into()),

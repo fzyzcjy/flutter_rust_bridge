@@ -627,6 +627,62 @@ void main(List<String> args) async {
       expect(wrapper.many, outputs.many);
     });
   });
+
+  group('array feature', () {
+    test('MessageId', () async {
+      final MessageId msgid = await api.newMsgid(id: U8Array32(Uint8List(32)));
+      msgid.field0[2] = 14;
+      final inner = await api.useMsgid(id: msgid);
+      expect(inner[2], 14);
+    });
+    test('BlobId', () async {
+      final inner = Uint8List(16);
+      inner[14] = 99;
+      final BlobId id = await api.boxedBlobId(id: U8Array16(inner));
+      expect(id.field0[14], 99);
+      id.field0[10] = 100;
+      final unboxed = await api.useBoxedBlobId(id: id);
+      expect(unboxed[10], 100);
+      expect(unboxed[14], 99);
+    });
+    test('FeedId', () async {
+      final inner = Uint8List(8);
+      inner[3] = 3;
+      final FeedId feedId = await api.returnBoxedFeedId(id: U8Array8(inner));
+      expect(feedId.field0[3], 3);
+      feedId.field0[5] = 5;
+      final raw = await api.returnBoxedRawFeedId(id: feedId);
+      expect(raw[5], 5);
+      expect(raw[3], 3);
+    });
+    test('TestId', () async {
+      final inner = I32Array2(Int32List(2));
+      inner[0] = 1;
+      inner[1] = 2;
+      final testId = await api.testId(id: TestId(field0: inner));
+      expect(testId.field0[0], 1);
+      expect(testId.field0[1], 2);
+    });
+    test('LastNumber', () async {
+      final array = I64Array16(Int64List(16));
+      array[15] = BigInt.from(88888);
+      final lastNumber = await api.lastNumber(array: array);
+      expect(BigInt.from(lastNumber), BigInt.from(88888));
+    });
+    test('NestedId', () async {
+      final id0 = TestId(field0: I32Array2(Int32List(2)));
+      id0.field0[1] = 10;
+      final id1 = TestId(field0: I32Array2(Int32List(2)));
+      id0.field0[1] = 20;
+      final id2 = TestId(field0: I32Array2(Int32List(2)));
+      id0.field0[1] = 30;
+      final id3 = TestId(field0: I32Array2(Int32List(2)));
+      id0.field0[1] = 40;
+      final nestedId = await api.nestedId(id: TestIdArray4([id0, id1, id2, id3]));
+      expect(nestedId[0].field0[1], 10);
+      expect(nestedId[1].field0[1], 40);
+    });
+  });
 }
 
 int _createGarbage() {

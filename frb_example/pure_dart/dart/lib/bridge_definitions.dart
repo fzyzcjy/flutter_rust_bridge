@@ -224,11 +224,11 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta;
 
-  Future<Uint8List> getArray({dynamic hint});
+  Future<U8Array5> getArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta;
 
-  Future<List<Point>> getComplexArray({dynamic hint});
+  Future<PointArray2> getComplexArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta;
 
@@ -316,6 +316,42 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
 
+  Future<MessageId> newMsgid({required U8Array32 id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNewMsgidConstMeta;
+
+  Future<U8Array32> useMsgid({required MessageId id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUseMsgidConstMeta;
+
+  Future<BlobId> boxedBlobId({required U8Array16 id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kBoxedBlobIdConstMeta;
+
+  Future<U8Array16> useBoxedBlobId({required BlobId id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobIdConstMeta;
+
+  Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnBoxedFeedIdConstMeta;
+
+  Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnBoxedRawFeedIdConstMeta;
+
+  Future<TestId> testId({required TestId id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestIdConstMeta;
+
+  Future<int> lastNumber({required I64Array16 array, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLastNumberConstMeta;
+
+  Future<TestIdArray2> nestedId({required TestIdArray4 id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -349,6 +385,54 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
+}
+
+class PointArray2 {
+  final List<Point> inner;
+
+  PointArray2(this.inner) : assert(inner.length == 2);
+
+  PointArray2.Unchecked(this.inner);
+
+  Point operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, Point value) {
+    inner[index] = value;
+  }
+}
+
+class TestIdArray2 {
+  final List<TestId> inner;
+
+  TestIdArray2(this.inner) : assert(inner.length == 2);
+
+  TestIdArray2.Unchecked(this.inner);
+
+  TestId operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, TestId value) {
+    inner[index] = value;
+  }
+}
+
+class TestIdArray4 {
+  final List<TestId> inner;
+
+  TestIdArray4(this.inner) : assert(inner.length == 4);
+
+  TestIdArray4.Unchecked(this.inner);
+
+  TestId operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, TestId value) {
+    inner[index] = value;
+  }
 }
 
 class ApplicationEnv {
@@ -417,6 +501,14 @@ class BigBuffers {
   BigBuffers({
     required this.int64,
     required this.uint64,
+  });
+}
+
+class BlobId {
+  final U8Array16 field0;
+
+  BlobId({
+    required this.field0,
   });
 }
 
@@ -566,6 +658,46 @@ class FeatureUuid {
   });
 }
 
+class FeedId {
+  final U8Array8 field0;
+
+  FeedId({
+    required this.field0,
+  });
+}
+
+class I32Array2 {
+  final Int32List inner;
+
+  I32Array2(this.inner) : assert(inner.length == 2);
+
+  I32Array2.Unchecked(this.inner);
+
+  int operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, int value) {
+    inner[index] = value;
+  }
+}
+
+class I64Array16 {
+  final Int64List inner;
+
+  I64Array16(this.inner) : assert(inner.length == 16);
+
+  I64Array16.Unchecked(this.inner);
+
+  BigInt operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, BigInt value) {
+    inner[index] = value;
+  }
+}
+
 @freezed
 class KitchenSink with _$KitchenSink {
   /// Comment on variant
@@ -621,6 +753,14 @@ class Measure with _$Measure {
   const factory Measure.distance(
     Distance field0,
   ) = Measure_Distance;
+}
+
+class MessageId {
+  final U8Array32 field0;
+
+  MessageId({
+    required this.field0,
+  });
 }
 
 enum MyEnum {
@@ -750,6 +890,78 @@ class SumWith {
         y: y,
         z: z,
       );
+}
+
+class TestId {
+  final I32Array2 field0;
+
+  TestId({
+    required this.field0,
+  });
+}
+
+class U8Array16 {
+  final Uint8List inner;
+
+  U8Array16(this.inner) : assert(inner.length == 16);
+
+  U8Array16.Unchecked(this.inner);
+
+  int operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, int value) {
+    inner[index] = value;
+  }
+}
+
+class U8Array32 {
+  final Uint8List inner;
+
+  U8Array32(this.inner) : assert(inner.length == 32);
+
+  U8Array32.Unchecked(this.inner);
+
+  int operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, int value) {
+    inner[index] = value;
+  }
+}
+
+class U8Array5 {
+  final Uint8List inner;
+
+  U8Array5(this.inner) : assert(inner.length == 5);
+
+  U8Array5.Unchecked(this.inner);
+
+  int operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, int value) {
+    inner[index] = value;
+  }
+}
+
+class U8Array8 {
+  final Uint8List inner;
+
+  U8Array8(this.inner) : assert(inner.length == 8);
+
+  U8Array8.Unchecked(this.inner);
+
+  int operator [](int index) {
+    return inner[index];
+  }
+
+  void operator []=(int index, int value) {
+    inner[index] = value;
+  }
 }
 
 /// Example for @freezed and @meta.immutable

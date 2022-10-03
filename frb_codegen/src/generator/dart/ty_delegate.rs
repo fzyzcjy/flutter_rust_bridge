@@ -9,6 +9,13 @@ type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         match self.ir {
+            IrTypeDelegate::GeneralArray { .. } | IrTypeDelegate::PrimitiveArray { .. } => {
+                let body = format!(
+                    "return api2wire_{}(raw.inner);",
+                    self.ir.get_delegate().safe_ident()
+                );
+                Acc::distribute(Some(body))
+            }
             IrTypeDelegate::String => Acc {
                 io: Some("return api2wire_uint_8_list(utf8.encoder.convert(raw));".into()),
                 wasm: Some("return raw;".into()),
@@ -64,6 +71,20 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         match &self.ir {
+            IrTypeDelegate::GeneralArray { length, general } => format!(
+                r"final inner = (raw as List<dynamic>).map(_wire2api_{}).toList();
+                if (inner.length != {length}) throw Exception('unexpected array length: expect {length} but see ${{inner.length}}');
+                return {}.Unchecked(inner);",
+                general.safe_ident(),
+                self.ir.dart_api_type()
+            ),
+            IrTypeDelegate::PrimitiveArray { length, .. } => format!(
+                r"final inner = _wire2api_{}(raw);
+                if (inner.length != {length}) throw Exception('unexpected array length: expect {length} but see ${{inner.length}}');
+                return {}.Unchecked(inner);",
+                self.ir.get_delegate().safe_ident(),
+                self.ir.dart_api_type()
+            ),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(
                 IrTypePrimitive::I64 | IrTypePrimitive::U64,
             ) => {
@@ -102,14 +123,36 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
     }
 
     fn structs(&self) -> String {
-        if let IrTypeDelegate::PrimitiveEnum { ir, .. } = &self.ir {
-            super::TypeEnumRefGenerator {
+        match &self.ir {
+            IrTypeDelegate::PrimitiveEnum { ir, .. } => super::TypeEnumRefGenerator {
                 ir: ir.clone(),
                 context: self.context.clone(),
             }
-            .structs()
-        } else {
-            "".into()
+            .structs(),
+            IrTypeDelegate::GeneralArray { length, .. }
+            | IrTypeDelegate::PrimitiveArray { length, .. } => {
+                format!(
+                    "class {0} {{
+                        final {1} inner;
+
+                        {0}(this.inner): assert(inner.length == {length});
+
+                        {0}.Unchecked(this.inner);
+
+                        {2} operator [](int index) {{
+                            return inner[index];
+                        }}
+                        
+                        void operator []=(int index, {2} value) {{
+                            inner[index] = value;
+                        }}
+                }}",
+                    self.ir.dart_api_type(),
+                    self.ir.get_delegate().dart_api_type(),
+                    self.ir.inner_dart_api_type()
+                )
+            }
+            _ => "".into(),
         }
     }
 }

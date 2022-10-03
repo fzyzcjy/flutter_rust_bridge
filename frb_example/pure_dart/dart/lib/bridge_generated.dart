@@ -705,9 +705,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["seqs"],
       );
 
-  Future<Uint8List> getArray({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+  Future<U8Array5> getArray({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_get_array(port_),
-        parseSuccessData: _wire2api_uint_8_list,
+        parseSuccessData: _wire2api_u8_array_5,
         constMeta: kGetArrayConstMeta,
         argValues: [],
         hint: hint,
@@ -718,9 +718,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  Future<List<Point>> getComplexArray({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+  Future<PointArray2> getComplexArray({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_get_complex_array(port_),
-        parseSuccessData: _wire2api_list_point,
+        parseSuccessData: _wire2api_Point_array_2,
         constMeta: kGetComplexArrayConstMeta,
         argValues: [],
         hint: hint,
@@ -1016,6 +1016,127 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["ids"],
       );
 
+  Future<MessageId> newMsgid({required U8Array32 id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_new_msgid(port_, _platform.api2wire_u8_array_32(id)),
+        parseSuccessData: _wire2api_message_id,
+        constMeta: kNewMsgidConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kNewMsgidConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "new_msgid",
+        argNames: ["id"],
+      );
+
+  Future<U8Array32> useMsgid({required MessageId id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_use_msgid(port_, _platform.api2wire_box_autoadd_message_id(id)),
+        parseSuccessData: _wire2api_u8_array_32,
+        constMeta: kUseMsgidConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kUseMsgidConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "use_msgid",
+        argNames: ["id"],
+      );
+
+  Future<BlobId> boxedBlobId({required U8Array16 id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_boxed_blob_id(port_, _platform.api2wire_box_u8_array_16(id)),
+        parseSuccessData: _wire2api_blob_id,
+        constMeta: kBoxedBlobIdConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kBoxedBlobIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "boxed_blob_id",
+        argNames: ["id"],
+      );
+
+  Future<U8Array16> useBoxedBlobId({required BlobId id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_use_boxed_blob_id(port_, _platform.api2wire_box_blob_id(id)),
+        parseSuccessData: _wire2api_u8_array_16,
+        constMeta: kUseBoxedBlobIdConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "use_boxed_blob_id",
+        argNames: ["id"],
+      );
+
+  Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_return_boxed_feed_id(port_, _platform.api2wire_u8_array_8(id)),
+        parseSuccessData: _wire2api_box_feed_id,
+        constMeta: kReturnBoxedFeedIdConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnBoxedFeedIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_boxed_feed_id",
+        argNames: ["id"],
+      );
+
+  Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_return_boxed_raw_feed_id(port_, _platform.api2wire_box_autoadd_feed_id(id)),
+        parseSuccessData: _wire2api_box_u8_array_8,
+        constMeta: kReturnBoxedRawFeedIdConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kReturnBoxedRawFeedIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_boxed_raw_feed_id",
+        argNames: ["id"],
+      );
+
+  Future<TestId> testId({required TestId id, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_test_id(port_, _platform.api2wire_box_autoadd_test_id(id)),
+        parseSuccessData: _wire2api_test_id,
+        constMeta: kTestIdConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kTestIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_id",
+        argNames: ["id"],
+      );
+
+  Future<int> lastNumber({required I64Array16 array, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_last_number(port_, _platform.api2wire_i64_array_16(array)),
+        parseSuccessData: _wire2api_i64,
+        constMeta: kLastNumberConstMeta,
+        argValues: [array],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kLastNumberConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "last_number",
+        argNames: ["array"],
+      );
+
+  Future<TestIdArray2> nestedId({required TestIdArray4 id, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_nested_id(port_, _platform.api2wire_TestId_array_4(id)),
+        parseSuccessData: _wire2api_TestId_array_2,
+        constMeta: kNestedIdConstMeta,
+        argValues: [id],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "nested_id",
+        argNames: ["id"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1229,6 +1350,12 @@ DateTime _wire2api_Chrono_Utc(dynamic raw) {
   return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
 }
 
+PointArray2 _wire2api_Point_array_2(dynamic raw) {
+  final inner = (raw as List<dynamic>).map(_wire2api_point).toList();
+  if (inner.length != 2) throw Exception('unexpected array length: expect 2 but see ${inner.length}');
+  return PointArray2.Unchecked(inner);
+}
+
 String _wire2api_String(dynamic raw) {
   return raw as String;
 }
@@ -1297,6 +1424,12 @@ int _wire2api_SyncReturn_u64(Uint8List raw) {
 int _wire2api_SyncReturn_u8(Uint8List raw) {
   final dataView = ByteData.view(raw.buffer);
   return dataView.getUint8(0);
+}
+
+TestIdArray2 _wire2api_TestId_array_2(dynamic raw) {
+  final inner = (raw as List<dynamic>).map(_wire2api_test_id).toList();
+  if (inner.length != 2) throw Exception('unexpected array length: expect 2 but see ${inner.length}');
+  return TestIdArray2.Unchecked(inner);
 }
 
 UuidValue _wire2api_Uuid(dynamic raw) {
@@ -1416,6 +1549,14 @@ BigBuffers _wire2api_big_buffers(dynamic raw) {
   );
 }
 
+BlobId _wire2api_blob_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return BlobId(
+    field0: _wire2api_u8_array_16(arr[0]),
+  );
+}
+
 bool _wire2api_bool(dynamic raw) {
   return raw as bool;
 }
@@ -1460,12 +1601,20 @@ Distance _wire2api_box_distance(dynamic raw) {
   return _wire2api_distance(raw);
 }
 
+FeedId _wire2api_box_feed_id(dynamic raw) {
+  return _wire2api_feed_id(raw);
+}
+
 KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
   return _wire2api_kitchen_sink(raw);
 }
 
 Speed _wire2api_box_speed(dynamic raw) {
   return _wire2api_speed(raw);
+}
+
+U8Array8 _wire2api_box_u8_array_8(dynamic raw) {
+  return _wire2api_u8_array_8(raw);
 }
 
 ConcatenateWith _wire2api_concatenate_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynamic raw) {
@@ -1548,6 +1697,14 @@ FeatureUuid _wire2api_feature_uuid(dynamic raw) {
   );
 }
 
+FeedId _wire2api_feed_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return FeedId(
+    field0: _wire2api_u8_array_8(arr[0]),
+  );
+}
+
 Float32List _wire2api_float_32_list(dynamic raw) {
   return raw as Float32List;
 }
@@ -1562,6 +1719,12 @@ int _wire2api_i16(dynamic raw) {
 
 int _wire2api_i32(dynamic raw) {
   return raw as int;
+}
+
+I32Array2 _wire2api_i32_array_2(dynamic raw) {
+  final inner = _wire2api_int_32_list(raw);
+  if (inner.length != 2) throw Exception('unexpected array length: expect 2 but see ${inner.length}');
+  return I32Array2.Unchecked(inner);
 }
 
 int _wire2api_i64(dynamic raw) {
@@ -1649,6 +1812,10 @@ List<Point> _wire2api_list_point(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_point).toList();
 }
 
+List<TestId> _wire2api_list_test_id(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_test_id).toList();
+}
+
 Log _wire2api_log(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -1680,6 +1847,14 @@ Measure _wire2api_measure(dynamic raw) {
     default:
       throw Exception("unreachable");
   }
+}
+
+MessageId _wire2api_message_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return MessageId(
+    field0: _wire2api_u8_array_32(arr[0]),
+  );
 }
 
 MySize _wire2api_my_size(dynamic raw) {
@@ -1861,6 +2036,14 @@ SumWith _wire2api_sum_with(FlutterRustBridgeExampleSingleBlockTest bridge, dynam
   );
 }
 
+TestId _wire2api_test_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return TestId(
+    field0: _wire2api_i32_array_2(arr[0]),
+  );
+}
+
 int _wire2api_u16(dynamic raw) {
   return raw as int;
 }
@@ -1875,6 +2058,30 @@ int _wire2api_u64(dynamic raw) {
 
 int _wire2api_u8(dynamic raw) {
   return raw as int;
+}
+
+U8Array16 _wire2api_u8_array_16(dynamic raw) {
+  final inner = _wire2api_uint_8_list(raw);
+  if (inner.length != 16) throw Exception('unexpected array length: expect 16 but see ${inner.length}');
+  return U8Array16.Unchecked(inner);
+}
+
+U8Array32 _wire2api_u8_array_32(dynamic raw) {
+  final inner = _wire2api_uint_8_list(raw);
+  if (inner.length != 32) throw Exception('unexpected array length: expect 32 but see ${inner.length}');
+  return U8Array32.Unchecked(inner);
+}
+
+U8Array5 _wire2api_u8_array_5(dynamic raw) {
+  final inner = _wire2api_uint_8_list(raw);
+  if (inner.length != 5) throw Exception('unexpected array length: expect 5 but see ${inner.length}');
+  return U8Array5.Unchecked(inner);
+}
+
+U8Array8 _wire2api_u8_array_8(dynamic raw) {
+  final inner = _wire2api_uint_8_list(raw);
+  if (inner.length != 8) throw Exception('unexpected array length: expect 8 but see ${inner.length}');
+  return U8Array8.Unchecked(inner);
 }
 
 Uint16List _wire2api_uint_16_list(dynamic raw) {

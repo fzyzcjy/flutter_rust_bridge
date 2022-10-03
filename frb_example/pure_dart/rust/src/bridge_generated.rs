@@ -1087,6 +1087,123 @@ fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureU
         },
     )
 }
+fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "new_msgid",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Ok(new_msgid(api_id))
+        },
+    )
+}
+fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "use_msgid",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Ok(use_msgid(api_id))
+        },
+    )
+}
+fn wire_boxed_blob_id_impl(port_: MessagePort, id: impl Wire2Api<Box<[u8; 16]>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "boxed_blob_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Ok(boxed_blob_id(api_id))
+        },
+    )
+}
+fn wire_use_boxed_blob_id_impl(port_: MessagePort, id: impl Wire2Api<Box<BlobId>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "use_boxed_blob_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Ok(use_boxed_blob_id(api_id))
+        },
+    )
+}
+fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_boxed_feed_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Ok((*return_boxed_feed_id(api_id)))
+        },
+    )
+}
+fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<FeedId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_boxed_raw_feed_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Ok((*return_boxed_raw_feed_id(api_id)))
+        },
+    )
+}
+fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Ok(test_id(api_id))
+        },
+    )
+}
+fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[i64; 16]> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "last_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_array = array.wire2api();
+            move |task_callback| Ok(last_number(api_array))
+        },
+    )
+}
+fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "nested_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Ok(nested_id(api_id))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1424,11 +1541,13 @@ impl Wire2Api<i32> for i32 {
         self
     }
 }
+
 impl Wire2Api<i64> for i64 {
     fn wire2api(self) -> i64 {
         self
     }
 }
+
 impl Wire2Api<i8> for i8 {
     fn wire2api(self) -> i8 {
         self
@@ -1557,6 +1676,13 @@ impl support::IntoDart for BigBuffers {
 }
 impl support::IntoDartExceptPrimitive for BigBuffers {}
 
+impl support::IntoDart for BlobId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for BlobId {}
+
 impl support::IntoDart for ConcatenateWith {
     fn into_dart(self) -> support::DartAbi {
         vec![self.a.into_dart()].into_dart()
@@ -1624,6 +1750,13 @@ impl support::IntoDart for FeatureUuid {
 }
 impl support::IntoDartExceptPrimitive for FeatureUuid {}
 
+impl support::IntoDart for FeedId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for FeedId {}
+
 impl support::IntoDart for KitchenSink {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -1676,6 +1809,13 @@ impl support::IntoDart for Measure {
     }
 }
 impl support::IntoDartExceptPrimitive for Measure {}
+impl support::IntoDart for MessageId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MessageId {}
+
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartAbi {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
@@ -1761,6 +1901,13 @@ impl support::IntoDart for SumWith {
     }
 }
 impl support::IntoDartExceptPrimitive for SumWith {}
+
+impl support::IntoDart for TestId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TestId {}
 
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartAbi {
