@@ -355,7 +355,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             )
         } else {
             "".into()
-        },
+        }
     );
     let common_import = format!(
         "{}
