@@ -218,9 +218,6 @@ jobs:
         working-directory: ./frb_example/with_flutter/rust
         run: cargo test --verbose
 
-      - name: Build runner
-        working-directory: ./frb_dart
-        run: dart run build_runner build
       - name: Build benches example
         working-directory: ./frb_example/benches/rust
         # benches are run on release mode in gh-pages workflow
