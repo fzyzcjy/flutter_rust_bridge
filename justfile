@@ -50,9 +50,11 @@ lint *args="":
     dart format --fix -l {{line_length}} {{frb_pure}} {{args}}
     dart format --fix -l {{line_length}} {{frb_pure_multi}} {{args}}
     dart format --fix -l {{line_length}} {{frb_flutter}} {{args}}
+    dart format --fix -l {{line_length}} {{frb_benches}} {{args}}
     cd {{frb_pure}}/rust && cargo fmt
     cd {{frb_pure_multi}}/rust && cargo fmt
     cd {{frb_flutter}}/rust && cargo fmt
+    cd {{frb_benches}}/rust && cargo fmt
     cd frb_codegen && cargo fmt
 
 alias t := test
@@ -109,6 +111,8 @@ check:
     cd {{frb_pure_multi}}/rust && cargo clippy
     cd {{frb_flutter}} && flutter pub get && flutter analyze
     cd {{frb_flutter}}/rust && cargo clippy
+    cd {{frb_benches}}/dart && dart pub get && dart analyze
+    cd {{frb_benches}}/rust && cargo clippy
     cd frb_codegen && cargo clippy -- -D warnings
     cd frb_rust && cargo clippy -- -D warnings
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
