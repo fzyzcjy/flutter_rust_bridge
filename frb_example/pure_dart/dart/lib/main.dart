@@ -411,7 +411,8 @@ void main(List<String> args) async {
   });
 
   test('dart call getArray()', () async {
-    expect(await api.getArray(), [1, 2, 3, 4, 5]);
+    var array = await api.getArray();
+    expect(array.inner, [1, 2, 3, 4, 5]);
   });
 
   test('dart call getComplexArray()', () async {
