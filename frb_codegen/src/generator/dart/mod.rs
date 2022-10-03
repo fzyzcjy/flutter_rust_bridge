@@ -81,7 +81,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
     }
 }
 
-pub(crate) struct DartApiSpec {
+struct DartApiSpec {
     dart_funcs: Vec<GeneratedApiFunc>,
     dart_structs: Vec<String>,
     dart_api2wire_funcs: Acc<String>,
