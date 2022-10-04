@@ -170,7 +170,7 @@ impl BenchExecutor {
             name: debug_name_string.to_string(),
             value: Some(elapsed),
             extra: None,
-            unit: Unit::Nanoseconds,
+            unit: Unit::Milliseconds,
         });
     }
 }
