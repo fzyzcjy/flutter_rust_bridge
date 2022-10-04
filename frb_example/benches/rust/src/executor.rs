@@ -10,7 +10,6 @@ use flutter_rust_bridge::{
     rust2dart::TaskCallback,
     IntoDart, MessagePort, WrapInfo,
 };
-use tracing_subscriber::FmtSubscriber;
 
 use crate::api::{Metric, Unit};
 const ERROR_MUTEX_LOCK: &str = "Error on mutex lock";
@@ -69,25 +68,35 @@ pub struct BenchExecutor {
     json: bool,
 }
 
+#[cfg(not(target_family = "wasm"))]
+fn maybe_trace(json: bool) {
+    use tracing_subscriber::FmtSubscriber;
+    let subscriber = if json {
+        None
+    } else {
+        Some(
+            FmtSubscriber::builder()
+                .with_max_level(tracing::Level::TRACE)
+                .finish(),
+        )
+    };
+    if let Some(subscriber) = subscriber {
+        tracing::subscriber::set_global_default(subscriber)
+            .expect("Setting default subscriber failed");
+    }
+}
+
+#[cfg(target_family = "wasm")]
+#[inline(always)]
+fn maybe_trace(_: bool) {}
+
 impl BenchExecutor {
     pub(crate) fn new(error_handler: BenchErrorHandler) -> Self {
         let json = std::env::var("JSON")
             .unwrap_or_else(|_| "false".into())
             .parse::<bool>()
             .expect("Invalid JSON env var (expected boolean)");
-        let subscriber = if json {
-            None
-        } else {
-            Some(
-                FmtSubscriber::builder()
-                    .with_max_level(tracing::Level::TRACE)
-                    .finish(),
-            )
-        };
-        if let Some(subscriber) = subscriber {
-            tracing::subscriber::set_global_default(subscriber)
-                .expect("Setting default subscriber failed");
-        }
+        maybe_trace(json);
         Self {
             inner: ThreadPoolExecutor::new(error_handler),
             json,
@@ -143,9 +152,10 @@ impl BenchExecutor {
             use tracing::{span, trace, Level};
             span!(Level::TRACE, "frb-executor");
             trace!(
-                "(Rust) execute [{}] end delta_time={}ns",
+                "(Rust) execute [{}] end delta_time={}{}",
                 bench_name,
-                elapsed
+                elapsed,
+                Unit::Nanoseconds.acronym()
             );
         } else {
             record(bench_name, elapsed as u64, Unit::Nanoseconds);
@@ -156,14 +166,35 @@ impl BenchExecutor {
 
 #[cfg(target_family = "wasm")]
 impl BenchExecutor {
-    fn bench_around<F, R>(bench_name: &str, _: bool, f: F) -> R
+    fn bench_around<F, R>(bench_name: &str, json: bool, f: F) -> R
     where
         F: FnOnce() -> R,
     {
+        if !json {
+            use js_sys::Array;
+            use wasm_bindgen::JsValue;
+            use web_sys::console;
+            let log = format!("(Rust) execute [{bench_name}] start");
+            let prepare = Array::new();
+            prepare.push(&JsValue::from_str(&log));
+            console::log(&prepare);
+        }
         let start = chrono::Utc::now().timestamp_millis() as u64;
         let ret = f();
         let end = chrono::Utc::now().timestamp_millis() as u64;
         let elapsed = end - start;
+        if !json {
+            use js_sys::Array;
+            use wasm_bindgen::JsValue;
+            use web_sys::console;
+            let log = format!(
+                "(Rust) execute [{bench_name}] end delta_time={elapsed}{}",
+                Unit::Milliseconds.acronym()
+            );
+            let prepare = Array::new();
+            prepare.push(&JsValue::from_str(&log));
+            console::log(&prepare);
+        }
         record(bench_name, elapsed, Unit::Milliseconds);
         ret
     }

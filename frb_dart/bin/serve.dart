@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:io' if (dart.library.html) 'dart:html';
 
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
@@ -276,22 +276,22 @@ Future<void> build(
     await system('dart', [
       'compile',
       'js',
+      if (useJSON) '-DJSON=true', // on web platform, use -D
       '-o',
       '$root/$output.js',
       if (config.release) '-O2',
       if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
       if (config.verbose) '--verbose',
-      if (useJSON) '--define=JSON=true',
       config.dartInput!,
     ]);
   } else {
     await system(
       'flutter',
       [
+            if (useJSON) '--dart-define=JSON=true',
             'build',
             'web',
             if (!config.release) '--profile',
-            if (useJSON) '--dart-define=JSON=true'
           ] +
           Opts.rest(args),
     );

@@ -3,15 +3,16 @@ import 'dart:convert';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:logging/logging.dart';
-import 'env/stub.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'package:flutter_rust_bridge_benchmark/utils.dart';
 import 'package:uuid/uuid.dart';
 
 void main(List<String> args) async {
   String dylibPath = args[0];
+  // on web, env useJSON is unset, but server will send a --json cli arg instead
+  final allowJSON = useJSON || args.contains('--json');
   final log = Logger('frb_example/benches');
-  if (useJSON) {
+  if (allowJSON) {
     Logger.root.level = Level.INFO;
   } else {
     Logger.root.level = Level.ALL;
@@ -21,7 +22,10 @@ void main(List<String> args) async {
   });
   log.fine('flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   log.finer('construct api');
-  final api = initializeBenchExternalLibrary(dylibPath, useJSON: useJSON);
+  if (isWeb && !allowJSON) {
+    log.warning("⚠️  on Web, Rust logs to stdout are redirected to browser's console (or simply choose JSON)");
+  }
+  final api = initializeBenchExternalLibrary(dylibPath, useJSON: allowJSON);
 
   final Uuid uuid = Uuid();
   final thousandUuids = List<UuidValue>.generate(1000, (index) => uuid.v4obj(), growable: false);
@@ -36,18 +40,20 @@ void main(List<String> args) async {
   await api.handleStrings(strings: hundredThousandStrings, hint: 'reverse 10,000 strings');
   await api.handleUuidsConvertToStrings(ids: hundredThousandUuids, hint: '10,000 uuids converted to strings');
 
-  if (useJSON) {
+  if (allowJSON) {
     final dartMetrics = await api.dartMetrics() ?? List.empty(growable: false);
     final rustMetrics = await api.rustMetrics();
-    assert(rustMetrics.length == dartMetrics.length);
-    final int count = rustMetrics.length;
+    if (rustMetrics.length != dartMetrics.length) {
+      throw Exception('metrics on both sides should be of same length');
+    }
+    final int count = dartMetrics.length;
     for (var i = 0; i < count; i++) {
       final dartMetric = dartMetrics[i];
       final rustMetric = rustMetrics[i];
       if (dartMetric.name != rustMetric.name) {
         throw Exception('metric should come in the same order');
       }
-
+      // manually tie Rust call to its parent Dart call (until 'hint' can be sent to Rust)
       rustMetric.extra = dartMetric.extra;
     }
     final dartMetricsJson = dartMetrics.map((e) => jsonEncodeMetric(e, 'dart'));

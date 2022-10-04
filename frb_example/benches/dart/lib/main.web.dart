@@ -3,8 +3,10 @@
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart' hide useJSON;
+import 'package:flutter_rust_bridge/src/env/web.dart' show useJSON; // need for const
+
 import 'main.dart' as io;
-import 'package:js/js.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';
@@ -14,7 +16,8 @@ external void close();
 
 void main() async {
   final result = await directRunTests(
-    () => io.main(['stub']),
+    // on web, useJSON is not propagated to wasm, so pipe as arg instead
+    () => io.main(useJSON ? ['stub', '--json'] : ['stub']),
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),

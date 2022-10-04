@@ -503,13 +503,17 @@ version = "1.0.0"
 dependencies = [
  "anyhow",
  "chrono",
+ "console_error_panic_hook",
  "flutter_rust_bridge",
  "flutter_rust_bridge_codegen",
+ "js-sys",
  "lazy_static",
  "serde_json",
  "tracing",
  "tracing-subscriber",
  "uuid",
+ "wasm-bindgen",
+ "web-sys",
 ]
 
 [[package]]
