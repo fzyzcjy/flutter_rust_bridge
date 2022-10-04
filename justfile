@@ -85,7 +85,7 @@ test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
 test-pure-web *args="":
     cd {{frb_pure}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
 test-benches-web *args="":
-    cd {{frb_benches}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 --bench {{args}}
+    cd {{frb_benches}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 --release {{args}}
 test-flutter-web *args="":
     cd {{frb_flutter}} && just serve -c rust {{args}}
 test-integration:

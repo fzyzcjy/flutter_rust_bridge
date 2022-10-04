@@ -155,12 +155,6 @@ class Opts {
   @CliOption(help: 'Whether to build the library.', defaultsTo: true)
   late bool build;
 
-  @CliOption(
-      help: 'Whether to bench instead of test.',
-      negatable: false,
-      defaultsTo: false)
-  late bool bench;
-
   static List<String> rest(List<String> args) =>
       _$parserForOpts.parse(args).rest;
 }
@@ -283,7 +277,7 @@ Future<void> build(
       'js',
       '-o',
       '$root/$output.js',
-      if (config.release || config.bench) '-O2',
+      if (config.release) '-O2',
       if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
       if (config.verbose) '--verbose',
       config.dartInput!,
