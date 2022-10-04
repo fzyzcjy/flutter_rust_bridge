@@ -10,8 +10,7 @@ import 'package:uuid/uuid.dart';
 void main(List<String> args) async {
   String dylibPath = args[0];
   final log = Logger('frb_example/benches');
-  String? extra = args.length > 1 ? args[1] : null;
-  final bool useJSON = extra == '--json';
+  final bool useJSON = const bool.fromEnvironment("JSON");
   if (useJSON) {
     Logger.root.level = Level.INFO;
   } else {
@@ -22,9 +21,6 @@ void main(List<String> args) async {
   });
   log.fine('flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   log.finer('construct api');
-  if (extra != '--json') {
-    log.warning('CLI extra argument $extra is ignored (expected --json, or none)');
-  }
   final api = initializeBenchExternalLibrary(dylibPath, useJSON: useJSON);
 
   final Uuid uuid = Uuid();
