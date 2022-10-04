@@ -41,6 +41,7 @@ class Metric {
 }
 
 enum Unit {
+  Milliseconds,
   Microseconds,
   Nanoseconds,
 }

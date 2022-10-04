@@ -116,8 +116,9 @@ impl support::IntoDartExceptPrimitive for Metric {}
 impl support::IntoDart for Unit {
     fn into_dart(self) -> support::DartAbi {
         match self {
-            Self::Microseconds => 0,
-            Self::Nanoseconds => 1,
+            Self::Milliseconds => 0,
+            Self::Microseconds => 1,
+            Self::Nanoseconds => 2,
         }
         .into_dart()
     }
