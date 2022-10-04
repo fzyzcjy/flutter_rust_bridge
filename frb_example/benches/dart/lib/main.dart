@@ -51,18 +51,11 @@ void main(List<String> args) async {
       if (dartMetric.name != rustMetric.name) {
         throw Exception('metric should come in the same order');
       }
+
       rustMetric.extra = dartMetric.extra;
     }
-    final dartMetricsJson = dartMetrics.map((e) => json.encode({
-          'name': e.extra != null ? 'dart:${e.name}:${e.extra}' : 'dart:${e.name}',
-          'value': e.value,
-          'unit': unitToString(e.unit),
-        }));
-    final rustMetricsJson = rustMetrics.map((e) => json.encode({
-          'name': e.extra != null ? 'rust:${e.name}:${e.extra}' : 'rust:${e.name}',
-          'value': e.value,
-          'unit': unitToString(e.unit),
-        }));
+    final dartMetricsJson = dartMetrics.map((e) => jsonEncodeMetric(e, 'dart'));
+    final rustMetricsJson = rustMetrics.map((e) => jsonEncodeMetric(e, 'rust'));
     print(List.from(dartMetricsJson)..addAll(rustMetricsJson));
   }
 }
@@ -72,5 +65,11 @@ String unitToString(Unit unit) => unit == Unit.Microseconds
     : unit == Unit.Milliseconds
         ? 'ms'
         : 'ns';
+
+String jsonEncodeMetric(Metric metric, String language) => json.encode({
+      'name': metric.extra != null ? '$language:${metric.name}:${metric.extra}' : '$language:${metric.name}',
+      'value': metric.value,
+      'unit': unitToString(metric.unit),
+    });
 
 // vim:expandtab:ts=2:sw=2
