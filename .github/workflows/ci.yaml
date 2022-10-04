@@ -154,22 +154,6 @@ jobs:
             -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
           current_path: frb_example/pure_dart/dart
 
-      - name: Build benches example (Wasm)
-        working-directory: ./frb_example/benches/rust
-        # benches are run on release mode in gh-pages workflow
-        # following steps only assert good functioning
-        run: cargo +nightly build --target wasm32-unknown-unknown --verbose
-      # error : invalid ELF header
-      # - name: Run benchmark_harness example (Wasm)
-      #   working-directory: ./frb_example/benches/dart
-      #   run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
-      #   env:
-      #     DYLIB_PATH: ../../../target/wasm32-unknown-unknown/debug/flutter_rust_bridge_example_benchmark_suite.wasm
-      - name: Run benches example (Wasm)
-        run: dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/main.web.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8081 --release
-        env:
-          JSON: true
-
           
 
   # -------------------------- linter --------------------------
