@@ -14,6 +14,8 @@ import 'package:yaml/yaml.dart';
 
 part 'serve.g.dart';
 
+final bool useJSON = (Platform.environment["JSON"] ?? "false") == "true";
+
 final YamlMap? pubspec = () {
   final pubspecPath = Platform.script.resolve('../pubspec.yaml');
   final pubpsec = File(pubspecPath.toFilePath());
@@ -280,17 +282,25 @@ Future<void> build(
       if (config.release) '-O2',
       if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
       if (config.verbose) '--verbose',
+      if (useJSON) '--define=JSON=true',
       config.dartInput!,
     ]);
   } else {
     await system(
       'flutter',
-      ['build', 'web', if (!config.release) '--profile'] + Opts.rest(args),
+      [
+            'build',
+            'web',
+            if (!config.release) '--profile',
+            if (useJSON) '--dart-define=JSON=true'
+          ] +
+          Opts.rest(args),
     );
   }
 }
 
 Future<void> runServer(Opts config, {required String root}) async {
+  final bool useJSON = (Platform.environment["JSON"] ?? "false") == "true";
   final ip = InternetAddress.anyIPv4;
 
   final staticFilesHandler =
@@ -309,7 +319,7 @@ Future<void> runServer(Opts config, {required String root}) async {
           print(data);
         }
       } catch (err, st) {
-        print('$err\nStacktrace:\n$st');
+        eprint('$err\nStacktrace:\n$st');
       }
     }
   });
