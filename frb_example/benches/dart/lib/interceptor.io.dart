@@ -58,7 +58,9 @@ class AsyncStopWatch extends Stopwatch implements TimeWatch {
 class UniqueAsyncStopWatch extends AsyncStopWatch implements UniqueTimeWatch {
   @override
   UuidValue uuid;
-  UniqueAsyncStopWatch.create() : uuid = Uuid().v4obj(), super();
+  UniqueAsyncStopWatch.create()
+      : uuid = Uuid().v4obj(),
+        super();
 }
 
 class FlutterRustBridgeExampleBenchmarkSuiteWireBench extends FlutterRustBridgeExampleBenchmarkSuiteWire {

@@ -64,9 +64,7 @@ abstract class TimeWatch {
 
 abstract class UniqueTimeWatch extends TimeWatch {
   late UuidValue uuid;
-  UniqueTimeWatch.create()
-      : 
-        super.create();
+  UniqueTimeWatch.create() : super.create();
 }
 
 abstract class FlutterRustBridgeInterceptor<T extends TimeWatch> {
