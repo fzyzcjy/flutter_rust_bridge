@@ -152,6 +152,21 @@ jobs:
             -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
           current_path: frb_example/pure_dart/dart
 
+      - name: Build benches example (Wasm)
+        working-directory: ./frb_example/benches/rust
+        # benches are run on release mode in gh-pages workflow
+        # following steps only assert good functioning
+        run: cargo build --wasm32-unknown-unknown --verbose
+      - name: Run benchmark_harness example (Wasm)
+        working-directory: ./frb_example/benches/dart
+        run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
+        env:
+          DYLIB_PATH: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so
+      - name: Run benches example (Wasm)
+        working-directory: ./frb_example/benches/dart
+        run: dart lib/main.dart ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so
+        env:
+          JSON: true
 
           
 
