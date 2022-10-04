@@ -11,6 +11,7 @@ lazy_static::lazy_static! {
 #[allow(dead_code)]
 #[derive(Debug, Clone)]
 pub enum Unit {
+    Milliseconds,
     Microseconds,
     Nanoseconds,
 }

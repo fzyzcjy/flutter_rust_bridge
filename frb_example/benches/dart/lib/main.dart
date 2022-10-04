@@ -56,15 +56,21 @@ void main(List<String> args) async {
     final dartMetricsJson = dartMetrics.map((e) => json.encode({
           'name': e.extra != null ? 'dart:${e.name}:${e.extra}' : 'dart:${e.name}',
           'value': e.value,
-          'unit': e.unit == Unit.Microseconds ? 'μs' : 'ns',
+          'unit': unitToString(e.unit),
         }));
     final rustMetricsJson = rustMetrics.map((e) => json.encode({
           'name': e.extra != null ? 'rust:${e.name}:${e.extra}' : 'rust:${e.name}',
           'value': e.value,
-          'unit': e.unit == Unit.Microseconds ? 'μs' : 'ns',
+          'unit': unitToString(e.unit),
         }));
     print(List.from(dartMetricsJson)..addAll(rustMetricsJson));
   }
 }
+
+String unitToString(Unit unit) => unit == Unit.Microseconds
+    ? 'μs'
+    : unit == Unit.Milliseconds
+        ? 'ms'
+        : 'ns';
 
 // vim:expandtab:ts=2:sw=2
