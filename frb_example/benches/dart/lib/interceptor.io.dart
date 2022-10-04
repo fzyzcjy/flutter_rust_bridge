@@ -43,7 +43,7 @@ class AsyncStopWatch extends Stopwatch implements TimeWatch {
   int? ends;
   @override
   void start() {
-    starts = elapsedMicroseconds;
+    starts = 0;
     super.start();
   }
 

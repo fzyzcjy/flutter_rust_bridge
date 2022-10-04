@@ -129,10 +129,9 @@ abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch> exten
   final log = Logger('FlutterRustBridgeInterceptorJson');
   @override
   Future<T> beforeExecuteNormal(String debugName, Object? hint) async {
-    T stopwatch = create();
+    final T stopwatch = await super.beforeExecuteNormal(debugName, hint);
     metrics.putIfAbsent(
         stopwatch.uuid.toString(), () => Metric(name: debugName, extra: hint.toString(), unit: Unit.Microseconds));
-    await super.beforeExecuteNormal(debugName, stopwatch);
     return stopwatch;
   }
 
@@ -140,16 +139,15 @@ abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch> exten
   Future<void> afterExecuteNormal<S>(String debugName, T stopwatch) async {
     await super.afterExecuteNormal(debugName, stopwatch);
     metrics.update(stopwatch.uuid.toString(),
-        (metric) => Metric(name: metric.name, unit: metric.unit, extra: metric.extra, value: stopwatch.ends));
+        (metric) => Metric(name: metric.name, unit: metric.unit, extra: metric.extra, value: stopwatch.ends!));
   }
 
   @override
   T beforeExecuteSync<S>(String debugName, Object? hint) {
     final UuidValue uuid = generator.v4obj();
-    T stopwatch = create();
+    T stopwatch = super.beforeExecuteSync(debugName, hint);
     metrics.putIfAbsent(uuid.toString(),
         () => Metric(value: stopwatch.ends, name: debugName, extra: hint.toString(), unit: Unit.Microseconds));
-    super.beforeExecuteSync(debugName, stopwatch);
     return stopwatch;
   }
 
@@ -157,6 +155,6 @@ abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch> exten
   void afterExecuteSync<S>(String debugName, T stopwatch) {
     super.afterExecuteSync(debugName, stopwatch);
     metrics.update(stopwatch.uuid.toString(),
-        (metric) => Metric(name: metric.name, unit: metric.unit, extra: metric.extra, value: stopwatch.ends));
+        (metric) => Metric(name: metric.name, unit: metric.unit, extra: metric.extra, value: stopwatch.ends!));
   }
 }
