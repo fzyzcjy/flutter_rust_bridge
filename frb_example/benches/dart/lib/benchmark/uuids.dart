@@ -2,6 +2,7 @@
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:uuid/uuid.dart';
 import '../ffi.io.dart' if (dart.library.html) '../ffi.web.dart';
+import 'dart:io' if (dart.library.html) 'dart.html';
 
 // Create a new benchmark by extending BenchmarkBase
 class TemplateBenchmark extends AsyncBenchmarkBase {
@@ -25,8 +26,8 @@ class TemplateBenchmark extends AsyncBenchmarkBase {
   @override
   Future<void> setup() {
     return Future.sync(() {
-      String dylibPath = String.fromEnvironment("DYLIB_PATH",
-          defaultValue: "../../../target/release/libflutter_rust_bridge_example_benchmark_suite.dylib");
+      String dylibPath = Platform.environment["DYLIB_PATH"] ??
+          "../../../target/release/libflutter_rust_bridge_example_benchmark_suite.dylib";
       int sampleCount = int.fromEnvironment("SAMPLE_COUNT", defaultValue: 1000);
       print('flutter_rust_bridge benchmark $sampleCount uuids (dylibPath=$dylibPath)');
       print('setup');
