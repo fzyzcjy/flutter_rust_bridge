@@ -68,12 +68,12 @@ test-benches *args="":
     cd {{frb_benches}}/rust && cargo b --release
     cd {{frb_benches}}/dart && \
         dart pub get && \
-        dart {{args}} lib/main.dart ../../../target/release/{{bench_dylib}}
+        dart {{args}} lib/main.dart ../../../target/release/{{bench_dylib}} --release
 test-benches-json *args="":
     cd {{frb_benches}}/rust && cargo b --release
     cd {{frb_benches}}/dart && \
         dart pub get && \
-        export JSON=true && dart {{args}} lib/main.dart ../../../target/release/{{bench_dylib}} --json
+        export JSON=true && dart {{args}} lib/main.dart ../../../target/release/{{bench_dylib}} --release
 # TODO: Make ASan tests work for other platforms
 test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     ./tools/dartsdk/fetch.sh
@@ -86,6 +86,8 @@ test-pure-web *args="":
     cd {{frb_pure}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
 test-benches-web *args="":
     cd {{frb_benches}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 --release {{args}}
+test-benches-web-json *args="":
+    export JSON=true && cd {{frb_benches}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 --release {{args}}
 test-flutter-web *args="":
     cd {{frb_flutter}} && just serve -c rust {{args}}
 test-integration:
