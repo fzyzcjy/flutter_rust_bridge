@@ -62,7 +62,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
     let decl_code = generate_dart_declaration_code(
         &common_header,
         generate_freezed_header(dart_output_file_root, needs_freezed),
-        generate_import_header(get_dart_imports(ir_file)),
+        generate_import_header(get_dart_imports(ir_file), spec.import_array.as_deref()),
         generate_dart_declaration_body(dart_api_class_name, dart_funcs, dart_structs),
     );
 
@@ -90,6 +90,7 @@ struct DartApiSpec {
     dart_wasm_funcs: Vec<String>,
     dart_wasm_module: Option<String>,
     needs_freezed: bool,
+    import_array: Option<String>,
 }
 
 impl DartApiSpec {
@@ -156,6 +157,11 @@ impl DartApiSpec {
             _ => false,
         });
 
+        let import_array = distinct_types
+            .iter()
+            .any(IrType::is_array)
+            .then(|| "import 'package:collection/collection.dart';".to_owned());
+
         DartApiSpec {
             dart_funcs,
             dart_structs,
@@ -165,6 +171,7 @@ impl DartApiSpec {
             dart_wasm_funcs,
             dart_wasm_module,
             needs_freezed,
+            import_array,
         }
     }
 }
@@ -182,8 +189,11 @@ fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> 
     }
 }
 
-fn generate_import_header(imports: HashSet<&IrDartImport>) -> DartBasicCode {
-    if !imports.is_empty() {
+fn generate_import_header(
+    imports: HashSet<&IrDartImport>,
+    import_array: Option<&str>,
+) -> DartBasicCode {
+    if !imports.is_empty() || import_array.is_some() {
         DartBasicCode {
             import: imports
                 .iter()
@@ -192,7 +202,8 @@ fn generate_import_header(imports: HashSet<&IrDartImport>) -> DartBasicCode {
                     _ => format!("import '{}';", it.uri),
                 })
                 .collect::<Vec<_>>()
-                .join("\n"),
+                .join("\n")
+                + import_array.unwrap_or(""),
             part: "".to_string(),
             body: "".to_string(),
         }
@@ -275,8 +286,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         dart_wire2api_funcs,
         dart_wasm_funcs,
         dart_wasm_module,
-        dart_structs: _,
-        needs_freezed: _,
+        ..
     } = spec;
 
     lines.push_acc(Acc {

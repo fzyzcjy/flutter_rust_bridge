@@ -74,14 +74,14 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::GeneralArray { length, general } => format!(
                 r"final inner = (raw as List<dynamic>).map(_wire2api_{}).toList();
                 if (inner.length != {length}) throw Exception('unexpected array length: expect {length} but see ${{inner.length}}');
-                return {}.Unchecked(inner);",
+                return {}.unchecked(inner);",
                 general.safe_ident(),
                 self.ir.dart_api_type()
             ),
             IrTypeDelegate::PrimitiveArray { length, .. } => format!(
                 r"final inner = _wire2api_{}(raw);
                 if (inner.length != {length}) throw Exception('unexpected array length: expect {length} but see ${{inner.length}}');
-                return {}.Unchecked(inner);",
+                return {}.unchecked(inner);",
                 self.ir.get_delegate().safe_ident(),
                 self.ir.dart_api_type()
             ),
@@ -132,24 +132,20 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::GeneralArray { length, .. }
             | IrTypeDelegate::PrimitiveArray { length, .. } => {
                 format!(
-                    "class {0} {{
-                        final {1} inner;
-
-                        {0}(this.inner): assert(inner.length == {length});
-
-                        {0}.Unchecked(this.inner);
-
-                        {2} operator [](int index) {{
-                            return inner[index];
-                        }}
-                        
-                        void operator []=(int index, {2} value) {{
-                            inner[index] = value;
-                        }}
-                }}",
+                    "
+                class {0} extends NonGrowableListView<{2}> {{
+                    {0}({1} inner)
+                        : assert(inner.length == {length}),
+                          super(inner);
+                    {0}.unchecked({1} inner)
+                        : super(inner);
+                    {1} get inner => {3};
+                  }}
+                ",
                     self.ir.dart_api_type(),
                     self.ir.get_delegate().dart_api_type(),
-                    self.ir.inner_dart_api_type()
+                    self.ir.inner_dart_api_type(),
+                    self.ir.array_cast_string()
                 )
             }
             _ => "".into(),

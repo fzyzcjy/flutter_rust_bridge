@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
+import 'package:collection/collection.dart';
 
 part 'bridge_definitions.freezed.dart';
 
@@ -387,52 +388,28 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
 }
 
-class PointArray2 {
-  final List<Point> inner;
-
-  PointArray2(this.inner) : assert(inner.length == 2);
-
-  PointArray2.Unchecked(this.inner);
-
-  Point operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, Point value) {
-    inner[index] = value;
-  }
+class PointArray2 extends NonGrowableListView<Point> {
+  PointArray2(List<Point> inner)
+      : assert(inner.length == 2),
+        super(inner);
+  PointArray2.unchecked(List<Point> inner) : super(inner);
+  List<Point> get inner => super.cast();
 }
 
-class TestIdArray2 {
-  final List<TestId> inner;
-
-  TestIdArray2(this.inner) : assert(inner.length == 2);
-
-  TestIdArray2.Unchecked(this.inner);
-
-  TestId operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, TestId value) {
-    inner[index] = value;
-  }
+class TestIdArray2 extends NonGrowableListView<TestId> {
+  TestIdArray2(List<TestId> inner)
+      : assert(inner.length == 2),
+        super(inner);
+  TestIdArray2.unchecked(List<TestId> inner) : super(inner);
+  List<TestId> get inner => super.cast();
 }
 
-class TestIdArray4 {
-  final List<TestId> inner;
-
-  TestIdArray4(this.inner) : assert(inner.length == 4);
-
-  TestIdArray4.Unchecked(this.inner);
-
-  TestId operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, TestId value) {
-    inner[index] = value;
-  }
+class TestIdArray4 extends NonGrowableListView<TestId> {
+  TestIdArray4(List<TestId> inner)
+      : assert(inner.length == 4),
+        super(inner);
+  TestIdArray4.unchecked(List<TestId> inner) : super(inner);
+  List<TestId> get inner => super.cast();
 }
 
 class ApplicationEnv {
@@ -634,20 +611,12 @@ class ExoticOptionals {
   });
 }
 
-class F64Array16 {
-  final Float64List inner;
-
-  F64Array16(this.inner) : assert(inner.length == 16);
-
-  F64Array16.Unchecked(this.inner);
-
-  double operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, double value) {
-    inner[index] = value;
-  }
+class F64Array16 extends NonGrowableListView<double> {
+  F64Array16(Float64List inner)
+      : assert(inner.length == 16),
+        super(inner);
+  F64Array16.unchecked(Float64List inner) : super(inner);
+  Float64List get inner => Float64List.fromList(super.cast());
 }
 
 class FeatureChrono {
@@ -682,20 +651,12 @@ class FeedId {
   });
 }
 
-class I32Array2 {
-  final Int32List inner;
-
-  I32Array2(this.inner) : assert(inner.length == 2);
-
-  I32Array2.Unchecked(this.inner);
-
-  int operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, int value) {
-    inner[index] = value;
-  }
+class I32Array2 extends NonGrowableListView<int> {
+  I32Array2(Int32List inner)
+      : assert(inner.length == 2),
+        super(inner);
+  I32Array2.unchecked(Int32List inner) : super(inner);
+  Int32List get inner => Int32List.fromList(super.cast());
 }
 
 @freezed
@@ -900,68 +861,36 @@ class TestId {
   });
 }
 
-class U8Array1600 {
-  final Uint8List inner;
-
-  U8Array1600(this.inner) : assert(inner.length == 1600);
-
-  U8Array1600.Unchecked(this.inner);
-
-  int operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, int value) {
-    inner[index] = value;
-  }
+class U8Array1600 extends NonGrowableListView<int> {
+  U8Array1600(Uint8List inner)
+      : assert(inner.length == 1600),
+        super(inner);
+  U8Array1600.unchecked(Uint8List inner) : super(inner);
+  Uint8List get inner => Uint8List.fromList(super.cast());
 }
 
-class U8Array32 {
-  final Uint8List inner;
-
-  U8Array32(this.inner) : assert(inner.length == 32);
-
-  U8Array32.Unchecked(this.inner);
-
-  int operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, int value) {
-    inner[index] = value;
-  }
+class U8Array32 extends NonGrowableListView<int> {
+  U8Array32(Uint8List inner)
+      : assert(inner.length == 32),
+        super(inner);
+  U8Array32.unchecked(Uint8List inner) : super(inner);
+  Uint8List get inner => Uint8List.fromList(super.cast());
 }
 
-class U8Array5 {
-  final Uint8List inner;
-
-  U8Array5(this.inner) : assert(inner.length == 5);
-
-  U8Array5.Unchecked(this.inner);
-
-  int operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, int value) {
-    inner[index] = value;
-  }
+class U8Array5 extends NonGrowableListView<int> {
+  U8Array5(Uint8List inner)
+      : assert(inner.length == 5),
+        super(inner);
+  U8Array5.unchecked(Uint8List inner) : super(inner);
+  Uint8List get inner => Uint8List.fromList(super.cast());
 }
 
-class U8Array8 {
-  final Uint8List inner;
-
-  U8Array8(this.inner) : assert(inner.length == 8);
-
-  U8Array8.Unchecked(this.inner);
-
-  int operator [](int index) {
-    return inner[index];
-  }
-
-  void operator []=(int index, int value) {
-    inner[index] = value;
-  }
+class U8Array8 extends NonGrowableListView<int> {
+  U8Array8(Uint8List inner)
+      : assert(inner.length == 8),
+        super(inner);
+  U8Array8.unchecked(Uint8List inner) : super(inner);
+  Uint8List get inner => Uint8List.fromList(super.cast());
 }
 
 /// Example for @freezed and @meta.immutable

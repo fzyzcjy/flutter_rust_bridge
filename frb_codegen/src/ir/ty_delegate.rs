@@ -119,6 +119,17 @@ impl IrTypeDelegate {
             _ => panic!("Unexpected type"),
         }
     }
+
+    pub fn array_cast_string(&self) -> String {
+        match self {
+            IrTypeDelegate::GeneralArray { .. } => "super.cast()".into(),
+            IrTypeDelegate::PrimitiveArray { .. } => format!(
+                "{}.fromList(super.cast())",
+                self.get_delegate().dart_api_type()
+            ),
+            _ => panic!("Unexpected type"),
+        }
+    }
 }
 
 impl IrTypeTrait for IrTypeDelegate {

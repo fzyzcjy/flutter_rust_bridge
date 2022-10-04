@@ -1353,7 +1353,7 @@ DateTime _wire2api_Chrono_Utc(dynamic raw) {
 PointArray2 _wire2api_Point_array_2(dynamic raw) {
   final inner = (raw as List<dynamic>).map(_wire2api_point).toList();
   if (inner.length != 2) throw Exception('unexpected array length: expect 2 but see ${inner.length}');
-  return PointArray2.Unchecked(inner);
+  return PointArray2.unchecked(inner);
 }
 
 String _wire2api_String(dynamic raw) {
@@ -1429,7 +1429,7 @@ int _wire2api_SyncReturn_u8(Uint8List raw) {
 TestIdArray2 _wire2api_TestId_array_2(dynamic raw) {
   final inner = (raw as List<dynamic>).map(_wire2api_test_id).toList();
   if (inner.length != 2) throw Exception('unexpected array length: expect 2 but see ${inner.length}');
-  return TestIdArray2.Unchecked(inner);
+  return TestIdArray2.unchecked(inner);
 }
 
 UuidValue _wire2api_Uuid(dynamic raw) {
@@ -1724,7 +1724,7 @@ int _wire2api_i32(dynamic raw) {
 I32Array2 _wire2api_i32_array_2(dynamic raw) {
   final inner = _wire2api_int_32_list(raw);
   if (inner.length != 2) throw Exception('unexpected array length: expect 2 but see ${inner.length}');
-  return I32Array2.Unchecked(inner);
+  return I32Array2.unchecked(inner);
 }
 
 int _wire2api_i64(dynamic raw) {
@@ -2063,25 +2063,25 @@ int _wire2api_u8(dynamic raw) {
 U8Array1600 _wire2api_u8_array_1600(dynamic raw) {
   final inner = _wire2api_uint_8_list(raw);
   if (inner.length != 1600) throw Exception('unexpected array length: expect 1600 but see ${inner.length}');
-  return U8Array1600.Unchecked(inner);
+  return U8Array1600.unchecked(inner);
 }
 
 U8Array32 _wire2api_u8_array_32(dynamic raw) {
   final inner = _wire2api_uint_8_list(raw);
   if (inner.length != 32) throw Exception('unexpected array length: expect 32 but see ${inner.length}');
-  return U8Array32.Unchecked(inner);
+  return U8Array32.unchecked(inner);
 }
 
 U8Array5 _wire2api_u8_array_5(dynamic raw) {
   final inner = _wire2api_uint_8_list(raw);
   if (inner.length != 5) throw Exception('unexpected array length: expect 5 but see ${inner.length}');
-  return U8Array5.Unchecked(inner);
+  return U8Array5.unchecked(inner);
 }
 
 U8Array8 _wire2api_u8_array_8(dynamic raw) {
   final inner = _wire2api_uint_8_list(raw);
   if (inner.length != 8) throw Exception('unexpected array length: expect 8 but see ${inner.length}');
-  return U8Array8.Unchecked(inner);
+  return U8Array8.unchecked(inner);
 }
 
 Uint16List _wire2api_uint_16_list(dynamic raw) {
