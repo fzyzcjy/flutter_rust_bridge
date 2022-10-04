@@ -10,8 +10,8 @@ import 'package:uuid/uuid.dart';
 void main(List<String> args) async {
   String dylibPath = args[0];
   final log = Logger('frb_example/benches');
-  final bool useJSON = const bool.fromEnvironment("JSON");
-  if (useJSON) {
+  final bool outputJSON = useJSON();
+  if (outputJSON) {
     Logger.root.level = Level.INFO;
   } else {
     Logger.root.level = Level.ALL;
@@ -21,7 +21,7 @@ void main(List<String> args) async {
   });
   log.fine('flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   log.finer('construct api');
-  final api = initializeBenchExternalLibrary(dylibPath, useJSON: useJSON);
+  final api = initializeBenchExternalLibrary(dylibPath, useJSON: outputJSON);
 
   final Uuid uuid = Uuid();
   final thousandUuids = List<UuidValue>.generate(1000, (index) => uuid.v4obj(), growable: false);
@@ -36,7 +36,7 @@ void main(List<String> args) async {
   await api.handleStrings(strings: hundredThousandStrings, hint: 'reverse 10,000 strings');
   await api.handleUuidsConvertToStrings(ids: hundredThousandUuids, hint: '10,000 uuids converted to strings');
 
-  if (useJSON) {
+  if (outputJSON) {
     final dartMetrics = await api.dartMetrics() ?? List.empty(growable: false);
     final rustMetrics = await api.rustMetrics();
     assert(rustMetrics.length == dartMetrics.length);

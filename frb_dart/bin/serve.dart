@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
@@ -13,8 +14,6 @@ import 'package:colorize/colorize.dart';
 import 'package:yaml/yaml.dart';
 
 part 'serve.g.dart';
-
-final bool useJSON = (Platform.environment["JSON"] ?? "false") == "true";
 
 final YamlMap? pubspec = () {
   final pubspecPath = Platform.script.resolve('../pubspec.yaml');
@@ -240,6 +239,7 @@ Future<void> build(
   required String root,
   required List<String> args,
 }) async {
+  final bool outputJSON = useJSON();
   final manifest = jsonDecode(await system(
     'cargo',
     ['read-manifest'],
@@ -282,7 +282,7 @@ Future<void> build(
       if (config.release) '-O2',
       if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
       if (config.verbose) '--verbose',
-      if (useJSON) '--define=JSON=true',
+      if (outputJSON) '--define=JSON=true',
       config.dartInput!,
     ]);
   } else {
@@ -292,7 +292,7 @@ Future<void> build(
             'build',
             'web',
             if (!config.release) '--profile',
-            if (useJSON) '--dart-define=JSON=true'
+            if (outputJSON) '--dart-define=JSON=true'
           ] +
           Opts.rest(args),
     );
@@ -300,7 +300,6 @@ Future<void> build(
 }
 
 Future<void> runServer(Opts config, {required String root}) async {
-  final bool useJSON = (Platform.environment["JSON"] ?? "false") == "true";
   final ip = InternetAddress.anyIPv4;
 
   final staticFilesHandler =
