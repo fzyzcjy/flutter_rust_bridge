@@ -6,8 +6,6 @@ import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
 
-const isWeb = bool.fromEnvironment('dart.library.html');
-
 String? skipWeb([String reason = 'unspecified']) => isWeb ? 'Skipped on web (reason: $reason)' : null;
 
 void main(List<String> args) async {

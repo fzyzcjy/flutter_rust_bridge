@@ -239,7 +239,6 @@ Future<void> build(
   required String root,
   required List<String> args,
 }) async {
-  final bool outputJSON = useJSON();
   final manifest = jsonDecode(await system(
     'cargo',
     ['read-manifest'],
@@ -282,7 +281,7 @@ Future<void> build(
       if (config.release) '-O2',
       if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
       if (config.verbose) '--verbose',
-      if (outputJSON) '--define=JSON=true',
+      if (useJSON) '--define=JSON=true',
       config.dartInput!,
     ]);
   } else {
@@ -292,7 +291,7 @@ Future<void> build(
             'build',
             'web',
             if (!config.release) '--profile',
-            if (outputJSON) '--dart-define=JSON=true'
+            if (useJSON) '--dart-define=JSON=true'
           ] +
           Opts.rest(args),
     );

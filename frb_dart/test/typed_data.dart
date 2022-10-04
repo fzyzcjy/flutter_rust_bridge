@@ -4,7 +4,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 final i64maxb = BigInt.parse('0x7FFFFFFFFFFFFFFF');
 final i64minb = BigInt.parse('-0x8000000000000000');
 final u64maxb = BigInt.parse('0xFFFFFFFFFFFFFFFF');
-const isWeb = bool.fromEnvironment('dart.library.html');
 
 void main() {
   test('Int64List', () {
