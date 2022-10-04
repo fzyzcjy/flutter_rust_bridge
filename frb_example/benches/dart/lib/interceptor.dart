@@ -31,17 +31,9 @@ abstract class FlutterRustBridgeExampleBenchmarkSuitePlatformBenchBase<
     return result;
   }
 
-  Future<List<Metric>?> metrics() async {
-    if (interceptor is FlutterRustBridgeInterceptorJson) {
-      final FlutterRustBridgeInterceptorJson jsonInterceptor = interceptor as FlutterRustBridgeInterceptorJson;
-      List<Metric> metrics = List.empty(growable: true);
-      for (var e in jsonInterceptor.metrics.entries) {
-        metrics.add(e.value);
-      }
-      return metrics;
-    }
-    return null;
-  }
+  Future<List<Metric>?> metrics() async => interceptor is FlutterRustBridgeInterceptorJson
+      ? (interceptor as FlutterRustBridgeInterceptorJson).metrics.values.toList()
+      : null;
 }
 
 class FlutterRustBridgeExampleBenchmarkSuiteImplBench extends FlutterRustBridgeExampleBenchmarkSuiteImpl {
