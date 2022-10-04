@@ -1,6 +1,7 @@
 import 'dart:ffi' as ffi;
 
 import 'package:uuid/uuid.dart';
+
 import 'ffi.io.dart';
 import 'interceptor.dart';
 export 'interceptor.dart';
@@ -55,14 +56,9 @@ class AsyncStopWatch extends Stopwatch implements TimeWatch {
 }
 
 class UniqueAsyncStopWatch extends AsyncStopWatch implements UniqueTimeWatch {
-  late UuidValue _uuid;
-  UniqueAsyncStopWatch.create() {
-    Uuid generator = Uuid();
-    _uuid = generator.v4obj();
-  }
-
   @override
-  UuidValue get uuid => _uuid;
+  UuidValue uuid;
+  UniqueAsyncStopWatch.create() : uuid = Uuid().v4obj(), super();
 }
 
 class FlutterRustBridgeExampleBenchmarkSuiteWireBench extends FlutterRustBridgeExampleBenchmarkSuiteWire {

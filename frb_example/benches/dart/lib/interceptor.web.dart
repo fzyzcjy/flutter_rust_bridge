@@ -56,14 +56,9 @@ class WindowPerformance implements TimeWatch {
 }
 
 class UniqueWindowPerformance extends WindowPerformance implements UniqueTimeWatch {
-  late UuidValue _uuid;
-  UniqueWindowPerformance.create() {
-    Uuid generator = Uuid();
-    _uuid = generator.v4obj();
-  }
-
   @override
-  UuidValue get uuid => _uuid;
+  UuidValue uuid;
+  UniqueWindowPerformance.create() : uuid = Uuid().v4obj(), super();
 }
 
 class FlutterRustBridgeExampleBenchmarkSuiteWireBench extends FlutterRustBridgeExampleBenchmarkSuiteWire {

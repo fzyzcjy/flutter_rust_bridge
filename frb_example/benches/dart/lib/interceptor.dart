@@ -63,8 +63,10 @@ abstract class TimeWatch {
 }
 
 abstract class UniqueTimeWatch extends TimeWatch {
-  UniqueTimeWatch.create() : super.create();
-  UuidValue get uuid;
+  late UuidValue uuid;
+  UniqueTimeWatch.create()
+      : 
+        super.create();
 }
 
 abstract class FlutterRustBridgeInterceptor<T extends TimeWatch> {
@@ -144,9 +146,8 @@ abstract class FlutterRustBridgeInterceptorJson<T extends UniqueTimeWatch> exten
 
   @override
   T beforeExecuteSync<S>(String debugName, Object? hint) {
-    final UuidValue uuid = generator.v4obj();
     T stopwatch = super.beforeExecuteSync(debugName, hint);
-    metrics.putIfAbsent(uuid.toString(),
+    metrics.putIfAbsent(stopwatch.uuid.toString(),
         () => Metric(value: stopwatch.ends, name: debugName, extra: hint.toString(), unit: Unit.Microseconds));
     return stopwatch;
   }
