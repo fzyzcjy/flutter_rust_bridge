@@ -32,6 +32,16 @@ impl Metrics for SimpleHandler<BenchExecutor, BenchErrorHandler> {
     }
 }
 
+fn record(debug_name_string: &str, elapsed: u64, unit: Unit) {
+    let mut guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
+    guard.push(Metric {
+        name: debug_name_string.to_string(),
+        value: Some(elapsed),
+        extra: None,
+        unit,
+    });
+}
+
 #[derive(Clone, Copy)]
 pub struct BenchErrorHandler(ReportDartErrorHandler);
 
@@ -121,33 +131,26 @@ impl BenchExecutor {
     where
         F: FnOnce() -> R,
     {
-        use tracing::{span, trace, Level};
-        span!(Level::TRACE, "frb-executor");
         if !json {
+            use tracing::{span, trace, Level};
+            span!(Level::TRACE, "frb-executor");
             trace!("(Rust) execute [{}] start", bench_name);
         }
         let start = std::time::Instant::now();
         let ret = f();
         let elapsed = start.elapsed().as_nanos();
         if !json {
+            use tracing::{span, trace, Level};
+            span!(Level::TRACE, "frb-executor");
             trace!(
                 "(Rust) execute [{}] end delta_time={}ns",
                 bench_name,
                 elapsed
             );
         } else {
-            Self::record(bench_name, elapsed as u64);
+            record(bench_name, elapsed as u64, Unit::Nanoseconds);
         }
         ret
-    }
-    fn record(debug_name_string: &str, elapsed: u64) {
-        let mut guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
-        guard.push(Metric {
-            name: debug_name_string.to_string(),
-            value: Some(elapsed),
-            extra: None,
-            unit: Unit::Nanoseconds,
-        });
     }
 }
 
@@ -161,16 +164,7 @@ impl BenchExecutor {
         let ret = f();
         let end = chrono::Utc::now().timestamp_millis() as u64;
         let elapsed = end - start;
-        Self::record(bench_name, elapsed);
+        record(bench_name, elapsed, Unit::Milliseconds);
         ret
-    }
-    fn record(debug_name_string: &str, elapsed: u64) {
-        let mut guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
-        guard.push(Metric {
-            name: debug_name_string.to_string(),
-            value: Some(elapsed),
-            extra: None,
-            unit: Unit::Milliseconds,
-        });
     }
 }
