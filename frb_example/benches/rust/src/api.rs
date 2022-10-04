@@ -35,7 +35,11 @@ pub fn rust_metrics() -> anyhow::Result<Vec<Metric>> {
         .collect::<Vec<_>>())
 }
 
-pub fn handle_uuids(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
+pub fn handle_uuids(mut ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
+    if ids.is_empty() {
+        panic!("uuids must not be empty");
+    }
+    ids.reverse();
     Ok(ids)
 }
 
@@ -46,6 +50,10 @@ pub fn handle_uuids_convert_to_strings(ids: Vec<uuid::Uuid>) -> anyhow::Result<V
         .collect())
 }
 
-pub fn handle_strings(strings: Vec<String>) -> anyhow::Result<Vec<String>> {
+pub fn handle_strings(mut strings: Vec<String>) -> anyhow::Result<Vec<String>> {
+    if strings.is_empty() {
+        panic!("uuids must not be empty");
+    }
+    strings.reverse();
     Ok(strings)
 }

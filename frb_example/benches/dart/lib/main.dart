@@ -33,11 +33,11 @@ void main(List<String> args) async {
   final hundredThousandUuids = List<UuidValue>.generate(100000, (index) => uuid.v4obj(), growable: false);
   final hundredThousandStrings =
       List<String>.generate(100000, (index) => getRandomString(uuidSizeInBytes), growable: false);
-  await api.handleUuids(ids: thousandUuids, hint: '1,000 uuids');
-  await api.handleStrings(strings: thousandStrings, hint: '1,000 strings');
+  await api.handleUuids(ids: thousandUuids, hint: 'reverse 1,000 uuids');
+  await api.handleStrings(strings: thousandStrings, hint: 'reverse 1,000 strings');
   await api.handleUuidsConvertToStrings(ids: thousandUuids, hint: '1,000 uuids converted to strings');
-  await api.handleUuids(ids: hundredThousandUuids, hint: '10,000 uuids');
-  await api.handleStrings(strings: hundredThousandStrings, hint: '10,000 strings');
+  await api.handleUuids(ids: hundredThousandUuids, hint: 'reverse 10,000 uuids');
+  await api.handleStrings(strings: hundredThousandStrings, hint: 'reverse 10,000 strings');
   await api.handleUuidsConvertToStrings(ids: hundredThousandUuids, hint: '10,000 uuids converted to strings');
 
   if (useJSON) {
