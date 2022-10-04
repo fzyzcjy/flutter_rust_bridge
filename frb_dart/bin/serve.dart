@@ -333,8 +333,7 @@ Future<void> runServer(Opts config, {required String root}) async {
     };
   }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
 
-  final portEnv = Platform.environment['PORT'];
-  final port = portEnv == null ? config.port : int.parse(portEnv);
+  final port = portEnv ?? config.port;
   final addr = 'http://localhost:$port';
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');

@@ -2,11 +2,13 @@
 
 import 'dart:io';
 
-bool _check(String envVarName, {bool defaultValue = false}) =>
+bool readEnv(String envVarName, {bool defaultValue = false}) =>
     (Platform.environment[envVarName] ?? defaultValue.toString()) == 'true';
 
-final useJSON = _check('JSON');
-final isWeb = _check('dart.library.html');
-final isSilicon = _check('SILICON');
-final sampleCount =
-    int.parse(Platform.environment['SAMPLE_COUNT'] ?? 1000.toString());
+final isWeb = readEnv('dart.library.html');
+final int? portEnv = Platform.environment['PORT'] != null
+    ? int.parse(Platform.environment['PORT']!)
+    : null;
+final isSilicon = readEnv('SILICON');
+final useJSON = readEnv('JSON');
+final String? dylibPath = Platform.environment['DYLIB_PATH'];

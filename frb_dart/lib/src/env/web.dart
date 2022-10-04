@@ -1,6 +1,10 @@
 // see https://github.com/flutter/flutter/issues/55870
 
-const useJSON = bool.fromEnvironment('JSON');
 const isWeb = bool.fromEnvironment('dart.library.html');
+final int? portEnv =
+    int.fromEnvironment('PORT') != 0 ? int.fromEnvironment('PORT') : null;
 const isSilicon = bool.fromEnvironment('SILICON');
-final sampleCount = int.fromEnvironment('SAMPLE_COUNT', defaultValue: 1000);
+const useJSON = bool.fromEnvironment('JSON');
+final String? dylibPath = String.fromEnvironment('DYLIB_PATH').isNotEmpty
+    ? String.fromEnvironment('DYLIB_PATH')
+    : null;

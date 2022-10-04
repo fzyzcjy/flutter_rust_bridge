@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:logging/logging.dart';
+import 'env/stub.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'package:flutter_rust_bridge_benchmark/utils.dart';
 import 'package:uuid/uuid.dart';
