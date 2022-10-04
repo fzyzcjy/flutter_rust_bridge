@@ -161,7 +161,7 @@ jobs:
         working-directory: ./frb_example/benches/dart
         run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
         env:
-          DYLIB_PATH: ../../../target/wasm32-unknown-unknown/debug/libflutter_rust_bridge_example_benchmark_suite.wasm
+          DYLIB_PATH: ../../../target/wasm32-unknown-unknown/debug/flutter_rust_bridge_example_benchmark_suite.wasm
       - name: Run benches example (Wasm)
         working-directory: ./frb_example/benches/dart
         run: just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 --release
