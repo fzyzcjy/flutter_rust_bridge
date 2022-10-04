@@ -66,7 +66,7 @@ jobs:
       
       # Run benchmark and stores the output to a file
       - name: Run benchmark
-        run: dart frb_example/benches/lib/main.dart target/release/libflutter_rust_bridge_example.so --json | tee ./book/benches/output.txt
+        run: dart frb_example/benches/lib/main.dart target/release/libflutter_rust_bridge_example.so | tee ./book/benches/output.txt
         env:
           JSON: true
 
