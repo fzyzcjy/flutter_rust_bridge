@@ -227,7 +227,7 @@ jobs:
         working-directory: ./frb_example/benches/dart
         run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
         env:
-          DYLIB: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so
+          DYLIB_PATH: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so
       - name: Run benches example
         working-directory: ./frb_example/benches/dart
         run: dart lib/main.dart ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so --json
