@@ -231,6 +231,8 @@ jobs:
       - name: Run benches example
         working-directory: ./frb_example/benches/dart
         run: dart lib/main.dart ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so --json
+        env:
+          JSON: true
 
   rust_linter:
     name: Rust linter using Clippy and rustfmt
