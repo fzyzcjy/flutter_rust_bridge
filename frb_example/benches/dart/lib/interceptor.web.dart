@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:uuid/uuid.dart';
 
 import 'ffi.web.dart';
@@ -10,44 +9,17 @@ import 'interceptor.dart';
 export 'interceptor.dart';
 export 'bridge_generated.dart';
 
-class FlutterRustBridgeExampleBenchmarkSuitePlatformBench extends FlutterRustBridgeExampleBenchmarkSuitePlatform {
-  final FlutterRustBridgeInterceptor<TimeWatch> _interceptor;
+class FlutterRustBridgeExampleBenchmarkSuitePlatformBench
+    extends FlutterRustBridgeExampleBenchmarkSuitePlatformBenchBase<FlutterRustBridgeInterceptorStdOutWasm,
+        FlutterRustBridgeInterceptorJsonWasm> {
+  final FlutterRustBridgeInterceptor _interceptor;
   FlutterRustBridgeExampleBenchmarkSuitePlatformBench(FutureOr<WasmModule> dylib, bool useJSON)
       : _interceptor = useJSON
             ? FlutterRustBridgeInterceptorJsonWasm() as FlutterRustBridgeInterceptor<TimeWatch>
             : FlutterRustBridgeInterceptorStdOutWasm(),
-        super(dylib);
+        super(dylib as ExternalLibrary);
+  @override
   FlutterRustBridgeInterceptor<TimeWatch> get interceptor => _interceptor;
-
-  @override
-  Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
-    final String debugName = task.constMeta.debugName;
-    final TimeWatch stopwatch = await interceptor.beforeExecuteNormal(debugName, task.hint);
-    final result = await super.executeNormal(task);
-    await interceptor.afterExecuteNormal(debugName, stopwatch);
-    return result;
-  }
-
-  @override
-  S executeSync<S>(FlutterRustBridgeSyncTask task) {
-    final String debugName = task.constMeta.debugName;
-    final TimeWatch stopwatch = interceptor.beforeExecuteSync(debugName, task.hint);
-    final result = super.executeSync(task);
-    interceptor.afterExecuteSync(debugName, stopwatch);
-    return result;
-  }
-
-  Future<List<Metric>?> metrics() async {
-    if (interceptor is FlutterRustBridgeInterceptorJson) {
-      final FlutterRustBridgeInterceptorJson jsonInterceptor = interceptor as FlutterRustBridgeInterceptorJson;
-      List<Metric> metrics = List.empty(growable: true);
-      for (var e in jsonInterceptor.metrics.entries) {
-        metrics.add(e.value);
-      }
-      return metrics;
-    }
-    return null;
-  }
 }
 
 class FlutterRustBridgeInterceptorStdOutWasm extends FlutterRustBridgeInterceptorStdOut<WindowPerformance> {

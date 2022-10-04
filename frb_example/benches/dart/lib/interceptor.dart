@@ -5,6 +5,44 @@ import 'package:logging/logging.dart';
 import 'bridge_definitions.dart';
 import 'package:uuid/uuid.dart';
 import 'interceptor.io.dart' if (dart.library.html) 'interceptor.web.dart';
+import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
+
+abstract class FlutterRustBridgeExampleBenchmarkSuitePlatformBenchBase<
+    STDOUT extends FlutterRustBridgeInterceptorStdOut,
+    JSON extends FlutterRustBridgeInterceptorJson> extends FlutterRustBridgeExampleBenchmarkSuitePlatform {
+  FlutterRustBridgeExampleBenchmarkSuitePlatformBenchBase(ExternalLibrary dylib) : super(dylib);
+  FlutterRustBridgeInterceptor<TimeWatch> get interceptor;
+
+  @override
+  Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) async {
+    final String debugName = task.constMeta.debugName;
+    final TimeWatch stopwatch = await interceptor.beforeExecuteNormal(debugName, task.hint);
+    final result = await super.executeNormal(task);
+    await interceptor.afterExecuteNormal(debugName, stopwatch);
+    return result;
+  }
+
+  @override
+  S executeSync<S>(FlutterRustBridgeSyncTask task) {
+    final String debugName = task.constMeta.debugName;
+    final TimeWatch stopwatch = interceptor.beforeExecuteSync(debugName, task.hint);
+    final result = super.executeSync(task);
+    interceptor.afterExecuteSync(debugName, stopwatch);
+    return result;
+  }
+
+  Future<List<Metric>?> metrics() async {
+    if (interceptor is FlutterRustBridgeInterceptorJson) {
+      final FlutterRustBridgeInterceptorJson jsonInterceptor = interceptor as FlutterRustBridgeInterceptorJson;
+      List<Metric> metrics = List.empty(growable: true);
+      for (var e in jsonInterceptor.metrics.entries) {
+        metrics.add(e.value);
+      }
+      return metrics;
+    }
+    return null;
+  }
+}
 
 class FlutterRustBridgeExampleBenchmarkSuiteImplBench extends FlutterRustBridgeExampleBenchmarkSuiteImpl {
   final FlutterRustBridgeExampleBenchmarkSuitePlatformBench platform;
