@@ -178,6 +178,14 @@ jobs:
         with:
           sdk: '2.17.6' # TODO upgrade later #655
 
+      - name: Install crates
+        run: |
+          sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+
+      - name: Install dart dependencies
+        working-directory: ./frb_dart
+        run: dart pub get
+
       - name: Install dart dependencies
         working-directory: ./frb_example/benches/dart
         run: dart pub get
