@@ -60,6 +60,15 @@ jobs:
           override: true
           components: rustfmt, clippy
       
+      # Install benchmark jobs deps
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '2.17.6' # TODO upgrade later #655
+      
+      - name: Install dart dependencies (benchmarks)
+        working-directory: ./frb_example/benches/dart
+        run: dart pub get
+      
       # Prepare benchmark first
       - name: Prepare benchmark
         run: cd frb_example/benches/rust && cargo build --release
