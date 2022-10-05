@@ -330,7 +330,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_float_64_list> api2wire_f64_array_16(F64Array16 raw) {
-    return api2wire_float_64_list(raw as Float64List);
+    final ans = inner.new_float_64_list_0(16);
+    ans.ref.ptr.asTypedList(16).setAll(0, raw);
+    return ans;
   }
 
   @protected
@@ -349,7 +351,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_int_32_list> api2wire_i32_array_2(I32Array2 raw) {
-    return api2wire_int_32_list(raw as Int32List);
+    final ans = inner.new_int_32_list_0(2);
+    ans.ref.ptr.asTypedList(2).setAll(0, raw);
+    return ans;
   }
 
   @protected
@@ -547,17 +551,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_u8_array_1600(U8Array1600 raw) {
-    return api2wire_uint_8_list(raw as Uint8List);
+    final ans = inner.new_uint_8_list_0(1600);
+    ans.ref.ptr.asTypedList(1600).setAll(0, raw);
+    return ans;
   }
 
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_u8_array_32(U8Array32 raw) {
-    return api2wire_uint_8_list(raw as Uint8List);
+    final ans = inner.new_uint_8_list_0(32);
+    ans.ref.ptr.asTypedList(32).setAll(0, raw);
+    return ans;
   }
 
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_u8_array_8(U8Array8 raw) {
-    return api2wire_uint_8_list(raw as Uint8List);
+    final ans = inner.new_uint_8_list_0(8);
+    ans.ref.ptr.asTypedList(8).setAll(0, raw);
+    return ans;
   }
 
   @protected

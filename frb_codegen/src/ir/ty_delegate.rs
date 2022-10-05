@@ -120,16 +120,6 @@ impl IrTypeDelegate {
         }
     }
 
-    pub fn array_cast_string(&self) -> String {
-        match self {
-            IrTypeDelegate::GeneralArray { .. } => "raw".into(),
-            IrTypeDelegate::PrimitiveArray { .. } => {
-                format!("raw as {}", self.get_delegate().dart_api_type())
-            }
-            _ => panic!("Unexpected type"),
-        }
-    }
-
     pub fn dart_init_method(&self) -> String {
         match self {
             IrTypeDelegate::GeneralArray { length, .. } => format!(

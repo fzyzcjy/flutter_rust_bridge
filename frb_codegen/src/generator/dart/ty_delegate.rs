@@ -9,14 +9,24 @@ type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         match self.ir {
-            IrTypeDelegate::GeneralArray { .. } | IrTypeDelegate::PrimitiveArray { .. } => {
-                let body = format!(
-                    "return api2wire_{}({});",
+            IrTypeDelegate::GeneralArray { .. } => Acc::distribute(Some(format!(
+                "return api2wire_{}(raw);",
+                self.ir.get_delegate().safe_ident(),
+            ))),
+            IrTypeDelegate::PrimitiveArray { length, .. } => Acc {
+                io: Some(format!(
+                    "final ans = inner.new_{}_{}({length});
+                            ans.ref.ptr.asTypedList({length}).setAll(0, raw);
+                            return ans;",
                     self.ir.get_delegate().safe_ident(),
-                    self.ir.array_cast_string()
-                );
-                Acc::distribute(Some(body))
-            }
+                    self.context.config.block_index,
+                )),
+                wasm: Some(format!(
+                    "return {}.fromList(raw);",
+                    self.ir.get_delegate().dart_api_type()
+                )),
+                ..Default::default()
+            },
             IrTypeDelegate::String => Acc {
                 io: Some("return api2wire_uint_8_list(utf8.encoder.convert(raw));".into()),
                 wasm: Some("return raw;".into()),
