@@ -38,9 +38,9 @@ jobs:
           publish_dir: ./book/book
 
   benchmark:
-    # needs: deploy # ⚠️ temporarily comment to try it out in the PR
+    needs: deploy
     # continuous-benchmark requires sensible permissions, hence why it should never be run on PRs
-    # if: github.event_name != 'pull_request' # ⚠️ temporarily comment to try it out in the PR
+    if: github.event_name != 'pull_request'
     permissions:
       # deployments permission to deploy GitHub pages website
       deployments: write
@@ -92,4 +92,4 @@ jobs:
           # Access token to deploy GitHub Pages branch
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # Push and deploy GitHub pages branch automatically
-          auto-push: false # ⚠️ temporarily set to false to try it out in the PR
+          auto-push: true
