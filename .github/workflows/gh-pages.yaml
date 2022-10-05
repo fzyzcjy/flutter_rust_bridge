@@ -89,4 +89,4 @@ jobs:
           # Access token to deploy GitHub Pages branch
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # Push and deploy GitHub pages branch automatically
-          auto-push: true
+          auto-push: false # ⚠️ temporarily set to false to try it out in the PR
