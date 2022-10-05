@@ -393,7 +393,7 @@ class PointArray2 extends NonGrowableListView<Point> {
       : assert(inner.length == 2),
         super(inner);
   PointArray2.unchecked(List<Point> inner) : super(inner);
-  List<Point> get inner => super.cast();
+  PointArray2.init(Point fill) : super(List<Point>.filled(2, fill));
 }
 
 class TestIdArray2 extends NonGrowableListView<TestId> {
@@ -401,7 +401,7 @@ class TestIdArray2 extends NonGrowableListView<TestId> {
       : assert(inner.length == 2),
         super(inner);
   TestIdArray2.unchecked(List<TestId> inner) : super(inner);
-  List<TestId> get inner => super.cast();
+  TestIdArray2.init(TestId fill) : super(List<TestId>.filled(2, fill));
 }
 
 class TestIdArray4 extends NonGrowableListView<TestId> {
@@ -409,7 +409,7 @@ class TestIdArray4 extends NonGrowableListView<TestId> {
       : assert(inner.length == 4),
         super(inner);
   TestIdArray4.unchecked(List<TestId> inner) : super(inner);
-  List<TestId> get inner => super.cast();
+  TestIdArray4.init(TestId fill) : super(List<TestId>.filled(4, fill));
 }
 
 class ApplicationEnv {
@@ -616,7 +616,7 @@ class F64Array16 extends NonGrowableListView<double> {
       : assert(inner.length == 16),
         super(inner);
   F64Array16.unchecked(Float64List inner) : super(inner);
-  Float64List get inner => Float64List.fromList(super.cast());
+  F64Array16.init() : super(Float64List(16));
 }
 
 class FeatureChrono {
@@ -656,7 +656,7 @@ class I32Array2 extends NonGrowableListView<int> {
       : assert(inner.length == 2),
         super(inner);
   I32Array2.unchecked(Int32List inner) : super(inner);
-  Int32List get inner => Int32List.fromList(super.cast());
+  I32Array2.init() : super(Int32List(2));
 }
 
 @freezed
@@ -866,7 +866,7 @@ class U8Array1600 extends NonGrowableListView<int> {
       : assert(inner.length == 1600),
         super(inner);
   U8Array1600.unchecked(Uint8List inner) : super(inner);
-  Uint8List get inner => Uint8List.fromList(super.cast());
+  U8Array1600.init() : super(Uint8List(1600));
 }
 
 class U8Array32 extends NonGrowableListView<int> {
@@ -874,7 +874,7 @@ class U8Array32 extends NonGrowableListView<int> {
       : assert(inner.length == 32),
         super(inner);
   U8Array32.unchecked(Uint8List inner) : super(inner);
-  Uint8List get inner => Uint8List.fromList(super.cast());
+  U8Array32.init() : super(Uint8List(32));
 }
 
 class U8Array5 extends NonGrowableListView<int> {
@@ -882,7 +882,7 @@ class U8Array5 extends NonGrowableListView<int> {
       : assert(inner.length == 5),
         super(inner);
   U8Array5.unchecked(Uint8List inner) : super(inner);
-  Uint8List get inner => Uint8List.fromList(super.cast());
+  U8Array5.init() : super(Uint8List(5));
 }
 
 class U8Array8 extends NonGrowableListView<int> {
@@ -890,7 +890,7 @@ class U8Array8 extends NonGrowableListView<int> {
       : assert(inner.length == 8),
         super(inner);
   U8Array8.unchecked(Uint8List inner) : super(inner);
-  Uint8List get inner => Uint8List.fromList(super.cast());
+  U8Array8.init() : super(Uint8List(8));
 }
 
 /// Example for @freezed and @meta.immutable

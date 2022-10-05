@@ -11,8 +11,9 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
         match self.ir {
             IrTypeDelegate::GeneralArray { .. } | IrTypeDelegate::PrimitiveArray { .. } => {
                 let body = format!(
-                    "return api2wire_{}(raw.inner);",
-                    self.ir.get_delegate().safe_ident()
+                    "return api2wire_{}({});",
+                    self.ir.get_delegate().safe_ident(),
+                    self.ir.array_cast_string()
                 );
                 Acc::distribute(Some(body))
             }
@@ -133,19 +134,19 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             | IrTypeDelegate::PrimitiveArray { length, .. } => {
                 format!(
                     "
-                class {0} extends NonGrowableListView<{2}> {{
-                    {0}({1} inner)
+                class {0} extends NonGrowableListView<{1}> {{
+                    {0}({2} inner)
                         : assert(inner.length == {length}),
                           super(inner);
-                    {0}.unchecked({1} inner)
+                    {0}.unchecked({2} inner)
                         : super(inner);
-                    {1} get inner => {3};
+                    {3}
                   }}
                 ",
                     self.ir.dart_api_type(),
-                    self.ir.get_delegate().dart_api_type(),
                     self.ir.inner_dart_api_type(),
-                    self.ir.array_cast_string()
+                    self.ir.get_delegate().dart_api_type(),
+                    self.ir.dart_init_method(),
                 )
             }
             _ => "".into(),

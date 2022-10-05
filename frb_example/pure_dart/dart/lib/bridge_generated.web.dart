@@ -52,7 +52,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_TestId_array_4(TestIdArray4 raw) {
-    return api2wire_list_test_id(raw.inner);
+    return api2wire_list_test_id(raw);
   }
 
   @protected
@@ -344,7 +344,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   Float64List api2wire_f64_array_16(F64Array16 raw) {
-    return api2wire_float_64_list(raw.inner);
+    return api2wire_float_64_list(raw as Float64List);
   }
 
   @protected
@@ -379,7 +379,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   Int32List api2wire_i32_array_2(I32Array2 raw) {
-    return api2wire_int_32_list(raw.inner);
+    return api2wire_int_32_list(raw as Int32List);
   }
 
   @protected
@@ -652,17 +652,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   Uint8List api2wire_u8_array_1600(U8Array1600 raw) {
-    return api2wire_uint_8_list(raw.inner);
+    return api2wire_uint_8_list(raw as Uint8List);
   }
 
   @protected
   Uint8List api2wire_u8_array_32(U8Array32 raw) {
-    return api2wire_uint_8_list(raw.inner);
+    return api2wire_uint_8_list(raw as Uint8List);
   }
 
   @protected
   Uint8List api2wire_u8_array_8(U8Array8 raw) {
-    return api2wire_uint_8_list(raw.inner);
+    return api2wire_uint_8_list(raw as Uint8List);
   }
 
   @protected
