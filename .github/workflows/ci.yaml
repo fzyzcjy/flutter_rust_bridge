@@ -198,7 +198,7 @@ jobs:
 
       - name: Run benchmark_harness example
         working-directory: ./frb_example/benches/dart
-        run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
+        run: dart --define=SILICON=true run lib/benchmark/uuids.dart && dart --define=SILICON=true run lib/benchmark/strings.dart
         env:
           DYLIB_PATH: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.dylib
       - name: Run benches example
