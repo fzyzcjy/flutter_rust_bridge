@@ -171,6 +171,7 @@ jobs:
         with:
           profile: minimal
           toolchain: nightly
+          target: wasm32-unknown-unknown
 
       - uses: dart-lang/setup-dart@v1
         with:
