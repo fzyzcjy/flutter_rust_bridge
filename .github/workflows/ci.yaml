@@ -178,6 +178,10 @@ jobs:
         with:
           sdk: '2.17.6' # TODO upgrade later #655
 
+      - name: Install dart dependencies
+        working-directory: ./frb_example/benches/dart
+        run: dart pub get
+
       - name: Build benches example (dynamic library)
         # benches are run on release mode in gh-pages workflow
         # following steps only assert good functioning
