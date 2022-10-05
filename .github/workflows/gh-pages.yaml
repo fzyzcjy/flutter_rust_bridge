@@ -40,7 +40,7 @@ jobs:
   benchmark:
     needs: deploy
     # continuous-benchmark requires sensible permissions, hence why it should never be run on PRs
-    if: github.event_name != 'pull_request'
+    # if: github.event_name != 'pull_request' # ⚠️ temporarily comment to try it out in the PR
     permissions:
       # deployments permission to deploy GitHub pages website
       deployments: write
