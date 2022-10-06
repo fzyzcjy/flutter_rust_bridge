@@ -69,7 +69,7 @@ pub struct BenchExecutor {
 }
 
 #[cfg(not(target_family = "wasm"))]
-fn maybe_trace(json: bool) {
+fn maybe_subscribe(json: bool) {
     use tracing_subscriber::FmtSubscriber;
     let subscriber = if json {
         None
@@ -88,7 +88,7 @@ fn maybe_trace(json: bool) {
 
 #[cfg(target_family = "wasm")]
 #[inline(always)]
-fn maybe_trace(_: bool) {}
+fn maybe_subscribe(_: bool) {}
 
 impl BenchExecutor {
     pub(crate) fn new(error_handler: BenchErrorHandler) -> Self {
@@ -96,7 +96,7 @@ impl BenchExecutor {
             .unwrap_or_else(|_| "false".into())
             .parse::<bool>()
             .expect("Invalid JSON env var (expected boolean)");
-        maybe_trace(json);
+        maybe_subscribe(json);
         Self {
             inner: ThreadPoolExecutor::new(error_handler),
             json,
