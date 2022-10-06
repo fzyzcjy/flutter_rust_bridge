@@ -209,9 +209,12 @@ jobs:
           args: --manifest-path=./frb_example/benches/rust/Cargo.toml --target wasm32-unknown-unknown --verbose
 
       - name: Run benchmark_harness example
-        run: |
-          dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/benchmark/uuids.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8081 --run-tests
-          dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/benchmark/strings.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8082 --run-tests
+        timeout-minutes: 20
+        uses: Wandalen/wretry.action@v1.0.25
+        with:
+          command: |
+            dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/benchmark/uuids.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8081 --run-tests
+            dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/benchmark/strings.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8082 --run-tests
         env:
           DYLIB_PATH: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.dylib
       - name: Run benches example
