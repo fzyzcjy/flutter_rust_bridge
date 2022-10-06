@@ -69,7 +69,7 @@ String unitToString(Unit unit) => unit == Unit.Microseconds
         : 'ns';
 
 String jsonEncodeMetric(Metric metric, String language) => json.encode({
-      'name': metric.extra != null ? '$language:${metric.name}:${metric.extra}' : '$language:${metric.name}',
+      'name': metric.extra != null ? '${metric.name}:${metric.extra}:$language' : '${metric.name}:$language',
       'value': metric.value,
       'unit': unitToString(metric.unit),
     });
