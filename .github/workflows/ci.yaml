@@ -175,6 +175,19 @@ jobs:
         with:
           sdk: '2.17.6' # TODO upgrade later #655
 
+      - name: Cache dependencies
+        id: test-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target
+            frb_example/benches/dart/.local-chromium
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
       - name: Install crates
         run: |
           sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
