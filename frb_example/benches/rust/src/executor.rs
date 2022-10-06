@@ -31,6 +31,9 @@ impl Metrics for SimpleHandler<BenchExecutor, BenchErrorHandler> {
     }
 }
 
+/// record a benchmark metric
+/// 
+/// all benchmark metrics are stored in [`METRICS`]
 fn record(debug_name_string: &str, elapsed: u64, unit: Unit) {
     let mut guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
     guard.push(Metric {
@@ -41,6 +44,9 @@ fn record(debug_name_string: &str, elapsed: u64, unit: Unit) {
     });
 }
 
+/// simple newtype pattern
+///
+/// this is the bridge's custom [error handler](http://cjycode.com/flutter_rust_bridge/feature/handler.html#example-report-errors-to-your-backend-in-addition-to-telling-dart).
 #[derive(Clone, Copy)]
 pub struct BenchErrorHandler(ReportDartErrorHandler);
 
@@ -50,6 +56,7 @@ impl Default for BenchErrorHandler {
     }
 }
 
+/// trait bound required by [`SimpleHandler`]
 impl ErrorHandler for BenchErrorHandler {
     fn handle_error(&self, port: MessagePort, error: handler::Error) {
         self.0.handle_error(port, error)
@@ -63,11 +70,15 @@ impl ErrorHandler for BenchErrorHandler {
     }
 }
 
+/// a slightly more elaborated newtype
+///
+/// this is the bridge's custom [executor](http://cjycode.com/flutter_rust_bridge/feature/handler.html#example-log-when-execution-starts-and-ends).
 pub struct BenchExecutor {
     inner: ThreadPoolExecutor<BenchErrorHandler>,
     json: bool,
 }
 
+/// subscribe for tracing only on native platforms
 #[cfg(not(target_family = "wasm"))]
 fn maybe_subscribe(json: bool) {
     use tracing_subscriber::FmtSubscriber;
@@ -86,11 +97,14 @@ fn maybe_subscribe(json: bool) {
     }
 }
 
+/// on web platform, this is a no-op
 #[cfg(target_family = "wasm")]
 #[inline(always)]
 fn maybe_subscribe(_: bool) {}
 
 impl BenchExecutor {
+    /// also retrieve env var to set mode to **stdout** or **json**
+    /// and subscribe to `tracing` if needed
     pub(crate) fn new(error_handler: BenchErrorHandler) -> Self {
         let json = std::env::var("JSON")
             .unwrap_or_else(|_| "false".into())
@@ -105,6 +119,7 @@ impl BenchExecutor {
 }
 
 impl Executor for BenchExecutor {
+    /// wrap [`bench_around`] over async FFI calls
     fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> anyhow::Result<TaskRet> + Send + UnwindSafe + 'static,
@@ -117,6 +132,7 @@ impl Executor for BenchExecutor {
         })
     }
 
+    /// wrap [`bench_around`] over sync FFI calls
     fn execute_sync<SyncTaskFn, TaskRet>(
         &self,
         wrap_info: WrapInfo,
@@ -134,8 +150,17 @@ impl Executor for BenchExecutor {
     }
 }
 
+/// executor (on native platforms)
+///
+/// use [tracing](https://docs.rs/crate/tracing/0.1.36) for stdout
+/// or record metrics as json
 #[cfg(not(target_family = "wasm"))]
 impl BenchExecutor {
+    /// benchmark every bridge-wired function call (on native platforms)
+    ///
+    /// - smallest time unit in rust is _nanoseconds_
+    ///   > note that at this point we're out of dart vm, whose smallest time unit is _microseconds_
+    /// - underlying implementation relies on standard [Instant](https://doc.rust-lang.org/std/time/struct.Instant.html)
     fn bench_around<F, R>(bench_name: &str, json: bool, f: F) -> R
     where
         F: FnOnce() -> R,
@@ -164,8 +189,19 @@ impl BenchExecutor {
     }
 }
 
+/// executor (on web platform)
+///
+/// use [console](web_sys::console) a.k.a [console](https://developer.mozilla.org/en-US/docs/Web/API/console) for stdout
+/// or record metrics as json
 #[cfg(target_family = "wasm")]
 impl BenchExecutor {
+    /// benchmark every bridge-wired function call (on web platform)
+    ///
+    /// - smallest time unit in dart2js is _millisecond_
+    ///   > note that at this point, you're mostly in a distorted version of JavaScript land
+    /// - based on [DateTime<Utc>](https://docs.rs/chrono/0.4.20/chrono/struct.DateTime.html)
+    /// - [instant](https://crates.io/crates/instant) was considered too but `stdweb` didn't play well
+    ///   with [wasm-pack no-modules](https://rustwasm.github.io/docs/wasm-pack/commands/build.html?highlight=no-modules#target)
     fn bench_around<F, R>(bench_name: &str, json: bool, f: F) -> R
     where
         F: FnOnce() -> R,

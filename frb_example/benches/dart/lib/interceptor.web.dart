@@ -1,3 +1,10 @@
+/// interceptor (on web platform)
+///
+/// underlying timer is based on [window.performance](https://api.dart.dev/stable/2.18.2/dart-html/Window/performance.html)
+/// a.k.a [Performance](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
+///
+/// mostly a lot of boilerplate so that dart agrees to compile.
+
 import 'dart:async';
 import 'dart:html';
 

@@ -10,6 +10,7 @@ import 'package:uuid/uuid.dart';
 void main(List<String> args) async {
   String dylibPath = args[0];
   // on web, env useJSON is unset, but server will send a --json cli arg instead
+  // this is because WASM cannot be fed any env var, but happily takes cli args.
   final allowJSON = useJSON || args.contains('--json');
   final log = Logger('frb_example/benches');
   if (allowJSON) {
@@ -68,6 +69,14 @@ String unitToString(Unit unit) => unit == Unit.Microseconds
         ? 'ms'
         : 'ns';
 
+/// metric encoded as json for [continuous-benchmark](https://github.com/marketplace/actions/continuous-benchmark)
+///
+/// naming convention allows for outputs to be harmoniously grouped by default
+///
+/// whenever a wired function is called:
+/// - outer dart function call over FFI execution time is recorded
+/// - inner rust function call from FFI execution time is recorded
+/// outputs are then naturally grouped based on their name.
 String jsonEncodeMetric(Metric metric, String language) => json.encode({
       'name': metric.extra != null ? '${metric.name}:${metric.extra}:$language' : '${metric.name}:$language',
       'value': metric.value,

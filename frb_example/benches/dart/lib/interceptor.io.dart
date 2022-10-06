@@ -1,3 +1,9 @@
+/// interceptor (on native platforms)
+///
+/// underlying timer is based on [Stopwatch](https://api.dart.dev/dev/2.8.0-dev.7.0/dart-core/Stopwatch-class.html)
+///
+/// mostly a lot of boilerplate so that dart agrees to compile.
+
 import 'dart:ffi' as ffi;
 
 import 'package:uuid/uuid.dart';

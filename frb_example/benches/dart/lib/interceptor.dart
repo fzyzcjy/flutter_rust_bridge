@@ -1,3 +1,10 @@
+/// interceptor (platform-agnostic wrapper)
+///
+/// record time before and after executing async or sync functions over the bridge.
+///
+/// can also generate
+/// a [continuous-benchmark](https://github.com/marketplace/actions/continuous-benchmark)-compliant json output on demand
+
 import 'dart:async';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
@@ -7,6 +14,7 @@ import 'package:uuid/uuid.dart';
 import 'interceptor.io.dart' if (dart.library.html) 'interceptor.web.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
 
+/// this is the custom platform, which contains the interceptor.
 abstract class FlutterRustBridgeExampleBenchmarkSuitePlatformBenchBase<
     STDOUT extends FlutterRustBridgeInterceptorStdOut,
     JSON extends FlutterRustBridgeInterceptorJson> extends FlutterRustBridgeExampleBenchmarkSuitePlatform {
@@ -54,15 +62,30 @@ class FlutterRustBridgeExampleBenchmarkSuiteImplBench extends FlutterRustBridgeE
   }
 }
 
+/// benchmark metric
 abstract class TimeWatch {
+  /// typically when the timer starts
   int? starts;
+
+  /// typically when the timer ends
   int? ends;
+
+  /// start timer
   void start();
+
+  /// stop timer
   void stop();
+
+  /// create a timer
   TimeWatch.create();
 }
 
+/// unique benchmark metric
 abstract class UniqueTimeWatch extends TimeWatch {
+  /// allows for identifying same metric over time
+  ///
+  /// this way you can start a timer, save its value(s) somewhere,
+  /// and record whenever you stop it anytime later on.
   late UuidValue uuid;
   UniqueTimeWatch.create() : super.create();
 }
