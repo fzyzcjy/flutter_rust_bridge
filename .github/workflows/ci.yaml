@@ -214,7 +214,7 @@ jobs:
         env:
           DYLIB_PATH: ../../../target/wasm32-unknown-unknown/debug/libflutter_rust_bridge_example_benchmark_suite.dylib
       - name: Run benches example
-        run: dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/main.web.dart --root web/ -c frb_example/benches/rust --port 8081
+        run: dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/main.web.dart --root web/ -c frb_example/benches/rust --port 8081 --run-tests
         env:
           JSON: true
 
