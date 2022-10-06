@@ -208,13 +208,13 @@ jobs:
           command: build
           args: --manifest-path=./frb_example/benches/rust/Cargo.toml --target wasm32-unknown-unknown --verbose
 
-      # - name: Run benchmark_harness example
-      #   working-directory: ./frb_example/benches/dart
-      #   run: dart --define=SILICON=true run lib/benchmark/uuids.dart && dart --define=SILICON=true run lib/benchmark/strings.dart
-      #   env:
-      #     DYLIB_PATH: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.dylib
+      - name: Run benchmark_harness example
+        working-directory: ./frb_example/benches/dart
+        run: dart --define=SILICON=true run lib/benchmark/uuids.dart && dart --define=SILICON=true run lib/benchmark/strings.dart
+        env:
+          DYLIB_PATH: ../../../target/wasm32-unknown-unknown/debug/libflutter_rust_bridge_example_benchmark_suite.dylib
       - name: Run benches example
-        run: dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/main.web.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8081
+        run: dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/main.web.dart --root web/ -c frb_example/benches/rust --port 8081
         env:
           JSON: true
 
