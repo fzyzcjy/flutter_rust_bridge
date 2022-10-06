@@ -6,7 +6,7 @@ Let's explore how to implement your custom benchmark logic with `flutter_rust_br
 
 Simply put, we're going to implement a custom interceptor to benchmark our function calls made over FFI with FRB. It will record time on both outer Dart call and subsequent inner Rust call.
 
-![overview (schema realized with whimsical)](../interceptor.png)
+![overview (schema realized with whimsical)](../../interceptor.png)
 
 To make it even more interesting, we'll provide a way to feed in some CLI arg to alternate between 2 different outputs:
 
@@ -40,7 +40,7 @@ To make our life easier, we'll leverage existing packages and crates.
 |                                                               | :dart: Dart           | :crab: Rust                                 |
 | -----------                                                   | -----------           | -----------                                 |
 | :desktop_computer: :computer: :iphone: native platforms       | `logging` + `Stopwatch`   | `tracing` + `Instant`                           |
-| :globe_with_meridians: web platform                           | `window.performance`    | `web_sys` + `wasm_bindgen` + `js_sys`             |
+| :globe_with_meridians: web platform                           | `window.performance`    | `web_sys` + `wasm_bindgen` + `js_sys` + `chrono`             |
 
 ## Howto
 
@@ -90,7 +90,7 @@ There's a couple of interesting bugs that one might face while implementing it.
 
 - on web platform, cli args parameters in Dart **must** use `-D` syntax.
   :speech_balloon: see [#44562](https://github.com/dart-lang/sdk/issues/44562)
-- dynamic library **must** be opened with [open](https://api.dart.dev/stable/2.6.1/dart-ffi/DynamicLibrary/DynamicLibrary.open.html) for some MacOS users and only on native platform builds.
+- dynamic library **must** be opened with [open](https://api.dart.dev/stable/2.6.1/dart-ffi/DynamicLibrary/DynamicLibrary.open.html) for some MacOS users and **only** on native platform builds.
   :sunglasses: a fix is provided:
   simply add `--define=SILICON=true` to your `dart run` command
 
