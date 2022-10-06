@@ -90,14 +90,26 @@ There's a couple of interesting bugs that one might face while implementing it.
 
 - on web platform, cli args parameters in Dart **must** use `-D` syntax.
   :speech_balloon: see [#44562](https://github.com/dart-lang/sdk/issues/44562)
+  as a side note it's good to keep in mind that e.g. `dart run` uses `-D` or `--define`,
+  but `--dart-define` is used with `flutter run` to pipe args down to dart
 - dynamic library **must** be opened with [open](https://api.dart.dev/stable/2.6.1/dart-ffi/DynamicLibrary/DynamicLibrary.open.html) for some MacOS users and **only** on native platform builds.
   :sunglasses: a fix is provided:
   simply add `--define=SILICON=true` to your `dart run` command
+- syntax to retrieve env vars is somehow inconsistent across native and web, sometimes returning empty values.
+  :speech_balloon: see [#27998](https://github.com/dart-lang/sdk/issues/27998) and others
+  :sparkles: but `frb_dart` can [handle it](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_dart/lib/src/env) for you.
+  :warning: in some case you might end up defining an env var which have to be `const` on one platform, while being `final` on the others: in this specific case, you might want to use dart `show`/`hide` import feature to convey your intent to the compiler when declaring your `import`.
 
 ### on Rust side
 
-- some versions must be pin-pointed, at least for now.
+- at least at the time of the writing, some dependencies versions must be pin-pointed.
   :eye: see Cargo manifest for `chrono`, `web_sys`, `js_sys` and `wasm-bindgen`
+
+### and WASM too
+
+- env var cannot be accessed from WASM in the browser.
+  :speech_balloon: see [#5737](https://github.com/bevyengine/bevy/discussions/5737#discussioncomment-3428966)
+  env vars can be turned into cli args though, which WASM takes happily :wink:
 
 ## Final note
 
