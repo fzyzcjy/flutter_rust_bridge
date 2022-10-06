@@ -32,7 +32,7 @@ impl Metrics for SimpleHandler<BenchExecutor, BenchErrorHandler> {
 }
 
 /// record a benchmark metric
-/// 
+///
 /// all benchmark metrics are stored in [`METRICS`]
 fn record(debug_name_string: &str, elapsed: u64, unit: Unit) {
     let mut guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);

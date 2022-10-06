@@ -27,7 +27,7 @@ pub struct Metric {
     pub unit: Unit,
     /// allows to provide extra context for benchmarked wired function call
     /// e.g. `reverse 1,000 uuids`
-    /// 
+    ///
     /// `non-final` to allow setting Rust metric `extra` from Dart
     ///
     /// TODO: once `hint` can be sent and consumed on Rust side, this field can be `final`
