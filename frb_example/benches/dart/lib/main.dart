@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
+import './seeder.dart';
 import 'package:logging/logging.dart';
-import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
-import 'package:flutter_rust_bridge_benchmark/utils.dart';
 import 'package:uuid/uuid.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 
 void main(List<String> args) async {
   String dylibPath = args[0];
@@ -36,12 +36,10 @@ void main(List<String> args) async {
 
   // here freely do as much setup as you need,
   // since only calls to bridge-wired functions will record any metric
-  final Uuid uuid = Uuid();
-  final thousandUuids = List<UuidValue>.generate(1000, (index) => uuid.v4obj(), growable: false);
-  final thousandStrings = List<String>.generate(1000, (index) => getRandomString(uuidSizeInBytes), growable: false);
-  final hundredThousandUuids = List<UuidValue>.generate(100000, (index) => uuid.v4obj(), growable: false);
-  final hundredThousandStrings =
-      List<String>.generate(100000, (index) => getRandomString(uuidSizeInBytes), growable: false);
+  final List<UuidValue> thousandUuids = seed(UuidSeeder(), just_1000);
+  final List<String> thousandStrings = seed(StringSeeder(), just_1000);
+  final List<UuidValue> hundredThousandUuids = seed(UuidSeeder(), just_100_000);
+  final List<String> hundredThousandStrings = seed(StringSeeder(), just_100_000);
 
   // real game starts here
   // (avoid any initialization or computation)
