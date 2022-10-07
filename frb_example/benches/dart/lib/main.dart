@@ -23,6 +23,9 @@ void main(List<String> args) async {
   });
   log.fine('flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   log.finer('construct api');
+  if (isSilicon) {
+    log.warning("⚠️  [env] SILICON: uses open method for dynamic library");
+  }
   if (isWeb && !allowJSON) {
     log.warning("⚠️  on Web, Rust logs to stdout are redirected to browser's console (or simply choose JSON)");
   }
