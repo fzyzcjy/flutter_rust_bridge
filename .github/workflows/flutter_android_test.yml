@@ -1,0 +1,117 @@
+on:
+  workflow_call:
+    inputs:
+      flutter_version:
+        required: false
+        type: string
+        default: '3.3.1'
+      rust_version:
+        required: false
+        type: string
+        default: '1.64.0'
+      device:
+        required: true
+        type: string
+      timeout_minutes:
+        required: false
+        type: number
+        default: 20
+
+jobs:
+  flutter_android_test:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # #499, https://github.com/actions/virtual-environments/issues/5595
+      - name: Configure ndk
+        run: |
+            ANDROID_HOME=$HOME/Library/Android/sdk
+            SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+
+            echo y | $SDKMANAGER "ndk;21.4.7075529"
+
+            ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+
+      - name: Install Rust toolchain
+        id: checkout
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ inputs.rust_version }}
+          override: true
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: ${{ inputs.flutter_version }}
+          architecture: x64
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "8.x" # "betterprogramming.pub" says must be java "8"
+
+      - uses: actions/cache@v3
+        id: cache-deps
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            ./frb_example/with_flutter/rust/target
+          key: ${{ runner.os }}-cargo-integrate-android-${{ hashFiles('**/Cargo.lock') }}-${{ steps.checkout.outputs.rustc_hash }}
+
+      - name: Add Rust targets
+        run: rustup target add x86_64-linux-android
+
+      - name: Install `cargo-ndk`
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: cargo install cargo-ndk --force
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Build Rust lib
+        working-directory: ./frb_example/with_flutter/rust
+        # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
+        run: cargo ndk -t x86_64 -o ../android/app/src/main/jniLibs build
+
+      - name: Run Flutter integration tests
+        continue-on-error: true
+        timeout-minutes: ${{ inputs.timeout_minutes }}
+        uses: Wandalen/wretry.action@v1.0.25
+        with:
+          action: reactivecircus/android-emulator-runner@v2
+          with: |
+            api-level: 29
+            arch: x86_64
+            profile: ${{ inputs.device }}
+            script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+
+      # # flaky GitHub Action testing environment... have to retry
+      # # see https://github.com/fzyzcjy/flutter_rust_bridge/issues/47
+      # - name: Run Flutter integration tests (retry)
+      #   id: run_flutter_integration_test_retry_1
+      #   if: steps.run_flutter_integration_test.outcome == 'failure'
+      #   continue-on-error: true
+      #   timeout-minutes: 30
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 29
+      #     arch: x86_64
+      #     profile: ${{ inputs.device }}
+      #     script: |
+      #       cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+
+      # # https://github.community/t/how-to-retry-a-failed-step-in-github-actions-workflow/125880
+      # - name: Set status
+      #   if: always()
+      #   run: |
+      #     if ${{ steps.run_flutter_integration_test.outcome=='success' || steps.run_flutter_integration_test_retry_1.outcome=='success' }}; then
+      #        echo fine
+      #     else
+      #        exit 1
+      #     fi

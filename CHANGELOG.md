@@ -1,3 +1,39 @@
+## 1.48.1
+
+* Pass JS BigInt to wire #747 (thanks @Desdaemon)
+
+## 1.48.0
+
+* Support uuid #728 (thanks @Roms1383)
+
+## 1.47.1
+
+* Allow streaming functions to omit return type #730 (thanks @Desdaemon)
+
+## 1.47.0
+
+* Support chrono date time #694 (thanks @Roms1383)
+
+## 1.46.0
+
+* Fix WireSyncReturnStruct should be freed after buffer being consumed #720 (thanks @hsfzxjy)
+
+## 1.45.0
+
+* Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values #589 (thanks @Desdaemon)
+
+## 1.44.0
+
+* Bump dependency versions
+
+## 1.43.0
+
+* Add crate version to generated code header #666 (thanks @Roms1383)
+
+## 1.42.0
+
+* Refactor and enhance SyncReturn to support more types #663 (thanks @SoLongAndThanksForAllThePizza)
+
 ## 1.41.3
 
 * Fix "Skipping unresolvable module" by align latest #651 (thanks @alanlzhang)

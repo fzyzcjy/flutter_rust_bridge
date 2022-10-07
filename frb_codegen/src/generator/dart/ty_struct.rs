@@ -2,15 +2,35 @@ use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::ir::*;
 use crate::method_utils::FunctionName;
+use crate::target::Acc;
 use crate::type_dart_generator_struct;
-use crate::utils::BlockIndex;
 use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
-        None
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        Acc {
+            wasm: self.context.config.wasm_enabled.then(|| {
+                format!(
+                    "return [{}];",
+                    self.ir
+                        .get(self.context.ir_file)
+                        .fields
+                        .iter()
+                        .map(|field| {
+                            format!(
+                                "api2wire_{}(raw.{})",
+                                field.ty.safe_ident(),
+                                field.name.dart_style()
+                            )
+                        })
+                        .collect::<Vec<_>>()
+                        .join(",")
+                )
+            }),
+            ..Default::default()
+        }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
@@ -20,7 +40,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 .iter()
                 .map(|field| {
                     format!(
-                        "wireObj.{} = _api2wire_{}(apiObj.{});",
+                        "wireObj.{} = api2wire_{}(apiObj.{});",
                         field.name.rust_style(),
                         field.ty.safe_ident(),
                         field.name.dart_style()
@@ -86,13 +106,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let has_methods = !methods.is_empty();
         let methods = methods
             .iter()
-            .map(|func| {
-                generate_api_method(
-                    func,
-                    src,
-                    self.context.dart_api_class_name.as_ref().unwrap().clone(),
-                )
-            })
+            .map(|func| generate_api_method(func, src, self.context.config.dart_api_class_name()))
             .collect::<Vec<_>>();
 
         let methods_string = methods
@@ -103,7 +117,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let extra_argument = "required this.bridge,".to_string();
         let field_bridge = format!(
             "final {} bridge;",
-            self.context.dart_api_class_name.as_ref().unwrap()
+            self.context.config.dart_api_class_name(),
         );
         if src.using_freezed() {
             let mut constructor_params = src

@@ -1,3 +1,4 @@
+use std::borrow::Cow;
 use std::env;
 use std::ffi::OsString;
 use std::fs;
@@ -6,68 +7,74 @@ use std::path::PathBuf;
 use std::str::FromStr;
 
 use anyhow::{anyhow, Result};
+use clap::IntoApp;
+use clap::Parser;
 use convert_case::{Case, Casing};
 use serde::Deserialize;
-use structopt::clap::AppSettings;
-use structopt::StructOpt;
 use toml::Value;
 
 use crate::ir::IrFile;
 use crate::parser;
 use crate::utils::BlockIndex;
 
-#[derive(StructOpt, Debug, PartialEq, Eq, Deserialize, Default)]
-#[structopt(setting(AppSettings::DeriveDisplayOrder))]
+#[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
+#[clap(version, setting(clap::AppSettings::DeriveDisplayOrder))]
 pub struct RawOpts {
     /// Path of input Rust code
-    #[structopt(short, long)]
+    #[clap(short, long, required = true, multiple_values = true)]
     pub rust_input: Vec<String>,
     /// Path of output generated Dart code
-    #[structopt(short, long)]
+    #[clap(short, long, required = true, multiple_values = true)]
     pub dart_output: Vec<String>,
     /// If provided, generated Dart declaration code to this separate file
-    #[structopt(long)]
+    #[clap(long)]
     pub dart_decl_output: Option<String>,
-
-    /// Path of output generated C header
-    #[structopt(short, long)]
+    /// Output path of generated C header
+    #[clap(short, long)]
     pub c_output: Option<Vec<String>>,
     /// Crate directory for your Rust project
-    #[structopt(long)]
+    #[clap(long, multiple_values = true)]
     pub rust_crate_dir: Option<Vec<String>>,
-    /// Path of output generated Rust code
-    #[structopt(long)]
+    /// Output path of generated Rust code
+    #[clap(long, multiple_values = true)]
     pub rust_output: Option<Vec<String>>,
     /// Generated class name
-    #[structopt(long)]
+    #[clap(long, multiple_values = true)]
     pub class_name: Option<Vec<String>>,
-    /// Line length for dart formatting
-    #[structopt(long)]
-    pub dart_format_line_length: Option<i32>,
+    /// Line length for Dart formatting
+    #[clap(long, default_value = "80")]
+    pub dart_format_line_length: u32,
     /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
-    #[structopt(long)]
+    #[clap(long)]
     pub skip_add_mod_to_lib: bool,
     /// Path to the installed LLVM
-    #[structopt(long)]
+    #[clap(long, multiple_values = true)]
     pub llvm_path: Option<Vec<String>>,
     /// LLVM compiler opts
-    #[structopt(long)]
+    #[clap(long)]
     pub llvm_compiler_opts: Option<String>,
     /// Path to root of Dart project, otherwise inferred from --dart-output
-    #[structopt(long)]
+    #[clap(long, multiple_values = true)]
     pub dart_root: Option<Vec<String>>,
-    /// Skip running build_runner even when codegen-capable code is detected
-    #[structopt(long)]
+    /// Skip running build_runner even when codegen-required code is detected
+    #[clap(long)]
     pub no_build_runner: bool,
     /// Show debug messages.
-    #[structopt(short, long)]
+    #[clap(short, long)]
     pub verbose: bool,
+    /// Enable WASM module generation.
+    /// Requires: --dart-decl-output
+    #[clap(long, requires = "dart-decl-output")]
+    pub wasm: bool,
+    /// Inline declaration of Rust bridge modules
+    #[clap(long)]
+    pub inline_rust: bool,
     /// Skip dependencies check.
-    #[structopt(long)]
+    #[clap(long)]
     pub skip_deps_check: bool,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
@@ -76,7 +83,7 @@ pub struct Opts {
     pub rust_crate_dir: String,
     pub rust_output_path: String,
     pub class_name: String,
-    pub dart_format_line_length: i32,
+    pub dart_format_line_length: u32,
     pub skip_add_mod_to_lib: bool,
     pub llvm_path: Vec<String>,
     pub llvm_compiler_opts: String,
@@ -85,22 +92,25 @@ pub struct Opts {
     pub build_runner: bool,
     pub block_index: BlockIndex,
     pub skip_deps_check: bool,
+    pub wasm_enabled: bool,
+    pub inline_rust: bool,
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
+    fn bail(err: clap::ErrorKind, message: Cow<str>) {
+        RawOpts::command().error(err, message).exit()
+    }
     // rust input path(s)
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
-    assert!(
-        !rust_input_paths.is_empty(),
-        "rust input(s) should have at least 1 path"
-    );
 
     // dart output path(s)
     let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
-    assert!(
-        dart_output_paths.len() == rust_input_paths.len(),
-        "dart output path(s) should have the same number of path(s) as rust input(s)"
-    );
+    if dart_output_paths.len() != rust_input_paths.len() {
+        bail(
+            clap::ErrorKind::WrongNumberOfValues,
+            "--dart-output's inputs should match --rust-input's length".into(),
+        )
+    }
 
     // rust crate dir(s)
     let rust_crate_dirs = raw.rust_crate_dir.unwrap_or_else(|| {
@@ -116,10 +126,12 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         .iter()
         .map(|each_path| canon_path(each_path))
         .collect::<Vec<_>>();
-    assert!(
-        rust_crate_dirs.len() == rust_input_paths.len(),
-        "rust crate dir(s) should have the same number of path(s) as rust input(s)"
-    );
+    if rust_crate_dirs.len() != rust_input_paths.len() {
+        bail(
+            clap::ErrorKind::WrongNumberOfValues,
+            "--rust-crate-dir's inputs should match --rust-input's length".into(),
+        );
+    }
 
     // manifest path(s)
     let manifest_paths = rust_crate_dirs
@@ -130,10 +142,6 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
             path_to_string(path).unwrap()
         })
         .collect::<Vec<_>>();
-    assert!(
-        manifest_paths.len() == rust_input_paths.len(),
-        "manifest path(s) should have the same number of path(s) as rust input(s)"
-    );
 
     // rust output path(s)
     let rust_output_paths = get_outputs_for_flag_requires_full_data(
@@ -146,10 +154,12 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         .iter()
         .map(|each_path| canon_path(each_path))
         .collect::<Vec<_>>();
-    assert!(
-        rust_output_paths.len() == rust_input_paths.len(),
-        "rust output path(s) should have the same number of path(s) as rust input(s)"
-    );
+    if rust_output_paths.len() != rust_input_paths.len() {
+        bail(
+            clap::ErrorKind::WrongNumberOfValues,
+            "--rust-output's inputs should match --rust-input's length".into(),
+        );
+    }
 
     // class name(s)
     let class_names = get_outputs_for_flag_requires_full_data(
@@ -158,10 +168,12 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         &fallback_class_name,
         "class_name",
     );
-    assert!(
-        class_names.len() == rust_input_paths.len(),
-        "class_name(s) should have the same number of path(s) as rust input(s)"
-    );
+    if class_names.len() != rust_input_paths.len() {
+        bail(
+            clap::ErrorKind::WrongNumberOfValues,
+            "--class-name's inputs should match --rust-input's length".into(),
+        );
+    }
 
     let skip_deps_check = raw.skip_deps_check;
 
@@ -180,15 +192,15 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         });
 
     // dart root(s)
-    let dart_roots = match raw.dart_root {
+    let dart_roots: Vec<_> = match raw.dart_root {
         Some(dart_roots) => dart_roots
             .into_iter()
             .map(|each_path| Some(canon_path(&each_path)))
-            .collect::<Vec<_>>(),
+            .collect(),
         None => dart_output_paths
             .iter()
             .map(|each_dart_output_path| fallback_dart_root(each_dart_output_path).ok())
-            .collect::<Vec<_>>(),
+            .collect(),
     };
 
     // build Opt for each rust api block
@@ -196,7 +208,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         .dart_decl_output
         .as_ref()
         .map(|s| canon_path(s.as_str()));
-    let dart_format_line_length = raw.dart_format_line_length.unwrap_or(80);
+    let dart_format_line_length = raw.dart_format_line_length;
     let llvm_paths = get_llvm_paths(&raw.llvm_path);
     let llvm_compiler_opts = raw
         .llvm_compiler_opts
@@ -204,6 +216,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         .unwrap_or_else(|| "".to_string());
     let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
     let build_runner = !raw.no_build_runner;
+    let wasm = raw.wasm;
+    let inline_rust = raw.inline_rust;
 
     (0..rust_input_paths.len())
         .map(|i| {
@@ -224,6 +238,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 build_runner, //same for all rust api blocks
                 block_index: BlockIndex(i),
                 skip_deps_check,
+                wasm_enabled: wasm,
+                inline_rust,
             }
         })
         .collect()
@@ -243,10 +259,15 @@ fn get_outputs_for_flag_requires_full_data(
             let strs = field_str.split('_').collect::<Vec<_>>();
             let raw_str = strs.join(" ");
             let flag_str = strs.join("-");
-            panic!(
-                "for more than 1 rust blocks, please specify each {} clearly with flag \"{}\"",
-                raw_str, flag_str
-            );
+            RawOpts::command()
+                .error(
+                    clap::ErrorKind::ValueValidation,
+                    format!(
+                        "for more than 1 rust blocks, please specify each {} clearly with flag \"{}\"",
+                        raw_str, flag_str
+                    ),
+                )
+                .exit()
         }
     })
 }
@@ -266,7 +287,6 @@ fn get_llvm_paths(llvm_path: &Option<Vec<String>>) -> Vec<String> {
             "/usr/lib/".to_owned(),
             "/usr/lib64/".to_owned(),
             "C:/Program Files/llvm".to_owned(), // Default on Windows
-            "C:/Program Files/LLVM".to_owned(),
             "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
         ]
     })
@@ -404,29 +424,56 @@ impl Opts {
         format!("{}Wire", self.class_name)
     }
 
-    /// Returns None if the path terminates in "..", or not utf8.
-    pub fn dart_output_path_name(&self) -> Option<&str> {
-        let name = Path::new(&self.dart_output_path);
-        let root = name.file_name()?.to_str()?;
-        if let Some((name, _)) = root.rsplit_once('.') {
-            Some(name)
-        } else {
-            Some(root)
-        }
+    pub fn dart_platform_class_name(&self) -> String {
+        format!("{}Platform", self.class_name)
     }
 
-    pub fn dart_output_freezed_path(&self) -> Option<String> {
-        Some(
-            Path::new(&self.dart_output_path)
-                .with_extension("freezed.dart")
-                .to_str()?
-                .to_owned(),
+    pub fn dart_wasm_module(&self) -> String {
+        format!("{}WasmModule", self.class_name)
+    }
+
+    pub(crate) fn dart_output_root(&self) -> Option<&str> {
+        Path::new(
+            self.dart_decl_output_path
+                .as_ref()
+                .unwrap_or(&self.dart_output_path),
         )
+        .file_stem()?
+        .to_str()
+    }
+
+    pub fn dart_wasm_output_path(&self) -> PathBuf {
+        Path::new(&self.dart_output_path).with_extension("web.dart")
+    }
+
+    pub fn dart_io_output_path(&self) -> PathBuf {
+        Path::new(&self.dart_output_path).with_extension("io.dart")
+    }
+
+    pub fn dart_common_output_path(&self) -> PathBuf {
+        Path::new(&self.dart_output_path).with_extension("common.dart")
+    }
+
+    pub fn rust_wasm_output_path(&self) -> PathBuf {
+        Path::new(&self.rust_output_path).with_extension("web.rs")
+    }
+
+    pub fn rust_io_output_path(&self) -> PathBuf {
+        Path::new(&self.rust_output_path).with_extension("io.rs")
     }
 
     pub fn dart_root_or_default(&self) -> String {
         self.dart_root
             .clone()
             .unwrap_or_else(|| env!("CARGO_MANIFEST_DIR").to_string())
+    }
+
+    pub fn dart_freezed_path(&self) -> PathBuf {
+        PathBuf::from(
+            self.dart_decl_output_path
+                .as_deref()
+                .unwrap_or(&self.dart_output_path),
+        )
+        .with_extension("freezed.dart")
     }
 }

@@ -1,12 +1,12 @@
 [package]
 name = "flutter_rust_bridge_codegen"
-version = "1.41.3"
-edition = "2018"
-description = "High-level memory-safe bindgen for Dart/Flutter <-> Rust"
-license = "MIT"
-repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
-keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
-categories = ["development-tools::ffi"]
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
 
 [lib]
 name = "lib_flutter_rust_bridge_codegen"
@@ -20,28 +20,26 @@ path = "src/main.rs"
 syn = { version = "1.0.77", features = ["full", "extra-traits"] }
 quote = "1.0"
 regex = "1.5.4"
-lazy_static = "1.4.0"
+lazy_static = { workspace = true }
 convert_case = "0.5.0"
 tempfile = "3.2.0"
 serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.8"
 log = "0.4"
 env_logger = "0.9.0"
-structopt = "0.3"
 toml = "0.5.8"
-anyhow = "1.0.44"
+anyhow = { workspace = true }
 pathdiff = "0.2.1"
 cargo_metadata = "0.14.1"
 enum_dispatch = "0.3.8"
 thiserror = "1"
 cbindgen = "0.24"
+clap = { version = "3.2.14", features = ["derive"] }
+itertools = "0.10.3"
+extend = "1.1.2"
 
 [dev-dependencies]
 semver = "1.0.12"
-
-[profile.release]
-strip = "debuginfo"
-lto = "thin"
 
 [package.metadata.binstall]
 bin-dir = "{bin}{binary-ext}"
@@ -49,3 +47,8 @@ bin-dir = "{bin}{binary-ext}"
 [package.metadata.binstall.overrides]
 x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 i686-pc-windows-msvc = { pkg-fmt = "zip" }
+
+[features]
+default = ["chrono"]
+chrono = []
+uuid = []

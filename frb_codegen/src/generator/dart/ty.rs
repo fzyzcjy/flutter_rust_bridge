@@ -1,9 +1,9 @@
-use crate::generator::dart::*;
+use crate::{generator::dart::*, Opts};
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
-    fn api2wire_body(&self, block_index: BlockIndex) -> Option<String>;
+    fn api2wire_body(&self) -> Acc<Option<String>>;
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
         None
@@ -21,7 +21,7 @@ pub trait TypeDartGeneratorTrait {
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {
     pub ir_file: &'a IrFile,
-    pub dart_api_class_name: Option<String>,
+    pub config: &'a Opts,
 }
 
 #[macro_export]
@@ -46,14 +46,12 @@ pub enum TypeDartGenerator<'a> {
     StructRef(TypeStructRefGenerator<'a>),
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
+    SyncReturn(TypeSyncReturnGenerator<'a>),
 }
 
 impl<'a> TypeDartGenerator<'a> {
-    pub fn new(ty: IrType, ir_file: &'a IrFile, dart_api_class_name: Option<String>) -> Self {
-        let context = TypeGeneratorContext {
-            ir_file,
-            dart_api_class_name,
-        };
+    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
+        let context = TypeGeneratorContext { ir_file, config };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
             Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),
@@ -63,6 +61,7 @@ impl<'a> TypeDartGenerator<'a> {
             StructRef(ir) => TypeStructRefGenerator { ir, context }.into(),
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
+            SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
         }
     }
 }

@@ -1,20 +1,32 @@
 use crate::generator::dart::ty::*;
 use crate::ir::*;
+use crate::target::{Acc, Target};
 use crate::type_dart_generator_struct;
-use crate::utils::BlockIndex;
 
 type_dart_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
 impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
-    fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
-        Some(format!(
-            "return raw == null ? ffi.nullptr : _api2wire_{}(raw);",
-            self.ir.inner.safe_ident()
-        ))
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        Acc::new(|target| match target {
+            Target::Io | Target::Wasm => Some(format!(
+                "return raw == null ? {} : api2wire_{}(raw);",
+                if target.is_wasm() {
+                    if self.ir.is_primitive() || self.ir.is_boxed_primitive() {
+                        "0"
+                    } else {
+                        "null"
+                    }
+                } else {
+                    "ffi.nullptr"
+                },
+                self.ir.inner.safe_ident()
+            )),
+            _ => None,
+        })
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        if !self.ir.needs_initialization() || self.ir.is_list() {
+        if !self.ir.needs_initialization() || self.ir.is_list() || self.ir.is_boxed_primitive() {
             return None;
         }
         Some(format!(

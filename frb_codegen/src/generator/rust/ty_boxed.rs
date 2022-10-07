@@ -1,32 +1,55 @@
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, ExternFuncCollector};
 use crate::ir::*;
+use crate::target::Acc;
+use crate::target::Target::*;
 use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
+
+use super::NO_PARAMS;
 
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
-        let IrTypeBoxed {
-            inner: box_inner,
-            exist_in_real_api,
-        } = &self.ir;
-        Some(match (box_inner.as_ref(), exist_in_real_api) {
-            (IrType::Primitive(_), false) => "unsafe { *support::box_from_leak_ptr(self) }".into(),
-            (IrType::Primitive(_), true) => "unsafe { support::box_from_leak_ptr(self) }".into(),
-            _ => {
-                format!(
-                    "let wrap = unsafe {{ support::box_from_leak_ptr(self) }};
-                    Wire2Api::<{}>::wire2api(*wrap).into()",
-                    box_inner.rust_api_type()
-                )
-            }
+    fn wire2api_body(&self) -> Acc<Option<String>> {
+        let box_inner = self.ir.inner.as_ref();
+        let exist_in_real_api = self.ir.exist_in_real_api;
+        Acc::new(|target| match (target, self.ir.inner.as_ref()) {
+            (Common, IrType::Primitive(_)) => Some(
+                if exist_in_real_api {
+                    "unsafe { support::box_from_leak_ptr(self) }"
+                } else {
+                    "unsafe { *support::box_from_leak_ptr(self) }"
+                }
+                .into(),
+            ),
+            (_, IrType::Primitive(_)) => None,
+            (Io, _) => Some(format!(
+                "let wrap = unsafe {{ support::box_from_leak_ptr(self) }};
+                Wire2Api::<{}>::wire2api(*wrap).into()",
+                box_inner.rust_api_type()
+            )),
+            _ => None,
+        })
+    }
+
+    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
+        (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
+            IrType::Primitive(_) => format!(
+                "(self.unchecked_into_f64() as usize as *mut {}).wire2api()",
+                self.ir.inner.rust_wire_type(Wasm),
+            )
+            .into(),
+            _ => "Box::new(self.wire2api())".into(),
         })
     }
 
     fn wrapper_struct(&self) -> Option<String> {
-        let src = TypeRustGenerator::new(*self.ir.inner.clone(), self.context.ir_file);
+        let src = TypeRustGenerator::new(
+            *self.ir.inner.clone(),
+            self.context.ir_file,
+            self.context.config,
+        );
         src.wrapper_struct()
     }
 
@@ -35,7 +58,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     }
 
     fn wrap_obj(&self, obj: String) -> String {
-        let src = TypeRustGenerator::new(*self.ir.inner.clone(), self.context.ir_file);
+        let src = TypeRustGenerator::new(
+            *self.ir.inner.clone(),
+            self.context.ir_file,
+            self.context.config,
+        );
         src.wrap_obj(self.self_access(obj))
     }
 
@@ -43,28 +70,40 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         &self,
         collector: &mut ExternFuncCollector,
         block_index: BlockIndex,
-    ) -> String {
+    ) -> Acc<Option<String>> {
+        let func_name = format!("new_{}_{}", self.ir.safe_ident(), block_index);
         if self.ir.inner.is_primitive() {
-            collector.generate(
-                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
-                &[&format!("value: {}", self.ir.inner.rust_wire_type())],
-                Some(&format!("*mut {}", self.ir.inner.rust_wire_type())),
-                "support::new_leak_box_ptr(value)",
-            )
+            Acc::new(|target| match target {
+                Io | Wasm => Some(collector.generate(
+                    &func_name,
+                    [(
+                        format!("value: {}", self.ir.inner.rust_wire_type(target)),
+                        self.ir.inner.dart_wire_type(target),
+                    )],
+                    Some(&format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
+                    "support::new_leak_box_ptr(value)",
+                    target,
+                )),
+                _ => None,
+            })
         } else {
-            collector.generate(
-                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
-                &[],
-                Some(&[self.ir.rust_wire_modifier(), self.ir.rust_wire_type()].concat()),
-                &format!(
-                    "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                    self.ir.inner.rust_wire_type()
-                ),
-            )
+            Acc {
+                io: Some(collector.generate(
+                    &func_name,
+                    NO_PARAMS,
+                    Some(&[self.ir.rust_wire_modifier(Io), self.ir.rust_wire_type(Io)].concat()),
+                    &format!(
+                        "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                        self.ir.inner.rust_wire_type(Io)
+                    ),
+                    Io,
+                )),
+                ..Default::default()
+            }
         }
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file)
+        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
     }
 }

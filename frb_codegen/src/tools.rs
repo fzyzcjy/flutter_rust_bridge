@@ -11,7 +11,7 @@ use lazy_static::lazy_static;
 use log::debug;
 use serde::Deserialize;
 
-use crate::{commands::call_shell, error::Error};
+use crate::{args, commands::call_shell, error::Error, run};
 
 lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
@@ -21,7 +21,7 @@ lazy_static! {
 }
 
 /// represents dart or flutter toolchain
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub(crate) enum DartToolchain {
     Dart,
     Flutter,
@@ -166,17 +166,21 @@ impl DartToolchain {
 }
 
 impl DartToolchain {
-    pub(crate) fn as_run_command(&self) -> &'static str {
+    pub(crate) fn as_run_command(&self) -> Vec<PathBuf> {
         match self {
-            DartToolchain::Dart => "dart",
-            DartToolchain::Flutter => "flutter pub",
+            DartToolchain::Dart => args!("dart"),
+            DartToolchain::Flutter => args!("flutter", "pub"),
         }
     }
     pub(crate) fn available(&self) -> bool {
-        match self {
-            DartToolchain::Dart => call_shell("dart --version").status.success(),
-            DartToolchain::Flutter => call_shell("flutter --version").status.success(),
-        }
+        let toolchain = match self {
+            DartToolchain::Dart => "dart",
+            DartToolchain::Flutter => "flutter",
+        };
+        run!(call_shell[None], toolchain, "--version")
+            .unwrap()
+            .status
+            .success()
     }
 }
 
@@ -389,10 +393,8 @@ mod tests {
     }
 
     fn guess_toolchain_base(path: &Path, expect_toolchain: DartToolchain) {
-        let repo = DartRepository::from_str(&path.to_string_lossy()).expect(&format!(
-            "can get toolchain from {}",
-            path.to_string_lossy()
-        ));
+        let repo = DartRepository::from_str(&path.to_string_lossy())
+            .unwrap_or_else(|_| panic!("can get toolchain from {}", path.to_string_lossy()));
         assert_eq!(repo.toolchain, expect_toolchain);
     }
 

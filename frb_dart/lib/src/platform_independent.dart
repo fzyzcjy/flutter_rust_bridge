@@ -14,6 +14,7 @@ abstract class FlutterRustBridgeBaseTask {
   /// Transparent hint given by the caller of the method
   final dynamic hint;
 
+  /// Create a new task.
   const FlutterRustBridgeBaseTask({
     required this.constMeta,
     required this.argValues,
@@ -37,9 +38,13 @@ abstract class FlutterRustBridgeBaseTask {
 /// Metadata that does not change across different method calls. Thus it is made `const` to save memory and speed up
 @immutable
 class FlutterRustBridgeTaskConstMeta {
+  /// Used for debugging purposes only.
   final String debugName;
+
+  /// A list of arguments to the task.
   final List<String> argNames;
 
+  /// Create a new task metadata.
   const FlutterRustBridgeTaskConstMeta({
     required this.debugName,
     required this.argNames,
@@ -70,10 +75,10 @@ class FfiException {
   /// The error message of the exception.
   final String message;
 
-  /// The error details of the exception. May not exist.
+  /// The error details of the exception. Optional.
   final Object? details;
 
-  const FfiException(this.code, this.message, this.details);
+  const FfiException(this.code, this.message, [this.details]);
 
   @override
   String toString() => 'FfiException($code, $message, $details)';

@@ -1,38 +1,54 @@
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
+use crate::target::Acc;
+use crate::target::Target;
 use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn wire2api_body(&self) -> Option<String> {
+    fn wire2api_body(&self) -> Acc<Option<String>> {
         let api_struct = self.ir.get(self.context.ir_file);
-        let fields_str = &api_struct
+        let fields = api_struct
             .fields
             .iter()
-            .map(|field| {
-                format!(
-                    "{} self.{}.wire2api()",
-                    if api_struct.is_fields_named {
-                        field.name.rust_style().to_string() + ": "
-                    } else {
-                        String::new()
-                    },
-                    field.name.rust_style()
-                )
+            .enumerate()
+            .map(|(idx, field)| {
+                let field_ = if api_struct.is_fields_named {
+                    field.name.rust_style().to_string() + ": "
+                } else {
+                    String::new()
+                };
+                Acc {
+                    wasm: format!("{} self_.get({}).wire2api()", field_, idx),
+                    io: format!("{} self.{}.wire2api()", field_, field.name.rust_style()),
+                    ..Default::default()
+                }
             })
-            .collect::<Vec<_>>()
-            .join(",");
+            .collect::<Acc<Vec<_>>>();
 
         let (left, right) = api_struct.brackets_pair();
-        Some(format!(
-            "{}{}{}{}",
-            self.ir.rust_api_type(),
-            left,
-            fields_str,
-            right
-        ))
+        Acc {
+            io: Some(format!(
+                "{}{}{}{}",
+                self.ir.rust_api_type(),
+                left,
+                fields.io.join(","),
+                right
+            )),
+            wasm: Some(format!(
+                "let self_ = self.dyn_into::<JsArray>().unwrap();
+                assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
+                {}{}{}{}",
+                self.ir.rust_api_type(),
+                left,
+                fields.wasm.join(","),
+                right,
+                len = api_struct.fields.len(),
+            )),
+            ..Default::default()
+        }
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
@@ -44,8 +60,8 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     format!(
                         "{}: {}{}",
                         field.name.rust_style(),
-                        field.ty.rust_wire_modifier(),
-                        field.ty.rust_wire_type()
+                        field.ty.rust_wire_modifier(Target::Io),
+                        field.ty.rust_wire_type(Target::Io)
                     )
                 })
                 .collect(),
@@ -115,7 +131,11 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 } else {
                     i.to_string()
                 };
-                let gen = TypeRustGenerator::new(field.ty.clone(), self.context.ir_file);
+                let gen = TypeRustGenerator::new(
+                    field.ty.clone(),
+                    self.context.ir_file,
+                    self.context.config,
+                );
                 gen.convert_to_dart(gen.wrap_obj(format!("self{}.{}", unwrap, field_ref)))
             })
             .collect::<Vec<_>>()
@@ -127,7 +147,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         };
         format!(
             "impl support::IntoDart for {} {{
-                fn into_dart(self) -> support::DartCObject {{
+                fn into_dart(self) -> support::DartAbi {{
                     vec![
                         {}
                     ].into_dart()
@@ -149,7 +169,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     format!(
                         "{}: {},",
                         field.name.rust_style(),
-                        if field.ty.rust_wire_is_pointer() {
+                        if field.ty.rust_wire_is_pointer(Target::Io) {
                             "core::ptr::null_mut()"
                         } else {
                             "Default::default()"
@@ -166,7 +186,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     }}
                 }}
             "#,
-            self.ir.rust_wire_type(),
+            self.ir.rust_wire_type(Target::Io),
             body,
         )
     }

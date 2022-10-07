@@ -1,16 +1,25 @@
-import 'dart:ffi';
-import 'dart:typed_data';
+import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:flutter_rust_bridge_example/bridge_generated.dart';
 import 'package:test/test.dart';
+import 'package:uuid/uuid.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
+import 'bridge_definitions.dart';
+
+const isWeb = bool.fromEnvironment('dart.library.html');
+
+String? skipWeb([String reason = 'unspecified']) => isWeb ? 'Skipped on web (reason: $reason)' : null;
 
 void main(List<String> args) async {
   String dylibPath = args[0];
+  var releaseMode = true;
+  assert(() {
+    releaseMode = false;
+    return true;
+  }());
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
-  final dylib = DynamicLibrary.open(dylibPath);
-  final api = FlutterRustBridgeExampleSingleBlockTestImpl(dylib);
+  final api = initializeExternalLibrary(dylibPath);
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -48,10 +57,10 @@ void main(List<String> args) async {
     expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
     expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
     expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
-    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
-    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
     expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
     expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
+    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
   });
 
   test('dart call handleZeroCopyVecOfPrimitive', () async {
@@ -63,10 +72,10 @@ void main(List<String> args) async {
     expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
     expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
     expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
-    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
-    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
     expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
     expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
+    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
   });
 
   test('dart call handleStruct', () async {
@@ -106,6 +115,7 @@ void main(List<String> args) async {
     expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
   });
 
+  // Test if sync return is working as expected.
   test('dart call handle_sync_return', () async {
     expect(api.handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
 
@@ -113,11 +123,41 @@ void main(List<String> args) async {
       try {
         api.handleSyncReturn(mode: mode);
         fail("exception not thrown");
-      } catch (e) {
+      } on FfiException catch (e) {
         print('dart catch e: $e');
-        expect(e, isA<FfiException>());
       }
     }
+  });
+  // Test other sync return types.
+  test('dart call handle_sync_bool', () async {
+    expect(api.handleSyncBool(input: true), true);
+  });
+  test('dart call handle_sync_u8', () async {
+    expect(api.handleSyncU8(input: 42), 42);
+  });
+  test('dart call handle_sync_u16', () async {
+    expect(api.handleSyncU16(input: 42), 42);
+  });
+  test('dart call handle_sync_u32', () async {
+    expect(api.handleSyncU32(input: 42), 42);
+  });
+  test('dart call handle_sync_u64', () async {
+    expect(api.handleSyncU64(input: 42), 42);
+  }, skip: skipWeb('Not supported by dart2js'));
+  test('dart call handle_sync_i8', () async {
+    expect(api.handleSyncI8(input: 42), 42);
+  });
+  test('dart call handle_sync_i16', () async {
+    expect(api.handleSyncI16(input: 42), 42);
+  });
+  test('dart call handle_sync_i32', () async {
+    expect(api.handleSyncI32(input: 42), 42);
+  });
+  test('dart call handle_sync_i64', () async {
+    expect(api.handleSyncI64(input: 42), 42);
+  }, skip: skipWeb('Not supported by dart2js'));
+  test('dart call handle_sync_string', () async {
+    expect(api.handleSyncString(input: "Hello Rust!"), "Hello Rust!");
   });
 
   test('dart call handle_stream', () async {
@@ -130,33 +170,38 @@ void main(List<String> args) async {
     expect(cnt, 10);
   });
 
-  test('dart call handle_stream', () {
-    Future<void> _testHandleStream(
-        Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
-      final max = 5;
-      final key = 8;
-      final stream = handleStreamFunction(key: key, max: max);
-      var cnt = 0;
-      await for (final value in stream) {
-        print("output from handle_stream_x's stream: $value");
-        expect(value.key, key);
-        cnt++;
-      }
-      expect(cnt, max);
+  Future<void> testHandleStream(
+      Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
+    final max = 5;
+    final key = 8;
+    final stream = handleStreamFunction(key: key, max: max);
+    var cnt = 0;
+    await for (final value in stream) {
+      print("output from handle_stream_x's stream: $value");
+      expect(value.key, key);
+      cnt++;
     }
+    expect(cnt, max);
+  }
 
-    _testHandleStream(api.handleStreamSinkAt1);
-    _testHandleStream(api.handleStreamSinkAt2);
-    _testHandleStream(api.handleStreamSinkAt3);
+  test('dart call handle_stream_sink_at_1', () {
+    testHandleStream(api.handleStreamSinkAt1);
+  });
+
+  test('dart call handle_stream_sink_at_2', () {
+    testHandleStream(api.handleStreamSinkAt2);
+  });
+
+  test('dart call handle_stream_sink_at_3', () {
+    testHandleStream(api.handleStreamSinkAt3);
   });
 
   test('dart call returnErr', () async {
     try {
       await api.returnErr();
       fail("exception not thrown");
-    } catch (e) {
+    } on FfiException catch (e) {
       print('dart catch e: $e');
-      expect(e, isA<FfiException>());
     }
   });
 
@@ -183,7 +228,9 @@ void main(List<String> args) async {
     {
       final message = 'Hello there.';
       final ret = await api.handleOptionalStruct(document: message);
-      if (ret == null) fail('handleOptionalStruct returned null for non-null document');
+      if (ret == null) {
+        fail('handleOptionalStruct returned null for non-null document');
+      }
       expect(ret.tag, 'div');
       expect(ret.text, null);
       expect(ret.attributes?[0].key, 'id');
@@ -206,16 +253,16 @@ void main(List<String> args) async {
         ret = await api.handleOptionalIncrement(opt: ret);
       }
       if (ret == null) fail('ret nulled after loop');
-      expect(ret.int32, loopFor);
-      expect(ret.int32, loopFor);
-      expect(ret.float64, loopFor);
+      expect(ret.int32, loopFor, reason: 'int32');
+      expect(ret.int64, loopFor, reason: 'int64');
+      expect(ret.float64, loopFor, reason: 'float64');
       expect(ret.boolean, false);
       expect(ret.zerocopy?.length, loopFor);
       expect(ret.int8List?.length, loopFor);
       expect(ret.uint8List?.length, loopFor);
       expect(ret.attributesNullable.length, loopFor);
       expect(ret.nullableAttributes?.length, loopFor);
-      expect(ret.newtypeint?.field0, loopFor);
+      expect(ret.newtypeint?.field0, loopFor, reason: 'NewTypeInt');
     }
   });
 
@@ -390,18 +437,10 @@ void main(List<String> args) async {
     expect(await api.nextUserId(userId: userId), UserId(value: 12));
   });
 
-  test('dart register event listener & create event after delayed future', () async {
-    bool listenerCalled = false;
-    api.registerEventListener().listen((e) {
-      listenerCalled = true;
-    });
-
-    await Future.delayed(const Duration(milliseconds: 10));
-    await api.createEvent();
-    // waiting with an async Future.delayed() call doesn't block
-    // the ongoing futures, so a listener should be registered
-    // and thus the callback should be called.
-    expect(listenerCalled, equals(true));
+  test('dart register event listener & create event with delay', () async {
+    expectLater(api.registerEventListener(), emits(Event(address: 'foo', payload: 'bar')));
+    await Future.delayed(const Duration(milliseconds: 20));
+    await api.createEvent(address: 'foo', payload: 'bar');
     await api.closeEventListener();
   });
 
@@ -459,13 +498,7 @@ void main(List<String> args) async {
 
   test('ConcatenateWith static stream sink at 1 test', () async {
     final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
-    int cnt = 0;
-    await for (final value in stream) {
-      print("output from ConcatenateWith's static stream: $value");
-      expect(value, cnt);
-      cnt++;
-    }
-    expect(cnt, 5);
+    expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
   test('dart call multiplyByTen()', () async {
@@ -477,10 +510,11 @@ void main(List<String> args) async {
       await api.multiplyByTen(measure: Measure.speed(Speed_Unknown())),
       null,
     );
-    expect((Speed_Unknown).toString(), 'Speed_Unknown');
-    expect((Speed_GPS).toString(), 'Speed_GPS');
-    expect((Distance_Unknown).toString(), 'Distance_Unknown');
-    expect((Distance_Map).toString(), 'Distance_Map');
+    final skipMinified = releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+    expect((Speed_Unknown).toString(), 'Speed_Unknown', skip: skipMinified);
+    expect((Speed_GPS).toString(), 'Speed_GPS', skip: skipMinified);
+    expect((Distance_Unknown).toString(), 'Distance_Unknown', skip: skipMinified);
+    expect((Distance_Map).toString(), 'Distance_Map', skip: skipMinified);
   });
 
   test('resolve module for old module system', () async {
@@ -492,7 +526,107 @@ void main(List<String> args) async {
     expect(n.field, 1);
   });
 
-  print('flutter_rust_bridge example program end');
+  group('Platform-specific support', () {
+    test('Int64List', () {
+      final list = Int64List.fromList([-1, -2, -3, -4, -5]);
+      expect(list[0], BigInt.from(-1));
+      expect(list.map((el) => el * el), MatchBigInt([1, 4, 9, 16, 25]));
+      list[1] = -123;
+      expect(list[1], BigInt.from(-123));
+    });
+    test('Uint64List', () {
+      final list = Uint64List.fromList([1, 2, 3, 4, 5]);
+      expect(list[0], BigInt.one);
+      expect(list.map((el) => el * el), MatchBigInt([1, 4, 9, 16, 25]));
+      list[1] = 123;
+      expect(list[1], BigInt.from(123));
+      list[1] += BigInt.one;
+      expect(list[1], BigInt.from(124));
+    });
+    test('Lossless big buffers', () async {
+      final list = await api.handleBigBuffers();
+      expect(list.int64[0], BigInt.parse('-9223372036854775808'));
+      expect(list.int64[1], BigInt.parse('9223372036854775807'));
+      expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'), reason: 'uint64');
+    });
+  });
+
+  group('chrono feature', () {
+    test('DateTime<Utc>', () async {
+      final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.datetimeUtc(d: date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
+    test('DateTime<Local>', () async {
+      final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.datetimeLocal(d: date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
+    test('NaiveDateTime', () async {
+      final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.naivedatetime(d: date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
+    test('Duration', () async {
+      final duration = Duration(hours: 4);
+      final resp = await api.duration(d: duration);
+      expect(resp.inHours, duration.inHours);
+    });
+    test('nested chrono types', () async {
+      const duration = Duration(hours: 4);
+      final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+      final local = DateTime.now();
+      final utc = DateTime.now().toUtc();
+      final difference =
+          await api.howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
+      log('$difference');
+    });
+  });
+
+  group('uuid feature', () {
+    test('Uuid', () async {
+      final uuid = Uuid();
+      final id = uuid.v4obj();
+      final output = await api.handleUuid(id: id);
+      expect(id, output);
+    });
+    test('Vec<Uuid>', () async {
+      final uuid = Uuid();
+      final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+      final outputs = await api.handleUuids(ids: ids);
+      expect(ids, outputs);
+    });
+    test('nested uuid types', () async {
+      final uuid = Uuid();
+      final id = uuid.v4obj();
+      final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+      final wrapper = FeatureUuid(one: id, many: ids);
+      final outputs = await api.handleNestedUuids(ids: wrapper);
+      expect(wrapper.one, outputs.one);
+      expect(wrapper.many, outputs.many);
+    });
+  });
 }
 
 int _createGarbage() {
@@ -532,6 +666,18 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
       ),
     ],
   );
+}
+
+class MatchBigInt extends CustomMatcher {
+  MatchBigInt(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
+  @override
+  Object? featureValueOf(actual) => _featureValueOf(actual);
+
+  static Object? _featureValueOf(actual) {
+    if (actual is Iterable) return actual.map(_featureValueOf);
+    if (actual is int) return BigInt.from(actual);
+    return actual;
+  }
 }
 
 // vim:expandtab:ts=2:sw=2

@@ -1,0 +1,62 @@
+flutter_rust_bridge_codegen 1.48.1
+
+USAGE:
+    flutter_rust_bridge_codegen [OPTIONS] --rust-input <RUST_INPUT>... --dart-output <DART_OUTPUT>...
+
+OPTIONS:
+    -r, --rust-input <RUST_INPUT>...
+            Path of input Rust code
+
+    -d, --dart-output <DART_OUTPUT>...
+            Path of output generated Dart code
+
+        --dart-decl-output <DART_DECL_OUTPUT>
+            If provided, generated Dart declaration code to this separate file
+
+    -c, --c-output <C_OUTPUT>
+            Output path of generated C header
+
+        --rust-crate-dir <RUST_CRATE_DIR>...
+            Crate directory for your Rust project
+
+        --rust-output <RUST_OUTPUT>...
+            Output path of generated Rust code
+
+        --class-name <CLASS_NAME>...
+            Generated class name
+
+        --dart-format-line-length <DART_FORMAT_LINE_LENGTH>
+            Line length for Dart formatting [default: 80]
+
+        --skip-add-mod-to-lib
+            Skip automatically adding `mod bridge_generated;` to `lib.rs`
+
+        --llvm-path <LLVM_PATH>...
+            Path to the installed LLVM
+
+        --llvm-compiler-opts <LLVM_COMPILER_OPTS>
+            LLVM compiler opts
+
+        --dart-root <DART_ROOT>...
+            Path to root of Dart project, otherwise inferred from --dart-output
+
+        --no-build-runner
+            Skip running build_runner even when codegen-required code is detected
+
+    -v, --verbose
+            Show debug messages
+
+        --wasm
+            Enable WASM module generation. Requires: --dart-decl-output
+
+        --inline-rust
+            Inline declaration of Rust bridge modules
+
+        --skip-deps-check
+            Skip dependencies check
+
+    -h, --help
+            Print help information
+
+    -V, --version
+            Print version information

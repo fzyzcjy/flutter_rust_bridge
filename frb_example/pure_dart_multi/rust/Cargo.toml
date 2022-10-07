@@ -8,12 +8,12 @@ name = "flutter_rust_bridge_example_multi"
 crate-type = ["cdylib"]
 
 [build-dependencies]
-flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
+flutter_rust_bridge_codegen = { workspace = true }
 
 [dependencies]
-anyhow = { version = "1.0.58", features = ["backtrace"] }
-flutter_rust_bridge = { path = "../../../frb_rust" }
-lazy_static = "1.4.0"
+anyhow = { workspace = true, features = ["backtrace"] }
+flutter_rust_bridge = { workspace = true, features = ["chrono"] }
+lazy_static = { workspace = true }
 
 # [dependencies.external-lib] # used for demo of external types mirroring
 # path = "./external"

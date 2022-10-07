@@ -1,4 +1,5 @@
 use crate::ir::*;
+use crate::target::Target;
 use convert_case::{Case, Casing};
 
 #[derive(Debug, Clone)]
@@ -26,17 +27,24 @@ impl IrTypeTrait for IrTypeStructRef {
     fn dart_api_type(&self) -> String {
         self.name.to_string()
     }
-
-    fn dart_wire_type(&self) -> String {
-        self.rust_wire_type()
+    fn dart_wire_type(&self, target: Target) -> String {
+        if target.is_wasm() {
+            "List<dynamic>".into()
+        } else {
+            self.rust_wire_type(target)
+        }
     }
 
     fn rust_api_type(&self) -> String {
         self.name.to_string()
     }
 
-    fn rust_wire_type(&self) -> String {
-        format!("wire_{}", self.name)
+    fn rust_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
+            "JsValue".into()
+        } else {
+            format!("wire_{}", self.name)
+        }
     }
 }
 

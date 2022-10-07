@@ -8,4 +8,7 @@
 - [ ] If this PR adds/changes features, documentations (in the `./book` folder) are updated.
 - [ ] CI is passing.
 
-Remark for PR creator: If the PR is submitted but the owner (fzyzcjy) does not reply for a few days, maybe he just did not see it, so please ping him.
+## Remark for PR creator
+
+* New contributors will be blocked by GitHub from running CI, but you can use [a trick](https://github.com/fzyzcjy/flutter_rust_bridge/pull/663#discussion_r962150638) to workaround this, and verify your code using CI by yourself.
+* If fzyzcjy does not reply for a few days, maybe he just did not see it, so please ping him.

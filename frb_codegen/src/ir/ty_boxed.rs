@@ -1,4 +1,5 @@
 use crate::ir::*;
+use crate::target::Target;
 
 #[derive(Debug, Clone)]
 pub struct IrTypeBoxed {
@@ -28,13 +29,25 @@ impl IrTypeTrait for IrTypeBoxed {
         self.inner.dart_api_type()
     }
 
-    fn dart_wire_type(&self) -> String {
-        let wire_type = self
-            .inner
-            .as_primitive()
-            .map(|prim| prim.dart_native_type().to_owned())
-            .unwrap_or_else(|| self.inner.dart_wire_type());
-        format!("ffi.Pointer<{}>", wire_type)
+    fn dart_wire_type(&self, target: Target) -> String {
+        match target {
+            Target::Wasm => {
+                if self.inner.is_js_value() {
+                    self.inner.dart_wire_type(target)
+                } else {
+                    format!("int /* *{} */", self.inner.rust_wire_type(target))
+                }
+            }
+            Target::Io => {
+                let wire_type = self
+                    .inner
+                    .as_primitive()
+                    .map(|prim| prim.dart_native_type().to_owned())
+                    .unwrap_or_else(|| self.inner.dart_wire_type(target));
+                format!("ffi.Pointer<{}>", wire_type)
+            }
+            Target::Common => "".into(),
+        }
     }
 
     fn rust_api_type(&self) -> String {
@@ -45,11 +58,11 @@ impl IrTypeTrait for IrTypeBoxed {
         }
     }
 
-    fn rust_wire_type(&self) -> String {
-        self.inner.rust_wire_type()
+    fn rust_wire_type(&self, target: Target) -> String {
+        self.inner.rust_wire_type(target)
     }
 
-    fn rust_wire_is_pointer(&self) -> bool {
-        true
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        !target.is_wasm() || !self.inner.is_js_value()
     }
 }

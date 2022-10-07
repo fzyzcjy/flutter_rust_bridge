@@ -1,0 +1,171 @@
+use super::*;
+
+#[derive(Debug)]
+pub(crate) struct GeneratedApiMethod {
+    pub signature: String,
+    pub implementation: String,
+}
+
+pub(crate) fn generate_api_func(
+    func: &IrFunc,
+    ir_file: &IrFile,
+    common_api2wire_body: &str,
+) -> GeneratedApiFunc {
+    let raw_func_param_list = func
+        .inputs
+        .iter()
+        .map(|input| {
+            format!(
+                "{}{} {}",
+                input.ty.dart_required_modifier(),
+                input.ty.dart_api_type(),
+                input.name.dart_style()
+            )
+        })
+        .collect::<Vec<_>>();
+    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
+
+    let wire_param_list = [
+        if func.mode.has_port_argument() {
+            vec!["port_".to_string()]
+        } else {
+            vec![]
+        },
+        func.inputs
+            .iter()
+            .map(|input| {
+                // edge case: ffigen performs its own bool-to-int conversions
+                if let Primitive(IrTypePrimitive::Bool) = input.ty {
+                    input.name.dart_style()
+                } else {
+                    let func = format!("api2wire_{}", input.ty.safe_ident());
+                    format!(
+                        "{}{}({})",
+                        if common_api2wire_body.contains(&func) {
+                            ""
+                        } else {
+                            "_platform."
+                        },
+                        func,
+                        &input.name.dart_style()
+                    )
+                }
+            })
+            .collect::<Vec<_>>(),
+    ]
+    .concat();
+
+    let func_expr = format!(
+        "{} {}({{ {} }})",
+        func.mode.dart_return_type(&func.output.dart_api_type()),
+        func.name.to_case(Case::Camel),
+        full_func_param_list.join(","),
+    );
+
+    let execute_func_name = match func.mode {
+        IrFuncMode::Normal => "_platform.executeNormal",
+        IrFuncMode::Sync => "_platform.executeSync",
+        IrFuncMode::Stream { .. } => "_platform.executeStream",
+    };
+
+    let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
+
+    let signature = format!("{};", func_expr);
+
+    let comments = dart_comments(&func.comments);
+
+    let task_common_args = format!(
+        "
+        constMeta: {},
+        argValues: [{}],
+        hint: hint,
+        ",
+        const_meta_field_name,
+        func.inputs
+            .iter()
+            .map(|input| input.name.dart_style())
+            .collect::<Vec<_>>()
+            .join(", "),
+    );
+
+    let input_0 = func.inputs.get(0).as_ref().map(|x| &x.ty);
+    let input_0_struct_name = if let Some(StructRef(IrTypeStructRef { name, .. })) = &input_0 {
+        Some(name)
+    } else {
+        None
+    };
+    let f = FunctionName::deserialize(&func.name);
+    let func_output_struct_name = if let StructRef(IrTypeStructRef { name, .. }) = &func.output {
+        Some(name)
+    } else {
+        None
+    };
+    let parse_success_data = if (f.is_static_method()
+        && f.struct_name().unwrap() == {
+            if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
+                name.clone()
+            } else {
+                "".to_string()
+            }
+        })
+        // If struct has a method with first element `input0`
+        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), ir_file))
+        //If output is a struct with methods
+        || (func_output_struct_name.is_some()
+            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_file))
+    {
+        format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
+    } else {
+        format!("_wire2api_{}", func.output.safe_ident())
+    };
+
+    let is_sync = matches!(func.mode, IrFuncMode::Sync);
+    let implementation = format!(
+        "{} => {}({task}(
+            callFfi: ({args}) => _platform.inner.{}({}),
+            parseSuccessData: {},
+            {}
+        ));",
+        func_expr,
+        execute_func_name,
+        func.wire_func_name(),
+        wire_param_list.join(", "),
+        parse_success_data,
+        task_common_args,
+        task = if is_sync {
+            "FlutterRustBridgeSyncTask"
+        } else {
+            "FlutterRustBridgeTask"
+        },
+        args = if is_sync { "" } else { "port_" },
+    );
+
+    let companion_field_signature = format!(
+        "FlutterRustBridgeTaskConstMeta get {};",
+        const_meta_field_name,
+    );
+
+    let companion_field_implementation = format!(
+        "
+        FlutterRustBridgeTaskConstMeta get {} => const FlutterRustBridgeTaskConstMeta(
+            debugName: \"{}\",
+            argNames: [{}],
+        );
+        ",
+        const_meta_field_name,
+        func.name,
+        func.inputs
+            .iter()
+            .map(|input| format!("\"{}\"", input.name.dart_style()))
+            .collect::<Vec<_>>()
+            .join(", "),
+    );
+
+    GeneratedApiFunc {
+        signature,
+        implementation,
+        comments,
+        companion_field_signature,
+        companion_field_implementation,
+    }
+}

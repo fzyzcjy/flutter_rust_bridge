@@ -171,41 +171,40 @@ impl<'a> TypeParser<'a> {
         let ident_string = &p.ident.to_string();
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
-                "SyncReturn" => {
-                    // Special-case SyncReturn<Vec<u8>>. SyncReturn for any other type is not
-                    // supported.
-                    match *generic {
-                        SupportedInnerType::Path(SupportedPathType {
-                            ident,
-                            generic: Some(generic),
-                        }) if ident == "Vec" => match *generic {
-                            SupportedInnerType::Path(SupportedPathType {
-                                ident,
-                                generic: None,
-                            }) if ident == "u8" => {
-                                Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8))
-                            }
-                            _ => None,
-                        },
-                        _ => None,
+                "SyncReturn" => match self.convert_to_ir_type(*generic) {
+                    Some(Primitive(primitive)) => {
+                        Some(SyncReturn(IrTypeSyncReturn::Primitive(primitive)))
                     }
-                }
-                "Vec" => {
+                    Some(Delegate(IrTypeDelegate::String)) => {
+                        Some(SyncReturn(IrTypeSyncReturn::String))
+                    }
+                    Some(PrimitiveList(primitive)) => match primitive.primitive {
+                        IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::VecU8)),
+                        _ => None,
+                    },
+                    _ => None,
+                },
+                "Vec" => match *generic {
                     // Special-case Vec<String> as StringList
-                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "String")
+                    SupportedInnerType::Path(SupportedPathType { ref ident, .. })
+                        if ident == "String" =>
                     {
                         Some(IrType::Delegate(IrTypeDelegate::StringList))
-                    } else {
-                        self.convert_to_ir_type(*generic).map(|inner| match inner {
-                            Primitive(primitive) => {
-                                PrimitiveList(IrTypePrimitiveList { primitive })
-                            }
-                            others => GeneralList(IrTypeGeneralList {
-                                inner: Box::new(others),
-                            }),
-                        })
                     }
-                }
+                    // Special-case Vec<Uuid> as Vec<u8>
+                    #[cfg(feature = "uuid")]
+                    SupportedInnerType::Path(SupportedPathType { ref ident, .. })
+                        if ident == "Uuid" =>
+                    {
+                        Some(IrType::Delegate(IrTypeDelegate::Uuids))
+                    }
+                    _ => self.convert_to_ir_type(*generic).map(|inner| match inner {
+                        Primitive(primitive) => PrimitiveList(IrTypePrimitiveList { primitive }),
+                        others => GeneralList(IrTypeGeneralList {
+                            inner: Box::new(others),
+                        }),
+                    }),
+                },
                 "ZeroCopyBuffer" => {
                     let inner = self.convert_to_ir_type(*generic);
                     if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) = inner {
@@ -232,19 +231,40 @@ impl<'a> TypeParser<'a> {
                         );
                     }
                     self.convert_to_ir_type(*generic).map(|inner| match inner {
-                        Primitive(prim) => IrType::Optional(IrTypeOptional::new_prim(prim)),
+                        Primitive(prim) => IrType::Optional(IrTypeOptional::new_primitive(prim)),
                         st @ StructRef(_) => {
-                            IrType::Optional(IrTypeOptional::new_ptr(Boxed(IrTypeBoxed {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
                                 inner: Box::new(st),
                                 exist_in_real_api: false,
                             })))
                         }
-                        other => IrType::Optional(IrTypeOptional::new_ptr(other)),
+                        other => IrType::Optional(IrTypeOptional::new(other)),
                     })
                 }
+                #[cfg(feature = "chrono")]
+                "DateTime" => match *generic {
+                    SupportedInnerType::Path(SupportedPathType { ref ident, .. }) => {
+                        match ident.to_string().as_str() {
+                            "Utc" => Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
+                            "Local" => Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
+                            _ => panic!("Unknown DateTime generic offset"),
+                        }
+                    }
+                    _ => panic!("Invalid DateTime generic"),
+                },
                 _ => None,
             }
         } else {
+            #[cfg(feature = "chrono")]
+            match ident_string.as_str() {
+                "Duration" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration))),
+                "NaiveDateTime" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive))),
+                _ => {}
+            };
+            #[cfg(feature = "uuid")]
+            if ident_string.as_str() == "Uuid" {
+                return Some(Delegate(IrTypeDelegate::Uuid));
+            }
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

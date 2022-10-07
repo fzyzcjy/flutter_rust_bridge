@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'bridge_generated.dart';
+part of 'bridge_definitions.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -756,6 +756,124 @@ abstract class Distance_Map implements Distance {
   double get field0;
   @JsonKey(ignore: true)
   _$$Distance_MapCopyWith<_$Distance_Map> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$Event {
+  String get address => throw _privateConstructorUsedError;
+  String get payload => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventCopyWith<$Res> {
+  factory $EventCopyWith(Event value, $Res Function(Event) then) = _$EventCopyWithImpl<$Res>;
+  $Res call({String address, String payload});
+}
+
+/// @nodoc
+class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
+  _$EventCopyWithImpl(this._value, this._then);
+
+  final Event _value;
+  // ignore: unused_field
+  final $Res Function(Event) _then;
+
+  @override
+  $Res call({
+    Object? address = freezed,
+    Object? payload = freezed,
+  }) {
+    return _then(_value.copyWith(
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      payload: payload == freezed
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
+  factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) = __$$_EventCopyWithImpl<$Res>;
+  @override
+  $Res call({String address, String payload});
+}
+
+/// @nodoc
+class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res> implements _$$_EventCopyWith<$Res> {
+  __$$_EventCopyWithImpl(_$_Event _value, $Res Function(_$_Event) _then) : super(_value, (v) => _then(v as _$_Event));
+
+  @override
+  _$_Event get _value => super._value as _$_Event;
+
+  @override
+  $Res call({
+    Object? address = freezed,
+    Object? payload = freezed,
+  }) {
+    return _then(_$_Event(
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      payload: payload == freezed
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Event implements _Event {
+  const _$_Event({required this.address, required this.payload});
+
+  @override
+  final String address;
+  @override
+  final String payload;
+
+  @override
+  String toString() {
+    return 'Event(address: $address, payload: $payload)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Event &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.payload, payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(address), const DeepCollectionEquality().hash(payload));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_EventCopyWith<_$_Event> get copyWith => __$$_EventCopyWithImpl<_$_Event>(this, _$identity);
+}
+
+abstract class _Event implements Event {
+  const factory _Event({required final String address, required final String payload}) = _$_Event;
+
+  @override
+  String get address;
+  @override
+  String get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$_EventCopyWith<_$_Event> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

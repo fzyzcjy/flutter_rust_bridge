@@ -1,9 +1,17 @@
+use std::borrow::Cow;
+
 use crate::generator::rust::*;
+use crate::target::Acc;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeRustGeneratorTrait {
-    fn wire2api_body(&self) -> Option<String>;
+    fn wire2api_body(&self) -> Acc<Option<String>>;
+
+    /// Handles JsValue to Self conversions.
+    fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
+        None
+    }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
         None
@@ -37,8 +45,8 @@ pub trait TypeRustGeneratorTrait {
         &self,
         _collector: &mut ExternFuncCollector,
         _block_index: BlockIndex,
-    ) -> String {
-        "".to_string()
+    ) -> Acc<Option<String>> {
+        Acc::default()
     }
 
     fn impl_intodart(&self) -> String {
@@ -57,6 +65,7 @@ pub trait TypeRustGeneratorTrait {
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {
     pub ir_file: &'a IrFile,
+    pub config: &'a Opts,
 }
 
 #[macro_export]
@@ -81,11 +90,12 @@ pub enum TypeRustGenerator<'a> {
     StructRef(TypeStructRefGenerator<'a>),
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
+    SyncReturn(TypeSyncReturnGenerator<'a>),
 }
 
 impl<'a> TypeRustGenerator<'a> {
-    pub fn new(ty: IrType, ir_file: &'a IrFile) -> Self {
-        let context = TypeGeneratorContext { ir_file };
+    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
+        let context = TypeGeneratorContext { ir_file, config };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
             Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),
@@ -95,6 +105,7 @@ impl<'a> TypeRustGenerator<'a> {
             StructRef(ir) => TypeStructRefGenerator { ir, context }.into(),
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
+            SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
         }
     }
 }

@@ -42,6 +42,8 @@ jobs:
         run: sudo apt update && sudo apt install -y valgrind libclang-dev
 
       - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '2.17.6' # TODO upgrade later #655
 
       - name: Install dart dependencies (single block)
         working-directory: ./frb_example/pure_dart/dart
@@ -89,11 +91,12 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: 1.64.0
 
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: '3.3.1'
           architecture: x64
 
       - uses: actions/setup-java@v1
@@ -172,11 +175,13 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
+          flutter-version: '3.3.1'
+          architecture: x64
       
       - uses: actions/checkout@v2
 
       - name: Install released version of codegen
-        run: cargo install flutter_rust_bridge_codegen
+        run: cargo install flutter_rust_bridge_codegen --features="chrono,uuid"
 
       # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
       - name: Install llvm dependency (Linux)

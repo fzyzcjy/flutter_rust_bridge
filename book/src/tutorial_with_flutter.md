@@ -12,7 +12,7 @@ The Mandelbrot set is the set of complex numbers `c` for which the function `f_c
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mandelbrot_sequence_new.gif/220px-Mandelbrot_sequence_new.gif">
 </p>
 
-Image credit: Wikipedia
+Image credit: [Simpsons contributor](https://en.wikipedia.org/wiki/User:Simpsons_contributor)
 
 </details>
 
@@ -59,3 +59,8 @@ Same as Windows. If you install Flutter through `snap`, please be wary of [#53](
 ### MacOS app
 
 Same as Windows. (P.S. Under the hood, `cargo-xcode` is used to automate the process)
+
+### Web (as a webpage)
+
+Install `flutter_rust_bridge_serve` to simplify the process of building and serving a WASM binary.
+See [Web setup](template/setup_web.md) for more details.

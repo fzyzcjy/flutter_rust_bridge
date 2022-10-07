@@ -1,4 +1,4 @@
-use crate::error::Error;
+use crate::target::Target;
 use crate::utils::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
@@ -40,7 +40,7 @@ impl IrFile {
             .iter()
             .filter_map(|ty| {
                 if let IrType::StructRef(_) = ty {
-                    Some(ty.rust_wire_type())
+                    Some(ty.rust_wire_type(Target::Io))
                 } else {
                     None
                 }
@@ -80,35 +80,25 @@ impl IrFile {
         generator::rust::generate(
             self,
             &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-            config.block_index,
+            config,
         )
     }
 
     pub fn generate_dart(
         &self,
         config: &Opts,
-    ) -> Result<(generator::dart::Output, bool), anyhow::Error> {
-        let (generated_dart, needs_freezed) = generator::dart::generate(
-            self,
-            &config.dart_api_class_name(),
-            &config.dart_api_impl_class_name(),
-            &config.dart_wire_class_name(),
-            config
-                .dart_output_path_name()
-                .ok_or_else(|| Error::str("Invalid dart_output_path_name"))?,
-            config.block_index,
-        );
-        Ok((generated_dart, needs_freezed))
+        wasm_funcs: &[IrFuncDisplay],
+    ) -> generator::dart::Output {
+        generator::dart::generate(self, config, wasm_funcs)
     }
     /// get all symbols(function names) defined explicitly or implictily
     pub fn get_all_symbols(&self, config: &Opts) -> Vec<String> {
-        let mut generated_rust = self.generate_rust(config);
+        let generated_rust = self.generate_rust(config);
 
-        generated_rust.extern_func_names = generated_rust
+        generated_rust
             .extern_func_names
             .into_iter()
             .filter(|s| *s != "free_WireSyncReturnStruct")
-            .collect::<Vec<_>>();
-        generated_rust.extern_func_names
+            .collect::<Vec<_>>()
     }
 }

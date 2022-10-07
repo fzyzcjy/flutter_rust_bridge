@@ -1,0 +1,42 @@
+on:
+  workflow_call:
+    inputs:
+      flutter_version:
+        required: false
+        type: string
+        default: '3.3.1'
+      rust_version:
+        required: false
+        type: string
+        default: '1.64.0'
+
+jobs:
+  flutter_macos_test:
+    runs-on: macos-11
+
+    steps:
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ inputs.rust_version }}
+          override: true
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: ${{ inputs.flutter_version }}
+          architecture: x64
+
+      - uses: actions/checkout@v2
+
+      - name: Enable platform support
+        run: flutter config --enable-macos-desktop
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Run Flutter integration tests
+        working-directory: ./frb_example/with_flutter
+        run: flutter test -d macos integration_test/main.dart --verbose

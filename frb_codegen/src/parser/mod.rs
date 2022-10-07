@@ -1,4 +1,4 @@
-mod ty;
+pub(crate) mod ty;
 
 use std::string::String;
 
@@ -131,6 +131,13 @@ impl<'a> Parser<'a> {
                     IrFuncArg::StreamSinkType(ty) => {
                         output = Some(ty);
                         mode = Some(IrFuncMode::Stream { argument_index: i });
+                        fallible = match &sig.output {
+                            ReturnType::Default => false,
+                            ReturnType::Type(_, ty) => !matches!(
+                                self.try_parse_fn_output_type(ty),
+                                Some(IrFuncOutput::Type(_))
+                            ),
+                        }
                     }
                     IrFuncArg::Type(ty) => {
                         inputs.push(IrField {
@@ -167,13 +174,11 @@ impl<'a> Parser<'a> {
                     IrType::Primitive(IrTypePrimitive::Unit)
                 }
             });
-            mode = Some(
-                if let Some(IrType::Delegate(IrTypeDelegate::SyncReturnVecU8)) = output {
-                    IrFuncMode::Sync
-                } else {
-                    IrFuncMode::Normal
-                },
-            );
+            mode = Some(if let Some(IrType::SyncReturn(_)) = output {
+                IrFuncMode::Sync
+            } else {
+                IrFuncMode::Normal
+            });
         }
 
         IrFunc {
