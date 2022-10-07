@@ -219,7 +219,7 @@ jobs:
           args: --manifest-path=./frb_example/benches/rust/Cargo.toml --target wasm32-unknown-unknown --verbose
 
       - name: Run benchmark_harness example
-        timeout-minutes: 20
+        timeout-minutes: 5 # TODO action timeout
         uses: Wandalen/wretry.action@v1.0.25
         continue-on-error: true # TODO action timeout
         with:
