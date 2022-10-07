@@ -63,7 +63,7 @@ pub fn handle_uuids_convert_to_strings(ids: Vec<uuid::Uuid>) -> anyhow::Result<V
 
 pub fn handle_strings(mut strings: Vec<String>) -> anyhow::Result<Vec<String>> {
     if strings.is_empty() {
-        panic!("uuids must not be empty");
+        panic!("strings must not be empty");
     }
     // do a simple op to avoid code being optimized away (you'd end up with a surprisingly fast `0ns`)
     strings.reverse();
