@@ -20,8 +20,8 @@ bool? readEnvFromPrimitive(String envVarName) =>
     bool.hasEnvironment(envVarName) ? bool.fromEnvironment(envVarName) : null;
 
 bool readBoolEnv(String envVarName, {bool defaultValue = false}) =>
-    readEnvFromPlatform(envVarName) ??
     readEnvFromPrimitive(envVarName) ??
+    readEnvFromPlatform(envVarName) ??
     defaultValue;
 
 final isWeb = readBoolEnv('dart.library.html');
