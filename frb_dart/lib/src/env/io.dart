@@ -31,7 +31,3 @@ final int? portEnv = Platform.environment['PORT'] != null
 final isSilicon = readBoolEnv('SILICON');
 final useJSON = readBoolEnv('JSON');
 final String? dylibPath = Platform.environment['DYLIB_PATH'];
-
-bool? readPlatform(String envVarName) =>
-    Platform.environment[envVarName] == 'true';
-bool? readViaType(String envVarName) => bool.fromEnvironment(envVarName);
