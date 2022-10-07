@@ -53,7 +53,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   freezed: ^2.1.0+1
   build_runner: ^2.2.0
-  ffigen: ^6.0.1
+  ffigen: ^7.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
