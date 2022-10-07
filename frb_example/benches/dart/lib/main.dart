@@ -26,6 +26,9 @@ void main(List<String> args) async {
   if (isSilicon) {
     log.warning("⚠️  [env] SILICON: uses open method for dynamic library");
   }
+  if (useJSON) {
+    log.info("🗃️  [env] JSON: switch to json output");
+  }
   if (isWeb && !allowJSON) {
     log.warning("⚠️  on Web, Rust logs to stdout are redirected to browser's console (or simply choose JSON)");
   }
