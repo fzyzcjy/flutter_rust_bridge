@@ -94,9 +94,7 @@ abstract class FlutterRustBridgeInterceptor<T extends TimeWatch> {
   T create();
   Future<T> beforeExecuteNormal(String debugName, Object? hint) {
     return Future.sync(() {
-      final T stopwatch = create();
-      stopwatch.start();
-      return stopwatch;
+      return create()..start();
     });
   }
 
