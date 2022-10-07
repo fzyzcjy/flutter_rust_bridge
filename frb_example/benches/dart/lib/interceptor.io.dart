@@ -45,14 +45,9 @@ class FlutterRustBridgeInterceptorJsonIO extends FlutterRustBridgeInterceptorJso
 
 class AsyncStopWatch extends Stopwatch implements TimeWatch {
   @override
-  int? starts;
+  final int starts = 0;
   @override
   int? ends;
-  @override
-  void start() {
-    starts = 0;
-    super.start();
-  }
 
   @override
   void stop() {

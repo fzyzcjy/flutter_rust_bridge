@@ -65,7 +65,7 @@ class FlutterRustBridgeExampleBenchmarkSuiteImplBench extends FlutterRustBridgeE
 /// benchmark metric
 abstract class TimeWatch {
   /// typically when the timer starts
-  int? starts;
+  final int starts;
 
   /// typically when the timer ends
   int? ends;
@@ -77,7 +77,7 @@ abstract class TimeWatch {
   void stop();
 
   /// create a timer
-  TimeWatch.create();
+  TimeWatch.create(this.starts);
 }
 
 /// unique benchmark metric
@@ -87,7 +87,7 @@ abstract class UniqueTimeWatch extends TimeWatch {
   /// this way you can start a timer, save its value(s) somewhere,
   /// and record whenever you stop it anytime later on.
   late UuidValue uuid;
-  UniqueTimeWatch.create() : super.create();
+  UniqueTimeWatch.create(int starts) : super.create(starts);
 }
 
 abstract class FlutterRustBridgeInterceptor<T extends TimeWatch> {
@@ -130,7 +130,7 @@ abstract class FlutterRustBridgeInterceptorStdOut<T extends TimeWatch> extends F
   @override
   Future<void> afterExecuteNormal<S>(String debugName, T stopwatch) async {
     await super.afterExecuteNormal(debugName, stopwatch);
-    log.fine('(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts!}$unit');
+    log.fine('(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts}$unit');
   }
 
   @override
@@ -142,7 +142,7 @@ abstract class FlutterRustBridgeInterceptorStdOut<T extends TimeWatch> extends F
   @override
   void afterExecuteSync<S>(String debugName, T stopwatch) {
     super.afterExecuteSync(debugName, stopwatch);
-    log.fine('(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts!}$unit');
+    log.fine('(Dart) execute [$debugName] end delta_time=${stopwatch.ends! - stopwatch.starts}$unit');
   }
 }
 

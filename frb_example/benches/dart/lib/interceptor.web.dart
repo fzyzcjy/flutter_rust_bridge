@@ -48,13 +48,11 @@ class FlutterRustBridgeInterceptorJsonWasm extends FlutterRustBridgeInterceptorJ
 
 class WindowPerformance implements TimeWatch {
   @override
-  int? starts;
+  final int starts = window.performance.now().round();
   @override
   int? ends;
   @override
-  void start() {
-    starts = window.performance.now().round();
-  }
+  void start() {}
 
   @override
   void stop() {
