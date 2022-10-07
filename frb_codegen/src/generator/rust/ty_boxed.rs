@@ -44,9 +44,9 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                 self.ir.inner.rust_wire_type(Wasm),
             )
             .into(),
-            ir @ IrType::Delegate(delegate) if ir.is_array() => format!(
+            IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
                 "let vec: Vec<{}> = self.wire2api(); Box::new(support::from_vec_to_array(vec))",
-                delegate.inner_rust_api_type(),
+                array.inner_rust_api_type(),
             )
             .into(),
             _ => "Box::new(self.wire2api())".into(),

@@ -58,12 +58,7 @@ impl IrType {
 
     #[inline]
     pub fn is_array(&self) -> bool {
-        matches!(
-            self,
-            IrType::Delegate(
-                IrTypeDelegate::GeneralArray { .. } | IrTypeDelegate::PrimitiveArray { .. },
-            )
-        )
+        matches!(self, IrType::Delegate(IrTypeDelegate::Array(_),))
     }
 
     #[inline]

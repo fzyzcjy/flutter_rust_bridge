@@ -9,24 +9,27 @@ type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         match self.ir {
-            IrTypeDelegate::GeneralArray { .. } => Acc::distribute(Some(format!(
-                "return api2wire_{}(raw);",
-                self.ir.get_delegate().safe_ident(),
-            ))),
-            IrTypeDelegate::PrimitiveArray { length, .. } => Acc {
-                io: Some(format!(
-                    "final ans = inner.new_{}_{}({length});
-                            ans.ref.ptr.asTypedList({length}).setAll(0, raw);
-                            return ans;",
-                    self.ir.get_delegate().safe_ident(),
-                    self.context.config.block_index,
-                )),
-                wasm: Some(format!(
-                    "return {}.fromList(raw);",
-                    self.ir.get_delegate().dart_api_type()
-                )),
-                ..Default::default()
+            IrTypeDelegate::Array(ref array) => match array {
+                IrTypeDelegateArray::GeneralArray { .. } => Acc::distribute(Some(format!(
+                    "return api2wire_{}(raw);",
+                    array.get_delegate().safe_ident(),
+                ))),
+                IrTypeDelegateArray::PrimitiveArray { length, .. } => Acc {
+                    io: Some(format!(
+                        "final ans = inner.new_{}_{}({length});
+                                    ans.ref.ptr.asTypedList({length}).setAll(0, raw);
+                                    return ans;",
+                        array.get_delegate().safe_ident(),
+                        self.context.config.block_index,
+                    )),
+                    wasm: Some(format!(
+                        "return {}.fromList(raw);",
+                        array.get_delegate().dart_api_type()
+                    )),
+                    ..Default::default()
+                },
             },
+
             IrTypeDelegate::String => Acc {
                 io: Some("return api2wire_uint_8_list(utf8.encoder.convert(raw));".into()),
                 wasm: Some("return raw;".into()),
@@ -82,20 +85,19 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         match &self.ir {
-            IrTypeDelegate::GeneralArray { length, general } => format!(
-                r"final inner = (raw as List<dynamic>).map(_wire2api_{}).toList();
-                if (inner.length != {length}) throw Exception('unexpected array length: expect {length} but see ${{inner.length}}');
-                return {}.unchecked(inner);",
-                general.safe_ident(),
-                self.ir.dart_api_type()
-            ),
-            IrTypeDelegate::PrimitiveArray { length, .. } => format!(
-                r"final inner = _wire2api_{}(raw);
-                if (inner.length != {length}) throw Exception('unexpected array length: expect {length} but see ${{inner.length}}');
-                return {}.unchecked(inner);",
-                self.ir.get_delegate().safe_ident(),
-                self.ir.dart_api_type()
-            ),
+            IrTypeDelegate::Array(array) => match array {
+                IrTypeDelegateArray::GeneralArray { general, .. } => format!(
+                    r"return {}((raw as List<dynamic>).map(_wire2api_{}).toList());",
+                    array.dart_api_type(),
+                    general.safe_ident(),
+                ),
+                IrTypeDelegateArray::PrimitiveArray { .. } => format!(
+                    r"return {}(_wire2api_{}(raw));",
+                    array.dart_api_type(),
+                    array.get_delegate().safe_ident(),
+                ),
+            },
+
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(
                 IrTypePrimitive::I64 | IrTypePrimitive::U64,
             ) => {
@@ -140,23 +142,24 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 context: self.context.clone(),
             }
             .structs(),
-            IrTypeDelegate::GeneralArray { length, .. }
-            | IrTypeDelegate::PrimitiveArray { length, .. } => {
+            IrTypeDelegate::Array(array) => {
                 format!(
                     "
                 class {0} extends NonGrowableListView<{1}> {{
-                    {0}({2} inner)
-                        : assert(inner.length == {length}),
+                    static const arraySize = {2};
+                    {0}({3} inner)
+                        : assert(inner.length == arraySize),
                           super(inner);
-                    {0}.unchecked({2} inner)
+                    {0}.unchecked({3} inner)
                         : super(inner);
-                    {3}
+                    {4}
                   }}
                 ",
-                    self.ir.dart_api_type(),
-                    self.ir.inner_dart_api_type(),
-                    self.ir.get_delegate().dart_api_type(),
-                    self.ir.dart_init_method(),
+                    array.dart_api_type(),
+                    array.inner_dart_api_type(),
+                    array.length(),
+                    array.get_delegate().dart_api_type(),
+                    array.dart_init_method(),
                 )
             }
             _ => "".into(),

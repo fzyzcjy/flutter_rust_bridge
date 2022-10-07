@@ -389,27 +389,30 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 }
 
 class PointArray2 extends NonGrowableListView<Point> {
+  static const arraySize = 2;
   PointArray2(List<Point> inner)
-      : assert(inner.length == 2),
+      : assert(inner.length == arraySize),
         super(inner);
   PointArray2.unchecked(List<Point> inner) : super(inner);
-  PointArray2.init(Point fill) : super(List<Point>.filled(2, fill));
+  PointArray2.init(Point fill) : super(List<Point>.filled(arraySize, fill));
 }
 
 class TestIdArray2 extends NonGrowableListView<TestId> {
+  static const arraySize = 2;
   TestIdArray2(List<TestId> inner)
-      : assert(inner.length == 2),
+      : assert(inner.length == arraySize),
         super(inner);
   TestIdArray2.unchecked(List<TestId> inner) : super(inner);
-  TestIdArray2.init(TestId fill) : super(List<TestId>.filled(2, fill));
+  TestIdArray2.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
 }
 
 class TestIdArray4 extends NonGrowableListView<TestId> {
+  static const arraySize = 4;
   TestIdArray4(List<TestId> inner)
-      : assert(inner.length == 4),
+      : assert(inner.length == arraySize),
         super(inner);
   TestIdArray4.unchecked(List<TestId> inner) : super(inner);
-  TestIdArray4.init(TestId fill) : super(List<TestId>.filled(4, fill));
+  TestIdArray4.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
 }
 
 class ApplicationEnv {
@@ -612,11 +615,12 @@ class ExoticOptionals {
 }
 
 class F64Array16 extends NonGrowableListView<double> {
+  static const arraySize = 16;
   F64Array16(Float64List inner)
-      : assert(inner.length == 16),
+      : assert(inner.length == arraySize),
         super(inner);
   F64Array16.unchecked(Float64List inner) : super(inner);
-  F64Array16.init() : super(Float64List(16));
+  F64Array16.init() : super(Float64List(arraySize));
 }
 
 class FeatureChrono {
@@ -652,11 +656,12 @@ class FeedId {
 }
 
 class I32Array2 extends NonGrowableListView<int> {
+  static const arraySize = 2;
   I32Array2(Int32List inner)
-      : assert(inner.length == 2),
+      : assert(inner.length == arraySize),
         super(inner);
   I32Array2.unchecked(Int32List inner) : super(inner);
-  I32Array2.init() : super(Int32List(2));
+  I32Array2.init() : super(Int32List(arraySize));
 }
 
 @freezed
@@ -862,35 +867,39 @@ class TestId {
 }
 
 class U8Array1600 extends NonGrowableListView<int> {
+  static const arraySize = 1600;
   U8Array1600(Uint8List inner)
-      : assert(inner.length == 1600),
+      : assert(inner.length == arraySize),
         super(inner);
   U8Array1600.unchecked(Uint8List inner) : super(inner);
-  U8Array1600.init() : super(Uint8List(1600));
+  U8Array1600.init() : super(Uint8List(arraySize));
 }
 
 class U8Array32 extends NonGrowableListView<int> {
+  static const arraySize = 32;
   U8Array32(Uint8List inner)
-      : assert(inner.length == 32),
+      : assert(inner.length == arraySize),
         super(inner);
   U8Array32.unchecked(Uint8List inner) : super(inner);
-  U8Array32.init() : super(Uint8List(32));
+  U8Array32.init() : super(Uint8List(arraySize));
 }
 
 class U8Array5 extends NonGrowableListView<int> {
+  static const arraySize = 5;
   U8Array5(Uint8List inner)
-      : assert(inner.length == 5),
+      : assert(inner.length == arraySize),
         super(inner);
   U8Array5.unchecked(Uint8List inner) : super(inner);
-  U8Array5.init() : super(Uint8List(5));
+  U8Array5.init() : super(Uint8List(arraySize));
 }
 
 class U8Array8 extends NonGrowableListView<int> {
+  static const arraySize = 8;
   U8Array8(Uint8List inner)
-      : assert(inner.length == 8),
+      : assert(inner.length == arraySize),
         super(inner);
   U8Array8.unchecked(Uint8List inner) : super(inner);
-  U8Array8.init() : super(Uint8List(8));
+  U8Array8.init() : super(Uint8List(arraySize));
 }
 
 /// Example for @freezed and @meta.immutable

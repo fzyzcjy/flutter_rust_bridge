@@ -27,14 +27,7 @@ impl IrTypeTime {
 /// types that delegate to another type
 #[derive(Debug, Clone)]
 pub enum IrTypeDelegate {
-    GeneralArray {
-        length: usize,
-        general: Box<IrType>,
-    },
-    PrimitiveArray {
-        length: usize,
-        primitive: IrTypePrimitive,
-    },
+    Array(IrTypeDelegateArray),
     String,
     StringList,
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
@@ -50,20 +43,117 @@ pub enum IrTypeDelegate {
     #[cfg(feature = "uuid")]
     Uuids,
 }
+#[derive(Clone, Debug)]
+pub enum IrTypeDelegateArray {
+    GeneralArray {
+        length: usize,
+        general: Box<IrType>,
+    },
+    PrimitiveArray {
+        length: usize,
+        primitive: IrTypePrimitive,
+    },
+}
 
-impl IrTypeDelegate {
+impl IrTypeDelegateArray {
     pub fn get_delegate(&self) -> IrType {
         match self {
-            IrTypeDelegate::GeneralArray { general, .. } => {
+            IrTypeDelegateArray::GeneralArray { general, .. } => {
                 IrType::GeneralList(IrTypeGeneralList {
                     inner: general.clone(),
                 })
             }
-            IrTypeDelegate::PrimitiveArray { primitive, .. } => {
+            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
                 IrType::PrimitiveList(IrTypePrimitiveList {
                     primitive: primitive.clone(),
                 })
             }
+        }
+    }
+
+    pub fn dart_api_type(&self) -> String {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, length } => {
+                format!("{}Array{length}", general.dart_api_type())
+            }
+            IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
+                format!(
+                    "{}Array{length}",
+                    primitive.safe_ident().to_case(Case::Pascal)
+                )
+            }
+        }
+    }
+
+    pub fn safe_ident(&self) -> String {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, length } => {
+                format!("{}_array_{length}", general.dart_api_type())
+            }
+            IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
+                format!("{}_array_{length}", primitive.safe_ident())
+            }
+        }
+    }
+
+    pub fn inner_dart_api_type(&self) -> String {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, .. } => general.dart_api_type(),
+            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
+                use IrTypePrimitive::*;
+                match &primitive {
+                    U8 | I8 | U16 | I16 | U32 | I32 | Usize => "int",
+                    U64 | I64 => "BigInt",
+                    F32 | F64 => "double",
+                    Bool => "bool",
+                    Unit => "void",
+                }
+                .to_string()
+            }
+        }
+    }
+
+    pub fn inner_rust_api_type(&self) -> String {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, .. } => general.rust_api_type(),
+            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => primitive.rust_api_type(),
+        }
+    }
+
+    pub fn inner_is_js_value(&self) -> bool {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, .. } => general.is_js_value(),
+            IrTypeDelegateArray::PrimitiveArray { .. } => false,
+        }
+    }
+
+    pub fn dart_init_method(&self) -> String {
+        match self {
+            IrTypeDelegateArray::GeneralArray { .. } => format!(
+                "{0}.init({1} fill): super(List<{1}>.filled(arraySize,fill));",
+                self.dart_api_type(),
+                self.inner_dart_api_type()
+            ),
+            IrTypeDelegateArray::PrimitiveArray { .. } => format!(
+                "{0}.init(): super({1}(arraySize));",
+                self.dart_api_type(),
+                self.get_delegate().dart_api_type()
+            ),
+        }
+    }
+
+    pub fn length(&self) -> usize {
+        *match self {
+            IrTypeDelegateArray::GeneralArray { length, .. } => length,
+            IrTypeDelegateArray::PrimitiveArray { length, .. } => length,
+        }
+    }
+}
+
+impl IrTypeDelegate {
+    pub fn get_delegate(&self) -> IrType {
+        match self {
+            IrTypeDelegate::Array(array) => array.get_delegate(),
             IrTypeDelegate::String => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
@@ -86,55 +176,6 @@ impl IrTypeDelegate {
             }),
         }
     }
-
-    pub fn inner_dart_api_type(&self) -> String {
-        match self {
-            IrTypeDelegate::GeneralArray { general, .. } => general.dart_api_type(),
-            IrTypeDelegate::PrimitiveArray { primitive, .. } => {
-                use IrTypePrimitive::*;
-                match &primitive {
-                    U8 | I8 | U16 | I16 | U32 | I32 | Usize => "int",
-                    U64 | I64 => "BigInt",
-                    F32 | F64 => "double",
-                    Bool => "bool",
-                    Unit => "void",
-                }
-                .to_string()
-            }
-            _ => panic!("Unexpected type"),
-        }
-    }
-    pub fn inner_rust_api_type(&self) -> String {
-        match self {
-            IrTypeDelegate::GeneralArray { general, .. } => general.rust_api_type(),
-            IrTypeDelegate::PrimitiveArray { primitive, .. } => primitive.rust_api_type(),
-            _ => panic!("Unexpected type"),
-        }
-    }
-
-    pub fn inner_is_js_value(&self) -> bool {
-        match self {
-            IrTypeDelegate::GeneralArray { general, .. } => general.is_js_value(),
-            IrTypeDelegate::PrimitiveArray { .. } => false,
-            _ => panic!("Unexpected type"),
-        }
-    }
-
-    pub fn dart_init_method(&self) -> String {
-        match self {
-            IrTypeDelegate::GeneralArray { length, .. } => format!(
-                "{0}.init({1} fill): super(List<{1}>.filled({length},fill));",
-                self.dart_api_type(),
-                self.inner_dart_api_type()
-            ),
-            IrTypeDelegate::PrimitiveArray { length, .. } => format!(
-                "{0}.init(): super({1}({length}));",
-                self.dart_api_type(),
-                self.get_delegate().dart_api_type()
-            ),
-            _ => panic!("Unexpected type"),
-        }
-    }
 }
 
 impl IrTypeTrait for IrTypeDelegate {
@@ -144,12 +185,7 @@ impl IrTypeTrait for IrTypeDelegate {
 
     fn safe_ident(&self) -> String {
         match self {
-            IrTypeDelegate::GeneralArray { general, length } => {
-                format!("{}_array_{length}", general.dart_api_type())
-            }
-            IrTypeDelegate::PrimitiveArray { primitive, length } => {
-                format!("{}_array_{length}", primitive.safe_ident())
-            }
+            IrTypeDelegate::Array(array) => array.safe_ident(),
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "StringList".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
@@ -167,15 +203,7 @@ impl IrTypeTrait for IrTypeDelegate {
 
     fn dart_api_type(&self) -> String {
         match self {
-            IrTypeDelegate::GeneralArray { general, length } => {
-                format!("{}Array{length}", general.dart_api_type())
-            }
-            IrTypeDelegate::PrimitiveArray { primitive, length } => {
-                format!(
-                    "{}Array{length}",
-                    primitive.safe_ident().to_case(Case::Pascal)
-                )
-            }
+            IrTypeDelegate::Array(array) => array.dart_api_type(),
             IrTypeDelegate::String => "String".to_string(),
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
@@ -203,9 +231,8 @@ impl IrTypeTrait for IrTypeDelegate {
 
     fn rust_api_type(&self) -> String {
         match self {
-            IrTypeDelegate::GeneralArray { length, .. }
-            | IrTypeDelegate::PrimitiveArray { length, .. } => {
-                format!("[{}; {length}]", self.inner_rust_api_type())
+            IrTypeDelegate::Array(array) => {
+                format!("[{}; {}]", array.inner_rust_api_type(), array.length())
             }
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "Vec<String>".to_owned(),

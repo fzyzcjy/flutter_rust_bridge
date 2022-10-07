@@ -158,11 +158,16 @@ impl<'a> TypeParser<'a> {
         length: usize,
     ) -> Option<IrType> {
         self.convert_to_ir_type(generic).map(|inner| match inner {
-            Primitive(primitive) => Delegate(IrTypeDelegate::PrimitiveArray { length, primitive }),
-            others => Delegate(IrTypeDelegate::GeneralArray {
+            Primitive(primitive) => {
+                Delegate(IrTypeDelegate::Array(IrTypeDelegateArray::PrimitiveArray {
+                    length,
+                    primitive,
+                }))
+            }
+            others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray::GeneralArray {
                 length,
                 general: Box::new(others),
-            }),
+            })),
         })
     }
 
