@@ -387,6 +387,51 @@ pub extern "C" fn wire_handle_nested_uuids(port_: i64, ids: *mut wire_FeatureUui
 }
 
 #[no_mangle]
+pub extern "C" fn wire_new_msgid(port_: i64, id: *mut wire_uint_8_list) {
+    wire_new_msgid_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_use_msgid(port_: i64, id: *mut wire_MessageId) {
+    wire_use_msgid_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_boxed_blob(port_: i64, blob: *mut wire_uint_8_list) {
+    wire_boxed_blob_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_use_boxed_blob(port_: i64, blob: *mut wire_Blob) {
+    wire_use_boxed_blob_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_boxed_feed_id(port_: i64, id: *mut wire_uint_8_list) {
+    wire_return_boxed_feed_id_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_boxed_raw_feed_id(port_: i64, id: *mut wire_FeedId) {
+    wire_return_boxed_raw_feed_id_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_id(port_: i64, id: *mut wire_TestId) {
+    wire_test_id_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_last_number(port_: i64, array: *mut wire_float_64_list) {
+    wire_last_number_impl(port_, array)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
+    wire_nested_id_impl(port_, id)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -510,6 +555,11 @@ pub extern "C" fn new_box_autoadd_feature_uuid_0() -> *mut wire_FeatureUuid {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_feed_id_0() -> *mut wire_FeedId {
+    support::new_leak_box_ptr(wire_FeedId::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_i32_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
@@ -527,6 +577,11 @@ pub extern "C" fn new_box_autoadd_kitchen_sink_0() -> *mut wire_KitchenSink {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_measure_0() -> *mut wire_Measure {
     support::new_leak_box_ptr(wire_Measure::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_message_id_0() -> *mut wire_MessageId {
+    support::new_leak_box_ptr(wire_MessageId::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -570,8 +625,18 @@ pub extern "C" fn new_box_autoadd_sum_with_0() -> *mut wire_SumWith {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_test_id_0() -> *mut wire_TestId {
+    support::new_leak_box_ptr(wire_TestId::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_user_id_0() -> *mut wire_UserId {
     support::new_leak_box_ptr(wire_UserId::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_blob_0() -> *mut wire_Blob {
+    support::new_leak_box_ptr(wire_Blob::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -718,6 +783,15 @@ pub extern "C" fn new_list_opt_box_autoadd_attribute_0(
 }
 
 #[no_mangle]
+pub extern "C" fn new_list_test_id_0(len: i32) -> *mut wire_list_test_id {
+    let wrap = wire_list_test_id {
+        ptr: support::new_leak_vec_ptr(<wire_TestId>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
@@ -772,6 +846,12 @@ impl Wire2Api<Vec<String>> for *mut wire_StringList {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
+impl Wire2Api<[TestId; 4]> for *mut wire_list_test_id {
+    fn wire2api(self) -> [TestId; 4] {
+        let vec: Vec<TestId> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<uuid::Uuid> for *mut wire_uint_8_list {
     fn wire2api(self) -> uuid::Uuid {
         let single: Vec<u8> = self.wire2api();
@@ -818,6 +898,11 @@ impl Wire2Api<Attribute> for wire_Attribute {
             key: self.key.wire2api(),
             value: self.value.wire2api(),
         }
+    }
+}
+impl Wire2Api<Blob> for wire_Blob {
+    fn wire2api(self) -> Blob {
+        Blob(self.field0.wire2api())
     }
 }
 
@@ -871,6 +956,12 @@ impl Wire2Api<FeatureUuid> for *mut wire_FeatureUuid {
         Wire2Api::<FeatureUuid>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<FeedId> for *mut wire_FeedId {
+    fn wire2api(self) -> FeedId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<FeedId>::wire2api(*wrap).into()
+    }
+}
 
 impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
@@ -882,6 +973,12 @@ impl Wire2Api<Measure> for *mut wire_Measure {
     fn wire2api(self) -> Measure {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Measure>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<MessageId> for *mut wire_MessageId {
+    fn wire2api(self) -> MessageId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<MessageId>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<MySize> for *mut wire_MySize {
@@ -932,10 +1029,22 @@ impl Wire2Api<SumWith> for *mut wire_SumWith {
         Wire2Api::<SumWith>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<TestId> for *mut wire_TestId {
+    fn wire2api(self) -> TestId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<TestId>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<UserId> for *mut wire_UserId {
     fn wire2api(self) -> UserId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<UserId>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<Blob>> for *mut wire_Blob {
+    fn wire2api(self) -> Box<Blob> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Blob>::wire2api(*wrap).into()
     }
 }
 
@@ -971,6 +1080,11 @@ impl Wire2Api<Box<Speed>> for *mut wire_Speed {
     }
 }
 
+impl Wire2Api<Box<[u8; 1600]>> for *mut wire_uint_8_list {
+    fn wire2api(self) -> Box<[u8; 1600]> {
+        Wire2Api::<[u8; 1600]>::wire2api(self).into()
+    }
+}
 impl Wire2Api<Box<Weekdays>> for *mut i32 {
     fn wire2api(self) -> Box<Weekdays> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1026,6 +1140,12 @@ impl Wire2Api<ExoticOptionals> for wire_ExoticOptionals {
     }
 }
 
+impl Wire2Api<[f64; 16]> for *mut wire_float_64_list {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<FeatureChrono> for wire_FeatureChrono {
     fn wire2api(self) -> FeatureChrono {
         FeatureChrono {
@@ -1044,6 +1164,11 @@ impl Wire2Api<FeatureUuid> for wire_FeatureUuid {
         }
     }
 }
+impl Wire2Api<FeedId> for wire_FeedId {
+    fn wire2api(self) -> FeedId {
+        FeedId(self.field0.wire2api())
+    }
+}
 impl Wire2Api<Vec<f32>> for *mut wire_float_32_list {
     fn wire2api(self) -> Vec<f32> {
         unsafe {
@@ -1058,6 +1183,13 @@ impl Wire2Api<Vec<f64>> for *mut wire_float_64_list {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         }
+    }
+}
+
+impl Wire2Api<[i32; 2]> for *mut wire_int_32_list {
+    fn wire2api(self) -> [i32; 2] {
+        let vec: Vec<i32> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 
@@ -1159,6 +1291,15 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribu
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
+impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
+    fn wire2api(self) -> Vec<TestId> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Measure> for wire_Measure {
     fn wire2api(self) -> Measure {
         match self.tag {
@@ -1174,6 +1315,11 @@ impl Wire2Api<Measure> for wire_Measure {
             },
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<MessageId> for wire_MessageId {
+    fn wire2api(self) -> MessageId {
+        MessageId(self.field0.wire2api())
     }
 }
 
@@ -1246,7 +1392,30 @@ impl Wire2Api<SumWith> for wire_SumWith {
         }
     }
 }
+impl Wire2Api<TestId> for wire_TestId {
+    fn wire2api(self) -> TestId {
+        TestId(self.field0.wire2api())
+    }
+}
 
+impl Wire2Api<[u8; 1600]> for *mut wire_uint_8_list {
+    fn wire2api(self) -> [u8; 1600] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 32]> for *mut wire_uint_8_list {
+    fn wire2api(self) -> [u8; 32] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 8]> for *mut wire_uint_8_list {
+    fn wire2api(self) -> [u8; 8] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Vec<u8> {
         unsafe {
@@ -1303,6 +1472,12 @@ pub struct wire_Attribute {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_Blob {
+    field0: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_ConcatenateWith {
     a: *mut wire_uint_8_list,
 }
@@ -1347,6 +1522,12 @@ pub struct wire_FeatureChrono {
 pub struct wire_FeatureUuid {
     one: *mut wire_uint_8_list,
     many: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_FeedId {
+    field0: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -1414,6 +1595,19 @@ pub struct wire_list_opt_box_autoadd_attribute {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_test_id {
+    ptr: *mut wire_TestId,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MessageId {
+    field0: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_MySize {
     width: i32,
     height: i32,
@@ -1463,6 +1657,12 @@ pub struct wire_Sequences {
 #[derive(Clone)]
 pub struct wire_SumWith {
     x: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_TestId {
+    field0: *mut wire_int_32_list,
 }
 
 #[repr(C)]
@@ -1653,6 +1853,14 @@ impl NewWithNullPtr for wire_Attribute {
     }
 }
 
+impl NewWithNullPtr for wire_Blob {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_ConcatenateWith {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1725,6 +1933,14 @@ impl NewWithNullPtr for wire_FeatureUuid {
         Self {
             one: core::ptr::null_mut(),
             many: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_FeedId {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
         }
     }
 }
@@ -1814,6 +2030,14 @@ pub extern "C" fn inflate_Measure_Distance() -> *mut MeasureKind {
     })
 }
 
+impl NewWithNullPtr for wire_MessageId {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_MySize {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1897,6 +2121,14 @@ impl NewWithNullPtr for wire_SumWith {
     fn new_with_null_ptr() -> Self {
         Self {
             x: Default::default(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_TestId {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
         }
     }
 }

@@ -57,6 +57,11 @@ impl IrType {
     }
 
     #[inline]
+    pub fn is_array(&self) -> bool {
+        matches!(self, IrType::Delegate(IrTypeDelegate::Array(_),))
+    }
+
+    #[inline]
     pub fn is_struct(&self) -> bool {
         matches!(self, StructRef(_) | EnumRef(_))
     }

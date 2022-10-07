@@ -24,6 +24,10 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                 .into(),
             ),
             (_, IrType::Primitive(_)) => None,
+            (Io | Wasm, ir) if ir.is_array() => Some(format!(
+                "Wire2Api::<{}>::wire2api(self).into()",
+                box_inner.rust_api_type()
+            )),
             (Io, _) => Some(format!(
                 "let wrap = unsafe {{ support::box_from_leak_ptr(self) }};
                 Wire2Api::<{}>::wire2api(*wrap).into()",
@@ -38,6 +42,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             IrType::Primitive(_) => format!(
                 "(self.unchecked_into_f64() as usize as *mut {}).wire2api()",
                 self.ir.inner.rust_wire_type(Wasm),
+            )
+            .into(),
+            IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
+                "let vec: Vec<{}> = self.wire2api(); Box::new(support::from_vec_to_array(vec))",
+                array.inner_rust_api_type(),
             )
             .into(),
             _ => "Box::new(self.wire2api())".into(),
@@ -80,12 +89,14 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                         format!("value: {}", self.ir.inner.rust_wire_type(target)),
                         self.ir.inner.dart_wire_type(target),
                     )],
-                    Some(&format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
+                    Some(&format!("*mut {}", self.ir.inner.rust_wire_type(target))),
                     "support::new_leak_box_ptr(value)",
                     target,
                 )),
                 _ => None,
             })
+        } else if self.ir.inner.is_array() {
+            Acc::default()
         } else {
             Acc {
                 io: Some(collector.generate(

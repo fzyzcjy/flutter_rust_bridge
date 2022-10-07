@@ -379,6 +379,51 @@ pub fn wire_handle_nested_uuids(port_: MessagePort, ids: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_new_msgid(port_: MessagePort, id: Box<[u8]>) {
+    wire_new_msgid_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_msgid(port_: MessagePort, id: JsValue) {
+    wire_use_msgid_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_boxed_blob(port_: MessagePort, blob: Box<[u8]>) {
+    wire_boxed_blob_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_boxed_blob(port_: MessagePort, blob: JsValue) {
+    wire_use_boxed_blob_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_boxed_feed_id(port_: MessagePort, id: Box<[u8]>) {
+    wire_return_boxed_feed_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_boxed_raw_feed_id(port_: MessagePort, id: JsValue) {
+    wire_return_boxed_raw_feed_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_id(port_: MessagePort, id: JsValue) {
+    wire_test_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_last_number(port_: MessagePort, array: Box<[f64]>) {
+    wire_last_number_impl(port_, array)
+}
+
+#[wasm_bindgen]
+pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
+    wire_nested_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -538,6 +583,7 @@ impl Wire2Api<Vec<String>> for JsValue {
             .collect()
     }
 }
+
 impl Wire2Api<uuid::Uuid> for Box<[u8]> {
     fn wire2api(self) -> uuid::Uuid {
         let single: Vec<u8> = self.wire2api();
@@ -614,6 +660,24 @@ impl Wire2Api<Attribute> for JsValue {
         }
     }
 }
+impl Wire2Api<Blob> for JsValue {
+    fn wire2api(self) -> Blob {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        Blob(self_.get(0).wire2api())
+    }
+}
+
+impl Wire2Api<Box<[u8; 1600]>> for Box<[u8]> {
+    fn wire2api(self) -> Box<[u8; 1600]> {
+        Wire2Api::<[u8; 1600]>::wire2api(self).into()
+    }
+}
 
 impl Wire2Api<ConcatenateWith> for JsValue {
     fn wire2api(self) -> ConcatenateWith {
@@ -682,6 +746,12 @@ impl Wire2Api<ExoticOptionals> for JsValue {
     }
 }
 
+impl Wire2Api<[f64; 16]> for Box<[f64]> {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<FeatureChrono> for JsValue {
     fn wire2api(self) -> FeatureChrono {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -714,6 +784,18 @@ impl Wire2Api<FeatureUuid> for JsValue {
         }
     }
 }
+impl Wire2Api<FeedId> for JsValue {
+    fn wire2api(self) -> FeedId {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        FeedId(self_.get(0).wire2api())
+    }
+}
 impl Wire2Api<Vec<f32>> for Box<[f32]> {
     fn wire2api(self) -> Vec<f32> {
         self.into_vec()
@@ -722,6 +804,13 @@ impl Wire2Api<Vec<f32>> for Box<[f32]> {
 impl Wire2Api<Vec<f64>> for Box<[f64]> {
     fn wire2api(self) -> Vec<f64> {
         self.into_vec()
+    }
+}
+
+impl Wire2Api<[i32; 2]> for Box<[i32]> {
+    fn wire2api(self) -> [i32; 2] {
+        let vec: Vec<i32> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 
@@ -798,6 +887,15 @@ impl Wire2Api<Vec<Option<Attribute>>> for JsValue {
             .collect()
     }
 }
+impl Wire2Api<Vec<TestId>> for JsValue {
+    fn wire2api(self) -> Vec<TestId> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Measure> for JsValue {
     fn wire2api(self) -> Measure {
         let self_ = self.unchecked_into::<JsArray>();
@@ -806,6 +904,18 @@ impl Wire2Api<Measure> for JsValue {
             1 => Measure::Distance(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<MessageId> for JsValue {
+    fn wire2api(self) -> MessageId {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        MessageId(self_.get(0).wire2api())
     }
 }
 
@@ -999,7 +1109,37 @@ impl Wire2Api<SumWith> for JsValue {
         }
     }
 }
+impl Wire2Api<TestId> for JsValue {
+    fn wire2api(self) -> TestId {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        TestId(self_.get(0).wire2api())
+    }
+}
 
+impl Wire2Api<[u8; 1600]> for Box<[u8]> {
+    fn wire2api(self) -> [u8; 1600] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 32]> for Box<[u8]> {
+    fn wire2api(self) -> [u8; 32] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 8]> for Box<[u8]> {
+    fn wire2api(self) -> [u8; 8] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
         self.into_vec()
@@ -1047,6 +1187,12 @@ impl Wire2Api<String> for JsValue {
         self.as_string().expect("non-UTF-8 string, or not a string")
     }
 }
+impl Wire2Api<[TestId; 4]> for JsValue {
+    fn wire2api(self) -> [TestId; 4] {
+        let vec: Vec<TestId> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<uuid::Uuid> for JsValue {
     fn wire2api(self) -> uuid::Uuid {
         self.unchecked_into::<js_sys::Uint8Array>()
@@ -1080,6 +1226,11 @@ impl Wire2Api<bool> for JsValue {
 }
 impl Wire2Api<Box<ApplicationEnv>> for JsValue {
     fn wire2api(self) -> Box<ApplicationEnv> {
+        Box::new(self.wire2api())
+    }
+}
+impl Wire2Api<Box<Blob>> for JsValue {
+    fn wire2api(self) -> Box<Blob> {
         Box::new(self.wire2api())
     }
 }
@@ -1138,6 +1289,12 @@ impl Wire2Api<Box<u8>> for JsValue {
         (self.unchecked_into_f64() as usize as *mut u8).wire2api()
     }
 }
+impl Wire2Api<Box<[u8; 1600]>> for JsValue {
+    fn wire2api(self) -> Box<[u8; 1600]> {
+        let vec: Vec<u8> = self.wire2api();
+        Box::new(support::from_vec_to_array(vec))
+    }
+}
 impl Wire2Api<Box<Weekdays>> for JsValue {
     fn wire2api(self) -> Box<Weekdays> {
         Box::new(self.wire2api())
@@ -1151,6 +1308,12 @@ impl Wire2Api<f32> for JsValue {
 impl Wire2Api<f64> for JsValue {
     fn wire2api(self) -> f64 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<[f64; 16]> for JsValue {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<Vec<f32>> for JsValue {
@@ -1175,6 +1338,12 @@ impl Wire2Api<i16> for JsValue {
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<[i32; 2]> for JsValue {
+    fn wire2api(self) -> [i32; 2] {
+        let vec: Vec<i32> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<i64> for JsValue {
@@ -1305,6 +1474,24 @@ impl Wire2Api<u64> for JsValue {
 impl Wire2Api<u8> for JsValue {
     fn wire2api(self) -> u8 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<[u8; 1600]> for JsValue {
+    fn wire2api(self) -> [u8; 1600] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 32]> for JsValue {
+    fn wire2api(self) -> [u8; 32] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 8]> for JsValue {
+    fn wire2api(self) -> [u8; 8] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<Vec<u8>> for JsValue {
