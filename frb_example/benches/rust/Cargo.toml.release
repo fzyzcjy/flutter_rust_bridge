@@ -19,6 +19,14 @@ chrono = { workspace = true }
 flutter_rust_bridge = { version = "1", features = ["chrono", "uuid"] }
 lazy_static = { workspace = true }
 serde_json = "1"
+uuid = { workspace = true }
+
+[target.'cfg(not(target_family = "wasm"))'.dependencies]
 tracing = "0.1.36"
 tracing-subscriber = "0.3.15"
-uuid = { workspace = true }
+
+[target.'cfg(target_family = "wasm")'.dependencies]
+console_error_panic_hook = { version = "0.1.7" }
+js-sys = { version = "0.3.60" }
+wasm-bindgen = { version = "0.2.81" }
+web-sys = { version = "0.3.58", features = ["console"] }
