@@ -138,6 +138,7 @@ refresh_all:
     (cd frb_example/pure_dart/dart && dart pub get)
     (cd frb_example/pure_dart_multi/dart && dart pub get)
     (cd frb_example/with_flutter && flutter pub get)
+    (cd frb_example/benches/dart && dart pub get)
 
     just lint
 
