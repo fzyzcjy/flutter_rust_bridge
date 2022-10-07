@@ -113,6 +113,8 @@ There's a couple of interesting bugs that one might face while implementing it.
 
 ## Final note
 
-Finally, there's other ways to benchmark for you to explore too.
+Finally, there's other interesting approaches to benchmark for you to explore too.
 
 During development, [TimelineTask](https://api.flutter.dev/flutter/dart-developer/TimelineTask-class.html) (for normal async functions) and [Timeline](https://api.flutter.dev/flutter/dart-developer/Timeline-class.html) (for sync functions) were previously implemented (but I doubt you want to search through a 200-commits-long PR, do you? :sweat_smile:): it can be a good alternative, especially if you enjoy interactively working with [Dart DevTools](https://docs.flutter.dev/development/tools/devtools/performance).
+
+By the way I'm also curious to see a full-[opentelemetry](https://github.com/open-telemetry/opentelemetry-rust) based `Interceptor` in action, but I'll leave it to you :)
