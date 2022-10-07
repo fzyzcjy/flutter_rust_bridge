@@ -112,11 +112,12 @@ More specifically, thanks for all these contributions:
 * [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files.
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
+* [Cupnfish](https://github.com/Cupnfish): Support arrays as function paramters. Allow multi mirror.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
+* [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
-* [Cupnfish](https://github.com/Cupnfish): Allow multi mirror.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
@@ -132,4 +133,3 @@ More specifically, thanks for all these contributions:
 * [feber](https://github.com/feber): Fix doc link.
 * [rustui](https://github.com/rustui): Fix a typo.
 * [eltociear](https://github.com/eltociear): Fix a typo.
-
