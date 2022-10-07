@@ -17,6 +17,10 @@ just bench
 # just bench --define=SILICON=true (on latest MacOS Silicon)
 ```
 
+:bulb: You can also customize the size of the vecs benchmarked with env var e.g. `SAMPLE_COUNT=100`. (default: `1000`)
+
+Example resides in [frb_example/benches/dart/lib/benchmark](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/benches/dart/lib/benchmark).
+
 #### custom benchmark
 
 In the same folder, you'll also find a slightly more convoluted example on how to implement a custom platform-agnostic interceptor.
@@ -27,6 +31,11 @@ It can be run like:
 just test-benches
 # just test-benches --define=SILICON=true (on latest MacOS Silicon)
 ```
+
+:bulb: You can alternatively output as json with env var e.g. `JSON=true`. (default: `false`)
+
+Example resides both at [frb_example/benches/dart](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/benches/dart)
+and [frb_example/benches/rust](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/benches/rust).
 
 ### How does it work ?
 
