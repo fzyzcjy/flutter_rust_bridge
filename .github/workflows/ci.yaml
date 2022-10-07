@@ -229,7 +229,11 @@ jobs:
         env:
           DYLIB_PATH: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.dylib
       - name: Run benches example
-        run: dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/main.web.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8083 --run-tests
+        timeout-minutes: 5 # TODO action timeout
+        uses: Wandalen/wretry.action@v1.0.25
+        continue-on-error: true # TODO action timeout
+        with:
+          command: dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/main.web.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8083 --run-tests
         env:
           JSON: true
 
