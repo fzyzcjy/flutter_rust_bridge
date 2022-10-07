@@ -2,7 +2,7 @@
 
 const isWeb = bool.fromEnvironment('dart.library.html');
 final int? portEnv =
-    int.fromEnvironment('PORT') != 0 ? int.fromEnvironment('PORT') : null;
+    const int.fromEnvironment('PORT') != 0 ? int.fromEnvironment('PORT') : null;
 const isSilicon = bool.fromEnvironment('SILICON');
 const useJSON = bool.fromEnvironment('JSON');
 final String? dylibPath = String.fromEnvironment('DYLIB_PATH').isNotEmpty
