@@ -64,12 +64,12 @@ test-pure *args="":
     cd {{frb_pure}}/dart && \
         dart pub get && \
         dart {{args}} lib/main.dart ../../../target/debug/{{dylib}}
-test-benches *args="":
+bench-custom *args="":
     cd {{frb_benches}}/rust && cargo b --release
     cd {{frb_benches}}/dart && \
         dart pub get && \
         dart {{args}} lib/main.dart ../../../target/release/{{bench_dylib}} --release
-test-benches-json *args="":
+bench-custom-json *args="":
     cd {{frb_benches}}/rust && cargo b --release
     cd {{frb_benches}}/dart && \
         dart pub get && \
@@ -84,10 +84,10 @@ test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
 
 test-pure-web *args="":
     cd {{frb_pure}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
-test-benches-web *args="":
+bench-custom-web *args="":
     cd {{frb_benches}}/rust && cargo +nightly build --target wasm32-unknown-unknown
     cd {{frb_benches}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 --release {{args}}
-test-benches-web-json *args="":
+bench-custom-web-json *args="":
     cd {{frb_benches}}/rust && cargo +nightly build --target wasm32-unknown-unknown
     export JSON=true && cd {{frb_benches}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 --release {{args}}
 test-flutter-web *args="":
@@ -182,7 +182,7 @@ gen-help:
 runner:
     (cd frb_dart && dart run build_runner build)
 
-bench *args="": runner
+bench-simple *args="": runner
     (cd {{frb_benches}}/rust && cargo build --release)
     (cd {{frb_benches}}/dart && \
         dart {{args}} run lib/benchmark/uuids.dart && \

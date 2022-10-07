@@ -13,8 +13,8 @@ First example uses [benchmark_harness](https://pub.dev/packages/benchmark_harnes
 It can be run like:
 
 ```sh
-just bench
-# just bench --define=SILICON=true (on latest MacOS Silicon)
+just bench-simple
+# just bench-simple --define=SILICON=true (on latest MacOS Silicon)
 ```
 
 :bulb: You can also customize the size of the vecs benchmarked with env var e.g. `SAMPLE_COUNT=100`. (default: `1000`)
@@ -28,8 +28,8 @@ In the same folder, you'll also find a slightly more convoluted example on how t
 It can be run like:
 
 ```sh
-just test-benches
-# just test-benches --define=SILICON=true (on latest MacOS Silicon)
+just bench-custom
+# just bench-custom --define=SILICON=true (on latest MacOS Silicon)
 ```
 
 :bulb: You can alternatively output as json with env var e.g. `JSON=true`. (default: `false`)
