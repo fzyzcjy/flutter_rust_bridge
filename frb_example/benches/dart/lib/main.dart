@@ -42,13 +42,36 @@ void main(List<String> args) async {
   final List<String> hundredThousandStrings = seed(StringSeeder(), just_100_000);
 
   // real game starts here
-  // (avoid any initialization or computation)
+  // --- (benchmarks:start) (avoid any initialization or computation)
+  // let's get rid of sync first
+  // lest stdout's output be intermingled
+  // (otherwise feel free to open a PR for opentelemetry)
+  api.handleSyncBool(input: false, hint: 'bool');
+  api.handleSyncI16(input: 42, hint: 'sync i16');
+  api.handleSyncF32(input: 42, hint: 'sync f32');
+  api.handleSyncF64(input: 42, hint: 'sync f64');
+  api.handleSyncI32(input: 42, hint: 'sync i32');
+  api.handleSyncI64(input: 42, hint: 'sync i64');
+  api.handleSyncString(input: "I'm a sync string", hint: 'sync string');
+
+  await api.handleBool(input: false, hint: 'bool');
+  await api.handleI16(input: 42, hint: 'i16');
+  await api.handleF32(input: 42, hint: 'f32');
+  await api.handleF64(input: 42, hint: 'f64');
+  await api.handleI32(input: 42, hint: 'i32');
+  await api.handleI64(input: 42, hint: 'i64');
+  await api.handleString(input: "Not a sync string", hint: 'string');
+
   await api.handleUuids(ids: thousandUuids, hint: 'reverse 1,000 uuids');
   await api.handleStrings(strings: thousandStrings, hint: 'reverse 1,000 strings');
   await api.handleUuidsConvertToStrings(ids: thousandUuids, hint: '1,000 uuids converted to strings');
   await api.handleUuids(ids: hundredThousandUuids, hint: 'reverse 10,000 uuids');
   await api.handleStrings(strings: hundredThousandStrings, hint: 'reverse 10,000 strings');
   await api.handleUuidsConvertToStrings(ids: hundredThousandUuids, hint: '10,000 uuids converted to strings');
+
+  // feel free to benchmark (many) more method(s), as you fancy !
+
+  // --- (benchmarks:end)
 
   // benchmarks just finished, let's collect metrics
   if (allowJSON) {
