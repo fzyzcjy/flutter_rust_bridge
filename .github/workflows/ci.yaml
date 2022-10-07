@@ -221,6 +221,7 @@ jobs:
       - name: Run benchmark_harness example
         timeout-minutes: 20
         uses: Wandalen/wretry.action@v1.0.25
+        continue-on-error: true # TODO action timeout
         with:
           command: |
             dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/benchmark/uuids.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8081 --run-tests
