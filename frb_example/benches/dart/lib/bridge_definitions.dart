@@ -24,6 +24,86 @@ abstract class FlutterRustBridgeExampleBenchmarkSuite {
   Future<List<String>> handleStrings({required List<String> strings, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStringsConstMeta;
+
+  Future<bool> handleBool({required bool input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleBoolConstMeta;
+
+  Future<int> handleU32({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleU32ConstMeta;
+
+  Future<int> handleU64({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleU64ConstMeta;
+
+  Future<int> handleI8({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleI8ConstMeta;
+
+  Future<int> handleI16({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleI16ConstMeta;
+
+  Future<int> handleI32({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleI32ConstMeta;
+
+  Future<int> handleI64({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleI64ConstMeta;
+
+  Future<double> handleF32({required double input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleF32ConstMeta;
+
+  Future<double> handleF64({required double input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleF64ConstMeta;
+
+  Future<String> handleString({required String input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta;
+
+  bool handleSyncBool({required bool input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncBoolConstMeta;
+
+  int handleSyncU32({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU32ConstMeta;
+
+  int handleSyncU64({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU64ConstMeta;
+
+  int handleSyncI8({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI8ConstMeta;
+
+  int handleSyncI16({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI16ConstMeta;
+
+  int handleSyncI32({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI32ConstMeta;
+
+  int handleSyncI64({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI64ConstMeta;
+
+  double handleSyncF32({required double input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncF32ConstMeta;
+
+  double handleSyncF64({required double input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncF64ConstMeta;
+
+  String handleSyncString({required String input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncStringConstMeta;
 }
 
 /// metric used for [continuous-benchmark](https://github.com/marketplace/actions/continuous-benchmark) worflow

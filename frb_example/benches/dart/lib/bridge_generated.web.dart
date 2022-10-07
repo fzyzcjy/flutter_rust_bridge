@@ -36,6 +36,16 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatform
   }
 
   @protected
+  Object api2wire_i64(int raw) {
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  Object api2wire_u64(int raw) {
+    return castNativeBigInt(raw);
+  }
+
+  @protected
   Uint8List api2wire_uint_8_list(Uint8List raw) {
     return raw;
   }
@@ -58,6 +68,46 @@ class FlutterRustBridgeExampleBenchmarkSuiteWasmModule implements WasmModule {
   external void wire_handle_uuids_convert_to_strings(NativePortType port_, Uint8List ids);
 
   external void wire_handle_strings(NativePortType port_, List<String> strings);
+
+  external void wire_handle_bool(NativePortType port_, bool input);
+
+  external void wire_handle_u32(NativePortType port_, int input);
+
+  external void wire_handle_u64(NativePortType port_, Object input);
+
+  external void wire_handle_i8(NativePortType port_, int input);
+
+  external void wire_handle_i16(NativePortType port_, int input);
+
+  external void wire_handle_i32(NativePortType port_, int input);
+
+  external void wire_handle_i64(NativePortType port_, Object input);
+
+  external void wire_handle_f32(NativePortType port_, double input);
+
+  external void wire_handle_f64(NativePortType port_, double input);
+
+  external void wire_handle_string(NativePortType port_, String input);
+
+  external dynamic /* bool */ wire_handle_sync_bool(bool input);
+
+  external dynamic /* int */ wire_handle_sync_u32(int input);
+
+  external dynamic /* Object */ wire_handle_sync_u64(Object input);
+
+  external dynamic /* int */ wire_handle_sync_i8(int input);
+
+  external dynamic /* int */ wire_handle_sync_i16(int input);
+
+  external dynamic /* int */ wire_handle_sync_i32(int input);
+
+  external dynamic /* Object */ wire_handle_sync_i64(Object input);
+
+  external dynamic /* double */ wire_handle_sync_f32(double input);
+
+  external dynamic /* double */ wire_handle_sync_f64(double input);
+
+  external dynamic /* String */ wire_handle_sync_string(String input);
 }
 
 // Section: WASM wire connector
@@ -76,4 +126,44 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire
 
   void wire_handle_strings(NativePortType port_, List<String> strings) =>
       wasmModule.wire_handle_strings(port_, strings);
+
+  void wire_handle_bool(NativePortType port_, bool input) => wasmModule.wire_handle_bool(port_, input);
+
+  void wire_handle_u32(NativePortType port_, int input) => wasmModule.wire_handle_u32(port_, input);
+
+  void wire_handle_u64(NativePortType port_, Object input) => wasmModule.wire_handle_u64(port_, input);
+
+  void wire_handle_i8(NativePortType port_, int input) => wasmModule.wire_handle_i8(port_, input);
+
+  void wire_handle_i16(NativePortType port_, int input) => wasmModule.wire_handle_i16(port_, input);
+
+  void wire_handle_i32(NativePortType port_, int input) => wasmModule.wire_handle_i32(port_, input);
+
+  void wire_handle_i64(NativePortType port_, Object input) => wasmModule.wire_handle_i64(port_, input);
+
+  void wire_handle_f32(NativePortType port_, double input) => wasmModule.wire_handle_f32(port_, input);
+
+  void wire_handle_f64(NativePortType port_, double input) => wasmModule.wire_handle_f64(port_, input);
+
+  void wire_handle_string(NativePortType port_, String input) => wasmModule.wire_handle_string(port_, input);
+
+  dynamic /* bool */ wire_handle_sync_bool(bool input) => wasmModule.wire_handle_sync_bool(input);
+
+  dynamic /* int */ wire_handle_sync_u32(int input) => wasmModule.wire_handle_sync_u32(input);
+
+  dynamic /* Object */ wire_handle_sync_u64(Object input) => wasmModule.wire_handle_sync_u64(input);
+
+  dynamic /* int */ wire_handle_sync_i8(int input) => wasmModule.wire_handle_sync_i8(input);
+
+  dynamic /* int */ wire_handle_sync_i16(int input) => wasmModule.wire_handle_sync_i16(input);
+
+  dynamic /* int */ wire_handle_sync_i32(int input) => wasmModule.wire_handle_sync_i32(input);
+
+  dynamic /* Object */ wire_handle_sync_i64(Object input) => wasmModule.wire_handle_sync_i64(input);
+
+  dynamic /* double */ wire_handle_sync_f32(double input) => wasmModule.wire_handle_sync_f32(input);
+
+  dynamic /* double */ wire_handle_sync_f64(double input) => wasmModule.wire_handle_sync_f64(input);
+
+  dynamic /* String */ wire_handle_sync_string(String input) => wasmModule.wire_handle_sync_string(input);
 }

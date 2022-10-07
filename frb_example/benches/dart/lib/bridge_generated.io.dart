@@ -38,6 +38,16 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatform
   }
 
   @protected
+  int api2wire_i64(int raw) {
+    return raw;
+  }
+
+  @protected
+  int api2wire_u64(int raw) {
+    return raw;
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
     final ans = inner.new_uint_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
@@ -133,6 +143,268 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire implements FlutterRustBridgeWir
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StringList>)>>('wire_handle_strings');
   late final _wire_handle_strings =
       _wire_handle_stringsPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
+
+  void wire_handle_bool(
+    int port_,
+    bool input,
+  ) {
+    return _wire_handle_bool(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_boolPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>('wire_handle_bool');
+  late final _wire_handle_bool = _wire_handle_boolPtr.asFunction<void Function(int, bool)>();
+
+  void wire_handle_u32(
+    int port_,
+    int input,
+  ) {
+    return _wire_handle_u32(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_u32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_handle_u32');
+  late final _wire_handle_u32 = _wire_handle_u32Ptr.asFunction<void Function(int, int)>();
+
+  void wire_handle_u64(
+    int port_,
+    int input,
+  ) {
+    return _wire_handle_u64(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_u64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('wire_handle_u64');
+  late final _wire_handle_u64 = _wire_handle_u64Ptr.asFunction<void Function(int, int)>();
+
+  void wire_handle_i8(
+    int port_,
+    int input,
+  ) {
+    return _wire_handle_i8(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_i8Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int8)>>('wire_handle_i8');
+  late final _wire_handle_i8 = _wire_handle_i8Ptr.asFunction<void Function(int, int)>();
+
+  void wire_handle_i16(
+    int port_,
+    int input,
+  ) {
+    return _wire_handle_i16(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_i16Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int16)>>('wire_handle_i16');
+  late final _wire_handle_i16 = _wire_handle_i16Ptr.asFunction<void Function(int, int)>();
+
+  void wire_handle_i32(
+    int port_,
+    int input,
+  ) {
+    return _wire_handle_i32(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_i32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_i32');
+  late final _wire_handle_i32 = _wire_handle_i32Ptr.asFunction<void Function(int, int)>();
+
+  void wire_handle_i64(
+    int port_,
+    int input,
+  ) {
+    return _wire_handle_i64(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_i64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_handle_i64');
+  late final _wire_handle_i64 = _wire_handle_i64Ptr.asFunction<void Function(int, int)>();
+
+  void wire_handle_f32(
+    int port_,
+    double input,
+  ) {
+    return _wire_handle_f32(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_f32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Float)>>('wire_handle_f32');
+  late final _wire_handle_f32 = _wire_handle_f32Ptr.asFunction<void Function(int, double)>();
+
+  void wire_handle_f64(
+    int port_,
+    double input,
+  ) {
+    return _wire_handle_f64(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_f64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>('wire_handle_f64');
+  late final _wire_handle_f64 = _wire_handle_f64Ptr.asFunction<void Function(int, double)>();
+
+  void wire_handle_string(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> input,
+  ) {
+    return _wire_handle_string(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_stringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_handle_string');
+  late final _wire_handle_string =
+      _wire_handle_stringPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_bool(
+    bool input,
+  ) {
+    return _wire_handle_sync_bool(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_boolPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Bool)>>('wire_handle_sync_bool');
+  late final _wire_handle_sync_bool = _wire_handle_sync_boolPtr.asFunction<WireSyncReturnStruct Function(bool)>();
+
+  WireSyncReturnStruct wire_handle_sync_u32(
+    int input,
+  ) {
+    return _wire_handle_sync_u32(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_u32Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Uint32)>>('wire_handle_sync_u32');
+  late final _wire_handle_sync_u32 = _wire_handle_sync_u32Ptr.asFunction<WireSyncReturnStruct Function(int)>();
+
+  WireSyncReturnStruct wire_handle_sync_u64(
+    int input,
+  ) {
+    return _wire_handle_sync_u64(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_u64Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Uint64)>>('wire_handle_sync_u64');
+  late final _wire_handle_sync_u64 = _wire_handle_sync_u64Ptr.asFunction<WireSyncReturnStruct Function(int)>();
+
+  WireSyncReturnStruct wire_handle_sync_i8(
+    int input,
+  ) {
+    return _wire_handle_sync_i8(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_i8Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Int8)>>('wire_handle_sync_i8');
+  late final _wire_handle_sync_i8 = _wire_handle_sync_i8Ptr.asFunction<WireSyncReturnStruct Function(int)>();
+
+  WireSyncReturnStruct wire_handle_sync_i16(
+    int input,
+  ) {
+    return _wire_handle_sync_i16(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_i16Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Int16)>>('wire_handle_sync_i16');
+  late final _wire_handle_sync_i16 = _wire_handle_sync_i16Ptr.asFunction<WireSyncReturnStruct Function(int)>();
+
+  WireSyncReturnStruct wire_handle_sync_i32(
+    int input,
+  ) {
+    return _wire_handle_sync_i32(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_i32Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Int32)>>('wire_handle_sync_i32');
+  late final _wire_handle_sync_i32 = _wire_handle_sync_i32Ptr.asFunction<WireSyncReturnStruct Function(int)>();
+
+  WireSyncReturnStruct wire_handle_sync_i64(
+    int input,
+  ) {
+    return _wire_handle_sync_i64(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_i64Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Int64)>>('wire_handle_sync_i64');
+  late final _wire_handle_sync_i64 = _wire_handle_sync_i64Ptr.asFunction<WireSyncReturnStruct Function(int)>();
+
+  WireSyncReturnStruct wire_handle_sync_f32(
+    double input,
+  ) {
+    return _wire_handle_sync_f32(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_f32Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Float)>>('wire_handle_sync_f32');
+  late final _wire_handle_sync_f32 = _wire_handle_sync_f32Ptr.asFunction<WireSyncReturnStruct Function(double)>();
+
+  WireSyncReturnStruct wire_handle_sync_f64(
+    double input,
+  ) {
+    return _wire_handle_sync_f64(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_f64Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Double)>>('wire_handle_sync_f64');
+  late final _wire_handle_sync_f64 = _wire_handle_sync_f64Ptr.asFunction<WireSyncReturnStruct Function(double)>();
+
+  WireSyncReturnStruct wire_handle_sync_string(
+    ffi.Pointer<wire_uint_8_list> input,
+  ) {
+    return _wire_handle_sync_string(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_stringPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_sync_string');
+  late final _wire_handle_sync_string =
+      _wire_handle_sync_stringPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
 
   ffi.Pointer<wire_StringList> new_StringList_0(
     int len,
