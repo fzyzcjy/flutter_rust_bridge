@@ -31,12 +31,17 @@ void main(List<String> args) async {
   }
   final api = initializeBenchExternalLibrary(dylibPath, useJSON: allowJSON);
 
+  // here freely do as much setup as you need,
+  // since only calls to bridge-wired functions will record any metric
   final Uuid uuid = Uuid();
   final thousandUuids = List<UuidValue>.generate(1000, (index) => uuid.v4obj(), growable: false);
   final thousandStrings = List<String>.generate(1000, (index) => getRandomString(uuidSizeInBytes), growable: false);
   final hundredThousandUuids = List<UuidValue>.generate(100000, (index) => uuid.v4obj(), growable: false);
   final hundredThousandStrings =
       List<String>.generate(100000, (index) => getRandomString(uuidSizeInBytes), growable: false);
+
+  // real game starts here
+  // (avoid any initialization or computation)
   await api.handleUuids(ids: thousandUuids, hint: 'reverse 1,000 uuids');
   await api.handleStrings(strings: thousandStrings, hint: 'reverse 1,000 strings');
   await api.handleUuidsConvertToStrings(ids: thousandUuids, hint: '1,000 uuids converted to strings');
@@ -44,6 +49,7 @@ void main(List<String> args) async {
   await api.handleStrings(strings: hundredThousandStrings, hint: 'reverse 10,000 strings');
   await api.handleUuidsConvertToStrings(ids: hundredThousandUuids, hint: '10,000 uuids converted to strings');
 
+  // benchmarks just finished, let's collect metrics
   if (allowJSON) {
     final dartMetrics = await api.dartMetrics() ?? List.empty(growable: false);
     final rustMetrics = await api.rustMetrics();
