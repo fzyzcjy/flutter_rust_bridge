@@ -54,8 +54,8 @@ but also offers 2 ways to customize it.
 The easiest one is to simply:
 
 - create a new type for FRB [Handler](http://cjycode.com/flutter_rust_bridge/feature/handler.html)
-  e.g. `pub type BenchHandler = SimpleHandler<BenchExecutor, BenchErrorHandler>;` in this example
-- create a `BenchExecutor` and a `BenchErrorHandler`, as required by `SimpleHandler` trait bounds
+  e.g. `pub type BenchHandler = SimpleHandler<BenchExecutor, ReportDartErrorHandler>;` in this example
+- create a `BenchExecutor`, as required by `SimpleHandler` trait bounds
 - implement `Executor` trait for your executor
 
 :bulb: platform-specific compilation is required for WASM only :bulb:

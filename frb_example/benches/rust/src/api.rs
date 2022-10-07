@@ -1,10 +1,10 @@
 #![allow(unused_variables)]
 
-use crate::executor::{BenchErrorHandler, BenchExecutor, BenchHandler, Metrics};
-use flutter_rust_bridge::{frb, SyncReturn};
+use crate::executor::{BenchExecutor, BenchHandler, Metrics};
+use flutter_rust_bridge::{frb, handler::ReportDartErrorHandler, SyncReturn};
 
 lazy_static::lazy_static! {
-  pub static ref FLUTTER_RUST_BRIDGE_ERROR_HANDLER: BenchErrorHandler = BenchErrorHandler::default();
+  pub static ref FLUTTER_RUST_BRIDGE_ERROR_HANDLER: ReportDartErrorHandler = ReportDartErrorHandler {};
   pub static ref FLUTTER_RUST_BRIDGE_HANDLER: BenchHandler = BenchHandler::new(BenchExecutor::new(*FLUTTER_RUST_BRIDGE_ERROR_HANDLER), *FLUTTER_RUST_BRIDGE_ERROR_HANDLER);
 }
 

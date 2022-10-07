@@ -4,11 +4,9 @@ use std::{
 };
 
 use flutter_rust_bridge::{
-    handler::{
-        self, ErrorHandler, Executor, ReportDartErrorHandler, SimpleHandler, ThreadPoolExecutor,
-    },
+    handler::{Executor, ReportDartErrorHandler, SimpleHandler, ThreadPoolExecutor},
     rust2dart::TaskCallback,
-    IntoDart, MessagePort, WrapInfo,
+    IntoDart, WrapInfo,
 };
 
 use crate::api::{Metric, Unit};
@@ -18,13 +16,13 @@ lazy_static::lazy_static! {
   static ref METRICS: Arc<Mutex<Vec<Metric>>> = Arc::new(Mutex::new(vec![]));
 }
 
-pub type BenchHandler = SimpleHandler<BenchExecutor, BenchErrorHandler>;
+pub type BenchHandler = SimpleHandler<BenchExecutor, ReportDartErrorHandler>;
 
 pub trait Metrics {
     fn metrics(&self) -> Vec<Metric>;
 }
 
-impl Metrics for SimpleHandler<BenchExecutor, BenchErrorHandler> {
+impl Metrics for SimpleHandler<BenchExecutor, ReportDartErrorHandler> {
     fn metrics(&self) -> Vec<Metric> {
         let guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
         guard.clone()
@@ -44,37 +42,11 @@ fn record(debug_name_string: &str, elapsed: u64, unit: Unit) {
     });
 }
 
-/// simple newtype pattern
-///
-/// this is the bridge's custom [error handler](http://cjycode.com/flutter_rust_bridge/feature/handler.html#example-report-errors-to-your-backend-in-addition-to-telling-dart).
-#[derive(Clone, Copy)]
-pub struct BenchErrorHandler(ReportDartErrorHandler);
-
-impl Default for BenchErrorHandler {
-    fn default() -> Self {
-        Self(ReportDartErrorHandler)
-    }
-}
-
-/// trait bound required by [`SimpleHandler`]
-impl ErrorHandler for BenchErrorHandler {
-    fn handle_error(&self, port: MessagePort, error: handler::Error) {
-        self.0.handle_error(port, error)
-    }
-
-    fn handle_error_sync(
-        &self,
-        error: flutter_rust_bridge::handler::Error,
-    ) -> flutter_rust_bridge::support::WireSyncReturnStruct {
-        self.0.handle_error_sync(error)
-    }
-}
-
 /// a slightly more elaborated newtype
 ///
 /// this is the bridge's custom [executor](http://cjycode.com/flutter_rust_bridge/feature/handler.html#example-log-when-execution-starts-and-ends).
 pub struct BenchExecutor {
-    inner: ThreadPoolExecutor<BenchErrorHandler>,
+    inner: ThreadPoolExecutor<ReportDartErrorHandler>,
     json: bool,
 }
 
@@ -105,7 +77,7 @@ fn maybe_subscribe(_: bool) {}
 impl BenchExecutor {
     /// also retrieve env var to set mode to **stdout** or **json**
     /// and subscribe to `tracing` if needed
-    pub(crate) fn new(error_handler: BenchErrorHandler) -> Self {
+    pub(crate) fn new(error_handler: ReportDartErrorHandler) -> Self {
         let json = std::env::var("JSON")
             .unwrap_or_else(|_| "false".into())
             .parse::<bool>()
