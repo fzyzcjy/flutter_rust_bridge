@@ -39,7 +39,7 @@ abstract class FlutterRustBridgeExampleBenchmarkSuitePlatformBenchBase<
     return result;
   }
 
-  Future<List<Metric>?> metrics() async => interceptor is FlutterRustBridgeInterceptorJson
+  List<Metric>? metrics() => interceptor is FlutterRustBridgeInterceptorJson
       ? (interceptor as FlutterRustBridgeInterceptorJson).metrics.values.toList()
       : null;
 }
