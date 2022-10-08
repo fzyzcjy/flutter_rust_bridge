@@ -26,10 +26,10 @@ void main() async {
       printPath: false,
     ),
   );
-  _close(result);
+  sendAndClose(result);
 }
 
-void _close(bool result) {
+void sendAndClose(bool result) {
   final socket = WebSocket(Uri.base.replace(scheme: 'ws').toString());
   socket.onOpen.first.then((_) {
     socket.send(jsonEncode({'__result__': result}));
