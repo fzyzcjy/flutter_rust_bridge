@@ -94,7 +94,7 @@ There's a couple of interesting bugs that one might face while implementing it.
   but `--dart-define` is used with `flutter run` to pipe args down to dart
 - dynamic library **must** be opened with [open](https://api.dart.dev/stable/2.6.1/dart-ffi/DynamicLibrary/DynamicLibrary.open.html) for some MacOS users and **only** on native platform builds.
   :sunglasses: a fix is provided:
-  simply add `--define=SILICON=true` to your `dart run` command
+  simply add `--define=USE_OPEN_DYLIB=true` to your `dart run` command
 - syntax to retrieve env vars is somehow inconsistent across native and web, sometimes returning empty values.
   :speech_balloon: see [#27998](https://github.com/dart-lang/sdk/issues/27998) and others
   :sparkles: but `frb_dart` can [handle it](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_dart/lib/src/env) for you.

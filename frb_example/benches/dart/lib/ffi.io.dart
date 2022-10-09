@@ -12,6 +12,6 @@ export 'bridge_generated.io.dart';
 /// initialize Rust dynamic library (on native platforms)
 FlutterRustBridgeExampleBenchmarkSuiteImplBench initializeBenchExternalLibrary(String path, {bool? useJSON}) {
   return FlutterRustBridgeExampleBenchmarkSuiteImplBench(
-      (Platform.isMacOS || Platform.isIOS) && !isSilicon ? DynamicLibrary.executable() : DynamicLibrary.open(path),
+      (Platform.isMacOS || Platform.isIOS) && !useOpenDylib ? DynamicLibrary.executable() : DynamicLibrary.open(path),
       useJSON: useJSON ?? false);
 }

@@ -14,7 +14,7 @@ It can be run like:
 
 ```sh
 just bench-simple
-# just bench-simple --define=SILICON=true (on latest MacOS Silicon)
+# just bench-simple --define=USE_OPEN_DYLIB=true (e.g. on some latest MacOS Silicon)
 ```
 
 :bulb: You can also customize the size of the vecs benchmarked with env var e.g. `SAMPLE_COUNT=100`. (default: `1000`)
@@ -29,7 +29,7 @@ It can be run like:
 
 ```sh
 just bench-custom
-# just bench-custom --define=SILICON=true (on latest MacOS Silicon)
+# just bench-custom --define=USE_OPEN_DYLIB=true (e.g. on some latest MacOS Silicon)
 ```
 
 :bulb: You can alternatively output as json with env var e.g. `JSON=true`. (default: `false`)

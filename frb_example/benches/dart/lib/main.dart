@@ -23,8 +23,8 @@ void main(List<String> args) async {
   });
   log.fine('flutter_rust_bridge_benchmark_suite example program start (dylibPath=$dylibPath)');
   log.finer('construct api');
-  if (isSilicon) {
-    log.warning("⚠️  [env] SILICON: uses open method for dynamic library");
+  if (useOpenDylib) {
+    log.warning("⚠️  [env] USE_OPEN_DYLIB: uses open method for dynamic library");
   }
   if (useJSON) {
     log.info("🗃️  [env] JSON: switch to json output");
