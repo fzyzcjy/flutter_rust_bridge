@@ -26,6 +26,13 @@ macro_rules! delegate_enum {
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         match &self.ir {
+            IrTypeDelegate::Array(array) => {
+                let acc = Some(format!("let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",array.inner_rust_api_type()));
+                if array.inner_is_js_value() {
+                    return Acc{io: acc,..Default::default()};
+                }
+                Acc::distribute(acc)
+            },
             IrTypeDelegate::String => {
                 Acc {
                     wasm: Some("self".into()),
@@ -183,6 +190,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 "self.unchecked_into::<js_sys::Uint8Array>().to_vec().into_boxed_slice().wire2api()"
                     .into()
             }
+            IrTypeDelegate::Array(array) => format!(
+                "let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",
+                array.inner_rust_api_type()
+            )
+            .into(),
             _ => return None,
         })
     }

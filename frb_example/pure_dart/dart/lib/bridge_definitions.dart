@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
+import 'package:collection/collection.dart';
 
 part 'bridge_definitions.freezed.dart';
 
@@ -224,11 +225,11 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta;
 
-  Future<Uint8List> getArray({dynamic hint});
+  Future<U8Array5> getArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta;
 
-  Future<List<Point>> getComplexArray({dynamic hint});
+  Future<PointArray2> getComplexArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta;
 
@@ -316,6 +317,42 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
 
+  Future<MessageId> newMsgid({required U8Array32 id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNewMsgidConstMeta;
+
+  Future<U8Array32> useMsgid({required MessageId id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUseMsgidConstMeta;
+
+  Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kBoxedBlobConstMeta;
+
+  Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobConstMeta;
+
+  Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnBoxedFeedIdConstMeta;
+
+  Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnBoxedRawFeedIdConstMeta;
+
+  Future<TestId> testId({required TestId id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestIdConstMeta;
+
+  Future<double> lastNumber({required F64Array16 array, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLastNumberConstMeta;
+
+  Future<TestIdArray2> nestedId({required TestIdArray4 id, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -349,6 +386,33 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
+}
+
+class PointArray2 extends NonGrowableListView<Point> {
+  static const arraySize = 2;
+  PointArray2(List<Point> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  PointArray2.unchecked(List<Point> inner) : super(inner);
+  PointArray2.init(Point fill) : super(List<Point>.filled(arraySize, fill));
+}
+
+class TestIdArray2 extends NonGrowableListView<TestId> {
+  static const arraySize = 2;
+  TestIdArray2(List<TestId> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  TestIdArray2.unchecked(List<TestId> inner) : super(inner);
+  TestIdArray2.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
+}
+
+class TestIdArray4 extends NonGrowableListView<TestId> {
+  static const arraySize = 4;
+  TestIdArray4(List<TestId> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  TestIdArray4.unchecked(List<TestId> inner) : super(inner);
+  TestIdArray4.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
 }
 
 class ApplicationEnv {
@@ -417,6 +481,14 @@ class BigBuffers {
   BigBuffers({
     required this.int64,
     required this.uint64,
+  });
+}
+
+class Blob {
+  final U8Array1600 field0;
+
+  Blob({
+    required this.field0,
   });
 }
 
@@ -542,6 +614,15 @@ class ExoticOptionals {
   });
 }
 
+class F64Array16 extends NonGrowableListView<double> {
+  static const arraySize = 16;
+  F64Array16(Float64List inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  F64Array16.unchecked(Float64List inner) : super(inner);
+  F64Array16.init() : super(Float64List(arraySize));
+}
+
 class FeatureChrono {
   final DateTime utc;
   final DateTime local;
@@ -564,6 +645,23 @@ class FeatureUuid {
     required this.one,
     required this.many,
   });
+}
+
+class FeedId {
+  final U8Array8 field0;
+
+  FeedId({
+    required this.field0,
+  });
+}
+
+class I32Array2 extends NonGrowableListView<int> {
+  static const arraySize = 2;
+  I32Array2(Int32List inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  I32Array2.unchecked(Int32List inner) : super(inner);
+  I32Array2.init() : super(Int32List(arraySize));
 }
 
 @freezed
@@ -621,6 +719,14 @@ class Measure with _$Measure {
   const factory Measure.distance(
     Distance field0,
   ) = Measure_Distance;
+}
+
+class MessageId {
+  final U8Array32 field0;
+
+  MessageId({
+    required this.field0,
+  });
 }
 
 enum MyEnum {
@@ -750,6 +856,50 @@ class SumWith {
         y: y,
         z: z,
       );
+}
+
+class TestId {
+  final I32Array2 field0;
+
+  TestId({
+    required this.field0,
+  });
+}
+
+class U8Array1600 extends NonGrowableListView<int> {
+  static const arraySize = 1600;
+  U8Array1600(Uint8List inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  U8Array1600.unchecked(Uint8List inner) : super(inner);
+  U8Array1600.init() : super(Uint8List(arraySize));
+}
+
+class U8Array32 extends NonGrowableListView<int> {
+  static const arraySize = 32;
+  U8Array32(Uint8List inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  U8Array32.unchecked(Uint8List inner) : super(inner);
+  U8Array32.init() : super(Uint8List(arraySize));
+}
+
+class U8Array5 extends NonGrowableListView<int> {
+  static const arraySize = 5;
+  U8Array5(Uint8List inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  U8Array5.unchecked(Uint8List inner) : super(inner);
+  U8Array5.init() : super(Uint8List(arraySize));
+}
+
+class U8Array8 extends NonGrowableListView<int> {
+  static const arraySize = 8;
+  U8Array8(Uint8List inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  U8Array8.unchecked(Uint8List inner) : super(inner);
+  U8Array8.init() : super(Uint8List(arraySize));
 }
 
 /// Example for @freezed and @meta.immutable
