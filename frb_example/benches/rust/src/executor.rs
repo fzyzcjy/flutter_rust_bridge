@@ -229,7 +229,10 @@ impl BenchExecutor {
             prepare.push(&JsValue::from_str(&log));
             console::log(&prepare);
         }
-        record(bench_name, elapsed, Unit::Milliseconds);
+        METRICS
+            .lock()
+            .expect(ERROR_MUTEX_LOCK)
+            .record(bench_name, elapsed, Unit::Milliseconds);
         ret
     }
 }
