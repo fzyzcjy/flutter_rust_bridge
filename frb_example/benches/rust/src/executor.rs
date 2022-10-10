@@ -20,26 +20,35 @@ pub type BenchHandler = SimpleHandler<BenchExecutor, ReportDartErrorHandler>;
 
 pub trait Metrics {
     fn metrics(&self) -> Vec<Metric>;
+    /// record a benchmark metric
+    ///
+    /// all benchmark metrics are stored in [`METRICS`]
+    fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit);
+}
+
+impl Metrics for METRICS {
+    fn metrics(&self) -> Vec<Metric> {
+        let guard = self.lock().expect(ERROR_MUTEX_LOCK);
+        guard.clone()
+    }
+    fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit) {
+        let mut guard = self.lock().expect(ERROR_MUTEX_LOCK);
+        guard.push(Metric {
+            name: debug_name_string.to_string(),
+            value: Some(elapsed),
+            extra: None,
+            unit,
+        });
+    }
 }
 
 impl Metrics for SimpleHandler<BenchExecutor, ReportDartErrorHandler> {
     fn metrics(&self) -> Vec<Metric> {
-        let guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
-        guard.clone()
+        METRICS.metrics()
     }
-}
-
-/// record a benchmark metric
-///
-/// all benchmark metrics are stored in [`METRICS`]
-fn record(debug_name_string: &str, elapsed: u64, unit: Unit) {
-    let mut guard = METRICS.lock().expect(ERROR_MUTEX_LOCK);
-    guard.push(Metric {
-        name: debug_name_string.to_string(),
-        value: Some(elapsed),
-        extra: None,
-        unit,
-    });
+    fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit) {
+        METRICS.record(debug_name_string, elapsed, unit);
+    }
 }
 
 /// a slightly more elaborated newtype
@@ -155,7 +164,7 @@ impl BenchExecutor {
                 Unit::Nanoseconds.acronym()
             );
         } else {
-            record(bench_name, elapsed as u64, Unit::Nanoseconds);
+            METRICS.record(bench_name, elapsed as u64, Unit::Nanoseconds);
         }
         ret
     }
