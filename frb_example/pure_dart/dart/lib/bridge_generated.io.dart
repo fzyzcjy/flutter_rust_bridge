@@ -1820,6 +1820,25 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_get_sum_structPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_sum_struct');
   late final _wire_get_sum_struct = _wire_get_sum_structPtr.asFunction<void Function(int)>();
 
+  void wire_get_sum_array(
+    int port_,
+    int a,
+    int b,
+    int c,
+  ) {
+    return _wire_get_sum_array(
+      port_,
+      a,
+      b,
+      c,
+    );
+  }
+
+  late final _wire_get_sum_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32, ffi.Uint32)>>(
+          'wire_get_sum_array');
+  late final _wire_get_sum_array = _wire_get_sum_arrayPtr.asFunction<void Function(int, int, int, int)>();
+
   void wire_multiply_by_ten(
     int port_,
     ffi.Pointer<wire_Measure> measure,

@@ -327,6 +327,11 @@ pub extern "C" fn wire_get_sum_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_get_sum_array(port_: i64, a: u32, b: u32, c: u32) {
+    wire_get_sum_array_impl(port_, a, b, c)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
     wire_multiply_by_ten_impl(port_, measure)
 }

@@ -37,6 +37,12 @@ class ApiClass1Impl implements ApiClass1 {
         debugName: "simple_adder_1",
         argNames: ["a", "b"],
       );
+
+// Section: wire2api
+
+  int _wire2api_i32(dynamic raw) {
+    return raw as int;
+  }
 }
 
 // Section: api2wire
@@ -44,12 +50,6 @@ class ApiClass1Impl implements ApiClass1 {
 @protected
 int api2wire_i32(int raw) {
   return raw;
-}
-
-// Section: wire2api
-
-int _wire2api_i32(dynamic raw) {
-  return raw as int;
 }
 
 class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {

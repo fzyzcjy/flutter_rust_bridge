@@ -269,6 +269,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta;
 
+  Future<SumWithArray3> getSumArray({required int a, required int b, required int c, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetSumArrayConstMeta;
+
   Future<Measure?> multiplyByTen({required Measure measure, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kMultiplyByTenConstMeta;
@@ -395,6 +399,15 @@ class PointArray2 extends NonGrowableListView<Point> {
         super(inner);
   PointArray2.unchecked(List<Point> inner) : super(inner);
   PointArray2.init(Point fill) : super(List<Point>.filled(arraySize, fill));
+}
+
+class SumWithArray3 extends NonGrowableListView<SumWith> {
+  static const arraySize = 3;
+  SumWithArray3(List<SumWith> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  SumWithArray3.unchecked(List<SumWith> inner) : super(inner);
+  SumWithArray3.init(SumWith fill) : super(List<SumWith>.filled(arraySize, fill));
 }
 
 class TestIdArray2 extends NonGrowableListView<TestId> {
