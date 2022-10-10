@@ -1,6 +1,6 @@
 #![allow(unused_variables)]
 
-use crate::executor::{BenchExecutor, BenchHandler, Metrics};
+use crate::executor::{BenchExecutor, BenchHandler, Benchmark};
 use flutter_rust_bridge::{frb, handler::ReportDartErrorHandler, SyncReturn};
 
 lazy_static::lazy_static! {
@@ -39,6 +39,7 @@ pub struct Metric {
 pub fn rust_metrics() -> anyhow::Result<Vec<Metric>> {
     Ok(FLUTTER_RUST_BRIDGE_HANDLER
         .metrics()
+        .0
         .into_iter()
         .collect::<Vec<_>>())
 }

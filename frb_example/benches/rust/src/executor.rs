@@ -13,27 +13,30 @@ use crate::api::{Metric, Unit};
 const ERROR_MUTEX_LOCK: &str = "Error on mutex lock";
 
 lazy_static::lazy_static! {
-  static ref METRICS: Arc<Mutex<Vec<Metric>>> = Arc::new(Mutex::new(vec![]));
+  static ref METRICS: Arc<Mutex<Metrics>> = Arc::new(Mutex::new(Metrics(vec![])));
 }
+
+#[derive(Debug, Clone)]
+pub struct Metrics(pub Vec<Metric>);
 
 pub type BenchHandler = SimpleHandler<BenchExecutor, ReportDartErrorHandler>;
 
-pub trait Metrics {
-    fn metrics(&self) -> Vec<Metric>;
+pub trait Benchmark {
+    fn metrics(&self) -> Metrics;
     /// record a benchmark metric
     ///
     /// all benchmark metrics are stored in [`METRICS`]
     fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit);
 }
 
-impl Metrics for METRICS {
-    fn metrics(&self) -> Vec<Metric> {
+impl Benchmark for METRICS {
+    fn metrics(&self) -> Metrics {
         let guard = self.lock().expect(ERROR_MUTEX_LOCK);
         guard.clone()
     }
     fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit) {
         let mut guard = self.lock().expect(ERROR_MUTEX_LOCK);
-        guard.push(Metric {
+        guard.0.push(Metric {
             name: debug_name_string.to_string(),
             value: Some(elapsed),
             extra: None,
@@ -42,8 +45,8 @@ impl Metrics for METRICS {
     }
 }
 
-impl Metrics for SimpleHandler<BenchExecutor, ReportDartErrorHandler> {
-    fn metrics(&self) -> Vec<Metric> {
+impl Benchmark for SimpleHandler<BenchExecutor, ReportDartErrorHandler> {
+    fn metrics(&self) -> Metrics {
         METRICS.metrics()
     }
     fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit) {
