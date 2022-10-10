@@ -114,7 +114,7 @@ pub(crate) fn generate_api_func(
         || (func_output_struct_name.is_some()
             && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_file))
     {
-        format!("(d) => _wire2api_{}(this, d)", func.output.safe_ident())
+        format!("(d) => _wire2api_{}(d)", func.output.safe_ident())
     } else {
         format!("_wire2api_{}", func.output.safe_ident())
     };

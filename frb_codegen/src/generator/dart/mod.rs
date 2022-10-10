@@ -327,6 +327,9 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         )
     }));
 
+    lines.push(section_header("wire2api"));
+    lines.push(dart_wire2api_funcs.join("\n\n"));
+
     lines.push("}\n".into());
 
     lines.push_all(section_header("api2wire"));
@@ -339,9 +342,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         Io | Wasm => "}\n".into(),
         Common => "".into(),
     }));
-
-    lines.push(section_header("wire2api"));
-    lines.push(dart_wire2api_funcs.join("\n\n"));
 
     if config.wasm_enabled {
         push_wasm_module(
@@ -498,24 +498,17 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) 
 fn generate_wire2api_func(
     ty: &IrType,
     ir_file: &IrFile,
-    dart_api_class_name: &str,
+    _dart_api_class_name: &str,
     config: &Opts,
 ) -> String {
-    let extra_argument = if matches!(ty, StructRef(IrTypeStructRef { name, freezed: _ }) if MethodNamingUtil::has_methods(name, ir_file))
-    {
-        format!("{} bridge,", dart_api_class_name)
-    } else {
-        "".to_string()
-    };
     let body = TypeDartGenerator::new(ty.clone(), ir_file, config).wire2api_body();
     format!(
-        "{} _wire2api_{}({}{} raw) {{
+        "{} _wire2api_{}({} raw) {{
             {}
         }}
         ",
         ty.dart_api_type(),
         ty.safe_ident(),
-        extra_argument,
         ty.dart_param_type(),
         body,
     )

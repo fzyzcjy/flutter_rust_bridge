@@ -814,6 +814,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_get_sum_struct(NativePortType port_);
 
+  external void wire_get_sum_array(NativePortType port_, int a, int b, int c);
+
   external void wire_multiply_by_ten(NativePortType port_, List<dynamic> measure);
 
   external void wire_call_old_module_system(NativePortType port_);
@@ -1052,6 +1054,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       wasmModule.wire_handle_stream_sink_at_3(port_, key, max);
 
   void wire_get_sum_struct(NativePortType port_) => wasmModule.wire_get_sum_struct(port_);
+
+  void wire_get_sum_array(NativePortType port_, int a, int b, int c) => wasmModule.wire_get_sum_array(port_, a, b, c);
 
   void wire_multiply_by_ten(NativePortType port_, List<dynamic> measure) =>
       wasmModule.wire_multiply_by_ten(port_, measure);

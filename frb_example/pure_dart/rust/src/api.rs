@@ -694,6 +694,10 @@ pub fn get_sum_struct() -> SumWith {
     SumWith { x: 21 }
 }
 
+pub fn get_sum_array(a: u32, b: u32, c: u32) -> [SumWith; 3] {
+    [SumWith { x: a }, SumWith { x: b }, SumWith { x: c }]
+}
+
 pub struct ConcatenateWith {
     pub a: String,
 }

@@ -319,6 +319,11 @@ pub fn wire_get_sum_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_get_sum_array(port_: MessagePort, a: u32, b: u32, c: u32) {
+    wire_get_sum_array_impl(port_, a, b, c)
+}
+
+#[wasm_bindgen]
 pub fn wire_multiply_by_ten(port_: MessagePort, measure: JsValue) {
     wire_multiply_by_ten_impl(port_, measure)
 }

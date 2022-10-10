@@ -928,6 +928,26 @@ fn wire_get_sum_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(get_sum_struct()),
     )
 }
+fn wire_get_sum_array_impl(
+    port_: MessagePort,
+    a: impl Wire2Api<u32> + UnwindSafe,
+    b: impl Wire2Api<u32> + UnwindSafe,
+    c: impl Wire2Api<u32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_sum_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            let api_c = c.wire2api();
+            move |task_callback| Ok(get_sum_array(api_a, api_b, api_c))
+        },
+    )
+}
 fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
