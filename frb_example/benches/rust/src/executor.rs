@@ -13,30 +13,43 @@ use crate::api::{Metric, Unit};
 const ERROR_MUTEX_LOCK: &str = "Error on mutex lock";
 
 lazy_static::lazy_static! {
-  static ref METRICS: Arc<Mutex<Metrics>> = Arc::new(Mutex::new(Metrics(vec![])));
+  static ref METRICS: Arc<Mutex<Metrics>> = Arc::new(Mutex::new(Metrics::default()));
 }
 
-#[derive(Debug, Clone)]
-pub struct Metrics(pub Vec<Metric>);
+#[derive(Debug, Clone, Default)]
+pub struct Metrics {
+    metrics: Vec<Metric>,
+}
+
+impl Metrics {
+    pub fn into_inner(self) -> Vec<Metric> {
+        self.metrics
+    }
+}
 
 pub type BenchHandler = SimpleHandler<BenchExecutor, ReportDartErrorHandler>;
 
-pub trait Benchmark {
-    fn metrics(&self) -> Metrics;
+pub trait Record {
     /// record a benchmark metric
     ///
     /// all benchmark metrics are stored in [`METRICS`]
-    fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit);
+    fn record(&mut self, debug_name_string: &str, elapsed: u64, unit: Unit);
 }
 
-impl Benchmark for METRICS {
-    fn metrics(&self) -> Metrics {
-        let guard = self.lock().expect(ERROR_MUTEX_LOCK);
-        guard.clone()
+pub trait Collect {
+    /// collect benchmark metrics
+    fn collect(&self) -> Metrics;
+}
+
+impl Collect for Metrics {
+    fn collect(&self) -> Metrics {
+        self.clone()
     }
-    fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit) {
-        let mut guard = self.lock().expect(ERROR_MUTEX_LOCK);
-        guard.0.push(Metric {
+}
+
+impl Record for Metrics {
+    fn record(&mut self, debug_name_string: &str, elapsed: u64, unit: Unit) {
+        self.metrics.push(Metric {
             name: debug_name_string.to_string(),
             value: Some(elapsed),
             extra: None,
@@ -45,12 +58,9 @@ impl Benchmark for METRICS {
     }
 }
 
-impl Benchmark for SimpleHandler<BenchExecutor, ReportDartErrorHandler> {
-    fn metrics(&self) -> Metrics {
-        METRICS.metrics()
-    }
-    fn record(&self, debug_name_string: &str, elapsed: u64, unit: Unit) {
-        METRICS.record(debug_name_string, elapsed, unit);
+impl Collect for SimpleHandler<BenchExecutor, ReportDartErrorHandler> {
+    fn collect(&self) -> Metrics {
+        METRICS.lock().expect(ERROR_MUTEX_LOCK).collect()
     }
 }
 
@@ -167,7 +177,11 @@ impl BenchExecutor {
                 Unit::Nanoseconds.acronym()
             );
         } else {
-            METRICS.record(bench_name, elapsed as u64, Unit::Nanoseconds);
+            METRICS.lock().expect(ERROR_MUTEX_LOCK).record(
+                bench_name,
+                elapsed as u64,
+                Unit::Nanoseconds,
+            );
         }
         ret
     }
