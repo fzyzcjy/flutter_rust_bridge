@@ -91,6 +91,7 @@ pub enum TypeRustGenerator<'a> {
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
     SyncReturn(TypeSyncReturnGenerator<'a>),
+    Opaque(TypeOpaqueGenerator<'a>),
 }
 
 impl<'a> TypeRustGenerator<'a> {
@@ -106,6 +107,7 @@ impl<'a> TypeRustGenerator<'a> {
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
             SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
+            Opaque(ir) => TypeOpaqueGenerator { ir, context }.into(),
         }
     }
 }
