@@ -1,4 +1,4 @@
-use crate::ir::*;
+use crate::{ir::*, target::Target};
 
 use convert_case::{Case, Casing};
 use lazy_static::lazy_static;
@@ -83,5 +83,9 @@ impl IrTypeTrait for IrTypeOpaque {
 
     fn rust_wire_type(&self, target: crate::target::Target) -> String {
         format!("wire_{}", self.safe_ident())
+    }
+
+    fn rust_wire_is_pointer(&self, _target: Target) -> bool {
+        true
     }
 }

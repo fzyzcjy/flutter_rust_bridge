@@ -90,6 +90,8 @@ impl<'a> Generator<'a> {
         lines.push(format!("use crate::{}::*;", rust_wire_mod));
         lines.push("use flutter_rust_bridge::*;".to_string());
         lines.push("use core::panic::UnwindSafe;".to_owned());
+        lines.push("use std::sync::RwLock;".to_owned());
+        lines.push("use flutter_rust_bridge::{*, opaque::Opaque};".to_owned());
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));

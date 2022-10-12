@@ -14,6 +14,8 @@
 use crate::api_1::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::*;
+use flutter_rust_bridge::{opaque::Opaque, *};
+use std::sync::RwLock;
 
 // Section: imports
 
