@@ -9,9 +9,21 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class FlutterRustBridgeExampleSingleBlockTest {
-  Future<TestBag> test42({dynamic hint});
+  Future<TestOpaque> handleOpaqueAaa({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTest42ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleOpaqueAaaConstMeta;
+
+  Future<BoxRwLockWtffi> magic({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kMagicConstMeta;
+
+  Future<String> handleMagic({required BoxRwLockWtffi magic, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleMagicConstMeta;
+
+  Future<String> handleOpaqueBbb({TestOpaque? value, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleOpaqueBbbConstMeta;
 
   Future<OpaqueBag> handleOpaque({OpaqueBag? value, dynamic hint});
 
@@ -25,6 +37,16 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 @sealed
 class BoxDartDebug extends FrbOpaque {
   BoxDartDebug.MYC(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+@sealed
+class BoxRwLockWtffi extends FrbOpaque {
+  BoxRwLockWtffi.MYC(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+@sealed
+class BoxWtffi extends FrbOpaque {
+  BoxWtffi.MYC(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 @sealed
@@ -56,10 +78,10 @@ class OpaqueBag {
   });
 }
 
-class TestBag {
-  final String test;
+class TestOpaque {
+  final BoxWtffi magic;
 
-  TestBag({
-    required this.test,
+  TestOpaque({
+    required this.magic,
   });
 }

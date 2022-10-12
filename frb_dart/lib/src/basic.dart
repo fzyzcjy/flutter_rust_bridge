@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
+import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
@@ -168,19 +169,26 @@ class _CloseStreamException {}
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
-class FrbOpaque {
+class FrbOpaque implements Finalizable {
   ffi.Pointer? _ptr;
-  final ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
-  final ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>> _lend;
+  late ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
+  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>> _lend;
 
   /// This constructor should never be called manually.
   FrbOpaque.unsafe(int? ptr, int drop, int lend)
-      : assert(ptr == null || ptr > 0),
-        assert(drop > 0),
-        assert(lend > 0),
-        _ptr = ptr == null ? null : ffi.Pointer.fromAddress(ptr),
-        _drop = ffi.Pointer.fromAddress(drop),
+  {
+        assert(ptr == null || ptr > 0);
+        assert(drop > 0);
+        assert(lend > 0);
+        _ptr = ptr == null ? null : ffi.Pointer.fromAddress(ptr);
+        _drop = ffi.Pointer.fromAddress(drop);
         _lend = ffi.Pointer.fromAddress(lend);
+        _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
+        _finalizer.attach(this, _ptr!.cast(), detach: this);
+  }
+
+  // todo
+  late final NativeFinalizer _finalizer;
 
   /// Call Rust destructors on the backing memory of this pointer.
   /// This function should be run at least once during the lifetime of the program, and can be run many times.
@@ -189,11 +197,13 @@ class FrbOpaque {
   /// Furthermore, if that same function reuses the allocation (usually by returning the same opaque pointer) ownership of this pointer will be moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
+      _finalizer.detach(this);
       _drop.asFunction<void Function(ffi.Pointer)>()(_ptr!);
       _ptr = null;
     }
   }
 
+  // todo! clone Rust Arc pointer
   static ffi.Pointer lend(FrbOpaque ptr) {
     if (!ptr.isStale()) {
       return ptr._lend.asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);

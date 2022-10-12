@@ -19,16 +19,60 @@ use std::sync::RwLock;
 
 // Section: imports
 
+use crate::data::TestOpaque;
+
 // Section: wire functions
 
-fn wire_test42_impl(port_: MessagePort) {
+fn wire_handle_opaque_aaa_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "test42",
+            debug_name: "handle_opaque_aaa",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok((*test42())),
+        move || move |task_callback| handle_opaque_aaa(),
+    )
+}
+fn wire_magic_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "magic",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(magic()),
+    )
+}
+fn wire_handle_magic_impl(
+    port_: MessagePort,
+    magic: impl Wire2Api<Opaque<Box<RwLock<dyn wtffi>>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_magic",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_magic = magic.wire2api();
+            move |task_callback| Ok(handle_magic(api_magic))
+        },
+    )
+}
+fn wire_handle_opaque_bbb_impl(
+    port_: MessagePort,
+    value: impl Wire2Api<Option<TestOpaque>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_opaque_bbb",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_value = value.wire2api();
+            move |task_callback| Ok(handle_opaque_bbb(api_value))
+        },
     )
 }
 fn wire_handle_opaque_impl(
@@ -99,25 +143,18 @@ impl support::IntoDart for OpaqueBag {
 }
 impl support::IntoDartExceptPrimitive for OpaqueBag {}
 
-impl support::IntoDart for TestBag {
+impl support::IntoDart for TestOpaque {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.test.into_dart()].into_dart()
+        vec![self.magic.into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for TestBag {}
+impl support::IntoDartExceptPrimitive for TestOpaque {}
 
 // Section: executor
 
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }
-
-/// cbindgen:ignore
-#[cfg(target_family = "wasm")]
-#[path = "bridge_generated.web.rs"]
-mod web;
-#[cfg(target_family = "wasm")]
-pub use web::*;
 
 #[cfg(not(target_family = "wasm"))]
 #[path = "bridge_generated.io.rs"]

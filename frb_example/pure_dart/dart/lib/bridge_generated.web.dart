@@ -27,6 +27,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_test_opaque(TestOpaque raw) {
+    return api2wire_test_opaque(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_opaque_bag(OpaqueBag raw) {
     return [
       api2wire_RwLockI32(raw.primitive),
@@ -40,6 +45,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   List<dynamic>? api2wire_opt_box_autoadd_opaque_bag(OpaqueBag? raw) {
     return raw == null ? null : api2wire_box_autoadd_opaque_bag(raw);
   }
+
+  @protected
+  List<dynamic>? api2wire_opt_box_autoadd_test_opaque(TestOpaque? raw) {
+    return raw == null ? null : api2wire_box_autoadd_test_opaque(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_test_opaque(TestOpaque raw) {
+    return [api2wire_BoxWtffi(raw.magic)];
+  }
 }
 
 // Section: WASM wire module
@@ -52,7 +67,13 @@ external FlutterRustBridgeExampleSingleBlockTestWasmModule get wasmModule;
 class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
-  external void wire_test42(NativePortType port_);
+  external void wire_handle_opaque_aaa(NativePortType port_);
+
+  external void wire_magic(NativePortType port_);
+
+  external void wire_handle_magic(NativePortType port_, ffi.Pointer<wire_BoxRwLockWtffi> magic);
+
+  external void wire_handle_opaque_bbb(NativePortType port_, List<dynamic>? value);
 
   external void wire_handle_opaque(NativePortType port_, List<dynamic>? value);
 
@@ -66,7 +87,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   FlutterRustBridgeExampleSingleBlockTestWire(FutureOr<WasmModule> module)
       : super(WasmModule.cast<FlutterRustBridgeExampleSingleBlockTestWasmModule>(module));
 
-  void wire_test42(NativePortType port_) => wasmModule.wire_test42(port_);
+  void wire_handle_opaque_aaa(NativePortType port_) => wasmModule.wire_handle_opaque_aaa(port_);
+
+  void wire_magic(NativePortType port_) => wasmModule.wire_magic(port_);
+
+  void wire_handle_magic(NativePortType port_, ffi.Pointer<wire_BoxRwLockWtffi> magic) =>
+      wasmModule.wire_handle_magic(port_, magic);
+
+  void wire_handle_opaque_bbb(NativePortType port_, List<dynamic>? value) =>
+      wasmModule.wire_handle_opaque_bbb(port_, value);
 
   void wire_handle_opaque(NativePortType port_, List<dynamic>? value) => wasmModule.wire_handle_opaque(port_, value);
 

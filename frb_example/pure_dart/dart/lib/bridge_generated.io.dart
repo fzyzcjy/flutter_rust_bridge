@@ -27,6 +27,20 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_BoxRwLockWtffi> api2wire_BoxRwLockWtffi(BoxRwLockWtffi raw) {
+    final ptr = inner.new_BoxRwLockWtffi();
+    _api_fill_to_wire_BoxRwLockWtffi(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_BoxWtffi> api2wire_BoxWtffi(BoxWtffi raw) {
+    final ptr = inner.new_BoxWtffi();
+    _api_fill_to_wire_BoxWtffi(raw, ptr);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_RwLockI32> api2wire_RwLockI32(RwLockI32 raw) {
     final ptr = inner.new_RwLockI32();
     _api_fill_to_wire_RwLockI32(raw, ptr);
@@ -55,12 +69,33 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_TestOpaque> api2wire_box_autoadd_test_opaque(TestOpaque raw) {
+    final ptr = inner.new_box_autoadd_test_opaque_0();
+    _api_fill_to_wire_test_opaque(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_OpaqueBag> api2wire_opt_box_autoadd_opaque_bag(OpaqueBag? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_opaque_bag(raw);
   }
+
+  @protected
+  ffi.Pointer<wire_TestOpaque> api2wire_opt_box_autoadd_test_opaque(TestOpaque? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_test_opaque(raw);
+  }
+
 // Section: api_fill_to_wire
 
   void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, ffi.Pointer<wire_BoxDartDebug> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+  }
+
+  void _api_fill_to_wire_BoxRwLockWtffi(BoxRwLockWtffi apiObj, ffi.Pointer<wire_BoxRwLockWtffi> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+  }
+
+  void _api_fill_to_wire_BoxWtffi(BoxWtffi apiObj, ffi.Pointer<wire_BoxWtffi> wireObj) {
     wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
   }
 
@@ -80,6 +115,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_opaque_bag(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_test_opaque(TestOpaque apiObj, ffi.Pointer<wire_TestOpaque> wireObj) {
+    _api_fill_to_wire_test_opaque(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_opaque_bag(OpaqueBag apiObj, wire_OpaqueBag wireObj) {
     wireObj.primitive = api2wire_RwLockI32(apiObj.primitive);
     wireObj.array = api2wire_RwLockIsize10(apiObj.array);
@@ -89,6 +128,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_opt_box_autoadd_opaque_bag(OpaqueBag? apiObj, ffi.Pointer<wire_OpaqueBag> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_opaque_bag(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_opt_box_autoadd_test_opaque(TestOpaque? apiObj, ffi.Pointer<wire_TestOpaque> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_test_opaque(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_test_opaque(TestOpaque apiObj, wire_TestOpaque wireObj) {
+    wireObj.magic = api2wire_BoxWtffi(apiObj.magic);
   }
 }
 
@@ -123,16 +170,58 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 
-  void wire_test42(
+  void wire_handle_opaque_aaa(
     int port_,
   ) {
-    return _wire_test42(
+    return _wire_handle_opaque_aaa(
       port_,
     );
   }
 
-  late final _wire_test42Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test42');
-  late final _wire_test42 = _wire_test42Ptr.asFunction<void Function(int)>();
+  late final _wire_handle_opaque_aaaPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_opaque_aaa');
+  late final _wire_handle_opaque_aaa = _wire_handle_opaque_aaaPtr.asFunction<void Function(int)>();
+
+  void wire_magic(
+    int port_,
+  ) {
+    return _wire_magic(
+      port_,
+    );
+  }
+
+  late final _wire_magicPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_magic');
+  late final _wire_magic = _wire_magicPtr.asFunction<void Function(int)>();
+
+  void wire_handle_magic(
+    int port_,
+    ffi.Pointer<wire_BoxRwLockWtffi> magic,
+  ) {
+    return _wire_handle_magic(
+      port_,
+      magic,
+    );
+  }
+
+  late final _wire_handle_magicPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_BoxRwLockWtffi>)>>('wire_handle_magic');
+  late final _wire_handle_magic =
+      _wire_handle_magicPtr.asFunction<void Function(int, ffi.Pointer<wire_BoxRwLockWtffi>)>();
+
+  void wire_handle_opaque_bbb(
+    int port_,
+    ffi.Pointer<wire_TestOpaque> value,
+  ) {
+    return _wire_handle_opaque_bbb(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_handle_opaque_bbbPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TestOpaque>)>>('wire_handle_opaque_bbb');
+  late final _wire_handle_opaque_bbb =
+      _wire_handle_opaque_bbbPtr.asFunction<void Function(int, ffi.Pointer<wire_TestOpaque>)>();
 
   void wire_handle_opaque(
     int port_,
@@ -171,6 +260,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxDartDebug> Function()>>('new_BoxDartDebug');
   late final _new_BoxDartDebug = _new_BoxDartDebugPtr.asFunction<ffi.Pointer<wire_BoxDartDebug> Function()>();
 
+  ffi.Pointer<wire_BoxRwLockWtffi> new_BoxRwLockWtffi() {
+    return _new_BoxRwLockWtffi();
+  }
+
+  late final _new_BoxRwLockWtffiPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxRwLockWtffi> Function()>>('new_BoxRwLockWtffi');
+  late final _new_BoxRwLockWtffi = _new_BoxRwLockWtffiPtr.asFunction<ffi.Pointer<wire_BoxRwLockWtffi> Function()>();
+
+  ffi.Pointer<wire_BoxWtffi> new_BoxWtffi() {
+    return _new_BoxWtffi();
+  }
+
+  late final _new_BoxWtffiPtr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxWtffi> Function()>>('new_BoxWtffi');
+  late final _new_BoxWtffi = _new_BoxWtffiPtr.asFunction<ffi.Pointer<wire_BoxWtffi> Function()>();
+
   ffi.Pointer<wire_RwLockI32> new_RwLockI32() {
     return _new_RwLockI32();
   }
@@ -202,6 +306,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_opaque_bag_0 =
       _new_box_autoadd_opaque_bag_0Ptr.asFunction<ffi.Pointer<wire_OpaqueBag> Function()>();
 
+  ffi.Pointer<wire_TestOpaque> new_box_autoadd_test_opaque_0() {
+    return _new_box_autoadd_test_opaque_0();
+  }
+
+  late final _new_box_autoadd_test_opaque_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_TestOpaque> Function()>>('new_box_autoadd_test_opaque_0');
+  late final _new_box_autoadd_test_opaque_0 =
+      _new_box_autoadd_test_opaque_0Ptr.asFunction<ffi.Pointer<wire_TestOpaque> Function()>();
+
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
   ) {
@@ -214,6 +327,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
   late final _free_WireSyncReturnStruct =
       _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
+}
+
+class wire_BoxRwLockWtffi extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_BoxWtffi extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_TestOpaque extends ffi.Struct {
+  external ffi.Pointer<wire_BoxWtffi> magic;
 }
 
 class wire_RwLockI32 extends ffi.Struct {

@@ -20,13 +20,64 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
-  OpaqueBag? bag;
-  print('RAZ');
-  var a = await api.handleOpaque(value: bag);
-  a = await api.handleOpaque(value: a);
-  print('DWA ${a.primitive}');
-  var b = await api.handleOpaqueRepr(value: a.primitive);
-  print('TREE $b');
+
+  for (var i =0 ; i<100; ++i) {
+    var magic = await api.magic();
+    magic.dispose();
+  }
+  // print(await api.handleMagic(magic: magic));
+  // print(await api.handleMagic(magic: magic));
+  // print(await api.handleMagic(magic: magic));
+  // print(await api.handleMagic(magic: magic));
+  // print(await api.handleMagic(magic: magic));
+  // print(await api.handleMagic(magic: magic));
+  // print(await api.handleMagic(magic: magic));
+  // var magic2 =  magic.clone();
+  // print(magic.isStale());
+  // print(magic2.isStale());
+  // magic.dispose();
+  // print(magic.isStale());
+  // print(magic2.isStale());
+  // print(await api.handleMagic(magic: magic2));
+  
+  // var wtffi = await api.handleOpaqueAaa();
+  // print('Create');
+  // var strWtffi = await api.handleOpaqueBbb(value: wtffi);
+  // print('MY FFI ${strWtffi}');
+  // wtffi.magic.dispose();
+  // var strWtffi2 = await api.handleOpaqueBbb(value: wtffi);
+  // print('MY FFI2 ${strWtffi2}');
+  //   var strWtffi3 = await api.handleOpaqueBbb(value: wtffi);
+  // print('MY FFI3 ${strWtffi3}');
+  //   var strWtffi4 = await api.handleOpaqueBbb(value: wtffi);
+  // print('MY FFI4 ${strWtffi4}');
+  //   var strWtffi5 = await api.handleOpaqueBbb(value: wtffi);
+  // print('MY FFI5 ${strWtffi5}');
+  
+  // OpaqueBag? bag;
+  // print('RAZ');
+  // var a = await api.handleOpaque(value: null);
+  // await api.handleOpaque(value: a);
+  // await api.handleOpaque(value: a);
+  // await api.handleOpaque(value: a);
+  // await api.handleOpaque(value: a);
+  // print('DWA ${a.primitive}');
+  // var b = await api.handleOpaqueRepr(value: a.primitive);
+  // print('TREE $b');
+
+  // a.array.dispose();
+  // a.traitObj.dispose();
+  // a.lifetime.dispose();
+  // a.primitive.dispose();
+  // await api.handleOpaque(value: a);
+  // await api.handleOpaque(value: a);
+  // await api.handleOpaque(value: a);
+  // await api.handleOpaque(value: a);
+
+  // b = await api.handleOpaqueRepr(value: a.primitive);
+  // print('TREE2 $b');
+
+  // print('TREE $a');
   // await api.handleOpaque(value: a);
   // print('CH ${await api.handleOpaqueRepr(value: a.primitive)}');
 }
