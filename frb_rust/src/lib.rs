@@ -1,6 +1,7 @@
 pub use flutter_rust_bridge_macros::frb;
 pub use handler::{FfiCallMode, Handler, WrapInfo};
 pub use rust2dart::StreamSink;
+pub use opaque::Opaque;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 use support::WireSyncReturnData;
 

@@ -1,6 +1,6 @@
 use std::{sync::RwLock, ops::DerefMut, cell::RefCell};
 
-use flutter_rust_bridge::{opaque::Opaque, DartSafe};
+use flutter_rust_bridge::{Opaque, DartSafe};
 use std::fmt::Debug;
 
 use crate::data::{TestOpaque, Magic};
