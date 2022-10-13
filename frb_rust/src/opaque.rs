@@ -41,7 +41,7 @@ use crate::DartSafe;
 #[repr(transparent)]
 #[derive(Debug)]
 pub struct Opaque<T: ?Sized + DartSafe> {
-    pub(crate) ptr: Option<Box<T>>,
+    pub(crate) ptr: Option<Box<T>>, 
 }
 
 impl<T: ?Sized + DartSafe> Drop for Opaque<T> {

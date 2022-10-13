@@ -19,8 +19,6 @@ codegen:
 	flutter_rust_bridge_codegen \
 		--rust-input=frb_example/pure_dart/rust/src/api.rs \
 		--dart-output=frb_example/pure_dart/dart/lib/bridge_generated.dart \
-		--skip-add-mod-to-lib \
-		--dart-format-line-length=80
 
 	cd frb_example/pure_dart/dart \
 	&& flutter pub get \

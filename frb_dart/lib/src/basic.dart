@@ -185,14 +185,20 @@ class FrbOpaque implements Finalizable {
     _finalizer.attach(this, _ptr!.cast(), detach: this, externalSize: size);
   }
 
-  // todo
+  /// The native finalizer runs [_drop] on [_ptr]
+  /// if the object is garbage collected.
   late final NativeFinalizer _finalizer;
 
   /// Call Rust destructors on the backing memory of this pointer.
-  /// This function should be run at least once during the lifetime of the program, and can be run many times.
+  /// This function should be run at least once during the lifetime of the program, 
+  /// and can be run many times.
   ///
-  /// When passed into a Rust function, Rust enacts *shared ownership* and inhibits disposal of this pointer's contents, even if [dispose] is immediately run.
-  /// Furthermore, if that same function reuses the allocation (usually by returning the same opaque pointer) ownership of this pointer will be moved into that new opaque pointer.
+  /// When passed into a Rust function, 
+  /// Rust enacts *shared ownership* and inhibits disposal of this pointer's contents, 
+  /// even if [dispose] is immediately run.
+  /// Furthermore, if that same function reuses the allocation 
+  /// (usually by returning the same opaque pointer) 
+  /// ownership of this pointer will be moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
       _finalizer.detach(this);
@@ -201,12 +207,12 @@ class FrbOpaque implements Finalizable {
     }
   }
 
-  // todo! clone Rust Arc pointer
+  /// Return [ffi.Pointer] provided by this [FrbOpaque]. 
   static ffi.Pointer lend(FrbOpaque ptr) {
-    if (!ptr.isStale()) {
-      return ptr._ptr!;
-    } else {
+    if (ptr.isStale()) {
       return ffi.nullptr;
+    } else {
+      return ptr._ptr!;
     }
   }
 
