@@ -45,7 +45,7 @@ fn wire_magic_impl(port_: MessagePort) {
 }
 fn wire_handle_magic_impl(
     port_: MessagePort,
-    magic: impl Wire2Api<Opaque<Box<RwLock<dyn wtffi>>>> + UnwindSafe,
+    magic: impl Wire2Api<Opaque<Box<RwLock<dyn Wtffi>>>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

@@ -1,6 +1,6 @@
-use flutter_rust_bridge::{DartSafe, opaque::Opaque};
+use flutter_rust_bridge::{opaque::Opaque, DartSafe};
 
-use crate::api::{wtffi, wtf};
+use crate::api::{Wtf, Wtffi};
 
 pub struct MyStruct {
     pub content: bool,
@@ -10,10 +10,6 @@ pub enum MyEnum {
     False,
     True,
 }
-
-
-
-
 
 pub struct Magic {
     pub message: String,
@@ -26,7 +22,7 @@ impl Drop for Magic {
     }
 }
 
-impl wtf for Magic {
+impl Wtf for Magic {
     fn nested(&self) -> String {
         let current = &self.message;
         if let Some(next) = &self.nested {
@@ -34,13 +30,10 @@ impl wtf for Magic {
         }
         current.clone()
     }
-
 }
 
-
-
 pub struct TestOpaque {
-    pub magic: Opaque<Box<dyn wtffi>>,
+    pub magic: Opaque<Box<dyn Wtffi>>,
 }
 
 impl TestOpaque {

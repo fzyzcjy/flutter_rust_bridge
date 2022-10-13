@@ -83,16 +83,16 @@ impl Wire2Api<Opaque<Box<dyn DartDebug>>> for *mut wire_BoxDartDebug {
         }
     }
 }
-impl Wire2Api<Opaque<Box<RwLock<dyn wtffi>>>> for *mut wire_BoxRwLockWtffi {
-    fn wire2api(self) -> Opaque<Box<RwLock<dyn wtffi>>> {
+impl Wire2Api<Opaque<Box<RwLock<dyn Wtffi>>>> for *mut wire_BoxRwLockWtffi {
+    fn wire2api(self) -> Opaque<Box<RwLock<dyn Wtffi>>> {
         unsafe {
             let ans = support::box_from_leak_ptr(self);
             support::opaque_from_dart(ans.ptr as _)
         }
     }
 }
-impl Wire2Api<Opaque<Box<dyn wtffi>>> for *mut wire_BoxWtffi {
-    fn wire2api(self) -> Opaque<Box<dyn wtffi>> {
+impl Wire2Api<Opaque<Box<dyn Wtffi>>> for *mut wire_BoxWtffi {
+    fn wire2api(self) -> Opaque<Box<dyn Wtffi>> {
         unsafe {
             let ans = support::box_from_leak_ptr(self);
             support::opaque_from_dart(ans.ptr as _)

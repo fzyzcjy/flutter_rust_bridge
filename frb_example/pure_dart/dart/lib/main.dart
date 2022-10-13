@@ -23,6 +23,7 @@ void main(List<String> args) async {
 
   for (var i =0 ; i<100; ++i) {
     var magic = await api.magic();
+    await api.handleMagic(magic: magic);
     magic.dispose();
   }
   // print(await api.handleMagic(magic: magic));

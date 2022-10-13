@@ -1,20 +1,19 @@
-use std::{sync::RwLock, ops::DerefMut, cell::RefCell};
+use std::{sync::RwLock};
 
-use flutter_rust_bridge::{Opaque, DartSafe};
+use flutter_rust_bridge::{DartSafe, Opaque};
 use std::fmt::Debug;
 
-use crate::data::{TestOpaque, Magic};
+use crate::data::{Magic, TestOpaque};
 
 pub trait DartDebug: DartSafe + Debug {}
 impl<T: DartSafe + Debug> DartDebug for T {}
 
-pub trait wtf {
+pub trait Wtf {
     fn nested(&self) -> String;
 }
 
-pub trait wtffi: DartSafe + wtf {}
-impl<T: DartSafe + wtf> wtffi for T {}
-
+pub trait Wtffi: DartSafe + Wtf {}
+impl<T: DartSafe + Wtf> Wtffi for T {}
 
 #[derive(Debug)]
 pub struct OpaqueBag {
@@ -24,13 +23,11 @@ pub struct OpaqueBag {
     pub trait_obj: Opaque<Box<dyn DartDebug>>,
 }
 
-
-
 pub fn handle_opaque_aaa() -> anyhow::Result<TestOpaque> {
     Ok(TestOpaque::new())
 }
 
-pub fn magic() -> Opaque<Box<RwLock<dyn wtffi>>> {
+pub fn magic() -> Opaque<Box<RwLock<dyn Wtffi>>> {
     Opaque::new(Box::new(RwLock::new(Magic {
         message: "MAGIC 1".to_owned(),
         nested: Some(Box::new(Magic {
@@ -40,7 +37,7 @@ pub fn magic() -> Opaque<Box<RwLock<dyn wtffi>>> {
     })))
 }
 
-pub fn handle_magic(magic: Opaque<Box<RwLock<dyn wtffi>>>) -> String {
+pub fn handle_magic(magic: Opaque<Box<RwLock<dyn Wtffi>>>) -> String {
     magic.as_deref().unwrap().read().unwrap().nested()
 }
 
