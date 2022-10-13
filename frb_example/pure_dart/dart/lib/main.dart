@@ -702,6 +702,9 @@ void main(List<String> args) async {
       var nullContent = await api.runOpaque(opaque: data);
       expect(nullContent, "NULL OPAQUE");
 
+      var array = await api.opaqueArray();
+      array.forEach((element) {element.dispose();});
+
     });
   });
 }

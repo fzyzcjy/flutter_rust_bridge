@@ -1180,6 +1180,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  Future<OpaqueStructArray2> opaqueArray({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_opaque_array(port_),
+        parseSuccessData: _wire2api_OpaqueStruct_array_2,
+        constMeta: kOpaqueArrayConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "opaque_array",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1327,6 +1340,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   OpaqueStruct _wire2api_OpaqueStruct(dynamic raw) {
     return OpaqueStruct.fromRaw(raw[0], raw[1], raw[2]);
+  }
+
+  OpaqueStructArray2 _wire2api_OpaqueStruct_array_2(dynamic raw) {
+    return OpaqueStructArray2((raw as List<dynamic>).map(_wire2api_OpaqueStruct).toList());
   }
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {
@@ -1759,6 +1776,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       default:
         throw Exception("unreachable");
     }
+  }
+
+  List<OpaqueStruct> _wire2api_list_OpaqueStruct(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_OpaqueStruct).toList();
   }
 
   List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {

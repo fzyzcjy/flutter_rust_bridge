@@ -10,7 +10,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-use crate::data::{MyEnum, MyStruct, HideData};
+use crate::data::{HideData, MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
@@ -967,4 +967,11 @@ pub fn run_opaque(opaque: Opaque<OpaqueStruct>) -> String {
     } else {
         "NULL OPAQUE".to_owned()
     }
+}
+
+pub fn opaque_array() -> [Opaque<OpaqueStruct>; 2] {
+    [
+        Opaque::new(OpaqueStruct(HideData::new())),
+        Opaque::new(OpaqueStruct(HideData::new())),
+    ]
 }

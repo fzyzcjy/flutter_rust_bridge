@@ -1,4 +1,3 @@
-
 pub struct MyStruct {
     pub content: bool,
 }
@@ -10,7 +9,7 @@ pub enum MyEnum {
 
 #[derive(Debug)]
 struct PrivateData {
-    content: String
+    content: String,
 }
 
 #[derive(Debug)]
@@ -33,5 +32,3 @@ impl HideData {
         format!("{} - {:?}", self.content, self.box_content)
     }
 }
-
-

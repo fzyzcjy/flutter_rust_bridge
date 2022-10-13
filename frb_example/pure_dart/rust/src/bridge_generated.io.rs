@@ -447,6 +447,11 @@ pub extern "C" fn wire_run_opaque(port_: i64, opaque: *mut wire_OpaqueStruct) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_opaque_array(port_: i64) {
+    wire_opaque_array_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

@@ -1,6 +1,6 @@
 //! Safe wrapper for Dart-friendly raw pointers.
 
-use std::sync::{Arc, self};
+use std::sync::{self, Arc};
 
 use allo_isolate::{ffi::DartCObject, IntoDart};
 
@@ -116,8 +116,8 @@ extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
 type CArcDropper<T> = *const extern "C" fn(*const T);
 type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
 
-impl<T: DartSafe> IntoDart for Opaque<T> {
-    fn into_dart(self) -> DartCObject {
+impl<T: DartSafe> Into<DartCObject> for Opaque<T> {
+    fn into(self) -> DartCObject {
         // ffi.Pointer? type
         let ptr = match self.ptr {
             Some(arc) => Arc::into_raw(arc).into_dart(),

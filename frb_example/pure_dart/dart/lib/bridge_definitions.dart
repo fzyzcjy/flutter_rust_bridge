@@ -365,6 +365,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta;
 
+  Future<OpaqueStructArray2> opaqueArray({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -403,6 +407,15 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 @sealed
 class OpaqueStruct extends FrbOpaque {
   OpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+class OpaqueStructArray2 extends NonGrowableListView<OpaqueStruct> {
+  static const arraySize = 2;
+  OpaqueStructArray2(List<OpaqueStruct> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  OpaqueStructArray2.unchecked(List<OpaqueStruct> inner) : super(inner);
+  OpaqueStructArray2.init(OpaqueStruct fill) : super(List<OpaqueStruct>.filled(arraySize, fill));
 }
 
 class PointArray2 extends NonGrowableListView<Point> {
