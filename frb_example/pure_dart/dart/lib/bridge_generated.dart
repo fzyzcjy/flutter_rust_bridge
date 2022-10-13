@@ -1310,7 +1310,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 // Section: wire2api
 
   BoxSafeOpaqueRun _wire2api_BoxSafeOpaqueRun(dynamic raw) {
-    return BoxSafeOpaqueRun.MYC(raw[0], raw[1], raw[2]);
+    return BoxSafeOpaqueRun.fromRaw(raw[0], raw[1], raw[2]);
   }
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {

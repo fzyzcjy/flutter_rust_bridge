@@ -2,7 +2,7 @@
 //! These functions are *not* meant to be used by humans directly.
 #![doc(hidden)]
 
-use std::mem;
+use std::{mem, sync::Arc};
 
 pub use crate::ffi::*;
 use crate::{opaque::Opaque, DartSafe};
@@ -113,11 +113,11 @@ macro_rules! primitive_to_sync_return {
 /// This function should never be called manually.
 /// Retrieving an opaque pointer from Dart is an implementation detail,
 /// so this function is not guaranteed to be API-stable.
-pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *mut T) -> Opaque<T> {
+pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
     // The raw pointer is the same one created from Arc::into_raw,
     // owned and artificially incremented by Dart.
     Opaque {
-        ptr: (!ptr.is_null()).then(|| Box::from_raw(ptr)),
+        ptr: (!ptr.is_null()).then(|| Arc::from_raw(ptr) ),
     }
 }
 

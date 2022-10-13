@@ -1,6 +1,6 @@
 //! Safe wrapper for Dart-friendly raw pointers.
 
-use std::{mem, sync};
+use std::sync::{Arc, self};
 
 use allo_isolate::{ffi::DartCObject, IntoDart};
 
@@ -41,20 +41,11 @@ use crate::DartSafe;
 #[repr(transparent)]
 #[derive(Debug)]
 pub struct Opaque<T: ?Sized + DartSafe> {
-    pub(crate) ptr: Option<Box<T>>, 
+    pub(crate) ptr: Option<Arc<T>>,
 }
 
-impl<T: ?Sized + DartSafe> Drop for Opaque<T> {
-    fn drop(&mut self) {
-        let a = mem::replace(&mut self.ptr, None);
-        if let Some(a) = a {
-            drop(Box::into_raw(a));
-        }
-    }
-}
-
-impl<T: DartSafe> From<Option<Box<T>>> for Opaque<T> {
-    fn from(ptr: Option<Box<T>>) -> Self {
+impl<T: DartSafe> From<Option<Arc<T>>> for Opaque<T> {
+    fn from(ptr: Option<Arc<T>>) -> Self {
         Self { ptr }
     }
 }
@@ -62,7 +53,7 @@ impl<T: DartSafe> From<Option<Box<T>>> for Opaque<T> {
 impl<T: DartSafe> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
-            ptr: Some(Box::new(value)),
+            ptr: Some(Arc::new(value)),
         }
     }
 }
@@ -105,27 +96,36 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-extern "C" fn drop_box<T>(ptr: *mut T) {
+extern "C" fn drop_arc<T>(ptr: *const T) {
     // Dart has ownership of this copy of Arc,
     // and can only lend out clones, so this is safe to call
     // exactly once.
-
     unsafe {
-        let opaque = Box::<T>::from_raw(ptr.cast());
-        drop(opaque);
+        Arc::decrement_strong_count(ptr);
     }
 }
 
-type CArcDropper<T> = *const extern "C" fn(*mut T);
+extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
+    // Equivalent to a clone, but direcly in terms of raw pointers.
+    unsafe {
+        Arc::increment_strong_count(ptr);
+        ptr
+    }
+}
+
+type CArcDropper<T> = *const extern "C" fn(*const T);
+type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
 
 impl<T: DartSafe> IntoDart for Opaque<T> {
-    fn into_dart(mut self) -> DartCObject {
+    fn into_dart(self) -> DartCObject {
         // ffi.Pointer? type
-        let size = mem::size_of::<T>();
-        let ptr = self.ptr.take().unwrap();
-        let ptr = Box::into_raw(ptr).into_dart();
-        let drop = drop_box::<T> as CArcDropper<T>;
-        vec![ptr, drop.into_dart(), size.into_dart()].into_dart()
+        let ptr = match self.ptr {
+            Some(arc) => Arc::into_raw(arc).into_dart(),
+            _ => ().into_dart(),
+        };
+        let drop = drop_arc::<T> as CArcDropper<T>;
+        let lend = lend_arc::<T> as CArcLender<T>;
+        vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()
     }
 }
 
@@ -143,6 +143,6 @@ impl<T: DartSafe> IntoDart for Opaque<T> {
 #[macro_export]
 macro_rules! opaque_dyn {
     ($ex:expr, $trait:tt) => {
-        Opaque::from(Box::new($ex) as Box<dyn $trait>)
+        Opaque::from(std::sync::Arc::new($ex) as std::sync::Arc<dyn $trait>)
     };
 }

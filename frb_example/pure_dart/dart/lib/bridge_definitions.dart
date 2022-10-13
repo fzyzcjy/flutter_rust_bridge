@@ -402,7 +402,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
 @sealed
 class BoxSafeOpaqueRun extends FrbOpaque {
-  BoxSafeOpaqueRun.MYC(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+  BoxSafeOpaqueRun.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class PointArray2 extends NonGrowableListView<Point> {

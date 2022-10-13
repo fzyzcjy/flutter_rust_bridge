@@ -172,17 +172,20 @@ class _CloseStreamException {}
 class FrbOpaque implements Finalizable {
   ffi.Pointer? _ptr;
   late ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
+  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>> _lend;
+
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int? ptr, int drop, int size)
+  FrbOpaque.unsafe(int? ptr, int drop, int lend)
   {
     assert(ptr == null || ptr > 0);
     assert(drop > 0);
-    assert(size > 0);
+    assert(lend > 0);
     _ptr = ptr == null ? null : ffi.Pointer.fromAddress(ptr);
     _drop = ffi.Pointer.fromAddress(drop);
+    _lend = ffi.Pointer.fromAddress(lend);
     _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
-    _finalizer.attach(this, _ptr!.cast(), detach: this, externalSize: size);
+    _finalizer.attach(this, _ptr!.cast(), detach: this);
   }
 
   /// The native finalizer runs [_drop] on [_ptr]
@@ -201,18 +204,17 @@ class FrbOpaque implements Finalizable {
   /// ownership of this pointer will be moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
-      _finalizer.detach(this);
       _drop.asFunction<void Function(ffi.Pointer)>()(_ptr!);
       _ptr = null;
     }
   }
 
-  /// Return [ffi.Pointer] provided by this [FrbOpaque]. 
   static ffi.Pointer lend(FrbOpaque ptr) {
-    if (ptr.isStale()) {
-      return ffi.nullptr;
+    if (!ptr.isStale()) {
+      return ptr._lend.asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
     } else {
-      return ptr._ptr!;
+      // next best thing here, this is equivalent to an Option::<Arc<T>>::None
+      return ffi.nullptr;
     }
   }
 
