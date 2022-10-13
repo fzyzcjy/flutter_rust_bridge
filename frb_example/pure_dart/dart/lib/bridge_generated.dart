@@ -1153,9 +1153,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
-  Future<BoxSafeOpaqueRun> createOpaque({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+  Future<OpaqueStruct> createOpaque({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_create_opaque(port_),
-        parseSuccessData: _wire2api_BoxSafeOpaqueRun,
+        parseSuccessData: _wire2api_OpaqueStruct,
         constMeta: kCreateOpaqueConstMeta,
         argValues: [],
         hint: hint,
@@ -1166,9 +1166,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  Future<String> runOpaque({required BoxSafeOpaqueRun opaque, dynamic hint}) =>
+  Future<String> runOpaque({required OpaqueStruct opaque, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_run_opaque(port_, _platform.api2wire_BoxSafeOpaqueRun(opaque)),
+        callFfi: (port_) => _platform.inner.wire_run_opaque(port_, _platform.api2wire_OpaqueStruct(opaque)),
         parseSuccessData: _wire2api_String,
         constMeta: kRunOpaqueConstMeta,
         argValues: [opaque],
@@ -1309,10 +1309,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
 // Section: wire2api
 
-  BoxSafeOpaqueRun _wire2api_BoxSafeOpaqueRun(dynamic raw) {
-    return BoxSafeOpaqueRun.fromRaw(raw[0], raw[1], raw[2]);
-  }
-
   Duration _wire2api_Chrono_Duration(dynamic raw) {
     return wire2apiDuration(_wire2api_i64(raw));
   }
@@ -1327,6 +1323,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   DateTime _wire2api_Chrono_Utc(dynamic raw) {
     return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
+  }
+
+  OpaqueStruct _wire2api_OpaqueStruct(dynamic raw) {
+    return OpaqueStruct.fromRaw(raw[0], raw[1], raw[2]);
   }
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {

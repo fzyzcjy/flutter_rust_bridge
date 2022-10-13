@@ -204,6 +204,7 @@ class FrbOpaque implements Finalizable {
   /// ownership of this pointer will be moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
+      _finalizer.detach(this);
       _drop.asFunction<void Function(ffi.Pointer)>()(_ptr!);
       _ptr = null;
     }

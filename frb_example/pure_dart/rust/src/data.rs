@@ -1,6 +1,3 @@
-use flutter_rust_bridge::DartSafe;
-
-use crate::api::OpaqueRun;
 
 pub struct MyStruct {
     pub content: bool,
@@ -21,6 +18,7 @@ pub struct HideData {
     content: String,
     box_content: Option<Box<PrivateData>>,
 }
+
 impl HideData {
     pub fn new() -> Self {
         Self {
@@ -30,10 +28,10 @@ impl HideData {
             })),
         }
     }
-}
 
-impl OpaqueRun for HideData {
-    fn hide_data(&self) -> String {
+    pub fn hide_data(&self) -> String {
         format!("{} - {:?}", self.content, self.box_content)
     }
 }
+
+

@@ -357,11 +357,11 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
 
-  Future<BoxSafeOpaqueRun> createOpaque({dynamic hint});
+  Future<OpaqueStruct> createOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta;
 
-  Future<String> runOpaque({required BoxSafeOpaqueRun opaque, dynamic hint});
+  Future<String> runOpaque({required OpaqueStruct opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta;
 
@@ -401,8 +401,8 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 }
 
 @sealed
-class BoxSafeOpaqueRun extends FrbOpaque {
-  BoxSafeOpaqueRun.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+class OpaqueStruct extends FrbOpaque {
+  OpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class PointArray2 extends NonGrowableListView<Point> {

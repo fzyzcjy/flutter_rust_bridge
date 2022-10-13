@@ -434,7 +434,7 @@ pub fn wire_create_opaque(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_run_opaque(port_: MessagePort, opaque: *mut wire_BoxSafeOpaqueRun) {
+pub fn wire_run_opaque(port_: MessagePort, opaque: *mut wire_OpaqueStruct) {
     wire_run_opaque_impl(port_, opaque)
 }
 
@@ -584,6 +584,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
+
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self

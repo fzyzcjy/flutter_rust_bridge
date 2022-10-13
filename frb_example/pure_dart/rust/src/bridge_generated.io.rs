@@ -442,7 +442,7 @@ pub extern "C" fn wire_create_opaque(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_opaque(port_: i64, opaque: *mut wire_BoxSafeOpaqueRun) {
+pub extern "C" fn wire_run_opaque(port_: i64, opaque: *mut wire_OpaqueStruct) {
     wire_run_opaque_impl(port_, opaque)
 }
 
@@ -511,8 +511,8 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_BoxSafeOpaqueRun() -> *mut wire_BoxSafeOpaqueRun {
-    support::new_leak_box_ptr(wire_BoxSafeOpaqueRun::new_with_null_ptr())
+pub extern "C" fn new_OpaqueStruct() -> *mut wire_OpaqueStruct {
+    support::new_leak_box_ptr(wire_OpaqueStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -822,14 +822,6 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
-impl Wire2Api<Opaque<Box<dyn SafeOpaqueRun>>> for *mut wire_BoxSafeOpaqueRun {
-    fn wire2api(self) -> Opaque<Box<dyn SafeOpaqueRun>> {
-        unsafe {
-            let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as _)
-        }
-    }
-}
 impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
@@ -857,6 +849,14 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
         )
+    }
+}
+impl Wire2Api<Opaque<OpaqueStruct>> for *mut wire_OpaqueStruct {
+    fn wire2api(self) -> Opaque<OpaqueStruct> {
+        unsafe {
+            let ans = support::box_from_leak_ptr(self);
+            support::opaque_from_dart(ans.ptr as _)
+        }
     }
 }
 impl Wire2Api<String> for *mut wire_uint_8_list {
@@ -1464,7 +1464,7 @@ impl Wire2Api<UserId> for wire_UserId {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_BoxSafeOpaqueRun {
+pub struct wire_OpaqueStruct {
     ptr: *const core::ffi::c_void,
 }
 
@@ -1850,7 +1850,7 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
-impl NewWithNullPtr for wire_BoxSafeOpaqueRun {
+impl NewWithNullPtr for wire_OpaqueStruct {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),

@@ -955,21 +955,15 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
 }
 
 /// Opaque types
+pub struct OpaqueStruct(HideData);
 
-pub trait OpaqueRun {
-    fn hide_data(&self) -> String;
+pub fn create_opaque() -> Opaque<OpaqueStruct> {
+    Opaque::new(OpaqueStruct(HideData::new()))
 }
 
-pub trait SafeOpaqueRun: DartSafe + OpaqueRun {}
-impl<T: DartSafe + OpaqueRun> SafeOpaqueRun for T {}
-
-pub fn create_opaque() -> Opaque<Box<dyn SafeOpaqueRun>> {
-    Opaque::new(Box::new(HideData::new()))
-}
-
-pub fn run_opaque(opaque: Opaque<Box<dyn SafeOpaqueRun>>) -> String {
+pub fn run_opaque(opaque: Opaque<OpaqueStruct>) -> String {
     if let Some(data) = opaque.as_deref() {
-        data.hide_data()
+        data.0.hide_data()
     } else {
         "NULL OPAQUE".to_owned()
     }

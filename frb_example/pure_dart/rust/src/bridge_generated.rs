@@ -1238,7 +1238,7 @@ fn wire_create_opaque_impl(port_: MessagePort) {
 }
 fn wire_run_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<Opaque<Box<dyn SafeOpaqueRun>>> + UnwindSafe,
+    opaque: impl Wire2Api<Opaque<OpaqueStruct>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

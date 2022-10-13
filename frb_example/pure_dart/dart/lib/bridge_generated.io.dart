@@ -20,13 +20,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api2wire
 
   @protected
-  ffi.Pointer<wire_BoxSafeOpaqueRun> api2wire_BoxSafeOpaqueRun(BoxSafeOpaqueRun raw) {
-    final ptr = inner.new_BoxSafeOpaqueRun();
-    _api_fill_to_wire_BoxSafeOpaqueRun(raw, ptr);
-    return ptr;
-  }
-
-  @protected
   int api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i64(raw.inMicroseconds);
   }
@@ -44,6 +37,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   int api2wire_Chrono_Utc(DateTime raw) {
     return api2wire_i64(raw.microsecondsSinceEpoch);
+  }
+
+  @protected
+  ffi.Pointer<wire_OpaqueStruct> api2wire_OpaqueStruct(OpaqueStruct raw) {
+    final ptr = inner.new_OpaqueStruct();
+    _api_fill_to_wire_OpaqueStruct(raw, ptr);
+    return ptr;
   }
 
   @protected
@@ -587,7 +587,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: api_fill_to_wire
 
-  void _api_fill_to_wire_BoxSafeOpaqueRun(BoxSafeOpaqueRun apiObj, ffi.Pointer<wire_BoxSafeOpaqueRun> wireObj) {
+  void _api_fill_to_wire_OpaqueStruct(OpaqueStruct apiObj, ffi.Pointer<wire_OpaqueStruct> wireObj) {
     wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
   }
 
@@ -2160,7 +2160,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   void wire_run_opaque(
     int port_,
-    ffi.Pointer<wire_BoxSafeOpaqueRun> opaque,
+    ffi.Pointer<wire_OpaqueStruct> opaque,
   ) {
     return _wire_run_opaque(
       port_,
@@ -2169,9 +2169,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_run_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_BoxSafeOpaqueRun>)>>('wire_run_opaque');
-  late final _wire_run_opaque =
-      _wire_run_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_BoxSafeOpaqueRun>)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueStruct>)>>('wire_run_opaque');
+  late final _wire_run_opaque = _wire_run_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueStruct>)>();
 
   void wire_sum__method__SumWith(
     int port_,
@@ -2320,14 +2319,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr
           .asFunction<void Function(int)>();
 
-  ffi.Pointer<wire_BoxSafeOpaqueRun> new_BoxSafeOpaqueRun() {
-    return _new_BoxSafeOpaqueRun();
+  ffi.Pointer<wire_OpaqueStruct> new_OpaqueStruct() {
+    return _new_OpaqueStruct();
   }
 
-  late final _new_BoxSafeOpaqueRunPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxSafeOpaqueRun> Function()>>('new_BoxSafeOpaqueRun');
-  late final _new_BoxSafeOpaqueRun =
-      _new_BoxSafeOpaqueRunPtr.asFunction<ffi.Pointer<wire_BoxSafeOpaqueRun> Function()>();
+  late final _new_OpaqueStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_OpaqueStruct> Function()>>('new_OpaqueStruct');
+  late final _new_OpaqueStruct = _new_OpaqueStructPtr.asFunction<ffi.Pointer<wire_OpaqueStruct> Function()>();
 
   ffi.Pointer<wire_StringList> new_StringList_0(
     int len,
@@ -3296,7 +3294,7 @@ class wire_list_test_id extends ffi.Struct {
   external int len;
 }
 
-class wire_BoxSafeOpaqueRun extends ffi.Struct {
+class wire_OpaqueStruct extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
