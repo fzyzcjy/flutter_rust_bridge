@@ -64,7 +64,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
     let decl_code = generate_dart_declaration_code(
         &common_header,
         generate_freezed_header(dart_output_file_root, needs_freezed),
-        generate_import_header(get_dart_imports(ir_file)),
+        generate_import_header(get_dart_imports(ir_file), spec.import_array.as_deref()),
         generate_dart_declaration_body(dart_api_class_name, dart_funcs, dart_structs),
     );
 
@@ -92,6 +92,7 @@ struct DartApiSpec {
     dart_wasm_funcs: Vec<String>,
     dart_wasm_module: Option<String>,
     needs_freezed: bool,
+    import_array: Option<String>,
 }
 
 impl DartApiSpec {
@@ -158,6 +159,11 @@ impl DartApiSpec {
             _ => false,
         });
 
+        let import_array = distinct_types
+            .iter()
+            .any(IrType::is_array)
+            .then(|| "import 'package:collection/collection.dart';".to_owned());
+
         DartApiSpec {
             dart_funcs,
             dart_structs,
@@ -167,6 +173,7 @@ impl DartApiSpec {
             dart_wasm_funcs,
             dart_wasm_module,
             needs_freezed,
+            import_array,
         }
     }
 }
@@ -184,8 +191,11 @@ fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> 
     }
 }
 
-fn generate_import_header(imports: HashSet<&IrDartImport>) -> DartBasicCode {
-    if !imports.is_empty() {
+fn generate_import_header(
+    imports: HashSet<&IrDartImport>,
+    import_array: Option<&str>,
+) -> DartBasicCode {
+    if !imports.is_empty() || import_array.is_some() {
         DartBasicCode {
             import: imports
                 .iter()
@@ -194,7 +204,8 @@ fn generate_import_header(imports: HashSet<&IrDartImport>) -> DartBasicCode {
                     _ => format!("import '{}';", it.uri),
                 })
                 .collect::<Vec<_>>()
-                .join("\n"),
+                .join("\n")
+                + import_array.unwrap_or(""),
             part: "".to_string(),
             body: "".to_string(),
         }
@@ -278,8 +289,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         dart_wire2api_funcs,
         dart_wasm_funcs,
         dart_wasm_module,
-        dart_structs: _,
-        needs_freezed: _,
+        ..
     } = spec;
 
     lines.push_acc(Acc {
@@ -320,6 +330,9 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         )
     }));
 
+    lines.push(section_header("wire2api"));
+    lines.push(dart_wire2api_funcs.join("\n\n"));
+
     lines.push("}\n".into());
 
     lines.push_all(section_header("api2wire"));
@@ -332,9 +345,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         Io | Wasm => "}\n".into(),
         Common => "".into(),
     }));
-
-    lines.push(section_header("wire2api"));
-    lines.push(dart_wire2api_funcs.join("\n\n"));
 
     if config.wasm_enabled {
         push_wasm_module(
@@ -491,24 +501,17 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) 
 fn generate_wire2api_func(
     ty: &IrType,
     ir_file: &IrFile,
-    dart_api_class_name: &str,
+    _dart_api_class_name: &str,
     config: &Opts,
 ) -> String {
-    let extra_argument = if matches!(ty, StructRef(IrTypeStructRef { name, freezed: _ }) if MethodNamingUtil::has_methods(name, ir_file))
-    {
-        format!("{} bridge,", dart_api_class_name)
-    } else {
-        "".to_string()
-    };
     let body = TypeDartGenerator::new(ty.clone(), ir_file, config).wire2api_body();
     format!(
-        "{} _wire2api_{}({}{} raw) {{
+        "{} _wire2api_{}({} raw) {{
             {}
         }}
         ",
         ty.dart_api_type(),
         ty.safe_ident(),
-        extra_argument,
         ty.dart_param_type(),
         body,
     )

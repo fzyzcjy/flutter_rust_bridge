@@ -156,12 +156,18 @@ impl<const N: usize, T: IntoDartExceptPrimitive> IntoDart for [T; N] {
     }
 }
 
-impl<const N: usize> IntoDart for [u8; N] {
-    #[inline]
-    fn into_dart(self) -> DartAbi {
-        Vec::from(self).into_dart()
-    }
+macro_rules! impl_into_dart_for_primitive {
+    ($($prim:ty)*) => {$(
+        impl<const N: usize> IntoDart for [$prim; N] {
+            #[inline]
+            fn into_dart(self) -> DartAbi {
+                Vec::from(self).into_dart()
+            }
+        }
+    )*};
 }
+
+impl_into_dart_for_primitive!(i8 u8 i16 u16 i32 u32 f32 f64);
 
 macro_rules! delegate_big_buffers {
     ($($buf:ty => $buffer:ty)*) => {$(

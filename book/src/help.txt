@@ -1,4 +1,4 @@
-flutter_rust_bridge_codegen 1.48.1
+flutter_rust_bridge_codegen 1.49.0
 
 USAGE:
     flutter_rust_bridge_codegen [OPTIONS] --rust-input <RUST_INPUT>... --dart-output <DART_OUTPUT>...
