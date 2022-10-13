@@ -1,8 +1,6 @@
 //! Safe wrapper for Dart-friendly raw pointers.
 
-use std::{
-    mem, sync,
-};
+use std::{mem, sync};
 
 use allo_isolate::{ffi::DartCObject, IntoDart};
 
@@ -46,12 +44,9 @@ pub struct Opaque<T: ?Sized + DartSafe> {
     pub(crate) ptr: Option<Box<T>>,
 }
 
-impl<T: ?Sized+ DartSafe> Drop for Opaque<T> {
+impl<T: ?Sized + DartSafe> Drop for Opaque<T> {
     fn drop(&mut self) {
-        let a = mem::replace(
-            &mut self.ptr,
-            None
-        );
+        let a = mem::replace(&mut self.ptr, None);
         if let Some(a) = a {
             drop(Box::into_raw(a));
         }
@@ -114,7 +109,7 @@ extern "C" fn drop_box<T>(ptr: *mut T) {
     // Dart has ownership of this copy of Arc,
     // and can only lend out clones, so this is safe to call
     // exactly once.
-    
+
     unsafe {
         let opaque = Box::<T>::from_raw(ptr.cast());
         drop(opaque);

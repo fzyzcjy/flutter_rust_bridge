@@ -437,6 +437,16 @@ pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_create_opaque(port_: i64) {
+    wire_create_opaque_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_opaque(port_: i64, opaque: *mut wire_BoxSafeOpaqueRun) {
+    wire_run_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -499,6 +509,11 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
 }
 
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_BoxSafeOpaqueRun() -> *mut wire_BoxSafeOpaqueRun {
+    support::new_leak_box_ptr(wire_BoxSafeOpaqueRun::new_with_null_ptr())
+}
 
 #[no_mangle]
 pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
@@ -807,6 +822,14 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<Opaque<Box<dyn SafeOpaqueRun>>> for *mut wire_BoxSafeOpaqueRun {
+    fn wire2api(self) -> Opaque<Box<dyn SafeOpaqueRun>> {
+        unsafe {
+            let ans = support::box_from_leak_ptr(self);
+            support::opaque_from_dart(ans.ptr as _)
+        }
+    }
+}
 impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
@@ -1441,6 +1464,12 @@ impl Wire2Api<UserId> for wire_UserId {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_BoxSafeOpaqueRun {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_StringList {
     ptr: *mut *mut wire_uint_8_list,
     len: i32,
@@ -1818,6 +1847,14 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
+    }
+}
+
+impl NewWithNullPtr for wire_BoxSafeOpaqueRun {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
     }
 }
 

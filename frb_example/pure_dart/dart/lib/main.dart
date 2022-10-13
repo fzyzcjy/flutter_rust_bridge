@@ -690,6 +690,19 @@ void main(List<String> args) async {
       expect(nestedId[0].field0[1], 10);
       expect(nestedId[1].field0[1], 40);
     });
+
+    test('Opaque type', () async {
+      var data = await api.createOpaque();
+      var content = await api.runOpaque(opaque: data);
+      data.dispose();
+      expect(content, "content - Some(PrivateData { content: \"content nested\" })");
+
+      data.dispose(); // double dispose check
+
+      var nullContent = await api.runOpaque(opaque: data);
+      expect(nullContent, "NULL OPAQUE");
+
+    });
   });
 }
 

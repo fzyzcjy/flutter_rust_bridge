@@ -118,7 +118,8 @@ pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *mut T) -> Opaque<T> {
     // owned and artificially incremented by Dart.
     Opaque {
         ptr: (!ptr.is_null()).then(|| Box::from_raw(ptr)),
-    }}
+    }
+}
 
 // For simple types, use macro to implement [`From`] trait.
 primitive_to_sync_return!(u8, i8, u16, i16, u32, i32, u64, i64, f32, f64);

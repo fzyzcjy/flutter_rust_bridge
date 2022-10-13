@@ -1153,6 +1153,33 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
+  Future<BoxSafeOpaqueRun> createOpaque({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_create_opaque(port_),
+        parseSuccessData: _wire2api_BoxSafeOpaqueRun,
+        constMeta: kCreateOpaqueConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_opaque",
+        argNames: [],
+      );
+
+  Future<String> runOpaque({required BoxSafeOpaqueRun opaque, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_run_opaque(port_, _platform.api2wire_BoxSafeOpaqueRun(opaque)),
+        parseSuccessData: _wire2api_String,
+        constMeta: kRunOpaqueConstMeta,
+        argValues: [opaque],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "run_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1281,6 +1308,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       );
 
 // Section: wire2api
+
+  BoxSafeOpaqueRun _wire2api_BoxSafeOpaqueRun(dynamic raw) {
+    return BoxSafeOpaqueRun.MYC(raw[0], raw[1], raw[2]);
+  }
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {
     return wire2apiDuration(_wire2api_i64(raw));

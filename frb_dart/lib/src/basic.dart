@@ -182,7 +182,6 @@ class FrbOpaque implements Finalizable {
     _ptr = ptr == null ? null : ffi.Pointer.fromAddress(ptr);
     _drop = ffi.Pointer.fromAddress(drop);
     _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
-    print(size);
     _finalizer.attach(this, _ptr!.cast(), detach: this, externalSize: size);
   }
 

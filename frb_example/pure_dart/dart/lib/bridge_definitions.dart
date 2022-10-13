@@ -357,6 +357,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
 
+  Future<BoxSafeOpaqueRun> createOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta;
+
+  Future<String> runOpaque({required BoxSafeOpaqueRun opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -390,6 +398,11 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
+}
+
+@sealed
+class BoxSafeOpaqueRun extends FrbOpaque {
+  BoxSafeOpaqueRun.MYC(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class PointArray2 extends NonGrowableListView<Point> {

@@ -10,7 +10,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-use crate::data::{MyEnum, MyStruct};
+use crate::data::{MyEnum, MyStruct, HideData};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
@@ -951,5 +951,26 @@ pub fn last_number(array: [f64; 16]) -> f64 {
 pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
     match id {
         [first, .., last] => [first, last],
+    }
+}
+
+/// Opaque types
+
+pub trait OpaqueRun {
+    fn hide_data(&self) -> String;
+}
+
+pub trait SafeOpaqueRun: DartSafe + OpaqueRun {}
+impl<T: DartSafe + OpaqueRun> SafeOpaqueRun for T {}
+
+pub fn create_opaque() -> Opaque<Box<dyn SafeOpaqueRun>> {
+    Opaque::new(Box::new(HideData::new()))
+}
+
+pub fn run_opaque(opaque: Opaque<Box<dyn SafeOpaqueRun>>) -> String {
+    if let Some(data) = opaque.as_deref() {
+        data.hide_data()
+    } else {
+        "NULL OPAQUE".to_owned()
     }
 }
