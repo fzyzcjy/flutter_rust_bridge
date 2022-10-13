@@ -2,7 +2,7 @@
 
 # install local flutter_rust_bridge_codegen
 install.frb:
-	cargo install flutter_rust_bridge_codegen --path frb_codegen/
+	cargo install flutter_rust_bridge_codegen --path frb_codegen/ --all-features
 
 # rebuild all and run
 farsh: 
