@@ -35,6 +35,16 @@ dart.run:
 	cd frb_example/pure_dart/dart \
 	&& dart run ./lib/main.dart "/media/human/DE2466F72466D1D7/Work/Github/Test/flutter_rust_bridge/target/debug/libflutter_rust_bridge_example.so"
 
+# run dart web test
+dart.run.web: 
+	cd frb_example/pure_dart/dart \
+	&& webdev serve
+
+flutter.deps: 
+	cd frb_example/pure_dart/dart \
+	&& dart run flutter_rust_bridge:serve ./lib/main.dart
+# && flutter pub get
+
 # build rust example lib
 rust.build: 
 	cd frb_example/pure_dart/rust \

@@ -2172,6 +2172,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueStruct>)>>('wire_run_opaque');
   late final _wire_run_opaque = _wire_run_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueStruct>)>();
 
+  void wire_run_opaque_with_delay(
+    int port_,
+    ffi.Pointer<wire_OpaqueStruct> opaque,
+  ) {
+    return _wire_run_opaque_with_delay(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_run_opaque_with_delayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueStruct>)>>(
+          'wire_run_opaque_with_delay');
+  late final _wire_run_opaque_with_delay =
+      _wire_run_opaque_with_delayPtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueStruct>)>();
+
   void wire_opaque_array(
     int port_,
   ) {

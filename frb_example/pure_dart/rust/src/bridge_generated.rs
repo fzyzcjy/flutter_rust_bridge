@@ -1251,6 +1251,22 @@ fn wire_run_opaque_impl(
         },
     )
 }
+fn wire_run_opaque_with_delay_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<Opaque<OpaqueStruct>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_opaque_with_delay",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(run_opaque_with_delay(api_opaque))
+        },
+    )
+}
 fn wire_opaque_array_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

@@ -447,6 +447,11 @@ pub extern "C" fn wire_run_opaque(port_: i64, opaque: *mut wire_OpaqueStruct) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_run_opaque_with_delay(port_: i64, opaque: *mut wire_OpaqueStruct) {
+    wire_run_opaque_with_delay_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_opaque_array(port_: i64) {
     wire_opaque_array_impl(port_)
 }

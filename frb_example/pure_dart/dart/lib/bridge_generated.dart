@@ -1180,6 +1180,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  Future<String> runOpaqueWithDelay({required OpaqueStruct opaque, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_run_opaque_with_delay(port_, _platform.api2wire_OpaqueStruct(opaque)),
+        parseSuccessData: _wire2api_String,
+        constMeta: kRunOpaqueWithDelayConstMeta,
+        argValues: [opaque],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kRunOpaqueWithDelayConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "run_opaque_with_delay",
+        argNames: ["opaque"],
+      );
+
   Future<OpaqueStructArray2> opaqueArray({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_opaque_array(port_),
         parseSuccessData: _wire2api_OpaqueStruct_array_2,

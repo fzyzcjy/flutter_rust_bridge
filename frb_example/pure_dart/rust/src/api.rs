@@ -969,6 +969,15 @@ pub fn run_opaque(opaque: Opaque<OpaqueStruct>) -> String {
     }
 }
 
+pub fn run_opaque_with_delay(opaque: Opaque<OpaqueStruct>) -> String {
+    std::thread::sleep_ms(1000);
+    if let Some(data) = opaque.as_deref() {
+        data.0.hide_data()
+    } else {
+        "NULL OPAQUE".to_owned()
+    }
+}
+
 pub fn opaque_array() -> [Opaque<OpaqueStruct>; 2] {
     [
         Opaque::new(OpaqueStruct(HideData::new())),

@@ -365,6 +365,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta;
 
+  Future<String> runOpaqueWithDelay({required OpaqueStruct opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRunOpaqueWithDelayConstMeta;
+
   Future<OpaqueStructArray2> opaqueArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;

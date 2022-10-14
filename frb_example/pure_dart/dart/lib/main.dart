@@ -691,21 +691,65 @@ void main(List<String> args) async {
       expect(nestedId[1].field0[1], 40);
     });
 
-    test('Opaque type', () async {
-      var data = await api.createOpaque();
-      var content = await api.runOpaque(opaque: data);
-      data.dispose();
-      expect(content, "content - Some(PrivateData { content: \"content nested\" })");
-
-      data.dispose(); // double dispose check
-
-      var nullContent = await api.runOpaque(opaque: data);
-      expect(nullContent, "NULL OPAQUE");
-
-      var array = await api.opaqueArray();
-      array.forEach((element) {element.dispose();});
-
+    test('Create opaque type', () async {
+      for (var i = 0; i < 100; ++i) {
+        var data = await api.createOpaque();
+      }
+      for (var i = 0; i < 100; ++i) {
+        var futureData = api.createOpaque();
+      }
     });
+
+    test('Delete opaque type', () async {
+      for (var i = 0; i < 100; ++i) {
+        var data = await api.createOpaque();
+        data.dispose();
+        data.dispose();
+      }
+    });
+
+    test('Call opaque type fn', () async {
+      for (var i = 0; i < 100; ++i) {
+        var data = await api.createOpaque();
+        expect(await api.runOpaque(opaque: data), "content - Some(PrivateData { content: \"content nested\" })");
+        data.dispose();
+        expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
+      }
+    });
+
+    test('Delete opaque type before complete run', () async {
+      for (var i = 0; i < 10; ++i) {
+        var data = await api.createOpaque();
+        var task = api.runOpaqueWithDelay(opaque: data);
+        data.dispose();
+        expect(await task, "content - Some(PrivateData { content: \"content nested\" })");
+        expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
+      }
+    });
+
+    test('Create array of opaque type', () async {
+      for (var i = 0; i < 100; ++i) {
+        var data = await api.opaqueArray();
+        for (var v in data) {
+          expect(await api.runOpaque(opaque: v), "content - Some(PrivateData { content: \"content nested\" })");
+          v.dispose();
+          expect(await api.runOpaque(opaque: v), "NULL OPAQUE");
+        }
+      }
+    });
+
+    test('Delete opaque type in array before complete run', () async {
+      for (var i = 0; i < 10; ++i) {
+        var data = await api.opaqueArray();
+        for (var v in data) {
+          var task = api.runOpaqueWithDelay(opaque: v);
+          v.dispose();
+          expect(await task, "content - Some(PrivateData { content: \"content nested\" })");
+          expect(await api.runOpaque(opaque: v), "NULL OPAQUE");
+        }
+      }
+    });
+    
   });
 }
 
