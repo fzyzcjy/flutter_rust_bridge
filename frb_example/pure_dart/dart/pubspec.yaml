@@ -10,7 +10,7 @@ dependencies:
   flutter_rust_bridge:
     path: ../../../frb_dart
   vm_service: ^9.0.0
-  freezed_annotation: ^2.1.0
+  freezed_annotation: ^2.2.0
   ffi: ^2.0.1
   js: ^0.6.4
   test_core: ^0.4.16
