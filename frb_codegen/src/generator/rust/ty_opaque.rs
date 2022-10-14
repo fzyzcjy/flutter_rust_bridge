@@ -26,7 +26,10 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
 
     /// Handles JsValue to Self conversions.
     fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
-        None
+        Some(
+            "unsafe {support::opaque_from_dart(self.as_string().unwrap().parse::<usize>().unwrap() as _)}"
+            .into(),
+        )
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {

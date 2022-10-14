@@ -861,7 +861,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_create_opaque(NativePortType port_);
 
-  external void wire_run_opaque(NativePortType port_, ffi.Pointer<wire_OpaqueStruct> opaque);
+  external void wire_run_opaque(NativePortType port_, dynamic opaque);
 
   external void wire_opaque_array(NativePortType port_);
 
@@ -1112,8 +1112,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_create_opaque(NativePortType port_) => wasmModule.wire_create_opaque(port_);
 
-  void wire_run_opaque(NativePortType port_, ffi.Pointer<wire_OpaqueStruct> opaque) =>
-      wasmModule.wire_run_opaque(port_, opaque);
+  void wire_run_opaque(NativePortType port_, dynamic opaque) => wasmModule.wire_run_opaque(port_, opaque);
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
 

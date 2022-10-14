@@ -74,7 +74,11 @@ impl IrTypeTrait for IrTypeOpaque {
     }
 
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
-        format!("ffi.Pointer<{}>", self.rust_wire_type(target))
+        if let Target::Wasm = target {
+            "dynamic".into()
+        } else {
+            format!("ffi.Pointer<{}>", self.rust_wire_type(target))
+        }
     }
 
     fn rust_api_type(&self) -> String {
@@ -82,10 +86,14 @@ impl IrTypeTrait for IrTypeOpaque {
     }
 
     fn rust_wire_type(&self, target: crate::target::Target) -> String {
-        format!("wire_{}", self.safe_ident())
+        if let Target::Wasm = target {
+            "JsValue".into()
+        } else {
+            format!("wire_{}", self.safe_ident())
+        }
     }
 
-    fn rust_wire_is_pointer(&self, _target: Target) -> bool {
-        true
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        !target.is_wasm()
     }
 }

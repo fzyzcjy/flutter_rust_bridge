@@ -43,3 +43,14 @@ rust.build:
 so.fn:
 	cd frb_example/pure_dart/rust/target/debug \
 	&& nm -D libflutter_rust_bridge_example.so
+
+
+wasm.build:
+	export RUSTUP_TOOLCHAIN=nightly && \
+	export RUSTFLAGS="-C target-feature=+atomics,+bulk-memory,+mutable-globals" && \
+	wasm-pack build \
+		frb_example/pure_dart/rust/ \
+		-t no-modules \
+		-d frb_example/pure_dart/rust/lib/  \
+		--no-typescript -- \
+		--target wasm32-unknown-unknown -Z build-std=std,panic_abort

@@ -434,7 +434,7 @@ pub fn wire_create_opaque(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_run_opaque(port_: MessagePort, opaque: *mut wire_OpaqueStruct) {
+pub fn wire_run_opaque(port_: MessagePort, opaque: JsValue) {
     wire_run_opaque_impl(port_, opaque)
 }
 
@@ -1201,6 +1201,13 @@ impl Wire2Api<chrono::NaiveDateTime> for JsValue {
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         Wire2Api::<i64>::wire2api(self).wire2api()
+    }
+}
+impl Wire2Api<Opaque<OpaqueStruct>> for JsValue {
+    fn wire2api(self) -> Opaque<OpaqueStruct> {
+        unsafe {
+            support::opaque_from_dart(self.as_string().unwrap().parse::<usize>().unwrap() as _)
+        }
     }
 }
 impl Wire2Api<String> for JsValue {
