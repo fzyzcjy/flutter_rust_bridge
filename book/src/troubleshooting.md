@@ -43,6 +43,12 @@ https://github.com/fzyzcjy/flutter_rust_bridge/issues/334
 
 If you use a Rust type with `Kind` in it's name it may conflict with some generated types which can cause a duplicate import error. The workaround is to avoid using `Kind` as a suffix for a type name in Rust. See issue #757 for more details.
 
+## Error on iOS TestFlight only (`store_dart_post_cobject`)
+
+You may have an iOS app that works fine in Debug and Release modes locally but when deployed to TestFlight an error occurs trying to locate the `store_dart_post_cobject` - this is because the nested XCode project for the native bindings maybe be stripping symbols from the linked product.
+
+Select the scheme (eg: `Product > Scheme > native-staticlib`) and go to *Build Settings* then under the `Deployment` section change `Strip Linked Product` to `No`; you may also need to change `Strip Style` to `Debugging Symbols`.
+
 ## Generated code is so long
 
 Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see >10k lines of Java code generated for a quite simple source proto file.
