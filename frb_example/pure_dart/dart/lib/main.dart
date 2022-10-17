@@ -695,72 +695,74 @@ void main(List<String> args) async {
 
   group('Opaque feature', () {
 
-    test('Create opaque type', () async {
-      for (var i = 0; i < 100; ++i) {
-        var data = await api.createOpaque();
-      }
-      for (var i = 0; i < 100; ++i) {
-        var futureData = api.createOpaque();
-      }
-    });
+    // test('Create opaque type', () async {
+    //   for (var i = 0; i < 100; ++i) {
+    //     var data = await api.createOpaque();
+    //   }
+    //   for (var i = 0; i < 100; ++i) {
+    //     var futureData = api.createOpaque();
+    //   }
+    // });
 
     test('Delete opaque type', () async {
-      for (var i = 0; i < 100; ++i) {
+      for (var i = 0; i < 10000; ++i) {
         var data = await api.createOpaque();
-        data.dispose();
-        data.dispose();
-      }
-    });
-
-    test('Double Call opaque type fn', () async {
-      for (var i = 0; i < 100; ++i) {
-        var data = await api.createOpaque();
+        // print("TEST");
         expect(await api.runOpaque(opaque: data), "content - Some(PrivateData { content: \"content nested\" })");
-        expect(await api.runOpaque(opaque: data), "content - Some(PrivateData { content: \"content nested\" })");
+        // data.dispose();
+        // data.dispose();
       }
     });
 
-    test('Call opaque type fn after drop', () async {
-      for (var i = 0; i < 100; ++i) {
-        var data = await api.createOpaque();
-        expect(await api.runOpaque(opaque: data), "content - Some(PrivateData { content: \"content nested\" })");
-        data.dispose();
-        expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
-      }
-    });
+    // test('Double Call opaque type fn', () async {
+    //   for (var i = 0; i < 100; ++i) {
+    //     var data = await api.createOpaque();
+    //     expect(await api.runOpaque(opaque: data), "content - Some(PrivateData { content: \"content nested\" })");
+    //     expect(await api.runOpaque(opaque: data), "content - Some(PrivateData { content: \"content nested\" })");
+    //   }
+    // });
 
-    test('Delete opaque type before complete run', () async {
-      for (var i = 0; i < 10; ++i) {
-        var data = await api.createOpaque();
-        var task = api.runOpaqueWithDelay(opaque: data);
-        data.dispose();
-        expect(await task, "content - Some(PrivateData { content: \"content nested\" })");
-        expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
-      }
-    });
+    // test('Call opaque type fn after drop', () async {
+    //   for (var i = 0; i < 100; ++i) {
+    //     var data = await api.createOpaque();
+    //     expect(await api.runOpaque(opaque: data), "content - Some(PrivateData { content: \"content nested\" })");
+    //     data.dispose();
+    //     expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
+    //   }
+    // });
 
-    test('Create array of opaque type', () async {
-      for (var i = 0; i < 100; ++i) {
-        var data = await api.opaqueArray();
-        for (var v in data) {
-          expect(await api.runOpaque(opaque: v), "content - Some(PrivateData { content: \"content nested\" })");
-          v.dispose();
-          expect(await api.runOpaque(opaque: v), "NULL OPAQUE");
-        }
-      }
-    });
+    // test('Delete opaque type before complete run', () async {
+    //   for (var i = 0; i < 10; ++i) {
+    //     var data = await api.createOpaque();
+    //     var task = api.runOpaqueWithDelay(opaque: data);
+    //     data.dispose();
+    //     expect(await task, "content - Some(PrivateData { content: \"content nested\" })");
+    //     expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
+    //   }
+    // });
 
-    test('Delete opaque type in array before complete run', () async {
-      for (var i = 0; i < 10; ++i) {
-        var data = await api.opaqueArray();
-        for (var v in data) {
-          var task = api.runOpaqueWithDelay(opaque: v);
-          v.dispose();
-          expect(await task, "content - Some(PrivateData { content: \"content nested\" })");
-          expect(await api.runOpaque(opaque: v), "NULL OPAQUE");
-        }
-      }
-    });
+    // test('Create array of opaque type', () async {
+    //   for (var i = 0; i < 100; ++i) {
+    //     var data = await api.opaqueArray();
+    //     for (var v in data) {
+    //       expect(await api.runOpaque(opaque: v), "content - Some(PrivateData { content: \"content nested\" })");
+    //       v.dispose();
+    //       expect(await api.runOpaque(opaque: v), "NULL OPAQUE");
+    //     }
+    //   }
+    // });
+
+    // test('Delete opaque type in array before complete run', () async {
+    //   for (var i = 0; i < 10; ++i) {
+    //     var data = await api.opaqueArray();
+    //     for (var v in data) {
+    //       var task = api.runOpaqueWithDelay(opaque: v);
+    //       v.dispose();
+    //       expect(await task, "content - Some(PrivateData { content: \"content nested\" })");
+    //       expect(await api.runOpaque(opaque: v), "NULL OPAQUE");
+    //     }
+    //   }
+    // });
     
   });
 }

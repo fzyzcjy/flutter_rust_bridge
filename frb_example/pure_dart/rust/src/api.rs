@@ -970,7 +970,6 @@ pub fn run_opaque(opaque: Opaque<OpaqueStruct>) -> String {
 }
 
 pub fn run_opaque_with_delay(opaque: Opaque<OpaqueStruct>) -> String {
-    error(&format!("DELAY BEFORE {}", opaque.as_deref().is_some()));
     std::thread::sleep_ms(1000);
     if let Some(data) = opaque.as_deref() {
         data.0.hide_data()

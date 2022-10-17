@@ -1,3 +1,4 @@
+
 use flutter_rust_bridge::error;
 
 pub struct MyStruct {

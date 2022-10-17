@@ -114,14 +114,22 @@ external int lendOpaqueBox(int ptr, int lendPtr);
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque {
-  late int _ptr;
+  int _ptr = 0;
   late int _drop;
   late int _lend;
+  static int counter = 0;
+  static final Finalizer<List<int>> _finalizer =
+      Finalizer((obj) {
+        dropOpaqueBox(obj[0], obj[1], obj[2]);});
+
 
   /// This constructor should never be called manually.
   FrbOpaque.unsafe(int? ptr, int drop, int lend)
   {
-    _ptr = ptr ?? 0;
+    if (ptr != null) {
+    _ptr = ptr;
+    _finalizer.attach(this, [_ptr, drop, lend], detach: this);
+    }
     _drop = drop;
     _lend = lend;
   }
@@ -142,6 +150,7 @@ class FrbOpaque {
   /// ownership of this pointer will be moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
+      _finalizer.detach(_ptr);
       dropOpaqueBox(_ptr, _drop, _lend);
       _ptr = 0;
     }
