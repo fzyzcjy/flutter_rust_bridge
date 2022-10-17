@@ -25,33 +25,39 @@ pub(crate) fn generate_api_func(
         .collect::<Vec<_>>();
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
+    let prepare_args = func
+        .inputs
+        .iter()
+        .enumerate()
+        .map(|(index, input)| {
+            // edge case: ffigen performs its own bool-to-int conversions
+            if let Primitive(IrTypePrimitive::Bool) = input.ty {
+                format!("var arg{index} = {};", input.name.dart_style())
+            } else {
+                let func = format!("api2wire_{}", input.ty.safe_ident());
+                format!(
+                    "var arg{index} = {}{}({});",
+                    if common_api2wire_body.contains(&func) {
+                        ""
+                    } else {
+                        "_platform."
+                    },
+                    func,
+                    &input.name.dart_style()
+                )
+            }
+        })
+        .collect::<Vec<_>>();
+
     let wire_param_list = [
         if func.mode.has_port_argument() {
             vec!["port_".to_string()]
         } else {
             vec![]
         },
-        func.inputs
-            .iter()
-            .map(|input| {
-                // edge case: ffigen performs its own bool-to-int conversions
-                if let Primitive(IrTypePrimitive::Bool) = input.ty {
-                    input.name.dart_style()
-                } else {
-                    let func = format!("api2wire_{}", input.ty.safe_ident());
-                    format!(
-                        "{}{}({})",
-                        if common_api2wire_body.contains(&func) {
-                            ""
-                        } else {
-                            "_platform."
-                        },
-                        func,
-                        &input.name.dart_style()
-                    )
-                }
-            })
-            .collect::<Vec<_>>(),
+        (0..prepare_args.len())
+            .map(|index| format!("arg{index}"))
+            .collect_vec(),
     ]
     .concat();
 
@@ -121,12 +127,15 @@ pub(crate) fn generate_api_func(
 
     let is_sync = matches!(func.mode, IrFuncMode::Sync);
     let implementation = format!(
-        "{} => {}({task}(
+        "{} {{
+            {} 
+            return {}({task}(
             callFfi: ({args}) => _platform.inner.{}({}),
             parseSuccessData: {},
             {}
-        ));",
+        ));}}",
         func_expr,
+        prepare_args.join("\n"),
         execute_func_name,
         func.wire_func_name(),
         wire_param_list.join(", "),

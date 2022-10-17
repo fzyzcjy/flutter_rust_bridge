@@ -26,16 +26,20 @@ class ApiClass2Impl implements ApiClass2 {
   /// Only valid on web/WASM platforms.
   factory ApiClass2Impl.wasm(FutureOr<WasmModule> module) => ApiClass2Impl(module as ExternalLibrary);
   ApiClass2Impl.raw(this._platform);
-  Future<int> simpleAdder2({required int a, required int b, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_simple_adder_2(port_, api2wire_i32(a), api2wire_i32(b)),
-        parseSuccessData: _wire2api_i32,
-        constMeta: kSimpleAdder2ConstMeta,
-        argValues: [
-          a,
-          b
-        ],
-        hint: hint,
-      ));
+  Future<int> simpleAdder2({required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_i32(a);
+    var arg1 = api2wire_i32(b);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_simple_adder_2(port_, arg0, arg1),
+      parseSuccessData: _wire2api_i32,
+      constMeta: kSimpleAdder2ConstMeta,
+      argValues: [
+        a,
+        b
+      ],
+      hint: hint,
+    ));
+  }
 
   FlutterRustBridgeTaskConstMeta get kSimpleAdder2ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "simple_adder_2",
