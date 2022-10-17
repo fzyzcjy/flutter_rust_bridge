@@ -1,3 +1,5 @@
+use flutter_rust_bridge::error;
+
 pub struct MyStruct {
     pub content: bool,
 }
@@ -12,10 +14,22 @@ struct PrivateData {
     content: String,
 }
 
+impl Drop for PrivateData {
+    fn drop(&mut self) {
+        error("TAKI DROP");
+    }
+}
+
 #[derive(Debug)]
 pub struct HideData {
     content: String,
     box_content: Option<Box<PrivateData>>,
+}
+
+impl Drop for HideData {
+    fn drop(&mut self) {
+        error("TAKI DROP HIDE");
+    }
 }
 
 impl HideData {

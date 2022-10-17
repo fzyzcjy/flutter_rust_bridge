@@ -12,8 +12,8 @@ pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
 pub use crate::wasm_bindgen_src::transfer::*;
-use std::sync::{self, Arc};
 use crate::DartSafe;
+use std::sync::{self, Arc};
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
@@ -395,8 +395,6 @@ mod tests {
     }
 }
 
-
-
 #[repr(transparent)]
 #[derive(Debug)]
 pub struct Opaque<T: ?Sized + DartSafe> {
@@ -455,35 +453,41 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-extern "C" fn drop_arc<T>(ptr: *const T) {
-    // Dart has ownership of this copy of Arc,
-    // and can only lend out clones, so this is safe to call
-    // exactly once.
+#[wasm_bindgen]
+pub extern "C" fn drop_opaque_box(ptr: usize, ptr_drop_fn: usize, ptr_lend_fn: usize) {
     unsafe {
-        Arc::decrement_strong_count(ptr);
+        let drop_fn: Box<Box<dyn FnOnce(usize)>> = Box::from_raw(ptr_drop_fn as _);
+        drop_fn(ptr);
+        let lend_fn: Box<Box<dyn FnMut(usize) -> usize>> = Box::from_raw(ptr_lend_fn as _);
+        drop(lend_fn);
     }
 }
 
-extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
-    // Equivalent to a clone, but direcly in terms of raw pointers.
+#[wasm_bindgen]
+pub extern "C" fn lend_opaque_box(ptr: usize, ptr_lend_fn: usize) -> usize {
     unsafe {
-        Arc::increment_strong_count(ptr);
-        ptr
+        let mut lend_fn: Box<Box<dyn FnMut(usize) -> usize>> = Box::from_raw(ptr_lend_fn as _);
+        let res = lend_fn(ptr);
+        Box::into_raw(lend_fn);
+        res
     }
 }
-
-type CArcDropper<T> = *const extern "C" fn(*const T);
-type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
 
 impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
-        // ffi.Pointer? type
         let ptr = match self.ptr {
             Some(arc) => Arc::into_raw(arc).into_dart(),
             _ => ().into_dart(),
         };
-        let drop = drop_arc::<T> as CArcDropper<T>;
-        let lend = lend_arc::<T> as CArcLender<T>;
+        let lend: *mut Box<dyn FnMut(usize) -> usize> =
+            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
+                Arc::<T>::increment_strong_count(ptr as *mut T);
+                ptr
+            })));
+        let drop: *mut Box<dyn FnOnce(usize)> =
+            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
+                Arc::<T>::decrement_strong_count(ptr as *mut T);
+            })));
         vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()
     }
 }

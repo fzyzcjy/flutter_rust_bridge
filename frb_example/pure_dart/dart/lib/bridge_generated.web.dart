@@ -42,6 +42,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  dynamic api2wire_OpaqueStruct(OpaqueStruct raw) {
+    var ptr = FrbOpaque.lend(raw);
+    return ptr;
+  }
+
+  @protected
   String api2wire_String(String raw) {
     return raw;
   }

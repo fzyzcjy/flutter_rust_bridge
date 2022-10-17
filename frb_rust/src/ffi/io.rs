@@ -1,8 +1,8 @@
 pub use super::DartAbi;
 pub use super::MessagePort;
+use crate::DartSafe;
 pub use allo_isolate::*;
 use std::sync::{self, Arc};
-use crate::DartSafe;
 
 #[cfg(feature = "chrono")]
 #[inline]

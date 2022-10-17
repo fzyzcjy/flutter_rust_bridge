@@ -1210,9 +1210,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
 }
 impl Wire2Api<Opaque<OpaqueStruct>> for JsValue {
     fn wire2api(self) -> Opaque<OpaqueStruct> {
-        unsafe {
-            support::opaque_from_dart(self.as_string().unwrap().parse::<usize>().unwrap() as _)
-        }
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl Wire2Api<String> for JsValue {

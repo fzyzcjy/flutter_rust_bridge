@@ -35,10 +35,10 @@ dart.run:
 	cd frb_example/pure_dart/dart \
 	&& dart run ./lib/main.dart "/media/human/DE2466F72466D1D7/Work/Github/Test/flutter_rust_bridge/target/debug/libflutter_rust_bridge_example.so"
 
-# run dart web test
-dart.run.web: 
+# build dart web test
+dart.build.web: 
 	cd frb_example/pure_dart/dart \
-	&& webdev serve
+	&& flutter build web
 
 flutter.deps: 
 	cd frb_example/pure_dart/dart \
@@ -54,6 +54,14 @@ so.fn:
 	cd frb_example/pure_dart/rust/target/debug \
 	&& nm -D libflutter_rust_bridge_example.so
 
+web.farsh:
+	@make wasm.build 
+	@mkdir -p frb_example/pure_dart/dart/build/web/pkg/
+	cp -f frb_example/pure_dart/rust/lib/flutter_rust_bridge_example_bg.wasm \
+		frb_example/pure_dart/dart/build/web/pkg/flutter_rust_bridge_example_bg.wasm
+	cp -f frb_example/pure_dart/rust/lib/flutter_rust_bridge_example.js \
+		frb_example/pure_dart/dart/build/web/pkg/flutter_rust_bridge_example.js
+	@make dart.build.web
 
 wasm.build:
 	export RUSTUP_TOOLCHAIN=nightly && \
@@ -61,6 +69,6 @@ wasm.build:
 	wasm-pack build \
 		frb_example/pure_dart/rust/ \
 		-t no-modules \
-		-d frb_example/pure_dart/rust/lib/  \
+		-d lib/ \
 		--no-typescript -- \
 		--target wasm32-unknown-unknown -Z build-std=std,panic_abort

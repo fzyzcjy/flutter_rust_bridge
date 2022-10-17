@@ -4,8 +4,8 @@
 
 use std::{mem, sync::Arc};
 
-use crate::DartSafe;
 pub use crate::ffi::*;
+use crate::DartSafe;
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
