@@ -1363,6 +1363,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_create_array_opaque_enum(port_),
+      parseSuccessData: _wire2api_EnumOpaque_array_5,
+      constMeta: kCreateArrayOpaqueEnumConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kCreateArrayOpaqueEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_array_opaque_enum",
+        argNames: [],
+      );
+
+  Future<String> runEnumOpaque({required EnumOpaque opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_enum_opaque(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_run_enum_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kRunEnumOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kRunEnumOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "run_enum_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<String> runOpaque({required OpaqueStruct opaque, dynamic hint}) {
     var arg0 = _platform.api2wire_OpaqueStruct(opaque);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -1556,6 +1587,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
 // Section: wire2api
 
+  BoxDartDebug _wire2api_BoxDartDebug(dynamic raw) {
+    return BoxDartDebug.fromRaw(raw[0], raw[1], raw[2]);
+  }
+
   Duration _wire2api_Chrono_Duration(dynamic raw) {
     return wire2apiDuration(_wire2api_i64(raw));
   }
@@ -1572,6 +1607,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
   }
 
+  EnumOpaqueArray5 _wire2api_EnumOpaque_array_5(dynamic raw) {
+    return EnumOpaqueArray5((raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
+  }
+
+  I32 _wire2api_I32(dynamic raw) {
+    return I32.fromRaw(raw[0], raw[1], raw[2]);
+  }
+
+  MutexOpaqueStruct _wire2api_MutexOpaqueStruct(dynamic raw) {
+    return MutexOpaqueStruct.fromRaw(raw[0], raw[1], raw[2]);
+  }
+
   OpaqueStruct _wire2api_OpaqueStruct(dynamic raw) {
     return OpaqueStruct.fromRaw(raw[0], raw[1], raw[2]);
   }
@@ -1582,6 +1629,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {
     return PointArray2((raw as List<dynamic>).map(_wire2api_point).toList());
+  }
+
+  RwLockOpaqueStruct _wire2api_RwLockOpaqueStruct(dynamic raw) {
+    return RwLockOpaqueStruct.fromRaw(raw[0], raw[1], raw[2]);
   }
 
   String _wire2api_String(dynamic raw) {
@@ -1880,6 +1931,33 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
+  EnumOpaque _wire2api_enum_opaque(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaque_Struct(
+          _wire2api_OpaqueStruct(raw[1]),
+        );
+      case 1:
+        return EnumOpaque_Primitive(
+          _wire2api_I32(raw[1]),
+        );
+      case 2:
+        return EnumOpaque_TraitObj(
+          _wire2api_BoxDartDebug(raw[1]),
+        );
+      case 3:
+        return EnumOpaque_Mutex(
+          _wire2api_MutexOpaqueStruct(raw[1]),
+        );
+      case 4:
+        return EnumOpaque_RwLock(
+          _wire2api_RwLockOpaqueStruct(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   Event _wire2api_event(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -2026,6 +2104,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   List<Element> _wire2api_list_element(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_element).toList();
+  }
+
+  List<EnumOpaque> _wire2api_list_enum_opaque(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_enum_opaque).toList();
   }
 
   List<MySize> _wire2api_list_my_size(dynamic raw) {

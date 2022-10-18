@@ -361,6 +361,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta;
 
+  Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateArrayOpaqueEnumConstMeta;
+
+  Future<String> runEnumOpaque({required EnumOpaque opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRunEnumOpaqueConstMeta;
+
   Future<String> runOpaque({required OpaqueStruct opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta;
@@ -409,6 +417,30 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 }
 
 @sealed
+class BoxDartDebug extends FrbOpaque {
+  BoxDartDebug.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
+  static const arraySize = 5;
+  EnumOpaqueArray5(List<EnumOpaque> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  EnumOpaqueArray5.unchecked(List<EnumOpaque> inner) : super(inner);
+  EnumOpaqueArray5.init(EnumOpaque fill) : super(List<EnumOpaque>.filled(arraySize, fill));
+}
+
+@sealed
+class I32 extends FrbOpaque {
+  I32.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+@sealed
+class MutexOpaqueStruct extends FrbOpaque {
+  MutexOpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+}
+
+@sealed
 class OpaqueStruct extends FrbOpaque {
   OpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
@@ -429,6 +461,11 @@ class PointArray2 extends NonGrowableListView<Point> {
         super(inner);
   PointArray2.unchecked(List<Point> inner) : super(inner);
   PointArray2.init(Point fill) : super(List<Point>.filled(arraySize, fill));
+}
+
+@sealed
+class RwLockOpaqueStruct extends FrbOpaque {
+  RwLockOpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class SumWithArray3 extends NonGrowableListView<SumWith> {
@@ -613,6 +650,25 @@ class Element {
     this.attributes,
     this.children,
   });
+}
+
+@freezed
+class EnumOpaque with _$EnumOpaque {
+  const factory EnumOpaque.struct(
+    OpaqueStruct field0,
+  ) = EnumOpaque_Struct;
+  const factory EnumOpaque.primitive(
+    I32 field0,
+  ) = EnumOpaque_Primitive;
+  const factory EnumOpaque.traitObj(
+    BoxDartDebug field0,
+  ) = EnumOpaque_TraitObj;
+  const factory EnumOpaque.mutex(
+    MutexOpaqueStruct field0,
+  ) = EnumOpaque_Mutex;
+  const factory EnumOpaque.rwLock(
+    RwLockOpaqueStruct field0,
+  ) = EnumOpaque_RwLock;
 }
 
 @freezed

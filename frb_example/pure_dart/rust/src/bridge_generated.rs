@@ -14,6 +14,7 @@
 use crate::api::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::*;
+use std::sync::Mutex;
 use std::sync::RwLock;
 
 // Section: imports
@@ -1235,6 +1236,29 @@ fn wire_create_opaque_impl(port_: MessagePort) {
         move || move |task_callback| Ok(create_opaque()),
     )
 }
+fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_array_opaque_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(create_array_opaque_enum()),
+    )
+}
+fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaque> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_enum_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(run_enum_opaque(api_opaque))
+        },
+    )
+}
 fn wire_run_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<Opaque<OpaqueStruct>> + UnwindSafe,
@@ -1785,6 +1809,19 @@ impl support::IntoDart for Element {
 }
 impl support::IntoDartExceptPrimitive for Element {}
 
+impl support::IntoDart for EnumOpaque {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Struct(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::Primitive(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::TraitObj(field0) => vec![2.into_dart(), field0.into_dart()],
+            Self::Mutex(field0) => vec![3.into_dart(), field0.into_dart()],
+            Self::RwLock(field0) => vec![4.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for EnumOpaque {}
 impl support::IntoDart for Event {
     fn into_dart(self) -> support::DartAbi {
         vec![self.address.into_dart(), self.payload.into_dart()].into_dart()

@@ -1,7 +1,8 @@
 #![allow(unused_variables)]
 
+use std::fmt::Debug;
 use std::sync::atomic::{AtomicI32, Ordering};
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, RwLock};
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -954,11 +955,46 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
     }
 }
 
+pub trait DartDebug: DartSafe + Debug {}
+impl<T: DartSafe + Debug> DartDebug for T {}
+
+pub enum EnumOpaque {
+    Struct(Opaque<OpaqueStruct>),
+    Primitive(Opaque<i32>),
+    TraitObj(Opaque<Box<dyn DartDebug>>),
+    Mutex(Opaque<Mutex<OpaqueStruct>>),
+    RwLock(Opaque<RwLock<OpaqueStruct>>),
+}
+
 /// Opaque types
 pub struct OpaqueStruct(HideData);
 
 pub fn create_opaque() -> Opaque<OpaqueStruct> {
     Opaque::new(OpaqueStruct(HideData::new()))
+}
+
+pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
+    [
+        EnumOpaque::Struct(Opaque::new(OpaqueStruct(HideData::new()))),
+        EnumOpaque::Primitive(Opaque::new(42)),
+        EnumOpaque::TraitObj(Opaque::new(Box::new("String"))),
+        EnumOpaque::Mutex(Opaque::new(Mutex::new(OpaqueStruct(HideData::new())))),
+        EnumOpaque::RwLock(Opaque::new(RwLock::new(OpaqueStruct(HideData::new())))),
+    ]
+}
+
+pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
+    match opaque {
+        EnumOpaque::Struct(s) => run_opaque(s),
+        EnumOpaque::Primitive(p) => format!("{:?}", p.as_deref()),
+        EnumOpaque::TraitObj(t) => format!("{:?}", t.as_deref()),
+        EnumOpaque::Mutex(m) => {
+            format!("{:?}", m.lock().map(|m| m.unwrap().0.hide_data()))
+        }
+        EnumOpaque::RwLock(r) => {
+            format!("{:?}", r.read().map(|r| r.unwrap().0.hide_data()))
+        }
+    }
 }
 
 pub fn run_opaque(opaque: Opaque<OpaqueStruct>) -> String {
@@ -970,7 +1006,7 @@ pub fn run_opaque(opaque: Opaque<OpaqueStruct>) -> String {
 }
 
 pub fn run_opaque_with_delay(opaque: Opaque<OpaqueStruct>) -> String {
-    std::thread::sleep_ms(1000);
+    sleep(Duration::from_millis(1000));
     if let Some(data) = opaque.as_deref() {
         data.0.hide_data()
     } else {

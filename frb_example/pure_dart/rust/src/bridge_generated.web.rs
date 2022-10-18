@@ -434,6 +434,16 @@ pub fn wire_create_opaque(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_create_array_opaque_enum(port_: MessagePort) {
+    wire_create_array_opaque_enum_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_enum_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_run_enum_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_run_opaque(port_: MessagePort, opaque: JsValue) {
     wire_run_opaque_impl(port_, opaque)
 }
@@ -740,6 +750,19 @@ impl Wire2Api<Distance> for JsValue {
         match self_.get(0).unchecked_into_f64() as _ {
             0 => Distance::Unknown,
             1 => Distance::Map(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumOpaque> for JsValue {
+    fn wire2api(self) -> EnumOpaque {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumOpaque::Struct(self_.get(1).wire2api()),
+            1 => EnumOpaque::Primitive(self_.get(1).wire2api()),
+            2 => EnumOpaque::TraitObj(self_.get(1).wire2api()),
+            3 => EnumOpaque::Mutex(self_.get(1).wire2api()),
+            4 => EnumOpaque::RwLock(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -1188,6 +1211,11 @@ impl Wire2Api<UserId> for JsValue {
 
 // Section: impl Wire2Api for JsValue
 
+impl Wire2Api<Opaque<Box<dyn DartDebug>>> for JsValue {
+    fn wire2api(self) -> Opaque<Box<dyn DartDebug>> {
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
 impl Wire2Api<chrono::Duration> for JsValue {
     fn wire2api(self) -> chrono::Duration {
         Wire2Api::<i64>::wire2api(self).wire2api()
@@ -1208,8 +1236,23 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
         Wire2Api::<i64>::wire2api(self).wire2api()
     }
 }
+impl Wire2Api<Opaque<i32>> for JsValue {
+    fn wire2api(self) -> Opaque<i32> {
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<Opaque<Mutex<OpaqueStruct>>> for JsValue {
+    fn wire2api(self) -> Opaque<Mutex<OpaqueStruct>> {
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
 impl Wire2Api<Opaque<OpaqueStruct>> for JsValue {
     fn wire2api(self) -> Opaque<OpaqueStruct> {
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<Opaque<RwLock<OpaqueStruct>>> for JsValue {
+    fn wire2api(self) -> Opaque<RwLock<OpaqueStruct>> {
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }

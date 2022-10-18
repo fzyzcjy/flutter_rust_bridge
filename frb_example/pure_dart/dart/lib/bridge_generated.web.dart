@@ -22,6 +22,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api2wire
 
   @protected
+  dynamic api2wire_BoxDartDebug(BoxDartDebug raw) {
+    return FrbOpaque.lend(raw);
+  }
+
+  @protected
   Object api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i64(raw.inMilliseconds);
   }
@@ -42,9 +47,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  dynamic api2wire_I32(I32 raw) {
+    return FrbOpaque.lend(raw);
+  }
+
+  @protected
+  dynamic api2wire_MutexOpaqueStruct(MutexOpaqueStruct raw) {
+    return FrbOpaque.lend(raw);
+  }
+
+  @protected
   dynamic api2wire_OpaqueStruct(OpaqueStruct raw) {
-    var ptr = FrbOpaque.lend(raw);
-    return ptr;
+    return FrbOpaque.lend(raw);
+  }
+
+  @protected
+  dynamic api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
+    return FrbOpaque.lend(raw);
   }
 
   @protected
@@ -135,6 +154,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_autoadd_customized(Customized raw) {
     return api2wire_customized(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
+    return api2wire_enum_opaque(raw);
   }
 
   @protected
@@ -324,6 +348,27 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
     if (raw is Distance_Map) {
       return [1, api2wire_f64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_opaque(EnumOpaque raw) {
+    if (raw is EnumOpaque_Struct) {
+      return [0, api2wire_OpaqueStruct(raw.field0)];
+    }
+    if (raw is EnumOpaque_Primitive) {
+      return [1, api2wire_I32(raw.field0)];
+    }
+    if (raw is EnumOpaque_TraitObj) {
+      return [2, api2wire_BoxDartDebug(raw.field0)];
+    }
+    if (raw is EnumOpaque_Mutex) {
+      return [3, api2wire_MutexOpaqueStruct(raw.field0)];
+    }
+    if (raw is EnumOpaque_RwLock) {
+      return [4, api2wire_RwLockOpaqueStruct(raw.field0)];
     }
 
     throw Exception('unreachable');
@@ -867,6 +912,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_create_opaque(NativePortType port_);
 
+  external void wire_create_array_opaque_enum(NativePortType port_);
+
+  external void wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque);
+
   external void wire_run_opaque(NativePortType port_, dynamic opaque);
 
   external void wire_run_opaque_with_delay(NativePortType port_, dynamic opaque);
@@ -1119,6 +1168,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_nested_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_nested_id(port_, id);
 
   void wire_create_opaque(NativePortType port_) => wasmModule.wire_create_opaque(port_);
+
+  void wire_create_array_opaque_enum(NativePortType port_) => wasmModule.wire_create_array_opaque_enum(port_);
+
+  void wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_run_enum_opaque(port_, opaque);
 
   void wire_run_opaque(NativePortType port_, dynamic opaque) => wasmModule.wire_run_opaque(port_, opaque);
 

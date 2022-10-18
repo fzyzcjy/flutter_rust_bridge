@@ -20,6 +20,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api2wire
 
   @protected
+  ffi.Pointer<wire_BoxDartDebug> api2wire_BoxDartDebug(BoxDartDebug raw) {
+    final ptr = inner.new_BoxDartDebug();
+    _api_fill_to_wire_BoxDartDebug(raw, ptr);
+    return ptr;
+  }
+
+  @protected
   int api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i64(raw.inMicroseconds);
   }
@@ -40,9 +47,30 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_I32> api2wire_I32(I32 raw) {
+    final ptr = inner.new_I32();
+    _api_fill_to_wire_I32(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_MutexOpaqueStruct> api2wire_MutexOpaqueStruct(MutexOpaqueStruct raw) {
+    final ptr = inner.new_MutexOpaqueStruct();
+    _api_fill_to_wire_MutexOpaqueStruct(raw, ptr);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_OpaqueStruct> api2wire_OpaqueStruct(OpaqueStruct raw) {
     final ptr = inner.new_OpaqueStruct();
     _api_fill_to_wire_OpaqueStruct(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_RwLockOpaqueStruct> api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
+    final ptr = inner.new_RwLockOpaqueStruct();
+    _api_fill_to_wire_RwLockOpaqueStruct(raw, ptr);
     return ptr;
   }
 
@@ -117,6 +145,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   ffi.Pointer<wire_Customized> api2wire_box_autoadd_customized(Customized raw) {
     final ptr = inner.new_box_autoadd_customized_0();
     _api_fill_to_wire_customized(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_EnumOpaque> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
+    final ptr = inner.new_box_autoadd_enum_opaque_0();
+    _api_fill_to_wire_enum_opaque(raw, ptr.ref);
     return ptr;
   }
 
@@ -587,7 +622,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, ffi.Pointer<wire_BoxDartDebug> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+  }
+
+  void _api_fill_to_wire_I32(I32 apiObj, ffi.Pointer<wire_I32> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+  }
+
+  void _api_fill_to_wire_MutexOpaqueStruct(MutexOpaqueStruct apiObj, ffi.Pointer<wire_MutexOpaqueStruct> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+  }
+
   void _api_fill_to_wire_OpaqueStruct(OpaqueStruct apiObj, ffi.Pointer<wire_OpaqueStruct> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+  }
+
+  void _api_fill_to_wire_RwLockOpaqueStruct(RwLockOpaqueStruct apiObj, ffi.Pointer<wire_RwLockOpaqueStruct> wireObj) {
     wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
   }
 
@@ -636,6 +687,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_box_autoadd_customized(Customized apiObj, ffi.Pointer<wire_Customized> wireObj) {
     _api_fill_to_wire_customized(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_enum_opaque(EnumOpaque apiObj, ffi.Pointer<wire_EnumOpaque> wireObj) {
+    _api_fill_to_wire_enum_opaque(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_exotic_optionals(
@@ -753,6 +808,39 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Distance_Map();
       wireObj.kind.ref.Map.ref.field0 = api2wire_f64(apiObj.field0);
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_enum_opaque(EnumOpaque apiObj, wire_EnumOpaque wireObj) {
+    if (apiObj is EnumOpaque_Struct) {
+      wireObj.tag = 0;
+      wireObj.kind = inner.inflate_EnumOpaque_Struct();
+      wireObj.kind.ref.Struct.ref.field0 = api2wire_OpaqueStruct(apiObj.field0);
+      return;
+    }
+    if (apiObj is EnumOpaque_Primitive) {
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_EnumOpaque_Primitive();
+      wireObj.kind.ref.Primitive.ref.field0 = api2wire_I32(apiObj.field0);
+      return;
+    }
+    if (apiObj is EnumOpaque_TraitObj) {
+      wireObj.tag = 2;
+      wireObj.kind = inner.inflate_EnumOpaque_TraitObj();
+      wireObj.kind.ref.TraitObj.ref.field0 = api2wire_BoxDartDebug(apiObj.field0);
+      return;
+    }
+    if (apiObj is EnumOpaque_Mutex) {
+      wireObj.tag = 3;
+      wireObj.kind = inner.inflate_EnumOpaque_Mutex();
+      wireObj.kind.ref.Mutex.ref.field0 = api2wire_MutexOpaqueStruct(apiObj.field0);
+      return;
+    }
+    if (apiObj is EnumOpaque_RwLock) {
+      wireObj.tag = 4;
+      wireObj.kind = inner.inflate_EnumOpaque_RwLock();
+      wireObj.kind.ref.RwLock.ref.field0 = api2wire_RwLockOpaqueStruct(apiObj.field0);
       return;
     }
   }
@@ -2158,6 +2246,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_create_opaquePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_opaque');
   late final _wire_create_opaque = _wire_create_opaquePtr.asFunction<void Function(int)>();
 
+  void wire_create_array_opaque_enum(
+    int port_,
+  ) {
+    return _wire_create_array_opaque_enum(
+      port_,
+    );
+  }
+
+  late final _wire_create_array_opaque_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_array_opaque_enum');
+  late final _wire_create_array_opaque_enum = _wire_create_array_opaque_enumPtr.asFunction<void Function(int)>();
+
+  void wire_run_enum_opaque(
+    int port_,
+    ffi.Pointer<wire_EnumOpaque> opaque,
+  ) {
+    return _wire_run_enum_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_run_enum_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_EnumOpaque>)>>('wire_run_enum_opaque');
+  late final _wire_run_enum_opaque =
+      _wire_run_enum_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_EnumOpaque>)>();
+
   void wire_run_opaque(
     int port_,
     ffi.Pointer<wire_OpaqueStruct> opaque,
@@ -2346,6 +2461,30 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr
           .asFunction<void Function(int)>();
 
+  ffi.Pointer<wire_BoxDartDebug> new_BoxDartDebug() {
+    return _new_BoxDartDebug();
+  }
+
+  late final _new_BoxDartDebugPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxDartDebug> Function()>>('new_BoxDartDebug');
+  late final _new_BoxDartDebug = _new_BoxDartDebugPtr.asFunction<ffi.Pointer<wire_BoxDartDebug> Function()>();
+
+  ffi.Pointer<wire_I32> new_I32() {
+    return _new_I32();
+  }
+
+  late final _new_I32Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_I32> Function()>>('new_I32');
+  late final _new_I32 = _new_I32Ptr.asFunction<ffi.Pointer<wire_I32> Function()>();
+
+  ffi.Pointer<wire_MutexOpaqueStruct> new_MutexOpaqueStruct() {
+    return _new_MutexOpaqueStruct();
+  }
+
+  late final _new_MutexOpaqueStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MutexOpaqueStruct> Function()>>('new_MutexOpaqueStruct');
+  late final _new_MutexOpaqueStruct =
+      _new_MutexOpaqueStructPtr.asFunction<ffi.Pointer<wire_MutexOpaqueStruct> Function()>();
+
   ffi.Pointer<wire_OpaqueStruct> new_OpaqueStruct() {
     return _new_OpaqueStruct();
   }
@@ -2353,6 +2492,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_OpaqueStructPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_OpaqueStruct> Function()>>('new_OpaqueStruct');
   late final _new_OpaqueStruct = _new_OpaqueStructPtr.asFunction<ffi.Pointer<wire_OpaqueStruct> Function()>();
+
+  ffi.Pointer<wire_RwLockOpaqueStruct> new_RwLockOpaqueStruct() {
+    return _new_RwLockOpaqueStruct();
+  }
+
+  late final _new_RwLockOpaqueStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_RwLockOpaqueStruct> Function()>>('new_RwLockOpaqueStruct');
+  late final _new_RwLockOpaqueStruct =
+      _new_RwLockOpaqueStructPtr.asFunction<ffi.Pointer<wire_RwLockOpaqueStruct> Function()>();
 
   ffi.Pointer<wire_StringList> new_StringList_0(
     int len,
@@ -2423,6 +2571,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_Customized> Function()>>('new_box_autoadd_customized_0');
   late final _new_box_autoadd_customized_0 =
       _new_box_autoadd_customized_0Ptr.asFunction<ffi.Pointer<wire_Customized> Function()>();
+
+  ffi.Pointer<wire_EnumOpaque> new_box_autoadd_enum_opaque_0() {
+    return _new_box_autoadd_enum_opaque_0();
+  }
+
+  late final _new_box_autoadd_enum_opaque_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumOpaque> Function()>>('new_box_autoadd_enum_opaque_0');
+  late final _new_box_autoadd_enum_opaque_0 =
+      _new_box_autoadd_enum_opaque_0Ptr.asFunction<ffi.Pointer<wire_EnumOpaque> Function()>();
 
   ffi.Pointer<wire_ExoticOptionals> new_box_autoadd_exotic_optionals_0() {
     return _new_box_autoadd_exotic_optionals_0();
@@ -2888,6 +3045,51 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<DistanceKind> Function()>>('inflate_Distance_Map');
   late final _inflate_Distance_Map = _inflate_Distance_MapPtr.asFunction<ffi.Pointer<DistanceKind> Function()>();
 
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_Struct() {
+    return _inflate_EnumOpaque_Struct();
+  }
+
+  late final _inflate_EnumOpaque_StructPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>('inflate_EnumOpaque_Struct');
+  late final _inflate_EnumOpaque_Struct =
+      _inflate_EnumOpaque_StructPtr.asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_Primitive() {
+    return _inflate_EnumOpaque_Primitive();
+  }
+
+  late final _inflate_EnumOpaque_PrimitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>('inflate_EnumOpaque_Primitive');
+  late final _inflate_EnumOpaque_Primitive =
+      _inflate_EnumOpaque_PrimitivePtr.asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_TraitObj() {
+    return _inflate_EnumOpaque_TraitObj();
+  }
+
+  late final _inflate_EnumOpaque_TraitObjPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>('inflate_EnumOpaque_TraitObj');
+  late final _inflate_EnumOpaque_TraitObj =
+      _inflate_EnumOpaque_TraitObjPtr.asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_Mutex() {
+    return _inflate_EnumOpaque_Mutex();
+  }
+
+  late final _inflate_EnumOpaque_MutexPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>('inflate_EnumOpaque_Mutex');
+  late final _inflate_EnumOpaque_Mutex =
+      _inflate_EnumOpaque_MutexPtr.asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_RwLock() {
+    return _inflate_EnumOpaque_RwLock();
+  }
+
+  late final _inflate_EnumOpaque_RwLockPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>('inflate_EnumOpaque_RwLock');
+  late final _inflate_EnumOpaque_RwLock =
+      _inflate_EnumOpaque_RwLockPtr.asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
   ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Primitives() {
     return _inflate_KitchenSink_Primitives();
   }
@@ -3323,6 +3525,61 @@ class wire_list_test_id extends ffi.Struct {
 
 class wire_OpaqueStruct extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_EnumOpaque_Struct extends ffi.Struct {
+  external ffi.Pointer<wire_OpaqueStruct> field0;
+}
+
+class wire_I32 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_EnumOpaque_Primitive extends ffi.Struct {
+  external ffi.Pointer<wire_I32> field0;
+}
+
+class wire_BoxDartDebug extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_EnumOpaque_TraitObj extends ffi.Struct {
+  external ffi.Pointer<wire_BoxDartDebug> field0;
+}
+
+class wire_MutexOpaqueStruct extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_EnumOpaque_Mutex extends ffi.Struct {
+  external ffi.Pointer<wire_MutexOpaqueStruct> field0;
+}
+
+class wire_RwLockOpaqueStruct extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_EnumOpaque_RwLock extends ffi.Struct {
+  external ffi.Pointer<wire_RwLockOpaqueStruct> field0;
+}
+
+class EnumOpaqueKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumOpaque_Struct> Struct;
+
+  external ffi.Pointer<wire_EnumOpaque_Primitive> Primitive;
+
+  external ffi.Pointer<wire_EnumOpaque_TraitObj> TraitObj;
+
+  external ffi.Pointer<wire_EnumOpaque_Mutex> Mutex;
+
+  external ffi.Pointer<wire_EnumOpaque_RwLock> RwLock;
+}
+
+class wire_EnumOpaque extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumOpaqueKind> kind;
 }
 
 class wire_SumWith extends ffi.Struct {

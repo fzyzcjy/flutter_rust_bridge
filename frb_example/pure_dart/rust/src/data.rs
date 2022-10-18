@@ -1,6 +1,5 @@
 
-use flutter_rust_bridge::error;
-
+#![allow(dead_code)]
 pub struct MyStruct {
     pub content: bool,
 }
@@ -13,12 +12,9 @@ pub enum MyEnum {
 #[derive(Debug)]
 struct PrivateData {
     content: String,
-}
-
-impl Drop for PrivateData {
-    fn drop(&mut self) {
-        error("TAKI DROP");
-    }
+    primitive: usize,
+    array: [isize; 10],
+    lifetime: &'static str,
 }
 
 #[derive(Debug)]
@@ -27,18 +23,15 @@ pub struct HideData {
     box_content: Option<Box<PrivateData>>,
 }
 
-impl Drop for HideData {
-    fn drop(&mut self) {
-        error("TAKI DROP HIDE");
-    }
-}
-
 impl HideData {
     pub fn new() -> Self {
         Self {
             content: "content".to_owned(),
             box_content: Some(Box::new(PrivateData {
                 content: "content nested".to_owned(),
+                primitive: 424242,
+                array: [451; 10],
+                lifetime: "static str",
             })),
         }
     }

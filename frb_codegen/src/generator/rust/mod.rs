@@ -91,6 +91,7 @@ impl<'a> Generator<'a> {
         lines.push("use flutter_rust_bridge::*;".to_string());
         lines.push("use core::panic::UnwindSafe;".to_owned());
         lines.push("use std::sync::RwLock;".to_owned());
+        lines.push("use std::sync::Mutex;".to_owned());
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));

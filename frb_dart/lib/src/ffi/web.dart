@@ -104,12 +104,10 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
 
-
 @JS("wasm_bindgen.drop_opaque_box")
 external void dropOpaqueBox(int ptr, int dropPtr, int lendPtr);
 @JS("wasm_bindgen.lend_opaque_box")
 external int lendOpaqueBox(int ptr, int lendPtr);
-
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
@@ -118,17 +116,15 @@ class FrbOpaque {
   late int _drop;
   late int _lend;
   static int counter = 0;
-  static final Finalizer<List<int>> _finalizer =
-      Finalizer((obj) {
-        dropOpaqueBox(obj[0], obj[1], obj[2]);});
-
+  static final Finalizer<List<int>> _finalizer = Finalizer((obj) {
+    dropOpaqueBox(obj[0], obj[1], obj[2]);
+  });
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int? ptr, int drop, int lend)
-  {
+  FrbOpaque.unsafe(int? ptr, int drop, int lend) {
     if (ptr != null) {
-    _ptr = ptr;
-    _finalizer.attach(this, [_ptr, drop, lend], detach: this);
+      _ptr = ptr;
+      _finalizer.attach(this, [_ptr, drop, lend], detach: this);
     }
     _drop = drop;
     _lend = lend;
@@ -139,18 +135,18 @@ class FrbOpaque {
   // late final NativeFinalizer _finalizer;
 
   /// Call Rust destructors on the backing memory of this pointer.
-  /// This function should be run at least once during the lifetime of the program, 
+  /// This function should be run at least once during the lifetime of the program,
   /// and can be run many times.
   ///
-  /// When passed into a Rust function, 
-  /// Rust enacts *shared ownership* and inhibits disposal of this pointer's contents, 
+  /// When passed into a Rust function,
+  /// Rust enacts *shared ownership* and inhibits disposal of this pointer's contents,
   /// even if [dispose] is immediately run.
-  /// Furthermore, if that same function reuses the allocation 
-  /// (usually by returning the same opaque pointer) 
+  /// Furthermore, if that same function reuses the allocation
+  /// (usually by returning the same opaque pointer)
   /// ownership of this pointer will be moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
-      _finalizer.detach(_ptr);
+      _finalizer.detach(this);
       dropOpaqueBox(_ptr, _drop, _lend);
       _ptr = 0;
     }

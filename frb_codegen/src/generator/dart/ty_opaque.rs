@@ -14,11 +14,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            // todo hmmm
-            wasm: Some(format!(
-                "var ptr = FrbOpaque.lend(raw);
-            return ptr;"
-            )),
+            wasm: Some(format!("return FrbOpaque.lend(raw);")),
             ..Default::default()
         }
     }

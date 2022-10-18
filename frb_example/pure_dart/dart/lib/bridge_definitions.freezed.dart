@@ -759,6 +759,815 @@ abstract class Distance_Map implements Distance {
 }
 
 /// @nodoc
+mixin _$EnumOpaque {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OpaqueStruct field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexOpaqueStruct field0) mutex,
+    required TResult Function(RwLockOpaqueStruct field0) rwLock,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EnumOpaqueCopyWith<$Res> {
+  factory $EnumOpaqueCopyWith(EnumOpaque value, $Res Function(EnumOpaque) then) = _$EnumOpaqueCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EnumOpaqueCopyWithImpl<$Res> implements $EnumOpaqueCopyWith<$Res> {
+  _$EnumOpaqueCopyWithImpl(this._value, this._then);
+
+  final EnumOpaque _value;
+  // ignore: unused_field
+  final $Res Function(EnumOpaque) _then;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_StructCopyWith<$Res> {
+  factory _$$EnumOpaque_StructCopyWith(_$EnumOpaque_Struct value, $Res Function(_$EnumOpaque_Struct) then) =
+      __$$EnumOpaque_StructCopyWithImpl<$Res>;
+  $Res call({OpaqueStruct field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_StructCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+    implements _$$EnumOpaque_StructCopyWith<$Res> {
+  __$$EnumOpaque_StructCopyWithImpl(_$EnumOpaque_Struct _value, $Res Function(_$EnumOpaque_Struct) _then)
+      : super(_value, (v) => _then(v as _$EnumOpaque_Struct));
+
+  @override
+  _$EnumOpaque_Struct get _value => super._value as _$EnumOpaque_Struct;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$EnumOpaque_Struct(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as OpaqueStruct,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_Struct implements EnumOpaque_Struct {
+  const _$EnumOpaque_Struct(this.field0);
+
+  @override
+  final OpaqueStruct field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.struct(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_Struct &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EnumOpaque_StructCopyWith<_$EnumOpaque_Struct> get copyWith =>
+      __$$EnumOpaque_StructCopyWithImpl<_$EnumOpaque_Struct>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OpaqueStruct field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexOpaqueStruct field0) mutex,
+    required TResult Function(RwLockOpaqueStruct field0) rwLock,
+  }) {
+    return struct(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+  }) {
+    return struct?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (struct != null) {
+      return struct(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return struct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return struct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (struct != null) {
+      return struct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_Struct implements EnumOpaque {
+  const factory EnumOpaque_Struct(final OpaqueStruct field0) = _$EnumOpaque_Struct;
+
+  OpaqueStruct get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_StructCopyWith<_$EnumOpaque_Struct> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_PrimitiveCopyWith<$Res> {
+  factory _$$EnumOpaque_PrimitiveCopyWith(_$EnumOpaque_Primitive value, $Res Function(_$EnumOpaque_Primitive) then) =
+      __$$EnumOpaque_PrimitiveCopyWithImpl<$Res>;
+  $Res call({I32 field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_PrimitiveCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+    implements _$$EnumOpaque_PrimitiveCopyWith<$Res> {
+  __$$EnumOpaque_PrimitiveCopyWithImpl(_$EnumOpaque_Primitive _value, $Res Function(_$EnumOpaque_Primitive) _then)
+      : super(_value, (v) => _then(v as _$EnumOpaque_Primitive));
+
+  @override
+  _$EnumOpaque_Primitive get _value => super._value as _$EnumOpaque_Primitive;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$EnumOpaque_Primitive(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as I32,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
+  const _$EnumOpaque_Primitive(this.field0);
+
+  @override
+  final I32 field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.primitive(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_Primitive &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EnumOpaque_PrimitiveCopyWith<_$EnumOpaque_Primitive> get copyWith =>
+      __$$EnumOpaque_PrimitiveCopyWithImpl<_$EnumOpaque_Primitive>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OpaqueStruct field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexOpaqueStruct field0) mutex,
+    required TResult Function(RwLockOpaqueStruct field0) rwLock,
+  }) {
+    return primitive(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+  }) {
+    return primitive?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (primitive != null) {
+      return primitive(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return primitive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return primitive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (primitive != null) {
+      return primitive(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_Primitive implements EnumOpaque {
+  const factory EnumOpaque_Primitive(final I32 field0) = _$EnumOpaque_Primitive;
+
+  I32 get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_PrimitiveCopyWith<_$EnumOpaque_Primitive> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_TraitObjCopyWith<$Res> {
+  factory _$$EnumOpaque_TraitObjCopyWith(_$EnumOpaque_TraitObj value, $Res Function(_$EnumOpaque_TraitObj) then) =
+      __$$EnumOpaque_TraitObjCopyWithImpl<$Res>;
+  $Res call({BoxDartDebug field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_TraitObjCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+    implements _$$EnumOpaque_TraitObjCopyWith<$Res> {
+  __$$EnumOpaque_TraitObjCopyWithImpl(_$EnumOpaque_TraitObj _value, $Res Function(_$EnumOpaque_TraitObj) _then)
+      : super(_value, (v) => _then(v as _$EnumOpaque_TraitObj));
+
+  @override
+  _$EnumOpaque_TraitObj get _value => super._value as _$EnumOpaque_TraitObj;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$EnumOpaque_TraitObj(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as BoxDartDebug,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
+  const _$EnumOpaque_TraitObj(this.field0);
+
+  @override
+  final BoxDartDebug field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.traitObj(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_TraitObj &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EnumOpaque_TraitObjCopyWith<_$EnumOpaque_TraitObj> get copyWith =>
+      __$$EnumOpaque_TraitObjCopyWithImpl<_$EnumOpaque_TraitObj>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OpaqueStruct field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexOpaqueStruct field0) mutex,
+    required TResult Function(RwLockOpaqueStruct field0) rwLock,
+  }) {
+    return traitObj(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+  }) {
+    return traitObj?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (traitObj != null) {
+      return traitObj(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return traitObj(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return traitObj?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (traitObj != null) {
+      return traitObj(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_TraitObj implements EnumOpaque {
+  const factory EnumOpaque_TraitObj(final BoxDartDebug field0) = _$EnumOpaque_TraitObj;
+
+  BoxDartDebug get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_TraitObjCopyWith<_$EnumOpaque_TraitObj> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_MutexCopyWith<$Res> {
+  factory _$$EnumOpaque_MutexCopyWith(_$EnumOpaque_Mutex value, $Res Function(_$EnumOpaque_Mutex) then) =
+      __$$EnumOpaque_MutexCopyWithImpl<$Res>;
+  $Res call({MutexOpaqueStruct field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_MutexCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+    implements _$$EnumOpaque_MutexCopyWith<$Res> {
+  __$$EnumOpaque_MutexCopyWithImpl(_$EnumOpaque_Mutex _value, $Res Function(_$EnumOpaque_Mutex) _then)
+      : super(_value, (v) => _then(v as _$EnumOpaque_Mutex));
+
+  @override
+  _$EnumOpaque_Mutex get _value => super._value as _$EnumOpaque_Mutex;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$EnumOpaque_Mutex(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MutexOpaqueStruct,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
+  const _$EnumOpaque_Mutex(this.field0);
+
+  @override
+  final MutexOpaqueStruct field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.mutex(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_Mutex &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EnumOpaque_MutexCopyWith<_$EnumOpaque_Mutex> get copyWith =>
+      __$$EnumOpaque_MutexCopyWithImpl<_$EnumOpaque_Mutex>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OpaqueStruct field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexOpaqueStruct field0) mutex,
+    required TResult Function(RwLockOpaqueStruct field0) rwLock,
+  }) {
+    return mutex(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+  }) {
+    return mutex?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (mutex != null) {
+      return mutex(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return mutex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return mutex?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (mutex != null) {
+      return mutex(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_Mutex implements EnumOpaque {
+  const factory EnumOpaque_Mutex(final MutexOpaqueStruct field0) = _$EnumOpaque_Mutex;
+
+  MutexOpaqueStruct get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_MutexCopyWith<_$EnumOpaque_Mutex> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_RwLockCopyWith<$Res> {
+  factory _$$EnumOpaque_RwLockCopyWith(_$EnumOpaque_RwLock value, $Res Function(_$EnumOpaque_RwLock) then) =
+      __$$EnumOpaque_RwLockCopyWithImpl<$Res>;
+  $Res call({RwLockOpaqueStruct field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_RwLockCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+    implements _$$EnumOpaque_RwLockCopyWith<$Res> {
+  __$$EnumOpaque_RwLockCopyWithImpl(_$EnumOpaque_RwLock _value, $Res Function(_$EnumOpaque_RwLock) _then)
+      : super(_value, (v) => _then(v as _$EnumOpaque_RwLock));
+
+  @override
+  _$EnumOpaque_RwLock get _value => super._value as _$EnumOpaque_RwLock;
+
+  @override
+  $Res call({
+    Object? field0 = freezed,
+  }) {
+    return _then(_$EnumOpaque_RwLock(
+      field0 == freezed
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as RwLockOpaqueStruct,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
+  const _$EnumOpaque_RwLock(this.field0);
+
+  @override
+  final RwLockOpaqueStruct field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.rwLock(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_RwLock &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$EnumOpaque_RwLockCopyWith<_$EnumOpaque_RwLock> get copyWith =>
+      __$$EnumOpaque_RwLockCopyWithImpl<_$EnumOpaque_RwLock>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OpaqueStruct field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexOpaqueStruct field0) mutex,
+    required TResult Function(RwLockOpaqueStruct field0) rwLock,
+  }) {
+    return rwLock(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+  }) {
+    return rwLock?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OpaqueStruct field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexOpaqueStruct field0)? mutex,
+    TResult Function(RwLockOpaqueStruct field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (rwLock != null) {
+      return rwLock(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return rwLock(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return rwLock?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (rwLock != null) {
+      return rwLock(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_RwLock implements EnumOpaque {
+  const factory EnumOpaque_RwLock(final RwLockOpaqueStruct field0) = _$EnumOpaque_RwLock;
+
+  RwLockOpaqueStruct get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_RwLockCopyWith<_$EnumOpaque_RwLock> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$Event {
   String get address => throw _privateConstructorUsedError;
   String get payload => throw _privateConstructorUsedError;

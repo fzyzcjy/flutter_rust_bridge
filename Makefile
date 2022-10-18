@@ -72,3 +72,6 @@ wasm.build:
 		-d lib/ \
 		--no-typescript -- \
 		--target wasm32-unknown-unknown -Z build-std=std,panic_abort
+
+flutter.fmt:
+	flutter format .

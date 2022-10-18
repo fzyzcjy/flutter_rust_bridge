@@ -36,7 +36,6 @@ class WireSyncReturnStruct extends ffi.Struct {
   bool get isSuccess => success > 0;
 }
 
-
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque implements Finalizable {
@@ -44,10 +43,8 @@ class FrbOpaque implements Finalizable {
   late ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
   late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>> _lend;
 
-
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int? ptr, int drop, int lend)
-  {
+  FrbOpaque.unsafe(int? ptr, int drop, int lend) {
     assert(ptr == null || ptr > 0);
     assert(drop > 0);
     assert(lend > 0);
@@ -63,14 +60,14 @@ class FrbOpaque implements Finalizable {
   late final NativeFinalizer _finalizer;
 
   /// Call Rust destructors on the backing memory of this pointer.
-  /// This function should be run at least once during the lifetime of the program, 
+  /// This function should be run at least once during the lifetime of the program,
   /// and can be run many times.
   ///
-  /// When passed into a Rust function, 
-  /// Rust enacts *shared ownership* and inhibits disposal of this pointer's contents, 
+  /// When passed into a Rust function,
+  /// Rust enacts *shared ownership* and inhibits disposal of this pointer's contents,
   /// even if [dispose] is immediately run.
-  /// Furthermore, if that same function reuses the allocation 
-  /// (usually by returning the same opaque pointer) 
+  /// Furthermore, if that same function reuses the allocation
+  /// (usually by returning the same opaque pointer)
   /// ownership of this pointer will be moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
@@ -82,7 +79,8 @@ class FrbOpaque implements Finalizable {
 
   static ffi.Pointer lend(FrbOpaque ptr) {
     if (!ptr.isStale()) {
-      return ptr._lend.asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
+      return ptr._lend
+          .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
     } else {
       // next best thing here, this is equivalent to an Option::<Arc<T>>::None
       return ffi.nullptr;
