@@ -26,9 +26,9 @@ Want to combine the best between [Flutter](https://flutter.dev/), a cross-platfo
 
 Check out [the user guide](https://fzyzcjy.github.io/flutter_rust_bridge/) for [show-me-the-code](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart.html), [tutorials](https://fzyzcjy.github.io/flutter_rust_bridge/tutorial_with_flutter.html), [features](https://fzyzcjy.github.io/flutter_rust_bridge/feature.html) and much more.
 
-## 📎 P.S. Convenient Flutter tests
+## 📎 P.S. Achieve ~60 FPS, no matter how janky the Flutter app was due to build/layout
 
-If you want to write and debug tests in Flutter conveniently, with action history, time travelling, screenshots, rapid re-execution, video recordings, interactive mode and more, here is my another open-source library: https://github.com/fzyzcjy/flutter_convenient_test.
+Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smooth.
 
 ## ✨ Contributors
 
