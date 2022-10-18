@@ -24,33 +24,45 @@ abstract class FlutterRustBridgeExample {
 
   FlutterRustBridgeTaskConstMeta get kReturningStructsWithBoxedFieldsConstMeta;
 
-  Future<int> offTopicMemoryTestInputArray({required Uint8List input, dynamic hint});
+  Future<int> offTopicMemoryTestInputArray(
+      {required Uint8List input, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOffTopicMemoryTestInputArrayConstMeta;
 
-  Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer({required int len, dynamic hint});
+  Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer(
+      {required int len, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kOffTopicMemoryTestOutputZeroCopyBufferConstMeta;
+  FlutterRustBridgeTaskConstMeta
+      get kOffTopicMemoryTestOutputZeroCopyBufferConstMeta;
 
-  Future<Uint8List> offTopicMemoryTestOutputVecU8({required int len, dynamic hint});
+  Future<Uint8List> offTopicMemoryTestOutputVecU8(
+      {required int len, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOffTopicMemoryTestOutputVecU8ConstMeta;
 
-  Future<int> offTopicMemoryTestInputVecOfObject({required List<Size> input, dynamic hint});
+  Future<int> offTopicMemoryTestInputVecOfObject(
+      {required List<Size> input, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kOffTopicMemoryTestInputVecOfObjectConstMeta;
+  FlutterRustBridgeTaskConstMeta
+      get kOffTopicMemoryTestInputVecOfObjectConstMeta;
 
-  Future<List<Size>> offTopicMemoryTestOutputVecOfObject({required int len, dynamic hint});
+  Future<List<Size>> offTopicMemoryTestOutputVecOfObject(
+      {required int len, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kOffTopicMemoryTestOutputVecOfObjectConstMeta;
+  FlutterRustBridgeTaskConstMeta
+      get kOffTopicMemoryTestOutputVecOfObjectConstMeta;
 
-  Future<int> offTopicMemoryTestInputComplexStruct({required TreeNode input, dynamic hint});
+  Future<int> offTopicMemoryTestInputComplexStruct(
+      {required TreeNode input, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kOffTopicMemoryTestInputComplexStructConstMeta;
+  FlutterRustBridgeTaskConstMeta
+      get kOffTopicMemoryTestInputComplexStructConstMeta;
 
-  Future<TreeNode> offTopicMemoryTestOutputComplexStruct({required int len, dynamic hint});
+  Future<TreeNode> offTopicMemoryTestOutputComplexStruct(
+      {required int len, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kOffTopicMemoryTestOutputComplexStructConstMeta;
+  FlutterRustBridgeTaskConstMeta
+      get kOffTopicMemoryTestOutputComplexStructConstMeta;
 
   Future<int> offTopicDeliberatelyReturnError({dynamic hint});
 

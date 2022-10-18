@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'io.dart' if (dart.library.html) 'web.dart' show DartPostCObject, WireSyncReturnStruct, NativePortType;
+import 'io.dart' if (dart.library.html) 'web.dart'
+    show DartPostCObject, WireSyncReturnStruct, NativePortType;
 export 'io.dart' if (dart.library.html) 'web.dart'
     show ExternalLibrary, WireSyncReturnStruct, NativePortType, FrbOpaque;
 import '../isolate.dart' show SendPort;
@@ -36,7 +37,8 @@ int castInt(Object? value) => value as int;
 /// Only used on the Web.
 Object castNativeBigInt(int value) => throw UnimplementedError();
 
-abstract class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBridgeWireBase {
+abstract class FlutterRustBridgeWasmWireBase<T extends WasmModule>
+    extends FlutterRustBridgeWireBase {
   Future<T> get init => throw UnimplementedError();
   FlutterRustBridgeWasmWireBase([FutureOr<T>? module]);
 }
@@ -72,7 +74,8 @@ abstract class WasmModule {
   }
 
   /// Initialize a [WasmModule] with the specified kind of [Modules].
-  static FutureOr<WasmModule> initialize({required Modules kind, WasmModule Function()? module}) =>
+  static FutureOr<WasmModule> initialize(
+          {required Modules kind, WasmModule Function()? module}) =>
       throw UnimplementedError();
 }
 
@@ -87,7 +90,8 @@ abstract class Modules {
   ///
   /// The expected output is a file named `$root.js` and the accompanying
   /// WASM binary named `${root}_bg.wasm`.
-  const factory Modules.noModules({required String root}) = _WasmBindgenNoModules;
+  const factory Modules.noModules({required String root}) =
+      _WasmBindgenNoModules;
 
   /// How a WASM module is brought into Dart's scope and initialized.
   ///
@@ -100,5 +104,6 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  FutureOr<WasmModule> initializeModule(WasmModule Function()? module) => throw UnimplementedError();
+  FutureOr<WasmModule> initializeModule(WasmModule Function()? module) =>
+      throw UnimplementedError();
 }

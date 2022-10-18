@@ -20,7 +20,8 @@ const uuidSizeInBytes = 16;
 ///
 /// 1. Please call [setupMixinConstructor] inside the constructor of your class.
 /// 2. Inside your [setup], please call ffi functions with hint=[kHintSetup].
-mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
+mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase>
+    on FlutterRustBridgeBase<T> {
   /// Inside your [setup], please call ffi functions with hint=[kHintSetup].
   static const kHintSetup = _FlutterRustBridgeSetupMixinSkipWaitHint._();
 
@@ -52,7 +53,8 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on Flutte
   }
 
   Future<void> _beforeExecute<S>(FlutterRustBridgeTask<S> task) async {
-    if (!_setupCompleter.isCompleted && task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
+    if (!_setupCompleter.isCompleted &&
+        task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
       log('FlutterRustBridgeSetupMixin.beforeExecute start waiting setup to complete (task=${task.debugName})');
       await _setupCompleter.future;
       log('FlutterRustBridgeSetupMixin.beforeExecute end waiting setup to complete (task=${task.debugName})');
@@ -73,7 +75,8 @@ class _FlutterRustBridgeSetupMixinSkipWaitHint {
 }
 
 /// Add a timeout to [executeNormal]
-mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
+mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
+    on FlutterRustBridgeBase<T> {
   @override
   Future<S> executeNormal<S>(FlutterRustBridgeTask<S> task) {
     // capture a stack trace at *here*, such that when timeout, can have a good stack trace
@@ -84,8 +87,8 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on Flut
     var future = super.executeNormal(task);
     if (timeLimitForExecuteNormal != null) {
       future = future.timeout(timeLimitForExecuteNormal,
-          onTimeout: () =>
-              throw FlutterRustBridgeTimeoutException(timeLimitForExecuteNormal, task.debugName, stackTrace));
+          onTimeout: () => throw FlutterRustBridgeTimeoutException(
+              timeLimitForExecuteNormal, task.debugName, stackTrace));
     }
 
     return future;
@@ -158,7 +161,9 @@ Uint8List api2wireConcatenateBytes(List<UuidValue> raw) {
 }
 
 List<UuidValue> wire2apiUuids(Uint8List raw) {
-  return List<UuidValue>.generate(raw.lengthInBytes ~/ uuidSizeInBytes,
-      (int i) => UuidValue.fromByteList(Uint8List.view(raw.buffer, i * uuidSizeInBytes, uuidSizeInBytes)),
+  return List<UuidValue>.generate(
+      raw.lengthInBytes ~/ uuidSizeInBytes,
+      (int i) => UuidValue.fromByteList(
+          Uint8List.view(raw.buffer, i * uuidSizeInBytes, uuidSizeInBytes)),
       growable: false);
 }

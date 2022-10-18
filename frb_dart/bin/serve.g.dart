@@ -61,7 +61,8 @@ ArgParser _$populateOptsParser(ArgParser parser) => parser
   ..addOption(
     'dart-input',
     abbr: 'd',
-    help: 'Run "dart compile" with the specified input instead of "flutter build"',
+    help:
+        'Run "dart compile" with the specified input instead of "flutter build"',
     valueHelp: 'ENTRY',
   )
   ..addOption(

@@ -19,6 +19,7 @@ codegen:
 	flutter_rust_bridge_codegen \
 		--rust-input=frb_example/pure_dart/rust/src/api.rs \
 		--dart-output=frb_example/pure_dart/dart/lib/bridge_generated.dart \
+		--dart-format-line-length 120 
 
 	cd frb_example/pure_dart/dart \
 	&& flutter pub get \
@@ -74,4 +75,4 @@ wasm.build:
 		--target wasm32-unknown-unknown -Z build-std=std,panic_abort
 
 dart.fmt:
-	dart format --line-length 120 .
+	dart format --line-length 80 .
