@@ -61,8 +61,6 @@ external FlutterRustBridgeExampleBenchmarkSuiteWasmModule get wasmModule;
 class FlutterRustBridgeExampleBenchmarkSuiteWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleBenchmarkSuiteWasmModule bind(dynamic thisArg, String moduleName);
-  external void wire_rust_metrics(NativePortType port_);
-
   external void wire_handle_uuids(NativePortType port_, Uint8List ids);
 
   external void wire_handle_uuids_convert_to_strings(NativePortType port_, Uint8List ids);
@@ -108,6 +106,8 @@ class FlutterRustBridgeExampleBenchmarkSuiteWasmModule implements WasmModule {
   external dynamic /* double */ wire_handle_sync_f64(double input);
 
   external dynamic /* String */ wire_handle_sync_string(String input);
+
+  external void wire_dummy(NativePortType port_, int unit);
 }
 
 // Section: WASM wire connector
@@ -116,8 +116,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire
     extends FlutterRustBridgeWasmWireBase<FlutterRustBridgeExampleBenchmarkSuiteWasmModule> {
   FlutterRustBridgeExampleBenchmarkSuiteWire(FutureOr<WasmModule> module)
       : super(WasmModule.cast<FlutterRustBridgeExampleBenchmarkSuiteWasmModule>(module));
-
-  void wire_rust_metrics(NativePortType port_) => wasmModule.wire_rust_metrics(port_);
 
   void wire_handle_uuids(NativePortType port_, Uint8List ids) => wasmModule.wire_handle_uuids(port_, ids);
 
@@ -166,4 +164,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire
   dynamic /* double */ wire_handle_sync_f64(double input) => wasmModule.wire_handle_sync_f64(input);
 
   dynamic /* String */ wire_handle_sync_string(String input) => wasmModule.wire_handle_sync_string(input);
+
+  void wire_dummy(NativePortType port_, int unit) => wasmModule.wire_dummy(port_, unit);
 }

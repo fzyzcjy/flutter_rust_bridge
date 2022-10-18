@@ -8,11 +8,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class FlutterRustBridgeExampleBenchmarkSuite {
-  /// exposes rust benchmark metrics for dart to collect
-  Future<List<Metric>> rustMetrics({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kRustMetricsConstMeta;
-
   Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
@@ -104,30 +99,10 @@ abstract class FlutterRustBridgeExampleBenchmarkSuite {
   String handleSyncString({required String input, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSyncStringConstMeta;
-}
 
-/// metric used for [continuous-benchmark](https://github.com/marketplace/actions/continuous-benchmark) worflow
-class Metric {
-  final String name;
-  final int? value;
+  Future<void> dummy({required Unit unit, dynamic hint});
 
-  /// benchmarking time unit is platform-dependent
-  final Unit unit;
-
-  /// allows to provide extra context for benchmarked wired function call
-  /// e.g. `reverse 1,000 uuids`
-  ///
-  /// `non-final` to allow setting Rust metric `extra` from Dart
-  ///
-  /// TODO: once `hint` can be sent and consumed on Rust side, this field can be `final`
-  String? extra;
-
-  Metric({
-    required this.name,
-    this.value,
-    required this.unit,
-    this.extra,
-  });
+  FlutterRustBridgeTaskConstMeta get kDummyConstMeta;
 }
 
 /// benchmark time unit

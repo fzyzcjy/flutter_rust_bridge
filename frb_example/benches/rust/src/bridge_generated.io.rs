@@ -2,11 +2,6 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_rust_metrics(port_: i64) {
-    wire_rust_metrics_impl(port_)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_handle_uuids(port_: i64, ids: *mut wire_uint_8_list) {
     wire_handle_uuids_impl(port_, ids)
 }
@@ -123,6 +118,11 @@ pub extern "C" fn wire_handle_sync_string(
     wire_handle_sync_string_impl(input)
 }
 
+#[no_mangle]
+pub extern "C" fn wire_dummy(port_: i64, unit: i32) {
+    wire_dummy_impl(port_, unit)
+}
+
 // Section: allocate functions
 
 #[no_mangle]
@@ -175,6 +175,7 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
         }
     }
 }
+
 // Section: wire structs
 
 #[repr(C)]

@@ -19,19 +19,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl implements FlutterRustBridgeExa
   factory FlutterRustBridgeExampleBenchmarkSuiteImpl.wasm(FutureOr<WasmModule> module) =>
       FlutterRustBridgeExampleBenchmarkSuiteImpl(module as ExternalLibrary);
   FlutterRustBridgeExampleBenchmarkSuiteImpl.raw(this._platform);
-  Future<List<Metric>> rustMetrics({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_rust_metrics(port_),
-        parseSuccessData: _wire2api_list_metric,
-        constMeta: kRustMetricsConstMeta,
-        argValues: [],
-        hint: hint,
-      ));
-
-  FlutterRustBridgeTaskConstMeta get kRustMetricsConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "rust_metrics",
-        argNames: [],
-      );
-
   Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_handle_uuids(port_, _platform.api2wire_Uuids(ids)),
@@ -334,6 +321,19 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl implements FlutterRustBridgeExa
         argNames: ["input"],
       );
 
+  Future<void> dummy({required Unit unit, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_dummy(port_, api2wire_unit(unit)),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kDummyConstMeta,
+        argValues: [unit],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kDummyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "dummy",
+        argNames: ["unit"],
+      );
+
 // Section: wire2api
 
   String _wire2api_String(dynamic raw) {
@@ -401,10 +401,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl implements FlutterRustBridgeExa
     return raw as bool;
   }
 
-  int _wire2api_box_autoadd_u64(dynamic raw) {
-    return _wire2api_u64(raw);
-  }
-
   double _wire2api_f32(dynamic raw) {
     return raw as double;
   }
@@ -429,29 +425,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl implements FlutterRustBridgeExa
     return raw as int;
   }
 
-  List<Metric> _wire2api_list_metric(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_metric).toList();
-  }
-
-  Metric _wire2api_metric(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return Metric(
-      name: _wire2api_String(arr[0]),
-      value: _wire2api_opt_box_autoadd_u64(arr[1]),
-      unit: _wire2api_unit(arr[2]),
-      extra: _wire2api_opt_String(arr[3]),
-    );
-  }
-
-  String? _wire2api_opt_String(dynamic raw) {
-    return raw == null ? null : _wire2api_String(raw);
-  }
-
-  int? _wire2api_opt_box_autoadd_u64(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_u64(raw);
-  }
-
   int _wire2api_u32(dynamic raw) {
     return raw as int;
   }
@@ -468,8 +441,8 @@ class FlutterRustBridgeExampleBenchmarkSuiteImpl implements FlutterRustBridgeExa
     return raw as Uint8List;
   }
 
-  Unit _wire2api_unit(dynamic raw) {
-    return Unit.values[raw];
+  void _wire2api_unit(dynamic raw) {
+    return;
   }
 }
 
@@ -513,4 +486,9 @@ int api2wire_u32(int raw) {
 @protected
 int api2wire_u8(int raw) {
   return raw;
+}
+
+@protected
+int api2wire_unit(Unit raw) {
+  return api2wire_i32(raw.index);
 }

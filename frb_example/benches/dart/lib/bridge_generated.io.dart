@@ -53,6 +53,7 @@ class FlutterRustBridgeExampleBenchmarkSuitePlatform
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
+
 // Section: api_fill_to_wire
 
 }
@@ -87,17 +88,6 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire implements FlutterRustBridgeWir
   late final _store_dart_post_cobjectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
-
-  void wire_rust_metrics(
-    int port_,
-  ) {
-    return _wire_rust_metrics(
-      port_,
-    );
-  }
-
-  late final _wire_rust_metricsPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_rust_metrics');
-  late final _wire_rust_metrics = _wire_rust_metricsPtr.asFunction<void Function(int)>();
 
   void wire_handle_uuids(
     int port_,
@@ -405,6 +395,19 @@ class FlutterRustBridgeExampleBenchmarkSuiteWire implements FlutterRustBridgeWir
           'wire_handle_sync_string');
   late final _wire_handle_sync_string =
       _wire_handle_sync_stringPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_dummy(
+    int port_,
+    int unit,
+  ) {
+    return _wire_dummy(
+      port_,
+      unit,
+    );
+  }
+
+  late final _wire_dummyPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_dummy');
+  late final _wire_dummy = _wire_dummyPtr.asFunction<void Function(int, int)>();
 
   ffi.Pointer<wire_StringList> new_StringList_0(
     int len,

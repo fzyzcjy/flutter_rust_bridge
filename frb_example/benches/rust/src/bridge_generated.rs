@@ -19,16 +19,6 @@ use flutter_rust_bridge::*;
 
 // Section: wire functions
 
-fn wire_rust_metrics_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "rust_metrics",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || move |task_callback| rust_metrics(),
-    )
-}
 fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -351,6 +341,19 @@ fn wire_handle_sync_string_impl(
         },
     )
 }
+fn wire_dummy_impl(port_: MessagePort, unit: impl Wire2Api<Unit> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "dummy",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_unit = unit.wire2api();
+            move |task_callback| Ok(dummy(api_unit))
+        },
+    )
+}
 // Section: wrapper structs
 
 // Section: static checks
@@ -423,34 +426,23 @@ impl Wire2Api<u8> for u8 {
     }
 }
 
+impl Wire2Api<Unit> for i32 {
+    fn wire2api(self) -> Unit {
+        match self {
+            0 => Unit::Milliseconds,
+            1 => Unit::Microseconds,
+            2 => Unit::Nanoseconds,
+            _ => unreachable!("Invalid variant for Unit: {}", self),
+        }
+    }
+}
 // Section: impl IntoDart
 
-impl support::IntoDart for Metric {
-    fn into_dart(self) -> support::DartAbi {
-        vec![
-            self.name.into_dart(),
-            self.value.into_dart(),
-            self.unit.into_dart(),
-            self.extra.into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for Metric {}
-
-impl support::IntoDart for Unit {
-    fn into_dart(self) -> support::DartAbi {
-        match self {
-            Self::Milliseconds => 0,
-            Self::Microseconds => 1,
-            Self::Nanoseconds => 2,
-        }
-        .into_dart()
-    }
-}
 // Section: executor
 
-/* nothing since executor detected */
+support::lazy_static! {
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
+}
 
 /// cbindgen:ignore
 #[cfg(target_family = "wasm")]

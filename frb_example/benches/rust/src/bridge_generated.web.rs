@@ -2,11 +2,6 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
-pub fn wire_rust_metrics(port_: MessagePort) {
-    wire_rust_metrics_impl(port_)
-}
-
-#[wasm_bindgen]
 pub fn wire_handle_uuids(port_: MessagePort, ids: Box<[u8]>) {
     wire_handle_uuids_impl(port_, ids)
 }
@@ -121,6 +116,11 @@ pub fn wire_handle_sync_string(input: String) -> support::WireSyncReturnStruct {
     wire_handle_sync_string_impl(input)
 }
 
+#[wasm_bindgen]
+pub fn wire_dummy(port_: MessagePort, unit: i32) {
+    wire_dummy_impl(port_, unit)
+}
+
 // Section: allocate functions
 
 // Section: impl Wire2Api
@@ -151,6 +151,7 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
+
 // Section: impl Wire2Api for JsValue
 
 impl Wire2Api<String> for JsValue {
@@ -219,5 +220,10 @@ impl Wire2Api<u8> for JsValue {
 impl Wire2Api<Vec<u8>> for JsValue {
     fn wire2api(self) -> Vec<u8> {
         self.unchecked_into::<js_sys::Uint8Array>().to_vec().into()
+    }
+}
+impl Wire2Api<Unit> for JsValue {
+    fn wire2api(self) -> Unit {
+        (self.unchecked_into_f64() as i32).wire2api()
     }
 }
