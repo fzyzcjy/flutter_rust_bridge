@@ -744,33 +744,36 @@ void main(List<String> args) async {
 
     test('Double Call opaque type fn', () async {
       var data = await api.createOpaque();
-      expect(await api.runOpaque(opaque: data),
+      expect(
+          await api.runOpaque(opaque: data),
           "content - Some(PrivateData "
-          "{" 
-            " content: \"content nested\", "
-            "primitive: 424242, "
-            "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-            "lifetime: \"static str\" "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
           "})");
-      expect(await api.runOpaque(opaque: data),
+      expect(
+          await api.runOpaque(opaque: data),
           "content - Some(PrivateData "
-          "{" 
-            " content: \"content nested\", "
-            "primitive: 424242, "
-            "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-            "lifetime: \"static str\" "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
           "})");
     });
 
     test('Call opaque type fn after drop', () async {
       var data = await api.createOpaque();
-      expect(await api.runOpaque(opaque: data),
+      expect(
+          await api.runOpaque(opaque: data),
           "content - Some(PrivateData "
-          "{" 
-            " content: \"content nested\", "
-            "primitive: 424242, "
-            "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-            "lifetime: \"static str\" "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
           "})");
       data.dispose();
       expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
@@ -780,13 +783,14 @@ void main(List<String> args) async {
       var data = await api.createOpaque();
       var task = api.runOpaqueWithDelay(opaque: data);
       data.dispose();
-      expect(await task,
+      expect(
+          await task,
           "content - Some(PrivateData "
-          "{" 
-            " content: \"content nested\", "
-            "primitive: 424242, "
-            "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-            "lifetime: \"static str\" "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
           "})");
       expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
     });
@@ -795,14 +799,15 @@ void main(List<String> args) async {
       for (var i = 0; i < 100; ++i) {
         var data = await api.opaqueArray();
         for (var v in data) {
-          expect(await api.runOpaque(opaque: v),
-          "content - Some(PrivateData "
-          "{" 
-            " content: \"content nested\", "
-            "primitive: 424242, "
-            "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-            "lifetime: \"static str\" "
-          "})");
+          expect(
+              await api.runOpaque(opaque: v),
+              "content - Some(PrivateData "
+              "{"
+              " content: \"content nested\", "
+              "primitive: 424242, "
+              "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+              "lifetime: \"static str\" "
+              "})");
           v.dispose();
           expect(await api.runOpaque(opaque: v), "NULL OPAQUE");
         }
@@ -812,13 +817,14 @@ void main(List<String> args) async {
     test('Create enums of opaque type', () async {
       var data = await api.createArrayOpaqueEnum();
 
-      expect(await api.runEnumOpaque(opaque: data[0]),
+      expect(
+          await api.runEnumOpaque(opaque: data[0]),
           "content - Some(PrivateData "
-          "{" 
-            " content: \"content nested\", "
-            "primitive: 424242, "
-            "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-            "lifetime: \"static str\" "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
           "})");
       (data[0] as EnumOpaque_Struct).field0.dispose();
       expect(await api.runEnumOpaque(opaque: data[1]), "Some(42)");
