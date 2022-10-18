@@ -220,7 +220,6 @@ fn generate_common_header() -> DartBasicCode {
             "{}{}",
             "import 'dart:convert';
             import 'dart:async';
-            import 'package:meta/meta.dart';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
             if cfg!(feature = "uuid") {
                 "\nimport 'package:uuid/uuid.dart';"

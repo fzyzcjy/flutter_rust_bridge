@@ -11,6 +11,7 @@ dependencies:
     path: ../../../frb_dart
   test: ^1.18.2
   vm_service: ^7.3.0
+  uuid: ^3.0.6
   freezed_annotation: ^2.0.1
   ffi: ^2.0.1
 dev_dependencies:
