@@ -25,6 +25,17 @@ codegen:
 	&& flutter pub get \
 	&& flutter pub run build_runner build --delete-conflicting-outputs
 
+flutter.codegen:
+	flutter_rust_bridge_codegen \
+		--rust-input=frb_example/with_flutter/rust/src/api.rs \
+		--dart-output=frb_example/with_flutter/lib/bridge_generated.dart \
+		--dart-format-line-length 120 
+
+	cd frb_example/with_flutter/ \
+	&& flutter pub get \
+	&& flutter pub run build_runner build --delete-conflicting-outputs
+
+
 dart.get: 
 	cd frb_example/pure_dart/dart \
 	&& flutter pub get
