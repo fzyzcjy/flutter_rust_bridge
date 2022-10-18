@@ -169,11 +169,9 @@ runner:
 bench-simple *args="": runner
     (cd {{frb_benches}}/rust && cargo build --release)
     (cd {{frb_benches}}/dart && \
-       export ITEMS_COUNT=10; dart {{args}} run lib/benchmark/uuids.dart && \
-       export ITEMS_COUNT=10; dart {{args}} run lib/benchmark/strings.dart && \
-       export ITEMS_COUNT=100  WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} run lib/benchmark/uuids.dart && \
-       export ITEMS_COUNT=100  WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} run lib/benchmark/strings.dart && \
-       export ITEMS_COUNT=1000 WARM_UP_TIME=15000 MEASUREMENT_TIME=30000; dart {{args}} run lib/benchmark/uuids.dart && \
-       export ITEMS_COUNT=1000 WARM_UP_TIME=15000 MEASUREMENT_TIME=30000; dart {{args}} run lib/benchmark/strings.dart)
+       export JSON=true ITEMS_COUNT=10; dart {{args}} run lib/benchmark/uuids.dart && \
+       export JSON=true ITEMS_COUNT=10; dart {{args}} run lib/benchmark/strings.dart && \
+       export JSON=true ITEMS_COUNT=100  WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} run lib/benchmark/uuids.dart && \
+       export JSON=true ITEMS_COUNT=100  WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} run lib/benchmark/strings.dart)
 
 # vim:expandtab:ts=4:sw=4

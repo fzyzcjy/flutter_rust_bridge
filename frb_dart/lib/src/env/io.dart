@@ -29,5 +29,4 @@ final int? portEnv = Platform.environment['PORT'] != null
     ? int.parse(Platform.environment['PORT']!)
     : null;
 final useOpenDylib = readBoolEnv('USE_OPEN_DYLIB');
-final useJSON = readBoolEnv('JSON');
 final String? dylibPath = Platform.environment['DYLIB_PATH'];

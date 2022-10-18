@@ -33,7 +33,7 @@ class TemplateBenchmark extends AsyncBenchmark {
   @override
   Future<void> setup() async {
     String path = dylibPath ?? "../../../target/release/libflutter_rust_bridge_example_benchmark_suite.dylib";
-    print('flutter_rust_bridge benchmark strings (dylibPath=$path)');
+    if (!useJSON) print('flutter_rust_bridge benchmark strings (dylibPath=$path)');
     await super.setup();
     return Future.sync(() {
       api = initializeBenchExternalLibrary(path);

@@ -1,5 +1,8 @@
-export 'async_benchmark.io.dart' if (dart.library.html) 'async_benchmark.web.dart' show AsyncBenchmark;
+export 'async_benchmark.io.dart'
+    if (dart.library.html) 'async_benchmark.web.dart' show AsyncBenchmark;
+import 'dart:io' if (dart.library.html) 'dart:html' show File;
 
+import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:flutter_rust_bridge_benchmark/constants.dart';
 import 'package:flutter_rust_bridge_benchmark/env/stub.dart';
 
@@ -13,9 +16,21 @@ class Routine {
 
 class Sample {
   final List<Routine> routines;
-  const Sample(this.routines);
-  int get iterations => routines.fold(0, (previousValue, element) => previousValue + element.iterations);
-  double get elapsed => routines.fold(0, (previousValue, element) => previousValue + element.elapsed);
+  final Unit unit;
+  final String name;
+  const Sample(this.routines, this.name, this.unit);
+  int get iterations => routines.fold(
+      0, (previousValue, element) => previousValue + element.iterations);
+  double get elapsed => routines.fold(
+      0, (previousValue, element) => previousValue + element.elapsed);
+  Map<String, dynamic> toJson() {
+    return {
+      'value': elapsed / iterations,
+      'unit': 'us',
+      'name': name,
+      'extra': itemsCount.toString(),
+    };
+  }
 }
 
 abstract class Bencher {
@@ -26,12 +41,18 @@ abstract class Bencher {
 
   WallTime start();
 
-  Bencher({required this.name, required this.warmUpTime, required this.measurementTime, required this.sampleSize});
+  Bencher(
+      {required this.name,
+      required this.warmUpTime,
+      required this.measurementTime,
+      required this.sampleSize});
 
   Future<void> setup() {
     return Future.sync(() {
-      print(
-          'setup (sample count: $sampleSize, items count: $itemsCount, warm up time: ${warmUpTime.inMilliseconds} ms, measurement time: ${measurementTime.inMilliseconds} ms)');
+      if (!useJSON) {
+        print(
+            'setup (sample count: $sampleSize, items count: $itemsCount, warm up time: ${warmUpTime.inMilliseconds} ms, measurement time: ${measurementTime.inMilliseconds} ms)');
+      }
     });
   }
 
@@ -41,7 +62,8 @@ abstract class Bencher {
   Future<Routine> warmup(Future<void> Function() f);
 
   /// see [criterion warmup](https://bheisler.github.io/criterion.rs/book/analysis.html#measurement)
-  Future<Sample> measure(Future<void> Function() f, double warmUpElapsed, int warmUpIter, int sampleSize);
+  Future<Sample> measure(Future<void> Function() f, double warmUpElapsed,
+      int warmUpIter, int sampleSize);
 
   Future<void> run();
 
@@ -49,7 +71,8 @@ abstract class Bencher {
     await setup();
     try {
       final routine = await warmup(run);
-      return await measure(run, routine.elapsed, routine.iterations, sampleSize);
+      return await measure(
+          run, routine.elapsed, routine.iterations, sampleSize);
     } finally {
       await teardown();
     }
@@ -59,18 +82,29 @@ abstract class Bencher {
     assert(sampleSize >= 10);
     assert(warmUpTime >= minimumBenchDuration);
     assert(measurementTime >= minimumBenchDuration);
-    print('---');
+    if (!useJSON) print('---');
     final Sample sample = await bench();
 
-    print('report: ${sample.elapsed} microseconds for ${sample.iterations} iterations');
-    print('per iteration: ${sample.elapsed / sample.iterations} microseconds');
-    print('completed ${sample.routines.length} sample(s) out of $sampleSize');
+    if (!useJSON) {
+      print(
+          'report: ${sample.elapsed} microseconds for ${sample.iterations} iterations');
+      print(
+          'per iteration: ${sample.elapsed / sample.iterations} microseconds');
+      print('completed ${sample.routines.length} sample(s) out of $sampleSize');
+    } else {
+      final file = File('../../../book/benches/output.txt')
+        ..createSync(recursive: true);
+      file.writeAsStringSync(sample.toJson().toString());
+    }
   }
 }
 
 abstract class AsyncBencher extends Bencher {
   AsyncBencher(
-      {required super.name, required super.warmUpTime, required super.measurementTime, required super.sampleSize});
+      {required super.name,
+      required super.warmUpTime,
+      required super.measurementTime,
+      required super.sampleSize});
 
   int get warmUpTimeNormalized;
   int get measurementTimeNormalized;
@@ -88,18 +122,24 @@ abstract class AsyncBencher extends Bencher {
       iterations *= 2;
     }
     time.stop();
-    print(
-        'warmed up for $elapsed microseconds for a total of $iterations iterations (approximately ${elapsed / iterations} microseconds per iteration)');
+    if (!useJSON) {
+      print(
+          'warmed up for $elapsed microseconds for a total of $iterations iterations (approximately ${elapsed / iterations} microseconds per iteration)');
+    }
     return Routine(iterations, elapsed);
   }
 
   @override
-  Future<Sample> measure(Future<void> Function() f, double warmUpElapsed, int warmUpIter, int sampleSize) async {
-    final totalIters = ((measurementTimeNormalized / warmUpTimeNormalized) * warmUpIter).round();
+  Future<Sample> measure(Future<void> Function() f, double warmUpElapsed,
+      int warmUpIter, int sampleSize) async {
+    final totalIters =
+        ((measurementTimeNormalized / warmUpTimeNormalized) * warmUpIter)
+            .round();
     final totalRuns = sampleSize * (sampleSize + 1) / 2;
     assert(totalRuns < totalIters);
     final d = warmUpElapsed / warmUpIter;
-    final runs = List.generate(sampleSize, (index) => ((index + 1) * d).round(), growable: false);
+    final runs = List.generate(sampleSize, (index) => ((index + 1) * d).round(),
+        growable: false);
     var factor = 1;
     var elapsed = .0;
     var samples = <Routine>[];
@@ -116,6 +156,6 @@ abstract class AsyncBencher extends Bencher {
       samples.add(Routine(sample, took));
       factor++;
     }
-    return Sample(samples);
+    return Sample(samples, name, Unit.Microseconds);
   }
 }

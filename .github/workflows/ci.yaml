@@ -151,92 +151,6 @@ jobs:
             -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
           current_path: frb_example/pure_dart/dart
 
-  dart_web_bench:
-    name: Dart (Web) benchmarks
-    runs-on: macOS-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: 1.64.0
-
-      - name: Install nightly toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: nightly
-          target: wasm32-unknown-unknown
-          components: rust-src,rustfmt
-
-      - uses: dart-lang/setup-dart@v1
-        with:
-          sdk: '2.17.6' # TODO upgrade later #655
-
-      - name: Cache dependencies
-        id: test-cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            target
-            frb_example/benches/dart/.local-chromium
-          key: ${{ runner.os }}-cargo-dart-web-benchmarks-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: Install crates
-        run: |
-          sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
-
-      - name: Install dart dependencies
-        working-directory: ./frb_dart
-        run: dart pub get
-
-      - name: Install dart dependencies
-        working-directory: ./frb_example/benches/dart
-        run: dart pub get
-
-      - name: Build benches example (dynamic library)
-        # benches are run on release mode in gh-pages workflow
-        # following steps only assert good functioning
-        uses: actions-rs/cargo@v1
-        with:
-          toolchain: stable
-          command: build
-          args: --manifest-path=./frb_example/benches/rust/Cargo.toml --verbose
-
-      - name: Build benches example (WASM)
-        # benches are run on release mode in gh-pages workflow
-        # following steps only assert good functioning
-        uses: actions-rs/cargo@v1
-        with:
-          toolchain: nightly
-          command: build
-          args: --manifest-path=./frb_example/benches/rust/Cargo.toml --target wasm32-unknown-unknown --verbose
-
-      - name: Run benchmark_harness example
-        timeout-minutes: 5 # TODO action timeout
-        uses: Wandalen/wretry.action@v1.0.25
-        continue-on-error: true # TODO action timeout
-        with:
-          command: |
-            dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/benchmark/uuids.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8081 --run-tests
-            dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/benchmark/strings.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8082 --run-tests
-        env:
-          DYLIB_PATH: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.dylib
-      - name: Run benches example
-        timeout-minutes: 5 # TODO action timeout
-        uses: Wandalen/wretry.action@v1.0.25
-        continue-on-error: true # TODO action timeout
-        with:
-          command: dart run frb_dart/bin/serve.dart --dart-input frb_example/benches/dart/lib/main.web.dart --root frb_example/benches/dart/web/ -c frb_example/benches/rust --port 8083 --run-tests
-        env:
-          JSON: true
-
   # -------------------------- linter --------------------------
   rust_build_and_test:
     name: Build and run Rust
@@ -302,19 +216,12 @@ jobs:
 
       - name: Build benches example
         working-directory: ./frb_example/benches/rust
-        # benches are run on release mode in gh-pages workflow
-        # following steps only assert good functioning
-        run: cargo build --verbose
-      - name: Run benchmark_harness example
+        run: cargo build --verbose --release
+      - name: Run benches example
         working-directory: ./frb_example/benches/dart
         run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
         env:
-          DYLIB_PATH: ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so
-      - name: Run benches example
-        working-directory: ./frb_example/benches/dart
-        run: dart lib/main.dart ../../../target/debug/libflutter_rust_bridge_example_benchmark_suite.so
-        env:
-          JSON: true
+          DYLIB_PATH: ../../../target/release/libflutter_rust_bridge_example_benchmark_suite.so
 
   rust_linter:
     name: Rust linter using Clippy and rustfmt

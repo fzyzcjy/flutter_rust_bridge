@@ -276,7 +276,6 @@ Future<void> build(
     await system('dart', [
       'compile',
       'js',
-      if (useJSON) '-DJSON=true', // on web platform, use -D
       '-o',
       '$root/$output.js',
       if (config.release) '-O2',
@@ -288,7 +287,6 @@ Future<void> build(
     await system(
       'flutter',
       [
-            if (useJSON) '--dart-define=JSON=true',
             'build',
             'web',
             if (!config.release) '--profile',

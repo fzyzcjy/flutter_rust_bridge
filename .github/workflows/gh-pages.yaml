@@ -39,8 +39,6 @@ jobs:
 
   benchmark:
     needs: deploy
-    # continuous-benchmark requires sensible permissions, hence why it should never be run on PRs
-    if: github.event_name != 'pull_request'
     permissions:
       # deployments permission to deploy GitHub pages website
       deployments: write
@@ -92,4 +90,5 @@ jobs:
           # Access token to deploy GitHub Pages branch
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # Push and deploy GitHub pages branch automatically
-          auto-push: true
+          # continuous-benchmark requires sensible permissions, hence why it should never be pushed on PRs
+          auto-push: ${{ github.event_name != 'pull_request' }}
