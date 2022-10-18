@@ -3,14 +3,12 @@ import 'dart:ffi';
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
 import 'stub.dart' show FlutterRustBridgeWireBase;
-export 'stub.dart'
-    show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
+export 'stub.dart' show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 typedef NativePortType = int;
 typedef ExternalLibrary = ffi.DynamicLibrary;
-typedef DartPostCObject = ffi.Pointer<
-    ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
+typedef DartPostCObject = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
@@ -79,8 +77,7 @@ class FrbOpaque implements Finalizable {
 
   static ffi.Pointer lend(FrbOpaque ptr) {
     if (!ptr.isStale()) {
-      return ptr._lend
-          .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
+      return ptr._lend.asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
     } else {
       // next best thing here, this is equivalent to an Option::<Arc<T>>::None
       return ffi.nullptr;

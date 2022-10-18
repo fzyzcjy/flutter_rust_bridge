@@ -143,10 +143,10 @@ extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
 type CArcDropper<T> = *const extern "C" fn(*const T);
 type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
 
-impl<T: DartSafe> Into<ffi::DartCObject> for Opaque<T> {
-    fn into(self) -> ffi::DartCObject {
+impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
+    fn from(value: Opaque<T>) -> Self {
         // ffi.Pointer? type
-        let ptr = match self.ptr {
+        let ptr = match value.ptr {
             Some(arc) => Arc::into_raw(arc).into_dart(),
             _ => ().into_dart(),
         };

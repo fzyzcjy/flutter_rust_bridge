@@ -74,4 +74,4 @@ wasm.build:
 		--target wasm32-unknown-unknown -Z build-std=std,panic_abort
 
 dart.fmt:
-	dart format --output=none --set-exit-if-changed --line-length 120 .
+	dart format --line-length 120 .
