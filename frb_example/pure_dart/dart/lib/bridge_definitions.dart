@@ -25,11 +25,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   /// Newlines are preserved.
   ///
   Future<int> primitiveTypes(
-      {required int myI32,
-      required int myI64,
-      required double myF64,
-      required bool myBool,
-      dynamic hint});
+      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta;
 
@@ -49,18 +45,15 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta;
 
-  Future<VecOfPrimitivePack> handleVecOfPrimitive(
-      {required int n, dynamic hint});
+  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta;
 
-  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
-      {required int n, dynamic hint});
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta;
 
-  Future<MySize> handleStruct(
-      {required MySize arg, required MySize boxed, dynamic hint});
+  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta;
 
@@ -68,13 +61,11 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta;
 
-  Future<List<MySize>> handleListOfStruct(
-      {required List<MySize> l, dynamic hint});
+  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta;
 
-  Future<List<String>> handleStringList(
-      {required List<String> names, dynamic hint});
+  Future<List<String>> handleStringList({required List<String> names, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta;
 
@@ -150,8 +141,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta;
 
-  Future<double?> handleOptionalReturn(
-      {required double left, required double right, dynamic hint});
+  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta;
 
@@ -159,8 +149,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta;
 
-  Future<ExoticOptionals?> handleOptionalIncrement(
-      {ExoticOptionals? opt, dynamic hint});
+  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta;
 
@@ -188,8 +177,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta;
 
-  Future<Weekdays> handleEnumParameter(
-      {required Weekdays weekday, dynamic hint});
+  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta;
 
@@ -197,8 +185,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta;
 
-  Future<KitchenSink> handleEnumStruct(
-      {required KitchenSink val, dynamic hint});
+  Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta;
 
@@ -214,8 +201,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta;
 
-  Future<bool> isAppEmbedded(
-      {required ApplicationSettings appSettings, dynamic hint});
+  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;
 
@@ -223,13 +209,11 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
 
-  Future<Numbers> repeatNumber(
-      {required int num, required int times, dynamic hint});
+  Future<Numbers> repeatNumber({required int num, required int times, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta;
 
-  Future<Sequences> repeatSequence(
-      {required int seq, required int times, dynamic hint});
+  Future<Sequences> repeatSequence({required int seq, required int times, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRepeatSequenceConstMeta;
 
@@ -265,23 +249,19 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta;
 
-  Future<void> createEvent(
-      {required String address, required String payload, dynamic hint});
+  Future<void> createEvent({required String address, required String payload, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta;
 
-  Stream<Log> handleStreamSinkAt1(
-      {required int key, required int max, dynamic hint});
+  Stream<Log> handleStreamSinkAt1({required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta;
 
-  Stream<Log> handleStreamSinkAt2(
-      {required int key, required int max, dynamic hint});
+  Stream<Log> handleStreamSinkAt2({required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta;
 
-  Stream<Log> handleStreamSinkAt3(
-      {required int key, required int max, dynamic hint});
+  Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta;
 
@@ -289,8 +269,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta;
 
-  Future<SumWithArray3> getSumArray(
-      {required int a, required int b, required int c, dynamic hint});
+  Future<SumWithArray3> getSumArray({required int a, required int b, required int c, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetSumArrayConstMeta;
 
@@ -326,8 +305,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kDurationConstMeta;
 
-  Future<Duration> howLongDoesItTake(
-      {required FeatureChrono mine, dynamic hint});
+  Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta;
 
@@ -335,13 +313,11 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta;
 
-  Future<List<UuidValue>> handleUuids(
-      {required List<UuidValue> ids, dynamic hint});
+  Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta;
 
-  Future<FeatureUuid> handleNestedUuids(
-      {required FeatureUuid ids, dynamic hint});
+  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta;
 
@@ -397,8 +373,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta;
 
-  Future<String> runOpaqueWithDelay(
-      {required OpaqueStruct opaque, dynamic hint});
+  Future<String> runOpaqueWithDelay({required OpaqueStruct opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueWithDelayConstMeta;
 
@@ -406,59 +381,44 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
 
-  Future<int> sumMethodSumWith(
-      {required SumWith that, required int y, required int z, dynamic hint});
+  Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
 
-  Future<ConcatenateWith> newStaticMethodConcatenateWith(
-      {required String a, dynamic hint});
+  Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta;
 
-  Future<String> concatenateMethodConcatenateWith(
-      {required ConcatenateWith that, required String b, dynamic hint});
+  Future<String> concatenateMethodConcatenateWith({required ConcatenateWith that, required String b, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta;
 
-  Future<String> concatenateStaticStaticMethodConcatenateWith(
-      {required String a, required String b, dynamic hint});
+  Future<String> concatenateStaticStaticMethodConcatenateWith({required String a, required String b, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kConcatenateStaticStaticMethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kConcatenateStaticStaticMethodConcatenateWithConstMeta;
 
   Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
-      {required ConcatenateWith that,
-      required int key,
-      required int max,
-      dynamic hint});
+      {required ConcatenateWith that, required int key, required int max, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStreamSinkMethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkMethodConcatenateWithConstMeta;
 
-  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith(
-      {required ConcatenateWith that, dynamic hint});
+  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith({required ConcatenateWith that, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta;
 
   Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
       {required int key, required int max, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta;
 
-  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(
-      {dynamic hint});
+  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta
-      get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
+  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
 }
 
 @sealed
 class BoxDartDebug extends FrbOpaque {
-  BoxDartDebug.fromRaw(int? ptr, int drop, int lend)
-      : super.unsafe(ptr, drop, lend);
+  BoxDartDebug.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
@@ -467,8 +427,7 @@ class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
       : assert(inner.length == arraySize),
         super(inner);
   EnumOpaqueArray5.unchecked(List<EnumOpaque> inner) : super(inner);
-  EnumOpaqueArray5.init(EnumOpaque fill)
-      : super(List<EnumOpaque>.filled(arraySize, fill));
+  EnumOpaqueArray5.init(EnumOpaque fill) : super(List<EnumOpaque>.filled(arraySize, fill));
 }
 
 @sealed
@@ -478,14 +437,12 @@ class I32 extends FrbOpaque {
 
 @sealed
 class MutexOpaqueStruct extends FrbOpaque {
-  MutexOpaqueStruct.fromRaw(int? ptr, int drop, int lend)
-      : super.unsafe(ptr, drop, lend);
+  MutexOpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 @sealed
 class OpaqueStruct extends FrbOpaque {
-  OpaqueStruct.fromRaw(int? ptr, int drop, int lend)
-      : super.unsafe(ptr, drop, lend);
+  OpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class OpaqueStructArray2 extends NonGrowableListView<OpaqueStruct> {
@@ -494,8 +451,7 @@ class OpaqueStructArray2 extends NonGrowableListView<OpaqueStruct> {
       : assert(inner.length == arraySize),
         super(inner);
   OpaqueStructArray2.unchecked(List<OpaqueStruct> inner) : super(inner);
-  OpaqueStructArray2.init(OpaqueStruct fill)
-      : super(List<OpaqueStruct>.filled(arraySize, fill));
+  OpaqueStructArray2.init(OpaqueStruct fill) : super(List<OpaqueStruct>.filled(arraySize, fill));
 }
 
 class PointArray2 extends NonGrowableListView<Point> {
@@ -509,8 +465,7 @@ class PointArray2 extends NonGrowableListView<Point> {
 
 @sealed
 class RwLockOpaqueStruct extends FrbOpaque {
-  RwLockOpaqueStruct.fromRaw(int? ptr, int drop, int lend)
-      : super.unsafe(ptr, drop, lend);
+  RwLockOpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class SumWithArray3 extends NonGrowableListView<SumWith> {
@@ -519,8 +474,7 @@ class SumWithArray3 extends NonGrowableListView<SumWith> {
       : assert(inner.length == arraySize),
         super(inner);
   SumWithArray3.unchecked(List<SumWith> inner) : super(inner);
-  SumWithArray3.init(SumWith fill)
-      : super(List<SumWith>.filled(arraySize, fill));
+  SumWithArray3.init(SumWith fill) : super(List<SumWith>.filled(arraySize, fill));
 }
 
 class TestIdArray2 extends NonGrowableListView<TestId> {
@@ -628,13 +582,10 @@ class ConcatenateWith {
   });
 
   static Future<ConcatenateWith> newConcatenateWith(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          required String a,
-          dynamic hint}) =>
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, dynamic hint}) =>
       bridge.newStaticMethodConcatenateWith(a: a, hint: hint);
 
-  Future<String> concatenate({required String b, dynamic hint}) =>
-      bridge.concatenateMethodConcatenateWith(
+  Future<String> concatenate({required String b, dynamic hint}) => bridge.concatenateMethodConcatenateWith(
         that: this,
         b: b,
       );
@@ -644,19 +595,16 @@ class ConcatenateWith {
           required String a,
           required String b,
           dynamic hint}) =>
-      bridge.concatenateStaticStaticMethodConcatenateWith(
-          a: a, b: b, hint: hint);
+      bridge.concatenateStaticStaticMethodConcatenateWith(a: a, b: b, hint: hint);
 
-  Stream<Log2> handleSomeStreamSink(
-          {required int key, required int max, dynamic hint}) =>
+  Stream<Log2> handleSomeStreamSink({required int key, required int max, dynamic hint}) =>
       bridge.handleSomeStreamSinkMethodConcatenateWith(
         that: this,
         key: key,
         max: max,
       );
 
-  Stream<int> handleSomeStreamSinkAt1({dynamic hint}) =>
-      bridge.handleSomeStreamSinkAt1MethodConcatenateWith(
+  Stream<int> handleSomeStreamSinkAt1({dynamic hint}) => bridge.handleSomeStreamSinkAt1MethodConcatenateWith(
         that: this,
       );
 
@@ -665,14 +613,11 @@ class ConcatenateWith {
           required int key,
           required int max,
           dynamic hint}) =>
-      bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(
-          key: key, max: max, hint: hint);
+      bridge.handleSomeStaticStreamSinkStaticMethodConcatenateWith(key: key, max: max, hint: hint);
 
   static Stream<int> handleSomeStaticStreamSinkSingleArg(
-          {required FlutterRustBridgeExampleSingleBlockTest bridge,
-          dynamic hint}) =>
-      bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(
-          hint: hint);
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
+      bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(hint: hint);
 }
 
 class Customized {
@@ -1005,8 +950,7 @@ class SumWith {
     required this.x,
   });
 
-  Future<int> sum({required int y, required int z, dynamic hint}) =>
-      bridge.sumMethodSumWith(
+  Future<int> sum({required int y, required int z, dynamic hint}) => bridge.sumMethodSumWith(
         that: this,
         y: y,
         z: z,

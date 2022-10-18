@@ -73,5 +73,5 @@ wasm.build:
 		--no-typescript -- \
 		--target wasm32-unknown-unknown -Z build-std=std,panic_abort
 
-flutter.fmt:
-	flutter format .
+dart.fmt:
+	dart format --output=none --set-exit-if-changed --line-length 120 .

@@ -479,14 +479,14 @@ impl<T: DartSafe> IntoDart for Opaque<T> {
             Some(arc) => Arc::into_raw(arc).into_dart(),
             _ => ().into_dart(),
         };
+        let drop: *mut Box<dyn FnOnce(usize)> =
+            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
+                Arc::<T>::decrement_strong_count(ptr as *mut T);
+            })));
         let lend: *mut Box<dyn FnMut(usize) -> usize> =
             Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
                 Arc::<T>::increment_strong_count(ptr as *mut T);
                 ptr
-            })));
-        let drop: *mut Box<dyn FnOnce(usize)> =
-            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
-                Arc::<T>::decrement_strong_count(ptr as *mut T);
             })));
         vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()
     }

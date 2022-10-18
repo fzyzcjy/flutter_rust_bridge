@@ -825,7 +825,7 @@ void main(List<String> args) async {
       (data[0] as EnumOpaque_Struct).field0.dispose();
       expect(await api.runEnumOpaque(opaque: data[1]), "Some(42)");
       (data[1] as EnumOpaque_Primitive).field0.dispose();
-      expect(await api.runEnumOpaque(opaque: data[2]), "Some(\"String\")");
+      expect(await api.runEnumOpaque(opaque: data[2]), "Opaque { ptr: Some(\"String\") }");
       (data[2] as EnumOpaque_TraitObj).field0.dispose();
       expect(await api.runEnumOpaque(opaque: data[3]),
           "Some(\"content - Some(PrivateData { content: \\\"content nested\\\", primitive: 424242, array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], lifetime: \\\"static str\\\" })\")");
