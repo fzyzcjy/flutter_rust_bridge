@@ -1,7 +1,7 @@
 mod api;
 mod bridge_generated;
-mod executor;
 
+#[allow(dead_code)]
 impl api::Unit {
     pub fn acronym(&self) -> &str {
         match self {

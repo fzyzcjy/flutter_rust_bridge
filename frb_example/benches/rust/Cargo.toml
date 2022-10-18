@@ -16,10 +16,11 @@ flutter_rust_bridge_codegen = { workspace = true, features = [
 [dependencies]
 anyhow = { workspace = true, features = ["backtrace"] }
 chrono = { workspace = true }
+criterion = { version = "0.4", default-features = false }
 flutter_rust_bridge = { workspace = true, features = ["chrono", "uuid"] }
 lazy_static = { workspace = true }
 serde_json = "1"
-uuid = { workspace = true }
+uuid = { workspace = true, features = ["v4","js"] }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
 tracing = "0.1.36"

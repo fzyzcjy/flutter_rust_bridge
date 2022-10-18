@@ -3,7 +3,7 @@ description: flutter rust bridge example
 version: 1.0.0
 publish_to: none
 environment:
-  sdk: '>=2.14.0 <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 dependencies:
   meta: ^1.8.0
   lints: ^2.0.0
