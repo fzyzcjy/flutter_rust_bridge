@@ -732,14 +732,10 @@ void main(List<String> args) async {
 
   group('Opaque feature:', () {
     test('Create opaque type', () async {
-      var data = await api.createOpaque();
       var futureData = api.createOpaque();
-    });
-
-    test('Delete opaque type', () async {
       var data = await api.createOpaque();
       data.dispose();
-      data.dispose();
+      (await futureData).dispose();
     });
 
     test('Double Call opaque type fn', () async {

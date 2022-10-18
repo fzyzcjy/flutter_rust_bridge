@@ -59,9 +59,9 @@ mod tests {
 /// // this is one workaround.
 /// pub trait DartDebug: DartSafe + Debug {}
 /// impl<T: DartSafe + Debug> DartDebug for T {}
-/// pub struct DebugWrapper(pub Opaque<dyn DartDebug>);
+/// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
 /// // creating a DebugWrapper using the opaque_dyn macro
-/// let wrap = DebugWrapper(opaque_dyn!("foobar", DartDebug));
+/// let wrap = DebugWrapper(opaque_dyn!("foobar"));
 /// // it's possible to name it directly
 /// pub struct DebugWrapper2(pub Opaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
