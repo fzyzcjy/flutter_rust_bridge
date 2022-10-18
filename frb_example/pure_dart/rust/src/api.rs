@@ -977,7 +977,7 @@ pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
     [
         EnumOpaque::Struct(Opaque::new(OpaqueStruct(HideData::new()))),
         EnumOpaque::Primitive(Opaque::new(42)),
-        EnumOpaque::TraitObj(Opaque::new(Box::new("String"))),
+        EnumOpaque::TraitObj(opaque_dyn!("String")),
         EnumOpaque::Mutex(Opaque::new(Mutex::new(OpaqueStruct(HideData::new())))),
         EnumOpaque::RwLock(Opaque::new(RwLock::new(OpaqueStruct(HideData::new())))),
     ]
@@ -987,7 +987,7 @@ pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
     match opaque {
         EnumOpaque::Struct(s) => run_opaque(s),
         EnumOpaque::Primitive(p) => format!("{:?}", p.as_deref()),
-        EnumOpaque::TraitObj(t) => format!("{:?}", t.as_deref()),
+        EnumOpaque::TraitObj(t) => format!("{:?}", t),
         EnumOpaque::Mutex(m) => {
             format!("{:?}", m.lock().map(|m| m.unwrap().0.hide_data()))
         }

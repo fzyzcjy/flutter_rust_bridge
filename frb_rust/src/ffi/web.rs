@@ -401,9 +401,9 @@ pub struct Opaque<T: ?Sized + DartSafe> {
     pub(crate) ptr: Option<Arc<T>>,
 }
 
-impl<T: DartSafe> From<Option<Arc<T>>> for Opaque<T> {
-    fn from(ptr: Option<Arc<T>>) -> Self {
-        Self { ptr }
+impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
+    fn from(ptr: Arc<T>) -> Self {
+        Self { ptr: Some(ptr) }
     }
 }
 
@@ -516,11 +516,11 @@ impl<const N: usize, T: DartSafe> IntoDart for [Opaque<T>; N] {
 /// use flutter_rust_bridge::*;
 /// pub trait MyDebug: DartSafe + Debug {}
 /// impl<T: DartSafe + Debug> MyDebug for T {}
-/// let opaque: Opaque<dyn MyDebug> = opaque_dyn!("foobar", MyDebug);
+/// let opaque: Opaque<Box<dyn MyDebug>> = opaque_dyn!("foobar");
 /// ```
 #[macro_export]
 macro_rules! opaque_dyn {
-    ($ex:expr, $trait:tt) => {
-        Opaque::from(std::sync::Arc::new($ex) as std::sync::Arc<dyn $trait>)
+    ($ex:expr) => {
+        Opaque::new(std::boxed::Box::new($ex))
     };
 }

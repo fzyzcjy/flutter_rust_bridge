@@ -1,4 +1,3 @@
-
 #![allow(dead_code)]
 pub struct MyStruct {
     pub content: bool,
