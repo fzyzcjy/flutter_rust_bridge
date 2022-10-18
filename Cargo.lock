@@ -484,6 +484,7 @@ dependencies = [
  "anyhow",
  "crossbeam",
  "flutter_rust_bridge",
+ "flutter_rust_bridge_codegen",
  "image",
  "num",
 ]

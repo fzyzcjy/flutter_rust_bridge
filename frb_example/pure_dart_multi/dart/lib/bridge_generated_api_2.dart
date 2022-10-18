@@ -32,20 +32,14 @@ class ApiClass2Impl implements ApiClass2 {
       callFfi: (port_) => _platform.inner.wire_simple_adder_2(port_, arg0, arg1),
       parseSuccessData: _wire2api_i32,
       constMeta: kSimpleAdder2ConstMeta,
-      argValues: [
-        a,
-        b
-      ],
+      argValues: [a, b],
       hint: hint,
     ));
   }
 
   FlutterRustBridgeTaskConstMeta get kSimpleAdder2ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "simple_adder_2",
-        argNames: [
-          "a",
-          "b"
-        ],
+        argNames: ["a", "b"],
       );
 
 // Section: wire2api
@@ -85,7 +79,8 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
   ApiClass2Wire(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
 
   /// The symbols are looked up with [lookup].
-  ApiClass2Wire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup) : _lookup = lookup;
+  ApiClass2Wire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
+      : _lookup = lookup;
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
@@ -95,8 +90,10 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _free_WireSyncReturnStructPtr = _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
-  late final _free_WireSyncReturnStruct = _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
+  late final _free_WireSyncReturnStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
+  late final _free_WireSyncReturnStruct =
+      _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
@@ -106,7 +103,8 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _store_dart_post_cobjectPtr = _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
+  late final _store_dart_post_cobjectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 
   void wire_simple_adder_2(
@@ -121,7 +119,8 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _wire_simple_adder_2Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder_2');
+  late final _wire_simple_adder_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder_2');
   late final _wire_simple_adder_2 = _wire_simple_adder_2Ptr.asFunction<void Function(int, int, int)>();
 }
 
