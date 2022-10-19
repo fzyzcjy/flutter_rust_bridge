@@ -31,7 +31,7 @@ pub unsafe fn vec_from_leak_ptr<T>(ptr: *mut T, len: i32) -> Vec<T> {
 }
 
 /// Convert [Vec<T>] to array length `N`.
-/// 
+///
 /// # Panics
 ///
 /// Panics if length of [Vec<T>] != `N`.

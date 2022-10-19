@@ -7,16 +7,20 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
+import 'bridge_generated.io.dart'
+    if (dart.library.html) 'bridge_generated.web.dart';
 import 'package:meta/meta.dart';
 
-class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeExampleSingleBlockTest {
+class FlutterRustBridgeExampleSingleBlockTestImpl
+    implements FlutterRustBridgeExampleSingleBlockTest {
   final FlutterRustBridgeExampleSingleBlockTestPlatform _platform;
   factory FlutterRustBridgeExampleSingleBlockTestImpl(ExternalLibrary dylib) =>
-      FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
+      FlutterRustBridgeExampleSingleBlockTestImpl.raw(
+          FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
 
   /// Only valid on web/WASM platforms.
-  factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(FutureOr<WasmModule> module) =>
+  factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(
+          FutureOr<WasmModule> module) =>
       FlutterRustBridgeExampleSingleBlockTestImpl(module as ExternalLibrary);
   FlutterRustBridgeExampleSingleBlockTestImpl.raw(this._platform);
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
@@ -31,19 +35,25 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "simple_adder",
         argNames: ["a", "b"],
       );
 
   Future<int> primitiveTypes(
-      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) {
+      {required int myI32,
+      required int myI64,
+      required double myF64,
+      required bool myBool,
+      dynamic hint}) {
     var arg0 = api2wire_i32(myI32);
     var arg1 = _platform.api2wire_i64(myI64);
     var arg2 = api2wire_f64(myF64);
     var arg3 = myBool;
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_primitive_types(port_, arg0, arg1, arg2, arg3),
+      callFfi: (port_) =>
+          _platform.inner.wire_primitive_types(port_, arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_i32,
       constMeta: kPrimitiveTypesConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
@@ -51,7 +61,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "primitive_types",
         argNames: ["myI32", "myI64", "myF64", "myBool"],
       );
@@ -67,7 +78,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "primitive_u32",
         argNames: ["myU32"],
       );
@@ -83,7 +95,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStringConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_string",
         argNames: ["s"],
       );
@@ -98,7 +111,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_return_unit",
         argNames: [],
       );
@@ -114,15 +128,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleVecU8ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_vec_u8",
         argNames: ["v"],
       );
 
-  Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint}) {
+  Future<VecOfPrimitivePack> handleVecOfPrimitive(
+      {required int n, dynamic hint}) {
     var arg0 = api2wire_i32(n);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_vec_of_primitive(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_vec_of_primitive(port_, arg0),
       parseSuccessData: _wire2api_vec_of_primitive_pack,
       constMeta: kHandleVecOfPrimitiveConstMeta,
       argValues: [n],
@@ -130,15 +147,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_vec_of_primitive",
         argNames: ["n"],
       );
 
-  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint}) {
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
+      {required int n, dynamic hint}) {
     var arg0 = api2wire_i32(n);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_zero_copy_vec_of_primitive(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_zero_copy_vec_of_primitive(port_, arg0),
       parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
       constMeta: kHandleZeroCopyVecOfPrimitiveConstMeta,
       argValues: [n],
@@ -146,12 +166,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_zero_copy_vec_of_primitive",
         argNames: ["n"],
       );
 
-  Future<MySize> handleStruct({required MySize arg, required MySize boxed, dynamic hint}) {
+  Future<MySize> handleStruct(
+      {required MySize arg, required MySize boxed, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_my_size(arg);
     var arg1 = _platform.api2wire_box_my_size(boxed);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -163,7 +185,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_struct",
         argNames: ["arg", "boxed"],
       );
@@ -179,15 +202,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_newtype",
         argNames: ["arg"],
       );
 
-  Future<List<MySize>> handleListOfStruct({required List<MySize> l, dynamic hint}) {
+  Future<List<MySize>> handleListOfStruct(
+      {required List<MySize> l, dynamic hint}) {
     var arg0 = _platform.api2wire_list_my_size(l);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_list_of_struct(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_list_of_struct(port_, arg0),
       parseSuccessData: _wire2api_list_my_size,
       constMeta: kHandleListOfStructConstMeta,
       argValues: [l],
@@ -195,12 +221,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleListOfStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_list_of_struct",
         argNames: ["l"],
       );
 
-  Future<List<String>> handleStringList({required List<String> names, dynamic hint}) {
+  Future<List<String>> handleStringList(
+      {required List<String> names, dynamic hint}) {
     var arg0 = _platform.api2wire_StringList(names);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_string_list(port_, arg0),
@@ -211,15 +239,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_string_list",
         argNames: ["names"],
       );
 
-  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) {
+  Future<MyTreeNode> handleComplexStruct(
+      {required MyTreeNode s, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_my_tree_node(s);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_complex_struct(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_complex_struct(port_, arg0),
       parseSuccessData: _wire2api_my_tree_node,
       constMeta: kHandleComplexStructConstMeta,
       argValues: [s],
@@ -227,7 +258,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleComplexStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleComplexStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_complex_struct",
         argNames: ["s"],
       );
@@ -243,7 +275,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_return",
         argNames: ["mode"],
       );
@@ -259,7 +292,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncBoolConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncBoolConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_bool",
         argNames: ["input"],
       );
@@ -275,7 +309,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncU8ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU8ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_u8",
         argNames: ["input"],
       );
@@ -291,7 +326,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncU16ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU16ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_u16",
         argNames: ["input"],
       );
@@ -307,7 +343,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncU32ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU32ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_u32",
         argNames: ["input"],
       );
@@ -323,7 +360,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncU64ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncU64ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_u64",
         argNames: ["input"],
       );
@@ -339,7 +377,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncI8ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI8ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_i8",
         argNames: ["input"],
       );
@@ -355,7 +394,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncI16ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI16ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_i16",
         argNames: ["input"],
       );
@@ -371,7 +411,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncI32ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI32ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_i32",
         argNames: ["input"],
       );
@@ -387,7 +428,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncI64ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncI64ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_i64",
         argNames: ["input"],
       );
@@ -403,7 +445,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncF32ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncF32ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_f32",
         argNames: ["input"],
       );
@@ -419,7 +462,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncF64ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncF64ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_f64",
         argNames: ["input"],
       );
@@ -435,7 +479,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSyncStringConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleSyncStringConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_string",
         argNames: ["input"],
       );
@@ -451,7 +496,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream",
         argNames: ["arg"],
       );
@@ -466,7 +512,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamOfStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamOfStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_of_struct",
         argNames: [],
       );
@@ -481,7 +528,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnErrConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "return_err",
         argNames: [],
       );
@@ -496,16 +544,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnPanicConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "return_panic",
         argNames: [],
       );
 
-  Future<double?> handleOptionalReturn({required double left, required double right, dynamic hint}) {
+  Future<double?> handleOptionalReturn(
+      {required double left, required double right, dynamic hint}) {
     var arg0 = api2wire_f64(left);
     var arg1 = api2wire_f64(right);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_optional_return(port_, arg0, arg1),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_optional_return(port_, arg0, arg1),
       parseSuccessData: _wire2api_opt_box_autoadd_f64,
       constMeta: kHandleOptionalReturnConstMeta,
       argValues: [left, right],
@@ -513,7 +564,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalReturnConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_optional_return",
         argNames: ["left", "right"],
       );
@@ -521,7 +573,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   Future<Element?> handleOptionalStruct({String? document, dynamic hint}) {
     var arg0 = _platform.api2wire_opt_String(document);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_optional_struct(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_optional_struct(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_element,
       constMeta: kHandleOptionalStructConstMeta,
       argValues: [document],
@@ -529,15 +582,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_optional_struct",
         argNames: ["document"],
       );
 
-  Future<ExoticOptionals?> handleOptionalIncrement({ExoticOptionals? opt, dynamic hint}) {
+  Future<ExoticOptionals?> handleOptionalIncrement(
+      {ExoticOptionals? opt, dynamic hint}) {
     var arg0 = _platform.api2wire_opt_box_autoadd_exotic_optionals(opt);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_optional_increment(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_optional_increment(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
       constMeta: kHandleOptionalIncrementConstMeta,
       argValues: [opt],
@@ -545,7 +601,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleOptionalIncrementConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_optional_increment",
         argNames: ["opt"],
       );
@@ -553,7 +610,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) {
     var arg0 = _platform.api2wire_opt_box_f64(opt);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_increment_boxed_optional(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_increment_boxed_optional(port_, arg0),
       parseSuccessData: _wire2api_f64,
       constMeta: kHandleIncrementBoxedOptionalConstMeta,
       argValues: [opt],
@@ -561,7 +619,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_increment_boxed_optional",
         argNames: ["opt"],
       );
@@ -583,8 +642,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     var arg5 = _platform.api2wire_opt_box_bool(boolbox);
     var arg6 = _platform.api2wire_opt_box_exotic_optionals(structbox);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) =>
-          _platform.inner.wire_handle_option_box_arguments(port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6),
+      callFfi: (port_) => _platform.inner.wire_handle_option_box_arguments(
+          port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6),
       parseSuccessData: _wire2api_String,
       constMeta: kHandleOptionBoxArgumentsConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
@@ -592,9 +651,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleOptionBoxArgumentsConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_option_box_arguments",
-        argNames: ["i8Box", "u8Box", "i32Box", "i64Box", "f64Box", "boolbox", "structbox"],
+        argNames: [
+          "i8Box",
+          "u8Box",
+          "i32Box",
+          "i64Box",
+          "f64Box",
+          "boolbox",
+          "structbox"
+        ],
       );
 
   Future<Uint8List> printNote({required Note note, dynamic hint}) {
@@ -608,7 +676,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kPrintNoteConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kPrintNoteConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "print_note",
         argNames: ["note"],
       );
@@ -624,15 +693,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleReturnEnumConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_return_enum",
         argNames: ["input"],
       );
 
-  Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint}) {
+  Future<Weekdays> handleEnumParameter(
+      {required Weekdays weekday, dynamic hint}) {
     var arg0 = api2wire_weekdays(weekday);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_enum_parameter(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_enum_parameter(port_, arg0),
       parseSuccessData: _wire2api_weekdays,
       constMeta: kHandleEnumParameterConstMeta,
       argValues: [weekday],
@@ -640,7 +712,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_enum_parameter",
         argNames: ["weekday"],
       );
@@ -648,7 +721,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_customized(val);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_customized_struct(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_customized_struct(port_, arg0),
       parseSuccessData: _wire2api_unit,
       constMeta: kHandleCustomizedStructConstMeta,
       argValues: [val],
@@ -656,12 +730,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_customized_struct",
         argNames: ["val"],
       );
 
-  Future<KitchenSink> handleEnumStruct({required KitchenSink val, dynamic hint}) {
+  Future<KitchenSink> handleEnumStruct(
+      {required KitchenSink val, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_kitchen_sink(val);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_enum_struct(port_, arg0),
@@ -672,7 +748,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleEnumStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_enum_struct",
         argNames: ["val"],
       );
@@ -688,7 +765,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kUseImportedStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kUseImportedStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "use_imported_struct",
         argNames: ["myStruct"],
       );
@@ -704,7 +782,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kUseImportedEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kUseImportedEnumConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "use_imported_enum",
         argNames: ["myEnum"],
       );
@@ -719,12 +798,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "get_app_settings",
         argNames: [],
       );
 
-  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint}) {
+  Future<bool> isAppEmbedded(
+      {required ApplicationSettings appSettings, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_application_settings(appSettings);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_is_app_embedded(port_, arg0),
@@ -735,7 +816,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "is_app_embedded",
         argNames: ["appSettings"],
       );
@@ -750,12 +832,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "get_message",
         argNames: [],
       );
 
-  Future<Numbers> repeatNumber({required int num, required int times, dynamic hint}) {
+  Future<Numbers> repeatNumber(
+      {required int num, required int times, dynamic hint}) {
     var arg0 = api2wire_i32(num);
     var arg1 = api2wire_usize(times);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -767,16 +851,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "repeat_number",
         argNames: ["num", "times"],
       );
 
-  Future<Sequences> repeatSequence({required int seq, required int times, dynamic hint}) {
+  Future<Sequences> repeatSequence(
+      {required int seq, required int times, dynamic hint}) {
     var arg0 = api2wire_i32(seq);
     var arg1 = api2wire_usize(times);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_repeat_sequence(port_, arg0, arg1),
+      callFfi: (port_) =>
+          _platform.inner.wire_repeat_sequence(port_, arg0, arg1),
       parseSuccessData: _wire2api_sequences,
       constMeta: kRepeatSequenceConstMeta,
       argValues: [seq, times],
@@ -784,7 +871,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kRepeatSequenceConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kRepeatSequenceConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "repeat_sequence",
         argNames: ["seq", "times"],
       );
@@ -800,7 +888,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kFirstNumberConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kFirstNumberConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "first_number",
         argNames: ["nums"],
       );
@@ -816,7 +905,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kFirstSequenceConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "first_sequence",
         argNames: ["seqs"],
       );
@@ -831,7 +921,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetArrayConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "get_array",
         argNames: [],
       );
@@ -846,7 +937,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetComplexArrayConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "get_complex_array",
         argNames: [],
       );
@@ -862,7 +954,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kGetUsizeConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetUsizeConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "get_usize",
         argNames: ["u"],
       );
@@ -878,7 +971,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "next_user_id",
         argNames: ["userId"],
       );
@@ -893,7 +987,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kRegisterEventListenerConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "register_event_listener",
         argNames: [],
       );
@@ -908,12 +1003,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kCloseEventListenerConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "close_event_listener",
         argNames: [],
       );
 
-  Future<void> createEvent({required String address, required String payload, dynamic hint}) {
+  Future<void> createEvent(
+      {required String address, required String payload, dynamic hint}) {
     var arg0 = _platform.api2wire_String(address);
     var arg1 = _platform.api2wire_String(payload);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -925,16 +1022,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kCreateEventConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "create_event",
         argNames: ["address", "payload"],
       );
 
-  Stream<Log> handleStreamSinkAt1({required int key, required int max, dynamic hint}) {
+  Stream<Log> handleStreamSinkAt1(
+      {required int key, required int max, dynamic hint}) {
     var arg0 = api2wire_u32(key);
     var arg1 = api2wire_u32(max);
     return _platform.executeStream(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_stream_sink_at_1(port_, arg0, arg1),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_stream_sink_at_1(port_, arg0, arg1),
       parseSuccessData: _wire2api_log,
       constMeta: kHandleStreamSinkAt1ConstMeta,
       argValues: [key, max],
@@ -942,16 +1042,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt1ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_sink_at_1",
         argNames: ["key", "max"],
       );
 
-  Stream<Log> handleStreamSinkAt2({required int key, required int max, dynamic hint}) {
+  Stream<Log> handleStreamSinkAt2(
+      {required int key, required int max, dynamic hint}) {
     var arg0 = api2wire_u32(key);
     var arg1 = api2wire_u32(max);
     return _platform.executeStream(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_stream_sink_at_2(port_, arg0, arg1),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_stream_sink_at_2(port_, arg0, arg1),
       parseSuccessData: _wire2api_log,
       constMeta: kHandleStreamSinkAt2ConstMeta,
       argValues: [key, max],
@@ -959,16 +1062,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt2ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_sink_at_2",
         argNames: ["key", "max"],
       );
 
-  Stream<Log> handleStreamSinkAt3({required int key, required int max, dynamic hint}) {
+  Stream<Log> handleStreamSinkAt3(
+      {required int key, required int max, dynamic hint}) {
     var arg0 = api2wire_u32(key);
     var arg1 = api2wire_u32(max);
     return _platform.executeStream(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_stream_sink_at_3(port_, arg0, arg1),
+      callFfi: (port_) =>
+          _platform.inner.wire_handle_stream_sink_at_3(port_, arg0, arg1),
       parseSuccessData: _wire2api_log,
       constMeta: kHandleStreamSinkAt3ConstMeta,
       argValues: [key, max],
@@ -976,7 +1082,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleStreamSinkAt3ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_stream_sink_at_3",
         argNames: ["key", "max"],
       );
@@ -991,17 +1098,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetSumStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "get_sum_struct",
         argNames: [],
       );
 
-  Future<SumWithArray3> getSumArray({required int a, required int b, required int c, dynamic hint}) {
+  Future<SumWithArray3> getSumArray(
+      {required int a, required int b, required int c, dynamic hint}) {
     var arg0 = api2wire_u32(a);
     var arg1 = api2wire_u32(b);
     var arg2 = api2wire_u32(c);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_get_sum_array(port_, arg0, arg1, arg2),
+      callFfi: (port_) =>
+          _platform.inner.wire_get_sum_array(port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_SumWith_array_3,
       constMeta: kGetSumArrayConstMeta,
       argValues: [a, b, c],
@@ -1009,7 +1119,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kGetSumArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kGetSumArrayConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "get_sum_array",
         argNames: ["a", "b", "c"],
       );
@@ -1025,7 +1136,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kMultiplyByTenConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kMultiplyByTenConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "multiply_by_ten",
         argNames: ["measure"],
       );
@@ -1040,7 +1152,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kCallOldModuleSystemConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kCallOldModuleSystemConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "call_old_module_system",
         argNames: [],
       );
@@ -1055,7 +1168,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kCallNewModuleSystemConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kCallNewModuleSystemConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "call_new_module_system",
         argNames: [],
       );
@@ -1070,7 +1184,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleBigBuffersConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleBigBuffersConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_big_buffers",
         argNames: [],
       );
@@ -1086,7 +1201,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kDatetimeUtcConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kDatetimeUtcConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "datetime_utc",
         argNames: ["d"],
       );
@@ -1102,7 +1218,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kDatetimeLocalConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kDatetimeLocalConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "datetime_local",
         argNames: ["d"],
       );
@@ -1118,7 +1235,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kNaivedatetimeConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNaivedatetimeConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "naivedatetime",
         argNames: ["d"],
       );
@@ -1134,15 +1252,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kDurationConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kDurationConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "duration",
         argNames: ["d"],
       );
 
-  Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint}) {
+  Future<Duration> howLongDoesItTake(
+      {required FeatureChrono mine, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_feature_chrono(mine);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_how_long_does_it_take(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_how_long_does_it_take(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Duration,
       constMeta: kHowLongDoesItTakeConstMeta,
       argValues: [mine],
@@ -1150,7 +1271,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "how_long_does_it_take",
         argNames: ["mine"],
       );
@@ -1166,12 +1288,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleUuidConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_uuid",
         argNames: ["id"],
       );
 
-  Future<List<UuidValue>> handleUuids({required List<UuidValue> ids, dynamic hint}) {
+  Future<List<UuidValue>> handleUuids(
+      {required List<UuidValue> ids, dynamic hint}) {
     var arg0 = _platform.api2wire_Uuids(ids);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_uuids(port_, arg0),
@@ -1182,12 +1306,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleUuidsConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_uuids",
         argNames: ["ids"],
       );
 
-  Future<FeatureUuid> handleNestedUuids({required FeatureUuid ids, dynamic hint}) {
+  Future<FeatureUuid> handleNestedUuids(
+      {required FeatureUuid ids, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_feature_uuid(ids);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_nested_uuids(port_, arg0),
@@ -1198,7 +1324,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kHandleNestedUuidsConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_nested_uuids",
         argNames: ["ids"],
       );
@@ -1214,7 +1341,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kNewMsgidConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNewMsgidConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "new_msgid",
         argNames: ["id"],
       );
@@ -1230,7 +1358,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kUseMsgidConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kUseMsgidConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "use_msgid",
         argNames: ["id"],
       );
@@ -1246,7 +1375,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kBoxedBlobConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kBoxedBlobConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "boxed_blob",
         argNames: ["blob"],
       );
@@ -1262,7 +1392,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kUseBoxedBlobConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "use_boxed_blob",
         argNames: ["blob"],
       );
@@ -1270,7 +1401,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint}) {
     var arg0 = _platform.api2wire_u8_array_8(id);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_return_boxed_feed_id(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_return_boxed_feed_id(port_, arg0),
       parseSuccessData: _wire2api_box_feed_id,
       constMeta: kReturnBoxedFeedIdConstMeta,
       argValues: [id],
@@ -1278,7 +1410,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kReturnBoxedFeedIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnBoxedFeedIdConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "return_boxed_feed_id",
         argNames: ["id"],
       );
@@ -1286,7 +1419,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_feed_id(id);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_return_boxed_raw_feed_id(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_return_boxed_raw_feed_id(port_, arg0),
       parseSuccessData: _wire2api_box_u8_array_8,
       constMeta: kReturnBoxedRawFeedIdConstMeta,
       argValues: [id],
@@ -1294,7 +1428,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kReturnBoxedRawFeedIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnBoxedRawFeedIdConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "return_boxed_raw_feed_id",
         argNames: ["id"],
       );
@@ -1310,7 +1445,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kTestIdConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "test_id",
         argNames: ["id"],
       );
@@ -1326,7 +1462,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kLastNumberConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kLastNumberConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "last_number",
         argNames: ["array"],
       );
@@ -1342,7 +1479,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "nested_id",
         argNames: ["id"],
       );
@@ -1357,7 +1495,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "create_opaque",
         argNames: [],
       );
@@ -1372,7 +1511,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kCreateArrayOpaqueEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kCreateArrayOpaqueEnumConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "create_array_opaque_enum",
         argNames: [],
       );
@@ -1388,7 +1528,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kRunEnumOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kRunEnumOpaqueConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "run_enum_opaque",
         argNames: ["opaque"],
       );
@@ -1404,15 +1545,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "run_opaque",
         argNames: ["opaque"],
       );
 
-  Future<String> runOpaqueWithDelay({required OpaqueStruct opaque, dynamic hint}) {
+  Future<String> runOpaqueWithDelay(
+      {required OpaqueStruct opaque, dynamic hint}) {
     var arg0 = _platform.api2wire_OpaqueStruct(opaque);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_run_opaque_with_delay(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_run_opaque_with_delay(port_, arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kRunOpaqueWithDelayConstMeta,
       argValues: [opaque],
@@ -1420,7 +1564,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kRunOpaqueWithDelayConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kRunOpaqueWithDelayConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "run_opaque_with_delay",
         argNames: ["opaque"],
       );
@@ -1435,17 +1580,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "opaque_array",
         argNames: [],
       );
 
-  Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
+  Future<int> sumMethodSumWith(
+      {required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
     var arg2 = api2wire_u32(z);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(port_, arg0, arg1, arg2),
+      callFfi: (port_) =>
+          _platform.inner.wire_sum__method__SumWith(port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_u32,
       constMeta: kSumMethodSumWithConstMeta,
       argValues: [that, y, z],
@@ -1453,15 +1601,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "sum__method__SumWith",
         argNames: ["that", "y", "z"],
       );
 
-  Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint}) {
+  Future<ConcatenateWith> newStaticMethodConcatenateWith(
+      {required String a, dynamic hint}) {
     var arg0 = _platform.api2wire_String(a);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_new__static_method__ConcatenateWith(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_new__static_method__ConcatenateWith(port_, arg0),
       parseSuccessData: (d) => _wire2api_concatenate_with(d),
       constMeta: kNewStaticMethodConcatenateWithConstMeta,
       argValues: [a],
@@ -1469,16 +1620,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
         debugName: "new__static_method__ConcatenateWith",
         argNames: ["a"],
       );
 
-  Future<String> concatenateMethodConcatenateWith({required ConcatenateWith that, required String b, dynamic hint}) {
+  Future<String> concatenateMethodConcatenateWith(
+      {required ConcatenateWith that, required String b, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_concatenate_with(that);
     var arg1 = _platform.api2wire_String(b);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_concatenate__method__ConcatenateWith(port_, arg0, arg1),
+      callFfi: (port_) => _platform.inner
+          .wire_concatenate__method__ConcatenateWith(port_, arg0, arg1),
       parseSuccessData: _wire2api_String,
       constMeta: kConcatenateMethodConcatenateWithConstMeta,
       argValues: [that, b],
@@ -1486,16 +1640,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "concatenate__method__ConcatenateWith",
-        argNames: ["that", "b"],
-      );
+  FlutterRustBridgeTaskConstMeta
+      get kConcatenateMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "concatenate__method__ConcatenateWith",
+            argNames: ["that", "b"],
+          );
 
-  Future<String> concatenateStaticStaticMethodConcatenateWith({required String a, required String b, dynamic hint}) {
+  Future<String> concatenateStaticStaticMethodConcatenateWith(
+      {required String a, required String b, dynamic hint}) {
     var arg0 = _platform.api2wire_String(a);
     var arg1 = _platform.api2wire_String(b);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_concatenate_static__static_method__ConcatenateWith(port_, arg0, arg1),
+      callFfi: (port_) => _platform.inner
+          .wire_concatenate_static__static_method__ConcatenateWith(
+              port_, arg0, arg1),
       parseSuccessData: _wire2api_String,
       constMeta: kConcatenateStaticStaticMethodConcatenateWithConstMeta,
       argValues: [a, b],
@@ -1503,20 +1662,25 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kConcatenateStaticStaticMethodConcatenateWithConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "concatenate_static__static_method__ConcatenateWith",
-        argNames: ["a", "b"],
-      );
+  FlutterRustBridgeTaskConstMeta
+      get kConcatenateStaticStaticMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "concatenate_static__static_method__ConcatenateWith",
+            argNames: ["a", "b"],
+          );
 
   Stream<Log2> handleSomeStreamSinkMethodConcatenateWith(
-      {required ConcatenateWith that, required int key, required int max, dynamic hint}) {
+      {required ConcatenateWith that,
+      required int key,
+      required int max,
+      dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_concatenate_with(that);
     var arg1 = api2wire_u32(key);
     var arg2 = api2wire_u32(max);
     return _platform.executeStream(FlutterRustBridgeTask(
-      callFfi: (port_) =>
-          _platform.inner.wire_handle_some_stream_sink__method__ConcatenateWith(port_, arg0, arg1, arg2),
+      callFfi: (port_) => _platform.inner
+          .wire_handle_some_stream_sink__method__ConcatenateWith(
+              port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_log_2,
       constMeta: kHandleSomeStreamSinkMethodConcatenateWithConstMeta,
       argValues: [that, key, max],
@@ -1524,16 +1688,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkMethodConcatenateWithConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_some_stream_sink__method__ConcatenateWith",
-        argNames: ["that", "key", "max"],
-      );
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStreamSinkMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "handle_some_stream_sink__method__ConcatenateWith",
+            argNames: ["that", "key", "max"],
+          );
 
-  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith({required ConcatenateWith that, dynamic hint}) {
+  Stream<int> handleSomeStreamSinkAt1MethodConcatenateWith(
+      {required ConcatenateWith that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_concatenate_with(that);
     return _platform.executeStream(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_handle_some_stream_sink_at_1__method__ConcatenateWith(port_, arg0),
+      callFfi: (port_) => _platform.inner
+          .wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+              port_, arg0),
       parseSuccessData: _wire2api_u32,
       constMeta: kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta,
       argValues: [that],
@@ -1541,48 +1709,58 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_some_stream_sink_at_1__method__ConcatenateWith",
-        argNames: ["that"],
-      );
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName: "handle_some_stream_sink_at_1__method__ConcatenateWith",
+            argNames: ["that"],
+          );
 
   Stream<Log2> handleSomeStaticStreamSinkStaticMethodConcatenateWith(
       {required int key, required int max, dynamic hint}) {
     var arg0 = api2wire_u32(key);
     var arg1 = api2wire_u32(max);
     return _platform.executeStream(FlutterRustBridgeTask(
-      callFfi: (port_) =>
-          _platform.inner.wire_handle_some_static_stream_sink__static_method__ConcatenateWith(port_, arg0, arg1),
+      callFfi: (port_) => _platform.inner
+          .wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+              port_, arg0, arg1),
       parseSuccessData: _wire2api_log_2,
-      constMeta: kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta,
+      constMeta:
+          kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta,
       argValues: [key, max],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_some_static_stream_sink__static_method__ConcatenateWith",
-        argNames: ["key", "max"],
-      );
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName:
+                "handle_some_static_stream_sink__static_method__ConcatenateWith",
+            argNames: ["key", "max"],
+          );
 
-  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint}) {
+  Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(
+      {dynamic hint}) {
     return _platform.executeStream(FlutterRustBridgeTask(
-      callFfi: (port_) =>
-          _platform.inner.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_),
+      callFfi: (port_) => _platform.inner
+          .wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+              port_),
       parseSuccessData: _wire2api_u32,
-      constMeta: kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta,
+      constMeta:
+          kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta,
       argValues: [],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
-        argNames: [],
-      );
+  FlutterRustBridgeTaskConstMeta
+      get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta =>
+          const FlutterRustBridgeTaskConstMeta(
+            debugName:
+                "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
+            argNames: [],
+          );
 
 // Section: wire2api
 
@@ -1607,7 +1785,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   EnumOpaqueArray5 _wire2api_EnumOpaque_array_5(dynamic raw) {
-    return EnumOpaqueArray5((raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
+    return EnumOpaqueArray5(
+        (raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
   }
 
   I32 _wire2api_I32(dynamic raw) {
@@ -1623,7 +1802,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   OpaqueStructArray2 _wire2api_OpaqueStruct_array_2(dynamic raw) {
-    return OpaqueStructArray2((raw as List<dynamic>).map(_wire2api_OpaqueStruct).toList());
+    return OpaqueStructArray2(
+        (raw as List<dynamic>).map(_wire2api_OpaqueStruct).toList());
   }
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {
@@ -1643,7 +1823,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   SumWithArray3 _wire2api_SumWith_array_3(dynamic raw) {
-    return SumWithArray3((raw as List<dynamic>).map(_wire2api_sum_with).toList());
+    return SumWithArray3(
+        (raw as List<dynamic>).map(_wire2api_sum_with).toList());
   }
 
   String _wire2api_SyncReturn_String(Uint8List raw) {
@@ -1763,7 +1944,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   ApplicationEnv _wire2api_application_env(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ApplicationEnv(
       vars: _wire2api_list_application_env_var(arr[0]),
     );
@@ -1771,7 +1953,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return ApplicationEnvVar(
       field0: _wire2api_String(arr[0]),
       field1: _wire2api_bool(arr[1]),
@@ -1802,7 +1985,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   ApplicationSettings _wire2api_application_settings(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return ApplicationSettings(
       name: _wire2api_String(arr[0]),
       version: _wire2api_String(arr[1]),
@@ -1813,7 +1997,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Attribute _wire2api_attribute(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Attribute(
       key: _wire2api_String(arr[0]),
       value: _wire2api_String(arr[1]),
@@ -1822,7 +2007,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   BigBuffers _wire2api_big_buffers(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffers(
       int64: _wire2api_int_64_list(arr[0]),
       uint64: _wire2api_uint_64_list(arr[1]),
@@ -1831,7 +2017,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Blob _wire2api_blob(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Blob(
       field0: _wire2api_u8_array_1600(arr[0]),
     );
@@ -1899,7 +2086,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   ConcatenateWith _wire2api_concatenate_with(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConcatenateWith(
       bridge: this,
       a: _wire2api_String(arr[0]),
@@ -1921,7 +2109,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Element _wire2api_element(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return Element(
       tag: _wire2api_opt_String(arr[0]),
       text: _wire2api_opt_String(arr[1]),
@@ -1959,7 +2148,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Event _wire2api_event(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Event(
       address: _wire2api_String(arr[0]),
       payload: _wire2api_String(arr[1]),
@@ -1968,7 +2158,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 14) throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+    if (arr.length != 14)
+      throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
     return ExoticOptionals(
       int32: _wire2api_opt_box_autoadd_i32(arr[0]),
       int64: _wire2api_opt_box_autoadd_i64(arr[1]),
@@ -1997,7 +2188,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FeatureUuid _wire2api_feature_uuid(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return FeatureUuid(
       one: _wire2api_Uuid(arr[0]),
       many: _wire2api_Uuids(arr[1]),
@@ -2006,7 +2198,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FeedId _wire2api_feed_id(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeedId(
       field0: _wire2api_u8_array_8(arr[0]),
     );
@@ -2118,7 +2311,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
+    return (raw as List<dynamic>)
+        .map(_wire2api_opt_box_autoadd_attribute)
+        .toList();
   }
 
   List<Point> _wire2api_list_point(dynamic raw) {
@@ -2135,7 +2330,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Log _wire2api_log(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Log(
       key: _wire2api_u32(arr[0]),
       value: _wire2api_u32(arr[1]),
@@ -2144,7 +2340,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Log2 _wire2api_log_2(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Log2(
       key: _wire2api_u32(arr[0]),
       value: _wire2api_String(arr[1]),
@@ -2168,7 +2365,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MessageId _wire2api_message_id(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MessageId(
       field0: _wire2api_u8_array_32(arr[0]),
     );
@@ -2176,7 +2374,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MySize _wire2api_my_size(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MySize(
       width: _wire2api_i32(arr[0]),
       height: _wire2api_i32(arr[1]),
@@ -2185,7 +2384,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStreamEntry(
       hello: _wire2api_String(arr[0]),
     );
@@ -2193,7 +2393,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MyTreeNode _wire2api_my_tree_node(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNode(
       valueI32: _wire2api_i32(arr[0]),
       valueVecU8: _wire2api_uint_8_list(arr[1]),
@@ -2204,7 +2405,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   NewSimpleStruct _wire2api_new_simple_struct(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NewSimpleStruct(
       field: _wire2api_i32(arr[0]),
     );
@@ -2212,7 +2414,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   NewTypeInt _wire2api_new_type_int(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NewTypeInt(
       field0: _wire2api_i64(arr[0]),
     );
@@ -2220,7 +2423,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Numbers _wire2api_numbers(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Numbers(
       field0: _wire2api_int_32_list(arr[0]),
     );
@@ -2228,7 +2432,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   OldSimpleStruct _wire2api_old_simple_struct(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return OldSimpleStruct(
       field: _wire2api_i32(arr[0]),
     );
@@ -2316,7 +2521,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Point _wire2api_point(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Point(
       x: _wire2api_f32(arr[0]),
       y: _wire2api_f32(arr[1]),
@@ -2325,7 +2531,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Sequences _wire2api_sequences(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Sequences(
       field0: _wire2api_int_32_list(arr[0]),
     );
@@ -2346,7 +2553,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   SumWith _wire2api_sum_with(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SumWith(
       bridge: this,
       x: _wire2api_u32(arr[0]),
@@ -2355,7 +2563,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   TestId _wire2api_test_id(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TestId(
       field0: _wire2api_i32_array_2(arr[0]),
     );
@@ -2415,7 +2624,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   UserId _wire2api_user_id(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return UserId(
       value: _wire2api_u32(arr[0]),
     );
@@ -2427,7 +2637,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+    if (arr.length != 10)
+      throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
     return VecOfPrimitivePack(
       int8List: _wire2api_int_8_list(arr[0]),
       uint8List: _wire2api_uint_8_list(arr[1]),
@@ -2446,9 +2657,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return Weekdays.values[raw];
   }
 
-  ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
+  ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(
+      dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+    if (arr.length != 10)
+      throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
     return ZeroCopyVecOfPrimitivePack(
       int8List: _wire2api_ZeroCopyBuffer_Int8List(arr[0]),
       uint8List: _wire2api_ZeroCopyBuffer_Uint8List(arr[1]),

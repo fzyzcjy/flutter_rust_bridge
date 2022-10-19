@@ -112,11 +112,12 @@ external int _lendOpaqueBox(int ptr, int lendPtr);
 /// An opaque pointer to a Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque {
-
   /// Pointer to a Rust type.
   int _ptr = 0;
+
   /// Pointer to a closure that removes ownership Rust type.
   int _drop = 0;
+
   /// Pointer to a closure that lends ownership of the Rust type.
   int _lend = 0;
 

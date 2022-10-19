@@ -485,12 +485,10 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-
-
 /// Dropper opaque data and specific functions of this opaque data.
 ///
 /// # Safety
-/// 
+///
 /// This function should never be called manually.
 #[wasm_bindgen]
 pub extern "C" fn drop_opaque_box(ptr: usize, ptr_drop_fn: usize, ptr_lend_fn: usize) {
@@ -502,11 +500,10 @@ pub extern "C" fn drop_opaque_box(ptr: usize, ptr_drop_fn: usize, ptr_lend_fn: u
     }
 }
 
-
 /// Equivalent to a [Arc::clone()], but direcly in terms of raw pointers.
 ///
 /// # Safety
-/// 
+///
 /// This function should never be called manually.
 #[wasm_bindgen]
 pub extern "C" fn lend_opaque_box(ptr: usize, ptr_lend_fn: usize) -> usize {
