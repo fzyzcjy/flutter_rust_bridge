@@ -71,6 +71,19 @@ pub struct Opaque<T: ?Sized + DartSafe> {
     pub(crate) ptr: Option<Arc<T>>,
 }
 
+impl<T: DartSafe> Opaque<T> {
+    pub fn into_sync_dart(self) -> Vec<u8> {
+        // ffi.Pointer? type
+        let ptr = self.ptr.map(|ptr| Arc::into_raw(ptr) as usize).unwrap_or_default();
+        let drop = drop_arc::<T> as CArcDropper<T> as usize;
+        let lend = lend_arc::<T> as CArcLender<T> as usize;
+        println!("{ptr}-{drop}-{lend}");
+        let mut res = vec![usize::BITS as u8];
+        res.append(&mut [ptr.to_be_bytes(), drop.to_be_bytes(), lend.to_be_bytes()].concat());
+        res
+    }   
+}
+
 impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
         Self { ptr: Some(ptr) }

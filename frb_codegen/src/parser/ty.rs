@@ -192,6 +192,9 @@ impl<'a> TypeParser<'a> {
                         IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::VecU8)),
                         _ => None,
                     },
+                    Some(Opaque(opaque)) => {
+                        Some(SyncReturn(IrTypeSyncReturn::Opaque(opaque)))
+                    }
                     _ => None,
                 },
                 "Vec" => match *generic {

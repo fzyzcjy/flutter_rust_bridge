@@ -434,6 +434,11 @@ pub fn wire_create_opaque(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_create_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_create_opaque_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_create_array_opaque_enum(port_: MessagePort) {
     wire_create_array_opaque_enum_impl(port_)
 }

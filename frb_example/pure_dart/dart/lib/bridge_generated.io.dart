@@ -2245,6 +2245,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_create_opaquePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_opaque');
   late final _wire_create_opaque = _wire_create_opaquePtr.asFunction<void Function(int)>();
 
+  WireSyncReturnStruct wire_sync_create_opaque() {
+    return _wire_sync_create_opaque();
+  }
+
+  late final _wire_sync_create_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_create_opaque');
+  late final _wire_sync_create_opaque = _wire_sync_create_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+
   void wire_create_array_opaque_enum(
     int port_,
   ) {

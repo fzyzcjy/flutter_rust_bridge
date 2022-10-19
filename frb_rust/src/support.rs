@@ -6,6 +6,7 @@ use std::{mem, sync::Arc};
 
 pub use crate::ffi::*;
 use crate::DartSafe;
+use allo_isolate::ffi::DartCObject;
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
@@ -99,6 +100,13 @@ impl From<bool> for WireSyncReturnData {
 impl From<String> for WireSyncReturnData {
     fn from(data: String) -> Self {
         data.as_bytes().to_vec().into()
+    }
+}
+
+/// Sync Opaque
+impl<T: DartSafe> From<Opaque<T>> for WireSyncReturnData {
+    fn from(data: Opaque<T>) -> Self {
+        data.into_sync_dart().into()
     }
 }
 

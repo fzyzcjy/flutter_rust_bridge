@@ -1236,6 +1236,16 @@ fn wire_create_opaque_impl(port_: MessagePort) {
         move || move |task_callback| Ok(create_opaque()),
     )
 }
+fn wire_sync_create_opaque_impl() -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_create_opaque",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Ok(sync_create_opaque()),
+    )
+}
 fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

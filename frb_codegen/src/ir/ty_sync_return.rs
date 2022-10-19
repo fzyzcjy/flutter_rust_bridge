@@ -6,6 +6,7 @@ use crate::{ir::*, target::Target};
 #[derive(Debug, Clone)]
 pub enum IrTypeSyncReturn {
     Primitive(IrTypePrimitive),
+    Opaque(IrTypeOpaque),
     String,
     VecU8,
 }
@@ -58,6 +59,7 @@ impl IrTypeSyncReturn {
             IrTypeSyncReturn::VecU8 => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
-        }
+            IrTypeSyncReturn::Opaque(data) => IrType::Opaque(data.clone()),
     }
+}
 }

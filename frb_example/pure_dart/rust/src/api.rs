@@ -973,6 +973,11 @@ pub fn create_opaque() -> Opaque<OpaqueStruct> {
     Opaque::new(OpaqueStruct(HideData::new()))
 }
 
+pub fn sync_create_opaque() -> SyncReturn<Opaque<OpaqueStruct>> {
+    SyncReturn(Opaque::new(OpaqueStruct(HideData::new())))
+}
+
+
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
     [
         EnumOpaque::Struct(Opaque::new(OpaqueStruct(HideData::new()))),

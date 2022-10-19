@@ -442,6 +442,11 @@ pub extern "C" fn wire_create_opaque(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_create_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_create_opaque_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_create_array_opaque_enum(port_: i64) {
     wire_create_array_opaque_enum_impl(port_)
 }

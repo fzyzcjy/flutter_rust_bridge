@@ -11,7 +11,7 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        match self.ir {
+        match &self.ir {
             IrTypeSyncReturn::Primitive(ref primitive) => match primitive {
                 IrTypePrimitive::Bool => "return uint8ListToBool(raw);".into(),
                 primitive => {
@@ -42,6 +42,30 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             },
             IrTypeSyncReturn::String => "return utf8.decode(raw);".into(),
             IrTypeSyncReturn::VecU8 => "return raw;".into(),
+            IrTypeSyncReturn::Opaque(o) => {
+                format!("var intLen = raw[0] ~/ 8;
+                var ptrList = List.filled(intLen, 0);
+                var dropList = List.filled(intLen, 0);
+                var lendList = List.filled(intLen, 0);
+                var j = 0;
+                for (var i = 1; i < 1 + intLen; ++i, ++j) {{
+                  ptrList[j] = raw[i];
+                }}
+                j = 0;
+                for (var i = 1 + intLen; i < 1 + intLen * 2; ++i, ++j) {{
+                  dropList[j] = raw[i];
+                }}
+                j = 0;
+                for (var i = 1 + intLen * 2; i < 1 + intLen * 3; ++i, ++j) {{
+                  lendList[j] = raw[i];
+                }}
+            
+                var a = ByteData.view(Uint8List.fromList(ptrList).buffer, 0, 8).getUint64(0);
+                var b = ByteData.view(Uint8List.fromList(dropList).buffer, 0, 8).getUint64(0);
+                var c = ByteData.view(Uint8List.fromList(lendList).buffer, 0, 8).getUint64(0);
+            
+                return {}.fromRaw(a, b, c);", o.inner_dart)
+            },
         }
     }
 }

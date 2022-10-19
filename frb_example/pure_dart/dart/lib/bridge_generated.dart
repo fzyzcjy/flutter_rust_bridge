@@ -1362,6 +1362,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  OpaqueStruct syncCreateOpaque({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_create_opaque(),
+      parseSuccessData: _wire2api_SyncReturn_OpaqueStruct,
+      constMeta: kSyncCreateOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_create_opaque",
+        argNames: [],
+      );
+
   Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_array_opaque_enum(port_),
@@ -1644,6 +1659,31 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   SumWithArray3 _wire2api_SumWith_array_3(dynamic raw) {
     return SumWithArray3((raw as List<dynamic>).map(_wire2api_sum_with).toList());
+  }
+
+  OpaqueStruct _wire2api_SyncReturn_OpaqueStruct(Uint8List raw) {
+    var intLen = raw[0] ~/ 8;
+    var ptrList = List.filled(intLen, 0);
+    var dropList = List.filled(intLen, 0);
+    var lendList = List.filled(intLen, 0);
+    var j = 0;
+    for (var i = 1; i < 1 + intLen; ++i, ++j) {
+      ptrList[j] = raw[i];
+    }
+    j = 0;
+    for (var i = 1 + intLen; i < 1 + intLen * 2; ++i, ++j) {
+      dropList[j] = raw[i];
+    }
+    j = 0;
+    for (var i = 1 + intLen * 2; i < 1 + intLen * 3; ++i, ++j) {
+      lendList[j] = raw[i];
+    }
+
+    var a = ByteData.view(Uint8List.fromList(ptrList).buffer, 0, 8).getUint64(0);
+    var b = ByteData.view(Uint8List.fromList(dropList).buffer, 0, 8).getUint64(0);
+    var c = ByteData.view(Uint8List.fromList(lendList).buffer, 0, 8).getUint64(0);
+
+    return OpaqueStruct.fromRaw(a, b, c);
   }
 
   String _wire2api_SyncReturn_String(Uint8List raw) {

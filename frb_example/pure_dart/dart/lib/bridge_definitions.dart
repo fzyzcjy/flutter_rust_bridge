@@ -360,6 +360,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta;
 
+  OpaqueStruct syncCreateOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateOpaqueConstMeta;
+
   Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateArrayOpaqueEnumConstMeta;

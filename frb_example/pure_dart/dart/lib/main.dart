@@ -693,6 +693,20 @@ void main(List<String> args) async {
   });
 
   group('Opaque feature:', () {
+    test('Create sync opaque type', () async {
+      var data = api.syncCreateOpaque();
+            expect(
+          await api.runOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.dispose();
+    });
+
     test('Create opaque type', () async {
       var futureData = api.createOpaque();
       var data = await api.createOpaque();
