@@ -85,18 +85,21 @@ you need to manually create four text files to redirect calls from libgcc to lib
       ```
       C:\Users\Administrator\AppData\Local\Android\Sdk\ndk\24.0.8215888\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\14.0.1\lib\linux\x86_64\
       ```
-   
+
    * On macOS Monterey, it is similar to:
       ```
       ~/Library/Android/sdk/ndk/24.0.8215888/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/14.0.1/lib/linux/x86_64/
       ```
    The three other folders end with `aarch64`, `arm`,    `i386` instead of `x86_64`.
 
-2. Create 4 text files named `libgcc.a` in the four folders mentioned above with this contents
-   
+2. Create 4 text files named `libgcc.a` in the four folders mentioned above with these contents
+
    ```
    INPUT(-lunwind)
    ```
+
+## More details on NDK with flutter_rust_bridge
+For more details on how NDK works with `flutter_rust_bridge`, have a look at this [article](../integrate/android_tasks.md) please.
 
 [Android NDK]: https://developer.android.com/ndk
 [Java Native Interface]: https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html
