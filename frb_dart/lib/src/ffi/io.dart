@@ -77,12 +77,13 @@ class FrbOpaque implements Finalizable {
     }
   }
 
+  /// Returns pointer with lends ownership if Dart owner else returns null pointer.
   static ffi.Pointer lend(FrbOpaque ptr) {
     if (!ptr.isStale()) {
       return ptr._lend
           .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
     } else {
-      // next best thing here, this is equivalent to an Option::<Arc<T>>::None
+      // equivalent to an Option::<Arc<T>>::None
       return ffi.nullptr;
     }
   }

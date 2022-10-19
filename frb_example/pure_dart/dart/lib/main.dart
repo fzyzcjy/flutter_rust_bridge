@@ -790,10 +790,22 @@ void main(List<String> args) async {
       expect(await api.runEnumOpaque(opaque: data[2]), "Opaque { ptr: Some(\"String\") }");
       (data[2] as EnumOpaque_TraitObj).field0.dispose();
       expect(await api.runEnumOpaque(opaque: data[3]),
-          "Some(\"content - Some(PrivateData { content: \\\"content nested\\\", primitive: 424242, array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], lifetime: \\\"static str\\\" })\")");
+          "Some(\"content - Some(PrivateData "
+          "{"
+          " content: \\\"content nested\\\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \\\"static str\\\" "
+          "})\")");
       (data[3] as EnumOpaque_Mutex).field0.dispose();
       expect(await api.runEnumOpaque(opaque: data[4]),
-          "Some(\"content - Some(PrivateData { content: \\\"content nested\\\", primitive: 424242, array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], lifetime: \\\"static str\\\" })\")");
+          "Some(\"content - Some(PrivateData "
+          "{"
+          " content: \\\"content nested\\\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \\\"static str\\\" "
+          "})\")");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
     });
   });

@@ -226,7 +226,7 @@ impl<'a> TypeParser<'a> {
                     }
                 }
                 "Opaque" => match *generic {
-                    SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len), // recheck
+                    SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
                     SupportedInnerType::Verbatim(ver) => {
                         Some(IrType::Opaque(IrTypeOpaque::from(ver.as_ref())))
                     }

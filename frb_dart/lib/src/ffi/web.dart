@@ -105,34 +105,35 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
 }
 
 @JS("wasm_bindgen.drop_opaque_box")
-external void dropOpaqueBox(int ptr, int dropPtr, int lendPtr);
+external void _dropOpaqueBox(int ptr, int dropPtr, int lendPtr);
 @JS("wasm_bindgen.lend_opaque_box")
-external int lendOpaqueBox(int ptr, int lendPtr);
+external int _lendOpaqueBox(int ptr, int lendPtr);
 
-/// An opaque pointer to a native C or Rust type.
+/// An opaque pointer to a Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque {
+
+  /// Pointer to a Rust type.
   int _ptr = 0;
-  late int _drop;
-  late int _lend;
-  static int counter = 0;
+  /// Pointer to a closure that removes ownership Rust type.
+  int _drop = 0;
+  /// Pointer to a closure that lends ownership of the Rust type.
+  int _lend = 0;
+
+  /// Finalizer of an opaque type at the provided pointers.
   static final Finalizer<List<int>> _finalizer = Finalizer((obj) {
-    dropOpaqueBox(obj[0], obj[1], obj[2]);
+    _dropOpaqueBox(obj[0], obj[1], obj[2]);
   });
 
   /// This constructor should never be called manually.
   FrbOpaque.unsafe(int? ptr, int drop, int lend) {
     if (ptr != null) {
       _ptr = ptr;
+      _drop = drop;
+      _lend = lend;
       _finalizer.attach(this, [_ptr, drop, lend], detach: this);
     }
-    _drop = drop;
-    _lend = lend;
   }
-
-  /// The native finalizer runs [_drop] on [_ptr]
-  /// if the object is garbage collected.
-  // late final NativeFinalizer _finalizer;
 
   /// Call Rust destructors on the backing memory of this pointer.
   /// This function should be run at least once during the lifetime of the program,
@@ -147,15 +148,17 @@ class FrbOpaque {
   void dispose() {
     if (!isStale()) {
       _finalizer.detach(this);
-      dropOpaqueBox(_ptr, _drop, _lend);
+      _dropOpaqueBox(_ptr, _drop, _lend);
       _ptr = 0;
     }
   }
 
+  /// Returns pointer with lends ownership if Dart owner else returns 0.
   static dynamic lend(FrbOpaque ptr) {
     if (!ptr.isStale()) {
-      return lendOpaqueBox(ptr._ptr, ptr._lend);
+      return _lendOpaqueBox(ptr._ptr, ptr._lend);
     } else {
+      // equivalent to an Option::<Arc<T>>::None
       return 0;
     }
   }

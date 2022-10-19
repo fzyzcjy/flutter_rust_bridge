@@ -123,6 +123,12 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
+
+/// Dropper opaque data.
+///
+/// # Safety
+/// 
+/// This function should never be called manually.
 extern "C" fn drop_arc<T>(ptr: *const T) {
     // Dart has ownership of this copy of Arc,
     // and can only lend out clones, so this is safe to call
@@ -132,8 +138,12 @@ extern "C" fn drop_arc<T>(ptr: *const T) {
     }
 }
 
+/// Equivalent to a [`Arc::clone()`], but direcly in terms of raw pointers.
+///
+/// # Safety
+/// 
+/// This function should never be called manually.
 extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
-    // Equivalent to a clone, but direcly in terms of raw pointers.
     unsafe {
         Arc::increment_strong_count(ptr);
         ptr
