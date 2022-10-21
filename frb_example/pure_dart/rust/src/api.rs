@@ -11,7 +11,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-use crate::data::{HideData, MyEnum, MyStruct};
+use crate::data::{HideData, HideSyncData, MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
@@ -977,7 +977,6 @@ pub fn sync_create_opaque() -> SyncReturn<Opaque<OpaqueStruct>> {
     SyncReturn(Opaque::new(OpaqueStruct(HideData::new())))
 }
 
-
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
     [
         EnumOpaque::Struct(Opaque::new(OpaqueStruct(HideData::new()))),
@@ -1024,4 +1023,32 @@ pub fn opaque_array() -> [Opaque<OpaqueStruct>; 2] {
         Opaque::new(OpaqueStruct(HideData::new())),
         Opaque::new(OpaqueStruct(HideData::new())),
     ]
+}
+
+pub struct OpaqueSyncStruct(HideSyncData);
+
+pub fn create_sync_opaque() -> Opaque<OpaqueSyncStruct> {
+    Opaque::new(OpaqueSyncStruct(HideSyncData::new()))
+}
+
+pub fn sync_create_sync_opaque() -> SyncReturn<Opaque<OpaqueSyncStruct>> {
+    SyncReturn(Opaque::new(OpaqueSyncStruct(HideSyncData::new())))
+}
+
+// OpaqueSyncStruct does not implement Send trait.
+//
+// pub fn run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> String {
+//     if let Some(data) = opaque.as_deref() {
+//         data.0.hide_data()
+//     } else {
+//         "NULL OPAQUE".to_owned()
+//     }
+// }
+
+pub fn sync_run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> SyncReturn<String> {
+    SyncReturn(if let Some(data) = opaque.as_deref() {
+        data.0.hide_data()
+    } else {
+        "NULL OPAQUE".to_owned()
+    })
 }

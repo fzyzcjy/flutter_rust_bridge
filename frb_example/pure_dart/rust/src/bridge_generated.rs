@@ -1311,6 +1311,41 @@ fn wire_opaque_array_impl(port_: MessagePort) {
         move || move |task_callback| Ok(opaque_array()),
     )
 }
+fn wire_create_sync_opaque_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_sync_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(create_sync_opaque()),
+    )
+}
+fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_create_sync_opaque",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Ok(sync_create_sync_opaque()),
+    )
+}
+fn wire_sync_run_opaque_impl(
+    opaque: impl Wire2Api<Opaque<OpaqueSyncStruct>> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_run_opaque",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            Ok(sync_run_opaque(api_opaque))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,

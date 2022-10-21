@@ -693,20 +693,6 @@ void main(List<String> args) async {
   });
 
   group('Opaque feature:', () {
-    test('Create sync opaque type', () async {
-      var data = api.syncCreateOpaque();
-            expect(
-          await api.runOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      data.dispose();
-    });
-
     test('Create opaque type', () async {
       var futureData = api.createOpaque();
       var data = await api.createOpaque();
@@ -823,6 +809,50 @@ void main(List<String> args) async {
           "lifetime: \\\"static str\\\" "
           "})\")");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
+    });
+  });
+
+  group('Sync opaque feature:', () {
+    test('Create opaque type', () {
+      var data = api.syncCreateOpaque();
+      data.dispose();
+    });
+
+    test('Double Call opaque type fn', () {
+      var data = api.syncCreateSyncOpaque();
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+    });
+
+    test('Call opaque type fn after drop', () {
+      var data = api.syncCreateSyncOpaque();
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.dispose();
+      expect(api.syncRunOpaque(opaque: data), "NULL OPAQUE");
     });
   });
 }

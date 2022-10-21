@@ -1,7 +1,10 @@
 pub use super::DartAbi;
 pub use super::MessagePort;
-use crate::DartSafe;
+use crate::support::WireSyncReturnData;
 pub use allo_isolate::*;
+use std::cell::Ref;
+use std::cell::RefCell;
+use std::cell::RefMut;
 use std::sync::{self, Arc};
 
 #[cfg(feature = "chrono")]
@@ -66,31 +69,30 @@ mod tests {
 /// pub struct DebugWrapper2(pub Opaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
 #[repr(transparent)]
-#[derive(Debug)]
-pub struct Opaque<T: ?Sized + DartSafe> {
+#[derive(Debug, Clone)]
+pub struct Opaque<T: ?Sized> {
     pub(crate) ptr: Option<Arc<T>>,
 }
 
-impl<T: DartSafe> Opaque<T> {
-    pub fn into_sync_dart(self) -> Vec<u8> {
-        // ffi.Pointer? type
-        let ptr = self.ptr.map(|ptr| Arc::into_raw(ptr) as usize).unwrap_or_default();
+impl<T> From<Opaque<T>> for WireSyncReturnData {
+    fn from(data: Opaque<T>) -> Self {
+        let ptr = data
+            .ptr
+            .map(|ptr| Arc::into_raw(ptr) as usize)
+            .unwrap_or_default();
         let drop = drop_arc::<T> as CArcDropper<T> as usize;
         let lend = lend_arc::<T> as CArcLender<T> as usize;
-        println!("{ptr}-{drop}-{lend}");
-        let mut res = vec![usize::BITS as u8];
-        res.append(&mut [ptr.to_be_bytes(), drop.to_be_bytes(), lend.to_be_bytes()].concat());
-        res
-    }   
+        WireSyncReturnData([ptr.to_be_bytes(), drop.to_be_bytes(), lend.to_be_bytes()].concat())
+    }
 }
 
-impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
+impl<T: ?Sized> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
         Self { ptr: Some(ptr) }
     }
 }
 
-impl<T: DartSafe> Opaque<T> {
+impl<T> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
             ptr: Some(Arc::new(value)),
@@ -98,7 +100,7 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-impl<T: DartSafe> Opaque<sync::RwLock<T>> {
+impl<T> Opaque<sync::RwLock<T>> {
     #[inline]
     pub fn read(&self) -> Option<sync::LockResult<sync::RwLockReadGuard<T>>> {
         self.as_deref().map(sync::RwLock::read)
@@ -117,7 +119,18 @@ impl<T: DartSafe> Opaque<sync::RwLock<T>> {
     }
 }
 
-impl<T: DartSafe> Opaque<sync::Mutex<T>> {
+impl<T> Opaque<RefCell<T>> {
+    #[inline]
+    pub fn borrow(&self) -> Option<Ref<'_, T>> {
+        self.as_deref().map(RefCell::borrow)
+    }
+    #[inline]
+    pub fn borrow_mut(&self) -> Option<RefMut<'_, T>> {
+        self.as_deref().map(RefCell::borrow_mut)
+    }
+}
+
+impl<T> Opaque<sync::Mutex<T>> {
     #[inline]
     pub fn lock(&self) -> Option<sync::LockResult<sync::MutexGuard<T>>> {
         self.as_deref().map(sync::Mutex::lock)
@@ -128,7 +141,7 @@ impl<T: DartSafe> Opaque<sync::Mutex<T>> {
     }
 }
 
-impl<T: DartSafe> Opaque<T> {
+impl<T> Opaque<T> {
     /// Acquire a reference to the inner value, if the pointer has not already
     /// been disposed by Dart.
     pub fn as_deref(&self) -> Option<&T> {
@@ -165,7 +178,7 @@ extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
 type CArcDropper<T> = *const extern "C" fn(*const T);
 type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
 
-impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
+impl<T> From<Opaque<T>> for ffi::DartCObject {
     fn from(value: Opaque<T>) -> Self {
         // ffi.Pointer? type
         let ptr = match value.ptr {

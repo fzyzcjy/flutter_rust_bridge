@@ -61,6 +61,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  dynamic api2wire_OpaqueSyncStruct(OpaqueSyncStruct raw) {
+    return FrbOpaque.lend(raw);
+  }
+
+  @protected
   dynamic api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
     return FrbOpaque.lend(raw);
   }
@@ -923,6 +928,12 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_opaque_array(NativePortType port_);
 
+  external void wire_create_sync_opaque(NativePortType port_);
+
+  external dynamic /* dynamic */ wire_sync_create_sync_opaque();
+
+  external dynamic /* String */ wire_sync_run_opaque(dynamic opaque);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1183,6 +1194,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       wasmModule.wire_run_opaque_with_delay(port_, opaque);
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
+
+  void wire_create_sync_opaque(NativePortType port_) => wasmModule.wire_create_sync_opaque(port_);
+
+  dynamic /* dynamic */ wire_sync_create_sync_opaque() => wasmModule.wire_sync_create_sync_opaque();
+
+  dynamic /* String */ wire_sync_run_opaque(dynamic opaque) => wasmModule.wire_sync_run_opaque(opaque);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

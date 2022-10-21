@@ -1455,6 +1455,52 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<OpaqueSyncStruct> createSyncOpaque({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_create_sync_opaque(port_),
+      parseSuccessData: _wire2api_OpaqueSyncStruct,
+      constMeta: kCreateSyncOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kCreateSyncOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_sync_opaque",
+        argNames: [],
+      );
+
+  OpaqueSyncStruct syncCreateSyncOpaque({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_create_sync_opaque(),
+      parseSuccessData: _wire2api_SyncReturn_OpaqueSyncStruct,
+      constMeta: kSyncCreateSyncOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateSyncOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_create_sync_opaque",
+        argNames: [],
+      );
+
+  String syncRunOpaque({required OpaqueSyncStruct opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_OpaqueSyncStruct(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_run_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_String,
+      constMeta: kSyncRunOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncRunOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_run_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -1641,6 +1687,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return OpaqueStructArray2((raw as List<dynamic>).map(_wire2api_OpaqueStruct).toList());
   }
 
+  OpaqueSyncStruct _wire2api_OpaqueSyncStruct(dynamic raw) {
+    return OpaqueSyncStruct.fromRaw(raw[0], raw[1], raw[2]);
+  }
+
   PointArray2 _wire2api_Point_array_2(dynamic raw) {
     return PointArray2((raw as List<dynamic>).map(_wire2api_point).toList());
   }
@@ -1662,28 +1712,57 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   OpaqueStruct _wire2api_SyncReturn_OpaqueStruct(Uint8List raw) {
-    var intLen = raw[0] ~/ 8;
-    var ptrList = List.filled(intLen, 0);
-    var dropList = List.filled(intLen, 0);
-    var lendList = List.filled(intLen, 0);
-    var j = 0;
-    for (var i = 1; i < 1 + intLen; ++i, ++j) {
-      ptrList[j] = raw[i];
-    }
-    j = 0;
-    for (var i = 1 + intLen; i < 1 + intLen * 2; ++i, ++j) {
-      dropList[j] = raw[i];
-    }
-    j = 0;
-    for (var i = 1 + intLen * 2; i < 1 + intLen * 3; ++i, ++j) {
-      lendList[j] = raw[i];
+    var pointBitLen = raw.length ~/ 3;
+    var ptrList = List.filled(pointBitLen, 0);
+    var dropList = List.filled(pointBitLen, 0);
+    var lendList = List.filled(pointBitLen, 0);
+
+    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
+    List.copyRange(dropList, 0, raw, pointBitLen, pointBitLen * 2);
+    List.copyRange(lendList, 0, raw, pointBitLen * 2);
+
+    int ptr = 0;
+    int drop = 0;
+    int lend = 0;
+
+    if (pointBitLen == 8) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint64(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint64(0);
+    } else if (pointBitLen == 4) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint32(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint32(0);
     }
 
-    var a = ByteData.view(Uint8List.fromList(ptrList).buffer, 0, 8).getUint64(0);
-    var b = ByteData.view(Uint8List.fromList(dropList).buffer, 0, 8).getUint64(0);
-    var c = ByteData.view(Uint8List.fromList(lendList).buffer, 0, 8).getUint64(0);
+    return OpaqueStruct.fromRaw(ptr, drop, lend);
+  }
 
-    return OpaqueStruct.fromRaw(a, b, c);
+  OpaqueSyncStruct _wire2api_SyncReturn_OpaqueSyncStruct(Uint8List raw) {
+    var pointBitLen = raw.length ~/ 3;
+    var ptrList = List.filled(pointBitLen, 0);
+    var dropList = List.filled(pointBitLen, 0);
+    var lendList = List.filled(pointBitLen, 0);
+
+    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
+    List.copyRange(dropList, 0, raw, pointBitLen, pointBitLen * 2);
+    List.copyRange(lendList, 0, raw, pointBitLen * 2);
+
+    int ptr = 0;
+    int drop = 0;
+    int lend = 0;
+
+    if (pointBitLen == 8) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint64(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint64(0);
+    } else if (pointBitLen == 4) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint32(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint32(0);
+    }
+
+    return OpaqueSyncStruct.fromRaw(ptr, drop, lend);
   }
 
   String _wire2api_SyncReturn_String(Uint8List raw) {

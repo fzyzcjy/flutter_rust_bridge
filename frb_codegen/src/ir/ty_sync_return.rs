@@ -60,6 +60,6 @@ impl IrTypeSyncReturn {
                 primitive: IrTypePrimitive::U8,
             }),
             IrTypeSyncReturn::Opaque(data) => IrType::Opaque(data.clone()),
+        }
     }
-}
 }

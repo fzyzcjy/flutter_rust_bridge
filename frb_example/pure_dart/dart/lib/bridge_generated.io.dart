@@ -67,6 +67,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_OpaqueSyncStruct> api2wire_OpaqueSyncStruct(OpaqueSyncStruct raw) {
+    final ptr = inner.new_OpaqueSyncStruct();
+    _api_fill_to_wire_OpaqueSyncStruct(raw, ptr);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_RwLockOpaqueStruct> api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
     final ptr = inner.new_RwLockOpaqueStruct();
     _api_fill_to_wire_RwLockOpaqueStruct(raw, ptr);
@@ -634,6 +641,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   void _api_fill_to_wire_OpaqueStruct(OpaqueStruct apiObj, ffi.Pointer<wire_OpaqueStruct> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+  }
+
+  void _api_fill_to_wire_OpaqueSyncStruct(OpaqueSyncStruct apiObj, ffi.Pointer<wire_OpaqueSyncStruct> wireObj) {
     wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
   }
 
@@ -2321,6 +2332,41 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_opaque_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_opaque_array');
   late final _wire_opaque_array = _wire_opaque_arrayPtr.asFunction<void Function(int)>();
 
+  void wire_create_sync_opaque(
+    int port_,
+  ) {
+    return _wire_create_sync_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_create_sync_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_sync_opaque');
+  late final _wire_create_sync_opaque = _wire_create_sync_opaquePtr.asFunction<void Function(int)>();
+
+  WireSyncReturnStruct wire_sync_create_sync_opaque() {
+    return _wire_sync_create_sync_opaque();
+  }
+
+  late final _wire_sync_create_sync_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_create_sync_opaque');
+  late final _wire_sync_create_sync_opaque =
+      _wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+
+  WireSyncReturnStruct wire_sync_run_opaque(
+    ffi.Pointer<wire_OpaqueSyncStruct> opaque,
+  ) {
+    return _wire_sync_run_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_run_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_OpaqueSyncStruct>)>>(
+          'wire_sync_run_opaque');
+  late final _wire_sync_run_opaque =
+      _wire_sync_run_opaquePtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_OpaqueSyncStruct>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -2499,6 +2545,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_OpaqueStructPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_OpaqueStruct> Function()>>('new_OpaqueStruct');
   late final _new_OpaqueStruct = _new_OpaqueStructPtr.asFunction<ffi.Pointer<wire_OpaqueStruct> Function()>();
+
+  ffi.Pointer<wire_OpaqueSyncStruct> new_OpaqueSyncStruct() {
+    return _new_OpaqueSyncStruct();
+  }
+
+  late final _new_OpaqueSyncStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_OpaqueSyncStruct> Function()>>('new_OpaqueSyncStruct');
+  late final _new_OpaqueSyncStruct =
+      _new_OpaqueSyncStructPtr.asFunction<ffi.Pointer<wire_OpaqueSyncStruct> Function()>();
 
   ffi.Pointer<wire_RwLockOpaqueStruct> new_RwLockOpaqueStruct() {
     return _new_RwLockOpaqueStruct();
@@ -3587,6 +3642,10 @@ class wire_EnumOpaque extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<EnumOpaqueKind> kind;
+}
+
+class wire_OpaqueSyncStruct extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
 }
 
 class wire_SumWith extends ffi.Struct {

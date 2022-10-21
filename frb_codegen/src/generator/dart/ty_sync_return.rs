@@ -43,29 +43,34 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             IrTypeSyncReturn::String => "return utf8.decode(raw);".into(),
             IrTypeSyncReturn::VecU8 => "return raw;".into(),
             IrTypeSyncReturn::Opaque(o) => {
-                format!("var intLen = raw[0] ~/ 8;
-                var ptrList = List.filled(intLen, 0);
-                var dropList = List.filled(intLen, 0);
-                var lendList = List.filled(intLen, 0);
-                var j = 0;
-                for (var i = 1; i < 1 + intLen; ++i, ++j) {{
-                  ptrList[j] = raw[i];
-                }}
-                j = 0;
-                for (var i = 1 + intLen; i < 1 + intLen * 2; ++i, ++j) {{
-                  dropList[j] = raw[i];
-                }}
-                j = 0;
-                for (var i = 1 + intLen * 2; i < 1 + intLen * 3; ++i, ++j) {{
-                  lendList[j] = raw[i];
+                format!(
+                    "var pointBitLen = raw.length ~/ 3;
+                var ptrList = List.filled(pointBitLen, 0);
+                var dropList = List.filled(pointBitLen, 0);
+                var lendList = List.filled(pointBitLen, 0);
+                
+                List.copyRange(ptrList, 0, raw, 0, pointBitLen);
+                List.copyRange(dropList, 0, raw, pointBitLen, pointBitLen*2);
+                List.copyRange(lendList, 0, raw, pointBitLen*2);
+
+                int ptr = 0;
+                int drop = 0;
+                int lend = 0;
+                
+                if (pointBitLen == 8) {{
+                  ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
+                  drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint64(0);
+                  lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint64(0);
+                }} else if (pointBitLen == 4) {{
+                  ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
+                  drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint32(0);
+                  lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint32(0);
                 }}
             
-                var a = ByteData.view(Uint8List.fromList(ptrList).buffer, 0, 8).getUint64(0);
-                var b = ByteData.view(Uint8List.fromList(dropList).buffer, 0, 8).getUint64(0);
-                var c = ByteData.view(Uint8List.fromList(lendList).buffer, 0, 8).getUint64(0);
-            
-                return {}.fromRaw(a, b, c);", o.inner_dart)
-            },
+                return {}.fromRaw(ptr, drop, lend);",
+                    o.inner_dart
+                )
+            }
         }
     }
 }

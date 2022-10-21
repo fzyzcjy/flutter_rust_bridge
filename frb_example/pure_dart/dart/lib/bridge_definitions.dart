@@ -384,6 +384,18 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
 
+  Future<OpaqueSyncStruct> createSyncOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateSyncOpaqueConstMeta;
+
+  OpaqueSyncStruct syncCreateSyncOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateSyncOpaqueConstMeta;
+
+  String syncRunOpaque({required OpaqueSyncStruct opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncRunOpaqueConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -455,6 +467,11 @@ class OpaqueStructArray2 extends NonGrowableListView<OpaqueStruct> {
         super(inner);
   OpaqueStructArray2.unchecked(List<OpaqueStruct> inner) : super(inner);
   OpaqueStructArray2.init(OpaqueStruct fill) : super(List<OpaqueStruct>.filled(arraySize, fill));
+}
+
+@sealed
+class OpaqueSyncStruct extends FrbOpaque {
+  OpaqueSyncStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
 }
 
 class PointArray2 extends NonGrowableListView<Point> {

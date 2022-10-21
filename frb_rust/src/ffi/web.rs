@@ -11,8 +11,8 @@ pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
+use crate::support::WireSyncReturnData;
 pub use crate::wasm_bindgen_src::transfer::*;
-use crate::DartSafe;
 use std::sync::{self, Arc};
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
@@ -419,8 +419,8 @@ mod tests {
 /// use std::panic::{UnwindSafe, RefUnwindSafe};
 /// // Rust does not allow multiple non-auto traits in trait objects, so
 /// // this is one workaround.
-/// pub trait DartDebug: DartSafe + Debug {}
-/// impl<T: DartSafe + Debug> DartDebug for T {}
+/// pub trait DartDebug + Debug {}
+/// impl<T + Debug> DartDebug for T {}
 /// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
 /// // creating a DebugWrapper using the opaque_dyn macro
 /// let wrap = DebugWrapper(opaque_dyn!("foobar"));
@@ -428,18 +428,18 @@ mod tests {
 /// pub struct DebugWrapper2(pub Opaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
 #[repr(transparent)]
-#[derive(Debug)]
-pub struct Opaque<T: ?Sized + DartSafe> {
+#[derive(Debug, Clone)]
+pub struct Opaque<T: ?Sized> {
     pub(crate) ptr: Option<Arc<T>>,
 }
 
-impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
+impl<T: ?Sized> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
         Self { ptr: Some(ptr) }
     }
 }
 
-impl<T: DartSafe> Opaque<T> {
+impl<T> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
             ptr: Some(Arc::new(value)),
@@ -447,7 +447,7 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-impl<T: DartSafe> Opaque<sync::RwLock<T>> {
+impl<T> Opaque<sync::RwLock<T>> {
     #[inline]
     pub fn read(&self) -> Option<sync::LockResult<sync::RwLockReadGuard<T>>> {
         self.as_deref().map(sync::RwLock::read)
@@ -466,7 +466,7 @@ impl<T: DartSafe> Opaque<sync::RwLock<T>> {
     }
 }
 
-impl<T: DartSafe> Opaque<sync::Mutex<T>> {
+impl<T> Opaque<sync::Mutex<T>> {
     #[inline]
     pub fn lock(&self) -> Option<sync::LockResult<sync::MutexGuard<T>>> {
         self.as_deref().map(sync::Mutex::lock)
@@ -477,7 +477,7 @@ impl<T: DartSafe> Opaque<sync::Mutex<T>> {
     }
 }
 
-impl<T: DartSafe> Opaque<T> {
+impl<T> Opaque<T> {
     /// Acquire a reference to the inner value, if the pointer has not already
     /// been disposed by Dart.
     pub fn as_deref(&self) -> Option<&T> {
@@ -515,7 +515,33 @@ pub extern "C" fn lend_opaque_box(ptr: usize, ptr_lend_fn: usize) -> usize {
     }
 }
 
-impl<T: DartSafe> IntoDart for Opaque<T> {
+impl<T> From<Opaque<T>> for WireSyncReturnData {
+    fn from(data: Opaque<T>) -> Self {
+        let ptr = data
+            .ptr
+            .map(|ptr| Arc::into_raw(ptr) as usize)
+            .unwrap_or_default();
+        let drop: *mut Box<dyn FnOnce(usize)> =
+            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
+                Arc::<T>::decrement_strong_count(ptr as *mut T);
+            })));
+        let lend: *mut Box<dyn FnMut(usize) -> usize> =
+            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
+                Arc::<T>::increment_strong_count(ptr as *mut T);
+                ptr
+            })));
+        WireSyncReturnData(
+            [
+                ptr.to_be_bytes(),
+                (drop as usize).to_be_bytes(),
+                (lend as usize).to_be_bytes(),
+            ]
+            .concat(),
+        )
+    }
+}
+
+impl<T> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
         let ptr = match self.ptr {
             Some(arc) => Arc::into_raw(arc).into_dart(),
@@ -534,14 +560,14 @@ impl<T: DartSafe> IntoDart for Opaque<T> {
     }
 }
 
-impl<T: DartSafe> IntoDart for Vec<Opaque<T>> {
+impl<T> IntoDart for Vec<Opaque<T>> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         Array::from_iter(self.into_iter().map(IntoDart::into_dart)).into()
     }
 }
 
-impl<const N: usize, T: DartSafe> IntoDart for [Opaque<T>; N] {
+impl<const N: usize, T> IntoDart for [Opaque<T>; N] {
     #[inline]
     fn into_dart(self) -> DartAbi {
         let boxed: Box<[Opaque<T>]> = Box::new(self);

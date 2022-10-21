@@ -464,6 +464,21 @@ pub fn wire_opaque_array(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_create_sync_opaque(port_: MessagePort) {
+    wire_create_sync_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_create_sync_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_create_sync_opaque_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_run_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_sync_run_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1253,6 +1268,11 @@ impl Wire2Api<Opaque<Mutex<OpaqueStruct>>> for JsValue {
 }
 impl Wire2Api<Opaque<OpaqueStruct>> for JsValue {
     fn wire2api(self) -> Opaque<OpaqueStruct> {
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<Opaque<OpaqueSyncStruct>> for JsValue {
+    fn wire2api(self) -> Opaque<OpaqueSyncStruct> {
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }

@@ -472,6 +472,23 @@ pub extern "C" fn wire_opaque_array(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_create_sync_opaque(port_: i64) {
+    wire_create_sync_opaque_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_create_sync_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_create_sync_opaque_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_run_opaque(
+    opaque: *mut wire_OpaqueSyncStruct,
+) -> support::WireSyncReturnStruct {
+    wire_sync_run_opaque_impl(opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -553,6 +570,11 @@ pub extern "C" fn new_MutexOpaqueStruct() -> *mut wire_MutexOpaqueStruct {
 #[no_mangle]
 pub extern "C" fn new_OpaqueStruct() -> *mut wire_OpaqueStruct {
     support::new_leak_box_ptr(wire_OpaqueStruct::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_OpaqueSyncStruct() -> *mut wire_OpaqueSyncStruct {
+    support::new_leak_box_ptr(wire_OpaqueSyncStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -927,6 +949,14 @@ impl Wire2Api<Opaque<Mutex<OpaqueStruct>>> for *mut wire_MutexOpaqueStruct {
 }
 impl Wire2Api<Opaque<OpaqueStruct>> for *mut wire_OpaqueStruct {
     fn wire2api(self) -> Opaque<OpaqueStruct> {
+        unsafe {
+            let ans = support::box_from_leak_ptr(self);
+            support::opaque_from_dart(ans.ptr as _)
+        }
+    }
+}
+impl Wire2Api<Opaque<OpaqueSyncStruct>> for *mut wire_OpaqueSyncStruct {
+    fn wire2api(self) -> Opaque<OpaqueSyncStruct> {
         unsafe {
             let ans = support::box_from_leak_ptr(self);
             support::opaque_from_dart(ans.ptr as _)
@@ -1608,6 +1638,12 @@ pub struct wire_OpaqueStruct {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_OpaqueSyncStruct {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_RwLockOpaqueStruct {
     ptr: *const core::ffi::c_void,
 }
@@ -2062,6 +2098,13 @@ impl NewWithNullPtr for wire_MutexOpaqueStruct {
     }
 }
 impl NewWithNullPtr for wire_OpaqueStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+impl NewWithNullPtr for wire_OpaqueSyncStruct {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),

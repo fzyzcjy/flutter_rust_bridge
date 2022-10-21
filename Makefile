@@ -87,3 +87,8 @@ wasm.build:
 
 dart.fmt:
 	dart format --line-length 80 .
+
+fmt: 
+	cargo fmt --all
+	dart format --line-length 80 ./frb_dart
+	dart format --line-length 120 ./frb_example
