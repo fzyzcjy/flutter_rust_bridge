@@ -2,6 +2,7 @@ pub use super::DartAbi;
 pub use super::MessagePort;
 use crate::DartSafe;
 pub use allo_isolate::*;
+use std::ffi::c_void;
 use std::sync::{self, Arc};
 
 #[cfg(feature = "chrono")]
@@ -149,8 +150,26 @@ extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
     }
 }
 
+
+extern "C" fn test_drop_arc<T>(ptr: *const c_void) {
+    unsafe {
+        Arc::<T>::decrement_strong_count(ptr as _);
+    }
+}
+
+extern "C" fn test_lend_arc<T>(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<T>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+
 type CArcDropper<T> = *const extern "C" fn(*const T);
 type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
+
+type CVoidDropper = *const extern "C" fn(*const c_void);
+type CVoidLender = *const extern "C" fn(*const c_void) -> *const c_void;
 
 impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
     fn from(value: Opaque<T>) -> Self {
@@ -159,6 +178,14 @@ impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
             Some(arc) => Arc::into_raw(arc).into_dart(),
             _ => ().into_dart(),
         };
+
+        // let cdrop = test_drop_arc::<T> as CVoidDropper;
+        let before: extern "C" fn(*const c_void) -> *const c_void = test_lend_arc::<T>;
+        println!("Before {}", before as usize);
+        // let clend = test_lend_arc::<T> as CVoidLender;
+        // println!("PTR {}", clend as usize);
+        unsafe {before(ptr.value.as_int64 as _);}
+
         let drop = drop_arc::<T> as CArcDropper<T>;
         let lend = lend_arc::<T> as CArcLender<T>;
         vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()

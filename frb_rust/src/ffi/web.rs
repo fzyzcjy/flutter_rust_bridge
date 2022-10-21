@@ -495,14 +495,10 @@ impl<T: DartSafe> Opaque<T> {
 pub extern "C" fn drop_opaque_box(
     ptr: *const c_void,
     ptr_drop_fn: *const c_void,
-    ptr_lend_fn: *const c_void,
 ) {
     unsafe {
-        let drop_fn: Box<Box<dyn FnOnce(*const c_void)>> = Box::from_raw(ptr_drop_fn as _);
+        let drop_fn: extern "C" fn(*const c_void) = std::mem::transmute(ptr_drop_fn);
         drop_fn(ptr);
-        let lend_fn: Box<Box<dyn FnMut(*const c_void) -> *const c_void>> =
-            Box::from_raw(ptr_lend_fn as _);
-        drop(lend_fn);
     }
 }
 
@@ -514,13 +510,24 @@ pub extern "C" fn drop_opaque_box(
 #[wasm_bindgen]
 pub extern "C" fn lend_opaque_box(ptr: *const c_void, ptr_lend_fn: *const c_void) -> *const c_void {
     unsafe {
-        let mut lend_fn: Box<Box<dyn FnMut(*const c_void) -> *const c_void>> =
-            Box::from_raw(ptr_lend_fn as _);
-        let res = lend_fn(ptr);
-        Box::into_raw(lend_fn);
-        res
+        let lend_fn: extern "C" fn(*const c_void) -> *const c_void = std::mem::transmute(ptr_lend_fn);
+        lend_fn(ptr)
     }
 }
+
+extern "C" fn drop_arc<T>(ptr: *const c_void) {
+    unsafe {
+        Arc::<T>::decrement_strong_count(ptr as _);
+    }
+}
+
+extern "C" fn lend_arc<T>(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<T>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
 
 impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
@@ -528,16 +535,9 @@ impl<T: DartSafe> IntoDart for Opaque<T> {
             Some(arc) => Arc::into_raw(arc).into_dart(),
             _ => ().into_dart(),
         };
-        let drop: *mut Box<dyn FnOnce(*const c_void)> =
-            Box::into_raw(Box::new(Box::new(|ptr: *const c_void| unsafe {
-                Arc::<T>::decrement_strong_count(ptr as *mut T);
-            })));
-        let lend: *mut Box<dyn FnMut(*const c_void) -> *const c_void> =
-            Box::into_raw(Box::new(Box::new(|ptr: *const c_void| unsafe {
-                Arc::<T>::increment_strong_count(ptr as *mut T);
-                ptr
-            })));
-        vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()
+        let drop: extern "C" fn(*const c_void) = drop_arc::<T>;
+        let lend: extern "C" fn(*const c_void) -> *const c_void = lend_arc::<T>;
+        vec![ptr, (drop as usize).into_dart(), (lend as usize).into_dart()].into_dart()
     }
 }
 
