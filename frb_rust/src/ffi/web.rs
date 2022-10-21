@@ -4,6 +4,7 @@ use super::MessagePort;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
+use std::ffi::c_void;
 use std::iter::FromIterator;
 pub use wasm_bindgen;
 pub use wasm_bindgen::closure::Closure;
@@ -491,11 +492,16 @@ impl<T: DartSafe> Opaque<T> {
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub extern "C" fn drop_opaque_box(ptr: usize, ptr_drop_fn: usize, ptr_lend_fn: usize) {
+pub extern "C" fn drop_opaque_box(
+    ptr: *const c_void,
+    ptr_drop_fn: *const c_void,
+    ptr_lend_fn: *const c_void,
+) {
     unsafe {
-        let drop_fn: Box<Box<dyn FnOnce(usize)>> = Box::from_raw(ptr_drop_fn as _);
+        let drop_fn: Box<Box<dyn FnOnce(*const c_void)>> = Box::from_raw(ptr_drop_fn as _);
         drop_fn(ptr);
-        let lend_fn: Box<Box<dyn FnMut(usize) -> usize>> = Box::from_raw(ptr_lend_fn as _);
+        let lend_fn: Box<Box<dyn FnMut(*const c_void) -> *const c_void>> =
+            Box::from_raw(ptr_lend_fn as _);
         drop(lend_fn);
     }
 }
@@ -506,9 +512,10 @@ pub extern "C" fn drop_opaque_box(ptr: usize, ptr_drop_fn: usize, ptr_lend_fn: u
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub extern "C" fn lend_opaque_box(ptr: usize, ptr_lend_fn: usize) -> usize {
+pub extern "C" fn lend_opaque_box(ptr: *const c_void, ptr_lend_fn: *const c_void) -> *const c_void {
     unsafe {
-        let mut lend_fn: Box<Box<dyn FnMut(usize) -> usize>> = Box::from_raw(ptr_lend_fn as _);
+        let mut lend_fn: Box<Box<dyn FnMut(*const c_void) -> *const c_void>> =
+            Box::from_raw(ptr_lend_fn as _);
         let res = lend_fn(ptr);
         Box::into_raw(lend_fn);
         res
@@ -521,12 +528,12 @@ impl<T: DartSafe> IntoDart for Opaque<T> {
             Some(arc) => Arc::into_raw(arc).into_dart(),
             _ => ().into_dart(),
         };
-        let drop: *mut Box<dyn FnOnce(usize)> =
-            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
+        let drop: *mut Box<dyn FnOnce(*const c_void)> =
+            Box::into_raw(Box::new(Box::new(|ptr: *const c_void| unsafe {
                 Arc::<T>::decrement_strong_count(ptr as *mut T);
             })));
-        let lend: *mut Box<dyn FnMut(usize) -> usize> =
-            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
+        let lend: *mut Box<dyn FnMut(*const c_void) -> *const c_void> =
+            Box::into_raw(Box::new(Box::new(|ptr: *const c_void| unsafe {
                 Arc::<T>::increment_strong_count(ptr as *mut T);
                 ptr
             })));
