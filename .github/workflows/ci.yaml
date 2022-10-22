@@ -222,6 +222,7 @@ jobs:
         run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
         env:
           DYLIB_PATH: ../../../target/release/libflutter_rust_bridge_example_benchmark_suite.so
+          JSON: false
 
   rust_linter:
     name: Rust linter using Clippy and rustfmt
