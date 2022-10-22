@@ -8,7 +8,7 @@ support.
 ## Example
 
 Let's say you have a struct that can hold either a `u32` or a `String` and some
-other fields:
+other fields (in a significantly worse design):
 
 ```rust,noplayground
 struct MyStruct {
