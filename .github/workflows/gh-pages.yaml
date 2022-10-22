@@ -76,8 +76,9 @@ jobs:
         run: |
           mkdir -p ./book/benches && \
           touch ./book/benches/output.txt && \
-          dart frb_example/benches/dart/lib/main.dart target/release/libflutter_rust_bridge_example_benchmark_suite.so | tee ./book/benches/output.txt
+          dart frb_example/benches/dart/lib/benchmark/uuids.dart | tee ./book/benches/output.txt
         env:
+          DYLIB_PATH: target/release/libflutter_rust_bridge_example_benchmark_suite.so
           JSON: true
 
       # Update benchmark and deploy to GitHub Pages
