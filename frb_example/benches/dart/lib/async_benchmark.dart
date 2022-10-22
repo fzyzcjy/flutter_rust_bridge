@@ -1,6 +1,5 @@
 export 'async_benchmark.io.dart'
     if (dart.library.html) 'async_benchmark.web.dart' show AsyncBenchmark;
-import 'dart:io' if (dart.library.html) 'dart:html' show File;
 
 import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:flutter_rust_bridge_benchmark/constants.dart';
@@ -78,6 +77,8 @@ abstract class Bencher {
     }
   }
 
+  Future<void> save(Sample sample);
+
   Future<void> report() async {
     assert(sampleSize >= 10);
     assert(warmUpTime >= minimumBenchDuration);
@@ -92,9 +93,7 @@ abstract class Bencher {
           'per iteration: ${sample.elapsed / sample.iterations} microseconds');
       print('completed ${sample.routines.length} sample(s) out of $sampleSize');
     } else {
-      final file = File('../../../book/benches/output.txt')
-        ..createSync(recursive: true);
-      file.writeAsStringSync(sample.toJson().toString());
+      await save(sample);
     }
   }
 }

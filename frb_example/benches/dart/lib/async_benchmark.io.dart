@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_rust_bridge_benchmark/walltime.dart';
 import 'package:flutter_rust_bridge_benchmark/walltime.io.dart';
 
@@ -15,5 +17,12 @@ abstract class AsyncBenchmark extends AsyncBencher {
   @override
   WallTime start() {
     return AsyncStopWatch()..start();
+  }
+
+  @override
+  Future<void> save(Sample sample) async {
+    final file = File('../../../book/benches/output.txt')
+        ..create(recursive: true);
+      file.writeAsString(sample.toJson().toString());
   }
 }
