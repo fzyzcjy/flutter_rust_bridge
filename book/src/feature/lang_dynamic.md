@@ -17,7 +17,7 @@ struct MyStruct {
 }
 
 struct DataStruct {
-    msg:  String
+    msg:  String,
     data: MyStruct,
 }
 ```
@@ -35,7 +35,7 @@ And then you can define a struct that holds this `enum`:
 
 ```rust,noplayground
 struct MyStruct {
-    msg:  String
+    msg:  String,
     data: MyEnum,
 }
 ```
