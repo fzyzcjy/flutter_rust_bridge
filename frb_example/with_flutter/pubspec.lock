@@ -203,7 +203,7 @@ packages:
       name: ffigen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.2"
+    version: "7.1.0"
   file:
     dependency: transitive
     description:
