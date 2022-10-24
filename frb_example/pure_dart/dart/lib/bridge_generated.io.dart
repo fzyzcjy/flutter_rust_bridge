@@ -20,6 +20,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_BoxDartDebug> api2wire_BoxDartDebug(BoxDartDebug raw) {
+    if (!raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_BoxDartDebug();
     _api_fill_to_wire_BoxDartDebug(raw, ptr);
     return ptr;
@@ -47,6 +50,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_I32> api2wire_I32(I32 raw) {
+    if (!raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_I32();
     _api_fill_to_wire_I32(raw, ptr);
     return ptr;
@@ -54,6 +60,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_MutexOpaqueStruct> api2wire_MutexOpaqueStruct(MutexOpaqueStruct raw) {
+    if (!raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_MutexOpaqueStruct();
     _api_fill_to_wire_MutexOpaqueStruct(raw, ptr);
     return ptr;
@@ -61,6 +70,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_OpaqueStruct> api2wire_OpaqueStruct(OpaqueStruct raw) {
+    if (!raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_OpaqueStruct();
     _api_fill_to_wire_OpaqueStruct(raw, ptr);
     return ptr;
@@ -68,6 +80,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_RwLockOpaqueStruct> api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
+    if (!raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_RwLockOpaqueStruct();
     _api_fill_to_wire_RwLockOpaqueStruct(raw, ptr);
     return ptr;

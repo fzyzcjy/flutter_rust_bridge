@@ -84,7 +84,7 @@ class FrbOpaque implements Finalizable {
       return ptr._share
           .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr);
     } else {
-      throw "Use after dispose";
+      throw "Use after dispose.";
     }
   }
 

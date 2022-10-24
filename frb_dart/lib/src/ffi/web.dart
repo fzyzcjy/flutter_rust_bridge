@@ -160,7 +160,7 @@ class FrbOpaque {
     if (!ptr.isStale()) {
       return _shareOpaque(ptr._ptr, ptr._share);
     } else {
-      throw "Use after dispose";
+      throw "Use after dispose.";
     }
   }
 

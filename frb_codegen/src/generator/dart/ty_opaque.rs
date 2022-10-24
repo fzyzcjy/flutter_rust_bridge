@@ -9,7 +9,10 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(format!(
-                "final ptr = inner.new_{0}();
+                "if (!raw.isStale()) {{
+                    throw 'Use after dispose.';
+                  }}
+                final ptr = inner.new_{0}();
                 _api_fill_to_wire_{0}(raw, ptr);
                 return ptr;",
                 self.ir.safe_ident(),
