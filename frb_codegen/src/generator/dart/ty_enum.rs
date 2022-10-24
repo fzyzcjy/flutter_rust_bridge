@@ -30,6 +30,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .join("");
                 format!(
                     "if (raw is {variant}) {{
+
                         return [{} {}];           
                     }}",
                     idx,
@@ -38,12 +39,50 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 )
             })
             .join("\n");
+
+        let opaque_variants = (self.ir.get(self.context.ir_file).variants())
+            .iter()
+            .map(|variant| match &variant.kind {
+                IrVariantKind::Value => (variant, vec![]),
+                IrVariantKind::Struct(st) => (
+                    variant,
+                    (st.fields)
+                        .iter()
+                        .enumerate()
+                        .filter(|(_, field)| field.ty.is_opaque())
+                        .map(|(a, _)| a)
+                        .collect(),
+                ),
+            })
+            .filter(|(_, fields)| !fields.is_empty())
+            .map(|(v, f)| {
+                let fields = f
+                    .into_iter()
+                    .map(|index| {
+                        format!("if (!raw.field{index}.isStale()) {{throw 'Use after dispose.';}}")
+                    })
+                    .join("\n");
+                format!(
+                    "if (raw is {variant}) {{
+                        {fields}
+                    }}",
+                    variant = v.wrapper_name.rust_style(),
+                )
+            })
+            .join("\n");
+
         Acc {
             wasm: Some(format!(
                 "{}
                 
                 throw Exception('unreachable');",
                 variants,
+            )),
+            io: Some(format!(
+                "{}
+                
+                throw Exception('unreachable');",
+                opaque_variants,
             )),
             ..Default::default()
         }

@@ -73,7 +73,7 @@ class FrbOpaque implements Finalizable {
   void dispose() {
     if (!isStale()) {
       _finalizer.detach(this);
-      _drop.asFunction<void Function(ffi.Pointer)>()(_ptr!);
+      _drop.asFunction<void Function(ffi.Pointer)>()(_ptr);
       _ptr = Pointer.fromAddress(0);
     }
   }
