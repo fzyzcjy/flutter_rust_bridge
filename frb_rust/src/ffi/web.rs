@@ -14,7 +14,7 @@ use web_sys::BroadcastChannel;
 
 pub use crate::wasm_bindgen_src::transfer::*;
 use crate::DartSafe;
-use std::sync::{self, Arc};
+use std::sync::Arc;
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
@@ -444,14 +444,14 @@ impl<T: ?Sized + DartSafe> std::ops::Deref for Opaque<T> {
 
 impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { ptr: Some(ptr) }
+        Self { ptr }
     }
 }
 
 impl<T: DartSafe> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
-            ptr: Some(Arc::new(value)),
+            ptr: Arc::new(value),
         }
     }
 }
@@ -498,7 +498,7 @@ extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
 
 impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
-        let ptr = Arc::into_raw(value.ptr).into_dart();
+        let ptr = Arc::into_raw(self.ptr).into_dart();
         let drop: extern "C" fn(*const c_void) = drop_arc::<T>;
         let share: extern "C" fn(*const c_void) -> *const c_void = share_arc::<T>;
         vec![

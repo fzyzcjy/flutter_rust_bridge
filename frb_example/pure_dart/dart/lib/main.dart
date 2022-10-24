@@ -694,135 +694,137 @@ void main(List<String> args) async {
 
   group('Opaque feature:', () {
     test('Create opaque type', () async {
-      var futureData = api.createOpaque();
-      var data = await api.createOpaque();
-      data.dispose();
-      (await futureData).dispose();
-    });
-
-    test('Double Call opaque type fn', () async {
-      var data = await api.createOpaque();
-      expect(
-          await api.runOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      expect(
-          await api.runOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      data.dispose();
-    });
-
-    test('Call opaque type fn after drop', () async {
-      var data = await api.createOpaque();
-      expect(
-          await api.runOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      data.dispose();
-      try {
-        await api.runOpaque(opaque: data);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose');
+      for (var i = 0; i < 10000; ++i) {
+        var futureData = api.createOpaque();
+        var data = await api.createOpaque();
+        data.dispose();
+        (await futureData).dispose();
       }
     });
 
-    test('Delete opaque type before complete run', () async {
-      var data = await api.createOpaque();
-      var task = api.runOpaqueWithDelay(opaque: data);
-      data.dispose();
-      expect(
-          await task,
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      try {
-        await api.runOpaque(opaque: data);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose');
-      }
-    });
+    // test('Double Call opaque type fn', () async {
+    //   var data = await api.createOpaque();
+    //   expect(
+    //       await api.runOpaque(opaque: data),
+    //       "content - Some(PrivateData "
+    //       "{"
+    //       " content: \"content nested\", "
+    //       "primitive: 424242, "
+    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //       "lifetime: \"static str\" "
+    //       "})");
+    //   expect(
+    //       await api.runOpaque(opaque: data),
+    //       "content - Some(PrivateData "
+    //       "{"
+    //       " content: \"content nested\", "
+    //       "primitive: 424242, "
+    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //       "lifetime: \"static str\" "
+    //       "})");
+    //   data.dispose();
+    // });
 
-    test('Create array of opaque type', () async {
-      for (var i = 0; i < 100; ++i) {
-        var data = await api.opaqueArray();
-        for (var v in data) {
-          expect(
-              await api.runOpaque(opaque: v),
-              "content - Some(PrivateData "
-              "{"
-              " content: \"content nested\", "
-              "primitive: 424242, "
-              "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-              "lifetime: \"static str\" "
-              "})");
-          v.dispose();
-          try {
-            await api.runOpaque(opaque: v);
-          } catch (e) {
-            expect(e.toString(), 'Use after dispose');
-          }
-        }
-      }
-    });
+    // test('Call opaque type fn after drop', () async {
+    //   var data = await api.createOpaque();
+    //   expect(
+    //       await api.runOpaque(opaque: data),
+    //       "content - Some(PrivateData "
+    //       "{"
+    //       " content: \"content nested\", "
+    //       "primitive: 424242, "
+    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //       "lifetime: \"static str\" "
+    //       "})");
+    //   data.dispose();
+    //   try {
+    //     await api.runOpaque(opaque: data);
+    //   } catch (e) {
+    //     expect(e.toString(), 'Use after dispose');
+    //   }
+    // });
 
-    test('Create enums of opaque type', () async {
-      var data = await api.createArrayOpaqueEnum();
+    // test('Delete opaque type before complete run', () async {
+    //   var data = await api.createOpaque();
+    //   var task = api.runOpaqueWithDelay(opaque: data);
+    //   data.dispose();
+    //   expect(
+    //       await task,
+    //       "content - Some(PrivateData "
+    //       "{"
+    //       " content: \"content nested\", "
+    //       "primitive: 424242, "
+    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //       "lifetime: \"static str\" "
+    //       "})");
+    //   try {
+    //     await api.runOpaque(opaque: data);
+    //   } catch (e) {
+    //     expect(e.toString(), 'Use after dispose');
+    //   }
+    // });
 
-      expect(
-          await api.runEnumOpaque(opaque: data[0]),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      (data[0] as EnumOpaque_Struct).field0.dispose();
-      expect(await api.runEnumOpaque(opaque: data[1]), "42");
-      (data[1] as EnumOpaque_Primitive).field0.dispose();
-      expect(await api.runEnumOpaque(opaque: data[2]), "\"String\"");
-      (data[2] as EnumOpaque_TraitObj).field0.dispose();
-      expect(
-          await api.runEnumOpaque(opaque: data[3]),
-          "\"content - Some(PrivateData "
-          "{"
-          " content: \\\"content nested\\\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \\\"static str\\\" "
-          "})\"");
-      (data[3] as EnumOpaque_Mutex).field0.dispose();
-      expect(
-          await api.runEnumOpaque(opaque: data[4]),
-          "\"content - Some(PrivateData "
-          "{"
-          " content: \\\"content nested\\\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \\\"static str\\\" "
-          "})\"");
-      (data[4] as EnumOpaque_RwLock).field0.dispose();
-    });
+    // test('Create array of opaque type', () async {
+    //   for (var i = 0; i < 100; ++i) {
+    //     var data = await api.opaqueArray();
+    //     for (var v in data) {
+    //       expect(
+    //           await api.runOpaque(opaque: v),
+    //           "content - Some(PrivateData "
+    //           "{"
+    //           " content: \"content nested\", "
+    //           "primitive: 424242, "
+    //           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //           "lifetime: \"static str\" "
+    //           "})");
+    //       v.dispose();
+    //       try {
+    //         await api.runOpaque(opaque: v);
+    //       } catch (e) {
+    //         expect(e.toString(), 'Use after dispose');
+    //       }
+    //     }
+    //   }
+    // });
+
+    // test('Create enums of opaque type', () async {
+    //   var data = await api.createArrayOpaqueEnum();
+
+    //   expect(
+    //       await api.runEnumOpaque(opaque: data[0]),
+    //       "content - Some(PrivateData "
+    //       "{"
+    //       " content: \"content nested\", "
+    //       "primitive: 424242, "
+    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //       "lifetime: \"static str\" "
+    //       "})");
+    //   (data[0] as EnumOpaque_Struct).field0.dispose();
+    //   expect(await api.runEnumOpaque(opaque: data[1]), "42");
+    //   (data[1] as EnumOpaque_Primitive).field0.dispose();
+    //   expect(await api.runEnumOpaque(opaque: data[2]), "\"String\"");
+    //   (data[2] as EnumOpaque_TraitObj).field0.dispose();
+    //   expect(
+    //       await api.runEnumOpaque(opaque: data[3]),
+    //       "\"content - Some(PrivateData "
+    //       "{"
+    //       " content: \\\"content nested\\\", "
+    //       "primitive: 424242, "
+    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //       "lifetime: \\\"static str\\\" "
+    //       "})\"");
+    //   (data[3] as EnumOpaque_Mutex).field0.dispose();
+    //   expect(
+    //       await api.runEnumOpaque(opaque: data[4]),
+    //       "\"content - Some(PrivateData "
+    //       "{"
+    //       " content: \\\"content nested\\\", "
+    //       "primitive: 424242, "
+    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //       "lifetime: \\\"static str\\\" "
+    //       "})\"");
+    //   (data[4] as EnumOpaque_RwLock).field0.dispose();
+    // });
   });
 }
 
