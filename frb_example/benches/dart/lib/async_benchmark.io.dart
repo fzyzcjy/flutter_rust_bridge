@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_benchmark/walltime.dart';
@@ -21,8 +22,7 @@ abstract class AsyncBenchmark extends AsyncBencher {
 
   @override
   Future<void> save(Sample sample) async {
-    final file = File('../../../book/benches/output.txt')
-        ..create(recursive: true);
-      file.writeAsString(sample.toJson().toString());
+    final file = File('../../../book/benches/output.txt')..create(recursive: true);
+    file.writeAsString(sample.toJson().toString());
   }
 }

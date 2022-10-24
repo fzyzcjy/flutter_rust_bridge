@@ -174,4 +174,8 @@ bench-simple *args="": runner
        export ITEMS_COUNT=100 WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} run lib/benchmark/uuids.dart && \
        export ITEMS_COUNT=100 WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} run lib/benchmark/strings.dart)
 
+bench-simple-web *args="": runner
+    (cd {{frb_benches}}/rust && cargo build --release) && \
+    (export JSON=true ITEMS_COUNT=10; cd {{frb_benches}}/dart && just serve --dart-input lib/benchmark/uuids.web.dart --root web/ -c ../rust --port 8082 --release {{args}})
+
 # vim:expandtab:ts=4:sw=4

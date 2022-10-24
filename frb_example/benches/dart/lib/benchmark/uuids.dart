@@ -1,9 +1,9 @@
 // Import BenchmarkBase class.
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge_benchmark/env/stub.dart';
 import '../async_benchmark.dart';
 import 'package:uuid/uuid.dart';
 import '../ffi.io.dart' if (dart.library.html) '../ffi.web.dart';
-import '../env/stub.dart';
 
 // Create a new benchmark by extending BenchmarkBase
 class TemplateBenchmark extends AsyncBenchmark {
@@ -19,8 +19,8 @@ class TemplateBenchmark extends AsyncBenchmark {
   late FlutterRustBridgeExampleBenchmarkSuiteImpl api;
   late List<UuidValue> uuids;
 
-  static void main() {
-    TemplateBenchmark().report();
+  static Future<void> main() async {
+    await TemplateBenchmark().report();
   }
 
   // The benchmark code.
@@ -33,7 +33,7 @@ class TemplateBenchmark extends AsyncBenchmark {
   @override
   Future<void> setup() async {
     String path = dylibPath ?? "../../../target/release/libflutter_rust_bridge_example_benchmark_suite.dylib";
-    if (!useJSON) print('flutter_rust_bridge benchmark uuids (dylibPath=$path)');
+    print('flutter_rust_bridge benchmark uuids (dylibPath=$path)');
     await super.setup();
     return Future.sync(() {
       final uuid = Uuid();
@@ -49,7 +49,7 @@ class TemplateBenchmark extends AsyncBenchmark {
   }
 }
 
-void main() {
+Future<void> main() async {
   // Run TemplateBenchmark
-  TemplateBenchmark.main();
+  await TemplateBenchmark.main();
 }

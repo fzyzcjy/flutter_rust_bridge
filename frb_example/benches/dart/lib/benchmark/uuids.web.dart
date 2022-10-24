@@ -1,0 +1,19 @@
+// ignore_for_file: implementation_imports
+
+import 'dart:convert';
+import 'dart:html';
+
+import 'uuids.dart' as io;
+import 'package:js/js.dart';
+
+@JS()
+external void close();
+
+Future<void> main() async {
+  final socket = WebSocket(Uri.base.replace(scheme: 'ws').toString());
+  socket.onOpen.first.then((_) async {
+    await io.main();
+    socket.send(jsonEncode({'__result__': true}));
+    close();
+  });
+}

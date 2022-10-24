@@ -1,15 +1,14 @@
+// ignore: unused_import
 import 'dart:html';
 
 import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:flutter_rust_bridge_benchmark/walltime.dart';
 
 class WindowPerformance implements WallTime {
-  late double _starts;
+  late double _starts = window.performance.now();
 
   @override
-  void start() {
-    _starts = window.performance.now();
-  }
+  void start() {}
 
   @override
   void stop() {}

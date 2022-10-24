@@ -1,3 +1,6 @@
+// ignore: unused_import
+import 'dart:io';
+
 import 'package:flutter_rust_bridge_benchmark/bridge_definitions.dart';
 import 'package:flutter_rust_bridge_benchmark/walltime.dart';
 

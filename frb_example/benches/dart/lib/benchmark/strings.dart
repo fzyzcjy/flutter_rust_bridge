@@ -19,8 +19,8 @@ class TemplateBenchmark extends AsyncBenchmark {
   late FlutterRustBridgeExampleBenchmarkSuiteImpl api;
   late List<String> strings;
 
-  static void main() {
-    TemplateBenchmark().report();
+  static Future<void> main() async {
+    await TemplateBenchmark().report();
   }
 
   // The benchmark code.
@@ -33,7 +33,7 @@ class TemplateBenchmark extends AsyncBenchmark {
   @override
   Future<void> setup() async {
     String path = dylibPath ?? "../../../target/release/libflutter_rust_bridge_example_benchmark_suite.dylib";
-    if (!useJSON) print('flutter_rust_bridge benchmark strings (dylibPath=$path)');
+    print('flutter_rust_bridge benchmark strings (dylibPath=$path)');
     await super.setup();
     return Future.sync(() {
       api = initializeBenchExternalLibrary(path);
@@ -48,7 +48,7 @@ class TemplateBenchmark extends AsyncBenchmark {
   }
 }
 
-void main() {
+Future<void> main() async {
   // Run TemplateBenchmark
-  TemplateBenchmark.main();
+  await TemplateBenchmark.main();
 }

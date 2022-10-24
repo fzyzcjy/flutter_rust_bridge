@@ -204,6 +204,9 @@ OPTIONS:""");
 
   final String root;
   final String wasmOutput;
+  print(
+      'config.dartInput = ${config.dartInput}'); // config.dartInput = lib/benchmark/uuids.web.dart
+  print('config.root = ${config.root}'); // config.root = web/
   if (config.dartInput != null) {
     if (config.root == null) {
       bail('The --root option is required when building plain Dart projects.');
@@ -214,8 +217,13 @@ OPTIONS:""");
     root = p.canonicalize(config.root ?? 'build/web');
     wasmOutput = p.canonicalize(config.wasmOutput ?? 'web/pkg');
   }
+  print(
+      'root = $root'); // root = /Users/romain/Development/contributions/flutter_rust_bridge/frb_example/benches/dart/web
+  print(
+      'wasmOutput = $wasmOutput'); // wasmOutput = /Users/romain/Development/contributions/flutter_rust_bridge/frb_example/benches/dart/web/pkg
 
   final crateDir = config.crate;
+  print('crateDir = $crateDir'); // crateDir = ../rust
   if (!await File('$crateDir/Cargo.toml').exists()) {
     bail(
       '$crateDir is not a crate directory.\n'
@@ -261,7 +269,7 @@ Future<void> build(
   });
   if (config.shouldRunBindgen) {
     await system('wasm-bindgen', [
-      '$crateDir/target/wasm32-unknown-unknown/${config.release ? 'release' : 'debug'}/$crateName.wasm',
+      '$crateDir/../../../target/wasm32-unknown-unknown/${config.release ? 'release' : 'debug'}/$crateName.wasm',
       '--out-dir',
       wasmOutput,
       '--no-typescript',
