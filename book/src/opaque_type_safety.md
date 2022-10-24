@@ -17,50 +17,65 @@ If dispose is called on the Dart side before the function call completes, Rust t
 ## Edxample
  
 ### Case 1 simple call.
+```
 rust: pub fn rust_example() -> Opaque<T>
 rust: pub fn rust_call_example(data: Opaque<T>)
 
-dart: var opaque = var data = await api.rustExample(); // Arc 1 Dart has full ownership.
+// Arc 1 Dart has full ownership.
+dart: var opaque = var data = await api.rustExample();
 
 // Arc 2 for the duration of the function and after Arc 1. 
 // Dart and Rust share the opaque type.
 dart: await api.rustCallExample(opaque);
 
-dart: opaque.dispose(); // Arc 0 drop opaque type
+// Arc 0 drop opaque type
+dart: opaque.dispose();
+```
 
 
 
 ### Case 2 call after dispose.
+```
 rust: pub fn rust_example() -> Opaque<T>
 rust: pub fn rust_call_example(data: Opaque<T>)
 
-dart: var opaque = var data = await api.rustExample(); // Arc 1 Dart has full ownership.
-dart: opaque.dispose(); // Arc 0 drop opaque type
+// Arc 1 Dart has full ownership.
+dart: var opaque = var data = await api.rustExample(); 
+// Arc 0 drop opaque type
+dart: opaque.dispose();
 
-dart: await api.rustCallExample(opaque); // Arc 0 Dart throws error;
-
+// Arc 0 Dart throws error;
+dart: await api.rustCallExample(opaque);
+```
 
 
 ### Case 3 delete before complete.
+```
 rust: pub fn rust_example() -> Opaque<T>
 rust: pub fn rust_call_example(data: Opaque<T>)
 
-dart: var opaque = var data = await api.rustExample(); // Arc 1 Dart has full ownership.
+// Arc 1 Dart has full ownership.
+dart: var opaque = var data = await api.rustExample();
 
 // Arc 2 increases immediately. 
 // Dart and Rust share the opaque type.
 dart (unawait): api.rustCallExample(opaque);
 
-dart: opaque.dispose(); // Arc 1 Rust has full ownership
-rust: `executes rust_call_example and drop opaque type.` // Arc 0
+// Arc 1 Rust has full ownership
+dart: opaque.dispose();
 
+// Arc 0
+rust: `executes rust_call_example and drop opaque type.`
+```
 
 
 ### Case 4 multi call.
+```
 rust: pub fn rust_example() -> Opaque<T>
 rust: pub fn rust_call_example(data: Opaque<T>)
 
-dart: var opaque = var data = await api.rustExample(); // Arc 1 Dart has full ownership.
+// Arc 1 Dart has full ownership.
+dart: var opaque = var data = await api.rustExample();
 
 // Arc 2 increases immediately.
 // Arc 1 after complete
@@ -70,51 +85,71 @@ dart: await api.rustCallExample(opaque);
 // Arc 1 after complete
 dart: await api.rustCallExample(opaque);
 
-dart: opaque.dispose(); // Arc 0 drop opaque type
+// Arc 0 drop opaque type
+dart: opaque.dispose();
+```
 
 
 
 ### Case 5 multi call with dispose before complete.
+```
 rust: pub fn rust_example() -> Opaque<T>
 rust: pub fn rust_call_example(data: Opaque<T>)
 
-dart: var opaque = var data = await api.rustExample(); // Arc 1 Dart has full ownership.
+// Arc 1 Dart has full ownership.
+dart: var opaque = var data = await api.rustExample();
 
-dart (unawait): api.rustCallExample(opaque); // Arc 2 increases immediately. 
+// Arc 2 increases immediately. 
+dart (unawait): api.rustCallExample(opaque);
 
-dart (unawait): api.rustCallExample(opaque); // Arc 3 increases immediately. 
+// Arc 3 increases immediately. 
+dart (unawait): api.rustCallExample(opaque);
 
-dart: opaque.dispose(); // Arc 2 Rust has full ownership
+// Arc 2 Rust has full ownership
+dart: opaque.dispose();
 
-rust: `executes rust_call_example and counter decreases.` // Arc 1
-rust: `executes rust_call_example and drop opaque type.` // Arc 0
-
+// Arc 1
+rust: `executes rust_call_example and counter decreases.`
+// Arc 0
+rust: `executes rust_call_example and drop opaque type.`
+```
 
 
 ### Case 6 dispose was not called (native).
+```
 rust: pub fn rust_example() -> Opaque<T>
 rust: pub fn rust_call_example(data: Opaque<T>)
 
-dart: var opaque = var data = await api.rustExample(); // Arc 1 Dart has full ownership.
+// Arc 1 Dart has full ownership.
+dart: var opaque = var data = await api.rustExample();
 
-dart: await api.rustCallExample(opaque); // Arc 2 increases immediately. 
+// Arc 2 increases immediately. 
+dart: await api.rustCallExample(opaque);
 
-rust: `executes rust_call_example and counter decreases.` // Arc 1
+// Arc 1
+rust: `executes rust_call_example and counter decreases.`
 
-dart: `memory of opaque types is not monitoring by dart and can accumulate`.
-dart: `the finalizer is guaranteed to be called before the program terminates.` // Arc 0
-
+// memory of opaque types is not monitoring by dart and can accumulate.
+// Arc 0
+dart: `the finalizer is guaranteed to be called before the program terminates.`
+```
 
 ### Case 7 dispose was not called (web).
+```
 rust: pub fn rust_example() -> Opaque<T>
 rust: pub fn rust_call_example(data: Opaque<T>)
 
-dart: var opaque = var data = await api.rustExample(); // Arc 1 Dart has full ownership.
+// Arc 1 Dart has full ownership.
+dart: var opaque = var data = await api.rustExample(); 
 
-dart: await api.rustCallExample(opaque); // Arc 2 increases immediately. 
+// Arc 2 increases immediately. 
+dart: await api.rustCallExample(opaque);
 
-rust: `executes rust_call_example and counter decreases.` // Arc 1
+// Arc 1
+rust: `executes rust_call_example and counter decreases.`
 
-dart: `memory of opaque types is not monitoring by Dart and can accumulate`.
-dart: `the finalizer is NOT guaranteed to be called before the program terminates.` // Arc 0?1
+// memory of opaque types is not monitoring by Dart and can accumulate.
+// Arc 0?1
+dart: `the finalizer is NOT guaranteed to be called before the program terminates.`
+```
 
