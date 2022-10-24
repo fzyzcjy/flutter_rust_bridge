@@ -462,10 +462,7 @@ impl<T: DartSafe> Opaque<T> {
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub extern "C" fn drop_opaque(
-    ptr: *const c_void,
-    ptr_drop_fn: *const c_void,
-) {
+pub extern "C" fn drop_opaque(ptr: *const c_void, ptr_drop_fn: *const c_void) {
     unsafe {
         let drop_fn: extern "C" fn(*const c_void) = std::mem::transmute(ptr_drop_fn);
         drop_fn(ptr);
@@ -480,7 +477,8 @@ pub extern "C" fn drop_opaque(
 #[wasm_bindgen]
 pub extern "C" fn share_opaque(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
     unsafe {
-        let share_fn: extern "C" fn(*const c_void) -> *const c_void = std::mem::transmute(ptr_share_fn);
+        let share_fn: extern "C" fn(*const c_void) -> *const c_void =
+            std::mem::transmute(ptr_share_fn);
         share_fn(ptr)
     }
 }
@@ -498,16 +496,17 @@ extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
     }
 }
 
-
 impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
-        let ptr = match self.ptr {
-            Some(arc) => Arc::into_raw(arc).into_dart(),
-            _ => ().into_dart(),
-        };
+        let ptr = Arc::into_raw(value.ptr).into_dart();
         let drop: extern "C" fn(*const c_void) = drop_arc::<T>;
         let share: extern "C" fn(*const c_void) -> *const c_void = share_arc::<T>;
-        vec![ptr, (drop as usize).into_dart(), (share as usize).into_dart()].into_dart()
+        vec![
+            ptr,
+            (drop as usize).into_dart(),
+            (share as usize).into_dart(),
+        ]
+        .into_dart()
     }
 }
 

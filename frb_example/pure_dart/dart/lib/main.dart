@@ -720,6 +720,7 @@ void main(List<String> args) async {
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \"static str\" "
           "})");
+      data.dispose();
     });
 
     test('Call opaque type fn after drop', () async {
@@ -775,11 +776,11 @@ void main(List<String> args) async {
               "lifetime: \"static str\" "
               "})");
           v.dispose();
-      try {
-        await api.runOpaque(opaque: v);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose');
-      }
+          try {
+            await api.runOpaque(opaque: v);
+          } catch (e) {
+            expect(e.toString(), 'Use after dispose');
+          }
         }
       }
     });

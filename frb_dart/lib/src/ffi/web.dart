@@ -128,10 +128,10 @@ class FrbOpaque {
 
   /// This constructor should never be called manually.
   FrbOpaque.unsafe(int ptr, int drop, int share) {
-      _ptr = ptr;
-      _drop = drop;
-      _share = share;
-      _finalizer.attach(this, [_ptr, drop, share], detach: this);
+    _ptr = ptr;
+    _drop = drop;
+    _share = share;
+    _finalizer.attach(this, [_ptr, drop, share], detach: this);
   }
 
   /// Call Rust destructors on the backing memory of this pointer.

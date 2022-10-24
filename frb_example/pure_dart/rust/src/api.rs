@@ -9,7 +9,7 @@ use std::time::Duration;
 use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
-use lazy_static::{lazy_static, __Deref};
+use lazy_static::{__Deref, lazy_static};
 
 use crate::data::{HideData, MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};

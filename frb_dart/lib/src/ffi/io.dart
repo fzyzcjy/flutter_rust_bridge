@@ -41,7 +41,8 @@ class WireSyncReturnStruct extends ffi.Struct {
 class FrbOpaque implements Finalizable {
   ffi.Pointer? _ptr;
   late ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
-  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>> _share;
+  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>>
+      _share;
 
   /// This constructor should never be called manually.
   FrbOpaque.unsafe(int? ptr, int drop, int share) {
