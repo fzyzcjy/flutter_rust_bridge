@@ -39,7 +39,7 @@ class WireSyncReturnStruct extends ffi.Struct {
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque implements Finalizable {
-  ffi.Pointer? _ptr;
+  late ffi.Pointer _ptr;
   late ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
   late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>>
       _share;
@@ -53,7 +53,7 @@ class FrbOpaque implements Finalizable {
     _drop = ffi.Pointer.fromAddress(drop);
     _share = ffi.Pointer.fromAddress(share);
     _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
-    _finalizer.attach(this, _ptr!.cast(), detach: this);
+    _finalizer.attach(this, _ptr.cast(), detach: this);
   }
 
   /// The native finalizer runs [_drop] on [_ptr]
@@ -74,7 +74,7 @@ class FrbOpaque implements Finalizable {
     if (!isStale()) {
       _finalizer.detach(this);
       _drop.asFunction<void Function(ffi.Pointer)>()(_ptr!);
-      _ptr = null;
+      _ptr = Pointer.fromAddress(0);
     }
   }
 
@@ -82,7 +82,7 @@ class FrbOpaque implements Finalizable {
   static ffi.Pointer share(FrbOpaque ptr) {
     if (!ptr.isStale()) {
       return ptr._share
-          .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
+          .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr);
     } else {
       throw "Use after dispose";
     }
@@ -92,5 +92,5 @@ class FrbOpaque implements Finalizable {
   /// of this pointer. This does not guarantee that the backing memory has actually
   /// been reclaimed.
   // not nullptr, this is an internal bookkeeping method
-  bool isStale() => _ptr == null;
+  bool isStale() => _ptr.address == 0;
 }
