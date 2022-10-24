@@ -33,7 +33,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn structs(&self) -> String {
         format!(
             "@sealed class {0} extends FrbOpaque {{
-                {0}.fromRaw(int? ptr, int drop, int share) : super.unsafe(ptr, drop, share);
+                {0}.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
             }}",
             self.ir.dart_api_type()
         )

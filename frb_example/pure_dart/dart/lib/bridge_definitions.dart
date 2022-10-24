@@ -417,7 +417,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
 @sealed
 class BoxDartDebug extends FrbOpaque {
-  BoxDartDebug.fromRaw(int? ptr, int drop, int share) : super.unsafe(ptr, drop, share);
+  BoxDartDebug.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
@@ -431,17 +431,17 @@ class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
 
 @sealed
 class I32 extends FrbOpaque {
-  I32.fromRaw(int? ptr, int drop, int share) : super.unsafe(ptr, drop, share);
+  I32.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 @sealed
 class MutexOpaqueStruct extends FrbOpaque {
-  MutexOpaqueStruct.fromRaw(int? ptr, int drop, int share) : super.unsafe(ptr, drop, share);
+  MutexOpaqueStruct.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 @sealed
 class OpaqueStruct extends FrbOpaque {
-  OpaqueStruct.fromRaw(int? ptr, int drop, int share) : super.unsafe(ptr, drop, share);
+  OpaqueStruct.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 class OpaqueStructArray2 extends NonGrowableListView<OpaqueStruct> {
@@ -464,7 +464,7 @@ class PointArray2 extends NonGrowableListView<Point> {
 
 @sealed
 class RwLockOpaqueStruct extends FrbOpaque {
-  RwLockOpaqueStruct.fromRaw(int? ptr, int drop, int share) : super.unsafe(ptr, drop, share);
+  RwLockOpaqueStruct.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 class SumWithArray3 extends NonGrowableListView<SumWith> {
