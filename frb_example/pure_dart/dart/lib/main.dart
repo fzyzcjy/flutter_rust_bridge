@@ -734,7 +734,11 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
+      try {
+        await api.runOpaque(opaque: data);
+      } catch (e) {
+        expect(e.toString(), 'Use after dispose');
+      }
     });
 
     test('Delete opaque type before complete run', () async {
@@ -750,7 +754,11 @@ void main(List<String> args) async {
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \"static str\" "
           "})");
-      expect(await api.runOpaque(opaque: data), "NULL OPAQUE");
+      try {
+        await api.runOpaque(opaque: data);
+      } catch (e) {
+        expect(e.toString(), 'Use after dispose');
+      }
     });
 
     test('Create array of opaque type', () async {
@@ -767,7 +775,11 @@ void main(List<String> args) async {
               "lifetime: \"static str\" "
               "})");
           v.dispose();
-          expect(await api.runOpaque(opaque: v), "NULL OPAQUE");
+      try {
+        await api.runOpaque(opaque: v);
+      } catch (e) {
+        expect(e.toString(), 'Use after dispose');
+      }
         }
       }
     });
@@ -785,29 +797,29 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       (data[0] as EnumOpaque_Struct).field0.dispose();
-      expect(await api.runEnumOpaque(opaque: data[1]), "Some(42)");
+      expect(await api.runEnumOpaque(opaque: data[1]), "42");
       (data[1] as EnumOpaque_Primitive).field0.dispose();
-      expect(await api.runEnumOpaque(opaque: data[2]), "Opaque { ptr: Some(\"String\") }");
+      expect(await api.runEnumOpaque(opaque: data[2]), "\"String\"");
       (data[2] as EnumOpaque_TraitObj).field0.dispose();
       expect(
           await api.runEnumOpaque(opaque: data[3]),
-          "Some(\"content - Some(PrivateData "
+          "\"content - Some(PrivateData "
           "{"
           " content: \\\"content nested\\\", "
           "primitive: 424242, "
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \\\"static str\\\" "
-          "})\")");
+          "})\"");
       (data[3] as EnumOpaque_Mutex).field0.dispose();
       expect(
           await api.runEnumOpaque(opaque: data[4]),
-          "Some(\"content - Some(PrivateData "
+          "\"content - Some(PrivateData "
           "{"
           " content: \\\"content nested\\\", "
           "primitive: 424242, "
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \\\"static str\\\" "
-          "})\")");
+          "})\"");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
     });
   });

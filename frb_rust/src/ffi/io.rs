@@ -2,8 +2,7 @@ pub use super::DartAbi;
 pub use super::MessagePort;
 use crate::DartSafe;
 pub use allo_isolate::*;
-use std::ffi::c_void;
-use std::sync::{self, Arc};
+use std::sync::Arc;
 
 #[cfg(feature = "chrono")]
 #[inline]
@@ -67,60 +66,30 @@ mod tests {
 /// pub struct DebugWrapper2(pub Opaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
 #[repr(transparent)]
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Opaque<T: ?Sized + DartSafe> {
-    pub(crate) ptr: Option<Arc<T>>,
+    pub(crate) ptr: Arc<T>,
+}
+
+impl<T: ?Sized + DartSafe> std::ops::Deref for Opaque<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        self.ptr.as_ref()
+    }
 }
 
 impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { ptr: Some(ptr) }
+        Self { ptr }
     }
 }
 
 impl<T: DartSafe> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
-            ptr: Some(Arc::new(value)),
+            ptr: Arc::new(value),
         }
-    }
-}
-
-impl<T: DartSafe> Opaque<sync::RwLock<T>> {
-    #[inline]
-    pub fn read(&self) -> Option<sync::LockResult<sync::RwLockReadGuard<T>>> {
-        self.as_deref().map(sync::RwLock::read)
-    }
-    #[inline]
-    pub fn write(&self) -> Option<sync::LockResult<sync::RwLockWriteGuard<T>>> {
-        self.as_deref().map(sync::RwLock::write)
-    }
-    #[inline]
-    pub fn try_read(&self) -> Option<sync::TryLockResult<sync::RwLockReadGuard<T>>> {
-        self.as_deref().map(sync::RwLock::try_read)
-    }
-    #[inline]
-    pub fn try_write(&self) -> Option<sync::TryLockResult<sync::RwLockWriteGuard<T>>> {
-        self.as_deref().map(sync::RwLock::try_write)
-    }
-}
-
-impl<T: DartSafe> Opaque<sync::Mutex<T>> {
-    #[inline]
-    pub fn lock(&self) -> Option<sync::LockResult<sync::MutexGuard<T>>> {
-        self.as_deref().map(sync::Mutex::lock)
-    }
-    #[inline]
-    pub fn try_lock(&self) -> Option<sync::TryLockResult<sync::MutexGuard<T>>> {
-        self.as_deref().map(sync::Mutex::try_lock)
-    }
-}
-
-impl<T: DartSafe> Opaque<T> {
-    /// Acquire a reference to the inner value, if the pointer has not already
-    /// been disposed by Dart.
-    pub fn as_deref(&self) -> Option<&T> {
-        self.ptr.as_deref()
     }
 }
 
@@ -129,12 +98,12 @@ impl<T: DartSafe> Opaque<T> {
 /// # Safety
 ///
 /// This function should never be called manually.
-extern "C" fn drop_arc<T>(ptr: *const T) {
+extern "C" fn drop_arc<T>(ptr: std::ptr::NonNull<T>) {
     // Dart has ownership of this copy of Arc,
-    // and can only lend out clones, so this is safe to call
+    // and can only share out clones, so this is safe to call
     // exactly once.
     unsafe {
-        Arc::decrement_strong_count(ptr);
+        Arc::decrement_strong_count(ptr.as_ptr());
     }
 }
 
@@ -143,27 +112,22 @@ extern "C" fn drop_arc<T>(ptr: *const T) {
 /// # Safety
 ///
 /// This function should never be called manually.
-extern "C" fn lend_arc<T>(ptr: *const T) -> *const T {
+extern "C" fn share_arc<T>(ptr: std::ptr::NonNull<T>) -> std::ptr::NonNull<T> {
     unsafe {
-        Arc::increment_strong_count(ptr);
+        Arc::increment_strong_count(ptr.as_ptr());
         ptr
     }
 }
 
-type CArcDropper<T> = *const extern "C" fn(*const T);
-type CArcLender<T> = *const extern "C" fn(*const T) -> *const T;
+type CArcDropper<T> = *const extern "C" fn(std::ptr::NonNull<T>);
+type CArcShare<T> = *const extern "C" fn(std::ptr::NonNull<T>) -> std::ptr::NonNull<T>;
 
 impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
     fn from(value: Opaque<T>) -> Self {
-        // ffi.Pointer? type
-        let ptr = match value.ptr {
-            Some(arc) => Arc::into_raw(arc).into_dart(),
-            _ => ().into_dart(),
-        };
-
+        let ptr = Arc::into_raw(value.ptr).into_dart();
         let drop = drop_arc::<T> as CArcDropper<T>;
-        let lend = lend_arc::<T> as CArcLender<T>;
-        vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()
+        let share = share_arc::<T> as CArcShare<T>;
+        vec![ptr, drop.into_dart(), share.into_dart()].into_dart()
     }
 }
 

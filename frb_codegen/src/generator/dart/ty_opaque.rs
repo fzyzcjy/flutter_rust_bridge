@@ -14,13 +14,13 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            wasm: Some("return FrbOpaque.lend(raw);".to_string()),
+            wasm: Some("return FrbOpaque.share(raw);".to_string()),
             ..Default::default()
         }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some("wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();".into())
+        Some("wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();".into())
     }
 
     fn wire2api_body(&self) -> String {
@@ -33,7 +33,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn structs(&self) -> String {
         format!(
             "@sealed class {0} extends FrbOpaque {{
-                {0}.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+                {0}.fromRaw(int? ptr, int drop, int share) : super.unsafe(ptr, drop, share);
             }}",
             self.ir.dart_api_type()
         )

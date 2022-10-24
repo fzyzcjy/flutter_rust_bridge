@@ -41,16 +41,16 @@ class WireSyncReturnStruct extends ffi.Struct {
 class FrbOpaque implements Finalizable {
   ffi.Pointer? _ptr;
   late ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
-  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>> _lend;
+  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>> _share;
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int? ptr, int drop, int lend) {
+  FrbOpaque.unsafe(int? ptr, int drop, int share) {
     assert(ptr == null || ptr > 0);
     assert(drop > 0);
-    assert(lend > 0);
+    assert(share > 0);
     _ptr = ptr == null ? null : ffi.Pointer.fromAddress(ptr);
     _drop = ffi.Pointer.fromAddress(drop);
-    _lend = ffi.Pointer.fromAddress(lend);
+    _share = ffi.Pointer.fromAddress(share);
     _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
     _finalizer.attach(this, _ptr!.cast(), detach: this);
   }
@@ -77,14 +77,13 @@ class FrbOpaque implements Finalizable {
     }
   }
 
-  /// Returns pointer with lends ownership if Dart owner else returns null pointer.
-  static ffi.Pointer lend(FrbOpaque ptr) {
+  /// Returns pointer with shares ownership if Dart owner else throws error.
+  static ffi.Pointer share(FrbOpaque ptr) {
     if (!ptr.isStale()) {
-      return ptr._lend
+      return ptr._share
           .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
     } else {
-      // equivalent to an Option::<Arc<T>>::None
-      return ffi.nullptr;
+      throw "Use after dispose";
     }
   }
 

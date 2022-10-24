@@ -67,6 +67,11 @@ impl IrType {
         matches!(self, StructRef(_) | EnumRef(_))
     }
 
+    #[inline]
+    pub fn is_opaque(&self) -> bool {
+        matches!(self, Opaque(_))
+    }
+
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap
     /// and therefore do not implement [Send].
     #[inline]

@@ -122,7 +122,7 @@ pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
     // The raw pointer is the same one created from Arc::into_raw,
     // owned and artificially incremented by Dart.
     Opaque {
-        ptr: (!ptr.is_null()).then(|| Arc::from_raw(ptr)),
+        ptr: Arc::from_raw(ptr),
     }
 }
 

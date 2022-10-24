@@ -104,36 +104,34 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
 
-@JS("wasm_bindgen.drop_opaque_box")
-external void _dropOpaqueBox(int ptr, int dropPtr, int lendPtr);
-@JS("wasm_bindgen.lend_opaque_box")
-external int _lendOpaqueBox(int ptr, int lendPtr);
+@JS("wasm_bindgen.drop_opaque")
+external void _dropOpaque(int ptr, int dropPtr, int sharePtr);
+@JS("wasm_bindgen.share_opaque")
+external int _shareOpaque(int ptr, int sharePtr);
 
 /// An opaque pointer to a Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque {
   /// Pointer to a Rust type.
-  int _ptr = 0;
+  late int _ptr;
 
   /// Pointer to a closure that removes ownership Rust type.
-  int _drop = 0;
+  late int _drop;
 
-  /// Pointer to a closure that lends ownership of the Rust type.
-  int _lend = 0;
+  /// Pointer to a closure that shares ownership of the Rust type.
+  late int _share;
 
   /// Finalizer of an opaque type at the provided pointers.
   static final Finalizer<List<int>> _finalizer = Finalizer((obj) {
-    _dropOpaqueBox(obj[0], obj[1], obj[2]);
+    _dropOpaque(obj[0], obj[1], obj[2]);
   });
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int? ptr, int drop, int lend) {
-    if (ptr != null) {
+  FrbOpaque.unsafe(int ptr, int drop, int share) {
       _ptr = ptr;
       _drop = drop;
-      _lend = lend;
-      _finalizer.attach(this, [_ptr, drop, lend], detach: this);
-    }
+      _share = share;
+      _finalizer.attach(this, [_ptr, drop, share], detach: this);
   }
 
   /// Call Rust destructors on the backing memory of this pointer.
@@ -149,18 +147,17 @@ class FrbOpaque {
   void dispose() {
     if (!isStale()) {
       _finalizer.detach(this);
-      _dropOpaqueBox(_ptr, _drop, _lend);
+      _dropOpaque(_ptr, _drop, _share);
       _ptr = 0;
     }
   }
 
-  /// Returns pointer with lends ownership if Dart owner else returns 0.
-  static dynamic lend(FrbOpaque ptr) {
+  /// Returns pointer with shares ownership if Dart owner else throws erroe.
+  static dynamic share(FrbOpaque ptr) {
     if (!ptr.isStale()) {
-      return _lendOpaqueBox(ptr._ptr, ptr._lend);
+      return _shareOpaque(ptr._ptr, ptr._share);
     } else {
-      // equivalent to an Option::<Arc<T>>::None
-      return 0;
+      throw "Use after dispose";
     }
   }
 

@@ -429,9 +429,17 @@ mod tests {
 /// pub struct DebugWrapper2(pub Opaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
 #[repr(transparent)]
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Opaque<T: ?Sized + DartSafe> {
-    pub(crate) ptr: Option<Arc<T>>,
+    pub(crate) ptr: Arc<T>,
+}
+
+impl<T: ?Sized + DartSafe> std::ops::Deref for Opaque<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        self.ptr.as_ref()
+    }
 }
 
 impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
@@ -448,51 +456,13 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-impl<T: DartSafe> Opaque<sync::RwLock<T>> {
-    #[inline]
-    pub fn read(&self) -> Option<sync::LockResult<sync::RwLockReadGuard<T>>> {
-        self.as_deref().map(sync::RwLock::read)
-    }
-    #[inline]
-    pub fn write(&self) -> Option<sync::LockResult<sync::RwLockWriteGuard<T>>> {
-        self.as_deref().map(sync::RwLock::write)
-    }
-    #[inline]
-    pub fn try_read(&self) -> Option<sync::TryLockResult<sync::RwLockReadGuard<T>>> {
-        self.as_deref().map(sync::RwLock::try_read)
-    }
-    #[inline]
-    pub fn try_write(&self) -> Option<sync::TryLockResult<sync::RwLockWriteGuard<T>>> {
-        self.as_deref().map(sync::RwLock::try_write)
-    }
-}
-
-impl<T: DartSafe> Opaque<sync::Mutex<T>> {
-    #[inline]
-    pub fn lock(&self) -> Option<sync::LockResult<sync::MutexGuard<T>>> {
-        self.as_deref().map(sync::Mutex::lock)
-    }
-    #[inline]
-    pub fn try_lock(&self) -> Option<sync::TryLockResult<sync::MutexGuard<T>>> {
-        self.as_deref().map(sync::Mutex::try_lock)
-    }
-}
-
-impl<T: DartSafe> Opaque<T> {
-    /// Acquire a reference to the inner value, if the pointer has not already
-    /// been disposed by Dart.
-    pub fn as_deref(&self) -> Option<&T> {
-        self.ptr.as_deref()
-    }
-}
-
 /// Dropper opaque data and specific functions of this opaque data.
 ///
 /// # Safety
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub extern "C" fn drop_opaque_box(
+pub extern "C" fn drop_opaque(
     ptr: *const c_void,
     ptr_drop_fn: *const c_void,
 ) {
@@ -508,10 +478,10 @@ pub extern "C" fn drop_opaque_box(
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub extern "C" fn lend_opaque_box(ptr: *const c_void, ptr_lend_fn: *const c_void) -> *const c_void {
+pub extern "C" fn share_opaque(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
     unsafe {
-        let lend_fn: extern "C" fn(*const c_void) -> *const c_void = std::mem::transmute(ptr_lend_fn);
-        lend_fn(ptr)
+        let share_fn: extern "C" fn(*const c_void) -> *const c_void = std::mem::transmute(ptr_share_fn);
+        share_fn(ptr)
     }
 }
 
@@ -521,7 +491,7 @@ extern "C" fn drop_arc<T>(ptr: *const c_void) {
     }
 }
 
-extern "C" fn lend_arc<T>(ptr: *const c_void) -> *const c_void {
+extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<T>::increment_strong_count(ptr as _);
         ptr
@@ -536,8 +506,8 @@ impl<T: DartSafe> IntoDart for Opaque<T> {
             _ => ().into_dart(),
         };
         let drop: extern "C" fn(*const c_void) = drop_arc::<T>;
-        let lend: extern "C" fn(*const c_void) -> *const c_void = lend_arc::<T>;
-        vec![ptr, (drop as usize).into_dart(), (lend as usize).into_dart()].into_dart()
+        let share: extern "C" fn(*const c_void) -> *const c_void = share_arc::<T>;
+        vec![ptr, (drop as usize).into_dart(), (share as usize).into_dart()].into_dart()
     }
 }
 

@@ -622,23 +622,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api_fill_to_wire
 
   void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, ffi.Pointer<wire_BoxDartDebug> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_I32(I32 apiObj, ffi.Pointer<wire_I32> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_MutexOpaqueStruct(MutexOpaqueStruct apiObj, ffi.Pointer<wire_MutexOpaqueStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_OpaqueStruct(OpaqueStruct apiObj, ffi.Pointer<wire_OpaqueStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_RwLockOpaqueStruct(RwLockOpaqueStruct apiObj, ffi.Pointer<wire_RwLockOpaqueStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {

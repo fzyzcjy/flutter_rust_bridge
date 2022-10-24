@@ -22,7 +22,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_BoxDartDebug(BoxDartDebug raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
@@ -47,22 +47,22 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_I32(I32 raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
   dynamic api2wire_MutexOpaqueStruct(MutexOpaqueStruct raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
   dynamic api2wire_OpaqueStruct(OpaqueStruct raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
   dynamic api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
