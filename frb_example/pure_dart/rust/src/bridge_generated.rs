@@ -1530,6 +1530,8 @@ const _: fn() = || {
 };
 // Section: allocate functions
 
+// Section: deallocate functions
+
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {

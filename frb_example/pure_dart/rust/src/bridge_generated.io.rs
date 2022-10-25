@@ -865,6 +865,368 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
+// Section: deallocate functions
+
+#[no_mangle]
+pub extern "C" fn drop_box_application_env_0(raw: *mut wire_ApplicationEnv) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_application_settings_0(raw: *mut wire_ApplicationSettings) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_attribute_0(raw: *mut wire_Attribute) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_bool_0(raw: *mut bool) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_concatenate_with_0(raw: *mut wire_ConcatenateWith) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_customized_0(raw: *mut wire_Customized) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_enum_opaque_0(raw: *mut wire_EnumOpaque) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_exotic_optionals_0(raw: *mut wire_ExoticOptionals) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_f64_0(raw: *mut f64) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_feature_chrono_0(raw: *mut wire_FeatureChrono) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_feature_uuid_0(raw: *mut wire_FeatureUuid) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_feed_id_0(raw: *mut wire_FeedId) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_i32_0(raw: *mut i32) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_i64_0(raw: *mut i64) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_kitchen_sink_0(raw: *mut wire_KitchenSink) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_measure_0(raw: *mut wire_Measure) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_message_id_0(raw: *mut wire_MessageId) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_my_size_0(raw: *mut wire_MySize) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_my_struct_0(raw: *mut wire_MyStruct) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_my_tree_node_0(raw: *mut wire_MyTreeNode) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_new_type_int_0(raw: *mut wire_NewTypeInt) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_note_0(raw: *mut wire_Note) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_numbers_0(raw: *mut wire_Numbers) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_sequences_0(raw: *mut wire_Sequences) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_sum_with_0(raw: *mut wire_SumWith) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_test_id_0(raw: *mut wire_TestId) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_user_id_0(raw: *mut wire_UserId) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_blob_0(raw: *mut wire_Blob) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_bool_0(raw: *mut bool) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_distance_0(raw: *mut wire_Distance) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_exotic_optionals_0(raw: *mut wire_ExoticOptionals) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_f64_0(raw: *mut f64) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_i32_0(raw: *mut i32) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_i64_0(raw: *mut i64) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_i8_0(raw: *mut i8) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_kitchen_sink_0(raw: *mut wire_KitchenSink) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_my_size_0(raw: *mut wire_MySize) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_speed_0(raw: *mut wire_Speed) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_u8_0(raw: *mut u8) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_weekdays_0(raw: *mut i32) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
 // Section: impl Wire2Api
 
 impl Wire2Api<Opaque<Box<dyn DartDebug>>> for *mut wire_BoxDartDebug {

@@ -6,7 +6,6 @@ use std::{mem, sync::Arc};
 
 pub use crate::ffi::*;
 use crate::DartSafe;
-use anyhow::bail;
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
@@ -119,15 +118,11 @@ macro_rules! primitive_to_sync_return {
 /// This function should never be called manually.
 /// Retrieving an opaque pointer from Dart is an implementation detail,
 /// so this function is not guaranteed to be API-stable.
-pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> anyhow::Result<Opaque<T>> {
-    if ptr.is_null() {
-        bail!("Use opaque type after dispose.")
-    } else {
-        // The raw pointer is the same one created from Arc::into_raw,
-        // owned and artificially incremented by Dart.
-        Ok(Opaque {
-            ptr: Arc::from_raw(ptr),
-        })
+pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
+    // The raw pointer is the same one created from Arc::into_raw,
+    // owned and artificially incremented by Dart.
+    Opaque {
+        ptr: Arc::from_raw(ptr),
     }
 }
 

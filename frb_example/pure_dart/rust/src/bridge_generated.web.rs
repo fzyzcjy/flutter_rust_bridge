@@ -573,6 +573,8 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
+// Section: deallocate functions
+
 // Section: impl Wire2Api
 
 impl Wire2Api<chrono::Duration> for i64 {

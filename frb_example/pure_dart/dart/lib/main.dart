@@ -738,7 +738,7 @@ void main(List<String> args) async {
       try {
         await api.runOpaque(opaque: data);
       } catch (e) {
-        expect(e.toString(), 'Use after dispose');
+        expect(e.toString(), 'Use after dispose.');
       }
     });
 
@@ -758,7 +758,7 @@ void main(List<String> args) async {
       try {
         await api.runOpaque(opaque: data);
       } catch (e) {
-        expect(e.toString(), 'Use after dispose');
+        expect(e.toString(), 'Use after dispose.');
       }
     });
 
@@ -778,7 +778,7 @@ void main(List<String> args) async {
         try {
           await api.runOpaque(opaque: v);
         } catch (e) {
-          expect(e.toString(), 'Use after dispose');
+          expect(e.toString(), 'Use after dispose.');
         }
       }
     });
@@ -799,6 +799,7 @@ void main(List<String> args) async {
 
       expect(await api.runEnumOpaque(opaque: data[1]), "42");
       (data[1] as EnumOpaque_Primitive).field0.dispose();
+      
 
       expect(await api.runEnumOpaque(opaque: data[2]), "\"String\"");
       (data[2] as EnumOpaque_TraitObj).field0.dispose();
@@ -824,6 +825,11 @@ void main(List<String> args) async {
           "lifetime: \\\"static str\\\" "
           "})\"");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
+        try {
+          await api.runEnumOpaque(opaque: data[4]);
+        } catch (e) {
+          expect(e.toString(), 'Use after dispose.');
+        }
     });
   });
 }
