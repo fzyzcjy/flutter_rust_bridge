@@ -969,6 +969,11 @@ pub enum EnumOpaque {
 /// Opaque types
 pub struct OpaqueStruct(HideData);
 
+pub struct OpaqueNested {
+    pub first: Opaque<OpaqueStruct>,
+    pub second: Opaque<OpaqueStruct>,
+}
+
 pub fn create_opaque() -> Opaque<OpaqueStruct> {
     Opaque::new(OpaqueStruct(HideData::new()))
 }
@@ -1012,3 +1017,12 @@ pub fn opaque_array() -> [Opaque<OpaqueStruct>; 2] {
         Opaque::new(OpaqueStruct(HideData::new())),
     ]
 }
+
+pub fn create_nested_opaque() -> OpaqueNested {
+    OpaqueNested {
+        first: Opaque::new(OpaqueStruct(HideData::new())),
+        second: Opaque::new(OpaqueStruct(HideData::new())),
+    }
+}
+
+pub fn run_nested_opaque(opaque: OpaqueNested) {}

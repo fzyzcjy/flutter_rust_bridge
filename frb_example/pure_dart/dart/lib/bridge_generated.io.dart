@@ -371,6 +371,18 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_OpaqueNested> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
+    final ptr = inner.new_box_autoadd_opaque_nested_0();
+    try {
+      _api_fill_to_wire_opaque_nested(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_opaque_nested_0(ptr);
+      rethrow;
+    }
+  }
+
+  @protected
   ffi.Pointer<wire_Sequences> api2wire_box_autoadd_sequences(Sequences raw) {
     final ptr = inner.new_box_autoadd_sequences_0();
     try {
@@ -956,6 +968,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_numbers(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_opaque_nested(OpaqueNested apiObj, ffi.Pointer<wire_OpaqueNested> wireObj) {
+    _api_fill_to_wire_opaque_nested(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<wire_Sequences> wireObj) {
     _api_fill_to_wire_sequences(apiObj, wireObj.ref);
   }
@@ -1015,42 +1031,48 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
     if (apiObj is Distance_Map) {
+      var pre_field0 = api2wire_f64(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Distance_Map();
-      wireObj.kind.ref.Map.ref.field0 = api2wire_f64(apiObj.field0);
+      wireObj.kind.ref.Map.ref.field0 = pre_field0;
       return;
     }
   }
 
   void _api_fill_to_wire_enum_opaque(EnumOpaque apiObj, wire_EnumOpaque wireObj) {
     if (apiObj is EnumOpaque_Struct) {
+      var pre_field0 = api2wire_OpaqueStruct(apiObj.field0);
       wireObj.tag = 0;
       wireObj.kind = inner.inflate_EnumOpaque_Struct();
-      wireObj.kind.ref.Struct.ref.field0 = api2wire_OpaqueStruct(apiObj.field0);
+      wireObj.kind.ref.Struct.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_Primitive) {
+      var pre_field0 = api2wire_I32(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_EnumOpaque_Primitive();
-      wireObj.kind.ref.Primitive.ref.field0 = api2wire_I32(apiObj.field0);
+      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_TraitObj) {
+      var pre_field0 = api2wire_BoxDartDebug(apiObj.field0);
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_EnumOpaque_TraitObj();
-      wireObj.kind.ref.TraitObj.ref.field0 = api2wire_BoxDartDebug(apiObj.field0);
+      wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_Mutex) {
+      var pre_field0 = api2wire_MutexOpaqueStruct(apiObj.field0);
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_EnumOpaque_Mutex();
-      wireObj.kind.ref.Mutex.ref.field0 = api2wire_MutexOpaqueStruct(apiObj.field0);
+      wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_RwLock) {
+      var pre_field0 = api2wire_RwLockOpaqueStruct(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_EnumOpaque_RwLock();
-      wireObj.kind.ref.RwLock.ref.field0 = api2wire_RwLockOpaqueStruct(apiObj.field0);
+      wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
       return;
     }
   }
@@ -1094,52 +1116,63 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
     if (apiObj is KitchenSink_Primitives) {
+      var pre_int32 = api2wire_i32(apiObj.int32);
+      var pre_float64 = api2wire_f64(apiObj.float64);
+      var pre_boolean = api2wire_bool(apiObj.boolean);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_KitchenSink_Primitives();
-      wireObj.kind.ref.Primitives.ref.int32 = api2wire_i32(apiObj.int32);
-      wireObj.kind.ref.Primitives.ref.float64 = api2wire_f64(apiObj.float64);
-      wireObj.kind.ref.Primitives.ref.boolean = api2wire_bool(apiObj.boolean);
+      wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
+      wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
+      wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
       return;
     }
     if (apiObj is KitchenSink_Nested) {
+      var pre_field0 = api2wire_box_kitchen_sink(apiObj.field0);
+      var pre_field1 = api2wire_i32(apiObj.field1);
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
-      wireObj.kind.ref.Nested.ref.field0 = api2wire_box_kitchen_sink(apiObj.field0);
-      wireObj.kind.ref.Nested.ref.field1 = api2wire_i32(apiObj.field1);
+      wireObj.kind.ref.Nested.ref.field0 = pre_field0;
+      wireObj.kind.ref.Nested.ref.field1 = pre_field1;
       return;
     }
     if (apiObj is KitchenSink_Optional) {
+      var pre_field0 = api2wire_opt_box_autoadd_i32(apiObj.field0);
+      var pre_field1 = api2wire_opt_box_autoadd_i32(apiObj.field1);
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_KitchenSink_Optional();
-      wireObj.kind.ref.Optional.ref.field0 = api2wire_opt_box_autoadd_i32(apiObj.field0);
-      wireObj.kind.ref.Optional.ref.field1 = api2wire_opt_box_autoadd_i32(apiObj.field1);
+      wireObj.kind.ref.Optional.ref.field0 = pre_field0;
+      wireObj.kind.ref.Optional.ref.field1 = pre_field1;
       return;
     }
     if (apiObj is KitchenSink_Buffer) {
+      var pre_field0 = api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_KitchenSink_Buffer();
-      wireObj.kind.ref.Buffer.ref.field0 = api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
+      wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is KitchenSink_Enums) {
+      var pre_field0 = api2wire_weekdays(apiObj.field0);
       wireObj.tag = 5;
       wireObj.kind = inner.inflate_KitchenSink_Enums();
-      wireObj.kind.ref.Enums.ref.field0 = api2wire_weekdays(apiObj.field0);
+      wireObj.kind.ref.Enums.ref.field0 = pre_field0;
       return;
     }
   }
 
   void _api_fill_to_wire_measure(Measure apiObj, wire_Measure wireObj) {
     if (apiObj is Measure_Speed) {
+      var pre_field0 = api2wire_box_speed(apiObj.field0);
       wireObj.tag = 0;
       wireObj.kind = inner.inflate_Measure_Speed();
-      wireObj.kind.ref.Speed.ref.field0 = api2wire_box_speed(apiObj.field0);
+      wireObj.kind.ref.Speed.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is Measure_Distance) {
+      var pre_field0 = api2wire_box_distance(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Measure_Distance();
-      wireObj.kind.ref.Distance.ref.field0 = api2wire_box_distance(apiObj.field0);
+      wireObj.kind.ref.Distance.ref.field0 = pre_field0;
       return;
     }
   }
@@ -1177,6 +1210,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.field0 = api2wire_int_32_list(apiObj.field0);
   }
 
+  void _api_fill_to_wire_opaque_nested(OpaqueNested apiObj, wire_OpaqueNested wireObj) {
+    wireObj.first = api2wire_OpaqueStruct(apiObj.first);
+    wireObj.second = api2wire_OpaqueStruct(apiObj.second);
+  }
+
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
@@ -1204,9 +1242,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
     if (apiObj is Speed_GPS) {
+      var pre_field0 = api2wire_f64(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Speed_GPS();
-      wireObj.kind.ref.GPS.ref.field0 = api2wire_f64(apiObj.field0);
+      wireObj.kind.ref.GPS.ref.field0 = pre_field0;
       return;
     }
   }
@@ -2524,6 +2563,34 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_opaque_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_opaque_array');
   late final _wire_opaque_array = _wire_opaque_arrayPtr.asFunction<void Function(int)>();
 
+  void wire_create_nested_opaque(
+    int port_,
+  ) {
+    return _wire_create_nested_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_create_nested_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_nested_opaque');
+  late final _wire_create_nested_opaque = _wire_create_nested_opaquePtr.asFunction<void Function(int)>();
+
+  void wire_run_nested_opaque(
+    int port_,
+    ffi.Pointer<wire_OpaqueNested> opaque,
+  ) {
+    return _wire_run_nested_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_run_nested_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueNested>)>>(
+          'wire_run_nested_opaque');
+  late final _wire_run_nested_opaque =
+      _wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueNested>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -2942,6 +3009,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_Numbers> Function()>>('new_box_autoadd_numbers_0');
   late final _new_box_autoadd_numbers_0 =
       _new_box_autoadd_numbers_0Ptr.asFunction<ffi.Pointer<wire_Numbers> Function()>();
+
+  ffi.Pointer<wire_OpaqueNested> new_box_autoadd_opaque_nested_0() {
+    return _new_box_autoadd_opaque_nested_0();
+  }
+
+  late final _new_box_autoadd_opaque_nested_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_OpaqueNested> Function()>>('new_box_autoadd_opaque_nested_0');
+  late final _new_box_autoadd_opaque_nested_0 =
+      _new_box_autoadd_opaque_nested_0Ptr.asFunction<ffi.Pointer<wire_OpaqueNested> Function()>();
 
   ffi.Pointer<wire_Sequences> new_box_autoadd_sequences_0() {
     return _new_box_autoadd_sequences_0();
@@ -3544,6 +3620,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Numbers>)>>('drop_box_autoadd_numbers_0');
   late final _drop_box_autoadd_numbers_0 =
       _drop_box_autoadd_numbers_0Ptr.asFunction<void Function(ffi.Pointer<wire_Numbers>)>();
+
+  void drop_box_autoadd_opaque_nested_0(
+    ffi.Pointer<wire_OpaqueNested> raw,
+  ) {
+    return _drop_box_autoadd_opaque_nested_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_opaque_nested_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_OpaqueNested>)>>(
+          'drop_box_autoadd_opaque_nested_0');
+  late final _drop_box_autoadd_opaque_nested_0 =
+      _drop_box_autoadd_opaque_nested_0Ptr.asFunction<void Function(ffi.Pointer<wire_OpaqueNested>)>();
 
   void drop_box_autoadd_sequences_0(
     ffi.Pointer<wire_Sequences> raw,
@@ -4297,6 +4387,12 @@ class wire_EnumOpaque extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<EnumOpaqueKind> kind;
+}
+
+class wire_OpaqueNested extends ffi.Struct {
+  external ffi.Pointer<wire_OpaqueStruct> first;
+
+  external ffi.Pointer<wire_OpaqueStruct> second;
 }
 
 class wire_SumWith extends ffi.Struct {

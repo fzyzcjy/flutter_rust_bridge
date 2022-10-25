@@ -1440,6 +1440,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<OpaqueNested> createNestedOpaque({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_create_nested_opaque(port_),
+      parseSuccessData: _wire2api_opaque_nested,
+      constMeta: kCreateNestedOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kCreateNestedOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_nested_opaque",
+        argNames: [],
+      );
+
+  Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_opaque_nested(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_run_nested_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kRunNestedOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "run_nested_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -2231,6 +2262,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return OldSimpleStruct(
       field: _wire2api_i32(arr[0]),
+    );
+  }
+
+  OpaqueNested _wire2api_opaque_nested(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNested(
+      first: _wire2api_OpaqueStruct(arr[0]),
+      second: _wire2api_OpaqueStruct(arr[1]),
     );
   }
 

@@ -241,6 +241,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
+    return api2wire_opaque_nested(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_sequences(Sequences raw) {
     return api2wire_sequences(raw);
   }
@@ -552,6 +557,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_numbers(Numbers raw) {
     return [api2wire_int_32_list(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> api2wire_opaque_nested(OpaqueNested raw) {
+    return [api2wire_OpaqueStruct(raw.first), api2wire_OpaqueStruct(raw.second)];
   }
 
   @protected
@@ -921,6 +931,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_opaque_array(NativePortType port_);
 
+  external void wire_create_nested_opaque(NativePortType port_);
+
+  external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1179,6 +1193,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       wasmModule.wire_run_opaque_with_delay(port_, opaque);
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
+
+  void wire_create_nested_opaque(NativePortType port_) => wasmModule.wire_create_nested_opaque(port_);
+
+  void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_run_nested_opaque(port_, opaque);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

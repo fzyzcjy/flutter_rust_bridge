@@ -102,15 +102,13 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             variant.wrapper_name, idx
                         )
                     } else {
-                        let r = format!("wireObj.kind.ref.{}.ref", variant.name);
-                        let body: Vec<_> = match &variant.kind {
+                        let pre_field: Vec<_> = match &variant.kind {
                             IrVariantKind::Struct(st) => st
                                 .fields
                                 .iter()
                                 .map(|field| {
                                     format!(
-                                        "{}.{} = api2wire_{}(apiObj.{});",
-                                        r,
+                                        "var pre_{} = api2wire_{}(apiObj.{});",
                                         field.name.rust_style(),
                                         field.ty.safe_ident(),
                                         field.name.dart_style()
@@ -119,16 +117,33 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .collect(),
                             _ => unreachable!(),
                         };
+                        let r = format!("wireObj.kind.ref.{}.ref", variant.name);
+                        let body: Vec<_> = match &variant.kind {
+                            IrVariantKind::Struct(st) => st
+                                .fields
+                                .iter()
+                                .map(|field| {
+                                    format!(
+                                        "{}.{name} = pre_{name};",
+                                        r,
+                                        name = field.name.rust_style(),
+                                    )
+                                })
+                                .collect(),
+                            _ => unreachable!(),
+                        };
                         format!(
-                            "if (apiObj is {4}) {{
+                            "if (apiObj is {5}) {{
+                                {3}
                                 wireObj.tag = {1};
                                 wireObj.kind = inner.inflate_{2}_{0}();
-                                {3}
+                                {4}
                                 return;
                             }}",
                             variant.name,
                             idx,
                             self.ir.name,
+                            pre_field.join("\n"),
                             body.join("\n"),
                             variant.wrapper_name
                         )

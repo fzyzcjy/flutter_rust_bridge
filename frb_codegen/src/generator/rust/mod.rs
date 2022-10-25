@@ -139,7 +139,6 @@ impl<'a> Generator<'a> {
             .map(|f| self.generate_deallocate_funcs(f, ir_file))
             .collect();
 
-
         lines.push_all(self.section_header_comment("impl Wire2Api"));
         lines.push(self.generate_wire2api_misc().to_string());
         lines += distinct_input_types

@@ -467,6 +467,16 @@ pub extern "C" fn wire_opaque_array(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_create_nested_opaque(port_: i64) {
+    wire_create_nested_opaque_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNested) {
+    wire_run_nested_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -677,6 +687,11 @@ pub extern "C" fn new_box_autoadd_note_0() -> *mut wire_Note {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_numbers_0() -> *mut wire_Numbers {
     support::new_leak_box_ptr(wire_Numbers::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut wire_OpaqueNested {
+    support::new_leak_box_ptr(wire_OpaqueNested::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1067,6 +1082,15 @@ pub extern "C" fn drop_box_autoadd_note_0(raw: *mut wire_Note) {
 
 #[no_mangle]
 pub extern "C" fn drop_box_autoadd_numbers_0(raw: *mut wire_Numbers) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_opaque_nested_0(raw: *mut wire_OpaqueNested) {
     unsafe {
         {
             support::box_from_leak_ptr(raw);
@@ -1490,6 +1514,12 @@ impl Wire2Api<Numbers> for *mut wire_Numbers {
         Wire2Api::<Numbers>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<OpaqueNested> for *mut wire_OpaqueNested {
+    fn wire2api(self) -> OpaqueNested {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<OpaqueNested>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Sequences> for *mut wire_Sequences {
     fn wire2api(self) -> Sequences {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1871,6 +1901,14 @@ impl Wire2Api<Numbers> for wire_Numbers {
         Numbers(self.field0.wire2api())
     }
 }
+impl Wire2Api<OpaqueNested> for wire_OpaqueNested {
+    fn wire2api(self) -> OpaqueNested {
+        OpaqueNested {
+            first: self.first.wire2api(),
+            second: self.second.wire2api(),
+        }
+    }
+}
 
 impl Wire2Api<Sequences> for wire_Sequences {
     fn wire2api(self) -> Sequences {
@@ -2180,6 +2218,13 @@ pub struct wire_Note {
 #[derive(Clone)]
 pub struct wire_Numbers {
     field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_OpaqueNested {
+    first: *mut wire_OpaqueStruct,
+    second: *mut wire_OpaqueStruct,
 }
 
 #[repr(C)]
@@ -2758,6 +2803,15 @@ impl NewWithNullPtr for wire_Numbers {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_OpaqueNested {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
         }
     }
 }

@@ -380,6 +380,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
 
+  Future<OpaqueNested> createNestedOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateNestedOpaqueConstMeta;
+
+  Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -911,6 +919,16 @@ class OldSimpleStruct {
 
   OldSimpleStruct({
     required this.field,
+  });
+}
+
+class OpaqueNested {
+  final OpaqueStruct first;
+  final OpaqueStruct second;
+
+  OpaqueNested({
+    required this.first,
+    required this.second,
   });
 }
 

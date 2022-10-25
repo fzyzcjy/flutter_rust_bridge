@@ -1301,6 +1301,32 @@ fn wire_opaque_array_impl(port_: MessagePort) {
         move || move |task_callback| Ok(opaque_array()),
     )
 }
+fn wire_create_nested_opaque_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_nested_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(create_nested_opaque()),
+    )
+}
+fn wire_run_nested_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<OpaqueNested> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_nested_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(run_nested_opaque(api_opaque))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1981,6 +2007,13 @@ impl support::IntoDart for OldSimpleStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for OldSimpleStruct {}
+
+impl support::IntoDart for OpaqueNested {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.first.into_dart(), self.second.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for OpaqueNested {}
 
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartAbi {

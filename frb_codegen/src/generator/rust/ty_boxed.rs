@@ -126,9 +126,16 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             Acc {
                 io: Some(collector.generate(
                     &func_name,
-                    vec![(format!("raw: {}{}", self.ir.rust_wire_modifier(Io), self.ir.rust_wire_type(Io)), "")],
+                    vec![(
+                        format!(
+                            "raw: {}{}",
+                            self.ir.rust_wire_modifier(Io),
+                            self.ir.rust_wire_type(Io)
+                        ),
+                        "",
+                    )],
                     None,
-                        "unsafe{{support::box_from_leak_ptr(raw);}}",
+                    "unsafe{{support::box_from_leak_ptr(raw);}}",
                     Io,
                 )),
                 ..Default::default()

@@ -799,7 +799,6 @@ void main(List<String> args) async {
 
       expect(await api.runEnumOpaque(opaque: data[1]), "42");
       (data[1] as EnumOpaque_Primitive).field0.dispose();
-      
 
       expect(await api.runEnumOpaque(opaque: data[2]), "\"String\"");
       (data[2] as EnumOpaque_TraitObj).field0.dispose();
@@ -825,11 +824,56 @@ void main(List<String> args) async {
           "lifetime: \\\"static str\\\" "
           "})\"");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
-        try {
-          await api.runEnumOpaque(opaque: data[4]);
-        } catch (e) {
-          expect(e.toString(), 'Use after dispose.');
-        }
+      try {
+        await api.runEnumOpaque(opaque: data[4]);
+      } catch (e) {
+        expect(e.toString(), 'Use after dispose.');
+      }
+    });
+
+    test('Opaque field', () async {
+      var data = await api.createNestedOpaque();
+      await api.runNestedOpaque(opaque: data);
+
+      expect(
+          await api.runOpaque(opaque: data.first),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(
+          await api.runOpaque(opaque: data.second),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.first.dispose();
+      try {
+        await api.runOpaque(opaque: data.first);
+      } catch (e) {
+        expect(e.toString(), 'Use after dispose.');
+      }
+      try {
+        await api.runNestedOpaque(opaque: data);
+      } catch (e) {
+        expect(e.toString(), 'Use after dispose.');
+      }
+      expect(
+          await api.runOpaque(opaque: data.second),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.second.dispose();
     });
   });
 }
