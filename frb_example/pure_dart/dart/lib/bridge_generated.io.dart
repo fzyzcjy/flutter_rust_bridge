@@ -543,42 +543,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  wire_Distance api2wire_distance(Distance raw) {
-    throw Exception('unreachable');
-  }
-
-  @protected
-  wire_EnumOpaque api2wire_enum_opaque(EnumOpaque raw) {
-    if (raw is EnumOpaque_Struct) {
-      if (!raw.field0.isStale()) {
-        throw 'Use after dispose.';
-      }
-    }
-    if (raw is EnumOpaque_Primitive) {
-      if (!raw.field0.isStale()) {
-        throw 'Use after dispose.';
-      }
-    }
-    if (raw is EnumOpaque_TraitObj) {
-      if (!raw.field0.isStale()) {
-        throw 'Use after dispose.';
-      }
-    }
-    if (raw is EnumOpaque_Mutex) {
-      if (!raw.field0.isStale()) {
-        throw 'Use after dispose.';
-      }
-    }
-    if (raw is EnumOpaque_RwLock) {
-      if (!raw.field0.isStale()) {
-        throw 'Use after dispose.';
-      }
-    }
-
-    throw Exception('unreachable');
-  }
-
-  @protected
   ffi.Pointer<wire_float_64_list> api2wire_f64_array_16(F64Array16 raw) {
     final ans = inner.new_float_64_list_0(16);
     ans.ref.ptr.asTypedList(16).setAll(0, raw);
@@ -623,11 +587,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     final ans = inner.new_int_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
-  }
-
-  @protected
-  wire_KitchenSink api2wire_kitchen_sink(KitchenSink raw) {
-    throw Exception('unreachable');
   }
 
   @protected
@@ -682,11 +641,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       _api_fill_to_wire_test_id(raw[i], ans.ref.ptr[i]);
     }
     return ans;
-  }
-
-  @protected
-  wire_Measure api2wire_measure(Measure raw) {
-    throw Exception('unreachable');
   }
 
   @protected
@@ -802,11 +756,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_opt_uint_8_list(Uint8List? raw) {
     return raw == null ? ffi.nullptr : api2wire_uint_8_list(raw);
-  }
-
-  @protected
-  wire_Speed api2wire_speed(Speed raw) {
-    throw Exception('unreachable');
   }
 
   @protected
