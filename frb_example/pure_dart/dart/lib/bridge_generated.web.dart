@@ -22,7 +22,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_BoxDartDebug(BoxDartDebug raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
@@ -47,27 +47,27 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_I32(I32 raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
   dynamic api2wire_MutexOpaqueStruct(MutexOpaqueStruct raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
   dynamic api2wire_OpaqueStruct(OpaqueStruct raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
   dynamic api2wire_OpaqueSyncStruct(OpaqueSyncStruct raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
   dynamic api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
-    return FrbOpaque.lend(raw);
+    return FrbOpaque.share(raw);
   }
 
   @protected
@@ -243,6 +243,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_autoadd_numbers(Numbers raw) {
     return api2wire_numbers(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
+    return api2wire_opaque_nested(raw);
   }
 
   @protected
@@ -557,6 +562,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_numbers(Numbers raw) {
     return [api2wire_int_32_list(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> api2wire_opaque_nested(OpaqueNested raw) {
+    return [api2wire_OpaqueStruct(raw.first), api2wire_OpaqueStruct(raw.second)];
   }
 
   @protected
@@ -934,6 +944,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* String */ wire_sync_run_opaque(dynamic opaque);
 
+  external void wire_create_nested_opaque(NativePortType port_);
+
+  external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1200,6 +1214,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /* dynamic */ wire_sync_create_sync_opaque() => wasmModule.wire_sync_create_sync_opaque();
 
   dynamic /* String */ wire_sync_run_opaque(dynamic opaque) => wasmModule.wire_sync_run_opaque(opaque);
+
+  void wire_create_nested_opaque(NativePortType port_) => wasmModule.wire_create_nested_opaque(port_);
+
+  void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_run_nested_opaque(port_, opaque);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

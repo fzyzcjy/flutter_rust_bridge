@@ -396,6 +396,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSyncRunOpaqueConstMeta;
 
+  Future<OpaqueNested> createNestedOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateNestedOpaqueConstMeta;
+
+  Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -433,7 +441,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
 @sealed
 class BoxDartDebug extends FrbOpaque {
-  BoxDartDebug.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+  BoxDartDebug.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
@@ -447,17 +455,17 @@ class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
 
 @sealed
 class I32 extends FrbOpaque {
-  I32.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+  I32.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 @sealed
 class MutexOpaqueStruct extends FrbOpaque {
-  MutexOpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+  MutexOpaqueStruct.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 @sealed
 class OpaqueStruct extends FrbOpaque {
-  OpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+  OpaqueStruct.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 class OpaqueStructArray2 extends NonGrowableListView<OpaqueStruct> {
@@ -471,7 +479,7 @@ class OpaqueStructArray2 extends NonGrowableListView<OpaqueStruct> {
 
 @sealed
 class OpaqueSyncStruct extends FrbOpaque {
-  OpaqueSyncStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+  OpaqueSyncStruct.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 class PointArray2 extends NonGrowableListView<Point> {
@@ -485,7 +493,7 @@ class PointArray2 extends NonGrowableListView<Point> {
 
 @sealed
 class RwLockOpaqueStruct extends FrbOpaque {
-  RwLockOpaqueStruct.fromRaw(int? ptr, int drop, int lend) : super.unsafe(ptr, drop, lend);
+  RwLockOpaqueStruct.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 class SumWithArray3 extends NonGrowableListView<SumWith> {
@@ -932,6 +940,16 @@ class OldSimpleStruct {
 
   OldSimpleStruct({
     required this.field,
+  });
+}
+
+class OpaqueNested {
+  final OpaqueStruct first;
+  final OpaqueStruct second;
+
+  OpaqueNested({
+    required this.first,
+    required this.second,
   });
 }
 

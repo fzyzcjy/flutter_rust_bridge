@@ -39,20 +39,21 @@ class WireSyncReturnStruct extends ffi.Struct {
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque implements Finalizable {
-  ffi.Pointer? _ptr;
+  late ffi.Pointer _ptr;
   late ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
-  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>> _lend;
+  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>>
+      _share;
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int? ptr, int drop, int lend) {
-    assert(ptr == null || ptr > 0);
+  FrbOpaque.unsafe(int ptr, int drop, int share) {
+    assert(ptr > 0);
     assert(drop > 0);
-    assert(lend > 0);
-    _ptr = ptr == null ? null : ffi.Pointer.fromAddress(ptr);
+    assert(share > 0);
+    _ptr = ffi.Pointer.fromAddress(ptr);
     _drop = ffi.Pointer.fromAddress(drop);
-    _lend = ffi.Pointer.fromAddress(lend);
+    _share = ffi.Pointer.fromAddress(share);
     _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
-    _finalizer.attach(this, _ptr!.cast(), detach: this);
+    _finalizer.attach(this, _ptr.cast(), detach: this);
   }
 
   /// The native finalizer runs [_drop] on [_ptr]
@@ -72,19 +73,18 @@ class FrbOpaque implements Finalizable {
   void dispose() {
     if (!isStale()) {
       _finalizer.detach(this);
-      _drop.asFunction<void Function(ffi.Pointer)>()(_ptr!);
-      _ptr = null;
+      _drop.asFunction<void Function(ffi.Pointer)>()(_ptr);
+      _ptr = Pointer.fromAddress(0);
     }
   }
 
-  /// Returns pointer with lends ownership if Dart owner else returns null pointer.
-  static ffi.Pointer lend(FrbOpaque ptr) {
+  /// Returns pointer with shares ownership if Dart owner else throws error.
+  static ffi.Pointer share(FrbOpaque ptr) {
     if (!ptr.isStale()) {
-      return ptr._lend
-          .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr!);
+      return ptr._share
+          .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr);
     } else {
-      // equivalent to an Option::<Arc<T>>::None
-      return ffi.nullptr;
+      throw "Use after dispose.";
     }
   }
 
@@ -92,5 +92,5 @@ class FrbOpaque implements Finalizable {
   /// of this pointer. This does not guarantee that the backing memory has actually
   /// been reclaimed.
   // not nullptr, this is an internal bookkeeping method
-  bool isStale() => _ptr == null;
+  bool isStale() => _ptr.address == 0;
 }

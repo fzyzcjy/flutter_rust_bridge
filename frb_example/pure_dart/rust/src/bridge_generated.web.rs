@@ -479,6 +479,16 @@ pub fn wire_sync_run_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
 }
 
 #[wasm_bindgen]
+pub fn wire_create_nested_opaque(port_: MessagePort) {
+    wire_create_nested_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_run_nested_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -592,6 +602,8 @@ pub fn new_box_u8_0(value: u8) -> *mut u8 {
 pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
+
+// Section: deallocate functions
 
 // Section: impl Wire2Api
 
@@ -1071,6 +1083,21 @@ impl Wire2Api<Numbers> for JsValue {
             self_.length()
         );
         Numbers(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<OpaqueNested> for JsValue {
+    fn wire2api(self) -> OpaqueNested {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        OpaqueNested {
+            first: self_.get(0).wire2api(),
+            second: self_.get(1).wire2api(),
+        }
     }
 }
 impl Wire2Api<Option<String>> for Option<String> {

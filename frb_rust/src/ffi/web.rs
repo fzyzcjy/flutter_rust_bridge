@@ -4,6 +4,7 @@ use super::MessagePort;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
+use std::ffi::c_void;
 use std::iter::FromIterator;
 pub use wasm_bindgen;
 pub use wasm_bindgen::closure::Closure;
@@ -13,7 +14,8 @@ use web_sys::BroadcastChannel;
 
 use crate::support::WireSyncReturnData;
 pub use crate::wasm_bindgen_src::transfer::*;
-use std::sync::{self, Arc};
+use crate::DartSafe;
+use std::sync::Arc;
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
@@ -430,58 +432,28 @@ mod tests {
 #[repr(transparent)]
 #[derive(Debug, Clone)]
 pub struct Opaque<T: ?Sized> {
-    pub(crate) ptr: Option<Arc<T>>,
+    pub(crate) ptr: Arc<T>,
+}
+
+impl<T: ?Sized> std::ops::Deref for Opaque<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        self.ptr.as_ref()
+    }
 }
 
 impl<T: ?Sized> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { ptr: Some(ptr) }
+        Self { ptr }
     }
 }
 
 impl<T> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
-            ptr: Some(Arc::new(value)),
+            ptr: Arc::new(value),
         }
-    }
-}
-
-impl<T> Opaque<sync::RwLock<T>> {
-    #[inline]
-    pub fn read(&self) -> Option<sync::LockResult<sync::RwLockReadGuard<T>>> {
-        self.as_deref().map(sync::RwLock::read)
-    }
-    #[inline]
-    pub fn write(&self) -> Option<sync::LockResult<sync::RwLockWriteGuard<T>>> {
-        self.as_deref().map(sync::RwLock::write)
-    }
-    #[inline]
-    pub fn try_read(&self) -> Option<sync::TryLockResult<sync::RwLockReadGuard<T>>> {
-        self.as_deref().map(sync::RwLock::try_read)
-    }
-    #[inline]
-    pub fn try_write(&self) -> Option<sync::TryLockResult<sync::RwLockWriteGuard<T>>> {
-        self.as_deref().map(sync::RwLock::try_write)
-    }
-}
-
-impl<T> Opaque<sync::Mutex<T>> {
-    #[inline]
-    pub fn lock(&self) -> Option<sync::LockResult<sync::MutexGuard<T>>> {
-        self.as_deref().map(sync::Mutex::lock)
-    }
-    #[inline]
-    pub fn try_lock(&self) -> Option<sync::TryLockResult<sync::MutexGuard<T>>> {
-        self.as_deref().map(sync::Mutex::try_lock)
-    }
-}
-
-impl<T> Opaque<T> {
-    /// Acquire a reference to the inner value, if the pointer has not already
-    /// been disposed by Dart.
-    pub fn as_deref(&self) -> Option<&T> {
-        self.ptr.as_deref()
     }
 }
 
@@ -491,12 +463,10 @@ impl<T> Opaque<T> {
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub extern "C" fn drop_opaque_box(ptr: usize, ptr_drop_fn: usize, ptr_lend_fn: usize) {
+pub extern "C" fn drop_opaque(ptr: *const c_void, ptr_drop_fn: *const c_void) {
     unsafe {
-        let drop_fn: Box<Box<dyn FnOnce(usize)>> = Box::from_raw(ptr_drop_fn as _);
+        let drop_fn: extern "C" fn(*const c_void) = std::mem::transmute(ptr_drop_fn);
         drop_fn(ptr);
-        let lend_fn: Box<Box<dyn FnMut(usize) -> usize>> = Box::from_raw(ptr_lend_fn as _);
-        drop(lend_fn);
     }
 }
 
@@ -506,21 +476,30 @@ pub extern "C" fn drop_opaque_box(ptr: usize, ptr_drop_fn: usize, ptr_lend_fn: u
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub extern "C" fn lend_opaque_box(ptr: usize, ptr_lend_fn: usize) -> usize {
+pub extern "C" fn share_opaque(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
     unsafe {
-        let mut lend_fn: Box<Box<dyn FnMut(usize) -> usize>> = Box::from_raw(ptr_lend_fn as _);
-        let res = lend_fn(ptr);
-        Box::into_raw(lend_fn);
-        res
+        let share_fn: extern "C" fn(*const c_void) -> *const c_void =
+            std::mem::transmute(ptr_share_fn);
+        share_fn(ptr)
+    }
+}
+
+extern "C" fn drop_arc<T>(ptr: *const c_void) {
+    unsafe {
+        Arc::<T>::decrement_strong_count(ptr as _);
+    }
+}
+
+extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<T>::increment_strong_count(ptr as _);
+        ptr
     }
 }
 
 impl<T> From<Opaque<T>> for WireSyncReturnData {
     fn from(data: Opaque<T>) -> Self {
-        let ptr = data
-            .ptr
-            .map(|ptr| Arc::into_raw(ptr) as usize)
-            .unwrap_or_default();
+        let ptr = Arc::into_raw(data.ptr) as usize;
         let drop: *mut Box<dyn FnOnce(usize)> =
             Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
                 Arc::<T>::decrement_strong_count(ptr as *mut T);
@@ -543,20 +522,15 @@ impl<T> From<Opaque<T>> for WireSyncReturnData {
 
 impl<T> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
-        let ptr = match self.ptr {
-            Some(arc) => Arc::into_raw(arc).into_dart(),
-            _ => ().into_dart(),
-        };
-        let drop: *mut Box<dyn FnOnce(usize)> =
-            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
-                Arc::<T>::decrement_strong_count(ptr as *mut T);
-            })));
-        let lend: *mut Box<dyn FnMut(usize) -> usize> =
-            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
-                Arc::<T>::increment_strong_count(ptr as *mut T);
-                ptr
-            })));
-        vec![ptr, drop.into_dart(), lend.into_dart()].into_dart()
+        let ptr = Arc::into_raw(self.ptr).into_dart();
+        let drop: extern "C" fn(*const c_void) = drop_arc::<T>;
+        let share: extern "C" fn(*const c_void) -> *const c_void = share_arc::<T>;
+        vec![
+            ptr,
+            (drop as usize).into_dart(),
+            (share as usize).into_dart(),
+        ]
+        .into_dart()
     }
 }
 

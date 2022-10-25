@@ -489,6 +489,16 @@ pub extern "C" fn wire_sync_run_opaque(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_create_nested_opaque(port_: i64) {
+    wire_create_nested_opaque_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNested) {
+    wire_run_nested_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -707,6 +717,11 @@ pub extern "C" fn new_box_autoadd_numbers_0() -> *mut wire_Numbers {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut wire_OpaqueNested {
+    support::new_leak_box_ptr(wire_OpaqueNested::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_sequences_0() -> *mut wire_Sequences {
     support::new_leak_box_ptr(wire_Sequences::new_with_null_ptr())
 }
@@ -890,6 +905,377 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
         len,
     };
     support::new_leak_box_ptr(ans)
+}
+
+// Section: deallocate functions
+
+#[no_mangle]
+pub extern "C" fn drop_box_application_env_0(raw: *mut wire_ApplicationEnv) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_application_settings_0(raw: *mut wire_ApplicationSettings) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_attribute_0(raw: *mut wire_Attribute) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_bool_0(raw: *mut bool) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_concatenate_with_0(raw: *mut wire_ConcatenateWith) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_customized_0(raw: *mut wire_Customized) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_enum_opaque_0(raw: *mut wire_EnumOpaque) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_exotic_optionals_0(raw: *mut wire_ExoticOptionals) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_f64_0(raw: *mut f64) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_feature_chrono_0(raw: *mut wire_FeatureChrono) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_feature_uuid_0(raw: *mut wire_FeatureUuid) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_feed_id_0(raw: *mut wire_FeedId) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_i32_0(raw: *mut i32) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_i64_0(raw: *mut i64) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_kitchen_sink_0(raw: *mut wire_KitchenSink) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_measure_0(raw: *mut wire_Measure) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_message_id_0(raw: *mut wire_MessageId) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_my_size_0(raw: *mut wire_MySize) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_my_struct_0(raw: *mut wire_MyStruct) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_my_tree_node_0(raw: *mut wire_MyTreeNode) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_new_type_int_0(raw: *mut wire_NewTypeInt) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_note_0(raw: *mut wire_Note) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_numbers_0(raw: *mut wire_Numbers) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_opaque_nested_0(raw: *mut wire_OpaqueNested) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_sequences_0(raw: *mut wire_Sequences) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_sum_with_0(raw: *mut wire_SumWith) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_test_id_0(raw: *mut wire_TestId) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_user_id_0(raw: *mut wire_UserId) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_blob_0(raw: *mut wire_Blob) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_bool_0(raw: *mut bool) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_distance_0(raw: *mut wire_Distance) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_exotic_optionals_0(raw: *mut wire_ExoticOptionals) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_f64_0(raw: *mut f64) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_i32_0(raw: *mut i32) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_i64_0(raw: *mut i64) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_i8_0(raw: *mut i8) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_kitchen_sink_0(raw: *mut wire_KitchenSink) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_my_size_0(raw: *mut wire_MySize) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_speed_0(raw: *mut wire_Speed) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_u8_0(raw: *mut u8) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_weekdays_0(raw: *mut i32) {
+    unsafe {
+        {
+            support::box_from_leak_ptr(raw);
+        }
+    }
 }
 
 // Section: impl Wire2Api
@@ -1161,6 +1547,12 @@ impl Wire2Api<Numbers> for *mut wire_Numbers {
     fn wire2api(self) -> Numbers {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Numbers>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<OpaqueNested> for *mut wire_OpaqueNested {
+    fn wire2api(self) -> OpaqueNested {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<OpaqueNested>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Sequences> for *mut wire_Sequences {
@@ -1544,6 +1936,14 @@ impl Wire2Api<Numbers> for wire_Numbers {
         Numbers(self.field0.wire2api())
     }
 }
+impl Wire2Api<OpaqueNested> for wire_OpaqueNested {
+    fn wire2api(self) -> OpaqueNested {
+        OpaqueNested {
+            first: self.first.wire2api(),
+            second: self.second.wire2api(),
+        }
+    }
+}
 
 impl Wire2Api<Sequences> for wire_Sequences {
     fn wire2api(self) -> Sequences {
@@ -1859,6 +2259,13 @@ pub struct wire_Note {
 #[derive(Clone)]
 pub struct wire_Numbers {
     field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_OpaqueNested {
+    first: *mut wire_OpaqueStruct,
+    second: *mut wire_OpaqueStruct,
 }
 
 #[repr(C)]
@@ -2444,6 +2851,15 @@ impl NewWithNullPtr for wire_Numbers {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_OpaqueNested {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
         }
     }
 }

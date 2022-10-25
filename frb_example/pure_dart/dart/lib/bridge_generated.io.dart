@@ -20,6 +20,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_BoxDartDebug> api2wire_BoxDartDebug(BoxDartDebug raw) {
+    if (raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_BoxDartDebug();
     _api_fill_to_wire_BoxDartDebug(raw, ptr);
     return ptr;
@@ -47,6 +50,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_I32> api2wire_I32(I32 raw) {
+    if (raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_I32();
     _api_fill_to_wire_I32(raw, ptr);
     return ptr;
@@ -54,6 +60,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_MutexOpaqueStruct> api2wire_MutexOpaqueStruct(MutexOpaqueStruct raw) {
+    if (raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_MutexOpaqueStruct();
     _api_fill_to_wire_MutexOpaqueStruct(raw, ptr);
     return ptr;
@@ -61,6 +70,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_OpaqueStruct> api2wire_OpaqueStruct(OpaqueStruct raw) {
+    if (raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_OpaqueStruct();
     _api_fill_to_wire_OpaqueStruct(raw, ptr);
     return ptr;
@@ -68,6 +80,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_OpaqueSyncStruct> api2wire_OpaqueSyncStruct(OpaqueSyncStruct raw) {
+    if (raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_OpaqueSyncStruct();
     _api_fill_to_wire_OpaqueSyncStruct(raw, ptr);
     return ptr;
@@ -75,6 +90,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_RwLockOpaqueStruct> api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
+    if (raw.isStale()) {
+      throw 'Use after dispose.';
+    }
     final ptr = inner.new_RwLockOpaqueStruct();
     _api_fill_to_wire_RwLockOpaqueStruct(raw, ptr);
     return ptr;
@@ -117,22 +135,37 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_ApplicationEnv> api2wire_box_application_env(ApplicationEnv raw) {
     final ptr = inner.new_box_application_env_0();
-    _api_fill_to_wire_application_env(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_application_env(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_application_env_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_ApplicationSettings> api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
     final ptr = inner.new_box_autoadd_application_settings_0();
-    _api_fill_to_wire_application_settings(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_application_settings(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_application_settings_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_Attribute> api2wire_box_autoadd_attribute(Attribute raw) {
     final ptr = inner.new_box_autoadd_attribute_0();
-    _api_fill_to_wire_attribute(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_attribute(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_attribute_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
@@ -143,29 +176,49 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_ConcatenateWith> api2wire_box_autoadd_concatenate_with(ConcatenateWith raw) {
     final ptr = inner.new_box_autoadd_concatenate_with_0();
-    _api_fill_to_wire_concatenate_with(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_concatenate_with(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_concatenate_with_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_Customized> api2wire_box_autoadd_customized(Customized raw) {
     final ptr = inner.new_box_autoadd_customized_0();
-    _api_fill_to_wire_customized(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_customized(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_customized_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_EnumOpaque> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
     final ptr = inner.new_box_autoadd_enum_opaque_0();
-    _api_fill_to_wire_enum_opaque(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_enum_opaque(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_enum_opaque_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_ExoticOptionals> api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
     final ptr = inner.new_box_autoadd_exotic_optionals_0();
-    _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_exotic_optionals_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
@@ -176,22 +229,37 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_FeatureChrono> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
     final ptr = inner.new_box_autoadd_feature_chrono_0();
-    _api_fill_to_wire_feature_chrono(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_feature_chrono(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_feature_chrono_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_FeatureUuid> api2wire_box_autoadd_feature_uuid(FeatureUuid raw) {
     final ptr = inner.new_box_autoadd_feature_uuid_0();
-    _api_fill_to_wire_feature_uuid(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_feature_uuid(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_feature_uuid_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_FeedId> api2wire_box_autoadd_feed_id(FeedId raw) {
     final ptr = inner.new_box_autoadd_feed_id_0();
-    _api_fill_to_wire_feed_id(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_feed_id(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_feed_id_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
@@ -207,99 +275,181 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_KitchenSink> api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
     final ptr = inner.new_box_autoadd_kitchen_sink_0();
-    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_kitchen_sink_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_Measure> api2wire_box_autoadd_measure(Measure raw) {
     final ptr = inner.new_box_autoadd_measure_0();
-    _api_fill_to_wire_measure(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_measure(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_measure_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_MessageId> api2wire_box_autoadd_message_id(MessageId raw) {
     final ptr = inner.new_box_autoadd_message_id_0();
-    _api_fill_to_wire_message_id(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_message_id(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_message_id_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_MySize> api2wire_box_autoadd_my_size(MySize raw) {
     final ptr = inner.new_box_autoadd_my_size_0();
-    _api_fill_to_wire_my_size(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_my_size(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_my_size_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_MyStruct> api2wire_box_autoadd_my_struct(MyStruct raw) {
     final ptr = inner.new_box_autoadd_my_struct_0();
-    _api_fill_to_wire_my_struct(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_my_struct(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_my_struct_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_MyTreeNode> api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
     final ptr = inner.new_box_autoadd_my_tree_node_0();
-    _api_fill_to_wire_my_tree_node(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_my_tree_node(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_my_tree_node_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_NewTypeInt> api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
     final ptr = inner.new_box_autoadd_new_type_int_0();
-    _api_fill_to_wire_new_type_int(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_new_type_int(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_new_type_int_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_Note> api2wire_box_autoadd_note(Note raw) {
     final ptr = inner.new_box_autoadd_note_0();
-    _api_fill_to_wire_note(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_note(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_note_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_Numbers> api2wire_box_autoadd_numbers(Numbers raw) {
     final ptr = inner.new_box_autoadd_numbers_0();
-    _api_fill_to_wire_numbers(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_numbers(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_numbers_0(ptr);
+      rethrow;
+    }
+  }
+
+  @protected
+  ffi.Pointer<wire_OpaqueNested> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
+    final ptr = inner.new_box_autoadd_opaque_nested_0();
+    try {
+      _api_fill_to_wire_opaque_nested(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_opaque_nested_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_Sequences> api2wire_box_autoadd_sequences(Sequences raw) {
     final ptr = inner.new_box_autoadd_sequences_0();
-    _api_fill_to_wire_sequences(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_sequences(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_sequences_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_SumWith> api2wire_box_autoadd_sum_with(SumWith raw) {
     final ptr = inner.new_box_autoadd_sum_with_0();
-    _api_fill_to_wire_sum_with(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_sum_with(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_sum_with_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_TestId> api2wire_box_autoadd_test_id(TestId raw) {
     final ptr = inner.new_box_autoadd_test_id_0();
-    _api_fill_to_wire_test_id(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_test_id(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_test_id_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_UserId> api2wire_box_autoadd_user_id(UserId raw) {
     final ptr = inner.new_box_autoadd_user_id_0();
-    _api_fill_to_wire_user_id(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_user_id(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_autoadd_user_id_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_Blob> api2wire_box_blob(Blob raw) {
     final ptr = inner.new_box_blob_0();
-    _api_fill_to_wire_blob(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_blob(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_blob_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
@@ -310,15 +460,25 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_Distance> api2wire_box_distance(Distance raw) {
     final ptr = inner.new_box_distance_0();
-    _api_fill_to_wire_distance(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_distance(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_distance_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_ExoticOptionals> api2wire_box_exotic_optionals(ExoticOptionals raw) {
     final ptr = inner.new_box_exotic_optionals_0();
-    _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_exotic_optionals_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
@@ -344,22 +504,37 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_KitchenSink> api2wire_box_kitchen_sink(KitchenSink raw) {
     final ptr = inner.new_box_kitchen_sink_0();
-    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_kitchen_sink_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_MySize> api2wire_box_my_size(MySize raw) {
     final ptr = inner.new_box_my_size_0();
-    _api_fill_to_wire_my_size(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_my_size(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_my_size_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
   ffi.Pointer<wire_Speed> api2wire_box_speed(Speed raw) {
     final ptr = inner.new_box_speed_0();
-    _api_fill_to_wire_speed(raw, ptr.ref);
-    return ptr;
+    try {
+      _api_fill_to_wire_speed(raw, ptr.ref);
+      return ptr;
+    } catch (e) {
+      inner.drop_box_speed_0(ptr);
+      rethrow;
+    }
   }
 
   @protected
@@ -629,27 +804,27 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api_fill_to_wire
 
   void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, ffi.Pointer<wire_BoxDartDebug> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_I32(I32 apiObj, ffi.Pointer<wire_I32> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_MutexOpaqueStruct(MutexOpaqueStruct apiObj, ffi.Pointer<wire_MutexOpaqueStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_OpaqueStruct(OpaqueStruct apiObj, ffi.Pointer<wire_OpaqueStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_OpaqueSyncStruct(OpaqueSyncStruct apiObj, ffi.Pointer<wire_OpaqueSyncStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_RwLockOpaqueStruct(RwLockOpaqueStruct apiObj, ffi.Pointer<wire_RwLockOpaqueStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.lend(apiObj).cast();
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
   void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
@@ -756,6 +931,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_numbers(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_opaque_nested(OpaqueNested apiObj, ffi.Pointer<wire_OpaqueNested> wireObj) {
+    _api_fill_to_wire_opaque_nested(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<wire_Sequences> wireObj) {
     _api_fill_to_wire_sequences(apiObj, wireObj.ref);
   }
@@ -815,42 +994,48 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
     if (apiObj is Distance_Map) {
+      var pre_field0 = api2wire_f64(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Distance_Map();
-      wireObj.kind.ref.Map.ref.field0 = api2wire_f64(apiObj.field0);
+      wireObj.kind.ref.Map.ref.field0 = pre_field0;
       return;
     }
   }
 
   void _api_fill_to_wire_enum_opaque(EnumOpaque apiObj, wire_EnumOpaque wireObj) {
     if (apiObj is EnumOpaque_Struct) {
+      var pre_field0 = api2wire_OpaqueStruct(apiObj.field0);
       wireObj.tag = 0;
       wireObj.kind = inner.inflate_EnumOpaque_Struct();
-      wireObj.kind.ref.Struct.ref.field0 = api2wire_OpaqueStruct(apiObj.field0);
+      wireObj.kind.ref.Struct.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_Primitive) {
+      var pre_field0 = api2wire_I32(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_EnumOpaque_Primitive();
-      wireObj.kind.ref.Primitive.ref.field0 = api2wire_I32(apiObj.field0);
+      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_TraitObj) {
+      var pre_field0 = api2wire_BoxDartDebug(apiObj.field0);
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_EnumOpaque_TraitObj();
-      wireObj.kind.ref.TraitObj.ref.field0 = api2wire_BoxDartDebug(apiObj.field0);
+      wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_Mutex) {
+      var pre_field0 = api2wire_MutexOpaqueStruct(apiObj.field0);
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_EnumOpaque_Mutex();
-      wireObj.kind.ref.Mutex.ref.field0 = api2wire_MutexOpaqueStruct(apiObj.field0);
+      wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_RwLock) {
+      var pre_field0 = api2wire_RwLockOpaqueStruct(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_EnumOpaque_RwLock();
-      wireObj.kind.ref.RwLock.ref.field0 = api2wire_RwLockOpaqueStruct(apiObj.field0);
+      wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
       return;
     }
   }
@@ -894,52 +1079,63 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
     if (apiObj is KitchenSink_Primitives) {
+      var pre_int32 = api2wire_i32(apiObj.int32);
+      var pre_float64 = api2wire_f64(apiObj.float64);
+      var pre_boolean = api2wire_bool(apiObj.boolean);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_KitchenSink_Primitives();
-      wireObj.kind.ref.Primitives.ref.int32 = api2wire_i32(apiObj.int32);
-      wireObj.kind.ref.Primitives.ref.float64 = api2wire_f64(apiObj.float64);
-      wireObj.kind.ref.Primitives.ref.boolean = api2wire_bool(apiObj.boolean);
+      wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
+      wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
+      wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
       return;
     }
     if (apiObj is KitchenSink_Nested) {
+      var pre_field0 = api2wire_box_kitchen_sink(apiObj.field0);
+      var pre_field1 = api2wire_i32(apiObj.field1);
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
-      wireObj.kind.ref.Nested.ref.field0 = api2wire_box_kitchen_sink(apiObj.field0);
-      wireObj.kind.ref.Nested.ref.field1 = api2wire_i32(apiObj.field1);
+      wireObj.kind.ref.Nested.ref.field0 = pre_field0;
+      wireObj.kind.ref.Nested.ref.field1 = pre_field1;
       return;
     }
     if (apiObj is KitchenSink_Optional) {
+      var pre_field0 = api2wire_opt_box_autoadd_i32(apiObj.field0);
+      var pre_field1 = api2wire_opt_box_autoadd_i32(apiObj.field1);
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_KitchenSink_Optional();
-      wireObj.kind.ref.Optional.ref.field0 = api2wire_opt_box_autoadd_i32(apiObj.field0);
-      wireObj.kind.ref.Optional.ref.field1 = api2wire_opt_box_autoadd_i32(apiObj.field1);
+      wireObj.kind.ref.Optional.ref.field0 = pre_field0;
+      wireObj.kind.ref.Optional.ref.field1 = pre_field1;
       return;
     }
     if (apiObj is KitchenSink_Buffer) {
+      var pre_field0 = api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_KitchenSink_Buffer();
-      wireObj.kind.ref.Buffer.ref.field0 = api2wire_ZeroCopyBuffer_Uint8List(apiObj.field0);
+      wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is KitchenSink_Enums) {
+      var pre_field0 = api2wire_weekdays(apiObj.field0);
       wireObj.tag = 5;
       wireObj.kind = inner.inflate_KitchenSink_Enums();
-      wireObj.kind.ref.Enums.ref.field0 = api2wire_weekdays(apiObj.field0);
+      wireObj.kind.ref.Enums.ref.field0 = pre_field0;
       return;
     }
   }
 
   void _api_fill_to_wire_measure(Measure apiObj, wire_Measure wireObj) {
     if (apiObj is Measure_Speed) {
+      var pre_field0 = api2wire_box_speed(apiObj.field0);
       wireObj.tag = 0;
       wireObj.kind = inner.inflate_Measure_Speed();
-      wireObj.kind.ref.Speed.ref.field0 = api2wire_box_speed(apiObj.field0);
+      wireObj.kind.ref.Speed.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is Measure_Distance) {
+      var pre_field0 = api2wire_box_distance(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Measure_Distance();
-      wireObj.kind.ref.Distance.ref.field0 = api2wire_box_distance(apiObj.field0);
+      wireObj.kind.ref.Distance.ref.field0 = pre_field0;
       return;
     }
   }
@@ -977,6 +1173,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.field0 = api2wire_int_32_list(apiObj.field0);
   }
 
+  void _api_fill_to_wire_opaque_nested(OpaqueNested apiObj, wire_OpaqueNested wireObj) {
+    wireObj.first = api2wire_OpaqueStruct(apiObj.first);
+    wireObj.second = api2wire_OpaqueStruct(apiObj.second);
+  }
+
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
@@ -1004,9 +1205,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
     if (apiObj is Speed_GPS) {
+      var pre_field0 = api2wire_f64(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind = inner.inflate_Speed_GPS();
-      wireObj.kind.ref.GPS.ref.field0 = api2wire_f64(apiObj.field0);
+      wireObj.kind.ref.GPS.ref.field0 = pre_field0;
       return;
     }
   }
@@ -2367,6 +2569,34 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_sync_run_opaque =
       _wire_sync_run_opaquePtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_OpaqueSyncStruct>)>();
 
+  void wire_create_nested_opaque(
+    int port_,
+  ) {
+    return _wire_create_nested_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_create_nested_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_nested_opaque');
+  late final _wire_create_nested_opaque = _wire_create_nested_opaquePtr.asFunction<void Function(int)>();
+
+  void wire_run_nested_opaque(
+    int port_,
+    ffi.Pointer<wire_OpaqueNested> opaque,
+  ) {
+    return _wire_run_nested_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_run_nested_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueNested>)>>(
+          'wire_run_nested_opaque');
+  late final _wire_run_nested_opaque =
+      _wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueNested>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -2795,6 +3025,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_numbers_0 =
       _new_box_autoadd_numbers_0Ptr.asFunction<ffi.Pointer<wire_Numbers> Function()>();
 
+  ffi.Pointer<wire_OpaqueNested> new_box_autoadd_opaque_nested_0() {
+    return _new_box_autoadd_opaque_nested_0();
+  }
+
+  late final _new_box_autoadd_opaque_nested_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_OpaqueNested> Function()>>('new_box_autoadd_opaque_nested_0');
+  late final _new_box_autoadd_opaque_nested_0 =
+      _new_box_autoadd_opaque_nested_0Ptr.asFunction<ffi.Pointer<wire_OpaqueNested> Function()>();
+
   ffi.Pointer<wire_Sequences> new_box_autoadd_sequences_0() {
     return _new_box_autoadd_sequences_0();
   }
@@ -3098,6 +3337,527 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_uint_8_list_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
   late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+
+  void drop_box_application_env_0(
+    ffi.Pointer<wire_ApplicationEnv> raw,
+  ) {
+    return _drop_box_application_env_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_application_env_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_ApplicationEnv>)>>('drop_box_application_env_0');
+  late final _drop_box_application_env_0 =
+      _drop_box_application_env_0Ptr.asFunction<void Function(ffi.Pointer<wire_ApplicationEnv>)>();
+
+  void drop_box_autoadd_application_settings_0(
+    ffi.Pointer<wire_ApplicationSettings> raw,
+  ) {
+    return _drop_box_autoadd_application_settings_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_application_settings_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_ApplicationSettings>)>>(
+          'drop_box_autoadd_application_settings_0');
+  late final _drop_box_autoadd_application_settings_0 =
+      _drop_box_autoadd_application_settings_0Ptr.asFunction<void Function(ffi.Pointer<wire_ApplicationSettings>)>();
+
+  void drop_box_autoadd_attribute_0(
+    ffi.Pointer<wire_Attribute> raw,
+  ) {
+    return _drop_box_autoadd_attribute_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_attribute_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Attribute>)>>('drop_box_autoadd_attribute_0');
+  late final _drop_box_autoadd_attribute_0 =
+      _drop_box_autoadd_attribute_0Ptr.asFunction<void Function(ffi.Pointer<wire_Attribute>)>();
+
+  void drop_box_autoadd_bool_0(
+    ffi.Pointer<ffi.Bool> raw,
+  ) {
+    return _drop_box_autoadd_bool_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_bool_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Bool>)>>('drop_box_autoadd_bool_0');
+  late final _drop_box_autoadd_bool_0 = _drop_box_autoadd_bool_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Bool>)>();
+
+  void drop_box_autoadd_concatenate_with_0(
+    ffi.Pointer<wire_ConcatenateWith> raw,
+  ) {
+    return _drop_box_autoadd_concatenate_with_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_concatenate_with_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_ConcatenateWith>)>>(
+          'drop_box_autoadd_concatenate_with_0');
+  late final _drop_box_autoadd_concatenate_with_0 =
+      _drop_box_autoadd_concatenate_with_0Ptr.asFunction<void Function(ffi.Pointer<wire_ConcatenateWith>)>();
+
+  void drop_box_autoadd_customized_0(
+    ffi.Pointer<wire_Customized> raw,
+  ) {
+    return _drop_box_autoadd_customized_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_customized_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Customized>)>>('drop_box_autoadd_customized_0');
+  late final _drop_box_autoadd_customized_0 =
+      _drop_box_autoadd_customized_0Ptr.asFunction<void Function(ffi.Pointer<wire_Customized>)>();
+
+  void drop_box_autoadd_enum_opaque_0(
+    ffi.Pointer<wire_EnumOpaque> raw,
+  ) {
+    return _drop_box_autoadd_enum_opaque_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_enum_opaque_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_EnumOpaque>)>>('drop_box_autoadd_enum_opaque_0');
+  late final _drop_box_autoadd_enum_opaque_0 =
+      _drop_box_autoadd_enum_opaque_0Ptr.asFunction<void Function(ffi.Pointer<wire_EnumOpaque>)>();
+
+  void drop_box_autoadd_exotic_optionals_0(
+    ffi.Pointer<wire_ExoticOptionals> raw,
+  ) {
+    return _drop_box_autoadd_exotic_optionals_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_exotic_optionals_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_ExoticOptionals>)>>(
+          'drop_box_autoadd_exotic_optionals_0');
+  late final _drop_box_autoadd_exotic_optionals_0 =
+      _drop_box_autoadd_exotic_optionals_0Ptr.asFunction<void Function(ffi.Pointer<wire_ExoticOptionals>)>();
+
+  void drop_box_autoadd_f64_0(
+    ffi.Pointer<ffi.Double> raw,
+  ) {
+    return _drop_box_autoadd_f64_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_f64_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Double>)>>('drop_box_autoadd_f64_0');
+  late final _drop_box_autoadd_f64_0 = _drop_box_autoadd_f64_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Double>)>();
+
+  void drop_box_autoadd_feature_chrono_0(
+    ffi.Pointer<wire_FeatureChrono> raw,
+  ) {
+    return _drop_box_autoadd_feature_chrono_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_feature_chrono_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_FeatureChrono>)>>(
+          'drop_box_autoadd_feature_chrono_0');
+  late final _drop_box_autoadd_feature_chrono_0 =
+      _drop_box_autoadd_feature_chrono_0Ptr.asFunction<void Function(ffi.Pointer<wire_FeatureChrono>)>();
+
+  void drop_box_autoadd_feature_uuid_0(
+    ffi.Pointer<wire_FeatureUuid> raw,
+  ) {
+    return _drop_box_autoadd_feature_uuid_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_feature_uuid_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_FeatureUuid>)>>('drop_box_autoadd_feature_uuid_0');
+  late final _drop_box_autoadd_feature_uuid_0 =
+      _drop_box_autoadd_feature_uuid_0Ptr.asFunction<void Function(ffi.Pointer<wire_FeatureUuid>)>();
+
+  void drop_box_autoadd_feed_id_0(
+    ffi.Pointer<wire_FeedId> raw,
+  ) {
+    return _drop_box_autoadd_feed_id_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_feed_id_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_FeedId>)>>('drop_box_autoadd_feed_id_0');
+  late final _drop_box_autoadd_feed_id_0 =
+      _drop_box_autoadd_feed_id_0Ptr.asFunction<void Function(ffi.Pointer<wire_FeedId>)>();
+
+  void drop_box_autoadd_i32_0(
+    ffi.Pointer<ffi.Int32> raw,
+  ) {
+    return _drop_box_autoadd_i32_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_i32_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int32>)>>('drop_box_autoadd_i32_0');
+  late final _drop_box_autoadd_i32_0 = _drop_box_autoadd_i32_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Int32>)>();
+
+  void drop_box_autoadd_i64_0(
+    ffi.Pointer<ffi.Int64> raw,
+  ) {
+    return _drop_box_autoadd_i64_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_i64_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int64>)>>('drop_box_autoadd_i64_0');
+  late final _drop_box_autoadd_i64_0 = _drop_box_autoadd_i64_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Int64>)>();
+
+  void drop_box_autoadd_kitchen_sink_0(
+    ffi.Pointer<wire_KitchenSink> raw,
+  ) {
+    return _drop_box_autoadd_kitchen_sink_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_kitchen_sink_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_KitchenSink>)>>('drop_box_autoadd_kitchen_sink_0');
+  late final _drop_box_autoadd_kitchen_sink_0 =
+      _drop_box_autoadd_kitchen_sink_0Ptr.asFunction<void Function(ffi.Pointer<wire_KitchenSink>)>();
+
+  void drop_box_autoadd_measure_0(
+    ffi.Pointer<wire_Measure> raw,
+  ) {
+    return _drop_box_autoadd_measure_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_measure_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Measure>)>>('drop_box_autoadd_measure_0');
+  late final _drop_box_autoadd_measure_0 =
+      _drop_box_autoadd_measure_0Ptr.asFunction<void Function(ffi.Pointer<wire_Measure>)>();
+
+  void drop_box_autoadd_message_id_0(
+    ffi.Pointer<wire_MessageId> raw,
+  ) {
+    return _drop_box_autoadd_message_id_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_message_id_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_MessageId>)>>('drop_box_autoadd_message_id_0');
+  late final _drop_box_autoadd_message_id_0 =
+      _drop_box_autoadd_message_id_0Ptr.asFunction<void Function(ffi.Pointer<wire_MessageId>)>();
+
+  void drop_box_autoadd_my_size_0(
+    ffi.Pointer<wire_MySize> raw,
+  ) {
+    return _drop_box_autoadd_my_size_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_my_size_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_MySize>)>>('drop_box_autoadd_my_size_0');
+  late final _drop_box_autoadd_my_size_0 =
+      _drop_box_autoadd_my_size_0Ptr.asFunction<void Function(ffi.Pointer<wire_MySize>)>();
+
+  void drop_box_autoadd_my_struct_0(
+    ffi.Pointer<wire_MyStruct> raw,
+  ) {
+    return _drop_box_autoadd_my_struct_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_my_struct_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_MyStruct>)>>('drop_box_autoadd_my_struct_0');
+  late final _drop_box_autoadd_my_struct_0 =
+      _drop_box_autoadd_my_struct_0Ptr.asFunction<void Function(ffi.Pointer<wire_MyStruct>)>();
+
+  void drop_box_autoadd_my_tree_node_0(
+    ffi.Pointer<wire_MyTreeNode> raw,
+  ) {
+    return _drop_box_autoadd_my_tree_node_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_my_tree_node_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_MyTreeNode>)>>('drop_box_autoadd_my_tree_node_0');
+  late final _drop_box_autoadd_my_tree_node_0 =
+      _drop_box_autoadd_my_tree_node_0Ptr.asFunction<void Function(ffi.Pointer<wire_MyTreeNode>)>();
+
+  void drop_box_autoadd_new_type_int_0(
+    ffi.Pointer<wire_NewTypeInt> raw,
+  ) {
+    return _drop_box_autoadd_new_type_int_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_new_type_int_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_NewTypeInt>)>>('drop_box_autoadd_new_type_int_0');
+  late final _drop_box_autoadd_new_type_int_0 =
+      _drop_box_autoadd_new_type_int_0Ptr.asFunction<void Function(ffi.Pointer<wire_NewTypeInt>)>();
+
+  void drop_box_autoadd_note_0(
+    ffi.Pointer<wire_Note> raw,
+  ) {
+    return _drop_box_autoadd_note_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_note_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Note>)>>('drop_box_autoadd_note_0');
+  late final _drop_box_autoadd_note_0 = _drop_box_autoadd_note_0Ptr.asFunction<void Function(ffi.Pointer<wire_Note>)>();
+
+  void drop_box_autoadd_numbers_0(
+    ffi.Pointer<wire_Numbers> raw,
+  ) {
+    return _drop_box_autoadd_numbers_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_numbers_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Numbers>)>>('drop_box_autoadd_numbers_0');
+  late final _drop_box_autoadd_numbers_0 =
+      _drop_box_autoadd_numbers_0Ptr.asFunction<void Function(ffi.Pointer<wire_Numbers>)>();
+
+  void drop_box_autoadd_opaque_nested_0(
+    ffi.Pointer<wire_OpaqueNested> raw,
+  ) {
+    return _drop_box_autoadd_opaque_nested_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_opaque_nested_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_OpaqueNested>)>>(
+          'drop_box_autoadd_opaque_nested_0');
+  late final _drop_box_autoadd_opaque_nested_0 =
+      _drop_box_autoadd_opaque_nested_0Ptr.asFunction<void Function(ffi.Pointer<wire_OpaqueNested>)>();
+
+  void drop_box_autoadd_sequences_0(
+    ffi.Pointer<wire_Sequences> raw,
+  ) {
+    return _drop_box_autoadd_sequences_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_sequences_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Sequences>)>>('drop_box_autoadd_sequences_0');
+  late final _drop_box_autoadd_sequences_0 =
+      _drop_box_autoadd_sequences_0Ptr.asFunction<void Function(ffi.Pointer<wire_Sequences>)>();
+
+  void drop_box_autoadd_sum_with_0(
+    ffi.Pointer<wire_SumWith> raw,
+  ) {
+    return _drop_box_autoadd_sum_with_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_sum_with_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_SumWith>)>>('drop_box_autoadd_sum_with_0');
+  late final _drop_box_autoadd_sum_with_0 =
+      _drop_box_autoadd_sum_with_0Ptr.asFunction<void Function(ffi.Pointer<wire_SumWith>)>();
+
+  void drop_box_autoadd_test_id_0(
+    ffi.Pointer<wire_TestId> raw,
+  ) {
+    return _drop_box_autoadd_test_id_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_test_id_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_TestId>)>>('drop_box_autoadd_test_id_0');
+  late final _drop_box_autoadd_test_id_0 =
+      _drop_box_autoadd_test_id_0Ptr.asFunction<void Function(ffi.Pointer<wire_TestId>)>();
+
+  void drop_box_autoadd_user_id_0(
+    ffi.Pointer<wire_UserId> raw,
+  ) {
+    return _drop_box_autoadd_user_id_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_user_id_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_UserId>)>>('drop_box_autoadd_user_id_0');
+  late final _drop_box_autoadd_user_id_0 =
+      _drop_box_autoadd_user_id_0Ptr.asFunction<void Function(ffi.Pointer<wire_UserId>)>();
+
+  void drop_box_blob_0(
+    ffi.Pointer<wire_Blob> raw,
+  ) {
+    return _drop_box_blob_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_blob_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Blob>)>>('drop_box_blob_0');
+  late final _drop_box_blob_0 = _drop_box_blob_0Ptr.asFunction<void Function(ffi.Pointer<wire_Blob>)>();
+
+  void drop_box_bool_0(
+    ffi.Pointer<ffi.Bool> raw,
+  ) {
+    return _drop_box_bool_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_bool_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Bool>)>>('drop_box_bool_0');
+  late final _drop_box_bool_0 = _drop_box_bool_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Bool>)>();
+
+  void drop_box_distance_0(
+    ffi.Pointer<wire_Distance> raw,
+  ) {
+    return _drop_box_distance_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_distance_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Distance>)>>('drop_box_distance_0');
+  late final _drop_box_distance_0 = _drop_box_distance_0Ptr.asFunction<void Function(ffi.Pointer<wire_Distance>)>();
+
+  void drop_box_exotic_optionals_0(
+    ffi.Pointer<wire_ExoticOptionals> raw,
+  ) {
+    return _drop_box_exotic_optionals_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_exotic_optionals_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_ExoticOptionals>)>>('drop_box_exotic_optionals_0');
+  late final _drop_box_exotic_optionals_0 =
+      _drop_box_exotic_optionals_0Ptr.asFunction<void Function(ffi.Pointer<wire_ExoticOptionals>)>();
+
+  void drop_box_f64_0(
+    ffi.Pointer<ffi.Double> raw,
+  ) {
+    return _drop_box_f64_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_f64_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Double>)>>('drop_box_f64_0');
+  late final _drop_box_f64_0 = _drop_box_f64_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Double>)>();
+
+  void drop_box_i32_0(
+    ffi.Pointer<ffi.Int32> raw,
+  ) {
+    return _drop_box_i32_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_i32_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int32>)>>('drop_box_i32_0');
+  late final _drop_box_i32_0 = _drop_box_i32_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Int32>)>();
+
+  void drop_box_i64_0(
+    ffi.Pointer<ffi.Int64> raw,
+  ) {
+    return _drop_box_i64_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_i64_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int64>)>>('drop_box_i64_0');
+  late final _drop_box_i64_0 = _drop_box_i64_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Int64>)>();
+
+  void drop_box_i8_0(
+    ffi.Pointer<ffi.Int8> raw,
+  ) {
+    return _drop_box_i8_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_i8_0Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>('drop_box_i8_0');
+  late final _drop_box_i8_0 = _drop_box_i8_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
+
+  void drop_box_kitchen_sink_0(
+    ffi.Pointer<wire_KitchenSink> raw,
+  ) {
+    return _drop_box_kitchen_sink_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_kitchen_sink_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_KitchenSink>)>>('drop_box_kitchen_sink_0');
+  late final _drop_box_kitchen_sink_0 =
+      _drop_box_kitchen_sink_0Ptr.asFunction<void Function(ffi.Pointer<wire_KitchenSink>)>();
+
+  void drop_box_my_size_0(
+    ffi.Pointer<wire_MySize> raw,
+  ) {
+    return _drop_box_my_size_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_my_size_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_MySize>)>>('drop_box_my_size_0');
+  late final _drop_box_my_size_0 = _drop_box_my_size_0Ptr.asFunction<void Function(ffi.Pointer<wire_MySize>)>();
+
+  void drop_box_speed_0(
+    ffi.Pointer<wire_Speed> raw,
+  ) {
+    return _drop_box_speed_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_speed_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Speed>)>>('drop_box_speed_0');
+  late final _drop_box_speed_0 = _drop_box_speed_0Ptr.asFunction<void Function(ffi.Pointer<wire_Speed>)>();
+
+  void drop_box_u8_0(
+    ffi.Pointer<ffi.Uint8> raw,
+  ) {
+    return _drop_box_u8_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_u8_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Uint8>)>>('drop_box_u8_0');
+  late final _drop_box_u8_0 = _drop_box_u8_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Uint8>)>();
+
+  void drop_box_weekdays_0(
+    ffi.Pointer<ffi.Int32> raw,
+  ) {
+    return _drop_box_weekdays_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_weekdays_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int32>)>>('drop_box_weekdays_0');
+  late final _drop_box_weekdays_0 = _drop_box_weekdays_0Ptr.asFunction<void Function(ffi.Pointer<ffi.Int32>)>();
 
   ffi.Pointer<DistanceKind> inflate_Distance_Map() {
     return _inflate_Distance_Map();
@@ -3646,6 +4406,12 @@ class wire_EnumOpaque extends ffi.Struct {
 
 class wire_OpaqueSyncStruct extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
+}
+
+class wire_OpaqueNested extends ffi.Struct {
+  external ffi.Pointer<wire_OpaqueStruct> first;
+
+  external ffi.Pointer<wire_OpaqueStruct> second;
 }
 
 class wire_SumWith extends ffi.Struct {

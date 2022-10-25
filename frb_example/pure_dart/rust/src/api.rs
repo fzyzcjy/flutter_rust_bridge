@@ -9,7 +9,7 @@ use std::time::Duration;
 use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
-use lazy_static::lazy_static;
+use lazy_static::{__Deref, lazy_static};
 
 use crate::data::{HideData, HideSyncData, MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
@@ -969,6 +969,11 @@ pub enum EnumOpaque {
 /// Opaque types
 pub struct OpaqueStruct(HideData);
 
+pub struct OpaqueNested {
+    pub first: Opaque<OpaqueStruct>,
+    pub second: Opaque<OpaqueStruct>,
+}
+
 pub fn create_opaque() -> Opaque<OpaqueStruct> {
     Opaque::new(OpaqueStruct(HideData::new()))
 }
@@ -990,32 +995,24 @@ pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
 pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
     match opaque {
         EnumOpaque::Struct(s) => run_opaque(s),
-        EnumOpaque::Primitive(p) => format!("{:?}", p.as_deref()),
-        EnumOpaque::TraitObj(t) => format!("{:?}", t),
+        EnumOpaque::Primitive(p) => format!("{:?}", p.deref()),
+        EnumOpaque::TraitObj(t) => format!("{:?}", t.deref()),
         EnumOpaque::Mutex(m) => {
-            format!("{:?}", m.lock().map(|m| m.unwrap().0.hide_data()))
+            format!("{:?}", m.lock().unwrap().0.hide_data())
         }
         EnumOpaque::RwLock(r) => {
-            format!("{:?}", r.read().map(|r| r.unwrap().0.hide_data()))
+            format!("{:?}", r.read().unwrap().0.hide_data())
         }
     }
 }
 
 pub fn run_opaque(opaque: Opaque<OpaqueStruct>) -> String {
-    if let Some(data) = opaque.as_deref() {
-        data.0.hide_data()
-    } else {
-        "NULL OPAQUE".to_owned()
-    }
+    opaque.0.hide_data()
 }
 
 pub fn run_opaque_with_delay(opaque: Opaque<OpaqueStruct>) -> String {
     sleep(Duration::from_millis(1000));
-    if let Some(data) = opaque.as_deref() {
-        data.0.hide_data()
-    } else {
-        "NULL OPAQUE".to_owned()
-    }
+    opaque.0.hide_data()
 }
 
 pub fn opaque_array() -> [Opaque<OpaqueStruct>; 2] {
@@ -1038,17 +1035,17 @@ pub fn sync_create_sync_opaque() -> SyncReturn<Opaque<OpaqueSyncStruct>> {
 // OpaqueSyncStruct does not implement Send trait.
 //
 // pub fn run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> String {
-//     if let Some(data) = opaque.as_deref() {
-//         data.0.hide_data()
-//     } else {
-//         "NULL OPAQUE".to_owned()
-//     }
+//     data.0.hide_data()
 // }
 
 pub fn sync_run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> SyncReturn<String> {
-    SyncReturn(if let Some(data) = opaque.as_deref() {
-        data.0.hide_data()
-    } else {
-        "NULL OPAQUE".to_owned()
-    })
+    SyncReturn(data.0.hide_data())
 }
+pub fn create_nested_opaque() -> OpaqueNested {
+    OpaqueNested {
+        first: Opaque::new(OpaqueStruct(HideData::new())),
+        second: Opaque::new(OpaqueStruct(HideData::new())),
+    }
+}
+
+pub fn run_nested_opaque(opaque: OpaqueNested) {}
