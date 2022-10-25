@@ -22,7 +22,7 @@ class Sample {
   Map<String, dynamic> toJson() {
     return {
       'value': elapsed / iterations,
-      'unit': 'us',
+      'unit': unit.toString(),
       'name': name,
       'extra': itemsCount.toString(),
     };
@@ -75,8 +75,8 @@ abstract class Bencher {
     print('---');
     final Sample sample = await bench();
 
-    print('report: ${sample.elapsed} microseconds for ${sample.iterations} iterations');
-    print('per iteration: ${sample.elapsed / sample.iterations} microseconds');
+    print('report: ${sample.elapsed} ${sample.unit.toString()} for ${sample.iterations} iterations');
+    print('per iteration: ${sample.elapsed / sample.iterations} ${sample.unit.toString()}');
     print('completed ${sample.routines.length} sample(s) out of $sampleSize');
     await save(sample);
   }
@@ -86,15 +86,15 @@ abstract class AsyncBencher extends Bencher {
   AsyncBencher(
       {required super.name, required super.warmUpTime, required super.measurementTime, required super.sampleSize});
 
-  int get warmUpTimeNormalized;
-  int get measurementTimeNormalized;
+  Duration get warmUpTimeNormalized;
+  Duration get measurementTimeNormalized;
 
   @override
   Future<Routine> warmup(Future<void> Function() f) async {
     var iterations = 1;
     var elapsed = .0;
     final WallTime time = start();
-    while (elapsed < warmUpTimeNormalized) {
+    while (elapsed < warmUpTimeNormalized.inMicroseconds) {
       for (var i = 0; i < iterations; i++) {
         await f();
       }
@@ -109,7 +109,8 @@ abstract class AsyncBencher extends Bencher {
 
   @override
   Future<Sample> measure(Future<void> Function() f, double warmUpElapsed, int warmUpIter, int sampleSize) async {
-    final totalIters = ((measurementTimeNormalized / warmUpTimeNormalized) * warmUpIter).round();
+    final totalIters =
+        ((measurementTimeNormalized.inMicroseconds / warmUpTimeNormalized.inMicroseconds) * warmUpIter).round();
     final totalRuns = sampleSize * (sampleSize + 1) / 2;
     assert(totalRuns < totalIters);
     final d = warmUpElapsed / warmUpIter;
@@ -118,7 +119,7 @@ abstract class AsyncBencher extends Bencher {
     var elapsed = .0;
     var samples = <Routine>[];
     var sample = 0;
-    while (elapsed < measurementTimeNormalized && factor <= sampleSize) {
+    while (elapsed < measurementTimeNormalized.inMicroseconds && factor <= sampleSize) {
       sample = runs[factor - 1];
       final WallTime watch = start();
       for (var i = 0; i < sample; i++) {

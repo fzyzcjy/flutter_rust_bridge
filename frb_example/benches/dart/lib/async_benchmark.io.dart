@@ -11,9 +11,9 @@ abstract class AsyncBenchmark extends AsyncBencher {
       {required super.name, required super.warmUpTime, required super.measurementTime, required super.sampleSize});
 
   @override
-  int get warmUpTimeNormalized => warmUpTime.inMicroseconds;
+  Duration get warmUpTimeNormalized => warmUpTime;
   @override
-  int get measurementTimeNormalized => measurementTime.inMicroseconds;
+  Duration get measurementTimeNormalized => measurementTime;
 
   @override
   WallTime start() {
