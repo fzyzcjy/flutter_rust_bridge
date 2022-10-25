@@ -109,16 +109,5 @@ abstract class FlutterRustBridgeExampleBenchmarkSuite {
 enum Unit {
   Milliseconds,
   Microseconds,
-  Nanoseconds;
-
-  String toString() {
-    switch (this) {
-      case Unit.Milliseconds:
-        return 'ms';
-      case Unit.Microseconds:
-        return 'μs';
-      case Unit.Nanoseconds:
-        return 'ns';
-    }
-  }
+  Nanoseconds,
 }

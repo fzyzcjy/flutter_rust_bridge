@@ -35,7 +35,8 @@ Opts _$parseOptsResult(ArgResults result) => Opts()
   ..weakRefs = result['weak-refs'] as bool
   ..referenceTypes = result['reference-types'] as bool
   ..help = result['help'] as bool
-  ..build = result['build'] as bool;
+  ..build = result['build'] as bool
+  ..index = result['index'] as String?;
 
 ArgParser _$populateOptsParser(ArgParser parser) => parser
   ..addOption(
@@ -113,6 +114,10 @@ ArgParser _$populateOptsParser(ArgParser parser) => parser
     'build',
     help: 'Whether to build the library.',
     defaultsTo: true,
+  )
+  ..addOption(
+    'index',
+    help: 'Whether to run a specific html index page.',
   );
 
 final _$parserForOpts = _$populateOptsParser(ArgParser());

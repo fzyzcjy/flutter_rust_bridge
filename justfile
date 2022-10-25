@@ -177,6 +177,7 @@ bench-simple *args="": runner
 bench-simple-web *args="": runner
     (cd {{frb_benches}}/rust && cargo build --release) && \
     (cd {{frb_benches}}/dart && export JSON=true ITEMS_COUNT=10; \
-    just serve --dart-input lib/benchmark/uuids.web.dart --root web/ -c ../rust --port 8082 --release {{args}})
+    just serve --dart-input lib/benchmark/uuids.web.dart --root web/ -c ../rust --port 8082 --release --index uuids.html {{args}} && \
+    just serve --dart-input lib/benchmark/strings.web.dart --root web/ -c ../rust --port 8083 --release --index strings.html {{args}})
 
 # vim:expandtab:ts=4:sw=4

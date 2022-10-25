@@ -156,6 +156,9 @@ class Opts {
   @CliOption(help: 'Whether to build the library.', defaultsTo: true)
   late bool build;
 
+  @CliOption(help: 'Whether to run a specific html index page.')
+  late String? index;
+
   static List<String> rest(List<String> args) =>
       _$parserForOpts.parse(args).rest;
 }
@@ -237,7 +240,7 @@ OPTIONS:""");
     await build(config,
         crateDir: crateDir, wasmOutput: wasmOutput, root: root, args: args);
   }
-  await runServer(config, root: root);
+  await runServer(config, root: root, index: config.index);
 }
 
 Future<void> build(
@@ -304,7 +307,8 @@ Future<void> build(
   }
 }
 
-Future<void> runServer(Opts config, {required String root}) async {
+Future<void> runServer(Opts config,
+    {required String root, String? index}) async {
   final ip = InternetAddress.anyIPv4;
 
   final staticFilesHandler =
@@ -340,7 +344,11 @@ Future<void> runServer(Opts config, {required String root}) async {
   }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
 
   final port = portEnv ?? config.port;
-  final addr = 'http://localhost:$port';
+  final addr = index != null &&
+          index.isNotEmpty &&
+          (index != 'index' || index != 'index.html')
+      ? 'http://localhost:$port/$index'
+      : 'http://localhost:$port';
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
   if (config.runTests) {
