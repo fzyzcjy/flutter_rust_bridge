@@ -40,7 +40,6 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             })
             .join("\n");
 
-
         Acc {
             wasm: Some(format!(
                 "{}
