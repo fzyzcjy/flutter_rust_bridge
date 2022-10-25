@@ -917,7 +917,11 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      expect(api.syncRunOpaque(opaque: data), "NULL OPAQUE");
+      try {
+        api.syncRunOpaque(opaque: data);
+      } catch (e) {
+        expect(e.toString(), 'Use after dispose.');
+      }
     });
   });
 }

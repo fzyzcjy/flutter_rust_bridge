@@ -1039,8 +1039,9 @@ pub fn sync_create_sync_opaque() -> SyncReturn<Opaque<OpaqueSyncStruct>> {
 // }
 
 pub fn sync_run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> SyncReturn<String> {
-    SyncReturn(data.0.hide_data())
+    SyncReturn(opaque.0.hide_data())
 }
+
 pub fn create_nested_opaque() -> OpaqueNested {
     OpaqueNested {
         first: Opaque::new(OpaqueStruct(HideData::new())),
