@@ -8,4 +8,6 @@ const int defaultMeasurementTime = 5000;
 
 const int defaultItemsCount = 10;
 
+const String defaultOutputFilename = 'output';
+
 const Duration minimumBenchDuration = Duration(milliseconds: 500);

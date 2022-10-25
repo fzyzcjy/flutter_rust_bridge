@@ -7,3 +7,6 @@ final warmUpTime = int.fromEnvironment('WARM_UP_TIME', defaultValue: defaultWarm
 final measurementTime = int.fromEnvironment('WARM_UP_TIME', defaultValue: defaultMeasurementTime);
 final itemsCount = int.fromEnvironment('ITEMS_COUNT', defaultValue: defaultItemsCount);
 const useJSON = bool.fromEnvironment('JSON');
+final outputFilename = const String.fromEnvironment('OUTPUT_FILENAME') != ''
+    ? const String.fromEnvironment('OUTPUT_FILENAME')
+    : defaultOutputFilename;

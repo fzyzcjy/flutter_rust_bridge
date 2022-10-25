@@ -6,14 +6,10 @@ import 'package:flutter_rust_bridge_benchmark/walltime.web.dart';
 
 import 'async_benchmark.dart';
 
+/// use custom windows performance on Dart web
 abstract class AsyncBenchmark extends AsyncBencher {
   AsyncBenchmark(
       {required super.name, required super.warmUpTime, required super.measurementTime, required super.sampleSize});
-
-  @override
-  Duration get warmUpTimeNormalized => warmUpTime;
-  @override
-  Duration get measurementTimeNormalized => measurementTime;
 
   @override
   WallTime start() {

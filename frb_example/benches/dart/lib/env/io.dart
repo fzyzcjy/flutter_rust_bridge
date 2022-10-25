@@ -10,3 +10,4 @@ final warmUpTime = int.parse(Platform.environment['WARM_UP_TIME'] ?? defaultWarm
 final measurementTime = int.parse(Platform.environment['MEASUREMENT_TIME'] ?? defaultMeasurementTime.toString());
 final itemsCount = int.parse(Platform.environment['ITEMS_COUNT'] ?? defaultItemsCount.toString());
 final useJSON = readBoolEnv('JSON');
+final outputFilename = Platform.environment['OUTPUT_FILENAME'] ?? defaultOutputFilename;
