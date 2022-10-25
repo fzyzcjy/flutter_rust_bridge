@@ -8,6 +8,9 @@ abstract class WallTime {
   /// convenience method
   double get timeElapsedMicros;
 
+  /// convenience method
+  double get timeElapsedMillis;
+
   /// start timer
   void start();
 

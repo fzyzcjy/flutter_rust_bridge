@@ -44,13 +44,19 @@ class Sample {
 
 abstract class Bencher {
   final String name;
+  final String dylibPath;
   final Duration warmUpTime;
   final Duration measurementTime;
   final int sampleSize;
 
   WallTime start();
 
-  Bencher({required this.name, required this.warmUpTime, required this.measurementTime, required this.sampleSize});
+  Bencher(
+      {required this.name,
+      required this.dylibPath,
+      required this.warmUpTime,
+      required this.measurementTime,
+      required this.sampleSize});
 
   Future<void> setup() {
     return Future.sync(() {
@@ -98,7 +104,11 @@ abstract class Bencher {
 
 abstract class AsyncBencher extends Bencher {
   AsyncBencher(
-      {required super.name, required super.warmUpTime, required super.measurementTime, required super.sampleSize});
+      {required super.name,
+      required super.dylibPath,
+      required super.warmUpTime,
+      required super.measurementTime,
+      required super.sampleSize});
 
   /// simple port of [criterion warmup](https://bheisler.github.io/criterion.rs/book/analysis.html#warmup)
   @override
@@ -106,11 +116,11 @@ abstract class AsyncBencher extends Bencher {
     var iterations = 1;
     var elapsed = .0;
     final WallTime time = start();
-    while (elapsed < warmUpTime.inMicroseconds) {
+    while (elapsed < warmUpTime.inMilliseconds) {
       for (var i = 0; i < iterations; i++) {
         await f();
       }
-      elapsed = time.timeElapsedMicros;
+      elapsed = time.timeElapsedMillis;
       iterations *= 2;
     }
     time.stop();

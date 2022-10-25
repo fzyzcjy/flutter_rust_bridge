@@ -13,5 +13,8 @@ class AsyncStopWatch extends Stopwatch implements WallTime {
   double get timeElapsedMicros => timeElapsed;
 
   @override
+  double get timeElapsedMillis => (timeElapsed / 1000).roundToDouble();
+
+  @override
   Unit get unit => Unit.Microseconds;
 }

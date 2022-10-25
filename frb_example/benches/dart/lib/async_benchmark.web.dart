@@ -9,7 +9,11 @@ import 'async_benchmark.dart';
 /// use custom windows performance on Dart web
 abstract class AsyncBenchmark extends AsyncBencher {
   AsyncBenchmark(
-      {required super.name, required super.warmUpTime, required super.measurementTime, required super.sampleSize});
+      {required super.name,
+      required super.dylibPath,
+      required super.warmUpTime,
+      required super.measurementTime,
+      required super.sampleSize});
 
   @override
   WallTime start() {

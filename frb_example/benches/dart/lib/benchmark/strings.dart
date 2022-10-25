@@ -7,9 +7,10 @@ import '../ffi.io.dart' if (dart.library.html) '../ffi.web.dart';
 
 // Create a new benchmark by extending BenchmarkBase
 class TemplateBenchmark extends AsyncBenchmark {
-  TemplateBenchmark()
+  TemplateBenchmark(String dylibPath)
       : super(
             name: 'Vec of Strings',
+            dylibPath: dylibPath,
             warmUpTime: Duration(milliseconds: warmUpTime),
             measurementTime: Duration(
               milliseconds: measurementTime,
@@ -19,8 +20,8 @@ class TemplateBenchmark extends AsyncBenchmark {
   late FlutterRustBridgeExampleBenchmarkSuiteImpl api;
   late List<String> strings;
 
-  static Future<void> main() async {
-    await TemplateBenchmark().report();
+  static Future<void> main(String dylibPath) async {
+    await TemplateBenchmark(dylibPath).report();
   }
 
   // The benchmark code.
@@ -32,11 +33,10 @@ class TemplateBenchmark extends AsyncBenchmark {
   // Not measured setup code executed prior to the benchmark runs.
   @override
   Future<void> setup() async {
-    String path = dylibPath ?? "../../../target/release/libflutter_rust_bridge_example_benchmark_suite.dylib";
-    print('flutter_rust_bridge benchmark strings (dylibPath=$path)');
+    print('flutter_rust_bridge benchmark strings (dylibPath=$dylibPath!)');
     await super.setup();
     return Future.sync(() {
-      api = initializeBenchExternalLibrary(path);
+      api = initializeBenchExternalLibrary(dylibPath);
       strings = List<String>.generate(itemsCount, (_) => getRandomString(uuidSizeInBytes));
     });
   }
@@ -48,7 +48,8 @@ class TemplateBenchmark extends AsyncBenchmark {
   }
 }
 
-Future<void> main() async {
+void main(List<String> args) async {
+  final String dylibPath = args[0];
   // Run TemplateBenchmark
-  await TemplateBenchmark.main();
+  await TemplateBenchmark.main(dylibPath);
 }

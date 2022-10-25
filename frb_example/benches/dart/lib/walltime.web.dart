@@ -24,6 +24,9 @@ class WindowPerformance implements WallTime {
   double get timeElapsedMicros => timeElapsed * 1000;
 
   @override
+  double get timeElapsedMillis => timeElapsed;
+
+  @override
   void reset() {
     _starts = window.performance.now();
   }

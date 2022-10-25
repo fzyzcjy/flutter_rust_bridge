@@ -169,10 +169,10 @@ runner:
 bench-simple *args="": runner
     (cd {{frb_benches}}/rust && cargo build --release)
     (cd {{frb_benches}}/dart && \
-       export ITEMS_COUNT=10; dart {{args}} run lib/benchmark/uuids.dart && \
-       export ITEMS_COUNT=10; dart {{args}} run lib/benchmark/strings.dart && \
-       export ITEMS_COUNT=100 WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} run lib/benchmark/uuids.dart && \
-       export ITEMS_COUNT=100 WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} run lib/benchmark/strings.dart)
+       export ITEMS_COUNT=10; dart {{args}} run lib/benchmark/uuids.dart ../../../target/release/{{bench_dylib}} && \
+       export ITEMS_COUNT=10; dart {{args}} run lib/benchmark/strings.dart ../../../target/release/{{bench_dylib}} && \
+       export ITEMS_COUNT=100 WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} lib/benchmark/uuids.dart ../../../target/release/{{bench_dylib}} && \
+       export ITEMS_COUNT=100 WARM_UP_TIME=5000 MEASUREMENT_TIME=10000; dart {{args}} lib/benchmark/strings.dart ../../../target/release/{{bench_dylib}})
 
 bench-simple-web *args="": runner
     (cd {{frb_benches}}/rust && cargo build --release) && \
