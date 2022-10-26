@@ -456,16 +456,41 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-/// Dropper opaque data and specific functions of this opaque data.
+/// Dropper opaque data by type specific function.
 ///
 /// # Safety
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub extern "C" fn drop_opaque(ptr: *const c_void, ptr_drop_fn: *const c_void) {
+pub fn drop_opaque(ptr: *const c_void, ptr_drop_fn: *const c_void) {
     unsafe {
-        let drop_fn: extern "C" fn(*const c_void) = std::mem::transmute(ptr_drop_fn);
+        let drop_fn: fn(*const c_void) = std::mem::transmute(ptr_drop_fn);
         drop_fn(ptr);
+    }
+}
+
+/// Equivalent to a [Arc::clone()],
+/// but direcly in terms of raw pointers by type specific function.
+///
+/// # Safety
+///
+/// This function should never be called manually.
+#[wasm_bindgen]
+pub fn share_opaque(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
+    unsafe {
+        let share_fn: fn(*const c_void) -> *const c_void = std::mem::transmute(ptr_share_fn);
+        share_fn(ptr)
+    }
+}
+
+/// Dropper opaque data of this opaque data.
+///
+/// # Safety
+///
+/// This function should never be called manually.
+fn drop_arc<T>(ptr: *const c_void) {
+    unsafe {
+        Arc::<T>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -474,22 +499,7 @@ pub extern "C" fn drop_opaque(ptr: *const c_void, ptr_drop_fn: *const c_void) {
 /// # Safety
 ///
 /// This function should never be called manually.
-#[wasm_bindgen]
-pub extern "C" fn share_opaque(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
-    unsafe {
-        let share_fn: extern "C" fn(*const c_void) -> *const c_void =
-            std::mem::transmute(ptr_share_fn);
-        share_fn(ptr)
-    }
-}
-
-extern "C" fn drop_arc<T>(ptr: *const c_void) {
-    unsafe {
-        Arc::<T>::decrement_strong_count(ptr as _);
-    }
-}
-
-extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
+fn share_arc<T>(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<T>::increment_strong_count(ptr as _);
         ptr
@@ -499,8 +509,8 @@ extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
 impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
         let ptr = Arc::into_raw(self.ptr).into_dart();
-        let drop: extern "C" fn(*const c_void) = drop_arc::<T>;
-        let share: extern "C" fn(*const c_void) -> *const c_void = share_arc::<T>;
+        let drop: fn(*const c_void) = drop_arc::<T>;
+        let share: fn(*const c_void) -> *const c_void = share_arc::<T>;
         vec![
             ptr,
             (drop as usize).into_dart(),
