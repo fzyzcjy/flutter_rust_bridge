@@ -168,6 +168,7 @@ runner:
 
 bench-simple *args="": runner
     (mkdir -p book/benches)
+    (rm -f book/benches/output.txt)
     (cd {{frb_benches}}/rust && cargo build --release)
     (cd {{frb_benches}}/dart && \
        export ITEMS_COUNT=10; dart {{args}} run lib/benchmark/uuids.dart ../../../target/release/{{bench_dylib}} && \

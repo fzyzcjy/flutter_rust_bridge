@@ -1,4 +1,5 @@
 // ignore: unused_import
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_benchmark/env/io.dart';
@@ -23,7 +24,14 @@ abstract class AsyncBenchmark extends AsyncBencher {
 
   @override
   Future<void> save(Sample sample) async {
-    final file = File('../../../book/benches/$outputFilename.txt')..create(recursive: true);
-    file.writeAsString(sample.toJson().toString());
+    final file = File('../../../book/benches/$outputFilename.txt')
+      ..create(recursive: true);
+    final content = file.existsSync() ? file.readAsStringSync() : '';
+    if (content.isEmpty) {
+      await file.writeAsString('[${json.encode(sample.toJson())}]');
+    } else {
+      final concatenated = content.replaceFirst(']', ',${json.encode(sample.toJson())}]');
+      await file.writeAsString(concatenated);
+    }
   }
 }
