@@ -150,6 +150,11 @@ jobs:
             dart run ../../../frb_dart/bin/serve.dart
             -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
           current_path: frb_example/pure_dart/dart
+      
+      - name: Setup Just
+        uses: extractions/setup-just@v1
+      - name: Run benches example (Web)
+        run: just bench-simple-web
 
   # -------------------------- linter --------------------------
   rust_build_and_test:
@@ -214,15 +219,10 @@ jobs:
         working-directory: ./frb_example/with_flutter/rust
         run: cargo test --verbose
 
-      - name: Build benches example
-        working-directory: ./frb_example/benches/rust
-        run: cargo build --verbose --release
+      - name: Setup Just
+        uses: extractions/setup-just@v1
       - name: Run benches example
-        working-directory: ./frb_example/benches/dart
-        run: dart run lib/benchmark/uuids.dart && dart run lib/benchmark/strings.dart
-        env:
-          DYLIB_PATH: ../../../target/release/libflutter_rust_bridge_example_benchmark_suite.so
-          JSON: false
+        run: just bench-simple
 
   rust_linter:
     name: Rust linter using Clippy and rustfmt
