@@ -167,6 +167,7 @@ runner:
     (cd frb_dart && dart run build_runner build --delete-conflicting-outputs)
 
 bench-simple *args="": runner
+    (mkdir -p book/benches)
     (cd {{frb_benches}}/rust && cargo build --release)
     (cd {{frb_benches}}/dart && \
        export ITEMS_COUNT=10; dart {{args}} run lib/benchmark/uuids.dart ../../../target/release/{{bench_dylib}} && \
