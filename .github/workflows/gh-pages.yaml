@@ -72,14 +72,10 @@ jobs:
         run: cd frb_example/benches/rust && cargo build --release
       
       # Run benchmark and stores the output to a file
+      - name: Setup Just
+        uses: extractions/setup-just@v1
       - name: Run benchmark
-        run: |
-          mkdir -p ./book/benches && \
-          touch ./book/benches/output.txt && \
-          dart frb_example/benches/dart/lib/benchmark/uuids.dart | tee ./book/benches/output.txt
-        env:
-          DYLIB_PATH: target/release/libflutter_rust_bridge_example_benchmark_suite.so
-          JSON: true
+        run: just bench-simple
 
       # Update benchmark and deploy to GitHub Pages
       - name: Store benchmark result
