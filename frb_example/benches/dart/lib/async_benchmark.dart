@@ -116,11 +116,11 @@ abstract class AsyncBencher extends Bencher {
     var iterations = 1;
     var elapsed = .0;
     final WallTime time = start();
-    while (elapsed < warmUpTime.inMilliseconds) {
+    while (elapsed < warmUpTime.inMicroseconds) {
       for (var i = 0; i < iterations; i++) {
         await f();
       }
-      elapsed = time.timeElapsedMillis;
+      elapsed = time.timeElapsedMicros;
       iterations *= 2;
     }
     time.stop();
