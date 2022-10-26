@@ -6,7 +6,7 @@ import 'package:flutter_rust_bridge_benchmark/walltime.dart';
 
 /// use milliseconds on Dart web
 class WindowPerformance implements WallTime {
-  late double _starts = window.performance.now();
+  double _starts = window.performance.now();
 
   @override
   void start() {}
