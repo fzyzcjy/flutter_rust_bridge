@@ -15,7 +15,7 @@ class WindowPerformance implements WallTime {
   void stop() {}
 
   @override
-  double get timeElapsed => _starts - window.performance.now();
+  double get timeElapsed => window.performance.now() - _starts;
 
   @override
   Unit get unit => Unit.Milliseconds;
