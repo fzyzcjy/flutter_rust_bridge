@@ -14,6 +14,19 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
         match &self.ir {
             IrTypeSyncReturn::Primitive(ref primitive) => match primitive {
                 IrTypePrimitive::Bool => "return uint8ListToBool(raw);".into(),
+                // todo
+                IrTypePrimitive::Usize => r#"
+                    final dataView = ByteData.view(raw.buffer);
+                    switch (raw.length) {
+                        case 8: {
+                          return dataView.getUint64(0);
+                        }
+                        case 4: {
+                          return dataView.getUint32(0);
+                        }
+                        default: {throw "Unknow lenght pointer.";}
+                      }"#
+                .into(),
                 primitive => {
                     let primitive_name = match primitive {
                         IrTypePrimitive::U8 => "Uint8",
@@ -26,6 +39,13 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
                         IrTypePrimitive::I64 => "Int64",
                         IrTypePrimitive::F32 => "Float32",
                         IrTypePrimitive::F64 => "Float64",
+                        IrTypePrimitive::Unit => {
+                            return format!(
+                                r#"
+                                return;
+                                "#,
+                            );
+                        }
                         _ => panic!(
                             "SyncReturn generator for Dart: type {} is not supported",
                             primitive.rust_api_type()

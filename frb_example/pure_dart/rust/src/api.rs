@@ -1049,4 +1049,8 @@ pub fn create_nested_opaque() -> OpaqueNested {
     }
 }
 
+// pub fn sync_void() -> Result<SyncReturn<Option<usize>>> {
+//     Ok(SyncReturn(Some(42)))
+// }
+
 pub fn run_nested_opaque(opaque: OpaqueNested) {}
