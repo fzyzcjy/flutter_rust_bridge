@@ -164,7 +164,7 @@ gen-help:
     dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
 
 runner:
-    (cd frb_dart && dart run build_runner build --delete-conflicting-outputs)
+    (cd frb_dart && dart pub get && dart run build_runner build --delete-conflicting-outputs)
 
 bench-simple *args="": runner
     (mkdir -p book/benches)
