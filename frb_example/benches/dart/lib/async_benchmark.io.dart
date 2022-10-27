@@ -24,8 +24,7 @@ abstract class AsyncBenchmark extends AsyncBencher {
 
   @override
   Future<void> save(Sample sample) async {
-    final file = File('../../../book/benches/$outputFilename.txt')
-      ..create(recursive: true);
+    final file = File('../../../book/benches/$outputFilename.txt')..create(recursive: true);
     final content = file.existsSync() ? file.readAsStringSync() : '';
     if (content.isEmpty) {
       await file.writeAsString('[${json.encode(sample.toJson())}]');
