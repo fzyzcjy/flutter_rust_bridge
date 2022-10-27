@@ -1,5 +1,5 @@
 // ignore: unused_import
-import 'dart:html';
+import 'dart:convert';
 
 import 'package:flutter_rust_bridge_benchmark/walltime.dart';
 import 'package:flutter_rust_bridge_benchmark/walltime.web.dart';
@@ -22,6 +22,6 @@ abstract class AsyncBenchmark extends AsyncBencher {
 
   @override
   Future<void> save(Sample sample) async {
-    print(sample.toJson().toString());
+    print(json.encode(sample));
   }
 }
