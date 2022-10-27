@@ -31,7 +31,6 @@
   - [WASM](feature/wasm.md)
   - [Miscellaneous](feature/misc.md)
   - [Logging](feature/logging.md)
-  - [Benchmarks](feature/../benchmarks.md)
 
 # Part II: User Guide
 
