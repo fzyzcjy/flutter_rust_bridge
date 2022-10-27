@@ -1618,7 +1618,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 // Section: wire2api
 
   BoxDartDebug _wire2api_BoxDartDebug(dynamic raw) {
-    return BoxDartDebug.fromRaw(raw[0], raw[1], raw[2]);
+    return BoxDartDebug.fromRaw(raw[0], raw[1], raw[2], raw[3]);
   }
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {
@@ -1642,15 +1642,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   I32 _wire2api_I32(dynamic raw) {
-    return I32.fromRaw(raw[0], raw[1], raw[2]);
+    return I32.fromRaw(raw[0], raw[1], raw[2], raw[3]);
   }
 
   MutexOpaqueStruct _wire2api_MutexOpaqueStruct(dynamic raw) {
-    return MutexOpaqueStruct.fromRaw(raw[0], raw[1], raw[2]);
+    return MutexOpaqueStruct.fromRaw(raw[0], raw[1], raw[2], raw[3]);
   }
 
   OpaqueStruct _wire2api_OpaqueStruct(dynamic raw) {
-    return OpaqueStruct.fromRaw(raw[0], raw[1], raw[2]);
+    return OpaqueStruct.fromRaw(raw[0], raw[1], raw[2], raw[3]);
   }
 
   OpaqueStructArray2 _wire2api_OpaqueStruct_array_2(dynamic raw) {
@@ -1662,7 +1662,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   RwLockOpaqueStruct _wire2api_RwLockOpaqueStruct(dynamic raw) {
-    return RwLockOpaqueStruct.fromRaw(raw[0], raw[1], raw[2]);
+    return RwLockOpaqueStruct.fromRaw(raw[0], raw[1], raw[2], raw[3]);
   }
 
   String _wire2api_String(dynamic raw) {

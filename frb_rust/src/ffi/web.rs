@@ -1,5 +1,8 @@
 use std::{ffi::c_void, iter::FromIterator, mem, ops, sync::Arc};
 
+use super::drop_arc;
+use super::share_arc;
+
 use super::DartAbi;
 use super::IntoDart;
 use super::MessagePort;
@@ -458,7 +461,7 @@ impl<T: DartSafe> Opaque<T> {
 #[wasm_bindgen]
 pub fn drop_arc_caller(ptr: *const c_void, ptr_drop_fn: *const c_void) {
     unsafe {
-        let drop_fn: fn(*const c_void) = mem::transmute(ptr_drop_fn);
+        let drop_fn: extern "C" fn(*const c_void) = mem::transmute(ptr_drop_fn);
         drop_fn(ptr);
     }
 }
@@ -472,45 +475,18 @@ pub fn drop_arc_caller(ptr: *const c_void, ptr_drop_fn: *const c_void) {
 #[wasm_bindgen]
 pub fn share_arc_caller(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
     unsafe {
-        let share_fn: fn(*const c_void) -> *const c_void = mem::transmute(ptr_share_fn);
+        let share_fn: extern "C" fn(*const c_void) -> *const c_void = mem::transmute(ptr_share_fn);
         share_fn(ptr)
-    }
-}
-
-/// Dropper opaque data of this opaque data.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-fn drop_arc<T>(ptr: *const c_void) {
-    unsafe {
-        Arc::<T>::decrement_strong_count(ptr as _);
-    }
-}
-
-/// Equivalent to a [Arc::clone()], but directly in terms of raw pointers.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-fn share_arc<T>(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<T>::increment_strong_count(ptr as _);
-        ptr
     }
 }
 
 impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
         let ptr = Arc::into_raw(self.ptr).into_dart();
-        let drop: fn(*const c_void) = drop_arc::<T>;
-        let share: fn(*const c_void) -> *const c_void = share_arc::<T>;
-        vec![
-            ptr,
-            (drop as usize).into_dart(),
-            (share as usize).into_dart(),
-        ]
-        .into_dart()
+        let drop = drop_arc::<T> as usize;
+        let share = share_arc::<T> as usize;
+        let size = mem::size_of::<T>();
+        vec![ptr, drop.into_dart(), share.into_dart(), size.into_dart()].into_dart()
     }
 }
 

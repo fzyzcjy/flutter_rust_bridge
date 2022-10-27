@@ -45,7 +45,7 @@ class FrbOpaque implements Finalizable {
       _share;
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int ptr, int drop, int share) {
+  FrbOpaque.unsafe(int ptr, int drop, int share, int size) {
     assert(ptr > 0);
     assert(drop > 0);
     assert(share > 0);
@@ -53,7 +53,7 @@ class FrbOpaque implements Finalizable {
     _drop = ffi.Pointer.fromAddress(drop);
     _share = ffi.Pointer.fromAddress(share);
     _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
-    _finalizer.attach(this, _ptr.cast(), detach: this);
+    _finalizer.attach(this, _ptr.cast(), detach: this, externalSize: size);
   }
 
   /// The native finalizer runs [_drop] on [_ptr]

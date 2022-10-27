@@ -7,6 +7,8 @@ pub type DartAbi = allo_isolate::ffi::DartCObject;
 pub trait IntoDart {
     fn into_dart(self) -> DartAbi;
 }
+use std::{ffi::c_void, sync::Arc};
+
 #[cfg(not(wasm))]
 pub use allo_isolate::IntoDart;
 
@@ -54,4 +56,29 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
         .chunks(UUID_SIZE_IN_BYTES)
         .map(wire2api_uuid_ref)
         .collect::<Vec<uuid::Uuid>>()
+}
+
+/// Equivalent to a [`Arc::clone()`], but directly in terms of raw pointers.
+///
+/// # Safety
+///
+/// This function should never be called manually.
+extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<T>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+/// Dropper opaque data.
+///
+/// # Safety
+///
+/// This function should never be called manually.
+extern "C" fn drop_arc<T>(ptr: *const c_void) {
+    // Dart has ownership of this copy of Arc, and can only share out clones,
+    // so this is safe to call exactly once.
+    unsafe {
+        Arc::<T>::decrement_strong_count(ptr as _);
+    }
 }

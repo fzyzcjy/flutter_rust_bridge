@@ -105,7 +105,7 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
 }
 
 @JS("wasm_bindgen.drop_arc_caller")
-external void _dropArcCaller(int ptr, int dropPtr, int sharePtr);
+external void _dropArcCaller(int ptr, int dropPtr);
 @JS("wasm_bindgen.share_arc_caller")
 external int _shareArcCaller(int ptr, int sharePtr);
 
@@ -123,11 +123,12 @@ class FrbOpaque {
 
   /// Finalizer of an opaque type at the provided pointers.
   static final Finalizer<List<int>> _finalizer = Finalizer((obj) {
-    _dropArcCaller(obj[0], obj[1], obj[2]);
+    _dropArcCaller(obj[0], obj[1]);
   });
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int ptr, int drop, int share) {
+  // ignore: no_leading_underscores_for_local_identifiers
+  FrbOpaque.unsafe(int ptr, int drop, int share, int _size) {
     assert(ptr > 0);
     assert(drop > 0);
     assert(share > 0);
@@ -150,7 +151,7 @@ class FrbOpaque {
   void dispose() {
     if (!isStale()) {
       _finalizer.detach(this);
-      _dropArcCaller(_ptr, _drop, _share);
+      _dropArcCaller(_ptr, _drop);
       _ptr = 0;
     }
   }

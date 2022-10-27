@@ -1,5 +1,7 @@
-use std::{ops, ptr, sync::Arc};
+use std::{mem, ops, sync::Arc};
 
+use super::drop_arc;
+use super::share_arc;
 pub use super::DartAbi;
 pub use super::MessagePort;
 pub use allo_isolate::*;
@@ -90,44 +92,20 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-// TODO: move to mod and reuse for both io and web
-/// Dropper opaque data.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-extern "C" fn drop_arc<T>(ptr: ptr::NonNull<T>) {
-    // Dart has ownership of this copy of Arc, and can only share out clones,
-    // so this is safe to call exactly once.
-    unsafe {
-        Arc::decrement_strong_count(ptr.as_ptr());
-    }
-}
-
-// TODO: move to mod and reuse for both io and web
-/// Equivalent to a [`Arc::clone()`], but directly in terms of raw pointers.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-extern "C" fn share_arc<T>(ptr: ptr::NonNull<T>) -> ptr::NonNull<T> {
-    unsafe {
-        Arc::increment_strong_count(ptr.as_ptr());
-        ptr
-    }
-}
-
-// TODO: move to mod and reuse for both io and web
-type CArcDropper<T> = extern "C" fn(ptr::NonNull<T>);
-type CArcShare<T> = extern "C" fn(ptr::NonNull<T>) -> ptr::NonNull<T>;
-
 impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
     fn from(value: Opaque<T>) -> Self {
         let ptr = Arc::into_raw(value.ptr);
-        let drop = drop_arc::<T> as CArcDropper<T>;
-        let share = share_arc::<T> as CArcShare<T>;
+        let drop = drop_arc::<T> as usize;
+        let share = share_arc::<T> as usize;
+        let size = mem::size_of::<T>();
 
-        vec![ptr.into_dart(), drop.into_dart(), share.into_dart()].into_dart()
+        vec![
+            ptr.into_dart(),
+            drop.into_dart(),
+            share.into_dart(),
+            size.into_dart(),
+        ]
+        .into_dart()
     }
 }
 

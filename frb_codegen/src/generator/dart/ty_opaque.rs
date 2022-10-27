@@ -28,7 +28,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         format!(
-            "return {}.fromRaw(raw[0], raw[1], raw[2]);",
+            "return {}.fromRaw(raw[0], raw[1], raw[2], raw[3]);",
             self.ir.dart_api_type()
         )
     }
@@ -36,7 +36,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn structs(&self) -> String {
         format!(
             "@sealed class {0} extends FrbOpaque {{
-                {0}.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
+                {0}.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
             }}",
             self.ir.dart_api_type()
         )
