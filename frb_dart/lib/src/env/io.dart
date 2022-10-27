@@ -28,4 +28,4 @@ final isWeb = readBoolEnv('dart.library.html');
 final int? portEnv = Platform.environment['PORT'] != null
     ? int.parse(Platform.environment['PORT']!)
     : null;
-final useOpenDylib = readBoolEnv('SILICON');
+final silicon = readBoolEnv('SILICON');

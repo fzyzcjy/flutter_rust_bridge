@@ -8,6 +8,6 @@ export 'bridge_generated.io.dart';
 
 FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(String path) {
   return FlutterRustBridgeExampleSingleBlockTestImpl(
-    (Platform.isMacOS || Platform.isIOS) && !useOpenDylib ? DynamicLibrary.executable() : DynamicLibrary.open(path),
+    (Platform.isMacOS || Platform.isIOS) && !silicon ? DynamicLibrary.executable() : DynamicLibrary.open(path),
   );
 }

@@ -3,4 +3,4 @@
 const isWeb = bool.fromEnvironment('dart.library.html');
 final int? portEnv =
     const int.fromEnvironment('PORT') != 0 ? int.fromEnvironment('PORT') : null;
-const useOpenDylib = bool.fromEnvironment('SILICON');
+const silicon = bool.fromEnvironment('SILICON');
