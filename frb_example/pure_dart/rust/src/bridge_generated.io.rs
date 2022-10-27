@@ -477,6 +477,16 @@ pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNes
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_option() -> support::WireSyncReturnStruct {
+    wire_sync_option_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_option_null() -> support::WireSyncReturnStruct {
+    wire_sync_option_null_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

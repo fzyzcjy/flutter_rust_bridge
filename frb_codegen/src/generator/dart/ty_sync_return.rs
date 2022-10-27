@@ -11,7 +11,7 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        match self.ir {
+        let not_opaque_body = |ir: &IrTypeSyncReturn| match ir {
             IrTypeSyncReturn::Primitive(ref primitive) => match primitive {
                 IrTypePrimitive::Bool => "return uint8ListToBool(raw);".into(),
                 primitive => {
@@ -33,15 +33,24 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
                     };
                     format!(
                         r#"
-                        final dataView = ByteData.view(raw.buffer);
-                        return dataView.get{primitive_name}(0);
-                        "#,
+                            final dataView = ByteData.view(raw.buffer);
+                            return dataView.get{primitive_name}(0);
+                            "#,
                         primitive_name = primitive_name
                     )
                 }
             },
             IrTypeSyncReturn::String => "return utf8.decode(raw);".into(),
             IrTypeSyncReturn::VecU8 => "return raw;".into(),
+            IrTypeSyncReturn::Option(_) => "".into(),
+        };
+        if let IrTypeSyncReturn::Option(ty) = &self.ir {
+            if let IrTypeSyncReturn::Option(_) = **ty {
+                panic!("Nested option is not suppored.")
+            }
+            format!("if (raw == null) return null; {}", not_opaque_body(ty))
+        } else {
+            not_opaque_body(&self.ir)
         }
     }
 }

@@ -192,6 +192,21 @@ impl<'a> TypeParser<'a> {
                         IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::VecU8)),
                         _ => None,
                     },
+                    Some(Optional(option)) => match *option.inner {
+                        Primitive(primitive) => Some(SyncReturn(IrTypeSyncReturn::Option(
+                            Box::new(IrTypeSyncReturn::Primitive(primitive)),
+                        ))),
+                        Delegate(IrTypeDelegate::String) => Some(SyncReturn(
+                            IrTypeSyncReturn::Option(Box::new(IrTypeSyncReturn::String)),
+                        )),
+                        PrimitiveList(primitive) => match primitive.primitive {
+                            IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::Option(
+                                Box::new(IrTypeSyncReturn::VecU8),
+                            ))),
+                            _ => None,
+                        },
+                        _ => None,
+                    },
                     _ => None,
                 },
                 "Vec" => match *generic {

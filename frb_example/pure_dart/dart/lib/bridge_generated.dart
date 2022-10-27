@@ -1471,6 +1471,36 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  String? syncOption({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option(),
+      parseSuccessData: _wire2api_SyncReturn_Option_String,
+      constMeta: kSyncOptionConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option",
+        argNames: [],
+      );
+
+  String? syncOptionNull({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_null(),
+      parseSuccessData: _wire2api_SyncReturn_Option_String,
+      constMeta: kSyncOptionNullConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionNullConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_null",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -1677,64 +1707,69 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return SumWithArray3((raw as List<dynamic>).map(_wire2api_sum_with).toList());
   }
 
-  String _wire2api_SyncReturn_String(Uint8List raw) {
+  String? _wire2api_SyncReturn_Option_String(dynamic raw) {
+    if (raw == null) return null;
     return utf8.decode(raw);
   }
 
-  Uint8List _wire2api_SyncReturn_Uint8List(Uint8List raw) {
+  String _wire2api_SyncReturn_String(dynamic raw) {
+    return utf8.decode(raw);
+  }
+
+  Uint8List _wire2api_SyncReturn_Uint8List(dynamic raw) {
     return raw;
   }
 
-  bool _wire2api_SyncReturn_bool(Uint8List raw) {
+  bool _wire2api_SyncReturn_bool(dynamic raw) {
     return uint8ListToBool(raw);
   }
 
-  double _wire2api_SyncReturn_f32(Uint8List raw) {
+  double _wire2api_SyncReturn_f32(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getFloat32(0);
   }
 
-  double _wire2api_SyncReturn_f64(Uint8List raw) {
+  double _wire2api_SyncReturn_f64(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getFloat64(0);
   }
 
-  int _wire2api_SyncReturn_i16(Uint8List raw) {
+  int _wire2api_SyncReturn_i16(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getInt16(0);
   }
 
-  int _wire2api_SyncReturn_i32(Uint8List raw) {
+  int _wire2api_SyncReturn_i32(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getInt32(0);
   }
 
-  int _wire2api_SyncReturn_i64(Uint8List raw) {
+  int _wire2api_SyncReturn_i64(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getInt64(0);
   }
 
-  int _wire2api_SyncReturn_i8(Uint8List raw) {
+  int _wire2api_SyncReturn_i8(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getInt8(0);
   }
 
-  int _wire2api_SyncReturn_u16(Uint8List raw) {
+  int _wire2api_SyncReturn_u16(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint16(0);
   }
 
-  int _wire2api_SyncReturn_u32(Uint8List raw) {
+  int _wire2api_SyncReturn_u32(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint32(0);
   }
 
-  int _wire2api_SyncReturn_u64(Uint8List raw) {
+  int _wire2api_SyncReturn_u64(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint64(0);
   }
 
-  int _wire2api_SyncReturn_u8(Uint8List raw) {
+  int _wire2api_SyncReturn_u8(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint8(0);
   }

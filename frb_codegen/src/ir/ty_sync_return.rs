@@ -5,6 +5,7 @@ use crate::{ir::*, target::Target};
 /// can be parsed by `executeSync` function in basic.dart.
 #[derive(Debug, Clone)]
 pub enum IrTypeSyncReturn {
+    Option(Box<IrTypeSyncReturn>),
     Primitive(IrTypePrimitive),
     String,
     VecU8,
@@ -20,6 +21,12 @@ impl IrTypeTrait for IrTypeSyncReturn {
             IrTypeSyncReturn::Primitive(_) => {
                 // We use Rust API type here because some primitive types in Dart share the same API type.
                 "SyncReturn_".to_owned() + &self.get_inner().rust_api_type()
+            }
+            IrTypeSyncReturn::Option(_) => {
+                // We use Rust API type here because some primitive types in Dart share the same API type.
+                let mut temp = self.get_inner().dart_api_type();
+                temp.pop();
+                "SyncReturn_Option_".to_owned() + &temp
             }
             _ => "SyncReturn_".to_owned() + &self.get_inner().dart_api_type(),
         }
@@ -46,7 +53,7 @@ impl IrTypeTrait for IrTypeSyncReturn {
     }
 
     fn dart_param_type(&self) -> &'static str {
-        "Uint8List"
+        "dynamic"
     }
 }
 
@@ -57,6 +64,9 @@ impl IrTypeSyncReturn {
             IrTypeSyncReturn::String => IrType::Delegate(IrTypeDelegate::String),
             IrTypeSyncReturn::VecU8 => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
+            }),
+            IrTypeSyncReturn::Option(o) => IrType::Optional(IrTypeOptional {
+                inner: Box::new(o.get_inner()),
             }),
         }
     }

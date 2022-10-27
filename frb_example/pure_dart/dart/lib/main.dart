@@ -875,6 +875,13 @@ void main(List<String> args) async {
           "})");
       data.second.dispose();
     });
+
+    test('sync option', () async {
+      var data = api.syncOption();
+      var data2 = api.syncOptionNull();
+      expect(data == null, false);
+      expect(data2 == null, true);
+    });
   });
 }
 
