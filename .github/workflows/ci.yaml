@@ -128,7 +128,7 @@ jobs:
             ~/.cargo/git/db/
             target
             frb_example/pure_dart/dart/.local-chromium
-          key: ${{ runner.os }}-cargo-dart-web-tests-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Install crates
         if: steps.test-cache.outputs.cache-hit != 'true'
         run: |
