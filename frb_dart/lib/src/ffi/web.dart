@@ -104,10 +104,10 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
 
-@JS("wasm_bindgen.drop_opaque")
-external void _dropOpaque(int ptr, int dropPtr, int sharePtr);
-@JS("wasm_bindgen.share_opaque")
-external int _shareOpaque(int ptr, int sharePtr);
+@JS("wasm_bindgen.drop_arc_caller")
+external void _dropArcCaller(int ptr, int dropPtr, int sharePtr);
+@JS("wasm_bindgen.share_arc_caller")
+external int _shareArcCaller(int ptr, int sharePtr);
 
 /// An opaque pointer to a Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
@@ -123,7 +123,7 @@ class FrbOpaque {
 
   /// Finalizer of an opaque type at the provided pointers.
   static final Finalizer<List<int>> _finalizer = Finalizer((obj) {
-    _dropOpaque(obj[0], obj[1], obj[2]);
+    _dropArcCaller(obj[0], obj[1], obj[2]);
   });
 
   /// This constructor should never be called manually.
@@ -150,7 +150,7 @@ class FrbOpaque {
   void dispose() {
     if (!isStale()) {
       _finalizer.detach(this);
-      _dropOpaque(_ptr, _drop, _share);
+      _dropArcCaller(_ptr, _drop, _share);
       _ptr = 0;
     }
   }
@@ -158,7 +158,7 @@ class FrbOpaque {
   /// Returns pointer with shares ownership if Dart owner else throws erroe.
   static dynamic share(FrbOpaque ptr) {
     if (!ptr.isStale()) {
-      return _shareOpaque(ptr._ptr, ptr._share);
+      return _shareArcCaller(ptr._ptr, ptr._share);
     } else {
       throw "Use after dispose.";
     }

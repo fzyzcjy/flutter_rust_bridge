@@ -1,11 +1,11 @@
+use std::{ffi::c_void, iter::FromIterator, mem, ops, sync::Arc};
+
 use super::DartAbi;
 use super::IntoDart;
 use super::MessagePort;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
-use std::ffi::c_void;
-use std::iter::FromIterator;
 pub use wasm_bindgen;
 pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
@@ -13,8 +13,8 @@ pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
 pub use crate::wasm_bindgen_src::transfer::*;
+
 use crate::DartSafe;
-use std::sync::Arc;
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
@@ -383,19 +383,6 @@ pub struct Timestamp {
     pub ns: u32,
 }
 
-#[cfg(test)]
-#[cfg(feature = "chrono")]
-mod tests {
-    #[test]
-    fn wire2api() {
-        // input in milliseconds
-        let input: i64 = 3_496_567;
-        let super::Timestamp { s, ns } = super::wire2api_timestamp(input);
-        assert_eq!(s, 3_496);
-        assert_eq!(ns, 567_000_000);
-    }
-}
-
 /// A wrapper to transfer ownership of T to Dart.
 ///
 /// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
@@ -405,24 +392,31 @@ mod tests {
 /// Extensions for [`sync::RwLock`] and [`sync::Mutex`] are provided.
 ///
 /// ## Naming the inner type
-/// When an `Opaque<T>` is transformed into a Dart type, T's string representation
-/// undergoes some transformations to become a valid Dart type:
+///
+/// When an `Opaque<T>` is transformed into a Dart type, T's string
+/// representation undergoes some transformations to become a valid Dart type:
 /// - Rust keywords (dyn, 'static, DartSafe, etc.) are automatically removed.
 /// - ASCII alphanumerics are kept, all other characters are ignored.
 ///
 /// ## Trait objects
-/// Trait objects may be put behind opaque pointers, but they must implement [`DartSafe`] to
-/// be safely sent to Dart. For example, this declaration can be used across the
-/// FFI border:
+///
+/// Trait objects may be put behind opaque pointers, but they must implement
+/// [`DartSafe`] to be safely sent to Dart. For example, this declaration can
+/// be used across the FFI border:
+///
 /// ```rust
 /// use flutter_rust_bridge::*;
 /// use std::fmt::Debug;
 /// use std::panic::{UnwindSafe, RefUnwindSafe};
-/// // Rust does not allow multiple non-auto traits in trait objects, so
-/// // this is one workaround.
+///
+/// // Rust does not allow multiple non-auto traits in trait objects, so this
+/// // is one workaround.
 /// pub trait DartDebug: DartSafe + Debug {}
+///
 /// impl<T: DartSafe + Debug> DartDebug for T {}
+///
 /// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
+///
 /// // creating a DebugWrapper using the opaque_dyn macro
 /// let wrap = DebugWrapper(opaque_dyn!("foobar"));
 /// // it's possible to name it directly
@@ -434,7 +428,7 @@ pub struct Opaque<T: ?Sized + DartSafe> {
     pub(crate) ptr: Arc<T>,
 }
 
-impl<T: ?Sized + DartSafe> std::ops::Deref for Opaque<T> {
+impl<T: ?Sized + DartSafe> ops::Deref for Opaque<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -462,23 +456,23 @@ impl<T: DartSafe> Opaque<T> {
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub fn drop_opaque(ptr: *const c_void, ptr_drop_fn: *const c_void) {
+pub fn drop_arc_caller(ptr: *const c_void, ptr_drop_fn: *const c_void) {
     unsafe {
-        let drop_fn: fn(*const c_void) = std::mem::transmute(ptr_drop_fn);
+        let drop_fn: fn(*const c_void) = mem::transmute(ptr_drop_fn);
         drop_fn(ptr);
     }
 }
 
-/// Equivalent to a [Arc::clone()],
-/// but direcly in terms of raw pointers by type specific function.
+/// Equivalent to a [Arc::clone()], but directly in terms of raw pointers by
+/// type specific function.
 ///
 /// # Safety
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub fn share_opaque(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
+pub fn share_arc_caller(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
     unsafe {
-        let share_fn: fn(*const c_void) -> *const c_void = std::mem::transmute(ptr_share_fn);
+        let share_fn: fn(*const c_void) -> *const c_void = mem::transmute(ptr_share_fn);
         share_fn(ptr)
     }
 }
@@ -494,7 +488,7 @@ fn drop_arc<T>(ptr: *const c_void) {
     }
 }
 
-/// Equivalent to a [Arc::clone()], but direcly in terms of raw pointers.
+/// Equivalent to a [Arc::clone()], but directly in terms of raw pointers.
 ///
 /// # Safety
 ///
@@ -539,11 +533,15 @@ impl<const N: usize, T: DartSafe> IntoDart for [Opaque<T>; N] {
 /// support custom DSTs on stable.
 ///
 /// Example:
+///
 /// ```rust
 /// use std::fmt::Debug;
 /// use flutter_rust_bridge::*;
+///
 /// pub trait MyDebug: DartSafe + Debug {}
+///
 /// impl<T: DartSafe + Debug> MyDebug for T {}
+///
 /// let opaque: Opaque<Box<dyn MyDebug>> = opaque_dyn!("foobar");
 /// ```
 #[macro_export]
@@ -551,4 +549,17 @@ macro_rules! opaque_dyn {
     ($ex:expr) => {
         Opaque::new(std::boxed::Box::new($ex))
     };
+}
+
+#[cfg(test)]
+#[cfg(feature = "chrono")]
+mod tests {
+    #[test]
+    fn wire2api() {
+        // input in milliseconds
+        let input: i64 = 3_496_567;
+        let super::Timestamp { s, ns } = super::wire2api_timestamp(input);
+        assert_eq!(s, 3_496);
+        assert_eq!(ns, 567_000_000);
+    }
 }
