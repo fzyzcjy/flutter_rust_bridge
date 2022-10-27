@@ -69,6 +69,8 @@ pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
 
 // Section: allocate functions
 
+// Section: deallocate functions
+
 // Section: impl Wire2Api
 
 impl Wire2Api<String> for String {

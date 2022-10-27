@@ -322,8 +322,16 @@ impl ErrorHandler for ReportDartErrorHandler {
 fn wire_sync_from_data(data: WireSyncReturnData, success: bool) -> WireSyncReturnStruct {
     #[cfg(not(wasm))]
     {
-        let (ptr, len) = crate::support::into_leak_vec_ptr(data.0);
-        WireSyncReturnStruct { ptr, len, success }
+        if let Some(data) = data.0 {
+            let (ptr, len) = crate::support::into_leak_vec_ptr(data);
+            WireSyncReturnStruct { ptr, len, success }
+        } else {
+            WireSyncReturnStruct {
+                ptr: 0 as _,
+                len: 0,
+                success,
+            }
+        }
     }
 
     #[cfg(wasm)]

@@ -32,7 +32,13 @@ class WireSyncReturnStruct extends ffi.Struct {
   @ffi.Uint8()
   external int success;
 
-  Uint8List get buffer => Uint8List.fromList(ptr.asTypedList(len));
+  Uint8List? get buffer {
+    if (ptr.address == 0) {
+      return null;
+    }
+    return Uint8List.fromList(ptr.asTypedList(len));
+  }
+
   bool get isSuccess => success > 0;
 }
 

@@ -2597,6 +2597,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_run_nested_opaque =
       _wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueNested>)>();
 
+  WireSyncReturnStruct wire_sync_option() {
+    return _wire_sync_option();
+  }
+
+  late final _wire_sync_optionPtr = _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option');
+  late final _wire_sync_option = _wire_sync_optionPtr.asFunction<WireSyncReturnStruct Function()>();
+
+  WireSyncReturnStruct wire_sync_option_null() {
+    return _wire_sync_option_null();
+  }
+
+  late final _wire_sync_option_nullPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_null');
+  late final _wire_sync_option_null = _wire_sync_option_nullPtr.asFunction<WireSyncReturnStruct Function()>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

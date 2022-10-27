@@ -1372,6 +1372,26 @@ fn wire_run_nested_opaque_impl(
         },
     )
 }
+fn wire_sync_option_impl() -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_option",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || sync_option(),
+    )
+}
+fn wire_sync_option_null_impl() -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_option_null",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || sync_option_null(),
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,

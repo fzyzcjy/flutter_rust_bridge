@@ -209,6 +209,8 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
 
 // Section: allocate functions
 
+// Section: deallocate functions
+
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {

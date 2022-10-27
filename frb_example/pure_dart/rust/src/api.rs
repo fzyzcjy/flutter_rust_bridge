@@ -1054,3 +1054,11 @@ pub fn create_nested_opaque() -> OpaqueNested {
 // }
 
 pub fn run_nested_opaque(opaque: OpaqueNested) {}
+
+pub fn sync_option() -> Result<SyncReturn<Option<String>>> {
+    Ok(SyncReturn(Some("42".to_owned())))
+}
+
+pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
+    Ok(SyncReturn(None))
+}

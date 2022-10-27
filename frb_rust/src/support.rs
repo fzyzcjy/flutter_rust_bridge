@@ -79,7 +79,7 @@ pub struct WireSyncReturnStruct {
 pub type WireSyncReturnStruct = wasm_bindgen::JsValue;
 
 /// Safe version of [`WireSyncReturnStruct`].
-pub struct WireSyncReturnData(pub(crate) Vec<u8>);
+pub struct WireSyncReturnData(pub(crate) Option<Vec<u8>>);
 
 impl From<()> for WireSyncReturnData {
     fn from(_: ()) -> Self {
@@ -89,7 +89,13 @@ impl From<()> for WireSyncReturnData {
 
 impl From<Vec<u8>> for WireSyncReturnData {
     fn from(data: Vec<u8>) -> Self {
-        WireSyncReturnData(data)
+        WireSyncReturnData(Some(data))
+    }
+}
+
+impl<T: Into<Vec<u8>>> From<Option<T>> for WireSyncReturnData {
+    fn from(data: Option<T>) -> Self {
+        WireSyncReturnData(data.map(|v| v.into()))
     }
 }
 
