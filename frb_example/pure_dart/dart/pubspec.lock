@@ -476,21 +476,21 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.21.6"
+    version: "1.21.7"
   test_api:
     dependency: transitive
     description:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.14"
+    version: "0.4.15"
   test_core:
     dependency: "direct main"
     description:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.18"
+    version: "0.4.19"
   timing:
     dependency: transitive
     description:
