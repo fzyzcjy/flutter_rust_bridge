@@ -76,6 +76,8 @@ jobs:
         uses: extractions/setup-just@v1
       - name: Run benchmark
         run: just bench-simple
+      - name: Stash potential changes
+        run: git add . && git stash save
 
       # Update benchmark and deploy to GitHub Pages
       - name: Store benchmark result
