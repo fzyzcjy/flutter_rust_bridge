@@ -509,6 +509,11 @@ pub extern "C" fn wire_sync_option_null() -> support::WireSyncReturnStruct {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_option_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_option_opaque_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

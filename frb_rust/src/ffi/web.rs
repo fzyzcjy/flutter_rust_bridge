@@ -519,16 +519,30 @@ impl<T> From<Opaque<T>> for WireSyncReturnData {
                 Arc::<T>::increment_strong_count(ptr as *mut T);
                 ptr
             })));
-        WireSyncReturnData(
+        WireSyncReturnData(Some(
             [
                 ptr.to_be_bytes(),
                 (drop as usize).to_be_bytes(),
                 (lend as usize).to_be_bytes(),
             ]
             .concat(),
-        )
+        ))
     }
 }
+
+// todo
+// impl<T> From<Option<Opaque<T>>> for WireSyncReturnData {
+//     fn from(data: Option<Opaque<T>>) -> Self {
+//         if let Some(o) = data {
+//             let ptr = Arc::into_raw(o.ptr) as usize;
+//             let drop = drop_arc::<T> as CArcDropper<T> as usize;
+//             let lend = share_arc::<T> as CArcShare<T> as usize;
+//             WireSyncReturnData(Some([ptr.to_be_bytes(), drop.to_be_bytes(), lend.to_be_bytes()].concat()))
+//         } else {
+//             WireSyncReturnData(None)
+//         }
+//     }
+// }
 
 impl<T> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {

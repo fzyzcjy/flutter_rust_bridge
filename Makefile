@@ -6,7 +6,7 @@ install.frb:
 
 # rebuild all and run
 farsh: 
-	@make codegen
+# @make codegen
 	@make rust.build
 	@make dart.run
 

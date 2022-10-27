@@ -83,7 +83,7 @@ pub struct WireSyncReturnData(pub(crate) Option<Vec<u8>>);
 
 impl From<()> for WireSyncReturnData {
     fn from(_: ()) -> Self {
-        WireSyncReturnData(vec![])
+        WireSyncReturnData(Some(vec![]))
     }
 }
 

@@ -84,7 +84,24 @@ impl<T> From<Opaque<T>> for WireSyncReturnData {
         let ptr = Arc::into_raw(data.ptr) as usize;
         let drop = drop_arc::<T> as CArcDropper<T> as usize;
         let lend = share_arc::<T> as CArcShare<T> as usize;
-        WireSyncReturnData([ptr.to_be_bytes(), drop.to_be_bytes(), lend.to_be_bytes()].concat())
+        WireSyncReturnData(Some(
+            [ptr.to_be_bytes(), drop.to_be_bytes(), lend.to_be_bytes()].concat(),
+        ))
+    }
+}
+
+impl<T> From<Option<Opaque<T>>> for WireSyncReturnData {
+    fn from(data: Option<Opaque<T>>) -> Self {
+        if let Some(o) = data {
+            let ptr = Arc::into_raw(o.ptr) as usize;
+            let drop = drop_arc::<T> as CArcDropper<T> as usize;
+            let lend = share_arc::<T> as CArcShare<T> as usize;
+            WireSyncReturnData(Some(
+                [ptr.to_be_bytes(), drop.to_be_bytes(), lend.to_be_bytes()].concat(),
+            ))
+        } else {
+            WireSyncReturnData(None)
+        }
     }
 }
 

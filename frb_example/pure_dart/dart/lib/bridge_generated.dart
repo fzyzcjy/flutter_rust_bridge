@@ -1562,6 +1562,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  OpaqueStruct? syncOptionOpaque({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_opaque(),
+      parseSuccessData: _wire2api_SyncReturn_Option_OpaqueStruct,
+      constMeta: kSyncOptionOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_opaque",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -1770,6 +1785,88 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   SumWithArray3 _wire2api_SumWith_array_3(dynamic raw) {
     return SumWithArray3((raw as List<dynamic>).map(_wire2api_sum_with).toList());
+  }
+
+  OpaqueStruct _wire2api_SyncReturn_OpaqueStruct(dynamic raw) {
+    var pointBitLen = raw.length ~/ 3;
+    var ptrList = List.filled(pointBitLen, 0);
+    var dropList = List.filled(pointBitLen, 0);
+    var lendList = List.filled(pointBitLen, 0);
+
+    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
+    List.copyRange(dropList, 0, raw, pointBitLen, pointBitLen * 2);
+    List.copyRange(lendList, 0, raw, pointBitLen * 2);
+
+    int ptr = 0;
+    int drop = 0;
+    int lend = 0;
+
+    if (pointBitLen == 8) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint64(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint64(0);
+    } else if (pointBitLen == 4) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint32(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint32(0);
+    }
+
+    return OpaqueStruct.fromRaw(ptr, drop, lend);
+  }
+
+  OpaqueSyncStruct _wire2api_SyncReturn_OpaqueSyncStruct(dynamic raw) {
+    var pointBitLen = raw.length ~/ 3;
+    var ptrList = List.filled(pointBitLen, 0);
+    var dropList = List.filled(pointBitLen, 0);
+    var lendList = List.filled(pointBitLen, 0);
+
+    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
+    List.copyRange(dropList, 0, raw, pointBitLen, pointBitLen * 2);
+    List.copyRange(lendList, 0, raw, pointBitLen * 2);
+
+    int ptr = 0;
+    int drop = 0;
+    int lend = 0;
+
+    if (pointBitLen == 8) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint64(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint64(0);
+    } else if (pointBitLen == 4) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint32(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint32(0);
+    }
+
+    return OpaqueSyncStruct.fromRaw(ptr, drop, lend);
+  }
+
+  OpaqueStruct? _wire2api_SyncReturn_Option_OpaqueStruct(dynamic raw) {
+    if (raw == null) return null;
+    var pointBitLen = raw.length ~/ 3;
+    var ptrList = List.filled(pointBitLen, 0);
+    var dropList = List.filled(pointBitLen, 0);
+    var lendList = List.filled(pointBitLen, 0);
+
+    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
+    List.copyRange(dropList, 0, raw, pointBitLen, pointBitLen * 2);
+    List.copyRange(lendList, 0, raw, pointBitLen * 2);
+
+    int ptr = 0;
+    int drop = 0;
+    int lend = 0;
+
+    if (pointBitLen == 8) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint64(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint64(0);
+    } else if (pointBitLen == 4) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
+      drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint32(0);
+      lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint32(0);
+    }
+
+    return OpaqueStruct.fromRaw(ptr, drop, lend);
   }
 
   String? _wire2api_SyncReturn_Option_String(dynamic raw) {
@@ -2372,6 +2469,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       first: _wire2api_OpaqueStruct(arr[0]),
       second: _wire2api_OpaqueStruct(arr[1]),
     );
+  }
+
+  OpaqueStruct? _wire2api_opt_OpaqueStruct(dynamic raw) {
+    return raw == null ? null : _wire2api_OpaqueStruct(raw);
   }
 
   String? _wire2api_opt_String(dynamic raw) {

@@ -879,8 +879,10 @@ void main(List<String> args) async {
     test('sync option', () async {
       var data = api.syncOption();
       var data2 = api.syncOptionNull();
+      var data3 = api.syncOptionOpaque();
       expect(data == null, false);
       expect(data2 == null, true);
+      expect(data3 == null, false);
     });
   });
 
