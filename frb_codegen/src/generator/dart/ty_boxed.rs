@@ -26,8 +26,12 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                         "
                         final ptr = inner.new_{ident}_{context}();
                         try {{
-                        _api_fill_to_wire_{inner}(raw, ptr.ref);return ptr; }}
-                        catch(e) {{inner.drop_{ident}_{context}(ptr); rethrow;}}",
+                            _api_fill_to_wire_{inner}(raw, ptr.ref);
+                            return ptr;
+                        }} catch(e) {{
+                            inner.drop_{ident}_{context}(ptr);
+                            rethrow;
+                        }}",
                         ident = self.ir.safe_ident(),
                         context = self.context.config.block_index,
                         inner = self.ir.inner.safe_ident(),

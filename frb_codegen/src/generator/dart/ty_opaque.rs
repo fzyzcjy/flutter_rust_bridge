@@ -10,14 +10,14 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
         Acc {
             io: Some(format!(
                 "if (raw.isStale()) {{
-                    throw 'Use after dispose.';
+                    throw new StateError('Use after dispose.');
                   }}
                 final ptr = inner.new_{0}();
                 _api_fill_to_wire_{0}(raw, ptr);
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            wasm: Some("return FrbOpaque.share(raw);".to_string()),
+            wasm: Some("return FrbOpaque.share(raw);".to_owned()),
             ..Default::default()
         }
     }

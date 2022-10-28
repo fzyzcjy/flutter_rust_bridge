@@ -14,8 +14,8 @@ pub enum IrType {
     StructRef(IrTypeStructRef),
     Boxed(IrTypeBoxed),
     EnumRef(IrTypeEnumRef),
-    Opaque(IrTypeOpaque),
     SyncReturn(IrTypeSyncReturn),
+    Opaque(IrTypeOpaque),
 }
 
 impl IrType {

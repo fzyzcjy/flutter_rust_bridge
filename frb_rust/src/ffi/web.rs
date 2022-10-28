@@ -482,11 +482,18 @@ pub fn share_arc_caller(ptr: *const c_void, ptr_share_fn: *const c_void) -> *con
 
 impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
-        let ptr = Arc::into_raw(self.ptr).into_dart();
-        let drop = drop_arc::<T> as usize;
-        let share = share_arc::<T> as usize;
+        let ptr = Arc::into_raw(self.ptr);
+        let drop = drop_arc::<T> as *const ();
+        let share = share_arc::<T> as *const ();
         let size = mem::size_of::<T>();
-        vec![ptr, drop.into_dart(), share.into_dart(), size.into_dart()].into_dart()
+
+        vec![
+            ptr.into_dart(),
+            drop.into_dart(),
+            share.into_dart(),
+            size.into_dart(),
+        ]
+        .into_dart()
     }
 }
 

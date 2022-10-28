@@ -1,7 +1,8 @@
+use std::panic::{RefUnwindSafe, UnwindSafe};
+
 pub use flutter_rust_bridge_macros::frb;
 pub use handler::{FfiCallMode, Handler, WrapInfo};
 pub use rust2dart::StreamSink;
-use std::panic::{RefUnwindSafe, UnwindSafe};
 use support::WireSyncReturnData;
 
 pub mod ffi;
@@ -27,4 +28,5 @@ where
 /// Marker trait for types that are safe to share with Dart and can be dropped
 /// safely in case of a panic.
 pub trait DartSafe: Send + Sync + UnwindSafe + RefUnwindSafe {}
+
 impl<T: Send + Sync + UnwindSafe + RefUnwindSafe> DartSafe for T {}

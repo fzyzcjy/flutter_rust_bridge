@@ -30,8 +30,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .join("");
                 format!(
                     "if (raw is {variant}) {{
-
-                        return [{} {}];           
+                        return [{} {}];
                     }}",
                     idx,
                     fields,
@@ -43,7 +42,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         Acc {
             wasm: Some(format!(
                 "{}
-                
+
                 throw Exception('unreachable');",
                 variants,
             )),

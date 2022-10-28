@@ -26,7 +26,12 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
 
     /// Handles JsValue to Self conversions.
     fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
-        Some("unsafe {support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)}".into())
+        Some(
+            "unsafe {
+                support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+            }"
+            .into(),
+        )
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
@@ -54,7 +59,7 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
     }
 
     fn structs(&self) -> String {
-        "".to_string()
+        "".to_owned()
     }
 
     fn allocate_funcs(
@@ -84,7 +89,7 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
     }
 
     fn impl_intodart(&self) -> String {
-        "".to_string()
+        "".to_owned()
     }
 
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
