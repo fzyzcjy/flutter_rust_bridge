@@ -135,7 +135,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                         "",
                     )],
                     None,
-                    "unsafe{{support::box_from_leak_ptr(raw);}}",
+                    "unsafe{{drop(support::box_from_leak_ptr(raw));}}",
                     Io,
                 )),
                 ..Default::default()
