@@ -1,3 +1,4 @@
+use std::ffi::c_void;
 use std::{mem, ops, sync::Arc};
 
 use super::drop_arc;
@@ -95,8 +96,8 @@ impl<T: DartSafe> Opaque<T> {
 impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
     fn from(value: Opaque<T>) -> Self {
         let ptr = Arc::into_raw(value.ptr);
-        let drop = drop_arc::<T> as *const ();
-        let share = share_arc::<T> as *const ();
+        let drop = drop_arc::<T> as *const c_void;
+        let share = share_arc::<T> as *const c_void;
         let size = mem::size_of::<T>();
 
         vec![

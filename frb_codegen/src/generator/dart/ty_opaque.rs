@@ -10,7 +10,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
         Acc {
             io: Some(format!(
                 "if (raw.isStale()) {{
-                    throw new StateError('Use after dispose.');
+                    throw StateError('Use after dispose.');
                   }}
                 final ptr = inner.new_{0}();
                 _api_fill_to_wire_{0}(raw, ptr);
