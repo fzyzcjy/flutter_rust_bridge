@@ -123,7 +123,7 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 pub extern "C" fn drop_box_autoadd_point_0(raw: *mut wire_Point) {
     unsafe {
         {
-            support::box_from_leak_ptr(raw);
+            drop(support::box_from_leak_ptr(raw));
         }
     }
 }
@@ -132,7 +132,7 @@ pub extern "C" fn drop_box_autoadd_point_0(raw: *mut wire_Point) {
 pub extern "C" fn drop_box_autoadd_size_0(raw: *mut wire_Size) {
     unsafe {
         {
-            support::box_from_leak_ptr(raw);
+            drop(support::box_from_leak_ptr(raw));
         }
     }
 }
@@ -141,7 +141,7 @@ pub extern "C" fn drop_box_autoadd_size_0(raw: *mut wire_Size) {
 pub extern "C" fn drop_box_autoadd_tree_node_0(raw: *mut wire_TreeNode) {
     unsafe {
         {
-            support::box_from_leak_ptr(raw);
+            drop(support::box_from_leak_ptr(raw));
         }
     }
 }
