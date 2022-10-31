@@ -1885,6 +1885,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   String? _wire2api_SyncReturn_Option_String(dynamic raw) {
+    print('HERE ${raw.runtimeType.toString()}');
     if (raw == null || raw.runtimeType.toString() == 'JSNull') return null;
     return utf8.decode(raw);
   }
