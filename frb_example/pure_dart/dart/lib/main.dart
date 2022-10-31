@@ -892,7 +892,7 @@ void main(List<String> args) async {
       data.second.dispose();
     });
 
-    test('sync option', () async {
+    test('Sync option', () async {
       var data = api.syncOption();
       var data2 = api.syncOptionNull();
       var data3 = api.syncOptionOpaque();
@@ -944,8 +944,8 @@ void main(List<String> args) async {
       data.dispose();
       try {
         api.syncRunOpaque(opaque: data);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose.');
+      } on StateError catch (e) {
+        expect(e.toString(), 'Bad state: Use after dispose.');
       }
     });
   });

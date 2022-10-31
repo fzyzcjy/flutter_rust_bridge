@@ -360,7 +360,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta;
 
-  OpaqueStruct syncCreateOpaque({dynamic hint});
+  HideData syncCreateOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncCreateOpaqueConstMeta;
 
@@ -384,15 +384,15 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
 
-  Future<OpaqueSyncStruct> createSyncOpaque({dynamic hint});
+  Future<HideSyncData> createSyncOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateSyncOpaqueConstMeta;
 
-  OpaqueSyncStruct syncCreateSyncOpaque({dynamic hint});
+  HideSyncData syncCreateSyncOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncCreateSyncOpaqueConstMeta;
 
-  String syncRunOpaque({required OpaqueSyncStruct opaque, dynamic hint});
+  String syncRunOpaque({required HideSyncData opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncRunOpaqueConstMeta;
 
@@ -412,7 +412,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSyncOptionNullConstMeta;
 
-  OpaqueStruct? syncOptionOpaque({dynamic hint});
+  HideData? syncOptionOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncOptionOpaqueConstMeta;
 
@@ -480,6 +480,11 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 }
 
 @sealed
+class HideSyncData extends FrbOpaque {
+  HideSyncData.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
+}
+
+@sealed
 class I32 extends FrbOpaque {
   I32.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
 }
@@ -487,11 +492,6 @@ class I32 extends FrbOpaque {
 @sealed
 class MutexHideData extends FrbOpaque {
   MutexHideData.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
-}
-
-@sealed
-class OpaqueSyncStruct extends FrbOpaque {
-  OpaqueSyncStruct.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
 }
 
 class PointArray2 extends NonGrowableListView<Point> {

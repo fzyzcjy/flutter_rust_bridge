@@ -11,7 +11,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::{__Deref, lazy_static};
 
-pub use crate::data::HideData;
+pub use crate::data::{HideData, HideSyncData};
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
@@ -979,8 +979,8 @@ pub fn create_opaque() -> Opaque<HideData> {
     Opaque::new(HideData::new())
 }
 
-pub fn sync_create_opaque() -> SyncReturn<Opaque<OpaqueStruct>> {
-    SyncReturn(Opaque::new(OpaqueStruct(HideData::new())))
+pub fn sync_create_opaque() -> SyncReturn<Opaque<HideData>> {
+    SyncReturn(Opaque::new(HideData::new()))
 }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
