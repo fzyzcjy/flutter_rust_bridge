@@ -899,6 +899,7 @@ void main(List<String> args) async {
       expect(data == null, false);
       expect(data2 == null, true);
       expect(data3 == null, false);
+      data3?.dispose();
     });
   });
 
@@ -928,6 +929,7 @@ void main(List<String> args) async {
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \"static str\" "
           "})");
+      data.dispose();
     });
 
     test('Call opaque type fn after drop', () {

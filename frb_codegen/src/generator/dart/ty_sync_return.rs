@@ -39,11 +39,9 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
                         IrTypePrimitive::F32 => "Float32",
                         IrTypePrimitive::F64 => "Float64",
                         IrTypePrimitive::Unit => {
-                            return format!(
-                                r#"
+                            r#"
                                 return;
-                                "#,
-                            );
+                                "#
                         }
                         _ => panic!(
                             "SyncReturn generator for Dart: type {} is not supported",
@@ -101,7 +99,10 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             if let IrTypeSyncReturn::Option(_) = **ty {
                 panic!("Nested option is not suppored.")
             }
-            format!("if (raw == null) return null; {}", not_opaque_body(ty))
+            format!(
+                "if (raw == null || raw.runtimeType.toString() == 'JSNull') return null; {}",
+                not_opaque_body(ty)
+            )
         } else {
             not_opaque_body(&self.ir)
         }

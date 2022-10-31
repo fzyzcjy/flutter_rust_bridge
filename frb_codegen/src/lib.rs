@@ -1,6 +1,5 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
 #![allow(clippy::vec_init_then_push)]
-#![deny(clippy::too_many_lines)]
 // #![warn(clippy::wildcard_enum_match_arm)]
 
 use std::ffi::OsStr;
