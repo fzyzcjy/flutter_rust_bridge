@@ -692,15 +692,31 @@ void main(List<String> args) async {
     });
   });
 
-  group('Opaque feature:', () {
-    test('Create opaque type', () async {
+  group('Opaque type:', () {
+    test('Create and dispose', () async {
       var futureData = api.createOpaque();
       var data = await api.createOpaque();
       data.dispose();
       (await futureData).dispose();
     });
 
-    test('Double Call opaque type fn', () async {
+    test('Simple call', () async {
+      var opaque = await api.createOpaque();
+      var hideData = await api.runOpaque(opaque: opaque);
+
+      expect(
+          hideData,
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      opaque.dispose();
+    });
+
+    test('Double Call', () async {
       var data = await api.createOpaque();
       expect(
           await api.runOpaque(opaque: data),
@@ -723,7 +739,7 @@ void main(List<String> args) async {
       data.dispose();
     });
 
-    test('Call opaque type fn after drop', () async {
+    test('Call after dispose', () async {
       var data = await api.createOpaque();
       expect(
           await api.runOpaque(opaque: data),
@@ -737,12 +753,12 @@ void main(List<String> args) async {
       data.dispose();
       try {
         await api.runOpaque(opaque: data);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose.');
+      } on StateError catch (e) {
+        expect(e.toString(), 'Bad state: Use after dispose.');
       }
     });
 
-    test('Delete opaque type before complete run', () async {
+    test('Dispose before complete', () async {
       var data = await api.createOpaque();
       var task = api.runOpaqueWithDelay(opaque: data);
       data.dispose();
@@ -757,8 +773,8 @@ void main(List<String> args) async {
           "})");
       try {
         await api.runOpaque(opaque: data);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose.');
+      } on StateError catch (e) {
+        expect(e.toString(), 'Bad state: Use after dispose.');
       }
     });
 
@@ -777,8 +793,8 @@ void main(List<String> args) async {
         v.dispose();
         try {
           await api.runOpaque(opaque: v);
-        } catch (e) {
-          expect(e.toString(), 'Use after dispose.');
+        } on StateError catch (e) {
+          expect(e.toString(), 'Bad state: Use after dispose.');
         }
       }
     });
@@ -826,8 +842,8 @@ void main(List<String> args) async {
       (data[4] as EnumOpaque_RwLock).field0.dispose();
       try {
         await api.runEnumOpaque(opaque: data[4]);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose.');
+      } on StateError catch (e) {
+        expect(e.toString(), 'Bad state: Use after dispose.');
       }
     });
 
@@ -856,13 +872,13 @@ void main(List<String> args) async {
       data.first.dispose();
       try {
         await api.runOpaque(opaque: data.first);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose.');
+      } on StateError catch (e) {
+        expect(e.toString(), 'Bad state: Use after dispose.');
       }
       try {
         await api.runNestedOpaque(opaque: data);
-      } catch (e) {
-        expect(e.toString(), 'Use after dispose.');
+      } on StateError catch (e) {
+        expect(e.toString(), 'Bad state: Use after dispose.');
       }
       expect(
           await api.runOpaque(opaque: data.second),

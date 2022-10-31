@@ -9,6 +9,8 @@ pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
 
+use crate::DartSafe;
+
 // ref https://stackoverflow.com/questions/39224904/how-to-expose-a-rust-vect-to-ffi
 pub fn new_leak_vec_ptr<T: Clone>(fill: T, length: i32) -> *mut T {
     into_leak_vec_ptr(vec![fill; length as usize]).0
@@ -126,6 +128,7 @@ macro_rules! primitive_to_sync_return {
 }
 
 /// # Safety
+///
 /// This function should never be called manually.
 /// Retrieving an opaque pointer from Dart is an implementation detail,
 /// so this function is not guaranteed to be API-stable.

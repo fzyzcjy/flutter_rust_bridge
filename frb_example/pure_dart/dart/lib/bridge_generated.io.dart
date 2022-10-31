@@ -21,7 +21,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_BoxDartDebug> api2wire_BoxDartDebug(BoxDartDebug raw) {
     if (raw.isStale()) {
-      throw 'Use after dispose.';
+      throw StateError('Use after dispose.');
     }
     final ptr = inner.new_BoxDartDebug();
     _api_fill_to_wire_BoxDartDebug(raw, ptr);
@@ -49,9 +49,29 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_HideData> api2wire_HideData(HideData raw) {
+    if (raw.isStale()) {
+      throw StateError('Use after dispose.');
+    }
+    final ptr = inner.new_HideData();
+    _api_fill_to_wire_HideData(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_HideSyncData> api2wire_HideSyncData(HideSyncData raw) {
+    if (raw.isStale()) {
+      throw StateError('Use after dispose.');
+    }
+    final ptr = inner.new_HideSyncData();
+    _api_fill_to_wire_HideSyncData(raw, ptr);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_I32> api2wire_I32(I32 raw) {
     if (raw.isStale()) {
-      throw 'Use after dispose.';
+      throw StateError('Use after dispose.');
     }
     final ptr = inner.new_I32();
     _api_fill_to_wire_I32(raw, ptr);
@@ -59,42 +79,22 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_MutexOpaqueStruct> api2wire_MutexOpaqueStruct(MutexOpaqueStruct raw) {
+  ffi.Pointer<wire_MutexHideData> api2wire_MutexHideData(MutexHideData raw) {
     if (raw.isStale()) {
-      throw 'Use after dispose.';
+      throw StateError('Use after dispose.');
     }
-    final ptr = inner.new_MutexOpaqueStruct();
-    _api_fill_to_wire_MutexOpaqueStruct(raw, ptr);
+    final ptr = inner.new_MutexHideData();
+    _api_fill_to_wire_MutexHideData(raw, ptr);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_OpaqueStruct> api2wire_OpaqueStruct(OpaqueStruct raw) {
+  ffi.Pointer<wire_RwLockHideData> api2wire_RwLockHideData(RwLockHideData raw) {
     if (raw.isStale()) {
-      throw 'Use after dispose.';
+      throw StateError('Use after dispose.');
     }
-    final ptr = inner.new_OpaqueStruct();
-    _api_fill_to_wire_OpaqueStruct(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_OpaqueSyncStruct> api2wire_OpaqueSyncStruct(OpaqueSyncStruct raw) {
-    if (raw.isStale()) {
-      throw 'Use after dispose.';
-    }
-    final ptr = inner.new_OpaqueSyncStruct();
-    _api_fill_to_wire_OpaqueSyncStruct(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_RwLockOpaqueStruct> api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
-    if (raw.isStale()) {
-      throw 'Use after dispose.';
-    }
-    final ptr = inner.new_RwLockOpaqueStruct();
-    _api_fill_to_wire_RwLockOpaqueStruct(raw, ptr);
+    final ptr = inner.new_RwLockHideData();
+    _api_fill_to_wire_RwLockHideData(raw, ptr);
     return ptr;
   }
 
@@ -807,23 +807,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
+  void _api_fill_to_wire_HideData(HideData apiObj, ffi.Pointer<wire_HideData> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
+  }
+
+  void _api_fill_to_wire_HideSyncData(HideSyncData apiObj, ffi.Pointer<wire_HideSyncData> wireObj) {
+    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
+  }
+
   void _api_fill_to_wire_I32(I32 apiObj, ffi.Pointer<wire_I32> wireObj) {
     wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
-  void _api_fill_to_wire_MutexOpaqueStruct(MutexOpaqueStruct apiObj, ffi.Pointer<wire_MutexOpaqueStruct> wireObj) {
+  void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, ffi.Pointer<wire_MutexHideData> wireObj) {
     wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
-  void _api_fill_to_wire_OpaqueStruct(OpaqueStruct apiObj, ffi.Pointer<wire_OpaqueStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
-  }
-
-  void _api_fill_to_wire_OpaqueSyncStruct(OpaqueSyncStruct apiObj, ffi.Pointer<wire_OpaqueSyncStruct> wireObj) {
-    wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
-  }
-
-  void _api_fill_to_wire_RwLockOpaqueStruct(RwLockOpaqueStruct apiObj, ffi.Pointer<wire_RwLockOpaqueStruct> wireObj) {
+  void _api_fill_to_wire_RwLockHideData(RwLockHideData apiObj, ffi.Pointer<wire_RwLockHideData> wireObj) {
     wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();
   }
 
@@ -1004,7 +1004,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_enum_opaque(EnumOpaque apiObj, wire_EnumOpaque wireObj) {
     if (apiObj is EnumOpaque_Struct) {
-      var pre_field0 = api2wire_OpaqueStruct(apiObj.field0);
+      var pre_field0 = api2wire_HideData(apiObj.field0);
       wireObj.tag = 0;
       wireObj.kind = inner.inflate_EnumOpaque_Struct();
       wireObj.kind.ref.Struct.ref.field0 = pre_field0;
@@ -1025,14 +1025,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
     if (apiObj is EnumOpaque_Mutex) {
-      var pre_field0 = api2wire_MutexOpaqueStruct(apiObj.field0);
+      var pre_field0 = api2wire_MutexHideData(apiObj.field0);
       wireObj.tag = 3;
       wireObj.kind = inner.inflate_EnumOpaque_Mutex();
       wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumOpaque_RwLock) {
-      var pre_field0 = api2wire_RwLockOpaqueStruct(apiObj.field0);
+      var pre_field0 = api2wire_RwLockHideData(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind = inner.inflate_EnumOpaque_RwLock();
       wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
@@ -1174,8 +1174,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   void _api_fill_to_wire_opaque_nested(OpaqueNested apiObj, wire_OpaqueNested wireObj) {
-    wireObj.first = api2wire_OpaqueStruct(apiObj.first);
-    wireObj.second = api2wire_OpaqueStruct(apiObj.second);
+    wireObj.first = api2wire_HideData(apiObj.first);
+    wireObj.second = api2wire_HideData(apiObj.second);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -2495,7 +2495,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   void wire_run_opaque(
     int port_,
-    ffi.Pointer<wire_OpaqueStruct> opaque,
+    ffi.Pointer<wire_HideData> opaque,
   ) {
     return _wire_run_opaque(
       port_,
@@ -2504,12 +2504,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_run_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueStruct>)>>('wire_run_opaque');
-  late final _wire_run_opaque = _wire_run_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueStruct>)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_HideData>)>>('wire_run_opaque');
+  late final _wire_run_opaque = _wire_run_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_HideData>)>();
 
   void wire_run_opaque_with_delay(
     int port_,
-    ffi.Pointer<wire_OpaqueStruct> opaque,
+    ffi.Pointer<wire_HideData> opaque,
   ) {
     return _wire_run_opaque_with_delay(
       port_,
@@ -2518,10 +2518,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_run_opaque_with_delayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OpaqueStruct>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_HideData>)>>(
           'wire_run_opaque_with_delay');
   late final _wire_run_opaque_with_delay =
-      _wire_run_opaque_with_delayPtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueStruct>)>();
+      _wire_run_opaque_with_delayPtr.asFunction<void Function(int, ffi.Pointer<wire_HideData>)>();
 
   void wire_opaque_array(
     int port_,
@@ -2556,7 +2556,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
 
   WireSyncReturnStruct wire_sync_run_opaque(
-    ffi.Pointer<wire_OpaqueSyncStruct> opaque,
+    ffi.Pointer<wire_HideSyncData> opaque,
   ) {
     return _wire_sync_run_opaque(
       opaque,
@@ -2564,10 +2564,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_sync_run_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_OpaqueSyncStruct>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_HideSyncData>)>>(
           'wire_sync_run_opaque');
   late final _wire_sync_run_opaque =
-      _wire_sync_run_opaquePtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_OpaqueSyncStruct>)>();
+      _wire_sync_run_opaquePtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_HideSyncData>)>();
 
   void wire_create_nested_opaque(
     int port_,
@@ -2775,6 +2775,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxDartDebug> Function()>>('new_BoxDartDebug');
   late final _new_BoxDartDebug = _new_BoxDartDebugPtr.asFunction<ffi.Pointer<wire_BoxDartDebug> Function()>();
 
+  ffi.Pointer<wire_HideData> new_HideData() {
+    return _new_HideData();
+  }
+
+  late final _new_HideDataPtr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_HideData> Function()>>('new_HideData');
+  late final _new_HideData = _new_HideDataPtr.asFunction<ffi.Pointer<wire_HideData> Function()>();
+
+  ffi.Pointer<wire_HideSyncData> new_HideSyncData() {
+    return _new_HideSyncData();
+  }
+
+  late final _new_HideSyncDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_HideSyncData> Function()>>('new_HideSyncData');
+  late final _new_HideSyncData = _new_HideSyncDataPtr.asFunction<ffi.Pointer<wire_HideSyncData> Function()>();
+
   ffi.Pointer<wire_I32> new_I32() {
     return _new_I32();
   }
@@ -2782,40 +2797,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_I32Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_I32> Function()>>('new_I32');
   late final _new_I32 = _new_I32Ptr.asFunction<ffi.Pointer<wire_I32> Function()>();
 
-  ffi.Pointer<wire_MutexOpaqueStruct> new_MutexOpaqueStruct() {
-    return _new_MutexOpaqueStruct();
+  ffi.Pointer<wire_MutexHideData> new_MutexHideData() {
+    return _new_MutexHideData();
   }
 
-  late final _new_MutexOpaqueStructPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MutexOpaqueStruct> Function()>>('new_MutexOpaqueStruct');
-  late final _new_MutexOpaqueStruct =
-      _new_MutexOpaqueStructPtr.asFunction<ffi.Pointer<wire_MutexOpaqueStruct> Function()>();
+  late final _new_MutexHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MutexHideData> Function()>>('new_MutexHideData');
+  late final _new_MutexHideData = _new_MutexHideDataPtr.asFunction<ffi.Pointer<wire_MutexHideData> Function()>();
 
-  ffi.Pointer<wire_OpaqueStruct> new_OpaqueStruct() {
-    return _new_OpaqueStruct();
+  ffi.Pointer<wire_RwLockHideData> new_RwLockHideData() {
+    return _new_RwLockHideData();
   }
 
-  late final _new_OpaqueStructPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_OpaqueStruct> Function()>>('new_OpaqueStruct');
-  late final _new_OpaqueStruct = _new_OpaqueStructPtr.asFunction<ffi.Pointer<wire_OpaqueStruct> Function()>();
-
-  ffi.Pointer<wire_OpaqueSyncStruct> new_OpaqueSyncStruct() {
-    return _new_OpaqueSyncStruct();
-  }
-
-  late final _new_OpaqueSyncStructPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_OpaqueSyncStruct> Function()>>('new_OpaqueSyncStruct');
-  late final _new_OpaqueSyncStruct =
-      _new_OpaqueSyncStructPtr.asFunction<ffi.Pointer<wire_OpaqueSyncStruct> Function()>();
-
-  ffi.Pointer<wire_RwLockOpaqueStruct> new_RwLockOpaqueStruct() {
-    return _new_RwLockOpaqueStruct();
-  }
-
-  late final _new_RwLockOpaqueStructPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_RwLockOpaqueStruct> Function()>>('new_RwLockOpaqueStruct');
-  late final _new_RwLockOpaqueStruct =
-      _new_RwLockOpaqueStructPtr.asFunction<ffi.Pointer<wire_RwLockOpaqueStruct> Function()>();
+  late final _new_RwLockHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_RwLockHideData> Function()>>('new_RwLockHideData');
+  late final _new_RwLockHideData = _new_RwLockHideDataPtr.asFunction<ffi.Pointer<wire_RwLockHideData> Function()>();
 
   ffi.Pointer<wire_StringList> new_StringList_0(
     int len,
@@ -4368,12 +4364,12 @@ class wire_list_test_id extends ffi.Struct {
   external int len;
 }
 
-class wire_OpaqueStruct extends ffi.Struct {
+class wire_HideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
 class wire_EnumOpaque_Struct extends ffi.Struct {
-  external ffi.Pointer<wire_OpaqueStruct> field0;
+  external ffi.Pointer<wire_HideData> field0;
 }
 
 class wire_I32 extends ffi.Struct {
@@ -4392,20 +4388,20 @@ class wire_EnumOpaque_TraitObj extends ffi.Struct {
   external ffi.Pointer<wire_BoxDartDebug> field0;
 }
 
-class wire_MutexOpaqueStruct extends ffi.Struct {
+class wire_MutexHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
 class wire_EnumOpaque_Mutex extends ffi.Struct {
-  external ffi.Pointer<wire_MutexOpaqueStruct> field0;
+  external ffi.Pointer<wire_MutexHideData> field0;
 }
 
-class wire_RwLockOpaqueStruct extends ffi.Struct {
+class wire_RwLockHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
 class wire_EnumOpaque_RwLock extends ffi.Struct {
-  external ffi.Pointer<wire_RwLockOpaqueStruct> field0;
+  external ffi.Pointer<wire_RwLockHideData> field0;
 }
 
 class EnumOpaqueKind extends ffi.Union {
@@ -4427,14 +4423,14 @@ class wire_EnumOpaque extends ffi.Struct {
   external ffi.Pointer<EnumOpaqueKind> kind;
 }
 
-class wire_OpaqueSyncStruct extends ffi.Struct {
+class wire_HideSyncData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
 class wire_OpaqueNested extends ffi.Struct {
-  external ffi.Pointer<wire_OpaqueStruct> first;
+  external ffi.Pointer<wire_HideData> first;
 
-  external ffi.Pointer<wire_OpaqueStruct> second;
+  external ffi.Pointer<wire_HideData> second;
 }
 
 class wire_SumWith extends ffi.Struct {

@@ -23,7 +23,7 @@ pub(crate) fn generate_api_func(
             )
         })
         .collect::<Vec<_>>();
-    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
+    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_owned()]].concat();
 
     let prepare_args = func
         .inputs
@@ -51,7 +51,7 @@ pub(crate) fn generate_api_func(
 
     let wire_param_list = [
         if func.mode.has_port_argument() {
-            vec!["port_".to_string()]
+            vec!["port_".to_owned()]
         } else {
             vec![]
         },
@@ -111,7 +111,7 @@ pub(crate) fn generate_api_func(
             if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                 name.clone()
             } else {
-                "".to_string()
+                String::new()
             }
         })
         // If struct has a method with first element `input0`
@@ -128,7 +128,7 @@ pub(crate) fn generate_api_func(
     let is_sync = matches!(func.mode, IrFuncMode::Sync);
     let implementation = format!(
         "{} {{
-            {} 
+            {}
             return {}({task}(
             callFfi: ({args}) => _platform.inner.{}({}),
             parseSuccessData: {},

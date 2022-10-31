@@ -1,11 +1,14 @@
+use std::{ffi::c_void, iter::FromIterator, mem, sync::Arc};
+
+use super::drop_arc;
+use super::share_arc;
+
 use super::DartAbi;
 use super::IntoDart;
 use super::MessagePort;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
-use std::ffi::c_void;
-use std::iter::FromIterator;
 pub use wasm_bindgen;
 pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
@@ -14,8 +17,6 @@ use web_sys::BroadcastChannel;
 
 use crate::support::WireSyncReturnData;
 pub use crate::wasm_bindgen_src::transfer::*;
-use crate::DartSafe;
-use std::sync::Arc;
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
@@ -384,19 +385,6 @@ pub struct Timestamp {
     pub ns: u32,
 }
 
-#[cfg(test)]
-#[cfg(feature = "chrono")]
-mod tests {
-    #[test]
-    fn wire2api() {
-        // input in milliseconds
-        let input: i64 = 3_496_567;
-        let super::Timestamp { s, ns } = super::wire2api_timestamp(input);
-        assert_eq!(s, 3_496);
-        assert_eq!(ns, 567_000_000);
-    }
-}
-
 /// A wrapper to transfer ownership of T to Dart.
 ///
 /// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
@@ -406,24 +394,31 @@ mod tests {
 /// Extensions for [`sync::RwLock`] and [`sync::Mutex`] are provided.
 ///
 /// ## Naming the inner type
-/// When an `Opaque<T>` is transformed into a Dart type, T's string representation
-/// undergoes some transformations to become a valid Dart type:
+///
+/// When an `Opaque<T>` is transformed into a Dart type, T's string
+/// representation undergoes some transformations to become a valid Dart type:
 /// - Rust keywords (dyn, 'static, DartSafe, etc.) are automatically removed.
 /// - ASCII alphanumerics are kept, all other characters are ignored.
 ///
 /// ## Trait objects
-/// Trait objects may be put behind opaque pointers, but they must implement [`DartSafe`] to
-/// be safely sent to Dart. For example, this declaration can be used across the
-/// FFI border:
+///
+/// Trait objects may be put behind opaque pointers, but they must implement
+/// [`DartSafe`] to be safely sent to Dart. For example, this declaration can
+/// be used across the FFI border:
+///
 /// ```rust
 /// use flutter_rust_bridge::*;
 /// use std::fmt::Debug;
 /// use std::panic::{UnwindSafe, RefUnwindSafe};
-/// // Rust does not allow multiple non-auto traits in trait objects, so
-/// // this is one workaround.
-/// pub trait DartDebug + Debug {}
-/// impl<T + Debug> DartDebug for T {}
+///
+/// // Rust does not allow multiple non-auto traits in trait objects, so this
+/// // is one workaround.
+/// pub trait DartDebug: DartSafe + Debug {}
+///
+/// impl<T: DartSafe + Debug> DartDebug for T {}
+///
 /// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
+///
 /// // creating a DebugWrapper using the opaque_dyn macro
 /// let wrap = DebugWrapper(opaque_dyn!("foobar"));
 /// // it's possible to name it directly
@@ -463,96 +458,80 @@ impl<T> Opaque<T> {
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub fn drop_opaque(ptr: *const c_void, ptr_drop_fn: *const c_void) {
+pub fn drop_arc_caller(ptr: *const c_void, ptr_drop_fn: *const c_void) {
     unsafe {
-        let drop_fn: fn(*const c_void) = std::mem::transmute(ptr_drop_fn);
+        let drop_fn: extern "C" fn(*const c_void) = mem::transmute(ptr_drop_fn);
         drop_fn(ptr);
     }
 }
 
-/// Equivalent to a [Arc::clone()],
-/// but direcly in terms of raw pointers by type specific function.
+/// Equivalent to a [Arc::clone()], but directly in terms of raw pointers by
+/// type specific function.
 ///
 /// # Safety
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub fn share_opaque(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
+pub fn share_arc_caller(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
     unsafe {
-        let share_fn: fn(*const c_void) -> *const c_void = std::mem::transmute(ptr_share_fn);
+        let share_fn: extern "C" fn(*const c_void) -> *const c_void = mem::transmute(ptr_share_fn);
         share_fn(ptr)
-    }
-}
-
-/// Dropper opaque data of this opaque data.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-fn drop_arc<T>(ptr: *const c_void) {
-    unsafe {
-        Arc::<T>::decrement_strong_count(ptr as _);
-    }
-}
-
-/// Equivalent to a [Arc::clone()], but direcly in terms of raw pointers.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-fn share_arc<T>(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<T>::increment_strong_count(ptr as _);
-        ptr
     }
 }
 
 impl<T> From<Opaque<T>> for WireSyncReturnData {
     fn from(data: Opaque<T>) -> Self {
         let ptr = Arc::into_raw(data.ptr) as usize;
-        let drop: *mut Box<dyn FnOnce(usize)> =
-            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
-                Arc::<T>::decrement_strong_count(ptr as *mut T);
-            })));
-        let lend: *mut Box<dyn FnMut(usize) -> usize> =
-            Box::into_raw(Box::new(Box::new(|ptr: usize| unsafe {
-                Arc::<T>::increment_strong_count(ptr as *mut T);
-                ptr
-            })));
+        let drop = drop_arc::<T> as *const c_void as usize;
+        let lend = share_arc::<T> as *const c_void as usize;
+        let size = mem::size_of::<T>();
+
         WireSyncReturnData(Some(
             [
                 ptr.to_be_bytes(),
-                (drop as usize).to_be_bytes(),
-                (lend as usize).to_be_bytes(),
+                drop.to_be_bytes(),
+                lend.to_be_bytes(),
+                size.to_be_bytes(),
             ]
             .concat(),
         ))
     }
 }
 
-// todo
-// impl<T> From<Option<Opaque<T>>> for WireSyncReturnData {
-//     fn from(data: Option<Opaque<T>>) -> Self {
-//         if let Some(o) = data {
-//             let ptr = Arc::into_raw(o.ptr) as usize;
-//             let drop = drop_arc::<T> as CArcDropper<T> as usize;
-//             let lend = share_arc::<T> as CArcShare<T> as usize;
-//             WireSyncReturnData(Some([ptr.to_be_bytes(), drop.to_be_bytes(), lend.to_be_bytes()].concat()))
-//         } else {
-//             WireSyncReturnData(None)
-//         }
-//     }
-// }
+impl<T> From<Option<Opaque<T>>> for WireSyncReturnData {
+    fn from(data: Option<Opaque<T>>) -> Self {
+        if let Some(o) = data {
+            let ptr = Arc::into_raw(o.ptr) as usize;
+            let drop = drop_arc::<T> as *const c_void as usize;
+            let lend = share_arc::<T> as *const c_void as usize;
+            let size = mem::size_of::<T>();
+            WireSyncReturnData(Some(
+                [
+                    ptr.to_be_bytes(),
+                    drop.to_be_bytes(),
+                    lend.to_be_bytes(),
+                    size.to_be_bytes(),
+                ]
+                .concat(),
+            ))
+        } else {
+            WireSyncReturnData(None)
+        }
+    }
+}
 
 impl<T> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
-        let ptr = Arc::into_raw(self.ptr).into_dart();
-        let drop: fn(*const c_void) = drop_arc::<T>;
-        let share: fn(*const c_void) -> *const c_void = share_arc::<T>;
+        let ptr = Arc::into_raw(self.ptr);
+        let drop = drop_arc::<T> as *const c_void;
+        let share = share_arc::<T> as *const c_void;
+        let size = mem::size_of::<T>();
+
         vec![
-            ptr,
-            (drop as usize).into_dart(),
-            (share as usize).into_dart(),
+            ptr.into_dart(),
+            drop.into_dart(),
+            share.into_dart(),
+            size.into_dart(),
         ]
         .into_dart()
     }
@@ -577,11 +556,15 @@ impl<const N: usize, T> IntoDart for [Opaque<T>; N] {
 /// support custom DSTs on stable.
 ///
 /// Example:
+///
 /// ```rust
 /// use std::fmt::Debug;
 /// use flutter_rust_bridge::*;
+///
 /// pub trait MyDebug: DartSafe + Debug {}
+///
 /// impl<T: DartSafe + Debug> MyDebug for T {}
+///
 /// let opaque: Opaque<Box<dyn MyDebug>> = opaque_dyn!("foobar");
 /// ```
 #[macro_export]
@@ -589,4 +572,17 @@ macro_rules! opaque_dyn {
     ($ex:expr) => {
         Opaque::new(std::boxed::Box::new($ex))
     };
+}
+
+#[cfg(test)]
+#[cfg(feature = "chrono")]
+mod tests {
+    #[test]
+    fn wire2api() {
+        // input in milliseconds
+        let input: i64 = 3_496_567;
+        let super::Timestamp { s, ns } = super::wire2api_timestamp(input);
+        assert_eq!(s, 3_496);
+        assert_eq!(ns, 567_000_000);
+    }
 }

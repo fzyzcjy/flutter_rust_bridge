@@ -16,6 +16,7 @@
     - [Option](feature/lang_option.md)
     - [Methods](feature/lang_methods.md)
     - [Return types](feature/lang_return_types.md)
+    - [Dynamic](feature/lang_dynamic.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)

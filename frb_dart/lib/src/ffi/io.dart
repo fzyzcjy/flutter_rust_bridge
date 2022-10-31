@@ -51,52 +51,60 @@ class FrbOpaque implements Finalizable {
       _share;
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int ptr, int drop, int share) {
+  FrbOpaque.unsafe(int ptr, int drop, int share, int size) {
     assert(ptr > 0);
     assert(drop > 0);
     assert(share > 0);
+
     _ptr = ffi.Pointer.fromAddress(ptr);
     _drop = ffi.Pointer.fromAddress(drop);
     _share = ffi.Pointer.fromAddress(share);
     _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
-    _finalizer.attach(this, _ptr.cast(), detach: this);
+    _finalizer.attach(this, _ptr.cast(), detach: this, externalSize: size);
   }
 
-  /// The native finalizer runs [_drop] on [_ptr]
-  /// if the object is garbage collected.
+  /// The native finalizer runs [_drop] on [_ptr] if the object is garbage
+  /// collected.
   late final NativeFinalizer _finalizer;
 
   /// Call Rust destructors on the backing memory of this pointer.
-  /// This function should be run at least once during the lifetime of the program,
-  /// and can be run many times.
   ///
-  /// When passed into a Rust function,
-  /// Rust enacts *shared ownership* and inhibits disposal of this pointer's contents,
-  /// even if [dispose] is immediately run.
-  /// Furthermore, if that same function reuses the allocation
-  /// (usually by returning the same opaque pointer)
-  /// ownership of this pointer will be moved into that new opaque pointer.
+  /// This function should be run at least once during the lifetime of the
+  /// program, and can be run many times.
+  ///
+  /// When passed into a Rust function, Rust enacts *shared ownership* and
+  /// inhibits disposal of this pointer's contents, even if [dispose] is
+  /// immediately run.
+  ///
+  /// Furthermore, if that same function reuses the allocation (usually by
+  /// returning the same opaque pointer) ownership of this pointer will be
+  /// moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
-      _finalizer.detach(this);
-      _drop.asFunction<void Function(ffi.Pointer)>()(_ptr);
+      var ptr = _ptr;
       _ptr = Pointer.fromAddress(0);
+
+      _finalizer.detach(this);
+      _drop.asFunction<void Function(ffi.Pointer)>()(ptr);
     }
   }
 
-  /// Returns pointer with shares ownership if Dart owner else throws error.
+  /// Increments inner reference counter and returns pointer to the underlying
+  /// Rust object.
+  ///
+  /// Throws a [StateError] if called after [dispose].
   static ffi.Pointer share(FrbOpaque ptr) {
     if (!ptr.isStale()) {
       return ptr._share
           .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr);
     } else {
-      throw "Use after dispose.";
+      throw StateError('Use after dispose.');
     }
   }
 
   /// Checks whether [dispose] has been called at any point during the lifetime
-  /// of this pointer. This does not guarantee that the backing memory has actually
-  /// been reclaimed.
+  /// of this pointer. This does not guarantee that the backing memory has
+  /// actually been reclaimed.
   // not nullptr, this is an internal bookkeeping method
   bool isStale() => _ptr.address == 0;
 }

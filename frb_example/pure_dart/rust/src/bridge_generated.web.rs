@@ -1298,28 +1298,28 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
         Wire2Api::<i64>::wire2api(self).wire2api()
     }
 }
+impl Wire2Api<Opaque<HideData>> for JsValue {
+    fn wire2api(self) -> Opaque<HideData> {
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<Opaque<HideSyncData>> for JsValue {
+    fn wire2api(self) -> Opaque<HideSyncData> {
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
 impl Wire2Api<Opaque<i32>> for JsValue {
     fn wire2api(self) -> Opaque<i32> {
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl Wire2Api<Opaque<Mutex<OpaqueStruct>>> for JsValue {
-    fn wire2api(self) -> Opaque<Mutex<OpaqueStruct>> {
+impl Wire2Api<Opaque<Mutex<HideData>>> for JsValue {
+    fn wire2api(self) -> Opaque<Mutex<HideData>> {
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl Wire2Api<Opaque<OpaqueStruct>> for JsValue {
-    fn wire2api(self) -> Opaque<OpaqueStruct> {
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl Wire2Api<Opaque<OpaqueSyncStruct>> for JsValue {
-    fn wire2api(self) -> Opaque<OpaqueSyncStruct> {
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl Wire2Api<Opaque<RwLock<OpaqueStruct>>> for JsValue {
-    fn wire2api(self) -> Opaque<RwLock<OpaqueStruct>> {
+impl Wire2Api<Opaque<RwLock<HideData>>> for JsValue {
+    fn wire2api(self) -> Opaque<RwLock<HideData>> {
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }

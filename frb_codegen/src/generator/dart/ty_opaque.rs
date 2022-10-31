@@ -10,14 +10,14 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
         Acc {
             io: Some(format!(
                 "if (raw.isStale()) {{
-                    throw 'Use after dispose.';
+                    throw StateError('Use after dispose.');
                   }}
                 final ptr = inner.new_{0}();
                 _api_fill_to_wire_{0}(raw, ptr);
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            wasm: Some("return FrbOpaque.share(raw);".to_string()),
+            wasm: Some("return FrbOpaque.share(raw);".to_owned()),
             ..Default::default()
         }
     }
@@ -28,7 +28,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         format!(
-            "return {}.fromRaw(raw[0], raw[1], raw[2]);",
+            "return {}.fromRaw(raw[0], raw[1], raw[2], raw[3]);",
             self.ir.dart_api_type()
         )
     }
@@ -36,7 +36,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn structs(&self) -> String {
         format!(
             "@sealed class {0} extends FrbOpaque {{
-                {0}.fromRaw(int ptr, int drop, int share) : super.unsafe(ptr, drop, share);
+                {0}.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
             }}",
             self.ir.dart_api_type()
         )

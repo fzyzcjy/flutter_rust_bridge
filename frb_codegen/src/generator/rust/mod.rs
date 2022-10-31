@@ -88,7 +88,7 @@ impl<'a> Generator<'a> {
 
         lines.push(String::new());
         lines.push(format!("use crate::{}::*;", rust_wire_mod));
-        lines.push("use flutter_rust_bridge::*;".to_string());
+        lines.push("use flutter_rust_bridge::*;".to_owned());
         lines.push("use core::panic::UnwindSafe;".to_owned());
         lines.push("use std::sync::RwLock;".to_owned());
         lines.push("use std::sync::Mutex;".to_owned());
