@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
