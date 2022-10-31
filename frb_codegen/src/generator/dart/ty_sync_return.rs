@@ -100,7 +100,8 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
                 panic!("Nested option is not suppored.")
             }
             format!(
-                "if (raw == null || raw.runtimeType.toString() == 'JSNull') return null; {}",
+                "print('HERE ${{raw.runtimeType.toString()}}');
+                if (raw == null || raw.runtimeType.toString() == 'JSNull') return null; {}",
                 not_opaque_body(ty)
             )
         } else {

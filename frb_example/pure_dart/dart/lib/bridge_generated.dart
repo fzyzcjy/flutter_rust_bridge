@@ -1852,6 +1852,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   HideData? _wire2api_SyncReturn_Option_HideData(dynamic raw) {
+    print('HERE ${raw.runtimeType.toString()}');
     if (raw == null || raw.runtimeType.toString() == 'JSNull') return null;
     var pointBitLen = raw.length ~/ 4;
     var ptrList = List.filled(pointBitLen, 0);
