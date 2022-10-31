@@ -148,7 +148,7 @@ class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   final WireSyncReturnStruct Function() callFfi;
 
   /// Parse the returned data from the underlying function
-  final S? Function(Uint8List?) parseSuccessData;
+  final S? Function(dynamic) parseSuccessData;
 
   const FlutterRustBridgeSyncTask({
     required this.callFfi,
