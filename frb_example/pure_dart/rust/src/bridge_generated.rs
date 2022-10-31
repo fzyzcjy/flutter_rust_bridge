@@ -1259,10 +1259,7 @@ fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaqu
         },
     )
 }
-fn wire_run_opaque_impl(
-    port_: MessagePort,
-    opaque: impl Wire2Api<Opaque<OpaqueStruct>> + UnwindSafe,
-) {
+fn wire_run_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<Opaque<HideData>> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "run_opaque",
@@ -1277,7 +1274,7 @@ fn wire_run_opaque_impl(
 }
 fn wire_run_opaque_with_delay_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<Opaque<OpaqueStruct>> + UnwindSafe,
+    opaque: impl Wire2Api<Opaque<HideData>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

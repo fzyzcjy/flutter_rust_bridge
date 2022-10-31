@@ -356,7 +356,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
 
-  Future<OpaqueStruct> createOpaque({dynamic hint});
+  Future<HideData> createOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta;
 
@@ -368,15 +368,15 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunEnumOpaqueConstMeta;
 
-  Future<String> runOpaque({required OpaqueStruct opaque, dynamic hint});
+  Future<String> runOpaque({required HideData opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta;
 
-  Future<String> runOpaqueWithDelay({required OpaqueStruct opaque, dynamic hint});
+  Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueWithDelayConstMeta;
 
-  Future<OpaqueStructArray2> opaqueArray({dynamic hint});
+  Future<HideDataArray2> opaqueArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
 
@@ -438,27 +438,27 @@ class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
 }
 
 @sealed
+class HideData extends FrbOpaque {
+  HideData.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
+}
+
+class HideDataArray2 extends NonGrowableListView<HideData> {
+  static const arraySize = 2;
+  HideDataArray2(List<HideData> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  HideDataArray2.unchecked(List<HideData> inner) : super(inner);
+  HideDataArray2.init(HideData fill) : super(List<HideData>.filled(arraySize, fill));
+}
+
+@sealed
 class I32 extends FrbOpaque {
   I32.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
 }
 
 @sealed
-class MutexOpaqueStruct extends FrbOpaque {
-  MutexOpaqueStruct.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
-}
-
-@sealed
-class OpaqueStruct extends FrbOpaque {
-  OpaqueStruct.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
-}
-
-class OpaqueStructArray2 extends NonGrowableListView<OpaqueStruct> {
-  static const arraySize = 2;
-  OpaqueStructArray2(List<OpaqueStruct> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  OpaqueStructArray2.unchecked(List<OpaqueStruct> inner) : super(inner);
-  OpaqueStructArray2.init(OpaqueStruct fill) : super(List<OpaqueStruct>.filled(arraySize, fill));
+class MutexHideData extends FrbOpaque {
+  MutexHideData.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
 }
 
 class PointArray2 extends NonGrowableListView<Point> {
@@ -471,8 +471,8 @@ class PointArray2 extends NonGrowableListView<Point> {
 }
 
 @sealed
-class RwLockOpaqueStruct extends FrbOpaque {
-  RwLockOpaqueStruct.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
+class RwLockHideData extends FrbOpaque {
+  RwLockHideData.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
 }
 
 class SumWithArray3 extends NonGrowableListView<SumWith> {
@@ -662,7 +662,7 @@ class Element {
 @freezed
 class EnumOpaque with _$EnumOpaque {
   const factory EnumOpaque.struct(
-    OpaqueStruct field0,
+    HideData field0,
   ) = EnumOpaque_Struct;
   const factory EnumOpaque.primitive(
     I32 field0,
@@ -671,10 +671,10 @@ class EnumOpaque with _$EnumOpaque {
     BoxDartDebug field0,
   ) = EnumOpaque_TraitObj;
   const factory EnumOpaque.mutex(
-    MutexOpaqueStruct field0,
+    MutexHideData field0,
   ) = EnumOpaque_Mutex;
   const factory EnumOpaque.rwLock(
-    RwLockOpaqueStruct field0,
+    RwLockHideData field0,
   ) = EnumOpaque_RwLock;
 }
 
@@ -922,9 +922,10 @@ class OldSimpleStruct {
   });
 }
 
+/// [`HideData`] has private fields.
 class OpaqueNested {
-  final OpaqueStruct first;
-  final OpaqueStruct second;
+  final HideData first;
+  final HideData second;
 
   OpaqueNested({
     required this.first,

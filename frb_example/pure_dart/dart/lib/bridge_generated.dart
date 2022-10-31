@@ -1347,10 +1347,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
-  Future<OpaqueStruct> createOpaque({dynamic hint}) {
+  Future<HideData> createOpaque({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_opaque(port_),
-      parseSuccessData: _wire2api_OpaqueStruct,
+      parseSuccessData: _wire2api_HideData,
       constMeta: kCreateOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -1393,8 +1393,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
-  Future<String> runOpaque({required OpaqueStruct opaque, dynamic hint}) {
-    var arg0 = _platform.api2wire_OpaqueStruct(opaque);
+  Future<String> runOpaque({required HideData opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_HideData(opaque);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_run_opaque(port_, arg0),
       parseSuccessData: _wire2api_String,
@@ -1409,8 +1409,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
-  Future<String> runOpaqueWithDelay({required OpaqueStruct opaque, dynamic hint}) {
-    var arg0 = _platform.api2wire_OpaqueStruct(opaque);
+  Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_HideData(opaque);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_run_opaque_with_delay(port_, arg0),
       parseSuccessData: _wire2api_String,
@@ -1425,10 +1425,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
-  Future<OpaqueStructArray2> opaqueArray({dynamic hint}) {
+  Future<HideDataArray2> opaqueArray({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_opaque_array(port_),
-      parseSuccessData: _wire2api_OpaqueStruct_array_2,
+      parseSuccessData: _wire2api_HideData_array_2,
       constMeta: kOpaqueArrayConstMeta,
       argValues: [],
       hint: hint,
@@ -1641,28 +1641,28 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return EnumOpaqueArray5((raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
   }
 
+  HideData _wire2api_HideData(dynamic raw) {
+    return HideData.fromRaw(raw[0], raw[1], raw[2], raw[3]);
+  }
+
+  HideDataArray2 _wire2api_HideData_array_2(dynamic raw) {
+    return HideDataArray2((raw as List<dynamic>).map(_wire2api_HideData).toList());
+  }
+
   I32 _wire2api_I32(dynamic raw) {
     return I32.fromRaw(raw[0], raw[1], raw[2], raw[3]);
   }
 
-  MutexOpaqueStruct _wire2api_MutexOpaqueStruct(dynamic raw) {
-    return MutexOpaqueStruct.fromRaw(raw[0], raw[1], raw[2], raw[3]);
-  }
-
-  OpaqueStruct _wire2api_OpaqueStruct(dynamic raw) {
-    return OpaqueStruct.fromRaw(raw[0], raw[1], raw[2], raw[3]);
-  }
-
-  OpaqueStructArray2 _wire2api_OpaqueStruct_array_2(dynamic raw) {
-    return OpaqueStructArray2((raw as List<dynamic>).map(_wire2api_OpaqueStruct).toList());
+  MutexHideData _wire2api_MutexHideData(dynamic raw) {
+    return MutexHideData.fromRaw(raw[0], raw[1], raw[2], raw[3]);
   }
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {
     return PointArray2((raw as List<dynamic>).map(_wire2api_point).toList());
   }
 
-  RwLockOpaqueStruct _wire2api_RwLockOpaqueStruct(dynamic raw) {
-    return RwLockOpaqueStruct.fromRaw(raw[0], raw[1], raw[2], raw[3]);
+  RwLockHideData _wire2api_RwLockHideData(dynamic raw) {
+    return RwLockHideData.fromRaw(raw[0], raw[1], raw[2], raw[3]);
   }
 
   String _wire2api_String(dynamic raw) {
@@ -1965,7 +1965,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     switch (raw[0]) {
       case 0:
         return EnumOpaque_Struct(
-          _wire2api_OpaqueStruct(raw[1]),
+          _wire2api_HideData(raw[1]),
         );
       case 1:
         return EnumOpaque_Primitive(
@@ -1977,11 +1977,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         );
       case 3:
         return EnumOpaque_Mutex(
-          _wire2api_MutexOpaqueStruct(raw[1]),
+          _wire2api_MutexHideData(raw[1]),
         );
       case 4:
         return EnumOpaque_RwLock(
-          _wire2api_RwLockOpaqueStruct(raw[1]),
+          _wire2api_RwLockHideData(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -2120,8 +2120,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     }
   }
 
-  List<OpaqueStruct> _wire2api_list_OpaqueStruct(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_OpaqueStruct).toList();
+  List<HideData> _wire2api_list_HideData(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_HideData).toList();
   }
 
   List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
@@ -2269,8 +2269,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNested(
-      first: _wire2api_OpaqueStruct(arr[0]),
-      second: _wire2api_OpaqueStruct(arr[1]),
+      first: _wire2api_HideData(arr[0]),
+      second: _wire2api_HideData(arr[1]),
     );
   }
 

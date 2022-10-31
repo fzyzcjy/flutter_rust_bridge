@@ -692,15 +692,31 @@ void main(List<String> args) async {
     });
   });
 
-  group('Opaque feature:', () {
-    test('Create opaque type', () async {
+  group('Opaque type:', () {
+    test('Create and dispose', () async {
       var futureData = api.createOpaque();
       var data = await api.createOpaque();
       data.dispose();
       (await futureData).dispose();
     });
 
-    test('Double Call opaque type fn', () async {
+    test('Simple call', () async {
+      var opaque = await api.createOpaque();
+      var hideData = await api.runOpaque(opaque: opaque);
+
+      expect(
+          hideData,
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      opaque.dispose();
+    });
+
+    test('Double Call', () async {
       var data = await api.createOpaque();
       expect(
           await api.runOpaque(opaque: data),
@@ -723,7 +739,7 @@ void main(List<String> args) async {
       data.dispose();
     });
 
-    test('Call opaque type fn after drop', () async {
+    test('Call after dispose', () async {
       var data = await api.createOpaque();
       expect(
           await api.runOpaque(opaque: data),
@@ -742,7 +758,7 @@ void main(List<String> args) async {
       }
     });
 
-    test('Delete opaque type before complete run', () async {
+    test('Dispose before complete', () async {
       var data = await api.createOpaque();
       var task = api.runOpaqueWithDelay(opaque: data);
       data.dispose();

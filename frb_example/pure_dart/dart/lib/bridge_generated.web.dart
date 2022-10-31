@@ -46,22 +46,22 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  dynamic api2wire_HideData(HideData raw) {
+    return FrbOpaque.share(raw);
+  }
+
+  @protected
   dynamic api2wire_I32(I32 raw) {
     return FrbOpaque.share(raw);
   }
 
   @protected
-  dynamic api2wire_MutexOpaqueStruct(MutexOpaqueStruct raw) {
+  dynamic api2wire_MutexHideData(MutexHideData raw) {
     return FrbOpaque.share(raw);
   }
 
   @protected
-  dynamic api2wire_OpaqueStruct(OpaqueStruct raw) {
-    return FrbOpaque.share(raw);
-  }
-
-  @protected
-  dynamic api2wire_RwLockOpaqueStruct(RwLockOpaqueStruct raw) {
+  dynamic api2wire_RwLockHideData(RwLockHideData raw) {
     return FrbOpaque.share(raw);
   }
 
@@ -360,7 +360,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_enum_opaque(EnumOpaque raw) {
     if (raw is EnumOpaque_Struct) {
-      return [0, api2wire_OpaqueStruct(raw.field0)];
+      return [0, api2wire_HideData(raw.field0)];
     }
     if (raw is EnumOpaque_Primitive) {
       return [1, api2wire_I32(raw.field0)];
@@ -369,10 +369,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return [2, api2wire_BoxDartDebug(raw.field0)];
     }
     if (raw is EnumOpaque_Mutex) {
-      return [3, api2wire_MutexOpaqueStruct(raw.field0)];
+      return [3, api2wire_MutexHideData(raw.field0)];
     }
     if (raw is EnumOpaque_RwLock) {
-      return [4, api2wire_RwLockOpaqueStruct(raw.field0)];
+      return [4, api2wire_RwLockHideData(raw.field0)];
     }
 
     throw Exception('unreachable');
@@ -561,7 +561,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_opaque_nested(OpaqueNested raw) {
-    return [api2wire_OpaqueStruct(raw.first), api2wire_OpaqueStruct(raw.second)];
+    return [api2wire_HideData(raw.first), api2wire_HideData(raw.second)];
   }
 
   @protected

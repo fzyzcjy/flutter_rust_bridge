@@ -11,7 +11,8 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::{__Deref, lazy_static};
 
-use crate::data::{HideData, MyEnum, MyStruct};
+pub use crate::data::HideData;
+use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
@@ -955,36 +956,36 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
     }
 }
 
+/// Opaque types
 pub trait DartDebug: DartSafe + Debug {}
 impl<T: DartSafe + Debug> DartDebug for T {}
 
 pub enum EnumOpaque {
-    Struct(Opaque<OpaqueStruct>),
+    Struct(Opaque<HideData>),
     Primitive(Opaque<i32>),
     TraitObj(Opaque<Box<dyn DartDebug>>),
-    Mutex(Opaque<Mutex<OpaqueStruct>>),
-    RwLock(Opaque<RwLock<OpaqueStruct>>),
+    Mutex(Opaque<Mutex<HideData>>),
+    RwLock(Opaque<RwLock<HideData>>),
 }
 
-/// Opaque types
-pub struct OpaqueStruct(HideData);
+/// [`HideData`] has private fields.
 
 pub struct OpaqueNested {
-    pub first: Opaque<OpaqueStruct>,
-    pub second: Opaque<OpaqueStruct>,
+    pub first: Opaque<HideData>,
+    pub second: Opaque<HideData>,
 }
 
-pub fn create_opaque() -> Opaque<OpaqueStruct> {
-    Opaque::new(OpaqueStruct(HideData::new()))
+pub fn create_opaque() -> Opaque<HideData> {
+    Opaque::new(HideData::new())
 }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
     [
-        EnumOpaque::Struct(Opaque::new(OpaqueStruct(HideData::new()))),
+        EnumOpaque::Struct(Opaque::new(HideData::new())),
         EnumOpaque::Primitive(Opaque::new(42)),
         EnumOpaque::TraitObj(opaque_dyn!("String")),
-        EnumOpaque::Mutex(Opaque::new(Mutex::new(OpaqueStruct(HideData::new())))),
-        EnumOpaque::RwLock(Opaque::new(RwLock::new(OpaqueStruct(HideData::new())))),
+        EnumOpaque::Mutex(Opaque::new(Mutex::new(HideData::new()))),
+        EnumOpaque::RwLock(Opaque::new(RwLock::new(HideData::new()))),
     ]
 }
 
@@ -994,34 +995,31 @@ pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
         EnumOpaque::Primitive(p) => format!("{:?}", p.deref()),
         EnumOpaque::TraitObj(t) => format!("{:?}", t.deref()),
         EnumOpaque::Mutex(m) => {
-            format!("{:?}", m.lock().unwrap().0.hide_data())
+            format!("{:?}", m.lock().unwrap().hide_data())
         }
         EnumOpaque::RwLock(r) => {
-            format!("{:?}", r.read().unwrap().0.hide_data())
+            format!("{:?}", r.read().unwrap().hide_data())
         }
     }
 }
 
-pub fn run_opaque(opaque: Opaque<OpaqueStruct>) -> String {
-    opaque.0.hide_data()
+pub fn run_opaque(opaque: Opaque<HideData>) -> String {
+    opaque.hide_data()
 }
 
-pub fn run_opaque_with_delay(opaque: Opaque<OpaqueStruct>) -> String {
+pub fn run_opaque_with_delay(opaque: Opaque<HideData>) -> String {
     sleep(Duration::from_millis(1000));
-    opaque.0.hide_data()
+    opaque.hide_data()
 }
 
-pub fn opaque_array() -> [Opaque<OpaqueStruct>; 2] {
-    [
-        Opaque::new(OpaqueStruct(HideData::new())),
-        Opaque::new(OpaqueStruct(HideData::new())),
-    ]
+pub fn opaque_array() -> [Opaque<HideData>; 2] {
+    [Opaque::new(HideData::new()), Opaque::new(HideData::new())]
 }
 
 pub fn create_nested_opaque() -> OpaqueNested {
     OpaqueNested {
-        first: Opaque::new(OpaqueStruct(HideData::new())),
-        second: Opaque::new(OpaqueStruct(HideData::new())),
+        first: Opaque::new(HideData::new()),
+        second: Opaque::new(HideData::new()),
     }
 }
 

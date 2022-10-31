@@ -154,9 +154,11 @@ class FrbOpaque {
   /// moved into that new opaque pointer.
   void dispose() {
     if (!isStale()) {
-      _finalizer.detach(this);
-      _dropArcCaller(_ptr, _drop);
+      var ptr = _ptr;
       _ptr = 0;
+
+      _finalizer.detach(this);
+      _dropArcCaller(ptr, _drop);
     }
   }
 
