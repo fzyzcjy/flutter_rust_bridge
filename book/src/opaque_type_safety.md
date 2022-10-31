@@ -25,8 +25,7 @@ If dispose is called on the Dart side before the function call completes, Rust t
  
 ### Case 1: Simple call. 
 
-#### Rust `api.rs`:
-
+Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
@@ -41,8 +40,7 @@ pub fn run_opaque(opaque: Opaque<HideData>) -> String {
 }
 ```
 
-#### Dart: (test:'Simple call' frb_example/pure_dart/dart/lib/main.dart)
-
+Dart: (test:'Simple call' frb_example/pure_dart/dart/lib/main.dart)
 ```dart
 // (Arc counter = 1) Dart has full ownership.
 var opaque = await api.createOpaque();
@@ -61,7 +59,7 @@ opaque.dispose();
 
 ### Case 2: Call after dispose.
 
-#### Rust `api.rs`:
+Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
@@ -76,8 +74,7 @@ pub fn run_opaque(opaque: Opaque<HideData>) -> String {
 }
 ```
 
-#### Dart: (test:'Call after dispose' frb_example/pure_dart/dart/lib/main.dart)
-
+Dart: (test:'Call after dispose' frb_example/pure_dart/dart/lib/main.dart)
 ```dart
 // (Arc counter = 1) Dart has full ownership.
 var opaque = await api.createOpaque();
@@ -96,7 +93,7 @@ try {
 
 ### Case 3: Dispose before complete.
 
-#### Rust `api.rs`:
+Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
@@ -116,8 +113,7 @@ pub fn run_opaque_with_delay(opaque: Opaque<HideData>) -> String {
 }
 ```
 
-#### Dart:
-
+Dart:
 ```dart
 // (Arc counter = 1) Dart has full ownership.
 var opaque = await api.createOpaque();
@@ -144,7 +140,7 @@ await unawait_task;
 
 ### Case 4: Multi call.
 
-#### Rust `api.rs`:
+Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
@@ -159,8 +155,7 @@ pub fn run_opaque(opaque: Opaque<HideData>) -> String {
 }
 ```
 
-#### Dart: (test:'Double Call' frb_example/pure_dart/dart/lib/main.dart)
-
+Dart: (test:'Double Call' frb_example/pure_dart/dart/lib/main.dart)
 ```dart
 
 // (Arc counter = 1) Dart has full ownership.
@@ -182,7 +177,7 @@ opaque.dispose();
 
 ### Case 5: Double call with dispose before complete.
 
-#### Rust `api.rs`:
+Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
@@ -197,8 +192,7 @@ pub fn run_opaque(opaque: Opaque<HideData>) -> String {
 }
 ```
 
-#### Dart:
-
+Dart:
 ```dart
 
 // (Arc counter = 1) Dart has full ownership.
@@ -230,7 +224,7 @@ opaque.dispose();
 
 ### Case 6: Dispose was not called (native).
 
-#### Rust `api.rs`:
+Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
@@ -245,8 +239,7 @@ pub fn run_opaque(opaque: Opaque<HideData>) -> String {
 }
 ```
 
-#### Dart:
-
+Dart:
 ```dart
 
 // (Arc counter = 1) Dart has full ownership.
@@ -272,7 +265,7 @@ String hideData = await api.runOpaque(opaque);
 
 ### Case 7: Dispose was not called (web).
 
-#### Rust `api.rs`:
+Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
@@ -287,8 +280,7 @@ pub fn run_opaque(opaque: Opaque<HideData>) -> String {
 }
 ```
 
-#### Dart:
-
+Dart:
 ```dart
 
 // (Arc counter = 1) Dart has full ownership.
