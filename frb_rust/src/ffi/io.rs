@@ -28,7 +28,7 @@ pub struct Timestamp {
 
 /// A wrapper to transfer ownership of T to Dart.
 ///
-/// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
+/// This type is equivalent to an [`Arc<T>`]. The inner pointer may
 /// be None if a nullptr is received from Dart, signifying that this pointer
 /// has been disposed.
 ///
