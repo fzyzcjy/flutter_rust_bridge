@@ -1867,8 +1867,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   HideData? _wire2api_SyncReturn_Option_HideData(dynamic raw) {
-    print('HERE ${raw.runtimeType.toString()}');
-    if (raw == null || raw.runtimeType.toString() == 'JSNull') return null;
+    if (raw == null) {
+      return null;
+    }
     var pointBitLen = raw.length ~/ 4;
     var ptrList = List.filled(pointBitLen, 0);
     var dropList = List.filled(pointBitLen, 0);
@@ -1901,8 +1902,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   String? _wire2api_SyncReturn_Option_String(dynamic raw) {
-    print('HERE ${raw.runtimeType.toString()}');
-    if (raw == null || raw.runtimeType.toString() == 'JSNull') return null;
+    if (raw == null) {
+      return null;
+    }
     return utf8.decode(raw);
   }
 

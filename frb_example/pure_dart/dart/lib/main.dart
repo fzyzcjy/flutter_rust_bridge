@@ -891,16 +891,6 @@ void main(List<String> args) async {
           "})");
       data.second.dispose();
     });
-
-    test('Sync option', () async {
-      var data = api.syncOption();
-      var data2 = api.syncOptionNull();
-      var data3 = api.syncOptionOpaque();
-      expect(data == null, false);
-      expect(data2 == null, true);
-      expect(data3 == null, false);
-      data3?.dispose();
-    });
   });
 
   group('Sync opaque feature:', () {
@@ -949,6 +939,19 @@ void main(List<String> args) async {
       } on StateError catch (e) {
         expect(e.toString(), 'Bad state: Use after dispose.');
       }
+    });
+    test('Return option', () async {
+      var data = api.syncOption();
+      var data2 = api.syncOptionNull();
+      var data3 = api.syncOptionOpaque();
+      expect(data == null, false);
+      expect(data2 == null, true);
+      expect(data3 == null, false);
+      data3?.dispose();
+    });
+
+    test('Return void', () async {
+      api.syncVoid();
     });
   });
 }
