@@ -127,7 +127,7 @@ impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
 #[macro_export]
 macro_rules! opaque_dyn {
     ($ex:expr) => {
-        Opaque::new(std::boxed::Box::new($ex))
+        $crate::Opaque::new(::std::boxed::Box::new($ex))
     };
 }
 
