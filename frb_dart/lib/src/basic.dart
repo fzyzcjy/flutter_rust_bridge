@@ -146,7 +146,7 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
 @immutable
 class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
-  final WireSyncReturnStruct Function() callFfi;
+  final dynamic Function() callFfi;
 
   /// Parse the returned data from the underlying function
   final S? Function(dynamic) parseSuccessData;
