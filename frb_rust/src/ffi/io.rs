@@ -27,7 +27,7 @@ pub struct Timestamp {
 
 /// A wrapper to transfer ownership of T to Dart.
 ///
-/// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
+/// This type is equivalent to an [`Arc<T>`]. The inner pointer may
 /// be None if a nullptr is received from Dart, signifying that this pointer
 /// has been disposed.
 ///
@@ -168,7 +168,7 @@ impl<T> From<Opaque<T>> for ffi::DartCObject {
 #[macro_export]
 macro_rules! opaque_dyn {
     ($ex:expr) => {
-        Opaque::new(std::boxed::Box::new($ex))
+        $crate::Opaque::new(::std::boxed::Box::new($ex))
     };
 }
 

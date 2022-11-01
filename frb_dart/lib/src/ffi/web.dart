@@ -113,13 +113,13 @@ external int _shareArcCaller(int ptr, int sharePtr);
 ///
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque {
-  /// Pointer to a Rust type.
+  /// Pointer to this opaque Rust type.
   late int _ptr;
 
-  /// Pointer to a closure that removes ownership Rust type.
+  /// Pointer to a Rust function to drop ownership of this opaque type.
   late int _drop;
 
-  /// Pointer to a closure that shares ownership of the Rust type.
+  /// Pointer to a Rust function to share ownership of this opaque type.
   late int _share;
 
   /// Finalizer of an opaque type at the provided pointers.
@@ -145,13 +145,9 @@ class FrbOpaque {
   /// This function should be run at least once during the lifetime of the
   /// program, and can be run many times.
   ///
-  /// When passed into a Rust function, Rust enacts *shared ownership* and
-  /// inhibits disposal of this pointer's contents, even if [dispose] is
-  /// immediately run.
-  ///
-  /// Furthermore, if that same function reuses the allocation (usually by
-  /// returning the same opaque pointer) ownership of this pointer will be
-  /// moved into that new opaque pointer.
+  /// When passed into a Rust function, Rust enacts *shared ownership*,
+  /// if this pointer is shared with Rust when [dispose] is called,
+  /// ownership is fully transferred to Rust else this pointer is cleared.
   void dispose() {
     if (!isStale()) {
       var ptr = _ptr;
@@ -177,6 +173,5 @@ class FrbOpaque {
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
-  // not nullptr, this is an internal bookkeeping method
   bool isStale() => _ptr == 0;
 }
