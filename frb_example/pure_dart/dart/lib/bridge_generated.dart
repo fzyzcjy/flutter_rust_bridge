@@ -1867,6 +1867,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   HideData? _wire2api_SyncReturn_Option_HideData(dynamic raw) {
+    print('HERE ${raw.runtimeType.toString()} - ${raw.toString()}');
     if (raw == null) {
       return null;
     }
@@ -1902,6 +1903,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   String? _wire2api_SyncReturn_Option_String(dynamic raw) {
+    print('HERE ${raw.runtimeType.toString()} - ${raw.toString()}');
     if (raw == null) {
       return null;
     }

@@ -97,7 +97,9 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             if let IrTypeSyncReturn::Option(_) = **ty {
                 panic!("Nested option is not suppored.")
             }
-            format!("if (raw == null) {{return null;}} {}", not_opaque_body(ty))
+            format!("
+            print('HERE ${{raw.runtimeType.toString()}} - ${{raw.toString()}}');
+            if (raw == null) {{return null;}} {}", not_opaque_body(ty))
         } else {
             not_opaque_body(&self.ir)
         }
