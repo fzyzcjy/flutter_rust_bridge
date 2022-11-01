@@ -416,6 +416,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSyncOptionOpaqueConstMeta;
 
+  void syncVoid({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncVoidConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;

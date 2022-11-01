@@ -39,9 +39,7 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
                         IrTypePrimitive::F32 => "Float32",
                         IrTypePrimitive::F64 => "Float64",
                         IrTypePrimitive::Unit => {
-                            r#"
-                                return;
-                                "#
+                            return "return;".to_owned();
                         }
                         _ => panic!(
                             "SyncReturn generator for Dart: type {} is not supported",

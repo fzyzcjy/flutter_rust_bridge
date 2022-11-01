@@ -1399,6 +1399,16 @@ fn wire_sync_option_opaque_impl() -> support::WireSyncReturnStruct {
         move || sync_option_opaque(),
     )
 }
+fn wire_sync_void_impl() -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_void",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Ok(sync_void()),
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,

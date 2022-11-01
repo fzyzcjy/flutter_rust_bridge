@@ -1058,3 +1058,7 @@ pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
 pub fn sync_option_opaque() -> Result<SyncReturn<Option<Opaque<HideData>>>> {
     Ok(SyncReturn(Some(Opaque::new(HideData::new()))))
 }
+
+pub fn sync_void() -> SyncReturn<()> {
+    SyncReturn(())
+}

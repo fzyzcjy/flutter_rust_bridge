@@ -1577,6 +1577,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  void syncVoid({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_void(),
+      parseSuccessData: _wire2api_SyncReturn_unit,
+      constMeta: kSyncVoidConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncVoidConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_void",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -1951,6 +1966,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   int _wire2api_SyncReturn_u8(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint8(0);
+  }
+
+  void _wire2api_SyncReturn_unit(dynamic raw) {
+    return;
   }
 
   TestIdArray2 _wire2api_TestId_array_2(dynamic raw) {

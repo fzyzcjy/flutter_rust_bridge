@@ -2620,6 +2620,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_opaque');
   late final _wire_sync_option_opaque = _wire_sync_option_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
 
+  WireSyncReturnStruct wire_sync_void() {
+    return _wire_sync_void();
+  }
+
+  late final _wire_sync_voidPtr = _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_void');
+  late final _wire_sync_void = _wire_sync_voidPtr.asFunction<WireSyncReturnStruct Function()>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
