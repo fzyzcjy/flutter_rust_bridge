@@ -63,11 +63,9 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
 /// # Safety
 ///
 /// This function should never be called manually.
-extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<T>::increment_strong_count(ptr as _);
-        ptr
-    }
+unsafe extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
+    Arc::<T>::increment_strong_count(ptr as _);
+    ptr
 }
 
 /// Dropper opaque data.
@@ -75,10 +73,8 @@ extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
 /// # Safety
 ///
 /// This function should never be called manually.
-extern "C" fn drop_arc<T>(ptr: *const c_void) {
+unsafe extern "C" fn drop_arc<T>(ptr: *const c_void) {
     // Dart has ownership of this copy of Arc, and can only share out clones,
     // so this is safe to call exactly once.
-    unsafe {
-        Arc::<T>::decrement_strong_count(ptr as _);
-    }
+    Arc::<T>::decrement_strong_count(ptr as _);
 }

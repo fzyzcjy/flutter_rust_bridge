@@ -2,6 +2,8 @@ import 'dart:ffi' as ffi;
 import 'dart:ffi';
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
+import 'package:meta/meta.dart';
+
 import 'stub.dart' show FlutterRustBridgeWireBase;
 export 'stub.dart'
     show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
@@ -40,25 +42,25 @@ class WireSyncReturnStruct extends ffi.Struct {
 /// Recipients of this type should call [dispose] at some point during runtime.
 class FrbOpaque implements Finalizable {
   /// Pointer to this opaque Rust type.
-  late ffi.Pointer _ptr;
+  ffi.Pointer _ptr;
 
   /// Pointer to a Rust function to drop ownership of this opaque type.
-  late ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
+  final ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
 
   /// Pointer to a Rust function to share ownership of this opaque type.
-  late ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>>
+  final ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>>
       _share;
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int ptr, int drop, int share, int size) {
+  @internal
+  FrbOpaque.unsafe(int ptr, int drop, int share, int size)
+      : _ptr = ffi.Pointer.fromAddress(ptr),
+        _drop = ffi.Pointer.fromAddress(drop),
+        _share = ffi.Pointer.fromAddress(share) {
     assert(ptr > 0);
     assert(drop > 0);
     assert(share > 0);
-
-    _ptr = ffi.Pointer.fromAddress(ptr);
-    _drop = ffi.Pointer.fromAddress(drop);
-    _share = ffi.Pointer.fromAddress(share);
-    _finalizer = NativeFinalizer(ffi.Pointer.fromAddress(drop));
+    _finalizer = NativeFinalizer(_drop);
     _finalizer.attach(this, _ptr.cast(), detach: this, externalSize: size);
   }
 
@@ -88,6 +90,7 @@ class FrbOpaque implements Finalizable {
   /// Rust object.
   ///
   /// Throws a [StateError] if called after [dispose].
+  @internal
   static ffi.Pointer share(FrbOpaque ptr) {
     if (!ptr.isStale()) {
       return ptr._share
