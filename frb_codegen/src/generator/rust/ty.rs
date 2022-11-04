@@ -106,6 +106,7 @@ impl<'a> TypeRustGenerator<'a> {
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
             SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
+            DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
         }
     }
 }
