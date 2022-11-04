@@ -13,6 +13,7 @@ pub mod handler;
 mod macros;
 pub mod rust2dart;
 pub mod support;
+pub mod dart_api;
 
 #[cfg(wasm)]
 mod wasm_bindgen_src;

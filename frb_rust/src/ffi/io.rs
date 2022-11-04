@@ -30,3 +30,18 @@ mod tests {
         assert_eq!(ns, 567_123_000);
     }
 }
+
+
+struct DartOpaque(Dart_PersistentHandle);
+
+impl DartOpaque {
+    pub fn new(handle: Dart_Handle) -> Self {
+        DartOpaque(unsafe {Dart_NewPersistentHandle_DL_Trampolined(handle)})
+    }
+}
+
+impl Drop for DartOpaque {
+    fn drop(&mut self) {
+        unsafe{Dart_DeletePersistentHandle_DL_Trampolined(self.0)}
+    }
+} 
