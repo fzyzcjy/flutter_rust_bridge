@@ -459,6 +459,11 @@ pub fn wire_opaque_array(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_opaque_vec(port_: MessagePort) {
+    wire_opaque_vec_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_nested_opaque(port_: MessagePort) {
     wire_create_nested_opaque_impl(port_)
 }

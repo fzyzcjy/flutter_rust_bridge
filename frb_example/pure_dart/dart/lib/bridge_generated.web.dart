@@ -931,6 +931,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_opaque_array(NativePortType port_);
 
+  external void wire_opaque_vec(NativePortType port_);
+
   external void wire_create_nested_opaque(NativePortType port_);
 
   external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
@@ -1193,6 +1195,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       wasmModule.wire_run_opaque_with_delay(port_, opaque);
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
+
+  void wire_opaque_vec(NativePortType port_) => wasmModule.wire_opaque_vec(port_);
 
   void wire_create_nested_opaque(NativePortType port_) => wasmModule.wire_create_nested_opaque(port_);
 

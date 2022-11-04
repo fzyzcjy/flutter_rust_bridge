@@ -1016,6 +1016,10 @@ pub fn opaque_array() -> [Opaque<HideData>; 2] {
     [Opaque::new(HideData::new()), Opaque::new(HideData::new())]
 }
 
+pub fn opaque_vec() -> Vec<Opaque<HideData>> {
+    vec![Opaque::new(HideData::new()), Opaque::new(HideData::new())]
+}
+
 pub fn create_nested_opaque() -> OpaqueNested {
     OpaqueNested {
         first: Opaque::new(HideData::new()),

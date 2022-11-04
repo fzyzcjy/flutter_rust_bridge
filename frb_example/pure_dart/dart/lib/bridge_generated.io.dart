@@ -2512,6 +2512,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_opaque_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_opaque_array');
   late final _wire_opaque_array = _wire_opaque_arrayPtr.asFunction<void Function(int)>();
 
+  void wire_opaque_vec(
+    int port_,
+  ) {
+    return _wire_opaque_vec(
+      port_,
+    );
+  }
+
+  late final _wire_opaque_vecPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_opaque_vec');
+  late final _wire_opaque_vec = _wire_opaque_vecPtr.asFunction<void Function(int)>();
+
   void wire_create_nested_opaque(
     int port_,
   ) {

@@ -1298,6 +1298,16 @@ fn wire_opaque_array_impl(port_: MessagePort) {
         move || move |task_callback| Ok(opaque_array()),
     )
 }
+fn wire_opaque_vec_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "opaque_vec",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(opaque_vec()),
+    )
+}
 fn wire_create_nested_opaque_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

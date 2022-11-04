@@ -380,6 +380,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
 
+  Future<List<HideData>> opaqueVec({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kOpaqueVecConstMeta;
+
   Future<OpaqueNested> createNestedOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateNestedOpaqueConstMeta;

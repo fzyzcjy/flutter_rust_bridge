@@ -1440,6 +1440,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<List<HideData>> opaqueVec({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_opaque_vec(port_),
+      parseSuccessData: _wire2api_list_HideData,
+      constMeta: kOpaqueVecConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kOpaqueVecConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "opaque_vec",
+        argNames: [],
+      );
+
   Future<OpaqueNested> createNestedOpaque({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_nested_opaque(port_),

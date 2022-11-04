@@ -467,6 +467,11 @@ pub extern "C" fn wire_opaque_array(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_opaque_vec(port_: i64) {
+    wire_opaque_vec_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_create_nested_opaque(port_: i64) {
     wire_create_nested_opaque_impl(port_)
 }
