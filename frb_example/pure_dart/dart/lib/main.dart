@@ -692,15 +692,15 @@ void main(List<String> args) async {
     });
   });
 
-  group('Opaque type:', () {
-    test('Create and dispose', () async {
+  group('opaque type', () {
+    test('create and dispose', () async {
       var futureData = api.createOpaque();
       var data = await api.createOpaque();
       data.dispose();
       (await futureData).dispose();
     });
 
-    test('Simple call', () async {
+    test('simple call', () async {
       var opaque = await api.createOpaque();
       var hideData = await api.runOpaque(opaque: opaque);
 
@@ -716,7 +716,7 @@ void main(List<String> args) async {
       opaque.dispose();
     });
 
-    test('Double Call', () async {
+    test('double Call', () async {
       var data = await api.createOpaque();
       expect(
           await api.runOpaque(opaque: data),
@@ -739,7 +739,7 @@ void main(List<String> args) async {
       data.dispose();
     });
 
-    test('Call after dispose', () async {
+    test('call after dispose', () async {
       var data = await api.createOpaque();
       expect(
           await api.runOpaque(opaque: data),
@@ -751,14 +751,11 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      try {
-        await api.runOpaque(opaque: data);
-      } on StateError catch (e) {
-        expect(e.toString(), 'Bad state: Use after dispose.');
-      }
+
+      expect(() => api.runOpaque(opaque: data), throwsA(isA<StateError>()));
     });
 
-    test('Dispose before complete', () async {
+    test('dispose before complete', () async {
       var data = await api.createOpaque();
       var task = api.runOpaqueWithDelay(opaque: data);
       data.dispose();
@@ -771,14 +768,10 @@ void main(List<String> args) async {
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \"static str\" "
           "})");
-      try {
-        await api.runOpaque(opaque: data);
-      } on StateError catch (e) {
-        expect(e.toString(), 'Bad state: Use after dispose.');
-      }
+      expect(() => api.runOpaque(opaque: data), throwsA(isA<StateError>()));
     });
 
-    test('Create array of opaque type', () async {
+    test('create array of opaque type', () async {
       var data = await api.opaqueArray();
       for (var v in data) {
         expect(
@@ -791,15 +784,11 @@ void main(List<String> args) async {
             "lifetime: \"static str\" "
             "})");
         v.dispose();
-        try {
-          await api.runOpaque(opaque: v);
-        } on StateError catch (e) {
-          expect(e.toString(), 'Bad state: Use after dispose.');
-        }
+        expect(() => api.runOpaque(opaque: v), throwsA(isA<StateError>()));
       }
     });
 
-    test('Create enums of opaque type', () async {
+    test('create enums of opaque type', () async {
       var data = await api.createArrayOpaqueEnum();
 
       expect(
@@ -840,14 +829,10 @@ void main(List<String> args) async {
           "lifetime: \\\"static str\\\" "
           "})\"");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
-      try {
-        await api.runEnumOpaque(opaque: data[4]);
-      } on StateError catch (e) {
-        expect(e.toString(), 'Bad state: Use after dispose.');
-      }
+      expect(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<StateError>()));
     });
 
-    test('Opaque field', () async {
+    test('opaque field', () async {
       var data = await api.createNestedOpaque();
       await api.runNestedOpaque(opaque: data);
 
@@ -870,16 +855,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.first.dispose();
-      try {
-        await api.runOpaque(opaque: data.first);
-      } on StateError catch (e) {
-        expect(e.toString(), 'Bad state: Use after dispose.');
-      }
-      try {
-        await api.runNestedOpaque(opaque: data);
-      } on StateError catch (e) {
-        expect(e.toString(), 'Bad state: Use after dispose.');
-      }
+      expect(() => api.runOpaque(opaque: data.first), throwsA(isA<StateError>()));
+      expect(() => api.runNestedOpaque(opaque: data), throwsA(isA<StateError>()));
       expect(
           await api.runOpaque(opaque: data.second),
           "content - Some(PrivateData "
