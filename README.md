@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-36-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-37-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -90,6 +90,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center"><a href="https://matrix.to/#/@vincentherl:matrix.org"><img src="https://avatars.githubusercontent.com/u/5569193?v=4?s=100" width="100px;" alt="Vincent Herlemont"/><br /><sub><b>Vincent Herlemont</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=vincent-herlemont" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/CicadaCinema"><img src="https://avatars.githubusercontent.com/u/52425971?v=4?s=100" width="100px;" alt="CicadaCinema"/><br /><sub><b>CicadaCinema</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=CicadaCinema" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
