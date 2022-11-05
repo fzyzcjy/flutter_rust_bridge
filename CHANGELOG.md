@@ -1,3 +1,8 @@
+## 1.49.1
+
+* Bump constraint on ffigen #823 (thanks @CicadaCinema)
+* Set default version strategy requirement for chrono #821 (thanks @vincent-herlemont)
+
 ## 1.49.0
 
 * Fix return for struct with methods #764 (thanks @Zaitam)
