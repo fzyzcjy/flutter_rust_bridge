@@ -127,6 +127,8 @@ More specifically, thanks for all these contributions:
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [banool](https://github.com/banool): Fix symbol-stripping doc.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
+* [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
+* [CicadaCinema](https://github.com/CicadaCinema): Bump version.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
 * [alexthe2](https://github.com/alexthe2): Improve doc.
 * [tmpfs](https://github.com/tmpfs): Improve doc.
