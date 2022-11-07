@@ -1,10 +1,6 @@
-use std::{ffi::c_void, iter::FromIterator, mem, ops, sync::Arc};
-
-use super::drop_arc;
-use super::share_arc;
+use std::{ffi::c_void, iter::FromIterator, mem};
 
 use super::DartAbi;
-use super::IntoDart;
 use super::MessagePort;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
@@ -14,13 +10,17 @@ pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
-
+use crate::DartSafe;
+use crate::Opaque;
 pub use crate::wasm_bindgen_src::transfer::*;
 
-use crate::DartSafe;
+pub trait IntoDart {
+    fn into_dart(self) -> DartAbi;
+}
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
+impl<T: DartSafe> IntoDartExceptPrimitive for Opaque<T> {}
 impl IntoDartExceptPrimitive for String {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
@@ -151,6 +151,13 @@ impl<T> IntoDart for *mut T {
     #[inline]
     fn into_dart(self) -> DartAbi {
         (self as usize).into_dart()
+    }
+}
+
+impl<T: DartSafe> IntoDart for Opaque<T> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.into()
     }
 }
 
@@ -386,84 +393,15 @@ pub struct Timestamp {
     pub ns: u32,
 }
 
-/// A wrapper to transfer ownership of T to Dart.
-///
-/// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
-/// be None if a nullptr is received from Dart, signifying that this pointer
-/// has been disposed.
-///
-/// Extensions for [`sync::RwLock`] and [`sync::Mutex`] are provided.
-///
-/// ## Naming the inner type
-///
-/// When an `Opaque<T>` is transformed into a Dart type, T's string
-/// representation undergoes some transformations to become a valid Dart type:
-/// - Rust keywords (dyn, 'static, DartSafe, etc.) are automatically removed.
-/// - ASCII alphanumerics are kept, all other characters are ignored.
-///
-/// ## Trait objects
-///
-/// Trait objects may be put behind opaque pointers, but they must implement
-/// [`DartSafe`] to be safely sent to Dart. For example, this declaration can
-/// be used across the FFI border:
-///
-/// ```rust
-/// use flutter_rust_bridge::*;
-/// use std::fmt::Debug;
-/// use std::panic::{UnwindSafe, RefUnwindSafe};
-///
-/// // Rust does not allow multiple non-auto traits in trait objects, so this
-/// // is one workaround.
-/// pub trait DartDebug: DartSafe + Debug {}
-///
-/// impl<T: DartSafe + Debug> DartDebug for T {}
-///
-/// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
-///
-/// // creating a DebugWrapper using the opaque_dyn macro
-/// let wrap = DebugWrapper(opaque_dyn!("foobar"));
-/// // it's possible to name it directly
-/// pub struct DebugWrapper2(pub Opaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
-/// ```
-#[repr(transparent)]
-#[derive(Debug, Clone)]
-pub struct Opaque<T: ?Sized + DartSafe> {
-    pub(crate) ptr: Arc<T>,
-}
-
-impl<T: ?Sized + DartSafe> ops::Deref for Opaque<T> {
-    type Target = T;
-
-    fn deref(&self) -> &Self::Target {
-        self.ptr.as_ref()
-    }
-}
-
-impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
-    fn from(ptr: Arc<T>) -> Self {
-        Self { ptr }
-    }
-}
-
-impl<T: DartSafe> Opaque<T> {
-    pub fn new(value: T) -> Self {
-        Self {
-            ptr: Arc::new(value),
-        }
-    }
-}
-
 /// Dropper opaque data by type specific function.
 ///
 /// # Safety
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub fn drop_arc_caller(ptr: *const c_void, ptr_drop_fn: *const c_void) {
-    unsafe {
-        let drop_fn: extern "C" fn(*const c_void) = mem::transmute(ptr_drop_fn);
-        drop_fn(ptr);
-    }
+pub unsafe fn drop_arc_caller(ptr: *const c_void, ptr_drop_fn: *const c_void) {
+    let drop_fn: extern "C" fn(*const c_void) = mem::transmute(ptr_drop_fn);
+    drop_fn(ptr);
 }
 
 /// Equivalent to a [Arc::clone()], but directly in terms of raw pointers by
@@ -473,65 +411,9 @@ pub fn drop_arc_caller(ptr: *const c_void, ptr_drop_fn: *const c_void) {
 ///
 /// This function should never be called manually.
 #[wasm_bindgen]
-pub fn share_arc_caller(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
-    unsafe {
-        let share_fn: extern "C" fn(*const c_void) -> *const c_void = mem::transmute(ptr_share_fn);
-        share_fn(ptr)
-    }
-}
-
-impl<T: DartSafe> IntoDart for Opaque<T> {
-    fn into_dart(self) -> DartAbi {
-        let ptr = Arc::into_raw(self.ptr);
-        let drop = drop_arc::<T> as *const c_void;
-        let share = share_arc::<T> as *const c_void;
-        let size = mem::size_of::<T>();
-
-        vec![
-            ptr.into_dart(),
-            drop.into_dart(),
-            share.into_dart(),
-            size.into_dart(),
-        ]
-        .into_dart()
-    }
-}
-
-impl<T: DartSafe> IntoDart for Vec<Opaque<T>> {
-    #[inline]
-    fn into_dart(self) -> DartAbi {
-        Array::from_iter(self.into_iter().map(IntoDart::into_dart)).into()
-    }
-}
-
-impl<const N: usize, T: DartSafe> IntoDart for [Opaque<T>; N] {
-    #[inline]
-    fn into_dart(self) -> DartAbi {
-        let boxed: Box<[Opaque<T>]> = Box::new(self);
-        boxed.into_vec().into_dart()
-    }
-}
-
-/// Macro helper to instantiate an `Opaque<dyn Trait>`, as Rust does not
-/// support custom DSTs on stable.
-///
-/// Example:
-///
-/// ```rust
-/// use std::fmt::Debug;
-/// use flutter_rust_bridge::*;
-///
-/// pub trait MyDebug: DartSafe + Debug {}
-///
-/// impl<T: DartSafe + Debug> MyDebug for T {}
-///
-/// let opaque: Opaque<Box<dyn MyDebug>> = opaque_dyn!("foobar");
-/// ```
-#[macro_export]
-macro_rules! opaque_dyn {
-    ($ex:expr) => {
-        Opaque::new(std::boxed::Box::new($ex))
-    };
+pub unsafe fn share_arc_caller(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
+    let share_fn: extern "C" fn(*const c_void) -> *const c_void = mem::transmute(ptr_share_fn);
+    share_fn(ptr)
 }
 
 #[cfg(test)]
