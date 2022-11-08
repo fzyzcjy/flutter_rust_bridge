@@ -110,12 +110,12 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
 /// Recipients of this type should call [dispose] at some point during runtime.
 abstract class FrbOpaque {
   /// Pointer to this opaque Rust type.
-  late int _ptr;
+  int _ptr;
 
   /// This constructor should never be called manually.
-  // ignore: no_leading_underscores_for_local_identifiers
-  FrbOpaque.unsafe(int ptr) : _ptr = ptr {
-    assert(ptr > 0);
+  @internal
+  FrbOpaque.unsafe(this._ptr) {
+    assert(_ptr > 0);
   }
 
   /// Call Rust destructors on the backing memory of this pointer.
@@ -151,6 +151,7 @@ abstract class FrbOpaque {
   /// Rust object.
   ///
   /// Throws a [StateError] if called after [dispose].
+  @internal
   int tryShare() {
     if (!isStale()) {
       return share(_ptr);
@@ -160,11 +161,13 @@ abstract class FrbOpaque {
   }
 
   /// Creates platform specific finalizer.
+  @internal
   static Finalizer createFinalizer(void Function(dynamic) f) {
     return Finalizer(f);
   }
 
   /// Calls platform specific finalizer attach.
+  @internal
   static void attachFinalizer(
       Finalizer finalizer,
       int ptr,
@@ -175,6 +178,7 @@ abstract class FrbOpaque {
   }
 
   /// Calls platform specific finalizer detach.
+  @internal
   static void detachFinalizer(Finalizer finalizer, Object obj) {
     finalizer.detach(obj);
   }

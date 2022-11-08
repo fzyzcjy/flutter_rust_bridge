@@ -46,6 +46,7 @@ abstract class FrbOpaque implements Finalizable {
   ffi.Pointer<ffi.Void> _ptr;
 
   /// This constructor should never be called manually.
+  @internal
   FrbOpaque.unsafe(int ptr) : _ptr = ffi.Pointer.fromAddress(ptr) {
     assert(ptr > 0);
   }
@@ -71,6 +72,7 @@ abstract class FrbOpaque implements Finalizable {
   /// Rust object.
   ///
   /// Throws a [StateError] if called after [dispose].
+  @internal
   ffi.Pointer<ffi.Void> tryShare() {
     if (!isStale()) {
       return share(_ptr);
@@ -97,12 +99,14 @@ abstract class FrbOpaque implements Finalizable {
   bool isStale() => _ptr.address == 0;
 
   /// Creates platform specific finalizer.
+  @internal
   static NativeFinalizer createFinalizer(
       Pointer<NativeFunction<Void Function(Pointer<Void>)>> ptr) {
     return NativeFinalizer(ptr);
   }
 
   /// Calls platform specific finalizer attach.
+  @internal
   static void attachFinalizer(
       NativeFinalizer finalizer, int ptr, Finalizable obj, int size) {
     finalizer.attach(obj, Pointer.fromAddress(ptr),
@@ -110,6 +114,7 @@ abstract class FrbOpaque implements Finalizable {
   }
 
   /// Calls platform specific finalizer detach.
+  @internal
   static void detachFinalizer(NativeFinalizer finalizer, Object obj) {
     finalizer.detach(obj);
   }
