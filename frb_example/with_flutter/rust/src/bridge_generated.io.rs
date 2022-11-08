@@ -146,6 +146,8 @@ pub extern "C" fn drop_box_autoadd_tree_node_0(raw: *mut wire_TreeNode) {
     }
 }
 
+// Section: opaque stuff functions
+
 // Section: impl Wire2Api
 
 impl Wire2Api<String> for *mut wire_uint_8_list {

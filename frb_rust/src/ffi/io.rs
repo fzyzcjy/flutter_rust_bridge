@@ -2,7 +2,6 @@ pub use super::DartAbi;
 pub use super::MessagePort;
 pub use allo_isolate::*;
 
-
 #[cfg(feature = "chrono")]
 #[inline]
 pub fn wire2api_timestamp(ts: i64) -> Timestamp {

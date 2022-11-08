@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:meta/meta.dart';
 export 'package:js/js.dart';
 export 'package:js/js_util.dart' show promiseToFuture, getProperty;
 
@@ -104,40 +105,17 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
 
-@JS("wasm_bindgen.drop_arc_caller")
-external void _dropArcCaller(int ptr, int dropPtr);
-@JS("wasm_bindgen.share_arc_caller")
-external int _shareArcCaller(int ptr, int sharePtr);
-
 /// An opaque pointer to a Rust type.
 ///
 /// Recipients of this type should call [dispose] at some point during runtime.
-class FrbOpaque {
+abstract class FrbOpaque {
   /// Pointer to this opaque Rust type.
-  late int _ptr;
-
-  /// Pointer to a Rust function to drop ownership of this opaque type.
-  late int _drop;
-
-  /// Pointer to a Rust function to share ownership of this opaque type.
-  late int _share;
-
-  /// Finalizer of an opaque type at the provided pointers.
-  static final Finalizer<List<int>> _finalizer = Finalizer((obj) {
-    _dropArcCaller(obj[0], obj[1]);
-  });
+  int _ptr;
 
   /// This constructor should never be called manually.
-  // ignore: no_leading_underscores_for_local_identifiers
-  FrbOpaque.unsafe(int ptr, int drop, int share, int _size) {
-    assert(ptr > 0);
-    assert(drop > 0);
-    assert(share > 0);
-
-    _ptr = ptr;
-    _drop = drop;
-    _share = share;
-    _finalizer.attach(this, [ptr, drop, share], detach: this);
+  @internal
+  FrbOpaque.unsafe(this._ptr) {
+    assert(_ptr > 0);
   }
 
   /// Call Rust destructors on the backing memory of this pointer.
@@ -153,21 +131,56 @@ class FrbOpaque {
       var ptr = _ptr;
       _ptr = 0;
 
-      _finalizer.detach(this);
-      _dropArcCaller(ptr, _drop);
+      drop(ptr);
     }
   }
+
+  /// Rust type specific drop function.
+  ///
+  /// This function should never be called manually.
+  @internal
+  void drop(int ptr);
+
+  /// Rust type specific share function.
+  ///
+  /// This function should never be called manually.
+  @internal
+  int share(int ptr);
 
   /// Increments inner reference counter and returns pointer to the underlying
   /// Rust object.
   ///
   /// Throws a [StateError] if called after [dispose].
-  static dynamic share(FrbOpaque ptr) {
-    if (!ptr.isStale()) {
-      return _shareArcCaller(ptr._ptr, ptr._share);
+  @internal
+  int tryShare() {
+    if (!isStale()) {
+      return share(_ptr);
     } else {
       throw StateError('Use after dispose.');
     }
+  }
+
+  /// Creates platform specific finalizer.
+  @internal
+  static Finalizer createFinalizer(void Function(dynamic) f) {
+    return Finalizer(f);
+  }
+
+  /// Calls platform specific finalizer attach.
+  @internal
+  static void attachFinalizer(
+      Finalizer finalizer,
+      int ptr,
+      dynamic obj,
+      // ignore: no_leading_underscores_for_local_identifiers
+      int _size) {
+    finalizer.attach(obj, ptr, detach: obj);
+  }
+
+  /// Calls platform specific finalizer detach.
+  @internal
+  static void detachFinalizer(Finalizer finalizer, Object obj) {
+    finalizer.detach(obj);
   }
 
   /// Checks whether [dispose] has been called at any point during the lifetime

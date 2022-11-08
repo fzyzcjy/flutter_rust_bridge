@@ -3,7 +3,7 @@ pub type DartAbi = wasm_bindgen::JsValue;
 #[cfg(not(wasm))]
 pub type DartAbi = allo_isolate::ffi::DartCObject;
 
-use std::{ffi::c_void, sync::Arc, ops, mem};
+use std::{mem, ops, sync::Arc};
 
 #[cfg(not(wasm))]
 pub use allo_isolate::IntoDart;
@@ -55,28 +55,6 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
         .map(wire2api_uuid_ref)
         .collect::<Vec<uuid::Uuid>>()
 }
-
-/// Equivalent to a [`Arc::clone()`], but directly in terms of raw pointers.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-unsafe extern "C" fn share_arc<T>(ptr: *const c_void) -> *const c_void {
-    Arc::<T>::increment_strong_count(ptr as _);
-    ptr
-}
-
-/// Dropper opaque data.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-unsafe extern "C" fn drop_arc<T>(ptr: *const c_void) {
-    // Dart has ownership of this copy of Arc, and can only share out clones,
-    // so this is safe to call exactly once.
-    Arc::<T>::decrement_strong_count(ptr as _);
-}
-
 
 /// A wrapper to transfer ownership of T to Dart.
 ///
@@ -148,17 +126,9 @@ impl<T: DartSafe> Opaque<T> {
 impl<T: DartSafe> From<Opaque<T>> for DartAbi {
     fn from(value: Opaque<T>) -> Self {
         let ptr = Arc::into_raw(value.ptr);
-        let drop = drop_arc::<T> as *const c_void;
-        let share = share_arc::<T> as *const c_void;
         let size = mem::size_of::<T>();
 
-        vec![
-            ptr.into_dart(),
-            drop.into_dart(),
-            share.into_dart(),
-            size.into_dart(),
-        ]
-        .into_dart()
+        vec![ptr.into_dart(), size.into_dart()].into_dart()
     }
 }
 

@@ -590,6 +590,83 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
 
 // Section: deallocate functions
 
+// Section: opaque stuff functions
+
+#[wasm_bindgen]
+pub fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
+    unsafe {
+        Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_HideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<HideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_I32(ptr: *const c_void) {
+    unsafe {
+        Arc::<i32>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_MutexHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RwLockHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<HideData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_I32(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<i32>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RwLockHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
 // Section: impl Wire2Api
 
 impl Wire2Api<chrono::Duration> for i64 {

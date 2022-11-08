@@ -93,6 +93,66 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
         }
     }
 
+    fn opaque_drop_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
+        Acc {
+            io: Some(collector.generate(
+                &format!("drop_opaque_{}", self.ir.safe_ident()),
+                [("ptr: *const c_void", "")],
+                None,
+                &format!(
+                    "unsafe {{Arc::<{}>::decrement_strong_count(ptr as _);}}",
+                    self.ir.inner_rust
+                ),
+                crate::target::Target::Io,
+            )),
+            wasm: Some(collector.generate(
+                &format!("drop_opaque_{}", self.ir.safe_ident()),
+                [("ptr: *const c_void", "")],
+                None,
+                &format!(
+                    "unsafe {{Arc::<{}>::decrement_strong_count(ptr as _);}}",
+                    self.ir.inner_rust
+                ),
+                crate::target::Target::Wasm,
+            )),
+            ..Default::default()
+        }
+    }
+
+    fn opaque_share_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
+        Acc {
+            io: Some(collector.generate(
+                &format!("share_opaque_{}", self.ir.safe_ident()),
+                [("ptr: *const c_void", "")],
+                Some("*const c_void"),
+                &format!(
+                    "unsafe {{Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
+                    self.ir.inner_rust
+                ),
+                crate::target::Target::Io,
+            )),
+            wasm: Some(collector.generate(
+                &format!("share_opaque_{}", self.ir.safe_ident()),
+                [("ptr: *const c_void", "")],
+                Some("*const c_void"),
+                &format!(
+                    "unsafe {{Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
+                    self.ir.inner_rust
+                ),
+                crate::target::Target::Wasm,
+            )),
+            ..Default::default()
+        }
+    }
+
     fn impl_intodart(&self) -> String {
         "".to_owned()
     }
