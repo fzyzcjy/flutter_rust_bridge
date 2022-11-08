@@ -18,7 +18,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   /// Only valid on web/WASM platforms.
   factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(FutureOr<WasmModule> module) =>
       FlutterRustBridgeExampleSingleBlockTestImpl(module as ExternalLibrary);
-  FlutterRustBridgeExampleSingleBlockTestImpl.raw(this._platform);
+  FlutterRustBridgeExampleSingleBlockTestImpl.raw(this._platform) {
+    inner_platform = _platform;
+  }
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i32(a);
     var arg1 = api2wire_i32(b);
@@ -1633,7 +1635,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 // Section: wire2api
 
   BoxDartDebug _wire2api_BoxDartDebug(dynamic raw) {
-    return BoxDartDebug.fromRaw(raw[0], raw[1], raw[2], raw[3]);
+    return BoxDartDebug.fromRaw(raw[0], raw[1]);
   }
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {
@@ -1657,7 +1659,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   HideData _wire2api_HideData(dynamic raw) {
-    return HideData.fromRaw(raw[0], raw[1], raw[2], raw[3]);
+    return HideData.fromRaw(raw[0], raw[1]);
   }
 
   HideDataArray2 _wire2api_HideData_array_2(dynamic raw) {
@@ -1665,11 +1667,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   I32 _wire2api_I32(dynamic raw) {
-    return I32.fromRaw(raw[0], raw[1], raw[2], raw[3]);
+    return I32.fromRaw(raw[0], raw[1]);
   }
 
   MutexHideData _wire2api_MutexHideData(dynamic raw) {
-    return MutexHideData.fromRaw(raw[0], raw[1], raw[2], raw[3]);
+    return MutexHideData.fromRaw(raw[0], raw[1]);
   }
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {
@@ -1677,7 +1679,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   RwLockHideData _wire2api_RwLockHideData(dynamic raw) {
-    return RwLockHideData.fromRaw(raw[0], raw[1], raw[2], raw[3]);
+    return RwLockHideData.fromRaw(raw[0], raw[1]);
   }
 
   String _wire2api_String(dynamic raw) {
@@ -2585,3 +2587,4 @@ int api2wire_usize(int raw) {
 int api2wire_weekdays(Weekdays raw) {
   return api2wire_i32(raw.index);
 }
+// Section: finalyzer

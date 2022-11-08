@@ -2,6 +2,7 @@ import 'dart:ffi' as ffi;
 import 'dart:ffi';
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
+
 import 'package:meta/meta.dart';
 
 import 'stub.dart' show FlutterRustBridgeWireBase;
@@ -40,33 +41,16 @@ class WireSyncReturnStruct extends ffi.Struct {
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
-class FrbOpaque implements Finalizable {
+abstract class FrbOpaque implements Finalizable {
   /// Pointer to this opaque Rust type.
-  ffi.Pointer _ptr;
-
-  /// Pointer to a Rust function to drop ownership of this opaque type.
-  final ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer)>> _drop;
-
-  /// Pointer to a Rust function to share ownership of this opaque type.
-  final ffi.Pointer<ffi.NativeFunction<ffi.Pointer Function(ffi.Pointer)>>
-      _share;
+  ffi.Pointer<ffi.Void> _ptr;
 
   /// This constructor should never be called manually.
-  @internal
-  FrbOpaque.unsafe(int ptr, int drop, int share, int size)
-      : _ptr = ffi.Pointer.fromAddress(ptr),
-        _drop = ffi.Pointer.fromAddress(drop),
-        _share = ffi.Pointer.fromAddress(share) {
+  FrbOpaque.unsafe(int ptr)
+      : _ptr = ffi.Pointer.fromAddress(ptr) {
     assert(ptr > 0);
-    assert(drop > 0);
-    assert(share > 0);
-    _finalizer = NativeFinalizer(_drop);
-    _finalizer.attach(this, _ptr.cast(), detach: this, externalSize: size);
   }
 
-  /// The native finalizer runs [_drop] on [_ptr] if the object is garbage
-  /// collected.
-  late final NativeFinalizer _finalizer;
 
   /// Call Rust destructors on the backing memory of this pointer.
   ///
@@ -81,8 +65,7 @@ class FrbOpaque implements Finalizable {
       var ptr = _ptr;
       _ptr = Pointer.fromAddress(0);
 
-      _finalizer.detach(this);
-      _drop.asFunction<void Function(ffi.Pointer)>()(ptr);
+      drop(ptr.cast<ffi.Void>());
     }
   }
 
@@ -90,18 +73,34 @@ class FrbOpaque implements Finalizable {
   /// Rust object.
   ///
   /// Throws a [StateError] if called after [dispose].
-  @internal
-  static ffi.Pointer share(FrbOpaque ptr) {
-    if (!ptr.isStale()) {
-      return ptr._share
-          .asFunction<ffi.Pointer Function(ffi.Pointer)>()(ptr._ptr);
+  ffi.Pointer<ffi.Void> tryShare() {
+    if (!isStale()) {
+      return share(_ptr);
     } else {
       throw StateError('Use after dispose.');
     }
   }
 
+  @internal
+  void drop(ffi.Pointer<ffi.Void> ptr);
+  
+  @internal
+  ffi.Pointer<ffi.Void> share(ffi.Pointer<ffi.Void>  ptr);
+
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
   bool isStale() => _ptr.address == 0;
+
+  static NativeFinalizer createFinalizer(Pointer<NativeFunction<Void Function(Pointer<Void>)>> ptr) {
+    return NativeFinalizer(ptr);
+  }
+
+  static void attachFinalizer(NativeFinalizer finalizer, int ptr, Finalizable obj, int size) {
+    finalizer.attach(obj, Pointer.fromAddress(ptr), detach: obj, externalSize: size);
+  }
+
+  static void detachFinalizer(NativeFinalizer finalizer, Object obj) {
+    finalizer.detach(obj);
+  }
 }

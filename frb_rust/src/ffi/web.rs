@@ -1,7 +1,10 @@
-use std::{ffi::c_void, iter::FromIterator, mem};
+use std::iter::FromIterator;
 
 use super::DartAbi;
 use super::MessagePort;
+pub use crate::wasm_bindgen_src::transfer::*;
+use crate::DartSafe;
+use crate::Opaque;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
@@ -10,9 +13,6 @@ pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
-use crate::DartSafe;
-use crate::Opaque;
-pub use crate::wasm_bindgen_src::transfer::*;
 
 pub trait IntoDart {
     fn into_dart(self) -> DartAbi;
@@ -391,29 +391,6 @@ pub struct Timestamp {
     pub s: i64,
     /// nanoseconds
     pub ns: u32,
-}
-
-/// Dropper opaque data by type specific function.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-#[wasm_bindgen]
-pub unsafe fn drop_arc_caller(ptr: *const c_void, ptr_drop_fn: *const c_void) {
-    let drop_fn: extern "C" fn(*const c_void) = mem::transmute(ptr_drop_fn);
-    drop_fn(ptr);
-}
-
-/// Equivalent to a [Arc::clone()], but directly in terms of raw pointers by
-/// type specific function.
-///
-/// # Safety
-///
-/// This function should never be called manually.
-#[wasm_bindgen]
-pub unsafe fn share_arc_caller(ptr: *const c_void, ptr_share_fn: *const c_void) -> *const c_void {
-    let share_fn: extern "C" fn(*const c_void) -> *const c_void = mem::transmute(ptr_share_fn);
-    share_fn(ptr)
 }
 
 #[cfg(test)]

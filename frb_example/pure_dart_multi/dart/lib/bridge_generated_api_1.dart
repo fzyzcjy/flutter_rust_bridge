@@ -5,10 +5,14 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:meta/meta.dart';
 import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
+
+@internal
+late final ApiClass1Platform inner_platform;
 
 abstract class ApiClass1 {
   /// Documentation on a simple adder function.
@@ -23,7 +27,9 @@ class ApiClass1Impl implements ApiClass1 {
 
   /// Only valid on web/WASM platforms.
   factory ApiClass1Impl.wasm(FutureOr<WasmModule> module) => ApiClass1Impl(module as ExternalLibrary);
-  ApiClass1Impl.raw(this._platform);
+  ApiClass1Impl.raw(this._platform) {
+    inner_platform = _platform;
+  }
   Future<int> simpleAdder1({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i32(a);
     var arg1 = api2wire_i32(b);
@@ -54,10 +60,13 @@ class ApiClass1Impl implements ApiClass1 {
 int api2wire_i32(int raw) {
   return raw;
 }
+// Section: finalyzer
 
 class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
   ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib));
 // Section: api2wire
+
+// Section: finalyzer
 
 // Section: api_fill_to_wire
 

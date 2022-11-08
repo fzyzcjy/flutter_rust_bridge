@@ -90,8 +90,8 @@ impl<'a> Generator<'a> {
         lines.push(format!("use crate::{}::*;", rust_wire_mod));
         lines.push("use flutter_rust_bridge::*;".to_owned());
         lines.push("use core::panic::UnwindSafe;".to_owned());
-        lines.push("use std::sync::RwLock;".to_owned());
-        lines.push("use std::sync::Mutex;".to_owned());
+        lines.push("use std::sync::Arc;".to_owned());
+        lines.push("use std::ffi::c_void;".to_owned());
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));
@@ -137,6 +137,17 @@ impl<'a> Generator<'a> {
         lines += distinct_input_types
             .iter()
             .map(|f| self.generate_deallocate_funcs(f, ir_file))
+            .collect();
+
+        lines.push_all(self.section_header_comment("opaque stuff functions"));
+        lines += distinct_input_types
+            .iter()
+            .map(|f| self.generate_opaque_drop_funcs(f, ir_file))
+            .collect();
+
+        lines += distinct_input_types
+            .iter()
+            .map(|f| self.generate_opaque_share_funcs(f, ir_file))
             .collect();
 
         lines.push_all(self.section_header_comment("impl Wire2Api"));
@@ -436,6 +447,18 @@ impl<'a> Generator<'a> {
     fn generate_deallocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
             .deallocate_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .map(|func, _| func.unwrap_or_default())
+    }
+
+    fn generate_opaque_drop_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+            .opaque_drop_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .map(|func, _| func.unwrap_or_default())
+    }
+
+    fn generate_opaque_share_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+            .opaque_share_funcs(&mut self.extern_func_collector, self.config.block_index)
             .map(|func, _| func.unwrap_or_default())
     }
 

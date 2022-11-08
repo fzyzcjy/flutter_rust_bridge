@@ -17,18 +17,18 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            wasm: Some("return FrbOpaque.share(raw);".to_owned()),
+            wasm: Some("return raw.tryShare();".to_owned()),
             ..Default::default()
         }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some("wireObj.ref.ptr = FrbOpaque.share(apiObj).cast();".into())
+        Some("wireObj.ref.ptr = apiObj.tryShare();".into())
     }
 
     fn wire2api_body(&self) -> String {
         format!(
-            "return {}.fromRaw(raw[0], raw[1], raw[2], raw[3]);",
+            "return {}.fromRaw(raw[0], raw[1]);",
             self.ir.dart_api_type()
         )
     }
@@ -36,7 +36,19 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn structs(&self) -> String {
         format!(
             "@sealed class {0} extends FrbOpaque {{
-                {0}.fromRaw(int ptr, int drop, int share, int size) : super.unsafe(ptr, drop, share, size);
+                    static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_{0}());
+                    {0}.fromRaw(int ptr, int size) : super.unsafe(ptr) {{
+                      FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
+                    }}
+                    
+                    @override
+                    void drop(ptr) {{
+                      FrbOpaque.detachFinalizer(_finalizer, this);
+                      inner_platform.inner.drop_opaque_{0}(ptr);
+                    }}
+                    
+                    @override
+                    share(ptr) => inner_platform.inner.share_opaque_{0}(ptr);
             }}",
             self.ir.dart_api_type()
         )

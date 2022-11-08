@@ -2,7 +2,8 @@
 
 use std::fmt::Debug;
 use std::sync::atomic::{AtomicI32, Ordering};
-use std::sync::{Arc, Mutex, RwLock};
+pub use std::sync::{Mutex, RwLock};
+use std::sync::Arc;
 use std::thread::sleep;
 use std::time::Duration;
 

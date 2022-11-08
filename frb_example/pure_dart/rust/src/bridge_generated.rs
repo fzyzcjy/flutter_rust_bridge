@@ -14,8 +14,8 @@
 use crate::api::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::*;
-use std::sync::Mutex;
-use std::sync::RwLock;
+use std::ffi::c_void;
+use std::sync::Arc;
 
 // Section: imports
 
@@ -1564,6 +1564,8 @@ const _: fn() = || {
 // Section: allocate functions
 
 // Section: deallocate functions
+
+// Section: opaque stuff functions
 
 // Section: impl Wire2Api
 
