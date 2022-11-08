@@ -770,11 +770,11 @@ mixin _$EnumOpaque {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
-    TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -798,11 +798,11 @@ mixin _$EnumOpaque {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -819,40 +819,41 @@ mixin _$EnumOpaque {
 
 /// @nodoc
 abstract class $EnumOpaqueCopyWith<$Res> {
-  factory $EnumOpaqueCopyWith(EnumOpaque value, $Res Function(EnumOpaque) then) = _$EnumOpaqueCopyWithImpl<$Res>;
+  factory $EnumOpaqueCopyWith(EnumOpaque value, $Res Function(EnumOpaque) then) =
+      _$EnumOpaqueCopyWithImpl<$Res, EnumOpaque>;
 }
 
 /// @nodoc
-class _$EnumOpaqueCopyWithImpl<$Res> implements $EnumOpaqueCopyWith<$Res> {
+class _$EnumOpaqueCopyWithImpl<$Res, $Val extends EnumOpaque> implements $EnumOpaqueCopyWith<$Res> {
   _$EnumOpaqueCopyWithImpl(this._value, this._then);
 
-  final EnumOpaque _value;
   // ignore: unused_field
-  final $Res Function(EnumOpaque) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$EnumOpaque_StructCopyWith<$Res> {
   factory _$$EnumOpaque_StructCopyWith(_$EnumOpaque_Struct value, $Res Function(_$EnumOpaque_Struct) then) =
       __$$EnumOpaque_StructCopyWithImpl<$Res>;
+  @useResult
   $Res call({HideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_StructCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+class __$$EnumOpaque_StructCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Struct>
     implements _$$EnumOpaque_StructCopyWith<$Res> {
   __$$EnumOpaque_StructCopyWithImpl(_$EnumOpaque_Struct _value, $Res Function(_$EnumOpaque_Struct) _then)
-      : super(_value, (v) => _then(v as _$EnumOpaque_Struct));
+      : super(_value, _then);
 
-  @override
-  _$EnumOpaque_Struct get _value => super._value as _$EnumOpaque_Struct;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$EnumOpaque_Struct(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as HideData,
@@ -878,14 +879,15 @@ class _$EnumOpaque_Struct implements EnumOpaque_Struct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaque_Struct &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EnumOpaque_StructCopyWith<_$EnumOpaque_Struct> get copyWith =>
       __$$EnumOpaque_StructCopyWithImpl<_$EnumOpaque_Struct>(this, _$identity);
 
@@ -904,11 +906,11 @@ class _$EnumOpaque_Struct implements EnumOpaque_Struct {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
-    TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
   }) {
     return struct?.call(field0);
   }
@@ -944,11 +946,11 @@ class _$EnumOpaque_Struct implements EnumOpaque_Struct {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
   }) {
     return struct?.call(this);
   }
@@ -982,24 +984,23 @@ abstract class EnumOpaque_Struct implements EnumOpaque {
 abstract class _$$EnumOpaque_PrimitiveCopyWith<$Res> {
   factory _$$EnumOpaque_PrimitiveCopyWith(_$EnumOpaque_Primitive value, $Res Function(_$EnumOpaque_Primitive) then) =
       __$$EnumOpaque_PrimitiveCopyWithImpl<$Res>;
+  @useResult
   $Res call({I32 field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_PrimitiveCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+class __$$EnumOpaque_PrimitiveCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Primitive>
     implements _$$EnumOpaque_PrimitiveCopyWith<$Res> {
   __$$EnumOpaque_PrimitiveCopyWithImpl(_$EnumOpaque_Primitive _value, $Res Function(_$EnumOpaque_Primitive) _then)
-      : super(_value, (v) => _then(v as _$EnumOpaque_Primitive));
+      : super(_value, _then);
 
-  @override
-  _$EnumOpaque_Primitive get _value => super._value as _$EnumOpaque_Primitive;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$EnumOpaque_Primitive(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as I32,
@@ -1025,14 +1026,15 @@ class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaque_Primitive &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EnumOpaque_PrimitiveCopyWith<_$EnumOpaque_Primitive> get copyWith =>
       __$$EnumOpaque_PrimitiveCopyWithImpl<_$EnumOpaque_Primitive>(this, _$identity);
 
@@ -1051,11 +1053,11 @@ class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
-    TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
   }) {
     return primitive?.call(field0);
   }
@@ -1091,11 +1093,11 @@ class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
   }) {
     return primitive?.call(this);
   }
@@ -1129,24 +1131,23 @@ abstract class EnumOpaque_Primitive implements EnumOpaque {
 abstract class _$$EnumOpaque_TraitObjCopyWith<$Res> {
   factory _$$EnumOpaque_TraitObjCopyWith(_$EnumOpaque_TraitObj value, $Res Function(_$EnumOpaque_TraitObj) then) =
       __$$EnumOpaque_TraitObjCopyWithImpl<$Res>;
+  @useResult
   $Res call({BoxDartDebug field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_TraitObjCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+class __$$EnumOpaque_TraitObjCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_TraitObj>
     implements _$$EnumOpaque_TraitObjCopyWith<$Res> {
   __$$EnumOpaque_TraitObjCopyWithImpl(_$EnumOpaque_TraitObj _value, $Res Function(_$EnumOpaque_TraitObj) _then)
-      : super(_value, (v) => _then(v as _$EnumOpaque_TraitObj));
+      : super(_value, _then);
 
-  @override
-  _$EnumOpaque_TraitObj get _value => super._value as _$EnumOpaque_TraitObj;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$EnumOpaque_TraitObj(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as BoxDartDebug,
@@ -1172,14 +1173,15 @@ class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaque_TraitObj &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EnumOpaque_TraitObjCopyWith<_$EnumOpaque_TraitObj> get copyWith =>
       __$$EnumOpaque_TraitObjCopyWithImpl<_$EnumOpaque_TraitObj>(this, _$identity);
 
@@ -1198,11 +1200,11 @@ class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
-    TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
   }) {
     return traitObj?.call(field0);
   }
@@ -1238,11 +1240,11 @@ class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
   }) {
     return traitObj?.call(this);
   }
@@ -1276,24 +1278,23 @@ abstract class EnumOpaque_TraitObj implements EnumOpaque {
 abstract class _$$EnumOpaque_MutexCopyWith<$Res> {
   factory _$$EnumOpaque_MutexCopyWith(_$EnumOpaque_Mutex value, $Res Function(_$EnumOpaque_Mutex) then) =
       __$$EnumOpaque_MutexCopyWithImpl<$Res>;
+  @useResult
   $Res call({MutexHideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_MutexCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+class __$$EnumOpaque_MutexCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Mutex>
     implements _$$EnumOpaque_MutexCopyWith<$Res> {
   __$$EnumOpaque_MutexCopyWithImpl(_$EnumOpaque_Mutex _value, $Res Function(_$EnumOpaque_Mutex) _then)
-      : super(_value, (v) => _then(v as _$EnumOpaque_Mutex));
+      : super(_value, _then);
 
-  @override
-  _$EnumOpaque_Mutex get _value => super._value as _$EnumOpaque_Mutex;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$EnumOpaque_Mutex(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as MutexHideData,
@@ -1319,14 +1320,15 @@ class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaque_Mutex &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EnumOpaque_MutexCopyWith<_$EnumOpaque_Mutex> get copyWith =>
       __$$EnumOpaque_MutexCopyWithImpl<_$EnumOpaque_Mutex>(this, _$identity);
 
@@ -1345,11 +1347,11 @@ class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
-    TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
   }) {
     return mutex?.call(field0);
   }
@@ -1385,11 +1387,11 @@ class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
   }) {
     return mutex?.call(this);
   }
@@ -1423,24 +1425,23 @@ abstract class EnumOpaque_Mutex implements EnumOpaque {
 abstract class _$$EnumOpaque_RwLockCopyWith<$Res> {
   factory _$$EnumOpaque_RwLockCopyWith(_$EnumOpaque_RwLock value, $Res Function(_$EnumOpaque_RwLock) then) =
       __$$EnumOpaque_RwLockCopyWithImpl<$Res>;
+  @useResult
   $Res call({RwLockHideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_RwLockCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res>
+class __$$EnumOpaque_RwLockCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_RwLock>
     implements _$$EnumOpaque_RwLockCopyWith<$Res> {
   __$$EnumOpaque_RwLockCopyWithImpl(_$EnumOpaque_RwLock _value, $Res Function(_$EnumOpaque_RwLock) _then)
-      : super(_value, (v) => _then(v as _$EnumOpaque_RwLock));
+      : super(_value, _then);
 
-  @override
-  _$EnumOpaque_RwLock get _value => super._value as _$EnumOpaque_RwLock;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$EnumOpaque_RwLock(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as RwLockHideData,
@@ -1466,14 +1467,15 @@ class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaque_RwLock &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EnumOpaque_RwLockCopyWith<_$EnumOpaque_RwLock> get copyWith =>
       __$$EnumOpaque_RwLockCopyWithImpl<_$EnumOpaque_RwLock>(this, _$identity);
 
@@ -1492,11 +1494,11 @@ class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
-    TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
   }) {
     return rwLock?.call(field0);
   }
@@ -1532,11 +1534,11 @@ class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
   }) {
     return rwLock?.call(this);
   }
