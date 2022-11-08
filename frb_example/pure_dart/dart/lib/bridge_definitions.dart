@@ -13,7 +13,6 @@ import 'package:collection/collection.dart';
 
 part 'bridge_definitions.freezed.dart';
 
-@internal
 late final FlutterRustBridgeExampleSingleBlockTestPlatform inner_platform;
 
 abstract class FlutterRustBridgeExampleSingleBlockTest {

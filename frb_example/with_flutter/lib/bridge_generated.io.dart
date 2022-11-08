@@ -80,6 +80,8 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
+// Section: finalyzer
+
 // Section: api_fill_to_wire
 
   void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {

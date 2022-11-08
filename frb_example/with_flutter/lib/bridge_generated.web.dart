@@ -67,6 +67,8 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   Uint8List api2wire_uint_8_list(Uint8List raw) {
     return raw;
   }
+// Section: finalyzer
+
 }
 
 // Section: WASM wire module

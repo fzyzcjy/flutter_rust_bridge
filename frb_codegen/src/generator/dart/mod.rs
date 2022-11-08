@@ -140,7 +140,7 @@ impl DartApiSpec {
         let dart_opaque_funcs = distinct_input_types
             .iter()
             .filter(|ty| ty.is_opaque())
-            .map(|ty| generate_opaque_func(ty))
+            .map(generate_opaque_func)
             .collect::<Acc<_>>()
             .join("\n");
 
@@ -256,7 +256,6 @@ fn generate_dart_declaration_body(
 ) -> String {
     format!(
         "
-        @internal
         late final {0}Platform inner_platform;
         abstract class {0} {{
             {1}

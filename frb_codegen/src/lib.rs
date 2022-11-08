@@ -202,26 +202,23 @@ fn write_dart_decls(
     };
 
     let common_import = DartBasicCode {
-        import: format!(
-            "{}",
-            if config.wasm_enabled {
-                format!(
-                    "import '{}' if (dart.library.html) '{}';",
-                    config
-                        .dart_io_output_path()
-                        .file_name()
-                        .and_then(OsStr::to_str)
-                        .unwrap(),
-                    config
-                        .dart_wasm_output_path()
-                        .file_name()
-                        .and_then(OsStr::to_str)
-                        .unwrap(),
-                )
-            } else {
-                "".into()
-            }
-        ),
+        import: if config.wasm_enabled {
+            format!(
+                "import '{}' if (dart.library.html) '{}';",
+                config
+                    .dart_io_output_path()
+                    .file_name()
+                    .and_then(OsStr::to_str)
+                    .unwrap(),
+                config
+                    .dart_wasm_output_path()
+                    .file_name()
+                    .and_then(OsStr::to_str)
+                    .unwrap(),
+            )
+        } else {
+            "".into()
+        },
         ..Default::default()
     };
 

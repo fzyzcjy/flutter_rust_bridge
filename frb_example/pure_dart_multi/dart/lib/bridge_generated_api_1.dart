@@ -11,7 +11,6 @@ import 'package:meta/meta.dart';
 import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
-@internal
 late final ApiClass1Platform inner_platform;
 
 abstract class ApiClass1 {

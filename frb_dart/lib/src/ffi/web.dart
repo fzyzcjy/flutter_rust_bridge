@@ -166,7 +166,11 @@ abstract class FrbOpaque {
 
   /// Calls platform specific finalizer attach.
   static void attachFinalizer(
-      Finalizer finalizer, int ptr, dynamic obj, int _size) {
+      Finalizer finalizer,
+      int ptr,
+      dynamic obj,
+      // ignore: no_leading_underscores_for_local_identifiers
+      int _size) {
     finalizer.attach(obj, ptr, detach: obj);
   }
 
