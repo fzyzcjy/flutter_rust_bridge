@@ -128,11 +128,7 @@ impl<T: DartSafe> From<Opaque<T>> for DartAbi {
         let ptr = Arc::into_raw(value.ptr);
         let size = mem::size_of::<T>();
 
-        vec![
-            ptr.into_dart(),
-            size.into_dart(),
-        ]
-        .into_dart()
+        vec![ptr.into_dart(), size.into_dart()].into_dart()
     }
 }
 

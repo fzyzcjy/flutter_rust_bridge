@@ -114,7 +114,7 @@ abstract class FrbOpaque {
 
   /// This constructor should never be called manually.
   // ignore: no_leading_underscores_for_local_identifiers
-  FrbOpaque.unsafe(int ptr, int _size): _ptr = ptr {
+  FrbOpaque.unsafe(int ptr) : _ptr = ptr {
     assert(ptr > 0);
   }
 
@@ -135,10 +135,15 @@ abstract class FrbOpaque {
     }
   }
 
-
+  /// Rust type specific drop function.
+  ///
+  /// This function should never be called manually.
   @internal
   void drop(int ptr);
-  
+
+  /// Rust type specific share function.
+  ///
+  /// This function should never be called manually.
   @internal
   int share(int ptr);
 
@@ -154,14 +159,18 @@ abstract class FrbOpaque {
     }
   }
 
+  /// Creates platform specific finalizer.
   static Finalizer createFinalizer(void Function(dynamic) f) {
     return Finalizer(f);
   }
 
-  static void attachFinalizer(Finalizer finalizer, int ptr, dynamic obj, int _size) {
+  /// Calls platform specific finalizer attach.
+  static void attachFinalizer(
+      Finalizer finalizer, int ptr, dynamic obj, int _size) {
     finalizer.attach(obj, ptr, detach: obj);
   }
 
+  /// Calls platform specific finalizer detach.
   static void detachFinalizer(Finalizer finalizer, Object obj) {
     finalizer.detach(obj);
   }

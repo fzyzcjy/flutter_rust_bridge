@@ -532,17 +532,15 @@ fn generate_wire2api_func(
     )
 }
 
-fn generate_opaque_func(
-    ty: &IrType,
-) -> Acc<String> {
+fn generate_opaque_func(ty: &IrType) -> Acc<String> {
     Acc {
         io: format!(
-                "dynamic get_finalizer_opaque_{0}() {{
+            "dynamic get_finalizer_opaque_{0}() {{
                     return inner.addresses.drop_opaque_{0};
                 }}
                 ",
-                ty.dart_api_type(),
-            ),
+            ty.dart_api_type(),
+        ),
         wasm: format!(
             "dynamic get_finalizer_opaque_{0}() {{
                 return inner.drop_opaque_{0};
@@ -550,7 +548,7 @@ fn generate_opaque_func(
             ",
             ty.dart_api_type(),
         ),
-        .. Default::default()
+        ..Default::default()
     }
 }
 

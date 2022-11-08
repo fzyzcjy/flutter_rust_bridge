@@ -46,11 +46,9 @@ abstract class FrbOpaque implements Finalizable {
   ffi.Pointer<ffi.Void> _ptr;
 
   /// This constructor should never be called manually.
-  FrbOpaque.unsafe(int ptr)
-      : _ptr = ffi.Pointer.fromAddress(ptr) {
+  FrbOpaque.unsafe(int ptr) : _ptr = ffi.Pointer.fromAddress(ptr) {
     assert(ptr > 0);
   }
-
 
   /// Call Rust destructors on the backing memory of this pointer.
   ///
@@ -81,25 +79,37 @@ abstract class FrbOpaque implements Finalizable {
     }
   }
 
+  /// Rust type specific drop function.
+  ///
+  /// This function should never be called manually.
   @internal
   void drop(ffi.Pointer<ffi.Void> ptr);
-  
+
+  /// Rust type specific share function.
+  ///
+  /// This function should never be called manually.
   @internal
-  ffi.Pointer<ffi.Void> share(ffi.Pointer<ffi.Void>  ptr);
+  ffi.Pointer<ffi.Void> share(ffi.Pointer<ffi.Void> ptr);
 
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
   bool isStale() => _ptr.address == 0;
 
-  static NativeFinalizer createFinalizer(Pointer<NativeFunction<Void Function(Pointer<Void>)>> ptr) {
+  /// Creates platform specific finalizer.
+  static NativeFinalizer createFinalizer(
+      Pointer<NativeFunction<Void Function(Pointer<Void>)>> ptr) {
     return NativeFinalizer(ptr);
   }
 
-  static void attachFinalizer(NativeFinalizer finalizer, int ptr, Finalizable obj, int size) {
-    finalizer.attach(obj, Pointer.fromAddress(ptr), detach: obj, externalSize: size);
+  /// Calls platform specific finalizer attach.
+  static void attachFinalizer(
+      NativeFinalizer finalizer, int ptr, Finalizable obj, int size) {
+    finalizer.attach(obj, Pointer.fromAddress(ptr),
+        detach: obj, externalSize: size);
   }
 
+  /// Calls platform specific finalizer detach.
   static void detachFinalizer(NativeFinalizer finalizer, Object obj) {
     finalizer.detach(obj);
   }
