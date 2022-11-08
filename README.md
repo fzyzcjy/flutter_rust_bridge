@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-35-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-37-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -88,6 +88,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/Zaitam"><img src="https://avatars.githubusercontent.com/u/71014214?v=4?s=100" width="100px;" alt="Zaitam"/><br /><sub><b>Zaitam</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Zaitam" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/alexthe2"><img src="https://avatars.githubusercontent.com/u/33789063?v=4?s=100" width="100px;" alt="Alex Procelewski"/><br /><sub><b>Alex Procelewski</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=alexthe2" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://matrix.to/#/@vincentherl:matrix.org"><img src="https://avatars.githubusercontent.com/u/5569193?v=4?s=100" width="100px;" alt="Vincent Herlemont"/><br /><sub><b>Vincent Herlemont</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=vincent-herlemont" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/CicadaCinema"><img src="https://avatars.githubusercontent.com/u/52425971?v=4?s=100" width="100px;" alt="CicadaCinema"/><br /><sub><b>CicadaCinema</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=CicadaCinema" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
@@ -123,6 +127,8 @@ More specifically, thanks for all these contributions:
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [banool](https://github.com/banool): Fix symbol-stripping doc.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
+* [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
+* [CicadaCinema](https://github.com/CicadaCinema): Bump version.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
 * [alexthe2](https://github.com/alexthe2): Improve doc.
 * [tmpfs](https://github.com/tmpfs): Improve doc.
