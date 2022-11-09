@@ -2,7 +2,7 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct IrTypePrimitiveList {
     pub primitive: IrTypePrimitive,
 }

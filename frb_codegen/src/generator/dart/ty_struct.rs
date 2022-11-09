@@ -51,6 +51,30 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         )
     }
 
+    fn api_validate(&self) -> Option<String> {
+        let res = self
+            .ir
+            .get(self.context.ir_file)
+            .fields
+            .iter()
+            .filter(|field| field.ty.contains_opaque(self.context.ir_file))
+            .map(|field| {
+                format!(
+                    "_api_opaque_validate_{}(raw.{});",
+                    field.ty.safe_ident(),
+                    field.name.dart_style()
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("\n");
+
+        if res.is_empty() {
+            None
+        } else {
+            Some(res)
+        }
+    }
+
     fn wire2api_body(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
         let s = self.ir.get(self.context.ir_file);

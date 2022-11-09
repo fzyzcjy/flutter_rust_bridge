@@ -50,6 +50,45 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         }
     }
 
+    fn api_validate(&self) -> Option<String> {
+        let res = (self.ir.get(self.context.ir_file).variants())
+            .iter()
+            .map(|variant| {
+                let fields = match &variant.kind {
+                    IrVariantKind::Value => vec![],
+                    IrVariantKind::Struct(st) => (st.fields)
+                        .iter()
+                        .filter(|field| field.ty.contains_opaque(self.context.ir_file))
+                        .map(|field| {
+                            format!(
+                                "_api_opaque_validate_{}(raw.{});",
+                                field.ty.safe_ident(),
+                                field.name.dart_style()
+                            )
+                        })
+                        .collect(),
+                }
+                .join(";");
+                if !fields.is_empty() {
+                    format!(
+                        "if (raw is {variant}) {{
+                        {}
+                    }}",
+                        fields,
+                        variant = variant.wrapper_name.rust_style(),
+                    )
+                } else {
+                    "".to_owned()
+                }
+            })
+            .join("\n");
+        if res.is_empty() {
+            None
+        } else {
+            Some(res)
+        }
+    }
+
     fn api_fill_to_wire_body(&self) -> Option<String> {
         Some(
             self.ir

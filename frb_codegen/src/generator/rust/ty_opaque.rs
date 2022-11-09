@@ -15,8 +15,7 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
         Acc {
             io: Some(
                 "unsafe {
-                let ans = support::box_from_leak_ptr(self);
-                support::opaque_from_dart(ans.ptr as _)
+                support::opaque_from_dart(self.ptr as _)
             }"
                 .into(),
             ),
@@ -84,7 +83,7 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
                     rust_wire
                 )),
                 &format!(
-                    "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                    "{}::new_with_null_ptr()",
                     rust_wire,
                 ),
                 crate::target::Target::Io,

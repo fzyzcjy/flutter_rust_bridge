@@ -4,7 +4,7 @@ use IrType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum IrType {
     Primitive(IrTypePrimitive),
     Delegate(IrTypeDelegate),
@@ -70,6 +70,89 @@ impl IrType {
     #[inline]
     pub fn is_opaque(&self) -> bool {
         matches!(self, Opaque(_))
+    }
+
+    // todo rework
+    #[inline]
+    pub fn contains_opaque(&self, ir_file: &IrFile) -> bool {
+        #[derive(PartialEq, Debug, Clone, Copy)]
+        enum Check {
+            T,
+            F,
+            S,
+        }
+
+        let mut checked = vec![];
+        fn temp(ty: &IrType, ir_file: &IrFile, ch: &mut Vec<(IrType, Check)>) -> Check {
+            if let Some((_, res)) = ch.iter().find(|(t, _)| t == ty) {
+                return *res;
+            }
+            ch.push((ty.clone(), Check::S));
+
+            match ty {
+                Optional(o) => temp(&o.inner, ir_file, ch),
+                GeneralList(g) => temp(&g.inner, ir_file, ch),
+                StructRef(s) => {
+                    let check: Vec<Check> = s
+                        .get(ir_file)
+                        .fields
+                        .iter()
+                        .map(|f| temp(&f.ty, ir_file, ch))
+                        .collect();
+                    if check.iter().any(|c| *c == Check::T) {
+                        return Check::T;
+                    } else {
+                        return Check::F;
+                    }
+                }
+                Boxed(b) => temp(&b.inner, ir_file, ch),
+                EnumRef(e) => {
+                    let checks: Vec<Check> = e
+                        .get(ir_file)
+                        .variants()
+                        .iter()
+                        .map(|v| match &v.kind {
+                            IrVariantKind::Value => Check::F,
+                            IrVariantKind::Struct(s) => {
+                                let check: Vec<Check> =
+                                    s.fields.iter().map(|f| temp(&f.ty, ir_file, ch)).collect();
+                                if check.iter().any(|c| *c == Check::T) {
+                                    return Check::T;
+                                } else {
+                                    return Check::F;
+                                }
+                            }
+                        })
+                        .collect();
+                    if checks.iter().any(|c| *c == Check::T) {
+                        return Check::T;
+                    } else {
+                        return Check::F;
+                    }
+                }
+                Opaque(_) => Check::T,
+                Delegate(d) => {
+                    match d {
+                        IrTypeDelegate::Array(a) => {
+                            match a {
+                                IrTypeDelegateArray::GeneralArray { general , ..} => return temp(general, ir_file, ch),
+                                IrTypeDelegateArray::PrimitiveArray { .. } => return Check::F,
+                            }
+                        },
+                        _ => return Check::F
+                    }
+                },
+                _ => Check::F,
+            }
+        }
+
+        let tt = temp(self, ir_file, &mut checked);
+        println!("{} - {:?}", self.rust_api_type(), tt);
+        match tt {
+            Check::T => true,
+            Check::F => false,
+            Check::S => unreachable!(),
+        }
     }
 
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap

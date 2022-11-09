@@ -114,34 +114,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         }
     }
 
-    fn deallocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
-        let func_name = format!("drop_{}_{}", self.ir.safe_ident(), block_index);
-        if self.ir.inner.is_array() {
-            Acc::default()
-        } else {
-            Acc {
-                io: Some(collector.generate(
-                    &func_name,
-                    vec![(
-                        format!(
-                            "raw: {}{}",
-                            self.ir.rust_wire_modifier(Io),
-                            self.ir.rust_wire_type(Io)
-                        ),
-                        "",
-                    )],
-                    None,
-                    "unsafe{{drop(support::box_from_leak_ptr(raw));}}",
-                    Io,
-                )),
-                ..Default::default()
-            }
-        }
-    }
 
     fn imports(&self) -> Option<String> {
         generate_import(&self.ir.inner, self.context.ir_file, self.context.config)

@@ -9,10 +9,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(format!(
-                "if (raw.isStale()) {{
-                    throw StateError('Use after dispose.');
-                  }}
-                final ptr = inner.new_{0}();
+                "final ptr = inner.new_{0}();
                 _api_fill_to_wire_{0}(raw, ptr);
                 return ptr;",
                 self.ir.safe_ident(),
@@ -22,8 +19,17 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
         }
     }
 
+    fn api_validate(&self) -> Option<String> {
+        Some(
+            "if (raw.isStale()) {
+            throw StateError('Use after dispose.');
+            }"
+            .to_owned(),
+        )
+    }
+
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some("wireObj.ref.ptr = apiObj.tryShare();".into())
+        Some("wireObj.ptr = apiObj.tryShare();".into())
     }
 
     fn wire2api_body(&self) -> String {

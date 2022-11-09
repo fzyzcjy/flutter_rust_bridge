@@ -133,11 +133,6 @@ impl<'a> Generator<'a> {
             .map(|f| self.generate_allocate_funcs(f, ir_file))
             .collect();
 
-        lines.push_all(self.section_header_comment("deallocate functions"));
-        lines += distinct_input_types
-            .iter()
-            .map(|f| self.generate_deallocate_funcs(f, ir_file))
-            .collect();
 
         lines.push_all(self.section_header_comment("opaque stuff functions"));
         lines += distinct_input_types
@@ -444,11 +439,6 @@ impl<'a> Generator<'a> {
             .map(|func, _| func.unwrap_or_default())
     }
 
-    fn generate_deallocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-            .deallocate_funcs(&mut self.extern_func_collector, self.config.block_index)
-            .map(|func, _| func.unwrap_or_default())
-    }
 
     fn generate_opaque_drop_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)

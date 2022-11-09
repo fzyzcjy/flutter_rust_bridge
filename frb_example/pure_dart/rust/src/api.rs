@@ -1029,3 +1029,55 @@ pub fn create_nested_opaque() -> OpaqueNested {
 }
 
 pub fn run_nested_opaque(opaque: OpaqueNested) {}
+
+// pub fn testtest() -> Option<Box<i32>> {
+//     Some(Box::new(42))
+// }
+
+
+pub struct MegaOpaqueRename {
+    pub data: Box<MegaDataRename>,
+    pub e: Box<TestRename>
+}
+
+impl MegaOpaqueRename {
+    fn new() -> Self {
+        Self {
+            data: Box::new(MegaDataRename { vec: Some(vec![]), next: None }),
+            e: Box::new(TestRename::A(42)),
+        }
+    }
+}
+
+pub struct MegaDataRename {
+    pub vec: Option<Vec<Opaque<i32>>>,
+    pub next: Option<Opaque<i32>>,
+}
+pub enum TestRename {
+    A(i32),
+    B(Opaque<u64>), 
+    C(MegaDataRename),
+}
+
+pub struct TestO {f: i32}
+
+pub fn test_o() -> Vec<Opaque<TestO>> {
+    vec![Opaque::new(TestO{ f: 42})]
+}
+
+pub fn test_w(a: Vec<Opaque<TestO>>) {}
+
+pub fn mega_opaque() -> Vec<MegaOpaqueRename> {
+    vec![MegaOpaqueRename::new()]
+}
+
+pub fn mega_run_opaque(data: MegaOpaqueRename) {}
+
+
+pub fn gg(w: WTF) {}
+
+pub struct WTF {
+    pub a: Option<WTFFF>
+}
+
+pub struct WTFFF { pub b: i32 }

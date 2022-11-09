@@ -1,7 +1,7 @@
 use crate::ir::*;
 use crate::target::Target;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct IrTypeGeneralList {
     pub inner: Box<IrType>,
 }

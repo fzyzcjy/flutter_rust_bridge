@@ -29,6 +29,19 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
         }
     }
 
+    fn api_validate(&self) -> Option<String> {
+        if self.ir.inner.contains_opaque(self.context.ir_file) {
+            Some(format!(
+                "for (var i = 0; i < raw.length; ++i) {{
+                    _api_opaque_validate_{}(raw[i]);
+                }}",
+                self.ir.inner.safe_ident()
+            ))
+        } else {
+            None
+        }
+    }
+
     fn wire2api_body(&self) -> String {
         format!(
             "return (raw as List<dynamic>).map(_wire2api_{}).toList();",

@@ -1,4 +1,8 @@
 #![allow(dead_code)]
+
+use flutter_rust_bridge::Opaque;
+
+use crate::api::{MegaDataRename, TestRename};
 pub struct MyStruct {
     pub content: bool,
 }

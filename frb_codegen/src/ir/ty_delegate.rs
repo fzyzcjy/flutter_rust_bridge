@@ -25,7 +25,7 @@ impl IrTypeTime {
 }
 
 /// types that delegate to another type
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum IrTypeDelegate {
     Array(IrTypeDelegateArray),
     String,
@@ -43,7 +43,7 @@ pub enum IrTypeDelegate {
     #[cfg(feature = "uuid")]
     Uuids,
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum IrTypeDelegateArray {
     GeneralArray {
         length: usize,

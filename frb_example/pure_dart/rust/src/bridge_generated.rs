@@ -1334,6 +1334,68 @@ fn wire_run_nested_opaque_impl(
         },
     )
 }
+fn wire_test_o_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_o",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(test_o()),
+    )
+}
+fn wire_test_w_impl(port_: MessagePort, a: impl Wire2Api<Vec<Opaque<TestO>>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_w",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            move |task_callback| Ok(test_w(api_a))
+        },
+    )
+}
+fn wire_mega_opaque_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "mega_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(mega_opaque()),
+    )
+}
+fn wire_mega_run_opaque_impl(
+    port_: MessagePort,
+    data: impl Wire2Api<MegaOpaqueRename> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "mega_run_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_data = data.wire2api();
+            move |task_callback| Ok(mega_run_opaque(api_data))
+        },
+    )
+}
+fn wire_gg_impl(port_: MessagePort, w: impl Wire2Api<WTF> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "gg",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_w = w.wire2api();
+            move |task_callback| Ok(gg(api_w))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1563,8 +1625,6 @@ const _: fn() = || {
 };
 // Section: allocate functions
 
-// Section: deallocate functions
-
 // Section: opaque stuff functions
 
 // Section: impl Wire2Api
@@ -1737,6 +1797,7 @@ impl Wire2Api<Weekdays> for i32 {
         }
     }
 }
+
 // Section: impl IntoDart
 
 impl support::IntoDart for mirror_ApplicationEnv {
@@ -1955,6 +2016,20 @@ impl support::IntoDart for Measure {
     }
 }
 impl support::IntoDartExceptPrimitive for Measure {}
+impl support::IntoDart for MegaDataRename {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.vec.into_dart(), self.next.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MegaDataRename {}
+
+impl support::IntoDart for MegaOpaqueRename {
+    fn into_dart(self) -> support::DartAbi {
+        vec![(*self.data).into_dart(), (*self.e).into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MegaOpaqueRename {}
+
 impl support::IntoDart for MessageId {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_dart()].into_dart()
@@ -2061,6 +2136,18 @@ impl support::IntoDart for TestId {
     }
 }
 impl support::IntoDartExceptPrimitive for TestId {}
+
+impl support::IntoDart for TestRename {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::A(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::B(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::C(field0) => vec![2.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TestRename {}
 
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartAbi {

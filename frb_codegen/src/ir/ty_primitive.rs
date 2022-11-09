@@ -1,7 +1,7 @@
 use crate::ir::*;
 use crate::target::Target;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum IrTypePrimitive {
     U8,
     I8,

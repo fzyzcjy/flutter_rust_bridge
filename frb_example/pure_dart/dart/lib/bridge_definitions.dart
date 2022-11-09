@@ -395,6 +395,26 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
 
+  Future<List<TestO>> testO({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestOConstMeta;
+
+  Future<void> testW({required List<TestO> a, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestWConstMeta;
+
+  Future<List<MegaOpaqueRename>> megaOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kMegaOpaqueConstMeta;
+
+  Future<void> megaRunOpaque({required MegaOpaqueRename data, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kMegaRunOpaqueConstMeta;
+
+  Future<void> gg({required WTF w, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGgConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -567,6 +587,40 @@ class TestIdArray4 extends NonGrowableListView<TestId> {
         super(inner);
   TestIdArray4.unchecked(List<TestId> inner) : super(inner);
   TestIdArray4.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
+}
+
+@sealed
+class TestO extends FrbOpaque {
+  static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_TestO());
+  TestO.fromRaw(int ptr, int size) : super.unsafe(ptr) {
+    FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
+  }
+
+  @override
+  void drop(ptr) {
+    FrbOpaque.detachFinalizer(_finalizer, this);
+    inner_platform.inner.drop_opaque_TestO(ptr);
+  }
+
+  @override
+  share(ptr) => inner_platform.inner.share_opaque_TestO(ptr);
+}
+
+@sealed
+class U64 extends FrbOpaque {
+  static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_U64());
+  U64.fromRaw(int ptr, int size) : super.unsafe(ptr) {
+    FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
+  }
+
+  @override
+  void drop(ptr) {
+    FrbOpaque.detachFinalizer(_finalizer, this);
+    inner_platform.inner.drop_opaque_U64(ptr);
+  }
+
+  @override
+  share(ptr) => inner_platform.inner.share_opaque_U64(ptr);
 }
 
 class ApplicationEnv {
@@ -894,6 +948,26 @@ class Measure with _$Measure {
   ) = Measure_Distance;
 }
 
+class MegaDataRename {
+  final List<I32>? vec;
+  final I32? next;
+
+  MegaDataRename({
+    this.vec,
+    this.next,
+  });
+}
+
+class MegaOpaqueRename {
+  final MegaDataRename data;
+  final TestRename e;
+
+  MegaOpaqueRename({
+    required this.data,
+    required this.e,
+  });
+}
+
 class MessageId {
   final U8Array32 field0;
 
@@ -1050,6 +1124,19 @@ class TestId {
   });
 }
 
+@freezed
+class TestRename with _$TestRename {
+  const factory TestRename.a(
+    int field0,
+  ) = TestRename_A;
+  const factory TestRename.b(
+    U64 field0,
+  ) = TestRename_B;
+  const factory TestRename.c(
+    MegaDataRename field0,
+  ) = TestRename_C;
+}
+
 class U8Array1600 extends NonGrowableListView<int> {
   static const arraySize = 1600;
   U8Array1600(Uint8List inner)
@@ -1132,6 +1219,22 @@ enum Weekdays {
   /// Best day of the week.
   Saturday,
   Sunday,
+}
+
+class WTF {
+  final WTFFF? a;
+
+  WTF({
+    this.a,
+  });
+}
+
+class WTFFF {
+  final int b;
+
+  WTFFF({
+    required this.b,
+  });
 }
 
 class ZeroCopyVecOfPrimitivePack {

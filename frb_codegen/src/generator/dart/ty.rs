@@ -9,6 +9,10 @@ pub trait TypeDartGeneratorTrait {
         None
     }
 
+    fn api_validate(&self) -> Option<String> {
+        None
+    }
+
     fn wire2api_body(&self) -> String {
         "".to_string()
     }

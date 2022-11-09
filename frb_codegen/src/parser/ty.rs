@@ -257,6 +257,12 @@ impl<'a> TypeParser<'a> {
                                 inner: Box::new(st),
                                 exist_in_real_api: false,
                             })))
+                        },
+                        op @ Opaque(_) => {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
+                                inner: Box::new(op),
+                                exist_in_real_api: false,
+                            })))
                         }
                         other => IrType::Optional(IrTypeOptional::new(other)),
                     })
