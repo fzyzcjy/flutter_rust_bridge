@@ -92,5 +92,4 @@ impl IrTypeTrait for IrTypeOpaque {
             format!("wire_{}", self.safe_ident())
         }
     }
-
 }

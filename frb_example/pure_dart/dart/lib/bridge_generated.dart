@@ -1979,6 +1979,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_application_env(raw);
   }
 
+  HideData _wire2api_box_autoadd_HideData(dynamic raw) {
+    return raw as HideData;
+  }
+
   I32 _wire2api_box_autoadd_I32(dynamic raw) {
     return raw as I32;
   }
@@ -2330,10 +2334,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MegaDataRename _wire2api_mega_data_rename(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return MegaDataRename(
       vec: _wire2api_opt_list_I32(arr[0]),
       next: _wire2api_opt_box_autoadd_I32(arr[1]),
+      next1: _wire2api_opt_box_autoadd_HideData(arr[2]),
     );
   }
 
@@ -2429,6 +2434,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
     return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
+  }
+
+  HideData? _wire2api_opt_box_autoadd_HideData(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_HideData(raw);
   }
 
   I32? _wire2api_opt_box_autoadd_I32(dynamic raw) {

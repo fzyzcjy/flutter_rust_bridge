@@ -141,6 +141,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  int /* *JsValue */ api2wire_box_autoadd_HideData(HideData raw) {
+    return api2wire_HideData(raw);
+  }
+
+  @protected
   int /* *JsValue */ api2wire_box_autoadd_I32(I32 raw) {
     return api2wire_I32(raw);
   }
@@ -576,7 +581,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_mega_data_rename(MegaDataRename raw) {
-    return [api2wire_opt_list_I32(raw.vec), api2wire_opt_box_autoadd_I32(raw.next)];
+    return [
+      api2wire_opt_list_I32(raw.vec),
+      api2wire_opt_box_autoadd_I32(raw.next),
+      api2wire_opt_box_autoadd_HideData(raw.next1)
+    ];
   }
 
   @protected
@@ -637,6 +646,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Uint8List? api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
     return raw == null ? null : api2wire_ZeroCopyBuffer_Uint8List(raw);
+  }
+
+  @protected
+  int /* *JsValue */ ? api2wire_opt_box_autoadd_HideData(HideData? raw) {
+    return raw == null ? null : api2wire_box_autoadd_HideData(raw);
   }
 
   @protected

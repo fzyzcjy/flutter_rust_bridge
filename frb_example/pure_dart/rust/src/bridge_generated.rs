@@ -2018,7 +2018,12 @@ impl support::IntoDart for Measure {
 impl support::IntoDartExceptPrimitive for Measure {}
 impl support::IntoDart for MegaDataRename {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.vec.into_dart(), self.next.into_dart()].into_dart()
+        vec![
+            self.vec.into_dart(),
+            self.next.into_dart(),
+            self.next1.into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MegaDataRename {}

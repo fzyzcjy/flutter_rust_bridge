@@ -129,6 +129,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_HideData> api2wire_box_autoadd_HideData(HideData raw) {
+    _api_opaque_validate_HideData(raw);
+    final ptr = inner.new_box_autoadd_HideData_0();
+    _api_fill_to_wire_HideData(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_I32> api2wire_box_autoadd_I32(I32 raw) {
     _api_opaque_validate_I32(raw);
     final ptr = inner.new_box_autoadd_I32_0();
@@ -583,6 +591,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_HideData> api2wire_opt_box_autoadd_HideData(HideData? raw) {
+    if (raw != null) {
+      _api_opaque_validate_box_autoadd_HideData(raw);
+    }
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_HideData(raw);
+  }
+
+  @protected
   ffi.Pointer<wire_I32> api2wire_opt_box_autoadd_I32(I32? raw) {
     if (raw != null) {
       _api_opaque_validate_box_autoadd_I32(raw);
@@ -828,6 +844,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_box_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
     _api_fill_to_wire_application_env(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_HideData(HideData apiObj, ffi.Pointer<wire_HideData> wireObj) {
+    _api_fill_to_wire_HideData(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_I32(I32 apiObj, ffi.Pointer<wire_I32> wireObj) {
@@ -1146,6 +1166,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   void _api_fill_to_wire_mega_data_rename(MegaDataRename apiObj, wire_MegaDataRename wireObj) {
     wireObj.vec = api2wire_opt_list_I32(apiObj.vec);
     wireObj.next = api2wire_opt_box_autoadd_I32(apiObj.next);
+    wireObj.next1 = api2wire_opt_box_autoadd_HideData(apiObj.next1);
   }
 
   void _api_fill_to_wire_mega_opaque_rename(MegaOpaqueRename apiObj, wire_MegaOpaqueRename wireObj) {
@@ -1189,6 +1210,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   void _api_fill_to_wire_opaque_nested(OpaqueNested apiObj, wire_OpaqueNested wireObj) {
     wireObj.first = api2wire_HideData(apiObj.first);
     wireObj.second = api2wire_HideData(apiObj.second);
+  }
+
+  void _api_fill_to_wire_opt_box_autoadd_HideData(HideData? apiObj, ffi.Pointer<wire_HideData> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_HideData(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_I32(I32? apiObj, ffi.Pointer<wire_I32> wireObj) {
@@ -1321,6 +1346,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
   }
 
+  void _api_opaque_validate_box_autoadd_HideData(HideData raw) {
+    _api_opaque_validate_HideData(raw);
+  }
+
   void _api_opaque_validate_box_autoadd_I32(I32 raw) {
     _api_opaque_validate_I32(raw);
   }
@@ -1382,6 +1411,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   void _api_opaque_validate_mega_data_rename(MegaDataRename raw) {
     _api_opaque_validate_opt_list_I32(raw.vec);
     _api_opaque_validate_opt_box_autoadd_I32(raw.next);
+    _api_opaque_validate_opt_box_autoadd_HideData(raw.next1);
   }
 
   void _api_opaque_validate_mega_opaque_rename(MegaOpaqueRename raw) {
@@ -1392,6 +1422,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   void _api_opaque_validate_opaque_nested(OpaqueNested raw) {
     _api_opaque_validate_HideData(raw.first);
     _api_opaque_validate_HideData(raw.second);
+  }
+
+  void _api_opaque_validate_opt_box_autoadd_HideData(HideData? raw) {
+    if (raw != null) {
+      _api_opaque_validate_box_autoadd_HideData(raw);
+    }
   }
 
   void _api_opaque_validate_opt_box_autoadd_I32(I32? raw) {
@@ -3036,6 +3072,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_application_env_0 =
       _new_box_application_env_0Ptr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
 
+  ffi.Pointer<wire_HideData> new_box_autoadd_HideData_0() {
+    return _new_box_autoadd_HideData_0();
+  }
+
+  late final _new_box_autoadd_HideData_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_HideData> Function()>>('new_box_autoadd_HideData_0');
+  late final _new_box_autoadd_HideData_0 =
+      _new_box_autoadd_HideData_0Ptr.asFunction<ffi.Pointer<wire_HideData> Function()>();
+
   ffi.Pointer<wire_I32> new_box_autoadd_I32_0() {
     return _new_box_autoadd_I32_0();
   }
@@ -4453,6 +4498,8 @@ class wire_MegaDataRename extends ffi.Struct {
   external ffi.Pointer<wire_list_I32> vec;
 
   external ffi.Pointer<wire_I32> next;
+
+  external ffi.Pointer<wire_HideData> next1;
 }
 
 class wire_TestRename_A extends ffi.Struct {

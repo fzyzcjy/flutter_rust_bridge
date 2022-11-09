@@ -131,16 +131,14 @@ impl IrType {
                     }
                 }
                 Opaque(_) => Check::T,
-                Delegate(d) => {
-                    match d {
-                        IrTypeDelegate::Array(a) => {
-                            match a {
-                                IrTypeDelegateArray::GeneralArray { general , ..} => return temp(general, ir_file, ch),
-                                IrTypeDelegateArray::PrimitiveArray { .. } => return Check::F,
-                            }
-                        },
-                        _ => return Check::F
-                    }
+                Delegate(d) => match d {
+                    IrTypeDelegate::Array(a) => match a {
+                        IrTypeDelegateArray::GeneralArray { general, .. } => {
+                            return temp(general, ir_file, ch)
+                        }
+                        IrTypeDelegateArray::PrimitiveArray { .. } => return Check::F,
+                    },
+                    _ => return Check::F,
                 },
                 _ => Check::F,
             }

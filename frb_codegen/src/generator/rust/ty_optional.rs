@@ -11,7 +11,10 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
         Acc {
             wasm: if self.ir.inner.is_js_value() {
                 Some("(!self.is_undefined() && !self.is_null()).then(|| self.wire2api())".into())
-            } else if self.ir.is_primitive() || self.ir.is_boxed_primitive() {
+            } else if self.ir.is_primitive()
+                || self.ir.is_boxed_primitive()
+                || self.ir.inner.contains_opaque(self.context.ir_file)
+            {
                 None
             } else {
                 Some("self.map(Wire2Api::wire2api)".into())

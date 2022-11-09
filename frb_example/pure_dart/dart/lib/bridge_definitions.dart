@@ -951,10 +951,12 @@ class Measure with _$Measure {
 class MegaDataRename {
   final List<I32>? vec;
   final I32? next;
+  final HideData? next1;
 
   MegaDataRename({
     this.vec,
     this.next,
+    this.next1,
   });
 }
 

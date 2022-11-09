@@ -65,7 +65,6 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
-
     fn impl_intodart(&self) -> String {
         "".to_string()
     }

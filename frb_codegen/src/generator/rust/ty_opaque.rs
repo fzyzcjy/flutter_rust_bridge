@@ -82,10 +82,7 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
                     self.ir.rust_wire_modifier(crate::target::Target::Io),
                     rust_wire
                 )),
-                &format!(
-                    "{}::new_with_null_ptr()",
-                    rust_wire,
-                ),
+                &format!("{}::new_with_null_ptr()", rust_wire,),
                 crate::target::Target::Io,
             )),
             ..Default::default()

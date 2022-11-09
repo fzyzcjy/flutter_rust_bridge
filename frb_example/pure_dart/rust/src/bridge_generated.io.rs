@@ -620,6 +620,11 @@ pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_HideData_0() -> *mut wire_HideData {
+    support::new_leak_box_ptr(wire_HideData::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_I32_0() -> *mut wire_I32 {
     support::new_leak_box_ptr(wire_I32::new_with_null_ptr())
 }
@@ -1227,6 +1232,12 @@ impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
         Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<Opaque<HideData>> for *mut wire_HideData {
+    fn wire2api(self) -> Opaque<HideData> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Opaque<HideData>>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Opaque<i32>> for *mut wire_I32 {
     fn wire2api(self) -> Opaque<i32> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1741,6 +1752,7 @@ impl Wire2Api<MegaDataRename> for wire_MegaDataRename {
         MegaDataRename {
             vec: self.vec.wire2api(),
             next: self.next.wire2api(),
+            next1: self.next1.wire2api(),
         }
     }
 }
@@ -2140,6 +2152,7 @@ pub struct wire_list_test_id {
 pub struct wire_MegaDataRename {
     vec: *mut wire_list_I32,
     next: *mut wire_I32,
+    next1: *mut wire_HideData,
 }
 
 #[repr(C)]
@@ -2786,6 +2799,7 @@ impl NewWithNullPtr for wire_MegaDataRename {
         Self {
             vec: core::ptr::null_mut(),
             next: core::ptr::null_mut(),
+            next1: core::ptr::null_mut(),
         }
     }
 }

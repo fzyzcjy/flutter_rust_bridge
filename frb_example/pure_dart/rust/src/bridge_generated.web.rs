@@ -1125,13 +1125,14 @@ impl Wire2Api<MegaDataRename> for JsValue {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
-            2,
-            "Expected 2 elements, got {}",
+            3,
+            "Expected 3 elements, got {}",
             self_.length()
         );
         MegaDataRename {
             vec: self_.get(0).wire2api(),
             next: self_.get(1).wire2api(),
+            next1: self_.get(2).wire2api(),
         }
     }
 }
@@ -1273,11 +1274,7 @@ impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for Option<Box<[u8]>> {
         self.map(Wire2Api::wire2api)
     }
 }
-impl Wire2Api<Option<Opaque<i32>>> for *mut JsValue {
-    fn wire2api(self) -> Option<Opaque<i32>> {
-        self.map(Wire2Api::wire2api)
-    }
-}
+
 impl Wire2Api<Option<Attribute>> for JsValue {
     fn wire2api(self) -> Option<Attribute> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
@@ -1736,6 +1733,11 @@ impl Wire2Api<Option<String>> for JsValue {
 }
 impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for JsValue {
     fn wire2api(self) -> Option<ZeroCopyBuffer<Vec<u8>>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<Opaque<HideData>>> for JsValue {
+    fn wire2api(self) -> Option<Opaque<HideData>> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }

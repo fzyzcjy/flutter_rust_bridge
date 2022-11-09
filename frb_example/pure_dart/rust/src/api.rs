@@ -1034,16 +1034,19 @@ pub fn run_nested_opaque(opaque: OpaqueNested) {}
 //     Some(Box::new(42))
 // }
 
-
 pub struct MegaOpaqueRename {
     pub data: Box<MegaDataRename>,
-    pub e: Box<TestRename>
+    pub e: Box<TestRename>,
 }
 
 impl MegaOpaqueRename {
     fn new() -> Self {
         Self {
-            data: Box::new(MegaDataRename { vec: Some(vec![]), next: None }),
+            data: Box::new(MegaDataRename {
+                vec: Some(vec![]),
+                next: None,
+                next1: None,
+            }),
             e: Box::new(TestRename::A(42)),
         }
     }
@@ -1052,17 +1055,20 @@ impl MegaOpaqueRename {
 pub struct MegaDataRename {
     pub vec: Option<Vec<Opaque<i32>>>,
     pub next: Option<Opaque<i32>>,
+    pub next1: Option<Opaque<HideData>>,
 }
 pub enum TestRename {
     A(i32),
-    B(Opaque<u64>), 
+    B(Opaque<u64>),
     C(MegaDataRename),
 }
 
-pub struct TestO {f: i32}
+pub struct TestO {
+    _f: i32,
+}
 
 pub fn test_o() -> Vec<Opaque<TestO>> {
-    vec![Opaque::new(TestO{ f: 42})]
+    vec![Opaque::new(TestO { _f: 42 })]
 }
 
 pub fn test_w(a: Vec<Opaque<TestO>>) {}
@@ -1073,11 +1079,12 @@ pub fn mega_opaque() -> Vec<MegaOpaqueRename> {
 
 pub fn mega_run_opaque(data: MegaOpaqueRename) {}
 
-
 pub fn gg(w: WTF) {}
 
 pub struct WTF {
-    pub a: Option<WTFFF>
+    pub a: Option<WTFFF>,
 }
 
-pub struct WTFFF { pub b: i32 }
+pub struct WTFFF {
+    pub b: i32,
+}

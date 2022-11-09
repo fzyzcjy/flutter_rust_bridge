@@ -114,7 +114,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         }
     }
 
-
     fn imports(&self) -> Option<String> {
         generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
     }
