@@ -2,7 +2,7 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct IrTypeStructRef {
     pub name: String,
     pub freezed: bool,

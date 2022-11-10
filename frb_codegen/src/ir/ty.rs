@@ -1,10 +1,16 @@
+use std::{sync::Mutex, collections::HashMap};
+
 use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
 use IrType::*;
 
+lazy_static! {
+    static ref OPACITY: Mutex<HashMap<IrType, bool>> = Mutex::new(HashMap::new());
+}
+
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrType {
     Primitive(IrTypePrimitive),
     Delegate(IrTypeDelegate),
@@ -71,86 +77,58 @@ impl IrType {
     pub fn is_opaque(&self) -> bool {
         matches!(self, Opaque(_))
     }
-
-    // todo rework
-    #[inline]
+    
     pub fn contains_opaque(&self, ir_file: &IrFile) -> bool {
-        #[derive(PartialEq, Debug, Clone, Copy)]
-        enum Check {
-            T,
-            F,
-            S,
+        if let Some(flag) = OPACITY.lock().unwrap().get(self) {
+            return *flag;
         }
+        OPACITY.lock().unwrap().insert(self.clone(), false);
 
-        let mut checked = vec![];
-        fn temp(ty: &IrType, ir_file: &IrFile, ch: &mut Vec<(IrType, Check)>) -> Check {
-            if let Some((_, res)) = ch.iter().find(|(t, _)| t == ty) {
-                return *res;
-            }
-            ch.push((ty.clone(), Check::S));
-
-            match ty {
-                Optional(o) => temp(&o.inner, ir_file, ch),
-                GeneralList(g) => temp(&g.inner, ir_file, ch),
-                StructRef(s) => {
-                    let check: Vec<Check> = s
-                        .get(ir_file)
-                        .fields
-                        .iter()
-                        .map(|f| temp(&f.ty, ir_file, ch))
-                        .collect();
-                    if check.iter().any(|c| *c == Check::T) {
-                        return Check::T;
-                    } else {
-                        return Check::F;
+        let res = match self {
+            Optional(option) => option.inner.contains_opaque(ir_file),
+            GeneralList(list) => list.inner.contains_opaque(ir_file),
+            StructRef(strct) => {
+                let mut opaque = false;
+                for field in &strct.get(ir_file).fields {
+                    if field.ty.contains_opaque(ir_file) {
+                        opaque = true;
+                        break;
                     }
                 }
-                Boxed(b) => temp(&b.inner, ir_file, ch),
-                EnumRef(e) => {
-                    let checks: Vec<Check> = e
-                        .get(ir_file)
-                        .variants()
-                        .iter()
-                        .map(|v| match &v.kind {
-                            IrVariantKind::Value => Check::F,
-                            IrVariantKind::Struct(s) => {
-                                let check: Vec<Check> =
-                                    s.fields.iter().map(|f| temp(&f.ty, ir_file, ch)).collect();
-                                if check.iter().any(|c| *c == Check::T) {
-                                    return Check::T;
-                                } else {
-                                    return Check::F;
+                opaque
+            }
+            Boxed(b) => b.inner.contains_opaque(ir_file),
+            EnumRef(enm) => {
+                let mut opaque = false;
+                'outer: for variants in enm.get(ir_file).variants() {
+                    match &variants.kind {
+                        IrVariantKind::Value => continue,
+                        IrVariantKind::Struct(strct) => {
+                            for field in &strct.fields {
+                                if field.ty.contains_opaque(ir_file) {
+                                    opaque = true;
+                                    break 'outer;
                                 }
                             }
-                        })
-                        .collect();
-                    if checks.iter().any(|c| *c == Check::T) {
-                        return Check::T;
-                    } else {
-                        return Check::F;
-                    }
-                }
-                Opaque(_) => Check::T,
-                Delegate(d) => match d {
-                    IrTypeDelegate::Array(a) => match a {
-                        IrTypeDelegateArray::GeneralArray { general, .. } => {
-                            return temp(general, ir_file, ch)
                         }
-                        IrTypeDelegateArray::PrimitiveArray { .. } => return Check::F,
-                    },
-                    _ => return Check::F,
-                },
-                _ => Check::F,
+                    };
+                }
+                opaque
             }
-        }
+            Opaque(_) => true,
+            Delegate(IrTypeDelegate::Array(array)) => match array {
+                IrTypeDelegateArray::GeneralArray { general, .. } => {
+                    general.contains_opaque(ir_file)
+                }
+                IrTypeDelegateArray::PrimitiveArray { .. } => false,
+            },
+            _ => false,
+        };
 
-        let tt = temp(self, ir_file, &mut checked);
-        println!("{} - {:?}", self.rust_api_type(), tt);
-        match tt {
-            Check::T => true,
-            Check::F => false,
-            Check::S => unreachable!(),
+        if let Some(flag) = OPACITY.lock().unwrap().get_mut(self) {
+            *flag = res;
         }
+        res
     }
 
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap

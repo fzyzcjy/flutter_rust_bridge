@@ -1,6 +1,5 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
 #![allow(clippy::vec_init_then_push)]
-#![deny(clippy::too_many_lines)]
 // #![warn(clippy::wildcard_enum_match_arm)]
 
 use std::ffi::OsStr;
@@ -16,6 +15,9 @@ use crate::others::*;
 use crate::target::Acc;
 use crate::target::Target;
 use crate::utils::*;
+
+#[macro_use]
+extern crate lazy_static;
 
 mod config;
 mod tools;

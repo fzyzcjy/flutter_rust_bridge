@@ -2,7 +2,7 @@ use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::target::Target;
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct IrTypeOptional {
     pub inner: Box<IrType>,
 }
