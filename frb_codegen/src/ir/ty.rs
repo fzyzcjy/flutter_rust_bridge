@@ -1,4 +1,4 @@
-use std::{sync::Mutex, collections::HashMap};
+use std::{collections::HashMap, sync::Mutex};
 
 use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
@@ -77,7 +77,7 @@ impl IrType {
     pub fn is_opaque(&self) -> bool {
         matches!(self, Opaque(_))
     }
-    
+
     pub fn contains_opaque(&self, ir_file: &IrFile) -> bool {
         if let Some(flag) = OPACITY.lock().unwrap().get(self) {
             return *flag;

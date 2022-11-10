@@ -23,37 +23,22 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   @protected
   ffi.Pointer<wire_Point> api2wire_box_autoadd_point(Point raw) {
     final ptr = inner.new_box_autoadd_point_0();
-    try {
-      _api_fill_to_wire_point(raw, ptr.ref);
-      return ptr;
-    } catch (e) {
-      inner.drop_box_autoadd_point_0(ptr);
-      rethrow;
-    }
+    _api_fill_to_wire_point(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
   ffi.Pointer<wire_Size> api2wire_box_autoadd_size(Size raw) {
     final ptr = inner.new_box_autoadd_size_0();
-    try {
-      _api_fill_to_wire_size(raw, ptr.ref);
-      return ptr;
-    } catch (e) {
-      inner.drop_box_autoadd_size_0(ptr);
-      rethrow;
-    }
+    _api_fill_to_wire_size(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
   ffi.Pointer<wire_TreeNode> api2wire_box_autoadd_tree_node(TreeNode raw) {
     final ptr = inner.new_box_autoadd_tree_node_0();
-    try {
-      _api_fill_to_wire_tree_node(raw, ptr.ref);
-      return ptr;
-    } catch (e) {
-      inner.drop_box_autoadd_tree_node_0(ptr);
-      rethrow;
-    }
+    _api_fill_to_wire_tree_node(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -110,6 +95,9 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     wireObj.name = api2wire_String(apiObj.name);
     wireObj.children = api2wire_list_tree_node(apiObj.children);
   }
+
+// Section: api_opaque_validate
+
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
@@ -392,44 +380,6 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_uint_8_list_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
   late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
-
-  void drop_box_autoadd_point_0(
-    ffi.Pointer<wire_Point> raw,
-  ) {
-    return _drop_box_autoadd_point_0(
-      raw,
-    );
-  }
-
-  late final _drop_box_autoadd_point_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Point>)>>('drop_box_autoadd_point_0');
-  late final _drop_box_autoadd_point_0 =
-      _drop_box_autoadd_point_0Ptr.asFunction<void Function(ffi.Pointer<wire_Point>)>();
-
-  void drop_box_autoadd_size_0(
-    ffi.Pointer<wire_Size> raw,
-  ) {
-    return _drop_box_autoadd_size_0(
-      raw,
-    );
-  }
-
-  late final _drop_box_autoadd_size_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_Size>)>>('drop_box_autoadd_size_0');
-  late final _drop_box_autoadd_size_0 = _drop_box_autoadd_size_0Ptr.asFunction<void Function(ffi.Pointer<wire_Size>)>();
-
-  void drop_box_autoadd_tree_node_0(
-    ffi.Pointer<wire_TreeNode> raw,
-  ) {
-    return _drop_box_autoadd_tree_node_0(
-      raw,
-    );
-  }
-
-  late final _drop_box_autoadd_tree_node_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_TreeNode>)>>('drop_box_autoadd_tree_node_0');
-  late final _drop_box_autoadd_tree_node_0 =
-      _drop_box_autoadd_tree_node_0Ptr.asFunction<void Function(ffi.Pointer<wire_TreeNode>)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,

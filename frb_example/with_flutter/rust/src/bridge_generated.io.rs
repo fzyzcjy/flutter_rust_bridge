@@ -117,35 +117,6 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
-// Section: deallocate functions
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_point_0(raw: *mut wire_Point) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_size_0(raw: *mut wire_Size) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_tree_node_0(raw: *mut wire_TreeNode) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
 // Section: opaque stuff functions
 
 // Section: impl Wire2Api

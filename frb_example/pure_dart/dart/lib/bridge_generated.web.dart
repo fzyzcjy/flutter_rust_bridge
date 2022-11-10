@@ -81,16 +81,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  dynamic api2wire_TestO(TestO raw) {
-    return raw.tryShare();
-  }
-
-  @protected
-  dynamic api2wire_U64(U64 raw) {
-    return raw.tryShare();
-  }
-
-  @protected
   Uint8List api2wire_Uuid(UuidValue raw) {
     return api2wire_uint_8_list(raw.toBytes());
   }
@@ -138,16 +128,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_application_env(ApplicationEnv raw) {
     return api2wire_application_env(raw);
-  }
-
-  @protected
-  int /* *JsValue */ api2wire_box_autoadd_HideData(HideData raw) {
-    return api2wire_HideData(raw);
-  }
-
-  @protected
-  int /* *JsValue */ api2wire_box_autoadd_I32(I32 raw) {
-    return api2wire_I32(raw);
   }
 
   @protected
@@ -226,16 +206,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_mega_data_rename(MegaDataRename raw) {
-    return api2wire_mega_data_rename(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_mega_opaque_rename(MegaOpaqueRename raw) {
-    return api2wire_mega_opaque_rename(raw);
-  }
-
-  @protected
   List<dynamic> api2wire_box_autoadd_message_id(MessageId raw) {
     return api2wire_message_id(raw);
   }
@@ -296,16 +266,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_wtf(WTF raw) {
-    return api2wire_wtf(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_wtfff(WTFFF raw) {
-    return api2wire_wtfff(raw);
-  }
-
-  @protected
   List<dynamic> api2wire_box_blob(Blob raw) {
     return api2wire_blob(raw);
   }
@@ -351,11 +311,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_box_mega_data_rename(MegaDataRename raw) {
-    return api2wire_mega_data_rename(raw);
-  }
-
-  @protected
   List<dynamic> api2wire_box_my_size(MySize raw) {
     return api2wire_my_size(raw);
   }
@@ -363,11 +318,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_speed(Speed raw) {
     return api2wire_speed(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_test_rename(TestRename raw) {
-    return api2wire_test_rename(raw);
   }
 
   @protected
@@ -528,16 +478,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_list_I32(List<I32> raw) {
-    return raw.map(api2wire_I32).toList();
-  }
-
-  @protected
-  List<dynamic> api2wire_list_TestO(List<TestO> raw) {
-    return raw.map(api2wire_TestO).toList();
-  }
-
-  @protected
   List<dynamic> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
     return raw.map(api2wire_application_env_var).toList();
   }
@@ -577,20 +517,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
 
     throw Exception('unreachable');
-  }
-
-  @protected
-  List<dynamic> api2wire_mega_data_rename(MegaDataRename raw) {
-    return [
-      api2wire_opt_list_I32(raw.vec),
-      api2wire_opt_box_autoadd_I32(raw.next),
-      api2wire_opt_box_autoadd_HideData(raw.next1)
-    ];
-  }
-
-  @protected
-  List<dynamic> api2wire_mega_opaque_rename(MegaOpaqueRename raw) {
-    return [api2wire_box_mega_data_rename(raw.data), api2wire_box_test_rename(raw.e)];
   }
 
   @protected
@@ -649,16 +575,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  int /* *JsValue */ ? api2wire_opt_box_autoadd_HideData(HideData? raw) {
-    return raw == null ? null : api2wire_box_autoadd_HideData(raw);
-  }
-
-  @protected
-  int /* *JsValue */ ? api2wire_opt_box_autoadd_I32(I32? raw) {
-    return raw == null ? null : api2wire_box_autoadd_I32(raw);
-  }
-
-  @protected
   List<dynamic>? api2wire_opt_box_autoadd_attribute(Attribute? raw) {
     return raw == null ? null : api2wire_box_autoadd_attribute(raw);
   }
@@ -691,11 +607,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic>? api2wire_opt_box_autoadd_new_type_int(NewTypeInt? raw) {
     return raw == null ? null : api2wire_box_autoadd_new_type_int(raw);
-  }
-
-  @protected
-  List<dynamic>? api2wire_opt_box_autoadd_wtfff(WTFFF? raw) {
-    return raw == null ? null : api2wire_box_autoadd_wtfff(raw);
   }
 
   @protected
@@ -754,11 +665,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic>? api2wire_opt_list_I32(List<I32>? raw) {
-    return raw == null ? null : api2wire_list_I32(raw);
-  }
-
-  @protected
   List<dynamic>? api2wire_opt_list_attribute(List<Attribute>? raw) {
     return raw == null ? null : api2wire_list_attribute(raw);
   }
@@ -801,21 +707,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_test_rename(TestRename raw) {
-    if (raw is TestRename_A) {
-      return [0, api2wire_i32(raw.field0)];
-    }
-    if (raw is TestRename_B) {
-      return [1, api2wire_U64(raw.field0)];
-    }
-    if (raw is TestRename_C) {
-      return [2, api2wire_box_autoadd_mega_data_rename(raw.field0)];
-    }
-
-    throw Exception('unreachable');
-  }
-
-  @protected
   Object api2wire_u64(int raw) {
     return castNativeBigInt(raw);
   }
@@ -845,15 +736,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     return [api2wire_u32(raw.value)];
   }
 
-  @protected
-  List<dynamic> api2wire_wtf(WTF raw) {
-    return [api2wire_opt_box_autoadd_wtfff(raw.a)];
-  }
-
-  @protected
-  List<dynamic> api2wire_wtfff(WTFFF raw) {
-    return [api2wire_i32(raw.b)];
-  }
 // Section: finalyzer
 
   dynamic get_finalizer_opaque_BoxDartDebug() {
@@ -874,14 +756,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   dynamic get_finalizer_opaque_RwLockHideData() {
     return inner.drop_opaque_RwLockHideData;
-  }
-
-  dynamic get_finalizer_opaque_TestO() {
-    return inner.drop_opaque_TestO;
-  }
-
-  dynamic get_finalizer_opaque_U64() {
-    return inner.drop_opaque_U64;
   }
 }
 
@@ -1085,16 +959,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external void wire_test_o(NativePortType port_);
-
-  external void wire_test_w(NativePortType port_, List<dynamic> a);
-
-  external void wire_mega_opaque(NativePortType port_);
-
-  external void wire_mega_run_opaque(NativePortType port_, List<dynamic> data);
-
-  external void wire_gg(NativePortType port_, List<dynamic> w);
-
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1145,10 +1009,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /*  */ drop_opaque_RwLockHideData(ptr);
 
-  external dynamic /*  */ drop_opaque_TestO(ptr);
-
-  external dynamic /*  */ drop_opaque_U64(ptr);
-
   external int /* *const c_void */ share_opaque_BoxDartDebug(ptr);
 
   external int /* *const c_void */ share_opaque_HideData(ptr);
@@ -1158,10 +1018,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external int /* *const c_void */ share_opaque_MutexHideData(ptr);
 
   external int /* *const c_void */ share_opaque_RwLockHideData(ptr);
-
-  external int /* *const c_void */ share_opaque_TestO(ptr);
-
-  external int /* *const c_void */ share_opaque_U64(ptr);
 }
 
 // Section: WASM wire connector
@@ -1389,16 +1245,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
       wasmModule.wire_run_nested_opaque(port_, opaque);
 
-  void wire_test_o(NativePortType port_) => wasmModule.wire_test_o(port_);
-
-  void wire_test_w(NativePortType port_, List<dynamic> a) => wasmModule.wire_test_w(port_, a);
-
-  void wire_mega_opaque(NativePortType port_) => wasmModule.wire_mega_opaque(port_);
-
-  void wire_mega_run_opaque(NativePortType port_, List<dynamic> data) => wasmModule.wire_mega_run_opaque(port_, data);
-
-  void wire_gg(NativePortType port_, List<dynamic> w) => wasmModule.wire_gg(port_, w);
-
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);
 
@@ -1456,10 +1302,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   dynamic /*  */ drop_opaque_RwLockHideData(ptr) => wasmModule.drop_opaque_RwLockHideData(ptr);
 
-  dynamic /*  */ drop_opaque_TestO(ptr) => wasmModule.drop_opaque_TestO(ptr);
-
-  dynamic /*  */ drop_opaque_U64(ptr) => wasmModule.drop_opaque_U64(ptr);
-
   int /* *const c_void */ share_opaque_BoxDartDebug(ptr) => wasmModule.share_opaque_BoxDartDebug(ptr);
 
   int /* *const c_void */ share_opaque_HideData(ptr) => wasmModule.share_opaque_HideData(ptr);
@@ -1469,8 +1311,4 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   int /* *const c_void */ share_opaque_MutexHideData(ptr) => wasmModule.share_opaque_MutexHideData(ptr);
 
   int /* *const c_void */ share_opaque_RwLockHideData(ptr) => wasmModule.share_opaque_RwLockHideData(ptr);
-
-  int /* *const c_void */ share_opaque_TestO(ptr) => wasmModule.share_opaque_TestO(ptr);
-
-  int /* *const c_void */ share_opaque_U64(ptr) => wasmModule.share_opaque_U64(ptr);
 }

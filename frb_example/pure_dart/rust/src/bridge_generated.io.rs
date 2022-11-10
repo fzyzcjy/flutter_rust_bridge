@@ -482,31 +482,6 @@ pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNes
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_o(port_: i64) {
-    wire_test_o_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_w(port_: i64, a: *mut wire_list_TestO) {
-    wire_test_w_impl(port_, a)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_mega_opaque(port_: i64) {
-    wire_mega_opaque_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_mega_run_opaque(port_: i64, data: *mut wire_MegaOpaqueRename) {
-    wire_mega_run_opaque_impl(port_, data)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_gg(port_: i64, w: *mut wire_WTF) {
-    wire_gg_impl(port_, w)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -605,28 +580,8 @@ pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
 }
 
 #[no_mangle]
-pub extern "C" fn new_TestO() -> wire_TestO {
-    wire_TestO::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_U64() -> wire_U64 {
-    wire_U64::new_with_null_ptr()
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_HideData_0() -> *mut wire_HideData {
-    support::new_leak_box_ptr(wire_HideData::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_I32_0() -> *mut wire_I32 {
-    support::new_leak_box_ptr(wire_I32::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -705,16 +660,6 @@ pub extern "C" fn new_box_autoadd_measure_0() -> *mut wire_Measure {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_mega_data_rename_0() -> *mut wire_MegaDataRename {
-    support::new_leak_box_ptr(wire_MegaDataRename::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_mega_opaque_rename_0() -> *mut wire_MegaOpaqueRename {
-    support::new_leak_box_ptr(wire_MegaOpaqueRename::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_message_id_0() -> *mut wire_MessageId {
     support::new_leak_box_ptr(wire_MessageId::new_with_null_ptr())
 }
@@ -775,16 +720,6 @@ pub extern "C" fn new_box_autoadd_user_id_0() -> *mut wire_UserId {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_wtf_0() -> *mut wire_WTF {
-    support::new_leak_box_ptr(wire_WTF::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_wtfff_0() -> *mut wire_WTFFF {
-    support::new_leak_box_ptr(wire_WTFFF::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_blob_0() -> *mut wire_Blob {
     support::new_leak_box_ptr(wire_Blob::new_with_null_ptr())
 }
@@ -830,11 +765,6 @@ pub extern "C" fn new_box_kitchen_sink_0() -> *mut wire_KitchenSink {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_mega_data_rename_0() -> *mut wire_MegaDataRename {
-    support::new_leak_box_ptr(wire_MegaDataRename::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
@@ -842,11 +772,6 @@ pub extern "C" fn new_box_my_size_0() -> *mut wire_MySize {
 #[no_mangle]
 pub extern "C" fn new_box_speed_0() -> *mut wire_Speed {
     support::new_leak_box_ptr(wire_Speed::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_test_rename_0() -> *mut wire_TestRename {
-    support::new_leak_box_ptr(wire_TestRename::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -893,24 +818,6 @@ pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
         len,
     };
     support::new_leak_box_ptr(ans)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_I32_0(len: i32) -> *mut wire_list_I32 {
-    let wrap = wire_list_I32 {
-        ptr: support::new_leak_vec_ptr(<wire_I32>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_TestO_0(len: i32) -> *mut wire_list_TestO {
-    let wrap = wire_list_TestO {
-        ptr: support::new_leak_vec_ptr(<wire_TestO>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
@@ -1016,20 +923,6 @@ pub extern "C" fn drop_opaque_RwLockHideData(ptr: *const c_void) {
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_TestO(ptr: *const c_void) {
-    unsafe {
-        Arc::<TestO>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_U64(ptr: *const c_void) {
-    unsafe {
-        Arc::<u64>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
 pub extern "C" fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
@@ -1065,22 +958,6 @@ pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_voi
 pub extern "C" fn share_opaque_RwLockHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
-        ptr
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn share_opaque_TestO(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<TestO>::increment_strong_count(ptr as _);
-        ptr
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn share_opaque_U64(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<u64>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -1162,16 +1039,6 @@ impl Wire2Api<[TestId; 4]> for *mut wire_list_test_id {
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<Opaque<TestO>> for wire_TestO {
-    fn wire2api(self) -> Opaque<TestO> {
-        unsafe { support::opaque_from_dart(self.ptr as _) }
-    }
-}
-impl Wire2Api<Opaque<u64>> for wire_U64 {
-    fn wire2api(self) -> Opaque<u64> {
-        unsafe { support::opaque_from_dart(self.ptr as _) }
-    }
-}
 impl Wire2Api<uuid::Uuid> for *mut wire_uint_8_list {
     fn wire2api(self) -> uuid::Uuid {
         let single: Vec<u8> = self.wire2api();
@@ -1230,18 +1097,6 @@ impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
     fn wire2api(self) -> Box<ApplicationEnv> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<Opaque<HideData>> for *mut wire_HideData {
-    fn wire2api(self) -> Opaque<HideData> {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Opaque<HideData>>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<Opaque<i32>> for *mut wire_I32 {
-    fn wire2api(self) -> Opaque<i32> {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Opaque<i32>>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
@@ -1311,18 +1166,6 @@ impl Wire2Api<Measure> for *mut wire_Measure {
     fn wire2api(self) -> Measure {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Measure>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<MegaDataRename> for *mut wire_MegaDataRename {
-    fn wire2api(self) -> MegaDataRename {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<MegaDataRename>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<MegaOpaqueRename> for *mut wire_MegaOpaqueRename {
-    fn wire2api(self) -> MegaOpaqueRename {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<MegaOpaqueRename>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<MessageId> for *mut wire_MessageId {
@@ -1397,18 +1240,6 @@ impl Wire2Api<UserId> for *mut wire_UserId {
         Wire2Api::<UserId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<WTF> for *mut wire_WTF {
-    fn wire2api(self) -> WTF {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<WTF>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<WTFFF> for *mut wire_WTFFF {
-    fn wire2api(self) -> WTFFF {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<WTFFF>::wire2api(*wrap).into()
-    }
-}
 impl Wire2Api<Box<Blob>> for *mut wire_Blob {
     fn wire2api(self) -> Box<Blob> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1435,12 +1266,6 @@ impl Wire2Api<Box<KitchenSink>> for *mut wire_KitchenSink {
         Wire2Api::<KitchenSink>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<MegaDataRename>> for *mut wire_MegaDataRename {
-    fn wire2api(self) -> Box<MegaDataRename> {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<MegaDataRename>::wire2api(*wrap).into()
-    }
-}
 impl Wire2Api<Box<MySize>> for *mut wire_MySize {
     fn wire2api(self) -> Box<MySize> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1451,12 +1276,6 @@ impl Wire2Api<Box<Speed>> for *mut wire_Speed {
     fn wire2api(self) -> Box<Speed> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Speed>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<Box<TestRename>> for *mut wire_TestRename {
-    fn wire2api(self) -> Box<TestRename> {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<TestRename>::wire2api(*wrap).into()
     }
 }
 
@@ -1658,24 +1477,6 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
         }
     }
 }
-impl Wire2Api<Vec<Opaque<i32>>> for *mut wire_list_I32 {
-    fn wire2api(self) -> Vec<Opaque<i32>> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
-    }
-}
-impl Wire2Api<Vec<Opaque<TestO>>> for *mut wire_list_TestO {
-    fn wire2api(self) -> Vec<Opaque<TestO>> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
-    }
-}
 impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
     fn wire2api(self) -> Vec<ApplicationEnvVar> {
         let vec = unsafe {
@@ -1744,23 +1545,6 @@ impl Wire2Api<Measure> for wire_Measure {
                 Measure::Distance(ans.field0.wire2api())
             },
             _ => unreachable!(),
-        }
-    }
-}
-impl Wire2Api<MegaDataRename> for wire_MegaDataRename {
-    fn wire2api(self) -> MegaDataRename {
-        MegaDataRename {
-            vec: self.vec.wire2api(),
-            next: self.next.wire2api(),
-            next1: self.next1.wire2api(),
-        }
-    }
-}
-impl Wire2Api<MegaOpaqueRename> for wire_MegaOpaqueRename {
-    fn wire2api(self) -> MegaOpaqueRename {
-        MegaOpaqueRename {
-            data: self.data.wire2api(),
-            e: self.e.wire2api(),
         }
     }
 }
@@ -1852,28 +1636,6 @@ impl Wire2Api<TestId> for wire_TestId {
         TestId(self.field0.wire2api())
     }
 }
-impl Wire2Api<TestRename> for wire_TestRename {
-    fn wire2api(self) -> TestRename {
-        match self.tag {
-            0 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.A);
-                TestRename::A(ans.field0.wire2api())
-            },
-            1 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.B);
-                TestRename::B(ans.field0.wire2api())
-            },
-            2 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.C);
-                TestRename::C(ans.field0.wire2api())
-            },
-            _ => unreachable!(),
-        }
-    }
-}
 
 impl Wire2Api<[u8; 1600]> for *mut wire_uint_8_list {
     fn wire2api(self) -> [u8; 1600] {
@@ -1909,20 +1671,6 @@ impl Wire2Api<UserId> for wire_UserId {
     }
 }
 
-impl Wire2Api<WTF> for wire_WTF {
-    fn wire2api(self) -> WTF {
-        WTF {
-            a: self.a.wire2api(),
-        }
-    }
-}
-impl Wire2Api<WTFFF> for wire_WTFFF {
-    fn wire2api(self) -> WTFFF {
-        WTFFF {
-            b: self.b.wire2api(),
-        }
-    }
-}
 // Section: wire structs
 
 #[repr(C)]
@@ -1960,18 +1708,6 @@ pub struct wire_RwLockHideData {
 pub struct wire_StringList {
     ptr: *mut *mut wire_uint_8_list,
     len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_TestO {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_U64 {
-    ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
@@ -2093,20 +1829,6 @@ pub struct wire_int_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_list_I32 {
-    ptr: *mut wire_I32,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_TestO {
-    ptr: *mut wire_TestO,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_list_application_env_var {
     ptr: *mut wire_ApplicationEnvVar,
     len: i32,
@@ -2145,21 +1867,6 @@ pub struct wire_list_opt_box_autoadd_attribute {
 pub struct wire_list_test_id {
     ptr: *mut wire_TestId,
     len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_MegaDataRename {
-    vec: *mut wire_list_I32,
-    next: *mut wire_I32,
-    next1: *mut wire_HideData,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_MegaOpaqueRename {
-    data: *mut wire_MegaDataRename,
-    e: *mut wire_TestRename,
 }
 
 #[repr(C)]
@@ -2245,18 +1952,6 @@ pub struct wire_uint_8_list {
 #[derive(Clone)]
 pub struct wire_UserId {
     value: u32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_WTF {
-    a: *mut wire_WTFFF,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_WTFFF {
-    b: i32,
 }
 
 #[repr(C)]
@@ -2430,38 +2125,6 @@ pub struct wire_Speed_GPS {
     field0: f64,
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_TestRename {
-    tag: i32,
-    kind: *mut TestRenameKind,
-}
-
-#[repr(C)]
-pub union TestRenameKind {
-    A: *mut wire_TestRename_A,
-    B: *mut wire_TestRename_B,
-    C: *mut wire_TestRename_C,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_TestRename_A {
-    field0: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_TestRename_B {
-    field0: wire_U64,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_TestRename_C {
-    field0: *mut wire_MegaDataRename,
-}
-
 // Section: impl NewWithNullPtr
 
 pub trait NewWithNullPtr {
@@ -2504,21 +2167,6 @@ impl NewWithNullPtr for wire_MutexHideData {
     }
 }
 impl NewWithNullPtr for wire_RwLockHideData {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_TestO {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_U64 {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
@@ -2794,25 +2442,6 @@ pub extern "C" fn inflate_Measure_Distance() -> *mut MeasureKind {
     })
 }
 
-impl NewWithNullPtr for wire_MegaDataRename {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            vec: core::ptr::null_mut(),
-            next: core::ptr::null_mut(),
-            next1: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_MegaOpaqueRename {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            data: core::ptr::null_mut(),
-            e: core::ptr::null_mut(),
-        }
-    }
-}
-
 impl NewWithNullPtr for wire_MessageId {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2925,62 +2554,10 @@ impl NewWithNullPtr for wire_TestId {
     }
 }
 
-impl NewWithNullPtr for wire_TestRename {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_TestRename_A() -> *mut TestRenameKind {
-    support::new_leak_box_ptr(TestRenameKind {
-        A: support::new_leak_box_ptr(wire_TestRename_A {
-            field0: Default::default(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_TestRename_B() -> *mut TestRenameKind {
-    support::new_leak_box_ptr(TestRenameKind {
-        B: support::new_leak_box_ptr(wire_TestRename_B {
-            field0: wire_U64::new_with_null_ptr(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_TestRename_C() -> *mut TestRenameKind {
-    support::new_leak_box_ptr(TestRenameKind {
-        C: support::new_leak_box_ptr(wire_TestRename_C {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
 impl NewWithNullPtr for wire_UserId {
     fn new_with_null_ptr() -> Self {
         Self {
             value: Default::default(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_WTF {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            a: core::ptr::null_mut(),
-        }
-    }
-}
-
-impl NewWithNullPtr for wire_WTFFF {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            b: Default::default(),
         }
     }
 }

@@ -1488,84 +1488,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
-  Future<List<TestO>> testO({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_o(port_),
-      parseSuccessData: _wire2api_list_TestO,
-      constMeta: kTestOConstMeta,
-      argValues: [],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestOConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_o",
-        argNames: [],
-      );
-
-  Future<void> testW({required List<TestO> a, dynamic hint}) {
-    var arg0 = _platform.api2wire_list_TestO(a);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_w(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      constMeta: kTestWConstMeta,
-      argValues: [a],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestWConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_w",
-        argNames: ["a"],
-      );
-
-  Future<List<MegaOpaqueRename>> megaOpaque({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_mega_opaque(port_),
-      parseSuccessData: _wire2api_list_mega_opaque_rename,
-      constMeta: kMegaOpaqueConstMeta,
-      argValues: [],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kMegaOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "mega_opaque",
-        argNames: [],
-      );
-
-  Future<void> megaRunOpaque({required MegaOpaqueRename data, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_mega_opaque_rename(data);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_mega_run_opaque(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      constMeta: kMegaRunOpaqueConstMeta,
-      argValues: [data],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kMegaRunOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "mega_run_opaque",
-        argNames: ["data"],
-      );
-
-  Future<void> gg({required WTF w, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_wtf(w);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_gg(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      constMeta: kGgConstMeta,
-      argValues: [w],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kGgConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "gg",
-        argNames: ["w"],
-      );
-
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -1838,14 +1760,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return TestIdArray2((raw as List<dynamic>).map(_wire2api_test_id).toList());
   }
 
-  TestO _wire2api_TestO(dynamic raw) {
-    return TestO.fromRaw(raw[0], raw[1]);
-  }
-
-  U64 _wire2api_U64(dynamic raw) {
-    return U64.fromRaw(raw[0], raw[1]);
-  }
-
   UuidValue _wire2api_Uuid(dynamic raw) {
     return UuidValue.fromByteList(_wire2api_uint_8_list(raw));
   }
@@ -1979,14 +1893,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_application_env(raw);
   }
 
-  HideData _wire2api_box_autoadd_HideData(dynamic raw) {
-    return raw as HideData;
-  }
-
-  I32 _wire2api_box_autoadd_I32(dynamic raw) {
-    return raw as I32;
-  }
-
   Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
     return _wire2api_attribute(raw);
   }
@@ -2015,10 +1921,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_i64(raw);
   }
 
-  MegaDataRename _wire2api_box_autoadd_mega_data_rename(dynamic raw) {
-    return _wire2api_mega_data_rename(raw);
-  }
-
   NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
     return _wire2api_new_type_int(raw);
   }
@@ -2035,16 +1937,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_kitchen_sink(raw);
   }
 
-  MegaDataRename _wire2api_box_mega_data_rename(dynamic raw) {
-    return _wire2api_mega_data_rename(raw);
-  }
-
   Speed _wire2api_box_speed(dynamic raw) {
     return _wire2api_speed(raw);
-  }
-
-  TestRename _wire2api_box_test_rename(dynamic raw) {
-    return _wire2api_test_rename(raw);
   }
 
   U8Array8 _wire2api_box_u8_array_8(dynamic raw) {
@@ -2247,14 +2141,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return (raw as List<dynamic>).map(_wire2api_HideData).toList();
   }
 
-  List<I32> _wire2api_list_I32(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_I32).toList();
-  }
-
-  List<TestO> _wire2api_list_TestO(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_TestO).toList();
-  }
-
   List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
   }
@@ -2269,10 +2155,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   List<EnumOpaque> _wire2api_list_enum_opaque(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_enum_opaque).toList();
-  }
-
-  List<MegaOpaqueRename> _wire2api_list_mega_opaque_rename(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_mega_opaque_rename).toList();
   }
 
   List<MySize> _wire2api_list_my_size(dynamic raw) {
@@ -2330,25 +2212,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       default:
         throw Exception("unreachable");
     }
-  }
-
-  MegaDataRename _wire2api_mega_data_rename(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
-    return MegaDataRename(
-      vec: _wire2api_opt_list_I32(arr[0]),
-      next: _wire2api_opt_box_autoadd_I32(arr[1]),
-      next1: _wire2api_opt_box_autoadd_HideData(arr[2]),
-    );
-  }
-
-  MegaOpaqueRename _wire2api_mega_opaque_rename(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return MegaOpaqueRename(
-      data: _wire2api_box_mega_data_rename(arr[0]),
-      e: _wire2api_box_test_rename(arr[1]),
-    );
   }
 
   MessageId _wire2api_message_id(dynamic raw) {
@@ -2436,14 +2299,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
   }
 
-  HideData? _wire2api_opt_box_autoadd_HideData(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_HideData(raw);
-  }
-
-  I32? _wire2api_opt_box_autoadd_I32(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_I32(raw);
-  }
-
   Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_attribute(raw);
   }
@@ -2490,10 +2345,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Int8List? _wire2api_opt_int_8_list(dynamic raw) {
     return raw == null ? null : _wire2api_int_8_list(raw);
-  }
-
-  List<I32>? _wire2api_opt_list_I32(dynamic raw) {
-    return raw == null ? null : _wire2api_list_I32(raw);
   }
 
   List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
@@ -2565,25 +2416,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return TestId(
       field0: _wire2api_i32_array_2(arr[0]),
     );
-  }
-
-  TestRename _wire2api_test_rename(dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return TestRename_A(
-          _wire2api_i32(raw[1]),
-        );
-      case 1:
-        return TestRename_B(
-          _wire2api_U64(raw[1]),
-        );
-      case 2:
-        return TestRename_C(
-          _wire2api_box_autoadd_mega_data_rename(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
   }
 
   int _wire2api_u16(dynamic raw) {
@@ -2755,5 +2587,4 @@ int api2wire_usize(int raw) {
 int api2wire_weekdays(Weekdays raw) {
   return api2wire_i32(raw.index);
 }
-
 // Section: finalyzer
