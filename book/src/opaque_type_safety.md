@@ -12,7 +12,7 @@ async dart api `flutter_rust_bridge` allowing sharing a `Opaque type` by multipl
 From the moment an opaque type is passed to Dart, it has full ownership of it.
 Dart implements a finalizer for opaque types, but
 the memory usage of opaque types is not monitored by Dart and can accumulate, so
-in an instance of an opaque type, 'dispose' must occur.
+in order to prevent memory leaks, opaque pointers must be `dispose`d.
 
 
 ## Opaque type like funtion args
