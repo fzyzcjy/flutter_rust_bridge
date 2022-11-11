@@ -17,7 +17,7 @@ in order to prevent memory leaks, opaque pointers must be `dispose`d.
 
 ## Opaque type like funtion args
 
-When calling a function with an opaque type argument, Dart threadsafely shares ownership of the opaque type with Rust. This is safe because (Opaque<T>) type T requires Send, Sync, also Rust Opaque<T> only provides Deref (an immutable reference to T).
+When calling a function with an opaque type argument, the Dart thread safely shares ownership of the opaque type with Rust. This is safe because `Opaque<T>` requires that T be `Send` and `Sync`, furthermore Rust's `Opaque<T>` can only hand out immutable references through `Deref`.
 If dispose is called on the Dart side before the function call completes, Rust takes full ownership.
 
 
