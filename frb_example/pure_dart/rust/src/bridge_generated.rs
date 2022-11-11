@@ -1224,6 +1224,16 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
     )
 }
+fn wire_lets_rock_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "lets_rock",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(lets_rock()),
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,

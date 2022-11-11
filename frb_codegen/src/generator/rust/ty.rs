@@ -91,6 +91,7 @@ pub enum TypeRustGenerator<'a> {
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
     SyncReturn(TypeSyncReturnGenerator<'a>),
+    DartOpaque(TypeDartOpaqueGenerator<'a>),
 }
 
 impl<'a> TypeRustGenerator<'a> {

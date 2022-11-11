@@ -2135,6 +2135,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_test_id>)>>('wire_nested_id');
   late final _wire_nested_id = _wire_nested_idPtr.asFunction<void Function(int, ffi.Pointer<wire_list_test_id>)>();
 
+  void wire_lets_rock(
+    int port_,
+  ) {
+    return _wire_lets_rock(
+      port_,
+    );
+  }
+
+  late final _wire_lets_rockPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_lets_rock');
+  late final _wire_lets_rock = _wire_lets_rockPtr.asFunction<void Function(int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

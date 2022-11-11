@@ -47,6 +47,7 @@ pub enum TypeDartGenerator<'a> {
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
     SyncReturn(TypeSyncReturnGenerator<'a>),
+    DartOpaque(TypeDartOpaqueGenerator<'a>),
 }
 
 impl<'a> TypeDartGenerator<'a> {
@@ -62,6 +63,7 @@ impl<'a> TypeDartGenerator<'a> {
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
             SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
+            DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
         }
     }
 }

@@ -437,6 +437,11 @@ pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_lets_rock(port_: i64) {
+    wire_lets_rock_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

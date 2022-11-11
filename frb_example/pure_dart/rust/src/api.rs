@@ -954,3 +954,6 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
         [first, .., last] => [first, last],
     }
 }
+
+
+pub fn lets_rock(temp: DartOpaque) {}

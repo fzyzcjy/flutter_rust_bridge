@@ -858,6 +858,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_nested_id(NativePortType port_, List<dynamic> id);
 
+  external void wire_lets_rock(NativePortType port_);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1102,6 +1104,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_last_number(NativePortType port_, Float64List array) => wasmModule.wire_last_number(port_, array);
 
   void wire_nested_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_nested_id(port_, id);
+
+  void wire_lets_rock(NativePortType port_) => wasmModule.wire_lets_rock(port_);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

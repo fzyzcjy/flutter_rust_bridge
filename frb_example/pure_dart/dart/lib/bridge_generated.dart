@@ -1152,6 +1152,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
+  Future<void> letsRock({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_lets_rock(port_),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kLetsRockConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kLetsRockConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "lets_rock",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
