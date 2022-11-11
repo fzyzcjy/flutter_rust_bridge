@@ -3,7 +3,7 @@
 
 ## Restrictions
 
-A `Opaque type` can be created from any Rust structure that matches the Send Sync trait. Such restrictions due to
+A `Opaque type` can be created from any Rust structure that implements `Send` and `Sync`. Such restrictions due to
 async dart api `flutter_rust_bridge` allowing sharing a `Opaque type` by multiple `flutter_rust_bridge executor` threads.
 
 
