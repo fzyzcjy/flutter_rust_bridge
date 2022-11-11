@@ -40,7 +40,8 @@ class WireSyncReturnStruct extends ffi.Struct {
 }
 
 /// An opaque pointer to a native C or Rust type.
-/// Recipients of this type should call [dispose] at some point during runtime.
+/// Recipients of this type should call [dispose] at least once during runtime.
+/// If passed to a native function after being [dispose]d, an exception will be thrown.
 abstract class FrbOpaque implements Finalizable {
   /// Pointer to this opaque Rust type.
   ffi.Pointer<ffi.Void> _ptr;
