@@ -17,7 +17,7 @@ lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
         VersionReq::parse(">= 2.0.1, < 3.0.0").unwrap();
     pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
-        VersionReq::parse(">= 6.0.1, < 7.0.0").unwrap();
+        VersionReq::parse(">= 6.0.1, < 8.0.0").unwrap();
 }
 
 /// represents dart or flutter toolchain
