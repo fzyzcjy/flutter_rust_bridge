@@ -6,9 +6,8 @@ import 'package:flutter_rust_bridge_benchmark/env/stub.dart';
 import 'package:flutter_rust_bridge_benchmark/utils.dart';
 import '../ffi.io.dart' if (dart.library.html) '../ffi.web.dart';
 
-// Create a new benchmark by extending BenchmarkBase
-class TemplateBenchmark extends AsyncBenchmark {
-  TemplateBenchmark(String dylibPath)
+class StringBenchmark extends AsyncBenchmark {
+  StringBenchmark(String dylibPath)
       : super(
             name: 'Vec of Strings',
             dylibPath: dylibPath,
@@ -22,7 +21,7 @@ class TemplateBenchmark extends AsyncBenchmark {
   late List<String> strings;
 
   static Future<void> main(String dylibPath) async {
-    await TemplateBenchmark(dylibPath).report();
+    await StringBenchmark(dylibPath).report();
   }
 
   // The benchmark code.
@@ -51,6 +50,5 @@ class TemplateBenchmark extends AsyncBenchmark {
 
 void main(List<String> args) async {
   final String dylibPath = args[0];
-  // Run TemplateBenchmark
-  await TemplateBenchmark.main(dylibPath);
+  await StringBenchmark.main(dylibPath);
 }

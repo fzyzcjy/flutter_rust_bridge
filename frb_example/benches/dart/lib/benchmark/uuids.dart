@@ -1,12 +1,10 @@
-// Import BenchmarkBase class.
 import 'package:flutter_rust_bridge_benchmark/env/stub.dart';
 import '../async_benchmark.dart';
 import 'package:uuid/uuid.dart';
 import '../ffi.io.dart' if (dart.library.html) '../ffi.web.dart';
 
-// Create a new benchmark by extending BenchmarkBase
-class TemplateBenchmark extends AsyncBenchmark {
-  TemplateBenchmark(String dylibPath)
+class UuidBenchmark extends AsyncBenchmark {
+  UuidBenchmark(String dylibPath)
       : super(
             name: 'Vec of UUIDs',
             dylibPath: dylibPath,
@@ -20,7 +18,7 @@ class TemplateBenchmark extends AsyncBenchmark {
   late List<UuidValue> uuids;
 
   static Future<void> main(String dylibPath) async {
-    await TemplateBenchmark(dylibPath).report();
+    await UuidBenchmark(dylibPath).report();
   }
 
   // The benchmark code.
@@ -50,6 +48,5 @@ class TemplateBenchmark extends AsyncBenchmark {
 
 void main(List<String> args) async {
   final String dylibPath = args[0];
-  // Run TemplateBenchmark
-  await TemplateBenchmark.main(dylibPath);
+  await UuidBenchmark.main(dylibPath);
 }
