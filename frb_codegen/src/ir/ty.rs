@@ -66,11 +66,6 @@ impl IrType {
         matches!(self, StructRef(_) | EnumRef(_))
     }
 
-    #[inline]
-    pub fn is_optional(&self) -> bool {
-        matches!(self, Optional(_))
-    }
-
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap
     /// and therefore do not implement [Send].
     #[inline]
