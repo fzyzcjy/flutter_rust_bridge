@@ -133,15 +133,10 @@ impl<'a> Generator<'a> {
             .map(|f| self.generate_allocate_funcs(f, ir_file))
             .collect();
 
-        lines.push_all(self.section_header_comment("opaque stuff functions"));
+        lines.push_all(self.section_header_comment("opaque related functions"));
         lines += distinct_input_types
             .iter()
-            .map(|f| self.generate_opaque_drop_funcs(f, ir_file))
-            .collect();
-
-        lines += distinct_input_types
-            .iter()
-            .map(|f| self.generate_opaque_share_funcs(f, ir_file))
+            .map(|f| self.generate_opaque_related_funcs(f, ir_file))
             .collect();
 
         lines.push_all(self.section_header_comment("impl Wire2Api"));
@@ -438,15 +433,9 @@ impl<'a> Generator<'a> {
             .map(|func, _| func.unwrap_or_default())
     }
 
-    fn generate_opaque_drop_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+    fn generate_opaque_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-            .opaque_drop_funcs(&mut self.extern_func_collector, self.config.block_index)
-            .map(|func, _| func.unwrap_or_default())
-    }
-
-    fn generate_opaque_share_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-            .opaque_share_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .opaque_related_funcs(&mut self.extern_func_collector, self.config.block_index)
             .map(|func, _| func.unwrap_or_default())
     }
 

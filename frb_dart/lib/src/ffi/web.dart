@@ -162,25 +162,25 @@ abstract class FrbOpaque {
 
   /// Creates platform specific finalizer.
   @internal
-  static Finalizer createFinalizer(void Function(dynamic) f) {
-    return Finalizer(f);
+  static Finalizer createFinalizer<T>(void Function(T) f) {
+    return Finalizer(f as void Function(dynamic));
   }
 
   /// Calls platform specific finalizer attach.
   @internal
-  static void attachFinalizer(
+  static void attachFinalizer<T>(
       Finalizer finalizer,
       int ptr,
-      dynamic obj,
+      T obj,
       // ignore: no_leading_underscores_for_local_identifiers
       int _size) {
-    finalizer.attach(obj, ptr, detach: obj);
+    finalizer.attach(obj as Object, ptr, detach: obj);
   }
 
   /// Calls platform specific finalizer detach.
   @internal
-  static void detachFinalizer(Finalizer finalizer, Object obj) {
-    finalizer.detach(obj);
+  static void detachFinalizer<T>(Finalizer finalizer, T obj) {
+    finalizer.detach(obj as Object);
   }
 
   /// Checks whether [dispose] has been called at any point during the lifetime

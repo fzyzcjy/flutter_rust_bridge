@@ -432,7 +432,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
 @sealed
 class BoxDartDebug extends FrbOpaque {
-  static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_BoxDartDebug());
+  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_BoxDartDebug());
   BoxDartDebug.fromRaw(int ptr, int size) : super.unsafe(ptr) {
     FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
   }
@@ -458,7 +458,7 @@ class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
 
 @sealed
 class HideData extends FrbOpaque {
-  static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_HideData());
+  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_HideData());
   HideData.fromRaw(int ptr, int size) : super.unsafe(ptr) {
     FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
   }
@@ -484,7 +484,7 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 
 @sealed
 class I32 extends FrbOpaque {
-  static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_I32());
+  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_I32());
   I32.fromRaw(int ptr, int size) : super.unsafe(ptr) {
     FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
   }
@@ -501,7 +501,7 @@ class I32 extends FrbOpaque {
 
 @sealed
 class MutexHideData extends FrbOpaque {
-  static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_MutexHideData());
+  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_MutexHideData());
   MutexHideData.fromRaw(int ptr, int size) : super.unsafe(ptr) {
     FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
   }
@@ -527,7 +527,7 @@ class PointArray2 extends NonGrowableListView<Point> {
 
 @sealed
 class RwLockHideData extends FrbOpaque {
-  static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_RwLockHideData());
+  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_RwLockHideData());
   RwLockHideData.fromRaw(int ptr, int size) : super.unsafe(ptr) {
     FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
   }

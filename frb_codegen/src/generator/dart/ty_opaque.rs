@@ -42,7 +42,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn structs(&self) -> String {
         format!(
             "@sealed class {0} extends FrbOpaque {{
-                    static final dynamic _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_{0}());
+                    static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_{0}());
                     {0}.fromRaw(int ptr, int size) : super.unsafe(ptr) {{
                       FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
                     }}

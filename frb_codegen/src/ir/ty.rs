@@ -1,12 +1,8 @@
-use std::{collections::HashMap, sync::Mutex};
+use std::collections::HashSet;
 
 use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
 use IrType::*;
-
-lazy_static! {
-    static ref OPACITY: Mutex<HashMap<IrType, bool>> = Mutex::new(HashMap::new());
-}
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
@@ -31,6 +27,25 @@ impl IrType {
         }
 
         self.visit_children_types(f, ir_file);
+    }
+
+    pub fn distinct_types(&self, ir_file: &IrFile) -> Vec<IrType> {
+        let mut seen_idents = HashSet::new();
+        let mut ans = Vec::new();
+        self.visit_types(
+            &mut |ty| {
+                let ident = ty.safe_ident();
+                let contains = seen_idents.contains(&ident);
+                if !contains {
+                    seen_idents.insert(ident);
+                    ans.push(ty.clone());
+                }
+                contains
+            },
+            ir_file,
+        );
+
+        ans
     }
 
     #[inline]
@@ -76,59 +91,6 @@ impl IrType {
     #[inline]
     pub fn is_opaque(&self) -> bool {
         matches!(self, Opaque(_))
-    }
-
-    pub fn contains_opaque(&self, ir_file: &IrFile) -> bool {
-        if let Some(flag) = OPACITY.lock().unwrap().get(self) {
-            return *flag;
-        }
-        OPACITY.lock().unwrap().insert(self.clone(), false);
-
-        let res = match self {
-            Optional(option) => option.inner.contains_opaque(ir_file),
-            GeneralList(list) => list.inner.contains_opaque(ir_file),
-            StructRef(strct) => {
-                let mut opaque = false;
-                for field in &strct.get(ir_file).fields {
-                    if field.ty.contains_opaque(ir_file) {
-                        opaque = true;
-                        break;
-                    }
-                }
-                opaque
-            }
-            Boxed(b) => b.inner.contains_opaque(ir_file),
-            EnumRef(enm) => {
-                let mut opaque = false;
-                'outer: for variants in enm.get(ir_file).variants() {
-                    match &variants.kind {
-                        IrVariantKind::Value => continue,
-                        IrVariantKind::Struct(strct) => {
-                            for field in &strct.fields {
-                                if field.ty.contains_opaque(ir_file) {
-                                    opaque = true;
-                                    break 'outer;
-                                }
-                            }
-                        }
-                    };
-                }
-                opaque
-            }
-            Opaque(_) => true,
-            Delegate(IrTypeDelegate::Array(array)) => match array {
-                IrTypeDelegateArray::GeneralArray { general, .. } => {
-                    general.contains_opaque(ir_file)
-                }
-                IrTypeDelegateArray::PrimitiveArray { .. } => false,
-            },
-            _ => false,
-        };
-
-        if let Some(flag) = OPACITY.lock().unwrap().get_mut(self) {
-            *flag = res;
-        }
-        res
     }
 
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap

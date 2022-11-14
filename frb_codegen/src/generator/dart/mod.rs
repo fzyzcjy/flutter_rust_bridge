@@ -136,8 +136,8 @@ impl DartApiSpec {
 
         let dart_opaque_validate_funcs = distinct_input_types
             .iter()
-            .filter(|f| f.contains_opaque(ir_file))
-            .map(|ty| generate_api_opaque_validate_func(ty, ir_file, config))
+            .filter(|f| f.distinct_types(ir_file).iter().any(|ty| ty.is_opaque()))
+            .map(|ty| generate_api_validate_func(ty, ir_file, config))
             .collect::<Vec<_>>();
 
         let dart_wire2api_funcs = distinct_output_types
@@ -531,10 +531,10 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) 
     }
 }
 
-fn generate_api_opaque_validate_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> String {
+fn generate_api_validate_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> String {
     if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file, config).api_validate() {
         format!(
-            "void _api_opaque_validate_{}({} raw) {{
+            "void _api_validate_{}({} raw) {{
                 {}
             }}",
             ty.safe_ident(),
@@ -568,14 +568,14 @@ fn generate_wire2api_func(
 fn generate_opaque_func(ty: &IrType) -> Acc<String> {
     Acc {
         io: format!(
-            "dynamic get_finalizer_opaque_{0}() {{
-                    return inner.addresses.drop_opaque_{0};
+            "ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>  get_finalizer_opaque_{0}() {{
+                    return inner._drop_opaque_{0}Ptr;
                 }}
                 ",
             ty.dart_api_type(),
         ),
         wasm: format!(
-            "dynamic get_finalizer_opaque_{0}() {{
+            "void Function(int) get_finalizer_opaque_{0}() {{
                 return inner.drop_opaque_{0};
             }}
             ",

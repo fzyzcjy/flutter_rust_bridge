@@ -149,7 +149,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_EnumOpaque> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
-    _api_opaque_validate_enum_opaque(raw);
+    _api_validate_enum_opaque(raw);
     final ptr = inner.new_box_autoadd_enum_opaque_0();
     _api_fill_to_wire_enum_opaque(raw, ptr.ref);
     return ptr;
@@ -263,7 +263,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_OpaqueNested> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
-    _api_opaque_validate_opaque_nested(raw);
+    _api_validate_opaque_nested(raw);
     final ptr = inner.new_box_autoadd_opaque_nested_0();
     _api_fill_to_wire_opaque_nested(raw, ptr.ref);
     return ptr;
@@ -630,24 +630,24 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: finalyzer
 
-  dynamic get_finalizer_opaque_BoxDartDebug() {
-    return inner.addresses.drop_opaque_BoxDartDebug;
+  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_BoxDartDebug() {
+    return inner._drop_opaque_BoxDartDebugPtr;
   }
 
-  dynamic get_finalizer_opaque_HideData() {
-    return inner.addresses.drop_opaque_HideData;
+  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_HideData() {
+    return inner._drop_opaque_HideDataPtr;
   }
 
-  dynamic get_finalizer_opaque_I32() {
-    return inner.addresses.drop_opaque_I32;
+  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_I32() {
+    return inner._drop_opaque_I32Ptr;
   }
 
-  dynamic get_finalizer_opaque_MutexHideData() {
-    return inner.addresses.drop_opaque_MutexHideData;
+  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_MutexHideData() {
+    return inner._drop_opaque_MutexHideDataPtr;
   }
 
-  dynamic get_finalizer_opaque_RwLockHideData() {
-    return inner.addresses.drop_opaque_RwLockHideData;
+  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_RwLockHideData() {
+    return inner._drop_opaque_RwLockHideDataPtr;
   }
 
 // Section: api_fill_to_wire
@@ -1072,65 +1072,65 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: api_opaque_validate
 
-  void _api_opaque_validate_BoxDartDebug(BoxDartDebug raw) {
+  void _api_validate_BoxDartDebug(BoxDartDebug raw) {
     if (raw.isStale()) {
       throw StateError('Use after dispose.');
     }
   }
 
-  void _api_opaque_validate_HideData(HideData raw) {
+  void _api_validate_HideData(HideData raw) {
     if (raw.isStale()) {
       throw StateError('Use after dispose.');
     }
   }
 
-  void _api_opaque_validate_I32(I32 raw) {
+  void _api_validate_I32(I32 raw) {
     if (raw.isStale()) {
       throw StateError('Use after dispose.');
     }
   }
 
-  void _api_opaque_validate_MutexHideData(MutexHideData raw) {
+  void _api_validate_MutexHideData(MutexHideData raw) {
     if (raw.isStale()) {
       throw StateError('Use after dispose.');
     }
   }
 
-  void _api_opaque_validate_RwLockHideData(RwLockHideData raw) {
+  void _api_validate_RwLockHideData(RwLockHideData raw) {
     if (raw.isStale()) {
       throw StateError('Use after dispose.');
     }
   }
 
-  void _api_opaque_validate_box_autoadd_enum_opaque(EnumOpaque raw) {
-    _api_opaque_validate_enum_opaque(raw);
+  void _api_validate_box_autoadd_enum_opaque(EnumOpaque raw) {
+    _api_validate_enum_opaque(raw);
   }
 
-  void _api_opaque_validate_box_autoadd_opaque_nested(OpaqueNested raw) {
-    _api_opaque_validate_opaque_nested(raw);
+  void _api_validate_box_autoadd_opaque_nested(OpaqueNested raw) {
+    _api_validate_opaque_nested(raw);
   }
 
-  void _api_opaque_validate_enum_opaque(EnumOpaque raw) {
+  void _api_validate_enum_opaque(EnumOpaque raw) {
     if (raw is EnumOpaque_Struct) {
-      _api_opaque_validate_HideData(raw.field0);
+      _api_validate_HideData(raw.field0);
     }
     if (raw is EnumOpaque_Primitive) {
-      _api_opaque_validate_I32(raw.field0);
+      _api_validate_I32(raw.field0);
     }
     if (raw is EnumOpaque_TraitObj) {
-      _api_opaque_validate_BoxDartDebug(raw.field0);
+      _api_validate_BoxDartDebug(raw.field0);
     }
     if (raw is EnumOpaque_Mutex) {
-      _api_opaque_validate_MutexHideData(raw.field0);
+      _api_validate_MutexHideData(raw.field0);
     }
     if (raw is EnumOpaque_RwLock) {
-      _api_opaque_validate_RwLockHideData(raw.field0);
+      _api_validate_RwLockHideData(raw.field0);
     }
   }
 
-  void _api_opaque_validate_opaque_nested(OpaqueNested raw) {
-    _api_opaque_validate_HideData(raw.first);
-    _api_opaque_validate_HideData(raw.second);
+  void _api_validate_opaque_nested(OpaqueNested raw) {
+    _api_validate_HideData(raw.first);
+    _api_validate_HideData(raw.second);
   }
 }
 
@@ -3211,56 +3211,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _drop_opaque_BoxDartDebug =
       _drop_opaque_BoxDartDebugPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  void drop_opaque_HideData(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_HideData(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_HideDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_HideData');
-  late final _drop_opaque_HideData = _drop_opaque_HideDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_I32(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_I32(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_I32Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_I32');
-  late final _drop_opaque_I32 = _drop_opaque_I32Ptr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_MutexHideData(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_MutexHideData(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_MutexHideDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_MutexHideData');
-  late final _drop_opaque_MutexHideData =
-      _drop_opaque_MutexHideDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RwLockHideData(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RwLockHideData(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RwLockHideDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_RwLockHideData');
-  late final _drop_opaque_RwLockHideData =
-      _drop_opaque_RwLockHideDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
   ffi.Pointer<ffi.Void> share_opaque_BoxDartDebug(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -3273,6 +3223,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>('share_opaque_BoxDartDebug');
   late final _share_opaque_BoxDartDebug =
       _share_opaque_BoxDartDebugPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_HideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_HideData(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_HideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_HideData');
+  late final _drop_opaque_HideData = _drop_opaque_HideDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<ffi.Void> share_opaque_HideData(
     ffi.Pointer<ffi.Void> ptr,
@@ -3287,6 +3249,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _share_opaque_HideData =
       _share_opaque_HideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
+  void drop_opaque_I32(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_I32(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_I32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_I32');
+  late final _drop_opaque_I32 = _drop_opaque_I32Ptr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   ffi.Pointer<ffi.Void> share_opaque_I32(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -3300,6 +3274,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _share_opaque_I32 =
       _share_opaque_I32Ptr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
+  void drop_opaque_MutexHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_MutexHideData(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_MutexHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_MutexHideData');
+  late final _drop_opaque_MutexHideData =
+      _drop_opaque_MutexHideDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   ffi.Pointer<ffi.Void> share_opaque_MutexHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -3312,6 +3299,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>('share_opaque_MutexHideData');
   late final _share_opaque_MutexHideData =
       _share_opaque_MutexHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RwLockHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RwLockHideData(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RwLockHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_RwLockHideData');
+  late final _drop_opaque_RwLockHideData =
+      _drop_opaque_RwLockHideDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<ffi.Void> share_opaque_RwLockHideData(
     ffi.Pointer<ffi.Void> ptr,
@@ -3460,33 +3460,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
   late final _free_WireSyncReturnStruct =
       _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
-
-  late final addresses = _SymbolAddresses(this);
-}
-
-class _SymbolAddresses {
-  final FlutterRustBridgeExampleSingleBlockTestWire _library;
-  _SymbolAddresses(this._library);
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get drop_opaque_BoxDartDebug =>
-      _library._drop_opaque_BoxDartDebugPtr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get drop_opaque_HideData =>
-      _library._drop_opaque_HideDataPtr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get drop_opaque_I32 =>
-      _library._drop_opaque_I32Ptr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get drop_opaque_MutexHideData =>
-      _library._drop_opaque_MutexHideDataPtr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get drop_opaque_RwLockHideData =>
-      _library._drop_opaque_RwLockHideDataPtr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>
-      get share_opaque_BoxDartDebug => _library._share_opaque_BoxDartDebugPtr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>> get share_opaque_HideData =>
-      _library._share_opaque_HideDataPtr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>> get share_opaque_I32 =>
-      _library._share_opaque_I32Ptr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>
-      get share_opaque_MutexHideData => _library._share_opaque_MutexHideDataPtr;
-  ffi.Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>
-      get share_opaque_RwLockHideData => _library._share_opaque_RwLockHideDataPtr;
 }
 
 class wire_uint_8_list extends ffi.Struct {

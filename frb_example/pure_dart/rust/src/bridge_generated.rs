@@ -1563,7 +1563,7 @@ const _: fn() = || {
 };
 // Section: allocate functions
 
-// Section: opaque stuff functions
+// Section: opaque related functions
 
 // Section: impl Wire2Api
 

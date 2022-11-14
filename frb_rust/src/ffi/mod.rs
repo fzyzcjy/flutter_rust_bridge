@@ -98,7 +98,20 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
 #[repr(transparent)]
 #[derive(Debug, Clone)]
 pub struct Opaque<T: ?Sized + DartSafe> {
-    pub(crate) ptr: Arc<T>,
+    ptr: Arc<T>,
+}
+
+/// # Safety
+///
+/// This function should never be called manually.
+/// Retrieving an opaque pointer from Dart is an implementation detail, so this
+/// function is not guaranteed to be API-stable.
+pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
+    // The raw pointer is the same one created from Arc::into_raw,
+    // owned and artificially incremented by Dart.
+    Opaque {
+        ptr: Arc::from_raw(ptr),
+    }
 }
 
 impl<T: ?Sized + DartSafe> ops::Deref for Opaque<T> {

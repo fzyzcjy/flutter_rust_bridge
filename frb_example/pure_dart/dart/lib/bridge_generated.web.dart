@@ -738,23 +738,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: finalyzer
 
-  dynamic get_finalizer_opaque_BoxDartDebug() {
+  void Function(int) get_finalizer_opaque_BoxDartDebug() {
     return inner.drop_opaque_BoxDartDebug;
   }
 
-  dynamic get_finalizer_opaque_HideData() {
+  void Function(int) get_finalizer_opaque_HideData() {
     return inner.drop_opaque_HideData;
   }
 
-  dynamic get_finalizer_opaque_I32() {
+  void Function(int) get_finalizer_opaque_I32() {
     return inner.drop_opaque_I32;
   }
 
-  dynamic get_finalizer_opaque_MutexHideData() {
+  void Function(int) get_finalizer_opaque_MutexHideData() {
     return inner.drop_opaque_MutexHideData;
   }
 
-  dynamic get_finalizer_opaque_RwLockHideData() {
+  void Function(int) get_finalizer_opaque_RwLockHideData() {
     return inner.drop_opaque_RwLockHideData;
   }
 }
@@ -1001,21 +1001,21 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /*  */ drop_opaque_BoxDartDebug(ptr);
 
-  external dynamic /*  */ drop_opaque_HideData(ptr);
-
-  external dynamic /*  */ drop_opaque_I32(ptr);
-
-  external dynamic /*  */ drop_opaque_MutexHideData(ptr);
-
-  external dynamic /*  */ drop_opaque_RwLockHideData(ptr);
-
   external int /* *const c_void */ share_opaque_BoxDartDebug(ptr);
+
+  external dynamic /*  */ drop_opaque_HideData(ptr);
 
   external int /* *const c_void */ share_opaque_HideData(ptr);
 
+  external dynamic /*  */ drop_opaque_I32(ptr);
+
   external int /* *const c_void */ share_opaque_I32(ptr);
 
+  external dynamic /*  */ drop_opaque_MutexHideData(ptr);
+
   external int /* *const c_void */ share_opaque_MutexHideData(ptr);
+
+  external dynamic /*  */ drop_opaque_RwLockHideData(ptr);
 
   external int /* *const c_void */ share_opaque_RwLockHideData(ptr);
 }
@@ -1294,21 +1294,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   dynamic /*  */ drop_opaque_BoxDartDebug(ptr) => wasmModule.drop_opaque_BoxDartDebug(ptr);
 
-  dynamic /*  */ drop_opaque_HideData(ptr) => wasmModule.drop_opaque_HideData(ptr);
-
-  dynamic /*  */ drop_opaque_I32(ptr) => wasmModule.drop_opaque_I32(ptr);
-
-  dynamic /*  */ drop_opaque_MutexHideData(ptr) => wasmModule.drop_opaque_MutexHideData(ptr);
-
-  dynamic /*  */ drop_opaque_RwLockHideData(ptr) => wasmModule.drop_opaque_RwLockHideData(ptr);
-
   int /* *const c_void */ share_opaque_BoxDartDebug(ptr) => wasmModule.share_opaque_BoxDartDebug(ptr);
+
+  dynamic /*  */ drop_opaque_HideData(ptr) => wasmModule.drop_opaque_HideData(ptr);
 
   int /* *const c_void */ share_opaque_HideData(ptr) => wasmModule.share_opaque_HideData(ptr);
 
+  dynamic /*  */ drop_opaque_I32(ptr) => wasmModule.drop_opaque_I32(ptr);
+
   int /* *const c_void */ share_opaque_I32(ptr) => wasmModule.share_opaque_I32(ptr);
 
+  dynamic /*  */ drop_opaque_MutexHideData(ptr) => wasmModule.drop_opaque_MutexHideData(ptr);
+
   int /* *const c_void */ share_opaque_MutexHideData(ptr) => wasmModule.share_opaque_MutexHideData(ptr);
+
+  dynamic /*  */ drop_opaque_RwLockHideData(ptr) => wasmModule.drop_opaque_RwLockHideData(ptr);
 
   int /* *const c_void */ share_opaque_RwLockHideData(ptr) => wasmModule.share_opaque_RwLockHideData(ptr);
 }

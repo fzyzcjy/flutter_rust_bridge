@@ -885,40 +885,12 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
-// Section: opaque stuff functions
+// Section: opaque related functions
 
 #[no_mangle]
 pub extern "C" fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
     unsafe {
         Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_HideData(ptr: *const c_void) {
-    unsafe {
-        Arc::<HideData>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_I32(ptr: *const c_void) {
-    unsafe {
-        Arc::<i32>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_MutexHideData(ptr: *const c_void) {
-    unsafe {
-        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_RwLockHideData(ptr: *const c_void) {
-    unsafe {
-        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -931,10 +903,24 @@ pub extern "C" fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void
 }
 
 #[no_mangle]
+pub extern "C" fn drop_opaque_HideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<HideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<HideData>::increment_strong_count(ptr as _);
         ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_I32(ptr: *const c_void) {
+    unsafe {
+        Arc::<i32>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -947,10 +933,24 @@ pub extern "C" fn share_opaque_I32(ptr: *const c_void) -> *const c_void {
 }
 
 #[no_mangle]
+pub extern "C" fn drop_opaque_MutexHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
         ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_RwLockHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 

@@ -53,15 +53,48 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn api_validate(&self) -> Option<String> {
         let res = (self.ir.get(self.context.ir_file).variants())
             .iter()
-            .map(|variant| {
+            .filter_map(|variant| {
                 let fields = match &variant.kind {
                     IrVariantKind::Value => vec![],
                     IrVariantKind::Struct(st) => (st.fields)
                         .iter()
-                        .filter(|field| field.ty.contains_opaque(self.context.ir_file))
+                        .filter(|field| {
+                            let ir_file = self.context.ir_file;
+                            let config = self.context.config;
+
+                            field.ty.visit_types(
+                                &mut |ty| {
+                                    let ident = ty.safe_ident();
+                                    let mut lock = REQUIRES_VALIDATION.lock().unwrap();
+                                    let cache = lock.get_mut(&ident);
+                                    if cache.is_some() {
+                                        true
+                                    } else {
+                                        lock.insert(ident.clone(), false);
+                                        drop(lock);
+
+                                        let res =
+                                            TypeDartGenerator::new(ty.clone(), ir_file, config)
+                                                .api_validate()
+                                                .is_some();
+                                        REQUIRES_VALIDATION.lock().unwrap().insert(ident, res);
+
+                                        res
+                                    }
+                                },
+                                ir_file,
+                            );
+
+                            REQUIRES_VALIDATION
+                                .lock()
+                                .unwrap()
+                                .get(&field.ty.safe_ident())
+                                .copied()
+                                .unwrap_or_default()
+                        })
                         .map(|field| {
                             format!(
-                                "_api_opaque_validate_{}(raw.{});",
+                                "_api_validate_{}(raw.{});",
                                 field.ty.safe_ident(),
                                 field.name.dart_style()
                             )
@@ -69,16 +102,17 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         .collect(),
                 }
                 .join(";");
+
                 if !fields.is_empty() {
-                    format!(
+                    Some(format!(
                         "if (raw is {variant}) {{
                         {}
                     }}",
                         fields,
                         variant = variant.wrapper_name.rust_style(),
-                    )
+                    ))
                 } else {
-                    "".to_owned()
+                    None
                 }
             })
             .join("\n");

@@ -1,6 +1,7 @@
 #![allow(unused_variables)]
 
 use std::fmt::Debug;
+use std::ops::Deref;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
 pub use std::sync::{Mutex, RwLock};
@@ -10,7 +11,7 @@ use std::time::Duration;
 use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
-use lazy_static::{__Deref, lazy_static};
+use lazy_static::lazy_static;
 
 pub use crate::data::HideData;
 use crate::data::{MyEnum, MyStruct};

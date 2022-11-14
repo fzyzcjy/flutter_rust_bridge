@@ -45,7 +45,7 @@ fn wire_simple_adder_1_impl(
 
 // Section: allocate functions
 
-// Section: opaque stuff functions
+// Section: opaque related functions
 
 // Section: impl Wire2Api
 

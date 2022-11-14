@@ -13,7 +13,12 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
                 Some("(!self.is_undefined() && !self.is_null()).then(|| self.wire2api())".into())
             } else if self.ir.is_primitive()
                 || self.ir.is_boxed_primitive()
-                || self.ir.inner.contains_opaque(self.context.ir_file)
+                || self
+                    .ir
+                    .inner
+                    .distinct_types(self.context.ir_file)
+                    .iter()
+                    .any(|ty| ty.is_opaque())
             {
                 None
             } else {

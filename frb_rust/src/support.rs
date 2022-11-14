@@ -2,14 +2,11 @@
 //! These functions are *not* meant to be used by humans directly.
 #![doc(hidden)]
 
-use std::{mem, sync::Arc};
-
 pub use crate::ffi::*;
 pub use lazy_static::lazy_static;
+use std::mem;
 
 pub use crate::handler::DefaultHandler;
-
-use crate::DartSafe;
 
 // ref https://stackoverflow.com/questions/39224904/how-to-expose-a-rust-vect-to-ffi
 pub fn new_leak_vec_ptr<T: Clone>(fill: T, length: i32) -> *mut T {
@@ -112,19 +109,6 @@ macro_rules! primitive_to_sync_return {
                 data.to_be_bytes().to_vec().into()
             }
         })*
-    }
-}
-
-/// # Safety
-///
-/// This function should never be called manually.
-/// Retrieving an opaque pointer from Dart is an implementation detail, so this
-/// function is not guaranteed to be API-stable.
-pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
-    // The raw pointer is the same one created from Arc::into_raw,
-    // owned and artificially incremented by Dart.
-    Opaque {
-        ptr: Arc::from_raw(ptr),
     }
 }
 
