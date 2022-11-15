@@ -13,8 +13,6 @@ import 'package:collection/collection.dart';
 
 part 'bridge_definitions.freezed.dart';
 
-late final FlutterRustBridgeExampleSingleBlockTestPlatform inner_platform;
-
 abstract class FlutterRustBridgeExampleSingleBlockTest {
   /// Documentation on a simple adder function.
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
@@ -428,23 +426,40 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
+
+  void drop_opaque_BoxDartDebug(ptr);
+  share_opaque_BoxDartDebug(ptr);
+  get BoxDartDebugFinalizer;
+
+  void drop_opaque_HideData(ptr);
+  share_opaque_HideData(ptr);
+  get HideDataFinalizer;
+
+  void drop_opaque_I32(ptr);
+  share_opaque_I32(ptr);
+  get I32Finalizer;
+
+  void drop_opaque_MutexHideData(ptr);
+  share_opaque_MutexHideData(ptr);
+  get MutexHideDataFinalizer;
+
+  void drop_opaque_RwLockHideData(ptr);
+  share_opaque_RwLockHideData(ptr);
+  get RwLockHideDataFinalizer;
 }
 
 @sealed
 class BoxDartDebug extends FrbOpaque {
-  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_BoxDartDebug());
-  BoxDartDebug.fromRaw(int ptr, int size) : super.unsafe(ptr) {
-    FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
-  }
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  BoxDartDebug.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  get dropFn => bridge.drop_opaque_BoxDartDebug;
 
   @override
-  void drop(ptr) {
-    FrbOpaque.detachFinalizer(_finalizer, this);
-    inner_platform.inner.drop_opaque_BoxDartDebug(ptr);
-  }
+  get shareFn => bridge.share_opaque_BoxDartDebug;
 
   @override
-  share(ptr) => inner_platform.inner.share_opaque_BoxDartDebug(ptr);
+  get staticFinalizer => bridge.BoxDartDebugFinalizer;
 }
 
 class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
@@ -458,19 +473,16 @@ class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
 
 @sealed
 class HideData extends FrbOpaque {
-  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_HideData());
-  HideData.fromRaw(int ptr, int size) : super.unsafe(ptr) {
-    FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
-  }
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  HideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  get dropFn => bridge.drop_opaque_HideData;
 
   @override
-  void drop(ptr) {
-    FrbOpaque.detachFinalizer(_finalizer, this);
-    inner_platform.inner.drop_opaque_HideData(ptr);
-  }
+  get shareFn => bridge.share_opaque_HideData;
 
   @override
-  share(ptr) => inner_platform.inner.share_opaque_HideData(ptr);
+  get staticFinalizer => bridge.HideDataFinalizer;
 }
 
 class HideDataArray2 extends NonGrowableListView<HideData> {
@@ -484,36 +496,30 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 
 @sealed
 class I32 extends FrbOpaque {
-  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_I32());
-  I32.fromRaw(int ptr, int size) : super.unsafe(ptr) {
-    FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
-  }
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  I32.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  get dropFn => bridge.drop_opaque_I32;
 
   @override
-  void drop(ptr) {
-    FrbOpaque.detachFinalizer(_finalizer, this);
-    inner_platform.inner.drop_opaque_I32(ptr);
-  }
+  get shareFn => bridge.share_opaque_I32;
 
   @override
-  share(ptr) => inner_platform.inner.share_opaque_I32(ptr);
+  get staticFinalizer => bridge.I32Finalizer;
 }
 
 @sealed
 class MutexHideData extends FrbOpaque {
-  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_MutexHideData());
-  MutexHideData.fromRaw(int ptr, int size) : super.unsafe(ptr) {
-    FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
-  }
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  MutexHideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  get dropFn => bridge.drop_opaque_MutexHideData;
 
   @override
-  void drop(ptr) {
-    FrbOpaque.detachFinalizer(_finalizer, this);
-    inner_platform.inner.drop_opaque_MutexHideData(ptr);
-  }
+  get shareFn => bridge.share_opaque_MutexHideData;
 
   @override
-  share(ptr) => inner_platform.inner.share_opaque_MutexHideData(ptr);
+  get staticFinalizer => bridge.MutexHideDataFinalizer;
 }
 
 class PointArray2 extends NonGrowableListView<Point> {
@@ -527,19 +533,16 @@ class PointArray2 extends NonGrowableListView<Point> {
 
 @sealed
 class RwLockHideData extends FrbOpaque {
-  static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_RwLockHideData());
-  RwLockHideData.fromRaw(int ptr, int size) : super.unsafe(ptr) {
-    FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
-  }
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  RwLockHideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  get dropFn => bridge.drop_opaque_RwLockHideData;
 
   @override
-  void drop(ptr) {
-    FrbOpaque.detachFinalizer(_finalizer, this);
-    inner_platform.inner.drop_opaque_RwLockHideData(ptr);
-  }
+  get shareFn => bridge.share_opaque_RwLockHideData;
 
   @override
-  share(ptr) => inner_platform.inner.share_opaque_RwLockHideData(ptr);
+  get staticFinalizer => bridge.RwLockHideDataFinalizer;
 }
 
 class SumWithArray3 extends NonGrowableListView<SumWith> {

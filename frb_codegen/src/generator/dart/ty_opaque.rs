@@ -14,7 +14,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            wasm: Some("return raw.tryShare();".to_owned()),
+            wasm: Some("return raw.share();".to_owned()),
             ..Default::default()
         }
     }
@@ -29,33 +29,35 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some("wireObj.ptr = apiObj.tryShare();".into())
+        Some("wireObj.ptr = apiObj.share();".into())
     }
 
     fn wire2api_body(&self) -> String {
         format!(
-            "return {}.fromRaw(raw[0], raw[1]);",
+            "return {0}.fromRaw(raw[0], raw[1], this);",
             self.ir.dart_api_type()
         )
     }
 
     fn structs(&self) -> String {
+        let field_bridge = format!(
+            "final {} bridge;",
+            self.context.config.dart_api_class_name(),
+        );
         format!(
             "@sealed class {0} extends FrbOpaque {{
-                    static final _finalizer = FrbOpaque.createFinalizer(inner_platform.get_finalizer_opaque_{0}());
-                    {0}.fromRaw(int ptr, int size) : super.unsafe(ptr) {{
-                      FrbOpaque.attachFinalizer(_finalizer, ptr, this, size);
-                    }}
+                {field_bridge}
+                    {0}.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+                    @override
+                    get dropFn => bridge.drop_opaque_{0};
                     
                     @override
-                    void drop(ptr) {{
-                      FrbOpaque.detachFinalizer(_finalizer, this);
-                      inner_platform.inner.drop_opaque_{0}(ptr);
-                    }}
-                    
+                    get shareFn => bridge.share_opaque_{0};
+
                     @override
-                    share(ptr) => inner_platform.inner.share_opaque_{0}(ptr);
+                    get staticFinalizer => bridge.{0}Finalizer;
             }}",
+            
             self.ir.dart_api_type()
         )
     }

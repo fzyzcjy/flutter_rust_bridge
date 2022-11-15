@@ -22,7 +22,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_BoxDartDebug(BoxDartDebug raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
@@ -47,22 +47,22 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_HideData(HideData raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
   dynamic api2wire_I32(I32 raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
   dynamic api2wire_MutexHideData(MutexHideData raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
   dynamic api2wire_RwLockHideData(RwLockHideData raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
@@ -738,25 +738,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: finalyzer
 
-  void Function(int) get_finalizer_opaque_BoxDartDebug() {
-    return inner.drop_opaque_BoxDartDebug;
-  }
-
-  void Function(int) get_finalizer_opaque_HideData() {
-    return inner.drop_opaque_HideData;
-  }
-
-  void Function(int) get_finalizer_opaque_I32() {
-    return inner.drop_opaque_I32;
-  }
-
-  void Function(int) get_finalizer_opaque_MutexHideData() {
-    return inner.drop_opaque_MutexHideData;
-  }
-
-  void Function(int) get_finalizer_opaque_RwLockHideData() {
-    return inner.drop_opaque_RwLockHideData;
-  }
+  late final Finalizer<BoxDartDebug> _BoxDartDebugFinalizer = Finalizer(inner.drop_opaque_BoxDartDebug);
+  Finalizer<BoxDartDebug> get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final Finalizer<HideData> _HideDataFinalizer = Finalizer(inner.drop_opaque_HideData);
+  Finalizer<HideData> get HideDataFinalizer => _HideDataFinalizer;
+  late final Finalizer<I32> _I32Finalizer = Finalizer(inner.drop_opaque_I32);
+  Finalizer<I32> get I32Finalizer => _I32Finalizer;
+  late final Finalizer<MutexHideData> _MutexHideDataFinalizer = Finalizer(inner.drop_opaque_MutexHideData);
+  Finalizer<MutexHideData> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final Finalizer<RwLockHideData> _RwLockHideDataFinalizer = Finalizer(inner.drop_opaque_RwLockHideData);
+  Finalizer<RwLockHideData> get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 }
 
 // Section: WASM wire module

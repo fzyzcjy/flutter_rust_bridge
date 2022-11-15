@@ -178,3 +178,28 @@ pub(crate) fn generate_api_func(
         companion_field_implementation,
     }
 }
+
+pub(crate) fn generate_opaque_getters(
+    ty: &IrType,
+) -> GeneratedApiFunc {
+
+    let signature = format!("
+    void drop_opaque_{0}(ptr);
+    share_opaque_{0}(ptr);
+    get {0}Finalizer;
+    ", ty.dart_api_type(),);
+
+    let implementation = format!("
+    get {0}Finalizer => _platform.{0}Finalizer;
+    share_opaque_{0}(ptr) => _platform.inner.share_opaque_{0}(ptr);
+    void drop_opaque_{0}(ptr) => _platform.inner.drop_opaque_{0}(ptr);
+    ", ty.dart_api_type());
+
+    GeneratedApiFunc {
+        signature,
+        implementation,
+        comments: String::new(),
+        companion_field_signature: String::new(),
+        companion_field_implementation: String::new(),
+    }
+}

@@ -124,11 +124,19 @@ impl DartApiSpec {
             .map(|ty| generate_api2wire_func(ty, ir_file, config))
             .collect::<Acc<_>>()
             .join("\n");
-        let dart_funcs = ir_file
+
+        let mut dart_funcs = ir_file
             .funcs
             .iter()
             .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common))
             .collect::<Vec<_>>();
+
+        let mut dart_opaque_stuff_funcs = distinct_input_types.iter().filter(|ty| ty.is_opaque())
+            .map(|ty| generate_opaque_getters(ty))
+            .collect::<Vec<_>>();
+
+        dart_funcs.append(&mut dart_opaque_stuff_funcs);
+
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api_fill_to_wire_func(ty, ir_file, config))
@@ -265,7 +273,6 @@ fn generate_dart_declaration_body(
 ) -> String {
     format!(
         "
-        late final {0}Platform inner_platform;
         abstract class {0} {{
             {1}
         }}
@@ -322,7 +329,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 /// Only valid on web/WASM platforms.
                 factory {impl}.wasm(FutureOr<WasmModule> module) =>
                     {impl}(module as ExternalLibrary);
-                {impl}.raw(this._platform) {{inner_platform = _platform;}}",
+                {impl}.raw(this._platform);",
             dart_api_class_name,
             impl = dart_api_impl_class_name,
             plat = dart_platform_class_name,
@@ -568,17 +575,13 @@ fn generate_wire2api_func(
 fn generate_opaque_func(ty: &IrType) -> Acc<String> {
     Acc {
         io: format!(
-            "ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>  get_finalizer_opaque_{0}() {{
-                    return inner._drop_opaque_{0}Ptr;
-                }}
-                ",
+            "late final ffi.NativeFinalizer _{0}Finalizer = ffi.NativeFinalizer(inner._drop_opaque_{0}Ptr);
+            ffi.NativeFinalizer get {0}Finalizer => _{0}Finalizer;",
             ty.dart_api_type(),
         ),
         wasm: format!(
-            "void Function(int) get_finalizer_opaque_{0}() {{
-                return inner.drop_opaque_{0};
-            }}
-            ",
+            "late final Finalizer<{0}>  _{0}Finalizer = Finalizer(inner.drop_opaque_{0});
+            Finalizer<{0}> get {0}Finalizer => _{0}Finalizer;",
             ty.dart_api_type(),
         ),
         ..Default::default()

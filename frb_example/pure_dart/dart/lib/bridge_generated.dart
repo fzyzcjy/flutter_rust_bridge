@@ -18,9 +18,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   /// Only valid on web/WASM platforms.
   factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(FutureOr<WasmModule> module) =>
       FlutterRustBridgeExampleSingleBlockTestImpl(module as ExternalLibrary);
-  FlutterRustBridgeExampleSingleBlockTestImpl.raw(this._platform) {
-    inner_platform = _platform;
-  }
+  FlutterRustBridgeExampleSingleBlockTestImpl.raw(this._platform);
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i32(a);
     var arg1 = api2wire_i32(b);
@@ -1632,10 +1630,30 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  get BoxDartDebugFinalizer => _platform.BoxDartDebugFinalizer;
+  share_opaque_BoxDartDebug(ptr) => _platform.inner.share_opaque_BoxDartDebug(ptr);
+  void drop_opaque_BoxDartDebug(ptr) => _platform.inner.drop_opaque_BoxDartDebug(ptr);
+
+  get HideDataFinalizer => _platform.HideDataFinalizer;
+  share_opaque_HideData(ptr) => _platform.inner.share_opaque_HideData(ptr);
+  void drop_opaque_HideData(ptr) => _platform.inner.drop_opaque_HideData(ptr);
+
+  get I32Finalizer => _platform.I32Finalizer;
+  share_opaque_I32(ptr) => _platform.inner.share_opaque_I32(ptr);
+  void drop_opaque_I32(ptr) => _platform.inner.drop_opaque_I32(ptr);
+
+  get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
+  share_opaque_MutexHideData(ptr) => _platform.inner.share_opaque_MutexHideData(ptr);
+  void drop_opaque_MutexHideData(ptr) => _platform.inner.drop_opaque_MutexHideData(ptr);
+
+  get RwLockHideDataFinalizer => _platform.RwLockHideDataFinalizer;
+  share_opaque_RwLockHideData(ptr) => _platform.inner.share_opaque_RwLockHideData(ptr);
+  void drop_opaque_RwLockHideData(ptr) => _platform.inner.drop_opaque_RwLockHideData(ptr);
+
 // Section: wire2api
 
   BoxDartDebug _wire2api_BoxDartDebug(dynamic raw) {
-    return BoxDartDebug.fromRaw(raw[0], raw[1]);
+    return BoxDartDebug.fromRaw(raw[0], raw[1], this);
   }
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {
@@ -1659,7 +1677,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   HideData _wire2api_HideData(dynamic raw) {
-    return HideData.fromRaw(raw[0], raw[1]);
+    return HideData.fromRaw(raw[0], raw[1], this);
   }
 
   HideDataArray2 _wire2api_HideData_array_2(dynamic raw) {
@@ -1667,11 +1685,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   I32 _wire2api_I32(dynamic raw) {
-    return I32.fromRaw(raw[0], raw[1]);
+    return I32.fromRaw(raw[0], raw[1], this);
   }
 
   MutexHideData _wire2api_MutexHideData(dynamic raw) {
-    return MutexHideData.fromRaw(raw[0], raw[1]);
+    return MutexHideData.fromRaw(raw[0], raw[1], this);
   }
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {
@@ -1679,7 +1697,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   RwLockHideData _wire2api_RwLockHideData(dynamic raw) {
-    return RwLockHideData.fromRaw(raw[0], raw[1]);
+    return RwLockHideData.fromRaw(raw[0], raw[1], this);
   }
 
   String _wire2api_String(dynamic raw) {

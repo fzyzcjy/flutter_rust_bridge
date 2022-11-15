@@ -112,10 +112,24 @@ abstract class FrbOpaque {
   /// Pointer to this opaque Rust type.
   int _ptr;
 
+  // todo
+  Finalizer get staticFinalizer;
+
+  /// Rust type specific drop function.
+  ///
+  /// This function should never be called manually.
+  void Function(int) get dropFn;
+
+  /// Rust type specific share function.
+  ///
+  /// This function should never be called manually.
+  dynamic Function(int) get shareFn;
+
   /// This constructor should never be called manually.
   @internal
   FrbOpaque.unsafe(this._ptr) {
     assert(_ptr > 0);
+    staticFinalizer.attach(this, _ptr);
   }
 
   /// Call Rust destructors on the backing memory of this pointer.
@@ -131,21 +145,10 @@ abstract class FrbOpaque {
       var ptr = _ptr;
       _ptr = 0;
 
-      drop(ptr);
+      staticFinalizer.detach(this);
+      dropFn(ptr);
     }
   }
-
-  /// Rust type specific drop function.
-  ///
-  /// This function should never be called manually.
-  @internal
-  void drop(int ptr);
-
-  /// Rust type specific share function.
-  ///
-  /// This function should never be called manually.
-  @internal
-  int share(int ptr);
 
   /// Increments inner reference counter and returns pointer to the underlying
   /// Rust object.
@@ -154,33 +157,10 @@ abstract class FrbOpaque {
   @internal
   int tryShare() {
     if (!isStale()) {
-      return share(_ptr);
+      return shareFn(_ptr);
     } else {
       throw StateError('Use after dispose.');
     }
-  }
-
-  /// Creates platform specific finalizer.
-  @internal
-  static Finalizer createFinalizer<T>(void Function(T) f) {
-    return Finalizer(f as void Function(dynamic));
-  }
-
-  /// Calls platform specific finalizer attach.
-  @internal
-  static void attachFinalizer<T>(
-      Finalizer finalizer,
-      int ptr,
-      T obj,
-      // ignore: no_leading_underscores_for_local_identifiers
-      int _size) {
-    finalizer.attach(obj as Object, ptr, detach: obj);
-  }
-
-  /// Calls platform specific finalizer detach.
-  @internal
-  static void detachFinalizer<T>(Finalizer finalizer, T obj) {
-    finalizer.detach(obj as Object);
   }
 
   /// Checks whether [dispose] has been called at any point during the lifetime

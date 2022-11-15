@@ -45,10 +45,24 @@ abstract class FrbOpaque implements Finalizable {
   /// Pointer to this opaque Rust type.
   ffi.Pointer<ffi.Void> _ptr;
 
+  //todo
+  NativeFinalizer get staticFinalizer;
+
+  /// Rust type specific drop function.
+  ///
+  /// This function should never be called manually.
+  void Function(ffi.Pointer<ffi.Void>) get dropFn;
+
+  /// Rust type specific share function.
+  ///
+  /// This function should never be called manually.
+  dynamic Function(ffi.Pointer<ffi.Void>) get shareFn;
+
   /// This constructor should never be called manually.
   @internal
-  FrbOpaque.unsafe(int ptr) : _ptr = ffi.Pointer.fromAddress(ptr) {
+  FrbOpaque.unsafe(int ptr, int size) : _ptr = ffi.Pointer.fromAddress(ptr) {
     assert(ptr > 0);
+    staticFinalizer.attach(this, _ptr, detach: this, externalSize: size);
   }
 
   /// Call Rust destructors on the backing memory of this pointer.
@@ -64,7 +78,8 @@ abstract class FrbOpaque implements Finalizable {
       var ptr = _ptr;
       _ptr = Pointer.fromAddress(0);
 
-      drop(ptr.cast<ffi.Void>());
+      staticFinalizer.detach(this);
+      dropFn(ptr);
     }
   }
 
@@ -73,49 +88,16 @@ abstract class FrbOpaque implements Finalizable {
   ///
   /// Throws a [StateError] if called after [dispose].
   @internal
-  ffi.Pointer<ffi.Void> tryShare() {
+  ffi.Pointer<ffi.Void> share() {
     if (!isStale()) {
-      return share(_ptr);
+      return shareFn(_ptr);
     } else {
       throw StateError('Use after dispose.');
     }
   }
 
-  /// Rust type specific drop function.
-  ///
-  /// This function should never be called manually.
-  @internal
-  void drop(ffi.Pointer<ffi.Void> ptr);
-
-  /// Rust type specific share function.
-  ///
-  /// This function should never be called manually.
-  @internal
-  ffi.Pointer<ffi.Void> share(ffi.Pointer<ffi.Void> ptr);
-
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
   bool isStale() => _ptr.address == 0;
-
-  /// Creates platform specific finalizer.
-  @internal
-  static NativeFinalizer createFinalizer(
-      Pointer<NativeFunction<Void Function(Pointer<Void>)>> ptr) {
-    return NativeFinalizer(ptr);
-  }
-
-  /// Calls platform specific finalizer attach.
-  @internal
-  static void attachFinalizer(
-      NativeFinalizer finalizer, int ptr, Finalizable obj, int size) {
-    finalizer.attach(obj, Pointer.fromAddress(ptr),
-        detach: obj, externalSize: size);
-  }
-
-  /// Calls platform specific finalizer detach.
-  @internal
-  static void detachFinalizer(NativeFinalizer finalizer, Object obj) {
-    finalizer.detach(obj);
-  }
 }

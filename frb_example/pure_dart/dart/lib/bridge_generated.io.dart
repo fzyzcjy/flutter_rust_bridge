@@ -630,46 +630,36 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: finalyzer
 
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_BoxDartDebug() {
-    return inner._drop_opaque_BoxDartDebugPtr;
-  }
-
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_HideData() {
-    return inner._drop_opaque_HideDataPtr;
-  }
-
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_I32() {
-    return inner._drop_opaque_I32Ptr;
-  }
-
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_MutexHideData() {
-    return inner._drop_opaque_MutexHideDataPtr;
-  }
-
-  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>> get_finalizer_opaque_RwLockHideData() {
-    return inner._drop_opaque_RwLockHideDataPtr;
-  }
-
+  late final ffi.NativeFinalizer _BoxDartDebugFinalizer = ffi.NativeFinalizer(inner._drop_opaque_BoxDartDebugPtr);
+  ffi.NativeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final ffi.NativeFinalizer _HideDataFinalizer = ffi.NativeFinalizer(inner._drop_opaque_HideDataPtr);
+  ffi.NativeFinalizer get HideDataFinalizer => _HideDataFinalizer;
+  late final ffi.NativeFinalizer _I32Finalizer = ffi.NativeFinalizer(inner._drop_opaque_I32Ptr);
+  ffi.NativeFinalizer get I32Finalizer => _I32Finalizer;
+  late final ffi.NativeFinalizer _MutexHideDataFinalizer = ffi.NativeFinalizer(inner._drop_opaque_MutexHideDataPtr);
+  ffi.NativeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final ffi.NativeFinalizer _RwLockHideDataFinalizer = ffi.NativeFinalizer(inner._drop_opaque_RwLockHideDataPtr);
+  ffi.NativeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 // Section: api_fill_to_wire
 
   void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, wire_BoxDartDebug wireObj) {
-    wireObj.ptr = apiObj.tryShare();
+    wireObj.ptr = apiObj.share();
   }
 
   void _api_fill_to_wire_HideData(HideData apiObj, wire_HideData wireObj) {
-    wireObj.ptr = apiObj.tryShare();
+    wireObj.ptr = apiObj.share();
   }
 
   void _api_fill_to_wire_I32(I32 apiObj, wire_I32 wireObj) {
-    wireObj.ptr = apiObj.tryShare();
+    wireObj.ptr = apiObj.share();
   }
 
   void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, wire_MutexHideData wireObj) {
-    wireObj.ptr = apiObj.tryShare();
+    wireObj.ptr = apiObj.share();
   }
 
   void _api_fill_to_wire_RwLockHideData(RwLockHideData apiObj, wire_RwLockHideData wireObj) {
-    wireObj.ptr = apiObj.tryShare();
+    wireObj.ptr = apiObj.share();
   }
 
   void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
