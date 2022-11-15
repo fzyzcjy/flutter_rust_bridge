@@ -114,7 +114,7 @@ abstract class FrbOpaque {
 
   /// A native finalizer rust opaque type.
   /// Is static for each frb api class instance.
-  Finalizer get staticFinalizer;
+  Finalizer<int> get staticFinalizer;
 
   /// Rust type specific drop function.
   ///

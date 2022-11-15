@@ -582,8 +582,8 @@ fn generate_opaque_func(ty: &IrType) -> Acc<String> {
             ty.dart_api_type(),
         ),
         wasm: format!(
-            "late final Finalizer<{0}>  _{0}Finalizer = Finalizer(inner.drop_opaque_{0});
-            Finalizer<{0}> get {0}Finalizer => _{0}Finalizer;",
+            "late final Finalizer<int>  _{0}Finalizer = Finalizer(inner.drop_opaque_{0});
+            Finalizer<int> get {0}Finalizer => _{0}Finalizer;",
             ty.dart_api_type(),
         ),
         ..Default::default()

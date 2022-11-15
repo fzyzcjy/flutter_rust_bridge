@@ -738,16 +738,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: finalyzer
 
-  late final Finalizer<BoxDartDebug> _BoxDartDebugFinalizer = Finalizer(inner.drop_opaque_BoxDartDebug);
-  Finalizer<BoxDartDebug> get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
-  late final Finalizer<HideData> _HideDataFinalizer = Finalizer(inner.drop_opaque_HideData);
-  Finalizer<HideData> get HideDataFinalizer => _HideDataFinalizer;
-  late final Finalizer<I32> _I32Finalizer = Finalizer(inner.drop_opaque_I32);
-  Finalizer<I32> get I32Finalizer => _I32Finalizer;
-  late final Finalizer<MutexHideData> _MutexHideDataFinalizer = Finalizer(inner.drop_opaque_MutexHideData);
-  Finalizer<MutexHideData> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
-  late final Finalizer<RwLockHideData> _RwLockHideDataFinalizer = Finalizer(inner.drop_opaque_RwLockHideData);
-  Finalizer<RwLockHideData> get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
+  late final Finalizer<int> _BoxDartDebugFinalizer = Finalizer(inner.drop_opaque_BoxDartDebug);
+  Finalizer<int> get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final Finalizer<int> _HideDataFinalizer = Finalizer(inner.drop_opaque_HideData);
+  Finalizer<int> get HideDataFinalizer => _HideDataFinalizer;
+  late final Finalizer<int> _I32Finalizer = Finalizer(inner.drop_opaque_I32);
+  Finalizer<int> get I32Finalizer => _I32Finalizer;
+  late final Finalizer<int> _MutexHideDataFinalizer = Finalizer(inner.drop_opaque_MutexHideData);
+  Finalizer<int> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final Finalizer<int> _RwLockHideDataFinalizer = Finalizer(inner.drop_opaque_RwLockHideData);
+  Finalizer<int> get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 }
 
 // Section: WASM wire module
