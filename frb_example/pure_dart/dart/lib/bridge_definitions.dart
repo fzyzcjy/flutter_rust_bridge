@@ -427,24 +427,24 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
 
-  void drop_opaque_BoxDartDebug(ptr);
-  share_opaque_BoxDartDebug(ptr);
+  get drop_opaque_BoxDartDebug;
+  get share_opaque_BoxDartDebug;
   get BoxDartDebugFinalizer;
 
-  void drop_opaque_HideData(ptr);
-  share_opaque_HideData(ptr);
+  get drop_opaque_HideData;
+  get share_opaque_HideData;
   get HideDataFinalizer;
 
-  void drop_opaque_I32(ptr);
-  share_opaque_I32(ptr);
+  get drop_opaque_I32;
+  get share_opaque_I32;
   get I32Finalizer;
 
-  void drop_opaque_MutexHideData(ptr);
-  share_opaque_MutexHideData(ptr);
+  get drop_opaque_MutexHideData;
+  get share_opaque_MutexHideData;
   get MutexHideDataFinalizer;
 
-  void drop_opaque_RwLockHideData(ptr);
-  share_opaque_RwLockHideData(ptr);
+  get drop_opaque_RwLockHideData;
+  get share_opaque_RwLockHideData;
   get RwLockHideDataFinalizer;
 }
 

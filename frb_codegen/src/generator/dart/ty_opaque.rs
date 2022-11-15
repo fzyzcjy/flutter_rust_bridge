@@ -57,7 +57,6 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
                     @override
                     get staticFinalizer => bridge.{0}Finalizer;
             }}",
-            
             self.ir.dart_api_type()
         )
     }

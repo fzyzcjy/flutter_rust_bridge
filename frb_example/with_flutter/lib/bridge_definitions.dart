@@ -7,8 +7,6 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
-late final FlutterRustBridgeExamplePlatform inner_platform;
-
 abstract class FlutterRustBridgeExample {
   Future<Uint8List> drawMandelbrot(
       {required Size imageSize,

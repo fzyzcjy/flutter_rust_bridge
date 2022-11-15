@@ -1631,24 +1631,24 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       );
 
   get BoxDartDebugFinalizer => _platform.BoxDartDebugFinalizer;
-  share_opaque_BoxDartDebug(ptr) => _platform.inner.share_opaque_BoxDartDebug(ptr);
-  void drop_opaque_BoxDartDebug(ptr) => _platform.inner.drop_opaque_BoxDartDebug(ptr);
+  get share_opaque_BoxDartDebug => _platform.inner.share_opaque_BoxDartDebug;
+  get drop_opaque_BoxDartDebug => _platform.inner.drop_opaque_BoxDartDebug;
 
   get HideDataFinalizer => _platform.HideDataFinalizer;
-  share_opaque_HideData(ptr) => _platform.inner.share_opaque_HideData(ptr);
-  void drop_opaque_HideData(ptr) => _platform.inner.drop_opaque_HideData(ptr);
+  get share_opaque_HideData => _platform.inner.share_opaque_HideData;
+  get drop_opaque_HideData => _platform.inner.drop_opaque_HideData;
 
   get I32Finalizer => _platform.I32Finalizer;
-  share_opaque_I32(ptr) => _platform.inner.share_opaque_I32(ptr);
-  void drop_opaque_I32(ptr) => _platform.inner.drop_opaque_I32(ptr);
+  get share_opaque_I32 => _platform.inner.share_opaque_I32;
+  get drop_opaque_I32 => _platform.inner.drop_opaque_I32;
 
   get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
-  share_opaque_MutexHideData(ptr) => _platform.inner.share_opaque_MutexHideData(ptr);
-  void drop_opaque_MutexHideData(ptr) => _platform.inner.drop_opaque_MutexHideData(ptr);
+  get share_opaque_MutexHideData => _platform.inner.share_opaque_MutexHideData;
+  get drop_opaque_MutexHideData => _platform.inner.drop_opaque_MutexHideData;
 
   get RwLockHideDataFinalizer => _platform.RwLockHideDataFinalizer;
-  share_opaque_RwLockHideData(ptr) => _platform.inner.share_opaque_RwLockHideData(ptr);
-  void drop_opaque_RwLockHideData(ptr) => _platform.inner.drop_opaque_RwLockHideData(ptr);
+  get share_opaque_RwLockHideData => _platform.inner.share_opaque_RwLockHideData;
+  get drop_opaque_RwLockHideData => _platform.inner.drop_opaque_RwLockHideData;
 
 // Section: wire2api
 

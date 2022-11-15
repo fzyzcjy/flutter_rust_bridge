@@ -209,7 +209,7 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
 
 // Section: allocate functions
 
-// Section: opaque stuff functions
+// Section: opaque related functions
 
 // Section: impl Wire2Api
 

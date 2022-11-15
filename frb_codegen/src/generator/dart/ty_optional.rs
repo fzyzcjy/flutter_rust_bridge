@@ -26,7 +26,6 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn api_validate(&self) -> Option<String> {
-        
         let ir_file = self.context.ir_file;
         let config = self.context.config;
 

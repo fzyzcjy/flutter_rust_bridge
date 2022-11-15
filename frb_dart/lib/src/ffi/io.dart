@@ -45,7 +45,8 @@ abstract class FrbOpaque implements Finalizable {
   /// Pointer to this opaque Rust type.
   ffi.Pointer<ffi.Void> _ptr;
 
-  //todo
+  /// A native finalizer rust opaque type.
+  /// Is static for each frb api class instance.
   NativeFinalizer get staticFinalizer;
 
   /// Rust type specific drop function.
@@ -56,7 +57,7 @@ abstract class FrbOpaque implements Finalizable {
   /// Rust type specific share function.
   ///
   /// This function should never be called manually.
-  dynamic Function(ffi.Pointer<ffi.Void>) get shareFn;
+  ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) get shareFn;
 
   /// This constructor should never be called manually.
   @internal

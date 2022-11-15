@@ -25,15 +25,16 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
 
     /// Handles JsValue to Self conversions.
     fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
-        #[cfg(target_arch = "wasm64")]
-        {
-            panic!("The wasm64 arch is not supported.");
-        }
-
         Some(
-            "unsafe {
+            r##"
+            #[cfg(target_pointer_width = "64")]
+            {
+                panic!("64-bit pointers are not supported.");
+            }
+    
+            unsafe {
                 support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
-            }"
+            }"##
             .into(),
         )
     }

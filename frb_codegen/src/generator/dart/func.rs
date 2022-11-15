@@ -179,21 +179,24 @@ pub(crate) fn generate_api_func(
     }
 }
 
-pub(crate) fn generate_opaque_getters(
-    ty: &IrType,
-) -> GeneratedApiFunc {
-
-    let signature = format!("
-    void drop_opaque_{0}(ptr);
-    share_opaque_{0}(ptr);
+pub(crate) fn generate_opaque_getters(ty: &IrType) -> GeneratedApiFunc {
+    let signature = format!(
+        "
+    get drop_opaque_{0};
+    get share_opaque_{0};
     get {0}Finalizer;
-    ", ty.dart_api_type(),);
+    ",
+        ty.dart_api_type(),
+    );
 
-    let implementation = format!("
+    let implementation = format!(
+        "
     get {0}Finalizer => _platform.{0}Finalizer;
-    share_opaque_{0}(ptr) => _platform.inner.share_opaque_{0}(ptr);
-    void drop_opaque_{0}(ptr) => _platform.inner.drop_opaque_{0}(ptr);
-    ", ty.dart_api_type());
+    get share_opaque_{0} => _platform.inner.share_opaque_{0};
+    get drop_opaque_{0} => _platform.inner.drop_opaque_{0};
+    ",
+        ty.dart_api_type()
+    );
 
     GeneratedApiFunc {
         signature,

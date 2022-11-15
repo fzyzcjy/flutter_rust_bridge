@@ -1320,6 +1320,11 @@ impl Wire2Api<UserId> for JsValue {
 
 impl Wire2Api<Opaque<Box<dyn DartDebug>>> for JsValue {
     fn wire2api(self) -> Opaque<Box<dyn DartDebug>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            panic!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
@@ -1345,21 +1350,41 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
 }
 impl Wire2Api<Opaque<HideData>> for JsValue {
     fn wire2api(self) -> Opaque<HideData> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            panic!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl Wire2Api<Opaque<i32>> for JsValue {
     fn wire2api(self) -> Opaque<i32> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            panic!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl Wire2Api<Opaque<Mutex<HideData>>> for JsValue {
     fn wire2api(self) -> Opaque<Mutex<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            panic!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl Wire2Api<Opaque<RwLock<HideData>>> for JsValue {
     fn wire2api(self) -> Opaque<RwLock<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            panic!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }

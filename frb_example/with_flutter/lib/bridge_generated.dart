@@ -17,9 +17,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   /// Only valid on web/WASM platforms.
   factory FlutterRustBridgeExampleImpl.wasm(FutureOr<WasmModule> module) =>
       FlutterRustBridgeExampleImpl(module as ExternalLibrary);
-  FlutterRustBridgeExampleImpl.raw(this._platform) {
-    inner_platform = _platform;
-  }
+  FlutterRustBridgeExampleImpl.raw(this._platform);
   Future<Uint8List> drawMandelbrot(
       {required Size imageSize,
       required Point zoomPoint,

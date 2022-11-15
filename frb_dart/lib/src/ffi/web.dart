@@ -112,7 +112,8 @@ abstract class FrbOpaque {
   /// Pointer to this opaque Rust type.
   int _ptr;
 
-  // todo
+  /// A native finalizer rust opaque type.
+  /// Is static for each frb api class instance.
   Finalizer get staticFinalizer;
 
   /// Rust type specific drop function.
@@ -123,11 +124,12 @@ abstract class FrbOpaque {
   /// Rust type specific share function.
   ///
   /// This function should never be called manually.
-  dynamic Function(int) get shareFn;
+  int Function(int) get shareFn;
 
   /// This constructor should never be called manually.
   @internal
-  FrbOpaque.unsafe(this._ptr) {
+  // ignore: no_leading_underscores_for_local_identifiers
+  FrbOpaque.unsafe(this._ptr, int _size) {
     assert(_ptr > 0);
     staticFinalizer.attach(this, _ptr);
   }
@@ -155,7 +157,7 @@ abstract class FrbOpaque {
   ///
   /// Throws a [StateError] if called after [dispose].
   @internal
-  int tryShare() {
+  int share() {
     if (!isStale()) {
       return shareFn(_ptr);
     } else {
