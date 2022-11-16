@@ -118,6 +118,7 @@ More specifically, thanks for all these contributions:
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
+* [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
@@ -125,7 +126,6 @@ More specifically, thanks for all these contributions:
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
-* [banool](https://github.com/banool): Fix symbol-stripping doc.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
 * [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version.
