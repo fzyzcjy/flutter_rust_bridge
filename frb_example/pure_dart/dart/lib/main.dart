@@ -705,15 +705,18 @@ void main(List<String> args) async {
 
     test('LeaK', () async {
       for (var i = 0; i < 10000; ++i) {
-        var data = List.filled(4096, '4242424242');
+        print(i);
+        var data = List.filled(10, '4242424242');
         api.syncDartOpaque(notTemp: data);
       }
       for (var i = 0; i < 10000; ++i) {
-        var data = List.filled(4096, '4242424242');
+        print(i);
+        var data = List.filled(10, '4242424242');
         await api.asyncDartOpaque(notTemp: data);
       }
       for (var i = 0; i < 10000; ++i) {
-        var data = List.filled(4096, '4242424242');
+        print(i);
+        var data = List.filled(10, '4242424242');
         await api.loopBack(notTemp: await api.loopBack(notTemp: data));
       }
     });
