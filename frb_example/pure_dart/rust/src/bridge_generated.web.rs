@@ -429,8 +429,8 @@ pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_lets_rock(port_: MessagePort) {
-    wire_lets_rock_impl(port_)
+pub fn wire_lets_rock(not_temp: JsValue) -> support::WireSyncReturnStruct {
+    wire_lets_rock_impl(not_temp)
 }
 
 #[wasm_bindgen]
@@ -579,6 +579,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
+
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self

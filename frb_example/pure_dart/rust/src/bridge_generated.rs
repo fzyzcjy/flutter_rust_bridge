@@ -1224,14 +1224,19 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
     )
 }
-fn wire_lets_rock_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+fn wire_lets_rock_impl(
+    not_temp: impl Wire2Api<DartOpaque> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "lets_rock",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
+            port: None,
+            mode: FfiCallMode::Sync,
         },
-        move || move |task_callback| Ok(lets_rock()),
+        move || {
+            let api_not_temp = not_temp.wire2api();
+            Ok(lets_rock(api_not_temp))
+        },
     )
 }
 fn wire_sum__method__SumWith_impl(

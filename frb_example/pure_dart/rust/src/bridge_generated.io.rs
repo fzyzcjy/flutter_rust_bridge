@@ -437,8 +437,8 @@ pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_lets_rock(port_: i64) {
-    wire_lets_rock_impl(port_)
+pub extern "C" fn wire_lets_rock(not_temp: Dart_Handle) -> support::WireSyncReturnStruct {
+    wire_lets_rock_impl(not_temp)
 }
 
 #[no_mangle]
@@ -812,6 +812,11 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
+impl Wire2Api<DartOpaque> for Dart_Handle {
+    fn wire2api(self) -> DartOpaque {
+        DartOpaque::new(self)
+    }
+}
 impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
@@ -841,6 +846,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
+
 impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();

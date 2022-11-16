@@ -5,7 +5,7 @@ pub struct IrTypeDartOpaque;
 
 impl IrTypeTrait for IrTypeDartOpaque {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_file: &IrFile) {
-        // Do nothing.
+        // do nothing.
     }
 
     fn safe_ident(&self) -> String {

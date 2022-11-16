@@ -41,6 +41,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Object api2wire_DartOpaque(Object raw) {
+    return raw;
+  }
+
+  @protected
   String api2wire_String(String raw) {
     return raw;
   }
@@ -858,7 +863,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_nested_id(NativePortType port_, List<dynamic> id);
 
-  external void wire_lets_rock(NativePortType port_);
+  external dynamic /* String */ wire_lets_rock(Object not_temp);
 
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
@@ -1105,7 +1110,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_nested_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_nested_id(port_, id);
 
-  void wire_lets_rock(NativePortType port_) => wasmModule.wire_lets_rock(port_);
+  dynamic /* String */ wire_lets_rock(Object not_temp) => wasmModule.wire_lets_rock(not_temp);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

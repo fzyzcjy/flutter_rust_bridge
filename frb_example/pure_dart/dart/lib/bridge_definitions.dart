@@ -357,7 +357,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
 
-  Future<void> letsRock({dynamic hint});
+  String letsRock({required Object notTemp, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kLetsRockConstMeta;
 

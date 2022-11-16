@@ -295,7 +295,12 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         common: format!(
             "class {impl} implements {} {{
                 final {plat} _platform;
-                factory {impl}(ExternalLibrary dylib) => {impl}.raw({plat}(dylib));
+                factory {impl}(ExternalLibrary dylib) {{ 
+                    dylib.lookupFunction<
+                    IntPtr Function(Pointer<Void>),
+                    int Function(
+                        Pointer<Void>)>('init_dart_api_dl')(NativeApi.initializeApiDLData);
+                    return {impl}.raw({plat}(dylib)); }}
 
                 /// Only valid on web/WASM platforms.
                 factory {impl}.wasm(FutureOr<WasmModule> module) =>
@@ -371,7 +376,9 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     );
     let common_import = format!(
         "{}
-        import 'package:meta/meta.dart';",
+        
+        import 'package:meta/meta.dart';
+        import 'dart:ffi';",
         // If WASM is not enabled, the common and IO branches are
         // combined into one, making this import statement invalid.
         if config.wasm_enabled {

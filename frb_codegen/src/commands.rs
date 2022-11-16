@@ -226,6 +226,7 @@ fn cbindgen(
             "stdint.h".to_string(),
             "stdlib.h".to_string(),
         ],
+        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
         no_includes: true,
         export: cbindgen::ExportConfig {
             include: c_struct_names

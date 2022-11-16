@@ -39,6 +39,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Object api2wire_DartOpaque(Object raw) {
+    return raw;
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
     return api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
@@ -2135,16 +2140,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_test_id>)>>('wire_nested_id');
   late final _wire_nested_id = _wire_nested_idPtr.asFunction<void Function(int, ffi.Pointer<wire_list_test_id>)>();
 
-  void wire_lets_rock(
-    int port_,
+  WireSyncReturnStruct wire_lets_rock(
+    Object not_temp,
   ) {
     return _wire_lets_rock(
-      port_,
+      not_temp,
     );
   }
 
-  late final _wire_lets_rockPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_lets_rock');
-  late final _wire_lets_rock = _wire_lets_rockPtr.asFunction<void Function(int)>();
+  late final _wire_lets_rockPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Handle)>>('wire_lets_rock');
+  late final _wire_lets_rock = _wire_lets_rockPtr.asFunction<WireSyncReturnStruct Function(Object)>();
 
   void wire_sum__method__SumWith(
     int port_,
@@ -2909,6 +2915,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _free_WireSyncReturnStruct =
       _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 }
+
+class _Dart_Handle extends ffi.Opaque {}
 
 class wire_uint_8_list extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;

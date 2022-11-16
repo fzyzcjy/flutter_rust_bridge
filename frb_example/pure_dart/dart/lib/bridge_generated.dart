@@ -8,12 +8,17 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
+
 import 'package:meta/meta.dart';
+import 'dart:ffi';
 
 class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeExampleSingleBlockTest {
   final FlutterRustBridgeExampleSingleBlockTestPlatform _platform;
-  factory FlutterRustBridgeExampleSingleBlockTestImpl(ExternalLibrary dylib) =>
-      FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
+  factory FlutterRustBridgeExampleSingleBlockTestImpl(ExternalLibrary dylib) {
+    dylib.lookupFunction<IntPtr Function(Pointer<Void>), int Function(Pointer<Void>)>('init_dart_api_dl')(
+        NativeApi.initializeApiDLData);
+    return FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
+  }
 
   /// Only valid on web/WASM platforms.
   factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(FutureOr<WasmModule> module) =>
@@ -1152,17 +1157,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
-  Future<void> letsRock({dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
-        callFfi: (port_) => _platform.inner.wire_lets_rock(port_),
-        parseSuccessData: _wire2api_unit,
+  String letsRock({required Object notTemp, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
+        callFfi: () => _platform.inner.wire_lets_rock(_platform.api2wire_DartOpaque(notTemp)),
+        parseSuccessData: _wire2api_SyncReturn_String,
         constMeta: kLetsRockConstMeta,
-        argValues: [],
+        argValues: [notTemp],
         hint: hint,
       ));
 
   FlutterRustBridgeTaskConstMeta get kLetsRockConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "lets_rock",
-        argNames: [],
+        argNames: ["notTemp"],
       );
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>

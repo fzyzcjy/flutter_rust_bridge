@@ -690,6 +690,11 @@ void main(List<String> args) async {
       expect(nestedId[0].field0[1], 10);
       expect(nestedId[1].field0[1], 40);
     });
+
+    test('OPAQUE', () async {
+      var f = () {print('42');};
+      await api.letsRock(notTemp: f);
+    });
   });
 }
 

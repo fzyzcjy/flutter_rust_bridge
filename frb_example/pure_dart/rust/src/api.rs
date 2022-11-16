@@ -956,4 +956,7 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
 }
 
 
-pub fn lets_rock(temp: DartOpaque) {}
+pub fn lets_rock(not_temp: DartOpaque) -> SyncReturn<String> { 
+    println!("$@");
+    SyncReturn("".to_owned()) 
+}

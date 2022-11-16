@@ -30,6 +30,7 @@ pub enum IrTypeDelegate {
     Array(IrTypeDelegateArray),
     String,
     StringList,
+    DartOpaque(IrTypeDartOpaque),
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
     PrimitiveEnum {
         ir: IrTypeEnumRef,
@@ -174,6 +175,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::Uuids => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
+            IrTypeDelegate::DartOpaque(opaque) => IrType::DartOpaque(opaque.clone()),
         }
     }
 }
@@ -198,6 +200,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "Uuids".to_owned(),
+            IrTypeDelegate::DartOpaque(_) => "DartOpaque".to_owned(),
         }
     }
 
@@ -217,6 +220,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "UuidValue".to_owned(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
+            IrTypeDelegate::DartOpaque(_) => "Object".to_owned(),
         }
     }
 
@@ -251,6 +255,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
+            IrTypeDelegate::DartOpaque(_) => "DartOpaque".to_owned(),
         }
     }
 

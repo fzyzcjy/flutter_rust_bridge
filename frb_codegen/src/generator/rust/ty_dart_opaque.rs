@@ -11,7 +11,7 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> crate::target::Acc<Option<String>> {
         Acc {
             io: Some(
-                "unsafe { /* A */ }"
+                "DartOpaque::new(self)"
                 .into(),
             ),
             ..Default::default()
@@ -19,22 +19,10 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     }
 
     /// Handles JsValue to Self conversions.
-    fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
-        #[cfg(target_arch = "wasm64")]
-        {
-            panic!("The wasm64 arch is not supported.");
-        }
-
-        Some(
-            "unsafe {
-                support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
-            }"
-            .into(),
-        )
-    }
+    fn wire2api_jsvalue(&self) -> Option<Cow<str>> {None}
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        Some(vec!["ptr: *const core::ffi::c_void".to_owned()])
+        None
     }
 
     fn static_checks(&self) -> Option<String> {
@@ -45,12 +33,12 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         None
     }
 
-    fn self_access(&self, obj: String) -> String {
-        obj
+    fn self_access(&self, _obj: String) -> String {
+        "".to_owned()
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
-        obj
+    fn wrap_obj(&self, _obj: String) -> String {
+        "".to_owned()
     }
 
     fn convert_to_dart(&self, obj: String) -> String {

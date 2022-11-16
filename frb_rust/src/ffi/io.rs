@@ -4,8 +4,9 @@ use crate::dart_api::Dart_NewPersistentHandle_DL_Trampolined;
 pub use super::DartAbi;
 pub use super::MessagePort;
 pub use allo_isolate::*;
-use dart_sys::Dart_Handle;
-use dart_sys::Dart_PersistentHandle;
+pub use dart_sys::Dart_Handle;
+pub use dart_sys::_Dart_Handle;
+pub use dart_sys::Dart_PersistentHandle;
 
 #[cfg(feature = "chrono")]
 #[inline]
@@ -37,7 +38,10 @@ mod tests {
 }
 
 
-struct DartOpaque(Dart_PersistentHandle);
+
+pub struct DartOpaque(Dart_PersistentHandle);
+unsafe impl Send for DartOpaque {}
+unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
     pub fn new(handle: Dart_Handle) -> Self {

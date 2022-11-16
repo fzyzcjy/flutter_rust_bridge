@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:meta/meta.dart';
+import 'dart:ffi';
 import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
@@ -20,7 +21,10 @@ abstract class ApiClass1 {
 
 class ApiClass1Impl implements ApiClass1 {
   final ApiClass1Platform _platform;
-  factory ApiClass1Impl(ExternalLibrary dylib) => ApiClass1Impl.raw(ApiClass1Platform(dylib));
+  factory ApiClass1Impl(ExternalLibrary dylib) {
+    dylib.lookupFunction<IntPtr Function(Pointer<Void>), int Function(Pointer<Void>)>('init_dart_api_dl')(NativeApi.initializeApiDLData);
+    return ApiClass1Impl.raw(ApiClass1Platform(dylib));
+  }
 
   /// Only valid on web/WASM platforms.
   factory ApiClass1Impl.wasm(FutureOr<WasmModule> module) => ApiClass1Impl(module as ExternalLibrary);
@@ -120,6 +124,8 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   late final _free_WireSyncReturnStructPtr = _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
   late final _free_WireSyncReturnStruct = _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 }
+
+class _Dart_Handle extends ffi.Opaque {}
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
