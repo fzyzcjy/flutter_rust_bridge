@@ -49,13 +49,13 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
                 {field_bridge}
                     {0}.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
                     @override
-                    get dropFn => bridge.drop_opaque_{0};
+                    DropFnType get dropFn => bridge.drop_opaque_{0};
                     
                     @override
-                    get shareFn => bridge.share_opaque_{0};
+                    ShareFnType get shareFn => bridge.share_opaque_{0};
 
                     @override
-                    get staticFinalizer => bridge.{0}Finalizer;
+                    OpaqueTypeFinalizer get staticFinalizer => bridge.{0}Finalizer;
             }}",
             self.ir.dart_api_type()
         )

@@ -105,6 +105,10 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
 
+typedef DropFnType = void Function(int);
+typedef ShareFnType = int Function(int);
+typedef OpaqueTypeFinalizer = Finalizer<int>;
+
 /// An opaque pointer to a Rust type.
 ///
 /// Recipients of this type should call [dispose] at some point during runtime.

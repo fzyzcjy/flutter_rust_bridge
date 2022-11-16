@@ -1630,25 +1630,25 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  get BoxDartDebugFinalizer => _platform.BoxDartDebugFinalizer;
-  get share_opaque_BoxDartDebug => _platform.inner.share_opaque_BoxDartDebug;
-  get drop_opaque_BoxDartDebug => _platform.inner.drop_opaque_BoxDartDebug;
+  DropFnType get drop_opaque_BoxDartDebug => _platform.inner.drop_opaque_BoxDartDebug;
+  ShareFnType get share_opaque_BoxDartDebug => _platform.inner.share_opaque_BoxDartDebug;
+  OpaqueTypeFinalizer get BoxDartDebugFinalizer => _platform.BoxDartDebugFinalizer;
 
-  get HideDataFinalizer => _platform.HideDataFinalizer;
-  get share_opaque_HideData => _platform.inner.share_opaque_HideData;
-  get drop_opaque_HideData => _platform.inner.drop_opaque_HideData;
+  DropFnType get drop_opaque_HideData => _platform.inner.drop_opaque_HideData;
+  ShareFnType get share_opaque_HideData => _platform.inner.share_opaque_HideData;
+  OpaqueTypeFinalizer get HideDataFinalizer => _platform.HideDataFinalizer;
 
-  get I32Finalizer => _platform.I32Finalizer;
-  get share_opaque_I32 => _platform.inner.share_opaque_I32;
-  get drop_opaque_I32 => _platform.inner.drop_opaque_I32;
+  DropFnType get drop_opaque_I32 => _platform.inner.drop_opaque_I32;
+  ShareFnType get share_opaque_I32 => _platform.inner.share_opaque_I32;
+  OpaqueTypeFinalizer get I32Finalizer => _platform.I32Finalizer;
 
-  get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
-  get share_opaque_MutexHideData => _platform.inner.share_opaque_MutexHideData;
-  get drop_opaque_MutexHideData => _platform.inner.drop_opaque_MutexHideData;
+  DropFnType get drop_opaque_MutexHideData => _platform.inner.drop_opaque_MutexHideData;
+  ShareFnType get share_opaque_MutexHideData => _platform.inner.share_opaque_MutexHideData;
+  OpaqueTypeFinalizer get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
 
-  get RwLockHideDataFinalizer => _platform.RwLockHideDataFinalizer;
-  get share_opaque_RwLockHideData => _platform.inner.share_opaque_RwLockHideData;
-  get drop_opaque_RwLockHideData => _platform.inner.drop_opaque_RwLockHideData;
+  DropFnType get drop_opaque_RwLockHideData => _platform.inner.drop_opaque_RwLockHideData;
+  ShareFnType get share_opaque_RwLockHideData => _platform.inner.share_opaque_RwLockHideData;
+  OpaqueTypeFinalizer get RwLockHideDataFinalizer => _platform.RwLockHideDataFinalizer;
 
 // Section: wire2api
 

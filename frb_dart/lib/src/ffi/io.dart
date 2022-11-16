@@ -39,6 +39,10 @@ class WireSyncReturnStruct extends ffi.Struct {
   bool get isSuccess => success > 0;
 }
 
+typedef DropFnType = void Function(ffi.Pointer<ffi.Void>);
+typedef ShareFnType = ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>);
+typedef OpaqueTypeFinalizer = NativeFinalizer;
+
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at some point during runtime.
 abstract class FrbOpaque implements Finalizable {
@@ -47,17 +51,17 @@ abstract class FrbOpaque implements Finalizable {
 
   /// A native finalizer rust opaque type.
   /// Is static for each frb api class instance.
-  NativeFinalizer get staticFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer;
 
   /// Rust type specific drop function.
   ///
   /// This function should never be called manually.
-  void Function(ffi.Pointer<ffi.Void>) get dropFn;
+  DropFnType get dropFn;
 
   /// Rust type specific share function.
   ///
   /// This function should never be called manually.
-  ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) get shareFn;
+  ShareFnType get shareFn;
 
   /// This constructor should never be called manually.
   @internal
