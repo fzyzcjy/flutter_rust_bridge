@@ -709,11 +709,15 @@ void main(List<String> args) async {
         var data = List.filled(10, '4242424242');
         api.syncDartOpaque(notTemp: data);
       }
+    });
+    test('LeaK2', () async {
       for (var i = 0; i < 10000; ++i) {
         print(i);
         var data = List.filled(10, '4242424242');
         await api.asyncDartOpaque(notTemp: data);
       }
+    });
+    test('LeaK3', () async {
       for (var i = 0; i < 10000; ++i) {
         print(i);
         var data = List.filled(10, '4242424242');
