@@ -1,6 +1,7 @@
 mod func;
 mod ty;
 mod ty_boxed;
+mod ty_dart_opaque;
 mod ty_delegate;
 mod ty_enum;
 mod ty_general_list;
@@ -9,7 +10,6 @@ mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
 mod ty_sync_return;
-mod ty_dart_opaque;
 mod wasm;
 
 use func::*;
@@ -22,6 +22,7 @@ use wasm::*;
 use itertools::Itertools;
 pub use ty::*;
 pub use ty_boxed::*;
+pub use ty_dart_opaque::*;
 pub use ty_delegate::*;
 pub use ty_enum::*;
 pub use ty_general_list::*;
@@ -30,7 +31,6 @@ pub use ty_primitive::*;
 pub use ty_primitive_list::*;
 pub use ty_struct::*;
 pub use ty_sync_return::*;
-pub use ty_dart_opaque::*;
 
 use convert_case::{Case, Casing};
 use log::debug;
@@ -312,7 +312,15 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         ),
         io: format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> {{
-                {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib));",
+                final _port = RawReceivePort();
+                int get port => _port.sendPort.nativePort;
+                {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib)) {{
+                    _port.handler = (response) {{
+                        inner.dart_opaque_drop(response);
+                    }};
+                    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+                        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+                }}",
             plat = dart_platform_class_name,
             wire = dart_wire_class_name,
         ),

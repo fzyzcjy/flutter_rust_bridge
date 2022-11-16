@@ -1157,16 +1157,44 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
-  String letsRock({required Object notTemp, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
-        callFfi: () => _platform.inner.wire_lets_rock(_platform.api2wire_DartOpaque(notTemp)),
+  String syncDartOpaque({required Object notTemp, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
+        callFfi: () => _platform.inner.wire_sync_dart_opaque(_platform.api2wire_DelegateDartOpaque(notTemp)),
         parseSuccessData: _wire2api_SyncReturn_String,
-        constMeta: kLetsRockConstMeta,
+        constMeta: kSyncDartOpaqueConstMeta,
         argValues: [notTemp],
         hint: hint,
       ));
 
-  FlutterRustBridgeTaskConstMeta get kLetsRockConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "lets_rock",
+  FlutterRustBridgeTaskConstMeta get kSyncDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_dart_opaque",
+        argNames: ["notTemp"],
+      );
+
+  Future<String> asyncDartOpaque({required Object notTemp, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) =>
+            _platform.inner.wire_async_dart_opaque(port_, _platform.api2wire_DelegateDartOpaque(notTemp)),
+        parseSuccessData: _wire2api_String,
+        constMeta: kAsyncDartOpaqueConstMeta,
+        argValues: [notTemp],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kAsyncDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "async_dart_opaque",
+        argNames: ["notTemp"],
+      );
+
+  Future<Object> loopBack({required Object notTemp, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_loop_back(port_, _platform.api2wire_DelegateDartOpaque(notTemp)),
+        parseSuccessData: _wire2api_DelegateDartOpaque,
+        constMeta: kLoopBackConstMeta,
+        argValues: [notTemp],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "loop_back",
         argNames: ["notTemp"],
       );
 
@@ -1313,6 +1341,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   DateTime _wire2api_Chrono_Utc(dynamic raw) {
     return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
+  }
+
+  Object _wire2api_DartObject(dynamic raw) {
+    return _platform.inner.dart_opaque_get(raw);
+  }
+
+  Object _wire2api_DelegateDartOpaque(dynamic raw) {
+    return _wire2api_DartObject(raw);
   }
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {

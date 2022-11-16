@@ -200,7 +200,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "Uuids".to_owned(),
-            IrTypeDelegate::DartOpaque(_) => "DartOpaque".to_owned(),
+            IrTypeDelegate::DartOpaque(_) => "DelegateDartOpaque".to_owned(),
         }
     }
 

@@ -19,22 +19,16 @@ extern "C" {
     ///
     /// [`Dart_PersistentHandle`]s have the lifetime of the current isolate
     /// unless they are explicitly deallocated.
-    pub fn Dart_NewPersistentHandle_DL_Trampolined(
-        object: Dart_Handle,
-    ) -> Dart_PersistentHandle;
+    pub fn Dart_NewPersistentHandle_DL_Trampolined(object: Dart_Handle) -> Dart_PersistentHandle;
 
     /// Allocates a [`Dart_Handle`] in the current scope from the given
     /// [`Dart_PersistentHandle`].
     ///
     /// This doesn't affect the provided [`Dart_PersistentHandle`]'s lifetime.
-    pub fn Dart_HandleFromPersistent_DL_Trampolined(
-        object: Dart_PersistentHandle,
-    ) -> Dart_Handle;
+    pub fn Dart_HandleFromPersistent_DL_Trampolined(object: Dart_PersistentHandle) -> Dart_Handle;
 
     /// Deallocates the provided [`Dart_PersistentHandle`].
-    pub fn Dart_DeletePersistentHandle_DL_Trampolined(
-        object: Dart_PersistentHandle,
-    );
+    pub fn Dart_DeletePersistentHandle_DL_Trampolined(object: Dart_PersistentHandle);
 
     /// Posts a `message` on some port. It will contain a [`Dart_CObject`]
     /// object graph rooted in the `message`.
@@ -50,10 +44,7 @@ extern "C" {
     /// shuts down before processing the `message`. If `false` is returned, the
     /// `message` was not enqueued and ownership of external typed data in the
     /// `message` remains with the caller.
-    pub fn Dart_PostCObject_DL_Trampolined(
-        port_id: Dart_Port,
-        message: *mut Dart_CObject,
-    ) -> bool;
+    pub fn Dart_PostCObject_DL_Trampolined(port_id: Dart_Port, message: *mut Dart_CObject) -> bool;
 
     /// Allocates a finalizable handle for an object.
     ///
@@ -89,9 +80,7 @@ extern "C" {
     ///
     /// Returns a C string containing a Dart error message if the provided
     /// `object` represents a Dart error, or an empty C string ("") otherwise.
-    pub fn Dart_GetError_DL_Trampolined(
-        object: Dart_Handle,
-    ) -> ptr::NonNull<c_char>;
+    pub fn Dart_GetError_DL_Trampolined(object: Dart_Handle) -> ptr::NonNull<c_char>;
 
     /// Propagates the given Dart error to the Dart side.
     ///
@@ -111,8 +100,6 @@ extern "C" {
 ///
 /// [1]: https://api.dart.dev/dart-ffi/NativeApi/initializeApiDLData.html
 #[no_mangle]
-pub unsafe extern "C" fn init_dart_api_dl(
-    obj: ptr::NonNull<c_void>,
-) -> libc::intptr_t {
+pub unsafe extern "C" fn init_dart_api_dl(obj: ptr::NonNull<c_void>) -> libc::intptr_t {
     Dart_InitializeApiDL(obj.as_ptr())
 }

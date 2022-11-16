@@ -272,7 +272,7 @@ impl<'a> TypeParser<'a> {
                 return Some(Delegate(IrTypeDelegate::Uuid));
             }
             if ident_string.as_str() == "DartOpaque" {
-                return Some(Delegate(IrTypeDelegate::DartOpaque(IrTypeDartOpaque{})));
+                return Some(Delegate(IrTypeDelegate::DartOpaque(IrTypeDartOpaque {})));
             }
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)

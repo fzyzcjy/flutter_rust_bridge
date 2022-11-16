@@ -9,15 +9,24 @@ impl IrTypeTrait for IrTypeDartOpaque {
     }
 
     fn safe_ident(&self) -> String {
-        "".to_owned()
+        "DartObject".to_owned()
     }
 
     fn dart_api_type(&self) -> String {
         "Object".to_owned()
     }
 
-    fn dart_wire_type(&self, _target: crate::target::Target) -> String {
-        "Object".to_owned()
+    fn dart_wire_type(&self, target: crate::target::Target) -> String {
+        if target.is_wasm() {
+            "dynamic"
+        } else {
+            "ffi.Pointer<wire_DartOpaque>"
+        }
+        .to_owned()
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        !target.is_wasm()
     }
 
     fn rust_api_type(&self) -> String {
@@ -28,8 +37,7 @@ impl IrTypeTrait for IrTypeDartOpaque {
         if let Target::Wasm = target {
             "JsValue".into()
         } else {
-            "Dart_Handle".to_owned()
+            "wire_DartOpaque".to_owned()
         }
     }
-
 }

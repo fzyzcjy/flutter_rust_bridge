@@ -1224,18 +1224,47 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
     )
 }
-fn wire_lets_rock_impl(
+fn wire_sync_dart_opaque_impl(
     not_temp: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) -> support::WireSyncReturnStruct {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
-            debug_name: "lets_rock",
+            debug_name: "sync_dart_opaque",
             port: None,
             mode: FfiCallMode::Sync,
         },
         move || {
             let api_not_temp = not_temp.wire2api();
-            Ok(lets_rock(api_not_temp))
+            Ok(sync_dart_opaque(api_not_temp))
+        },
+    )
+}
+fn wire_async_dart_opaque_impl(
+    port_: MessagePort,
+    not_temp: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "async_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_not_temp = not_temp.wire2api();
+            move |task_callback| Ok(async_dart_opaque(api_not_temp))
+        },
+    )
+}
+fn wire_loop_back_impl(port_: MessagePort, not_temp: impl Wire2Api<DartOpaque> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "loop_back",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_not_temp = not_temp.wire2api();
+            move |task_callback| Ok(loop_back(api_not_temp))
         },
     )
 }

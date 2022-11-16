@@ -437,8 +437,20 @@ pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_lets_rock(not_temp: Dart_Handle) -> support::WireSyncReturnStruct {
-    wire_lets_rock_impl(not_temp)
+pub extern "C" fn wire_sync_dart_opaque(
+    not_temp: *mut wire_DartOpaque,
+) -> support::WireSyncReturnStruct {
+    wire_sync_dart_opaque_impl(not_temp)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_async_dart_opaque(port_: i64, not_temp: *mut wire_DartOpaque) {
+    wire_async_dart_opaque_impl(port_, not_temp)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_loop_back(port_: i64, not_temp: *mut wire_DartOpaque) {
+    wire_loop_back_impl(port_, not_temp)
 }
 
 #[no_mangle]
@@ -504,6 +516,12 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
 }
 
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_DartOpaque(handle: *mut _Dart_Handle, port: i64) -> *mut wire_DartOpaque {
+    let a = unsafe { Dart_NewPersistentHandle_DL_Trampolined(handle) };
+    support::new_leak_box_ptr(wire_DartOpaque { port, handle: a })
+}
 
 #[no_mangle]
 pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
@@ -812,11 +830,6 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 
 // Section: impl Wire2Api
 
-impl Wire2Api<DartOpaque> for Dart_Handle {
-    fn wire2api(self) -> DartOpaque {
-        DartOpaque::new(self)
-    }
-}
 impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
@@ -844,6 +857,11 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
         )
+    }
+}
+impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
+    fn wire2api(self) -> DartOpaque {
+        unsafe { DartOpaque::new((*self).handle, (*self).port) }
     }
 }
 
@@ -1449,6 +1467,13 @@ impl Wire2Api<UserId> for wire_UserId {
 }
 
 // Section: wire structs
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_DartOpaque {
+    port: i64,
+    handle: *mut _Dart_Handle,
+}
 
 #[repr(C)]
 #[derive(Clone)]

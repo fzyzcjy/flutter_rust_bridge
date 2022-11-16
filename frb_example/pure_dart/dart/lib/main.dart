@@ -692,8 +692,33 @@ void main(List<String> args) async {
     });
 
     test('OPAQUE', () async {
-      var f = () {print('42');};
-      await api.letsRock(notTemp: f);
+      var f = () => '4224242424424242244';
+
+      var res = await api.loopBack(notTemp: f) as String Function();
+      print(res());
+      var res2 = await api.loopBack(notTemp: res) as String Function();
+      print(res2());
+
+      print(await api.asyncDartOpaque(notTemp: f));
+      print(api.syncDartOpaque(notTemp: f));
+    });
+
+    test('LeaK', () async {
+      for (var i = 0; i < 100000; ++i) {
+        print(i);
+        var data = List.filled(4096, '4242424242');
+        api.syncDartOpaque(notTemp: data);
+      }
+      for (var i = 0; i < 100000; ++i) {
+        print(i);
+        var data = List.filled(4096, '4242424242');
+        await api.asyncDartOpaque(notTemp: data);
+      }
+      for (var i = 0; i < 100000; ++i) {
+        print(i);
+        var data = List.filled(4096, '4242424242');
+        await api.loopBack(notTemp: await api.loopBack(notTemp: data));
+      }
     });
   });
 }

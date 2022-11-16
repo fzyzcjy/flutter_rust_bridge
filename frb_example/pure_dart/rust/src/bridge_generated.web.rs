@@ -429,8 +429,18 @@ pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_lets_rock(not_temp: JsValue) -> support::WireSyncReturnStruct {
-    wire_lets_rock_impl(not_temp)
+pub fn wire_sync_dart_opaque(not_temp: JsValue) -> support::WireSyncReturnStruct {
+    wire_sync_dart_opaque_impl(not_temp)
+}
+
+#[wasm_bindgen]
+pub fn wire_async_dart_opaque(port_: MessagePort, not_temp: JsValue) {
+    wire_async_dart_opaque_impl(port_, not_temp)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back(port_: MessagePort, not_temp: JsValue) {
+    wire_loop_back_impl(port_, not_temp)
 }
 
 #[wasm_bindgen]

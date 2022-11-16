@@ -10,19 +10,21 @@ type_rust_generator_struct!(TypeDartOpaqueGenerator, IrTypeDartOpaque);
 impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> crate::target::Acc<Option<String>> {
         Acc {
-            io: Some(
-                "DartOpaque::new(self)"
-                .into(),
-            ),
+            io: Some("unsafe {DartOpaque::new((*self).handle, (*self).port)}".into()),
             ..Default::default()
         }
     }
 
     /// Handles JsValue to Self conversions.
-    fn wire2api_jsvalue(&self) -> Option<Cow<str>> {None}
+    fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
+        None
+    }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        None
+        Some(vec![
+            "port: i64".to_owned(),
+            "handle: *mut _Dart_Handle".to_owned(),
+        ])
     }
 
     fn static_checks(&self) -> Option<String> {
@@ -53,6 +55,25 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         "".to_owned()
     }
 
+    fn allocate_funcs(
+        &self,
+        collector: &mut super::ExternFuncCollector,
+        _block_index: crate::utils::BlockIndex,
+    ) -> Acc<Option<String>> {
+        let func_name = "new_DartOpaque";
+        Acc {
+            io: Some(collector.generate(
+                &func_name,
+                [("handle: *mut _Dart_Handle", ""), ("port: i64", "")],
+                Some("*mut wire_DartOpaque"),
+                "
+                let a = unsafe {Dart_NewPersistentHandle_DL_Trampolined(handle)};
+                support::new_leak_box_ptr(wire_DartOpaque { port, handle: a })",
+                crate::target::Target::Io,
+            )),
+            ..Default::default()
+        }
+    }
 
     fn imports(&self) -> Option<String> {
         None

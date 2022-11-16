@@ -80,7 +80,11 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::Uuids => Acc::distribute(Some(
                 "return api2wire_uint_8_list(api2wireConcatenateBytes(raw));".into(),
             )),
-            IrTypeDelegate::DartOpaque(_) =>  Acc::distribute(Some("return raw;".to_owned())),
+            IrTypeDelegate::DartOpaque(_) => Acc {
+                io: Some("return inner.new_DartOpaque(raw, port);".to_owned()),
+                wasm: Some("return raw;".to_owned()),
+                ..Default::default()
+            },
         }
     }
 
@@ -133,7 +137,9 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             final bytes = _wire2api_uint_8_list(raw);
             return wire2apiUuids(bytes);"
                 .to_owned(),
-            IrTypeDelegate::DartOpaque(_) => "// tododododo".to_owned(),
+            IrTypeDelegate::DartOpaque(opaque) => {
+                format!("return _wire2api_{}(raw);", opaque.safe_ident())
+            }
         }
     }
 

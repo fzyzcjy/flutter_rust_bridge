@@ -357,9 +357,17 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
 
-  String letsRock({required Object notTemp, dynamic hint});
+  String syncDartOpaque({required Object notTemp, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kLetsRockConstMeta;
+  FlutterRustBridgeTaskConstMeta get kSyncDartOpaqueConstMeta;
+
+  Future<String> asyncDartOpaque({required Object notTemp, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kAsyncDartOpaqueConstMeta;
+
+  Future<Object> loopBack({required Object notTemp, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackConstMeta;
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 

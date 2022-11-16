@@ -1,12 +1,15 @@
 use crate::dart_api::Dart_DeletePersistentHandle_DL_Trampolined;
-use crate::dart_api::Dart_NewPersistentHandle_DL_Trampolined;
+use crate::dart_api::Dart_HandleFromPersistent_DL_Trampolined;
+pub use crate::dart_api::Dart_NewPersistentHandle_DL_Trampolined;
+use crate::Channel;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
 pub use allo_isolate::*;
 pub use dart_sys::Dart_Handle;
-pub use dart_sys::_Dart_Handle;
 pub use dart_sys::Dart_PersistentHandle;
+pub use dart_sys::_Dart_Handle;
+use std::thread::ThreadId;
 
 #[cfg(feature = "chrono")]
 #[inline]
@@ -37,20 +40,67 @@ mod tests {
     }
 }
 
+pub struct DartOpaque {
+    handle: Dart_PersistentHandle,
+    port: Channel,
+    drop: bool,
+    id: ThreadId,
+}
 
+#[no_mangle]
+pub unsafe extern "C" fn dart_opaque_drop(ptr: usize) {
+    Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
+}
 
-pub struct DartOpaque(Dart_PersistentHandle);
+#[no_mangle]
+pub unsafe extern "C" fn dart_opaque_get(ptr: usize) -> *mut _Dart_Handle {
+    let res = Dart_HandleFromPersistent_DL_Trampolined(ptr as _);
+    Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
+    res
+}
+
 unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
-    pub fn new(handle: Dart_Handle) -> Self {
-        DartOpaque(unsafe {Dart_NewPersistentHandle_DL_Trampolined(handle)})
+    pub fn new(handle: Dart_Handle, port: i64) -> Self {
+        Self {
+            handle: handle,
+            port: Channel::new(port),
+            id: std::thread::current().id(),
+            drop: true,
+        }
+    }
+}
+
+impl IntoDart for DartOpaque {
+    fn into_dart(mut self) -> ffi::DartCObject {
+        self.drop = false;
+        self.handle.into_dart()
+    }
+}
+
+impl Clone for DartOpaque {
+    fn clone(&self) -> Self {
+        Self {
+            handle: unsafe { Dart_NewPersistentHandle_DL_Trampolined(self.handle) },
+            port: self.port.clone(),
+            drop: true,
+            id: self.id.clone(),
+        }
     }
 }
 
 impl Drop for DartOpaque {
     fn drop(&mut self) {
-        unsafe{Dart_DeletePersistentHandle_DL_Trampolined(self.0)}
+        if self.drop {
+            if std::thread::current().id() == self.id {
+                // println!("SYNC");
+                unsafe { Dart_DeletePersistentHandle_DL_Trampolined(self.handle) }
+            } else {
+                // println!("ASYNC");
+                self.port.post(self.handle.into_dart());
+            }
+        }
     }
-} 
+}

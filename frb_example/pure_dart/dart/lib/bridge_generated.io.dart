@@ -14,8 +14,16 @@ import 'dart:ffi' as ffi;
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> {
+  final _port = RawReceivePort();
+  int get port => _port.sendPort.nativePort;
   FlutterRustBridgeExampleSingleBlockTestPlatform(ffi.DynamicLibrary dylib)
-      : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib));
+      : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
+    _port.handler = (response) {
+      inner.dart_opaque_drop(response);
+    };
+    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+  }
 // Section: api2wire
 
   @protected
@@ -39,8 +47,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Object api2wire_DartOpaque(Object raw) {
-    return raw;
+  ffi.Pointer<wire_DartOpaque> api2wire_DartObject(Object raw) {
+    return inner.new_DartOpaque(raw, port);
+  }
+
+  @protected
+  ffi.Pointer<wire_DartOpaque> api2wire_DelegateDartOpaque(Object raw) {
+    return inner.new_DartOpaque(raw, port);
   }
 
   @protected
@@ -949,6 +962,28 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _store_dart_post_cobjectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
+
+  void dart_opaque_drop(
+    int ptr,
+  ) {
+    return _dart_opaque_drop(
+      ptr,
+    );
+  }
+
+  late final _dart_opaque_dropPtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('dart_opaque_drop');
+  late final _dart_opaque_drop = _dart_opaque_dropPtr.asFunction<void Function(int)>();
+
+  Object dart_opaque_get(
+    int ptr,
+  ) {
+    return _dart_opaque_get(
+      ptr,
+    );
+  }
+
+  late final _dart_opaque_getPtr = _lookup<ffi.NativeFunction<ffi.Handle Function(uintptr_t)>>('dart_opaque_get');
+  late final _dart_opaque_get = _dart_opaque_getPtr.asFunction<Object Function(int)>();
 
   void wire_simple_adder(
     int port_,
@@ -2140,17 +2175,47 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_test_id>)>>('wire_nested_id');
   late final _wire_nested_id = _wire_nested_idPtr.asFunction<void Function(int, ffi.Pointer<wire_list_test_id>)>();
 
-  WireSyncReturnStruct wire_lets_rock(
-    Object not_temp,
+  WireSyncReturnStruct wire_sync_dart_opaque(
+    ffi.Pointer<wire_DartOpaque> not_temp,
   ) {
-    return _wire_lets_rock(
+    return _wire_sync_dart_opaque(
       not_temp,
     );
   }
 
-  late final _wire_lets_rockPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Handle)>>('wire_lets_rock');
-  late final _wire_lets_rock = _wire_lets_rockPtr.asFunction<WireSyncReturnStruct Function(Object)>();
+  late final _wire_sync_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_DartOpaque>)>>('wire_sync_dart_opaque');
+  late final _wire_sync_dart_opaque =
+      _wire_sync_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_DartOpaque>)>();
+
+  void wire_async_dart_opaque(
+    int port_,
+    ffi.Pointer<wire_DartOpaque> not_temp,
+  ) {
+    return _wire_async_dart_opaque(
+      port_,
+      not_temp,
+    );
+  }
+
+  late final _wire_async_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_DartOpaque>)>>('wire_async_dart_opaque');
+  late final _wire_async_dart_opaque =
+      _wire_async_dart_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_DartOpaque>)>();
+
+  void wire_loop_back(
+    int port_,
+    ffi.Pointer<wire_DartOpaque> not_temp,
+  ) {
+    return _wire_loop_back(
+      port_,
+      not_temp,
+    );
+  }
+
+  late final _wire_loop_backPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_DartOpaque>)>>('wire_loop_back');
+  late final _wire_loop_back = _wire_loop_backPtr.asFunction<void Function(int, ffi.Pointer<wire_DartOpaque>)>();
 
   void wire_sum__method__SumWith(
     int port_,
@@ -2298,6 +2363,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith =
       _wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr
           .asFunction<void Function(int)>();
+
+  ffi.Pointer<wire_DartOpaque> new_DartOpaque(
+    Object handle,
+    int port,
+  ) {
+    return _new_DartOpaque(
+      handle,
+      port,
+    );
+  }
+
+  late final _new_DartOpaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_DartOpaque> Function(ffi.Handle, ffi.Int64)>>('new_DartOpaque');
+  late final _new_DartOpaque = _new_DartOpaquePtr.asFunction<ffi.Pointer<wire_DartOpaque> Function(Object, int)>();
 
   ffi.Pointer<wire_StringList> new_StringList_0(
     int len,
@@ -3267,6 +3346,8 @@ class wire_list_test_id extends ffi.Struct {
   @ffi.Int32()
   external int len;
 }
+
+class wire_DartOpaque extends ffi.Opaque {}
 
 class wire_SumWith extends ffi.Struct {
   @ffi.Uint32()
