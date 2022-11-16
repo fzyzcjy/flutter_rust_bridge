@@ -241,6 +241,7 @@
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata. Enhance module parser.</li>
 <li><a href="https://github.com/Zaitam">Zaitam</a>: Fix when method return struct.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
+<li><a href="https://github.com/banool">banool</a>: Fix pubspec parsing. Fix symbol-stripping doc.</li>
 <li><a href="https://github.com/efc-mw">efc-mw</a>: Improve Windows encoding handling.</li>
 <li><a href="https://github.com/valeth">valeth</a>: Rename callFfi's port.</li>
 <li><a href="https://github.com/sccheruku">sccheruku</a>: Prevent double-generating utility.</li>
@@ -248,7 +249,6 @@
 <li><a href="https://github.com/Michael-F-Bryan">Michael-F-Bryan</a>: Detect broken bindings.</li>
 <li><a href="https://github.com/bus710">bus710</a>: Add a case in troubleshooting.</li>
 <li><a href="https://github.com/Syndim">Syndim</a>: Add a bracket to box.</li>
-<li><a href="https://github.com/banool">banool</a>: Fix symbol-stripping doc.</li>
 <li><a href="https://github.com/TENX-S">TENX-S</a>: Improve doc. Reproduce a bug.</li>
 <li><a href="https://github.com/vincent-herlemont">vincent-herlemont</a>: Loosen version.</li>
 <li><a href="https://github.com/CicadaCinema">CicadaCinema</a>: Bump version.</li>
@@ -1838,7 +1838,7 @@ to adapt existing code to WASM.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="command-line-arguments"><a class="header" href="#command-line-arguments">Command line arguments</a></h1>
 <p>Simply add <code>--help</code> to see full documentation. The following is a snapshot when running the command with <code>--help</code>:</p>
 <pre><code class="language-shell">$ flutter_rust_bridge_codegen --help
-flutter_rust_bridge_codegen 1.49.1
+flutter_rust_bridge_codegen 1.49.2
 
 USAGE:
     flutter_rust_bridge_codegen [OPTIONS] --rust-input &lt;RUST_INPUT&gt;... --dart-output &lt;DART_OUTPUT&gt;...
@@ -1903,7 +1903,7 @@ OPTIONS:
 </code></pre>
 <h2 id="flutter_rust_bridge_serve"><a class="header" href="#flutter_rust_bridge_serve"><code>flutter_rust_bridge_serve</code></a></h2>
 <pre><code class="language-shell">$ dart run flutter_rust_bridge_serve --help
-flutter_rust_bridge_serve 1.49.1
+flutter_rust_bridge_serve 1.49.2
 Develop Rust WASM modules with cross-origin isolation.
 
 USAGE:
