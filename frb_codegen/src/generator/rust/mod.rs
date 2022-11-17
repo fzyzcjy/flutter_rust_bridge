@@ -604,7 +604,8 @@ pub fn generate_list_deallocate_func(
             (&"len: i32".to_owned(), "int"),
         ],
         None,
-        "drop(unsafe{support::vec_from_leak_ptr(ptr, len)});",
+        "unsafe { let wire = support::box_from_leak_ptr(ptr);
+        drop(support::vec_from_leak_ptr(wire.ptr, len));}",
         Io,
     )
 }

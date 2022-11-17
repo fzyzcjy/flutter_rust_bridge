@@ -929,7 +929,10 @@ pub extern "C" fn drop_enum_opaque(raw: *mut wire_EnumOpaque) {
 
 #[no_mangle]
 pub extern "C" fn drop_list_HideData_0(ptr: *mut wire_list_HideData, len: i32) {
-    drop(unsafe { support::vec_from_leak_ptr(ptr, len) });
+    unsafe {
+        let wire = support::box_from_leak_ptr(ptr);
+        drop(support::vec_from_leak_ptr(wire.ptr, len));
+    }
 }
 
 #[no_mangle]

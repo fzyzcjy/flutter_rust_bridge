@@ -893,6 +893,7 @@ void main(List<String> args) async {
       await api.opaqueVecRun(data: data);
       data[0].dispose();
 
+
       expect(
           await api.runOpaque(opaque: data[1]),
           "content - Some(PrivateData "
