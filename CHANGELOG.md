@@ -1,3 +1,7 @@
+## 1.49.2
+
+* Fix parsing of packages in pubspec.yaml that have no explicit version specification #846 (thanks @banool)
+
 ## 1.49.1
 
 * Bump constraint on ffigen #823 (thanks @CicadaCinema)
