@@ -737,13 +737,6 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     }
 }
 
-impl Wire2Api<[Opaque<HideData>; 2]> for JsValue {
-    fn wire2api(self) -> [Opaque<HideData>; 2] {
-        let vec: Vec<Opaque<HideData>> = self.wire2api();
-        support::from_vec_to_array(vec)
-    }
-}
-
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self

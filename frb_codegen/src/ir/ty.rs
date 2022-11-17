@@ -101,6 +101,7 @@ impl IrType {
             Self::GeneralList(_)
             | Self::StructRef(_)
             | Self::EnumRef(_)
+            | Self::Opaque(_)
             | Self::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => true,
             Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
             _ => false,
