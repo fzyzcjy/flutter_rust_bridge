@@ -105,7 +105,7 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
 }
 
 typedef PlatformPointer = int;
-typedef OpaqueTypeFinalizer = Finalizer<int>;
+typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
 
 class FrbOpaqueImpl {
   static PlatformPointer initPtr(int ptr) => ptr;
