@@ -9,7 +9,8 @@ typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
 
 /// An opaque pointer to a native C or Rust type.
-/// Recipients of this type should call [dispose] at some point during runtime.
+/// Recipients of this type should call [dispose] at least once during runtime.
+/// If passed to a native function after being [dispose]d, an exception will be thrown.
 abstract class FrbOpaque extends FrbOpaqueImpl {
   /// Pointer to this opaque Rust type.
   PlatformPointer _ptr;
