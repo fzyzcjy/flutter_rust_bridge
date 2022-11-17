@@ -467,8 +467,18 @@ pub extern "C" fn wire_opaque_array(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_opaque_array_run(port_: i64, data: *mut wire_list_HideData) {
+    wire_opaque_array_run_impl(port_, data)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_opaque_vec(port_: i64) {
     wire_opaque_vec_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_opaque_vec_run(port_: i64, data: *mut wire_list_HideData) {
+    wire_opaque_vec_run_impl(port_, data)
 }
 
 #[no_mangle]
@@ -821,6 +831,15 @@ pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
 }
 
 #[no_mangle]
+pub extern "C" fn new_list_HideData_0(len: i32) -> *mut wire_list_HideData {
+    let wrap = wire_list_HideData {
+        ptr: support::new_leak_vec_ptr(<wire_HideData>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn new_list_application_env_var_0(len: i32) -> *mut wire_list_application_env_var {
     let wrap = wire_list_application_env_var {
         ptr: support::new_leak_vec_ptr(<wire_ApplicationEnvVar>::new_with_null_ptr(), len),
@@ -885,40 +904,50 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
-// Section: opaque stuff functions
+// Section: deallocate functions
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_enum_opaque_0(raw: *mut wire_EnumOpaque) {
+    unsafe {
+        drop(Box::from_raw(raw));
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_autoadd_opaque_nested_0(raw: *mut wire_OpaqueNested) {
+    unsafe {
+        drop(Box::from_raw(raw));
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_enum_opaque(raw: *mut wire_EnumOpaque) {
+    unsafe {
+        drop(Box::from_raw(raw));
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_list_HideData_0(ptr: *mut wire_list_HideData, len: i32) {
+    unsafe {
+        let wire = support::box_from_leak_ptr(ptr);
+        drop(support::vec_from_leak_ptr(wire.ptr, len));
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_box_opaque_nested(raw: *mut wire_OpaqueNested) {
+    unsafe {
+        drop(Box::from_raw(raw));
+    }
+}
+
+// Section: opaque related functions
 
 #[no_mangle]
 pub extern "C" fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
     unsafe {
         Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_HideData(ptr: *const c_void) {
-    unsafe {
-        Arc::<HideData>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_I32(ptr: *const c_void) {
-    unsafe {
-        Arc::<i32>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_MutexHideData(ptr: *const c_void) {
-    unsafe {
-        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_RwLockHideData(ptr: *const c_void) {
-    unsafe {
-        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -931,10 +960,24 @@ pub extern "C" fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void
 }
 
 #[no_mangle]
+pub extern "C" fn drop_opaque_HideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<HideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<HideData>::increment_strong_count(ptr as _);
         ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_I32(ptr: *const c_void) {
+    unsafe {
+        Arc::<i32>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -947,10 +990,24 @@ pub extern "C" fn share_opaque_I32(ptr: *const c_void) -> *const c_void {
 }
 
 #[no_mangle]
+pub extern "C" fn drop_opaque_MutexHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
         ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_RwLockHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -1001,6 +1058,12 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
 impl Wire2Api<Opaque<HideData>> for wire_HideData {
     fn wire2api(self) -> Opaque<HideData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
+impl Wire2Api<[Opaque<HideData>; 2]> for *mut wire_list_HideData {
+    fn wire2api(self) -> [Opaque<HideData>; 2] {
+        let vec: Vec<Opaque<HideData>> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<Opaque<i32>> for wire_I32 {
@@ -1477,6 +1540,15 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
         }
     }
 }
+impl Wire2Api<Vec<Opaque<HideData>>> for *mut wire_list_HideData {
+    fn wire2api(self) -> Vec<Opaque<HideData>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
     fn wire2api(self) -> Vec<ApplicationEnvVar> {
         let vec = unsafe {
@@ -1829,6 +1901,13 @@ pub struct wire_int_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_HideData {
+    ptr: *mut wire_HideData,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_application_env_var {
     ptr: *mut wire_ApplicationEnvVar,
     len: i32,
@@ -2152,6 +2231,7 @@ impl NewWithNullPtr for wire_HideData {
         }
     }
 }
+
 impl NewWithNullPtr for wire_I32 {
     fn new_with_null_ptr() -> Self {
         Self {

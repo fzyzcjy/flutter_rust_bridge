@@ -22,7 +22,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_BoxDartDebug(BoxDartDebug raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
@@ -47,22 +47,27 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_HideData(HideData raw) {
-    return raw.tryShare();
+    return raw.share();
+  }
+
+  @protected
+  List<dynamic> api2wire_HideData_array_2(HideDataArray2 raw) {
+    return api2wire_list_HideData(raw);
   }
 
   @protected
   dynamic api2wire_I32(I32 raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
   dynamic api2wire_MutexHideData(MutexHideData raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
   dynamic api2wire_RwLockHideData(RwLockHideData raw) {
-    return raw.tryShare();
+    return raw.share();
   }
 
   @protected
@@ -478,6 +483,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_list_HideData(List<HideData> raw) {
+    return raw.map(api2wire_HideData).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
     return raw.map(api2wire_application_env_var).toList();
   }
@@ -738,25 +748,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: finalyzer
 
-  dynamic get_finalizer_opaque_BoxDartDebug() {
-    return inner.drop_opaque_BoxDartDebug;
-  }
-
-  dynamic get_finalizer_opaque_HideData() {
-    return inner.drop_opaque_HideData;
-  }
-
-  dynamic get_finalizer_opaque_I32() {
-    return inner.drop_opaque_I32;
-  }
-
-  dynamic get_finalizer_opaque_MutexHideData() {
-    return inner.drop_opaque_MutexHideData;
-  }
-
-  dynamic get_finalizer_opaque_RwLockHideData() {
-    return inner.drop_opaque_RwLockHideData;
-  }
+  late final Finalizer<int> _BoxDartDebugFinalizer = Finalizer(inner.drop_opaque_BoxDartDebug);
+  Finalizer<int> get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final Finalizer<int> _HideDataFinalizer = Finalizer(inner.drop_opaque_HideData);
+  Finalizer<int> get HideDataFinalizer => _HideDataFinalizer;
+  late final Finalizer<int> _I32Finalizer = Finalizer(inner.drop_opaque_I32);
+  Finalizer<int> get I32Finalizer => _I32Finalizer;
+  late final Finalizer<int> _MutexHideDataFinalizer = Finalizer(inner.drop_opaque_MutexHideData);
+  Finalizer<int> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final Finalizer<int> _RwLockHideDataFinalizer = Finalizer(inner.drop_opaque_RwLockHideData);
+  Finalizer<int> get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 }
 
 // Section: WASM wire module
@@ -953,7 +954,11 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_opaque_array(NativePortType port_);
 
+  external void wire_opaque_array_run(NativePortType port_, List<dynamic> data);
+
   external void wire_opaque_vec(NativePortType port_);
+
+  external void wire_opaque_vec_run(NativePortType port_, List<dynamic> data);
 
   external void wire_create_nested_opaque(NativePortType port_);
 
@@ -999,23 +1004,31 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external int /* *mut i32 */ new_box_weekdays_0(int value);
 
+  external dynamic /*  */ drop_box_autoadd_enum_opaque_0(raw);
+
+  external dynamic /*  */ drop_box_autoadd_opaque_nested_0(raw);
+
+  external dynamic /*  */ drop_enum_opaque(raw);
+
+  external dynamic /*  */ drop_box_opaque_nested(raw);
+
   external dynamic /*  */ drop_opaque_BoxDartDebug(ptr);
-
-  external dynamic /*  */ drop_opaque_HideData(ptr);
-
-  external dynamic /*  */ drop_opaque_I32(ptr);
-
-  external dynamic /*  */ drop_opaque_MutexHideData(ptr);
-
-  external dynamic /*  */ drop_opaque_RwLockHideData(ptr);
 
   external int /* *const c_void */ share_opaque_BoxDartDebug(ptr);
 
+  external dynamic /*  */ drop_opaque_HideData(ptr);
+
   external int /* *const c_void */ share_opaque_HideData(ptr);
+
+  external dynamic /*  */ drop_opaque_I32(ptr);
 
   external int /* *const c_void */ share_opaque_I32(ptr);
 
+  external dynamic /*  */ drop_opaque_MutexHideData(ptr);
+
   external int /* *const c_void */ share_opaque_MutexHideData(ptr);
+
+  external dynamic /*  */ drop_opaque_RwLockHideData(ptr);
 
   external int /* *const c_void */ share_opaque_RwLockHideData(ptr);
 }
@@ -1238,7 +1251,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
 
+  void wire_opaque_array_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_array_run(port_, data);
+
   void wire_opaque_vec(NativePortType port_) => wasmModule.wire_opaque_vec(port_);
+
+  void wire_opaque_vec_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_vec_run(port_, data);
 
   void wire_create_nested_opaque(NativePortType port_) => wasmModule.wire_create_nested_opaque(port_);
 
@@ -1292,23 +1309,31 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
 
+  dynamic /*  */ drop_box_autoadd_enum_opaque_0(raw) => wasmModule.drop_box_autoadd_enum_opaque_0(raw);
+
+  dynamic /*  */ drop_box_autoadd_opaque_nested_0(raw) => wasmModule.drop_box_autoadd_opaque_nested_0(raw);
+
+  dynamic /*  */ drop_enum_opaque(raw) => wasmModule.drop_enum_opaque(raw);
+
+  dynamic /*  */ drop_box_opaque_nested(raw) => wasmModule.drop_box_opaque_nested(raw);
+
   dynamic /*  */ drop_opaque_BoxDartDebug(ptr) => wasmModule.drop_opaque_BoxDartDebug(ptr);
-
-  dynamic /*  */ drop_opaque_HideData(ptr) => wasmModule.drop_opaque_HideData(ptr);
-
-  dynamic /*  */ drop_opaque_I32(ptr) => wasmModule.drop_opaque_I32(ptr);
-
-  dynamic /*  */ drop_opaque_MutexHideData(ptr) => wasmModule.drop_opaque_MutexHideData(ptr);
-
-  dynamic /*  */ drop_opaque_RwLockHideData(ptr) => wasmModule.drop_opaque_RwLockHideData(ptr);
 
   int /* *const c_void */ share_opaque_BoxDartDebug(ptr) => wasmModule.share_opaque_BoxDartDebug(ptr);
 
+  dynamic /*  */ drop_opaque_HideData(ptr) => wasmModule.drop_opaque_HideData(ptr);
+
   int /* *const c_void */ share_opaque_HideData(ptr) => wasmModule.share_opaque_HideData(ptr);
+
+  dynamic /*  */ drop_opaque_I32(ptr) => wasmModule.drop_opaque_I32(ptr);
 
   int /* *const c_void */ share_opaque_I32(ptr) => wasmModule.share_opaque_I32(ptr);
 
+  dynamic /*  */ drop_opaque_MutexHideData(ptr) => wasmModule.drop_opaque_MutexHideData(ptr);
+
   int /* *const c_void */ share_opaque_MutexHideData(ptr) => wasmModule.share_opaque_MutexHideData(ptr);
+
+  dynamic /*  */ drop_opaque_RwLockHideData(ptr) => wasmModule.drop_opaque_RwLockHideData(ptr);
 
   int /* *const c_void */ share_opaque_RwLockHideData(ptr) => wasmModule.share_opaque_RwLockHideData(ptr);
 }

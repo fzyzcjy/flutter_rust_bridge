@@ -10,8 +10,6 @@ import 'package:meta/meta.dart';
 import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
-late final ApiClass2Platform inner_platform;
-
 abstract class ApiClass2 {
   /// Documentation on a simple adder function.
   Future<int> simpleAdder2({required int a, required int b, dynamic hint});
@@ -25,9 +23,7 @@ class ApiClass2Impl implements ApiClass2 {
 
   /// Only valid on web/WASM platforms.
   factory ApiClass2Impl.wasm(FutureOr<WasmModule> module) => ApiClass2Impl(module as ExternalLibrary);
-  ApiClass2Impl.raw(this._platform) {
-    inner_platform = _platform;
-  }
+  ApiClass2Impl.raw(this._platform);
   Future<int> simpleAdder2({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i32(a);
     var arg1 = api2wire_i32(b);
@@ -67,8 +63,6 @@ class ApiClass2Platform extends FlutterRustBridgeBase<ApiClass2Wire> {
 // Section: finalyzer
 
 // Section: api_fill_to_wire
-
-// Section: api_opaque_validate
 
 }
 

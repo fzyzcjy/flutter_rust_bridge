@@ -117,7 +117,9 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
-// Section: opaque stuff functions
+// Section: deallocate functions
+
+// Section: opaque related functions
 
 // Section: impl Wire2Api
 

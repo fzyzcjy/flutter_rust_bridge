@@ -17,15 +17,37 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 self.ir.inner.safe_ident(),
             )
         });
+
+        let contains_opacity = self
+            .ir
+            .inner
+            .distinct_types(self.context.ir_file)
+            .iter()
+            .any(IrType::is_opaque);
+
         Acc {
             io: Some(as_primitive.clone().unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
                     format!("return api2wire_{}(raw);", self.ir.inner.safe_ident(),)
+                } else if contains_opacity {
+                    format!(
+                        "final ptr = inner.new_{ident}_{context}();
+                            try {{
+                                _api_fill_to_wire_{inner}(raw, ptr.ref);
+                            }} catch(e) {{
+                                inner.drop_{ident}_{context}(ptr);
+                                rethrow;
+                            }}
+                            return ptr;",
+                        ident = self.ir.safe_ident(),
+                        context = self.context.config.block_index,
+                        inner = self.ir.inner.safe_ident(),
+                    )
                 } else {
                     format!(
                         "final ptr = inner.new_{ident}_{context}();
-                        _api_fill_to_wire_{inner}(raw, ptr.ref);
-                        return ptr;",
+                            _api_fill_to_wire_{inner}(raw, ptr.ref);
+                            return ptr;",
                         ident = self.ir.safe_ident(),
                         context = self.context.config.block_index,
                         inner = self.ir.inner.safe_ident(),
@@ -36,17 +58,6 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 format!("return api2wire_{}(raw);", self.ir.inner.safe_ident())
             })),
             ..Default::default()
-        }
-    }
-
-    fn api_validate(&self) -> Option<String> {
-        if self.ir.inner.contains_opaque(self.context.ir_file) {
-            Some(format!(
-                "_api_opaque_validate_{}(raw);",
-                self.ir.inner.safe_ident(),
-            ))
-        } else {
-            None
         }
     }
 

@@ -25,17 +25,6 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         })
     }
 
-    fn api_validate(&self) -> Option<String> {
-        if self.ir.inner.contains_opaque(self.context.ir_file) {
-            Some(format!(
-                "if (raw != null) {{_api_opaque_validate_{}(raw);}}",
-                self.ir.inner.safe_ident()
-            ))
-        } else {
-            None
-        }
-    }
-
     fn api_fill_to_wire_body(&self) -> Option<String> {
         if !self.ir.needs_initialization() || self.ir.is_list() || self.ir.is_boxed_primitive() {
             return None;

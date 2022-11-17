@@ -5,6 +5,7 @@ use crate::generator::rust::ExternFuncCollector;
 use crate::generator::rust::NO_PARAMS;
 use crate::ir::*;
 use crate::target::Acc;
+use crate::target::Target;
 use crate::target::Target::*;
 use crate::type_rust_generator_struct;
 
@@ -274,6 +275,24 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             self_ref,
             variants.join("\n")
         )
+    }
+
+    fn deallocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _block_index: crate::utils::BlockIndex,
+    ) -> Acc<Option<String>> {
+        let func_name = format!("drop_{}", self.ir.safe_ident());
+        Acc::new(|target| match target {
+            Target::Io | Target::Wasm => Some(collector.generate(
+                &func_name,
+                [(&format!("raw: *mut {}", self.ir.rust_wire_type(target)), "")],
+                None,
+                "unsafe{drop(Box::from_raw(raw));}",
+                target,
+            )),
+            _ => None,
+        })
     }
 
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {

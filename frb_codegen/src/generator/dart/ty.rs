@@ -1,15 +1,17 @@
+use std::{collections::HashMap, sync::Mutex};
+
 use crate::{generator::dart::*, Opts};
 use enum_dispatch::enum_dispatch;
+
+lazy_static! {
+    pub static ref REQUIRES_VALIDATION: Mutex<HashMap<String, bool>> = Mutex::new(HashMap::new());
+}
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
     fn api2wire_body(&self) -> Acc<Option<String>>;
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        None
-    }
-
-    fn api_validate(&self) -> Option<String> {
         None
     }
 

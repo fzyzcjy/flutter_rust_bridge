@@ -1,6 +1,7 @@
 #![allow(unused_variables)]
 
 use std::fmt::Debug;
+use std::ops::Deref;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
 pub use std::sync::{Mutex, RwLock};
@@ -10,7 +11,7 @@ use std::time::Duration;
 use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
-use lazy_static::{__Deref, lazy_static};
+use lazy_static::lazy_static;
 
 pub use crate::data::HideData;
 use crate::data::{MyEnum, MyStruct};
@@ -1017,9 +1018,13 @@ pub fn opaque_array() -> [Opaque<HideData>; 2] {
     [Opaque::new(HideData::new()), Opaque::new(HideData::new())]
 }
 
+pub fn opaque_array_run(data: [Opaque<HideData>; 2]) {}
+
 pub fn opaque_vec() -> Vec<Opaque<HideData>> {
     vec![Opaque::new(HideData::new()), Opaque::new(HideData::new())]
 }
+
+pub fn opaque_vec_run(data: Vec<Opaque<HideData>>) {}
 
 pub fn create_nested_opaque() -> OpaqueNested {
     OpaqueNested {

@@ -196,6 +196,24 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         )
     }
 
+    fn deallocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _block_index: crate::utils::BlockIndex,
+    ) -> Acc<Option<String>> {
+        let func_name = format!("drop_box_{}", self.ir.safe_ident());
+        Acc::new(|target| match target {
+            Target::Io | Target::Wasm => Some(collector.generate(
+                &func_name,
+                [(&format!("raw: *mut {}", self.ir.rust_wire_type(target)), "")],
+                None,
+                "unsafe{drop(Box::from_raw(raw));}",
+                target,
+            )),
+            _ => None,
+        })
+    }
+
     fn imports(&self) -> Option<String> {
         let api_struct = self.ir.get(self.context.ir_file);
         if api_struct.path.is_some() {

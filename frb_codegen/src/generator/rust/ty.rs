@@ -49,7 +49,7 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
-    fn opaque_drop_funcs(
+    fn deallocate_funcs(
         &self,
         _collector: &mut ExternFuncCollector,
         _block_index: BlockIndex,
@@ -57,7 +57,7 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
-    fn opaque_share_funcs(
+    fn opaque_related_funcs(
         &self,
         _collector: &mut ExternFuncCollector,
         _block_index: BlockIndex,
