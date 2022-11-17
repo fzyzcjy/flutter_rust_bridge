@@ -105,13 +105,17 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
 }
 
 typedef PlatformPointer = int;
-typedef OpaqueTypeFinalizer = Finalizer;
+typedef OpaqueTypeFinalizer = Finalizer<int>;
 
 class FrbOpaqueImpl {
   static PlatformPointer initPtr(int ptr) => ptr;
   static PlatformPointer nullPtr() => 0;
   static bool isStalePtr(PlatformPointer ptr) => ptr == 0;
-  static void finalizerAttach(FrbOpaqueImpl opaque, PlatformPointer ptr,
-          int size, OpaqueTypeFinalizer finalizer) =>
+  static void finalizerAttach(
+          FrbOpaqueImpl opaque,
+          PlatformPointer ptr,
+          // ignore: no_leading_underscores_for_local_identifiers
+          int _size,
+          OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque);
 }

@@ -1440,6 +1440,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<void> opaqueArrayRun({required HideDataArray2 data, dynamic hint}) {
+    var arg0 = _platform.api2wire_HideData_array_2(data);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_opaque_array_run(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kOpaqueArrayRunConstMeta,
+      argValues: [data],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kOpaqueArrayRunConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "opaque_array_run",
+        argNames: ["data"],
+      );
+
   Future<List<HideData>> opaqueVec({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_opaque_vec(port_),
@@ -1453,6 +1469,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   FlutterRustBridgeTaskConstMeta get kOpaqueVecConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "opaque_vec",
         argNames: [],
+      );
+
+  Future<void> opaqueVecRun({required List<HideData> data, dynamic hint}) {
+    var arg0 = _platform.api2wire_list_HideData(data);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_opaque_vec_run(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kOpaqueVecRunConstMeta,
+      argValues: [data],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kOpaqueVecRunConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "opaque_vec_run",
+        argNames: ["data"],
       );
 
   Future<OpaqueNested> createNestedOpaque({dynamic hint}) {

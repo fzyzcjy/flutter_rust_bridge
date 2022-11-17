@@ -17,67 +17,49 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 self.ir.inner.safe_ident(),
             )
         });
+
+        let contains_opacity = self
+            .ir
+            .inner
+            .distinct_types(self.context.ir_file)
+            .iter()
+            .any(IrType::is_opaque);
+
         Acc {
             io: Some(as_primitive.clone().unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
                     format!("return api2wire_{}(raw);", self.ir.inner.safe_ident(),)
                 } else {
-                    format!(
-                        "final ptr = inner.new_{ident}_{context}();
-                        _api_fill_to_wire_{inner}(raw, ptr.ref);
-                        return ptr;",
-                        ident = self.ir.safe_ident(),
-                        context = self.context.config.block_index,
-                        inner = self.ir.inner.safe_ident(),
-                    )
+                    if contains_opacity {
+                        format!(
+                            "final ptr = inner.new_{ident}_{context}();
+                            try {{
+                                _api_fill_to_wire_{inner}(raw, ptr.ref);
+                            }} catch(e) {{
+                                inner.drop_{ident}_{context}(ptr);
+                                rethrow;
+                            }}
+                            return ptr;",
+                            ident = self.ir.safe_ident(),
+                            context = self.context.config.block_index,
+                            inner = self.ir.inner.safe_ident(),
+                        )
+                    } else {
+                        format!(
+                            "final ptr = inner.new_{ident}_{context}();
+                            _api_fill_to_wire_{inner}(raw, ptr.ref);
+                            return ptr;",
+                            ident = self.ir.safe_ident(),
+                            context = self.context.config.block_index,
+                            inner = self.ir.inner.safe_ident(),
+                        )
+                    }
                 }
             })),
             wasm: Some(as_primitive.unwrap_or_else(|| {
                 format!("return api2wire_{}(raw);", self.ir.inner.safe_ident())
             })),
             ..Default::default()
-        }
-    }
-
-    fn api_validate(&self) -> Option<String> {
-        let ir_file = self.context.ir_file;
-        let config = self.context.config;
-
-        self.ir.inner.visit_types(
-            &mut |ty| {
-                let ident = ty.safe_ident();
-                let mut lock = REQUIRES_VALIDATION.lock().unwrap();
-                let cache = lock.get_mut(&ident);
-                if cache.is_some() {
-                    true
-                } else {
-                    lock.insert(ident.clone(), false);
-                    drop(lock);
-
-                    let res = TypeDartGenerator::new(ty.clone(), ir_file, config)
-                        .api_validate()
-                        .is_some();
-                    REQUIRES_VALIDATION.lock().unwrap().insert(ident, res);
-
-                    res
-                }
-            },
-            ir_file,
-        );
-
-        if REQUIRES_VALIDATION
-            .lock()
-            .unwrap()
-            .get(&self.ir.inner.safe_ident())
-            .copied()
-            .unwrap_or_default()
-        {
-            Some(format!(
-                "_api_validate_{}(raw);",
-                self.ir.inner.safe_ident(),
-            ))
-        } else {
-            None
         }
     }
 

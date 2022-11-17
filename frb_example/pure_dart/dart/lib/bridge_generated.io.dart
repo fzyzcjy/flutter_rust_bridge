@@ -53,6 +53,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_list_HideData> api2wire_HideData_array_2(HideDataArray2 raw) {
+    return api2wire_list_HideData(raw);
+  }
+
+  @protected
   wire_I32 api2wire_I32(I32 raw) {
     final ptr = inner.new_I32();
     _api_fill_to_wire_I32(raw, ptr);
@@ -149,9 +154,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_EnumOpaque> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
-    _api_validate_enum_opaque(raw);
     final ptr = inner.new_box_autoadd_enum_opaque_0();
-    _api_fill_to_wire_enum_opaque(raw, ptr.ref);
+    try {
+      _api_fill_to_wire_enum_opaque(raw, ptr.ref);
+    } catch (e) {
+      inner.drop_box_autoadd_enum_opaque_0(ptr);
+      rethrow;
+    }
     return ptr;
   }
 
@@ -263,9 +272,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_OpaqueNested> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
-    _api_validate_opaque_nested(raw);
     final ptr = inner.new_box_autoadd_opaque_nested_0();
-    _api_fill_to_wire_opaque_nested(raw, ptr.ref);
+    try {
+      _api_fill_to_wire_opaque_nested(raw, ptr.ref);
+    } catch (e) {
+      inner.drop_box_autoadd_opaque_nested_0(ptr);
+      rethrow;
+    }
     return ptr;
   }
 
@@ -423,6 +436,20 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   ffi.Pointer<wire_int_8_list> api2wire_int_8_list(Int8List raw) {
     final ans = inner.new_int_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_HideData> api2wire_list_HideData(List<HideData> raw) {
+    final ans = inner.new_list_HideData_0(raw.length);
+    try {
+      for (var i = 0; i < raw.length; ++i) {
+        _api_fill_to_wire_HideData(raw[i], ans.ref.ptr[i]);
+      }
+    } catch (e) {
+      inner.drop_list_HideData_0(ans, raw.length);
+      rethrow;
+    }
     return ans;
   }
 
@@ -1058,69 +1085,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_user_id(UserId apiObj, wire_UserId wireObj) {
     wireObj.value = api2wire_u32(apiObj.value);
-  }
-
-// Section: api_opaque_validate
-
-  void _api_validate_BoxDartDebug(BoxDartDebug raw) {
-    if (raw.isStale()) {
-      throw StateError('Use after dispose.');
-    }
-  }
-
-  void _api_validate_HideData(HideData raw) {
-    if (raw.isStale()) {
-      throw StateError('Use after dispose.');
-    }
-  }
-
-  void _api_validate_I32(I32 raw) {
-    if (raw.isStale()) {
-      throw StateError('Use after dispose.');
-    }
-  }
-
-  void _api_validate_MutexHideData(MutexHideData raw) {
-    if (raw.isStale()) {
-      throw StateError('Use after dispose.');
-    }
-  }
-
-  void _api_validate_RwLockHideData(RwLockHideData raw) {
-    if (raw.isStale()) {
-      throw StateError('Use after dispose.');
-    }
-  }
-
-  void _api_validate_box_autoadd_enum_opaque(EnumOpaque raw) {
-    _api_validate_enum_opaque(raw);
-  }
-
-  void _api_validate_box_autoadd_opaque_nested(OpaqueNested raw) {
-    _api_validate_opaque_nested(raw);
-  }
-
-  void _api_validate_enum_opaque(EnumOpaque raw) {
-    if (raw is EnumOpaque_Struct) {
-      _api_validate_HideData(raw.field0);
-    }
-    if (raw is EnumOpaque_Primitive) {
-      _api_validate_I32(raw.field0);
-    }
-    if (raw is EnumOpaque_TraitObj) {
-      _api_validate_BoxDartDebug(raw.field0);
-    }
-    if (raw is EnumOpaque_Mutex) {
-      _api_validate_MutexHideData(raw.field0);
-    }
-    if (raw is EnumOpaque_RwLock) {
-      _api_validate_RwLockHideData(raw.field0);
-    }
-  }
-
-  void _api_validate_opaque_nested(OpaqueNested raw) {
-    _api_validate_HideData(raw.first);
-    _api_validate_HideData(raw.second);
   }
 }
 
@@ -2423,6 +2387,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_opaque_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_opaque_array');
   late final _wire_opaque_array = _wire_opaque_arrayPtr.asFunction<void Function(int)>();
 
+  void wire_opaque_array_run(
+    int port_,
+    ffi.Pointer<wire_list_HideData> data,
+  ) {
+    return _wire_opaque_array_run(
+      port_,
+      data,
+    );
+  }
+
+  late final _wire_opaque_array_runPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_HideData>)>>(
+          'wire_opaque_array_run');
+  late final _wire_opaque_array_run =
+      _wire_opaque_array_runPtr.asFunction<void Function(int, ffi.Pointer<wire_list_HideData>)>();
+
   void wire_opaque_vec(
     int port_,
   ) {
@@ -2433,6 +2413,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _wire_opaque_vecPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_opaque_vec');
   late final _wire_opaque_vec = _wire_opaque_vecPtr.asFunction<void Function(int)>();
+
+  void wire_opaque_vec_run(
+    int port_,
+    ffi.Pointer<wire_list_HideData> data,
+  ) {
+    return _wire_opaque_vec_run(
+      port_,
+      data,
+    );
+  }
+
+  late final _wire_opaque_vec_runPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_HideData>)>>('wire_opaque_vec_run');
+  late final _wire_opaque_vec_run =
+      _wire_opaque_vec_runPtr.asFunction<void Function(int, ffi.Pointer<wire_list_HideData>)>();
 
   void wire_create_nested_opaque(
     int port_,
@@ -3098,6 +3093,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list_0');
   late final _new_int_8_list_0 = _new_int_8_list_0Ptr.asFunction<ffi.Pointer<wire_int_8_list> Function(int)>();
 
+  ffi.Pointer<wire_list_HideData> new_list_HideData_0(
+    int len,
+  ) {
+    return _new_list_HideData_0(
+      len,
+    );
+  }
+
+  late final _new_list_HideData_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_HideData> Function(ffi.Int32)>>('new_list_HideData_0');
+  late final _new_list_HideData_0 = _new_list_HideData_0Ptr.asFunction<ffi.Pointer<wire_list_HideData> Function(int)>();
+
   ffi.Pointer<wire_list_application_env_var> new_list_application_env_var_0(
     int len,
   ) {
@@ -3187,6 +3194,74 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_uint_8_list_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
   late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+
+  void drop_box_autoadd_enum_opaque_0(
+    ffi.Pointer<wire_EnumOpaque> raw,
+  ) {
+    return _drop_box_autoadd_enum_opaque_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_enum_opaque_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_EnumOpaque>)>>('drop_box_autoadd_enum_opaque_0');
+  late final _drop_box_autoadd_enum_opaque_0 =
+      _drop_box_autoadd_enum_opaque_0Ptr.asFunction<void Function(ffi.Pointer<wire_EnumOpaque>)>();
+
+  void drop_box_autoadd_opaque_nested_0(
+    ffi.Pointer<wire_OpaqueNested> raw,
+  ) {
+    return _drop_box_autoadd_opaque_nested_0(
+      raw,
+    );
+  }
+
+  late final _drop_box_autoadd_opaque_nested_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_OpaqueNested>)>>(
+          'drop_box_autoadd_opaque_nested_0');
+  late final _drop_box_autoadd_opaque_nested_0 =
+      _drop_box_autoadd_opaque_nested_0Ptr.asFunction<void Function(ffi.Pointer<wire_OpaqueNested>)>();
+
+  void drop_enum_opaque(
+    ffi.Pointer<wire_EnumOpaque> raw,
+  ) {
+    return _drop_enum_opaque(
+      raw,
+    );
+  }
+
+  late final _drop_enum_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_EnumOpaque>)>>('drop_enum_opaque');
+  late final _drop_enum_opaque = _drop_enum_opaquePtr.asFunction<void Function(ffi.Pointer<wire_EnumOpaque>)>();
+
+  void drop_list_HideData_0(
+    ffi.Pointer<wire_list_HideData> ptr,
+    int len,
+  ) {
+    return _drop_list_HideData_0(
+      ptr,
+      len,
+    );
+  }
+
+  late final _drop_list_HideData_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_list_HideData>, ffi.Int32)>>(
+          'drop_list_HideData_0');
+  late final _drop_list_HideData_0 =
+      _drop_list_HideData_0Ptr.asFunction<void Function(ffi.Pointer<wire_list_HideData>, int)>();
+
+  void drop_box_opaque_nested(
+    ffi.Pointer<wire_OpaqueNested> raw,
+  ) {
+    return _drop_box_opaque_nested(
+      raw,
+    );
+  }
+
+  late final _drop_box_opaque_nestedPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_OpaqueNested>)>>('drop_box_opaque_nested');
+  late final _drop_box_opaque_nested =
+      _drop_box_opaque_nestedPtr.asFunction<void Function(ffi.Pointer<wire_OpaqueNested>)>();
 
   void drop_opaque_BoxDartDebug(
     ffi.Pointer<ffi.Void> ptr,
@@ -3859,6 +3934,13 @@ class wire_EnumOpaque extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<EnumOpaqueKind> kind;
+}
+
+class wire_list_HideData extends ffi.Struct {
+  external ffi.Pointer<wire_HideData> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 class wire_OpaqueNested extends ffi.Struct {

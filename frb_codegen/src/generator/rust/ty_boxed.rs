@@ -114,6 +114,27 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         }
     }
 
+    fn deallocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
+        let func_name = format!("drop_{}_{}", self.ir.safe_ident(), block_index);
+        Acc::new(|target| match target {
+            Io | Wasm => Some(collector.generate(
+                &func_name,
+                [(
+                    &format!("raw: *mut {}", self.ir.inner.rust_wire_type(target)),
+                    "",
+                )],
+                None,
+                "unsafe{drop(Box::from_raw(raw));}",
+                target,
+            )),
+            _ => None,
+        })
+    }
+
     fn imports(&self) -> Option<String> {
         generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
     }

@@ -1298,6 +1298,22 @@ fn wire_opaque_array_impl(port_: MessagePort) {
         move || move |task_callback| Ok(opaque_array()),
     )
 }
+fn wire_opaque_array_run_impl(
+    port_: MessagePort,
+    data: impl Wire2Api<[Opaque<HideData>; 2]> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "opaque_array_run",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_data = data.wire2api();
+            move |task_callback| Ok(opaque_array_run(api_data))
+        },
+    )
+}
 fn wire_opaque_vec_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1306,6 +1322,22 @@ fn wire_opaque_vec_impl(port_: MessagePort) {
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| Ok(opaque_vec()),
+    )
+}
+fn wire_opaque_vec_run_impl(
+    port_: MessagePort,
+    data: impl Wire2Api<Vec<Opaque<HideData>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "opaque_vec_run",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_data = data.wire2api();
+            move |task_callback| Ok(opaque_vec_run(api_data))
+        },
     )
 }
 fn wire_create_nested_opaque_impl(port_: MessagePort) {
@@ -1562,6 +1594,8 @@ const _: fn() = || {
     }
 };
 // Section: allocate functions
+
+// Section: deallocate functions
 
 // Section: opaque related functions
 

@@ -19,15 +19,6 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
         }
     }
 
-    fn api_validate(&self) -> Option<String> {
-        Some(
-            "if (raw.isStale()) {
-            throw StateError('Use after dispose.');
-            }"
-            .to_owned(),
-        )
-    }
-
     fn api_fill_to_wire_body(&self) -> Option<String> {
         Some("wireObj.ptr = apiObj.share();".into())
     }

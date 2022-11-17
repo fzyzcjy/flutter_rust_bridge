@@ -5,6 +5,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:meta/meta.dart';
 import 'package:meta/meta.dart';
@@ -63,8 +64,6 @@ class ApiClass2Platform extends FlutterRustBridgeBase<ApiClass2Wire> {
 // Section: finalyzer
 
 // Section: api_fill_to_wire
-
-// Section: api_opaque_validate
 
 }
 

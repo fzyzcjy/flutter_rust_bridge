@@ -88,7 +88,6 @@ struct DartApiSpec {
     dart_structs: Vec<String>,
     dart_api2wire_funcs: Acc<String>,
     dart_opaque_funcs: Acc<String>,
-    dart_opaque_validate_funcs: Vec<String>,
     dart_api_fill_to_wire_funcs: Vec<String>,
     dart_wire2api_funcs: Vec<String>,
     dart_wasm_funcs: Vec<String>,
@@ -144,12 +143,6 @@ impl DartApiSpec {
             .map(|ty| generate_api_fill_to_wire_func(ty, ir_file, config))
             .collect::<Vec<_>>();
 
-        let dart_opaque_validate_funcs = distinct_input_types
-            .iter()
-            .filter(|f| f.distinct_types(ir_file).iter().any(|ty| ty.is_opaque()))
-            .map(|ty| generate_api_validate_func(ty, ir_file, config))
-            .collect::<Vec<_>>();
-
         let dart_wire2api_funcs = distinct_output_types
             .iter()
             .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
@@ -195,7 +188,6 @@ impl DartApiSpec {
             dart_structs,
             dart_api2wire_funcs,
             dart_opaque_funcs,
-            dart_opaque_validate_funcs,
             dart_api_fill_to_wire_funcs,
             dart_wire2api_funcs,
             dart_wasm_funcs,
@@ -314,7 +306,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         dart_funcs,
         dart_api2wire_funcs,
         dart_opaque_funcs,
-        dart_opaque_validate_funcs,
         dart_api_fill_to_wire_funcs,
         dart_wire2api_funcs,
         dart_wasm_funcs,
@@ -373,9 +364,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
 
     lines.io.push(section_header("api_fill_to_wire"));
     lines.io.push(dart_api_fill_to_wire_funcs.join("\n\n"));
-
-    lines.io.push(section_header("api_opaque_validate"));
-    lines.io.push(dart_opaque_validate_funcs.join("\n\n"));
 
     lines.push_acc(Acc::new(|target| match target {
         Io | Wasm => "}\n".into(),
@@ -494,23 +482,16 @@ pub(crate) struct GeneratedApiFunc {
 
 fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<String> {
     let generator = TypeDartGenerator::new(ty.clone(), ir_file, config);
-    let opaque_check = &generator.api_validate().unwrap_or_default();
     generator.api2wire_body().map(|body, target| {
         body.map(|body| {
             format!(
                 "@protected
                     {} api2wire_{}({} raw) {{
                         {}
-                        {}
                     }}",
                 ty.dart_wire_type(target),
                 ty.safe_ident(),
                 ty.dart_api_type(),
-                if ty.rust_wire_is_pointer(Target::Io) && !target.is_wasm() {
-                    opaque_check
-                } else {
-                    ""
-                },
                 body,
             )
         })
@@ -533,21 +514,6 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) 
             ty.safe_ident(),
             ty.dart_api_type(),
             target_wire_type.dart_wire_type(Target::Io),
-            body,
-        )
-    } else {
-        "".to_string()
-    }
-}
-
-fn generate_api_validate_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> String {
-    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file, config).api_validate() {
-        format!(
-            "void _api_validate_{}({} raw) {{
-                {}
-            }}",
-            ty.safe_ident(),
-            ty.dart_api_type(),
             body,
         )
     } else {

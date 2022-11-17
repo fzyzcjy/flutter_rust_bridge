@@ -133,6 +133,13 @@ impl<'a> Generator<'a> {
             .map(|f| self.generate_allocate_funcs(f, ir_file))
             .collect();
 
+        lines.push_all(self.section_header_comment("deallocate functions"));
+        lines += distinct_input_types
+            .iter()
+            .filter(|ty| ty.distinct_types(ir_file).iter().any(IrType::is_opaque))
+            .map(|f| self.generate_deallocate_funcs(f, ir_file))
+            .collect();
+
         lines.push_all(self.section_header_comment("opaque related functions"));
         lines += distinct_input_types
             .iter()
@@ -433,6 +440,12 @@ impl<'a> Generator<'a> {
             .map(|func, _| func.unwrap_or_default())
     }
 
+    fn generate_deallocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+            .deallocate_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .map(|func, _| func.unwrap_or_default())
+    }
+
     fn generate_opaque_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
             .opaque_related_funcs(&mut self.extern_func_collector, self.config.block_index)
@@ -566,6 +579,32 @@ pub fn generate_list_allocate_func(
             inner.rust_ptr_modifier(),
             inner.rust_wire_type(Target::Io)
         ),
+        Io,
+    )
+}
+
+pub fn generate_list_deallocate_func(
+    collector: &mut ExternFuncCollector,
+    safe_ident: &str,
+    list: &impl IrTypeTrait,
+    _inner: &IrType,
+    block_index: BlockIndex,
+) -> String {
+    collector.generate(
+        &format!("drop_{}_{}", safe_ident, block_index),
+        [
+            (
+                &format!(
+                    "ptr: {}{}",
+                    list.rust_wire_modifier(Target::Io).as_str(),
+                    list.rust_wire_type(Target::Io).as_str()
+                ),
+                "int",
+            ),
+            (&"len: i32".to_owned(), "int"),
+        ],
+        None,
+        "drop(unsafe{support::vec_from_leak_ptr(ptr, len)});",
         Io,
     )
 }

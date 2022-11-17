@@ -49,6 +49,14 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
+    fn deallocate_funcs(
+        &self,
+        _collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
+        Acc::default()
+    }
+
     fn opaque_related_funcs(
         &self,
         _collector: &mut ExternFuncCollector,

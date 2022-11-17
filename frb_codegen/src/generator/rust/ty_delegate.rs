@@ -1,6 +1,7 @@
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{
-    generate_list_allocate_func, ExternFuncCollector, TypeGeneralListGenerator,
+    generate_list_allocate_func, generate_list_deallocate_func, ExternFuncCollector,
+    TypeGeneralListGenerator,
 };
 use crate::ir::*;
 use crate::target::{Acc, Target};
@@ -128,6 +129,26 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
                 io: Some(generate_list_allocate_func(
+                    collector,
+                    &self.ir.safe_ident(),
+                    list,
+                    &list.get_delegate(),
+                    self.context.config.block_index,
+                )),
+                ..Default::default()
+            },
+            _ => Default::default(),
+        }
+    }
+
+    fn deallocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _: BlockIndex,
+    ) -> Acc<Option<String>> {
+        match &self.ir {
+            list @ IrTypeDelegate::StringList => Acc {
+                io: Some(generate_list_deallocate_func(
                     collector,
                     &self.ir.safe_ident(),
                     list,

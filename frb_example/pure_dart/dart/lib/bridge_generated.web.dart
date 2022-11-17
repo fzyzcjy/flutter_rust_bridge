@@ -51,6 +51,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_HideData_array_2(HideDataArray2 raw) {
+    return api2wire_list_HideData(raw);
+  }
+
+  @protected
   dynamic api2wire_I32(I32 raw) {
     return raw.share();
   }
@@ -475,6 +480,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_list_HideData(List<HideData> raw) {
+    return raw.map(api2wire_HideData).toList();
   }
 
   @protected
@@ -944,7 +954,11 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_opaque_array(NativePortType port_);
 
+  external void wire_opaque_array_run(NativePortType port_, List<dynamic> data);
+
   external void wire_opaque_vec(NativePortType port_);
+
+  external void wire_opaque_vec_run(NativePortType port_, List<dynamic> data);
 
   external void wire_create_nested_opaque(NativePortType port_);
 
@@ -989,6 +1003,14 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external int /* *mut u8 */ new_box_u8_0(int value);
 
   external int /* *mut i32 */ new_box_weekdays_0(int value);
+
+  external dynamic /*  */ drop_box_autoadd_enum_opaque_0(raw);
+
+  external dynamic /*  */ drop_box_autoadd_opaque_nested_0(raw);
+
+  external dynamic /*  */ drop_enum_opaque(raw);
+
+  external dynamic /*  */ drop_box_opaque_nested(raw);
 
   external dynamic /*  */ drop_opaque_BoxDartDebug(ptr);
 
@@ -1229,7 +1251,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
 
+  void wire_opaque_array_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_array_run(port_, data);
+
   void wire_opaque_vec(NativePortType port_) => wasmModule.wire_opaque_vec(port_);
+
+  void wire_opaque_vec_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_vec_run(port_, data);
 
   void wire_create_nested_opaque(NativePortType port_) => wasmModule.wire_create_nested_opaque(port_);
 
@@ -1282,6 +1308,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   int /* *mut u8 */ new_box_u8_0(int value) => wasmModule.new_box_u8_0(value);
 
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
+
+  dynamic /*  */ drop_box_autoadd_enum_opaque_0(raw) => wasmModule.drop_box_autoadd_enum_opaque_0(raw);
+
+  dynamic /*  */ drop_box_autoadd_opaque_nested_0(raw) => wasmModule.drop_box_autoadd_opaque_nested_0(raw);
+
+  dynamic /*  */ drop_enum_opaque(raw) => wasmModule.drop_enum_opaque(raw);
+
+  dynamic /*  */ drop_box_opaque_nested(raw) => wasmModule.drop_box_opaque_nested(raw);
 
   dynamic /*  */ drop_opaque_BoxDartDebug(ptr) => wasmModule.drop_opaque_BoxDartDebug(ptr);
 

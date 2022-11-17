@@ -459,8 +459,18 @@ pub fn wire_opaque_array(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_opaque_array_run(port_: MessagePort, data: JsValue) {
+    wire_opaque_array_run_impl(port_, data)
+}
+
+#[wasm_bindgen]
 pub fn wire_opaque_vec(port_: MessagePort) {
     wire_opaque_vec_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_vec_run(port_: MessagePort, data: JsValue) {
+    wire_opaque_vec_run_impl(port_, data)
 }
 
 #[wasm_bindgen]
@@ -588,6 +598,36 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
+// Section: deallocate functions
+
+#[wasm_bindgen]
+pub fn drop_box_autoadd_enum_opaque_0(raw: *mut JsValue) {
+    unsafe {
+        drop(Box::from_raw(raw));
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_box_autoadd_opaque_nested_0(raw: *mut JsValue) {
+    unsafe {
+        drop(Box::from_raw(raw));
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_enum_opaque(raw: *mut JsValue) {
+    unsafe {
+        drop(Box::from_raw(raw));
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_box_opaque_nested(raw: *mut JsValue) {
+    unsafe {
+        drop(Box::from_raw(raw));
+    }
+}
+
 // Section: opaque related functions
 
 #[wasm_bindgen]
@@ -694,6 +734,13 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
         )
+    }
+}
+
+impl Wire2Api<[Opaque<HideData>; 2]> for JsValue {
+    fn wire2api(self) -> [Opaque<HideData>; 2] {
+        let vec: Vec<Opaque<HideData>> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 
@@ -981,6 +1028,15 @@ impl Wire2Api<KitchenSink> for JsValue {
             5 => KitchenSink::Enums(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<Vec<Opaque<HideData>>> for JsValue {
+    fn wire2api(self) -> Vec<Opaque<HideData>> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
 impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
@@ -1356,6 +1412,12 @@ impl Wire2Api<Opaque<HideData>> for JsValue {
         }
 
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<[Opaque<HideData>; 2]> for JsValue {
+    fn wire2api(self) -> [Opaque<HideData>; 2] {
+        let vec: Vec<Opaque<HideData>> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<Opaque<i32>> for JsValue {
