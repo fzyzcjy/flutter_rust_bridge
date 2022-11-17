@@ -6,10 +6,9 @@ export 'io.dart' if (dart.library.html) 'web.dart'
     show
         ExternalLibrary,
         WireSyncReturnStruct,
+        FrbOpaqueImpl,
         NativePortType,
-        FrbOpaque,
-        DropFnType,
-        ShareFnType,
+        PlatformPointer,
         OpaqueTypeFinalizer;
 import '../isolate.dart' show SendPort;
 

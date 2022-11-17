@@ -1,11 +1,9 @@
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
 export 'dart:ffi' show NativePort, DynamicLibrary;
-import 'dart:typed_data';
 
-import 'package:meta/meta.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
-import 'stub.dart' show FlutterRustBridgeWireBase;
 export 'stub.dart'
     show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
 
@@ -39,70 +37,14 @@ class WireSyncReturnStruct extends ffi.Struct {
   bool get isSuccess => success > 0;
 }
 
-typedef DropFnType = void Function(ffi.Pointer<ffi.Void>);
-typedef ShareFnType = ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>);
+typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;
 
-/// An opaque pointer to a native C or Rust type.
-/// Recipients of this type should call [dispose] at some point during runtime.
-abstract class FrbOpaque implements Finalizable {
-  /// Pointer to this opaque Rust type.
-  ffi.Pointer<ffi.Void> _ptr;
-
-  /// A native finalizer rust opaque type.
-  /// Is static for each frb api class instance.
-  OpaqueTypeFinalizer get staticFinalizer;
-
-  /// Rust type specific drop function.
-  ///
-  /// This function should never be called manually.
-  DropFnType get dropFn;
-
-  /// Rust type specific share function.
-  ///
-  /// This function should never be called manually.
-  ShareFnType get shareFn;
-
-  /// This constructor should never be called manually.
-  @internal
-  FrbOpaque.unsafe(int ptr, int size) : _ptr = ffi.Pointer.fromAddress(ptr) {
-    assert(ptr > 0);
-    staticFinalizer.attach(this, _ptr, detach: this, externalSize: size);
-  }
-
-  /// Call Rust destructors on the backing memory of this pointer.
-  ///
-  /// This function should be run at least once during the lifetime of the
-  /// program, and can be run many times.
-  ///
-  /// When passed into a Rust function, Rust enacts *shared ownership*,
-  /// if this pointer is shared with Rust when [dispose] is called,
-  /// ownership is fully transferred to Rust else this pointer is cleared.
-  void dispose() {
-    if (!isStale()) {
-      var ptr = _ptr;
-      _ptr = Pointer.fromAddress(0);
-
-      staticFinalizer.detach(this);
-      dropFn(ptr);
-    }
-  }
-
-  /// Increments inner reference counter and returns pointer to the underlying
-  /// Rust object.
-  ///
-  /// Throws a [StateError] if called after [dispose].
-  @internal
-  ffi.Pointer<ffi.Void> share() {
-    if (!isStale()) {
-      return shareFn(_ptr);
-    } else {
-      throw StateError('Use after dispose.');
-    }
-  }
-
-  /// Checks whether [dispose] has been called at any point during the lifetime
-  /// of this pointer. This does not guarantee that the backing memory has
-  /// actually been reclaimed.
-  bool isStale() => _ptr.address == 0;
+class FrbOpaqueImpl implements Finalizable {
+  static PlatformPointer initPtr(int ptr) => ffi.Pointer.fromAddress(ptr);
+  static PlatformPointer nullPtr() => ffi.Pointer.fromAddress(0);
+  static bool isStalePtr(PlatformPointer ptr) => ptr.address == 0;
+  static void finalizerAttach(FrbOpaqueImpl opaque, PlatformPointer ptr,
+          int size, OpaqueTypeFinalizer finalizer) =>
+      finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
 }
