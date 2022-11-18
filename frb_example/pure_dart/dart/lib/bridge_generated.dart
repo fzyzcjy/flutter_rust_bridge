@@ -10,7 +10,6 @@ import 'package:uuid/uuid.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
 
 import 'package:meta/meta.dart';
-import 'dart:ffi';
 
 class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeExampleSingleBlockTest {
   final FlutterRustBridgeExampleSingleBlockTestPlatform _platform;

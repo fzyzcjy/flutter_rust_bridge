@@ -400,8 +400,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     let common_import = format!(
         "{}
         
-        import 'package:meta/meta.dart';
-        import 'dart:ffi';",
+        import 'package:meta/meta.dart';",
         // If WASM is not enabled, the common and IO branches are
         // combined into one, making this import statement invalid.
         if config.wasm_enabled {
