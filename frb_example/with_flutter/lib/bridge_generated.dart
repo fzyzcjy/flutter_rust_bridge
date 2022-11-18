@@ -6,13 +6,19 @@ import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
+
 import 'package:meta/meta.dart';
+import 'dart:ffi';
 
 class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   final FlutterRustBridgeExamplePlatform _platform;
-  factory FlutterRustBridgeExampleImpl(ExternalLibrary dylib) =>
-      FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExamplePlatform(dylib));
+  factory FlutterRustBridgeExampleImpl(ExternalLibrary dylib) {
+    dylib.lookupFunction<IntPtr Function(Pointer<Void>), int Function(Pointer<Void>)>('init_dart_api_dl')(
+        NativeApi.initializeApiDLData);
+    return FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExamplePlatform(dylib));
+  }
 
   /// Only valid on web/WASM platforms.
   factory FlutterRustBridgeExampleImpl.wasm(FutureOr<WasmModule> module) =>
@@ -199,6 +205,9 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
         argNames: [],
       );
 
+  void close() {
+    _platform.close();
+  }
 // Section: wire2api
 
   String _wire2api_String(dynamic raw) {

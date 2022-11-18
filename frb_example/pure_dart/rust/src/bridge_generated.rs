@@ -1268,6 +1268,21 @@ fn wire_loop_back_impl(port_: MessagePort, not_temp: impl Wire2Api<DartOpaque> +
         },
     )
 }
+fn wire_exotic_drop_impl(
+    not_temp: impl Wire2Api<DartOpaque> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "exotic_drop",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_not_temp = not_temp.wire2api();
+            Ok(exotic_drop(api_not_temp))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,

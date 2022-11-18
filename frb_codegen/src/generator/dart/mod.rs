@@ -313,7 +313,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         io: format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> {{
                 final _port = RawReceivePort();
-                int get port => _port.sendPort.nativePort;
+                NativePortType get port => _port.sendPort.nativePort;
                 {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib)) {{
                     _port.handler = (response) {{
                         inner.dart_opaque_drop(response);
@@ -326,7 +326,10 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         ),
         wasm: format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
+                final _port = RawReceivePort();
+                NativePortType get port => _port.sendPort.nativePort;
                 {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
+                    _port.handler = (response) {{ print(response); }};
                     setupMixinConstructor();
                 }}
                 Future<void> setup() => inner.init;",
@@ -341,6 +344,12 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             func.implementation, func.companion_field_implementation,
         )
     }));
+
+    lines.push_acc(Acc {
+        io: "void close() {_port.close();}".to_owned(),
+        wasm: "void close() {_port.close();}".to_owned(),
+        common: "void close() {_platform.close();}".to_owned(),
+    });
 
     lines.push(section_header("wire2api"));
     lines.push(dart_wire2api_funcs.join("\n\n"));

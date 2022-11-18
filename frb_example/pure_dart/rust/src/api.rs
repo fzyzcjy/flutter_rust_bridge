@@ -966,3 +966,12 @@ pub fn async_dart_opaque(not_temp: DartOpaque) -> String {
 pub fn loop_back(not_temp: DartOpaque) -> DartOpaque {
     not_temp
 }
+
+pub fn exotic_drop(not_temp: DartOpaque) -> SyncReturn<i32> {
+    std::thread::spawn(move || {
+        drop(not_temp);
+    })
+    .join()
+    .unwrap();
+    SyncReturn(42)
+}

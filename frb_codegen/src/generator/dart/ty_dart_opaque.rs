@@ -9,7 +9,7 @@ impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some("return inner.new_DartOpaque(raw, port);".to_owned()),
-            wasm: Some("// test web".to_owned()),
+            wasm: Some("return [raw, port];".to_owned()),
             ..Default::default()
         }
     }

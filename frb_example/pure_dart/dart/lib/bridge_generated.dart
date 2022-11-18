@@ -1198,6 +1198,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["notTemp"],
       );
 
+  int exoticDrop({required Object notTemp, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
+        callFfi: () => _platform.inner.wire_exotic_drop(_platform.api2wire_DelegateDartOpaque(notTemp)),
+        parseSuccessData: _wire2api_SyncReturn_i32,
+        constMeta: kExoticDropConstMeta,
+        argValues: [notTemp],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kExoticDropConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "exotic_drop",
+        argNames: ["notTemp"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) =>
       _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(
@@ -1325,6 +1338,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  void close() {
+    _platform.close();
+  }
 // Section: wire2api
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {

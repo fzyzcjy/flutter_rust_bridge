@@ -454,6 +454,13 @@ pub extern "C" fn wire_loop_back(port_: i64, not_temp: *mut wire_DartOpaque) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_exotic_drop(
+    not_temp: *mut wire_DartOpaque,
+) -> support::WireSyncReturnStruct {
+    wire_exotic_drop_impl(not_temp)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -519,8 +526,8 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
 
 #[no_mangle]
 pub extern "C" fn new_DartOpaque(handle: *mut _Dart_Handle, port: i64) -> *mut wire_DartOpaque {
-    let a = unsafe { Dart_NewPersistentHandle_DL_Trampolined(handle) };
-    support::new_leak_box_ptr(wire_DartOpaque { port, handle: a })
+    let handle = unsafe { Dart_NewPersistentHandle_DL_Trampolined(handle) };
+    support::new_leak_box_ptr(wire_DartOpaque { port, handle })
 }
 
 #[no_mangle]

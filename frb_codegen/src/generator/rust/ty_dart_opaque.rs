@@ -11,6 +11,11 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> crate::target::Acc<Option<String>> {
         Acc {
             io: Some("unsafe {DartOpaque::new((*self).handle, (*self).port)}".into()),
+            wasm: Some(
+                "let data = self.dyn_into::<JsArray>().unwrap();
+                DartOpaque::new(data.get(0), data.get(1).dyn_into().unwrap())"
+                    .into(),
+            ),
             ..Default::default()
         }
     }
@@ -63,12 +68,12 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         let func_name = "new_DartOpaque";
         Acc {
             io: Some(collector.generate(
-                &func_name,
+                func_name,
                 [("handle: *mut _Dart_Handle", ""), ("port: i64", "")],
                 Some("*mut wire_DartOpaque"),
                 "
-                let a = unsafe {Dart_NewPersistentHandle_DL_Trampolined(handle)};
-                support::new_leak_box_ptr(wire_DartOpaque { port, handle: a })",
+                let handle = unsafe {Dart_NewPersistentHandle_DL_Trampolined(handle)};
+                support::new_leak_box_ptr(wire_DartOpaque {port, handle})",
                 crate::target::Target::Io,
             )),
             ..Default::default()

@@ -369,6 +369,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kLoopBackConstMeta;
 
+  int exoticDrop({required Object notTemp, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kExoticDropConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;

@@ -5,6 +5,7 @@ pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
 use std::iter::FromIterator;
+use std::thread::ThreadId;
 pub use wasm_bindgen;
 pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
@@ -390,5 +391,62 @@ mod tests {
         let super::Timestamp { s, ns } = super::wire2api_timestamp(input);
         assert_eq!(s, 3_496);
         assert_eq!(ns, 567_000_000);
+    }
+}
+
+pub struct DartOpaque {
+    handle: Option<JsValue>,
+    port: Channel,
+    drop: bool,
+    id: ThreadId,
+}
+
+unsafe impl Send for DartOpaque {}
+unsafe impl Sync for DartOpaque {}
+
+impl DartOpaque {
+    pub fn new(handle: JsValue, port: MessagePort) -> Self {
+        Self {
+            handle: Some(handle),
+            port: Channel::new(port),
+            id: std::thread::current().id(),
+            drop: true,
+        }
+    }
+
+    pub fn try_unwrap(mut self) -> Result<JsValue, Self> {
+        if std::thread::current().id() == self.id {
+            Ok(self.handle.take().unwrap())
+        } else {
+            Err(self)
+        }
+    }
+}
+
+impl IntoDart for DartOpaque {
+    fn into_dart(mut self) -> JsValue {
+        self.drop = false;
+        self.handle.take().unwrap().into_dart()
+    }
+}
+
+impl Clone for DartOpaque {
+    fn clone(&self) -> Self {
+        Self {
+            handle: self.handle.clone(),
+            port: self.port.clone(),
+            drop: true,
+            id: self.id.clone(),
+        }
+    }
+}
+
+impl Drop for DartOpaque {
+    fn drop(&mut self) {
+        if self.drop {
+            if std::thread::current().id() != self.id {
+                self.port.post(self.handle.take().unwrap().into_dart());
+            }
+        }
     }
 }

@@ -444,6 +444,11 @@ pub fn wire_loop_back(port_: MessagePort, not_temp: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_exotic_drop(not_temp: JsValue) -> support::WireSyncReturnStruct {
+    wire_exotic_drop_impl(not_temp)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -587,6 +592,12 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
         )
+    }
+}
+impl Wire2Api<DartOpaque> for JsValue {
+    fn wire2api(self) -> DartOpaque {
+        let data = self.dyn_into::<JsArray>().unwrap();
+        DartOpaque::new(data.get(0), data.get(1).dyn_into().unwrap())
     }
 }
 

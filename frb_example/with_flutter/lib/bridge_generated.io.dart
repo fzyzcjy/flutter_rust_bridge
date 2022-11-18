@@ -6,13 +6,25 @@ import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
 import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
 class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
-  FlutterRustBridgeExamplePlatform(ffi.DynamicLibrary dylib) : super(FlutterRustBridgeExampleWire(dylib));
+  final _port = RawReceivePort();
+  NativePortType get port => _port.sendPort.nativePort;
+  FlutterRustBridgeExamplePlatform(ffi.DynamicLibrary dylib) : super(FlutterRustBridgeExampleWire(dylib)) {
+    _port.handler = (response) {
+      inner.dart_opaque_drop(response);
+    };
+    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+  }
+  void close() {
+    _port.close();
+  }
 // Section: api2wire
 
   @protected
@@ -124,6 +136,28 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _store_dart_post_cobjectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
+
+  void dart_opaque_drop(
+    int ptr,
+  ) {
+    return _dart_opaque_drop(
+      ptr,
+    );
+  }
+
+  late final _dart_opaque_dropPtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('dart_opaque_drop');
+  late final _dart_opaque_drop = _dart_opaque_dropPtr.asFunction<void Function(int)>();
+
+  Object dart_opaque_get(
+    int ptr,
+  ) {
+    return _dart_opaque_get(
+      ptr,
+    );
+  }
+
+  late final _dart_opaque_getPtr = _lookup<ffi.NativeFunction<ffi.Handle Function(uintptr_t)>>('dart_opaque_get');
+  late final _dart_opaque_get = _dart_opaque_getPtr.asFunction<Object Function(int)>();
 
   void wire_draw_mandelbrot(
     int port_,
@@ -390,6 +424,8 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 }
 
+class _Dart_Handle extends ffi.Opaque {}
+
 class wire_Size extends ffi.Struct {
   @ffi.Int32()
   external int width;
@@ -435,3 +471,4 @@ class wire_list_size extends ffi.Struct {
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
+typedef uintptr_t = ffi.UnsignedLong;

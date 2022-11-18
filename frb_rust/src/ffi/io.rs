@@ -1,7 +1,7 @@
-use crate::dart_api::Dart_DeletePersistentHandle_DL_Trampolined;
-use crate::dart_api::Dart_HandleFromPersistent_DL_Trampolined;
-pub use crate::dart_api::Dart_NewPersistentHandle_DL_Trampolined;
 use crate::Channel;
+use crate::Dart_DeletePersistentHandle_DL_Trampolined;
+use crate::Dart_HandleFromPersistent_DL_Trampolined;
+use crate::Dart_NewPersistentHandle_DL_Trampolined;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
@@ -40,13 +40,6 @@ mod tests {
     }
 }
 
-pub struct DartOpaque {
-    handle: Dart_PersistentHandle,
-    port: Channel,
-    drop: bool,
-    id: ThreadId,
-}
-
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_drop(ptr: usize) {
     Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
@@ -59,6 +52,13 @@ pub unsafe extern "C" fn dart_opaque_get(ptr: usize) -> *mut _Dart_Handle {
     res
 }
 
+pub struct DartOpaque {
+    handle: Dart_PersistentHandle,
+    port: Channel,
+    drop: bool,
+    id: ThreadId,
+}
+
 unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
@@ -69,6 +69,14 @@ impl DartOpaque {
             port: Channel::new(port),
             id: std::thread::current().id(),
             drop: true,
+        }
+    }
+
+    pub fn try_unwrap(self) -> Result<Dart_PersistentHandle, Self> {
+        if std::thread::current().id() == self.id {
+            Ok(self.handle)
+        } else {
+            Err(self)
         }
     }
 }
@@ -84,9 +92,9 @@ impl Clone for DartOpaque {
     fn clone(&self) -> Self {
         Self {
             handle: unsafe { Dart_NewPersistentHandle_DL_Trampolined(self.handle) },
-            port: self.port.clone(),
+            port: self.port,
             drop: true,
-            id: self.id.clone(),
+            id: self.id,
         }
     }
 }
@@ -95,10 +103,8 @@ impl Drop for DartOpaque {
     fn drop(&mut self) {
         if self.drop {
             if std::thread::current().id() == self.id {
-                // println!("SYNC");
                 unsafe { Dart_DeletePersistentHandle_DL_Trampolined(self.handle) }
             } else {
-                // println!("ASYNC");
                 self.port.post(self.handle.into_dart());
             }
         }

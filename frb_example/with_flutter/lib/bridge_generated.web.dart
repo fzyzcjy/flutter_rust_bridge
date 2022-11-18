@@ -6,16 +6,25 @@ import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
 import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire>
     with FlutterRustBridgeSetupMixin {
+  final _port = RawReceivePort();
+  NativePortType get port => _port.sendPort.nativePort;
   FlutterRustBridgeExamplePlatform(FutureOr<WasmModule> dylib) : super(FlutterRustBridgeExampleWire(dylib)) {
+    _port.handler = (response) {
+      print(response);
+    };
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
+  void close() {
+    _port.close();
+  }
 // Section: api2wire
 
   @protected
