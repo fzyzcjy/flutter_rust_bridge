@@ -17,7 +17,7 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
             ),
             wasm: Some(
                 "let data = self.dyn_into::<JsArray>().unwrap();
-                DartOpaque::new(data.get(0), data.get(1).dyn_into().unwrap())"
+                DartOpaque::new(data.get(0), data.get(1))"
                     .into(),
             ),
             ..Default::default()

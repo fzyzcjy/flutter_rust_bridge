@@ -405,10 +405,12 @@ unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
-    pub fn new(handle: JsValue, port: MessagePort) -> Self {
+    pub fn new(handle: JsValue, port: JsValue) -> Self {
         Self {
             handle: Some(handle),
-            port: Channel::new(port),
+            port: Channel {
+                port: MessagePort::deserialize(&port),
+            },
             id: std::thread::current().id(),
             drop: true,
         }
