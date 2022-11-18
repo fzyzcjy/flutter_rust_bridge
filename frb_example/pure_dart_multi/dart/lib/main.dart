@@ -20,4 +20,6 @@ void main(List<String> args) {
   test('dart call simpleAdder2', () async {
     expect(await api2.simpleAdder2(a: 42, b: 100), 142);
   });
+  api1.close();
+  api2.close();
 }
