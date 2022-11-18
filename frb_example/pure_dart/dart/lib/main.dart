@@ -695,6 +695,7 @@ void main(List<String> args) async {
       f() => '4224242424424242244';
 
       api.exoticDrop(notTemp: f);
+
       var res = await api.loopBack(notTemp: f) as String Function();
       print(res());
       var res2 = await api.loopBack(notTemp: res) as String Function();
@@ -726,6 +727,7 @@ void main(List<String> args) async {
       }
     });
   });
+
   api.close();
 }
 

@@ -868,7 +868,8 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
 }
 impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
     fn wire2api(self) -> DartOpaque {
-        unsafe { DartOpaque::new((*self).handle, (*self).port) }
+        let data = unsafe { support::box_from_leak_ptr(self) };
+        unsafe { DartOpaque::new(data.handle, data.port) }
     }
 }
 

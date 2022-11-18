@@ -10,7 +10,11 @@ type_rust_generator_struct!(TypeDartOpaqueGenerator, IrTypeDartOpaque);
 impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> crate::target::Acc<Option<String>> {
         Acc {
-            io: Some("unsafe {DartOpaque::new((*self).handle, (*self).port)}".into()),
+            io: Some(
+                "let data = unsafe{support::box_from_leak_ptr(self)};
+            unsafe { DartOpaque::new(data.handle, data.port) }"
+                    .into(),
+            ),
             wasm: Some(
                 "let data = self.dyn_into::<JsArray>().unwrap();
                 DartOpaque::new(data.get(0), data.get(1).dyn_into().unwrap())"

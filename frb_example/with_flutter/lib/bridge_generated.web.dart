@@ -17,6 +17,7 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   NativePortType get port => _port.sendPort.nativePort;
   FlutterRustBridgeExamplePlatform(FutureOr<WasmModule> dylib) : super(FlutterRustBridgeExampleWire(dylib)) {
     _port.handler = (response) {
+      // ignore: avoid_print
       print(response);
     };
     setupMixinConstructor();
@@ -25,6 +26,8 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   void close() {
     _port.close();
   }
+
+  Object dart_opaque_get(raw) => raw;
 // Section: api2wire
 
   @protected

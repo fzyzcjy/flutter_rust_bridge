@@ -14,11 +14,8 @@ import 'dart:ffi';
 
 class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   final FlutterRustBridgeExamplePlatform _platform;
-  factory FlutterRustBridgeExampleImpl(ExternalLibrary dylib) {
-    dylib.lookupFunction<IntPtr Function(Pointer<Void>), int Function(Pointer<Void>)>('init_dart_api_dl')(
-        NativeApi.initializeApiDLData);
-    return FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExamplePlatform(dylib));
-  }
+  factory FlutterRustBridgeExampleImpl(ExternalLibrary dylib) =>
+      FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExamplePlatform(dylib));
 
   /// Only valid on web/WASM platforms.
   factory FlutterRustBridgeExampleImpl.wasm(FutureOr<WasmModule> module) =>
@@ -208,6 +205,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   void close() {
     _platform.close();
   }
+
 // Section: wire2api
 
   String _wire2api_String(dynamic raw) {

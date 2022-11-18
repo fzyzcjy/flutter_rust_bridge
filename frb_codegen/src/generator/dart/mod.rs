@@ -295,12 +295,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         common: format!(
             "class {impl} implements {} {{
                 final {plat} _platform;
-                factory {impl}(ExternalLibrary dylib) {{ 
-                    dylib.lookupFunction<
-                    IntPtr Function(Pointer<Void>),
-                    int Function(
-                        Pointer<Void>)>('init_dart_api_dl')(NativeApi.initializeApiDLData);
-                    return {impl}.raw({plat}(dylib)); }}
+                factory {impl}(ExternalLibrary dylib) => {impl}.raw({plat}(dylib));
 
                 /// Only valid on web/WASM platforms.
                 factory {impl}.wasm(FutureOr<WasmModule> module) =>
@@ -315,6 +310,11 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 final _port = RawReceivePort();
                 NativePortType get port => _port.sendPort.nativePort;
                 {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib)) {{
+                    dylib.lookupFunction<
+                    ffi.IntPtr Function(ffi.Pointer<ffi.Void>),
+                    int Function(
+                        ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+
                     _port.handler = (response) {{
                         inner.dart_opaque_drop(response);
                     }};
@@ -349,6 +349,12 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         io: "void close() {_port.close();}".to_owned(),
         wasm: "void close() {_port.close();}".to_owned(),
         common: "void close() {_platform.close();}".to_owned(),
+    });
+
+    lines.push_acc(Acc {
+        io: "Object dart_opaque_get(raw) => inner.dart_opaque_get(raw);".to_owned(),
+        wasm: "Object dart_opaque_get(raw) => raw;".to_owned(),
+        ..Default::default()
     });
 
     lines.push(section_header("wire2api"));

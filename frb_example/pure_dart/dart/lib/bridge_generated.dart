@@ -14,11 +14,8 @@ import 'dart:ffi';
 
 class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeExampleSingleBlockTest {
   final FlutterRustBridgeExampleSingleBlockTestPlatform _platform;
-  factory FlutterRustBridgeExampleSingleBlockTestImpl(ExternalLibrary dylib) {
-    dylib.lookupFunction<IntPtr Function(Pointer<Void>), int Function(Pointer<Void>)>('init_dart_api_dl')(
-        NativeApi.initializeApiDLData);
-    return FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
-  }
+  factory FlutterRustBridgeExampleSingleBlockTestImpl(ExternalLibrary dylib) =>
+      FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
 
   /// Only valid on web/WASM platforms.
   factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(FutureOr<WasmModule> module) =>
@@ -1341,6 +1338,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   void close() {
     _platform.close();
   }
+
 // Section: wire2api
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {
@@ -1360,7 +1358,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   Object _wire2api_DartObject(dynamic raw) {
-    return _platform.inner.dart_opaque_get(raw);
+    return _platform.dart_opaque_get(raw);
   }
 
   Object _wire2api_DelegateDartOpaque(dynamic raw) {

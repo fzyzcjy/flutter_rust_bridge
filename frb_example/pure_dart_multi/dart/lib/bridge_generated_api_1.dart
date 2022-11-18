@@ -5,7 +5,6 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:meta/meta.dart';
 import 'dart:ffi';
@@ -21,10 +20,7 @@ abstract class ApiClass1 {
 
 class ApiClass1Impl implements ApiClass1 {
   final ApiClass1Platform _platform;
-  factory ApiClass1Impl(ExternalLibrary dylib) {
-    dylib.lookupFunction<IntPtr Function(Pointer<Void>), int Function(Pointer<Void>)>('init_dart_api_dl')(NativeApi.initializeApiDLData);
-    return ApiClass1Impl.raw(ApiClass1Platform(dylib));
-  }
+  factory ApiClass1Impl(ExternalLibrary dylib) => ApiClass1Impl.raw(ApiClass1Platform(dylib));
 
   /// Only valid on web/WASM platforms.
   factory ApiClass1Impl.wasm(FutureOr<WasmModule> module) => ApiClass1Impl(module as ExternalLibrary);
@@ -51,6 +47,7 @@ class ApiClass1Impl implements ApiClass1 {
   void close() {
     _platform.close();
   }
+
 // Section: wire2api
 
   int _wire2api_i32(dynamic raw) {
@@ -69,6 +66,8 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
   final _port = RawReceivePort();
   NativePortType get port => _port.sendPort.nativePort;
   ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib)) {
+    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+
     _port.handler = (response) {
       inner.dart_opaque_drop(response);
     };
@@ -77,6 +76,8 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
   void close() {
     _port.close();
   }
+
+  Object dart_opaque_get(raw) => inner.dart_opaque_get(raw);
 // Section: api2wire
 
 // Section: api_fill_to_wire

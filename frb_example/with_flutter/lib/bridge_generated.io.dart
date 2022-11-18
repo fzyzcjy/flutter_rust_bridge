@@ -16,6 +16,9 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   final _port = RawReceivePort();
   NativePortType get port => _port.sendPort.nativePort;
   FlutterRustBridgeExamplePlatform(ffi.DynamicLibrary dylib) : super(FlutterRustBridgeExampleWire(dylib)) {
+    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+
     _port.handler = (response) {
       inner.dart_opaque_drop(response);
     };
@@ -25,6 +28,8 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   void close() {
     _port.close();
   }
+
+  Object dart_opaque_get(raw) => inner.dart_opaque_get(raw);
 // Section: api2wire
 
   @protected

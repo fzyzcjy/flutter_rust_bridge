@@ -18,6 +18,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   NativePortType get port => _port.sendPort.nativePort;
   FlutterRustBridgeExampleSingleBlockTestPlatform(ffi.DynamicLibrary dylib)
       : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
+    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+
     _port.handler = (response) {
       inner.dart_opaque_drop(response);
     };
@@ -27,6 +30,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   void close() {
     _port.close();
   }
+
+  Object dart_opaque_get(raw) => inner.dart_opaque_get(raw);
 // Section: api2wire
 
   @protected

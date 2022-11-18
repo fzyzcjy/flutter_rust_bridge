@@ -26,6 +26,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   void close() {
     _port.close();
   }
+
+  Object dart_opaque_get(raw) => raw;
 // Section: api2wire
 
   @protected

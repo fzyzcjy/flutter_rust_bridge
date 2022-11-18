@@ -40,11 +40,15 @@ mod tests {
     }
 }
 
+/// # Safety
+/// because.
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_drop(ptr: usize) {
     Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
 }
 
+/// # Safety
+/// because.
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_get(ptr: usize) -> *mut _Dart_Handle {
     let res = Dart_HandleFromPersistent_DL_Trampolined(ptr as _);
@@ -65,7 +69,7 @@ unsafe impl Sync for DartOpaque {}
 impl DartOpaque {
     pub fn new(handle: Dart_Handle, port: i64) -> Self {
         Self {
-            handle: handle,
+            handle,
             port: Channel::new(port),
             id: std::thread::current().id(),
             drop: true,
