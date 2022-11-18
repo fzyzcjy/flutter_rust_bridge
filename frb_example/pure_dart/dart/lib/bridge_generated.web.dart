@@ -14,7 +14,7 @@ import 'package:meta/meta.dart';
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> with FlutterRustBridgeSetupMixin {
   final _port = RawReceivePort();
-  NativePortType get port => _port.sendPort;
+  NativePortType get port => _port.sendPort.nativePort;
   FlutterRustBridgeExampleSingleBlockTestPlatform(FutureOr<WasmModule> dylib)
       : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
     _port.handler = (response) {
