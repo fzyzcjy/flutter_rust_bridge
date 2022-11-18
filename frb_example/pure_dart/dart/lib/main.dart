@@ -694,7 +694,7 @@ void main(List<String> args) async {
     test('OPAQUE', () async {
       f() => '4224242424424242244';
 
-      api.exoticDrop(notTemp: f);
+      // api.exoticDrop(notTemp: f);
 
       var res = await api.loopBack(notTemp: f) as String Function();
       print(res());
@@ -705,27 +705,27 @@ void main(List<String> args) async {
       print(api.syncDartOpaque(notTemp: f));
     });
 
-    test('LeaK', () async {
-      for (var i = 0; i < 10; ++i) {
-        print(i);
-        var data = List.filled(10, '4242424242');
-        api.syncDartOpaque(notTemp: data);
-      }
-    });
-    test('LeaK2', () async {
-      for (var i = 0; i < 10; ++i) {
-        print(i);
-        var data = List.filled(10, '4242424242');
-        await api.asyncDartOpaque(notTemp: data);
-      }
-    });
-    test('LeaK3', () async {
-      for (var i = 0; i < 10; ++i) {
-        print(i);
-        var data = List.filled(10, '4242424242');
-        await api.loopBack(notTemp: await api.loopBack(notTemp: data));
-      }
-    });
+    // test('LeaK', () async {
+    //   for (var i = 0; i < 10; ++i) {
+    //     print(i);
+    //     var data = List.filled(10, '4242424242');
+    //     api.syncDartOpaque(notTemp: data);
+    //   }
+    // });
+    // test('LeaK2', () async {
+    //   for (var i = 0; i < 10; ++i) {
+    //     print(i);
+    //     var data = List.filled(10, '4242424242');
+    //     await api.asyncDartOpaque(notTemp: data);
+    //   }
+    // });
+    // test('LeaK3', () async {
+    //   for (var i = 0; i < 10; ++i) {
+    //     print(i);
+    //     var data = List.filled(10, '4242424242');
+    //     await api.loopBack(notTemp: await api.loopBack(notTemp: data));
+    //   }
+    // });
   });
 
   api.close();
