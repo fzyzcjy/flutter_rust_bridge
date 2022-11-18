@@ -326,14 +326,10 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         ),
         wasm: format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
-                static int _id = 0;
-                late int _current_id;
-                late final _port = broadcastPort('drop_opaque_port_$_current_id');
-                NativePortType get port => 'drop_opaque_port_$_current_id';
+                final _port = RawReceivePort();
+                NativePortType get port => _port.sendPort;
                 {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
-                    _current_id = _id;
-                    ++_id;
-                    _port.listen((response) {{ print(response); }});
+                    _port.handler = (response) {{ print(response); }};
                     setupMixinConstructor();
                 }}
                 Future<void> setup() => inner.init;",
