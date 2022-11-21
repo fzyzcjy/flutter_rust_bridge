@@ -35,7 +35,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             },
             IrTypeDelegate::String => {
                 Acc {
-                    wasm: Some("self".into()),
+                    wasm: Some("Ok(self)".into()),
                     io: Some("let vec: Vec<u8> = self.wire2api()?; Ok(String::from_utf8_lossy(&vec).into_owned())".into()),
                     ..Default::default()
                 }
@@ -173,7 +173,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         Some(match &self.ir {
             IrTypeDelegate::String => {
-                "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()
+                "Ok(self.as_string().expect(\"non-UTF-8 string, or not a string\"))".into()
             }
             IrTypeDelegate::PrimitiveEnum { repr, .. } => format!(
                 "(self.unchecked_into_f64() as {}).wire2api()",
@@ -181,17 +181,17 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             )
             .into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                "ZeroCopyBuffer(self.wire2api())".into()
+                "Ok(ZeroCopyBuffer(self.wire2api()?))".into()
             }
             #[cfg(feature = "chrono")]
-            IrTypeDelegate::Time(_) => "Wire2Api::<i64>::wire2api(self).wire2api()".into(),
+            IrTypeDelegate::Time(_) => "Wire2Api::<i64>::wire2api(self)?.wire2api()".into(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
                 "self.unchecked_into::<js_sys::Uint8Array>().to_vec().into_boxed_slice().wire2api()"
                     .into()
             }
             IrTypeDelegate::Array(array) => format!(
-                "let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",
+                "let vec: Vec<{}> = self.wire2api()?; Ok(support::from_vec_to_array(vec))",
                 array.inner_rust_api_type()
             )
             .into(),

@@ -889,24 +889,24 @@ void main(List<String> args) async {
     //   data[1].dispose();
     // });
 
-    // test('vec', () async {
-    //   var data = await api.opaqueVec();
-    //   await api.opaqueVecRun(data: data);
-    //   data[0].dispose();
+    test('vec', () async {
+      var data = await api.opaqueVec();
+      await api.opaqueVecRun(data: data);
+      data[0].dispose();
 
-    //   expect(
-    //       await api.runOpaque(opaque: data[1]),
-    //       "content - Some(PrivateData "
-    //       "{"
-    //       " content: \"content nested\", "
-    //       "primitive: 424242, "
-    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-    //       "lifetime: \"static str\" "
-    //       "})");
+      // expect(
+      //     await api.runOpaque(opaque: data[1]),
+      //     "content - Some(PrivateData "
+      //     "{"
+      //     " content: \"content nested\", "
+      //     "primitive: 424242, "
+      //     "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      //     "lifetime: \"static str\" "
+      //     "})");
 
-    //   await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
-    //   data[1].dispose();
-    // });
+      // await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
+      data[1].dispose();
+    });
   });
 }
 

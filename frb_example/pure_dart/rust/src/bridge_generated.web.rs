@@ -711,7 +711,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
 
 impl Wire2Api<String> for String {
     fn wire2api(self) -> Result<String, &'static str> {
-        self
+        Ok(self)
     }
 }
 impl Wire2Api<Vec<String>> for JsValue {
@@ -864,7 +864,7 @@ impl Wire2Api<Distance> for JsValue {
             0 => Ok(Distance::Unknown),
             1 => {
                 let field0 = self_.get(1).wire2api();
-                Distance::Map(field0?)
+                Ok(Distance::Map(field0?))
             }
             _ => unreachable!(),
         }
@@ -876,23 +876,23 @@ impl Wire2Api<EnumOpaque> for JsValue {
         match self_.get(0).unchecked_into_f64() as _ {
             0 => {
                 let field0 = self_.get(1).wire2api();
-                EnumOpaque::Struct(field0?)
+                Ok(EnumOpaque::Struct(field0?))
             }
             1 => {
                 let field0 = self_.get(1).wire2api();
-                EnumOpaque::Primitive(field0?)
+                Ok(EnumOpaque::Primitive(field0?))
             }
             2 => {
                 let field0 = self_.get(1).wire2api();
-                EnumOpaque::TraitObj(field0?)
+                Ok(EnumOpaque::TraitObj(field0?))
             }
             3 => {
                 let field0 = self_.get(1).wire2api();
-                EnumOpaque::Mutex(field0?)
+                Ok(EnumOpaque::Mutex(field0?))
             }
             4 => {
                 let field0 = self_.get(1).wire2api();
-                EnumOpaque::RwLock(field0?)
+                Ok(EnumOpaque::RwLock(field0?))
             }
             _ => unreachable!(),
         }
@@ -1034,29 +1034,29 @@ impl Wire2Api<KitchenSink> for JsValue {
                 let int32 = self_.get(1).wire2api();
                 let float64 = self_.get(2).wire2api();
                 let boolean = self_.get(3).wire2api();
-                KitchenSink::Primitives {
+                Ok(KitchenSink::Primitives {
                     int32: int32?,
                     float64: float64?,
                     boolean: boolean?,
-                }
+                })
             }
             2 => {
                 let field0 = self_.get(1).wire2api();
                 let field1 = self_.get(2).wire2api();
-                KitchenSink::Nested(field0?, field1?)
+                Ok(KitchenSink::Nested(field0?, field1?))
             }
             3 => {
                 let field0 = self_.get(1).wire2api();
                 let field1 = self_.get(2).wire2api();
-                KitchenSink::Optional(field0?, field1?)
+                Ok(KitchenSink::Optional(field0?, field1?))
             }
             4 => {
                 let field0 = self_.get(1).wire2api();
-                KitchenSink::Buffer(field0?)
+                Ok(KitchenSink::Buffer(field0?))
             }
             5 => {
                 let field0 = self_.get(1).wire2api();
-                KitchenSink::Enums(field0?)
+                Ok(KitchenSink::Enums(field0?))
             }
             _ => unreachable!(),
         }
@@ -1131,11 +1131,11 @@ impl Wire2Api<Measure> for JsValue {
         match self_.get(0).unchecked_into_f64() as _ {
             0 => {
                 let field0 = self_.get(1).wire2api();
-                Measure::Speed(field0?)
+                Ok(Measure::Speed(field0?))
             }
             1 => {
                 let field0 = self_.get(1).wire2api();
-                Measure::Distance(field0?)
+                Ok(Measure::Distance(field0?))
             }
             _ => unreachable!(),
         }
@@ -1269,70 +1269,89 @@ impl Wire2Api<OpaqueNested> for JsValue {
 impl Wire2Api<Option<String>> for Option<String> {
     fn wire2api(self) -> Result<Option<String>, &'static str> {
         self.map(Wire2Api::wire2api)
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for Option<Box<[u8]>> {
     fn wire2api(self) -> Result<Option<ZeroCopyBuffer<Vec<u8>>>, &'static str> {
         self.map(Wire2Api::wire2api)
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Attribute>> for JsValue {
     fn wire2api(self) -> Result<Option<Attribute>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 
 impl Wire2Api<Option<ExoticOptionals>> for JsValue {
     fn wire2api(self) -> Result<Option<ExoticOptionals>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 
 impl Wire2Api<Option<NewTypeInt>> for JsValue {
     fn wire2api(self) -> Result<Option<NewTypeInt>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 
 impl Wire2Api<Option<Box<ExoticOptionals>>> for JsValue {
     fn wire2api(self) -> Result<Option<Box<ExoticOptionals>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 
 impl Wire2Api<Option<Vec<f32>>> for Option<Box<[f32]>> {
     fn wire2api(self) -> Result<Option<Vec<f32>>, &'static str> {
         self.map(Wire2Api::wire2api)
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<f64>>> for Option<Box<[f64]>> {
     fn wire2api(self) -> Result<Option<Vec<f64>>, &'static str> {
         self.map(Wire2Api::wire2api)
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<i32>>> for Option<Box<[i32]>> {
     fn wire2api(self) -> Result<Option<Vec<i32>>, &'static str> {
         self.map(Wire2Api::wire2api)
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<i8>>> for Option<Box<[i8]>> {
     fn wire2api(self) -> Result<Option<Vec<i8>>, &'static str> {
         self.map(Wire2Api::wire2api)
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<Attribute>>> for JsValue {
     fn wire2api(self) -> Result<Option<Vec<Attribute>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<Option<Attribute>>>> for JsValue {
     fn wire2api(self) -> Result<Option<Vec<Option<Attribute>>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<u8>>> for Option<Box<[u8]>> {
     fn wire2api(self) -> Result<Option<Vec<u8>>, &'static str> {
         self.map(Wire2Api::wire2api)
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Sequences> for JsValue {
@@ -1355,7 +1374,7 @@ impl Wire2Api<Speed> for JsValue {
             0 => Ok(Speed::Unknown),
             1 => {
                 let field0 = self_.get(1).wire2api();
-                Speed::GPS(field0?)
+                Ok(Speed::GPS(field0?))
             }
             _ => unreachable!(),
         }
@@ -1439,22 +1458,22 @@ impl Wire2Api<Opaque<Box<dyn DartDebug>>> for JsValue {
 }
 impl Wire2Api<chrono::Duration> for JsValue {
     fn wire2api(self) -> Result<chrono::Duration, &'static str> {
-        Wire2Api::<i64>::wire2api(self).wire2api()
+        Wire2Api::<i64>::wire2api(self)?.wire2api()
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Local>> for JsValue {
     fn wire2api(self) -> Result<chrono::DateTime<chrono::Local>, &'static str> {
-        Wire2Api::<i64>::wire2api(self).wire2api()
+        Wire2Api::<i64>::wire2api(self)?.wire2api()
     }
 }
 impl Wire2Api<chrono::NaiveDateTime> for JsValue {
     fn wire2api(self) -> Result<chrono::NaiveDateTime, &'static str> {
-        Wire2Api::<i64>::wire2api(self).wire2api()
+        Wire2Api::<i64>::wire2api(self)?.wire2api()
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
     fn wire2api(self) -> Result<chrono::DateTime<chrono::Utc>, &'static str> {
-        Wire2Api::<i64>::wire2api(self).wire2api()
+        Wire2Api::<i64>::wire2api(self)?.wire2api()
     }
 }
 impl Wire2Api<Opaque<HideData>> for JsValue {
@@ -1469,8 +1488,8 @@ impl Wire2Api<Opaque<HideData>> for JsValue {
 }
 impl Wire2Api<[Opaque<HideData>; 2]> for JsValue {
     fn wire2api(self) -> Result<[Opaque<HideData>; 2], &'static str> {
-        let vec: Vec<Opaque<HideData>> = self.wire2api();
-        support::from_vec_to_array(vec)
+        let vec: Vec<Opaque<HideData>> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<Opaque<i32>> for JsValue {
@@ -1505,13 +1524,13 @@ impl Wire2Api<Opaque<RwLock<HideData>>> for JsValue {
 }
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> Result<String, &'static str> {
-        self.as_string().expect("non-UTF-8 string, or not a string")
+        Ok(self.as_string().expect("non-UTF-8 string, or not a string"))
     }
 }
 impl Wire2Api<[TestId; 4]> for JsValue {
     fn wire2api(self) -> Result<[TestId; 4], &'static str> {
-        let vec: Vec<TestId> = self.wire2api();
-        support::from_vec_to_array(vec)
+        let vec: Vec<TestId> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<uuid::Uuid> for JsValue {
@@ -1532,7 +1551,7 @@ impl Wire2Api<Vec<uuid::Uuid>> for JsValue {
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for JsValue {
     fn wire2api(self) -> Result<ZeroCopyBuffer<Vec<u8>>, &'static str> {
-        ZeroCopyBuffer(self.wire2api())
+        Ok(ZeroCopyBuffer(self.wire2api()?))
     }
 }
 impl Wire2Api<ApplicationMode> for JsValue {
@@ -1633,8 +1652,8 @@ impl Wire2Api<f64> for JsValue {
 }
 impl Wire2Api<[f64; 16]> for JsValue {
     fn wire2api(self) -> Result<[f64; 16], &'static str> {
-        let vec: Vec<f64> = self.wire2api();
-        support::from_vec_to_array(vec)
+        let vec: Vec<f64> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<Vec<f32>> for JsValue {
@@ -1665,8 +1684,8 @@ impl Wire2Api<i32> for JsValue {
 }
 impl Wire2Api<[i32; 2]> for JsValue {
     fn wire2api(self) -> Result<[i32; 2], &'static str> {
-        let vec: Vec<i32> = self.wire2api();
-        support::from_vec_to_array(vec)
+        let vec: Vec<i32> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<i64> for JsValue {
@@ -1696,87 +1715,121 @@ impl Wire2Api<MyEnum> for JsValue {
 }
 impl Wire2Api<Option<String>> for JsValue {
     fn wire2api(self) -> Result<Option<String>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for JsValue {
     fn wire2api(self) -> Result<Option<ZeroCopyBuffer<Vec<u8>>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<bool>> for JsValue {
     fn wire2api(self) -> Result<Option<bool>, &'static str> {
-        (self != 0).then(|| *Wire2Api::<Box<bool>>::wire2api(self))
+        (self != 0)
+            .then(|| Wire2Api::<Box<bool>>::wire2api(self).map(|v| *v))
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<f64>> for JsValue {
     fn wire2api(self) -> Result<Option<f64>, &'static str> {
-        (self != 0).then(|| *Wire2Api::<Box<f64>>::wire2api(self))
+        (self != 0)
+            .then(|| Wire2Api::<Box<f64>>::wire2api(self).map(|v| *v))
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<i32>> for JsValue {
     fn wire2api(self) -> Result<Option<i32>, &'static str> {
-        (self != 0).then(|| *Wire2Api::<Box<i32>>::wire2api(self))
+        (self != 0)
+            .then(|| Wire2Api::<Box<i32>>::wire2api(self).map(|v| *v))
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<i64>> for JsValue {
     fn wire2api(self) -> Result<Option<i64>, &'static str> {
-        (self != 0).then(|| *Wire2Api::<Box<i64>>::wire2api(self))
+        (self != 0)
+            .then(|| Wire2Api::<Box<i64>>::wire2api(self).map(|v| *v))
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Box<bool>>> for JsValue {
     fn wire2api(self) -> Result<Option<Box<bool>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Box<f64>>> for JsValue {
     fn wire2api(self) -> Result<Option<Box<f64>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Box<i32>>> for JsValue {
     fn wire2api(self) -> Result<Option<Box<i32>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Box<i64>>> for JsValue {
     fn wire2api(self) -> Result<Option<Box<i64>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Box<i8>>> for JsValue {
     fn wire2api(self) -> Result<Option<Box<i8>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Box<u8>>> for JsValue {
     fn wire2api(self) -> Result<Option<Box<u8>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<f32>>> for JsValue {
     fn wire2api(self) -> Result<Option<Vec<f32>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<f64>>> for JsValue {
     fn wire2api(self) -> Result<Option<Vec<f64>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<i32>>> for JsValue {
     fn wire2api(self) -> Result<Option<Vec<i32>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<i8>>> for JsValue {
     fn wire2api(self) -> Result<Option<Vec<i8>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<Option<Vec<u8>>> for JsValue {
     fn wire2api(self) -> Result<Option<Vec<u8>>, &'static str> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+        (!self.is_undefined() && !self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 impl Wire2Api<u16> for JsValue {
@@ -1801,20 +1854,20 @@ impl Wire2Api<u8> for JsValue {
 }
 impl Wire2Api<[u8; 1600]> for JsValue {
     fn wire2api(self) -> Result<[u8; 1600], &'static str> {
-        let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        let vec: Vec<u8> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<[u8; 32]> for JsValue {
     fn wire2api(self) -> Result<[u8; 32], &'static str> {
-        let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        let vec: Vec<u8> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<[u8; 8]> for JsValue {
     fn wire2api(self) -> Result<[u8; 8], &'static str> {
-        let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        let vec: Vec<u8> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<Vec<u8>> for JsValue {

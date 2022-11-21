@@ -65,7 +65,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 format!(
                                     "{idx} => {{
                                         {prepare_field} 
-                                        {enum_name}::{variant_name}{left}{field}{right} }},",
+                                        Ok({enum_name}::{variant_name}{left}{field}{right}) }},",
                                     enum_name = enu.name,
                                     variant_name = variant.name,
                                     prepare_field = prepare_fields.join(" "),
