@@ -435,24 +435,24 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
 
-  DropFnType get drop_opaque_BoxDartDebug;
-  ShareFnType get share_opaque_BoxDartDebug;
+  DropFnType get dropOpaqueBoxDartDebug;
+  ShareFnType get shareOpaqueBoxDartDebug;
   OpaqueTypeFinalizer get BoxDartDebugFinalizer;
 
-  DropFnType get drop_opaque_HideData;
-  ShareFnType get share_opaque_HideData;
+  DropFnType get dropOpaqueHideData;
+  ShareFnType get shareOpaqueHideData;
   OpaqueTypeFinalizer get HideDataFinalizer;
 
-  DropFnType get drop_opaque_I32;
-  ShareFnType get share_opaque_I32;
+  DropFnType get dropOpaqueI32;
+  ShareFnType get shareOpaqueI32;
   OpaqueTypeFinalizer get I32Finalizer;
 
-  DropFnType get drop_opaque_MutexHideData;
-  ShareFnType get share_opaque_MutexHideData;
+  DropFnType get dropOpaqueMutexHideData;
+  ShareFnType get shareOpaqueMutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer;
 
-  DropFnType get drop_opaque_RwLockHideData;
-  ShareFnType get share_opaque_RwLockHideData;
+  DropFnType get dropOpaqueRwLockHideData;
+  ShareFnType get shareOpaqueRwLockHideData;
   OpaqueTypeFinalizer get RwLockHideDataFinalizer;
 }
 
@@ -461,10 +461,10 @@ class BoxDartDebug extends FrbOpaque {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   BoxDartDebug.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => bridge.drop_opaque_BoxDartDebug;
+  DropFnType get dropFn => bridge.dropOpaqueBoxDartDebug;
 
   @override
-  ShareFnType get shareFn => bridge.share_opaque_BoxDartDebug;
+  ShareFnType get shareFn => bridge.shareOpaqueBoxDartDebug;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.BoxDartDebugFinalizer;
@@ -484,10 +484,10 @@ class HideData extends FrbOpaque {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   HideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => bridge.drop_opaque_HideData;
+  DropFnType get dropFn => bridge.dropOpaqueHideData;
 
   @override
-  ShareFnType get shareFn => bridge.share_opaque_HideData;
+  ShareFnType get shareFn => bridge.shareOpaqueHideData;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.HideDataFinalizer;
@@ -507,10 +507,10 @@ class I32 extends FrbOpaque {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   I32.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => bridge.drop_opaque_I32;
+  DropFnType get dropFn => bridge.dropOpaqueI32;
 
   @override
-  ShareFnType get shareFn => bridge.share_opaque_I32;
+  ShareFnType get shareFn => bridge.shareOpaqueI32;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.I32Finalizer;
@@ -521,10 +521,10 @@ class MutexHideData extends FrbOpaque {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   MutexHideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => bridge.drop_opaque_MutexHideData;
+  DropFnType get dropFn => bridge.dropOpaqueMutexHideData;
 
   @override
-  ShareFnType get shareFn => bridge.share_opaque_MutexHideData;
+  ShareFnType get shareFn => bridge.shareOpaqueMutexHideData;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.MutexHideDataFinalizer;
@@ -544,10 +544,10 @@ class RwLockHideData extends FrbOpaque {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   RwLockHideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => bridge.drop_opaque_RwLockHideData;
+  DropFnType get dropFn => bridge.dropOpaqueRwLockHideData;
 
   @override
-  ShareFnType get shareFn => bridge.share_opaque_RwLockHideData;
+  ShareFnType get shareFn => bridge.shareOpaqueRwLockHideData;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.RwLockHideDataFinalizer;

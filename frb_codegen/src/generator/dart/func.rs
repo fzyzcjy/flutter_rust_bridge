@@ -182,8 +182,8 @@ pub(crate) fn generate_api_func(
 pub(crate) fn generate_opaque_getters(ty: &IrType) -> GeneratedApiFunc {
     let signature = format!(
         "
-    DropFnType get drop_opaque_{0};
-    ShareFnType get share_opaque_{0};
+    DropFnType get dropOpaque{0};
+    ShareFnType get shareOpaque{0};
     OpaqueTypeFinalizer get {0}Finalizer;
     ",
         ty.dart_api_type(),
@@ -191,10 +191,10 @@ pub(crate) fn generate_opaque_getters(ty: &IrType) -> GeneratedApiFunc {
 
     let implementation = format!(
         "
-        DropFnType get drop_opaque_{0} => _platform.inner.drop_opaque_{0};
-        ShareFnType get share_opaque_{0} => _platform.inner.share_opaque_{0};
+        DropFnType get dropOpaque{0} => _platform.inner.drop_opaque_{0};
+        ShareFnType get shareOpaque{0} => _platform.inner.share_opaque_{0};
         OpaqueTypeFinalizer get {0}Finalizer => _platform.{0}Finalizer;
-    ",
+        ",
         ty.dart_api_type()
     );
 

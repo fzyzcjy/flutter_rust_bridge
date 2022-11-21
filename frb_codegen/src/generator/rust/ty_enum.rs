@@ -5,7 +5,6 @@ use crate::generator::rust::ExternFuncCollector;
 use crate::generator::rust::NO_PARAMS;
 use crate::ir::*;
 use crate::target::Acc;
-use crate::target::Target;
 use crate::target::Target::*;
 use crate::type_rust_generator_struct;
 
@@ -25,50 +24,50 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     .enumerate()
                     .map(|(idx, variant)| match &variant.kind {
                         IrVariantKind::Value => {
-                            format!("{} => {}::{},", idx, enu.name, variant.name)
+                            format!("{} => Ok({}::{}),", idx, enu.name, variant.name)
                         }
                         IrVariantKind::Struct(st) => {
-                            let mut fields = (st.fields).iter().enumerate().map(|(idx, field)| {
-                                if !target.is_wasm() {
-                                    if st.is_fields_named {
-                                        format!("{}: ans.{0}.wire2api()", field.name.rust_style())
-                                    } else {
-                                        format!("ans.{}.wire2api()", field.name.rust_style())
-                                    }
-                                } else if st.is_fields_named {
-                                    format!(
-                                        "{}: self_.get({}).wire2api()",
-                                        field.name.rust_style(),
-                                        idx + 1
-                                    )
+                            let (prepare_fields, fields): (Vec<String>, Vec<String>) = (st.fields).iter().enumerate().map(|(idx, field)| {
+
+                                let field_name = field.name.rust_style();
+                                let prepare_field_ = format!("{field_name}");
+                
+                                let field_ = if st.is_fields_named {
+                                    format!("{field_name}: ")
                                 } else {
-                                    format!("self_.get({}).wire2api()", idx + 1)
+                                    String::new()
+                                };
+
+                                if !target.is_wasm() {
+                                    (format!("let {prepare_field_} = ans.{0}.wire2api();", field.name.rust_style()), format!("{field_}{prepare_field_}?"))
+                                } else {
+                                    (format!("let {prepare_field_} = self_.get({}).wire2api();", idx + 1), format!("{field_}{prepare_field_}?"))
                                 }
-                            });
+                            }).unzip();
+                            
                             let (left, right) = st.brackets_pair();
                             if target.is_wasm() {
                                 format!(
-                                    "{} => {}::{}{}{}{},",
-                                    idx,
-                                    enu.name,
-                                    variant.name,
-                                    left,
-                                    fields.join(","),
-                                    right
+                                    "{idx} => {{
+                                        {prepare_field} 
+                                        {enum_name}::{variant_name}{left}{field}{right} }},",
+                                    enum_name = enu.name,
+                                    variant_name = variant.name,
+                                    prepare_field = prepare_fields.join(" "),
+                                    field = fields.join(",")
                                 )
                             } else {
                                 format!(
-                                    "{} => unsafe {{
+                                    "{idx} => unsafe {{
                                         let ans = support::box_from_leak_ptr(self.kind);
-                                        let ans = support::box_from_leak_ptr(ans.{2});
-                                        {}::{2}{3}{4}{5}
+                                        let ans = support::box_from_leak_ptr(ans.{variant_name});
+                                        {prepare_field}
+                                        Ok({enum_name}::{variant_name}{left}{field}{right})
                                     }}",
-                                    idx,
-                                    enu.name,
-                                    variant.name,
-                                    left,
-                                    fields.join(","),
-                                    right
+                                    enum_name = enu.name,
+                                    variant_name = variant.name,
+                                    prepare_field = prepare_fields.join(" "),
+                                    field = fields.join(",")
                                 )
                             }
                         }
@@ -275,24 +274,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             self_ref,
             variants.join("\n")
         )
-    }
-
-    fn deallocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        _block_index: crate::utils::BlockIndex,
-    ) -> Acc<Option<String>> {
-        let func_name = format!("drop_{}", self.ir.safe_ident());
-        Acc::new(|target| match target {
-            Target::Io | Target::Wasm => Some(collector.generate(
-                &func_name,
-                [(&format!("raw: *mut {}", self.ir.rust_wire_type(target)), "")],
-                None,
-                "unsafe{drop(Box::from_raw(raw));}",
-                target,
-            )),
-            _ => None,
-        })
     }
 
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {

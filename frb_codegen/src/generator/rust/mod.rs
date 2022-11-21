@@ -133,17 +133,11 @@ impl<'a> Generator<'a> {
             .map(|f| self.generate_allocate_funcs(f, ir_file))
             .collect();
 
-        lines.push_all(self.section_header_comment("deallocate functions"));
-        lines += distinct_input_types
-            .iter()
-            .filter(|ty| ty.distinct_types(ir_file).iter().any(IrType::is_opaque))
-            .map(|f| self.generate_deallocate_funcs(f, ir_file))
-            .collect();
 
-        lines.push_all(self.section_header_comment("opaque related functions"));
+        lines.push_all(self.section_header_comment("related functions"));
         lines += distinct_input_types
             .iter()
-            .map(|f| self.generate_opaque_related_funcs(f, ir_file))
+            .map(|f| self.generate_related_funcs(f, ir_file))
             .collect();
 
         lines.push_all(self.section_header_comment("impl Wire2Api"));
@@ -301,7 +295,7 @@ impl<'a> Generator<'a> {
             vec![],
             func.inputs
                 .iter()
-                .map(|field| format!("api_{}", field.name.rust_style()))
+                .map(|field| format!("api_{}.unwrap()", field.name.rust_style()))
                 .collect::<Vec<_>>(),
         ]
         .concat();
@@ -440,29 +434,24 @@ impl<'a> Generator<'a> {
             .map(|func, _| func.unwrap_or_default())
     }
 
-    fn generate_deallocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-            .deallocate_funcs(&mut self.extern_func_collector, self.config.block_index)
-            .map(|func, _| func.unwrap_or_default())
-    }
 
-    fn generate_opaque_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+    fn generate_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-            .opaque_related_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .related_funcs(&mut self.extern_func_collector, self.config.block_index)
             .map(|func, _| func.unwrap_or_default())
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
         r#"pub trait Wire2Api<T> {
-            fn wire2api(self) -> T;
+            fn wire2api(self) -> Result<T, &'static str>;
         }
 
         impl<T, S> Wire2Api<Option<T>> for *mut S
         where
             *mut S: Wire2Api<T>
         {
-            fn wire2api(self) -> Option<T> {
-                (!self.is_null()).then(|| self.wire2api())
+            fn wire2api(self) -> Result<Option<T>, &'static str> {
+                (!self.is_null()).then(|| self.wire2api()).map_or(Ok(None), |v| v.map(Some))
             }
         }"#
     }
@@ -474,7 +463,7 @@ impl<'a> Generator<'a> {
                 body.map(|body| {
                     format!(
                         "impl Wire2Api<{api}> for {}{} {{
-                            fn wire2api(self) -> {api} {{
+                            fn wire2api(self) -> Result<{api}, &'static str> {{
                                 {}
                             }}
                         }}",
@@ -542,7 +531,7 @@ impl<'a> Generator<'a> {
             .map(|body| {
                 format!(
                     "impl Wire2Api<{api}> for JsValue {{
-                        fn wire2api(self) -> {api} {{
+                        fn wire2api(self) -> Result<{api}, &'static str> {{
                             {}
                         }}
                     }}",
@@ -579,33 +568,6 @@ pub fn generate_list_allocate_func(
             inner.rust_ptr_modifier(),
             inner.rust_wire_type(Target::Io)
         ),
-        Io,
-    )
-}
-
-pub fn generate_list_deallocate_func(
-    collector: &mut ExternFuncCollector,
-    safe_ident: &str,
-    list: &impl IrTypeTrait,
-    _inner: &IrType,
-    block_index: BlockIndex,
-) -> String {
-    collector.generate(
-        &format!("drop_{}_{}", safe_ident, block_index),
-        [
-            (
-                &format!(
-                    "ptr: {}{}",
-                    list.rust_wire_modifier(Target::Io).as_str(),
-                    list.rust_wire_type(Target::Io).as_str()
-                ),
-                "int",
-            ),
-            (&"len: i32".to_owned(), "int"),
-        ],
-        None,
-        "unsafe { let wire = support::box_from_leak_ptr(ptr);
-        drop(support::vec_from_leak_ptr(wire.ptr, len));}",
         Io,
     )
 }

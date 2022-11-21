@@ -16,9 +16,6 @@ use crate::target::Acc;
 use crate::target::Target;
 use crate::utils::*;
 
-#[macro_use]
-extern crate lazy_static;
-
 mod config;
 mod tools;
 

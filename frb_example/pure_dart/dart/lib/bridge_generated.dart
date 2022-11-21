@@ -1662,24 +1662,24 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  DropFnType get drop_opaque_BoxDartDebug => _platform.inner.drop_opaque_BoxDartDebug;
-  ShareFnType get share_opaque_BoxDartDebug => _platform.inner.share_opaque_BoxDartDebug;
+  DropFnType get dropOpaqueBoxDartDebug => _platform.inner.drop_opaque_BoxDartDebug;
+  ShareFnType get shareOpaqueBoxDartDebug => _platform.inner.share_opaque_BoxDartDebug;
   OpaqueTypeFinalizer get BoxDartDebugFinalizer => _platform.BoxDartDebugFinalizer;
 
-  DropFnType get drop_opaque_HideData => _platform.inner.drop_opaque_HideData;
-  ShareFnType get share_opaque_HideData => _platform.inner.share_opaque_HideData;
+  DropFnType get dropOpaqueHideData => _platform.inner.drop_opaque_HideData;
+  ShareFnType get shareOpaqueHideData => _platform.inner.share_opaque_HideData;
   OpaqueTypeFinalizer get HideDataFinalizer => _platform.HideDataFinalizer;
 
-  DropFnType get drop_opaque_I32 => _platform.inner.drop_opaque_I32;
-  ShareFnType get share_opaque_I32 => _platform.inner.share_opaque_I32;
+  DropFnType get dropOpaqueI32 => _platform.inner.drop_opaque_I32;
+  ShareFnType get shareOpaqueI32 => _platform.inner.share_opaque_I32;
   OpaqueTypeFinalizer get I32Finalizer => _platform.I32Finalizer;
 
-  DropFnType get drop_opaque_MutexHideData => _platform.inner.drop_opaque_MutexHideData;
-  ShareFnType get share_opaque_MutexHideData => _platform.inner.share_opaque_MutexHideData;
+  DropFnType get dropOpaqueMutexHideData => _platform.inner.drop_opaque_MutexHideData;
+  ShareFnType get shareOpaqueMutexHideData => _platform.inner.share_opaque_MutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
 
-  DropFnType get drop_opaque_RwLockHideData => _platform.inner.drop_opaque_RwLockHideData;
-  ShareFnType get share_opaque_RwLockHideData => _platform.inner.share_opaque_RwLockHideData;
+  DropFnType get dropOpaqueRwLockHideData => _platform.inner.drop_opaque_RwLockHideData;
+  ShareFnType get shareOpaqueRwLockHideData => _platform.inner.share_opaque_RwLockHideData;
   OpaqueTypeFinalizer get RwLockHideDataFinalizer => _platform.RwLockHideDataFinalizer;
 
 // Section: wire2api
@@ -2637,4 +2637,4 @@ int api2wire_usize(int raw) {
 int api2wire_weekdays(Weekdays raw) {
   return api2wire_i32(raw.index);
 }
-// Section: finalyzer
+// Section: finalizer

@@ -746,18 +746,18 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     return [api2wire_u32(raw.value)];
   }
 
-// Section: finalyzer
+// Section: finalizer
 
-  late final Finalizer<int> _BoxDartDebugFinalizer = Finalizer(inner.drop_opaque_BoxDartDebug);
-  Finalizer<int> get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
-  late final Finalizer<int> _HideDataFinalizer = Finalizer(inner.drop_opaque_HideData);
-  Finalizer<int> get HideDataFinalizer => _HideDataFinalizer;
-  late final Finalizer<int> _I32Finalizer = Finalizer(inner.drop_opaque_I32);
-  Finalizer<int> get I32Finalizer => _I32Finalizer;
-  late final Finalizer<int> _MutexHideDataFinalizer = Finalizer(inner.drop_opaque_MutexHideData);
-  Finalizer<int> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
-  late final Finalizer<int> _RwLockHideDataFinalizer = Finalizer(inner.drop_opaque_RwLockHideData);
-  Finalizer<int> get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
+  late final OpaqueTypeFinalizer _BoxDartDebugFinalizer = OpaqueTypeFinalizer(inner.drop_opaque_BoxDartDebug);
+  OpaqueTypeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final OpaqueTypeFinalizer _HideDataFinalizer = OpaqueTypeFinalizer(inner.drop_opaque_HideData);
+  OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
+  late final OpaqueTypeFinalizer _I32Finalizer = OpaqueTypeFinalizer(inner.drop_opaque_I32);
+  OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
+  late final OpaqueTypeFinalizer _MutexHideDataFinalizer = OpaqueTypeFinalizer(inner.drop_opaque_MutexHideData);
+  OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final OpaqueTypeFinalizer _RwLockHideDataFinalizer = OpaqueTypeFinalizer(inner.drop_opaque_RwLockHideData);
+  OpaqueTypeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 }
 
 // Section: WASM wire module
@@ -1003,14 +1003,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external int /* *mut u8 */ new_box_u8_0(int value);
 
   external int /* *mut i32 */ new_box_weekdays_0(int value);
-
-  external dynamic /*  */ drop_box_autoadd_enum_opaque_0(raw);
-
-  external dynamic /*  */ drop_box_autoadd_opaque_nested_0(raw);
-
-  external dynamic /*  */ drop_enum_opaque(raw);
-
-  external dynamic /*  */ drop_box_opaque_nested(raw);
 
   external dynamic /*  */ drop_opaque_BoxDartDebug(ptr);
 
@@ -1308,14 +1300,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   int /* *mut u8 */ new_box_u8_0(int value) => wasmModule.new_box_u8_0(value);
 
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
-
-  dynamic /*  */ drop_box_autoadd_enum_opaque_0(raw) => wasmModule.drop_box_autoadd_enum_opaque_0(raw);
-
-  dynamic /*  */ drop_box_autoadd_opaque_nested_0(raw) => wasmModule.drop_box_autoadd_opaque_nested_0(raw);
-
-  dynamic /*  */ drop_enum_opaque(raw) => wasmModule.drop_enum_opaque(raw);
-
-  dynamic /*  */ drop_box_opaque_nested(raw) => wasmModule.drop_box_opaque_nested(raw);
 
   dynamic /*  */ drop_opaque_BoxDartDebug(ptr) => wasmModule.drop_opaque_BoxDartDebug(ptr);
 

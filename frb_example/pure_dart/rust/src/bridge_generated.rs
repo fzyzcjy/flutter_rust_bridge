@@ -40,7 +40,7 @@ fn wire_simple_adder_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(simple_adder(api_a, api_b))
+            move |task_callback| Ok(simple_adder(api_a.unwrap(), api_b.unwrap()))
         },
     )
 }
@@ -64,10 +64,10 @@ fn wire_primitive_types_impl(
             let api_my_bool = my_bool.wire2api();
             move |task_callback| {
                 Ok(primitive_types(
-                    api_my_i32,
-                    api_my_i64,
-                    api_my_f64,
-                    api_my_bool,
+                    api_my_i32.unwrap(),
+                    api_my_i64.unwrap(),
+                    api_my_f64.unwrap(),
+                    api_my_bool.unwrap(),
                 ))
             }
         },
@@ -82,7 +82,7 @@ fn wire_primitive_u32_impl(port_: MessagePort, my_u32: impl Wire2Api<u32> + Unwi
         },
         move || {
             let api_my_u32 = my_u32.wire2api();
-            move |task_callback| Ok(primitive_u32(api_my_u32))
+            move |task_callback| Ok(primitive_u32(api_my_u32.unwrap()))
         },
     )
 }
@@ -95,7 +95,7 @@ fn wire_handle_string_impl(port_: MessagePort, s: impl Wire2Api<String> + Unwind
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| Ok(handle_string(api_s))
+            move |task_callback| Ok(handle_string(api_s.unwrap()))
         },
     )
 }
@@ -118,7 +118,7 @@ fn wire_handle_vec_u8_impl(port_: MessagePort, v: impl Wire2Api<Vec<u8>> + Unwin
         },
         move || {
             let api_v = v.wire2api();
-            move |task_callback| Ok(handle_vec_u8(api_v))
+            move |task_callback| Ok(handle_vec_u8(api_v.unwrap()))
         },
     )
 }
@@ -131,7 +131,7 @@ fn wire_handle_vec_of_primitive_impl(port_: MessagePort, n: impl Wire2Api<i32> +
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| Ok(handle_vec_of_primitive(api_n))
+            move |task_callback| Ok(handle_vec_of_primitive(api_n.unwrap()))
         },
     )
 }
@@ -147,7 +147,7 @@ fn wire_handle_zero_copy_vec_of_primitive_impl(
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| Ok(handle_zero_copy_vec_of_primitive(api_n))
+            move |task_callback| Ok(handle_zero_copy_vec_of_primitive(api_n.unwrap()))
         },
     )
 }
@@ -165,7 +165,7 @@ fn wire_handle_struct_impl(
         move || {
             let api_arg = arg.wire2api();
             let api_boxed = boxed.wire2api();
-            move |task_callback| Ok(handle_struct(api_arg, api_boxed))
+            move |task_callback| Ok(handle_struct(api_arg.unwrap(), api_boxed.unwrap()))
         },
     )
 }
@@ -178,7 +178,7 @@ fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> +
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Ok(handle_newtype(api_arg))
+            move |task_callback| Ok(handle_newtype(api_arg.unwrap()))
         },
     )
 }
@@ -191,7 +191,7 @@ fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySi
         },
         move || {
             let api_l = l.wire2api();
-            move |task_callback| Ok(handle_list_of_struct(api_l))
+            move |task_callback| Ok(handle_list_of_struct(api_l.unwrap()))
         },
     )
 }
@@ -207,7 +207,7 @@ fn wire_handle_string_list_impl(
         },
         move || {
             let api_names = names.wire2api();
-            move |task_callback| Ok(handle_string_list(api_names))
+            move |task_callback| Ok(handle_string_list(api_names.unwrap()))
         },
     )
 }
@@ -220,7 +220,7 @@ fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNo
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| Ok(handle_complex_struct(api_s))
+            move |task_callback| Ok(handle_complex_struct(api_s.unwrap()))
         },
     )
 }
@@ -235,7 +235,7 @@ fn wire_handle_sync_return_impl(
         },
         move || {
             let api_mode = mode.wire2api();
-            handle_sync_return(api_mode)
+            handle_sync_return(api_mode.unwrap())
         },
     )
 }
@@ -250,7 +250,7 @@ fn wire_handle_sync_bool_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_bool(api_input))
+            Ok(handle_sync_bool(api_input.unwrap()))
         },
     )
 }
@@ -265,7 +265,7 @@ fn wire_handle_sync_u8_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_u8(api_input))
+            Ok(handle_sync_u8(api_input.unwrap()))
         },
     )
 }
@@ -280,7 +280,7 @@ fn wire_handle_sync_u16_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_u16(api_input))
+            Ok(handle_sync_u16(api_input.unwrap()))
         },
     )
 }
@@ -295,7 +295,7 @@ fn wire_handle_sync_u32_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_u32(api_input))
+            Ok(handle_sync_u32(api_input.unwrap()))
         },
     )
 }
@@ -310,7 +310,7 @@ fn wire_handle_sync_u64_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_u64(api_input))
+            Ok(handle_sync_u64(api_input.unwrap()))
         },
     )
 }
@@ -325,7 +325,7 @@ fn wire_handle_sync_i8_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_i8(api_input))
+            Ok(handle_sync_i8(api_input.unwrap()))
         },
     )
 }
@@ -340,7 +340,7 @@ fn wire_handle_sync_i16_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_i16(api_input))
+            Ok(handle_sync_i16(api_input.unwrap()))
         },
     )
 }
@@ -355,7 +355,7 @@ fn wire_handle_sync_i32_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_i32(api_input))
+            Ok(handle_sync_i32(api_input.unwrap()))
         },
     )
 }
@@ -370,7 +370,7 @@ fn wire_handle_sync_i64_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_i64(api_input))
+            Ok(handle_sync_i64(api_input.unwrap()))
         },
     )
 }
@@ -385,7 +385,7 @@ fn wire_handle_sync_f32_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_f32(api_input))
+            Ok(handle_sync_f32(api_input.unwrap()))
         },
     )
 }
@@ -400,7 +400,7 @@ fn wire_handle_sync_f64_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_f64(api_input))
+            Ok(handle_sync_f64(api_input.unwrap()))
         },
     )
 }
@@ -415,7 +415,7 @@ fn wire_handle_sync_string_impl(
         },
         move || {
             let api_input = input.wire2api();
-            Ok(handle_sync_string(api_input))
+            Ok(handle_sync_string(api_input.unwrap()))
         },
     )
 }
@@ -428,7 +428,7 @@ fn wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + Unwi
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Ok(handle_stream(task_callback.stream_sink(), api_arg))
+            move |task_callback| Ok(handle_stream(task_callback.stream_sink(), api_arg.unwrap()))
         },
     )
 }
@@ -476,7 +476,12 @@ fn wire_handle_optional_return_impl(
         move || {
             let api_left = left.wire2api();
             let api_right = right.wire2api();
-            move |task_callback| Ok(handle_optional_return(api_left, api_right))
+            move |task_callback| {
+                Ok(handle_optional_return(
+                    api_left.unwrap(),
+                    api_right.unwrap(),
+                ))
+            }
         },
     )
 }
@@ -492,7 +497,7 @@ fn wire_handle_optional_struct_impl(
         },
         move || {
             let api_document = document.wire2api();
-            move |task_callback| Ok(handle_optional_struct(api_document))
+            move |task_callback| Ok(handle_optional_struct(api_document.unwrap()))
         },
     )
 }
@@ -508,7 +513,7 @@ fn wire_handle_optional_increment_impl(
         },
         move || {
             let api_opt = opt.wire2api();
-            move |task_callback| Ok(handle_optional_increment(api_opt))
+            move |task_callback| Ok(handle_optional_increment(api_opt.unwrap()))
         },
     )
 }
@@ -524,7 +529,7 @@ fn wire_handle_increment_boxed_optional_impl(
         },
         move || {
             let api_opt = opt.wire2api();
-            move |task_callback| Ok(handle_increment_boxed_optional(api_opt))
+            move |task_callback| Ok(handle_increment_boxed_optional(api_opt.unwrap()))
         },
     )
 }
@@ -554,13 +559,13 @@ fn wire_handle_option_box_arguments_impl(
             let api_structbox = structbox.wire2api();
             move |task_callback| {
                 Ok(handle_option_box_arguments(
-                    api_i8box,
-                    api_u8box,
-                    api_i32box,
-                    api_i64box,
-                    api_f64box,
-                    api_boolbox,
-                    api_structbox,
+                    api_i8box.unwrap(),
+                    api_u8box.unwrap(),
+                    api_i32box.unwrap(),
+                    api_i64box.unwrap(),
+                    api_f64box.unwrap(),
+                    api_boolbox.unwrap(),
+                    api_structbox.unwrap(),
                 ))
             }
         },
@@ -575,7 +580,7 @@ fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSa
         },
         move || {
             let api_note = note.wire2api();
-            move |task_callback| Ok(print_note(api_note))
+            move |task_callback| Ok(print_note(api_note.unwrap()))
         },
     )
 }
@@ -588,7 +593,7 @@ fn wire_handle_return_enum_impl(port_: MessagePort, input: impl Wire2Api<String>
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Ok(handle_return_enum(api_input))
+            move |task_callback| Ok(handle_return_enum(api_input.unwrap()))
         },
     )
 }
@@ -604,7 +609,7 @@ fn wire_handle_enum_parameter_impl(
         },
         move || {
             let api_weekday = weekday.wire2api();
-            move |task_callback| Ok(handle_enum_parameter(api_weekday))
+            move |task_callback| Ok(handle_enum_parameter(api_weekday.unwrap()))
         },
     )
 }
@@ -620,7 +625,7 @@ fn wire_handle_customized_struct_impl(
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| Ok(handle_customized_struct(api_val))
+            move |task_callback| Ok(handle_customized_struct(api_val.unwrap()))
         },
     )
 }
@@ -633,7 +638,7 @@ fn wire_handle_enum_struct_impl(port_: MessagePort, val: impl Wire2Api<KitchenSi
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| Ok(handle_enum_struct(api_val))
+            move |task_callback| Ok(handle_enum_struct(api_val.unwrap()))
         },
     )
 }
@@ -649,7 +654,7 @@ fn wire_use_imported_struct_impl(
         },
         move || {
             let api_my_struct = my_struct.wire2api();
-            move |task_callback| Ok(use_imported_struct(api_my_struct))
+            move |task_callback| Ok(use_imported_struct(api_my_struct.unwrap()))
         },
     )
 }
@@ -662,7 +667,7 @@ fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum
         },
         move || {
             let api_my_enum = my_enum.wire2api();
-            move |task_callback| Ok(use_imported_enum(api_my_enum))
+            move |task_callback| Ok(use_imported_enum(api_my_enum.unwrap()))
         },
     )
 }
@@ -688,7 +693,7 @@ fn wire_is_app_embedded_impl(
         },
         move || {
             let api_app_settings = app_settings.wire2api();
-            move |task_callback| Ok(is_app_embedded(api_app_settings))
+            move |task_callback| Ok(is_app_embedded(api_app_settings.unwrap()))
         },
     )
 }
@@ -716,7 +721,12 @@ fn wire_repeat_number_impl(
         move || {
             let api_num = num.wire2api();
             let api_times = times.wire2api();
-            move |task_callback| Ok(mirror_Numbers(repeat_number(api_num, api_times)))
+            move |task_callback| {
+                Ok(mirror_Numbers(repeat_number(
+                    api_num.unwrap(),
+                    api_times.unwrap(),
+                )))
+            }
         },
     )
 }
@@ -734,7 +744,12 @@ fn wire_repeat_sequence_impl(
         move || {
             let api_seq = seq.wire2api();
             let api_times = times.wire2api();
-            move |task_callback| Ok(mirror_Sequences(repeat_sequence(api_seq, api_times)))
+            move |task_callback| {
+                Ok(mirror_Sequences(repeat_sequence(
+                    api_seq.unwrap(),
+                    api_times.unwrap(),
+                )))
+            }
         },
     )
 }
@@ -747,7 +762,7 @@ fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + Unw
         },
         move || {
             let api_nums = nums.wire2api();
-            move |task_callback| Ok(first_number(api_nums))
+            move |task_callback| Ok(first_number(api_nums.unwrap()))
         },
     )
 }
@@ -760,7 +775,7 @@ fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> +
         },
         move || {
             let api_seqs = seqs.wire2api();
-            move |task_callback| Ok(first_sequence(api_seqs))
+            move |task_callback| Ok(first_sequence(api_seqs.unwrap()))
         },
     )
 }
@@ -793,7 +808,7 @@ fn wire_get_usize_impl(port_: MessagePort, u: impl Wire2Api<usize> + UnwindSafe)
         },
         move || {
             let api_u = u.wire2api();
-            move |task_callback| Ok(get_usize(api_u))
+            move |task_callback| Ok(get_usize(api_u.unwrap()))
         },
     )
 }
@@ -806,7 +821,7 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
         },
         move || {
             let api_user_id = user_id.wire2api();
-            move |task_callback| Ok(next_user_id(api_user_id))
+            move |task_callback| Ok(next_user_id(api_user_id.unwrap()))
         },
     )
 }
@@ -844,7 +859,7 @@ fn wire_create_event_impl(
         move || {
             let api_address = address.wire2api();
             let api_payload = payload.wire2api();
-            move |task_callback| Ok(create_event(api_address, api_payload))
+            move |task_callback| Ok(create_event(api_address.unwrap(), api_payload.unwrap()))
         },
     )
 }
@@ -864,8 +879,8 @@ fn wire_handle_stream_sink_at_1_impl(
             let api_max = max.wire2api();
             move |task_callback| {
                 Ok(handle_stream_sink_at_1(
-                    api_key,
-                    api_max,
+                    api_key.unwrap(),
+                    api_max.unwrap(),
                     task_callback.stream_sink(),
                 ))
             }
@@ -888,9 +903,9 @@ fn wire_handle_stream_sink_at_2_impl(
             let api_max = max.wire2api();
             move |task_callback| {
                 Ok(handle_stream_sink_at_2(
-                    api_key,
+                    api_key.unwrap(),
                     task_callback.stream_sink(),
-                    api_max,
+                    api_max.unwrap(),
                 ))
             }
         },
@@ -913,8 +928,8 @@ fn wire_handle_stream_sink_at_3_impl(
             move |task_callback| {
                 Ok(handle_stream_sink_at_3(
                     task_callback.stream_sink(),
-                    api_key,
-                    api_max,
+                    api_key.unwrap(),
+                    api_max.unwrap(),
                 ))
             }
         },
@@ -946,7 +961,13 @@ fn wire_get_sum_array_impl(
             let api_a = a.wire2api();
             let api_b = b.wire2api();
             let api_c = c.wire2api();
-            move |task_callback| Ok(get_sum_array(api_a, api_b, api_c))
+            move |task_callback| {
+                Ok(get_sum_array(
+                    api_a.unwrap(),
+                    api_b.unwrap(),
+                    api_c.unwrap(),
+                ))
+            }
         },
     )
 }
@@ -959,7 +980,7 @@ fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure>
         },
         move || {
             let api_measure = measure.wire2api();
-            move |task_callback| Ok(multiply_by_ten(api_measure))
+            move |task_callback| Ok(multiply_by_ten(api_measure.unwrap()))
         },
     )
 }
@@ -1005,7 +1026,7 @@ fn wire_datetime_utc_impl(
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(datetime_utc(api_d))
+            move |task_callback| Ok(datetime_utc(api_d.unwrap()))
         },
     )
 }
@@ -1021,7 +1042,7 @@ fn wire_datetime_local_impl(
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(datetime_local(api_d))
+            move |task_callback| Ok(datetime_local(api_d.unwrap()))
         },
     )
 }
@@ -1037,7 +1058,7 @@ fn wire_naivedatetime_impl(
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(naivedatetime(api_d))
+            move |task_callback| Ok(naivedatetime(api_d.unwrap()))
         },
     )
 }
@@ -1050,7 +1071,7 @@ fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + U
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(duration(api_d))
+            move |task_callback| Ok(duration(api_d.unwrap()))
         },
     )
 }
@@ -1066,7 +1087,7 @@ fn wire_how_long_does_it_take_impl(
         },
         move || {
             let api_mine = mine.wire2api();
-            move |task_callback| how_long_does_it_take(api_mine)
+            move |task_callback| how_long_does_it_take(api_mine.unwrap())
         },
     )
 }
@@ -1079,7 +1100,7 @@ fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + Unw
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| handle_uuid(api_id)
+            move |task_callback| handle_uuid(api_id.unwrap())
         },
     )
 }
@@ -1092,7 +1113,7 @@ fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>
         },
         move || {
             let api_ids = ids.wire2api();
-            move |task_callback| handle_uuids(api_ids)
+            move |task_callback| handle_uuids(api_ids.unwrap())
         },
     )
 }
@@ -1105,7 +1126,7 @@ fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureU
         },
         move || {
             let api_ids = ids.wire2api();
-            move |task_callback| handle_nested_uuids(api_ids)
+            move |task_callback| handle_nested_uuids(api_ids.unwrap())
         },
     )
 }
@@ -1118,7 +1139,7 @@ fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindS
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(new_msgid(api_id))
+            move |task_callback| Ok(new_msgid(api_id.unwrap()))
         },
     )
 }
@@ -1131,7 +1152,7 @@ fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + Unwind
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(use_msgid(api_id))
+            move |task_callback| Ok(use_msgid(api_id.unwrap()))
         },
     )
 }
@@ -1144,7 +1165,7 @@ fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>>
         },
         move || {
             let api_blob = blob.wire2api();
-            move |task_callback| Ok(boxed_blob(api_blob))
+            move |task_callback| Ok(boxed_blob(api_blob.unwrap()))
         },
     )
 }
@@ -1157,7 +1178,7 @@ fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> +
         },
         move || {
             let api_blob = blob.wire2api();
-            move |task_callback| Ok(use_boxed_blob(api_blob))
+            move |task_callback| Ok(use_boxed_blob(api_blob.unwrap()))
         },
     )
 }
@@ -1170,7 +1191,7 @@ fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]>
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok((*return_boxed_feed_id(api_id)))
+            move |task_callback| Ok((*return_boxed_feed_id(api_id.unwrap())))
         },
     )
 }
@@ -1183,7 +1204,7 @@ fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<Feed
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok((*return_boxed_raw_feed_id(api_id)))
+            move |task_callback| Ok((*return_boxed_raw_feed_id(api_id.unwrap())))
         },
     )
 }
@@ -1196,7 +1217,7 @@ fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe)
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(test_id(api_id))
+            move |task_callback| Ok(test_id(api_id.unwrap()))
         },
     )
 }
@@ -1209,7 +1230,7 @@ fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + U
         },
         move || {
             let api_array = array.wire2api();
-            move |task_callback| Ok(last_number(api_array))
+            move |task_callback| Ok(last_number(api_array.unwrap()))
         },
     )
 }
@@ -1222,7 +1243,7 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(nested_id(api_id))
+            move |task_callback| Ok(nested_id(api_id.unwrap()))
         },
     )
 }
@@ -1255,7 +1276,7 @@ fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaqu
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_enum_opaque(api_opaque))
+            move |task_callback| Ok(run_enum_opaque(api_opaque.unwrap()))
         },
     )
 }
@@ -1268,7 +1289,7 @@ fn wire_run_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<Opaque<HideDat
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_opaque(api_opaque))
+            move |task_callback| Ok(run_opaque(api_opaque.unwrap()))
         },
     )
 }
@@ -1284,7 +1305,7 @@ fn wire_run_opaque_with_delay_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_opaque_with_delay(api_opaque))
+            move |task_callback| Ok(run_opaque_with_delay(api_opaque.unwrap()))
         },
     )
 }
@@ -1310,7 +1331,7 @@ fn wire_opaque_array_run_impl(
         },
         move || {
             let api_data = data.wire2api();
-            move |task_callback| Ok(opaque_array_run(api_data))
+            move |task_callback| Ok(opaque_array_run(api_data.unwrap()))
         },
     )
 }
@@ -1336,7 +1357,7 @@ fn wire_opaque_vec_run_impl(
         },
         move || {
             let api_data = data.wire2api();
-            move |task_callback| Ok(opaque_vec_run(api_data))
+            move |task_callback| Ok(opaque_vec_run(api_data.unwrap()))
         },
     )
 }
@@ -1362,7 +1383,7 @@ fn wire_run_nested_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_nested_opaque(api_opaque))
+            move |task_callback| Ok(run_nested_opaque(api_opaque.unwrap()))
         },
     )
 }
@@ -1382,7 +1403,13 @@ fn wire_sum__method__SumWith_impl(
             let api_that = that.wire2api();
             let api_y = y.wire2api();
             let api_z = z.wire2api();
-            move |task_callback| Ok(SumWith::sum(&api_that, api_y, api_z))
+            move |task_callback| {
+                Ok(SumWith::sum(
+                    &api_that.unwrap(),
+                    api_y.unwrap(),
+                    api_z.unwrap(),
+                ))
+            }
         },
     )
 }
@@ -1398,7 +1425,7 @@ fn wire_new__static_method__ConcatenateWith_impl(
         },
         move || {
             let api_a = a.wire2api();
-            move |task_callback| Ok(ConcatenateWith::new(api_a))
+            move |task_callback| Ok(ConcatenateWith::new(api_a.unwrap()))
         },
     )
 }
@@ -1416,7 +1443,12 @@ fn wire_concatenate__method__ConcatenateWith_impl(
         move || {
             let api_that = that.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(ConcatenateWith::concatenate(&api_that, api_b))
+            move |task_callback| {
+                Ok(ConcatenateWith::concatenate(
+                    &api_that.unwrap(),
+                    api_b.unwrap(),
+                ))
+            }
         },
     )
 }
@@ -1434,7 +1466,12 @@ fn wire_concatenate_static__static_method__ConcatenateWith_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(ConcatenateWith::concatenate_static(api_a, api_b))
+            move |task_callback| {
+                Ok(ConcatenateWith::concatenate_static(
+                    api_a.unwrap(),
+                    api_b.unwrap(),
+                ))
+            }
         },
     )
 }
@@ -1456,9 +1493,9 @@ fn wire_handle_some_stream_sink__method__ConcatenateWith_impl(
             let api_max = max.wire2api();
             move |task_callback| {
                 Ok(ConcatenateWith::handle_some_stream_sink(
-                    &api_that,
-                    api_key,
-                    api_max,
+                    &api_that.unwrap(),
+                    api_key.unwrap(),
+                    api_max.unwrap(),
                     task_callback.stream_sink(),
                 ))
             }
@@ -1479,7 +1516,7 @@ fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(
             let api_that = that.wire2api();
             move |task_callback| {
                 Ok(ConcatenateWith::handle_some_stream_sink_at_1(
-                    &api_that,
+                    &api_that.unwrap(),
                     task_callback.stream_sink(),
                 ))
             }
@@ -1502,8 +1539,8 @@ fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
             let api_max = max.wire2api();
             move |task_callback| {
                 Ok(ConcatenateWith::handle_some_static_stream_sink(
-                    api_key,
-                    api_max,
+                    api_key.unwrap(),
+                    api_max.unwrap(),
                     task_callback.stream_sink(),
                 ))
             }
@@ -1595,169 +1632,169 @@ const _: fn() = || {
 };
 // Section: allocate functions
 
-// Section: deallocate functions
-
-// Section: opaque related functions
+// Section: related functions
 
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {
-    fn wire2api(self) -> T;
+    fn wire2api(self) -> Result<T, &'static str>;
 }
 
 impl<T, S> Wire2Api<Option<T>> for *mut S
 where
     *mut S: Wire2Api<T>,
 {
-    fn wire2api(self) -> Option<T> {
-        (!self.is_null()).then(|| self.wire2api())
+    fn wire2api(self) -> Result<Option<T>, &'static str> {
+        (!self.is_null())
+            .then(|| self.wire2api())
+            .map_or(Ok(None), |v| v.map(Some))
     }
 }
 
 impl Wire2Api<ApplicationMode> for i32 {
-    fn wire2api(self) -> ApplicationMode {
-        match self {
+    fn wire2api(self) -> Result<ApplicationMode, &'static str> {
+        Ok(match self {
             0 => ApplicationMode::Standalone,
             1 => ApplicationMode::Embedded,
             _ => unreachable!("Invalid variant for ApplicationMode: {}", self),
-        }
+        })
     }
 }
 
 impl Wire2Api<bool> for bool {
-    fn wire2api(self) -> bool {
-        self
+    fn wire2api(self) -> Result<bool, &'static str> {
+        Ok(self)
     }
 }
 
 impl Wire2Api<bool> for *mut bool {
-    fn wire2api(self) -> bool {
-        unsafe { *support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<bool, &'static str> {
+        unsafe { Ok(*support::box_from_leak_ptr(self)) }
     }
 }
 
 impl Wire2Api<f64> for *mut f64 {
-    fn wire2api(self) -> f64 {
-        unsafe { *support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<f64, &'static str> {
+        unsafe { Ok(*support::box_from_leak_ptr(self)) }
     }
 }
 
 impl Wire2Api<i32> for *mut i32 {
-    fn wire2api(self) -> i32 {
-        unsafe { *support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<i32, &'static str> {
+        unsafe { Ok(*support::box_from_leak_ptr(self)) }
     }
 }
 impl Wire2Api<i64> for *mut i64 {
-    fn wire2api(self) -> i64 {
-        unsafe { *support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<i64, &'static str> {
+        unsafe { Ok(*support::box_from_leak_ptr(self)) }
     }
 }
 
 impl Wire2Api<Box<bool>> for *mut bool {
-    fn wire2api(self) -> Box<bool> {
-        unsafe { support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<Box<bool>, &'static str> {
+        unsafe { Ok(support::box_from_leak_ptr(self)) }
     }
 }
 
 impl Wire2Api<Box<f64>> for *mut f64 {
-    fn wire2api(self) -> Box<f64> {
-        unsafe { support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<Box<f64>, &'static str> {
+        unsafe { Ok(support::box_from_leak_ptr(self)) }
     }
 }
 impl Wire2Api<Box<i32>> for *mut i32 {
-    fn wire2api(self) -> Box<i32> {
-        unsafe { support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<Box<i32>, &'static str> {
+        unsafe { Ok(support::box_from_leak_ptr(self)) }
     }
 }
 impl Wire2Api<Box<i64>> for *mut i64 {
-    fn wire2api(self) -> Box<i64> {
-        unsafe { support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<Box<i64>, &'static str> {
+        unsafe { Ok(support::box_from_leak_ptr(self)) }
     }
 }
 impl Wire2Api<Box<i8>> for *mut i8 {
-    fn wire2api(self) -> Box<i8> {
-        unsafe { support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<Box<i8>, &'static str> {
+        unsafe { Ok(support::box_from_leak_ptr(self)) }
     }
 }
 
 impl Wire2Api<Box<u8>> for *mut u8 {
-    fn wire2api(self) -> Box<u8> {
-        unsafe { support::box_from_leak_ptr(self) }
+    fn wire2api(self) -> Result<Box<u8>, &'static str> {
+        unsafe { Ok(support::box_from_leak_ptr(self)) }
     }
 }
 
 impl Wire2Api<f32> for f32 {
-    fn wire2api(self) -> f32 {
-        self
+    fn wire2api(self) -> Result<f32, &'static str> {
+        Ok(self)
     }
 }
 impl Wire2Api<f64> for f64 {
-    fn wire2api(self) -> f64 {
-        self
+    fn wire2api(self) -> Result<f64, &'static str> {
+        Ok(self)
     }
 }
 
 impl Wire2Api<i16> for i16 {
-    fn wire2api(self) -> i16 {
-        self
+    fn wire2api(self) -> Result<i16, &'static str> {
+        Ok(self)
     }
 }
 impl Wire2Api<i32> for i32 {
-    fn wire2api(self) -> i32 {
-        self
+    fn wire2api(self) -> Result<i32, &'static str> {
+        Ok(self)
     }
 }
 
 impl Wire2Api<i64> for i64 {
-    fn wire2api(self) -> i64 {
-        self
+    fn wire2api(self) -> Result<i64, &'static str> {
+        Ok(self)
     }
 }
 impl Wire2Api<i8> for i8 {
-    fn wire2api(self) -> i8 {
-        self
+    fn wire2api(self) -> Result<i8, &'static str> {
+        Ok(self)
     }
 }
 
 impl Wire2Api<MyEnum> for i32 {
-    fn wire2api(self) -> MyEnum {
-        match self {
+    fn wire2api(self) -> Result<MyEnum, &'static str> {
+        Ok(match self {
             0 => MyEnum::False,
             1 => MyEnum::True,
             _ => unreachable!("Invalid variant for MyEnum: {}", self),
-        }
+        })
     }
 }
 
 impl Wire2Api<u16> for u16 {
-    fn wire2api(self) -> u16 {
-        self
+    fn wire2api(self) -> Result<u16, &'static str> {
+        Ok(self)
     }
 }
 impl Wire2Api<u32> for u32 {
-    fn wire2api(self) -> u32 {
-        self
+    fn wire2api(self) -> Result<u32, &'static str> {
+        Ok(self)
     }
 }
 impl Wire2Api<u64> for u64 {
-    fn wire2api(self) -> u64 {
-        self
+    fn wire2api(self) -> Result<u64, &'static str> {
+        Ok(self)
     }
 }
 impl Wire2Api<u8> for u8 {
-    fn wire2api(self) -> u8 {
-        self
+    fn wire2api(self) -> Result<u8, &'static str> {
+        Ok(self)
     }
 }
 
 impl Wire2Api<usize> for usize {
-    fn wire2api(self) -> usize {
-        self
+    fn wire2api(self) -> Result<usize, &'static str> {
+        Ok(self)
     }
 }
 impl Wire2Api<Weekdays> for i32 {
-    fn wire2api(self) -> Weekdays {
-        match self {
+    fn wire2api(self) -> Result<Weekdays, &'static str> {
+        Ok(match self {
             0 => Weekdays::Monday,
             1 => Weekdays::Tuesday,
             2 => Weekdays::Wednesday,
@@ -1766,7 +1803,7 @@ impl Wire2Api<Weekdays> for i32 {
             5 => Weekdays::Saturday,
             6 => Weekdays::Sunday,
             _ => unreachable!("Invalid variant for Weekdays: {}", self),
-        }
+        })
     }
 }
 // Section: impl IntoDart

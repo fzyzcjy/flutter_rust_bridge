@@ -11,7 +11,7 @@ typedef ShareFnType = PlatformPointer Function(PlatformPointer);
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
-abstract class FrbOpaque extends FrbOpaqueImpl {
+abstract class FrbOpaque extends FrbOpaqueBase {
   /// Pointer to this opaque Rust type.
   PlatformPointer _ptr;
 
@@ -31,9 +31,9 @@ abstract class FrbOpaque extends FrbOpaqueImpl {
 
   /// This constructor should never be called manually.
   @internal
-  FrbOpaque.unsafe(int ptr, int size) : _ptr = FrbOpaqueImpl.initPtr(ptr) {
+  FrbOpaque.unsafe(int ptr, int size) : _ptr = FrbOpaqueBase.initPtr(ptr) {
     assert(ptr > 0);
-    FrbOpaqueImpl.finalizerAttach(this, _ptr, size, staticFinalizer);
+    FrbOpaqueBase.finalizerAttach(this, _ptr, size, staticFinalizer);
   }
 
   /// Call Rust destructors on the backing memory of this pointer.
@@ -47,7 +47,7 @@ abstract class FrbOpaque extends FrbOpaqueImpl {
   void dispose() {
     if (!isStale()) {
       var ptr = _ptr;
-      _ptr = FrbOpaqueImpl.nullPtr();
+      _ptr = FrbOpaqueBase.nullPtr();
 
       staticFinalizer.detach(this);
       dropFn(ptr);
@@ -63,12 +63,12 @@ abstract class FrbOpaque extends FrbOpaqueImpl {
     if (!isStale()) {
       return shareFn(_ptr);
     } else {
-      throw StateError('Use after dispose.');
+      return FrbOpaqueBase.nullPtr();
     }
   }
 
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
-  bool isStale() => FrbOpaqueImpl.isStalePtr(_ptr);
+  bool isStale() => FrbOpaqueBase.isStalePtr(_ptr);
 }

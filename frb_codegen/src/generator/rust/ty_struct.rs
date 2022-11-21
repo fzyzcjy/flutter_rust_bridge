@@ -10,41 +10,59 @@ type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         let api_struct = self.ir.get(self.context.ir_file);
-        let fields = api_struct
+        let (prepare_fields, fields): (Acc<Vec<_>>, Acc<Vec<_>>) = api_struct
             .fields
             .iter()
             .enumerate()
             .map(|(idx, field)| {
+                let field_name = field.name.rust_style();
+                let prepare_field_ = format!("{field_name}");
+
                 let field_ = if api_struct.is_fields_named {
-                    field.name.rust_style().to_string() + ": "
+                    format!("{field_name}: ")
                 } else {
                     String::new()
                 };
-                Acc {
-                    wasm: format!("{} self_.get({}).wire2api()", field_, idx),
-                    io: format!("{} self.{}.wire2api()", field_, field.name.rust_style()),
-                    ..Default::default()
-                }
+                (
+                    Acc {
+                        wasm: format!("let {} = self_.get({}).wire2api();", prepare_field_, idx),
+                        io: format!(
+                            "let {} = self.{}.wire2api();",
+                            prepare_field_,
+                            field.name.rust_style()
+                        ),
+                        ..Default::default()
+                    },
+                    Acc {
+                        wasm: format!("{}{}?", field_, prepare_field_),
+                        io: format!("{}{}?", field_, prepare_field_),
+                        ..Default::default()
+                    },
+                )
             })
-            .collect::<Acc<Vec<_>>>();
+            .unzip();
 
         let (left, right) = api_struct.brackets_pair();
         Acc {
             io: Some(format!(
-                "{}{}{}{}",
+                "
+                {}
+                Ok({}{left}{}{right})
+                ",
+                prepare_fields.io.join(" "),
                 self.ir.rust_api_type(),
-                left,
                 fields.io.join(","),
-                right
             )),
             wasm: Some(format!(
-                "let self_ = self.dyn_into::<JsArray>().unwrap();
+                "
+                let self_ = self.dyn_into::<JsArray>().unwrap();
                 assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
-                {}{}{}{}",
+                {}
+                Ok({}{left}{}{right})
+                ",
+                prepare_fields.wasm.join(" "),
                 self.ir.rust_api_type(),
-                left,
                 fields.wasm.join(","),
-                right,
                 len = api_struct.fields.len(),
             )),
             ..Default::default()
@@ -194,24 +212,6 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             self.ir.rust_wire_type(Target::Io),
             body,
         )
-    }
-
-    fn deallocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        _block_index: crate::utils::BlockIndex,
-    ) -> Acc<Option<String>> {
-        let func_name = format!("drop_box_{}", self.ir.safe_ident());
-        Acc::new(|target| match target {
-            Target::Io | Target::Wasm => Some(collector.generate(
-                &func_name,
-                [(&format!("raw: *mut {}", self.ir.rust_wire_type(target)), "")],
-                None,
-                "unsafe{drop(Box::from_raw(raw));}",
-                target,
-            )),
-            _ => None,
-        })
     }
 
     fn imports(&self) -> Option<String> {

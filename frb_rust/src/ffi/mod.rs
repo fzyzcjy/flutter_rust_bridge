@@ -106,11 +106,15 @@ pub struct Opaque<T: ?Sized + DartSafe> {
 /// This function should never be called manually.
 /// Retrieving an opaque pointer from Dart is an implementation detail, so this
 /// function is not guaranteed to be API-stable.
-pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
+pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Result<Opaque<T>, &'static str> {
     // The raw pointer is the same one created from Arc::into_raw,
     // owned and artificially incremented by Dart.
-    Opaque {
-        ptr: Arc::from_raw(ptr),
+    if ptr.is_null() {
+        Err("Use after free.")
+    } else {
+        Ok(Opaque {
+            ptr: Arc::from_raw(ptr),
+        })
     }
 }
 

@@ -904,45 +904,7 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
-// Section: deallocate functions
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_enum_opaque_0(raw: *mut wire_EnumOpaque) {
-    unsafe {
-        drop(Box::from_raw(raw));
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_opaque_nested_0(raw: *mut wire_OpaqueNested) {
-    unsafe {
-        drop(Box::from_raw(raw));
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_enum_opaque(raw: *mut wire_EnumOpaque) {
-    unsafe {
-        drop(Box::from_raw(raw));
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_list_HideData_0(ptr: *mut wire_list_HideData, len: i32) {
-    unsafe {
-        let wire = support::box_from_leak_ptr(ptr);
-        drop(support::vec_from_leak_ptr(wire.ptr, len));
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_opaque_nested(raw: *mut wire_OpaqueNested) {
-    unsafe {
-        drop(Box::from_raw(raw));
-    }
-}
-
-// Section: opaque related functions
+// Section: related functions
 
 #[no_mangle]
 pub extern "C" fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
@@ -1022,73 +984,75 @@ pub extern "C" fn share_opaque_RwLockHideData(ptr: *const c_void) -> *const c_vo
 // Section: impl Wire2Api
 
 impl Wire2Api<Opaque<Box<dyn DartDebug>>> for wire_BoxDartDebug {
-    fn wire2api(self) -> Opaque<Box<dyn DartDebug>> {
+    fn wire2api(self) -> Result<Opaque<Box<dyn DartDebug>>, &'static str> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
 impl Wire2Api<chrono::Duration> for i64 {
-    fn wire2api(self) -> chrono::Duration {
-        chrono::Duration::microseconds(self)
+    fn wire2api(self) -> Result<chrono::Duration, &'static str> {
+        Ok(chrono::Duration::microseconds(self))
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
-    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
+    fn wire2api(self) -> Result<chrono::DateTime<chrono::Local>, &'static str> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
+        Ok(chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<
+            chrono::Utc,
+        >::from_utc(
+            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::Utc,
+        )))
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for i64 {
+    fn wire2api(self) -> Result<chrono::NaiveDateTime, &'static str> {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        Ok(chrono::NaiveDateTime::from_timestamp(s, ns))
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
+    fn wire2api(self) -> Result<chrono::DateTime<chrono::Utc>, &'static str> {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        Ok(chrono::DateTime::<chrono::Utc>::from_utc(
             chrono::NaiveDateTime::from_timestamp(s, ns),
             chrono::Utc,
         ))
     }
 }
-impl Wire2Api<chrono::NaiveDateTime> for i64 {
-    fn wire2api(self) -> chrono::NaiveDateTime {
-        let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp(s, ns)
-    }
-}
-impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
-    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
-            chrono::Utc,
-        )
-    }
-}
 impl Wire2Api<Opaque<HideData>> for wire_HideData {
-    fn wire2api(self) -> Opaque<HideData> {
+    fn wire2api(self) -> Result<Opaque<HideData>, &'static str> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
 impl Wire2Api<[Opaque<HideData>; 2]> for *mut wire_list_HideData {
-    fn wire2api(self) -> [Opaque<HideData>; 2] {
-        let vec: Vec<Opaque<HideData>> = self.wire2api();
-        support::from_vec_to_array(vec)
+    fn wire2api(self) -> Result<[Opaque<HideData>; 2], &'static str> {
+        let vec: Vec<Opaque<HideData>> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<Opaque<i32>> for wire_I32 {
-    fn wire2api(self) -> Opaque<i32> {
+    fn wire2api(self) -> Result<Opaque<i32>, &'static str> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
 impl Wire2Api<Opaque<Mutex<HideData>>> for wire_MutexHideData {
-    fn wire2api(self) -> Opaque<Mutex<HideData>> {
+    fn wire2api(self) -> Result<Opaque<Mutex<HideData>>, &'static str> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
 impl Wire2Api<Opaque<RwLock<HideData>>> for wire_RwLockHideData {
-    fn wire2api(self) -> Opaque<RwLock<HideData>> {
+    fn wire2api(self) -> Result<Opaque<RwLock<HideData>>, &'static str> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
 impl Wire2Api<String> for *mut wire_uint_8_list {
-    fn wire2api(self) -> String {
-        let vec: Vec<u8> = self.wire2api();
-        String::from_utf8_lossy(&vec).into_owned()
+    fn wire2api(self) -> Result<String, &'static str> {
+        let vec: Vec<u8> = self.wire2api()?;
+        Ok(String::from_utf8_lossy(&vec).into_owned())
     }
 }
 impl Wire2Api<Vec<String>> for *mut wire_StringList {
-    fn wire2api(self) -> Vec<String> {
+    fn wire2api(self) -> Result<Vec<String>, &'static str> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1097,451 +1061,496 @@ impl Wire2Api<Vec<String>> for *mut wire_StringList {
     }
 }
 impl Wire2Api<[TestId; 4]> for *mut wire_list_test_id {
-    fn wire2api(self) -> [TestId; 4] {
-        let vec: Vec<TestId> = self.wire2api();
-        support::from_vec_to_array(vec)
+    fn wire2api(self) -> Result<[TestId; 4], &'static str> {
+        let vec: Vec<TestId> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<uuid::Uuid> for *mut wire_uint_8_list {
-    fn wire2api(self) -> uuid::Uuid {
-        let single: Vec<u8> = self.wire2api();
-        wire2api_uuid_ref(single.as_slice())
+    fn wire2api(self) -> Result<uuid::Uuid, &'static str> {
+        let single: Vec<u8> = self.wire2api()?;
+        Ok(wire2api_uuid_ref(single.as_slice()))
     }
 }
 impl Wire2Api<Vec<uuid::Uuid>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Vec<uuid::Uuid> {
-        let multiple: Vec<u8> = self.wire2api();
-        wire2api_uuids(multiple)
+    fn wire2api(self) -> Result<Vec<uuid::Uuid>, &'static str> {
+        let multiple: Vec<u8> = self.wire2api()?;
+        Ok(wire2api_uuids(multiple))
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
-        ZeroCopyBuffer(self.wire2api())
+    fn wire2api(self) -> Result<ZeroCopyBuffer<Vec<u8>>, &'static str> {
+        Ok(ZeroCopyBuffer(self.wire2api()?))
     }
 }
 impl Wire2Api<ApplicationEnv> for wire_ApplicationEnv {
-    fn wire2api(self) -> ApplicationEnv {
-        ApplicationEnv {
-            vars: self.vars.wire2api(),
-        }
+    fn wire2api(self) -> Result<ApplicationEnv, &'static str> {
+        let vars = self.vars.wire2api();
+        Ok(ApplicationEnv { vars: vars? })
     }
 }
 impl Wire2Api<ApplicationEnvVar> for wire_ApplicationEnvVar {
-    fn wire2api(self) -> ApplicationEnvVar {
-        ApplicationEnvVar(self.field0.wire2api(), self.field1.wire2api())
+    fn wire2api(self) -> Result<ApplicationEnvVar, &'static str> {
+        let field0 = self.field0.wire2api();
+        let field1 = self.field1.wire2api();
+        Ok(ApplicationEnvVar(field0?, field1?))
     }
 }
 
 impl Wire2Api<ApplicationSettings> for wire_ApplicationSettings {
-    fn wire2api(self) -> ApplicationSettings {
-        ApplicationSettings {
-            name: self.name.wire2api(),
-            version: self.version.wire2api(),
-            mode: self.mode.wire2api(),
-            env: self.env.wire2api(),
-        }
+    fn wire2api(self) -> Result<ApplicationSettings, &'static str> {
+        let name = self.name.wire2api();
+        let version = self.version.wire2api();
+        let mode = self.mode.wire2api();
+        let env = self.env.wire2api();
+        Ok(ApplicationSettings {
+            name: name?,
+            version: version?,
+            mode: mode?,
+            env: env?,
+        })
     }
 }
 impl Wire2Api<Attribute> for wire_Attribute {
-    fn wire2api(self) -> Attribute {
-        Attribute {
-            key: self.key.wire2api(),
-            value: self.value.wire2api(),
-        }
+    fn wire2api(self) -> Result<Attribute, &'static str> {
+        let key = self.key.wire2api();
+        let value = self.value.wire2api();
+        Ok(Attribute {
+            key: key?,
+            value: value?,
+        })
     }
 }
 impl Wire2Api<Blob> for wire_Blob {
-    fn wire2api(self) -> Blob {
-        Blob(self.field0.wire2api())
+    fn wire2api(self) -> Result<Blob, &'static str> {
+        let field0 = self.field0.wire2api();
+        Ok(Blob(field0?))
     }
 }
 
 impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
-    fn wire2api(self) -> Box<ApplicationEnv> {
+    fn wire2api(self) -> Result<Box<ApplicationEnv>, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
+        Wire2Api::<ApplicationEnv>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
-    fn wire2api(self) -> ApplicationSettings {
+    fn wire2api(self) -> Result<ApplicationSettings, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<ApplicationSettings>::wire2api(*wrap).into()
+        Wire2Api::<ApplicationSettings>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Attribute> for *mut wire_Attribute {
-    fn wire2api(self) -> Attribute {
+    fn wire2api(self) -> Result<Attribute, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Attribute>::wire2api(*wrap).into()
+        Wire2Api::<Attribute>::wire2api(*wrap).map(Into::into)
     }
 }
 
 impl Wire2Api<ConcatenateWith> for *mut wire_ConcatenateWith {
-    fn wire2api(self) -> ConcatenateWith {
+    fn wire2api(self) -> Result<ConcatenateWith, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<ConcatenateWith>::wire2api(*wrap).into()
+        Wire2Api::<ConcatenateWith>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Customized> for *mut wire_Customized {
-    fn wire2api(self) -> Customized {
+    fn wire2api(self) -> Result<Customized, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Customized>::wire2api(*wrap).into()
+        Wire2Api::<Customized>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<EnumOpaque> for *mut wire_EnumOpaque {
-    fn wire2api(self) -> EnumOpaque {
+    fn wire2api(self) -> Result<EnumOpaque, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumOpaque>::wire2api(*wrap).into()
+        Wire2Api::<EnumOpaque>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
-    fn wire2api(self) -> ExoticOptionals {
+    fn wire2api(self) -> Result<ExoticOptionals, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
+        Wire2Api::<ExoticOptionals>::wire2api(*wrap).map(Into::into)
     }
 }
 
 impl Wire2Api<FeatureChrono> for *mut wire_FeatureChrono {
-    fn wire2api(self) -> FeatureChrono {
+    fn wire2api(self) -> Result<FeatureChrono, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<FeatureChrono>::wire2api(*wrap).into()
+        Wire2Api::<FeatureChrono>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<FeatureUuid> for *mut wire_FeatureUuid {
-    fn wire2api(self) -> FeatureUuid {
+    fn wire2api(self) -> Result<FeatureUuid, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<FeatureUuid>::wire2api(*wrap).into()
+        Wire2Api::<FeatureUuid>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<FeedId> for *mut wire_FeedId {
-    fn wire2api(self) -> FeedId {
+    fn wire2api(self) -> Result<FeedId, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<FeedId>::wire2api(*wrap).into()
+        Wire2Api::<FeedId>::wire2api(*wrap).map(Into::into)
     }
 }
 
 impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
-    fn wire2api(self) -> KitchenSink {
+    fn wire2api(self) -> Result<KitchenSink, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<KitchenSink>::wire2api(*wrap).into()
+        Wire2Api::<KitchenSink>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Measure> for *mut wire_Measure {
-    fn wire2api(self) -> Measure {
+    fn wire2api(self) -> Result<Measure, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Measure>::wire2api(*wrap).into()
+        Wire2Api::<Measure>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<MessageId> for *mut wire_MessageId {
-    fn wire2api(self) -> MessageId {
+    fn wire2api(self) -> Result<MessageId, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<MessageId>::wire2api(*wrap).into()
+        Wire2Api::<MessageId>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<MySize> for *mut wire_MySize {
-    fn wire2api(self) -> MySize {
+    fn wire2api(self) -> Result<MySize, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<MySize>::wire2api(*wrap).into()
+        Wire2Api::<MySize>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<MyStruct> for *mut wire_MyStruct {
-    fn wire2api(self) -> MyStruct {
+    fn wire2api(self) -> Result<MyStruct, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<MyStruct>::wire2api(*wrap).into()
+        Wire2Api::<MyStruct>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<MyTreeNode> for *mut wire_MyTreeNode {
-    fn wire2api(self) -> MyTreeNode {
+    fn wire2api(self) -> Result<MyTreeNode, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<MyTreeNode>::wire2api(*wrap).into()
+        Wire2Api::<MyTreeNode>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<NewTypeInt> for *mut wire_NewTypeInt {
-    fn wire2api(self) -> NewTypeInt {
+    fn wire2api(self) -> Result<NewTypeInt, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<NewTypeInt>::wire2api(*wrap).into()
+        Wire2Api::<NewTypeInt>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Note> for *mut wire_Note {
-    fn wire2api(self) -> Note {
+    fn wire2api(self) -> Result<Note, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Note>::wire2api(*wrap).into()
+        Wire2Api::<Note>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Numbers> for *mut wire_Numbers {
-    fn wire2api(self) -> Numbers {
+    fn wire2api(self) -> Result<Numbers, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Numbers>::wire2api(*wrap).into()
+        Wire2Api::<Numbers>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<OpaqueNested> for *mut wire_OpaqueNested {
-    fn wire2api(self) -> OpaqueNested {
+    fn wire2api(self) -> Result<OpaqueNested, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<OpaqueNested>::wire2api(*wrap).into()
+        Wire2Api::<OpaqueNested>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Sequences> for *mut wire_Sequences {
-    fn wire2api(self) -> Sequences {
+    fn wire2api(self) -> Result<Sequences, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Sequences>::wire2api(*wrap).into()
+        Wire2Api::<Sequences>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<SumWith> for *mut wire_SumWith {
-    fn wire2api(self) -> SumWith {
+    fn wire2api(self) -> Result<SumWith, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<SumWith>::wire2api(*wrap).into()
+        Wire2Api::<SumWith>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<TestId> for *mut wire_TestId {
-    fn wire2api(self) -> TestId {
+    fn wire2api(self) -> Result<TestId, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<TestId>::wire2api(*wrap).into()
+        Wire2Api::<TestId>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<UserId> for *mut wire_UserId {
-    fn wire2api(self) -> UserId {
+    fn wire2api(self) -> Result<UserId, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<UserId>::wire2api(*wrap).into()
+        Wire2Api::<UserId>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Box<Blob>> for *mut wire_Blob {
-    fn wire2api(self) -> Box<Blob> {
+    fn wire2api(self) -> Result<Box<Blob>, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Blob>::wire2api(*wrap).into()
+        Wire2Api::<Blob>::wire2api(*wrap).map(Into::into)
     }
 }
 
 impl Wire2Api<Box<Distance>> for *mut wire_Distance {
-    fn wire2api(self) -> Box<Distance> {
+    fn wire2api(self) -> Result<Box<Distance>, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Distance>::wire2api(*wrap).into()
+        Wire2Api::<Distance>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Box<ExoticOptionals>> for *mut wire_ExoticOptionals {
-    fn wire2api(self) -> Box<ExoticOptionals> {
+    fn wire2api(self) -> Result<Box<ExoticOptionals>, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
+        Wire2Api::<ExoticOptionals>::wire2api(*wrap).map(Into::into)
     }
 }
 
 impl Wire2Api<Box<KitchenSink>> for *mut wire_KitchenSink {
-    fn wire2api(self) -> Box<KitchenSink> {
+    fn wire2api(self) -> Result<Box<KitchenSink>, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<KitchenSink>::wire2api(*wrap).into()
+        Wire2Api::<KitchenSink>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Box<MySize>> for *mut wire_MySize {
-    fn wire2api(self) -> Box<MySize> {
+    fn wire2api(self) -> Result<Box<MySize>, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<MySize>::wire2api(*wrap).into()
+        Wire2Api::<MySize>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<Box<Speed>> for *mut wire_Speed {
-    fn wire2api(self) -> Box<Speed> {
+    fn wire2api(self) -> Result<Box<Speed>, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Speed>::wire2api(*wrap).into()
+        Wire2Api::<Speed>::wire2api(*wrap).map(Into::into)
     }
 }
 
 impl Wire2Api<Box<[u8; 1600]>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Box<[u8; 1600]> {
-        Wire2Api::<[u8; 1600]>::wire2api(self).into()
+    fn wire2api(self) -> Result<Box<[u8; 1600]>, &'static str> {
+        Wire2Api::<[u8; 1600]>::wire2api(self).map(Into::into)
     }
 }
 impl Wire2Api<Box<Weekdays>> for *mut i32 {
-    fn wire2api(self) -> Box<Weekdays> {
+    fn wire2api(self) -> Result<Box<Weekdays>, &'static str> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Weekdays>::wire2api(*wrap).into()
+        Wire2Api::<Weekdays>::wire2api(*wrap).map(Into::into)
     }
 }
 impl Wire2Api<ConcatenateWith> for wire_ConcatenateWith {
-    fn wire2api(self) -> ConcatenateWith {
-        ConcatenateWith {
-            a: self.a.wire2api(),
-        }
+    fn wire2api(self) -> Result<ConcatenateWith, &'static str> {
+        let a = self.a.wire2api();
+        Ok(ConcatenateWith { a: a? })
     }
 }
 impl Wire2Api<Customized> for wire_Customized {
-    fn wire2api(self) -> Customized {
-        Customized {
-            final_field: self.final_field.wire2api(),
-            non_final_field: self.non_final_field.wire2api(),
-        }
+    fn wire2api(self) -> Result<Customized, &'static str> {
+        let final_field = self.final_field.wire2api();
+        let non_final_field = self.non_final_field.wire2api();
+        Ok(Customized {
+            final_field: final_field?,
+            non_final_field: non_final_field?,
+        })
     }
 }
 impl Wire2Api<Distance> for wire_Distance {
-    fn wire2api(self) -> Distance {
+    fn wire2api(self) -> Result<Distance, &'static str> {
         match self.tag {
-            0 => Distance::Unknown,
+            0 => Ok(Distance::Unknown),
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Map);
-                Distance::Map(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(Distance::Map(field0?))
             },
             _ => unreachable!(),
         }
     }
 }
 impl Wire2Api<EnumOpaque> for wire_EnumOpaque {
-    fn wire2api(self) -> EnumOpaque {
+    fn wire2api(self) -> Result<EnumOpaque, &'static str> {
         match self.tag {
             0 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Struct);
-                EnumOpaque::Struct(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(EnumOpaque::Struct(field0?))
             },
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Primitive);
-                EnumOpaque::Primitive(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(EnumOpaque::Primitive(field0?))
             },
             2 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.TraitObj);
-                EnumOpaque::TraitObj(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(EnumOpaque::TraitObj(field0?))
             },
             3 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Mutex);
-                EnumOpaque::Mutex(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(EnumOpaque::Mutex(field0?))
             },
             4 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.RwLock);
-                EnumOpaque::RwLock(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(EnumOpaque::RwLock(field0?))
             },
             _ => unreachable!(),
         }
     }
 }
 impl Wire2Api<ExoticOptionals> for wire_ExoticOptionals {
-    fn wire2api(self) -> ExoticOptionals {
-        ExoticOptionals {
-            int32: self.int32.wire2api(),
-            int64: self.int64.wire2api(),
-            float64: self.float64.wire2api(),
-            boolean: self.boolean.wire2api(),
-            zerocopy: self.zerocopy.wire2api(),
-            int8list: self.int8list.wire2api(),
-            uint8list: self.uint8list.wire2api(),
-            int32list: self.int32list.wire2api(),
-            float32list: self.float32list.wire2api(),
-            float64list: self.float64list.wire2api(),
-            attributes: self.attributes.wire2api(),
-            attributes_nullable: self.attributes_nullable.wire2api(),
-            nullable_attributes: self.nullable_attributes.wire2api(),
-            newtypeint: self.newtypeint.wire2api(),
-        }
+    fn wire2api(self) -> Result<ExoticOptionals, &'static str> {
+        let int32 = self.int32.wire2api();
+        let int64 = self.int64.wire2api();
+        let float64 = self.float64.wire2api();
+        let boolean = self.boolean.wire2api();
+        let zerocopy = self.zerocopy.wire2api();
+        let int8list = self.int8list.wire2api();
+        let uint8list = self.uint8list.wire2api();
+        let int32list = self.int32list.wire2api();
+        let float32list = self.float32list.wire2api();
+        let float64list = self.float64list.wire2api();
+        let attributes = self.attributes.wire2api();
+        let attributes_nullable = self.attributes_nullable.wire2api();
+        let nullable_attributes = self.nullable_attributes.wire2api();
+        let newtypeint = self.newtypeint.wire2api();
+        Ok(ExoticOptionals {
+            int32: int32?,
+            int64: int64?,
+            float64: float64?,
+            boolean: boolean?,
+            zerocopy: zerocopy?,
+            int8list: int8list?,
+            uint8list: uint8list?,
+            int32list: int32list?,
+            float32list: float32list?,
+            float64list: float64list?,
+            attributes: attributes?,
+            attributes_nullable: attributes_nullable?,
+            nullable_attributes: nullable_attributes?,
+            newtypeint: newtypeint?,
+        })
     }
 }
 
 impl Wire2Api<[f64; 16]> for *mut wire_float_64_list {
-    fn wire2api(self) -> [f64; 16] {
-        let vec: Vec<f64> = self.wire2api();
-        support::from_vec_to_array(vec)
+    fn wire2api(self) -> Result<[f64; 16], &'static str> {
+        let vec: Vec<f64> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<FeatureChrono> for wire_FeatureChrono {
-    fn wire2api(self) -> FeatureChrono {
-        FeatureChrono {
-            utc: self.utc.wire2api(),
-            local: self.local.wire2api(),
-            duration: self.duration.wire2api(),
-            naive: self.naive.wire2api(),
-        }
+    fn wire2api(self) -> Result<FeatureChrono, &'static str> {
+        let utc = self.utc.wire2api();
+        let local = self.local.wire2api();
+        let duration = self.duration.wire2api();
+        let naive = self.naive.wire2api();
+        Ok(FeatureChrono {
+            utc: utc?,
+            local: local?,
+            duration: duration?,
+            naive: naive?,
+        })
     }
 }
 impl Wire2Api<FeatureUuid> for wire_FeatureUuid {
-    fn wire2api(self) -> FeatureUuid {
-        FeatureUuid {
-            one: self.one.wire2api(),
-            many: self.many.wire2api(),
-        }
+    fn wire2api(self) -> Result<FeatureUuid, &'static str> {
+        let one = self.one.wire2api();
+        let many = self.many.wire2api();
+        Ok(FeatureUuid {
+            one: one?,
+            many: many?,
+        })
     }
 }
 impl Wire2Api<FeedId> for wire_FeedId {
-    fn wire2api(self) -> FeedId {
-        FeedId(self.field0.wire2api())
+    fn wire2api(self) -> Result<FeedId, &'static str> {
+        let field0 = self.field0.wire2api();
+        Ok(FeedId(field0?))
     }
 }
 impl Wire2Api<Vec<f32>> for *mut wire_float_32_list {
-    fn wire2api(self) -> Vec<f32> {
+    fn wire2api(self) -> Result<Vec<f32>, &'static str> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+            Ok(support::vec_from_leak_ptr(wrap.ptr, wrap.len))
         }
     }
 }
 impl Wire2Api<Vec<f64>> for *mut wire_float_64_list {
-    fn wire2api(self) -> Vec<f64> {
+    fn wire2api(self) -> Result<Vec<f64>, &'static str> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+            Ok(support::vec_from_leak_ptr(wrap.ptr, wrap.len))
         }
     }
 }
 
 impl Wire2Api<[i32; 2]> for *mut wire_int_32_list {
-    fn wire2api(self) -> [i32; 2] {
-        let vec: Vec<i32> = self.wire2api();
-        support::from_vec_to_array(vec)
+    fn wire2api(self) -> Result<[i32; 2], &'static str> {
+        let vec: Vec<i32> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 
 impl Wire2Api<Vec<i32>> for *mut wire_int_32_list {
-    fn wire2api(self) -> Vec<i32> {
+    fn wire2api(self) -> Result<Vec<i32>, &'static str> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+            Ok(support::vec_from_leak_ptr(wrap.ptr, wrap.len))
         }
     }
 }
 impl Wire2Api<Vec<i8>> for *mut wire_int_8_list {
-    fn wire2api(self) -> Vec<i8> {
+    fn wire2api(self) -> Result<Vec<i8>, &'static str> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+            Ok(support::vec_from_leak_ptr(wrap.ptr, wrap.len))
         }
     }
 }
 impl Wire2Api<KitchenSink> for wire_KitchenSink {
-    fn wire2api(self) -> KitchenSink {
+    fn wire2api(self) -> Result<KitchenSink, &'static str> {
         match self.tag {
-            0 => KitchenSink::Empty,
+            0 => Ok(KitchenSink::Empty),
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Primitives);
-                KitchenSink::Primitives {
-                    int32: ans.int32.wire2api(),
-                    float64: ans.float64.wire2api(),
-                    boolean: ans.boolean.wire2api(),
-                }
+                let int32 = ans.int32.wire2api();
+                let float64 = ans.float64.wire2api();
+                let boolean = ans.boolean.wire2api();
+                Ok(KitchenSink::Primitives {
+                    int32: int32?,
+                    float64: float64?,
+                    boolean: boolean?,
+                })
             },
             2 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Nested);
-                KitchenSink::Nested(ans.field0.wire2api(), ans.field1.wire2api())
+                let field0 = ans.field0.wire2api();
+                let field1 = ans.field1.wire2api();
+                Ok(KitchenSink::Nested(field0?, field1?))
             },
             3 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Optional);
-                KitchenSink::Optional(ans.field0.wire2api(), ans.field1.wire2api())
+                let field0 = ans.field0.wire2api();
+                let field1 = ans.field1.wire2api();
+                Ok(KitchenSink::Optional(field0?, field1?))
             },
             4 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Buffer);
-                KitchenSink::Buffer(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(KitchenSink::Buffer(field0?))
             },
             5 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Enums);
-                KitchenSink::Enums(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(KitchenSink::Enums(field0?))
             },
             _ => unreachable!(),
         }
     }
 }
 impl Wire2Api<Vec<Opaque<HideData>>> for *mut wire_list_HideData {
-    fn wire2api(self) -> Vec<Opaque<HideData>> {
+    fn wire2api(self) -> Result<Vec<Opaque<HideData>>, &'static str> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1550,7 +1559,7 @@ impl Wire2Api<Vec<Opaque<HideData>>> for *mut wire_list_HideData {
     }
 }
 impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
-    fn wire2api(self) -> Vec<ApplicationEnvVar> {
+    fn wire2api(self) -> Result<Vec<ApplicationEnvVar>, &'static str> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1559,7 +1568,7 @@ impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
     }
 }
 impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
-    fn wire2api(self) -> Vec<Attribute> {
+    fn wire2api(self) -> Result<Vec<Attribute>, &'static str> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1568,7 +1577,7 @@ impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
     }
 }
 impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
-    fn wire2api(self) -> Vec<MySize> {
+    fn wire2api(self) -> Result<Vec<MySize>, &'static str> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1577,7 +1586,7 @@ impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
     }
 }
 impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
-    fn wire2api(self) -> Vec<MyTreeNode> {
+    fn wire2api(self) -> Result<Vec<MyTreeNode>, &'static str> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1586,7 +1595,7 @@ impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
     }
 }
 impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribute {
-    fn wire2api(self) -> Vec<Option<Attribute>> {
+    fn wire2api(self) -> Result<Vec<Option<Attribute>>, &'static str> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1595,7 +1604,7 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribu
     }
 }
 impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
-    fn wire2api(self) -> Vec<TestId> {
+    fn wire2api(self) -> Result<Vec<TestId>, &'static str> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1604,142 +1613,157 @@ impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
     }
 }
 impl Wire2Api<Measure> for wire_Measure {
-    fn wire2api(self) -> Measure {
+    fn wire2api(self) -> Result<Measure, &'static str> {
         match self.tag {
             0 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Speed);
-                Measure::Speed(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(Measure::Speed(field0?))
             },
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Distance);
-                Measure::Distance(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(Measure::Distance(field0?))
             },
             _ => unreachable!(),
         }
     }
 }
 impl Wire2Api<MessageId> for wire_MessageId {
-    fn wire2api(self) -> MessageId {
-        MessageId(self.field0.wire2api())
+    fn wire2api(self) -> Result<MessageId, &'static str> {
+        let field0 = self.field0.wire2api();
+        Ok(MessageId(field0?))
     }
 }
 
 impl Wire2Api<MySize> for wire_MySize {
-    fn wire2api(self) -> MySize {
-        MySize {
-            width: self.width.wire2api(),
-            height: self.height.wire2api(),
-        }
+    fn wire2api(self) -> Result<MySize, &'static str> {
+        let width = self.width.wire2api();
+        let height = self.height.wire2api();
+        Ok(MySize {
+            width: width?,
+            height: height?,
+        })
     }
 }
 impl Wire2Api<MyStruct> for wire_MyStruct {
-    fn wire2api(self) -> MyStruct {
-        MyStruct {
-            content: self.content.wire2api(),
-        }
+    fn wire2api(self) -> Result<MyStruct, &'static str> {
+        let content = self.content.wire2api();
+        Ok(MyStruct { content: content? })
     }
 }
 impl Wire2Api<MyTreeNode> for wire_MyTreeNode {
-    fn wire2api(self) -> MyTreeNode {
-        MyTreeNode {
-            value_i32: self.value_i32.wire2api(),
-            value_vec_u8: self.value_vec_u8.wire2api(),
-            value_boolean: self.value_boolean.wire2api(),
-            children: self.children.wire2api(),
-        }
+    fn wire2api(self) -> Result<MyTreeNode, &'static str> {
+        let value_i32 = self.value_i32.wire2api();
+        let value_vec_u8 = self.value_vec_u8.wire2api();
+        let value_boolean = self.value_boolean.wire2api();
+        let children = self.children.wire2api();
+        Ok(MyTreeNode {
+            value_i32: value_i32?,
+            value_vec_u8: value_vec_u8?,
+            value_boolean: value_boolean?,
+            children: children?,
+        })
     }
 }
 impl Wire2Api<NewTypeInt> for wire_NewTypeInt {
-    fn wire2api(self) -> NewTypeInt {
-        NewTypeInt(self.field0.wire2api())
+    fn wire2api(self) -> Result<NewTypeInt, &'static str> {
+        let field0 = self.field0.wire2api();
+        Ok(NewTypeInt(field0?))
     }
 }
 impl Wire2Api<Note> for wire_Note {
-    fn wire2api(self) -> Note {
-        Note {
-            day: self.day.wire2api(),
-            body: self.body.wire2api(),
-        }
+    fn wire2api(self) -> Result<Note, &'static str> {
+        let day = self.day.wire2api();
+        let body = self.body.wire2api();
+        Ok(Note {
+            day: day?,
+            body: body?,
+        })
     }
 }
 impl Wire2Api<Numbers> for wire_Numbers {
-    fn wire2api(self) -> Numbers {
-        Numbers(self.field0.wire2api())
+    fn wire2api(self) -> Result<Numbers, &'static str> {
+        let field0 = self.field0.wire2api();
+        Ok(Numbers(field0?))
     }
 }
 impl Wire2Api<OpaqueNested> for wire_OpaqueNested {
-    fn wire2api(self) -> OpaqueNested {
-        OpaqueNested {
-            first: self.first.wire2api(),
-            second: self.second.wire2api(),
-        }
+    fn wire2api(self) -> Result<OpaqueNested, &'static str> {
+        let first = self.first.wire2api();
+        let second = self.second.wire2api();
+        Ok(OpaqueNested {
+            first: first?,
+            second: second?,
+        })
     }
 }
 
 impl Wire2Api<Sequences> for wire_Sequences {
-    fn wire2api(self) -> Sequences {
-        Sequences(self.field0.wire2api())
+    fn wire2api(self) -> Result<Sequences, &'static str> {
+        let field0 = self.field0.wire2api();
+        Ok(Sequences(field0?))
     }
 }
 impl Wire2Api<Speed> for wire_Speed {
-    fn wire2api(self) -> Speed {
+    fn wire2api(self) -> Result<Speed, &'static str> {
         match self.tag {
-            0 => Speed::Unknown,
+            0 => Ok(Speed::Unknown),
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.GPS);
-                Speed::GPS(ans.field0.wire2api())
+                let field0 = ans.field0.wire2api();
+                Ok(Speed::GPS(field0?))
             },
             _ => unreachable!(),
         }
     }
 }
 impl Wire2Api<SumWith> for wire_SumWith {
-    fn wire2api(self) -> SumWith {
-        SumWith {
-            x: self.x.wire2api(),
-        }
+    fn wire2api(self) -> Result<SumWith, &'static str> {
+        let x = self.x.wire2api();
+        Ok(SumWith { x: x? })
     }
 }
 impl Wire2Api<TestId> for wire_TestId {
-    fn wire2api(self) -> TestId {
-        TestId(self.field0.wire2api())
+    fn wire2api(self) -> Result<TestId, &'static str> {
+        let field0 = self.field0.wire2api();
+        Ok(TestId(field0?))
     }
 }
 
 impl Wire2Api<[u8; 1600]> for *mut wire_uint_8_list {
-    fn wire2api(self) -> [u8; 1600] {
-        let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+    fn wire2api(self) -> Result<[u8; 1600], &'static str> {
+        let vec: Vec<u8> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<[u8; 32]> for *mut wire_uint_8_list {
-    fn wire2api(self) -> [u8; 32] {
-        let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+    fn wire2api(self) -> Result<[u8; 32], &'static str> {
+        let vec: Vec<u8> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<[u8; 8]> for *mut wire_uint_8_list {
-    fn wire2api(self) -> [u8; 8] {
-        let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+    fn wire2api(self) -> Result<[u8; 8], &'static str> {
+        let vec: Vec<u8> = self.wire2api()?;
+        Ok(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Vec<u8> {
+    fn wire2api(self) -> Result<Vec<u8>, &'static str> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+            Ok(support::vec_from_leak_ptr(wrap.ptr, wrap.len))
         }
     }
 }
 impl Wire2Api<UserId> for wire_UserId {
-    fn wire2api(self) -> UserId {
-        UserId {
-            value: self.value.wire2api(),
-        }
+    fn wire2api(self) -> Result<UserId, &'static str> {
+        let value = self.value.wire2api();
+        Ok(UserId { value: value? })
     }
 }
 

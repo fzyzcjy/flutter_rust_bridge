@@ -110,15 +110,11 @@ typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
 /// An opaque pointer to a Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
-class FrbOpaqueImpl {
+class FrbOpaqueBase {
   static PlatformPointer initPtr(int ptr) => ptr;
   static PlatformPointer nullPtr() => 0;
   static bool isStalePtr(PlatformPointer ptr) => ptr == 0;
-  static void finalizerAttach(
-          FrbOpaqueImpl opaque,
-          PlatformPointer ptr,
-          // ignore: no_leading_underscores_for_local_identifiers
-          int _size,
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int _,
           OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque);
 }

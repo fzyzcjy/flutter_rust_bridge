@@ -129,14 +129,12 @@ impl DartApiSpec {
             .iter()
             .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common))
             .collect::<Vec<_>>();
-
-        let mut dart_opaque_stuff_funcs = distinct_input_types
-            .iter()
-            .filter(|ty| ty.is_opaque())
-            .map(generate_opaque_getters)
-            .collect::<Vec<_>>();
-
-        dart_funcs.append(&mut dart_opaque_stuff_funcs);
+        dart_funcs.extend(
+            distinct_input_types
+                .iter()
+                .filter(|ty| ty.is_opaque())
+                .map(generate_opaque_getters),
+        );
 
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
@@ -359,7 +357,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     lines.push_all(section_header("api2wire"));
     lines.push_acc(dart_api2wire_funcs.clone());
 
-    lines.push_all(section_header("finalyzer"));
+    lines.push_all(section_header("finalizer"));
     lines.push_acc(dart_opaque_funcs.clone());
 
     lines.io.push(section_header("api_fill_to_wire"));
@@ -541,17 +539,17 @@ fn generate_wire2api_func(
 }
 
 fn generate_opaque_func(ty: &IrType) -> Acc<String> {
+    let api_type = ty.dart_api_type();
+    let generate_impl = |finalizer_arg: &str| {
+        format!(
+        "late final OpaqueTypeFinalizer _{api_type}Finalizer = OpaqueTypeFinalizer({finalizer_arg});
+        OpaqueTypeFinalizer get {api_type}Finalizer => _{api_type}Finalizer;",
+    )
+    };
+
     Acc {
-        io: format!(
-            "late final ffi.NativeFinalizer _{0}Finalizer = ffi.NativeFinalizer(inner._drop_opaque_{0}Ptr);
-            ffi.NativeFinalizer get {0}Finalizer => _{0}Finalizer;",
-            ty.dart_api_type(),
-        ),
-        wasm: format!(
-            "late final Finalizer<int>  _{0}Finalizer = Finalizer(inner.drop_opaque_{0});
-            Finalizer<int> get {0}Finalizer => _{0}Finalizer;",
-            ty.dart_api_type(),
-        ),
+        io: generate_impl(&format!("inner._drop_opaque_{api_type}Ptr")),
+        wasm: generate_impl(&format!("inner.drop_opaque_{api_type}")),
         ..Default::default()
     }
 }

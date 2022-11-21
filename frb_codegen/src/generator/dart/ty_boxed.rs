@@ -18,39 +18,19 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             )
         });
 
-        let contains_opacity = self
-            .ir
-            .inner
-            .distinct_types(self.context.ir_file)
-            .iter()
-            .any(IrType::is_opaque);
+        let ident = self.ir.safe_ident();
+        let context = self.context.config.block_index;
+        let inner = self.ir.inner.safe_ident();
 
         Acc {
             io: Some(as_primitive.clone().unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
-                    format!("return api2wire_{}(raw);", self.ir.inner.safe_ident(),)
-                } else if contains_opacity {
-                    format!(
-                        "final ptr = inner.new_{ident}_{context}();
-                            try {{
-                                _api_fill_to_wire_{inner}(raw, ptr.ref);
-                            }} catch(e) {{
-                                inner.drop_{ident}_{context}(ptr);
-                                rethrow;
-                            }}
-                            return ptr;",
-                        ident = self.ir.safe_ident(),
-                        context = self.context.config.block_index,
-                        inner = self.ir.inner.safe_ident(),
-                    )
+                    format!("return api2wire_{inner}(raw);")
                 } else {
                     format!(
                         "final ptr = inner.new_{ident}_{context}();
-                            _api_fill_to_wire_{inner}(raw, ptr.ref);
-                            return ptr;",
-                        ident = self.ir.safe_ident(),
-                        context = self.context.config.block_index,
-                        inner = self.ir.inner.safe_ident(),
+                        _api_fill_to_wire_{inner}(raw, ptr.ref);
+                        return ptr;",
                     )
                 }
             })),

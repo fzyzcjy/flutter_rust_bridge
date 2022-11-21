@@ -17,20 +17,20 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         Acc::new(|target| match (target, self.ir.inner.as_ref()) {
             (Common, IrType::Primitive(_)) => Some(
                 if exist_in_real_api {
-                    "unsafe { support::box_from_leak_ptr(self) }"
+                    "unsafe { Ok(support::box_from_leak_ptr(self)) }"
                 } else {
-                    "unsafe { *support::box_from_leak_ptr(self) }"
+                    "unsafe { Ok(*support::box_from_leak_ptr(self)) }"
                 }
                 .into(),
             ),
             (_, IrType::Primitive(_)) => None,
             (Io | Wasm, ir) if ir.is_array() => Some(format!(
-                "Wire2Api::<{}>::wire2api(self).into()",
+                "Wire2Api::<{}>::wire2api(self).map(Into::into)",
                 box_inner.rust_api_type()
             )),
             (Io, _) => Some(format!(
                 "let wrap = unsafe {{ support::box_from_leak_ptr(self) }};
-                Wire2Api::<{}>::wire2api(*wrap).into()",
+                Wire2Api::<{}>::wire2api(*wrap).map(Into::into)",
                 box_inner.rust_api_type()
             )),
             _ => None,
@@ -112,27 +112,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                 ..Default::default()
             }
         }
-    }
-
-    fn deallocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
-        let func_name = format!("drop_{}_{}", self.ir.safe_ident(), block_index);
-        Acc::new(|target| match target {
-            Io | Wasm => Some(collector.generate(
-                &func_name,
-                [(
-                    &format!("raw: *mut {}", self.ir.inner.rust_wire_type(target)),
-                    "",
-                )],
-                None,
-                "unsafe{drop(Box::from_raw(raw));}",
-                target,
-            )),
-            _ => None,
-        })
     }
 
     fn imports(&self) -> Option<String> {

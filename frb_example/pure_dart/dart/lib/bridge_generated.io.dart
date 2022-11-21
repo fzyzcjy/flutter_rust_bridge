@@ -155,12 +155,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_EnumOpaque> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
     final ptr = inner.new_box_autoadd_enum_opaque_0();
-    try {
-      _api_fill_to_wire_enum_opaque(raw, ptr.ref);
-    } catch (e) {
-      inner.drop_box_autoadd_enum_opaque_0(ptr);
-      rethrow;
-    }
+    _api_fill_to_wire_enum_opaque(raw, ptr.ref);
     return ptr;
   }
 
@@ -273,12 +268,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_OpaqueNested> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
     final ptr = inner.new_box_autoadd_opaque_nested_0();
-    try {
-      _api_fill_to_wire_opaque_nested(raw, ptr.ref);
-    } catch (e) {
-      inner.drop_box_autoadd_opaque_nested_0(ptr);
-      rethrow;
-    }
+    _api_fill_to_wire_opaque_nested(raw, ptr.ref);
     return ptr;
   }
 
@@ -442,13 +432,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_list_HideData> api2wire_list_HideData(List<HideData> raw) {
     final ans = inner.new_list_HideData_0(raw.length);
-    try {
-      for (var i = 0; i < raw.length; ++i) {
-        _api_fill_to_wire_HideData(raw[i], ans.ref.ptr[i]);
-      }
-    } catch (e) {
-      inner.drop_list_HideData_0(ans, raw.length);
-      rethrow;
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_HideData(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -655,18 +640,18 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     return ans;
   }
 
-// Section: finalyzer
+// Section: finalizer
 
-  late final ffi.NativeFinalizer _BoxDartDebugFinalizer = ffi.NativeFinalizer(inner._drop_opaque_BoxDartDebugPtr);
-  ffi.NativeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
-  late final ffi.NativeFinalizer _HideDataFinalizer = ffi.NativeFinalizer(inner._drop_opaque_HideDataPtr);
-  ffi.NativeFinalizer get HideDataFinalizer => _HideDataFinalizer;
-  late final ffi.NativeFinalizer _I32Finalizer = ffi.NativeFinalizer(inner._drop_opaque_I32Ptr);
-  ffi.NativeFinalizer get I32Finalizer => _I32Finalizer;
-  late final ffi.NativeFinalizer _MutexHideDataFinalizer = ffi.NativeFinalizer(inner._drop_opaque_MutexHideDataPtr);
-  ffi.NativeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
-  late final ffi.NativeFinalizer _RwLockHideDataFinalizer = ffi.NativeFinalizer(inner._drop_opaque_RwLockHideDataPtr);
-  ffi.NativeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
+  late final OpaqueTypeFinalizer _BoxDartDebugFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_BoxDartDebugPtr);
+  OpaqueTypeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final OpaqueTypeFinalizer _HideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_HideDataPtr);
+  OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
+  late final OpaqueTypeFinalizer _I32Finalizer = OpaqueTypeFinalizer(inner._drop_opaque_I32Ptr);
+  OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
+  late final OpaqueTypeFinalizer _MutexHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_MutexHideDataPtr);
+  OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final OpaqueTypeFinalizer _RwLockHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_RwLockHideDataPtr);
+  OpaqueTypeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 // Section: api_fill_to_wire
 
   void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, wire_BoxDartDebug wireObj) {
@@ -3194,74 +3179,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_uint_8_list_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
   late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
-
-  void drop_box_autoadd_enum_opaque_0(
-    ffi.Pointer<wire_EnumOpaque> raw,
-  ) {
-    return _drop_box_autoadd_enum_opaque_0(
-      raw,
-    );
-  }
-
-  late final _drop_box_autoadd_enum_opaque_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_EnumOpaque>)>>('drop_box_autoadd_enum_opaque_0');
-  late final _drop_box_autoadd_enum_opaque_0 =
-      _drop_box_autoadd_enum_opaque_0Ptr.asFunction<void Function(ffi.Pointer<wire_EnumOpaque>)>();
-
-  void drop_box_autoadd_opaque_nested_0(
-    ffi.Pointer<wire_OpaqueNested> raw,
-  ) {
-    return _drop_box_autoadd_opaque_nested_0(
-      raw,
-    );
-  }
-
-  late final _drop_box_autoadd_opaque_nested_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_OpaqueNested>)>>(
-          'drop_box_autoadd_opaque_nested_0');
-  late final _drop_box_autoadd_opaque_nested_0 =
-      _drop_box_autoadd_opaque_nested_0Ptr.asFunction<void Function(ffi.Pointer<wire_OpaqueNested>)>();
-
-  void drop_enum_opaque(
-    ffi.Pointer<wire_EnumOpaque> raw,
-  ) {
-    return _drop_enum_opaque(
-      raw,
-    );
-  }
-
-  late final _drop_enum_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_EnumOpaque>)>>('drop_enum_opaque');
-  late final _drop_enum_opaque = _drop_enum_opaquePtr.asFunction<void Function(ffi.Pointer<wire_EnumOpaque>)>();
-
-  void drop_list_HideData_0(
-    ffi.Pointer<wire_list_HideData> ptr,
-    int len,
-  ) {
-    return _drop_list_HideData_0(
-      ptr,
-      len,
-    );
-  }
-
-  late final _drop_list_HideData_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_list_HideData>, ffi.Int32)>>(
-          'drop_list_HideData_0');
-  late final _drop_list_HideData_0 =
-      _drop_list_HideData_0Ptr.asFunction<void Function(ffi.Pointer<wire_list_HideData>, int)>();
-
-  void drop_box_opaque_nested(
-    ffi.Pointer<wire_OpaqueNested> raw,
-  ) {
-    return _drop_box_opaque_nested(
-      raw,
-    );
-  }
-
-  late final _drop_box_opaque_nestedPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<wire_OpaqueNested>)>>('drop_box_opaque_nested');
-  late final _drop_box_opaque_nested =
-      _drop_box_opaque_nestedPtr.asFunction<void Function(ffi.Pointer<wire_OpaqueNested>)>();
 
   void drop_opaque_BoxDartDebug(
     ffi.Pointer<ffi.Void> ptr,

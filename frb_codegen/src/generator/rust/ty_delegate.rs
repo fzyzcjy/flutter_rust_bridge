@@ -1,6 +1,6 @@
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{
-    generate_list_allocate_func, generate_list_deallocate_func, ExternFuncCollector,
+    generate_list_allocate_func, ExternFuncCollector,
     TypeGeneralListGenerator,
 };
 use crate::ir::*;
@@ -28,7 +28,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(array) => {
-                let acc = Some(format!("let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",array.inner_rust_api_type()));
+                let acc = Some(format!("let vec: Vec<{}>= self.wire2api()?; Ok(support::from_vec_to_array(vec))",array.inner_rust_api_type()));
                 if array.inner_is_js_value() {
                     return Acc{io: acc,..Default::default()};
                 }
@@ -37,12 +37,12 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::String => {
                 Acc {
                     wasm: Some("self".into()),
-                    io: Some("let vec: Vec<u8> = self.wire2api(); String::from_utf8_lossy(&vec).into_owned()".into()),
+                    io: Some("let vec: Vec<u8> = self.wire2api()?; Ok(String::from_utf8_lossy(&vec).into_owned())".into()),
                     ..Default::default()
                 }
             }
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
+                Acc::distribute(Some("Ok(ZeroCopyBuffer(self.wire2api()?))".into()))
             }
             IrTypeDelegate::StringList => Acc{
                 io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.into()),
@@ -59,10 +59,10 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     .collect::<Vec<_>>()
                     .join("\n");
                 format!(
-                    "match self {{
+                    "Ok(match self {{
                         {}
                         _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
-                    }}",
+                    }})",
                     variants, enu.name
                 ).into()
             },
@@ -70,8 +70,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::Time(ir) => {
               if ir == &IrTypeTime::Duration {
                 return Acc {
-                  io: Some("chrono::Duration::microseconds(self)".into()),
-                  wasm: Some("chrono::Duration::milliseconds(self)".into()),
+                  io: Some("Ok(chrono::Duration::microseconds(self))".into()),
+                  wasm: Some("Ok(chrono::Duration::milliseconds(self))".into()),
                   ..Default::default()
                 };
               }
@@ -88,23 +88,23 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
               Acc {
                 io: Some(format!("
                 {codegen_timestamp}
-                {codegen_conversion}
+                Ok({codegen_conversion})
                 ")),
                 wasm: Some(format!("
                 {codegen_timestamp}
-                {codegen_conversion}
+                Ok({codegen_conversion})
                 ")),
                 ..Default::default()
               }
             },
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => Acc::distribute(Some("
-            let single: Vec<u8> = self.wire2api();
-            wire2api_uuid_ref(single.as_slice())".into())),
+            let single: Vec<u8> = self.wire2api()?;
+            Ok(wire2api_uuid_ref(single.as_slice()))".into())),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => Acc::distribute(Some("
-            let multiple: Vec<u8> = self.wire2api();
-            wire2api_uuids(multiple)".into())),
+            let multiple: Vec<u8> = self.wire2api()?;
+            Ok(wire2api_uuids(multiple))".into())),
         }
     }
 
@@ -129,26 +129,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
                 io: Some(generate_list_allocate_func(
-                    collector,
-                    &self.ir.safe_ident(),
-                    list,
-                    &list.get_delegate(),
-                    self.context.config.block_index,
-                )),
-                ..Default::default()
-            },
-            _ => Default::default(),
-        }
-    }
-
-    fn deallocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        _: BlockIndex,
-    ) -> Acc<Option<String>> {
-        match &self.ir {
-            list @ IrTypeDelegate::StringList => Acc {
-                io: Some(generate_list_deallocate_func(
                     collector,
                     &self.ir.safe_ident(),
                     list,

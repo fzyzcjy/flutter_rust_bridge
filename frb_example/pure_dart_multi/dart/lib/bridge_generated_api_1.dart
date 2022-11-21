@@ -5,6 +5,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:meta/meta.dart';
 import 'package:meta/meta.dart';
@@ -54,13 +55,13 @@ class ApiClass1Impl implements ApiClass1 {
 int api2wire_i32(int raw) {
   return raw;
 }
-// Section: finalyzer
+// Section: finalizer
 
 class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
   ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib));
 // Section: api2wire
 
-// Section: finalyzer
+// Section: finalizer
 
 // Section: api_fill_to_wire
 

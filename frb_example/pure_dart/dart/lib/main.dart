@@ -752,7 +752,7 @@ void main(List<String> args) async {
           "})");
       data.dispose();
 
-      expect(() => api.runOpaque(opaque: data), throwsA(isA<StateError>()));
+      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
 
     test('dispose before complete', () async {
@@ -768,7 +768,7 @@ void main(List<String> args) async {
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \"static str\" "
           "})");
-      expect(() => api.runOpaque(opaque: data), throwsA(isA<StateError>()));
+      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
 
     test('create array of opaque type', () async {
@@ -784,7 +784,7 @@ void main(List<String> args) async {
             "lifetime: \"static str\" "
             "})");
         v.dispose();
-        expect(() => api.runOpaque(opaque: v), throwsA(isA<StateError>()));
+        await expectLater(() => api.runOpaque(opaque: v), throwsA(isA<FfiException>()));
       }
     });
 
@@ -829,7 +829,7 @@ void main(List<String> args) async {
           "lifetime: \\\"static str\\\" "
           "})\"");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
-      expect(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<StateError>()));
+      await expectLater(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<FfiException>()));
     });
 
     test('opaque field', () async {
@@ -855,8 +855,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.first.dispose();
-      expect(() => api.runOpaque(opaque: data.first), throwsA(isA<StateError>()));
-      expect(() => api.runNestedOpaque(opaque: data), throwsA(isA<StateError>()));
+      await expectLater(() => api.runOpaque(opaque: data.first), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runNestedOpaque(opaque: data), throwsA(isA<FfiException>()));
       expect(
           await api.runOpaque(opaque: data.second),
           "content - Some(PrivateData "
@@ -884,7 +884,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      expect(() => api.opaqueArrayRun(data: data), throwsA(isA<StateError>()));
+      await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
+
       data[1].dispose();
     });
 
@@ -903,7 +904,7 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      expect(() => api.opaqueVecRun(data: data), throwsA(isA<StateError>()));
+      await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
       data[1].dispose();
     });
   });

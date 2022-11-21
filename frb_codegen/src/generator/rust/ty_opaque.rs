@@ -29,7 +29,7 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
             r##"
             #[cfg(target_pointer_width = "64")]
             {
-                panic!("64-bit pointers are not supported.");
+                compile_error!("64-bit pointers are not supported.");
             }
     
             unsafe {
@@ -90,7 +90,7 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
         }
     }
 
-    fn opaque_related_funcs(
+    fn related_funcs(
         &self,
         collector: &mut ExternFuncCollector,
         _block_index: BlockIndex,
