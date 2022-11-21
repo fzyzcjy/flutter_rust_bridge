@@ -28,4 +28,3 @@ final isWeb = readBoolEnv('dart.library.html');
 final int? portEnv = Platform.environment['PORT'] != null
     ? int.parse(Platform.environment['PORT']!)
     : null;
-final silicon = readBoolEnv('SILICON');
