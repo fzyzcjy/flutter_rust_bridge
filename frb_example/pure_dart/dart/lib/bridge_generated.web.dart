@@ -748,16 +748,19 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
 // Section: finalizer
 
-  late final OpaqueTypeFinalizer _BoxDartDebugFinalizer = OpaqueTypeFinalizer(inner.drop_opaque_BoxDartDebug);
-  OpaqueTypeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
-  late final OpaqueTypeFinalizer _HideDataFinalizer = OpaqueTypeFinalizer(inner.drop_opaque_HideData);
-  OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
-  late final OpaqueTypeFinalizer _I32Finalizer = OpaqueTypeFinalizer(inner.drop_opaque_I32);
-  OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
-  late final OpaqueTypeFinalizer _MutexHideDataFinalizer = OpaqueTypeFinalizer(inner.drop_opaque_MutexHideData);
-  OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
-  late final OpaqueTypeFinalizer _RwLockHideDataFinalizer = OpaqueTypeFinalizer(inner.drop_opaque_RwLockHideData);
-  OpaqueTypeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
+  late final Finalizer<PlatformPointer> _BoxDartDebugFinalizer =
+      Finalizer<PlatformPointer>(inner.drop_opaque_BoxDartDebug);
+  Finalizer<PlatformPointer> get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final Finalizer<PlatformPointer> _HideDataFinalizer = Finalizer<PlatformPointer>(inner.drop_opaque_HideData);
+  Finalizer<PlatformPointer> get HideDataFinalizer => _HideDataFinalizer;
+  late final Finalizer<PlatformPointer> _I32Finalizer = Finalizer<PlatformPointer>(inner.drop_opaque_I32);
+  Finalizer<PlatformPointer> get I32Finalizer => _I32Finalizer;
+  late final Finalizer<PlatformPointer> _MutexHideDataFinalizer =
+      Finalizer<PlatformPointer>(inner.drop_opaque_MutexHideData);
+  Finalizer<PlatformPointer> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final Finalizer<PlatformPointer> _RwLockHideDataFinalizer =
+      Finalizer<PlatformPointer>(inner.drop_opaque_RwLockHideData);
+  Finalizer<PlatformPointer> get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 }
 
 // Section: WASM wire module

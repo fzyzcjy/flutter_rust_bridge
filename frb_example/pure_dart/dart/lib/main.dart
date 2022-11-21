@@ -869,42 +869,42 @@ void main(List<String> args) async {
       data.second.dispose();
     });
 
-    // test('array', () async {
-    //   var data = await api.opaqueArray();
-    //   await api.opaqueArrayRun(data: data);
-    //   data[0].dispose();
+    test('array', () async {
+      var data = await api.opaqueArray();
+      await api.opaqueArrayRun(data: data);
+      data[0].dispose();
 
-    //   expect(
-    //       await api.runOpaque(opaque: data[1]),
-    //       "content - Some(PrivateData "
-    //       "{"
-    //       " content: \"content nested\", "
-    //       "primitive: 424242, "
-    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-    //       "lifetime: \"static str\" "
-    //       "})");
+      expect(
+          await api.runOpaque(opaque: data[1]),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
 
-    //   await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
 
-    //   data[1].dispose();
-    // });
+      data[1].dispose();
+    });
 
     test('vec', () async {
       var data = await api.opaqueVec();
       await api.opaqueVecRun(data: data);
       data[0].dispose();
 
-      // expect(
-      //     await api.runOpaque(opaque: data[1]),
-      //     "content - Some(PrivateData "
-      //     "{"
-      //     " content: \"content nested\", "
-      //     "primitive: 424242, "
-      //     "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      //     "lifetime: \"static str\" "
-      //     "})");
+      expect(
+          await api.runOpaque(opaque: data[1]),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
 
-      // await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
       data[1].dispose();
     });
   });
