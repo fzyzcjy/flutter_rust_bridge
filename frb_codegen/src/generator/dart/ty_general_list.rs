@@ -14,13 +14,12 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
 
         Acc {
             io: Some(format!(
-            "
-            final ans = inner.new_{ident}_{context}(raw.length);
-            for (var i = 0; i < raw.length; ++i) {{
-                _api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);
-            }}
-            return ans;
-            "
+                "final ans = inner.new_{ident}_{context}(raw.length);
+                for (var i = 0; i < raw.length; ++i) {{
+                    _api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);
+                }}
+                return ans;
+                "
             )),
             wasm: self.context.config.wasm_enabled.then(|| {
                 format!(

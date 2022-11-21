@@ -1,7 +1,6 @@
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{
-    generate_list_allocate_func, ExternFuncCollector,
-    TypeGeneralListGenerator,
+    generate_list_allocate_func, ExternFuncCollector, TypeGeneralListGenerator,
 };
 use crate::ir::*;
 use crate::target::{Acc, Target};

@@ -27,24 +27,39 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             format!("{} => Ok({}::{}),", idx, enu.name, variant.name)
                         }
                         IrVariantKind::Struct(st) => {
-                            let (prepare_fields, fields): (Vec<String>, Vec<String>) = (st.fields).iter().enumerate().map(|(idx, field)| {
+                            let (prepare_fields, fields): (Vec<String>, Vec<String>) = (st.fields)
+                                .iter()
+                                .enumerate()
+                                .map(|(idx, field)| {
+                                    let field_name = field.name.rust_style();
+                                    let prepare_field_ = field_name.to_owned();
 
-                                let field_name = field.name.rust_style();
-                                let prepare_field_ = format!("{field_name}");
-                
-                                let field_ = if st.is_fields_named {
-                                    format!("{field_name}: ")
-                                } else {
-                                    String::new()
-                                };
+                                    let field_ = if st.is_fields_named {
+                                        format!("{field_name}: ")
+                                    } else {
+                                        String::new()
+                                    };
 
-                                if !target.is_wasm() {
-                                    (format!("let {prepare_field_} = ans.{0}.wire2api();", field.name.rust_style()), format!("{field_}{prepare_field_}?"))
-                                } else {
-                                    (format!("let {prepare_field_} = self_.get({}).wire2api();", idx + 1), format!("{field_}{prepare_field_}?"))
-                                }
-                            }).unzip();
-                            
+                                    if !target.is_wasm() {
+                                        (
+                                            format!(
+                                                "let {prepare_field_} = ans.{0}.wire2api();",
+                                                field.name.rust_style()
+                                            ),
+                                            format!("{field_}{prepare_field_}?"),
+                                        )
+                                    } else {
+                                        (
+                                            format!(
+                                                "let {prepare_field_} = self_.get({}).wire2api();",
+                                                idx + 1
+                                            ),
+                                            format!("{field_}{prepare_field_}?"),
+                                        )
+                                    }
+                                })
+                                .unzip();
+
                             let (left, right) = st.brackets_pair();
                             if target.is_wasm() {
                                 format!(

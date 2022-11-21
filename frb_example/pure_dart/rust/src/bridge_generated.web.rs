@@ -1547,12 +1547,12 @@ impl Wire2Api<bool> for JsValue {
 }
 impl Wire2Api<Box<ApplicationEnv>> for JsValue {
     fn wire2api(self) -> Result<Box<ApplicationEnv>, &'static str> {
-        Box::new(self.wire2api())
+        Ok(Box::new(self.wire2api()?))
     }
 }
 impl Wire2Api<Box<Blob>> for JsValue {
     fn wire2api(self) -> Result<Box<Blob>, &'static str> {
-        Box::new(self.wire2api())
+        Ok(Box::new(self.wire2api()?))
     }
 }
 impl Wire2Api<Box<bool>> for JsValue {
@@ -1562,12 +1562,12 @@ impl Wire2Api<Box<bool>> for JsValue {
 }
 impl Wire2Api<Box<Distance>> for JsValue {
     fn wire2api(self) -> Result<Box<Distance>, &'static str> {
-        Box::new(self.wire2api())
+        Ok(Box::new(self.wire2api()?))
     }
 }
 impl Wire2Api<Box<ExoticOptionals>> for JsValue {
     fn wire2api(self) -> Result<Box<ExoticOptionals>, &'static str> {
-        Box::new(self.wire2api())
+        Ok(Box::new(self.wire2api()?))
     }
 }
 impl Wire2Api<Box<f64>> for JsValue {
@@ -1592,17 +1592,17 @@ impl Wire2Api<Box<i8>> for JsValue {
 }
 impl Wire2Api<Box<KitchenSink>> for JsValue {
     fn wire2api(self) -> Result<Box<KitchenSink>, &'static str> {
-        Box::new(self.wire2api())
+        Ok(Box::new(self.wire2api()?))
     }
 }
 impl Wire2Api<Box<MySize>> for JsValue {
     fn wire2api(self) -> Result<Box<MySize>, &'static str> {
-        Box::new(self.wire2api())
+        Ok(Box::new(self.wire2api()?))
     }
 }
 impl Wire2Api<Box<Speed>> for JsValue {
     fn wire2api(self) -> Result<Box<Speed>, &'static str> {
-        Box::new(self.wire2api())
+        Ok(Box::new(self.wire2api()?))
     }
 }
 impl Wire2Api<Box<u8>> for JsValue {
@@ -1612,13 +1612,13 @@ impl Wire2Api<Box<u8>> for JsValue {
 }
 impl Wire2Api<Box<[u8; 1600]>> for JsValue {
     fn wire2api(self) -> Result<Box<[u8; 1600]>, &'static str> {
-        let vec: Vec<u8> = self.wire2api();
-        Box::new(support::from_vec_to_array(vec))
+        let vec: Vec<u8> = self.wire2api()?;
+        Ok(Box::new(support::from_vec_to_array(vec)))
     }
 }
 impl Wire2Api<Box<Weekdays>> for JsValue {
     fn wire2api(self) -> Result<Box<Weekdays>, &'static str> {
-        Box::new(self.wire2api())
+        Ok(Box::new(self.wire2api()?))
     }
 }
 impl Wire2Api<f32> for JsValue {

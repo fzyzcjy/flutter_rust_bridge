@@ -16,7 +16,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             .enumerate()
             .map(|(idx, field)| {
                 let field_name = field.name.rust_style();
-                let prepare_field_ = format!("{field_name}");
+                let prepare_field_ = field_name.to_owned();
 
                 let field_ = if api_struct.is_fields_named {
                     format!("{field_name}: ")

@@ -45,11 +45,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             )
             .into(),
             IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
-                "let vec: Vec<{}> = self.wire2api(); Box::new(support::from_vec_to_array(vec))",
+                "let vec: Vec<{}> = self.wire2api()?; Ok(Box::new(support::from_vec_to_array(vec)))",
                 array.inner_rust_api_type(),
             )
             .into(),
-            _ => "Box::new(self.wire2api())".into(),
+            _ => "Ok(Box::new(self.wire2api()?))".into(),
         })
     }
 
