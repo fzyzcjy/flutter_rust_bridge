@@ -25,6 +25,3 @@ bool readBoolEnv(String envVarName, {bool defaultValue = false}) =>
     defaultValue;
 
 final isWeb = readBoolEnv('dart.library.html');
-final int? portEnv = Platform.environment['PORT'] != null
-    ? int.parse(Platform.environment['PORT']!)
-    : null;

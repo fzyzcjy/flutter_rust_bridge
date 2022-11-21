@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io' if (dart.library.html) 'dart:html';
 
 import 'package:build_cli_annotations/build_cli_annotations.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
@@ -343,7 +342,9 @@ Future<void> runServer(Opts config,
     };
   }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
 
-  final port = portEnv ?? config.port;
+  final port = const int.fromEnvironment('PORT') != 0
+      ? int.fromEnvironment('PORT')
+      : config.port;
   final addr = index != null &&
           index.isNotEmpty &&
           (index != 'index' || index != 'index.html')
