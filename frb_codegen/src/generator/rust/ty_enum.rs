@@ -43,8 +43,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     if !target.is_wasm() {
                                         (
                                             format!(
-                                                "let {prepare_field_} = ans.{0}.wire2api();",
-                                                field.name.rust_style()
+                                                "let {prepare_field_} = ans.{field_name}.wire2api();",
                                             ),
                                             format!("{field_}{prepare_field_}?"),
                                         )
@@ -64,25 +63,25 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             if target.is_wasm() {
                                 format!(
                                     "{idx} => {{
-                                        {prepare_field} 
-                                        Ok({enum_name}::{variant_name}{left}{field}{right}) }},",
+                                        {prepare_fields} 
+                                        Ok({enum_name}::{variant_name}{left}{fields}{right}) }},",
                                     enum_name = enu.name,
                                     variant_name = variant.name,
-                                    prepare_field = prepare_fields.join(" "),
-                                    field = fields.join(",")
+                                    prepare_fields = prepare_fields.join(" "),
+                                    fields = fields.join(",")
                                 )
                             } else {
                                 format!(
                                     "{idx} => unsafe {{
                                         let ans = support::box_from_leak_ptr(self.kind);
                                         let ans = support::box_from_leak_ptr(ans.{variant_name});
-                                        {prepare_field}
-                                        Ok({enum_name}::{variant_name}{left}{field}{right})
+                                        {prepare_fields}
+                                        Ok({enum_name}::{variant_name}{left}{fields}{right})
                                     }}",
                                     enum_name = enu.name,
                                     variant_name = variant.name,
-                                    prepare_field = prepare_fields.join(" "),
-                                    field = fields.join(",")
+                                    prepare_fields = prepare_fields.join(" "),
+                                    fields = fields.join(",")
                                 )
                             }
                         }

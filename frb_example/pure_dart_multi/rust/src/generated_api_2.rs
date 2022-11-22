@@ -92,3 +92,21 @@ support::lazy_static! {
 mod io;
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
+
+    // ----------- DUMMY CODE FOR BINDGEN ----------
+
+    // copied from: allo-isolate
+    pub type DartPort = i64;
+    pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
+    #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
+
+    // copied from: frb_rust::support.rs
+    #[repr(C)]
+    pub struct WireSyncReturnStruct {
+        pub ptr: *mut u8,
+        pub len: i32,
+        pub success: bool,
+    }
+
+    // ---------------------------------------------
+    

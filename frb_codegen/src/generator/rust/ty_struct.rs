@@ -25,17 +25,15 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 };
                 (
                     Acc {
-                        wasm: format!("let {} = self_.get({}).wire2api();", prepare_field_, idx),
+                        wasm: format!("let {prepare_field_} = self_.get({idx}).wire2api();"),
                         io: format!(
-                            "let {} = self.{}.wire2api();",
-                            prepare_field_,
-                            field.name.rust_style()
+                            "let {prepare_field_} = self.{field_name}.wire2api();",
                         ),
                         ..Default::default()
                     },
                     Acc {
-                        wasm: format!("{}{}?", field_, prepare_field_),
-                        io: format!("{}{}?", field_, prepare_field_),
+                        wasm: format!("{field_}{prepare_field_}?"),
+                        io: format!("{field_}{prepare_field_}?"),
                         ..Default::default()
                     },
                 )
@@ -43,26 +41,25 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             .unzip();
 
         let (left, right) = api_struct.brackets_pair();
+        let rust_api_type = self.ir.rust_api_type();
         Acc {
             io: Some(format!(
                 "
-                {}
-                Ok({}{left}{}{right})
+                {prepare_fields}
+                Ok({rust_api_type}{left}{fields}{right})
                 ",
-                prepare_fields.io.join(" "),
-                self.ir.rust_api_type(),
-                fields.io.join(","),
+                prepare_fields = prepare_fields.io.join(" "),
+                fields = fields.io.join(","),
             )),
             wasm: Some(format!(
                 "
                 let self_ = self.dyn_into::<JsArray>().unwrap();
                 assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
-                {}
-                Ok({}{left}{}{right})
+                {prepare_fields}
+                Ok({rust_api_type}{left}{fields}{right})
                 ",
-                prepare_fields.wasm.join(" "),
-                self.ir.rust_api_type(),
-                fields.wasm.join(","),
+                prepare_fields = prepare_fields.wasm.join(" "),
+                fields = fields.wasm.join(","),
                 len = api_struct.fields.len(),
             )),
             ..Default::default()
