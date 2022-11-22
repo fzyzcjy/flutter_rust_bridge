@@ -445,7 +445,13 @@ impl<'a> Generator<'a> {
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
-        r#"pub trait Wire2Api<T> {
+        r##"pub trait Wire2Api<T> {
+            /// Converts a wire type to a rust api type.
+            ///
+            /// # Safety
+            ///
+            /// [`Wire2Api::wire2api`] must happen for all fields.
+            /// Early return is unacceptable.
             fn wire2api(self) -> Result<T, &'static str>;
         }
 
@@ -456,7 +462,7 @@ impl<'a> Generator<'a> {
             fn wire2api(self) -> Result<Option<T>, &'static str> {
                 (!self.is_null()).then(|| self.wire2api()).map_or(Ok(None), |v| v.map(Some))
             }
-        }"#
+        }"##
     }
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {

@@ -251,6 +251,12 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {
+    /// Converts a wire type to a rust api type.
+    ///
+    /// # Safety
+    ///
+    /// [`Wire2Api::wire2api`] must happen for all fields.
+    /// Early return is unacceptable.
     fn wire2api(self) -> Result<T, &'static str>;
 }
 
