@@ -26,9 +26,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 (
                     Acc {
                         wasm: format!("let {prepare_field_} = self_.get({idx}).wire2api();"),
-                        io: format!(
-                            "let {prepare_field_} = self.{field_name}.wire2api();",
-                        ),
+                        io: format!("let {prepare_field_} = self.{field_name}.wire2api();",),
                         ..Default::default()
                     },
                     Acc {
