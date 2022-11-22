@@ -84,6 +84,14 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         }
     }
 
+    fn related_funcs(
+            &self,
+            _collector: &mut super::ExternFuncCollector,
+            _block_index: crate::utils::BlockIndex,
+        ) -> Acc<Option<String>> {
+        
+    }
+
     fn imports(&self) -> Option<String> {
         None
     }

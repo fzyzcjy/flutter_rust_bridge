@@ -49,6 +49,14 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
+    fn related_funcs(
+        &self,
+        _collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
+        Acc::default()
+    }
+
     fn impl_intodart(&self) -> String {
         "".to_string()
     }
