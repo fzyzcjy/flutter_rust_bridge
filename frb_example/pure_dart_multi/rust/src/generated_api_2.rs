@@ -35,7 +35,12 @@ fn wire_simple_adder_2_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(simple_adder_2(api_a.unwrap(), api_b.unwrap()))
+            move |task_callback| {
+                Ok(simple_adder_2(
+                    api_a.map_err(|e| anyhow::anyhow!(e))?,
+                    api_b.map_err(|e| anyhow::anyhow!(e))?,
+                ))
+            }
         },
     )
 }

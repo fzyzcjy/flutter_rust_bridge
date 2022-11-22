@@ -311,4 +311,4 @@ int api2wire_u8(int raw) {
   return raw;
 }
 
-// Section: finalyzer
+// Section: finalizer

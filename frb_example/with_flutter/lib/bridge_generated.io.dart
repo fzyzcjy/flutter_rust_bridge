@@ -65,7 +65,7 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
-// Section: finalyzer
+// Section: finalizer
 
 // Section: api_fill_to_wire
 

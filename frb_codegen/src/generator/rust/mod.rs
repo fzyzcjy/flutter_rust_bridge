@@ -294,7 +294,7 @@ impl<'a> Generator<'a> {
             vec![],
             func.inputs
                 .iter()
-                .map(|field| format!("api_{}.unwrap()", field.name.rust_style()))
+                .map(|field| format!("api_{}.map_err(|e| anyhow::anyhow!(e))?", field.name.rust_style()))
                 .collect::<Vec<_>>(),
         ]
         .concat();
