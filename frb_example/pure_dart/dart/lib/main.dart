@@ -884,11 +884,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      print("HERE1");
       await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
-      print("HERE2");
       data[1].dispose();
-      print("HERE3");
     });
 
     test('vec', () async {
@@ -906,11 +903,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      print("HERE1-2");
       await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
-      print("HERE2-2");
       data[1].dispose();
-      print("HERE3-2");
     });
   });
 }

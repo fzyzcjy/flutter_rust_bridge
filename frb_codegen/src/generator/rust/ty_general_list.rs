@@ -8,21 +8,34 @@ use crate::utils::BlockIndex;
 type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
 impl TypeGeneralListGenerator<'_> {
-    pub const WIRE2API_BODY_IO: &'static str = "
-            let vec = unsafe {
-                let wrap = support::box_from_leak_ptr(self);
-                support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-            };
-            vec.into_iter().map(Wire2Api::wire2api).collect()";
-    pub const WIRE2API_BODY_WASM: &'static str =
-        "self.dyn_into::<JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()";
+    pub fn wire2api_body_io(rust_api_type: &str) -> String {
+        format!(
+            "let vec = unsafe {{
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }};
+        vec
+            .into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<{rust_api_type}, &str>>>()
+            .into_iter()
+            .collect()
+        "
+        )
+    }
+
+    pub fn wire2api_body_wasm() -> String {
+        "self.dyn_into::<JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()".to_owned()
+    }
 }
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
-            io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.into()),
+            wasm: Some(TypeGeneralListGenerator::wire2api_body_wasm()),
+            io: Some(TypeGeneralListGenerator::wire2api_body_io(
+                &self.ir.inner.rust_api_type(),
+            )),
             ..Default::default()
         }
     }

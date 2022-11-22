@@ -44,8 +44,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 Acc::distribute(Some("Ok(ZeroCopyBuffer(self.wire2api()?))".into()))
             }
             IrTypeDelegate::StringList => Acc{
-                io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.into()),
-                wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
+                io: Some(TypeGeneralListGenerator::wire2api_body_io("String")),
+                wasm: Some(TypeGeneralListGenerator::wire2api_body_wasm()),
                 ..Default::default()
             },
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {

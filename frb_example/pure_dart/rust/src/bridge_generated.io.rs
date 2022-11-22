@@ -1057,7 +1057,11 @@ impl Wire2Api<Vec<String>> for *mut wire_StringList {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        vec.into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<String, &str>>>()
+            .into_iter()
+            .collect()
     }
 }
 impl Wire2Api<[TestId; 4]> for *mut wire_list_test_id {
@@ -1555,7 +1559,11 @@ impl Wire2Api<Vec<Opaque<HideData>>> for *mut wire_list_HideData {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        vec.into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<Opaque<HideData>, &str>>>()
+            .into_iter()
+            .collect()
     }
 }
 impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
@@ -1564,7 +1572,11 @@ impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        vec.into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<ApplicationEnvVar, &str>>>()
+            .into_iter()
+            .collect()
     }
 }
 impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
@@ -1573,7 +1585,11 @@ impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        vec.into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<Attribute, &str>>>()
+            .into_iter()
+            .collect()
     }
 }
 impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
@@ -1582,7 +1598,11 @@ impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        vec.into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<MySize, &str>>>()
+            .into_iter()
+            .collect()
     }
 }
 impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
@@ -1591,7 +1611,11 @@ impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        vec.into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<MyTreeNode, &str>>>()
+            .into_iter()
+            .collect()
     }
 }
 impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribute {
@@ -1600,7 +1624,11 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribu
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        vec.into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<Option<Attribute>, &str>>>()
+            .into_iter()
+            .collect()
     }
 }
 impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
@@ -1609,7 +1637,11 @@ impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
+        vec.into_iter()
+            .map(Wire2Api::wire2api)
+            .collect::<Vec<Result<TestId, &str>>>()
+            .into_iter()
+            .collect()
     }
 }
 impl Wire2Api<Measure> for wire_Measure {
