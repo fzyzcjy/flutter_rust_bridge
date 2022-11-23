@@ -3,26 +3,22 @@
 
 ## Restrictions
 
-A `Opaque type` can be created from any Rust structure that implements `Send` and `Sync`. Such restrictions due to
-async dart api `flutter_rust_bridge` allowing sharing a `Opaque type` by multiple `flutter_rust_bridge executor` threads.
+A `Opaque type` can be created from any Rust structure that implements `Send` and `Sync`. Such restrictions due to async dart api `flutter_rust_bridge` allowing sharing a `Opaque type` by multiple `flutter_rust_bridge executor` threads.
 
 
 ## Ownership and GC
 
 From the moment an opaque type is passed to Dart, it has full ownership of it.
-Dart implements a finalizer for opaque types, but
-the memory usage of opaque types is not monitored by Dart and can accumulate, so
-in order to prevent memory leaks, opaque pointers must be `dispose`d.
+Dart implements a finalizer for opaque types, but the memory usage of opaque types is not monitored by Dart and can accumulate, so in order to prevent memory leaks, opaque pointers must be `dispose`d.
 
 
 ## Opaque type like funtion args
 
-When calling a function with an opaque type argument, the Dart thread safely shares ownership of the opaque type with Rust. This is safe because `Opaque<T>` requires that T be `Send` and `Sync`, furthermore Rust's `Opaque<T>` can only hand out immutable references through `Deref`.
-If dispose is called on the Dart side before the function call completes, Rust takes full ownership.
+When calling a function with an opaque type argument, the Dart thread safely shares ownership of the opaque type with Rust. This is safe because `Opaque<T>` requires that T be `Send` and `Sync`, furthermore Rust's `Opaque<T>` can only hand out immutable references through `Deref`. If dispose is called on the Dart side before the function call completes, Rust takes full ownership.
 
 
 ## Example
- 
+
 ### Case 1: Simple call. 
 
 Rust `api.rs`:

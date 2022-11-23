@@ -17,6 +17,7 @@
     - [Methods](feature/lang_methods.md)
     - [Return types](feature/lang_return_types.md)
     - [Dynamic](feature/lang_dynamic.md)
+    - [Arbitrary types (opaque)](feature/lang_opaque.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)
@@ -73,6 +74,8 @@
 
 - [Overview](contributing/overview.md)
 - [Overall design](contributing/design.md)
+- [Submodule implementations](contributing/submodule.md)
+  - [Opaque type safety](contributing/opaque_type_safety.md)
 - [Appendix](contributing/appendix.md)
 
 # Part IV: More Doc
