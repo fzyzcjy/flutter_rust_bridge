@@ -9,7 +9,7 @@ impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some("return inner.new_DartOpaque(raw, port);".to_owned()),
-            wasm: Some("return [raw, port];".to_owned()),
+            wasm: Some("return inner.new_DartOpaque(raw, port);".to_owned()),
             ..Default::default()
         }
     }
@@ -19,7 +19,7 @@ impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        "return _platform.dart_opaque_get(raw);".into()
+        "return _platform.inner.get_DartObject(raw);".into()
     }
 
     fn structs(&self) -> String {

@@ -131,6 +131,12 @@ impl<'a> Generator<'a> {
             .map(|f| self.generate_allocate_funcs(f, ir_file))
             .collect();
 
+        lines.push_all(self.section_header_comment("related functions"));
+        lines += distinct_input_types
+            .iter()
+            .map(|f| self.generate_related_funcs(f, ir_file))
+            .collect();
+            
         lines.push_all(self.section_header_comment("impl Wire2Api"));
         lines.push(self.generate_wire2api_misc().to_string());
         lines += distinct_input_types
@@ -422,6 +428,12 @@ impl<'a> Generator<'a> {
     fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
             .allocate_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .map(|func, _| func.unwrap_or_default())
+    }
+
+    fn generate_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+            .related_funcs(&mut self.extern_func_collector, self.config.block_index)
             .map(|func, _| func.unwrap_or_default())
     }
 

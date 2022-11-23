@@ -692,40 +692,36 @@ void main(List<String> args) async {
     });
 
     test('OPAQUE', () async {
-      f() => '4224242424424242244';
-
-      // api.exoticDrop(notTemp: f);
-
+      f() => 'Test_String';
       var res = await api.loopBack(notTemp: f) as String Function();
-      print(res());
+      expect(res(), 'Test_String');
       var res2 = await api.loopBack(notTemp: res) as String Function();
-      print(res2());
+      expect(res2(), 'Test_String');
+      expect(identical(res2, f), isTrue);
 
-      print(await api.asyncDartOpaque(notTemp: f));
-      print(api.syncDartOpaque(notTemp: f));
+
+      expect(await api.asyncDartOpaque(notTemp: f), 'async test');
+      expect(api.syncDartOpaque(notTemp: f), 'test');
     });
 
-    // test('LeaK', () async {
-    //   for (var i = 0; i < 10; ++i) {
-    //     print(i);
-    //     var data = List.filled(10, '4242424242');
-    //     api.syncDartOpaque(notTemp: data);
-    //   }
-    // });
-    // test('LeaK2', () async {
-    //   for (var i = 0; i < 10; ++i) {
-    //     print(i);
-    //     var data = List.filled(10, '4242424242');
-    //     await api.asyncDartOpaque(notTemp: data);
-    //   }
-    // });
-    // test('LeaK3', () async {
-    //   for (var i = 0; i < 10; ++i) {
-    //     print(i);
-    //     var data = List.filled(10, '4242424242');
-    //     await api.loopBack(notTemp: await api.loopBack(notTemp: data));
-    //   }
-    // });
+    test('LeaK', () async {
+      for (var i = 0; i < 10; ++i) {
+        var data = List.filled(10, '4242424242');
+        expect(api.syncDartOpaque(notTemp: data), 'test');
+      }
+    });
+    test('LeaK2', () async {
+      for (var i = 0; i < 10; ++i) {
+        var data = List.filled(10, '4242424242');
+        expect(await api.asyncDartOpaque(notTemp: data), 'async test');
+      }
+    });
+    test('LeaK3', () async {
+      for (var i = 0; i < 10; ++i) {
+        var data = List.filled(10, '4242424242');
+        expect(identical(await api.loopBack(notTemp: await api.loopBack(notTemp: data)), data), isTrue);
+      }
+    });
   });
 
   api.close();

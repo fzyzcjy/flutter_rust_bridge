@@ -12,6 +12,7 @@ pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
+use crate::support;
 pub use crate::wasm_bindgen_src::transfer::*;
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
@@ -395,8 +396,8 @@ mod tests {
 }
 
 pub struct DartOpaque {
-    handle: Option<JsValue>,
-    port: Channel,
+    handle: Option<*mut JsValue>,
+    port: String,
     drop: bool,
     id: ThreadId,
 }
@@ -405,20 +406,18 @@ unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
-    pub fn new(handle: JsValue, port: JsValue) -> Self {
+    pub fn new(handle: JsValue, port: MessagePort) -> Self {
         Self {
-            handle: Some(handle),
-            port: Channel {
-                port: MessagePort::deserialize(&port),
-            },
+            handle: Some(support::new_leak_box_ptr(handle)),
             id: std::thread::current().id(),
+            port: port.dyn_ref::<BroadcastChannel>().unwrap().name(),
             drop: true,
         }
     }
 
     pub fn try_unwrap(mut self) -> Result<JsValue, Self> {
         if std::thread::current().id() == self.id {
-            Ok(self.handle.take().unwrap())
+            Ok(unsafe{*support::box_from_leak_ptr(self.handle.take().unwrap())})
         } else {
             Err(self)
         }
@@ -432,22 +431,14 @@ impl IntoDart for DartOpaque {
     }
 }
 
-impl Clone for DartOpaque {
-    fn clone(&self) -> Self {
-        Self {
-            handle: self.handle.clone(),
-            port: self.port.clone(),
-            drop: true,
-            id: self.id.clone(),
-        }
-    }
-}
-
 impl Drop for DartOpaque {
     fn drop(&mut self) {
         if self.drop {
-            if std::thread::current().id() != self.id {
-                self.port.post(self.handle.take().unwrap().into_dart());
+            let ptr = self.handle.take().unwrap();
+            if std::thread::current().id() == self.id {
+                drop(unsafe{support::box_from_leak_ptr(ptr)});
+            } else {
+                Channel::new(PortLike::broadcast(&self.port)).post(ptr);
             }
         }
     }

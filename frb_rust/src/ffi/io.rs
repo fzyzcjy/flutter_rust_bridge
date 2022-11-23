@@ -1,7 +1,7 @@
 use crate::Channel;
-use crate::Dart_DeletePersistentHandle_DL_Trampolined;
-use crate::Dart_HandleFromPersistent_DL_Trampolined;
-use crate::Dart_NewPersistentHandle_DL_Trampolined;
+pub use crate::Dart_DeletePersistentHandle_DL_Trampolined;
+pub use crate::Dart_HandleFromPersistent_DL_Trampolined;
+pub use crate::Dart_NewPersistentHandle_DL_Trampolined;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
@@ -89,17 +89,6 @@ impl IntoDart for DartOpaque {
     fn into_dart(mut self) -> ffi::DartCObject {
         self.drop = false;
         self.handle.into_dart()
-    }
-}
-
-impl Clone for DartOpaque {
-    fn clone(&self) -> Self {
-        Self {
-            handle: unsafe { Dart_NewPersistentHandle_DL_Trampolined(self.handle) },
-            port: self.port,
-            drop: true,
-            id: self.id,
-        }
     }
 }
 

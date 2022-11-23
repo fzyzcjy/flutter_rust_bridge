@@ -835,6 +835,20 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
+// Section: related functions
+
+#[no_mangle]
+pub extern "C" fn drop_DartObject(ptr: usize) {
+    unsafe {
+        Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn get_DartObject(ptr: usize) -> *mut _Dart_Handle {
+    unsafe { Dart_HandleFromPersistent_DL_Trampolined(ptr as _) }
+}
+
 // Section: impl Wire2Api
 
 impl Wire2Api<chrono::Duration> for i64 {

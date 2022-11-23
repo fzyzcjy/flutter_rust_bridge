@@ -27,16 +27,12 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
         pub success: bool,
     }
 
-    #[no_mangle] pub extern "C" fn dart_opaque_drop(ptr: usize) {panic!("dummy code")}
-    #[no_mangle] pub extern "C" fn dart_opaque_get(ptr: usize) -> *mut _Dart_Handle {panic!("dummy code")}
     // ---------------------------------------------
     "#;
 
 lazy_static! {
     pub static ref EXTRA_EXTERN_FUNC_NAMES: Vec<String> = vec![
         "store_dart_post_cobject".to_string(),
-        "dart_opaque_drop".to_string(),
-        "dart_opaque_get".to_string()
     ];
 }
 

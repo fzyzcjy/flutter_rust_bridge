@@ -1337,7 +1337,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   void close() {
     _platform.close();
   }
-
 // Section: wire2api
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {
@@ -1357,7 +1356,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   Object _wire2api_DartObject(dynamic raw) {
-    return _platform.dart_opaque_get(raw);
+    return _platform.inner.get_DartObject(raw);
   }
 
   Object _wire2api_DelegateDartOpaque(dynamic raw) {

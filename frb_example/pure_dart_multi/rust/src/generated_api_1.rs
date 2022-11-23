@@ -43,6 +43,8 @@ fn wire_simple_adder_1_impl(
 
 // Section: allocate functions
 
+// Section: related functions
+
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {

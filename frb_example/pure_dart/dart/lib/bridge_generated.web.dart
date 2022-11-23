@@ -13,21 +13,20 @@ import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> with FlutterRustBridgeSetupMixin {
-  final _port = RawReceivePort();
+  static int drop_id_port = 0;
+  final ReceivePort _port;
   NativePortType get port => _port.sendPort.nativePort;
   FlutterRustBridgeExampleSingleBlockTestPlatform(FutureOr<WasmModule> dylib)
-      : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
-    _port.handler = (response) {
-      print(response);
-    };
+      : _port = broadcastPort('__frb_dart_opaque_drop_$drop_id_port'),
+        super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
+    ++drop_id_port;
     setupMixinConstructor();
+    _port.listen((_) {}).onData((data) {
+      inner.drop_DartObject(data);
+    });
   }
   Future<void> setup() => inner.init;
-  void close() {
-    _port.close();
-  }
-
-  Object dart_opaque_get(raw) => raw;
+  void close() {}
 // Section: api2wire
 
   @protected
@@ -51,12 +50,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  dynamic api2wire_DartObject(Object raw) {
-    return [raw, port];
+  int api2wire_DartObject(Object raw) {
+    return inner.new_DartOpaque(raw, port);
   }
 
   @protected
-  dynamic api2wire_DelegateDartOpaque(Object raw) {
+  int api2wire_DelegateDartOpaque(Object raw) {
     return api2wire_DartObject(raw);
   }
 
@@ -878,13 +877,13 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_nested_id(NativePortType port_, List<dynamic> id);
 
-  external dynamic /* String */ wire_sync_dart_opaque(dynamic not_temp);
+  external dynamic /* String */ wire_sync_dart_opaque(int not_temp);
 
-  external void wire_async_dart_opaque(NativePortType port_, dynamic not_temp);
+  external void wire_async_dart_opaque(NativePortType port_, int not_temp);
 
-  external void wire_loop_back(NativePortType port_, dynamic not_temp);
+  external void wire_loop_back(NativePortType port_, int not_temp);
 
-  external dynamic /* int */ wire_exotic_drop(dynamic not_temp);
+  external dynamic /* int */ wire_exotic_drop(int not_temp);
 
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
@@ -903,6 +902,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
       NativePortType port_, int key, int max);
 
   external void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_);
+
+  external dynamic /* usize */ new_DartOpaque(handle, port);
 
   external int /* *mut bool */ new_box_autoadd_bool_0(bool value);
 
@@ -925,6 +926,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external int /* *mut u8 */ new_box_u8_0(int value);
 
   external int /* *mut i32 */ new_box_weekdays_0(int value);
+
+  external dynamic /*  */ drop_DartObject(ptr);
+
+  external dynamic /* JsValue */ get_DartObject(ptr);
 }
 
 // Section: WASM wire connector
@@ -1131,14 +1136,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_nested_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_nested_id(port_, id);
 
-  dynamic /* String */ wire_sync_dart_opaque(dynamic not_temp) => wasmModule.wire_sync_dart_opaque(not_temp);
+  dynamic /* String */ wire_sync_dart_opaque(int not_temp) => wasmModule.wire_sync_dart_opaque(not_temp);
 
-  void wire_async_dart_opaque(NativePortType port_, dynamic not_temp) =>
-      wasmModule.wire_async_dart_opaque(port_, not_temp);
+  void wire_async_dart_opaque(NativePortType port_, int not_temp) => wasmModule.wire_async_dart_opaque(port_, not_temp);
 
-  void wire_loop_back(NativePortType port_, dynamic not_temp) => wasmModule.wire_loop_back(port_, not_temp);
+  void wire_loop_back(NativePortType port_, int not_temp) => wasmModule.wire_loop_back(port_, not_temp);
 
-  dynamic /* int */ wire_exotic_drop(dynamic not_temp) => wasmModule.wire_exotic_drop(not_temp);
+  dynamic /* int */ wire_exotic_drop(int not_temp) => wasmModule.wire_exotic_drop(not_temp);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);
@@ -1165,6 +1169,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_) =>
       wasmModule.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_);
 
+  dynamic /* usize */ new_DartOpaque(handle, port) => wasmModule.new_DartOpaque(handle, port);
+
   int /* *mut bool */ new_box_autoadd_bool_0(bool value) => wasmModule.new_box_autoadd_bool_0(value);
 
   int /* *mut f64 */ new_box_autoadd_f64_0(double value) => wasmModule.new_box_autoadd_f64_0(value);
@@ -1186,4 +1192,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   int /* *mut u8 */ new_box_u8_0(int value) => wasmModule.new_box_u8_0(value);
 
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
+
+  dynamic /*  */ drop_DartObject(ptr) => wasmModule.drop_DartObject(ptr);
+
+  dynamic /* JsValue */ get_DartObject(ptr) => wasmModule.get_DartObject(ptr);
 }

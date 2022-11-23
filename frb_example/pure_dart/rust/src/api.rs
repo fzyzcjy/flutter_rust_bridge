@@ -626,6 +626,10 @@ lazy_static! {
     static ref EVENTS: Mutex<Option<StreamSink<Event>>> = Default::default();
 }
 
+lazy_static! {
+    static ref DART_OPAQUE: Mutex<Vec<DartOpaque>> = Default::default();
+}
+
 #[frb(dart_metadata = ("freezed"))]
 #[derive(Clone)]
 pub struct Event {

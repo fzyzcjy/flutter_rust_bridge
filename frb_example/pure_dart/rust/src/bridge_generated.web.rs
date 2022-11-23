@@ -429,22 +429,22 @@ pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_dart_opaque(not_temp: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_sync_dart_opaque(not_temp: *mut JsValue) -> support::WireSyncReturnStruct {
     wire_sync_dart_opaque_impl(not_temp)
 }
 
 #[wasm_bindgen]
-pub fn wire_async_dart_opaque(port_: MessagePort, not_temp: JsValue) {
+pub fn wire_async_dart_opaque(port_: MessagePort, not_temp: *mut JsValue) {
     wire_async_dart_opaque_impl(port_, not_temp)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back(port_: MessagePort, not_temp: JsValue) {
+pub fn wire_loop_back(port_: MessagePort, not_temp: *mut JsValue) {
     wire_loop_back_impl(port_, not_temp)
 }
 
 #[wasm_bindgen]
-pub fn wire_exotic_drop(not_temp: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_exotic_drop(not_temp: *mut JsValue) -> support::WireSyncReturnStruct {
     wire_exotic_drop_impl(not_temp)
 }
 
@@ -509,6 +509,11 @@ pub fn wire_handle_some_static_stream_sink_single_arg__static_method__Concatenat
 // Section: allocate functions
 
 #[wasm_bindgen]
+pub fn new_DartOpaque(handle: JsValue, port: MessagePort) -> usize {
+    support::new_leak_box_ptr(DartOpaque::new(handle, port)) as _
+}
+
+#[wasm_bindgen]
 pub fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
 }
@@ -563,6 +568,18 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
+// Section: related functions
+
+#[wasm_bindgen]
+pub fn drop_DartObject(ptr: usize) {
+    unsafe { drop(support::box_from_leak_ptr::<JsValue>(ptr as _)) }
+}
+
+#[wasm_bindgen]
+pub fn get_DartObject(ptr: usize) -> JsValue {
+    *unsafe { support::box_from_leak_ptr(ptr as _) }
+}
+
 // Section: impl Wire2Api
 
 impl Wire2Api<chrono::Duration> for i64 {
@@ -594,10 +611,9 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
-impl Wire2Api<DartOpaque> for JsValue {
+impl Wire2Api<DartOpaque> for *mut JsValue {
     fn wire2api(self) -> DartOpaque {
-        let data = self.dyn_into::<JsArray>().unwrap();
-        DartOpaque::new(data.get(0), data.get(1))
+        *unsafe { support::box_from_leak_ptr::<DartOpaque>(self as _) }
     }
 }
 

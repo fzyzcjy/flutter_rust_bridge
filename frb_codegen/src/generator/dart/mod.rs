@@ -316,7 +316,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                         ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
 
                     _port.handler = (response) {{
-                        inner.dart_opaque_drop(response);
+                        inner.drop_DartObject(response);
                     }};
                     dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
                         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
@@ -326,11 +326,13 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         ),
         wasm: format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
-                final _port = RawReceivePort();
+                static int drop_id_port = 0;
+                final ReceivePort _port;
                 NativePortType get port => _port.sendPort.nativePort;
-                {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
-                    _port.handler = (response) {{ print(response); }};
+                {plat}(FutureOr<WasmModule> dylib) : _port = broadcastPort('__frb_dart_opaque_drop_$drop_id_port'), super({wire}(dylib)) {{
+                    ++drop_id_port;
                     setupMixinConstructor();
+                    _port.listen((_){{}}).onData((data) {{inner.drop_DartObject(data);}});
                 }}
                 Future<void> setup() => inner.init;",
             plat = dart_platform_class_name,
@@ -347,14 +349,8 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
 
     lines.push_acc(Acc {
         io: "void close() {_port.close();}".to_owned(),
-        wasm: "void close() {_port.close();}".to_owned(),
+        wasm: "void close() {}".to_owned(),
         common: "void close() {_platform.close();}".to_owned(),
-    });
-
-    lines.push_acc(Acc {
-        io: "Object dart_opaque_get(raw) => inner.dart_opaque_get(raw);".to_owned(),
-        wasm: "Object dart_opaque_get(raw) => raw;".to_owned(),
-        ..Default::default()
     });
 
     lines.push(section_header("wire2api"));
