@@ -21,7 +21,7 @@ packages:
       name: archive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.3.4"
+    version: "3.3.5"
   args:
     dependency: transitive
     description:
@@ -182,7 +182,7 @@ packages:
       name: ffigen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.2.0"
+    version: "7.2.1"
   file:
     dependency: transitive
     description:
@@ -203,7 +203,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.49.2"
+    version: "1.50.0"
   freezed:
     dependency: "direct dev"
     description:
