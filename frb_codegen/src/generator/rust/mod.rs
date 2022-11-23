@@ -294,12 +294,7 @@ impl<'a> Generator<'a> {
             vec![],
             func.inputs
                 .iter()
-                .map(|field| {
-                    format!(
-                        "api_{}.map_err(|e| anyhow::anyhow!(e))?",
-                        field.name.rust_style()
-                    )
-                })
+                .map(|field| format!("api_{}", field.name.rust_style()))
                 .collect::<Vec<_>>(),
         ]
         .concat();
@@ -445,24 +440,18 @@ impl<'a> Generator<'a> {
     }
 
     fn generate_wire2api_misc(&self) -> &'static str {
-        r##"pub trait Wire2Api<T> {
-            /// Converts a wire type to a rust api type.
-            ///
-            /// # Safety
-            ///
-            /// [`Wire2Api::wire2api`] must happen for all fields.
-            /// Early return is unacceptable.
-            fn wire2api(self) -> Result<T, &'static str>;
+        r#"pub trait Wire2Api<T> {
+            fn wire2api(self) -> T;
         }
 
         impl<T, S> Wire2Api<Option<T>> for *mut S
         where
             *mut S: Wire2Api<T>
         {
-            fn wire2api(self) -> Result<Option<T>, &'static str> {
-                (!self.is_null()).then(|| self.wire2api()).map_or(Ok(None), |v| v.map(Some))
+            fn wire2api(self) -> Option<T> {
+                (!self.is_null()).then(|| self.wire2api())
             }
-        }"##
+        }"#
     }
 
     fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
@@ -472,7 +461,7 @@ impl<'a> Generator<'a> {
                 body.map(|body| {
                     format!(
                         "impl Wire2Api<{api}> for {}{} {{
-                            fn wire2api(self) -> Result<{api}, &'static str> {{
+                            fn wire2api(self) -> {api} {{
                                 {}
                             }}
                         }}",
@@ -540,7 +529,7 @@ impl<'a> Generator<'a> {
             .map(|body| {
                 format!(
                     "impl Wire2Api<{api}> for JsValue {{
-                        fn wire2api(self) -> Result<{api}, &'static str> {{
+                        fn wire2api(self) -> {api} {{
                             {}
                         }}
                     }}",

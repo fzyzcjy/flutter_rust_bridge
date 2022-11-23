@@ -17,20 +17,20 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         Acc::new(|target| match (target, self.ir.inner.as_ref()) {
             (Common, IrType::Primitive(_)) => Some(
                 if exist_in_real_api {
-                    "unsafe { Ok(support::box_from_leak_ptr(self)) }"
+                    "unsafe { support::box_from_leak_ptr(self) }"
                 } else {
-                    "unsafe { Ok(*support::box_from_leak_ptr(self)) }"
+                    "unsafe { *support::box_from_leak_ptr(self) }"
                 }
                 .into(),
             ),
             (_, IrType::Primitive(_)) => None,
             (Io | Wasm, ir) if ir.is_array() => Some(format!(
-                "Wire2Api::<{}>::wire2api(self).map(Into::into)",
+                "Wire2Api::<{}>::wire2api(self).into()",
                 box_inner.rust_api_type()
             )),
             (Io, _) => Some(format!(
                 "let wrap = unsafe {{ support::box_from_leak_ptr(self) }};
-                Wire2Api::<{}>::wire2api(*wrap).map(Into::into)",
+                Wire2Api::<{}>::wire2api(*wrap).into()",
                 box_inner.rust_api_type()
             )),
             _ => None,
@@ -45,11 +45,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             )
             .into(),
             IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
-                "let vec: Vec<{}> = self.wire2api()?; Ok(Box::new(support::from_vec_to_array(vec)))",
+                "let vec: Vec<{}> = self.wire2api(); Box::new(support::from_vec_to_array(vec))",
                 array.inner_rust_api_type(),
             )
             .into(),
-            _ => "Ok(Box::new(self.wire2api()?))".into(),
+            _ => "Box::new(self.wire2api())".into(),
         })
     }
 

@@ -751,7 +751,6 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-
       await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
 

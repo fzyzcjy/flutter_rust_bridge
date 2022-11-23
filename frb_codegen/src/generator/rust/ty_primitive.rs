@@ -7,14 +7,14 @@ type_rust_generator_struct!(TypePrimitiveGenerator, IrTypePrimitive);
 
 impl TypeRustGeneratorTrait for TypePrimitiveGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
-        "Ok(self)".into()
+        "self".into()
     }
     fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         use IrTypePrimitive::*;
         Some(match self.ir {
-            Bool => "Ok(self.is_truthy())".into(),
-            I64 | U64 => "Ok(::std::convert::TryInto::try_into(self.dyn_into::<js_sys::BigInt>().unwrap()).unwrap())".into(),
-            _ => "Ok(self.unchecked_into_f64() as _)".into(),
+            Bool => "self.is_truthy()".into(),
+            I64 | U64 => "::std::convert::TryInto::try_into(self.dyn_into::<js_sys::BigInt>().unwrap()).unwrap()".into(),
+            _ => "self.unchecked_into_f64() as _".into(),
         })
     }
 }

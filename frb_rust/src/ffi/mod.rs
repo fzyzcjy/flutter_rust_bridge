@@ -98,7 +98,7 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
 #[repr(transparent)]
 #[derive(Debug, Clone)]
 pub struct Opaque<T: ?Sized + DartSafe> {
-    ptr: Arc<T>,
+    ptr: Option<Arc<T>>,
 }
 
 /// # Safety
@@ -106,15 +106,11 @@ pub struct Opaque<T: ?Sized + DartSafe> {
 /// This function should never be called manually.
 /// Retrieving an opaque pointer from Dart is an implementation detail, so this
 /// function is not guaranteed to be API-stable.
-pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Result<Opaque<T>, &'static str> {
+pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
     // The raw pointer is the same one created from Arc::into_raw,
     // owned and artificially incremented by Dart.
-    if ptr.is_null() {
-        Err("Use after free.")
-    } else {
-        Ok(Opaque {
-            ptr: Arc::from_raw(ptr),
-        })
+    Opaque {
+        ptr: (!ptr.is_null()).then(|| Arc::from_raw(ptr)),
     }
 }
 
@@ -122,27 +118,35 @@ impl<T: ?Sized + DartSafe> ops::Deref for Opaque<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
-        self.ptr.as_ref()
+        if let Some(ptr) = &self.ptr {
+            ptr.as_ref()
+        } else {
+            panic!("Use after free.")
+        }
     }
 }
 
 impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { ptr }
+        Self { ptr: Some(ptr) }
     }
 }
 
 impl<T: DartSafe> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
-            ptr: Arc::new(value),
+            ptr: Some(Arc::new(value)),
         }
     }
 }
 
 impl<T: DartSafe> From<Opaque<T>> for DartAbi {
     fn from(value: Opaque<T>) -> Self {
-        let ptr = Arc::into_raw(value.ptr);
+        let ptr = if let Some(ptr) = value.ptr {
+            Arc::into_raw(ptr)
+        } else {
+            std::ptr::null()
+        };
         let size = mem::size_of::<T>();
 
         vec![ptr.into_dart(), size.into_dart()].into_dart()

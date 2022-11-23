@@ -122,89 +122,78 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 // Section: impl Wire2Api
 
 impl Wire2Api<String> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Result<String, &'static str> {
-        let vec: Vec<u8> = self.wire2api()?;
-        Ok(String::from_utf8_lossy(&vec).into_owned())
+    fn wire2api(self) -> String {
+        let vec: Vec<u8> = self.wire2api();
+        String::from_utf8_lossy(&vec).into_owned()
     }
 }
 impl Wire2Api<Point> for *mut wire_Point {
-    fn wire2api(self) -> Result<Point, &'static str> {
+    fn wire2api(self) -> Point {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Point>::wire2api(*wrap).map(Into::into)
+        Wire2Api::<Point>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Size> for *mut wire_Size {
-    fn wire2api(self) -> Result<Size, &'static str> {
+    fn wire2api(self) -> Size {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<Size>::wire2api(*wrap).map(Into::into)
+        Wire2Api::<Size>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<TreeNode> for *mut wire_TreeNode {
-    fn wire2api(self) -> Result<TreeNode, &'static str> {
+    fn wire2api(self) -> TreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<TreeNode>::wire2api(*wrap).map(Into::into)
+        Wire2Api::<TreeNode>::wire2api(*wrap).into()
     }
 }
 
 impl Wire2Api<Vec<Size>> for *mut wire_list_size {
-    fn wire2api(self) -> Result<Vec<Size>, &'static str> {
+    fn wire2api(self) -> Vec<Size> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter()
-            .map(Wire2Api::wire2api)
-            .collect::<Vec<Result<Size, &str>>>()
-            .into_iter()
-            .collect()
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 impl Wire2Api<Vec<TreeNode>> for *mut wire_list_tree_node {
-    fn wire2api(self) -> Result<Vec<TreeNode>, &'static str> {
+    fn wire2api(self) -> Vec<TreeNode> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
-        vec.into_iter()
-            .map(Wire2Api::wire2api)
-            .collect::<Vec<Result<TreeNode, &str>>>()
-            .into_iter()
-            .collect()
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 impl Wire2Api<Point> for wire_Point {
-    fn wire2api(self) -> Result<Point, &'static str> {
-        let x = self.x.wire2api();
-        let y = self.y.wire2api();
-        Ok(Point { x: x?, y: y? })
+    fn wire2api(self) -> Point {
+        Point {
+            x: self.x.wire2api(),
+            y: self.y.wire2api(),
+        }
     }
 }
 impl Wire2Api<Size> for wire_Size {
-    fn wire2api(self) -> Result<Size, &'static str> {
-        let width = self.width.wire2api();
-        let height = self.height.wire2api();
-        Ok(Size {
-            width: width?,
-            height: height?,
-        })
+    fn wire2api(self) -> Size {
+        Size {
+            width: self.width.wire2api(),
+            height: self.height.wire2api(),
+        }
     }
 }
 impl Wire2Api<TreeNode> for wire_TreeNode {
-    fn wire2api(self) -> Result<TreeNode, &'static str> {
-        let name = self.name.wire2api();
-        let children = self.children.wire2api();
-        Ok(TreeNode {
-            name: name?,
-            children: children?,
-        })
+    fn wire2api(self) -> TreeNode {
+        TreeNode {
+            name: self.name.wire2api(),
+            children: self.children.wire2api(),
+        }
     }
 }
 
 impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
-    fn wire2api(self) -> Result<Vec<u8>, &'static str> {
+    fn wire2api(self) -> Vec<u8> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
-            Ok(support::vec_from_leak_ptr(wrap.ptr, wrap.len))
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         }
     }
 }

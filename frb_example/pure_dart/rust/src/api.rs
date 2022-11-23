@@ -1018,13 +1018,21 @@ pub fn opaque_array() -> [Opaque<HideData>; 2] {
     [Opaque::new(HideData::new()), Opaque::new(HideData::new())]
 }
 
-pub fn opaque_array_run(data: [Opaque<HideData>; 2]) {}
+pub fn opaque_array_run(data: [Opaque<HideData>; 2]) {
+    for i in data {
+        i.hide_data();
+    }
+}
 
 pub fn opaque_vec() -> Vec<Opaque<HideData>> {
     vec![Opaque::new(HideData::new()), Opaque::new(HideData::new())]
 }
 
-pub fn opaque_vec_run(data: Vec<Opaque<HideData>>) {}
+pub fn opaque_vec_run(data: Vec<Opaque<HideData>>) {
+    for i in data {
+        i.hide_data();
+    }
+}
 
 pub fn create_nested_opaque() -> OpaqueNested {
     OpaqueNested {
@@ -1033,4 +1041,7 @@ pub fn create_nested_opaque() -> OpaqueNested {
     }
 }
 
-pub fn run_nested_opaque(opaque: OpaqueNested) {}
+pub fn run_nested_opaque(opaque: OpaqueNested) {
+    opaque.first.hide_data();
+    opaque.second.hide_data();
+}

@@ -32,8 +32,9 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   /// This constructor should never be called manually.
   @internal
   FrbOpaque.unsafe(int ptr, int size) : _ptr = FrbOpaqueBase.initPtr(ptr) {
-    assert(ptr > 0);
-    FrbOpaqueBase.finalizerAttach(this, _ptr, size, staticFinalizer);
+    if (ptr != 0) {
+      FrbOpaqueBase.finalizerAttach(this, _ptr, size, staticFinalizer);
+    }
   }
 
   /// Call Rust destructors on the backing memory of this pointer.

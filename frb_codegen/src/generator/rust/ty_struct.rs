@@ -10,53 +10,41 @@ type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         let api_struct = self.ir.get(self.context.ir_file);
-        let (prepare_fields, fields): (Acc<Vec<_>>, Acc<Vec<_>>) = api_struct
+        let fields: Acc<Vec<_>> = api_struct
             .fields
             .iter()
             .enumerate()
             .map(|(idx, field)| {
                 let field_name = field.name.rust_style();
-                let prepare_field_ = field_name.to_owned();
-
                 let field_ = if api_struct.is_fields_named {
                     format!("{field_name}: ")
                 } else {
                     String::new()
                 };
-                (
-                    Acc {
-                        wasm: format!("let {prepare_field_} = self_.get({idx}).wire2api();"),
-                        io: format!("let {prepare_field_} = self.{field_name}.wire2api();",),
-                        ..Default::default()
-                    },
-                    Acc {
-                        wasm: format!("{field_}{prepare_field_}?"),
-                        io: format!("{field_}{prepare_field_}?"),
-                        ..Default::default()
-                    },
-                )
+
+                Acc {
+                    wasm: format!("{field_} self_.get({idx}).wire2api()"),
+                    io: format!("{field_} self.{field_name}.wire2api()"),
+                    ..Default::default()
+                }
             })
-            .unzip();
+            .collect();
 
         let (left, right) = api_struct.brackets_pair();
         let rust_api_type = self.ir.rust_api_type();
         Acc {
             io: Some(format!(
                 "
-                {prepare_fields}
-                Ok({rust_api_type}{left}{fields}{right})
+                {rust_api_type}{left}{fields}{right}
                 ",
-                prepare_fields = prepare_fields.io.join(" "),
                 fields = fields.io.join(","),
             )),
             wasm: Some(format!(
                 "
                 let self_ = self.dyn_into::<JsArray>().unwrap();
                 assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
-                {prepare_fields}
-                Ok({rust_api_type}{left}{fields}{right})
+                {rust_api_type}{left}{fields}{right}
                 ",
-                prepare_fields = prepare_fields.wasm.join(" "),
                 fields = fields.wasm.join(","),
                 len = api_struct.fields.len(),
             )),

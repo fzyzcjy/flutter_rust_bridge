@@ -40,12 +40,7 @@ fn wire_draw_mandelbrot_impl(
             let api_scale = scale.wire2api();
             let api_num_threads = num_threads.wire2api();
             move |task_callback| {
-                draw_mandelbrot(
-                    api_image_size.map_err(|e| anyhow::anyhow!(e))?,
-                    api_zoom_point.map_err(|e| anyhow::anyhow!(e))?,
-                    api_scale.map_err(|e| anyhow::anyhow!(e))?,
-                    api_num_threads.map_err(|e| anyhow::anyhow!(e))?,
-                )
+                draw_mandelbrot(api_image_size, api_zoom_point, api_scale, api_num_threads)
             }
         },
     )
@@ -62,11 +57,7 @@ fn wire_passing_complex_structs_impl(
         },
         move || {
             let api_root = root.wire2api();
-            move |task_callback| {
-                Ok(passing_complex_structs(
-                    api_root.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(passing_complex_structs(api_root))
         },
     )
 }
@@ -92,11 +83,7 @@ fn wire_off_topic_memory_test_input_array_impl(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| {
-                Ok(off_topic_memory_test_input_array(
-                    api_input.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(off_topic_memory_test_input_array(api_input))
         },
     )
 }
@@ -112,11 +99,7 @@ fn wire_off_topic_memory_test_output_zero_copy_buffer_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| {
-                Ok(off_topic_memory_test_output_zero_copy_buffer(
-                    api_len.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(off_topic_memory_test_output_zero_copy_buffer(api_len))
         },
     )
 }
@@ -132,11 +115,7 @@ fn wire_off_topic_memory_test_output_vec_u8_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| {
-                Ok(off_topic_memory_test_output_vec_u8(
-                    api_len.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(off_topic_memory_test_output_vec_u8(api_len))
         },
     )
 }
@@ -152,11 +131,7 @@ fn wire_off_topic_memory_test_input_vec_of_object_impl(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| {
-                Ok(off_topic_memory_test_input_vec_of_object(
-                    api_input.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(off_topic_memory_test_input_vec_of_object(api_input))
         },
     )
 }
@@ -172,11 +147,7 @@ fn wire_off_topic_memory_test_output_vec_of_object_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| {
-                Ok(off_topic_memory_test_output_vec_of_object(
-                    api_len.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(off_topic_memory_test_output_vec_of_object(api_len))
         },
     )
 }
@@ -192,11 +163,7 @@ fn wire_off_topic_memory_test_input_complex_struct_impl(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| {
-                Ok(off_topic_memory_test_input_complex_struct(
-                    api_input.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(off_topic_memory_test_input_complex_struct(api_input))
         },
     )
 }
@@ -212,11 +179,7 @@ fn wire_off_topic_memory_test_output_complex_struct_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| {
-                Ok(off_topic_memory_test_output_complex_struct(
-                    api_len.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(off_topic_memory_test_output_complex_struct(api_len))
         },
     )
 }
@@ -251,40 +214,32 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {
-    /// Converts a wire type to a rust api type.
-    ///
-    /// # Safety
-    ///
-    /// [`Wire2Api::wire2api`] must happen for all fields.
-    /// Early return is unacceptable.
-    fn wire2api(self) -> Result<T, &'static str>;
+    fn wire2api(self) -> T;
 }
 
 impl<T, S> Wire2Api<Option<T>> for *mut S
 where
     *mut S: Wire2Api<T>,
 {
-    fn wire2api(self) -> Result<Option<T>, &'static str> {
-        (!self.is_null())
-            .then(|| self.wire2api())
-            .map_or(Ok(None), |v| v.map(Some))
+    fn wire2api(self) -> Option<T> {
+        (!self.is_null()).then(|| self.wire2api())
     }
 }
 
 impl Wire2Api<f64> for f64 {
-    fn wire2api(self) -> Result<f64, &'static str> {
-        Ok(self)
+    fn wire2api(self) -> f64 {
+        self
     }
 }
 impl Wire2Api<i32> for i32 {
-    fn wire2api(self) -> Result<i32, &'static str> {
-        Ok(self)
+    fn wire2api(self) -> i32 {
+        self
     }
 }
 
 impl Wire2Api<u8> for u8 {
-    fn wire2api(self) -> Result<u8, &'static str> {
-        Ok(self)
+    fn wire2api(self) -> u8 {
+        self
     }
 }
 

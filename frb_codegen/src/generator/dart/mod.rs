@@ -540,15 +540,21 @@ fn generate_wire2api_func(
 
 fn generate_opaque_func(ty: &IrType) -> Acc<String> {
     let api_type = ty.dart_api_type();
+    let generate_impl = |finalizer_type: &str, finalizer_arg: &str| {
+        format!(
+            "late final {finalizer_type} _{api_type}Finalizer = {finalizer_type}({finalizer_arg});
+            {finalizer_type} get {api_type}Finalizer => _{api_type}Finalizer;",
+        )
+    };
 
     Acc {
-        io: format!(
-            "late final OpaqueTypeFinalizer _{api_type}Finalizer = OpaqueTypeFinalizer(inner._drop_opaque_{api_type}Ptr);
-            OpaqueTypeFinalizer get {api_type}Finalizer => _{api_type}Finalizer;",
+        io: generate_impl(
+            "OpaqueTypeFinalizer",
+            &format!("inner._drop_opaque_{api_type}Ptr"),
         ),
-        wasm: format!(
-            "late final Finalizer<PlatformPointer> _{api_type}Finalizer = Finalizer<PlatformPointer>(inner.drop_opaque_{api_type});
-            Finalizer<PlatformPointer> get {api_type}Finalizer => _{api_type}Finalizer;",
+        wasm: generate_impl(
+            "Finalizer<PlatformPointer>",
+            &format!("inner.drop_opaque_{api_type}"),
         ),
         ..Default::default()
     }

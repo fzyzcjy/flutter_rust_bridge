@@ -35,12 +35,7 @@ fn wire_simple_adder_1_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| {
-                Ok(simple_adder_1(
-                    api_a.map_err(|e| anyhow::anyhow!(e))?,
-                    api_b.map_err(|e| anyhow::anyhow!(e))?,
-                ))
-            }
+            move |task_callback| Ok(simple_adder_1(api_a, api_b))
         },
     )
 }
@@ -55,28 +50,20 @@ fn wire_simple_adder_1_impl(
 // Section: impl Wire2Api
 
 pub trait Wire2Api<T> {
-    /// Converts a wire type to a rust api type.
-    ///
-    /// # Safety
-    ///
-    /// [`Wire2Api::wire2api`] must happen for all fields.
-    /// Early return is unacceptable.
-    fn wire2api(self) -> Result<T, &'static str>;
+    fn wire2api(self) -> T;
 }
 
 impl<T, S> Wire2Api<Option<T>> for *mut S
 where
     *mut S: Wire2Api<T>,
 {
-    fn wire2api(self) -> Result<Option<T>, &'static str> {
-        (!self.is_null())
-            .then(|| self.wire2api())
-            .map_or(Ok(None), |v| v.map(Some))
+    fn wire2api(self) -> Option<T> {
+        (!self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<i32> for i32 {
-    fn wire2api(self) -> Result<i32, &'static str> {
-        Ok(self)
+    fn wire2api(self) -> i32 {
+        self
     }
 }
 // Section: impl IntoDart
