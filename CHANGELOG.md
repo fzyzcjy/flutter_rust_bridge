@@ -1,3 +1,7 @@
+## 1.50.0
+
+* Implement opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects, by generating wrappers and raw Arc pointers #795 (thanks @rogurotus)
+
 ## 1.49.2
 
 * Fix parsing of packages in pubspec.yaml that have no explicit version specification #846 (thanks @banool)
