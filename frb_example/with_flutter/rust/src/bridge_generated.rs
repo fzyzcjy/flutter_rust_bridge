@@ -14,6 +14,8 @@
 use crate::api::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::*;
+use std::ffi::c_void;
+use std::sync::Arc;
 
 // Section: imports
 
@@ -206,6 +208,8 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
 // Section: static checks
 
 // Section: allocate functions
+
+// Section: related functions
 
 // Section: impl Wire2Api
 

@@ -14,6 +14,8 @@
 use crate::api_2::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::*;
+use std::ffi::c_void;
+use std::sync::Arc;
 
 // Section: imports
 
@@ -42,6 +44,8 @@ fn wire_simple_adder_2_impl(
 // Section: static checks
 
 // Section: allocate functions
+
+// Section: related functions
 
 // Section: impl Wire2Api
 

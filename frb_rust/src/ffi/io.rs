@@ -9,6 +9,7 @@ pub fn wire2api_timestamp(ts: i64) -> Timestamp {
     let ns = (ts.rem_euclid(1_000_000) * 1_000) as u32;
     Timestamp { s, ns }
 }
+
 /// a timestamp with microseconds precision
 #[cfg(feature = "chrono")]
 pub struct Timestamp {

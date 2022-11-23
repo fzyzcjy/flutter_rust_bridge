@@ -8,6 +8,8 @@ pub extern "C" fn wire_simple_adder_2(port_: i64, a: i32, b: i32) {
 
 // Section: allocate functions
 
+// Section: related functions
+
 // Section: impl Wire2Api
 
 // Section: wire structs

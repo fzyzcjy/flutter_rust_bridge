@@ -1,20 +1,26 @@
+use std::iter::FromIterator;
+
 use super::DartAbi;
-use super::IntoDart;
 use super::MessagePort;
+pub use crate::wasm_bindgen_src::transfer::*;
+use crate::DartSafe;
+use crate::Opaque;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
-use std::iter::FromIterator;
 pub use wasm_bindgen;
 pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
-pub use crate::wasm_bindgen_src::transfer::*;
+pub trait IntoDart {
+    fn into_dart(self) -> DartAbi;
+}
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
+impl<T: DartSafe> IntoDartExceptPrimitive for Opaque<T> {}
 impl IntoDartExceptPrimitive for String {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
@@ -145,6 +151,13 @@ impl<T> IntoDart for *mut T {
     #[inline]
     fn into_dart(self) -> DartAbi {
         (self as usize).into_dart()
+    }
+}
+
+impl<T: DartSafe> IntoDart for Opaque<T> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.into()
     }
 }
 

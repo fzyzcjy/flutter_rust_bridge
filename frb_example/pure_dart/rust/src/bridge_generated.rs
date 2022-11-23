@@ -14,6 +14,8 @@
 use crate::api::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::*;
+use std::ffi::c_void;
+use std::sync::Arc;
 
 // Section: imports
 
@@ -1224,6 +1226,146 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
     )
 }
+fn wire_create_opaque_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(create_opaque()),
+    )
+}
+fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_array_opaque_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(create_array_opaque_enum()),
+    )
+}
+fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaque> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_enum_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(run_enum_opaque(api_opaque))
+        },
+    )
+}
+fn wire_run_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<Opaque<HideData>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(run_opaque(api_opaque))
+        },
+    )
+}
+fn wire_run_opaque_with_delay_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<Opaque<HideData>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_opaque_with_delay",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(run_opaque_with_delay(api_opaque))
+        },
+    )
+}
+fn wire_opaque_array_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "opaque_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(opaque_array()),
+    )
+}
+fn wire_opaque_array_run_impl(
+    port_: MessagePort,
+    data: impl Wire2Api<[Opaque<HideData>; 2]> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "opaque_array_run",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_data = data.wire2api();
+            move |task_callback| Ok(opaque_array_run(api_data))
+        },
+    )
+}
+fn wire_opaque_vec_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "opaque_vec",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(opaque_vec()),
+    )
+}
+fn wire_opaque_vec_run_impl(
+    port_: MessagePort,
+    data: impl Wire2Api<Vec<Opaque<HideData>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "opaque_vec_run",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_data = data.wire2api();
+            move |task_callback| Ok(opaque_vec_run(api_data))
+        },
+    )
+}
+fn wire_create_nested_opaque_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_nested_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(create_nested_opaque()),
+    )
+}
+fn wire_run_nested_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<OpaqueNested> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_nested_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(run_nested_opaque(api_opaque))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -1452,6 +1594,8 @@ const _: fn() = || {
     }
 };
 // Section: allocate functions
+
+// Section: related functions
 
 // Section: impl Wire2Api
 
@@ -1732,6 +1876,19 @@ impl support::IntoDart for Element {
 }
 impl support::IntoDartExceptPrimitive for Element {}
 
+impl support::IntoDart for EnumOpaque {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Struct(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::Primitive(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::TraitObj(field0) => vec![2.into_dart(), field0.into_dart()],
+            Self::Mutex(field0) => vec![3.into_dart(), field0.into_dart()],
+            Self::RwLock(field0) => vec![4.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for EnumOpaque {}
 impl support::IntoDart for Event {
     fn into_dart(self) -> support::DartAbi {
         vec![self.address.into_dart(), self.payload.into_dart()].into_dart()
@@ -1889,6 +2046,13 @@ impl support::IntoDart for OldSimpleStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for OldSimpleStruct {}
+
+impl support::IntoDart for OpaqueNested {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.first.into_dart(), self.second.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for OpaqueNested {}
 
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartAbi {
