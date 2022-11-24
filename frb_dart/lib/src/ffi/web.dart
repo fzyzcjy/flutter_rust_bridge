@@ -103,3 +103,18 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
   FlutterRustBridgeWasmWireBase(FutureOr<T> module)
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
+
+typedef PlatformPointer = int;
+typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
+
+/// An opaque pointer to a Rust type.
+/// Recipients of this type should call [dispose] at least once during runtime.
+/// If passed to a native function after being [dispose]d, an exception will be thrown.
+class FrbOpaqueBase {
+  static PlatformPointer initPtr(int ptr) => ptr;
+  static PlatformPointer nullPtr() => 0;
+  static bool isStalePtr(PlatformPointer ptr) => ptr == 0;
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int _,
+          OpaqueTypeFinalizer finalizer) =>
+      finalizer.attach(opaque, ptr, detach: opaque);
+}

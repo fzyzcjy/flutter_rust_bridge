@@ -4,6 +4,7 @@ mod ty_dart_opaque;
 mod ty_delegate;
 mod ty_enum;
 mod ty_general_list;
+mod ty_opaque;
 mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
@@ -16,6 +17,7 @@ pub use ty_dart_opaque::*;
 pub use ty_delegate::*;
 pub use ty_enum::*;
 pub use ty_general_list::*;
+pub use ty_opaque::*;
 pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
@@ -88,8 +90,10 @@ impl<'a> Generator<'a> {
 
         lines.push(String::new());
         lines.push(format!("use crate::{}::*;", rust_wire_mod));
-        lines.push("use flutter_rust_bridge::*;".to_string());
+        lines.push("use flutter_rust_bridge::*;".to_owned());
         lines.push("use core::panic::UnwindSafe;".to_owned());
+        lines.push("use std::sync::Arc;".to_owned());
+        lines.push("use std::ffi::c_void;".to_owned());
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));

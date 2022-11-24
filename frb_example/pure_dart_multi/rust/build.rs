@@ -29,6 +29,7 @@ fn main() {
         rust_output: Some(vec![RUST_OUTPUT_1.to_string(), RUST_OUTPUT_2.to_string()]),
         // Class name of each Rust block of api
         class_name: Some(vec![CLASS_NAME_1.to_string(), CLASS_NAME_2.to_string()]),
+        dart_format_line_length: 120,
         // for other options use defaults
         ..Default::default()
     };

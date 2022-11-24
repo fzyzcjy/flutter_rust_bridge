@@ -1,7 +1,10 @@
 #![allow(unused_variables)]
 
+use std::fmt::Debug;
+use std::ops::Deref;
 use std::sync::atomic::{AtomicI32, Ordering};
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
+pub use std::sync::{Mutex, RwLock};
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -10,6 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
+pub use crate::data::HideData;
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
@@ -22,7 +26,6 @@ pub fn simple_adder(a: i32, b: i32) -> i32 {
 /**
  Multiline comments are fine,
  but they are not preferred in Rust nor in Dart.
-
  Newlines are preserved.
 */
 pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
@@ -978,4 +981,91 @@ pub fn exotic_drop(not_temp: DartOpaque) -> SyncReturn<i32> {
     .join()
     .unwrap();
     SyncReturn(42)
+}
+/// RustOpaque types
+pub trait DartDebug: DartSafe + Debug {}
+impl<T: DartSafe + Debug> DartDebug for T {}
+
+pub enum EnumOpaque {
+    Struct(RustOpaque<HideData>),
+    Primitive(RustOpaque<i32>),
+    TraitObj(RustOpaque<Box<dyn DartDebug>>),
+    Mutex(RustOpaque<Mutex<HideData>>),
+    RwLock(RustOpaque<RwLock<HideData>>),
+}
+
+/// [`HideData`] has private fields.
+
+pub struct OpaqueNested {
+    pub first: RustOpaque<HideData>,
+    pub second: RustOpaque<HideData>,
+}
+
+pub fn create_opaque() -> RustOpaque<HideData> {
+    RustOpaque::new(HideData::new())
+}
+
+pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
+    [
+        EnumOpaque::Struct(RustOpaque::new(HideData::new())),
+        EnumOpaque::Primitive(RustOpaque::new(42)),
+        EnumOpaque::TraitObj(opaque_dyn!("String")),
+        EnumOpaque::Mutex(RustOpaque::new(Mutex::new(HideData::new()))),
+        EnumOpaque::RwLock(RustOpaque::new(RwLock::new(HideData::new()))),
+    ]
+}
+
+pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
+    match opaque {
+        EnumOpaque::Struct(s) => run_opaque(s),
+        EnumOpaque::Primitive(p) => format!("{:?}", p.deref()),
+        EnumOpaque::TraitObj(t) => format!("{:?}", t.deref()),
+        EnumOpaque::Mutex(m) => {
+            format!("{:?}", m.lock().unwrap().hide_data())
+        }
+        EnumOpaque::RwLock(r) => {
+            format!("{:?}", r.read().unwrap().hide_data())
+        }
+    }
+}
+
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    opaque.hide_data()
+}
+
+pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
+    sleep(Duration::from_millis(1000));
+    opaque.hide_data()
+}
+
+pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
+    [RustOpaque::new(HideData::new()), RustOpaque::new(HideData::new())]
+}
+
+pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
+    for i in data {
+        i.hide_data();
+    }
+}
+
+pub fn opaque_vec() -> Vec<RustOpaque<HideData>> {
+    vec![RustOpaque::new(HideData::new()), RustOpaque::new(HideData::new())]
+}
+
+pub fn opaque_vec_run(data: Vec<RustOpaque<HideData>>) {
+    for i in data {
+        i.hide_data();
+    }
+}
+
+pub fn create_nested_opaque() -> OpaqueNested {
+    OpaqueNested {
+        first: RustOpaque::new(HideData::new()),
+        second: RustOpaque::new(HideData::new()),
+    }
+}
+
+pub fn run_nested_opaque(opaque: OpaqueNested) {
+    opaque.first.hide_data();
+    opaque.second.hide_data();
 }

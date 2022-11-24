@@ -2,10 +2,9 @@
 //! These functions are *not* meant to be used by humans directly.
 #![doc(hidden)]
 
-use std::mem;
-
 pub use crate::ffi::*;
 pub use lazy_static::lazy_static;
+use std::mem;
 
 pub use crate::handler::DefaultHandler;
 
@@ -29,6 +28,11 @@ pub unsafe fn vec_from_leak_ptr<T>(ptr: *mut T, len: i32) -> Vec<T> {
     Vec::from_raw_parts(ptr, len as usize, len as usize)
 }
 
+/// Convert [Vec<T>] to array length `N`.
+///
+/// # Panics
+///
+/// Panics if length of [Vec<T>] != `N`.
 pub fn from_vec_to_array<T, const N: usize>(v: Vec<T>) -> [T; N] {
     core::convert::TryInto::try_into(v)
         .unwrap_or_else(|v: Vec<T>| panic!("Expected a Vec of length {} but it was {}", N, v.len()))

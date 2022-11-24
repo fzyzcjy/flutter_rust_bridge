@@ -5,6 +5,7 @@ mod ty_dart_opaque;
 mod ty_delegate;
 mod ty_enum;
 mod ty_general_list;
+mod ty_opaque;
 mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
@@ -26,6 +27,7 @@ pub use ty_dart_opaque::*;
 pub use ty_delegate::*;
 pub use ty_enum::*;
 pub use ty_general_list::*;
+pub use ty_opaque::*;
 pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
@@ -87,6 +89,7 @@ struct DartApiSpec {
     dart_funcs: Vec<GeneratedApiFunc>,
     dart_structs: Vec<String>,
     dart_api2wire_funcs: Acc<String>,
+    dart_opaque_funcs: Acc<String>,
     dart_api_fill_to_wire_funcs: Vec<String>,
     dart_wire2api_funcs: Vec<String>,
     dart_wasm_funcs: Vec<String>,
@@ -122,19 +125,35 @@ impl DartApiSpec {
             .map(|ty| generate_api2wire_func(ty, ir_file, config))
             .collect::<Acc<_>>()
             .join("\n");
-        let dart_funcs = ir_file
+
+        let mut dart_funcs = ir_file
             .funcs
             .iter()
             .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common))
             .collect::<Vec<_>>();
+        dart_funcs.extend(
+            distinct_input_types
+                .iter()
+                .filter(|ty| ty.is_opaque())
+                .map(generate_opaque_getters),
+        );
+
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api_fill_to_wire_func(ty, ir_file, config))
             .collect::<Vec<_>>();
+
         let dart_wire2api_funcs = distinct_output_types
             .iter()
             .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
             .collect::<Vec<_>>();
+
+        let dart_opaque_funcs = distinct_input_types
+            .iter()
+            .filter(|ty| ty.is_opaque())
+            .map(generate_opaque_func)
+            .collect::<Acc<_>>()
+            .join("\n");
 
         let ir_wasm_func_exports = config.wasm_enabled.then(|| {
             ir_file
@@ -168,6 +187,7 @@ impl DartApiSpec {
             dart_funcs,
             dart_structs,
             dart_api2wire_funcs,
+            dart_opaque_funcs,
             dart_api_fill_to_wire_funcs,
             dart_wire2api_funcs,
             dart_wasm_funcs,
@@ -246,11 +266,12 @@ fn generate_dart_declaration_body(
     dart_structs: &[String],
 ) -> String {
     format!(
-        "abstract class {} {{
-            {}
+        "
+        abstract class {0} {{
+            {1}
         }}
 
-        {}
+        {2}
         ",
         dart_api_class_name,
         dart_funcs
@@ -284,6 +305,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     let DartApiSpec {
         dart_funcs,
         dart_api2wire_funcs,
+        dart_opaque_funcs,
         dart_api_fill_to_wire_funcs,
         dart_wire2api_funcs,
         dart_wasm_funcs,
@@ -364,6 +386,9 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
 
     lines.push_all(section_header("api2wire"));
     lines.push_acc(dart_api2wire_funcs.clone());
+
+    lines.push_all(section_header("finalizer"));
+    lines.push_acc(dart_opaque_funcs.clone());
 
     lines.io.push(section_header("api_fill_to_wire"));
     lines.io.push(dart_api_fill_to_wire_funcs.join("\n\n"));
@@ -466,7 +491,7 @@ fn generate_dart_implementation_code(
 fn generate_file_prelude() -> DartBasicCode {
     DartBasicCode {
         import: format!("{}
-            // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names
+            // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names, invalid_use_of_internal_member
             ",
             code_header()
         ),
@@ -485,23 +510,22 @@ pub(crate) struct GeneratedApiFunc {
 }
 
 fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<String> {
-    TypeDartGenerator::new(ty.clone(), ir_file, config)
-        .api2wire_body()
-        .map(|body, target| {
-            body.map(|body| {
-                format!(
-                    "@protected
+    let generator = TypeDartGenerator::new(ty.clone(), ir_file, config);
+    generator.api2wire_body().map(|body, target| {
+        body.map(|body| {
+            format!(
+                "@protected
                     {} api2wire_{}({} raw) {{
                         {}
                     }}",
-                    ty.dart_wire_type(target),
-                    ty.safe_ident(),
-                    ty.dart_api_type(),
-                    body,
-                )
-            })
-            .unwrap_or_default()
+                ty.dart_wire_type(target),
+                ty.safe_ident(),
+                ty.dart_api_type(),
+                body,
+            )
         })
+        .unwrap_or_default()
+    })
 }
 
 fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> String {
@@ -543,6 +567,28 @@ fn generate_wire2api_func(
         ty.dart_param_type(),
         body,
     )
+}
+
+fn generate_opaque_func(ty: &IrType) -> Acc<String> {
+    let api_type = ty.dart_api_type();
+    let generate_impl = |finalizer_type: &str, finalizer_arg: &str| {
+        format!(
+            "late final {finalizer_type} _{api_type}Finalizer = {finalizer_type}({finalizer_arg});
+            {finalizer_type} get {api_type}Finalizer => _{api_type}Finalizer;",
+        )
+    };
+
+    Acc {
+        io: generate_impl(
+            "OpaqueTypeFinalizer",
+            &format!("inner._drop_opaque_{api_type}Ptr"),
+        ),
+        wasm: generate_impl(
+            "Finalizer<PlatformPointer>",
+            &format!("inner.drop_opaque_{api_type}"),
+        ),
+        ..Default::default()
+    }
 }
 
 fn gen_wire2api_simple_type_cast(s: &str) -> String {

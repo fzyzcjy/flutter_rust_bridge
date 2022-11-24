@@ -1,6 +1,5 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
 #![allow(clippy::vec_init_then_push)]
-#![deny(clippy::too_many_lines)]
 // #![warn(clippy::wildcard_enum_match_arm)]
 
 use std::ffi::OsStr;
@@ -200,9 +199,31 @@ fn write_dart_decls(
         ),
         ..Default::default()
     };
+
+    let common_import = DartBasicCode {
+        import: if config.wasm_enabled {
+            format!(
+                "import '{}' if (dart.library.html) '{}';",
+                config
+                    .dart_io_output_path()
+                    .file_name()
+                    .and_then(OsStr::to_str)
+                    .unwrap(),
+                config
+                    .dart_wasm_output_path()
+                    .file_name()
+                    .and_then(OsStr::to_str)
+                    .unwrap(),
+            )
+        } else {
+            "".into()
+        },
+        ..Default::default()
+    };
+
     fs::write(
         &dart_decl_output_path,
-        (&generated_dart.file_prelude + generated_dart_decl_all).to_text(),
+        (&generated_dart.file_prelude + &common_import + generated_dart_decl_all).to_text(),
     )?;
     if config.wasm_enabled {
         fs::write(

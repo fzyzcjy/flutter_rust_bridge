@@ -1,8 +1,7 @@
 import 'dart:ffi';
 import 'dart:io';
 
-import 'bridge_generated.io.dart';
-export 'bridge_generated.io.dart';
+import 'bridge_generated.dart';
 
 FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(String path) {
   return FlutterRustBridgeExampleSingleBlockTestImpl(

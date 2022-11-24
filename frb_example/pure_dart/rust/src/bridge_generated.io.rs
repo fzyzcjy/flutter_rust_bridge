@@ -461,6 +461,61 @@ pub extern "C" fn wire_exotic_drop(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_create_opaque(port_: i64) {
+    wire_create_opaque_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_create_array_opaque_enum(port_: i64) {
+    wire_create_array_opaque_enum_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_enum_opaque(port_: i64, opaque: *mut wire_EnumOpaque) {
+    wire_run_enum_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_opaque(port_: i64, opaque: wire_HideData) {
+    wire_run_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_opaque_with_delay(port_: i64, opaque: wire_HideData) {
+    wire_run_opaque_with_delay_impl(port_, opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_opaque_array(port_: i64) {
+    wire_opaque_array_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_opaque_array_run(port_: i64, data: *mut wire_list_HideData) {
+    wire_opaque_array_run_impl(port_, data)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_opaque_vec(port_: i64) {
+    wire_opaque_vec_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_opaque_vec_run(port_: i64, data: *mut wire_list_HideData) {
+    wire_opaque_vec_run_impl(port_, data)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_create_nested_opaque(port_: i64) {
+    wire_create_nested_opaque_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNested) {
+    wire_run_nested_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -525,12 +580,37 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
 // Section: allocate functions
 
 #[no_mangle]
+pub extern "C" fn new_BoxDartDebug() -> wire_BoxDartDebug {
+    wire_BoxDartDebug::new_with_null_ptr()
+}
+
+#[no_mangle]
 pub extern "C" fn new_DartOpaque(
     handle: *mut _Dart_Handle,
     port: MessagePort,
 ) -> *mut wire_DartOpaque {
     let handle = unsafe { Dart_NewPersistentHandle_DL_Trampolined(handle) };
     support::new_leak_box_ptr(wire_DartOpaque { port, handle })
+}
+
+#[no_mangle]
+pub extern "C" fn new_HideData() -> wire_HideData {
+    wire_HideData::new_with_null_ptr()
+}
+
+#[no_mangle]
+pub extern "C" fn new_I32() -> wire_I32 {
+    wire_I32::new_with_null_ptr()
+}
+
+#[no_mangle]
+pub extern "C" fn new_MutexHideData() -> wire_MutexHideData {
+    wire_MutexHideData::new_with_null_ptr()
+}
+
+#[no_mangle]
+pub extern "C" fn new_RwLockHideData() -> wire_RwLockHideData {
+    wire_RwLockHideData::new_with_null_ptr()
 }
 
 #[no_mangle]
@@ -570,6 +650,11 @@ pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut wire_ConcatenateW
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_customized_0() -> *mut wire_Customized {
     support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_enum_opaque_0() -> *mut wire_EnumOpaque {
+    support::new_leak_box_ptr(wire_EnumOpaque::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -650,6 +735,11 @@ pub extern "C" fn new_box_autoadd_note_0() -> *mut wire_Note {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_numbers_0() -> *mut wire_Numbers {
     support::new_leak_box_ptr(wire_Numbers::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut wire_OpaqueNested {
+    support::new_leak_box_ptr(wire_OpaqueNested::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -774,6 +864,15 @@ pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
 }
 
 #[no_mangle]
+pub extern "C" fn new_list_HideData_0(len: i32) -> *mut wire_list_HideData {
+    let wrap = wire_list_HideData {
+        ptr: support::new_leak_vec_ptr(<wire_HideData>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn new_list_application_env_var_0(len: i32) -> *mut wire_list_application_env_var {
     let wrap = wire_list_application_env_var {
         ptr: support::new_leak_vec_ptr(<wire_ApplicationEnvVar>::new_with_null_ptr(), len),
@@ -841,12 +940,92 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 // Section: related functions
 
 #[no_mangle]
+pub extern "C" fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
+    unsafe {
+        Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn get_DartObject(ptr: usize) -> *mut _Dart_Handle {
     unsafe { Dart_HandleFromPersistent_DL_Trampolined(ptr as _) }
 }
 
+#[no_mangle]
+pub extern "C" fn drop_opaque_HideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<HideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<HideData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_I32(ptr: *const c_void) {
+    unsafe {
+        Arc::<i32>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_I32(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<i32>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_MutexHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_RwLockHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_RwLockHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
 // Section: impl Wire2Api
 
+impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for wire_BoxDartDebug {
+    fn wire2api(self) -> RustOpaque<Box<dyn DartDebug>> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
 impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
@@ -883,6 +1062,32 @@ impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
     }
 }
 
+impl Wire2Api<RustOpaque<HideData>> for wire_HideData {
+    fn wire2api(self) -> RustOpaque<HideData> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
+impl Wire2Api<[RustOpaque<HideData>; 2]> for *mut wire_list_HideData {
+    fn wire2api(self) -> [RustOpaque<HideData>; 2] {
+        let vec: Vec<RustOpaque<HideData>> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<RustOpaque<i32>> for wire_I32 {
+    fn wire2api(self) -> RustOpaque<i32> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
+impl Wire2Api<RustOpaque<Mutex<HideData>>> for wire_MutexHideData {
+    fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
+impl Wire2Api<RustOpaque<RwLock<HideData>>> for wire_RwLockHideData {
+    fn wire2api(self) -> RustOpaque<RwLock<HideData>> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
 impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
@@ -989,6 +1194,12 @@ impl Wire2Api<Customized> for *mut wire_Customized {
         Wire2Api::<Customized>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<EnumOpaque> for *mut wire_EnumOpaque {
+    fn wire2api(self) -> EnumOpaque {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<EnumOpaque>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
     fn wire2api(self) -> ExoticOptionals {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1067,6 +1278,12 @@ impl Wire2Api<Numbers> for *mut wire_Numbers {
     fn wire2api(self) -> Numbers {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Numbers>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<OpaqueNested> for *mut wire_OpaqueNested {
+    fn wire2api(self) -> OpaqueNested {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<OpaqueNested>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Sequences> for *mut wire_Sequences {
@@ -1166,6 +1383,38 @@ impl Wire2Api<Distance> for wire_Distance {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Map);
                 Distance::Map(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumOpaque> for wire_EnumOpaque {
+    fn wire2api(self) -> EnumOpaque {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Struct);
+                EnumOpaque::Struct(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Primitive);
+                EnumOpaque::Primitive(ans.field0.wire2api())
+            },
+            2 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.TraitObj);
+                EnumOpaque::TraitObj(ans.field0.wire2api())
+            },
+            3 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Mutex);
+                EnumOpaque::Mutex(ans.field0.wire2api())
+            },
+            4 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.RwLock);
+                EnumOpaque::RwLock(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -1298,6 +1547,15 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
         }
     }
 }
+impl Wire2Api<Vec<RustOpaque<HideData>>> for *mut wire_list_HideData {
+    fn wire2api(self) -> Vec<RustOpaque<HideData>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
     fn wire2api(self) -> Vec<ApplicationEnvVar> {
         let vec = unsafe {
@@ -1418,6 +1676,14 @@ impl Wire2Api<Numbers> for wire_Numbers {
         Numbers(self.field0.wire2api())
     }
 }
+impl Wire2Api<OpaqueNested> for wire_OpaqueNested {
+    fn wire2api(self) -> OpaqueNested {
+        OpaqueNested {
+            first: self.first.wire2api(),
+            second: self.second.wire2api(),
+        }
+    }
+}
 
 impl Wire2Api<Sequences> for wire_Sequences {
     fn wire2api(self) -> Sequences {
@@ -1497,9 +1763,39 @@ pub extern "C" fn drop_DartOpaque(ptr: usize) {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_BoxDartDebug {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_DartOpaque {
     port: i64,
     handle: *mut _Dart_Handle,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_HideData {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_I32 {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MutexHideData {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_RwLockHideData {
+    ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
@@ -1628,6 +1924,13 @@ pub struct wire_int_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_HideData {
+    ptr: *mut wire_HideData,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_application_env_var {
     ptr: *mut wire_ApplicationEnvVar,
     len: i32,
@@ -1717,6 +2020,13 @@ pub struct wire_Numbers {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_OpaqueNested {
+    first: wire_HideData,
+    second: wire_HideData,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_Sequences {
     field0: *mut wire_int_32_list,
 }
@@ -1767,6 +2077,51 @@ pub struct wire_Distance_Unknown {}
 #[derive(Clone)]
 pub struct wire_Distance_Map {
     field0: f64,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumOpaque {
+    tag: i32,
+    kind: *mut EnumOpaqueKind,
+}
+
+#[repr(C)]
+pub union EnumOpaqueKind {
+    Struct: *mut wire_EnumOpaque_Struct,
+    Primitive: *mut wire_EnumOpaque_Primitive,
+    TraitObj: *mut wire_EnumOpaque_TraitObj,
+    Mutex: *mut wire_EnumOpaque_Mutex,
+    RwLock: *mut wire_EnumOpaque_RwLock,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumOpaque_Struct {
+    field0: wire_HideData,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumOpaque_Primitive {
+    field0: wire_I32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumOpaque_TraitObj {
+    field0: wire_BoxDartDebug,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumOpaque_Mutex {
+    field0: wire_MutexHideData,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumOpaque_RwLock {
+    field0: wire_RwLockHideData,
 }
 
 #[repr(C)]
@@ -1884,6 +2239,44 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
+impl NewWithNullPtr for wire_BoxDartDebug {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_HideData {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_I32 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+impl NewWithNullPtr for wire_MutexHideData {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+impl NewWithNullPtr for wire_RwLockHideData {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_ApplicationEnv {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1960,6 +2353,60 @@ pub extern "C" fn inflate_Distance_Map() -> *mut DistanceKind {
     support::new_leak_box_ptr(DistanceKind {
         Map: support::new_leak_box_ptr(wire_Distance_Map {
             field0: Default::default(),
+        }),
+    })
+}
+
+impl NewWithNullPtr for wire_EnumOpaque {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumOpaque_Struct() -> *mut EnumOpaqueKind {
+    support::new_leak_box_ptr(EnumOpaqueKind {
+        Struct: support::new_leak_box_ptr(wire_EnumOpaque_Struct {
+            field0: wire_HideData::new_with_null_ptr(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumOpaque_Primitive() -> *mut EnumOpaqueKind {
+    support::new_leak_box_ptr(EnumOpaqueKind {
+        Primitive: support::new_leak_box_ptr(wire_EnumOpaque_Primitive {
+            field0: wire_I32::new_with_null_ptr(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumOpaque_TraitObj() -> *mut EnumOpaqueKind {
+    support::new_leak_box_ptr(EnumOpaqueKind {
+        TraitObj: support::new_leak_box_ptr(wire_EnumOpaque_TraitObj {
+            field0: wire_BoxDartDebug::new_with_null_ptr(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumOpaque_Mutex() -> *mut EnumOpaqueKind {
+    support::new_leak_box_ptr(EnumOpaqueKind {
+        Mutex: support::new_leak_box_ptr(wire_EnumOpaque_Mutex {
+            field0: wire_MutexHideData::new_with_null_ptr(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumOpaque_RwLock() -> *mut EnumOpaqueKind {
+    support::new_leak_box_ptr(EnumOpaqueKind {
+        RwLock: support::new_leak_box_ptr(wire_EnumOpaque_RwLock {
+            field0: wire_RwLockHideData::new_with_null_ptr(),
         }),
     })
 }
@@ -2155,6 +2602,15 @@ impl NewWithNullPtr for wire_Numbers {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl NewWithNullPtr for wire_OpaqueNested {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: wire_HideData::new_with_null_ptr(),
+            second: wire_HideData::new_with_null_ptr(),
         }
     }
 }

@@ -4,7 +4,7 @@ use crate::ir::*;
 use crate::target::Target;
 
 #[cfg(feature = "chrono")]
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrTypeTime {
     Local,
     Utc,
@@ -25,7 +25,7 @@ impl IrTypeTime {
 }
 
 /// types that delegate to another type
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrTypeDelegate {
     Array(IrTypeDelegateArray),
     String,
@@ -44,7 +44,7 @@ pub enum IrTypeDelegate {
     #[cfg(feature = "uuid")]
     Uuids,
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Hash, Eq, PartialEq)]
 pub enum IrTypeDelegateArray {
     GeneralArray {
         length: usize,

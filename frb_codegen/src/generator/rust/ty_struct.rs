@@ -10,41 +10,42 @@ type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         let api_struct = self.ir.get(self.context.ir_file);
-        let fields = api_struct
+        let fields: Acc<Vec<_>> = api_struct
             .fields
             .iter()
             .enumerate()
             .map(|(idx, field)| {
+                let field_name = field.name.rust_style();
                 let field_ = if api_struct.is_fields_named {
-                    field.name.rust_style().to_string() + ": "
+                    format!("{field_name}: ")
                 } else {
                     String::new()
                 };
+
                 Acc {
-                    wasm: format!("{} self_.get({}).wire2api()", field_, idx),
-                    io: format!("{} self.{}.wire2api()", field_, field.name.rust_style()),
+                    wasm: format!("{field_} self_.get({idx}).wire2api()"),
+                    io: format!("{field_} self.{field_name}.wire2api()"),
                     ..Default::default()
                 }
             })
-            .collect::<Acc<Vec<_>>>();
+            .collect();
 
         let (left, right) = api_struct.brackets_pair();
+        let rust_api_type = self.ir.rust_api_type();
         Acc {
             io: Some(format!(
-                "{}{}{}{}",
-                self.ir.rust_api_type(),
-                left,
-                fields.io.join(","),
-                right
+                "
+                {rust_api_type}{left}{fields}{right}
+                ",
+                fields = fields.io.join(","),
             )),
             wasm: Some(format!(
-                "let self_ = self.dyn_into::<JsArray>().unwrap();
+                "
+                let self_ = self.dyn_into::<JsArray>().unwrap();
                 assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
-                {}{}{}{}",
-                self.ir.rust_api_type(),
-                left,
-                fields.wasm.join(","),
-                right,
+                {rust_api_type}{left}{fields}{right}
+                ",
+                fields = fields.wasm.join(","),
                 len = api_struct.fields.len(),
             )),
             ..Default::default()
@@ -170,9 +171,14 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                         "{}: {},",
                         field.name.rust_style(),
                         if field.ty.rust_wire_is_pointer(Target::Io) {
-                            "core::ptr::null_mut()"
+                            "core::ptr::null_mut()".to_owned()
+                        } else if field.ty.is_opaque() {
+                            format!(
+                                "{}::new_with_null_ptr()",
+                                field.ty.rust_wire_type(Target::Io)
+                            )
                         } else {
-                            "Default::default()"
+                            "Default::default()".to_owned()
                         }
                     )
                 })

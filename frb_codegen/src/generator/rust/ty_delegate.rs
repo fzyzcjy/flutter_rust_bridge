@@ -27,7 +27,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(array) => {
-                let acc = Some(format!("let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",array.inner_rust_api_type()));
+                let acc = Some(format!("let vec: Vec<{}>= self.wire2api(); support::from_vec_to_array(vec)",array.inner_rust_api_type()));
                 if array.inner_is_js_value() {
                     return Acc{io: acc,..Default::default()};
                 }
@@ -44,8 +44,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
             }
             IrTypeDelegate::StringList => Acc{
-                io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.into()),
-                wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
+                io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
+                wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
                 ..Default::default()
             },
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {

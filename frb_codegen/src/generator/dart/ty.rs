@@ -9,6 +9,12 @@ pub trait TypeDartGeneratorTrait {
         None
     }
 
+    /// Body of `Wire2Api::wire2api` function.
+    ///
+    /// # Safety
+    ///
+    /// `Wire2Api::wire2api` must happen for all fields.
+    /// Early return is unacceptable.
     fn wire2api_body(&self) -> String {
         "".to_string()
     }
@@ -48,6 +54,7 @@ pub enum TypeDartGenerator<'a> {
     EnumRef(TypeEnumRefGenerator<'a>),
     SyncReturn(TypeSyncReturnGenerator<'a>),
     DartOpaque(TypeDartOpaqueGenerator<'a>),
+    RustOpaque(TypeOpaqueGenerator<'a>),
 }
 
 impl<'a> TypeDartGenerator<'a> {
@@ -64,6 +71,7 @@ impl<'a> TypeDartGenerator<'a> {
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
             SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
             DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
+            RustOpaque(ir) => TypeOpaqueGenerator { ir, context }.into(),
         }
     }
 }

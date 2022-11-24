@@ -25,9 +25,9 @@ mixin _$ApplicationMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? displayMessage,
-    TResult Function(int x, int y)? renderPixel,
-    TResult Function()? exit,
+    TResult? Function(String field0)? displayMessage,
+    TResult? Function(int x, int y)? renderPixel,
+    TResult? Function()? exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +47,9 @@ mixin _$ApplicationMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult Function(ApplicationMessage_Exit value)? exit,
+    TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
+    TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
+    TResult? Function(ApplicationMessage_Exit value)? exit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,16 +65,18 @@ mixin _$ApplicationMessage {
 /// @nodoc
 abstract class $ApplicationMessageCopyWith<$Res> {
   factory $ApplicationMessageCopyWith(ApplicationMessage value, $Res Function(ApplicationMessage) then) =
-      _$ApplicationMessageCopyWithImpl<$Res>;
+      _$ApplicationMessageCopyWithImpl<$Res, ApplicationMessage>;
 }
 
 /// @nodoc
-class _$ApplicationMessageCopyWithImpl<$Res> implements $ApplicationMessageCopyWith<$Res> {
+class _$ApplicationMessageCopyWithImpl<$Res, $Val extends ApplicationMessage>
+    implements $ApplicationMessageCopyWith<$Res> {
   _$ApplicationMessageCopyWithImpl(this._value, this._then);
 
-  final ApplicationMessage _value;
   // ignore: unused_field
-  final $Res Function(ApplicationMessage) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -82,25 +84,25 @@ abstract class _$$ApplicationMessage_DisplayMessageCopyWith<$Res> {
   factory _$$ApplicationMessage_DisplayMessageCopyWith(
           _$ApplicationMessage_DisplayMessage value, $Res Function(_$ApplicationMessage_DisplayMessage) then) =
       __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res>;
+  @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
+class __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res>
+    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_DisplayMessage>
     implements _$$ApplicationMessage_DisplayMessageCopyWith<$Res> {
   __$$ApplicationMessage_DisplayMessageCopyWithImpl(
       _$ApplicationMessage_DisplayMessage _value, $Res Function(_$ApplicationMessage_DisplayMessage) _then)
-      : super(_value, (v) => _then(v as _$ApplicationMessage_DisplayMessage));
+      : super(_value, _then);
 
-  @override
-  _$ApplicationMessage_DisplayMessage get _value => super._value as _$ApplicationMessage_DisplayMessage;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$ApplicationMessage_DisplayMessage(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as String,
@@ -126,14 +128,15 @@ class _$ApplicationMessage_DisplayMessage implements ApplicationMessage_DisplayM
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationMessage_DisplayMessage &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ApplicationMessage_DisplayMessageCopyWith<_$ApplicationMessage_DisplayMessage> get copyWith =>
       __$$ApplicationMessage_DisplayMessageCopyWithImpl<_$ApplicationMessage_DisplayMessage>(this, _$identity);
 
@@ -150,9 +153,9 @@ class _$ApplicationMessage_DisplayMessage implements ApplicationMessage_DisplayM
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? displayMessage,
-    TResult Function(int x, int y)? renderPixel,
-    TResult Function()? exit,
+    TResult? Function(String field0)? displayMessage,
+    TResult? Function(int x, int y)? renderPixel,
+    TResult? Function()? exit,
   }) {
     return displayMessage?.call(field0);
   }
@@ -184,9 +187,9 @@ class _$ApplicationMessage_DisplayMessage implements ApplicationMessage_DisplayM
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult Function(ApplicationMessage_Exit value)? exit,
+    TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
+    TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
+    TResult? Function(ApplicationMessage_Exit value)? exit,
   }) {
     return displayMessage?.call(this);
   }
@@ -220,30 +223,30 @@ abstract class _$$ApplicationMessage_RenderPixelCopyWith<$Res> {
   factory _$$ApplicationMessage_RenderPixelCopyWith(
           _$ApplicationMessage_RenderPixel value, $Res Function(_$ApplicationMessage_RenderPixel) then) =
       __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res>;
+  @useResult
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
+class __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res>
+    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_RenderPixel>
     implements _$$ApplicationMessage_RenderPixelCopyWith<$Res> {
   __$$ApplicationMessage_RenderPixelCopyWithImpl(
       _$ApplicationMessage_RenderPixel _value, $Res Function(_$ApplicationMessage_RenderPixel) _then)
-      : super(_value, (v) => _then(v as _$ApplicationMessage_RenderPixel));
+      : super(_value, _then);
 
-  @override
-  _$ApplicationMessage_RenderPixel get _value => super._value as _$ApplicationMessage_RenderPixel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? x = freezed,
-    Object? y = freezed,
+    Object? x = null,
+    Object? y = null,
   }) {
     return _then(_$ApplicationMessage_RenderPixel(
-      x: x == freezed
+      x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
               as int,
-      y: y == freezed
+      y: null == y
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as int,
@@ -271,16 +274,16 @@ class _$ApplicationMessage_RenderPixel implements ApplicationMessage_RenderPixel
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationMessage_RenderPixel &&
-            const DeepCollectionEquality().equals(other.x, x) &&
-            const DeepCollectionEquality().equals(other.y, y));
+            (identical(other.x, x) || other.x == x) &&
+            (identical(other.y, y) || other.y == y));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(x), const DeepCollectionEquality().hash(y));
+  int get hashCode => Object.hash(runtimeType, x, y);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ApplicationMessage_RenderPixelCopyWith<_$ApplicationMessage_RenderPixel> get copyWith =>
       __$$ApplicationMessage_RenderPixelCopyWithImpl<_$ApplicationMessage_RenderPixel>(this, _$identity);
 
@@ -297,9 +300,9 @@ class _$ApplicationMessage_RenderPixel implements ApplicationMessage_RenderPixel
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? displayMessage,
-    TResult Function(int x, int y)? renderPixel,
-    TResult Function()? exit,
+    TResult? Function(String field0)? displayMessage,
+    TResult? Function(int x, int y)? renderPixel,
+    TResult? Function()? exit,
   }) {
     return renderPixel?.call(x, y);
   }
@@ -331,9 +334,9 @@ class _$ApplicationMessage_RenderPixel implements ApplicationMessage_RenderPixel
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult Function(ApplicationMessage_Exit value)? exit,
+    TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
+    TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
+    TResult? Function(ApplicationMessage_Exit value)? exit,
   }) {
     return renderPixel?.call(this);
   }
@@ -372,14 +375,12 @@ abstract class _$$ApplicationMessage_ExitCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ApplicationMessage_ExitCopyWithImpl<$Res> extends _$ApplicationMessageCopyWithImpl<$Res>
+class __$$ApplicationMessage_ExitCopyWithImpl<$Res>
+    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_Exit>
     implements _$$ApplicationMessage_ExitCopyWith<$Res> {
   __$$ApplicationMessage_ExitCopyWithImpl(
       _$ApplicationMessage_Exit _value, $Res Function(_$ApplicationMessage_Exit) _then)
-      : super(_value, (v) => _then(v as _$ApplicationMessage_Exit));
-
-  @override
-  _$ApplicationMessage_Exit get _value => super._value as _$ApplicationMessage_Exit;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -413,9 +414,9 @@ class _$ApplicationMessage_Exit implements ApplicationMessage_Exit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String field0)? displayMessage,
-    TResult Function(int x, int y)? renderPixel,
-    TResult Function()? exit,
+    TResult? Function(String field0)? displayMessage,
+    TResult? Function(int x, int y)? renderPixel,
+    TResult? Function()? exit,
   }) {
     return exit?.call();
   }
@@ -447,9 +448,9 @@ class _$ApplicationMessage_Exit implements ApplicationMessage_Exit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult Function(ApplicationMessage_Exit value)? exit,
+    TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
+    TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
+    TResult? Function(ApplicationMessage_Exit value)? exit,
   }) {
     return exit?.call(this);
   }
@@ -483,8 +484,8 @@ mixin _$Distance {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unknown,
-    TResult Function(double field0)? map,
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? map,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -502,8 +503,8 @@ mixin _$Distance {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Distance_Unknown value)? unknown,
-    TResult Function(Distance_Map value)? map,
+    TResult? Function(Distance_Unknown value)? unknown,
+    TResult? Function(Distance_Map value)? map,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -517,16 +518,17 @@ mixin _$Distance {
 
 /// @nodoc
 abstract class $DistanceCopyWith<$Res> {
-  factory $DistanceCopyWith(Distance value, $Res Function(Distance) then) = _$DistanceCopyWithImpl<$Res>;
+  factory $DistanceCopyWith(Distance value, $Res Function(Distance) then) = _$DistanceCopyWithImpl<$Res, Distance>;
 }
 
 /// @nodoc
-class _$DistanceCopyWithImpl<$Res> implements $DistanceCopyWith<$Res> {
+class _$DistanceCopyWithImpl<$Res, $Val extends Distance> implements $DistanceCopyWith<$Res> {
   _$DistanceCopyWithImpl(this._value, this._then);
 
-  final Distance _value;
   // ignore: unused_field
-  final $Res Function(Distance) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -536,13 +538,10 @@ abstract class _$$Distance_UnknownCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$Distance_UnknownCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res>
+class __$$Distance_UnknownCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res, _$Distance_Unknown>
     implements _$$Distance_UnknownCopyWith<$Res> {
   __$$Distance_UnknownCopyWithImpl(_$Distance_Unknown _value, $Res Function(_$Distance_Unknown) _then)
-      : super(_value, (v) => _then(v as _$Distance_Unknown));
-
-  @override
-  _$Distance_Unknown get _value => super._value as _$Distance_Unknown;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -575,8 +574,8 @@ class _$Distance_Unknown implements Distance_Unknown {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unknown,
-    TResult Function(double field0)? map,
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? map,
   }) {
     return unknown?.call();
   }
@@ -606,8 +605,8 @@ class _$Distance_Unknown implements Distance_Unknown {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Distance_Unknown value)? unknown,
-    TResult Function(Distance_Map value)? map,
+    TResult? Function(Distance_Unknown value)? unknown,
+    TResult? Function(Distance_Map value)? map,
   }) {
     return unknown?.call(this);
   }
@@ -634,23 +633,22 @@ abstract class Distance_Unknown implements Distance {
 abstract class _$$Distance_MapCopyWith<$Res> {
   factory _$$Distance_MapCopyWith(_$Distance_Map value, $Res Function(_$Distance_Map) then) =
       __$$Distance_MapCopyWithImpl<$Res>;
+  @useResult
   $Res call({double field0});
 }
 
 /// @nodoc
-class __$$Distance_MapCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res> implements _$$Distance_MapCopyWith<$Res> {
-  __$$Distance_MapCopyWithImpl(_$Distance_Map _value, $Res Function(_$Distance_Map) _then)
-      : super(_value, (v) => _then(v as _$Distance_Map));
+class __$$Distance_MapCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res, _$Distance_Map>
+    implements _$$Distance_MapCopyWith<$Res> {
+  __$$Distance_MapCopyWithImpl(_$Distance_Map _value, $Res Function(_$Distance_Map) _then) : super(_value, _then);
 
-  @override
-  _$Distance_Map get _value => super._value as _$Distance_Map;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$Distance_Map(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as double,
@@ -676,14 +674,15 @@ class _$Distance_Map implements Distance_Map {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Distance_Map &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$Distance_MapCopyWith<_$Distance_Map> get copyWith =>
       __$$Distance_MapCopyWithImpl<_$Distance_Map>(this, _$identity);
 
@@ -699,8 +698,8 @@ class _$Distance_Map implements Distance_Map {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unknown,
-    TResult Function(double field0)? map,
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? map,
   }) {
     return map?.call(field0);
   }
@@ -730,8 +729,8 @@ class _$Distance_Map implements Distance_Map {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Distance_Unknown value)? unknown,
-    TResult Function(Distance_Map value)? map,
+    TResult? Function(Distance_Unknown value)? unknown,
+    TResult? Function(Distance_Map value)? map,
   }) {
     return map?.call(this);
   }
@@ -759,6 +758,817 @@ abstract class Distance_Map implements Distance {
 }
 
 /// @nodoc
+mixin _$EnumOpaque {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideData field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexHideData field0) mutex,
+    required TResult Function(RwLockHideData field0) rwLock,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideData field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexHideData field0)? mutex,
+    TResult Function(RwLockHideData field0)? rwLock,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EnumOpaqueCopyWith<$Res> {
+  factory $EnumOpaqueCopyWith(EnumOpaque value, $Res Function(EnumOpaque) then) =
+      _$EnumOpaqueCopyWithImpl<$Res, EnumOpaque>;
+}
+
+/// @nodoc
+class _$EnumOpaqueCopyWithImpl<$Res, $Val extends EnumOpaque> implements $EnumOpaqueCopyWith<$Res> {
+  _$EnumOpaqueCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_StructCopyWith<$Res> {
+  factory _$$EnumOpaque_StructCopyWith(_$EnumOpaque_Struct value, $Res Function(_$EnumOpaque_Struct) then) =
+      __$$EnumOpaque_StructCopyWithImpl<$Res>;
+  @useResult
+  $Res call({HideData field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_StructCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Struct>
+    implements _$$EnumOpaque_StructCopyWith<$Res> {
+  __$$EnumOpaque_StructCopyWithImpl(_$EnumOpaque_Struct _value, $Res Function(_$EnumOpaque_Struct) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaque_Struct(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as HideData,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_Struct implements EnumOpaque_Struct {
+  const _$EnumOpaque_Struct(this.field0);
+
+  @override
+  final HideData field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.struct(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_Struct &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaque_StructCopyWith<_$EnumOpaque_Struct> get copyWith =>
+      __$$EnumOpaque_StructCopyWithImpl<_$EnumOpaque_Struct>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideData field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexHideData field0) mutex,
+    required TResult Function(RwLockHideData field0) rwLock,
+  }) {
+    return struct(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
+  }) {
+    return struct?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideData field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexHideData field0)? mutex,
+    TResult Function(RwLockHideData field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (struct != null) {
+      return struct(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return struct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return struct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (struct != null) {
+      return struct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_Struct implements EnumOpaque {
+  const factory EnumOpaque_Struct(final HideData field0) = _$EnumOpaque_Struct;
+
+  HideData get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_StructCopyWith<_$EnumOpaque_Struct> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_PrimitiveCopyWith<$Res> {
+  factory _$$EnumOpaque_PrimitiveCopyWith(_$EnumOpaque_Primitive value, $Res Function(_$EnumOpaque_Primitive) then) =
+      __$$EnumOpaque_PrimitiveCopyWithImpl<$Res>;
+  @useResult
+  $Res call({I32 field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_PrimitiveCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Primitive>
+    implements _$$EnumOpaque_PrimitiveCopyWith<$Res> {
+  __$$EnumOpaque_PrimitiveCopyWithImpl(_$EnumOpaque_Primitive _value, $Res Function(_$EnumOpaque_Primitive) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaque_Primitive(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as I32,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
+  const _$EnumOpaque_Primitive(this.field0);
+
+  @override
+  final I32 field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.primitive(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_Primitive &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaque_PrimitiveCopyWith<_$EnumOpaque_Primitive> get copyWith =>
+      __$$EnumOpaque_PrimitiveCopyWithImpl<_$EnumOpaque_Primitive>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideData field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexHideData field0) mutex,
+    required TResult Function(RwLockHideData field0) rwLock,
+  }) {
+    return primitive(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
+  }) {
+    return primitive?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideData field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexHideData field0)? mutex,
+    TResult Function(RwLockHideData field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (primitive != null) {
+      return primitive(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return primitive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return primitive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (primitive != null) {
+      return primitive(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_Primitive implements EnumOpaque {
+  const factory EnumOpaque_Primitive(final I32 field0) = _$EnumOpaque_Primitive;
+
+  I32 get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_PrimitiveCopyWith<_$EnumOpaque_Primitive> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_TraitObjCopyWith<$Res> {
+  factory _$$EnumOpaque_TraitObjCopyWith(_$EnumOpaque_TraitObj value, $Res Function(_$EnumOpaque_TraitObj) then) =
+      __$$EnumOpaque_TraitObjCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BoxDartDebug field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_TraitObjCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_TraitObj>
+    implements _$$EnumOpaque_TraitObjCopyWith<$Res> {
+  __$$EnumOpaque_TraitObjCopyWithImpl(_$EnumOpaque_TraitObj _value, $Res Function(_$EnumOpaque_TraitObj) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaque_TraitObj(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as BoxDartDebug,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
+  const _$EnumOpaque_TraitObj(this.field0);
+
+  @override
+  final BoxDartDebug field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.traitObj(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_TraitObj &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaque_TraitObjCopyWith<_$EnumOpaque_TraitObj> get copyWith =>
+      __$$EnumOpaque_TraitObjCopyWithImpl<_$EnumOpaque_TraitObj>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideData field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexHideData field0) mutex,
+    required TResult Function(RwLockHideData field0) rwLock,
+  }) {
+    return traitObj(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
+  }) {
+    return traitObj?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideData field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexHideData field0)? mutex,
+    TResult Function(RwLockHideData field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (traitObj != null) {
+      return traitObj(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return traitObj(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return traitObj?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (traitObj != null) {
+      return traitObj(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_TraitObj implements EnumOpaque {
+  const factory EnumOpaque_TraitObj(final BoxDartDebug field0) = _$EnumOpaque_TraitObj;
+
+  BoxDartDebug get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_TraitObjCopyWith<_$EnumOpaque_TraitObj> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_MutexCopyWith<$Res> {
+  factory _$$EnumOpaque_MutexCopyWith(_$EnumOpaque_Mutex value, $Res Function(_$EnumOpaque_Mutex) then) =
+      __$$EnumOpaque_MutexCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MutexHideData field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_MutexCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Mutex>
+    implements _$$EnumOpaque_MutexCopyWith<$Res> {
+  __$$EnumOpaque_MutexCopyWithImpl(_$EnumOpaque_Mutex _value, $Res Function(_$EnumOpaque_Mutex) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaque_Mutex(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MutexHideData,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
+  const _$EnumOpaque_Mutex(this.field0);
+
+  @override
+  final MutexHideData field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.mutex(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_Mutex &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaque_MutexCopyWith<_$EnumOpaque_Mutex> get copyWith =>
+      __$$EnumOpaque_MutexCopyWithImpl<_$EnumOpaque_Mutex>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideData field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexHideData field0) mutex,
+    required TResult Function(RwLockHideData field0) rwLock,
+  }) {
+    return mutex(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
+  }) {
+    return mutex?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideData field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexHideData field0)? mutex,
+    TResult Function(RwLockHideData field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (mutex != null) {
+      return mutex(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return mutex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return mutex?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (mutex != null) {
+      return mutex(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_Mutex implements EnumOpaque {
+  const factory EnumOpaque_Mutex(final MutexHideData field0) = _$EnumOpaque_Mutex;
+
+  MutexHideData get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_MutexCopyWith<_$EnumOpaque_Mutex> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaque_RwLockCopyWith<$Res> {
+  factory _$$EnumOpaque_RwLockCopyWith(_$EnumOpaque_RwLock value, $Res Function(_$EnumOpaque_RwLock) then) =
+      __$$EnumOpaque_RwLockCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RwLockHideData field0});
+}
+
+/// @nodoc
+class __$$EnumOpaque_RwLockCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_RwLock>
+    implements _$$EnumOpaque_RwLockCopyWith<$Res> {
+  __$$EnumOpaque_RwLockCopyWithImpl(_$EnumOpaque_RwLock _value, $Res Function(_$EnumOpaque_RwLock) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaque_RwLock(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as RwLockHideData,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
+  const _$EnumOpaque_RwLock(this.field0);
+
+  @override
+  final RwLockHideData field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaque.rwLock(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaque_RwLock &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaque_RwLockCopyWith<_$EnumOpaque_RwLock> get copyWith =>
+      __$$EnumOpaque_RwLockCopyWithImpl<_$EnumOpaque_RwLock>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideData field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(MutexHideData field0) mutex,
+    required TResult Function(RwLockHideData field0) rwLock,
+  }) {
+    return rwLock(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideData field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(MutexHideData field0)? mutex,
+    TResult? Function(RwLockHideData field0)? rwLock,
+  }) {
+    return rwLock?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideData field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(MutexHideData field0)? mutex,
+    TResult Function(RwLockHideData field0)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (rwLock != null) {
+      return rwLock(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaque_Struct value) struct,
+    required TResult Function(EnumOpaque_Primitive value) primitive,
+    required TResult Function(EnumOpaque_TraitObj value) traitObj,
+    required TResult Function(EnumOpaque_Mutex value) mutex,
+    required TResult Function(EnumOpaque_RwLock value) rwLock,
+  }) {
+    return rwLock(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaque_Struct value)? struct,
+    TResult? Function(EnumOpaque_Primitive value)? primitive,
+    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaque_Mutex value)? mutex,
+    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+  }) {
+    return rwLock?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaque_Struct value)? struct,
+    TResult Function(EnumOpaque_Primitive value)? primitive,
+    TResult Function(EnumOpaque_TraitObj value)? traitObj,
+    TResult Function(EnumOpaque_Mutex value)? mutex,
+    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    required TResult orElse(),
+  }) {
+    if (rwLock != null) {
+      return rwLock(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaque_RwLock implements EnumOpaque {
+  const factory EnumOpaque_RwLock(final RwLockHideData field0) = _$EnumOpaque_RwLock;
+
+  RwLockHideData get field0;
+  @JsonKey(ignore: true)
+  _$$EnumOpaque_RwLockCopyWith<_$EnumOpaque_RwLock> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$Event {
   String get address => throw _privateConstructorUsedError;
   String get payload => throw _privateConstructorUsedError;
@@ -769,33 +1579,36 @@ mixin _$Event {
 
 /// @nodoc
 abstract class $EventCopyWith<$Res> {
-  factory $EventCopyWith(Event value, $Res Function(Event) then) = _$EventCopyWithImpl<$Res>;
+  factory $EventCopyWith(Event value, $Res Function(Event) then) = _$EventCopyWithImpl<$Res, Event>;
+  @useResult
   $Res call({String address, String payload});
 }
 
 /// @nodoc
-class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
+class _$EventCopyWithImpl<$Res, $Val extends Event> implements $EventCopyWith<$Res> {
   _$EventCopyWithImpl(this._value, this._then);
 
-  final Event _value;
   // ignore: unused_field
-  final $Res Function(Event) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
-    Object? payload = freezed,
+    Object? address = null,
+    Object? payload = null,
   }) {
     return _then(_value.copyWith(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      payload: payload == freezed
+      payload: null == payload
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -803,27 +1616,26 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
 abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
   factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) = __$$_EventCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String address, String payload});
 }
 
 /// @nodoc
-class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res> implements _$$_EventCopyWith<$Res> {
-  __$$_EventCopyWithImpl(_$_Event _value, $Res Function(_$_Event) _then) : super(_value, (v) => _then(v as _$_Event));
+class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> implements _$$_EventCopyWith<$Res> {
+  __$$_EventCopyWithImpl(_$_Event _value, $Res Function(_$_Event) _then) : super(_value, _then);
 
-  @override
-  _$_Event get _value => super._value as _$_Event;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
-    Object? payload = freezed,
+    Object? address = null,
+    Object? payload = null,
   }) {
     return _then(_$_Event(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      payload: payload == freezed
+      payload: null == payload
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
               as String,
@@ -851,16 +1663,16 @@ class _$_Event implements _Event {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Event &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.payload, payload));
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.payload, payload) || other.payload == payload));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(address), const DeepCollectionEquality().hash(payload));
+  int get hashCode => Object.hash(runtimeType, address, payload);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventCopyWith<_$_Event> get copyWith => __$$_EventCopyWithImpl<_$_Event>(this, _$identity);
 }
 
@@ -890,12 +1702,12 @@ mixin _$KitchenSink {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0, int field1)? nested,
-    TResult Function(int? field0, int? field1)? optional,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult? Function()? empty,
+    TResult? Function(int int32, double float64, bool boolean)? primitives,
+    TResult? Function(KitchenSink field0, int field1)? nested,
+    TResult? Function(int? field0, int? field1)? optional,
+    TResult? Function(Uint8List field0)? buffer,
+    TResult? Function(Weekdays field0)? enums,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -921,12 +1733,12 @@ mixin _$KitchenSink {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSink_Empty value)? empty,
+    TResult? Function(KitchenSink_Primitives value)? primitives,
+    TResult? Function(KitchenSink_Nested value)? nested,
+    TResult? Function(KitchenSink_Optional value)? optional,
+    TResult? Function(KitchenSink_Buffer value)? buffer,
+    TResult? Function(KitchenSink_Enums value)? enums,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -944,16 +1756,18 @@ mixin _$KitchenSink {
 
 /// @nodoc
 abstract class $KitchenSinkCopyWith<$Res> {
-  factory $KitchenSinkCopyWith(KitchenSink value, $Res Function(KitchenSink) then) = _$KitchenSinkCopyWithImpl<$Res>;
+  factory $KitchenSinkCopyWith(KitchenSink value, $Res Function(KitchenSink) then) =
+      _$KitchenSinkCopyWithImpl<$Res, KitchenSink>;
 }
 
 /// @nodoc
-class _$KitchenSinkCopyWithImpl<$Res> implements $KitchenSinkCopyWith<$Res> {
+class _$KitchenSinkCopyWithImpl<$Res, $Val extends KitchenSink> implements $KitchenSinkCopyWith<$Res> {
   _$KitchenSinkCopyWithImpl(this._value, this._then);
 
-  final KitchenSink _value;
   // ignore: unused_field
-  final $Res Function(KitchenSink) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -963,13 +1777,10 @@ abstract class _$$KitchenSink_EmptyCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$KitchenSink_EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+class __$$KitchenSink_EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Empty>
     implements _$$KitchenSink_EmptyCopyWith<$Res> {
   __$$KitchenSink_EmptyCopyWithImpl(_$KitchenSink_Empty _value, $Res Function(_$KitchenSink_Empty) _then)
-      : super(_value, (v) => _then(v as _$KitchenSink_Empty));
-
-  @override
-  _$KitchenSink_Empty get _value => super._value as _$KitchenSink_Empty;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1006,12 +1817,12 @@ class _$KitchenSink_Empty implements KitchenSink_Empty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0, int field1)? nested,
-    TResult Function(int? field0, int? field1)? optional,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult? Function()? empty,
+    TResult? Function(int int32, double float64, bool boolean)? primitives,
+    TResult? Function(KitchenSink field0, int field1)? nested,
+    TResult? Function(int? field0, int? field1)? optional,
+    TResult? Function(Uint8List field0)? buffer,
+    TResult? Function(Weekdays field0)? enums,
   }) {
     return empty?.call();
   }
@@ -1049,12 +1860,12 @@ class _$KitchenSink_Empty implements KitchenSink_Empty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSink_Empty value)? empty,
+    TResult? Function(KitchenSink_Primitives value)? primitives,
+    TResult? Function(KitchenSink_Nested value)? nested,
+    TResult? Function(KitchenSink_Optional value)? optional,
+    TResult? Function(KitchenSink_Buffer value)? buffer,
+    TResult? Function(KitchenSink_Enums value)? enums,
   }) {
     return empty?.call(this);
   }
@@ -1086,34 +1897,33 @@ abstract class _$$KitchenSink_PrimitivesCopyWith<$Res> {
   factory _$$KitchenSink_PrimitivesCopyWith(
           _$KitchenSink_Primitives value, $Res Function(_$KitchenSink_Primitives) then) =
       __$$KitchenSink_PrimitivesCopyWithImpl<$Res>;
+  @useResult
   $Res call({int int32, double float64, bool boolean});
 }
 
 /// @nodoc
-class __$$KitchenSink_PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+class __$$KitchenSink_PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Primitives>
     implements _$$KitchenSink_PrimitivesCopyWith<$Res> {
   __$$KitchenSink_PrimitivesCopyWithImpl(_$KitchenSink_Primitives _value, $Res Function(_$KitchenSink_Primitives) _then)
-      : super(_value, (v) => _then(v as _$KitchenSink_Primitives));
+      : super(_value, _then);
 
-  @override
-  _$KitchenSink_Primitives get _value => super._value as _$KitchenSink_Primitives;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? int32 = freezed,
-    Object? float64 = freezed,
-    Object? boolean = freezed,
+    Object? int32 = null,
+    Object? float64 = null,
+    Object? boolean = null,
   }) {
     return _then(_$KitchenSink_Primitives(
-      int32: int32 == freezed
+      int32: null == int32
           ? _value.int32
           : int32 // ignore: cast_nullable_to_non_nullable
               as int,
-      float64: float64 == freezed
+      float64: null == float64
           ? _value.float64
           : float64 // ignore: cast_nullable_to_non_nullable
               as double,
-      boolean: boolean == freezed
+      boolean: null == boolean
           ? _value.boolean
           : boolean // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -1144,17 +1954,17 @@ class _$KitchenSink_Primitives implements KitchenSink_Primitives {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSink_Primitives &&
-            const DeepCollectionEquality().equals(other.int32, int32) &&
-            const DeepCollectionEquality().equals(other.float64, float64) &&
-            const DeepCollectionEquality().equals(other.boolean, boolean));
+            (identical(other.int32, int32) || other.int32 == int32) &&
+            (identical(other.float64, float64) || other.float64 == float64) &&
+            (identical(other.boolean, boolean) || other.boolean == boolean));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(int32),
-      const DeepCollectionEquality().hash(float64), const DeepCollectionEquality().hash(boolean));
+  int get hashCode => Object.hash(runtimeType, int32, float64, boolean);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$KitchenSink_PrimitivesCopyWith<_$KitchenSink_Primitives> get copyWith =>
       __$$KitchenSink_PrimitivesCopyWithImpl<_$KitchenSink_Primitives>(this, _$identity);
 
@@ -1174,12 +1984,12 @@ class _$KitchenSink_Primitives implements KitchenSink_Primitives {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0, int field1)? nested,
-    TResult Function(int? field0, int? field1)? optional,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult? Function()? empty,
+    TResult? Function(int int32, double float64, bool boolean)? primitives,
+    TResult? Function(KitchenSink field0, int field1)? nested,
+    TResult? Function(int? field0, int? field1)? optional,
+    TResult? Function(Uint8List field0)? buffer,
+    TResult? Function(Weekdays field0)? enums,
   }) {
     return primitives?.call(int32, float64, boolean);
   }
@@ -1217,12 +2027,12 @@ class _$KitchenSink_Primitives implements KitchenSink_Primitives {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSink_Empty value)? empty,
+    TResult? Function(KitchenSink_Primitives value)? primitives,
+    TResult? Function(KitchenSink_Nested value)? nested,
+    TResult? Function(KitchenSink_Optional value)? optional,
+    TResult? Function(KitchenSink_Buffer value)? buffer,
+    TResult? Function(KitchenSink_Enums value)? enums,
   }) {
     return primitives?.call(this);
   }
@@ -1263,31 +2073,30 @@ abstract class KitchenSink_Primitives implements KitchenSink {
 abstract class _$$KitchenSink_NestedCopyWith<$Res> {
   factory _$$KitchenSink_NestedCopyWith(_$KitchenSink_Nested value, $Res Function(_$KitchenSink_Nested) then) =
       __$$KitchenSink_NestedCopyWithImpl<$Res>;
+  @useResult
   $Res call({KitchenSink field0, int field1});
 
   $KitchenSinkCopyWith<$Res> get field0;
 }
 
 /// @nodoc
-class __$$KitchenSink_NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+class __$$KitchenSink_NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Nested>
     implements _$$KitchenSink_NestedCopyWith<$Res> {
   __$$KitchenSink_NestedCopyWithImpl(_$KitchenSink_Nested _value, $Res Function(_$KitchenSink_Nested) _then)
-      : super(_value, (v) => _then(v as _$KitchenSink_Nested));
+      : super(_value, _then);
 
-  @override
-  _$KitchenSink_Nested get _value => super._value as _$KitchenSink_Nested;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
-    Object? field1 = freezed,
+    Object? field0 = null,
+    Object? field1 = null,
   }) {
     return _then(_$KitchenSink_Nested(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as KitchenSink,
-      field1 == freezed
+      null == field1
           ? _value.field1
           : field1 // ignore: cast_nullable_to_non_nullable
               as int,
@@ -1295,6 +2104,7 @@ class __$$KitchenSink_NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $KitchenSinkCopyWith<$Res> get field0 {
     return $KitchenSinkCopyWith<$Res>(_value.field0, (value) {
       return _then(_value.copyWith(field0: value));
@@ -1322,16 +2132,16 @@ class _$KitchenSink_Nested implements KitchenSink_Nested {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSink_Nested &&
-            const DeepCollectionEquality().equals(other.field0, field0) &&
-            const DeepCollectionEquality().equals(other.field1, field1));
+            (identical(other.field0, field0) || other.field0 == field0) &&
+            (identical(other.field1, field1) || other.field1 == field1));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(field0), const DeepCollectionEquality().hash(field1));
+  int get hashCode => Object.hash(runtimeType, field0, field1);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$KitchenSink_NestedCopyWith<_$KitchenSink_Nested> get copyWith =>
       __$$KitchenSink_NestedCopyWithImpl<_$KitchenSink_Nested>(this, _$identity);
 
@@ -1351,12 +2161,12 @@ class _$KitchenSink_Nested implements KitchenSink_Nested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0, int field1)? nested,
-    TResult Function(int? field0, int? field1)? optional,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult? Function()? empty,
+    TResult? Function(int int32, double float64, bool boolean)? primitives,
+    TResult? Function(KitchenSink field0, int field1)? nested,
+    TResult? Function(int? field0, int? field1)? optional,
+    TResult? Function(Uint8List field0)? buffer,
+    TResult? Function(Weekdays field0)? enums,
   }) {
     return nested?.call(field0, field1);
   }
@@ -1394,12 +2204,12 @@ class _$KitchenSink_Nested implements KitchenSink_Nested {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSink_Empty value)? empty,
+    TResult? Function(KitchenSink_Primitives value)? primitives,
+    TResult? Function(KitchenSink_Nested value)? nested,
+    TResult? Function(KitchenSink_Optional value)? optional,
+    TResult? Function(KitchenSink_Buffer value)? buffer,
+    TResult? Function(KitchenSink_Enums value)? enums,
   }) {
     return nested?.call(this);
   }
@@ -1435,29 +2245,28 @@ abstract class KitchenSink_Nested implements KitchenSink {
 abstract class _$$KitchenSink_OptionalCopyWith<$Res> {
   factory _$$KitchenSink_OptionalCopyWith(_$KitchenSink_Optional value, $Res Function(_$KitchenSink_Optional) then) =
       __$$KitchenSink_OptionalCopyWithImpl<$Res>;
+  @useResult
   $Res call({int? field0, int? field1});
 }
 
 /// @nodoc
-class __$$KitchenSink_OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+class __$$KitchenSink_OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Optional>
     implements _$$KitchenSink_OptionalCopyWith<$Res> {
   __$$KitchenSink_OptionalCopyWithImpl(_$KitchenSink_Optional _value, $Res Function(_$KitchenSink_Optional) _then)
-      : super(_value, (v) => _then(v as _$KitchenSink_Optional));
+      : super(_value, _then);
 
-  @override
-  _$KitchenSink_Optional get _value => super._value as _$KitchenSink_Optional;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = freezed,
     Object? field1 = freezed,
   }) {
     return _then(_$KitchenSink_Optional(
-      field0 == freezed
+      freezed == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as int?,
-      field1 == freezed
+      freezed == field1
           ? _value.field1
           : field1 // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -1486,16 +2295,16 @@ class _$KitchenSink_Optional implements KitchenSink_Optional {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSink_Optional &&
-            const DeepCollectionEquality().equals(other.field0, field0) &&
-            const DeepCollectionEquality().equals(other.field1, field1));
+            (identical(other.field0, field0) || other.field0 == field0) &&
+            (identical(other.field1, field1) || other.field1 == field1));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(field0), const DeepCollectionEquality().hash(field1));
+  int get hashCode => Object.hash(runtimeType, field0, field1);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$KitchenSink_OptionalCopyWith<_$KitchenSink_Optional> get copyWith =>
       __$$KitchenSink_OptionalCopyWithImpl<_$KitchenSink_Optional>(this, _$identity);
 
@@ -1515,12 +2324,12 @@ class _$KitchenSink_Optional implements KitchenSink_Optional {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0, int field1)? nested,
-    TResult Function(int? field0, int? field1)? optional,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult? Function()? empty,
+    TResult? Function(int int32, double float64, bool boolean)? primitives,
+    TResult? Function(KitchenSink field0, int field1)? nested,
+    TResult? Function(int? field0, int? field1)? optional,
+    TResult? Function(Uint8List field0)? buffer,
+    TResult? Function(Weekdays field0)? enums,
   }) {
     return optional?.call(field0, field1);
   }
@@ -1558,12 +2367,12 @@ class _$KitchenSink_Optional implements KitchenSink_Optional {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSink_Empty value)? empty,
+    TResult? Function(KitchenSink_Primitives value)? primitives,
+    TResult? Function(KitchenSink_Nested value)? nested,
+    TResult? Function(KitchenSink_Optional value)? optional,
+    TResult? Function(KitchenSink_Buffer value)? buffer,
+    TResult? Function(KitchenSink_Enums value)? enums,
   }) {
     return optional?.call(this);
   }
@@ -1600,24 +2409,23 @@ abstract class KitchenSink_Optional implements KitchenSink {
 abstract class _$$KitchenSink_BufferCopyWith<$Res> {
   factory _$$KitchenSink_BufferCopyWith(_$KitchenSink_Buffer value, $Res Function(_$KitchenSink_Buffer) then) =
       __$$KitchenSink_BufferCopyWithImpl<$Res>;
+  @useResult
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
-class __$$KitchenSink_BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+class __$$KitchenSink_BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Buffer>
     implements _$$KitchenSink_BufferCopyWith<$Res> {
   __$$KitchenSink_BufferCopyWithImpl(_$KitchenSink_Buffer _value, $Res Function(_$KitchenSink_Buffer) _then)
-      : super(_value, (v) => _then(v as _$KitchenSink_Buffer));
+      : super(_value, _then);
 
-  @override
-  _$KitchenSink_Buffer get _value => super._value as _$KitchenSink_Buffer;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$KitchenSink_Buffer(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as Uint8List,
@@ -1651,6 +2459,7 @@ class _$KitchenSink_Buffer implements KitchenSink_Buffer {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$KitchenSink_BufferCopyWith<_$KitchenSink_Buffer> get copyWith =>
       __$$KitchenSink_BufferCopyWithImpl<_$KitchenSink_Buffer>(this, _$identity);
 
@@ -1670,12 +2479,12 @@ class _$KitchenSink_Buffer implements KitchenSink_Buffer {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0, int field1)? nested,
-    TResult Function(int? field0, int? field1)? optional,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult? Function()? empty,
+    TResult? Function(int int32, double float64, bool boolean)? primitives,
+    TResult? Function(KitchenSink field0, int field1)? nested,
+    TResult? Function(int? field0, int? field1)? optional,
+    TResult? Function(Uint8List field0)? buffer,
+    TResult? Function(Weekdays field0)? enums,
   }) {
     return buffer?.call(field0);
   }
@@ -1713,12 +2522,12 @@ class _$KitchenSink_Buffer implements KitchenSink_Buffer {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSink_Empty value)? empty,
+    TResult? Function(KitchenSink_Primitives value)? primitives,
+    TResult? Function(KitchenSink_Nested value)? nested,
+    TResult? Function(KitchenSink_Optional value)? optional,
+    TResult? Function(KitchenSink_Buffer value)? buffer,
+    TResult? Function(KitchenSink_Enums value)? enums,
   }) {
     return buffer?.call(this);
   }
@@ -1753,24 +2562,23 @@ abstract class KitchenSink_Buffer implements KitchenSink {
 abstract class _$$KitchenSink_EnumsCopyWith<$Res> {
   factory _$$KitchenSink_EnumsCopyWith(_$KitchenSink_Enums value, $Res Function(_$KitchenSink_Enums) then) =
       __$$KitchenSink_EnumsCopyWithImpl<$Res>;
+  @useResult
   $Res call({Weekdays field0});
 }
 
 /// @nodoc
-class __$$KitchenSink_EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res>
+class __$$KitchenSink_EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Enums>
     implements _$$KitchenSink_EnumsCopyWith<$Res> {
   __$$KitchenSink_EnumsCopyWithImpl(_$KitchenSink_Enums _value, $Res Function(_$KitchenSink_Enums) _then)
-      : super(_value, (v) => _then(v as _$KitchenSink_Enums));
+      : super(_value, _then);
 
-  @override
-  _$KitchenSink_Enums get _value => super._value as _$KitchenSink_Enums;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$KitchenSink_Enums(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as Weekdays,
@@ -1796,14 +2604,15 @@ class _$KitchenSink_Enums implements KitchenSink_Enums {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSink_Enums &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$KitchenSink_EnumsCopyWith<_$KitchenSink_Enums> get copyWith =>
       __$$KitchenSink_EnumsCopyWithImpl<_$KitchenSink_Enums>(this, _$identity);
 
@@ -1823,12 +2632,12 @@ class _$KitchenSink_Enums implements KitchenSink_Enums {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(KitchenSink field0, int field1)? nested,
-    TResult Function(int? field0, int? field1)? optional,
-    TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult? Function()? empty,
+    TResult? Function(int int32, double float64, bool boolean)? primitives,
+    TResult? Function(KitchenSink field0, int field1)? nested,
+    TResult? Function(int? field0, int? field1)? optional,
+    TResult? Function(Uint8List field0)? buffer,
+    TResult? Function(Weekdays field0)? enums,
   }) {
     return enums?.call(field0);
   }
@@ -1866,12 +2675,12 @@ class _$KitchenSink_Enums implements KitchenSink_Enums {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSink_Empty value)? empty,
+    TResult? Function(KitchenSink_Primitives value)? primitives,
+    TResult? Function(KitchenSink_Nested value)? nested,
+    TResult? Function(KitchenSink_Optional value)? optional,
+    TResult? Function(KitchenSink_Buffer value)? buffer,
+    TResult? Function(KitchenSink_Enums value)? enums,
   }) {
     return enums?.call(this);
   }
@@ -1912,8 +2721,8 @@ mixin _$Measure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(Distance field0)? distance,
+    TResult? Function(Speed field0)? speed,
+    TResult? Function(Distance field0)? distance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1931,8 +2740,8 @@ mixin _$Measure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Measure_Speed value)? speed,
-    TResult Function(Measure_Distance value)? distance,
+    TResult? Function(Measure_Speed value)? speed,
+    TResult? Function(Measure_Distance value)? distance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1946,42 +2755,41 @@ mixin _$Measure {
 
 /// @nodoc
 abstract class $MeasureCopyWith<$Res> {
-  factory $MeasureCopyWith(Measure value, $Res Function(Measure) then) = _$MeasureCopyWithImpl<$Res>;
+  factory $MeasureCopyWith(Measure value, $Res Function(Measure) then) = _$MeasureCopyWithImpl<$Res, Measure>;
 }
 
 /// @nodoc
-class _$MeasureCopyWithImpl<$Res> implements $MeasureCopyWith<$Res> {
+class _$MeasureCopyWithImpl<$Res, $Val extends Measure> implements $MeasureCopyWith<$Res> {
   _$MeasureCopyWithImpl(this._value, this._then);
 
-  final Measure _value;
   // ignore: unused_field
-  final $Res Function(Measure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$Measure_SpeedCopyWith<$Res> {
   factory _$$Measure_SpeedCopyWith(_$Measure_Speed value, $Res Function(_$Measure_Speed) then) =
       __$$Measure_SpeedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Speed field0});
 
   $SpeedCopyWith<$Res> get field0;
 }
 
 /// @nodoc
-class __$$Measure_SpeedCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res>
+class __$$Measure_SpeedCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res, _$Measure_Speed>
     implements _$$Measure_SpeedCopyWith<$Res> {
-  __$$Measure_SpeedCopyWithImpl(_$Measure_Speed _value, $Res Function(_$Measure_Speed) _then)
-      : super(_value, (v) => _then(v as _$Measure_Speed));
+  __$$Measure_SpeedCopyWithImpl(_$Measure_Speed _value, $Res Function(_$Measure_Speed) _then) : super(_value, _then);
 
-  @override
-  _$Measure_Speed get _value => super._value as _$Measure_Speed;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$Measure_Speed(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as Speed,
@@ -1989,6 +2797,7 @@ class __$$Measure_SpeedCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SpeedCopyWith<$Res> get field0 {
     return $SpeedCopyWith<$Res>(_value.field0, (value) {
       return _then(_value.copyWith(field0: value));
@@ -2014,14 +2823,15 @@ class _$Measure_Speed implements Measure_Speed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Measure_Speed &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$Measure_SpeedCopyWith<_$Measure_Speed> get copyWith =>
       __$$Measure_SpeedCopyWithImpl<_$Measure_Speed>(this, _$identity);
 
@@ -2037,8 +2847,8 @@ class _$Measure_Speed implements Measure_Speed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(Distance field0)? distance,
+    TResult? Function(Speed field0)? speed,
+    TResult? Function(Distance field0)? distance,
   }) {
     return speed?.call(field0);
   }
@@ -2068,8 +2878,8 @@ class _$Measure_Speed implements Measure_Speed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Measure_Speed value)? speed,
-    TResult Function(Measure_Distance value)? distance,
+    TResult? Function(Measure_Speed value)? speed,
+    TResult? Function(Measure_Distance value)? distance,
   }) {
     return speed?.call(this);
   }
@@ -2100,26 +2910,25 @@ abstract class Measure_Speed implements Measure {
 abstract class _$$Measure_DistanceCopyWith<$Res> {
   factory _$$Measure_DistanceCopyWith(_$Measure_Distance value, $Res Function(_$Measure_Distance) then) =
       __$$Measure_DistanceCopyWithImpl<$Res>;
+  @useResult
   $Res call({Distance field0});
 
   $DistanceCopyWith<$Res> get field0;
 }
 
 /// @nodoc
-class __$$Measure_DistanceCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res>
+class __$$Measure_DistanceCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res, _$Measure_Distance>
     implements _$$Measure_DistanceCopyWith<$Res> {
   __$$Measure_DistanceCopyWithImpl(_$Measure_Distance _value, $Res Function(_$Measure_Distance) _then)
-      : super(_value, (v) => _then(v as _$Measure_Distance));
+      : super(_value, _then);
 
-  @override
-  _$Measure_Distance get _value => super._value as _$Measure_Distance;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$Measure_Distance(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as Distance,
@@ -2127,6 +2936,7 @@ class __$$Measure_DistanceCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $DistanceCopyWith<$Res> get field0 {
     return $DistanceCopyWith<$Res>(_value.field0, (value) {
       return _then(_value.copyWith(field0: value));
@@ -2152,14 +2962,15 @@ class _$Measure_Distance implements Measure_Distance {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Measure_Distance &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$Measure_DistanceCopyWith<_$Measure_Distance> get copyWith =>
       __$$Measure_DistanceCopyWithImpl<_$Measure_Distance>(this, _$identity);
 
@@ -2175,8 +2986,8 @@ class _$Measure_Distance implements Measure_Distance {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(Distance field0)? distance,
+    TResult? Function(Speed field0)? speed,
+    TResult? Function(Distance field0)? distance,
   }) {
     return distance?.call(field0);
   }
@@ -2206,8 +3017,8 @@ class _$Measure_Distance implements Measure_Distance {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Measure_Speed value)? speed,
-    TResult Function(Measure_Distance value)? distance,
+    TResult? Function(Measure_Speed value)? speed,
+    TResult? Function(Measure_Distance value)? distance,
   }) {
     return distance?.call(this);
   }
@@ -2244,8 +3055,8 @@ mixin _$Speed {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unknown,
-    TResult Function(double field0)? gps,
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? gps,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2263,8 +3074,8 @@ mixin _$Speed {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Speed_Unknown value)? unknown,
-    TResult Function(Speed_GPS value)? gps,
+    TResult? Function(Speed_Unknown value)? unknown,
+    TResult? Function(Speed_GPS value)? gps,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2278,16 +3089,17 @@ mixin _$Speed {
 
 /// @nodoc
 abstract class $SpeedCopyWith<$Res> {
-  factory $SpeedCopyWith(Speed value, $Res Function(Speed) then) = _$SpeedCopyWithImpl<$Res>;
+  factory $SpeedCopyWith(Speed value, $Res Function(Speed) then) = _$SpeedCopyWithImpl<$Res, Speed>;
 }
 
 /// @nodoc
-class _$SpeedCopyWithImpl<$Res> implements $SpeedCopyWith<$Res> {
+class _$SpeedCopyWithImpl<$Res, $Val extends Speed> implements $SpeedCopyWith<$Res> {
   _$SpeedCopyWithImpl(this._value, this._then);
 
-  final Speed _value;
   // ignore: unused_field
-  final $Res Function(Speed) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -2297,12 +3109,9 @@ abstract class _$$Speed_UnknownCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$Speed_UnknownCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res> implements _$$Speed_UnknownCopyWith<$Res> {
-  __$$Speed_UnknownCopyWithImpl(_$Speed_Unknown _value, $Res Function(_$Speed_Unknown) _then)
-      : super(_value, (v) => _then(v as _$Speed_Unknown));
-
-  @override
-  _$Speed_Unknown get _value => super._value as _$Speed_Unknown;
+class __$$Speed_UnknownCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res, _$Speed_Unknown>
+    implements _$$Speed_UnknownCopyWith<$Res> {
+  __$$Speed_UnknownCopyWithImpl(_$Speed_Unknown _value, $Res Function(_$Speed_Unknown) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -2335,8 +3144,8 @@ class _$Speed_Unknown implements Speed_Unknown {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unknown,
-    TResult Function(double field0)? gps,
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? gps,
   }) {
     return unknown?.call();
   }
@@ -2366,8 +3175,8 @@ class _$Speed_Unknown implements Speed_Unknown {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Speed_Unknown value)? unknown,
-    TResult Function(Speed_GPS value)? gps,
+    TResult? Function(Speed_Unknown value)? unknown,
+    TResult? Function(Speed_GPS value)? gps,
   }) {
     return unknown?.call(this);
   }
@@ -2393,23 +3202,22 @@ abstract class Speed_Unknown implements Speed {
 /// @nodoc
 abstract class _$$Speed_GPSCopyWith<$Res> {
   factory _$$Speed_GPSCopyWith(_$Speed_GPS value, $Res Function(_$Speed_GPS) then) = __$$Speed_GPSCopyWithImpl<$Res>;
+  @useResult
   $Res call({double field0});
 }
 
 /// @nodoc
-class __$$Speed_GPSCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res> implements _$$Speed_GPSCopyWith<$Res> {
-  __$$Speed_GPSCopyWithImpl(_$Speed_GPS _value, $Res Function(_$Speed_GPS) _then)
-      : super(_value, (v) => _then(v as _$Speed_GPS));
+class __$$Speed_GPSCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res, _$Speed_GPS>
+    implements _$$Speed_GPSCopyWith<$Res> {
+  __$$Speed_GPSCopyWithImpl(_$Speed_GPS _value, $Res Function(_$Speed_GPS) _then) : super(_value, _then);
 
-  @override
-  _$Speed_GPS get _value => super._value as _$Speed_GPS;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field0 = freezed,
+    Object? field0 = null,
   }) {
     return _then(_$Speed_GPS(
-      field0 == freezed
+      null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as double,
@@ -2435,14 +3243,15 @@ class _$Speed_GPS implements Speed_GPS {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Speed_GPS &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$Speed_GPSCopyWith<_$Speed_GPS> get copyWith => __$$Speed_GPSCopyWithImpl<_$Speed_GPS>(this, _$identity);
 
   @override
@@ -2457,8 +3266,8 @@ class _$Speed_GPS implements Speed_GPS {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unknown,
-    TResult Function(double field0)? gps,
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? gps,
   }) {
     return gps?.call(field0);
   }
@@ -2488,8 +3297,8 @@ class _$Speed_GPS implements Speed_GPS {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Speed_Unknown value)? unknown,
-    TResult Function(Speed_GPS value)? gps,
+    TResult? Function(Speed_Unknown value)? unknown,
+    TResult? Function(Speed_GPS value)? gps,
   }) {
     return gps?.call(this);
   }
@@ -2526,28 +3335,31 @@ mixin _$UserId {
 
 /// @nodoc
 abstract class $UserIdCopyWith<$Res> {
-  factory $UserIdCopyWith(UserId value, $Res Function(UserId) then) = _$UserIdCopyWithImpl<$Res>;
+  factory $UserIdCopyWith(UserId value, $Res Function(UserId) then) = _$UserIdCopyWithImpl<$Res, UserId>;
+  @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class _$UserIdCopyWithImpl<$Res> implements $UserIdCopyWith<$Res> {
+class _$UserIdCopyWithImpl<$Res, $Val extends UserId> implements $UserIdCopyWith<$Res> {
   _$UserIdCopyWithImpl(this._value, this._then);
 
-  final UserId _value;
   // ignore: unused_field
-  final $Res Function(UserId) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -2555,23 +3367,21 @@ class _$UserIdCopyWithImpl<$Res> implements $UserIdCopyWith<$Res> {
 abstract class _$$_UserIdCopyWith<$Res> implements $UserIdCopyWith<$Res> {
   factory _$$_UserIdCopyWith(_$_UserId value, $Res Function(_$_UserId) then) = __$$_UserIdCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res> implements _$$_UserIdCopyWith<$Res> {
-  __$$_UserIdCopyWithImpl(_$_UserId _value, $Res Function(_$_UserId) _then)
-      : super(_value, (v) => _then(v as _$_UserId));
+class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$_UserId> implements _$$_UserIdCopyWith<$Res> {
+  __$$_UserIdCopyWithImpl(_$_UserId _value, $Res Function(_$_UserId) _then) : super(_value, _then);
 
-  @override
-  _$_UserId get _value => super._value as _$_UserId;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
+    Object? value = null,
   }) {
     return _then(_$_UserId(
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
@@ -2597,14 +3407,15 @@ class _$_UserId implements _UserId {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserId &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserIdCopyWith<_$_UserId> get copyWith => __$$_UserIdCopyWithImpl<_$_UserId>(this, _$identity);
 }
 

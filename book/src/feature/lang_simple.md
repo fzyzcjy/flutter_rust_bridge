@@ -12,6 +12,7 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | [`enum { A(..) }`](lang_enum.md)                  | `@freezed class`            |
 | [`use ...`](lang_external.md)                     | act normally                |
 | [`Option<T>`](lang_option.md)                     | `T?`                        |
+| [Arbitrary types (opaque)](lang_opaque.md)        | `Opaque`                    |
 | `Box<T>`                                          | `T`                         |
 | comments                                          | same                        |
 | `Result::Err`, panic                              | `throw Exception`           |
