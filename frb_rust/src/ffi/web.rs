@@ -387,7 +387,7 @@ pub struct Timestamp {
 
 /// A wrapper to transfer ownership of T to Dart.
 ///
-/// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
+/// This type is equivalent to an [`Arc<T>`]. The inner pointer may
 /// be None if a nullptr is received from Dart, signifying that this pointer
 /// has been disposed.
 ///
@@ -403,7 +403,8 @@ pub struct Timestamp {
 /// ## Trait objects
 ///
 /// Trait objects may be put behind opaque pointers, but they must implement
-/// [`DartSafe`] to be safely sent to Dart. For example, this declaration can
+/// [`DartSafe`], async api requires the [`Sync`], [`Send`] trait, 
+/// to be safely sent to Dart. For example, this declaration can
 /// be used across the FFI border:
 ///
 /// ```rust
@@ -426,11 +427,11 @@ pub struct Timestamp {
 /// ```
 #[repr(transparent)]
 #[derive(Debug, Clone)]
-pub struct Opaque<T: ?Sized> {
+pub struct Opaque<T: ?Sized + DartSafe> {
     pub(crate) ptr: Arc<T>,
 }
 
-impl<T: ?Sized> std::ops::Deref for Opaque<T> {
+impl<T: ?Sized + DartSafe> std::ops::Deref for Opaque<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -438,13 +439,13 @@ impl<T: ?Sized> std::ops::Deref for Opaque<T> {
     }
 }
 
-impl<T: ?Sized> From<Arc<T>> for Opaque<T> {
+impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
         Self { ptr }
     }
 }
 
-impl<T> Opaque<T> {
+impl<T: DartSafe> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
             ptr: Arc::new(value),
@@ -479,7 +480,7 @@ pub fn share_arc_caller(ptr: *const c_void, ptr_share_fn: *const c_void) -> *con
     }
 }
 
-impl<T> From<Opaque<T>> for WireSyncReturnData {
+impl<T: DartSafe> From<Opaque<T>> for WireSyncReturnData {
     fn from(data: Opaque<T>) -> Self {
         let ptr = Arc::into_raw(data.ptr) as usize;
         let drop = drop_arc::<T> as *const c_void as usize;
@@ -498,7 +499,7 @@ impl<T> From<Opaque<T>> for WireSyncReturnData {
     }
 }
 
-impl<T> From<Option<Opaque<T>>> for WireSyncReturnData {
+impl<T: DartSafe> From<Option<Opaque<T>>> for WireSyncReturnData {
     fn from(data: Option<Opaque<T>>) -> Self {
         if let Some(o) = data {
             let ptr = Arc::into_raw(o.ptr) as usize;
@@ -520,7 +521,7 @@ impl<T> From<Option<Opaque<T>>> for WireSyncReturnData {
     }
 }
 
-impl<T> IntoDart for Opaque<T> {
+impl<T: DartSafe> IntoDart for Opaque<T> {
     fn into_dart(self) -> DartAbi {
         let ptr = Arc::into_raw(self.ptr);
         let drop = drop_arc::<T> as *const c_void;
@@ -537,7 +538,7 @@ impl<T> IntoDart for Opaque<T> {
     }
 }
 
-impl<T> IntoDart for Vec<Opaque<T>> {
+impl<T: DartSafe> IntoDart for Vec<Opaque<T>> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         Array::from_iter(self.into_iter().map(IntoDart::into_dart)).into()

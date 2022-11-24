@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::cell::RefCell;
+use std::sync::RwLock;
 pub struct MyStruct {
     pub content: bool,
 }
@@ -20,14 +20,14 @@ struct PrivateData {
 
 #[derive(Debug)]
 pub struct HideSyncData {
-    content: RefCell<String>,
+    content: RwLock<String>,
     box_content: Option<Box<PrivateData>>,
 }
 
 impl HideSyncData {
     pub fn new() -> Self {
         Self {
-            content: RefCell::new("content".to_owned()),
+            content: RwLock::new("content".to_owned()),
             box_content: Some(Box::new(PrivateData {
                 content: "content nested".to_owned(),
                 primitive: 424242,
@@ -38,11 +38,11 @@ impl HideSyncData {
     }
 
     pub fn hide_data(&self) -> String {
-        format!("{} - {:?}", self.content.borrow(), self.box_content)
+        format!("{} - {:?}", self.content.read().unwrap(), self.box_content)
     }
 
     pub fn change_data(&mut self) {
-        self.content.replace("MUT SELF".to_owned());
+        *self.content.write().unwrap() = "MUT SELF".to_owned();
     }
 }
 

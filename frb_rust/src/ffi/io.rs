@@ -5,6 +5,7 @@ use super::drop_arc;
 use super::share_arc;
 pub use super::DartAbi;
 pub use super::MessagePort;
+use crate::DartSafe;
 use crate::support::WireSyncReturnData;
 pub use allo_isolate::*;
 
@@ -43,7 +44,8 @@ pub struct Timestamp {
 /// ## Trait objects
 ///
 /// Trait objects may be put behind opaque pointers, but they must implement
-/// [`DartSafe`] to be safely sent to Dart. For example, this declaration can
+/// [`DartSafe`], async api requires the [`Sync`], [`Send`] trait, 
+/// to be safely sent to Dart. For example, this declaration can
 /// be used across the FFI border:
 ///
 /// ```rust
@@ -66,11 +68,11 @@ pub struct Timestamp {
 /// ```
 #[repr(transparent)]
 #[derive(Debug, Clone)]
-pub struct Opaque<T: ?Sized> {
+pub struct Opaque<T: ?Sized + DartSafe> {
     pub(crate) ptr: Arc<T>,
 }
 
-impl<T: ?Sized> std::ops::Deref for Opaque<T> {
+impl<T: ?Sized + DartSafe> std::ops::Deref for Opaque<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -78,7 +80,7 @@ impl<T: ?Sized> std::ops::Deref for Opaque<T> {
     }
 }
 
-impl<T> From<Opaque<T>> for WireSyncReturnData {
+impl<T: DartSafe> From<Opaque<T>> for WireSyncReturnData {
     fn from(data: Opaque<T>) -> Self {
         let ptr = Arc::into_raw(data.ptr) as usize;
         let drop = drop_arc::<T> as *const c_void as usize;
@@ -97,7 +99,7 @@ impl<T> From<Opaque<T>> for WireSyncReturnData {
     }
 }
 
-impl<T> From<Option<Opaque<T>>> for WireSyncReturnData {
+impl<T: DartSafe> From<Option<Opaque<T>>> for WireSyncReturnData {
     fn from(data: Option<Opaque<T>>) -> Self {
         if let Some(o) = data {
             let ptr = Arc::into_raw(o.ptr) as usize;
@@ -120,13 +122,13 @@ impl<T> From<Option<Opaque<T>>> for WireSyncReturnData {
     }
 }
 
-impl<T: ?Sized> From<Arc<T>> for Opaque<T> {
+impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
     fn from(ptr: Arc<T>) -> Self {
         Self { ptr }
     }
 }
 
-impl<T> Opaque<T> {
+impl<T: DartSafe> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
             ptr: Arc::new(value),
@@ -134,7 +136,7 @@ impl<T> Opaque<T> {
     }
 }
 
-impl<T> From<Opaque<T>> for ffi::DartCObject {
+impl<T: DartSafe> From<Opaque<T>> for ffi::DartCObject {
     fn from(value: Opaque<T>) -> Self {
         let ptr = Arc::into_raw(value.ptr);
         let drop = drop_arc::<T> as *const c_void;

@@ -27,6 +27,6 @@ where
 
 /// Marker trait for types that are safe to share with Dart and can be dropped
 /// safely in case of a panic.
-pub trait DartSafe: Send + Sync + UnwindSafe + RefUnwindSafe {}
+pub trait DartSafe: UnwindSafe + RefUnwindSafe {}
 
-impl<T: Send + Sync + UnwindSafe + RefUnwindSafe> DartSafe for T {}
+impl<T: UnwindSafe + RefUnwindSafe> DartSafe for T {}
