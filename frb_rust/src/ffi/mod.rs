@@ -71,7 +71,7 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
 ///
 /// ## Naming the inner type
 ///
-/// When an `Opaque<T>` is transformed into a Dart type, T's string
+/// When an `RustOpaque<T>` is transformed into a Dart type, T's string
 /// representation undergoes some transformations to become a valid Dart type:
 /// - Rust keywords (dyn, 'static, DartSafe, etc.) are automatically removed.
 /// - ASCII alphanumerics are kept, all other characters are ignored.
@@ -93,16 +93,16 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
 ///
 /// impl<T: DartSafe + Debug> DartDebug for T {}
 ///
-/// pub struct DebugWrapper(pub Opaque<Box<dyn DartDebug>>);
+/// pub struct DebugWrapper(pub RustOpaque<Box<dyn DartDebug>>);
 ///
 /// // creating a DebugWrapper using the opaque_dyn macro
 /// let wrap = DebugWrapper(opaque_dyn!("foobar"));
 /// // it's possible to name it directly
-/// pub struct DebugWrapper2(pub Opaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
+/// pub struct DebugWrapper2(pub RustOpaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
 #[repr(transparent)]
 #[derive(Debug, Clone)]
-pub struct Opaque<T: ?Sized + DartSafe> {
+pub struct RustOpaque<T: ?Sized + DartSafe> {
     ptr: Option<Arc<T>>,
 }
 
@@ -111,15 +111,15 @@ pub struct Opaque<T: ?Sized + DartSafe> {
 /// This function should never be called manually.
 /// Retrieving an opaque pointer from Dart is an implementation detail, so this
 /// function is not guaranteed to be API-stable.
-pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> Opaque<T> {
+pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> RustOpaque<T> {
     // The raw pointer is the same one created from Arc::into_raw,
     // owned and artificially incremented by Dart.
-    Opaque {
+    RustOpaque {
         ptr: (!ptr.is_null()).then(|| Arc::from_raw(ptr)),
     }
 }
 
-impl<T: ?Sized + DartSafe> ops::Deref for Opaque<T> {
+impl<T: ?Sized + DartSafe> ops::Deref for RustOpaque<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -131,13 +131,13 @@ impl<T: ?Sized + DartSafe> ops::Deref for Opaque<T> {
     }
 }
 
-impl<T: ?Sized + DartSafe> From<Arc<T>> for Opaque<T> {
+impl<T: ?Sized + DartSafe> From<Arc<T>> for RustOpaque<T> {
     fn from(ptr: Arc<T>) -> Self {
         Self { ptr: Some(ptr) }
     }
 }
 
-impl<T: DartSafe> Opaque<T> {
+impl<T: DartSafe> RustOpaque<T> {
     pub fn new(value: T) -> Self {
         Self {
             ptr: Some(Arc::new(value)),
@@ -145,8 +145,8 @@ impl<T: DartSafe> Opaque<T> {
     }
 }
 
-impl<T: DartSafe> From<Opaque<T>> for DartAbi {
-    fn from(value: Opaque<T>) -> Self {
+impl<T: DartSafe> From<RustOpaque<T>> for DartAbi {
+    fn from(value: RustOpaque<T>) -> Self {
         let ptr = if let Some(ptr) = value.ptr {
             Arc::into_raw(ptr)
         } else {
@@ -158,7 +158,7 @@ impl<T: DartSafe> From<Opaque<T>> for DartAbi {
     }
 }
 
-/// Macro helper to instantiate an `Opaque<dyn Trait>`, as Rust does not
+/// Macro helper to instantiate an `RustOpaque<dyn Trait>`, as Rust does not
 /// support custom DSTs on stable.
 ///
 /// Example:
@@ -170,11 +170,11 @@ impl<T: DartSafe> From<Opaque<T>> for DartAbi {
 ///
 /// impl<T: DartSafe + Debug> MyDebug for T {}
 ///
-/// let opaque: Opaque<Box<dyn MyDebug>> = opaque_dyn!("foobar");
+/// let opaque: RustOpaque<Box<dyn MyDebug>> = opaque_dyn!("foobar");
 /// ```
 #[macro_export]
 macro_rules! opaque_dyn {
     ($ex:expr) => {
-        $crate::Opaque::new(::std::boxed::Box::new($ex))
+        $crate::RustOpaque::new(::std::boxed::Box::new($ex))
     };
 }

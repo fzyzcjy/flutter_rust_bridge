@@ -77,7 +77,7 @@ impl DartOpaque {
         }
     }
 
-    pub fn try_unwrap(self) -> Result<Dart_PersistentHandle, Self> {
+    pub fn try_unwrap(mut self) -> Result<Dart_PersistentHandle, Self> {
         if std::thread::current().id() == self.id {
             self.drop = false;
             Ok(self.handle)
