@@ -67,7 +67,7 @@ unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
-    pub fn new(handle: Dart_Handle, port: i64) -> Self {
+    pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
         Self {
             handle,
             port: Channel::new(port),
@@ -78,6 +78,7 @@ impl DartOpaque {
 
     pub fn try_unwrap(self) -> Result<Dart_PersistentHandle, Self> {
         if std::thread::current().id() == self.id {
+            self.drop = false;
             Ok(self.handle)
         } else {
             Err(self)

@@ -417,6 +417,7 @@ impl DartOpaque {
 
     pub fn try_unwrap(mut self) -> Result<JsValue, Self> {
         if std::thread::current().id() == self.id {
+            self.drop = false;
             Ok(unsafe { *support::box_from_leak_ptr(self.handle.take().unwrap()) })
         } else {
             Err(self)
