@@ -8,7 +8,7 @@ use crate::utils::BlockIndex;
 
 use super::{ExternFuncCollector, NO_PARAMS};
 
-type_rust_generator_struct!(TypeOpaqueGenerator, IrTypeOpaque);
+type_rust_generator_struct!(TypeOpaqueGenerator, IrTypeRustOpaque);
 
 impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> crate::target::Acc<Option<String>> {

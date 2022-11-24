@@ -228,12 +228,14 @@ impl<'a> TypeParser<'a> {
                 "RustOpaque" => match *generic {
                     SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
                     SupportedInnerType::Verbatim(ver) => {
-                        Some(IrType::RustOpaque(IrTypeOpaque::from(ver.as_ref())))
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(ver.as_ref())))
                     }
                     SupportedInnerType::Path(path) => {
-                        Some(IrType::RustOpaque(IrTypeOpaque::from(path.to_string())))
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(path.to_string())))
                     }
-                    SupportedInnerType::Unit => Some(IrType::RustOpaque(IrTypeOpaque::new_unit())),
+                    SupportedInnerType::Unit => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::new_unit()))
+                    }
                 },
                 "Box" => self.convert_to_ir_type(*generic).map(|inner| {
                     Boxed(IrTypeBoxed {

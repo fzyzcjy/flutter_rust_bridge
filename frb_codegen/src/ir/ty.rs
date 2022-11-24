@@ -18,7 +18,7 @@ pub enum IrType {
     EnumRef(IrTypeEnumRef),
     SyncReturn(IrTypeSyncReturn),
     DartOpaque(IrTypeDartOpaque),
-    RustOpaque(IrTypeOpaque),
+    RustOpaque(IrTypeRustOpaque),
 }
 
 impl IrType {

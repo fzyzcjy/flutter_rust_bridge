@@ -707,8 +707,14 @@ void main(List<String> args) async {
     test('drop', () async {
       expect(await api.asyncDartOpaque(notTemp: f), 'async test');
       expect(api.syncDartOpaque(notTemp: f), 'test');
-  });
     });
+
+    test('unwrap', () async {
+      var data = 'Test';
+      expect(api.unwrapDartOpaque(opaque: data), 'Test');
+      await expectLater(() => api.panicUnwrapDartOpaque(opaque: data), throwsA(isA<FfiException>()));
+    });
+  });
 
   group('rust opaque type', () {
     test('create and dispose', () async {
@@ -922,6 +928,26 @@ void main(List<String> args) async {
 
       await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
       data[1].dispose();
+    });
+
+    test('unwrap', () async {
+      var data = await api.createOpaque();
+      data.move = true;
+      expect(
+          await api.unwrapRustOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(data.isStale(), isTrue);
+
+      var data2 = await api.createOpaque();
+      data2.move = false;
+      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
+      expect(data2.isStale(), isFalse);
     });
   });
 }

@@ -41,26 +41,18 @@ mod tests {
     }
 }
 
-/// # Safety
-/// because.
-#[no_mangle]
-pub unsafe extern "C" fn dart_opaque_drop(ptr: usize) {
-    Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
-}
-
-/// # Safety
-/// because.
-#[no_mangle]
-pub unsafe extern "C" fn dart_opaque_get(ptr: usize) -> *mut _Dart_Handle {
-    let res = Dart_HandleFromPersistent_DL_Trampolined(ptr as _);
-    Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
-    res
-}
-
+#[derive(Debug)]
 pub struct DartOpaque {
+    /// Dart object handle that won't be removed by GC.
     handle: Dart_PersistentHandle,
+
+    /// Used to drop the `handle` on the Dart thread
     port: Channel,
+
+    /// Flag to cancel the drop when sending to dart.
     drop: bool,
+
+    /// The ID of the thread on which the Dart Object was created.
     id: ThreadId,
 }
 
@@ -68,6 +60,8 @@ unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
+
+    /// Creates a new [DartOpaque].
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
         Self {
             handle,
@@ -77,6 +71,8 @@ impl DartOpaque {
         }
     }
 
+    /// Tries to get a raw Dart Handle. 
+    /// Returns the Dart Handle if the [DartOpaque] was created on the current thread.
     pub fn try_unwrap(mut self) -> Result<Dart_PersistentHandle, Self> {
         if std::thread::current().id() == self.id {
             self.drop = false;

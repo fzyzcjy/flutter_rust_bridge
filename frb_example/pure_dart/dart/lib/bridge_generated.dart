@@ -1583,6 +1583,54 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_HideData(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_unwrap_rust_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kUnwrapRustOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "unwrap_rust_opaque",
+        argNames: ["opaque"],
+      );
+
+  String unwrapDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DelegateDartOpaque(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_unwrap_dart_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_String,
+      constMeta: kUnwrapDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kUnwrapDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "unwrap_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Future<String> panicUnwrapDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DelegateDartOpaque(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_panic_unwrap_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kPanicUnwrapDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPanicUnwrapDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "panic_unwrap_dart_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);

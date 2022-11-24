@@ -409,10 +409,19 @@ mod tests {
     }
 }
 
+#[derive(Debug)]
 pub struct DartOpaque {
-    handle: Option<*mut JsValue>,
+    /// Dart object ptr
+    handle: *mut JsValue,
+
+    /// Name of [BroadcastChannel]
+    /// used to drop the `handle` on the Dart thread
     port: String,
+
+    /// Flag to cancel the drop when sending to dart.
     drop: bool,
+
+    /// The ID of the thread on which the Dart Object was created.
     id: ThreadId,
 }
 
@@ -420,19 +429,22 @@ unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
+    /// Creates a new [DartOpaque].
     pub fn new(handle: JsValue, port: MessagePort) -> Self {
         Self {
-            handle: Some(support::new_leak_box_ptr(handle)),
+            handle: support::new_leak_box_ptr(handle),
             id: std::thread::current().id(),
             port: port.dyn_ref::<BroadcastChannel>().unwrap().name(),
             drop: true,
         }
     }
 
+    /// Tries to get a Dart [JsValue]. 
+    /// Returns the [JsValue] if the [DartOpaque] was created on the current thread.
     pub fn try_unwrap(mut self) -> Result<JsValue, Self> {
         if std::thread::current().id() == self.id {
             self.drop = false;
-            Ok(unsafe { *support::box_from_leak_ptr(self.handle.take().unwrap()) })
+            Ok(unsafe { *support::box_from_leak_ptr(self.handle) })
         } else {
             Err(self)
         }
@@ -442,14 +454,14 @@ impl DartOpaque {
 impl IntoDart for DartOpaque {
     fn into_dart(mut self) -> JsValue {
         self.drop = false;
-        self.handle.take().unwrap().into_dart()
+        self.handle.into_dart()
     }
 }
 
 impl Drop for DartOpaque {
     fn drop(&mut self) {
         if self.drop {
-            let ptr = self.handle.take().unwrap();
+            let ptr = self.handle;
             if std::thread::current().id() == self.id {
                 drop(unsafe { support::box_from_leak_ptr(ptr) });
             } else {

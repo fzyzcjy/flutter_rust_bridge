@@ -2526,6 +2526,50 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_run_nested_opaque =
       _wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueNested>)>();
 
+  void wire_unwrap_rust_opaque(
+    int port_,
+    wire_HideData opaque,
+  ) {
+    return _wire_unwrap_rust_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_unwrap_rust_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_HideData)>>('wire_unwrap_rust_opaque');
+  late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr.asFunction<void Function(int, wire_HideData)>();
+
+  WireSyncReturnStruct wire_unwrap_dart_opaque(
+    ffi.Pointer<wire_DartOpaque> opaque,
+  ) {
+    return _wire_unwrap_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_unwrap_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_DartOpaque>)>>(
+          'wire_unwrap_dart_opaque');
+  late final _wire_unwrap_dart_opaque =
+      _wire_unwrap_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_DartOpaque>)>();
+
+  void wire_panic_unwrap_dart_opaque(
+    int port_,
+    ffi.Pointer<wire_DartOpaque> opaque,
+  ) {
+    return _wire_panic_unwrap_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_panic_unwrap_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_DartOpaque>)>>(
+          'wire_panic_unwrap_dart_opaque');
+  late final _wire_panic_unwrap_dart_opaque =
+      _wire_panic_unwrap_dart_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_DartOpaque>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

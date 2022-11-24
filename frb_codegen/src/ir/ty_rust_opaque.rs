@@ -6,7 +6,7 @@ use quote::ToTokens;
 use regex::Regex;
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
-pub struct IrTypeOpaque {
+pub struct IrTypeRustOpaque {
     pub inner_rust: String,
     pub inner_dart: String,
 }
@@ -27,7 +27,7 @@ fn rust_type_to_dart_type(rust: &str) -> String {
         .to_case(Case::Pascal)
 }
 
-impl From<&syn::Type> for IrTypeOpaque {
+impl From<&syn::Type> for IrTypeRustOpaque {
     fn from(rust_ty: &syn::Type) -> Self {
         let inner_dart = match rust_ty {
             syn::Type::Tuple(tup) if tup.elems.is_empty() => "void".to_owned(),
@@ -41,7 +41,7 @@ impl From<&syn::Type> for IrTypeOpaque {
     }
 }
 
-impl From<String> for IrTypeOpaque {
+impl From<String> for IrTypeRustOpaque {
     fn from(inner_rust: String) -> Self {
         let inner_dart = rust_type_to_dart_type(&inner_rust);
         Self {
@@ -51,7 +51,7 @@ impl From<String> for IrTypeOpaque {
     }
 }
 
-impl IrTypeOpaque {
+impl IrTypeRustOpaque {
     pub fn new_unit() -> Self {
         Self {
             inner_rust: "()".to_owned(),
@@ -60,7 +60,7 @@ impl IrTypeOpaque {
     }
 }
 
-impl IrTypeTrait for IrTypeOpaque {
+impl IrTypeTrait for IrTypeRustOpaque {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_file: &IrFile) {
         // Do nothing.
     }

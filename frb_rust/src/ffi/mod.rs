@@ -106,6 +106,22 @@ pub struct RustOpaque<T: ?Sized + DartSafe> {
     ptr: Option<Arc<T>>,
 }
 
+impl<T: DartSafe> RustOpaque<T> {
+    /// Tries to get the inner property.
+    /// Returns the property if the no one else shares this opaque type.
+    /// 
+    /// # Panics 
+    /// 
+    /// Panics if the opaque type has already been disposed.
+    pub fn try_unwrap(self) -> Result<T, Self> {
+        if let Some(ptr) = self.ptr {
+            Arc::try_unwrap(ptr).map_err(RustOpaque::from)
+        } else {
+            panic!("Use after free.")
+        }
+    }
+}
+
 /// # Safety
 ///
 /// This function should never be called manually.

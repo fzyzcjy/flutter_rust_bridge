@@ -1039,7 +1039,10 @@ pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
 }
 
 pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
-    [RustOpaque::new(HideData::new()), RustOpaque::new(HideData::new())]
+    [
+        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideData::new()),
+    ]
 }
 
 pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
@@ -1049,7 +1052,10 @@ pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
 }
 
 pub fn opaque_vec() -> Vec<RustOpaque<HideData>> {
-    vec![RustOpaque::new(HideData::new()), RustOpaque::new(HideData::new())]
+    vec![
+        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideData::new()),
+    ]
 }
 
 pub fn opaque_vec_run(data: Vec<RustOpaque<HideData>>) {
@@ -1068,4 +1074,37 @@ pub fn create_nested_opaque() -> OpaqueNested {
 pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.first.hide_data();
     opaque.second.hide_data();
+}
+
+pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> String {
+    let hide_data = opaque.try_unwrap().unwrap();
+    hide_data.hide_data()
+}
+
+pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    #[cfg(target_family = "wasm")]
+    {
+        let js = opaque.try_unwrap().unwrap();
+        SyncReturn(js.as_string().unwrap())
+    }
+    #[cfg(not(target_family = "wasm"))]
+    {
+        let handle = opaque.try_unwrap().unwrap();
+        unsafe { Dart_DeletePersistentHandle_DL_Trampolined(handle) };
+        SyncReturn("Test".to_owned())
+    }
+}
+
+pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) -> String {
+    #[cfg(target_family = "wasm")]
+    {
+        let js = opaque.try_unwrap().unwrap();
+        js.as_string().unwrap()
+    }
+    #[cfg(not(target_family = "wasm"))]
+    {
+        let handle = opaque.try_unwrap().unwrap();
+        unsafe { Dart_DeletePersistentHandle_DL_Trampolined(handle) };
+        "Test".to_owned()
+    }
 }
