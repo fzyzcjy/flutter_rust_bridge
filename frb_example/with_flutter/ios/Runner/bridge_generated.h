@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+typedef struct _Dart_Handle* Dart_Handle;
 
 typedef int64_t DartPort;
 
@@ -35,6 +36,8 @@ typedef struct wire_list_size {
   struct wire_Size *ptr;
   int32_t len;
 } wire_list_size;
+
+void drop_DartOpaqueFlutterRustBridgeExample(uintptr_t ptr);
 
 typedef struct WireSyncReturnStruct {
   uint8_t *ptr;
@@ -106,6 +109,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_size_0);
     dummy_var ^= ((int64_t) (void*) new_list_tree_node_0);
     dummy_var ^= ((int64_t) (void*) new_uint_8_list_0);
+    dummy_var ^= ((int64_t) (void*) drop_DartOpaqueFlutterRustBridgeExample);
     dummy_var ^= ((int64_t) (void*) free_WireSyncReturnStruct);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     return dummy_var;
