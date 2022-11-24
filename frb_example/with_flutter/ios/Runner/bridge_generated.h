@@ -37,8 +37,6 @@ typedef struct wire_list_size {
   int32_t len;
 } wire_list_size;
 
-void drop_DartOpaqueFlutterRustBridgeExample(uintptr_t ptr);
-
 typedef struct WireSyncReturnStruct {
   uint8_t *ptr;
   int32_t len;
@@ -86,6 +84,8 @@ struct wire_list_size *new_list_size_0(int32_t len);
 struct wire_list_tree_node *new_list_tree_node_0(int32_t len);
 
 struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
+
+void drop_DartOpaqueFlutterRustBridgeExample(uintptr_t ptr);
 
 void free_WireSyncReturnStruct(struct WireSyncReturnStruct val);
 
