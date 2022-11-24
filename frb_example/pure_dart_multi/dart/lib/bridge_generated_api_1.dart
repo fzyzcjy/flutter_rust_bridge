@@ -59,8 +59,13 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
   final _port = RawReceivePort();
   NativePortType get port => _port.sendPort.nativePort;
   ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib)) {
-    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
-        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+    var initResult =
+        dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+            'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+
+    if (initResult != 0) {
+      throw 'Failed to initialize Dart API. Code: $initResult';
+    }
 
     _port.handler = (response) {
       inner.drop_DartOpaque(response);

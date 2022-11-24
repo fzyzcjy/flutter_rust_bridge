@@ -310,10 +310,14 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 final _port = RawReceivePort();
                 NativePortType get port => _port.sendPort.nativePort;
                 {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib)) {{
-                    dylib.lookupFunction<
+                    var initResult = dylib.lookupFunction<
                     ffi.IntPtr Function(ffi.Pointer<ffi.Void>),
                     int Function(
                         ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+              
+                    if (initResult != 0) {{
+                        throw 'Failed to initialize Dart API. Code: $initResult';
+                    }}
 
                     _port.handler = (response) {{
                         inner.drop_DartOpaque(response);
