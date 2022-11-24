@@ -312,7 +312,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         dart_wasm_module,
         ..
     } = spec;
-
     lines.push_acc(Acc {
         common: format!(
             "class {impl} implements {} {{
@@ -342,7 +341,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                     }}
 
                     _port.handler = (response) {{
-                        inner.drop_DartOpaque(response);
+                        inner.drop_DartOpaque{dart_api_class_name}(response);
                     }};
                     dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
                         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
@@ -358,7 +357,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 {plat}(FutureOr<WasmModule> dylib) : _port = broadcastPort('__frb_dart_opaque_drop_$drop_id_port'), super({wire}(dylib)) {{
                     ++drop_id_port;
                     setupMixinConstructor();
-                    _port.listen((_){{}}).onData((data) {{inner.drop_DartOpaque(data);}});
+                    _port.listen((_){{}}).onData((data) {{inner.drop_DartOpaque{dart_api_class_name}(data);}});
                 }}
                 Future<void> setup() => inner.init;",
             plat = dart_platform_class_name,

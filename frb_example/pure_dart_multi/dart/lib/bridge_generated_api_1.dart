@@ -72,7 +72,7 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
     }
 
     _port.handler = (response) {
-      inner.drop_DartOpaque(response);
+      inner.drop_DartOpaqueApiClass1(response);
     };
     dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
@@ -134,16 +134,17 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder_1');
   late final _wire_simple_adder_1 = _wire_simple_adder_1Ptr.asFunction<void Function(int, int, int)>();
 
-  void drop_DartOpaque(
+  void drop_DartOpaqueApiClass1(
     int ptr,
   ) {
-    return _drop_DartOpaque(
+    return _drop_DartOpaqueApiClass1(
       ptr,
     );
   }
 
-  late final _drop_DartOpaquePtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_DartOpaque');
-  late final _drop_DartOpaque = _drop_DartOpaquePtr.asFunction<void Function(int)>();
+  late final _drop_DartOpaqueApiClass1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_DartOpaqueApiClass1');
+  late final _drop_DartOpaqueApiClass1 = _drop_DartOpaqueApiClass1Ptr.asFunction<void Function(int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,

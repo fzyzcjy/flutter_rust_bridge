@@ -15,11 +15,16 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   final _port = RawReceivePort();
   NativePortType get port => _port.sendPort.nativePort;
   FlutterRustBridgeExamplePlatform(ffi.DynamicLibrary dylib) : super(FlutterRustBridgeExampleWire(dylib)) {
-    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
-        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+    var initResult =
+        dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+            'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+
+    if (initResult != 0) {
+      throw 'Failed to initialize Dart API. Code: $initResult';
+    }
 
     _port.handler = (response) {
-      inner.drop_DartOpaque(response);
+      inner.drop_DartOpaqueFlutterRustBridgeExample(response);
     };
     dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
@@ -392,16 +397,18 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
   late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
-  void drop_DartOpaque(
+  void drop_DartOpaqueFlutterRustBridgeExample(
     int ptr,
   ) {
-    return _drop_DartOpaque(
+    return _drop_DartOpaqueFlutterRustBridgeExample(
       ptr,
     );
   }
 
-  late final _drop_DartOpaquePtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_DartOpaque');
-  late final _drop_DartOpaque = _drop_DartOpaquePtr.asFunction<void Function(int)>();
+  late final _drop_DartOpaqueFlutterRustBridgeExamplePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_DartOpaqueFlutterRustBridgeExample');
+  late final _drop_DartOpaqueFlutterRustBridgeExample =
+      _drop_DartOpaqueFlutterRustBridgeExamplePtr.asFunction<void Function(int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,

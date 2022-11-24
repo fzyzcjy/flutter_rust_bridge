@@ -200,7 +200,7 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
 // Section: dart opaque related functions
 
 #[no_mangle]
-pub extern "C" fn drop_DartOpaque(ptr: usize) {
+pub extern "C" fn drop_DartOpaqueFlutterRustBridgeExample(ptr: usize) {
     unsafe {
         Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
     }

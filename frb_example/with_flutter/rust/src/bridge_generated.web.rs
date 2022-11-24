@@ -151,7 +151,7 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
 // Section: dart opaque related functions
 
 #[wasm_bindgen]
-pub fn drop_DartOpaque(ptr: usize) {
+pub fn drop_DartOpaqueFlutterRustBridgeExample(ptr: usize) {
     unsafe { drop(support::box_from_leak_ptr::<JsValue>(ptr as _)) }
 }
 

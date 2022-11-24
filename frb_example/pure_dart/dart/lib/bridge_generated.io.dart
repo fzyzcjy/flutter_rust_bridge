@@ -27,7 +27,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
 
     _port.handler = (response) {
-      inner.drop_DartOpaque(response);
+      inner.drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(response);
     };
     dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
@@ -3461,16 +3461,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _share_opaque_RwLockHideData =
       _share_opaque_RwLockHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
-  void drop_DartOpaque(
+  void drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(
     int ptr,
   ) {
-    return _drop_DartOpaque(
+    return _drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(
       ptr,
     );
   }
 
-  late final _drop_DartOpaquePtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_DartOpaque');
-  late final _drop_DartOpaque = _drop_DartOpaquePtr.asFunction<void Function(int)>();
+  late final _drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTestPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>(
+          'drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest');
+  late final _drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest =
+      _drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTestPtr.asFunction<void Function(int)>();
 
   ffi.Pointer<DistanceKind> inflate_Distance_Map() {
     return _inflate_Distance_Map();

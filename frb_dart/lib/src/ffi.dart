@@ -15,7 +15,7 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   /// Pointer to this opaque Rust type.
   PlatformPointer _ptr;
 
-  /// flag to transfer ownership of an opaque type 
+  /// flag to transfer ownership of an opaque type
   /// in Rust when used as an argument.
   var move = false;
 

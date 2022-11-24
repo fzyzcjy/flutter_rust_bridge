@@ -60,7 +60,6 @@ unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
-
     /// Creates a new [DartOpaque].
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
         Self {
@@ -71,7 +70,7 @@ impl DartOpaque {
         }
     }
 
-    /// Tries to get a raw Dart Handle. 
+    /// Tries to get a raw Dart Handle.
     /// Returns the Dart Handle if the [DartOpaque] was created on the current thread.
     pub fn try_unwrap(mut self) -> Result<Dart_PersistentHandle, Self> {
         if std::thread::current().id() == self.id {

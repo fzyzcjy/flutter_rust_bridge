@@ -109,9 +109,9 @@ pub struct RustOpaque<T: ?Sized + DartSafe> {
 impl<T: DartSafe> RustOpaque<T> {
     /// Tries to get the inner property.
     /// Returns the property if the no one else shares this opaque type.
-    /// 
-    /// # Panics 
-    /// 
+    ///
+    /// # Panics
+    ///
     /// Panics if the opaque type has already been disposed.
     pub fn try_unwrap(self) -> Result<T, Self> {
         if let Some(ptr) = self.ptr {

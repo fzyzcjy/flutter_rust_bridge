@@ -1770,7 +1770,7 @@ impl Wire2Api<UserId> for wire_UserId {
 // Section: dart opaque related functions
 
 #[no_mangle]
-pub extern "C" fn drop_DartOpaque(ptr: usize) {
+pub extern "C" fn drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(ptr: usize) {
     unsafe {
         Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
     }

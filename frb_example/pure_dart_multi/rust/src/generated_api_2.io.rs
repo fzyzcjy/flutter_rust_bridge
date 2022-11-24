@@ -15,7 +15,7 @@ pub extern "C" fn wire_simple_adder_2(port_: i64, a: i32, b: i32) {
 // Section: dart opaque related functions
 
 #[no_mangle]
-pub extern "C" fn drop_DartOpaque(ptr: usize) {
+pub extern "C" fn drop_DartOpaqueApiClass2(ptr: usize) {
     unsafe {
         Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
     }

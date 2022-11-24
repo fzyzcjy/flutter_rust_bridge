@@ -439,7 +439,7 @@ impl DartOpaque {
         }
     }
 
-    /// Tries to get a Dart [JsValue]. 
+    /// Tries to get a Dart [JsValue].
     /// Returns the [JsValue] if the [DartOpaque] was created on the current thread.
     pub fn try_unwrap(mut self) -> Result<JsValue, Self> {
         if std::thread::current().id() == self.id {

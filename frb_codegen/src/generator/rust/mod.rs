@@ -264,16 +264,17 @@ impl<'a> Generator<'a> {
     }
 
     fn generate_drop_dart_opaque(&mut self) -> Acc<String> {
+        let api_class = self.config.dart_api_class_name();
         Acc {
             io: self.extern_func_collector.generate(
-                "drop_DartOpaque",
+                &format!("drop_DartOpaque{api_class}"),
                 [("ptr: usize", "")],
                 None,
                 "unsafe{Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);}",
                 Io,
             ),
             wasm: self.extern_func_collector.generate(
-                "drop_DartOpaque",
+                &format!("drop_DartOpaque{api_class}"),
                 [("ptr: usize", "")],
                 None,
                 "unsafe{drop(support::box_from_leak_ptr::<JsValue>(ptr as _))}",

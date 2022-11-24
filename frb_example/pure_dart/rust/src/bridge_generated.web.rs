@@ -1388,7 +1388,7 @@ impl Wire2Api<UserId> for JsValue {
 // Section: dart opaque related functions
 
 #[wasm_bindgen]
-pub fn drop_DartOpaque(ptr: usize) {
+pub fn drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(ptr: usize) {
     unsafe { drop(support::box_from_leak_ptr::<JsValue>(ptr as _)) }
 }
 
