@@ -136,7 +136,7 @@ impl<'a> Generator<'a> {
             .iter()
             .map(|f| self.generate_related_funcs(f, ir_file))
             .collect();
-            
+
         lines.push_all(self.section_header_comment("impl Wire2Api"));
         lines.push(self.generate_wire2api_misc().to_string());
         lines += distinct_input_types
@@ -153,6 +153,9 @@ impl<'a> Generator<'a> {
 
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
+
+        lines.push_all(self.section_header_comment("dart opaque related functions"));
+        lines.push_acc(self.generate_drop_dart_opaque());
 
         self.generate_io_part(&mut lines, &distinct_input_types, ir_file);
         self.generate_wasm_part(&mut lines, &distinct_input_types, ir_file);
@@ -254,6 +257,26 @@ impl<'a> Generator<'a> {
             "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
             Io,
         )
+    }
+
+    fn generate_drop_dart_opaque(&mut self) -> Acc<String> {
+        Acc {
+            io: self.extern_func_collector.generate(
+                "drop_DartOpaque",
+                [("ptr: usize", "")],
+                None,
+                "unsafe{Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);}",
+                Io,
+            ),
+            wasm: self.extern_func_collector.generate(
+                "drop_DartOpaque",
+                [("ptr: usize", "")],
+                None,
+                "unsafe{drop(support::box_from_leak_ptr::<JsValue>(ptr as _))}",
+                Wasm,
+            ),
+            ..Default::default()
+        }
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> Acc<String> {

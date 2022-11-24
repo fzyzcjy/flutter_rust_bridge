@@ -417,7 +417,7 @@ impl DartOpaque {
 
     pub fn try_unwrap(mut self) -> Result<JsValue, Self> {
         if std::thread::current().id() == self.id {
-            Ok(unsafe{*support::box_from_leak_ptr(self.handle.take().unwrap())})
+            Ok(unsafe { *support::box_from_leak_ptr(self.handle.take().unwrap()) })
         } else {
             Err(self)
         }
@@ -436,7 +436,7 @@ impl Drop for DartOpaque {
         if self.drop {
             let ptr = self.handle.take().unwrap();
             if std::thread::current().id() == self.id {
-                drop(unsafe{support::box_from_leak_ptr(ptr)});
+                drop(unsafe { support::box_from_leak_ptr(ptr) });
             } else {
                 Channel::new(PortLike::broadcast(&self.port)).post(ptr);
             }

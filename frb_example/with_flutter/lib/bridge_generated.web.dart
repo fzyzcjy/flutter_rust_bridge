@@ -12,20 +12,22 @@ import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire>
     with FlutterRustBridgeSetupMixin {
-  final _port = RawReceivePort();
+  static int _drop_id_port = 0;
+  final ReceivePort _port;
   NativePortType get port => _port.sendPort.nativePort;
-  FlutterRustBridgeExamplePlatform(FutureOr<WasmModule> dylib) : super(FlutterRustBridgeExampleWire(dylib)) {
-    _port.handler = (response) {
-      print(response);
-    };
+  FlutterRustBridgeExamplePlatform(FutureOr<WasmModule> dylib)
+      : _port = broadcastPort('__frb_dart_opaque_drop_$_drop_id_port'),
+        super(FlutterRustBridgeExampleWire(dylib)) {
+    ++_drop_id_port;
     setupMixinConstructor();
+    _port.listen((_) {}).onData((data) {
+      inner.drop_DartOpaque(data);
+    });
   }
   Future<void> setup() => inner.init;
   void close() {
     _port.close();
   }
-
-  Object dart_opaque_get(raw) => raw;
 // Section: api2wire
 
   @protected
@@ -113,6 +115,8 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
   external void wire_off_topic_deliberately_return_error(NativePortType port_);
 
   external void wire_off_topic_deliberately_panic(NativePortType port_);
+
+  external dynamic /*  */ drop_DartOpaque(ptr);
 }
 
 // Section: WASM wire connector
@@ -156,4 +160,6 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
       wasmModule.wire_off_topic_deliberately_return_error(port_);
 
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
+
+  dynamic /*  */ drop_DartOpaque(ptr) => wasmModule.drop_DartOpaque(ptr);
 }

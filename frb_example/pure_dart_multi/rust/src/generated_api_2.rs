@@ -71,6 +71,7 @@ impl Wire2Api<i32> for i32 {
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }
+// Section: dart opaque related functions
 
 #[cfg(not(target_family = "wasm"))]
 #[path = "generated_api_2.io.rs"]

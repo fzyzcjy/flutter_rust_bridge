@@ -20,6 +20,7 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
+  tearDownAll(() => api.close());
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -690,41 +691,24 @@ void main(List<String> args) async {
       expect(nestedId[0].field0[1], 10);
       expect(nestedId[1].field0[1], 40);
     });
+  });
 
-    test('OPAQUE', () async {
-      f() => 'Test_String';
-      var res = await api.loopBack(notTemp: f) as String Function();
-      expect(res(), 'Test_String');
-      var res2 = await api.loopBack(notTemp: res) as String Function();
-      expect(res2(), 'Test_String');
-      expect(identical(res2, f), isTrue);
+  group('dart opaque', () {
+    f() => 'Test_String';
 
+    test('loopback', () async {
+      var back1 = await api.loopBack(notTemp: f) as String Function();
+      expect(back1(), 'Test_String');
+      var back2 = await api.loopBack(notTemp: back1) as String Function();
+      expect(back2(), 'Test_String');
+      expect(identical(back2, f), isTrue);
+    });
 
+    test('drop', () async {
       expect(await api.asyncDartOpaque(notTemp: f), 'async test');
       expect(api.syncDartOpaque(notTemp: f), 'test');
     });
-
-    test('LeaK', () async {
-      for (var i = 0; i < 10; ++i) {
-        var data = List.filled(10, '4242424242');
-        expect(api.syncDartOpaque(notTemp: data), 'test');
-      }
-    });
-    test('LeaK2', () async {
-      for (var i = 0; i < 10; ++i) {
-        var data = List.filled(10, '4242424242');
-        expect(await api.asyncDartOpaque(notTemp: data), 'async test');
-      }
-    });
-    test('LeaK3', () async {
-      for (var i = 0; i < 10; ++i) {
-        var data = List.filled(10, '4242424242');
-        expect(identical(await api.loopBack(notTemp: await api.loopBack(notTemp: data)), data), isTrue);
-      }
-    });
   });
-
-  api.close();
 }
 
 int _createGarbage() {

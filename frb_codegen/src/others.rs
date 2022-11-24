@@ -31,9 +31,8 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     "#;
 
 lazy_static! {
-    pub static ref EXTRA_EXTERN_FUNC_NAMES: Vec<String> = vec![
-        "store_dart_post_cobject".to_string(),
-    ];
+    pub static ref EXTRA_EXTERN_FUNC_NAMES: Vec<String> =
+        vec!["store_dart_post_cobject".to_string(),];
 }
 
 pub fn code_header() -> String {

@@ -525,7 +525,10 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_DartOpaque(handle: *mut _Dart_Handle, port: i64) -> *mut wire_DartOpaque {
+pub extern "C" fn new_DartOpaque(
+    handle: *mut _Dart_Handle,
+    port: MessagePort,
+) -> *mut wire_DartOpaque {
     let handle = unsafe { Dart_NewPersistentHandle_DL_Trampolined(handle) };
     support::new_leak_box_ptr(wire_DartOpaque { port, handle })
 }
@@ -836,13 +839,6 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
 }
 
 // Section: related functions
-
-#[no_mangle]
-pub extern "C" fn drop_DartObject(ptr: usize) {
-    unsafe {
-        Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
-    }
-}
 
 #[no_mangle]
 pub extern "C" fn get_DartObject(ptr: usize) -> *mut _Dart_Handle {
@@ -1485,6 +1481,15 @@ impl Wire2Api<UserId> for wire_UserId {
         UserId {
             value: self.value.wire2api(),
         }
+    }
+}
+
+// Section: dart opaque related functions
+
+#[no_mangle]
+pub extern "C" fn drop_DartOpaque(ptr: usize) {
+    unsafe {
+        Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
     }
 }
 

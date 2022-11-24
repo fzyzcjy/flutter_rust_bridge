@@ -203,7 +203,6 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   void close() {
     _platform.close();
   }
-
 // Section: wire2api
 
   String _wire2api_String(dynamic raw) {

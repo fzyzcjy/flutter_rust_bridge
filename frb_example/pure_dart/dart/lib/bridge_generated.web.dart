@@ -22,11 +22,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     ++drop_id_port;
     setupMixinConstructor();
     _port.listen((_) {}).onData((data) {
-      inner.drop_DartObject(data);
+      inner.drop_DartOpaque(data);
     });
   }
   Future<void> setup() => inner.init;
-  void close() {}
+  void close() {
+    _port.close();
+  }
 // Section: api2wire
 
   @protected
@@ -927,9 +929,9 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external int /* *mut i32 */ new_box_weekdays_0(int value);
 
-  external dynamic /*  */ drop_DartObject(ptr);
-
   external dynamic /* JsValue */ get_DartObject(ptr);
+
+  external dynamic /*  */ drop_DartOpaque(ptr);
 }
 
 // Section: WASM wire connector
@@ -1193,7 +1195,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *mut i32 */ new_box_weekdays_0(int value) => wasmModule.new_box_weekdays_0(value);
 
-  dynamic /*  */ drop_DartObject(ptr) => wasmModule.drop_DartObject(ptr);
-
   dynamic /* JsValue */ get_DartObject(ptr) => wasmModule.get_DartObject(ptr);
+
+  dynamic /*  */ drop_DartOpaque(ptr) => wasmModule.drop_DartOpaque(ptr);
 }

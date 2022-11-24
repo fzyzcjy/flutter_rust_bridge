@@ -69,6 +69,8 @@ pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
 
 // Section: allocate functions
 
+// Section: related functions
+
 // Section: impl Wire2Api
 
 impl Wire2Api<String> for String {
@@ -146,6 +148,13 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
+// Section: dart opaque related functions
+
+#[wasm_bindgen]
+pub fn drop_DartOpaque(ptr: usize) {
+    unsafe { drop(support::box_from_leak_ptr::<JsValue>(ptr as _)) }
+}
+
 // Section: impl Wire2Api for JsValue
 
 impl Wire2Api<String> for JsValue {

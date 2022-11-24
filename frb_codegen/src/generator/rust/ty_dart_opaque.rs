@@ -1,11 +1,11 @@
 use std::borrow::Cow;
 
+use super::ExternFuncCollector;
 use crate::generator::rust::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
-use super::ExternFuncCollector;
 
 type_rust_generator_struct!(TypeDartOpaqueGenerator, IrTypeDartOpaque);
 
@@ -17,10 +17,7 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
             unsafe { DartOpaque::new(data.handle, data.port) }"
                     .into(),
             ),
-            wasm: Some(
-                "*unsafe{support::box_from_leak_ptr::<DartOpaque>(self as _)}"
-                    .into(),
-            ),
+            wasm: Some("*unsafe{support::box_from_leak_ptr::<DartOpaque>(self as _)}".into()),
             ..Default::default()
         }
     }
@@ -74,7 +71,7 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         Acc {
             io: Some(collector.generate(
                 func_name,
-                [("handle: *mut _Dart_Handle", ""), ("port: i64", "")],
+                [("handle: *mut _Dart_Handle", ""), ("port: MessagePort", "")],
                 Some("*mut wire_DartOpaque"),
                 "
                 let handle = unsafe {Dart_NewPersistentHandle_DL_Trampolined(handle)};
@@ -98,44 +95,20 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         _block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         Acc {
-            io: Some(
-                vec![
-                    collector.generate(
-                        &format!("drop_{}", self.ir.safe_ident()),
-                        [("ptr: usize", "")],
-                        None,
-                        "unsafe{Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);}",
-                        crate::target::Target::Io,
-                    ),
-                    collector.generate(
-                        &format!("get_{}", self.ir.safe_ident()),
-                        [("ptr: usize", "")],
-                        Some("*mut _Dart_Handle"),
-                        "unsafe{Dart_HandleFromPersistent_DL_Trampolined(ptr as _)}",
-                        crate::target::Target::Io,
-                    ),
-                ]
-                .join("\n"),
-            ),
-            wasm: Some(
-                vec![
-                    collector.generate(
-                        &format!("drop_{}", self.ir.safe_ident()),
-                        [("ptr: usize", "")],
-                        None,
-                        "unsafe{drop(support::box_from_leak_ptr::<JsValue>(ptr as _))}",
-                        crate::target::Target::Wasm,
-                    ),
-                    collector.generate(
-                        &format!("get_{}", self.ir.safe_ident()),
-                        [("ptr: usize", "")],
-                        Some("JsValue"),
-                        "*unsafe{support::box_from_leak_ptr(ptr as _)}",
-                        crate::target::Target::Wasm,
-                    ),
-                ]
-                .join("\n"),
-            ),
+            io: Some(collector.generate(
+                &format!("get_{}", self.ir.safe_ident()),
+                [("ptr: usize", "")],
+                Some("*mut _Dart_Handle"),
+                "unsafe{Dart_HandleFromPersistent_DL_Trampolined(ptr as _)}",
+                crate::target::Target::Io,
+            )),
+            wasm: Some(collector.generate(
+                &format!("get_{}", self.ir.safe_ident()),
+                [("ptr: usize", "")],
+                Some("JsValue"),
+                "*unsafe{support::box_from_leak_ptr(ptr as _)}",
+                crate::target::Target::Wasm,
+            )),
             ..Default::default()
         }
     }

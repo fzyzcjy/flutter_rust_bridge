@@ -22,7 +22,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
 
     _port.handler = (response) {
-      inner.drop_DartObject(response);
+      inner.drop_DartOpaque(response);
     };
     dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
@@ -2372,7 +2372,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_DartOpaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_DartOpaque> Function(ffi.Handle, ffi.Int64)>>('new_DartOpaque');
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_DartOpaque> Function(ffi.Handle, ffi.Int)>>('new_DartOpaque');
   late final _new_DartOpaque = _new_DartOpaquePtr.asFunction<ffi.Pointer<wire_DartOpaque> Function(Object, int)>();
 
   ffi.Pointer<wire_StringList> new_StringList_0(
@@ -2901,17 +2901,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
   late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
-  void drop_DartObject(
-    int ptr,
-  ) {
-    return _drop_DartObject(
-      ptr,
-    );
-  }
-
-  late final _drop_DartObjectPtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_DartObject');
-  late final _drop_DartObject = _drop_DartObjectPtr.asFunction<void Function(int)>();
-
   Object get_DartObject(
     int ptr,
   ) {
@@ -2922,6 +2911,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _get_DartObjectPtr = _lookup<ffi.NativeFunction<ffi.Handle Function(uintptr_t)>>('get_DartObject');
   late final _get_DartObject = _get_DartObjectPtr.asFunction<Object Function(int)>();
+
+  void drop_DartOpaque(
+    int ptr,
+  ) {
+    return _drop_DartOpaque(
+      ptr,
+    );
+  }
+
+  late final _drop_DartOpaquePtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_DartOpaque');
+  late final _drop_DartOpaque = _drop_DartOpaquePtr.asFunction<void Function(int)>();
 
   ffi.Pointer<DistanceKind> inflate_Distance_Map() {
     return _inflate_Distance_Map();

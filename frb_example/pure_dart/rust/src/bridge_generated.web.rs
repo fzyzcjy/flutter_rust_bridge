@@ -571,11 +571,6 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
 // Section: related functions
 
 #[wasm_bindgen]
-pub fn drop_DartObject(ptr: usize) {
-    unsafe { drop(support::box_from_leak_ptr::<JsValue>(ptr as _)) }
-}
-
-#[wasm_bindgen]
 pub fn get_DartObject(ptr: usize) -> JsValue {
     *unsafe { support::box_from_leak_ptr(ptr as _) }
 }
@@ -1206,6 +1201,13 @@ impl Wire2Api<UserId> for JsValue {
             value: self_.get(0).wire2api(),
         }
     }
+}
+
+// Section: dart opaque related functions
+
+#[wasm_bindgen]
+pub fn drop_DartOpaque(ptr: usize) {
+    unsafe { drop(support::box_from_leak_ptr::<JsValue>(ptr as _)) }
 }
 
 // Section: impl Wire2Api for JsValue

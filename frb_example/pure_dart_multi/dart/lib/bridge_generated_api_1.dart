@@ -5,7 +5,6 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:meta/meta.dart';
 import 'package:meta/meta.dart';
@@ -25,23 +24,18 @@ class ApiClass1Impl implements ApiClass1 {
   /// Only valid on web/WASM platforms.
   factory ApiClass1Impl.wasm(FutureOr<WasmModule> module) => ApiClass1Impl(module as ExternalLibrary);
   ApiClass1Impl.raw(this._platform);
-  Future<int> simpleAdder1({required int a, required int b, dynamic hint}) => _platform.executeNormal(FlutterRustBridgeTask(
+  Future<int> simpleAdder1({required int a, required int b, dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
         callFfi: (port_) => _platform.inner.wire_simple_adder_1(port_, api2wire_i32(a), api2wire_i32(b)),
         parseSuccessData: _wire2api_i32,
         constMeta: kSimpleAdder1ConstMeta,
-        argValues: [
-          a,
-          b
-        ],
+        argValues: [a, b],
         hint: hint,
       ));
 
   FlutterRustBridgeTaskConstMeta get kSimpleAdder1ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "simple_adder_1",
-        argNames: [
-          "a",
-          "b"
-        ],
+        argNames: ["a", "b"],
       );
 
   void close() {
@@ -65,12 +59,14 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
   final _port = RawReceivePort();
   NativePortType get port => _port.sendPort.nativePort;
   ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib)) {
-    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
 
     _port.handler = (response) {
-      inner.drop_DartObject(response);
+      inner.drop_DartOpaque(response);
     };
-    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
+        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
   }
   void close() {
     _port.close();
@@ -96,7 +92,8 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   ApiClass1Wire(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
 
   /// The symbols are looked up with [lookup].
-  ApiClass1Wire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup) : _lookup = lookup;
+  ApiClass1Wire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
+      : _lookup = lookup;
 
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
@@ -106,7 +103,8 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _store_dart_post_cobjectPtr = _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
+  late final _store_dart_post_cobjectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 
   void wire_simple_adder_1(
@@ -121,8 +119,20 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _wire_simple_adder_1Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder_1');
+  late final _wire_simple_adder_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder_1');
   late final _wire_simple_adder_1 = _wire_simple_adder_1Ptr.asFunction<void Function(int, int, int)>();
+
+  void drop_DartOpaque(
+    int ptr,
+  ) {
+    return _drop_DartOpaque(
+      ptr,
+    );
+  }
+
+  late final _drop_DartOpaquePtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_DartOpaque');
+  late final _drop_DartOpaque = _drop_DartOpaquePtr.asFunction<void Function(int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
@@ -132,11 +142,14 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _free_WireSyncReturnStructPtr = _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
-  late final _free_WireSyncReturnStruct = _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
+  late final _free_WireSyncReturnStructPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
+  late final _free_WireSyncReturnStruct =
+      _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}
 
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
+typedef uintptr_t = ffi.UnsignedLong;

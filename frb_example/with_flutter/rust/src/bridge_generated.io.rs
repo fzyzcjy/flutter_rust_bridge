@@ -117,6 +117,8 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
+// Section: related functions
+
 // Section: impl Wire2Api
 
 impl Wire2Api<String> for *mut wire_uint_8_list {
@@ -195,6 +197,15 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
         }
     }
 }
+// Section: dart opaque related functions
+
+#[no_mangle]
+pub extern "C" fn drop_DartOpaque(ptr: usize) {
+    unsafe {
+        Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
+    }
+}
+
 // Section: wire structs
 
 #[repr(C)]
