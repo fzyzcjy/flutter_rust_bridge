@@ -1,15 +1,17 @@
 #![allow(unused_variables)]
 
 use std::fmt::Debug;
+use std::ops::Deref;
 use std::sync::atomic::{AtomicI32, Ordering};
-use std::sync::{Arc, Mutex, RwLock};
+use std::sync::Arc;
+pub use std::sync::{Mutex, RwLock};
 use std::thread::sleep;
 use std::time::Duration;
 
 use anyhow::{anyhow, Result};
 
 use flutter_rust_bridge::*;
-use lazy_static::{__Deref, lazy_static};
+use lazy_static::lazy_static;
 
 pub use crate::data::{HideData, HideSyncData};
 use crate::data::{MyEnum, MyStruct};
@@ -980,7 +982,10 @@ pub fn create_opaque() -> Opaque<HideData> {
 }
 
 pub fn sync_create_opaque() -> SyncReturn<Opaque<HideData>> {
-    SyncReturn(Opaque::new(HideData::new()))
+    println!("RAZ");
+    let temp = SyncReturn(Opaque::new(HideData::new()));
+    println!("DWA");
+    temp
 }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
@@ -1038,14 +1043,28 @@ pub fn sync_run_opaque(opaque: Opaque<HideSyncData>) -> SyncReturn<String> {
     SyncReturn(opaque.hide_data())
 }
 
+pub fn opaque_array_run(data: [Opaque<HideData>; 2]) {
+    for i in data {
+        i.hide_data();
+    }
+}
+
+pub fn opaque_vec() -> Vec<Opaque<HideData>> {
+    vec![Opaque::new(HideData::new()), Opaque::new(HideData::new())]
+}
+
+pub fn opaque_vec_run(data: Vec<Opaque<HideData>>) {
+    for i in data {
+        i.hide_data();
+    }
+}
+
 pub fn create_nested_opaque() -> OpaqueNested {
     OpaqueNested {
         first: Opaque::new(HideData::new()),
         second: Opaque::new(HideData::new()),
     }
 }
-
-pub fn run_nested_opaque(opaque: OpaqueNested) {}
 
 pub fn sync_option() -> Result<SyncReturn<Option<String>>> {
     Ok(SyncReturn(Some("42".to_owned())))
@@ -1055,10 +1074,15 @@ pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
     Ok(SyncReturn(None))
 }
 
-pub fn sync_option_opaque() -> Result<SyncReturn<Option<Opaque<HideData>>>> {
-    Ok(SyncReturn(Some(Opaque::new(HideData::new()))))
-}
+// pub fn sync_option_opaque() -> Result<SyncReturn<Option<Opaque<HideData>>>> {
+//     Ok(SyncReturn(Some(Opaque::new(HideData::new()))))
+// }
 
 pub fn sync_void() -> SyncReturn<()> {
     SyncReturn(())
+}
+
+pub fn run_nested_opaque(opaque: OpaqueNested) {
+    opaque.first.hide_data();
+    opaque.second.hide_data();
 }

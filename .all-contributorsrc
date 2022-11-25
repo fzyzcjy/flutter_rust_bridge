@@ -332,6 +332,34 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "vincent-herlemont",
+      "name": "Vincent Herlemont",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5569193?v=4",
+      "profile": "https://matrix.to/#/@vincentherl:matrix.org",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "CicadaCinema",
+      "name": "CicadaCinema",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52425971?v=4",
+      "profile": "https://github.com/CicadaCinema",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rogurotus",
+      "name": "rogurotus",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61418195?v=4",
+      "profile": "https://github.com/rogurotus",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -15,8 +15,7 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
         Acc {
             io: Some(
                 "unsafe {
-                let ans = support::box_from_leak_ptr(self);
-                support::opaque_from_dart(ans.ptr as _)
+                support::opaque_from_dart(self.ptr as _)
             }"
                 .into(),
             ),
@@ -26,15 +25,16 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
 
     /// Handles JsValue to Self conversions.
     fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
-        #[cfg(target_arch = "wasm64")]
-        {
-            panic!("The wasm64 arch is not supported.");
-        }
-
         Some(
-            "unsafe {
+            r##"
+            #[cfg(target_pointer_width = "64")]
+            {
+                compile_error!("64-bit pointers are not supported.");
+            }
+    
+            unsafe {
                 support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
-            }"
+            }"##
             .into(),
         )
     }
@@ -83,12 +83,46 @@ impl TypeRustGeneratorTrait for TypeOpaqueGenerator<'_> {
                     self.ir.rust_wire_modifier(crate::target::Target::Io),
                     rust_wire
                 )),
-                &format!(
-                    "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                    rust_wire,
-                ),
+                &format!("{}::new_with_null_ptr()", rust_wire,),
                 crate::target::Target::Io,
             )),
+            ..Default::default()
+        }
+    }
+
+    fn related_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
+        let mut generate_impl = |target| {
+            vec![
+                collector.generate(
+                    &format!("drop_opaque_{}", self.ir.safe_ident()),
+                    [("ptr: *const c_void", "")],
+                    None,
+                    &format!(
+                        "unsafe {{Arc::<{}>::decrement_strong_count(ptr as _);}}",
+                        self.ir.inner_rust
+                    ),
+                    target,
+                ),
+                collector.generate(
+                    &format!("share_opaque_{}", self.ir.safe_ident()),
+                    [("ptr: *const c_void", "")],
+                    Some("*const c_void"),
+                    &format!(
+                        "unsafe {{Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
+                        self.ir.inner_rust
+                    ),
+                    target,
+                ),
+            ]
+            .join("\n")
+        };
+        Acc {
+            io: Some(generate_impl(crate::target::Target::Io)),
+            wasm: Some(generate_impl(crate::target::Target::Wasm)),
             ..Default::default()
         }
     }

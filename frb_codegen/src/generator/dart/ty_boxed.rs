@@ -17,24 +17,20 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 self.ir.inner.safe_ident(),
             )
         });
+
+        let ident = self.ir.safe_ident();
+        let context = self.context.config.block_index;
+        let inner = self.ir.inner.safe_ident();
+
         Acc {
             io: Some(as_primitive.clone().unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
-                    format!("return api2wire_{}(raw);", self.ir.inner.safe_ident(),)
+                    format!("return api2wire_{inner}(raw);")
                 } else {
                     format!(
-                        "
-                        final ptr = inner.new_{ident}_{context}();
-                        try {{
-                            _api_fill_to_wire_{inner}(raw, ptr.ref);
-                            return ptr;
-                        }} catch(e) {{
-                            inner.drop_{ident}_{context}(ptr);
-                            rethrow;
-                        }}",
-                        ident = self.ir.safe_ident(),
-                        context = self.context.config.block_index,
-                        inner = self.ir.inner.safe_ident(),
+                        "final ptr = inner.new_{ident}_{context}();
+                        _api_fill_to_wire_{inner}(raw, ptr.ref);
+                        return ptr;",
                     )
                 }
             })),

@@ -1,3 +1,16 @@
+## 1.50.0
+
+* Implement opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects, by generating wrappers and raw Arc pointers #795 (thanks @rogurotus)
+
+## 1.49.2
+
+* Fix parsing of packages in pubspec.yaml that have no explicit version specification #846 (thanks @banool)
+
+## 1.49.1
+
+* Bump constraint on ffigen #823 (thanks @CicadaCinema)
+* Set default version strategy requirement for chrono #821 (thanks @vincent-herlemont)
+
 ## 1.49.0
 
 * Fix return for struct with methods #764 (thanks @Zaitam)

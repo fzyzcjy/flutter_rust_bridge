@@ -5,7 +5,7 @@ use lazy_static::lazy_static;
 use quote::ToTokens;
 use regex::Regex;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct IrTypeOpaque {
     pub inner_rust: String,
     pub inner_dart: String,
@@ -75,9 +75,9 @@ impl IrTypeTrait for IrTypeOpaque {
 
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
         if let Target::Wasm = target {
-            "dynamic".into()
+            "dynamic".to_owned()
         } else {
-            format!("ffi.Pointer<{}>", self.rust_wire_type(target))
+            self.rust_wire_type(target)
         }
     }
 
@@ -91,9 +91,5 @@ impl IrTypeTrait for IrTypeOpaque {
         } else {
             format!("wire_{}", self.safe_ident())
         }
-    }
-
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        !target.is_wasm()
     }
 }

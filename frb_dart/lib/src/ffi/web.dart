@@ -104,74 +104,17 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
 
-@JS("wasm_bindgen.drop_arc_caller")
-external void _dropArcCaller(int ptr, int dropPtr);
-@JS("wasm_bindgen.share_arc_caller")
-external int _shareArcCaller(int ptr, int sharePtr);
+typedef PlatformPointer = int;
+typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
 
 /// An opaque pointer to a Rust type.
-///
-/// Recipients of this type should call [dispose] at some point during runtime.
-class FrbOpaque {
-  /// Pointer to this opaque Rust type.
-  late int _ptr;
-
-  /// Pointer to a Rust function to drop ownership of this opaque type.
-  late int _drop;
-
-  /// Pointer to a Rust function to share ownership of this opaque type.
-  late int _share;
-
-  /// Finalizer of an opaque type at the provided pointers.
-  static final Finalizer<List<int>> _finalizer = Finalizer((obj) {
-    _dropArcCaller(obj[0], obj[1]);
-  });
-
-  /// This constructor should never be called manually.
-  // ignore: no_leading_underscores_for_local_identifiers
-  FrbOpaque.unsafe(int ptr, int drop, int share, int _size) {
-    assert(ptr > 0);
-    assert(drop > 0);
-    assert(share > 0);
-
-    _ptr = ptr;
-    _drop = drop;
-    _share = share;
-    _finalizer.attach(this, [ptr, drop, share], detach: this);
-  }
-
-  /// Call Rust destructors on the backing memory of this pointer.
-  ///
-  /// This function should be run at least once during the lifetime of the
-  /// program, and can be run many times.
-  ///
-  /// When passed into a Rust function, Rust enacts *shared ownership*,
-  /// if this pointer is shared with Rust when [dispose] is called,
-  /// ownership is fully transferred to Rust else this pointer is cleared.
-  void dispose() {
-    if (!isStale()) {
-      var ptr = _ptr;
-      _ptr = 0;
-
-      _finalizer.detach(this);
-      _dropArcCaller(ptr, _drop);
-    }
-  }
-
-  /// Increments inner reference counter and returns pointer to the underlying
-  /// Rust object.
-  ///
-  /// Throws a [StateError] if called after [dispose].
-  static dynamic share(FrbOpaque ptr) {
-    if (!ptr.isStale()) {
-      return _shareArcCaller(ptr._ptr, ptr._share);
-    } else {
-      throw StateError('Use after dispose.');
-    }
-  }
-
-  /// Checks whether [dispose] has been called at any point during the lifetime
-  /// of this pointer. This does not guarantee that the backing memory has
-  /// actually been reclaimed.
-  bool isStale() => _ptr == 0;
+/// Recipients of this type should call [dispose] at least once during runtime.
+/// If passed to a native function after being [dispose]d, an exception will be thrown.
+class FrbOpaqueBase {
+  static PlatformPointer initPtr(int ptr) => ptr;
+  static PlatformPointer nullPtr() => 0;
+  static bool isStalePtr(PlatformPointer ptr) => ptr == 0;
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int _,
+          OpaqueTypeFinalizer finalizer) =>
+      finalizer.attach(opaque, ptr, detach: opaque);
 }

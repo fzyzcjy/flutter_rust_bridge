@@ -479,13 +479,23 @@ pub fn wire_sync_run_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
 }
 
 #[wasm_bindgen]
-pub fn wire_create_nested_opaque(port_: MessagePort) {
-    wire_create_nested_opaque_impl(port_)
+pub fn wire_opaque_array_run(port_: MessagePort, data: JsValue) {
+    wire_opaque_array_run_impl(port_, data)
 }
 
 #[wasm_bindgen]
-pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
-    wire_run_nested_opaque_impl(port_, opaque)
+pub fn wire_opaque_vec(port_: MessagePort) {
+    wire_opaque_vec_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_vec_run(port_: MessagePort, data: JsValue) {
+    wire_opaque_vec_run_impl(port_, data)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_nested_opaque(port_: MessagePort) {
+    wire_create_nested_opaque_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -499,13 +509,13 @@ pub fn wire_sync_option_null() -> support::WireSyncReturnStruct {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_option_opaque() -> support::WireSyncReturnStruct {
-    wire_sync_option_opaque_impl()
+pub fn wire_sync_void() -> support::WireSyncReturnStruct {
+    wire_sync_void_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_void() -> support::WireSyncReturnStruct {
-    wire_sync_void_impl()
+pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_run_nested_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
@@ -623,7 +633,97 @@ pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
-// Section: deallocate functions
+// Section: related functions
+
+#[wasm_bindgen]
+pub fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
+    unsafe {
+        Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_HideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<HideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<HideData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_HideSyncData(ptr: *const c_void) {
+    unsafe {
+        Arc::<HideSyncData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_HideSyncData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<HideSyncData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_I32(ptr: *const c_void) {
+    unsafe {
+        Arc::<i32>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_I32(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<i32>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_MutexHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RwLockHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RwLockHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
 
 // Section: impl Wire2Api
 
@@ -941,6 +1041,15 @@ impl Wire2Api<KitchenSink> for JsValue {
             5 => KitchenSink::Enums(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<Vec<Opaque<HideData>>> for JsValue {
+    fn wire2api(self) -> Vec<Opaque<HideData>> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
 impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
@@ -1280,6 +1389,11 @@ impl Wire2Api<UserId> for JsValue {
 
 impl Wire2Api<Opaque<Box<dyn DartDebug>>> for JsValue {
     fn wire2api(self) -> Opaque<Box<dyn DartDebug>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
@@ -1305,26 +1419,57 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
 }
 impl Wire2Api<Opaque<HideData>> for JsValue {
     fn wire2api(self) -> Opaque<HideData> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<[Opaque<HideData>; 2]> for JsValue {
+    fn wire2api(self) -> [Opaque<HideData>; 2] {
+        let vec: Vec<Opaque<HideData>> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<Opaque<HideSyncData>> for JsValue {
     fn wire2api(self) -> Opaque<HideSyncData> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl Wire2Api<Opaque<i32>> for JsValue {
     fn wire2api(self) -> Opaque<i32> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl Wire2Api<Opaque<Mutex<HideData>>> for JsValue {
     fn wire2api(self) -> Opaque<Mutex<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl Wire2Api<Opaque<RwLock<HideData>>> for JsValue {
     fn wire2api(self) -> Opaque<RwLock<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }

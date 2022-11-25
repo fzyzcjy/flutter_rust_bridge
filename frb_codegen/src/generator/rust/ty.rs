@@ -49,7 +49,7 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
-    fn deallocate_funcs(
+    fn related_funcs(
         &self,
         _collector: &mut ExternFuncCollector,
         _block_index: BlockIndex,

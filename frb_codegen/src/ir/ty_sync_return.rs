@@ -3,7 +3,7 @@ use crate::{ir::*, target::Target};
 /// Types that have synchronized return
 /// NOTE for maintainer: Please make sure all the types here
 /// can be parsed by `executeSync` function in basic.dart.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrTypeSyncReturn {
     Option(Box<IrTypeSyncReturn>),
     Primitive(IrTypePrimitive),

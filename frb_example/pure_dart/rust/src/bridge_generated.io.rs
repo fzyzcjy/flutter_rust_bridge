@@ -457,12 +457,12 @@ pub extern "C" fn wire_run_enum_opaque(port_: i64, opaque: *mut wire_EnumOpaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_opaque(port_: i64, opaque: *mut wire_HideData) {
+pub extern "C" fn wire_run_opaque(port_: i64, opaque: wire_HideData) {
     wire_run_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_opaque_with_delay(port_: i64, opaque: *mut wire_HideData) {
+pub extern "C" fn wire_run_opaque_with_delay(port_: i64, opaque: wire_HideData) {
     wire_run_opaque_with_delay_impl(port_, opaque)
 }
 
@@ -482,20 +482,28 @@ pub extern "C" fn wire_sync_create_sync_opaque() -> support::WireSyncReturnStruc
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_run_opaque(
-    opaque: *mut wire_HideSyncData,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_run_opaque(opaque: wire_HideSyncData) -> support::WireSyncReturnStruct {
     wire_sync_run_opaque_impl(opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_opaque_array_run(port_: i64, data: *mut wire_list_HideData) {
+    wire_opaque_array_run_impl(port_, data)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_opaque_vec(port_: i64) {
+    wire_opaque_vec_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_opaque_vec_run(port_: i64, data: *mut wire_list_HideData) {
+    wire_opaque_vec_run_impl(port_, data)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_nested_opaque(port_: i64) {
     wire_create_nested_opaque_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNested) {
-    wire_run_nested_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
@@ -509,13 +517,13 @@ pub extern "C" fn wire_sync_option_null() -> support::WireSyncReturnStruct {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_opaque() -> support::WireSyncReturnStruct {
-    wire_sync_option_opaque_impl()
+pub extern "C" fn wire_sync_void() -> support::WireSyncReturnStruct {
+    wire_sync_void_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_void() -> support::WireSyncReturnStruct {
-    wire_sync_void_impl()
+pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNested) {
+    wire_run_nested_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
@@ -583,33 +591,33 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_BoxDartDebug() -> *mut wire_BoxDartDebug {
-    support::new_leak_box_ptr(wire_BoxDartDebug::new_with_null_ptr())
+pub extern "C" fn new_BoxDartDebug() -> wire_BoxDartDebug {
+    wire_BoxDartDebug::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_HideData() -> *mut wire_HideData {
-    support::new_leak_box_ptr(wire_HideData::new_with_null_ptr())
+pub extern "C" fn new_HideData() -> wire_HideData {
+    wire_HideData::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_HideSyncData() -> *mut wire_HideSyncData {
-    support::new_leak_box_ptr(wire_HideSyncData::new_with_null_ptr())
+pub extern "C" fn new_HideSyncData() -> wire_HideSyncData {
+    wire_HideSyncData::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_I32() -> *mut wire_I32 {
-    support::new_leak_box_ptr(wire_I32::new_with_null_ptr())
+pub extern "C" fn new_I32() -> wire_I32 {
+    wire_I32::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_MutexHideData() -> *mut wire_MutexHideData {
-    support::new_leak_box_ptr(wire_MutexHideData::new_with_null_ptr())
+pub extern "C" fn new_MutexHideData() -> wire_MutexHideData {
+    wire_MutexHideData::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_RwLockHideData() -> *mut wire_RwLockHideData {
-    support::new_leak_box_ptr(wire_RwLockHideData::new_with_null_ptr())
+pub extern "C" fn new_RwLockHideData() -> wire_RwLockHideData {
+    wire_RwLockHideData::new_with_null_ptr()
 }
 
 #[no_mangle]
@@ -863,6 +871,15 @@ pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
 }
 
 #[no_mangle]
+pub extern "C" fn new_list_HideData_0(len: i32) -> *mut wire_list_HideData {
+    let wrap = wire_list_HideData {
+        ptr: support::new_leak_vec_ptr(<wire_HideData>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn new_list_application_env_var_0(len: i32) -> *mut wire_list_application_env_var {
     let wrap = wire_list_application_env_var {
         ptr: support::new_leak_vec_ptr(<wire_ApplicationEnvVar>::new_with_null_ptr(), len),
@@ -927,385 +944,103 @@ pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
     support::new_leak_box_ptr(ans)
 }
 
-// Section: deallocate functions
+// Section: related functions
 
 #[no_mangle]
-pub extern "C" fn drop_box_application_env_0(raw: *mut wire_ApplicationEnv) {
+pub extern "C" fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_application_settings_0(raw: *mut wire_ApplicationSettings) {
+pub extern "C" fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_attribute_0(raw: *mut wire_Attribute) {
+pub extern "C" fn drop_opaque_HideData(ptr: *const c_void) {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<HideData>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_bool_0(raw: *mut bool) {
+pub extern "C" fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<HideData>::increment_strong_count(ptr as _);
+        ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_concatenate_with_0(raw: *mut wire_ConcatenateWith) {
+pub extern "C" fn drop_opaque_HideSyncData(ptr: *const c_void) {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<HideSyncData>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_customized_0(raw: *mut wire_Customized) {
+pub extern "C" fn share_opaque_HideSyncData(ptr: *const c_void) -> *const c_void {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<HideSyncData>::increment_strong_count(ptr as _);
+        ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_enum_opaque_0(raw: *mut wire_EnumOpaque) {
+pub extern "C" fn drop_opaque_I32(ptr: *const c_void) {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<i32>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_exotic_optionals_0(raw: *mut wire_ExoticOptionals) {
+pub extern "C" fn share_opaque_I32(ptr: *const c_void) -> *const c_void {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<i32>::increment_strong_count(ptr as _);
+        ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_f64_0(raw: *mut f64) {
+pub extern "C" fn drop_opaque_MutexHideData(ptr: *const c_void) {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_feature_chrono_0(raw: *mut wire_FeatureChrono) {
+pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_feature_uuid_0(raw: *mut wire_FeatureUuid) {
+pub extern "C" fn drop_opaque_RwLockHideData(ptr: *const c_void) {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_box_autoadd_feed_id_0(raw: *mut wire_FeedId) {
+pub extern "C" fn share_opaque_RwLockHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_i32_0(raw: *mut i32) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_i64_0(raw: *mut i64) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_kitchen_sink_0(raw: *mut wire_KitchenSink) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_measure_0(raw: *mut wire_Measure) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_message_id_0(raw: *mut wire_MessageId) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_my_size_0(raw: *mut wire_MySize) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_my_struct_0(raw: *mut wire_MyStruct) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_my_tree_node_0(raw: *mut wire_MyTreeNode) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_new_type_int_0(raw: *mut wire_NewTypeInt) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_note_0(raw: *mut wire_Note) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_numbers_0(raw: *mut wire_Numbers) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_opaque_nested_0(raw: *mut wire_OpaqueNested) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_sequences_0(raw: *mut wire_Sequences) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_sum_with_0(raw: *mut wire_SumWith) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_test_id_0(raw: *mut wire_TestId) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_autoadd_user_id_0(raw: *mut wire_UserId) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_blob_0(raw: *mut wire_Blob) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_bool_0(raw: *mut bool) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_distance_0(raw: *mut wire_Distance) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_exotic_optionals_0(raw: *mut wire_ExoticOptionals) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_f64_0(raw: *mut f64) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_i32_0(raw: *mut i32) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_i64_0(raw: *mut i64) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_i8_0(raw: *mut i8) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_kitchen_sink_0(raw: *mut wire_KitchenSink) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_my_size_0(raw: *mut wire_MySize) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_speed_0(raw: *mut wire_Speed) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_u8_0(raw: *mut u8) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_box_weekdays_0(raw: *mut i32) {
-    unsafe {
-        {
-            drop(support::box_from_leak_ptr(raw));
-        }
+        Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        ptr
     }
 }
 
 // Section: impl Wire2Api
 
-impl Wire2Api<Opaque<Box<dyn DartDebug>>> for *mut wire_BoxDartDebug {
+impl Wire2Api<Opaque<Box<dyn DartDebug>>> for wire_BoxDartDebug {
     fn wire2api(self) -> Opaque<Box<dyn DartDebug>> {
-        unsafe {
-            let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as _)
-        }
+        unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
 impl Wire2Api<chrono::Duration> for i64 {
@@ -1337,44 +1072,35 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
-impl Wire2Api<Opaque<HideData>> for *mut wire_HideData {
+impl Wire2Api<Opaque<HideData>> for wire_HideData {
     fn wire2api(self) -> Opaque<HideData> {
-        unsafe {
-            let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as _)
-        }
+        unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<Opaque<HideSyncData>> for *mut wire_HideSyncData {
+impl Wire2Api<[Opaque<HideData>; 2]> for *mut wire_list_HideData {
+    fn wire2api(self) -> [Opaque<HideData>; 2] {
+        let vec: Vec<Opaque<HideData>> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<Opaque<HideSyncData>> for wire_HideSyncData {
     fn wire2api(self) -> Opaque<HideSyncData> {
-        unsafe {
-            let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as _)
-        }
+        unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<Opaque<i32>> for *mut wire_I32 {
+impl Wire2Api<Opaque<i32>> for wire_I32 {
     fn wire2api(self) -> Opaque<i32> {
-        unsafe {
-            let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as _)
-        }
+        unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<Opaque<Mutex<HideData>>> for *mut wire_MutexHideData {
+impl Wire2Api<Opaque<Mutex<HideData>>> for wire_MutexHideData {
     fn wire2api(self) -> Opaque<Mutex<HideData>> {
-        unsafe {
-            let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as _)
-        }
+        unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<Opaque<RwLock<HideData>>> for *mut wire_RwLockHideData {
+impl Wire2Api<Opaque<RwLock<HideData>>> for wire_RwLockHideData {
     fn wire2api(self) -> Opaque<RwLock<HideData>> {
-        unsafe {
-            let ans = support::box_from_leak_ptr(self);
-            support::opaque_from_dart(ans.ptr as _)
-        }
+        unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
 impl Wire2Api<String> for *mut wire_uint_8_list {
@@ -1836,6 +1562,15 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
         }
     }
 }
+impl Wire2Api<Vec<Opaque<HideData>>> for *mut wire_list_HideData {
+    fn wire2api(self) -> Vec<Opaque<HideData>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
     fn wire2api(self) -> Vec<ApplicationEnvVar> {
         let vec = unsafe {
@@ -2194,6 +1929,13 @@ pub struct wire_int_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_HideData {
+    ptr: *mut wire_HideData,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_application_env_var {
     ptr: *mut wire_ApplicationEnvVar,
     len: i32,
@@ -2284,8 +2026,8 @@ pub struct wire_Numbers {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_OpaqueNested {
-    first: *mut wire_HideData,
-    second: *mut wire_HideData,
+    first: wire_HideData,
+    second: wire_HideData,
 }
 
 #[repr(C)]
@@ -2360,31 +2102,31 @@ pub union EnumOpaqueKind {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaque_Struct {
-    field0: *mut wire_HideData,
+    field0: wire_HideData,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaque_Primitive {
-    field0: *mut wire_I32,
+    field0: wire_I32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaque_TraitObj {
-    field0: *mut wire_BoxDartDebug,
+    field0: wire_BoxDartDebug,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaque_Mutex {
-    field0: *mut wire_MutexHideData,
+    field0: wire_MutexHideData,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaque_RwLock {
-    field0: *mut wire_RwLockHideData,
+    field0: wire_RwLockHideData,
 }
 
 #[repr(C)]
@@ -2517,6 +2259,7 @@ impl NewWithNullPtr for wire_HideData {
         }
     }
 }
+
 impl NewWithNullPtr for wire_HideSyncData {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2639,7 +2382,7 @@ impl NewWithNullPtr for wire_EnumOpaque {
 pub extern "C" fn inflate_EnumOpaque_Struct() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
         Struct: support::new_leak_box_ptr(wire_EnumOpaque_Struct {
-            field0: core::ptr::null_mut(),
+            field0: wire_HideData::new_with_null_ptr(),
         }),
     })
 }
@@ -2648,7 +2391,7 @@ pub extern "C" fn inflate_EnumOpaque_Struct() -> *mut EnumOpaqueKind {
 pub extern "C" fn inflate_EnumOpaque_Primitive() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
         Primitive: support::new_leak_box_ptr(wire_EnumOpaque_Primitive {
-            field0: core::ptr::null_mut(),
+            field0: wire_I32::new_with_null_ptr(),
         }),
     })
 }
@@ -2657,7 +2400,7 @@ pub extern "C" fn inflate_EnumOpaque_Primitive() -> *mut EnumOpaqueKind {
 pub extern "C" fn inflate_EnumOpaque_TraitObj() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
         TraitObj: support::new_leak_box_ptr(wire_EnumOpaque_TraitObj {
-            field0: core::ptr::null_mut(),
+            field0: wire_BoxDartDebug::new_with_null_ptr(),
         }),
     })
 }
@@ -2666,7 +2409,7 @@ pub extern "C" fn inflate_EnumOpaque_TraitObj() -> *mut EnumOpaqueKind {
 pub extern "C" fn inflate_EnumOpaque_Mutex() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
         Mutex: support::new_leak_box_ptr(wire_EnumOpaque_Mutex {
-            field0: core::ptr::null_mut(),
+            field0: wire_MutexHideData::new_with_null_ptr(),
         }),
     })
 }
@@ -2675,7 +2418,7 @@ pub extern "C" fn inflate_EnumOpaque_Mutex() -> *mut EnumOpaqueKind {
 pub extern "C" fn inflate_EnumOpaque_RwLock() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
         RwLock: support::new_leak_box_ptr(wire_EnumOpaque_RwLock {
-            field0: core::ptr::null_mut(),
+            field0: wire_RwLockHideData::new_with_null_ptr(),
         }),
     })
 }
@@ -2878,8 +2621,8 @@ impl NewWithNullPtr for wire_Numbers {
 impl NewWithNullPtr for wire_OpaqueNested {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: core::ptr::null_mut(),
-            second: core::ptr::null_mut(),
+            first: wire_HideData::new_with_null_ptr(),
+            second: wire_HideData::new_with_null_ptr(),
         }
     }
 }

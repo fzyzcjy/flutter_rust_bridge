@@ -28,46 +28,39 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         }
                         IrVariantKind::Struct(st) => {
                             let mut fields = (st.fields).iter().enumerate().map(|(idx, field)| {
-                                if !target.is_wasm() {
-                                    if st.is_fields_named {
-                                        format!("{}: ans.{0}.wire2api()", field.name.rust_style())
-                                    } else {
-                                        format!("ans.{}.wire2api()", field.name.rust_style())
-                                    }
-                                } else if st.is_fields_named {
-                                    format!(
-                                        "{}: self_.get({}).wire2api()",
-                                        field.name.rust_style(),
-                                        idx + 1
-                                    )
+                                let field_name = field.name.rust_style();
+                                let field_ = if st.is_fields_named {
+                                    format!("{field_name}: ")
                                 } else {
-                                    format!("self_.get({}).wire2api()", idx + 1)
+                                    String::new()
+                                };
+
+                                if !target.is_wasm() {
+                                    format!("{field_} ans.{field_name}.wire2api()")
+                                } else {
+                                    format!("{field_} self_.get({}).wire2api()", idx + 1)
                                 }
                             });
+
                             let (left, right) = st.brackets_pair();
                             if target.is_wasm() {
                                 format!(
-                                    "{} => {}::{}{}{}{},",
-                                    idx,
-                                    enu.name,
-                                    variant.name,
-                                    left,
-                                    fields.join(","),
-                                    right
+                                    "{idx} => {{
+                                        {enum_name}::{variant_name}{left}{fields}{right} }},",
+                                    enum_name = enu.name,
+                                    variant_name = variant.name,
+                                    fields = fields.join(",")
                                 )
                             } else {
                                 format!(
-                                    "{} => unsafe {{
+                                    "{idx} => unsafe {{
                                         let ans = support::box_from_leak_ptr(self.kind);
-                                        let ans = support::box_from_leak_ptr(ans.{2});
-                                        {}::{2}{3}{4}{5}
+                                        let ans = support::box_from_leak_ptr(ans.{variant_name});
+                                        {enum_name}::{variant_name}{left}{fields}{right}
                                     }}",
-                                    idx,
-                                    enu.name,
-                                    variant.name,
-                                    left,
-                                    fields.join(","),
-                                    right
+                                    enum_name = enu.name,
+                                    variant_name = variant.name,
+                                    fields = fields.join(",")
                                 )
                             }
                         }
@@ -277,11 +270,13 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
-        fn init_of(ty: &IrType) -> &str {
+        fn init_of(ty: &IrType) -> String {
             if ty.rust_wire_is_pointer(Io) {
-                "core::ptr::null_mut()"
+                "core::ptr::null_mut()".to_owned()
+            } else if ty.is_opaque() {
+                format!("{}::new_with_null_ptr()", ty.rust_wire_type(Io))
             } else {
-                "Default::default()"
+                "Default::default()".to_owned()
             }
         }
 
