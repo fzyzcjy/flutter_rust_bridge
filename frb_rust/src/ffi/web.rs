@@ -425,6 +425,10 @@ pub struct DartOpaque {
     id: ThreadId,
 }
 
+/// # Safety
+/// 
+/// The implementation checks the current thread 
+/// and delegates it to the Dart thread when it is drops.
 unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 

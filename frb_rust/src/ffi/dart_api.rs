@@ -1,6 +1,6 @@
 //! Functionality for calling [`Dart DL API`] from Rust.
 //!
-//! [`Dart DL API`]: https://tinyurl.com/32e7fudh
+//! [`Dart DL API`]: https://github.com/dart-lang/sdk/blob/main/runtime/include/dart_api_dl.h
 
 use std::{ffi::c_void, os::raw::c_char, ptr};
 
