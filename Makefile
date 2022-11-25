@@ -45,7 +45,7 @@ dart.get:
 # run dart test
 dart.run: 
 	cd frb_example/pure_dart/dart \
-	&& dart run ./lib/main.dart "/media/human/DE2466F72466D1D72/Work/Github/Test/flutter_rust_bridge/target/debug/libflutter_rust_bridge_example.so"
+	&& dart run ./lib/main.dart "/media/human/DE2466F72466D1D74/Work/Github/Test/flutter_rust_bridge/target/debug/libflutter_rust_bridge_example.so"
 
 # build dart web test
 dart.build.web: 

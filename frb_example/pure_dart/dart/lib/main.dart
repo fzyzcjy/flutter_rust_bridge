@@ -948,20 +948,16 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      try {
-        api.syncRunOpaque(opaque: data);
-      } on StateError catch (e) {
-        expect(e.toString(), 'Bad state: Use after dispose.');
-      }
+      expect(api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
     test('Return option', () async {
       var data = api.syncOption();
       var data2 = api.syncOptionNull();
-      var data3 = api.syncOptionOpaque();
+      // var data3 = api.syncOptionOpaque();
       expect(data == null, false);
       expect(data2 == null, true);
-      expect(data3 == null, false);
-      data3?.dispose();
+      // expect(data3 == null, false);
+      // data3?.dispose();
     });
 
     test('Return void', () async {

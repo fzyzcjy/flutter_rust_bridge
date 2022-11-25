@@ -26,7 +26,7 @@ pub mod io;
 #[cfg(not(wasm))]
 pub use io::*;
 
-use crate::DartSafe;
+use crate::{DartSafe, support::WireSyncReturnData};
 
 /// see [uuid::Bytes](https://docs.rs/uuid/1.1.2/uuid/type.Bytes.html)
 #[cfg(feature = "uuid")]
@@ -136,6 +136,51 @@ impl<T: DartSafe> Opaque<T> {
     pub fn new(value: T) -> Self {
         Self {
             ptr: Some(Arc::new(value)),
+        }
+    }
+}
+
+impl<T: DartSafe> From<Opaque<T>> for WireSyncReturnData {
+    fn from(data: Opaque<T>) -> Self {
+        let ptr = if let Some(ptr) = data.ptr {
+            Arc::into_raw(ptr)
+        } else {
+            std::ptr::null()
+        } as usize;
+        
+        let size = mem::size_of::<T>();
+        println!("SYNC");
+        let res = WireSyncReturnData(Some(
+            [
+                ptr.to_be_bytes(),
+                size.to_be_bytes(),
+            ]
+            .concat(),
+        ));
+        println!("SYNC2");
+        res
+    }
+}
+
+impl<T: DartSafe> From<Option<Opaque<T>>> for WireSyncReturnData {
+    fn from(value: Option<Opaque<T>>) -> Self {
+        if let Some(opaque) = value {
+            let ptr = if let Some(ptr) = opaque.ptr {
+                Arc::into_raw(ptr)
+            } else {
+                std::ptr::null()
+            } as usize;
+
+            let size = mem::size_of::<T>();
+            WireSyncReturnData(Some(
+                [
+                    ptr.to_be_bytes(),
+                    size.to_be_bytes(),
+                ]
+                .concat(),
+            ))
+        } else {
+            WireSyncReturnData(None)
         }
     }
 }

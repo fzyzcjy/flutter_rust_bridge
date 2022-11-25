@@ -59,35 +59,25 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             IrTypeSyncReturn::VecU8 => "return raw;".into(),
             IrTypeSyncReturn::Opaque(o) => {
                 format!(
-                    "var pointBitLen = raw.length ~/ 4;
+                    "var pointBitLen = raw.length ~/ 2;
                 var ptrList = List.filled(pointBitLen, 0);
-                var dropList = List.filled(pointBitLen, 0);
-                var lendList = List.filled(pointBitLen, 0);
                 var sizeList = List.filled(pointBitLen, 0);
                 
                 List.copyRange(ptrList, 0, raw, 0, pointBitLen);
-                List.copyRange(dropList, 0, raw, pointBitLen, pointBitLen*2);
-                List.copyRange(lendList, 0, raw, pointBitLen*2, pointBitLen*3);
-                List.copyRange(sizeList, 0, raw, pointBitLen*3);
+                List.copyRange(sizeList, 0, raw, pointBitLen, pointBitLen*2);
 
                 int ptr = 0;
-                int drop = 0;
-                int lend = 0;
                 int size = 0;
                 
                 if (pointBitLen == 8) {{
                   ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
-                  drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint64(0);
-                  lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint64(0);
-                  size = ByteData.view(Uint8List.fromList(lendList).buffer).getUint64(0);
+                  size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint64(0);
                 }} else if (pointBitLen == 4) {{
                   ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
-                  drop = ByteData.view(Uint8List.fromList(dropList).buffer).getUint32(0);
-                  lend = ByteData.view(Uint8List.fromList(lendList).buffer).getUint32(0);
-                  size = ByteData.view(Uint8List.fromList(lendList).buffer).getUint32(0);
+                  size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint32(0);
                 }}
             
-                return {}.fromRaw(ptr, drop, lend, size);",
+                return {}.fromRaw(ptr, size, this);",
                     o.inner_dart
                 )
             }
