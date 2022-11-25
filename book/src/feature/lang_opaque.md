@@ -45,5 +45,4 @@ print(fn());
 
 ## Implementation details
 
-As for how it is implemented as well as the design towards safety, please refer to [this doc](../contributing/rust_opaque_type_safety.md).
-[this doc](../contributing/dart_opaque_type_safety.md).
+As for how it is implemented as well as the design towards safety, please refer to [this doc](../contributing/rust_opaque_type_safety.md) and [this doc](../contributing/dart_opaque_type_safety.md).
