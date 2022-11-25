@@ -2496,6 +2496,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_null');
   late final _wire_sync_option_null = _wire_sync_option_nullPtr.asFunction<WireSyncReturnStruct Function()>();
 
+  WireSyncReturnStruct wire_sync_option_opaque() {
+    return _wire_sync_option_opaque();
+  }
+
+  late final _wire_sync_option_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_opaque');
+  late final _wire_sync_option_opaque = _wire_sync_option_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+
   WireSyncReturnStruct wire_sync_void() {
     return _wire_sync_void();
   }

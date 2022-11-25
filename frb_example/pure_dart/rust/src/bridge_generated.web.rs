@@ -509,6 +509,11 @@ pub fn wire_sync_option_null() -> support::WireSyncReturnStruct {
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_option_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_option_opaque_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_sync_void() -> support::WireSyncReturnStruct {
     wire_sync_void_impl()
 }

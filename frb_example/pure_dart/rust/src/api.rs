@@ -982,10 +982,7 @@ pub fn create_opaque() -> Opaque<HideData> {
 }
 
 pub fn sync_create_opaque() -> SyncReturn<Opaque<HideData>> {
-    println!("RAZ");
-    let temp = SyncReturn(Opaque::new(HideData::new()));
-    println!("DWA");
-    temp
+    SyncReturn(Opaque::new(HideData::new()))
 }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
@@ -1072,6 +1069,10 @@ pub fn sync_option() -> Result<SyncReturn<Option<String>>> {
 
 pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
     Ok(SyncReturn(None))
+}
+
+pub fn sync_option_opaque() -> Result<SyncReturn<Option<Opaque<HideData>>>> {
+    Ok(SyncReturn(Some(Opaque::new(HideData::new()))))
 }
 
 // pub fn sync_option_opaque() -> Result<SyncReturn<Option<Opaque<HideData>>>> {

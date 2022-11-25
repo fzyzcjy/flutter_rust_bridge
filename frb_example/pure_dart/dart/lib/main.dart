@@ -948,16 +948,16 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      expect(api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
+      expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
     test('Return option', () async {
       var data = api.syncOption();
       var data2 = api.syncOptionNull();
-      // var data3 = api.syncOptionOpaque();
+      var data3 = api.syncOptionOpaque();
       expect(data == null, false);
       expect(data2 == null, true);
-      // expect(data3 == null, false);
-      // data3?.dispose();
+      expect(data3 == null, false);
+      data3?.dispose();
     });
 
     test('Return void', () async {

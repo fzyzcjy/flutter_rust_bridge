@@ -1593,6 +1593,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  HideData? syncOptionOpaque({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_opaque(),
+      parseSuccessData: _wire2api_SyncReturn_Option_HideData,
+      constMeta: kSyncOptionOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_opaque",
+        argNames: [],
+      );
+
   void syncVoid({dynamic hint}) {
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_void(),
@@ -1900,6 +1915,31 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     }
 
     return HideSyncData.fromRaw(ptr, size, this);
+  }
+
+  HideData? _wire2api_SyncReturn_Option_HideData(dynamic raw) {
+    if (raw == null) {
+      return null;
+    }
+    var pointBitLen = raw.length ~/ 2;
+    var ptrList = List.filled(pointBitLen, 0);
+    var sizeList = List.filled(pointBitLen, 0);
+
+    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
+    List.copyRange(sizeList, 0, raw, pointBitLen, pointBitLen * 2);
+
+    int ptr = 0;
+    int size = 0;
+
+    if (pointBitLen == 8) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
+      size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint64(0);
+    } else if (pointBitLen == 4) {
+      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
+      size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint32(0);
+    }
+
+    return HideData.fromRaw(ptr, size, this);
   }
 
   String? _wire2api_SyncReturn_Option_String(dynamic raw) {
@@ -2508,6 +2548,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       first: _wire2api_HideData(arr[0]),
       second: _wire2api_HideData(arr[1]),
     );
+  }
+
+  HideData? _wire2api_opt_HideData(dynamic raw) {
+    return raw == null ? null : _wire2api_HideData(raw);
   }
 
   String? _wire2api_opt_String(dynamic raw) {

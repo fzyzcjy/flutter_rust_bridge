@@ -205,9 +205,11 @@ impl<'a> TypeParser<'a> {
                             ))),
                             _ => None,
                         },
-                        Opaque(ty) => Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
-                            IrTypeSyncReturn::Opaque(ty),
-                        )))),
+                        Boxed(inner) if inner.inner.is_opaque() => {
+                            Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
+                                IrTypeSyncReturn::Opaque(IrTypeOpaque::from(inner.inner.rust_api_type().strip_prefix("Opaque<").unwrap().strip_suffix(">").unwrap().to_owned())),
+                            ))))
+                        },
                         _ => None,
                     },
                     Some(Opaque(opaque)) => Some(SyncReturn(IrTypeSyncReturn::Opaque(opaque))),

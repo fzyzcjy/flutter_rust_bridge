@@ -421,6 +421,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSyncOptionNullConstMeta;
 
+  HideData? syncOptionOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionOpaqueConstMeta;
+
   void syncVoid({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncVoidConstMeta;

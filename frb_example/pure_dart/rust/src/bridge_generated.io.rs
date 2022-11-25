@@ -517,6 +517,11 @@ pub extern "C" fn wire_sync_option_null() -> support::WireSyncReturnStruct {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_option_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_option_opaque_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sync_void() -> support::WireSyncReturnStruct {
     wire_sync_void_impl()
 }
