@@ -15,10 +15,6 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   /// Pointer to this opaque Rust type.
   PlatformPointer _ptr;
 
-  /// flag to transfer ownership of an opaque type
-  /// in Rust when used as an argument.
-  var move = false;
-
   /// A native finalizer rust opaque type.
   /// Is static for each frb api class instance.
   OpaqueTypeFinalizer get staticFinalizer;
@@ -66,11 +62,7 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   @internal
   PlatformPointer share() {
     if (!isStale()) {
-      PlatformPointer ptr = shareFn(_ptr);
-      if (move) {
-        dispose();
-      }
-      return ptr;
+      return shareFn(_ptr);
     } else {
       return FrbOpaqueBase.nullPtr();
     }

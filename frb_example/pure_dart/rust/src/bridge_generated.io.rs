@@ -516,11 +516,6 @@ pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNes
 }
 
 #[no_mangle]
-pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_HideData) {
-    wire_unwrap_rust_opaque_impl(port_, opaque)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_unwrap_dart_opaque(
     opaque: *mut wire_DartOpaque,
 ) -> support::WireSyncReturnStruct {

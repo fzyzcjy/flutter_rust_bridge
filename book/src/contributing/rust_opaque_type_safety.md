@@ -298,30 +298,3 @@ String hideData = await api.rustOpaque(opaque);
 //
 //`the finalizer is NOT guaranteed to be called before the program terminates.`
 ```
-
-### Case 8: Dart move rust opaque type.
-
-Rust `api.rs`:
-```rust,noplayground
-pub use crate::data::HideData; // `pub` for bridge_generated.rs
-
-pub fn create_opaque() -> RustOpaque<HideData> {
-    // [`HideData`] has private fields.
-    RustOpaque::new(HideData::new())
-}
-
-pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> String {
-    let hide_data: HideData = opaque.try_unwrap().unwrap();
-    hide_data.hide_data()
-}
-```
-
-Dart:
-```dart
-
-// (Arc counter = 1) Dart has full ownership.
-var opaque = await api.createOpaque(); 
-
-// (Arc counter = 1) Rust has full ownership. 
-String hideData = await api.unwrapRustOpaque(opaque);
-```

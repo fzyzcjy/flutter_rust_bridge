@@ -1076,11 +1076,6 @@ pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.second.hide_data();
 }
 
-pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> String {
-    let hide_data = opaque.try_unwrap().unwrap();
-    hide_data.hide_data()
-}
-
 pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
     #[cfg(target_family = "wasm")]
     {

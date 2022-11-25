@@ -417,10 +417,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
 
-  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta;
-
   String unwrapDartOpaque({required Object opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kUnwrapDartOpaqueConstMeta;

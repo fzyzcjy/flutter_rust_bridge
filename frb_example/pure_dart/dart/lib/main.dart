@@ -929,26 +929,6 @@ void main(List<String> args) async {
       await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
       data[1].dispose();
     });
-
-    test('unwrap', () async {
-      var data = await api.createOpaque();
-      data.move = true;
-      expect(
-          await api.unwrapRustOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      expect(data.isStale(), isTrue);
-
-      var data2 = await api.createOpaque();
-      data2.move = false;
-      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
-      expect(data2.isStale(), isFalse);
-    });
   });
 }
 

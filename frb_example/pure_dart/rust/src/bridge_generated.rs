@@ -1428,22 +1428,6 @@ fn wire_run_nested_opaque_impl(
         },
     )
 }
-fn wire_unwrap_rust_opaque_impl(
-    port_: MessagePort,
-    opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "unwrap_rust_opaque",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(unwrap_rust_opaque(api_opaque))
-        },
-    )
-}
 fn wire_unwrap_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) -> support::WireSyncReturnStruct {
