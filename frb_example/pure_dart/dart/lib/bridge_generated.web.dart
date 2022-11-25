@@ -62,11 +62,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  int api2wire_DelegateDartOpaque(Object raw) {
-    return api2wire_DartObject(raw);
-  }
-
-  @protected
   dynamic api2wire_HideData(HideData raw) {
     return raw.share();
   }

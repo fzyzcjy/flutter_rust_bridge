@@ -17,7 +17,7 @@ pub type MessagePort = i64;
 #[cfg(wasm)]
 pub type DartObject = wasm_bindgen::JsValue;
 #[cfg(not(wasm))]
-pub type MessagePort = Dart_PersistentHandle;
+pub type DartObject = Dart_PersistentHandle;
 
 #[cfg(wasm)]
 pub mod web;

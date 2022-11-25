@@ -70,11 +70,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_DartOpaque> api2wire_DelegateDartOpaque(Object raw) {
-    return api2wire_DartObject(raw);
-  }
-
-  @protected
   wire_HideData api2wire_HideData(HideData raw) {
     final ptr = inner.new_HideData();
     _api_fill_to_wire_HideData(raw, ptr);

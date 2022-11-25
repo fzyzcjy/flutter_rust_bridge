@@ -1073,7 +1073,6 @@ impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
         unsafe { DartOpaque::new(data.handle, data.port) }
     }
 }
-
 impl Wire2Api<RustOpaque<HideData>> for wire_HideData {
     fn wire2api(self) -> RustOpaque<HideData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }

@@ -104,7 +104,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::Uuids => Acc::distribute(Some("
             let multiple: Vec<u8> = self.wire2api();
             wire2api_uuids(multiple)".into())),
-            IrTypeDelegate::DartOpaque(_) => Acc::default(),
         }
     }
 
