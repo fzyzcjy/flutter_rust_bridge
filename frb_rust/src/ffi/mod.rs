@@ -158,6 +158,57 @@ impl<T: DartSafe> From<RustOpaque<T>> for DartAbi {
     }
 }
 
+#[derive(Debug)]
+pub struct DartOpaque {
+    /// Dart object
+    handle: Option<DartOpaqueBase>,
+
+    /// The ID of the thread on which the Dart Object was created.
+    thread_id: ThreadId,
+}
+
+unsafe impl Send for DartOpaque {}
+unsafe impl Sync for DartOpaque {}
+
+impl DartOpaque {
+    /// Creates a new [DartOpaque].
+    pub fn new(handle: DartObject, port: MessagePort) -> Self {
+        Self {
+            handle: Some(DartOpaqueBase::new(handle, port)),
+            thread_id: std::thread::current().id(),
+        }
+    }
+
+    /// Tries to get a Dart [DartObject].
+    /// Returns the [DartObject] if the [DartOpaque] was created on the current thread.
+    pub fn try_unwrap(mut self) -> Result<DartObject, Self> {
+        if std::thread::current().id() == self.thread_id {
+            Ok(self.handle.take().unwrap().unwrap())
+        } else {
+            Err(self)
+        }
+    }
+}
+
+impl IntoDart for DartOpaque {
+    fn into_dart(mut self) -> DartAbi {
+        self.handle.take().unwrap().unwrap().into_dart()
+    }
+}
+
+impl Drop for DartOpaque {
+    fn drop(&mut self) {
+        if let Some(mut inner) = self.handle.take() {
+            if std::thread::current().id() != self.thread_id {
+                let dart = inner.drop_ptr();
+                if !inner.channel().post(dart.into_dart()) {
+                    DROP_PTRS.lock().unwrap().push(dart);
+                };
+            }
+        }
+    }
+}
+
 /// Macro helper to instantiate an `RustOpaque<dyn Trait>`, as Rust does not
 /// support custom DSTs on stable.
 ///
