@@ -20,7 +20,7 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
-  tearDownAll(() => api.close());
+  tearDownAll(() => api.dispose());
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -694,7 +694,7 @@ void main(List<String> args) async {
   });
 
   group('dart opaque type', () {
-    f() => 'Test_String';
+    String f() => 'Test_String';
 
     test('loopback', () async {
       var back1 = await api.loopBack(notTemp: f) as String Function();
