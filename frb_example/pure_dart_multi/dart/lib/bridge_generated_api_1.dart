@@ -42,8 +42,8 @@ class ApiClass1Impl implements ApiClass1 {
         argNames: ["a", "b"],
       );
 
-  void close() {
-    _platform.close();
+  void dispose() {
+    _platform.dispose();
   }
 // Section: wire2api
 
@@ -61,8 +61,8 @@ int api2wire_i32(int raw) {
 // Section: finalizer
 
 class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
-  final _port = RawReceivePort();
-  NativePortType get port => _port.sendPort.nativePort;
+  final _dropPort = RawReceivePort();
+  NativePortType get dropPort => _dropPort.sendPort.nativePort;
   ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib)) {
     var initResult =
         dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
@@ -72,14 +72,14 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
       throw 'Failed to initialize Dart API. Code: $initResult';
     }
 
-    _port.handler = (response) {
+    _dropPort.handler = (response) {
       inner.drop_DartOpaqueApiClass1(response);
     };
     dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
   }
-  void close() {
-    _port.close();
+  void dispose() {
+    _dropPort.close();
   }
 // Section: api2wire
 

@@ -44,12 +44,12 @@ mod tests {
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: Option<Dart_PersistentHandle>,
-    port: MessagePort
+    drop_port: MessagePort
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
-        Self { inner: Some(handle), port }
+        Self { inner: Some(handle), drop_port: port }
     }
 
     pub fn drop_ptr(&mut self) -> usize {
@@ -61,7 +61,7 @@ impl DartOpaqueBase {
     }
 
     pub fn channel(&self) -> Channel {
-        Channel::new(self.port)
+        Channel::new(self.drop_port)
     }
 }
 

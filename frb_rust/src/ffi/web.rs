@@ -410,12 +410,12 @@ mod tests {
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: Option<Box<JsValue>>,
-    port: String
+    drop_port: String
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: JsValue, port: MessagePort) -> Self {
-        Self { inner: Some(Box::new(handle)), port: port.dyn_ref::<BroadcastChannel>().unwrap().name() }
+        Self { inner: Some(Box::new(handle)), drop_port: port.dyn_ref::<BroadcastChannel>().unwrap().name() }
     }
 
     pub fn unwrap(mut self) -> JsValue {
@@ -427,6 +427,6 @@ impl DartOpaqueBase {
     }
 
     pub fn channel(&self) -> Channel {
-        Channel::new(PortLike::broadcast(&self.port))
+        Channel::new(PortLike::broadcast(&self.drop_port))
     }
 }

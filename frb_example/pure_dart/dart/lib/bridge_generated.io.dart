@@ -14,8 +14,8 @@ import 'dart:ffi' as ffi;
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> {
-  final _port = RawReceivePort();
-  NativePortType get port => _port.sendPort.nativePort;
+  final _dropPort = RawReceivePort();
+  NativePortType get dropPort => _dropPort.sendPort.nativePort;
   FlutterRustBridgeExampleSingleBlockTestPlatform(ffi.DynamicLibrary dylib)
       : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
     var initResult =
@@ -26,14 +26,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       throw 'Failed to initialize Dart API. Code: $initResult';
     }
 
-    _port.handler = (response) {
+    _dropPort.handler = (response) {
       inner.drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(response);
     };
     dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
         'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
   }
-  void close() {
-    _port.close();
+  void dispose() {
+    _dropPort.close();
   }
 // Section: api2wire
 
@@ -66,7 +66,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   ffi.Pointer<wire_DartOpaque> api2wire_DartObject(Object raw) {
-    return inner.new_DartOpaque(raw, port);
+    return inner.new_DartOpaque(raw, dropPort);
   }
 
   @protected

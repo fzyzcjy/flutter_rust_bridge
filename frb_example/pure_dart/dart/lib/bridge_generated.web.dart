@@ -13,21 +13,21 @@ import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> with FlutterRustBridgeSetupMixin {
-  static int drop_id_port = 0;
-  final ReceivePort _port;
-  NativePortType get port => _port.sendPort.nativePort;
+  static int _drop_id_port = 0;
+  final ReceivePort _dropPort;
+  NativePortType get dropPort => _dropPort.sendPort.nativePort;
   FlutterRustBridgeExampleSingleBlockTestPlatform(FutureOr<WasmModule> dylib)
-      : _port = broadcastPort('__frb_dart_opaque_drop_$drop_id_port'),
+      : _dropPort = broadcastPort('__frb_dart_opaque_drop_$_drop_id_port'),
         super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
-    ++drop_id_port;
+    ++_drop_id_port;
     setupMixinConstructor();
-    _port.listen((_) {}).onData((data) {
+    _dropPort.listen((_) {}).onData((data) {
       inner.drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(data);
     });
   }
   Future<void> setup() => inner.init;
-  void close() {
-    _port.close();
+  void dispose() {
+    _dropPort.close();
   }
 // Section: api2wire
 
@@ -58,7 +58,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   int api2wire_DartObject(Object raw) {
-    return inner.new_DartOpaque(raw, port);
+    return inner.new_DartOpaque(raw, dropPort);
   }
 
   @protected

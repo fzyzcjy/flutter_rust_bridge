@@ -1779,8 +1779,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   ShareFnType get shareOpaqueRwLockHideData => _platform.inner.share_opaque_RwLockHideData;
   OpaqueTypeFinalizer get RwLockHideDataFinalizer => _platform.RwLockHideDataFinalizer;
 
-  void close() {
-    _platform.close();
+  void dispose() {
+    _platform.dispose();
   }
 // Section: wire2api
 
