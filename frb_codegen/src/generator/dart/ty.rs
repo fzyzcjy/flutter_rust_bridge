@@ -54,7 +54,7 @@ pub enum TypeDartGenerator<'a> {
     EnumRef(TypeEnumRefGenerator<'a>),
     SyncReturn(TypeSyncReturnGenerator<'a>),
     DartOpaque(TypeDartOpaqueGenerator<'a>),
-    RustOpaque(TypeOpaqueGenerator<'a>),
+    RustOpaque(TypeRustOpaqueGenerator<'a>),
 }
 
 impl<'a> TypeDartGenerator<'a> {
@@ -71,7 +71,7 @@ impl<'a> TypeDartGenerator<'a> {
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
             SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
             DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
-            RustOpaque(ir) => TypeOpaqueGenerator { ir, context }.into(),
+            RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
         }
     }
 }

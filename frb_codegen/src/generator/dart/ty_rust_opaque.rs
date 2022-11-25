@@ -3,9 +3,9 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 
-type_dart_generator_struct!(TypeOpaqueGenerator, IrTypeRustOpaque);
+type_dart_generator_struct!(TypeRustOpaqueGenerator, IrTypeRustOpaque);
 
-impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
+impl TypeDartGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(format!(
