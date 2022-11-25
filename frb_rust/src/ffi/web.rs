@@ -8,14 +8,12 @@ use crate::RustOpaque;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
-use std::thread::ThreadId;
 pub use wasm_bindgen;
 pub use wasm_bindgen::closure::Closure;
 pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
-use crate::support;
 pub use crate::wasm_bindgen_src::transfer::*;
 pub trait IntoDart {
     fn into_dart(self) -> DartAbi;
@@ -410,67 +408,25 @@ mod tests {
 }
 
 #[derive(Debug)]
-pub struct DartOpaque {
-    /// Dart object ptr
-    handle: *mut JsValue,
-
-    /// Name of [BroadcastChannel]
-    /// used to drop the `handle` on the Dart thread
-    port: String,
-
-    /// Flag to cancel the drop when sending to dart.
-    drop: bool,
-
-    /// The ID of the thread on which the Dart Object was created.
-    id: ThreadId,
+pub struct DartOpaqueBase {
+    inner: Option<Box<JsValue>>,
+    port: String
 }
 
-/// # Safety
-/// 
-/// The implementation checks the current thread 
-/// and delegates it to the Dart thread when it is drops.
-unsafe impl Send for DartOpaque {}
-unsafe impl Sync for DartOpaque {}
-
-impl DartOpaque {
-    /// Creates a new [DartOpaque].
+impl DartOpaqueBase {
     pub fn new(handle: JsValue, port: MessagePort) -> Self {
-        Self {
-            handle: support::new_leak_box_ptr(handle),
-            id: std::thread::current().id(),
-            port: port.dyn_ref::<BroadcastChannel>().unwrap().name(),
-            drop: true,
-        }
+        Self { inner: Some(Box::new(handle)), port: port.dyn_ref::<BroadcastChannel>().unwrap().name() }
     }
 
-    /// Tries to get a Dart [JsValue].
-    /// Returns the [JsValue] if the [DartOpaque] was created on the current thread.
-    pub fn try_unwrap(mut self) -> Result<JsValue, Self> {
-        if std::thread::current().id() == self.id {
-            self.drop = false;
-            Ok(unsafe { *support::box_from_leak_ptr(self.handle) })
-        } else {
-            Err(self)
-        }
+    pub fn unwrap(mut self) -> JsValue {
+        *self.inner.take().unwrap()
     }
-}
 
-impl IntoDart for DartOpaque {
-    fn into_dart(mut self) -> JsValue {
-        self.drop = false;
-        self.handle.into_dart()
+    pub fn drop_ptr(&mut self) -> usize {
+        Box::into_raw(self.inner.take().unwrap()) as _
     }
-}
 
-impl Drop for DartOpaque {
-    fn drop(&mut self) {
-        if self.drop {
-            let ptr = self.handle;
-            if std::thread::current().id() == self.id {
-                drop(unsafe { support::box_from_leak_ptr(ptr) });
-            } else {
-                Channel::new(PortLike::broadcast(&self.port)).post(ptr);
-            }
-        }
+    pub fn channel(&self) -> Channel {
+        Channel::new(PortLike::broadcast(&self.port))
     }
 }

@@ -3,7 +3,7 @@ pub type DartAbi = wasm_bindgen::JsValue;
 #[cfg(not(wasm))]
 pub type DartAbi = allo_isolate::ffi::DartCObject;
 
-use std::{mem, ops, sync::Arc};
+use std::{mem, ops, sync::Arc, thread::ThreadId};
 
 #[cfg(not(wasm))]
 pub use allo_isolate::IntoDart;
@@ -12,6 +12,12 @@ pub use allo_isolate::IntoDart;
 pub type MessagePort = web::PortLike;
 #[cfg(not(wasm))]
 pub type MessagePort = i64;
+
+
+#[cfg(wasm)]
+pub type DartObject = wasm_bindgen::JsValue;
+#[cfg(not(wasm))]
+pub type MessagePort = Dart_PersistentHandle;
 
 #[cfg(wasm)]
 pub mod web;
@@ -167,6 +173,11 @@ pub struct DartOpaque {
     thread_id: ThreadId,
 }
 
+
+/// # Safety
+/// 
+/// The implementation checks the current thread 
+/// and delegates it to the Dart thread when it is drops.
 unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
 
@@ -202,7 +213,8 @@ impl Drop for DartOpaque {
             if std::thread::current().id() != self.thread_id {
                 let dart = inner.drop_ptr();
                 if !inner.channel().post(dart.into_dart()) {
-                    DROP_PTRS.lock().unwrap().push(dart);
+                    // todo if port is closed
+                    // DROP_PTRS.lock().unwrap().push(dart);
                 };
             }
         }

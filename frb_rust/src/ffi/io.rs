@@ -42,61 +42,33 @@ mod tests {
 }
 
 #[derive(Debug)]
-pub struct DartOpaque {
-    /// Dart object handle that won't be removed by GC.
-    handle: Dart_PersistentHandle,
-
-    /// Used to drop the `handle` on the Dart thread
-    port: Channel,
-
-    /// Flag to cancel the drop when sending to dart.
-    drop: bool,
-
-    /// The ID of the thread on which the Dart Object was created.
-    id: ThreadId,
+pub struct DartOpaqueBase {
+    inner: Option<Dart_PersistentHandle>,
+    port: MessagePort
 }
 
-unsafe impl Send for DartOpaque {}
-unsafe impl Sync for DartOpaque {}
-
-impl DartOpaque {
-    /// Creates a new [DartOpaque].
+impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
-        Self {
-            handle,
-            port: Channel::new(port),
-            id: std::thread::current().id(),
-            drop: true,
-        }
+        Self { inner: Some(handle), port }
     }
 
-    /// Tries to get a raw Dart Handle.
-    /// Returns the Dart Handle if the [DartOpaque] was created on the current thread.
-    pub fn try_unwrap(mut self) -> Result<Dart_PersistentHandle, Self> {
-        if std::thread::current().id() == self.id {
-            self.drop = false;
-            Ok(self.handle)
-        } else {
-            Err(self)
-        }
+    pub fn drop_ptr(&mut self) -> usize {
+        self.inner.take().unwrap() as _
+    }
+
+    pub fn unwrap(mut self) -> Dart_PersistentHandle {
+        self.inner.take().unwrap()
+    }
+
+    pub fn channel(&self) -> Channel {
+        Channel::new(self.port)
     }
 }
 
-impl IntoDart for DartOpaque {
-    fn into_dart(mut self) -> ffi::DartCObject {
-        self.drop = false;
-        self.handle.into_dart()
-    }
-}
-
-impl Drop for DartOpaque {
+impl Drop for DartOpaqueBase {
     fn drop(&mut self) {
-        if self.drop {
-            if std::thread::current().id() == self.id {
-                unsafe { Dart_DeletePersistentHandle_DL_Trampolined(self.handle) }
-            } else {
-                self.port.post(self.handle.into_dart());
-            }
+        if let Some(inner) = self.inner {
+            unsafe { Dart_DeletePersistentHandle_DL_Trampolined(inner) }
         }
     }
 }
