@@ -141,12 +141,30 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
             &generated_dart_impl_io_wire,
         )?;
     } else {
-        let mut out = generated_dart.file_prelude
-            + generated_dart_decl_all
-            + &generated_dart.impl_code.common
-            + &generated_dart_impl_io_wire;
-        out.import = out.import.lines().unique().join("\n");
-        fs::write(&config.dart_output_path, out.to_text())?;
+        if config.wasm_enabled {
+            fs::write(
+                &config.dart_output_path,
+                (&generated_dart.file_prelude
+                    + &generated_dart_decl_all
+                    + &generated_dart.impl_code.common)
+                    .to_text(),
+            )?;
+            fs::write(
+                &config.dart_io_output_path(),
+                (&generated_dart.file_prelude + &generated_dart_impl_io_wire).to_text(),
+            )?;
+            fs::write(
+                config.dart_wasm_output_path(),
+                (&generated_dart.file_prelude + &generated_dart.impl_code.wasm).to_text(),
+            )?;
+        } else {
+            let mut out = generated_dart.file_prelude
+                + generated_dart_decl_all
+                + &generated_dart.impl_code.common
+                + &generated_dart_impl_io_wire;
+            out.import = out.import.lines().unique().join("\n");
+            fs::write(&config.dart_output_path, out.to_text())?;
+        }
     }
 
     info!("Phase: Running build_runner");
