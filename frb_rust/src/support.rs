@@ -89,7 +89,7 @@ impl From<Vec<u8>> for WireSyncReturnData {
 /// Bool will be converted to u8 where 0 stands for false and 1 stands for true.
 impl From<bool> for WireSyncReturnData {
     fn from(data: bool) -> Self {
-        if data { 1_u8 } else { 0_u8 }.into()
+        u8::from(data).into()
     }
 }
 
