@@ -32,6 +32,6 @@ Check out [Integrating with Web](../integrate/web.md) for instructions
 on how to consume the web bridge.
 
 What's more, you don't have to use --dart-decl-output,
-you can just >use --wasm to work.
+you can just use --wasm to work.
 
 have a look at [issue 860](https://github.com/fzyzcjy/flutter_rust_bridge/issues/860)
