@@ -20,6 +20,7 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
+  api.dispose();
   tearDownAll(() => api.dispose());
 
   test('dart call simpleAdder', () async {

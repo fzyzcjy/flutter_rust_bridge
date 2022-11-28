@@ -83,10 +83,37 @@ external WasmModule? get _noModules;
 
 dynamic eval(String script) => _Function(script)();
 
+abstract class DartApiDl {}
+
+@JS('wasm_bindgen')
+  // ignore: non_constant_identifier_names
+external Object get_dart_object(int ptr);
+@JS('wasm_bindgen')
+  // ignore: non_constant_identifier_names
+external void drop_dart_object(int ptr);
+@JS('wasm_bindgen')
+  // ignore: non_constant_identifier_names
+external DartOpaquePtr new_dart_opaque(Object obj, NativePortType port);
+
 abstract class FlutterRustBridgeWireBase {
   void storeDartPostCObject() {}
   // ignore: non_constant_identifier_names
   void free_WireSyncReturnStruct(WireSyncReturnStruct raw) {}
+
+  // ignore: non_constant_identifier_names
+  Object get_dart_object(int ptr) {
+    return get_dart_object(ptr);
+  }
+
+  // ignore: non_constant_identifier_names
+  void drop_dart_object(int ptr) {
+    drop_dart_object(ptr);
+  }
+
+  // ignore: non_constant_identifier_names
+  DartOpaquePtr new_dart_opaque(Object obj, NativePortType port) {
+    return new_dart_opaque(obj, port);
+  }
 }
 
 typedef WireSyncReturnStruct = List<dynamic>;

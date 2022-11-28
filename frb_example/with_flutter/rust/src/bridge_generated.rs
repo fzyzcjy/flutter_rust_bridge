@@ -278,7 +278,6 @@ impl support::IntoDartExceptPrimitive for TreeNode {}
 support::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
 }
-// Section: dart opaque related functions
 
 /// cbindgen:ignore
 #[cfg(target_family = "wasm")]

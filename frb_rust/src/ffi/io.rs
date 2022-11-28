@@ -1,15 +1,16 @@
 use crate::Channel;
+use crate::DartOpaque;
 pub use crate::Dart_DeletePersistentHandle_DL_Trampolined;
 pub use crate::Dart_HandleFromPersistent_DL_Trampolined;
 pub use crate::Dart_NewPersistentHandle_DL_Trampolined;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
+use crate::support;
 pub use allo_isolate::*;
 pub use dart_sys::Dart_Handle;
 pub use dart_sys::Dart_PersistentHandle;
 pub use dart_sys::_Dart_Handle;
-use std::thread::ThreadId;
 
 #[cfg(feature = "chrono")]
 #[inline]
@@ -41,34 +42,62 @@ mod tests {
     }
 }
 
+#[no_mangle]
+pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle, port: MessagePort) -> usize {
+    let handle = Dart_NewPersistentHandle_DL_Trampolined(handle);
+    support::new_leak_box_ptr(DartOpaque::new(handle, port)) as _
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn get_dart_object(ptr: usize) -> *mut _Dart_Handle {
+    Dart_HandleFromPersistent_DL_Trampolined(ptr as _)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
+    Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
+}
+
+#[derive(Debug)]
+pub struct DartHandleWrap(Option<Dart_PersistentHandle>);
+
+impl DartHandleWrap {
+    pub fn into_raw(mut self) -> Dart_PersistentHandle {
+        self.0.take().unwrap()
+    }
+}
+
+impl Drop for DartHandleWrap {
+    fn drop(&mut self) {
+        if let Some(inner) = self.0 {
+            unsafe { Dart_DeletePersistentHandle_DL_Trampolined(inner) }
+        }
+    }
+}
+
 #[derive(Debug)]
 pub struct DartOpaqueBase {
-    inner: Option<Dart_PersistentHandle>,
-    drop_port: MessagePort
+    inner: DartHandleWrap,
+    drop_port: MessagePort,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
-        Self { inner: Some(handle), drop_port: port }
+        Self {
+            inner: DartHandleWrap(Some(handle)),
+            drop_port: port,
+        }
     }
 
-    pub fn drop_ptr(&mut self) -> usize {
-        self.inner.take().unwrap() as _
+    pub fn inner_ptr(&mut self) -> Dart_PersistentHandle {
+        self.inner.0.take().unwrap()
     }
 
-    pub fn unwrap(mut self) -> Dart_PersistentHandle {
-        self.inner.take().unwrap()
+    pub fn unwrap(self) -> DartHandleWrap {
+        self.inner
     }
 
     pub fn channel(&self) -> Channel {
         Channel::new(self.drop_port)
-    }
-}
-
-impl Drop for DartOpaqueBase {
-    fn drop(&mut self) {
-        if let Some(inner) = self.inner {
-            unsafe { Dart_DeletePersistentHandle_DL_Trampolined(inner) }
-        }
     }
 }

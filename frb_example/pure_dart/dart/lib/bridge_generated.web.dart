@@ -13,22 +13,12 @@ import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> with FlutterRustBridgeSetupMixin {
-  static int _drop_id_port = 0;
-  final ReceivePort _dropPort;
-  NativePortType get dropPort => _dropPort.sendPort.nativePort;
   FlutterRustBridgeExampleSingleBlockTestPlatform(FutureOr<WasmModule> dylib)
-      : _dropPort = broadcastPort('__frb_dart_opaque_drop_$_drop_id_port'),
-        super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
-    ++_drop_id_port;
+      : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
     setupMixinConstructor();
-    _dropPort.listen((_) {}).onData((data) {
-      inner.drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(data);
-    });
   }
   Future<void> setup() => inner.init;
-  void dispose() {
-    _dropPort.close();
-  }
+
 // Section: api2wire
 
   @protected
@@ -58,7 +48,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   int api2wire_DartObject(Object raw) {
-    return inner.new_DartOpaque(raw, dropPort);
+    return inner.new_dart_opaque(raw, dropPort);
   }
 
   @protected
@@ -1013,8 +1003,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_);
 
-  external dynamic /* usize */ new_DartOpaque(handle, port);
-
   external int /* *mut bool */ new_box_autoadd_bool_0(bool value);
 
   external int /* *mut f64 */ new_box_autoadd_f64_0(double value);
@@ -1041,8 +1029,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external int /* *const c_void */ share_opaque_BoxDartDebug(ptr);
 
-  external dynamic /* JsValue */ get_DartObject(ptr);
-
   external dynamic /*  */ drop_opaque_HideData(ptr);
 
   external int /* *const c_void */ share_opaque_HideData(ptr);
@@ -1058,8 +1044,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /*  */ drop_opaque_RwLockHideData(ptr);
 
   external int /* *const c_void */ share_opaque_RwLockHideData(ptr);
-
-  external dynamic /*  */ drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(ptr);
 }
 
 // Section: WASM wire connector
@@ -1329,8 +1313,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_) =>
       wasmModule.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_);
 
-  dynamic /* usize */ new_DartOpaque(handle, port) => wasmModule.new_DartOpaque(handle, port);
-
   int /* *mut bool */ new_box_autoadd_bool_0(bool value) => wasmModule.new_box_autoadd_bool_0(value);
 
   int /* *mut f64 */ new_box_autoadd_f64_0(double value) => wasmModule.new_box_autoadd_f64_0(value);
@@ -1357,8 +1339,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *const c_void */ share_opaque_BoxDartDebug(ptr) => wasmModule.share_opaque_BoxDartDebug(ptr);
 
-  dynamic /* JsValue */ get_DartObject(ptr) => wasmModule.get_DartObject(ptr);
-
   dynamic /*  */ drop_opaque_HideData(ptr) => wasmModule.drop_opaque_HideData(ptr);
 
   int /* *const c_void */ share_opaque_HideData(ptr) => wasmModule.share_opaque_HideData(ptr);
@@ -1374,7 +1354,4 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /*  */ drop_opaque_RwLockHideData(ptr) => wasmModule.drop_opaque_RwLockHideData(ptr);
 
   int /* *const c_void */ share_opaque_RwLockHideData(ptr) => wasmModule.share_opaque_RwLockHideData(ptr);
-
-  dynamic /*  */ drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(ptr) =>
-      wasmModule.drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(ptr);
 }

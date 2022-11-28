@@ -21,7 +21,7 @@ void main(List<String> args) {
     expect(await api2.simpleAdder2(a: 42, b: 100), 142);
   });
   tearDownAll(() {
-    api1.close();
-    api2.close();
+    api1.dispose();
+    api2.dispose();
   });
 }

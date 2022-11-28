@@ -7,7 +7,7 @@ type_dart_generator_struct!(TypeDartOpaqueGenerator, IrTypeDartOpaque);
 
 impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
-        let body = "return inner.new_DartOpaque(raw, dropPort);";
+        let body = "return inner.new_dart_opaque(raw, dropPort);";
         Acc {
             io: Some(body.to_owned()),
             wasm: Some(body.to_owned()),
@@ -20,7 +20,7 @@ impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        "return _platform.inner.get_DartObject(raw);".into()
+        "return _platform.inner.get_dart_object(raw);".into()
     }
 
     fn structs(&self) -> String {

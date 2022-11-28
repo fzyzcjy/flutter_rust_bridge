@@ -296,7 +296,7 @@ impl<'a> TypeParser<'a> {
             if ident_string.as_str() == "DartOpaque" {
                 return Some(DartOpaque(IrTypeDartOpaque {}));
             }
-            
+
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

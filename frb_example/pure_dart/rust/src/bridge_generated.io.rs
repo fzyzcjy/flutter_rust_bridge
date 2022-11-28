@@ -437,26 +437,22 @@ pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_dart_opaque(
-    not_temp: *mut wire_DartOpaque,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_dart_opaque(not_temp: usize) -> support::WireSyncReturnStruct {
     wire_sync_dart_opaque_impl(not_temp)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_async_dart_opaque(port_: i64, not_temp: *mut wire_DartOpaque) {
+pub extern "C" fn wire_async_dart_opaque(port_: i64, not_temp: usize) {
     wire_async_dart_opaque_impl(port_, not_temp)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back(port_: i64, not_temp: *mut wire_DartOpaque) {
+pub extern "C" fn wire_loop_back(port_: i64, not_temp: usize) {
     wire_loop_back_impl(port_, not_temp)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_exotic_drop(
-    not_temp: *mut wire_DartOpaque,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_exotic_drop(not_temp: usize) -> support::WireSyncReturnStruct {
     wire_exotic_drop_impl(not_temp)
 }
 
@@ -516,14 +512,12 @@ pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNes
 }
 
 #[no_mangle]
-pub extern "C" fn wire_unwrap_dart_opaque(
-    opaque: *mut wire_DartOpaque,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_unwrap_dart_opaque(opaque: usize) -> support::WireSyncReturnStruct {
     wire_unwrap_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_panic_unwrap_dart_opaque(port_: i64, opaque: *mut wire_DartOpaque) {
+pub extern "C" fn wire_panic_unwrap_dart_opaque(port_: i64, opaque: usize) {
     wire_panic_unwrap_dart_opaque_impl(port_, opaque)
 }
 
@@ -594,15 +588,6 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
 #[no_mangle]
 pub extern "C" fn new_BoxDartDebug() -> wire_BoxDartDebug {
     wire_BoxDartDebug::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_DartOpaque(
-    handle: *mut _Dart_Handle,
-    port: MessagePort,
-) -> *mut wire_DartOpaque {
-    let handle = unsafe { Dart_NewPersistentHandle_DL_Trampolined(handle) };
-    support::new_leak_box_ptr(wire_DartOpaque { port, handle })
 }
 
 #[no_mangle]
@@ -967,11 +952,6 @@ pub extern "C" fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void
 }
 
 #[no_mangle]
-pub extern "C" fn get_DartObject(ptr: usize) -> *mut _Dart_Handle {
-    unsafe { Dart_HandleFromPersistent_DL_Trampolined(ptr as _) }
-}
-
-#[no_mangle]
 pub extern "C" fn drop_opaque_HideData(ptr: *const c_void) {
     unsafe {
         Arc::<HideData>::decrement_strong_count(ptr as _);
@@ -1067,10 +1047,9 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
-impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
+impl Wire2Api<DartOpaque> for usize {
     fn wire2api(self) -> DartOpaque {
-        let data = unsafe { support::box_from_leak_ptr(self) };
-        unsafe { DartOpaque::new(data.handle, data.port) }
+        *unsafe { support::box_from_leak_ptr::<DartOpaque>(self as _) }
     }
 }
 impl Wire2Api<RustOpaque<HideData>> for wire_HideData {
@@ -1761,28 +1740,12 @@ impl Wire2Api<UserId> for wire_UserId {
     }
 }
 
-// Section: dart opaque related functions
-
-#[no_mangle]
-pub extern "C" fn drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(ptr: usize) {
-    unsafe {
-        Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
-    }
-}
-
 // Section: wire structs
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_BoxDartDebug {
     ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_DartOpaque {
-    port: i64,
-    handle: *mut _Dart_Handle,
 }
 
 #[repr(C)]

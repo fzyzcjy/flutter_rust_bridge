@@ -2,7 +2,9 @@ use std::iter::FromIterator;
 
 use super::DartAbi;
 use super::MessagePort;
+use crate::support;
 pub use crate::wasm_bindgen_src::transfer::*;
+use crate::DartOpaque;
 use crate::DartSafe;
 use crate::RustOpaque;
 pub use js_sys;
@@ -407,22 +409,40 @@ mod tests {
     }
 }
 
+#[wasm_bindgen]
+pub unsafe fn get_dart_object(ptr: usize) -> JsValue {
+    *support::box_from_leak_ptr(ptr as _)
+}
+
+#[wasm_bindgen]
+pub unsafe fn drop_dart_object(ptr: usize) {
+    drop(support::box_from_leak_ptr::<JsValue>(ptr as _));
+}
+
+#[wasm_bindgen]
+pub unsafe fn new_dart_object(handle: JsValue, port: MessagePort) -> usize {
+    support::new_leak_box_ptr(DartOpaque::new(handle, port)) as _
+}
+
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: Option<Box<JsValue>>,
-    drop_port: String
+    drop_port: String,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: JsValue, port: MessagePort) -> Self {
-        Self { inner: Some(Box::new(handle)), drop_port: port.dyn_ref::<BroadcastChannel>().unwrap().name() }
+        Self {
+            inner: Some(Box::new(handle)),
+            drop_port: port.dyn_ref::<BroadcastChannel>().unwrap().name(),
+        }
     }
 
     pub fn unwrap(mut self) -> JsValue {
         *self.inner.take().unwrap()
     }
 
-    pub fn drop_ptr(&mut self) -> usize {
+    pub fn inner_ptr(&mut self) -> *mut JsValue {
         Box::into_raw(self.inner.take().unwrap()) as _
     }
 

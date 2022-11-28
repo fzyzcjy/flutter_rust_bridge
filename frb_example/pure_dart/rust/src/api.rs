@@ -1081,7 +1081,6 @@ pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
     #[cfg(not(target_family = "wasm"))]
     {
         let handle = opaque.try_unwrap().unwrap();
-        unsafe { Dart_DeletePersistentHandle_DL_Trampolined(handle) };
         SyncReturn("Test".to_owned())
     }
 }
@@ -1095,7 +1094,6 @@ pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) -> String {
     #[cfg(not(target_family = "wasm"))]
     {
         let handle = opaque.try_unwrap().unwrap();
-        unsafe { Dart_DeletePersistentHandle_DL_Trampolined(handle) };
         "Test".to_owned()
     }
 }

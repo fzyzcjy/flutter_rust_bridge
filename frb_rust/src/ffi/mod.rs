@@ -13,6 +13,10 @@ pub type MessagePort = web::PortLike;
 #[cfg(not(wasm))]
 pub type MessagePort = i64;
 
+#[cfg(wasm)]
+pub type DartWrapObject = wasm_bindgen::JsValue;
+#[cfg(not(wasm))]
+pub type DartWrapObject = DartHandleWrap;
 
 #[cfg(wasm)]
 pub type DartObject = wasm_bindgen::JsValue;
@@ -173,10 +177,9 @@ pub struct DartOpaque {
     thread_id: ThreadId,
 }
 
-
 /// # Safety
-/// 
-/// The implementation checks the current thread 
+///
+/// The implementation checks the current thread
 /// and delegates it to the Dart thread when it is drops.
 unsafe impl Send for DartOpaque {}
 unsafe impl Sync for DartOpaque {}
@@ -192,7 +195,7 @@ impl DartOpaque {
 
     /// Tries to get a Dart [DartObject].
     /// Returns the [DartObject] if the [DartOpaque] was created on the current thread.
-    pub fn try_unwrap(mut self) -> Result<DartObject, Self> {
+    pub fn try_unwrap(mut self) -> Result<DartWrapObject, Self> {
         if std::thread::current().id() == self.thread_id {
             Ok(self.handle.take().unwrap().unwrap())
         } else {
@@ -203,7 +206,7 @@ impl DartOpaque {
 
 impl IntoDart for DartOpaque {
     fn into_dart(mut self) -> DartAbi {
-        self.handle.take().unwrap().unwrap().into_dart()
+        self.handle.take().unwrap().inner_ptr().into_dart()
     }
 }
 
@@ -211,8 +214,9 @@ impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(mut inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
-                let dart = inner.drop_ptr();
+                let dart = inner.inner_ptr();
                 if !inner.channel().post(dart.into_dart()) {
+                    println!("ERROR");
                     // todo if port is closed
                     // DROP_PTRS.lock().unwrap().push(dart);
                 };

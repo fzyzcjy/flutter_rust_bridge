@@ -328,36 +328,16 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         ),
         io: format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> {{
-                final _dropPort = RawReceivePort();
-                NativePortType get dropPort => _dropPort.sendPort.nativePort;
                 {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib)) {{
-                    var initResult = dylib.lookupFunction<
-                    ffi.IntPtr Function(ffi.Pointer<ffi.Void>),
-                    int Function(
-                        ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
-              
-                    if (initResult != 0) {{
-                        throw 'Failed to initialize Dart API. Code: $initResult';
-                    }}
-
-                    _dropPort.handler = (response) {{
-                        inner.drop_DartOpaque{dart_api_class_name}(response);
-                    }};
-                    dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
-                        'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+                    DartApiDl.initApi(dylib);
                 }}",
             plat = dart_platform_class_name,
             wire = dart_wire_class_name,
         ),
         wasm: format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
-                static int _drop_id_port = 0;
-                final ReceivePort _dropPort;
-                NativePortType get dropPort => _dropPort.sendPort.nativePort;
-                {plat}(FutureOr<WasmModule> dylib) : _dropPort = broadcastPort('__frb_dart_opaque_drop_$_drop_id_port'), super({wire}(dylib)) {{
-                    ++_drop_id_port;
+                {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
                     setupMixinConstructor();
-                    _dropPort.listen((_){{}}).onData((data) {{inner.drop_DartOpaque{dart_api_class_name}(data);}});
                 }}
                 Future<void> setup() => inner.init;",
             plat = dart_platform_class_name,
@@ -372,11 +352,9 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         )
     }));
 
-    let dispose_drop_port = "void dispose() {_dropPort.close();}";
     lines.push_acc(Acc {
-        io: dispose_drop_port.to_owned(),
-        wasm: dispose_drop_port.to_owned(),
         common: "void dispose() {_platform.dispose();}".to_owned(),
+        ..Default::default()
     });
 
     lines.push(section_header("wire2api"));

@@ -1805,7 +1805,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   Object _wire2api_DartObject(dynamic raw) {
-    return _platform.inner.get_DartObject(raw);
+    return _platform.inner.get_dart_object(raw);
   }
 
   EnumOpaqueArray5 _wire2api_EnumOpaque_array_5(dynamic raw) {

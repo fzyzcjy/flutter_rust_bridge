@@ -429,22 +429,22 @@ pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_dart_opaque(not_temp: *mut JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_sync_dart_opaque(not_temp: usize) -> support::WireSyncReturnStruct {
     wire_sync_dart_opaque_impl(not_temp)
 }
 
 #[wasm_bindgen]
-pub fn wire_async_dart_opaque(port_: MessagePort, not_temp: *mut JsValue) {
+pub fn wire_async_dart_opaque(port_: MessagePort, not_temp: usize) {
     wire_async_dart_opaque_impl(port_, not_temp)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back(port_: MessagePort, not_temp: *mut JsValue) {
+pub fn wire_loop_back(port_: MessagePort, not_temp: usize) {
     wire_loop_back_impl(port_, not_temp)
 }
 
 #[wasm_bindgen]
-pub fn wire_exotic_drop(not_temp: *mut JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_exotic_drop(not_temp: usize) -> support::WireSyncReturnStruct {
     wire_exotic_drop_impl(not_temp)
 }
 
@@ -504,12 +504,12 @@ pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_unwrap_dart_opaque(opaque: *mut JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_unwrap_dart_opaque(opaque: usize) -> support::WireSyncReturnStruct {
     wire_unwrap_dart_opaque_impl(opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_panic_unwrap_dart_opaque(port_: MessagePort, opaque: *mut JsValue) {
+pub fn wire_panic_unwrap_dart_opaque(port_: MessagePort, opaque: usize) {
     wire_panic_unwrap_dart_opaque_impl(port_, opaque)
 }
 
@@ -572,11 +572,6 @@ pub fn wire_handle_some_static_stream_sink_single_arg__static_method__Concatenat
 }
 
 // Section: allocate functions
-
-#[wasm_bindgen]
-pub fn new_DartOpaque(handle: JsValue, port: MessagePort) -> usize {
-    support::new_leak_box_ptr(DartOpaque::new(handle, port)) as _
-}
 
 #[wasm_bindgen]
 pub fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
@@ -648,11 +643,6 @@ pub fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void {
         Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
         ptr
     }
-}
-
-#[wasm_bindgen]
-pub fn get_DartObject(ptr: usize) -> JsValue {
-    *unsafe { support::box_from_leak_ptr(ptr as _) }
 }
 
 #[wasm_bindgen]
@@ -746,7 +736,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
-impl Wire2Api<DartOpaque> for *mut JsValue {
+impl Wire2Api<DartOpaque> for usize {
     fn wire2api(self) -> DartOpaque {
         *unsafe { support::box_from_leak_ptr::<DartOpaque>(self as _) }
     }
@@ -1378,13 +1368,6 @@ impl Wire2Api<UserId> for JsValue {
             value: self_.get(0).wire2api(),
         }
     }
-}
-
-// Section: dart opaque related functions
-
-#[wasm_bindgen]
-pub fn drop_DartOpaqueFlutterRustBridgeExampleSingleBlockTest(ptr: usize) {
-    unsafe { drop(support::box_from_leak_ptr::<JsValue>(ptr as _)) }
 }
 
 // Section: impl Wire2Api for JsValue
