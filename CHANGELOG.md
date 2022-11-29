@@ -1,3 +1,7 @@
+## 1.51.0
+
+* support wasm with no decl set #861 (thanks @huang12zheng)
+
 ## 1.50.0
 
 * Implement opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects, by generating wrappers and raw Arc pointers #795 (thanks @rogurotus)
