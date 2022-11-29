@@ -94,6 +94,8 @@ pub struct Opts {
     pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
+    pub idx: usize,
+    pub count: usize,
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
@@ -237,6 +239,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 skip_deps_check,
                 wasm_enabled: wasm,
                 inline_rust,
+                idx: i,
+                count: rust_input_paths.len(),
             }
         })
         .collect()

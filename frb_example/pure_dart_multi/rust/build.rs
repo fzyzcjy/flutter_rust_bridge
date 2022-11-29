@@ -31,6 +31,7 @@ fn main() {
         // Class name of each Rust block of api
         class_name: Some(vec![CLASS_NAME_1.to_string(), CLASS_NAME_2.to_string()]),
         dart_format_line_length: 120,
+        c_output: Some(vec!["macos/Runner/bridge_generated.h".to_string()]),
         // for other options use defaults
         ..Default::default()
     };

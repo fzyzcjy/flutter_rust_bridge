@@ -111,11 +111,20 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
     .concat();
+
     let c_dummy_code = generator::c::generate_dummy(&effective_func_names);
     for output in &config.c_output_path {
         fs::create_dir_all(Path::new(output).parent().unwrap())?;
+        let output_new: String = if config.count > 1 {
+            output
+                .clone()
+                .replace(".h", format!("_{}.h", config.idx).as_str())
+        } else {
+            output.clone()
+        };
+
         fs::write(
-            output,
+            output_new,
             fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
         )?;
     }
