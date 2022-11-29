@@ -6,7 +6,6 @@
         <title>flutter_rust_bridge</title>
         <meta name="robots" content="noindex" />
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -29,13 +28,13 @@
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -51,7 +50,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -63,7 +62,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -94,7 +93,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -125,7 +124,7 @@
                     </div>
                 </div>
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -271,8 +270,7 @@ pub fn draw_tree(root: TreeNode, mode: DrawMode) -&gt; Result&lt;Vec&lt;u8&gt;&g
 
 // ... with rich types
 pub struct TreeNode { pub value: String, pub children: Vec&lt;MyTreeNode&gt; }
-pub enum DrawMode { Colorful {palette: String}, Grayscale }
-</code></pre>
+pub enum DrawMode { Colorful {palette: String}, Grayscale }</code></pre>
 <p>Install the code generator <code>flutter_rust_bridge_codegen</code>:</p>
 <pre><code class="language-bash">cargo install flutter_rust_bridge_codegen
 # or with cargo-binstall
@@ -371,8 +369,7 @@ Types from <code>uuid</code> crate are supported as a feature, see <a href="feat
 <h2 id="t-n"><a class="header" href="#t-n"><code>[T; N]</code></a></h2>
 <p>Since Dart does not have special treatment for static-sized arrays, it is converted to <code>List&lt;T&gt;</code> as well.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
-<pre><code class="language-rust noplayground">pub fn draw_tree(tree: Vec&lt;TreeNode&gt;) -&gt; Vec&lt;u8&gt; { ... }
-</code></pre>
+<pre><code class="language-rust noplayground">pub fn draw_tree(tree: Vec&lt;TreeNode&gt;) -&gt; Vec&lt;u8&gt; { ... }</code></pre>
 <p>Becomes:</p>
 <pre><code class="language-Dart">Future&lt;Uint8List&gt; drawTree({required List&lt;TreeNode&gt; tree});
 </code></pre>
@@ -404,8 +401,7 @@ Types from <code>uuid</code> crate are supported as a feature, see <a href="feat
 <pre><code class="language-rust noplayground">pub struct MyTreeNode {
     pub value: Vec&lt;u8&gt;,
     pub children: Vec&lt;MyTreeNode&gt;,
-}
-</code></pre>
+}</code></pre>
 <p>Becomes:</p>
 <pre><code class="language-Dart">class MyTreeNode {
   final Uint8List value;
@@ -418,8 +414,7 @@ Types from <code>uuid</code> crate are supported as a feature, see <a href="feat
 <pre><code class="language-rust noplayground">#[frb(dart_metadata=(&quot;freezed&quot;, &quot;immutable&quot; import &quot;package:meta/meta.dart&quot; as meta))]
 pub struct UserId {
     pub value: u32,
-}
-</code></pre>
+}</code></pre>
 <p>Becomes:</p>
 <pre><code class="language-dart">import 'package:meta/meta.dart' as meta;
 
@@ -450,8 +445,7 @@ class UserId with _$UserId {
     ),
     Buffer(ZeroCopyBuffer&lt;Vec&lt;u8&gt;&gt;),
     Enums(Weekdays),
-}
-</code></pre>
+}</code></pre>
 <p>Becomes:</p>
 <pre><code class="language-Dart">@freezed
 class KitchenSink with _$KitchenSink {
@@ -487,8 +481,7 @@ class KitchenSink with _$KitchenSink {
 <h3 id="example-3"><a class="header" href="#example-3">Example</a></h3>
 <pre><code class="language-rust noplayground">use crate::data::{MyEnum, MyStruct};
 
-pub fn use_imported_things(my_struct: MyStruct, my_enum: MyEnum) { ... }
-</code></pre>
+pub fn use_imported_things(my_struct: MyStruct, my_enum: MyEnum) { ... }</code></pre>
 <p>Becomes:</p>
 <pre><code class="language-Dart">// Well it just behaves normally as you expect
 Future&lt;void&gt; useImportedThings({required MyStruct myStruct, required MyEnum myEnum});
@@ -541,8 +534,7 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -&gt; bool {
         ApplicationMode::Standalone =&gt; false,
         ApplicationMode::Embedded =&gt; true,
     }
-}
-</code></pre>
+}</code></pre>
 <p>Another example using one struct to mirror multiple structs:</p>
 <pre><code class="language-rust noplayground">// *no* need to do these
 #[frb(mirror(MessageId))]
@@ -554,8 +546,7 @@ pub struct FId(pub [u8; 32]);
 
 // simply do this is sufficient
 #[frb(mirror(MessageId, BlobId, FeedId))]
-pub struct Id(pub [u8; 32]);
-</code></pre>
+pub struct Id(pub [u8; 32]);</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="options"><a class="header" href="#options"><code>Option</code>s</a></h1>
 <p>Dart has special syntaxs for nullable variables - the <code>?</code> symbol, and we translate <code>Option</code> into <code>?</code> automatically. You may refer to <a href="https://dart.dev/null-safety">the official doc</a> for more information. </p>
 <p>In addition, <code>flutter_rust_bridge</code> also understands the <code>required</code> keyword in Dart: If an argument is not-null, it is marked as <code>required</code> since you have to provide a value. On the other hand, if it is nullable, no <code>required</code> is needed since by Dart's convention a null is there in absence of manually providing a value.</p>
@@ -567,8 +558,7 @@ pub struct Id(pub [u8; 32]);
     pub children: Option&lt;Vec&lt;Element&gt;&gt;,
 }
 
-pub fn parse(mode: String, document: Option&lt;String&gt;) -&gt; Option&lt;Element&gt; { ... }
-</code></pre>
+pub fn parse(mode: String, document: Option&lt;String&gt;) -&gt; Option&lt;Element&gt; { ... }</code></pre>
 <p>Becomes:</p>
 <pre><code class="language-Dart">Future&lt;Element?&gt; handleOptionalStruct({required String mode, String? document});
 
@@ -589,8 +579,7 @@ class Element {
 impl SumWith {
     pub fn sum(&amp;self, y: u32) -&gt; u32 { self.x + y }
     pub fn sum_static(x: u32, y: u32) -&gt; u32 { x + y }
-}
-</code></pre>
+}</code></pre>
 <p>Becomes:</p>
 <pre><code class="language-Dart">class SumWith {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
@@ -611,8 +600,7 @@ impl SumWith {
 <h2 id="example-7"><a class="header" href="#example-7">Example</a></h2>
 <pre><code class="language-rust noplayground">pub fn f(a: i32, b: i32) -&gt; i32 { a + b }
 
-pub fn g(a: i32, b: i32) -&gt; anyhow::Result&lt;i32&gt; { Ok(a + b) }
-</code></pre>
+pub fn g(a: i32, b: i32) -&gt; anyhow::Result&lt;i32&gt; { Ok(a + b) }</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dynamic-types"><a class="header" href="#dynamic-types">Dynamic Types</a></h1>
 <p>Darts <code>dynamic</code> type is a special type that can hold any type of value. It is
 not per se supported by <code>flutter_rust_bridge</code>, but most use cases can likely be
@@ -629,20 +617,17 @@ other fields (in a significantly worse design):</p>
 struct DataStruct {
     msg:  String,
     data: MyStruct,
-}
-</code></pre>
+}</code></pre>
 <p>You can define an <code>enum</code> in Rust to represent this:</p>
 <pre><code class="language-rust noplayground">enum MyEnum {
     U32(u32),
     String(String),
-}
-</code></pre>
+}</code></pre>
 <p>And then you can define a struct that holds this <code>enum</code>:</p>
 <pre><code class="language-rust noplayground">struct MyStruct {
     msg:  String,
     data: MyEnum,
-}
-</code></pre>
+}</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="arbitrary-types-opaque"><a class="header" href="#arbitrary-types-opaque">Arbitrary types (opaque)</a></h1>
 <p>Any Rust type, even if it is not supported using features of this library, can be used in Dart. This is done by wrapping it with <code>Opaque</code>.</p>
 <p>The Dart opaque objects should be disposed <em>manually</em>, though it will also be disposed when it is GCed, that is discouraged, due to <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/775#issuecomment-1274635037">suggestions by Dart team</a>. Think of it just like a lot of Flutter objects that we are familiar with, such as <code>ui.Image</code> - we have to manually dispose them as well.</p>
@@ -652,8 +637,7 @@ struct DataStruct {
 pub fn use_opaque(a: Opaque&lt;ArbitraryData&gt;) { ... }
 pub fn even_use_locks(b: Opaque&lt;Mutex&lt;ArbitraryData&gt;) -&gt; Opaque&lt;RwLock&lt;ArbitraryData&gt;&gt; { ... }
 enum AnEnumContainingOpaque { Hello(Opaque&lt;ArbitraryData&gt;), World(i32) }
-...
-</code></pre>
+...</code></pre>
 <p>And use it in Dart:</p>
 <pre><code class="language-dart">var opaque = await api.functionThatCreatesSomeOpaqueData();
 await api.functionThatUsesSomeOpaqueData(opaque);
@@ -664,8 +648,7 @@ opaque.dispose();
 <div style="break-before: page; page-break-before: always;"></div><h1 id="zero-copy"><a class="header" href="#zero-copy">Zero copy</a></h1>
 <p><code>ZeroCopyBuffer&lt;Vec&lt;u8&gt;&gt;</code> (and its friends like <code>ZeroCopyBuffer&lt;Vec&lt;i8&gt;&gt;</code>) sends the data from Rust to Dart without making copies<sup class="footnote-reference"><a href="#1">1</a></sup>. Thus, you save the time of copying data, which can be large if your data is big (such as a high-resolution image).</p>
 <h2 id="example-10"><a class="header" href="#example-10">Example</a></h2>
-<pre><code class="language-rust noplayground">pub fn draw_tree(tree: Vec&lt;TreeNode&gt;) -&gt; ZeroCopyBuffer&lt;Vec&lt;u8&gt;&gt; { ... }
-</code></pre>
+<pre><code class="language-rust noplayground">pub fn draw_tree(tree: Vec&lt;TreeNode&gt;) -&gt; ZeroCopyBuffer&lt;Vec&lt;u8&gt;&gt; { ... }</code></pre>
 <p>Becomes:</p>
 <pre><code class="language-Dart">Future&lt;Uint8List&gt; drawTree({required List&lt;TreeNode&gt; tree});
 </code></pre>
@@ -699,8 +682,7 @@ opaque.dispose();
 <p>Consider the following Rust code:</p>
 <pre><code class="language-rust noplayground">pub fn compute() {
   thread::sleep(Duration::from_millis(1000));
-}
-</code></pre>
+}</code></pre>
 <p>And the following Dart code using it:</p>
 <pre><code class="language-dart">var a = compute();
 var b = compute();
@@ -721,8 +703,7 @@ impl ErrorHandler for MyErrorHandler {
     }
     
     ...
-}
-</code></pre>
+}</code></pre>
 <h3 id="example-log-when-execution-starts-and-ends"><a class="header" href="#example-log-when-execution-starts-and-ends">Example: Log when execution starts and ends</a></h3>
 <pre><code class="language-rust noplayground">pub struct MyExecutor(ThreadPoolExecutor&lt;MyErrorHandler&gt;);
 
@@ -744,8 +725,7 @@ impl MyExecutor {
         debug!(&quot;(Rust) execute [{}] end delta_time={}ms&quot;, debug_name, start.elapsed().as_millis());
         ret
     }
-}
-</code></pre>
+}</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="initialization"><a class="header" href="#initialization">Initialization</a></h1>
 <p>If you want that feature, have a look at <code>FlutterRustBridgeSetupMixin</code> in the Dart side. (More documentaions to be added; you can create an issue if you have questions now.)</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="async-in-rust"><a class="header" href="#async-in-rust">Async in Rust</a></h1>
@@ -771,16 +751,12 @@ impl MyExecutor {
 <p>Installation: Same as <a href="feature/cancelable_task.html">cancelable tasks</a>, please see doc there.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="wasm"><a class="header" href="#wasm">WASM</a></h1>
 <p><code>flutter_rust_bridge_codegen</code> can also generate code to run in browsers using
-<code>wasm_bindgen</code>. To generate WASM-specifc files, pass in these two options to your
-invocation:</p>
-<pre><code class="language-shell">flutter_rust_bridge_codegen .. --wasm --dart-decl-output &lt;DECL&gt;
+<code>wasm_bindgen</code>. To generate a WASM-specifc file, pass this option to your invocation:</p>
+<pre><code class="language-shell">flutter_rust_bridge_codegen .. --wasm
 </code></pre>
-<p>where <code>DECL</code> is the path to the common class/function declarations file.
-For example, if you emit your Dart bridge to <code>lib/bridge_generated.dart</code>,
-you can put the declarations file at <code>lib/bridge_definitions.dart</code></p>
 <p>By default this will create several new files:</p>
 <pre><code>├── lib
-│   ├── bridge_definitions.dart
+│   ├── ...
 │   ├── bridge_generated.io.dart
 │   └── bridge_generated.web.dart
 └── native/src
@@ -792,9 +768,20 @@ split is mandatory for Dart due to its module system, however if you prefer to k
 flag as well.</p>
 <p>Check out <a href="feature/../integrate/web.html">Integrating with Web</a> for instructions
 on how to consume the web bridge.</p>
+<p>have a look at <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/860">issue 860</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
 <h2 id="separate-generated-definitions-from-implementations"><a class="header" href="#separate-generated-definitions-from-implementations">Separate generated definitions from implementations</a></h2>
 <p>The generated <code>bridge_generated.dart</code> by default contains definitions of the APIs as well as the implementations. With the flag <code>--dart-decl-output</code>, the two can be separated, and the definitions will not contain anything like <code>dart:ffi</code>.</p>
+<p>A command example as follow:</p>
+<pre><code class="language-shell">flutter_rust_bridge_codegen .. --dart-decl-output &lt;DECL&gt;
+</code></pre>
+<p>where <code>DECL</code> is the path to the common class/function declarations file.
+For example, if you emit your Dart bridge to <code>lib/bridge_generated.dart</code>,
+you can put the declarations file at <code>lib/bridge_definitions.dart</code></p>
+<p>By default this will create new file:</p>
+<pre><code>├── lib
+│   ├── bridge_definitions.dart
+</code></pre>
 <p>More information: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/298">#298</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
 <p>Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.</p>
@@ -818,8 +805,7 @@ lazy_static! { static ref log_stream_sink: StreamSink&lt;LogEntry&gt;; }
 
 pub fn create_log_stream(s: StreamSink&lt;LogEntry&gt;) {
     stream_sink = s;
-}
-</code></pre>
+}</code></pre>
 <p>Now Rust will probably complain at you because <code>IntoDart</code> is not implemented for <code>LogEntry</code>. This is expected, because <code>flutter_rust_bridge</code> will generate this trait implementation for you.
 To fix this error you should just rerun <code>flutter_rust_bridge_codegen</code>.</p>
 <p>Generated Dart code:</p>
@@ -833,8 +819,7 @@ To fix this error you should just rerun <code>flutter_rust_bridge_codegen</code>
 }
 </code></pre>
 <p>And now we can happily log anything in Rust:</p>
-<pre><code class="language-rust noplayground">log_stream_sink.add(LogEntry { msg: &quot;hello I am a log from Rust&quot;, ... })
-</code></pre>
+<pre><code class="language-rust noplayground">log_stream_sink.add(LogEntry { msg: &quot;hello I am a log from Rust&quot;, ... })</code></pre>
 <p>Of course, you can implement a logger following the Rust's <code>log</code> crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like <code>info!</code>. I exactly did that in my project.</p>
 <h3 id="example-simple-timer"><a class="header" href="#example-simple-timer">Example: Simple timer</a></h3>
 <p>Credits: <a href="https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744">this</a> and <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/347">#347</a>.</p>
@@ -857,8 +842,7 @@ pub fn tick(sink: StreamSink&lt;i32&gt;) -&gt; Result&lt;()&gt; {
         ticks += 1;
     }
     Ok(())
-}
-</code></pre>
+}</code></pre>
 <p>And use it in Dart:</p>
 <pre><code class="language-dart">import 'package:flutter/material.dart';
 import 'ffi.dart';
@@ -1449,8 +1433,7 @@ add a new file at <code>$crate/src/api.rs</code> and replace its contents with t
 whatever suits your fancy:</p>
 <pre><code class="language-rust ignore">pub fn greet() -&gt; String {
     &quot;Hello from Rust! 🦀&quot;.into()
-}
-</code></pre>
+}</code></pre>
 <p>then in <code>$crate/src/lib.rs</code>:</p>
 <pre><code class="language-diff">+mod api;
 </code></pre>
@@ -1721,8 +1704,7 @@ impl Wire2Api&lt;String&gt; for *mut wire_uint_8_list {
 pub struct wire_uint_8_list {
     ptr: *mut u8,
     len: i32,
-}
-</code></pre>
+}</code></pre>
 <p>In other words, String (or <code>Vec&lt;u8&gt;</code>) is converted to a raw struct with pointer and length field. The memory is manipulated carefully so there is no leak or double free.</p>
 <p>We use Valgrind to check as well, and I use it in production environment without problems, so no worries about memory problems :)</p>
 <h2 id="dart-bridge-hierarchy"><a class="header" href="#dart-bridge-hierarchy">Dart bridge hierarchy</a></h2>
@@ -1801,8 +1783,7 @@ pub fn create_opaque() -&gt; Opaque&lt;OpaqueStruct&gt; {
 pub fn run_opaque(opaque: Opaque&lt;HideData&gt;) -&gt; String {
     // Opaque impl Deref trait.
     opaque.hide_data()
-}
-</code></pre>
+}</code></pre>
 <p>Dart: (test:'Simple call' frb_example/pure_dart/dart/lib/main.dart)</p>
 <pre><code class="language-dart">// (Arc counter = 1) Dart has full ownership.
 var opaque = await api.createOpaque();
@@ -1828,8 +1809,7 @@ pub fn create_opaque() -&gt; Opaque&lt;OpaqueStruct&gt; {
 pub fn run_opaque(opaque: Opaque&lt;HideData&gt;) -&gt; String {
     // Opaque impl Deref trait.
     opaque.hide_data()
-}
-</code></pre>
+}</code></pre>
 <p>Dart: (test:'Call after dispose' frb_example/pure_dart/dart/lib/main.dart)</p>
 <pre><code class="language-dart">// (Arc counter = 1) Dart has full ownership.
 var opaque = await api.createOpaque();
@@ -1861,8 +1841,7 @@ pub fn run_opaque(opaque: Opaque&lt;HideData&gt;) -&gt; String {
 pub fn run_opaque_with_delay(opaque: Opaque&lt;HideData&gt;) -&gt; String {
     sleep(Duration::from_millis(1000));
     opaque.hide_data()
-}
-</code></pre>
+}</code></pre>
 <p>Dart:</p>
 <pre><code class="language-dart">// (Arc counter = 1) Dart has full ownership.
 var opaque = await api.createOpaque();
@@ -1897,8 +1876,7 @@ pub fn create_opaque() -&gt; Opaque&lt;OpaqueStruct&gt; {
 pub fn run_opaque(opaque: Opaque&lt;HideData&gt;) -&gt; String {
     // Opaque impl Deref trait.
     opaque.hide_data()
-}
-</code></pre>
+}</code></pre>
 <p>Dart: (test:'Double Call' frb_example/pure_dart/dart/lib/main.dart)</p>
 <pre><code class="language-dart">
 // (Arc counter = 1) Dart has full ownership.
@@ -1927,8 +1905,7 @@ pub fn create_opaque() -&gt; Opaque&lt;OpaqueStruct&gt; {
 pub fn run_opaque(opaque: Opaque&lt;HideData&gt;) -&gt; String {
     // Opaque impl Deref trait.
     opaque.hide_data()
-}
-</code></pre>
+}</code></pre>
 <p>Dart:</p>
 <pre><code class="language-dart">
 // (Arc counter = 1) Dart has full ownership.
@@ -1968,8 +1945,7 @@ pub fn create_opaque() -&gt; Opaque&lt;OpaqueStruct&gt; {
 pub fn run_opaque(opaque: Opaque&lt;HideData&gt;) -&gt; String {
     // Opaque impl Deref trait.
     opaque.hide_data()
-}
-</code></pre>
+}</code></pre>
 <p>Dart:</p>
 <pre><code class="language-dart">
 // (Arc counter = 1) Dart has full ownership.
@@ -2004,8 +1980,7 @@ pub fn create_opaque() -&gt; Opaque&lt;OpaqueStruct&gt; {
 pub fn run_opaque(opaque: Opaque&lt;HideData&gt;) -&gt; String {
     // Opaque impl Deref trait.
     opaque.hide_data()
-}
-</code></pre>
+}</code></pre>
 <p>Dart:</p>
 <pre><code class="language-dart">
 // (Arc counter = 1) Dart has full ownership.
@@ -2353,8 +2328,7 @@ async fn get() -&gt; anyhow::Result&lt;String&gt; {
     let url = &quot;https://link/to/file/download&quot;;
     let data = reqwest::get(url).await?.text().await?;
     Ok(data)
-}
-</code></pre>
+}</code></pre>
 <p>When you try to generate bindings for the <code>get</code> function, the generated code will contain errors because this library does not support returning Future from Rust.</p>
 <h2 id="mismatched-runtime"><a class="header" href="#mismatched-runtime">Mismatched runtime</a></h2>
 <p>The next logic thing to try would be to convert the asynchronous code to synchronous by directly blocking the current thread and execute the code. For our first attempt, we wrap <code>futures::executor::block_on</code> around an async block containing reqwest calls.</p>
@@ -2367,8 +2341,7 @@ fn get() -&gt; anyhow::Result&lt;String&gt; {
         let data = reqwest::get(url).await?.text().await?;
         Ok(data)
     })
-}
-</code></pre>
+}</code></pre>
 <p>Since Reqwest uses the Tokio runtime instead of the futures runtime, our code panicked with the error &quot;there is no reactor running, must be called from the context of a Tokio 1.x runtime&quot;. To fix this error, we have two ways to execute async codes using the Tokio runtime. Approach 1 is the simplest and uses the convenient <a href="https://docs.rs/tokio/1.14.0/tokio/attr.main.html"><code>tokio::main</code></a> macro to turn an async function to a synchronous one. Approach 2 requires you to explicitly create a new Tokio runtime and use its block_on function to run the future to completion.</p>
 <h2 id="approach-1-macro"><a class="header" href="#approach-1-macro">Approach 1 (macro)</a></h2>
 <pre><code class="language-rust ignore">use anyhow;
@@ -2378,8 +2351,7 @@ async fn get() -&gt; anyhow::Result&lt;String&gt; {
     let url = &quot;https://link/to/file/download&quot;;
     let data = reqwest::get(url).await?.text().await?;
     Ok(data)
-}
-</code></pre>
+}</code></pre>
 <p>It has the following dependencies:</p>
 <pre><code class="language-toml">[dependencies]
 futures = &quot;0.3&quot;
@@ -2398,8 +2370,7 @@ fn get() -&gt; anyhow::Result&lt;String&gt; {
         let data = reqwest::get(url).await?.text().await?;
         Ok(data)
     })
-}
-</code></pre>
+}</code></pre>
 <p>It has the following dependencies:</p>
 <pre><code class="language-toml">[dependencies]
 futures = &quot;0.3&quot;
@@ -2423,8 +2394,7 @@ fn get() -&gt; String {
 
 fn main() {
     println!(&quot;{}&quot;, get()); // prints &quot;hello, world!&quot;
-}
-</code></pre>
+}</code></pre>
 <h2 id="avoid-async"><a class="header" href="#avoid-async">Avoid async</a></h2>
 <p>Lastly, you can avoid async code all together by using synchronously/blocking version of the functions if they are available. In Reqwest, there's a module called <code>reqwest::blocking</code> designed specifically for this purpose. So you can achieve the same thing above without using async.</p>
 <pre><code class="language-rust ignore">use anyhow;
@@ -2434,8 +2404,7 @@ fn get() -&gt; anyhow::Result&lt;String&gt; {
     let url = &quot;https://link/to/file/download&quot;;
     let data = reqwest::blocking::get(url)?.text()?;
     Ok(data)
-}
-</code></pre>
+}</code></pre>
 <p>It has the following dependencies:</p>
 <pre><code class="language-toml">[dependencies]
 futures = &quot;0.3&quot;
@@ -2459,12 +2428,10 @@ pub fn simple_add(a: i32, b: i32) -&gt; i32 {
 
 pub fn simple_minus(a: i32, b: i32) -&gt; i32 {
     a - b
-}
-</code></pre>
+}</code></pre>
 <p>Now you want to classify these 2 Api into 2 blocks for some reason-- say, you put the <code>simple_add</code> Api into file <code>api_1.rs</code> and the other into <code>api_2.rs</code>. And then make a little modification in <code>lib.rs</code>:</p>
 <pre><code class="language-rust noplayground">mod api_1;
-mod api_2;
-</code></pre>
+mod api_2;</code></pre>
 <p>Ok, now the question is how to deal with them with flutter_rust_bridge? From the <a href="https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/justfile#L11">template justfile</a>, we know code from a single API file called <code>api_rs</code> can be generated with a command like this:</p>
 <pre><code>gen:
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
@@ -2523,8 +2490,7 @@ Here, for less misunderstanding, flutter_rust_bridge decides to ask for another 
 <pre><code class="language-rust noplayground">mod api_1;
 mod api_2;
 mod generated_api_1; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
-mod generated_api_2; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
-</code></pre>
+mod generated_api_2; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */</code></pre>
 <p>But actually, it is not good enough.</p>
 <h3 id="issue-from-explicit-api-conflict"><a class="header" href="#issue-from-explicit-api-conflict">issue from explicit Api conflict</a></h3>
 <p>Let's say one day, you decide to add another API, say <code>simpleDivide</code>. But when you compile the whole project, the Dart compiler just complains &quot;The symbol <code>simpleDivide</code> has already been defined ...&quot;. Then you check whether this <code>simpleDivide</code> is defined duplicated. Finally, you find that it's already defined in another block. This situation occurs quite a lot, when the other block is in the charge of someone else, especially in a big project. It is easy to see that the whole routine is a little inefficient since you don't realize the Api conflict until doing compiling when you've probably coded a lot with this &quot;new defined&quot; Api --- and the more time compiling takes, the more inefficient.</p>
@@ -2532,17 +2498,14 @@ mod generated_api_2; /* AUTO INJECTED BY flutter_rust_bridge. This line may not 
 <p>And what makes the Api conflict issue more catastrophic? Say you define another Api with parameter <code>String</code> in <code>api_1.rs</code>:</p>
 <pre><code class="language-rust noplayground">pub fn test_string_1(s1: String) {
     println!(&quot;test implicit parameter conflicts {}&quot;, s1);
-}
-</code></pre>
+}</code></pre>
 <p>And then you put another Api with parameter <code>String</code> in <code>api_2.rs</code>:</p>
 <pre><code class="language-rust noplayground">pub fn test_string_2(s2: String) {
     println!(&quot;test implicit parameter conflicts {}&quot;, s2);
-}
-</code></pre>
+}</code></pre>
 <p>These 2 Apis don't violate the uniqueness required by FFI. They should be compilable with no error. But the truth is no! Why? Because for the <code>String</code> parameter, flutter_rust_bridge would automatically generate API like this:</p>
 <pre><code class="language-rust noplayground">#[no_mangle]
-pub extern &quot;C&quot; fn new_uint_8_list(len: i32) -&gt; *mut wire_uint_8_list
-</code></pre>
+pub extern &quot;C&quot; fn new_uint_8_list(len: i32) -&gt; *mut wire_uint_8_list</code></pre>
 <p>which is used to let rust code easily cooperate with Dart through FFI. So if there are 2 APIs both taking <code>String</code> as parameters over blocks, you should notice a similar panic like &quot;the symbol <code>new_uint_8_list</code> is already defined ...&quot; during compiling(<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/511">issue #511</a>).</p>
 <p>(Actually, since version <a href="https://github.com/fzyzcjy/flutter_rust_bridge/releases/tag/v1.37.0">1.37</a>, even with the separated commands with no Api defined, the whole project is still not compilable with error &quot;symbol <code>free_WireSyncReturnStruct</code> is already defined... &quot;, the symbol <code>free_WireSyncReturnStruct</code> is another implicitly Api generated by flutter_rust_bridge.)</p>
 <p>So these kinds of explicit/implicit Api conflicts are annoying and frustrating. How to resolve it?</p>
@@ -2585,18 +2548,18 @@ pub extern &quot;C&quot; fn new_uint_8_list(len: i32) -&gt; *mut wire_uint_8_lis
 
         </div>
 
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
