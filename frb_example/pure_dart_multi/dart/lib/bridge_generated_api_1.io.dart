@@ -11,7 +11,10 @@ import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
 class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
-  ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib));
+  ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib)) {
+    DartApiDl.initApi(dylib);
+  }
+
 // Section: api2wire
 
 // Section: finalizer
@@ -50,6 +53,42 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 
+  Object get_dart_object(
+    int ptr,
+  ) {
+    return _get_dart_object(
+      ptr,
+    );
+  }
+
+  late final _get_dart_objectPtr = _lookup<ffi.NativeFunction<ffi.Handle Function(uintptr_t)>>('get_dart_object');
+  late final _get_dart_object = _get_dart_objectPtr.asFunction<Object Function(int)>();
+
+  void drop_dart_object(
+    int ptr,
+  ) {
+    return _drop_dart_object(
+      ptr,
+    );
+  }
+
+  late final _drop_dart_objectPtr = _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>('drop_dart_object');
+  late final _drop_dart_object = _drop_dart_objectPtr.asFunction<void Function(int)>();
+
+  int new_dart_opaque(
+    Object handle,
+    int port,
+  ) {
+    return _new_dart_opaque(
+      handle,
+      port,
+    );
+  }
+
+  late final _new_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<uintptr_t Function(ffi.Handle, ffi.Int64)>>('new_dart_opaque');
+  late final _new_dart_opaque = _new_dart_opaquePtr.asFunction<int Function(Object, int)>();
+
   void wire_simple_adder_1(
     int port_,
     int a,
@@ -80,5 +119,8 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
       _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 }
 
+class _Dart_Handle extends ffi.Opaque {}
+
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
+typedef uintptr_t = ffi.UnsignedLong;
