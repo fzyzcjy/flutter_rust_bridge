@@ -27,6 +27,7 @@ fn main() {
         dart_output: vec![DART_OUTPUT_1.to_string(), DART_OUTPUT_2.to_string()],
         // Path of output Rust code
         rust_output: Some(vec![RUST_OUTPUT_1.to_string(), RUST_OUTPUT_2.to_string()]),
+        wasm: true,
         // Class name of each Rust block of api
         class_name: Some(vec![CLASS_NAME_1.to_string(), CLASS_NAME_2.to_string()]),
         dart_format_line_length: 120,

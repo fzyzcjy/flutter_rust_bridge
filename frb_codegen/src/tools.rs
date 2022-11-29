@@ -454,7 +454,7 @@ mod tests {
                 that_package: 1.0.1
                 other_package:
         ";
-        let pubspec: Pubspec = serde_yaml::from_str(&yaml).expect("Failed to parse pubspec.yaml");
+        let pubspec: Pubspec = serde_yaml::from_str(yaml).expect("Failed to parse pubspec.yaml");
         let mut expected = HashMap::new();
         expected.insert(
             "this_package".to_string(),

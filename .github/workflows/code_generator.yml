@@ -91,6 +91,7 @@ jobs:
           --dart-format-line-length 120
           --rust-output ../frb_example/pure_dart_multi/rust/src/generated_api_1.rs ../frb_example/pure_dart_multi/rust/src/generated_api_2.rs
           --class-name ApiClass1 ApiClass2
+          --wasm
         env:
           RUST_LOG: debug
       - name: Run codegen to pure_dart_multi example (windows)
@@ -102,6 +103,7 @@ jobs:
           --dart-format-line-length 120
           --rust-output ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_1.rs ..\\frb_example\\pure_dart_multi\\rust\\src\\generated_api_2.rs
           --class-name ApiClass1 ApiClass2
+          --wasm
         env:
             RUST_LOG: debug
 
