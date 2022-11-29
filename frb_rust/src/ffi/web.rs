@@ -420,7 +420,7 @@ pub unsafe fn drop_dart_object(ptr: usize) {
 }
 
 #[wasm_bindgen]
-pub unsafe fn new_dart_object(handle: JsValue, port: MessagePort) -> usize {
+pub unsafe fn new_dart_opaque(handle: JsValue, port: MessagePort) -> usize {
     support::new_leak_box_ptr(DartOpaque::new(handle, port)) as _
 }
 
