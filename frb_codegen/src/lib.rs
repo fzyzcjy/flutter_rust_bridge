@@ -57,7 +57,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     let ir_file = transformer::transform(raw_ir_file);
 
     info!("Phase: Generate Rust code");
-    fs::create_dir_all(&rust_output_dir)?;
+    fs::create_dir_all(rust_output_dir)?;
     let generated_rust = ir_file.generate_rust(config);
     write_rust_modules(config, &generated_rust)?;
 
@@ -115,12 +115,12 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     for output in &config.c_output_path {
         fs::create_dir_all(Path::new(output).parent().unwrap())?;
         fs::write(
-            &output,
+            output,
             fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
         )?;
     }
 
-    fs::create_dir_all(&dart_output_dir)?;
+    fs::create_dir_all(dart_output_dir)?;
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
     let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
         &generated_dart_wire_code_raw,
@@ -139,6 +139,22 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
             &generated_dart,
             generated_dart_decl_all,
             &generated_dart_impl_io_wire,
+        )?;
+    } else if config.wasm_enabled {
+        fs::write(
+            &config.dart_output_path,
+            (&generated_dart.file_prelude
+                + generated_dart_decl_all
+                + &generated_dart.impl_code.common)
+                .to_text(),
+        )?;
+        fs::write(
+            &config.dart_io_output_path(),
+            (&generated_dart.file_prelude + &generated_dart_impl_io_wire).to_text(),
+        )?;
+        fs::write(
+            config.dart_wasm_output_path(),
+            (&generated_dart.file_prelude + &generated_dart.impl_code.wasm).to_text(),
         )?;
     } else {
         let mut out = generated_dart.file_prelude
@@ -222,7 +238,7 @@ fn write_dart_decls(
     };
 
     fs::write(
-        &dart_decl_output_path,
+        dart_decl_output_path,
         (&generated_dart.file_prelude + &common_import + generated_dart_decl_all).to_text(),
     )?;
     if config.wasm_enabled {

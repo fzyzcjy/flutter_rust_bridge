@@ -33,7 +33,7 @@ pub struct Crate {
 impl Crate {
     pub fn new(manifest_path: &str) -> Self {
         let mut cmd = MetadataCommand::new();
-        cmd.manifest_path(&manifest_path);
+        cmd.manifest_path(manifest_path);
 
         let metadata = cmd.exec().unwrap();
 

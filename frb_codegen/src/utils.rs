@@ -23,12 +23,12 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
     append_content: &str,
     f: F,
 ) -> anyhow::Result<()> {
-    let content_original = fs::read_to_string(&path)?;
-    fs::write(&path, content_original.clone() + append_content)?;
+    let content_original = fs::read_to_string(path)?;
+    fs::write(path, content_original.clone() + append_content)?;
 
     f()?;
 
-    Ok(fs::write(&path, content_original)?)
+    Ok(fs::write(path, content_original)?)
 }
 
 pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
