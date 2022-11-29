@@ -118,7 +118,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         let output_new: String = if config.count > 1 {
             output
                 .clone()
-                .replace(".h", format!("_{}.h", config.idx).as_str())
+                .replace(".h", format!("_{}.h", config.index).as_str())
         } else {
             output.clone()
         };
