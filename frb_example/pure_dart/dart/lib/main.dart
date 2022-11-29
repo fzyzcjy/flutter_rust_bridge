@@ -20,7 +20,6 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
-  api.dispose();
   tearDownAll(() => api.dispose());
 
   test('dart call simpleAdder', () async {
@@ -698,22 +697,22 @@ void main(List<String> args) async {
     String f() => 'Test_String';
 
     test('loopback', () async {
-      var back1 = await api.loopBack(notTemp: f) as String Function();
+      var back1 = await api.loopBack(opaque: f) as String Function();
       expect(back1(), 'Test_String');
-      var back2 = await api.loopBack(notTemp: back1) as String Function();
+      var back2 = await api.loopBack(opaque: back1) as String Function();
       expect(back2(), 'Test_String');
       expect(identical(back2, f), isTrue);
     });
 
     test('drop', () async {
-      expect(await api.asyncDartOpaque(notTemp: f), 'async test');
-      expect(api.syncDartOpaque(notTemp: f), 'test');
+      expect(await api.asyncAcceptDartOpaque(opaque: _createLargeList(mb: 200)), 'async test');
+      expect(api.syncAcceptDartOpaque(opaque: _createLargeList(mb: 200)), 'test');
     });
 
     test('unwrap', () async {
-      var data = 'Test';
-      expect(api.unwrapDartOpaque(opaque: data), 'Test');
-      await expectLater(() => api.panicUnwrapDartOpaque(opaque: data), throwsA(isA<FfiException>()));
+      expect(api.unwrapDartOpaque(opaque: _createLargeList(mb: 200)), 'Test');
+      await expectLater(
+          () => api.panicUnwrapDartOpaque(opaque: _createLargeList(mb: 200)), throwsA(isA<FfiException>()));
     });
   });
 
@@ -942,6 +941,8 @@ int _createGarbage() {
   }
   return cum;
 }
+
+Uint8List _createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
 MyTreeNode _createMyTreeNode({required int arrLen}) {
   return MyTreeNode(

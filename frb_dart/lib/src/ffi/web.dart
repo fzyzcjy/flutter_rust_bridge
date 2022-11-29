@@ -85,15 +85,15 @@ dynamic eval(String script) => _Function(script)();
 
 abstract class DartApiDl {}
 
-@JS('wasm_bindgen')
-  // ignore: non_constant_identifier_names
-external Object get_dart_object(int ptr);
-@JS('wasm_bindgen')
-  // ignore: non_constant_identifier_names
-external void drop_dart_object(int ptr);
-@JS('wasm_bindgen')
-  // ignore: non_constant_identifier_names
-external int new_dart_opaque(Object obj, NativePortType port);
+@JS('get_dart_object')
+// ignore: non_constant_identifier_names
+external Object getDartObject(int ptr);
+@JS('drop_dart_object')
+// ignore: non_constant_identifier_names
+external void dropDartObject(int ptr);
+@JS('new_dart_opaque')
+// ignore: non_constant_identifier_names
+external int newDartOpaque(Object obj, NativePortType port);
 
 abstract class FlutterRustBridgeWireBase {
   void storeDartPostCObject() {}
@@ -102,17 +102,17 @@ abstract class FlutterRustBridgeWireBase {
 
   // ignore: non_constant_identifier_names
   Object get_dart_object(int ptr) {
-    return get_dart_object(ptr);
+    return getDartObject(ptr);
   }
 
   // ignore: non_constant_identifier_names
   void drop_dart_object(int ptr) {
-    drop_dart_object(ptr);
+    dropDartObject(ptr);
   }
 
   // ignore: non_constant_identifier_names
   int new_dart_opaque(Object obj, NativePortType port) {
-    return new_dart_opaque(obj, port);
+    return newDartOpaque(obj, port);
   }
 }
 

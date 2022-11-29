@@ -20,6 +20,7 @@ void main(List<String> args) {
   test('dart call simpleAdder2', () async {
     expect(await api2.simpleAdder2(a: 42, b: 100), 142);
   });
+
   tearDownAll(() {
     api1.dispose();
     api2.dispose();

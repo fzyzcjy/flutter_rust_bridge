@@ -437,23 +437,28 @@ pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_dart_opaque(not_temp: usize) -> support::WireSyncReturnStruct {
-    wire_sync_dart_opaque_impl(not_temp)
+pub extern "C" fn wire_sync_accept_dart_opaque(opaque: usize) -> support::WireSyncReturnStruct {
+    wire_sync_accept_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_async_dart_opaque(port_: i64, not_temp: usize) {
-    wire_async_dart_opaque_impl(port_, not_temp)
+pub extern "C" fn wire_async_accept_dart_opaque(port_: i64, opaque: usize) {
+    wire_async_accept_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back(port_: i64, not_temp: usize) {
-    wire_loop_back_impl(port_, not_temp)
+pub extern "C" fn wire_loop_back(port_: i64, opaque: usize) {
+    wire_loop_back_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_exotic_drop(not_temp: usize) -> support::WireSyncReturnStruct {
-    wire_exotic_drop_impl(not_temp)
+pub extern "C" fn wire_unwrap_dart_opaque(opaque: usize) -> support::WireSyncReturnStruct {
+    wire_unwrap_dart_opaque_impl(opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_panic_unwrap_dart_opaque(port_: i64, opaque: usize) {
+    wire_panic_unwrap_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
@@ -509,16 +514,6 @@ pub extern "C" fn wire_create_nested_opaque(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNested) {
     wire_run_nested_opaque_impl(port_, opaque)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_unwrap_dart_opaque(opaque: usize) -> support::WireSyncReturnStruct {
-    wire_unwrap_dart_opaque_impl(opaque)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_panic_unwrap_dart_opaque(port_: i64, opaque: usize) {
-    wire_panic_unwrap_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]

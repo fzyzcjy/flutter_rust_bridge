@@ -3,6 +3,7 @@ pub type DartAbi = wasm_bindgen::JsValue;
 #[cfg(not(wasm))]
 pub type DartAbi = allo_isolate::ffi::DartCObject;
 
+use log::warn;
 use std::{mem, ops, sync::Arc, thread::ThreadId};
 
 #[cfg(not(wasm))]
@@ -206,7 +207,7 @@ impl DartOpaque {
 
 impl IntoDart for DartOpaque {
     fn into_dart(mut self) -> DartAbi {
-        self.handle.take().unwrap().inner_ptr().into_dart()
+        self.handle.take().unwrap().into_raw().into_dart()
     }
 }
 
@@ -214,11 +215,9 @@ impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(mut inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
-                let dart = inner.inner_ptr();
-                if !inner.channel().post(dart.into_dart()) {
-                    println!("ERROR");
-                    // todo if port is closed
-                    // DROP_PTRS.lock().unwrap().push(dart);
+                let ptr = inner.into_raw();
+                if !inner.channel().post(ptr) {
+                    warn!("Drop DartOpaque after closing the port.");
                 };
             }
         }

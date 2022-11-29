@@ -442,7 +442,7 @@ impl DartOpaqueBase {
         *self.inner.take().unwrap()
     }
 
-    pub fn inner_ptr(&mut self) -> *mut JsValue {
+    pub fn into_raw(&mut self) -> *mut JsValue {
         Box::into_raw(self.inner.take().unwrap()) as _
     }
 

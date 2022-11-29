@@ -357,21 +357,28 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
 
-  String syncDartOpaque({required Object notTemp, dynamic hint});
+  String syncAcceptDartOpaque({required Object opaque, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kSyncDartOpaqueConstMeta;
+  FlutterRustBridgeTaskConstMeta get kSyncAcceptDartOpaqueConstMeta;
 
-  Future<String> asyncDartOpaque({required Object notTemp, dynamic hint});
+  Future<String> asyncAcceptDartOpaque({required Object opaque, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kAsyncDartOpaqueConstMeta;
+  FlutterRustBridgeTaskConstMeta get kAsyncAcceptDartOpaqueConstMeta;
 
-  Future<Object> loopBack({required Object notTemp, dynamic hint});
+  Future<Object> loopBack({required Object opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kLoopBackConstMeta;
 
-  int exoticDrop({required Object notTemp, dynamic hint});
+  /// [DartWrapObject] can be safely retrieved on a dart thread.
+  String unwrapDartOpaque({required Object opaque, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kExoticDropConstMeta;
+  FlutterRustBridgeTaskConstMeta get kUnwrapDartOpaqueConstMeta;
+
+  /// [DartWrapObject] cannot be obtained
+  /// on a thread other than the thread it was created on.
+  Future<void> panicUnwrapDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPanicUnwrapDartOpaqueConstMeta;
 
   Future<HideData> createOpaque({dynamic hint});
 
@@ -416,14 +423,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
-
-  String unwrapDartOpaque({required Object opaque, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kUnwrapDartOpaqueConstMeta;
-
-  Future<String> panicUnwrapDartOpaque({required Object opaque, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kPanicUnwrapDartOpaqueConstMeta;
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 

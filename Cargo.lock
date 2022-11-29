@@ -455,6 +455,7 @@ dependencies = [
  "js-sys",
  "lazy_static",
  "libc",
+ "log",
  "parking_lot",
  "threadpool",
  "uuid",

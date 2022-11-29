@@ -228,6 +228,7 @@ fn cbindgen(
         ],
 
         // copied from: dart-sdk/dart_api.h
+        // used to convert Dart_Handle to Object.
         after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
         export: cbindgen::ExportConfig {
             include: c_struct_names

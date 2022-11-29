@@ -2338,39 +2338,40 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_test_id>)>>('wire_nested_id');
   late final _wire_nested_id = _wire_nested_idPtr.asFunction<void Function(int, ffi.Pointer<wire_list_test_id>)>();
 
-  WireSyncReturnStruct wire_sync_dart_opaque(
-    int not_temp,
+  WireSyncReturnStruct wire_sync_accept_dart_opaque(
+    int opaque,
   ) {
-    return _wire_sync_dart_opaque(
-      not_temp,
+    return _wire_sync_accept_dart_opaque(
+      opaque,
     );
   }
 
-  late final _wire_sync_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(uintptr_t)>>('wire_sync_dart_opaque');
-  late final _wire_sync_dart_opaque = _wire_sync_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(int)>();
+  late final _wire_sync_accept_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(uintptr_t)>>('wire_sync_accept_dart_opaque');
+  late final _wire_sync_accept_dart_opaque =
+      _wire_sync_accept_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(int)>();
 
-  void wire_async_dart_opaque(
+  void wire_async_accept_dart_opaque(
     int port_,
-    int not_temp,
+    int opaque,
   ) {
-    return _wire_async_dart_opaque(
+    return _wire_async_accept_dart_opaque(
       port_,
-      not_temp,
+      opaque,
     );
   }
 
-  late final _wire_async_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_async_dart_opaque');
-  late final _wire_async_dart_opaque = _wire_async_dart_opaquePtr.asFunction<void Function(int, int)>();
+  late final _wire_async_accept_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_async_accept_dart_opaque');
+  late final _wire_async_accept_dart_opaque = _wire_async_accept_dart_opaquePtr.asFunction<void Function(int, int)>();
 
   void wire_loop_back(
     int port_,
-    int not_temp,
+    int opaque,
   ) {
     return _wire_loop_back(
       port_,
-      not_temp,
+      opaque,
     );
   }
 
@@ -2378,17 +2379,31 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_loop_back');
   late final _wire_loop_back = _wire_loop_backPtr.asFunction<void Function(int, int)>();
 
-  WireSyncReturnStruct wire_exotic_drop(
-    int not_temp,
+  WireSyncReturnStruct wire_unwrap_dart_opaque(
+    int opaque,
   ) {
-    return _wire_exotic_drop(
-      not_temp,
+    return _wire_unwrap_dart_opaque(
+      opaque,
     );
   }
 
-  late final _wire_exotic_dropPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(uintptr_t)>>('wire_exotic_drop');
-  late final _wire_exotic_drop = _wire_exotic_dropPtr.asFunction<WireSyncReturnStruct Function(int)>();
+  late final _wire_unwrap_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(uintptr_t)>>('wire_unwrap_dart_opaque');
+  late final _wire_unwrap_dart_opaque = _wire_unwrap_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(int)>();
+
+  void wire_panic_unwrap_dart_opaque(
+    int port_,
+    int opaque,
+  ) {
+    return _wire_panic_unwrap_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_panic_unwrap_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_panic_unwrap_dart_opaque');
+  late final _wire_panic_unwrap_dart_opaque = _wire_panic_unwrap_dart_opaquePtr.asFunction<void Function(int, int)>();
 
   void wire_create_opaque(
     int port_,
@@ -2537,32 +2552,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_run_nested_opaque');
   late final _wire_run_nested_opaque =
       _wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueNested>)>();
-
-  WireSyncReturnStruct wire_unwrap_dart_opaque(
-    int opaque,
-  ) {
-    return _wire_unwrap_dart_opaque(
-      opaque,
-    );
-  }
-
-  late final _wire_unwrap_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(uintptr_t)>>('wire_unwrap_dart_opaque');
-  late final _wire_unwrap_dart_opaque = _wire_unwrap_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(int)>();
-
-  void wire_panic_unwrap_dart_opaque(
-    int port_,
-    int opaque,
-  ) {
-    return _wire_panic_unwrap_dart_opaque(
-      port_,
-      opaque,
-    );
-  }
-
-  late final _wire_panic_unwrap_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, uintptr_t)>>('wire_panic_unwrap_dart_opaque');
-  late final _wire_panic_unwrap_dart_opaque = _wire_panic_unwrap_dart_opaquePtr.asFunction<void Function(int, int)>();
 
   void wire_sum__method__SumWith(
     int port_,

@@ -1348,68 +1348,84 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
-  String syncDartOpaque({required Object notTemp, dynamic hint}) {
-    var arg0 = _platform.api2wire_DartObject(notTemp);
+  String syncAcceptDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
     return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_sync_dart_opaque(arg0),
+      callFfi: () => _platform.inner.wire_sync_accept_dart_opaque(arg0),
       parseSuccessData: _wire2api_SyncReturn_String,
-      constMeta: kSyncDartOpaqueConstMeta,
-      argValues: [notTemp],
+      constMeta: kSyncAcceptDartOpaqueConstMeta,
+      argValues: [opaque],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kSyncDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "sync_dart_opaque",
-        argNames: ["notTemp"],
+  FlutterRustBridgeTaskConstMeta get kSyncAcceptDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_accept_dart_opaque",
+        argNames: ["opaque"],
       );
 
-  Future<String> asyncDartOpaque({required Object notTemp, dynamic hint}) {
-    var arg0 = _platform.api2wire_DartObject(notTemp);
+  Future<String> asyncAcceptDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_async_dart_opaque(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_async_accept_dart_opaque(port_, arg0),
       parseSuccessData: _wire2api_String,
-      constMeta: kAsyncDartOpaqueConstMeta,
-      argValues: [notTemp],
+      constMeta: kAsyncAcceptDartOpaqueConstMeta,
+      argValues: [opaque],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kAsyncDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "async_dart_opaque",
-        argNames: ["notTemp"],
+  FlutterRustBridgeTaskConstMeta get kAsyncAcceptDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "async_accept_dart_opaque",
+        argNames: ["opaque"],
       );
 
-  Future<Object> loopBack({required Object notTemp, dynamic hint}) {
-    var arg0 = _platform.api2wire_DartObject(notTemp);
+  Future<Object> loopBack({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_loop_back(port_, arg0),
       parseSuccessData: _wire2api_DartObject,
       constMeta: kLoopBackConstMeta,
-      argValues: [notTemp],
+      argValues: [opaque],
       hint: hint,
     ));
   }
 
   FlutterRustBridgeTaskConstMeta get kLoopBackConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "loop_back",
-        argNames: ["notTemp"],
+        argNames: ["opaque"],
       );
 
-  int exoticDrop({required Object notTemp, dynamic hint}) {
-    var arg0 = _platform.api2wire_DartObject(notTemp);
+  String unwrapDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
     return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_exotic_drop(arg0),
-      parseSuccessData: _wire2api_SyncReturn_i32,
-      constMeta: kExoticDropConstMeta,
-      argValues: [notTemp],
+      callFfi: () => _platform.inner.wire_unwrap_dart_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_String,
+      constMeta: kUnwrapDartOpaqueConstMeta,
+      argValues: [opaque],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kExoticDropConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "exotic_drop",
-        argNames: ["notTemp"],
+  FlutterRustBridgeTaskConstMeta get kUnwrapDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "unwrap_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Future<void> panicUnwrapDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_panic_unwrap_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kPanicUnwrapDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPanicUnwrapDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "panic_unwrap_dart_opaque",
+        argNames: ["opaque"],
       );
 
   Future<HideData> createOpaque({dynamic hint}) {
@@ -1580,38 +1596,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "run_nested_opaque",
-        argNames: ["opaque"],
-      );
-
-  String unwrapDartOpaque({required Object opaque, dynamic hint}) {
-    var arg0 = _platform.api2wire_DartObject(opaque);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_unwrap_dart_opaque(arg0),
-      parseSuccessData: _wire2api_SyncReturn_String,
-      constMeta: kUnwrapDartOpaqueConstMeta,
-      argValues: [opaque],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kUnwrapDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "unwrap_dart_opaque",
-        argNames: ["opaque"],
-      );
-
-  Future<String> panicUnwrapDartOpaque({required Object opaque, dynamic hint}) {
-    var arg0 = _platform.api2wire_DartObject(opaque);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_panic_unwrap_dart_opaque(port_, arg0),
-      parseSuccessData: _wire2api_String,
-      constMeta: kPanicUnwrapDartOpaqueConstMeta,
-      argValues: [opaque],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kPanicUnwrapDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "panic_unwrap_dart_opaque",
         argNames: ["opaque"],
       );
 

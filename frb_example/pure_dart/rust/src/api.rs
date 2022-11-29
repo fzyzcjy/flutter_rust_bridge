@@ -958,26 +958,32 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
     }
 }
 
-pub fn sync_dart_opaque(not_temp: DartOpaque) -> SyncReturn<String> {
+pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    drop(opaque);
     SyncReturn("test".to_owned())
 }
 
-pub fn async_dart_opaque(not_temp: DartOpaque) -> String {
+pub fn async_accept_dart_opaque(opaque: DartOpaque) -> String {
+    drop(opaque);
     "async test".to_owned()
 }
 
-pub fn loop_back(not_temp: DartOpaque) -> DartOpaque {
-    not_temp
+pub fn loop_back(opaque: DartOpaque) -> DartOpaque {
+    opaque
 }
 
-pub fn exotic_drop(not_temp: DartOpaque) -> SyncReturn<i32> {
-    std::thread::spawn(move || {
-        drop(not_temp);
-    })
-    .join()
-    .unwrap();
-    SyncReturn(42)
+/// [DartWrapObject] can be safely retrieved on a dart thread.
+pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    let handle = opaque.try_unwrap().unwrap();
+    SyncReturn("Test".to_owned())
 }
+
+/// [DartWrapObject] cannot be obtained
+/// on a thread other than the thread it was created on.
+pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) {
+    let handle = opaque.try_unwrap().unwrap();
+}
+
 /// RustOpaque types
 pub trait DartDebug: DartSafe + Debug {}
 impl<T: DartSafe + Debug> DartDebug for T {}
@@ -1070,30 +1076,4 @@ pub fn create_nested_opaque() -> OpaqueNested {
 pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.first.hide_data();
     opaque.second.hide_data();
-}
-
-pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
-    #[cfg(target_family = "wasm")]
-    {
-        let js = opaque.try_unwrap().unwrap();
-        SyncReturn(js.as_string().unwrap())
-    }
-    #[cfg(not(target_family = "wasm"))]
-    {
-        let handle = opaque.try_unwrap().unwrap();
-        SyncReturn("Test".to_owned())
-    }
-}
-
-pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) -> String {
-    #[cfg(target_family = "wasm")]
-    {
-        let js = opaque.try_unwrap().unwrap();
-        js.as_string().unwrap()
-    }
-    #[cfg(not(target_family = "wasm"))]
-    {
-        let handle = opaque.try_unwrap().unwrap();
-        "Test".to_owned()
-    }
 }

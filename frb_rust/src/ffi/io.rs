@@ -1,16 +1,15 @@
 use crate::Channel;
 use crate::DartOpaque;
-pub use crate::Dart_DeletePersistentHandle_DL_Trampolined;
-pub use crate::Dart_HandleFromPersistent_DL_Trampolined;
-pub use crate::Dart_NewPersistentHandle_DL_Trampolined;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
 use crate::support;
+use crate::Dart_DeletePersistentHandle_DL_Trampolined;
+use crate::Dart_HandleFromPersistent_DL_Trampolined;
+use crate::Dart_NewPersistentHandle_DL_Trampolined;
 pub use allo_isolate::*;
 pub use dart_sys::Dart_Handle;
 pub use dart_sys::Dart_PersistentHandle;
-pub use dart_sys::_Dart_Handle;
 
 #[cfg(feature = "chrono")]
 #[inline]
@@ -42,17 +41,26 @@ mod tests {
     }
 }
 
+/// # Safety
+///
+/// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle, port: MessagePort) -> usize {
     let handle = Dart_NewPersistentHandle_DL_Trampolined(handle);
     support::new_leak_box_ptr(DartOpaque::new(handle, port)) as _
 }
 
+/// # Safety
+///
+/// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn get_dart_object(ptr: usize) -> *mut _Dart_Handle {
+pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
     Dart_HandleFromPersistent_DL_Trampolined(ptr as _)
 }
 
+/// # Safety
+///
+/// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
     Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
@@ -62,6 +70,10 @@ pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
 pub struct DartHandleWrap(Option<Dart_PersistentHandle>);
 
 impl DartHandleWrap {
+    pub fn from_raw(ptr: Dart_PersistentHandle) -> Self {
+        Self(Some(ptr))
+    }
+
     pub fn into_raw(mut self) -> Dart_PersistentHandle {
         self.0.take().unwrap()
     }
@@ -89,7 +101,7 @@ impl DartOpaqueBase {
         }
     }
 
-    pub fn inner_ptr(&mut self) -> Dart_PersistentHandle {
+    pub fn into_raw(&mut self) -> Dart_PersistentHandle {
         self.inner.0.take().unwrap()
     }
 

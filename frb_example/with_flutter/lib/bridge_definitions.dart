@@ -6,7 +6,6 @@ import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.d
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:uuid/uuid.dart';
 
 abstract class FlutterRustBridgeExample {
   Future<Uint8List> drawMandelbrot(

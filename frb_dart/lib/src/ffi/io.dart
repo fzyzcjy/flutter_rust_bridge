@@ -19,20 +19,20 @@ extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   }
 }
 
-abstract class DartApiDl {
+class DartApiDl {
   static int? _initCode;
 
   static void initApi(ffi.DynamicLibrary dylib) {
-    var code = _initCode ?? _internal(dylib); 
+    var code = _initCode ?? _internal(dylib);
     if (code != 0) {
       throw 'Failed to initialize Dart API. Code: $_initCode';
     }
   }
 
   static int _internal(ffi.DynamicLibrary dylib) {
-    _initCode =
-        dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>), int Function(ffi.Pointer<ffi.Void>)>(
-            'init_dart_api_dl')(ffi.NativeApi.initializeApiDLData);
+    _initCode = dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>),
+            int Function(ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(
+        ffi.NativeApi.initializeApiDLData);
     return _initCode!;
   }
 }
