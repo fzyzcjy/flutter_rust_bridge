@@ -91,7 +91,6 @@ struct wire_list_tree_node *new_list_tree_node_0(int32_t len);
 
 struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
 
-
 void free_WireSyncReturnStruct(struct WireSyncReturnStruct val);
 
 static int64_t dummy_method_to_enforce_bundling(void) {
