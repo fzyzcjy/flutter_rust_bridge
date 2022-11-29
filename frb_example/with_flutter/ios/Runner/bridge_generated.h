@@ -45,6 +45,12 @@ typedef struct WireSyncReturnStruct {
 
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
 
+_Dart_Handle *get_dart_object(uintptr_t ptr);
+
+void drop_dart_object(uintptr_t ptr);
+
+uintptr_t new_dart_opaque(_Dart_Handle *handle, int64_t port);
+
 void wire_draw_mandelbrot(int64_t port_,
                           struct wire_Size *image_size,
                           struct wire_Point *zoom_point,
@@ -85,7 +91,6 @@ struct wire_list_tree_node *new_list_tree_node_0(int32_t len);
 
 struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
 
-void drop_DartOpaqueFlutterRustBridgeExample(uintptr_t ptr);
 
 void free_WireSyncReturnStruct(struct WireSyncReturnStruct val);
 
@@ -109,8 +114,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_size_0);
     dummy_var ^= ((int64_t) (void*) new_list_tree_node_0);
     dummy_var ^= ((int64_t) (void*) new_uint_8_list_0);
-    dummy_var ^= ((int64_t) (void*) drop_DartOpaqueFlutterRustBridgeExample);
     dummy_var ^= ((int64_t) (void*) free_WireSyncReturnStruct);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
+    dummy_var ^= ((int64_t) (void*) get_dart_object);
+    dummy_var ^= ((int64_t) (void*) drop_dart_object);
+    dummy_var ^= ((int64_t) (void*) new_dart_opaque);
     return dummy_var;
 }
