@@ -85,13 +85,13 @@ dynamic eval(String script) => _Function(script)();
 
 abstract class DartApiDl {}
 
-@JS('get_dart_object')
+@JS('wasm_bindgen.get_dart_object')
 // ignore: non_constant_identifier_names
 external Object getDartObject(int ptr);
-@JS('drop_dart_object')
+@JS('wasm_bindgen.drop_dart_object')
 // ignore: non_constant_identifier_names
 external void dropDartObject(int ptr);
-@JS('new_dart_opaque')
+@JS('wasm_bindgen.new_dart_opaque')
 // ignore: non_constant_identifier_names
 external int newDartOpaque(Object obj, NativePortType port);
 
