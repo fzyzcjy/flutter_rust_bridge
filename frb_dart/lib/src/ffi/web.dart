@@ -119,7 +119,6 @@ class FrbOpaqueBase {
       finalizer.attach(opaque, ptr, detach: opaque);
 }
 
-
 int getOpaquePtr(Uint8List list) {
   var pointBitLen = 4;
   var ptrList = List.filled(pointBitLen, 0);
@@ -130,6 +129,6 @@ int getOpaquePtr(Uint8List list) {
 int getOpaqueSize(Uint8List list) {
   var pointBitLen = 4;
   var sizeList = List.filled(pointBitLen, 0);
-  List.copyRange(sizeList, 0, list, pointBitLen, pointBitLen*2);
+  List.copyRange(sizeList, 0, list, pointBitLen, pointBitLen * 2);
   return ByteData.view(Uint8List.fromList(sizeList).buffer).getUint32(0);
 }

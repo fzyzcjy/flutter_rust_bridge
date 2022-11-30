@@ -25,7 +25,10 @@ impl IrTypeTrait for IrTypeSyncReturn {
             }
             IrTypeSyncReturn::Option(_) => {
                 let dart_api_type = self.get_inner().dart_api_type();
-                format!("SyncReturn_Option_{}", dart_api_type.strip_suffix("?").unwrap())
+                format!(
+                    "SyncReturn_Option_{}",
+                    dart_api_type.strip_suffix("?").unwrap()
+                )
             }
             _ => "SyncReturn_".to_owned() + &self.get_inner().dart_api_type(),
         }
@@ -36,7 +39,9 @@ impl IrTypeTrait for IrTypeSyncReturn {
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        if target.is_wasm() && self.get_inner().dart_wire_type(target) == "void" {"dynamic".to_owned()} else {
+        if target.is_wasm() && self.get_inner().dart_wire_type(target) == "void" {
+            "dynamic".to_owned()
+        } else {
             self.get_inner().dart_wire_type(target)
         }
     }

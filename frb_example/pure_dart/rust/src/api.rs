@@ -959,7 +959,7 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
 }
 
 /// Opaque types
-pub trait DartDebug: DartSafe + Debug + Send + Sync{}
+pub trait DartDebug: DartSafe + Debug + Send + Sync {}
 impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}
 
 pub enum EnumOpaque {

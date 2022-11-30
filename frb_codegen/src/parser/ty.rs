@@ -205,13 +205,11 @@ impl<'a> TypeParser<'a> {
                             ))),
                             _ => None,
                         },
-                        Boxed(inner) if inner.inner.is_opaque() => {
-                            match *inner.inner {
-                                Opaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
-                                    IrTypeSyncReturn::Opaque(opaque),
-                                )))),
-                                _ => None
-                            }
+                        Boxed(inner) if inner.inner.is_opaque() => match *inner.inner {
+                            Opaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
+                                IrTypeSyncReturn::Opaque(opaque),
+                            )))),
+                            _ => None,
                         },
                         _ => None,
                     },

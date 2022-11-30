@@ -26,7 +26,7 @@ pub mod io;
 #[cfg(not(wasm))]
 pub use io::*;
 
-use crate::{DartSafe, support::WireSyncReturnData};
+use crate::{support::WireSyncReturnData, DartSafe};
 
 /// see [uuid::Bytes](https://docs.rs/uuid/1.1.2/uuid/type.Bytes.html)
 #[cfg(feature = "uuid")]
@@ -147,15 +147,9 @@ impl<T: DartSafe> From<Opaque<T>> for WireSyncReturnData {
         } else {
             std::ptr::null()
         } as usize;
-        
+
         let size = mem::size_of::<T>();
-        let res = WireSyncReturnData(Some(
-            [
-                ptr.to_be_bytes(),
-                size.to_be_bytes(),
-            ]
-            .concat(),
-        ));
+        let res = WireSyncReturnData(Some([ptr.to_be_bytes(), size.to_be_bytes()].concat()));
         res
     }
 }
@@ -170,13 +164,7 @@ impl<T: DartSafe> From<Option<Opaque<T>>> for WireSyncReturnData {
             } as usize;
 
             let size = mem::size_of::<T>();
-            WireSyncReturnData(Some(
-                [
-                    ptr.to_be_bytes(),
-                    size.to_be_bytes(),
-                ]
-                .concat(),
-            ))
+            WireSyncReturnData(Some([ptr.to_be_bytes(), size.to_be_bytes()].concat()))
         } else {
             WireSyncReturnData(None)
         }
