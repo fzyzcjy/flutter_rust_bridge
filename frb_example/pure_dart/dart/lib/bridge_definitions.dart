@@ -401,6 +401,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
 
+  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;

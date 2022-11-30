@@ -492,6 +492,11 @@ pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNes
 }
 
 #[no_mangle]
+pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_HideData) {
+    wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

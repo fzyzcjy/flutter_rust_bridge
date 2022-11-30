@@ -967,6 +967,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
 
+  external void wire_unwrap_rust_opaque(NativePortType port_, dynamic opaque);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1256,6 +1258,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
       wasmModule.wire_run_nested_opaque(port_, opaque);
+
+  void wire_unwrap_rust_opaque(NativePortType port_, dynamic opaque) =>
+      wasmModule.wire_unwrap_rust_opaque(port_, opaque);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

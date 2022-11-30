@@ -2442,6 +2442,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_run_nested_opaque =
       _wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueNested>)>();
 
+  void wire_unwrap_rust_opaque(
+    int port_,
+    wire_HideData opaque,
+  ) {
+    return _wire_unwrap_rust_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_unwrap_rust_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_HideData)>>('wire_unwrap_rust_opaque');
+  late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr.asFunction<void Function(int, wire_HideData)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

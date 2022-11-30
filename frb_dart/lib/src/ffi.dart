@@ -19,6 +19,10 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   /// Is static for each frb api class instance.
   OpaqueTypeFinalizer get staticFinalizer;
 
+  /// Displays the need to release ownership when sending to rust.
+  bool _move = false;
+  set move(bool move) => _move = move;
+
   /// Rust type specific drop function.
   ///
   /// This function should never be called manually.
@@ -62,7 +66,11 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   @internal
   PlatformPointer share() {
     if (!isStale()) {
-      return shareFn(_ptr);
+      var ptr = shareFn(_ptr);
+      if (_move) {
+        dispose();
+      }
+      return ptr;
     } else {
       return FrbOpaqueBase.nullPtr();
     }

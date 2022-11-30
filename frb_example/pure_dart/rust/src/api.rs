@@ -1045,3 +1045,10 @@ pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.first.hide_data();
     opaque.second.hide_data();
 }
+
+pub fn unwrap_rust_opaque(opaque: Opaque<HideData>) -> Result<String> {
+    let data: HideData = opaque
+        .try_unwrap()
+        .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
+    Ok(data.hide_data())
+}

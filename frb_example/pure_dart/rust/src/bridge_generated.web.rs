@@ -484,6 +484,11 @@ pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
