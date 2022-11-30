@@ -149,8 +149,7 @@ impl<T: DartSafe> From<Opaque<T>> for WireSyncReturnData {
         } as usize;
 
         let size = mem::size_of::<T>();
-        let res = WireSyncReturnData(Some([ptr.to_be_bytes(), size.to_be_bytes()].concat()));
-        res
+        WireSyncReturnData(Some([ptr.to_be_bytes(), size.to_be_bytes()].concat()))
     }
 }
 
