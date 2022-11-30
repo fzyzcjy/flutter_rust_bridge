@@ -36,7 +36,9 @@ impl IrTypeTrait for IrTypeSyncReturn {
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        self.get_inner().dart_wire_type(target)
+        if target.is_wasm() && self.get_inner().dart_wire_type(target) == "void" {"dynamic".to_owned()} else {
+            self.get_inner().dart_wire_type(target)
+        }
     }
 
     fn rust_api_type(&self) -> String {
