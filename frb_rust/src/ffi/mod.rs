@@ -15,6 +15,11 @@ pub type MessagePort = web::PortLike;
 pub type MessagePort = i64;
 
 #[cfg(wasm)]
+pub type OpaqueMessagePort = wasm_bindgen::JsValue;
+#[cfg(not(wasm))]
+pub type OpaqueMessagePort = i64;
+
+#[cfg(wasm)]
 pub type DartWrapObject = wasm_bindgen::JsValue;
 #[cfg(not(wasm))]
 pub type DartWrapObject = DartHandleWrap;
@@ -187,7 +192,7 @@ unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
     /// Creates a new [DartOpaque].
-    pub fn new(handle: DartObject, port: MessagePort) -> Self {
+    pub fn new(handle: DartObject, port: OpaqueMessagePort) -> Self {
         Self {
             handle: Some(DartOpaqueBase::new(handle, port)),
             thread_id: std::thread::current().id(),

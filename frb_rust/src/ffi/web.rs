@@ -434,7 +434,7 @@ pub struct DartOpaqueBase {
 }
 
 impl DartOpaqueBase {
-    pub fn new(handle: JsValue, port: MessagePort) -> Self {
+    pub fn new(handle: JsValue, port: JsValue) -> Self {
         Self {
             inner: Some(Box::new(handle)),
             drop_port: port.dyn_ref::<BroadcastChannel>().unwrap().name(),

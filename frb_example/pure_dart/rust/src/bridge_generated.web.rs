@@ -769,7 +769,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
 impl Wire2Api<DartOpaque> for JsValue {
     fn wire2api(self) -> DartOpaque {
         let arr = self.dyn_into::<JsArray>().unwrap();
-        DartOpaque::new(arr.get(0), MessagePort::deserialize(&arr.get(1)))
+        DartOpaque::new(arr.get(0), arr.get(1))
     }
 }
 

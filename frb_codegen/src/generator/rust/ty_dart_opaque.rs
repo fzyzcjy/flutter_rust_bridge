@@ -14,7 +14,7 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> crate::target::Acc<Option<String>> {
         Acc { io: Some(
     "DartOpaque::new(self.handle as _, self.port)".to_owned(),
-), wasm: Some("let arr = self.dyn_into::<JsArray>().unwrap(); DartOpaque::new(arr.get(0), MessagePort::deserialize(&arr.get(1)))".to_owned()), ..Default::default() }
+), wasm: Some("let arr = self.dyn_into::<JsArray>().unwrap(); DartOpaque::new(arr.get(0), arr.get(1))".to_owned()), ..Default::default() }
     }
 
     fn allocate_funcs(
