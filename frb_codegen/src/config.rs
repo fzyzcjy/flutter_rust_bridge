@@ -64,7 +64,7 @@ pub struct RawOpts {
     pub verbose: bool,
     /// Enable WASM module generation.
     /// Requires: --dart-decl-output
-    #[clap(long, requires = "dart-decl-output")]
+    #[clap(long)]
     pub wasm: bool,
     /// Inline declaration of Rust bridge modules
     #[clap(long)]
@@ -210,10 +210,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         .map(|s| canon_path(s.as_str()));
     let dart_format_line_length = raw.dart_format_line_length;
     let llvm_paths = get_llvm_paths(&raw.llvm_path);
-    let llvm_compiler_opts = raw
-        .llvm_compiler_opts
-        .clone()
-        .unwrap_or_else(|| "".to_string());
+    let llvm_compiler_opts = raw.llvm_compiler_opts.clone().unwrap_or_default();
     let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
     let build_runner = !raw.no_build_runner;
     let wasm = raw.wasm;
