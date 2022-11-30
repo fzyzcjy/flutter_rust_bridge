@@ -58,26 +58,7 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             IrTypeSyncReturn::String => "return utf8.decode(raw);".into(),
             IrTypeSyncReturn::VecU8 => "return raw;".into(),
             IrTypeSyncReturn::Opaque(o) => {
-                format!(
-                    "var pointBitLen = raw.length ~/ 2;
-                var ptrList = List.filled(pointBitLen, 0);
-                var sizeList = List.filled(pointBitLen, 0);
-                
-                List.copyRange(ptrList, 0, raw, 0, pointBitLen);
-                List.copyRange(sizeList, 0, raw, pointBitLen, pointBitLen*2);
-
-                int ptr = 0;
-                int size = 0;
-                
-                if (pointBitLen == 8) {{
-                  ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
-                  size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint64(0);
-                }} else if (pointBitLen == 4) {{
-                  ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
-                  size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint32(0);
-                }}
-            
-                return {}.fromRaw(ptr, size, this);",
+                format!("return {}.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);",
                     o.inner_dart
                 )
             }

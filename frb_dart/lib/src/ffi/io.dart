@@ -57,3 +57,20 @@ class FrbOpaqueBase implements Finalizable {
           int size, OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
 }
+
+
+int getOpaquePtr(Uint8List list) {
+  var pointBitLen = 8;
+  var ptrList = List.filled(pointBitLen, 0);
+  List.copyRange(ptrList, 0, list, 0, pointBitLen);
+  return ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
+}
+
+int getOpaqueSize(Uint8List list) {
+  var pointBitLen = 8;
+  var sizeList = List.filled(pointBitLen, 0);
+  List.copyRange(sizeList, 0, list, pointBitLen, pointBitLen*2);
+  return ByteData.view(Uint8List.fromList(sizeList).buffer).getUint64(0);
+}
+
+            

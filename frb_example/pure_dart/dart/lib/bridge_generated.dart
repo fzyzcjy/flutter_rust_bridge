@@ -1874,72 +1874,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   HideData _wire2api_SyncReturn_HideData(dynamic raw) {
-    var pointBitLen = raw.length ~/ 2;
-    var ptrList = List.filled(pointBitLen, 0);
-    var sizeList = List.filled(pointBitLen, 0);
-
-    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
-    List.copyRange(sizeList, 0, raw, pointBitLen, pointBitLen * 2);
-
-    int ptr = 0;
-    int size = 0;
-
-    if (pointBitLen == 8) {
-      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
-      size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint64(0);
-    } else if (pointBitLen == 4) {
-      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
-      size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint32(0);
-    }
-
-    return HideData.fromRaw(ptr, size, this);
+    return HideData.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);
   }
 
   HideSyncData _wire2api_SyncReturn_HideSyncData(dynamic raw) {
-    var pointBitLen = raw.length ~/ 2;
-    var ptrList = List.filled(pointBitLen, 0);
-    var sizeList = List.filled(pointBitLen, 0);
-
-    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
-    List.copyRange(sizeList, 0, raw, pointBitLen, pointBitLen * 2);
-
-    int ptr = 0;
-    int size = 0;
-
-    if (pointBitLen == 8) {
-      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
-      size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint64(0);
-    } else if (pointBitLen == 4) {
-      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
-      size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint32(0);
-    }
-
-    return HideSyncData.fromRaw(ptr, size, this);
+    return HideSyncData.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);
   }
 
   HideData? _wire2api_SyncReturn_Option_HideData(dynamic raw) {
     if (raw == null) {
       return null;
     }
-    var pointBitLen = raw.length ~/ 2;
-    var ptrList = List.filled(pointBitLen, 0);
-    var sizeList = List.filled(pointBitLen, 0);
-
-    List.copyRange(ptrList, 0, raw, 0, pointBitLen);
-    List.copyRange(sizeList, 0, raw, pointBitLen, pointBitLen * 2);
-
-    int ptr = 0;
-    int size = 0;
-
-    if (pointBitLen == 8) {
-      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint64(0);
-      size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint64(0);
-    } else if (pointBitLen == 4) {
-      ptr = ByteData.view(Uint8List.fromList(ptrList).buffer).getUint32(0);
-      size = ByteData.view(Uint8List.fromList(sizeList).buffer).getUint32(0);
-    }
-
-    return HideData.fromRaw(ptr, size, this);
+    return HideData.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);
   }
 
   String? _wire2api_SyncReturn_Option_String(dynamic raw) {
