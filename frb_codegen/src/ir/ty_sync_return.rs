@@ -27,7 +27,7 @@ impl IrTypeTrait for IrTypeSyncReturn {
                 let dart_api_type = self.get_inner().dart_api_type();
                 format!(
                     "SyncReturn_Option_{}",
-                    dart_api_type.strip_suffix("?").unwrap()
+                    dart_api_type.strip_suffix('?').unwrap()
                 )
             }
             _ => "SyncReturn_".to_owned() + &self.get_inner().dart_api_type(),
