@@ -20,7 +20,7 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
     #[no_mangle] pub unsafe extern "C" fn get_dart_object(ptr: usize) -> *mut _Dart_Handle { panic!("dummy code") }
     #[no_mangle] pub unsafe extern "C" fn drop_dart_object(ptr: usize) { panic!("dummy code") }
-    #[no_mangle] pub unsafe extern "C" fn new_dart_opaque(handle: *mut _Dart_Handle, port: i64) -> usize { panic!("dummy code") }
+    #[no_mangle] pub unsafe extern "C" fn new_dart_opaque(handle: *mut _Dart_Handle) -> usize { panic!("dummy code") }
 
     // copied from: frb_rust::support.rs
     #[repr(C)]

@@ -205,9 +205,9 @@ impl DartOpaque {
     }
 }
 
-impl IntoDart for DartOpaque {
-    fn into_dart(mut self) -> DartAbi {
-        self.handle.take().unwrap().into_raw().into_dart()
+impl From<DartOpaque> for DartAbi {
+    fn from(mut data: DartOpaque) -> Self {
+        data.handle.take().unwrap().into_raw().into_dart()
     }
 }
 

@@ -266,6 +266,12 @@ impl<'a> TypeParser<'a> {
                                 exist_in_real_api: false,
                             })))
                         }
+                        dop @ DartOpaque(_) => {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
+                                inner: Box::new(dop),
+                                exist_in_real_api: false,
+                            })))
+                        }
                         other => IrType::Optional(IrTypeOptional::new(other)),
                     })
                 }

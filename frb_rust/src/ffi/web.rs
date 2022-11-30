@@ -24,6 +24,7 @@ pub trait IntoDart {
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
 impl<T: DartSafe> IntoDartExceptPrimitive for RustOpaque<T> {}
+impl IntoDartExceptPrimitive for DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
@@ -158,6 +159,13 @@ impl<T> IntoDart for *mut T {
 }
 
 impl<T: DartSafe> IntoDart for RustOpaque<T> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.into()
+    }
+}
+
+impl IntoDart for DartOpaque {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()
@@ -417,11 +425,6 @@ pub unsafe fn get_dart_object(ptr: usize) -> JsValue {
 #[wasm_bindgen]
 pub unsafe fn drop_dart_object(ptr: usize) {
     drop(support::box_from_leak_ptr::<JsValue>(ptr as _));
-}
-
-#[wasm_bindgen]
-pub unsafe fn new_dart_opaque(handle: JsValue, port: MessagePort) -> usize {
-    support::new_leak_box_ptr(DartOpaque::new(handle, port)) as _
 }
 
 #[derive(Debug)]

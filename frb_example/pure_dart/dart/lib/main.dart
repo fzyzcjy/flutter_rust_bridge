@@ -697,6 +697,13 @@ void main(List<String> args) async {
     String f() => 'Test_String';
 
     test('loopback', () async {
+      // ignore: unused_local_variable
+      await api.loopBackArrayGet(opaque: await api.loopBackArray(opaque: f));
+      // ignore: unused_local_variable
+      await api.loopBackVecGet(opaque: await api.loopBackVec(opaque: f));
+      // ignore: unused_local_variable
+      await api.loopBackOptionGet(opaque: await api.loopBackOption(opaque: f));
+
       var back1 = await api.loopBack(opaque: f) as String Function();
       expect(back1(), 'Test_String');
       var back2 = await api.loopBack(opaque: back1) as String Function();

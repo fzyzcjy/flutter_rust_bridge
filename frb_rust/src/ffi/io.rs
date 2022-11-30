@@ -45,9 +45,8 @@ mod tests {
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle, port: MessagePort) -> usize {
-    let handle = Dart_NewPersistentHandle_DL_Trampolined(handle);
-    support::new_leak_box_ptr(DartOpaque::new(handle, port)) as _
+pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize {
+    Dart_NewPersistentHandle_DL_Trampolined(handle) as _
 }
 
 /// # Safety

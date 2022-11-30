@@ -91,9 +91,6 @@ external Object getDartObject(int ptr);
 @JS("wasm_bindgen.drop_dart_object")
 // ignore: non_constant_identifier_names
 external void dropDartObject(int ptr);
-@JS("wasm_bindgen.new_dart_opaque")
-// ignore: non_constant_identifier_names
-external int newDartOpaque(Object obj, NativePortType port);
 
 abstract class FlutterRustBridgeWireBase {
   void storeDartPostCObject() {}
@@ -112,7 +109,7 @@ abstract class FlutterRustBridgeWireBase {
 
   // ignore: non_constant_identifier_names
   int new_dart_opaque(Object obj, NativePortType port) {
-    return newDartOpaque(obj, port);
+    return 0;
   }
 }
 

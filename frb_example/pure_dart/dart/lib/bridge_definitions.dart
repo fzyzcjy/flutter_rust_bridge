@@ -369,6 +369,30 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kLoopBackConstMeta;
 
+  Future<Object?> loopBackOption({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackOptionConstMeta;
+
+  Future<ObjectArray1> loopBackArray({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackArrayConstMeta;
+
+  Future<List<Object>> loopBackVec({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackVecConstMeta;
+
+  Future<void> loopBackOptionGet({Object? opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackOptionGetConstMeta;
+
+  Future<void> loopBackArrayGet({required ObjectArray1 opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackArrayGetConstMeta;
+
+  Future<void> loopBackVecGet({required List<Object> opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackVecGetConstMeta;
+
   /// [DartWrapObject] can be safely retrieved on a dart thread.
   String unwrapDartOpaque({required Object opaque, dynamic hint});
 
@@ -383,6 +407,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<HideData> createOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta;
+
+  Future<HideData?> createOptionOpaque({HideData? opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateOptionOpaqueConstMeta;
 
   Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint});
 
@@ -551,6 +579,15 @@ class MutexHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.MutexHideDataFinalizer;
+}
+
+class ObjectArray1 extends NonGrowableListView<Object> {
+  static const arraySize = 1;
+  ObjectArray1(List<Object> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  ObjectArray1.unchecked(List<Object> inner) : super(inner);
+  ObjectArray1.init(Object fill) : super(List<Object>.filled(arraySize, fill));
 }
 
 class PointArray2 extends NonGrowableListView<Point> {

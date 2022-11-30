@@ -972,6 +972,24 @@ pub fn loop_back(opaque: DartOpaque) -> DartOpaque {
     opaque
 }
 
+pub fn loop_back_option(opaque: DartOpaque) -> Option<DartOpaque> {
+    Some(opaque)
+}
+
+pub fn loop_back_array(opaque: DartOpaque) -> [DartOpaque; 1] {
+    [opaque]
+}
+
+pub fn loop_back_vec(opaque: DartOpaque) -> Vec<DartOpaque> {
+    vec![opaque]
+}
+
+pub fn loop_back_option_get(opaque: Option<DartOpaque>) {}
+
+pub fn loop_back_array_get(opaque: [DartOpaque; 1]) {}
+
+pub fn loop_back_vec_get(opaque: Vec<DartOpaque>) {}
+
 /// [DartWrapObject] can be safely retrieved on a dart thread.
 pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
     let handle = opaque.try_unwrap().unwrap();
@@ -1005,6 +1023,10 @@ pub struct OpaqueNested {
 
 pub fn create_opaque() -> RustOpaque<HideData> {
     RustOpaque::new(HideData::new())
+}
+
+pub fn create_option_opaque(opaque: Option<RustOpaque<HideData>>) -> Option<RustOpaque<HideData>> {
+    opaque
 }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {

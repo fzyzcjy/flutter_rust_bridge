@@ -29,7 +29,7 @@ abstract class FlutterRustBridgeWireBase {
   void drop_dart_object(int ptr) {}
 
   // ignore: non_constant_identifier_names
-  int new_dart_opaque(Object obj, NativePortType port) {
+  int new_dart_opaque(Object obj) {
     return 0;
   }
 

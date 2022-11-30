@@ -90,17 +90,14 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
 
   int new_dart_opaque(
     Object handle,
-    int port,
   ) {
     return _new_dart_opaque(
       handle,
-      port,
     );
   }
 
-  late final _new_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<uintptr_t Function(ffi.Handle, ffi.Int64)>>('new_dart_opaque');
-  late final _new_dart_opaque = _new_dart_opaquePtr.asFunction<int Function(Object, int)>();
+  late final _new_dart_opaquePtr = _lookup<ffi.NativeFunction<uintptr_t Function(ffi.Handle)>>('new_dart_opaque');
+  late final _new_dart_opaque = _new_dart_opaquePtr.asFunction<int Function(Object)>();
 
   void wire_simple_adder_2(
     int port_,
