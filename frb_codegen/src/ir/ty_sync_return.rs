@@ -24,10 +24,8 @@ impl IrTypeTrait for IrTypeSyncReturn {
                 "SyncReturn_".to_owned() + &self.get_inner().rust_api_type()
             }
             IrTypeSyncReturn::Option(_) => {
-                // We use Rust API type here because some primitive types in Dart share the same API type.
-                let mut temp = self.get_inner().dart_api_type();
-                temp.pop();
-                "SyncReturn_Option_".to_owned() + &temp
+                let dart_api_type = self.get_inner().dart_api_type();
+                format!("SyncReturn_Option_{}", dart_api_type.strip_suffix("?").unwrap())
             }
             _ => "SyncReturn_".to_owned() + &self.get_inner().dart_api_type(),
         }
