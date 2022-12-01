@@ -22,7 +22,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api2wire
 
   @protected
-  dynamic api2wire_BoxDartDebug(BoxDartDebug raw) {
+  Object api2wire_BoxDartDebug(BoxDartDebug raw) {
     return raw.share();
   }
 
@@ -47,12 +47,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  dynamic api2wire_DartObject(Object raw) {
+  Object api2wire_DartObject(Object raw) {
     return [raw, dropPort];
   }
 
   @protected
-  dynamic api2wire_HideData(HideData raw) {
+  Object api2wire_HideData(HideData raw) {
     return raw.share();
   }
 
@@ -62,12 +62,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  dynamic api2wire_I32(I32 raw) {
+  Object api2wire_I32(I32 raw) {
     return raw.share();
   }
 
   @protected
-  dynamic api2wire_MutexHideData(MutexHideData raw) {
+  Object api2wire_MutexHideData(MutexHideData raw) {
     return raw.share();
   }
 
@@ -77,7 +77,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  dynamic api2wire_RwLockHideData(RwLockHideData raw) {
+  Object api2wire_RwLockHideData(RwLockHideData raw) {
     return raw.share();
   }
 
@@ -147,12 +147,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  dynamic api2wire_box_autoadd_DartObject(Object raw) {
+  Object api2wire_box_autoadd_DartObject(Object raw) {
     return api2wire_DartObject(raw);
   }
 
   @protected
-  dynamic api2wire_box_autoadd_HideData(HideData raw) {
+  Object api2wire_box_autoadd_HideData(HideData raw) {
     return api2wire_HideData(raw);
   }
 
@@ -611,12 +611,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  dynamic? api2wire_opt_box_autoadd_DartObject(Object? raw) {
+  Object? api2wire_opt_box_autoadd_DartObject(Object? raw) {
     return raw == null ? null : api2wire_box_autoadd_DartObject(raw);
   }
 
   @protected
-  dynamic? api2wire_opt_box_autoadd_HideData(HideData? raw) {
+  Object? api2wire_opt_box_autoadd_HideData(HideData? raw) {
     return raw == null ? null : api2wire_box_autoadd_HideData(raw);
   }
 
@@ -981,39 +981,39 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_nested_id(NativePortType port_, List<dynamic> id);
 
-  external dynamic /* String */ wire_sync_accept_dart_opaque(dynamic opaque);
+  external dynamic /* String */ wire_sync_accept_dart_opaque(Object opaque);
 
-  external void wire_async_accept_dart_opaque(NativePortType port_, dynamic opaque);
+  external void wire_async_accept_dart_opaque(NativePortType port_, Object opaque);
 
-  external void wire_loop_back(NativePortType port_, dynamic opaque);
+  external void wire_loop_back(NativePortType port_, Object opaque);
 
-  external void wire_loop_back_option(NativePortType port_, dynamic opaque);
+  external void wire_loop_back_option(NativePortType port_, Object opaque);
 
-  external void wire_loop_back_array(NativePortType port_, dynamic opaque);
+  external void wire_loop_back_array(NativePortType port_, Object opaque);
 
-  external void wire_loop_back_vec(NativePortType port_, dynamic opaque);
+  external void wire_loop_back_vec(NativePortType port_, Object opaque);
 
-  external void wire_loop_back_option_get(NativePortType port_, dynamic? opaque);
+  external void wire_loop_back_option_get(NativePortType port_, Object? opaque);
 
   external void wire_loop_back_array_get(NativePortType port_, List<dynamic> opaque);
 
   external void wire_loop_back_vec_get(NativePortType port_, List<dynamic> opaque);
 
-  external dynamic /* String */ wire_unwrap_dart_opaque(dynamic opaque);
+  external dynamic /* String */ wire_unwrap_dart_opaque(Object opaque);
 
-  external void wire_panic_unwrap_dart_opaque(NativePortType port_, dynamic opaque);
+  external void wire_panic_unwrap_dart_opaque(NativePortType port_, Object opaque);
 
   external void wire_create_opaque(NativePortType port_);
 
-  external void wire_create_option_opaque(NativePortType port_, dynamic? opaque);
+  external void wire_create_option_opaque(NativePortType port_, Object? opaque);
 
   external void wire_create_array_opaque_enum(NativePortType port_);
 
   external void wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external void wire_run_opaque(NativePortType port_, dynamic opaque);
+  external void wire_run_opaque(NativePortType port_, Object opaque);
 
-  external void wire_run_opaque_with_delay(NativePortType port_, dynamic opaque);
+  external void wire_run_opaque_with_delay(NativePortType port_, Object opaque);
 
   external void wire_opaque_array(NativePortType port_);
 
@@ -1292,20 +1292,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_nested_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_nested_id(port_, id);
 
-  dynamic /* String */ wire_sync_accept_dart_opaque(dynamic opaque) => wasmModule.wire_sync_accept_dart_opaque(opaque);
+  dynamic /* String */ wire_sync_accept_dart_opaque(Object opaque) => wasmModule.wire_sync_accept_dart_opaque(opaque);
 
-  void wire_async_accept_dart_opaque(NativePortType port_, dynamic opaque) =>
+  void wire_async_accept_dart_opaque(NativePortType port_, Object opaque) =>
       wasmModule.wire_async_accept_dart_opaque(port_, opaque);
 
-  void wire_loop_back(NativePortType port_, dynamic opaque) => wasmModule.wire_loop_back(port_, opaque);
+  void wire_loop_back(NativePortType port_, Object opaque) => wasmModule.wire_loop_back(port_, opaque);
 
-  void wire_loop_back_option(NativePortType port_, dynamic opaque) => wasmModule.wire_loop_back_option(port_, opaque);
+  void wire_loop_back_option(NativePortType port_, Object opaque) => wasmModule.wire_loop_back_option(port_, opaque);
 
-  void wire_loop_back_array(NativePortType port_, dynamic opaque) => wasmModule.wire_loop_back_array(port_, opaque);
+  void wire_loop_back_array(NativePortType port_, Object opaque) => wasmModule.wire_loop_back_array(port_, opaque);
 
-  void wire_loop_back_vec(NativePortType port_, dynamic opaque) => wasmModule.wire_loop_back_vec(port_, opaque);
+  void wire_loop_back_vec(NativePortType port_, Object opaque) => wasmModule.wire_loop_back_vec(port_, opaque);
 
-  void wire_loop_back_option_get(NativePortType port_, dynamic? opaque) =>
+  void wire_loop_back_option_get(NativePortType port_, Object? opaque) =>
       wasmModule.wire_loop_back_option_get(port_, opaque);
 
   void wire_loop_back_array_get(NativePortType port_, List<dynamic> opaque) =>
@@ -1314,14 +1314,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_loop_back_vec_get(NativePortType port_, List<dynamic> opaque) =>
       wasmModule.wire_loop_back_vec_get(port_, opaque);
 
-  dynamic /* String */ wire_unwrap_dart_opaque(dynamic opaque) => wasmModule.wire_unwrap_dart_opaque(opaque);
+  dynamic /* String */ wire_unwrap_dart_opaque(Object opaque) => wasmModule.wire_unwrap_dart_opaque(opaque);
 
-  void wire_panic_unwrap_dart_opaque(NativePortType port_, dynamic opaque) =>
+  void wire_panic_unwrap_dart_opaque(NativePortType port_, Object opaque) =>
       wasmModule.wire_panic_unwrap_dart_opaque(port_, opaque);
 
   void wire_create_opaque(NativePortType port_) => wasmModule.wire_create_opaque(port_);
 
-  void wire_create_option_opaque(NativePortType port_, dynamic? opaque) =>
+  void wire_create_option_opaque(NativePortType port_, Object? opaque) =>
       wasmModule.wire_create_option_opaque(port_, opaque);
 
   void wire_create_array_opaque_enum(NativePortType port_) => wasmModule.wire_create_array_opaque_enum(port_);
@@ -1329,9 +1329,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque) =>
       wasmModule.wire_run_enum_opaque(port_, opaque);
 
-  void wire_run_opaque(NativePortType port_, dynamic opaque) => wasmModule.wire_run_opaque(port_, opaque);
+  void wire_run_opaque(NativePortType port_, Object opaque) => wasmModule.wire_run_opaque(port_, opaque);
 
-  void wire_run_opaque_with_delay(NativePortType port_, dynamic opaque) =>
+  void wire_run_opaque_with_delay(NativePortType port_, Object opaque) =>
       wasmModule.wire_run_opaque_with_delay(port_, opaque);
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);

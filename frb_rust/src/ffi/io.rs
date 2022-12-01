@@ -1,9 +1,7 @@
 use crate::Channel;
-use crate::DartOpaque;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
-use crate::support;
 use crate::Dart_DeletePersistentHandle_DL_Trampolined;
 use crate::Dart_HandleFromPersistent_DL_Trampolined;
 use crate::Dart_NewPersistentHandle_DL_Trampolined;

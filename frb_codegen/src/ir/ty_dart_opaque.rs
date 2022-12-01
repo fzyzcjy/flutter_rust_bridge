@@ -18,7 +18,7 @@ impl IrTypeTrait for IrTypeDartOpaque {
 
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
         if target.is_wasm() {
-            "dynamic"
+            "Object"
         } else {
             "wire_DartOpaque"
         }

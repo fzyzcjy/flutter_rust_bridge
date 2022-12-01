@@ -75,7 +75,7 @@ impl IrTypeTrait for IrTypeRustOpaque {
 
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
         if let Target::Wasm = target {
-            "dynamic".to_owned()
+            "Object".to_owned()
         } else {
             self.rust_wire_type(target)
         }
