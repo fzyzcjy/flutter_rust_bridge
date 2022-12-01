@@ -1756,6 +1756,103 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<DartOpaqueNested> createNestedDartOpaque({required Object opaque1, required Object opaque2, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque1);
+    var arg1 = _platform.api2wire_DartObject(opaque2);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_create_nested_dart_opaque(port_, arg0, arg1),
+      parseSuccessData: _wire2api_dart_opaque_nested,
+      constMeta: kCreateNestedDartOpaqueConstMeta,
+      argValues: [opaque1, opaque2],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kCreateNestedDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_nested_dart_opaque",
+        argNames: ["opaque1", "opaque2"],
+      );
+
+  Future<void> getNestedDartOpaque({required DartOpaqueNested opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_dart_opaque_nested(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_get_nested_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kGetNestedDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kGetNestedDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_nested_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Future<EnumDartOpaque> createEnumDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_create_enum_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_enum_dart_opaque,
+      constMeta: kCreateEnumDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kCreateEnumDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_enum_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Future<void> getEnumDartOpaque({required EnumDartOpaque opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_enum_dart_opaque(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_get_enum_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kGetEnumDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kGetEnumDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_enum_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Object syncLoopback({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_loopback(arg0),
+      parseSuccessData: _wire2api_SyncReturn_Object,
+      constMeta: kSyncLoopbackConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncLoopbackConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_loopback",
+        argNames: ["opaque"],
+      );
+
+  Object? syncOptionLoopback({Object? opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd_DartObject(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_loopback(arg0),
+      parseSuccessData: _wire2api_SyncReturn_Option_Object,
+      constMeta: kSyncOptionLoopbackConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionLoopbackConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_loopback",
+        argNames: ["opaque"],
+      );
+
   String? syncOption({dynamic hint}) {
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option(),
@@ -2085,11 +2182,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return HideSyncData.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);
   }
 
+  Object _wire2api_SyncReturn_Object(dynamic raw) {
+    return _platform.inner.get_dart_object(getOpaquePtr(raw));
+  }
+
   HideData? _wire2api_SyncReturn_Option_HideData(dynamic raw) {
     if (raw == null) {
       return null;
     }
     return HideData.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);
+  }
+
+  Object? _wire2api_SyncReturn_Option_Object(dynamic raw) {
+    if (raw == null) {
+      return null;
+    }
+    return _platform.inner.get_dart_object(getOpaquePtr(raw));
   }
 
   String? _wire2api_SyncReturn_Option_String(dynamic raw) {
@@ -2371,6 +2479,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
+  DartOpaqueNested _wire2api_dart_opaque_nested(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DartOpaqueNested(
+      first: _wire2api_DartObject(arr[0]),
+      second: _wire2api_DartObject(arr[1]),
+    );
+  }
+
   Distance _wire2api_distance(dynamic raw) {
     switch (raw[0]) {
       case 0:
@@ -2393,6 +2510,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       attributes: _wire2api_opt_list_attribute(arr[2]),
       children: _wire2api_opt_list_element(arr[3]),
     );
+  }
+
+  EnumDartOpaque _wire2api_enum_dart_opaque(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumDartOpaque_Primitive(
+          _wire2api_i32(raw[1]),
+        );
+      case 1:
+        return EnumDartOpaque_Opaque(
+          _wire2api_DartObject(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
   }
 
   EnumOpaque _wire2api_enum_opaque(dynamic raw) {
@@ -2710,6 +2842,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       first: _wire2api_HideData(arr[0]),
       second: _wire2api_HideData(arr[1]),
     );
+  }
+
+  Object? _wire2api_opt_DartObject(dynamic raw) {
+    return raw == null ? null : _wire2api_DartObject(raw);
   }
 
   HideData? _wire2api_opt_HideData(dynamic raw) {

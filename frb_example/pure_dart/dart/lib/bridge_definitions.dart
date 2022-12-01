@@ -464,6 +464,30 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCreateNestedOpaqueConstMeta;
 
+  Future<DartOpaqueNested> createNestedDartOpaque({required Object opaque1, required Object opaque2, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateNestedDartOpaqueConstMeta;
+
+  Future<void> getNestedDartOpaque({required DartOpaqueNested opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetNestedDartOpaqueConstMeta;
+
+  Future<EnumDartOpaque> createEnumDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateEnumDartOpaqueConstMeta;
+
+  Future<void> getEnumDartOpaque({required EnumDartOpaque opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetEnumDartOpaqueConstMeta;
+
+  Object syncLoopback({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncLoopbackConstMeta;
+
+  Object? syncOptionLoopback({Object? opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionLoopbackConstMeta;
+
   String? syncOption({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncOptionConstMeta;
@@ -825,6 +849,16 @@ class Customized {
   });
 }
 
+class DartOpaqueNested {
+  final Object first;
+  final Object second;
+
+  DartOpaqueNested({
+    required this.first,
+    required this.second,
+  });
+}
+
 @freezed
 class Distance with _$Distance {
   const factory Distance.unknown() = Distance_Unknown;
@@ -845,6 +879,16 @@ class Element {
     this.attributes,
     this.children,
   });
+}
+
+@freezed
+class EnumDartOpaque with _$EnumDartOpaque {
+  const factory EnumDartOpaque.primitive(
+    int field0,
+  ) = EnumDartOpaque_Primitive;
+  const factory EnumDartOpaque.opaque(
+    Object field0,
+  ) = EnumDartOpaque_Opaque;
 }
 
 @freezed

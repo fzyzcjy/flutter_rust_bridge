@@ -205,15 +205,27 @@ impl<'a> TypeParser<'a> {
                             ))),
                             _ => None,
                         },
-                        Boxed(inner) if inner.inner.is_opaque() => match *inner.inner {
-                            RustOpaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
-                                IrTypeSyncReturn::RustOpaque(opaque),
-                            )))),
-                            _ => None,
-                        },
+                        Boxed(inner)
+                            if inner.inner.is_rust_opaque() || inner.inner.is_dart_opaque() =>
+                        {
+                            match *inner.inner {
+                                RustOpaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(
+                                    Box::new(IrTypeSyncReturn::RustOpaque(opaque)),
+                                ))),
+                                DartOpaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(
+                                    Box::new(IrTypeSyncReturn::DartOpaque(opaque)),
+                                ))),
+                                _ => None,
+                            }
+                        }
                         _ => None,
                     },
-                    Some(RustOpaque(opaque)) => Some(SyncReturn(IrTypeSyncReturn::RustOpaque(opaque))),
+                    Some(RustOpaque(opaque)) => {
+                        Some(SyncReturn(IrTypeSyncReturn::RustOpaque(opaque)))
+                    }
+                    Some(DartOpaque(opaque)) => {
+                        Some(SyncReturn(IrTypeSyncReturn::DartOpaque(opaque)))
+                    }
                     _ => None,
                 },
                 "Vec" => match *generic {

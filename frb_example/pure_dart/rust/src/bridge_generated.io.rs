@@ -571,6 +571,42 @@ pub extern "C" fn wire_create_nested_opaque(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_create_nested_dart_opaque(
+    port_: i64,
+    opaque1: wire_DartOpaque,
+    opaque2: wire_DartOpaque,
+) {
+    wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_nested_dart_opaque(port_: i64, opaque: *mut wire_DartOpaqueNested) {
+    wire_get_nested_dart_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_create_enum_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
+    wire_create_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_enum_dart_opaque(port_: i64, opaque: *mut wire_EnumDartOpaque) {
+    wire_get_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_loopback(opaque: wire_DartOpaque) -> support::WireSyncReturnStruct {
+    wire_sync_loopback_impl(opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_option_loopback(
+    opaque: *mut wire_DartOpaque,
+) -> support::WireSyncReturnStruct {
+    wire_sync_option_loopback_impl(opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sync_option() -> support::WireSyncReturnStruct {
     wire_sync_option_impl()
 }
@@ -741,6 +777,16 @@ pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut wire_ConcatenateW
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_customized_0() -> *mut wire_Customized {
     support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_dart_opaque_nested_0() -> *mut wire_DartOpaqueNested {
+    support::new_leak_box_ptr(wire_DartOpaqueNested::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_enum_dart_opaque_0() -> *mut wire_EnumDartOpaque {
+    support::new_leak_box_ptr(wire_EnumDartOpaque::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1325,6 +1371,18 @@ impl Wire2Api<Customized> for *mut wire_Customized {
         Wire2Api::<Customized>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<DartOpaqueNested> for *mut wire_DartOpaqueNested {
+    fn wire2api(self) -> DartOpaqueNested {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<DartOpaqueNested>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<EnumDartOpaque> for *mut wire_EnumDartOpaque {
+    fn wire2api(self) -> EnumDartOpaque {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<EnumDartOpaque>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<EnumOpaque> for *mut wire_EnumOpaque {
     fn wire2api(self) -> EnumOpaque {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1506,6 +1564,14 @@ impl Wire2Api<Customized> for wire_Customized {
         }
     }
 }
+impl Wire2Api<DartOpaqueNested> for wire_DartOpaqueNested {
+    fn wire2api(self) -> DartOpaqueNested {
+        DartOpaqueNested {
+            first: self.first.wire2api(),
+            second: self.second.wire2api(),
+        }
+    }
+}
 impl Wire2Api<Distance> for wire_Distance {
     fn wire2api(self) -> Distance {
         match self.tag {
@@ -1514,6 +1580,23 @@ impl Wire2Api<Distance> for wire_Distance {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Map);
                 Distance::Map(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumDartOpaque> for wire_EnumDartOpaque {
+    fn wire2api(self) -> EnumDartOpaque {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Primitive);
+                EnumDartOpaque::Primitive(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Opaque);
+                EnumDartOpaque::Opaque(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -1992,6 +2075,13 @@ pub struct wire_Customized {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_DartOpaqueNested {
+    first: wire_DartOpaque,
+    second: wire_DartOpaque,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_ExoticOptionals {
     int32: *mut i32,
     int64: *mut i64,
@@ -2221,6 +2311,30 @@ pub struct wire_Distance_Unknown {}
 #[derive(Clone)]
 pub struct wire_Distance_Map {
     field0: f64,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumDartOpaque {
+    tag: i32,
+    kind: *mut EnumDartOpaqueKind,
+}
+
+#[repr(C)]
+pub union EnumDartOpaqueKind {
+    Primitive: *mut wire_EnumDartOpaque_Primitive,
+    Opaque: *mut wire_EnumDartOpaque_Opaque,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumDartOpaque_Primitive {
+    field0: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumDartOpaque_Opaque {
+    field0: wire_DartOpaque,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -2496,6 +2610,15 @@ impl NewWithNullPtr for wire_Customized {
     }
 }
 
+impl NewWithNullPtr for wire_DartOpaqueNested {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: wire_DartOpaque::new_with_null_ptr(),
+            second: wire_DartOpaque::new_with_null_ptr(),
+        }
+    }
+}
+
 impl NewWithNullPtr for wire_Distance {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2510,6 +2633,33 @@ pub extern "C" fn inflate_Distance_Map() -> *mut DistanceKind {
     support::new_leak_box_ptr(DistanceKind {
         Map: support::new_leak_box_ptr(wire_Distance_Map {
             field0: Default::default(),
+        }),
+    })
+}
+
+impl NewWithNullPtr for wire_EnumDartOpaque {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumDartOpaque_Primitive() -> *mut EnumDartOpaqueKind {
+    support::new_leak_box_ptr(EnumDartOpaqueKind {
+        Primitive: support::new_leak_box_ptr(wire_EnumDartOpaque_Primitive {
+            field0: Default::default(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumDartOpaque_Opaque() -> *mut EnumDartOpaqueKind {
+    support::new_leak_box_ptr(EnumDartOpaqueKind {
+        Opaque: support::new_leak_box_ptr(wire_EnumDartOpaque_Opaque {
+            field0: wire_DartOpaque::new_with_null_ptr(),
         }),
     })
 }

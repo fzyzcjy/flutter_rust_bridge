@@ -187,6 +187,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_dart_opaque_nested(DartOpaqueNested raw) {
+    return api2wire_dart_opaque_nested(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_dart_opaque(EnumDartOpaque raw) {
+    return api2wire_enum_dart_opaque(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
     return api2wire_enum_opaque(raw);
   }
@@ -377,12 +387,29 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_dart_opaque_nested(DartOpaqueNested raw) {
+    return [api2wire_DartObject(raw.first), api2wire_DartObject(raw.second)];
+  }
+
+  @protected
   List<dynamic> api2wire_distance(Distance raw) {
     if (raw is Distance_Unknown) {
       return [0];
     }
     if (raw is Distance_Map) {
       return [1, api2wire_f64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_dart_opaque(EnumDartOpaque raw) {
+    if (raw is EnumDartOpaque_Primitive) {
+      return [0, api2wire_i32(raw.field0)];
+    }
+    if (raw is EnumDartOpaque_Opaque) {
+      return [1, api2wire_DartObject(raw.field0)];
     }
 
     throw Exception('unreachable');
@@ -1041,6 +1068,18 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_create_nested_opaque(NativePortType port_);
 
+  external void wire_create_nested_dart_opaque(NativePortType port_, Object opaque1, Object opaque2);
+
+  external void wire_get_nested_dart_opaque(NativePortType port_, List<dynamic> opaque);
+
+  external void wire_create_enum_dart_opaque(NativePortType port_, Object opaque);
+
+  external void wire_get_enum_dart_opaque(NativePortType port_, List<dynamic> opaque);
+
+  external dynamic /* Object */ wire_sync_loopback(Object opaque);
+
+  external dynamic /* Object? */ wire_sync_option_loopback(Object? opaque);
+
   external dynamic /* String? */ wire_sync_option();
 
   external dynamic /* String? */ wire_sync_option_null();
@@ -1379,6 +1418,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_opaque_vec_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_vec_run(port_, data);
 
   void wire_create_nested_opaque(NativePortType port_) => wasmModule.wire_create_nested_opaque(port_);
+
+  void wire_create_nested_dart_opaque(NativePortType port_, Object opaque1, Object opaque2) =>
+      wasmModule.wire_create_nested_dart_opaque(port_, opaque1, opaque2);
+
+  void wire_get_nested_dart_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_get_nested_dart_opaque(port_, opaque);
+
+  void wire_create_enum_dart_opaque(NativePortType port_, Object opaque) =>
+      wasmModule.wire_create_enum_dart_opaque(port_, opaque);
+
+  void wire_get_enum_dart_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_get_enum_dart_opaque(port_, opaque);
+
+  dynamic /* Object */ wire_sync_loopback(Object opaque) => wasmModule.wire_sync_loopback(opaque);
+
+  dynamic /* Object? */ wire_sync_option_loopback(Object? opaque) => wasmModule.wire_sync_option_loopback(opaque);
 
   dynamic /* String? */ wire_sync_option() => wasmModule.wire_sync_option();
 

@@ -134,7 +134,7 @@ impl DartApiSpec {
         dart_funcs.extend(
             distinct_input_types
                 .iter()
-                .filter(|ty| ty.is_opaque())
+                .filter(|ty| ty.is_rust_opaque())
                 .map(generate_opaque_getters),
         );
 
@@ -150,7 +150,7 @@ impl DartApiSpec {
 
         let dart_opaque_funcs = distinct_input_types
             .iter()
-            .filter(|ty| ty.is_opaque())
+            .filter(|ty| ty.is_rust_opaque())
             .map(generate_opaque_func)
             .collect::<Acc<_>>()
             .join("\n");

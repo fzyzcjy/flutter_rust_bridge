@@ -90,8 +90,13 @@ impl IrType {
     }
 
     #[inline]
-    pub fn is_opaque(&self) -> bool {
+    pub fn is_rust_opaque(&self) -> bool {
         matches!(self, RustOpaque(_))
+    }
+
+    #[inline]
+    pub fn is_dart_opaque(&self) -> bool {
+        matches!(self, DartOpaque(_))
     }
 
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap

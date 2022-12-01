@@ -8,6 +8,7 @@ pub enum IrTypeSyncReturn {
     Option(Box<IrTypeSyncReturn>),
     Primitive(IrTypePrimitive),
     RustOpaque(IrTypeRustOpaque),
+    DartOpaque(IrTypeDartOpaque),
     String,
     VecU8,
 }
@@ -68,6 +69,7 @@ impl IrTypeSyncReturn {
                 primitive: IrTypePrimitive::U8,
             }),
             IrTypeSyncReturn::RustOpaque(data) => IrType::RustOpaque(data.clone()),
+            IrTypeSyncReturn::DartOpaque(data) => IrType::DartOpaque(data.clone()),
             IrTypeSyncReturn::Option(o) => IrType::Optional(IrTypeOptional {
                 inner: Box::new(o.get_inner()),
             }),
