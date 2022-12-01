@@ -172,7 +172,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                         field.name.rust_style(),
                         if field.ty.rust_wire_is_pointer(Target::Io) {
                             "core::ptr::null_mut()".to_owned()
-                        } else if field.ty.is_opaque() {
+                        } else if field.ty.is_opaque() || field.ty.is_dart_opaque() {
                             format!(
                                 "{}::new_with_null_ptr()",
                                 field.ty.rust_wire_type(Target::Io)

@@ -1100,6 +1100,16 @@ pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.second.hide_data();
 }
 
+pub struct DartOpaqueNested {
+    pub first: DartOpaque,
+    pub second: DartOpaque,
+}
+
+pub enum EnumDartOpaque {
+    Primitive(i32),
+    Opaque(DartOpaque),
+}
+
 pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
     DartOpaqueNested {
         first: opaque1,

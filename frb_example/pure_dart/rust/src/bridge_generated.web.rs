@@ -544,6 +544,26 @@ pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_create_nested_dart_opaque(port_: MessagePort, opaque1: JsValue, opaque2: JsValue) {
+    wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_nested_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_get_nested_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_create_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_get_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -912,12 +932,37 @@ impl Wire2Api<Customized> for JsValue {
         }
     }
 }
+impl Wire2Api<DartOpaqueNested> for JsValue {
+    fn wire2api(self) -> DartOpaqueNested {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        DartOpaqueNested {
+            first: self_.get(0).wire2api(),
+            second: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<Distance> for JsValue {
     fn wire2api(self) -> Distance {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => Distance::Unknown,
             1 => Distance::Map(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumDartOpaque> for JsValue {
+    fn wire2api(self) -> EnumDartOpaque {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumDartOpaque::Primitive(self_.get(1).wire2api()),
+            1 => EnumDartOpaque::Opaque(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }

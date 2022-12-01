@@ -94,6 +94,11 @@ impl IrType {
         matches!(self, RustOpaque(_))
     }
 
+    #[inline]
+    pub fn is_dart_opaque(&self) -> bool {
+        matches!(self, DartOpaque(_))
+    }
+
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap
     /// and therefore do not implement [Send].
     #[inline]
