@@ -234,7 +234,7 @@ impl Channel {
         self.port
             .post_message(&msg.into_dart())
             .map_err(|err| {
-                unsafe{crate::console_error!("post: {:?}", err)};
+                crate::console_error!("post: {:?}", err);
             })
             .is_ok()
     }
@@ -372,13 +372,15 @@ impl PortLike {
 
 impl Clone for PortLike {
     fn clone(&self) -> Self {
-        PortLike { obj: JsValue::clone(&self) }
+        PortLike {
+            obj: JsValue::clone(&self),
+        }
     }
 }
 
 /// Copied from https://github.com/chemicstry/wasm_thread/blob/main/src/script_path.js
 pub fn script_path() -> Option<String> {
-    unsafe{js_sys::eval(
+    js_sys::eval(
         r#"
 (() => {
     try {
@@ -388,7 +390,7 @@ pub fn script_path() -> Option<String> {
         return parts[1];
     }
 })()"#,
-    )}
+    )
     .ok()?
     .as_string()
 }

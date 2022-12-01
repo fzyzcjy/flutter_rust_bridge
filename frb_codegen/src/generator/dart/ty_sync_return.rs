@@ -63,6 +63,9 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
                     o.inner_dart
                 )
             }
+            IrTypeSyncReturn::DartOpaque(_) => {
+                "return _platform.inner.get_dart_object(getOpaquePtr(raw));".to_owned()
+            }
             IrTypeSyncReturn::Option(_) => "".into(),
         };
         if let IrTypeSyncReturn::Option(ty) = &self.ir {

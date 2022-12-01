@@ -246,6 +246,26 @@ impl From<DartOpaque> for DartAbi {
     }
 }
 
+impl From<DartOpaque> for WireSyncReturnData {
+    fn from(mut data: DartOpaque) -> Self {
+        WireSyncReturnData(Some(
+            (data.handle.take().unwrap().into_raw() as usize)
+                .to_be_bytes()
+                .to_vec(),
+        ))
+    }
+}
+
+impl From<Option<DartOpaque>> for WireSyncReturnData {
+    fn from(value: Option<DartOpaque>) -> Self {
+        if let Some(opaque) = value {
+            opaque.into()
+        } else {
+            WireSyncReturnData(None)
+        }
+    }
+}
+
 impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(mut inner) = self.handle.take() {

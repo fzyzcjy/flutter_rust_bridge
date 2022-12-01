@@ -1576,6 +1576,102 @@ fn wire_create_nested_opaque_impl(port_: MessagePort) {
         move || move |task_callback| Ok(create_nested_opaque()),
     )
 }
+fn wire_create_nested_dart_opaque_impl(
+    port_: MessagePort,
+    opaque1: impl Wire2Api<DartOpaque> + UnwindSafe,
+    opaque2: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_nested_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque1 = opaque1.wire2api();
+            let api_opaque2 = opaque2.wire2api();
+            move |task_callback| Ok(create_nested_dart_opaque(api_opaque1, api_opaque2))
+        },
+    )
+}
+fn wire_get_nested_dart_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaqueNested> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_nested_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(get_nested_dart_opaque(api_opaque))
+        },
+    )
+}
+fn wire_create_enum_dart_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_enum_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(create_enum_dart_opaque(api_opaque))
+        },
+    )
+}
+fn wire_get_enum_dart_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<EnumDartOpaque> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_enum_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(get_enum_dart_opaque(api_opaque))
+        },
+    )
+}
+fn wire_sync_loopback_impl(
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_loopback",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            Ok(sync_loopback(api_opaque))
+        },
+    )
+}
+fn wire_sync_option_loopback_impl(
+    opaque: impl Wire2Api<Option<DartOpaque>> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_option_loopback",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            Ok(sync_option_loopback(api_opaque))
+        },
+    )
+}
 fn wire_sync_option_impl() -> support::WireSyncReturnStruct {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2119,6 +2215,13 @@ impl support::IntoDart for ConcatenateWith {
 }
 impl support::IntoDartExceptPrimitive for ConcatenateWith {}
 
+impl support::IntoDart for DartOpaqueNested {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.first.into_dart(), self.second.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for DartOpaqueNested {}
+
 impl support::IntoDart for Distance {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2142,6 +2245,16 @@ impl support::IntoDart for Element {
 }
 impl support::IntoDartExceptPrimitive for Element {}
 
+impl support::IntoDart for EnumDartOpaque {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Primitive(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::Opaque(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for EnumDartOpaque {}
 impl support::IntoDart for EnumOpaque {
     fn into_dart(self) -> support::DartAbi {
         match self {

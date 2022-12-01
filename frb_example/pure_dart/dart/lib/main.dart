@@ -697,12 +697,13 @@ void main(List<String> args) async {
     String f() => 'Test_String';
 
     test('loopback', () async {
-      // ignore: unused_local_variable
       await api.loopBackArrayGet(opaque: await api.loopBackArray(opaque: f));
-      // ignore: unused_local_variable
       await api.loopBackVecGet(opaque: await api.loopBackVec(opaque: f));
-      // ignore: unused_local_variable
       await api.loopBackOptionGet(opaque: await api.loopBackOption(opaque: f));
+
+      var syncBack = api.syncLoopback(opaque: f);
+      expect(identical(api.syncOptionLoopback(opaque: syncBack), f), isTrue);
+      expect(api.syncOptionLoopback(opaque: null), isNull);
 
       var back1 = await api.loopBack(opaque: f) as String Function();
       expect(back1(), 'Test_String');
@@ -720,6 +721,16 @@ void main(List<String> args) async {
       expect(api.unwrapDartOpaque(opaque: _createLargeList(mb: 200)), 'Test');
       await expectLater(
           () => api.panicUnwrapDartOpaque(opaque: _createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+    });
+
+    test('nested', () async {
+      var str = await api.createNestedDartOpaque(opaque1: f, opaque2: f);
+      await api.getNestedDartOpaque(opaque: str);
+    });
+
+    test('enum', () async {
+      var en = await api.createEnumDartOpaque(opaque: f);
+      await api.getEnumDartOpaque(opaque: en);
     });
   });
 

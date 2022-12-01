@@ -224,7 +224,7 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) {
     let cnt2 = cnt.clone();
     let sink2 = sink.clone();
 
-    unsafe{spawn!(|| {
+    spawn!(|| {
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
             let msg = format!("(thread=child, i={}, old_cnt={})", i, old_cnt);
@@ -233,7 +233,7 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) {
             sleep(Duration::from_millis(100));
         }
         sink2.close();
-    })};
+    });
 
     for i in 0..5 {
         let old_cnt = cnt.fetch_add(1, Ordering::Relaxed);
@@ -667,12 +667,12 @@ pub struct Log {
 }
 
 pub fn handle_stream_sink_at_1(key: u32, max: u32, sink: StreamSink<Log>) {
-    unsafe{spawn!(|| {
+    spawn!(|| {
         for i in 0..max {
             let _ = sink.add(Log { key, value: i });
         }
         sink.close();
-    })};
+    });
 }
 
 pub fn handle_stream_sink_at_2(key: u32, sink: StreamSink<Log>, max: u32) {
@@ -724,7 +724,7 @@ impl ConcatenateWith {
 
     pub fn handle_some_stream_sink(&self, key: u32, max: u32, sink: StreamSink<Log2>) {
         let a = self.a.clone();
-        unsafe{spawn!(|| {
+        spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
@@ -732,20 +732,20 @@ impl ConcatenateWith {
                 });
             }
             sink.close();
-        })};
+        });
     }
 
     pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) {
-        unsafe{spawn!(|| {
+        spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
             sink.close();
-        })};
+        });
     }
 
     pub fn handle_some_static_stream_sink(key: u32, max: u32, sink: StreamSink<Log2>) {
-        unsafe{spawn!(|| {
+        spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
@@ -753,16 +753,16 @@ impl ConcatenateWith {
                 });
             }
             sink.close();
-        })};
+        });
     }
 
     pub fn handle_some_static_stream_sink_single_arg(sink: StreamSink<u32>) {
-        unsafe{spawn!(|| {
+        spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
             sink.close();
-        })};
+        });
     }
 }
 
@@ -1014,11 +1014,21 @@ pub enum EnumOpaque {
     RwLock(RustOpaque<RwLock<HideData>>),
 }
 
+pub enum EnumDartOpaque {
+    Primitive(i32),
+    Opaque(DartOpaque),
+}
+
 /// [`HideData`] has private fields.
 
 pub struct OpaqueNested {
     pub first: RustOpaque<HideData>,
     pub second: RustOpaque<HideData>,
+}
+
+pub struct DartOpaqueNested {
+    pub first: DartOpaque,
+    pub second: DartOpaque,
 }
 
 pub fn create_opaque() -> RustOpaque<HideData> {
@@ -1117,6 +1127,29 @@ pub fn create_nested_opaque() -> OpaqueNested {
     }
 }
 
+pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
+    DartOpaqueNested {
+        first: opaque1,
+        second: opaque2,
+    }
+}
+
+pub fn get_nested_dart_opaque(opaque: DartOpaqueNested) {}
+
+pub fn create_enum_dart_opaque(opaque: DartOpaque) -> EnumDartOpaque {
+    EnumDartOpaque::Opaque(opaque)
+}
+
+pub fn get_enum_dart_opaque(opaque: EnumDartOpaque) {}
+
+pub fn sync_loopback(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
+    SyncReturn(opaque)
+}
+
+pub fn sync_option_loopback(opaque: Option<DartOpaque>) -> SyncReturn<Option<DartOpaque>> {
+    SyncReturn(opaque)
+}
+
 pub fn sync_option() -> Result<SyncReturn<Option<String>>> {
     Ok(SyncReturn(Some("42".to_owned())))
 }
@@ -1128,10 +1161,6 @@ pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
 pub fn sync_option_opaque() -> Result<SyncReturn<Option<RustOpaque<HideData>>>> {
     Ok(SyncReturn(Some(RustOpaque::new(HideData::new()))))
 }
-
-// pub fn sync_option_opaque() -> Result<SyncReturn<Option<Opaque<HideData>>>> {
-//     Ok(SyncReturn(Some(Opaque::new(HideData::new()))))
-// }
 
 pub fn sync_void() -> SyncReturn<()> {
     SyncReturn(())
