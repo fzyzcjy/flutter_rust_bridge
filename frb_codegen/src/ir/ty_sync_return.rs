@@ -7,7 +7,7 @@ use crate::{ir::*, target::Target};
 pub enum IrTypeSyncReturn {
     Option(Box<IrTypeSyncReturn>),
     Primitive(IrTypePrimitive),
-    Opaque(IrTypeOpaque),
+    RustOpaque(IrTypeRustOpaque),
     String,
     VecU8,
 }
@@ -67,7 +67,7 @@ impl IrTypeSyncReturn {
             IrTypeSyncReturn::VecU8 => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
-            IrTypeSyncReturn::Opaque(data) => IrType::Opaque(data.clone()),
+            IrTypeSyncReturn::RustOpaque(data) => IrType::RustOpaque(data.clone()),
             IrTypeSyncReturn::Option(o) => IrType::Optional(IrTypeOptional {
                 inner: Box::new(o.get_inner()),
             }),

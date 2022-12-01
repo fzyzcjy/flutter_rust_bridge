@@ -57,7 +57,7 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             },
             IrTypeSyncReturn::String => "return utf8.decode(raw);".into(),
             IrTypeSyncReturn::VecU8 => "return raw;".into(),
-            IrTypeSyncReturn::Opaque(o) => {
+            IrTypeSyncReturn::RustOpaque(o) => {
                 format!(
                     "return {}.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);",
                     o.inner_dart

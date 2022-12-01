@@ -206,14 +206,14 @@ impl<'a> TypeParser<'a> {
                             _ => None,
                         },
                         Boxed(inner) if inner.inner.is_opaque() => match *inner.inner {
-                            Opaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
-                                IrTypeSyncReturn::Opaque(opaque),
+                            RustOpaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
+                                IrTypeSyncReturn::RustOpaque(opaque),
                             )))),
                             _ => None,
                         },
                         _ => None,
                     },
-                    Some(Opaque(opaque)) => Some(SyncReturn(IrTypeSyncReturn::Opaque(opaque))),
+                    Some(RustOpaque(opaque)) => Some(SyncReturn(IrTypeSyncReturn::RustOpaque(opaque))),
                     _ => None,
                 },
                 "Vec" => match *generic {

@@ -234,7 +234,7 @@ impl Channel {
         self.port
             .post_message(&msg.into_dart())
             .map_err(|err| {
-                crate::console_error!("post: {:?}", err);
+                unsafe{crate::console_error!("post: {:?}", err)};
             })
             .is_ok()
     }
@@ -354,7 +354,6 @@ extern "C" {
     ///
     /// Attempts to coerce [`JsValue`]s into this interface using [`dyn_into`][JsCast::dyn_into]
     /// or [`dyn_ref`][JsCast::dyn_ref] will fail at runtime.
-    #[derive(Clone)]
     pub type PortLike;
     #[wasm_bindgen(method, catch, js_name = "postMessage")]
     pub fn post_message(this: &PortLike, value: &JsValue) -> Result<(), JsValue>;
@@ -371,9 +370,15 @@ impl PortLike {
     }
 }
 
+impl Clone for PortLike {
+    fn clone(&self) -> Self {
+        PortLike { obj: JsValue::clone(&self) }
+    }
+}
+
 /// Copied from https://github.com/chemicstry/wasm_thread/blob/main/src/script_path.js
 pub fn script_path() -> Option<String> {
-    js_sys::eval(
+    unsafe{js_sys::eval(
         r#"
 (() => {
     try {
@@ -383,7 +388,7 @@ pub fn script_path() -> Option<String> {
         return parts[1];
     }
 })()"#,
-    )
+    )}
     .ok()?
     .as_string()
 }
