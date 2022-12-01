@@ -1099,3 +1099,18 @@ pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.first.hide_data();
     opaque.second.hide_data();
 }
+
+pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
+    DartOpaqueNested {
+        first: opaque1,
+        second: opaque2,
+    }
+}
+
+pub fn get_nested_dart_opaque(opaque: DartOpaqueNested) {}
+
+pub fn create_enum_dart_opaque(opaque: DartOpaque) -> EnumDartOpaque {
+    EnumDartOpaque::Opaque(opaque)
+}
+
+pub fn get_enum_dart_opaque(opaque: EnumDartOpaque) {}
