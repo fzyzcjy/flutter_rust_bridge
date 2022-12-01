@@ -75,7 +75,7 @@
 - [Overview](contributing/overview.md)
 - [Overall design](contributing/design.md)
 - [Submodule implementations](contributing/submodule.md)
-  - [Opaque type safety](contributing/opaque_type_safety.md)
+  - [Rust opaque type safety](contributing/rust_opaque_type_safety.md)
 - [Appendix](contributing/appendix.md)
 
 # Part IV: More Doc

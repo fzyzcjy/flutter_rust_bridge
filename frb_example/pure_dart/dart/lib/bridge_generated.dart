@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
+
 import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeExampleSingleBlockTest {
@@ -1347,6 +1348,182 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["id"],
       );
 
+  String syncAcceptDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_accept_dart_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_String,
+      constMeta: kSyncAcceptDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncAcceptDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_accept_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Future<String> asyncAcceptDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_async_accept_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kAsyncAcceptDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kAsyncAcceptDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "async_accept_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Future<Object> loopBack({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_loop_back(port_, arg0),
+      parseSuccessData: _wire2api_DartObject,
+      constMeta: kLoopBackConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "loop_back",
+        argNames: ["opaque"],
+      );
+
+  Future<Object?> loopBackOption({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_loop_back_option(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_DartObject,
+      constMeta: kLoopBackOptionConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackOptionConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "loop_back_option",
+        argNames: ["opaque"],
+      );
+
+  Future<ObjectArray1> loopBackArray({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_loop_back_array(port_, arg0),
+      parseSuccessData: _wire2api_Object_array_1,
+      constMeta: kLoopBackArrayConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "loop_back_array",
+        argNames: ["opaque"],
+      );
+
+  Future<List<Object>> loopBackVec({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_loop_back_vec(port_, arg0),
+      parseSuccessData: _wire2api_list_DartObject,
+      constMeta: kLoopBackVecConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackVecConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "loop_back_vec",
+        argNames: ["opaque"],
+      );
+
+  Future<void> loopBackOptionGet({Object? opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_loop_back_option_get(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kLoopBackOptionGetConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackOptionGetConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "loop_back_option_get",
+        argNames: ["opaque"],
+      );
+
+  Future<void> loopBackArrayGet({required ObjectArray1 opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_Object_array_1(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_loop_back_array_get(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kLoopBackArrayGetConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackArrayGetConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "loop_back_array_get",
+        argNames: ["opaque"],
+      );
+
+  Future<void> loopBackVecGet({required List<Object> opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_list_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_loop_back_vec_get(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kLoopBackVecGetConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackVecGetConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "loop_back_vec_get",
+        argNames: ["opaque"],
+      );
+
+  String unwrapDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_unwrap_dart_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_String,
+      constMeta: kUnwrapDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kUnwrapDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "unwrap_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Future<void> panicUnwrapDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartObject(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_panic_unwrap_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kPanicUnwrapDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPanicUnwrapDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "panic_unwrap_dart_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<HideData> createOpaque({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_opaque(port_),
@@ -1360,6 +1537,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "create_opaque",
         argNames: [],
+      );
+
+  Future<HideData?> createOptionOpaque({HideData? opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd_HideData(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_create_option_opaque(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_HideData,
+      constMeta: kCreateOptionOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kCreateOptionOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_option_opaque",
+        argNames: ["opaque"],
       );
 
   HideData syncCreateOpaque({dynamic hint}) {
@@ -1807,6 +2000,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   ShareFnType get shareOpaqueRwLockHideData => _platform.inner.share_opaque_RwLockHideData;
   OpaqueTypeFinalizer get RwLockHideDataFinalizer => _platform.RwLockHideDataFinalizer;
 
+  void dispose() {
+    _platform.dispose();
+  }
 // Section: wire2api
 
   BoxDartDebug _wire2api_BoxDartDebug(dynamic raw) {
@@ -1827,6 +2023,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   DateTime _wire2api_Chrono_Utc(dynamic raw) {
     return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
+  }
+
+  Object _wire2api_DartObject(dynamic raw) {
+    return _platform.inner.get_dart_object(raw);
   }
 
   EnumOpaqueArray5 _wire2api_EnumOpaque_array_5(dynamic raw) {
@@ -1851,6 +2051,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MutexHideData _wire2api_MutexHideData(dynamic raw) {
     return MutexHideData.fromRaw(raw[0], raw[1], this);
+  }
+
+  ObjectArray1 _wire2api_Object_array_1(dynamic raw) {
+    return ObjectArray1((raw as List<dynamic>).map(_wire2api_DartObject).toList());
   }
 
   PointArray2 _wire2api_Point_array_2(dynamic raw) {
@@ -2098,6 +2302,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_application_env(raw);
   }
 
+  Object _wire2api_box_autoadd_DartObject(dynamic raw) {
+    return raw as Object;
+  }
+
+  HideData _wire2api_box_autoadd_HideData(dynamic raw) {
+    return raw as HideData;
+  }
+
   Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
     return _wire2api_attribute(raw);
   }
@@ -2342,6 +2554,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     }
   }
 
+  List<Object> _wire2api_list_DartObject(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_DartObject).toList();
+  }
+
   List<HideData> _wire2api_list_HideData(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_HideData).toList();
   }
@@ -2506,6 +2722,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
     return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
+  }
+
+  Object? _wire2api_opt_box_autoadd_DartObject(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_DartObject(raw);
+  }
+
+  HideData? _wire2api_opt_box_autoadd_HideData(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_HideData(raw);
   }
 
   Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {

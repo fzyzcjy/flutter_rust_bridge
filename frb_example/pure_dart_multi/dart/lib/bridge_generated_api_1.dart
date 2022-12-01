@@ -10,6 +10,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated_api_1.io.dart' if (dart.library.html) 'bridge_generated_api_1.web.dart';
+
 import 'package:meta/meta.dart';
 
 abstract class ApiClass1 {
@@ -43,6 +44,9 @@ class ApiClass1Impl implements ApiClass1 {
         argNames: ["a", "b"],
       );
 
+  void dispose() {
+    _platform.dispose();
+  }
 // Section: wire2api
 
   int _wire2api_i32(dynamic raw) {

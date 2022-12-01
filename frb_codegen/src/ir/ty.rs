@@ -17,7 +17,8 @@ pub enum IrType {
     Boxed(IrTypeBoxed),
     EnumRef(IrTypeEnumRef),
     SyncReturn(IrTypeSyncReturn),
-    Opaque(IrTypeOpaque),
+    DartOpaque(IrTypeDartOpaque),
+    RustOpaque(IrTypeRustOpaque),
 }
 
 impl IrType {
@@ -90,7 +91,7 @@ impl IrType {
 
     #[inline]
     pub fn is_opaque(&self) -> bool {
-        matches!(self, Opaque(_))
+        matches!(self, RustOpaque(_))
     }
 
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap
@@ -101,7 +102,8 @@ impl IrType {
             Self::GeneralList(_)
             | Self::StructRef(_)
             | Self::EnumRef(_)
-            | Self::Opaque(_)
+            | Self::RustOpaque(_)
+            | Self::DartOpaque(_)
             | Self::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => true,
             Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
             _ => false,

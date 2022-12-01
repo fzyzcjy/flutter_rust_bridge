@@ -2,9 +2,11 @@ use std::iter::FromIterator;
 
 use super::DartAbi;
 use super::MessagePort;
+use crate::support;
 pub use crate::wasm_bindgen_src::transfer::*;
+use crate::DartOpaque;
 use crate::DartSafe;
-use crate::Opaque;
+use crate::RustOpaque;
 pub use js_sys;
 pub use js_sys::Array as JsArray;
 use js_sys::*;
@@ -14,13 +16,15 @@ pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
+pub use crate::wasm_bindgen_src::transfer::*;
 pub trait IntoDart {
     fn into_dart(self) -> DartAbi;
 }
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
-impl<T: DartSafe> IntoDartExceptPrimitive for Opaque<T> {}
+impl<T: DartSafe> IntoDartExceptPrimitive for RustOpaque<T> {}
+impl IntoDartExceptPrimitive for DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
@@ -154,7 +158,14 @@ impl<T> IntoDart for *mut T {
     }
 }
 
-impl<T: DartSafe> IntoDart for Opaque<T> {
+impl<T: DartSafe> IntoDart for RustOpaque<T> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.into()
+    }
+}
+
+impl IntoDart for DartOpaque {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()
@@ -403,5 +414,42 @@ mod tests {
         let super::Timestamp { s, ns } = super::wire2api_timestamp(input);
         assert_eq!(s, 3_496);
         assert_eq!(ns, 567_000_000);
+    }
+}
+
+#[wasm_bindgen]
+pub unsafe fn get_dart_object(ptr: usize) -> JsValue {
+    *support::box_from_leak_ptr(ptr as _)
+}
+
+#[wasm_bindgen]
+pub unsafe fn drop_dart_object(ptr: usize) {
+    drop(support::box_from_leak_ptr::<JsValue>(ptr as _));
+}
+
+#[derive(Debug)]
+pub struct DartOpaqueBase {
+    inner: Option<Box<JsValue>>,
+    drop_port: String,
+}
+
+impl DartOpaqueBase {
+    pub fn new(handle: JsValue, port: JsValue) -> Self {
+        Self {
+            inner: Some(Box::new(handle)),
+            drop_port: port.dyn_ref::<BroadcastChannel>().unwrap().name(),
+        }
+    }
+
+    pub fn unwrap(mut self) -> JsValue {
+        *self.inner.take().unwrap()
+    }
+
+    pub fn into_raw(&mut self) -> *mut JsValue {
+        Box::into_raw(self.inner.take().unwrap()) as _
+    }
+
+    pub fn channel(&self) -> Channel {
+        Channel::new(PortLike::broadcast(&self.drop_port))
     }
 }

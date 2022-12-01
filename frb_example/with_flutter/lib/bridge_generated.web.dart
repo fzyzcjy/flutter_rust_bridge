@@ -16,6 +16,7 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
+
 // Section: api2wire
 
   @protected

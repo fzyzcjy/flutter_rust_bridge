@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
+
 import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
@@ -220,6 +221,9 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
         argNames: [],
       );
 
+  void dispose() {
+    _platform.dispose();
+  }
 // Section: wire2api
 
   String _wire2api_String(dynamic raw) {

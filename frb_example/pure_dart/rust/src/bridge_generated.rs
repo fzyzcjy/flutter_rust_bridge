@@ -1226,6 +1226,168 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
     )
 }
+fn wire_sync_accept_dart_opaque_impl(
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_accept_dart_opaque",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            Ok(sync_accept_dart_opaque(api_opaque))
+        },
+    )
+}
+fn wire_async_accept_dart_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "async_accept_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(async_accept_dart_opaque(api_opaque))
+        },
+    )
+}
+fn wire_loop_back_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "loop_back",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(loop_back(api_opaque))
+        },
+    )
+}
+fn wire_loop_back_option_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "loop_back_option",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(loop_back_option(api_opaque))
+        },
+    )
+}
+fn wire_loop_back_array_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "loop_back_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(loop_back_array(api_opaque))
+        },
+    )
+}
+fn wire_loop_back_vec_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "loop_back_vec",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(loop_back_vec(api_opaque))
+        },
+    )
+}
+fn wire_loop_back_option_get_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<Option<DartOpaque>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "loop_back_option_get",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(loop_back_option_get(api_opaque))
+        },
+    )
+}
+fn wire_loop_back_array_get_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<[DartOpaque; 1]> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "loop_back_array_get",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(loop_back_array_get(api_opaque))
+        },
+    )
+}
+fn wire_loop_back_vec_get_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<Vec<DartOpaque>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "loop_back_vec_get",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(loop_back_vec_get(api_opaque))
+        },
+    )
+}
+fn wire_unwrap_dart_opaque_impl(
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "unwrap_dart_opaque",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            Ok(unwrap_dart_opaque(api_opaque))
+        },
+    )
+}
+fn wire_panic_unwrap_dart_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "panic_unwrap_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(panic_unwrap_dart_opaque(api_opaque))
+        },
+    )
+}
 fn wire_create_opaque_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1234,6 +1396,22 @@ fn wire_create_opaque_impl(port_: MessagePort) {
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| Ok(create_opaque()),
+    )
+}
+fn wire_create_option_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<Option<RustOpaque<HideData>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "create_option_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(create_option_opaque(api_opaque))
+        },
     )
 }
 fn wire_sync_create_opaque_impl() -> support::WireSyncReturnStruct {
@@ -1269,7 +1447,10 @@ fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaqu
         },
     )
 }
-fn wire_run_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<Opaque<HideData>> + UnwindSafe) {
+fn wire_run_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "run_opaque",
@@ -1284,7 +1465,7 @@ fn wire_run_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<Opaque<HideDat
 }
 fn wire_run_opaque_with_delay_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<Opaque<HideData>> + UnwindSafe,
+    opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1329,7 +1510,7 @@ fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturnStruct {
     )
 }
 fn wire_sync_run_opaque_impl(
-    opaque: impl Wire2Api<Opaque<HideSyncData>> + UnwindSafe,
+    opaque: impl Wire2Api<RustOpaque<HideSyncData>> + UnwindSafe,
 ) -> support::WireSyncReturnStruct {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -1345,7 +1526,7 @@ fn wire_sync_run_opaque_impl(
 }
 fn wire_opaque_array_run_impl(
     port_: MessagePort,
-    data: impl Wire2Api<[Opaque<HideData>; 2]> + UnwindSafe,
+    data: impl Wire2Api<[RustOpaque<HideData>; 2]> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -1371,7 +1552,7 @@ fn wire_opaque_vec_impl(port_: MessagePort) {
 }
 fn wire_opaque_vec_run_impl(
     port_: MessagePort,
-    data: impl Wire2Api<Vec<Opaque<HideData>>> + UnwindSafe,
+    data: impl Wire2Api<Vec<RustOpaque<HideData>>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

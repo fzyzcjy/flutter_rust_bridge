@@ -224,7 +224,7 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) {
     let cnt2 = cnt.clone();
     let sink2 = sink.clone();
 
-    spawn!(|| {
+    unsafe{spawn!(|| {
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
             let msg = format!("(thread=child, i={}, old_cnt={})", i, old_cnt);
@@ -233,7 +233,7 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) {
             sleep(Duration::from_millis(100));
         }
         sink2.close();
-    });
+    })};
 
     for i in 0..5 {
         let old_cnt = cnt.fetch_add(1, Ordering::Relaxed);
@@ -667,12 +667,12 @@ pub struct Log {
 }
 
 pub fn handle_stream_sink_at_1(key: u32, max: u32, sink: StreamSink<Log>) {
-    spawn!(|| {
+    unsafe{spawn!(|| {
         for i in 0..max {
             let _ = sink.add(Log { key, value: i });
         }
         sink.close();
-    });
+    })};
 }
 
 pub fn handle_stream_sink_at_2(key: u32, sink: StreamSink<Log>, max: u32) {
@@ -724,7 +724,7 @@ impl ConcatenateWith {
 
     pub fn handle_some_stream_sink(&self, key: u32, max: u32, sink: StreamSink<Log2>) {
         let a = self.a.clone();
-        spawn!(|| {
+        unsafe{spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
@@ -732,20 +732,20 @@ impl ConcatenateWith {
                 });
             }
             sink.close();
-        });
+        })};
     }
 
     pub fn handle_some_stream_sink_at_1(&self, sink: StreamSink<u32>) {
-        spawn!(|| {
+        unsafe{spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
             sink.close();
-        });
+        })};
     }
 
     pub fn handle_some_static_stream_sink(key: u32, max: u32, sink: StreamSink<Log2>) {
-        spawn!(|| {
+        unsafe{spawn!(|| {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
@@ -753,16 +753,16 @@ impl ConcatenateWith {
                 });
             }
             sink.close();
-        });
+        })};
     }
 
     pub fn handle_some_static_stream_sink_single_arg(sink: StreamSink<u32>) {
-        spawn!(|| {
+        unsafe{spawn!(|| {
             for i in 0..5 {
                 sink.add(i);
             }
             sink.close();
-        });
+        })};
     }
 }
 
@@ -962,36 +962,84 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
 pub trait DartDebug: DartSafe + Debug + Send + Sync {}
 impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}
 
+pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    drop(opaque);
+    SyncReturn("test".to_owned())
+}
+
+pub fn async_accept_dart_opaque(opaque: DartOpaque) -> String {
+    drop(opaque);
+    "async test".to_owned()
+}
+
+pub fn loop_back(opaque: DartOpaque) -> DartOpaque {
+    opaque
+}
+
+pub fn loop_back_option(opaque: DartOpaque) -> Option<DartOpaque> {
+    Some(opaque)
+}
+
+pub fn loop_back_array(opaque: DartOpaque) -> [DartOpaque; 1] {
+    [opaque]
+}
+
+pub fn loop_back_vec(opaque: DartOpaque) -> Vec<DartOpaque> {
+    vec![opaque]
+}
+
+pub fn loop_back_option_get(opaque: Option<DartOpaque>) {}
+
+pub fn loop_back_array_get(opaque: [DartOpaque; 1]) {}
+
+pub fn loop_back_vec_get(opaque: Vec<DartOpaque>) {}
+
+/// [DartWrapObject] can be safely retrieved on a dart thread.
+pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    let handle = opaque.try_unwrap().unwrap();
+    SyncReturn("Test".to_owned())
+}
+
+/// [DartWrapObject] cannot be obtained
+/// on a thread other than the thread it was created on.
+pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) {
+    let handle = opaque.try_unwrap().unwrap();
+}
+
 pub enum EnumOpaque {
-    Struct(Opaque<HideData>),
-    Primitive(Opaque<i32>),
-    TraitObj(Opaque<Box<dyn DartDebug>>),
-    Mutex(Opaque<Mutex<HideData>>),
-    RwLock(Opaque<RwLock<HideData>>),
+    Struct(RustOpaque<HideData>),
+    Primitive(RustOpaque<i32>),
+    TraitObj(RustOpaque<Box<dyn DartDebug>>),
+    Mutex(RustOpaque<Mutex<HideData>>),
+    RwLock(RustOpaque<RwLock<HideData>>),
 }
 
 /// [`HideData`] has private fields.
 
 pub struct OpaqueNested {
-    pub first: Opaque<HideData>,
-    pub second: Opaque<HideData>,
+    pub first: RustOpaque<HideData>,
+    pub second: RustOpaque<HideData>,
 }
 
-pub fn create_opaque() -> Opaque<HideData> {
-    Opaque::new(HideData::new())
+pub fn create_opaque() -> RustOpaque<HideData> {
+    RustOpaque::new(HideData::new())
 }
 
-pub fn sync_create_opaque() -> SyncReturn<Opaque<HideData>> {
-    SyncReturn(Opaque::new(HideData::new()))
+pub fn create_option_opaque(opaque: Option<RustOpaque<HideData>>) -> Option<RustOpaque<HideData>> {
+    opaque
+}
+
+pub fn sync_create_opaque() -> SyncReturn<RustOpaque<HideData>> {
+    SyncReturn(RustOpaque::new(HideData::new()))
 }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
     [
-        EnumOpaque::Struct(Opaque::new(HideData::new())),
-        EnumOpaque::Primitive(Opaque::new(42)),
+        EnumOpaque::Struct(RustOpaque::new(HideData::new())),
+        EnumOpaque::Primitive(RustOpaque::new(42)),
         EnumOpaque::TraitObj(opaque_dyn!("String")),
-        EnumOpaque::Mutex(Opaque::new(Mutex::new(HideData::new()))),
-        EnumOpaque::RwLock(Opaque::new(RwLock::new(HideData::new()))),
+        EnumOpaque::Mutex(RustOpaque::new(Mutex::new(HideData::new()))),
+        EnumOpaque::RwLock(RustOpaque::new(RwLock::new(HideData::new()))),
     ]
 }
 
@@ -1009,25 +1057,28 @@ pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
     }
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
     opaque.hide_data()
 }
 
-pub fn run_opaque_with_delay(opaque: Opaque<HideData>) -> String {
+pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
     sleep(Duration::from_millis(1000));
     opaque.hide_data()
 }
 
-pub fn opaque_array() -> [Opaque<HideData>; 2] {
-    [Opaque::new(HideData::new()), Opaque::new(HideData::new())]
+pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
+    [
+        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideData::new()),
+    ]
 }
 
-pub fn create_sync_opaque() -> Opaque<HideSyncData> {
-    Opaque::new(HideSyncData::new())
+pub fn create_sync_opaque() -> RustOpaque<HideSyncData> {
+    RustOpaque::new(HideSyncData::new())
 }
 
-pub fn sync_create_sync_opaque() -> SyncReturn<Opaque<HideSyncData>> {
-    SyncReturn(Opaque::new(HideSyncData::new()))
+pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<HideSyncData>> {
+    SyncReturn(RustOpaque::new(HideSyncData::new()))
 }
 
 // OpaqueSyncStruct does not implement Send trait.
@@ -1036,21 +1087,24 @@ pub fn sync_create_sync_opaque() -> SyncReturn<Opaque<HideSyncData>> {
 //     data.0.hide_data()
 // }
 
-pub fn sync_run_opaque(opaque: Opaque<HideSyncData>) -> SyncReturn<String> {
+pub fn sync_run_opaque(opaque: RustOpaque<HideSyncData>) -> SyncReturn<String> {
     SyncReturn(opaque.hide_data())
 }
 
-pub fn opaque_array_run(data: [Opaque<HideData>; 2]) {
+pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
     for i in data {
         i.hide_data();
     }
 }
 
-pub fn opaque_vec() -> Vec<Opaque<HideData>> {
-    vec![Opaque::new(HideData::new()), Opaque::new(HideData::new())]
+pub fn opaque_vec() -> Vec<RustOpaque<HideData>> {
+    vec![
+        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideData::new()),
+    ]
 }
 
-pub fn opaque_vec_run(data: Vec<Opaque<HideData>>) {
+pub fn opaque_vec_run(data: Vec<RustOpaque<HideData>>) {
     for i in data {
         i.hide_data();
     }
@@ -1058,8 +1112,8 @@ pub fn opaque_vec_run(data: Vec<Opaque<HideData>>) {
 
 pub fn create_nested_opaque() -> OpaqueNested {
     OpaqueNested {
-        first: Opaque::new(HideData::new()),
-        second: Opaque::new(HideData::new()),
+        first: RustOpaque::new(HideData::new()),
+        second: RustOpaque::new(HideData::new()),
     }
 }
 
@@ -1071,8 +1125,8 @@ pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
     Ok(SyncReturn(None))
 }
 
-pub fn sync_option_opaque() -> Result<SyncReturn<Option<Opaque<HideData>>>> {
-    Ok(SyncReturn(Some(Opaque::new(HideData::new()))))
+pub fn sync_option_opaque() -> Result<SyncReturn<Option<RustOpaque<HideData>>>> {
+    Ok(SyncReturn(Some(RustOpaque::new(HideData::new()))))
 }
 
 // pub fn sync_option_opaque() -> Result<SyncReturn<Option<Opaque<HideData>>>> {

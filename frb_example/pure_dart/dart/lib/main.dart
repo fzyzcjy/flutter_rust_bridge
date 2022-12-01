@@ -20,6 +20,7 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
+  tearDownAll(() => api.dispose());
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -692,7 +693,37 @@ void main(List<String> args) async {
     });
   });
 
-  group('opaque type', () {
+  group('dart opaque type', () {
+    String f() => 'Test_String';
+
+    test('loopback', () async {
+      // ignore: unused_local_variable
+      await api.loopBackArrayGet(opaque: await api.loopBackArray(opaque: f));
+      // ignore: unused_local_variable
+      await api.loopBackVecGet(opaque: await api.loopBackVec(opaque: f));
+      // ignore: unused_local_variable
+      await api.loopBackOptionGet(opaque: await api.loopBackOption(opaque: f));
+
+      var back1 = await api.loopBack(opaque: f) as String Function();
+      expect(back1(), 'Test_String');
+      var back2 = await api.loopBack(opaque: back1) as String Function();
+      expect(back2(), 'Test_String');
+      expect(identical(back2, f), isTrue);
+    });
+
+    test('drop', () async {
+      expect(await api.asyncAcceptDartOpaque(opaque: _createLargeList(mb: 200)), 'async test');
+      expect(api.syncAcceptDartOpaque(opaque: _createLargeList(mb: 200)), 'test');
+    });
+
+    test('unwrap', () async {
+      expect(api.unwrapDartOpaque(opaque: _createLargeList(mb: 200)), 'Test');
+      await expectLater(
+          () => api.panicUnwrapDartOpaque(opaque: _createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+    });
+  });
+
+  group('rust opaque type', () {
     test('create and dispose', () async {
       var futureData = api.createOpaque();
       var data = await api.createOpaque();
@@ -975,6 +1006,8 @@ int _createGarbage() {
   }
   return cum;
 }
+
+Uint8List _createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
 MyTreeNode _createMyTreeNode({required int arrLen}) {
   return MyTreeNode(

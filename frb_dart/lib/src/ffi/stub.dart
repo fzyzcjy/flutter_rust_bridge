@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'io.dart' if (dart.library.html) 'web.dart'
-    show DartPostCObject, WireSyncReturnStruct, NativePortType;
+    show DartPostCObject, NativePortType, WireSyncReturnStruct;
 export 'io.dart' if (dart.library.html) 'web.dart'
     show
         ExternalLibrary,
@@ -9,6 +9,7 @@ export 'io.dart' if (dart.library.html) 'web.dart'
         FrbOpaqueBase,
         getOpaquePtr,
         getOpaqueSize,
+        DartApiDl,
         NativePortType,
         PlatformPointer,
         OpaqueTypeFinalizer;
@@ -20,6 +21,19 @@ abstract class FlutterRustBridgeWireBase {
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(DartPostCObject ptr) {}
+
+  // ignore: non_constant_identifier_names
+  Object get_dart_object(int ptr) {
+    return '';
+  }
+
+  // ignore: non_constant_identifier_names
+  void drop_dart_object(int ptr) {}
+
+  // ignore: non_constant_identifier_names
+  int new_dart_opaque(Object obj) {
+    return 0;
+  }
 
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
