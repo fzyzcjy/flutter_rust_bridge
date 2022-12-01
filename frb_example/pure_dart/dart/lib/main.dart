@@ -721,6 +721,16 @@ void main(List<String> args) async {
       await expectLater(
           () => api.panicUnwrapDartOpaque(opaque: _createLargeList(mb: 200)), throwsA(isA<FfiException>()));
     });
+
+    test('nested', () async {
+      var str = await api.createNestedDartOpaque(opaque1: f, opaque2: f);
+      await api.getNestedDartOpaque(opaque: str);
+    });
+
+    test('enum', () async {
+      var en = await api.createEnumDartOpaque(opaque: f);
+      await api.getEnumDartOpaque(opaque: en);
+    });
   });
 
   group('rust opaque type', () {
