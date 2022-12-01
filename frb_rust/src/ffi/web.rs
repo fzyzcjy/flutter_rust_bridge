@@ -442,8 +442,12 @@ impl DartOpaqueBase {
         }
     }
 
-    /// Creates a wrapper to send to dart.
-    /// Drop in the rust side is not allowed.
+    /// Creates a new wrapper for send to dart.
+    /// 
+    /// # Safety
+    /// 
+    /// Must be used for Dart objects created on the current thread
+    /// only to be sent to the Dart side.
     pub unsafe fn new_non_dropable(handle: JsValue) -> Self {
         Self {
             inner: Some(Box::new(handle)),

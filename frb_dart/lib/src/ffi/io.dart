@@ -31,7 +31,7 @@ class DartApiDl {
 
   static int _internal(ffi.DynamicLibrary dylib) {
     _initCode = dylib.lookupFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>),
-            int Function(ffi.Pointer<ffi.Void>)>('init_dart_api_dl')(
+            int Function(ffi.Pointer<ffi.Void>)>('init_frb_dart_api_dl')(
         ffi.NativeApi.initializeApiDLData);
     return _initCode!;
   }

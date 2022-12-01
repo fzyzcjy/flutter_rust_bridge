@@ -200,7 +200,11 @@ impl DartOpaque {
     }
 
     /// Creates a new [DartOpaque] for send to dart.
-    /// Drop in the rust side is not allowed.
+    /// 
+    /// # Safety
+    /// 
+    /// Must be used for Dart objects created on the current thread
+    /// only to be sent to the Dart side.
     pub unsafe fn new_non_dropable(handle: DartObject) -> Self {
         Self {
             handle: Some(DartOpaqueBase::new_non_dropable(handle)),
