@@ -429,15 +429,25 @@ pub unsafe fn drop_dart_object(ptr: usize) {
 
 #[derive(Debug)]
 pub struct DartOpaqueBase {
+    /// Option for correct drop.
     inner: Option<Box<JsValue>>,
-    drop_port: String,
+    drop_port: Option<String>,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: JsValue, port: JsValue) -> Self {
         Self {
             inner: Some(Box::new(handle)),
-            drop_port: port.dyn_ref::<BroadcastChannel>().unwrap().name(),
+            drop_port: Some(port.dyn_ref::<BroadcastChannel>().unwrap().name()),
+        }
+    }
+
+    /// Creates a wrapper to send to dart.
+    /// Drop in the rust side is not allowed.
+    pub unsafe fn new_non_dropable(handle: JsValue) -> Self {
+        Self {
+            inner: Some(Box::new(handle)),
+            drop_port: None,
         }
     }
 
@@ -450,6 +460,6 @@ impl DartOpaqueBase {
     }
 
     pub fn channel(&self) -> Channel {
-        Channel::new(PortLike::broadcast(&self.drop_port))
+        Channel::new(PortLike::broadcast(self.drop_port.as_ref().unwrap()))
     }
 }

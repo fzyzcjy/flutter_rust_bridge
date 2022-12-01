@@ -64,6 +64,7 @@ pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
 }
 
 #[derive(Debug)]
+/// Option for correct drop.
 pub struct DartHandleWrap(Option<Dart_PersistentHandle>);
 
 impl DartHandleWrap {
@@ -87,14 +88,23 @@ impl Drop for DartHandleWrap {
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: DartHandleWrap,
-    drop_port: MessagePort,
+    drop_port: Option<MessagePort>,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
         Self {
             inner: DartHandleWrap(Some(handle)),
-            drop_port: port,
+            drop_port: Some(port),
+        }
+    }
+
+    /// Creates a wrapper to send to dart.
+    /// Drop in the rust side is not allowed.
+    pub unsafe fn new_non_dropable(handle: Dart_Handle) -> Self {
+        Self {
+            inner: DartHandleWrap(Some(handle)),
+            drop_port: None,
         }
     }
 
@@ -107,6 +117,6 @@ impl DartOpaqueBase {
     }
 
     pub fn channel(&self) -> Channel {
-        Channel::new(self.drop_port)
+        Channel::new(self.drop_port.unwrap())
     }
 }

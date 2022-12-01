@@ -199,6 +199,15 @@ impl DartOpaque {
         }
     }
 
+    /// Creates a new [DartOpaque] for send to dart.
+    /// Drop in the rust side is not allowed.
+    pub unsafe fn new_non_dropable(handle: DartObject) -> Self {
+        Self {
+            handle: Some(DartOpaqueBase::new_non_dropable(handle)),
+            thread_id: std::thread::current().id(),
+        }
+    }
+
     /// Tries to get a Dart [DartObject].
     /// Returns the [DartObject] if the [DartOpaque] was created on the current thread.
     pub fn try_unwrap(mut self) -> Result<DartWrapObject, Self> {
