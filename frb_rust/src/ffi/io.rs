@@ -94,7 +94,7 @@ pub struct DartOpaqueBase {
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
         Self {
-            inner: DartHandleWrap(Some(handle)),
+            inner: DartHandleWrap::from_raw(handle),
             drop_port: Some(port),
         }
     }
@@ -107,13 +107,13 @@ impl DartOpaqueBase {
     /// only to be sent to the Dart side.
     pub unsafe fn new_non_dropable(handle: Dart_Handle) -> Self {
         Self {
-            inner: DartHandleWrap(Some(handle)),
+            inner: DartHandleWrap::from_raw(handle),
             drop_port: None,
         }
     }
 
     pub fn into_raw(&mut self) -> Dart_PersistentHandle {
-        self.inner.0.take().unwrap()
+        self.inner.into_raw()
     }
 
     pub fn unwrap(self) -> DartHandleWrap {
