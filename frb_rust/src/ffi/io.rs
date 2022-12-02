@@ -113,7 +113,7 @@ impl DartOpaqueBase {
     }
 
     pub fn into_raw(&mut self) -> Dart_PersistentHandle {
-        self.inner.0.take().unwrap()
+        self.inner.into_raw()
     }
 
     pub fn unwrap(self) -> DartHandleWrap {
