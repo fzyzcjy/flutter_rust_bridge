@@ -57,8 +57,13 @@ jobs:
         run: flutter pub get
 
       - name: Check DartApi version.
-        run: wget https://github.com/dart-lang/sdk/blob/master/runtime/include/dart_version.h?raw=true 
-          -O ./frb_rust/src/dart_api_dl/include/dart_version.h && git diff --exit-code
+        run: git clone --depth 1 --filter=blob:none 
+ 	        --sparse https://github.com/dart-lang/sdk.git &&
+	        cd sdk && git sparse-checkout set runtime/include
+
+      - run: mv -f ./sdk/runtime/include ./frb_rust/src/dart_api_dl/ &&
+          rm -r sdk &&
+          git diff --exit-code 
 
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)
