@@ -56,7 +56,7 @@ jobs:
         working-directory: ./frb_example/with_flutter
         run: flutter pub get
 
-      - name: Check DartApi version
+      - name: Install linux dependencies
         run: |
           echo 42
           echo 43
