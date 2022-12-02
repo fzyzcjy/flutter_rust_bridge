@@ -56,15 +56,14 @@ jobs:
         working-directory: ./frb_example/with_flutter
         run: flutter pub get
 
-      - name: Install linux dependencies
+      - name: Install Corrosion
         run: |
-          echo 42
-          echo 43
-          # git clone --depth 1 --filter=blob:none --sparse https://github.com/dart-lang/sdk.git
-	        # cd sdk && git sparse-checkout set runtime/include
-          # mv -f ./sdk/runtime/include ./frb_rust/src/dart_api_dl/
-          # rm -r sdk
-          # git diff --exit-code 
+          cd ..
+          set -euxo pipefail
+          git clone https://github.com/corrosion-rs/corrosion.git
+          cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --config Release
+          sudo cmake --install build --config Release
 
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)
