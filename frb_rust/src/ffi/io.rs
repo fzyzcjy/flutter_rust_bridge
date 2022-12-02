@@ -94,7 +94,7 @@ pub struct DartOpaqueBase {
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
         Self {
-            inner: DartHandleWrap(Some(handle)),
+            inner: DartHandleWrap::from_raw(handle),
             drop_port: Some(port),
         }
     }
