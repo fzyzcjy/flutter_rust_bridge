@@ -51,6 +51,8 @@ void drop_dart_object(uintptr_t ptr);
 
 uintptr_t new_dart_opaque(_Dart_Handle *handle);
 
+intptr_t init_frb_dart_api_dl(void *obj);
+
 void wire_draw_mandelbrot(int64_t port_,
                           struct wire_Size *image_size,
                           struct wire_Point *zoom_point,
