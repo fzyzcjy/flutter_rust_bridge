@@ -107,7 +107,7 @@ impl DartOpaqueBase {
     /// only to be sent to the Dart side.
     pub unsafe fn new_non_dropable(handle: Dart_Handle) -> Self {
         Self {
-            inner: DartHandleWrap(Some(handle)),
+            inner: DartHandleWrap::from_raw(handle),
             drop_port: None,
         }
     }
