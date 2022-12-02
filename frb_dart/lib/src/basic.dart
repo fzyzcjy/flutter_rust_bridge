@@ -38,7 +38,9 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   ReceivePort _initDropPort() {
     var port = broadcastPort(_DropIdPortGenerator.instance.create());
-    port.listen((message) {print('test listen $message');});
+    port.listen((message) {
+      inner.drop_dart_object(message);
+    });
     return port;
   }
 
