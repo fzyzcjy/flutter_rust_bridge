@@ -18,24 +18,20 @@ import '../isolate.dart' show SendPort;
 abstract class FlutterRustBridgeWireBase {
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
-  void store_dart_post_cobject(DartPostCObject ptr) {}
+  void store_dart_post_cobject(DartPostCObject ptr);
 
   // ignore: non_constant_identifier_names
-  Object get_dart_object(int ptr) {
-    return '';
-  }
+  Object get_dart_object(int ptr);
 
   // ignore: non_constant_identifier_names
-  void drop_dart_object(int ptr) {}
+  void drop_dart_object(int ptr);
 
   // ignore: non_constant_identifier_names
-  int new_dart_opaque(Object obj) {
-    return 0;
-  }
+  int new_dart_opaque(Object obj);
 
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
-  void free_WireSyncReturnStruct(WireSyncReturnStruct val) {}
+  void free_WireSyncReturnStruct(WireSyncReturnStruct val);
 }
 
 extension NativeType on SendPort {

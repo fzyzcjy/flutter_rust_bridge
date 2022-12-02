@@ -40,6 +40,6 @@ extern "C" {
 ///
 /// [1]: https://api.dart.dev/dart-ffi/NativeApi/initializeApiDLData.html
 #[no_mangle]
-pub unsafe extern "C" fn init_frb_dart_api_dl(obj: ptr::NonNull<c_void>) -> isize {
-    Dart_InitializeApiDL(obj.as_ptr())
+pub unsafe extern "C" fn init_frb_dart_api_dl(obj: *mut c_void) -> isize {
+    Dart_InitializeApiDL(obj)
 }

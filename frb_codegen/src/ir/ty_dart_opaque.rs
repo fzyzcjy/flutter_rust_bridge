@@ -9,7 +9,7 @@ impl IrTypeTrait for IrTypeDartOpaque {
     }
 
     fn safe_ident(&self) -> String {
-        "DartObject".to_owned()
+        "DartOpaque".to_owned()
     }
 
     fn dart_api_type(&self) -> String {

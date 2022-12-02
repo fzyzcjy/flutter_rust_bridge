@@ -474,12 +474,12 @@ pub extern "C" fn wire_loop_back_option_get(port_: i64, opaque: *mut wire_DartOp
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_array_get(port_: i64, opaque: *mut wire_list_DartObject) {
+pub extern "C" fn wire_loop_back_array_get(port_: i64, opaque: *mut wire_list_DartOpaque) {
     wire_loop_back_array_get_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_vec_get(port_: i64, opaque: *mut wire_list_DartObject) {
+pub extern "C" fn wire_loop_back_vec_get(port_: i64, opaque: *mut wire_list_DartOpaque) {
     wire_loop_back_vec_get_impl(port_, opaque)
 }
 
@@ -649,7 +649,7 @@ pub extern "C" fn new_BoxDartDebug() -> wire_BoxDartDebug {
 }
 
 #[no_mangle]
-pub extern "C" fn new_DartObject() -> wire_DartOpaque {
+pub extern "C" fn new_DartOpaque() -> wire_DartOpaque {
     wire_DartOpaque::new_with_null_ptr()
 }
 
@@ -688,7 +688,7 @@ pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_DartObject_0() -> *mut wire_DartOpaque {
+pub extern "C" fn new_box_autoadd_DartOpaque_0() -> *mut wire_DartOpaque {
     support::new_leak_box_ptr(wire_DartOpaque::new_with_null_ptr())
 }
 
@@ -944,8 +944,8 @@ pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_DartObject_0(len: i32) -> *mut wire_list_DartObject {
-    let wrap = wire_list_DartObject {
+pub extern "C" fn new_list_DartOpaque_0(len: i32) -> *mut wire_list_DartOpaque {
+    let wrap = wire_list_DartOpaque {
         ptr: support::new_leak_vec_ptr(<wire_DartOpaque>::new_with_null_ptr(), len),
         len,
     };
@@ -1165,7 +1165,7 @@ impl Wire2Api<RustOpaque<Mutex<HideData>>> for wire_MutexHideData {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<[DartOpaque; 1]> for *mut wire_list_DartObject {
+impl Wire2Api<[DartOpaque; 1]> for *mut wire_list_DartOpaque {
     fn wire2api(self) -> [DartOpaque; 1] {
         let vec: Vec<DartOpaque> = self.wire2api();
         support::from_vec_to_array(vec)
@@ -1684,7 +1684,7 @@ impl Wire2Api<KitchenSink> for wire_KitchenSink {
         }
     }
 }
-impl Wire2Api<Vec<DartOpaque>> for *mut wire_list_DartObject {
+impl Wire2Api<Vec<DartOpaque>> for *mut wire_list_DartOpaque {
     fn wire2api(self) -> Vec<DartOpaque> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2068,7 +2068,7 @@ pub struct wire_int_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_list_DartObject {
+pub struct wire_list_DartOpaque {
     ptr: *mut wire_DartOpaque,
     len: i32,
 }

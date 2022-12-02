@@ -47,7 +47,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Object api2wire_DartObject(Object raw) {
+  Object api2wire_DartOpaque(Object raw) {
     return [raw, dropPort];
   }
 
@@ -73,7 +73,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_Object_array_1(ObjectArray1 raw) {
-    return api2wire_list_DartObject(raw);
+    return api2wire_list_DartOpaque(raw);
   }
 
   @protected
@@ -147,8 +147,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Object api2wire_box_autoadd_DartObject(Object raw) {
-    return api2wire_DartObject(raw);
+  Object api2wire_box_autoadd_DartOpaque(Object raw) {
+    return api2wire_DartOpaque(raw);
   }
 
   @protected
@@ -383,7 +383,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_dart_opaque_nested(DartOpaqueNested raw) {
-    return [api2wire_DartObject(raw.first), api2wire_DartObject(raw.second)];
+    return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
   }
 
   @protected
@@ -404,7 +404,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return [0, api2wire_i32(raw.field0)];
     }
     if (raw is EnumDartOpaque_Opaque) {
-      return [1, api2wire_DartObject(raw.field0)];
+      return [1, api2wire_DartOpaque(raw.field0)];
     }
 
     throw Exception('unreachable');
@@ -531,8 +531,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_list_DartObject(List<Object> raw) {
-    return raw.map(api2wire_DartObject).toList();
+  List<dynamic> api2wire_list_DartOpaque(List<Object> raw) {
+    return raw.map(api2wire_DartOpaque).toList();
   }
 
   @protected
@@ -638,8 +638,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Object? api2wire_opt_box_autoadd_DartObject(Object? raw) {
-    return raw == null ? null : api2wire_box_autoadd_DartObject(raw);
+  Object? api2wire_opt_box_autoadd_DartOpaque(Object? raw) {
+    return raw == null ? null : api2wire_box_autoadd_DartOpaque(raw);
   }
 
   @protected

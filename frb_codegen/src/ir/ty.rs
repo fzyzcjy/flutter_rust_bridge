@@ -90,7 +90,7 @@ impl IrType {
     }
 
     #[inline]
-    pub fn is_opaque(&self) -> bool {
+    pub fn is_rust_opaque(&self) -> bool {
         matches!(self, RustOpaque(_))
     }
 
