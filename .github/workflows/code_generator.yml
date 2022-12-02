@@ -58,8 +58,8 @@ jobs:
 
       - name: Install Corrosion
         run: |
-          set -euxo pipefail
           git clone --depth 1 --filter=blob:none --sparse https://github.com/dart-lang/sdk.git
+          set -euxo pipefail
           git clone https://github.com/corrosion-rs/corrosion.git
           cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
           cmake --build build --config Release
