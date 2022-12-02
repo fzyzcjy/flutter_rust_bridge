@@ -328,9 +328,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         ),
         io: format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> {{
-                {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib)) {{
-                    DartApiDl.initApi(dylib);
-                }}",
+                {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib));",
             plat = dart_platform_class_name,
             wire = dart_wire_class_name,
         ),

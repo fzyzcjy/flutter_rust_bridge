@@ -9,7 +9,9 @@ impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(
-                "final ptr = inner.new_DartOpaque();
+                "
+                inner.dartApi.initApi();
+                final ptr = inner.new_DartOpaque();
                 _api_fill_to_wire_DartOpaque(raw, ptr);
                 return ptr;
                 "
