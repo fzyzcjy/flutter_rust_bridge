@@ -57,7 +57,7 @@ jobs:
         run: flutter pub get
 
       - name: Check DartApi version
-        run: | 
+        run: |
           git clone --depth 1 --filter=blob:none --sparse https://github.com/dart-lang/sdk.git
 	        cd sdk && git sparse-checkout set runtime/include
           mv -f ./sdk/runtime/include ./frb_rust/src/dart_api_dl/
