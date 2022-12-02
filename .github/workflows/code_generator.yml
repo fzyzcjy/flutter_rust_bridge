@@ -59,11 +59,12 @@ jobs:
       - name: Check DartApi
         run: |
           git clone --depth 1 --filter=blob:none --sparse https://github.com/dart-lang/sdk.git
-          set -euxo pipefail
-          git clone https://github.com/corrosion-rs/corrosion.git
-          cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
-          cmake --build build --config Release
-          sudo cmake --install build --config Release
+          cd sdk
+          git sparse-checkout set runtime/include
+          cd ..
+          mv -f ./sdk/runtime/include ./frb_rust/src/dart_api_dl/
+          rm -r sdk
+          git diff --exit-code
 
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)
