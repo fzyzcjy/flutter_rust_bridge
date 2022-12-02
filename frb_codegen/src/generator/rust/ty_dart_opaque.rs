@@ -10,7 +10,7 @@ use super::{ExternFuncCollector, NO_PARAMS};
 
 type_rust_generator_struct!(TypeDartOpaqueGenerator, IrTypeDartOpaque);
 
-impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
+impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> crate::target::Acc<Option<String>> {
         Acc {
             io: Some("DartOpaque::new(self.handle as _, self.port)".to_owned()),

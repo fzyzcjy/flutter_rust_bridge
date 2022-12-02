@@ -2,7 +2,7 @@
 //!
 //! [`Dart DL API`]: https://github.com/dart-lang/sdk/blob/main/runtime/include/dart_api_dl.h
 
-use std::{ffi::c_void, ptr};
+use std::ffi::c_void;
 
 use dart_sys::{Dart_Handle, Dart_PersistentHandle};
 

@@ -231,10 +231,12 @@ impl From<DartOpaque> for DartAbi {
 
 impl Drop for DartOpaque {
     fn drop(&mut self) {
-        if let Some(mut inner) = self.handle.take() {
+        if let Some(inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
+                let channel = inner.channel();
                 let ptr = inner.into_raw();
-                if !inner.channel().post(ptr) {
+
+                if !channel.post(ptr) {
                     warn!("Drop DartOpaque after closing the port.");
                 };
             }

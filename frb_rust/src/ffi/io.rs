@@ -112,7 +112,7 @@ impl DartOpaqueBase {
         }
     }
 
-    pub fn into_raw(&mut self) -> Dart_PersistentHandle {
+    pub fn into_raw(self) -> Dart_PersistentHandle {
         self.inner.into_raw()
     }
 
