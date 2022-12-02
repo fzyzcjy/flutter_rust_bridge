@@ -99,19 +99,6 @@ impl DartOpaqueBase {
         }
     }
 
-    /// Creates a new wrapper for send to dart.
-    ///
-    /// # Safety
-    ///
-    /// Must be used for Dart objects created on the current thread
-    /// only to be sent to the Dart side.
-    pub unsafe fn new_non_dropable(handle: Dart_Handle) -> Self {
-        Self {
-            inner: DartHandleWrap::from_raw(handle),
-            drop_port: None,
-        }
-    }
-
     pub fn into_raw(self) -> Dart_PersistentHandle {
         self.inner.into_raw()
     }
