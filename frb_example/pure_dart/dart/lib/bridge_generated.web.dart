@@ -22,7 +22,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_BoxDartDebug(BoxDartDebug raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
@@ -47,7 +47,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_HideData(HideData raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
@@ -57,17 +57,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_I32(I32 raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
   dynamic api2wire_MutexHideData(MutexHideData raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
   dynamic api2wire_RwLockHideData(RwLockHideData raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
