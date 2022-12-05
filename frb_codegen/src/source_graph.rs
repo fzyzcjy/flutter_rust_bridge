@@ -74,8 +74,6 @@ impl Crate {
         let source_rust_content = fs::read_to_string(&root_src_file).unwrap();
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
-        
-
         Crate {
             name,
             manifest_path: fs::canonicalize(manifest_path).unwrap(),
@@ -500,7 +498,7 @@ impl Module {
         ans
     }
 
-    pub fn collect_impls<'a>(&'a self, container: &mut HashMap<String, Vec<Impl>>) {
+    pub fn collect_impls(&self, container: &mut HashMap<String, Vec<Impl>>) {
         let scope = self.scope.as_ref().unwrap();
         for scope_impl in &scope.impls {
             let k = scope_impl.trait_.to_string();
