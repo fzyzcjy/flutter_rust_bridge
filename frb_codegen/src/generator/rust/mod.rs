@@ -134,7 +134,7 @@ impl<'a> Generator<'a> {
             .collect();
 
         lines.push_all(self.section_header_comment("related functions"));
-        lines += distinct_input_types
+        lines += distinct_output_types
             .iter()
             .map(|f| self.generate_related_funcs(f, ir_file))
             .collect();

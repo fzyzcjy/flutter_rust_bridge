@@ -1518,6 +1518,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_frb_generator_test(port_),
+      parseSuccessData: _wire2api_FrbOpaqueReturn,
+      constMeta: kFrbGeneratorTestConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kFrbGeneratorTestConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "frb_generator_test",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -1666,6 +1681,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   ShareFnType get shareOpaqueBoxDartDebug => _platform.inner.share_opaque_BoxDartDebug;
   OpaqueTypeFinalizer get BoxDartDebugFinalizer => _platform.BoxDartDebugFinalizer;
 
+  DropFnType get dropOpaqueFrbOpaqueReturn => _platform.inner.drop_opaque_FrbOpaqueReturn;
+  ShareFnType get shareOpaqueFrbOpaqueReturn => _platform.inner.share_opaque_FrbOpaqueReturn;
+  OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer => _platform.FrbOpaqueReturnFinalizer;
+
   DropFnType get dropOpaqueHideData => _platform.inner.drop_opaque_HideData;
   ShareFnType get shareOpaqueHideData => _platform.inner.share_opaque_HideData;
   OpaqueTypeFinalizer get HideDataFinalizer => _platform.HideDataFinalizer;
@@ -1706,6 +1725,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   EnumOpaqueArray5 _wire2api_EnumOpaque_array_5(dynamic raw) {
     return EnumOpaqueArray5((raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
+  }
+
+  FrbOpaqueReturn _wire2api_FrbOpaqueReturn(dynamic raw) {
+    return FrbOpaqueReturn.fromRaw(raw[0], raw[1], this);
   }
 
   HideData _wire2api_HideData(dynamic raw) {

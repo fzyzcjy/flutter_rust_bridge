@@ -130,7 +130,7 @@ impl DartApiSpec {
             .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common))
             .collect::<Vec<_>>();
         dart_funcs.extend(
-            distinct_input_types
+            distinct_output_types
                 .iter()
                 .filter(|ty| ty.is_opaque())
                 .map(generate_opaque_getters),
@@ -146,7 +146,7 @@ impl DartApiSpec {
             .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
             .collect::<Vec<_>>();
 
-        let dart_opaque_funcs = distinct_input_types
+        let dart_opaque_funcs = distinct_output_types
             .iter()
             .filter(|ty| ty.is_opaque())
             .map(generate_opaque_func)
