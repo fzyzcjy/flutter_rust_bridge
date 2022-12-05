@@ -52,7 +52,10 @@ pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
-    Dart_HandleFromPersistent_DL_Trampolined(ptr as _)
+    let handle = ptr as _;
+    let res = Dart_HandleFromPersistent_DL_Trampolined(handle);
+    Dart_DeletePersistentHandle_DL_Trampolined(handle);
+    res
 }
 
 /// # Safety
