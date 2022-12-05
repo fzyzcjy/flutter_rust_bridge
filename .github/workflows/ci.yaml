@@ -182,7 +182,7 @@ jobs:
         run: |
           dart run --enable-vm-service
             ./frb_example/pure_dart/dart/lib/test_vm_service.dart
-            ./target/debug/libflutter_rust_bridge_example.so
+            $CARGO_TARGET_DIR/debug/libflutter_rust_bridge_example.so
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
 
