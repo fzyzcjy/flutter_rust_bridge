@@ -814,6 +814,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   late final Finalizer<PlatformPointer> _BoxDartDebugFinalizer =
       Finalizer<PlatformPointer>(inner.drop_opaque_BoxDartDebug);
   Finalizer<PlatformPointer> get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final Finalizer<PlatformPointer> _FrbOpaqueReturnFinalizer =
+      Finalizer<PlatformPointer>(inner.drop_opaque_FrbOpaqueReturn);
+  Finalizer<PlatformPointer> get FrbOpaqueReturnFinalizer => _FrbOpaqueReturnFinalizer;
   late final Finalizer<PlatformPointer> _HideDataFinalizer = Finalizer<PlatformPointer>(inner.drop_opaque_HideData);
   Finalizer<PlatformPointer> get HideDataFinalizer => _HideDataFinalizer;
   late final Finalizer<PlatformPointer> _I32Finalizer = Finalizer<PlatformPointer>(inner.drop_opaque_I32);
@@ -1066,6 +1069,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_drop_static_dart_opaque(NativePortType port_);
 
+  external void wire_frb_generator_test(NativePortType port_);
+
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1109,6 +1114,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /*  */ drop_opaque_BoxDartDebug(ptr);
 
   external int /* *const c_void */ share_opaque_BoxDartDebug(ptr);
+
+  external dynamic /*  */ drop_opaque_FrbOpaqueReturn(ptr);
+
+  external int /* *const c_void */ share_opaque_FrbOpaqueReturn(ptr);
 
   external dynamic /*  */ drop_opaque_HideData(ptr);
 
@@ -1403,6 +1412,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_drop_static_dart_opaque(NativePortType port_) => wasmModule.wire_drop_static_dart_opaque(port_);
 
+  void wire_frb_generator_test(NativePortType port_) => wasmModule.wire_frb_generator_test(port_);
+
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);
 
@@ -1453,6 +1464,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /*  */ drop_opaque_BoxDartDebug(ptr) => wasmModule.drop_opaque_BoxDartDebug(ptr);
 
   int /* *const c_void */ share_opaque_BoxDartDebug(ptr) => wasmModule.share_opaque_BoxDartDebug(ptr);
+
+  dynamic /*  */ drop_opaque_FrbOpaqueReturn(ptr) => wasmModule.drop_opaque_FrbOpaqueReturn(ptr);
+
+  int /* *const c_void */ share_opaque_FrbOpaqueReturn(ptr) => wasmModule.share_opaque_FrbOpaqueReturn(ptr);
 
   dynamic /*  */ drop_opaque_HideData(ptr) => wasmModule.drop_opaque_HideData(ptr);
 

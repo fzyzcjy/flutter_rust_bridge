@@ -590,6 +590,11 @@ pub extern "C" fn wire_drop_static_dart_opaque(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_frb_generator_test(port_: i64) {
+    wire_frb_generator_test_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1049,6 +1054,21 @@ pub extern "C" fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
 pub extern "C" fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_FrbOpaqueReturn(ptr: *const c_void) {
+    unsafe {
+        Arc::<FrbOpaqueReturn>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_FrbOpaqueReturn(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
         ptr
     }
 }

@@ -13,6 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
+pub use crate::data::FrbOpaqueReturn;
 pub use crate::data::HideData;
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
@@ -1135,4 +1136,11 @@ pub fn set_static_dart_opaque(opaque: DartOpaque) {
 
 pub fn drop_static_dart_opaque() {
     drop(DART_OPAQUE.lock().unwrap().take());
+}
+
+/// Function to check the code generator.
+/// FrbOpaqueReturn must be only return type.
+/// FrbOpaqueReturn must not be used as an argument.
+pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
+    panic!("dummy code");
 }
