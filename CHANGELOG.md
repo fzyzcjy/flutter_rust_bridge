@@ -1,3 +1,7 @@
+## 1.51.1
+
+* Fix function generation related to opaque rust #867 (thanks @rogurotus)
+
 ## 1.51.0
 
 * support wasm with no decl set #861 (thanks @huang12zheng)
