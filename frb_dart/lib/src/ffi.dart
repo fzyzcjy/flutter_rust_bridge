@@ -64,7 +64,7 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   ///
   /// Throws a [StateError] if called after [dispose].
   @internal
-  PlatformPointer share() {
+  PlatformPointer shareOrMove() {
     if (!isStale()) {
       var ptr = shareFn(_ptr);
       if (_move) {

@@ -655,23 +655,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api_fill_to_wire
 
   void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, wire_BoxDartDebug wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_HideData(HideData apiObj, wire_HideData wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_I32(I32 apiObj, wire_I32 wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, wire_MutexHideData wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_RwLockHideData(RwLockHideData apiObj, wire_RwLockHideData wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
