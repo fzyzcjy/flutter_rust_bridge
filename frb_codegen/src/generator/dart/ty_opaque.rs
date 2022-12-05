@@ -14,7 +14,7 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            wasm: Some("return raw.share();".to_owned()),
+            wasm: Some("return raw.shareOrMove();".to_owned()),
             ..Default::default()
         }
     }
