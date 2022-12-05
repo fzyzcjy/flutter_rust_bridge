@@ -373,6 +373,30 @@ String hideData = await api.rustOpaque(opaque);
 //
 //`the finalizer is NOT guaranteed to be called before the program terminates.`
 </code></pre>
+<h3 id="case-8-unwrap"><a class="header" href="#case-8-unwrap">Case 8: Unwrap.</a></h3>
+<p>Rust <code>api.rs</code>:</p>
+<pre><code class="language-rust noplayground">pub use crate::data::HideData; // `pub` for bridge_generated.rs
+
+pub fn unwrap_rust_opaque(opaque: Opaque&lt;HideData&gt;) -&gt; Result&lt;String&gt; {
+    let res: Result&lt;HideData, Opaque&lt;HideData&gt;&gt; = opaque.try_unwrap();
+    let data: HideData = res.map_err(|_| anyhow::anyhow!(&quot;opaque type is shared&quot;))?;
+    Ok(data.hide_data())
+}
+</code></pre>
+<p>Dart:</p>
+<pre><code class="language-dart">
+// (Arc counter = 1) Dart has full ownership.
+var opaque = await api.createOpaque();
+
+// When passed as an argument, dart will relinquish ownership.
+opaque.move = true;
+
+// (Arc counter = 1) Rust has full ownership.
+// On the Rust side, the Arc unwrap safely 
+// as the Rust has full ownership of the opaque type. 
+// Memory is cleared in the usual way Rust.
+await api.unwrapRustOpaque(opaque: data);
+</code></pre>
 
                     </main>
 
