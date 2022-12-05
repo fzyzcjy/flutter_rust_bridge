@@ -35,8 +35,6 @@ void main(List<String> args) async {
         await vmService.gc();
         await Future<void>.delayed(const Duration(milliseconds: 10));
         expect(weakRef.target, isNull);
-
-        vmService.dispose();
       });
 
       test('unwrap', () async {
