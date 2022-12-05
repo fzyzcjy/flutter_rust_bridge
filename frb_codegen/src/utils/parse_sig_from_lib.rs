@@ -4,8 +4,6 @@ use syn::FnArg;
 
 use syn::Signature;
 
-
-
 use std::collections::HashMap;
 
 #[derive(Debug)]

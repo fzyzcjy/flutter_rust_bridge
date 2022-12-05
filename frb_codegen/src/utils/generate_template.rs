@@ -78,9 +78,8 @@ pub trait GenerateSourceTemplateTrait:
 {
     fn run_impl_trait_enum(&mut self) {
         // remove generate source dependencies
-        let root_src_file = Crate::new_withoud_resolve(&self.get_configs()[0].manifest_path)
-            .root_src_file
-            ;
+        let root_src_file =
+            Crate::new_withoud_resolve(&self.get_configs()[0].manifest_path).root_src_file;
         let root_src_file = root_src_file.to_str().unwrap();
 
         self.remove_gen_mod(root_src_file);

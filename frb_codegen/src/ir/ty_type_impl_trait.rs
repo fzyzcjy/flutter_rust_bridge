@@ -1,9 +1,7 @@
-
-
 use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
-use syn::{Ident};
+use syn::Ident;
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct IrTypeImplTrait {
