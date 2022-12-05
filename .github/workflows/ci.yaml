@@ -152,8 +152,35 @@ jobs:
             -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
           current_path: frb_example/pure_dart/dart
 
+  dart_vm_service_test:
+    name: Build and run Rust
+    runs-on: ubuntu-latest
 
-          
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: 1.64.0
+          override: true
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '2.17.6' # TODO upgrade later #655
+      - name: Install llvm dependency (Linux)
+        run: sudo apt update && sudo apt-get install -y libclang-dev
+
+      - name: Build pure_dart example
+        working-directory: ./frb_example/pure_dart/rust
+        run: cargo build --verbose
+      - name: Run tests for pure_dart example
+        working-directory: ./frb_example/pure_dart/rust
+        run: dart run --enable-vm-service ../lib/test_vm_service.dart $CARGO_TARGET_DIR/debug/libflutter_rust_bridge_example.so
+        env:
+          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+
 
   # -------------------------- linter --------------------------
   rust_build_and_test:

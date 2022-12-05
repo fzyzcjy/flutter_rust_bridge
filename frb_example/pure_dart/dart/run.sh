@@ -14,4 +14,4 @@ fi
 # need to be AOT, since prod environment is AOT, and JIT+valgrind will have strange problems
 dart compile exe lib/main.dart -o main.exe
 
-PYTHONUNBUFFERED=1 ./valgrind_util.py ./main.exe "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example.so" --enable-vm-service --chain-stack-traces
+PYTHONUNBUFFERED=1 ./valgrind_util.py ./main.exe "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example.so" --chain-stack-traces

@@ -5,7 +5,6 @@ import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
-import 'test_flutter_memory_leak_utility.dart';
 
 const isWeb = bool.fromEnvironment('dart.library.html');
 
@@ -713,14 +712,14 @@ void main(List<String> args) async {
     });
 
     test('drop', () async {
-      expect(await api.asyncAcceptDartOpaque(opaque: _createLargeList(mb: 200)), 'async test');
-      expect(api.syncAcceptDartOpaque(opaque: _createLargeList(mb: 200)), 'test');
+      expect(await api.asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'async test');
+      expect(api.syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
     });
 
     test('unwrap', () async {
-      expect(api.unwrapDartOpaque(opaque: _createLargeList(mb: 200)), 'Test');
+      expect(api.unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
       await expectLater(
-          () => api.panicUnwrapDartOpaque(opaque: _createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<FfiException>()));
     });
 
     test('nested', () async {
@@ -731,25 +730,6 @@ void main(List<String> args) async {
     test('enum', () async {
       var en = await api.createEnumDartOpaque(opaque: f);
       await api.getEnumDartOpaque(opaque: en);
-    });
-
-    test('GC', () async {
-      var vmService = await VmServiceUtil.create();
-      Uint8List? strongRef = _createLargeList(mb: 300);
-      final weakRef = WeakReference(strongRef);
-      await api.setStaticDartOpaque(opaque: strongRef);
-      strongRef = null;
-
-      await vmService.gc();
-      await Future<void>.delayed(const Duration(milliseconds: 10));
-      expect(weakRef.target, isNotNull);
-
-      await api.dropStaticDartOpaque();
-      await vmService.gc();
-      await Future<void>.delayed(const Duration(milliseconds: 10));
-      expect(weakRef.target, isNull);
-
-      vmService.dispose();
     });
   });
 
@@ -1020,6 +1000,6 @@ class MatchBigInt extends CustomMatcher {
   }
 }
 
-Uint8List _createLargeList({required int mb}) => Uint8List(1000000 * mb);
+Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
 // vim:expandtab:ts=2:sw=2
