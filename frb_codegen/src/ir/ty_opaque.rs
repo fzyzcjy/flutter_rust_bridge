@@ -11,6 +11,7 @@ pub struct IrTypeOpaque {
     pub inner_dart: String,
 }
 
+
 fn char_not_alphanumeric(c: char) -> bool {
     !c.is_alphanumeric()
 }

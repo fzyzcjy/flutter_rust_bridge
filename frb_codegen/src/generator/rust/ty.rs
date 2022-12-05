@@ -116,6 +116,9 @@ impl<'a> TypeRustGenerator<'a> {
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
             SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
             Opaque(ir) => TypeOpaqueGenerator { ir, context }.into(),
+            ImplTrait(_ir) => unreachable!(
+                "Please dispatch IrTypeImplTrait to TypeEnumRefGenerator before this step"
+            ),
         }
     }
 }

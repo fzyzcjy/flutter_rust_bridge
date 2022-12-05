@@ -8,6 +8,7 @@
 */
 
 use std::{
+    cmp::Ordering,
     collections::HashMap,
     fmt::Debug,
     fs,
@@ -16,7 +17,9 @@ use std::{
 
 use cargo_metadata::MetadataCommand;
 use log::{debug, warn};
-use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, UseTree};
+use syn::{
+    Attribute, Ident, ItemEnum, ItemStruct, PathArguments, TraitBound, Type, TypeImplTrait, UseTree,
+};
 
 use crate::markers;
 
@@ -31,7 +34,7 @@ pub struct Crate {
 }
 
 impl Crate {
-    pub fn new(manifest_path: &str) -> Self {
+    pub fn pre_new(manifest_path: &str) -> (String, PathBuf) {
         let mut cmd = MetadataCommand::new();
         cmd.manifest_path(manifest_path);
 
@@ -58,12 +61,21 @@ impl Crate {
                 panic!("No src/lib.rs or src/main.rs found for this Cargo.toml file");
             }
         };
+        (root_package.name.to_owned(), root_src_file)
+    }
+    pub fn new(manifest_path: &str) -> Self {
+        let mut result = Crate::new_withoud_resolve(manifest_path);
+        result.resolve();
+        result
+    }
+    pub fn new_withoud_resolve(manifest_path: &str) -> Self {
+        let (name, root_src_file) = Crate::pre_new(manifest_path);
 
         let source_rust_content = fs::read_to_string(&root_src_file).unwrap();
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
-        let mut result = Crate {
-            name: root_package.name.clone(),
+        let result = Crate {
+            name: name,
             manifest_path: fs::canonicalize(manifest_path).unwrap(),
             root_src_file: root_src_file.clone(),
             root_module: Module {
@@ -74,8 +86,6 @@ impl Crate {
                 scope: None,
             },
         };
-
-        result.resolve();
 
         result
     }
@@ -159,9 +169,40 @@ impl Debug for Enum {
 }
 
 #[derive(Debug, Clone)]
+pub struct ImplTrait {
+    pub ident: Ident,
+    pub src: TypeImplTrait,
+    pub bound: TraitBound,
+}
+#[derive(Debug, Clone, Eq)]
+pub struct Impl {
+    pub self_ty: Ident,
+    pub trait_: Ident,
+}
+
+impl Ord for Impl {
+    fn cmp(&self, other: &Impl) -> Ordering {
+        self.self_ty.cmp(&other.self_ty)
+    }
+}
+
+impl PartialOrd for Impl {
+    fn partial_cmp(&self, other: &Impl) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl PartialEq for Impl {
+    fn eq(&self, other: &Impl) -> bool {
+        self.self_ty == other.self_ty
+    }
+}
+
+#[derive(Debug, Clone)]
 pub struct ModuleScope {
     pub modules: Vec<Module>,
     pub enums: Vec<Enum>,
+    pub impls: Vec<Impl>,
     pub structs: Vec<Struct>,
     pub imports: Vec<Import>,
 }
@@ -265,6 +306,7 @@ impl Module {
         let mut scope_modules = Vec::new();
         let mut scope_structs = Vec::new();
         let mut scope_enums = Vec::new();
+        let mut scope_impls = Vec::new();
 
         let items = match self.source.as_ref().unwrap() {
             ModuleSource::File(file) => &file.items,
@@ -276,6 +318,10 @@ impl Module {
                 syn::Item::Struct(item_struct) => {
                     let (idents, mirror) = get_ident(&item_struct.ident, &item_struct.attrs);
 
+                    scope_impls.extend(get_impl_trait_from_attrs(
+                        &item_struct.ident,
+                        &item_struct.attrs,
+                    ));
                     scope_structs.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
                         Struct {
@@ -308,6 +354,19 @@ impl Module {
                             mirror,
                         }
                     }));
+                }
+                syn::Item::Impl(item_impl) => {
+                    if let Some((_b, ref path, _f)) = item_impl.trait_ {
+                        // To rule out segments[0].arguments have values
+                        if let Some(trait_) = path.get_ident() {
+                            if let Type::Path(ref type_path) = *(item_impl.self_ty) {
+                                scope_impls.push(Impl {
+                                    self_ty: type_path.path.get_ident().unwrap().to_owned(),
+                                    trait_: trait_.to_owned(),
+                                })
+                            }
+                        }
+                    }
                 }
                 syn::Item::Mod(item_mod) => {
                     let ident = item_mod.ident.clone();
@@ -381,6 +440,7 @@ impl Module {
             modules: scope_modules,
             enums: scope_enums,
             structs: scope_structs,
+            impls: scope_impls,
             imports: vec![], // Will be filled in by resolve_imports()
         });
     }
@@ -437,6 +497,30 @@ impl Module {
     pub fn collect_enums_to_vec(&self) -> HashMap<String, &Enum> {
         let mut ans = HashMap::new();
         self.collect_enums(&mut ans);
+        ans
+    }
+
+    pub fn collect_impls<'a>(&'a self, container: &mut HashMap<String, Vec<Impl>>) {
+        let scope = self.scope.as_ref().unwrap();
+        for scope_impl in &scope.impls {
+            let k = scope_impl.trait_.to_string();
+            let v = container.get_mut(&k);
+            if let Some(l) = v {
+                l.push(scope_impl.to_owned());
+            } else {
+                container.insert(k, vec![scope_impl.to_owned()]);
+            }
+        }
+        for scope_module in &scope.modules {
+            scope_module.collect_impls(container);
+        }
+    }
+    pub fn collect_impls_to_vec(&self) -> HashMap<String, Vec<Impl>> {
+        let mut ans = HashMap::new();
+        self.collect_impls(&mut ans);
+        for (_, v) in ans.iter_mut() {
+            v.sort();
+        }
         ans
     }
 }
@@ -614,4 +698,23 @@ fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
     }
 
     result.into_iter().map(|val| val.0).collect()
+}
+
+fn get_impl_trait_from_attrs(self_ty: &Ident, attrs: &[Attribute]) -> Vec<Impl> {
+    let mut scope_impls = vec![];
+    for a in attrs.iter() {
+        for tt_a in a.tokens.clone().into_iter() {
+            if let quote::__private::TokenTree::Group(g) = tt_a {
+                for tt_g in g.stream().into_iter() {
+                    if let quote::__private::TokenTree::Ident(trait_) = tt_g {
+                        scope_impls.push(Impl {
+                            self_ty: self_ty.clone(),
+                            trait_,
+                        });
+                    }
+                }
+            }
+        }
+    }
+    scope_impls
 }

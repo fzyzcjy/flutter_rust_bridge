@@ -24,7 +24,7 @@ pub fn transform(src: IrFile) -> IrFile {
 }
 
 fn transform_func_input_add_boxed(input: IrField) -> IrField {
-    if input.ty.is_struct() {
+    if input.ty.is_need_wrap_box() {
         debug!(
             "transform_func_input_add_boxed wrap Boxed to field={:?}",
             input

@@ -1,12 +1,22 @@
-use std::collections::HashSet;
 use std::ffi::OsStr;
 use std::fmt::Display;
 use std::fs;
-use std::hash::Hash;
+
 use std::path::Path;
 
-use anyhow::anyhow;
+use crate::Opts;
 
+use self::generate_template::*;
+
+pub fn get_symbols_if_no_duplicates(configs: &[Opts]) -> Result<Vec<String>, anyhow::Error> {
+    let mut opts = OptArray::new_without_resolve(configs);
+    let irs = opts.collect_irs();
+    opts.get_mut_irs().extend(irs);
+    opts.get_symbols_if_no_duplicates()
+}
+
+pub mod generate_template;
+mod parse_sig_from_lib;
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
         .strip_prefix(Path::new(crate_path).join("src"))
@@ -29,51 +39,6 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
     f()?;
 
     Ok(fs::write(path, content_original)?)
-}
-
-pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
-where
-    T: Eq + Hash + Clone,
-{
-    let mut uniq = HashSet::new();
-    iter.iter()
-        .filter(|x| !uniq.insert(*x))
-        .cloned()
-        .collect::<Vec<_>>()
-}
-
-/// check api defined by users, if no duplicates, then generate all symbols (api function name),
-/// including those generated implicitily by frb
-pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<String>, anyhow::Error> {
-    let mut explicit_raw_symbols = Vec::new();
-    let mut all_symbols = Vec::new();
-    for config in configs {
-        let raw_ir_file = config.get_ir_file();
-
-        // for checking explicit api duplication
-        explicit_raw_symbols.extend(raw_ir_file.funcs.iter().map(|f| f.name.clone()));
-
-        // for avoiding redundant generation in dart
-        all_symbols.extend(raw_ir_file.get_all_symbols(config));
-    }
-    let duplicates = find_all_duplicates(&explicit_raw_symbols);
-    if !duplicates.is_empty() {
-        let duplicated_symbols = duplicates.join(",");
-
-        let (symbol_str, verb_str) = if duplicates.len() == 1 {
-            ("symbol", "has")
-        } else {
-            ("symbols", "have")
-        };
-        return Err(anyhow!(
-            "{} [{}] {} already been defined",
-            symbol_str,
-            duplicated_symbols,
-            verb_str
-        ));
-    }
-
-    Ok(all_symbols)
 }
 
 #[derive(PartialEq, Eq, Debug, Clone, Copy)]

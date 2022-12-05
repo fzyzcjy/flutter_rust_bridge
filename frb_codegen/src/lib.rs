@@ -23,7 +23,7 @@ pub use crate::commands::ensure_tools_available;
 pub use crate::config::parse as config_parse;
 pub use crate::config::Opts;
 pub use crate::config::RawOpts;
-pub use crate::utils::get_symbols_if_no_duplicates;
+pub use crate::utils::{generate_template, get_symbols_if_no_duplicates};
 
 #[macro_use]
 mod commands;
@@ -35,9 +35,9 @@ mod markers;
 mod method_utils;
 mod others;
 mod parser;
-mod source_graph;
+pub mod source_graph;
 mod target;
-mod transformer;
+pub mod transformer;
 mod utils;
 use error::*;
 
