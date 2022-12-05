@@ -153,7 +153,7 @@ jobs:
           current_path: frb_example/pure_dart/dart
 
   dart_vm_service_test:
-    name: Build and run Rust
+    name: Test with --enable-vm-service
     runs-on: ubuntu-latest
 
     steps:
