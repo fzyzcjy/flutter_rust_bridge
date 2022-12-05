@@ -165,6 +165,7 @@ jobs:
           profile: minimal
           toolchain: 1.64.0
           override: true
+          components: rustfmt
 
       - uses: dart-lang/setup-dart@v1
         with:
