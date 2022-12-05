@@ -177,8 +177,8 @@ jobs:
         working-directory: ./frb_example/pure_dart/rust
         run: cargo build --verbose
       - name: Run tests for pure_dart example
-        working-directory: ./frb_example/pure_dart/rust
-        run: dart run --enable-vm-service ../lib/test_vm_service.dart $CARGO_TARGET_DIR/debug/libflutter_rust_bridge_example.so
+        working-directory: ./frb_example/pure_dart/dart
+        run: dart run --enable-vm-service ./lib/test_vm_service.dart $CARGO_TARGET_DIR/debug/libflutter_rust_bridge_example.so
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
 
