@@ -13,8 +13,8 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-pub use crate::data::HideData;
 pub use crate::data::FrbOpaqueReturn;
+pub use crate::data::HideData;
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
@@ -1050,4 +1050,6 @@ pub fn run_nested_opaque(opaque: OpaqueNested) {
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-pub fn frb_generator_test() -> Opaque<FrbOpaqueReturn> {panic!("dummy code");}
+pub fn frb_generator_test() -> Opaque<FrbOpaqueReturn> {
+    panic!("dummy code");
+}
