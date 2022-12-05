@@ -74,8 +74,10 @@ impl Crate {
         let source_rust_content = fs::read_to_string(&root_src_file).unwrap();
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
-        let result = Crate {
-            name: name,
+        
+
+        Crate {
+            name,
             manifest_path: fs::canonicalize(manifest_path).unwrap(),
             root_src_file: root_src_file.clone(),
             root_module: Module {
@@ -85,9 +87,7 @@ impl Crate {
                 source: Some(ModuleSource::File(file_ast)),
                 scope: None,
             },
-        };
-
-        result
+        }
     }
 
     /// Create a map of the modules for this crate

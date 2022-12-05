@@ -197,7 +197,7 @@ impl<'a> TypeParser<'a> {
                 && self.parsed_enums.insert(ident_string.to_owned())
             {
                 let enu = self.parse_enum_core(&Ident::new(&ident_string, Span::call_site()));
-                self.enum_pool.insert(ident_string.to_owned(), enu);
+                self.enum_pool.insert(ident_string, enu);
             }
         };
 
@@ -397,7 +397,7 @@ impl<'a> TypeParser<'a> {
         let _src_enum = self
             .src_enums
             .get(&ident.to_string())
-            .expect(format!("{} {:?}", ident, self.src_enums.clone()).as_str());
+            .unwrap_or_else(|| panic!("{} {:?}", ident, self.src_enums.clone()));
         let src_enum = self.src_enums[&ident.to_string()];
         let name = src_enum.ident.to_string();
         let wrapper_name = if src_enum.mirror {

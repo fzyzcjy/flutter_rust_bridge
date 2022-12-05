@@ -80,7 +80,7 @@ pub trait GenerateSourceTemplateTrait:
         // remove generate source dependencies
         let root_src_file = Crate::new_withoud_resolve(&self.get_configs()[0].manifest_path)
             .root_src_file
-            .clone();
+            ;
         let root_src_file = root_src_file.to_str().unwrap();
 
         self.remove_gen_mod(root_src_file);
@@ -215,13 +215,13 @@ pub trait CollectBoundToStruct: PropTrait {
 
         let mut explicit_src_impl_pool: HashMap<String, Vec<Impl>> = HashMap::new();
         for raw_ir_file in self.get_irs().iter() {
-            collect_impl(&raw_ir_file, &mut explicit_src_impl_pool);
+            collect_impl(raw_ir_file, &mut explicit_src_impl_pool);
         }
         self.get_mut_explicit_src_impl_pool()
             .extend(explicit_src_impl_pool);
         let mut explicit_parsed_impl_traits: HashSet<IrTypeImplTrait> = HashSet::new();
         for raw_ir_file in self.get_irs().iter() {
-            collect_impl_trait(&raw_ir_file, &mut explicit_parsed_impl_traits)
+            collect_impl_trait(raw_ir_file, &mut explicit_parsed_impl_traits)
         }
         self.get_mut_explicit_parsed_impl_traits()
             .extend(explicit_parsed_impl_traits);
@@ -231,7 +231,7 @@ pub trait CollectBoundToStruct: PropTrait {
         let explicit_parsed_impl_traits = self.get_explicit_parsed_impl_traits();
         // get a map from bound to all struct meet
         let mut bound_oject_pool = HashMap::new();
-        for type_impl_trait in explicit_parsed_impl_traits.into_iter() {
+        for type_impl_trait in explicit_parsed_impl_traits.iter() {
             let raw = &type_impl_trait.trait_bounds;
 
             raw.iter().for_each(|bound| {
@@ -310,20 +310,20 @@ pub trait GenerateSources: CollectBoundToStruct {
         let explicit_api_path = self.get_api_paths();
         let bound_oject_pool = self.get_bound_oject_pool();
 
-        let mut lines = format!("");
+        let mut lines = String::new();
         for super_ in explicit_api_path.iter() {
             lines += format!("use crate::{super_}::*;").as_str();
         }
         for (_, call_fn) in trait_sig_pool.iter() {
             let impl_dependencies = call_fn.impl_dependencies.clone();
-            lines += format!("{impl_dependencies}").as_str();
+            lines += impl_dependencies.to_string().as_str();
         }
         for (k, v) in bound_oject_pool.iter() {
             lines += format!("pub enum {}Enum {{", k.join("")).as_str();
             for struct_ in v.iter() {
                 lines += format!("{}({}),", struct_, struct_).as_str();
             }
-            lines += format!("}}").as_str();
+            lines += "}".to_string().as_str();
         }
 
         for (k, v) in bound_oject_pool.iter() {
@@ -332,11 +332,11 @@ pub trait GenerateSources: CollectBoundToStruct {
                 lines += format!("impl {trait_} for {enum_} {{").as_str();
                 let call_fn = trait_sig_pool
                     .get(trait_)
-                    .expect(&format!("Error: {:?} with {:?}", trait_sig_pool, trait_));
+                    .unwrap_or_else(|| panic!("Error: {:?} with {:?}", trait_sig_pool, trait_));
 
                 for idx in 0..call_fn.sig.len() {
                     lines += format!("{}{{", call_fn.sig[idx]).as_str();
-                    lines += format!("match *self {{").as_str();
+                    lines += "match *self {".to_string().as_str();
                     for sub_enum in v.iter() {
                         lines += format!(
                             "{enum_}::{sub_enum}(ref __field0) => __field0.{}({}),",
@@ -344,10 +344,10 @@ pub trait GenerateSources: CollectBoundToStruct {
                         )
                         .as_str();
                     }
-                    lines += format!("}}").as_str();
-                    lines += format!("}}").as_str();
+                    lines += "}".to_string().as_str();
+                    lines += "}".to_string().as_str();
                 }
-                lines += format!("}}").as_str();
+                lines += "}".to_string().as_str();
             }
         }
 

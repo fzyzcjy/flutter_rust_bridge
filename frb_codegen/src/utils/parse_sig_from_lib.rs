@@ -4,7 +4,7 @@ use syn::FnArg;
 
 use syn::Signature;
 
-use syn;
+
 
 use std::collections::HashMap;
 
@@ -47,7 +47,7 @@ pub fn parse_file(mut content: &str) -> HashMap<String, CallFn> {
                     .map_err(|e| panic!("Invalid {}: {}", e, fn_))
                     .unwrap();
 
-                let mut args = format!("");
+                let mut args = String::new();
                 for sig_input in sig.inputs.iter() {
                     if let FnArg::Typed(ref pat_type) = sig_input {
                         if let Pat::Ident(ref pat_ident) = *pat_type.pat {
