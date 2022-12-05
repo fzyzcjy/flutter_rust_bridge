@@ -564,6 +564,16 @@ pub fn wire_get_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_set_static_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_set_static_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_drop_static_dart_opaque(port_: MessagePort) {
+    wire_drop_static_dart_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

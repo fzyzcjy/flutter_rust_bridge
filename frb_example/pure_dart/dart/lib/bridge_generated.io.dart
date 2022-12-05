@@ -2843,6 +2843,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_get_enum_dart_opaque =
       _wire_get_enum_dart_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_EnumDartOpaque>)>();
 
+  void wire_set_static_dart_opaque(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_set_static_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_set_static_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>('wire_set_static_dart_opaque');
+  late final _wire_set_static_dart_opaque =
+      _wire_set_static_dart_opaquePtr.asFunction<void Function(int, wire_DartOpaque)>();
+
+  void wire_drop_static_dart_opaque(
+    int port_,
+  ) {
+    return _wire_drop_static_dart_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_drop_static_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_drop_static_dart_opaque');
+  late final _wire_drop_static_dart_opaque = _wire_drop_static_dart_opaquePtr.asFunction<void Function(int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

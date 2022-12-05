@@ -580,6 +580,16 @@ pub extern "C" fn wire_get_enum_dart_opaque(port_: i64, opaque: *mut wire_EnumDa
 }
 
 #[no_mangle]
+pub extern "C" fn wire_set_static_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
+    wire_set_static_dart_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_drop_static_dart_opaque(port_: i64) {
+    wire_drop_static_dart_opaque_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

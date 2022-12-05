@@ -1124,3 +1124,15 @@ pub fn create_enum_dart_opaque(opaque: DartOpaque) -> EnumDartOpaque {
 }
 
 pub fn get_enum_dart_opaque(opaque: EnumDartOpaque) {}
+
+lazy_static! {
+    static ref DART_OPAQUE: Mutex<Option<DartOpaque>> = Default::default();
+}
+
+pub fn set_static_dart_opaque(opaque: DartOpaque) {
+    *DART_OPAQUE.lock().unwrap() = Some(opaque);
+}
+
+pub fn drop_static_dart_opaque() {
+    drop(DART_OPAQUE.lock().unwrap().take());
+}

@@ -468,6 +468,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetEnumDartOpaqueConstMeta;
 
+  Future<void> setStaticDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSetStaticDartOpaqueConstMeta;
+
+  Future<void> dropStaticDartOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kDropStaticDartOpaqueConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;

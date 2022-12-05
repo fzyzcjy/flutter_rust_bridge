@@ -1776,6 +1776,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  Future<void> setStaticDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartOpaque(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_set_static_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kSetStaticDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSetStaticDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "set_static_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  Future<void> dropStaticDartOpaque({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_drop_static_dart_opaque(port_),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kDropStaticDartOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kDropStaticDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "drop_static_dart_opaque",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);

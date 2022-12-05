@@ -5,6 +5,7 @@ import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_definitions.dart';
+import 'test_flutter_memory_leak_utility.dart';
 
 const isWeb = bool.fromEnvironment('dart.library.html');
 
@@ -731,6 +732,25 @@ void main(List<String> args) async {
       var en = await api.createEnumDartOpaque(opaque: f);
       await api.getEnumDartOpaque(opaque: en);
     });
+
+    test('GC', () async {
+      var vmService = await VmServiceUtil.create();
+      Uint8List? strongRef = _createLargeList(mb: 300);
+      final weakRef = WeakReference(strongRef);
+      await api.setStaticDartOpaque(opaque: strongRef);
+      strongRef = null;
+
+      await vmService.gc();
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      expect(weakRef.target, isNotNull);
+
+      await api.dropStaticDartOpaque();
+      await vmService.gc();
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      expect(weakRef.target, isNull);
+
+      vmService.dispose();
+    });
   });
 
   group('rust opaque type', () {
@@ -959,8 +979,6 @@ int _createGarbage() {
   return cum;
 }
 
-Uint8List _createLargeList({required int mb}) => Uint8List(1000000 * mb);
-
 MyTreeNode _createMyTreeNode({required int arrLen}) {
   return MyTreeNode(
     valueI32: 100,
@@ -1001,5 +1019,7 @@ class MatchBigInt extends CustomMatcher {
     return actual;
   }
 }
+
+Uint8List _createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
 // vim:expandtab:ts=2:sw=2

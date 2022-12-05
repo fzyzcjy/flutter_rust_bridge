@@ -1613,6 +1613,32 @@ fn wire_get_enum_dart_opaque_impl(
         },
     )
 }
+fn wire_set_static_dart_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "set_static_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(set_static_dart_opaque(api_opaque))
+        },
+    )
+}
+fn wire_drop_static_dart_opaque_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "drop_static_dart_opaque",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(drop_static_dart_opaque()),
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
