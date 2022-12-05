@@ -657,23 +657,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api_fill_to_wire
 
   void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, wire_BoxDartDebug wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_HideData(HideData apiObj, wire_HideData wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_I32(I32 apiObj, wire_I32 wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, wire_MutexHideData wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_RwLockHideData(RwLockHideData apiObj, wire_RwLockHideData wireObj) {
-    wireObj.ptr = apiObj.share();
+    wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
@@ -2443,6 +2443,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_run_nested_opaque');
   late final _wire_run_nested_opaque =
       _wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueNested>)>();
+
+  void wire_unwrap_rust_opaque(
+    int port_,
+    wire_HideData opaque,
+  ) {
+    return _wire_unwrap_rust_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_unwrap_rust_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_HideData)>>('wire_unwrap_rust_opaque');
+  late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr.asFunction<void Function(int, wire_HideData)>();
 
   void wire_frb_generator_test(
     int port_,

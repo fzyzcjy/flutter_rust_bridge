@@ -401,6 +401,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
 
+  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta;
+
   /// Function to check the code generator.
   /// FrbOpaqueReturn must be only return type.
   /// FrbOpaqueReturn must not be used as an argument.

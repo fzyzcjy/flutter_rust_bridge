@@ -1518,6 +1518,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_HideData(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_unwrap_rust_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kUnwrapRustOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "unwrap_rust_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_frb_generator_test(port_),

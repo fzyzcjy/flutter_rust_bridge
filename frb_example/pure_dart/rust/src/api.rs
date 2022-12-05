@@ -1047,6 +1047,13 @@ pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.second.hide_data();
 }
 
+pub fn unwrap_rust_opaque(opaque: Opaque<HideData>) -> Result<String> {
+    let data: HideData = opaque
+        .try_unwrap()
+        .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
+    Ok(data.hide_data())
+}
+
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.

@@ -22,7 +22,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_BoxDartDebug(BoxDartDebug raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
@@ -47,7 +47,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_HideData(HideData raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
@@ -57,17 +57,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   dynamic api2wire_I32(I32 raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
   dynamic api2wire_MutexHideData(MutexHideData raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
   dynamic api2wire_RwLockHideData(RwLockHideData raw) {
-    return raw.share();
+    return raw.shareOrMove();
   }
 
   @protected
@@ -970,6 +970,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
 
+  external void wire_unwrap_rust_opaque(NativePortType port_, dynamic opaque);
+
   external void wire_frb_generator_test(NativePortType port_);
 
   external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
@@ -1265,6 +1267,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
       wasmModule.wire_run_nested_opaque(port_, opaque);
+
+  void wire_unwrap_rust_opaque(NativePortType port_, dynamic opaque) =>
+      wasmModule.wire_unwrap_rust_opaque(port_, opaque);
 
   void wire_frb_generator_test(NativePortType port_) => wasmModule.wire_frb_generator_test(port_);
 

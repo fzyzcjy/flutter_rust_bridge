@@ -14,13 +14,13 @@ impl TypeDartGeneratorTrait for TypeOpaqueGenerator<'_> {
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            wasm: Some("return raw.share();".to_owned()),
+            wasm: Some("return raw.shareOrMove();".to_owned()),
             ..Default::default()
         }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some("wireObj.ptr = apiObj.share();".into())
+        Some("wireObj.ptr = apiObj.shareOrMove();".into())
     }
 
     fn wire2api_body(&self) -> String {
