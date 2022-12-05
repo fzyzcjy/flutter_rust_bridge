@@ -39,3 +39,8 @@ impl HideData {
         format!("{} - {:?}", self.content, self.box_content)
     }
 }
+
+/// Structure for testing the RustOpaque code generator.
+/// FrbOpaqueReturn must be only return type.
+/// FrbOpaqueReturn must not be used as an argument.
+pub struct FrbOpaqueReturn;

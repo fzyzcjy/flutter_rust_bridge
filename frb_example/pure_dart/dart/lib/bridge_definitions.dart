@@ -401,6 +401,13 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
 
+  /// Function to check the code generator.
+  /// FrbOpaqueReturn must be only return type.
+  /// FrbOpaqueReturn must not be used as an argument.
+  Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kFrbGeneratorTestConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -438,6 +445,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   DropFnType get dropOpaqueBoxDartDebug;
   ShareFnType get shareOpaqueBoxDartDebug;
   OpaqueTypeFinalizer get BoxDartDebugFinalizer;
+
+  DropFnType get dropOpaqueFrbOpaqueReturn;
+  ShareFnType get shareOpaqueFrbOpaqueReturn;
+  OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer;
 
   DropFnType get dropOpaqueHideData;
   ShareFnType get shareOpaqueHideData;
@@ -477,6 +488,20 @@ class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
         super(inner);
   EnumOpaqueArray5.unchecked(List<EnumOpaque> inner) : super(inner);
   EnumOpaqueArray5.init(EnumOpaque fill) : super(List<EnumOpaque>.filled(arraySize, fill));
+}
+
+@sealed
+class FrbOpaqueReturn extends FrbOpaque {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  FrbOpaqueReturn.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  DropFnType get dropFn => bridge.dropOpaqueFrbOpaqueReturn;
+
+  @override
+  ShareFnType get shareFn => bridge.shareOpaqueFrbOpaqueReturn;
+
+  @override
+  OpaqueTypeFinalizer get staticFinalizer => bridge.FrbOpaqueReturnFinalizer;
 }
 
 @sealed

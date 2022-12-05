@@ -644,6 +644,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   late final OpaqueTypeFinalizer _BoxDartDebugFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_BoxDartDebugPtr);
   OpaqueTypeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final OpaqueTypeFinalizer _FrbOpaqueReturnFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_FrbOpaqueReturnPtr);
+  OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer => _FrbOpaqueReturnFinalizer;
   late final OpaqueTypeFinalizer _HideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_HideDataPtr);
   OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
   late final OpaqueTypeFinalizer _I32Finalizer = OpaqueTypeFinalizer(inner._drop_opaque_I32Ptr);
@@ -2442,6 +2444,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_run_nested_opaque =
       _wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_OpaqueNested>)>();
 
+  void wire_frb_generator_test(
+    int port_,
+  ) {
+    return _wire_frb_generator_test(
+      port_,
+    );
+  }
+
+  late final _wire_frb_generator_testPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_frb_generator_test');
+  late final _wire_frb_generator_test = _wire_frb_generator_testPtr.asFunction<void Function(int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -3205,6 +3219,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>('share_opaque_BoxDartDebug');
   late final _share_opaque_BoxDartDebug =
       _share_opaque_BoxDartDebugPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_FrbOpaqueReturn(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_FrbOpaqueReturn(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_FrbOpaqueReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_FrbOpaqueReturn');
+  late final _drop_opaque_FrbOpaqueReturn =
+      _drop_opaque_FrbOpaqueReturnPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_FrbOpaqueReturn(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_FrbOpaqueReturn(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_FrbOpaqueReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+          'share_opaque_FrbOpaqueReturn');
+  late final _share_opaque_FrbOpaqueReturn =
+      _share_opaque_FrbOpaqueReturnPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
   void drop_opaque_HideData(
     ffi.Pointer<ffi.Void> ptr,
