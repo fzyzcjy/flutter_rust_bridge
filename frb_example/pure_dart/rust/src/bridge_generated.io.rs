@@ -590,6 +590,11 @@ pub extern "C" fn wire_drop_static_dart_opaque(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_HideData) {
+    wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_frb_generator_test(port_: i64) {
     wire_frb_generator_test_impl(port_)
 }

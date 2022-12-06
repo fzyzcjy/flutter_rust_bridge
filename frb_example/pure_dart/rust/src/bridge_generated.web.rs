@@ -574,6 +574,11 @@ pub fn wire_drop_static_dart_opaque(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_frb_generator_test(port_: MessagePort) {
     wire_frb_generator_test_impl(port_)
 }

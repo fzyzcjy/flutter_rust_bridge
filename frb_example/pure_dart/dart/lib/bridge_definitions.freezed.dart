@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'bridge_definitions.dart';
 
@@ -1075,6 +1075,7 @@ abstract class EnumDartOpaque_Opaque implements EnumDartOpaque {
 
 /// @nodoc
 mixin _$EnumOpaque {
+  FrbOpaque get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
@@ -1291,6 +1292,7 @@ class _$EnumOpaque_Struct implements EnumOpaque_Struct {
 abstract class EnumOpaque_Struct implements EnumOpaque {
   const factory EnumOpaque_Struct(final HideData field0) = _$EnumOpaque_Struct;
 
+  @override
   HideData get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaque_StructCopyWith<_$EnumOpaque_Struct> get copyWith => throw _privateConstructorUsedError;
@@ -1438,6 +1440,7 @@ class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
 abstract class EnumOpaque_Primitive implements EnumOpaque {
   const factory EnumOpaque_Primitive(final I32 field0) = _$EnumOpaque_Primitive;
 
+  @override
   I32 get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaque_PrimitiveCopyWith<_$EnumOpaque_Primitive> get copyWith => throw _privateConstructorUsedError;
@@ -1585,6 +1588,7 @@ class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
 abstract class EnumOpaque_TraitObj implements EnumOpaque {
   const factory EnumOpaque_TraitObj(final BoxDartDebug field0) = _$EnumOpaque_TraitObj;
 
+  @override
   BoxDartDebug get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaque_TraitObjCopyWith<_$EnumOpaque_TraitObj> get copyWith => throw _privateConstructorUsedError;
@@ -1732,6 +1736,7 @@ class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
 abstract class EnumOpaque_Mutex implements EnumOpaque {
   const factory EnumOpaque_Mutex(final MutexHideData field0) = _$EnumOpaque_Mutex;
 
+  @override
   MutexHideData get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaque_MutexCopyWith<_$EnumOpaque_Mutex> get copyWith => throw _privateConstructorUsedError;
@@ -1879,6 +1884,7 @@ class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
 abstract class EnumOpaque_RwLock implements EnumOpaque {
   const factory EnumOpaque_RwLock(final RwLockHideData field0) = _$EnumOpaque_RwLock;
 
+  @override
   RwLockHideData get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaque_RwLockCopyWith<_$EnumOpaque_RwLock> get copyWith => throw _privateConstructorUsedError;
@@ -3029,6 +3035,7 @@ abstract class KitchenSink_Enums implements KitchenSink {
 
 /// @nodoc
 mixin _$Measure {
+  Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Speed field0) speed,
@@ -3217,6 +3224,7 @@ class _$Measure_Speed implements Measure_Speed {
 abstract class Measure_Speed implements Measure {
   const factory Measure_Speed(final Speed field0) = _$Measure_Speed;
 
+  @override
   Speed get field0;
   @JsonKey(ignore: true)
   _$$Measure_SpeedCopyWith<_$Measure_Speed> get copyWith => throw _privateConstructorUsedError;
@@ -3356,6 +3364,7 @@ class _$Measure_Distance implements Measure_Distance {
 abstract class Measure_Distance implements Measure {
   const factory Measure_Distance(final Distance field0) = _$Measure_Distance;
 
+  @override
   Distance get field0;
   @JsonKey(ignore: true)
   _$$Measure_DistanceCopyWith<_$Measure_Distance> get copyWith => throw _privateConstructorUsedError;

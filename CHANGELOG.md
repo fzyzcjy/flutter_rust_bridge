@@ -1,3 +1,7 @@
+## 1.52.0
+
+* Move semantics of opaque rust for Dart #869 (thanks @rogurotus)
+
 ## 1.51.1
 
 * Fix function generation related to opaque rust #867 (thanks @rogurotus)

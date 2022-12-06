@@ -122,6 +122,16 @@ pub struct RustOpaque<T: ?Sized + DartSafe> {
     ptr: Option<Arc<T>>,
 }
 
+impl<T: DartSafe> Opaque<T> {
+    pub fn try_unwrap(self) -> Result<T, Self> {
+        if let Some(ptr) = self.ptr {
+            Arc::try_unwrap(ptr).map_err(Opaque::from)
+        } else {
+            panic!("Use after free.")
+        }
+    }
+}
+
 /// # Safety
 ///
 /// This function should never be called manually.
