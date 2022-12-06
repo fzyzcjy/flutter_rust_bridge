@@ -357,9 +357,60 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kNestedIdConstMeta;
 
+  String syncAcceptDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncAcceptDartOpaqueConstMeta;
+
+  Future<String> asyncAcceptDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kAsyncAcceptDartOpaqueConstMeta;
+
+  Future<Object> loopBack({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackConstMeta;
+
+  Future<Object?> loopBackOption({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackOptionConstMeta;
+
+  Future<ObjectArray1> loopBackArray({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackArrayConstMeta;
+
+  Future<List<Object>> loopBackVec({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackVecConstMeta;
+
+  Future<void> loopBackOptionGet({Object? opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackOptionGetConstMeta;
+
+  Future<void> loopBackArrayGet({required ObjectArray1 opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackArrayGetConstMeta;
+
+  Future<void> loopBackVecGet({required List<Object> opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kLoopBackVecGetConstMeta;
+
+  /// [DartWrapObject] can be safely retrieved on a dart thread.
+  String unwrapDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kUnwrapDartOpaqueConstMeta;
+
+  /// [DartWrapObject] cannot be obtained
+  /// on a thread other than the thread it was created on.
+  Future<void> panicUnwrapDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPanicUnwrapDartOpaqueConstMeta;
+
   Future<HideData> createOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateOpaqueConstMeta;
+
+  Future<HideData?> createOptionOpaque({HideData? opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateOptionOpaqueConstMeta;
 
   Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint});
 
@@ -400,6 +451,30 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRunNestedOpaqueConstMeta;
+
+  Future<DartOpaqueNested> createNestedDartOpaque({required Object opaque1, required Object opaque2, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateNestedDartOpaqueConstMeta;
+
+  Future<void> getNestedDartOpaque({required DartOpaqueNested opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetNestedDartOpaqueConstMeta;
+
+  Future<EnumDartOpaque> createEnumDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateEnumDartOpaqueConstMeta;
+
+  Future<void> getEnumDartOpaque({required EnumDartOpaque opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetEnumDartOpaqueConstMeta;
+
+  Future<void> setStaticDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSetStaticDartOpaqueConstMeta;
+
+  Future<void> dropStaticDartOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kDropStaticDartOpaqueConstMeta;
 
   Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
 
@@ -557,6 +632,15 @@ class MutexHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.MutexHideDataFinalizer;
+}
+
+class ObjectArray1 extends NonGrowableListView<Object> {
+  static const arraySize = 1;
+  ObjectArray1(List<Object> inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  ObjectArray1.unchecked(List<Object> inner) : super(inner);
+  ObjectArray1.init(Object fill) : super(List<Object>.filled(arraySize, fill));
 }
 
 class PointArray2 extends NonGrowableListView<Point> {
@@ -744,6 +828,16 @@ class Customized {
   });
 }
 
+class DartOpaqueNested {
+  final Object first;
+  final Object second;
+
+  DartOpaqueNested({
+    required this.first,
+    required this.second,
+  });
+}
+
 @freezed
 class Distance with _$Distance {
   const factory Distance.unknown() = Distance_Unknown;
@@ -764,6 +858,16 @@ class Element {
     this.attributes,
     this.children,
   });
+}
+
+@freezed
+class EnumDartOpaque with _$EnumDartOpaque {
+  const factory EnumDartOpaque.primitive(
+    int field0,
+  ) = EnumDartOpaque_Primitive;
+  const factory EnumDartOpaque.opaque(
+    Object field0,
+  ) = EnumDartOpaque_Opaque;
 }
 
 @freezed

@@ -959,36 +959,84 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
     }
 }
 
-/// Opaque types
+pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    drop(opaque);
+    SyncReturn("test".to_owned())
+}
+
+pub fn async_accept_dart_opaque(opaque: DartOpaque) -> String {
+    drop(opaque);
+    "async test".to_owned()
+}
+
+pub fn loop_back(opaque: DartOpaque) -> DartOpaque {
+    opaque
+}
+
+pub fn loop_back_option(opaque: DartOpaque) -> Option<DartOpaque> {
+    Some(opaque)
+}
+
+pub fn loop_back_array(opaque: DartOpaque) -> [DartOpaque; 1] {
+    [opaque]
+}
+
+pub fn loop_back_vec(opaque: DartOpaque) -> Vec<DartOpaque> {
+    vec![opaque]
+}
+
+pub fn loop_back_option_get(opaque: Option<DartOpaque>) {}
+
+pub fn loop_back_array_get(opaque: [DartOpaque; 1]) {}
+
+pub fn loop_back_vec_get(opaque: Vec<DartOpaque>) {}
+
+/// [DartWrapObject] can be safely retrieved on a dart thread.
+pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    let handle = opaque.try_unwrap().unwrap();
+    SyncReturn("Test".to_owned())
+}
+
+/// [DartWrapObject] cannot be obtained
+/// on a thread other than the thread it was created on.
+pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) {
+    let handle = opaque.try_unwrap().unwrap();
+}
+
+/// RustOpaque types
 pub trait DartDebug: DartSafe + Debug {}
 impl<T: DartSafe + Debug> DartDebug for T {}
 
 pub enum EnumOpaque {
-    Struct(Opaque<HideData>),
-    Primitive(Opaque<i32>),
-    TraitObj(Opaque<Box<dyn DartDebug>>),
-    Mutex(Opaque<Mutex<HideData>>),
-    RwLock(Opaque<RwLock<HideData>>),
+    Struct(RustOpaque<HideData>),
+    Primitive(RustOpaque<i32>),
+    TraitObj(RustOpaque<Box<dyn DartDebug>>),
+    Mutex(RustOpaque<Mutex<HideData>>),
+    RwLock(RustOpaque<RwLock<HideData>>),
 }
 
 /// [`HideData`] has private fields.
 
 pub struct OpaqueNested {
-    pub first: Opaque<HideData>,
-    pub second: Opaque<HideData>,
+    pub first: RustOpaque<HideData>,
+    pub second: RustOpaque<HideData>,
 }
 
-pub fn create_opaque() -> Opaque<HideData> {
-    Opaque::new(HideData::new())
+pub fn create_opaque() -> RustOpaque<HideData> {
+    RustOpaque::new(HideData::new())
+}
+
+pub fn create_option_opaque(opaque: Option<RustOpaque<HideData>>) -> Option<RustOpaque<HideData>> {
+    opaque
 }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
     [
-        EnumOpaque::Struct(Opaque::new(HideData::new())),
-        EnumOpaque::Primitive(Opaque::new(42)),
+        EnumOpaque::Struct(RustOpaque::new(HideData::new())),
+        EnumOpaque::Primitive(RustOpaque::new(42)),
         EnumOpaque::TraitObj(opaque_dyn!("String")),
-        EnumOpaque::Mutex(Opaque::new(Mutex::new(HideData::new()))),
-        EnumOpaque::RwLock(Opaque::new(RwLock::new(HideData::new()))),
+        EnumOpaque::Mutex(RustOpaque::new(Mutex::new(HideData::new()))),
+        EnumOpaque::RwLock(RustOpaque::new(RwLock::new(HideData::new()))),
     ]
 }
 
@@ -1006,30 +1054,36 @@ pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
     }
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
     opaque.hide_data()
 }
 
-pub fn run_opaque_with_delay(opaque: Opaque<HideData>) -> String {
+pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
     sleep(Duration::from_millis(1000));
     opaque.hide_data()
 }
 
-pub fn opaque_array() -> [Opaque<HideData>; 2] {
-    [Opaque::new(HideData::new()), Opaque::new(HideData::new())]
+pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
+    [
+        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideData::new()),
+    ]
 }
 
-pub fn opaque_array_run(data: [Opaque<HideData>; 2]) {
+pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
     for i in data {
         i.hide_data();
     }
 }
 
-pub fn opaque_vec() -> Vec<Opaque<HideData>> {
-    vec![Opaque::new(HideData::new()), Opaque::new(HideData::new())]
+pub fn opaque_vec() -> Vec<RustOpaque<HideData>> {
+    vec![
+        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideData::new()),
+    ]
 }
 
-pub fn opaque_vec_run(data: Vec<Opaque<HideData>>) {
+pub fn opaque_vec_run(data: Vec<RustOpaque<HideData>>) {
     for i in data {
         i.hide_data();
     }
@@ -1037,8 +1091,8 @@ pub fn opaque_vec_run(data: Vec<Opaque<HideData>>) {
 
 pub fn create_nested_opaque() -> OpaqueNested {
     OpaqueNested {
-        first: Opaque::new(HideData::new()),
-        second: Opaque::new(HideData::new()),
+        first: RustOpaque::new(HideData::new()),
+        second: RustOpaque::new(HideData::new()),
     }
 }
 
@@ -1047,7 +1101,44 @@ pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.second.hide_data();
 }
 
-pub fn unwrap_rust_opaque(opaque: Opaque<HideData>) -> Result<String> {
+pub struct DartOpaqueNested {
+    pub first: DartOpaque,
+    pub second: DartOpaque,
+}
+
+pub enum EnumDartOpaque {
+    Primitive(i32),
+    Opaque(DartOpaque),
+}
+
+pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
+    DartOpaqueNested {
+        first: opaque1,
+        second: opaque2,
+    }
+}
+
+pub fn get_nested_dart_opaque(opaque: DartOpaqueNested) {}
+
+pub fn create_enum_dart_opaque(opaque: DartOpaque) -> EnumDartOpaque {
+    EnumDartOpaque::Opaque(opaque)
+}
+
+pub fn get_enum_dart_opaque(opaque: EnumDartOpaque) {}
+
+lazy_static! {
+    static ref DART_OPAQUE: Mutex<Option<DartOpaque>> = Default::default();
+}
+
+pub fn set_static_dart_opaque(opaque: DartOpaque) {
+    *DART_OPAQUE.lock().unwrap() = Some(opaque);
+}
+
+pub fn drop_static_dart_opaque() {
+    drop(DART_OPAQUE.lock().unwrap().take());
+}
+
+pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
     let data: HideData = opaque
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
@@ -1057,6 +1148,6 @@ pub fn unwrap_rust_opaque(opaque: Opaque<HideData>) -> Result<String> {
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-pub fn frb_generator_test() -> Opaque<FrbOpaqueReturn> {
+pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
     panic!("dummy code");
 }

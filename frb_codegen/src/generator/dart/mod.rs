@@ -1,13 +1,14 @@
 mod func;
 mod ty;
 mod ty_boxed;
+mod ty_dart_opaque;
 mod ty_delegate;
 mod ty_enum;
 mod ty_general_list;
-mod ty_opaque;
 mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
+mod ty_rust_opaque;
 mod ty_struct;
 mod ty_sync_return;
 mod wasm;
@@ -22,13 +23,14 @@ use wasm::*;
 use itertools::Itertools;
 pub use ty::*;
 pub use ty_boxed::*;
+pub use ty_dart_opaque::*;
 pub use ty_delegate::*;
 pub use ty_enum::*;
 pub use ty_general_list::*;
-pub use ty_opaque::*;
 pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
+pub use ty_rust_opaque::*;
 pub use ty_struct::*;
 pub use ty_sync_return::*;
 
@@ -132,7 +134,7 @@ impl DartApiSpec {
         dart_funcs.extend(
             distinct_output_types
                 .iter()
-                .filter(|ty| ty.is_opaque())
+                .filter(|ty| ty.is_rust_opaque())
                 .map(generate_opaque_getters),
         );
 
@@ -148,7 +150,7 @@ impl DartApiSpec {
 
         let dart_opaque_funcs = distinct_output_types
             .iter()
-            .filter(|ty| ty.is_opaque())
+            .filter(|ty| ty.is_rust_opaque())
             .map(generate_opaque_func)
             .collect::<Acc<_>>()
             .join("\n");
@@ -310,7 +312,6 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         dart_wasm_module,
         ..
     } = spec;
-
     lines.push_acc(Acc {
         common: format!(
             "class {impl} implements {} {{
@@ -348,6 +349,11 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             func.implementation, func.companion_field_implementation,
         )
     }));
+
+    lines.push_acc(Acc {
+        common: "void dispose() {_platform.dispose();}".to_owned(),
+        ..Default::default()
+    });
 
     lines.push(section_header("wire2api"));
     lines.push(dart_wire2api_funcs.join("\n\n"));
@@ -394,6 +400,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     );
     let common_import = format!(
         "{}
+        
         import 'package:meta/meta.dart';",
         // If WASM is not enabled, the common and IO branches are
         // combined into one, making this import statement invalid.

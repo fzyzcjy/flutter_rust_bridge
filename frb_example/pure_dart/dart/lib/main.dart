@@ -20,6 +20,7 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
+  tearDownAll(() => api.dispose());
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -692,7 +693,47 @@ void main(List<String> args) async {
     });
   });
 
-  group('opaque type', () {
+  group('dart opaque type', () {
+    String f() => 'Test_String';
+
+    test('loopback', () async {
+      // ignore: unused_local_variable
+      await api.loopBackArrayGet(opaque: await api.loopBackArray(opaque: f));
+      // ignore: unused_local_variable
+      await api.loopBackVecGet(opaque: await api.loopBackVec(opaque: f));
+      // ignore: unused_local_variable
+      await api.loopBackOptionGet(opaque: await api.loopBackOption(opaque: f));
+
+      var back1 = await api.loopBack(opaque: f) as String Function();
+      expect(back1(), 'Test_String');
+      var back2 = await api.loopBack(opaque: back1) as String Function();
+      expect(back2(), 'Test_String');
+      expect(identical(back2, f), isTrue);
+    });
+
+    test('drop', () async {
+      expect(await api.asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'async test');
+      expect(api.syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
+    });
+
+    test('unwrap', () async {
+      expect(api.unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
+      await expectLater(
+          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+    });
+
+    test('nested', () async {
+      var str = await api.createNestedDartOpaque(opaque1: f, opaque2: f);
+      await api.getNestedDartOpaque(opaque: str);
+    });
+
+    test('enum', () async {
+      var en = await api.createEnumDartOpaque(opaque: f);
+      await api.getEnumDartOpaque(opaque: en);
+    });
+  });
+
+  group('rust opaque type', () {
     test('create and dispose', () async {
       var futureData = api.createOpaque();
       var data = await api.createOpaque();
@@ -977,5 +1018,7 @@ class MatchBigInt extends CustomMatcher {
     return actual;
   }
 }
+
+Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
 // vim:expandtab:ts=2:sw=2

@@ -14,6 +14,7 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> with Flutte
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
+
 // Section: api2wire
 
 // Section: finalizer

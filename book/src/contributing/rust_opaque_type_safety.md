@@ -1,9 +1,9 @@
-# Opaque type safety
+# Rust opaque type safety
 
 
 ## Restrictions
 
-A `Opaque type` can be created from any Rust structure that implements `Send` and `Sync`. Such restrictions due to async dart api `flutter_rust_bridge` allowing sharing a `Opaque type` by multiple `flutter_rust_bridge executor` threads.
+A `RustOpaque type` can be created from any Rust structure that implements `Send` and `Sync`. Such restrictions due to async dart api `flutter_rust_bridge` allowing sharing a `RustOpaque type` by multiple `flutter_rust_bridge executor` threads.
 
 
 ## Ownership and GC
@@ -12,9 +12,9 @@ From the moment an opaque type is passed to Dart, it has full ownership of it.
 Dart implements a finalizer for opaque types, but the memory usage of opaque types is not monitored by Dart and can accumulate, so in order to prevent memory leaks, opaque pointers must be `dispose`d.
 
 
-## Opaque type like funtion args
+## Rust opaque type like funtion args
 
-When calling a function with an opaque type argument, the Dart thread safely shares ownership of the opaque type with Rust. This is safe because `Opaque<T>` requires that T be `Send` and `Sync`, furthermore Rust's `Opaque<T>` can only hand out immutable references through `Deref`. If dispose is called on the Dart side before the function call completes, Rust takes full ownership.
+When calling a function with an opaque type argument, the Dart thread safely shares ownership of the opaque type with Rust. This is safe because `RustOpaque<T>` requires that T be `Send` and `Sync`, furthermore Rust's `RustOpaque<T>` hand out immutable references through `Deref` or get an internal property if only Rust owns the opaque type. If dispose is called on the Dart side before the function call completes, Rust takes full ownership.
 
 
 ## Example
@@ -25,13 +25,13 @@ Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
-pub fn create_opaque() -> Opaque<OpaqueStruct> {
+pub fn create_opaque() -> RustOpaque<HideData> {
     // [`HideData`] has private fields.
-    Opaque::new(HideData::new())
+    RustOpaque::new(HideData::new())
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
-    // Opaque impl Deref trait.
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    // RustOpaque impl Deref trait.
     opaque.hide_data()
 }
 ```
@@ -59,13 +59,13 @@ Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
-pub fn create_opaque() -> Opaque<OpaqueStruct> {
+pub fn create_opaque() -> RustOpaque<HideData> {
     // [`HideData`] has private fields.
-    Opaque::new(HideData::new())
+    RustOpaque::new(HideData::new())
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
-    // Opaque impl Deref trait.
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    // RustOpaque impl Deref trait.
     opaque.hide_data()
 }
 ```
@@ -93,17 +93,17 @@ Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
-pub fn create_opaque() -> Opaque<OpaqueStruct> {
+pub fn create_opaque() -> RustOpaque<HideData> {
     // [`HideData`] has private fields.
-    Opaque::new(HideData::new())
+    RustOpaque::new(HideData::new())
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
-    // Opaque impl Deref trait.
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    // RustOpaque impl Deref trait.
     opaque.hide_data()
 }
 
-pub fn run_opaque_with_delay(opaque: Opaque<HideData>) -> String {
+pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
     sleep(Duration::from_millis(1000));
     opaque.hide_data()
 }
@@ -140,13 +140,13 @@ Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
-pub fn create_opaque() -> Opaque<OpaqueStruct> {
+pub fn create_opaque() -> RustOpaque<HideData> {
     // [`HideData`] has private fields.
-    Opaque::new(HideData::new())
+    RustOpaque::new(HideData::new())
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
-    // Opaque impl Deref trait.
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    // RustOpaque impl Deref trait.
     opaque.hide_data()
 }
 ```
@@ -177,13 +177,13 @@ Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
-pub fn create_opaque() -> Opaque<OpaqueStruct> {
+pub fn create_opaque() -> RustOpaque<HideData> {
     // [`HideData`] has private fields.
-    Opaque::new(HideData::new())
+    RustOpaque::new(HideData::new())
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
-    // Opaque impl Deref trait.
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    // RustOpaque impl Deref trait.
     opaque.hide_data()
 }
 ```
@@ -224,13 +224,13 @@ Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
-pub fn create_opaque() -> Opaque<OpaqueStruct> {
+pub fn create_opaque() -> RustOpaque<HideData> {
     // [`HideData`] has private fields.
-    Opaque::new(HideData::new())
+    RustOpaque::new(HideData::new())
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
-    // Opaque impl Deref trait.
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    // RustOpaque impl Deref trait.
     opaque.hide_data()
 }
 ```
@@ -265,13 +265,13 @@ Rust `api.rs`:
 ```rust,noplayground
 pub use crate::data::HideData; // `pub` for bridge_generated.rs
 
-pub fn create_opaque() -> Opaque<OpaqueStruct> {
+pub fn create_opaque() -> RustOpaque<HideData> {
     // [`HideData`] has private fields.
-    Opaque::new(HideData::new())
+    RustOpaque::new(HideData::new())
 }
 
-pub fn run_opaque(opaque: Opaque<HideData>) -> String {
-    // Opaque impl Deref trait.
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    // RustOpaque impl Deref trait.
     opaque.hide_data()
 }
 ```
