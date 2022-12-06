@@ -63,7 +63,7 @@ jobs:
           git sparse-checkout set runtime/include
       - run: |
           Copy-Item -Recurse ./sdk/runtime/include/* ./frb_rust/src/dart_api_dl/
-          Remove-Item 'D:\temp\Test Folder' -Recurse
+          Remove-Item ./sdk -Recurse
         if: ${{ inputs.family == 'windows' }}
       - run: |
           cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api_dl/
