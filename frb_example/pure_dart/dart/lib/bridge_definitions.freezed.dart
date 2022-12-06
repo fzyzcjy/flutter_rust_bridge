@@ -476,107 +476,108 @@ abstract class ApplicationMessage_Exit implements ApplicationMessage {
 
 /// @nodoc
 mixin _$DebugEnum {
+  Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -598,213 +599,17 @@ class _$DebugEnumCopyWithImpl<$Res, $Val extends DebugEnum> implements $DebugEnu
 }
 
 /// @nodoc
-abstract class _$$DebugEnum_LogCopyWith<$Res> {
-  factory _$$DebugEnum_LogCopyWith(_$DebugEnum_Log value, $Res Function(_$DebugEnum_Log) then) =
-      __$$DebugEnum_LogCopyWithImpl<$Res>;
+abstract class _$$DebugEnum_FeatureUuidCopyWith<$Res> {
+  factory _$$DebugEnum_FeatureUuidCopyWith(_$DebugEnum_FeatureUuid value, $Res Function(_$DebugEnum_FeatureUuid) then) =
+      __$$DebugEnum_FeatureUuidCopyWithImpl<$Res>;
   @useResult
-  $Res call({Log field0});
+  $Res call({FeatureUuid field0});
 }
 
 /// @nodoc
-class __$$DebugEnum_LogCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_Log>
-    implements _$$DebugEnum_LogCopyWith<$Res> {
-  __$$DebugEnum_LogCopyWithImpl(_$DebugEnum_Log _value, $Res Function(_$DebugEnum_Log) _then) : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$DebugEnum_Log(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as Log,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DebugEnum_Log implements DebugEnum_Log {
-  const _$DebugEnum_Log(this.field0);
-
-  @override
-  final Log field0;
-
-  @override
-  String toString() {
-    return 'DebugEnum.log(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DebugEnum_Log &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DebugEnum_LogCopyWith<_$DebugEnum_Log> get copyWith =>
-      __$$DebugEnum_LogCopyWithImpl<_$DebugEnum_Log>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
-    required TResult Function(Note field0) note,
-    required TResult Function(ExoticOptionals field0) exoticOptionals,
-    required TResult Function(MyTreeNode field0) myTreeNode,
-    required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
-    required TResult Function(Element field0) element,
-    required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
-  }) {
-    return log(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
-    TResult? Function(Note field0)? note,
-    TResult? Function(ExoticOptionals field0)? exoticOptionals,
-    TResult? Function(MyTreeNode field0)? myTreeNode,
-    TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
-    TResult? Function(Element field0)? element,
-    TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
-  }) {
-    return log?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
-    TResult Function(Note field0)? note,
-    TResult Function(ExoticOptionals field0)? exoticOptionals,
-    TResult Function(MyTreeNode field0)? myTreeNode,
-    TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
-    TResult Function(Element field0)? element,
-    TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
-    required TResult orElse(),
-  }) {
-    if (log != null) {
-      return log(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
-    required TResult Function(DebugEnum_Note value) note,
-    required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
-    required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
-    required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
-    required TResult Function(DebugEnum_Element value) element,
-    required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
-  }) {
-    return log(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
-    TResult? Function(DebugEnum_Note value)? note,
-    TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
-    TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
-    TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
-    TResult? Function(DebugEnum_Element value)? element,
-    TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
-  }) {
-    return log?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
-    TResult Function(DebugEnum_Note value)? note,
-    TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
-    TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
-    TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
-    TResult Function(DebugEnum_Element value)? element,
-    TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
-    required TResult orElse(),
-  }) {
-    if (log != null) {
-      return log(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DebugEnum_Log implements DebugEnum {
-  const factory DebugEnum_Log(final Log field0) = _$DebugEnum_Log;
-
-  Log get field0;
-  @JsonKey(ignore: true)
-  _$$DebugEnum_LogCopyWith<_$DebugEnum_Log> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DebugEnum_FeatureChronoCopyWith<$Res> {
-  factory _$$DebugEnum_FeatureChronoCopyWith(
-          _$DebugEnum_FeatureChrono value, $Res Function(_$DebugEnum_FeatureChrono) then) =
-      __$$DebugEnum_FeatureChronoCopyWithImpl<$Res>;
-  @useResult
-  $Res call({FeatureChrono field0});
-}
-
-/// @nodoc
-class __$$DebugEnum_FeatureChronoCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_FeatureChrono>
-    implements _$$DebugEnum_FeatureChronoCopyWith<$Res> {
-  __$$DebugEnum_FeatureChronoCopyWithImpl(
-      _$DebugEnum_FeatureChrono _value, $Res Function(_$DebugEnum_FeatureChrono) _then)
+class __$$DebugEnum_FeatureUuidCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_FeatureUuid>
+    implements _$$DebugEnum_FeatureUuidCopyWith<$Res> {
+  __$$DebugEnum_FeatureUuidCopyWithImpl(_$DebugEnum_FeatureUuid _value, $Res Function(_$DebugEnum_FeatureUuid) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -812,33 +617,33 @@ class __$$DebugEnum_FeatureChronoCopyWithImpl<$Res> extends _$DebugEnumCopyWithI
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$DebugEnum_FeatureChrono(
+    return _then(_$DebugEnum_FeatureUuid(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as FeatureChrono,
+              as FeatureUuid,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DebugEnum_FeatureChrono implements DebugEnum_FeatureChrono {
-  const _$DebugEnum_FeatureChrono(this.field0);
+class _$DebugEnum_FeatureUuid implements DebugEnum_FeatureUuid {
+  const _$DebugEnum_FeatureUuid(this.field0);
 
   @override
-  final FeatureChrono field0;
+  final FeatureUuid field0;
 
   @override
   String toString() {
-    return 'DebugEnum.featureChrono(field0: $field0)';
+    return 'DebugEnum.featureUuid(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DebugEnum_FeatureChrono &&
+            other is _$DebugEnum_FeatureUuid &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -848,69 +653,69 @@ class _$DebugEnum_FeatureChrono implements DebugEnum_FeatureChrono {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DebugEnum_FeatureChronoCopyWith<_$DebugEnum_FeatureChrono> get copyWith =>
-      __$$DebugEnum_FeatureChronoCopyWithImpl<_$DebugEnum_FeatureChrono>(this, _$identity);
+  _$$DebugEnum_FeatureUuidCopyWith<_$DebugEnum_FeatureUuid> get copyWith =>
+      __$$DebugEnum_FeatureUuidCopyWithImpl<_$DebugEnum_FeatureUuid>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
-    return featureChrono(field0);
+    return featureUuid(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
-    return featureChrono?.call(field0);
+    return featureUuid?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
-    if (featureChrono != null) {
-      return featureChrono(field0);
+    if (featureUuid != null) {
+      return featureUuid(field0);
     }
     return orElse();
   }
@@ -918,121 +723,123 @@ class _$DebugEnum_FeatureChrono implements DebugEnum_FeatureChrono {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
-    return featureChrono(this);
+    return featureUuid(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
-    return featureChrono?.call(this);
+    return featureUuid?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
-    if (featureChrono != null) {
-      return featureChrono(this);
+    if (featureUuid != null) {
+      return featureUuid(this);
     }
     return orElse();
   }
 }
 
-abstract class DebugEnum_FeatureChrono implements DebugEnum {
-  const factory DebugEnum_FeatureChrono(final FeatureChrono field0) = _$DebugEnum_FeatureChrono;
+abstract class DebugEnum_FeatureUuid implements DebugEnum {
+  const factory DebugEnum_FeatureUuid(final FeatureUuid field0) = _$DebugEnum_FeatureUuid;
 
-  FeatureChrono get field0;
+  @override
+  FeatureUuid get field0;
   @JsonKey(ignore: true)
-  _$$DebugEnum_FeatureChronoCopyWith<_$DebugEnum_FeatureChrono> get copyWith => throw _privateConstructorUsedError;
+  _$$DebugEnum_FeatureUuidCopyWith<_$DebugEnum_FeatureUuid> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DebugEnum_Log2CopyWith<$Res> {
-  factory _$$DebugEnum_Log2CopyWith(_$DebugEnum_Log2 value, $Res Function(_$DebugEnum_Log2) then) =
-      __$$DebugEnum_Log2CopyWithImpl<$Res>;
+abstract class _$$DebugEnum_MySizeCopyWith<$Res> {
+  factory _$$DebugEnum_MySizeCopyWith(_$DebugEnum_MySize value, $Res Function(_$DebugEnum_MySize) then) =
+      __$$DebugEnum_MySizeCopyWithImpl<$Res>;
   @useResult
-  $Res call({Log2 field0});
+  $Res call({MySize field0});
 }
 
 /// @nodoc
-class __$$DebugEnum_Log2CopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_Log2>
-    implements _$$DebugEnum_Log2CopyWith<$Res> {
-  __$$DebugEnum_Log2CopyWithImpl(_$DebugEnum_Log2 _value, $Res Function(_$DebugEnum_Log2) _then) : super(_value, _then);
+class __$$DebugEnum_MySizeCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_MySize>
+    implements _$$DebugEnum_MySizeCopyWith<$Res> {
+  __$$DebugEnum_MySizeCopyWithImpl(_$DebugEnum_MySize _value, $Res Function(_$DebugEnum_MySize) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$DebugEnum_Log2(
+    return _then(_$DebugEnum_MySize(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Log2,
+              as MySize,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DebugEnum_Log2 implements DebugEnum_Log2 {
-  const _$DebugEnum_Log2(this.field0);
+class _$DebugEnum_MySize implements DebugEnum_MySize {
+  const _$DebugEnum_MySize(this.field0);
 
   @override
-  final Log2 field0;
+  final MySize field0;
 
   @override
   String toString() {
-    return 'DebugEnum.log2(field0: $field0)';
+    return 'DebugEnum.mySize(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DebugEnum_Log2 &&
+            other is _$DebugEnum_MySize &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -1042,69 +849,69 @@ class _$DebugEnum_Log2 implements DebugEnum_Log2 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DebugEnum_Log2CopyWith<_$DebugEnum_Log2> get copyWith =>
-      __$$DebugEnum_Log2CopyWithImpl<_$DebugEnum_Log2>(this, _$identity);
+  _$$DebugEnum_MySizeCopyWith<_$DebugEnum_MySize> get copyWith =>
+      __$$DebugEnum_MySizeCopyWithImpl<_$DebugEnum_MySize>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
-    return log2(field0);
+    return mySize(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
-    return log2?.call(field0);
+    return mySize?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
-    if (log2 != null) {
-      return log2(field0);
+    if (mySize != null) {
+      return mySize(field0);
     }
     return orElse();
   }
@@ -1112,74 +919,271 @@ class _$DebugEnum_Log2 implements DebugEnum_Log2 {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
-    return log2(this);
+    return mySize(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
-    return log2?.call(this);
+    return mySize?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
-    if (log2 != null) {
-      return log2(this);
+    if (mySize != null) {
+      return mySize(this);
     }
     return orElse();
   }
 }
 
-abstract class DebugEnum_Log2 implements DebugEnum {
-  const factory DebugEnum_Log2(final Log2 field0) = _$DebugEnum_Log2;
+abstract class DebugEnum_MySize implements DebugEnum {
+  const factory DebugEnum_MySize(final MySize field0) = _$DebugEnum_MySize;
 
-  Log2 get field0;
+  @override
+  MySize get field0;
   @JsonKey(ignore: true)
-  _$$DebugEnum_Log2CopyWith<_$DebugEnum_Log2> get copyWith => throw _privateConstructorUsedError;
+  _$$DebugEnum_MySizeCopyWith<_$DebugEnum_MySize> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DebugEnum_HideDataCopyWith<$Res> {
+  factory _$$DebugEnum_HideDataCopyWith(_$DebugEnum_HideData value, $Res Function(_$DebugEnum_HideData) then) =
+      __$$DebugEnum_HideDataCopyWithImpl<$Res>;
+  @useResult
+  $Res call({HideData field0});
+}
+
+/// @nodoc
+class __$$DebugEnum_HideDataCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_HideData>
+    implements _$$DebugEnum_HideDataCopyWith<$Res> {
+  __$$DebugEnum_HideDataCopyWithImpl(_$DebugEnum_HideData _value, $Res Function(_$DebugEnum_HideData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$DebugEnum_HideData(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as HideData,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DebugEnum_HideData implements DebugEnum_HideData {
+  const _$DebugEnum_HideData(this.field0);
+
+  @override
+  final HideData field0;
+
+  @override
+  String toString() {
+    return 'DebugEnum.hideData(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DebugEnum_HideData &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DebugEnum_HideDataCopyWith<_$DebugEnum_HideData> get copyWith =>
+      __$$DebugEnum_HideDataCopyWithImpl<_$DebugEnum_HideData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
+    required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
+    required TResult Function(ExoticOptionals field0) exoticOptionals,
+    required TResult Function(MyTreeNode field0) myTreeNode,
+    required TResult Function(NewTypeInt field0) newTypeInt,
+    required TResult Function(Log field0) log,
+    required TResult Function(Element field0) element,
+    required TResult Function(Customized field0) customized,
+    required TResult Function(FeatureChrono field0) featureChrono,
+  }) {
+    return hideData(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
+    TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
+    TResult? Function(ExoticOptionals field0)? exoticOptionals,
+    TResult? Function(MyTreeNode field0)? myTreeNode,
+    TResult? Function(NewTypeInt field0)? newTypeInt,
+    TResult? Function(Log field0)? log,
+    TResult? Function(Element field0)? element,
+    TResult? Function(Customized field0)? customized,
+    TResult? Function(FeatureChrono field0)? featureChrono,
+  }) {
+    return hideData?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
+    TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
+    TResult Function(ExoticOptionals field0)? exoticOptionals,
+    TResult Function(MyTreeNode field0)? myTreeNode,
+    TResult Function(NewTypeInt field0)? newTypeInt,
+    TResult Function(Log field0)? log,
+    TResult Function(Element field0)? element,
+    TResult Function(Customized field0)? customized,
+    TResult Function(FeatureChrono field0)? featureChrono,
+    required TResult orElse(),
+  }) {
+    if (hideData != null) {
+      return hideData(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
+    required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
+    required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
+    required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
+    required TResult Function(DebugEnum_Log value) log,
+    required TResult Function(DebugEnum_Element value) element,
+    required TResult Function(DebugEnum_Customized value) customized,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
+  }) {
+    return hideData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
+    TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
+    TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
+    TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
+    TResult? Function(DebugEnum_Log value)? log,
+    TResult? Function(DebugEnum_Element value)? element,
+    TResult? Function(DebugEnum_Customized value)? customized,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
+  }) {
+    return hideData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
+    TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
+    TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
+    TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
+    TResult Function(DebugEnum_Log value)? log,
+    TResult Function(DebugEnum_Element value)? element,
+    TResult Function(DebugEnum_Customized value)? customized,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
+    required TResult orElse(),
+  }) {
+    if (hideData != null) {
+      return hideData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DebugEnum_HideData implements DebugEnum {
+  const factory DebugEnum_HideData(final HideData field0) = _$DebugEnum_HideData;
+
+  @override
+  HideData get field0;
+  @JsonKey(ignore: true)
+  _$$DebugEnum_HideDataCopyWith<_$DebugEnum_HideData> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1242,19 +1246,19 @@ class _$DebugEnum_Note implements DebugEnum_Note {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
     return note(field0);
   }
@@ -1262,19 +1266,19 @@ class _$DebugEnum_Note implements DebugEnum_Note {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
     return note?.call(field0);
   }
@@ -1282,19 +1286,19 @@ class _$DebugEnum_Note implements DebugEnum_Note {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
     if (note != null) {
@@ -1306,19 +1310,19 @@ class _$DebugEnum_Note implements DebugEnum_Note {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
     return note(this);
   }
@@ -1326,19 +1330,19 @@ class _$DebugEnum_Note implements DebugEnum_Note {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
     return note?.call(this);
   }
@@ -1346,19 +1350,19 @@ class _$DebugEnum_Note implements DebugEnum_Note {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
     if (note != null) {
@@ -1371,9 +1375,401 @@ class _$DebugEnum_Note implements DebugEnum_Note {
 abstract class DebugEnum_Note implements DebugEnum {
   const factory DebugEnum_Note(final Note field0) = _$DebugEnum_Note;
 
+  @override
   Note get field0;
   @JsonKey(ignore: true)
   _$$DebugEnum_NoteCopyWith<_$DebugEnum_Note> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DebugEnum_Log2CopyWith<$Res> {
+  factory _$$DebugEnum_Log2CopyWith(_$DebugEnum_Log2 value, $Res Function(_$DebugEnum_Log2) then) =
+      __$$DebugEnum_Log2CopyWithImpl<$Res>;
+  @useResult
+  $Res call({Log2 field0});
+}
+
+/// @nodoc
+class __$$DebugEnum_Log2CopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_Log2>
+    implements _$$DebugEnum_Log2CopyWith<$Res> {
+  __$$DebugEnum_Log2CopyWithImpl(_$DebugEnum_Log2 _value, $Res Function(_$DebugEnum_Log2) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$DebugEnum_Log2(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Log2,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DebugEnum_Log2 implements DebugEnum_Log2 {
+  const _$DebugEnum_Log2(this.field0);
+
+  @override
+  final Log2 field0;
+
+  @override
+  String toString() {
+    return 'DebugEnum.log2(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DebugEnum_Log2 &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DebugEnum_Log2CopyWith<_$DebugEnum_Log2> get copyWith =>
+      __$$DebugEnum_Log2CopyWithImpl<_$DebugEnum_Log2>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
+    required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
+    required TResult Function(ExoticOptionals field0) exoticOptionals,
+    required TResult Function(MyTreeNode field0) myTreeNode,
+    required TResult Function(NewTypeInt field0) newTypeInt,
+    required TResult Function(Log field0) log,
+    required TResult Function(Element field0) element,
+    required TResult Function(Customized field0) customized,
+    required TResult Function(FeatureChrono field0) featureChrono,
+  }) {
+    return log2(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
+    TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
+    TResult? Function(ExoticOptionals field0)? exoticOptionals,
+    TResult? Function(MyTreeNode field0)? myTreeNode,
+    TResult? Function(NewTypeInt field0)? newTypeInt,
+    TResult? Function(Log field0)? log,
+    TResult? Function(Element field0)? element,
+    TResult? Function(Customized field0)? customized,
+    TResult? Function(FeatureChrono field0)? featureChrono,
+  }) {
+    return log2?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
+    TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
+    TResult Function(ExoticOptionals field0)? exoticOptionals,
+    TResult Function(MyTreeNode field0)? myTreeNode,
+    TResult Function(NewTypeInt field0)? newTypeInt,
+    TResult Function(Log field0)? log,
+    TResult Function(Element field0)? element,
+    TResult Function(Customized field0)? customized,
+    TResult Function(FeatureChrono field0)? featureChrono,
+    required TResult orElse(),
+  }) {
+    if (log2 != null) {
+      return log2(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
+    required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
+    required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
+    required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
+    required TResult Function(DebugEnum_Log value) log,
+    required TResult Function(DebugEnum_Element value) element,
+    required TResult Function(DebugEnum_Customized value) customized,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
+  }) {
+    return log2(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
+    TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
+    TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
+    TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
+    TResult? Function(DebugEnum_Log value)? log,
+    TResult? Function(DebugEnum_Element value)? element,
+    TResult? Function(DebugEnum_Customized value)? customized,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
+  }) {
+    return log2?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
+    TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
+    TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
+    TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
+    TResult Function(DebugEnum_Log value)? log,
+    TResult Function(DebugEnum_Element value)? element,
+    TResult Function(DebugEnum_Customized value)? customized,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
+    required TResult orElse(),
+  }) {
+    if (log2 != null) {
+      return log2(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DebugEnum_Log2 implements DebugEnum {
+  const factory DebugEnum_Log2(final Log2 field0) = _$DebugEnum_Log2;
+
+  @override
+  Log2 get field0;
+  @JsonKey(ignore: true)
+  _$$DebugEnum_Log2CopyWith<_$DebugEnum_Log2> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DebugEnum_AttributeCopyWith<$Res> {
+  factory _$$DebugEnum_AttributeCopyWith(_$DebugEnum_Attribute value, $Res Function(_$DebugEnum_Attribute) then) =
+      __$$DebugEnum_AttributeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Attribute field0});
+}
+
+/// @nodoc
+class __$$DebugEnum_AttributeCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_Attribute>
+    implements _$$DebugEnum_AttributeCopyWith<$Res> {
+  __$$DebugEnum_AttributeCopyWithImpl(_$DebugEnum_Attribute _value, $Res Function(_$DebugEnum_Attribute) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$DebugEnum_Attribute(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Attribute,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DebugEnum_Attribute implements DebugEnum_Attribute {
+  const _$DebugEnum_Attribute(this.field0);
+
+  @override
+  final Attribute field0;
+
+  @override
+  String toString() {
+    return 'DebugEnum.attribute(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DebugEnum_Attribute &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DebugEnum_AttributeCopyWith<_$DebugEnum_Attribute> get copyWith =>
+      __$$DebugEnum_AttributeCopyWithImpl<_$DebugEnum_Attribute>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
+    required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
+    required TResult Function(ExoticOptionals field0) exoticOptionals,
+    required TResult Function(MyTreeNode field0) myTreeNode,
+    required TResult Function(NewTypeInt field0) newTypeInt,
+    required TResult Function(Log field0) log,
+    required TResult Function(Element field0) element,
+    required TResult Function(Customized field0) customized,
+    required TResult Function(FeatureChrono field0) featureChrono,
+  }) {
+    return attribute(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
+    TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
+    TResult? Function(ExoticOptionals field0)? exoticOptionals,
+    TResult? Function(MyTreeNode field0)? myTreeNode,
+    TResult? Function(NewTypeInt field0)? newTypeInt,
+    TResult? Function(Log field0)? log,
+    TResult? Function(Element field0)? element,
+    TResult? Function(Customized field0)? customized,
+    TResult? Function(FeatureChrono field0)? featureChrono,
+  }) {
+    return attribute?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
+    TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
+    TResult Function(ExoticOptionals field0)? exoticOptionals,
+    TResult Function(MyTreeNode field0)? myTreeNode,
+    TResult Function(NewTypeInt field0)? newTypeInt,
+    TResult Function(Log field0)? log,
+    TResult Function(Element field0)? element,
+    TResult Function(Customized field0)? customized,
+    TResult Function(FeatureChrono field0)? featureChrono,
+    required TResult orElse(),
+  }) {
+    if (attribute != null) {
+      return attribute(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
+    required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
+    required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
+    required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
+    required TResult Function(DebugEnum_Log value) log,
+    required TResult Function(DebugEnum_Element value) element,
+    required TResult Function(DebugEnum_Customized value) customized,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
+  }) {
+    return attribute(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
+    TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
+    TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
+    TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
+    TResult? Function(DebugEnum_Log value)? log,
+    TResult? Function(DebugEnum_Element value)? element,
+    TResult? Function(DebugEnum_Customized value)? customized,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
+  }) {
+    return attribute?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
+    TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
+    TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
+    TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
+    TResult Function(DebugEnum_Log value)? log,
+    TResult Function(DebugEnum_Element value)? element,
+    TResult Function(DebugEnum_Customized value)? customized,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
+    required TResult orElse(),
+  }) {
+    if (attribute != null) {
+      return attribute(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DebugEnum_Attribute implements DebugEnum {
+  const factory DebugEnum_Attribute(final Attribute field0) = _$DebugEnum_Attribute;
+
+  @override
+  Attribute get field0;
+  @JsonKey(ignore: true)
+  _$$DebugEnum_AttributeCopyWith<_$DebugEnum_Attribute> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1439,19 +1835,19 @@ class _$DebugEnum_ExoticOptionals implements DebugEnum_ExoticOptionals {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
     return exoticOptionals(field0);
   }
@@ -1459,19 +1855,19 @@ class _$DebugEnum_ExoticOptionals implements DebugEnum_ExoticOptionals {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
     return exoticOptionals?.call(field0);
   }
@@ -1479,19 +1875,19 @@ class _$DebugEnum_ExoticOptionals implements DebugEnum_ExoticOptionals {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
     if (exoticOptionals != null) {
@@ -1503,19 +1899,19 @@ class _$DebugEnum_ExoticOptionals implements DebugEnum_ExoticOptionals {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
     return exoticOptionals(this);
   }
@@ -1523,19 +1919,19 @@ class _$DebugEnum_ExoticOptionals implements DebugEnum_ExoticOptionals {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
     return exoticOptionals?.call(this);
   }
@@ -1543,19 +1939,19 @@ class _$DebugEnum_ExoticOptionals implements DebugEnum_ExoticOptionals {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
     if (exoticOptionals != null) {
@@ -1568,6 +1964,7 @@ class _$DebugEnum_ExoticOptionals implements DebugEnum_ExoticOptionals {
 abstract class DebugEnum_ExoticOptionals implements DebugEnum {
   const factory DebugEnum_ExoticOptionals(final ExoticOptionals field0) = _$DebugEnum_ExoticOptionals;
 
+  @override
   ExoticOptionals get field0;
   @JsonKey(ignore: true)
   _$$DebugEnum_ExoticOptionalsCopyWith<_$DebugEnum_ExoticOptionals> get copyWith => throw _privateConstructorUsedError;
@@ -1634,19 +2031,19 @@ class _$DebugEnum_MyTreeNode implements DebugEnum_MyTreeNode {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
     return myTreeNode(field0);
   }
@@ -1654,19 +2051,19 @@ class _$DebugEnum_MyTreeNode implements DebugEnum_MyTreeNode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
     return myTreeNode?.call(field0);
   }
@@ -1674,19 +2071,19 @@ class _$DebugEnum_MyTreeNode implements DebugEnum_MyTreeNode {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
     if (myTreeNode != null) {
@@ -1698,19 +2095,19 @@ class _$DebugEnum_MyTreeNode implements DebugEnum_MyTreeNode {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
     return myTreeNode(this);
   }
@@ -1718,19 +2115,19 @@ class _$DebugEnum_MyTreeNode implements DebugEnum_MyTreeNode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
     return myTreeNode?.call(this);
   }
@@ -1738,19 +2135,19 @@ class _$DebugEnum_MyTreeNode implements DebugEnum_MyTreeNode {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
     if (myTreeNode != null) {
@@ -1763,6 +2160,7 @@ class _$DebugEnum_MyTreeNode implements DebugEnum_MyTreeNode {
 abstract class DebugEnum_MyTreeNode implements DebugEnum {
   const factory DebugEnum_MyTreeNode(final MyTreeNode field0) = _$DebugEnum_MyTreeNode;
 
+  @override
   MyTreeNode get field0;
   @JsonKey(ignore: true)
   _$$DebugEnum_MyTreeNodeCopyWith<_$DebugEnum_MyTreeNode> get copyWith => throw _privateConstructorUsedError;
@@ -1829,19 +2227,19 @@ class _$DebugEnum_NewTypeInt implements DebugEnum_NewTypeInt {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
     return newTypeInt(field0);
   }
@@ -1849,19 +2247,19 @@ class _$DebugEnum_NewTypeInt implements DebugEnum_NewTypeInt {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
     return newTypeInt?.call(field0);
   }
@@ -1869,19 +2267,19 @@ class _$DebugEnum_NewTypeInt implements DebugEnum_NewTypeInt {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
     if (newTypeInt != null) {
@@ -1893,19 +2291,19 @@ class _$DebugEnum_NewTypeInt implements DebugEnum_NewTypeInt {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
     return newTypeInt(this);
   }
@@ -1913,19 +2311,19 @@ class _$DebugEnum_NewTypeInt implements DebugEnum_NewTypeInt {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
     return newTypeInt?.call(this);
   }
@@ -1933,19 +2331,19 @@ class _$DebugEnum_NewTypeInt implements DebugEnum_NewTypeInt {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
     if (newTypeInt != null) {
@@ -1958,57 +2356,57 @@ class _$DebugEnum_NewTypeInt implements DebugEnum_NewTypeInt {
 abstract class DebugEnum_NewTypeInt implements DebugEnum {
   const factory DebugEnum_NewTypeInt(final NewTypeInt field0) = _$DebugEnum_NewTypeInt;
 
+  @override
   NewTypeInt get field0;
   @JsonKey(ignore: true)
   _$$DebugEnum_NewTypeIntCopyWith<_$DebugEnum_NewTypeInt> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DebugEnum_MySizeCopyWith<$Res> {
-  factory _$$DebugEnum_MySizeCopyWith(_$DebugEnum_MySize value, $Res Function(_$DebugEnum_MySize) then) =
-      __$$DebugEnum_MySizeCopyWithImpl<$Res>;
+abstract class _$$DebugEnum_LogCopyWith<$Res> {
+  factory _$$DebugEnum_LogCopyWith(_$DebugEnum_Log value, $Res Function(_$DebugEnum_Log) then) =
+      __$$DebugEnum_LogCopyWithImpl<$Res>;
   @useResult
-  $Res call({MySize field0});
+  $Res call({Log field0});
 }
 
 /// @nodoc
-class __$$DebugEnum_MySizeCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_MySize>
-    implements _$$DebugEnum_MySizeCopyWith<$Res> {
-  __$$DebugEnum_MySizeCopyWithImpl(_$DebugEnum_MySize _value, $Res Function(_$DebugEnum_MySize) _then)
-      : super(_value, _then);
+class __$$DebugEnum_LogCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_Log>
+    implements _$$DebugEnum_LogCopyWith<$Res> {
+  __$$DebugEnum_LogCopyWithImpl(_$DebugEnum_Log _value, $Res Function(_$DebugEnum_Log) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$DebugEnum_MySize(
+    return _then(_$DebugEnum_Log(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as MySize,
+              as Log,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DebugEnum_MySize implements DebugEnum_MySize {
-  const _$DebugEnum_MySize(this.field0);
+class _$DebugEnum_Log implements DebugEnum_Log {
+  const _$DebugEnum_Log(this.field0);
 
   @override
-  final MySize field0;
+  final Log field0;
 
   @override
   String toString() {
-    return 'DebugEnum.mySize(field0: $field0)';
+    return 'DebugEnum.log(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DebugEnum_MySize &&
+            other is _$DebugEnum_Log &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2018,69 +2416,69 @@ class _$DebugEnum_MySize implements DebugEnum_MySize {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DebugEnum_MySizeCopyWith<_$DebugEnum_MySize> get copyWith =>
-      __$$DebugEnum_MySizeCopyWithImpl<_$DebugEnum_MySize>(this, _$identity);
+  _$$DebugEnum_LogCopyWith<_$DebugEnum_Log> get copyWith =>
+      __$$DebugEnum_LogCopyWithImpl<_$DebugEnum_Log>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
-    return mySize(field0);
+    return log(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
-    return mySize?.call(field0);
+    return log?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
-    if (mySize != null) {
-      return mySize(field0);
+    if (log != null) {
+      return log(field0);
     }
     return orElse();
   }
@@ -2088,269 +2486,75 @@ class _$DebugEnum_MySize implements DebugEnum_MySize {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
-    return mySize(this);
+    return log(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
-    return mySize?.call(this);
+    return log?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
-    TResult Function(DebugEnum_Element value)? element,
-    TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
-    required TResult orElse(),
-  }) {
-    if (mySize != null) {
-      return mySize(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DebugEnum_MySize implements DebugEnum {
-  const factory DebugEnum_MySize(final MySize field0) = _$DebugEnum_MySize;
-
-  MySize get field0;
-  @JsonKey(ignore: true)
-  _$$DebugEnum_MySizeCopyWith<_$DebugEnum_MySize> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DebugEnum_FeatureUuidCopyWith<$Res> {
-  factory _$$DebugEnum_FeatureUuidCopyWith(_$DebugEnum_FeatureUuid value, $Res Function(_$DebugEnum_FeatureUuid) then) =
-      __$$DebugEnum_FeatureUuidCopyWithImpl<$Res>;
-  @useResult
-  $Res call({FeatureUuid field0});
-}
-
-/// @nodoc
-class __$$DebugEnum_FeatureUuidCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_FeatureUuid>
-    implements _$$DebugEnum_FeatureUuidCopyWith<$Res> {
-  __$$DebugEnum_FeatureUuidCopyWithImpl(_$DebugEnum_FeatureUuid _value, $Res Function(_$DebugEnum_FeatureUuid) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$DebugEnum_FeatureUuid(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as FeatureUuid,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DebugEnum_FeatureUuid implements DebugEnum_FeatureUuid {
-  const _$DebugEnum_FeatureUuid(this.field0);
-
-  @override
-  final FeatureUuid field0;
-
-  @override
-  String toString() {
-    return 'DebugEnum.featureUuid(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DebugEnum_FeatureUuid &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DebugEnum_FeatureUuidCopyWith<_$DebugEnum_FeatureUuid> get copyWith =>
-      __$$DebugEnum_FeatureUuidCopyWithImpl<_$DebugEnum_FeatureUuid>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
-    required TResult Function(Note field0) note,
-    required TResult Function(ExoticOptionals field0) exoticOptionals,
-    required TResult Function(MyTreeNode field0) myTreeNode,
-    required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
-    required TResult Function(Element field0) element,
-    required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
-  }) {
-    return featureUuid(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
-    TResult? Function(Note field0)? note,
-    TResult? Function(ExoticOptionals field0)? exoticOptionals,
-    TResult? Function(MyTreeNode field0)? myTreeNode,
-    TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
-    TResult? Function(Element field0)? element,
-    TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
-  }) {
-    return featureUuid?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
-    TResult Function(Note field0)? note,
-    TResult Function(ExoticOptionals field0)? exoticOptionals,
-    TResult Function(MyTreeNode field0)? myTreeNode,
-    TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
-    TResult Function(Element field0)? element,
-    TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
-    required TResult orElse(),
-  }) {
-    if (featureUuid != null) {
-      return featureUuid(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
-    required TResult Function(DebugEnum_Note value) note,
-    required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
-    required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
-    required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
-    required TResult Function(DebugEnum_Element value) element,
-    required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
-  }) {
-    return featureUuid(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
-    TResult? Function(DebugEnum_Note value)? note,
-    TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
-    TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
-    TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
-    TResult? Function(DebugEnum_Element value)? element,
-    TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
-  }) {
-    return featureUuid?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
     TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
-    TResult Function(DebugEnum_Note value)? note,
-    TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
-    TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
-    TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
-    if (featureUuid != null) {
-      return featureUuid(this);
+    if (log != null) {
+      return log(this);
     }
     return orElse();
   }
 }
 
-abstract class DebugEnum_FeatureUuid implements DebugEnum {
-  const factory DebugEnum_FeatureUuid(final FeatureUuid field0) = _$DebugEnum_FeatureUuid;
+abstract class DebugEnum_Log implements DebugEnum {
+  const factory DebugEnum_Log(final Log field0) = _$DebugEnum_Log;
 
-  FeatureUuid get field0;
+  @override
+  Log get field0;
   @JsonKey(ignore: true)
-  _$$DebugEnum_FeatureUuidCopyWith<_$DebugEnum_FeatureUuid> get copyWith => throw _privateConstructorUsedError;
+  _$$DebugEnum_LogCopyWith<_$DebugEnum_Log> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2414,19 +2618,19 @@ class _$DebugEnum_Element implements DebugEnum_Element {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
     return element(field0);
   }
@@ -2434,19 +2638,19 @@ class _$DebugEnum_Element implements DebugEnum_Element {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
     return element?.call(field0);
   }
@@ -2454,19 +2658,19 @@ class _$DebugEnum_Element implements DebugEnum_Element {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
     if (element != null) {
@@ -2478,19 +2682,19 @@ class _$DebugEnum_Element implements DebugEnum_Element {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
     return element(this);
   }
@@ -2498,19 +2702,19 @@ class _$DebugEnum_Element implements DebugEnum_Element {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
     return element?.call(this);
   }
@@ -2518,19 +2722,19 @@ class _$DebugEnum_Element implements DebugEnum_Element {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
     if (element != null) {
@@ -2543,6 +2747,7 @@ class _$DebugEnum_Element implements DebugEnum_Element {
 abstract class DebugEnum_Element implements DebugEnum {
   const factory DebugEnum_Element(final Element field0) = _$DebugEnum_Element;
 
+  @override
   Element get field0;
   @JsonKey(ignore: true)
   _$$DebugEnum_ElementCopyWith<_$DebugEnum_Element> get copyWith => throw _privateConstructorUsedError;
@@ -2609,19 +2814,19 @@ class _$DebugEnum_Customized implements DebugEnum_Customized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
     return customized(field0);
   }
@@ -2629,19 +2834,19 @@ class _$DebugEnum_Customized implements DebugEnum_Customized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
     return customized?.call(field0);
   }
@@ -2649,19 +2854,19 @@ class _$DebugEnum_Customized implements DebugEnum_Customized {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
     if (customized != null) {
@@ -2673,19 +2878,19 @@ class _$DebugEnum_Customized implements DebugEnum_Customized {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
     return customized(this);
   }
@@ -2693,19 +2898,19 @@ class _$DebugEnum_Customized implements DebugEnum_Customized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
     return customized?.call(this);
   }
@@ -2713,19 +2918,19 @@ class _$DebugEnum_Customized implements DebugEnum_Customized {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_Log value)? log,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
     if (customized != null) {
@@ -2738,23 +2943,26 @@ class _$DebugEnum_Customized implements DebugEnum_Customized {
 abstract class DebugEnum_Customized implements DebugEnum {
   const factory DebugEnum_Customized(final Customized field0) = _$DebugEnum_Customized;
 
+  @override
   Customized get field0;
   @JsonKey(ignore: true)
   _$$DebugEnum_CustomizedCopyWith<_$DebugEnum_Customized> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DebugEnum_AttributeCopyWith<$Res> {
-  factory _$$DebugEnum_AttributeCopyWith(_$DebugEnum_Attribute value, $Res Function(_$DebugEnum_Attribute) then) =
-      __$$DebugEnum_AttributeCopyWithImpl<$Res>;
+abstract class _$$DebugEnum_FeatureChronoCopyWith<$Res> {
+  factory _$$DebugEnum_FeatureChronoCopyWith(
+          _$DebugEnum_FeatureChrono value, $Res Function(_$DebugEnum_FeatureChrono) then) =
+      __$$DebugEnum_FeatureChronoCopyWithImpl<$Res>;
   @useResult
-  $Res call({Attribute field0});
+  $Res call({FeatureChrono field0});
 }
 
 /// @nodoc
-class __$$DebugEnum_AttributeCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_Attribute>
-    implements _$$DebugEnum_AttributeCopyWith<$Res> {
-  __$$DebugEnum_AttributeCopyWithImpl(_$DebugEnum_Attribute _value, $Res Function(_$DebugEnum_Attribute) _then)
+class __$$DebugEnum_FeatureChronoCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_FeatureChrono>
+    implements _$$DebugEnum_FeatureChronoCopyWith<$Res> {
+  __$$DebugEnum_FeatureChronoCopyWithImpl(
+      _$DebugEnum_FeatureChrono _value, $Res Function(_$DebugEnum_FeatureChrono) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2762,33 +2970,33 @@ class __$$DebugEnum_AttributeCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$DebugEnum_Attribute(
+    return _then(_$DebugEnum_FeatureChrono(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Attribute,
+              as FeatureChrono,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DebugEnum_Attribute implements DebugEnum_Attribute {
-  const _$DebugEnum_Attribute(this.field0);
+class _$DebugEnum_FeatureChrono implements DebugEnum_FeatureChrono {
+  const _$DebugEnum_FeatureChrono(this.field0);
 
   @override
-  final Attribute field0;
+  final FeatureChrono field0;
 
   @override
   String toString() {
-    return 'DebugEnum.attribute(field0: $field0)';
+    return 'DebugEnum.featureChrono(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DebugEnum_Attribute &&
+            other is _$DebugEnum_FeatureChrono &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2798,69 +3006,69 @@ class _$DebugEnum_Attribute implements DebugEnum_Attribute {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DebugEnum_AttributeCopyWith<_$DebugEnum_Attribute> get copyWith =>
-      __$$DebugEnum_AttributeCopyWithImpl<_$DebugEnum_Attribute>(this, _$identity);
+  _$$DebugEnum_FeatureChronoCopyWith<_$DebugEnum_FeatureChrono> get copyWith =>
+      __$$DebugEnum_FeatureChronoCopyWithImpl<_$DebugEnum_FeatureChrono>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
+    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(MySize field0) mySize,
+    required TResult Function(HideData field0) hideData,
     required TResult Function(Note field0) note,
+    required TResult Function(Log2 field0) log2,
+    required TResult Function(Attribute field0) attribute,
     required TResult Function(ExoticOptionals field0) exoticOptionals,
     required TResult Function(MyTreeNode field0) myTreeNode,
     required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
+    required TResult Function(Log field0) log,
     required TResult Function(Element field0) element,
     required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
+    required TResult Function(FeatureChrono field0) featureChrono,
   }) {
-    return attribute(field0);
+    return featureChrono(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
+    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(MySize field0)? mySize,
+    TResult? Function(HideData field0)? hideData,
     TResult? Function(Note field0)? note,
+    TResult? Function(Log2 field0)? log2,
+    TResult? Function(Attribute field0)? attribute,
     TResult? Function(ExoticOptionals field0)? exoticOptionals,
     TResult? Function(MyTreeNode field0)? myTreeNode,
     TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
+    TResult? Function(Log field0)? log,
     TResult? Function(Element field0)? element,
     TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
+    TResult? Function(FeatureChrono field0)? featureChrono,
   }) {
-    return attribute?.call(field0);
+    return featureChrono?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
+    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(MySize field0)? mySize,
+    TResult Function(HideData field0)? hideData,
     TResult Function(Note field0)? note,
+    TResult Function(Log2 field0)? log2,
+    TResult Function(Attribute field0)? attribute,
     TResult Function(ExoticOptionals field0)? exoticOptionals,
     TResult Function(MyTreeNode field0)? myTreeNode,
     TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
+    TResult Function(Log field0)? log,
     TResult Function(Element field0)? element,
     TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
+    TResult Function(FeatureChrono field0)? featureChrono,
     required TResult orElse(),
   }) {
-    if (attribute != null) {
-      return attribute(field0);
+    if (featureChrono != null) {
+      return featureChrono(field0);
     }
     return orElse();
   }
@@ -2868,269 +3076,75 @@ class _$DebugEnum_Attribute implements DebugEnum_Attribute {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_MySize value) mySize,
+    required TResult Function(DebugEnum_HideData value) hideData,
     required TResult Function(DebugEnum_Note value) note,
+    required TResult Function(DebugEnum_Log2 value) log2,
+    required TResult Function(DebugEnum_Attribute value) attribute,
     required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
     required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
     required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
+    required TResult Function(DebugEnum_Log value) log,
     required TResult Function(DebugEnum_Element value) element,
     required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
+    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
   }) {
-    return attribute(this);
+    return featureChrono(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_MySize value)? mySize,
+    TResult? Function(DebugEnum_HideData value)? hideData,
     TResult? Function(DebugEnum_Note value)? note,
+    TResult? Function(DebugEnum_Log2 value)? log2,
+    TResult? Function(DebugEnum_Attribute value)? attribute,
     TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult? Function(DebugEnum_Log value)? log,
     TResult? Function(DebugEnum_Element value)? element,
     TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
+    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
   }) {
-    return attribute?.call(this);
+    return featureChrono?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
+    TResult Function(DebugEnum_MySize value)? mySize,
+    TResult Function(DebugEnum_HideData value)? hideData,
     TResult Function(DebugEnum_Note value)? note,
+    TResult Function(DebugEnum_Log2 value)? log2,
+    TResult Function(DebugEnum_Attribute value)? attribute,
     TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
     TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
     TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
-    TResult Function(DebugEnum_Element value)? element,
-    TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
-    required TResult orElse(),
-  }) {
-    if (attribute != null) {
-      return attribute(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DebugEnum_Attribute implements DebugEnum {
-  const factory DebugEnum_Attribute(final Attribute field0) = _$DebugEnum_Attribute;
-
-  Attribute get field0;
-  @JsonKey(ignore: true)
-  _$$DebugEnum_AttributeCopyWith<_$DebugEnum_Attribute> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DebugEnum_HideDataCopyWith<$Res> {
-  factory _$$DebugEnum_HideDataCopyWith(_$DebugEnum_HideData value, $Res Function(_$DebugEnum_HideData) then) =
-      __$$DebugEnum_HideDataCopyWithImpl<$Res>;
-  @useResult
-  $Res call({HideData field0});
-}
-
-/// @nodoc
-class __$$DebugEnum_HideDataCopyWithImpl<$Res> extends _$DebugEnumCopyWithImpl<$Res, _$DebugEnum_HideData>
-    implements _$$DebugEnum_HideDataCopyWith<$Res> {
-  __$$DebugEnum_HideDataCopyWithImpl(_$DebugEnum_HideData _value, $Res Function(_$DebugEnum_HideData) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$DebugEnum_HideData(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as HideData,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DebugEnum_HideData implements DebugEnum_HideData {
-  const _$DebugEnum_HideData(this.field0);
-
-  @override
-  final HideData field0;
-
-  @override
-  String toString() {
-    return 'DebugEnum.hideData(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DebugEnum_HideData &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DebugEnum_HideDataCopyWith<_$DebugEnum_HideData> get copyWith =>
-      __$$DebugEnum_HideDataCopyWithImpl<_$DebugEnum_HideData>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Log field0) log,
-    required TResult Function(FeatureChrono field0) featureChrono,
-    required TResult Function(Log2 field0) log2,
-    required TResult Function(Note field0) note,
-    required TResult Function(ExoticOptionals field0) exoticOptionals,
-    required TResult Function(MyTreeNode field0) myTreeNode,
-    required TResult Function(NewTypeInt field0) newTypeInt,
-    required TResult Function(MySize field0) mySize,
-    required TResult Function(FeatureUuid field0) featureUuid,
-    required TResult Function(Element field0) element,
-    required TResult Function(Customized field0) customized,
-    required TResult Function(Attribute field0) attribute,
-    required TResult Function(HideData field0) hideData,
-  }) {
-    return hideData(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Log field0)? log,
-    TResult? Function(FeatureChrono field0)? featureChrono,
-    TResult? Function(Log2 field0)? log2,
-    TResult? Function(Note field0)? note,
-    TResult? Function(ExoticOptionals field0)? exoticOptionals,
-    TResult? Function(MyTreeNode field0)? myTreeNode,
-    TResult? Function(NewTypeInt field0)? newTypeInt,
-    TResult? Function(MySize field0)? mySize,
-    TResult? Function(FeatureUuid field0)? featureUuid,
-    TResult? Function(Element field0)? element,
-    TResult? Function(Customized field0)? customized,
-    TResult? Function(Attribute field0)? attribute,
-    TResult? Function(HideData field0)? hideData,
-  }) {
-    return hideData?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Log field0)? log,
-    TResult Function(FeatureChrono field0)? featureChrono,
-    TResult Function(Log2 field0)? log2,
-    TResult Function(Note field0)? note,
-    TResult Function(ExoticOptionals field0)? exoticOptionals,
-    TResult Function(MyTreeNode field0)? myTreeNode,
-    TResult Function(NewTypeInt field0)? newTypeInt,
-    TResult Function(MySize field0)? mySize,
-    TResult Function(FeatureUuid field0)? featureUuid,
-    TResult Function(Element field0)? element,
-    TResult Function(Customized field0)? customized,
-    TResult Function(Attribute field0)? attribute,
-    TResult Function(HideData field0)? hideData,
-    required TResult orElse(),
-  }) {
-    if (hideData != null) {
-      return hideData(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DebugEnum_Log value) log,
-    required TResult Function(DebugEnum_FeatureChrono value) featureChrono,
-    required TResult Function(DebugEnum_Log2 value) log2,
-    required TResult Function(DebugEnum_Note value) note,
-    required TResult Function(DebugEnum_ExoticOptionals value) exoticOptionals,
-    required TResult Function(DebugEnum_MyTreeNode value) myTreeNode,
-    required TResult Function(DebugEnum_NewTypeInt value) newTypeInt,
-    required TResult Function(DebugEnum_MySize value) mySize,
-    required TResult Function(DebugEnum_FeatureUuid value) featureUuid,
-    required TResult Function(DebugEnum_Element value) element,
-    required TResult Function(DebugEnum_Customized value) customized,
-    required TResult Function(DebugEnum_Attribute value) attribute,
-    required TResult Function(DebugEnum_HideData value) hideData,
-  }) {
-    return hideData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DebugEnum_Log value)? log,
-    TResult? Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult? Function(DebugEnum_Log2 value)? log2,
-    TResult? Function(DebugEnum_Note value)? note,
-    TResult? Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
-    TResult? Function(DebugEnum_MyTreeNode value)? myTreeNode,
-    TResult? Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult? Function(DebugEnum_MySize value)? mySize,
-    TResult? Function(DebugEnum_FeatureUuid value)? featureUuid,
-    TResult? Function(DebugEnum_Element value)? element,
-    TResult? Function(DebugEnum_Customized value)? customized,
-    TResult? Function(DebugEnum_Attribute value)? attribute,
-    TResult? Function(DebugEnum_HideData value)? hideData,
-  }) {
-    return hideData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
     TResult Function(DebugEnum_Log value)? log,
-    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
-    TResult Function(DebugEnum_Log2 value)? log2,
-    TResult Function(DebugEnum_Note value)? note,
-    TResult Function(DebugEnum_ExoticOptionals value)? exoticOptionals,
-    TResult Function(DebugEnum_MyTreeNode value)? myTreeNode,
-    TResult Function(DebugEnum_NewTypeInt value)? newTypeInt,
-    TResult Function(DebugEnum_MySize value)? mySize,
-    TResult Function(DebugEnum_FeatureUuid value)? featureUuid,
     TResult Function(DebugEnum_Element value)? element,
     TResult Function(DebugEnum_Customized value)? customized,
-    TResult Function(DebugEnum_Attribute value)? attribute,
-    TResult Function(DebugEnum_HideData value)? hideData,
+    TResult Function(DebugEnum_FeatureChrono value)? featureChrono,
     required TResult orElse(),
   }) {
-    if (hideData != null) {
-      return hideData(this);
+    if (featureChrono != null) {
+      return featureChrono(this);
     }
     return orElse();
   }
 }
 
-abstract class DebugEnum_HideData implements DebugEnum {
-  const factory DebugEnum_HideData(final HideData field0) = _$DebugEnum_HideData;
+abstract class DebugEnum_FeatureChrono implements DebugEnum {
+  const factory DebugEnum_FeatureChrono(final FeatureChrono field0) = _$DebugEnum_FeatureChrono;
 
-  HideData get field0;
+  @override
+  FeatureChrono get field0;
   @JsonKey(ignore: true)
-  _$$DebugEnum_HideDataCopyWith<_$DebugEnum_HideData> get copyWith => throw _privateConstructorUsedError;
+  _$$DebugEnum_FeatureChronoCopyWith<_$DebugEnum_FeatureChrono> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

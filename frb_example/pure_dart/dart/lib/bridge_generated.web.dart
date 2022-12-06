@@ -372,44 +372,44 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_debug_enum(DebugEnum raw) {
-    if (raw is DebugEnum_Log) {
-      return [0, api2wire_box_autoadd_log(raw.field0)];
+    if (raw is DebugEnum_FeatureUuid) {
+      return [0, api2wire_box_autoadd_feature_uuid(raw.field0)];
     }
-    if (raw is DebugEnum_FeatureChrono) {
-      return [1, api2wire_box_autoadd_feature_chrono(raw.field0)];
+    if (raw is DebugEnum_MySize) {
+      return [1, api2wire_box_autoadd_my_size(raw.field0)];
     }
-    if (raw is DebugEnum_Log2) {
-      return [2, api2wire_box_autoadd_log_2(raw.field0)];
+    if (raw is DebugEnum_HideData) {
+      return [2, api2wire_HideData(raw.field0)];
     }
     if (raw is DebugEnum_Note) {
       return [3, api2wire_box_autoadd_note(raw.field0)];
     }
-    if (raw is DebugEnum_ExoticOptionals) {
-      return [4, api2wire_box_exotic_optionals(raw.field0)];
-    }
-    if (raw is DebugEnum_MyTreeNode) {
-      return [5, api2wire_box_autoadd_my_tree_node(raw.field0)];
-    }
-    if (raw is DebugEnum_NewTypeInt) {
-      return [6, api2wire_box_autoadd_new_type_int(raw.field0)];
-    }
-    if (raw is DebugEnum_MySize) {
-      return [7, api2wire_box_autoadd_my_size(raw.field0)];
-    }
-    if (raw is DebugEnum_FeatureUuid) {
-      return [8, api2wire_box_autoadd_feature_uuid(raw.field0)];
-    }
-    if (raw is DebugEnum_Element) {
-      return [9, api2wire_box_autoadd_element(raw.field0)];
-    }
-    if (raw is DebugEnum_Customized) {
-      return [10, api2wire_box_autoadd_customized(raw.field0)];
+    if (raw is DebugEnum_Log2) {
+      return [4, api2wire_box_autoadd_log_2(raw.field0)];
     }
     if (raw is DebugEnum_Attribute) {
-      return [11, api2wire_box_autoadd_attribute(raw.field0)];
+      return [5, api2wire_box_autoadd_attribute(raw.field0)];
     }
-    if (raw is DebugEnum_HideData) {
-      return [12, api2wire_HideData(raw.field0)];
+    if (raw is DebugEnum_ExoticOptionals) {
+      return [6, api2wire_box_exotic_optionals(raw.field0)];
+    }
+    if (raw is DebugEnum_MyTreeNode) {
+      return [7, api2wire_box_autoadd_my_tree_node(raw.field0)];
+    }
+    if (raw is DebugEnum_NewTypeInt) {
+      return [8, api2wire_box_autoadd_new_type_int(raw.field0)];
+    }
+    if (raw is DebugEnum_Log) {
+      return [9, api2wire_box_autoadd_log(raw.field0)];
+    }
+    if (raw is DebugEnum_Element) {
+      return [10, api2wire_box_autoadd_element(raw.field0)];
+    }
+    if (raw is DebugEnum_Customized) {
+      return [11, api2wire_box_autoadd_customized(raw.field0)];
+    }
+    if (raw is DebugEnum_FeatureChrono) {
+      return [12, api2wire_box_autoadd_feature_chrono(raw.field0)];
     }
 
     throw Exception('unreachable');

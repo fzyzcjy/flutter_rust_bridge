@@ -880,19 +880,19 @@ impl Wire2Api<DebugEnum> for JsValue {
     fn wire2api(self) -> DebugEnum {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => DebugEnum::Log(self_.get(1).wire2api()),
-            1 => DebugEnum::FeatureChrono(self_.get(1).wire2api()),
-            2 => DebugEnum::Log2(self_.get(1).wire2api()),
+            0 => DebugEnum::FeatureUuid(self_.get(1).wire2api()),
+            1 => DebugEnum::MySize(self_.get(1).wire2api()),
+            2 => DebugEnum::HideData(self_.get(1).wire2api()),
             3 => DebugEnum::Note(self_.get(1).wire2api()),
-            4 => DebugEnum::ExoticOptionals(self_.get(1).wire2api()),
-            5 => DebugEnum::MyTreeNode(self_.get(1).wire2api()),
-            6 => DebugEnum::NewTypeInt(self_.get(1).wire2api()),
-            7 => DebugEnum::MySize(self_.get(1).wire2api()),
-            8 => DebugEnum::FeatureUuid(self_.get(1).wire2api()),
-            9 => DebugEnum::Element(self_.get(1).wire2api()),
-            10 => DebugEnum::Customized(self_.get(1).wire2api()),
-            11 => DebugEnum::Attribute(self_.get(1).wire2api()),
-            12 => DebugEnum::HideData(self_.get(1).wire2api()),
+            4 => DebugEnum::Log2(self_.get(1).wire2api()),
+            5 => DebugEnum::Attribute(self_.get(1).wire2api()),
+            6 => DebugEnum::ExoticOptionals(self_.get(1).wire2api()),
+            7 => DebugEnum::MyTreeNode(self_.get(1).wire2api()),
+            8 => DebugEnum::NewTypeInt(self_.get(1).wire2api()),
+            9 => DebugEnum::Log(self_.get(1).wire2api()),
+            10 => DebugEnum::Element(self_.get(1).wire2api()),
+            11 => DebugEnum::Customized(self_.get(1).wire2api()),
+            12 => DebugEnum::FeatureChrono(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
