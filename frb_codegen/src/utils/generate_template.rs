@@ -7,8 +7,8 @@ use std::process::Command;
 
 use anyhow::anyhow;
 
-use crate::ir::IrFile;
-use crate::ir::IrTypeImplTrait;
+use crate::ir::{ImplPool, IrTypeImplTrait};
+use crate::ir::{IrFile, Pool};
 use crate::source_graph::{Crate, Impl};
 use crate::Opts;
 
@@ -17,7 +17,7 @@ use super::parse_sig_from_lib::{self, CallFn};
 pub struct OptArray {
     pub configs: Vec<Opts>,
     pub irs: Vec<IrFile>,
-    pub explicit_src_impl_pool: HashMap<String, Vec<Impl>>,
+    pub explicit_src_impl_pool: ImplPool,
     pub explicit_parsed_impl_traits: HashSet<IrTypeImplTrait>,
     pub bound_oject_pool: HashMap<Vec<String>, HashSet<String>>,
 }
@@ -49,7 +49,7 @@ impl PropTrait for OptArray {
 }
 impl GenerateSources for OptArray {}
 impl CollectBoundToStruct for OptArray {
-    fn get_mut_explicit_src_impl_pool(&mut self) -> &mut HashMap<String, Vec<Impl>> {
+    fn get_mut_explicit_src_impl_pool(&mut self) -> &mut ImplPool {
         &mut self.explicit_src_impl_pool
     }
 
@@ -61,7 +61,7 @@ impl CollectBoundToStruct for OptArray {
         &mut self.bound_oject_pool
     }
 
-    fn get_explicit_src_impl_pool(&self) -> &HashMap<String, Vec<Impl>> {
+    fn get_explicit_src_impl_pool(&self) -> &ImplPool {
         &self.explicit_src_impl_pool
     }
 
@@ -127,11 +127,11 @@ pub trait PropTrait {
         }
         explicit_api_path
     }
-    fn get_sig_from_doc(&self) -> HashMap<String, CallFn> {
+    fn get_sig_from_doc(&self) -> (HashMap<String, CallFn>, HashSet<String>) {
         let config = &self.get_configs()[0];
         let root_src_file = Crate::new_withoud_resolve(config.manifest_path.as_str()).root_src_file;
         let source_rust_content = fs::read_to_string(&root_src_file).unwrap();
-        parse_sig_from_lib::parse_file(&source_rust_content)
+        parse_sig_from_lib::parse_doc_with_root_file(&source_rust_content)
     }
     fn get_irs(&self) -> &Vec<IrFile>;
     fn get_mut_irs(&mut self) -> &mut Vec<IrFile>;
@@ -184,21 +184,18 @@ pub trait PropTrait {
 }
 
 pub trait CollectBoundToStruct: PropTrait {
-    fn get_mut_explicit_src_impl_pool(&mut self) -> &mut HashMap<String, Vec<Impl>>;
+    fn get_mut_explicit_src_impl_pool(&mut self) -> &mut ImplPool;
     fn get_mut_explicit_parsed_impl_traits(&mut self) -> &mut HashSet<IrTypeImplTrait>;
     fn get_mut_bound_oject_pool(&mut self) -> &mut HashMap<Vec<String>, HashSet<String>>;
-    fn get_explicit_src_impl_pool(&self) -> &HashMap<String, Vec<Impl>>;
+    fn get_explicit_src_impl_pool(&self) -> &ImplPool;
     fn get_explicit_parsed_impl_traits(&self) -> &HashSet<IrTypeImplTrait>;
     fn get_bound_oject_pool(&self) -> &HashMap<Vec<String>, HashSet<String>>;
     fn collect_bounds(&mut self) {
-        fn collect_impl(
-            raw_ir_file: &crate::ir::IrFile,
-            explicit_src_impl_pool: &mut HashMap<String, Vec<Impl>>,
-        ) {
+        fn collect_impl(raw_ir_file: &crate::ir::IrFile, explicit_src_impl_pool: &mut ImplPool) {
             // for checking relationship between trait and self_ty with all files
-            for impl_ in raw_ir_file.src_impl_pool.iter().clone() {
+            for impl_ in raw_ir_file.src_impl_pool.iter() {
                 if let Some(v) = explicit_src_impl_pool.get_mut(impl_.0) {
-                    v.extend(impl_.1.to_owned());
+                    v.extend(impl_.1.iter().cloned());
                 } else {
                     explicit_src_impl_pool.insert(impl_.0.to_owned(), impl_.1.to_owned());
                 }
@@ -212,10 +209,11 @@ pub trait CollectBoundToStruct: PropTrait {
             explicit_parsed_impl_traits.extend(raw_ir_file.parsed_impl_traits.clone());
         }
 
-        let mut explicit_src_impl_pool: HashMap<String, Vec<Impl>> = HashMap::new();
+        let mut explicit_src_impl_pool = HashMap::new();
         for raw_ir_file in self.get_irs().iter() {
             collect_impl(raw_ir_file, &mut explicit_src_impl_pool);
         }
+        // get struct info
         self.get_mut_explicit_src_impl_pool()
             .extend(explicit_src_impl_pool);
         let mut explicit_parsed_impl_traits: HashSet<IrTypeImplTrait> = HashSet::new();
@@ -305,13 +303,16 @@ pub trait GenerateDependenciesHook {
 
 pub trait GenerateSources: CollectBoundToStruct {
     fn generate_impl_file(&self) {
-        let trait_sig_pool = self.get_sig_from_doc();
+        let (trait_sig_pool, opaque_pool) = self.get_sig_from_doc();
         let explicit_api_path = self.get_api_paths();
         let bound_oject_pool = self.get_bound_oject_pool();
 
         let mut lines = String::new();
         for super_ in explicit_api_path.iter() {
             lines += format!("use crate::{super_}::*;").as_str();
+        }
+        if opaque_pool.len() > 0 {
+            lines += "use flutter_rust_bridge::Opaque;";
         }
         for (_, call_fn) in trait_sig_pool.iter() {
             let impl_dependencies = call_fn.impl_dependencies.clone();
@@ -320,7 +321,16 @@ pub trait GenerateSources: CollectBoundToStruct {
         for (k, v) in bound_oject_pool.iter() {
             lines += format!("pub enum {}Enum {{", k.join("")).as_str();
             for struct_ in v.iter() {
-                lines += format!("{}({}),", struct_, struct_).as_str();
+                lines += format!(
+                    "{}({}),",
+                    struct_,
+                    if opaque_pool.contains(struct_) {
+                        format!("Opaque<{}>", struct_)
+                    } else {
+                        struct_.to_owned()
+                    }
+                )
+                .as_str();
             }
             lines += "}".to_string().as_str();
         }

@@ -5,6 +5,7 @@ use syn::FnArg;
 use syn::Signature;
 
 use std::collections::HashMap;
+use std::collections::HashSet;
 
 #[derive(Debug)]
 pub struct CallFn {
@@ -14,20 +15,22 @@ pub struct CallFn {
     pub args: Vec<String>,
 }
 
-pub fn parse_file(mut content: &str) -> HashMap<String, CallFn> {
+pub fn parse_doc_with_root_file(mut content: &str) -> (HashMap<String, CallFn>, HashSet<String>) {
     // Strip the BOM if it is present
     const BOM: &str = "\u{feff}";
     if content.starts_with(BOM) {
         content = &content[BOM.len()..];
     }
 
-    const FLAG: &str = "/// impl_trait:";
+    const TRAIT_FLAG: &str = "/// impl_trait:";
+    const OPAQUE_FLAG: &str = "/// handle_opaque:";
 
     let mut trait_sig_pool = HashMap::new();
+    let mut opaque_pool = HashSet::new();
 
     for mut line in content.split('\n') {
-        if line.starts_with(FLAG) {
-            line = &line[FLAG.len()..];
+        if line.starts_with(TRAIT_FLAG) {
+            line = &line[TRAIT_FLAG.len()..];
             let mut iter = line.split('|');
             let impl_ = iter.next().unwrap_or("");
             let trait_ = iter.next().unwrap();
@@ -61,6 +64,11 @@ pub fn parse_file(mut content: &str) -> HashMap<String, CallFn> {
             }
             trait_sig_pool.insert(trait_.trim().to_owned(), call_fn);
         }
+        if line.starts_with(OPAQUE_FLAG) {
+            line = &line[OPAQUE_FLAG.len()..];
+            let iter = line.split('|');
+            opaque_pool.extend(iter.map(|x| x.trim().to_string()));
+        }
     }
-    trait_sig_pool
+    (trait_sig_pool, opaque_pool)
 }

@@ -1,20 +1,24 @@
-use crate::source_graph::Impl;
+use crate::source_graph::{Enum, Impl, Struct};
 use crate::target::Target;
 use crate::utils::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
+pub type Pool<T> = HashMap<String, T>;
+pub type StructPool = Pool<Struct>;
+pub type EnumPool = Pool<Enum>;
+pub type ImplPool = Pool<Vec<Impl>>;
+
 pub type IrStructPool = HashMap<String, IrStruct>;
 pub type IrEnumPool = HashMap<String, IrEnum>;
 pub type IrImplTraitPool = HashSet<IrTypeImplTrait>;
-pub type SrcImplPool = HashMap<String, Vec<Impl>>;
 
 #[derive(Debug, Clone)]
 pub struct IrFile {
     pub funcs: Vec<IrFunc>,
     pub struct_pool: IrStructPool,
     pub enum_pool: IrEnumPool,
-    pub src_impl_pool: SrcImplPool,
+    pub src_impl_pool: ImplPool,
     pub parsed_impl_traits: IrImplTraitPool,
 
     pub has_executor: bool,

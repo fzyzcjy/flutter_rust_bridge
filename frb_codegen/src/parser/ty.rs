@@ -1,5 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
+use std::rc::Rc;
 use std::string::String;
 
 use itertools::Itertools;
@@ -18,7 +19,7 @@ use crate::parser::{extract_comments, extract_metadata, type_to_string};
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
-    src_impls: SrcImplPool,
+    src_impls: ImplPool,
 
     parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: IrStructPool,
@@ -47,7 +48,7 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    pub fn consume(self) -> (IrStructPool, IrEnumPool, SrcImplPool, IrImplTraitPool) {
+    pub fn consume(self) -> (IrStructPool, IrEnumPool, ImplPool, IrImplTraitPool) {
         (
             self.struct_pool,
             self.enum_pool,
@@ -157,10 +158,10 @@ impl SupportedInnerType {
 impl<'a> TypeParser<'a> {
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
         let supported_type = SupportedInnerType::try_from_syn_type(ty)
-            .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
+            .unwrap_or_else(|| panic!("Unsupported type `{:?}`", ty));
 
         self.convert_to_ir_type(supported_type)
-            .unwrap_or_else(|| panic!("parse_type failed for ty={}", type_to_string(ty)))
+            .unwrap_or_else(|| panic!("parse_type failed for ty={:?}", ty))
     }
 
     /// Converts an inner type into an `IrType` if possible.
@@ -394,11 +395,7 @@ impl<'a> TypeParser<'a> {
 
 impl<'a> TypeParser<'a> {
     fn parse_enum_core(&mut self, ident: &syn::Ident) -> IrEnum {
-        let _src_enum = self
-            .src_enums
-            .get(&ident.to_string())
-            .unwrap_or_else(|| panic!("{} {:?}", ident, self.src_enums.clone()));
-        let src_enum = self.src_enums[&ident.to_string()];
+        let src_enum = self.src_enums[&ident.to_string()].clone();
         let name = src_enum.ident.to_string();
         let wrapper_name = if src_enum.mirror {
             Some(format!("mirror_{}", name))

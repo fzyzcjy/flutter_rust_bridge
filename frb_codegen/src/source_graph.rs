@@ -319,6 +319,7 @@ impl Module {
                     scope_impls.extend(get_impl_trait_from_attrs(
                         &item_struct.ident,
                         &item_struct.attrs,
+                        matches!(item_struct.vis, syn::Visibility::Public(_)),
                     ));
                     scope_structs.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
@@ -513,6 +514,7 @@ impl Module {
             scope_module.collect_impls(container);
         }
     }
+    // impl TA for A => ("A",[TA,..])
     pub fn collect_impls_to_vec(&self) -> HashMap<String, Vec<Impl>> {
         let mut ans = HashMap::new();
         self.collect_impls(&mut ans);
@@ -698,17 +700,19 @@ fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
     result.into_iter().map(|val| val.0).collect()
 }
 
-fn get_impl_trait_from_attrs(self_ty: &Ident, attrs: &[Attribute]) -> Vec<Impl> {
+fn get_impl_trait_from_attrs(self_ty: &Ident, attrs: &[Attribute], vis: bool) -> Vec<Impl> {
     let mut scope_impls = vec![];
-    for a in attrs.iter() {
-        for tt_a in a.tokens.clone().into_iter() {
-            if let quote::__private::TokenTree::Group(g) = tt_a {
-                for tt_g in g.stream().into_iter() {
-                    if let quote::__private::TokenTree::Ident(trait_) = tt_g {
-                        scope_impls.push(Impl {
-                            self_ty: self_ty.clone(),
-                            trait_,
-                        });
+    if vis {
+        for a in attrs.iter() {
+            for tt_a in a.tokens.clone().into_iter() {
+                if let quote::__private::TokenTree::Group(g) = tt_a {
+                    for tt_g in g.stream().into_iter() {
+                        if let quote::__private::TokenTree::Ident(trait_) = tt_g {
+                            scope_impls.push(Impl {
+                                self_ty: self_ty.clone(),
+                                trait_,
+                            });
+                        }
                     }
                 }
             }
