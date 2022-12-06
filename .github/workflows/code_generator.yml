@@ -61,15 +61,10 @@ jobs:
           git clone --depth 1 --filter=blob:none --sparse https://github.com/dart-lang/sdk.git
           cd sdk
           git sparse-checkout set runtime/include
-      - run: |
-          Copy-Item -Recurse ./sdk/runtime/include/* ./frb_rust/src/dart_api_dl/
-          Remove-Item ./sdk -Recurse
-        if: ${{ inputs.family == 'windows' }}
-      - run: |
           cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api_dl/
           rm -r sdk
-        if: ${{ inputs.family != 'windows' }}
-      - run: git diff --exit-code
+          git diff --exit-code
+        shell: bash
 
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)
