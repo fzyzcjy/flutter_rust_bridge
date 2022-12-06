@@ -176,10 +176,10 @@ jobs:
       - name: Build pure_dart example
         working-directory: ./frb_example/pure_dart/rust
         run: cargo build --verbose
-      - name: Run tests for pure_dart example
+      - name: Run tests for pure_dart with vm service
         run: |
           dart run --enable-vm-service \
-            ./frb_example/pure_dart/dart/lib/test_vm_service.dart \
+            ./frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
             ./target/debug/libflutter_rust_bridge_example.so
 
 

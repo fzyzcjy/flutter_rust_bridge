@@ -56,6 +56,7 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
         &format!("class {} {{", dart_wire_class_name),
         &format!(
             "class {} implements FlutterRustBridgeWireBase {{
+            @internal
             late final dartApi = DartApiDl(init_frb_dart_api_dl);",
             dart_wire_class_name
         ),
