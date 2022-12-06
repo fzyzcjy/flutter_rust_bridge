@@ -1,16 +1,24 @@
+use crate::source_graph::Impl;
 use crate::target::Target;
 use crate::utils::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
+pub type Pool<T> = HashMap<String, T>;
+pub type ImplPool = Pool<Vec<Impl>>;
+
 pub type IrStructPool = HashMap<String, IrStruct>;
 pub type IrEnumPool = HashMap<String, IrEnum>;
+pub type IrImplTraitPool = HashSet<IrTypeImplTrait>;
 
 #[derive(Debug, Clone)]
 pub struct IrFile {
     pub funcs: Vec<IrFunc>,
     pub struct_pool: IrStructPool,
     pub enum_pool: IrEnumPool,
+    pub src_impl_pool: ImplPool,
+    pub parsed_impl_traits: IrImplTraitPool,
+
     pub has_executor: bool,
 }
 
@@ -62,7 +70,11 @@ impl IrFile {
                 let contains = seen_idents.contains(&ident);
                 if !contains {
                     seen_idents.insert(ident);
-                    ans.push(ty.clone());
+                    ans.push(match ty {
+                        IrType::ImplTrait(i) => i.clone().to_enum_ir_type(),
+
+                        any => any.clone(),
+                    });
                 }
                 contains
             },

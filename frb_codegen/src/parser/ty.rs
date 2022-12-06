@@ -1,6 +1,9 @@
 use std::collections::{HashMap, HashSet};
+
 use std::string::String;
 
+use itertools::Itertools;
+use quote::__private::Span;
 use syn::*;
 
 use crate::ir::IrType::*;
@@ -8,38 +11,49 @@ use crate::ir::*;
 
 use crate::markers;
 
-use crate::source_graph::{Enum, Struct};
+use crate::source_graph::{Enum, Impl, Struct};
 
-use crate::parser::{extract_comments, extract_metadata, type_to_string};
+use crate::parser::{extract_comments, extract_metadata};
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
+    src_impls: ImplPool,
 
     parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: IrStructPool,
 
     parsed_enums: HashSet<String>,
     enum_pool: IrEnumPool,
+
+    parsed_impl_traits: IrImplTraitPool,
 }
 
 impl<'a> TypeParser<'a> {
     pub fn new(
         src_structs: HashMap<String, &'a Struct>,
         src_enums: HashMap<String, &'a Enum>,
+        src_impls: HashMap<String, Vec<Impl>>,
     ) -> Self {
         TypeParser {
             src_structs,
             src_enums,
+            src_impls,
             struct_pool: HashMap::new(),
             enum_pool: HashMap::new(),
+            parsed_impl_traits: HashSet::new(),
             parsing_or_parsed_struct_names: HashSet::new(),
             parsed_enums: HashSet::new(),
         }
     }
 
-    pub fn consume(self) -> (IrStructPool, IrEnumPool) {
-        (self.struct_pool, self.enum_pool)
+    pub fn consume(self) -> (IrStructPool, IrEnumPool, ImplPool, IrImplTraitPool) {
+        (
+            self.struct_pool,
+            self.enum_pool,
+            self.src_impls,
+            self.parsed_impl_traits,
+        )
     }
 }
 
@@ -52,6 +66,8 @@ pub enum SupportedInnerType {
     Path(SupportedPathType),
     /// Array type
     Array(Box<Self>, usize),
+    /// ImplTrait type
+    ImplTrait(syn::TypeImplTrait),
     /// Unparsed type, only useful for Opaque.
     Verbatim(Box<syn::Type>),
     /// The unit type `()`.
@@ -63,6 +79,7 @@ impl std::fmt::Display for SupportedInnerType {
         match self {
             Self::Path(p) => write!(f, "{}", p),
             Self::Array(u, len) => write!(f, "[{}; {}]", u, len),
+            Self::ImplTrait(_i) => write!(f, "{}", quote::quote!(i)),
             Self::Verbatim(ver) => write!(f, "{}", quote::quote!(#ver)),
             Self::Unit => write!(f, "()"),
         }
@@ -131,6 +148,7 @@ impl SupportedInnerType {
             syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
                 Some(SupportedInnerType::Unit)
             }
+            syn::Type::ImplTrait(i) => Some(SupportedInnerType::ImplTrait(i.clone())),
             _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
         }
     }
@@ -139,10 +157,10 @@ impl SupportedInnerType {
 impl<'a> TypeParser<'a> {
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
         let supported_type = SupportedInnerType::try_from_syn_type(ty)
-            .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
+            .unwrap_or_else(|| panic!("Unsupported type `{:?}`", ty));
 
         self.convert_to_ir_type(supported_type)
-            .unwrap_or_else(|| panic!("parse_type failed for ty={}", type_to_string(ty)))
+            .unwrap_or_else(|| panic!("parse_type failed for ty={:?}", ty))
     }
 
     /// Converts an inner type into an `IrType` if possible.
@@ -150,9 +168,40 @@ impl<'a> TypeParser<'a> {
         match ty {
             SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
             SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
+            SupportedInnerType::ImplTrait(p) => self.convert_impl_trait_to_ir_type(p),
+
             SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
             SupportedInnerType::Verbatim(_) => None,
         }
+    }
+    pub fn convert_impl_trait_to_ir_type(
+        &mut self,
+        type_impl_trait: TypeImplTrait,
+    ) -> Option<IrType> {
+        let raw: Vec<String> = type_impl_trait
+            .bounds
+            .iter()
+            .filter_map(|e| match e {
+                TypeParamBound::Trait(t) => {
+                    Some(t.path.segments.first().unwrap().ident.clone().to_string())
+                }
+                TypeParamBound::Lifetime(_) => None,
+            })
+            .sorted()
+            .collect();
+        let value = IrTypeImplTrait::new2(raw);
+        if self.parsed_impl_traits.insert(value.clone()) {
+            let ident_string = value.to_enum();
+            // due to I would remove `mod bridge_generated` in lib.rs, first get ir file, can't find ImplTraitEnum
+            if self.src_enums.contains_key(&ident_string)
+                && self.parsed_enums.insert(ident_string.to_owned())
+            {
+                let enu = self.parse_enum_core(&Ident::new(&ident_string, Span::call_site()));
+                self.enum_pool.insert(ident_string, enu);
+            }
+        };
+
+        Some(IrType::ImplTrait(value))
     }
 
     /// Converts an array type into an `IrType` if possible.
@@ -234,6 +283,9 @@ impl<'a> TypeParser<'a> {
                         Some(IrType::Opaque(IrTypeOpaque::from(path.to_string())))
                     }
                     SupportedInnerType::Unit => Some(IrType::Opaque(IrTypeOpaque::new_unit())),
+                    SupportedInnerType::ImplTrait(_) => {
+                        unreachable!("ImplTrait should not be wrapper with Opaque")
+                    }
                 },
                 "Box" => self.convert_to_ir_type(*generic).map(|inner| {
                     Boxed(IrTypeBoxed {
@@ -342,7 +394,7 @@ impl<'a> TypeParser<'a> {
 
 impl<'a> TypeParser<'a> {
     fn parse_enum_core(&mut self, ident: &syn::Ident) -> IrEnum {
-        let src_enum = self.src_enums[&ident.to_string()];
+        let src_enum = self.src_enums[&ident.to_string()].clone();
         let name = src_enum.ident.to_string();
         let wrapper_name = if src_enum.mirror {
             Some(format!("mirror_{}", name))

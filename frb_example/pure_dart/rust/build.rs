@@ -1,5 +1,5 @@
 use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
+    config_parse, frb_codegen, generate_template::*, get_symbols_if_no_duplicates, RawOpts,
 };
 
 /// Path of input Rust code
@@ -26,6 +26,8 @@ fn main() {
     let configs = config_parse(raw_opts);
 
     // generation of rust api for ffi
+    let mut otps = OptArray::new_without_resolve(&configs);
+    otps.run_impl_trait_enum();
     let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
     for config in configs.iter() {
         frb_codegen(config, &all_symbols).unwrap();

@@ -18,6 +18,7 @@ pub enum IrType {
     EnumRef(IrTypeEnumRef),
     SyncReturn(IrTypeSyncReturn),
     Opaque(IrTypeOpaque),
+    ImplTrait(IrTypeImplTrait),
 }
 
 impl IrType {
@@ -38,7 +39,11 @@ impl IrType {
                 let contains = seen_idents.contains(&ident);
                 if !contains {
                     seen_idents.insert(ident);
-                    ans.push(ty.clone());
+                    ans.push(match ty {
+                        IrType::ImplTrait(i) => i.clone().to_enum_ir_type(),
+
+                        any => any.clone(),
+                    });
                 }
                 contains
             },
@@ -84,8 +89,8 @@ impl IrType {
     }
 
     #[inline]
-    pub fn is_struct(&self) -> bool {
-        matches!(self, StructRef(_) | EnumRef(_))
+    pub fn is_need_wrap_box(&self) -> bool {
+        matches!(self, StructRef(_) | EnumRef(_) | ImplTrait(_))
     }
 
     #[inline]
@@ -101,6 +106,7 @@ impl IrType {
             Self::GeneralList(_)
             | Self::StructRef(_)
             | Self::EnumRef(_)
+            | Self::ImplTrait(_)
             | Self::Opaque(_)
             | Self::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => true,
             Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),

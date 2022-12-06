@@ -1,6 +1,6 @@
 #![allow(unused_variables)]
 
-use std::fmt::Debug;
+pub use std::fmt::Debug;
 use std::ops::Deref;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
@@ -23,6 +23,9 @@ use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 pub fn simple_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+pub fn tt(t: impl Debug) {}
+// pub fn test(t: HideData) {}
 
 /**
  Multiline comments are fine,
@@ -1060,3 +1063,4 @@ pub fn unwrap_rust_opaque(opaque: Opaque<HideData>) -> Result<String> {
 pub fn frb_generator_test() -> Opaque<FrbOpaqueReturn> {
     panic!("dummy code");
 }
+pub use crate::bridge_generated_bound::*;

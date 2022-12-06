@@ -89,6 +89,7 @@ Does not include delegated types.
 | `Option<Box<T>>` | `*mut T`                 | `ffi.Pointer<T>`         | `*mut T`          | `T?`               | `T?`              |
 | enum/struct `T`  | `*mut wire_t`            | `ffi.Pointer<T>`         | `Array`           | `List`             | class `T`         |
 | enum `T`[^3]     | `int`                    | `int`[^1]                | `i32`             | `int`              | enum `T`          |
+| impl Trait1+...  | wire_Trait1...Enum      | `ffi.Pointer<T>`         | `Array`             | `List`              | class `T`          |
 
 ## Memory safety
 

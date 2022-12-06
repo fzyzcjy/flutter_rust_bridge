@@ -36,6 +36,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["a", "b"],
       );
 
+  Future<void> tt({required DebugEnum t, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_debug_enum(t);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_tt(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kTtConstMeta,
+      argValues: [t],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTtConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "tt",
+        argNames: ["t"],
+      );
+
   Future<int> primitiveTypes(
       {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) {
     var arg0 = api2wire_i32(myI32);
