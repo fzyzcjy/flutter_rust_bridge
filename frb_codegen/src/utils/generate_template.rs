@@ -7,9 +7,9 @@ use std::process::Command;
 
 use anyhow::anyhow;
 
+use crate::ir::IrFile;
 use crate::ir::{ImplPool, IrTypeImplTrait};
-use crate::ir::{IrFile, Pool};
-use crate::source_graph::{Crate, Impl};
+use crate::source_graph::Crate;
 use crate::Opts;
 
 use super::parse_sig_from_lib::{self, CallFn};
@@ -311,7 +311,7 @@ pub trait GenerateSources: CollectBoundToStruct {
         for super_ in explicit_api_path.iter() {
             lines += format!("use crate::{super_}::*;").as_str();
         }
-        if opaque_pool.len() > 0 {
+        if !opaque_pool.is_empty() {
             lines += "use flutter_rust_bridge::Opaque;";
         }
         for (_, call_fn) in trait_sig_pool.iter() {

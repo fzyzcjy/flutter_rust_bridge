@@ -1,12 +1,10 @@
-use crate::source_graph::{Enum, Impl, Struct};
+use crate::source_graph::Impl;
 use crate::target::Target;
 use crate::utils::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
 pub type Pool<T> = HashMap<String, T>;
-pub type StructPool = Pool<Struct>;
-pub type EnumPool = Pool<Enum>;
 pub type ImplPool = Pool<Vec<Impl>>;
 
 pub type IrStructPool = HashMap<String, IrStruct>;

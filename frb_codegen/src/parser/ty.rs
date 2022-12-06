@@ -1,6 +1,5 @@
 use std::collections::{HashMap, HashSet};
 
-use std::rc::Rc;
 use std::string::String;
 
 use itertools::Itertools;
@@ -14,7 +13,7 @@ use crate::markers;
 
 use crate::source_graph::{Enum, Impl, Struct};
 
-use crate::parser::{extract_comments, extract_metadata, type_to_string};
+use crate::parser::{extract_comments, extract_metadata};
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
