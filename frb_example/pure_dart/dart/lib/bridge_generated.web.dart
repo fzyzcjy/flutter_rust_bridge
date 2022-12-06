@@ -161,6 +161,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_debug_enum(DebugEnum raw) {
+    return api2wire_debug_enum(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_element(Element raw) {
+    return api2wire_element(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
     return api2wire_enum_opaque(raw);
   }
@@ -203,6 +213,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
     return api2wire_kitchen_sink(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_log(Log raw) {
+    return api2wire_log(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_log_2(Log2 raw) {
+    return api2wire_log_2(raw);
   }
 
   @protected
@@ -351,6 +371,51 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_debug_enum(DebugEnum raw) {
+    if (raw is DebugEnum_Log) {
+      return [0, api2wire_box_autoadd_log(raw.field0)];
+    }
+    if (raw is DebugEnum_FeatureChrono) {
+      return [1, api2wire_box_autoadd_feature_chrono(raw.field0)];
+    }
+    if (raw is DebugEnum_Log2) {
+      return [2, api2wire_box_autoadd_log_2(raw.field0)];
+    }
+    if (raw is DebugEnum_Note) {
+      return [3, api2wire_box_autoadd_note(raw.field0)];
+    }
+    if (raw is DebugEnum_ExoticOptionals) {
+      return [4, api2wire_box_exotic_optionals(raw.field0)];
+    }
+    if (raw is DebugEnum_MyTreeNode) {
+      return [5, api2wire_box_autoadd_my_tree_node(raw.field0)];
+    }
+    if (raw is DebugEnum_NewTypeInt) {
+      return [6, api2wire_box_autoadd_new_type_int(raw.field0)];
+    }
+    if (raw is DebugEnum_MySize) {
+      return [7, api2wire_box_autoadd_my_size(raw.field0)];
+    }
+    if (raw is DebugEnum_FeatureUuid) {
+      return [8, api2wire_box_autoadd_feature_uuid(raw.field0)];
+    }
+    if (raw is DebugEnum_Element) {
+      return [9, api2wire_box_autoadd_element(raw.field0)];
+    }
+    if (raw is DebugEnum_Customized) {
+      return [10, api2wire_box_autoadd_customized(raw.field0)];
+    }
+    if (raw is DebugEnum_Attribute) {
+      return [11, api2wire_box_autoadd_attribute(raw.field0)];
+    }
+    if (raw is DebugEnum_HideData) {
+      return [12, api2wire_HideData(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_distance(Distance raw) {
     if (raw is Distance_Unknown) {
       return [0];
@@ -360,6 +425,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_element(Element raw) {
+    return [
+      api2wire_opt_String(raw.tag),
+      api2wire_opt_String(raw.text),
+      api2wire_opt_list_attribute(raw.attributes),
+      api2wire_opt_list_element(raw.children)
+    ];
   }
 
   @protected
@@ -498,6 +573,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_list_element(List<Element> raw) {
+    return raw.map(api2wire_element).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_my_size(List<MySize> raw) {
     return raw.map(api2wire_my_size).toList();
   }
@@ -515,6 +595,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_list_test_id(List<TestId> raw) {
     return raw.map(api2wire_test_id).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_log(Log raw) {
+    return [api2wire_u32(raw.key), api2wire_u32(raw.value)];
+  }
+
+  @protected
+  List<dynamic> api2wire_log_2(Log2 raw) {
+    return [api2wire_u32(raw.key), api2wire_String(raw.value)];
   }
 
   @protected
@@ -680,6 +770,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic>? api2wire_opt_list_element(List<Element>? raw) {
+    return raw == null ? null : api2wire_list_element(raw);
+  }
+
+  @protected
   List<dynamic>? api2wire_opt_list_opt_box_autoadd_attribute(List<Attribute?>? raw) {
     return raw == null ? null : api2wire_list_opt_box_autoadd_attribute(raw);
   }
@@ -774,6 +869,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
   external void wire_simple_adder(NativePortType port_, int a, int b);
+
+  external void wire_tt(NativePortType port_, List<dynamic> t);
 
   external void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool);
 
@@ -1036,6 +1133,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       : super(WasmModule.cast<FlutterRustBridgeExampleSingleBlockTestWasmModule>(module));
 
   void wire_simple_adder(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder(port_, a, b);
+
+  void wire_tt(NativePortType port_, List<dynamic> t) => wasmModule.wire_tt(port_, t);
 
   void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);

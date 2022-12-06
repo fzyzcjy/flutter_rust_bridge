@@ -15,7 +15,9 @@ pub struct CallFn {
     pub args: Vec<String>,
 }
 
-pub fn parse_doc_with_root_file(mut content: &str) -> (HashMap<String, CallFn>, HashSet<String>) {
+pub fn parse_doc_with_root_file(
+    mut content: &str,
+) -> (HashMap<String, CallFn>, HashSet<String>, HashSet<String>) {
     // Strip the BOM if it is present
     const BOM: &str = "\u{feff}";
     if content.starts_with(BOM) {
@@ -24,9 +26,11 @@ pub fn parse_doc_with_root_file(mut content: &str) -> (HashMap<String, CallFn>, 
 
     const TRAIT_FLAG: &str = "/// impl_trait:";
     const OPAQUE_FLAG: &str = "/// handle_opaque:";
+    const ADD_BOX_FLAG: &str = "/// add_box:";
 
     let mut trait_sig_pool = HashMap::new();
-    let mut opaque_pool = HashSet::new();
+    let mut opaque_set = HashSet::new();
+    let mut add_box_set = HashSet::new();
 
     for mut line in content.split('\n') {
         if line.starts_with(TRAIT_FLAG) {
@@ -67,8 +71,13 @@ pub fn parse_doc_with_root_file(mut content: &str) -> (HashMap<String, CallFn>, 
         if line.starts_with(OPAQUE_FLAG) {
             line = &line[OPAQUE_FLAG.len()..];
             let iter = line.split('|');
-            opaque_pool.extend(iter.map(|x| x.trim().to_string()));
+            opaque_set.extend(iter.map(|x| x.trim().to_string()));
+        }
+        if line.starts_with(ADD_BOX_FLAG) {
+            line = &line[ADD_BOX_FLAG.len()..];
+            let iter = line.split('|');
+            add_box_set.extend(iter.map(|x| x.trim().to_string()));
         }
     }
-    (trait_sig_pool, opaque_pool)
+    (trait_sig_pool, opaque_set, add_box_set)
 }

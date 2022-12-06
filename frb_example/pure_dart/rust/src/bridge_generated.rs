@@ -19,6 +19,7 @@ use std::sync::Arc;
 
 // Section: imports
 
+use crate::bridge_generated_bound::DebugEnum;
 use crate::data::MyEnum;
 use crate::data::MyStruct;
 use crate::new_module_system::sub_module::NewSimpleStruct;
@@ -41,6 +42,19 @@ fn wire_simple_adder_impl(
             let api_a = a.wire2api();
             let api_b = b.wire2api();
             move |task_callback| Ok(simple_adder(api_a, api_b))
+        },
+    )
+}
+fn wire_tt_impl(port_: MessagePort, t: impl Wire2Api<DebugEnum> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "tt",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_t = t.wire2api();
+            move |task_callback| Ok(tt(api_t))
         },
     )
 }

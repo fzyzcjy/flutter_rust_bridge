@@ -7,6 +7,11 @@ pub fn wire_simple_adder(port_: MessagePort, a: i32, b: i32) {
 }
 
 #[wasm_bindgen]
+pub fn wire_tt(port_: MessagePort, t: JsValue) {
+    wire_tt_impl(port_, t)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types(
     port_: MessagePort,
     my_i32: i32,
@@ -846,6 +851,27 @@ impl Wire2Api<Customized> for JsValue {
         }
     }
 }
+impl Wire2Api<DebugEnum> for JsValue {
+    fn wire2api(self) -> DebugEnum {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => DebugEnum::Log(self_.get(1).wire2api()),
+            1 => DebugEnum::FeatureChrono(self_.get(1).wire2api()),
+            2 => DebugEnum::Log2(self_.get(1).wire2api()),
+            3 => DebugEnum::Note(self_.get(1).wire2api()),
+            4 => DebugEnum::ExoticOptionals(self_.get(1).wire2api()),
+            5 => DebugEnum::MyTreeNode(self_.get(1).wire2api()),
+            6 => DebugEnum::NewTypeInt(self_.get(1).wire2api()),
+            7 => DebugEnum::MySize(self_.get(1).wire2api()),
+            8 => DebugEnum::FeatureUuid(self_.get(1).wire2api()),
+            9 => DebugEnum::Element(self_.get(1).wire2api()),
+            10 => DebugEnum::Customized(self_.get(1).wire2api()),
+            11 => DebugEnum::Attribute(self_.get(1).wire2api()),
+            12 => DebugEnum::HideData(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<Distance> for JsValue {
     fn wire2api(self) -> Distance {
         let self_ = self.unchecked_into::<JsArray>();
@@ -853,6 +879,23 @@ impl Wire2Api<Distance> for JsValue {
             0 => Distance::Unknown,
             1 => Distance::Map(self_.get(1).wire2api()),
             _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<Element> for JsValue {
+    fn wire2api(self) -> Element {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        Element {
+            tag: self_.get(0).wire2api(),
+            text: self_.get(1).wire2api(),
+            attributes: self_.get(2).wire2api(),
+            children: self_.get(3).wire2api(),
         }
     }
 }
@@ -1020,6 +1063,15 @@ impl Wire2Api<Vec<Attribute>> for JsValue {
             .collect()
     }
 }
+impl Wire2Api<Vec<Element>> for JsValue {
+    fn wire2api(self) -> Vec<Element> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<MySize>> for JsValue {
     fn wire2api(self) -> Vec<MySize> {
         self.dyn_into::<JsArray>()
@@ -1054,6 +1106,36 @@ impl Wire2Api<Vec<TestId>> for JsValue {
             .iter()
             .map(Wire2Api::wire2api)
             .collect()
+    }
+}
+impl Wire2Api<Log> for JsValue {
+    fn wire2api(self) -> Log {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        Log {
+            key: self_.get(0).wire2api(),
+            value: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<Log2> for JsValue {
+    fn wire2api(self) -> Log2 {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        Log2 {
+            key: self_.get(0).wire2api(),
+            value: self_.get(1).wire2api(),
+        }
     }
 }
 impl Wire2Api<Measure> for JsValue {
@@ -1235,6 +1317,11 @@ impl Wire2Api<Option<Vec<i8>>> for Option<Box<[i8]>> {
 }
 impl Wire2Api<Option<Vec<Attribute>>> for JsValue {
     fn wire2api(self) -> Option<Vec<Attribute>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<Vec<Element>>> for JsValue {
+    fn wire2api(self) -> Option<Vec<Element>> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
