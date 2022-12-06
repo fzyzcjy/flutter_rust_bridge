@@ -759,6 +759,7 @@ abstract class Distance_Map implements Distance {
 
 /// @nodoc
 mixin _$EnumDartOpaque {
+  Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int field0) primitive,
@@ -942,6 +943,7 @@ class _$EnumDartOpaque_Primitive implements EnumDartOpaque_Primitive {
 abstract class EnumDartOpaque_Primitive implements EnumDartOpaque {
   const factory EnumDartOpaque_Primitive(final int field0) = _$EnumDartOpaque_Primitive;
 
+  @override
   int get field0;
   @JsonKey(ignore: true)
   _$$EnumDartOpaque_PrimitiveCopyWith<_$EnumDartOpaque_Primitive> get copyWith => throw _privateConstructorUsedError;
@@ -1068,6 +1070,7 @@ class _$EnumDartOpaque_Opaque implements EnumDartOpaque_Opaque {
 abstract class EnumDartOpaque_Opaque implements EnumDartOpaque {
   const factory EnumDartOpaque_Opaque(final Object field0) = _$EnumDartOpaque_Opaque;
 
+  @override
   Object get field0;
   @JsonKey(ignore: true)
   _$$EnumDartOpaque_OpaqueCopyWith<_$EnumDartOpaque_Opaque> get copyWith => throw _privateConstructorUsedError;
