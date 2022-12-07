@@ -1510,7 +1510,7 @@ fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturnStruct {
     )
 }
 fn wire_sync_run_opaque_impl(
-    opaque: impl Wire2Api<RustOpaque<HideSyncData>> + UnwindSafe,
+    opaque: impl Wire2Api<RustOpaque<NonSendHideData>> + UnwindSafe,
 ) -> support::WireSyncReturnStruct {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {

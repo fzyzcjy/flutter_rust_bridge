@@ -13,7 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-pub use crate::data::{FrbOpaqueReturn, HideData, HideSyncData};
+pub use crate::data::{FrbOpaqueReturn, HideData, NonSendHideData};
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
@@ -1083,12 +1083,12 @@ pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
     ]
 }
 
-pub fn create_sync_opaque() -> RustOpaque<HideSyncData> {
-    RustOpaque::new(HideSyncData::new())
+pub fn create_sync_opaque() -> RustOpaque<NonSendHideData> {
+    RustOpaque::new(NonSendHideData::new())
 }
 
-pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<HideSyncData>> {
-    SyncReturn(RustOpaque::new(HideSyncData::new()))
+pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<NonSendHideData>> {
+    SyncReturn(RustOpaque::new(NonSendHideData::new()))
 }
 
 // OpaqueSyncStruct does not implement Send trait.
@@ -1097,7 +1097,7 @@ pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<HideSyncData>> {
 //     data.0.hide_data()
 // }
 
-pub fn sync_run_opaque(opaque: RustOpaque<HideSyncData>) -> SyncReturn<String> {
+pub fn sync_run_opaque(opaque: RustOpaque<NonSendHideData>) -> SyncReturn<String> {
     SyncReturn(opaque.hide_data())
 }
 
@@ -1196,7 +1196,7 @@ pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
 
 pub fn return_non_dropable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
     let raw = opaque.try_unwrap().unwrap();
-    SyncReturn(unsafe { DartOpaque::new_non_dropable(raw.into()) })
+    SyncReturn(unsafe { DartOpaque::new_non_droppable(raw.into()) })
 }
 
 /// Function to check the code generator.

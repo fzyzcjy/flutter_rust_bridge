@@ -14,18 +14,7 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
         let not_opaque_body = |ir: &IrTypeSyncReturn| match ir {
             IrTypeSyncReturn::Primitive(ref primitive) => match primitive {
                 IrTypePrimitive::Bool => "return uint8ListToBool(raw);".into(),
-                IrTypePrimitive::Usize => r#"
-                    final dataView = ByteData.view(raw.buffer);
-                    switch (raw.length) {
-                        case 8: {
-                          return dataView.getUint64(0);
-                        }
-                        case 4: {
-                          return dataView.getUint32(0);
-                        }
-                        default: {throw "Unknow lenght pointer.";}
-                      }"#
-                .into(),
+                IrTypePrimitive::Usize => "return getPlatformUsize(raw);".into(),
                 primitive => {
                     let primitive_name = match primitive {
                         IrTypePrimitive::U8 => "Uint8",

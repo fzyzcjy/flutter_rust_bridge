@@ -67,13 +67,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  wire_HideSyncData api2wire_HideSyncData(HideSyncData raw) {
-    final ptr = inner.new_HideSyncData();
-    _api_fill_to_wire_HideSyncData(raw, ptr);
-    return ptr;
-  }
-
-  @protected
   wire_I32 api2wire_I32(I32 raw) {
     final ptr = inner.new_I32();
     _api_fill_to_wire_I32(raw, ptr);
@@ -84,6 +77,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   wire_MutexHideData api2wire_MutexHideData(MutexHideData raw) {
     final ptr = inner.new_MutexHideData();
     _api_fill_to_wire_MutexHideData(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  wire_NonSendHideData api2wire_NonSendHideData(NonSendHideData raw) {
+    final ptr = inner.new_NonSendHideData();
+    _api_fill_to_wire_NonSendHideData(raw, ptr);
     return ptr;
   }
 
@@ -716,12 +716,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer => _FrbOpaqueReturnFinalizer;
   late final OpaqueTypeFinalizer _HideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_HideDataPtr);
   OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
-  late final OpaqueTypeFinalizer _HideSyncDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_HideSyncDataPtr);
-  OpaqueTypeFinalizer get HideSyncDataFinalizer => _HideSyncDataFinalizer;
   late final OpaqueTypeFinalizer _I32Finalizer = OpaqueTypeFinalizer(inner._drop_opaque_I32Ptr);
   OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
   late final OpaqueTypeFinalizer _MutexHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_MutexHideDataPtr);
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final OpaqueTypeFinalizer _NonSendHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_NonSendHideDataPtr);
+  OpaqueTypeFinalizer get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   late final OpaqueTypeFinalizer _RwLockHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_RwLockHideDataPtr);
   OpaqueTypeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 // Section: api_fill_to_wire
@@ -739,15 +739,15 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire_HideSyncData(HideSyncData apiObj, wire_HideSyncData wireObj) {
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
   void _api_fill_to_wire_I32(I32 apiObj, wire_I32 wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, wire_MutexHideData wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_NonSendHideData(NonSendHideData apiObj, wire_NonSendHideData wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
@@ -2754,7 +2754,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
 
   WireSyncReturnStruct wire_sync_run_opaque(
-    wire_HideSyncData opaque,
+    wire_NonSendHideData opaque,
   ) {
     return _wire_sync_run_opaque(
       opaque,
@@ -2762,9 +2762,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_sync_run_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_HideSyncData)>>('wire_sync_run_opaque');
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_NonSendHideData)>>('wire_sync_run_opaque');
   late final _wire_sync_run_opaque =
-      _wire_sync_run_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_HideSyncData)>();
+      _wire_sync_run_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_NonSendHideData)>();
 
   void wire_opaque_array_run(
     int port_,
@@ -3206,13 +3206,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_HideDataPtr = _lookup<ffi.NativeFunction<wire_HideData Function()>>('new_HideData');
   late final _new_HideData = _new_HideDataPtr.asFunction<wire_HideData Function()>();
 
-  wire_HideSyncData new_HideSyncData() {
-    return _new_HideSyncData();
-  }
-
-  late final _new_HideSyncDataPtr = _lookup<ffi.NativeFunction<wire_HideSyncData Function()>>('new_HideSyncData');
-  late final _new_HideSyncData = _new_HideSyncDataPtr.asFunction<wire_HideSyncData Function()>();
-
   wire_I32 new_I32() {
     return _new_I32();
   }
@@ -3226,6 +3219,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _new_MutexHideDataPtr = _lookup<ffi.NativeFunction<wire_MutexHideData Function()>>('new_MutexHideData');
   late final _new_MutexHideData = _new_MutexHideDataPtr.asFunction<wire_MutexHideData Function()>();
+
+  wire_NonSendHideData new_NonSendHideData() {
+    return _new_NonSendHideData();
+  }
+
+  late final _new_NonSendHideDataPtr =
+      _lookup<ffi.NativeFunction<wire_NonSendHideData Function()>>('new_NonSendHideData');
+  late final _new_NonSendHideData = _new_NonSendHideDataPtr.asFunction<wire_NonSendHideData Function()>();
 
   wire_RwLockHideData new_RwLockHideData() {
     return _new_RwLockHideData();
@@ -3918,32 +3919,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _share_opaque_HideData =
       _share_opaque_HideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
-  void drop_opaque_HideSyncData(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_HideSyncData(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_HideSyncDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_HideSyncData');
-  late final _drop_opaque_HideSyncData =
-      _drop_opaque_HideSyncDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  ffi.Pointer<ffi.Void> share_opaque_HideSyncData(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _share_opaque_HideSyncData(
-      ptr,
-    );
-  }
-
-  late final _share_opaque_HideSyncDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>('share_opaque_HideSyncData');
-  late final _share_opaque_HideSyncData =
-      _share_opaque_HideSyncDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
   void drop_opaque_I32(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -3994,6 +3969,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>('share_opaque_MutexHideData');
   late final _share_opaque_MutexHideData =
       _share_opaque_MutexHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_NonSendHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_NonSendHideData(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_NonSendHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_NonSendHideData');
+  late final _drop_opaque_NonSendHideData =
+      _drop_opaque_NonSendHideDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_NonSendHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_NonSendHideData(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_NonSendHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+          'share_opaque_NonSendHideData');
+  late final _share_opaque_NonSendHideData =
+      _share_opaque_NonSendHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
   void drop_opaque_RwLockHideData(
     ffi.Pointer<ffi.Void> ptr,
@@ -4603,7 +4605,7 @@ class wire_EnumOpaque extends ffi.Struct {
   external ffi.Pointer<EnumOpaqueKind> kind;
 }
 
-class wire_HideSyncData extends ffi.Struct {
+class wire_NonSendHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 

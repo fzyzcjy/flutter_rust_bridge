@@ -19,12 +19,12 @@ struct PrivateData {
 }
 
 #[derive(Debug)]
-pub struct HideSyncData {
+pub struct NonSendHideData {
     content: String,
     box_content: Option<Rc<PrivateData>>,
 }
 
-impl HideSyncData {
+impl NonSendHideData {
     pub fn new() -> Self {
         Self {
             content: "content".to_owned(),

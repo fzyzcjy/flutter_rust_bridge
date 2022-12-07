@@ -806,21 +806,6 @@ pub fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
 }
 
 #[wasm_bindgen]
-pub fn drop_opaque_HideSyncData(ptr: *const c_void) {
-    unsafe {
-        Arc::<HideSyncData>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn share_opaque_HideSyncData(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<HideSyncData>::increment_strong_count(ptr as _);
-        ptr
-    }
-}
-
-#[wasm_bindgen]
 pub fn drop_opaque_I32(ptr: *const c_void) {
     unsafe {
         Arc::<i32>::decrement_strong_count(ptr as _);
@@ -846,6 +831,21 @@ pub fn drop_opaque_MutexHideData(ptr: *const c_void) {
 pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_NonSendHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_NonSendHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonSendHideData>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -1623,16 +1623,6 @@ impl Wire2Api<[RustOpaque<HideData>; 2]> for JsValue {
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<RustOpaque<HideSyncData>> for JsValue {
-    fn wire2api(self) -> RustOpaque<HideSyncData> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
-    }
-}
 impl Wire2Api<RustOpaque<i32>> for JsValue {
     fn wire2api(self) -> RustOpaque<i32> {
         #[cfg(target_pointer_width = "64")]
@@ -1645,6 +1635,16 @@ impl Wire2Api<RustOpaque<i32>> for JsValue {
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonSendHideData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<NonSendHideData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");

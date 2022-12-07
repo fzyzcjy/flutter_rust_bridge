@@ -1648,10 +1648,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  Future<HideSyncData> createSyncOpaque({dynamic hint}) {
+  Future<NonSendHideData> createSyncOpaque({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_sync_opaque(port_),
-      parseSuccessData: _wire2api_HideSyncData,
+      parseSuccessData: _wire2api_NonSendHideData,
       constMeta: kCreateSyncOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -1663,10 +1663,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  HideSyncData syncCreateSyncOpaque({dynamic hint}) {
+  NonSendHideData syncCreateSyncOpaque({dynamic hint}) {
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_create_sync_opaque(),
-      parseSuccessData: _wire2api_SyncReturn_HideSyncData,
+      parseSuccessData: _wire2api_SyncReturn_NonSendHideData,
       constMeta: kSyncCreateSyncOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -1678,8 +1678,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  String syncRunOpaque({required HideSyncData opaque, dynamic hint}) {
-    var arg0 = _platform.api2wire_HideSyncData(opaque);
+  String syncRunOpaque({required NonSendHideData opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_NonSendHideData(opaque);
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_run_opaque(arg0),
       parseSuccessData: _wire2api_SyncReturn_String,
@@ -2179,10 +2179,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   ShareFnType get shareOpaqueHideData => _platform.inner.share_opaque_HideData;
   OpaqueTypeFinalizer get HideDataFinalizer => _platform.HideDataFinalizer;
 
-  DropFnType get dropOpaqueHideSyncData => _platform.inner.drop_opaque_HideSyncData;
-  ShareFnType get shareOpaqueHideSyncData => _platform.inner.share_opaque_HideSyncData;
-  OpaqueTypeFinalizer get HideSyncDataFinalizer => _platform.HideSyncDataFinalizer;
-
   DropFnType get dropOpaqueI32 => _platform.inner.drop_opaque_I32;
   ShareFnType get shareOpaqueI32 => _platform.inner.share_opaque_I32;
   OpaqueTypeFinalizer get I32Finalizer => _platform.I32Finalizer;
@@ -2190,6 +2186,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   DropFnType get dropOpaqueMutexHideData => _platform.inner.drop_opaque_MutexHideData;
   ShareFnType get shareOpaqueMutexHideData => _platform.inner.share_opaque_MutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
+
+  DropFnType get dropOpaqueNonSendHideData => _platform.inner.drop_opaque_NonSendHideData;
+  ShareFnType get shareOpaqueNonSendHideData => _platform.inner.share_opaque_NonSendHideData;
+  OpaqueTypeFinalizer get NonSendHideDataFinalizer => _platform.NonSendHideDataFinalizer;
 
   DropFnType get dropOpaqueRwLockHideData => _platform.inner.drop_opaque_RwLockHideData;
   ShareFnType get shareOpaqueRwLockHideData => _platform.inner.share_opaque_RwLockHideData;
@@ -2240,16 +2240,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return HideDataArray2((raw as List<dynamic>).map(_wire2api_HideData).toList());
   }
 
-  HideSyncData _wire2api_HideSyncData(dynamic raw) {
-    return HideSyncData.fromRaw(raw[0], raw[1], this);
-  }
-
   I32 _wire2api_I32(dynamic raw) {
     return I32.fromRaw(raw[0], raw[1], this);
   }
 
   MutexHideData _wire2api_MutexHideData(dynamic raw) {
     return MutexHideData.fromRaw(raw[0], raw[1], this);
+  }
+
+  NonSendHideData _wire2api_NonSendHideData(dynamic raw) {
+    return NonSendHideData.fromRaw(raw[0], raw[1], this);
   }
 
   ObjectArray1 _wire2api_Object_array_1(dynamic raw) {
@@ -2281,9 +2281,9 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return HideData.fromRaw(data.item1, data.item2, this);
   }
 
-  HideSyncData _wire2api_SyncReturn_HideSyncData(dynamic raw) {
+  NonSendHideData _wire2api_SyncReturn_NonSendHideData(dynamic raw) {
     var data = parseOpaquePtrAndSizeFrom(raw);
-    return HideSyncData.fromRaw(data.item1, data.item2, this);
+    return NonSendHideData.fromRaw(data.item1, data.item2, this);
   }
 
   Object _wire2api_SyncReturn_Object(dynamic raw) {

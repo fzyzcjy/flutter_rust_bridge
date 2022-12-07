@@ -546,7 +546,9 @@ pub extern "C" fn wire_sync_create_sync_opaque() -> support::WireSyncReturnStruc
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_run_opaque(opaque: wire_HideSyncData) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_run_opaque(
+    opaque: wire_NonSendHideData,
+) -> support::WireSyncReturnStruct {
     wire_sync_run_opaque_impl(opaque)
 }
 
@@ -745,11 +747,6 @@ pub extern "C" fn new_HideData() -> wire_HideData {
 }
 
 #[no_mangle]
-pub extern "C" fn new_HideSyncData() -> wire_HideSyncData {
-    wire_HideSyncData::new_with_null_ptr()
-}
-
-#[no_mangle]
 pub extern "C" fn new_I32() -> wire_I32 {
     wire_I32::new_with_null_ptr()
 }
@@ -757,6 +754,11 @@ pub extern "C" fn new_I32() -> wire_I32 {
 #[no_mangle]
 pub extern "C" fn new_MutexHideData() -> wire_MutexHideData {
     wire_MutexHideData::new_with_null_ptr()
+}
+
+#[no_mangle]
+pub extern "C" fn new_NonSendHideData() -> wire_NonSendHideData {
+    wire_NonSendHideData::new_with_null_ptr()
 }
 
 #[no_mangle]
@@ -1165,21 +1167,6 @@ pub extern "C" fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_HideSyncData(ptr: *const c_void) {
-    unsafe {
-        Arc::<HideSyncData>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn share_opaque_HideSyncData(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<HideSyncData>::increment_strong_count(ptr as _);
-        ptr
-    }
-}
-
-#[no_mangle]
 pub extern "C" fn drop_opaque_I32(ptr: *const c_void) {
     unsafe {
         Arc::<i32>::decrement_strong_count(ptr as _);
@@ -1205,6 +1192,21 @@ pub extern "C" fn drop_opaque_MutexHideData(ptr: *const c_void) {
 pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_NonSendHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_NonSendHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonSendHideData>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -1276,11 +1278,6 @@ impl Wire2Api<[RustOpaque<HideData>; 2]> for *mut wire_list_HideData {
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<RustOpaque<HideSyncData>> for wire_HideSyncData {
-    fn wire2api(self) -> RustOpaque<HideSyncData> {
-        unsafe { support::opaque_from_dart(self.ptr as _) }
-    }
-}
 impl Wire2Api<RustOpaque<i32>> for wire_I32 {
     fn wire2api(self) -> RustOpaque<i32> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
@@ -1288,6 +1285,11 @@ impl Wire2Api<RustOpaque<i32>> for wire_I32 {
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for wire_MutexHideData {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonSendHideData>> for wire_NonSendHideData {
+    fn wire2api(self) -> RustOpaque<NonSendHideData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
@@ -2045,12 +2047,6 @@ pub struct wire_HideData {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_HideSyncData {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_I32 {
     ptr: *const core::ffi::c_void,
 }
@@ -2058,6 +2054,12 @@ pub struct wire_I32 {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_MutexHideData {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_NonSendHideData {
     ptr: *const core::ffi::c_void,
 }
 
@@ -2567,13 +2569,6 @@ impl NewWithNullPtr for wire_HideData {
     }
 }
 
-impl NewWithNullPtr for wire_HideSyncData {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
 impl NewWithNullPtr for wire_I32 {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2582,6 +2577,13 @@ impl NewWithNullPtr for wire_I32 {
     }
 }
 impl NewWithNullPtr for wire_MutexHideData {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+impl NewWithNullPtr for wire_NonSendHideData {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),

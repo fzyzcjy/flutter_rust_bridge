@@ -436,15 +436,15 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
 
-  Future<HideSyncData> createSyncOpaque({dynamic hint});
+  Future<NonSendHideData> createSyncOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateSyncOpaqueConstMeta;
 
-  HideSyncData syncCreateSyncOpaque({dynamic hint});
+  NonSendHideData syncCreateSyncOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncCreateSyncOpaqueConstMeta;
 
-  String syncRunOpaque({required HideSyncData opaque, dynamic hint});
+  String syncRunOpaque({required NonSendHideData opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncRunOpaqueConstMeta;
 
@@ -581,10 +581,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   ShareFnType get shareOpaqueHideData;
   OpaqueTypeFinalizer get HideDataFinalizer;
 
-  DropFnType get dropOpaqueHideSyncData;
-  ShareFnType get shareOpaqueHideSyncData;
-  OpaqueTypeFinalizer get HideSyncDataFinalizer;
-
   DropFnType get dropOpaqueI32;
   ShareFnType get shareOpaqueI32;
   OpaqueTypeFinalizer get I32Finalizer;
@@ -592,6 +588,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   DropFnType get dropOpaqueMutexHideData;
   ShareFnType get shareOpaqueMutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer;
+
+  DropFnType get dropOpaqueNonSendHideData;
+  ShareFnType get shareOpaqueNonSendHideData;
+  OpaqueTypeFinalizer get NonSendHideDataFinalizer;
 
   DropFnType get dropOpaqueRwLockHideData;
   ShareFnType get shareOpaqueRwLockHideData;
@@ -659,20 +659,6 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 }
 
 @sealed
-class HideSyncData extends FrbOpaque {
-  final FlutterRustBridgeExampleSingleBlockTest bridge;
-  HideSyncData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
-  @override
-  DropFnType get dropFn => bridge.dropOpaqueHideSyncData;
-
-  @override
-  ShareFnType get shareFn => bridge.shareOpaqueHideSyncData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer => bridge.HideSyncDataFinalizer;
-}
-
-@sealed
 class I32 extends FrbOpaque {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   I32.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
@@ -698,6 +684,20 @@ class MutexHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.MutexHideDataFinalizer;
+}
+
+@sealed
+class NonSendHideData extends FrbOpaque {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  NonSendHideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  DropFnType get dropFn => bridge.dropOpaqueNonSendHideData;
+
+  @override
+  ShareFnType get shareFn => bridge.shareOpaqueNonSendHideData;
+
+  @override
+  OpaqueTypeFinalizer get staticFinalizer => bridge.NonSendHideDataFinalizer;
 }
 
 class ObjectArray1 extends NonGrowableListView<Object> {

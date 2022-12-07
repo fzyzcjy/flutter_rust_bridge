@@ -181,53 +181,49 @@ impl<'a> TypeParser<'a> {
         let ident_string = &p.ident.to_string();
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
-                "SyncReturn" => match self.convert_to_ir_type(*generic) {
-                    Some(Primitive(primitive)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::Primitive(primitive)))
-                    }
-                    Some(Delegate(IrTypeDelegate::String)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::String))
-                    }
-                    Some(PrimitiveList(primitive)) => match primitive.primitive {
-                        IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::VecU8)),
-                        _ => None,
-                    },
-                    Some(Optional(option)) => match *option.inner {
-                        Primitive(primitive) => Some(SyncReturn(IrTypeSyncReturn::Option(
-                            Box::new(IrTypeSyncReturn::Primitive(primitive)),
-                        ))),
-                        Delegate(IrTypeDelegate::String) => Some(SyncReturn(
-                            IrTypeSyncReturn::Option(Box::new(IrTypeSyncReturn::String)),
-                        )),
-                        PrimitiveList(primitive) => match primitive.primitive {
-                            IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::Option(
-                                Box::new(IrTypeSyncReturn::VecU8),
-                            ))),
+                "SyncReturn" => {
+                    let ir_type = self.convert_to_ir_type(*generic);
+                    let non_option = |ir_type: Option<IrType>| match ir_type {
+                        Some(Primitive(primitive)) => Some(IrTypeSyncReturn::Primitive(primitive)),
+                        Some(Delegate(IrTypeDelegate::String)) => Some(IrTypeSyncReturn::String),
+                        Some(PrimitiveList(primitive)) => match primitive.primitive {
+                            IrTypePrimitive::U8 => Some(IrTypeSyncReturn::VecU8),
                             _ => None,
                         },
-                        Boxed(inner)
-                            if inner.inner.is_rust_opaque() || inner.inner.is_dart_opaque() =>
-                        {
-                            match *inner.inner {
-                                RustOpaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(
-                                    Box::new(IrTypeSyncReturn::RustOpaque(opaque)),
-                                ))),
-                                DartOpaque(opaque) => Some(SyncReturn(IrTypeSyncReturn::Option(
-                                    Box::new(IrTypeSyncReturn::DartOpaque(opaque)),
-                                ))),
-                                _ => None,
-                            }
-                        }
+                        Some(RustOpaque(opaque)) => Some(IrTypeSyncReturn::RustOpaque(opaque)),
+                        Some(DartOpaque(opaque)) => Some(IrTypeSyncReturn::DartOpaque(opaque)),
                         _ => None,
-                    },
-                    Some(RustOpaque(opaque)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::RustOpaque(opaque)))
+                    };
+
+                    match ir_type {
+                        Some(Optional(option)) => match *option.inner {
+                            Primitive(_) | Delegate(_) | PrimitiveList(_) => {
+                                Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(non_option(
+                                    Some(*option.inner),
+                                )?))))
+                            }
+                            Boxed(inner)
+                                if inner.inner.is_rust_opaque() || inner.inner.is_dart_opaque() =>
+                            {
+                                match *inner.inner {
+                                    RustOpaque(opaque) => {
+                                        Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
+                                            IrTypeSyncReturn::RustOpaque(opaque),
+                                        ))))
+                                    }
+                                    DartOpaque(opaque) => {
+                                        Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
+                                            IrTypeSyncReturn::DartOpaque(opaque),
+                                        ))))
+                                    }
+                                    _ => None,
+                                }
+                            }
+                            _ => None,
+                        },
+                        ty => Some(SyncReturn(non_option(ty)?)),
                     }
-                    Some(DartOpaque(opaque)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::DartOpaque(opaque)))
-                    }
-                    _ => None,
-                },
+                }
                 "Vec" => match *generic {
                     // Special-case Vec<String> as StringList
                     SupportedInnerType::Path(SupportedPathType { ref ident, .. })

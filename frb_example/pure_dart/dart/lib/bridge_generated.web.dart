@@ -62,17 +62,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Object api2wire_HideSyncData(HideSyncData raw) {
-    return raw.shareOrMove();
-  }
-
-  @protected
   Object api2wire_I32(I32 raw) {
     return raw.shareOrMove();
   }
 
   @protected
   Object api2wire_MutexHideData(MutexHideData raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
+  Object api2wire_NonSendHideData(NonSendHideData raw) {
     return raw.shareOrMove();
   }
 
@@ -824,14 +824,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   Finalizer<PlatformPointer> get FrbOpaqueReturnFinalizer => _FrbOpaqueReturnFinalizer;
   late final Finalizer<PlatformPointer> _HideDataFinalizer = Finalizer<PlatformPointer>(inner.drop_opaque_HideData);
   Finalizer<PlatformPointer> get HideDataFinalizer => _HideDataFinalizer;
-  late final Finalizer<PlatformPointer> _HideSyncDataFinalizer =
-      Finalizer<PlatformPointer>(inner.drop_opaque_HideSyncData);
-  Finalizer<PlatformPointer> get HideSyncDataFinalizer => _HideSyncDataFinalizer;
   late final Finalizer<PlatformPointer> _I32Finalizer = Finalizer<PlatformPointer>(inner.drop_opaque_I32);
   Finalizer<PlatformPointer> get I32Finalizer => _I32Finalizer;
   late final Finalizer<PlatformPointer> _MutexHideDataFinalizer =
       Finalizer<PlatformPointer>(inner.drop_opaque_MutexHideData);
   Finalizer<PlatformPointer> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final Finalizer<PlatformPointer> _NonSendHideDataFinalizer =
+      Finalizer<PlatformPointer>(inner.drop_opaque_NonSendHideData);
+  Finalizer<PlatformPointer> get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   late final Finalizer<PlatformPointer> _RwLockHideDataFinalizer =
       Finalizer<PlatformPointer>(inner.drop_opaque_RwLockHideData);
   Finalizer<PlatformPointer> get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
@@ -1157,10 +1157,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external int /* *const c_void */ share_opaque_HideData(ptr);
 
-  external dynamic /*  */ drop_opaque_HideSyncData(ptr);
-
-  external int /* *const c_void */ share_opaque_HideSyncData(ptr);
-
   external dynamic /*  */ drop_opaque_I32(ptr);
 
   external int /* *const c_void */ share_opaque_I32(ptr);
@@ -1168,6 +1164,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /*  */ drop_opaque_MutexHideData(ptr);
 
   external int /* *const c_void */ share_opaque_MutexHideData(ptr);
+
+  external dynamic /*  */ drop_opaque_NonSendHideData(ptr);
+
+  external int /* *const c_void */ share_opaque_NonSendHideData(ptr);
 
   external dynamic /*  */ drop_opaque_RwLockHideData(ptr);
 
@@ -1539,10 +1539,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   int /* *const c_void */ share_opaque_HideData(ptr) => wasmModule.share_opaque_HideData(ptr);
 
-  dynamic /*  */ drop_opaque_HideSyncData(ptr) => wasmModule.drop_opaque_HideSyncData(ptr);
-
-  int /* *const c_void */ share_opaque_HideSyncData(ptr) => wasmModule.share_opaque_HideSyncData(ptr);
-
   dynamic /*  */ drop_opaque_I32(ptr) => wasmModule.drop_opaque_I32(ptr);
 
   int /* *const c_void */ share_opaque_I32(ptr) => wasmModule.share_opaque_I32(ptr);
@@ -1550,6 +1546,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /*  */ drop_opaque_MutexHideData(ptr) => wasmModule.drop_opaque_MutexHideData(ptr);
 
   int /* *const c_void */ share_opaque_MutexHideData(ptr) => wasmModule.share_opaque_MutexHideData(ptr);
+
+  dynamic /*  */ drop_opaque_NonSendHideData(ptr) => wasmModule.drop_opaque_NonSendHideData(ptr);
+
+  int /* *const c_void */ share_opaque_NonSendHideData(ptr) => wasmModule.share_opaque_NonSendHideData(ptr);
 
   dynamic /*  */ drop_opaque_RwLockHideData(ptr) => wasmModule.drop_opaque_RwLockHideData(ptr);
 
