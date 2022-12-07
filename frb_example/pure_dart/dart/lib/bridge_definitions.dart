@@ -464,22 +464,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCreateNestedOpaqueConstMeta;
 
-  Future<DartOpaqueNested> createNestedDartOpaque({required Object opaque1, required Object opaque2, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kCreateNestedDartOpaqueConstMeta;
-
-  Future<void> getNestedDartOpaque({required DartOpaqueNested opaque, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kGetNestedDartOpaqueConstMeta;
-
-  Future<EnumDartOpaque> createEnumDartOpaque({required Object opaque, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kCreateEnumDartOpaqueConstMeta;
-
-  Future<void> getEnumDartOpaque({required EnumDartOpaque opaque, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kGetEnumDartOpaqueConstMeta;
-
   Object syncLoopback({required Object opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSyncLoopbackConstMeta;
@@ -535,6 +519,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta;
+
+  Object returnNonDropableDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnNonDropableDartOpaqueConstMeta;
 
   /// Function to check the code generator.
   /// FrbOpaqueReturn must be only return type.

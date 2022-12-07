@@ -978,13 +978,13 @@ void main(List<String> args) async {
     });
   });
 
-  group('Sync opaque feature:', () {
-    test('Create opaque type', () {
+  group('extended sync', () {
+    test('create', () {
       var data = api.syncCreateOpaque();
       data.dispose();
     });
 
-    test('Double Call opaque type fn', () {
+    test('double call', () {
       var data = api.syncCreateSyncOpaque();
       expect(
           api.syncRunOpaque(opaque: data),
@@ -1007,7 +1007,7 @@ void main(List<String> args) async {
       data.dispose();
     });
 
-    test('Call opaque type fn after drop', () {
+    test('call after drop', () {
       var data = api.syncCreateSyncOpaque();
       expect(
           api.syncRunOpaque(opaque: data),
@@ -1021,7 +1021,8 @@ void main(List<String> args) async {
       data.dispose();
       expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
-    test('Return option', () async {
+
+    test('option', () async {
       var data = api.syncOption();
       var data2 = api.syncOptionNull();
       var data3 = api.syncOptionOpaque();
@@ -1031,8 +1032,14 @@ void main(List<String> args) async {
       data3?.dispose();
     });
 
-    test('Return void', () async {
+    test('void', () async {
       api.syncVoid();
+    });
+
+    test('unwrapped dart opaque', () async {
+      String f() => "magic";
+      var res = api.returnNonDropableDartOpaque(opaque: f);
+      expect(identical(res, f), isTrue);
     });
   });
 }

@@ -571,30 +571,6 @@ pub extern "C" fn wire_create_nested_opaque(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_nested_dart_opaque(
-    port_: i64,
-    opaque1: wire_DartOpaque,
-    opaque2: wire_DartOpaque,
-) {
-    wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_get_nested_dart_opaque(port_: i64, opaque: *mut wire_DartOpaqueNested) {
-    wire_get_nested_dart_opaque_impl(port_, opaque)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_create_enum_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
-    wire_create_enum_dart_opaque_impl(port_, opaque)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_get_enum_dart_opaque(port_: i64, opaque: *mut wire_EnumDartOpaque) {
-    wire_get_enum_dart_opaque_impl(port_, opaque)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_sync_loopback(opaque: wire_DartOpaque) -> support::WireSyncReturnStruct {
     wire_sync_loopback_impl(opaque)
 }
@@ -668,6 +644,13 @@ pub extern "C" fn wire_drop_static_dart_opaque(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_HideData) {
     wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_non_dropable_dart_opaque(
+    opaque: wire_DartOpaque,
+) -> support::WireSyncReturnStruct {
+    wire_return_non_dropable_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
@@ -1272,7 +1255,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
 }
 impl Wire2Api<DartOpaque> for wire_DartOpaque {
     fn wire2api(self) -> DartOpaque {
-        DartOpaque::new(self.handle as _, self.port)
+        unsafe { DartOpaque::new(self.handle as _, self.port) }
     }
 }
 impl Wire2Api<RustOpaque<HideData>> for wire_HideData {

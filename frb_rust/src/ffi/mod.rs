@@ -232,9 +232,28 @@ unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
     /// Creates a new [DartOpaque].
-    pub fn new(handle: DartObject, port: OpaqueMessagePort) -> Self {
+    ///
+    /// # Safety
+    ///
+    /// The [DartObject] must be created on the current thread.
+    pub unsafe fn new(handle: DartObject, port: OpaqueMessagePort) -> Self {
         Self {
-            handle: Some(DartOpaqueBase::new(handle, port)),
+            handle: Some(DartOpaqueBase::new(handle, Some(port))),
+            thread_id: std::thread::current().id(),
+        }
+    }
+
+    /// Creates a [DartOpaque] for sending to dart.
+    ///
+    /// # Safety
+    ///
+    /// The [DartObject] must be created on the current thread.
+    ///
+    /// The [DartOpaque] created by this method must not be dropped
+    /// on a non-parent [DartObject] thread.
+    pub unsafe fn new_non_dropable(handle: DartObject) -> Self {
+        Self {
+            handle: Some(DartOpaqueBase::new(handle, None)),
             thread_id: std::thread::current().id(),
         }
     }
@@ -280,12 +299,15 @@ impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
-                let channel = inner.channel();
-                let ptr = inner.into_raw();
+                if let Some(channel) = inner.channel() {
+                    let ptr = inner.into_raw();
 
-                if !channel.post(ptr) {
-                    warn!("Drop DartOpaque after closing the port.");
-                };
+                    if !channel.post(ptr) {
+                        warn!("Drop DartOpaque after closing the port.");
+                    };
+                } else {
+                    warn!("Drop non dropable DartOpaque.");
+                }
             }
         }
     }

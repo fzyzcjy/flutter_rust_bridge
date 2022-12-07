@@ -2998,6 +2998,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_HideData)>>('wire_unwrap_rust_opaque');
   late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr.asFunction<void Function(int, wire_HideData)>();
 
+  WireSyncReturnStruct wire_return_non_dropable_dart_opaque(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_return_non_dropable_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_return_non_dropable_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>(
+          'wire_return_non_dropable_dart_opaque');
+  late final _wire_return_non_dropable_dart_opaque =
+      _wire_return_non_dropable_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
+
   void wire_frb_generator_test(
     int port_,
   ) {

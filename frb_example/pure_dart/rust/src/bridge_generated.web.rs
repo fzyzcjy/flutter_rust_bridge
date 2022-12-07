@@ -559,26 +559,6 @@ pub fn wire_create_nested_opaque(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_create_nested_dart_opaque(port_: MessagePort, opaque1: JsValue, opaque2: JsValue) {
-    wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
-}
-
-#[wasm_bindgen]
-pub fn wire_get_nested_dart_opaque(port_: MessagePort, opaque: JsValue) {
-    wire_get_nested_dart_opaque_impl(port_, opaque)
-}
-
-#[wasm_bindgen]
-pub fn wire_create_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
-    wire_create_enum_dart_opaque_impl(port_, opaque)
-}
-
-#[wasm_bindgen]
-pub fn wire_get_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
-    wire_get_enum_dart_opaque_impl(port_, opaque)
-}
-
-#[wasm_bindgen]
 pub fn wire_sync_loopback(opaque: JsValue) -> support::WireSyncReturnStruct {
     wire_sync_loopback_impl(opaque)
 }
@@ -646,6 +626,11 @@ pub fn wire_drop_static_dart_opaque(port_: MessagePort) {
 #[wasm_bindgen]
 pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
     wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_non_dropable_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_return_non_dropable_dart_opaque_impl(opaque)
 }
 
 #[wasm_bindgen]
@@ -909,7 +894,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
 impl Wire2Api<DartOpaque> for JsValue {
     fn wire2api(self) -> DartOpaque {
         let arr = self.dyn_into::<JsArray>().unwrap();
-        DartOpaque::new(arr.get(0), arr.get(1))
+        unsafe { DartOpaque::new(arr.get(0), arr.get(1)) }
     }
 }
 

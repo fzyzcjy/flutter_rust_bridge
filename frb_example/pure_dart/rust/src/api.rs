@@ -13,7 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-pub use crate::data::{HideData, HideSyncData, FrbOpaqueReturn};
+pub use crate::data::{FrbOpaqueReturn, HideData, HideSyncData};
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
@@ -1188,6 +1188,11 @@ pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
     Ok(data.hide_data())
+}
+
+pub fn return_non_dropable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
+    let raw = opaque.try_unwrap().unwrap();
+    SyncReturn(unsafe { DartOpaque::new_non_dropable(raw.into()) })
 }
 
 /// Function to check the code generator.

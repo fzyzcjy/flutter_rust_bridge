@@ -1976,6 +1976,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  Object returnNonDropableDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartOpaque(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_return_non_dropable_dart_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_Object,
+      constMeta: kReturnNonDropableDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnNonDropableDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_non_dropable_dart_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_frb_generator_test(port_),
