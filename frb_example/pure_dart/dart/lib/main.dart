@@ -1031,7 +1031,7 @@ void main(List<String> args) async {
       expect(data2, isNull);
       expect(data3, isNotNull);
       expect(data4, isNotNull);
-      data3?.dispose();
+      data3!.dispose();
     });
 
     test('void', () async {
