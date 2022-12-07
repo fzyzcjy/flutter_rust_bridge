@@ -1626,14 +1626,29 @@ fn wire_sync_option_null_impl() -> support::WireSyncReturnStruct {
         move || sync_option_null(),
     )
 }
-fn wire_sync_option_opaque_impl() -> support::WireSyncReturnStruct {
+fn wire_sync_option_rust_opaque_impl() -> support::WireSyncReturnStruct {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
-            debug_name: "sync_option_opaque",
+            debug_name: "sync_option_rust_opaque",
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || sync_option_opaque(),
+        move || sync_option_rust_opaque(),
+    )
+}
+fn wire_sync_option_dart_opaque_impl(
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) -> support::WireSyncReturnStruct {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_option_dart_opaque",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            sync_option_dart_opaque(api_opaque)
+        },
     )
 }
 fn wire_sync_void_impl() -> support::WireSyncReturnStruct {

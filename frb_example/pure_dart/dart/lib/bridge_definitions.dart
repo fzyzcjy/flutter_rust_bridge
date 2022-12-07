@@ -480,9 +480,13 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSyncOptionNullConstMeta;
 
-  HideData? syncOptionOpaque({dynamic hint});
+  HideData? syncOptionRustOpaque({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kSyncOptionOpaqueConstMeta;
+  FlutterRustBridgeTaskConstMeta get kSyncOptionRustOpaqueConstMeta;
+
+  Object? syncOptionDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionDartOpaqueConstMeta;
 
   void syncVoid({dynamic hint});
 

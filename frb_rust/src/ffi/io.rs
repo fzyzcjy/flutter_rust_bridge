@@ -80,9 +80,9 @@ impl DartHandleWrap {
     }
 }
 
-impl Into<Dart_PersistentHandle> for DartHandleWrap {
-    fn into(self) -> Dart_PersistentHandle {
-        self.into_raw()
+impl From<DartHandleWrap> for Dart_PersistentHandle {
+    fn from(warp: DartHandleWrap) -> Self {
+        warp.into_raw()
     }
 }
 

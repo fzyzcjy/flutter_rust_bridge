@@ -2861,13 +2861,27 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_null');
   late final _wire_sync_option_null = _wire_sync_option_nullPtr.asFunction<WireSyncReturnStruct Function()>();
 
-  WireSyncReturnStruct wire_sync_option_opaque() {
-    return _wire_sync_option_opaque();
+  WireSyncReturnStruct wire_sync_option_rust_opaque() {
+    return _wire_sync_option_rust_opaque();
   }
 
-  late final _wire_sync_option_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_opaque');
-  late final _wire_sync_option_opaque = _wire_sync_option_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+  late final _wire_sync_option_rust_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_rust_opaque');
+  late final _wire_sync_option_rust_opaque =
+      _wire_sync_option_rust_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+
+  WireSyncReturnStruct wire_sync_option_dart_opaque(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_sync_option_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_option_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>('wire_sync_option_dart_opaque');
+  late final _wire_sync_option_dart_opaque =
+      _wire_sync_option_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
 
   WireSyncReturnStruct wire_sync_void() {
     return _wire_sync_void();

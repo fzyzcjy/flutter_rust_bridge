@@ -1818,19 +1818,35 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  HideData? syncOptionOpaque({dynamic hint}) {
+  HideData? syncOptionRustOpaque({dynamic hint}) {
     return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_sync_option_opaque(),
+      callFfi: () => _platform.inner.wire_sync_option_rust_opaque(),
       parseSuccessData: _wire2api_SyncReturn_Option_HideData,
-      constMeta: kSyncOptionOpaqueConstMeta,
+      constMeta: kSyncOptionRustOpaqueConstMeta,
       argValues: [],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kSyncOptionOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "sync_option_opaque",
+  FlutterRustBridgeTaskConstMeta get kSyncOptionRustOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_rust_opaque",
         argNames: [],
+      );
+
+  Object? syncOptionDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartOpaque(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_dart_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_Option_Object,
+      constMeta: kSyncOptionDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_dart_opaque",
+        argNames: ["opaque"],
       );
 
   void syncVoid({dynamic hint}) {

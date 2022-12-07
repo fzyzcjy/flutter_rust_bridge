@@ -92,9 +92,13 @@ impl From<Vec<u8>> for WireSyncReturnData {
     }
 }
 
-impl<T: Into<Vec<u8>>> From<Option<T>> for WireSyncReturnData {
+impl<T: Into<WireSyncReturnData>> From<Option<T>> for WireSyncReturnData {
     fn from(data: Option<T>) -> Self {
-        WireSyncReturnData(data.map(|v| v.into()))
+        if let Some(data) = data {
+            data.into()
+        } else {
+            WireSyncReturnData(None)
+        }
     }
 }
 

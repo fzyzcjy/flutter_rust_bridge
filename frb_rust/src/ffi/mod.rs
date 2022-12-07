@@ -184,23 +184,6 @@ impl<T: DartSafe> From<RustOpaque<T>> for WireSyncReturnData {
     }
 }
 
-impl<T: DartSafe> From<Option<RustOpaque<T>>> for WireSyncReturnData {
-    fn from(value: Option<RustOpaque<T>>) -> Self {
-        if let Some(opaque) = value {
-            let ptr = if let Some(ptr) = opaque.ptr {
-                Arc::into_raw(ptr)
-            } else {
-                std::ptr::null()
-            } as usize;
-
-            let size = mem::size_of::<T>();
-            WireSyncReturnData(Some([ptr.to_be_bytes(), size.to_be_bytes()].concat()))
-        } else {
-            WireSyncReturnData(None)
-        }
-    }
-}
-
 impl<T: DartSafe> From<RustOpaque<T>> for DartAbi {
     fn from(value: RustOpaque<T>) -> Self {
         let ptr = if let Some(ptr) = value.ptr {
@@ -282,16 +265,6 @@ impl From<DartOpaque> for WireSyncReturnData {
                 .to_be_bytes()
                 .to_vec(),
         ))
-    }
-}
-
-impl From<Option<DartOpaque>> for WireSyncReturnData {
-    fn from(value: Option<DartOpaque>) -> Self {
-        if let Some(opaque) = value {
-            opaque.into()
-        } else {
-            WireSyncReturnData(None)
-        }
     }
 }
 

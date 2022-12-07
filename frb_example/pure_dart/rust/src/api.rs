@@ -1143,8 +1143,12 @@ pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
     Ok(SyncReturn(None))
 }
 
-pub fn sync_option_opaque() -> Result<SyncReturn<Option<RustOpaque<HideData>>>> {
+pub fn sync_option_rust_opaque() -> Result<SyncReturn<Option<RustOpaque<HideData>>>> {
     Ok(SyncReturn(Some(RustOpaque::new(HideData::new()))))
+}
+
+pub fn sync_option_dart_opaque(opaque: DartOpaque) -> Result<SyncReturn<Option<DartOpaque>>> {
+    Ok(SyncReturn(Some(opaque)))
 }
 
 pub fn sync_void() -> SyncReturn<()> {

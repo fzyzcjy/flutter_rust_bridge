@@ -1025,10 +1025,12 @@ void main(List<String> args) async {
     test('option', () async {
       var data = api.syncOption();
       var data2 = api.syncOptionNull();
-      var data3 = api.syncOptionOpaque();
-      expect(data == null, false);
-      expect(data2 == null, true);
-      expect(data3 == null, false);
+      var data3 = api.syncOptionRustOpaque();
+      var data4 = api.syncOptionDartOpaque(opaque: () => () => 'magic');
+      expect(data, isNotNull);
+      expect(data2, isNull);
+      expect(data3, isNotNull);
+      expect(data4, isNotNull);
       data3?.dispose();
     });
 

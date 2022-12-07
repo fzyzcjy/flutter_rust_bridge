@@ -579,8 +579,13 @@ pub fn wire_sync_option_null() -> support::WireSyncReturnStruct {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_option_opaque() -> support::WireSyncReturnStruct {
-    wire_sync_option_opaque_impl()
+pub fn wire_sync_option_rust_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_option_rust_opaque_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_sync_option_dart_opaque_impl(opaque)
 }
 
 #[wasm_bindgen]
