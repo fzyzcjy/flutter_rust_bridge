@@ -16,6 +16,7 @@ use std::{
 
 use cargo_metadata::MetadataCommand;
 use log::{debug, warn};
+use proc_macro2::TokenTree;
 use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, Type, UseTree};
 
 use crate::markers;
@@ -675,22 +676,30 @@ fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
 }
 
 fn get_impl_trait_from_attrs(self_ty: &Ident, attrs: &[Attribute], vis: bool) -> Vec<Impl> {
-    let mut scope_impls = vec![];
     if vis {
-        for a in attrs.iter() {
-            for tt_a in a.tokens.clone().into_iter() {
-                if let quote::__private::TokenTree::Group(g) = tt_a {
-                    for tt_g in g.stream().into_iter() {
-                        if let quote::__private::TokenTree::Ident(trait_) = tt_g {
-                            scope_impls.push(Impl {
-                                self_ty: self_ty.clone(),
-                                trait_,
-                            });
-                        }
-                    }
+        attrs
+            .iter()
+            .flat_map(|a| a.tokens.clone().into_iter())
+            .filter_map(|tt_a| {
+                if let TokenTree::Group(g) = tt_a {
+                    Some(g.stream().into_iter())
+                } else {
+                    None
                 }
-            }
-        }
+            })
+            .flatten()
+            .filter_map(|tt_g| {
+                if let TokenTree::Ident(trait_) = tt_g {
+                    Some(Impl {
+                        self_ty: self_ty.clone(),
+                        trait_,
+                    })
+                } else {
+                    None
+                }
+            })
+            .collect()
+    } else {
+        vec![]
     }
-    scope_impls
 }
