@@ -67,12 +67,9 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             IrTypeSyncReturn::DartOpaque(_) => {
                 "return _platform.inner.get_dart_object(getPlatformUsize(raw));".to_owned()
             }
-            IrTypeSyncReturn::Option(_) => "".into(),
+            IrTypeSyncReturn::Option(_) => panic!("Nested option is not supported."),
         };
         if let IrTypeSyncReturn::Option(ty) = &self.ir {
-            if let IrTypeSyncReturn::Option(_) = **ty {
-                panic!("Nested option is not suppored.")
-            }
             format!("if (raw == null) {{return null;}} {}", not_opaque_body(ty))
         } else {
             not_opaque_body(&self.ir)
