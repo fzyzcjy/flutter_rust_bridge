@@ -7,8 +7,6 @@ export 'io.dart' if (dart.library.html) 'web.dart'
         ExternalLibrary,
         WireSyncReturnStruct,
         FrbOpaqueBase,
-        getOpaquePtr,
-        getOpaqueSize,
         DartApiDl,
         NativePortType,
         PlatformPointer,

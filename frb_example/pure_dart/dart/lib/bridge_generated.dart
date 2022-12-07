@@ -2277,29 +2277,32 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   HideData _wire2api_SyncReturn_HideData(dynamic raw) {
-    return HideData.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);
+    var data = parseOpaquePtrAndSizeFrom(raw);
+    return HideData.fromRaw(data.item1, data.item2, this);
   }
 
   HideSyncData _wire2api_SyncReturn_HideSyncData(dynamic raw) {
-    return HideSyncData.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);
+    var data = parseOpaquePtrAndSizeFrom(raw);
+    return HideSyncData.fromRaw(data.item1, data.item2, this);
   }
 
   Object _wire2api_SyncReturn_Object(dynamic raw) {
-    return _platform.inner.get_dart_object(getOpaquePtr(raw));
+    return _platform.inner.get_dart_object(getPlatformUsize(raw));
   }
 
   HideData? _wire2api_SyncReturn_Option_HideData(dynamic raw) {
     if (raw == null) {
       return null;
     }
-    return HideData.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);
+    var data = parseOpaquePtrAndSizeFrom(raw);
+    return HideData.fromRaw(data.item1, data.item2, this);
   }
 
   Object? _wire2api_SyncReturn_Option_Object(dynamic raw) {
     if (raw == null) {
       return null;
     }
-    return _platform.inner.get_dart_object(getOpaquePtr(raw));
+    return _platform.inner.get_dart_object(getPlatformUsize(raw));
   }
 
   String? _wire2api_SyncReturn_Option_String(dynamic raw) {

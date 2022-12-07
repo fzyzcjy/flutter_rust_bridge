@@ -1,5 +1,7 @@
+import 'dart:typed_data';
 import 'package:meta/meta.dart';
 import 'ffi/io.dart' if (dart.library.html) 'ffi/web.dart';
+import 'package:tuple/tuple.dart';
 
 export 'ffi/stub.dart'
     if (dart.library.io) 'ffi/io.dart'
@@ -7,6 +9,20 @@ export 'ffi/stub.dart'
 
 typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
+final int pointerByteLength = (double.maxFinite.toInt().bitLength + 1) ~/ 8;
+final int Function(Uint8List list) getPlatformUsize = pointerByteLength == 8
+    ? (Uint8List list) => ByteData.view(list.buffer).getUint64(0)
+    : (Uint8List list) => ByteData.view(list.buffer).getUint32(0);
+
+Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
+  var ptrList = List.filled(pointerByteLength, 0);
+  List.copyRange(ptrList, 0, data, 0, pointerByteLength);
+
+  var sizeList = List.filled(pointerByteLength, 0);
+  List.copyRange(sizeList, 0, data, pointerByteLength, pointerByteLength * 2);
+  return Tuple2(getPlatformUsize(Uint8List.fromList(ptrList)),
+      getPlatformUsize(Uint8List.fromList(sizeList)));
+}
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.

@@ -59,12 +59,13 @@ impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
             IrTypeSyncReturn::VecU8 => "return raw;".into(),
             IrTypeSyncReturn::RustOpaque(o) => {
                 format!(
-                    "return {}.fromRaw(getOpaquePtr(raw), getOpaqueSize(raw), this);",
+                    "var data = parseOpaquePtrAndSizeFrom(raw);
+                    return {}.fromRaw(data.item1, data.item2, this);",
                     o.inner_dart
                 )
             }
             IrTypeSyncReturn::DartOpaque(_) => {
-                "return _platform.inner.get_dart_object(getOpaquePtr(raw));".to_owned()
+                "return _platform.inner.get_dart_object(getPlatformUsize(raw));".to_owned()
             }
             IrTypeSyncReturn::Option(_) => "".into(),
         };
