@@ -9,7 +9,6 @@ export 'ffi/stub.dart'
 
 typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
-final int pointerByteLength = (double.maxFinite.toInt().bitLength + 1) ~/ 8;
 final int Function(Uint8List list) getPlatformUsize = pointerByteLength == 8
     ? (Uint8List list) => ByteData.view(list.buffer).getUint64(0)
     : (Uint8List list) => ByteData.view(list.buffer).getUint32(0);
