@@ -1,7 +1,6 @@
 use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
-use syn::Ident;
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct IrTypeImplTrait {
@@ -9,12 +8,9 @@ pub struct IrTypeImplTrait {
 }
 
 impl IrTypeImplTrait {
-    pub fn join(&self) -> String {
-        self.trait_bounds.join("_")
-    }
-
+    // use _ just to connect bound, You can think of it as non-lowercase snake
     pub fn to_enum(&self) -> String {
-        format!("{}Enum", self.join()).to_case(Case::Pascal)
+        format!("{}Enum", self.trait_bounds.join("_")).to_case(Case::Pascal)
     }
 
     pub fn to_enum_ir_type(&self) -> IrType {
@@ -26,17 +22,12 @@ impl IrTypeImplTrait {
 
 impl std::fmt::Display for IrTypeImplTrait {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        fmt.write_str(&self.join())
+        fmt.write_str(&self.to_enum())
     }
 }
 
 impl IrTypeImplTrait {
-    pub fn new(raw: Vec<Ident>) -> IrTypeImplTrait {
-        IrTypeImplTrait {
-            trait_bounds: raw.iter().map(|e| e.to_string()).collect(),
-        }
-    }
-    pub fn new2(raw: Vec<String>) -> IrTypeImplTrait {
+    pub fn new_raw(raw: Vec<String>) -> IrTypeImplTrait {
         IrTypeImplTrait { trait_bounds: raw }
     }
 }
@@ -47,7 +38,13 @@ impl IrTypeTrait for IrTypeImplTrait {
         f: &mut F,
         ir_file: &super::IrFile,
     ) {
-        // due to I would remove `mod bridge_generated` in lib.rs, first get ir file, can't find ImplTraitEnum
+        // When TraitBoundEnum automatic generated,
+        // There is no need to rely on each trait in TraitBound, or anything.
+        // There is also no children.
+        // You can think of it(TypeImplTrait) as just an annotation.
+        //
+        // But When generated code about func dependencies(generate function arguments).
+        // We need generate code that is the same as Enum.
         if ir_file.enum_pool.contains_key(&self.to_enum()) {
             IrTypeEnumRef {
                 name: self.to_enum(),

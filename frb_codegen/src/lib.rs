@@ -35,9 +35,9 @@ mod markers;
 mod method_utils;
 mod others;
 mod parser;
-pub mod source_graph;
+mod source_graph;
 mod target;
-pub mod transformer;
+mod transformer;
 mod utils;
 use error::*;
 

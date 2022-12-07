@@ -36,17 +36,20 @@ pub fn parse_doc_with_root_file(
         if line.starts_with(TRAIT_FLAG) {
             line = &line[TRAIT_FLAG.len()..];
             let mut iter = line.split('|');
-            let impl_ = iter.next().unwrap_or("");
+            let impl_dependencies = iter.next().unwrap_or("");
             let trait_ = iter.next().unwrap();
 
             let mut call_fn = CallFn {
-                impl_dependencies: impl_.trim().to_owned(),
+                impl_dependencies: impl_dependencies.trim().to_owned(),
                 fn_name: Vec::new(),
                 sig: Vec::new(),
                 args: Vec::new(),
             };
             for item in iter {
                 let fn_ = item.replace("\\n", "\n");
+                if fn_.is_empty() {
+                    continue;
+                }
 
                 let sig = syn::parse_str::<Signature>(&fn_)
                     .map_err(|e| panic!("Invalid {}: {}", e, fn_))

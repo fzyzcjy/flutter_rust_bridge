@@ -1,12 +1,12 @@
 [package]
-name = "flutter_rust_bridge_codegen"
-version.workspace = true
-edition.workspace = true
-description.workspace = true
-license.workspace = true
-repository.workspace = true
-keywords.workspace = true
 categories.workspace = true
+description.workspace = true
+edition.workspace = true
+keywords.workspace = true
+license.workspace = true
+name = "flutter_rust_bridge_codegen"
+repository.workspace = true
+version.workspace = true
 
 [lib]
 name = "lib_flutter_rust_bridge_codegen"
@@ -17,26 +17,27 @@ name = "flutter_rust_bridge_codegen"
 path = "src/main.rs"
 
 [dependencies]
-syn = { version = "1.0.77", features = ["full", "extra-traits"] }
+anyhow = {workspace = true}
+cargo_metadata = "0.14.1"
+cbindgen = "0.24"
+clap = {version = "3.2.14", features = ["derive"]}
+convert_case = "0.5.0"
+enum_dispatch = "0.3.8"
+env_logger = "0.9.0"
+extend = "1.1.2"
+itertools = "0.10.3"
+lazy_static = {workspace = true}
+log = "0.4"
+pathdiff = "0.2.1"
+proc-macro2 = {version = "^1.0.46"}
 quote = "1.0"
 regex = "1.5.4"
-lazy_static = { workspace = true }
-convert_case = "0.5.0"
-tempfile = "3.2.0"
-serde = { version = "1.0", features = ["derive"] }
+serde = {version = "1.0", features = ["derive"]}
 serde_yaml = "0.8"
-log = "0.4"
-env_logger = "0.9.0"
-toml = "0.5.8"
-anyhow = { workspace = true }
-pathdiff = "0.2.1"
-cargo_metadata = "0.14.1"
-enum_dispatch = "0.3.8"
+syn = {version = "1.0.77", features = ["full", "extra-traits"]}
+tempfile = "3.2.0"
 thiserror = "1"
-cbindgen = "0.24"
-clap = { version = "3.2.14", features = ["derive"] }
-itertools = "0.10.3"
-extend = "1.1.2"
+toml = "0.5.8"
 
 [dev-dependencies]
 semver = "1.0.12"
@@ -45,10 +46,10 @@ semver = "1.0.12"
 bin-dir = "{bin}{binary-ext}"
 
 [package.metadata.binstall.overrides]
-x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
-i686-pc-windows-msvc = { pkg-fmt = "zip" }
+i686-pc-windows-msvc = {pkg-fmt = "zip"}
+x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
 
 [features]
-default = ["chrono"]
 chrono = []
+default = ["chrono"]
 uuid = []

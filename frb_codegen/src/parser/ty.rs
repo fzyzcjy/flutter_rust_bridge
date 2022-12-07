@@ -3,7 +3,7 @@ use std::collections::{HashMap, HashSet};
 use std::string::String;
 
 use itertools::Itertools;
-use quote::__private::Span;
+use proc_macro2::Span;
 use syn::*;
 
 use crate::ir::IrType::*;
@@ -189,7 +189,7 @@ impl<'a> TypeParser<'a> {
             })
             .sorted()
             .collect();
-        let value = IrTypeImplTrait::new2(raw);
+        let value = IrTypeImplTrait::new_raw(raw);
         if self.parsed_impl_traits.insert(value.clone()) {
             let ident_string = value.to_enum();
             // due to I would remove `mod bridge_generated` in lib.rs, first get ir file, can't find ImplTraitEnum
@@ -284,7 +284,7 @@ impl<'a> TypeParser<'a> {
                     }
                     SupportedInnerType::Unit => Some(IrType::Opaque(IrTypeOpaque::new_unit())),
                     SupportedInnerType::ImplTrait(_) => {
-                        unreachable!("ImplTrait should not be wrapper with Opaque")
+                        unreachable!("ImplTrait should not be wrapped with Opaque")
                     }
                 },
                 "Box" => self.convert_to_ir_type(*generic).map(|inner| {

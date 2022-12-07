@@ -17,9 +17,7 @@ use std::{
 
 use cargo_metadata::MetadataCommand;
 use log::{debug, warn};
-use syn::{
-    Attribute, Ident, ItemEnum, ItemStruct, PathArguments, TraitBound, Type, TypeImplTrait, UseTree,
-};
+use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, Type, UseTree};
 
 use crate::markers;
 
@@ -64,11 +62,11 @@ impl Crate {
         (root_package.name.to_owned(), root_src_file)
     }
     pub fn new(manifest_path: &str) -> Self {
-        let mut result = Crate::new_withoud_resolve(manifest_path);
+        let mut result = Crate::new_without_resolve(manifest_path);
         result.resolve();
         result
     }
-    pub fn new_withoud_resolve(manifest_path: &str) -> Self {
+    pub fn new_without_resolve(manifest_path: &str) -> Self {
         let (name, root_src_file) = Crate::pre_new(manifest_path);
 
         let source_rust_content = fs::read_to_string(&root_src_file).unwrap();
@@ -166,12 +164,7 @@ impl Debug for Enum {
     }
 }
 
-#[derive(Debug, Clone)]
-pub struct ImplTrait {
-    pub ident: Ident,
-    pub src: TypeImplTrait,
-    pub bound: TraitBound,
-}
+/// This represents `impl {trait} for {self_ty}`
 #[derive(Debug, Clone, Eq)]
 pub struct Impl {
     pub self_ty: Ident,
@@ -514,7 +507,7 @@ impl Module {
             scope_module.collect_impls(container);
         }
     }
-    // impl TA for A => ("A",[TA,..])
+    // impl TA for A => ("TA", [A,..])
     pub fn collect_impls_to_vec(&self) -> HashMap<String, Vec<Impl>> {
         let mut ans = HashMap::new();
         self.collect_impls(&mut ans);

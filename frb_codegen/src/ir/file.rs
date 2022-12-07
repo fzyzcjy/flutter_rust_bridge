@@ -4,8 +4,7 @@ use crate::utils::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
-pub type Pool<T> = HashMap<String, T>;
-pub type ImplPool = Pool<Vec<Impl>>;
+pub type ImplPool = HashMap<String, Vec<Impl>>;
 
 pub type IrStructPool = HashMap<String, IrStruct>;
 pub type IrEnumPool = HashMap<String, IrEnum>;

@@ -79,7 +79,7 @@ pub trait GenerateSourceTemplateTrait:
     fn run_impl_trait_enum(&mut self) {
         // remove generate source dependencies
         let root_src_file =
-            Crate::new_withoud_resolve(&self.get_configs()[0].manifest_path).root_src_file;
+            Crate::new_without_resolve(&self.get_configs()[0].manifest_path).root_src_file;
         let root_src_file = root_src_file.to_str().unwrap();
 
         self.remove_gen_mod(root_src_file);
@@ -129,7 +129,7 @@ pub trait PropTrait {
     }
     fn get_sig_from_doc(&self) -> (HashMap<String, CallFn>, HashSet<String>, HashSet<String>) {
         let config = &self.get_configs()[0];
-        let root_src_file = Crate::new_withoud_resolve(config.manifest_path.as_str()).root_src_file;
+        let root_src_file = Crate::new_without_resolve(config.manifest_path.as_str()).root_src_file;
         let source_rust_content = fs::read_to_string(&root_src_file).unwrap();
         parse_sig_from_lib::parse_doc_with_root_file(&source_rust_content)
     }

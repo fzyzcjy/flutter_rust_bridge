@@ -89,7 +89,7 @@ impl IrType {
     }
 
     #[inline]
-    pub fn is_need_wrap_box(&self) -> bool {
+    pub fn does_need_wrap_box(&self) -> bool {
         matches!(self, StructRef(_) | EnumRef(_) | ImplTrait(_))
     }
 
