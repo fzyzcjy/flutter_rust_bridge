@@ -312,7 +312,7 @@ pub trait GenerateSources: CollectBoundToStruct {
             lines += format!("use crate::{super_}::*;\n").as_str();
         }
         if !opaque_set.is_empty() {
-            lines += "use flutter_rust_bridge::Opaque;\n";
+            lines += "use flutter_rust_bridge::RustOpaque;\n";
         }
         for (_, call_fn) in trait_sig_pool.iter() {
             let impl_dependencies = call_fn.impl_dependencies.clone();
@@ -325,7 +325,7 @@ pub trait GenerateSources: CollectBoundToStruct {
                     "    {}({}),\n",
                     struct_,
                     if opaque_set.contains(struct_) {
-                        format!("Opaque<{}>", struct_)
+                        format!("RustOpaque<{}>", struct_)
                     } else if add_box_set.contains(struct_) {
                         format!("Box<{}>", struct_)
                     } else {
