@@ -958,10 +958,6 @@ pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
     }
 }
 
-/// Opaque types
-pub trait DartDebug: DartSafe + Debug + Send + Sync {}
-impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}
-
 pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
     drop(opaque);
     SyncReturn("test".to_owned())
@@ -1006,6 +1002,10 @@ pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) {
     let handle = opaque.try_unwrap().unwrap();
 }
 
+/// Opaque types
+pub trait DartDebug: DartSafe + Debug + Send + Sync {}
+impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}
+
 pub enum EnumOpaque {
     Struct(RustOpaque<HideData>),
     Primitive(RustOpaque<i32>),
@@ -1020,7 +1020,6 @@ pub enum EnumDartOpaque {
 }
 
 /// [`HideData`] has private fields.
-
 pub struct OpaqueNested {
     pub first: RustOpaque<HideData>,
     pub second: RustOpaque<HideData>,
