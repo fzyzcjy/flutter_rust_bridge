@@ -181,9 +181,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_DebugEnum> api2wire_box_autoadd_debug_enum(DebugEnum raw) {
-    final ptr = inner.new_box_autoadd_debug_enum_0();
-    _api_fill_to_wire_debug_enum(raw, ptr.ref);
   ffi.Pointer<wire_DartOpaqueNested> api2wire_box_autoadd_dart_opaque_nested(DartOpaqueNested raw) {
     final ptr = inner.new_box_autoadd_dart_opaque_nested_0();
     _api_fill_to_wire_dart_opaque_nested(raw, ptr.ref);
@@ -191,9 +188,20 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_DebugEnum> api2wire_box_autoadd_debug_enum(DebugEnum raw) {
+    final ptr = inner.new_box_autoadd_debug_enum_0();
+    _api_fill_to_wire_debug_enum(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_Element> api2wire_box_autoadd_element(Element raw) {
     final ptr = inner.new_box_autoadd_element_0();
     _api_fill_to_wire_element(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_EnumDartOpaque> api2wire_box_autoadd_enum_dart_opaque(EnumDartOpaque raw) {
     final ptr = inner.new_box_autoadd_enum_dart_opaque_0();
     _api_fill_to_wire_enum_dart_opaque(raw, ptr.ref);
@@ -831,15 +839,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_customized(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_dart_opaque_nested(
+      DartOpaqueNested apiObj, ffi.Pointer<wire_DartOpaqueNested> wireObj) {
+    _api_fill_to_wire_dart_opaque_nested(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_debug_enum(DebugEnum apiObj, ffi.Pointer<wire_DebugEnum> wireObj) {
     _api_fill_to_wire_debug_enum(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_element(Element apiObj, ffi.Pointer<wire_Element> wireObj) {
     _api_fill_to_wire_element(apiObj, wireObj.ref);
-  void _api_fill_to_wire_box_autoadd_dart_opaque_nested(
-      DartOpaqueNested apiObj, ffi.Pointer<wire_DartOpaqueNested> wireObj) {
-    _api_fill_to_wire_dart_opaque_nested(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_enum_dart_opaque(EnumDartOpaque apiObj, ffi.Pointer<wire_EnumDartOpaque> wireObj) {
@@ -968,26 +978,31 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
   }
 
+  void _api_fill_to_wire_dart_opaque_nested(DartOpaqueNested apiObj, wire_DartOpaqueNested wireObj) {
+    wireObj.first = api2wire_DartOpaque(apiObj.first);
+    wireObj.second = api2wire_DartOpaque(apiObj.second);
+  }
+
   void _api_fill_to_wire_debug_enum(DebugEnum apiObj, wire_DebugEnum wireObj) {
+    if (apiObj is DebugEnum_NewTypeInt) {
+      var pre_field0 = api2wire_box_autoadd_new_type_int(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind = inner.inflate_DebugEnum_NewTypeInt();
+      wireObj.kind.ref.NewTypeInt.ref.field0 = pre_field0;
+      return;
+    }
     if (apiObj is DebugEnum_HideData) {
       var pre_field0 = api2wire_HideData(apiObj.field0);
-      wireObj.tag = 0;
+      wireObj.tag = 1;
       wireObj.kind = inner.inflate_DebugEnum_HideData();
       wireObj.kind.ref.HideData.ref.field0 = pre_field0;
       return;
     }
-    if (apiObj is DebugEnum_Log2) {
-      var pre_field0 = api2wire_box_autoadd_log_2(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = inner.inflate_DebugEnum_Log2();
-      wireObj.kind.ref.Log2.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is DebugEnum_MyTreeNode) {
-      var pre_field0 = api2wire_box_autoadd_my_tree_node(apiObj.field0);
+    if (apiObj is DebugEnum_Attribute) {
+      var pre_field0 = api2wire_box_autoadd_attribute(apiObj.field0);
       wireObj.tag = 2;
-      wireObj.kind = inner.inflate_DebugEnum_MyTreeNode();
-      wireObj.kind.ref.MyTreeNode.ref.field0 = pre_field0;
+      wireObj.kind = inner.inflate_DebugEnum_Attribute();
+      wireObj.kind.ref.Attribute.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is DebugEnum_Element) {
@@ -997,60 +1012,60 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       wireObj.kind.ref.Element.ref.field0 = pre_field0;
       return;
     }
-    if (apiObj is DebugEnum_Note) {
-      var pre_field0 = api2wire_box_autoadd_note(apiObj.field0);
+    if (apiObj is DebugEnum_Log2) {
+      var pre_field0 = api2wire_box_autoadd_log_2(apiObj.field0);
       wireObj.tag = 4;
-      wireObj.kind = inner.inflate_DebugEnum_Note();
-      wireObj.kind.ref.Note.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is DebugEnum_FeatureChrono) {
-      var pre_field0 = api2wire_box_autoadd_feature_chrono(apiObj.field0);
-      wireObj.tag = 5;
-      wireObj.kind = inner.inflate_DebugEnum_FeatureChrono();
-      wireObj.kind.ref.FeatureChrono.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is DebugEnum_FeatureUuid) {
-      var pre_field0 = api2wire_box_autoadd_feature_uuid(apiObj.field0);
-      wireObj.tag = 6;
-      wireObj.kind = inner.inflate_DebugEnum_FeatureUuid();
-      wireObj.kind.ref.FeatureUuid.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is DebugEnum_Attribute) {
-      var pre_field0 = api2wire_box_autoadd_attribute(apiObj.field0);
-      wireObj.tag = 7;
-      wireObj.kind = inner.inflate_DebugEnum_Attribute();
-      wireObj.kind.ref.Attribute.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is DebugEnum_NewTypeInt) {
-      var pre_field0 = api2wire_box_autoadd_new_type_int(apiObj.field0);
-      wireObj.tag = 8;
-      wireObj.kind = inner.inflate_DebugEnum_NewTypeInt();
-      wireObj.kind.ref.NewTypeInt.ref.field0 = pre_field0;
+      wireObj.kind = inner.inflate_DebugEnum_Log2();
+      wireObj.kind.ref.Log2.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is DebugEnum_Log) {
       var pre_field0 = api2wire_box_autoadd_log(apiObj.field0);
-      wireObj.tag = 9;
+      wireObj.tag = 5;
       wireObj.kind = inner.inflate_DebugEnum_Log();
       wireObj.kind.ref.Log.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is DebugEnum_Customized) {
       var pre_field0 = api2wire_box_autoadd_customized(apiObj.field0);
-      wireObj.tag = 10;
+      wireObj.tag = 6;
       wireObj.kind = inner.inflate_DebugEnum_Customized();
       wireObj.kind.ref.Customized.ref.field0 = pre_field0;
       return;
     }
+    if (apiObj is DebugEnum_FeatureUuid) {
+      var pre_field0 = api2wire_box_autoadd_feature_uuid(apiObj.field0);
+      wireObj.tag = 7;
+      wireObj.kind = inner.inflate_DebugEnum_FeatureUuid();
+      wireObj.kind.ref.FeatureUuid.ref.field0 = pre_field0;
+      return;
+    }
     if (apiObj is DebugEnum_MySize) {
       var pre_field0 = api2wire_box_autoadd_my_size(apiObj.field0);
-      wireObj.tag = 11;
+      wireObj.tag = 8;
       wireObj.kind = inner.inflate_DebugEnum_MySize();
       wireObj.kind.ref.MySize.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is DebugEnum_Note) {
+      var pre_field0 = api2wire_box_autoadd_note(apiObj.field0);
+      wireObj.tag = 9;
+      wireObj.kind = inner.inflate_DebugEnum_Note();
+      wireObj.kind.ref.Note.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is DebugEnum_FeatureChrono) {
+      var pre_field0 = api2wire_box_autoadd_feature_chrono(apiObj.field0);
+      wireObj.tag = 10;
+      wireObj.kind = inner.inflate_DebugEnum_FeatureChrono();
+      wireObj.kind.ref.FeatureChrono.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is DebugEnum_MyTreeNode) {
+      var pre_field0 = api2wire_box_autoadd_my_tree_node(apiObj.field0);
+      wireObj.tag = 11;
+      wireObj.kind = inner.inflate_DebugEnum_MyTreeNode();
+      wireObj.kind.ref.MyTreeNode.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is DebugEnum_ExoticOptionals) {
@@ -1060,9 +1075,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       wireObj.kind.ref.ExoticOptionals.ref.field0 = pre_field0;
       return;
     }
-  void _api_fill_to_wire_dart_opaque_nested(DartOpaqueNested apiObj, wire_DartOpaqueNested wireObj) {
-    wireObj.first = api2wire_DartOpaque(apiObj.first);
-    wireObj.second = api2wire_DartOpaque(apiObj.second);
   }
 
   void _api_fill_to_wire_distance(Distance apiObj, wire_Distance wireObj) {
@@ -1084,6 +1096,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.text = api2wire_opt_String(apiObj.text);
     wireObj.attributes = api2wire_opt_list_attribute(apiObj.attributes);
     wireObj.children = api2wire_opt_list_element(apiObj.children);
+  }
+
   void _api_fill_to_wire_enum_dart_opaque(EnumDartOpaque apiObj, wire_EnumDartOpaque wireObj) {
     if (apiObj is EnumDartOpaque_Primitive) {
       var pre_field0 = api2wire_i32(apiObj.field0);
@@ -3363,6 +3377,16 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_customized_0 =
       _new_box_autoadd_customized_0Ptr.asFunction<ffi.Pointer<wire_Customized> Function()>();
 
+  ffi.Pointer<wire_DartOpaqueNested> new_box_autoadd_dart_opaque_nested_0() {
+    return _new_box_autoadd_dart_opaque_nested_0();
+  }
+
+  late final _new_box_autoadd_dart_opaque_nested_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_DartOpaqueNested> Function()>>(
+          'new_box_autoadd_dart_opaque_nested_0');
+  late final _new_box_autoadd_dart_opaque_nested_0 =
+      _new_box_autoadd_dart_opaque_nested_0Ptr.asFunction<ffi.Pointer<wire_DartOpaqueNested> Function()>();
+
   ffi.Pointer<wire_DebugEnum> new_box_autoadd_debug_enum_0() {
     return _new_box_autoadd_debug_enum_0();
   }
@@ -3380,15 +3404,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_Element> Function()>>('new_box_autoadd_element_0');
   late final _new_box_autoadd_element_0 =
       _new_box_autoadd_element_0Ptr.asFunction<ffi.Pointer<wire_Element> Function()>();
-  ffi.Pointer<wire_DartOpaqueNested> new_box_autoadd_dart_opaque_nested_0() {
-    return _new_box_autoadd_dart_opaque_nested_0();
-  }
-
-  late final _new_box_autoadd_dart_opaque_nested_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_DartOpaqueNested> Function()>>(
-          'new_box_autoadd_dart_opaque_nested_0');
-  late final _new_box_autoadd_dart_opaque_nested_0 =
-      _new_box_autoadd_dart_opaque_nested_0Ptr.asFunction<ffi.Pointer<wire_DartOpaqueNested> Function()>();
 
   ffi.Pointer<wire_EnumDartOpaque> new_box_autoadd_enum_dart_opaque_0() {
     return _new_box_autoadd_enum_dart_opaque_0();
@@ -4081,6 +4096,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _share_opaque_RwLockHideData =
       _share_opaque_RwLockHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
+  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_NewTypeInt() {
+    return _inflate_DebugEnum_NewTypeInt();
+  }
+
+  late final _inflate_DebugEnum_NewTypeIntPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_NewTypeInt');
+  late final _inflate_DebugEnum_NewTypeInt =
+      _inflate_DebugEnum_NewTypeIntPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
+
   ffi.Pointer<DebugEnumKind> inflate_DebugEnum_HideData() {
     return _inflate_DebugEnum_HideData();
   }
@@ -4089,58 +4113,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_HideData');
   late final _inflate_DebugEnum_HideData =
       _inflate_DebugEnum_HideDataPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
-
-  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_Log2() {
-    return _inflate_DebugEnum_Log2();
-  }
-
-  late final _inflate_DebugEnum_Log2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_Log2');
-  late final _inflate_DebugEnum_Log2 = _inflate_DebugEnum_Log2Ptr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
-
-  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_MyTreeNode() {
-    return _inflate_DebugEnum_MyTreeNode();
-  }
-
-  late final _inflate_DebugEnum_MyTreeNodePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_MyTreeNode');
-  late final _inflate_DebugEnum_MyTreeNode =
-      _inflate_DebugEnum_MyTreeNodePtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
-
-  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_Element() {
-    return _inflate_DebugEnum_Element();
-  }
-
-  late final _inflate_DebugEnum_ElementPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_Element');
-  late final _inflate_DebugEnum_Element =
-      _inflate_DebugEnum_ElementPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
-
-  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_Note() {
-    return _inflate_DebugEnum_Note();
-  }
-
-  late final _inflate_DebugEnum_NotePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_Note');
-  late final _inflate_DebugEnum_Note = _inflate_DebugEnum_NotePtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
-
-  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_FeatureChrono() {
-    return _inflate_DebugEnum_FeatureChrono();
-  }
-
-  late final _inflate_DebugEnum_FeatureChronoPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_FeatureChrono');
-  late final _inflate_DebugEnum_FeatureChrono =
-      _inflate_DebugEnum_FeatureChronoPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
-
-  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_FeatureUuid() {
-    return _inflate_DebugEnum_FeatureUuid();
-  }
-
-  late final _inflate_DebugEnum_FeatureUuidPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_FeatureUuid');
-  late final _inflate_DebugEnum_FeatureUuid =
-      _inflate_DebugEnum_FeatureUuidPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
 
   ffi.Pointer<DebugEnumKind> inflate_DebugEnum_Attribute() {
     return _inflate_DebugEnum_Attribute();
@@ -4151,14 +4123,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _inflate_DebugEnum_Attribute =
       _inflate_DebugEnum_AttributePtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
 
-  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_NewTypeInt() {
-    return _inflate_DebugEnum_NewTypeInt();
+  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_Element() {
+    return _inflate_DebugEnum_Element();
   }
 
-  late final _inflate_DebugEnum_NewTypeIntPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_NewTypeInt');
-  late final _inflate_DebugEnum_NewTypeInt =
-      _inflate_DebugEnum_NewTypeIntPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
+  late final _inflate_DebugEnum_ElementPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_Element');
+  late final _inflate_DebugEnum_Element =
+      _inflate_DebugEnum_ElementPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
+
+  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_Log2() {
+    return _inflate_DebugEnum_Log2();
+  }
+
+  late final _inflate_DebugEnum_Log2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_Log2');
+  late final _inflate_DebugEnum_Log2 = _inflate_DebugEnum_Log2Ptr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
 
   ffi.Pointer<DebugEnumKind> inflate_DebugEnum_Log() {
     return _inflate_DebugEnum_Log();
@@ -4177,6 +4157,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _inflate_DebugEnum_Customized =
       _inflate_DebugEnum_CustomizedPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
 
+  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_FeatureUuid() {
+    return _inflate_DebugEnum_FeatureUuid();
+  }
+
+  late final _inflate_DebugEnum_FeatureUuidPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_FeatureUuid');
+  late final _inflate_DebugEnum_FeatureUuid =
+      _inflate_DebugEnum_FeatureUuidPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
+
   ffi.Pointer<DebugEnumKind> inflate_DebugEnum_MySize() {
     return _inflate_DebugEnum_MySize();
   }
@@ -4185,6 +4174,32 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_MySize');
   late final _inflate_DebugEnum_MySize =
       _inflate_DebugEnum_MySizePtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
+
+  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_Note() {
+    return _inflate_DebugEnum_Note();
+  }
+
+  late final _inflate_DebugEnum_NotePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_Note');
+  late final _inflate_DebugEnum_Note = _inflate_DebugEnum_NotePtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
+
+  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_FeatureChrono() {
+    return _inflate_DebugEnum_FeatureChrono();
+  }
+
+  late final _inflate_DebugEnum_FeatureChronoPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_FeatureChrono');
+  late final _inflate_DebugEnum_FeatureChrono =
+      _inflate_DebugEnum_FeatureChronoPtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
+
+  ffi.Pointer<DebugEnumKind> inflate_DebugEnum_MyTreeNode() {
+    return _inflate_DebugEnum_MyTreeNode();
+  }
+
+  late final _inflate_DebugEnum_MyTreeNodePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<DebugEnumKind> Function()>>('inflate_DebugEnum_MyTreeNode');
+  late final _inflate_DebugEnum_MyTreeNode =
+      _inflate_DebugEnum_MyTreeNodePtr.asFunction<ffi.Pointer<DebugEnumKind> Function()>();
 
   ffi.Pointer<DebugEnumKind> inflate_DebugEnum_ExoticOptionals() {
     return _inflate_DebugEnum_ExoticOptionals();
@@ -4349,6 +4364,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
 }
 
+class _Dart_Handle extends ffi.Opaque {}
+
+class wire_NewTypeInt extends ffi.Struct {
+  @ffi.Int64()
+  external int field0;
+}
+
+class wire_DebugEnum_NewTypeInt extends ffi.Struct {
+  external ffi.Pointer<wire_NewTypeInt> field0;
+}
+
 class wire_HideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
@@ -4356,7 +4382,6 @@ class wire_HideData extends ffi.Struct {
 class wire_DebugEnum_HideData extends ffi.Struct {
   external wire_HideData field0;
 }
-class _Dart_Handle extends ffi.Opaque {}
 
 class wire_uint_8_list extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
@@ -4365,44 +4390,14 @@ class wire_uint_8_list extends ffi.Struct {
   external int len;
 }
 
-class wire_Log2 extends ffi.Struct {
-  @ffi.Uint32()
-  external int key;
-
-  external ffi.Pointer<wire_uint_8_list> value;
-}
-
-class wire_DebugEnum_Log2 extends ffi.Struct {
-  external ffi.Pointer<wire_Log2> field0;
-}
-
-class wire_list_my_tree_node extends ffi.Struct {
-  external ffi.Pointer<wire_MyTreeNode> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-class wire_MyTreeNode extends ffi.Struct {
-  @ffi.Int32()
-  external int value_i32;
-
-  external ffi.Pointer<wire_uint_8_list> value_vec_u8;
-
-  @ffi.Bool()
-  external bool value_boolean;
-
-  external ffi.Pointer<wire_list_my_tree_node> children;
-}
-
-class wire_DebugEnum_MyTreeNode extends ffi.Struct {
-  external ffi.Pointer<wire_MyTreeNode> field0;
-}
-
 class wire_Attribute extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> key;
 
   external ffi.Pointer<wire_uint_8_list> value;
+}
+
+class wire_DebugEnum_Attribute extends ffi.Struct {
+  external ffi.Pointer<wire_Attribute> field0;
 }
 
 class wire_list_attribute extends ffi.Struct {
@@ -4433,6 +4428,61 @@ class wire_DebugEnum_Element extends ffi.Struct {
   external ffi.Pointer<wire_Element> field0;
 }
 
+class wire_Log2 extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_uint_8_list> value;
+}
+
+class wire_DebugEnum_Log2 extends ffi.Struct {
+  external ffi.Pointer<wire_Log2> field0;
+}
+
+class wire_Log extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  @ffi.Uint32()
+  external int value;
+}
+
+class wire_DebugEnum_Log extends ffi.Struct {
+  external ffi.Pointer<wire_Log> field0;
+}
+
+class wire_Customized extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> final_field;
+
+  external ffi.Pointer<wire_uint_8_list> non_final_field;
+}
+
+class wire_DebugEnum_Customized extends ffi.Struct {
+  external ffi.Pointer<wire_Customized> field0;
+}
+
+class wire_FeatureUuid extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> one;
+
+  external ffi.Pointer<wire_uint_8_list> many;
+}
+
+class wire_DebugEnum_FeatureUuid extends ffi.Struct {
+  external ffi.Pointer<wire_FeatureUuid> field0;
+}
+
+class wire_MySize extends ffi.Struct {
+  @ffi.Int32()
+  external int width;
+
+  @ffi.Int32()
+  external int height;
+}
+
+class wire_DebugEnum_MySize extends ffi.Struct {
+  external ffi.Pointer<wire_MySize> field0;
+}
+
 class wire_Note extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> day;
 
@@ -4461,61 +4511,27 @@ class wire_DebugEnum_FeatureChrono extends ffi.Struct {
   external ffi.Pointer<wire_FeatureChrono> field0;
 }
 
-class wire_FeatureUuid extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> one;
-
-  external ffi.Pointer<wire_uint_8_list> many;
-}
-
-class wire_DebugEnum_FeatureUuid extends ffi.Struct {
-  external ffi.Pointer<wire_FeatureUuid> field0;
-}
-
-class wire_DebugEnum_Attribute extends ffi.Struct {
-  external ffi.Pointer<wire_Attribute> field0;
-}
-
-class wire_NewTypeInt extends ffi.Struct {
-  @ffi.Int64()
-  external int field0;
-}
-
-class wire_DebugEnum_NewTypeInt extends ffi.Struct {
-  external ffi.Pointer<wire_NewTypeInt> field0;
-}
-
-class wire_Log extends ffi.Struct {
-  @ffi.Uint32()
-  external int key;
-
-  @ffi.Uint32()
-  external int value;
-}
-
-class wire_DebugEnum_Log extends ffi.Struct {
-  external ffi.Pointer<wire_Log> field0;
-}
-
-class wire_Customized extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> final_field;
-
-  external ffi.Pointer<wire_uint_8_list> non_final_field;
-}
-
-class wire_DebugEnum_Customized extends ffi.Struct {
-  external ffi.Pointer<wire_Customized> field0;
-}
-
-class wire_MySize extends ffi.Struct {
-  @ffi.Int32()
-  external int width;
+class wire_list_my_tree_node extends ffi.Struct {
+  external ffi.Pointer<wire_MyTreeNode> ptr;
 
   @ffi.Int32()
-  external int height;
+  external int len;
 }
 
-class wire_DebugEnum_MySize extends ffi.Struct {
-  external ffi.Pointer<wire_MySize> field0;
+class wire_MyTreeNode extends ffi.Struct {
+  @ffi.Int32()
+  external int value_i32;
+
+  external ffi.Pointer<wire_uint_8_list> value_vec_u8;
+
+  @ffi.Bool()
+  external bool value_boolean;
+
+  external ffi.Pointer<wire_list_my_tree_node> children;
+}
+
+class wire_DebugEnum_MyTreeNode extends ffi.Struct {
+  external ffi.Pointer<wire_MyTreeNode> field0;
 }
 
 class wire_int_8_list extends ffi.Struct {
@@ -4588,29 +4604,29 @@ class wire_DebugEnum_ExoticOptionals extends ffi.Struct {
 }
 
 class DebugEnumKind extends ffi.Union {
+  external ffi.Pointer<wire_DebugEnum_NewTypeInt> NewTypeInt;
+
   external ffi.Pointer<wire_DebugEnum_HideData> HideData;
-
-  external ffi.Pointer<wire_DebugEnum_Log2> Log2;
-
-  external ffi.Pointer<wire_DebugEnum_MyTreeNode> MyTreeNode;
-
-  external ffi.Pointer<wire_DebugEnum_Element> Element;
-
-  external ffi.Pointer<wire_DebugEnum_Note> Note;
-
-  external ffi.Pointer<wire_DebugEnum_FeatureChrono> FeatureChrono;
-
-  external ffi.Pointer<wire_DebugEnum_FeatureUuid> FeatureUuid;
 
   external ffi.Pointer<wire_DebugEnum_Attribute> Attribute;
 
-  external ffi.Pointer<wire_DebugEnum_NewTypeInt> NewTypeInt;
+  external ffi.Pointer<wire_DebugEnum_Element> Element;
+
+  external ffi.Pointer<wire_DebugEnum_Log2> Log2;
 
   external ffi.Pointer<wire_DebugEnum_Log> Log;
 
   external ffi.Pointer<wire_DebugEnum_Customized> Customized;
 
+  external ffi.Pointer<wire_DebugEnum_FeatureUuid> FeatureUuid;
+
   external ffi.Pointer<wire_DebugEnum_MySize> MySize;
+
+  external ffi.Pointer<wire_DebugEnum_Note> Note;
+
+  external ffi.Pointer<wire_DebugEnum_FeatureChrono> FeatureChrono;
+
+  external ffi.Pointer<wire_DebugEnum_MyTreeNode> MyTreeNode;
 
   external ffi.Pointer<wire_DebugEnum_ExoticOptionals> ExoticOptionals;
 }
@@ -4838,10 +4854,6 @@ class wire_list_DartOpaque extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
-}
-
-class wire_HideData extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
 }
 
 class wire_EnumOpaque_Struct extends ffi.Struct {

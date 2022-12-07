@@ -848,42 +848,42 @@ class DartOpaqueNested {
 
 @freezed
 class DebugEnum with _$DebugEnum {
-  const factory DebugEnum.hideData(
-    HideData field0,
-  ) = DebugEnum_HideData;
-  const factory DebugEnum.log2(
-    Log2 field0,
-  ) = DebugEnum_Log2;
-  const factory DebugEnum.myTreeNode(
-    MyTreeNode field0,
-  ) = DebugEnum_MyTreeNode;
-  const factory DebugEnum.element(
-    Element field0,
-  ) = DebugEnum_Element;
-  const factory DebugEnum.note(
-    Note field0,
-  ) = DebugEnum_Note;
-  const factory DebugEnum.featureChrono(
-    FeatureChrono field0,
-  ) = DebugEnum_FeatureChrono;
-  const factory DebugEnum.featureUuid(
-    FeatureUuid field0,
-  ) = DebugEnum_FeatureUuid;
-  const factory DebugEnum.attribute(
-    Attribute field0,
-  ) = DebugEnum_Attribute;
   const factory DebugEnum.newTypeInt(
     NewTypeInt field0,
   ) = DebugEnum_NewTypeInt;
+  const factory DebugEnum.hideData(
+    HideData field0,
+  ) = DebugEnum_HideData;
+  const factory DebugEnum.attribute(
+    Attribute field0,
+  ) = DebugEnum_Attribute;
+  const factory DebugEnum.element(
+    Element field0,
+  ) = DebugEnum_Element;
+  const factory DebugEnum.log2(
+    Log2 field0,
+  ) = DebugEnum_Log2;
   const factory DebugEnum.log(
     Log field0,
   ) = DebugEnum_Log;
   const factory DebugEnum.customized(
     Customized field0,
   ) = DebugEnum_Customized;
+  const factory DebugEnum.featureUuid(
+    FeatureUuid field0,
+  ) = DebugEnum_FeatureUuid;
   const factory DebugEnum.mySize(
     MySize field0,
   ) = DebugEnum_MySize;
+  const factory DebugEnum.note(
+    Note field0,
+  ) = DebugEnum_Note;
+  const factory DebugEnum.featureChrono(
+    FeatureChrono field0,
+  ) = DebugEnum_FeatureChrono;
+  const factory DebugEnum.myTreeNode(
+    MyTreeNode field0,
+  ) = DebugEnum_MyTreeNode;
   const factory DebugEnum.exoticOptionals(
     ExoticOptionals field0,
   ) = DebugEnum_ExoticOptionals;

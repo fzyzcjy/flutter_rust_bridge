@@ -977,24 +977,6 @@ impl Wire2Api<Customized> for JsValue {
         }
     }
 }
-impl Wire2Api<DebugEnum> for JsValue {
-    fn wire2api(self) -> DebugEnum {
-        let self_ = self.unchecked_into::<JsArray>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => DebugEnum::HideData(self_.get(1).wire2api()),
-            1 => DebugEnum::Log2(self_.get(1).wire2api()),
-            2 => DebugEnum::MyTreeNode(self_.get(1).wire2api()),
-            3 => DebugEnum::Element(self_.get(1).wire2api()),
-            4 => DebugEnum::Note(self_.get(1).wire2api()),
-            5 => DebugEnum::FeatureChrono(self_.get(1).wire2api()),
-            6 => DebugEnum::FeatureUuid(self_.get(1).wire2api()),
-            7 => DebugEnum::Attribute(self_.get(1).wire2api()),
-            8 => DebugEnum::NewTypeInt(self_.get(1).wire2api()),
-            9 => DebugEnum::Log(self_.get(1).wire2api()),
-            10 => DebugEnum::Customized(self_.get(1).wire2api()),
-            11 => DebugEnum::MySize(self_.get(1).wire2api()),
-            12 => DebugEnum::ExoticOptionals(self_.get(1).wire2api()),
-            _ => unreachable!(),
 impl Wire2Api<DartOpaqueNested> for JsValue {
     fn wire2api(self) -> DartOpaqueNested {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1007,6 +989,27 @@ impl Wire2Api<DartOpaqueNested> for JsValue {
         DartOpaqueNested {
             first: self_.get(0).wire2api(),
             second: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<DebugEnum> for JsValue {
+    fn wire2api(self) -> DebugEnum {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => DebugEnum::NewTypeInt(self_.get(1).wire2api()),
+            1 => DebugEnum::HideData(self_.get(1).wire2api()),
+            2 => DebugEnum::Attribute(self_.get(1).wire2api()),
+            3 => DebugEnum::Element(self_.get(1).wire2api()),
+            4 => DebugEnum::Log2(self_.get(1).wire2api()),
+            5 => DebugEnum::Log(self_.get(1).wire2api()),
+            6 => DebugEnum::Customized(self_.get(1).wire2api()),
+            7 => DebugEnum::FeatureUuid(self_.get(1).wire2api()),
+            8 => DebugEnum::MySize(self_.get(1).wire2api()),
+            9 => DebugEnum::Note(self_.get(1).wire2api()),
+            10 => DebugEnum::FeatureChrono(self_.get(1).wire2api()),
+            11 => DebugEnum::MyTreeNode(self_.get(1).wire2api()),
+            12 => DebugEnum::ExoticOptionals(self_.get(1).wire2api()),
+            _ => unreachable!(),
         }
     }
 }
@@ -1034,6 +1037,9 @@ impl Wire2Api<Element> for JsValue {
             text: self_.get(1).wire2api(),
             attributes: self_.get(2).wire2api(),
             children: self_.get(3).wire2api(),
+        }
+    }
+}
 impl Wire2Api<EnumDartOpaque> for JsValue {
     fn wire2api(self) -> EnumDartOpaque {
         let self_ = self.unchecked_into::<JsArray>();

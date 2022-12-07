@@ -182,6 +182,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_dart_opaque_nested(DartOpaqueNested raw) {
+    return api2wire_dart_opaque_nested(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_debug_enum(DebugEnum raw) {
     return api2wire_debug_enum(raw);
   }
@@ -189,8 +194,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_autoadd_element(Element raw) {
     return api2wire_element(raw);
-  List<dynamic> api2wire_box_autoadd_dart_opaque_nested(DartOpaqueNested raw) {
-    return api2wire_dart_opaque_nested(raw);
   }
 
   @protected
@@ -399,50 +402,53 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_dart_opaque_nested(DartOpaqueNested raw) {
+    return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
+  }
+
+  @protected
   List<dynamic> api2wire_debug_enum(DebugEnum raw) {
+    if (raw is DebugEnum_NewTypeInt) {
+      return [0, api2wire_box_autoadd_new_type_int(raw.field0)];
+    }
     if (raw is DebugEnum_HideData) {
-      return [0, api2wire_HideData(raw.field0)];
+      return [1, api2wire_HideData(raw.field0)];
     }
-    if (raw is DebugEnum_Log2) {
-      return [1, api2wire_box_autoadd_log_2(raw.field0)];
-    }
-    if (raw is DebugEnum_MyTreeNode) {
-      return [2, api2wire_box_autoadd_my_tree_node(raw.field0)];
+    if (raw is DebugEnum_Attribute) {
+      return [2, api2wire_box_autoadd_attribute(raw.field0)];
     }
     if (raw is DebugEnum_Element) {
       return [3, api2wire_box_autoadd_element(raw.field0)];
     }
-    if (raw is DebugEnum_Note) {
-      return [4, api2wire_box_autoadd_note(raw.field0)];
-    }
-    if (raw is DebugEnum_FeatureChrono) {
-      return [5, api2wire_box_autoadd_feature_chrono(raw.field0)];
-    }
-    if (raw is DebugEnum_FeatureUuid) {
-      return [6, api2wire_box_autoadd_feature_uuid(raw.field0)];
-    }
-    if (raw is DebugEnum_Attribute) {
-      return [7, api2wire_box_autoadd_attribute(raw.field0)];
-    }
-    if (raw is DebugEnum_NewTypeInt) {
-      return [8, api2wire_box_autoadd_new_type_int(raw.field0)];
+    if (raw is DebugEnum_Log2) {
+      return [4, api2wire_box_autoadd_log_2(raw.field0)];
     }
     if (raw is DebugEnum_Log) {
-      return [9, api2wire_box_autoadd_log(raw.field0)];
+      return [5, api2wire_box_autoadd_log(raw.field0)];
     }
     if (raw is DebugEnum_Customized) {
-      return [10, api2wire_box_autoadd_customized(raw.field0)];
+      return [6, api2wire_box_autoadd_customized(raw.field0)];
+    }
+    if (raw is DebugEnum_FeatureUuid) {
+      return [7, api2wire_box_autoadd_feature_uuid(raw.field0)];
     }
     if (raw is DebugEnum_MySize) {
-      return [11, api2wire_box_autoadd_my_size(raw.field0)];
+      return [8, api2wire_box_autoadd_my_size(raw.field0)];
+    }
+    if (raw is DebugEnum_Note) {
+      return [9, api2wire_box_autoadd_note(raw.field0)];
+    }
+    if (raw is DebugEnum_FeatureChrono) {
+      return [10, api2wire_box_autoadd_feature_chrono(raw.field0)];
+    }
+    if (raw is DebugEnum_MyTreeNode) {
+      return [11, api2wire_box_autoadd_my_tree_node(raw.field0)];
     }
     if (raw is DebugEnum_ExoticOptionals) {
       return [12, api2wire_box_exotic_optionals(raw.field0)];
     }
 
     throw Exception('unreachable');
-  List<dynamic> api2wire_dart_opaque_nested(DartOpaqueNested raw) {
-    return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
   }
 
   @protected
@@ -465,6 +471,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       api2wire_opt_list_attribute(raw.attributes),
       api2wire_opt_list_element(raw.children)
     ];
+  }
+
+  @protected
   List<dynamic> api2wire_enum_dart_opaque(EnumDartOpaque raw) {
     if (raw is EnumDartOpaque_Primitive) {
       return [0, api2wire_i32(raw.field0)];
