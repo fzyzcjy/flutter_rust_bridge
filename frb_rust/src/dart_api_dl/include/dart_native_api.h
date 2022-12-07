@@ -32,6 +32,13 @@
  * the caller. The ownership of data for kExternalTyped is passed to the VM on
  * message send and returned when the VM invokes the
  * Dart_HandleFinalizer callback; a non-NULL callback must be provided.
+ *
+ * Note that Dart_CObject_kNativePointer is intended for internal use by
+ * dart:io implementation and has no connection to dart:ffi Pointer class.
+ * It represents a pointer to a native resource of a known type.
+ * The receiving side will only see this pointer as an integer and will not
+ * see the specified finalizer.
+ * The specified finalizer will only be invoked if the message is not delivered.
  */
 typedef enum {
   Dart_CObject_kNull = 0,
@@ -43,8 +50,10 @@ typedef enum {
   Dart_CObject_kArray,
   Dart_CObject_kTypedData,
   Dart_CObject_kExternalTypedData,
+  Dart_CObject_kUnmodifiableExternalTypedData,
   Dart_CObject_kSendPort,
   Dart_CObject_kCapability,
+  Dart_CObject_kNativePointer,
   Dart_CObject_kUnsupported,
   Dart_CObject_kNumberOfTypes
 } Dart_CObject_Type;
@@ -70,16 +79,21 @@ typedef struct _Dart_CObject {
     } as_array;
     struct {
       Dart_TypedData_Type type;
-      intptr_t length;
-      uint8_t* values;
+      intptr_t length; /* in elements, not bytes */
+      const uint8_t* values;
     } as_typed_data;
     struct {
       Dart_TypedData_Type type;
-      intptr_t length;
+      intptr_t length; /* in elements, not bytes */
       uint8_t* data;
       void* peer;
       Dart_HandleFinalizer callback;
     } as_external_typed_data;
+    struct {
+      intptr_t ptr;
+      intptr_t size;
+      Dart_HandleFinalizer callback;
+    } as_native_pointer;
   } value;
 } Dart_CObject;
 // This struct is versioned by DART_API_DL_MAJOR_VERSION, bump the version when
@@ -175,12 +189,12 @@ DART_EXPORT bool Dart_CloseNativePort(Dart_Port native_port_id);
  *
  * TODO(turnidge): Document.
  */
-DART_EXPORT DART_WARN_UNUSED_RESULT Dart_Handle Dart_CompileAll();
+DART_EXPORT DART_WARN_UNUSED_RESULT Dart_Handle Dart_CompileAll(void);
 
 /**
  * Finalizes all classes.
  */
-DART_EXPORT DART_WARN_UNUSED_RESULT Dart_Handle Dart_FinalizeAllClasses();
+DART_EXPORT DART_WARN_UNUSED_RESULT Dart_Handle Dart_FinalizeAllClasses(void);
 
 /*  This function is intentionally undocumented.
  *

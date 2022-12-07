@@ -73,3 +73,8 @@ impl HideData {
         self.content = "MUT SELF".to_owned();
     }
 }
+
+/// Structure for testing the RustOpaque code generator.
+/// FrbOpaqueReturn must be only return type.
+/// FrbOpaqueReturn must not be used as an argument.
+pub struct FrbOpaqueReturn;

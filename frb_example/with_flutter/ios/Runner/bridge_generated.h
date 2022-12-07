@@ -45,11 +45,13 @@ typedef struct WireSyncReturnStruct {
 
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
 
-_Dart_Handle *get_dart_object(uintptr_t ptr);
+Dart_Handle get_dart_object(uintptr_t ptr);
 
 void drop_dart_object(uintptr_t ptr);
 
-uintptr_t new_dart_opaque(_Dart_Handle *handle, int64_t port);
+uintptr_t new_dart_opaque(Dart_Handle handle);
+
+intptr_t init_frb_dart_api_dl(void *obj);
 
 void wire_draw_mandelbrot(int64_t port_,
                           struct wire_Size *image_size,

@@ -122,6 +122,16 @@ pub struct RustOpaque<T: ?Sized + DartSafe> {
     ptr: Option<Arc<T>>,
 }
 
+impl<T: DartSafe> RustOpaque<T> {
+    pub fn try_unwrap(self) -> Result<T, Self> {
+        if let Some(ptr) = self.ptr {
+            Arc::try_unwrap(ptr).map_err(RustOpaque::from)
+        } else {
+            panic!("Use after free.")
+        }
+    }
+}
+
 /// # Safety
 ///
 /// This function should never be called manually.
@@ -268,10 +278,12 @@ impl From<Option<DartOpaque>> for WireSyncReturnData {
 
 impl Drop for DartOpaque {
     fn drop(&mut self) {
-        if let Some(mut inner) = self.handle.take() {
+        if let Some(inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
+                let channel = inner.channel();
                 let ptr = inner.into_raw();
-                if !inner.channel().post(ptr) {
+
+                if !channel.post(ptr) {
                     warn!("Drop DartOpaque after closing the port.");
                 };
             }

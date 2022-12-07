@@ -1,3 +1,15 @@
+## 1.53.0
+
+* Add Dart opaque types, allowing to use any Dart objects in Rust code #853 (thanks @rogurotus)
+
+## 1.52.0
+
+* Move semantics of opaque rust for Dart #869 (thanks @rogurotus)
+
+## 1.51.1
+
+* Fix function generation related to opaque rust #867 (thanks @rogurotus)
+
 ## 1.51.0
 
 * support wasm with no decl set #861 (thanks @huang12zheng)

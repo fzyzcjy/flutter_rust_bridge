@@ -2,7 +2,7 @@
 //!
 //! [`Dart DL API`]: https://github.com/dart-lang/sdk/blob/main/runtime/include/dart_api_dl.h
 
-use std::{ffi::c_void, ptr};
+use std::ffi::c_void;
 
 use dart_sys::{Dart_Handle, Dart_PersistentHandle};
 
@@ -40,6 +40,6 @@ extern "C" {
 ///
 /// [1]: https://api.dart.dev/dart-ffi/NativeApi/initializeApiDLData.html
 #[no_mangle]
-pub unsafe extern "C" fn init_dart_api_dl(obj: ptr::NonNull<c_void>) -> isize {
-    Dart_InitializeApiDL(obj.as_ptr())
+pub unsafe extern "C" fn init_frb_dart_api_dl(obj: *mut c_void) -> isize {
+    Dart_InitializeApiDL(obj)
 }

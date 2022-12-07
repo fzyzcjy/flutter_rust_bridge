@@ -23,30 +23,3 @@ Dart_Handle Dart_HandleFromPersistent_DL_Trampolined(
 void Dart_DeletePersistentHandle_DL_Trampolined(Dart_PersistentHandle handle) {
   Dart_DeletePersistentHandle_DL(handle);
 }
-
-bool Dart_PostCObject_DL_Trampolined(Dart_Port port_id, Dart_CObject* message) {
-  return Dart_PostCObject_DL(port_id, message);
-}
-
-Dart_FinalizableHandle Dart_NewFinalizableHandle_DL_Trampolined(
-    Dart_Handle object,
-    void* peer,
-    intptr_t external_allocation_size,
-    Dart_HandleFinalizer callback) {
-  return Dart_NewFinalizableHandle_DL(object,
-                                      peer,
-                                      external_allocation_size,
-                                      callback);
-}
-
-bool Dart_IsError_DL_Trampolined(Dart_Handle handle) {
-  return Dart_IsError_DL(handle);
-}
-
-const char* Dart_GetError_DL_Trampolined(Dart_Handle handle) {
-  return Dart_GetError_DL(handle);
-}
-
-void Dart_PropagateError_DL_Trampolined(Dart_Handle handle) {
-  Dart_PropagateError_DL(handle);
-}

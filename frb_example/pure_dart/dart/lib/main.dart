@@ -713,14 +713,24 @@ void main(List<String> args) async {
     });
 
     test('drop', () async {
-      expect(await api.asyncAcceptDartOpaque(opaque: _createLargeList(mb: 200)), 'async test');
-      expect(api.syncAcceptDartOpaque(opaque: _createLargeList(mb: 200)), 'test');
+      expect(await api.asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'async test');
+      expect(api.syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
     });
 
     test('unwrap', () async {
-      expect(api.unwrapDartOpaque(opaque: _createLargeList(mb: 200)), 'Test');
+      expect(api.unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
       await expectLater(
-          () => api.panicUnwrapDartOpaque(opaque: _createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+    });
+
+    test('nested', () async {
+      var str = await api.createNestedDartOpaque(opaque1: f, opaque2: f);
+      await api.getNestedDartOpaque(opaque: str);
+    });
+
+    test('enum', () async {
+      var en = await api.createEnumDartOpaque(opaque: f);
+      await api.getEnumDartOpaque(opaque: en);
     });
 
     test('nested', () async {
@@ -947,6 +957,25 @@ void main(List<String> args) async {
       await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
       data[1].dispose();
     });
+
+    test('unwrap', () async {
+      var data = await api.createOpaque();
+      data.move = true;
+      expect(
+          await api.unwrapRustOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(data.isStale(), isTrue);
+
+      var data2 = await api.createOpaque();
+      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
+      expect(data2.isStale(), isFalse);
+    });
   });
 
   group('Sync opaque feature:', () {
@@ -1018,8 +1047,6 @@ int _createGarbage() {
   return cum;
 }
 
-Uint8List _createLargeList({required int mb}) => Uint8List(1000000 * mb);
-
 MyTreeNode _createMyTreeNode({required int arrLen}) {
   return MyTreeNode(
     valueI32: 100,
@@ -1060,5 +1087,7 @@ class MatchBigInt extends CustomMatcher {
     return actual;
   }
 }
+
+Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
 // vim:expandtab:ts=2:sw=2

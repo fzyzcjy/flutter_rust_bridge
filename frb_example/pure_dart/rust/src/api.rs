@@ -13,7 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-pub use crate::data::{HideData, HideSyncData};
+pub use crate::data::{HideData, HideSyncData, FrbOpaqueReturn};
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
@@ -1127,21 +1127,6 @@ pub fn create_nested_opaque() -> OpaqueNested {
     }
 }
 
-pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
-    DartOpaqueNested {
-        first: opaque1,
-        second: opaque2,
-    }
-}
-
-pub fn get_nested_dart_opaque(opaque: DartOpaqueNested) {}
-
-pub fn create_enum_dart_opaque(opaque: DartOpaque) -> EnumDartOpaque {
-    EnumDartOpaque::Opaque(opaque)
-}
-
-pub fn get_enum_dart_opaque(opaque: EnumDartOpaque) {}
-
 pub fn sync_loopback(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
     SyncReturn(opaque)
 }
@@ -1169,4 +1154,45 @@ pub fn sync_void() -> SyncReturn<()> {
 pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.first.hide_data();
     opaque.second.hide_data();
+}
+
+pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
+    DartOpaqueNested {
+        first: opaque1,
+        second: opaque2,
+    }
+}
+
+pub fn get_nested_dart_opaque(opaque: DartOpaqueNested) {}
+
+pub fn create_enum_dart_opaque(opaque: DartOpaque) -> EnumDartOpaque {
+    EnumDartOpaque::Opaque(opaque)
+}
+
+pub fn get_enum_dart_opaque(opaque: EnumDartOpaque) {}
+
+lazy_static! {
+    static ref DART_OPAQUE: Mutex<Option<DartOpaque>> = Default::default();
+}
+
+pub fn set_static_dart_opaque(opaque: DartOpaque) {
+    *DART_OPAQUE.lock().unwrap() = Some(opaque);
+}
+
+pub fn drop_static_dart_opaque() {
+    drop(DART_OPAQUE.lock().unwrap().take());
+}
+
+pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
+    let data: HideData = opaque
+        .try_unwrap()
+        .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
+    Ok(data.hide_data())
+}
+
+/// Function to check the code generator.
+/// FrbOpaqueReturn must be only return type.
+/// FrbOpaqueReturn must not be used as an argument.
+pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
+    panic!("dummy code");
 }

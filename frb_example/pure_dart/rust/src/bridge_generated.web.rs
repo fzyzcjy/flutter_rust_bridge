@@ -614,6 +614,46 @@ pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_create_nested_dart_opaque(port_: MessagePort, opaque1: JsValue, opaque2: JsValue) {
+    wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_nested_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_get_nested_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_create_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_get_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_set_static_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_set_static_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_drop_static_dart_opaque(port_: MessagePort) {
+    wire_drop_static_dart_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_frb_generator_test(port_: MessagePort) {
+    wire_frb_generator_test_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -741,6 +781,21 @@ pub fn drop_opaque_BoxDartDebug(ptr: *const c_void) {
 pub fn share_opaque_BoxDartDebug(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_FrbOpaqueReturn(ptr: *const c_void) {
+    unsafe {
+        Arc::<FrbOpaqueReturn>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_FrbOpaqueReturn(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
         ptr
     }
 }

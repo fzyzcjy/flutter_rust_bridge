@@ -3,7 +3,7 @@
 
 ## Ownership and GC
 
-From the moment the opaque type is passed, Rust will own the persistent representation of the dart object (`Dart_PersistentHandle` or `JsValue`).
+From the moment the opaque type is passed, Rust will own a persistent representation of the dart object (`Dart_PersistentHandle` or `JsValue`).
 This means that while Rust owns `DartOpaque` the object will not be cleared by GC.
 Also flutter_rust_bridge provides a thread-safe drop for `DartOpaque`: Rust delegates the drop to the Dart side using the Dart port.
 

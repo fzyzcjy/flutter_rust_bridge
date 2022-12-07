@@ -56,6 +56,17 @@ jobs:
         working-directory: ./frb_example/with_flutter
         run: flutter pub get
 
+      - name: Check DartApi
+        run: |
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/dart-lang/sdk.git
+          cd sdk
+          git sparse-checkout set runtime/include
+          cd ..
+          cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api_dl/
+          rm -r sdk
+          git diff --exit-code
+        shell: bash
+
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)
         if: ${{ inputs.family != 'windows' }}
@@ -135,7 +146,11 @@ jobs:
       # #467
       - name: "Modify cross-platform code (windows) (single block)"
         if: ${{ inputs.family == 'windows' }}
-        run: sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.io.dart
+        run: |
+          sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.io.dart
+          sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.io.dart
+          sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.io.dart
+          sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/with_flutter/lib/bridge_generated.io.dart
 
       - name: Generate codegen help
         working-directory: ./frb_codegen

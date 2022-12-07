@@ -52,7 +52,10 @@ pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
-    Dart_HandleFromPersistent_DL_Trampolined(ptr as _)
+    let handle = ptr as _;
+    let res = Dart_HandleFromPersistent_DL_Trampolined(handle);
+    Dart_DeletePersistentHandle_DL_Trampolined(handle);
+    res
 }
 
 /// # Safety
@@ -64,6 +67,7 @@ pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
 }
 
 #[derive(Debug)]
+/// Option for correct drop.
 pub struct DartHandleWrap(Option<Dart_PersistentHandle>);
 
 impl DartHandleWrap {
@@ -87,19 +91,19 @@ impl Drop for DartHandleWrap {
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: DartHandleWrap,
-    drop_port: MessagePort,
+    drop_port: Option<MessagePort>,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
         Self {
-            inner: DartHandleWrap(Some(handle)),
-            drop_port: port,
+            inner: DartHandleWrap::from_raw(handle),
+            drop_port: Some(port),
         }
     }
 
-    pub fn into_raw(&mut self) -> Dart_PersistentHandle {
-        self.inner.0.take().unwrap()
+    pub fn into_raw(self) -> Dart_PersistentHandle {
+        self.inner.into_raw()
     }
 
     pub fn unwrap(self) -> DartHandleWrap {
@@ -107,6 +111,6 @@ impl DartOpaqueBase {
     }
 
     pub fn channel(&self) -> Channel {
-        Channel::new(self.drop_port)
+        Channel::new(self.drop_port.unwrap())
     }
 }

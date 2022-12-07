@@ -436,27 +436,27 @@ pub unsafe fn drop_dart_object(ptr: usize) {
 
 #[derive(Debug)]
 pub struct DartOpaqueBase {
-    inner: Option<Box<JsValue>>,
-    drop_port: String,
+    inner: Box<JsValue>,
+    drop_port: Option<String>,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: JsValue, port: JsValue) -> Self {
         Self {
-            inner: Some(Box::new(handle)),
-            drop_port: port.dyn_ref::<BroadcastChannel>().unwrap().name(),
+            inner: Box::new(handle),
+            drop_port: Some(port.dyn_ref::<BroadcastChannel>().unwrap().name()),
         }
     }
 
-    pub fn unwrap(mut self) -> JsValue {
-        *self.inner.take().unwrap()
+    pub fn unwrap(self) -> JsValue {
+        *self.inner
     }
 
-    pub fn into_raw(&mut self) -> *mut JsValue {
-        Box::into_raw(self.inner.take().unwrap()) as _
+    pub fn into_raw(self) -> *mut JsValue {
+        Box::into_raw(self.inner)
     }
 
     pub fn channel(&self) -> Channel {
-        Channel::new(PortLike::broadcast(&self.drop_port))
+        Channel::new(PortLike::broadcast(self.drop_port.as_ref().unwrap()))
     }
 }
