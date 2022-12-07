@@ -234,7 +234,7 @@ impl DartOpaque {
     ///
     /// The [DartOpaque] created by this method must not be dropped
     /// on a non-parent [DartObject] thread.
-    pub unsafe fn new_non_dropable(handle: DartObject) -> Self {
+    pub unsafe fn new_non_droppable(handle: DartObject) -> Self {
         Self {
             handle: Some(DartOpaqueBase::new(handle, None)),
             thread_id: std::thread::current().id(),
