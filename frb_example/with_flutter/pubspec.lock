@@ -241,7 +241,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.51.1"
+    version: "1.53.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -253,7 +253,7 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   freezed_annotation:
     dependency: "direct main"
     description:

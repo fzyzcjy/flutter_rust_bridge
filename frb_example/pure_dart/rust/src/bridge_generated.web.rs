@@ -439,8 +439,68 @@ pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_accept_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_sync_accept_dart_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_async_accept_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_async_accept_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_option(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_option_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_array(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_array_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_vec(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_vec_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_option_get(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_option_get_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_array_get(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_array_get_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_vec_get(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_vec_get_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_unwrap_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_unwrap_dart_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_panic_unwrap_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_panic_unwrap_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_opaque(port_: MessagePort) {
     wire_create_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_option_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_create_option_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
@@ -491,6 +551,36 @@ pub fn wire_create_nested_opaque(port_: MessagePort) {
 #[wasm_bindgen]
 pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
     wire_run_nested_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_nested_dart_opaque(port_: MessagePort, opaque1: JsValue, opaque2: JsValue) {
+    wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_nested_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_get_nested_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_create_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_get_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_set_static_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_set_static_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_drop_static_dart_opaque(port_: MessagePort) {
+    wire_drop_static_dart_opaque_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -741,6 +831,12 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
+impl Wire2Api<DartOpaque> for JsValue {
+    fn wire2api(self) -> DartOpaque {
+        let arr = self.dyn_into::<JsArray>().unwrap();
+        DartOpaque::new(arr.get(0), arr.get(1))
+    }
+}
 
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
@@ -899,6 +995,18 @@ impl Wire2Api<DebugEnum> for JsValue {
             11 => DebugEnum::MySize(self_.get(1).wire2api()),
             12 => DebugEnum::ExoticOptionals(self_.get(1).wire2api()),
             _ => unreachable!(),
+impl Wire2Api<DartOpaqueNested> for JsValue {
+    fn wire2api(self) -> DartOpaqueNested {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        DartOpaqueNested {
+            first: self_.get(0).wire2api(),
+            second: self_.get(1).wire2api(),
         }
     }
 }
@@ -926,6 +1034,13 @@ impl Wire2Api<Element> for JsValue {
             text: self_.get(1).wire2api(),
             attributes: self_.get(2).wire2api(),
             children: self_.get(3).wire2api(),
+impl Wire2Api<EnumDartOpaque> for JsValue {
+    fn wire2api(self) -> EnumDartOpaque {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumDartOpaque::Primitive(self_.get(1).wire2api()),
+            1 => EnumDartOpaque::Opaque(self_.get(1).wire2api()),
+            _ => unreachable!(),
         }
     }
 }
@@ -1066,8 +1181,17 @@ impl Wire2Api<KitchenSink> for JsValue {
         }
     }
 }
-impl Wire2Api<Vec<Opaque<HideData>>> for JsValue {
-    fn wire2api(self) -> Vec<Opaque<HideData>> {
+impl Wire2Api<Vec<DartOpaque>> for JsValue {
+    fn wire2api(self) -> Vec<DartOpaque> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<RustOpaque<HideData>>> for JsValue {
+    fn wire2api(self) -> Vec<RustOpaque<HideData>> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -1301,6 +1425,16 @@ impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for Option<Box<[u8]>> {
         self.map(Wire2Api::wire2api)
     }
 }
+impl Wire2Api<Option<DartOpaque>> for JsValue {
+    fn wire2api(self) -> Option<DartOpaque> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<RustOpaque<HideData>>> for JsValue {
+    fn wire2api(self) -> Option<RustOpaque<HideData>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
 impl Wire2Api<Option<Attribute>> for JsValue {
     fn wire2api(self) -> Option<Attribute> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
@@ -1454,8 +1588,8 @@ impl Wire2Api<UserId> for JsValue {
 
 // Section: impl Wire2Api for JsValue
 
-impl Wire2Api<Opaque<Box<dyn DartDebug>>> for JsValue {
-    fn wire2api(self) -> Opaque<Box<dyn DartDebug>> {
+impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for JsValue {
+    fn wire2api(self) -> RustOpaque<Box<dyn DartDebug>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -1484,8 +1618,8 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
         Wire2Api::<i64>::wire2api(self).wire2api()
     }
 }
-impl Wire2Api<Opaque<HideData>> for JsValue {
-    fn wire2api(self) -> Opaque<HideData> {
+impl Wire2Api<RustOpaque<HideData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<HideData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -1494,14 +1628,14 @@ impl Wire2Api<Opaque<HideData>> for JsValue {
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl Wire2Api<[Opaque<HideData>; 2]> for JsValue {
-    fn wire2api(self) -> [Opaque<HideData>; 2] {
-        let vec: Vec<Opaque<HideData>> = self.wire2api();
+impl Wire2Api<[RustOpaque<HideData>; 2]> for JsValue {
+    fn wire2api(self) -> [RustOpaque<HideData>; 2] {
+        let vec: Vec<RustOpaque<HideData>> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<Opaque<i32>> for JsValue {
-    fn wire2api(self) -> Opaque<i32> {
+impl Wire2Api<RustOpaque<i32>> for JsValue {
+    fn wire2api(self) -> RustOpaque<i32> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -1510,8 +1644,8 @@ impl Wire2Api<Opaque<i32>> for JsValue {
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl Wire2Api<Opaque<Mutex<HideData>>> for JsValue {
-    fn wire2api(self) -> Opaque<Mutex<HideData>> {
+impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
+    fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -1520,8 +1654,14 @@ impl Wire2Api<Opaque<Mutex<HideData>>> for JsValue {
         unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl Wire2Api<Opaque<RwLock<HideData>>> for JsValue {
-    fn wire2api(self) -> Opaque<RwLock<HideData>> {
+impl Wire2Api<[DartOpaque; 1]> for JsValue {
+    fn wire2api(self) -> [DartOpaque; 1] {
+        let vec: Vec<DartOpaque> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<RustOpaque<RwLock<HideData>>> for JsValue {
+    fn wire2api(self) -> RustOpaque<RwLock<HideData>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");

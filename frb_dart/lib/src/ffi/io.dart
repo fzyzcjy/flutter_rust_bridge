@@ -19,6 +19,19 @@ extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   }
 }
 
+class DartApiDl {
+  static int? _initCode;
+  final int Function(ffi.Pointer<ffi.Void>) _initFn;
+  DartApiDl(this._initFn);
+
+  void initApi() {
+    _initCode ??= _initFn(ffi.NativeApi.initializeApiDLData);
+    if (_initCode != 0) {
+      throw 'Failed to initialize Dart API. Code: $_initCode';
+    }
+  }
+}
+
 // NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
 /// This class is only for internal usage.
 class WireSyncReturnStruct extends ffi.Struct {

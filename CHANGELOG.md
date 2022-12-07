@@ -1,3 +1,7 @@
+## 1.53.0
+
+* Add Dart opaque types, allowing to use any Dart objects in Rust code #853 (thanks @rogurotus)
+
 ## 1.52.0
 
 * Move semantics of opaque rust for Dart #869 (thanks @rogurotus)

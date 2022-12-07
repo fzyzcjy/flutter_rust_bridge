@@ -274,15 +274,17 @@ impl<'a> TypeParser<'a> {
                         None
                     }
                 }
-                "Opaque" => match *generic {
+                "RustOpaque" => match *generic {
                     SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
                     SupportedInnerType::Verbatim(ver) => {
-                        Some(IrType::Opaque(IrTypeOpaque::from(ver.as_ref())))
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(ver.as_ref())))
                     }
                     SupportedInnerType::Path(path) => {
-                        Some(IrType::Opaque(IrTypeOpaque::from(path.to_string())))
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(path.to_string())))
                     }
-                    SupportedInnerType::Unit => Some(IrType::Opaque(IrTypeOpaque::new_unit())),
+                    SupportedInnerType::Unit => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::new_unit()))
+                    }
                     SupportedInnerType::ImplTrait(_) => {
                         unreachable!("ImplTrait should not be wrapped with Opaque")
                     }
@@ -310,9 +312,15 @@ impl<'a> TypeParser<'a> {
                                 exist_in_real_api: false,
                             })))
                         }
-                        op @ Opaque(_) => {
+                        op @ RustOpaque(_) => {
                             IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
                                 inner: Box::new(op),
+                                exist_in_real_api: false,
+                            })))
+                        }
+                        dop @ DartOpaque(_) => {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
+                                inner: Box::new(dop),
                                 exist_in_real_api: false,
                             })))
                         }
@@ -343,6 +351,10 @@ impl<'a> TypeParser<'a> {
             if ident_string.as_str() == "Uuid" {
                 return Some(Delegate(IrTypeDelegate::Uuid));
             }
+            if ident_string.as_str() == "DartOpaque" {
+                return Some(DartOpaque(IrTypeDartOpaque {}));
+            }
+
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

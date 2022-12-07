@@ -13,7 +13,8 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | [`impl Trait`](lang_type_impl_trait.md)           | `@freezed class`            |
 | [`use ...`](lang_external.md)                     | act normally                |
 | [`Option<T>`](lang_option.md)                     | `T?`                        |
-| [Arbitrary types (opaque)](lang_opaque.md)        | `Opaque`                    |
+| [Arbitrary Rust types (opaque)](lang_rust_opaque.md)        | `RustOpaque`                |
+| `DartOpaque`                                      | [Arbitrary Dart types (opaque)](lang_dart_opaque.md) |
 | `Box<T>`                                          | `T`                         |
 | comments                                          | same                        |
 | `Result::Err`, panic                              | `throw Exception`           |

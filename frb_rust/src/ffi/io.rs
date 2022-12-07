@@ -1,6 +1,13 @@
+use crate::Channel;
+
 pub use super::DartAbi;
 pub use super::MessagePort;
+use crate::Dart_DeletePersistentHandle_DL_Trampolined;
+use crate::Dart_HandleFromPersistent_DL_Trampolined;
+use crate::Dart_NewPersistentHandle_DL_Trampolined;
 pub use allo_isolate::*;
+pub use dart_sys::Dart_Handle;
+pub use dart_sys::Dart_PersistentHandle;
 
 #[cfg(feature = "chrono")]
 #[inline]
@@ -29,5 +36,81 @@ mod tests {
         let super::Timestamp { s, ns } = super::wire2api_timestamp(input);
         assert_eq!(s, 3_496);
         assert_eq!(ns, 567_123_000);
+    }
+}
+
+/// # Safety
+///
+/// This function should never be called manually.
+#[no_mangle]
+pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize {
+    Dart_NewPersistentHandle_DL_Trampolined(handle) as _
+}
+
+/// # Safety
+///
+/// This function should never be called manually.
+#[no_mangle]
+pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
+    let handle = ptr as _;
+    let res = Dart_HandleFromPersistent_DL_Trampolined(handle);
+    Dart_DeletePersistentHandle_DL_Trampolined(handle);
+    res
+}
+
+/// # Safety
+///
+/// This function should never be called manually.
+#[no_mangle]
+pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
+    Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
+}
+
+#[derive(Debug)]
+/// Option for correct drop.
+pub struct DartHandleWrap(Option<Dart_PersistentHandle>);
+
+impl DartHandleWrap {
+    pub fn from_raw(ptr: Dart_PersistentHandle) -> Self {
+        Self(Some(ptr))
+    }
+
+    pub fn into_raw(mut self) -> Dart_PersistentHandle {
+        self.0.take().unwrap()
+    }
+}
+
+impl Drop for DartHandleWrap {
+    fn drop(&mut self) {
+        if let Some(inner) = self.0 {
+            unsafe { Dart_DeletePersistentHandle_DL_Trampolined(inner) }
+        }
+    }
+}
+
+#[derive(Debug)]
+pub struct DartOpaqueBase {
+    inner: DartHandleWrap,
+    drop_port: Option<MessagePort>,
+}
+
+impl DartOpaqueBase {
+    pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
+        Self {
+            inner: DartHandleWrap::from_raw(handle),
+            drop_port: Some(port),
+        }
+    }
+
+    pub fn into_raw(self) -> Dart_PersistentHandle {
+        self.inner.into_raw()
+    }
+
+    pub fn unwrap(self) -> DartHandleWrap {
+        self.inner
+    }
+
+    pub fn channel(&self) -> Channel {
+        Channel::new(self.drop_port.unwrap())
     }
 }

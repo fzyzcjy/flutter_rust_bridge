@@ -344,6 +344,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7a81dae078cea95a014a339291cec439d2f232ebe854a9d672b796c6afafa9b7"
 
 [[package]]
+name = "dart-sys"
+version = "2.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "42fe64308f2072bb94ecd8f7557f9ac01b69d86e6199bac24be0f091ad74b092"
+
+[[package]]
 name = "either"
 version = "1.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -435,17 +441,21 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.51.1"
+version = "1.53.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
  "build-target",
  "bytemuck",
+ "cc",
  "chrono",
  "console_error_panic_hook",
+ "dart-sys",
  "flutter_rust_bridge_macros",
  "js-sys",
  "lazy_static",
+ "libc",
+ "log",
  "parking_lot",
  "threadpool",
  "uuid",
@@ -456,7 +466,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "1.51.1"
+version = "1.53.0"
 dependencies = [
  "anyhow",
  "cargo_metadata",
@@ -522,7 +532,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.51.1"
+version = "1.53.0"
 
 [[package]]
 name = "futures-core"
