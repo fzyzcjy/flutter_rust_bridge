@@ -22,8 +22,8 @@ pub struct OptArray {
     pub bound_oject_pool: HashMap<Vec<String>, HashSet<String>>,
 }
 
-impl GenerateSourceTemplateTrait for OptArray {
-    fn new_without_resolve(configs: &[crate::Opts]) -> Self {
+impl OptArray {
+    pub fn new_without_resolve(configs: &[crate::Opts]) -> Self {
         OptArray {
             configs: configs.to_owned(),
             irs: Vec::new(),
@@ -33,87 +33,43 @@ impl GenerateSourceTemplateTrait for OptArray {
         }
     }
 }
-impl GenerateDependenciesHook for OptArray {}
-impl PropTrait for OptArray {
-    fn get_configs(&self) -> &[crate::Opts] {
-        &self.configs
-    }
 
-    fn get_irs(&self) -> &Vec<IrFile> {
-        &self.irs
-    }
-
-    fn get_mut_irs(&mut self) -> &mut Vec<IrFile> {
-        &mut (self.irs)
-    }
-}
-impl GenerateSources for OptArray {}
-impl CollectBoundToStruct for OptArray {
-    fn get_mut_explicit_src_impl_pool(&mut self) -> &mut ImplPool {
-        &mut self.explicit_src_impl_pool
-    }
-
-    fn get_mut_explicit_parsed_impl_traits(&mut self) -> &mut HashSet<IrTypeImplTrait> {
-        &mut self.explicit_parsed_impl_traits
-    }
-
-    fn get_mut_bound_oject_pool(&mut self) -> &mut HashMap<Vec<String>, HashSet<String>> {
-        &mut self.bound_oject_pool
-    }
-
-    fn get_explicit_src_impl_pool(&self) -> &ImplPool {
-        &self.explicit_src_impl_pool
-    }
-
-    fn get_explicit_parsed_impl_traits(&self) -> &HashSet<IrTypeImplTrait> {
-        &self.explicit_parsed_impl_traits
-    }
-
-    fn get_bound_oject_pool(&self) -> &HashMap<Vec<String>, HashSet<String>> {
-        &self.bound_oject_pool
-    }
-}
-pub trait GenerateSourceTemplateTrait:
-    PropTrait + GenerateDependenciesHook + GenerateSources
-{
-    fn run_impl_trait_enum(&mut self) {
+impl OptArray {
+    pub fn run_impl_trait_enum(&mut self) {
         // remove generate source dependencies
         let root_src_file =
-            Crate::new_without_resolve(&self.get_configs()[0].manifest_path).root_src_file;
+            Crate::new_without_resolve(&self.configs[0].manifest_path).root_src_file;
         let root_src_file = root_src_file.to_str().unwrap();
 
         self.remove_gen_mod(root_src_file);
-        for config in self.get_configs().iter() {
+        for config in self.configs.iter() {
             let api_file = config.rust_input_path.clone();
             self.remove_gen_use(api_file);
         }
 
         let irs = self.collect_irs();
-        self.get_mut_irs().extend(irs);
-        self.run_collect_bound_to_struct();
-        if !self.get_bound_oject_pool().is_empty() {
+        self.irs.extend(irs);
+        self.run_collect_bound_to_pool();
+        if !self.bound_oject_pool.is_empty() {
             self.generate_impl_file();
 
             // generate source dependencies
             self.gen_mod(root_src_file);
-            for config in self.get_configs().iter() {
+            for config in self.configs.iter() {
                 let api_file = config.rust_input_path.clone();
                 self.gen_use(api_file);
             }
 
             let irs = self.collect_irs();
-            self.get_mut_irs().clear();
-            self.get_mut_irs().extend(irs);
+            self.irs.clear();
+            self.irs.extend(irs);
         }
     }
-
-    fn new_without_resolve(configs: &[crate::Opts]) -> Self;
 }
-pub trait PropTrait {
-    fn get_configs(&self) -> &[crate::Opts];
+impl OptArray {
     fn get_api_paths(&self) -> HashSet<String> {
         let mut explicit_api_path: HashSet<String> = HashSet::new();
-        for config in self.get_configs().iter() {
+        for config in self.configs.iter() {
             explicit_api_path.insert(
                 config
                     .rust_input_path
@@ -128,22 +84,20 @@ pub trait PropTrait {
         explicit_api_path
     }
     fn get_sig_from_doc(&self) -> (HashMap<String, CallFn>, HashSet<String>, HashSet<String>) {
-        let config = &self.get_configs()[0];
+        let config = &self.configs[0];
         let root_src_file = Crate::new_without_resolve(config.manifest_path.as_str()).root_src_file;
         let source_rust_content = fs::read_to_string(&root_src_file).unwrap();
         parse_sig_from_lib::parse_doc_with_root_file(&source_rust_content)
     }
-    fn get_irs(&self) -> &Vec<IrFile>;
-    fn get_mut_irs(&mut self) -> &mut Vec<IrFile>;
-    fn collect_irs(&self) -> Vec<IrFile> {
-        self.get_configs()
+    pub fn collect_irs(&self) -> Vec<IrFile> {
+        self.configs
             .iter()
             .map(|config| config.get_ir_file())
             .collect()
     }
     /// check api defined by users, if no duplicates, then generate all symbols (api function name),
     /// including those generated implicitily by frb
-    fn get_symbols_if_no_duplicates(&self) -> Result<Vec<String>, anyhow::Error> {
+    pub fn get_symbols_if_no_duplicates(&self) -> Result<Vec<String>, anyhow::Error> {
         pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
         where
             T: Eq + Hash + Clone,
@@ -154,13 +108,13 @@ pub trait PropTrait {
                 .cloned()
                 .collect::<Vec<_>>()
         }
-        let configs = self.get_configs();
+        // let configs = self.configs;
         let mut explicit_raw_symbols = Vec::new();
         let mut all_symbols = Vec::new();
-        for (index, raw_ir_file) in self.get_irs().iter().enumerate() {
+        for (index, raw_ir_file) in self.irs.iter().enumerate() {
             explicit_raw_symbols.extend(raw_ir_file.funcs.iter().map(|f| f.name.clone()));
             // for avoiding redundant generation in dart
-            all_symbols.extend(raw_ir_file.get_all_symbols(&configs[index]));
+            all_symbols.extend(raw_ir_file.get_all_symbols(&self.configs[index]));
         }
         let duplicates = find_all_duplicates(&explicit_raw_symbols);
         if !duplicates.is_empty() {
@@ -183,13 +137,7 @@ pub trait PropTrait {
     }
 }
 
-pub trait CollectBoundToStruct: PropTrait {
-    fn get_mut_explicit_src_impl_pool(&mut self) -> &mut ImplPool;
-    fn get_mut_explicit_parsed_impl_traits(&mut self) -> &mut HashSet<IrTypeImplTrait>;
-    fn get_mut_bound_oject_pool(&mut self) -> &mut HashMap<Vec<String>, HashSet<String>>;
-    fn get_explicit_src_impl_pool(&self) -> &ImplPool;
-    fn get_explicit_parsed_impl_traits(&self) -> &HashSet<IrTypeImplTrait>;
-    fn get_bound_oject_pool(&self) -> &HashMap<Vec<String>, HashSet<String>>;
+impl OptArray {
     fn collect_bounds(&mut self) {
         fn collect_impl(raw_ir_file: &crate::ir::IrFile, explicit_src_impl_pool: &mut ImplPool) {
             // for checking relationship between trait and self_ty with all files
@@ -210,22 +158,21 @@ pub trait CollectBoundToStruct: PropTrait {
         }
 
         let mut explicit_src_impl_pool = HashMap::new();
-        for raw_ir_file in self.get_irs().iter() {
+        for raw_ir_file in self.irs.iter() {
             collect_impl(raw_ir_file, &mut explicit_src_impl_pool);
         }
         // get struct info
-        self.get_mut_explicit_src_impl_pool()
-            .extend(explicit_src_impl_pool);
+        self.explicit_src_impl_pool.extend(explicit_src_impl_pool);
         let mut explicit_parsed_impl_traits: HashSet<IrTypeImplTrait> = HashSet::new();
-        for raw_ir_file in self.get_irs().iter() {
+        for raw_ir_file in self.irs.iter() {
             collect_impl_trait(raw_ir_file, &mut explicit_parsed_impl_traits)
         }
-        self.get_mut_explicit_parsed_impl_traits()
+        self.explicit_parsed_impl_traits
             .extend(explicit_parsed_impl_traits);
     }
     fn collect_bound_oject_pool(&mut self) {
-        let explicit_src_impl_pool = self.get_explicit_src_impl_pool();
-        let explicit_parsed_impl_traits = self.get_explicit_parsed_impl_traits();
+        let explicit_src_impl_pool = &self.explicit_src_impl_pool;
+        let explicit_parsed_impl_traits = &self.explicit_parsed_impl_traits;
         // get a map from bound to all struct meet
         let mut bound_oject_pool = HashMap::new();
         for type_impl_trait in explicit_parsed_impl_traits.iter() {
@@ -253,15 +200,15 @@ pub trait CollectBoundToStruct: PropTrait {
                 .unwrap();
             bound_oject_pool.insert(raw.clone(), intersection_set);
         }
-        self.get_mut_bound_oject_pool().extend(bound_oject_pool);
+        self.bound_oject_pool.extend(bound_oject_pool);
     }
-    fn run_collect_bound_to_struct(&mut self) {
+    pub fn run_collect_bound_to_pool(&mut self) {
         self.collect_bounds();
         self.collect_bound_oject_pool();
     }
 }
-pub trait InjectInfoFromDocHook: PropTrait {}
-pub trait GenerateDependenciesHook {
+
+impl OptArray {
     fn remove_gen_mod(&self, file_path: impl Display) {
         Command::new("sh")
             .args([
@@ -301,11 +248,11 @@ pub trait GenerateDependenciesHook {
     }
 }
 
-pub trait GenerateSources: CollectBoundToStruct {
+impl OptArray {
     fn generate_impl_file(&self) {
         let (trait_sig_pool, opaque_set, add_box_set) = self.get_sig_from_doc();
         let explicit_api_path = self.get_api_paths();
-        let bound_oject_pool = self.get_bound_oject_pool();
+        let bound_oject_pool = &self.bound_oject_pool;
 
         let mut lines = String::new();
         for super_ in explicit_api_path.iter() {
@@ -364,6 +311,4 @@ pub trait GenerateSources: CollectBoundToStruct {
 
         fs::write("src/bridge_generated_bound.rs", lines).unwrap();
     }
-
-    // fn generate_impl_file(&self) {}
 }

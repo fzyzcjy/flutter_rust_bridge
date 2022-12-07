@@ -11,7 +11,7 @@ use self::generate_template::*;
 pub fn get_symbols_if_no_duplicates(configs: &[Opts]) -> Result<Vec<String>, anyhow::Error> {
     let mut opts = OptArray::new_without_resolve(configs);
     let irs = opts.collect_irs();
-    opts.get_mut_irs().extend(irs);
+    opts.irs.extend(irs);
     opts.get_symbols_if_no_duplicates()
 }
 
