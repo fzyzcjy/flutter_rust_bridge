@@ -26,8 +26,8 @@ fn main() {
     let configs = config_parse(raw_opts);
 
     // generation of rust api for ffi
-    let mut otps = OptArray::new_without_resolve(&configs);
-    otps.run_impl_trait_enum();
+    let mut opts = OptArray::new_without_resolve(&configs);
+    opts.run_impl_trait_enum();
     let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
     for config in configs.iter() {
         frb_codegen(config, &all_symbols).unwrap();

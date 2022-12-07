@@ -8,7 +8,6 @@
 */
 
 use std::{
-    cmp::Ordering,
     collections::HashMap,
     fmt::Debug,
     fs,
@@ -165,28 +164,10 @@ impl Debug for Enum {
 }
 
 /// This represents `impl {trait} for {self_ty}`
-#[derive(Debug, Clone, Eq)]
+#[derive(Debug, Clone, Eq, Ord, PartialOrd, PartialEq)]
 pub struct Impl {
     pub self_ty: Ident,
     pub trait_: Ident,
-}
-
-impl Ord for Impl {
-    fn cmp(&self, other: &Impl) -> Ordering {
-        self.self_ty.cmp(&other.self_ty)
-    }
-}
-
-impl PartialOrd for Impl {
-    fn partial_cmp(&self, other: &Impl) -> Option<Ordering> {
-        Some(self.cmp(other))
-    }
-}
-
-impl PartialEq for Impl {
-    fn eq(&self, other: &Impl) -> bool {
-        self.self_ty == other.self_ty
-    }
 }
 
 #[derive(Debug, Clone)]

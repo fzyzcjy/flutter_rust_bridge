@@ -24,7 +24,12 @@ pub fn simple_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-pub fn tt(t: impl Debug) {}
+pub fn type_impl_trait_simple_input(input: impl Debug) {}
+
+pub fn type_impl_trait_raw_output(obj: impl Debug) -> String {
+    format!("{:?}", obj)
+}
+
 // pub fn test(t: HideData) {}
 
 /**

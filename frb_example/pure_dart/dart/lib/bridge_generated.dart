@@ -36,20 +36,36 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["a", "b"],
       );
 
-  Future<void> tt({required DebugEnum t, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_debug_enum(t);
+  Future<void> typeImplTraitSimpleInput({required DebugEnum input, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_debug_enum(input);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_tt(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_type_impl_trait_simple_input(port_, arg0),
       parseSuccessData: _wire2api_unit,
-      constMeta: kTtConstMeta,
-      argValues: [t],
+      constMeta: kTypeImplTraitSimpleInputConstMeta,
+      argValues: [input],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTtConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "tt",
-        argNames: ["t"],
+  FlutterRustBridgeTaskConstMeta get kTypeImplTraitSimpleInputConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "type_impl_trait_simple_input",
+        argNames: ["input"],
+      );
+
+  Future<String> typeImplTraitRawOutput({required DebugEnum obj, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_debug_enum(obj);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_type_impl_trait_raw_output(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kTypeImplTraitRawOutputConstMeta,
+      argValues: [obj],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTypeImplTraitRawOutputConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "type_impl_trait_raw_output",
+        argNames: ["obj"],
       );
 
   Future<int> primitiveTypes(

@@ -372,29 +372,29 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_debug_enum(DebugEnum raw) {
-    if (raw is DebugEnum_FeatureUuid) {
-      return [0, api2wire_box_autoadd_feature_uuid(raw.field0)];
-    }
-    if (raw is DebugEnum_MySize) {
-      return [1, api2wire_box_autoadd_my_size(raw.field0)];
-    }
     if (raw is DebugEnum_HideData) {
-      return [2, api2wire_HideData(raw.field0)];
-    }
-    if (raw is DebugEnum_Note) {
-      return [3, api2wire_box_autoadd_note(raw.field0)];
+      return [0, api2wire_HideData(raw.field0)];
     }
     if (raw is DebugEnum_Log2) {
-      return [4, api2wire_box_autoadd_log_2(raw.field0)];
-    }
-    if (raw is DebugEnum_Attribute) {
-      return [5, api2wire_box_autoadd_attribute(raw.field0)];
-    }
-    if (raw is DebugEnum_ExoticOptionals) {
-      return [6, api2wire_box_exotic_optionals(raw.field0)];
+      return [1, api2wire_box_autoadd_log_2(raw.field0)];
     }
     if (raw is DebugEnum_MyTreeNode) {
-      return [7, api2wire_box_autoadd_my_tree_node(raw.field0)];
+      return [2, api2wire_box_autoadd_my_tree_node(raw.field0)];
+    }
+    if (raw is DebugEnum_Element) {
+      return [3, api2wire_box_autoadd_element(raw.field0)];
+    }
+    if (raw is DebugEnum_Note) {
+      return [4, api2wire_box_autoadd_note(raw.field0)];
+    }
+    if (raw is DebugEnum_FeatureChrono) {
+      return [5, api2wire_box_autoadd_feature_chrono(raw.field0)];
+    }
+    if (raw is DebugEnum_FeatureUuid) {
+      return [6, api2wire_box_autoadd_feature_uuid(raw.field0)];
+    }
+    if (raw is DebugEnum_Attribute) {
+      return [7, api2wire_box_autoadd_attribute(raw.field0)];
     }
     if (raw is DebugEnum_NewTypeInt) {
       return [8, api2wire_box_autoadd_new_type_int(raw.field0)];
@@ -402,14 +402,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     if (raw is DebugEnum_Log) {
       return [9, api2wire_box_autoadd_log(raw.field0)];
     }
-    if (raw is DebugEnum_Element) {
-      return [10, api2wire_box_autoadd_element(raw.field0)];
-    }
     if (raw is DebugEnum_Customized) {
-      return [11, api2wire_box_autoadd_customized(raw.field0)];
+      return [10, api2wire_box_autoadd_customized(raw.field0)];
     }
-    if (raw is DebugEnum_FeatureChrono) {
-      return [12, api2wire_box_autoadd_feature_chrono(raw.field0)];
+    if (raw is DebugEnum_MySize) {
+      return [11, api2wire_box_autoadd_my_size(raw.field0)];
+    }
+    if (raw is DebugEnum_ExoticOptionals) {
+      return [12, api2wire_box_exotic_optionals(raw.field0)];
     }
 
     throw Exception('unreachable');
@@ -873,7 +873,9 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
   external void wire_simple_adder(NativePortType port_, int a, int b);
 
-  external void wire_tt(NativePortType port_, List<dynamic> t);
+  external void wire_type_impl_trait_simple_input(NativePortType port_, List<dynamic> input);
+
+  external void wire_type_impl_trait_raw_output(NativePortType port_, List<dynamic> obj);
 
   external void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool);
 
@@ -1145,7 +1147,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_simple_adder(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder(port_, a, b);
 
-  void wire_tt(NativePortType port_, List<dynamic> t) => wasmModule.wire_tt(port_, t);
+  void wire_type_impl_trait_simple_input(NativePortType port_, List<dynamic> input) =>
+      wasmModule.wire_type_impl_trait_simple_input(port_, input);
+
+  void wire_type_impl_trait_raw_output(NativePortType port_, List<dynamic> obj) =>
+      wasmModule.wire_type_impl_trait_raw_output(port_, obj);
 
   void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);

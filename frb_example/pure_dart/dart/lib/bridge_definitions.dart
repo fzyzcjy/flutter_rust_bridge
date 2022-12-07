@@ -19,9 +19,13 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSimpleAdderConstMeta;
 
-  Future<void> tt({required DebugEnum t, dynamic hint});
+  Future<void> typeImplTraitSimpleInput({required DebugEnum input, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTtConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTypeImplTraitSimpleInputConstMeta;
+
+  Future<String> typeImplTraitRawOutput({required DebugEnum obj, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTypeImplTraitRawOutputConstMeta;
 
   ///
   /// Multiline comments are fine,
@@ -750,45 +754,45 @@ class Customized {
 
 @freezed
 class DebugEnum with _$DebugEnum {
-  const factory DebugEnum.featureUuid(
-    FeatureUuid field0,
-  ) = DebugEnum_FeatureUuid;
-  const factory DebugEnum.mySize(
-    MySize field0,
-  ) = DebugEnum_MySize;
   const factory DebugEnum.hideData(
     HideData field0,
   ) = DebugEnum_HideData;
-  const factory DebugEnum.note(
-    Note field0,
-  ) = DebugEnum_Note;
   const factory DebugEnum.log2(
     Log2 field0,
   ) = DebugEnum_Log2;
-  const factory DebugEnum.attribute(
-    Attribute field0,
-  ) = DebugEnum_Attribute;
-  const factory DebugEnum.exoticOptionals(
-    ExoticOptionals field0,
-  ) = DebugEnum_ExoticOptionals;
   const factory DebugEnum.myTreeNode(
     MyTreeNode field0,
   ) = DebugEnum_MyTreeNode;
+  const factory DebugEnum.element(
+    Element field0,
+  ) = DebugEnum_Element;
+  const factory DebugEnum.note(
+    Note field0,
+  ) = DebugEnum_Note;
+  const factory DebugEnum.featureChrono(
+    FeatureChrono field0,
+  ) = DebugEnum_FeatureChrono;
+  const factory DebugEnum.featureUuid(
+    FeatureUuid field0,
+  ) = DebugEnum_FeatureUuid;
+  const factory DebugEnum.attribute(
+    Attribute field0,
+  ) = DebugEnum_Attribute;
   const factory DebugEnum.newTypeInt(
     NewTypeInt field0,
   ) = DebugEnum_NewTypeInt;
   const factory DebugEnum.log(
     Log field0,
   ) = DebugEnum_Log;
-  const factory DebugEnum.element(
-    Element field0,
-  ) = DebugEnum_Element;
   const factory DebugEnum.customized(
     Customized field0,
   ) = DebugEnum_Customized;
-  const factory DebugEnum.featureChrono(
-    FeatureChrono field0,
-  ) = DebugEnum_FeatureChrono;
+  const factory DebugEnum.mySize(
+    MySize field0,
+  ) = DebugEnum_MySize;
+  const factory DebugEnum.exoticOptionals(
+    ExoticOptionals field0,
+  ) = DebugEnum_ExoticOptionals;
 }
 
 @freezed

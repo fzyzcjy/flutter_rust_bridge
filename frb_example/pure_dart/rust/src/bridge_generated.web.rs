@@ -7,8 +7,13 @@ pub fn wire_simple_adder(port_: MessagePort, a: i32, b: i32) {
 }
 
 #[wasm_bindgen]
-pub fn wire_tt(port_: MessagePort, t: JsValue) {
-    wire_tt_impl(port_, t)
+pub fn wire_type_impl_trait_simple_input(port_: MessagePort, input: JsValue) {
+    wire_type_impl_trait_simple_input_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_type_impl_trait_raw_output(port_: MessagePort, obj: JsValue) {
+    wire_type_impl_trait_raw_output_impl(port_, obj)
 }
 
 #[wasm_bindgen]
@@ -880,19 +885,19 @@ impl Wire2Api<DebugEnum> for JsValue {
     fn wire2api(self) -> DebugEnum {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => DebugEnum::FeatureUuid(self_.get(1).wire2api()),
-            1 => DebugEnum::MySize(self_.get(1).wire2api()),
-            2 => DebugEnum::HideData(self_.get(1).wire2api()),
-            3 => DebugEnum::Note(self_.get(1).wire2api()),
-            4 => DebugEnum::Log2(self_.get(1).wire2api()),
-            5 => DebugEnum::Attribute(self_.get(1).wire2api()),
-            6 => DebugEnum::ExoticOptionals(self_.get(1).wire2api()),
-            7 => DebugEnum::MyTreeNode(self_.get(1).wire2api()),
+            0 => DebugEnum::HideData(self_.get(1).wire2api()),
+            1 => DebugEnum::Log2(self_.get(1).wire2api()),
+            2 => DebugEnum::MyTreeNode(self_.get(1).wire2api()),
+            3 => DebugEnum::Element(self_.get(1).wire2api()),
+            4 => DebugEnum::Note(self_.get(1).wire2api()),
+            5 => DebugEnum::FeatureChrono(self_.get(1).wire2api()),
+            6 => DebugEnum::FeatureUuid(self_.get(1).wire2api()),
+            7 => DebugEnum::Attribute(self_.get(1).wire2api()),
             8 => DebugEnum::NewTypeInt(self_.get(1).wire2api()),
             9 => DebugEnum::Log(self_.get(1).wire2api()),
-            10 => DebugEnum::Element(self_.get(1).wire2api()),
-            11 => DebugEnum::Customized(self_.get(1).wire2api()),
-            12 => DebugEnum::FeatureChrono(self_.get(1).wire2api()),
+            10 => DebugEnum::Customized(self_.get(1).wire2api()),
+            11 => DebugEnum::MySize(self_.get(1).wire2api()),
+            12 => DebugEnum::ExoticOptionals(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }

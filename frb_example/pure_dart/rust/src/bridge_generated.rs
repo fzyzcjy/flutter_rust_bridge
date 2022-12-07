@@ -45,16 +45,35 @@ fn wire_simple_adder_impl(
         },
     )
 }
-fn wire_tt_impl(port_: MessagePort, t: impl Wire2Api<DebugEnum> + UnwindSafe) {
+fn wire_type_impl_trait_simple_input_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<DebugEnum> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "tt",
+            debug_name: "type_impl_trait_simple_input",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_t = t.wire2api();
-            move |task_callback| Ok(tt(api_t))
+            let api_input = input.wire2api();
+            move |task_callback| Ok(type_impl_trait_simple_input(api_input))
+        },
+    )
+}
+fn wire_type_impl_trait_raw_output_impl(
+    port_: MessagePort,
+    obj: impl Wire2Api<DebugEnum> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "type_impl_trait_raw_output",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_obj = obj.wire2api();
+            move |task_callback| Ok(type_impl_trait_raw_output(api_obj))
         },
     )
 }

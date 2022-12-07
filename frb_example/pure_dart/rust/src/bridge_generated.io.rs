@@ -7,8 +7,13 @@ pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_tt(port_: i64, t: *mut wire_DebugEnum) {
-    wire_tt_impl(port_, t)
+pub extern "C" fn wire_type_impl_trait_simple_input(port_: i64, input: *mut wire_DebugEnum) {
+    wire_type_impl_trait_simple_input_impl(port_, input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_type_impl_trait_raw_output(port_: i64, obj: *mut wire_DebugEnum) {
+    wire_type_impl_trait_raw_output_impl(port_, obj)
 }
 
 #[no_mangle]
@@ -1418,43 +1423,43 @@ impl Wire2Api<DebugEnum> for wire_DebugEnum {
         match self.tag {
             0 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.FeatureUuid);
-                DebugEnum::FeatureUuid(ans.field0.wire2api())
-            },
-            1 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.MySize);
-                DebugEnum::MySize(ans.field0.wire2api())
-            },
-            2 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.HideData);
                 DebugEnum::HideData(ans.field0.wire2api())
             },
-            3 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Note);
-                DebugEnum::Note(ans.field0.wire2api())
-            },
-            4 => unsafe {
+            1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Log2);
                 DebugEnum::Log2(ans.field0.wire2api())
             },
-            5 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Attribute);
-                DebugEnum::Attribute(ans.field0.wire2api())
-            },
-            6 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.ExoticOptionals);
-                DebugEnum::ExoticOptionals(ans.field0.wire2api())
-            },
-            7 => unsafe {
+            2 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.MyTreeNode);
                 DebugEnum::MyTreeNode(ans.field0.wire2api())
+            },
+            3 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Element);
+                DebugEnum::Element(ans.field0.wire2api())
+            },
+            4 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Note);
+                DebugEnum::Note(ans.field0.wire2api())
+            },
+            5 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.FeatureChrono);
+                DebugEnum::FeatureChrono(ans.field0.wire2api())
+            },
+            6 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.FeatureUuid);
+                DebugEnum::FeatureUuid(ans.field0.wire2api())
+            },
+            7 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Attribute);
+                DebugEnum::Attribute(ans.field0.wire2api())
             },
             8 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
@@ -1468,18 +1473,18 @@ impl Wire2Api<DebugEnum> for wire_DebugEnum {
             },
             10 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Element);
-                DebugEnum::Element(ans.field0.wire2api())
-            },
-            11 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Customized);
                 DebugEnum::Customized(ans.field0.wire2api())
             },
+            11 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.MySize);
+                DebugEnum::MySize(ans.field0.wire2api())
+            },
             12 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.FeatureChrono);
-                DebugEnum::FeatureChrono(ans.field0.wire2api())
+                let ans = support::box_from_leak_ptr(ans.ExoticOptionals);
+                DebugEnum::ExoticOptionals(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -2224,31 +2229,19 @@ pub struct wire_DebugEnum {
 
 #[repr(C)]
 pub union DebugEnumKind {
-    FeatureUuid: *mut wire_DebugEnum_FeatureUuid,
-    MySize: *mut wire_DebugEnum_MySize,
     HideData: *mut wire_DebugEnum_HideData,
-    Note: *mut wire_DebugEnum_Note,
     Log2: *mut wire_DebugEnum_Log2,
-    Attribute: *mut wire_DebugEnum_Attribute,
-    ExoticOptionals: *mut wire_DebugEnum_ExoticOptionals,
     MyTreeNode: *mut wire_DebugEnum_MyTreeNode,
+    Element: *mut wire_DebugEnum_Element,
+    Note: *mut wire_DebugEnum_Note,
+    FeatureChrono: *mut wire_DebugEnum_FeatureChrono,
+    FeatureUuid: *mut wire_DebugEnum_FeatureUuid,
+    Attribute: *mut wire_DebugEnum_Attribute,
     NewTypeInt: *mut wire_DebugEnum_NewTypeInt,
     Log: *mut wire_DebugEnum_Log,
-    Element: *mut wire_DebugEnum_Element,
     Customized: *mut wire_DebugEnum_Customized,
-    FeatureChrono: *mut wire_DebugEnum_FeatureChrono,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_DebugEnum_FeatureUuid {
-    field0: *mut wire_FeatureUuid,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_DebugEnum_MySize {
-    field0: *mut wire_MySize,
+    MySize: *mut wire_DebugEnum_MySize,
+    ExoticOptionals: *mut wire_DebugEnum_ExoticOptionals,
 }
 
 #[repr(C)]
@@ -2259,32 +2252,44 @@ pub struct wire_DebugEnum_HideData {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_DebugEnum_Note {
-    field0: *mut wire_Note,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_DebugEnum_Log2 {
     field0: *mut wire_Log2,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_DebugEnum_Attribute {
-    field0: *mut wire_Attribute,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_DebugEnum_ExoticOptionals {
-    field0: *mut wire_ExoticOptionals,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_DebugEnum_MyTreeNode {
     field0: *mut wire_MyTreeNode,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_DebugEnum_Element {
+    field0: *mut wire_Element,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_DebugEnum_Note {
+    field0: *mut wire_Note,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_DebugEnum_FeatureChrono {
+    field0: *mut wire_FeatureChrono,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_DebugEnum_FeatureUuid {
+    field0: *mut wire_FeatureUuid,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_DebugEnum_Attribute {
+    field0: *mut wire_Attribute,
 }
 
 #[repr(C)]
@@ -2301,20 +2306,20 @@ pub struct wire_DebugEnum_Log {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_DebugEnum_Element {
-    field0: *mut wire_Element,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_DebugEnum_Customized {
     field0: *mut wire_Customized,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_DebugEnum_FeatureChrono {
-    field0: *mut wire_FeatureChrono,
+pub struct wire_DebugEnum_MySize {
+    field0: *mut wire_MySize,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_DebugEnum_ExoticOptionals {
+    field0: *mut wire_ExoticOptionals,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -2610,37 +2615,10 @@ impl NewWithNullPtr for wire_DebugEnum {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_DebugEnum_FeatureUuid() -> *mut DebugEnumKind {
-    support::new_leak_box_ptr(DebugEnumKind {
-        FeatureUuid: support::new_leak_box_ptr(wire_DebugEnum_FeatureUuid {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_DebugEnum_MySize() -> *mut DebugEnumKind {
-    support::new_leak_box_ptr(DebugEnumKind {
-        MySize: support::new_leak_box_ptr(wire_DebugEnum_MySize {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
 pub extern "C" fn inflate_DebugEnum_HideData() -> *mut DebugEnumKind {
     support::new_leak_box_ptr(DebugEnumKind {
         HideData: support::new_leak_box_ptr(wire_DebugEnum_HideData {
             field0: wire_HideData::new_with_null_ptr(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_DebugEnum_Note() -> *mut DebugEnumKind {
-    support::new_leak_box_ptr(DebugEnumKind {
-        Note: support::new_leak_box_ptr(wire_DebugEnum_Note {
-            field0: core::ptr::null_mut(),
         }),
     })
 }
@@ -2655,27 +2633,54 @@ pub extern "C" fn inflate_DebugEnum_Log2() -> *mut DebugEnumKind {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_DebugEnum_Attribute() -> *mut DebugEnumKind {
-    support::new_leak_box_ptr(DebugEnumKind {
-        Attribute: support::new_leak_box_ptr(wire_DebugEnum_Attribute {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_DebugEnum_ExoticOptionals() -> *mut DebugEnumKind {
-    support::new_leak_box_ptr(DebugEnumKind {
-        ExoticOptionals: support::new_leak_box_ptr(wire_DebugEnum_ExoticOptionals {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
 pub extern "C" fn inflate_DebugEnum_MyTreeNode() -> *mut DebugEnumKind {
     support::new_leak_box_ptr(DebugEnumKind {
         MyTreeNode: support::new_leak_box_ptr(wire_DebugEnum_MyTreeNode {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_DebugEnum_Element() -> *mut DebugEnumKind {
+    support::new_leak_box_ptr(DebugEnumKind {
+        Element: support::new_leak_box_ptr(wire_DebugEnum_Element {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_DebugEnum_Note() -> *mut DebugEnumKind {
+    support::new_leak_box_ptr(DebugEnumKind {
+        Note: support::new_leak_box_ptr(wire_DebugEnum_Note {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_DebugEnum_FeatureChrono() -> *mut DebugEnumKind {
+    support::new_leak_box_ptr(DebugEnumKind {
+        FeatureChrono: support::new_leak_box_ptr(wire_DebugEnum_FeatureChrono {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_DebugEnum_FeatureUuid() -> *mut DebugEnumKind {
+    support::new_leak_box_ptr(DebugEnumKind {
+        FeatureUuid: support::new_leak_box_ptr(wire_DebugEnum_FeatureUuid {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_DebugEnum_Attribute() -> *mut DebugEnumKind {
+    support::new_leak_box_ptr(DebugEnumKind {
+        Attribute: support::new_leak_box_ptr(wire_DebugEnum_Attribute {
             field0: core::ptr::null_mut(),
         }),
     })
@@ -2700,15 +2705,6 @@ pub extern "C" fn inflate_DebugEnum_Log() -> *mut DebugEnumKind {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_DebugEnum_Element() -> *mut DebugEnumKind {
-    support::new_leak_box_ptr(DebugEnumKind {
-        Element: support::new_leak_box_ptr(wire_DebugEnum_Element {
-            field0: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
 pub extern "C" fn inflate_DebugEnum_Customized() -> *mut DebugEnumKind {
     support::new_leak_box_ptr(DebugEnumKind {
         Customized: support::new_leak_box_ptr(wire_DebugEnum_Customized {
@@ -2718,9 +2714,18 @@ pub extern "C" fn inflate_DebugEnum_Customized() -> *mut DebugEnumKind {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_DebugEnum_FeatureChrono() -> *mut DebugEnumKind {
+pub extern "C" fn inflate_DebugEnum_MySize() -> *mut DebugEnumKind {
     support::new_leak_box_ptr(DebugEnumKind {
-        FeatureChrono: support::new_leak_box_ptr(wire_DebugEnum_FeatureChrono {
+        MySize: support::new_leak_box_ptr(wire_DebugEnum_MySize {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_DebugEnum_ExoticOptionals() -> *mut DebugEnumKind {
+    support::new_leak_box_ptr(DebugEnumKind {
+        ExoticOptionals: support::new_leak_box_ptr(wire_DebugEnum_ExoticOptionals {
             field0: core::ptr::null_mut(),
         }),
     })

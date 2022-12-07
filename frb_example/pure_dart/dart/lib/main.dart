@@ -924,6 +924,12 @@ void main(List<String> args) async {
       await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
       expect(data2.isStale(), isFalse);
     });
+
+    test('impl trait as func arg', () async {
+      var input = DebugEnum.log2(Log2(key: 0, value: "test_value"));
+      var data = await api.typeImplTraitRawOutput(obj: input);
+      expect(data, "Log2 {\n    key: 0,\n    value: \"test_value\",\n}");
+    });
   });
 }
 
