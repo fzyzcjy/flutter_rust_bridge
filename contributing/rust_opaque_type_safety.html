@@ -135,7 +135,8 @@
                     <main>
                         <h1 id="rust-opaque-type-safety"><a class="header" href="#rust-opaque-type-safety">Rust opaque type safety</a></h1>
 <h2 id="restrictions"><a class="header" href="#restrictions">Restrictions</a></h2>
-<p>A <code>RustOpaque type</code> can be created from any Rust structure that implements <code>Send</code> and <code>Sync</code>. Such restrictions due to async dart api <code>flutter_rust_bridge</code> allowing sharing a <code>RustOpaque type</code> by multiple <code>flutter_rust_bridge executor</code> threads.</p>
+<p>A <code>RustOpaque type</code> can be created from any Rust structure. 
+The <code>flutter_rust_bridge</code> async dart api requires the Rust type to be <code>Send</code> and <code>Sync</code>, due to the possible sharing of <code>RustOpaque type</code> by multiple <code>flutter_rust_bridge</code> executor threads.</p>
 <h2 id="ownership-and-gc"><a class="header" href="#ownership-and-gc">Ownership and GC</a></h2>
 <p>From the moment an opaque type is passed to Dart, it has full ownership of it.
 Dart implements a finalizer for opaque types, but the memory usage of opaque types is not monitored by Dart and can accumulate, so in order to prevent memory leaks, opaque pointers must be <code>dispose</code>d.</p>

@@ -694,7 +694,16 @@ print(fn());
 <div style="break-before: page; page-break-before: always;"></div><h1 id="synchronous-in-dart"><a class="header" href="#synchronous-in-dart">Synchronous in Dart</a></h1>
 <p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type.</p>
 <p>We suggest only do this for very quick Rust functions, or the Dart UI will be blocked.</p>
-<p>Currently, <code>SyncReturn</code> supports <code>String</code>, <code>Vec&lt;u8&gt;</code> and primitive types(<code>bool</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>f32</code>, <code>f64</code>). Please open an issue if you need other types.</p>
+<p>Currently, <code>SyncReturn</code> supports:</p>
+<ul>
+<li><code>String</code></li>
+<li><code>Vec&lt;u8&gt;</code></li>
+<li><code>RustOpaque</code></li>
+<li><code>DartOpaque</code></li>
+<li>primitive types (<code>bool</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>f32</code>, <code>f64</code>, <code>usize</code>)</li>
+<li><code>Option</code> of the above</li>
+</ul>
+<p>Please open an issue if you need other types.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h1>
 <p>Multiple Rust functions can be running at the same time, and they will be running concurrently. This is because by default we use a thread pool to execute the Rust functions. However, you can fully customize this behavior (and even throw away the thread pool).</p>
 <h2 id="example-10"><a class="header" href="#example-10">Example</a></h2>
@@ -1783,7 +1792,8 @@ mermaid.initialize({
 <p>In this chapter, we will present implementations and discussions for various submodules.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="rust-opaque-type-safety"><a class="header" href="#rust-opaque-type-safety">Rust opaque type safety</a></h1>
 <h2 id="restrictions"><a class="header" href="#restrictions">Restrictions</a></h2>
-<p>A <code>RustOpaque type</code> can be created from any Rust structure that implements <code>Send</code> and <code>Sync</code>. Such restrictions due to async dart api <code>flutter_rust_bridge</code> allowing sharing a <code>RustOpaque type</code> by multiple <code>flutter_rust_bridge executor</code> threads.</p>
+<p>A <code>RustOpaque type</code> can be created from any Rust structure. 
+The <code>flutter_rust_bridge</code> async dart api requires the Rust type to be <code>Send</code> and <code>Sync</code>, due to the possible sharing of <code>RustOpaque type</code> by multiple <code>flutter_rust_bridge</code> executor threads.</p>
 <h2 id="ownership-and-gc"><a class="header" href="#ownership-and-gc">Ownership and GC</a></h2>
 <p>From the moment an opaque type is passed to Dart, it has full ownership of it.
 Dart implements a finalizer for opaque types, but the memory usage of opaque types is not monitored by Dart and can accumulate, so in order to prevent memory leaks, opaque pointers must be <code>dispose</code>d.</p>
