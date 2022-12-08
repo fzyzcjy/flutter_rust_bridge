@@ -130,7 +130,6 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
 
 typedef PlatformPointer = int;
 typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
-const int pointerByteLength = 4;
 
 /// An opaque pointer to a Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.

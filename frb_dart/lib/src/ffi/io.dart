@@ -12,7 +12,6 @@ typedef NativePortType = int;
 typedef ExternalLibrary = ffi.DynamicLibrary;
 typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
-final int pointerByteLength = (double.maxFinite.toInt().bitLength + 1) ~/ 8;
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {

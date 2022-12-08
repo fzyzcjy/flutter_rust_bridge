@@ -9,16 +9,27 @@ export 'ffi/stub.dart'
 
 typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
-final int Function(Uint8List list) getPlatformUsize = pointerByteLength == 8
-    ? (Uint8List list) => ByteData.view(list.buffer).getUint64(0)
-    : (Uint8List list) => ByteData.view(list.buffer).getUint32(0);
+
+late int _pointerByteLength;
+// ignore: unnecessary_late
+late final _getPlatformUsize = _pointerByteLength == 8
+    ? (Uint8List data) => ByteData.view(data.buffer).getUint64(0)
+    : (Uint8List data) => ByteData.view(data.buffer).getUint32(0);
+
+int getPlatformUsize(Uint8List data) {
+  _pointerByteLength = data.length;
+  return _getPlatformUsize(data);
+}
 
 Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
-  var ptrList = List.filled(pointerByteLength, 0);
-  List.copyRange(ptrList, 0, data, 0, pointerByteLength);
+  var pointerLength = data.length ~/ 2;
 
-  var sizeList = List.filled(pointerByteLength, 0);
-  List.copyRange(sizeList, 0, data, pointerByteLength, pointerByteLength * 2);
+  var ptrList = List.filled(pointerLength, 0);
+  List.copyRange(ptrList, 0, data, 0, pointerLength);
+
+  var sizeList = List.filled(pointerLength, 0);
+  List.copyRange(sizeList, 0, data, pointerLength, pointerLength * 2);
+
   return Tuple2(getPlatformUsize(Uint8List.fromList(ptrList)),
       getPlatformUsize(Uint8List.fromList(sizeList)));
 }
